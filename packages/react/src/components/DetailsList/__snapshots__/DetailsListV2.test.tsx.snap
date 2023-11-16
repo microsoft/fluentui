@@ -1441,6 +1441,17 @@ exports[`DetailsListV2 renders List correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
@@ -1458,6 +1469,9 @@ exports[`DetailsListV2 renders List correctly 1`] = `
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -1493,6 +1507,17 @@ exports[`DetailsListV2 renders List correctly 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -1689,6 +1714,17 @@ exports[`DetailsListV2 renders List correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -1746,6 +1782,17 @@ exports[`DetailsListV2 renders List correctly 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -1879,6 +1926,17 @@ exports[`DetailsListV2 renders List correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -1936,6 +1994,17 @@ exports[`DetailsListV2 renders List correctly 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -2069,6 +2138,17 @@ exports[`DetailsListV2 renders List correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -2126,6 +2206,17 @@ exports[`DetailsListV2 renders List correctly 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -2430,6 +2521,17 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
@@ -2447,6 +2549,9 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -2482,6 +2587,17 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -2678,6 +2794,17 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -2735,6 +2862,17 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -2812,6 +2950,17 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -2869,6 +3018,17 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -2946,6 +3106,17 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -3003,6 +3174,17 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -3080,6 +3262,17 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -3137,6 +3330,17 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -3214,6 +3418,17 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -3271,6 +3486,17 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -3520,6 +3746,17 @@ exports[`DetailsListV2 renders List in compact mode correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
@@ -3537,6 +3774,9 @@ exports[`DetailsListV2 renders List in compact mode correctly 1`] = `
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -3572,6 +3812,17 @@ exports[`DetailsListV2 renders List in compact mode correctly 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -3768,6 +4019,17 @@ exports[`DetailsListV2 renders List in compact mode correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -3825,6 +4087,17 @@ exports[`DetailsListV2 renders List in compact mode correctly 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -3958,6 +4231,17 @@ exports[`DetailsListV2 renders List in compact mode correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -4015,6 +4299,17 @@ exports[`DetailsListV2 renders List in compact mode correctly 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -4148,6 +4443,17 @@ exports[`DetailsListV2 renders List in compact mode correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -4205,6 +4511,17 @@ exports[`DetailsListV2 renders List in compact mode correctly 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -4510,6 +4827,17 @@ exports[`DetailsListV2 renders List in fixed constrained layout correctly 1`] = 
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
@@ -4527,6 +4855,9 @@ exports[`DetailsListV2 renders List in fixed constrained layout correctly 1`] = 
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -4562,6 +4893,17 @@ exports[`DetailsListV2 renders List in fixed constrained layout correctly 1`] = 
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -4758,6 +5100,17 @@ exports[`DetailsListV2 renders List in fixed constrained layout correctly 1`] = 
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -4815,6 +5168,17 @@ exports[`DetailsListV2 renders List in fixed constrained layout correctly 1`] = 
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -4948,6 +5312,17 @@ exports[`DetailsListV2 renders List in fixed constrained layout correctly 1`] = 
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -5005,6 +5380,17 @@ exports[`DetailsListV2 renders List in fixed constrained layout correctly 1`] = 
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -5138,6 +5524,17 @@ exports[`DetailsListV2 renders List in fixed constrained layout correctly 1`] = 
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -5195,6 +5592,17 @@ exports[`DetailsListV2 renders List in fixed constrained layout correctly 1`] = 
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -5499,6 +5907,17 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
@@ -5516,6 +5935,9 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -5551,6 +5973,17 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -5747,6 +6180,17 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -5804,6 +6248,17 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -5884,6 +6339,17 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -5941,6 +6407,17 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -6021,6 +6498,17 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -6078,6 +6566,17 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -6158,6 +6657,17 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -6215,6 +6725,17 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -6295,6 +6816,17 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -6352,6 +6884,17 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -6605,6 +7148,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background-color: #f3f2f1;
                 }
@@ -6712,6 +7266,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -6769,6 +7334,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -6902,6 +7478,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -6959,6 +7546,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -7092,6 +7690,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -7149,6 +7758,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -7338,6 +7958,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid #ffffff;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
                           &:hover {
                             background: #f3f2f1;
                             color: #201f1e;
@@ -7346,6 +7977,9 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                             opacity: 1;
                           }
                           .ms-Fabric--isFocusVisible &:focus .ms-GroupHeader-check {
+                            opacity: 1;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus .ms-GroupHeader-check {
                             opacity: 1;
                           }
                           & > .ms-GroupHeader .ms-GroupHeader-dropIcon {
@@ -7442,6 +8076,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                                   border: 0;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #ffffff;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   border: 1px solid #ffffff;
                                   bottom: 1px;
                                   content: "";
@@ -7584,6 +8229,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid #605e5c;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #ffffff;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
                           .ms-List-cell:first-child &:before {
                             display: none;
                           }
@@ -7601,6 +8257,9 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                             opacity: 1;
                           }
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
+                            opacity: 1;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                           & .ms-GroupSpacer {
@@ -7670,6 +8329,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                                 top: 0px;
                                 z-index: 1;
                               }
+                              :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
                               & > button {
                                 max-width: 100%;
                               }
@@ -7725,6 +8395,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                                 top: 0px;
                                 z-index: 1;
                               }
+                              :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
                               & > button {
                                 max-width: 100%;
                               }
@@ -7770,6 +8451,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                                 border: 0;
                               }
                               .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              :host(.ms-Fabric--isFocusVisible) &:focus:after {
                                 border: 1px solid #605e5c;
                                 bottom: 0px;
                                 content: "";
@@ -7866,6 +8558,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid #605e5c;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #ffffff;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
                           .ms-List-cell:first-child &:before {
                             display: none;
                           }
@@ -7883,6 +8586,9 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                             opacity: 1;
                           }
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
+                            opacity: 1;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                           & .ms-GroupSpacer {
@@ -7952,6 +8658,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                                 top: 0px;
                                 z-index: 1;
                               }
+                              :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
                               & > button {
                                 max-width: 100%;
                               }
@@ -8007,6 +8724,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                                 top: 0px;
                                 z-index: 1;
                               }
+                              :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
                               & > button {
                                 max-width: 100%;
                               }
@@ -8052,6 +8780,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                                 border: 0;
                               }
                               .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              :host(.ms-Fabric--isFocusVisible) &:focus:after {
                                 border: 1px solid #605e5c;
                                 bottom: 0px;
                                 content: "";
@@ -8127,6 +8866,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid #ffffff;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
                           &:hover {
                             background: #f3f2f1;
                             color: #201f1e;
@@ -8135,6 +8885,9 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                             opacity: 1;
                           }
                           .ms-Fabric--isFocusVisible &:focus .ms-GroupHeader-check {
+                            opacity: 1;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus .ms-GroupHeader-check {
                             opacity: 1;
                           }
                           & > .ms-GroupHeader .ms-GroupHeader-dropIcon {
@@ -8231,6 +8984,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                                   border: 0;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus:after {
+                                  border: 1px solid #ffffff;
+                                  bottom: 1px;
+                                  content: "";
+                                  left: 1px;
+                                  outline: 1px solid #605e5c;
+                                  position: absolute;
+                                  right: 1px;
+                                  top: 1px;
+                                  z-index: 1;
+                                }
+                                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                                   border: 1px solid #ffffff;
                                   bottom: 1px;
                                   content: "";
@@ -8373,6 +9137,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid #605e5c;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #ffffff;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
                           .ms-List-cell:first-child &:before {
                             display: none;
                           }
@@ -8390,6 +9165,9 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                             opacity: 1;
                           }
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
+                            opacity: 1;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                           & .ms-GroupSpacer {
@@ -8459,6 +9237,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                                 top: 0px;
                                 z-index: 1;
                               }
+                              :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
                               & > button {
                                 max-width: 100%;
                               }
@@ -8514,6 +9303,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                                 top: 0px;
                                 z-index: 1;
                               }
+                              :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
                               & > button {
                                 max-width: 100%;
                               }
@@ -8559,6 +9359,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                                 border: 0;
                               }
                               .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              :host(.ms-Fabric--isFocusVisible) &:focus:after {
                                 border: 1px solid #605e5c;
                                 bottom: 0px;
                                 content: "";
@@ -8655,6 +9466,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid #605e5c;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #ffffff;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
                           .ms-List-cell:first-child &:before {
                             display: none;
                           }
@@ -8672,6 +9494,9 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                             opacity: 1;
                           }
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
+                            opacity: 1;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                           & .ms-GroupSpacer {
@@ -8741,6 +9566,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                                 top: 0px;
                                 z-index: 1;
                               }
+                              :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
                               & > button {
                                 max-width: 100%;
                               }
@@ -8796,6 +9632,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                                 top: 0px;
                                 z-index: 1;
                               }
+                              :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
                               & > button {
                                 max-width: 100%;
                               }
@@ -8841,6 +9688,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                                 border: 0;
                               }
                               .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              :host(.ms-Fabric--isFocusVisible) &:focus:after {
                                 border: 1px solid #605e5c;
                                 bottom: 0px;
                                 content: "";
@@ -8937,6 +9795,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                             top: 1px;
                             z-index: 1;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid #605e5c;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #ffffff;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
                           .ms-List-cell:first-child &:before {
                             display: none;
                           }
@@ -8954,6 +9823,9 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                             opacity: 1;
                           }
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
+                            opacity: 1;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                           & .ms-GroupSpacer {
@@ -9023,6 +9895,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                                 top: 0px;
                                 z-index: 1;
                               }
+                              :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
                               & > button {
                                 max-width: 100%;
                               }
@@ -9078,6 +9961,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                                 top: 0px;
                                 z-index: 1;
                               }
+                              :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
                               & > button {
                                 max-width: 100%;
                               }
@@ -9123,6 +10017,17 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                                 border: 0;
                               }
                               .ms-Fabric--isFocusVisible &:focus:after {
+                                border: 1px solid #605e5c;
+                                bottom: 0px;
+                                content: "";
+                                left: 0px;
+                                outline: 1px solid #ffffff;
+                                position: absolute;
+                                right: 0px;
+                                top: 0px;
+                                z-index: 1;
+                              }
+                              :host(.ms-Fabric--isFocusVisible) &:focus:after {
                                 border: 1px solid #605e5c;
                                 bottom: 0px;
                                 content: "";
