@@ -19,6 +19,9 @@ export { atoms }
 export function createAtom(motion: MotionAtom): React_2.FC<AtomProps>;
 
 // @public (undocumented)
+export function createTransition(transition: MotionTransition): React_2.FC<TransitionProps>;
+
+// @public (undocumented)
 const downEnterFast: ({ fromValue }?: SlideParams) => MotionAtom;
 
 // @public (undocumented)
