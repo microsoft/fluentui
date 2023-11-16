@@ -1,18 +1,21 @@
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useNav_unstable } from './useNav';
-import { renderNav_unstable } from './renderNav';
-import { useNavStyles_unstable } from './useNavStyles.styles';
+import { useNav } from './useNav';
+import { renderNav } from './renderNav';
+import { useNavStyles } from './useNavStyles.styles';
 import type { NavProps } from './Nav.types';
+import { useNavContextValues } from '../useNavContrectValues';
 
 /**
  * Nav component - TODO: add more docs
  */
 export const Nav: ForwardRefComponent<NavProps> = React.forwardRef((props, ref) => {
-  const state = useNav_unstable(props, ref);
+  const state = useNav(props, ref);
 
-  useNavStyles_unstable(state);
-  return renderNav_unstable(state);
+  const contextValues = useNavContextValues(state);
+
+  useNavStyles(state);
+  return renderNav(state, contextValues);
 });
 
 Nav.displayName = 'Nav';

@@ -31,9 +31,12 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-context-selector": "^9.1.28",
+    "@fluentui/react-shared-contexts": "^9.7.2",
     "@fluentui/react-jsx-runtime": "^9.0.0",
     "@fluentui/react-theme": "^9.1.11",
     "@fluentui/react-utilities": "^9.11.1",
+    "@fluentui/react-tabster": "^9.12.2",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.4.14"
   },

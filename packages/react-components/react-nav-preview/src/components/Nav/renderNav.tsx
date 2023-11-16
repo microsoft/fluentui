@@ -2,15 +2,17 @@
 /** @jsx createElement */
 
 import { createElement } from '@fluentui/react-jsx-runtime';
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { NavState, NavSlots } from './Nav.types';
+import type { NavContextValues } from '../NavContext.types';
+import { NavProvider } from '../NavContext';
 
-/**
- * Render the final JSX of Nav
- */
-export const renderNav_unstable = (state: NavState) => {
-  const { slots, slotProps } = getSlotsNext<NavSlots>(state);
+export const renderNav = (state: NavState, contextValues: NavContextValues) => {
+  assertSlots<NavSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <state.root>
+      <NavProvider value={contextValues.nav}>{state.root.children}</NavProvider>
+    </state.root>
+  );
 };
