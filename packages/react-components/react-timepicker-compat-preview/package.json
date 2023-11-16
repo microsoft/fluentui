@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-timepicker-compat-preview",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Fluent UI TimePicker Compat Component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,11 +33,11 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/keyboard-keys": "^9.0.6",
-    "@fluentui/react-combobox": "^9.5.28",
-    "@fluentui/react-jsx-runtime": "^9.0.18",
-    "@fluentui/react-theme": "^9.1.15",
-    "@fluentui/react-utilities": "^9.15.1",
+    "@fluentui/keyboard-keys": "^9.0.7",
+    "@fluentui/react-combobox": "^9.5.30",
+    "@fluentui/react-jsx-runtime": "^9.0.19",
+    "@fluentui/react-theme": "^9.1.16",
+    "@fluentui/react-utilities": "^9.15.2",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },

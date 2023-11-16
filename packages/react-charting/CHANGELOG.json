@@ -2,6 +2,117 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 16 Nov 2023 07:26:51 GMT",
+      "tag": "@fluentui/react-charting_v5.19.1",
+      "version": "5.19.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "gautam33776@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0e17e24b9a5c8719d8e5a79178fc59c95d62fff4",
+            "comment": "fix: MultiStackedBarChart duplicate id and text overlap in [RTL] mode"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.123",
+            "commit": "5103727605543cf631cd50f5348562b763f08ee0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.112.9",
+            "commit": "5103727605543cf631cd50f5348562b763f08ee0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Nov 2023 07:28:11 GMT",
+      "tag": "@fluentui/react-charting_v5.19.0",
+      "version": "5.19.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "NewFuture@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0b5c2f7934907e92d47502e637712731bf841700",
+            "comment": "add defaultSelectedLegeands and onChange for Legends"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Nov 2023 07:26:38 GMT",
+      "tag": "@fluentui/react-charting_v5.18.18",
+      "version": "5.18.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "gautam33776@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "73b15f21a622aafa132749f98daa119e31a636ab",
+            "comment": "fix: Text in sparkline does not render correctly in RTL mode"
+          },
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "38f6d474a41cfc229854d84d280cf7bb89f1fbe7",
+            "comment": "Upgrading d3-scale dependent libraries"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Nov 2023 07:26:21 GMT",
+      "tag": "@fluentui/react-charting_v5.18.17",
+      "version": "5.18.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "gautam33776@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629",
+            "comment": "[Bug]: React Charting Heat Map Chart tooltip appears above the wrong cell fixed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Nov 2023 07:29:20 GMT",
+      "tag": "@fluentui/react-charting_v5.18.16",
+      "version": "5.18.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "aedfb05be11eed7bdf235c3edbcafc8c40b47ca7",
+            "comment": "Added dummy circle for magnetic hover callout for last point in a line chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.34",
+            "commit": "c139fc66cca05255b5c96f6c92d9230b37975276"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.122",
+            "commit": "c139fc66cca05255b5c96f6c92d9230b37975276"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.112.8",
+            "commit": "c139fc66cca05255b5c96f6c92d9230b37975276"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 08 Nov 2023 07:27:23 GMT",
       "tag": "@fluentui/react-charting_v5.18.15",
       "version": "5.18.15",

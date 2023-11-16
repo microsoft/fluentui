@@ -9,7 +9,7 @@ export function useNestedCheckedItems(props: Pick<TreeProps, 'checkedItems'>) {
 }
 
 export function createNextNestedCheckedItems(
-  data: TreeCheckedChangeData,
+  data: Pick<TreeCheckedChangeData, 'selectionMode' | 'value' | 'checked'>,
   previousCheckedItems: ImmutableMap<TreeItemValue, 'mixed' | boolean>,
 ): ImmutableMap<TreeItemValue, 'mixed' | boolean> {
   if (data.selectionMode === 'single') {
