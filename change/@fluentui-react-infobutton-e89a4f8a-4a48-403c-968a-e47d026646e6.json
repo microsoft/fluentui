@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: bump @types/react version to latest supported version v17.0.55",
+  "packageName": "@fluentui/react-infobutton",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

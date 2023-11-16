@@ -32,7 +32,7 @@
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react": ">=16.14.0 <=17.0.55",
     "react": ">=16.14.0 <19.0.0"
   },
   "beachball": {

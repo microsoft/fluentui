@@ -38,6 +38,7 @@
     "@types/classnames": "^2.2.9",
     "@types/faker": "^4.1.3",
     "@types/simulant": "^0.2.0",
+    "@types/react": "17.0.53",
     "csstype": "^3.0.2",
     "faker": "^4.1.0",
     "fela-tools": "^10.6.1",

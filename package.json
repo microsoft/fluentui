@@ -171,7 +171,7 @@
     "@types/prettier": "2.7.2",
     "@types/progress": "2.0.5",
     "@types/prompts": "2.4.1",
-    "@types/react": "17.0.44",
+    "@types/react": "17.0.53",
     "@types/react-dom": "17.0.15",
     "@types/react-is": "17.0.3",
     "@types/react-test-renderer": "17.0.2",
