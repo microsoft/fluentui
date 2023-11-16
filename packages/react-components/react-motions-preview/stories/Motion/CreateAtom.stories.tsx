@@ -2,6 +2,8 @@ import { makeStyles, shorthands, tokens, Label, Slider, useId } from '@fluentui/
 import { atoms, createAtom } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
+import description from './CreateAtom.stories.md';
+
 const useClasses = makeStyles({
   container: {
     display: 'grid',
@@ -57,17 +59,18 @@ export const CreateAtom = () => {
   const classes = useClasses();
   const sliderId = useId();
 
+  const containerRef = React.useRef<HTMLDivElement>(null);
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
 
   React.useEffect(() => {
-    document.getAnimations().forEach(animation => {
+    containerRef.current?.getAnimations({ subtree: true }).forEach(animation => {
       animation.playbackRate = playbackRate / 100;
     });
   }, [playbackRate]);
 
   return (
     <>
-      <div className={classes.container}>
+      <div className={classes.container} ref={containerRef}>
         <div className={classes.card}>
           <FadeEnter iterations={Infinity}>
             <div className={classes.item} />
@@ -102,4 +105,12 @@ export const CreateAtom = () => {
       </div>
     </>
   );
+};
+
+CreateAtom.parameters = {
+  docs: {
+    description: {
+      story: description,
+    },
+  },
 };
