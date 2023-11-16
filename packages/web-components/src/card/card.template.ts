@@ -7,13 +7,7 @@ import type { Card } from './card.js';
  */
 export function cardTemplate<T extends Card>(): ElementViewTemplate<T> {
   return html<T>`
-    <template
-      size="${x => x.size}"
-      orientation="${x => x.orientation}"
-      appearance="${x => x.appearance}"
-      focus-mode="${x => x.focusMode}"
-      ?selectable="${x => x.selectable}"
-    >
+    <template size="${x => x.size}" orientation="${x => x.orientation}" appearance="${x => x.appearance}">
       <div
         role="${x => (x.selectable ? 'button' : 'group')}"
         class="card"
