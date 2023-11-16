@@ -28,6 +28,8 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   const { activeOption, getIndexOfId, getOptionsMatchingText, open, setActiveOption, setFocusVisible, setOpen } =
     baseState;
 
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
+
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'button',
@@ -97,6 +99,12 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     }
   };
 
+  const onTriggerPointerUp = (ev: React.PointerEvent<HTMLButtonElement>) => {
+    // Safari does not focus button elements when clicked, so we're calling .focus() manually
+    // This needs to be on pointer up, since blur is called after pointer down
+    triggerRef.current?.focus();
+  };
+
   // resolve button and listbox slot props
   let triggerSlot: Slot<'button'>;
   let listboxSlot: Slot<typeof Listbox> | undefined;
@@ -109,7 +117,9 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     },
     elementType: 'button',
   });
+  triggerSlot.ref = useMergedRefs(triggerSlot.ref, triggerRef);
   triggerSlot.onKeyDown = mergeCallbacks(onTriggerKeyDown, triggerSlot.onKeyDown);
+  triggerSlot.onPointerUp = mergeCallbacks(onTriggerPointerUp, triggerSlot.onPointerUp);
   listboxSlot =
     baseState.open || baseState.hasFocus
       ? slot.optional(props.listbox, {
