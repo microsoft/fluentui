@@ -1,4 +1,5 @@
 import { DATA_OVERFLOWING, DATA_OVERFLOW_GROUP } from './consts';
+import { observeResize } from './createResizeObserver';
 import { debounce } from './debounce';
 import { createPriorityQueue, PriorityQueue } from './priorityQueue';
 import type {
@@ -35,70 +36,12 @@ export function createOverflowManager(): OverflowManager {
 
   const overflowItems: Record<string, OverflowItemEntry> = {};
   const overflowDividers: Record<string, OverflowDividerEntry> = {};
-  const resizeObserver = new ResizeObserver(entries => {
-    if (!entries[0] || !container) {
-      return;
-    }
-
-    update();
-  });
+  let disposeResizeObserver: () => void = () => null;
 
   const getNextItem = (queueToDequeue: PriorityQueue<string>, queueToEnqueue: PriorityQueue<string>) => {
     const nextItem = queueToDequeue.dequeue();
     queueToEnqueue.enqueue(nextItem);
     return overflowItems[nextItem];
-  };
-
-  const createGroupManager = () => {
-    const groupVisibility: Record<string, OverflowGroupState> = {};
-    const groups: Record<string, { visibleItemIds: Set<string>; invisibleItemIds: Set<string> }> = {};
-    function updateGroupVisibility(groupId: string) {
-      const group = groups[groupId];
-      if (group.invisibleItemIds.size && group.visibleItemIds.size) {
-        groupVisibility[groupId] = 'overflow';
-      } else if (group.visibleItemIds.size === 0) {
-        groupVisibility[groupId] = 'hidden';
-      } else {
-        groupVisibility[groupId] = 'visible';
-      }
-    }
-    function isGroupVisible(groupId: string) {
-      return groupVisibility[groupId] === 'visible' || groupVisibility[groupId] === 'overflow';
-    }
-    return {
-      groupVisibility: () => groupVisibility,
-      isSingleItemVisible(itemId: string, groupId: string) {
-        return (
-          isGroupVisible(groupId) &&
-          groups[groupId].visibleItemIds.has(itemId) &&
-          groups[groupId].visibleItemIds.size === 1
-        );
-      },
-      addItem(itemId: string, groupId: string) {
-        groups[groupId] ??= {
-          visibleItemIds: new Set<string>(),
-          invisibleItemIds: new Set<string>(),
-        };
-
-        groups[groupId].visibleItemIds.add(itemId);
-        updateGroupVisibility(groupId);
-      },
-      removeItem(itemId: string, groupId: string) {
-        groups[groupId].invisibleItemIds.delete(itemId);
-        groups[groupId].visibleItemIds.delete(itemId);
-        updateGroupVisibility(groupId);
-      },
-      showItem(itemId: string, groupId: string) {
-        groups[groupId].invisibleItemIds.delete(itemId);
-        groups[groupId].visibleItemIds.add(itemId);
-        updateGroupVisibility(groupId);
-      },
-      hideItem(itemId: string, groupId: string) {
-        groups[groupId].invisibleItemIds.add(itemId);
-        groups[groupId].visibleItemIds.delete(itemId);
-        updateGroupVisibility(groupId);
-      },
-    };
   };
 
   const groupManager = createGroupManager();
@@ -247,13 +190,13 @@ export function createOverflowManager(): OverflowManager {
     Object.values(overflowItems).forEach(item => visibleItemQueue.enqueue(item.id));
 
     container = observedContainer;
-    resizeObserver.observe(container);
-  };
+    disposeResizeObserver = observeResize(container, entries => {
+      if (!entries[0] || !container) {
+        return;
+      }
 
-  const disconnect: OverflowManager['disconnect'] = () => {
-    observing = false;
-    sizeCache.clear();
-    resizeObserver.disconnect();
+      update();
+    });
   };
 
   const addItem: OverflowManager['addItem'] = item => {
@@ -327,6 +270,21 @@ export function createOverflowManager(): OverflowManager {
     update();
   };
 
+  const disconnect: OverflowManager['disconnect'] = () => {
+    disposeResizeObserver();
+
+    // reset flags
+    container = undefined;
+    observing = false;
+    forceDispatch = true;
+
+    // clear all entries
+    Object.keys(overflowItems).forEach(itemId => removeItem(itemId));
+    Object.keys(overflowDividers).forEach(dividerId => removeDivider(dividerId));
+    removeOverflowMenu();
+    sizeCache.clear();
+  };
+
   return {
     addItem,
     disconnect,
@@ -340,3 +298,55 @@ export function createOverflowManager(): OverflowManager {
     removeDivider,
   };
 }
+
+const createGroupManager = () => {
+  const groupVisibility: Record<string, OverflowGroupState> = {};
+  const groups: Record<string, { visibleItemIds: Set<string>; invisibleItemIds: Set<string> }> = {};
+  function updateGroupVisibility(groupId: string) {
+    const group = groups[groupId];
+    if (group.invisibleItemIds.size && group.visibleItemIds.size) {
+      groupVisibility[groupId] = 'overflow';
+    } else if (group.visibleItemIds.size === 0) {
+      groupVisibility[groupId] = 'hidden';
+    } else {
+      groupVisibility[groupId] = 'visible';
+    }
+  }
+  function isGroupVisible(groupId: string) {
+    return groupVisibility[groupId] === 'visible' || groupVisibility[groupId] === 'overflow';
+  }
+  return {
+    groupVisibility: () => groupVisibility,
+    isSingleItemVisible(itemId: string, groupId: string) {
+      return (
+        isGroupVisible(groupId) &&
+        groups[groupId].visibleItemIds.has(itemId) &&
+        groups[groupId].visibleItemIds.size === 1
+      );
+    },
+    addItem(itemId: string, groupId: string) {
+      groups[groupId] ??= {
+        visibleItemIds: new Set<string>(),
+        invisibleItemIds: new Set<string>(),
+      };
+
+      groups[groupId].visibleItemIds.add(itemId);
+      updateGroupVisibility(groupId);
+    },
+    removeItem(itemId: string, groupId: string) {
+      groups[groupId].invisibleItemIds.delete(itemId);
+      groups[groupId].visibleItemIds.delete(itemId);
+      updateGroupVisibility(groupId);
+    },
+    showItem(itemId: string, groupId: string) {
+      groups[groupId].invisibleItemIds.delete(itemId);
+      groups[groupId].visibleItemIds.add(itemId);
+      updateGroupVisibility(groupId);
+    },
+    hideItem(itemId: string, groupId: string) {
+      groups[groupId].invisibleItemIds.add(itemId);
+      groups[groupId].visibleItemIds.delete(itemId);
+      updateGroupVisibility(groupId);
+    },
+  };
+};

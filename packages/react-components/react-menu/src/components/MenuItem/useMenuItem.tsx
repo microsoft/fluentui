@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEventCallback, useMergedRefs, getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { useEventCallback, useMergedRefs, getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuTriggerContext_unstable } from '../../contexts/menuTriggerContext';
@@ -13,7 +13,12 @@ import {
 import { useMenuListContext_unstable } from '../../contexts/menuListContext';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import type { MenuItemProps, MenuItemState } from './MenuItem.types';
-import { ARIAButtonElement, ARIAButtonElementIntersection, useARIAButtonProps } from '@fluentui/react-aria';
+import {
+  ARIAButtonElement,
+  ARIAButtonElementIntersection,
+  ARIAButtonProps,
+  useARIAButtonProps,
+} from '@fluentui/react-aria';
 import { Enter, Space } from '@fluentui/keyboard-keys';
 
 const ChevronRightIcon = bundleIcon(ChevronRightFilled, ChevronRightRegular);
@@ -47,9 +52,9 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
       secondaryContent: 'span',
     },
     root: slot.always(
-      getNativeElementProps(
+      getIntrinsicElementProps(
         as,
-        useARIAButtonProps(as, {
+        useARIAButtonProps<'div', ARIAButtonProps<'div'>>(as, {
           role: 'menuitem',
           ...props,
           disabled: false,

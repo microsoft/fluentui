@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-jsx-runtime",
-  "version": "9.0.0",
+  "version": "9.0.19",
   "description": "Custom JSX runtime for @fluentui/react-components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -20,7 +20,8 @@
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
     "generate-api": "just-scripts generate-api",
-    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
+    "bundle-size": "monosize measure"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -30,12 +31,13 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "^9.11.1",
-    "@swc/helpers": "^0.4.14"
+    "@fluentui/react-utilities": "^9.15.2",
+    "react-is": "^17.0.2",
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.14.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -63,5 +65,13 @@
       "require": "./lib-commonjs/jsx-runtime.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "jsx-dev-runtime",
+    "jsx-runtime",
+    "lib",
+    "lib-commonjs"
+  ]
 }

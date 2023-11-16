@@ -1,8 +1,399 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Mon, 21 Aug 2023 11:38:03 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Nov 2023 17:51:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.10.11)
+
+Tue, 14 Nov 2023 17:51:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.10.10..@fluentui/react-table_v9.10.11)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.5.46 ([PR #29835](https://github.com/microsoft/fluentui/pull/29835) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.56 ([PR #29835](https://github.com/microsoft/fluentui/pull/29835) by beachball)
+- Bump @fluentui/react-radio to v9.1.56 ([PR #29835](https://github.com/microsoft/fluentui/pull/29835) by beachball)
+- Bump @fluentui/react-tabster to v9.14.5 ([PR #29835](https://github.com/microsoft/fluentui/pull/29835) by beachball)
+
+## [9.10.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.10.10)
+
+Thu, 09 Nov 2023 17:29:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.10.9..@fluentui/react-table_v9.10.10)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.7 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-aria to v9.3.44 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-avatar to v9.5.45 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.55 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.42 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-radio to v9.1.55 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.12.0 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-tabster to v9.14.4 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-theme to v9.1.16 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-utilities to v9.15.2 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.19 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+
+## [9.10.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.10.9)
+
+Wed, 01 Nov 2023 12:55:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.10.8..@fluentui/react-table_v9.10.9)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.5.44 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.54 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-radio to v9.1.54 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.11.1 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-tabster to v9.14.3 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-theme to v9.1.15 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+
+## [9.10.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.10.8)
+
+Sat, 28 Oct 2023 23:35:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.10.7..@fluentui/react-table_v9.10.8)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.5.43 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.53 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+- Bump @fluentui/react-radio to v9.1.53 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+- Bump @fluentui/react-tabster to v9.14.2 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+
+## [9.10.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.10.7)
+
+Mon, 23 Oct 2023 09:51:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.10.6..@fluentui/react-table_v9.10.7)
+
+### Patches
+
+- fix: use targetDocument resize observer ([PR #29551](https://github.com/microsoft/fluentui/pull/29551) by lingfangao@hotmail.com)
+- Bump @fluentui/react-avatar to v9.5.42 ([commit](https://github.com/microsoft/fluentui/commit/e4ef1febe8a185dddc10f8936944d177d50bc396) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.52 ([commit](https://github.com/microsoft/fluentui/commit/e4ef1febe8a185dddc10f8936944d177d50bc396) by beachball)
+- Bump @fluentui/react-radio to v9.1.52 ([commit](https://github.com/microsoft/fluentui/commit/e4ef1febe8a185dddc10f8936944d177d50bc396) by beachball)
+- Bump @fluentui/react-tabster to v9.14.1 ([commit](https://github.com/microsoft/fluentui/commit/e4ef1febe8a185dddc10f8936944d177d50bc396) by beachball)
+
+## [9.10.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.10.6)
+
+Wed, 18 Oct 2023 17:54:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.10.5..@fluentui/react-table_v9.10.6)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.3.43 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-avatar to v9.5.41 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.51 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.41 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-radio to v9.1.51 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-tabster to v9.14.0 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-utilities to v9.15.1 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.18 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+
+## [9.10.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.10.5)
+
+Thu, 12 Oct 2023 14:55:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.10.4..@fluentui/react-table_v9.10.5)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.5.40 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.50 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
+- Bump @fluentui/react-radio to v9.1.50 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.17 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
+
+## [9.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.10.4)
+
+Wed, 11 Oct 2023 13:54:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.10.3..@fluentui/react-table_v9.10.4)
+
+### Patches
+
+- refactor: consume virtual parent utilities from @fluentui/react-utilities ([PR #29286](https://github.com/microsoft/fluentui/pull/29286) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-aria to v9.3.42 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-avatar to v9.5.39 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.49 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.40 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-radio to v9.1.49 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-tabster to v9.13.6 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-utilities to v9.15.0 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.16 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+
+## [9.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.10.3)
+
+Mon, 09 Oct 2023 20:45:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.10.2..@fluentui/react-table_v9.10.3)
+
+### Patches
+
+- fix(useMeasureElement): Should not remove parent element ([PR #29451](https://github.com/microsoft/fluentui/pull/29451) by lingfangao@hotmail.com)
+- fix: remove row focus background color  ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.3.41 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-avatar to v9.5.38 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.48 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.39 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-radio to v9.1.48 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.10.0 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-tabster to v9.13.5 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-utilities to v9.14.2 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.15 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+
+## [9.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.10.2)
+
+Thu, 05 Oct 2023 15:25:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.10.1..@fluentui/react-table_v9.10.2)
+
+### Patches
+
+- chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29387](https://github.com/microsoft/fluentui/pull/29387) by bernardo.sunderhus@gmail.com)
+- fix(useTableColumnSizing): Removes the measuring div and measures parent ([PR #29363](https://github.com/microsoft/fluentui/pull/29363) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.3.40 ([PR #29412](https://github.com/microsoft/fluentui/pull/29412) by beachball)
+- Bump @fluentui/react-avatar to v9.5.37 ([PR #29412](https://github.com/microsoft/fluentui/pull/29412) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.47 ([PR #29412](https://github.com/microsoft/fluentui/pull/29412) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.38 ([PR #29412](https://github.com/microsoft/fluentui/pull/29412) by beachball)
+- Bump @fluentui/react-radio to v9.1.47 ([PR #29412](https://github.com/microsoft/fluentui/pull/29412) by beachball)
+- Bump @fluentui/react-tabster to v9.13.4 ([PR #29412](https://github.com/microsoft/fluentui/pull/29412) by beachball)
+- Bump @fluentui/react-utilities to v9.14.1 ([PR #29412](https://github.com/microsoft/fluentui/pull/29412) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.14 ([PR #29412](https://github.com/microsoft/fluentui/pull/29412) by beachball)
+
+## [9.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.10.1)
+
+Wed, 04 Oct 2023 08:45:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.10.0..@fluentui/react-table_v9.10.1)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.3.39 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+- Bump @fluentui/react-avatar to v9.5.36 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.46 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.37 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+- Bump @fluentui/react-radio to v9.1.46 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+- Bump @fluentui/react-tabster to v9.13.3 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+- Bump @fluentui/react-utilities to v9.14.0 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.13 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+
+## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.10.0)
+
+Mon, 02 Oct 2023 08:56:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.9.1..@fluentui/react-table_v9.10.0)
+
+### Minor changes
+
+- feat; Add optional parameter to Table column renderHeaderCell callback ([PR #29285](https://github.com/microsoft/fluentui/pull/29285) by msnyder@microsoft.com)
+- Bump @fluentui/react-avatar to v9.5.35 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.45 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+- Bump @fluentui/react-radio to v9.1.45 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.9.2 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+- Bump @fluentui/react-tabster to v9.13.2 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+
+## [9.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.9.1)
+
+Tue, 26 Sep 2023 17:49:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.9.0..@fluentui/react-table_v9.9.1)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.6 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-aria to v9.3.38 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-avatar to v9.5.34 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.44 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.36 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-radio to v9.1.44 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.9.1 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-tabster to v9.13.1 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-theme to v9.1.14 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-utilities to v9.13.5 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.12 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+
+## [9.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.9.0)
+
+Tue, 26 Sep 2023 15:31:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.8.8..@fluentui/react-table_v9.9.0)
+
+### Minor changes
+
+- feat: add sorting on individual columns ([PR #29196](https://github.com/microsoft/fluentui/pull/29196) by kakrookaran@gmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.5 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-aria to v9.3.37 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-avatar to v9.5.33 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.43 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.35 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-radio to v9.1.43 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.9.0 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-tabster to v9.13.0 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-theme to v9.1.13 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-utilities to v9.13.4 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.11 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+
+## [9.8.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.8.8)
+
+Wed, 20 Sep 2023 17:47:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.8.7..@fluentui/react-table_v9.8.8)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by martinhochel@microsoft.com)
+- Bump @fluentui/react-avatar to v9.5.32 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.42 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-radio to v9.1.42 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.8.1 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-tabster to v9.12.11 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.10 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+
+## [9.8.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.8.7)
+
+Wed, 20 Sep 2023 14:59:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.8.6..@fluentui/react-table_v9.8.7)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.5.31 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.41 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-radio to v9.1.41 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.8.0 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-tabster to v9.12.10 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.9 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+
+## [9.8.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.8.6)
+
+Thu, 14 Sep 2023 16:44:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.8.5..@fluentui/react-table_v9.8.6)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.5.30 ([PR #29145](https://github.com/microsoft/fluentui/pull/29145) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.40 ([PR #29145](https://github.com/microsoft/fluentui/pull/29145) by beachball)
+- Bump @fluentui/react-radio to v9.1.40 ([PR #29145](https://github.com/microsoft/fluentui/pull/29145) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.8 ([PR #29145](https://github.com/microsoft/fluentui/pull/29145) by beachball)
+
+## [9.8.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.8.5)
+
+Tue, 12 Sep 2023 08:51:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.8.4..@fluentui/react-table_v9.8.5)
+
+### Patches
+
+- fix: DataGrid Headers look weird on Safari ([PR #28588](https://github.com/microsoft/fluentui/pull/28588) by mehars.6925@gmail.com)
+- Bump @fluentui/react-avatar to v9.5.29 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.39 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
+- Bump @fluentui/react-radio to v9.1.39 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
+- Bump @fluentui/react-tabster to v9.12.9 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.7 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
+
+## [9.8.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.8.4)
+
+Wed, 06 Sep 2023 13:31:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.8.3..@fluentui/react-table_v9.8.4)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.3.36 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+- Bump @fluentui/react-avatar to v9.5.28 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.38 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.34 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+- Bump @fluentui/react-radio to v9.1.38 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+- Bump @fluentui/react-tabster to v9.12.8 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+- Bump @fluentui/react-utilities to v9.13.3 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.6 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+
+## [9.8.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.8.3)
+
+Tue, 05 Sep 2023 15:39:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.8.2..@fluentui/react-table_v9.8.3)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.3.35 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-avatar to v9.5.27 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.37 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.33 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-radio to v9.1.37 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-tabster to v9.12.7 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-utilities to v9.13.2 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.5 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+
+## [9.8.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.8.2)
+
+Tue, 05 Sep 2023 13:29:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.8.1..@fluentui/react-table_v9.8.2)
+
+### Patches
+
+- chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.4 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-aria to v9.3.34 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-avatar to v9.5.26 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.36 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.32 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-radio to v9.1.36 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.7.3 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-tabster to v9.12.6 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-theme to v9.1.12 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-utilities to v9.13.1 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.4 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+
+## [9.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.8.1)
+
+Tue, 29 Aug 2023 12:57:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.8.0..@fluentui/react-table_v9.8.1)
+
+### Patches
+
+- fix: Improve visuals when Table/DataGrid overflows it's parent ([PR #28940](https://github.com/microsoft/fluentui/pull/28940) by jirivyhnalek@microsoft.com)
+- Bump @fluentui/react-aria to v9.3.33 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-avatar to v9.5.25 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.35 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.31 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-radio to v9.1.35 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-tabster to v9.12.5 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-utilities to v9.13.0 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.3 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.8.0)
+
+Thu, 24 Aug 2023 10:26:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.7.9..@fluentui/react-table_v9.8.0)
+
+### Minor changes
+
+- feat: Export DataGridContextProvider. ([PR #28955](https://github.com/microsoft/fluentui/pull/28955) by esteban.230@hotmail.com)
+- Bump @fluentui/react-aria to v9.3.32 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-avatar to v9.5.24 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.34 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.30 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-radio to v9.1.34 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-tabster to v9.12.4 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-utilities to v9.12.0 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.2 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+
+### Patches
+
+- expose useDataGridContext_unstable etc. contexts ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by email not defined)
+
+## [9.7.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.7.9)
+
+Wed, 23 Aug 2023 12:01:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.7.8..@fluentui/react-table_v9.7.9)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.3.31 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-avatar to v9.5.23 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.33 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.29 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-radio to v9.1.33 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-tabster to v9.12.3 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-utilities to v9.11.2 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.1 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
 
 ## [9.7.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.7.8)
 

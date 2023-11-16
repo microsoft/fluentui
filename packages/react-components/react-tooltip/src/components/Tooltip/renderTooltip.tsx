@@ -1,12 +1,7 @@
-/** @jsxRuntime classic */
-/** @jsxFrag React.Fragment */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import * as React from 'react';
 import { Portal } from '@fluentui/react-portal';
-
-import { createElement } from '@fluentui/react-jsx-runtime';
-
 import { assertSlots } from '@fluentui/react-utilities';
 import type { TooltipSlots, TooltipState } from './Tooltip.types';
 

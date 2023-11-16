@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 
 export const DefaultOpen = () => (
   <Tree aria-label="Default Open" defaultOpenItems={['default-subtree-1', 'default-subtree-2', 'default-subtree-2-1']}>

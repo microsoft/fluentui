@@ -25,7 +25,6 @@ const useStyles = makeStyles({
     [cardHeaderCSSVars.cardHeaderGapVar]: '12px',
     display: 'grid',
     gridAutoColumns: 'min-content 1fr min-content',
-    gridAutoRows: '1fr min-content',
     alignItems: 'center',
   },
   image: {
@@ -37,10 +36,12 @@ const useStyles = makeStyles({
   header: {
     gridColumnStart: '2',
     gridRowStart: '1',
+    display: 'flex',
   },
   description: {
     gridColumnStart: '2',
     gridRowStart: '2',
+    display: 'flex',
   },
   action: {
     marginLeft: `var(${cardHeaderCSSVars.cardHeaderGapVar})`,

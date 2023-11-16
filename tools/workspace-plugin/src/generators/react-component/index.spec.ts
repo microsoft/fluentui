@@ -5,10 +5,11 @@ import generator from './index';
 
 describe('react-component generator', () => {
   let tree: Tree;
+  let metadata: ReturnType<typeof createLibrary>['metadata'];
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
-    createLibrary(tree, 'react-one');
+    metadata = createLibrary(tree, 'react-one').metadata;
   });
 
   describe(`assertions`, () => {
@@ -60,6 +61,7 @@ describe('react-component generator', () => {
     expect(tree.read(joinPathFragments(componentRootPath, 'MyOne.tsx'), 'utf-8')).toMatchInlineSnapshot(`
       "import * as React from 'react';
       import type { ForwardRefComponent } from '@fluentui/react-utilities';
+      import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
       import { useMyOne_unstable } from './useMyOne';
       import { renderMyOne_unstable } from './renderMyOne';
       import { useMyOneStyles_unstable } from './useMyOneStyles.styles';
@@ -73,6 +75,9 @@ describe('react-component generator', () => {
           const state = useMyOne_unstable(props, ref);
 
           useMyOneStyles_unstable(state);
+          // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
+          // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
+          useCustomStyleHook_unstable('useMyOneStyles_unstable')(state);
           return renderMyOne_unstable(state);
         }
       );
@@ -143,6 +148,15 @@ describe('react-component generator', () => {
     `);
   });
 
+  it(`should remove stores/.gitkeep`, async () => {
+    const gitkeepPath = joinPathFragments(metadata.paths.storiesRoot, '.gitkeep');
+    expect(tree.exists(gitkeepPath)).toBe(true);
+
+    await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
+
+    expect(tree.exists(gitkeepPath)).toBe(false);
+  });
+
   it('should create component story', async () => {
     await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
 
@@ -193,5 +207,9 @@ function createLibrary(tree: Tree, name: string, options: Partial<{ version: str
   tree.write(joinPathFragments(root, 'stories/.gitkeep'), '');
   tree.write(joinPathFragments(sourceRoot, 'index.ts'), 'export {}');
 
-  return tree;
+  const metadata = {
+    paths: { root, sourceRoot, storiesRoot: joinPathFragments(root, 'stories') },
+  };
+
+  return { tree, metadata };
 }

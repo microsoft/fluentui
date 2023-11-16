@@ -60,6 +60,7 @@ export const categories: { [name: string]: ICategory } = {
         LargeGrouped: { title: 'Large Grouped' },
         GroupedV2: { title: 'Grouped V2' },
         LargeGroupedV2: { title: 'Large Grouped V2' },
+        ScrollToIndexGroupedV2: { title: 'Scroll To Index Grouped V2' },
         CustomColumns: { title: 'Custom Item Columns', url: 'customitemcolumns' },
         CustomRows: { title: 'Custom Item Rows', url: 'customitemrows' },
         CustomFooter: { title: 'Custom Footer' },
@@ -105,6 +106,31 @@ export const categories: { [name: string]: ICategory } = {
     Panel: {},
     ScrollablePane: {},
     Tooltip: {},
+  },
+  Charts: {
+    Legends: {},
+    LineChart: {},
+    AreaChart: {},
+    DonutChart: {},
+    VerticalBarChart: {
+      subPages: {
+        Grouped: { title: 'Grouped' },
+        VerticalStackedBarChart: { title: 'Stacked' },
+      },
+    },
+    GaugeChart: {},
+    HeatMapChart: {},
+    HorizontalBarChart: {
+      subPages: {
+        StackedBarChart: { title: 'Stacked' },
+        MultiStackedBarChart: { title: 'Multi Stacked' },
+        WithAxis: { title: 'With Axis' },
+      },
+    },
+    PieChart: {},
+    SankeyChart: {},
+    SparklineChart: {},
+    TreeChart: {},
   },
   Utilities: {
     Announced: {

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-textarea",
-  "version": "9.3.29",
+  "version": "9.3.51",
   "description": "Fluent UI TextArea component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,19 +33,19 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-field": "^9.1.19",
-    "@fluentui/react-shared-contexts": "^9.7.2",
-    "@fluentui/react-theme": "^9.1.11",
-    "@fluentui/react-utilities": "^9.11.1",
-    "@fluentui/react-jsx-runtime": "^9.0.0",
+    "@fluentui/react-field": "^9.1.41",
+    "@fluentui/react-shared-contexts": "^9.12.0",
+    "@fluentui/react-theme": "^9.1.16",
+    "@fluentui/react-utilities": "^9.15.2",
+    "@fluentui/react-jsx-runtime": "^9.0.19",
     "@griffel/react": "^1.5.14",
-    "@swc/helpers": "^0.4.14"
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -61,5 +61,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

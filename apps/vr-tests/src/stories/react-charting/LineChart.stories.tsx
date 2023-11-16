@@ -2,9 +2,14 @@ import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../../utilities/index';
-import { ILineChartPoints, LineChart, IChartProps } from '@fluentui/react-charting';
+import {
+  ILineChartPoints,
+  LineChart,
+  IChartProps,
+  DataVizPalette,
+  ICustomizedCalloutData,
+} from '@fluentui/react-charting';
 import { mergeStyles, DefaultPalette } from '@fluentui/react';
-import { DataVizPalette, ICustomizedCalloutData } from '@fluentui/react-charting';
 
 storiesOf('react-charting/LineChart', module)
   .addDecorator(TestWrapperDecorator)

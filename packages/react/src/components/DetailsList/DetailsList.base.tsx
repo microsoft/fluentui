@@ -1301,7 +1301,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       const newColumn: IColumn = { ...column, ...this._columnOverrides[column.key] };
 
       // Delay computation until viewport width is available.
-      if (!skipViewportMeasures && newColumn.flexGrow && remainingWidth <= 0) {
+      if (!skipViewportMeasures && newColumn.flexGrow && remainingWidth <= 0 && viewportWidth === 0) {
         return newColumn;
       }
 

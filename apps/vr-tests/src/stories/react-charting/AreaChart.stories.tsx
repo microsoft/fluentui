@@ -283,7 +283,6 @@ storiesOf('react-charting/AreaChart', module)
             width={700}
             data={chartData}
             legendsOverflowText={'Overflow Items'}
-            // yAxisTickFormat={d3.format('$,')}
             enablePerfOptimization={true}
             legendProps={{
               allowFocusOnLegends: true,

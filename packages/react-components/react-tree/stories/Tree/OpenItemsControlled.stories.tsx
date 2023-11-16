@@ -6,7 +6,7 @@ import {
   TreeItemLayout,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
-} from '@fluentui/react-tree';
+} from '@fluentui/react-components';
 
 export const OpenItemsControlled = () => {
   const [openItems, setOpenItems] = React.useState<Iterable<TreeItemValue>>([]);

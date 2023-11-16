@@ -1,8 +1,9 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
-import type { DrawerHeaderTitleSlots, DrawerHeaderTitleState } from './DrawerHeaderTitle.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
 import { tokens } from '@fluentui/react-theme';
+
+import type { DrawerHeaderTitleSlots, DrawerHeaderTitleState } from './DrawerHeaderTitle.types';
 
 export const drawerHeaderTitleClassNames: SlotClassNames<DrawerHeaderTitleSlots> = {
   root: 'fui-DrawerHeaderTitle',

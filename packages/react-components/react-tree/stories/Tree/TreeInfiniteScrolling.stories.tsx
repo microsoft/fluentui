@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
-  FlatTree as Tree,
-  TreeItem,
+  FlatTree,
+  FlatTreeItem,
   TreeItemLayout,
   HeadlessFlatTreeItemProps,
   useHeadlessFlatTree_unstable,
   TreeItemValue,
-} from '@fluentui/react-tree';
+} from '@fluentui/react-components';
 import { makeStyles, shorthands, Spinner } from '@fluentui/react-components';
 
 const ITEMS_PER_PAGE = 10;
@@ -118,7 +118,7 @@ export const InfiniteScrolling = () => {
 
   return (
     <>
-      <Tree
+      <FlatTree
         {...flatTree.getTreeProps()}
         aria-label="Infinite Scrolling"
         onScroll={handleScroll}
@@ -127,17 +127,17 @@ export const InfiniteScrolling = () => {
         {Array.from(flatTree.items(), flatTreeItem => {
           const { name, value, ...treeItemProps } = flatTreeItem.getTreeItemProps();
           return (
-            <TreeItem
+            <FlatTreeItem
               {...treeItemProps}
               key={value}
               value={value}
               ref={value === itemToFocusValue ? itemToFocusRef : undefined}
             >
               <TreeItemLayout>{name}</TreeItemLayout>
-            </TreeItem>
+            </FlatTreeItem>
           );
         })}
-      </Tree>
+      </FlatTree>
 
       <AriaLive content={ariaMessage} />
     </>

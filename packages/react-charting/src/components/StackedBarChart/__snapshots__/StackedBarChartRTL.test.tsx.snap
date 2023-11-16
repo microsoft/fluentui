@@ -84,6 +84,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 display: block;
                 height: 12px;
                 margin-bottom: 10px;
+                overflow: visible;
                 width: 100%;
               }
           focusable="false"
@@ -96,8 +97,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -124,8 +123,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -152,8 +149,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -180,8 +175,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -700,6 +693,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 display: block;
                 height: 12px;
                 margin-bottom: 10px;
+                overflow: visible;
                 width: 100%;
               }
           focusable="false"
@@ -712,8 +706,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -740,8 +732,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -768,8 +758,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -796,8 +784,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -1329,6 +1315,7 @@ exports[`Should reflect theme change 1`] = `
                   display: block;
                   height: 12px;
                   margin-bottom: 10px;
+                  overflow: visible;
                   width: 100%;
                 }
             focusable="false"
@@ -1341,8 +1328,6 @@ exports[`Should reflect theme change 1`] = `
                     {
                       cursor: default;
                       opacity: ;
-                      stroke-width: 2px;
-                      stroke: #1b1a19;
                     }
                     &:focus {
                       stroke-width: 2px;
@@ -1369,8 +1354,6 @@ exports[`Should reflect theme change 1`] = `
                     {
                       cursor: default;
                       opacity: ;
-                      stroke-width: 2px;
-                      stroke: #1b1a19;
                     }
                     &:focus {
                       stroke-width: 2px;
@@ -1397,8 +1380,6 @@ exports[`Should reflect theme change 1`] = `
                     {
                       cursor: default;
                       opacity: ;
-                      stroke-width: 2px;
-                      stroke: #1b1a19;
                     }
                     &:focus {
                       stroke-width: 2px;
@@ -1425,8 +1406,6 @@ exports[`Should reflect theme change 1`] = `
                     {
                       cursor: default;
                       opacity: ;
-                      stroke-width: 2px;
-                      stroke: #1b1a19;
                     }
                     &:focus {
                       stroke-width: 2px;
@@ -1946,6 +1925,7 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with em
                 display: block;
                 height: 12px;
                 margin-bottom: 10px;
+                overflow: visible;
                 width: 100%;
               }
           focusable="false"
@@ -1957,8 +1937,6 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with em
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -2473,6 +2451,7 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
                 display: block;
                 height: 12px;
                 margin-bottom: 10px;
+                overflow: visible;
                 width: 100%;
               }
           focusable="false"
@@ -2485,8 +2464,6 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -2513,8 +2490,6 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -2541,8 +2516,6 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;
@@ -2569,8 +2542,6 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
                     stroke-width: 2px;

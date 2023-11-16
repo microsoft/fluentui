@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout, TreeItemPersonaLayout } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout, TreeItemPersonaLayout } from '@fluentui/react-components';
 import { Avatar } from '@fluentui/react-components';
 
 export const Layouts = () => {

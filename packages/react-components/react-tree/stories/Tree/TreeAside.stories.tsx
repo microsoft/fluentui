@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 import { CounterBadge } from '@fluentui/react-components';
 import { FluentIconsProps, Important16Regular } from '@fluentui/react-icons';
 

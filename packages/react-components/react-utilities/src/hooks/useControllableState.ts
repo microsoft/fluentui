@@ -94,16 +94,13 @@ const useIsControlled = <V>(controlledValue: V | undefined): controlledValue is 
         const undefinedWarning = isControlled ? 'defined to an undefined' : 'undefined to a defined';
 
         // eslint-disable-next-line no-console
-        console.error(
-          [
-            // Default react error
-            'A component is changing ' + controlWarning + '. This is likely caused by the value',
-            'changing from ' + undefinedWarning + ' value, which should not happen.',
-            'Decide between using a controlled or uncontrolled input element for the lifetime of the component.',
-            'More info: https://reactjs.org/link/controlled-components',
-            error.stack,
-          ].join(' '),
-        );
+        console.error(/** #__DE-INDENT__ */ `
+          @fluentui/react-utilities [${useControllableState.name}]:
+          A component is changing ${controlWarning}. This is likely caused by the value changing from ${undefinedWarning} value, which should not happen.
+          Decide between using a controlled or uncontrolled input element for the lifetime of the component.
+          More info: https://reactjs.org/link/controlled-components
+          ${error.stack}
+        `);
       }
     }, [isControlled, controlledValue]);
   }

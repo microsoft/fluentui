@@ -7,6 +7,7 @@ export { Default } from './DatePickerDefault.stories';
 export { TextInput } from './DatePickerTextInput.stories';
 export { FirstDayOfTheWeek } from './DatePickerFirstDayOfTheWeek.stories';
 export { WeekNumbers } from './DatePickerWeekNumbers.stories';
+export { DateRange } from './DatePickerDateRange.stories';
 export { DateBoundaries } from './DatePickerDateBoundaries.stories';
 export { CustomDateFormatting } from './DatePickerCustomDateFormatting.stories';
 export { ErrorHandling } from './DatePickerErrorHandling.stories';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Field, Input, LabelProps } from '@fluentui/react-components';
-import { InfoLabel } from '@fluentui/react-components/unstable';
+import { InfoLabel } from '@fluentui/react-components';
 
 export const Info = () => (
   <Field

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {
-  getNativeElementProps,
   useControllableState,
   useEventCallback,
   useMergedRefs,
   slot,
+  getIntrinsicElementProps,
 } from '@fluentui/react-utilities';
 import type { NavProps, NavState } from './Nav.types';
 // todo
@@ -71,8 +71,8 @@ export const useNav = (props: NavProps, ref: React.Ref<HTMLElement>): NavState =
       root: 'div',
     },
     root: slot.always(
-      getNativeElementProps('div', {
-        ref: useMergedRefs(ref, innerRef),
+      getIntrinsicElementProps('div', {
+        ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
         ...props,
       }),
       { elementType: 'div' },

@@ -42,6 +42,22 @@ interface ISVGTooltipTextProps {
   maxHeight?: number;
 
   /**
+   * Pass false to make prevent the tooptip from receiving focus through keyboard
+   * Eg: In Pie Chart, the focus should only land on the arcs and not on the text to
+   * avoid repitition of the same datapoint
+   * @defaultvalue true
+   */
+  shouldReceiveFocus?: boolean;
+
+  /**
+   * Pass true to show tooltip directly
+   * Eg: In Pie Chart, the tooltip is shown when the arc is focussed, so the prop is set to true,
+   * to directly show the tooltip from this component
+   * @defaultvalue false
+   */
+  isTooltipVisibleProp?: boolean;
+
+  /**
    * Function to wrap text within specified width and height
    * and return a boolean value indicating whether the text overflowed
    */
@@ -88,7 +104,7 @@ export class SVGTooltipText
   }
 
   public render(): React.ReactNode {
-    const { content, tooltipProps, textProps } = this.props;
+    const { content, tooltipProps, textProps, shouldReceiveFocus = true } = this.props;
     const { isTooltipVisible } = this.state;
     const tooltipRenderProps: ITooltipProps = {
       content,
@@ -103,7 +119,8 @@ export class SVGTooltipText
       ...tooltipProps,
     };
 
-    const showTooltip = isTooltipVisible && !!content;
+    const showTooltip =
+      (!!this.props.isTooltipVisibleProp && this.state.isOverflowing && !!content) || (isTooltipVisible && !!content);
 
     return (
       <>
@@ -116,7 +133,7 @@ export class SVGTooltipText
           onMouseEnter={this._onTooltipMouseEnter}
           onMouseLeave={this._onTooltipMouseLeave}
           onKeyDown={this._onTooltipKeyDown}
-          data-is-focusable={this.state.isOverflowing}
+          data-is-focusable={shouldReceiveFocus && this.state.isOverflowing}
         >
           {content}
         </text>

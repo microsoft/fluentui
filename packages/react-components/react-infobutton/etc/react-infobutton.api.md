@@ -16,64 +16,65 @@ import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-// @public
+// @public @deprecated
 export const InfoButton: ForwardRefComponent<InfoButtonProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const infoButtonClassNames: SlotClassNames<InfoButtonSlots>;
 
-// @public
+// @public @deprecated
 export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled'> & {
     size?: 'small' | 'medium' | 'large';
+    inline?: boolean;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type InfoButtonSlots = {
     root: NonNullable<Slot<'button'>>;
-    popover: NonNullable<Slot<Partial<PopoverProps>>>;
+    popover: NonNullable<Slot<Partial<Omit<PopoverProps, 'openOnHover'>>>>;
     info: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
-// @public
-export type InfoButtonState = ComponentState<InfoButtonSlots> & Required<Pick<InfoButtonProps, 'size'>>;
+// @public @deprecated
+export type InfoButtonState = ComponentState<InfoButtonSlots> & Required<Pick<InfoButtonProps, 'inline' | 'size'>>;
 
-// @public
+// @public @deprecated
 export const InfoLabel: ForwardRefComponent<InfoLabelProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const infoLabelClassNames: SlotClassNames<InfoLabelSlots>;
 
-// @public
+// @public @deprecated
 export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'> & {
     info?: InfoButtonProps['info'];
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type InfoLabelSlots = {
     root: NonNullable<Slot<'span'>>;
     label: NonNullable<Slot<typeof Label>>;
     infoButton: Slot<typeof InfoButton>;
 };
 
-// @public
+// @public @deprecated
 export type InfoLabelState = ComponentState<InfoLabelSlots> & Pick<InfoLabelProps, 'size'>;
 
-// @public
+// @public @deprecated
 export const renderInfoButton_unstable: (state: InfoButtonState) => JSX.Element;
 
-// @public
+// @public @deprecated
 export const renderInfoLabel_unstable: (state: InfoLabelState) => JSX.Element;
 
-// @public
+// @public @deprecated
 export const useInfoButton_unstable: (props: InfoButtonProps, ref: React_2.Ref<HTMLElement>) => InfoButtonState;
 
 // @public
 export const useInfoButtonStyles_unstable: (state: InfoButtonState) => InfoButtonState;
 
-// @public
+// @public @deprecated
 export const useInfoLabel_unstable: (props: InfoLabelProps, ref: React_2.Ref<HTMLLabelElement>) => InfoLabelState;
 
-// @public
+// @public @deprecated
 export const useInfoLabelStyles_unstable: (state: InfoLabelState) => InfoLabelState;
 
 // (No @packageDocumentation comment for this package)

@@ -1,9 +1,7 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { Portal } from '@fluentui/react-portal';
-
-import { createElement } from '@fluentui/react-jsx-runtime';
 
 import { assertSlots } from '@fluentui/react-utilities';
 import { ComboboxContext } from '../../contexts/ComboboxContext';

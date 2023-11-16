@@ -1,4 +1,5 @@
 export {
+  createCSSRuleFromTheme,
   fluentProviderClassNames,
   FluentProvider,
   renderFluentProvider_unstable,

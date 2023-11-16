@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 import { Image20Regular, LockClosed20Regular, Person20Regular, Warning20Regular } from '@fluentui/react-icons';
 
 export const IconBeforeAndAfter = () => {

@@ -53,7 +53,6 @@ export const Icon = () => {
       </ToggleButton>
       <Tooltip content="With calendar icon only" relationship="label">
         <ToggleButton
-          aria-label="Icon only"
           checked={checked3}
           icon={checked3 ? <CalendarMonth /> : <CalendarMonthRegular />}
           onClick={() => toggleChecked(3)}

@@ -5,5 +5,5 @@
     "types": ["node", "cypress", "cypress-storybook/cypress", "cypress-real-events"],
     "lib": ["ES2019", "dom"]
   },
-  "include": ["**/*.cy.ts", "**/*.cy.tsx"]
+  "include": ["**/*.cy.ts", "**/*.cy.tsx", "./src/e2e/*.tsx"]
 }

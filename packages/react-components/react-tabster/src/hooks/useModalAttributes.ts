@@ -52,12 +52,14 @@ export const useModalAttributes = (
   const id = useId('modal-', options.id);
   const modalAttributes = useTabsterAttributes({
     restorer: { type: TabsterTypes.RestorerTypes.Source },
-    modalizer: {
-      id,
-      isOthersAccessible: !trapFocus,
-      isAlwaysAccessible: alwaysFocusable,
-      isTrapped: legacyTrapFocus && trapFocus,
-    },
+    ...(trapFocus && {
+      modalizer: {
+        id,
+        isOthersAccessible: !trapFocus,
+        isAlwaysAccessible: alwaysFocusable,
+        isTrapped: legacyTrapFocus && trapFocus,
+      },
+    }),
   });
 
   const triggerAttributes = useTabsterAttributes({

@@ -1,10 +1,12 @@
 import * as React from 'react';
 import {
-  ExtractSlotProps,
-  getNativeElementProps,
+  getIntrinsicElementProps,
   isResolvedShorthand,
   useMergedRefs,
   slot,
+  useEventCallback,
+  elementContains,
+  useControllableState,
 } from '@fluentui/react-utilities';
 import { useTreeItemContext_unstable, useTreeContext_unstable } from '../../contexts';
 import type { TreeItemLayoutProps, TreeItemLayoutSlots, TreeItemLayoutState } from './TreeItemLayout.types';
@@ -26,24 +28,67 @@ export const useTreeItemLayout_unstable = (
   props: TreeItemLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutState => {
-  const { main, iconAfter, iconBefore, as = 'span' } = props;
+  const { main, iconAfter, iconBefore } = props;
 
   const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
 
-  const [isActionsVisibleExternal, actionsShorthand]: [boolean | undefined, TreeItemLayoutSlots['actions']] =
+  const [isActionsVisibleFromProps, actionsShorthand]: [boolean | undefined, TreeItemLayoutSlots['actions']] =
     isResolvedShorthand(props.actions)
       ? // .visible prop should not be propagated to the DOM
         [props.actions.visible, { ...props.actions, visible: undefined }]
       : [undefined, props.actions];
 
-  const isActionsVisible = useTreeItemContext_unstable(ctx => ctx.isActionsVisible) || isActionsVisibleExternal;
-  const isAsideVisible = useTreeItemContext_unstable(ctx => ctx.isAsideVisible);
+  const [isActionsVisible, setIsActionsVisible] = useControllableState({
+    state: isActionsVisibleFromProps,
+    initialState: false,
+  });
+
   const selectionRef = useTreeItemContext_unstable(ctx => ctx.selectionRef);
   const expandIconRef = useTreeItemContext_unstable(ctx => ctx.expandIconRef);
   const actionsRef = useTreeItemContext_unstable(ctx => ctx.actionsRef);
+  const actionsRefInternal = React.useRef<HTMLDivElement>(null);
+  const treeItemRef = useTreeItemContext_unstable(ctx => ctx.treeItemRef);
+  const subtreeRef = useTreeItemContext_unstable(ctx => ctx.subtreeRef);
   const checked = useTreeItemContext_unstable(ctx => ctx.checked);
   const isBranch = useTreeItemContext_unstable(ctx => ctx.itemType === 'branch');
+
+  // FIXME: Asserting is required here, as converting this to RefObject on context type would be a breaking change
+  assertIsRefObject(treeItemRef);
+  // FIXME: Asserting is required here, as converting this to RefObject on context type would be a breaking change
+  assertIsRefObject(subtreeRef);
+
+  const setActionsVisibleIfNotFromSubtree = React.useCallback(
+    (event: MouseEvent | FocusEvent) => {
+      const isTargetFromSubtree = Boolean(
+        subtreeRef.current && elementContains(subtreeRef.current, event.target as Node),
+      );
+      if (!isTargetFromSubtree) {
+        setIsActionsVisible(true);
+      }
+    },
+    [subtreeRef, setIsActionsVisible],
+  );
+
+  const setActionsInvisibleIfNotFromSubtree = React.useCallback(
+    (event: FocusEvent | MouseEvent) => {
+      const isRelatedTargetFromActions = Boolean(
+        actionsRefInternal.current && elementContains(actionsRefInternal.current, event.relatedTarget as Node),
+      );
+      if (isRelatedTargetFromActions) {
+        setIsActionsVisible(true);
+        return;
+      }
+      const isTargetFromSubtree = Boolean(
+        subtreeRef.current && elementContains(subtreeRef.current, event.target as Node),
+      );
+      if (!isTargetFromSubtree) {
+        setIsActionsVisible(false);
+        return;
+      }
+    },
+    [subtreeRef, setIsActionsVisible],
+  );
 
   const expandIcon = slot.optional(props.expandIcon, {
     renderByDefault: isBranch,
@@ -60,14 +105,54 @@ export const useTreeItemLayout_unstable = (
   const arrowNavigationProps = useArrowNavigationGroup({ circular: true, axis: 'horizontal' });
   const actions = isActionsVisible
     ? slot.optional(actionsShorthand, {
-        defaultProps: { ...arrowNavigationProps, role: 'toolbar' } as ExtractSlotProps<TreeItemLayoutSlots['actions']>,
+        defaultProps: { ...arrowNavigationProps, role: 'toolbar' },
         elementType: 'div',
       })
     : undefined;
-  const actionsRefs = useMergedRefs(actions?.ref, actionsRef);
+  const actionsRefs = useMergedRefs(actions?.ref, actionsRef, actionsRefInternal);
+  const handleActionsBlur = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
+    if (isResolvedShorthand(actionsShorthand)) {
+      actionsShorthand.onBlur?.(event);
+    }
+    const isRelatedTargetFromActions = Boolean(elementContains(event.currentTarget, event.relatedTarget as Node));
+    setIsActionsVisible(isRelatedTargetFromActions);
+  });
   if (actions) {
     actions.ref = actionsRefs;
+    actions.onBlur = handleActionsBlur;
   }
+
+  const hasActions = Boolean(actionsShorthand);
+
+  React.useEffect(() => {
+    if (treeItemRef.current && hasActions && isActionsVisibleFromProps === undefined) {
+      const treeItemElement = treeItemRef.current;
+
+      const handleMouseOver = setActionsVisibleIfNotFromSubtree;
+      const handleMouseOut = setActionsInvisibleIfNotFromSubtree;
+      const handleFocus = setActionsVisibleIfNotFromSubtree;
+      const handleBlur = setActionsInvisibleIfNotFromSubtree;
+
+      treeItemElement.addEventListener('mouseover', handleMouseOver);
+      treeItemElement.addEventListener('mouseout', handleMouseOut);
+      treeItemElement.addEventListener('focus', handleFocus);
+      treeItemElement.addEventListener('blur', handleBlur);
+
+      return () => {
+        treeItemElement.removeEventListener('mouseover', handleMouseOver);
+        treeItemElement.removeEventListener('mouseout', handleMouseOut);
+        treeItemElement.removeEventListener('focus', handleFocus);
+        treeItemElement.removeEventListener('blur', handleBlur);
+      };
+    }
+  }, [
+    hasActions,
+    treeItemRef,
+    isActionsVisibleFromProps,
+    setActionsVisibleIfNotFromSubtree,
+    setActionsInvisibleIfNotFromSubtree,
+  ]);
+
   return {
     components: {
       root: 'div',
@@ -81,13 +166,22 @@ export const useTreeItemLayout_unstable = (
       selector: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
     },
     buttonContextValue: { size: 'small' },
-    root: slot.always(getNativeElementProps(as, { ...props, ref: useMergedRefs(ref, layoutRef) }), {
-      elementType: 'div',
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        ...props,
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: useMergedRefs(ref, layoutRef) as React.Ref<HTMLDivElement>,
+      }),
+      {
+        elementType: 'div',
+      },
+    ),
     iconBefore: slot.optional(iconBefore, { defaultProps: { 'aria-hidden': true }, elementType: 'div' }),
     main: slot.always(main, { elementType: 'div' }),
     iconAfter: slot.optional(iconAfter, { defaultProps: { 'aria-hidden': true }, elementType: 'div' }),
-    aside: isAsideVisible
+    aside: !isActionsVisible
       ? slot.optional(props.aside, { defaultProps: { 'aria-hidden': true }, elementType: 'div' })
       : undefined,
     actions,
@@ -109,3 +203,14 @@ export const useTreeItemLayout_unstable = (
     }),
   };
 };
+
+function assertIsRefObject<Value>(ref?: React.Ref<Value>): asserts ref is React.RefObject<Value> {
+  if (process.env.NODE_ENV !== 'production') {
+    if (typeof ref !== 'object' || ref === null || !('current' in ref)) {
+      throw new Error(`
+        @fluentui/react-tree [${useTreeItemLayout_unstable.name}]:
+        Internal Error: contextual ref is not a RefObject! Please report this bug immediately, as contextual refs should be RefObjects.
+      `);
+    }
+  }
+}

@@ -23,12 +23,43 @@ import {
   TableCellActions,
   TableProps,
   TableRowProps,
+  useTableColumnSizing_unstable,
+  useTableFeatures,
+  TableColumnDefinition,
+  createTableColumn,
 } from '@fluentui/react-table';
 import { Button } from '@fluentui/react-button';
 import { storiesOf } from '@storybook/react';
 import { Steps, StoryWright } from 'storywright';
 
-const items = [
+type FileCell = {
+  label: string;
+  icon: JSX.Element;
+};
+
+type LastUpdatedCell = {
+  label: string;
+  timestamp: number;
+};
+
+type LastUpdateCell = {
+  label: string;
+  icon: JSX.Element;
+};
+
+type AuthorCell = {
+  label: string;
+  status: PresenceBadgeStatus;
+};
+
+type Item = {
+  file: FileCell;
+  author: AuthorCell;
+  lastUpdated: LastUpdatedCell;
+  lastUpdate: LastUpdateCell;
+};
+
+const items: Item[] = [
   {
     file: { label: 'Meeting notes', icon: <DocumentRegular /> },
     author: { label: 'Max Mustermann', status: 'available' },
@@ -72,6 +103,25 @@ const columns = [
   { columnKey: 'author', label: 'Author' },
   { columnKey: 'lastUpdated', label: 'Last updated' },
   { columnKey: 'lastUpdate', label: 'Last update' },
+];
+
+const columnsDef: TableColumnDefinition<Item>[] = [
+  createTableColumn<Item>({
+    columnId: 'file',
+    renderHeaderCell: () => <>File</>,
+  }),
+  createTableColumn<Item>({
+    columnId: 'author',
+    renderHeaderCell: () => <>Author</>,
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdated',
+    renderHeaderCell: () => <>Last updated</>,
+  }),
+  createTableColumn<Item>({
+    columnId: 'lastUpdate',
+    renderHeaderCell: () => <>Last update</>,
+  }),
 ];
 
 interface SharedVrTestArgs {
@@ -634,6 +684,85 @@ const Truncate: React.FC<SharedVrTestArgs & { truncate?: boolean }> = ({ noNativ
   </Table>
 );
 
+const ResizableColumns: React.FC<SharedVrTestArgs & { scrollToEnd?: boolean }> = ({
+  noNativeElements,
+  scrollToEnd,
+}) => {
+  const [columnSizingOptions] = React.useState({
+    file: {
+      idealWidth: 300,
+      minWidth: 300,
+    },
+  });
+
+  const { columnSizing_unstable: columnSizing, tableRef } = useTableFeatures(
+    {
+      columns: columnsDef,
+      items,
+    },
+    [
+      useTableColumnSizing_unstable({
+        columnSizingOptions,
+      }),
+    ],
+  );
+  return (
+    <div style={{ width: '500px', overflow: 'auto', border: '1px dashed black' }}>
+      <Table noNativeElements={noNativeElements} ref={tableRef} {...columnSizing.getTableProps()}>
+        <TableHeader>
+          <TableRow>
+            {columns.map(column => (
+              <TableHeaderCell key={column.columnKey} {...columnSizing.getTableHeaderCellProps(column.columnKey)}>
+                {column.label}
+              </TableHeaderCell>
+            ))}
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {items.map((item, i) => (
+            <TableRow key={item.file.label} className={`row-${i}`}>
+              <TableCell {...columnSizing.getTableCellProps('file')}>
+                <TableCellLayout truncate media={item.file.icon}>
+                  {item.file.label}
+                  <TableCellActions>
+                    <Button icon={<EditRegular />} appearance="subtle" />
+                    <Button icon={<MoreHorizontalRegular />} appearance="subtle" />
+                  </TableCellActions>
+                </TableCellLayout>
+              </TableCell>
+              <TableCell {...columnSizing.getTableCellProps('author')}>
+                <TableCellLayout
+                  truncate
+                  media={
+                    <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                  }
+                >
+                  {item.author.label}
+                </TableCellLayout>
+              </TableCell>
+              <TableCell {...columnSizing.getTableCellProps('lastUpdated')}>
+                <TableCellLayout truncate>{item.lastUpdated.label}</TableCellLayout>
+              </TableCell>
+              <TableCell {...columnSizing.getTableCellProps('lastUpdate')}>
+                <TableCellLayout truncate media={item.lastUpdate.icon}>
+                  {item.lastUpdate.label}
+                </TableCellLayout>
+              </TableCell>
+              <div
+                ref={el => {
+                  if (el && scrollToEnd) {
+                    el.scrollIntoView();
+                  }
+                }}
+              />
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
+  );
+};
+
 ([true, false] as const).forEach(noNativeElements => {
   const layoutName = noNativeElements ? 'flex' : 'table';
   storiesOf(`Table layout ${layoutName} - cell actions`, module)
@@ -760,4 +889,8 @@ const Truncate: React.FC<SharedVrTestArgs & { truncate?: boolean }> = ({ noNativ
     .addStory('default (disabled)', () => <Truncate noNativeElements={noNativeElements} />)
     .addStory('false', () => <Truncate noNativeElements={noNativeElements} truncate={false} />)
     .addStory('true', () => <Truncate noNativeElements={noNativeElements} truncate={true} />);
+
+  storiesOf(`Table layout ${layoutName} - resizable columns`, module)
+    .addStory('default', () => <ResizableColumns noNativeElements={noNativeElements} />)
+    .addStory('end', () => <ResizableColumns noNativeElements={noNativeElements} scrollToEnd />);
 });

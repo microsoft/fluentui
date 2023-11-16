@@ -2,6 +2,274 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 09 Nov 2023 17:29:48 GMT",
+      "tag": "@fluentui/react-utilities_v9.15.2",
+      "version": "9.15.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.7",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Oct 2023 17:54:07 GMT",
+      "tag": "@fluentui/react-utilities_v9.15.1",
+      "version": "9.15.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4dc9e5be60b6ce6f3f6c72c6da39bf19a504f524",
+            "comment": "chore: deprecate getNativeElementProps in favor of getIntrinsicElementProps"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Oct 2023 13:54:26 GMT",
+      "tag": "@fluentui/react-utilities_v9.15.0",
+      "version": "9.15.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "97c3bc01d08b40f2fd0291fa193d95a621c9bdb8",
+            "comment": "feat: Add virtual parent utilties"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Oct 2023 20:45:44 GMT",
+      "tag": "@fluentui/react-utilities_v9.14.2",
+      "version": "9.14.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "49f0630d6bdf94eadc671ac9fae4805e0a9df1ab",
+            "comment": "chore: add e2e test for useOnScrollOutside"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Oct 2023 15:25:34 GMT",
+      "tag": "@fluentui/react-utilities_v9.14.1",
+      "version": "9.14.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "690590449dc3d65cd40b2b06a990fd920180919d",
+            "comment": "Revert fix: useOnScrollOutside should invoke callback on dragging scrollbar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Oct 2023 08:45:47 GMT",
+      "tag": "@fluentui/react-utilities_v9.14.0",
+      "version": "9.14.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f61033d77d6852838c580bfa7379d026128c2dbb",
+            "comment": "feat: creates getIntrinsicElementProps to replace getNativeElementProps on slots creation"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 17:49:15 GMT",
+      "tag": "@fluentui/react-utilities_v9.13.5",
+      "version": "9.13.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d",
+            "comment": "chore: trigger manual version bump after broken release"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.6",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 15:31:40 GMT",
+      "tag": "@fluentui/react-utilities_v9.13.4",
+      "version": "9.13.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e61473fa10195f6ebf2308205c1e72e91b711831",
+            "comment": "fix: bump swc core to mitigate transpilation memory leaks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.5",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Sep 2023 13:31:31 GMT",
+      "tag": "@fluentui/react-utilities_v9.13.3",
+      "version": "9.13.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "42ed56cff2ef6c21fb2d5805d77c370dc3036ebe",
+            "comment": "Revert fix: `useOnClickOutside` should invoke callback on clicking scrollbar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Sep 2023 15:39:03 GMT",
+      "tag": "@fluentui/react-utilities_v9.13.2",
+      "version": "9.13.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e1a882487376a105505801ff30bbb9dc103c73f2",
+            "comment": "fix: `useOnScrollOutside` should invoke callback on dragging scrollbar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Sep 2023 13:29:11 GMT",
+      "tag": "@fluentui/react-utilities_v9.13.1",
+      "version": "9.13.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b93c2ac22355b6cb6f33dd509c6cd9c21f4fffc8",
+            "comment": "bumps @swc/helpers version to 0.5.1"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b1b7f96fc0f3e4082afda083bd96a3962baac360",
+            "comment": "chore: adds swc-plugin-de-indent-template-literal to remove indentation of consoles"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "68fe113d88c7e1610c6b4792df1180c5c407f9fc",
+            "comment": "fix: use timeout instead of requestAnimationFrame for ssr"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "eea6d93a62249ba4fba3347fb291c67ee1a3fb24",
+            "comment": "bumps react peer dependencies to v16.14.0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.4",
+            "commit": "da959e66f36b429e40ae61810d08dc71c16e154a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Aug 2023 12:57:36 GMT",
+      "tag": "@fluentui/react-utilities_v9.13.0",
+      "version": "9.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "2147e3d60a21ff7ded34b27a19f3d5313533e910",
+            "comment": "feat: add disabledFocusOnIframe for useOnClickOutside()"
+          }
+        ],
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "17f08ac2e61d5f569067e78832096a54c3966d0b",
+            "comment": "fix: `useOnClickOutside` should invoke callback on clicking scrollbar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Aug 2023 10:26:34 GMT",
+      "tag": "@fluentui/react-utilities_v9.12.0",
+      "version": "9.12.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "192b74335ed4d99dbcbeeab5aa2075409e911e1a",
+            "comment": "fix: `useOnClickOutside` should consider text selection starting inside and finishing outside as an inside click"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "148d5fa771ea9eb1f5a96f817782e76484070ec3",
+            "comment": "feat: create a new useAnimationFrame hook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Aug 2023 12:01:49 GMT",
+      "tag": "@fluentui/react-utilities_v9.11.2",
+      "version": "9.11.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc",
+            "comment": "bugfix: ensure interop between assertSlots and old API"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Aug 2023 12:14:25 GMT",
       "tag": "@fluentui/react-utilities_v9.11.1",
       "version": "9.11.1",

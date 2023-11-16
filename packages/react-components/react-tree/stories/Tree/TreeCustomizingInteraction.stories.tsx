@@ -6,7 +6,7 @@ import {
   TreeItemValue,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
-} from '@fluentui/react-tree';
+} from '@fluentui/react-components';
 
 export const CustomizingInteraction = () => {
   const [openItems, setOpenItems] = React.useState<Iterable<TreeItemValue>>([]);
