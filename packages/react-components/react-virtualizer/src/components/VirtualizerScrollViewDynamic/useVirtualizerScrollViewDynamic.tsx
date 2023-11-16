@@ -31,7 +31,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
        */
       return sizeTrackingArray.current[index];
     },
-    [sizeTrackingArray],
+    [sizeTrackingArray, props.itemSize],
   );
 
   const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useDynamicVirtualizerMeasure({
@@ -109,7 +109,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
     props.itemSize,
   );
 
-  if (axis == 'horizontal') {
+  if (axis === 'horizontal') {
     sizeTrackingArray = measureObject.widthArray;
   } else {
     sizeTrackingArray = measureObject.heightArray;
@@ -132,6 +132,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
 
               if (child.hasOwnProperty('ref')) {
                 // We must access this from the child directly, not props (forward ref).
+                // eslint-disable-next-line  @typescript-eslint/no-explicit-any
                 const localRef = (child as any)?.ref;
 
                 if (typeof localRef === 'function') {
