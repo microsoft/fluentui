@@ -134,17 +134,37 @@ export class Card extends FASTCard {
    *
    * @param checked - Optional boolean value to set the selection state.
    */
-  public toggleCardSelection(open?: boolean): void {
-    if (open) {
-      this.selected = true;
-    } else if (open === false) {
-      this.selected = false;
-    } else {
-      this.selected = !this.selected;
+  public toggleCardSelection(selected?: boolean): void {
+    if (this.selectable) {
+      if (selected) {
+        this.selected = true;
+      } else if (selected === false) {
+        this.selected = false;
+      } else {
+        this.selected = !this.selected;
+      }
+      const checkbox = this.floatingAction[0] as HTMLInputElement;
+      if (checkbox && checkbox.checked !== this.selected) {
+        checkbox.checked = this.selected;
+      }
     }
-    const checkbox = this.floatingAction[0] as HTMLInputElement;
-    if (checkbox && checkbox.checked !== this.selected) {
-      checkbox.checked = this.selected;
+  }
+
+  /**
+   * Selects the card if it is not already selected and is selectable.
+   */
+  public select() {
+    if (!this.selected && this.selectable) {
+      this.selected = true;
+    }
+  }
+
+  /**
+   * Unselects the card if it is not already unselected and selectable.
+   */
+  public unselect() {
+    if (!this.selected && this.selectable) {
+      this.selected = true;
     }
   }
 
@@ -214,24 +234,19 @@ export class Card extends FASTCard {
 
     const { key, target, currentTarget, shiftKey } = e;
     const isTargetCurrent = target === currentTarget;
-    const isFloatingAction = target === this.floatingAction[0];
     const isFocusModeOffOrTabOnly = this.focusMode === CardFocusMode.off || this.focusMode === CardFocusMode.tabOnly;
     const isFocusModeOff = this.focusMode === CardFocusMode.off;
     const isLastIndexFocused = this.isBoundsLastIndexFocused;
     const isZeroIndexFocused = this.isBoundsZeroIndexFocused;
-    const checkbox = this.floatingAction[0] as HTMLInputElement;
 
     switch (key) {
       case keyEnter:
       case keySpace:
-        if (!isTargetCurrent && !isFloatingAction) {
+        if (!isTargetCurrent) {
           return true;
         }
         if (this.selectable) {
           this.toggleCardSelection();
-          if (checkbox) {
-            checkbox.checked = this.selected;
-          }
         } else if (!isFocusModeOff) {
           Updates.enqueue(() => {
             this.root.inert = false;
