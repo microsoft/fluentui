@@ -38,6 +38,7 @@
     "@fluentui/react-portal": "^9.4.1",
     "@fluentui/react-positioning": "^9.10.0",
     "@fluentui/react-shared-contexts": "^9.12.0",
+    "@fluentui/react-tabster": "^9.14.5",
     "@fluentui/react-theme": "^9.1.16",
     "@fluentui/react-utilities": "^9.15.2",
     "@griffel/react": "^1.5.14",
