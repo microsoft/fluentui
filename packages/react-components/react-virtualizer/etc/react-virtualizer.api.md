@@ -171,7 +171,7 @@ export const virtualizerScrollViewDynamicClassNames: SlotClassNames<VirtualizerS
 // @public (undocumented)
 export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<VirtualizerScrollViewDynamicSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children' | 'flagIndex'>> & {
     itemSize: number;
-    getItemSize: (index: number) => number;
+    getItemSize?: (index: number) => number;
     numItems: number;
     children: VirtualizerChildRenderFunction;
     imperativeRef?: RefObject<ScrollToInterface>;
