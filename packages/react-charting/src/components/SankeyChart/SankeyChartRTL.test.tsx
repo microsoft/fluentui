@@ -3,7 +3,6 @@ import * as React from 'react';
 import { queryAllByAttribute, render, waitFor, screen, fireEvent } from '@testing-library/react';
 import { IChartProps, SankeyChart } from './index';
 import { resetIds } from '../../Utilities';
-// import { SankeyChartBase } from './SankeyChart.base';
 import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
