@@ -20,7 +20,7 @@ import type { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } 
 import type { Point, IRectangle } from '../../Utilities';
 import type { ICalloutPositionedInfo, IPositionProps, IPosition } from '../../Positioning';
 import type { Target } from '@fluentui/react-hooks';
-import { calculateGapSpace, getTargetRect } from '../../utilities/positioning/positioning';
+import { calculateGapSpace, getRectangleFromTarget } from '../../utilities/positioning/positioning';
 
 const COMPONENT_NAME = 'CalloutContentBase';
 
@@ -137,7 +137,7 @@ function useMaxHeight(
     const { top: topBounds } = getBounds() ?? {};
     let { bottom: bottomBounds } = getBounds() ?? {};
     let calculatedHeight: number | undefined;
-    const targetRect = targetRef?.current ? getTargetRect(getBounds(), targetRef.current) : undefined;
+    const targetRect = targetRef?.current ? getRectangleFromTarget(targetRef?.current) : undefined;
 
     // If aligned to top edge of target, update bottom bounds to the top of the target (accounting for gap space and beak)
     if (positions?.targetEdge === RectangleEdge.top && targetRect?.top) {
@@ -213,6 +213,7 @@ function usePositions(
 
           const previousPositions = previousTarget.current === target ? positions : undefined;
 
+          // only account for scroll resizing if styles allow callout to scroll
           const isOverflowYHidden = hideOverflow || style?.overflowY === 'hidden' || style?.overflowY === 'clip';
           const shouldScroll = !isOverflowYHidden;
 

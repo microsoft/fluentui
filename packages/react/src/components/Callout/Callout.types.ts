@@ -284,6 +284,14 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
    * focus will not be restored automatically, and you'll need to call `params.originalElement.focus()`.
    */
   onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
+
+  /**
+   * The minimum height, in pixels, that the callout will scroll-resize down to on top/bottom edges before repositioning to a new edge.
+   * Note: this prop has no effect if `directionalHintFixed=true`.
+   * Note: if callout styles do not allow y-direction overflow scrolling, the callout will not scroll-resize.
+   * @defaultvalue 200
+   */
+  minimumScrollResizeHeight?: number;
 }
 
 /**
