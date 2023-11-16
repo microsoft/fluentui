@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { queryAllByAttribute, render, waitFor, screen, fireEvent } from '@testing-library/react';
-import { data } from './SankeyChart.test';
 import { IChartProps, SankeyChart } from './index';
 import { resetIds } from '../../Utilities';
 // import { SankeyChartBase } from './SankeyChart.base';
