@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Add automeasuring on dynamic virtualizezr if needed",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
