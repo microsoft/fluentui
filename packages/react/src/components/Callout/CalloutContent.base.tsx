@@ -189,12 +189,22 @@ function usePositions(
   calloutElement: HTMLDivElement | null,
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   getBounds: () => IRectangle | undefined,
+  popupRef: React.RefObject<HTMLDivElement>,
 ) {
   const [positions, setPositions] = React.useState<ICalloutPositionedInfo>();
   const positionAttempts = React.useRef(0);
   const previousTarget = React.useRef<Target>();
   const async = useAsync();
-  const { hidden, target, finalHeight, calloutMaxHeight, onPositioned, directionalHint, style, hideOverflow } = props;
+  const {
+    hidden,
+    target,
+    finalHeight,
+    calloutMaxHeight,
+    onPositioned,
+    directionalHint,
+    hideOverflow,
+    preferScrollResizePositioning,
+  } = props;
 
   React.useEffect(() => {
     if (!hidden) {
@@ -214,9 +224,11 @@ function usePositions(
 
           const previousPositions = previousTarget.current === target ? positions : undefined;
 
-          // only account for scroll resizing if styles allow callout to scroll
-          const isOverflowYHidden = hideOverflow || style?.overflowY === 'hidden' || style?.overflowY === 'clip';
-          const shouldScroll = !isOverflowYHidden;
+          // only account for scroll resizing if styles allow callout to scroll (popup styles determine if callout will scroll)
+          const popupStyles = popupRef?.current ? window.getComputedStyle(popupRef.current) : undefined;
+          const isOverflowYHidden =
+            hideOverflow || popupStyles?.overflowY === 'clip' || popupStyles?.overflowY === 'hidden';
+          const shouldScroll = preferScrollResizePositioning && !isOverflowYHidden;
 
           // If there is a finalHeight given then we assume that the user knows and will handle
           // additional positioning adjustments so we should call positionCard
@@ -270,8 +282,9 @@ function usePositions(
     positions,
     props,
     target,
-    style?.overflowY,
     hideOverflow,
+    popupRef?.current,
+    preferScrollResizePositioning,
   ]);
 
   return positions;
@@ -470,6 +483,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
     } = props;
 
     const hostElement = React.useRef<HTMLDivElement>(null);
+    const popupRef = React.useRef<HTMLDivElement>(null);
     const [calloutElement, setCalloutElement] = React.useState<HTMLDivElement | null>(null);
     const calloutCallback = React.useCallback((calloutEl: any) => {
       setCalloutElement(calloutEl);
@@ -480,7 +494,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       current: calloutElement,
     });
     const getBounds = useBounds(props, targetRef, targetWindow);
-    const positions = usePositions(props, hostElement, calloutElement, targetRef, getBounds);
+    const positions = usePositions(props, hostElement, calloutElement, targetRef, getBounds, popupRef);
     const maxHeight = useMaxHeight(props, getBounds, targetRef, positions);
     const [mouseDownOnPopup, mouseUpOnPopup] = useDismissHandlers(
       props,
@@ -568,6 +582,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
             onScroll={onScroll}
             shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
+            ref={popupRef}
             {...popupProps}
           >
             {children}
