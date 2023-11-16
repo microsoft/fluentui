@@ -5,6 +5,8 @@
 ```ts
 
 import type { GriffelStyle } from '@griffel/react';
+import { KEYBORG_FOCUSIN } from 'keyborg';
+import { KeyborgFocusInEvent } from 'keyborg';
 import { makeResetStyles } from '@griffel/react';
 import * as React_2 from 'react';
 import type { RefObject } from 'react';
@@ -44,6 +46,10 @@ export type FocusOutlineStyleOptions = {
     outlineWidth: string;
     outlineOffset?: string | FocusOutlineOffset;
 };
+
+export { KEYBORG_FOCUSIN }
+
+export { KeyborgFocusInEvent }
 
 // @public (undocumented)
 export type TabsterDOMAttribute = Types.TabsterDOMAttribute;
