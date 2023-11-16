@@ -52,6 +52,7 @@ const config = {
         'eslint-plugin-jsx-a11y',
         'eslint-plugin-react',
         'eslint-plugin-react-hooks',
+        'eslint-plugin-jsdoc',
         'fs-extra',
         'glob',
         'jju',

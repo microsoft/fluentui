@@ -312,7 +312,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
        * data point such as x, y , value, rectText property of the rectangle
        */
       this._dataSet[yAxisDataPoint].forEach((dataPointObject: FlattenData, index2: number) => {
-        const id = `${index1}${index2}`;
+        const id = `x${index1}y${index2}`;
         const rectElement: JSX.Element = (
           <g
             key={id}

@@ -58,6 +58,16 @@ export class MultiStackedBarChartPage extends React.Component<IComponentDemoPage
             {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/MultiStackedBarChart/docs/MultiStackedBarChartBestPractices.md')}
           </Markdown>
         }
+        dos={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/MultiStackedBarChart/docs/MultiStackedBarChartDos.md')}
+          </Markdown>
+        }
+        donts={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/MultiStackedBarChart/docs/MultiStackedBarChartDonts.md')}
+          </Markdown>
+        }
       />
     );
   }

@@ -32,13 +32,13 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-alert": "9.0.0-beta.88",
-    "@fluentui/react-components": "^9.36.0",
-    "@fluentui/react-context-selector": "^9.1.41",
+    "@fluentui/react-alert": "9.0.0-beta.92",
+    "@fluentui/react-components": "^9.40.0",
+    "@fluentui/react-context-selector": "^9.1.42",
     "@fluentui/react-icons": "^2.0.217",
-    "@fluentui/react-storybook-addon-codesandbox": "^0.1.0",
-    "@fluentui/react-theme": "^9.1.14",
-    "@fluentui/react-utilities": "^9.15.1",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "^0.1.0",
+    "@fluentui/react-theme": "^9.1.16",
+    "@fluentui/react-utilities": "^9.15.2",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1",
     "@types/dedent": "0.7.0",
@@ -64,5 +64,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

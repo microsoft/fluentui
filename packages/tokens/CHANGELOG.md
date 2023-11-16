@@ -1,8 +1,26 @@
 # Change Log - @fluentui/tokens
 
-This log was last generated on Tue, 26 Sep 2023 17:49:15 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Nov 2023 17:29:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.13)
+
+Thu, 09 Nov 2023 17:29:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.12..@fluentui/tokens_v1.0.0-alpha.13)
+
+### Changes
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+
+## [1.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.12)
+
+Wed, 01 Nov 2023 12:55:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.11..@fluentui/tokens_v1.0.0-alpha.12)
+
+### Changes
+
+- fix(tokens): Fix motion curves to match design ([PR #29546](https://github.com/microsoft/fluentui/pull/29546) by robertpenner@microsoft.com)
 
 ## [1.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.11)
 

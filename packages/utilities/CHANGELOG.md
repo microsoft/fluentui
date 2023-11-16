@@ -1,8 +1,28 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Fri, 29 Sep 2023 07:45:30 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Nov 2023 07:29:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.21](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.21)
+
+Thu, 09 Nov 2023 07:29:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.20..@fluentui/utilities_v8.13.21)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore ([PR #29743](https://github.com/microsoft/fluentui/pull/29743) by martinhochel@microsoft.com)
+
+## [8.13.20](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.20)
+
+Sat, 28 Oct 2023 00:29:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.19..@fluentui/utilities_v8.13.20)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/merge-styles to v8.5.13 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/set-version to v8.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
 
 ## [8.13.19](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.19)
 

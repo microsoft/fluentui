@@ -1,0 +1,61 @@
+{
+  "name": "@fluentui/react-storybook-addon-export-to-sandbox",
+  "version": "0.1.0",
+  "description": "Storybook addon that enables cloud/web sandbox exports for stories doc mode code examples",
+  "private": true,
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "test": "jest --passWithNoTests",
+    "type-check": "tsc -b tsconfig.json",
+    "generate-api": "just-scripts generate-api"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-tasks": "*"
+  },
+  "dependencies": {
+    "@swc/helpers": "^0.5.1",
+    "@types/dedent": "0.7.0",
+    "codesandbox-import-utils": "2.2.3",
+    "@fluentui/babel-preset-storybook-full-source": "^0.0.1",
+    "dedent": "0.7.0"
+  },
+  "peerDependencies": {
+    "@storybook/addons": "^6.5.15"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./lib/index.js",
+      "node": "./lib-commonjs/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs",
+    "preset.js"
+  ]
+}
