@@ -214,6 +214,25 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   right: -2px;
                   top: -2px;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid transparent;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline-color: #ffffff;
+                  outline: 1px solid transparent;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
                 &:active > span {
                   left: 0px;
                   position: relative;
@@ -366,6 +385,24 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   right: -2px;
                   top: -2px;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid transparent;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid transparent;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
                 &:active > span {
                   left: 0px;
                   position: relative;
@@ -500,6 +537,24 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { GLOBAL_STYLESHEET_KEY, makeShadowConfig } from '@fluentui/merge-styles';
-import { FocusRectsProvider } from '../FocusRectsProvider';
 import { useMergeStylesRootStylesheets } from './MergeStylesRootContext';
 
 export type MergeStylesShadowRootContextValue = {
@@ -37,16 +36,11 @@ export const MergeStylesShadowRootProvider: React.FC<MergeStylesShadowRootProvid
       shadowRoot,
     };
   }, [shadowRoot]);
-  const focusProviderRef = React.useRef<HTMLDivElement>(null);
 
   return (
     <MergeStylesShadowRootContext.Provider value={value} {...props}>
       <GlobalStyles />
-      <FocusRectsProvider providerRef={focusProviderRef}>
-        <div className="ms-MergeStylesShadowRootProvider" ref={focusProviderRef}>
-          {props.children}
-        </div>
-      </FocusRectsProvider>
+      {props.children}
     </MergeStylesShadowRootContext.Provider>
   );
 };

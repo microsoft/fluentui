@@ -76,6 +76,8 @@ function expandCommaSeparatedGlobals(selectorWithGlobals: string): string {
 function expandSelector(newSelector: string, currentSelector: string): string {
   if (newSelector.indexOf(':global(') >= 0) {
     return newSelector.replace(globalSelectorRegExp, '$1');
+  } else if (newSelector.indexOf(':host(') === 0) {
+    return newSelector;
   } else if (newSelector.indexOf(':') === 0) {
     return currentSelector + newSelector;
   } else if (newSelector.indexOf('&') < 0) {

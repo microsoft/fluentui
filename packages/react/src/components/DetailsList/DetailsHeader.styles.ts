@@ -132,7 +132,7 @@ export const getDetailsHeaderStyles = (props: IDetailsHeaderStyleProps): IDetail
       },
       {
         selectors: {
-          [`.${IsFocusVisibleClassName} &:focus`]: {
+          [`.${IsFocusVisibleClassName} &:focus, :host(.${IsFocusVisibleClassName}) &:focus`]: {
             opacity: 1,
           },
         },
