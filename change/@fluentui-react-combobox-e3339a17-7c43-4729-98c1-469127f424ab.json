@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Properly cleaning up document onMouseUp event so that it is not removed before it needs to.",
+  "packageName": "@fluentui/react-combobox",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
