@@ -122,12 +122,25 @@ export function useVirtualizerScrollViewDynamic_unstable(
         virtualizerState.virtualizedChildren[index] = (
           <child.type
             {...child.props}
+            key={child.key}
             ref={(element: HTMLElement & IndexedResizeCallbackElement) => {
               if (typeof child.props.ref === 'function') {
                 child.props.ref(element);
               } else if (child.props.ref) {
                 child.props.ref.current = element;
               }
+
+              if (child.hasOwnProperty('ref')) {
+                // We must access this from the child directly, not props (forward ref).
+                const localRef = (child as any)?.ref;
+
+                if (typeof localRef === 'function') {
+                  localRef(element);
+                } else if (localRef) {
+                  localRef.current = element;
+                }
+              }
+
               measureObject.createIndexedRef(index)(element);
             }}
           />
