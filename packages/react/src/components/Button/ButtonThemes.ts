@@ -166,7 +166,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
           borderColor: 'WindowText',
           ...getHighContrastNoAdjustStyle(),
         },
-        [`.${IsFocusVisibleClassName} &:focus`]: {
+        [`.${IsFocusVisibleClassName} &:focus, :host(.${IsFocusVisibleClassName}) &:focus`]: {
           selectors: {
             ':after': {
               border: `none`,
