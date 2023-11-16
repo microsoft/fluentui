@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "docs(FacePile): Updated FacePile API documentation for a better understanding",
-  "packageName": "@fluentui/react",
-  "email": "kapil.kashyaps@gmail.com",
-  "dependentChangeType": "patch"
-}
