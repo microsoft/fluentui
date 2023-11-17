@@ -2,17 +2,17 @@ import * as React from 'react';
 import { NavProps } from './Nav/Nav.types';
 
 export type NavContextValue = Pick<NavProps, 'onNavGroupSelect' | 'selectedValue' | 'reserveSelectedNavGroupSpace'> & {
-  /** A callback to allow a tab to register itself with the tab list. */
+  /** A callback to allow a navGroup to register itself with the navGroup list. */
   onRegister: RegisterNavGroupEventHandler;
 
-  /** A callback to allow a tab to unregister itself with the tab list. */
+  /** A callback to allow a navGroup to unregister itself with the navGroup list. */
   onUnregister: RegisterNavGroupEventHandler;
   /**
-   * A callback to allow a tab to select itself when pressed.
+   * A callback to allow a navGroup to select itself when pressed.
    */
   onSelect: SelectNavGroupEventHandler;
   /**
-   * Gets the registered tab data along with current and previous selected values.
+   * Gets the registered navGroup data along with current and previous selected values.
    */
   getRegisteredNavGroups: () => {
     selectedValue?: NavGroupValue;
@@ -22,35 +22,35 @@ export type NavContextValue = Pick<NavProps, 'onNavGroupSelect' | 'selectedValue
 };
 
 /**
- * Context values used in rendering TabList.
+ * Context values used in rendering navGroupList.
  */
 export type NavContextValues = {
   /**
-   * The context of the tab list available to each tab.
+   * The context of the navGroup list available to each navGroup.
    */
   nav: NavContextValue;
 };
 
 export type NavGroupRegisterData = {
   /**
-   * The value of the tab.
+   * The value of the navGroup.
    */
   value: NavGroupValue;
 
   /**
-   * The reference to the tab HTML element.
+   * The reference to the navGroup HTML element.
    */
   ref: React.RefObject<HTMLElement>;
 };
 
 /**
- * Any value that identifies a specific tab.
+ * Any value that identifies a specific navGroup.
  */
 export type NavGroupValue = unknown;
 
 export type SelectNavGroupData = {
   /**
-   * The value of the selected tab.
+   * The value of the selected navGroup.
    */
   value: NavGroupValue;
 };

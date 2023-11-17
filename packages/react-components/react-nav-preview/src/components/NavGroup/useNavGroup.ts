@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  getNativeElementProps,
+  getIntrinsicElementProps,
   mergeCallbacks,
   useEventCallback,
   useMergedRefs,
@@ -11,13 +11,13 @@ import { NavGroupProps, NavGroupState } from './NavGroup.types';
 import { SelectNavGroupEvent } from '../NavContext.types';
 
 /**
- * Create the state required to render Tab.
+ * Create the state required to render NavGroup.
  *
- * The returned state can be modified with hooks such as useTabStyles_unstable,
- * before being passed to renderTab_unstable.
+ * The returned state can be modified with hooks such as useNavGroupStyles,
+ * before being passed to renderNavGroup.
  *
- * @param props - props from this instance of Tab
- * @param ref - reference to root HTMLButtonElement of Tab
+ * @param props - props from this instance of NavGroup
+ * @param ref - reference to root HTMLButtonElement of NavGroup
  */
 export const useNavGroup = (props: NavGroupProps, ref: React.Ref<HTMLButtonElement>): NavGroupState => {
   const { content, icon, onClick, value } = props;
@@ -52,7 +52,7 @@ export const useNavGroup = (props: NavGroupProps, ref: React.Ref<HTMLButtonEleme
   return {
     components: { root: 'button', icon: 'span', content: 'span', contentReservedSpace: 'span' },
     root: slot.always(
-      getNativeElementProps('button', {
+      getIntrinsicElementProps('button', {
         ref: useMergedRefs(ref, innerRef),
         role: 'nav',
         type: 'navigation',

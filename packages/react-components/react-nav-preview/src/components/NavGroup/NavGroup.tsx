@@ -7,7 +7,7 @@ import { useNavGroupStyles } from './useNavGroup.styles';
 // import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
- * A tab provides a selectable item in a tab list.
+ * A Nav group provides a selectable item in a Nav.
  */
 export const NavGroup: ForwardRefComponent<NavGroupProps> = React.forwardRef((props, ref) => {
   const state = useNavGroup(props, ref);

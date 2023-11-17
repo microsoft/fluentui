@@ -27,22 +27,22 @@ export type NavGroupInternalSlots = NavGroupSlots & {
 };
 
 /**
- * Tab Props
+ * navGroup Props
  */
 export type NavGroupProps = ComponentProps<Partial<NavGroupSlots>> & {
   /**
-   * The value that identifies this tab when selected.
+   * The value that identifies this navGroup when selected.
    */
   value: NavGroupValue;
 };
 
 /**
- * State used in rendering Tab
+ * State used in rendering NavGroup
  */
 export type NavGroupState = ComponentState<NavGroupInternalSlots> &
   Pick<NavGroupProps, 'value'> & {
     /**
-     * If this tab is selected
+     * If this navGroup is selected
      */
     selected: boolean;
   };

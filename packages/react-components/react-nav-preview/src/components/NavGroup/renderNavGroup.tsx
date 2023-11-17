@@ -6,7 +6,7 @@ import { assertSlots } from '@fluentui/react-utilities';
 import type { NavGroupState, NavGroupInternalSlots } from './NavGroup.types';
 
 /**
- * Render the final JSX of Tab
+ * Render the final JSX of navGroup
  */
 export const renderNavGroup = (state: NavGroupState) => {
   assertSlots<NavGroupInternalSlots>(state);

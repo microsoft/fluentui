@@ -4,10 +4,10 @@ import { useNav } from './useNav';
 import { renderNav } from './renderNav';
 import { useNavStyles } from './useNavStyles.styles';
 import type { NavProps } from './Nav.types';
-import { useNavContextValues } from '../useNavContrectValues';
+import { useNavContextValues } from '../useNavContextValues';
 
 /**
- * Nav component - TODO: add more docs
+ * Nav component - provides 2 layers of nesting for navigation items.
  */
 export const Nav: ForwardRefComponent<NavProps> = React.forwardRef((props, ref) => {
   const state = useNav(props, ref);
