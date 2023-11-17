@@ -22,7 +22,7 @@ export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<Virtualiz
     /**
      * Callback for acquiring size of individual items
      * @param index - the index of the requested size's child
-     * If undefined, Virtualizer will auto-measure by (performance tradeoff)
+     * If undefined, Virtualizer will auto-measure by default (performance tradeoff)
      */
     getItemSize?: (index: number) => number;
     /**
