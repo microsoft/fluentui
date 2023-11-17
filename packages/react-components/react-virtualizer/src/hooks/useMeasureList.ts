@@ -23,13 +23,14 @@ export function useMeasureList<
   // the handler for resize observer
   const handleIndexUpdate = React.useCallback(
     (index: number) => {
-      const containerWidth = refArray.current[index]?.getBoundingClientRect().width;
-      widthArray.current[currentIndex + index] = containerWidth || 0;
+      const boundClientRect = refArray.current[index]?.getBoundingClientRect();
+      const containerWidth = boundClientRect?.width;
+      widthArray.current[currentIndex + index] = containerWidth || defaultItemSize;
 
-      const containerHeight = refArray.current[index]?.getBoundingClientRect().height;
-      heightArray.current[currentIndex + index] = containerHeight || 0;
+      const containerHeight = boundClientRect?.height;
+      heightArray.current[currentIndex + index] = containerHeight || defaultItemSize;
     },
-    [currentIndex],
+    [currentIndex, defaultItemSize],
   );
 
   const handleResize = (entries: ResizeObserverEntry[]) => {
