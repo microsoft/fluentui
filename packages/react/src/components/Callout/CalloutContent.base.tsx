@@ -176,7 +176,6 @@ function useMaxHeight(
     gapSpace,
     beakWidth,
     isBeakVisible,
-    targetRef,
   ]);
 
   return maxHeight;
@@ -287,6 +286,7 @@ function usePositions(
     target,
     hideOverflow,
     preferScrollResizePositioning,
+    popupRef,
   ]);
 
   return positions;
