@@ -513,7 +513,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       return { xBarScale, yBarScale };
     } else {
       const xBarScale = d3ScaleBand()
-        .domain(this._xAxisLabels)
+        .domain(this._isRtl ? this._xAxisLabels.slice().reverse() : this._xAxisLabels)
         .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin])
         .paddingInner(2 / 3);
 
@@ -533,7 +533,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         legendColor: this.state.color,
-        shouldHighlight: shouldHighlight,
+        shouldHighlight,
       });
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       let adjustedBarHeight = 0;
@@ -701,7 +701,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
-        color: color,
+        color,
         action: () => {
           this._onLegendClick(point.legend!);
         },
