@@ -62,10 +62,10 @@ export const styles = css`
     z-index: var(--card-elevation, 1);
   }
 
-  :host .card:focus-visible::after {
+  .card:focus-visible::after {
     content: '';
     position: absolute;
-    inset: 2px;
+    inset: 3px;
     border-color: ${colorTransparentStroke};
     outline: ${strokeWidthThick} solid ${colorTransparentStroke};
     box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
