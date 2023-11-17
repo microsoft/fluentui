@@ -2,6 +2,7 @@ import { useEventCallback, useIsomorphicLayoutEffect, useMergedRefs } from '@flu
 import * as React from 'react';
 
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
+import { getChildElement } from '../utils/getChildElement';
 import type { MotionTransition } from '../types';
 
 type TransitionProps = {
@@ -17,7 +18,7 @@ export function createTransition(transition: MotionTransition) {
   const Transition: React.FC<TransitionProps> = props => {
     const { appear, children, visible, unmountOnExit } = props;
 
-    const child = React.Children.only(children) as React.ReactElement & { ref: React.Ref<HTMLElement> };
+    const child = getChildElement(children);
 
     const elementRef = React.useRef<HTMLElement>();
     const ref = useMergedRefs(elementRef, child.ref);
