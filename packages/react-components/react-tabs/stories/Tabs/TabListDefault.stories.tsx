@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { makeStyles, shorthands, Tab, TabList } from '@fluentui/react-components';
 import type { TabListProps } from '@fluentui/react-components';
 
