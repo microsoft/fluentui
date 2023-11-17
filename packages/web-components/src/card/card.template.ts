@@ -19,7 +19,7 @@ export function cardTemplate<T extends Card>(): ElementViewTemplate<T> {
         aria-labelledby="${x => x.ariaLabelledby}"
         aria-describedby="${x => x.ariaDescribedby}"
         aria-disabled="${x => (x.selectable ? (x.disabled ? 'true' : 'false') : null)}"
-        aria-pressed="${x => (x.selectable ? (x.selected ? 'true' : 'false') : null)}"
+        aria-selected="${x => (x.selectable ? (x.selected ? 'true' : 'false') : null)}"
         ${ref('card')}
       >
         <div class="root" part="root" ${ref('root')}>
