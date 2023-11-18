@@ -1,32 +1,34 @@
 import * as React from 'react';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
-import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { ILegend, Legends } from '../Legends/index';
 import { IAccessibilityProps, IChartDataPoint, IChartProps } from './index';
 import { IRefArrayData, IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from '../../index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard } from '../../utilities/index';
+import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
+import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
   isCalloutVisible: boolean;
-  selectedLegendTitle: string;
+  selectedLegend: string;
+  activeLegend: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refSelected: any;
   dataForHoverCard: number;
   color: string;
-  isLegendHovered: boolean;
-  isLegendSelected: boolean;
   xCalloutValue?: string;
   yCalloutValue?: string;
   dataPointCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
+  calloutLegend: string;
+  barSpacingInPercent: number;
 }
 
 export class StackedBarChartBase extends React.Component<IStackedBarChartProps, IStackedBarChartState> {
   public static defaultProps: Partial<IStackedBarChartProps> = {
-    barHeight: 16,
+    barHeight: 12,
     hideNumberDisplay: false,
     hideLegend: false,
     ignoreFixStyle: false,
@@ -34,139 +36,173 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   private _classNames: IProcessedStyleSet<IStackedBarChartStyles>;
   private _calloutId: string;
   private _refArray: IRefArrayData[];
+  private _calloutAnchorPoint: IChartDataPoint | null;
+  private _emptyChartId: string;
+  private barChartSvgRef: React.RefObject<SVGSVGElement>;
+  private _isRTL = getRTL();
 
   public constructor(props: IStackedBarChartProps) {
     super(props);
     this.state = {
       isCalloutVisible: false,
-      selectedLegendTitle: '',
+      selectedLegend: '',
+      activeLegend: '',
       refSelected: null,
       dataForHoverCard: 0,
       color: '',
-      isLegendHovered: false,
-      isLegendSelected: false,
       xCalloutValue: '',
       yCalloutValue: '',
+      calloutLegend: '',
+      barSpacingInPercent: 0,
     };
     this._refArray = [];
     this._onLeave = this._onLeave.bind(this);
     this._refCallback = this._refCallback.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
     this._calloutId = getId('callout');
+    this._emptyChartId = getId('_SBC_empty');
+    this.barChartSvgRef = React.createRef<SVGSVGElement>();
+  }
+
+  public componentDidMount(): void {
+    const svgWidth = this.barChartSvgRef.current?.getBoundingClientRect().width || 0;
+    const MARGIN_WIDTH_IN_PX = 3;
+    if (svgWidth) {
+      const currentBarSpacing = (MARGIN_WIDTH_IN_PX / svgWidth) * 100;
+      this.setState({ barSpacingInPercent: currentBarSpacing });
+    }
   }
 
   public render(): JSX.Element {
-    this._adjustProps();
-    const { data, benchmarkData, targetData, hideNumberDisplay, ignoreFixStyle } = this.props;
-    const { palette } = this.props.theme!;
-    const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 8;
+    if (!this._isChartEmpty()) {
+      this._adjustProps();
+      const { data, benchmarkData, targetData, hideNumberDisplay, ignoreFixStyle, culture } = this.props;
+      const { palette } = this.props.theme!;
+      const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 12;
 
-    if (benchmarkData) {
-      // benchmark color is used to render color for benchmark triangle and benchmark legend
-      benchmarkData.color = benchmarkData.color || palette.neutralTertiary;
-    }
+      if (benchmarkData) {
+        // benchmark color is used to render color for benchmark triangle and benchmark legend
+        benchmarkData.color = benchmarkData.color || palette.neutralTertiary;
+      }
 
-    if (targetData) {
-      // target color is used to render color for target triangle and target legend
-      targetData.color = targetData.color || palette.neutralSecondary;
-    }
+      if (targetData) {
+        // target color is used to render color for target triangle and target legend
+        targetData.color = targetData.color || palette.neutralSecondary;
+      }
 
-    const bars = this._createBarsAndLegends(data!, barHeight!, palette, benchmarkData, targetData);
+      const bars = this._createBarsAndLegends(data!, barHeight!, palette, benchmarkData, targetData);
 
-    const showRatio = hideNumberDisplay === false && !ignoreFixStyle && data!.chartData!.length === 2;
-    const showNumber = hideNumberDisplay === false && !ignoreFixStyle && data!.chartData!.length === 1;
-    const total = data!.chartData!.reduce(
-      (acc: number, value: IChartDataPoint) => acc + (value.data ? value.data : 0),
-      0,
-    );
+      const showRatio = hideNumberDisplay === false && !ignoreFixStyle && data!.chartData!.length === 2;
+      const showNumber = hideNumberDisplay === false && !ignoreFixStyle && data!.chartData!.length === 1;
+      const total = data!.chartData!.reduce(
+        (acc: number, value: IChartDataPoint) => acc + (value.data ? value.data : 0),
+        0,
+      );
 
-    let benchmarkRatio = 0;
-    if (benchmarkData && total) {
-      benchmarkRatio = (benchmarkData.data! / total) * 100;
-    }
-    let targetRatio = 0;
-    if (targetData && total) {
-      targetRatio = (targetData.data! / total) * 100;
-    }
+      let benchmarkRatio = 0;
+      if (benchmarkData && total) {
+        benchmarkRatio = (benchmarkData.data! / total) * 100;
+      }
+      let targetRatio = 0;
+      if (targetData && total) {
+        targetRatio = (targetData.data! / total) * 100;
+      }
 
-    const showLegend = this.props.hideLegend === false && (ignoreFixStyle || data!.chartData!.length > 2);
-    this._classNames = getClassNames(this.props.styles!, {
-      legendColor: this.state.color,
-      theme: this.props.theme!,
-      benchmarkColor: benchmarkData ? benchmarkData.color : '',
-      benchmarkRatio,
-      targetColor: targetData ? targetData.color : '',
-      targetRatio,
-    });
-
-    return (
-      <div className={this._classNames.root}>
-        <FocusZone direction={FocusZoneDirection.horizontal}>
-          <div className={this._classNames.chartTitle}>
-            {data!.chartTitle && (
-              <div {...this._getAccessibleDataObject(data!.chartTitleAccessibilityData)}>
-                <strong>{data!.chartTitle}</strong>
-              </div>
-            )}
-            {showRatio && (
-              <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <span className={this._classNames.ratioNumerator}>
-                  {data!.chartData![0].data ? data!.chartData![0].data : 0}
-                </span>
-                {!this.props.hideDenominator && (
-                  <span>
-                    /<span className={this._classNames.ratioDenominator}>{total}</span>
-                  </span>
-                )}
-              </div>
-            )}
-            {showNumber && (
-              <div {...this._getAccessibleDataObject(data!.chartDataAccessibilityData)}>
-                <strong>{data!.chartData![0].data}</strong>
-              </div>
-            )}
-          </div>
-          {(benchmarkData || targetData) && (
-            <div className={this._classNames.benchmarkContainer}>
-              {benchmarkData && <div className={this._classNames.benchmark} role="text" />}
-              {targetData && <div className={this._classNames.target} role="text" />}
-            </div>
-          )}
-        </FocusZone>
-        <FocusZone direction={FocusZoneDirection.horizontal}>
-          <div>
-            <svg className={this._classNames.chart} aria-label={data?.chartTitle}>
-              <g>{bars[0]}</g>
-              <Callout
-                gapSpace={15}
-                isBeakVisible={false}
-                target={this.state.refSelected}
-                setInitialFocus={true}
-                hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
-                directionalHint={DirectionalHint.topRightEdge}
-                id={this._calloutId}
-                onDismiss={this._closeCallout}
-                preventDismissOnLostFocus={true}
-                {...this.props.calloutProps}
-                {...this._getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
-              >
-                <>
-                  {this.props.onRenderCalloutPerDataPoint ? (
-                    this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
-                  ) : (
-                    <ChartHoverCard
-                      Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.selectedLegendTitle}
-                      YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-                      color={this.state.color}
-                    />
+      const showLegend = this.props.hideLegend === false && (ignoreFixStyle || data!.chartData!.length > 2);
+      this._classNames = getClassNames(this.props.styles!, {
+        legendColor: this.state.color,
+        theme: this.props.theme!,
+        benchmarkColor: benchmarkData ? benchmarkData.color : '',
+        benchmarkRatio,
+        targetColor: targetData ? targetData.color : '',
+        targetRatio,
+        showTriangle: !!(benchmarkData || targetData),
+      });
+      const getChartData = () =>
+        convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
+      return (
+        <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
+          <FocusZone direction={FocusZoneDirection.horizontal}>
+            <div className={this._classNames.chartTitle}>
+              {data!.chartTitle && (
+                <FocusableTooltipText
+                  className={this._classNames.chartTitleLeft}
+                  content={data!.chartTitle}
+                  accessibilityData={data!.chartTitleAccessibilityData}
+                />
+              )}
+              {showRatio && (
+                <div {...getAccessibleDataObject(data!.chartDataAccessibilityData, 'text', false)}>
+                  <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
+                  {!this.props.hideDenominator && (
+                    <span className={this._classNames.ratioDenominator}>
+                      {' / ' + convertToLocaleString(total, culture)}
+                    </span>
                   )}
-                </>
-              </Callout>
-            </svg>
-          </div>
-        </FocusZone>
-        {showLegend && <div className={this._classNames.legendContainer}>{bars[1]}</div>}
-      </div>
+                </div>
+              )}
+              {showNumber && (
+                <div
+                  className={this._classNames.ratioNumerator}
+                  {...getAccessibleDataObject(data!.chartDataAccessibilityData, 'text', false)}
+                >
+                  {getChartData()}
+                </div>
+              )}
+            </div>
+            {(benchmarkData || targetData) && (
+              <div className={this._classNames.benchmarkContainer}>
+                {benchmarkData && <div className={this._classNames.benchmark} role="text" />}
+                {targetData && <div className={this._classNames.target} role="text" />}
+              </div>
+            )}
+          </FocusZone>
+          <FocusZone direction={FocusZoneDirection.horizontal}>
+            <div>
+              <svg ref={this.barChartSvgRef} className={this._classNames.chart} aria-label={data?.chartTitle}>
+                <g>{bars[0]}</g>
+                <Callout
+                  gapSpace={15}
+                  isBeakVisible={false}
+                  target={this.state.refSelected}
+                  setInitialFocus={true}
+                  hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
+                  directionalHint={DirectionalHint.topAutoEdge}
+                  id={this._calloutId}
+                  onDismiss={this._closeCallout}
+                  preventDismissOnLostFocus={true}
+                  /** Keep the callout updated with details of focused/hovered bar */
+                  shouldUpdateWhenHidden={true}
+                  {...this.props.calloutProps}
+                  {...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
+                >
+                  <>
+                    {this.props.onRenderCalloutPerDataPoint ? (
+                      this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
+                    ) : (
+                      <ChartHoverCard
+                        Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.calloutLegend}
+                        YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+                        color={this.state.color}
+                        culture={culture}
+                      />
+                    )}
+                  </>
+                </Callout>
+              </svg>
+            </div>
+          </FocusZone>
+          {showLegend && <div className={this._classNames.legendContainer}>{bars[1]}</div>}
+        </div>
+      );
+    }
+    return (
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
@@ -180,6 +216,13 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     });
   }
 
+  /**
+   * The Create bar functions returns an array of <rect> elements, which form the bars
+   * For each bar an x value, and a width needs to be specified
+   * The computations are done based on percentages
+   * Extra margin is also provided, in the x value to provide some spacing
+   */
+
   private _createBarsAndLegends(
     data: IChartProps,
     barHeight: number,
@@ -187,6 +230,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     benchmarkData?: IChartDataPoint,
     targetData?: IChartDataPoint,
   ): [JSX.Element[], JSX.Element] {
+    const noOfBars =
+      data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
+      1;
+    const totalMarginPercent = this.state.barSpacingInPercent * (noOfBars - 1);
+
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const legendDataItems: ILegend[] = [];
     // calculating starting point of each bar and it's range
@@ -197,6 +245,30 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     );
     let prevPosition = 0;
     let value = 0;
+
+    let sumOfPercent = 0;
+    data.chartData!.map((point: IChartDataPoint, index: number) => {
+      const pointData = point.data ? point.data : 0;
+      value = (pointData / total) * 100;
+      if (value < 1 && value !== 0) {
+        value = 1;
+      } else if (value > 99 && value !== 100) {
+        value = 99;
+      }
+      sumOfPercent += value;
+
+      return sumOfPercent;
+    });
+
+    /**
+     * The %age of the space occupied by the margin needs to subtracted
+     * while computing the scaling ratio, since the margins are not being
+     * scaled down, only the data is being scaled down from a higher percentage to lower percentage
+     * Eg: 95% of the space is taken by the bars, 5% by the margins
+     * Now if the sumOfPercent is 120% -> This needs to be scaled down to 95%, not 100%
+     * since that's only space available to the bars
+     */
+    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / (100 - totalMarginPercent) : 1;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
@@ -214,13 +286,14 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         hoverAction:
           total > 0
             ? () => {
+                this._handleChartMouseLeave();
                 this._onHover(point.legend!);
               }
             : undefined,
         onMouseOutAction:
           total > 0
-            ? (isLegendFocused?: boolean) => {
-                this._onLeave(isLegendFocused);
+            ? () => {
+                this._onLeave();
               }
             : undefined,
       };
@@ -232,25 +305,20 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       }
       value = (pointData / total) * 100;
       if (value < 1 && value !== 0) {
-        value = 1;
+        value = 1 / scalingRatio;
       } else if (value > 99 && value !== 100) {
-        value = 99;
+        value = 99 / scalingRatio;
+      } else {
+        value = value / scalingRatio;
       }
       startingPoint.push(prevPosition);
       const styles = this.props.styles;
-      let shouldHighlight = true;
-      if (this.state.isLegendHovered || this.state.isLegendSelected) {
-        shouldHighlight = this.state.selectedLegendTitle === point.legend;
-      }
+      const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
         shouldHighlight: shouldHighlight,
         href: this.props.href!,
       });
-
-      if (value < 1) {
-        return <React.Fragment key={index}> </React.Fragment>;
-      }
 
       return (
         <g
@@ -262,16 +330,27 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           data-is-focusable={!this.props.hideTooltip}
           onFocus={this._onBarFocus.bind(this, pointData, color, point)}
           onBlur={this._onBarLeave}
-          aria-label="Stacked bar chart"
+          aria-label={this._getAriaLabel(point)}
           role="img"
-          aria-labelledby={this._calloutId}
           onMouseOver={this._onBarHover.bind(this, pointData, color, point)}
           onMouseMove={this._onBarHover.bind(this, pointData, color, point)}
           onMouseLeave={this._onBarLeave}
           pointerEvents="all"
           onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : point.onClick}
         >
-          <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
+          <rect
+            key={index}
+            id={getId('_SBC_bar')}
+            x={`${
+              this._isRTL
+                ? 100 - startingPoint[index] - value - this.state.barSpacingInPercent * index
+                : startingPoint[index] + this.state.barSpacingInPercent * index
+            }%`}
+            y={0}
+            width={value + '%'}
+            height={barHeight}
+            fill={color}
+          />
         </g>
       );
     });
@@ -294,7 +373,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         ? [
             this._generateEmptyBar(
               barHeight,
-              this.props.barBackgroundColor ? this.props.barBackgroundColor : palette.neutralTertiary,
+              this.props.barBackgroundColor ? this.props.barBackgroundColor : palette.neutralLight,
             ),
           ]
         : bars,
@@ -303,26 +382,22 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   }
 
   private _onBarFocus(pointData: number, color: string, point: IChartDataPoint): void {
-    if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!)
-    ) {
-      this._refArray.forEach((obj: IRefArrayData) => {
-        if (obj.index === point.legend!) {
-          this.setState({
-            refSelected: obj.refElement,
-            isCalloutVisible: true,
-            selectedLegendTitle: point.legend!,
-            dataForHoverCard: pointData,
-            color: color,
-            xCalloutValue: point.xAxisCalloutData!,
-            yCalloutValue: point.yAxisCalloutData!,
-            dataPointCalloutProps: point,
-            callOutAccessibilityData: point.callOutAccessibilityData!,
-          });
-        }
-      });
-    }
+    this._refArray.forEach((obj: IRefArrayData) => {
+      if (obj.index === point.legend!) {
+        this.setState({
+          refSelected: obj.refElement,
+          /** Show the callout if highlighted bar is focused and Hide it if unhighlighted bar is focused */
+          isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
+          calloutLegend: point.legend!,
+          dataForHoverCard: pointData,
+          color: color,
+          xCalloutValue: point.xAxisCalloutData!,
+          yCalloutValue: point.yAxisCalloutData!,
+          dataPointCalloutProps: point,
+          callOutAccessibilityData: point.callOutAccessibilityData!,
+        });
+      }
+    });
   }
 
   private _addLegend(legendDataItems: ILegend[], data?: IChartDataPoint): void {
@@ -339,7 +414,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   private _generateEmptyBar(barHeight: number, color: string): JSX.Element {
     return (
       <g key={0} className={this._classNames.opacityChangeOnHover}>
-        <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={color} />
+        <rect key={0} id={getId('_SBC_empty_bar_')} x={'0%'} y={0} width={'100%'} height={barHeight} fill={color} />
       </g>
     );
   }
@@ -348,44 +423,28 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this._refArray.push({ index: legendTitle, refElement: element });
   }
 
-  private _onClick(customMessage: string): void {
-    if (this.state.isLegendSelected) {
-      if (this.state.selectedLegendTitle === customMessage) {
-        this.setState({
-          isLegendSelected: false,
-          selectedLegendTitle: customMessage,
-          isLegendHovered: true,
-        });
-      } else {
-        this.setState({
-          selectedLegendTitle: customMessage,
-        });
-      }
+  private _onClick(legendTitle: string): void {
+    if (this.state.selectedLegend === legendTitle) {
+      this.setState({
+        selectedLegend: '',
+      });
     } else {
       this.setState({
-        isLegendSelected: true,
-        selectedLegendTitle: customMessage,
+        selectedLegend: legendTitle,
       });
     }
   }
 
-  private _onHover(customMessage: string): void {
-    if (this.state.isLegendSelected === false) {
-      this.setState({
-        isLegendHovered: true,
-        selectedLegendTitle: customMessage,
-      });
-    }
+  private _onHover(legendTitle: string): void {
+    this.setState({
+      activeLegend: legendTitle,
+    });
   }
 
-  private _onLeave(isLegendFocused?: boolean): void {
-    if (!!isLegendFocused || this.state.isLegendSelected === false) {
-      this.setState({
-        isLegendHovered: false,
-        selectedLegendTitle: '',
-        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
-      });
-    }
+  private _onLeave(): void {
+    this.setState({
+      activeLegend: '',
+    });
   }
 
   private _onBarHover(
@@ -395,14 +454,13 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     mouseEvent: React.MouseEvent<SVGPathElement>,
   ): void {
     mouseEvent.persist();
-    if (
-      this.state.isLegendSelected === false ||
-      (this.state.isLegendSelected && this.state.selectedLegendTitle === point.legend!)
-    ) {
+    if (this._calloutAnchorPoint !== point) {
+      this._calloutAnchorPoint = point;
       this.setState({
         refSelected: mouseEvent,
-        isCalloutVisible: true,
-        selectedLegendTitle: point.legend!,
+        /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
+        isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
+        calloutLegend: point.legend!,
         dataForHoverCard: pointData,
         color: color,
         xCalloutValue: point.xAxisCalloutData!,
@@ -414,10 +472,15 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   }
 
   private _onBarLeave(): void {
+    /**/
+  }
+
+  private _handleChartMouseLeave = () => {
+    this._calloutAnchorPoint = null;
     this.setState({
       isCalloutVisible: false,
     });
-  }
+  };
 
   private _redirectToUrl(href: string | undefined): void {
     href ? (window.location.href = href) : '';
@@ -429,18 +492,33 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     });
   };
 
-  private _getAccessibleDataObject = (
-    accessibleData?: IAccessibilityProps,
-    role: string = 'text',
-    isDataFocusable: boolean = true,
-  ) => {
-    accessibleData = accessibleData ?? {};
-    return {
-      role,
-      'data-is-focusable': isDataFocusable,
-      'aria-label': accessibleData!.ariaLabel,
-      'aria-labelledby': accessibleData!.ariaLabelledBy,
-      'aria-describedby': accessibleData!.ariaDescribedBy,
-    };
+  /**
+   * This function checks if the given legend is highlighted or not.
+   * A legend can be highlighted in 2 ways:
+   * 1. selection: if the user clicks on it
+   * 2. hovering: if there is no selected legend and the user hovers over it
+   */
+  private _legendHighlighted = (legendTitle: string) => {
+    return (
+      this.state.selectedLegend === legendTitle ||
+      (this.state.selectedLegend === '' && this.state.activeLegend === legendTitle)
+    );
   };
+
+  /**
+   * This function checks if none of the legends is selected or hovered.
+   */
+  private _noLegendHighlighted = () => {
+    return this.state.selectedLegend === '' && this.state.activeLegend === '';
+  };
+
+  private _getAriaLabel = (point: IChartDataPoint): string => {
+    const legend = point.xAxisCalloutData || point.legend;
+    const yValue = point.yAxisCalloutData || point.data || 0;
+    return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
+  };
+
+  private _isChartEmpty(): boolean {
+    return !(this.props.data && this.props.data.chartData && this.props.data.chartData.length > 0);
+  }
 }

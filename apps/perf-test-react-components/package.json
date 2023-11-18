@@ -1,0 +1,35 @@
+{
+  "name": "@fluentui/perf-test-react-components",
+  "description": "Perf tests for @fluentui/react-components.",
+  "version": "9.0.0-rc.0",
+  "private": true,
+  "scripts": {
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "type-check": "tsc -p . --noEmit",
+    "test:perf": "just-scripts perf-test"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-storybook": "*"
+  },
+  "dependencies": {
+    "@fluentui/scripts-perf-test-flamegrill": "*",
+    "@fluentui/react-avatar": "*",
+    "@fluentui/react-button": "*",
+    "@fluentui/react-field": "*",
+    "@fluentui/react-persona": "*",
+    "@fluentui/react-provider": "*",
+    "@fluentui/react-spinbutton": "*",
+    "@fluentui/react-theme": "*",
+    "@griffel/core": "^1.14.1",
+    "@microsoft/load-themed-styles": "^1.10.26",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "tslib": "^2.1.0"
+  }
+}

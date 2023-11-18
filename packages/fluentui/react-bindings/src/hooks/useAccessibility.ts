@@ -76,9 +76,9 @@ export const useAccessibility = <Props>(
   };
 
   // Provides an experimental handling for FocusZone definition in behaviors
-  getA11yProps.unstable_wrapWithFocusZone = (element: React.ReactElement) => {
+  getA11yProps.unstable_wrapWithFocusZone = (element: React.ReactElement & React.RefAttributes<any>) => {
     if (definition.focusZone) {
-      let child: React.ReactElement = element;
+      let child: React.ReactElement & React.RefAttributes<any> = element;
 
       if (process.env.NODE_ENV !== 'production') {
         child = React.Children.only(element);
@@ -87,6 +87,7 @@ export const useAccessibility = <Props>(
       return React.createElement(FocusZone, {
         ...definition.focusZone.props,
         ...child.props,
+        innerRef: child.ref,
         as: child.type,
         isRtl: rtl,
       });

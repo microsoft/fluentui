@@ -1,19 +1,24 @@
 jest.mock('react-dom');
 import * as React from 'react';
 import { resetIds } from '../../Utilities';
-import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IGroupedVerticalBarChartProps, GroupedVerticalBarChart, IGVBarChartSeriesPoint } from '../../index';
 import { IGroupedVerticalBarChartState, GroupedVerticalBarChartBase } from './GroupedVerticalBarChart.base';
+import toJson from 'enzyme-to-json';
 
 // Wrapper of the GroupedVerticalBarChart to be tested.
 let wrapper:
   | ReactWrapper<IGroupedVerticalBarChartProps, IGroupedVerticalBarChartState, GroupedVerticalBarChartBase>
   | undefined;
+const originalRAF = window.requestAnimationFrame;
 
 function sharedBeforeEach() {
   resetIds();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
 }
 
 function sharedAfterEach() {
@@ -28,9 +33,10 @@ function sharedAfterEach() {
   if ((global.setTimeout as any).mock) {
     jest.useRealTimers();
   }
+  window.requestAnimationFrame = originalRAF;
 }
 
-const chartPoints = [
+export const chartPoints = [
   {
     name: '2000',
     series: [
@@ -79,46 +85,93 @@ const chartPoints = [
   },
 ];
 
+export const emptyChartPoints = [
+  {
+    name: 'Empty chart',
+    series: [],
+  },
+];
+
 describe('GroupedVerticalBarChart snapShot testing', () => {
-  it('renders GroupedVerticalBarChart correctly', () => {
-    const component = renderer.create(<GroupedVerticalBarChart data={chartPoints} />);
-    const tree = component.toJSON();
+  beforeEach(() => {
+    resetIds();
+  });
+  afterEach(() => {
+    if (wrapper) {
+      wrapper.unmount();
+      wrapper = undefined;
+    }
+
+    // Do this after unmounting the wrapper to make sure if any timers cleaned up on unmount are
+    // cleaned up in fake timers world
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    if ((global.setTimeout as any).mock) {
+      jest.useRealTimers();
+    }
+  });
+  it('renders GroupedVerticalBarChart correctly', async () => {
+    wrapper = mount(<GroupedVerticalBarChart data={chartPoints} />);
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders hideLegend correctly', () => {
-    const component = renderer.create(<GroupedVerticalBarChart data={chartPoints} hideLegend={true} />);
-    const tree = component.toJSON();
+  it('renders hideLegend correctly', async () => {
+    wrapper = mount(<GroupedVerticalBarChart data={chartPoints} hideLegend={true} />);
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders hideTooltip correctly', () => {
-    const component = renderer.create(<GroupedVerticalBarChart data={chartPoints} hideTooltip={true} />);
-    const tree = component.toJSON();
+  it('renders hideTooltip correctly', async () => {
+    wrapper = mount(<GroupedVerticalBarChart data={chartPoints} hideTooltip={true} />);
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders enabledLegendsWrapLines correctly', () => {
-    const component = renderer.create(<GroupedVerticalBarChart data={chartPoints} enabledLegendsWrapLines={true} />);
-    const tree = component.toJSON();
+  it('renders enabledLegendsWrapLines correctly', async () => {
+    wrapper = mount(<GroupedVerticalBarChart data={chartPoints} enabledLegendsWrapLines={true} />);
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders showXAxisLablesTooltip correctly', () => {
-    const component = renderer.create(<GroupedVerticalBarChart data={chartPoints} showXAxisLablesTooltip={true} />);
-    const tree = component.toJSON();
+  it('renders showXAxisLablesTooltip correctly', async () => {
+    wrapper = mount(<GroupedVerticalBarChart data={chartPoints} showXAxisLablesTooltip={true} />);
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders wrapXAxisLables correctly', () => {
-    const component = renderer.create(<GroupedVerticalBarChart data={chartPoints} wrapXAxisLables={true} />);
-    const tree = component.toJSON();
+  it('renders wrapXAxisLables correctly', async () => {
+    const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
+
+    // Replace the original method with the mock implementation
+    Object.defineProperty(
+      Object.getPrototypeOf(document.createElementNS('http://www.w3.org/2000/svg', 'tspan')),
+      'getComputedTextLength',
+      {
+        value: mockGetComputedTextLength,
+      },
+    );
+    wrapper = mount(<GroupedVerticalBarChart data={chartPoints} wrapXAxisLables={true} />);
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    const tree = toJson(wrapper!, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders yAxisTickFormat correctly', () => {
-    const component = renderer.create(<GroupedVerticalBarChart data={chartPoints} yAxisTickFormat={'/%d'} />);
-    const tree = component.toJSON();
+  it('renders yAxisTickFormat correctly', async () => {
+    wrapper = mount(<GroupedVerticalBarChart data={chartPoints} yAxisTickFormat={'/%d'} />);
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    const tree = toJson(wrapper!, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 });
@@ -200,5 +253,61 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props, hideTooltip: true });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('GroupedVerticalBarChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render callout correctly on mouseover', async () => {
+    wrapper = mount(<GroupedVerticalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    wrapper.find('rect').at(0).simulate('mouseover');
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render callout correctly on mousemove', () => {
+    wrapper = mount(<GroupedVerticalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
+    wrapper.find('rect').at(2).simulate('mousemove');
+    const html1 = wrapper.html();
+    wrapper.find('rect').at(3).simulate('mousemove');
+    const html2 = wrapper.html();
+    expect(html1).not.toBe(html2);
+  });
+
+  it('Should render customized callout on mouseover', () => {
+    wrapper = mount(
+      <GroupedVerticalBarChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        onRenderCalloutPerDataPoint={(props: IGVBarChartSeriesPoint) =>
+          props ? (
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
+
+  describe('Render empty chart aria label div when chart is empty', () => {
+    it('No empty chart aria label div rendered', () => {
+      wrapper = mount(<GroupedVerticalBarChart data={chartPoints} />);
+      const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+      expect(renderedDOM!.length).toBe(0);
+    });
+
+    it('Empty chart aria label div rendered', () => {
+      wrapper = mount(<GroupedVerticalBarChart data={emptyChartPoints} />);
+      const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+      expect(renderedDOM!.length).toBe(1);
+    });
   });
 });

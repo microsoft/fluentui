@@ -1,0 +1,78 @@
+# Workflow name
+name: 'Docsite publish to Github Pages'
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    if: ${{ contains(github.event.head_commit.message, 'applying package updates') || github.event_name == 'workflow_dispatch' }}
+
+    outputs:
+      status: ${{ steps.verify-react-components-changed.outputs.any_changed == 'true' || github.event_name == 'workflow_dispatch' }}
+
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout [master]
+
+      - name: Verify react-compoenents has changed
+        uses: tj-actions/changed-files@v34
+        id: verify-react-components-changed
+        with:
+          files: |
+            packages/react-components/react-components/package.json
+  build:
+    runs-on: ubuntu-latest
+    needs: check
+    if: needs.check.outputs.status == 'true'
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'yarn'
+
+      - name: Install packages
+        run: yarn install --frozen-lockfile
+
+      - name: Build dependencies
+        uses: ./.github/actions/build-to
+        with:
+          workspaces: '@fluentui/public-docsite-v9'
+          backfill-cache-provider-options: ${{ secrets.BACKFILL_CACHE_PROVIDER_OPTIONS }}
+
+      - name: Build storybook
+        run: yarn workspace @fluentui/public-docsite-v9 build-storybook
+        env:
+          STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY: ${{ secrets.STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY }}
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './apps/public-docsite-v9/dist/storybook/'
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+
+    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1

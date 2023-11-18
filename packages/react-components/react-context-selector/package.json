@@ -1,0 +1,62 @@
+{
+  "name": "@fluentui/react-context-selector",
+  "version": "9.1.42",
+  "description": "React useContextSelector hook in userland",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "./dist/index.d.ts",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "test": "jest --passWithNoTests",
+    "type-check": "tsc -b tsconfig.json",
+    "generate-api": "just-scripts generate-api",
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-tasks": "*"
+  },
+  "dependencies": {
+    "@fluentui/react-utilities": "^9.15.2",
+    "@swc/helpers": "^0.5.1"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0",
+    "scheduler": "^0.19.0 || ^0.20.0"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
+}

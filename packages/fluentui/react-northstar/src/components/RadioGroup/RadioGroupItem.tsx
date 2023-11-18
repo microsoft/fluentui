@@ -14,7 +14,6 @@ import {
 import { Box, BoxProps } from '../Box/Box';
 import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
 import {
-  ComponentWithAs,
   useAutoControlled,
   getElementType,
   useAccessibility,
@@ -22,6 +21,7 @@ import {
   useStyles,
   useTelemetry,
   useUnhandledProps,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { RadioButtonIcon } from '@fluentui/react-icons-northstar';
 
@@ -93,23 +93,12 @@ export type RadioGroupItemStylesProps = Required<Pick<RadioGroupItemProps, 'disa
  * @accessibility
  * Radio items need to be grouped to correctly handle accessibility.
  */
-export const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
-  FluentComponentStaticProps<RadioGroupItemProps> = props => {
+export const RadioGroupItem = React.forwardRef<HTMLDivElement, RadioGroupItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(RadioGroupItem.displayName, context.telemetry);
   setStart();
-  const {
-    label,
-    checkedIndicator,
-    indicator,
-    disabled,
-    vertical,
-    className,
-    design,
-    styles,
-    variables,
-    shouldFocus,
-  } = props;
+  const { label, checkedIndicator, indicator, disabled, vertical, className, design, styles, variables, shouldFocus } =
+    props;
   const elementRef = React.useRef<HTMLElement>();
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(RadioGroupItem.handledProps, props);
@@ -188,6 +177,7 @@ export const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
           className: classes.root,
           onClick: handleClick,
           onChange: handleChange,
+          ref,
           ...unhandledProps,
         })}
       >
@@ -209,7 +199,8 @@ export const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, RadioGroupItemProps> &
+  FluentComponentStaticProps<RadioGroupItemProps>;
 
 RadioGroupItem.displayName = 'RadioGroupItem';
 

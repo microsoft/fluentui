@@ -6,6 +6,10 @@ import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { ILegendsProps } from '../Legends/index';
 
+/**
+ * Multi Stacked Bar Chart properties
+ * {@docCategory MultiStackedBarChart}
+ */
 export interface IMultiStackedBarChartProps {
   /**
    * An array of chart data points for the multistacked bar chart
@@ -35,6 +39,7 @@ export interface IMultiStackedBarChartProps {
 
   /**
    * This property tells whether to show ratio on top of stacked bar chart or not.
+   * This property is applicable only if there are 1 or 2 datapoints.
    */
   hideRatio?: boolean[];
 
@@ -64,6 +69,7 @@ export interface IMultiStackedBarChartProps {
 
   /**
    * If this value is set to true the denominator will not be shown for the ratio above the chart
+   * This prop is applicable only if hide ratio is false and there are exactly 2 datapoints.
    */
   hideDenominator?: boolean[];
 
@@ -96,8 +102,29 @@ export interface IMultiStackedBarChartProps {
    * props for the callout in the chart
    */
   calloutProps?: Partial<ICalloutProps>;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
+
+  /**
+   * Prop to define the variant of MultiStackedBarChart to render
+   * @default MultiStackedBarChartVariant.PartToWhole
+   */
+  variant?: MultiStackedBarChartVariant;
+
+  /**
+   * Prop to hide the bar labels
+   * @default false
+   */
+  hideLabels?: boolean;
 }
 
+/**
+ * Multi Stacked Bar Chart style properties
+ * {@docCategory MultiStackedBarChart}
+ */
 export interface IMultiStackedBarChartStyleProps {
   /**
    * Theme (provided through customization.)
@@ -133,8 +160,22 @@ export interface IMultiStackedBarChartStyleProps {
    * prop to check to decide cursor type
    */
   href?: string;
+
+  /**
+   * Prop to define the variant of MultiStackedBarChart to render
+   */
+  variant?: MultiStackedBarChartVariant;
+
+  /**
+   * Prop to hide the bar labels
+   */
+  hideLabels?: boolean;
 }
 
+/**
+ * Multi Stacked Bar Chart styles
+ * {@docCategory MultiStackedBarChart}
+ */
 export interface IMultiStackedBarChartStyles {
   /**
    * Styling for the root container
@@ -162,9 +203,24 @@ export interface IMultiStackedBarChartStyles {
   chartTitle: IStyle;
 
   /**
+   * Style for left side text of the chart title
+   */
+  chartTitleLeft: IStyle;
+
+  /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
+
+  /**
+   * Style for the chart ratio numerator
+   */
+  ratioNumerator: IStyle;
+
+  /**
+   * Style for the chart ratio denominator
+   */
+  ratioDenominator: IStyle;
 
   /**
    * Style to change the opacity of placeholder data point when we hover a single bar or legend
@@ -180,4 +236,22 @@ export interface IMultiStackedBarChartStyles {
    * Style for stacked bar chart with no data
    */
   noData: IStyle;
+
+  /**
+   * Style for the bar labels
+   */
+  barLabel: IStyle;
+
+  /**
+   * Style for the div containing the chart
+   */
+  chartWrapper: IStyle;
+}
+
+/**
+ * {@docCategory MultiStackedBarChart}
+ */
+export enum MultiStackedBarChartVariant {
+  PartToWhole = 'part-to-whole',
+  AbsoluteScale = 'absolute-scale',
 }

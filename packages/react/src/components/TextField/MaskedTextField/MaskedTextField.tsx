@@ -12,7 +12,7 @@ import {
   insertString,
   parseMask,
 } from './inputMask';
-import { useConst } from '@fluentui/react-hooks';
+import { useConst, useIsomorphicLayoutEffect } from '@fluentui/react-hooks';
 import type { IMaskedTextFieldProps, IMaskedTextField } from '../TextField.types';
 import type { IRefObject } from '../../../Utilities';
 import type { IMaskValue } from './inputMask';
@@ -221,6 +221,7 @@ export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps> = R
         const charsSelected = selectionEnd - selectionStart;
         const charCount = inputValue.length + charsSelected - displayValue.length;
         const startPos = selectionStart;
+        // eslint-disable-next-line deprecation/deprecation
         const pastedString = inputValue.substr(startPos, charCount);
 
         // Clear any selected characters
@@ -251,6 +252,7 @@ export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps> = R
         // This case is if the user added characters
         const charCount = inputValue.length - displayValue.length;
         const startPos = selectionEnd - charCount;
+        // eslint-disable-next-line deprecation/deprecation
         const enteredString = inputValue.substr(startPos, charCount);
 
         cursorPos = insertString(internalState.maskCharData, startPos, enteredString);
@@ -262,6 +264,7 @@ export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps> = R
         const charCount = 1;
         const selectCount = displayValue.length + charCount - inputValue.length;
         const startPos = selectionEnd - charCount;
+        // eslint-disable-next-line deprecation/deprecation
         const enteredString = inputValue.substr(startPos, charCount);
 
         // Clear the selected range
@@ -289,6 +292,7 @@ export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps> = R
 
       internalState.changeSelectionData = null;
       if (textField.current && textField.current.value) {
+        // eslint-disable-next-line deprecation/deprecation
         const { keyCode, ctrlKey, metaKey } = ev;
 
         // Ignore ctrl and meta keydown
@@ -345,8 +349,7 @@ export const MaskedTextField: React.FunctionComponent<IMaskedTextFieldProps> = R
   }, [mask, value]);
 
   // Run before browser paint to avoid flickering from selection reset.
-  // eslint-disable-next-line no-restricted-properties
-  React.useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     // Move the cursor to position before paint.
     if (maskCursorPosition !== undefined && textField.current) {
       textField.current.setSelectionRange(maskCursorPosition, maskCursorPosition);

@@ -1,0 +1,47 @@
+{
+  "name": "@fluentui/public-docsite-v9",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fluent UI React v9 documentation",
+  "scripts": {
+    "build": "just-scripts build",
+    "build-storybook": "build-storybook --no-manager-cache -o ./dist/storybook --docs && node ./.storybook/fix-title.js 'Fluent UI React v9' ../dist",
+    "chromatic:branch": "npx chromatic@6.4.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes --build-script-name build-storybook",
+    "chromatic": "npx chromatic@6.4.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes --build-script-name build-storybook --branch-name microsoft:master",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "type-check": "just-scripts type-check",
+    "start": "yarn storybook:docs",
+    "storybook": "start-storybook --port 3000 --no-manager-cache",
+    "storybook:docs": "yarn storybook --docs"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-storybook": "*",
+    "@fluentui/scripts-tasks": "*"
+  },
+  "dependencies": {
+    "@fluentui/react-calendar-compat": "*",
+    "@fluentui/react-datepicker-compat": "*",
+    "@fluentui/react-migration-v8-v9": "*",
+    "@fluentui/react-migration-v0-v9": "*",
+    "@fluentui/react": "*",
+    "@fluentui/react-northstar": "*",
+    "@fluentui/react-icons-northstar": "*",
+    "@fluentui/react-components": "*",
+    "@fluentui/react-storybook-addon": "*",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "*",
+    "@fluentui/theme-designer": "*",
+    "@fluentui/react-search-preview": "*",
+    "@fluentui/react-motion-preview": "*",
+    "@fluentui/react-timepicker-compat-preview": "*",
+    "@griffel/react": "^1.5.14",
+    "@microsoft/applicationinsights-web": "^3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-window": "^1.8.6",
+    "tslib": "^2.1.0"
+  }
+}

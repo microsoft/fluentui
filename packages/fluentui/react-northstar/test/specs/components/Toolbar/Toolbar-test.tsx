@@ -44,6 +44,7 @@ describe('Toolbar', () => {
     testPath: __filename,
     constructorName: 'Toolbar',
     requiredProps: { overflow: true },
+    skipAsPropTests: 'as-component',
   });
 
   describe('aria-pressed is changing accordingly to state', () => {

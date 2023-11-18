@@ -91,10 +91,8 @@ describe('Returns correct element for custom CDN url', () => {
         size: 96,
         extension: 'docx',
       },
-      'https://spoprod-a.akamaihd.net/files/fabric/assets/item-types-fluent/',
+      'https://example-base-url/assets/item-types-fluent/',
     );
-    expect(elm).toEqual(
-      '<img src="https://spoprod-a.akamaihd.net/files/fabric/assets/item-types-fluent/96/docx.svg" alt="" />',
-    );
+    expect(elm).toEqual('<img src="https://example-base-url/assets/item-types-fluent/96/docx.svg" alt="" />');
   });
 });

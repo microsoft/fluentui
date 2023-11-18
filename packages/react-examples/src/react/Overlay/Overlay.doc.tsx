@@ -4,8 +4,10 @@ import { OverlayDarkExample } from './Overlay.Dark.Example';
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { OverlayLightExample } from './Overlay.Light.Example';
 
-const OverlayLightExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Overlay/Overlay.Light.Example.tsx') as string;
-const OverlayDarkExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Overlay/Overlay.Dark.Example.tsx') as string;
+const OverlayLightExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Overlay/Overlay.Light.Example.tsx') as string;
+const OverlayDarkExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Overlay/Overlay.Dark.Example.tsx') as string;
 
 export const OverlayPageProps: IDocPageProps = {
   title: 'Overlay',

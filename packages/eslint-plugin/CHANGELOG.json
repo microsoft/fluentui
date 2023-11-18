@@ -2,6 +2,598 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Sat, 28 Oct 2023 00:29:15 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.2",
+      "version": "1.17.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "9dce1d4962e1f62ec8fce4359f0074dee5b38072",
+            "comment": "chore: bump eslint-plugin-jsdoc to version which support node 18"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Jul 2023 07:33:19 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.1",
+      "version": "1.17.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "d39f715d564b0b9ad2f0e18fecf006ce2103cc8c",
+            "comment": "chore: exec migrations from @nrwl to @nx packages"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 07:37:32 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.1",
+      "version": "1.17.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 May 2023 07:38:38 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.1",
+      "version": "1.17.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "4b637ced41e430bf8d79c7fc67c103d5efdfd3a8",
+            "comment": "fix: tweak type errors exposed in ts 4.5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 May 2023 07:36:09 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.0",
+      "version": "1.17.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "588b9393a673137dd8a867686d1e1cd45c350ca4",
+            "comment": "feat: enable @griffel/styles-file rule"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 May 2023 07:39:54 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.16.0",
+      "version": "1.16.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "e0e8de0dadce1a0adcd77acb96028d562773b53d",
+            "comment": "feat: enable @griffel/hook-naming rule"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Apr 2023 07:40:24 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.15.0",
+      "version": "1.15.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "bb758eb9091e5c53f8d1d58baf50505aa2aa34cc",
+            "comment": "feat: enables jsxTags on comment for react config"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Mar 2023 08:15:56 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.14.0",
+      "version": "1.14.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "a3463ec7ba84fce450b4a03c989806ba4e11c5e1",
+            "comment": "feat: rule to ban usage of instanceof HTMLElement"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Mar 2023 07:47:18 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.13.0",
+      "version": "1.13.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Feb 2023 07:50:05 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.13.0",
+      "version": "1.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f",
+            "comment": "feat(eslint-plugin): turn off fluentui/max-lenght rule for v9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Jan 2023 07:50:15 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.8",
+      "version": "1.12.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "96c5a1cbb36d728bebfbf05203d372a82b1968d8",
+            "comment": "fix: add cypress.config to config files glob to fix linting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Dec 2022 07:55:40 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.7",
+      "version": "1.12.7",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "a18b520c2d9ad5a7936b2a14ae4156d602e69bc9",
+            "comment": "nit: replace screener word usage with storywright."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Dec 2022 07:53:32 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.7",
+      "version": "1.12.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "bfe6a0aebc33fd01023fb9c89b78a698f3247abf",
+            "comment": "Turn off react/jsx-no-bind rule for cypress component test files."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Dec 2022 07:57:07 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.6",
+      "version": "1.12.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "c46ff8dec351ebf57efb4114366016010b285429",
+            "comment": "chore: enable isolateModules"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Nov 2022 07:48:12 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.6",
+      "version": "1.12.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "6ab9ad73f61226c779bd6bc297daa12b11791551",
+            "comment": "Updating react-legacy linting to warn on export star usage."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Oct 2022 07:38:21 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.5",
+      "version": "1.12.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "ff55fc0e1abd7e61331bbcba18e066b6c449ba79",
+            "comment": "Turn off import/no-extraneous-dependencies rule for cypress component test files."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Oct 2022 07:45:02 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.4",
+      "version": "1.12.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "8e630de5cdb8b26e6627cd6378d7e3c6c1271fb6",
+            "comment": "chore: enable object-shorthand in ESLint"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 27 Sep 2022 07:46:25 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.3",
+      "version": "1.12.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "f020ac1736d7b275d10d27ab868605343ca240e5",
+            "comment": "fix(eslint-plugin): properly resolve single-version policy dep issues in react-northstar packages"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Aug 2022 07:39:31 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.2",
+      "version": "1.12.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "5cdc29322d17fc7d0c09cb19a353051ef7f1cc95",
+            "comment": "remove unused dependency"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Aug 2022 07:39:02 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.1",
+      "version": "1.12.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "51b7a53a9af64eb32a21fc5cc628a857b0e39afd",
+            "comment": "chore: upgrade error level of no-restricted-imports to error in v9 config."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Jul 2022 07:37:42 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.12.0",
+      "version": "1.12.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "Create no-context-default-value lint rule"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 13 Jul 2022 07:47:44 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.11.1",
+      "version": "1.11.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "06add4426b1362a21b32a037a982e842504cd8f2",
+            "comment": "chore: don't forbid package imports from components being exported from react-components/unstable."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Jul 2022 07:40:59 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.11.0",
+      "version": "1.11.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "9d99c66f0a0fedc1757ea44accc09f9c07d5845a",
+            "comment": "chore: use no-restricted-import rule for v9 lint config."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 Jul 2022 07:37:12 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.10.0",
+      "version": "1.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "b2fa23f1083b77f8a73667db10cbe1553f893af1",
+            "comment": "feat: add custom no-restricted-imports rule with fixer"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 May 2022 07:39:11 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.9.1",
+      "version": "1.9.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "680885f2f33f62bc891d1abaa0ad8e6196903481",
+            "comment": "fix(eslint-plugin): move ban-context to react config from base"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 May 2022 07:42:24 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.9.0",
+      "version": "1.9.0",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "fff6a012b8a3b165b364ef2c412b9edee0bc05a9",
+            "comment": "chore: new eslint rule: `ban-context-export`"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 May 2022 07:41:14 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.9.0",
+      "version": "1.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "8d6c673ca9d07fd329c26f16b4c69ea32d284dd4",
+            "comment": "feat: create core base for react/node/legacy lint configs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 May 2022 07:45:34 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.8.0",
+      "version": "1.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "4b1c0d17aee44ce9cf3630d9c2001d2863e6388b",
+            "comment": "feat: add new rules covering usage of Griffel"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 Apr 2022 07:35:26 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.7.0",
+      "version": "1.7.0",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "67dd475e49182d17dbf7d9195c5df9bce02b7b3c",
+            "comment": "exclude e2e tests from extraneuous modules eslint"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Mar 2022 07:38:50 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.7.0",
+      "version": "1.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "fcbdedc99e36f562680ebd2b1a7d422dabd5078b",
+            "comment": "feat(eslint-plugin): enable no-export-all:all for all packages public API"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Mar 2022 07:34:40 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.6.3",
+      "version": "1.6.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "8722596e561b57decfe9aa79121db844737102ff",
+            "comment": "fix(eslint-plugin): make import/no-extraneous-dependencies work for react config"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "b7c95f33608704335d906c387808e0dba49956a8",
+            "comment": "revert: ESlint - support tsconfig excluded files"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Feb 2022 07:26:36 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.6.2",
+      "version": "1.6.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "525ac9640d22576385c37ee6c773de8a832c9644",
+            "comment": "Add ./e2e to list of files allowing devDependencies"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jan 2022 07:30:06 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.6.1",
+      "version": "1.6.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "317209bb5cd57c40f35bc42060acb7e3cce5ec95",
+            "comment": "Add naming-convention exception to allow exported hooks with the _unstable suffix"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Jan 2022 07:30:57 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.6.0",
+      "version": "1.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "a9c3d10d957ef651a0f9f43c86e565f18c8edffa",
+            "comment": "Expand ban-imports rule to also support exports, and support regular expressions for names"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Dec 2021 07:31:27 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.5.2",
+      "version": "1.5.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "e839eaaa93e12f70fb844a7d0067ce087b3a6f10",
+            "comment": "Classify .stories.tsx as examples not tests"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "7a1af12609368166d99b28c783c8ba8118f5d6b2",
+            "comment": "Re-enable `@rnx-kit/no-export-all`"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Nov 2021 07:31:31 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.5.1",
+      "version": "1.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "7c5dc03c415baf9a2d8a7ff104b2c0e3bff6daca",
+            "comment": "handle `common` directory as test files"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 14:54:13 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.5.0",
+      "version": "1.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "cf59ae965a25831ad4969e5cda932a4c15938a9e",
+            "comment": "Adding rnx-kit dependency and enabling the no-export-all rule for exporting library surfaces."
+          }
+        ],
+        "patch": [
+          {
+            "author": "andredias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "1fb5698fb5b996402373339e5f7698595f6a76d4",
+            "comment": "Revert usage of @rnx-kit/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Nov 2021 07:36:13 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.4.2",
+      "version": "1.4.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "087c19aa34711c094c03ac63f1fa7a02d3a1607e",
+            "comment": "support excluded files from being linted"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Aug 2021 07:34:48 GMT",
       "tag": "@fluentui/eslint-plugin_v1.4.1",
       "version": "1.4.1",

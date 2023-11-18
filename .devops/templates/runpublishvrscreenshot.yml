@@ -1,0 +1,57 @@
+parameters:
+  - name: fluentVersion
+    type: string
+    default: v8
+  - name: vrTestPackageName
+    type: string
+    default: '@fluentui/vr-tests'
+  - name: vrTestPackagePath
+    type: string
+    default: 'apps/vr-tests'
+
+steps:
+  - task: Bash@3
+    inputs:
+      filePath: yarn-ci.sh
+    displayName: yarn (install packages)
+
+  - script: |
+      isPR=${{lower(eq(variables['Build.Reason'], 'PullRequest'))}}
+      echo $isPR
+      if [[ $isPR == true ]]; then
+        packageAffected=$(yarn --silent check:affected --package ${{ parameters.vrTestPackageName }})
+        if [[ $packageAffected == false ]]; then
+          echo "In PR pipeline but NOT affecting test package. Skipping test run"
+          echo "##vso[task.setvariable variable=vrTestSkip;]yes"
+        else
+          echo "In PR pipeline and affecting test package. NOT Skipping test run"
+          echo "##vso[task.setvariable variable=vrTestSkip;]no"
+        fi
+      else
+        echo "Not in PR pipeline. NOT Skipping test run"
+        echo "##vso[task.setvariable variable=vrTestSkip;]no"
+      fi
+    displayName: Check if vrTests should be skipped
+
+  - script: |
+      yarn workspace ${{ parameters.vrTestPackageName }} vr:build
+    displayName: Build VR tests components package
+    condition: eq(variables['vrTestSkip'], 'no')
+
+  - script: |
+      yarn workspace ${{ parameters.vrTestPackageName }} vr:test --verbose
+    displayName: 'Run VR tests'
+    condition: eq(variables['vrTestSkip'], 'no')
+
+  - script: |
+      mkdir -p screenshots
+      cp -rf ${{ parameters.vrTestPackagePath }}/dist/screenshots/*.png screenshots/
+    displayName: Collate Artifacts
+    condition: eq(variables['vrTestSkip'], 'no')
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: 'screenshots'
+      ArtifactName: 'vrscreenshot${{ parameters.fluentVersion }}'
+      publishLocation: 'Container'
+    condition: eq(variables['vrTestSkip'], 'no')

@@ -11,7 +11,7 @@ export const BottomNavigationPage: React.FunctionComponent<IControlsPageProps> =
   return (
     <ControlsAreaPage
       {...props}
-      {...BottomNavigationPageProps[props.platform]}
+      {...BottomNavigationPageProps[props.platform!]}
       otherSections={_otherSections(props.platform) as IPageSectionProps[]}
     />
   );

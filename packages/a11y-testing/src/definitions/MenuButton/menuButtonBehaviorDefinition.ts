@@ -34,15 +34,12 @@ const menuButtonBehaviorDefinitionTriggerSlot: Rule[] = [
   BehaviorRule.slot('trigger').forProps({ contextMenu: true, open: true }).doesNotHaveAttribute('aria-expanded'),
 ];
 
-export const menuButtonBehaviorDefinitionTriggerSlotTabbable = menuButtonBehaviorDefinitionTriggerSlot.concat(
-  triggerTabbable,
-);
-export const menuButtonBehaviorDefinitionTriggerSlotNotTabbable = menuButtonBehaviorDefinitionTriggerSlot.concat(
-  triggerNotTabbable,
-);
-export const menuButtonBehaviorDefinitionTriggerWithTabIndex = menuButtonBehaviorDefinitionTriggerSlot.concat(
-  triggerWithTabIndex,
-);
+export const menuButtonBehaviorDefinitionTriggerSlotTabbable =
+  menuButtonBehaviorDefinitionTriggerSlot.concat(triggerTabbable);
+export const menuButtonBehaviorDefinitionTriggerSlotNotTabbable =
+  menuButtonBehaviorDefinitionTriggerSlot.concat(triggerNotTabbable);
+export const menuButtonBehaviorDefinitionTriggerWithTabIndex =
+  menuButtonBehaviorDefinitionTriggerSlot.concat(triggerWithTabIndex);
 
 export const menuButtonBehaviorDefinitionMenuSlot: Rule[] = [
   BehaviorRule.slot('menu')

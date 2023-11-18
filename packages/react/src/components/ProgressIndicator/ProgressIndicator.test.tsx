@@ -28,6 +28,12 @@ describe('ProgressIndicator', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders with ariaLabel', () => {
+    const component = renderer.create(<ProgressIndicator ariaLabel="Test" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders React content', () => {
     const component = renderer.create(<ProgressIndicator label={<span>Test</span>} description={<span>Test</span>} />);
     const tree = component.toJSON();

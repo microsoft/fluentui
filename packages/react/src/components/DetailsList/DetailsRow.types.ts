@@ -9,7 +9,7 @@ import type { ISelection } from '../../Selection';
 import type { IDragDropHelper, IDragDropEvents } from '../../DragDrop';
 import type { IViewport } from '../../utilities/decorators/withViewport';
 import type { IGroup } from '../GroupedList/GroupedList.types';
-import type { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
+import type { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction, IComponentAs } from '../../Utilities';
 import type { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
 import type { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 import type { IFocusZoneProps } from '../../FocusZone';
@@ -77,7 +77,7 @@ export interface IDetailsItemProps {
  * {@docCategory DetailsList}
  */
 export interface IDetailsRowBaseProps
-  extends Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'>,
+  extends Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey' | 'onRenderField'>,
     IBaseProps<IDetailsRow>,
     IDetailsItemProps {
   /**
@@ -162,6 +162,11 @@ export interface IDetailsRowBaseProps
   getRowAriaLabel?: (item: any) => string;
 
   /**
+   * Callback for getting the row aria description
+   */
+  getRowAriaDescription?: (item: any) => string;
+
+  /**
    * Callback for getting the row aria-describedby
    */
   getRowAriaDescribedBy?: (item: any) => string;
@@ -179,7 +184,7 @@ export interface IDetailsRowBaseProps
   /**
    * DOM element into which to render row field
    */
-  rowFieldsAs?: React.ComponentType<IDetailsRowFieldsProps>;
+  rowFieldsAs?: IComponentAs<IDetailsRowFieldsProps>;
 
   /**
    * Overriding class name
@@ -212,6 +217,12 @@ export interface IDetailsRowBaseProps
   role?: string;
 
   /**
+   * Whether the row is rendered within a grid.
+   * In DetailsList this should be true, and in GroupedList this should be false.
+   */
+  isGridRow?: boolean;
+
+  /**
    * Id for row
    */
   id?: string;
@@ -227,6 +238,9 @@ export interface IDetailsRowBaseProps
    * Properties to pass to the rows' FocusZone.
    */
   focusZoneProps?: IFocusZoneProps;
+
+  /** whether or not row should be rendered in disabled state */
+  disabled?: boolean;
 }
 
 /**
@@ -252,39 +266,40 @@ export interface IDetailsRowProps extends IDetailsRowBaseProps {
 /**
  * {@docCategory DetailsList}
  */
-export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
-  /** Whether the row is selected  */
-  isSelected?: boolean;
+export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> &
+  Pick<IDetailsRowProps, 'disabled'> & {
+    /** Whether the row is selected  */
+    isSelected?: boolean;
 
-  /** Whether there are any rows in the list selected */
-  anySelected?: boolean;
+    /** Whether there are any rows in the list selected */
+    anySelected?: boolean;
 
-  /** Whether this row can be selected */
-  canSelect?: boolean;
+    /** Whether this row can be selected */
+    canSelect?: boolean;
 
-  /** Class name of when this becomes a drop target. */
-  droppingClassName?: string;
+    /** Class name of when this becomes a drop target. */
+    droppingClassName?: string;
 
-  /** Is the checkbox visible */
-  isCheckVisible?: boolean;
+    /** Is the checkbox visible */
+    isCheckVisible?: boolean;
 
-  /** Is this a row header */
-  isRowHeader?: boolean;
+    /** Is this a row header */
+    isRowHeader?: boolean;
 
-  /** A class name from the checkbox cell, so proper styling can be targeted */
-  checkboxCellClassName?: string;
+    /** A class name from the checkbox cell, so proper styling can be targeted */
+    checkboxCellClassName?: string;
 
-  /** CSS class name for the component */
-  className?: string;
+    /** CSS class name for the component */
+    className?: string;
 
-  /** Is list in compact mode */
-  compact?: boolean;
+    /** Is list in compact mode */
+    compact?: boolean;
 
-  cellStyleProps?: ICellStyleProps;
+    cellStyleProps?: ICellStyleProps;
 
-  /** Whether to animate updates */
-  enableUpdateAnimations?: boolean;
-};
+    /** Whether to animate updates */
+    enableUpdateAnimations?: boolean;
+  };
 
 /**
  * {@docCategory DetailsList}
@@ -309,6 +324,9 @@ export interface IDetailsRowStyles {
   isMultiline: IStyle;
   fields: IStyle;
   cellMeasurer: IStyle;
-  checkCover: IStyle;
+  /**
+   * @deprecated Node removed, do not use
+   */
+  checkCover?: IStyle;
   check: IStyle;
 }

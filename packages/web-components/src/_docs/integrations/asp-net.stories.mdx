@@ -2,7 +2,7 @@ import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Integrations/ASP.NET" />
 
-Fluent Web Components work naturally with ASP.NET server-side development, by simply adding a script tag and using the custom HTML elements. Let's take a look at how to set things up.
+Fluent UI Web Components work naturally with ASP.NET server-side development, by simply adding a script tag and using the custom HTML elements. Let's take a look at how to set things up.
 
 ## Setting up the ASP.NET project
 
@@ -23,7 +23,7 @@ Now that we've got our basic project setup, we need to add our web components sc
 To add a CDN script for `fluent-components` use the following markup:
 
 ```html
-<script type="module" src="https://unpkg.com/@@fluentui/web-components"></script>
+<script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
 ```
 
 The best place to put this is typically in your `_Layout.cshtml` file in the script section at the bottom of the `<body>`.
@@ -42,7 +42,7 @@ node_modules/@fluentui/web-components/dist/fluent-components.min.js
 
 Copy this to your `wwwroot/js` folder and reference it with a script tag as described above.
 
-Should you wish to go one step further and leverage a client-side bundler, such as Webpack, there is some additional setup to integrate with ASP.NET that is beyond the scope of this tutorial. Basic Webpack instructions for Fluent Web Components can be found [here](./webpack). The most important detail with respect to Fluent Web Components is that you'll want to install a few more packages. Use the following command if this is your preferred setup:
+Should you wish to go one step further and leverage a client-side bundler, such as Webpack, there is some additional setup to integrate with ASP.NET that is beyond the scope of this tutorial. Basic Webpack instructions for Fluent UI Web Components can be found [here](./webpack). The most important detail with respect to Fluent UI Web Components is that you'll want to install a few more packages. Use the following command if this is your preferred setup:
 
 ```shell
 npm install --save @fluentui/web-components @microsoft/fast-element lodash-es
@@ -86,4 +86,4 @@ h2 {
 }
 ```
 
-Congratulations! You're now set up to use Fluent Web Components with ASP.NET. You can use more components, build your own components, and when you are ready, build and deploy your website or app to production.
+Congratulations! You're now set up to use Fluent UI Web Components with ASP.NET. You can use more components, build your own components, and when you are ready, build and deploy your website or app to production.

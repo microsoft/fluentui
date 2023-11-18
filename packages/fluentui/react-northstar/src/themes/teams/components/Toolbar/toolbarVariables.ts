@@ -99,7 +99,7 @@ export const toolbarVariables = (siteVars: any): ToolbarVariables => ({
   itemHeight: pxToRem(32),
   itemPadding: '0',
   borderWidth: '2px',
-  borderRadius: '50%',
+  borderRadius: siteVars.borderRadiusMedium,
   dividerMargin: `${pxToRem(10)} ${pxToRem(4)}`,
 
   menuMaxWidth: pxToRem(312),

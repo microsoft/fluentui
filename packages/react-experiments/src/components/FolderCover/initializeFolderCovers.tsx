@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { registerIcons } from '@fluentui/style-utilities';
+import { registerIcons, FLUENT_CDN_BASE_URL } from '@fluentui/style-utilities';
 import type { IIconOptions } from '@fluentui/style-utilities';
 
-const ASSET_CDN_BASE_URL =
-  'https://spoprod-a.akamaihd.net/files/fabric-cdn-prod_20200708.002/office-ui-fabric-react-assets/foldericons';
+const ASSET_CDN_BASE_URL = `${FLUENT_CDN_BASE_URL}/office-ui-fabric-react-assets/foldericons`;
 
 export function initializeFolderCovers(baseUrl: string = ASSET_CDN_BASE_URL, options?: Partial<IIconOptions>): void {
   registerIcons(

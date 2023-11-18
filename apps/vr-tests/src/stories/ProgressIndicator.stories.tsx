@@ -1,20 +1,20 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { ProgressIndicator } from '@fluentui/react';
 
 storiesOf('ProgressIndicator', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory('0%', () => (
     <ProgressIndicator
@@ -32,7 +32,7 @@ storiesOf('ProgressIndicator', module)
         percentComplete={0.5}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('100%', () => (
     <ProgressIndicator

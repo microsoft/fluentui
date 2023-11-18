@@ -2,6 +2,8 @@
 
 exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`] = `
 <div
+  aria-describedby="teaching-bubble-content-0"
+  aria-labelledby="teaching-bubble-title-1"
   className=
       ms-TeachingBubble-content
       {
@@ -25,6 +27,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
   >
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {
@@ -69,6 +72,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 margin-top: 0px;
                 overflow-wrap: break-word;
               }
+          id="teaching-bubble-title-1"
           role="heading"
         >
           Test Title
@@ -93,6 +97,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 margin-right: 0px;
                 margin-top: 0px;
               }
+          id="teaching-bubble-content-0"
         >
           Content
         </p>
@@ -116,12 +121,6 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
             & > * {
               text-overflow: ellipsis;
             }
-            & > *:not(:first-child) {
-              margin-left: 0px;
-            }
-            & > *:not(.ms-StackItem) {
-              flex-shrink: 1;
-            }
             & .ms-Button:not(:first-child) {
               margin-left: 10px;
             }
@@ -133,6 +132,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 align-self: center;
+                flex-basis: auto;
                 flex-shrink: 1;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -149,6 +149,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                flex-basis: auto;
                 flex-shrink: 1;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
@@ -157,6 +158,159 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 width: auto;
               }
         >
+          <button
+            className=
+                ms-Button
+                ms-Button--primary
+                ms-TeachingBubble-primaryButton
+                primary-className
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  background-color: #ffffff;
+                  border-color: #ffffff;
+                  border-radius: 2px;
+                  border: 1px solid #0078d4;
+                  box-sizing: border-box;
+                  color: #0078d4;
+                  cursor: pointer;
+                  display: inline-block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  height: 32px;
+                  min-width: 80px;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 0;
+                  position: relative;
+                  text-align: center;
+                  text-decoration: none;
+                  user-select: none;
+                  white-space: nowrap;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid transparent;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline-color: #ffffff;
+                  outline: 1px solid transparent;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
+                &:active > span {
+                  left: 0px;
+                  position: relative;
+                  top: 0px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
+                  background-color: WindowText;
+                  border-color: WindowText;
+                  color: Window;
+                  forced-color-adjust: none;
+                }
+                &:hover {
+                  background-color: #deecf9;
+                  border-color: #deecf9;
+                  border: 1px solid #106ebe;
+                  color: #005a9e;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
+                  background-color: Highlight;
+                  border-color: Highlight;
+                  color: Window;
+                }
+                &:focus {
+                  background-color: #deecf9;
+                  border: 1px solid #000000;
+                  color: #005a9e;
+                  outline-offset: -2px;
+                  outline: 1px solid #ffffff;
+                }
+                &:active {
+                  background-color: #ffffff;
+                  border-color: #ffffff;
+                  border: 1px solid #005a9e;
+                  color: #0078d4;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
+                  -ms-high-contrast-adjust: none;
+                  background-color: WindowText;
+                  border-color: WindowText;
+                  color: Window;
+                  forced-color-adjust: none;
+                }
+                & .ms-Button-label {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            data-is-focusable={true}
+            onClick={[Function]}
+            onKeyDown={[Function]}
+            onKeyPress={[Function]}
+            onKeyUp={[Function]}
+            onMouseDown={[Function]}
+            onMouseUp={[Function]}
+            type="button"
+          >
+            <span
+              className=
+                  ms-Button-flexContainer
+                  {
+                    align-items: center;
+                    display: flex;
+                    flex-wrap: nowrap;
+                    height: 100%;
+                    justify-content: center;
+                  }
+              data-automationid="splitbuttonprimary"
+            >
+              <span
+                className=
+                    ms-Button-textContainer
+                    {
+                      display: block;
+                      flex-grow: 1;
+                    }
+              >
+                <span
+                  className=
+                      ms-Button-label
+                      {
+                        display: block;
+                        font-weight: 600;
+                        line-height: 100%;
+                        margin-bottom: 0;
+                        margin-left: 4px;
+                        margin-right: 4px;
+                        margin-top: 0;
+                      }
+                  id="id__3"
+                >
+                  Test Primary Button
+                </span>
+              </span>
+            </span>
+          </button>
           <button
             className=
                 ms-Button
@@ -204,14 +358,14 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   bottom: -2px;
                   left: -2px;
                   outline-color: ButtonText;
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -221,7 +375,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   border-color: #ffffff;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
                 }
@@ -285,162 +439,9 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                         margin-right: 4px;
                         margin-top: 0;
                       }
-                  id="id__1"
+                  id="id__6"
                 >
                   Test Secondary Button
-                </span>
-              </span>
-            </span>
-          </button>
-          <button
-            className=
-                ms-Button
-                ms-Button--primary
-                ms-TeachingBubble-primaryButton
-                primary-className
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  background-color: #ffffff;
-                  border-color: #ffffff;
-                  border-radius: 2px;
-                  border: 1px solid #0078d4;
-                  box-sizing: border-box;
-                  color: #0078d4;
-                  cursor: pointer;
-                  display: inline-block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  height: 32px;
-                  min-width: 80px;
-                  outline: transparent;
-                  padding-bottom: 0;
-                  padding-left: 16px;
-                  padding-right: 16px;
-                  padding-top: 0;
-                  position: relative;
-                  text-align: center;
-                  text-decoration: none;
-                  user-select: none;
-                  white-space: nowrap;
-                }
-                &::-moz-focus-inner {
-                  border: 0;
-                }
-                .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid transparent;
-                  bottom: 1px;
-                  content: "";
-                  left: 1px;
-                  outline-color: #ffffff;
-                  outline: 1px solid transparent;
-                  position: absolute;
-                  right: 1px;
-                  top: 1px;
-                  z-index: 1;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                  bottom: -2px;
-                  left: -2px;
-                  outline-color: ButtonText;
-                  right: -2px;
-                  top: -2px;
-                }
-                &:active > * {
-                  left: 0px;
-                  position: relative;
-                  top: 0px;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                  -ms-high-contrast-adjust: none;
-                  background-color: WindowText;
-                  border-color: WindowText;
-                  color: Window;
-                  forced-color-adjust: none;
-                }
-                &:hover {
-                  background-color: #deecf9;
-                  border-color: #deecf9;
-                  border: 1px solid #106ebe;
-                  color: #005a9e;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                  background-color: Highlight;
-                  border-color: Highlight;
-                  color: Window;
-                }
-                &:focus {
-                  background-color: #deecf9;
-                  border: 1px solid #000000;
-                  color: #005a9e;
-                  outline-offset: -2px;
-                  outline: 1px solid #ffffff;
-                }
-                &:active {
-                  background-color: #ffffff;
-                  border-color: #ffffff;
-                  border: 1px solid #005a9e;
-                  color: #0078d4;
-                }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
-                  -ms-high-contrast-adjust: none;
-                  background-color: WindowText;
-                  border-color: WindowText;
-                  color: Window;
-                  forced-color-adjust: none;
-                }
-                & .ms-Button-label {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            data-is-focusable={true}
-            onClick={[Function]}
-            onKeyDown={[Function]}
-            onKeyPress={[Function]}
-            onKeyUp={[Function]}
-            onMouseDown={[Function]}
-            onMouseUp={[Function]}
-            type="button"
-          >
-            <span
-              className=
-                  ms-Button-flexContainer
-                  {
-                    align-items: center;
-                    display: flex;
-                    flex-wrap: nowrap;
-                    height: 100%;
-                    justify-content: center;
-                  }
-              data-automationid="splitbuttonprimary"
-            >
-              <span
-                className=
-                    ms-Button-textContainer
-                    {
-                      display: block;
-                      flex-grow: 1;
-                    }
-              >
-                <span
-                  className=
-                      ms-Button-label
-                      {
-                        display: block;
-                        font-weight: 600;
-                        line-height: 100%;
-                        margin-bottom: 0;
-                        margin-left: 4px;
-                        margin-right: 4px;
-                        margin-top: 0;
-                      }
-                  id="id__4"
-                >
-                  Test Primary Button
                 </span>
               </span>
             </span>
@@ -497,14 +498,14 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -514,7 +515,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
               background: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -588,6 +589,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
     </div>
     <div
       aria-hidden={true}
+      data-is-focus-trap-zone-bumper={true}
       data-is-visible={true}
       style={
         Object {

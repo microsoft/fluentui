@@ -1,0 +1,18 @@
+{
+  "name": "@fluentui/ts-minbar-test-react",
+  "version": "8.0.0",
+  "private": true,
+  "description": "Testing Fluent UI React compatibility with Typescript 3.9",
+  "license": "MIT",
+  "dependencies": {
+    "@fluentui/react": "*"
+  },
+  "scripts": {
+    "type-check": "tsc -p .",
+    "test": "ts-node --transpileOnly ./src/index.ts"
+  },
+  "devDependencies": {
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-projects-test": "*"
+  }
+}

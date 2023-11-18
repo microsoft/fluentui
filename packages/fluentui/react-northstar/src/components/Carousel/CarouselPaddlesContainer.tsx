@@ -6,7 +6,7 @@ import {
   useAccessibility,
   getElementType,
   useUnhandledProps,
-  ComponentWithAs,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import {
   commonPropTypes,
@@ -29,42 +29,44 @@ export const carouselPaddlesContainerClassName = 'ui-carrouselpaddles_container'
 /**
  * A CarouselPaddlesContainer is a container for the Carousel Paddles.
  */
-export const CarouselPaddlesContainer: ComponentWithAs<'div', CarouselPaddlesContainerProps> &
-  FluentComponentStaticProps<CarouselPaddlesContainerProps> = props => {
-  const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(CarouselPaddlesContainer.displayName, context.telemetry);
-  setStart();
+export const CarouselPaddlesContainer = React.forwardRef<HTMLDivElement, CarouselPaddlesContainerProps>(
+  (props, ref) => {
+    const context = useFluentContext();
+    const { setStart, setEnd } = useTelemetry(CarouselPaddlesContainer.displayName, context.telemetry);
+    setStart();
 
-  const { className, children, design, styles, variables, content } = props;
+    const { className, children, design, styles, variables, content } = props;
 
-  const { classes } = useStyles<CarouselPaddlesContainerStylesProps>(CarouselPaddlesContainer.displayName, {
-    className: carouselPaddlesContainerClassName,
-    mapPropsToInlineStyles: () => ({
-      className,
-      design,
-      styles,
-      variables,
-    }),
-    rtl: context.rtl,
-  });
+    const { classes } = useStyles<CarouselPaddlesContainerStylesProps>(CarouselPaddlesContainer.displayName, {
+      className: carouselPaddlesContainerClassName,
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables,
+      }),
+      rtl: context.rtl,
+    });
 
-  const getA11Props = useAccessibility(props.accessibility, {
-    debugName: CarouselPaddlesContainer.displayName,
-    rtl: context.rtl,
-  });
+    const getA11Props = useAccessibility(props.accessibility, {
+      debugName: CarouselPaddlesContainer.displayName,
+      rtl: context.rtl,
+    });
 
-  const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps(CarouselPaddlesContainer.handledProps, props);
+    const ElementType = getElementType(props);
+    const unhandledProps = useUnhandledProps(CarouselPaddlesContainer.handledProps, props);
 
-  const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
-      {childrenExist(children) ? children : content}
-    </ElementType>
-  );
-  setEnd();
+    const element = (
+      <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
+        {childrenExist(children) ? children : content}
+      </ElementType>
+    );
+    setEnd();
 
-  return element;
-};
+    return element;
+  },
+) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CarouselPaddlesContainerProps> &
+  FluentComponentStaticProps<CarouselPaddlesContainerProps>;
 
 CarouselPaddlesContainer.displayName = 'CarouselPaddlesContainer';
 CarouselPaddlesContainer.propTypes = {

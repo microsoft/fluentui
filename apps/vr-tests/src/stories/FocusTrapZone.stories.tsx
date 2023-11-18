@@ -1,21 +1,21 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { Panel, PanelType, Dialog, DialogType } from '@fluentui/react';
 
 storiesOf('FocusTrapZones', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default')
         .click('.ms-Panel-closeButton')
         .snapshot('click on panel close button')
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'Dialog nested in Panel',
@@ -49,7 +49,7 @@ storiesOf('FocusTrapZones', module)
         </Panel>
       </div>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Panel on its own', () => (
     <div>

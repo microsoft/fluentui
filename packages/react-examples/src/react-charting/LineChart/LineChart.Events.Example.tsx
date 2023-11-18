@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { IChartProps, ILineChartProps, LineChart } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { IChartProps, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import * as d3 from 'd3-format';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { ColorPicker, IColor } from '@fluentui/react';
 
 const calloutItemStyle = mergeStyles({
   borderBottom: '1px solid #D9D9D9',
@@ -14,6 +15,7 @@ interface ILineChartEventsExampleState {
   width: number;
   height: number;
   allowMultipleShapes: boolean;
+  customEventAnnotationColor: string | undefined;
 }
 
 export class LineChartEventsExample extends React.Component<{}, ILineChartEventsExampleState> {
@@ -23,16 +25,33 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
       width: 700,
       height: 330,
       allowMultipleShapes: false,
+      customEventAnnotationColor: undefined,
     };
   }
 
   public render(): JSX.Element {
     return (
       <>
-        <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
-        <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <label htmlFor="changeWidth_Events">Change Width:</label>
+        <input
+          type="range"
+          value={this.state.width}
+          min={200}
+          max={1000}
+          onChange={this._onWidthChange}
+          id="changeWidth_Events"
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
+        />
+        <label htmlFor="changeHeight_Events">Change Height:</label>
+        <input
+          type="range"
+          value={this.state.height}
+          min={200}
+          max={1000}
+          id="changeHeight_Events"
+          onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
+        />
         <Toggle
           label="Enabled  multiple shapes for each line"
           onText="On"
@@ -40,6 +59,17 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
           onChange={this._onShapeChange}
           checked={this.state.allowMultipleShapes}
         />
+        <Checkbox
+          label="Use Custom Color for Event Annotation"
+          checked={this.state.customEventAnnotationColor !== undefined}
+          onChange={this._onToggleCustomEventAnnotationColor}
+        />
+        {this.state.customEventAnnotationColor && (
+          <ColorPicker
+            onChange={this._onChangeCustomEventAnnotationColor}
+            color={this.state.customEventAnnotationColor}
+          />
+        )}
         <div>{this._basicExample()}</div>
       </>
     );
@@ -53,6 +83,12 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
   };
   private _onShapeChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ allowMultipleShapes: checked });
+  };
+  private _onToggleCustomEventAnnotationColor = (ev: React.FormEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ customEventAnnotationColor: checked ? '#111111' : undefined });
+  };
+  private _onChangeCustomEventAnnotationColor = (ev: React.SyntheticEvent<HTMLElement, Event>, color: IColor) => {
+    this.setState({ customEventAnnotationColor: color.str });
   };
 
   private _basicExample(): JSX.Element {
@@ -91,7 +127,10 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
               y: 298,
             },
           ],
-          color: DefaultPalette.blue,
+          color: DataVizPalette.color8,
+          lineOptions: {
+            lineBorderWidth: '4',
+          },
         },
         {
           legend: 'All',
@@ -125,7 +164,10 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
               y: 292,
             },
           ],
-          color: DefaultPalette.green,
+          color: DataVizPalette.color10,
+          lineOptions: {
+            lineBorderWidth: '4',
+          },
         },
       ],
     };
@@ -182,14 +224,15 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
                 onRenderCard: () => <div className={calloutItemStyle}>event 5 message</div>,
               },
             ],
-            strokeColor: '#111111',
-            labelColor: '#111111',
+            strokeColor: this.state.customEventAnnotationColor,
+            labelColor: this.state.customEventAnnotationColor,
             labelHeight: 18,
             labelWidth: 50,
             mergedLabel: (count: number) => `${count} events`,
           }}
           height={this.state.height}
           width={this.state.width}
+          enablePerfOptimization={true}
         />
       </div>
     );

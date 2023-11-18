@@ -1,14 +1,14 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { Pivot, PivotItem, IPivotItemProps, Icon, Fabric } from '@fluentui/react';
 
 storiesOf('Pivot', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Pivot-link.is-selected')
         .snapshot('hover-selected', { cropTo: '.testWrapper' })
@@ -20,7 +20,7 @@ storiesOf('Pivot', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => (
     <Pivot>
@@ -62,7 +62,7 @@ storiesOf('Pivot', module)
         </PivotItem>
       </Pivot>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Large', () => (
     <Pivot linkSize="large">
@@ -95,7 +95,7 @@ storiesOf('Pivot', module)
         </PivotItem>
       </Pivot>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Tabs large', () => (
     <Pivot linkFormat="tabs" linkSize="large">
@@ -123,23 +123,25 @@ storiesOf('Pivot - Overflow', module)
     </div>
   ))
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .executeScript('document.getElementById("testWrapper").style.width = "500px"')
         .snapshot('Medium', { cropTo: '.testWrapper' })
         .executeScript('document.getElementById("testWrapper").style.width = "750px"')
         .snapshot('Wide', { cropTo: '.testWrapper' })
         .executeScript('document.getElementById("testWrapper").style.width = "250px"')
         .click('.ms-Pivot-overflowMenuButton')
+        .wait(1500)
         .click('.ms-Pivot-linkInMenu[data-last-tab]')
         .snapshot('Narrow - Last tab selected', { cropTo: '.testWrapper' })
         .click('.ms-Pivot-overflowMenuButton')
+        .wait(1500)
         .hover('.ms-Pivot-overflowMenuButton')
         .snapshot('Narrow - Overflow menu', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => (
     <Pivot overflowBehavior="menu">

@@ -7,13 +7,14 @@ import { findIntrinsicElement, mountWithProvider } from 'test/utils';
 
 const items = ['item0', 'item1', 'item2', 'item3', 'item4', 'item5'];
 
-const renderDropdown = (props: DropdownProps = {}) => {
-  const wrapper = mountWithProvider(<Dropdown items={items} {...props} />);
+const renderDropdown = (props: DropdownProps = {}, attachTo?: HTMLElement) => {
+  const wrapper = mountWithProvider(<Dropdown items={items} {...props} />, { attachTo });
   const triggerButtonWrapper = findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.triggerButton}`);
   const toggleIndicatorWrapper = findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.toggleIndicator}`);
   const searchInputWrapper = findIntrinsicElement(wrapper, `.${dropdownSearchInputSlotClassNames.input}`);
   const itemsListWrapper = findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.itemsList}`);
   const getItemsWrapper = () => findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.item}`);
+  const getItemsCountWrapper = () => findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.itemsCount}`);
   const getSelectedItemsWrapper = () => findIntrinsicElement(wrapper, `.${dropdownSlotClassNames.selectedItem}`);
   const getSelectedItemWrapperAtIndex = index => getSelectedItemsWrapper().at(index);
   const getItemWrapperAtIndex = index => getItemsWrapper().at(index);
@@ -28,6 +29,7 @@ const renderDropdown = (props: DropdownProps = {}) => {
     itemsListNode: itemsListWrapper.getDOMNode<HTMLElement>(),
     searchInputNode: searchInputWrapper.length ? searchInputWrapper.getDOMNode<HTMLInputElement>() : null,
     getA11yMessageContainerNode: () => findIntrinsicElement(wrapper, '[role="status"]').getDOMNode(),
+    getItemsCountNode: () => getItemsCountWrapper().getDOMNode<HTMLElement>(),
     getItemNodes: () => getItemsWrapper().map(nodeWrapper => nodeWrapper.getDOMNode()),
     getItemNodeAtIndex: index => getItemWrapperAtIndex(index).getDOMNode(),
     getSelectedItemNodes: () => getSelectedItemsWrapper().map(nodeWrapper => nodeWrapper.getDOMNode()),
@@ -71,6 +73,9 @@ const renderDropdown = (props: DropdownProps = {}) => {
           optional,
         ),
       );
+    },
+    keyDownOnClearIndicator: (key: string, optional?: Object) => {
+      getClearIndicatorWrapper().simulate('keydown', { key, ...optional });
     },
     keyDownOnSearchInput: (key: string, optional?: Object) =>
       searchInputWrapper.simulate('keydown', { key, ...optional }),

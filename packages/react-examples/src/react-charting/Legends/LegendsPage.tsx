@@ -5,15 +5,25 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   PropertiesTableSet,
+  Markdown,
 } from '@fluentui/react-docsite-components';
 
 import { LegendOverflowExample } from './Legends.Overflow.Example';
 import { LegendBasicExample } from './Legends.Basic.Example';
 import { LegendWrapLinesExample } from './Legends.WrapLines.Example';
+import { LegendStyledExample } from './Legends.Styled.Example';
+import { LegendsOnChangeExample } from './Legends.OnChange.Example';
 
-const LegendsOverflowExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.Overflow.Example.tsx') as string;
-const LegendsWrapLinesExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.WrapLines.Example.tsx') as string;
-const LegendsBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.Basic.Example.tsx') as string;
+const LegendsOverflowExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.Overflow.Example.tsx') as string;
+const LegendsWrapLinesExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.WrapLines.Example.tsx') as string;
+const LegendsBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.Basic.Example.tsx') as string;
+const LegendsStyledExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.Styled.Example.tsx') as string;
+const LegendsOnChangeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/Legends.OnChange.Example.tsx') as string;
 
 export class LegendsPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -34,6 +44,14 @@ export class LegendsPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Legends with no overflow" code={LegendsBasicExampleCode}>
               <LegendBasicExample />
             </ExampleCard>
+
+            <ExampleCard title="Legend styled" code={LegendsStyledExampleCode}>
+              <LegendStyledExample />
+            </ExampleCard>
+
+            <ExampleCard title="Legends onChange" code={LegendsOnChangeExampleCode}>
+              <LegendsOnChangeExample />
+            </ExampleCard>
           </div>
         }
         propertiesTables={
@@ -45,14 +63,14 @@ export class LegendsPage extends React.Component<IComponentDemoPageProps, {}> {
           />
         }
         overview={
-          <div>
-            <p>
-              The legends wrap based upon the space available for them. If there is not enough space to show all legends
-              on a single line, the legends fall into an overflow menu. Text appears indicating the number of legends in
-              the overflow menu. The legends are selectable and action to be performed upon clicking a certain legend
-              can be passed.
-            </p>
-          </div>
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/docs/LegendsOverview.md')}
+          </Markdown>
+        }
+        bestPractices={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/Legends/docs/LegendsBestPractices.md')}
+          </Markdown>
         }
       />
     );

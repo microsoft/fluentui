@@ -1,14 +1,17 @@
-const isNodeCaller = caller => {
-  return caller && (caller.name === '@babel/register' || caller.name === 'babel-jest');
+/** @typedef {import('@babel/core').TransformOptions['caller']} Caller */
+
+const isNodeCaller = (/** @type {Caller}*/ caller) => {
+  return Boolean(caller && (caller.name === '@babel/register' || caller.name === 'babel-jest'));
 };
-const isDistCaller = caller => {
+const isDistCaller = (/** @type {Caller}*/ caller) => {
   return !!(caller && caller.name === 'babel-gulp');
 };
-const supportsESM = caller => {
+const supportsESM = (/** @type {Caller}*/ caller) => {
+  // @ts-expect-error - TODO: caller.useESModules api doesn't exists (types/implementation), is this a bug? https://babeljs.io/docs/en/options#caller
   return !!((caller && caller.name === 'babel-loader') || caller.useESModules);
 };
 
-module.exports = api => {
+module.exports = (/** @type {import('@babel/core').ConfigAPI} */ api) => {
   const isDistBundle = api.caller(isDistCaller);
   const isNode = api.caller(isNodeCaller);
   const useESModules = !isNode && api.caller(supportsESM);

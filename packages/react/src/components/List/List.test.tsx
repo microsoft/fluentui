@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react';
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
@@ -134,6 +135,16 @@ describe('List', () => {
 
       expect(rows).toHaveLength(4);
     });
+
+    it('renders List correctly when `renderEarly={true}`', () => {
+      List.prototype.componentDidMount = jest.fn();
+
+      const onRenderCell = () => null;
+      const component = renderer.create(<List items={[]} onRenderCell={onRenderCell} renderEarly={true} />);
+      const tree = component.toJSON();
+
+      expect(tree).toMatchSnapshot();
+    });
   });
 
   describe('if provided', () => {
@@ -172,13 +183,17 @@ describe('List', () => {
     });
 
     it("sets optional className to List's root", done => {
-      const wrapper = mount(<List items={mockData(100)} />);
+      const data = mockData(100);
 
-      wrapper.setProps({ items: mockData(100), className: 'foo', onPagesUpdated: (pages: IPage[]) => done() });
+      const wrapper = mount(<List items={data} />);
+
+      wrapper.setProps({ items: data, className: 'foo' });
 
       const listRoot = wrapper.find(List);
 
       expect(listRoot.getDOMNode().className).toContain('foo');
+
+      done();
     });
 
     it('renders the return value of optional onRenderCell prop per row', done => {
@@ -212,6 +227,21 @@ describe('List', () => {
       const rows = wrapper.find('.ms-List-cell');
 
       expect(rows).toHaveLength(100);
+    });
+  });
+
+  describe('getPageSpecification', () => {
+    it('calls an actual reference for getPageSpecification', () => {
+      const getPageSpecificationA = jest.fn().mockImplementation(() => ({}));
+      const getPageSpecificationB = jest.fn().mockImplementation(() => ({}));
+
+      const { rerender } = render(<List getPageSpecification={getPageSpecificationA} items={mockData(5)} />);
+
+      jest.clearAllMocks();
+      rerender(<List getPageSpecification={getPageSpecificationB} items={mockData(5)} />);
+
+      expect(getPageSpecificationA).toHaveBeenCalledTimes(0);
+      expect(getPageSpecificationB).toHaveBeenCalledTimes(1);
     });
   });
 });

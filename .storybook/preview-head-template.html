@@ -1,0 +1,657 @@
+<script>
+  // iFrame resizer code is required to include storybook docs as full height iFrames on the Fluent UI website
+
+  /*! iFrame Resizer (iframeSizer.contentWindow.min.js) - v4.3.2 - 2021-04-26
+   *  Desc: Include this file in any page being loaded into an iframe
+   *        to force the iframe to resize to the content size.
+   *  Requires: iframeResizer.min.js on host page.
+   *  Copyright: (c) 2021 David J. Bradshaw - dave@bradshaw.net
+   *  License: MIT
+   */
+
+  !(function (c) {
+    if ('undefined' != typeof window) {
+      var i = !0,
+        o = 10,
+        r = '',
+        a = 0,
+        u = '',
+        s = null,
+        d = '',
+        l = !1,
+        f = { resize: 1, click: 1 },
+        m = 128,
+        h = !0,
+        g = 1,
+        n = 'bodyOffset',
+        p = n,
+        v = !0,
+        y = '',
+        w = {},
+        b = 32,
+        T = null,
+        E = !1,
+        O = !1,
+        S = '[iFrameSizer]',
+        M = S.length,
+        I = '',
+        N = { max: 1, min: 1, bodyScroll: 1, documentElementScroll: 1 },
+        A = 'child',
+        C = !0,
+        z = window.parent,
+        k = '*',
+        R = 0,
+        x = !1,
+        e = null,
+        L = 16,
+        F = 1,
+        t = 'scroll',
+        P = t,
+        D = window,
+        j = function () {
+          re('onMessage function not defined');
+        },
+        q = function () {},
+        H = function () {},
+        W = {
+          height: function () {
+            return re('Custom height calculation function not defined'), document.documentElement.offsetHeight;
+          },
+          width: function () {
+            return re('Custom width calculation function not defined'), document.body.scrollWidth;
+          },
+        },
+        B = {},
+        J = !1;
+      try {
+        var U = Object.create(
+          {},
+          {
+            passive: {
+              get: function () {
+                J = !0;
+              },
+            },
+          }
+        );
+        window.addEventListener('test', ee, U), window.removeEventListener('test', ee, U);
+      } catch (e) {}
+      var V,
+        X,
+        Y,
+        K,
+        Q,
+        G,
+        Z = {
+          bodyOffset: function () {
+            return document.body.offsetHeight + pe('marginTop') + pe('marginBottom');
+          },
+          offset: function () {
+            return Z.bodyOffset();
+          },
+          bodyScroll: function () {
+            return document.body.scrollHeight;
+          },
+          custom: function () {
+            return W.height();
+          },
+          documentElementOffset: function () {
+            return document.documentElement.offsetHeight;
+          },
+          documentElementScroll: function () {
+            return document.documentElement.scrollHeight;
+          },
+          max: function () {
+            return Math.max.apply(null, ye(Z));
+          },
+          min: function () {
+            return Math.min.apply(null, ye(Z));
+          },
+          grow: function () {
+            return Z.max();
+          },
+          lowestElement: function () {
+            return Math.max(Z.bodyOffset() || Z.documentElementOffset(), ve('bottom', be()));
+          },
+          taggedElement: function () {
+            return we('bottom', 'data-iframe-height');
+          },
+        },
+        $ = {
+          bodyScroll: function () {
+            return document.body.scrollWidth;
+          },
+          bodyOffset: function () {
+            return document.body.offsetWidth;
+          },
+          custom: function () {
+            return W.width();
+          },
+          documentElementScroll: function () {
+            return document.documentElement.scrollWidth;
+          },
+          documentElementOffset: function () {
+            return document.documentElement.offsetWidth;
+          },
+          scroll: function () {
+            return Math.max($.bodyScroll(), $.documentElementScroll());
+          },
+          max: function () {
+            return Math.max.apply(null, ye($));
+          },
+          min: function () {
+            return Math.min.apply(null, ye($));
+          },
+          rightMostElement: function () {
+            return ve('right', be());
+          },
+          taggedElement: function () {
+            return we('right', 'data-iframe-width');
+          },
+        },
+        _ =
+          ((V = Te),
+          (Q = null),
+          (G = 0),
+          function () {
+            var e = Date.now(),
+              t = L - (e - (G = G || e));
+            return (
+              (X = this),
+              (Y = arguments),
+              t <= 0 || L < t
+                ? (Q && (clearTimeout(Q), (Q = null)), (G = e), (K = V.apply(X, Y)), Q || (X = Y = null))
+                : (Q = Q || setTimeout(Ee, t)),
+              K
+            );
+          });
+      te(window, 'message', function (t) {
+        var n = {
+          init: function () {
+            (y = t.data),
+              (z = t.source),
+              ae(),
+              (h = !1),
+              setTimeout(function () {
+                v = !1;
+              }, m);
+          },
+          reset: function () {
+            v ? ie('Page reset ignored by init') : (ie('Page size reset by host page'), Me('resetPage'));
+          },
+          resize: function () {
+            Oe('resizeParent', 'Parent window requested size check');
+          },
+          moveToAnchor: function () {
+            w.findTarget(i());
+          },
+          inPageLink: function () {
+            this.moveToAnchor();
+          },
+          pageInfo: function () {
+            var e = i();
+            ie('PageInfoFromParent called from parent: ' + e), H(JSON.parse(e)), ie(' --');
+          },
+          message: function () {
+            var e = i();
+            ie('onMessage called from parent: ' + e), j(JSON.parse(e)), ie(' --');
+          },
+        };
+        function o() {
+          return t.data.split(']')[1].split(':')[0];
+        }
+        function i() {
+          return t.data.substr(t.data.indexOf(':') + 1);
+        }
+        function r() {
+          return t.data.split(':')[2] in { true: 1, false: 1 };
+        }
+        function e() {
+          var e = o();
+          e in n
+            ? n[e]()
+            : (('undefined' == typeof module || !module.exports) && 'iFrameResize' in window) ||
+              ('jQuery' in window && 'iFrameResize' in window.jQuery.prototype) ||
+              r() ||
+              re('Unexpected message (' + t.data + ')');
+        }
+        S === ('' + t.data).substr(0, M) &&
+          (!1 === h
+            ? e()
+            : r()
+            ? n.init()
+            : ie('Ignored message of type "' + o() + '". Received before initialization.'));
+      }),
+        te(window, 'readystatechange', Ae),
+        Ae();
+    }
+    function ee() {}
+    function te(e, t, n, o) {
+      e.addEventListener(t, n, !!J && (o || {}));
+    }
+    function ne(e) {
+      return e.charAt(0).toUpperCase() + e.slice(1);
+    }
+    function oe(e) {
+      return S + '[' + I + '] ' + e;
+    }
+    function ie(e) {
+      E && 'object' == typeof window.console && console.log(oe(e));
+    }
+    function re(e) {
+      'object' == typeof window.console && console.warn(oe(e));
+    }
+    function ae() {
+      function e(e) {
+        return 'true' === e;
+      }
+      var t;
+      function n(e) {
+        Ne(0, 0, e.type, e.screenY + ':' + e.screenX);
+      }
+      function o(e, t) {
+        ie('Add event listener: ' + t), te(window.document, e, n);
+      }
+      (t = y.substr(M).split(':')),
+        (I = t[0]),
+        (a = c !== t[1] ? Number(t[1]) : a),
+        (l = c !== t[2] ? e(t[2]) : l),
+        (E = c !== t[3] ? e(t[3]) : E),
+        (b = c !== t[4] ? Number(t[4]) : b),
+        (i = c !== t[6] ? e(t[6]) : i),
+        (u = t[7]),
+        (p = c !== t[8] ? t[8] : p),
+        (r = t[9]),
+        (d = t[10]),
+        (R = c !== t[11] ? Number(t[11]) : R),
+        (w.enable = c !== t[12] && e(t[12])),
+        (A = c !== t[13] ? t[13] : A),
+        (P = c !== t[14] ? t[14] : P),
+        (O = c !== t[15] ? Boolean(t[15]) : O),
+        ie('Initialising iFrame (' + window.location.href + ')'),
+        (function () {
+          function e(e, t) {
+            return 'function' == typeof e && (ie('Setup custom ' + t + 'CalcMethod'), (W[t] = e), (e = 'custom')), e;
+          }
+          'iFrameResizer' in window &&
+            Object === window.iFrameResizer.constructor &&
+            ((function () {
+              var e = window.iFrameResizer;
+              ie('Reading data from page: ' + JSON.stringify(e)),
+                Object.keys(e).forEach(ue, e),
+                (j = 'onMessage' in e ? e.onMessage : j),
+                (q = 'onReady' in e ? e.onReady : q),
+                (k = 'targetOrigin' in e ? e.targetOrigin : k),
+                (p = 'heightCalculationMethod' in e ? e.heightCalculationMethod : p),
+                (P = 'widthCalculationMethod' in e ? e.widthCalculationMethod : P);
+            })(),
+            (p = e(p, 'height')),
+            (P = e(P, 'width')));
+          ie('TargetOrigin for parent set to: ' + k);
+        })(),
+        (function () {
+          c === u && (u = a + 'px');
+          ce(
+            'margin',
+            (function (e, t) {
+              -1 !== t.indexOf('-') && (re('Negative CSS value ignored for ' + e), (t = ''));
+              return t;
+            })('margin', u)
+          );
+        })(),
+        ce('background', r),
+        ce('padding', d),
+        ((t = document.createElement('div')).style.clear = 'both'),
+        (t.style.display = 'block'),
+        (t.style.height = '0'),
+        document.body.appendChild(t),
+        fe(),
+        me(),
+        (document.documentElement.style.height = ''),
+        (document.body.style.height = ''),
+        ie('HTML & body height set to "auto"'),
+        ie('Enable public methods'),
+        (D.parentIFrame = {
+          autoResize: function (e) {
+            return (
+              !0 === e && !1 === i
+                ? ((i = !0), he())
+                : !1 === e && !0 === i && ((i = !1), de('remove'), null !== s && s.disconnect(), clearInterval(T)),
+              Ne(0, 0, 'autoResize', JSON.stringify(i)),
+              i
+            );
+          },
+          close: function () {
+            Ne(0, 0, 'close');
+          },
+          getId: function () {
+            return I;
+          },
+          getPageInfo: function (e) {
+            'function' == typeof e ? ((H = e), Ne(0, 0, 'pageInfo')) : ((H = function () {}), Ne(0, 0, 'pageInfoStop'));
+          },
+          moveToAnchor: function (e) {
+            w.findTarget(e);
+          },
+          reset: function () {
+            Ie('parentIFrame.reset');
+          },
+          scrollTo: function (e, t) {
+            Ne(t, e, 'scrollTo');
+          },
+          scrollToOffset: function (e, t) {
+            Ne(t, e, 'scrollToOffset');
+          },
+          sendMessage: function (e, t) {
+            Ne(0, 0, 'message', JSON.stringify(e), t);
+          },
+          setHeightCalculationMethod: function (e) {
+            (p = e), fe();
+          },
+          setWidthCalculationMethod: function (e) {
+            (P = e), me();
+          },
+          setTargetOrigin: function (e) {
+            ie('Set targetOrigin: ' + e), (k = e);
+          },
+          size: function (e, t) {
+            Oe('size', 'parentIFrame.size(' + ((e || '') + (t ? ',' + t : '')) + ')', e, t);
+          },
+        }),
+        !0 === O && (o('mouseenter', 'Mouse Enter'), o('mouseleave', 'Mouse Leave')),
+        he(),
+        (w = (function () {
+          function i(e) {
+            var t = e.getBoundingClientRect(),
+              e = {
+                x: window.pageXOffset !== c ? window.pageXOffset : document.documentElement.scrollLeft,
+                y: window.pageYOffset !== c ? window.pageYOffset : document.documentElement.scrollTop,
+              };
+            return { x: parseInt(t.left, 10) + parseInt(e.x, 10), y: parseInt(t.top, 10) + parseInt(e.y, 10) };
+          }
+          function n(e) {
+            var t,
+              n = e.split('#')[1] || e,
+              e = decodeURIComponent(n),
+              o = document.getElementById(e) || document.getElementsByName(e)[0];
+            c !== o
+              ? ((t = i((t = o))),
+                ie('Moving to in page link (#' + n + ') at x: ' + t.x + ' y: ' + t.y),
+                Ne(t.y, t.x, 'scrollToOffset'))
+              : (ie('In page link (#' + n + ') not found in iFrame, so sending to parent'),
+                Ne(0, 0, 'inPageLink', '#' + n));
+          }
+          function e() {
+            var e = window.location.hash,
+              t = window.location.href;
+            '' !== e && '#' !== e && n(t);
+          }
+          function t() {
+            Array.prototype.forEach.call(document.querySelectorAll('a[href^="#"]'), function (e) {
+              '#' !== e.getAttribute('href') &&
+                te(e, 'click', function (e) {
+                  e.preventDefault(), n(this.getAttribute('href'));
+                });
+            });
+          }
+          function o() {
+            Array.prototype.forEach && document.querySelectorAll
+              ? (ie('Setting up location.hash handlers'), t(), te(window, 'hashchange', e), setTimeout(e, m))
+              : re('In page linking not fully supported in this browser! (See README.md for IE8 workaround)');
+          }
+          w.enable ? o() : ie('In page linking not enabled');
+          return { findTarget: n };
+        })()),
+        Oe('init', 'Init message from host page'),
+        q();
+    }
+    function ue(e) {
+      var t = e.split('Callback');
+      2 === t.length &&
+        ((this[(t = 'on' + t[0].charAt(0).toUpperCase() + t[0].slice(1))] = this[e]),
+        delete this[e],
+        re(
+          "Deprecated: '" +
+            e +
+            "' has been renamed '" +
+            t +
+            "'. The old method will be removed in the next major version."
+        ));
+    }
+    function ce(e, t) {
+      c !== t && '' !== t && 'null' !== t && ie('Body ' + e + ' set to "' + (document.body.style[e] = t) + '"');
+    }
+    function se(n) {
+      var e = {
+        add: function (e) {
+          function t() {
+            Oe(n.eventName, n.eventType);
+          }
+          (B[e] = t), te(window, e, t, { passive: !0 });
+        },
+        remove: function (e) {
+          var t,
+            n = B[e];
+          delete B[e], (t = window), (e = e), (n = n), t.removeEventListener(e, n, !1);
+        },
+      };
+      n.eventNames && Array.prototype.map
+        ? ((n.eventName = n.eventNames[0]), n.eventNames.map(e[n.method]))
+        : e[n.method](n.eventName),
+        ie(ne(n.method) + ' event listener: ' + n.eventType);
+    }
+    function de(e) {
+      se({ method: e, eventType: 'Animation Start', eventNames: ['animationstart', 'webkitAnimationStart'] }),
+        se({
+          method: e,
+          eventType: 'Animation Iteration',
+          eventNames: ['animationiteration', 'webkitAnimationIteration'],
+        }),
+        se({ method: e, eventType: 'Animation End', eventNames: ['animationend', 'webkitAnimationEnd'] }),
+        se({ method: e, eventType: 'Input', eventName: 'input' }),
+        se({ method: e, eventType: 'Mouse Up', eventName: 'mouseup' }),
+        se({ method: e, eventType: 'Mouse Down', eventName: 'mousedown' }),
+        se({ method: e, eventType: 'Orientation Change', eventName: 'orientationchange' }),
+        se({ method: e, eventType: 'Print', eventName: ['afterprint', 'beforeprint'] }),
+        se({ method: e, eventType: 'Ready State Change', eventName: 'readystatechange' }),
+        se({ method: e, eventType: 'Touch Start', eventName: 'touchstart' }),
+        se({ method: e, eventType: 'Touch End', eventName: 'touchend' }),
+        se({ method: e, eventType: 'Touch Cancel', eventName: 'touchcancel' }),
+        se({
+          method: e,
+          eventType: 'Transition Start',
+          eventNames: [
+            'transitionstart',
+            'webkitTransitionStart',
+            'MSTransitionStart',
+            'oTransitionStart',
+            'otransitionstart',
+          ],
+        }),
+        se({
+          method: e,
+          eventType: 'Transition Iteration',
+          eventNames: [
+            'transitioniteration',
+            'webkitTransitionIteration',
+            'MSTransitionIteration',
+            'oTransitionIteration',
+            'otransitioniteration',
+          ],
+        }),
+        se({
+          method: e,
+          eventType: 'Transition End',
+          eventNames: ['transitionend', 'webkitTransitionEnd', 'MSTransitionEnd', 'oTransitionEnd', 'otransitionend'],
+        }),
+        'child' === A && se({ method: e, eventType: 'IFrame Resized', eventName: 'resize' });
+    }
+    function le(e, t, n, o) {
+      return (
+        t !== e &&
+          (e in n || (re(e + ' is not a valid option for ' + o + 'CalculationMethod.'), (e = t)),
+          ie(o + ' calculation method set to "' + e + '"')),
+        e
+      );
+    }
+    function fe() {
+      p = le(p, n, Z, 'height');
+    }
+    function me() {
+      P = le(P, t, $, 'width');
+    }
+    function he() {
+      var e;
+      !0 === i
+        ? (de('add'),
+          (e = b < 0),
+          window.MutationObserver || window.WebKitMutationObserver
+            ? e
+              ? ge()
+              : (s = (function () {
+                  function t(e) {
+                    function t(e) {
+                      !1 === e.complete &&
+                        (ie('Attach listeners to ' + e.src),
+                        e.addEventListener('load', i, !1),
+                        e.addEventListener('error', r, !1),
+                        u.push(e));
+                    }
+                    'attributes' === e.type && 'src' === e.attributeName
+                      ? t(e.target)
+                      : 'childList' === e.type && Array.prototype.forEach.call(e.target.querySelectorAll('img'), t);
+                  }
+                  function o(e) {
+                    ie('Remove listeners from ' + e.src),
+                      e.removeEventListener('load', i, !1),
+                      e.removeEventListener('error', r, !1),
+                      (e = e),
+                      u.splice(u.indexOf(e), 1);
+                  }
+                  function n(e, t, n) {
+                    o(e.target), Oe(t, n + ': ' + e.target.src);
+                  }
+                  function i(e) {
+                    n(e, 'imageLoad', 'Image loaded');
+                  }
+                  function r(e) {
+                    n(e, 'imageLoadFailed', 'Image load failed');
+                  }
+                  function a(e) {
+                    Oe('mutationObserver', 'mutationObserver: ' + e[0].target + ' ' + e[0].type), e.forEach(t);
+                  }
+                  var u = [],
+                    c = window.MutationObserver || window.WebKitMutationObserver,
+                    s = (function () {
+                      var e = document.querySelector('body');
+                      return (
+                        (s = new c(a)),
+                        ie('Create body MutationObserver'),
+                        s.observe(e, {
+                          attributes: !0,
+                          attributeOldValue: !1,
+                          characterData: !0,
+                          characterDataOldValue: !1,
+                          childList: !0,
+                          subtree: !0,
+                        }),
+                        s
+                      );
+                    })();
+                  return {
+                    disconnect: function () {
+                      'disconnect' in s && (ie('Disconnect body MutationObserver'), s.disconnect(), u.forEach(o));
+                    },
+                  };
+                })())
+            : (ie('MutationObserver not supported in this browser!'), ge()))
+        : ie('Auto Resize disabled');
+    }
+    function ge() {
+      0 !== b &&
+        (ie('setInterval: ' + b + 'ms'),
+        (T = setInterval(function () {
+          Oe('interval', 'setInterval: ' + b);
+        }, Math.abs(b))));
+    }
+    function pe(e, t) {
+      var n = 0;
+      return (
+        (t = t || document.body),
+        (n = null !== (n = document.defaultView.getComputedStyle(t, null)) ? n[e] : 0),
+        parseInt(n, o)
+      );
+    }
+    function ve(e, t) {
+      for (var n, o = t.length, i = 0, r = ne(e), a = Date.now(), u = 0; u < o; u++)
+        i < (n = t[u].getBoundingClientRect()[e] + pe('margin' + r, t[u])) && (i = n);
+      return (
+        (a = Date.now() - a),
+        ie('Parsed ' + o + ' HTML elements'),
+        ie('Element position calculated in ' + a + 'ms'),
+        L / 2 < (a = a) && ie('Event throttle increased to ' + (L = 2 * a) + 'ms'),
+        i
+      );
+    }
+    function ye(e) {
+      return [e.bodyOffset(), e.bodyScroll(), e.documentElementOffset(), e.documentElementScroll()];
+    }
+    function we(e, t) {
+      var n = document.querySelectorAll('[' + t + ']');
+      return (
+        0 === n.length && (re('No tagged elements (' + t + ') found on page'), document.querySelectorAll('body *')),
+        ve(e, n)
+      );
+    }
+    function be() {
+      return document.querySelectorAll('body *');
+    }
+    function Te(e, t, n, o) {
+      function i() {
+        e in { init: 1, interval: 1, size: 1 } || !(p in N || (l && P in N))
+          ? e in { interval: 1 } || ie('No change in size detected')
+          : Ie(t);
+      }
+      var r, a;
+      function u(e, t) {
+        return !(Math.abs(e - t) <= R);
+      }
+      (r = c !== n ? n : Z[p]()),
+        (a = c !== o ? o : $[P]()),
+        u(g, r) || (l && u(F, a)) || 'init' === e ? (Se(), Ne((g = r), (F = a), e)) : i();
+    }
+    function Ee() {
+      (G = Date.now()), (Q = null), (K = V.apply(X, Y)), Q || (X = Y = null);
+    }
+    function Oe(e, t, n, o) {
+      x && e in f
+        ? ie('Trigger event cancelled: ' + e)
+        : (e in { reset: 1, resetPage: 1, init: 1 } || ie('Trigger event: ' + t), ('init' === e ? Te : _)(e, t, n, o));
+    }
+    function Se() {
+      x || ((x = !0), ie('Trigger event lock on')),
+        clearTimeout(e),
+        (e = setTimeout(function () {
+          (x = !1), ie('Trigger event lock off'), ie('--');
+        }, m));
+    }
+    function Me(e) {
+      (g = Z[p]()), (F = $[P]()), Ne(g, F, e);
+    }
+    function Ie(e) {
+      var t = p;
+      (p = n), ie('Reset trigger event: ' + e), Se(), Me('reset'), (p = t);
+    }
+    function Ne(e, t, n, o, i) {
+      var r;
+      !0 === C &&
+        (c === i ? (i = k) : ie('Message targetOrigin: ' + i),
+        ie('Sending message to host page (' + (r = I + ':' + (e + ':' + t) + ':' + n + (c !== o ? ':' + o : '')) + ')'),
+        z.postMessage(S + r, i));
+    }
+    function Ae() {
+      'loading' !== document.readyState && window.parent.postMessage('[iFrameResizerChild]Ready', '*');
+    }
+  })();
+  //# sourceMappingURL=iframeResizer.contentWindow.map
+</script>

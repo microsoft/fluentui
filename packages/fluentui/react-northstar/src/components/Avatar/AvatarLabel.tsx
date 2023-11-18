@@ -1,12 +1,12 @@
 import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -19,11 +19,11 @@ import {
   ContentComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  SizeValue,
 } from '../../utils';
 
 import { FluentComponentStaticProps } from '../../types';
 import { labelClassName } from '../Label/Label';
+import { AvatarSizeValue } from './Avatar';
 
 export interface AvatarLabelProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -38,7 +38,7 @@ export interface AvatarLabelProps extends UIComponentProps, ChildrenComponentPro
   circular?: boolean;
 
   /** Size multiplier. */
-  size?: SizeValue;
+  size?: AvatarSizeValue;
 }
 
 export type AvatarLabelStylesProps = Pick<AvatarLabelProps, 'size' | 'square' | 'circular'>;
@@ -47,8 +47,7 @@ export const avatarlabelClassName = labelClassName;
 /**
  * A AvatarLabel allows user to classify content.
  */
-export const AvatarLabel: ComponentWithAs<'span', AvatarLabelProps> &
-  FluentComponentStaticProps<AvatarLabelProps> = props => {
+export const AvatarLabel = React.forwardRef<HTMLSpanElement, AvatarLabelProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AvatarLabel.displayName, context.telemetry);
   setStart();
@@ -78,6 +77,7 @@ export const AvatarLabel: ComponentWithAs<'span', AvatarLabelProps> &
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
+        ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
@@ -89,7 +89,8 @@ export const AvatarLabel: ComponentWithAs<'span', AvatarLabelProps> &
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, AvatarLabelProps> &
+  FluentComponentStaticProps<AvatarLabelProps>;
 
 AvatarLabel.displayName = 'AvatarLabel';
 

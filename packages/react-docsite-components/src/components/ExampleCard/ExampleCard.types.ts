@@ -7,6 +7,11 @@ import { IPackageGroup } from '@fluentui/react-monaco-editor';
 export interface IExampleCardProps {
   /** Example title */
   title: string;
+  /**
+   * Element to render the title as. Now defaults to h3 for accessibility.
+   * @default 'h3'
+   */
+  titleAs?: 'h2' | 'h3' | 'h4' | 'span';
   /** Whether this component is experimental */
   isOptIn?: boolean;
   /** Example code as a string */

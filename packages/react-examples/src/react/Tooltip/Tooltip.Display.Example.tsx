@@ -4,7 +4,13 @@ import { getTheme } from '@fluentui/react/lib/Styling';
 import { useId } from '@fluentui/react-hooks';
 
 const theme = getTheme();
-const buttonStyle = { fontSize: theme.fonts.medium.fontSize, padding: 10 };
+const buttonStyle = {
+  fontSize: theme.fonts.medium.fontSize,
+  padding: 10,
+  // Background and border set to override some global website styles
+  background: '#f0f0f0',
+  border: '2px solid black',
+};
 const calloutProps = { gapSpace: 0 };
 
 // Important for correct positioning--see below

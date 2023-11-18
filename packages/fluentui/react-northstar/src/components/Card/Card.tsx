@@ -1,12 +1,12 @@
 import { Accessibility, cardBehavior, CardBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useStyles,
   useFluentContext,
   useTelemetry,
   useUnhandledProps,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as CustomPropTypes from '@fluentui/react-proptypes';
@@ -101,16 +101,7 @@ export const cardClassName = 'ui-card';
  * When card contains actionable elements, use [cardChildrenFocusableBehavior](/components/card/accessibility#card-children-focusable).
  *
  */
-export const Card: ComponentWithAs<'div', CardProps> &
-  FluentComponentStaticProps<CardProps> & {
-    Header: typeof CardHeader;
-    Body: typeof CardBody;
-    Footer: typeof CardFooter;
-    Preview: typeof CardPreview;
-    TopControls: typeof CardPreview;
-    Column: typeof CardColumn;
-    ExpandableBox: typeof CardExpandableBox;
-  } = props => {
+export const Card = React.forwardRef<HTMLDivElement, CardProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Card.displayName, context.telemetry);
   setStart();
@@ -196,6 +187,7 @@ export const Card: ComponentWithAs<'div', CardProps> &
           {...getA11yProps('root', {
             className: classes.root,
             onClick: handleClick,
+            ref,
             ...unhandledProps,
           })}
         >
@@ -206,7 +198,16 @@ export const Card: ComponentWithAs<'div', CardProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardProps> &
+  FluentComponentStaticProps<CardProps> & {
+    Header: typeof CardHeader;
+    Body: typeof CardBody;
+    Footer: typeof CardFooter;
+    Preview: typeof CardPreview;
+    TopControls: typeof CardPreview;
+    Column: typeof CardColumn;
+    ExpandableBox: typeof CardExpandableBox;
+  };
 
 Card.displayName = 'Card';
 

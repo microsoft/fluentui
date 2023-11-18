@@ -8,21 +8,21 @@ import {
 } from '@microsoft/fast-foundation';
 import {
   accentFillRest,
-  bodyFont,
   controlCornerRadius,
+  focusStrokeWidth,
   neutralForegroundRest,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../design-tokens';
+import { heightNumber } from '../styles';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
-export const tabsStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles =
-  (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
-    css`
+export const tabsStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
+  css`
       ${display('grid')} :host {
         box-sizing: border-box;
-        font-family: ${bodyFont};
-        font-size: ${typeRampBaseFontSize};
-        line-height: ${typeRampBaseLineHeight};
+        ${typeRampBase}
         color: ${neutralForegroundRest};
         grid-template-columns: auto 1fr auto;
         grid-template-rows: auto 1fr;
@@ -30,7 +30,7 @@ export const tabsStyles: (context: ElementDefinitionContext, definition: Foundat
 
       .tablist {
         display: grid;
-        grid-template-rows: auto auto;
+        grid-template-rows: calc(${heightNumber} * 1px); auto;
         grid-template-columns: auto;
         position: relative;
         width: max-content;
@@ -77,6 +77,7 @@ export const tabsStyles: (context: ElementDefinitionContext, definition: Foundat
         position: relative;
         width: max-content;
         justify-self: end;
+        align-self: flex-start;
         width: 100%;
       }
 
@@ -95,6 +96,7 @@ export const tabsStyles: (context: ElementDefinitionContext, definition: Foundat
         grid-row: 1;
         width: 3px;
         height: 20px;
+        margin-inline-start: calc(${focusStrokeWidth} * 1px);
         border-radius: calc(${controlCornerRadius} * 1px);
         align-self: center;
         background: ${accentFillRest};
@@ -104,13 +106,12 @@ export const tabsStyles: (context: ElementDefinitionContext, definition: Foundat
         transition: transform 0.2s linear;
       }
     `.withBehaviors(
-      forcedColorsStylesheetBehavior(
-        css`
-          .activeIndicator,
-          :host(.vertical) .activeIndicator {
-            forced-color-adjust: none;
-            background: ${SystemColors.Highlight};
-          }
-        `,
-      ),
-    );
+    forcedColorsStylesheetBehavior(
+      css`
+        .activeIndicator,
+        :host(.vertical) .activeIndicator {
+          background: ${SystemColors.Highlight};
+        }
+      `,
+    ),
+  );

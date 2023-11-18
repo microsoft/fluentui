@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { SwatchColorPicker } from '@fluentui/react/lib/SwatchColorPicker';
+import { useId } from '@fluentui/react-hooks';
+import { IColorCellProps, SwatchColorPicker } from '@fluentui/react/lib/SwatchColorPicker';
 
 const colorCellsExample1 = [
   { id: 'a', label: 'orange', color: '#ca5010' },
@@ -23,28 +24,64 @@ const colorCellsExample2 = [
   { id: 'l', label: 'gray20', color: '#69797e' },
 ];
 
+const colorCellsExample3 = [
+  { id: 'a', label: 'redBlueGradient', color: 'linear-gradient(0, red, blue)' },
+  { id: 'b', label: 'greenGradient', color: 'linear-gradient(0, grey, green)' },
+  { id: 'c', label: 'yellowGradient', color: 'linear-gradient(0, grey, yellow)' },
+  { id: 'd', label: 'magentaGradient', color: 'linear-gradient(0, grey, magenta)' },
+  { id: 'e', label: 'cyanGradient', color: 'linear-gradient(0, #038387, #ca5010)' },
+  { id: 'f', label: 'ygGradient', color: 'linear-gradient(0, #8cbd18, #69797e)' },
+  { id: 'g', label: 'grayGreen', color: 'linear-gradient(0, #0b6a0b, #69797e)' },
+  { id: 'h', label: 'gray', color: '#7a7574' },
+];
+
 export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
   const [previewColor, setPreviewColor] = React.useState<string>();
+  const baseId = useId('colorpicker');
 
   const swatchColorPickerOnCellHovered = (id: string, color: string) => {
     setPreviewColor(color!);
   };
 
+  const renderCustomCellContent = (cellProps: IColorCellProps) => {
+    return (
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          borderRadius: '50%',
+          background: cellProps.color,
+        }}
+      />
+    );
+  };
+
   return (
     <div>
-      <div>Simple circle swatch color picker:</div>
-      <SwatchColorPicker columnCount={5} cellShape={'circle'} colorCells={colorCellsExample1} />
-      <div>Simple square swatch color picker with default size of 20px:</div>
-      <SwatchColorPicker columnCount={5} cellShape={'square'} colorCells={colorCellsExample1} />
-      <div>Simple square swatch color picker with custom size of 35px:</div>
+      <div id={`${baseId}-circle`}>Simple circle swatch color picker:</div>
+      <SwatchColorPicker
+        columnCount={5}
+        cellShape={'circle'}
+        colorCells={colorCellsExample1}
+        aria-labelledby={`${baseId}-circle`}
+      />
+      <div id={`${baseId}-square`}>Simple square swatch color picker with default size of 20px:</div>
+      <SwatchColorPicker
+        columnCount={5}
+        cellShape={'square'}
+        colorCells={colorCellsExample1}
+        aria-labelledby={`${baseId}-square`}
+      />
+      <div id={`${baseId}-custom-size`}>Simple square swatch color picker with custom size of 35px:</div>
       <SwatchColorPicker
         columnCount={5}
         cellHeight={35}
         cellWidth={35}
         cellShape={'square'}
         colorCells={colorCellsExample1}
+        aria-labelledby={`${baseId}-custom-size`}
       />
-      <div>
+      <div id={`${baseId}-grid`}>
         Simple swatch color picker with multiple rows and larger cells that updates its icon color and shows a preview
         color:
       </div>
@@ -67,9 +104,27 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
         cellWidth={35}
         cellBorderWidth={3}
         colorCells={colorCellsExample2}
+        aria-labelledby={`${baseId}-grid`}
       />
-      <div>Simple disabled circle swatch color picker:</div>
-      <SwatchColorPicker disabled columnCount={5} cellShape={'circle'} colorCells={colorCellsExample1} />
+      <div id={`${baseId}-custom-content`}>Swatch color picker with gradient colors:</div>
+      <SwatchColorPicker
+        columnCount={4}
+        cellHeight={40}
+        cellWidth={40}
+        cellShape={'circle'}
+        colorCells={colorCellsExample3}
+        aria-labelledby={`${baseId}-custom-content`}
+        // eslint-disable-next-line react/jsx-no-bind
+        onRenderColorCellContent={renderCustomCellContent}
+      />
+      <div id={`${baseId}-disabled`}>Simple disabled circle swatch color picker:</div>
+      <SwatchColorPicker
+        disabled
+        columnCount={5}
+        cellShape={'circle'}
+        colorCells={colorCellsExample1}
+        aria-labelledby={`${baseId}-disabled`}
+      />
     </div>
   );
 };

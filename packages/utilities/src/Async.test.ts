@@ -6,17 +6,17 @@ describe('Async', () => {
     // Increase count by a specific number, to test the arguments
     // of the debounced function;
     let callCount = 0;
-    const fn = jest.fn((increaseCount: number) => {
+    const fnMock = (increaseCount: number) => {
       callCount += increaseCount;
       return callCount;
-    });
-
+    };
+    let fn: jest.Mock<number, [increaseCount: number], unknown>;
     let async: Async;
     let debouncedFn: ICancelable<typeof fn> & typeof fn;
 
     beforeEach(() => {
       jest.useFakeTimers();
-
+      fn = jest.fn(fnMock);
       async = new Async();
       debouncedFn = async.debounce(fn, 100);
     });
@@ -103,6 +103,7 @@ describe('Async', () => {
       expect(fn).toHaveBeenCalledTimes(1);
 
       dateMock.mockRestore();
+      jest.useRealTimers();
     });
   });
 });

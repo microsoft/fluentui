@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Dropdown, DropdownProps } from '@fluentui/react-northstar';
 import { gt, lt } from 'semver';
+
+import { Dropdown, DropdownProps, Flex } from '@fluentui/react-northstar';
 
 const pkg = require('@fluentui/react-northstar/package.json');
 
@@ -9,10 +10,8 @@ export const FLUENT_NIGHTLY_VERSION = '0.0.0-nightly';
 /**
  * A dropdown component that fetches available versions of the docsite from a hosted manifest file and renders available versions
  * Makes assumptions about docsite routing and hosting
- *
- * @param props Component props
  */
-export function VersionDropdown(props: { width: number }) {
+export function VersionDropdown() {
   const [versions, setVersions] = React.useState<string[]>([]);
   React.useEffect(() => {
     fetch('/manifest.json') // Assume that the manifest is hosted in the same blob storage
@@ -43,10 +42,6 @@ export function VersionDropdown(props: { width: number }) {
       });
   }, []);
 
-  if (!versions.length) {
-    return null;
-  }
-
   const currentVersion = pkg.version;
 
   // We make assumptions about routing
@@ -62,17 +57,20 @@ export function VersionDropdown(props: { width: number }) {
   };
 
   return (
-    <Dropdown
-      variables={{ width: `${props.width}px` }}
-      items={versions}
-      onChange={onChange}
-      // nightly released docsite's package.json is the latest version instead of '0.0.0-nightly'.
-      // The checking here is for version dropdown to display correctly for '0.0.0-nightly'
-      value={
-        window.location.pathname.split('/')[1] === FLUENT_NIGHTLY_VERSION ? FLUENT_NIGHTLY_VERSION : currentVersion
-      }
-      aria-label="Choose fluent version"
-    />
+    <Flex.Item align="stretch">
+      <Dropdown
+        fluid
+        disabled={!versions.length}
+        items={versions}
+        onChange={onChange}
+        // nightly released docsite's package.json is the latest version instead of '0.0.0-nightly'.
+        // The checking here is for version dropdown to display correctly for '0.0.0-nightly'
+        value={
+          window.location.pathname.split('/')[1] === FLUENT_NIGHTLY_VERSION ? FLUENT_NIGHTLY_VERSION : currentVersion
+        }
+        aria-label="Choose Fluent UI version"
+      />
+    </Flex.Item>
   );
 }
 

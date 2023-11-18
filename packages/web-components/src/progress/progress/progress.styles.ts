@@ -7,10 +7,10 @@ import {
   ProgressOptions,
 } from '@microsoft/fast-foundation';
 import {
-  accentForegroundRest,
+  accentFillRest,
   designUnit,
-  neutralFillRest,
   neutralForegroundHint,
+  neutralStrokeStrongRest,
   strokeWidth,
 } from '../../design-tokens';
 
@@ -21,31 +21,29 @@ export const progressStyles: (context: ElementDefinitionContext, definition: Pro
   css`
     ${display('flex')} :host {
       align-items: center;
-      outline: none;
-      height: calc(${designUnit} * 1px);
-      margin: calc(${designUnit} * 1px) 0;
+      height: calc((${strokeWidth} * 3) * 1px);
     }
 
     .progress {
-      background-color: ${neutralFillRest};
+      background-color: ${neutralStrokeStrongRest};
       border-radius: calc(${designUnit} * 1px);
       width: 100%;
-      height: 100%;
+      height: calc(${strokeWidth} * 1px);
       display: flex;
       align-items: center;
       position: relative;
     }
 
     .determinate {
-      background-color: ${accentForegroundRest};
+      background-color: ${accentFillRest};
       border-radius: calc(${designUnit} * 1px);
-      height: 100%;
+      height: calc((${strokeWidth} * 3) * 1px);
       transition: all 0.2s ease-in-out;
       display: flex;
     }
 
     .indeterminate {
-      height: 100%;
+      height: calc((${strokeWidth} * 3) * 1px);
       border-radius: calc(${designUnit} * 1px);
       display: flex;
       width: 100%;
@@ -57,7 +55,7 @@ export const progressStyles: (context: ElementDefinitionContext, definition: Pro
       position: absolute;
       opacity: 0;
       height: 100%;
-      background-color: ${accentForegroundRest};
+      background-color: ${accentFillRest};
       border-radius: calc(${designUnit} * 1px);
       animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
       width: 40%;
@@ -68,7 +66,7 @@ export const progressStyles: (context: ElementDefinitionContext, definition: Pro
       position: absolute;
       opacity: 0;
       height: 100%;
-      background-color: ${accentForegroundRest};
+      background-color: ${accentFillRest};
       border-radius: calc(${designUnit} * 1px);
       animation-timing-function: cubic-bezier(0.4, 0, 0.6, 1);
       width: 60%;
@@ -77,8 +75,10 @@ export const progressStyles: (context: ElementDefinitionContext, definition: Pro
 
     :host(.paused) .indeterminate-indicator-1,
     :host(.paused) .indeterminate-indicator-2 {
-      animation-play-state: paused;
-      background-color: ${neutralFillRest};
+      animation: none;
+      background-color: ${neutralForegroundHint};
+      width: 100%;
+      opacity: 1;
     }
 
     :host(.paused) .determinate {
@@ -125,18 +125,12 @@ export const progressStyles: (context: ElementDefinitionContext, definition: Pro
       css`
         .indeterminate-indicator-1,
         .indeterminate-indicator-2,
-        .determinate {
-          forced-color-adjust: none;
-          background-color: ${SystemColors.FieldText};
-        }
+        .determinate,
         .progress {
-          background-color: ${SystemColors.Field};
-          border: calc(${strokeWidth} * 1px) solid ${SystemColors.FieldText};
+          background-color: ${SystemColors.ButtonText};
         }
         :host(.paused) .indeterminate-indicator-1,
-        .indeterminate-indicator-2 {
-          background-color: ${SystemColors.Field};
-        }
+        :host(.paused) .indeterminate-indicator-2,
         :host(.paused) .determinate {
           background-color: ${SystemColors.GrayText};
         }

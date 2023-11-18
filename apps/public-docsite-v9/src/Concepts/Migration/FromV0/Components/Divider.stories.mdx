@@ -1,0 +1,119 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/Divider Migration" />
+
+# Divider Migration
+
+## Overview:
+
+Before:
+
+```tsx
+import { Divider } from '@fluentui/react-northstar';
+const Component = () => <Divider />;
+```
+
+After:
+
+```tsx
+import { Divider } from '@fluentui/react-components';
+const Component = () => <Divider />;
+```
+
+The default v0 Divider has paddings above/below for horizontal Divider, and left/right for vertical Divider.
+v9 Divider has no such padding. Therefore v9 Divider appears similar to v0 `<Divider fitted />`.
+
+To add paddings on v9 Divider to match v0, please see style overrides in this [codesandbox](https://codesandbox.io/s/divider-migration-88ws6u?file=/DefaultDividerExample.jsx), _DefaultDividerExample.jsx_ `useMigrationStyles`.
+
+## How to migrate props:
+
+| Divider props           | migrate guide                                                                                                                 |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| as, className, key, ref | keep it as is                                                                                                                 |
+| vertical                | keep it as is                                                                                                                 |
+| fitted                  | simply remove it                                                                                                              |
+| content                 | see Migrate content prop in this document                                                                                     |
+| variables, styles       | see Migrate style overrides in this document                                                                                  |
+| accessibility           | see [migrate-custom-accessibility.md](?path=/docs/concepts-migrating-from-v0-custom-accessibility--page)                      |
+| important               | see Migrate important prop in this document                                                                                   |
+| size                    | see Migrate size prop in this document                                                                                        |
+| color                   | replace `color="brand"` with `appearance="brand"`. For other color value, add style override with makeStyles and color tokens |
+
+See this [codesandbox](https://codesandbox.io/s/divider-migration-88ws6u?file=/example.js) comparing v9 Divider with v0, including guides on adding v9 style overrides to match v0.
+
+---
+
+## Migrate `content` prop
+
+Move `content` to JSX children.
+
+Before:
+
+```tsx
+import { Divider } from '@fluentui/react-northstar';
+const Component = () => <Divider content="hi" />;
+```
+
+After:
+
+```tsx
+import { Divider } from '@fluentui/react-components';
+const Component = () => <Divider>hi</Divider>;
+```
+
+## Migrate `important` prop
+
+v0 `important` prop adds `fontWeight: "700"` on children. It can be achieved via style overrides, see [codesandbox](https://codesandbox.io/s/divider-migration-88ws6u?file=/ImportantDividerExample.jsx:312-329), _ImportantDividerExample.jsx_ `useMigrationStyles`.
+
+## Migrate `size` prop
+
+By default Divider is 1px, `size={1}` Divider is 2px, `size={2}` Divider is 3px.
+v9 Divider size can be changed by updating its `:before`/`:after` pseudo element's `borderTopWidth`.
+
+See [codesandbox](https://codesandbox.io/s/divider-migration-88ws6u?file=/SizedDividerExample.jsx), _SizedDividerExample.jsx_ `useMigrationStyles`, for style overrides to match `size={1}` and `size={2}`,
+
+## Migrate style overrides
+
+⚠️ **If this is your first migration**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migrating-from-v0-custom-style-overrides--page).
+
+### Example for migrate boolean `variables`:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Divider } from '@fluentui/react-northstar';
+
+export const Component = () => <Divider variables={{ isCustomDivider: true }} />;
+
+// in divider-styles.ts
+export const dividerStyles = {
+  root: ({ variables: { isCustomDivider } }) => ({
+    ...(isCustomDivider && {
+      height: '3.2rem',
+    }),
+  }),
+};
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Divider } from '@fluentui/react-components';
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+
+export const Component = () => {
+  const classes = useStyles();
+  return <Divider className={classes.chatEntityHeaderDivider} />;
+};
+
+// in COMPONENT_NAME.styles.ts
+import { makeStyles } from '@fluentui/react-components';
+
+export const useStyles = makeStyles({
+  chatEntityHeaderDivider: {
+    height: '32px',
+  },
+});
+```

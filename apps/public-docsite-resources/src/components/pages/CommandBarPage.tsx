@@ -5,7 +5,7 @@ import { CommandBarPageProps } from '@fluentui/react-examples/lib/react/CommandB
 
 export const CommandBarPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@fluentui/api-docs/lib/pages/react/CommandBar.page.json')}
+    jsonDocs={require('../../../dist/api/react/CommandBar.page.json')}
     {...{ ...CommandBarPageProps, ...props }}
   />
 );

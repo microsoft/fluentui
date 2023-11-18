@@ -1,0 +1,65 @@
+{
+  "name": "@fluentui/babel-preset-global-context",
+  "version": "9.0.0-beta.49",
+  "description": "Babel preset that transforms createContext calls to use global context shims",
+  "main": "lib-commonjs/index.js",
+  "typings": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build --module cjs",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "pree2e": "yarn build",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "test": "jest --passWithNoTests",
+    "type-check": "tsc -b tsconfig.json",
+    "generate-api": "just-scripts generate-api",
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-cypress": "*",
+    "@fluentui/scripts-tasks": "*"
+  },
+  "dependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/generator": "^7.12.13",
+    "@babel/helper-plugin-utils": "^7.12.13",
+    "@babel/template": "^7.12.13",
+    "@babel/traverse": "^7.12.13",
+    "@emotion/hash": "^0.8.0",
+    "@swc/helpers": "^0.5.1",
+    "find-up": "^5.0.0"
+  },
+  "peerDependencies": {
+    "@fluentui/global-context": "9.0.0-beta.49"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib-commonjs"
+  ]
+}

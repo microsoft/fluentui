@@ -37,7 +37,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
     id="swatchColorPicker0"
     role="grid"
   >
-    <tbody>
+    <tbody
+      role="rowgroup"
+    >
       <tr
         role="row"
       >
@@ -99,7 +101,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -107,12 +109,12 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   border-color: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
@@ -124,7 +126,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {
@@ -161,7 +163,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                   color: Highlight;
                 }
             data-index={0}
@@ -177,6 +179,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="green"
             type="button"
@@ -194,6 +197,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
               data-automationid="splitbuttonprimary"
             >
               <svg
+                aria-label="green"
                 className=
 
                     {
@@ -202,6 +206,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       width: 100%;
                     }
                 fill="#00ff00"
+                role="img"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -271,7 +276,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -279,12 +284,12 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   border-color: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
@@ -296,7 +301,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {
@@ -333,7 +338,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                   color: Highlight;
                 }
             data-index={1}
@@ -349,6 +354,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="orange"
             type="button"
@@ -366,6 +372,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
               data-automationid="splitbuttonprimary"
             >
               <svg
+                aria-label="orange"
                 className=
 
                     {
@@ -374,6 +381,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       width: 100%;
                     }
                 fill="#ffa500"
+                role="img"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -443,7 +451,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -451,12 +459,12 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   border-color: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
@@ -468,7 +476,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {
@@ -505,7 +513,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                   color: Highlight;
                 }
             data-index={2}
@@ -521,6 +529,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="blue"
             type="button"
@@ -538,6 +547,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
               data-automationid="splitbuttonprimary"
             >
               <svg
+                aria-label="blue"
                 className=
 
                     {
@@ -546,6 +556,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       width: 100%;
                     }
                 fill="#0000ff"
+                role="img"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -615,7 +626,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -623,12 +634,12 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   border-color: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
@@ -640,7 +651,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {
@@ -677,7 +688,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                   color: Highlight;
                 }
             data-index={3}
@@ -693,6 +704,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="red"
             type="button"
@@ -710,6 +722,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
               data-automationid="splitbuttonprimary"
             >
               <svg
+                aria-label="red"
                 className=
 
                     {
@@ -718,6 +731,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       width: 100%;
                     }
                 fill="#ff0000"
+                role="img"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -791,7 +805,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -799,12 +813,12 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   border-color: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
@@ -816,7 +830,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {
@@ -853,7 +867,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                   color: Highlight;
                 }
             data-index={4}
@@ -869,6 +883,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="green"
             type="button"
@@ -886,6 +901,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
               data-automationid="splitbuttonprimary"
             >
               <svg
+                aria-label="green"
                 className=
 
                     {
@@ -894,6 +910,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       width: 100%;
                     }
                 fill="#01ff01"
+                role="img"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -963,7 +980,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -971,12 +988,12 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   border-color: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
@@ -988,7 +1005,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {
@@ -1025,7 +1042,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                   color: Highlight;
                 }
             data-index={5}
@@ -1041,6 +1058,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="orange"
             type="button"
@@ -1058,6 +1076,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
               data-automationid="splitbuttonprimary"
             >
               <svg
+                aria-label="orange"
                 className=
 
                     {
@@ -1066,6 +1085,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       width: 100%;
                     }
                 fill="#ffa501"
+                role="img"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -1135,7 +1155,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -1143,12 +1163,12 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   border-color: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
@@ -1160,7 +1180,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {
@@ -1197,7 +1217,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                   color: Highlight;
                 }
             data-index={6}
@@ -1213,6 +1233,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="blue"
             type="button"
@@ -1230,6 +1251,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
               data-automationid="splitbuttonprimary"
             >
               <svg
+                aria-label="blue"
                 className=
 
                     {
@@ -1238,6 +1260,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       width: 100%;
                     }
                 fill="#0101ff"
+                role="img"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -1307,7 +1330,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -1315,12 +1338,12 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   border-color: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
@@ -1332,7 +1355,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {
@@ -1369,7 +1392,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                   color: Highlight;
                 }
             data-index={7}
@@ -1385,6 +1408,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="red"
             type="button"
@@ -1402,6 +1426,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
               data-automationid="splitbuttonprimary"
             >
               <svg
+                aria-label="red"
                 className=
 
                     {
@@ -1410,6 +1435,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       width: 100%;
                     }
                 fill="#ff0101"
+                role="img"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -1483,7 +1509,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -1491,12 +1517,12 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   border-color: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
@@ -1508,7 +1534,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {
@@ -1545,7 +1571,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                   color: Highlight;
                 }
             data-index={8}
@@ -1561,6 +1587,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="black"
             type="button"
@@ -1578,6 +1605,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
               data-automationid="splitbuttonprimary"
             >
               <svg
+                aria-label="black"
                 className=
 
                     {
@@ -1586,6 +1614,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       width: 100%;
                     }
                 fill="#000"
+                role="img"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -1655,7 +1684,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -1663,12 +1692,12 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   border-color: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
@@ -1680,7 +1709,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {
@@ -1717,7 +1746,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                   color: Highlight;
                 }
             data-index={9}
@@ -1733,6 +1762,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="grey"
             type="button"
@@ -1750,6 +1780,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
               data-automationid="splitbuttonprimary"
             >
               <svg
+                aria-label="grey"
                 className=
 
                     {
@@ -1758,6 +1789,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       width: 100%;
                     }
                 fill="#888"
+                role="img"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -1827,7 +1859,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -1835,12 +1867,12 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   border-color: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
@@ -1852,7 +1884,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {
@@ -1889,7 +1921,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                   color: Highlight;
                 }
             data-index={10}
@@ -1905,6 +1937,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="white"
             type="button"
@@ -1922,6 +1955,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
               data-automationid="splitbuttonprimary"
             >
               <svg
+                aria-label="white"
                 className=
 
                     {
@@ -1930,6 +1964,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       width: 100%;
                     }
                 fill="#fff"
+                role="img"
                 viewBox="0 0 20 20"
               >
                 <circle
@@ -1999,7 +2034,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: 0px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: -2px;
                   left: -2px;
@@ -2007,12 +2042,12 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   border-color: Window;
                 }
                 .ms-Fabric--isFocusVisible &:focus::after {
@@ -2024,7 +2059,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   right: -2px;
                   top: -2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {
@@ -2061,7 +2096,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   padding-right: 2px;
                   padding-top: 2px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                   color: Highlight;
                 }
             data-index={11}
@@ -2077,6 +2112,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
             onMouseLeave={[Function]}
             onMouseMove={[Function]}
             onMouseUp={[Function]}
+            onWheel={[Function]}
             role="gridcell"
             title="something"
             type="button"
@@ -2094,6 +2130,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
               data-automationid="splitbuttonprimary"
             >
               <svg
+                aria-label="something"
                 className=
 
                     {
@@ -2102,6 +2139,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                       width: 100%;
                     }
                 fill="#123"
+                role="img"
                 viewBox="0 0 20 20"
               >
                 <circle

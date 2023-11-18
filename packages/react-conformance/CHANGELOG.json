@@ -2,6 +2,629 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Thu, 09 Nov 2023 17:29:33 GMT",
+      "tag": "@fluentui/react-conformance_v0.18.3",
+      "version": "0.18.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 17:49:04 GMT",
+      "tag": "@fluentui/react-conformance_v0.18.2",
+      "version": "0.18.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d",
+            "comment": "chore: trigger manual version bump after broken release"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 15:32:03 GMT",
+      "tag": "@fluentui/react-conformance_v0.18.1",
+      "version": "0.18.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "e61473fa10195f6ebf2308205c1e72e91b711831",
+            "comment": "fix: bump swc core to mitigate transpilation memory leaks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Sep 2023 13:31:31 GMT",
+      "tag": "@fluentui/react-conformance_v0.18.0",
+      "version": "0.18.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "8582884f9000d15185fe7b074c6fde00d84e961c",
+            "comment": "feat: add option `disableTypeTests` to disable tests that require TypeScript information"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Sep 2023 13:29:19 GMT",
+      "tag": "@fluentui/react-conformance_v0.17.2",
+      "version": "0.17.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "b93c2ac22355b6cb6f33dd509c6cd9c21f4fffc8",
+            "comment": "bumps @swc/helpers version to 0.5.1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Jul 2023 18:27:27 GMT",
+      "tag": "@fluentui/react-conformance_v0.17.1",
+      "version": "0.17.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "d803aee2490d42f147906333f70f9867eafd452d",
+            "comment": "fix: add @swc/helpers to deps instead of tslib as we use swc for transpilation"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 11:12:24 GMT",
+      "tag": "@fluentui/react-conformance_v0.17.0",
+      "version": "0.17.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jun 2023 12:38:56 GMT",
+      "tag": "@fluentui/react-conformance_v0.17.0",
+      "version": "0.17.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "402599eb2172bf1cd13c003f5050e4d172ed9742",
+            "comment": "BREAKING CHANGE: migrate package to v9 setup in order to be able to run generate-api task without build"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Jun 2023 07:37:25 GMT",
+      "tag": "@fluentui/react-conformance_v0.16.3",
+      "version": "0.16.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "59d477883786b3330c55ff6877c6bbed11d34bae",
+            "comment": "fix: testOptions custom classname prefix now works as intended."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 May 2023 07:38:39 GMT",
+      "tag": "@fluentui/react-conformance_v0.16.2",
+      "version": "0.16.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "4b637ced41e430bf8d79c7fc67c103d5efdfd3a8",
+            "comment": "fix: tweak type errors exposed in ts 4.5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 May 2023 07:39:51 GMT",
+      "tag": "@fluentui/react-conformance_v0.16.0",
+      "version": "0.16.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "3a6bbb0ca32a62a60195d248074236709d7e2b2d",
+            "comment": "feat: add new TS config api to be able to specify configName and configDir"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Jan 2023 07:50:55 GMT",
+      "tag": "@fluentui/react-conformance_v0.15.6",
+      "version": "0.15.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Jan 2023 07:46:45 GMT",
+      "tag": "@fluentui/react-conformance_v0.15.5",
+      "version": "0.15.5",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Dec 2022 07:51:03 GMT",
+      "tag": "@fluentui/react-conformance_v0.15.5",
+      "version": "0.15.5",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Dec 2022 07:45:11 GMT",
+      "tag": "@fluentui/react-conformance_v0.15.5",
+      "version": "0.15.5",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "613f784ec4ef8055efdebcf1ff31540ad9b8eadd",
+            "comment": "chore: enable strict checking in all just-config files and their dependencies"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Dec 2022 07:57:11 GMT",
+      "tag": "@fluentui/react-conformance_v0.15.5",
+      "version": "0.15.5",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "c46ff8dec351ebf57efb4114366016010b285429",
+            "comment": "chore: enable isolateModules"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Nov 2022 07:55:02 GMT",
+      "tag": "@fluentui/react-conformance_v0.15.5",
+      "version": "0.15.5",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "87859b052155ca206ef3540a2a9623803f6e2b93",
+            "comment": "test: replace deprecated module.parent with require.main within isConformance"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Oct 2022 07:43:11 GMT",
+      "tag": "@fluentui/react-conformance_v0.15.4",
+      "version": "0.15.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "772f9e3ebde2d5b8157a3204c1a4e007e56f5508",
+            "comment": "chore: Bump react peer dependency to react 18."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Aug 2022 16:36:05 GMT",
+      "tag": "@fluentui/react-conformance_v0.15.3",
+      "version": "0.15.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "7c7f113c5db25307df478f48612dd0fa77f8e8d4",
+            "comment": "fix: fixes broken publish."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Aug 2022 07:22:48 GMT",
+      "tag": "@fluentui/react-conformance_v0.15.2",
+      "version": "0.15.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "c8f9d1ef1983bffe9917da81b097f503f587faa9",
+            "comment": "fix: Bump react-is dependency to version 17."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jul 2022 07:41:18 GMT",
+      "tag": "@fluentui/react-conformance_v0.15.0",
+      "version": "0.15.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "af5aca63710f7d1264e8aa3141147e71ab3f0b4f",
+            "comment": "chore: Remove static className conformance tests."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Jul 2022 07:36:55 GMT",
+      "tag": "@fluentui/react-conformance_v0.14.0",
+      "version": "0.14.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "f79394055c953c73943709259ff257982b143f1e",
+            "comment": "chore: update package.json main/types field to accomodate new 'build' task behaviours"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jun 2022 07:43:32 GMT",
+      "tag": "@fluentui/react-conformance_v0.14.0",
+      "version": "0.14.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "52f6f9da2687560b5f165309c6c54c63878379f8",
+            "comment": "feat: Adding getPortalElement option to static classnames object test."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Apr 2022 07:38:09 GMT",
+      "tag": "@fluentui/react-conformance_v0.13.0",
+      "version": "0.13.0",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "b48c03cff249019cf845af18a7f63dacf46d5218",
+            "comment": "Hoist react-is devDependencies to the repo root"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Apr 2022 07:34:57 GMT",
+      "tag": "@fluentui/react-conformance_v0.13.0",
+      "version": "0.13.0",
+      "comments": {
+        "none": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "767b195d0d768aa7dd85bcb40af4370fd747dc11",
+            "comment": "Add comment to react-conformance Portal docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Mar 2022 07:39:04 GMT",
+      "tag": "@fluentui/react-conformance_v0.13.0",
+      "version": "0.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "efc07509578008b6be1c5dd69fee1aad5a7775c2",
+            "comment": "BREAKING CHANGE: Switch from Enzyme to `@testing-library/react` and remove Enzyme-specific APIs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Mar 2022 07:38:50 GMT",
+      "tag": "@fluentui/react-conformance_v0.12.0",
+      "version": "0.12.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "086a675fd0c648944ff4048450190a0a13467de3",
+            "comment": "Add conformance tests for static classnames"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Mar 2022 07:35:08 GMT",
+      "tag": "@fluentui/react-conformance_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          }
+        ],
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "60ed06606c639e16816723dd6a2d635692004819",
+            "comment": "BREAKING CHANGE: Remove some tests and options specific to `@fluentui/react-northstar`"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Feb 2022 07:27:48 GMT",
+      "tag": "@fluentui/react-conformance_v0.10.1",
+      "version": "0.10.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "c5e6c54988bfdbb2ae1c30cccfb1e5e2fa2cf896",
+            "comment": "Clear document.body after each test to avoid interference between tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Jan 2022 07:27:47 GMT",
+      "tag": "@fluentui/react-conformance_v0.10.0",
+      "version": "0.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "18549da2abc46cee45243e6339969dac0d9e8cf7",
+            "comment": "add option 'tsconfigDir'; change default tsconfig dir to component path"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Dec 2021 07:31:28 GMT",
+      "tag": "@fluentui/react-conformance_v0.9.2",
+      "version": "0.9.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4",
+            "comment": "chore: update all jest deps to v25 + apply single version policy"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Dec 2021 07:30:02 GMT",
+      "tag": "@fluentui/react-conformance_v0.9.1",
+      "version": "0.9.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "f1be0a9728e05ca33ad67e77ae7d1cba3384106f",
+            "comment": "Fix consistent-callback-args test to handle string literal types"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Dec 2021 07:30:34 GMT",
+      "tag": "@fluentui/react-conformance_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "3360b45ec159250b1346c91afad7dce138e6bc20",
+            "comment": "Update typescript to 4.3 and update react-docgen-typescript"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Nov 2021 07:37:33 GMT",
+      "tag": "@fluentui/react-conformance_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "b2deb9be17a76cce366fffb466d34ebd1fc45405",
+            "comment": "Add test preventing accidental application of native size prop"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 14:54:15 GMT",
+      "tag": "@fluentui/react-conformance_v0.7.2",
+      "version": "0.7.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "99adff5a9aab9086e8bc4737040654ab23f0febe",
+            "comment": "Update component-has-root-ref test to support primarySlot"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Nov 2021 07:29:05 GMT",
+      "tag": "@fluentui/react-conformance_v0.7.1",
+      "version": "0.7.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "afe1d6ba9ffe71919c50a42c11ea213f9984008d",
+            "comment": "fix paths generated in defaultErrorMessages"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Nov 2021 07:31:59 GMT",
+      "tag": "@fluentui/react-conformance_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "254c94e904a48912c2c08dd9d39d83b027263e80",
+            "comment": "add new test for classnames"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Oct 2021 07:28:35 GMT",
+      "tag": "@fluentui/react-conformance_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "comment": "Implement additional tests in consistent-callback-args",
+            "commit": "619163b3e099a775a2486a21e0187cec86b2b7c2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Sep 2021 07:31:40 GMT",
+      "tag": "@fluentui/react-conformance_v0.5.1",
+      "version": "0.5.1",
+      "comments": {
+        "none": [
+          {
+            "author": "czearing@outlook.com",
+            "package": "@fluentui/react-conformance",
+            "comment": "Updating README.md",
+            "commit": "78e4c398a39d6323feebf360eb37859ee26535d6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Sep 2021 07:42:34 GMT",
+      "tag": "@fluentui/react-conformance_v0.5.1",
+      "version": "0.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "comment": "Updated getCallbackArguments for complex types",
+            "commit": "363765ba3d08d2facbb97fb80ab54ff27ac714fd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/react-conformance_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 07 Sep 2021 07:34:55 GMT",
       "tag": "@fluentui/react-conformance_v0.5.0",
       "version": "0.5.0",

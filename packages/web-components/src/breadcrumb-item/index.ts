@@ -18,10 +18,8 @@ export const fluentBreadcrumbItem = BreadcrumbItem.compose<BreadcrumbItemOptions
     delegatesFocus: true,
   },
   separator: `
-    <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg%22%3E">
-      <path
-        d="M7.65 4.15c.2-.2.5-.2.7 0l5.49 5.46c.21.22.21.57 0 .78l-5.49 5.46a.5.5 0 01-.7-.7L12.8 10 7.65 4.85a.5.5 0 010-.7z"
-      />
+    <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4.65 2.15a.5.5 0 000 .7L7.79 6 4.65 9.15a.5.5 0 10.7.7l3.5-3.5a.5.5 0 000-.7l-3.5-3.5a.5.5 0 00-.7 0z"/>
     </svg>
   `,
 });

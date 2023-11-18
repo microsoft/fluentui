@@ -45,7 +45,7 @@ interface IFolderTileWithThumbnailProps {
   folderCoverType?: FolderCoverType;
   originalImageSize?: ISize;
   size: 'small' | 'large';
-  item: typeof ITEMS[0];
+  item: (typeof ITEMS)[0];
 }
 
 const FolderTileWithThumbnail: React.FunctionComponent<IFolderTileWithThumbnailProps> = (
@@ -86,8 +86,10 @@ const FolderTileWithThumbnail: React.FunctionComponent<IFolderTileWithThumbnailP
             {renderFolderCoverWithLayout(folderCover, {
               children: imageSize ? (
                 <img
-                  src={`//via.placeholder.com/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
+                  src="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svgs"
                   className={css(TileExampleStyles.tileImage)}
+                  height={Math.round(imageSize.height)}
+                  width={Math.round(imageSize.width)}
                 />
               ) : null,
             })}

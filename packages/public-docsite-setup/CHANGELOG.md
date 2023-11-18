@@ -1,8 +1,53 @@
 # Change Log - @fluentui/public-docsite-setup
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Aug 2023 07:35:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.22](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.22)
+
+Fri, 18 Aug 2023 07:35:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-setup_v0.3.21..@fluentui/public-docsite-setup_v0.3.22)
+
+### Patches
+
+- docs: Updating version of CDN used and replacing usage of via.placeholder.com with SVG from CDN. ([PR #28895](https://github.com/microsoft/fluentui/pull/28895) by Humberto.Morimoto@microsoft.com)
+
+## [0.3.16](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.16)
+
+Thu, 02 Feb 2023 07:35:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-setup_v0.3.15..@fluentui/public-docsite-setup_v0.3.16)
+
+### Patches
+
+- fix: remove mwf styles causing conflicts with react components ([PR #26592](https://github.com/microsoft/fluentui/pull/26592) by mgodbolt@microsoft.com)
+
+## [0.3.14](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.14)
+
+Tue, 20 Dec 2022 07:53:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-setup_v0.3.13..@fluentui/public-docsite-setup_v0.3.14)
+
+### Patches
+
+- chore: Updating cdn links to match latest. ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by esteban.230@hotmail.com)
+
+## [0.3.12](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.12)
+
+Mon, 12 Sep 2022 07:39:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-setup_v0.3.11..@fluentui/public-docsite-setup_v0.3.12)
+
+### Patches
+
+- return skipToMain functionality and hide back to top button ([PR #24745](https://github.com/microsoft/fluentui/pull/24745) by mgodbolt@microsoft.com)
+
+## [0.3.11](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.11)
+
+Thu, 01 Sep 2022 07:48:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-setup_v0.3.8..@fluentui/public-docsite-setup_v0.3.11)
+
+### Patches
+
+- fix: update fabric core URL and change selector for back to top button ([PR #24613](https://github.com/microsoft/fluentui/pull/24613) by mgodbolt@microsoft.com)
 
 ## [0.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.7)
 

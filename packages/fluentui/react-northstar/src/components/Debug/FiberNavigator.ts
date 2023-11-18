@@ -178,13 +178,13 @@ export class FiberNavigator {
   get isClassComponent() {
     // React.Component subclasses have this flag
     // https://reactjs.org/docs/implementation-notes.html
-    return typeof this.__fiber.type === 'function' && !!this.__fiber.type.prototype.isReactComponent;
+    return typeof this.__fiber.type === 'function' && !!this.__fiber.type.prototype?.isReactComponent;
   }
 
   get isFunctionComponent() {
     // React.Component subclasses have this flag
     // https://reactjs.org/docs/implementation-notes.html
-    return typeof this.__fiber.type === 'function' && !this.__fiber.type.prototype.isReactComponent;
+    return typeof this.__fiber.type === 'function' && !this.__fiber.type.prototype?.isReactComponent;
   }
 
   get isForwardRef() {

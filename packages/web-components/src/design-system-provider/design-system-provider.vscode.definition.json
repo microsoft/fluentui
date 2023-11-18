@@ -31,6 +31,14 @@
           "required": false
         },
         {
+          "name": "neutral-base-color",
+          "title": "Neutral base color",
+          "description": "The neutral palette base color",
+          "type": "string",
+          "default": "#808080",
+          "required": false
+        },
+        {
           "name": "density",
           "title": "Density",
           "description": "The density offset",
@@ -87,6 +95,14 @@
           "required": false
         },
         {
+          "name": "layer-corner-radius",
+          "title": "Layer Corner radius",
+          "description": "The corner radius value for layer components",
+          "type": "number",
+          "default": 8,
+          "required": false
+        },
+        {
           "name": "stroke-width",
           "title": "Stroke width",
           "description": "The width of outline strokes",
@@ -108,14 +124,6 @@
           "description": "The disabled opacity for elements",
           "type": "number",
           "default": 0.3,
-          "required": false
-        },
-        {
-          "name": "neutral-base-color",
-          "title": "Neutral base color",
-          "description": "The neutral palette base color",
-          "type": "string",
-          "default": "#808080",
           "required": false
         },
         {
@@ -417,7 +425,7 @@
           "title": "Base layer luminance",
           "description": "When set to a number between 0 and 1, this values controls the output of layer and card recipes",
           "type": "number",
-          "default": 1,
+          "default": 0.98,
           "required": false
         },
         {

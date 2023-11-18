@@ -19,7 +19,8 @@
     "preserveConstEnums": true,
     "downlevelIteration": true,
     "lib": ["es2017"],
-    "types": []
+    "types": [],
+    "isolatedModules": true
   },
   "include": ["src"]
 }

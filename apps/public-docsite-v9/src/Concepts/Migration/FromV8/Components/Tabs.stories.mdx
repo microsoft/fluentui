@@ -1,0 +1,109 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v8/Components/Tabs (Pivot) Migration" />
+
+# Tabs (Pivot) Migration
+
+## v8 Pivot & PivotItem
+
+In v8, you declare a `Pivot` with a list of `PivotItem` components as children.
+
+- The tab name is declared in the `headerText` property.
+- The associated content for each tab is declared within the `PivotItem`.
+- This binds the tab and tab content together in the DOM hierarchy.
+
+For example,
+
+```tsx
+<Pivot>
+  <PivotItem headerText="First Tab">
+    <Label>Content 1</Label>
+  </PivotItem>
+  <PivotItem headerText="Second Tab">
+    <Label>Content 2</Label>
+  </PivotItem>
+  <PivotItem headerText="Third Tab">
+    <Label>Content 3</Label>
+  </PivotItem>
+</Pivot>
+```
+
+## v9 TabList & Tab
+
+In v9, there is a similar approach of a `TabList` containing `Tab` components.
+
+The key difference is the `Tab` children are rendered as the label of the tab.
+
+- The associated content that is shown/hidden is separate from the `Tab` and `TabList`.
+- This allows for much richer tab label, for the associated content to be placed anywhere in the DOM,
+  and for more control over when and how associated content is rendered.
+
+### Migration Steps
+
+To migrate from `Pivot` to `TabList`
+
+- replace `Pivot` with `TabList` and `PivotItem` with `Tab`
+- move all the `PivotItem` content under a sibling element of `TabList`
+- move the `headerText` into the `Tab`'s children.
+- add the `onTabSelect` event handler to set the selected tab value as state
+- update the content element to render the selected tabs content.
+
+For example, here is the previous `Pivot` example migrated to use `TabList`
+
+```tsx
+const [selectedValue, setSelectedValue] = React.useState<TabValue>();
+
+const onTabSelect = (event: SelectTabEvent, data: SelectTabData) => {
+    setSelectedValue(data.value);
+};
+
+//...
+
+<TabList selectedValue={selectedValue} onTabSelect={onTabSelect}>
+  <Tab value="tab1">First Tab</Tab>
+  <Tab value="tab2">Second Tab</Tab>
+  <Tab value="tab3">Third Tab</Tab>
+</TabList>
+<div>
+  {selectedValue === 'tab1' && <div>Content 1</div>}
+  {selectedValue === 'tab2' && <div>Content 2</div>}
+  {selectedValue === 'tab3' && <div>Content 3</div>}
+</div>
+```
+
+## Pivot -> TabList Props Mapping
+
+| v8                 | v9                             |
+| ------------------ | ------------------------------ |
+|                    | appearance                     |
+| componentRef       | ref                            |
+| className          | className                      |
+| defaultSelectedKey | defaultSelectedValue           |
+| focusZoneProps     | (removed)                      |
+| getTabId           | (removed)                      |
+| headersOnly        | (removed)                      |
+| linkFormat         | (removed)                      |
+| linkSize           | size                           |
+| onLinkClick        | onTabSelect                    |
+| overflowAriaLabel  | (removed)                      |
+| overflowBehavior   | (removed)                      |
+| selectedKey        | selectedValue                  |
+| styles             | (use makeStyles and className) |
+| theme              | (use FluentProvider)           |
+|                    | vertical                       |
+
+## PivotItem -> Tab Props Mapping
+
+| v8                | v9             |
+| ----------------- | -------------- |
+| componentRef      | ref            |
+| linkText          | (removed)      |
+| headerText        | (use children) |
+| headerButtonProps | (removed)      |
+| itemKey           | value          |
+| ariaLabel         | aria-label     |
+| itemCount         | (removed)      |
+| itemIcon          | icon (slot)    |
+| onRenderItemLink  | (removed)      |
+| keytipProps       | (removed)      |
+| alwaysRender      | (removed)      |

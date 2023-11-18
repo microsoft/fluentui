@@ -5,6 +5,8 @@ import {
   IVSChartDataPoint,
   IVerticalStackedChartProps,
   IVerticalStackedBarChartProps,
+  DataVizPalette,
+  getColorFromToken,
 } from '@fluentui/react-charting';
 import { DefaultPalette, IStyle, DefaultFontStyles } from '@fluentui/react/lib/Styling';
 import { ChoiceGroup, DirectionalHint, IChoiceGroupOption } from '@fluentui/react';
@@ -41,21 +43,21 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
 
   private _basicExample(): JSX.Element {
     const firstChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 2, color: DefaultPalette.accent },
-      { legend: 'Metadata2', data: 0.5, color: DefaultPalette.blueMid },
-      { legend: 'Metadata3', data: 0, color: DefaultPalette.blueLight },
+      { legend: 'meta data 1', data: 2, color: getColorFromToken(DataVizPalette.color8) },
+      { legend: 'Meta data 2', data: 0.5, color: getColorFromToken(DataVizPalette.color9) },
+      { legend: 'meta Data 3', data: 0, color: getColorFromToken(DataVizPalette.color10) },
     ];
 
     const secondChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 30, color: DefaultPalette.accent },
-      { legend: 'Metadata2', data: 3, color: DefaultPalette.blueMid },
-      { legend: 'Metadata3', data: 40, color: DefaultPalette.blueLight },
+      { legend: 'meta data 1', data: 30, color: getColorFromToken(DataVizPalette.color8) },
+      { legend: 'Meta data 2', data: 3, color: getColorFromToken(DataVizPalette.color9) },
+      { legend: 'meta Data 3', data: 40, color: getColorFromToken(DataVizPalette.color10) },
     ];
 
     const thirdChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 10, color: DefaultPalette.accent },
-      { legend: 'Metadata2', data: 60, color: DefaultPalette.blueMid },
-      { legend: 'Metadata3', data: 30, color: DefaultPalette.blueLight },
+      { legend: 'meta data 1', data: 10, color: getColorFromToken(DataVizPalette.color8) },
+      { legend: 'Meta data 2', data: 60, color: getColorFromToken(DataVizPalette.color9) },
+      { legend: 'meta Data 3', data: 30, color: getColorFromToken(DataVizPalette.color10) },
     ];
 
     const data: IVerticalStackedChartProps[] = [
@@ -82,7 +84,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
       return {
         xAxis: {
           selectors: {
-            text: { fill: 'black', fontSize: '10px' },
+            text: { fill: getColorFromToken(DataVizPalette.color2), fontSize: '10px' },
           },
         },
         chart: {
@@ -101,47 +103,57 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
     return (
       <>
         <div>
-          <label>Width:</label>
+          <label htmlFor="ChangeWidth_Styled">Width:</label>
           <input
             type="range"
             value={this.state.width}
             min={200}
             max={1000}
+            id="ChangeWidth_Styled"
             onChange={e => this.setState({ width: +e.target.value })}
+            aria-valuetext={`ChangeWidthSlider${this.state.width}`}
           />
-          <label>Height:</label>
+          <label htmlFor="changeHeight_Styled">Height:</label>
           <input
             type="range"
             value={this.state.height}
             min={200}
             max={1000}
+            id="changeHeight_Styled"
             onChange={e => this.setState({ height: +e.target.value })}
+            aria-valuetext={`ChangeHeightslider${this.state.height}`}
           />
         </div>
         <div>
-          <label>BarGapMax:</label>
+          <label htmlFor="changeBarGapMax_Styled">BarGapMax:</label>
           <input
             type="range"
             value={this.state.barGapMax}
             min={0}
             max={10}
+            id="changeBarGapMax_Styled"
             onChange={e => this.setState({ barGapMax: +e.target.value })}
+            aria-valuetext={`ChangebarGapMaxslider${this.state.barGapMax}`}
           />
-          <label>BarCornerRadius:</label>
+          <label htmlFor="ChangeBarCornerRadius_condition">BarCornerRadius:</label>
           <input
             type="range"
             value={this.state.barCornerRadius}
             min={0}
             max={10}
+            id="ChangeBarCornerRadius_condition"
             onChange={e => this.setState({ barCornerRadius: +e.target.value })}
+            aria-valuetext={`ChangeBarCornerRadiusSlider${this.state.barCornerRadius}`}
           />
-          <label>BarMinimumHeight:</label>
+          <label htmlFor="ChangeBarMinimumHeight_condition">BarMinimumHeight:</label>
           <input
             type="range"
             value={this.state.barMinimumHeight}
             min={0}
             max={10}
+            id="ChangeBarMinimumHeight_condition"
             onChange={e => this.setState({ barMinimumHeight: +e.target.value })}
+            aria-valuetext={`ChangebarBarMinimumHeightslider${this.state.barMinimumHeight}`}
           />
           <ChoiceGroup
             options={options}
@@ -164,7 +176,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             yMaxValue={120}
             isCalloutForStack={this.state.selectedCallout === 'MultiCallout'}
             calloutProps={{
-              directionalHint: DirectionalHint.topCenter,
+              directionalHint: DirectionalHint.topAutoEdge,
             }}
             // eslint-disable-next-line react/jsx-no-bind
             yAxisTickFormat={(x: number | string) => `${x} h`}
@@ -180,22 +192,28 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
                 rect: {
                   borderRadius: '3px',
                 },
+                legend: {
+                  textTransform: 'none',
+                },
               },
             }}
             // eslint-disable-next-line react/jsx-no-bind
-            onRenderCalloutPerDataPoint={props =>
-              props ? (
-                <ChartHoverCard
-                  XValue={props.xAxisCalloutData}
-                  Legend={props.legend}
-                  YValue={`${props.yAxisCalloutData || props.data} h`}
-                  color={props.color}
-                />
-              ) : null
-            }
+            {...(this.state.selectedCallout === 'singleCallout' && {
+              onRenderCalloutPerDataPoint: (props: IVSChartDataPoint) => {
+                return props ? (
+                  <ChartHoverCard
+                    XValue={props.xAxisCalloutData}
+                    Legend={props.legend}
+                    YValue={`${props.yAxisCalloutData || props.data} h`}
+                    color={props.color}
+                  />
+                ) : null;
+              },
+            })}
             svgProps={{
               'aria-label': 'Example chart with metadata per month',
             }}
+            enableReflow={true}
           />
         </div>
       </>

@@ -46,6 +46,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       theme.fonts.medium,
       {
         position: 'absolute',
+        display: 'flex',
         zIndex: doNotLayer ? ZIndexes.Layer : undefined,
         boxSizing: 'border-box',
         borderRadius: effects.roundedCorner2,
@@ -76,7 +77,7 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
       },
       getBeakStyle(beakWidth),
       backgroundColor && {
-        backgroundColor: backgroundColor,
+        backgroundColor,
       },
     ],
     beakCurtain: [
@@ -98,13 +99,14 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         overflowX: 'hidden',
         overflowY: 'auto',
         position: 'relative',
+        width: '100%',
         borderRadius: effects.roundedCorner2,
       },
       overflowYHidden && {
         overflowY: 'hidden',
       },
       backgroundColor && {
-        backgroundColor: backgroundColor,
+        backgroundColor,
       },
     ],
   };

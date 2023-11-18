@@ -21,6 +21,7 @@ import { IPageProps, IPageSectionProps } from './Page.types';
 import * as styles from './Page.module.scss';
 import { sideRailWidth } from '../../styles/constants';
 import { getLinkColors } from '../../utilities/getLinkColors';
+import { BannerSection } from './sections/BannerSection';
 
 const SECTION_STAGGER_INTERVAL = 0.05;
 /** Section key/id prefix for sections which don't have a title */
@@ -148,6 +149,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
       title,
       usage,
       accessibility,
+      banner,
     } = this.props;
 
     const sectionProps: IPageSectionProps = {
@@ -158,6 +160,14 @@ export class Page extends React.Component<IPageProps, IPageState> {
     };
 
     const sections: IPageSectionProps[] = [];
+
+    banner &&
+      sections.push({
+        renderAs: BannerSection,
+        ...sectionProps,
+        content: banner.message,
+        sectionName: banner.title,
+      });
 
     overview &&
       sections.push({ renderAs: OverviewSection, ...sectionProps, sectionName: 'Overview', content: overview });

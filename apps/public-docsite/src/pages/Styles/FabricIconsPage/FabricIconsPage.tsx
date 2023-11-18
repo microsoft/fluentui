@@ -19,38 +19,62 @@ export const FabricIconsPage: React.FunctionComponent<IStylesPageProps> = props 
   return (
     <StylesAreaPage
       {...props}
-      {...FabricIconsPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...FabricIconsPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+  const [selectedItem, setSelectedItem] = React.useState('react-font');
   switch (platform) {
     case 'web':
       return [
         {
-          sectionName: 'Usage',
+          sectionName: 'Usage: Font icons',
           editUrl: `${baseUrl}/web/FabricIconsUsage.md`,
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/FabricIconsPage/docs/web/FabricIconsUsage.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/FabricIconsPage/docs/web/FabricIconsUsage.md') as string,
           jumpLinks: [
-            // prettier-ignore
-            { text: enDash + ' Fluent UI React (font)', url: 'fluent-ui-react-font-based-icons' },
-            { text: enDash + ' Fluent UI React (SVG)', url: 'fluent-ui-react-svg-based-icons' },
+            { text: enDash + ' Fluent UI React', url: 'fluent-ui-react' },
             { text: enDash + ' Fabric Core', url: 'fabric-core' },
             { text: enDash + ' Fluent UI Icons tool', url: 'fluent-ui-icons-tool' },
           ],
         },
 
         {
+          sectionName: 'Usage: SVG icons',
+          editUrl: `${baseUrl}/web/FabricIconsSvgUsage.md`,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/FabricIconsPage/docs/web/FabricIconsSvgUsage.md') as string,
+        },
+
+        {
           sectionName: 'Available icons',
           content: (
-            <Pivot>
-              <PivotItem headerText="Fluent UI React (font-based)" className={styles.iconGrid}>
-                <IconGrid icons={fabricReactIcons} useFabricIcons={true} />
+            <Pivot
+              onLinkClick={item => {
+                setSelectedItem(item!.props.itemKey!);
+              }}
+            >
+              <PivotItem headerText="Fluent UI React (font)" itemKey="react-font" className={styles.iconGrid}>
+                <IconGrid icons={fabricReactIcons} iconType="react-font" />
               </PivotItem>
-              <PivotItem headerText="Fabric Core" className={styles.iconGrid}>
-                <IconGrid icons={fabricCoreIcons} />
+              <PivotItem headerText="Fabric Core" itemKey="core-font" className={styles.iconGrid}>
+                <IconGrid icons={fabricCoreIcons} iconType="core-font" />
+              </PivotItem>
+              <PivotItem headerText="SVG icons" itemKey="svg" className={styles.iconGrid}>
+                {
+                  // The icon components are a large download and slow to render, so wait until the tab is clicked
+                  selectedItem === 'svg' && (
+                    <IconGrid icons={import('@fluentui/react-icons-mdl2')} iconType="react-svg" />
+                  )
+                }
+              </PivotItem>
+              <PivotItem headerText="SVG icons (products)" itemKey="svg-branded" className={styles.iconGrid}>
+                {selectedItem === 'svg-branded' && (
+                  <IconGrid icons={import('@fluentui/react-icons-mdl2-branded')} iconType="react-svg" />
+                )}
               </PivotItem>
             </Pivot>
           ),

@@ -11,8 +11,8 @@ export const ColorsMessagingPage: React.FunctionComponent<IStylesPageProps> = pr
   return (
     <StylesAreaPage
       {...props}
-      {...ColorsMessagingPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...ColorsMessagingPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };

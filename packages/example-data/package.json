@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/example-data",
-  "version": "8.2.6",
+  "version": "8.4.13",
   "description": "Data generators for Fluent UI React examples.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -20,10 +20,19 @@
     "just": "just-scripts"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
     "tslib": "^2.1.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

@@ -20,6 +20,7 @@ const RadioGroupTemplate = ({ disabled, required }) => `
   >
     <fluent-radio>Apples</fluent-radio>
     <fluent-radio>Bananas</fluent-radio>
+    <fluent-radio>Tomatoes</fluent-radio>
   </fluent-radio-group>`;
 
 export const RadioGroup = RadioGroupTemplate.bind({});
@@ -30,10 +31,11 @@ RadioGroup.args = {
 };
 
 const example = `
-<fluent-radio-group name="numbers">
+<fluent-radio-group name="fruits" >
   <label style="color: --var(neutral-foreground-rest)" slot="label"> Numbers </label>
-  <fluent-radio value="one">One</fluent-radio>
-  <fluent-radio value="two">Two</fluent-radio>
+  <fluent-radio>Apples</fluent-radio>
+  <fluent-radio>Bananas</fluent-radio>
+  <fluent-radio>Bananas</fluent-radio>
 </fluent-radio-group>
 `;
 

@@ -7,11 +7,13 @@
   "scripts": {
     "clean": "just-scripts clean",
     "generate:site": "just-scripts generate:site",
-    "lint": "eslint --ext .js,.ts --cache ."
+    "lint": "eslint --ext .js,.ts --cache .",
+    "type-check": "tsc -p ."
   },
   "license": "MIT",
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-monorepo": "*"
   }
 }

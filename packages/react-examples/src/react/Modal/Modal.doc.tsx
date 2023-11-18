@@ -4,8 +4,10 @@ import { ModalModelessExample } from './Modal.Modeless.Example';
 
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
-const ModalBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Modal/Modal.Basic.Example.tsx') as string;
-const ModalModelessExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Modal/Modal.Modeless.Example.tsx') as string;
+const ModalBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Modal/Modal.Basic.Example.tsx') as string;
+const ModalModelessExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Modal/Modal.Modeless.Example.tsx') as string;
 
 export const ModalPageProps: IDocPageProps = {
   title: 'Modal',

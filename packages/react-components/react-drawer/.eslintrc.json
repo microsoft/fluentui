@@ -1,0 +1,13 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/react"],
+  "root": true,
+  "overrides": [
+    {
+      "files": ["./src/e2e/*.tsx"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off",
+        "react/jsx-no-bind": "off"
+      }
+    }
+  ]
+}

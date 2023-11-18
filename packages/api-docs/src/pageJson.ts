@@ -1,4 +1,4 @@
-import { ApiItem, ApiItemKind, ApiDocumentedItem, ApiModel } from '@microsoft/api-extractor-model';
+import { ApiItem, ApiDocumentedItem, ApiModel, ApiItemKind } from '@microsoft/api-extractor-model';
 import { findInlineTagByName } from './rendering';
 import { ICollectedData } from './types-private';
 import { ITableJson, IPageJson, PageGroups } from './types';
@@ -68,7 +68,11 @@ function initPageDataForItem(
   groupsByPage: { [pageName: string]: string },
   fallbackGroup?: string,
 ): void {
-  if (supportedApiItems.includes(apiItem.kind) && apiItem instanceof ApiDocumentedItem && apiItem.tsdocComment) {
+  if (
+    supportedApiItems.includes(apiItem.kind as unknown as ApiItemKind) &&
+    apiItem instanceof ApiDocumentedItem &&
+    apiItem.tsdocComment
+  ) {
     const docCategoryTag = findInlineTagByName('@docCategory', apiItem.tsdocComment);
 
     if (docCategoryTag) {

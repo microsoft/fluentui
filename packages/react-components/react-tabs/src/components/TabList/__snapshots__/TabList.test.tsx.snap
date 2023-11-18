@@ -1,0 +1,206 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabList renders tabs when disabled 1`] = `
+<div>
+  <div
+    aria-orientation="horizontal"
+    class="fui-TabList"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    role="tablist"
+  >
+    <button
+      class="fui-Tab"
+      disabled=""
+      role="tab"
+      type="button"
+      value="1"
+    >
+      <span
+        class="fui-Tab__content"
+      >
+        First
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
+      >
+        First
+      </span>
+    </button>
+    <button
+      class="fui-Tab"
+      disabled=""
+      role="tab"
+      type="button"
+      value="2"
+    >
+      <span
+        class="fui-Tab__content"
+      >
+        Second
+      </span>
+    </button>
+    <button
+      class="fui-Tab"
+      disabled=""
+      role="tab"
+      type="button"
+      value="3"
+    >
+      <span
+        class="fui-Tab__content"
+      >
+        Third
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
+      >
+        Third
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`TabList renders tabs with default selected tab 1`] = `
+<div>
+  <div
+    aria-orientation="horizontal"
+    class="fui-TabList"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    role="tablist"
+  >
+    <button
+      aria-selected="false"
+      class="fui-Tab"
+      role="tab"
+      style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
+      value="1"
+    >
+      <span
+        class="fui-Tab__content"
+      >
+        First
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
+      >
+        First
+      </span>
+    </button>
+    <button
+      aria-selected="true"
+      class="fui-Tab"
+      role="tab"
+      style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
+      value="2"
+    >
+      <span
+        class="fui-Tab__content"
+      >
+        Second
+      </span>
+    </button>
+    <button
+      aria-selected="false"
+      class="fui-Tab"
+      role="tab"
+      style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
+      value="3"
+    >
+      <span
+        class="fui-Tab__content"
+      >
+        Third
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
+      >
+        Third
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`TabList renders with no tabs 1`] = `
+<div>
+  <div
+    aria-orientation="horizontal"
+    class="fui-TabList"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    role="tablist"
+  />
+</div>
+`;
+
+exports[`TabList renders with tabs 1`] = `
+<div>
+  <div
+    aria-orientation="horizontal"
+    class="fui-TabList"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
+    role="tablist"
+  >
+    <button
+      aria-selected="false"
+      class="fui-Tab"
+      role="tab"
+      style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
+      value="1"
+    >
+      <span
+        class="fui-Tab__content"
+      >
+        First
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
+      >
+        First
+      </span>
+    </button>
+    <button
+      aria-selected="false"
+      class="fui-Tab"
+      role="tab"
+      style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
+      value="2"
+    >
+      <span
+        class="fui-Tab__content"
+      >
+        Second
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
+      >
+        Second
+      </span>
+    </button>
+    <button
+      aria-selected="false"
+      class="fui-Tab"
+      role="tab"
+      style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+      type="button"
+      value="3"
+    >
+      <span
+        class="fui-Tab__content"
+      >
+        Third
+      </span>
+      <span
+        class="fui-Tab__content--reserved-space"
+      >
+        Third
+      </span>
+    </button>
+  </div>
+</div>
+`;

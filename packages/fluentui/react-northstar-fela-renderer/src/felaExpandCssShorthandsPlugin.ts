@@ -1,10 +1,9 @@
 import { ICSSInJSStyle } from '@fluentui/styles';
-import * as CSS from 'csstype';
 // @ts-ignore
 import { expandProperty } from 'inline-style-expand-shorthand';
 
 // https://jsperf.com/array-indexof-vs-object-key-lookup2/12
-const handledCssProps: Partial<Record<keyof CSS.Properties, true>> = {
+const handledCssProps: Partial<Record<keyof ICSSInJSStyle, true>> = {
   // 'font', Oops, is not supported by inline-style-expand-shorthand
   padding: true,
   margin: true,
@@ -22,29 +21,35 @@ const handledCssProps: Partial<Record<keyof CSS.Properties, true>> = {
 };
 
 export const felaExpandCssShorthandsPlugin = (styles: ICSSInJSStyle): ICSSInJSStyle => {
-  return Object.keys(styles).reduce((acc: ICSSInJSStyle, cssPropertyName: keyof CSS.Properties) => {
-    const cssPropertyValue = styles[cssPropertyName];
+  return Object.keys(styles).reduce(
+    (
+      // Without casting to any TSC gives "Expression produces a union type that is too complex to represent" error
+      acc: any,
+      cssPropertyName: keyof ICSSInJSStyle,
+    ) => {
+      const cssPropertyValue = styles[cssPropertyName];
 
-    if (cssPropertyValue === null || typeof cssPropertyValue === 'undefined') {
-      return { ...acc, [cssPropertyName]: cssPropertyValue };
-    }
+      if (cssPropertyValue === null || typeof cssPropertyValue === 'undefined') {
+        acc[cssPropertyName] = cssPropertyValue;
+      } else if (handledCssProps[cssPropertyName]) {
+        const expandedProps = expandProperty(cssPropertyName, cssPropertyValue);
 
-    if (handledCssProps[cssPropertyName]) {
-      const expandedProps = expandProperty(cssPropertyName, cssPropertyValue);
+        if (expandedProps) {
+          Object.assign(acc, expandedProps);
+          return acc;
+        }
 
-      if (expandedProps) {
-        return { ...acc, ...expandedProps };
+        acc[cssPropertyName] = cssPropertyValue;
+      } else if (Array.isArray(cssPropertyValue)) {
+        acc[cssPropertyName] = cssPropertyValue;
+      } else if (typeof cssPropertyValue === 'object') {
+        acc[cssPropertyName] = felaExpandCssShorthandsPlugin(cssPropertyValue as ICSSInJSStyle);
+      } else {
+        acc[cssPropertyName] = cssPropertyValue;
       }
-    }
 
-    if (Array.isArray(cssPropertyValue)) {
-      return { ...acc, [cssPropertyName]: cssPropertyValue };
-    }
-
-    if (typeof cssPropertyValue === 'object') {
-      return { ...acc, [cssPropertyName]: felaExpandCssShorthandsPlugin(cssPropertyValue as ICSSInJSStyle) };
-    }
-
-    return { ...acc, [cssPropertyName]: cssPropertyValue };
-  }, {});
+      return acc;
+    },
+    {},
+  );
 };

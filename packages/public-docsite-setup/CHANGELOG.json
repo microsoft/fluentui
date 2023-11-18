@@ -2,6 +2,201 @@
   "name": "@fluentui/public-docsite-setup",
   "entries": [
     {
+      "date": "Fri, 18 Aug 2023 07:35:24 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.22",
+      "version": "0.3.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "67b93043888f980623a863c56655b061ad6bce91",
+            "comment": "docs: Updating version of CDN used and replacing usage of via.placeholder.com with SVG from CDN."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 07:37:34 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.21",
+      "version": "0.3.21",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Feb 2023 07:35:41 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.16",
+      "version": "0.3.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "3fde9b804e88388518524d3cb60e8f3b9f58a99f",
+            "comment": "fix: remove mwf styles causing conflicts with react components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Jan 2023 07:50:54 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.15",
+      "version": "0.3.15",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Jan 2023 07:46:44 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.14",
+      "version": "0.3.14",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Dec 2022 07:51:02 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.14",
+      "version": "0.3.14",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Dec 2022 07:53:33 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.14",
+      "version": "0.3.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7",
+            "comment": "chore: Updating cdn links to match latest."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Dec 2022 07:57:10 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.13",
+      "version": "0.3.13",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "c46ff8dec351ebf57efb4114366016010b285429",
+            "comment": "chore: enable isolateModules"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Oct 2022 07:38:21 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.12",
+      "version": "0.3.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "337a32b1a4f2e82235e193e115666aee659c650c",
+            "comment": "chore: apply single version policy"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Sep 2022 07:39:53 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.12",
+      "version": "0.3.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "21e6fe30633c31318137a066bc7ccb1b2cf299e4",
+            "comment": "return skipToMain functionality and hide back to top button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Sep 2022 07:48:10 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.11",
+      "version": "0.3.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "0174dfc96d5ea925268fb3f51efaa6373ecabcc6",
+            "comment": "fix: update fabric core URL and change selector for back to top button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Apr 2022 07:38:08 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.8",
+      "version": "0.3.8",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/public-docsite-setup",
+            "commit": "399a179957a37480093eaaf5b0ddfb37a97ad7a8",
+            "comment": "Add comments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/public-docsite-setup_v0.3.7",
+      "version": "0.3.7",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/public-docsite-setup",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Aug 2021 07:34:48 GMT",
       "tag": "@fluentui/public-docsite-setup_v0.3.7",
       "version": "0.3.7",

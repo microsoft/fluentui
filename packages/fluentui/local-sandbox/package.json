@@ -1,25 +1,21 @@
 {
   "name": "@fluentui/local-sandbox",
-  "version": "0.58.0",
+  "version": "0.66.4",
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build:withdependencies": "yarn --cwd ../../.. build --scope=@fluentui/local-sandbox --include-filtered-dependencies",
+    "build:withdependencies": "yarn lage build --verbose --scope=@fluentui/local-sandbox --include-filtered-dependencies",
     "build": "webpack",
     "build:production": "webpack -p",
     "serve": "node ./server.js"
   },
   "dependencies": {
-    "@fluentui/react-northstar": "^0.58.0"
-  },
-  "devDependencies": {
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "source-map-loader": "2.0.0"
+    "@fluentui/react-northstar": "*"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "@fluentui/scripts-babel": "*"
   }
 }

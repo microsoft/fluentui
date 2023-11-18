@@ -81,10 +81,15 @@ export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
    */
   chevronButtonProps?: IButtonProps;
 
-  /** Properties for the overflow icon */
+  /**
+   * Properties for the overflow icon. It is used to provide an event handler for the overflow button.
+   */
   overflowButtonProps?: IButtonProps;
 
-  /** Type of overflow icon to use */
+  /**
+   * Type of overflow icon to use. If `overflowButtonType` is set to anything other than `none`
+   * then we have to provide `overflowButtonProps` to render the overflow button.
+   */
   overflowButtonType?: OverflowButtonType;
 
   /** Optional custom renderer for the persona, gets called when there is one persona in personas array*/
@@ -92,6 +97,9 @@ export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
 
   /** Optional custom renderer for the persona coins, gets called when there are multiple persona in personas array*/
   onRenderPersonaCoin?: IRenderFunction<IFacepilePersona>;
+
+  /** Optional custom renderer for the FacepileButton that renders each clickable Persona */
+  onRenderPersonaWrapper?: IRenderFunction<IFacepilePersona>;
 
   /** Method to access properties on the underlying Persona control */
   getPersonaProps?: (persona: IFacepilePersona) => IPersonaSharedProps;

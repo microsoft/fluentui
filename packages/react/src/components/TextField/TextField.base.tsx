@@ -62,7 +62,8 @@ const HIDE_ICON_NAME = 'Hide';
 
 export class TextFieldBase
   extends React.Component<ITextFieldProps, ITextFieldState, ITextFieldSnapshot>
-  implements ITextField {
+  implements ITextField
+{
   public static defaultProps: ITextFieldProps = {
     resizable: true,
     deferredValidationTime: 200,
@@ -73,6 +74,8 @@ export class TextFieldBase
   private _fallbackId: string;
   private _descriptionId: string;
   private _labelId: string;
+  private _prefixId: string;
+  private _suffixId: string;
   private _delayedValidate: (value: string | undefined) => void;
   private _lastValidation: number;
   private _latestValidateValue: string | undefined;
@@ -98,6 +101,8 @@ export class TextFieldBase
     this._fallbackId = getId(COMPONENT_NAME);
     this._descriptionId = getId(COMPONENT_NAME + 'Description');
     this._labelId = getId(COMPONENT_NAME + 'Label');
+    this._prefixId = getId(COMPONENT_NAME + 'Prefix');
+    this._suffixId = getId(COMPONENT_NAME + 'Suffix');
 
     this._warnControlledUsage();
 
@@ -195,6 +200,7 @@ export class TextFieldBase
       borderless,
       className,
       disabled,
+      invalid,
       iconProps,
       inputClassName,
       label,
@@ -217,6 +223,7 @@ export class TextFieldBase
     } = this.props;
     const { isFocused, isRevealingPassword } = this.state;
     const errorMessage = this._errorMessage;
+    const isInvalid = typeof invalid === 'boolean' ? invalid : !!errorMessage;
 
     const hasRevealButton = !!canRevealPassword && type === 'password' && _browserNeedsRevealButton();
 
@@ -228,7 +235,7 @@ export class TextFieldBase
       required,
       multiline,
       hasLabel: !!label,
-      hasErrorMessage: !!errorMessage,
+      hasErrorMessage: isInvalid,
       borderless,
       resizable,
       hasIcon: !!iconProps,
@@ -245,7 +252,9 @@ export class TextFieldBase
           {onRenderLabel(this.props, this._onRenderLabel)}
           <div className={classNames.fieldGroup}>
             {(prefix !== undefined || this.props.onRenderPrefix) && (
-              <div className={classNames.prefix}>{onRenderPrefix(this.props, this._onRenderPrefix)}</div>
+              <div className={classNames.prefix} id={this._prefixId}>
+                {onRenderPrefix(this.props, this._onRenderPrefix)}
+              </div>
             )}
             {multiline ? this._renderTextArea() : this._renderInput()}
             {iconProps && <Icon className={classNames.icon} {...iconProps} />}
@@ -267,7 +276,9 @@ export class TextFieldBase
               </button>
             )}
             {(suffix !== undefined || this.props.onRenderSuffix) && (
-              <div className={classNames.suffix}>{onRenderSuffix(this.props, this._onRenderSuffix)}</div>
+              <div className={classNames.suffix} id={this._suffixId}>
+                {onRenderSuffix(this.props, this._onRenderSuffix)}
+              </div>
             )}
           </div>
         </div>
@@ -487,6 +498,7 @@ export class TextFieldBase
   }
 
   private _renderTextArea(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
+    const { invalid = !!this._errorMessage } = this.props;
     const textAreaProps = getNativeProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>>(
       this.props,
       textAreaProperties,
@@ -504,7 +516,7 @@ export class TextFieldBase
         className={this._classNames.field}
         aria-labelledby={ariaLabelledBy}
         aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
-        aria-invalid={!!this._errorMessage}
+        aria-invalid={invalid}
         aria-label={this.props.ariaLabel}
         readOnly={this.props.readOnly}
         onFocus={this._onFocus}
@@ -513,32 +525,46 @@ export class TextFieldBase
     );
   }
 
-  private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
-    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
-      'defaultValue',
-      'type',
-    ]);
-    const ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
-    const type = this.state.isRevealingPassword ? 'text' : this.props.type ?? 'text';
-    return (
-      <input
-        type={type}
-        id={this._id}
-        aria-labelledby={ariaLabelledBy}
-        {...inputProps}
-        ref={this._textElement as React.RefObject<HTMLInputElement>}
-        value={this.value || ''}
-        onInput={this._onInputChange}
-        onChange={this._onInputChange}
-        className={this._classNames.field}
-        aria-label={this.props.ariaLabel}
-        aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
-        aria-invalid={!!this._errorMessage}
-        readOnly={this.props.readOnly}
-        onFocus={this._onFocus}
-        onBlur={this._onBlur}
-      />
-    );
+  private _renderInput(): JSX.Element | null {
+    const {
+      ariaLabel,
+      invalid = !!this._errorMessage,
+      onRenderPrefix,
+      onRenderSuffix,
+      prefix,
+      suffix,
+      type = 'text',
+      label,
+    } = this.props;
+
+    // build aria-labelledby list from label, prefix, and suffix
+    const labelIds = [];
+    label && labelIds.push(this._labelId);
+    (prefix !== undefined || onRenderPrefix) && labelIds.push(this._prefixId);
+    (suffix !== undefined || onRenderSuffix) && labelIds.push(this._suffixId);
+
+    const inputProps: React.InputHTMLAttributes<HTMLInputElement> & React.RefAttributes<HTMLInputElement> = {
+      type: this.state.isRevealingPassword ? 'text' : type,
+      id: this._id,
+      ...getNativeProps(this.props, inputProperties, ['defaultValue', 'type']),
+      'aria-labelledby': this.props['aria-labelledby'] || (labelIds.length > 0 ? labelIds.join(' ') : undefined),
+      ref: this._textElement as React.RefObject<HTMLInputElement>,
+      value: this.value || '',
+      onInput: this._onInputChange,
+      onChange: this._onInputChange,
+      className: this._classNames.field,
+      'aria-label': ariaLabel,
+      'aria-describedby': this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby'],
+      'aria-invalid': invalid,
+      onFocus: this._onFocus,
+      onBlur: this._onBlur,
+    };
+
+    const defaultRender = (updatedInputProps: React.InputHTMLAttributes<HTMLInputElement>) => {
+      return <input {...updatedInputProps} />;
+    };
+    const onRenderInput = this.props.onRenderInput || defaultRender;
+    return onRenderInput(inputProps, defaultRender);
   }
 
   private _onRevealButtonClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
@@ -647,7 +673,7 @@ function _browserNeedsRevealButton() {
 
     if (win?.navigator) {
       // Edge, Chromium Edge
-      const isEdge = /^Edg/.test(win.navigator.userAgent || '');
+      const isEdge = /Edg/.test(win.navigator.userAgent || '');
 
       __browserNeedsRevealButton = !(isIE11() || isEdge);
     } else {

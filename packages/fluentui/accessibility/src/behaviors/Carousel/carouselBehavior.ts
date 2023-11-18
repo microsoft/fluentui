@@ -10,6 +10,8 @@ import { keyboardKey, SpacebarKey } from '../../keyboard-key';
  * Adds attribute 'aria-label' to 'itemsContainer' slot if 'navigation' property is true. Does not set the attribute otherwise.
  * Adds attribute 'role=region' to 'itemsContainer' slot if 'navigation' property is true.  Set 'role=none' otherwise.
  * Adds attribute 'tabIndex=-1' to 'itemsContainer' slot if 'navigation' property is false. Does not set the attribute otherwise.
+ * Adds attribute 'data-is-visible=false' to 'paddleNext' slot if 'paddleNextHidden' property is true. Does not set the attribute otherwise.
+ * Adds attribute 'data-is-visible=false' to 'paddlePrevious' slot if 'paddlePreviousHidden' property is false. Does not set the attribute otherwise.
  * @specification
  * Adds attribute 'role=region' to 'root' slot.
  * Adds attribute 'aria-live=polite' to 'itemsContainerWrapper' slot if 'ariaLiveOn' property is true. Sets the attribute to 'off' otherwise.
@@ -27,8 +29,8 @@ export const carouselBehavior: Accessibility<CarouselBehaviorProps> = props => (
     root: {
       ...(!props.navigation && {
         role: 'region',
-        'aria-roledescription': props.ariaRoleDescription,
-        'aria-label': props.ariaLabel,
+        'aria-roledescription': props['aria-roledescription'],
+        'aria-label': props['aria-label'],
       }),
     },
     itemsContainerWrapper: {
@@ -36,7 +38,7 @@ export const carouselBehavior: Accessibility<CarouselBehaviorProps> = props => (
     },
     itemsContainer: {
       ...(props.navigation
-        ? { role: 'region', 'aria-roledescription': props.ariaRoleDescription, 'aria-label': props.ariaLabel }
+        ? { role: 'region', 'aria-roledescription': props['aria-roledescription'], 'aria-label': props['aria-label'] }
         : { tabIndex: -1, role: 'none' }),
     },
 
@@ -45,11 +47,19 @@ export const carouselBehavior: Accessibility<CarouselBehaviorProps> = props => (
         tabIndex: -1,
         'aria-hidden': 'true',
       }),
+      ...(props.paddleNextHidden && {
+        // we need the attribute when carousel is inside FZ
+        'data-is-visible': 'false',
+      }),
     },
     paddlePrevious: {
       ...(props.navigation && {
         tabIndex: -1,
         'aria-hidden': 'true',
+      }),
+      ...(props.paddlePreviousHidden && {
+        // we need the attribute when carousel is inside FZ
+        'data-is-visible': 'false',
       }),
     },
   },
@@ -80,6 +90,8 @@ export type CarouselBehaviorProps = {
   /** Element type. */
   navigation: Object | Object[];
   ariaLiveOn: boolean;
-  ariaRoleDescription?: string;
-  ariaLabel?: string;
+  paddleNextHidden: boolean;
+  paddlePreviousHidden: boolean;
+  'aria-roledescription'?: string;
+  'aria-label'?: string;
 };

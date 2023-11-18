@@ -5,7 +5,7 @@ import { FloatingPeoplePickerPageProps } from '@fluentui/react-examples/lib/reac
 
 export const FloatingPeoplePickerPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@fluentui/api-docs/lib/pages/react/FloatingPeoplePicker.page.json')}
+    jsonDocs={require('../../../dist/api/react/FloatingPeoplePicker.page.json')}
     {...{ ...FloatingPeoplePickerPageProps, ...props }}
   />
 );

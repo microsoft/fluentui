@@ -5,9 +5,12 @@ import { CheckboxOtherExample } from './Checkbox.Other.Example';
 
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
-const CheckboxBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Checkbox/Checkbox.Basic.Example.tsx') as string;
-const CheckboxOtherExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Checkbox/Checkbox.Other.Example.tsx') as string;
-const CheckboxIndeterminateExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Checkbox/Checkbox.Indeterminate.Example.tsx') as string;
+const CheckboxBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Checkbox/Checkbox.Basic.Example.tsx') as string;
+const CheckboxOtherExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Checkbox/Checkbox.Other.Example.tsx') as string;
+const CheckboxIndeterminateExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Checkbox/Checkbox.Indeterminate.Example.tsx') as string;
 
 export const CheckboxPageProps: IDocPageProps = {
   title: 'Checkbox',

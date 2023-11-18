@@ -28,7 +28,7 @@ export type FluentComponentStaticProps<P = {}> = {
 // ========================================================
 
 export type Props<T = {}> = T & ObjectOf<any>;
-export type ReactChildren = React.ReactNodeArray | React.ReactNode;
+export type ReactChildren = React.ReactNode[] | React.ReactNode;
 
 export type ComponentEventHandler<TProps> = (event: React.SyntheticEvent<HTMLElement>, data?: TProps) => void;
 
@@ -50,8 +50,8 @@ export type PropsOf<T> = T extends React.Component<infer TProps>
 
 export type ShorthandRenderFunction<P> = (Component: React.ElementType<P>, props: P) => React.ReactNode;
 
-// The ReactFragment here is replaced from the original typings with ReactNodeArray because of incorrect inheriting of the type when it is defined as {}
-type ReactNode = React.ReactChild | React.ReactNodeArray | React.ReactPortal | boolean | null | undefined;
+// The ReactFragment here is replaced from the original typings with React.ReactNode[] because of incorrect inheriting of the type when it is defined as {}
+type ReactNode = React.ReactChild | React.ReactNode[] | React.ReactPortal | boolean | null | undefined;
 
 export type ShorthandValue<P extends Props> = ReactNode | ObjectShorthandValue<P>;
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import {
   Fabric,
   CompactPeoplePicker,
@@ -130,10 +130,10 @@ const getTextFromItem = (persona: IPersonaProps): string => persona.text as stri
 
 const getPeople = () => people;
 
-// Pickers that are 'disabled' are added before the Screener decorator because css classes for
+// Pickers that are 'disabled' are added before the StoryWright decorator because css classes for
 // suggestion items won't exist
 storiesOf('PeoplePicker', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addStory('Normal disabled', () => (
     <Fabric>
       <NormalPeoplePicker
@@ -200,30 +200,33 @@ storiesOf('PeoplePicker', module)
     </Fabric>
   ));
 
-storiesOf('PeoplePicker', module).addStory('Normal with text', () => (
-  <Screener
-    steps={new Screener.Steps()
-      .snapshot('default', { cropTo: '.testWrapper' })
-      .setValue('.ms-BasePicker-input', 'a')
-      .snapshot('suggestion: "a"')
-      .end()}
-  >
-    <Fabric>
-      <NormalPeoplePicker
-        onResolveSuggestions={getPeople}
-        onEmptyInputFocus={getPeople}
-        getTextFromItem={getTextFromItem}
-        className={'ms-PeoplePicker'}
-        pickerSuggestionsProps={suggestionProps}
-      />
-    </Fabric>
-  </Screener>
-));
+storiesOf('PeoplePicker', module)
+  .addDecorator(TestWrapperDecorator)
+  .addStory('Normal with text', () => (
+    <StoryWright
+      steps={new Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .setValue('.ms-BasePicker-input', 'a')
+        .snapshot('suggestion: "a"')
+        .end()}
+    >
+      <Fabric>
+        <NormalPeoplePicker
+          onResolveSuggestions={getPeople}
+          onEmptyInputFocus={getPeople}
+          getTextFromItem={getTextFromItem}
+          className={'ms-PeoplePicker'}
+          pickerSuggestionsProps={suggestionProps}
+        />
+      </Fabric>
+    </StoryWright>
+  ));
 
 storiesOf('PeoplePicker', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-BasePicker-input')
         .hover('.ms-Suggestions-item')
@@ -231,7 +234,7 @@ storiesOf('PeoplePicker', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Normal', () => (
     <Fabric>
@@ -258,7 +261,7 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Normal Overflow selected',
@@ -275,7 +278,7 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('List', () => (
     <Fabric>
@@ -302,7 +305,7 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Compact', () => (
     <Fabric>
@@ -329,5 +332,5 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

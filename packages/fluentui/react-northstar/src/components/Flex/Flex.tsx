@@ -1,10 +1,10 @@
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -54,10 +54,7 @@ export const flexClassName = 'ui-flex';
 /**
  * A Flex is a layout component that arranges group of items aligned towards common direction (either row or column).
  */
-export const Flex: ComponentWithAs<'div', FlexProps> & {
-  handledProps: (keyof FlexProps)[];
-  Item: typeof FlexItem;
-} = props => {
+export const Flex = React.forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Flex.displayName, context.telemetry);
   setStart();
@@ -116,13 +113,16 @@ export const Flex: ComponentWithAs<'div', FlexProps> & {
       : child;
   });
   const element = (
-    <ElementType className={classes.root} {...unhandledProps}>
+    <ElementType className={classes.root} {...unhandledProps} ref={ref}>
       {content}
     </ElementType>
   );
   setEnd();
 
   return element;
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, FlexProps> & {
+  handledProps: (keyof FlexProps)[];
+  Item: typeof FlexItem;
 };
 
 Flex.displayName = 'Flex';
@@ -139,14 +139,19 @@ Flex.propTypes = {
 
   wrap: PropTypes.bool,
 
-  hAlign: PropTypes.oneOf(['start', 'center', 'end', 'stretch']),
-  vAlign: PropTypes.oneOf(['start', 'center', 'end', 'stretch']),
+  hAlign: PropTypes.oneOf<'start' | 'center' | 'end' | 'stretch'>(['start', 'center', 'end', 'stretch']),
+  vAlign: PropTypes.oneOf<'start' | 'center' | 'end' | 'stretch'>(['start', 'center', 'end', 'stretch']),
 
-  space: PropTypes.oneOf(['around', 'between', 'evenly']),
+  space: PropTypes.oneOf<'around' | 'between' | 'evenly'>(['around', 'between', 'evenly']),
 
-  gap: PropTypes.oneOf(['gap.smaller', 'gap.small', 'gap.medium', 'gap.large']),
+  gap: PropTypes.oneOf<'gap.smaller' | 'gap.small' | 'gap.medium' | 'gap.large'>([
+    'gap.smaller',
+    'gap.small',
+    'gap.medium',
+    'gap.large',
+  ]),
 
-  padding: PropTypes.oneOf(['padding.medium']),
+  padding: PropTypes.oneOf<'padding.medium'>(['padding.medium']),
   fill: PropTypes.bool,
 
   debug: PropTypes.bool,

@@ -5,7 +5,7 @@
       "name": "Debug test",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/scripts/debug-test.js",
+      "program": "${workspaceRoot}/scripts/executors/debug-test.js",
       "cwd": "${fileDirname}",
       "stopOnEntry": false,
       "args": ["-i", "--watch"],
@@ -22,7 +22,7 @@
       "name": "Debug current open test",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/scripts/debug-test.js",
+      "program": "${workspaceRoot}/scripts/executors/debug-test.js",
       "cwd": "${fileDirname}",
       "stopOnEntry": false,
       "args": ["-i", "--testPathPattern=\\b${fileBasenameNoExtension}", "--watch"],
@@ -39,7 +39,7 @@
       "name": "Debug current open test (v0)",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/scripts/debug-test.js",
+      "program": "${workspaceRoot}/scripts/executors/debug-test.js",
       "cwd": "${fileDirname}",
       "stopOnEntry": false,
       "args": ["-i", "--testPathPattern=\\b${fileBasenameNoExtension}", "--watch"],
@@ -54,25 +54,10 @@
       "console": "integratedTerminal"
     },
     {
-      "name": "Run server-rendered-app",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceRoot}/apps/server-rendered-app/server/index.js",
-      "cwd": "${workspaceRoot}/apps/server-rendered-app",
-      "stopOnEntry": false,
-      "args": ["-i"],
-      "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--inspect"],
-      "env": {
-        "NODE_ENV": "development"
-      },
-      "sourceMaps": true
-    },
-    {
       "name": "Build @fluentui/react",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/scripts/just-scripts.js",
+      "program": "${workspaceRoot}/node-modules/just-scripts/bin/just-scripts.js",
       "cwd": "${workspaceRoot}/packages/react",
       "stopOnEntry": false,
       "args": ["ts"],
@@ -143,7 +128,7 @@
       "protocol": "inspector",
       "cwd": "${workspaceRoot}",
       "args": [
-        "${workspaceRoot}/scripts/updateReleaseNotes/index.ts",
+        "${workspaceRoot}/scripts/update-release-notes/index.ts",
         "--token",
         // For local testing, generate a personal access token (https://github.com/settings/tokens)
         // and replace "your token here" with the token. DO NOT COMMIT YOUR TOKEN!
@@ -152,7 +137,7 @@
         "--age",
         "10"
       ],
-      "runtimeArgs": ["--nolazy", "--inspect", "-r", "${workspaceRoot}/scripts/ts-node-register"],
+      "runtimeArgs": ["--nolazy", "--inspect", "-r", "${workspaceRoot}/scripts/ts-node/register"],
       "env": {
         "NODE_ENV": "development"
       },
@@ -168,21 +153,6 @@
       "stopOnEntry": false,
       "runtimeExecutable": null,
       "args": ["--ext", ".ts,.tsx,.js,.jsx", "src"],
-      "runtimeArgs": ["--nolazy", "--inspect"],
-      "env": {
-        "NODE_ENV": "development"
-      },
-      "sourceMaps": true,
-      "console": "integratedTerminal"
-    },
-    {
-      "name": "Debug page json generator",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceRoot}/packages/api-docs/lib/generatePageJsonFiles.js",
-      "cwd": "${workspaceRoot}/packages/api-docs",
-      "stopOnEntry": false,
-      "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--inspect"],
       "env": {
         "NODE_ENV": "development"

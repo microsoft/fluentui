@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/scheme-utilities",
-  "version": "8.2.2",
+  "version": "8.3.39",
   "description": "Fluent UI React subtheme generator.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -23,12 +23,20 @@
     "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/theme": "^2.3.2",
-    "@fluentui/set-version": "^8.1.4",
+    "@fluentui/theme": "^2.6.38",
+    "@fluentui/set-version": "^8.2.12",
     "tslib": "^2.1.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

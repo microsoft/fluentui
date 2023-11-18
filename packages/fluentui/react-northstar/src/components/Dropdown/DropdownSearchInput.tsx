@@ -8,11 +8,11 @@ import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
 import { Input } from '../Input/Input';
 import {
-  ComponentWithAs,
   useFluentContext,
   useTelemetry,
   useStyles,
   useUnhandledProps,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface DropdownSearchInputSlotClassNames {
@@ -84,8 +84,7 @@ export type DropdownSearchInputStylesProps = Required<Pick<DropdownSearchInputPr
  * A DropdownSearchInput represents item of 'search' Dropdown.
  * Used to display the search input field.
  */
-export const DropdownSearchInput: ComponentWithAs<'div', DropdownSearchInputProps> &
-  FluentComponentStaticProps<DropdownSearchInputProps> = props => {
+export const DropdownSearchInput = React.forwardRef<HTMLInputElement, DropdownSearchInputProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DropdownSearchInput.displayName, context.telemetry);
   setStart();
@@ -128,6 +127,7 @@ export const DropdownSearchInput: ComponentWithAs<'div', DropdownSearchInputProp
 
   const element = (
     <Input
+      ref={ref}
       disabled={disabled}
       inputRef={inputRef}
       onFocus={handleFocus}
@@ -153,7 +153,8 @@ export const DropdownSearchInput: ComponentWithAs<'div', DropdownSearchInputProp
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'input', HTMLInputElement, DropdownSearchInputProps> &
+  FluentComponentStaticProps<DropdownSearchInputProps>;
 
 DropdownSearchInput.displayName = 'DropdownSearchInput';
 

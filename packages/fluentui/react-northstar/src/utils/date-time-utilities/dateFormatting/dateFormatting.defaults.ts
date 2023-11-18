@@ -43,7 +43,6 @@ export const DEFAULT_DATE_FORMATTING: IDateFormatting = {
 export const DEFAULT_CALENDAR_STRINGS: ICalendarStrings = {
   ...DEFAULT_DATE_FORMATTING,
 
-  goToToday: 'Go to today',
   openCalendarTitle: 'Open calendar',
   inputPlaceholder: 'Select a date...',
   weekNumberFormatString: 'Week number {0}',

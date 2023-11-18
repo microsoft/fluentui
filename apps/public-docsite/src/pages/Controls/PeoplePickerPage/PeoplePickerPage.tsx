@@ -13,20 +13,21 @@ export const PeoplePickerPage: React.FunctionComponent<IControlsPageProps> = pro
     <ControlsAreaPage
       {...props}
       title="People Picker"
-      {...PeoplePickerPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...PeoplePickerPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   switch (platform) {
     case 'android':
       return [
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/PeoplePickerImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PeoplePickerPage/docs/android/PeoplePickerImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PeoplePickerPage/docs/android/PeoplePickerImplementation.md') as string,
         },
       ];
   }

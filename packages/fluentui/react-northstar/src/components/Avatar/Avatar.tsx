@@ -1,6 +1,5 @@
 import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -8,6 +7,7 @@ import {
   useStyles,
   useTelemetry,
   mergeVariablesOverrides,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -42,7 +42,7 @@ export interface AvatarProps extends UIComponentProps {
   square?: boolean;
 
   /** Size multiplier. */
-  size?: SizeValue;
+  size?: AvatarSizeValue;
 
   /** Shorthand for the status of the user. */
   status?: ShorthandValue<AvatarStatusProps>;
@@ -51,13 +51,14 @@ export interface AvatarProps extends UIComponentProps {
   getInitials?: (name: string) => string;
 }
 
+export type AvatarSizeValue = SizeValue | 'medium-large';
 export type AvatarStylesProps = Pick<AvatarProps, 'size' | 'square'>;
 export const avatarClassName = 'ui-avatar';
 
 /**
  * An Avatar is a graphical representation of a user.
  */
-export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStaticProps<AvatarProps> = props => {
+export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
   setStart();
@@ -82,7 +83,7 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStatic
     debugName: Avatar.displayName,
     rtl: context.rtl,
   });
-  const { classes, styles: resolvedStyles } = useStyles(Avatar.displayName, {
+  const { classes } = useStyles(Avatar.displayName, {
     className: avatarClassName,
     mapPropsToStyles: () => ({ size, square }),
     mapPropsToInlineStyles: () => ({
@@ -103,8 +104,6 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStatic
         avatar: !square,
         title: name,
         size,
-        // remove in upcoming breaking change
-        styles: resolvedStyles.image,
       }),
   });
 
@@ -112,7 +111,6 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStatic
     defaultProps: () =>
       getA11Props('icon', {
         title: name,
-        styles: resolvedStyles.icon,
         size,
         square,
       }),
@@ -126,22 +124,19 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStatic
         title: name,
         size,
         square,
-        styles: resolvedStyles.label,
       }),
   });
 
   const hasGlyph = !!image || !!icon;
 
   const result = (
-    <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
+    <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
       {hasGlyph && (imageElement || iconElement)}
       {!hasGlyph && labelElement}
-      {createShorthand(AvatarStatus, status, {
+      {createShorthand(AvatarStatus, status as ShorthandValue<AvatarStatusProps & { as: 'span' }>, {
         defaultProps: () =>
           getA11Props('status', {
             size,
-            // remove in upcoming breaking change
-            styles: resolvedStyles.status,
           }),
         overrideProps: (predefinedProps: AvatarStatusProps) => ({
           variables: mergeVariablesOverrides(variables, predefinedProps.variables),
@@ -153,7 +148,7 @@ export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStatic
   setEnd();
 
   return result;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, AvatarProps> & FluentComponentStaticProps<AvatarProps>;
 
 Avatar.displayName = 'Avatar';
 

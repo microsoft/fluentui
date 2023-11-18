@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link when rendered as a button renders correctly 1`] = `
+<div>
+  <button
+    class="fui-Link"
+    type="button"
+  >
+    This is a link
+  </button>
+</div>
+`;
+
+exports[`Link when rendered as an anchor renders correctly 1`] = `
+<div>
+  <a
+    class="fui-Link"
+    href="https://www.bing.com"
+    tabindex="0"
+  >
+    This is a link
+  </a>
+</div>
+`;

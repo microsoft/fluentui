@@ -54,6 +54,7 @@ export const getStyles: IStyleFunction<IFeedbackListStyleProps, IFeedbackListSty
       {
         fontSize: theme.fonts.small.fontSize,
         fontWeight: FontWeights.bold,
+        cursor: 'pointer',
       },
       globalClassNames.listElement,
     ],

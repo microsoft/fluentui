@@ -1,0 +1,509 @@
+{
+  "name": "@fluentui/react-theme-sass",
+  "entries": [
+    {
+      "date": "Thu, 09 Nov 2023 17:29:46 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.20",
+      "version": "9.0.0-alpha.20",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 17:49:13 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.18",
+      "version": "9.0.0-alpha.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d",
+            "comment": "chore: trigger manual version bump after broken release"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 15:31:43 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.17",
+      "version": "9.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "e61473fa10195f6ebf2308205c1e72e91b711831",
+            "comment": "fix: bump swc core to mitigate transpilation memory leaks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Sep 2023 13:29:09 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.16",
+      "version": "9.0.0-alpha.16",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "b93c2ac22355b6cb6f33dd509c6cd9c21f4fffc8",
+            "comment": "bumps @swc/helpers version to 0.5.1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Aug 2023 13:17:08 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.15",
+      "version": "9.0.0-alpha.15",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "3df6e4cf274b9811b7a279d9f611d8a6c20fdab8",
+            "comment": "feat(tokens): add durationGentle"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Aug 2023 08:52:56 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.14",
+      "version": "9.0.0-alpha.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "01cc58f793345482d293c6837db64f85f552562d",
+            "comment": "feat(tokens): Add colorBrandStroke2Contrast and colorNeutralStrokeAlpha2"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "141424a604b98ea762cfa375fe78df8c9e6bdec8",
+            "comment": "feat(tokens): add status color tokens"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Jul 2023 21:25:47 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "8a9e1018f2abb2c7608c49d32acf44e93c43cba6",
+            "comment": "chore: update devDependencies to use * for inner workspace dependencies"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 11:12:34 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jun 2023 12:39:05 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.13",
+      "version": "9.0.0-alpha.13",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "7516a6bde1bd7b8c957ca479ffcb0e737e9ca693",
+            "comment": "Add theme tokens"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme-sass",
+            "comment": "Bump @fluentui/react-theme to v9.1.9",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 May 2023 20:45:36 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.12",
+      "version": "9.0.0-alpha.12",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "69e0617a93cb44ef42f3bd19284b7dc5fe27fed3",
+            "comment": "chore: update test-ssr script"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 May 2023 00:39:18 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.12",
+      "version": "9.0.0-alpha.12",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 May 2023 20:27:57 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.12",
+      "version": "9.0.0-alpha.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme-sass",
+            "comment": "Bump @fluentui/react-theme to v9.1.8",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Apr 2023 17:54:00 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.11",
+      "version": "9.0.0-alpha.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "45cb6089b0f5f464ae0dd9e9cba7e199a9d67cd8",
+            "comment": "fix: add \"style\" to exports field"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Mar 2023 21:23:11 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.10",
+      "version": "9.0.0-alpha.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme-sass",
+            "comment": "Bump @fluentui/react-theme to v9.1.7",
+            "commit": "b7a26f6263c80e3253c6b8338c33b73bae33e2b5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Mar 2023 10:19:53 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.9",
+      "version": "9.0.0-alpha.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "76e6598eae0c9247fb7f8834c1e24d8e864bf5df",
+            "comment": "feat(tokens): Add colorNeutralBackgroundAlpha and colorNeutralStrokeAlpha tokens"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme-sass",
+            "comment": "Bump @fluentui/react-theme to v9.1.6",
+            "commit": "5da01b4766ae6d81befb7bcd588d9cf8d969e1e2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Jan 2023 08:38:51 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.8",
+      "version": "9.0.0-alpha.8",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Jan 2023 01:40:39 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Dec 2022 10:20:33 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme-sass",
+            "comment": "Bump @fluentui/react-theme to v9.1.5",
+            "commit": "66bf89f634cad4a275e957d7a2214c7e73ff8c2e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Dec 2022 14:59:31 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.6",
+      "version": "9.0.0-alpha.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "43e7eb9324b43d02d8d828ff722ed3f3858f3d30",
+            "comment": "feat: add new tokens"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme-sass",
+            "comment": "Bump @fluentui/react-theme to v9.1.4",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Dec 2022 18:29:37 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.5",
+      "version": "9.0.0-alpha.5",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "109f6e6966ce703169c98134f1aedbaec17d6f93",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme-sass",
+            "comment": "Bump @fluentui/react-theme to v9.1.3",
+            "commit": "4c29542a51bf068e171690cc8e59c14489883912"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Nov 2022 23:05:50 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.4",
+      "version": "9.0.0-alpha.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "ea768501802d65d63ddc63fff3816fb6b5008ae4",
+            "comment": "chore: update package scaffold"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Nov 2022 14:57:47 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.4",
+      "version": "9.0.0-alpha.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme-sass",
+            "comment": "Bump @fluentui/react-theme to v9.1.2",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Oct 2022 00:35:38 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "6ced976a8d0e6a0e2e207da8fe0eb810e2bd19bc",
+            "comment": "Update package readme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Oct 2022 08:39:59 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme-sass",
+            "comment": "Bump @fluentui/react-theme to v9.1.1",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Sep 2022 09:49:39 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "9c97dc2efbfe7d22b3686cb765fd93916b303642",
+            "comment": "react-theme-sass dev-depends on react-theme"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "1d0a72865a151962362aa3e5054ac9bf8178f09c",
+            "comment": "feat: add new color tokens"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "61557d7e48a7380b2fbf2bcc5c8faa4a3ed7d89f",
+            "comment": "feat: Add fontWeightBold"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "0137f992b99b3b8ec927be8f7aef751d27cd5830",
+            "comment": "fix: Rename colorNeutralForegroundInvertedStatic token to colorNeutralForegroundStaticInverted"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "5c78472d96502d05a10016d9502eceada4edfd8a",
+            "comment": "feat: add color neutral foreground inverted 2 token"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme-sass",
+            "comment": "Bump @fluentui/react-theme to v9.1.0",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jun 2022 15:13:22 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "eeed967f604dc4f6a4b6b32b6347c0ed9360294c",
+            "comment": "Add SASS variables mapped to CSS variables provided by react-theme"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "03e380fac7237a246774aa83b3771bbbd67be8e6",
+            "comment": "fix(react-theme-sass): Remove color palette tokens which are no longer present in react-theme"
+          }
+        ]
+      }
+    }
+  ]
+}

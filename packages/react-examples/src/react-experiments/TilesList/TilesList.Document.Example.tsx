@@ -21,6 +21,7 @@ import {
   onRenderTilesListExampleRow,
 } from '@fluentui/react-examples/lib/react-experiments/TilesList/ExampleHelpers';
 import { ShimmerElementType, ShimmerElementsGroup } from '@fluentui/react/lib/Shimmer';
+import { FLUENT_CDN_BASE_URL } from '@fluentui/style-utilities';
 
 const HEADER_VERTICAL_PADDING = 13;
 const HEADER_FONT_SIZE = 18;
@@ -223,7 +224,7 @@ export class TilesListDocumentExample extends React.Component<
         invokeSelection={true}
         foreground={
           <img
-            src={`https://spoprod-a.akamaihd.net/files/odsp-next-prod_2018-04-06_20180406.004/odsp-media/images/itemtypes/${imgSize}/docx.png`}
+            src={`${FLUENT_CDN_BASE_URL}/assets/item-types/${imgSize}/docx.png`}
             style={{
               display: 'block',
               width: `${imgSize}px`,

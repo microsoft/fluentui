@@ -17,13 +17,13 @@ import {
 } from '../../utils';
 import { Button, ButtonProps } from './Button';
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useUnhandledProps,
   useTelemetry,
   useStyles,
   useFluentContext,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface ButtonGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -46,8 +46,7 @@ export const buttonGroupClassName = 'ui-buttons';
 /**
  * A ButtonGroup represents multiple related actions as a group.
  */
-export const ButtonGroup: ComponentWithAs<'div', ButtonGroupProps> &
-  FluentComponentStaticProps<ButtonGroupProps> = props => {
+export const ButtonGroup = React.forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ButtonGroup.displayName, context.telemetry);
   setStart();
@@ -94,6 +93,7 @@ export const ButtonGroup: ComponentWithAs<'div', ButtonGroupProps> &
       {...{
         ...getA11yProps('root', {
           className: classes.root,
+          ref,
           ...unhandledProps,
         }),
         ...(emptyButtons && { ...rtlTextContainer.getAttributes({ forElements: [children, content] }) }),
@@ -117,7 +117,8 @@ export const ButtonGroup: ComponentWithAs<'div', ButtonGroupProps> &
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, ButtonGroupProps> &
+  FluentComponentStaticProps<ButtonGroupProps>;
 
 ButtonGroup.displayName = 'ButtonGroup';
 

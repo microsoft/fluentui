@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/utilities",
-  "version": "8.3.2",
+  "version": "8.13.21",
   "description": "Fluent UI React utilities for building components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,6 +13,13 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-amd",
+    "lib-commonjs"
+  ],
   "scripts": {
     "build": "just-scripts build",
     "clean": "just-scripts clean",
@@ -21,32 +28,67 @@
     "lint": "just-scripts lint",
     "start-test": "just-scripts jest-watch",
     "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest -u"
+    "update-snapshots": "just-scripts jest -u",
+    "verify-packaging": "just-scripts verify-packaging"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
-    "@types/enzyme": "3.10.3",
-    "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
-    "@types/react-test-renderer": "^16.0.0",
-    "@fluentui/scripts": "^1.0.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.10",
-    "@fluentui/test-utilities": "^8.0.8",
-    "enzyme": "~3.10.0",
-    "enzyme-adapter-react-16": "^1.15.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/jest-serializer-merge-styles": "*",
+    "@fluentui/test-utilities": "*",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-jest": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/dom-utilities": "^2.1.4",
-    "@fluentui/merge-styles": "^8.1.5",
-    "@fluentui/set-version": "^8.1.4",
+    "@fluentui/dom-utilities": "^2.2.12",
+    "@fluentui/merge-styles": "^8.5.13",
+    "@fluentui/set-version": "^8.2.12",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <18.0.0",
-    "react": ">=16.8.0 <18.0.0"
+    "@types/react": ">=16.8.0 <19.0.0",
+    "react": ">=16.8.0 <19.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./lib/css": {
+      "types": "./lib/css.d.ts",
+      "import": "./lib/css.js",
+      "require": "./lib-commonjs/css.js"
+    },
+    "./lib/getId": {
+      "types": "./lib/getId.d.ts",
+      "import": "./lib/getId.js",
+      "require": "./lib-commonjs/getId.js"
+    },
+    "./lib/initials": {
+      "types": "./lib/initials.d.ts",
+      "import": "./lib/initials.js",
+      "require": "./lib-commonjs/initials.js"
+    },
+    "./lib/memoize": {
+      "types": "./lib/memoize.d.ts",
+      "import": "./lib/memoize.js",
+      "require": "./lib-commonjs/memoize.js"
+    },
+    "./lib/rtl": {
+      "types": "./lib/rtl.d.ts",
+      "import": "./lib/rtl.js",
+      "require": "./lib-commonjs/rtl.js"
+    },
+    "./lib/sessionStorage": {
+      "types": "./lib/sessionStorage.d.ts",
+      "import": "./lib/sessionStorage.js",
+      "require": "./lib-commonjs/sessionStorage.js"
+    },
+    "./lib/warn": {
+      "types": "./lib/warn.d.ts",
+      "import": "./lib/warn.js",
+      "require": "./lib-commonjs/warn.js"
+    }
   }
 }

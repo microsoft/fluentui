@@ -1,3 +1,4 @@
+/** @jsxRuntime classic */
 /** @jsx withSlots */
 import { Callout, FocusZone, FocusZoneDirection, List, Stack, Text } from '@fluentui/react';
 import { DefaultButton, IconButton } from '@fluentui/react/lib/Button';

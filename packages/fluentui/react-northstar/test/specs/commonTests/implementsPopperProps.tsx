@@ -7,12 +7,11 @@ type ImplementsPopperPropsOptions<P> = {
   requiredProps?: Partial<P>;
 };
 
-export const positioningProps: Required<PositioningProps> = {
+export const positioningProps: Required<Omit<PositioningProps, 'popperRef'>> = {
   align: 'bottom',
   flipBoundary: document.body,
   offset: [20, 20],
   overflowBoundary: document.body,
-  popperRef: React.createRef(),
   position: 'above',
   positionFixed: true,
   unstable_disableTether: 'all',
@@ -37,6 +36,17 @@ export function implementsPopperProps<P>(
 
         expect(popper.prop(positioningProp)).toBe(positioningValue);
       });
+    });
+
+    test('popperRef is handled by Popper component', () => {
+      const popperRef = jest.fn();
+      mount(
+        React.createElement(Component, {
+          ...(options.requiredProps as P),
+          popperRef,
+        }),
+      );
+      expect(popperRef).toHaveBeenCalledWith({ updatePosition: expect.any(Function) });
     });
   });
 }

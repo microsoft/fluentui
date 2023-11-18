@@ -43,6 +43,7 @@ export interface IWithViewportProps {
    * In addition, consider setting `skipViewportMeasures` to `true` when running within a React test renderer, to avoid
    * direct DOM dependencies.
    */
+
   skipViewportMeasures?: boolean;
   /**
    * Whether or not to explicitly disable usage of the `ResizeObserver` in favor of a `'resize'` event on `window`,
@@ -52,6 +53,16 @@ export interface IWithViewportProps {
    * This has no impact if `skipViewportMeasures` is `true`, as no viewport measurement strategy is used.
    */
   disableResizeObserver?: boolean;
+
+  /**
+   * Whether or not `withViewport` will delay before first measuring the viewport size.
+   * Setting this will delay measurement by the same amount as the debounce for resizing the window.
+   * This is useful for giving the child of the viewport time to render before measuring.
+   *
+   * This is an opt-in setting as existing systems have a dependency on immediate measurement for performance.
+   * @default false
+   */
+  delayFirstMeasure?: boolean;
 }
 
 const RESIZE_DELAY = 500;
@@ -60,7 +71,7 @@ const MAX_RESIZE_ATTEMPTS = 3;
 /**
  * A decorator to update decorated component on viewport or window resize events.
  *
- * @param ComposedComponent decorated React component reference.
+ * @param ComposedComponent - decorated React component reference.
  */
 export function withViewport<TProps extends { viewport?: IViewport }, TState>(
   ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>,
@@ -88,7 +99,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     }
 
     public componentDidMount(): void {
-      const { skipViewportMeasures, disableResizeObserver } = this.props as IWithViewportProps;
+      const { delayFirstMeasure, disableResizeObserver, skipViewportMeasures } = this.props as IWithViewportProps;
       const win = getWindow(this._root.current);
 
       this._onAsyncResize = this._async.debounce(this._onAsyncResize, RESIZE_DELAY, {
@@ -102,13 +113,19 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
           this._events.on(win, 'resize', this._onAsyncResize);
         }
 
-        this._updateViewport();
+        if (delayFirstMeasure) {
+          this._async.setTimeout(() => {
+            this._updateViewport();
+          }, RESIZE_DELAY);
+        } else {
+          this._updateViewport();
+        }
       }
     }
 
     public componentDidUpdate(previousProps: TProps) {
       const { skipViewportMeasures: previousSkipViewportMeasures } = previousProps as IWithViewportProps;
-      const { skipViewportMeasures, disableResizeObserver } = this.props as IWithViewportProps;
+      const { disableResizeObserver, skipViewportMeasures } = this.props as IWithViewportProps;
       const win = getWindow(this._root.current);
 
       if (skipViewportMeasures !== previousSkipViewportMeasures) {

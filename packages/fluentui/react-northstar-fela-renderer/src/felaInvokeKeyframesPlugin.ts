@@ -9,7 +9,7 @@ import * as _ from 'lodash';
  * tree.
  */
 export const felaInvokeKeyframesPlugin = (styles: ICSSInJSStyle): ICSSInJSStyle => {
-  return Object.keys(styles).reduce((acc, cssPropertyName: keyof ICSSInJSStyle) => {
+  return Object.keys(styles).reduce((acc: ICSSInJSStyle, cssPropertyName: keyof ICSSInJSStyle) => {
     const cssPropertyValue = styles[cssPropertyName];
 
     if (_.isPlainObject(cssPropertyValue)) {
@@ -20,18 +20,16 @@ export const felaInvokeKeyframesPlugin = (styles: ICSSInJSStyle): ICSSInJSStyle 
           styles[cssPropertyName] = callable(animationDefinition.keyframe)(animationDefinition.params || {});
         }
 
-        return {
-          ...acc,
-          [cssPropertyName]: styles[cssPropertyName],
-        };
+        acc[cssPropertyName] = styles[cssPropertyName];
+        return acc;
       }
 
-      return {
-        ...acc,
-        [cssPropertyName]: felaInvokeKeyframesPlugin(cssPropertyValue as ICSSInJSStyle),
-      };
+      // Without casting to any TSC gives "Expression produces a union type that is too complex to represent" error
+      (acc as any)[cssPropertyName] = felaInvokeKeyframesPlugin(cssPropertyValue as ICSSInJSStyle);
+      return acc;
     }
 
-    return { ...acc, [cssPropertyName]: styles[cssPropertyName] };
+    (acc as any)[cssPropertyName] = styles[cssPropertyName];
+    return acc;
   }, {});
 };

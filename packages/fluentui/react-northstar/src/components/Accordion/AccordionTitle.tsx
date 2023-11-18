@@ -17,13 +17,13 @@ import {
 import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import {
-  ComponentWithAs,
   getElementType,
   useTelemetry,
   useFluentContext,
   useUnhandledProps,
   useAccessibility,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface AccordionTitleSlotClassNames {
@@ -91,133 +91,136 @@ export type AccordionTitleStylesProps = Required<Pick<AccordionTitleProps, 'disa
 /**
  * An AccordionTitle represents the title of Accordion's item that can be interacted with to expand or collapse the item's content.
  */
-export const AccordionTitle: ComponentWithAs<'dt', AccordionTitleProps> &
-  FluentComponentStaticProps<AccordionTitleProps> = props => {
-  const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(AccordionTitle.displayName, context.telemetry);
-  setStart();
-  const {
-    contentRef,
-    children,
-    content,
-    indicator,
-    contentWrapper,
-    disabled,
-    accessibility,
-    canBeCollapsed,
-    as,
-    active,
-    accordionContentId,
-    className,
-    design,
-    styles,
-    variables,
-  } = props;
-  const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps(AccordionTitle.handledProps, props);
-
-  const getA11yProps = useAccessibility<AccordionTitleBehaviorProps>(accessibility, {
-    debugName: AccordionTitle.displayName,
-    actionHandlers: {
-      performClick: e => {
-        e.preventDefault();
-        e.stopPropagation();
-        handleClick(e);
-      },
-    },
-    mapPropsToBehavior: () => ({
-      hasContent: !!content,
+export const AccordionTitle = React.forwardRef<HTMLDListElement, AccordionTitleProps & { as: React.ReactNode }>(
+  (props, ref) => {
+    const context = useFluentContext();
+    const { setStart, setEnd } = useTelemetry(AccordionTitle.displayName, context.telemetry);
+    setStart();
+    const {
+      contentRef,
+      children,
+      content,
+      indicator,
+      contentWrapper,
+      disabled,
+      accessibility,
       canBeCollapsed,
-      as: String(as),
+      as,
       active,
-      disabled,
       accordionContentId,
-    }),
-    rtl: context.rtl,
-  });
-
-  const { classes, styles: resolvedStyles } = useStyles<AccordionTitleStylesProps>(AccordionTitle.displayName, {
-    className: accordionTitleClassName,
-    mapPropsToStyles: () => ({
-      disabled,
-      content: !!content,
-      active,
-    }),
-    mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
       variables,
-    }),
-    rtl: context.rtl,
-  });
+    } = props;
+    const ElementType = getElementType(props);
+    const unhandledProps = useUnhandledProps(AccordionTitle.handledProps, props);
 
-  const handleClick = (e: React.SyntheticEvent) => {
-    if (!disabled) {
-      _.invoke(props, 'onClick', e, props);
-    }
-  };
+    const getA11yProps = useAccessibility<AccordionTitleBehaviorProps>(accessibility, {
+      debugName: AccordionTitle.displayName,
+      actionHandlers: {
+        performClick: e => {
+          e.preventDefault();
+          e.stopPropagation();
+          handleClick(e);
+        },
+      },
+      mapPropsToBehavior: () => ({
+        hasContent: !!content,
+        canBeCollapsed,
+        as: String(as),
+        active,
+        disabled,
+        accordionContentId,
+      }),
+      rtl: context.rtl,
+    });
 
-  const handleFocus = (e: React.SyntheticEvent) => {
-    e.stopPropagation();
-    _.invoke(props, 'onFocus', e, props);
-  };
+    const { classes, styles: resolvedStyles } = useStyles<AccordionTitleStylesProps>(AccordionTitle.displayName, {
+      className: accordionTitleClassName,
+      mapPropsToStyles: () => ({
+        disabled,
+        content: !!content,
+        active,
+      }),
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables,
+      }),
+      rtl: context.rtl,
+    });
 
-  const handleWrapperOverrides = predefinedProps => ({
-    onFocus: (e: React.FocusEvent) => {
-      handleFocus(e);
-      _.invoke(predefinedProps, 'onFocus', e, props);
-    },
-    onClick: (e: React.MouseEvent) => {
-      handleClick(e);
-      _.invoke(predefinedProps, 'onClick', e, props);
-    },
-  });
+    const handleClick = (e: React.SyntheticEvent) => {
+      if (!disabled) {
+        _.invoke(props, 'onClick', e, props);
+      }
+    };
 
-  const contentWrapperElement = (
-    <Ref innerRef={contentRef}>
-      {Box.create(contentWrapper, {
-        defaultProps: () =>
-          getA11yProps('content', {
-            className: accordionTitleSlotClassNames.contentWrapper,
-            styles: resolvedStyles.contentWrapper,
-          }),
-        overrideProps: predefinedProps => ({
-          children: (
-            <>
-              {Box.create(indicator, {
-                defaultProps: () =>
-                  getA11yProps('indicator', {
-                    styles: resolvedStyles.indicator,
+    const handleFocus = (e: React.SyntheticEvent) => {
+      e.stopPropagation();
+      _.invoke(props, 'onFocus', e, props);
+    };
+
+    const handleWrapperOverrides = predefinedProps => ({
+      onFocus: (e: React.FocusEvent) => {
+        handleFocus(e);
+        _.invoke(predefinedProps, 'onFocus', e, props);
+      },
+      onClick: (e: React.MouseEvent) => {
+        handleClick(e);
+        _.invoke(predefinedProps, 'onClick', e, props);
+      },
+    });
+
+    const contentWrapperElement = (
+      <Ref innerRef={contentRef}>
+        {Box.create(contentWrapper, {
+          defaultProps: () =>
+            getA11yProps('content', {
+              className: accordionTitleSlotClassNames.contentWrapper,
+              styles: resolvedStyles.contentWrapper,
+            }),
+          overrideProps: predefinedProps => ({
+            children: (
+              <>
+                {Box.create(indicator, {
+                  defaultProps: () =>
+                    getA11yProps('indicator', {
+                      styles: resolvedStyles.indicator,
+                    }),
+                })}
+                {Box.create(content, {
+                  defaultProps: () => ({
+                    styles: resolvedStyles.content,
                   }),
-              })}
-              {Box.create(content, {
-                defaultProps: () => ({
-                  styles: resolvedStyles.content,
-                }),
-              })}
-            </>
-          ),
-          ...handleWrapperOverrides(predefinedProps),
-        }),
-      })}
-    </Ref>
-  );
+                })}
+              </>
+            ),
+            ...handleWrapperOverrides(predefinedProps),
+          }),
+        })}
+      </Ref>
+    );
 
-  const element = (
-    <ElementType
-      {...rtlTextContainer.getAttributes({ forElements: [children] })}
-      {...getA11yProps('root', {
-        className: classes.root,
-        ...unhandledProps,
-      })}
-    >
-      {childrenExist(children) ? children : contentWrapperElement}
-    </ElementType>
-  );
-  setEnd();
-  return element;
-};
+    const element = (
+      <ElementType
+        {...rtlTextContainer.getAttributes({ forElements: [children] })}
+        {...getA11yProps('root', {
+          className: classes.root,
+          ref,
+          ...unhandledProps,
+        })}
+      >
+        {childrenExist(children) ? children : contentWrapperElement}
+      </ElementType>
+    );
+    setEnd();
+    return element;
+  },
+) as unknown as ForwardRefWithAs<'div', HTMLDListElement, AccordionTitleProps> &
+  FluentComponentStaticProps<AccordionTitleProps>;
 
 AccordionTitle.displayName = 'AccordionTitle';
 
@@ -242,7 +245,7 @@ AccordionTitle.handledProps = Object.keys(AccordionTitle.propTypes) as any;
 
 AccordionTitle.defaultProps = {
   accessibility: accordionTitleBehavior,
-  as: 'dt',
+  as: 'div',
   contentRef: _.noop,
   indicator: {},
   contentWrapper: {},

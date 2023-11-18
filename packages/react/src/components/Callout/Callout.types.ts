@@ -4,6 +4,7 @@ import type { IStyle, ITheme } from '../../Styling';
 import type { IRectangle, IStyleFunctionOrObject } from '../../Utilities';
 import type { ICalloutPositionedInfo } from '../../Positioning';
 import type { ILayerProps } from '../../Layer';
+import type { IPopupProps } from '../../Popup';
 import type { Target } from '@fluentui/react-hooks';
 import type { IPopupRestoreFocusParams } from '../../Popup';
 
@@ -33,7 +34,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
   directionalHintForRTL?: DirectionalHint;
 
   /**
-   * The gap between the Callout and the target
+   * The gap between the Callout and the target, specified as number of pixels
    * @defaultvalue 0
    */
   gapSpace?: number;
@@ -182,6 +183,11 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
    * Optional props to pass to the Layer component hosting the callout.
    */
   layerProps?: ILayerProps;
+
+  /**
+   * Optional props to pass the Popup component that the callout uses.
+   */
+  popupProps?: IPopupProps;
 
   /**
    * Optional callback that is called once the callout has been correctly positioned.

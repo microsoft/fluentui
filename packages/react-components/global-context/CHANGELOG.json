@@ -1,0 +1,1296 @@
+{
+  "name": "@fluentui/global-context",
+  "entries": [
+    {
+      "date": "Thu, 09 Nov 2023 17:29:49 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.49",
+      "version": "9.0.0-beta.49",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.42",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.15.2",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Oct 2023 17:54:08 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.48",
+      "version": "9.0.0-beta.48",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.41",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.15.1",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Oct 2023 13:54:26 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.47",
+      "version": "9.0.0-beta.47",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.40",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.15.0",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Oct 2023 20:45:44 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.46",
+      "version": "9.0.0-beta.46",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.39",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.14.2",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Oct 2023 15:25:35 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.45",
+      "version": "9.0.0-beta.45",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.38",
+            "commit": "690590449dc3d65cd40b2b06a990fd920180919d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.14.1",
+            "commit": "690590449dc3d65cd40b2b06a990fd920180919d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Oct 2023 08:45:47 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.44",
+      "version": "9.0.0-beta.44",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.37",
+            "commit": "67b6cc6534e684ed32704dc6c0faee632bb840dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.14.0",
+            "commit": "67b6cc6534e684ed32704dc6c0faee632bb840dc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 17:49:01 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.43",
+      "version": "9.0.0-beta.43",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d",
+            "comment": "chore: trigger manual version bump after broken release"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.36",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.13.5",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 15:32:07 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.42",
+      "version": "9.0.0-beta.42",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "e61473fa10195f6ebf2308205c1e72e91b711831",
+            "comment": "fix: bump swc core to mitigate transpilation memory leaks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.35",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.13.4",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Sep 2023 13:31:31 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.41",
+      "version": "9.0.0-beta.41",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.34",
+            "commit": "52532950407fd4d3664ec6aa337855214233813b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.13.3",
+            "commit": "52532950407fd4d3664ec6aa337855214233813b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Sep 2023 15:39:04 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.40",
+      "version": "9.0.0-beta.40",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.33",
+            "commit": "94019033dfe3fd39ec0cde7dfb3b57c22805aa91"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.13.2",
+            "commit": "94019033dfe3fd39ec0cde7dfb3b57c22805aa91"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Sep 2023 13:29:13 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.39",
+      "version": "9.0.0-beta.39",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/global-context",
+            "commit": "b93c2ac22355b6cb6f33dd509c6cd9c21f4fffc8",
+            "comment": "bumps @swc/helpers version to 0.5.1"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/global-context",
+            "commit": "eea6d93a62249ba4fba3347fb291c67ee1a3fb24",
+            "comment": "bumps react peer dependencies to v16.14.0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.32",
+            "commit": "da959e66f36b429e40ae61810d08dc71c16e154a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.13.1",
+            "commit": "da959e66f36b429e40ae61810d08dc71c16e154a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 29 Aug 2023 12:57:36 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.38",
+      "version": "9.0.0-beta.38",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.31",
+            "commit": "f40ca42c8392904750bf1ef24826d273d1a5b4d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.13.0",
+            "commit": "f40ca42c8392904750bf1ef24826d273d1a5b4d5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Aug 2023 10:26:35 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.37",
+      "version": "9.0.0-beta.37",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.30",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.12.0",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Aug 2023 12:01:49 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.36",
+      "version": "9.0.0-beta.36",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.29",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.11.2",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Aug 2023 12:14:26 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.35",
+      "version": "9.0.0-beta.35",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.28",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.11.1",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Aug 2023 08:52:58 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.34",
+      "version": "9.0.0-beta.34",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.27",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.11.0",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Jul 2023 18:27:25 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.33",
+      "version": "9.0.0-beta.33",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "5a4b16715e8e929f11d8113f710e578ca73acaa6",
+            "comment": "chore: migrate to monosize"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jul 2023 11:57:14 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.33",
+      "version": "9.0.0-beta.33",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.26",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.10.1",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 11:12:21 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.32",
+      "version": "9.0.0-beta.32",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.25",
+            "commit": "08de131d5f3346e001dcd8d2f0f3809c698f16d7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.10.0",
+            "commit": "08de131d5f3346e001dcd8d2f0f3809c698f16d7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Jun 2023 09:53:55 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.31",
+      "version": "9.0.0-beta.31",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.24",
+            "commit": "3e47257676ace0598b9ed336a54befd4d063c332"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.9.4",
+            "commit": "3e47257676ace0598b9ed336a54befd4d063c332"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jun 2023 12:39:07 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.30",
+      "version": "9.0.0-beta.30",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.23",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.9.3",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 May 2023 06:46:08 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.29",
+      "version": "9.0.0-beta.29",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "4b637ced41e430bf8d79c7fc67c103d5efdfd3a8",
+            "comment": "fix: tweak type errors exposed in ts 4.5"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.22",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.9.2",
+            "commit": "17ca96c6b7f684f36a5c63e40e78b4986a86c713"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 May 2023 10:00:48 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.28",
+      "version": "9.0.0-beta.28",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.21",
+            "commit": "8f7c1b7591b3e665ae39e1b22ab0f0b28fb795c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.9.1",
+            "commit": "8f7c1b7591b3e665ae39e1b22ab0f0b28fb795c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 May 2023 20:45:22 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.27",
+      "version": "9.0.0-beta.27",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "69e0617a93cb44ef42f3bd19284b7dc5fe27fed3",
+            "comment": "chore: update test-ssr script"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 May 2023 00:39:00 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.27",
+      "version": "9.0.0-beta.27",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.20",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.9.0",
+            "commit": "c496a1cf1ec82c08753df72c9061e84b77b7daeb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 May 2023 20:28:08 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.26",
+      "version": "9.0.0-beta.26",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.19",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.8.1",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "09937fe78c4eea94e150976c9e7b44fe586a4bba",
+            "comment": "chore: update internal types to reflect node 16 types"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Apr 2023 17:54:02 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.25",
+      "version": "9.0.0-beta.25",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.18",
+            "commit": "35d247e0b6a8c2b22e69942afbabe18043e59585"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.8.0",
+            "commit": "35d247e0b6a8c2b22e69942afbabe18043e59585"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Apr 2023 09:31:45 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.24",
+      "version": "9.0.0-beta.24",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.17",
+            "commit": "45cb6089b0f5f464ae0dd9e9cba7e199a9d67cd8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.7.4",
+            "commit": "45cb6089b0f5f464ae0dd9e9cba7e199a9d67cd8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 04 Apr 2023 18:44:50 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.23",
+      "version": "9.0.0-beta.23",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.16",
+            "commit": "6778d76bbbad7e1975c151c797f28c2708cde2ce"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.7.3",
+            "commit": "6778d76bbbad7e1975c151c797f28c2708cde2ce"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Mar 2023 21:23:18 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.22",
+      "version": "9.0.0-beta.22",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/global-context",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/global-context",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.15",
+            "commit": "b7a26f6263c80e3253c6b8338c33b73bae33e2b5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.7.2",
+            "commit": "b7a26f6263c80e3253c6b8338c33b73bae33e2b5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Mar 2023 14:36:59 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.21",
+      "version": "9.0.0-beta.21",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.14",
+            "commit": "e7dcadf7cabae6bc6811ca04a630e7d850388f81"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.7.1",
+            "commit": "e7dcadf7cabae6bc6811ca04a630e7d850388f81"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Mar 2023 08:58:26 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.20",
+      "version": "9.0.0-beta.20",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.13",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.7.0",
+            "commit": "edf96a6b5d6f13843ada1400480e347b84384b8e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Mar 2023 07:14:01 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.19",
+      "version": "9.0.0-beta.19",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.12",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.6.2",
+            "commit": "3cefc38eed17e3f37cd38fca9099cc9d700cd584"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Mar 2023 17:42:51 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.18",
+      "version": "9.0.0-beta.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.11",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.6.1",
+            "commit": "e0d11faf97f6466f4cd23ed18266cf1e80094f56"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Feb 2023 11:44:52 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.17",
+      "version": "9.0.0-beta.17",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.10",
+            "commit": "087d981aab96bef2e332a373069a19bc702a7ca2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.6.0",
+            "commit": "087d981aab96bef2e332a373069a19bc702a7ca2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Feb 2023 23:43:14 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.16",
+      "version": "9.0.0-beta.16",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.9",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.5.3",
+            "commit": "29e62b13706c2845b21d665d43cdacf1ef1b1513"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Feb 2023 08:50:02 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.15",
+      "version": "9.0.0-beta.15",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.8",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.5.2",
+            "commit": "cc62f050f8231e8f21a2cf7dddf33003e0ba3931"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Jan 2023 19:53:58 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.14",
+      "version": "9.0.0-beta.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.7",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.5.1",
+            "commit": "794d9e845cb952f597ba786e70cd8d248be62746"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jan 2023 13:31:03 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.13",
+      "version": "9.0.0-beta.13",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.6",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.5.0",
+            "commit": "403e1370f1effca7d3db131eda381abf31cf66b1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Jan 2023 08:38:53 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.12",
+      "version": "9.0.0-beta.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Jan 2023 14:34:54 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.12",
+      "version": "9.0.0-beta.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "abae9f7a10d544d8d6b530b974fff235cfd2f956",
+            "comment": "chore: introduce more barrel file api within /scripts"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.5",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.4.0",
+            "commit": "d246e70eba59a37ec311dbf933b0745d34cb700d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Jan 2023 01:40:46 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.11",
+      "version": "9.0.0-beta.11",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.4",
+            "commit": "3e322d15529451be153e97298873253e21af4082"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.3.1",
+            "commit": "3e322d15529451be153e97298873253e21af4082"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Dec 2022 14:59:34 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.10",
+      "version": "9.0.0-beta.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.3",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.3.0",
+            "commit": "e7530bc179fd0e303448083c76a4af41a0e15322"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Nov 2022 23:05:31 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.9",
+      "version": "9.0.0-beta.9",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "ea768501802d65d63ddc63fff3816fb6b5008ae4",
+            "comment": "chore: update package scaffold"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.2",
+            "commit": "94e156be5d3b5790d82dccf08c32672733fb9335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.2.2",
+            "commit": "94e156be5d3b5790d82dccf08c32672733fb9335"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Nov 2022 14:57:50 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.8",
+      "version": "9.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.1",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.2.1",
+            "commit": "b4c9a0ae8d7444bf746f1307ab01e2dc16310720"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Nov 2022 11:58:07 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.7",
+      "version": "9.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.0",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.2.0",
+            "commit": "393a7b169155997a97a6ce1ad36ee3eafc6f461b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Oct 2022 00:35:27 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.6",
+      "version": "9.0.0-beta.6",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "6ced976a8d0e6a0e2e207da8fe0eb810e2bd19bc",
+            "comment": "Update package readme"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/global-context",
+            "commit": "07141711530bbdba82fd5198fe4bcef462403f40",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Oct 2022 08:39:56 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.6",
+      "version": "9.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "17096b3137d9d3e7c7443ddc3ce0738b2910a334",
+            "comment": "chore: Bump peer deps to support React 18"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.5",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.1.2",
+            "commit": "5ea1372675d910d76cf1b9cbd74d05b7c4e8fcbc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Oct 2022 11:03:06 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.5",
+      "version": "9.0.0-beta.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.4",
+            "commit": "cd05c21e62ff37812d614330eb70f97fd978c97a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.1.1",
+            "commit": "cd05c21e62ff37812d614330eb70f97fd978c97a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Sep 2022 09:49:44 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.4",
+      "version": "9.0.0-beta.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "ba9444d594f3a960cc590eae5237c08bf7c5a07f",
+            "comment": "chore: consume cypress.config from it's package boundary"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.3",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.1.0",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Aug 2022 16:03:35 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.3",
+      "version": "9.0.0-beta.3",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/global-context",
+            "commit": "d966ea3d9169f2e8d69f0d2a4daf86fe4ca328d6",
+            "comment": "disables eslint rule @fluentui/no-context-default-value for local component context"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jul 2022 21:21:07 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.3",
+      "version": "9.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "802bc4e3730a88b0fc61b5bf42ef7fc6b6543fe2",
+            "comment": "fix: Fixing bad version bump of @fluentui/react-utilities."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.2",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.0.2",
+            "commit": "79b513146194367544160f364b0a7dd749ed93e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jul 2022 17:06:26 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.2",
+      "version": "9.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.1",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.0.1-0",
+            "commit": "35237381e941c8935b1892c9217096cea3e5601f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jun 2022 15:14:09 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/global-context",
+            "commit": "e0aabd850b15adf9c151ebd4e332f7c50ad6cfdf",
+            "comment": "Update 9.0.0-rc dependencies to use caret range"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "ddf16d80c50d80bc07331b478f567629775f2898",
+            "comment": "chore: Adding scheduler as a peer dependency since this package has a dependency on @fluentui/react-context-selector."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/global-context",
+            "commit": "f36aa2ce92a7ac67bcdc246604d675a91b561e53",
+            "comment": "feat: beta release"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-context-selector to v9.0.0",
+            "commit": "ba6c5d651559b91c815429c9a9357c4d5a390f3e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0",
+            "commit": "ba6c5d651559b91c815429c9a9357c4d5a390f3e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 May 2022 21:28:50 GMT",
+      "tag": "@fluentui/global-context_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/global-context",
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-rc.10",
+            "commit": "335ebfcfd47005003901b5e319782bfe9ccd89fd"
+          }
+        ]
+      }
+    }
+  ]
+}

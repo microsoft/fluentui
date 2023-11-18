@@ -1,6 +1,6 @@
 // NOTE: filename is prefixed with z_ to make callout tests run last to avoid instability
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { Callout, DirectionalHint, ICalloutProps } from '@fluentui/react';
 
@@ -42,13 +42,13 @@ storiesOf('Callout', module)
   ))
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default')
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory('Root', () =>
     // prettier-ignore
@@ -73,7 +73,7 @@ storiesOf('Callout', module)
         {calloutContent}
       </Callout>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Bottom right edge',
@@ -82,7 +82,7 @@ storiesOf('Callout', module)
         {calloutContent}
       </Callout>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Left bottom edge', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.leftBottomEdge}>

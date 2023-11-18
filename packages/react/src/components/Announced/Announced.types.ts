@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { AnnouncedBase } from './Announced.base';
 import type { IStyle } from '../../Styling';
-import type { IStyleFunctionOrObject } from '../../Utilities';
+import type { IReactProps, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory Announced}
  */
-// eslint-disable-next-line deprecation/deprecation
-export interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
+export interface IAnnouncedProps extends IReactProps<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
   /**
    * The status message the screen reader should announce.
    */

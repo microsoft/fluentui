@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { DevOnlyStoryHeader } from '../utilities/index';
 import { Suggestions, ISuggestionsProps } from '@fluentui/react/lib/Pickers';
 import { Fabric } from '@fluentui/react/lib/Fabric';
@@ -128,10 +128,10 @@ export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: P
 }
 
 storiesOf('(Dev-Only) Suggestions', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testRoot' })
         .hover('#province-fake-long-province')
         .snapshot('Hovering over a wide suggestion element', { cropTo: '.testRoot' })
@@ -142,7 +142,7 @@ storiesOf('(Dev-Only) Suggestions', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Test of closeButton with overflowing wide custom element', () => (
     <SimpleSuggestionsExample />

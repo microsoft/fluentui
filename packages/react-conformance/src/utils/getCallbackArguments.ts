@@ -2,9 +2,9 @@ import * as ts from 'typescript';
 
 // ---
 
-type ArgumentName = string;
+export type ArgumentName = string;
 type ArgumentPrimitiveValue = null | boolean | string | undefined;
-type ArgumentValue = ArgumentPrimitiveValue | Record<string, ArgumentPrimitiveValue>;
+export type ArgumentValue = ArgumentPrimitiveValue | Record<string, ArgumentPrimitiveValue>;
 
 // ---
 
@@ -42,14 +42,17 @@ function keywordNodeToPrimitive(node: ts.Node): null | string | undefined {
   }
 
   throw new Error(
-    'Unexpected kind of node is passed, this could be a bug or an unhandled scenario. Please report it if it happens',
+    [
+      `Found unexpected ${node.kind} node: "${node.getText()}".`,
+      'This could be a bug or an unhandled scenario, please report it if it happens',
+    ].join(' '),
   );
 }
 
 /**
  * Converts AST node with "LiteralType" that has "*Keyword" kind to a primitive value.
  */
-function literalNodeToPrimitive(node: ts.LiteralTypeNode['literal']): null | boolean {
+function literalNodeToPrimitive(node: ts.LiteralTypeNode['literal']): null | boolean | string {
   if (node.kind === ts.SyntaxKind.NullKeyword) {
     return null;
   }
@@ -62,8 +65,13 @@ function literalNodeToPrimitive(node: ts.LiteralTypeNode['literal']): null | boo
     return true;
   }
 
+  if (node.kind === ts.SyntaxKind.StringLiteral) {
+    return node.getText();
+  }
+
   throw new Error(
-    'Unexpected kind of node is passed, this could be a bug or an unhandled scenario. Please report it if it happens',
+    `Unexpected kind of node is passed (${node.kind}), this could be a bug or an unhandled scenario. ` +
+      `Please report it if it happens.`,
   );
 }
 
@@ -97,6 +105,61 @@ function parseArgumentName(name: ts.PropertyName | ts.ParameterDeclaration['name
 }
 
 /**
+ * TS does not export "IntrinsicType".
+ * See https://github.com/microsoft/TypeScript/issues/22269
+ */
+function isIntrinsicType(type: ts.Type): type is ts.Type & { intrinsicName: string } {
+  return Object.prototype.hasOwnProperty.call(type, 'intrinsicName');
+}
+
+function typeHasSubtypes(type: ts.Type): type is ts.Type & { types: ts.Type[] } {
+  return Array.isArray((type as ts.Type & { types: ts.Type[] }).types);
+}
+
+function typeToString(typeChecker: ts.TypeChecker, type: ts.Type): ArgumentValue | ArgumentValue[] {
+  if (isIntrinsicType(type)) {
+    return type.intrinsicName;
+  }
+
+  if (type.symbol?.declarations?.length) {
+    const firstDeclaration = type.symbol.declarations[0];
+    const fileName = firstDeclaration.parent.getSourceFile().fileName;
+
+    // If types are coming from "node_modules" we want don't want to expand them, otherwise "Event" becomes an object
+    // with properties.
+    // "React" types are handled separately to add "React." prefix otherwise it's impossible to distinguish
+    // "React.MouseEvent" and "MouseEvent" types.
+
+    if (/\/node_modules\/@types\/react\//.test(fileName)) {
+      return 'React.' + type.symbol.escapedName;
+    }
+
+    if (/\/node_modules\//.test(fileName)) {
+      const escapedName = type.symbol.escapedName as string;
+
+      if (escapedName === '__type') {
+        throw new Error(
+          [
+            `We received a type "${typeChecker.typeToString(type)}" that is too complex to resolve.`,
+            'Please simply it, for example remove usage of "Pick".',
+          ].join(' '),
+        );
+      }
+
+      return escapedName;
+    }
+
+    return parseArgumentType(typeChecker, type.symbol.declarations[0]);
+  }
+
+  if (typeHasSubtypes(type)) {
+    return type.types.map(t => typeToString(typeChecker, t) as ArgumentValue);
+  }
+
+  return typeChecker.typeToString(type);
+}
+
+/**
  * Parses a value in a callback.
  *
  * @example
@@ -106,23 +169,26 @@ function parseArgumentName(name: ts.PropertyName | ts.ParameterDeclaration['name
  *              parses these nodes
  * }
  */
-function parseArgumentType(type: ts.ParameterDeclaration['type']): ArgumentValue | ArgumentValue[] {
-  if (!type) {
-    throw new Error(`We received ${typeof type} instead of a node from TS AST, please report this if it happens`);
+function parseArgumentType(
+  typeChecker: ts.TypeChecker,
+  typeNode: ts.ParameterDeclaration['type'] | ts.Declaration,
+): ArgumentValue | ArgumentValue[] {
+  if (!typeNode) {
+    throw new Error(`We received ${typeof typeNode} instead of a node from TS AST, please report this if it happens`);
   }
 
   // Handles a case when a node is an object
   // { onChange: (data: { value: string }) => void }
   //                    ^
-  if (ts.isTypeLiteralNode(type)) {
-    return type.members.reduce((acc, member) => {
+  if (ts.isTypeLiteralNode(typeNode)) {
+    return typeNode.members.reduce((acc, member) => {
       if (!ts.isPropertySignature(member)) {
         throw new Error('We met an unhandled case, please report it');
       }
 
       return {
         ...acc,
-        [parseArgumentName(member.name)]: parseArgumentType(member.type),
+        [parseArgumentName(member.name)]: parseArgumentType(typeChecker, member.type),
       };
     }, {});
   }
@@ -132,39 +198,55 @@ function parseArgumentType(type: ts.ParameterDeclaration['type']): ArgumentValue
   //                    ^
   // { onChange: (data: React.MouseEvent) => void }
   //                    ^
-  if (ts.isTypeReferenceNode(type)) {
-    if (ts.isIdentifier(type.typeName)) {
-      return identifierToString(type.typeName);
-    }
-
-    if (ts.isQualifiedName(type.typeName)) {
-      if (!ts.isIdentifier(type.typeName.left)) {
-        throw new Error('We met an unhandled case, please report it');
-      }
-
-      return `${identifierToString(type.typeName.left)}.${identifierToString(type.typeName.right)}`;
-    }
+  if (ts.isTypeReferenceNode(typeNode)) {
+    return typeToString(typeChecker, typeChecker.getTypeAtLocation(typeNode));
   }
 
   // Handles a case when a node is an array
   // { onChange: (data: string[] }
   //                    ^
-  if (ts.isArrayTypeNode(type)) {
+  if (ts.isArrayTypeNode(typeNode)) {
     return 'Array';
   }
 
   // Handles a case when a node is a union of types
   // { onChange: (data: MouseEvent | KeyboardEvent) => void }
   //                    ^
-  if (ts.isUnionTypeNode(type)) {
-    return type.types.map(typeFromUnion => parseArgumentType(typeFromUnion)) as ArgumentValue[];
+  if (ts.isUnionTypeNode(typeNode)) {
+    return typeNode.types.map(typeFromUnion => parseArgumentType(typeChecker, typeFromUnion)) as ArgumentValue[];
   }
 
   // Handles a case when a node is a literal
   // { onChange: (data: false) => void }
   //                    ^
-  if (ts.isLiteralTypeNode(type)) {
-    return literalNodeToPrimitive(type.literal);
+  if (ts.isLiteralTypeNode(typeNode)) {
+    return literalNodeToPrimitive(typeNode.literal);
+  }
+
+  // Handles a case when a node is a class declaration
+  // class Item {}
+  // ...
+  // { onChange: (data: Item) => void }
+  //
+  if (ts.isClassDeclaration(typeNode)) {
+    return typeNode.name?.escapedText as string;
+  }
+
+  // Handles a case when a node is an interface declaration
+  // interface Item {}
+  // ...
+  // { onChange: (data: Item) => void }
+  //
+  if (ts.isInterfaceDeclaration(typeNode)) {
+    return typeNode.members.reduce((acc, member) => {
+      const propertyName = parseArgumentName(member.name!);
+      const propertyType = (member as ts.PropertySignature).type;
+
+      return {
+        ...acc,
+        [propertyName]: parseArgumentType(typeChecker, propertyType),
+      };
+    }, {});
   }
 
   // Handles a case when a node is a keyword
@@ -173,28 +255,101 @@ function parseArgumentType(type: ts.ParameterDeclaration['type']): ArgumentValue
   // { onChange: (data: string) => void }
   //                    ^
   // eslint-disable-next-line no-bitwise
-  if (type.kind & ts.SyntaxKind.IsKeyword) {
-    return keywordNodeToPrimitive(type);
+  if (typeNode.kind & ts.SyntaxKind.IsKeyword) {
+    return keywordNodeToPrimitive(typeNode);
   }
 
-  throw new Error('Failed to parse an unknown argument type, please report if it happens');
+  throw new Error(`Failed to parse an unknown argument type (${typeNode}), please report if it happens`);
 }
 
 /**
  * Parses callbacks arguments and values.
  */
-function parseFunctionArguments(node: ts.Node): Record<ArgumentName, ArgumentValue> {
-  if (!ts.isFunctionTypeNode(node)) {
-    throw new Error(`We received an AST node with wrong kind (${node.kind}), please report this as a bug`);
+function parseFunctionArguments(
+  typeChecker: ts.TypeChecker,
+  typeNode: ts.Node,
+): [ArgumentName, ArgumentValue | ArgumentValue[]][] {
+  if (!ts.isFunctionTypeNode(typeNode)) {
+    throw new Error(`We received an AST node with wrong kind (${typeNode.kind}), please report this as a bug`);
   }
 
-  return node.parameters.reduce((acc, parameter) => {
-    return {
-      ...acc,
-      [parseArgumentName(parameter.name)]: parseArgumentType(parameter.type),
-    };
-  }, {});
+  return typeNode.parameters.reduce<[ArgumentName, ArgumentValue | ArgumentValue[]][]>((acc, parameter) => {
+    acc.push([parseArgumentName(parameter.name), parseArgumentType(typeChecker, parameter.type)]);
+
+    return acc;
+  }, []);
 }
+
+/**
+ * Find a property signature for a type, class, or interface.
+ */
+const findPropertySignature = (
+  typeChecker: ts.TypeChecker,
+  sourceFile: ts.SourceFile,
+  typeName: string,
+  propertyName: string,
+  seen: { typeName: string; fileName: string }[],
+): ts.PropertySignature | undefined => {
+  // avoid infinte recursion looking up types
+  if (seen.some(x => x.fileName === sourceFile.fileName && x.typeName === typeName)) {
+    return undefined;
+  }
+  seen.push({ typeName, fileName: sourceFile.fileName });
+
+  for (let i = 0; i < sourceFile.statements.length; i++) {
+    const statement = sourceFile.statements[i];
+
+    if (ts.isInterfaceDeclaration(statement) && statement?.name?.escapedText === typeName) {
+      return statement.members.find(member => {
+        if (ts.isPropertySignature(member) && ts.isIdentifier(member.name)) {
+          return member.name.escapedText === propertyName;
+        }
+
+        return false;
+      }) as ts.PropertySignature | undefined;
+    }
+
+    if (ts.isClassDeclaration(statement) && statement?.name?.escapedText === typeName) {
+      // Class members are of a different type than interfaces, so the find is repeated
+      return statement.members.find(member => {
+        if (ts.isPropertySignature(member) && ts.isIdentifier(member.name)) {
+          return member.name.escapedText === propertyName;
+        }
+
+        return false;
+      }) as ts.PropertySignature | undefined;
+    }
+
+    if (ts.isTypeAliasDeclaration(statement)) {
+      if (statement.name.escapedText === typeName) {
+        // The can be Union, Intersection, or regular types
+        // This uses the type checker to inspect across the composite type.
+        const statementType = typeChecker.getTypeFromTypeNode(statement.type);
+        const property = typeChecker.getPropertyOfType(statementType, propertyName);
+
+        if (property?.valueDeclaration && ts.isPropertySignature(property.valueDeclaration)) {
+          return property.valueDeclaration;
+        }
+      } else {
+        // If the type name does not match, it may be a type alias
+        // so follow the statement.type to resolve the underlying type.
+        const propertySignature = findPropertySignature(
+          typeChecker,
+          statement.type.getSourceFile(),
+          statement.name.escapedText as string,
+          propertyName,
+          seen,
+        );
+
+        if (propertySignature) {
+          return propertySignature;
+        }
+      }
+    }
+  }
+
+  return undefined;
+};
 
 /**
  * Unfortunately `react-typescript-docgen` returns stringified types for callbacks which is not useful as we can't
@@ -211,14 +366,15 @@ function parseFunctionArguments(node: ts.Node): Record<ArgumentName, ArgumentVal
  *   onChange: (event: Event) => void
  * }
  *
- * Will be parsed to: { event: 'Event' }
+ * Will be parsed to: ['event', 'Event']
  */
 export function getCallbackArguments(
   program: ts.Program,
   filename: string,
   typeName: string,
   propertyName: string,
-): Record<ArgumentName, ArgumentValue> {
+): [ArgumentName, ArgumentValue | ArgumentValue[]][] {
+  const typeChecker = program.getTypeChecker();
   const sourceFile = program.getSourceFiles().find(file => file.fileName.includes(filename));
 
   if (!sourceFile) {
@@ -227,30 +383,10 @@ export function getCallbackArguments(
     );
   }
 
-  const propertiesDeclaration = sourceFile.statements.find(statement => {
-    if (ts.isInterfaceDeclaration(statement)) {
-      return statement.name.escapedText === typeName;
-    }
-
-    return false;
-  }) as ts.InterfaceDeclaration | undefined;
-
-  if (!propertiesDeclaration) {
-    throw new Error(`A file (${filename}) does not contain definition for type "${typeName}"`);
-  }
-
-  const propertySignature = propertiesDeclaration.members.find(member => {
-    if (ts.isPropertySignature(member)) {
-      if (ts.isIdentifier(member.name)) {
-        return member.name.escapedText === propertyName;
-      }
-    }
-
-    return false;
-  }) as ts.PropertySignature | undefined;
+  const propertySignature = findPropertySignature(program.getTypeChecker(), sourceFile, typeName, propertyName, []);
 
   if (!propertySignature) {
-    throw new Error(`A file (${filename}) does not contain definition for type "${typeName}.${propertyName}"`);
+    throw new Error(`A file (${filename}) does not contain definition for type "${typeName}.${propertyName}".`);
   }
 
   if (!propertySignature.type) {
@@ -267,12 +403,10 @@ export function getCallbackArguments(
   // export type Callback = () => {}
   // export type ComponentProps = { onClick: Callback }
   if (ts.isTypeReferenceNode(propertySignature.type)) {
-    const typeChecker = program.getTypeChecker();
-
     const typeAtLocation = typeChecker.getTypeAtLocation(propertySignature.type);
     const typeDeclarations = typeAtLocation.symbol.declarations;
 
-    if (typeDeclarations.length !== 1) {
+    if (typeDeclarations?.length !== 1) {
       throw new Error(
         [
           `A definition for "${typeName}.${propertyName}" has multiple declarations, it's not expected.`,
@@ -281,8 +415,8 @@ export function getCallbackArguments(
       );
     }
 
-    return parseFunctionArguments(typeDeclarations[0]);
+    return parseFunctionArguments(typeChecker, typeDeclarations[0]);
   }
 
-  return parseFunctionArguments(propertySignature.type);
+  return parseFunctionArguments(typeChecker, propertySignature.type);
 }

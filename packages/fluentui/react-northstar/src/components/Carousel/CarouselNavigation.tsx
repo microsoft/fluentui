@@ -1,6 +1,5 @@
 import { tabListBehavior, Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   useTelemetry,
   mergeVariablesOverrides,
   getElementType,
@@ -8,6 +7,7 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -59,6 +59,9 @@ export interface CarouselNavigationProps extends UIComponentProps, ChildrenCompo
 
   /** A vertical carousel navigation displays elements vertically. */
   vertical?: boolean;
+
+  /** A navigation may be clickable */
+  disableClickableNav?: boolean;
 }
 
 export type CarouselNavigationStylesProps = Required<
@@ -70,8 +73,7 @@ export const carouselNavigationClassName = 'ui-carousel__navigation';
 /**
  * A Carousel navigation helps switching between Carousel items.
  */
-export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> &
-  FluentComponentStaticProps<CarouselNavigationProps> = props => {
+export const CarouselNavigation = React.forwardRef<HTMLUListElement, CarouselNavigationProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselNavigation.displayName, context.telemetry);
   setStart();
@@ -89,6 +91,7 @@ export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> 
     vertical,
     thumbnails,
     styles,
+    disableClickableNav,
   } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(CarouselNavigation.handledProps, props);
@@ -136,6 +139,7 @@ export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> 
             secondary,
             vertical,
             thumbnails,
+            disableClickableNav,
           }),
         overrideProps: handleItemOverrides(variables),
       }),
@@ -146,6 +150,7 @@ export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> 
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
       {...rtlTextContainer.getAttributes({ forElements: [children] })}
@@ -157,7 +162,8 @@ export const CarouselNavigation: ComponentWithAs<'ul', CarouselNavigationProps> 
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'ul', HTMLUListElement, CarouselNavigationProps> &
+  FluentComponentStaticProps<CarouselNavigationProps>;
 
 CarouselNavigation.displayName = 'CarouselNavigation';
 
@@ -173,6 +179,7 @@ CarouselNavigation.propTypes = {
   primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   vertical: PropTypes.bool,
+  disableClickableNav: PropTypes.bool,
 };
 
 CarouselNavigation.defaultProps = {

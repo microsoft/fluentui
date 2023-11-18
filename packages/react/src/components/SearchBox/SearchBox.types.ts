@@ -14,6 +14,11 @@ export interface ISearchBox {
   focus(): void;
 
   /**
+   * Blurs focus from the search input box.
+   */
+  blur(): void;
+
+  /**
    * Returns whether or not the SearchBox has focus
    */
   hasFocus(): boolean;

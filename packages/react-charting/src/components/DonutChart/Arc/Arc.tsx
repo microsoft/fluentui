@@ -1,9 +1,11 @@
 import * as React from 'react';
 import * as shape from 'd3-shape';
-import { classNamesFunction } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getRTL } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
 import { IChartDataPoint } from '../index';
 import { IArcProps, IArcStyles } from './index';
+import { format as d3Format } from 'd3-format';
+import { formatValueWithSIPrefix } from '../../../utilities/index';
 
 export interface IArcState {
   isCalloutVisible?: boolean;
@@ -17,6 +19,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   public state: {} = {};
 
   private currentRef = React.createRef<SVGPathElement>();
+  private _isRTL: boolean = getRTL();
 
   public static getDerivedStateFromProps(nextProps: Readonly<IArcProps>): Partial<IArcState> | null {
     _updateChart(nextProps);
@@ -55,12 +58,10 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           onBlur={this._onBlur}
           opacity={opacity}
           onClick={href ? this._redirectToUrl.bind(this, href) : this.props.data?.data.onClick}
-          aria-labelledby={this.props.calloutId}
-          role="text"
+          aria-label={this._getAriaLabel()}
+          role="img"
         />
-        <text textAnchor={'middle'} className={classNames.insideDonutString} y={5}>
-          {this.props.valueInsideDonut!}
-        </text>
+        {this._renderArcLabel(classNames.arcLabel)}
       </g>
     );
   }
@@ -71,9 +72,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 
   private _hoverOn(data: IChartDataPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void {
     mouseEvent.persist();
-    if (this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '') {
-      this.props.hoverOnCallback!(data, mouseEvent);
-    }
+    this.props.hoverOnCallback!(data, mouseEvent);
   }
 
   private _hoverOff = (): void => {
@@ -87,6 +86,46 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   private _redirectToUrl(href: string | undefined): void {
     href ? (window.location.href = href) : '';
   }
+
+  private _getAriaLabel = (): string => {
+    const point = this.props.data!.data;
+    const legend = point.xAxisCalloutData || point.legend;
+    const yValue = point.yAxisCalloutData || point.data || 0;
+    return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
+  };
+
+  private _renderArcLabel = (className: string) => {
+    const { arc, data, innerRadius, outerRadius, showLabelsInPercent, totalValue, hideLabels, activeArc } = this.props;
+
+    if (
+      hideLabels ||
+      Math.abs(data!.endAngle - data!.startAngle) < Math.PI / 12 ||
+      (activeArc !== data!.data.legend && activeArc !== '')
+    ) {
+      return null;
+    }
+
+    const [base, perp] = arc.centroid(data);
+    const hyp = Math.sqrt(base * base + perp * perp);
+    const labelRadius = Math.max(innerRadius!, outerRadius!) + 2;
+    const angle = (data!.startAngle + data!.endAngle) / 2;
+    const arcValue = data!.value;
+
+    return (
+      <text
+        x={(hyp === 0 ? 0 : base / hyp) * labelRadius}
+        y={(hyp === 0 ? 0 : perp / hyp) * labelRadius}
+        textAnchor={angle > Math.PI !== this._isRTL ? 'end' : 'start'}
+        dominantBaseline={angle > Math.PI / 2 && angle < (3 * Math.PI) / 2 ? 'hanging' : 'auto'}
+        className={className}
+        aria-hidden={true}
+      >
+        {showLabelsInPercent
+          ? d3Format('.0%')(totalValue! === 0 ? 0 : arcValue / totalValue!)
+          : formatValueWithSIPrefix(arcValue)}
+      </text>
+    );
+  };
 }
 
 function _updateChart(newProps: IArcProps): void {

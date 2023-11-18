@@ -1,0 +1,23 @@
+/* remove the docs wrapper bg to let page bg show through */
+/* remove unnecessary padding now that theme switcher is not taking up space */
+#docs-root .sbdocs-wrapper {
+  background: transparent !important;
+  padding-top: 0;
+}
+
+/* sb-show-main is missing during page transitions causing a page shift */
+/* todo: cleanup once we no longer inherit docs-root */
+.sb-show-main.sb-main-fullscreen,
+.sb-main-fullscreen {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+/* remove loading overlay */
+.sb-preparing-story,
+.sb-preparing-docs,
+.sb-nopreview,
+.sb-errordisplay {
+  display: none !important;
+}

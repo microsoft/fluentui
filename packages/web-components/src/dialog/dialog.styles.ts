@@ -1,6 +1,6 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import { ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
-import { elevation } from '../styles';
+import { elevationShadowDialog } from '../styles';
 import { fillColor, layerCornerRadius, strokeWidth } from '../design-tokens';
 
 export const dialogStyles: (
@@ -12,7 +12,6 @@ export const dialogStyles: (
   }
 
   :host {
-    --elevation: 14;
     --dialog-height: 480px;
     --dialog-width: 640px;
     display: block;
@@ -40,7 +39,7 @@ export const dialogStyles: (
   }
 
   .control {
-    ${elevation}
+    box-shadow: ${elevationShadowDialog};
     margin-top: auto;
     margin-bottom: auto;
     border-radius: calc(${layerCornerRadius} * 1px);

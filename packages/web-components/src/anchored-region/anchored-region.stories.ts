@@ -1,4 +1,4 @@
-import { STORY_RENDERED } from '@storybook/core-events';
+import { DOCS_RENDERED } from '@storybook/core-events';
 import addons from '@storybook/addons';
 import { Direction, RtlScrollConverter } from '@microsoft/fast-web-utilities';
 import { AnchoredRegion } from '@microsoft/fast-foundation';
@@ -8,8 +8,8 @@ import './index';
 let scalingViewportPreviousXValue: number = 250;
 let scalingViewportPreviousYValue: number = 250;
 
-addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
-  if (name.toLowerCase().startsWith('components-anchored-region')) {
+addons.getChannel().addListener(DOCS_RENDERED, (name: string) => {
+  if (name.toLowerCase().includes('anchored region')) {
     scrollViewports();
     setButtonActions();
 

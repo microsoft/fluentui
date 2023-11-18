@@ -7,7 +7,7 @@ export default {
     appearance: {
       description: 'This controls the basic appearances',
       control: { type: 'select' },
-      options: ['neutral', 'accent', 'lighweight', 'outline', 'stealth'],
+      options: ['neutral', 'accent', 'lightweight', 'outline', 'stealth'],
       default: 'neutral',
     },
     disabled: {

@@ -1,10 +1,10 @@
 // @ts-check
 
-const micromatch = require('micromatch');
-const fs = require('fs-extra');
 const path = require('path');
 const { ESLint } = require('eslint');
-const constants = require('../tasks/eslint-constants');
+const fs = require('fs-extra');
+const micromatch = require('micromatch');
+const { eslintConstants } = require('@fluentui/scripts-monorepo');
 
 /**
  * Run ESLint for certain files from a particular package.
@@ -32,7 +32,7 @@ async function run() {
     // (Note that until we start linting all files in the package and can remove the constants.directory
     // segment here, the glob needs to start with the absolute package path in case someone has named
     // the directory containing all their git repos "src".)
-    includePattern = path.join(packagePath, constants.directory, '**', `*{${constants.extensions}`);
+    includePattern = path.join(packagePath, eslintConstants.directory, '**', `*{${eslintConstants.extensions}}`);
     eslint = new ESLint({ fix: true, cache: true });
   } else {
     // Otherwise, look for the --ext option to determine extensions
@@ -42,8 +42,10 @@ async function run() {
     eslint = new ESLint({ fix: true, cache: lintScript.includes('--cache') });
   }
 
+  // files are provided by @see `./eslint.js` via cli
+  const cliFiles = process.argv.slice(2);
   // Filter out files with non-linted extensions
-  const files = process.argv.slice(2).filter(file => micromatch.isMatch(file, includePattern));
+  const files = cliFiles.filter(file => micromatch.isMatch(file, includePattern));
 
   // Filter out ignored files (2-step process due to isPathIgnored returning a promise)
   const ignoreResults = await Promise.all(files.map(f => eslint.isPathIgnored(f)));
@@ -55,18 +57,19 @@ async function run() {
 
   // Lint files then fix all auto-fixable issues
   const results = await eslint.lintFiles(filteredFiles);
+
   await ESLint.outputFixes(results);
 
   // Format results
   const formatter = await eslint.loadFormatter();
   const resultText = formatter.format(results);
   if (resultText) {
-    console.error(resultText);
-    process.exit(1);
+    throw new Error(resultText);
   }
 }
 
 run().catch(err => {
-  console.log(err);
-  process.exit(1);
+  // logging is handled by ./eslint.js. If you wanna directly call this script and see errors uncomment following line ↓
+  // console.error(err);
+  throw new Error(err);
 });

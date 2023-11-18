@@ -7,6 +7,7 @@ import type { IKeytipProps } from '../Keytip/Keytip.types';
  * {@docCategory Pivot}
  */
 export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
+  children?: React.ReactNode;
   /**
    * Gets the component ref.
    */

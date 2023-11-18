@@ -6,13 +6,13 @@ import { Accessibility, VideoBehaviorProps, videoBehavior } from '@fluentui/acce
 import { createShorthandFactory, UIComponentProps, commonPropTypes } from '../../utils';
 import { FluentComponentStaticProps } from '../../types';
 import {
-  ComponentWithAs,
   getElementType,
   useStyles,
   useFluentContext,
   useUnhandledProps,
   useTelemetry,
   useAccessibility,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface VideoProps extends UIComponentProps {
@@ -47,7 +47,7 @@ export type VideoStylesProps = Required<Pick<VideoProps, 'variables'>>;
 /**
  * A Video provides ability to embed video content.
  */
-export const Video: ComponentWithAs<'video', VideoProps> & FluentComponentStaticProps<VideoProps> = props => {
+export const Video = React.forwardRef<HTMLVideoElement, VideoProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Video.displayName, context.telemetry);
   setStart();
@@ -94,6 +94,7 @@ export const Video: ComponentWithAs<'video', VideoProps> & FluentComponentStatic
           className: classes.root,
           autoPlay,
           controls,
+          ref,
           loop,
           poster,
           src,
@@ -104,7 +105,7 @@ export const Video: ComponentWithAs<'video', VideoProps> & FluentComponentStatic
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'video', HTMLVideoElement, VideoProps> & FluentComponentStaticProps<VideoProps>;
 
 Video.create = createShorthandFactory({ Component: Video, mappedProp: 'src' });
 
@@ -124,7 +125,7 @@ Video.propTypes = {
 };
 
 Video.defaultProps = {
-  as: 'video',
+  as: 'video' as const,
   accessibility: videoBehavior,
   controls: true,
   autoPlay: false,

@@ -12,5 +12,4 @@ export const dividerVariables = (siteVars: any): Partial<DividerVariables> => ({
     dividerColorAreas,
   ),
   textColor: siteVars.colors.grey[250],
-  dividerColor: siteVars.colors.grey[550],
 });

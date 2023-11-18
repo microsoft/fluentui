@@ -1,39 +1,46 @@
-import config from '@fluentui/scripts/config';
-import sh from '@fluentui/scripts/gulp/sh';
-import fs from 'fs-extra';
 import path from 'path';
-import portfinder from 'portfinder';
 
-import { addResolutionPathsForProjectPackages, packProjectPackages } from './packPackages';
-import { performBrowserTest } from './performBrowserTest';
-import { createTempDir, log } from './utils';
+import {
+  addResolutionPathsForProjectPackages,
+  packProjectPackages,
+  prepareTempDirs,
+  log,
+  shEcho,
+  performBrowserTest,
+  generateFiles,
+} from '@fluentui/scripts-projects-test';
 
 export async function nextjs() {
   const logger = log('test:projects:nextjs');
 
-  const scaffoldPath = config.paths.withRootAt(path.resolve(__dirname, '../assets/nextjs'));
-  const tmpDirectory = createTempDir('project-nextjs-');
+  const scaffoldPathRoot = path.resolve(__dirname, '../assets/nextjs');
+  const tempPaths = prepareTempDirs('project-nextjs-');
+  logger(`✔️ Temporary directories created under ${tempPaths.root}`);
 
-  logger(`✔️ Temporary directory was created: ${tmpDirectory}`);
-
-  const dependencies = ['next', 'react', 'react-dom'].join(' ');
-  await sh(`yarn add ${dependencies}`, tmpDirectory);
+  logger('STEP 1. Add dependencies to test project');
+  const dependencies = ['next@12', 'react@17', 'react-dom@17'].join(' ');
+  await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);
   logger(`✔️ Dependencies were installed`);
 
-  const packedPackages = await packProjectPackages(logger);
-  await addResolutionPathsForProjectPackages(tmpDirectory);
+  logger('STEP 2. Add Fluent UI dependency to test project');
 
-  await sh(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tmpDirectory);
+  const packedPackages = await packProjectPackages(logger, '@fluentui/react-northstar');
+  await addResolutionPathsForProjectPackages(tempPaths.testApp);
+
+  await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tempPaths.testApp);
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
-  fs.mkdirSync(path.resolve(tmpDirectory, 'pages'));
-  fs.copyFileSync(scaffoldPath('index.js'), path.resolve(tmpDirectory, 'pages', 'index.js'));
+  logger('STEP 3. Copy scaffold files to test project');
+  generateFiles(scaffoldPathRoot, tempPaths.testApp);
   logger(`✔️ Source and bundler's config were created`);
 
-  await sh(`yarn next build`, tmpDirectory);
-  await sh(`yarn next export`, tmpDirectory);
-  logger(`✔️ Example project was successfully built: ${tmpDirectory}`);
+  logger('STEP 4. Build test project');
+  await shEcho(`yarn next telemetry disable`, tempPaths.testApp);
+  await shEcho(`yarn next build`, tempPaths.testApp);
+  await shEcho(`yarn next export`, tempPaths.testApp);
+  logger(`✔️ Example project was successfully built: ${tempPaths.testApp}`);
 
-  await performBrowserTest(path.resolve(tmpDirectory, 'out'), await portfinder.getPortPromise());
+  logger('STEP 5. Load the test app in the browser');
+  await performBrowserTest(path.resolve(tempPaths.testApp, 'out'));
   logger(`✔️ Browser test was passed`);
 }

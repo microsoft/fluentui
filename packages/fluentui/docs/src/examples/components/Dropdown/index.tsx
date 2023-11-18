@@ -2,10 +2,11 @@ import * as React from 'react';
 
 import Performance from './Performance';
 import Rtl from './Rtl';
-import Types from './Types';
-import Variations from './Variations';
+import Slots from './Slots';
 import State from './State';
+import Types from './Types';
 import Usage from './Usage';
+import Variations from './Variations';
 import UsageVisual from './Visual';
 
 const DropdownExamples = () => (
@@ -17,6 +18,7 @@ const DropdownExamples = () => (
     <Performance />
     <Usage />
     <UsageVisual />
+    <Slots />
   </>
 );
 

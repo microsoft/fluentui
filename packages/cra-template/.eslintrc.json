@@ -1,13 +1,6 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/react"],
   "root": true,
-  "settings": {
-    "import/resolver": {
-      "typescript": {
-        "project": "../../tsconfig.json"
-      }
-    }
-  },
   "overrides": [
     {
       "files": ["template/**/*.{ts,tsx}"],

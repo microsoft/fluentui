@@ -6,10 +6,14 @@ import { OverflowSetBasicExample } from './OverflowSet.Basic.Example';
 import { OverflowSetVerticalExample } from './OverflowSet.Vertical.Example';
 import { OverflowSetBasicReversedExample } from './OverflowSet.BasicReversed.Example';
 
-const OverflowSetCustomExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/OverflowSet/OverflowSet.Custom.Example.tsx') as string;
-const OverflowSetBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/OverflowSet/OverflowSet.Basic.Example.tsx') as string;
-const OverflowSetVerticalExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/OverflowSet/OverflowSet.Vertical.Example.tsx') as string;
-const OverflowSetBasicReversedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/OverflowSet/OverflowSet.BasicReversed.Example.tsx') as string;
+const OverflowSetCustomExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/OverflowSet/OverflowSet.Custom.Example.tsx') as string;
+const OverflowSetBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/OverflowSet/OverflowSet.Basic.Example.tsx') as string;
+const OverflowSetVerticalExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/OverflowSet/OverflowSet.Vertical.Example.tsx') as string;
+const OverflowSetBasicReversedExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/OverflowSet/OverflowSet.BasicReversed.Example.tsx') as string;
 
 export const OverflowSetPageProps: IDocPageProps = {
   title: 'OverflowSet',

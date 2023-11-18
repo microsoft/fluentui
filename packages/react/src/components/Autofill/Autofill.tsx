@@ -1,9 +1,19 @@
 import * as React from 'react';
-import { Async, getNativeProps, initializeComponentRef, inputProperties, isIE11, KeyCodes } from '../../Utilities';
+import {
+  Async,
+  getDocument,
+  getNativeProps,
+  initializeComponentRef,
+  inputProperties,
+  isIE11,
+  KeyCodes,
+} from '../../Utilities';
+import { WindowContext } from '@fluentui/react-window-provider';
 import type { IAutofill, IAutofillProps } from './Autofill.types';
 
 export interface IAutofillState {
   inputValue: string;
+  isComposing: boolean;
 }
 
 interface ICursorLocation {
@@ -22,10 +32,11 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
   public static defaultProps = {
     enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[],
   };
+  // need to check WindowContext to get the provided document
+  public static contextType = WindowContext;
 
   private _inputElement = React.createRef<HTMLInputElement>();
   private _autoFillEnabled = true;
-  private _isComposing: boolean = false;
   private _async: Async;
 
   public static getDerivedStateFromProps(props: IAutofillProps, state: IAutofillState): IAutofillState | null {
@@ -35,8 +46,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       const updatedInputValue = props.updateValueInWillReceiveProps();
       // Don't update if we have a null value or the value isn't changing
       // the value should still update if an empty string is passed in
-      if (updatedInputValue !== null && updatedInputValue !== state.inputValue) {
-        return { inputValue: updatedInputValue };
+      if (updatedInputValue !== null && updatedInputValue !== state.inputValue && !state.isComposing) {
+        return { ...state, inputValue: updatedInputValue };
       }
     }
     return null;
@@ -50,6 +61,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
 
     this.state = {
       inputValue: props.defaultVisibleValue || '',
+      isComposing: false,
     };
   }
 
@@ -94,7 +106,11 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       return;
     }
 
+    const document = this.context?.window.document || getDocument(this._inputElement.current);
+    const isFocused = this._inputElement.current && this._inputElement.current === document?.activeElement;
+
     if (
+      isFocused &&
       this._autoFillEnabled &&
       this.value &&
       suggestedDisplayValue &&
@@ -106,8 +122,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
         shouldSelectFullRange = shouldSelectFullInputValueInComponentDidUpdate();
       }
 
-      if (shouldSelectFullRange && this._inputElement.current) {
-        this._inputElement.current.setSelectionRange(0, suggestedDisplayValue.length, SELECTION_BACKWARD);
+      if (shouldSelectFullRange) {
+        this._inputElement.current!.setSelectionRange(0, suggestedDisplayValue.length, SELECTION_BACKWARD);
       } else {
         while (
           differenceIndex < this.value.length &&
@@ -115,8 +131,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
         ) {
           differenceIndex++;
         }
-        if (differenceIndex > 0 && this._inputElement.current) {
-          this._inputElement.current.setSelectionRange(
+        if (differenceIndex > 0) {
+          this._inputElement.current!.setSelectionRange(
             differenceIndex,
             suggestedDisplayValue.length,
             SELECTION_BACKWARD,
@@ -124,7 +140,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
         }
       }
     } else if (this._inputElement.current) {
-      if (cursor !== null && !this._autoFillEnabled) {
+      if (cursor !== null && !this._autoFillEnabled && !this.state.isComposing) {
         this._inputElement.current.setSelectionRange(cursor.start, cursor.end, cursor.dir);
       }
     }
@@ -186,7 +202,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
   // Some examples of this are mobile text input and languages like Japanese or Arabic.
   // Find out more at https://developer.mozilla.org/en-US/docs/Web/Events/compositionstart
   private _onCompositionStart = (ev: React.CompositionEvent<HTMLInputElement>) => {
-    this._isComposing = true;
+    this.setState({ isComposing: true });
     this._autoFillEnabled = false;
   };
 
@@ -205,10 +221,11 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
   private _onCompositionEnd = (ev: React.CompositionEvent<HTMLInputElement>) => {
     const inputValue = this._getCurrentInputValue();
     this._tryEnableAutofill(inputValue, this.value, false, true);
-    this._isComposing = false;
+    this.setState({ isComposing: false });
+
     // Due to timing, this needs to be async, otherwise no text will be selected.
     this._async.setTimeout(() => {
-      // it's technically possible that the value of _isComposing is reset during this timeout,
+      // it's technically possible that the value of isComposing is reset during this timeout,
       // so explicitly trigger this with composing=true here, since it is supposed to be the
       // update for composition end
       this._updateValue(this._getCurrentInputValue(), false);
@@ -238,7 +255,9 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
         case KeyCodes.left:
         case KeyCodes.right:
           if (this._autoFillEnabled) {
-            this.setState({ inputValue: this.props.suggestedDisplayValue || '' });
+            this.setState(prev => ({
+              inputValue: this.props.suggestedDisplayValue || prev.inputValue,
+            }));
             this._autoFillEnabled = false;
           }
           break;
@@ -257,14 +276,14 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
   private _onInputChanged = (ev: React.FormEvent<HTMLElement>) => {
     const value: string = this._getCurrentInputValue(ev);
 
-    if (!this._isComposing) {
+    if (!this.state.isComposing) {
       this._tryEnableAutofill(value, this.value, (ev.nativeEvent as any).isComposing);
     }
 
     // If it is not IE11 and currently composing, update the value
-    if (!(isIE11() && this._isComposing)) {
+    if (!(isIE11() && this.state.isComposing)) {
       const nativeEventComposing = (ev.nativeEvent as any).isComposing;
-      const isComposing = nativeEventComposing === undefined ? this._isComposing : nativeEventComposing;
+      const isComposing = nativeEventComposing === undefined ? this.state.isComposing : nativeEventComposing;
       this._updateValue(value, isComposing);
     }
   };

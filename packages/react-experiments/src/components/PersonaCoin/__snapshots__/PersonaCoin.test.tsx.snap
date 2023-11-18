@@ -235,7 +235,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
           top: auto;
           width: 12px;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
           background-color: WindowText;
           border-color: Window;
         }
@@ -264,7 +264,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
             speak: none;
             vertical-align: top;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             color: Window;
           }
       data-icon-name="SkypeMinus"
@@ -334,7 +334,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
           top: auto;
           width: 12px;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
           background-color: WindowText;
           border-color: Window;
         }
@@ -363,7 +363,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
             speak: none;
             vertical-align: top;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             color: Window;
           }
       data-icon-name="SkypeMinus"
@@ -455,7 +455,7 @@ exports[`PersonaCoin renders the coin with the provided image 1`] = `
           }
       onError={[Function]}
       onLoad={[Function]}
-      src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets//persona-male.png"
+      src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets//persona-male.png"
     />
   </div>
 </div>

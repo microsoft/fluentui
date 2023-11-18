@@ -2,7 +2,7 @@ import { Meta } from '@storybook/addon-docs';
 
 <Meta title="Integrations/React" />
 
-FAST can be used in React applications. Let's take a look at how you can set up a project, starting from scratch.
+Fluent UI Web Components can be used in React applications. Let's take a look at how you can set up a project, starting from scratch.
 
 ## Setting up the React project
 
@@ -11,20 +11,20 @@ First, you'll need to make sure that you have Node.js >= 8.2 and npm >= 5.6 inst
 With Node.js installed, you can use [create-react-app](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) to create a new React project.
 
 ```shell
-npx create-react-app fast-app
+npx create-react-app fluent-app
 ```
 
 ## Configuring packages
 
-Next, we'll install the FAST packages, along with supporting libraries. To do that, run this command from your new project folder:
+Next, we'll install the Fluent UI Web Component package, along with supporting FAST libraries. To do that, run this command from your new project folder:
 
 ```shell
-npm install --save @fluentui/web-components @microsoft/fast-element lodash-es
+npm install --save @fluentui/web-components @microsoft/fast-foundation @microsoft/fast-element @microsoft/fast-react-wrapper
 ```
 
 ## Configure create-react-app
 
-[create-react-app](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) ships with an [eslint](https://eslint.org/) rule that makes working with FAST components difficult. There are two changes that will need to be made in the `package.json`:
+[create-react-app](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) ships with an [eslint](https://eslint.org/) rule that makes working with Fluent UI Web Components difficult. There are two changes that will need to be made in the `package.json`:
 
 **Set the EXTEND_ESLINT environment variable in start, build, and test scripts**
 
@@ -63,23 +63,32 @@ With all the basic pieces in place, let's run our app in dev mode with `npm star
 
 First, open your `src/app.js` file and add the following code:
 
-```js
-import { provideFASTDesignSystem, fluentCard, fluentButton } from '@fluentui/web-components';
+With all the basic pieces in place, let's run our app in dev mode with `npm start`. Right now, it displays the React logo and some editing instructions, since we haven't added any code or interesting HTML. Let's change that.
 
-provideFASTDesignSystem().register(fluentCard(), fluentButton());
+First, open your `src/app.js` file and add the following code:
+
+```js
+import { provideFluentDesignSystem, fluentCard, fluentButton } from '@fluentui/web-components';
+import { provideReactWrapper } from '@microsoft/fast-react-wrapper';
+import React from 'react';
+
+const { wrap } = provideReactWrapper(React, provideFluentDesignSystem());
+
+export const FluentCard = wrap(fluentCard());
+export const FluentButton = wrap(fluentButton());
 ```
 
-This code uses the FAST Design System to register the `<fluent-card>` and `<fluent-button>` components. Once you save, the dev server will rebuild and refresh your browser. However, you still won't see anything. To get some UI showing up, we need to write some HTML that uses our components. Replace the App component in your `src/app.js` file with the following:
+This code uses the Fluent Design System to register the `<fluent-card>` and `<fluent-button>` components while automatically wrapping them into React components. Once you save, the dev server will rebuild and refresh your browser. However, you still won't see anything. To get some UI showing up, we need to write some HTML that uses our components. Replace the App component in your `src/app.js` file with the following:
 
 ```jsx
 function App() {
   return (
-    <fluent-card>
-      <h2>FAST React</h2>
-      <fluent-button appearance="accent" onClick={() => console.log('clicked')}>
+    <FluentCard>
+      <h2>Fluent React</h2>
+      <FluentButton appearance="accent" onClick={() => console.log('clicked')}>
         Click Me
-      </fluent-button>
-    </fluent-card>
+      </FluentButton>
+    </FluentCard>
   );
 }
 ```
@@ -103,7 +112,57 @@ fluent-card > fluent-button {
 }
 ```
 
-Congratulations! You're now set up to use FAST and React!
+Congratulations! You're now set up to use Fluent and React!
+
+## Using the React Wrapper
+
+Above, we leveraged the `@microsoft/fast-react-wrapper` library to enable seamless integration of Fluent Components. There are a few additional ways to use this API for different web component scenarios.
+
+### Wrapping Design System Components
+
+Previously, you've seen that we can wrap a Design System component by passing its registration function to the `wrap` method as follows:
+
+```ts
+const { wrap } = provideReactWrapper(React, provideFluentDesignSystem());
+
+export const FluentButton = wrap(fluentButton());
+```
+
+This code creates a wrapper that is configured with a React-compatible API and a Design System instance. When passing a Design System as the second parameter, you can then pass component registration functions to the `wrap` helper. The helper will both register the web component with the Design System and wrap it in a type-safe React component, all with a single call.
+
+Alternatively, you can skip providing the Design System to the wrapper, and use the generated registry to manually register all previously wrapped components.
+
+```ts
+const { wrap, registry } = provideReactWrapper(React);
+
+export const FluentButton = wrap(fluentButton());
+
+provideFluentDesignSystem().register(registry);
+```
+
+The final option is to handle everything by hand:
+
+```ts
+const { wrap } = provideReactWrapper(React);
+
+export const FluentButton = wrap(fluentButton());
+
+provideFluentDesignSystem().register(fluentButton());
+```
+
+### Configuring Custom Events
+
+If the wrapped component uses custom events that you intend to use from React, you will need to manually configure a mapping from React event name to the native event name. Here's an example of what that would look like if you wanted to leverage the FAST MenuItem's `expanded-change` event:
+
+```ts
+const { wrap } = provideReactWrapper(React, provideFluentDesignSystem());
+
+export const FluentMenuItem = wrap(fluentMenuItem(), {
+  events: {
+    onExpandedChange: 'expanded-change',
+  },
+});
+```
 
 ## Additional Notes
 

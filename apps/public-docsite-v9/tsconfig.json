@@ -1,0 +1,23 @@
+{
+  "extends": "../../tsconfig.base.all.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2019",
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "noUnusedLocals": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "types": ["webpack-env"]
+  },
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./.storybook/tsconfig.json"
+    }
+  ]
+}

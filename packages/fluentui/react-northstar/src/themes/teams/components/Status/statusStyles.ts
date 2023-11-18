@@ -45,6 +45,16 @@ const sizeToPxValue: Record<SizeValue, number> = {
   largest: 0,
 };
 
+const iconSizeToPxValue: Record<SizeValue, number> = {
+  smallest: 4,
+  smaller: 6,
+  small: 6,
+  medium: 6,
+  large: 6,
+  larger: 10,
+  largest: 0,
+};
+
 export const getSizeStyles = (sizeInPx: number, variables: StatusVariables) => {
   const borderWidth = (variables.borderColor && variables.borderWidth) || 0;
   const sizeInRem = pxToRem(sizeInPx + 2 * borderWidth);
@@ -73,12 +83,12 @@ export const statusStyles: ComponentSlotStylesPrepared<StatusStylesProps, Status
     };
   },
 
-  icon: ({ props: { state }, variables: v }): ICSSInJSStyle => ({
+  icon: ({ props: { size, state }, variables: v }): ICSSInJSStyle => ({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: v.iconSize,
-    height: v.iconSize,
+    width: pxToRem(iconSizeToPxValue[size]),
+    height: pxToRem(iconSizeToPxValue[size]),
     color: getTextColor(state, v),
     '& > :first-child': {
       height: '100%',

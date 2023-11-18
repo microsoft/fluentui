@@ -8,7 +8,10 @@ import type { IDetailsRowProps } from './DetailsRow';
  *
  * {@docCategory DetailsList}
  */
-export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'> &
+export type IOverrideColumnRenderProps = Pick<
+  IDetailsListProps,
+  'onRenderItemColumn' | 'getCellValueKey' | 'onRenderField'
+> &
   Pick<IDetailsRowProps, 'cellsByColumn'>;
 
 /**
@@ -51,6 +54,11 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
       'isMultiline' | 'isRowHeader' | 'cell' | 'cellAnimation' | 'cellPadded' | 'cellUnpadded' | 'fields'
     >]: string;
   };
+
+  /**
+   * Whether or not the details row is in a selected state.
+   */
+  isSelected?: boolean;
 
   /**
    * Id for the current row's row-header

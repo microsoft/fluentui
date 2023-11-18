@@ -20,18 +20,54 @@ const ProgressTemplate = ({ paused, value }) => `
 export const Progress = ProgressTemplate.bind({});
 
 Progress.args = {
-  value: 50,
   paused: false,
+  value: 50,
 };
 
-const example = `
-<fluent-progress min="0" max="100" value="75"></fluent-progress>
+const defaultExample = `
+<fluent-progress min="0" max="100" value="${Progress.args.value}"></fluent-progress>
 `;
 
 Progress.parameters = {
   docs: {
     source: {
-      code: example,
+      code: defaultExample,
+    },
+  },
+};
+
+export const ProgressAnimated = ProgressTemplate.bind({});
+
+ProgressAnimated.args = {
+  paused: false,
+};
+
+export const ProgressPaused = ProgressTemplate.bind({});
+
+ProgressPaused.args = {
+  paused: true,
+};
+
+const animatedExample = `
+<fluent-progress></fluent-progress>
+`;
+
+const pausedExample = `
+<fluent-progress paused></fluent-progress>
+`;
+
+ProgressAnimated.parameters = {
+  docs: {
+    source: {
+      code: animatedExample,
+    },
+  },
+};
+
+ProgressPaused.parameters = {
+  docs: {
+    source: {
+      code: pausedExample,
     },
   },
 };

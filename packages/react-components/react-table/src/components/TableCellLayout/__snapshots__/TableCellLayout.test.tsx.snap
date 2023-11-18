@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableCellLayout renders a default state 1`] = `
+<div>
+  <div
+    class="fui-TableCellLayout"
+  >
+    <div
+      class="fui-TableCellLayout__content"
+    >
+      <span
+        class="fui-TableCellLayout__main"
+      >
+        Default TableCellLayout
+      </span>
+    </div>
+  </div>
+</div>
+`;

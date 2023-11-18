@@ -8,6 +8,9 @@ export default {
       options: ['filled', 'outline'],
       control: { type: 'radio' },
     },
+    disabled: {
+      control: { type: 'boolean' },
+    },
     autocomplete: {
       options: ['inline', 'list', 'none', 'both'],
       control: { type: 'radio' },
@@ -22,12 +25,19 @@ export default {
   },
 };
 
-const ComboboxTemplate = ({ appearance, autocomplete, position, required }) => `
+const ComboboxTemplate = ({ appearance, disabled, autocomplete, position, required }) => `
+  <style>
+    div.docs-story>div:first-child {
+      height: 32em !important;
+    }
+  </style>
   <fluent-combobox
     ${appearance ? `appearance="${appearance}"` : ''}
-    ${appearance ? `autocomplete="${autocomplete}"` : ''}
+    ${disabled ? 'disabled' : ''} 
+    ${autocomplete ? `autocomplete="${autocomplete}"` : ''}
     ${required ? 'required' : ''}
     ${position ? `position="${position}"` : ''}
+    style="margin-bottom: 500px;"
   >
     <fluent-option>Please Please Me</fluent-option>
     <fluent-option>With The Beatles</fluent-option>
@@ -42,7 +52,7 @@ const ComboboxTemplate = ({ appearance, autocomplete, position, required }) => `
     <fluent-option>Yellow Submarine</fluent-option>
     <fluent-option>Abbey Road</fluent-option>
     <fluent-option>Let It Be</fluent-option>
-  <fluent-combobox/>
+  </fluent-combobox>
 `;
 
 export const Combobox = ComboboxTemplate.bind({});
@@ -50,6 +60,7 @@ export const Combobox = ComboboxTemplate.bind({});
 Combobox.args = {
   value: 'Christopher Eccleston',
   appearance: 'outline',
+  disabled: false,
 };
 
 const example = `

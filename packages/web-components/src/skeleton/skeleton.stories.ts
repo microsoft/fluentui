@@ -5,6 +5,7 @@ export default {
   component: fluentSkeleton,
   argTypes: {
     shape: {
+      defaultValue: 'rect',
       options: ['circle', 'rect'],
       control: { type: 'radio' },
     },
@@ -18,7 +19,7 @@ const SkeletonTemplate = ({ shape, shimmer }) => `
   <fluent-skeleton 
     ${shape ? `shape="${shape}"` : ''}
     ${shimmer ? 'shimmer' : ''} 
-    style="border-radius: 4px; margin-top: 10px; height: 10px" width: 100px"
+    style="margin-top: 10px; height: 50px; width: 50px"
   ></fluent-skeleton>
 `;
 
@@ -30,7 +31,7 @@ Skeleton.args = {
 };
 
 const example = `
-<fluent-skeleton style="border-radius: 4px; margin-top: 10px; height: 10px" shape="rect"></fluent-skeleton>
+<fluent-skeleton style="height: 50px; width: 50px" shape="rect"></fluent-skeleton>
 `;
 
 Skeleton.parameters = {

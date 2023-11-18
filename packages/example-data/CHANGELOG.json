@@ -2,6 +2,201 @@
   "name": "@fluentui/example-data",
   "entries": [
     {
+      "date": "Fri, 18 Aug 2023 07:35:24 GMT",
+      "tag": "@fluentui/example-data_v8.4.12",
+      "version": "8.4.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/example-data",
+            "commit": "67b93043888f980623a863c56655b061ad6bce91",
+            "comment": "docs: Updating version of CDN used and replacing usage of via.placeholder.com with SVG from CDN."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 07:37:33 GMT",
+      "tag": "@fluentui/example-data_v8.4.11",
+      "version": "8.4.11",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/example-data",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 May 2023 18:14:03 GMT",
+      "tag": "@fluentui/example-data_v8.4.9",
+      "version": "8.4.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/example-data",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2",
+            "comment": "fix: explicitly ship dist/ folder."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Jan 2023 07:50:52 GMT",
+      "tag": "@fluentui/example-data_v8.4.5",
+      "version": "8.4.5",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/example-data",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Jan 2023 07:59:50 GMT",
+      "tag": "@fluentui/example-data_v8.4.4",
+      "version": "8.4.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/example-data",
+            "commit": "b69b35c04ebb846cb24ba6f1bc60cc9baf55a91b",
+            "comment": "chore(scripts): remove deep imports from scripts/webpack/"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Jan 2023 07:46:41 GMT",
+      "tag": "@fluentui/example-data_v8.4.4",
+      "version": "8.4.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/example-data",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Dec 2022 07:50:59 GMT",
+      "tag": "@fluentui/example-data_v8.4.4",
+      "version": "8.4.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/example-data",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Dec 2022 07:53:32 GMT",
+      "tag": "@fluentui/example-data_v8.4.4",
+      "version": "8.4.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/example-data",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7",
+            "comment": "chore: Updating cdn links to match latest."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Dec 2022 07:57:07 GMT",
+      "tag": "@fluentui/example-data_v8.4.3",
+      "version": "8.4.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/example-data",
+            "commit": "c46ff8dec351ebf57efb4114366016010b285429",
+            "comment": "chore: enable isolateModules"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Mar 2022 07:24:26 GMT",
+      "tag": "@fluentui/example-data_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/example-data",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Dec 2021 07:31:32 GMT",
+      "tag": "@fluentui/example-data_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/example-data",
+            "commit": "3defe8482167a065a9ee9653fd0c34d5d3ecf055",
+            "comment": "[breaking] Remove AvatarExamples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Sep 2021 07:34:24 GMT",
+      "tag": "@fluentui/example-data_v8.2.7",
+      "version": "8.2.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/example-data",
+            "comment": "Fix badge examples to use shorthand props",
+            "commit": "16bc6ece02c11f68d9e7d4bf1e5547b6a2123135"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/example-data_v8.2.6",
+      "version": "8.2.6",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/example-data",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Aug 2021 07:34:48 GMT",
       "tag": "@fluentui/example-data_v8.2.6",
       "version": "8.2.6",

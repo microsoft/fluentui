@@ -26,6 +26,7 @@ const ComponentPlaygroundTemplate: React.FunctionComponent<ComponentPlaygroundTe
       styles={{
         height: 'auto',
         alignItems: 'stretch',
+        minWidth: 0,
       }}
     >
       <Segment

@@ -21,6 +21,7 @@ export const tabBehavior: Accessibility<TabBehaviorProps> = props => ({
   attributes: {
     wrapper: {
       role: 'presentation',
+      'data-tabs': 'true',
     },
     root: {
       role: 'tab',

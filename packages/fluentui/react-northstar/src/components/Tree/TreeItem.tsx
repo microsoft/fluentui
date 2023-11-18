@@ -1,19 +1,19 @@
 import { Accessibility, treeItemBehavior, TreeItemBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useStyles,
   useTelemetry,
   useFluentContext,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { handleRef, Ref } from '@fluentui/react-component-ref';
+import { handleRef } from '@fluentui/react-component-ref';
 import {
   childrenExist,
   createShorthandFactory,
@@ -109,6 +109,8 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
    * @param data - All props and proposed value.
    */
   onKeyDown?: ComponentKeyboardEventHandler<TreeItemProps>;
+
+  unstyled?: boolean;
 }
 
 export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>> & {
@@ -122,7 +124,7 @@ export const treeItemClassName = 'ui-tree__item';
  * @accessibility
  * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
  */
-export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentStaticProps<TreeItemProps> = props => {
+export const TreeItem = React.forwardRef<HTMLDivElement, TreeItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TreeItem.displayName, context.telemetry);
   setStart();
@@ -225,6 +227,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
+    unstyled: props.unstyled,
   });
 
   const handleSelection = e => {
@@ -268,7 +271,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key && e.key.length === 1 && e.key.match(/\S/) && e.key !== '*') {
+    if (e.key && e.key.length === 1 && e.key.match(/\S/) && e.key !== '*' && !e.altKey && !e.ctrlKey && !e.metaKey) {
       e.preventDefault();
       e.stopPropagation();
       const toFocusID = getToFocusIDByFirstCharacter(e, props.id);
@@ -279,12 +282,13 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     _.invoke(props, 'onKeyDown', e, props);
   };
 
-  const ref = React.useCallback(
+  const elementRef = React.useCallback(
     node => {
       registerItemRef(id, node);
       handleRef(contentRef, node);
+      handleRef(ref, node);
     },
-    [id, contentRef, registerItemRef],
+    [id, contentRef, registerItemRef, ref],
   );
 
   const ElementType = getElementType(props);
@@ -294,6 +298,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
       {...getA11Props('root', {
         className: classes.root,
         id,
+        ref: elementRef,
         selected: selected === true,
         onClick: handleClick,
         onKeyDown: handleKeyDown,
@@ -326,11 +331,10 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     </ElementType>
   );
 
-  const elementWithRef = <Ref innerRef={ref}>{element}</Ref>;
   setEnd();
 
-  return elementWithRef;
-};
+  return element;
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, TreeItemProps> & FluentComponentStaticProps<TreeItemProps>;
 
 TreeItem.displayName = 'TreeItem';
 
@@ -354,6 +358,7 @@ TreeItem.propTypes = {
   title: customPropTypes.itemShorthand,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
   selectable: PropTypes.bool,
+  unstyled: PropTypes.bool,
   onKeyDown: PropTypes.func,
 };
 

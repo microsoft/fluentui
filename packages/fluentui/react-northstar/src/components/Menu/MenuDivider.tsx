@@ -48,16 +48,16 @@ export const menuDividerClassName = 'ui-menu__divider';
 /**
  * A MenuDivider is non-actionable element that visually segments items of Menu.
  */
-export const MenuDivider = (React.forwardRef<HTMLLIElement, MenuDividerProps>((inputProps, ref) => {
+export const MenuDivider = React.forwardRef<HTMLLIElement, MenuDividerProps>((inputProps, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuDivider.displayName, context.telemetry);
   setStart();
 
-  const parentProps = (useContextSelectors(MenuContext, {
+  const parentProps = useContextSelectors(MenuContext, {
     variables: v => v.variables,
     slotProps: v => v.slotProps.divider,
     accessibility: v => v.behaviors.divider,
-  }) as unknown) as MenuDividerSubscribedValue; // TODO: we should improve typings for the useContextSelectors
+  }) as unknown as MenuDividerSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
   const props = {
     ...parentProps.slotProps,
@@ -126,8 +126,7 @@ export const MenuDivider = (React.forwardRef<HTMLLIElement, MenuDividerProps>((i
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'li', HTMLLIElement, MenuDividerProps> &
-  FluentComponentStaticProps<MenuDividerProps>;
+}) as unknown as ForwardRefWithAs<'li', HTMLLIElement, MenuDividerProps> & FluentComponentStaticProps<MenuDividerProps>;
 
 MenuDivider.defaultProps = {
   as: 'li',

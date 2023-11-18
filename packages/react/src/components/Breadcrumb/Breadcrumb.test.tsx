@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { mount, ReactWrapper } from 'enzyme';
-import * as renderer from 'react-test-renderer';
+import { act, render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { Breadcrumb } from './index';
 import { Icon } from '../../Icon';
 import { isConformant } from '../../common/isConformant';
@@ -15,123 +15,101 @@ describe('Breadcrumb', () => {
     { text: 'TestText4', key: 'TestKey4' },
   ];
 
-  let component: renderer.ReactTestRenderer | undefined;
-  let wrapper: ReactWrapper | undefined;
-
   beforeEach(() => {
     resetIds();
   });
 
   afterEach(() => {
-    if (component) {
-      component.unmount();
-      component = undefined;
-    }
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
+    if ((setTimeout as any).mock) {
+      jest.useRealTimers();
     }
   });
 
   it('renders empty breadcrumb', () => {
-    component = renderer.create(<Breadcrumb items={[]} />);
+    const { container } = render(<Breadcrumb items={[]} />);
 
-    const tree = component.toJSON();
-
-    expect(tree).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   describe('rendering', () => {
     it('renders correctly', () => {
-      component = renderer.create(<Breadcrumb items={items} />);
-
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { container } = render(<Breadcrumb items={items} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('renders correctly with overflow', () => {
-      component = renderer.create(<Breadcrumb items={items} maxDisplayedItems={2} />);
-
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { container } = render(<Breadcrumb items={items} maxDisplayedItems={2} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('renders correctly with custom divider', () => {
       const divider = () => <span>*</span>;
-      component = renderer.create(<Breadcrumb items={items} dividerAs={divider} />);
-
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { container } = render(<Breadcrumb items={items} dividerAs={divider} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('renders correctly with overflow and overflowIndex', () => {
-      component = renderer.create(<Breadcrumb items={items} maxDisplayedItems={2} overflowIndex={1} />);
-
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { container } = render(<Breadcrumb items={items} maxDisplayedItems={2} overflowIndex={1} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('renders correctly with maxDisplayedItems and overflowIndex', () => {
-      component = renderer.create(<Breadcrumb items={items} maxDisplayedItems={1} overflowIndex={1} />);
-
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { container } = render(<Breadcrumb items={items} maxDisplayedItems={1} overflowIndex={1} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('renders correctly with maxDisplayedItems and overflowIndex as 0', () => {
-      component = renderer.create(<Breadcrumb items={items} maxDisplayedItems={0} overflowIndex={0} />);
-
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      const { container } = render(<Breadcrumb items={items} maxDisplayedItems={0} overflowIndex={0} />);
+      expect(container).toMatchSnapshot();
     });
 
     it('renders  correctly with custom overflow icon', () => {
       const overflowIcon = () => <Icon iconName={'ChevronDown'} />;
-      component = renderer.create(
+      const { container } = render(
         <Breadcrumb items={items} maxDisplayedItems={2} onRenderOverflowIcon={overflowIcon} />,
       );
-
-      const tree = component.toJSON();
-      expect(tree).toMatchSnapshot();
+      expect(container).toMatchSnapshot();
     });
   });
 
   isConformant({
     Component: Breadcrumb,
     displayName: 'Breadcrumb',
-    skipAsPropTests: false,
     // Problem: Doesn’t handle ref.
     // Solution: Add a ref to the root element.
-    disabledTests: [
-      'component-handles-ref',
-      'component-has-root-ref',
-      'component-handles-classname',
-      'as-passes-as-value',
-    ],
+    disabledTests: ['component-handles-ref', 'component-has-root-ref', 'component-handles-classname'],
   });
 
   it('renders items with expected element type', () => {
+    jest.useFakeTimers();
+
     const items2: IBreadcrumbItem[] = [
       { text: 'Test1', key: 'Test1', href: 'http://bing.com', onClick: () => undefined },
       { text: 'Test2', key: 'Test2', onClick: () => undefined },
       { text: 'Test3', key: 'Test3', as: 'h1' },
     ];
 
-    wrapper = mount(<Breadcrumb items={items2} />);
+    const { getAllByRole } = render(<Breadcrumb items={items2} />);
+    //Initial rendering of component is "hidden" while measurements are made
+    // therefore we need to wait a bit before getting roles.
+    act(() => {
+      jest.runAllTimers();
+    });
 
-    // get the first child of each list item (the actual item content)
-    const renderedItems = wrapper.find('.ms-Breadcrumb-listItem > *:first-child');
+    const renderedItems = getAllByRole('listitem');
     expect(renderedItems).toHaveLength(3);
     // should be a link since it has a href (even though it also has onclick)
-    expect(renderedItems.at(0).getDOMNode().tagName).toBe('A');
+    expect(renderedItems[0].firstElementChild!.tagName).toBe('A');
     // should be a button since it doesn't have a href
     // (can't use a link without a href because it won't respond to key events)
-    expect(renderedItems.at(1).getDOMNode().tagName).toBe('BUTTON');
+    expect(renderedItems[1].firstElementChild!.tagName).toBe('BUTTON');
     // specified type of h1 overrides default
-    expect(renderedItems.at(2).getDOMNode().tagName).toBe('H1');
+    expect(renderedItems[2].firstElementChild!.tagName).toBe('H1');
   });
 
   it('calls the callback when an item is clicked', () => {
+    jest.useFakeTimers();
+
     let callbackValue;
     const clickCallback = (ev: React.MouseEvent<HTMLElement>, item: IBreadcrumbItem) => {
       ev.preventDefault(); // in case it's a navigation event
@@ -143,37 +121,61 @@ describe('Breadcrumb', () => {
       { text: 'Test2', key: 'Test2', onClick: clickCallback },
     ];
 
-    wrapper = mount(<Breadcrumb items={items2} />);
+    const { getByRole } = render(<Breadcrumb items={items2} />);
+    //Initial rendering of component is "hidden" while measurements are made
+    // therefore we need to wait a bit before getting roles.
+    act(() => {
+      jest.runAllTimers();
+    });
 
-    const renderedItems = wrapper.find('.ms-Breadcrumb-itemLink').hostNodes();
-
-    renderedItems.at(0).simulate('click');
+    userEvent.click(getByRole('link'));
     expect(callbackValue).toEqual('Test1');
 
-    renderedItems.at(1).simulate('click');
+    userEvent.click(getByRole('button'));
     expect(callbackValue).toEqual('Test2');
   });
 
   it('moves items to overflow in the correct order', () => {
-    wrapper = mount(<Breadcrumb items={items} maxDisplayedItems={2} />);
+    jest.useFakeTimers();
 
-    expect(wrapper.find('.ms-Breadcrumb-item').first().text()).toEqual('TestText3');
+    const { getAllByRole } = render(<Breadcrumb items={items} maxDisplayedItems={2} />);
+    //Initial rendering of component is "hidden" while measurements are made
+    // therefore we need to wait a bit before getting roles.
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    const firstListItem = getAllByRole('listitem')[1].firstElementChild;
+    expect(firstListItem!.textContent).toContain('TestText3');
   });
 
   it('supports native props on the root element', () => {
-    wrapper = mount(<Breadcrumb items={items} maxDisplayedItems={2} role="region" />);
+    jest.useFakeTimers();
 
-    expect(wrapper.find('.ms-Breadcrumb').prop('role')).toEqual('region');
+    const { getByRole } = render(<Breadcrumb items={items} maxDisplayedItems={2} role="region" />);
+    //Initial rendering of component is "hidden" while measurements are made
+    // therefore we need to wait a bit before getting roles.
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    expect(getByRole('region')).toBeTruthy();
   });
 
   it('opens the overflow menu on click', () => {
-    wrapper = mount(<Breadcrumb items={items} maxDisplayedItems={2} />);
+    jest.useFakeTimers();
 
-    const overflowButton = wrapper.find('.ms-Breadcrumb-overflowButton');
-    // without hostNodes it returns the same element x4
-    overflowButton.hostNodes().simulate('click');
+    const { getByRole, getAllByRole } = render(<Breadcrumb items={items} maxDisplayedItems={2} />);
+    //Initial rendering of component is "hidden" while measurements are made
+    // therefore we need to wait a bit before getting roles.
+    act(() => {
+      jest.runAllTimers();
+    });
 
-    const overfowItems = document.querySelectorAll('.ms-ContextualMenu-item');
+    const overflowButton = getByRole('button');
+    userEvent.click(overflowButton!);
+
+    const overfowItems = getAllByRole('menuitem');
     expect(overfowItems).toHaveLength(2);
     expect(overfowItems[0].textContent).toEqual('TestText1');
     expect(overfowItems[1].textContent).toEqual('TestText2');
@@ -181,6 +183,8 @@ describe('Breadcrumb', () => {
 
   describe('ARIA prop propagation to breadcrumb items', () => {
     it('for Link', () => {
+      jest.useFakeTimers();
+
       const itemsWithAdditionalProps: IBreadcrumbItem[] = [
         {
           key: 'ItemKey1',
@@ -190,13 +194,20 @@ describe('Breadcrumb', () => {
         },
       ];
 
-      wrapper = mount(<Breadcrumb items={itemsWithAdditionalProps} />);
+      const { getByRole } = render(<Breadcrumb items={itemsWithAdditionalProps} />);
+      //Initial rendering of component is "hidden" while measurements are made
+      // therefore we need to wait a bit before getting roles.
+      act(() => {
+        jest.runAllTimers();
+      });
 
-      const item = wrapper.find('LinkBase');
-      expect(item.prop('aria-label')).toEqual("I'm an aria prop");
+      const item = getByRole('link');
+      expect(item.getAttribute('aria-label')).toEqual("I'm an aria prop");
     });
 
     it('for Tag', () => {
+      jest.useFakeTimers();
+
       const itemsWithAdditionalProps: IBreadcrumbItem[] = [
         {
           key: 'ItemKey1',
@@ -205,10 +216,15 @@ describe('Breadcrumb', () => {
         },
       ];
 
-      wrapper = mount(<Breadcrumb items={itemsWithAdditionalProps} />);
+      const { getByRole } = render(<Breadcrumb items={itemsWithAdditionalProps} />);
+      //Initial rendering of component is "hidden" while measurements are made
+      // therefore we need to wait a bit before getting roles.
+      act(() => {
+        jest.runAllTimers();
+      });
 
-      const item = wrapper.find('.ms-Breadcrumb-item');
-      expect(item.prop('aria-label')).toEqual("I'm an aria prop");
+      const item = getByRole('listitem', { hidden: true }).firstElementChild;
+      expect(item!.getAttribute('aria-label')).toEqual("I'm an aria prop");
     });
   });
 });

@@ -86,7 +86,7 @@ const CalendarYearGridCell: React.FunctionComponent<ICalendarYearGridCellProps> 
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: className,
+    className,
     highlightCurrent: highlightCurrentYear,
     highlightSelected: highlightSelectedYear,
   });
@@ -104,7 +104,6 @@ const CalendarYearGridCell: React.FunctionComponent<ICalendarYearGridCellProps> 
       disabled={disabled}
       aria-selected={selected}
       ref={buttonRef}
-      aria-readonly={true} // prevent grid from being "editable"
     >
       {onRenderYear?.(year) ?? year}
     </button>
@@ -164,9 +163,9 @@ const CalendarYearGrid: React.FunctionComponent<ICalendarYearGridProps> = props 
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: className,
-    animateBackwards: animateBackwards,
-    animationDirection: animationDirection,
+    className,
+    animateBackwards,
+    animationDirection,
   });
 
   const onRenderYear = (value: number) => {
@@ -229,7 +228,7 @@ const CalendarYearNavArrow: React.FunctionComponent<ICalendarYearNavArrowProps> 
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: className,
+    className,
   });
 
   const ariaLabel =
@@ -280,7 +279,7 @@ const CalendarYearNav: React.FunctionComponent<ICalendarYearHeaderProps> = props
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: className,
+    className,
   });
 
   return (
@@ -321,10 +320,10 @@ const CalendarYearTitle: React.FunctionComponent<ICalendarYearHeaderProps> = pro
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: className,
+    className,
     hasHeaderClickCallback: !!props.onHeaderSelect,
-    animateBackwards: animateBackwards,
-    animationDirection: animationDirection,
+    animateBackwards,
+    animationDirection,
   });
 
   if (props.onHeaderSelect) {
@@ -348,11 +347,10 @@ const CalendarYearTitle: React.FunctionComponent<ICalendarYearHeaderProps> = pro
         aria-label={ariaLabel}
         role="button"
         type="button"
-        aria-atomic={true}
-        // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
-        aria-live="polite"
       >
-        {onRenderYear(fromYear)} - {onRenderYear(toYear)}
+        <span aria-live="assertive" aria-atomic="true">
+          {onRenderYear(fromYear)} - {onRenderYear(toYear)}
+        </span>
       </button>
     );
   }
@@ -370,10 +368,10 @@ const CalendarYearHeader: React.FunctionComponent<ICalendarYearHeaderProps> = pr
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: className,
+    className,
     hasHeaderClickCallback: !!props.onHeaderSelect,
-    animateBackwards: animateBackwards,
-    animationDirection: animationDirection,
+    animateBackwards,
+    animationDirection,
   });
 
   return (
@@ -400,26 +398,26 @@ function useAnimateBackwards({ selectedYear, navigatedYear }: ICalendarYearProps
   }
 }
 
-const enum NavigationDirection {
-  Previous,
-  Next,
-}
-
 function useYearRangeState({ selectedYear, navigatedYear }: ICalendarYearProps) {
-  const [fromYear, navigate] = React.useReducer(
-    (state: number, action: NavigationDirection): number => {
-      return state + (action === NavigationDirection.Next ? CELL_COUNT : -CELL_COUNT);
-    },
-    undefined,
-    () => {
-      const rangeYear = selectedYear || navigatedYear || new Date().getFullYear();
-      return Math.floor(rangeYear / 10) * 10;
-    },
-  );
-  const toYear = fromYear + CELL_COUNT - 1;
+  const rangeYear = React.useMemo(() => {
+    return selectedYear || navigatedYear || Math.floor(new Date().getFullYear() / 10) * 10;
+  }, [navigatedYear, selectedYear]);
 
-  const onNavNext = () => navigate(NavigationDirection.Next);
-  const onNavPrevious = () => navigate(NavigationDirection.Previous);
+  const [fromYear, setFromYear] = React.useState<number>(rangeYear);
+
+  const onNavNext = () => {
+    setFromYear(year => year + CELL_COUNT);
+  };
+
+  const onNavPrevious = () => {
+    setFromYear(year => year - CELL_COUNT);
+  };
+
+  React.useEffect(() => {
+    setFromYear(rangeYear);
+  }, [rangeYear]);
+
+  const toYear = fromYear + CELL_COUNT - 1;
 
   return [fromYear, toYear, onNavNext, onNavPrevious] as const;
 }
@@ -440,7 +438,7 @@ export const CalendarYearBase: React.FunctionComponent<ICalendarYearProps> = pro
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: className,
+    className,
   });
 
   return (

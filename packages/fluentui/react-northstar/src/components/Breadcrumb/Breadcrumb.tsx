@@ -43,7 +43,7 @@ export type BreadcrumbStylesProps = Required<Pick<BreadcrumbProps, 'size'>>;
 export const breadcrumbClassName = 'ui-breadcrumb';
 
 /**
- * Breadcrumb is a a component that indicates the path of the current page
+ * Breadcrumb is a component that indicates the path of the current page
  *
  * @accessibility
  * Implements [ARIA Breadcrumb](https://www.w3.org/TR/wai-aria-practices-1.1/#breadcrumb) design pattern.

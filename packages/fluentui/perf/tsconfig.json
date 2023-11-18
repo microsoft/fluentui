@@ -1,6 +1,8 @@
 {
-  "extends": "../../../scripts/typescript/tsconfig.fluentui",
+  "extends": "../../../tsconfig.base.v0.json",
   "compilerOptions": {
+    "noEmit": true,
+    "emitDeclarationOnly": false,
     "module": "esnext",
     "types": ["node", "webpack-env"]
   },

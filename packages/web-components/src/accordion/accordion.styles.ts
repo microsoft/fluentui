@@ -1,13 +1,7 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
-import {
-  bodyFont,
-  neutralForegroundRest,
-  neutralStrokeDividerRest,
-  strokeWidth,
-  typeRampMinus1FontSize,
-  typeRampMinus1LineHeight,
-} from '../design-tokens';
+import { designUnit, neutralForegroundRest } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
 
 export const accordionStyles: (
   context: ElementDefinitionContext,
@@ -17,10 +11,8 @@ export const accordionStyles: (
     ${display('flex')} :host {
       box-sizing: border-box;
       flex-direction: column;
-      font-family: ${bodyFont};
-      font-size: ${typeRampMinus1FontSize};
-      line-height: ${typeRampMinus1LineHeight};
+      ${typeRampBase}
       color: ${neutralForegroundRest};
-      border-top: calc(${strokeWidth} * 1px) solid ${neutralStrokeDividerRest};
+      gap: calc(${designUnit} * 1px);
     }
   `;

@@ -26,7 +26,6 @@ import { Ref } from '@fluentui/react-component-ref';
 import { PositioningProps, AutoSize } from '../../utils/positioner/types';
 
 import {
-  ComponentWithAs,
   useTelemetry,
   useAutoControlled,
   useAccessibility,
@@ -34,6 +33,7 @@ import {
   useFluentContext,
   useUnhandledProps,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface SplitButtonProps
@@ -110,10 +110,7 @@ export type SplitButtonStylesProps = Required<Pick<SplitButtonProps, 'size'>> & 
 /**
  * A SplitButton enables users to take one of several related actions, one being dominant and rest being displayed in a menu.
  */
-export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
-  FluentComponentStaticProps<SplitButtonProps> & {
-    Toggle: typeof SplitButtonToggle;
-  } = props => {
+export const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(SplitButton.displayName, context.telemetry);
   setStart();
@@ -210,6 +207,7 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
       <ElementType
         {...getA11yProps('root', {
           className: classes.root,
+          ref,
           ...unhandledProps,
         })}
       >
@@ -283,7 +281,10 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
 
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, SplitButtonProps> &
+  FluentComponentStaticProps<SplitButtonProps> & {
+    Toggle: typeof SplitButtonToggle;
+  };
 
 SplitButton.displayName = 'SplitButton';
 

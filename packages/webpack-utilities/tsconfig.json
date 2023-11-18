@@ -14,7 +14,8 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "isolatedModules": true
   },
   "include": ["src"]
 }

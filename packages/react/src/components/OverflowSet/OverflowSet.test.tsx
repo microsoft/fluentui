@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import { ReactWrapper, mount } from 'enzyme';
 import * as React from 'react';
-import { create } from '@fluentui/utilities/lib/test';
+import { create } from '@fluentui/test-utilities';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { CommandBarButton } from '../../Button';
 import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';

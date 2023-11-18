@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-experiments",
-  "version": "8.3.8",
+  "version": "8.14.119",
   "description": "Experimental React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,45 +27,215 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.0.17",
-    "@fluentui/eslint-plugin": "^1.4.1",
+    "@fluentui/common-styles": "*",
+    "@fluentui/eslint-plugin": "*",
     "@types/deep-assign": "^0.1.1",
-    "@types/enzyme": "3.10.3",
-    "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/prop-types": "15.7.1",
-    "@types/react": "16.9.42",
     "@types/react-addons-test-utils": "0.14.18",
-    "@types/react-dom": "16.9.10",
-    "@types/react-test-renderer": "^16.0.0",
-    "@fluentui/scripts": "^1.0.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.10",
-    "enzyme": "~3.10.0",
-    "enzyme-adapter-react-16": "^1.15.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
+    "@fluentui/jest-serializer-merge-styles": "*",
     "react-hooks-testing-library": "^0.5.0",
-    "react-test-renderer": "^16.3.0"
+    "@fluentui/scripts-jest": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.33.0",
-    "@fluentui/theme": "^2.3.2",
+    "@fluentui/react": "^8.112.9",
+    "@fluentui/theme": "^2.6.38",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/example-data": "^8.2.6",
-    "@fluentui/foundation-legacy": "^8.1.11",
-    "@fluentui/font-icons-mdl2": "^8.1.11",
-    "@fluentui/merge-styles": "^8.1.5",
-    "@fluentui/react-hooks": "^8.3.2",
-    "@fluentui/set-version": "^8.1.4",
-    "@fluentui/style-utilities": "^8.3.2",
-    "@fluentui/utilities": "^8.3.2",
+    "@fluentui/example-data": "^8.4.13",
+    "@fluentui/foundation-legacy": "^8.2.47",
+    "@fluentui/font-icons-mdl2": "^8.5.27",
+    "@fluentui/merge-styles": "^8.5.13",
+    "@fluentui/react-hooks": "^8.6.33",
+    "@fluentui/set-version": "^8.2.12",
+    "@fluentui/style-utilities": "^8.9.20",
+    "@fluentui/utilities": "^8.13.21",
     "deep-assign": "^2.0.0",
     "prop-types": "^15.7.2",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <18.0.0",
-    "@types/react-dom": ">=16.8.0 <18.0.0",
-    "react": ">=16.8.0 <18.0.0",
-    "react-dom": ">=16.8.0 <18.0.0"
+    "@types/react": ">=16.8.0 <19.0.0",
+    "@types/react-dom": ">=16.8.0 <19.0.0",
+    "react": ">=16.8.0 <19.0.0",
+    "react-dom": ">=16.8.0 <19.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./README.md": "./README.md",
+    "./lib/Accordion": {
+      "types": "./lib/Accordion.d.ts",
+      "import": "./lib/Accordion.js",
+      "require": "./lib-commonjs/Accordion.js"
+    },
+    "./lib/Chiclet": {
+      "types": "./lib/Chiclet.d.ts",
+      "import": "./lib/Chiclet.js",
+      "require": "./lib-commonjs/Chiclet.js"
+    },
+    "./lib/CollapsibleSection": {
+      "types": "./lib/CollapsibleSection.d.ts",
+      "import": "./lib/CollapsibleSection.js",
+      "require": "./lib-commonjs/CollapsibleSection.js"
+    },
+    "./lib/CommandBar": {
+      "types": "./lib/CommandBar.d.ts",
+      "import": "./lib/CommandBar.js",
+      "require": "./lib-commonjs/CommandBar.js"
+    },
+    "./lib/FloatingPeopleSuggestions": {
+      "types": "./lib/FloatingPeopleSuggestions.d.ts",
+      "import": "./lib/FloatingPeopleSuggestions.js",
+      "require": "./lib-commonjs/FloatingPeopleSuggestions.js"
+    },
+    "./lib/FloatingPeopleSuggestionsComposite": {
+      "types": "./lib/FloatingPeopleSuggestionsComposite.d.ts",
+      "import": "./lib/FloatingPeopleSuggestionsComposite.js",
+      "require": "./lib-commonjs/FloatingPeopleSuggestionsComposite.js"
+    },
+    "./lib/FloatingSuggestions": {
+      "types": "./lib/FloatingSuggestions.d.ts",
+      "import": "./lib/FloatingSuggestions.js",
+      "require": "./lib-commonjs/FloatingSuggestions.js"
+    },
+    "./lib/FloatingSuggestionsComposite": {
+      "types": "./lib/FloatingSuggestionsComposite.d.ts",
+      "import": "./lib/FloatingSuggestionsComposite.js",
+      "require": "./lib-commonjs/FloatingSuggestionsComposite.js"
+    },
+    "./lib/FolderCover": {
+      "types": "./lib/FolderCover.d.ts",
+      "import": "./lib/FolderCover.js",
+      "require": "./lib-commonjs/FolderCover.js"
+    },
+    "./lib/components/FolderCover/FolderCover.scss": {
+      "types": "./lib/components/FolderCover/FolderCover.scss.d.ts",
+      "import": "./lib/components/FolderCover/FolderCover.scss.js",
+      "require": "./lib-commonjs/components/FolderCover/FolderCover.scss.js"
+    },
+    "./lib/Foundation": {
+      "types": "./lib/Foundation.d.ts",
+      "import": "./lib/Foundation.js",
+      "require": "./lib-commonjs/Foundation.js"
+    },
+    "./lib/LayoutGroup": {
+      "types": "./lib/LayoutGroup.d.ts",
+      "import": "./lib/LayoutGroup.js",
+      "require": "./lib-commonjs/LayoutGroup.js"
+    },
+    "./lib/MicroFeedback": {
+      "types": "./lib/MicroFeedback.d.ts",
+      "import": "./lib/MicroFeedback.js",
+      "require": "./lib-commonjs/MicroFeedback.js"
+    },
+    "./lib/Pagination": {
+      "types": "./lib/Pagination.d.ts",
+      "import": "./lib/Pagination.js",
+      "require": "./lib-commonjs/Pagination.js"
+    },
+    "./lib/Persona": {
+      "types": "./lib/Persona.d.ts",
+      "import": "./lib/Persona.js",
+      "require": "./lib-commonjs/Persona.js"
+    },
+    "./lib/PersonaCoin": {
+      "types": "./lib/PersonaCoin.d.ts",
+      "import": "./lib/PersonaCoin.js",
+      "require": "./lib-commonjs/PersonaCoin.js"
+    },
+    "./lib/SelectedItemsList": {
+      "types": "./lib/SelectedItemsList.d.ts",
+      "import": "./lib/SelectedItemsList.js",
+      "require": "./lib-commonjs/SelectedItemsList.js"
+    },
+    "./lib/Separator": {
+      "types": "./lib/Separator.d.ts",
+      "import": "./lib/Separator.js",
+      "require": "./lib-commonjs/Separator.js"
+    },
+    "./lib/Sidebar": {
+      "types": "./lib/Sidebar.d.ts",
+      "import": "./lib/Sidebar.js",
+      "require": "./lib-commonjs/Sidebar.js"
+    },
+    "./lib/Signals": {
+      "types": "./lib/Signals.d.ts",
+      "import": "./lib/Signals.js",
+      "require": "./lib-commonjs/Signals.js"
+    },
+    "./lib/components/signals/Signal.scss": {
+      "types": "./lib/components/signals/Signal.scss.d.ts",
+      "import": "./lib/components/signals/Signal.scss.js",
+      "require": "./lib-commonjs/components/signals/Signal.scss.js"
+    },
+    "./lib/components/signals/Signals.scss": {
+      "types": "./lib/components/signals/Signals.scss.d.ts",
+      "import": "./lib/components/signals/Signals.scss.js",
+      "require": "./lib-commonjs/components/signals/Signals.scss.js"
+    },
+    "./lib/Slider": {
+      "types": "./lib/Slider.d.ts",
+      "import": "./lib/Slider.js",
+      "require": "./lib-commonjs/Slider.js"
+    },
+    "./lib/Stack": {
+      "types": "./lib/Stack.d.ts",
+      "import": "./lib/Stack.js",
+      "require": "./lib-commonjs/Stack.js"
+    },
+    "./lib/StaticList": {
+      "types": "./lib/StaticList.d.ts",
+      "import": "./lib/StaticList.js",
+      "require": "./lib-commonjs/StaticList.js"
+    },
+    "./lib/Styling": {
+      "types": "./lib/Styling.d.ts",
+      "import": "./lib/Styling.js",
+      "require": "./lib-commonjs/Styling.js"
+    },
+    "./lib/Text": {
+      "types": "./lib/Text.d.ts",
+      "import": "./lib/Text.js",
+      "require": "./lib-commonjs/Text.js"
+    },
+    "./lib/Tile": {
+      "types": "./lib/Tile.d.ts",
+      "import": "./lib/Tile.js",
+      "require": "./lib-commonjs/Tile.js"
+    },
+    "./lib/TilesList": {
+      "types": "./lib/TilesList.d.ts",
+      "import": "./lib/TilesList.js",
+      "require": "./lib-commonjs/TilesList.js"
+    },
+    "./lib/UnifiedPeoplePicker": {
+      "types": "./lib/UnifiedPeoplePicker.d.ts",
+      "import": "./lib/UnifiedPeoplePicker.js",
+      "require": "./lib-commonjs/UnifiedPeoplePicker.js"
+    },
+    "./lib/UnifiedPicker": {
+      "types": "./lib/UnifiedPicker.d.ts",
+      "import": "./lib/UnifiedPicker.js",
+      "require": "./lib-commonjs/UnifiedPicker.js"
+    },
+    "./lib/Utilities": {
+      "types": "./lib/Utilities.d.ts",
+      "import": "./lib/Utilities.js",
+      "require": "./lib-commonjs/Utilities.js"
+    },
+    "./lib/version": {
+      "types": "./lib/version.d.ts",
+      "import": "./lib/version.js",
+      "require": "./lib-commonjs/version.js"
+    },
+    "./lib/VirtualizedList": {
+      "types": "./lib/VirtualizedList.d.ts",
+      "import": "./lib/VirtualizedList.js",
+      "require": "./lib-commonjs/VirtualizedList.js"
+    }
   }
 }

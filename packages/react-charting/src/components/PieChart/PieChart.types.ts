@@ -1,9 +1,13 @@
 import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IDataPoint } from '../../types/IDataPoint';
-export { IDataPoint } from '../../types/IDataPoint';
+export type { IDataPoint } from '../../types/IDataPoint';
 export interface IPieChart {}
 
+/**
+ * Pie Chart properties
+ * {@docCategory PieChart}
+ */
 export interface IPieChartProps {
   /**
    * Data to render in the chart.
@@ -49,10 +53,24 @@ export interface IPieChartProps {
    * Width of line stroke
    */
   strokeWidth?: number;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 
+/**
+ * Pie Chart style properties
+ * {@docCategory PieChart}
+ */
 export type IPieChartStyleProps = Required<Pick<IPieChartProps, 'theme' | 'width' | 'height'>> &
   Pick<IPieChartProps, 'className'>;
+
+/**
+ * Pie Chart styles
+ * {@docCategory PieChart}
+ */
 export interface IPieChartStyles {
   /**
    *  Style for the root element.

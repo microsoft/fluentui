@@ -21,17 +21,10 @@ const styleParam: ComponentStyleFunctionParam = {
 describe('mergeThemes', () => {
   test(`always returns an object`, () => {
     expect(mergeThemes({}, {})).toMatchObject({});
-    expect(mergeThemes(null, null)).toMatchObject({});
     expect(mergeThemes(undefined, undefined)).toMatchObject({});
-
-    expect(mergeThemes(null, undefined)).toMatchObject({});
-    expect(mergeThemes(undefined, null)).toMatchObject({});
 
     expect(mergeThemes({}, undefined)).toMatchObject({});
     expect(mergeThemes(undefined, {})).toMatchObject({});
-
-    expect(mergeThemes({}, null)).toMatchObject({});
-    expect(mergeThemes(null, {})).toMatchObject({});
   });
 
   test('gracefully handles merging a theme in with undefined values', () => {
@@ -201,16 +194,15 @@ describe('mergeThemes', () => {
 
       const merged = mergeThemes(target, source);
 
-      expect(merged.componentStyles.Button.root).toBeInstanceOf(Function);
-      expect(merged.componentStyles.Icon.root).toBeInstanceOf(Function);
+      expect(merged.componentStyles.Button?.root).toBeInstanceOf(Function);
+      expect(merged.componentStyles.Icon?.root).toBeInstanceOf(Function);
     });
 
     test('converts target only component parts to functions', () => {
       const target = { componentStyles: { Button: { root: { color: 'red' } } } };
+      const merged = mergeThemes(undefined, target);
 
-      const merged = mergeThemes(target);
-
-      expect(merged.componentStyles.Button.root).toBeInstanceOf(Function);
+      expect(merged.componentStyles.Button?.root).toBeInstanceOf(Function);
     });
 
     test('component part styles are deeply merged', () => {
@@ -243,7 +235,7 @@ describe('mergeThemes', () => {
 
       const merged = mergeThemes(target, source);
 
-      expect(merged.componentStyles.Button.root(styleParam)).toMatchObject({
+      expect(merged.componentStyles.Button?.root(styleParam)).toMatchObject({
         display: 'inline-block',
         color: 'blue',
         '::before': {
@@ -277,7 +269,7 @@ describe('mergeThemes', () => {
         props: { primary: true },
       } as any;
 
-      expect(merged.componentStyles.Button.root(styleParam)).toMatchObject({
+      expect(merged.componentStyles.Button?.root(styleParam)).toMatchObject({
         source: true,
         target: true,
         ...styleParam,
@@ -289,7 +281,6 @@ describe('mergeThemes', () => {
     test('returns a compact array', () => {
       expect(
         mergeThemes(
-          { fontFaces: null },
           { fontFaces: undefined },
           {
             fontFaces: [
@@ -298,23 +289,10 @@ describe('mergeThemes', () => {
                 paths: ['public/fonts/segoe-ui-regular.woff2'],
                 props: { fontWeight: 400 },
               },
-            ],
-          },
-          {
-            fontFaces: [
               {
                 name: 'Segoe UI',
                 paths: ['public/fonts/segoe-ui-semibold.woff2'],
                 props: { fontWeight: 600 },
-              },
-            ],
-          },
-          {
-            fontFaces: [
-              {
-                name: 'Segoe UI',
-                paths: ['public/fonts/segoe-ui-bold.woff2'],
-                props: { fontWeight: 700 },
               },
             ],
           },
@@ -331,11 +309,6 @@ describe('mergeThemes', () => {
             paths: ['public/fonts/segoe-ui-semibold.woff2'],
             props: { fontWeight: 600 },
           },
-          {
-            name: 'Segoe UI',
-            paths: ['public/fonts/segoe-ui-bold.woff2'],
-            props: { fontWeight: 700 },
-          },
         ],
       });
     });
@@ -345,11 +318,8 @@ describe('mergeThemes', () => {
     test('returns a compact array', () => {
       expect(
         mergeThemes(
-          { staticStyles: null },
           { staticStyles: undefined },
-          { staticStyles: [''] },
-          { staticStyles: [{ body: { color: 'red' } }] },
-          { staticStyles: ['*{box-sizing:border-box;}'] },
+          { staticStyles: [{ body: { color: 'red' } }, '*{box-sizing:border-box;}'] },
         ),
       ).toMatchObject({
         staticStyles: [{ body: { color: 'red' } }, '*{box-sizing:border-box;}'],
@@ -439,7 +409,7 @@ describe('mergeThemes', () => {
         componentVariables: { Button: { btnVar: 'tBtnVar' } },
         componentStyles: { Button: { root: { style: 'tStyleA' } } },
       };
-      const source = {
+      const source: ThemeInput = {
         siteVariables: { varA: 'sVarA' },
         componentVariables: { Button: sv => ({ btnVar: sv.varA }) },
         componentStyles: { Button: { root: ({ variables }) => ({ style: variables.btnVar }) } },
@@ -448,27 +418,15 @@ describe('mergeThemes', () => {
       const merged = mergeThemes(target, source);
 
       expect(merged.siteVariables).toMatchObject({
-        _debug: [
-          {
-            /* FIXME: unnecessary empty object */
-          },
-          { resolved: { varA: 'tVarA' } },
-          { resolved: { varA: 'sVarA' } },
-        ],
+        _debug: [{ resolved: { varA: 'tVarA' } }, { resolved: { varA: 'sVarA' } }],
       });
 
       const buttonVariables = merged.componentVariables.Button(merged.siteVariables);
       expect(buttonVariables).toMatchObject({
-        _debug: [
-          {
-            /* FIXME: unnecessary empty object */
-          },
-          { resolved: { btnVar: 'tBtnVar' } },
-          { resolved: { btnVar: 'sVarA' } },
-        ],
+        _debug: [{ resolved: { btnVar: 'tBtnVar' } }, { resolved: { btnVar: 'sVarA' } }],
       });
 
-      const buttonRootStyles = merged.componentStyles.Button.root({
+      const buttonRootStyles = merged.componentStyles.Button?.root({
         variables: buttonVariables,
       } as any);
       expect(buttonRootStyles).toMatchObject({
@@ -493,7 +451,7 @@ describe('mergeThemes', () => {
       expect(merged.siteVariables._debug).toBe(undefined);
       const buttonVariables = merged.componentVariables.Button(merged.siteVariables);
       expect(buttonVariables._debug).toBe(undefined);
-      const buttonRootStyles = merged.componentStyles.Button.root({
+      const buttonRootStyles = merged.componentStyles.Button?.root({
         variables: buttonVariables,
       } as any);
       expect((buttonRootStyles as any)._debug).toBe(undefined);
@@ -521,27 +479,15 @@ describe('mergeThemes', () => {
       const merged = mergeThemes(target, source);
 
       expect(merged.siteVariables).toMatchObject({
-        _debug: [
-          {
-            /* FIXME: unnecessary empty object */
-          },
-          { debugId: 'target' },
-          { debugId: 'source' },
-        ],
+        _debug: [{ debugId: 'target' }, { debugId: 'source' }],
       });
 
       const buttonVariables = merged.componentVariables.Button(merged.siteVariables);
       expect(buttonVariables).toMatchObject({
-        _debug: [
-          {
-            /* FIXME: unnecessary empty object */
-          },
-          { debugId: 'target' },
-          { debugId: 'source' },
-        ],
+        _debug: [{ debugId: 'target' }, { debugId: 'source' }],
       });
 
-      const buttonRootStyles = merged.componentStyles.Button.root({
+      const buttonRootStyles = merged.componentStyles.Button?.root({
         variables: buttonVariables,
       } as any);
       expect(buttonRootStyles).toMatchObject({

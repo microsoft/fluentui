@@ -1,3 +1,4 @@
+import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
 import { IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles } from '../../index';
 
 export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVerticalBarChartStyles => {
@@ -18,6 +19,12 @@ export const getStyles = (props: IGroupedVerticalBarChartStyleProps): IGroupedVe
       background: theme.semanticColors.bodyBackground,
       borderRadius: '2px',
       pointerEvents: 'none',
+    },
+
+    barLabel: {
+      fontSize: FontSizes.small,
+      fontWeight: FontWeights.semibold,
+      fill: theme.palette.neutralPrimary,
     },
   };
 };

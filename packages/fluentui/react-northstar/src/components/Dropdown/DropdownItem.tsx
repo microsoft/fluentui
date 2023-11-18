@@ -5,12 +5,12 @@ import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import cx from 'classnames';
 
@@ -81,8 +81,7 @@ export const dropdownItemSlotClassNames: DropdownItemSlotClassNames = {
  * A DropdownItem represents an option of Dropdown list.
  * Displays an item with optional rich media metadata.
  */
-export const DropdownItem: ComponentWithAs<'li', DropdownItemProps> &
-  FluentComponentStaticProps<DropdownItemProps> = props => {
+export const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DropdownItem.displayName, context.telemetry);
 
@@ -163,7 +162,13 @@ export const DropdownItem: ComponentWithAs<'li', DropdownItemProps> &
   );
 
   const element = (
-    <ElementType className={classes.root} onClick={handleClick} {...accessibilityItemProps} {...unhandledProps}>
+    <ElementType
+      ref={ref}
+      className={classes.root}
+      onClick={handleClick}
+      {...accessibilityItemProps}
+      {...unhandledProps}
+    >
       {imageElement}
 
       <div className={cx(dropdownItemSlotClassNames.main, classes.main)}>
@@ -178,7 +183,8 @@ export const DropdownItem: ComponentWithAs<'li', DropdownItemProps> &
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'li', HTMLLIElement, DropdownItemProps> &
+  FluentComponentStaticProps<DropdownItemProps>;
 
 DropdownItem.displayName = 'DropdownItem';
 

@@ -51,7 +51,7 @@ describe('Tooltip', () => {
 
     const directionalHint = DirectionalHint.bottomLeftEdge;
     const directionalHintForRTL = DirectionalHint.topRightEdge;
-    const targetElement = (ReactTestUtils.renderIntoDocument(<div />) as unknown) as HTMLElement;
+    const targetElement = ReactTestUtils.renderIntoDocument(<div />) as unknown as HTMLElement;
     let onRenderCalled = false;
 
     const component = mount(

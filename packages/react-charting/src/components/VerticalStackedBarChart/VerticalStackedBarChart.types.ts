@@ -6,10 +6,15 @@ import {
   ICartesianChartProps,
   ICartesianChartStyleProps,
   ICartesianChartStyles,
+  ILineChartLineOptions,
   IVerticalStackedChartProps,
   IVSChartDataPoint,
 } from '../../index';
 
+/**
+ * Vertical Stacked Bar Chart properties
+ * {@docCategory VerticalStackedBarChart}
+ */
 export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
@@ -96,15 +101,49 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
    * Click handler for bars; type of data is dependant on isCalloutForStack
    */
   onBarClick?: (event: React.MouseEvent<SVGElement>, data: IVerticalStackedChartProps | IVSChartDataPoint) => void;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
+
+  /**
+   * it's padding between bar's or lines in the graph
+   */
+  xAxisPadding?: number;
+
+  /**
+   * options for the line drawn
+   */
+  lineOptions?: ILineChartLineOptions;
+
+  /**
+   * Prop to hide the bar labels
+   * @default false
+   */
+  hideLabels?: boolean;
 }
 
+/**
+ * Vertical Stacked Bar Chart style properties
+ * {@docCategory VerticalStackedBarChart}
+ */
 export interface IVerticalStackedBarChartStyleProps extends ICartesianChartStyleProps {}
 
+/**
+ * Vertical Stacked Bar Chart styles
+ * {@docCategory VerticalStackedBarChart}
+ */
 export interface IVerticalStackedBarChartStyles extends ICartesianChartStyles {
   /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover?: IStyle;
+
+  /**
+   * Style for the bar labels
+   */
+  barLabel: IStyle;
 
   /**
    * Style for the chart.

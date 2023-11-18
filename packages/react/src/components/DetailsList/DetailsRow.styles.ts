@@ -8,6 +8,7 @@ import {
   getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
+import { GlobalClassNames as LinkGlobalClassNames } from '../../components/Link/Link.styles';
 import type { IDetailsRowStyleProps, IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
 import type { IStyle } from '../../Styling';
 
@@ -54,26 +55,19 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
     isSelected,
     canSelect,
     droppingClassName,
-    anySelected,
     isCheckVisible,
     checkboxCellClassName,
     compact,
     className,
     cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
     enableUpdateAnimations,
+    disabled,
   } = props;
 
   const { palette, fonts } = theme;
-  const {
-    neutralPrimary,
-    white,
-    neutralSecondary,
-    neutralLighter,
-    neutralLight,
-    neutralDark,
-    neutralQuaternaryAlt,
-  } = palette;
-  const { focusBorder } = theme.semanticColors;
+  const { neutralPrimary, white, neutralSecondary, neutralLighter, neutralLight, neutralDark, neutralQuaternaryAlt } =
+    palette;
+  const { focusBorder, linkHovered: focusedLinkColor } = theme.semanticColors;
 
   const classNames = getGlobalClassNames(DetailsRowGlobalClassNames, theme);
 
@@ -119,6 +113,7 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
       borderColor: focusBorder,
       outlineColor: white,
       highContrastStyle: rowHighContrastFocus,
+      pointerEvents: 'none',
     }),
     classNames.isSelected,
     {
@@ -138,16 +133,29 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
           borderTop: `1px solid ${white}`,
         },
 
+        [`.${classNames.cell} > .${LinkGlobalClassNames.root}`]: {
+          color: focusedLinkColor,
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'HighlightText',
+            },
+          },
+        },
+
         // Selected State hover
         '&:hover': {
           background: colors.selectedHoverBackground,
           color: colors.selectedHoverMetaText,
           selectors: {
             // Selected State hover meta cell
-            [`.${classNames.cell} ${HighContrastSelector}`]: {
-              color: 'HighlightText',
+            [HighContrastSelector]: {
+              background: 'Highlight',
               selectors: {
-                '> a': {
+                [`.${classNames.cell}`]: {
+                  color: 'HighlightText',
+                },
+                [`.${classNames.cell} > .${LinkGlobalClassNames.root}`]: {
+                  forcedColorAdjust: 'none',
                   color: 'HighlightText',
                 },
               },
@@ -161,11 +169,6 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
                   color: 'HighlightText',
                 },
               },
-            },
-
-            // Ensure high-contrast mode overrides default hover background
-            [HighContrastSelector]: {
-              background: 'Highlight',
             },
           },
         },
@@ -275,16 +278,12 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
           background: 'Highlight',
           color: 'HighlightText',
           ...getHighContrastNoAdjustStyle(),
-          selectors: {
-            a: {
-              color: 'HighlightText',
-            },
-          },
         },
       },
     },
 
     compact && cellCompactStyles,
+    disabled && { opacity: 0.5 },
   ];
 
   return {
@@ -319,6 +318,10 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
             selectors: {
               [`.${classNames.isRowHeader}`]: {
                 color: colors.defaultHoverHeaderText,
+              },
+
+              [`.${classNames.cell} > .${LinkGlobalClassNames.root}`]: {
+                color: focusedLinkColor,
               },
             },
           },
@@ -379,14 +382,6 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
         flexShrink: 0,
       },
     ],
-    checkCover: {
-      position: 'absolute',
-      top: -1,
-      left: 0,
-      bottom: 0,
-      right: 0,
-      display: anySelected ? 'block' : 'none',
-    },
     fields: [
       classNames.fields,
       {

@@ -1,12 +1,24 @@
 import * as React from 'react';
 import { CommandBar, ICommandBarItemProps } from '@fluentui/react/lib/CommandBar';
 import { IButtonProps } from '@fluentui/react/lib/Button';
+import { setVirtualParent } from '@fluentui/dom-utilities';
+import { FocusTrapZone } from '@fluentui/react/lib/FocusTrapZone';
+import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
 const overflowProps: IButtonProps = { ariaLabel: 'More commands' };
 
 export const CommandBarBasicExample: React.FunctionComponent = () => {
+  const [enableFocusTrap, setEnableFocusTrap] = React.useState(false);
+
+  const onChangeEnableFocusTrap = React.useCallback(
+    (ev?: React.FormEvent<HTMLElement | HTMLInputElement> | undefined, checked?: boolean | undefined) => {
+      setEnableFocusTrap(!!checked);
+    },
+    [],
+  );
+
   return (
-    <div>
+    <FocusTrapZone disabled={!enableFocusTrap}>
       <CommandBar
         items={_items}
         overflowItems={_overflowItems}
@@ -16,7 +28,8 @@ export const CommandBarBasicExample: React.FunctionComponent = () => {
         primaryGroupAriaLabel="Email actions"
         farItemsGroupAriaLabel="More actions"
       />
-    </div>
+      <Checkbox label="Trap focus around command bar" checked={enableFocusTrap} onChange={onChangeEnableFocusTrap} />
+    </FocusTrapZone>
   );
 };
 
@@ -46,7 +59,76 @@ const _items: ICommandBarItemProps[] = [
     key: 'upload',
     text: 'Upload',
     iconProps: { iconName: 'Upload' },
-    href: 'https://developer.microsoft.com/en-us/fluentui',
+    subMenuProps: {
+      items: [
+        {
+          key: 'uploadfile',
+          text: 'File',
+          preferMenuTargetAsEventTarget: true,
+          onClick: (ev?: React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<HTMLElement> | undefined) => {
+            ev?.persist();
+
+            Promise.resolve().then(() => {
+              const inputElement = document.createElement('input');
+              inputElement.style.visibility = 'hidden';
+              inputElement.setAttribute('type', 'file');
+
+              document.body.appendChild(inputElement);
+
+              const target = ev?.target as HTMLElement | undefined;
+
+              if (target) {
+                setVirtualParent(inputElement, target);
+              }
+
+              inputElement.click();
+
+              if (target) {
+                setVirtualParent(inputElement, null);
+              }
+
+              setTimeout(() => {
+                inputElement.remove();
+              }, 10000);
+            });
+          },
+        },
+        {
+          key: 'uploadfolder',
+          text: 'Folder',
+          preferMenuTargetAsEventTarget: true,
+          onClick: (ev?: React.MouseEvent<HTMLElement, MouseEvent> | React.KeyboardEvent<HTMLElement> | undefined) => {
+            ev?.persist();
+
+            Promise.resolve().then(() => {
+              const inputElement = document.createElement('input');
+              inputElement.style.visibility = 'hidden';
+              inputElement.setAttribute('type', 'file');
+
+              (inputElement as { webkitdirectory?: boolean }).webkitdirectory = true;
+
+              document.body.appendChild(inputElement);
+
+              const target = ev?.target as HTMLElement | undefined;
+
+              if (target) {
+                setVirtualParent(inputElement, target);
+              }
+
+              inputElement.click();
+
+              if (target) {
+                setVirtualParent(inputElement, null);
+              }
+
+              setTimeout(() => {
+                inputElement.remove();
+              }, 10000);
+            });
+          },
+        },
+      ],
+    },
   },
   {
     key: 'share',

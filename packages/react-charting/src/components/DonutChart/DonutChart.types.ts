@@ -6,6 +6,10 @@ import { IChartProps, IChartDataPoint } from './index';
 
 export interface IDonutChart {}
 
+/**
+ * Donut Chart properties.
+ * {@docCategory DonutChart}
+ */
 export interface IDonutChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
@@ -36,10 +40,35 @@ export interface IDonutChartProps extends ICartesianChartProps {
    * props for the callout in the chart
    */
   calloutProps?: Partial<ICalloutProps>;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
+
+  /**
+   * Prop to show the arc labels in percentage format
+   * @default false
+   */
+  showLabelsInPercent?: boolean;
+
+  /**
+   * Prop to hide the arc labels
+   * @default true
+   */
+  hideLabels?: boolean;
 }
 
+/**
+ * Donut Chart style properties
+ * {@docCategory DonutChart}
+ */
 export interface IDonutChartStyleProps extends ICartesianChartStyleProps {}
 
+/**
+ * Donut Chart styles
+ * {@docCategory DonutChart}
+ */
 export interface IDonutChartStyles {
   /**
    *  Style for the root element.

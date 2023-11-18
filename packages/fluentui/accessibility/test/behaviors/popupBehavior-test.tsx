@@ -20,6 +20,14 @@ describe('PopupBehavior.ts', () => {
     expect(expectedResult.attributes.trigger.tabIndex).toEqual(-1);
   });
 
+  test('Do not override trigger aria-haspopup attribute', () => {
+    const expectedResult = popupBehavior({
+      trigger: <button aria-haspopup={null} />,
+      tabbableTrigger: true,
+    });
+    expect(expectedResult.attributes.trigger['aria-haspopup']).toBeNull();
+  });
+
   // TODO: Fix me
   // test('does not add tabIndex if element is already tabbable', () => {
   //   const expectedResult = popupBehavior({ trigger: <Button />, tabbableTrigger: true })

@@ -1,0 +1,113 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/Flex Migration" />
+
+# Flex component Migration guide
+
+## Overview:
+
+To help with the migration we also offer a mixin and a shim that [can be checked here](/docs/migration-shims-v0-flexshim--default)
+
+Before:
+
+```tsx
+import { Flex } from '@fluentui/react-northstar';
+const Component = () => <Flex />;
+```
+
+After:
+
+```tsx
+import { Flex } from '@fluentui/react-migration-v0-v9';
+const Component = () => <Flex />;
+```
+
+## How to migrate props:
+
+| `Flex` props              | migrate guide                                                              |
+| ------------------------- | -------------------------------------------------------------------------- |
+| className                 | keep it as is                                                              |
+| content                   | see [Migrate content prop](#./Migrate-`content`-prop) in this document     |
+| variables, design, styles | see [Migrate style overrides](#./Migrate-style-overrides) in this document |
+| debug                     | not supported, use custom style overrides if needed                        |
+| column                    | keep it as is                                                              |
+| fill                      | keep it as is                                                              |
+| gap                       | keep it as is                                                              |
+| hAlign                    | keep it as is                                                              |
+| inline                    | keep it as is                                                              |
+| padding                   | keep it as is                                                              |
+| space                     | keep it as is                                                              |
+| vAlign                    | keep it as is                                                              |
+| wrap                      | keep it as is                                                              |
+
+---
+
+## Migrate `content` prop
+
+Move `content` to JSX children.
+
+Before:
+
+```tsx
+import { Flex } from '@fluentui/react-northstar';
+const Component = () => <Flex content="hi" />;
+```
+
+After:
+
+```tsx
+import { Flex } from '@fluentui/react-migration-v0-v9';
+const Component = () => <Flex>hi</Flex>;
+```
+
+## Migrate style overrides
+
+> Note: **If this is your first migration**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migration-from-v0-custom-style-overrides--page). Also check examples in ["how to migrate styles" for Box component](./migrate-Box.md#Migrate-style-overrides).
+
+### Example for migrate boolean `variables`:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Flex } from '@fluentui/react-northstar';
+
+export const Component = () => <Flex variables={{ isSomething: true }} />;
+
+// in flex-styles.ts
+export const flexStyles = {
+  root: ({ variables: { isSomething } }) => ({
+    ...(isSomething && { color: 'red' }),
+  }),
+};
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Flex } from '@fluentui/react-migration-v0-v9';
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+
+export const Component = () => {
+  const classes = useStyles();
+
+  return <Flex className={classes.root} />;
+};
+```
+
+```tsx
+// in COMPONENT_NAME.styles.ts
+import { makeStyles } from '@fluentui/react-migration-v0-v9';
+
+export const useStyles = makeStyles({
+  root: { color: 'red' },
+});
+```
+
+## Migrate flex items
+
+Flex from Fluent UI v9 can work together with FlexItem from Fluent UI react-northstar.
+For details about FlexItem migration, see [FlexItem component Migration guide](./migrate-FlexItem.md).
+
+If `Flex.Item` (dot notation) is used, replace these with `FlexItem`, if the items have not yet been migrated to V9.

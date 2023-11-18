@@ -1,6 +1,5 @@
 import { Accessibility, tableBehavior, TableBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useTelemetry,
   mergeVariablesOverrides,
@@ -8,6 +7,7 @@ import {
   useAccessibility,
   useStyles,
   useFluentContext,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -75,11 +75,7 @@ export type TableStylesProps = never;
  * [VoiceOver not announcing rows correctly for a grid with presentation elements inside](https://bugs.chromium.org/p/chromium/issues/detail?id=1054424)
  * VoiceOver doesn't narrate aria-rowcount value in table or grid
  */
-export const Table: ComponentWithAs<'div', TableProps> &
-  FluentComponentStaticProps<TableProps> & {
-    Cell: typeof TableCell;
-    Row: typeof TableRow;
-  } = props => {
+export const Table = React.forwardRef<HTMLDivElement, TableProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Table.displayName, context.telemetry);
   setStart();
@@ -139,6 +135,7 @@ export const Table: ComponentWithAs<'div', TableProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -153,7 +150,11 @@ export const Table: ComponentWithAs<'div', TableProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, TableProps> &
+  FluentComponentStaticProps<TableProps> & {
+    Cell: typeof TableCell;
+    Row: typeof TableRow;
+  };
 
 Table.displayName = 'Table';
 

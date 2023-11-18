@@ -1,6 +1,5 @@
 import { Accessibility, checkboxBehavior, CheckboxBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -8,6 +7,7 @@ import {
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { createCheckboxManager } from '@fluentui/state';
@@ -79,7 +79,7 @@ export const checkboxSlotClassNames: CheckboxSlotClassNames = {
  * @accessibility
  * Implements [ARIA Checkbox](https://www.w3.org/TR/wai-aria-practices-1.1/#checkbox) design pattern.
  */
-export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentStaticProps<CheckboxProps> = props => {
+export const Checkbox = React.forwardRef<HTMLDivElement, CheckboxProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Checkbox.displayName, context.telemetry);
   setStart();
@@ -173,6 +173,7 @@ export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentSt
         className: classes.root,
         onClick: handleClick,
         onChange: handleChange,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -190,7 +191,7 @@ export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentSt
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CheckboxProps> & FluentComponentStaticProps<CheckboxProps>;
 
 Checkbox.displayName = 'Checkbox';
 
@@ -203,12 +204,12 @@ Checkbox.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,
   }),
-  checked: PropTypes.oneOf([true, false, 'mixed']),
+  checked: PropTypes.oneOf<true | false | 'mixed'>([true, false, 'mixed']),
   defaultChecked: PropTypes.bool,
   disabled: PropTypes.bool,
   indicator: customPropTypes.shorthandAllowingChildren,
   label: customPropTypes.itemShorthand,
-  labelPosition: PropTypes.oneOf(['start', 'end']),
+  labelPosition: PropTypes.oneOf<'start' | 'end'>(['start', 'end']),
   onChange: PropTypes.func,
   onClick: PropTypes.func,
   toggle: PropTypes.bool,

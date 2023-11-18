@@ -10,36 +10,36 @@ export const Excel = () => {
       <ColorPalette
         colors={[
           {
+            name: 'Excel Shade 30',
+            hex: '#094624',
+          },
+          {
             name: 'Excel Shade 20',
-            hex: '#004b1c',
+            hex: '#0c5f32',
           },
           {
             name: 'Excel Shade 10',
-            hex: '#0e5c2f',
+            hex: '#0f703b',
           },
           {
             name: 'Excel Primary',
-            hex: '#217346',
+            hex: '#107c41',
           },
           {
             name: 'Excel Tint 10',
-            hex: '#3f8159',
+            hex: '#218d51',
           },
           {
             name: 'Excel Tint 20',
-            hex: '#4e9668',
+            hex: '#55b17e',
           },
           {
             name: 'Excel Tint 30',
-            hex: '#6eb38a',
+            hex: '#a0d8b9',
           },
           {
             name: 'Excel Tint 40',
-            hex: '#9fcdb3',
-          },
-          {
-            name: 'Excel Tint 50',
-            hex: '#e9f5ee',
+            hex: '#caead8',
           },
         ]}
       />

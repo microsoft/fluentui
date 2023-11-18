@@ -8,7 +8,9 @@ import {
   elementContains,
   getRTLSafeKeyCode,
   classNamesFunction,
+  css,
   memoizeFunction,
+  warnMutuallyExclusive,
 } from '../../Utilities';
 import {
   CheckboxVisibility,
@@ -16,6 +18,7 @@ import {
   ConstrainMode,
   DetailsListLayoutMode,
   ColumnDragEndLocation,
+  IColumnDragDropDetails,
 } from '../DetailsList/DetailsList.types';
 import { DetailsHeader } from '../DetailsList/DetailsHeader';
 import { SelectAllVisibility } from '../DetailsList/DetailsHeader.types';
@@ -33,7 +36,7 @@ import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
-import { composeRenderFunction, getId } from '@fluentui/utilities';
+import { composeComponentAs, composeRenderFunction, getId } from '@fluentui/utilities';
 import { useConst } from '@fluentui/react-hooks';
 import type { IRenderFunction } from '../../Utilities';
 import type {
@@ -56,6 +59,7 @@ import type { IGroupedList, IGroupDividerProps, IGroupRenderProps, IGroup } from
 import type { IListProps } from '../../List';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
+const COMPONENT_NAME = 'DetailsList';
 
 export interface IDetailsListState {
   focusedItemIndex: number;
@@ -76,6 +80,9 @@ const MIN_COLUMN_WIDTH = 100; // this is the global min width
 
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
+
+const rowFocusZoneAddTabIndexProps = { tabIndex: 0 };
+const rowFocusZoneNoTabIndexProps = {};
 
 type IDetailsListInnerProps = Omit<IDetailsListProps, 'selection'> &
   IDetailsListState & {
@@ -132,9 +139,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     selectionMode = selection.mode,
     selectionPreservedOnEmptyClick,
     selectionZoneProps,
+    // eslint-disable-next-line deprecation/deprecation
     ariaLabel,
     ariaLabelForGrid,
     rowElementEventMap,
+    // eslint-disable-next-line deprecation/deprecation
     shouldApplyApplicationRole = false,
     getKey,
     listProps,
@@ -165,6 +174,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     onRowDidMount,
     onRowWillUnmount,
     disableSelectionZone,
+    isSelectedOnFocus = true,
     onColumnResized,
     onColumnAutoResized,
     onToggleCollapse,
@@ -173,6 +183,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     rowElementEventMap: eventsToRegister,
     onRenderMissingItem,
     onRenderItemColumn,
+    onRenderField,
     getCellValueKey,
     getRowAriaLabel,
     getRowAriaDescribedBy,
@@ -314,7 +325,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     }
   }, [columnReorderOptions, onColumnDragEnd]);
 
-  const rowCount = (isHeaderVisible ? 1 : 0) + GetGroupCount(groups) + (items ? items.length : 0);
+  const rowCount =
+    (isHeaderVisible ? 1 : 0) +
+    (props.onRenderDetailsFooter ? 1 : 0) +
+    GetGroupCount(groups) +
+    (items ? items.length : 0);
   const colCount =
     (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) +
     (adjustedColumns ? adjustedColumns.length : 0) +
@@ -388,6 +403,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               checkboxVisibility,
               cellStyleProps,
               ariaColSpan: adjustedColumns.length,
+              ariaLevel: undefined,
               ariaPosInSet: undefined,
               ariaSetSize: undefined,
               ariaRowCount: undefined,
@@ -408,6 +424,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
           return defaultRender({
             ...groupHeaderProps,
             ariaColSpan: adjustedColumns.length,
+            ariaLevel: undefined,
             ariaPosInSet: undefined,
             ariaSetSize: undefined,
             ariaRowCount: undefined,
@@ -436,10 +453,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       onRenderHeader: finalOnRenderDetailsGroupHeader,
       // pass through custom group header checkbox label
       headerProps: {
+        ...groupProps?.headerProps,
         selectAllButtonProps: {
           'aria-label': checkButtonGroupAriaLabel,
+          ...groupProps?.headerProps?.selectAllButtonProps,
         },
-        ...groupProps?.headerProps,
       },
     };
   }, [groupProps, finalOnRenderDetailsGroupFooter, finalOnRenderDetailsGroupHeader, checkButtonGroupAriaLabel, role]);
@@ -474,8 +492,12 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
 
       const rowRole = role === defaultRole ? undefined : 'presentation';
 
+      // add tabindex="0" to first row if no header exists, to ensure the focuszone is in the tab order
+      const rowFocusZoneProps =
+        isHeaderVisible || index > 0 ? rowFocusZoneNoTabIndexProps : rowFocusZoneAddTabIndexProps;
+
       const rowProps: IDetailsRowProps = {
-        item: item,
+        item,
         itemIndex: index,
         flatIndexOffset: (isHeaderVisible ? 2 : 1) + numOfGroupHeadersBeforeItem,
         compact,
@@ -487,6 +509,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         onDidMount: onRowDidMount,
         onWillUnmount: onRowWillUnmount,
         onRenderItemColumn,
+        onRenderField,
         getCellValueKey,
         eventsToRegister,
         dragDropEvents,
@@ -506,6 +529,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         rowWidth,
         useFastIcons,
         role: rowRole,
+        isGridRow: true,
+        focusZoneProps: rowFocusZoneProps,
       };
 
       if (!item) {
@@ -527,6 +552,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       onRowDidMount,
       onRowWillUnmount,
       onRenderItemColumn,
+      onRenderField,
       getCellValueKey,
       eventsToRegister,
       dragDropEvents,
@@ -573,8 +599,11 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
 
   const focusZoneInnerProps: IFocusZoneProps = {
     ...focusZoneProps,
-    componentRef: focusZoneRef,
-    className: classNames.focusZone,
+    componentRef: focusZoneProps && focusZoneProps.componentRef ? focusZoneProps.componentRef : focusZoneRef,
+    className:
+      focusZoneProps && focusZoneProps.className
+        ? css(classNames.focusZone, focusZoneProps.className)
+        : classNames.focusZone,
     direction: focusZoneProps ? focusZoneProps.direction : FocusZoneDirection.vertical,
     shouldEnterInnerZone:
       focusZoneProps && focusZoneProps.shouldEnterInnerZone ? focusZoneProps.shouldEnterInnerZone : isRightArrow,
@@ -582,12 +611,15 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       focusZoneProps && focusZoneProps.onActiveElementChanged
         ? focusZoneProps.onActiveElementChanged
         : onActiveRowChanged,
-    shouldRaiseClicks: false,
+    shouldRaiseClicksOnEnter: false,
     onBlur: focusZoneProps && focusZoneProps.onBlur ? focusZoneProps.onBlur : onBlur,
   };
 
+  const FinalGroupedList =
+    groups && groupProps?.groupedListAs ? composeComponentAs(groupProps.groupedListAs, GroupedList) : GroupedList;
+
   const list = groups ? (
-    <GroupedList
+    <FinalGroupedList
       focusZoneProps={focusZoneInnerProps}
       componentRef={groupedListRef}
       groups={groups}
@@ -628,7 +660,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         if (focusZoneRef.current && focusZoneRef.current.focus()) {
           // select the first item in list after down arrow key event
           // only if nothing was selected; otherwise start with the already-selected item
-          if (selection.getSelectedIndices().length === 0) {
+          if (isSelectedOnFocus && selection.getSelectedIndices().length === 0) {
             selection.setIndexSelected(0, true, false);
           }
 
@@ -637,7 +669,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
         }
       }
     },
-    [selection, focusZoneRef],
+    [selection, focusZoneRef, isSelectedOnFocus],
   );
 
   const onContentKeyDown = React.useCallback(
@@ -654,23 +686,21 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
   );
 
   return (
-    // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
-    // with JAWS.
     <div
       ref={rootRef}
       className={classNames.root}
       data-automationid="DetailsList"
       data-is-scrollable="false"
-      aria-label={ariaLabel}
       {...(shouldApplyApplicationRole ? { role: 'application' } : {})}
     >
       <FocusRects />
       <div
         role={role}
-        aria-label={ariaLabelForGrid}
-        aria-rowcount={isPlaceholderData ? -1 : rowCount}
+        // ariaLabel is a legacy prop that used to be applied on the root node, which has poor AT support
+        // it is now treated as a fallback to ariaLabelForGrid for legacy support
+        aria-label={ariaLabelForGrid || ariaLabel}
+        aria-rowcount={isPlaceholderData ? 0 : rowCount}
         aria-colcount={colCount}
-        aria-readonly="true"
         aria-busy={isPlaceholderData}
       >
         <div onKeyDown={onHeaderKeyDown} role="presentation" className={classNames.headerWrapper}>
@@ -678,27 +708,27 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
             onRenderDetailsHeader(
               {
                 componentRef: headerRef,
-                selectionMode: selectionMode,
+                selectionMode,
                 layoutMode: layoutMode!,
-                selection: selection,
+                selection,
                 columns: adjustedColumns,
                 onColumnClick: onColumnHeaderClick,
                 onColumnContextMenu: onColumnHeaderContextMenu,
-                onColumnResized: onColumnResized,
-                onColumnIsSizingChanged: onColumnIsSizingChanged,
-                onColumnAutoResized: onColumnAutoResized,
-                groupNestingDepth: groupNestingDepth,
+                onColumnResized,
+                onColumnIsSizingChanged,
+                onColumnAutoResized,
+                groupNestingDepth,
                 isAllCollapsed: isCollapsed,
                 onToggleCollapseAll: onToggleCollapse,
                 ariaLabel: ariaLabelForListHeader,
-                ariaLabelForSelectAllCheckbox: ariaLabelForSelectAllCheckbox,
-                ariaLabelForSelectionColumn: ariaLabelForSelectionColumn,
-                selectAllVisibility: selectAllVisibility,
+                ariaLabelForSelectAllCheckbox,
+                ariaLabelForSelectionColumn,
+                selectAllVisibility,
                 collapseAllVisibility: groupProps && groupProps.collapseAllVisibility,
-                viewport: viewport,
-                columnReorderProps: columnReorderProps,
-                minimumPixelsForDrag: minimumPixelsForDrag,
-                cellStyleProps: cellStyleProps,
+                viewport,
+                columnReorderProps,
+                minimumPixelsForDrag,
+                cellStyleProps,
                 checkboxVisibility,
                 indentWidth,
                 onRenderDetailsCheckbox: onRenderCheckbox,
@@ -715,6 +745,9 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
               selection={selection}
               selectionPreservedOnEmptyClick={selectionPreservedOnEmptyClick}
               selectionMode={selectionMode}
+              isSelectedOnFocus={isSelectedOnFocus}
+              selectionClearedOnEscapePress={isSelectedOnFocus}
+              toggleWithoutModifierPressed={!isSelectedOnFocus}
               onItemInvoked={onItemInvoked}
               onItemContextMenu={onItemContextMenu}
               enterModalOnTouch={enterModalSelectionOnTouch}
@@ -791,6 +824,10 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       getDerivedStateFromProps: this._getDerivedStateFromProps,
     };
 
+    warnMutuallyExclusive(COMPONENT_NAME, props, {
+      selection: 'getKey',
+    });
+
     this._selection =
       props.selection ||
       new Selection({
@@ -842,6 +879,48 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       return this._groupedList.current.getStartItemIndexInView();
     }
     return 0;
+  }
+
+  public updateColumn(column: IColumn, options: { width?: number; newColumnIndex?: number }) {
+    const NO_COLUMNS: IColumn[] = [];
+
+    const { columns = NO_COLUMNS, selectionMode, checkboxVisibility, columnReorderOptions } = this.props;
+    const { width, newColumnIndex } = options;
+    const index = columns.findIndex(col => col.key === column.key);
+
+    if (width) {
+      this._onColumnResized(column, width, index!);
+    }
+
+    if (newColumnIndex !== undefined && columnReorderOptions) {
+      const isCheckboxColumnHidden =
+        selectionMode === SelectionMode.none || checkboxVisibility === CheckboxVisibility.hidden;
+
+      const showCheckbox = checkboxVisibility !== CheckboxVisibility.hidden;
+      const columnIndex = (showCheckbox ? 2 : 1) + index!;
+
+      const draggedIndex = isCheckboxColumnHidden ? columnIndex - 1 : columnIndex - 2;
+      const targetIndex = isCheckboxColumnHidden ? newColumnIndex - 1 : newColumnIndex - 2;
+
+      const frozenColumnCountFromStart = columnReorderOptions.frozenColumnCountFromStart ?? 0;
+      const frozenColumnCountFromEnd = columnReorderOptions.frozenColumnCountFromEnd ?? 0;
+      const isValidTargetIndex =
+        targetIndex >= frozenColumnCountFromStart && targetIndex < columns.length - frozenColumnCountFromEnd;
+
+      if (isValidTargetIndex) {
+        if (columnReorderOptions.onColumnDrop) {
+          const dragDropDetails: IColumnDragDropDetails = {
+            draggedIndex,
+            targetIndex,
+          };
+          columnReorderOptions.onColumnDrop(dragDropDetails);
+          /* eslint-disable deprecation/deprecation */
+        } else if (columnReorderOptions.handleColumnReorder) {
+          columnReorderOptions.handleColumnReorder(draggedIndex, targetIndex);
+          /* eslint-enable deprecation/deprecation */
+        }
+      }
+    }
   }
 
   public componentWillUnmount(): void {
@@ -1024,11 +1103,11 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   };
 
   private _onGroupExpandStateChanged = (isSomeGroupExpanded: boolean): void => {
-    this.setState({ isSomeGroupExpanded: isSomeGroupExpanded });
+    this.setState({ isSomeGroupExpanded });
   };
 
   private _onColumnIsSizingChanged = (column: IColumn, isSizing: boolean): void => {
-    this.setState({ isSizing: isSizing });
+    this.setState({ isSizing });
   };
 
   private _getGroupNestingDepth(): number {
@@ -1124,7 +1203,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
 
     return {
       ...previousState,
-      adjustedColumns: adjustedColumns,
+      adjustedColumns,
       lastWidth: viewportWidth,
     };
   }
@@ -1222,7 +1301,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       const newColumn: IColumn = { ...column, ...this._columnOverrides[column.key] };
 
       // Delay computation until viewport width is available.
-      if (!skipViewportMeasures && newColumn.flexGrow && remainingWidth <= 0) {
+      if (!skipViewportMeasures && newColumn.flexGrow && remainingWidth <= 0 && viewportWidth === 0) {
         return newColumn;
       }
 
@@ -1242,7 +1321,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
 
   /** Builds a set of columns to fix within the viewport width. */
   private _getJustifiedColumns(newColumns: IColumn[], viewportWidth: number, props: IDetailsListProps): IColumn[] {
-    const { selectionMode = this._selection.mode, checkboxVisibility } = props;
+    const { selectionMode = this._selection.mode, checkboxVisibility, skipViewportMeasures } = props;
     const rowCheckWidth =
       selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden ? CHECKBOX_WIDTH : 0;
     const groupExpandWidth = this._getGroupNestingDepth() * GROUP_EXPAND_WIDTH;
@@ -1270,7 +1349,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       return newColumn;
     });
 
-    if (minimumWidth > availableWidth) {
+    if (skipViewportMeasures) {
       return adjustedColumns;
     }
 
@@ -1286,8 +1365,11 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       // eslint-disable-next-line deprecation/deprecation
       if (column.calculatedWidth! - minWidth >= overflowWidth || !(column.isCollapsible || column.isCollapsable)) {
         const originalWidth = column.calculatedWidth!;
-        column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
-        totalWidth -= originalWidth - column.calculatedWidth;
+        if (minimumWidth < availableWidth) {
+          // Only adjust in cases where all the columns fit within the viewport
+          column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
+        }
+        totalWidth -= originalWidth - column.calculatedWidth!;
       } else {
         totalWidth -= getPaddedWidth(column, props);
         adjustedColumns.splice(lastIndex, 1);
@@ -1436,6 +1518,7 @@ export function buildColumns(
   isSortedDescending?: boolean,
   groupedColumnKey?: string,
   isMultiline?: boolean,
+  columnActionsMode?: ColumnActionsMode,
 ) {
   const columns: IColumn[] = [];
 
@@ -1450,15 +1533,14 @@ export function buildColumns(
           fieldName: propName,
           minWidth: MIN_COLUMN_WIDTH,
           maxWidth: 300,
-          isCollapsable: !!columns.length,
           isCollapsible: !!columns.length,
           isMultiline: isMultiline === undefined ? false : isMultiline,
           isSorted: sortedColumnKey === propName,
           isSortedDescending: !!isSortedDescending,
           isRowHeader: false,
-          columnActionsMode: ColumnActionsMode.clickable,
+          columnActionsMode: columnActionsMode ?? ColumnActionsMode.clickable,
           isResizable: canResizeColumns,
-          onColumnClick: onColumnClick,
+          onColumnClick,
           isGrouped: groupedColumnKey === propName,
         });
       }

@@ -105,7 +105,7 @@ interface IImageTileProps {
   nameplateOnlyOnHover: boolean;
   linkHref?: string;
   linkTarget?: string;
-  item: typeof ITEMS[0];
+  item: (typeof ITEMS)[0];
 }
 
 const ImageTile: React.FunctionComponent<IImageTileProps> = (props: IImageTileProps): JSX.Element => {
@@ -145,7 +145,9 @@ const ImageTile: React.FunctionComponent<IImageTileProps> = (props: IImageTilePr
         background: (
           <img
             className={css(TileExampleStyles.tileImage)}
-            src={`//via.placeholder.com/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
+            src="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svg"
+            height={Math.round(imageSize.height)}
+            width={Math.round(imageSize.width)}
           />
         ),
       })}

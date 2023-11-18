@@ -5,10 +5,14 @@ import { ListGridExample } from './List.Grid.Example';
 import { ListScrollingExample } from './List.Scrolling.Example';
 import { ListGhostingExample } from './List.Ghosting.Example';
 
-const ListBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/List/List.Basic.Example.tsx') as string;
-const ListGridExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/List/List.Grid.Example.tsx') as string;
-const ListScrollingExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/List/List.Scrolling.Example.tsx') as string;
-const ListGhostingExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/List/List.Ghosting.Example.tsx') as string;
+const ListBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/List/List.Basic.Example.tsx') as string;
+const ListGridExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/List/List.Grid.Example.tsx') as string;
+const ListScrollingExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/List/List.Scrolling.Example.tsx') as string;
+const ListGhostingExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/List/List.Ghosting.Example.tsx') as string;
 
 export const ListPageProps: IDocPageProps = {
   title: 'List',

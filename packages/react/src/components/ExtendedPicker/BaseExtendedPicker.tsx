@@ -19,7 +19,8 @@ export interface IBaseExtendedPickerState<T> {
 
 export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
   extends React.Component<P, IBaseExtendedPickerState<T>>
-  implements IBaseExtendedPicker<T> {
+  implements IBaseExtendedPicker<T>
+{
   public floatingPicker = React.createRef<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>();
   public selectedItemsList = React.createRef<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>();
 
@@ -201,7 +202,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
       if (
         this.input.current &&
         !this.input.current.isValueSelected &&
-        this.input.current.inputElement === document.activeElement &&
+        this.input.current.inputElement === ev.currentTarget.ownerDocument.activeElement &&
         (this.input.current as Autofill).cursorLocation === 0
       ) {
         if (this.floatingPicker.current) {

@@ -2,6 +2,171 @@
   "name": "@fluentui/keyboard-key",
   "entries": [
     {
+      "date": "Tue, 26 Sep 2023 07:44:56 GMT",
+      "tag": "@fluentui/keyboard-key_v0.4.11",
+      "version": "0.4.11",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-key",
+            "commit": "ccc380cada5d9a6057bd8fca127700b700815fdc",
+            "comment": "chore: add ES2015.Iterable to tsconfig lib as jest types need it"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 07:37:34 GMT",
+      "tag": "@fluentui/keyboard-key_v0.4.11",
+      "version": "0.4.11",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-key",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 May 2023 18:14:05 GMT",
+      "tag": "@fluentui/keyboard-key_v0.4.9",
+      "version": "0.4.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/keyboard-key",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2",
+            "comment": "fix: explicitly ship dist/ folder."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 May 2023 00:58:15 GMT",
+      "tag": "@fluentui/keyboard-key_v0.4.8",
+      "version": "0.4.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/keyboard-key",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2",
+            "comment": "fix: esm, cjs, and amd folders should all be published correctly."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Mar 2023 07:45:39 GMT",
+      "tag": "@fluentui/keyboard-key_v0.4.5",
+      "version": "0.4.5",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-key",
+            "commit": "dd0f5b76fc8905c067cc58556ec1f9626dcfc640",
+            "comment": "chore: update tsconfig lib as jest now requires at least ES2015"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Jan 2023 07:50:53 GMT",
+      "tag": "@fluentui/keyboard-key_v0.4.4",
+      "version": "0.4.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-key",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Jan 2023 07:46:43 GMT",
+      "tag": "@fluentui/keyboard-key_v0.4.3",
+      "version": "0.4.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-key",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Dec 2022 07:51:01 GMT",
+      "tag": "@fluentui/keyboard-key_v0.4.3",
+      "version": "0.4.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-key",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Dec 2022 07:57:09 GMT",
+      "tag": "@fluentui/keyboard-key_v0.4.3",
+      "version": "0.4.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-key",
+            "commit": "c46ff8dec351ebf57efb4114366016010b285429",
+            "comment": "chore: enable isolateModules"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Mar 2022 07:24:26 GMT",
+      "tag": "@fluentui/keyboard-key_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/keyboard-key",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/keyboard-key_v0.3.4",
+      "version": "0.3.4",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/keyboard-key",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Aug 2021 07:34:48 GMT",
       "tag": "@fluentui/keyboard-key_v0.3.4",
       "version": "0.3.4",

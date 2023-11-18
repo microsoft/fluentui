@@ -7,14 +7,21 @@ import {
   IHeatMapChartDataPoint,
 } from '../../index';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
-import { classNamesFunction, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 import { ILegend, Legends } from '../Legends/index';
-import { ChartTypes, getAccessibleDataObject, XAxisTypes, YAxisType, getTypeOfAxis } from '../../utilities/utilities';
+import {
+  ChartTypes,
+  convertToLocaleString,
+  getAccessibleDataObject,
+  XAxisTypes,
+  YAxisType,
+  getTypeOfAxis,
+} from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
@@ -34,19 +41,13 @@ interface IRectRef {
 type RectanglesGraphData = { [key: string]: FlattenData[] };
 export interface IHeatMapChartState {
   /**
-   * determines if the legend any of the legend is selected or not
-   * @default false
+   * contains the selected legend string
    */
-  isLegendSelected: boolean;
+  selectedLegend: string;
   /**
-   * contains the seleted legend string
+   * contains the hovered legend string
    */
   activeLegend: string;
-  /**
-   * determines if the legend is hovered or not
-   * @default false
-   */
-  isLegendHovered: boolean;
   /**
    * determines wethere to show or hide the callout
    * @default false
@@ -112,6 +113,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _rectRefArray: { [key: string]: IRectRef } = {};
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
+  private _calloutAnchorPoint: FlattenData | null;
+  private _emptyChartId: string;
   public constructor(props: IHeatMapChartProps) {
     super(props);
     const { x, y } = this._getXandY();
@@ -134,9 +137,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       ): DataSet => this._createNewDataSet(data, xDate, xNum, yDate, yNum),
     );
     this.state = {
-      isLegendSelected: false,
+      selectedLegend: '',
       activeLegend: '',
-      isLegendHovered: false,
       isCalloutVisible: false,
       target: null,
       calloutLegend: '',
@@ -146,15 +148,12 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       descriptionMessage: '',
       calloutId: '',
     };
+    this._emptyChartId = getId('_HeatMap_empty');
   }
+
   public render(): React.ReactNode {
-    const {
-      data,
-      xAxisDateFormatString,
-      xAxisNumberFormatString,
-      yAxisDateFormatString,
-      yAxisNumberFormatString,
-    } = this.props;
+    const { data, xAxisDateFormatString, xAxisNumberFormatString, yAxisDateFormatString, yAxisNumberFormatString } =
+      this.props;
     this._colorScale = this._getColorScale();
     const { dataSet, xAxisPoints, yAxisPoints } = this._createSet(
       data,
@@ -178,7 +177,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       color: this.state.calloutTextColor,
       target: this.state.target,
       styles: this._classNames.subComponentStyles.calloutStyles,
-      directionalHint: DirectionalHint.bottomLeftEdge,
+      directionalHint: DirectionalHint.topAutoEdge,
       onDismiss: this._closeCallout,
       ...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false),
       preventDismissOnLostFocus: true,
@@ -189,7 +188,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       }),
       descriptionMessage: this.state.descriptionMessage,
     };
-    return (
+    return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
         points={data}
@@ -209,6 +208,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
           direction: FocusZoneDirection.bidirectional,
         }}
         legendBars={this._createLegendBars()}
+        onChartMouseLeave={this._handleChartMouseLeave}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -216,6 +216,13 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
           this._yAxisScale = props.yScale;
           return this._createRectangles();
         }}
+      />
+    ) : (
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
       />
     );
   }
@@ -234,11 +241,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   };
 
   private _getOpacity = (legendTitle: string): string => {
-    let shouldHighlight = true;
-    if (this.state.isLegendHovered || this.state.isLegendSelected) {
-      shouldHighlight = legendTitle === this.state.activeLegend;
-    }
-    return shouldHighlight ? '1' : '0.1';
+    const opacity = this._legendHighlighted(legendTitle) || this._noLegendHighlighted() ? '1' : '0.1';
+    return opacity;
   };
 
   private _rectRefCallback = (rectElement: SVGGElement, index: number | string, dataPointObject: FlattenData): void => {
@@ -248,7 +252,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _onRectFocus = (id: string, data: FlattenData): void => {
     this.setState({
       target: this._rectRefArray[id].refElement,
-      isCalloutVisible: true,
+      /** Show the callout if highlighted rectangle is focused and Hide it if unhighlighted rectangle is focused */
+      isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
       calloutYValue: `${data.rectText}`,
       calloutTextColor: this._colorScale(data.value),
       calloutLegend: data.legend,
@@ -261,20 +266,29 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
 
   private _onRectMouseOver = (id: string, data: FlattenData, mouseEvent: React.MouseEvent<SVGGElement>): void => {
     mouseEvent.persist();
-    this.setState({
-      target: this._rectRefArray[id].refElement,
-      isCalloutVisible: true,
-      calloutYValue: `${data.rectText}`,
-      calloutTextColor: this._colorScale(data.value),
-      calloutLegend: data.legend,
-      ratio: data.ratio || null,
-      descriptionMessage: data.descriptionMessage || '',
-      calloutId: id,
-      callOutAccessibilityData: data.callOutAccessibilityData,
-    });
+    if (this._calloutAnchorPoint !== data) {
+      this._calloutAnchorPoint = data;
+      this.setState({
+        target: this._rectRefArray[id].refElement,
+        /** Show the callout if highlighted rectangle is hovered and Hide it if unhighlighted rectangle is hovered */
+        isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
+        calloutYValue: `${data.rectText}`,
+        calloutTextColor: this._colorScale(data.value),
+        calloutLegend: data.legend,
+        ratio: data.ratio || null,
+        descriptionMessage: data.descriptionMessage || '',
+        calloutId: id,
+        callOutAccessibilityData: data.callOutAccessibilityData,
+      });
+    }
   };
 
   private _onRectBlurOrMouseOut = (): void => {
+    /**/
+  };
+
+  private _handleChartMouseLeave = (): void => {
+    this._calloutAnchorPoint = null;
     this.setState({
       isCalloutVisible: false,
     });
@@ -298,13 +312,12 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
        * data point such as x, y , value, rectText property of the rectangle
        */
       this._dataSet[yAxisDataPoint].forEach((dataPointObject: FlattenData, index2: number) => {
-        const id = `${index1}${index2}`;
+        const id = `x${index1}y${index2}`;
         const rectElement: JSX.Element = (
           <g
             key={id}
-            {...(this.state.calloutId && {
-              'aria-labelledby': `${this.state.calloutId}`,
-            })}
+            role="img"
+            aria-label={this._getAriaLabel(dataPointObject)}
             data-is-focusable={true}
             fillOpacity={this._getOpacity(dataPointObject.legend)}
             transform={`translate(${this._xAxisScale(dataPointObject.x)}, ${this._yAxisScale(dataPointObject.y)})`}
@@ -328,7 +341,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
               className={this._classNames.text}
               transform={`translate(${this._xAxisScale.bandwidth() / 2}, ${this._yAxisScale.bandwidth() / 2})`}
             >
-              {dataPointObject.rectText}
+              {convertToLocaleString(dataPointObject.rectText, this.props.culture)}
             </text>
           </g>
         );
@@ -340,34 +353,23 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   /**
    * when the legend is hovered we need to highlight
    * all the rectangles which fall under that category
-   * and un-highlight the rest of them, this functionality
-   * should happen only when there no legend Selected
+   * and un-highlight the rest of them
    * @param legendTitle
    */
   private _onLegendHover = (legendTitle: string): void => {
-    if (this.state.isLegendSelected === false) {
-      this.setState({
-        activeLegend: legendTitle,
-        isLegendHovered: true,
-      });
-    }
+    this.setState({
+      activeLegend: legendTitle,
+    });
   };
 
   /**
    * when the mouse is out from the legend , we need
-   * to show the graph in initial mode. isLegendFocused will
-   * be useful at the scenario where mouseout happend for
-   * the legends which are in overflow card
-   * @param isLegendFocused
+   * to show the graph in initial mode.
    */
-  private _onLegendLeave = (isLegendFocused?: boolean): void => {
-    if (!!isLegendFocused || this.state.isLegendSelected === false) {
-      this.setState({
-        activeLegend: '',
-        isLegendHovered: false,
-        isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
-      });
-    }
+  private _onLegendLeave = (): void => {
+    this.setState({
+      activeLegend: '',
+    });
   };
   /**
    * @param legendTitle
@@ -378,27 +380,16 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _onLegendClick = (legendTitle: string): void => {
     /**
      * check if the legend is already selceted,
-     * if yes, then check if the consumer has clicked already
-     * seleceted legend if yes un-select the legend, else
-     * set the acitve legend state to legendTitle
-     *
-     * if legend is not alredy selceted, simply set the isLegendSelected to true
-     * and the active legend to the legendTitle of selected legend
+     * if yes, un-select the legend, else
+     * set the selected legend state to legendTitle
      */
-    if (this.state.isLegendSelected) {
-      if (this.state.activeLegend === legendTitle) {
-        this.setState({
-          activeLegend: '',
-          isLegendSelected: false,
-        });
-      } else {
-        this.setState({ activeLegend: legendTitle });
-      }
+    if (this.state.selectedLegend === legendTitle) {
+      this.setState({
+        selectedLegend: '',
+      });
     } else {
       this.setState({
-        activeLegend: legendTitle,
-        isLegendSelected: true,
-        isLegendHovered: false,
+        selectedLegend: legendTitle,
       });
     }
   };
@@ -413,10 +404,11 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
           this._onLegendClick(item.legend);
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this._onLegendHover(item.legend);
         },
-        onMouseOutAction: (isLegendSelected?: boolean) => {
-          this._onLegendLeave(isLegendSelected);
+        onMouseOutAction: () => {
+          this._onLegendLeave();
         },
       };
       legends.push(legend);
@@ -428,7 +420,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     const { domainValuesForColorScale, rangeValuesForColorScale } = this.props;
     return d3ScaleLinear()
       .domain(domainValuesForColorScale)
-      .range((rangeValuesForColorScale as unknown) as number[]);
+      .range(rangeValuesForColorScale as unknown as number[]);
   };
 
   private _getXIndex = (value: string | Date | number): string => {
@@ -670,4 +662,40 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       isCalloutVisible: false,
     });
   };
+
+  /**
+   * This function checks if the given legend is highlighted or not.
+   * A legend can be highlighted in 2 ways:
+   * 1. selection: if the user clicks on it
+   * 2. hovering: if there is no selected legend and the user hovers over it
+   */
+  private _legendHighlighted = (legendTitle: string) => {
+    return (
+      this.state.selectedLegend === legendTitle ||
+      (this.state.selectedLegend === '' && this.state.activeLegend === legendTitle)
+    );
+  };
+
+  /**
+   * This function checks if none of the legends is selected or hovered.
+   */
+  private _noLegendHighlighted = () => {
+    return this.state.selectedLegend === '' && this.state.activeLegend === '';
+  };
+
+  private _getAriaLabel = (point: FlattenData): string => {
+    const xValue = point.x;
+    const yValue = point.y;
+    const legend = point.legend;
+    const zValue = point.ratio ? `${point.ratio[0]}/${point.ratio[1]}` : point.rectText || point.value;
+    const description = point.descriptionMessage;
+    return (
+      point.callOutAccessibilityData?.ariaLabel ||
+      `${xValue}, ${yValue}. ${legend}, ${zValue}.` + (description ? ` ${description}.` : '')
+    );
+  };
+
+  private _isChartEmpty(): boolean {
+    return !(this.props.data && this.props.data.length > 0);
+  }
 }

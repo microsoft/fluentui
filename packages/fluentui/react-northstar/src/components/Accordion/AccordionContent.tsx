@@ -15,13 +15,13 @@ import {
 import { ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 
 import {
-  ComponentWithAs,
   useTelemetry,
   useFluentContext,
   getElementType,
   useAccessibility,
   useUnhandledProps,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface AccordionContentProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -52,8 +52,7 @@ export type AccordionContentStylesProps = Required<Pick<AccordionContentProps, '
 /**
  * An AccordionContent displays content hosted in an Accordion.
  */
-export const AccordionContent: ComponentWithAs<'dd', AccordionContentProps> &
-  FluentComponentStaticProps<AccordionContentProps> = props => {
+export const AccordionContent = React.forwardRef<HTMLDListElement, AccordionContentProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AccordionContent.displayName, context.telemetry);
 
@@ -92,6 +91,7 @@ export const AccordionContent: ComponentWithAs<'dd', AccordionContentProps> &
       {...getA11yProps('root', {
         className: classes.root,
         onClick: handleClick,
+        ref,
         ...unhandledProps,
       })}
       {...rtlTextContainer.getAttributes({ forElements: [children, content] })}
@@ -103,7 +103,8 @@ export const AccordionContent: ComponentWithAs<'dd', AccordionContentProps> &
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDListElement, AccordionContentProps> &
+  FluentComponentStaticProps<AccordionContentProps>;
 
 AccordionContent.displayName = 'AccordionContent';
 
@@ -120,7 +121,7 @@ AccordionContent.propTypes = {
 
 AccordionContent.defaultProps = {
   accessibility: accordionContentBehavior,
-  as: 'dd',
+  as: 'div',
 };
 
 AccordionContent.handledProps = Object.keys(AccordionContent.propTypes) as any;

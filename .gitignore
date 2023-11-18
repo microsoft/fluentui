@@ -68,6 +68,7 @@ dist
 dist-storybook
 screenshots
 .cache
+!tools/**/lib
 
 *.tar.gz
 
@@ -159,3 +160,6 @@ rush.json
 
 # tsdoc
 tsdoc-metadata.json
+
+# swc cache
+.swc

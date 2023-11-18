@@ -8,7 +8,21 @@ export default {
 const MenuTemplate = () => `
   <fluent-menu>
     <fluent-menu-item>Menu item 1</fluent-menu-item>
-    <fluent-menu-item>Menu item 2</fluent-menu-item>
+    <fluent-menu-item>
+      Menu item 2
+      <fluent-menu>
+        <fluent-menu-item>Nested Menu item 2.1</fluent-menu-item>
+        <fluent-menu-item>
+          Nested Menu item 2.2
+          <fluent-menu>
+            <fluent-menu-item>Nested Menu item 2.2.1</fluent-menu-item>
+            <fluent-menu-item>Nested Menu item 2.2.2</fluent-menu-item>
+            <fluent-menu-item>Nested Menu item 2.2.3</fluent-menu-item>
+          </fluent-menu>
+        </fluent-menu-item>
+        <fluent-menu-item>Nested Menu item 2.3</fluent-menu-item>
+      </fluent-menu>
+    </fluent-menu-item>
     <fluent-menu-item disabled="true">Menu item 3</fluent-menu-item>
     <fluent-menu-item>
       Menu item 4
@@ -22,7 +36,14 @@ export const Menu = MenuTemplate.bind({});
 const example = `
 <fluent-menu>
   <fluent-menu-item>Menu item 1</fluent-menu-item>
-  <fluent-menu-item>Menu item 2</fluent-menu-item>
+  <fluent-menu-item>
+    Menu item 2
+    <fluent-menu>
+      <fluent-menu-item>Nested Menu item 2.1</fluent-menu-item>
+      <fluent-menu-item>Nested Menu item 2.2</fluent-menu-item>
+      <fluent-menu-item>Nested Menu item 2.3</fluent-menu-item>
+    </fluent-menu>
+  </fluent-menu-item>
   <fluent-menu-item disabled="true">Menu item 3</fluent-menu-item>
   <fluent-menu-item>
     Menu item 4

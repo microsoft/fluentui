@@ -4,7 +4,8 @@ import { MarqueeSelectionBasicExample } from './MarqueeSelection.Basic.Example';
 
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
-const MarqueeSelectionBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/MarqueeSelection/MarqueeSelection.Basic.Example.tsx') as string;
+const MarqueeSelectionBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/MarqueeSelection/MarqueeSelection.Basic.Example.tsx') as string;
 export const MarqueeSelectionPageProps: IDocPageProps = {
   title: 'MarqueeSelection',
   componentName: 'MarqueeSelection',

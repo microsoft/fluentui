@@ -5,6 +5,7 @@ const componentUrl =
 export const ThemeSlotsPageProps: TFabricPlatformPageProps = {
   web: {
     componentUrl,
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/ThemeSlotsPage/docs/web/ThemeSlotsOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/ThemeSlotsPage/docs/web/ThemeSlotsOverview.md') as string,
   },
 };

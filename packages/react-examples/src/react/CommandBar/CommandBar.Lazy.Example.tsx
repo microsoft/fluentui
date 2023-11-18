@@ -24,9 +24,9 @@ export const CommandBarLazyExample: React.FunctionComponent = () => {
         clearTimeout(timeoutRef.current);
       }
 
-      timeoutRef.current = (setTimeout(() => {
+      timeoutRef.current = setTimeout(() => {
         setMenuItems(newMenuItems);
-      }, 2000) as unknown) as number;
+      }, 2000) as unknown as number;
     };
 
     return [

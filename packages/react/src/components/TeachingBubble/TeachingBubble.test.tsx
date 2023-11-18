@@ -45,9 +45,35 @@ describe('TeachingBubble', () => {
     expect(component.find(TeachingBubbleContent).find('p#content').length).toBe(1);
   });
 
+  it('renders TeachingBubble with provided aria-describedby and aria-labelledby', () => {
+    const component = mount(
+      <TeachingBubble headline="Test Title" ariaDescribedBy="content" ariaLabelledBy="title">
+        Test Content
+      </TeachingBubble>,
+    );
+
+    expect(component.find('div[aria-describedby="content"]').length).toBe(1);
+    expect(component.find('div[aria-labelledby="title"]').length).toBe(1);
+    expect(component.find('p[id="content"]').length).toBe(1);
+    expect(component.find('p[id="title"]').length).toBe(1);
+  });
+
+  it('renders TeachingBubbleContent with generated aria-describedby and aria-labelledby', () => {
+    const component = renderer.create(
+      <TeachingBubbleContent headline="Test Title">Test Content</TeachingBubbleContent>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders TeachingBubble correctly', () => {
     const component = renderer.create(
-      <TeachingBubble isWide={true} calloutProps={{ doNotLayer: true, className: 'specialClassName' }}>
+      <TeachingBubble
+        isWide={true}
+        calloutProps={{ doNotLayer: true, className: 'specialClassName' }}
+        ariaDescribedBy="content"
+        ariaLabelledBy="title"
+      >
         Test Content
       </TeachingBubble>,
     );
@@ -57,7 +83,9 @@ describe('TeachingBubble', () => {
 
   it('renders TeachingBubbleContent correctly', () => {
     const componentContent = renderer.create(
-      <TeachingBubbleContent headline="Test Title">Content</TeachingBubbleContent>,
+      <TeachingBubbleContent headline="Test Title" ariaDescribedBy="content" ariaLabelledBy="title">
+        Content
+      </TeachingBubbleContent>,
     );
     const treeContent = componentContent.toJSON();
     expect(treeContent).toMatchSnapshot();
@@ -70,6 +98,8 @@ describe('TeachingBubble', () => {
         hasCloseButton={true}
         primaryButtonProps={{ children: 'Test Primary Button', className: 'primary-className' }}
         secondaryButtonProps={{ children: 'Test Secondary Button', className: 'secondary-className' }}
+        ariaDescribedBy="content"
+        ariaLabelledBy="title"
       >
         Content
       </TeachingBubbleContent>,
@@ -80,7 +110,12 @@ describe('TeachingBubble', () => {
 
   it('renders TeachingBubbleContent with image correctly', () => {
     const componentContent = renderer.create(
-      <TeachingBubbleContent headline="Test Title" illustrationImage={{ src: 'test image url' }}>
+      <TeachingBubbleContent
+        headline="Test Title"
+        illustrationImage={{ src: 'test image url' }}
+        ariaDescribedBy="content"
+        ariaLabelledBy="title"
+      >
         Content
       </TeachingBubbleContent>,
     );
@@ -90,7 +125,12 @@ describe('TeachingBubble', () => {
 
   it('renders TeachingBubbleContent with condensed headline correctly', () => {
     const componentContent = renderer.create(
-      <TeachingBubbleContent hasCondensedHeadline={true} headline="Test Title">
+      <TeachingBubbleContent
+        hasCondensedHeadline={true}
+        headline="Test Title"
+        ariaDescribedBy="content"
+        ariaLabelledBy="title"
+      >
         Content
       </TeachingBubbleContent>,
     );
@@ -100,7 +140,12 @@ describe('TeachingBubble', () => {
 
   it('renders TeachingBubbleContent with small headline correctly', () => {
     const componentContent = renderer.create(
-      <TeachingBubbleContent hasSmallHeadline={true} headline="Test Title">
+      <TeachingBubbleContent
+        hasSmallHeadline={true}
+        headline="Test Title"
+        ariaDescribedBy="content"
+        ariaLabelledBy="title"
+      >
         Content
       </TeachingBubbleContent>,
     );
@@ -110,7 +155,9 @@ describe('TeachingBubble', () => {
 
   it('renders TeachingBubbleContent with custom footer text', () => {
     const componentContent = renderer.create(
-      <TeachingBubbleContent footerContent="1 of 2">Content</TeachingBubbleContent>,
+      <TeachingBubbleContent footerContent="1 of 2" ariaDescribedBy="content" ariaLabelledBy="title">
+        Content
+      </TeachingBubbleContent>,
     );
     const treeContent = componentContent.toJSON();
     expect(treeContent).toMatchSnapshot();
@@ -118,7 +165,13 @@ describe('TeachingBubble', () => {
 
   it('renders TeachingBubbleContent with calloutProps that deal with styles', () => {
     const componentContent = renderer.create(
-      <TeachingBubbleContent calloutProps={{ beakWidth: 50, calloutWidth: 100 }}>Content</TeachingBubbleContent>,
+      <TeachingBubbleContent
+        calloutProps={{ beakWidth: 50, calloutWidth: 100 }}
+        ariaDescribedBy="content"
+        ariaLabelledBy="title"
+      >
+        Content
+      </TeachingBubbleContent>,
     );
     const treeContent = componentContent.toJSON();
     expect(treeContent).toMatchSnapshot();
@@ -128,7 +181,6 @@ describe('TeachingBubble', () => {
     Component: TeachingBubble,
     displayName: 'TeachingBubble',
     componentPath: path.join(__dirname, 'TeachingBubble.ts'),
-    targetComponent: TeachingBubbleContent,
     // Problem: Ref is applied but not on root element
     // Solution: Ref should be applied to TeachingBubbleContent and the wrapper div should be removed.
     disabledTests: ['component-handles-ref', 'component-has-root-ref', 'component-handles-classname'],

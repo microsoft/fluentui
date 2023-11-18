@@ -30,16 +30,14 @@ export class TilesListBasicExample extends React.Component<{}, ITilesListBasicEx
     super(props);
 
     this.state = {
-      items: ITEMS.map(
-        (item: IBasicItem): ITilesGridItem<IBasicItem> => {
-          return {
-            content: item,
-            desiredSize: { width: 100, height: 100 },
-            key: item.key,
-            onRender: renderItem,
-          };
-        },
-      ),
+      items: ITEMS.map((item: IBasicItem): ITilesGridItem<IBasicItem> => {
+        return {
+          content: item,
+          desiredSize: { width: 100, height: 100 },
+          key: item.key,
+          onRender: renderItem,
+        };
+      }),
     };
   }
 

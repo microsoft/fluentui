@@ -22,7 +22,7 @@ export class Anchor extends FoundationAnchor {
    * HTML Attribute: appearance
    */
   @attr
-  public appearance: AnchorAppearance;
+  public appearance?: AnchorAppearance;
   public appearanceChanged(oldValue: AnchorAppearance, newValue: AnchorAppearance): void {
     if (oldValue !== newValue) {
       this.classList.add(newValue);
@@ -50,9 +50,9 @@ export class Anchor extends FoundationAnchor {
     const slottedElements = this.defaultSlottedContent.filter(x => x.nodeType === Node.ELEMENT_NODE);
 
     if (slottedElements.length === 1 && slottedElements[0] instanceof SVGElement) {
-      this.control.classList.add('icon-only');
+      this.control?.classList.add('icon-only');
     } else {
-      this.control.classList.remove('icon-only');
+      this.control?.classList.remove('icon-only');
     }
   }
 }
@@ -76,6 +76,7 @@ export const anchorStyles = styles;
  */
 export const fluentAnchor = Anchor.compose({
   baseName: 'anchor',
+  baseClass: FoundationAnchor,
   template,
   styles,
   shadowOptions: {

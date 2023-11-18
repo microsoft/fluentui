@@ -24,7 +24,6 @@ import {
 } from '../../types';
 import { ContainerFocusHandler } from '../../utils/accessibility/FocusHandling/FocusContainer';
 import {
-  ComponentWithAs,
   useAutoControlled,
   useAccessibility,
   useTelemetry,
@@ -32,6 +31,7 @@ import {
   useUnhandledProps,
   getElementType,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface AccordionSlotClassNames {
@@ -93,6 +93,9 @@ export interface AccordionProps extends UIComponentProps, ChildrenComponentProps
    * Accessibility behavior if overridden by the user.
    */
   accessibility?: Accessibility<AccordionBehaviorProps>;
+
+  /** Manage if panels should be rendered always or based on their state. */
+  alwaysRenderPanels?: boolean;
 }
 
 export type AccordionStylesProps = never;
@@ -108,11 +111,7 @@ export const accordionSlotClassNames: AccordionSlotClassNames = {
  * @accessibility
  * Implements [ARIA Accordion](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion) design pattern (keyboard navigation not yet supported).
  */
-export const Accordion: ComponentWithAs<'dl', AccordionProps> &
-  FluentComponentStaticProps<AccordionProps> & {
-    Title: typeof AccordionTitle;
-    Content: typeof AccordionContent;
-  } = props => {
+export const Accordion = React.forwardRef<HTMLDListElement, AccordionProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Accordion.displayName, context.telemetry);
   setStart();
@@ -128,6 +127,7 @@ export const Accordion: ComponentWithAs<'dl', AccordionProps> &
     panels,
     renderPanelContent,
     renderPanelTitle,
+    alwaysRenderPanels,
   } = props;
   const alwaysActiveIndex = expanded ? 0 : -1;
 
@@ -280,17 +280,19 @@ export const Accordion: ComponentWithAs<'dl', AccordionProps> &
           render: renderPanelTitle,
         }),
       );
-      children.push(
-        createShorthand(AccordionContent, content, {
-          defaultProps: () => ({
-            className: accordionSlotClassNames.content,
-            active,
-            id: contentId,
-            accordionTitleId: titleId,
+      if (alwaysRenderPanels || active) {
+        children.push(
+          createShorthand(AccordionContent, content, {
+            defaultProps: () => ({
+              className: accordionSlotClassNames.content,
+              active,
+              id: contentId,
+              accordionTitleId: titleId,
+            }),
+            render: renderPanelContent,
           }),
-          render: renderPanelContent,
-        }),
-      );
+        );
+      }
     });
     return children;
   };
@@ -300,6 +302,7 @@ export const Accordion: ComponentWithAs<'dl', AccordionProps> &
       {...getA11yProps('root', {
         className: classes.root,
         ...unhandledProps,
+        ref,
       })}
       {...rtlTextContainer.getAttributes({ forElements: [children] })}
     >
@@ -310,7 +313,11 @@ export const Accordion: ComponentWithAs<'dl', AccordionProps> &
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'dl', HTMLDListElement, AccordionProps> &
+  FluentComponentStaticProps<AccordionProps> & {
+    Title: typeof AccordionTitle;
+    Content: typeof AccordionContent;
+  };
 
 Accordion.displayName = 'Accordion';
 
@@ -348,6 +355,7 @@ Accordion.defaultProps = {
   accessibility: accordionBehavior,
   as: 'dl',
 };
+
 Accordion.handledProps = Object.keys(Accordion.propTypes) as any;
 Accordion.Title = AccordionTitle;
 Accordion.Content = AccordionContent;

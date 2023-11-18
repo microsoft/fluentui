@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { HoverCard } from '@fluentui/react';
 
 const onRenderCardContent = (item: any) => {
@@ -20,18 +20,18 @@ const expandingCardProps = {
 };
 
 storiesOf('HoverCard', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-HoverCard-host')
         .snapshot('fully expanded with test content', { cropTo: '.ms-Layer' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory(
     'Root',
@@ -44,5 +44,5 @@ storiesOf('HoverCard', module)
         Hover over me
       </HoverCard>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

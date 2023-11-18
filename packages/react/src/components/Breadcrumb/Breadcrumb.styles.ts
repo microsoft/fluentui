@@ -68,6 +68,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
       selectors: {
         [HighContrastSelector]: {
           color: 'Highlight',
+          backgroundColor: 'transparent',
         },
       },
     },
@@ -90,6 +91,13 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
     lineHeight: itemLineHeight,
     fontSize: itemFontSize,
     fontWeight: itemTextFontWeight,
+  };
+
+  const overflowButtonHighContrastFocus = {
+    left: 1,
+    right: 1,
+    top: 1,
+    bottom: 1,
   };
 
   return {
@@ -123,7 +131,13 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
         position: 'relative',
         alignItems: 'center',
         selectors: {
-          '&:last-child .ms-Breadcrumb-itemLink': lastChildItemStyles,
+          '&:last-child .ms-Breadcrumb-itemLink': {
+            ...lastChildItemStyles,
+            [HighContrastSelector]: {
+              MsHighContrastAdjust: 'auto',
+              forcedColorAdjust: 'auto',
+            },
+          },
           '&:last-child .ms-Breadcrumb-item': lastChildItemStyles,
         },
       },
@@ -160,7 +174,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
 
     overflowButton: [
       classNames.overflowButton,
-      getFocusStyle(theme),
+      getFocusStyle(theme, { highContrastStyle: overflowButtonHighContrastFocus }),
       SingleLineTextStyle,
       {
         fontSize: overflowButtonFontSize,

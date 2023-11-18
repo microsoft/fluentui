@@ -18,13 +18,13 @@ import { HeaderDescription, HeaderDescriptionProps } from './HeaderDescription';
 
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import {
-  ComponentWithAs,
   useTelemetry,
   useAccessibility,
   useFluentContext,
   getElementType,
   useUnhandledProps,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface HeaderProps
@@ -57,10 +57,7 @@ export type HeaderStylesProps = Required<Pick<HeaderProps, 'align' | 'color'>> &
  * Other considerations:
  *  - when the description property is used in header, readers will narrate both header content and description within the element. In addition to that, both will be displayed in the list of headings.
  */
-export const Header: ComponentWithAs<'h1', HeaderProps> &
-  FluentComponentStaticProps<HeaderProps> & {
-    Description: typeof HeaderDescription;
-  } = props => {
+export const Header = React.forwardRef<HTMLHeadingElement, HeaderProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Header.displayName, context.telemetry);
   setStart();
@@ -95,6 +92,7 @@ export const Header: ComponentWithAs<'h1', HeaderProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
         ...rtlTextContainer.getAttributes({
           forElements: [children, content],
@@ -113,7 +111,10 @@ export const Header: ComponentWithAs<'h1', HeaderProps> &
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'h1', HTMLHeadingElement, HeaderProps> &
+  FluentComponentStaticProps<HeaderProps> & {
+    Description: typeof HeaderDescription;
+  };
 
 Header.displayName = 'Header';
 

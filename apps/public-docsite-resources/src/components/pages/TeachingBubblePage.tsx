@@ -6,7 +6,7 @@ import { TeachingBubblePageProps } from '@fluentui/react-examples/lib/react/Teac
 export const TeachingBubblePage = (props: { isHeaderVisible: boolean }) => (
   <LayerHost>
     <DemoPage
-      jsonDocs={require('@fluentui/api-docs/lib/pages/react/TeachingBubble.page.json')}
+      jsonDocs={require('../../../dist/api/react/TeachingBubble.page.json')}
       {...{ ...TeachingBubblePageProps, ...props }}
     />
   </LayerHost>

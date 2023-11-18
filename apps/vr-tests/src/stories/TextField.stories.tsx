@@ -1,14 +1,14 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFixedWidth } from '../utilities/index';
+import { TestWrapperDecoratorFixedWidth } from '../utilities/index';
 import { TextField } from '@fluentui/react';
 
 storiesOf('TextField', module)
-  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-TextField-field')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -18,16 +18,20 @@ storiesOf('TextField', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => <TextField label="Standard" />)
   .addStory('Placeholder', () => <TextField label="Standard" placeholder="Placeholder" />, {
-    rtl: true,
+    includeRtl: true,
   })
   .addStory('Disabled', () => <TextField label="Disabled" disabled />)
   .addStory('Required', () => <TextField label="Required" required />)
-  .addStory('Error', () => <TextField label="Error" errorMessage="Error message" />, { rtl: true })
-  .addStory('Multiline', () => <TextField label="Multiline" multiline rows={4} />, { rtl: true })
+  .addStory('Error', () => <TextField label="Error" errorMessage="Error message" />, {
+    includeRtl: true,
+  })
+  .addStory('Multiline', () => <TextField label="Multiline" multiline rows={4} />, {
+    includeRtl: true,
+  })
   .addStory('Multiline nonresizable', () => (
     <TextField label="Multiline" multiline rows={4} resizable={false} />
   ))
@@ -45,7 +49,7 @@ storiesOf('TextField', module)
       />
     ),
     {
-      rtl: true,
+      includeRtl: true,
     },
   )
   .addStory(
@@ -60,16 +64,16 @@ storiesOf('TextField', module)
       />
     ),
     {
-      rtl: true,
+      includeRtl: true,
     },
   )
   .addStory(
     'Prefix with Value, Disabled',
     () => <TextField label="Prefix" prefix="https://" defaultValue="example.com" disabled />,
     {
-      rtl: true,
+      includeRtl: true,
     },
   )
   .addStory('Suffix', () => <TextField label="Suffix" suffix=".com" />, {
-    rtl: true,
+    includeRtl: true,
   });

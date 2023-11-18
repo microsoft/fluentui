@@ -1,48 +1,60 @@
 import * as React from 'react';
-import { IContextualMenuProps, IIconProps, Stack, IStackStyles } from '@fluentui/react';
-import { CommandBarButton } from '@fluentui/react/lib/Button';
+import { CommandBar, ICommandBarItemProps } from '@fluentui/react/lib/CommandBar';
+import { IButtonProps } from '@fluentui/react/lib/Button';
 
-export interface IButtonExampleProps {
-  // These are set based on the toggles shown above the examples (not needed in real code)
-  disabled?: boolean;
-  checked?: boolean;
-}
+const overflowButtonProps: IButtonProps = { ariaLabel: 'More commands' };
 
-const menuProps: IContextualMenuProps = {
-  items: [
-    {
-      key: 'emailMessage',
-      text: 'Email message',
-      iconProps: { iconName: 'Mail' },
-    },
-    {
-      key: 'calendarEvent',
-      text: 'Calendar event',
-      iconProps: { iconName: 'Calendar' },
-    },
-  ],
-};
-const addIcon: IIconProps = { iconName: 'Add' };
-const mailIcon: IIconProps = { iconName: 'Mail' };
-const stackStyles: Partial<IStackStyles> = { root: { height: 44 } };
-
-export const ButtonCommandBarExample: React.FunctionComponent<IButtonExampleProps> = props => {
-  const { disabled, checked } = props;
-
-  // Here we use a Stack to simulate a command bar.
-  // The real CommandBar control also uses CommandBarButtons internally.
+export const CommandBarSplitDisabledExample: React.FunctionComponent = () => {
   return (
-    <Stack horizontal styles={stackStyles}>
-      <CommandBarButton
-        iconProps={addIcon}
-        text="New item"
-        // Set split=true to render a SplitButton instead of a regular button with a menu
-        split={true}
-        menuProps={menuProps}
-        disabled={disabled}
-        checked={checked}
-      />
-      <CommandBarButton iconProps={mailIcon} text="Send mail" disabled={disabled} checked={checked} />
-    </Stack>
+    <div>
+      <CommandBar items={_items} overflowButtonProps={overflowButtonProps} />
+    </div>
   );
 };
+
+const _items: ICommandBarItemProps[] = [
+  {
+    key: 'newItem',
+    text: 'New',
+    iconProps: { iconName: 'Add' },
+    split: true,
+    ariaLabel: 'New',
+    splitButtonAriaLabel: 'More New options',
+    subMenuProps: {
+      items: [
+        { key: 'emailMessage', text: 'Email message', iconProps: { iconName: 'Mail' } },
+        { key: 'calendarEvent', text: 'Calendar event', iconProps: { iconName: 'Calendar' } },
+      ],
+    },
+  },
+  {
+    key: 'upload',
+    text: 'Upload',
+    iconProps: { iconName: 'Upload' },
+    split: true,
+    ariaLabel: 'Upload',
+    splitButtonAriaLabel: 'More Upload options',
+    disabled: true,
+    href: 'https://developer.microsoft.com/en-us/fluentui',
+    subMenuProps: {
+      items: [
+        { key: 'item1', text: 'Item One' },
+        { key: 'item2', text: 'Item Two' },
+      ],
+    },
+  },
+  {
+    key: 'share',
+    text: 'Share',
+    iconProps: { iconName: 'Share' },
+    disabled: true,
+  },
+  {
+    key: 'download',
+    text: 'Download',
+    ariaLabel: 'Download',
+    iconProps: { iconName: 'Download' },
+    iconOnly: true,
+    disabled: true,
+  },
+];

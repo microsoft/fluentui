@@ -44,7 +44,7 @@ describe('Dialog in Dialog', () => {
     cy.clickOn(innerTrigger);
 
     cy.clickOn(dropdownIndicator);
-    cy.visible(dropdownList);
+    cy.exist(dropdownList);
     // TODO this test was failling on timeout. Cypress was probably too fast and components weren't ready.
     cy.wait(50);
     cy.waitForSelectorAndPressKey(dropdownList, '{esc}');

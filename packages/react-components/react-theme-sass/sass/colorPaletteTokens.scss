@@ -1,0 +1,217 @@
+$colorPaletteRedBackground1: var(--colorPaletteRedBackground1);
+$colorPaletteRedBackground2: var(--colorPaletteRedBackground2);
+$colorPaletteRedBackground3: var(--colorPaletteRedBackground3);
+$colorPaletteRedForeground1: var(--colorPaletteRedForeground1);
+$colorPaletteRedForeground2: var(--colorPaletteRedForeground2);
+$colorPaletteRedForeground3: var(--colorPaletteRedForeground3);
+$colorPaletteRedForegroundInverted: var(--colorPaletteRedForegroundInverted);
+$colorPaletteRedBorderActive: var(--colorPaletteRedBorderActive);
+$colorPaletteRedBorder1: var(--colorPaletteRedBorder1);
+$colorPaletteRedBorder2: var(--colorPaletteRedBorder2);
+
+$colorPaletteGreenBackground1: var(--colorPaletteGreenBackground1);
+$colorPaletteGreenBackground2: var(--colorPaletteGreenBackground2);
+$colorPaletteGreenBackground3: var(--colorPaletteGreenBackground3);
+$colorPaletteGreenForeground1: var(--colorPaletteGreenForeground1);
+$colorPaletteGreenForeground2: var(--colorPaletteGreenForeground2);
+$colorPaletteGreenForeground3: var(--colorPaletteGreenForeground3);
+$colorPaletteGreenForegroundInverted: var(--colorPaletteGreenForegroundInverted);
+$colorPaletteGreenBorderActive: var(--colorPaletteGreenBorderActive);
+$colorPaletteGreenBorder1: var(--colorPaletteGreenBorder1);
+$colorPaletteGreenBorder2: var(--colorPaletteGreenBorder2);
+
+$colorPaletteDarkOrangeBackground1: var(--colorPaletteDarkOrangeBackground1);
+$colorPaletteDarkOrangeBackground2: var(--colorPaletteDarkOrangeBackground2);
+$colorPaletteDarkOrangeBackground3: var(--colorPaletteDarkOrangeBackground3);
+$colorPaletteDarkOrangeForeground1: var(--colorPaletteDarkOrangeForeground1);
+$colorPaletteDarkOrangeForeground2: var(--colorPaletteDarkOrangeForeground2);
+$colorPaletteDarkOrangeForeground3: var(--colorPaletteDarkOrangeForeground3);
+$colorPaletteDarkOrangeBorderActive: var(--colorPaletteDarkOrangeBorderActive);
+$colorPaletteDarkOrangeBorder1: var(--colorPaletteDarkOrangeBorder1);
+$colorPaletteDarkOrangeBorder2: var(--colorPaletteDarkOrangeBorder2);
+
+$colorPaletteYellowBackground1: var(--colorPaletteYellowBackground1);
+$colorPaletteYellowBackground2: var(--colorPaletteYellowBackground2);
+$colorPaletteYellowBackground3: var(--colorPaletteYellowBackground3);
+$colorPaletteYellowForeground1: var(--colorPaletteYellowForeground1);
+$colorPaletteYellowForeground2: var(--colorPaletteYellowForeground2);
+$colorPaletteYellowForeground3: var(--colorPaletteYellowForeground3);
+$colorPaletteYellowForegroundInverted: var(--colorPaletteYellowForegroundInverted);
+$colorPaletteYellowBorderActive: var(--colorPaletteYellowBorderActive);
+$colorPaletteYellowBorder1: var(--colorPaletteYellowBorder1);
+$colorPaletteYellowBorder2: var(--colorPaletteYellowBorder2);
+
+$colorPaletteBerryBackground1: var(--colorPaletteBerryBackground1);
+$colorPaletteBerryBackground2: var(--colorPaletteBerryBackground2);
+$colorPaletteBerryBackground3: var(--colorPaletteBerryBackground3);
+$colorPaletteBerryForeground1: var(--colorPaletteBerryForeground1);
+$colorPaletteBerryForeground2: var(--colorPaletteBerryForeground2);
+$colorPaletteBerryForeground3: var(--colorPaletteBerryForeground3);
+$colorPaletteBerryBorderActive: var(--colorPaletteBerryBorderActive);
+$colorPaletteBerryBorder1: var(--colorPaletteBerryBorder1);
+$colorPaletteBerryBorder2: var(--colorPaletteBerryBorder2);
+
+$colorPaletteMarigoldBackground1: var(--colorPaletteMarigoldBackground1);
+$colorPaletteMarigoldBackground2: var(--colorPaletteMarigoldBackground2);
+$colorPaletteMarigoldBackground3: var(--colorPaletteMarigoldBackground3);
+$colorPaletteMarigoldForeground1: var(--colorPaletteMarigoldForeground1);
+$colorPaletteMarigoldForeground2: var(--colorPaletteMarigoldForeground2);
+$colorPaletteMarigoldForeground3: var(--colorPaletteMarigoldForeground3);
+$colorPaletteMarigoldBorderActive: var(--colorPaletteMarigoldBorderActive);
+$colorPaletteMarigoldBorder1: var(--colorPaletteMarigoldBorder1);
+$colorPaletteMarigoldBorder2: var(--colorPaletteMarigoldBorder2);
+
+$colorPaletteLightGreenBackground1: var(--colorPaletteLightGreenBackground1);
+$colorPaletteLightGreenBackground2: var(--colorPaletteLightGreenBackground2);
+$colorPaletteLightGreenBackground3: var(--colorPaletteLightGreenBackground3);
+$colorPaletteLightGreenForeground1: var(--colorPaletteLightGreenForeground1);
+$colorPaletteLightGreenForeground2: var(--colorPaletteLightGreenForeground2);
+$colorPaletteLightGreenForeground3: var(--colorPaletteLightGreenForeground3);
+$colorPaletteLightGreenBorderActive: var(--colorPaletteLightGreenBorderActive);
+$colorPaletteLightGreenBorder1: var(--colorPaletteLightGreenBorder1);
+$colorPaletteLightGreenBorder2: var(--colorPaletteLightGreenBorder2);
+
+$colorPaletteDarkRedBackground2: var(--colorPaletteDarkRedBackground2);
+$colorPaletteDarkRedForeground2: var(--colorPaletteDarkRedForeground2);
+$colorPaletteDarkRedBorderActive: var(--colorPaletteDarkRedBorderActive);
+
+$colorPaletteCranberryBackground2: var(--colorPaletteCranberryBackground2);
+$colorPaletteCranberryForeground2: var(--colorPaletteCranberryForeground2);
+$colorPaletteCranberryBorderActive: var(--colorPaletteCranberryBorderActive);
+
+$colorPalettePumpkinBackground2: var(--colorPalettePumpkinBackground2);
+$colorPalettePumpkinForeground2: var(--colorPalettePumpkinForeground2);
+$colorPalettePumpkinBorderActive: var(--colorPalettePumpkinBorderActive);
+
+$colorPalettePeachBackground2: var(--colorPalettePeachBackground2);
+$colorPalettePeachForeground2: var(--colorPalettePeachForeground2);
+$colorPalettePeachBorderActive: var(--colorPalettePeachBorderActive);
+
+$colorPaletteGoldBackground2: var(--colorPaletteGoldBackground2);
+$colorPaletteGoldForeground2: var(--colorPaletteGoldForeground2);
+$colorPaletteGoldBorderActive: var(--colorPaletteGoldBorderActive);
+
+$colorPaletteBrassBackground2: var(--colorPaletteBrassBackground2);
+$colorPaletteBrassForeground2: var(--colorPaletteBrassForeground2);
+$colorPaletteBrassBorderActive: var(--colorPaletteBrassBorderActive);
+
+$colorPaletteBrownBackground2: var(--colorPaletteBrownBackground2);
+$colorPaletteBrownForeground2: var(--colorPaletteBrownForeground2);
+$colorPaletteBrownBorderActive: var(--colorPaletteBrownBorderActive);
+
+$colorPaletteForestBackground2: var(--colorPaletteForestBackground2);
+$colorPaletteForestForeground2: var(--colorPaletteForestForeground2);
+$colorPaletteForestBorderActive: var(--colorPaletteForestBorderActive);
+
+$colorPaletteSeafoamBackground2: var(--colorPaletteSeafoamBackground2);
+$colorPaletteSeafoamForeground2: var(--colorPaletteSeafoamForeground2);
+$colorPaletteSeafoamBorderActive: var(--colorPaletteSeafoamBorderActive);
+
+$colorPaletteDarkGreenBackground2: var(--colorPaletteDarkGreenBackground2);
+$colorPaletteDarkGreenForeground2: var(--colorPaletteDarkGreenForeground2);
+$colorPaletteDarkGreenBorderActive: var(--colorPaletteDarkGreenBorderActive);
+
+$colorPaletteLightTealBackground2: var(--colorPaletteLightTealBackground2);
+$colorPaletteLightTealForeground2: var(--colorPaletteLightTealForeground2);
+$colorPaletteLightTealBorderActive: var(--colorPaletteLightTealBorderActive);
+
+$colorPaletteTealBackground2: var(--colorPaletteTealBackground2);
+$colorPaletteTealForeground2: var(--colorPaletteTealForeground2);
+$colorPaletteTealBorderActive: var(--colorPaletteTealBorderActive);
+
+$colorPaletteSteelBackground2: var(--colorPaletteSteelBackground2);
+$colorPaletteSteelForeground2: var(--colorPaletteSteelForeground2);
+$colorPaletteSteelBorderActive: var(--colorPaletteSteelBorderActive);
+
+$colorPaletteBlueBackground2: var(--colorPaletteBlueBackground2);
+$colorPaletteBlueForeground2: var(--colorPaletteBlueForeground2);
+$colorPaletteBlueBorderActive: var(--colorPaletteBlueBorderActive);
+
+$colorPaletteRoyalBlueBackground2: var(--colorPaletteRoyalBlueBackground2);
+$colorPaletteRoyalBlueForeground2: var(--colorPaletteRoyalBlueForeground2);
+$colorPaletteRoyalBlueBorderActive: var(--colorPaletteRoyalBlueBorderActive);
+
+$colorPaletteCornflowerBackground2: var(--colorPaletteCornflowerBackground2);
+$colorPaletteCornflowerForeground2: var(--colorPaletteCornflowerForeground2);
+$colorPaletteCornflowerBorderActive: var(--colorPaletteCornflowerBorderActive);
+
+$colorPaletteNavyBackground2: var(--colorPaletteNavyBackground2);
+$colorPaletteNavyForeground2: var(--colorPaletteNavyForeground2);
+$colorPaletteNavyBorderActive: var(--colorPaletteNavyBorderActive);
+
+$colorPaletteLavenderBackground2: var(--colorPaletteLavenderBackground2);
+$colorPaletteLavenderForeground2: var(--colorPaletteLavenderForeground2);
+$colorPaletteLavenderBorderActive: var(--colorPaletteLavenderBorderActive);
+
+$colorPalettePurpleBackground2: var(--colorPalettePurpleBackground2);
+$colorPalettePurpleForeground2: var(--colorPalettePurpleForeground2);
+$colorPalettePurpleBorderActive: var(--colorPalettePurpleBorderActive);
+
+$colorPaletteGrapeBackground2: var(--colorPaletteGrapeBackground2);
+$colorPaletteGrapeForeground2: var(--colorPaletteGrapeForeground2);
+$colorPaletteGrapeBorderActive: var(--colorPaletteGrapeBorderActive);
+
+$colorPaletteLilacBackground2: var(--colorPaletteLilacBackground2);
+$colorPaletteLilacForeground2: var(--colorPaletteLilacForeground2);
+$colorPaletteLilacBorderActive: var(--colorPaletteLilacBorderActive);
+
+$colorPalettePinkBackground2: var(--colorPalettePinkBackground2);
+$colorPalettePinkForeground2: var(--colorPalettePinkForeground2);
+$colorPalettePinkBorderActive: var(--colorPalettePinkBorderActive);
+
+$colorPaletteMagentaBackground2: var(--colorPaletteMagentaBackground2);
+$colorPaletteMagentaForeground2: var(--colorPaletteMagentaForeground2);
+$colorPaletteMagentaBorderActive: var(--colorPaletteMagentaBorderActive);
+
+$colorPalettePlumBackground2: var(--colorPalettePlumBackground2);
+$colorPalettePlumForeground2: var(--colorPalettePlumForeground2);
+$colorPalettePlumBorderActive: var(--colorPalettePlumBorderActive);
+
+$colorPaletteBeigeBackground2: var(--colorPaletteBeigeBackground2);
+$colorPaletteBeigeForeground2: var(--colorPaletteBeigeForeground2);
+$colorPaletteBeigeBorderActive: var(--colorPaletteBeigeBorderActive);
+
+$colorPaletteMinkBackground2: var(--colorPaletteMinkBackground2);
+$colorPaletteMinkForeground2: var(--colorPaletteMinkForeground2);
+$colorPaletteMinkBorderActive: var(--colorPaletteMinkBorderActive);
+
+$colorPalettePlatinumBackground2: var(--colorPalettePlatinumBackground2);
+$colorPalettePlatinumForeground2: var(--colorPalettePlatinumForeground2);
+$colorPalettePlatinumBorderActive: var(--colorPalettePlatinumBorderActive);
+
+$colorPaletteAnchorBackground2: var(--colorPaletteAnchorBackground2);
+$colorPaletteAnchorForeground2: var(--colorPaletteAnchorForeground2);
+$colorPaletteAnchorBorderActive: var(--colorPaletteAnchorBorderActive);
+
+$colorStatusSuccessBackground1: var(--colorStatusSuccessBackground1);
+$colorStatusSuccessBackground2: var(--colorStatusSuccessBackground2);
+$colorStatusSuccessBackground3: var(--colorStatusSuccessBackground3);
+$colorStatusSuccessForeground1: var(--colorStatusSuccessForeground1);
+$colorStatusSuccessForeground2: var(--colorStatusSuccessForeground2);
+$colorStatusSuccessForeground3: var(--colorStatusSuccessForeground3);
+$colorStatusSuccessForegroundInverted: var(--colorStatusSuccessForegroundInverted);
+$colorStatusSuccessBorderActive: var(--colorStatusSuccessBorderActive);
+$colorStatusSuccessBorder1: var(--colorStatusSuccessBorder1);
+$colorStatusSuccessBorder2: var(--colorStatusSuccessBorder2);
+
+$colorStatusWarningBackground1: var(--colorStatusWarningBackground1);
+$colorStatusWarningBackground2: var(--colorStatusWarningBackground2);
+$colorStatusWarningBackground3: var(--colorStatusWarningBackground3);
+$colorStatusWarningForeground1: var(--colorStatusWarningForeground1);
+$colorStatusWarningForeground2: var(--colorStatusWarningForeground2);
+$colorStatusWarningForeground3: var(--colorStatusWarningForeground3);
+$colorStatusWarningForegroundInverted: var(--colorStatusWarningForegroundInverted);
+$colorStatusWarningBorderActive: var(--colorStatusWarningBorderActive);
+$colorStatusWarningBorder1: var(--colorStatusWarningBorder1);
+$colorStatusWarningBorder2: var(--colorStatusWarningBorder2);
+
+$colorStatusDangerBackground1: var(--colorStatusDangerBackground1);
+$colorStatusDangerBackground2: var(--colorStatusDangerBackground2);
+$colorStatusDangerBackground3: var(--colorStatusDangerBackground3);
+$colorStatusDangerForeground1: var(--colorStatusDangerForeground1);
+$colorStatusDangerForeground2: var(--colorStatusDangerForeground2);
+$colorStatusDangerForeground3: var(--colorStatusDangerForeground3);
+$colorStatusDangerForegroundInverted: var(--colorStatusDangerForegroundInverted);
+$colorStatusDangerBorderActive: var(--colorStatusDangerBorderActive);
+$colorStatusDangerBorder1: var(--colorStatusDangerBorder1);
+$colorStatusDangerBorder2: var(--colorStatusDangerBorder2);

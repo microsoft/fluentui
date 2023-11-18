@@ -24,6 +24,24 @@ export const EmptyThemeProvider: React.FunctionComponent<{
   return <Unstable_FluentContextProvider value={value}>{children}</Unstable_FluentContextProvider>;
 };
 
+/**
+ * Creates a dummy container to be passed as an `attachTo` option into enzyme's `mount` function.
+ * Enables actual JSDOM introspection.
+ * Make sure you call `removeTestContainer` at the end of your test to clean up after yourself.
+ */
+export function createTestContainer() {
+  const testContainer = document.createElement('div');
+  document.body.appendChild(testContainer);
+
+  const removeTestContainer = () => {
+    if (testContainer && testContainer.parentNode) {
+      testContainer.parentNode.removeChild(testContainer);
+    }
+  };
+
+  return { testContainer, removeTestContainer };
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const mountWithProvider = <C extends React.Component, P = C['props'], S = C['state']>(
   node: React.ReactElement<P>,

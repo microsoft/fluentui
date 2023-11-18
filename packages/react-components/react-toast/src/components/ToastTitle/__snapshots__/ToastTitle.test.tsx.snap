@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToastTitle renders a default state 1`] = `
+<div>
+  <div
+    class="fui-ToastTitle"
+    id=""
+  >
+    Default ToastTitle
+  </div>
+</div>
+`;

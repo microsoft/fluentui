@@ -1,41 +1,51 @@
-import config from '@fluentui/scripts/config';
-import sh from '@fluentui/scripts/gulp/sh';
 import fs from 'fs-extra';
 import path from 'path';
 
-import { addResolutionPathsForProjectPackages, packProjectPackages } from './packPackages';
-import { createTempDir, log } from './utils';
+import {
+  addResolutionPathsForProjectPackages,
+  packProjectPackages,
+  prepareTempDirs,
+  log,
+  shEcho,
+  generateFiles,
+  workspaceRoot,
+} from '@fluentui/scripts-projects-test';
 
 export async function typings() {
   const logger = log('test:projects:typings');
 
-  const scaffoldPath = config.paths.withRootAt(path.resolve(__dirname, '../assets/typings'));
-  const tmpDirectory = createTempDir('project-typings-');
-
-  logger(`✔️ Temporary directory was created: ${tmpDirectory}`);
+  const scaffoldPathRoot = path.resolve(__dirname, '../assets/typings');
+  const tempPaths = prepareTempDirs('project-typings-');
+  logger(`✔️ Temporary directories created under ${tempPaths.root}`);
 
   // Install dependencies, ensuring we specify the same TS version as our projects use
-  const rootPkgJson: { devDependencies: Record<string, string> } = fs.readJSONSync(config.paths.base('package.json'));
+  const rootPkgJson: { devDependencies: Record<string, string> } = fs.readJSONSync(
+    path.resolve(workspaceRoot, 'package.json'),
+  );
   const { typescript: tsVersion } = rootPkgJson.devDependencies;
 
-  const dependencies = ['@types/react', '@types/react-dom', 'react', 'react-dom', `typescript@${tsVersion}`].join(' ');
-  await sh(`yarn add ${dependencies}`, tmpDirectory);
+  const dependencies = [
+    '@types/react@17',
+    '@types/react-dom@17',
+    'react@17',
+    'react-dom@17',
+    `typescript@${tsVersion}`,
+  ].join(' ');
+  await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);
   logger(`✔️ Dependencies were installed`);
 
-  const packedPackages = await packProjectPackages(logger);
-  await addResolutionPathsForProjectPackages(tmpDirectory);
+  const packedPackages = await packProjectPackages(logger, '@fluentui/react-northstar');
+  await addResolutionPathsForProjectPackages(tempPaths.testApp);
 
-  await sh(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tmpDirectory);
+  await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tempPaths.testApp);
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
-  fs.mkdirSync(path.resolve(tmpDirectory, 'src'));
-  fs.copyFileSync(scaffoldPath('index.tsx'), path.resolve(tmpDirectory, 'src/index.tsx'));
-  fs.copyFileSync(scaffoldPath('tsconfig.json'), path.resolve(tmpDirectory, 'tsconfig.json'));
+  generateFiles(scaffoldPathRoot, tempPaths.testApp);
   logger(`✔️ Source and configs were copied`);
 
-  await sh(`which yarn`);
-  await sh(`yarn --version`);
-  await sh(`yarn tsc --version`);
-  await sh(`yarn tsc --noEmit`, tmpDirectory);
-  logger(`✔️ Example project was successfully built: ${tmpDirectory}`);
+  await shEcho(`which yarn`);
+  await shEcho(`yarn --version`);
+  await shEcho(`yarn tsc --version`, tempPaths.testApp);
+  await shEcho(`yarn tsc --noEmit`, tempPaths.testApp);
+  logger(`✔️ Example project was successfully built: ${tempPaths.testApp}`);
 }

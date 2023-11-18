@@ -1,9 +1,9 @@
 {
   "name": "@fluentui/codemods",
-  "version": "8.2.1",
+  "version": "8.4.13",
   "description": "Tool enabling easy upgrades to new Fluent UI versions",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "lib-commonjs/index.js",
+  "typings": "lib-commonjs/index.d.ts",
   "bin": {
     "upgrade": "./bin/upgrade.js"
   },
@@ -23,13 +23,13 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/scripts": "^1.0.0",
-    "@types/react": "16.9.42"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-jest": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "tslib": "^2.1.0",
-    "react": "16.8.6",
+    "react": "17.0.2",
     "ts-morph": "^10.0.1",
     "glob": "^7.1.2",
     "yargs": "^13.3.2"

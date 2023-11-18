@@ -1,15 +1,14 @@
 {
   "name": "@fluentui/api-docs",
-  "version": "8.1.35",
-  "private": true,
-  "description": "A package that transforms api-extractor .api.json files into page.json files",
+  "version": "8.2.12",
+  "description": "Transforms API Extractor .api.json files into .page.json files",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "lib-commonjs/index.js",
+  "typings": "lib-commonjs/index.d.ts",
   "scripts": {
     "build": "just-scripts build",
     "clean": "just-scripts clean",
@@ -18,19 +17,12 @@
     "test": "just-scripts test"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/date-time-utilities": "^8.2.2",
-    "@fluentui/merge-styles": "^8.1.5",
-    "@fluentui/react": "^8.33.0",
-    "@fluentui/react-focus": "^8.2.2",
-    "@fluentui/style-utilities": "^8.3.2",
-    "@fluentui/theme": "^2.3.2",
-    "@fluentui/utilities": "^8.3.2",
-    "@microsoft/api-extractor-model": "7.13.3",
-    "@microsoft/tsdoc": "0.13.2",
+    "@microsoft/api-extractor-model": "7.24.2",
+    "@microsoft/tsdoc": "0.14.1",
     "fs-extra": "^8.1.0"
   }
 }

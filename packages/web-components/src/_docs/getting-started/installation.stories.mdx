@@ -32,7 +32,7 @@ As a shortcut, if you wish to easily register all available components, rather t
 ```js
 import { allComponents, provideFluentDesignSystem } from '@fluentui/web-components';
 
-provideFASTDesignSystem().register(allComponents);
+provideFluentDesignSystem().register(allComponents);
 ```
 
 > When working with a tree-shaking supporting bundler such as Webpack or Rollup, you will want to import and register the individual components. This will ensure that any unused components are tree-shaken out of your builds.
@@ -41,7 +41,7 @@ provideFASTDesignSystem().register(allComponents);
 
 ### From CDN
 
-A pre-bundled script that contains all APIs needed to use the components is available on CDN. You can use this script by adding [`type="module"`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) to the script element and then importing from the CDN. Here's what that would look like for the FAST Web Components:
+A pre-bundled script that contains all APIs needed to use the components is available on CDN. You can use this script by adding [`type="module"`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) to the script element and then importing from the CDN. Here's how that would look:
 
 ```html
 <!DOCTYPE html>
@@ -53,11 +53,11 @@ A pre-bundled script that contains all APIs needed to use the components is avai
 </html>
 ```
 
-If you are Fluent Web Components (or FAST components) from the CDN, there is no need to register the components. The CDN script includes code that automatically sets up the design system and registers all the components.
+If you are using Fluent UI Web Components (or the FAST components) from the CDN, there is no need to register the components. The CDN script includes code that automatically sets up the design system and registers all the components.
 
-> The above CDN location points to the latest release of `@fluentui/web-components`. It is advised that when you deploy your site or app, you import the specific version you have developed and tested with.
+> The above CDN location points to the latest release of `@fluentui/web-components`. When you deploy your site or app, you should instead import the specific version you have developed and tested with.
 
-For simplicity, examples throughout the documentation will assume the library has been installed from NPM, but you can always replace the import location with the CDN URL.
+For simplicity, this documentation assumes the library has been installed from NPM, but you can always replace the import location with the CDN URL.
 
 ## Add components
 
@@ -65,6 +65,6 @@ With the components registered, add any component to the HTML.
 
 ```html
 <!-- ... -->
-<fast-button>Hello world</fast-button>
+<fluent-button>Hello world</fluent-button>
 <!-- ... -->
 ```

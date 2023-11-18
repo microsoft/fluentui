@@ -31,6 +31,8 @@ export interface IButton {
    *
    * @param shouldFocusOnContainer - override to the ContextualMenu `shouldFocusOnContainer` prop.
    * BaseButton implementation defaults to `undefined`.
+   * Avoid using `shouldFocusOnContainer` as it breaks the default focus behaviour when using
+   * assistive technologies.
    * @param shouldFocusOnMount - override to the ContextualMenu `shouldFocusOnMount` prop.
    * BaseButton implementation defaults to `true`.
    */
@@ -101,7 +103,7 @@ export interface IButtonProps
   theme?: ITheme;
 
   /**
-   * Whether the button is checked
+   * Whether the button is checked. Should be used with the `toggle` attribute when creating a standalone on/off button.
    */
   checked?: boolean;
 
@@ -330,7 +332,7 @@ export interface IButtonProps
    * Style for the description text if applicable (for compound buttons).
    * @deprecated Use `secondaryText` instead.
    */
-  description?: IStyle;
+  description?: string;
 
   /**
    * yet unknown docs

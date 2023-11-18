@@ -8,6 +8,10 @@ import { ILegendsProps } from '../Legends/index';
 export interface IStackedBarChart {}
 import { IChartProps, IChartDataPoint } from './index';
 
+/**
+ * Stacked Bar Chart properties
+ * {@docCategory StackedBarChart}
+ */
 export interface IStackedBarChartProps {
   /**
    * Data to render in the chart.
@@ -125,8 +129,17 @@ export interface IStackedBarChartProps {
    * props for the callout in the chart
    */
   calloutProps?: Partial<ICalloutProps>;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 
+/**
+ * Stacked Bar Chart style properties
+ * {@docCategory StackedBarChart}
+ */
 export interface IStackedBarChartStyleProps {
   /**
    * Theme (provided through customization.)
@@ -187,8 +200,17 @@ export interface IStackedBarChartStyleProps {
    * the ratio position for the target triangle
    */
   targetRatio?: number;
+
+  /**
+   * prop to check if benchmark data or target data is provided
+   */
+  showTriangle?: boolean;
 }
 
+/**
+ * Stacked Bar Chart styles
+ * {@docCategory StackedBarChart}
+ */
 export interface IStackedBarChartStyles {
   /**
    *  Style for the root element.
@@ -204,6 +226,11 @@ export interface IStackedBarChartStyles {
    * Style for the chart Title.
    */
   chartTitle: IStyle;
+
+  /**
+   * Style for left side text of the chart title
+   */
+  chartTitleLeft: IStyle;
 
   /**
    * Style for the legend container div

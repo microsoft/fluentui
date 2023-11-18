@@ -2,14 +2,22 @@
 /** @jsx withSlots */
 import * as React from 'react';
 import { withSlots, createComponent, getSlots } from '@fluentui/foundation-legacy';
-import { getNativeProps, htmlElementProperties, warnDeprecations } from '../../Utilities';
-import { styles } from './Stack.styles';
+import { css, getNativeProps, htmlElementProperties, warnDeprecations } from '../../Utilities';
+import { styles, GlobalClassNames as StackGlobalClassNames } from './Stack.styles';
 import { StackItem } from './StackItem/StackItem';
 import type { IStackComponent, IStackProps, IStackSlots } from './Stack.types';
 import type { IStackItemProps } from './StackItem/StackItem.types';
 
 const StackView: IStackComponent['view'] = props => {
-  const { as: RootType = 'div', disableShrink, wrap, ...rest } = props;
+  const {
+    as: RootType = 'div',
+    disableShrink = false,
+    // eslint-disable-next-line deprecation/deprecation
+    doNotRenderFalsyValues = false,
+    enableScopedSelectors = false,
+    wrap,
+    ...rest
+  } = props;
 
   warnDeprecations('Stack', props, {
     gap: 'tokens.childrenGap',
@@ -18,27 +26,11 @@ const StackView: IStackComponent['view'] = props => {
     padding: 'tokens.padding',
   });
 
-  const stackChildren: (React.ReactChild | null)[] | null | undefined = React.Children.map(
-    props.children,
-    (child: React.ReactElement<IStackItemProps>, index: number) => {
-      if (!child) {
-        return null;
-      }
-
-      if (_isStackItem(child)) {
-        const defaultItemProps: IStackItemProps = {
-          shrink: !disableShrink,
-        };
-
-        return React.cloneElement(child, {
-          ...defaultItemProps,
-          ...child.props,
-        });
-      }
-
-      return child;
-    },
-  );
+  const stackChildren = _processStackChildren(props.children, {
+    disableShrink,
+    enableScopedSelectors,
+    doNotRenderFalsyValues,
+  });
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(rest, htmlElementProperties);
 
@@ -57,6 +49,52 @@ const StackView: IStackComponent['view'] = props => {
 
   return <Slots.root {...nativeProps}>{stackChildren}</Slots.root>;
 };
+
+function _processStackChildren(
+  children: React.ReactNode,
+  {
+    disableShrink,
+    enableScopedSelectors,
+    doNotRenderFalsyValues,
+  }: { disableShrink: boolean; enableScopedSelectors: boolean; doNotRenderFalsyValues: boolean },
+): (React.ReactChild | React.ReactFragment | React.ReactPortal)[] {
+  let childrenArray = React.Children.toArray(children);
+
+  childrenArray = React.Children.map(childrenArray, child => {
+    if (!child) {
+      return doNotRenderFalsyValues ? null : child;
+    }
+
+    // We need to allow children that aren't falsy values, but not valid elements since they could be
+    // a string like <Stack>{'sample string'}</Stack>
+    if (!React.isValidElement(child)) {
+      return child;
+    }
+
+    if (child.type === React.Fragment) {
+      return child.props.children
+        ? _processStackChildren(child.props.children, { disableShrink, enableScopedSelectors, doNotRenderFalsyValues })
+        : null;
+    }
+
+    const childAsReactElement = child as React.ReactElement;
+
+    let defaultItemProps: IStackItemProps = {};
+    if (_isStackItem(child)) {
+      defaultItemProps = { shrink: !disableShrink };
+    }
+    const childClassName = childAsReactElement.props.className;
+
+    return React.cloneElement(childAsReactElement, {
+      ...defaultItemProps,
+      ...childAsReactElement.props,
+      ...(childClassName && { className: childClassName }),
+      ...(enableScopedSelectors && { className: css(StackGlobalClassNames.child, childClassName) }),
+    });
+  });
+
+  return childrenArray;
+}
 
 function _isStackItem(item: React.ReactNode): item is typeof StackItem {
   // In theory, we should be able to just check item.type === StackItem.

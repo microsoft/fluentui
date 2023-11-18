@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import { series, task, copyInstructionsTask, copyInstructions, cleanTask } from '@fluentui/scripts';
-import { findGitRoot, getAllPackageInfo } from '@fluentui/scripts/monorepo/index';
+import { series, task, copyInstructionsTask, copyInstructions, cleanTask } from '@fluentui/scripts-tasks';
+import { findGitRoot, getAllPackageInfo } from '@fluentui/scripts-monorepo';
 
 task('clean', cleanTask());
 
@@ -19,17 +19,18 @@ const instructions = copyInstructions.copyFilesToDestinationDirectory(
 // it would cause both of those dependency trees to get built every time.)
 const dependencies = [
   '@fluentui/docs',
-  '@fluentui/perf-test',
+  '@fluentui/perf-test-northstar',
   '@fluentui/public-docsite-resources',
   '@fluentui/public-docsite',
   '@fluentui/react',
   '@fluentui/react-charting',
-  '@fluentui/react-components',
+  '@fluentui/public-docsite-v9',
   '@fluentui/react-experiments',
-  '@fluentui/react-input',
   '@fluentui/web-components',
-  'perf-test',
-  'theming-designer',
+  '@fluentui/perf-test',
+  '@fluentui/theming-designer',
+  '@fluentui/theme-designer',
+  '@fluentui/perf-test-react-components',
 ];
 
 const allPackages = getAllPackageInfo();
@@ -42,7 +43,7 @@ repoDeps.forEach(dep => {
     if (dep.packageJson.name === '@fluentui/docs') {
       instructions.push(...copyInstructions.copyFilesInDirectory(packageDist, path.join('dist', 'react-northstar')));
       deployedPackages.add(dep.packageJson.name);
-    } else if (dep.packageJson.name === '@fluentui/perf-test') {
+    } else if (dep.packageJson.name === '@fluentui/perf-test-northstar') {
       instructions.push(
         ...copyInstructions.copyFilesInDirectory(packageDist, path.join('dist', 'perf-test-northstar')),
       );

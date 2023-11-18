@@ -1,8 +1,177 @@
 # Change Log - @fluentui/date-time-utilities
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Sat, 28 Oct 2023 00:29:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.14](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.14)
+
+Sat, 28 Oct 2023 00:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.13..@fluentui/date-time-utilities_v8.5.14)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+
+## [8.5.13](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.13)
+
+Mon, 19 Jun 2023 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.12..@fluentui/date-time-utilities_v8.5.13)
+
+### Patches
+
+- chore: migrate to ts 4.7 which wont emit undefined anymore for optional arguments ([PR #28067](https://github.com/microsoft/fluentui/pull/28067) by martinhochel@microsoft.com)
+
+## [8.5.12](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.12)
+
+Wed, 31 May 2023 07:38:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.11..@fluentui/date-time-utilities_v8.5.12)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.11 ([commit](https://github.com/microsoft/fluentui/commit/dd8c30d9b97f68eb332366fc0e69775a88775319) by beachball)
+
+## [8.5.11](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.11)
+
+Tue, 30 May 2023 07:36:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.10..@fluentui/date-time-utilities_v8.5.11)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.10 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+
+## [8.5.10](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.10)
+
+Fri, 05 May 2023 18:14:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.9..@fluentui/date-time-utilities_v8.5.10)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+- Bump @fluentui/set-version to v8.2.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+
+## [8.5.9](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.9)
+
+Tue, 02 May 2023 00:58:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.8..@fluentui/date-time-utilities_v8.5.9)
+
+### Patches
+
+- fix: esm, cjs, and amd folders should all be published correctly. ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by tristan.watanabe@gmail.com)
+- Bump @fluentui/set-version to v8.2.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+
+## [8.5.8](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.8)
+
+Mon, 01 May 2023 07:39:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.7..@fluentui/date-time-utilities_v8.5.8)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.7 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+
+## [8.5.7](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.7)
+
+Tue, 25 Apr 2023 07:38:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.6..@fluentui/date-time-utilities_v8.5.7)
+
+### Patches
+
+- chore: Refactored getDateFromTimeSelection variable names. ([PR #26482](https://github.com/microsoft/fluentui/pull/26482) by jamwu@microsoft.com)
+
+## [8.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.6)
+
+Fri, 17 Mar 2023 08:15:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.5..@fluentui/date-time-utilities_v8.5.6)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.6 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+
+## [8.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.5)
+
+Fri, 03 Feb 2023 07:50:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.4..@fluentui/date-time-utilities_v8.5.5)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.5 ([PR #26569](https://github.com/microsoft/fluentui/pull/26569) by beachball)
+
+## [8.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.4)
+
+Tue, 10 Jan 2023 07:50:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.3..@fluentui/date-time-utilities_v8.5.4)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.4 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
+
+## [8.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.3)
+
+Wed, 09 Nov 2022 07:48:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.2..@fluentui/date-time-utilities_v8.5.3)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.3 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+
+## [8.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.2)
+
+Mon, 08 Aug 2022 07:39:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.1..@fluentui/date-time-utilities_v8.5.2)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+
+## [8.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.1)
+
+Fri, 13 May 2022 07:45:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.5.0..@fluentui/date-time-utilities_v8.5.1)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.1 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
+
+## [8.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.5.0)
+
+Fri, 11 Mar 2022 19:51:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.4.0..@fluentui/date-time-utilities_v8.5.0)
+
+### Minor changes
+
+- Bump version to fix exports for partner team ([PR #22074](https://github.com/microsoft/fluentui/pull/22074) by gcox@microsoft.com)
+
+### Patches
+
+- Add compat exports to date-time-utilities ([PR #22063](https://github.com/microsoft/fluentui/pull/22063) by gcox@microsoft.com)
+
+## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.4.0)
+
+Thu, 03 Mar 2022 07:24:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.3.0..@fluentui/date-time-utilities_v8.4.0)
+
+### Minor changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Bump @fluentui/set-version to v8.2.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.3.0)
+
+Tue, 25 Jan 2022 07:30:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.2.3..@fluentui/date-time-utilities_v8.3.0)
+
+### Minor changes
+
+- Added getDateFromTimeSelection function, TimeConstant values OffsetTo24HourFormat and TimeFormatRegex ([PR #20805](https://github.com/microsoft/fluentui/pull/20805) by jamwu@microsoft.com)
+
+## [8.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.2.3)
+
+Thu, 25 Nov 2021 14:54:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/date-time-utilities_v8.2.2..@fluentui/date-time-utilities_v8.2.3)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.1.5 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
 
 ## [8.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/date-time-utilities_v8.2.2)
 

@@ -3,49 +3,84 @@ import * as React from 'react';
 import { IDocPageProps, IExample } from '@fluentui/react/lib/common/DocPage.types';
 
 import { DetailsListBasicExample } from './DetailsList.Basic.Example';
-const DetailsListBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Basic.Example.tsx') as string;
+const DetailsListBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Basic.Example.tsx') as string;
 
 import { DetailsListAnimationExample } from './DetailsList.Animation.Example';
-const DetailsListAnimationExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Animation.Example.tsx') as string;
+const DetailsListAnimationExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Animation.Example.tsx') as string;
 
 import { DetailsListCompactExample } from './DetailsList.Compact.Example';
-const DetailsListCompactExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Compact.Example.tsx') as string;
+const DetailsListCompactExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Compact.Example.tsx') as string;
 
 import { DetailsListCustomColumnsExample } from './DetailsList.CustomColumns.Example';
-const DetailsListCustomColumnsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.CustomColumns.Example.tsx') as string;
+const DetailsListCustomColumnsExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.CustomColumns.Example.tsx') as string;
 
 import { DetailsListCustomRowsExample } from './DetailsList.CustomRows.Example';
-const DetailsListCustomRowsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.CustomRows.Example.tsx') as string;
+const DetailsListCustomRowsExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.CustomRows.Example.tsx') as string;
 
 import { DetailsListCustomGroupHeadersExample } from './DetailsList.CustomGroupHeaders.Example';
-const DetailsListCustomGroupHeadersExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.CustomGroupHeaders.Example.tsx') as string;
+const DetailsListCustomGroupHeadersExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.CustomGroupHeaders.Example.tsx') as string;
 
 import { DetailsListAdvancedExample } from './DetailsList.Advanced.Example';
-const DetailsListAdvancedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Advanced.Example.tsx') as string;
+const DetailsListAdvancedExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Advanced.Example.tsx') as string;
 
 import { DetailsListProportionalColumnsExample } from './DetailsList.ProportionalColumns.Example';
-const DetailsListProportionalColumnsCode = require('!raw-loader!@fluentui/react-examples/src/react/DetailsList/DetailsList.ProportionalColumns.Example.tsx') as string;
+const DetailsListProportionalColumnsCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.ProportionalColumns.Example.tsx') as string;
 
 import { DetailsListGroupedExample } from './DetailsList.Grouped.Example';
-const DetailsListGroupedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Grouped.Example.tsx') as string;
+const DetailsListGroupedExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Grouped.Example.tsx') as string;
+
+import { DetailsListGroupedV2Example } from './DetailsList.GroupedV2.Example';
+const DetailsListGroupedV2ExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.GroupedV2.Example.tsx') as string;
 
 import { DetailsListGroupedLargeExample } from './DetailsList.Grouped.Large.Example';
-const DetailsListGroupedLargeExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Grouped.Large.Example.tsx') as string;
+const DetailsListGroupedLargeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Grouped.Large.Example.tsx') as string;
+
+import { DetailsListGroupedV2LargeExample } from './DetailsList.GroupedV2.Large.Example';
+const DetailsListGroupedV2LargeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.GroupedV2.Large.Example.tsx') as string;
+
+import { DetailsListGroupedV2ScrollToIndexExample } from './DetailsList.GroupedV2.ScrollToIndex.Example';
+const DetailsListGroupedV2ScrollToIndexExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.GroupedV2.ScrollToIndex.Example.tsx') as string;
 
 import { DetailsListDragDropExample } from './DetailsList.DragDrop.Example';
-const DetailsListDragDropExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.DragDrop.Example.tsx') as string;
+const DetailsListDragDropExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.DragDrop.Example.tsx') as string;
 
 import { DetailsListDocumentsExample } from './DetailsList.Documents.Example';
-const DetailsListDocumentsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Documents.Example.tsx') as string;
+const DetailsListDocumentsExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Documents.Example.tsx') as string;
 
 import { DetailsListNavigatingFocusExample } from './DetailsList.NavigatingFocus.Example';
-const DetailsListNavigatingFocusExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.NavigatingFocus.Example.tsx') as string;
+const DetailsListNavigatingFocusExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.NavigatingFocus.Example.tsx') as string;
 
 import { ShimmerApplicationExample as DetailsListShimmerExample } from '../Shimmer/Shimmer.Application.Example';
-const DetailsListShimmerExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Shimmer/Shimmer.Application.Example.tsx') as string;
+const DetailsListShimmerExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Shimmer/Shimmer.Application.Example.tsx') as string;
 
 import { DetailsListCustomFooterExample } from './DetailsList.CustomFooter.Example';
-const DetailsListCustomFooterExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.CustomFooter.Example.tsx') as string;
+const DetailsListCustomFooterExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.CustomFooter.Example.tsx') as string;
+
+import { DetailsListKeyboardAccessibleResizeAndReorderExample } from './DetailsList.KeyboardAccessibleResizeAndReorder.Example';
+const DetailsListKeyboardAccessibleResizeAndReorderExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.KeyboardAccessibleResizeAndReorder.Example.tsx') as string;
+
+import { DetailsListKeyboardOverridesExample } from './DetailsList.KeyboardOverrides.Example';
+const DetailsListKeyboardOverridesExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.KeyboardOverrides.Example.tsx') as string;
 
 export const DetailsListPageProps: IDocPageProps = {
   title: 'DetailsList',
@@ -98,10 +133,28 @@ export const DetailsListSimpleGroupedPageProps: IDocPageProps = generateProps({
   view: <DetailsListGroupedExample />,
 });
 
+export const DetailsListSimpleGroupedV2PageProps: IDocPageProps = generateProps({
+  title: 'Simple grouped DetailsList V2',
+  code: DetailsListGroupedV2ExampleCode,
+  view: <DetailsListGroupedV2Example />,
+});
+
 export const DetailsListLargeGroupedPageProps: IDocPageProps = generateProps({
   title: 'Large grouped DetailsList',
   code: DetailsListGroupedLargeExampleCode,
   view: <DetailsListGroupedLargeExample />,
+});
+
+export const DetailsListLargeGroupedV2PageProps: IDocPageProps = generateProps({
+  title: 'Large grouped DetailsList V2',
+  code: DetailsListGroupedV2LargeExampleCode,
+  view: <DetailsListGroupedV2LargeExample />,
+});
+
+export const DetailsListScrollToIndexGroupedV2PageProps: IDocPageProps = generateProps({
+  title: 'Scroll To Index DetailsList V2',
+  code: DetailsListGroupedV2ScrollToIndexExampleCode,
+  view: <DetailsListGroupedV2ScrollToIndexExample />,
 });
 
 export const DetailsListCustomColumnsPageProps: IDocPageProps = generateProps({
@@ -156,4 +209,16 @@ export const DetailsListCustomFooterPageProps: IDocPageProps = generateProps({
   title: 'Rendering custom DetailsList footer',
   code: DetailsListCustomFooterExampleCode,
   view: <DetailsListCustomFooterExample />,
+});
+
+export const DetailsListKeyboardAccessibleResizeAndReorderProps: IDocPageProps = generateProps({
+  title: 'Keyboard-accessible column reordering and resizing',
+  code: DetailsListKeyboardAccessibleResizeAndReorderExampleCode,
+  view: <DetailsListKeyboardAccessibleResizeAndReorderExample />,
+});
+
+export const DetailsListKeyboardOverridesProps: IDocPageProps = generateProps({
+  title: 'Keyboard overrides for selection',
+  code: DetailsListKeyboardOverridesExampleCode,
+  view: <DetailsListKeyboardOverridesExample />,
 });

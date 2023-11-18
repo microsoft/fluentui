@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { AreaChart } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { AreaChart, DataVizPalette } from '@fluentui/react-charting';
 import * as d3 from 'd3-format';
 import { ILineChartProps } from '@fluentui/react-charting';
 
@@ -123,17 +122,17 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
       {
         legend: 'First',
         data: chart1Points,
-        color: DefaultPalette.accent,
+        color: DataVizPalette.color8,
       },
       {
         legend: 'Second',
         data: chart2Points,
-        color: DefaultPalette.blueLight,
+        color: DataVizPalette.color9,
       },
       {
         legend: 'Third',
         data: chart3Points,
-        color: DefaultPalette.blueDark,
+        color: DataVizPalette.color10,
       },
     ];
 
@@ -145,10 +144,26 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
 
     return (
       <>
-        <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
-        <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <label htmlFor="changeWidth_Custom">Change Width:</label>
+        <input
+          type="range"
+          value={this.state.width}
+          min={200}
+          max={1000}
+          id="changeWidth_Custom"
+          onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
+        />
+        <label htmlFor="changeHeight_Custom">Change Height:</label>
+        <input
+          type="range"
+          value={this.state.height}
+          min={200}
+          max={1000}
+          id="changeHeight_Custom"
+          onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
+        />
         <div style={rootStyle}>
           <AreaChart
             height={this.state.height}
@@ -156,9 +171,11 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
             data={chartData}
             legendsOverflowText={'Overflow Items'}
             yAxisTickFormat={d3.format('$,')}
+            enablePerfOptimization={true}
             legendProps={{
               allowFocusOnLegends: true,
             }}
+            enableReflow={true}
           />
         </div>
       </>

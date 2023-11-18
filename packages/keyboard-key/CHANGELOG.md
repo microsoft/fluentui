@@ -1,8 +1,35 @@
 # Change Log - @fluentui/keyboard-key
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 18:14:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.9](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.4.9)
+
+Fri, 05 May 2023 18:14:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-key_v0.4.8..@fluentui/keyboard-key_v0.4.9)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+
+## [0.4.8](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.4.8)
+
+Tue, 02 May 2023 00:58:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-key_v0.4.5..@fluentui/keyboard-key_v0.4.8)
+
+### Patches
+
+- fix: esm, cjs, and amd folders should all be published correctly. ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by tristan.watanabe@gmail.com)
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.4.0)
+
+Thu, 03 Mar 2022 07:24:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-key_v0.3.4..@fluentui/keyboard-key_v0.4.0)
+
+### Minor changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
 
 ## [0.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.3.4)
 

@@ -37,7 +37,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
       fonts.medium,
       {
         backgroundColor: 'transparent',
-        position: isModeless ? 'absolute' : 'fixed',
+        position: 'fixed',
         height: '100%',
         width: '100%',
         display: 'flex',
@@ -55,8 +55,12 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
       isOpen && classNames.isOpen,
       isVisible && {
         opacity: 1,
-        pointerEvents: 'auto',
       },
+      isVisible &&
+        !isModeless && {
+          pointerEvents: 'auto',
+        },
+
       className,
     ],
     main: [
@@ -75,6 +79,9 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         minWidth: '288px',
         overflowY: 'auto',
         zIndex: isModeless ? ZIndexes.Layer : undefined,
+      },
+      isModeless && {
+        pointerEvents: 'auto',
       },
       topOffsetFixed &&
         typeof modalRectangleTop === 'number' &&
@@ -100,15 +107,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
       },
       scrollableContentClassName,
     ],
-    layer: isModeless && [
-      layerClassName,
-      classNames.layer,
-      {
-        position: 'static',
-        width: 'unset',
-        height: 'unset',
-      },
-    ],
+    layer: isModeless && [layerClassName, classNames.layer, { pointerEvents: 'none' }],
     keyboardMoveIconContainer: {
       position: 'absolute',
       display: 'flex',

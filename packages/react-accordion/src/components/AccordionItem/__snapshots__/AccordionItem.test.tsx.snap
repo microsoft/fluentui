@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`AccordionItem renders a default state 1`] = `
-<div>
-  Default AccordionItem
-</div>
-`;

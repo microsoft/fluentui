@@ -1,0 +1,143 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/Header Migration" />
+
+# Header Migration
+
+## Overview:
+
+`Header` component is removed. Instead, use `Text` or typography components and specify heading in the `as` property. Typography components are based on the `Text` component, they share the same props but comes with added styles.
+
+Typography components:
+`Display`, `LargeTitle`, `Title1`, `Title2`, `Title3`, `Headline`, `Subheadline`, `Body`, `Caption`
+
+Before:
+
+```tsx
+import { Header } from '@fluentui/react-northstar';
+const Component = () => <Header content="Here is Header 1" />; // default `as` prop is `h1`
+```
+
+After:
+
+```tsx
+import { Text } from '@fluentui/react-components';
+const Component = () => <Text as="h1">Here is Header 1</Text>;
+```
+
+Examples using typography components for matching styles:
+
+Before:
+
+```tsx
+import { Header } from '@fluentui/react-northstar';
+const Component = () => (
+  <div>
+    <Header as="h1" content="First Header" />
+    <Header as="h2" content="Second Header" />
+    <Header as="h3" content="Third Header" />
+    <Header as="h4" content="Fourth Header" />
+    <Header as="h5" content="Fifth Header" />
+    <Header as="h6" content="Sixth Header" />
+  </div>
+);
+```
+
+After:
+
+```tsx
+import { Title1, Title2, Title3, Headline, Subheadline, Body } from '@fluentui/react-components';
+const Component = () => (
+  <div>
+    <Title1 as="h1">First Header</Title1>
+    <Title2 as="h2">Second Header</Title2>
+    <Title3 as="h3">Third Header</Title3>
+    <Headline as="h4">Fourth Header</Headline>
+    <Subheadline as="h5">Fifth Header</Subheadline>
+    <Body as="h6">Sixth Header</Body>
+  </div>
+);
+```
+
+## How to migrate props:
+
+| Header props              | migrate guide                                                                                            |
+| ------------------------- | -------------------------------------------------------------------------------------------------------- |
+| align                     | keep it as is                                                                                            |
+| as                        | keep it as is or specify it as `h1`                                                                      |
+| className                 | keep it as is                                                                                            |
+| content                   | see Migrate content prop in this document                                                                |
+| variables, design, styles | see Migrate style overrides in this document                                                             |
+| accessibility             | see [migrate-custom-accessibility.md](?path=/docs/concepts-migrating-from-v0-custom-accessibility--page) |
+| color                     | REMOVED: use styles and color tokens to set the color                                                    |
+| ref, key                  | keep it as is                                                                                            |
+
+Here is comparison for both versions: [Sandbox](https://codesandbox.io/s/header-text-fluentui-rcy2u4?file=/example.tsx)
+
+---
+
+## Migrate `content` prop
+
+Move `content` to JSX children.
+
+Before:
+
+```tsx
+import { Header } from '@fluentui/react-northstar';
+const Component = () => <Header content="Header content" />;
+```
+
+After:
+
+```tsx
+import { Text } from '@fluentui/react-components';
+const Component = () => <Text as="h1">Header content</Text>;
+```
+
+## Migrate style overrides
+
+⚠️ **If this is your first migration**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migrating-from-v0-custom-style-overrides--page).
+
+### Example for migrate boolean `variables`:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Header } from '@fluentui/react-northstar';
+
+export const Component = () => <Header variables={{ isMainHeader: true }} />;
+
+// in header-styles.ts
+export const headerStyles1 = {
+  root: ({ variables: { isMainHeader, colorSchemeDefault } }) => ({
+    ...(isMainHeader && {
+      color: colorSchemeDefault.foreground,
+    }),
+  }),
+};
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Text } from '@fluentui/react-components';
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+
+export const Component = () => {
+  const classes = useStyles();
+  return <Text as="h1" className={classes.mainHeader}></Text>;
+};
+
+// in COMPONENT_NAME.styles.ts
+import { makeStyles, tokens } from '@fluentui/react-components';
+
+export const useStyles = makeStyles({
+  mainHeader: {
+    color: tokens.colorNeutralForeground1,
+  },
+});
+```
+
+You can replace certain styles with supported `Text` props in V9. Boolean props: `wrap`, `truncate`, `block`, `italic`, `underline`, `strikethrough`. Other props for font styling: `size`, `font`, `weight`.

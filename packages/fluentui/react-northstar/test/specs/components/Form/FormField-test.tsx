@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { isConformant, implementsShorthandProp } from 'test/specs/commonTests';
-import { mountWithProvider } from 'test/utils';
+import { createTestContainer, mountWithProvider } from 'test/utils';
 import { Button } from 'src/components/Button/Button';
 import { RadioGroup } from 'src/components/RadioGroup/RadioGroup';
 import { Input } from 'src/components/Input/Input';
@@ -22,6 +22,15 @@ describe('FormField', () => {
   formFieldImplementsShorthandProp('label', Text);
   formFieldImplementsShorthandProp('message', Text);
   formFieldImplementsShorthandProp('control', Box, { mapsValueToProp: 'children' });
+
+  let testContainerInfo: ReturnType<typeof createTestContainer> | undefined;
+
+  afterEach(() => {
+    if (testContainerInfo) {
+      testContainerInfo.removeTestContainer();
+      testContainerInfo = undefined;
+    }
+  });
 
   it('renders the component control provided in the control shorthand prop', () => {
     const controls = [Button, Input, RadioGroup];
@@ -58,6 +67,7 @@ describe('FormField', () => {
   });
 
   it('renders satisfactory indicator', () => {
+    testContainerInfo = createTestContainer();
     const formField = mountWithProvider(
       <FormField
         {...{
@@ -72,6 +82,8 @@ describe('FormField', () => {
           },
         }}
       />,
+      // toBeVisible requires that the element be in the document
+      { attachTo: testContainerInfo.testContainer },
     );
 
     expect(formField.find('PresenceAvailableIcon').length).toBe(0);

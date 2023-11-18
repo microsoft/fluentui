@@ -1,0 +1,151 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Developer/Advanced Configuration" />
+
+## Advanced Configuration
+
+### Child Window Rendering
+
+When rendering on the main browser window, many components need access to `window` or `document` for applying styling, listening for events, or measuring things. However it is possible to render to child windows and elements hosted in `iframe` elements.
+
+In these cases, the target element is hosted in a different context, and thus have a different `window` reference. To aid in providing components with the correct instances of `window` or `document`, React context can be used to provide the tree of React components with the correct instance.
+
+#### Configuring rendering
+
+We need to configure a renderer for `makeStyles()` and pass a `targetDocument` to `RendererProvider` & `FluentProvider`:
+
+```jsx
+import { createDOMRenderer, FluentProvider, RendererProvider } from '@fluentui/react-components';
+import * as React from 'react';
+
+function MyComponent(props) {
+  const { children, targetDocument } = props;
+  const renderer = React.useMemo(() => createDOMRenderer(targetDocument), [targetDocument]);
+
+  return (
+    <RendererProvider renderer={renderer} targetDocument={targetDocument}>
+      <FluentProvider targetDocument={targetDocument}>{children}</FluentProvider>
+    </RendererProvider>
+  );
+}
+```
+
+You can check complete example at [CodeSandbox](https://codesandbox.io/s/fluentuireact-components-render-into-iframe-l62ke).
+
+### Media Queries Sorting
+
+Fluent UI React v9 uses Griffel as CSS-in-JS to apply styles. To provide deterministic behavior, styles applied by Griffel [are sorted]((https://griffel.js.org/react/guides/atomic-css#lvfha-order-of-pseudo-classes), the same applies to media queries. Fluent UI does not provide an opinionated default to sort media queries as the order may vary depending on the specific needs of the application.
+
+To configure the sorting behavior, please pass `compareMediaQueries` function with the same signature as sort functions in e.g. `Array.prototype.sort`.
+
+```js
+import { createDOMRenderer } from '@griffel/react';
+
+const mediaQueryOrder = [
+  'only screen and (min-width: 1366px)',
+  'only screen and (min-width: 1366px)',
+  'only screen and (min-width: 1920px)',
+];
+
+function sortMediaQueries(a, b) {
+  return mediaQueryOrder.indexOf(a) - mediaQueryOrder.indexOf(b);
+}
+
+const renderer = createDOMRenderer(document, {
+  compareMediaQueries,
+});
+```
+
+```html
+<html>
+  <head>
+    <style media="only screen and (min-width: 1024px)" data-make-styles-bucket="m"></style>
+    <style media="only screen and (min-width: 1366px)" data-make-styles-bucket="m"></style>
+    <style media="only screen and (min-width: 1920px)" data-make-styles-bucket="m"></style>
+  </head>
+</html>
+```
+
+For mobile-first methodology, consider using [`sort-css-media-queries`](https://github.com/dutchenkoOleg/sort-css-media-queries):
+
+```js
+import { createDOMRenderer } from '@griffel/react';
+import sortCSSmq from 'sort-css-media-queries';
+
+const renderer = createDOMRenderer(document, {
+  compareMediaQueries: sortCSSmq,
+});
+```
+
+```html
+<html>
+  <head>
+    <style media="only screen and (min-width: 1px)" data-make-styles-bucket="m"></style>
+    <style media="only screen and (min-width: 480px)" data-make-styles-bucket="m"></style>
+    <style media="only screen and (min-width: 640px)" data-make-styles-bucket="m"></style>
+  </head>
+</html>
+```
+
+### Content Security Policies (CSP)
+
+To add `nonce` attribute need for [Content Security Policies](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP), please use `styleElementAttributes` to specify it:
+
+```jsx
+import { createDOMRenderer, FluentProvider, RendererProvider } from '@fluentui/react-components';
+import * as React from 'react';
+
+function MyComponent(props) {
+  const { children } = props;
+  const renderer = React.useMemo(
+    () => createDOMRenderer(document, { styleElementAttributes: { nonce: 'random' } }),
+    [],
+  );
+
+  return (
+    <RendererProvider renderer={renderer}>
+      <FluentProvider>{children}</FluentProvider>
+    </RendererProvider>
+  );
+}
+```
+
+### IdPrefixProvider
+
+Having multiple applications using `FluentProvider` on a single web page can cause interop problems when they come from different bundles, more details in [microsoft/fluentui#26496](https://github.com/microsoft/fluentui/pull/26496).
+
+### React 18
+
+It's possible to handle id prefixing natively with React 18 using the [`createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters) API by configuring `identifierPrefix` on it:
+
+```jsx
+import * as React from 'react';
+import { createRoot } from 'react-dom';
+
+const root = createRoot(document.getElementById('root'), {
+  identifierPrefix: 'APP1-',
+});
+
+root.render(<App />);
+```
+
+### React 16 & 17
+
+Adding the `IdPrefixProvider` component around the `FluentProvider` will resolve the issue of losing styling on components and IDs collisions in an application.
+
+```jsx
+import { IdPrefixProvider, FluentProvider } from '@fluentui/react-components';
+import * as React from 'react';
+
+function MyApp() {
+  return (
+    <IdPrefixProvider value="APP1-">
+      <FluentProvider>{/* children */}</FluentProvider>
+    </IdPrefixProvider>
+  );
+}
+```
+
+## References
+
+- https://griffel.js.org/react/api/create-dom-renderer

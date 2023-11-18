@@ -63,15 +63,11 @@ definitions.push({
 
 // Example: Adds attribute 'aria-expanded=true' based on the property 'menuOpen' if the component has 'menu' property to 'anchor' slot.
 definitions.push({
-  regexp: /Adds attribute '([\w-]+)=([\w\d]+)' based on the property '([\w-]+)' if the component has '([\w-]+)' property to '([\w-]+)' slot\./g,
+  regexp:
+    /Adds attribute '([\w-]+)=([\w\d]+)' based on the property '([\w-]+)' if the component has '([\w-]+)' property to '([\w-]+)' slot\./g,
   testMethod: (parameters: TestMethod) => {
-    const [
-      attributeToBeAdded,
-      attributeExpectedValue,
-      propertyBasedOn,
-      propertyDependingOn,
-      elementWhereToBeAdded,
-    ] = parameters.props;
+    const [attributeToBeAdded, attributeExpectedValue, propertyBasedOn, propertyDependingOn, elementWhereToBeAdded] =
+      parameters.props;
     const property = {};
     property[propertyDependingOn] = [{}, {}];
     property[propertyBasedOn] = true;
@@ -81,17 +77,15 @@ definitions.push({
     // when property depending on is undefined, then there should not be 'aria' attribute added
     const propertyDependingOnValue = undefined;
     property[propertyDependingOn] = propertyDependingOnValue;
-    const expectedResultDependingPropertyUndefined = parameters.behavior(property).attributes[elementWhereToBeAdded][
-      attributeToBeAdded
-    ];
+    const expectedResultDependingPropertyUndefined =
+      parameters.behavior(property).attributes[elementWhereToBeAdded][attributeToBeAdded];
     expect(expectedResultDependingPropertyUndefined).toEqual(propertyDependingOnValue);
 
     // when property based on is undefined, then there should 'aria' attribute get false value
     property[propertyDependingOn] = [{}, {}];
     property[propertyBasedOn] = undefined;
-    const expectedResultBasedOnPropertyUndefined = parameters.behavior(property).attributes[elementWhereToBeAdded][
-      attributeToBeAdded
-    ];
+    const expectedResultBasedOnPropertyUndefined =
+      parameters.behavior(property).attributes[elementWhereToBeAdded][attributeToBeAdded];
     expect(expectedResultBasedOnPropertyUndefined).toEqual(false);
   },
 });
@@ -114,24 +108,18 @@ definitions.push({
 
 // Example: Adds attribute 'aria-selected=true' to 'anchor' slot based on the property 'active'. This can be overriden by directly providing 'aria-selected' property to the component.
 definitions.push({
-  regexp: /Adds attribute '([\w-]+)=([\w\d]+)' to '([\w-]+)' slot based on the property '([\w-]+)'\. This can be overriden by providing '[\w-]+' property directly to the component\./g,
+  regexp:
+    /Adds attribute '([\w-]+)=([\w\d]+)' to '([\w-]+)' slot based on the property '([\w-]+)'\. This can be overriden by providing '[\w-]+' property directly to the component\./g,
   testMethod: (parameters: TestMethod) => {
-    const [
-      attributeToBeAdded,
-      valueOfAttributeToBeAdded,
-      component,
-      propertyBasedOn,
-      overridingProperty,
-    ] = parameters.props;
+    const [attributeToBeAdded, valueOfAttributeToBeAdded, component, propertyBasedOn, overridingProperty] =
+      parameters.props;
     const propertyWithOverride = { [overridingProperty]: valueOfAttributeToBeAdded };
     const propertyWithoutOverride = { [propertyBasedOn]: valueOfAttributeToBeAdded };
 
-    const expectedResultPropOveride = parameters.behavior(propertyWithOverride).attributes[component][
-      attributeToBeAdded
-    ];
-    const expectedResultPropBasedOn = parameters.behavior(propertyWithoutOverride).attributes[component][
-      attributeToBeAdded
-    ];
+    const expectedResultPropOveride =
+      parameters.behavior(propertyWithOverride).attributes[component][attributeToBeAdded];
+    const expectedResultPropBasedOn =
+      parameters.behavior(propertyWithoutOverride).attributes[component][attributeToBeAdded];
 
     expect(testHelper.convertToMatchingTypeIfApplicable(expectedResultPropOveride)).toEqual(
       testHelper.convertToMatchingTypeIfApplicable(valueOfAttributeToBeAdded),
@@ -144,14 +132,14 @@ definitions.push({
 
 // Example: Adds attribute 'aria-disabled=true' based on the property 'disabled'. This can be overriden by providing 'aria-disabled' property directly to the component.
 definitions.push({
-  regexp: /Adds attribute '([\w-]+)=([\w\d]+)' based on the property '([\w-]+)'\. This can be overriden by providing '[\w-]+' property directly to the component\./g,
+  regexp:
+    /Adds attribute '([\w-]+)=([\w\d]+)' based on the property '([\w-]+)'\. This can be overriden by providing '[\w-]+' property directly to the component\./g,
   testMethod: (parameters: TestMethod) => {
     const [attributeToBeAdded, valueOfAttributeToBeAdded, overridingProperty] = parameters.props;
     const propertyWithOverride = {};
     propertyWithOverride[overridingProperty] = valueOfAttributeToBeAdded;
-    const expectedResultAttributeDefined = parameters.behavior(propertyWithOverride).attributes.root[
-      attributeToBeAdded
-    ];
+    const expectedResultAttributeDefined =
+      parameters.behavior(propertyWithOverride).attributes.root[attributeToBeAdded];
     expect(testHelper.convertToMatchingTypeIfApplicable(expectedResultAttributeDefined)).toEqual(
       testHelper.convertToMatchingTypeIfApplicable(valueOfAttributeToBeAdded),
     );
@@ -170,17 +158,15 @@ function testMethodConditionallyAddAttribute(
 ) {
   const propertyWithAriaSelected = {};
   propertyWithAriaSelected[propertyDependsOn] = valueOfPropertyOtherwise;
-  const expectedResultAttributeNotDefined = parameters.behavior(propertyWithAriaSelected).attributes[component][
-    attributeToBeAdded
-  ];
+  const expectedResultAttributeNotDefined =
+    parameters.behavior(propertyWithAriaSelected).attributes[component][attributeToBeAdded];
   expect(testHelper.convertToMatchingTypeIfApplicable(expectedResultAttributeNotDefined)).toEqual(
     testHelper.convertToMatchingTypeIfApplicable(valueOfAttributeToBeAddedOtherwise),
   );
 
   propertyWithAriaSelected[propertyDependsOn] = valueOfProperty;
-  const expectedResultAttributeDefined = parameters.behavior(propertyWithAriaSelected).attributes[component][
-    attributeToBeAdded
-  ];
+  const expectedResultAttributeDefined =
+    parameters.behavior(propertyWithAriaSelected).attributes[component][attributeToBeAdded];
   expect(testHelper.convertToMatchingTypeIfApplicable(expectedResultAttributeDefined)).toEqual(
     testHelper.convertToMatchingTypeIfApplicable(valueOfAttributeToBeAddedIfTrue),
   );
@@ -188,7 +174,8 @@ function testMethodConditionallyAddAttribute(
 
 // Example: Adds attribute 'aria-disabled=true' to 'trigger' slot if 'disabled' property is true. Does not set the attribute otherwise.
 definitions.push({
-  regexp: /Adds attribute '([\w-]+)=([\w\d-]+)' to '([\w-]+)' slot if '([\w-]+)' property is true\. Does not set the attribute otherwise\./g,
+  regexp:
+    /Adds attribute '([\w-]+)=([\w\d-]+)' to '([\w-]+)' slot if '([\w-]+)' property is true\. Does not set the attribute otherwise\./g,
   testMethod: (parameters: TestMethod) => {
     const [attributeToBeAdded, valueOfAttributeToBeAdded, component, propertyDependsOn] = parameters.props;
 
@@ -207,7 +194,8 @@ definitions.push({
 
 // Example: Adds attribute 'aria-disabled=true' to 'trigger' slot if 'disabled' property is false or undefined. Does not set the attribute if true.
 definitions.push({
-  regexp: /Adds attribute '([\w-]+)=([\w\d-]+)' to '([\w-]+)' slot if '([\w-]+)' property is false or undefined\. Does not set the attribute if true\./g,
+  regexp:
+    /Adds attribute '([\w-]+)=([\w\d-]+)' to '([\w-]+)' slot if '([\w-]+)' property is false or undefined\. Does not set the attribute if true\./g,
   testMethod: (parameters: TestMethod) => {
     const [attributeToBeAdded, valueOfAttributeToBeAdded, component, propertyDependsOn] = parameters.props;
 
@@ -226,7 +214,8 @@ definitions.push({
 
 // Example: Adds attribute 'aria-disabled=true' to 'trigger' slot if 'disabled' property is true. Sets the attribute to 'false' otherwise.
 definitions.push({
-  regexp: /Adds attribute '([\w-]+)=([\w\d]+)' to '([\w-]+)' slot if '([\w-]+)' property is true\. Sets the attribute to '([\w\d-]+)' otherwise\./g,
+  regexp:
+    /Adds attribute '([\w-]+)=([\w\d]+)' to '([\w-]+)' slot if '([\w-]+)' property is true\. Sets the attribute to '([\w\d-]+)' otherwise\./g,
   testMethod: (parameters: TestMethod) => {
     const [
       attributeToBeAdded,
@@ -281,9 +270,8 @@ definitions.push({
     const [attributeToBeAdded, valueOfAttributeToBeAdded, slot, propertyDependsOn] = parameters.props;
 
     const propertyDependsOnUndefined = {};
-    const expectedResultAttributeNotDefined = parameters.behavior(propertyDependsOnUndefined).attributes[slot][
-      attributeToBeAdded
-    ];
+    const expectedResultAttributeNotDefined =
+      parameters.behavior(propertyDependsOnUndefined).attributes[slot][attributeToBeAdded];
     expect(testHelper.convertToMatchingTypeIfApplicable(expectedResultAttributeNotDefined)).toEqual(
       testHelper.convertToMatchingTypeIfApplicable(valueOfAttributeToBeAdded),
     );
@@ -291,9 +279,8 @@ definitions.push({
     const propertyDependsOnFalse = {
       [propertyDependsOn]: false,
     };
-    const expectedResultAttributeDefinedFalse = parameters.behavior(propertyDependsOnFalse).attributes[slot][
-      attributeToBeAdded
-    ];
+    const expectedResultAttributeDefinedFalse =
+      parameters.behavior(propertyDependsOnFalse).attributes[slot][attributeToBeAdded];
     expect(testHelper.convertToMatchingTypeIfApplicable(expectedResultAttributeDefinedFalse)).toEqual(
       testHelper.convertToMatchingTypeIfApplicable(valueOfAttributeToBeAdded),
     );
@@ -301,9 +288,8 @@ definitions.push({
     const propertyDependsOnExists = {
       [propertyDependsOn]: true,
     };
-    const expectedResultAttributeDefined = parameters.behavior(propertyDependsOnExists).attributes[slot][
-      attributeToBeAdded
-    ];
+    const expectedResultAttributeDefined =
+      parameters.behavior(propertyDependsOnExists).attributes[slot][attributeToBeAdded];
     expect(testHelper.convertToMatchingTypeIfApplicable(expectedResultAttributeDefined)).toEqual(undefined);
   },
 });
@@ -320,9 +306,8 @@ definitions.push({
     );
 
     const dependingOnProperty = { [propertyDependingOn]: 'mockText' };
-    const expectedResultForPropertyDependingOn = parameters.behavior(dependingOnProperty).attributes.root[
-      attributeToBeAdded
-    ];
+    const expectedResultForPropertyDependingOn =
+      parameters.behavior(dependingOnProperty).attributes.root[attributeToBeAdded];
     expect(testHelper.convertToMatchingTypeIfApplicable(expectedResultForPropertyDependingOn)).toBe(
       testHelper.convertToMatchingTypeIfApplicable(undefined),
     );
@@ -331,14 +316,11 @@ definitions.push({
 
 // Example:  Adds attribute 'aria-expanded=true' based on the property 'open' if the component has 'hasSubtree' property false or undefined. Does not set anything if true.
 definitions.push({
-  regexp: /Adds attribute '([\w-]+)=(\w+)' based on the property '(\w+)' if the component has '(\w+)' property false or undefined. Does not set anything if true\./g,
+  regexp:
+    /Adds attribute '([\w-]+)=(\w+)' based on the property '(\w+)' if the component has '(\w+)' property false or undefined. Does not set anything if true\./g,
   testMethod: (parameters: TestMethod) => {
-    const [
-      attributeToBeAdded,
-      attributeExpectedValue,
-      propertyDependingOnFirst,
-      propertyDependingOnSecond,
-    ] = parameters.props;
+    const [attributeToBeAdded, attributeExpectedValue, propertyDependingOnFirst, propertyDependingOnSecond] =
+      parameters.props;
 
     const property = {};
 
@@ -357,9 +339,8 @@ definitions.push({
 
     const propertyFirstPropUndefined = {};
     propertyFirstPropUndefined[propertyDependingOnSecond] = true;
-    const actualResultFirstPropertyNegateUndefined = parameters.behavior(propertyFirstPropUndefined).attributes.root[
-      attributeToBeAdded
-    ];
+    const actualResultFirstPropertyNegateUndefined =
+      parameters.behavior(propertyFirstPropUndefined).attributes.root[attributeToBeAdded];
     expect(testHelper.convertToMatchingTypeIfApplicable(actualResultFirstPropertyNegateUndefined)).toEqual(undefined);
   },
 });
@@ -368,12 +349,8 @@ definitions.push({
 definitions.push({
   regexp: /Adds attribute '([\w-]+)=(\w+)' based on the property '(\w+)' if the component has '(\w+)' property\./g,
   testMethod: (parameters: TestMethod) => {
-    const [
-      attributeToBeAdded,
-      attributeExpectedValue,
-      propertyDependingOnFirst,
-      propertyDependingOnSecond,
-    ] = parameters.props;
+    const [attributeToBeAdded, attributeExpectedValue, propertyDependingOnFirst, propertyDependingOnSecond] =
+      parameters.props;
 
     const property = {};
 
@@ -386,13 +363,11 @@ definitions.push({
 
     if (typeof testHelper.convertToMatchingTypeIfApplicable(attributeExpectedValue) === 'boolean') {
       const propertyFirstPropNegate = {};
-      propertyFirstPropNegate[propertyDependingOnFirst] = !testHelper.convertToMatchingTypeIfApplicable(
-        attributeExpectedValue,
-      );
+      propertyFirstPropNegate[propertyDependingOnFirst] =
+        !testHelper.convertToMatchingTypeIfApplicable(attributeExpectedValue);
       propertyFirstPropNegate[propertyDependingOnSecond] = true;
-      const actualResultFirstPropertyNegate = parameters.behavior(propertyFirstPropNegate).attributes.root[
-        attributeToBeAdded
-      ];
+      const actualResultFirstPropertyNegate =
+        parameters.behavior(propertyFirstPropNegate).attributes.root[attributeToBeAdded];
       expect(testHelper.convertToMatchingTypeIfApplicable(actualResultFirstPropertyNegate)).toEqual(
         !testHelper.convertToMatchingTypeIfApplicable(attributeExpectedValue),
       );
@@ -401,9 +376,8 @@ definitions.push({
     const propertyFirstPropUndefined = {};
     propertyFirstPropUndefined[propertyDependingOnFirst] = true;
     propertyFirstPropUndefined[propertyDependingOnSecond] = undefined;
-    const actualResultFirstPropertyNegateUndefined = parameters.behavior(propertyFirstPropUndefined).attributes.root[
-      attributeToBeAdded
-    ];
+    const actualResultFirstPropertyNegateUndefined =
+      parameters.behavior(propertyFirstPropUndefined).attributes.root[attributeToBeAdded];
     expect(testHelper.convertToMatchingTypeIfApplicable(actualResultFirstPropertyNegateUndefined)).toEqual(undefined);
   },
 });
@@ -572,10 +546,10 @@ definitions.push({
   testMethod: (parameters: TestMethod) => {
     const [action, firstKey, secondKey, elementToPerformAction] = [...parameters.props];
     const property = {};
-    const expectedFirstKeyNumber = parameters.behavior(property).keyActions[elementToPerformAction][action]
-      .keyCombinations[0].keyCode;
-    const expectedSecondKeyNumber = parameters.behavior(property).keyActions[elementToPerformAction][action]
-      .keyCombinations[1].keyCode;
+    const expectedFirstKeyNumber =
+      parameters.behavior(property).keyActions[elementToPerformAction][action].keyCombinations[0].keyCode;
+    const expectedSecondKeyNumber =
+      parameters.behavior(property).keyActions[elementToPerformAction][action].keyCombinations[1].keyCode;
     expect(expectedFirstKeyNumber).toBe(keysAndAliases[firstKey]);
     expect(expectedSecondKeyNumber).toBe(keysAndAliases[secondKey]);
   },
@@ -587,9 +561,28 @@ definitions.push({
   testMethod: (parameters: TestMethod) => {
     const [action, key, elementToPerformAction] = [...parameters.props];
     const property = {};
-    const expectedKeyNumber = parameters.behavior(property).keyActions[elementToPerformAction][action]
-      .keyCombinations[0].keyCode;
+    const expectedKeyNumber =
+      parameters.behavior(property).keyActions[elementToPerformAction][action].keyCombinations[0].keyCode;
     expect(expectedKeyNumber).toBe(keysAndAliases[key]);
+  },
+});
+
+// Triggers 'close' action with 'Escape' on 'trigger' if 'open' property is true.
+definitions.push({
+  regexp: /Triggers '(\w+)' action with '(\S+)' on '(\w+)' if '(\w+)' property is true./g,
+  testMethod: (parameters: TestMethod) => {
+    const [action, key, elementToPerformAction, propertyDependingOn] = [...parameters.props];
+    const propsInOpenState = {};
+    propsInOpenState[propertyDependingOn] = true;
+
+    const expectedResultOpenState =
+      parameters.behavior(propsInOpenState).keyActions[elementToPerformAction][action].keyCombinations[0].keyCode;
+    expect(expectedResultOpenState).toBe(keysAndAliases[key]);
+
+    const propsInCloseState = {};
+    propsInCloseState[propertyDependingOn] = false;
+    const expectedResultCloseState = parameters.behavior(propsInCloseState).keyActions[elementToPerformAction][action];
+    expect(expectedResultCloseState).toBe(undefined);
   },
 });
 
@@ -612,8 +605,8 @@ definitions.push({
   testMethod: (parameters: TestMethod) => {
     const [action, key, elementToPerformAction] = [...parameters.props];
     const property = {};
-    const expectedKeyNumber = parameters.behavior(property).keyActions[elementToPerformAction][action]
-      .keyCombinations[0].keyCode;
+    const expectedKeyNumber =
+      parameters.behavior(property).keyActions[elementToPerformAction][action].keyCombinations[0].keyCode;
     expect(expectedKeyNumber).toBe(keysAndAliases[key]);
   },
 });
@@ -624,8 +617,8 @@ definitions.push({
   testMethod: (parameters: TestMethod) => {
     const [action, key, elementToPerformAction] = [...parameters.props];
     const propertyVertical = { vertical: true };
-    const expectedKeyNumberVertical = parameters.behavior(propertyVertical).keyActions[elementToPerformAction][action]
-      .keyCombinations[0].keyCode;
+    const expectedKeyNumberVertical =
+      parameters.behavior(propertyVertical).keyActions[elementToPerformAction][action].keyCombinations[0].keyCode;
     expect(expectedKeyNumberVertical).toBe(keysAndAliases[key]);
   },
 });
@@ -636,8 +629,8 @@ definitions.push({
   testMethod: (parameters: TestMethod) => {
     const [action, key, elementToPerformAction] = [...parameters.props];
     const propertyHorizontal = { horizontal: true };
-    const expectedKeyNumber = parameters.behavior(propertyHorizontal).keyActions[elementToPerformAction][action]
-      .keyCombinations[0].keyCode;
+    const expectedKeyNumber =
+      parameters.behavior(propertyHorizontal).keyActions[elementToPerformAction][action].keyCombinations[0].keyCode;
     expect(expectedKeyNumber).toBe(keysAndAliases[key]);
   },
 });
@@ -648,8 +641,8 @@ definitions.push({
   testMethod: (parameters: TestMethod) => {
     const [action, key, elementToPerformAction] = [...parameters.props];
     const propertyHorizontal = { horizontal: false };
-    const expectedKeyNumberVertical = parameters.behavior(propertyHorizontal).keyActions[elementToPerformAction][action]
-      .keyCombinations[0].keyCode;
+    const expectedKeyNumberVertical =
+      parameters.behavior(propertyHorizontal).keyActions[elementToPerformAction][action].keyCombinations[0].keyCode;
     expect(expectedKeyNumberVertical).toBe(keysAndAliases[key]);
   },
 });
@@ -666,9 +659,8 @@ definitions.push({
       siblings: [],
       hasSubtree: true,
     };
-    const expectedKeyNumberVertical = parameters.behavior(propertyOpenedSubtree).keyActions[elementToPerformAction][
-      action
-    ].keyCombinations[0].keyCode;
+    const expectedKeyNumberVertical =
+      parameters.behavior(propertyOpenedSubtree).keyActions[elementToPerformAction][action].keyCombinations[0].keyCode;
     expect(expectedKeyNumberVertical).toBe(keysAndAliases[key]);
   },
 });
@@ -682,8 +674,8 @@ definitions.push({
       hasItems: false,
       hasSubtree: false,
     };
-    const expectedKeyNumberVertical = parameters.behavior(propertyNoSubtree).keyActions[elementToPerformAction][action]
-      .keyCombinations[0].keyCode;
+    const expectedKeyNumberVertical =
+      parameters.behavior(propertyNoSubtree).keyActions[elementToPerformAction][action].keyCombinations[0].keyCode;
     expect(expectedKeyNumberVertical).toBe(keysAndAliases[key]);
   },
 });
@@ -694,9 +686,8 @@ definitions.push({
   testMethod: (parameters: TestMethod) => {
     const [action, key, elementToPerformAction] = [...parameters.props];
     const propertyClosedSubtree = { open: false, expanded: false, hasSubtree: true };
-    const expectedKeyNumberVertical = parameters.behavior(propertyClosedSubtree).keyActions[elementToPerformAction][
-      action
-    ].keyCombinations[0].keyCode;
+    const expectedKeyNumberVertical =
+      parameters.behavior(propertyClosedSubtree).keyActions[elementToPerformAction][action].keyCombinations[0].keyCode;
     expect(expectedKeyNumberVertical).toBe(keysAndAliases[key]);
   },
 });
@@ -707,38 +698,36 @@ definitions.push({
   testMethod: (parameters: TestMethod) => {
     const [action, key, elementToPerformAction] = [...parameters.props];
     const propertySubmenuOpened = { menu: { items: [] }, hasMenu: true, menuOpen: true };
-    const expectedKeyNumber = parameters.behavior(propertySubmenuOpened).keyActions[elementToPerformAction][action]
-      .keyCombinations[0].keyCode;
+    const expectedKeyNumber =
+      parameters.behavior(propertySubmenuOpened).keyActions[elementToPerformAction][action].keyCombinations[0].keyCode;
     expect(expectedKeyNumber).toBe(keysAndAliases[key]);
 
     // when menuOpen == "false"
     propertySubmenuOpened.menuOpen = false;
-    const expectedKeyCombinations = parameters.behavior(propertySubmenuOpened).keyActions[elementToPerformAction][
-      action
-    ].keyCombinations;
+    const expectedKeyCombinations =
+      parameters.behavior(propertySubmenuOpened).keyActions[elementToPerformAction][action].keyCombinations;
     expect(expectedKeyCombinations).toBe(null);
   },
 });
 
 // Triggers 'doNotNavigateNextParentItem' action with 'ArrowLeft' or 'ArrowRight' on 'wrapper', when toolbar button has submenu and it is opened.
 definitions.push({
-  regexp: /Triggers '(\w+)' action with '(\w+)' or '(\w+)' on '([\w-]+)', when toolbar button has submenu and it is opened\./g,
+  regexp:
+    /Triggers '(\w+)' action with '(\w+)' or '(\w+)' on '([\w-]+)', when toolbar button has submenu and it is opened\./g,
   testMethod: (parameters: TestMethod) => {
     const [action, firstKey, secondKey, elementToPerformAction] = [...parameters.props];
     const propertySubmenuOpened = { menu: { items: [] }, hasMenu: true, menuOpen: true };
-    const expectedFirstKeyNumber = parameters.behavior(propertySubmenuOpened).keyActions[elementToPerformAction][action]
-      .keyCombinations[0].keyCode;
-    const expectedSecondKeyNumber = parameters.behavior(propertySubmenuOpened).keyActions[elementToPerformAction][
-      action
-    ].keyCombinations[1].keyCode;
+    const expectedFirstKeyNumber =
+      parameters.behavior(propertySubmenuOpened).keyActions[elementToPerformAction][action].keyCombinations[0].keyCode;
+    const expectedSecondKeyNumber =
+      parameters.behavior(propertySubmenuOpened).keyActions[elementToPerformAction][action].keyCombinations[1].keyCode;
     expect(expectedFirstKeyNumber).toBe(keysAndAliases[firstKey]);
     expect(expectedSecondKeyNumber).toBe(keysAndAliases[secondKey]);
 
     // when menuOpen == "false"
     propertySubmenuOpened.menuOpen = false;
-    const expectedKeyCombinations = parameters.behavior(propertySubmenuOpened).keyActions[elementToPerformAction][
-      action
-    ].keyCombinations;
+    const expectedKeyCombinations =
+      parameters.behavior(propertySubmenuOpened).keyActions[elementToPerformAction][action].keyCombinations;
     expect(expectedKeyCombinations).toBe(null);
   },
 });

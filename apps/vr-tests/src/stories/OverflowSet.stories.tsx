@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { Fabric, OverflowSet, IOverflowSetItemProps } from '@fluentui/react';
 import { IconButton } from '@fluentui/react/lib/Button';
 
@@ -11,10 +11,10 @@ const onRenderOverflowButton = (overflowItems: any[]) => {
 };
 
 storiesOf('OverflowSet', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-Button-flexContainer')
         .hover('.ms-Button-flexContainer')
@@ -22,7 +22,7 @@ storiesOf('OverflowSet', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'Root',
@@ -43,20 +43,20 @@ storiesOf('OverflowSet', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );
 
 storiesOf('OverflowSet variant', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory('Vertical Direction', () => (
     <Fabric>

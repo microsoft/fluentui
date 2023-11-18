@@ -1,6 +1,6 @@
 # @fluentui/public-docsite-setup
 
-This is an **internal use only** package for sharing bootstrapping and version switching code between different major versions of Fluent/Fabric on https://developer.microsoft.com/fluentui, as well as the local and PR deploy versions of the site.
+This is an **internal use only** package for sharing bootstrapping and version switching code between different major versions of Fluent/Fabric on https://developer.microsoft.com/fluentui, as well as the local and PR deploy versions of the site. It's consumed from npm by `@uifabric/fabric-website` in the `7.0`, `6.0`, and `5.0` branches.
 
 ## Usage
 

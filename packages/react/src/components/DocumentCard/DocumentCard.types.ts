@@ -126,3 +126,11 @@ export interface IDocumentCardStyleProps {
 export interface IDocumentCardStyles {
   root: IStyle;
 }
+
+/**
+ * {@docCategory DocumentCard}
+ */
+export interface IDocumentCardContext {
+  role?: string;
+  tabIndex?: number;
+}

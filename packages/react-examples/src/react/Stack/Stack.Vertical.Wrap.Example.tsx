@@ -30,7 +30,7 @@ export const VerticalStackWrapExample: React.FunctionComponent = () => {
   };
 
   return (
-    <Stack tokens={sectionStackTokens}>
+    <Stack enableScopedSelectors tokens={sectionStackTokens}>
       <Slider
         label="Change the stack height to see how child items wrap onto multiple columns:"
         min={1}
@@ -41,7 +41,7 @@ export const VerticalStackWrapExample: React.FunctionComponent = () => {
         onChange={setStackHeight}
       />
 
-      <Stack wrap styles={stackStyles} tokens={wrapStackTokens}>
+      <Stack enableScopedSelectors wrap styles={stackStyles} tokens={wrapStackTokens}>
         <span style={itemStyles}>1</span>
         <span style={itemStyles}>2</span>
         <span style={itemStyles}>3</span>

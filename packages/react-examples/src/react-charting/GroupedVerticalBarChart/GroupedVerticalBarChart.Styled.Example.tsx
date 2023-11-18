@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { GroupedVerticalBarChart, IGroupedVerticalBarChartProps } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import {
+  GroupedVerticalBarChart,
+  IGroupedVerticalBarChartProps,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 
 interface IGroupedBarChartState {
   width: number;
@@ -35,19 +39,22 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
           {
             key: 'series1',
             data: 66,
-            color: DefaultPalette.accent,
+            xAxisCalloutData: '2020/04/30',
+            color: getColorFromToken(DataVizPalette.color5),
             legend: 'MetaData1',
           },
           {
             key: 'series2',
             data: 13,
-            color: DefaultPalette.blueMid,
+            xAxisCalloutData: '2020/04/30',
+            color: getColorFromToken(DataVizPalette.color6),
             legend: 'MetaData2',
           },
           {
             key: 'series3',
             data: 34,
-            color: DefaultPalette.blueLight,
+            xAxisCalloutData: '2020/04/30',
+            color: getColorFromToken(DataVizPalette.color7),
             legend: 'MetaData3',
           },
         ],
@@ -58,19 +65,22 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
           {
             key: 'series1',
             data: 14,
-            color: DefaultPalette.accent,
+            xAxisCalloutData: '2020/04/30',
+            color: getColorFromToken(DataVizPalette.color5),
             legend: 'MetaData1',
           },
           {
             key: 'series2',
             data: 90,
-            color: DefaultPalette.blueMid,
+            xAxisCalloutData: '2020/04/30',
+            color: getColorFromToken(DataVizPalette.color6),
             legend: 'MetaData2',
           },
           {
             key: 'series3',
             data: 33,
-            color: DefaultPalette.blueLight,
+            xAxisCalloutData: '2020/04/30',
+            color: getColorFromToken(DataVizPalette.color7),
             legend: 'MetaData3',
           },
         ],
@@ -81,19 +91,22 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
           {
             key: 'series1',
             data: 54,
-            color: DefaultPalette.accent,
+            xAxisCalloutData: '2020/04/30',
+            color: getColorFromToken(DataVizPalette.color5),
             legend: 'MetaData1',
           },
           {
             key: 'series2',
             data: 72,
-            color: DefaultPalette.blueMid,
+            xAxisCalloutData: '2020/04/30',
+            color: getColorFromToken(DataVizPalette.color6),
             legend: 'MetaData2',
           },
           {
             key: 'series3',
             data: 18,
-            color: DefaultPalette.blueLight,
+            xAxisCalloutData: '2020/04/30',
+            color: getColorFromToken(DataVizPalette.color7),
             legend: 'MetaData3',
           },
         ],
@@ -103,10 +116,26 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
       <>
-        <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
-        <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <label htmlFor="changeWidth_Styled">Change Width:</label>
+        <input
+          type="range"
+          value={this.state.width}
+          min={200}
+          max={1000}
+          id="changeWidth_Styled"
+          onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
+        />
+        <label htmlFor="changeHeight_Styled">Change Height:</label>
+        <input
+          type="range"
+          value={this.state.height}
+          min={200}
+          max={1000}
+          id="changeHeight_Styled"
+          onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
+        />
         <div style={rootStyle}>
           <GroupedVerticalBarChart
             chartTitle="Grouped Vertical Bar chart styled example"
@@ -116,6 +145,7 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
             showYAxisGridLines
             yAxisTickCount={10}
             barwidth={43}
+            enableReflow={true}
           />
         </div>
       </>

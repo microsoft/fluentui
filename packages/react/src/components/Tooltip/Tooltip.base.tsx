@@ -40,7 +40,7 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className: className || (calloutProps && calloutProps.className),
-      beakWidth: calloutProps && calloutProps.beakWidth,
+      beakWidth: calloutProps && calloutProps.isBeakVisible ? calloutProps.beakWidth : 0,
       gapSpace: calloutProps && calloutProps.gapSpace,
       maxWidth: maxWidth!,
     });
@@ -57,7 +57,7 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
         <div
           className={this._classNames.content}
           id={id}
-          role="tooltip"
+          onFocus={this.props.onFocus}
           onMouseEnter={this.props.onMouseEnter}
           onMouseLeave={this.props.onMouseLeave}
         >

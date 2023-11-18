@@ -18,13 +18,13 @@ import { Accessibility } from '@fluentui/accessibility';
 
 import { FluentComponentStaticProps } from '../../types';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useFluentContext,
   useAccessibility,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface TextProps
@@ -92,7 +92,7 @@ export const textClassName = 'ui-text';
 /**
  * A Text consistently styles and formats occurrences of text.
  */
-export const Text: ComponentWithAs<'span', TextProps> & FluentComponentStaticProps<TextProps> = props => {
+export const Text = React.forwardRef<HTMLSpanElement, TextProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Text.displayName, context.telemetry);
   setStart();
@@ -155,6 +155,7 @@ export const Text: ComponentWithAs<'span', TextProps> & FluentComponentStaticPro
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
+        ref,
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
         ...unhandledProps,
       })}
@@ -166,12 +167,12 @@ export const Text: ComponentWithAs<'span', TextProps> & FluentComponentStaticPro
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, TextProps> & FluentComponentStaticProps<TextProps>;
 
 Text.displayName = 'Text';
 
 Text.defaultProps = {
-  as: 'span',
+  as: 'span' as const,
 };
 Text.propTypes = {
   ...commonPropTypes.createCommon({ color: true }),
@@ -180,7 +181,13 @@ Text.propTypes = {
   error: PropTypes.bool,
   important: PropTypes.bool,
   size: customPropTypes.size,
-  weight: PropTypes.oneOf(['light', 'semilight', 'regular', 'semibold', 'bold']),
+  weight: PropTypes.oneOf<'light' | 'semilight' | 'regular' | 'semibold' | 'bold'>([
+    'light',
+    'semilight',
+    'regular',
+    'semibold',
+    'bold',
+  ]),
   success: PropTypes.bool,
   temporary: PropTypes.bool,
   align: customPropTypes.align,

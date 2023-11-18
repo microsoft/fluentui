@@ -69,6 +69,7 @@ export class Button extends FoundationButton {
  */
 export const fluentButton = Button.compose({
   baseName: 'button',
+  baseClass: FoundationButton,
   template,
   styles,
   shadowOptions: {

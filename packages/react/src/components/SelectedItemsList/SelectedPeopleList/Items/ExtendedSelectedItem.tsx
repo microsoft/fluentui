@@ -18,7 +18,6 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
     super(props);
 
     initializeComponentRef(this);
-    // eslint-disable-next-line react/no-unused-state
     this.state = { contextualMenuVisible: false };
   }
 

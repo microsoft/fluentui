@@ -66,15 +66,15 @@ export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRe
     // The following properties take priority for what Narrator should read:
     // 1. ariaLabel
     // 2. onAriaLabel (if checked) or offAriaLabel (if not checked)
-    // 3. label AND stateText, if existent
+    // 3. label, if existent
 
     let labelledById: string | undefined = undefined;
     if (!ariaLabel && !badAriaLabel) {
       if (label) {
         labelledById = labelId;
       }
-      if (stateText) {
-        labelledById = labelledById ? `${labelledById} ${stateTextId}` : stateTextId;
+      if (stateText && !labelledById) {
+        labelledById = stateTextId;
       }
     }
 
@@ -128,9 +128,9 @@ export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRe
         className: classNames.pill,
         'data-is-focusable': true,
         'data-ktp-target': true,
-        disabled: disabled,
-        id: id,
-        onClick: onClick,
+        disabled,
+        id,
+        onClick,
         ref: toggleButton,
         role: role ? role : 'switch',
         type: 'button' as React.ButtonHTMLAttributes<HTMLButtonElement>['type'],

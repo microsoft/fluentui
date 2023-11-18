@@ -1,0 +1,263 @@
+import { Meta } from '@storybook/addon-docs';
+import { CodeComparison, CodeExample } from './utils.stories';
+
+<Meta title="Concepts/Migration/from v8/Components/Flex/Stack item" />
+
+# @fluentui/react - Stack.Item
+
+## Default state
+
+<CodeComparison>
+  <CodeExample title="Render">
+
+```jsx
+<div className={styles.root}>
+  <div className={styles.item}>Item</div>
+</div>
+```
+
+  </CodeExample>
+  <CodeExample title="make-styles">
+
+    ```js
+    makeStyles({
+      root: {...}, // Flex container
+      item: {
+        height: 'auto',
+        width: 'auto',
+        flexShrink: 1,
+      },
+    })
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+<CodeComparison>
+  <CodeExample>
+
+    ```html
+    <div class="flex">
+      <div class="flex-item">Item</div>
+    </div>
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      height: auto;
+      width: auto;
+      flex-shrink: 1;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+
+- [height](https://developer.mozilla.org/en-US/docs/Web/CSS/height)
+- [width](https://developer.mozilla.org/en-US/docs/Web/CSS/width)
+- [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
+
+---
+
+---
+
+## align
+
+_`center` is used below as an example value_
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        alignSelf: 'center'
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      align-self: center;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+
+- [align-self](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self)
+
+---
+
+## className
+
+This is just an override to apply the class name to the rendered node.
+
+---
+
+## disableShrink
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexShrink: 0,
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      flex-shrink: 0;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+
+- [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
+
+---
+
+## grow
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexGrow: 1,
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      flex-grow: 1;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+
+- [flex-grow](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow)
+
+---
+
+## order
+
+_`1` is used below as an example value_
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        order: 1,
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+        order: 1;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+
+- [order](https://developer.mozilla.org/en-US/docs/Web/CSS/order)
+
+---
+
+## shrink
+
+_`1` is used below as an example value_
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        flexShrink: 1,
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      flex-shrink: 1;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+
+- [flex-shrink](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink)
+
+---
+
+## verticalFill
+
+<CodeComparison>
+  <CodeExample>
+
+    ```js
+    makeStyles({
+      root: {
+        height: "100%",
+      },
+    })
+    ```
+
+  </CodeExample>
+  <CodeExample>
+
+    ```css
+    .flex-item {
+      height: 100%;
+    }
+    ```
+
+  </CodeExample>
+</CodeComparison>
+
+MDN documentation:
+
+- [height](https://developer.mozilla.org/en-US/docs/Web/CSS/height)

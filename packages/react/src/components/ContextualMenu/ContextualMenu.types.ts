@@ -5,7 +5,14 @@ import type { IIconProps } from '../../Icon';
 import type { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import type { ITheme, IStyle } from '../../Styling';
 import type { IButtonStyles } from '../../Button';
-import type { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type {
+  IRefObject,
+  IBaseProps,
+  IRectangle,
+  IRenderFunction,
+  IStyleFunctionOrObject,
+  IComponentAs,
+} from '../../Utilities';
 import type { IWithResponsiveModeState } from '../../ResponsiveMode';
 import type { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 import type { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
@@ -18,6 +25,7 @@ import type {
 import type { IKeytipProps } from '../../Keytip';
 import type { Target } from '@fluentui/react-hooks';
 import type { IPopupRestoreFocusParams } from '../../Popup';
+import { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper/ContextualMenuItemWrapper.types';
 
 export { DirectionalHint } from '../../common/DirectionalHint';
 
@@ -47,6 +55,7 @@ export interface IContextualMenuProps
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
+   * @deprecated ContextualMenu has no imperative methods, so componentRef no longer returns a ref
    */
   componentRef?: IRefObject<IContextualMenu>;
 
@@ -149,6 +158,8 @@ export interface IContextualMenuProps
 
   /**
    * Whether to focus on the contextual menu container (as opposed to the first menu item).
+   *
+   * Avoid using as it breaks the default focus behaviour when using assistive technologies.
    */
   shouldFocusOnContainer?: boolean;
 
@@ -233,6 +244,12 @@ export interface IContextualMenuProps
   onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
 
   /**
+   * Method to wrap menu items. Gives the ability to wrap a custom
+   * tooltip to each menu item button.
+   */
+  onRenderContextualMenuItem?: IRenderFunction<IContextualMenuItem>;
+
+  /**
    * Delay (in milliseconds) to wait before expanding / dismissing a submenu on mouseEnter or mouseLeave
    */
   subMenuHoverDelay?: number;
@@ -241,9 +258,7 @@ export interface IContextualMenuProps
    * Custom component to use for rendering individual menu items.
    * @defaultvalue ContextualMenuItem
    */
-  contextualMenuItemAs?:
-    | React.ComponentClass<IContextualMenuItemProps>
-    | React.FunctionComponent<IContextualMenuItemProps>;
+  contextualMenuItemAs?: IComponentAs<IContextualMenuItemProps>;
 
   /**
    * Props to pass down to the FocusZone.
@@ -257,7 +272,7 @@ export interface IContextualMenuProps
    * Custom component to use for rendering the focus zone (the root).
    * @defaultValue FocusZone
    */
-  focusZoneAs?: React.ComponentClass<IFocusZoneProps> | React.FunctionComponent<IFocusZoneProps>;
+  focusZoneAs?: IComponentAs<IFocusZoneProps>;
 
   /**
    * If true, renders the ContextualMenu in a hidden state.
@@ -348,7 +363,8 @@ export interface IContextualMenuItem {
   iconProps?: IIconProps;
 
   /**
-   * Custom render function for the menu item icon
+   * Custom render function for the menu item icon.
+   * iconProps must be present on at least one item for onRenderIcon to be called.
    */
   onRenderIcon?: IRenderFunction<IContextualMenuItemProps>;
 
@@ -507,6 +523,16 @@ export interface IContextualMenuItem {
   onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
 
   /**
+   * An override for the child content of the contextual menu item.
+   */
+  contextualMenuItemAs?: IComponentAs<IContextualMenuItemProps>;
+
+  /**
+   * An override for the entire component used to render the contextal menu item.
+   */
+  contextualMenuItemWrapperAs?: IComponentAs<IContextualMenuItemWrapperProps>;
+
+  /**
    * Method to customize sub-components rendering of this menu item.
    *
    * @param props - Props used to pass into render functions
@@ -543,6 +569,11 @@ export interface IContextualMenuItem {
   keytipProps?: IKeytipProps;
 
   /**
+   * @deprecated Use subMenuProps.items instead.
+   */
+  items?: IContextualMenuItem[];
+
+  /**
    * Any additional properties to use when custom rendering menu items.
    */
   [propertyName: string]: any;
@@ -567,6 +598,14 @@ export interface IContextualMenuItem {
    * @deprecated Use `text` instead.
    */
   name?: string;
+
+  /**
+   * Flag which indicates that, when the item is clicked, the 'target' for the click event should be
+   * overridden to reflect the launch target from the root menu.
+   * This avoids a situation where the 'target' of the event may wind up detached from the DOM
+   * when the menu is dismissed in response to the click.
+   */
+  preferMenuTargetAsEventTarget?: boolean;
 }
 
 /**

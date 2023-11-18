@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/merge-styles",
-  "version": "8.1.5",
+  "version": "8.5.13",
   "description": "Style loading utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -24,11 +24,52 @@
     "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-jest": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.1.4",
+    "@fluentui/set-version": "^8.2.12",
     "tslib": "^2.1.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./lib/fontFace": {
+      "types": "./lib/fontFace.d.ts",
+      "import": "./lib/fontFace.js",
+      "require": "./lib-commonjs/fontFace.js"
+    },
+    "./lib/IRawStyleBase": {
+      "types": "./lib/IRawStyleBase.d.ts"
+    },
+    "./lib/IStyle": {
+      "types": "./lib/IStyle.d.ts"
+    },
+    "./lib/keyframes": {
+      "types": "./lib/keyframes.d.ts",
+      "import": "./lib/keyframes.js",
+      "require": "./lib-commonjs/keyframes.js"
+    },
+    "./lib/mergeStyles": {
+      "types": "./lib/mergeStyles.d.ts",
+      "import": "./lib/mergeStyles.js",
+      "require": "./lib-commonjs/mergeStyles.js"
+    },
+    "./lib/mergeStyleSets": {
+      "types": "./lib/mergeStyleSets.d.ts",
+      "import": "./lib/mergeStyleSets.js",
+      "require": "./lib-commonjs/mergeStyleSets.js"
+    },
+    "./lib/server": {
+      "types": "./lib/server.d.ts",
+      "import": "./lib/server.js",
+      "require": "./lib-commonjs/server.js"
+    }
   }
 }

@@ -8,10 +8,10 @@ import {
   SharedSignal,
   ITileBackgroundProps,
 } from '@fluentui/react-experiments';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 
 interface IDocumentItem {
   name: JSX.Element;
@@ -74,7 +74,9 @@ const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbn
 
     return (
       <img
-        src={`//via.placeholder.com/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
+        src={`//fabricweb.azureedge.net/fabric-website/placeholders/${Math.round(
+          imageSize.width,
+        )}x${Math.round(imageSize.height)}.png`}
         style={{ display: 'block' }}
       />
     );
@@ -108,7 +110,9 @@ const MediaTileWithThumbnail: React.FunctionComponent<IMediaTileWithThumbnailPro
   function renderBackground(backgroundProps: ITileBackgroundProps) {
     return (
       <img
-        src={`//via.placeholder.com/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
+        src={`//fabricweb.azureedge.net/fabric-website/placeholders/${Math.round(
+          imageSize.width,
+        )}x${Math.round(imageSize.height)}.png`}
         style={{ display: 'block' }}
       />
     );
@@ -129,16 +133,16 @@ const MediaTileWithThumbnail: React.FunctionComponent<IMediaTileWithThumbnailPro
 
 storiesOf('Tile', module)
   .addDecorator(story => <Fabric>{story()}</Fabric>)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory('Document tile with fit landscape image', () => (
     <DocumentTileWithThumbnail
@@ -183,7 +187,7 @@ storiesOf('Tile', module)
         itemActivity={<SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>}
         foreground={
           <img
-            src={`https://static2.sharepointonline.com/files/fabric/assets/item-types/48/docx.svg`}
+            src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/item-types/48/docx.svg"
             style={{
               display: 'block',
               width: '64px',
@@ -214,18 +218,18 @@ storiesOf('Tile', module)
 
 storiesOf('MediaTile', module)
   .addDecorator(story => <Fabric>{story()}</Fabric>)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Tile')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory('Media tile with single activity line', () => (
     <MediaTileBox>

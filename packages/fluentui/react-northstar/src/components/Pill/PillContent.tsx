@@ -2,13 +2,13 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import {
   childrenExist,
@@ -45,8 +45,7 @@ export const pillContentClassName = 'ui-pillcontent';
 /**
  * A PillContent allows user to classify content.
  */
-export const PillContent: ComponentWithAs<'span', PillContentProps> &
-  FluentComponentStaticProps<PillContentProps> = props => {
+export const PillContent = React.forwardRef<HTMLSpanElement, PillContentProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(PillContent.displayName, context.telemetry);
   setStart();
@@ -72,6 +71,7 @@ export const PillContent: ComponentWithAs<'span', PillContentProps> &
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
+        ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
@@ -83,7 +83,8 @@ export const PillContent: ComponentWithAs<'span', PillContentProps> &
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, PillContentProps> &
+  FluentComponentStaticProps<PillContentProps>;
 
 PillContent.displayName = 'PillContent';
 

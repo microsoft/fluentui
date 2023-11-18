@@ -5,7 +5,7 @@ import { TextFieldPageProps } from '@fluentui/react-examples/lib/react/TextField
 
 export const TextFieldPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@fluentui/api-docs/lib/pages/react/TextField.page.json')}
+    jsonDocs={require('../../../dist/api/react/TextField.page.json')}
     {...{ ...TextFieldPageProps, ...props }}
   />
 );

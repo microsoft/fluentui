@@ -2,6 +2,1406 @@
   "name": "@fluentui/font-icons-mdl2",
   "entries": [
     {
+      "date": "Thu, 09 Nov 2023 07:29:20 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.27",
+      "version": "8.5.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.20",
+            "commit": "c139fc66cca05255b5c96f6c92d9230b37975276"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.21",
+            "commit": "c139fc66cca05255b5c96f6c92d9230b37975276"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 28 Oct 2023 00:29:16 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.26",
+      "version": "8.5.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/set-version to v8.2.12",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.19",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.20",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 Sep 2023 07:45:30 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.25",
+      "version": "8.5.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.18",
+            "commit": "9fd9f701eed4171caf6ffa42e4d68bcb5d88fea9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.19",
+            "commit": "9fd9f701eed4171caf6ffa42e4d68bcb5d88fea9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Aug 2023 07:35:26 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.24",
+      "version": "8.5.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.17",
+            "commit": "d7743e64df7a0b0bd607cf9df3667203eda49e34"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 07:37:33 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.23",
+      "version": "8.5.23",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.16",
+            "commit": "f154811cb3580595c319de809ea51a798dfd4555"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.18",
+            "commit": "f154811cb3580595c319de809ea51a798dfd4555"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Jun 2023 07:36:39 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.22",
+      "version": "8.5.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.15",
+            "commit": "4ccaa77ad47a12fd61b65f703a2aaaa7e9c161f6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.17",
+            "commit": "4ccaa77ad47a12fd61b65f703a2aaaa7e9c161f6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Jun 2023 07:38:37 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.21",
+      "version": "8.5.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.14",
+            "commit": "170594a14c0b892bf418831d5be7f995b0e981f8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.16",
+            "commit": "170594a14c0b892bf418831d5be7f995b0e981f8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 May 2023 07:38:40 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.20",
+      "version": "8.5.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/set-version to v8.2.11",
+            "commit": "dd8c30d9b97f68eb332366fc0e69775a88775319"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.13",
+            "commit": "dd8c30d9b97f68eb332366fc0e69775a88775319"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.15",
+            "commit": "dd8c30d9b97f68eb332366fc0e69775a88775319"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 May 2023 07:36:09 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.19",
+      "version": "8.5.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/set-version to v8.2.10",
+            "commit": "588b9393a673137dd8a867686d1e1cd45c350ca4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.12",
+            "commit": "588b9393a673137dd8a867686d1e1cd45c350ca4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.14",
+            "commit": "588b9393a673137dd8a867686d1e1cd45c350ca4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 May 2023 07:37:02 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.18",
+      "version": "8.5.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.11",
+            "commit": "e1ca88c0a92d07dced9c668dd11585c0c4866919"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 May 2023 18:14:04 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.17",
+      "version": "8.5.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2",
+            "comment": "fix: explicitly ship dist/ folder."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/set-version to v8.2.9",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.10",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.13",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 May 2023 22:20:25 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.16",
+      "version": "8.5.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.9",
+            "commit": "1235c3caf6133d0478ef8a4173034124c53ae833"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.12",
+            "commit": "1235c3caf6133d0478ef8a4173034124c53ae833"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 May 2023 00:58:14 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.15",
+      "version": "8.5.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2",
+            "comment": "fix: esm, cjs, and amd folders should all be published correctly."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/set-version to v8.2.8",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.8",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.11",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 May 2023 07:39:54 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.14",
+      "version": "8.5.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/set-version to v8.2.7",
+            "commit": "46f19b90d2088f055f9cd4bfad840f72fe68f0d8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.7",
+            "commit": "46f19b90d2088f055f9cd4bfad840f72fe68f0d8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.10",
+            "commit": "46f19b90d2088f055f9cd4bfad840f72fe68f0d8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Mar 2023 08:15:56 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.13",
+      "version": "8.5.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/set-version to v8.2.6",
+            "commit": "36f3bd6c4f0280b91ad10133b5ddd9c439a1de73"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.6",
+            "commit": "36f3bd6c4f0280b91ad10133b5ddd9c439a1de73"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.9",
+            "commit": "36f3bd6c4f0280b91ad10133b5ddd9c439a1de73"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Mar 2023 07:39:12 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.12",
+      "version": "8.5.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.5",
+            "commit": "64f86cc11c16cb8743c0445fd4d5095d23874dcf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Mar 2023 07:43:03 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.11",
+      "version": "8.5.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "1dbd373cbbebd29b4186229a6f84f969fb58b02a",
+            "comment": "feat:Consume Fluent CDN from style-utilities"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.4",
+            "commit": "220b321042b4bcc126c86a91811a34b04934d49b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Mar 2023 07:47:18 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.10",
+      "version": "8.5.10",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Mar 2023 07:45:41 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.10",
+      "version": "8.5.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.3",
+            "commit": "020829cf01db3ca0baffcd0dc640a34a91b548d3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.8",
+            "commit": "020829cf01db3ca0baffcd0dc640a34a91b548d3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 18 Feb 2023 01:37:02 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.9",
+      "version": "8.5.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.2",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.7",
+            "commit": "486ea4a2c7eaa7d4d7566a3d90d72c4e07d92c60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Feb 2023 07:50:06 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.8",
+      "version": "8.5.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/set-version to v8.2.5",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.1",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.6",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 Jan 2023 07:37:51 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.7",
+      "version": "8.5.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.9.0",
+            "commit": "f4f81bc1025ba1ac43f09ef9e45646cb06f47f89"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Jan 2023 07:50:52 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.6",
+      "version": "8.5.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Jan 2023 07:50:15 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.6",
+      "version": "8.5.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/set-version to v8.2.4",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.8.5",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.5",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Jan 2023 07:46:42 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.5",
+      "version": "8.5.5",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Dec 2022 07:51:00 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.5",
+      "version": "8.5.5",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Dec 2022 07:53:34 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.5",
+      "version": "8.5.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.8.4",
+            "commit": "a39f278183ca928dc344704c6cc547080f3ff7a7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Dec 2022 07:57:08 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.4",
+      "version": "8.5.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "c46ff8dec351ebf57efb4114366016010b285429",
+            "comment": "chore: enable isolateModules"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Nov 2022 07:44:59 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.4",
+      "version": "8.5.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.8.3",
+            "commit": "84243dc77a4a9d2a8231c01bf880845d49f38f1a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.4",
+            "commit": "84243dc77a4a9d2a8231c01bf880845d49f38f1a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Nov 2022 07:48:12 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.3",
+      "version": "8.5.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/set-version to v8.2.3",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.8.2",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.3",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Oct 2022 07:43:14 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.2",
+      "version": "8.5.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.8.1",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.2",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Oct 2022 07:38:24 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.1",
+      "version": "8.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.8.0",
+            "commit": "c0b200c4c2ce25dbe3b95f8fc08454e362d25e17"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Oct 2022 07:37:49 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.5.0",
+      "version": "8.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "6112cd720c2a15635eae7175f22ec53510dd511c",
+            "comment": {
+              "title": "",
+              "value": ""
+            }
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 07:48:53 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.4.13",
+      "version": "8.4.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.7.12",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.1",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Sep 2022 07:48:11 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.4.12",
+      "version": "8.4.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.7.11",
+            "commit": "53de352ec2079a333b712028364bca9632714050"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Aug 2022 07:44:38 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.4.11",
+      "version": "8.4.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.7.10",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.13.0",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Aug 2022 16:36:06 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.4.10",
+      "version": "8.4.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.7.9",
+            "commit": "5c15d8495a026efaa56e5d5444b211a5cb5280fe"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Aug 2022 07:22:50 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.4.9",
+      "version": "8.4.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.7.8",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Aug 2022 23:39:31 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.4.8",
+      "version": "8.4.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.7.7",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.12.0",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Aug 2022 07:39:41 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.4.7",
+      "version": "8.4.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.7.6",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.11.0",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Aug 2022 07:39:33 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.4.6",
+      "version": "8.4.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/set-version to v8.2.2",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.7.5",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.10.2",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Aug 2022 07:44:44 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.4.5",
+      "version": "8.4.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.7.4",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.10.1",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Jul 2022 07:39:35 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.4.4",
+      "version": "8.4.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.7.3",
+            "commit": "8d120219d3605abf8feff95eaff52ab01851618e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.10.0",
+            "commit": "8d120219d3605abf8feff95eaff52ab01851618e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Jul 2022 07:41:00 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.4.3",
+      "version": "8.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.7.2",
+            "commit": "04c6ba7bdaacaee87bc4c918f53363de63ea1742"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.9.0",
+            "commit": "04c6ba7bdaacaee87bc4c918f53363de63ea1742"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jun 2022 07:39:04 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.4.2",
+      "version": "8.4.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.7.1",
+            "commit": "b10503dfbec04dd309a44cffecbcf47456b4ee1f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Jun 2022 07:48:04 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.4.1",
+      "version": "8.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.7.0",
+            "commit": "4a812370ec9dac9991e75288c9b150d38e96beeb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 May 2022 07:41:26 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "5e400c20a2ae769dd34b0384ade9f97126585959",
+            "comment": "Update window to use iconBaseUrl to prevent collision"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 May 2022 07:45:35 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.3.3",
+      "version": "8.3.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/set-version to v8.2.1",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.6.7",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.8.3",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Apr 2022 21:39:15 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.3.2",
+      "version": "8.3.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "0d7c0ff0877c66c0a7709d3f89e055a16145cf97",
+            "comment": "Update Window interface to add FabricConfig"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Apr 2022 07:42:48 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.3.1",
+      "version": "8.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.6.6",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.8.2",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Apr 2022 07:39:32 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.3.0",
+      "version": "8.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "f1ed2ba54d90c2a94df15198097648d130ba7006",
+            "comment": "Update initializeIcons to add user defined URL in argument"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Mar 2022 07:45:54 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.2.5",
+      "version": "8.2.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.6.5",
+            "commit": "aa2315c7c3fbaf648b69adbb2fbe62fa327ef25f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Mar 2022 07:34:41 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.2.4",
+      "version": "8.2.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.6.4",
+            "commit": "8e02823339296401393a13fc2f38d4629ffe48b3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Mar 2022 07:34:50 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.2.3",
+      "version": "8.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.6.3",
+            "commit": "7bc56445c4661c1766b1403881da858b40f84be7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Mar 2022 07:37:30 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.2.2",
+      "version": "8.2.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.6.2",
+            "commit": "2b63eed95dae656f1b3df3bd316c4f91d793cba5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Mar 2022 23:29:58 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.2.1",
+      "version": "8.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.6.1",
+            "commit": "3e2137c854ccf90b1382d3d1d66a6a6fdd4b310f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Mar 2022 07:24:26 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.2.0",
+      "version": "8.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/set-version to v8.2.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.6.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Mar 2022 07:23:43 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.1.26",
+      "version": "8.1.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.5.8",
+            "commit": "cda6e1e291a31a0484ff8fbb30cbb67945569b15"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Feb 2022 07:29:50 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.1.25",
+      "version": "8.1.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.5.7",
+            "commit": "17618b2b24ce013569c74a505b2212eba18caf54"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Feb 2022 07:28:31 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.1.24",
+      "version": "8.1.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.5.6",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Feb 2022 07:27:49 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.1.23",
+      "version": "8.1.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.5.5",
+            "commit": "a0c8a3f6d02b6493e923006679a8cfb648c1e003"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Feb 2022 07:30:50 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.1.22",
+      "version": "8.1.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.5.4",
+            "commit": "b2b3ec1da3d75ad5fc54654645bb992340679d29"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Feb 2022 07:29:41 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.1.21",
+      "version": "8.1.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.5.3",
+            "commit": "946f57cad4378ec779605d466ef1df3dd88ebc78"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jan 2022 23:32:11 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.1.20",
+      "version": "8.1.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.5.2",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Dec 2021 07:31:29 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.1.19",
+      "version": "8.1.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.5.1",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 14:54:16 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.1.18",
+      "version": "8.1.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/set-version to v8.1.5",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.5.0",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Nov 2021 07:31:59 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.1.17",
+      "version": "8.1.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.4.2",
+            "commit": "1aa9eec5d9dd53544b2755af4d177246a9ec939d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Nov 2021 07:37:02 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.1.16",
+      "version": "8.1.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.4.1",
+            "commit": "8cad915b620bd02e056a529a197bee57250a84a5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Nov 2021 07:32:08 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.1.15",
+      "version": "8.1.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.4.0",
+            "commit": "4094351f75ec358c549d02d044d599d0dda84481"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 07:37:17 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.1.14",
+      "version": "8.1.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.3.4",
+            "commit": "de0266f3ced68c137aa5e27b30691f960982df9e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 Oct 2021 07:27:12 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.1.13",
+      "version": "8.1.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "bekaise@microsoft.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Update BASE_URL to remove depreacted CDN",
+            "commit": "4d8e599a31b788186f896a599a7d4e989d9098b1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Sep 2021 22:17:07 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.1.12",
+      "version": "8.1.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "Bump @fluentui/style-utilities to v8.3.3",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.1.11",
+      "version": "8.1.11",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/font-icons-mdl2",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.1.11"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Sep 2021 07:36:46 GMT",
       "tag": "@fluentui/font-icons-mdl2_v8.1.11",
       "version": "8.1.11",

@@ -12,6 +12,7 @@ export { teamsDarkTheme } from './themes/teams-dark';
 export { teamsHighContrastTheme } from './themes/teams-high-contrast';
 export { teamsV2Theme } from './themes/teams-v2';
 export { teamsDarkV2Theme } from './themes/teams-dark-v2';
+export { teamsForcedColorsTheme } from './themes/teams-forced-colors';
 
 export * from './themes/types';
 export * from './themes/colorUtils';
@@ -41,6 +42,7 @@ export * from './components/Attachment/AttachmentIcon';
 export * from './components/Avatar/Avatar';
 export * from './components/Avatar/AvatarStatus';
 export * from './components/Avatar/AvatarStatusIcon';
+export * from './components/Avatar/AvatarStatusImage';
 export * from './components/Avatar/AvatarImage';
 export * from './components/Avatar/AvatarIcon';
 export * from './components/Avatar/AvatarLabel';
@@ -59,9 +61,11 @@ export * from './components/Breadcrumb/BreadcrumbLink';
 export * from './components/Chat/Chat';
 export * from './components/Chat/ChatItem';
 export * from './components/Chat/ChatMessage';
+export * from './components/Chat/ChatMessageContent';
 export * from './components/Chat/ChatMessageDetails';
 export * from './components/Chat/ChatMessageHeader';
 export * from './components/Chat/ChatMessageReadStatus';
+export * from './components/Chat/chatDensity';
 
 export * from './components/Checkbox/Checkbox';
 
@@ -159,6 +163,7 @@ export * from './components/Popup/PopupContent';
 
 export * from './components/Portal/Portal';
 
+export { PortalContext } from './components/Provider/portalContext';
 export * from './components/Provider/Provider';
 export * from './components/Provider/ProviderConsumer';
 

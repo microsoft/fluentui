@@ -4,7 +4,7 @@ import { DetailsListPageProps } from '@fluentui/react-examples/lib/react/Details
 
 export const DetailsListPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@fluentui/api-docs/lib/pages/react/DetailsList.page.json')}
+    jsonDocs={require('../../../../dist/api/react/DetailsList.page.json')}
     {...{ ...DetailsListPageProps, ...props }}
   />
 );

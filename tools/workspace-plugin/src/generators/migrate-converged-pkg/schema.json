@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "id": "migrate-converged-pkg",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Library name or comma delimited library names to execute migration on multiple libraries.",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "pattern": "^[@a-zA-Z].*$"
+    },
+    "stats": {
+      "type": "boolean",
+      "description": "Get statistics for how many projects have been migrated"
+    },
+    "all": {
+      "type": "boolean",
+      "description": "Run generator on all vNext packages"
+    },
+    "owner": {
+      "type": "string",
+      "description": "Add particular team to CODEOWNERS file",
+      "pattern": "^@[/-\\w]+$"
+    }
+  },
+  "required": []
+}

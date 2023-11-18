@@ -74,6 +74,7 @@ export class VerticalBarChartCustomAccessibilityExample extends React.Component<
             yAxisTickCount={6}
             colors={customColors}
             hideLegend={true}
+            enableReflow={true}
           />
         </div>
       </>

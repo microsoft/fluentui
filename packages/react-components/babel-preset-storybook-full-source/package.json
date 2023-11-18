@@ -1,0 +1,52 @@
+{
+  "name": "@fluentui/babel-preset-storybook-full-source",
+  "version": "0.0.1",
+  "description": "Babel preset that adds the makes the full source code of stories available",
+  "private": true,
+  "main": "./lib-commonjs/index.js",
+  "typings": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build --module cjs",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "test": "jest --passWithNoTests",
+    "type-check": "tsc -b tsconfig.json",
+    "generate-api": "just-scripts generate-api"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-tasks": "*"
+  },
+  "dependencies": {
+    "@babel/core": "^7.10.4",
+    "@swc/helpers": "^0.5.1",
+    "prettier": "2.8.8",
+    "pkg-up": "^3.1.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./__dev": {
+      "types": "./src/index.ts",
+      "node": "./src/index.ts",
+      "require": "./src/index.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib-commonjs"
+  ]
+}

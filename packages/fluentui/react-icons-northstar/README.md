@@ -1,4 +1,4 @@
-# `@fluentui/react-bindings`
+# `@fluentui/react-icons-northstar`
 
 A set of reusable components and hooks to build component libraries and UI kits.
 

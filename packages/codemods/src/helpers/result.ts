@@ -52,7 +52,7 @@ class ResultInternal<R, E> implements Chainable<R> {
     if (this.value && this.value instanceof ResultInternal) {
       return this.value as Flattened<R, Result<R, E>>;
     }
-    return (this as unknown) as Flattened<R, Result<R, E>>;
+    return this as unknown as Flattened<R, Result<R, E>>;
   }
 
   /**

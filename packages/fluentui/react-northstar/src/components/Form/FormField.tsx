@@ -15,13 +15,13 @@ import { Text, TextProps } from '../Text/Text';
 import { Input } from '../Input/Input';
 import { Box, BoxProps } from '../Box/Box';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useFluentContext,
   useTelemetry,
   useStyles,
   useAccessibility,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps {
@@ -71,7 +71,7 @@ export type FormFieldStylesProps = Required<Pick<FormFieldProps, 'type' | 'inlin
 /**
  * A FormField represents a Form element containing a label and an input.
  */
-export const FormField: ComponentWithAs<'div', FormFieldProps> & FluentComponentStaticProps<FormFieldProps> = props => {
+export const FormField = React.forwardRef<HTMLDivElement, FormFieldProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(FormField.displayName, context.telemetry);
   setStart();
@@ -175,6 +175,7 @@ export const FormField: ComponentWithAs<'div', FormFieldProps> & FluentComponent
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -183,7 +184,7 @@ export const FormField: ComponentWithAs<'div', FormFieldProps> & FluentComponent
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, FormFieldProps> & FluentComponentStaticProps<FormFieldProps>;
 
 FormField.displayName = 'FormField';
 

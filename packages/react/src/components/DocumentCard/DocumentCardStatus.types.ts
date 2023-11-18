@@ -1,7 +1,6 @@
-import * as React from 'react';
 import { DocumentCardStatusBase } from './DocumentCardStatus.base';
 import type { IStyle, ITheme } from '../../Styling';
-import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IReactProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory DocumentCard}
@@ -11,8 +10,7 @@ export interface IDocumentCardStatus {}
 /**
  * {@docCategory DocumentCard}
  */
-// eslint-disable-next-line deprecation/deprecation
-export interface IDocumentCardStatusProps extends React.Props<DocumentCardStatusBase> {
+export interface IDocumentCardStatusProps extends IReactProps<DocumentCardStatusBase> {
   /**
    * Gets the component ref.
    */

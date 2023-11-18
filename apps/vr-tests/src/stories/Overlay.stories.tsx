@@ -1,26 +1,26 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { Overlay } from '@fluentui/react';
 
 storiesOf('Overlay', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.ms-Overlay' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory(
     'Root',
     // prettier-ignore
     () => <Overlay>Overlay content</Overlay>,
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Dark',

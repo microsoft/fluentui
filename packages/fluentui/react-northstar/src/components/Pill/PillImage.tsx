@@ -1,12 +1,12 @@
 import { Accessibility, pillImageBehavior } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as React from 'react';
 
@@ -33,7 +33,7 @@ export const pillImageClassName = 'ui-pill__image';
 /**
  * An PillImage is a graphic representation used by Pill.
  */
-export const PillImage: ComponentWithAs<'img', PillImageProps> & FluentComponentStaticProps<PillImageProps> = props => {
+export const PillImage = React.forwardRef<HTMLImageElement, PillImageProps>((props, ref) => {
   const context = useFluentContext();
 
   const { setStart, setEnd } = useTelemetry(PillImage.displayName, context.telemetry);
@@ -64,12 +64,12 @@ export const PillImage: ComponentWithAs<'img', PillImageProps> & FluentComponent
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(PillImage.handledProps, props);
 
-  const result = <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })} />;
+  const result = <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })} />;
 
   setEnd();
 
   return result;
-};
+}) as unknown as ForwardRefWithAs<'img', HTMLImageElement, PillImageProps> & FluentComponentStaticProps<PillImageProps>;
 
 PillImage.displayName = 'PillImage';
 

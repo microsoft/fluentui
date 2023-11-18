@@ -131,9 +131,9 @@ const configMod: CodeMod = {
   run: (file: SourceFile) => {
     if (!__configs) {
       __configs = getCodeModsFromJson();
-      if (__configs === undefined || __configs.length === 0) {
+      if (__configs === undefined) {
         return Err<ModResult, ModError>({
-          error: 'failed to get any mods from json. Perhaps the file is missing or malformed?',
+          error: 'Failed to get any mods from json. Perhaps the file is missing or malformed?',
         });
       }
     }
@@ -144,7 +144,7 @@ const configMod: CodeMod = {
       results.push(mod.run(file));
     }
     if (results.length === 0) {
-      return Err<ModResult, NoOp>({ logs: ['No runabble mods were found in the config'] });
+      return Ok({ logs: ['No runnable mods were found in the config'] });
     }
 
     return results.reduce(combineResults);

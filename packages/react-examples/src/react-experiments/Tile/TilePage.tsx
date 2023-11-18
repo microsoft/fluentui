@@ -7,13 +7,16 @@ import {
 } from '@fluentui/react-docsite-components';
 
 import { TileFolderExample } from './Tile.Folder.Example';
-const TileFolderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Tile/Tile.Folder.Example.tsx') as string;
+const TileFolderExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Tile/Tile.Folder.Example.tsx') as string;
 
 import { TileMediaExample } from './Tile.Media.Example';
-const TileMediaExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Tile/Tile.Media.Example.tsx') as string;
+const TileMediaExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Tile/Tile.Media.Example.tsx') as string;
 
 import { TileDocumentExample } from './Tile.Document.Example';
-const TileDocumentExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Tile/Tile.Document.Example.tsx') as string;
+const TileDocumentExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Tile/Tile.Document.Example.tsx') as string;
 
 export class TilePage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

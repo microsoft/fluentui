@@ -1,0 +1,156 @@
+{
+  "version": 1.1,
+  "tags": [
+    {
+      "name": "fluent-calendar",
+      "title": "Calendar",
+      "description": "Adds Fluent UI calendar element",
+      "attributes": [
+        {
+          "name": "day-format",
+          "title": "Day format",
+          "description": "The rendering style for the days in the calendar.",
+          "type": "string",
+          "default": "numeric",
+          "required": false,
+          "values": [
+            {
+              "name": "2-digit"
+            },
+            {
+              "name": "numeric"
+            }
+          ]
+        },
+        {
+          "name": "disabled-dates",
+          "title": "Disabled dates",
+          "description": "A comma separated list of dates to show as disabled.",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "locale",
+          "title": "Locale",
+          "description": "Locale information for the calendar. This will include language, country, calendar type and numbering type. Defaults to browser locale.",
+          "type": "string",
+          "default": "",
+          "required": false
+        },
+        {
+          "name": "min-weeks",
+          "title": "Minimum weeks",
+          "description": "Minimum number of weeks to display in the calendar. Used for normalizing across different months.",
+          "type": "number",
+          "default": 0,
+          "required": false
+        },
+        {
+          "name": "month",
+          "title": "Month",
+          "description": "Month of the calendar to render. The default will be the current month.",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "month-format",
+          "title": "Month format",
+          "description": "The rendering style for the month name. Values include short, long and narrow.",
+          "type": "string",
+          "values": [
+            {
+              "name": "long"
+            },
+            {
+              "name": "narrow"
+            },
+            {
+              "name": "short"
+            }
+          ],
+          "default": "long",
+          "required": false
+        },
+        {
+          "name": "readonly",
+          "title": "Read only",
+          "description": "If there is not interactions for the calendar",
+          "type": "boolean",
+          "default": false,
+          "required": false
+        },
+        {
+          "name": "selected-dates",
+          "title": "Selected dates",
+          "description": "A comma separated list of dates to show as highlighted.",
+          "type": "string",
+          "required": false
+        },
+        {
+          "name": "weekday-format",
+          "title": "Weekday format",
+          "description": "The rendering style for the weekday labels. Values include short, long and narrow.",
+          "type": "string",
+          "values": [
+            {
+              "name": "long"
+            },
+            {
+              "name": "narrow"
+            },
+            {
+              "name": "short"
+            }
+          ],
+          "default": "short",
+          "required": false
+        },
+        {
+          "name": "year",
+          "title": "Year",
+          "description": "Year of the calendar to render. The default will be the current year.",
+          "type": "number",
+          "required": false
+        },
+        {
+          "name": "year-format",
+          "title": "Year format",
+          "description": "Formatting for the year in the title",
+          "type": "string",
+          "values": [
+            {
+              "name": "numeric"
+            },
+            {
+              "name": "2-digit"
+            }
+          ],
+          "default": "numeric",
+          "required": false
+        }
+      ],
+      "slots": [
+        {
+          "name": "",
+          "title": "Default slot",
+          "description": "The content of the calendar added to the beginning of the title container"
+        },
+        {
+          "name": "end",
+          "title": "End slot",
+          "description": "Contents of the end slot are positioned after the calendar"
+        },
+        {
+          "name": "start",
+          "title": "Start slot",
+          "description": "Contents of the start slot are positioned before the calendar"
+        },
+        {
+          "name": "title",
+          "title": "Title slot",
+          "description": "Title with month and year that can be replaced."
+        }
+      ]
+    }
+  ]
+}

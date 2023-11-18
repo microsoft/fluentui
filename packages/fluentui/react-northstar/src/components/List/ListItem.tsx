@@ -1,6 +1,5 @@
 import { Accessibility, listItemBehavior, ListItemBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -8,6 +7,7 @@ import {
   useStyles,
   useTelemetry,
   useContextSelectors,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import cx from 'classnames';
 import * as _ from 'lodash';
@@ -82,8 +82,7 @@ export const listItemSlotClassNames: ListItemSlotClassNames = {
 /**
  * A ListItem contains a single piece of content within a List.
  */
-export const ListItem: ComponentWithAs<'li', ListItemProps & { index: number }> &
-  FluentComponentStaticProps<ListItemProps> = props => {
+export const ListItem = React.forwardRef<HTMLLIElement, ListItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ListItem.displayName, context.telemetry);
 
@@ -195,6 +194,7 @@ export const ListItem: ComponentWithAs<'li', ListItemProps & { index: number }> 
         className: classes.root,
         onClick: handleClick,
         ...unhandledProps,
+        ref,
       })}
     >
       {mediaElement}
@@ -221,7 +221,8 @@ export const ListItem: ComponentWithAs<'li', ListItemProps & { index: number }> 
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'li', HTMLLIElement, ListItemProps & { index: number }> &
+  FluentComponentStaticProps<ListItemProps>;
 
 ListItem.displayName = 'ListItem';
 

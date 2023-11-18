@@ -13,7 +13,7 @@ describe('Tooltip', () => {
 
     cy.exist(content);
 
-    cy.hover(content);
+    cy.hoverOn(content);
 
     cy.notExist(content);
   });

@@ -1,8 +1,727 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Thu, 02 Sep 2021 07:36:46 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Nov 2023 07:29:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.10.4)
+
+Thu, 09 Nov 2023 07:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.10.3..@fluentui/react-file-type-icons_v8.10.4)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.9.20 ([PR #29772](https://github.com/microsoft/fluentui/pull/29772) by beachball)
+
+## [8.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.10.3)
+
+Sat, 28 Oct 2023 00:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.10.2..@fluentui/react-file-type-icons_v8.10.3)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/style-utilities to v8.9.19 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+
+## [8.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.10.2)
+
+Fri, 29 Sep 2023 07:45:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.10.1..@fluentui/react-file-type-icons_v8.10.2)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.9.18 ([PR #29313](https://github.com/microsoft/fluentui/pull/29313) by beachball)
+
+## [8.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.10.1)
+
+Fri, 18 Aug 2023 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.10.0..@fluentui/react-file-type-icons_v8.10.1)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.9.17 ([PR #28862](https://github.com/microsoft/fluentui/pull/28862) by beachball)
+
+## [8.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.10.0)
+
+Wed, 19 Jul 2023 07:34:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.9.3..@fluentui/react-file-type-icons_v8.10.0)
+
+### Minor changes
+
+- Add loopworkspace to FileIconType enum" ([PR #28553](https://github.com/microsoft/fluentui/pull/28553) by ololubek@microsoft.com)
+
+## [8.9.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.9.3)
+
+Wed, 28 Jun 2023 07:37:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.9.2..@fluentui/react-file-type-icons_v8.9.3)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.9.16 ([PR #28335](https://github.com/microsoft/fluentui/pull/28335) by beachball)
+
+## [8.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.9.2)
+
+Tue, 20 Jun 2023 07:36:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.9.1..@fluentui/react-file-type-icons_v8.9.2)
+
+### Patches
+
+- Map mhtml extension to html icon ([PR #28112](https://github.com/microsoft/fluentui/pull/28112) by alinazaieva@microsoft.com)
+
+## [8.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.9.1)
+
+Mon, 19 Jun 2023 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.9.0..@fluentui/react-file-type-icons_v8.9.1)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.9.15 ([PR #28234](https://github.com/microsoft/fluentui/pull/28234) by beachball)
+
+## [8.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.9.0)
+
+Mon, 12 Jun 2023 07:33:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.21..@fluentui/react-file-type-icons_v8.9.0)
+
+### Minor changes
+
+- feat(react-file-type-icons): add getFileTypeIconAsUrl to allow icons usage in React without global initialization ([PR #27336](https://github.com/microsoft/fluentui/pull/27336) by alinazaieva@microsoft.com)
+
+## [8.8.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.21)
+
+Thu, 01 Jun 2023 07:38:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.20..@fluentui/react-file-type-icons_v8.8.21)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.9.14 ([PR #28080](https://github.com/microsoft/fluentui/pull/28080) by beachball)
+
+## [8.8.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.20)
+
+Wed, 31 May 2023 07:38:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.19..@fluentui/react-file-type-icons_v8.8.20)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.11 ([commit](https://github.com/microsoft/fluentui/commit/dd8c30d9b97f68eb332366fc0e69775a88775319) by beachball)
+- Bump @fluentui/style-utilities to v8.9.13 ([commit](https://github.com/microsoft/fluentui/commit/dd8c30d9b97f68eb332366fc0e69775a88775319) by beachball)
+
+## [8.8.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.19)
+
+Tue, 30 May 2023 07:36:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.18..@fluentui/react-file-type-icons_v8.8.19)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.10 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/style-utilities to v8.9.12 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+
+## [8.8.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.18)
+
+Fri, 26 May 2023 07:37:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.17..@fluentui/react-file-type-icons_v8.8.18)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.9.11 ([PR #27929](https://github.com/microsoft/fluentui/pull/27929) by beachball)
+
+## [8.8.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.17)
+
+Fri, 05 May 2023 18:14:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.16..@fluentui/react-file-type-icons_v8.8.17)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+- Bump @fluentui/set-version to v8.2.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/style-utilities to v8.9.10 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+
+## [8.8.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.16)
+
+Tue, 02 May 2023 22:20:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.15..@fluentui/react-file-type-icons_v8.8.16)
+
+### Patches
+
+- fix: update npmignore files to fix npm8/node16 regression with how npm publish works. ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by tristan.watanabe@gmail.com)
+- Bump @fluentui/style-utilities to v8.9.9 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+
+## [8.8.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.15)
+
+Tue, 02 May 2023 00:58:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.14..@fluentui/react-file-type-icons_v8.8.15)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/style-utilities to v8.9.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+
+## [8.8.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.14)
+
+Mon, 01 May 2023 07:39:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.13..@fluentui/react-file-type-icons_v8.8.14)
+
+### Patches
+
+- Add support for Microsoft Designer .design filetype icon ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by caperez@microsoft.com)
+- Bump @fluentui/set-version to v8.2.7 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/style-utilities to v8.9.7 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+
+## [8.8.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.13)
+
+Fri, 17 Mar 2023 08:15:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.12..@fluentui/react-file-type-icons_v8.8.13)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.6 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+- Bump @fluentui/style-utilities to v8.9.6 ([PR #27210](https://github.com/microsoft/fluentui/pull/27210) by beachball)
+
+## [8.8.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.12)
+
+Thu, 09 Mar 2023 07:39:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.11..@fluentui/react-file-type-icons_v8.8.12)
+
+### Patches
+
+- Updated FabricCDN url to pick up new PowerBI and Loop filetype icons ([PR #26990](https://github.com/microsoft/fluentui/pull/26990) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.9.5 ([PR #27119](https://github.com/microsoft/fluentui/pull/27119) by beachball)
+
+## [8.8.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.11)
+
+Mon, 06 Mar 2023 07:43:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.10..@fluentui/react-file-type-icons_v8.8.11)
+
+### Patches
+
+- feat:Consume Fluent CDN from style-utilities ([PR #25396](https://github.com/microsoft/fluentui/pull/25396) by tmichon@microsoft.com)
+- Bump @fluentui/style-utilities to v8.9.4 ([PR #26869](https://github.com/microsoft/fluentui/pull/26869) by beachball)
+
+## [8.8.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.10)
+
+Wed, 01 Mar 2023 07:45:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.9..@fluentui/react-file-type-icons_v8.8.10)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.9.3 ([PR #26980](https://github.com/microsoft/fluentui/pull/26980) by beachball)
+
+## [8.8.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.9)
+
+Sat, 18 Feb 2023 01:37:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.8..@fluentui/react-file-type-icons_v8.8.9)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.9.2 ([PR #26903](https://github.com/microsoft/fluentui/pull/26903) by beachball)
+
+## [8.8.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.8)
+
+Fri, 03 Feb 2023 07:50:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.7..@fluentui/react-file-type-icons_v8.8.8)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.5 ([PR #26569](https://github.com/microsoft/fluentui/pull/26569) by beachball)
+- Bump @fluentui/style-utilities to v8.9.1 ([PR #26569](https://github.com/microsoft/fluentui/pull/26569) by beachball)
+
+## [8.8.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.7)
+
+Mon, 30 Jan 2023 07:36:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.6..@fluentui/react-file-type-icons_v8.8.7)
+
+### Patches
+
+- Update CDN information for filetype icons, new icons for loop and clipchamp ([PR #26276](https://github.com/microsoft/fluentui/pull/26276) by caperez@microsoft.com)
+
+## [8.8.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.6)
+
+Fri, 27 Jan 2023 07:37:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.5..@fluentui/react-file-type-icons_v8.8.6)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.9.0 ([PR #26520](https://github.com/microsoft/fluentui/pull/26520) by beachball)
+
+## [8.8.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.5)
+
+Tue, 10 Jan 2023 07:50:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.4..@fluentui/react-file-type-icons_v8.8.5)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.4 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
+- Bump @fluentui/style-utilities to v8.8.5 ([PR #26260](https://github.com/microsoft/fluentui/pull/26260) by beachball)
+
+## [8.8.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.4)
+
+Tue, 20 Dec 2022 07:53:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.3..@fluentui/react-file-type-icons_v8.8.4)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.8.4 ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by beachball)
+
+## [8.8.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.3)
+
+Thu, 17 Nov 2022 07:51:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.2..@fluentui/react-file-type-icons_v8.8.3)
+
+### Patches
+
+- fix: return correct icon name for documentsFolder ([PR #25688](https://github.com/microsoft/fluentui/pull/25688) by 1330321+yume-chan@users.noreply.github.com)
+
+## [8.8.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.2)
+
+Tue, 15 Nov 2022 07:44:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.1..@fluentui/react-file-type-icons_v8.8.2)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.8.3 ([PR #25643](https://github.com/microsoft/fluentui/pull/25643) by beachball)
+
+## [8.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.1)
+
+Wed, 09 Nov 2022 07:48:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.8.0..@fluentui/react-file-type-icons_v8.8.1)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.3 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+- Bump @fluentui/style-utilities to v8.8.2 ([PR #25564](https://github.com/microsoft/fluentui/pull/25564) by beachball)
+
+## [8.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.8.0)
+
+Thu, 27 Oct 2022 07:43:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.7.11..@fluentui/react-file-type-icons_v8.8.0)
+
+### Minor changes
+
+- add support for wbtx file ([PR #25346](https://github.com/microsoft/fluentui/pull/25346) by 51342814+jieleiwang@users.noreply.github.com)
+
+## [8.7.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.7.11)
+
+Thu, 20 Oct 2022 07:43:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.7.10..@fluentui/react-file-type-icons_v8.7.11)
+
+### Patches
+
+- chore: Bump react peer dependency to react 18. ([PR #25278](https://github.com/microsoft/fluentui/pull/25278) by mgodbolt@microsoft.com)
+- Bump @fluentui/style-utilities to v8.8.1 ([PR #25294](https://github.com/microsoft/fluentui/pull/25294) by beachball)
+
+## [8.7.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.7.10)
+
+Wed, 19 Oct 2022 07:39:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.7.9..@fluentui/react-file-type-icons_v8.7.10)
+
+### Patches
+
+- Fixing mapping for Stream video icon and updating URL to the Fabric CDN. ([PR #25284](https://github.com/microsoft/fluentui/pull/25284) by caperez@microsoft.com)
+
+## [8.7.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.7.9)
+
+Mon, 10 Oct 2022 07:38:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.7.8..@fluentui/react-file-type-icons_v8.7.9)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.8.0 ([PR #25138](https://github.com/microsoft/fluentui/pull/25138) by beachball)
+
+## [8.7.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.7.8)
+
+Fri, 02 Sep 2022 07:48:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.7.7..@fluentui/react-file-type-icons_v8.7.8)
+
+### Patches
+
+- Update to latest CDN for filetype icons, and mapping .classifier to the correct icon. ([PR #24530](https://github.com/microsoft/fluentui/pull/24530) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.7.12 ([PR #24394](https://github.com/microsoft/fluentui/pull/24394) by beachball)
+
+## [8.7.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.7.7)
+
+Thu, 01 Sep 2022 07:48:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.7.6..@fluentui/react-file-type-icons_v8.7.7)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.11 ([PR #24599](https://github.com/microsoft/fluentui/pull/24599) by beachball)
+
+## [8.7.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.7.6)
+
+Mon, 29 Aug 2022 07:44:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.7.5..@fluentui/react-file-type-icons_v8.7.6)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.10 ([PR #24554](https://github.com/microsoft/fluentui/pull/24554) by beachball)
+
+## [8.7.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.7.5)
+
+Wed, 24 Aug 2022 16:36:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.7.4..@fluentui/react-file-type-icons_v8.7.5)
+
+### Patches
+
+- fix: fixes broken publish. ([PR #24500](https://github.com/microsoft/fluentui/pull/24500) by tristan.watanabe@gmail.com)
+- Bump @fluentui/style-utilities to v8.7.9 ([PR #24485](https://github.com/microsoft/fluentui/pull/24485) by beachball)
+
+## [8.7.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.7.4)
+
+Tue, 23 Aug 2022 07:22:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.7.3..@fluentui/react-file-type-icons_v8.7.4)
+
+### Patches
+
+- fix: Add React 17 support. ([PR #24356](https://github.com/microsoft/fluentui/pull/24356) by tristan.watanabe@gmail.com)
+- Bump @fluentui/style-utilities to v8.7.8 ([PR #24332](https://github.com/microsoft/fluentui/pull/24332) by beachball)
+
+## [8.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.7.3)
+
+Thu, 18 Aug 2022 23:39:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.7.2..@fluentui/react-file-type-icons_v8.7.3)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.7 ([PR #24406](https://github.com/microsoft/fluentui/pull/24406) by beachball)
+
+## [8.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.7.2)
+
+Mon, 15 Aug 2022 07:39:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.7.1..@fluentui/react-file-type-icons_v8.7.2)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.6 ([PR #24359](https://github.com/microsoft/fluentui/pull/24359) by beachball)
+
+## [8.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.7.1)
+
+Mon, 08 Aug 2022 07:39:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.7.0..@fluentui/react-file-type-icons_v8.7.1)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.2 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+- Bump @fluentui/style-utilities to v8.7.5 ([PR #24212](https://github.com/microsoft/fluentui/pull/24212) by beachball)
+
+## [8.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.7.0)
+
+Fri, 05 Aug 2022 07:39:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.6.13..@fluentui/react-file-type-icons_v8.7.0)
+
+### Minor changes
+
+- Filetype Icon Update for Fluent. Here's the corresponding patch notes from the CDN: - New icontype 'loop' to align to the brand (keeping 'fluid' around since it's still referenced). - Renaming the KFM folders (currently un-referenced) so their names are correct. - Cleanup of video, stream, audio icons to align to one brand. - Replacing the icon-generation pipeline from Adobe Illustrator to Figma. - Adding 20x1.5 and 64 sized icons that were previously missing (thanks to new Figma workflow!) ([PR #24190](https://github.com/microsoft/fluentui/pull/24190) by caperez@microsoft.com)
+
+## [8.6.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.13)
+
+Tue, 02 Aug 2022 07:44:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.6.12..@fluentui/react-file-type-icons_v8.6.13)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.4 ([PR #24032](https://github.com/microsoft/fluentui/pull/24032) by beachball)
+
+## [8.6.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.12)
+
+Tue, 26 Jul 2022 07:39:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.6.11..@fluentui/react-file-type-icons_v8.6.12)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.3 ([PR #24068](https://github.com/microsoft/fluentui/pull/24068) by beachball)
+
+## [8.6.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.11)
+
+Tue, 12 Jul 2022 07:41:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.6.10..@fluentui/react-file-type-icons_v8.6.11)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.2 ([PR #23848](https://github.com/microsoft/fluentui/pull/23848) by beachball)
+
+## [8.6.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.10)
+
+Tue, 28 Jun 2022 07:39:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.6.9..@fluentui/react-file-type-icons_v8.6.10)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.1 ([PR #23683](https://github.com/microsoft/fluentui/pull/23683) by beachball)
+
+## [8.6.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.9)
+
+Tue, 07 Jun 2022 07:48:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.6.8..@fluentui/react-file-type-icons_v8.6.9)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.7.0 ([PR #23266](https://github.com/microsoft/fluentui/pull/23266) by beachball)
+
+## [8.6.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.8)
+
+Fri, 13 May 2022 07:45:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.6.7..@fluentui/react-file-type-icons_v8.6.8)
+
+### Patches
+
+- Added export of FileTypeIconMap ([PR #22841](https://github.com/microsoft/fluentui/pull/22841) by gcox@microsoft.com)
+- Bump @fluentui/set-version to v8.2.1 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
+- Bump @fluentui/style-utilities to v8.6.7 ([PR #22966](https://github.com/microsoft/fluentui/pull/22966) by beachball)
+
+## [8.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.7)
+
+Fri, 15 Apr 2022 07:42:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.6.6..@fluentui/react-file-type-icons_v8.6.7)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.6.6 ([PR #22499](https://github.com/microsoft/fluentui/pull/22499) by beachball)
+
+## [8.6.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.6)
+
+Tue, 15 Mar 2022 07:45:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.6.5..@fluentui/react-file-type-icons_v8.6.6)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.6.5 ([PR #22094](https://github.com/microsoft/fluentui/pull/22094) by beachball)
+
+## [8.6.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.5)
+
+Mon, 14 Mar 2022 07:38:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.6.4..@fluentui/react-file-type-icons_v8.6.5)
+
+### Patches
+
+- Added support for ipnyb filetype icon ([PR #22059](https://github.com/microsoft/fluentui/pull/22059) by caperez@microsoft.com)
+
+## [8.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.4)
+
+Fri, 11 Mar 2022 07:34:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.6.3..@fluentui/react-file-type-icons_v8.6.4)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.6.4 ([PR #22047](https://github.com/microsoft/fluentui/pull/22047) by beachball)
+
+## [8.6.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.3)
+
+Thu, 10 Mar 2022 07:34:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.6.2..@fluentui/react-file-type-icons_v8.6.3)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.6.3 ([PR #22043](https://github.com/microsoft/fluentui/pull/22043) by beachball)
+
+## [8.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.2)
+
+Wed, 09 Mar 2022 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.6.1..@fluentui/react-file-type-icons_v8.6.2)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.6.2 ([PR #22008](https://github.com/microsoft/fluentui/pull/22008) by beachball)
+
+## [8.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.1)
+
+Tue, 08 Mar 2022 23:29:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.6.0..@fluentui/react-file-type-icons_v8.6.1)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.6.1 ([PR #22006](https://github.com/microsoft/fluentui/pull/22006) by beachball)
+
+## [8.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.6.0)
+
+Thu, 03 Mar 2022 07:24:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.14..@fluentui/react-file-type-icons_v8.6.0)
+
+### Minor changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+- Bump @fluentui/set-version to v8.2.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+- Bump @fluentui/style-utilities to v8.6.0 ([PR #21919](https://github.com/microsoft/fluentui/pull/21919) by beachball)
+
+## [8.5.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.14)
+
+Tue, 01 Mar 2022 07:23:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.13..@fluentui/react-file-type-icons_v8.5.14)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.5.8 ([PR #21852](https://github.com/microsoft/fluentui/pull/21852) by beachball)
+
+## [8.5.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.13)
+
+Thu, 24 Feb 2022 07:29:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.12..@fluentui/react-file-type-icons_v8.5.13)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.5.7 ([PR #21837](https://github.com/microsoft/fluentui/pull/21837) by beachball)
+
+## [8.5.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.12)
+
+Thu, 17 Feb 2022 07:28:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.11..@fluentui/react-file-type-icons_v8.5.12)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.5.6 ([PR #21777](https://github.com/microsoft/fluentui/pull/21777) by beachball)
+
+## [8.5.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.11)
+
+Fri, 11 Feb 2022 07:27:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.10..@fluentui/react-file-type-icons_v8.5.11)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.5.5 ([PR #21706](https://github.com/microsoft/fluentui/pull/21706) by beachball)
+
+## [8.5.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.10)
+
+Wed, 09 Feb 2022 07:30:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.9..@fluentui/react-file-type-icons_v8.5.10)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.5.4 ([PR #21603](https://github.com/microsoft/fluentui/pull/21603) by beachball)
+
+## [8.5.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.9)
+
+Thu, 03 Feb 2022 07:29:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.8..@fluentui/react-file-type-icons_v8.5.9)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.5.3 ([PR #21545](https://github.com/microsoft/fluentui/pull/21545) by beachball)
+
+## [8.5.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.8)
+
+Mon, 03 Jan 2022 23:32:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.7..@fluentui/react-file-type-icons_v8.5.8)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.5.2 ([PR #20954](https://github.com/microsoft/fluentui/pull/20954) by beachball)
+
+## [8.5.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.7)
+
+Wed, 15 Dec 2021 07:31:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.6..@fluentui/react-file-type-icons_v8.5.7)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.5.1 ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by beachball)
+
+## [8.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.6)
+
+Thu, 25 Nov 2021 14:54:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.5..@fluentui/react-file-type-icons_v8.5.6)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.1.5 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+- Bump @fluentui/style-utilities to v8.5.0 ([PR #20784](https://github.com/microsoft/fluentui/pull/20784) by beachball)
+
+## [8.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.5)
+
+Wed, 10 Nov 2021 07:31:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.4..@fluentui/react-file-type-icons_v8.5.5)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.4.2 ([PR #20529](https://github.com/microsoft/fluentui/pull/20529) by beachball)
+
+## [8.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.4)
+
+Mon, 08 Nov 2021 07:35:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.3..@fluentui/react-file-type-icons_v8.5.4)
+
+### Patches
+
+- Updating filetypeicon package to support Loop files. ([PR #20518](https://github.com/microsoft/fluentui/pull/20518) by caperez@microsoft.com)
+
+## [8.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.3)
+
+Tue, 02 Nov 2021 07:37:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.2..@fluentui/react-file-type-icons_v8.5.3)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.4.1 ([PR #20331](https://github.com/microsoft/fluentui/pull/20331) by beachball)
+
+## [8.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.2)
+
+Mon, 01 Nov 2021 07:32:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.1..@fluentui/react-file-type-icons_v8.5.2)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.4.0 ([PR #20231](https://github.com/microsoft/fluentui/pull/20231) by beachball)
+
+## [8.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.1)
+
+Thu, 21 Oct 2021 07:28:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.5.0..@fluentui/react-file-type-icons_v8.5.1)
+
+### Patches
+
+- remove incorrect extension in splist, add .oft to email ([PR #20281](https://github.com/microsoft/fluentui/pull/20281) by caperez@microsoft.com)
+
+## [8.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.5.0)
+
+Wed, 20 Oct 2021 07:30:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.4.4..@fluentui/react-file-type-icons_v8.5.0)
+
+### Minor changes
+
+- Add oft files to file type icon map ([PR #20193](https://github.com/microsoft/fluentui/pull/20193) by hjorturj@microsoft.com)
+
+## [8.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.4.4)
+
+Fri, 15 Oct 2021 07:37:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.4.3..@fluentui/react-file-type-icons_v8.4.4)
+
+### Patches
+
+- Map JXR files to Photo icon ([commit](https://github.com/microsoft/fluentui/commit/1ca1036621a15f44e32e86685c1df901ae30baba) by tmichon@microsoft.com)
+
+## [8.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.4.3)
+
+Tue, 05 Oct 2021 07:37:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.4.2..@fluentui/react-file-type-icons_v8.4.3)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.3.4 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+
+## [8.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.4.2)
+
+Mon, 04 Oct 2021 07:27:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.4.1..@fluentui/react-file-type-icons_v8.4.2)
+
+### Patches
+
+- update fabric-cdn urls ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by caperez@microsoft.com)
+
+## [8.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.4.1)
+
+Tue, 28 Sep 2021 22:17:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.4.0..@fluentui/react-file-type-icons_v8.4.1)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.3.3 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+
+## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.4.0)
+
+Mon, 27 Sep 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.3.2..@fluentui/react-file-type-icons_v8.4.0)
+
+### Minor changes
+
+- Add forms icon to react-file-type-icons ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by chhoorn@microsoft.com)
+- Add sway icon ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by chhoorn@microsoft.com)
 
 ## [8.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.3.2)
 

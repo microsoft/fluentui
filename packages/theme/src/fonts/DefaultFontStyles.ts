@@ -7,7 +7,7 @@ import type { IFontStyles } from '../types/IFontStyles';
 import type { IFabricConfig } from '../types/IFabricConfig';
 
 // Default urls.
-const DefaultBaseUrl = 'https://static2.sharepointonline.com/files/fabric/assets';
+const DefaultBaseUrl = 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets';
 
 // Standard font styling.
 export const DefaultFontStyles: IFontStyles = createFontStyles(getLanguage());

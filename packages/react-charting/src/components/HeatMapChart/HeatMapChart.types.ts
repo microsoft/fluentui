@@ -9,6 +9,10 @@ import {
 import { ILegendsProps } from '../Legends/Legends.types';
 import { IHeatMapChartData } from '../../types/IDataPoint';
 
+/**
+ * Heat Map Chart properties
+ * {@docCategory HeatMapChart}
+ */
 export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<keyof ICartesianChartProps, 'styles'>> {
   /**
    * chart title for the chart
@@ -99,8 +103,23 @@ export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<k
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IHeatMapChartStyleProps, IHeatMapChartStyles>;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
+
+/**
+ * Heat Map Chart style properties
+ * {@docCategory HeatMapChart}
+ */
 export interface IHeatMapChartStyleProps extends ICartesianChartStyleProps {}
+
+/**
+ * Heat Map Chart styles
+ * {@docCategory HeatMapChart}
+ */
 export interface IHeatMapChartStyles {
   root?: IStyle;
   text?: IStyle;

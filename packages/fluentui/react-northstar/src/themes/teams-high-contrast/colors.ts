@@ -3,7 +3,7 @@ import { TeamsCategoryColorSchemeMapping } from '../teams/types';
 import { ColorSchemeMapping } from '../../themes/types';
 import { createColorScheme as createEmptyColorScheme } from '../teams/colors';
 
-export const accessibleYellow = '#ffff01';
+export const accessibleYellow = '#ffff00';
 export const accessibleGreen = '#3ff23f'; // always disabled color in high contrast
 export const accessibleCyan = '#1aebff';
 export const red = '#f00';
@@ -72,6 +72,7 @@ export const colorScheme: ColorSchemeMapping = {
     border2: colors.white,
     border3: colors.white,
     borderTransparent: colors.white,
+    borderTransparentActive: accessibleCyan,
 
     shadow: colors.black, // opacity 25%
     shadowHover: colors.black, // opacity 25%
@@ -84,7 +85,7 @@ export const colorScheme: ColorSchemeMapping = {
     backgroundHover1: accessibleCyan,
     backgroundHover2: accessibleCyan,
     backgroundHover3: colors.black,
-    backgroundHover4: colors.black,
+    backgroundHover4: accessibleCyan,
 
     borderHover: accessibleCyan,
 
@@ -160,11 +161,13 @@ export const colorScheme: ColorSchemeMapping = {
     backgroundHover: accessibleCyan,
     backgroundHover1: accessibleCyan,
     backgroundHover2: accessibleYellow,
+    backgroundHover3: colors.black,
 
     foregroundPressed: colors.black,
     foregroundPressed1: colors.black,
     backgroundPressed: accessibleCyan,
     backgroundPressed1: accessibleCyan,
+    backgroundPressed2: colors.black,
     borderPressed: accessibleCyan,
 
     foregroundActive: accessibleCyan,
@@ -254,7 +257,6 @@ export const colorScheme: ColorSchemeMapping = {
     foreground: colors.white,
     foreground1: colors.black,
     foreground2: colors.black,
-    foreground3: colors.white,
 
     background: colors.white,
     background1: colors.black,

@@ -1,0 +1,31 @@
+import { ThemeDesigner } from './index';
+import { Meta } from '@storybook/addon-docs';
+
+<Meta
+  title="ThemeDesigner"
+  parameters={{
+    showToolbar: false,
+    viewMode: 'canvas',
+    toolbar: {
+      hidden: true,
+      title: { hidden: true },
+      zoom: { hidden: true },
+      eject: { hidden: true },
+      copy: { hidden: true },
+      fullscreen: { hidden: true },
+      'storybook/fluentui-react-addon/strict-mode': { hidden: true },
+      'storybook/fluentui-react-addon/theme': { hidden: true },
+    },
+    backgrounds: {
+      disable: true,
+      grid: {
+        disable: true,
+      },
+      outline: {
+        disable: true,
+      },
+    },
+  }}
+/>
+
+<ThemeDesigner />

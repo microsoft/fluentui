@@ -1,11 +1,11 @@
 // @ts-check
-const resources = require('../../scripts/webpack/webpack-resources');
+const { resources } = require('@fluentui/scripts-webpack');
 
 const BUNDLE_NAME = 'fluentui-react';
 
 /**
  * @param {object} param0
- * @param {string | import("webpack").Output} param0.output - If a string, name for the output varible.
+ * @param {string | import("webpack").Configuration['output']} param0.output - If a string, name for the output varible.
  * If an object, full custom `output` config.
  * @param {boolean} param0.onlyProduction
  */

@@ -1,15 +1,19 @@
 import { Async } from '@fluentui/utilities';
 import * as React from 'react';
-import { useConst } from './useConst';
 
 /**
  * Hook to provide an Async instance that is automatically cleaned up on dismount.
  */
 export function useAsync() {
-  const async = useConst<Async>(() => new Async());
-
-  // Function that returns a function in order to dispose the async instance on unmount
-  React.useEffect(() => () => async.dispose(), [async]);
-
-  return async;
+  const asyncRef = React.useRef<Async>();
+  if (!asyncRef.current) {
+    asyncRef.current = new Async();
+  }
+  React.useEffect(() => {
+    return () => {
+      asyncRef.current?.dispose();
+      asyncRef.current = undefined;
+    };
+  }, []);
+  return asyncRef.current;
 }

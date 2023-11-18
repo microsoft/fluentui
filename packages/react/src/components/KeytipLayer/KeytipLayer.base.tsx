@@ -12,6 +12,7 @@ import {
   Async,
   initializeComponentRef,
   KeyCodes,
+  isElementVisibleAndNotHidden,
 } from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { KeytipTree } from './KeytipTree';
@@ -376,9 +377,22 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
         keytipId = sequencesToID(mergeOverflows(keytip.keySequences, keytip.overflowSetSequence));
       }
       seenIds[keytipId] = seenIds[keytipId] ? seenIds[keytipId] + 1 : 1;
-      return keytip.visible && seenIds[keytipId] === 1;
+
+      // Return true only if the keytip is visible and the corresponding target is also visible
+      return keytip.visible && this._isKeytipInstanceTargetVisible(keytip.keySequences, seenIds[keytipId]);
     });
   }
+
+  private _isKeytipInstanceTargetVisible = (keySequences: string[], instanceCount: number): boolean => {
+    const targetSelector = ktpTargetFromSequences(keySequences);
+    const matchingElements = document.querySelectorAll(targetSelector);
+
+    // If there are multiple elements for the keytip sequence, return true if the element instance
+    // that corresponds to the keytip instance is visible, otherwise return if there is only one instance
+    return matchingElements.length > 1 && instanceCount <= matchingElements.length
+      ? isElementVisibleAndNotHidden(matchingElements[instanceCount - 1] as HTMLElement)
+      : instanceCount === 1;
+  };
 
   private _onDismiss = (ev?: React.MouseEvent<HTMLElement>): void => {
     // if we are in keytip mode, then exit keytip mode
@@ -653,7 +667,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
    * @param inKeytipMode - Boolean so set whether we are in keytip mode or not
    */
   private _setInKeytipMode = (inKeytipMode: boolean): void => {
-    this.setState({ inKeytipMode: inKeytipMode });
+    this.setState({ inKeytipMode });
     this._keytipManager.inKeytipMode = inKeytipMode;
   };
 

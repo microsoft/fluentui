@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableSelectionCell renders a default state 1`] = `
+<tr>
+  <td
+    class="fui-TableSelectionCell"
+  >
+    <span
+      class="fui-Checkbox fui-TableSelectionCell__checkboxIndicator"
+    >
+      <input
+        class="fui-Checkbox__input"
+        id="checkbox-2"
+        type="checkbox"
+      />
+      <div
+        aria-hidden="true"
+        class="fui-Checkbox__indicator"
+      />
+    </span>
+  </td>
+</tr>
+`;

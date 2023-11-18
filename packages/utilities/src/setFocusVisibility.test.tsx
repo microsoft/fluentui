@@ -45,7 +45,7 @@ describe('setFocusVisibility', () => {
   };
 
   beforeEach(() => {
-    spyOn(getWindow, 'getWindow').and.returnValue(mockWindow);
+    jest.spyOn(getWindow, 'getWindow').mockReturnValue(mockWindow as Window);
     classNames = [];
 
     wrapper = mount(<FocusRects />);

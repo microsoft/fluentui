@@ -1,8 +1,163 @@
 # Change Log - @fluentui/api-docs
 
-This log was last generated on Fri, 10 Sep 2021 07:39:51 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Jun 2023 07:36:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.11](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.2.11)
+
+Mon, 19 Jun 2023 07:36:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.2.10..@fluentui/api-docs_v8.2.11)
+
+### Patches
+
+- chore: bump api-extractor-model to support typescript 4.7 ([PR #28067](https://github.com/microsoft/fluentui/pull/28067) by martinhochel@microsoft.com)
+
+## [8.2.10](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.2.10)
+
+Wed, 31 May 2023 07:38:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.2.6..@fluentui/api-docs_v8.2.10)
+
+### Patches
+
+- fix: bump api-extractor and tsdoc which enables us to remove --isolateModules hacks within our code ([PR #27936](https://github.com/microsoft/fluentui/pull/27936) by martinhochel@microsoft.com)
+
+## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.2.0)
+
+Fri, 08 Oct 2021 07:31:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.2.0)
+
+### Minor changes
+
+- Move .api.json files out of api-docs package and remove extraneous dependencies ([PR #20148](https://github.com/microsoft/fluentui/pull/20148) by elcraig@microsoft.com)
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Tue, 05 Oct 2021 07:37:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.2 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/react-focus to v8.3.2 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/style-utilities to v8.3.4 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/theme to v2.4.1 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+- Bump @fluentui/utilities to v8.3.4 ([PR #20105](https://github.com/microsoft/fluentui/pull/20105) by beachball)
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Mon, 04 Oct 2021 07:27:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.1 ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by beachball)
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Thu, 30 Sep 2021 07:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/react to v8.36.0 ([PR #20017](https://github.com/microsoft/fluentui/pull/20017) by beachball)
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Wed, 29 Sep 2021 07:36:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/react to v8.35.2 ([PR #20013](https://github.com/microsoft/fluentui/pull/20013) by beachball)
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Tue, 28 Sep 2021 22:17:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.2.0 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/react to v8.35.1 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/react-focus to v8.3.1 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/style-utilities to v8.3.3 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/theme to v2.4.0 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+- Bump @fluentui/utilities to v8.3.3 ([PR #20000](https://github.com/microsoft/fluentui/pull/20000) by beachball)
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Tue, 28 Sep 2021 07:37:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/react to v8.35.0 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+- Bump @fluentui/react-focus to v8.3.0 ([commit](https://github.com/microsoft/fluentui/commit/dafc3b7b7092b9249afe8cb8129e2ea5c111c9c5) by beachball)
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Mon, 27 Sep 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.7 ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by beachball)
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Thu, 23 Sep 2021 07:35:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.6 ([PR #19891](https://github.com/microsoft/fluentui/pull/19891) by beachball)
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Wed, 22 Sep 2021 09:55:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.5 ([PR #19902](https://github.com/microsoft/fluentui/pull/19902) by beachball)
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Tue, 21 Sep 2021 07:42:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/react to v8.34.4 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+- Bump @fluentui/react-focus to v8.2.3 ([PR #19865](https://github.com/microsoft/fluentui/pull/19865) by beachball)
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Thu, 16 Sep 2021 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/api-docs to v8.1.35 ([PR #19815](https://github.com/microsoft/fluentui/pull/19815) by gcox@microsoft.com)
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Tue, 14 Sep 2021 07:38:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/api-docs to v8.1.35 ([PR #19605](https://github.com/microsoft/fluentui/pull/19605) by dmitry@grechka.family)
+
+## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
+
+Mon, 13 Sep 2021 07:37:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.1.35..@fluentui/api-docs_v8.1.35)
+
+### Patches
+
+- Bump @fluentui/api-docs to v8.1.35 ([PR #19758](https://github.com/microsoft/fluentui/pull/19758) by sarah.higley@microsoft.com)
 
 ## [8.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.1.35)
 

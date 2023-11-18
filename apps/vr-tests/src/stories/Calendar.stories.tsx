@@ -1,16 +1,16 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFixedWidth } from '../utilities/index';
+import { TestWrapperDecoratorFixedWidth } from '../utilities/index';
 import { Fabric, Calendar, DateRangeType, DayOfWeek } from '@fluentui/react';
 
 const date = new Date(2010, 1, 12);
 storiesOf('Calendar', module)
-  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'Root',
@@ -19,15 +19,15 @@ storiesOf('Calendar', module)
         <Calendar value={date} />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );
 
 storiesOf('Calendar - No Month Option', module)
-  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Show Month as Overlay and no Go To Today', () => (
     <Fabric>

@@ -29,6 +29,12 @@ export interface IProgressIndicatorProps extends React.ClassAttributes<ProgressI
   label?: React.ReactNode;
 
   /**
+   * Add screen-reader-only label text to the progressbar.
+   * Prefer `label`, and use this only when other text or visual context provides a visible label
+   */
+  ariaLabel?: string;
+
+  /**
    * Text describing or supplementing the operation. May be a string or React virtual elements.
    */
   description?: React.ReactNode;

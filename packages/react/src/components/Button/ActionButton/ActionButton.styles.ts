@@ -7,88 +7,86 @@ import type { ITheme } from '../../../Styling';
 const DEFAULT_BUTTON_HEIGHT = '40px';
 const DEFAULT_PADDING = '0 4px';
 
-export const getStyles = memoizeFunction(
-  (theme: ITheme, customStyles?: IButtonStyles): IButtonStyles => {
-    const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
-    const actionButtonStyles: IButtonStyles = {
-      root: {
-        padding: DEFAULT_PADDING,
-        height: DEFAULT_BUTTON_HEIGHT,
-        color: theme.palette.neutralPrimary,
-        backgroundColor: 'transparent',
-        border: '1px solid transparent',
-        selectors: {
-          [HighContrastSelector]: {
-            borderColor: 'Window',
-          },
+export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IButtonStyles): IButtonStyles => {
+  const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
+  const actionButtonStyles: IButtonStyles = {
+    root: {
+      padding: DEFAULT_PADDING,
+      height: DEFAULT_BUTTON_HEIGHT,
+      color: theme.palette.neutralPrimary,
+      backgroundColor: 'transparent',
+      border: '1px solid transparent',
+      selectors: {
+        [HighContrastSelector]: {
+          borderColor: 'Window',
         },
       },
+    },
 
-      rootHovered: {
-        color: theme.palette.themePrimary,
-        selectors: {
-          [HighContrastSelector]: {
-            color: 'Highlight',
-          },
+    rootHovered: {
+      color: theme.palette.themePrimary,
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'Highlight',
         },
       },
+    },
 
-      iconHovered: {
-        color: theme.palette.themePrimary,
-      },
+    iconHovered: {
+      color: theme.palette.themePrimary,
+    },
 
-      rootPressed: {
-        color: theme.palette.black,
-      },
+    rootPressed: {
+      color: theme.palette.black,
+    },
 
-      rootExpanded: {
-        color: theme.palette.themePrimary,
-      },
+    rootExpanded: {
+      color: theme.palette.themePrimary,
+    },
 
-      iconPressed: {
-        color: theme.palette.themeDarker,
-      },
+    iconPressed: {
+      color: theme.palette.themeDarker,
+    },
 
-      rootDisabled: {
-        color: theme.palette.neutralTertiary,
-        backgroundColor: 'transparent',
-        borderColor: 'transparent',
-        selectors: {
-          [HighContrastSelector]: {
-            color: 'GrayText',
-          },
+    rootDisabled: {
+      color: theme.palette.neutralTertiary,
+      backgroundColor: 'transparent',
+      borderColor: 'transparent',
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText',
         },
       },
+    },
 
-      rootChecked: {
-        color: theme.palette.black,
-      },
+    rootChecked: {
+      color: theme.palette.black,
+    },
 
-      iconChecked: {
-        color: theme.palette.themeDarker,
-      },
+    iconChecked: {
+      color: theme.palette.themeDarker,
+    },
 
-      flexContainer: {
-        justifyContent: 'flex-start',
-      },
+    flexContainer: {
+      justifyContent: 'flex-start',
+    },
 
-      icon: {
-        color: theme.palette.themeDarkAlt,
-      },
+    icon: {
+      color: theme.palette.themeDarkAlt,
+    },
 
-      iconDisabled: {
-        color: 'inherit',
-      },
+    iconDisabled: {
+      color: 'inherit',
+    },
 
-      menuIcon: {
-        color: theme.palette.neutralSecondary,
-      },
+    menuIcon: {
+      color: theme.palette.neutralSecondary,
+    },
 
-      textContainer: {
-        flexGrow: 0,
-      },
-    };
+    textContainer: {
+      flexGrow: 0,
+    },
+  };
 
-    return concatStyleSets(baseButtonStyles, actionButtonStyles, customStyles)!;
-  },
-);
+  return concatStyleSets(baseButtonStyles, actionButtonStyles, customStyles)!;
+});

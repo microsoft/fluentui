@@ -7,7 +7,8 @@ const componentUrl =
 export const FabricIconsPageProps: TFabricPlatformPageProps = {
   web: {
     title,
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/FabricIconsPage/docs/web/FabricIconsOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/FabricIconsPage/docs/web/FabricIconsOverview.md') as string,
     componentUrl,
   },
 };

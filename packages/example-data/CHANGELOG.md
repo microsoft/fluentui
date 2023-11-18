@@ -1,8 +1,62 @@
 # Change Log - @fluentui/example-data
 
-This log was last generated on Thu, 05 Aug 2021 07:34:24 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Aug 2023 07:35:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.12](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.4.12)
+
+Fri, 18 Aug 2023 07:35:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.4.11..@fluentui/example-data_v8.4.12)
+
+### Patches
+
+- docs: Updating version of CDN used and replacing usage of via.placeholder.com with SVG from CDN. ([PR #28895](https://github.com/microsoft/fluentui/pull/28895) by Humberto.Morimoto@microsoft.com)
+
+## [8.4.9](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.4.9)
+
+Fri, 05 May 2023 18:14:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.4.5..@fluentui/example-data_v8.4.9)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+
+## [8.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.4.4)
+
+Tue, 20 Dec 2022 07:53:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.4.3..@fluentui/example-data_v8.4.4)
+
+### Patches
+
+- chore: Updating cdn links to match latest. ([PR #26005](https://github.com/microsoft/fluentui/pull/26005) by esteban.230@hotmail.com)
+
+## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.4.0)
+
+Thu, 03 Mar 2022 07:24:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.3.0..@fluentui/example-data_v8.4.0)
+
+### Minor changes
+
+- Adding explicit export maps on all consumer packages for FUIR 8 and 9. ([PR #21508](https://github.com/microsoft/fluentui/pull/21508) by dzearing@microsoft.com)
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.3.0)
+
+Tue, 07 Dec 2021 07:31:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.2.7..@fluentui/example-data_v8.3.0)
+
+### Minor changes
+
+- [breaking] Remove AvatarExamples ([PR #20907](https://github.com/microsoft/fluentui/pull/20907) by elcraig@microsoft.com)
+
+## [8.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.2.7)
+
+Mon, 27 Sep 2021 07:34:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.2.6..@fluentui/example-data_v8.2.7)
+
+### Patches
+
+- Fix badge examples to use shorthand props ([PR #19843](https://github.com/microsoft/fluentui/pull/19843) by lingfangao@hotmail.com)
 
 ## [8.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.2.6)
 

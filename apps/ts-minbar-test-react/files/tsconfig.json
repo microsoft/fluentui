@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "lib": ["es5", "dom", "es2015.collection"],
+    "target": "es5",
+    "strict": true
+  },
+  "include": ["src"]
+}

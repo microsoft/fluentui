@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities/index';
+import { TestWrapperDecoratorTall } from '../utilities/index';
 import { CommandBar, ICommandBarItemProps } from '@fluentui/react';
 
 const items: ICommandBarItemProps[] = [
@@ -66,10 +66,10 @@ const farItems: ICommandBarItemProps[] = [
 ];
 
 storiesOf('CommandBar', module)
-  .addDecorator(FabricDecoratorTall)
+  .addDecorator(TestWrapperDecoratorTall)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-CommandBarItem-link')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -79,9 +79,9 @@ storiesOf('CommandBar', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
-  .addStory('Root', () => <CommandBar items={items} farItems={farItems} />, { rtl: true })
+  .addStory('Root', () => <CommandBar items={items} farItems={farItems} />, { includeRtl: true })
   .addStory('Text only', () => (
     <CommandBar
       items={items.map(item => ({ ...item, iconProps: undefined }))}

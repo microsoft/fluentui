@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FontWeightProperty } from 'csstype';
+import { Property } from 'csstype';
 import { Dropdown, DropdownItemProps, Provider } from '@fluentui/react-northstar';
 
 import { MentionsContainerProps } from './MentionsEditor';
@@ -7,7 +7,7 @@ import { MentionsContainerProps } from './MentionsEditor';
 type RenderItem = {
   Item: React.ReactType;
   props: DropdownItemProps;
-  fontWeight: FontWeightProperty;
+  fontWeight: Property.FontWeight;
 };
 
 const MentionsDropdown: React.FunctionComponent<MentionsContainerProps> = props => {
@@ -46,7 +46,7 @@ const getCustomItem = (args: {
   Item: React.ReactType;
   props: DropdownItemProps;
   searchQuery: string;
-  fontWeight: FontWeightProperty;
+  fontWeight: Property.FontWeight;
 }) => {
   const { Item, props, searchQuery, fontWeight } = args;
   const { header, ...rest } = props;

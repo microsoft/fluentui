@@ -5,23 +5,31 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   PropertiesTableSet,
+  Markdown,
 } from '@fluentui/react-docsite-components';
 
 import { HorizontalBarChartBasicExample } from './HorizontalBarChart.Basic.Example';
 import { HorizontalBarChartCustomCalloutExample } from './HorizontalBarChart.CustomCallout.Example';
 import { HorizontalBarChartBenchmarkExample } from './HorizontalBarChart.Benchmark.Example';
 import { HorizontalBarChartCustomAccessibilityExample } from './HorizontalBarChart.CustomAccessibility.Example';
+import { HorizontalBarChartVariantExample } from './HorizontalBarChart.Variant.Example';
 
-const HorizontalBarChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Basic.Example.tsx') as string;
-const HorizontalBarChartCustomCalloutExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.CustomCallout.Example.tsx') as string;
-const HorizontalBarChartBenchmarkExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Benchmark.Example.tsx') as string;
-const HorizontalBarChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.CustomAccessibility.Example.tsx') as string;
+const HorizontalBarChartBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Basic.Example.tsx') as string;
+const HorizontalBarChartCustomCalloutExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.CustomCallout.Example.tsx') as string;
+const HorizontalBarChartBenchmarkExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Benchmark.Example.tsx') as string;
+const HorizontalBarChartCustomAccessibilityExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.CustomAccessibility.Example.tsx') as string;
+const HorizontalBarChartVariantExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Variant.Example.tsx') as string;
 
 export class HorizontalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title="HorizontalBarChart"
+        title="Horizontal Bar Chart"
         componentName="HorizontalBarChartExample"
         exampleCards={
           <div>
@@ -40,6 +48,9 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
             >
               <HorizontalBarChartCustomAccessibilityExample />
             </ExampleCard>
+            <ExampleCard title="HorizontalBarChart Variant" code={HorizontalBarChartVariantExampleCode}>
+              <HorizontalBarChartVariantExample />
+            </ExampleCard>
           </div>
         }
         propertiesTables={
@@ -50,6 +61,26 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
           />
         }
         isHeaderVisible={this.props.isHeaderVisible}
+        overview={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/docs/HorizontalBarChartOverview.md')}
+          </Markdown>
+        }
+        bestPractices={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/docs/HorizontalBarChartBestPractices.md')}
+          </Markdown>
+        }
+        dos={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/docs/HorizontalBarChartDos.md')}
+          </Markdown>
+        }
+        donts={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/docs/HorizontalBarChartDonts.md')}
+          </Markdown>
+        }
       />
     );
   }

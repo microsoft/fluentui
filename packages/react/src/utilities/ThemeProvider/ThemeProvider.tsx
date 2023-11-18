@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useThemeProviderClasses } from './useThemeProviderClasses';
 import { useThemeProvider } from './useThemeProvider';
-import { useFocusRects } from '@fluentui/utilities';
 import { useMergedRefs } from '@fluentui/react-hooks';
 import type { ThemeProviderProps } from './ThemeProvider.types';
 
@@ -21,9 +20,6 @@ export const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = React.
 
   // Render styles.
   useThemeProviderClasses(state);
-
-  // Apply focus rect class on key presses.
-  useFocusRects(state.ref);
 
   // Return the rendered content.
   return render(state);

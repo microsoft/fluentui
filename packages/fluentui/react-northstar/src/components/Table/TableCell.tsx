@@ -13,13 +13,13 @@ import {
   UIComponentProps,
 } from '../../utils';
 import {
-  ComponentWithAs,
   useTelemetry,
   useStyles,
   useFluentContext,
   getElementType,
   useUnhandledProps,
   useAccessibility,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 import { Box, BoxProps } from '../Box/Box';
@@ -55,7 +55,7 @@ export const tableCellSlotClassNames: TableCellSlotClassNames = {
 /**
  * Component represents a table cell.
  */
-export const TableCell: ComponentWithAs<'div', TableCellProps> & FluentComponentStaticProps<TableCellProps> = props => {
+export const TableCell = React.forwardRef<HTMLDivElement, TableCellProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TableCell.displayName, context.telemetry);
   setStart();
@@ -102,6 +102,7 @@ export const TableCell: ComponentWithAs<'div', TableCellProps> & FluentComponent
         <ElementType
           {...getA11yProps('root', {
             className: classes.root,
+            ref,
             ...unhandledProps,
           })}
         >
@@ -116,7 +117,7 @@ export const TableCell: ComponentWithAs<'div', TableCellProps> & FluentComponent
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, TableCellProps> & FluentComponentStaticProps<TableCellProps>;
 
 TableCell.displayName = 'TableCell';
 

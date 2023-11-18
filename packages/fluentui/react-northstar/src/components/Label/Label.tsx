@@ -1,12 +1,12 @@
 import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
@@ -68,7 +68,7 @@ export const labelClassName = 'ui-label';
 /**
  * A Label allows user to classify content.
  */
-export const Label: ComponentWithAs<'span', LabelProps> & FluentComponentStaticProps = props => {
+export const Label = React.forwardRef<HTMLSpanElement, LabelProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Label.displayName, context.telemetry);
   setStart();
@@ -116,6 +116,7 @@ export const Label: ComponentWithAs<'span', LabelProps> & FluentComponentStaticP
       <ElementType
         {...getA11Props('root', {
           className: classes.root,
+          ref,
           ...rtlTextContainer.getAttributes({ forElements: [children] }),
           ...unhandledProps,
         })}
@@ -153,6 +154,7 @@ export const Label: ComponentWithAs<'span', LabelProps> & FluentComponentStaticP
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -166,7 +168,7 @@ export const Label: ComponentWithAs<'span', LabelProps> & FluentComponentStaticP
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, LabelProps> & FluentComponentStaticProps;
 
 Label.displayName = 'Label';
 

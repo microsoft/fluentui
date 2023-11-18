@@ -15,7 +15,6 @@ import { MenuItemProps } from '../Menu/MenuItem';
 import { focusMenuItem } from './focusUtils';
 import { ALIGNMENTS, POSITIONS, PositioningProps, AutoSize, AUTOSIZES } from '../../utils/positioner';
 import {
-  ComponentWithAs,
   useAccessibility,
   useTelemetry,
   getElementType,
@@ -24,6 +23,7 @@ import {
   useAutoControlled,
   useStyles,
   useOnIFrameFocus,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface MenuButtonSlotClassNames {
@@ -108,8 +108,7 @@ export type MenuButtonStylesProps = never;
  * A MenuButton displays a menu connected to trigger element.
  * @accessibility
  */
-export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
-  FluentComponentStaticProps<MenuButtonProps> = props => {
+export const MenuButton = React.forwardRef<HTMLDivElement, MenuButtonProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuButton.displayName, context.telemetry);
   setStart();
@@ -189,7 +188,6 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
   const popupProps: PopupProps = {
     accessibility,
     align,
-    className,
     defaultOpen,
     mountNode,
     mouseLeaveDelay,
@@ -204,13 +202,11 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
     position,
     positionFixed,
     tabbableTrigger,
-    styles: props.styles,
     target,
     trigger,
     unstable_disableTether,
     unstable_pinned,
     autoSize,
-    variables,
   };
 
   const { classes, styles: resolvedStyles } = useStyles<MenuButtonStylesProps>(MenuButton.displayName, {
@@ -297,6 +293,7 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
   const element = getA11yProps.unstable_wrapWithFocusZone(
     <ElementType
       {...getA11yProps('root', {
+        ref,
         className: classes.root,
         ...unhandledProps,
       })}
@@ -306,7 +303,7 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, MenuButtonProps> & FluentComponentStaticProps<MenuButtonProps>;
 
 MenuButton.displayName = 'MenuButton';
 

@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "lib": ["ES2019"],
+    "outDir": "../../dist/out-tsc",
+    "types": ["node", "jest"]
+  },
+  "exclude": ["**/*.spec.ts", "**/*.test.ts"],
+  "include": ["./src/**/*.ts", "./src/**/*.js"]
+}

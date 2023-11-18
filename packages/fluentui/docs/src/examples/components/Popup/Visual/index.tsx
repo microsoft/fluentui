@@ -9,6 +9,7 @@ const Visual = () => (
     <ComponentExample examplePath="components/Popup/Visual/PopupExamplePointerMargin" />
     <ComponentExample examplePath="components/Popup/Visual/PopupExampleContainerTransformed" />
     <ComponentExample examplePath="components/Popup/Visual/PopupScrollExample" />
+    <ComponentExample examplePath="components/Popup/Visual/PopperExampleVisibilityModifiers" />
   </NonPublicSection>
 );
 

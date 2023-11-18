@@ -9,8 +9,10 @@ import {
 import { PersonaCoinExample } from './PersonaCoin.Example';
 import { PersonaCoinSizeAndColorExample } from './PersonaCoinSizeAndColor.Example';
 
-const PersonaCoinExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/PersonaCoin/PersonaCoin.Example.tsx') as string;
-const PersonaCoinSizeAndColorExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/PersonaCoin/PersonaCoinSizeAndColor.Example.tsx') as string;
+const PersonaCoinExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/PersonaCoin/PersonaCoin.Example.tsx') as string;
+const PersonaCoinSizeAndColorExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/PersonaCoin/PersonaCoinSizeAndColor.Example.tsx') as string;
 
 export const PersonaCoinPage = (props: IComponentDemoPageProps) => {
   return (

@@ -7,7 +7,7 @@ import {
   AzureThemeHighContrastDark,
 } from '@fluentui/azure-themes';
 import { DefaultButton, CompoundButton, PrimaryButton } from '@fluentui/react/lib/Button';
-import { ButtonCommandBarExample } from '../components/commandBarButton.stories';
+import { CommandBarSplitDisabledExample } from '../components/commandBarButton.stories';
 import { ButtonSplitExample } from '../components/splitButton.stories';
 import { ButtonIconExample } from '../components/iconButton.stories';
 import { ButtonIconWithTooltipExample } from '../components/iconTooltip.stories';
@@ -31,9 +31,11 @@ import { TeachingBubbleBasicExample } from '../components/TeachingBubble.stories
 import { MessageBarBasicExample } from '../components/messageBar.stories';
 import { TooltipBasicExample } from '../components/tooltip.stories';
 import { SliderBasicExample } from '../components/slider.stories';
-
-// Workaround to prevent errors on usage of Customizer, without disabling all deprecation checks
-// eslint-disable-next-line deprecation/deprecation
+import { SpinButtonBasicExample } from '../components/SpinButton.stories';
+import { DatePickerBasicExample } from '../components/defaultDatePicker';
+import { ProgressIndicatorBasicExample } from '../components/ProgressIndicator.stories';
+import { CalendarInlineMultidayDayViewExample } from '../components/CalendarInlineMultidayDayView.stories';
+import { SpinnerBasicExample } from '../components/spinner.stories';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
@@ -52,6 +54,13 @@ const Example = () => (
       <CompoundButton secondaryText="secondary text." text="CompoundButton" />
       <DefaultButton primary={true} text="Default button as primary" />
       <DefaultButton primary={true} disabled={true} text="Default w/ primary disabled" />
+      <Label>Danger buttons (both primary and default)</Label>
+      <DefaultButton className="danger" text="danger defaultbutton" />
+      <PrimaryButton className="danger" text="danger primarybutton" />
+
+      <Label>Tag buttons (both primary and default)</Label>
+      <DefaultButton className="tag" text="tag defaultbutton" />
+      <PrimaryButton className="tag" text="tag primarybutton" />
       <Label>Disabled Buttons</Label>
       <DefaultButton disabled text="DefaultButton disabled" />
       <PrimaryButton disabled text="PrimaryButton disabled" />
@@ -60,11 +69,11 @@ const Example = () => (
       <Label disabled>I am a disabled label</Label>
       <Label>Icon Buttons</Label>
       <ButtonIconExample checked={false} />
-      <ButtonCommandBarExample />
+      <Label>CommandBarSplitDisabledExample</Label>
+      <CommandBarSplitDisabledExample />
       <ButtonIconWithTooltipExample />
       <ButtonContextualMenuExample />
       <ButtonActionExample />
-
       <Label>Toggle button</Label>
       <ButtonToggleExample />
       <ButtonSplitExample checked={false} />
@@ -87,8 +96,15 @@ const Example = () => (
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Progress Indicator</Label>
+      <ProgressIndicatorBasicExample />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label className="section">DatePicker</Label>
+      <DatePickerBasicExample />
       <DatePickerBoundedExample />
+      <CalendarInlineMultidayDayViewExample />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
@@ -110,9 +126,23 @@ const Example = () => (
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Checkbox label="Indeterminate checkbox (uncontrolled)" defaultIndeterminate />
+      <Checkbox
+        label="Indeterminate checkbox which defaults to true when clicked (uncontrolled)"
+        defaultIndeterminate
+        defaultChecked={true}
+      />
+      <Checkbox label="Disabled indeterminate checkbox" disabled defaultIndeterminate />
+      <Checkbox label="Indeterminate checkbox (controlled)" indeterminate={true} />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label>Links</Label>
       <Link>Hello I am a link, hover underline</Link>
     </Stack>
+
+    <Link>Loader / Spinner</Link>
+    <SpinnerBasicExample />
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label>ComboBox</Label>
@@ -131,6 +161,11 @@ const Example = () => (
       <TextField disabled value="disabled text" />
       <TextField placeholder="Hello" />
       <TextField errorMessage="Error message!" />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Spin button example</Label>
+      <SpinButtonBasicExample />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>

@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Select renders a custom icon slot 1`] = `
+<div>
+  <span
+    class="fui-Select"
+  >
+    <select
+      class="fui-Select__select"
+    />
+    <span
+      class="fui-Select__icon"
+    >
+      x
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Select renders option children 1`] = `
+<div>
+  <span
+    class="fui-Select"
+  >
+    <select
+      class="fui-Select__select"
+    >
+      <option>
+        A
+      </option>
+      <option>
+        B
+      </option>
+      <option>
+        C
+      </option>
+    </select>
+    <span
+      class="fui-Select__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Select renders the default state 1`] = `
+<div>
+  <span
+    class="fui-Select"
+  >
+    <select
+      class="fui-Select__select"
+    />
+    <span
+      class="fui-Select__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+  </span>
+</div>
+`;

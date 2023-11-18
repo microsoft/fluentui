@@ -18,30 +18,28 @@ const ComboBoxLineHeight = 30;
 const ComboBoxCaretDownWidth = 32;
 const ComboBoxOptionHeight = 36;
 
-const getDisabledStyles = memoizeFunction(
-  (theme: ITheme): IRawStyle => {
-    const { semanticColors } = theme;
+const getDisabledStyles = memoizeFunction((theme: ITheme): IRawStyle => {
+  const { semanticColors } = theme;
 
-    return {
-      backgroundColor: semanticColors.disabledBackground,
-      color: semanticColors.disabledText,
-      cursor: 'default',
-      selectors: {
-        ':after': {
-          borderColor: semanticColors.disabledBackground,
-        },
-        [HighContrastSelector]: {
-          color: 'GrayText',
-          selectors: {
-            ':after': {
-              borderColor: 'GrayText',
-            },
+  return {
+    backgroundColor: semanticColors.disabledBackground,
+    color: semanticColors.disabledText,
+    cursor: 'default',
+    selectors: {
+      ':after': {
+        borderColor: semanticColors.disabledBackground,
+      },
+      [HighContrastSelector]: {
+        color: 'GrayText',
+        selectors: {
+          ':after': {
+            borderColor: 'GrayText',
           },
         },
       },
-    };
-  },
-);
+    },
+  };
+});
 
 const listOptionHighContrastStyles: IRawStyle = {
   selectors: {
@@ -109,10 +107,12 @@ export const getOptionStyles = memoizeFunction(
               border: 'none',
               borderColor: 'Background',
             },
-            '&.ms-Checkbox': {
-              display: 'flex',
-              alignItems: 'center',
-            },
+            ...(!isHidden && {
+              '&.ms-Checkbox': {
+                display: 'flex',
+                alignItems: 'center',
+              },
+            }),
             '&.ms-Button--command:hover:active': {
               backgroundColor: option.backgroundPressedColor,
             },

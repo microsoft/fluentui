@@ -1,4 +1,4 @@
-import { FontWeightProperty } from 'csstype';
+import { Property } from 'csstype';
 import { pxToRem } from '../../../../utils';
 
 export interface ListItemVariables {
@@ -15,7 +15,7 @@ export interface ListItemVariables {
   // TODO: prod app uses 17.5px here, it should be 16px per the design guide!
   headerMediaLineHeight: string;
 
-  importantFontWeight: FontWeightProperty;
+  importantFontWeight: Property.FontWeight;
 
   // Content
   contentFontSize: string;

@@ -53,12 +53,6 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
               },
             disabled && { background: palette.neutralLighter },
           ],
-          ':focus-within': [
-            !disabled && {
-              background: palette.themePrimary,
-              color: palette.white,
-            },
-          ],
           [HighContrastSelector]: {
             border: `1px solid ${!selected ? 'WindowText' : 'WindowFrame'}`,
           },
@@ -71,7 +65,14 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
           },
         },
       },
-      selected && !disabled && [classNames.isSelected],
+      selected &&
+        !disabled && [
+          classNames.isSelected,
+          {
+            background: palette.themePrimary,
+            color: palette.white,
+          },
+        ],
       className,
     ],
     text: [
@@ -93,6 +94,7 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
     ],
     close: [
       classNames.close,
+      getFocusStyle(theme, { borderColor: 'transparent', inset: 1, outlineColor: palette.white }),
       {
         color: palette.neutralSecondary,
         width: 30,
@@ -106,7 +108,7 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
             background: palette.neutralQuaternaryAlt,
             color: palette.neutralPrimary,
           },
-          ':focus': {
+          [`.${classNames.isSelected} &, :focus`]: {
             color: palette.white,
             background: palette.themePrimary,
           },

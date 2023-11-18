@@ -18,10 +18,12 @@ interface IExampleProps {
 
 const horizontalStackProps: IStackProps = {
   horizontal: true,
+  wrap: true,
   tokens: { childrenGap: 16 },
 };
 const verticalStackProps: IStackProps = {
-  styles: { root: { overflow: 'hidden', width: '100%' } },
+  grow: true,
+  styles: { root: { overflow: 'hidden', width: '60%' } },
   tokens: { childrenGap: 20 },
 };
 const choiceGroupStyles: Partial<IChoiceGroupStyles> = { label: { maxWidth: 250 } };

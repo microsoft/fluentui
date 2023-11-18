@@ -17,8 +17,8 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
     subComponentStyles: {
       callout: {
         root: {
-          backgroundColor: semanticColors.inputBackground,
-          borderColor: semanticColors.inputBorder,
+          backgroundColor: extendedSemanticColors.controlBackground,
+          borderColor: semanticColors.variantBorder,
           borderStyle: StyleConstants.borderSolid,
           borderWidth: StyleConstants.borderWidth,
           boxShadow: Depths.depth8,
@@ -34,15 +34,19 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
           root: [
             {
               fontSize: theme.fonts.medium.fontSize,
+              backgroundColor: extendedSemanticColors.controlBackground,
               selectors: {
                 '&:hover': {
-                  backgroundColor: semanticColors.buttonBackgroundHovered,
-                  color: semanticColors.buttonTextHovered,
+                  backgroundColor: semanticColors.listItemBackgroundHovered,
+                  color: semanticColors.bodyText,
                   selectors: {
                     '.ms-ContextualMenu-icon': {
                       color: extendedSemanticColors.iconButtonFillHovered,
                     },
                   },
+                },
+                '&:active': {
+                  color: semanticColors.buttonTextHovered,
                 },
                 '.ms-ContextualMenu-icon': {
                   color: extendedSemanticColors.iconButtonFill,
@@ -54,7 +58,7 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
             fontSize: theme.fonts.medium.fontSize,
           },
           divider: {
-            backgroundColor: semanticColors.inputBorder,
+            backgroundColor: semanticColors.variantBorder,
           },
           iconColor: {
             color: semanticColors.focusBorder,

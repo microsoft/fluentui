@@ -28,6 +28,7 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
 
     ReactDOM.render(
       <Fabric>
+        {/* eslint-disable-next-line react/jsx-no-bind */}
         <Router onNewRouteLoaded={_scrollAnchorLink}>{_getRoutes()}</Router>
       </Fabric>,
       rootElement,

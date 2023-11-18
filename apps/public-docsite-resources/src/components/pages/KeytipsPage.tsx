@@ -7,10 +7,7 @@ import { KeytipsPageProps } from '@fluentui/react-examples/lib/react/Keytip/Keyt
 
 export const KeytipsPage = (props: { isHeaderVisible: boolean }) => (
   <div>
-    <DemoPage
-      jsonDocs={require('@fluentui/api-docs/lib/pages/react/Keytips.page.json')}
-      {...{ ...KeytipsPageProps, ...props }}
-    />
+    <DemoPage jsonDocs={require('../../../dist/api/react/Keytips.page.json')} {...{ ...KeytipsPageProps, ...props }} />
     <KeytipLayer content="Alt Windows" />
   </div>
 );

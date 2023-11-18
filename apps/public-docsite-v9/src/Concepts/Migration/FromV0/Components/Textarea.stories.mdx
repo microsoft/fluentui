@@ -1,0 +1,73 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/Textarea Migration" />
+
+# Textarea Migration
+
+Fluent UI Northstar (v0) provides the `TextArea` control to allow users to enter and edit multi-line text. Fluent UI v9 provides a `Textarea` control, but has a different API.
+
+## Examples
+
+### Basic Migration
+
+Basic usage of `TextArea` v0
+
+```tsx
+import React from 'react';
+import { TextArea } from '@fluentui/react-northstar';
+
+const TextAreaV0BasicExample = () => {
+  const textAreaId = 'textArea';
+
+  return (
+    <>
+      <Label htmlFor={textAreaId} content="Enter review" />
+      <TextArea id={textAreaId} placeholder="Type here..." />
+    </>
+  );
+};
+
+export default TextAreaExample;
+```
+
+An equivalent `Textarea` in v9 is
+
+```tsx
+import * as React from 'react';
+import { Label, Textarea } from '@fluentui/react-components';
+import { useId } from '@fluentui/react-utilities';
+
+const TextareaV9BasicExample = () => {
+  const textareaId = useId('textarea');
+  return (
+    <>
+      <Label htmlFor={textareaId}>Enter review</Label>
+      <Textarea id={textareaId} placeholder="Type here..." />
+    </>
+  );
+};
+```
+
+## Props Mapping
+
+This table maps `TextArea` v0 props to the `Textarea` v9 equivalent.
+
+| v0              | v9             | Notes                                              |
+| --------------- | -------------- | -------------------------------------------------- |
+| `accessibility` | n/a            |                                                    |
+| `as`            | n/a            |                                                    |
+| `className`     | `className`    |                                                    |
+| `defaultValue`  | `defaultValue` | Mutually exclusive with `value`                    |
+| `design`        | n/a            |                                                    |
+| `disabled`      | `disabled`     |                                                    |
+| `error`         | n/a            |                                                    |
+| `fluid`         | n/a            |                                                    |
+| `inverted`      | `appearance`   | The equivalent appearance would be `filledLighter` |
+| `key`           | `key`          |                                                    |
+| `onChange`      | `onChange`     |                                                    |
+| `ref`           | `ref`          |                                                    |
+| `required`      | `required`     |                                                    |
+| `resize`        | `resize`       |                                                    |
+| `styles`        | `className`    |                                                    |
+| `value`         | `value`        | Mutually exclusivewith `defaultValue`              |
+| `variables`     | n/a            | Use `FluentProvider` to customize themes           |

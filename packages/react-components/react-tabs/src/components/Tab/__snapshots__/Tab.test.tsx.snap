@@ -1,0 +1,371 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tab renders correctly 1`] = `
+<div>
+  <button
+    aria-selected="false"
+    class="fui-Tab"
+    role="tab"
+    style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+    type="button"
+    value="1"
+  >
+    <span
+      class="fui-Tab__content"
+    >
+      Default Tab
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Tab renders correctly when disabled 1`] = `
+<div>
+  <button
+    class="fui-Tab"
+    disabled=""
+    role="tab"
+    type="button"
+    value="1"
+  >
+    <span
+      class="fui-Tab__content"
+    >
+      Default Tab
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Tab renders default correctly with icon slotted 1`] = `
+<div>
+  <button
+    aria-selected="false"
+    class="fui-Tab"
+    role="tab"
+    style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+    type="button"
+    value="1"
+  >
+    <span
+      class="fui-Tab__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9Zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5ZM7 11a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM7 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+    <span
+      class="fui-Tab__content"
+    >
+      Default Tab
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Tab renders large size and vertical correctly with icon slotted 1`] = `
+<div>
+  <button
+    aria-selected="false"
+    class="fui-Tab"
+    role="tab"
+    style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+    type="button"
+    value="1"
+  >
+    <span
+      class="fui-Tab__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9Zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5ZM7 11a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM7 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+    <span
+      class="fui-Tab__content"
+    >
+      Default Tab
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Tab renders large size correctly with icon slotted 1`] = `
+<div>
+  <button
+    aria-selected="false"
+    class="fui-Tab"
+    role="tab"
+    style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+    type="button"
+    value="1"
+  >
+    <span
+      class="fui-Tab__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9Zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5ZM7 11a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM7 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+    <span
+      class="fui-Tab__content"
+    >
+      Default Tab
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Tab renders medium size and vertical correctly with icon slotted 1`] = `
+<div>
+  <button
+    aria-selected="false"
+    class="fui-Tab"
+    role="tab"
+    style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+    type="button"
+    value="1"
+  >
+    <span
+      class="fui-Tab__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9Zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5ZM7 11a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM7 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+    <span
+      class="fui-Tab__content"
+    >
+      Default Tab
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Tab renders medium size correctly with icon slotted 1`] = `
+<div>
+  <button
+    aria-selected="false"
+    class="fui-Tab"
+    role="tab"
+    style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+    type="button"
+    value="1"
+  >
+    <span
+      class="fui-Tab__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9Zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5ZM7 11a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM7 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+    <span
+      class="fui-Tab__content"
+    >
+      Default Tab
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Tab renders small size and vertical correctly with icon slotted 1`] = `
+<div>
+  <button
+    aria-selected="false"
+    class="fui-Tab"
+    role="tab"
+    style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+    type="button"
+    value="1"
+  >
+    <span
+      class="fui-Tab__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9Zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5ZM7 11a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM7 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+    <span
+      class="fui-Tab__content"
+    >
+      Default Tab
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Tab renders small size correctly with icon slotted 1`] = `
+<div>
+  <button
+    aria-selected="false"
+    class="fui-Tab"
+    role="tab"
+    style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+    type="button"
+    value="1"
+  >
+    <span
+      class="fui-Tab__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9Zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5ZM7 11a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM7 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+    <span
+      class="fui-Tab__content"
+    >
+      Default Tab
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Tab renders subtle appearance correctly with icon slotted 1`] = `
+<div>
+  <button
+    aria-selected="false"
+    class="fui-Tab"
+    role="tab"
+    style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+    type="button"
+    value="1"
+  >
+    <span
+      class="fui-Tab__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9Zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5ZM7 11a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM7 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+    <span
+      class="fui-Tab__content"
+    >
+      Default Tab
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Tab renders vertical correctly with icon slotted 1`] = `
+<div>
+  <button
+    aria-selected="false"
+    class="fui-Tab"
+    role="tab"
+    style="--fui-Tab__indicator--offset: 0px; --fui-Tab__indicator--scale: 1;"
+    type="button"
+    value="1"
+  >
+    <span
+      class="fui-Tab__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M14.5 3A2.5 2.5 0 0 1 17 5.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 3 14.5v-9A2.5 2.5 0 0 1 5.5 3h9Zm0 1h-9C4.67 4 4 4.67 4 5.5v9c0 .83.67 1.5 1.5 1.5h9c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5ZM7 11a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM7 7a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Zm3 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+    <span
+      class="fui-Tab__content"
+    >
+      Default Tab
+    </span>
+  </button>
+</div>
+`;

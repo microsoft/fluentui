@@ -108,7 +108,6 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
 
   // placeholder style constants
   const placeholderStyles: IStyle = [
-    fonts.medium,
     {
       color: semanticColors.inputPlaceholderText,
       opacity: 1,

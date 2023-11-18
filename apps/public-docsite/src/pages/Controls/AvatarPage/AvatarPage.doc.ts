@@ -13,18 +13,22 @@ const componentUrl =
 
 export const AvatarPageProps: TFabricPlatformPageProps = {
   ios: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/AvatarPage/docs/ios/AvatarOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/AvatarPage/docs/ios/AvatarOverview.md') as string,
     related,
     componentUrl,
   },
   android: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/AvatarPage/docs/android/AvatarOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/AvatarPage/docs/android/AvatarOverview.md') as string,
     related,
     componentUrl,
   },
   mac: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/AvatarPage/docs/mac/AvatarOverview.md') as string,
-    usage: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/AvatarPage/docs/mac/AvatarUsage.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/AvatarPage/docs/mac/AvatarOverview.md') as string,
+    usage:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/AvatarPage/docs/mac/AvatarUsage.md') as string,
     related,
     componentUrl,
   },

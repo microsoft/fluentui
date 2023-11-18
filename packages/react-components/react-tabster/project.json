@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/react-tabster",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-tabster/src",
+  "tags": ["vNext", "platform:web"],
+  "implicitDependencies": []
+}

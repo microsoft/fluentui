@@ -11,7 +11,6 @@ import { Box, BoxProps } from '../Box/Box';
 import { ComponentEventHandler, ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Ref } from '@fluentui/react-component-ref';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useFluentContext,
@@ -19,6 +18,7 @@ import {
   useAccessibility,
   useTelemetry,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface EmbedSlotClassNames {
@@ -83,7 +83,7 @@ export type EmbedStylesProps = Required<Pick<EmbedProps, 'active'>> & { iframeLo
  * A `placeholder` slot represents an [`Image`](/components/image/definition) component, please follow recommendations from its
  * accessibility section.
  */
-export const Embed: ComponentWithAs<'span', EmbedProps> & FluentComponentStaticProps<EmbedProps> = props => {
+export const Embed = React.forwardRef<HTMLSpanElement, EmbedProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Embed.displayName, context.telemetry);
   setStart();
@@ -168,6 +168,7 @@ export const Embed: ComponentWithAs<'span', EmbedProps> & FluentComponentStaticP
       {...getA11yProps('root', {
         className: classes.root,
         onClick: handleClick,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -218,7 +219,7 @@ export const Embed: ComponentWithAs<'span', EmbedProps> & FluentComponentStaticP
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, EmbedProps> & FluentComponentStaticProps<EmbedProps>;
 
 Embed.displayName = 'Embed';
 
@@ -238,7 +239,7 @@ Embed.propTypes = {
 };
 
 Embed.defaultProps = {
-  as: 'span',
+  as: 'span' as const,
   accessibility: embedBehavior,
   control: {},
   variables: {},

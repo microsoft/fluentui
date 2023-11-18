@@ -1,0 +1,255 @@
+<style>
+  div.docs-story > div:first-child {
+    height: 95em !important;
+  }
+</style>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+  <defs>
+    <symbol id="icon" viewBox="0 0 16 16">
+      <path
+        d="M6.5 7.7h-1v-1h1v1zm4.1 0h-1v-1h1v1zm4.1-1v2.1h-1v2.6l-.1.6-.3.5c-.1.1-.3.3-.5.3l-.6.1H10l-3.5 3v-3H3.9l-.6-.1-.5-.3c-.1-.1-.3-.3-.3-.5l-.1-.6V8.8h-1V6.7h1V5.2l.1-.6.3-.5c.1-.1.3-.3.5-.3l.6-.1h3.6V1.9a.8.8 0 01-.4-.4L7 1V.6l.2-.3.3-.2L8 0l.4.1.3.2.3.3V1l-.1.5-.4.4v1.7h3.6l.6.1.5.3c.1.1.3.3.3.5l.1.6v1.5h1.1zm-2.1-1.5l-.2-.4-.4-.2H3.9l-.4.2-.1.4v6.2l.2.4.4.2h3.6v1.8L9.7 12h2.5l.4-.2.2-.4V5.2zM5.8 8.9l1 .7 1.2.2a5 5 0 001.2-.2l1-.7.7.7c-.4.4-.8.7-1.4.9-.5.2-1 .3-1.6.3s-1.1-.1-1.6-.3A3 3 0 015 9.6l.8-.7z"
+      />
+    </symbol>
+  </defs>
+</svg>
+<style>
+  fluent-radio-group {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  fluent-radio {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+</style>
+
+<h1>Toolbar</h1>
+
+<h2>Default</h2>
+<fluent-toolbar>
+  <button>Button</button>
+  <select>
+    <option>Option 1</option>
+    <option>Second option</option>
+    <option>Option 3</option>
+  </select>
+  <label for="check-1">
+    <input type="checkbox" name="checkbox" id="check-1" />
+    Checkbox 1
+  </label>
+  <label for="check-2">
+    <input type="checkbox" name="checkbox" id="check-2" />
+    Checkbox 2
+  </label>
+  <label for="check-3">
+    <input type="checkbox" name="checkbox" id="check-3" />
+    Checkbox 3
+  </label>
+  <input type="text" name="text" id="text-input" />
+  <button slot="end">End Slotted Button</button>
+</fluent-toolbar>
+
+<h2>Fluent components</h2>
+<fluent-toolbar id="toolbar-fluent-components">
+  <fluent-button appearance="accent">Accent Button</fluent-button>
+  <fluent-button appearance="stealth">Stealth Button</fluent-button>
+  <fluent-radio-group>
+    <fluent-radio checked>One</fluent-radio>
+    <fluent-radio>Two</fluent-radio>
+    <fluent-radio>Three</fluent-radio>
+  </fluent-radio-group>
+  <fluent-combobox>
+    <fluent-option>Please Please Me</fluent-option>
+    <fluent-option>With The Beatles</fluent-option>
+    <fluent-option>A Hard Day's Night</fluent-option>
+    <fluent-option>Beatles for Sale</fluent-option>
+    <fluent-option>Help!</fluent-option>
+    <fluent-option>Rubber Soul</fluent-option>
+    <fluent-option>Revolver</fluent-option>
+    <fluent-option>Sgt. Pepper's Lonely Hearts Club Band</fluent-option>
+    <fluent-option>Magical Mystery Tour</fluent-option>
+    <fluent-option>The Beatles</fluent-option>
+    <fluent-option>Yellow Submarine</fluent-option>
+    <fluent-option>Abbey Road</fluent-option>
+    <fluent-option>Let It Be</fluent-option>
+  </fluent-combobox>
+  <fluent-button>Button</fluent-button>
+  <fluent-select>
+    <fluent-option>Option 1</fluent-option>
+    <fluent-option>Second option</fluent-option>
+    <fluent-option>Option 3</fluent-option>
+  </fluent-select>
+  <fluent-checkbox>Checkbox</fluent-checkbox>
+</fluent-toolbar>
+<fluent-toolbar id="toolbar-fluent-components-two">
+  <fluent-radio-group>
+    <fluent-radio checked>Add</fluent-radio>
+    <fluent-radio>Open</fluent-radio>
+    <fluent-radio>Copy</fluent-radio>
+    <fluent-radio>Export</fluent-radio>
+    <fluent-radio>Automate</fluent-radio>
+  </fluent-radio-group>
+  <fluent-button appearance="stealth">Stealth</fluent-button>
+  <fluent-button appearance="accent">Refresh</fluent-button>
+  <fluent-badge>21 items</fluent-badge>
+  <fluent-radio-group>
+    <fluent-radio>Filter</fluent-radio>
+    <fluent-radio>
+      <fluent-text-field placeholder="Search"></fluent-text-field>
+    </fluent-radio>
+  </fluent-radio-group>
+</fluent-toolbar>
+
+<h2>Dark Mode</h2>
+<fluent-design-system-provider fill-color="#333" style="padding: 10px">
+  <fluent-toolbar id="toolbar-fluent-components-two" style="width: 100%">
+    <fluent-radio-group>
+      <fluent-radio checked>Add</fluent-radio>
+      <fluent-radio>Open</fluent-radio>
+      <fluent-radio>Copy</fluent-radio>
+      <fluent-radio>Export</fluent-radio>
+      <fluent-radio>Automate</fluent-radio>
+    </fluent-radio-group>
+    <fluent-button appearance="stealth">Stealth</fluent-button>
+    <fluent-button appearance="accent">Refresh</fluent-button>
+    <fluent-badge>21 items</fluent-badge>
+    <fluent-radio-group slot="end">
+      <fluent-radio>Filter</fluent-radio>
+      <fluent-radio>
+        <fluent-text-field placeholder="Search"></fluent-text-field>
+      </fluent-radio>
+    </fluent-radio-group>
+  </fluent-toolbar>
+</fluent-design-system-provider>
+
+<h2>Slotted End Items w/ Min Width</h2>
+<fluent-design-system-provider fill-color="#333" style="padding: 10px; min-width: 800px">
+  <fluent-toolbar id="toolbar-fluent-components-two" style="width: 100%">
+    <label slot="label">slotted label</label>
+    <fluent-radio-group>
+      <fluent-radio checked>Add</fluent-radio>
+      <fluent-radio>Open</fluent-radio>
+      <fluent-radio>Copy</fluent-radio>
+    </fluent-radio-group>
+    <fluent-button appearance="accent">Refresh</fluent-button>
+    <fluent-badge>21 items</fluent-badge>
+    <fluent-radio-group slot="end">
+      <fluent-radio>Filter</fluent-radio>
+      <fluent-radio>
+        <fluent-text-field placeholder="Search"></fluent-text-field>
+      </fluent-radio>
+    </fluent-radio-group>
+    <svg slot="end">
+      <use href="#icon" />
+    </svg>
+  </fluent-toolbar>
+</fluent-design-system-provider>
+
+<h2>Toolbar with slotted span label</h2>
+<fluent-toolbar id="toolbar-slotted-label">
+  <span slot="label">Span Label</span>
+  <button>One</button>
+  <button>Two</button>
+  <button>Three</button>
+</fluent-toolbar>
+
+<h2>Toolbar with external label</h2>
+<label id="toolbar-label" for="toolbar-external-label">External label</label>
+<fluent-toolbar id="toolbar-external-label" aria-labelledby="toolbar-label">
+  <button>One</button>
+  <button>Two</button>
+  <button>Three</button>
+</fluent-toolbar>
+
+<h2>Toolbar with invisible label</h2>
+<fluent-toolbar id="toolbar-invisible-label" aria-label="Invisible label">
+  <button>One</button>
+  <button>Two</button>
+  <button>Three</button>
+</fluent-toolbar>
+
+<h2>Vertical orientation</h2>
+<fluent-toolbar id="toolbar-vertical-orientation" orientation="vertical">
+  <span slot="label">Span Label</span>
+  <button>One</button>
+  <button>Two</button>
+  <button>Three</button>
+</fluent-toolbar>
+
+<h2>Disabled Elements</h2>
+<fluent-toolbar id="toolbar-first-disabled" orientation="vertical">
+  <fluent-checkbox disabled>One</fluent-checkbox>
+  <fluent-checkbox>Two</fluent-checkbox>
+  <fluent-checkbox>Three</fluent-checkbox>
+</fluent-toolbar>
+
+<fluent-toolbar id="toolbar-second-disabled" orientation="vertical">
+  <fluent-checkbox>One</fluent-checkbox>
+  <fluent-checkbox disabled>Two</fluent-checkbox>
+  <fluent-checkbox>Three</fluent-checkbox>
+</fluent-toolbar>
+
+<fluent-toolbar id="toolbar-last-disabled" orientation="vertical">
+  <fluent-checkbox>One</fluent-checkbox>
+  <fluent-checkbox>Two</fluent-checkbox>
+  <fluent-checkbox disabled>Three</fluent-checkbox>
+</fluent-toolbar>
+
+<fluent-toolbar id="toolbar-last-two-disabled" orientation="vertical">
+  <fluent-checkbox>One</fluent-checkbox>
+  <fluent-checkbox disabled>Two</fluent-checkbox>
+  <fluent-checkbox disabled>Three</fluent-checkbox>
+</fluent-toolbar>
+
+<fluent-toolbar id="toolbar-first-last-disabled" orientation="vertical">
+  <fluent-checkbox disabled>One</fluent-checkbox>
+  <fluent-checkbox>Two</fluent-checkbox>
+  <fluent-checkbox disabled>Three</fluent-checkbox>
+</fluent-toolbar>
+
+<fluent-toolbar id="toolbar-first-two-disabled" orientation="vertical">
+  <span slot="label">Span Label</span>
+  <fluent-checkbox disabled>One</fluent-checkbox>
+  <fluent-checkbox disabled>Two</fluent-checkbox>
+  <fluent-checkbox>Three</fluent-checkbox>
+</fluent-toolbar>
+
+<fluent-toolbar id="toolbar-disabled-all" orientation="vertical">
+  <fluent-checkbox disabled>One</fluent-checkbox>
+  <fluent-checkbox disabled>Two</fluent-checkbox>
+  <fluent-checkbox disabled>Three</fluent-checkbox>
+</fluent-toolbar>
+
+<h2>RTL Mode</h2>
+<fluent-toolbar id="toolbar-rtl" dir="rtl">
+  <fluent-checkbox>One</fluent-checkbox>
+  <fluent-checkbox>Two</fluent-checkbox>
+  <fluent-checkbox>Three</fluent-checkbox>
+</fluent-toolbar>
+
+<fluent-toolbar id="toolbar-rtl-vertical" dir="rtl" orientation="vertical">
+  <fluent-checkbox>One</fluent-checkbox>
+  <fluent-checkbox>Two</fluent-checkbox>
+  <fluent-checkbox>Three</fluent-checkbox>
+</fluent-toolbar>
+
+<h2>Start/End Slots</h2>
+<fluent-toolbar id="toolbar-start-end-slots">
+  <svg slot="start">
+    <use href="#icon" />
+  </svg>
+  <svg slot="end">
+    <use href="#icon" />
+  </svg>
+</fluent-toolbar>
+
+<fluent-toolbar id="toolbar-start-end-slots-vertical" orientation="vertical">
+  <svg slot="start">
+    <use href="#icon" />
+  </svg>
+  <svg slot="end">
+    <use href="#icon" />
+  </svg>
+</fluent-toolbar>

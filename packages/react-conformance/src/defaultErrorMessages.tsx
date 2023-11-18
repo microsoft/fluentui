@@ -1,10 +1,10 @@
 import { IsConformantOptions } from './types';
 
 import { EOL } from 'os';
-import * as _ from 'lodash';
 import * as path from 'path';
 
-import { errorMessageColors, formatArray, getErrorMessage } from './utils/errorMessages';
+import { errorMessageColors, formatArray, getErrorMessage, formatErrors, getPackagePath } from './utils/index';
+import { prettyDOM } from '@testing-library/react';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -24,46 +24,6 @@ import { errorMessageColors, formatArray, getErrorMessage } from './utils/errorM
  * ```
  */
 export const defaultErrorMessages = {
-  'has-docblock': (testInfo: IsConformantOptions, error: Error, docblock: string, wordCount: number | undefined) => {
-    const { displayName, componentPath } = testInfo;
-    const { testErrorInfo, testErrorPath, resolveInfo } = errorMessageColors;
-
-    if (wordCount === undefined) {
-      // Parsing error or something--need to just look at the original error
-      return getErrorMessage({
-        displayName,
-        overview: `has an invalid docblock in the file:${EOL}${testErrorPath(componentPath)}`,
-        error,
-      });
-    }
-
-    if (wordCount === 0) {
-      // Message Description: Handles scenario where there is no existing docblock in the componentPath.
-      //
-      // It appears that "displayName" doesn't have a docblock in the file: "componentPath".
-      // Possible solutions:
-      // 1. Consider adding a 5 to 25 word doc comment on the component.
-      return getErrorMessage({
-        displayName,
-        overview: `doesn't have a docblock in the file:${EOL}${testErrorPath(componentPath)}`,
-        suggestions: [
-          `Consider adding a ${resolveInfo('5')} to ${resolveInfo('25')} word doc comment on the component`,
-        ],
-        error,
-      });
-    }
-
-    // Message Description: Handles scenario where a docblock exists but doesn't meet the min and max requirements.
-    //
-    // It appears that "displayName" doesn't have a docblock between 5 and 25 words.
-    // It has a word count of "docBlockLength". Here is the docblock: "docblock.description"
-    return getErrorMessage({
-      displayName,
-      overview: `docblock is not between ${resolveInfo('5')} and ${resolveInfo('25')} words.`,
-      details: [`It has a word count of ${testErrorInfo('' + wordCount)}. Here is the docblock:`, '', docblock],
-      error,
-    });
-  },
   'exports-component': (testInfo: IsConformantOptions, error: Error, exportNames: string[]) => {
     const { componentPath, displayName } = testInfo;
     const { testErrorPath, resolveInfo } = errorMessageColors;
@@ -196,9 +156,7 @@ export const defaultErrorMessages = {
     // Possible solutions:
     // 1. Check if your component has a ref prop.
     // 2. For function components, make sure that you are using forwardRef.
-    // 3. Check if your component passes ref to an inner component and add targetComponent to isConformant in
-    //    your test file.
-    // 4. If your component uses an "elementRef" prop instead of "ref", add elementRefName: 'elementRef' to
+    // 3. If your component uses an "elementRef" prop instead of "ref", add elementRefName: 'elementRef' to
     //    isConformant in your test file.
     return getErrorMessage({
       displayName,
@@ -206,8 +164,6 @@ export const defaultErrorMessages = {
       suggestions: [
         `Check if your component has a ${resolveInfo('ref')} prop.`,
         `For function components, make sure that you are using ${resolveInfo('forwardRef')}.`,
-        `Check if your component passes the ref to an inner component and add ${resolveInfo('targetComponent')} ` +
-          'to isConformant in your test file.',
         `If your component uses an "elementRef" prop instead of "ref", add ${resolveInfo(
           `elementRefName: 'elementRef'`,
         )} to isConformant in your test file.`,
@@ -227,19 +183,52 @@ export const defaultErrorMessages = {
     // 1. Make sure you're applying the ref to the root element in your component.
     // 2. Check if your component uses an element ref and add elementRefName: 'elementRef' to isConformant in
     //    your test file.
-    // 3. Check if your component passes ref to an inner component and add targetComponent to isConformant in
+    // 3. Check if your component passes ref to an inner component and add getTargetElement to isConformant in
     //    your test file.
     return getErrorMessage({
       displayName,
       overview: `doesn't apply the "ref" prop to its root DOM node.`,
       suggestions: [
         `Make sure you're applying the ref to the ${resolveInfo('root element')} in your component.`,
+        `Check if your component overrides the primary slot, and add ${resolveInfo(
+          `primarySlot`,
+        )} to isConformant in your test file.`,
         `Check if your component uses an element ref and add ${resolveInfo(
           `elementRefName: 'elementRef'`,
         )} to isConformant in your test file.`,
         `Check if your component passes ref to an inner component and add ${resolveInfo(
-          `targetComponent`,
+          `getTargetElement`,
         )} to isConformant in your test file.`,
+      ],
+      error,
+    });
+  },
+
+  'omits-size-prop': (testInfo: IsConformantOptions, error: Error, sizeValue: string, appliedToElement: Element) => {
+    const { displayName } = testInfo;
+    const { resolveInfo, testErrorName } = errorMessageColors;
+
+    // Message Description: Handles scenario where a component defines a custom 'size' prop but also
+    // applies 'size' as a native prop. (See the comment on the test definition for more background.)
+    //
+    // It appears that "displayName" has a custom 'size' prop but also applies 'size' as a native prop.
+    // After passing 'size="sizeValue"' to "displayName" it was applied to this element:
+    // <html here>
+    //
+    // Possible solutions:
+    // 1. Make sure that your component accepts a className prop.
+    // 2. Make sure that nothing is overwriting the className prop (it should be merged with defaults).
+    // 3. Make sure that your component is applying the className to the root.
+    return getErrorMessage({
+      displayName,
+      overview: `has a custom 'size' prop but also applies 'size' as a native prop.`,
+      details: [
+        `After passing 'size="${sizeValue}"' to ${testErrorName(displayName)} it was applied to this element:`,
+        prettyDOM(appliedToElement) as string,
+      ],
+      suggestions: [
+        `Ensure 'size' is omitted when calling native props helpers.`,
+        `If native 'size' functionality is needed, add an ${resolveInfo('htmlSize')} prop.`,
       ],
       error,
     });
@@ -250,15 +239,14 @@ export const defaultErrorMessages = {
     error: Error,
     testClassName: string,
     classNames: string[] | undefined,
-    componentHTML: string,
+    rootEl: HTMLElement,
   ) => {
     const { displayName } = testInfo;
     const { testErrorInfo, resolveInfo, failedError, testErrorName } = errorMessageColors;
 
-    // Show part of the HTMl in the debug message if possible
-    const debugHTML = componentHTML.includes(testClassName)
-      ? componentHTML.substr(0, componentHTML.indexOf(testClassName) + 50) + '...'
-      : '';
+    // Show part of the HTML in the debug message if possible
+    const elementWithClass = rootEl.getElementsByClassName(testClassName)[0];
+    const debugHTML = elementWithClass ? prettyDOM(elementWithClass, 50) + '...' : '';
 
     // Message Description: Handles scenario where className prop doesn't exist or isn't applied on the component
     //
@@ -313,6 +301,8 @@ export const defaultErrorMessages = {
     //
     // Possible solutions:
     // 1. Check the placement of your className and ensure that it is merged with defaults.
+    // 2. Check if your component passes className to an inner element and add getTargetElement to
+    //    isConformant in your test file.
     return getErrorMessage({
       displayName,
       overview: `overwrites default classNames with the user-supplied className.`,
@@ -328,6 +318,8 @@ export const defaultErrorMessages = {
       ],
       suggestions: [
         `Check the placement of your className and ensure that it is ${resolveInfo('merged')} with defaults.`,
+        `Check if your component passes className to an inner element and add ${resolveInfo('getTargetElement')} ` +
+          'to isConformant in your test file.',
       ],
       error,
     });
@@ -363,8 +355,7 @@ export const defaultErrorMessages = {
   'exported-top-level': (testInfo: IsConformantOptions, error: Error) => {
     const { displayName, componentPath } = testInfo;
     const { testErrorPath, resolveInfo } = errorMessageColors;
-    const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-    const indexFile = path.join(rootPath, 'src', 'index');
+    const indexFile = path.join(getPackagePath(componentPath), 'src', 'index');
 
     const exportInfo = testInfo.useDefaultExport
       ? `export { default as ${displayName} } from './${displayName};`
@@ -392,8 +383,7 @@ export const defaultErrorMessages = {
   'has-top-level-file': (testInfo: IsConformantOptions, error: Error) => {
     const { displayName, componentPath } = testInfo;
     const { testErrorPath, resolveInfo } = errorMessageColors;
-    const rootPath = componentPath.replace(/[\\/]src[\\/].*/, '');
-    const topLevelFile = path.join(rootPath, 'src', displayName);
+    const topLevelFile = path.join(getPackagePath(componentPath), 'src', displayName);
 
     // Message Description: Handles scenario where the displayName doesn't match the component's filename.
     //
@@ -409,31 +399,6 @@ export const defaultErrorMessages = {
         `Check if your component is internal and consider enabling ${resolveInfo(
           'isInternal',
         )} in your isConformant test.`,
-      ],
-      error,
-    });
-  },
-
-  'is-static-property-of-parent': (testInfo: IsConformantOptions, error: Error) => {
-    const { componentPath, displayName } = testInfo;
-    const { testErrorInfo, resolveInfo } = errorMessageColors;
-    const componentFolder = componentPath.replace(path.basename(componentPath) + path.extname(componentPath), '');
-    const dirName = path.basename(componentFolder).replace(path.extname(componentFolder), '');
-
-    // Message Description: Handles scenario where the child component is not a static property of the parent..
-    //
-    // It appears that "displayName" is not a static property of its parent (inferred from the directory name).
-    // Possible solutions:
-    // 1. Include the child component: "displayName" as a static property of "dirName".
-    // 2.Check to see if "displayName" is a parent component but contained in a directory with a different name.
-    return getErrorMessage({
-      displayName,
-      overview: `is not a static property of its parent ${testErrorInfo(dirName)} (inferred from the directory name)`,
-      suggestions: [
-        `Include the child component ${resolveInfo(displayName)} as a static property of ${resolveInfo(dirName)}.`,
-        `Check to see if ${resolveInfo(
-          displayName,
-        )} is a parent component but contained in a directory with a different name.`,
       ],
       error,
     });
@@ -488,16 +453,18 @@ export const defaultErrorMessages = {
     });
   },
 
-  'consistent-callback-args': (testInfo: IsConformantOptions, invalidProps: string[]) => {
+  'consistent-callback-args': (testInfo: IsConformantOptions, invalidProps: Record<string, Error>) => {
     const { displayName } = testInfo;
     const { testErrorInfo, resolveInfo } = errorMessageColors;
 
     return getErrorMessage({
       displayName,
       overview: 'uses non-standard callback arguments.',
-      details: ['These callback(s) need have two params:', testErrorInfo(formatArray(invalidProps))],
+      details: ['These callback(s) have issues:', testErrorInfo(formatErrors(invalidProps))],
       suggestions: [
-        `Ensure that ${resolveInfo(displayName + `'s`)} callbacks have two params (an event and data object).`,
+        `Ensure that ${resolveInfo(
+          displayName + `'s`,
+        )} callbacks have two params (an event and data object) and types of arguments are correct.`,
         `If a callback is intended to have a different signature, add the prop to isConformant ${resolveInfo(
           "testOptions['consistent-callback-args'].ignoreProps",
         )}.`,
@@ -505,81 +472,128 @@ export const defaultErrorMessages = {
     });
   },
 
-  'as-renders-fc': (testInfo: IsConformantOptions, error: Error) => {
+  'component-has-static-classname': (
+    testInfo: IsConformantOptions,
+    error: Error,
+    componentClassName: string,
+    classNames: string[],
+  ) => {
     const { displayName } = testInfo;
-    const { resolveInfo } = errorMessageColors;
+    const { testErrorInfo, resolveInfo, failedError } = errorMessageColors;
 
-    // Message Description: Receives an error when attempting to render as a functional component
-    // or pass as to the next component.
-    //
-    // It appears that "displayName" "as" prop doesn't properly handle a function component.
-    // Possible solutions:
-    // - If your component doesn't have an "as" prop, enable isConformant's skipAsPropTests option.
-    // - If your component uses forwardRef, enable isConformant's asPropHandlesRef option.
-    // - Check if you are missing any requiredProps within the isConformant in your test file.
-    // - Make sure that your component's implementation contains a valid return statement.
-    // - Check to see if your component works as expected with Enzyme's mount().
     return getErrorMessage({
       displayName,
-      overview: `"as" prop doesn't properly handle a function component.`,
+      overview: `does not have default className (${testErrorInfo(componentClassName)}).`,
+      details: [
+        `After render it has the following classes:`,
+        `    ${failedError(`className='${classNames.join(' ')}'`)}`,
+      ],
       suggestions: [
-        `If your component doesn't have an "as" prop, enable isConformant's ${resolveInfo('skipAsPropTests')} option.`,
-        `If your component uses forwardRef, enable isConformant's ${resolveInfo('asPropHandlesRef')} option.`,
-        `Check if you are missing any ${resolveInfo('requiredProps')} within the test's isConformant.`,
-        `Make sure that your component code contains a valid return statement.`,
-        `Check to see if your component works as expected with Enzyme's ${resolveInfo('mount()')}.`,
+        `Ensure that your component has default a className and it is ${resolveInfo('merged')} with other classNames.`,
       ],
       error,
     });
   },
 
-  'as-renders-react-class': (testInfo: IsConformantOptions, error: Error) => {
-    const { displayName } = testInfo;
-    const { resolveInfo } = errorMessageColors;
+  'component-has-static-classname-exported': (
+    testInfo: IsConformantOptions,
+    error: Error,
+    componentClassName: string,
+    exportName: string,
+  ) => {
+    const { componentPath, displayName } = testInfo;
+    const { testErrorInfo, resolveInfo, testErrorPath } = errorMessageColors;
+    const indexFile = path.join(getPackagePath(componentPath), 'src', 'index.ts');
 
-    // Message Description: Receives an error when attempting to render as a class component
-    // or pass as to the next component.
-    //
-    // It appears that "displayName" "as" prop doesn't properly handle a class component.
-    // Possible solutions:
-    // - If your component doesn't have an "as" prop, enable isConformant's skipAsPropTests option.
-    // - If your component uses forwardRef, enable isConformant's asPropHandlesRef option.
-    // - Check if you are missing any requiredProps within the isConformant in your test file.
-    // - Make sure that your component's implementation contains a valid return statement.
-    // - Check to see if your component works as expected with Enzyme's mount().
+    const constantValue = `export const ${exportName} = "${componentClassName}";`;
+
     return getErrorMessage({
       displayName,
-      overview: `"as" prop doesn't properly handle a class component.`,
+      overview: `default className constant  is not exported (${testErrorInfo(exportName)}) in: ${EOL}${testErrorPath(
+        indexFile,
+      )}.`,
       suggestions: [
-        `If your component doesn't have an "as" prop, enable isConformant's ${resolveInfo('skipAsPropTests')} option.`,
-        `If your component uses forwardRef, enable isConformant's ${resolveInfo('asPropHandlesRef')} option.`,
-        `Check if you are missing any ${resolveInfo('requiredProps')} within the test's isConformant.`,
-        `Make sure that your component's implementation contains a valid return statement.`,
-        `Check to see if your component works as expected with Enzyme's ${resolveInfo('mount()')}.`,
+        `Make sure that your component's ${resolveInfo('index.ts')} file ` +
+          `or a file with styles hook exports \`${resolveInfo(constantValue)}\``,
+        `If the component is internal, consider enabling ${resolveInfo('isInternal')} in your isConformant test.`,
       ],
       error,
     });
   },
 
-  'as-passes-as-value': (testInfo: IsConformantOptions, error: Error) => {
-    const { displayName } = testInfo;
-    const { resolveInfo } = errorMessageColors;
+  'component-has-static-classnames-object-exported': (
+    testInfo: IsConformantOptions,
+    error: Error,
+    exportName: string,
+  ) => {
+    const { componentPath, displayName } = testInfo;
+    const { testErrorInfo, resolveInfo, testErrorPath } = errorMessageColors;
+    const indexFile = path.join(getPackagePath(componentPath), 'src', 'index.ts');
 
-    // Message Description: Receives an error when attempting to render as a functional component
-    // or pass as to the next component.
-    //
-    // It appears that "displayName" doesn't pass extra props to the component it renders as.
-    // Possible solutions:
-    // - If your component doesn't have an "as" prop, enable isConformant's skipAsPropTests option.
-    // - Ensure that you are spreading extra props to the "as" component when rendering.
-    // - Ensure that there is not a problem rendering the component in isConformant (check previous test results).
     return getErrorMessage({
       displayName,
-      overview: `doesn't pass extra props to the component it renders as.`,
+      overview: `static classNames object is not exported (${testErrorInfo(exportName)}) in: ${EOL}${testErrorPath(
+        indexFile,
+      )}.`,
       suggestions: [
-        `If your component doesn't have an "as" prop, enable isConformant's ${resolveInfo('skipAsPropTests')} option.`,
-        `Ensure that you are ${resolveInfo('spreading extra props')} to the "as" component when rendering.`,
-        `Ensure that there is not a problem rendering the component (check previous test results).`,
+        `Make sure that your component's ${resolveInfo('index.ts')} file ` +
+          `or a file with styles hook exports an object of type SlotClassNames<Slots>.`,
+        `If the component is internal, consider enabling ${resolveInfo('isInternal')} in your isConformant test.`,
+      ],
+      error,
+    });
+  },
+
+  'component-has-static-classnames-in-correct-format': (
+    testInfo: IsConformantOptions,
+    error: Error,
+    exportName: string,
+  ) => {
+    const { componentPath, displayName } = testInfo;
+    const { testErrorInfo, resolveInfo, testErrorPath } = errorMessageColors;
+    const indexFile = path.join(getPackagePath(componentPath), 'src', 'index.ts');
+
+    return getErrorMessage({
+      displayName,
+      overview: `static classNames object is not formatted correctly (${testErrorInfo(
+        exportName,
+      )}) in: ${EOL}${testErrorPath(indexFile)}.`,
+      suggestions: [
+        `Make sure all classNames are for the form "fui-<ComponentName>__<SlotName>" ` +
+          `or "fui-<ComponentName>" for the root slot`,
+        `If the component is internal, consider enabling ${resolveInfo('isInternal')} in your isConformant test.`,
+      ],
+      error,
+    });
+  },
+
+  'component-has-static-classnames': (
+    testInfo: IsConformantOptions,
+    error: Error,
+    componentName: string,
+    missingClassNames: string,
+    rootEl: HTMLElement,
+  ) => {
+    const { displayName } = testInfo;
+    const { testErrorInfo, failedError, resolveInfo } = errorMessageColors;
+
+    return getErrorMessage({
+      displayName,
+      overview: `missing one or more static classNames on component (${testErrorInfo(componentName)}).`,
+      details: [
+        `Missing the following classes after render:`,
+        `    ${failedError(missingClassNames)}`,
+        'Actual HTML:',
+        prettyDOM(rootEl) as string,
+      ],
+      suggestions: [
+        `Ensure that each slot of the component has its corresponding static className.`,
+        `If the component is rendered in a portal, add ${resolveInfo(
+          `getTargetElement`,
+        )} to isConformant in your test file.`,
+        `If the component requires certain props to render all slots, add ${resolveInfo(
+          'staticClassNames.props',
+        )} to isConformant in your test file. (You can add multiple prop combinations.)`,
       ],
       error,
     });
@@ -608,6 +622,23 @@ export const defaultErrorMessages = {
         `Check if you are missing any ${resolveInfo('requiredProps')} within the isConformant in your test file.`,
         `Make sure that your component's implementation contains a valid return statement.`,
         `Check to see if your component works as expected with Enzyme's ${resolveInfo('mount()')}.`,
+      ],
+      error,
+    });
+  },
+
+  'primary-slot-gets-native-props': (testInfo: IsConformantOptions, error: Error) => {
+    const { displayName } = testInfo;
+    const { resolveInfo } = errorMessageColors;
+
+    return getErrorMessage({
+      displayName,
+      overview: `doesn't properly apply native props to the primary and root slots.`,
+      suggestions: [
+        `Make sure you're using the ${resolveInfo(
+          'getPartitionedNativeProps',
+        )} function to assign the correct native props to the root and primary slots.`,
+        `Check that the ${resolveInfo(`primarySlot`)} argument to isConformant is correct in your test file.`,
       ],
       error,
     });

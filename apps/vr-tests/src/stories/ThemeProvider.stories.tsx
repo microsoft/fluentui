@@ -1,17 +1,17 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { loadTheme, createTheme, Customizer } from '@fluentui/react';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { ThemeProvider } from '@fluentui/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 
 storiesOf('ThemeProvider', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Default theme', () => <PrimaryButton>Default theme</PrimaryButton>)
   .addStory('Customized theme', () => (
@@ -85,10 +85,10 @@ const LoadThemeTestButton: React.FunctionComponent<{
 };
 
 storiesOf('ThemeProvider with loadTheme', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.testLoadTheme')
         .snapshot('global theme changed', { cropTo: '.testWrapper' })
@@ -96,7 +96,7 @@ storiesOf('ThemeProvider with loadTheme', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Use contextual theme over global theme if defined', () => (
     <ThemeProvider>
@@ -117,11 +117,11 @@ storiesOf('ThemeProvider with loadTheme', module)
   ));
 
 storiesOf('ThemeProvider with Customizer', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Customizer wraps ThemeProvider', () => (
     <Customizer

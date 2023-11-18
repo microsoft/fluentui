@@ -6,6 +6,7 @@ import {
   shallowCompare,
   getNativeProps,
   divProperties,
+  composeComponentAs,
 } from '../../Utilities';
 import { CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck } from './DetailsRowCheck';
@@ -13,7 +14,6 @@ import { GroupSpacer } from '../GroupedList/GroupSpacer';
 import { DetailsRowFields } from './DetailsRowFields';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { SelectionMode, SELECTION_CHANGE } from '../../Selection';
-import { CollapseAllVisibility } from '../../GroupedList';
 import { classNamesFunction } from '../../Utilities';
 import type { IDisposable } from '../../Utilities';
 import type { IColumn } from './DetailsList.types';
@@ -23,6 +23,7 @@ import type { IDetailsRowBaseProps, IDetailsRowStyleProps, IDetailsRowStyles } f
 import type { IDetailsRowCheckProps } from './DetailsRowCheck.types';
 import type { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 import type { IProcessedStyleSet } from '../../Styling';
+import { getId } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
 
@@ -57,6 +58,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
   private _classNames: IProcessedStyleSet<IDetailsRowStyles>;
   private _rowClassNames: IDetailsRowFieldsProps['rowClassNames'];
+  private _ariaRowDescriptionId: string;
 
   public static getDerivedStateFromProps(
     nextProps: IDetailsRowBaseProps,
@@ -184,16 +186,18 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       onRenderCheck = this._onRenderCheck,
       onRenderDetailsCheckbox,
       onRenderItemColumn,
+      onRenderField,
       getCellValueKey,
       selectionMode,
-      rowWidth = 0,
       checkboxVisibility,
       getRowAriaLabel,
+      getRowAriaDescription,
       getRowAriaDescribedBy,
+      isGridRow,
       checkButtonAriaLabel,
       checkboxCellClassName,
       /** Alias rowFieldsAs as RowFields and default to DetailsRowFields if rowFieldsAs does not exist */
-      rowFieldsAs: RowFields = DetailsRowFields,
+      rowFieldsAs,
       selection,
       indentWidth,
       enableUpdateAnimations,
@@ -206,14 +210,16 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       cellStyleProps,
       group,
       focusZoneProps,
+      disabled = false,
     } = this.props;
     const { columnMeasureInfo, isDropping } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState;
     const isDraggable = dragDropEvents ? !!(dragDropEvents.canDrag && dragDropEvents.canDrag(item)) : undefined;
     const droppingClassName = isDropping ? this._droppingClassNames || DEFAULT_DROPPING_CSS_CLASS : '';
     const ariaLabel = getRowAriaLabel ? getRowAriaLabel(item) : undefined;
+    const ariaRowDescription = getRowAriaDescription ? getRowAriaDescription(item) : undefined;
     const ariaDescribedBy = getRowAriaDescribedBy ? getRowAriaDescribedBy(item) : undefined;
-    const canSelect = !!selection && selection.canSelectItem(item, itemIndex);
+    const canSelect = !!selection && selection.canSelectItem(item, itemIndex) && !disabled;
     const isContentUnselectable = selectionMode === SelectionMode.multiple;
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
     const ariaSelected = selectionMode === SelectionMode.none ? undefined : isSelected;
@@ -234,6 +240,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         compact,
         enableUpdateAnimations,
         cellStyleProps,
+        disabled,
       }),
     };
 
@@ -255,6 +262,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       this._rowClassNames = rowClassNames;
     }
 
+    const RowFields = rowFieldsAs ? composeComponentAs(rowFieldsAs, DetailsRowFields) : DetailsRowFields;
+
     const rowFields = (
       <RowFields
         rowClassNames={this._rowClassNames}
@@ -263,8 +272,10 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         columns={columns}
         item={item}
         itemIndex={itemIndex}
+        isSelected={isSelected}
         columnStartIndex={(showCheckbox ? 1 : 0) + (groupNestingDepth ? 1 : 0)}
         onRenderItemColumn={onRenderItemColumn}
+        onRenderField={onRenderField}
         getCellValueKey={getCellValueKey}
         enableUpdateAnimations={enableUpdateAnimations}
         cellStyleProps={cellStyleProps}
@@ -273,6 +284,24 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
     const defaultRole = 'row';
     const role = this.props.role ? this.props.role : defaultRole;
+    this._ariaRowDescriptionId = getId('DetailsRow-description');
+
+    // When the user does not specify any column is a row-header in the columns props,
+    // The aria-labelledby of the checkbox does not specify {id}-header.
+    const hasRowHeader = columns.some(column => {
+      return !!column.isRowHeader;
+    });
+    const ariaLabelledby = `${id}-checkbox` + (hasRowHeader ? ` ${id}-header` : '');
+
+    // additional props for rows within a GroupedList
+    // these are needed for treegrid row semantics, but not grid row semantics
+    const groupedListRowProps = isGridRow
+      ? {}
+      : {
+          'aria-level': (groupNestingDepth && groupNestingDepth + 1) || undefined,
+          'aria-posinset': ariaPositionInSet,
+          'aria-setsize': ariaSetSize,
+        };
 
     return (
       <FocusZone
@@ -285,40 +314,44 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
             }
           : {})}
         {...focusZoneProps}
+        {...groupedListRowProps}
         direction={focusZoneDirection}
         elementRef={this._root}
         componentRef={this._focusZone}
         role={role}
         aria-label={ariaLabel}
-        aria-describedby={ariaDescribedBy}
+        aria-disabled={disabled || undefined}
+        aria-describedby={ariaRowDescription ? this._ariaRowDescriptionId : ariaDescribedBy}
         className={this._classNames.root}
         data-selection-index={itemIndex}
         data-selection-touch-invoke={true}
+        data-selection-disabled={(this.props as any)['data-selection-disabled'] ?? (disabled || undefined)}
         data-item-index={itemIndex}
         aria-rowindex={ariaPositionInSet === undefined ? itemIndex + flatIndexOffset : undefined}
-        aria-level={(groupNestingDepth && groupNestingDepth + 1) || undefined}
-        aria-posinset={ariaPositionInSet}
-        aria-setsize={ariaSetSize}
         data-automationid="DetailsRow"
-        style={{ minWidth: rowWidth }}
         aria-selected={ariaSelected}
         allowFocusRoot={true}
       >
+        {ariaRowDescription ? (
+          <span key="description" role="presentation" hidden={true} id={this._ariaRowDescriptionId}>
+            {ariaRowDescription}
+          </span>
+        ) : null}
         {showCheckbox && (
-          <div role="gridcell" aria-colindex={1} data-selection-toggle={true} className={this._classNames.checkCell}>
+          <div role="gridcell" data-selection-toggle={true} className={this._classNames.checkCell}>
             {onRenderCheck({
               id: id ? `${id}-checkbox` : undefined,
               selected: isSelected,
               selectionMode,
               anySelected: isSelectionModal,
               'aria-label': checkButtonAriaLabel,
-              'aria-labelledby': id ? `${id}-checkbox ${id}-header` : undefined,
+              'aria-labelledby': id ? ariaLabelledby : undefined,
               canSelect,
               compact,
               className: this._classNames.check,
               theme,
               isVisible: checkboxVisibility === CheckboxVisibility.always,
-              onRenderDetailsCheckbox: onRenderDetailsCheckbox,
+              onRenderDetailsCheckbox,
               useFastIcons,
             })}
           </div>
@@ -327,7 +360,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         <GroupSpacer
           indentWidth={indentWidth}
           role="gridcell"
-          count={groupNestingDepth! - (this.props.collapseAllVisibility === CollapseAllVisibility.hidden ? 1 : 0)}
+          count={groupNestingDepth! === 0 ? -1 : groupNestingDepth!}
         />
 
         {item && rowFields}
@@ -349,13 +382,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
             />
           </span>
         )}
-
-        <span
-          role="checkbox"
-          className={this._classNames.checkCover}
-          aria-checked={isSelected}
-          data-selection-toggle={true}
-        />
       </FocusZone>
     );
   }
@@ -396,9 +422,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const selectionState = getSelectionState(this.props);
 
     if (!shallowCompare(selectionState, this.state.selectionState)) {
-      this.setState({
-        selectionState: selectionState,
-      });
+      this.setState({ selectionState });
     }
   };
 

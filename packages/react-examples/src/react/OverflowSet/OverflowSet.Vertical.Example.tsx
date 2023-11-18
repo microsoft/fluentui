@@ -17,7 +17,6 @@ const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
   return (
     <TooltipHost content={item.title} directionalHint={DirectionalHint.rightCenter}>
       <CommandBarButton
-        role="menuitem"
         aria-label={item.name}
         styles={onRenderItemStyles}
         iconProps={{ iconName: item.icon }}
@@ -31,7 +30,6 @@ const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element =
   return (
     <TooltipHost content="More items" directionalHint={DirectionalHint.rightCenter}>
       <CommandBarButton
-        role="menuitem"
         aria-label="More items"
         styles={onRenderOverflowButtonStyles}
         menuIconProps={{ iconName: 'More' }}
@@ -44,7 +42,6 @@ const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element =
 export const OverflowSetVerticalExample: React.FunctionComponent = () => (
   <OverflowSet
     aria-label="Vertical Example"
-    role="menubar"
     vertical
     items={[
       {

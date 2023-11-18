@@ -1,0 +1,44 @@
+import { Meta } from '@storybook/addon-docs';
+import { ScenariosListLink } from '../../AccessibilityScenarios/utils';
+
+<Meta title="Concepts/Developer/Accessibility/Components Overview" />
+
+## Components accessibility
+
+Fluent UI components are designed to support various aspects of accessibility by default, so that they can be used with different input methods (mouse, touch, keyboard, screen readers) as well as fulfill different rendering and layout requirements (theming, zoom, contrast).
+
+The [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/TR/WCAG21/) and [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.2/) are community-driven standards for accessible web pages and applications. They provide a basic framework allowing consistent usage of web pages and applications with or without assistive technologies.
+
+Fluent UI components aim to fully respect both WCAG and ARIA practices, the Fluent UI team is working with the community to improve them.
+
+Using components themselves does not guarantee that an application or a page will be accessible. Please see the [Accessible Experiences](?path=/docs/concepts-developer-accessibility-experiences--page) page for further points on achieving good level of usability.
+
+## Scope
+
+Fluent UI components fulfill following requirements:
+
+- **DOM structure** that provides **semantic value** either by using correct element types or roles
+- **ARIA attributes** that are valid for elements/roles used and provide correct state information about the component or element
+- **Keyboard navigation** (navigation by tabbing, arrow keys, pagination or letter keys, click and right click (Enter/Space, Shift+F10), and close (Escape)) applied based on the component
+- **Screen reader navigation** (Virtual Cursor/Browse mode/Scan mode/VoiceOver keys)
+- **Touch interaction**
+- **Focus handling** when the component is able to move the focus in a predictable way - mostly when opening menus, popups or dialogs (autofocus) or dismissing them using Esc. Focus trap for Dialog and popups
+- **Sufficient color contrast**
+- Light, Dark and High Contrast **themes**
+- Displaying [**focus indicator**](?path=/docs/concepts-developer-accessibility-focus-indicator--page) when keyboard is used to interact with them
+- **Tested** against visual inconsistencies/bugs on a zoom up to 400%
+
+Fluent UI components use [tabster](https://github.com/microsoft/tabster) for focus handling functionality, so that they can be easily integrated with application-level tabster functionality such as delooser and cross-iframe focusing.
+
+## Out of Scope
+
+- Internationalization, globalization, keyboard shortcuts and language detection are deliberately not part of Fluent UI and should be handled by the hosting application.
+- Focus handling (except of the points mentioned in Scope) on an application level needs to be handled by the application, preferably using [tabster](https://github.com/microsoft/tabster).
+
+## Ensuring accessibility
+
+Fluent UI components will be tested to guarantee standard conformance and usability.
+
+- _[axe-core](https://github.com/dequelabs/axe-core)_ is used to validate individual components during development and build time.
+- _Manual tests_ will be executed on <ScenariosListLink>small isolated pages</ScenariosListLink> which show different accessibility scenarios. For each component, suitable scenarios will be defined and implemented. They will be then tested by experienced trusted accessibility testers and real users.
+  Axe-core test will be also executed on each of the scenarios.

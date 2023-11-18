@@ -42,7 +42,7 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
     onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => (
       <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />
     ),
-    createGenericItem: createGenericItem,
+    createGenericItem,
   };
 }
 
@@ -57,7 +57,7 @@ export class CompactPeoplePickerBase extends BasePeoplePicker {
     onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => (
       <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} compact={true} />
     ),
-    createGenericItem: createGenericItem,
+    createGenericItem,
   };
 }
 
@@ -72,7 +72,7 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
     onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => (
       <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />
     ),
-    createGenericItem: createGenericItem,
+    createGenericItem,
   };
 }
 

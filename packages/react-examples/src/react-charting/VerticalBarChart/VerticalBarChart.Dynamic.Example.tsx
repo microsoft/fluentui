@@ -48,12 +48,14 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
           data={this.state.dynamicData}
           colors={this.state.colors}
           hideLegend={true}
-          hideTooltip={true}
+          hideTooltip={false}
           yMaxValue={50}
           yAxisTickCount={5}
           height={400}
           width={650}
+          enableReflow={true}
         />
+
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
       </div>

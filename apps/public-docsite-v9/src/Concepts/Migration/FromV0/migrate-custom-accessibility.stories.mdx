@@ -1,0 +1,117 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Custom Accessibility" />
+
+# Migrate Custom Accessibility
+
+This guide provides instructions for migrating custom accessibility applied on stardust components to v9 components.
+
+## Migrate aria attributes
+
+Aria attributes should be kept during migration. They can be applied as props to the new component directly.
+
+## Migrate custom `accessibility` prop
+
+Custom `accessibility` prop has 4 properties:
+
+- `attributes`, contains aria attributes that can be applied directly to v9 components.
+- `keyActions` and `childBehaviors` are specific to @fluentui/react-northstar. The functionality is usually included in the components, for special cases contact Fluent UI team.
+- `focusZone` adds arrow key navigation to the container and child components. Consider replacing them with [react-tabster](https://github.com/microsoft/fluentui/blob/master/packages/react-tabster)
+
+## Migrate arrow key navigation
+
+Before:
+
+```tsx
+import { Grid, gridBehavior } from '@fluentui/react-northstar';
+const Component = () => (
+  <Grid accessibility={gridBehavior} role="menu">
+    <Button role="menuitem" content="First" />
+    ...
+  </Grid>
+);
+```
+
+After:
+
+```tsx
+import { Grid } from '@fluentui/react-components';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
+
+const arrowKeyNavigationAttributes = useTabsterAttributes({
+  mover: {
+    direction: 3, // grid
+  },
+});
+
+const Component = () => (
+  <Grid {...arrowKeyNavigationAttributes} role="menu">
+    <Button role="menuitem">First</Button>
+    ...
+  </Grid>
+);
+```
+
+## Migrate focus on mount
+
+Before:
+
+```tsx
+import { Grid, gridBehavior } from '@fluentui/react-northstar';
+
+const autoFocusGridBehavior = () => {
+  const behavior: AccessibilityDefinition = gridBehavior();
+  if (behavior.focusZone && behavior.focusZone.props) {
+    behavior.focusZone.props.shouldFocusOnMount = true;
+  }
+  return behavior;
+};
+
+const Component = () => (
+  <Grid accessibility={autoFocusGridBehavior} role="menu">
+    <Button role="menuitem" content="First" />
+    ...
+  </Grid>
+);
+```
+
+After:
+
+```tsx
+import { makeStyles } from '@fluentui/react-components';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
+import { useFocusFinders } from '@fluentui/react-tabster';
+
+const useStyles = makeStyles({
+  grid: {
+    display: 'grid',
+    justifyContent: 'space-evenly',
+  },
+});
+
+const arrowKeyNavigationAttributes = useTabsterAttributes({
+  mover: {
+    direction: 3, // grid
+  },
+});
+
+const Component = () => {
+  const { findFirstFocusable } = useFocusFinders();
+  const gridRef = React.useRef<HTMLElement>(null);
+  const classes = useStyles();
+
+  React.useEffect(() => {
+    if (gridRef.current) {
+      const firstFocusable = findFirstFocusable(gridRef.current);
+      firstFocusable?.focus();
+    }
+  }, [findFirstFocusable, gridRef]);
+
+  return (
+    <div className={classes.grid} {...arrowKeyNavigationAttributes} role="menu" ref={gridRef}>
+      <Button role="menuitem">First</Button>
+      ...
+    </div>
+  );
+};
+```

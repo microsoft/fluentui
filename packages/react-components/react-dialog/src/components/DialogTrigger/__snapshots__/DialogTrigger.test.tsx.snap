@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DialogTrigger renders a default state 1`] = `
+<button
+  data-tabster="{\\"restorer\\":{\\"type\\":1}}"
+  onClick={[Function]}
+>
+  Dialog trigger
+</button>
+`;

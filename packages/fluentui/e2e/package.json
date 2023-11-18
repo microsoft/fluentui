@@ -1,37 +1,31 @@
 {
   "name": "@fluentui/e2e",
-  "version": "0.58.0",
+  "version": "0.66.4",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@fluentui/accessibility": "^0.58.0",
-    "@fluentui/react-icons-northstar": "^0.58.0",
-    "@fluentui/react-northstar": "^0.58.0",
-    "@fluentui/react-northstar-prototypes": "^0.58.0",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
+    "@fluentui/accessibility": "*",
+    "@fluentui/react": "*",
+    "@fluentui/react-icons-northstar": "*",
+    "@fluentui/react-northstar": "*",
+    "@fluentui/react-northstar-prototypes": "*",
     "@types/react-router-dom": "^5.1.5",
-    "cypress": "6.6.0",
-    "cypress-real-events": "1.2.0",
     "lerna-alias": "^3.0.3-0",
     "lodash": "^4.17.15",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react": "^8.0.0",
-    "@fluentui/scripts": "^1.0.0",
-    "gulp": "^4.0.2"
+    "@fluentui/scripts-babel": "*",
+    "@fluentui/scripts-gulp": "*"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "test": "gulp test",
-    "serve": "gulp serve",
-    "test:local": "cypress open --config baseUrl=http://localhost:8082",
+    "serve": "gulp test:e2e:serve",
+    "e2e": "gulp test:e2e",
+    "e2e:local": "cypress open --config baseUrl=http://localhost:8082",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix"
   }

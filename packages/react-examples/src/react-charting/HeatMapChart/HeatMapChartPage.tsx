@@ -5,6 +5,7 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   PropertiesTableSet,
+  Markdown,
 } from '@fluentui/react-docsite-components';
 import { HeatMapChartBasicExample } from './HeatMapChartBasic.Example';
 import { HeatMapChartCustomAccessibilityExample } from './HeatMapChartBasic.CustomAccessibility.Example';
@@ -32,8 +33,29 @@ export class HeatMapChart extends React.Component<IComponentDemoPageProps, {}> {
           <PropertiesTableSet
             sources={[
               require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/HeatMapChart/HeatMapChart.types.ts'),
+              require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/CommonComponents/CartesianChart.types.ts'),
             ]}
           />
+        }
+        overview={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HeatMapChart/docs/HeatMapChartOverview.md')}
+          </Markdown>
+        }
+        bestPractices={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HeatMapChart/docs/HeatMapChartBestPractices.md')}
+          </Markdown>
+        }
+        dos={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HeatMapChart/docs/HeatMapChartDos.md')}
+          </Markdown>
+        }
+        donts={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HeatMapChart/docs/HeatMapChartDonts.md')}
+          </Markdown>
         }
       />
     );

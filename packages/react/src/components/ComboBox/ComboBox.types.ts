@@ -73,6 +73,9 @@ export interface IComboBoxProps
    * 1) The selected option changes.
    * 2) A manually edited value is submitted. In this case there may not be a matched option if `allowFreeform`
    *    is also true (and hence only `value` would be provided; the other parameters would be unspecified).
+   *
+   * The value passed to the callback (4th paramenter) reflects the changed option's text, or the user-typed input when
+   * freeform is allowed.
    */
   onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
 
@@ -93,9 +96,16 @@ export interface IComboBoxProps
    * and the user types text matching the start of an option within a timeout, `option` and `index`
    * are provided and `value` is undefined. If `autoComplete` is off, typing does nothing.
    *
-   * If you simply want to be notified of raw text input, use the prop `autofill.onInputValueChange`.
+   * If you simply want to be notified of raw text input, use the prop `onInputValueChange`.
    */
   onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
+
+  /**
+   * Called when the user types in to the input of the combo box
+   *
+   * Ideal if you want to be notified of raw text input
+   */
+  onInputValueChange?: (text: string) => void;
 
   /**
    * Called when the ComboBox menu is launched.
@@ -127,6 +137,13 @@ export interface IComboBoxProps
    * Whether the ComboBox allows freeform user input, rather than restricting to the provided options.
    */
   allowFreeform?: boolean;
+
+  /**
+   * When true, the Combobox will allow the user to type freely while the Combobox is focused.
+   * On Blur, the value will be set to the matching option, or the previous selection if there is no match.
+   * @defaultvalue false
+   */
+  allowFreeInput?: boolean;
 
   /**
    * Whether the ComboBox auto completes. As the user is entering text, potential matches will be
@@ -203,12 +220,12 @@ export interface IComboBoxProps
   scrollSelectedToTop?: boolean;
 
   /**
-   * Add additional content above the option list in the callout.
+   * Add additional content above the option list in the callout. Content should not include interactive items.
    */
   onRenderUpperContent?: IRenderFunction<IComboBoxProps>;
 
   /**
-   * Add additional content below the option list in the callout.
+   * Add additional content below the option list in the callout. Content should not include interactive items.
    */
   onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
 
@@ -229,10 +246,9 @@ export interface IComboBoxProps
   dropdownMaxWidth?: number;
 
   /**
-   * Whether to hide the ComboBox's caret (expand) button element from screen readers. This is true
-   * (hidden) by default because all functionality is handled by the input element, and the arrow
-   * button is only meant to be decorative.
-   * @defaultvalue true
+   * Whether to hide the ComboBox's caret (expand) button element from screen readers. This is false
+   * (exposed to AT) by default because Android Talkback cannot otherwise expand the combobox.
+   * @defaultvalue false
    */
   isButtonAriaHidden?: boolean;
 

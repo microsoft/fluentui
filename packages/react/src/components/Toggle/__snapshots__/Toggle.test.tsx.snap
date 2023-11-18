@@ -38,6 +38,7 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
             font-size: 20px;
             height: 20px;
             outline: transparent;
+            overflow: visible;
             padding-bottom: 0;
             padding-left: 3px;
             padding-right: 3px;
@@ -66,10 +67,10 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
           &:hover .ms-Toggle-thumb {
             background-color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-Toggle-thumb {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
           }
       data-is-focusable={true}
@@ -169,6 +170,7 @@ exports[`Toggle renders toggle correctly 1`] = `
             font-size: 20px;
             height: 20px;
             outline: transparent;
+            overflow: visible;
             padding-bottom: 0;
             padding-left: 3px;
             padding-right: 3px;
@@ -197,10 +199,10 @@ exports[`Toggle renders toggle correctly 1`] = `
           &:hover .ms-Toggle-thumb {
             background-color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-Toggle-thumb {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
           }
       data-is-focusable={true}
@@ -305,6 +307,7 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
             font-size: 20px;
             height: 20px;
             outline: transparent;
+            overflow: visible;
             padding-bottom: 0;
             padding-left: 3px;
             padding-right: 3px;
@@ -333,10 +336,10 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
           &:hover .ms-Toggle-thumb {
             background-color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-Toggle-thumb {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
           }
       data-is-focusable={true}
@@ -439,6 +442,7 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
             font-size: 20px;
             height: 20px;
             outline: transparent;
+            overflow: visible;
             padding-bottom: 0;
             padding-left: 3px;
             padding-right: 3px;
@@ -467,10 +471,10 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
           &:hover .ms-Toggle-thumb {
             background-color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-Toggle-thumb {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
           }
       data-is-focusable={true}
@@ -558,7 +562,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
   >
     <button
       aria-checked={false}
-      aria-labelledby="Toggle0-label Toggle0-stateText"
+      aria-labelledby="Toggle0-label"
       className=
           ms-Toggle-background
           {
@@ -572,6 +576,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
             font-size: 20px;
             height: 20px;
             outline: transparent;
+            overflow: visible;
             padding-bottom: 0;
             padding-left: 3px;
             padding-right: 3px;
@@ -600,10 +605,10 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
           &:hover .ms-Toggle-thumb {
             background-color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-Toggle-thumb {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
           }
       data-is-focusable={true}

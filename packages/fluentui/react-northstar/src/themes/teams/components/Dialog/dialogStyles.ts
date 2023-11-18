@@ -1,6 +1,8 @@
 import { DialogStylesProps } from '../../../../components/Dialog/Dialog';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { DialogVariables } from './dialogVariables';
+import { buttonClassName } from '../../../../components/Button/Button';
+import { flexClassName } from '../../../../components/Flex/Flex';
 
 export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, DialogVariables> = {
   root: ({ variables: v }): ICSSInJSStyle => ({
@@ -11,6 +13,10 @@ export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, Dialog
     padding: v.rootPadding,
     position: 'relative',
     width: v.rootWidth,
+    maxWidth: '100vw',
+    maxHeight: '100vh',
+    overflowX: 'hidden',
+    overflowY: 'auto',
 
     display: 'grid',
     gridTemplateColumns: '1fr auto',
@@ -18,6 +24,9 @@ export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, Dialog
 
     boxShadow: v.boxShadow,
     color: v.foregroundColor,
+    [`@media screen and (max-width: ${v.rootWidth})`]: {
+      padding: v.rootPaddingZoom,
+    },
   }),
 
   footer: (): ICSSInJSStyle => ({
@@ -26,8 +35,23 @@ export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, Dialog
     msGridRow: 3,
   }),
 
-  actions: (): ICSSInJSStyle => ({
-    display: 'inline-block',
+  actions: ({ variables: v }): ICSSInJSStyle => ({
+    display: 'flex',
+    width: '100%',
+    [`& .${flexClassName}`]: {
+      flexWrap: 'wrap',
+      width: '100%',
+    },
+    [`@media screen and (max-width: ${v.footerActionsBreakpoint})`]: {
+      [`& .${buttonClassName}`]: {
+        width: '100%',
+        maxWidth: '100%',
+        margin: 0,
+      },
+      [`& .${flexClassName} > :not(:last-child)`]: {
+        marginBottom: '0.5rem',
+      },
+    },
   }),
 
   content: ({ variables: v }): ICSSInJSStyle => ({
@@ -42,6 +66,11 @@ export const dialogStyles: ComponentSlotStylesPrepared<DialogStylesProps, Dialog
 
     justifySelf: 'left',
     width: '100%',
+
+    [`@media screen and (max-width: ${v.rootWidth}), screen and (max-height: 400px)`]: {
+      maxHeight: '100%',
+      overflow: 'unset',
+    },
   }),
 
   header: ({ variables: v }): ICSSInJSStyle => ({

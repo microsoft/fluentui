@@ -77,7 +77,6 @@ export const ContextualMenuCheckmarksExample: React.FunctionComponent = () => {
           isChecked: selection[keys[5]],
           split: true,
           onClick: onToggleSelect,
-          ariaLabel: 'Split Button. Click to check/uncheck. Press right arrow key to open submenu.',
         },
         {
           key: keys[8],
@@ -104,11 +103,11 @@ export const ContextualMenuCheckmarksExample: React.FunctionComponent = () => {
           },
           text: 'Split Button',
           canCheck: true,
+          checked: true,
           isChecked: selection[keys[8]],
           split: true,
           onClick: onToggleSelect,
           disabled: true,
-          ariaLabel: 'Split Button. Click to check/uncheck. Press right arrow key to open submenu.',
         },
         {
           key: keys[11],
@@ -139,7 +138,6 @@ export const ContextualMenuCheckmarksExample: React.FunctionComponent = () => {
           isChecked: selection[keys[11]],
           split: true,
           onClick: onToggleSelect,
-          ariaLabel: 'Split Button Left Menu. Click to check/uncheck. Press right arrow key to open submenu.',
         },
         {
           key: keys[12],
@@ -160,7 +158,6 @@ export const ContextualMenuCheckmarksExample: React.FunctionComponent = () => {
           name: 'Split Button Disabled Primary',
           split: true,
           primaryDisabled: true,
-          ariaLabel: 'Split Button Disabled Primary. Click to check/uncheck. Press right arrow key to open submenu.',
         },
         {
           key: keys[13],

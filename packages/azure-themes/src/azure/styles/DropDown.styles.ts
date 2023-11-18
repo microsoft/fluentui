@@ -69,21 +69,21 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
         selectors: {
           ['.ms-Dropdown-title']: {
             color: semanticColors.bodyText,
-            borderColor: semanticColors.inputPlaceholderText,
+            borderColor: semanticColors.inputBorder,
             backgroundColor: extendedSemanticColors.controlBackground,
           },
           ['.ms-Dropdown-titleIsPlaceHolder.ms-Dropdown-title']: {
             color: semanticColors.inputPlaceholderText,
           },
           ['&:hover .ms-Dropdown-title']: {
-            color: extendedSemanticColors.commandBarButtonTextHover,
+            color: extendedSemanticColors.bodyText,
             borderColor: semanticColors.inputText,
           },
           ['&:focus .ms-Dropdown-title']: {
             borderColor: semanticColors.focusBorder,
           },
           ['&:active .ms-Dropdown-title']: {
-            color: extendedSemanticColors.commandBarButtonTextHover,
+            color: semanticColors.bodyText,
             borderColor: semanticColors.focusBorder,
           },
           // CaretDown states are the same for focus, hover, active.
@@ -118,7 +118,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       },
       hasError && {
         borderColor: semanticColors.errorBackground,
-        borderWidth: StyleConstants.borderWidthError,
+        borderWidth: StyleConstants.borderWidth,
       },
       isOpen &&
         !hasError && {
@@ -129,43 +129,72 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       },
     ],
     dropdownItemsWrapper: {
-      backgroundColor: semanticColors.bodyBackground,
+      backgroundColor: extendedSemanticColors.dropdownBackground,
       borderColor: semanticColors.inputBorder,
       border: 0,
     },
     dropdownItem: {
       color: semanticColors.bodyText,
       fontSize: theme.fonts.medium.fontSize,
-      backgroundColor: extendedSemanticColors.controlBackground,
+      backgroundColor: extendedSemanticColors.dropdownBackground,
       selectors: {
         // active: Mouse down on the item, then drag outside.
         '&:hover, &:active, &:hover:focus': {
           backgroundColor: semanticColors.listItemBackgroundHovered,
           borderColor: 'transparent',
-          color: extendedSemanticColors.commandBarButtonTextHover,
+          color: extendedSemanticColors.dropdownTextHovered,
+        },
+        // unselected  multi-choice item
+        '&.ms-Checkbox': {
+          color: extendedSemanticColors.bodyText,
+          backgroundColor: extendedSemanticColors.dropdownBackground,
+        },
+        // unselected  multi-choice hovered item
+        '&.ms-Checkbox:hover': {
+          color: extendedSemanticColors.dropdownTextHovered,
+          backgroundColor: extendedSemanticColors.listItemBackgroundHovered,
         },
       },
     },
     dropdownItemDisabled: {
       color: semanticColors.primaryButtonTextDisabled,
       fontSize: theme.fonts.medium.fontSize,
-      backgroundColor: extendedSemanticColors.controlBackground,
+      backgroundColor: extendedSemanticColors.dropdownBackground,
+      selectors: {
+        // multi select drop down disabled items
+        '&.ms-Checkbox': {
+          backgroundColor: extendedSemanticColors.dropdownBackground,
+        },
+        // multi select drop down disabled items hovered
+        '&.ms-Checkbox:hover': {
+          backgroundColor: extendedSemanticColors.dropdownBackground,
+        },
+      },
     },
     dropdownItemSelected: {
       fontSize: theme.fonts.medium.fontSize,
       backgroundColor: semanticColors.listItemBackgroundChecked,
-      color: extendedSemanticColors.commandBarButtonTextHover,
+      color: extendedSemanticColors.bodyText,
       selectors: {
         '&:hover, &:focus, &:active, &:hover:focus': {
           backgroundColor: semanticColors.listItemBackgroundChecked,
           borderColor: 'transparent',
+        },
+        // multi select drop down items
+        '&.ms-Checkbox': {
+          backgroundColor: extendedSemanticColors.dropdownBackground,
+        },
+        // multi select drop down items hovered
+        '&.ms-Checkbox:hover': {
+          backgroundColor: extendedSemanticColors.listItemBackgroundHovered,
+          color: extendedSemanticColors.dropdownTextHovered,
         },
       },
     },
     dropdownItemHeader: {
       color: semanticColors.inputText,
       fontWeight: '600',
-      backgroundColor: extendedSemanticColors.controlBackground,
+      backgroundColor: extendedSemanticColors.dropdownBackground,
     },
     subComponentStyles: {
       panel: {},

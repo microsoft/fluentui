@@ -1,0 +1,146 @@
+{
+  "name": "@fluentui/react-18-tests-v8",
+  "entries": [
+    {
+      "date": "Thu, 22 Sep 2022 07:43:45 GMT",
+      "tag": "@fluentui/react-18-tests-v8_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-18-tests-v8",
+            "comment": "Bump @fluentui/react to v8.96.1",
+            "commit": "483f160617f1037e672fe74b8e52abfee9378517"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Sep 2022 07:47:30 GMT",
+      "tag": "@fluentui/react-18-tests-v8_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-18-tests-v8",
+            "comment": "Bump @fluentui/react to v8.96.0",
+            "commit": "2420757404f54aba8e92cdbc41965a6fdbce8a3d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Sep 2022 07:37:32 GMT",
+      "tag": "@fluentui/react-18-tests-v8_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-18-tests-v8",
+            "comment": "Bump @fluentui/react to v8.95.1",
+            "commit": "9077e0a7d3911096a3337d76ec65591d191a780a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Sep 2022 19:15:27 GMT",
+      "tag": "@fluentui/react-18-tests-v8_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-18-tests-v8",
+            "comment": "Bump @fluentui/react to v8.95.0",
+            "commit": "682ead9953a1d519133193033aafe392173009f5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Sep 2022 07:41:03 GMT",
+      "tag": "@fluentui/react-18-tests-v8_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-18-tests-v8",
+            "comment": "Bump @fluentui/react to v8.94.4",
+            "commit": "a40ef34fa6d1122bdfdb708f79b90de9edb2827d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Sep 2022 20:52:16 GMT",
+      "tag": "@fluentui/react-18-tests-v8_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-18-tests-v8",
+            "comment": "Bump @fluentui/react to v8.94.3",
+            "commit": "38bd1c146cb2e635bc181cda1b2f11b17a07c4c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Sep 2022 07:54:43 GMT",
+      "tag": "@fluentui/react-18-tests-v8_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-18-tests-v8",
+            "comment": "Bump @fluentui/react to v8.94.2",
+            "commit": "2f740624c4e43d6bfe1b488e9d479c95ed71da09"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Sep 2022 07:38:30 GMT",
+      "tag": "@fluentui/react-18-tests-v8_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-18-tests-v8",
+            "comment": "Bump @fluentui/react to v8.94.1",
+            "commit": "f9f7d0fb7506d2af70af355a26d7a44b49df5f58"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 07:48:53 GMT",
+      "tag": "@fluentui/react-18-tests-v8_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-18-tests-v8",
+            "comment": "Bump @fluentui/react to v8.94.0",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-18-tests-v8",
+            "comment": "Bump @fluentui/react-hooks to v8.6.11",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -20,7 +20,6 @@ export const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesP
     ...(p.autoSize && {
       // when autoSize is true, root will have inline style maxWidth and maxHeight set by popper
       display: 'flex',
-      overflow: 'hidden',
     }),
   }),
 
@@ -48,7 +47,6 @@ export const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesP
     borderRadius: v.borderRadius,
 
     padding: v.padding,
-    transform: 'rotate(360deg)',
 
     ...(p.pointing && {
       pointerEvents: 'all',

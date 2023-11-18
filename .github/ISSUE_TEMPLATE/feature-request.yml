@@ -1,0 +1,67 @@
+name: "\U0001F680 New feature proposal"
+description: Propose a new feature to be added to Fluent UI
+title: '[Feature]: '
+labels: ['Type: Feature', 'Needs: Triage 🔍']
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your interest in the project and taking the time to fill out this feature report!
+
+  - type: dropdown
+    id: lib-version
+    attributes:
+      label: Library
+      description: To which library would this be added to
+      options:
+        - React Northstar / v0 (@fluentui/react-northstar)
+        - React / v8 (@fluentui/react)
+        - React Components / v9 (@fluentui/react-components)
+        - Web Components (@fluentui/web-components)
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Describe the feature that you would like added
+    validations:
+      required: true
+
+  - type: input
+    id: feature-discussed-with
+    attributes:
+      label: Have you discussed this feature with our team
+      description: Please use particular person or team github handle
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Any other context or screenshots about the feature request here.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checkboxes
+    attributes:
+      label: Validations
+      description: Before submitting the issue, please make sure you do the following
+      options:
+        - label: Check that there isn't already an issue that request the same feature to avoid creating a duplicate.
+          required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: What is this feature's priority from your product's perspective
+      options:
+        - High
+        - Normal
+        - Low
+    validations:
+      required: false

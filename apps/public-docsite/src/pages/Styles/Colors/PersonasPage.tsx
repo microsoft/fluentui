@@ -16,8 +16,8 @@ export const ColorsPersonasPage: React.FunctionComponent<IStylesPageProps> = pro
   return (
     <StylesAreaPage
       {...props}
-      {...ColorsPersonasPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...ColorsPersonasPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };

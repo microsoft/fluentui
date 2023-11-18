@@ -58,7 +58,7 @@ const basicRenderSelectedItemsList = (props: IBaseSelectedItemsListProps<ISimple
 };
 
 const floatingPickerProps = {
-  onResolveSuggestions: onResolveSuggestions,
+  onResolveSuggestions,
   onRenderSuggestionsItem: basicSuggestionRenderer,
   suggestionsStore: new SuggestionsStore<ISimple>(),
 };
@@ -259,19 +259,19 @@ describe('Pickers', () => {
 
       // precondition check
       expect(picker.floatingPicker.current).toBeTruthy();
-      expect(picker.floatingPicker.current!.suggestions).toEqual([
-        jasmine.objectContaining({
-          item: jasmine.objectContaining({
+      expect(picker.floatingPicker.current!.suggestions).toMatchObject([
+        {
+          item: {
             name: 'black',
             key: 'black',
-          }),
-        }),
-        jasmine.objectContaining({
-          item: jasmine.objectContaining({
+          },
+        },
+        {
+          item: {
             name: 'blue',
             key: 'blue',
-          }),
-        }),
+          },
+        },
       ]);
 
       // act
@@ -279,10 +279,10 @@ describe('Pickers', () => {
 
       // assert
       expect(picker.items).toEqual([
-        jasmine.objectContaining({
+        {
           name: 'black',
           key: 'black',
-        }),
+        },
       ]);
     });
 

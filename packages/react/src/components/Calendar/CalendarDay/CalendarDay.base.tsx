@@ -40,15 +40,14 @@ export const CalendarDayBase: React.FunctionComponent<ICalendarDayProps> = props
     dateRangeType,
     animationDirection,
   } = props;
-  const dayPickerId = useId();
   const monthAndYearId = useId();
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: className,
+    className,
     headerIsClickable: !!onHeaderSelect,
-    showWeekNumbers: showWeekNumbers,
-    animationDirection: animationDirection,
+    showWeekNumbers,
+    animationDirection,
   });
 
   const monthAndYear = dateTimeFormatter.formatMonthYear(navigatedDate, strings);
@@ -58,14 +57,10 @@ export const CalendarDayBase: React.FunctionComponent<ICalendarDayProps> = props
     : monthAndYear;
 
   return (
-    <div className={classNames.root} id={dayPickerId}>
+    <div className={classNames.root}>
       <div className={classNames.header}>
         <HeaderButtonComponentType
-          // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
-          aria-live="polite"
-          aria-atomic="true"
           aria-label={onHeaderSelect ? headerAriaLabel : undefined}
-          key={monthAndYear}
           className={classNames.monthAndYear}
           onClick={onHeaderSelect}
           data-is-focusable={!!onHeaderSelect}
@@ -73,9 +68,11 @@ export const CalendarDayBase: React.FunctionComponent<ICalendarDayProps> = props
           onKeyDown={onButtonKeyDown(onHeaderSelect)}
           type="button"
         >
-          <span id={monthAndYearId}>{monthAndYear}</span>
+          <span id={monthAndYearId} aria-live="polite" aria-atomic="true">
+            {monthAndYear}
+          </span>
         </HeaderButtonComponentType>
-        <CalendarDayNavigationButtons {...props} classNames={classNames} dayPickerId={dayPickerId} />
+        <CalendarDayNavigationButtons {...props} classNames={classNames} />
       </div>
       <CalendarDayGrid
         {...props}
@@ -99,7 +96,6 @@ CalendarDayBase.displayName = 'CalendarDayBase';
 
 interface ICalendarDayNavigationButtonsProps extends ICalendarDayProps {
   classNames: IProcessedStyleSet<ICalendarDayStyles>;
-  dayPickerId: string;
 }
 
 const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps): JSX.Element => {
@@ -112,7 +108,6 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
     navigationIcons,
     showCloseButton,
     classNames,
-    dayPickerId,
     onNavigateDate,
     onDismiss,
   } = props;
@@ -144,7 +139,6 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
         aria-disabled={!prevMonthInBounds}
         onClick={prevMonthInBounds ? onSelectPrevMonth : undefined}
         onKeyDown={prevMonthInBounds ? onButtonKeyDown(onSelectPrevMonth) : undefined}
-        aria-controls={dayPickerId}
         title={
           strings.prevMonthAriaLabel
             ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()]
@@ -162,7 +156,6 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
         aria-disabled={!nextMonthInBounds}
         onClick={nextMonthInBounds ? onSelectNextMonth : undefined}
         onKeyDown={nextMonthInBounds ? onButtonKeyDown(onSelectNextMonth) : undefined}
-        aria-controls={dayPickerId}
         title={
           strings.nextMonthAriaLabel
             ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()]
@@ -188,15 +181,13 @@ const CalendarDayNavigationButtons = (props: ICalendarDayNavigationButtonsProps)
 };
 CalendarDayNavigationButtons.displayName = 'CalendarDayNavigationButtons';
 
-const onButtonKeyDown = (
-  callback?: () => void,
-): ((ev: React.KeyboardEvent<HTMLButtonElement | HTMLDivElement>) => void) => (
-  ev: React.KeyboardEvent<HTMLButtonElement>,
-) => {
-  // eslint-disable-next-line deprecation/deprecation
-  switch (ev.which) {
-    case KeyCodes.enter:
-      callback?.();
-      break;
-  }
-};
+const onButtonKeyDown =
+  (callback?: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement | HTMLDivElement>) => void) =>
+  (ev: React.KeyboardEvent<HTMLButtonElement>) => {
+    // eslint-disable-next-line deprecation/deprecation
+    switch (ev.which) {
+      case KeyCodes.enter:
+        callback?.();
+        break;
+    }
+  };

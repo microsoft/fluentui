@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PresenceBadge renders a default state 1`] = `
+<div
+  aria-label="available"
+  className="fui-PresenceBadge"
+  role="img"
+>
+  <span
+    className="fui-PresenceBadge__icon"
+  >
+    <svg
+      aria-hidden={true}
+      className=""
+      fill="currentColor"
+      height="16"
+      viewBox="0 0 16 16"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16Zm3.7-9.3-4 4a1 1 0 0 1-1.41 0l-2-2a1 1 0 1 1 1.42-1.4L7 8.58l3.3-3.3a1 1 0 0 1 1.4 1.42Z"
+        fill="currentColor"
+      />
+    </svg>
+  </span>
+</div>
+`;

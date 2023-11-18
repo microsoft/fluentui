@@ -68,6 +68,7 @@ export class EventGroup {
       if (typeof document !== 'undefined' && document.createEvent) {
         let ev = document.createEvent('HTMLEvents');
 
+        // eslint-disable-next-line deprecation/deprecation
         ev.initEvent(eventName, bubbleEvent || false, true);
 
         assign(ev, eventArgs);
@@ -183,10 +184,10 @@ export class EventGroup {
     } else {
       let parent = this._parent;
       let eventRecord: IEventRecord = {
-        target: target,
-        eventName: eventName,
-        parent: parent,
-        callback: callback,
+        target,
+        eventName,
+        parent,
+        callback,
         options,
       };
 

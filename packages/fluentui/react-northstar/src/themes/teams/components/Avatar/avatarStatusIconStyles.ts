@@ -1,15 +1,15 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
-import { AvatarStatusStylesProps } from '../../../../components/Avatar/AvatarStatus';
+import { AvatarStatusIconProps } from '../../../../components/Avatar/AvatarStatusIcon';
+import { getSizeStyles, statusIconSizeToPxValue } from './avatarSizes';
 import { AvatarVariables } from './avatarVariables';
 
-export const avatarStatusIconStyles: ComponentSlotStylesPrepared<AvatarStatusStylesProps, AvatarVariables> = {
-  root: ({ props: { state }, variables: v }): ICSSInJSStyle => ({
+export const avatarStatusIconStyles: ComponentSlotStylesPrepared<AvatarStatusIconProps, AvatarVariables> = {
+  root: ({ props: { size, state }, variables: v }): ICSSInJSStyle => ({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: v.statusIconSize,
-    height: v.statusIconSize,
+    ...getSizeStyles(statusIconSizeToPxValue[size]),
     color: v.statusColor,
     ...(state === 'success' && {
       color: v.statusSuccessColor,

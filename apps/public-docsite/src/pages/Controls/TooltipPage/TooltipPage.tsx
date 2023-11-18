@@ -11,7 +11,7 @@ export const TooltipPage: React.FunctionComponent<IControlsPageProps> = props =>
     <ControlsAreaPage
       {...props}
       title="Tooltip"
-      {...TooltipPageProps[props.platform]}
+      {...TooltipPageProps[props.platform!]}
       otherSections={_otherSections(props.platform) as IPageSectionProps[]}
     />
   );
@@ -24,7 +24,8 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/TooltipImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TooltipPage/docs/android/TooltipImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TooltipPage/docs/android/TooltipImplementation.md') as string,
         },
       ];
     case 'ios':
@@ -32,7 +33,8 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/TooltipImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TooltipPage/docs/ios/TooltipImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TooltipPage/docs/ios/TooltipImplementation.md') as string,
         },
       ];
   }

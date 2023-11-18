@@ -1,0 +1,583 @@
+{
+  "name": "@fluentui/keyboard-keys",
+  "entries": [
+    {
+      "date": "Thu, 09 Nov 2023 17:29:49 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.7",
+      "version": "9.0.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 17:49:01 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.6",
+      "version": "9.0.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d",
+            "comment": "chore: trigger manual version bump after broken release"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 15:32:07 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.5",
+      "version": "9.0.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "e61473fa10195f6ebf2308205c1e72e91b711831",
+            "comment": "fix: bump swc core to mitigate transpilation memory leaks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Sep 2023 13:29:14 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.4",
+      "version": "9.0.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "b93c2ac22355b6cb6f33dd509c6cd9c21f4fffc8",
+            "comment": "bumps @swc/helpers version to 0.5.1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 11:12:21 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.3",
+      "version": "9.0.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jun 2023 12:38:54 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.3",
+      "version": "9.0.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "1d813ca54572065b0c19e3fbad9e81119c8ebc50",
+            "comment": "chore: re-generate api.md - api extractor regression"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 May 2023 20:45:22 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.3",
+      "version": "9.0.3",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "69e0617a93cb44ef42f3bd19284b7dc5fe27fed3",
+            "comment": "chore: update test-ssr script"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 May 2023 00:39:00 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.3",
+      "version": "9.0.3",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 May 2023 20:28:09 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.3",
+      "version": "9.0.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Mar 2023 21:23:19 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.2",
+      "version": "9.0.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Jan 2023 08:38:53 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Jan 2023 01:40:46 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Nov 2022 23:05:32 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "ea768501802d65d63ddc63fff3816fb6b5008ae4",
+            "comment": "chore: update package scaffold"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Nov 2022 14:57:50 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Oct 2022 22:09:50 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "2435ea50f924fa6467a07829f3d4715e545d93c0",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Sep 2022 09:49:44 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Aug 2022 16:03:35 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "99cc385631d04a76ee10ebc143cb9fecd99640b6",
+            "comment": "chore: Add `prerelease` as disallowed changetype for 9.0.0 packages"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jun 2022 15:14:09 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "c7b1348bdad7aa883c29bfbc96ef2a32e6ebc7dd",
+            "comment": "feat: Initial 9.0.0 release"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 May 2022 18:26:28 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-rc.6",
+      "version": "9.0.0-rc.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "e465622ca241f3dd0534da50823a51e7311fd9ef",
+            "comment": "feat: ship rolluped only dts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 May 2022 13:26:36 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-rc.5",
+      "version": "9.0.0-rc.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "dd474c75317671a719f125cb2d1fc81db4f9ed7b",
+            "comment": "remove star exports"
+          }
+        ],
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "2c0aaae6044f1c0a938704c13749e76b638e2072",
+            "comment": "keyboard-keys: Move to new common folder."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Apr 2022 19:17:06 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "none": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Mar 2022 05:17:32 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-rc.4",
+      "version": "9.0.0-rc.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "1494f0b620f6d5aae7f0aef33fc9e8f6eb7f8749",
+            "comment": "keyboard-keys: Adding missing tslib dependency."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Feb 2022 13:35:37 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-rc.3",
+      "version": "9.0.0-rc.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Feb 2022 08:52:11 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-rc.1",
+      "version": "9.0.0-rc.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "c00913d50e2dd15bbfbb0757cefe43b192ff1d7f",
+            "comment": "Bump Fluent UI packages to 9.0.0-rc"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "c061e98be4b4a718c72a144a1f60bb5515824612",
+            "comment": "remove inline-style-expand-shorthand from tsconfigs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 08:34:09 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "532579ec884b3bad9e2db6dff139eb467f3c2bbc",
+            "comment": "update tooling config"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Nov 2021 13:25:11 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "00f70581480b536e723fb69edf0ae617beac4807",
+            "comment": "Remove beta release tag"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Oct 2021 10:37:22 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "comment": "Bump all v9 components to beta prerelease tag",
+            "commit": "5553164c190a4beb4780745d0e6403109e057913"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 01 Oct 2021 14:13:08 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-alpha.5",
+      "version": "9.0.0-alpha.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "comment": "Bump v9 prerelease versions to rerelease",
+            "commit": "4fa0856ad0353b787b8ae59229e6f64ef0719824"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/keyboard-keys",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Aug 2021 07:34:48 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.1",
+            "author": "dzearing@hotmail.com",
+            "commit": "0abd957c8d4421018e6d792c2a4aa8876967392b",
+            "package": "@fluentui/keyboard-keys"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Aug 2021 07:37:28 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update .npmignore",
+            "author": "elcraig@microsoft.com",
+            "commit": "8078e6915b4e74a3e1d2d53f6ff7198fd9dc2631",
+            "package": "@fluentui/keyboard-keys"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.4.0",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/keyboard-keys"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "behowell@microsoft.com",
+            "commit": "21df8406417c5c5c1d053561a498b920ac962b4b",
+            "package": "@fluentui/keyboard-keys"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Aug 2021 07:39:30 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.3",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/keyboard-keys"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "behowell@microsoft.com",
+            "commit": "86476ee0511ad2693c2829b959f93a87ad10f095",
+            "package": "@fluentui/keyboard-keys"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jul 2021 22:23:17 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Publish package",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "87ab56f142ad5f10d772ba339ea26d84600ac965",
+            "package": "@fluentui/keyboard-keys"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 09 Jul 2021 07:39:31 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.0-alpha.0",
+      "version": "9.0.0-alpha.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.3.2",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/keyboard-keys"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "18902eb64710aa6253a79781357b8390bb13665c",
+            "package": "@fluentui/keyboard-keys"
+          }
+        ]
+      }
+    }
+  ]
+}

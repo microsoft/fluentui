@@ -1,17 +1,21 @@
 # Install versions of Node and Yarn required by build pipelines.
 steps:
-  - task: NodeTool@0
+  - task: UseNode@1
     inputs:
-      versionSpec: '12.x'
-      checkLatest: true
-    displayName: 'Install Node.js'
-
-  - task: YarnInstaller@0
-    displayName: 'Use Yarn 1.22.x'
-    inputs:
-      versionSpec: 1.22.x
+      # 👉 NOTE:
+      # - we can use only versions that ship with container, otherwise we will run into nodejs installation issues.
+      # - as 1es bumps those versions within container automatically we need to use `<major>.x` to not run into issues once they bump the versions.
+      # https://github.com/actions/runner-images/blob/ubuntu20/20230924.1/images/linux/Ubuntu2004-Readme.md#nodejs
+      version: '18.x'
       checkLatest: false
-      includePrerelease: false
+    displayName: 'Install Node.js'
+    retryCountOnTaskFailure: 1
+
+  - script: |
+      echo "nodejs:" && node -v
+      echo "yarn:" && yarn -v
+      echo "npm:" && npm -v
+    displayName: 'print NodeJS,package managers versions'
 
   # For multiline scripts, we want the whole task to fail if any line of the script fails.
   # ADO doesn't have bash configured this way by default. To fix we override the SHELLOPTS built-in variable.

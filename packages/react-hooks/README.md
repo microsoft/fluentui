@@ -4,19 +4,21 @@
 
 Helpful hooks not provided by React itself. These hooks were built for use in Fluent UI React ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)) but can be used in React apps built with any UI library.
 
-- [useBoolean](#useboolean) - Return a boolean value and callbacks for setting it to true or false, or toggling
-- [useConst](#useconst) - Initialize and return a value that's always constant
-- [useControllableValue](#usecontrollablevalue) - Manage the current value for a component that could be either controlled or uncontrolled
-- [useForceUpdate](#useforceupdate) - Force a function component to update
-- [useId](#useid) - Get a globally unique ID
-- [useMergedRefs](#usemergedrefs) - Merge multiple refs into a single ref callback
-- [useOnEvent](#useonevent) - Attach an event handler on mount and handle cleanup
-- [usePrevious](#useprevious) - Get a value from the previous execution of the component
+- [useBoolean](#useboolean) - Return a boolean value and callbacks for setting it to true or false, or toggling.
+- [useConst](#useconst) - Initialize and return a value that's always constant.
+- [useControllableValue](#usecontrollablevalue) - Manage the current value for a component that could be either controlled or uncontrolled.
+- [useEventCallback](#useeventcallback) - Modified `useCallback` that returns the same function reference every time, but always calls the latest implementation.
+- [useForceUpdate](#useforceupdate) - Force a function component to update.
+- [useId](#useid) - Get a globally unique ID.
+- [useIsomorphicLayoutEffect](#useisomorphiclayouteffect) - Calls `useLayoutEffect` in browser and `useEffect` in SSR, to avoid warnings.
+- [useMergedRefs](#usemergedrefs) - Merge multiple refs into a single ref callback.
+- [useOnEvent](#useonevent) - Attach an event handler on mount and handle cleanup.
+- [usePrevious](#useprevious) - Get a value from the previous execution of the component.
 - [useRefEffect](#userefeffect) - Call a function with cleanup when a ref changes. Like `useEffect` with a dependency on a ref.
-- [useSetInterval](#usesetinterval) - Version of `setInterval` that automatically cleans up when component is unmounted
-- [useSetTimeout](#usesettimeout) - Version of `setTimeout` that automatically cleans up when component is unmounted
-- [useTarget](#usetarget) - Logic used by several popup components to determine the target element or point to position against
-- [useWarnings](#usewarnings) - Display debug-only warnings for invalid or deprecated props or other issues
+- [useSetInterval](#usesetinterval) - Version of `setInterval` that automatically cleans up when component is unmounted.
+- [useSetTimeout](#usesettimeout) - Version of `setTimeout` that automatically cleans up when component is unmounted.
+- [useTarget](#usetarget) - Logic used by several popup components to determine the target element or point to position against.
+- [useWarnings](#usewarnings) - Display debug-only warnings for invalid or deprecated props or other issues.
 
 ## useBoolean
 
@@ -100,7 +102,7 @@ function useControllableValue<TValue, TElement extends HTMLElement>(
 function useControllableValue<
   TValue,
   TElement extends HTMLElement,
-  TCallback extends ChangeCallback<TElement, TValue> | undefined
+  TCallback extends ChangeCallback<TElement, TValue> | undefined,
 >(
   controlledValue: TValue | undefined,
   defaultUncontrolledValue: TValue | undefined,
@@ -129,6 +131,20 @@ The returned value is an array with two elements:
 - A function that will update the internal state if uncontrolled, and invoke the `onChange` callback if present.
   - Like the setter returned by `React.useState`, the identity of this callback will never change.
   - Also like `React.useState`, you can call this function with either a value, or an updater function which takes the previous value as a parameter and returns the new value.
+
+## useEventCallback
+
+```ts
+// The type parameters just copy the type of the passed function to the returned function
+function useEventCallback<Args extends unknown[], Return>(fn: (...args: Args) => Return): (...args: Args) => Return;
+```
+
+Modified `useCallback` that returns the same function reference every time, but internally calls the most-recently passed callback implementation. Can be useful in situations such as:
+
+- Event handler dependencies change too frequently, such as user props which might change on every render, or volatile values such as useState/useDispatch.
+- Callback must be referenced in a captured context (such as a window event handler or unmount handler that's registered once) but needs access to the latest props.
+
+In general, prefer `useCallback` unless you've encountered one of the problems above.
 
 ## useForceUpdate
 
@@ -165,6 +181,17 @@ const TextField = ({ labelText, defaultValue }) => {
   );
 };
 ```
+
+## useIsomorphicLayoutEffect
+
+```ts
+// Type is the same as React.useEffect (not fully specifying here)
+function useIsomorphicLayoutEffect(effect, deps?): void;
+```
+
+To avoid warnings about `useLayoutEffect` when server-side rendering, this calls `useEffect` on the server (no-op) and `useLayoutEffect` on the client. SSR is determined based on `setSSR` from `@fluentui/utilities`.
+
+Prefer `useEffect` unless you have a specific need to do something after mount and before paint.
 
 ## useMergedRefs
 
@@ -206,26 +233,6 @@ const MyComponent = () => {
   return <div />;
 };
 });
-```
-
-## useMountSync (deprecated)
-
-```ts
-const useMountSync: (callback: () => void) => void;
-```
-
-Hook which synchronously execute a callback when the component has been mounted using [useLayoutEffect](https://reactjs.org/docs/hooks-reference.html#uselayouteffect). Use `useMount` for most scenarios. You should only use the synchronous version in the rare case you need to perform an action after the component has been mounted and before the browser paints, such as measuring content and adjusting the result. Using this will trigger debug warnings in server-rendered scenarios.
-
-```tsx
-import { useMountSync } from '@fluentui/react-hooks';
-
-const MyComponent = () => {
-  useMountSync(() => {
-    console.log('Example');
-  });
-
-  return <div />;
-};
 ```
 
 ## useOnEvent
@@ -394,11 +401,3 @@ The following types of warnings are supported (see typings for details on how to
   - The component is attempting to switch between controlled and uncontrolled
 
 Note that all warnings except `controlledUsage` will only be shown on first render. New `controlledUsage` warnings may be shown later based on prop changes. All warnings are shown synchronously during render (not wrapped in `useEffect`) for easier tracing/debugging.
-
-## Deprecated hooks
-
-### useConstCallback
-
-This hook was intended for creating callbacks which have no dependencies, and therefore never need to change. It works fine if everyone using it is extremely mindful of how closures work, but that's not a safe assumption--so in practice, usage of this hook tends to result in bugs like unintentionally capturing the first value of a prop and not respecting updates (when updates should be respected).
-
-If absolutely necessary, you can imitate `useConstCallback`'s behavior with `useConst`: `const myCallback = useConst(() => () => { /* callback body */ })`. (The extra function wrapper is necessary to prevent the callback itself from being interpreted as an initializer.)

@@ -201,3 +201,37 @@ export interface IDetailsColumnStyles {
 export interface IDetailsColumnFilterIconProps extends IIconProps {
   columnProps?: IDetailsColumnProps;
 }
+
+/**
+ * {@docCategory DetailsList}
+ */
+export interface IDetailsColumnFieldProps {
+  /**
+   * Item data to render.
+   */
+  item: any;
+  /**
+   * Index of the item in its list.
+   */
+  itemIndex: number;
+  /**
+   * Whether or not the row is selected.
+   */
+  isSelected?: boolean;
+  /**
+   * Column schema information.
+   */
+  column: IColumn;
+  /**
+   * Key representing the cell value, for change-detection.
+   */
+  cellValueKey?: string;
+  /**
+   * Class name to apply to the cell root element.
+   */
+  className?: string;
+  /**
+   * Original content render function for the cell
+   */
+  onRender: (item?: any, index?: any, column?: IColumn) => React.ReactNode;
+}

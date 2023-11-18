@@ -4,7 +4,7 @@ Fluent UI gives you access to Segoe, Microsoft’s official typeface, along with
 
 ### Icons
 
-Fluent UI includes Office’s official product icons. Fluent UI also provides a suite of product and document symbols, so you can use the same metaphors we use. [Learn more](#/styles/web/icons)
+Fluent UI includes Microsoft 365's official product icons. Fluent UI also provides a suite of product and document symbols, so you can use the same metaphors we use. [Learn more](#/styles/web/icons)
 
 ### Controls
 

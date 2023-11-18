@@ -3,13 +3,13 @@ import { FluentComponentStaticProps } from '../../types';
 import { Accessibility } from '@fluentui/accessibility';
 import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import {
-  ComponentWithAs,
   useTelemetry,
   useStyles,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useFluentContext,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface CardColumnProps extends UIComponentProps, ChildrenComponentProps {
@@ -25,8 +25,7 @@ export const cardColumnClassName = 'ui-card__column';
 /**
  * A CardColumn is used to display content in card as column
  */
-export const CardColumn: ComponentWithAs<'div', CardColumnProps> &
-  FluentComponentStaticProps<CardColumnProps> = props => {
+export const CardColumn = React.forwardRef<HTMLDivElement, CardColumnProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardColumn.displayName, context.telemetry);
   setStart();
@@ -54,6 +53,7 @@ export const CardColumn: ComponentWithAs<'div', CardColumnProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -62,7 +62,7 @@ export const CardColumn: ComponentWithAs<'div', CardColumnProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardColumnProps> & FluentComponentStaticProps<CardColumnProps>;
 
 CardColumn.displayName = 'CardColumn';
 

@@ -12,3 +12,4 @@
 - Select the safest (to prevent loss of data or system access), most secure, and most private option as the default. If safety and security aren't factors, select the most likely or convenient option.
 - Use a phrase for the label, rather than a full sentence.
 - Make sure to give people the option to not make a choice. For example, include a "None" option.
+- When using ChoiceGroup with images, keep text short (ideally one or two words), since overflowing text will be cut off. Translation to other languages and user-applied text styles can often cause label text to end up longer than the English label with author styles.

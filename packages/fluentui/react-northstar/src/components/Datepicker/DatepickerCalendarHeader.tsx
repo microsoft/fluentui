@@ -8,7 +8,7 @@ import {
 } from '@fluentui/accessibility';
 import { ICalendarStrings, DEFAULT_CALENDAR_STRINGS } from '../../utils/date-time-utilities';
 import {
-  ComponentWithAs,
+  ForwardRefWithAs,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -65,95 +65,93 @@ export const datepickerCalendarHeaderClassName = 'ui-datepicker__calendarheader'
 /**
  * A DatepickerCalendarHeader is used to display header block above calendar grid.
  */
-export const DatepickerCalendarHeader: ComponentWithAs<'div', DatepickerCalendarHeaderProps> &
-  FluentComponentStaticProps<DatepickerCalendarHeaderProps> = props => {
-  const context = useFluentContext();
-  const { setStart, setEnd } = useTelemetry(DatepickerCalendarHeader.displayName, context.telemetry);
-  setStart();
+export const DatepickerCalendarHeader = React.forwardRef<HTMLDivElement, DatepickerCalendarHeaderProps>(
+  (props, ref) => {
+    const context = useFluentContext();
+    const { setStart, setEnd } = useTelemetry(DatepickerCalendarHeader.displayName, context.telemetry);
+    setStart();
 
-  const {
-    className,
-    design,
-    styles,
-    variables,
-    label,
-    nextButton,
-    previousButton,
-    onPreviousClick,
-    onNextClick,
-  } = props;
-  const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps(DatepickerCalendarHeader.handledProps, props);
-  const getA11yProps = useAccessibility(props.accessibility, {
-    debugName: DatepickerCalendarHeader.displayName,
-    actionHandlers: {},
-    rtl: context.rtl,
-  });
+    const { className, design, styles, variables, label, nextButton, previousButton, onPreviousClick, onNextClick } =
+      props;
+    const ElementType = getElementType(props);
+    const unhandledProps = useUnhandledProps(DatepickerCalendarHeader.handledProps, props);
+    const getA11yProps = useAccessibility(props.accessibility, {
+      debugName: DatepickerCalendarHeader.displayName,
+      actionHandlers: {},
+      rtl: context.rtl,
+    });
 
-  const { classes } = useStyles<DatepickerCalendarHeaderStylesProps>(DatepickerCalendarHeader.displayName, {
-    className: datepickerCalendarHeaderClassName,
-    mapPropsToInlineStyles: () => ({
-      className,
-      design,
-      styles,
-      variables,
-    }),
-    rtl: context.rtl,
-  });
+    const { classes } = useStyles<DatepickerCalendarHeaderStylesProps>(DatepickerCalendarHeader.displayName, {
+      className: datepickerCalendarHeaderClassName,
+      mapPropsToInlineStyles: () => ({
+        className,
+        design,
+        styles,
+        variables,
+      }),
+      rtl: context.rtl,
+    });
 
-  const element = (
-    <ElementType
-      {...getA11yProps('root', {
-        className: classes.root,
-        ...unhandledProps,
-      })}
-    >
-      {createShorthand(Text, label, {
-        defaultProps: () =>
-          getA11yProps('label', {
-            className: classes.label,
+    const element = (
+      <ElementType
+        {...getA11yProps('root', {
+          className: classes.root,
+          ref,
+          ...unhandledProps,
+        })}
+      >
+        {createShorthand(Text, label, {
+          defaultProps: () =>
+            getA11yProps('label', {
+              className: classes.label,
+            }),
+        })}
+
+        {createShorthand(DatepickerCalendarHeaderAction, previousButton, {
+          defaultProps: () =>
+            getA11yProps('previousButton', {
+              title: props.prevMonthAriaLabel,
+              direction: 'previous' as const,
+              'aria-disabled': props.disabledPreviousButton,
+              disabledNavigatableButton: props.disabledPreviousButton,
+            }),
+          overrideProps: (
+            predefinedProps: DatepickerCalendarHeaderActionProps,
+          ): DatepickerCalendarHeaderActionProps => ({
+            onClick: (e, data) => {
+              if (!props.disabledPreviousButton) {
+                onPreviousClick(e, data);
+                _.invoke(predefinedProps, 'onClick', e, data);
+              }
+            },
           }),
-      })}
-
-      {createShorthand(DatepickerCalendarHeaderAction, previousButton, {
-        defaultProps: () =>
-          getA11yProps('previousButton', {
-            title: props.prevMonthAriaLabel,
-            direction: 'previous' as const,
-            'aria-disabled': props.disabledPreviousButton,
-            disabledNavigatableButton: props.disabledPreviousButton,
+        })}
+        {createShorthand(DatepickerCalendarHeaderAction, nextButton, {
+          defaultProps: () =>
+            getA11yProps('nextButton', {
+              title: props.nextMonthAriaLabel,
+              direction: 'next' as const,
+              'aria-disabled': props.disabledNextButton,
+              disabledNavigatableButton: props.disabledNextButton,
+            }),
+          overrideProps: (
+            predefinedProps: DatepickerCalendarHeaderActionProps,
+          ): DatepickerCalendarHeaderActionProps => ({
+            onClick: (e, data) => {
+              if (!props.disabledNextButton) {
+                onNextClick(e, data);
+                _.invoke(predefinedProps, 'onClick', e, data);
+              }
+            },
           }),
-        overrideProps: (predefinedProps: DatepickerCalendarHeaderActionProps): DatepickerCalendarHeaderActionProps => ({
-          onClick: (e, data) => {
-            if (!props.disabledPreviousButton) {
-              onPreviousClick(e, data);
-              _.invoke(predefinedProps, 'onClick', e, data);
-            }
-          },
-        }),
-      })}
-      {createShorthand(DatepickerCalendarHeaderAction, nextButton, {
-        defaultProps: () =>
-          getA11yProps('nextButton', {
-            title: props.nextMonthAriaLabel,
-            direction: 'next' as const,
-            'aria-disabled': props.disabledNextButton,
-            disabledNavigatableButton: props.disabledNextButton,
-          }),
-        overrideProps: (predefinedProps: DatepickerCalendarHeaderActionProps): DatepickerCalendarHeaderActionProps => ({
-          onClick: (e, data) => {
-            if (!props.disabledNextButton) {
-              onNextClick(e, data);
-              _.invoke(predefinedProps, 'onClick', e, data);
-            }
-          },
-        }),
-      })}
-    </ElementType>
-  );
-  setEnd();
-  return element;
-};
+        })}
+      </ElementType>
+    );
+    setEnd();
+    return element;
+  },
+) as unknown as ForwardRefWithAs<'div', HTMLDivElement, DatepickerCalendarHeaderProps> &
+  FluentComponentStaticProps<DatepickerCalendarHeaderProps>;
 
 DatepickerCalendarHeader.displayName = 'DatepickerCalendarHeader';
 

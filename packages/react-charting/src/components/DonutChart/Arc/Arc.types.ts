@@ -84,6 +84,21 @@ export interface IArcProps {
    * props for inside donut value
    */
   valueInsideDonut?: string | number;
+
+  /**
+   * Prop to show the arc labels in percentage format
+   */
+  showLabelsInPercent?: boolean;
+
+  /**
+   * Prop used to define the sum of all arc values
+   */
+  totalValue?: number;
+
+  /**
+   * Prop to hide the arc labels
+   */
+  hideLabels?: boolean;
 }
 
 export interface IArcData {
@@ -120,12 +135,12 @@ export interface IArcStyles {
   root: IStyle;
 
   /**
-   * Style set for the inside donut string
-   */
-  insideDonutString: IStyle;
-
-  /**
    * styles for the focus
    */
   focusRing: IStyle;
+
+  /**
+   * Style for the arc labels
+   */
+  arcLabel: IStyle;
 }

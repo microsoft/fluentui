@@ -3,43 +3,47 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { chatMessageSlotClassNames, ChatMessageStylesProps } from '../../../../components/Chat/ChatMessage';
 import { pxToRem } from '../../../../utils';
 import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
+import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { ChatMessageVariables } from './chatMessageVariables';
 
 /** ChatMessage styles specific for the compact density. */
 export const chatMessageStylesCompact: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
-  root: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    border: v.compactBorder,
-    padding: v.paddingCompact,
-    width: '100%',
-
-    ...((v.hasMention || v.isImportant) && {
-      [`& .${chatMessageSlotClassNames.bar}`]: {
-        backgroundColor: v.hasMention ? v.hasMentionColor : v.isImportantColor,
-        position: 'absolute',
-        borderRadius: pxToRem(2),
-        height: `calc(100% - ${v.paddingCompact} - ${v.paddingCompact})`,
-        left: pxToRem(-56),
-        top: v.paddingCompact,
-        width: pxToRem(2),
-      },
-    }),
-
-    ...(p.focused && {
+  root: ({ theme: { siteVariables }, variables: v }): ICSSInJSStyle => {
+    const borderFocusStyles = getBorderFocusStyles({ borderRadius: 'inherit', variables: siteVariables });
+    const highlight = {
       backgroundColor: v.compactHoverBackground,
       border: v.compactHoverBorder,
       [`& .${chatMessageSlotClassNames.timestamp}`]: {
         opacity: 1,
       },
-    }),
+    };
 
-    '&:hover': {
-      backgroundColor: v.compactHoverBackground,
-      border: v.compactHoverBorder,
-      [`& .${chatMessageSlotClassNames.timestamp}`]: {
-        opacity: 1,
+    return {
+      border: v.compactBorder,
+      padding: v.paddingCompact,
+      width: '100%',
+
+      ...((v.hasMention || v.isImportant) && {
+        [`& .${chatMessageSlotClassNames.bar}`]: {
+          backgroundColor: v.hasMention ? v.hasMentionColor : v.isImportantColor,
+          position: 'absolute',
+          borderRadius: pxToRem(2),
+          height: pxToRem(20),
+          left: pxToRem(-56),
+          top: v.paddingCompact,
+          width: pxToRem(2),
+        },
+      }),
+
+      ':focus-visible': {
+        // Add focus border styles as they would be replaced otherwise
+        ...borderFocusStyles[':focus-visible'],
+        ...highlight,
       },
-    },
-  }),
+
+      '&:hover': highlight,
+    };
+  },
 
   author: ({ props: p, variables: v }): ICSSInJSStyle => ({
     ...((p.attached === 'bottom' || p.attached === true) && (screenReaderContainerStyles as ICSSInJSStyle)),

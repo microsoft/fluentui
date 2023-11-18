@@ -1,0 +1,11 @@
+{
+  "extends": "../../../../../../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "lib": ["ES2019", "dom"],
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "types": ["static-assets", "environment"]
+  }
+}

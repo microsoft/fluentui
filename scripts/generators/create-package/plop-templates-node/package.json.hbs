@@ -1,0 +1,31 @@
+{
+  "name": "{{{packageNpmName}}}",
+  "version": "{{{packageVersion}}}",
+  "description": "{{{description}}}",
+  "private": true,
+  "main": "lib-commonjs/index.js",
+  "typings": "lib-commonjs/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build --module cjs",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "start-test": "just-scripts jest-watch",
+    "test": "just-scripts test",
+    "update-snapshots": "just-scripts jest -u"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-tasks": "*"
+  },
+  "dependencies": {
+    "@swc/helpers": ""
+  }
+}

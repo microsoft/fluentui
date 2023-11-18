@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "id": "normalize-package-dependencies",
+  "type": "object",
+  "properties": {
+    "verify": {
+      "type": "boolean",
+      "description": "Run generator in check(verification mode). Verify package.json dependencies for all projects or filtered projects (if filters are applied)"
+    }
+  },
+  "required": []
+}

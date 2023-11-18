@@ -1,0 +1,131 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/Text Migration" />
+
+# Text component Migration guide
+
+## Overview:
+
+Before:
+
+```tsx
+import { Text } from '@fluentui/react-northstar';
+const Component = () => <Text content="Test" />;
+```
+
+After:
+
+```tsx
+import { StyledText } from '@fluentui/react-migration-v0-v9';
+const Component = () => <StyledText>Test</StyledText>;
+```
+
+## How to migrate props:
+
+| Text props                                                                  | migrate guide                                                                                                                                    |
+| --------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| as, className                                                               | keep it as is                                                                                                                                    |
+| content                                                                     | see [Migrate content prop](#Migrate-`content`-prop) in this document                                                                             |
+| variables, styles                                                           | see [Migrate style overrides](#./Migrate-style-overrides) in this document                                                                       |
+| accessibility                                                               | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--page)                                         |
+| color                                                                       | REMOVED: use styles and color tokens to set a text's color                                                                                       |
+| align, atMention, disabled, error, important, success, temporary, timestamp | keep it as is                                                                                                                                    |
+| size                                                                        | keep `smaller`/`small`/`medium`/`larger`/`largest` as is; for `large` size, see [Migrate size `large`](#./Migrate-size-`large`) in this document |
+| weight                                                                      | keep it as is                                                                                                                                    |
+| truncated                                                                   | migrate to `truncate={true} wrap={false}`                                                                                                        |
+| link, href                                                                  | see [Migrate link and href props](#Migrate-`link`-and-`href`-props) in this document                                                             |
+
+---
+
+## Migrate `content` prop
+
+Move `content` to JSX children.
+
+Before:
+
+```tsx
+import { Text } from '@fluentui/react-northstar';
+const Component = () => <Text content="hi" />;
+```
+
+After:
+
+```tsx
+import { StyledText } from '@fluentui/react-migration-v0-v9';
+const Component = () => <StyledText>hi</StyledText>;
+```
+
+If content with translation disappears after migration, please check [troubleshoot.md](../troubleshoot.md).
+
+## Migrate style overrides
+
+⚠️ **If this is your first migration**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migration-from-v0-custom-style-overrides--page).
+
+### Example for migrate boolean `variables`:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Text } from '@fluentui/react-northstar';
+
+export const Component = () => <Text variables={{ enableMainWindowChatHeaderTitleStyles: true }} />;
+
+// in text-styles.ts
+export const textStyles1 = {
+  root: ({ variables: { enableMainWindowChatHeaderTitleStyles } }) => ({
+    ...(enableMainWindowChatHeaderTitleStyles && {
+      maxWidth: '11rem',
+    }),
+  }),
+};
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { StyledText } from '@fluentui/react-migration-v0-v9';
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+
+export const Component = () => {
+  const classes = useStyles();
+  return <StyledText className={classes.mainWindowChatHeaderTitle}></StyledText>;
+};
+
+// in COMPONENT_NAME.styles.ts
+import { makeStyles } from '@fluentui/react-components';
+
+export const useStyles = makeStyles({
+  mainWindowChatHeaderTitle: {
+    maxWidth: '11rem',
+  },
+});
+```
+
+## Migrate size `large`
+
+v0 `large` text is `18px`. It can be migrate to v9 size `large` or `large500`.
+Please note that v9 `large` text is `16px`. The alterative `large500` text is `20px`.
+
+## Migrate `link` and `href` props
+
+Use `Link` component instead of `Text` when you need to render link.
+
+Before:
+
+```tsx
+import { Text } from '@fluentui/react-northstar';
+const Component = () => <Text link href="#" target="_blank" content="Link somewhere" />;
+```
+
+After:
+
+```tsx
+import { Link } from '@fluentui/react-components';
+const Component = () => (
+  <Link href="#" target="_blank">
+    Link somewhere
+  </Link>
+);
+```

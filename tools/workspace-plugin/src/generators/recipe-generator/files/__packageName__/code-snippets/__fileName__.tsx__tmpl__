@@ -1,0 +1,6 @@
+import * as React from 'react';
+import { Button } from '@fluentui/react-components';
+
+export const <%= fileName %>SnippetExample = () => {
+  return <Button>This is a Button</Button>;
+};

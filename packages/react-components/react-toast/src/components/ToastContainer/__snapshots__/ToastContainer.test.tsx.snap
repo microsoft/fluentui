@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToastContainer renders a default state 1`] = `
+<div>
+  <div
+    aria-describedby="toast-body2"
+    aria-labelledby="toast-title1"
+    class="fui-ToastContainer"
+    data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Tab\\":true,\\"Escape\\":true,\\"Enter\\":true}}}"
+    role="listitem"
+    style="--fui-toast-height: 0px;"
+    tabindex="0"
+  >
+    Default ToastContainer
+  </div>
+</div>
+`;

@@ -4,8 +4,10 @@ import { ThemeProviderNestedExample } from './ThemeProvider.Nested.Example';
 
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
-const ThemeProviderBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ThemeProvider/ThemeProvider.Basic.Example.tsx') as string;
-const ThemeProviderNestedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ThemeProvider/ThemeProvider.Nested.Example.tsx') as string;
+const ThemeProviderBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ThemeProvider/ThemeProvider.Basic.Example.tsx') as string;
+const ThemeProviderNestedExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ThemeProvider/ThemeProvider.Nested.Example.tsx') as string;
 
 export const ThemeProviderPageProps: IDocPageProps = {
   title: 'ThemeProvider',

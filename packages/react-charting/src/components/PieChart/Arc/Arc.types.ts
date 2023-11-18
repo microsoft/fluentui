@@ -1,4 +1,4 @@
-import { IStyle } from '@fluentui/react/lib/Styling';
+import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IDataPoint } from '../PieChart.types';
 
 export interface IArcProps {
@@ -25,6 +25,22 @@ export interface IArcProps {
    * Color for the Arc.
    */
   color: string;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
+  /**
+   * to pass the theme
+   */
+  theme?: ITheme;
+}
+
+export interface IArcState {
+  /**
+   * The state controls, whether the arc needs to be focused or not
+   */
+  isArcFocused?: boolean;
 }
 
 export interface IArcData {
@@ -58,5 +74,11 @@ export interface IArcStyles {
   /**
    * Style set for the card header component root
    */
-  root: IStyle;
+  arcRoot: IStyle;
+
+  arc: IStyle;
+
+  arcRootFocussed: IStyle;
+
+  arcText: IStyle;
 }

@@ -6,8 +6,7 @@ const navStyles: Partial<INavStyles> = { root: { width: 300 } };
 const navLinkGroups: INavLinkGroup[] = [
   {
     name: 'Basic components',
-    expandAriaLabel: 'Expand Basic components section',
-    collapseAriaLabel: 'Collapse Basic components section',
+    expandAriaLabel: 'Show more Basic components',
     links: [
       {
         key: 'ActivityItem',
@@ -28,8 +27,7 @@ const navLinkGroups: INavLinkGroup[] = [
   },
   {
     name: 'Extended components',
-    expandAriaLabel: 'Expand Extended components section',
-    collapseAriaLabel: 'Collapse Extended components section',
+    expandAriaLabel: 'Show more Extended components',
     links: [
       {
         key: 'ColorPicker',
@@ -50,8 +48,7 @@ const navLinkGroups: INavLinkGroup[] = [
   },
   {
     name: 'Utilities',
-    expandAriaLabel: 'Expand Utilities section',
-    collapseAriaLabel: 'Collapse Utilities section',
+    expandAriaLabel: 'Show more Utilities',
     links: [
       {
         key: 'FocusTrapZone',

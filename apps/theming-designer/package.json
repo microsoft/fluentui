@@ -1,5 +1,5 @@
 {
-  "name": "theming-designer",
+  "name": "@fluentui/theming-designer",
   "description": "Theming designer for @fluentui/react.",
   "version": "1.0.0",
   "private": true,
@@ -14,22 +14,21 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
-    "@types/react": "16.9.42",
-    "@types/react-dom": "16.9.10",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.33.0",
-    "@fluentui/merge-styles": "^8.1.5",
-    "@fluentui/react-docsite-components": "^8.3.26",
-    "@fluentui/foundation-legacy": "^8.1.11",
-    "@fluentui/scheme-utilities": "^8.2.2",
-    "@fluentui/set-version": "^8.1.4",
-    "@fluentui/font-icons-mdl2": "^8.1.11",
+    "@fluentui/react": "*",
+    "@fluentui/merge-styles": "*",
+    "@fluentui/react-docsite-components": "*",
+    "@fluentui/foundation-legacy": "*",
+    "@fluentui/scheme-utilities": "*",
+    "@fluentui/set-version": "*",
+    "@fluentui/font-icons-mdl2": "*",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "tslib": "^2.1.0"
   }
 }

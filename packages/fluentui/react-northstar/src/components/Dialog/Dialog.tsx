@@ -1,6 +1,5 @@
 import { Accessibility, dialogBehavior, DialogBehaviorProps, getCode, keyboardKey } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   FocusTrapZoneProps,
   useAutoControlled,
   useTelemetry,
@@ -9,6 +8,7 @@ import {
   useFluentContext,
   useUnhandledProps,
   getElementType,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import { EventListener } from '@fluentui/react-component-event-listener';
@@ -140,10 +140,7 @@ export type DialogStylesProps = Required<Pick<DialogProps, 'backdrop'>>;
  * [Jaws does not announce token values of aria-haspopup](https://github.com/FreedomScientific/VFO-standards-support/issues/33)
  * [Issue 989517: VoiceOver narrates dialog content and button twice](https://bugs.chromium.org/p/chromium/issues/detail?id=989517)
  */
-export const Dialog: ComponentWithAs<'div', DialogProps> &
-  FluentComponentStaticProps<DialogProps> & {
-    Footer: typeof DialogFooter;
-  } = props => {
+export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Dialog.displayName, context.telemetry);
   setStart();
@@ -261,10 +258,24 @@ export const Dialog: ComponentWithAs<'div', DialogProps> &
     },
   });
 
+  // when press left click on Dialog content and hold, and mouse up on Dialog overlay, Dialog should keep open
+  const isMouseDownInsideContent = React.useRef(false);
+  const registerMouseDownOnDialogContent = (e: React.MouseEvent) => {
+    if (e.button === 0) {
+      isMouseDownInsideContent.current = true;
+    }
+    if (unhandledProps.onMouseDown) {
+      _.invoke(unhandledProps, 'onMouseDown', e);
+    }
+  };
+
   const handleOverlayClick = (e: MouseEvent) => {
     // Dialog has different conditions to close than Popup, so we don't need to iterate across all
     // refs
-    const isInsideContentClick = doesNodeContainClick(contentRef.current, e, context.target);
+    const isInsideContentClick =
+      isMouseDownInsideContent.current || doesNodeContainClick(contentRef.current, e, context.target);
+    isMouseDownInsideContent.current = false;
+
     const isInsideOverlayClick = doesNodeContainClick(overlayRef.current, e, context.target);
 
     const shouldClose = !isInsideContentClick && isInsideOverlayClick;
@@ -306,7 +317,7 @@ export const Dialog: ComponentWithAs<'div', DialogProps> &
       }),
       overrideProps: {
         content: (
-          <Flex gap="gap.smaller">
+          <Flex gap="gap.smaller" hAlign="end">
             {cancelElement}
             {confirmElement}
           </Flex>
@@ -319,7 +330,9 @@ export const Dialog: ComponentWithAs<'div', DialogProps> &
       <ElementType
         {...getA11yProps('popup', {
           className: classes.root,
+          ref,
           ...unhandledProps,
+          onMouseDown: registerMouseDownOnDialogContent,
         })}
       >
         {Header.create(header, {
@@ -401,7 +414,10 @@ export const Dialog: ComponentWithAs<'div', DialogProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, DialogProps> &
+  FluentComponentStaticProps<DialogProps> & {
+    Footer: typeof DialogFooter;
+  };
 
 Dialog.displayName = 'Dialog';
 

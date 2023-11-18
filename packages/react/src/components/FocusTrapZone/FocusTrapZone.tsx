@@ -7,29 +7,35 @@ import {
   getLastTabbable,
   getNextElement,
   focusAsync,
+  getPropsWithDefaults,
   modalize,
   on,
 } from '../../Utilities';
-import { useId, useConst, useMergedRefs } from '@fluentui/react-hooks';
+import { useId, useConst, useMergedRefs, useEventCallback, usePrevious, useUnmount } from '@fluentui/react-hooks';
 import { useDocument } from '../../WindowProvider';
 import type { IRefObject } from '../../Utilities';
 import type { IFocusTrapZoneProps, IFocusTrapZone } from './FocusTrapZone.types';
 
 interface IFocusTrapZoneInternalState {
-  disposeFocusHandler: (() => void) | undefined;
-  disposeClickHandler: (() => void) | undefined;
-  previouslyFocusedElementOutsideTrapZone: HTMLElement | undefined;
-  previouslyFocusedElementInTrapZone: HTMLElement | undefined;
+  previouslyFocusedElementInTrapZone?: HTMLElement;
   hasFocus: boolean;
-  unmodalize: (() => void) | undefined;
+  /** ID tracked in focusStack. Don't respect prop updates in case the ID changes while the FTZ is active. */
+  focusStackId: string;
 }
 
 const COMPONENT_NAME = 'FocusTrapZone';
 
+const DEFAULT_PROPS = {
+  disabled: false,
+  disableFirstFocus: false,
+  forceFocusInsideTrap: true,
+  isClickableOutsideFocusTrap: false,
+};
+
 const useComponentRef = (
   componentRef: IRefObject<IFocusTrapZone> | undefined,
   previouslyFocusedElement: HTMLElement | undefined,
-  focus: () => void,
+  focusFTZ: () => void,
 ) => {
   React.useImperativeHandle(
     componentRef,
@@ -37,50 +43,48 @@ const useComponentRef = (
       get previouslyFocusedElement() {
         return previouslyFocusedElement;
       },
-      focus,
+      focus: focusFTZ,
     }),
-    [previouslyFocusedElement, focus],
+    [focusFTZ, previouslyFocusedElement],
   );
 };
 
 export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
-  focusStack: string[];
-} = React.forwardRef<HTMLElement, IFocusTrapZoneProps>((props, ref) => {
+  /**
+   * Stack of active FocusTrapZone identifiers, exposed for testing purposes only.
+   * (This is always set, just marked as optional to avoid a cast in the component definition.)
+   * @internal
+   */
+  focusStack?: string[];
+} = React.forwardRef<HTMLDivElement, IFocusTrapZoneProps>((propsWithoutDefaults, ref) => {
   const root = React.useRef<HTMLDivElement>(null);
   const firstBumper = React.useRef<HTMLDivElement>(null);
   const lastBumper = React.useRef<HTMLDivElement>(null);
   const mergedRootRef = useMergedRefs(root, ref) as React.Ref<HTMLDivElement>;
-  const id = useId(undefined, props.id);
   const doc = useDocument();
-  const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
 
-  const internalState = useConst<IFocusTrapZoneInternalState>(() => ({
-    previouslyFocusedElementOutsideTrapZone: undefined,
-    previouslyFocusedElementInTrapZone: undefined,
-    disposeFocusHandler: undefined,
-    disposeClickHandler: undefined,
+  const isFirstRender = usePrevious(false) ?? true;
+
+  const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+
+  const internalState = useConst<IFocusTrapZoneInternalState>({
     hasFocus: false,
-    unmodalize: undefined,
-  }));
+    focusStackId: useId('ftz-', props.id),
+  });
 
   const {
-    ariaLabelledBy,
-    className,
     children,
     componentRef,
     disabled,
-    disableFirstFocus = false,
-    disabled: currentDisabledValue = false,
-    elementToFocusOnDismiss,
-    forceFocusInsideTrap = true,
+    disableFirstFocus,
+    forceFocusInsideTrap,
     focusPreviouslyFocusedInnerElement,
+    // eslint-disable-next-line deprecation/deprecation
     firstFocusableSelector,
-    ignoreExternalFocusing,
-    isClickableOutsideFocusTrap = false,
-    onFocus,
-    onBlur,
-    onFocusCapture,
-    onBlurCapture,
+    firstFocusableTarget,
+    // eslint-disable-next-line deprecation/deprecation
+    disableRestoreFocus = props.ignoreExternalFocusing,
+    isClickableOutsideFocusTrap,
     enableAriaHiddenSiblings,
   } = props;
 
@@ -92,274 +96,234 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     },
     tabIndex: disabled ? -1 : 0, // make bumpers tabbable only when enabled
     'data-is-visible': true,
+    'data-is-focus-trap-zone-bumper': true,
   } as React.HTMLAttributes<HTMLDivElement>;
 
-  const focus = React.useCallback(() => {
+  const focusElementAsync = React.useCallback((element: HTMLElement) => {
+    if (element !== firstBumper.current && element !== lastBumper.current) {
+      focusAsync(element);
+    }
+  }, []);
+
+  /**
+   * Callback to force focus into FTZ (named to avoid overlap with global focus() callback).
+   * useEventCallback always returns the same callback reference but updates the implementation
+   * every render to avoid stale captured values.
+   */
+  const focusFTZ = useEventCallback(() => {
+    if (!root.current) {
+      return; // not done mounting
+    }
+
+    const { previouslyFocusedElementInTrapZone } = internalState;
     if (
       focusPreviouslyFocusedInnerElement &&
-      internalState.previouslyFocusedElementInTrapZone &&
-      elementContains(root.current, internalState.previouslyFocusedElementInTrapZone)
+      previouslyFocusedElementInTrapZone &&
+      elementContains(root.current, previouslyFocusedElementInTrapZone)
     ) {
       // focus on the last item that had focus in the zone before we left the zone
-      focusAsync(internalState.previouslyFocusedElementInTrapZone);
+      focusElementAsync(previouslyFocusedElementInTrapZone);
       return;
     }
 
-    const focusSelector =
-      typeof firstFocusableSelector === 'string'
-        ? firstFocusableSelector
-        : firstFocusableSelector && firstFocusableSelector();
-
     let firstFocusableChild: HTMLElement | null = null;
 
-    if (root.current) {
-      if (focusSelector) {
-        firstFocusableChild = root.current.querySelector('.' + focusSelector);
-      }
-
-      // Fall back to first element if query selector did not match any elements.
-      if (!firstFocusableChild) {
-        firstFocusableChild = getNextElement(
-          root.current,
-          root.current.firstChild as HTMLElement,
-          false,
-          false,
-          false,
-          true,
-        );
-      }
+    if (typeof firstFocusableTarget === 'string') {
+      firstFocusableChild = root.current.querySelector(firstFocusableTarget);
+    } else if (firstFocusableTarget) {
+      firstFocusableChild = firstFocusableTarget(root.current);
+    } else if (firstFocusableSelector) {
+      const focusSelector =
+        typeof firstFocusableSelector === 'string' ? firstFocusableSelector : firstFocusableSelector();
+      firstFocusableChild = root.current.querySelector('.' + focusSelector);
     }
+
+    // Fall back to first element if query selector did not match any elements.
+    if (!firstFocusableChild) {
+      firstFocusableChild = getNextElement(
+        root.current,
+        root.current.firstChild as HTMLElement,
+        false,
+        false,
+        false,
+        true,
+      );
+    }
+
     if (firstFocusableChild) {
-      focusAsync(firstFocusableChild);
+      focusElementAsync(firstFocusableChild);
     }
-  }, [firstFocusableSelector, focusPreviouslyFocusedInnerElement, internalState]);
+  });
 
-  const onBumperFocus = React.useCallback(
-    (isFirstBumper: boolean) => {
-      if (disabled) {
-        return;
-      }
+  /** Used in root div focus/blur handlers */
+  const focusBumper = (isFirstBumper: boolean) => {
+    if (disabled || !root.current) {
+      return;
+    }
 
-      const currentBumper = (isFirstBumper === internalState.hasFocus
-        ? lastBumper.current
-        : firstBumper.current) as HTMLElement;
+    const nextFocusable =
+      isFirstBumper === internalState.hasFocus
+        ? getLastTabbable(root.current, lastBumper.current!, true, false)
+        : getFirstTabbable(root.current, firstBumper.current!, true, false);
 
-      if (root.current) {
-        const nextFocusable =
-          isFirstBumper === internalState.hasFocus
-            ? getLastTabbable(root.current, currentBumper, true, false)
-            : getFirstTabbable(root.current, currentBumper, true, false);
-
-        if (nextFocusable) {
-          if (nextFocusable === firstBumper.current || nextFocusable === lastBumper.current) {
-            // This can happen when FTZ contains no tabbable elements.
-            // focus will take care of finding a focusable element in FTZ.
-            focus();
-          } else {
-            nextFocusable.focus();
-          }
-        }
-      }
-    },
-    [disabled, focus, internalState],
-  );
-
-  const onRootBlurCapture = React.useCallback(
-    (ev: React.FocusEvent<HTMLDivElement>) => {
-      onBlurCapture?.(ev);
-      let relatedTarget = ev.relatedTarget;
-      if (ev.relatedTarget === null) {
-        // In IE11, due to lack of support, event.relatedTarget is always
-        // null making every onBlur call to be "outside" of the ComboBox
-        // even when it's not. Using document.activeElement is another way
-        // for us to be able to get what the relatedTarget without relying
-        // on the event
-        relatedTarget = doc!.activeElement as Element;
-      }
-      if (!elementContains(root.current, relatedTarget as HTMLElement)) {
-        internalState.hasFocus = false;
-      }
-    },
-    [doc, internalState, onBlurCapture],
-  );
-
-  const onRootFocusCapture = React.useCallback(
-    (ev: React.FocusEvent<HTMLDivElement>) => {
-      onFocusCapture?.(ev);
-
-      if (ev.target === firstBumper.current) {
-        onBumperFocus(true);
-      } else if (ev.target === lastBumper.current) {
-        onBumperFocus(false);
-      }
-
-      internalState.hasFocus = true;
-
-      if (ev.target !== ev.currentTarget && !(ev.target === firstBumper.current || ev.target === lastBumper.current)) {
-        // every time focus changes within the trap zone, remember the focused element so that
-        // it can be restored if focus leaves the pane and returns via keystroke (i.e. via a call to this.focus(true))
-        internalState.previouslyFocusedElementInTrapZone = ev.target as HTMLElement;
-      }
-    },
-    [onFocusCapture, internalState, onBumperFocus],
-  );
-
-  const returnFocusToInitiator = React.useCallback((): void => {
-    FocusTrapZone.focusStack = FocusTrapZone.focusStack.filter((value: any) => {
-      return id !== value;
-    });
-
-    if (doc) {
-      const activeElement = doc.activeElement as HTMLElement;
-      if (
-        !ignoreExternalFocusing &&
-        internalState.previouslyFocusedElementOutsideTrapZone &&
-        typeof internalState.previouslyFocusedElementOutsideTrapZone.focus === 'function' &&
-        (elementContains(root.current, activeElement) || activeElement === doc.body)
-      ) {
-        if (
-          !(
-            internalState.previouslyFocusedElementOutsideTrapZone === firstBumper.current ||
-            internalState.previouslyFocusedElementOutsideTrapZone === lastBumper.current
-          )
-        ) {
-          focusAsync(internalState.previouslyFocusedElementOutsideTrapZone);
-        }
+    if (nextFocusable) {
+      if (nextFocusable === firstBumper.current || nextFocusable === lastBumper.current) {
+        // This can happen when FTZ contains no tabbable elements.
+        // focusFTZ() will take care of finding a focusable element in FTZ.
+        focusFTZ();
+      } else {
+        nextFocusable.focus();
       }
     }
-  }, [doc, id, ignoreExternalFocusing, internalState]);
+  };
 
-  const forceFocusInTrap = React.useCallback(
-    (ev: FocusEvent): void => {
-      if (disabled) {
-        return;
-      }
-      if (FocusTrapZone.focusStack.length && id === FocusTrapZone.focusStack[FocusTrapZone.focusStack.length - 1]) {
-        const focusedElement = ev.target as HTMLElement;
-        if (!elementContains(root.current, focusedElement)) {
-          focus();
+  /** Root div blur handler (doesn't need useCallback since it's for a native element) */
+  const onRootBlurCapture = (ev: React.FocusEvent<HTMLDivElement>) => {
+    props.onBlurCapture?.(ev);
+    let relatedTarget = ev.relatedTarget;
+    if (ev.relatedTarget === null) {
+      // In IE11, due to lack of support, event.relatedTarget is always
+      // null making every onBlur call to be "outside" of the root
+      // even when it's not. Using document.activeElement is another way
+      // for us to be able to get what the relatedTarget without relying
+      // on the event
+      relatedTarget = doc!.activeElement as Element;
+    }
+    if (!elementContains(root.current, relatedTarget as HTMLElement)) {
+      internalState.hasFocus = false;
+    }
+  };
+
+  /** Root div focus handler (doesn't need useCallback since it's for a native element) */
+  const onRootFocusCapture = (ev: React.FocusEvent<HTMLDivElement>) => {
+    props.onFocusCapture?.(ev);
+
+    if (ev.target === firstBumper.current) {
+      focusBumper(true);
+    } else if (ev.target === lastBumper.current) {
+      focusBumper(false);
+    }
+
+    internalState.hasFocus = true;
+
+    if (ev.target !== ev.currentTarget && !(ev.target === firstBumper.current || ev.target === lastBumper.current)) {
+      // every time focus changes within the trap zone, remember the focused element so that
+      // it can be restored if focus leaves the pane and returns via keystroke (i.e. via a call to this.focus(true))
+      internalState.previouslyFocusedElementInTrapZone = ev.target as HTMLElement;
+    }
+  };
+
+  /** Called to restore focus on unmount or props change. (useEventCallback ensures latest prop values are used.) */
+  const returnFocusToInitiator = useEventCallback((elementToFocusOnDismiss: HTMLElement | null) => {
+    FocusTrapZone.focusStack = FocusTrapZone.focusStack!.filter(value => internalState.focusStackId !== value);
+
+    if (!doc) {
+      return;
+    }
+
+    const activeElement = doc.activeElement as HTMLElement;
+    if (
+      !disableRestoreFocus &&
+      typeof elementToFocusOnDismiss?.focus === 'function' &&
+      // only restore focus if the current focused element is within the FTZ, or if nothing is focused
+      (elementContains(root.current, activeElement) || activeElement === doc.body)
+    ) {
+      focusElementAsync(elementToFocusOnDismiss);
+    }
+  });
+
+  /** Called in window event handlers. (useEventCallback ensures latest prop values are used.) */
+  const forceFocusOrClickInTrap = useEventCallback((ev: FocusEvent | MouseEvent): void => {
+    // be sure to use the latest values here
+    if (disabled) {
+      return;
+    }
+    if (internalState.focusStackId === FocusTrapZone.focusStack!.slice(-1)[0]) {
+      const targetElement = ev.target as HTMLElement | null;
+      if (targetElement && !elementContains(root.current, targetElement)) {
+        if (doc && doc.activeElement === doc.body) {
+          setTimeout(() => {
+            if (doc && doc.activeElement === doc.body) {
+              focusFTZ();
+              internalState.hasFocus = true; // set focus here since we stop event propagation
+            }
+          }, 0);
+        } else {
+          focusFTZ();
           internalState.hasFocus = true; // set focus here since we stop event propagation
-          ev.preventDefault();
-          ev.stopPropagation();
         }
+        ev.preventDefault();
+        ev.stopPropagation();
       }
-    },
-    [disabled, id, focus, internalState],
-  );
-
-  const forceClickInTrap = React.useCallback(
-    (ev: MouseEvent): void => {
-      if (disabled) {
-        return;
-      }
-      if (FocusTrapZone.focusStack.length && id === FocusTrapZone.focusStack[FocusTrapZone.focusStack.length - 1]) {
-        const clickedElement = ev.target as HTMLElement;
-        if (clickedElement && !elementContains(root.current, clickedElement)) {
-          focus();
-          internalState.hasFocus = true; // set focus here since we stop event propagation
-          ev.preventDefault();
-          ev.stopPropagation();
-        }
-      }
-    },
-    [disabled, id, focus, internalState],
-  );
-
-  const updateEventHandlers = React.useCallback((): void => {
-    if (forceFocusInsideTrap && !internalState.disposeFocusHandler) {
-      internalState.disposeFocusHandler = on(window, 'focus', forceFocusInTrap, true);
-    } else if (!forceFocusInsideTrap && internalState.disposeFocusHandler) {
-      internalState.disposeFocusHandler();
-      internalState.disposeFocusHandler = undefined;
     }
+  });
 
-    if (!isClickableOutsideFocusTrap && !internalState.disposeClickHandler) {
-      internalState.disposeClickHandler = on(window, 'click', forceClickInTrap, true);
-    } else if (isClickableOutsideFocusTrap && internalState.disposeClickHandler) {
-      internalState.disposeClickHandler();
-      internalState.disposeClickHandler = undefined;
-    }
-  }, [forceClickInTrap, forceFocusInTrap, forceFocusInsideTrap, isClickableOutsideFocusTrap, internalState]);
-
-  // Updates eventHandlers and cleans up focusStack when the component unmounts.
+  // Update window event handlers when relevant props change
   React.useEffect(() => {
-    const parentRoot = root.current;
-    updateEventHandlers();
+    const disposables: Array<() => void> = [];
+
+    if (forceFocusInsideTrap) {
+      disposables.push(on(window, 'focus', forceFocusOrClickInTrap, true));
+    }
+    if (!isClickableOutsideFocusTrap) {
+      disposables.push(on(window, 'click', forceFocusOrClickInTrap, true));
+    }
+
     return () => {
-      // don't handle return focus unless forceFocusInsideTrap is true or focus is still within FocusTrapZone
-      if (!disabled || forceFocusInsideTrap || !elementContains(parentRoot, doc?.activeElement as HTMLElement)) {
-        returnFocusToInitiator();
-      }
+      disposables.forEach(dispose => dispose());
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- Should only run on mount.
-  }, [updateEventHandlers]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run when these two props change
+  }, [forceFocusInsideTrap, isClickableOutsideFocusTrap]);
 
-  // Updates focusStack and the previouslyFocusedElementOutsideTrapZone on prop change.
+  // On prop change or first render, focus the FTZ and update focusStack if appropriate
   React.useEffect(() => {
-    const newForceFocusInsideTrap = forceFocusInsideTrap !== undefined ? forceFocusInsideTrap : true;
-    const newDisabled = disabled !== undefined ? disabled : false;
-
-    // Transition from forceFocusInsideTrap / FTZ disabled to enabled.
-    if (!newDisabled || newForceFocusInsideTrap) {
-      if (currentDisabledValue) {
-        return;
-      }
-
-      FocusTrapZone.focusStack.push(id);
-
-      internalState.previouslyFocusedElementOutsideTrapZone = elementToFocusOnDismiss
-        ? elementToFocusOnDismiss
-        : (doc!.activeElement as HTMLElement);
-      if (!disableFirstFocus && !elementContains(root.current, internalState.previouslyFocusedElementOutsideTrapZone)) {
-        focus();
-      }
-      if (!internalState.unmodalize && root.current && enableAriaHiddenSiblings) {
-        internalState.unmodalize = modalize(root.current);
-      }
-    } else if (!newForceFocusInsideTrap || newDisabled) {
-      // Transition from forceFocusInsideTrap / FTZ enabled to disabled.
-      returnFocusToInitiator();
-      if (internalState.unmodalize) {
-        internalState.unmodalize();
-      }
+    // Do nothing if disabled, or if it's a re-render and forceFocusInsideTrap is false
+    // (to match existing behavior, the FTZ handles first focus even if forceFocusInsideTrap
+    // is false, though it's debatable whether it should do this)
+    if (disabled || (!isFirstRender && !forceFocusInsideTrap) || !root.current) {
+      return;
     }
 
-    if (elementToFocusOnDismiss && internalState.previouslyFocusedElementOutsideTrapZone !== elementToFocusOnDismiss) {
-      internalState.previouslyFocusedElementOutsideTrapZone = elementToFocusOnDismiss;
+    // Transition from forceFocusInsideTrap / FTZ disabled to enabled (or initial mount)
+    FocusTrapZone.focusStack!.push(internalState.focusStackId);
+
+    const elementToFocusOnDismiss = props.elementToFocusOnDismiss || (doc!.activeElement as HTMLElement | null);
+
+    if (!disableFirstFocus && !elementContains(root.current, elementToFocusOnDismiss)) {
+      focusFTZ();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [elementToFocusOnDismiss, forceFocusInsideTrap, disabled]);
+
+    // To match existing behavior, always return focus on cleanup (even if we didn't handle
+    // initial focus), but it's debatable whether that's correct
+    return () => returnFocusToInitiator(elementToFocusOnDismiss);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run when these two props change
+  }, [forceFocusInsideTrap, disabled]);
+
+  // Handle modalization separately from first focus
+  React.useEffect(() => {
+    if (!disabled && enableAriaHiddenSiblings) {
+      const unmodalize = modalize(root.current!);
+      return unmodalize;
+    }
+  }, [disabled, enableAriaHiddenSiblings, root]);
 
   // Cleanup lifecyle method for internalState.
   useUnmount(() => {
-    // Dispose of event handlers so their closures can be garbage-collected
-    if (internalState.disposeClickHandler) {
-      internalState.disposeClickHandler();
-      internalState.disposeClickHandler = undefined;
-    }
-    if (internalState.disposeFocusHandler) {
-      internalState.disposeFocusHandler();
-      internalState.disposeFocusHandler = undefined;
-    }
-    if (internalState.unmodalize) {
-      internalState.unmodalize();
-    }
     // Dispose of element references so the DOM Nodes can be garbage-collected
     delete internalState.previouslyFocusedElementInTrapZone;
-    delete internalState.previouslyFocusedElementOutsideTrapZone;
   });
 
-  useComponentRef(componentRef, internalState.previouslyFocusedElementInTrapZone, focus);
+  useComponentRef(componentRef, internalState.previouslyFocusedElementInTrapZone, focusFTZ);
 
   return (
     <div
-      {...divProps}
-      className={className}
+      // this is above the native props spread so props['aria-labelledby'] will override it if provided
+      aria-labelledby={props.ariaLabelledBy}
+      // native props include onFocus, onBlur, className
+      {...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties)}
       ref={mergedRootRef}
-      aria-labelledby={ariaLabelledBy}
       onFocusCapture={onRootFocusCapture}
-      onFocus={onFocus}
-      onBlur={onBlur}
       onBlurCapture={onRootBlurCapture}
     >
       <div {...bumperProps} ref={firstBumper} />
@@ -367,20 +331,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
       <div {...bumperProps} ref={lastBumper} />
     </div>
   );
-}) as any;
-
-const useUnmount = (unmountFunction: () => void) => {
-  const unmountRef = React.useRef(unmountFunction);
-  unmountRef.current = unmountFunction;
-  React.useEffect(
-    () => () => {
-      if (unmountRef.current) {
-        unmountRef.current();
-      }
-    },
-    [unmountFunction],
-  );
-};
+});
 
 FocusTrapZone.displayName = COMPONENT_NAME;
 FocusTrapZone.focusStack = [];

@@ -1,0 +1,740 @@
+{
+  "name": "@fluentui/react-conformance-griffel",
+  "entries": [
+    {
+      "date": "Thu, 09 Nov 2023 17:29:33 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.7",
+      "version": "9.0.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-conformance-griffel",
+            "comment": "Bump @fluentui/react-conformance to v0.18.3",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 17:49:04 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.6",
+      "version": "9.0.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d",
+            "comment": "chore: trigger manual version bump after broken release"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-conformance-griffel",
+            "comment": "Bump @fluentui/react-conformance to v0.18.2",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 15:32:01 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.5",
+      "version": "9.0.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "e61473fa10195f6ebf2308205c1e72e91b711831",
+            "comment": "fix: bump swc core to mitigate transpilation memory leaks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-conformance-griffel",
+            "comment": "Bump @fluentui/react-conformance to v0.18.1",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Sep 2023 13:31:31 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.4",
+      "version": "9.0.4",
+      "comments": {
+        "none": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "8582884f9000d15185fe7b074c6fde00d84e961c",
+            "comment": "chore: internal type update with @fluentui/react-conformance version bump"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-conformance-griffel",
+            "comment": "Bump @fluentui/react-conformance to v0.18.0",
+            "commit": "52532950407fd4d3664ec6aa337855214233813b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Sep 2023 13:29:19 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.3",
+      "version": "9.0.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "b93c2ac22355b6cb6f33dd509c6cd9c21f4fffc8",
+            "comment": "bumps @swc/helpers version to 0.5.1"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "eea6d93a62249ba4fba3347fb291c67ee1a3fb24",
+            "comment": "bumps react peer dependencies to v16.14.0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-conformance-griffel",
+            "comment": "Bump @fluentui/react-conformance to v0.17.2",
+            "commit": "da959e66f36b429e40ae61810d08dc71c16e154a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Aug 2023 13:16:54 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.2",
+      "version": "9.0.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Jul 2023 18:27:36 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-conformance-griffel",
+            "comment": "Bump @fluentui/react-conformance to v0.17.1",
+            "commit": "5a4b16715e8e929f11d8113f710e578ca73acaa6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Jul 2023 18:46:34 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "1b458501e0efb7cdcf9cff4099d9e6cd8a2ffb5c",
+            "comment": "feat: release stable"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 11:12:25 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.23",
+      "version": "9.0.0-beta.23",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jun 2023 12:39:07 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.23",
+      "version": "9.0.0-beta.23",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-conformance-griffel",
+            "comment": "Bump @fluentui/react-conformance to v0.17.0",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 May 2023 06:46:12 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.22",
+      "version": "9.0.0-beta.22",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "d640b972d7ac86bfb76ae6c6329f12cdd33b3b7c",
+            "comment": "chore: Update Griffel to v1.5.7."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 May 2023 20:45:25 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.21",
+      "version": "9.0.0-beta.21",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "69e0617a93cb44ef42f3bd19284b7dc5fe27fed3",
+            "comment": "chore: update test-ssr script"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 May 2023 00:39:04 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.21",
+      "version": "9.0.0-beta.21",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 May 2023 20:28:24 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.21",
+      "version": "9.0.0-beta.21",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Mar 2023 21:23:30 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.20",
+      "version": "9.0.0-beta.20",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Jan 2023 08:38:59 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.19",
+      "version": "9.0.0-beta.19",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Jan 2023 01:41:00 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.19",
+      "version": "9.0.0-beta.19",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "613f784ec4ef8055efdebcf1ff31540ad9b8eadd",
+            "comment": "chore: enable strict checking in all just-config files and their dependencies"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "2c38f1e4ae07b2b60df596efe11015a68f166dbf",
+            "comment": "chore: Update Griffel to latest version"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Nov 2022 23:05:38 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.18",
+      "version": "9.0.0-beta.18",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "ea768501802d65d63ddc63fff3816fb6b5008ae4",
+            "comment": "chore: update package scaffold"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Nov 2022 14:58:01 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.18",
+      "version": "9.0.0-beta.18",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "b3907043bd8d7b650c55e8e7c3119b14f2606c38",
+            "comment": "fix: create valid export maps"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Nov 2022 11:57:50 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.17",
+      "version": "9.0.0-beta.17",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "c619ba066f11a8654e95375314824ba6b81b003e",
+            "comment": "chore: Update Griffel to latest version"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Oct 2022 22:09:51 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.16",
+      "version": "9.0.0-beta.16",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "2435ea50f924fa6467a07829f3d4715e545d93c0",
+            "comment": "chore: Migrate to new package structure."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Oct 2022 08:39:31 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.16",
+      "version": "9.0.0-beta.16",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "06865dada128321804646582f564ee86d835d174",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "772f9e3ebde2d5b8157a3204c1a4e007e56f5508",
+            "comment": "chore: Bump react peer dependency to react 18."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Oct 2022 11:02:47 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.15",
+      "version": "9.0.0-beta.15",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "1a527d440e0497ef8046b3ce240492241e7a04ac",
+            "comment": "chore: Update Griffel to latest version"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Sep 2022 20:55:43 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.14",
+      "version": "9.0.0-beta.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "9617a5a46ef4c5e310a066a5374ff2ed61db3c66",
+            "comment": "bump react-conformance"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Sep 2022 09:50:07 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.13",
+      "version": "9.0.0-beta.13",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "e6cf183695d6d67a24e038c49a876224e5ed35e5",
+            "comment": "chore: update package scaffold"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "e610024474cfe5d45f61501a8b6a21daf4c794a2",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-conformance-griffel",
+            "comment": "Bump @fluentui/react-conformance to v0.15.3",
+            "commit": "a33448fe4a0f4117686c378f80b893d1406d95a8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Aug 2022 16:03:45 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.12",
+      "version": "9.0.0-beta.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "8d8c2765c6286c236983c2193c4d57f754ec2454",
+            "comment": "fix: Griffel conformance test should use user container for render"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "08563664778fd80284561d3c9d254307a0a32362",
+            "comment": "chore: Bump Griffel dependencies"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-conformance-griffel",
+            "comment": "Bump @fluentui/react-conformance to v0.15.0",
+            "commit": "ee4a8be0d0831a6615f878f98db6a97cc61a802d"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "f79394055c953c73943709259ff257982b143f1e",
+            "comment": "chore: update package.json main/types field to accomodate new 'build' task behaviours"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jul 2022 17:06:18 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.11",
+      "version": "9.0.0-beta.11",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "fd9308f35ec9b2c7f7fdbfce62f9a94ca00d6536",
+            "comment": "fix: Bump react-conformance in react-conformance-griffel to 0.14.0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jun 2022 17:39:48 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.10",
+      "version": "9.0.0-beta.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "3deda1fbbfb6ac2b1ad150d4dc6343f1f7fda85b",
+            "comment": "fix: Use caret dependency range for Griffel"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-conformance-griffel",
+            "comment": "Bump @fluentui/react-conformance to v0.14.0",
+            "commit": "3deda1fbbfb6ac2b1ad150d4dc6343f1f7fda85b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jun 2022 15:13:33 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.9",
+      "version": "9.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "675acea49c97f10837ddee9b8c4350ca27750125",
+            "comment": "Bump Griffel dependencies"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-conformance-griffel",
+            "comment": "Bump @fluentui/react-conformance to v0.14.0",
+            "commit": "ba6c5d651559b91c815429c9a9357c4d5a390f3e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 May 2022 21:28:38 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.8",
+      "version": "9.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "0a5e9fa77a72eecafdd07034ccdc0b95fd49877c",
+            "comment": "chore: Update Griffel to latest version"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 May 2022 18:56:44 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.7",
+      "version": "9.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "d4f80b17690e962d6a24e68959608d1ffe84aef6",
+            "comment": "chore: Bump @fluentui/react-conformance to 0.13.1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 May 2022 12:14:14 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.6",
+      "version": "9.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "60804cec07a495b8a5d1fc66338bf0443b212144",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "1c73d59fa11fc2e1090630bbf54dc2dc6dd892f5",
+            "comment": "fix: update mock of mergeClasses() to return an empty string"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "f120fe9160ad7311a87af0cfacd8d2fb26275e34",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-conformance-griffel",
+            "comment": "Bump @fluentui/react-conformance to v0.13.1",
+            "commit": "8d58f08997acf595e3eb7f628123e7fa7830c394"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 May 2022 18:26:30 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.5",
+      "version": "9.0.0-beta.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "e465622ca241f3dd0534da50823a51e7311fd9ef",
+            "comment": "feat: ship rolluped only dts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 May 2022 13:26:42 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.4",
+      "version": "9.0.0-beta.4",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "8997f88bdd280b6831338d6c231b387fd554046e",
+            "comment": "react-conformance-griffel: Move to new common folder."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Apr 2022 19:17:20 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.4",
+      "version": "9.0.0-beta.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "efc07509578008b6be1c5dd69fee1aad5a7775c2",
+            "comment": "Fix cleanup of overridesWin test"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "e569d6e04d83cbcc6225e61db52ff81d2addd363",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "8722596e561b57decfe9aa79121db844737102ff",
+            "comment": "add react-conformance missing dependency"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "df62b071cf725c01cf639e3cf559c99f2ae8cb00",
+            "comment": "fix: react-conformance version"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "905e46db07ada986fd7885531f72a71b7bbaabdc",
+            "comment": "create v9 api extractor config and set all v9 packags to use it, suppress forgotten export"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "92ed7e05c40cda1d5cfd052a6490d5c14a269d97",
+            "comment": "use actual version for react-conformance"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "99815674d85a275128ebe7acda2e48bea4eb5813",
+            "comment": "chore: move react-conformance to peerDeps to resolve dep issues when RC is bumped"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Feb 2022 13:35:31 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.3",
+      "version": "9.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "1aa9e691fcccd9a64168cea7941c0f1e71fa1d14",
+            "comment": "fix: Source maps contain original source code"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Feb 2022 08:52:11 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.0-beta.1",
+      "version": "9.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "6dd33e565ac4efb29b3864493e40d402d61630ff",
+            "comment": "add conformance tests for Griffel"
+          }
+        ]
+      }
+    }
+  ]
+}

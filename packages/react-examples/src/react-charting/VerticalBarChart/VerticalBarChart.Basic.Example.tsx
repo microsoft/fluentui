@@ -1,15 +1,23 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
+import {
+  VerticalBarChart,
+  IVerticalBarChartProps,
+  IVerticalBarChartDataPoint,
+  ILineChartLineOptions,
+} from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface IVerticalChartState {
   width: number;
   height: number;
   isCalloutselected: boolean;
   useSingleColor: boolean;
+  hideLabels: boolean;
+  showAxisTitles: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -25,6 +33,8 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       height: 350,
       isCalloutselected: false,
       useSingleColor: false,
+      hideLabels: false,
+      showAxisTitles: true,
     };
   }
 
@@ -49,6 +59,13 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
   private _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ useSingleColor: checked });
   };
+  private _onHideLabelsCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ hideLabels: checked });
+  };
+  private _onToggleAxisTitlesCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.forceUpdate();
+    this.setState({ showAxisTitles: checked });
+  };
 
   private _basicExample(): JSX.Element {
     const points: IVerticalBarChartDataPoint[] = [
@@ -58,10 +75,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Oranges',
         color: DefaultPalette.accent,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '10%',
+        yAxisCalloutData: '4%',
         lineData: {
           y: 7000,
-          yAxisCalloutData: '34%',
+          yAxisCalloutData: '3%',
         },
       },
       {
@@ -70,9 +87,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Dogs',
         color: DefaultPalette.blueDark,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '20%',
+        yAxisCalloutData: '21%',
         lineData: {
           y: 30000,
+          yAxisCalloutData: '12%',
         },
       },
       {
@@ -81,10 +99,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Apples',
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '37%',
+        yAxisCalloutData: '12%',
         lineData: {
           y: 3000,
-          yAxisCalloutData: '43%',
+          yAxisCalloutData: '1%',
         },
       },
 
@@ -94,7 +112,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Bananas',
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '88%',
+        yAxisCalloutData: '5%',
       },
       {
         x: 52000,
@@ -102,9 +120,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Giraffes',
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '71%',
+        yAxisCalloutData: '18%',
         lineData: {
           y: 30000,
+          yAxisCalloutData: '12%',
         },
       },
       {
@@ -113,9 +132,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Cats',
         color: DefaultPalette.blueDark,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '40%',
+        yAxisCalloutData: '12%',
         lineData: {
           y: 5000,
+          yAxisCalloutData: '2%',
         },
       },
       {
@@ -124,9 +144,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Elephants',
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '87%',
+        yAxisCalloutData: '8%',
         lineData: {
           y: 16000,
+          yAxisCalloutData: '7%',
         },
       },
       {
@@ -135,21 +156,45 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Monkeys',
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '33%',
+        yAxisCalloutData: '19%',
         lineData: {
           y: 40000,
-          yAxisCalloutData: '45%',
+          yAxisCalloutData: '16%',
         },
       },
     ];
+
+    const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
+
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
       <>
-        <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
-        <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <p>
+          In this example the <code>xAxisCalloutData</code> property overrides the x value that is shown on the callout.
+          So instead of a numeric value, the callout will show the date that is passed in the{' '}
+          <code>xAxisCalloutData</code> property.
+        </p>
+        <label htmlFor="changeWidth">Change Width:</label>
+        <input
+          type="range"
+          value={this.state.width}
+          min={200}
+          max={1000}
+          onChange={this._onWidthChange}
+          id="changeWidth"
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
+        />
+        <label htmlFor="changeHeight">Change Height:</label>
+        <input
+          type="range"
+          value={this.state.height}
+          min={200}
+          max={1000}
+          id="changeHeight"
+          onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
+        />
         <ChoiceGroup options={options} defaultSelectedKey="basicExample" onChange={this._onChange} label="Pick one" />
         <Checkbox
           label="use single color(This will have only one color)"
@@ -157,23 +202,68 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
           onChange={this._onCheckChange}
           styles={{ root: { marginTop: '20px' } }}
         />
-        <div style={rootStyle}>
-          <VerticalBarChart
-            chartTitle="Vertical bar chart basic example "
-            data={points}
-            width={this.state.width}
-            useSingleColor={this.state.useSingleColor}
-            height={this.state.height}
-            lineLegendText={'just line'}
-            lineLegendColor={'brown'}
-            {...(this.state.isCalloutselected && {
-              onRenderCalloutPerDataPoint: (
-                props: IVerticalBarChartDataPoint,
-                defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
-              ) => (props ? defaultRender(props) : null),
-            })}
-          />
-        </div>
+        <Checkbox
+          label="Hide labels"
+          checked={this.state.hideLabels}
+          onChange={this._onHideLabelsCheckChange}
+          styles={{ root: { marginTop: '10px' } }}
+        />
+        <Toggle
+          label="Toggle Axis titles"
+          onText="Show axis titles"
+          offText="Hide axis titles"
+          checked={this.state.showAxisTitles}
+          onChange={this._onToggleAxisTitlesCheckChange}
+          styles={{ root: { marginTop: '10px' } }}
+        />
+        {this.state.showAxisTitles && (
+          <div style={rootStyle}>
+            <VerticalBarChart
+              culture={window.navigator.language}
+              chartTitle="Vertical bar chart basic example "
+              data={points}
+              width={this.state.width}
+              useSingleColor={this.state.useSingleColor}
+              height={this.state.height}
+              lineLegendText={'just line'}
+              lineLegendColor={'brown'}
+              lineOptions={lineOptions}
+              {...(this.state.isCalloutselected && {
+                onRenderCalloutPerDataPoint: (
+                  props: IVerticalBarChartDataPoint,
+                  defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
+                ) => (props ? defaultRender(props) : null),
+              })}
+              hideLabels={this.state.hideLabels}
+              enableReflow={true}
+              yAxisTitle={this.state.showAxisTitles ? 'Different categories of animals and fruits' : undefined}
+              xAxisTitle={this.state.showAxisTitles ? 'Values of each category' : undefined}
+            />
+          </div>
+        )}
+        {!this.state.showAxisTitles && (
+          <div style={rootStyle}>
+            <VerticalBarChart
+              culture={window.navigator.language}
+              chartTitle="Vertical bar chart basic example "
+              data={points}
+              width={this.state.width}
+              useSingleColor={this.state.useSingleColor}
+              height={this.state.height}
+              lineLegendText={'just line'}
+              lineLegendColor={'brown'}
+              lineOptions={lineOptions}
+              {...(this.state.isCalloutselected && {
+                onRenderCalloutPerDataPoint: (
+                  props: IVerticalBarChartDataPoint,
+                  defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
+                ) => (props ? defaultRender(props) : null),
+              })}
+              hideLabels={this.state.hideLabels}
+              enableReflow={true}
+            />
+          </div>
+        )}
       </>
     );
   }

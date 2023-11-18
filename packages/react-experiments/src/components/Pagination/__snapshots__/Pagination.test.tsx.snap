@@ -11,268 +11,334 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
         list-style: none;
       }
 >
-  <div>
-    <button
-      aria-disabled={true}
-      aria-label="first page"
+  <div
+    role="radiogroup"
+  >
+    <div
       className=
-          ms-Button
-          ms-Button--icon
-          is-disabled
+          ms-TooltipHost
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            background-color: transparent;
-            border-color: #f3f2f1;
-            border-radius: 2px;
-            border: none;
-            box-sizing: border-box;
-            color: #c8c6c4;
-            cursor: default;
-            display: inline-block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            height: 32px;
-            outline: transparent;
-            padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
-            padding-top: 0;
-            position: relative;
-            text-align: center;
-            text-decoration: none;
-            user-select: none;
-            width: 32px;
+            display: inline;
           }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
-            bottom: 2px;
-            content: "";
-            left: 2px;
-            outline: 1px solid #605e5c;
-            position: absolute;
-            right: 2px;
-            top: 2px;
-            z-index: 1;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-            bottom: -2px;
-            left: -2px;
-            outline-color: ButtonText;
-            right: -2px;
-            top: -2px;
-          }
-          &:active > * {
-            left: 0px;
-            position: relative;
-            top: 0px;
-          }
-          &:hover {
-            outline: 0px;
-          }
-          &:focus {
-            outline: 0px;
-          }
-      data-is-focusable={false}
-      disabled={true}
-      onClick={[Function]}
+      onBlurCapture={[Function]}
+      onFocusCapture={[Function]}
       onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      type="button"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="none"
     >
-      <span
+      <button
+        aria-disabled={true}
+        aria-label="first page"
         className=
-            ms-Button-flexContainer
+            ms-Button
+            ms-Button--icon
+            is-disabled
             {
-              align-items: center;
-              display: flex;
-              flex-wrap: nowrap;
-              height: 100%;
-              justify-content: center;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-color: #f3f2f1;
+              border-radius: 2px;
+              border: none;
+              box-sizing: border-box;
+              color: #c8c6c4;
+              cursor: default;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 32px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 0;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+              width: 32px;
             }
-        data-automationid="splitbuttonprimary"
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > span {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              outline: 0px;
+            }
+            &:focus {
+              outline: 0px;
+            }
+        data-is-focusable={false}
+        disabled={true}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        type="button"
       >
-        <i
-          aria-hidden={true}
+        <span
           className=
-              ms-Icon
-              ms-Button-icon
+              ms-Button-flexContainer
               {
-                display: inline-block;
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: center;
               }
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: "FabricMDL2Icons-1";
-                font-style: normal;
-                font-weight: normal;
-                speak: none;
-              }
-              {
-                color: #a19f9d;
-                flex-shrink: 0;
-                font-size: 16px;
-                height: 16px;
-                line-height: 16px;
-                margin-bottom: 0;
-                margin-left: 4px;
-                margin-right: 4px;
-                margin-top: 0;
-                text-align: center;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: GrayText;
-              }
-          data-icon-name="Previous"
-          style={
-            Object {
-              "fontFamily": "\\"FabricMDL2Icons-1\\"",
-            }
-          }
+          data-automationid="splitbuttonprimary"
         >
-          
-        </i>
-      </span>
-    </button>
-    <button
-      aria-disabled={true}
-      aria-label="previous page"
+          <i
+            aria-hidden={true}
+            className=
+                ms-Icon
+                ms-Button-icon
+                {
+                  display: inline-block;
+                }
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: "FabricMDL2Icons-1";
+                  font-style: normal;
+                  font-weight: normal;
+                  speak: none;
+                }
+                {
+                  color: #a19f9d;
+                  flex-shrink: 0;
+                  font-size: 16px;
+                  height: 16px;
+                  line-height: 16px;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                  text-align: center;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  color: GrayText;
+                }
+            data-icon-name="Previous"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons-1\\"",
+              }
+            }
+          >
+            
+          </i>
+        </span>
+      </button>
+      <div
+        hidden={true}
+        id="tooltip0"
+        style={
+          Object {
+            "border": 0,
+            "height": 1,
+            "margin": -1,
+            "overflow": "hidden",
+            "padding": 0,
+            "position": "absolute",
+            "whiteSpace": "nowrap",
+            "width": 1,
+          }
+        }
+      >
+        first page
+      </div>
+    </div>
+    <div
       className=
-          ms-Button
-          ms-Button--icon
-          is-disabled
+          ms-TooltipHost
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            background-color: transparent;
-            border-color: #f3f2f1;
-            border-radius: 2px;
-            border: none;
-            box-sizing: border-box;
-            color: #c8c6c4;
-            cursor: default;
-            display: inline-block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            height: 32px;
-            outline: transparent;
-            padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
-            padding-top: 0;
-            position: relative;
-            text-align: center;
-            text-decoration: none;
-            user-select: none;
-            width: 32px;
+            display: inline;
           }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
-            bottom: 2px;
-            content: "";
-            left: 2px;
-            outline: 1px solid #605e5c;
-            position: absolute;
-            right: 2px;
-            top: 2px;
-            z-index: 1;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-            bottom: -2px;
-            left: -2px;
-            outline-color: ButtonText;
-            right: -2px;
-            top: -2px;
-          }
-          &:active > * {
-            left: 0px;
-            position: relative;
-            top: 0px;
-          }
-          &:hover {
-            outline: 0px;
-          }
-          &:focus {
-            outline: 0px;
-          }
-      data-is-focusable={false}
-      disabled={true}
-      onClick={[Function]}
+      onBlurCapture={[Function]}
+      onFocusCapture={[Function]}
       onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      type="button"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="none"
     >
-      <span
+      <button
+        aria-disabled={true}
+        aria-label="previous page"
         className=
-            ms-Button-flexContainer
+            ms-Button
+            ms-Button--icon
+            is-disabled
             {
-              align-items: center;
-              display: flex;
-              flex-wrap: nowrap;
-              height: 100%;
-              justify-content: center;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-color: #f3f2f1;
+              border-radius: 2px;
+              border: none;
+              box-sizing: border-box;
+              color: #c8c6c4;
+              cursor: default;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 32px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 0;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+              width: 32px;
             }
-        data-automationid="splitbuttonprimary"
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > span {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              outline: 0px;
+            }
+            &:focus {
+              outline: 0px;
+            }
+        data-is-focusable={false}
+        disabled={true}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        type="button"
       >
-        <i
-          aria-hidden={true}
+        <span
           className=
-              ms-Icon
-              ms-Button-icon
+              ms-Button-flexContainer
               {
-                display: inline-block;
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: center;
               }
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: "FabricMDL2Icons-8";
-                font-style: normal;
-                font-weight: normal;
-                speak: none;
-              }
-              {
-                color: #a19f9d;
-                flex-shrink: 0;
-                font-size: 16px;
-                height: 16px;
-                line-height: 16px;
-                margin-bottom: 0;
-                margin-left: 4px;
-                margin-right: 4px;
-                margin-top: 0;
-                text-align: center;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: GrayText;
-              }
-          data-icon-name="CaretSolidLeft"
-          style={
-            Object {
-              "fontFamily": "\\"FabricMDL2Icons-8\\"",
-            }
-          }
+          data-automationid="splitbuttonprimary"
         >
-          
-        </i>
-      </span>
-    </button>
+          <i
+            aria-hidden={true}
+            className=
+                ms-Icon
+                ms-Button-icon
+                {
+                  display: inline-block;
+                }
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: "FabricMDL2Icons-8";
+                  font-style: normal;
+                  font-weight: normal;
+                  speak: none;
+                }
+                {
+                  color: #a19f9d;
+                  flex-shrink: 0;
+                  font-size: 16px;
+                  height: 16px;
+                  line-height: 16px;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                  text-align: center;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                  color: GrayText;
+                }
+            data-icon-name="CaretSolidLeft"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons-8\\"",
+              }
+            }
+          >
+            
+          </i>
+        </span>
+      </button>
+      <div
+        hidden={true}
+        id="tooltip4"
+        style={
+          Object {
+            "border": 0,
+            "height": 1,
+            "margin": -1,
+            "overflow": "hidden",
+            "padding": 0,
+            "position": "absolute",
+            "whiteSpace": "nowrap",
+            "width": 1,
+          }
+        }
+      >
+        previous page
+      </div>
+    </div>
     <button
+      aria-checked={true}
       aria-label="page 1 of 10 selected"
-      aria-selected={true}
       className=
           ms-Button
           ms-Pagination-pageNumber
@@ -318,14 +384,14 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -348,7 +414,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             background-color: #f3f2f1;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -359,6 +425,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
+      role="radio"
       type="button"
     >
       <span
@@ -377,8 +444,8 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       </span>
     </button>
     <button
+      aria-checked={false}
       aria-label="page 2 of 10"
-      aria-selected={false}
       className=
           ms-Button
           ms-Pagination-pageNumber
@@ -424,14 +491,14 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -454,7 +521,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             background-color: #f3f2f1;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -465,6 +532,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
+      role="radio"
       type="button"
     >
       <span
@@ -483,8 +551,8 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       </span>
     </button>
     <button
+      aria-checked={false}
       aria-label="page 3 of 10"
-      aria-selected={false}
       className=
           ms-Button
           ms-Pagination-pageNumber
@@ -530,14 +598,14 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -560,7 +628,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             background-color: #f3f2f1;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -571,6 +639,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
+      role="radio"
       type="button"
     >
       <span
@@ -589,8 +658,8 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       </span>
     </button>
     <button
+      aria-checked={false}
       aria-label="page 4 of 10"
-      aria-selected={false}
       className=
           ms-Button
           ms-Pagination-pageNumber
@@ -636,14 +705,14 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -666,7 +735,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             background-color: #f3f2f1;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -677,6 +746,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
+      role="radio"
       type="button"
     >
       <span
@@ -695,8 +765,8 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       </span>
     </button>
     <button
+      aria-checked={false}
       aria-label="page 5 of 10"
-      aria-selected={false}
       className=
           ms-Button
           ms-Pagination-pageNumber
@@ -742,14 +812,14 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
             right: -2px;
             top: -2px;
           }
-          &:active > * {
+          &:active > span {
             left: 0px;
             position: relative;
             top: 0px;
@@ -772,7 +842,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             background-color: #f3f2f1;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
@@ -783,6 +853,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
+      role="radio"
       type="button"
     >
       <span
@@ -800,134 +871,166 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
         5
       </span>
     </button>
-    <button
-      aria-label="next page"
+    <div
       className=
-          ms-Button
-          ms-Button--icon
+          ms-TooltipHost
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            background-color: transparent;
-            border-radius: 2px;
-            border: none;
-            box-sizing: border-box;
-            color: #0078d4;
-            cursor: pointer;
-            display: inline-block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            height: 32px;
-            outline: transparent;
-            padding-bottom: 0;
-            padding-left: 4px;
-            padding-right: 4px;
-            padding-top: 0;
-            position: relative;
-            text-align: center;
-            text-decoration: none;
-            user-select: none;
-            width: 32px;
+            display: inline;
           }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid transparent;
-            bottom: 2px;
-            content: "";
-            left: 2px;
-            outline: 1px solid #605e5c;
-            position: absolute;
-            right: 2px;
-            top: 2px;
-            z-index: 1;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-            bottom: -2px;
-            left: -2px;
-            outline-color: ButtonText;
-            right: -2px;
-            top: -2px;
-          }
-          &:active > * {
-            left: 0px;
-            position: relative;
-            top: 0px;
-          }
-          &:hover {
-            background-color: #f3f2f1;
-            color: #106ebe;
-          }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-            border-color: Highlight;
-            color: Highlight;
-          }
-          &:active {
-            background-color: #edebe9;
-            color: #005a9e;
-          }
-      data-is-focusable={true}
-      onClick={[Function]}
+      onBlurCapture={[Function]}
+      onFocusCapture={[Function]}
       onKeyDown={[Function]}
-      onKeyPress={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      type="button"
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+      role="none"
     >
-      <span
+      <button
+        aria-label="next page"
         className=
-            ms-Button-flexContainer
+            ms-Button
+            ms-Button--icon
             {
-              align-items: center;
-              display: flex;
-              flex-wrap: nowrap;
-              height: 100%;
-              justify-content: center;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 2px;
+              border: none;
+              box-sizing: border-box;
+              color: #0078d4;
+              cursor: pointer;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 32px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 0;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+              width: 32px;
             }
-        data-automationid="splitbuttonprimary"
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > span {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              background-color: #f3f2f1;
+              color: #106ebe;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:active {
+              background-color: #edebe9;
+              color: #005a9e;
+            }
+        data-is-focusable={true}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        type="button"
       >
-        <i
-          aria-hidden={true}
+        <span
           className=
-              ms-Icon
-              ms-Button-icon
+              ms-Button-flexContainer
               {
-                display: inline-block;
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: center;
               }
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                font-family: "FabricMDL2Icons-8";
-                font-style: normal;
-                font-weight: normal;
-                speak: none;
-              }
-              {
-                color: #0078d4;
-                flex-shrink: 0;
-                font-size: 16px;
-                height: 16px;
-                line-height: 16px;
-                margin-bottom: 0;
-                margin-left: 4px;
-                margin-right: 4px;
-                margin-top: 0;
-                text-align: center;
-              }
-          data-icon-name="CaretSolidRight"
-          style={
-            Object {
-              "fontFamily": "\\"FabricMDL2Icons-8\\"",
-            }
-          }
+          data-automationid="splitbuttonprimary"
         >
-          
-        </i>
-      </span>
-    </button>
+          <i
+            aria-hidden={true}
+            className=
+                ms-Icon
+                ms-Button-icon
+                {
+                  display: inline-block;
+                }
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: "FabricMDL2Icons-8";
+                  font-style: normal;
+                  font-weight: normal;
+                  speak: none;
+                }
+                {
+                  color: #0078d4;
+                  flex-shrink: 0;
+                  font-size: 16px;
+                  height: 16px;
+                  line-height: 16px;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                  text-align: center;
+                }
+            data-icon-name="CaretSolidRight"
+            style={
+              Object {
+                "fontFamily": "\\"FabricMDL2Icons-8\\"",
+              }
+            }
+          >
+            
+          </i>
+        </span>
+      </button>
+      <div
+        hidden={true}
+        id="tooltip23"
+        style={
+          Object {
+            "border": 0,
+            "height": 1,
+            "margin": -1,
+            "overflow": "hidden",
+            "padding": 0,
+            "position": "absolute",
+            "whiteSpace": "nowrap",
+            "width": 1,
+          }
+        }
+      >
+        next page
+      </div>
+    </div>
     <div
       className=
           ms-TooltipHost
@@ -985,14 +1088,14 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
@@ -1001,7 +1104,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               background-color: #f3f2f1;
               color: #106ebe;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -1069,6 +1172,24 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           </i>
         </span>
       </button>
+      <div
+        hidden={true}
+        id="tooltip27"
+        style={
+          Object {
+            "border": 0,
+            "height": 1,
+            "margin": -1,
+            "overflow": "hidden",
+            "padding": 0,
+            "position": "absolute",
+            "whiteSpace": "nowrap",
+            "width": 1,
+          }
+        }
+      >
+        page 10
+      </div>
     </div>
   </div>
   <div
@@ -1135,14 +1256,14 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           top: 2px;
           z-index: 1;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
           right: -2px;
           top: -2px;
         }
-        &:active > * {
+        &:active > span {
           left: 0px;
           position: relative;
           top: 0px;
@@ -1203,7 +1324,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               margin-top: 0;
               text-align: center;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
               color: GrayText;
             }
         data-icon-name="Previous"
@@ -1264,14 +1385,14 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           top: 2px;
           z-index: 1;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
           right: -2px;
           top: -2px;
         }
-        &:active > * {
+        &:active > span {
           left: 0px;
           position: relative;
           top: 0px;
@@ -1332,7 +1453,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               margin-top: 0;
               text-align: center;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
               color: GrayText;
             }
         data-icon-name="CaretSolidLeft"
@@ -1384,13 +1505,13 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             display: inline-block;
             margin-bottom: 8px;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-open {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: HighlightText;
             forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-open:after {
             border-color: Highlight;
           }
           &:after {
@@ -1415,46 +1536,46 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           &:hover .ms-ComboBox-Input::placeholder {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::placeholder {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-ComboBox-Input::placeholder {
             color: GrayText;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
             color: GrayText;
           }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: GrayText;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-ComboBox-Input {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: WindowText;
             forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: HighlightText;
             forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover:after {
             border-color: Highlight;
           }
           &:active {
             position: relative;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: HighlightText;
             forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active:after {
             border-color: Highlight;
           }
           &:focus {
@@ -1463,19 +1584,19 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-ComboBox-Input {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus .ms-ComboBox-Input {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: WindowText;
             forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: HighlightText;
             forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus:after {
             border-color: Highlight;
           }
           &:focus:after {
@@ -1517,25 +1638,25 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             &::placeholder {
               color: #605e5c;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
               color: #605e5c;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
               color: #605e5c;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-clear {
               display: none;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               background-color: Window;
               color: WindowText;
@@ -1567,7 +1688,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         value="1"
       />
       <button
-        aria-hidden={true}
         className=
             ms-Button
             ms-Button--icon
@@ -1613,19 +1733,19 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               background-color: ButtonFace;
               border-color: ButtonText;
@@ -1637,7 +1757,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               color: #201f1e;
               cursor: pointer;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               -ms-high-contrast-adjust: none;
               background-color: Highlight;
               border-color: Highlight;
@@ -1648,7 +1768,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               background-color: #edebe9;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
               -ms-high-contrast-adjust: none;
               background-color: Highlight;
               border-color: Highlight;
@@ -1663,7 +1783,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         onKeyUp={[Function]}
         onMouseDown={[Function]}
         onMouseUp={[Function]}
-        role="presentation"
         tabIndex={-1}
         type="button"
       >
@@ -1718,15 +1837,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         </span>
       </button>
     </div>
-    <div
-      aria-atomic="true"
-      aria-hidden={true}
-      aria-live="polite"
-      id="ComboBox6-error"
-      role="region"
-    >
-      
-    </div>
   </div>
   <button
     aria-label="next page"
@@ -1772,14 +1882,14 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           top: 2px;
           z-index: 1;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
           right: -2px;
           top: -2px;
         }
-        &:active > * {
+        &:active > span {
           left: 0px;
           position: relative;
           top: 0px;
@@ -1788,7 +1898,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           background-color: #f3f2f1;
           color: #106ebe;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
@@ -1899,14 +2009,14 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           top: 2px;
           z-index: 1;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
           right: -2px;
           top: -2px;
         }
-        &:active > * {
+        &:active > span {
           left: 0px;
           position: relative;
           top: 0px;
@@ -1915,7 +2025,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           background-color: #f3f2f1;
           color: #106ebe;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }

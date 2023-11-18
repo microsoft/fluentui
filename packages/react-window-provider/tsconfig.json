@@ -12,6 +12,7 @@
     "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "isolatedModules": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "lib": ["es2015", "dom", "es2015.promise"],

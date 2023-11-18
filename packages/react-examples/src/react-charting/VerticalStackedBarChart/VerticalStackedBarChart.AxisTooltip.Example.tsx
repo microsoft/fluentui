@@ -25,19 +25,19 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
 
   private _basicExample(): JSX.Element {
     const firstChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 2, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 2, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 0.5, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 0, color: DefaultPalette.blueLight },
     ];
 
     const secondChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 30, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 30, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 3, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 40, color: DefaultPalette.blueLight },
     ];
 
     const thirdChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 10, color: DefaultPalette.accent },
+      { legend: 'Metadata1', data: 10, color: DefaultPalette.blue },
       { legend: 'Metadata2', data: 60, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 30, color: DefaultPalette.blueLight },
     ];
@@ -69,6 +69,7 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
             width={650}
             showXAxisLablesTooltip={this.state.selectedCallout === 'showTooltip' ? true : false}
             wrapXAxisLables={this.state.selectedCallout === 'WrapTickValues' ? true : false}
+            enableReflow={true}
           />
         </div>
       </>

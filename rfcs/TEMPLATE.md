@@ -15,6 +15,10 @@ Tips for writing a successful RFC:
 
 _List contributors to the proposal here_
 
+_Date the RFC was originally authored here_
+
+<!-- If substantial updates are made add an "Updated on: $date" below, don't replace the original date -->
+
 ## Summary
 
 <!-- Explain the proposed change -->

@@ -62,3 +62,14 @@ export function getErrorMessage(params: {
 export function formatArray(arr: string[] | undefined) {
   return arr ? arr.map(value => `    ${value}`).join(EOL) : 'received undefined';
 }
+
+/**
+ * Formats an object with props & errors strings to be displayed in the console.
+ */
+export function formatErrors(value: Record<string, Error> | undefined) {
+  return value
+    ? Object.entries(value)
+        .map(([propName, error]) => `    ${propName}: ${error.message}`)
+        .join(EOL)
+    : 'received undefined';
+}

@@ -52,20 +52,20 @@ const themedExtraLargeStackTokens: IStackTokens = {
 
 export const VerticalStackSpacingExample: React.FunctionComponent = () => {
   return (
-    <Stack tokens={sectionStackTokens}>
-      <Stack horizontal disableShrink tokens={headingStackTokens}>
-        <Stack>
+    <Stack enableScopedSelectors tokens={sectionStackTokens}>
+      <Stack enableScopedSelectors horizontal disableShrink tokens={headingStackTokens}>
+        <Stack enableScopedSelectors>
           <span>Numerical spacing</span>
-          <Stack styles={stackStyles} tokens={numericalSpacingStackTokens}>
+          <Stack enableScopedSelectors styles={stackStyles} tokens={numericalSpacingStackTokens}>
             <span className={stackItemStyles}>1</span>
             <span className={stackItemStyles}>2</span>
             <span className={stackItemStyles}>3</span>
           </Stack>
         </Stack>
 
-        <Stack>
+        <Stack enableScopedSelectors>
           <span>Custom spacing</span>
-          <Stack styles={stackStyles} tokens={customSpacingStackTokens}>
+          <Stack enableScopedSelectors styles={stackStyles} tokens={customSpacingStackTokens}>
             <span className={stackItemStyles}>1</span>
             <span className={stackItemStyles}>2</span>
             <span className={stackItemStyles}>3</span>
@@ -73,46 +73,46 @@ export const VerticalStackSpacingExample: React.FunctionComponent = () => {
         </Stack>
       </Stack>
 
-      <Stack horizontal disableShrink horizontalAlign="space-between">
-        <Stack>
+      <Stack enableScopedSelectors horizontal disableShrink horizontalAlign="space-between">
+        <Stack enableScopedSelectors>
           <span>Themed spacing (extra small)</span>
-          <Stack styles={stackStyles} tokens={themedExtraSmallStackTokens}>
+          <Stack enableScopedSelectors styles={stackStyles} tokens={themedExtraSmallStackTokens}>
             <span className={stackItemStyles}>1</span>
             <span className={stackItemStyles}>2</span>
             <span className={stackItemStyles}>3</span>
           </Stack>
         </Stack>
 
-        <Stack>
+        <Stack enableScopedSelectors>
           <span>Themed spacing (small)</span>
-          <Stack styles={stackStyles} tokens={themedSmallStackTokens}>
+          <Stack enableScopedSelectors styles={stackStyles} tokens={themedSmallStackTokens}>
             <span className={stackItemStyles}>1</span>
             <span className={stackItemStyles}>2</span>
             <span className={stackItemStyles}>3</span>
           </Stack>
         </Stack>
 
-        <Stack>
+        <Stack enableScopedSelectors>
           <span>Themed spacing (medium)</span>
-          <Stack styles={stackStyles} tokens={themedMediumStackTokens}>
+          <Stack enableScopedSelectors styles={stackStyles} tokens={themedMediumStackTokens}>
             <span className={stackItemStyles}>1</span>
             <span className={stackItemStyles}>2</span>
             <span className={stackItemStyles}>3</span>
           </Stack>
         </Stack>
 
-        <Stack>
+        <Stack enableScopedSelectors>
           <span>Themed spacing (large)</span>
-          <Stack styles={stackStyles} tokens={themedLargeStackTokens}>
+          <Stack enableScopedSelectors styles={stackStyles} tokens={themedLargeStackTokens}>
             <span className={stackItemStyles}>1</span>
             <span className={stackItemStyles}>2</span>
             <span className={stackItemStyles}>3</span>
           </Stack>
         </Stack>
 
-        <Stack>
+        <Stack enableScopedSelectors>
           <span>Themed spacing (extra large)</span>
-          <Stack styles={stackStyles} tokens={themedExtraLargeStackTokens}>
+          <Stack enableScopedSelectors styles={stackStyles} tokens={themedExtraLargeStackTokens}>
             <span className={stackItemStyles}>1</span>
             <span className={stackItemStyles}>2</span>
             <span className={stackItemStyles}>3</span>

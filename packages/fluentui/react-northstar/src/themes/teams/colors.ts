@@ -11,104 +11,106 @@ import { TeamsColorNames, TeamsContextualColors, TeamsNaturalColors, TeamsTransp
 
 export const contextualColors: TeamsContextualColors = {
   brand: {
-    50: '#F4F4FC', // siteVariables.brand16, same as prev
-    100: '#E5E5F1', // brand15
-    200: '#E2E2F6', // 100, light brand14, dark theme brand02
-    300: '#BDBDE6', // 200, light brand12, dark theme brand04
-    400: '#A6A7DC', // dark theme brand06 (dark06)
-    450: '#9EA2FF',
-    500: '#8B8CC7', // light08, dark08
-    600: '#6264A7', // 500, siteVariables.brand, siteVariables.brand06, dark theme brand, brand12
-    700: '#585A96', // light05
-    800: '#464775', // light04, dark14
-    900: '#33344A', // siteVariables.brand02, dark theme brand16, same as 900 prev
-    1000: '#373644',
+    50: '#e8ebfa',
+    100: '#dcdffa',
+    200: '#c5cbfa',
+    300: '#acb3fa',
+    400: '#9399f5',
+    450: '#9499f5',
+    500: '#7a80eb',
+    600: '#5b5fc7',
+    700: '#444691',
+    800: '#3d3e78',
+    900: '#383966',
+    1000: '#2f2f4a',
   },
 };
 
 export const naturalColors: TeamsNaturalColors = {
   grey: {
-    0: '#FFFFFF', // white
-    25: '#FCFCFB', // old $app-density-message-initial-hover-focus
-    50: '#FAF9F8', // light14
-    100: '#F3F2F1', // light10, old $app-density-message-background-replay-hover-focus
-    150: '#EDEBE9', // light09, old $app-density-border-gray
-    200: '#E1DFDD', // light08
-    250: '#C8C6C4', // light06, dark02
-    300: '#B3B0AD', // dark03
+    0: '#FFFFFF',
+    25: '#FCFCFB',
+    50: '#FAF9F8',
+    100: '#F3F2F1',
+    150: '#EDEBE9',
+    200: '#E1DFDD',
+    250: '#C8C6C4',
+    300: '#B3B0AD',
     340: '#999',
-    350: '#979593', // light04
-    400: '#8A8886', // dark04
+    350: '#979593',
+    400: '#8A8886',
     430: '#707070',
     440: '#666666',
-    450: '#605E5C', // light03, dark06, $app-gray-20-theme-agnostic, old $message-highlight-color-darktheme
-    500: '#484644', // light02, dark08
-    550: '#3B3A39', // dark09
-    600: '#323131', // dark10, in call audio only grid slot 4
-    650: '#2D2C2C', // in call audio only grid slot 3
-    700: '#292828', // dark14, in call audio only grid slot 2, old $app-density-message-background-initial-hover-focus-darktheme
-    750: '#252423', // 900 - different [#252424] , old $app-black, in call audio only grid slot 1, old $app-density-message-background-replay-hover-focus-darktheme
-    800: '#201F1F', // app black darktheme, in call title bar, in call audio only pip
-    850: '#1B1A1A', // in call background behind presented doc, old $app-density-message-border-darktheme
-    900: '#11100F', // dark theme borders
-    1000: '#000000', // black
+    450: '#605E5C',
+    500: '#484644',
+    550: '#3B3A39',
+    600: '#323131',
+    650: '#2D2C2C',
+    700: '#292828',
+    750: '#252423',
+    800: '#201F1F',
+    850: '#1B1A1A',
+    900: '#11100F',
+    1000: '#000000',
   },
   orange: {
-    50: '#F9ECEA', // darkOrange[50]
-    100: '#EFDBD3', // app orange14
-    200: '#EDC2A7', // old message highlight border
-    300: '#E97548', // orange[900]
-    400: '#CC4A31', // app orange04 darkOrange[400]
-    500: '#BD432C', // app orange03
-    600: '#A33D2A', // app orange02
-    700: '#833122', // app orange01 darkOrange[900]
-    800: '#664134', // app orange14 dark
-    900: '#51332C', // app orange16 dark
+    50: '#F9ECEA',
+    100: '#EFDBD3',
+    200: '#EDC2A7',
+    300: '#E97548',
+    400: '#CC4A31',
+    500: '#BD432C',
+    600: '#A33D2A',
+    700: '#833122',
+    800: '#664134',
+    900: '#51332C',
   },
   pink: {
-    50: '#FCF2FA', // app orchid opacity, oof message, oof banner bg
-    100: '#F1DFEE', // new oof banner border default theme
-    200: '#EC6FAE', // new oof text for better contrast in dark theme
-    300: '#DE569A', // magenta dark theme
-    400: '#E959D9', // oof presence icon dark theme
-    500: '#B4009E', // merge oof presence icon, odl $app-magenta
-    600: '#943670', // old $app-orchid, use for oof banner text
-    700: undefined, //
-    800: '#3E2D3B', // old @app orchid opacity, oof message bg, oof banner bg
-    900: '#1F191D', // new oof banner border dark theme
+    50: '#FDF5FC',
+    100: '#F5D9F2',
+    150: '#EDBAE7',
+    200: '#DA7DCF',
+    300: '#D060C3',
+    400: '#C94BBA',
+    500: '#C239B3',
+    600: '#AE33A0',
+    650: '#932B87',
+    700: '#6D1F64',
+    800: '#3A1135',
+    900: '#1F091C',
   },
   red: {
-    50: '#FCF4F6', // app red 10
-    100: '#F3D6D8', // postOrange[900] app red 08
-    200: '#F75E75', // new, error banner string
-    300: '#E73550', // merge old @app-red-dark-theme
-    400: '#C4314B', // red[900], app red 06, siteVariables.red
-    500: '#A72037', // app red 04
-    600: '#8E192E', // app red 02
-    700: '#4F222B', // old app red 10 dark
-    800: '#3E1F25', // new error banner bg
-    900: '#1E040A', // app red08 dark
+    50: '#FCF4F6',
+    100: '#F3D6D8',
+    200: '#F75E75',
+    300: '#E73550',
+    400: '#C4314B',
+    500: '#A72037',
+    600: '#8E192E',
+    700: '#4F222B',
+    800: '#3E1F25',
+    900: '#1E040A',
   },
   green: {
     50: '#E7F2DA',
     100: '#BDDA9B',
-    200: '#92C353', // lightGreen[900] old $app-green, available presence dark theme, siteVars.green
-    300: '#6BB700', // new Available presence
-    400: '#13A40E', // dual presence Available
+    200: '#92C353',
+    300: '#6BB700',
+    400: '#13A40E',
     500: undefined,
-    600: '#237B4B', // old $app-green-04, siteVariables.green04, green[900]
+    600: '#237B4B',
     700: undefined,
     800: '#0D2E0D',
     900: '#032003',
   },
   yellow: {
     50: undefined,
-    100: '#FBF6D9', // old message highlight color
+    100: '#FBF6D9',
     200: '#F2E384',
-    300: '#F9EC02', // old acc critical ufd icon color
-    400: '#F8D22A', // old siteVariables.yellow, $app-yellow, yellow[900]
-    500: '#FFB900', // old $bcast pre live color
-    600: '#FFAA44', // new away presence
+    300: '#F9EC02',
+    400: '#F8D22A',
+    500: '#FFB900',
+    600: '#FFAA44',
     700: '#835C00',
     800: '#463100',
     900: '#261A00',
@@ -234,14 +236,15 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     background5: colors.grey[350],
     background6: colors.grey[550],
 
-    border: colors.grey[200], // buttons
+    border: colors.grey[200],
     border1: colors.grey[150],
     border2: colors.grey[200],
-    border3: colors.grey[150], // divider
+    border3: colors.grey[150],
     borderTransparent: 'transparent',
+    borderTransparentActive: 'transparent',
 
-    shadow: colors.black, // opacity 10%
-    shadowHover: colors.black, // opacity 10%
+    shadow: colors.black,
+    shadowHover: colors.black,
 
     foregroundHover: colors.grey[750],
     foregroundHover1: colors.white,
@@ -253,7 +256,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     backgroundHover3: colors.grey[150],
     backgroundHover4: colors.grey[50],
 
-    borderHover: colors.grey[250], // buttons
+    borderHover: colors.grey[250],
 
     foregroundPressed: colors.grey[750],
     backgroundPressed: colors.grey[200],
@@ -267,10 +270,10 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     backgroundActive1: colors.grey[150],
     backgroundActive2: colors.grey[150],
 
-    borderActive: colors.grey[200], // buttons
+    borderActive: colors.grey[200],
     borderActive1: colors.grey[150],
     borderActive2: colors.grey[200],
-    borderActive3: colors.grey[150], // divider
+    borderActive3: colors.grey[150],
     borderActive4: colors.grey[400],
 
     foregroundFocus: colors.grey[750],
@@ -316,7 +319,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     border1: colors.brand[200],
     border2: colors.brand[300],
 
-    shadow: colors.black, // opacity 25%
+    shadow: colors.black,
     shadowHover: colors.black,
 
     foregroundHover: colors.brand[600],
@@ -328,11 +331,13 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     backgroundHover: colors.brand[700],
     backgroundHover1: colors.brand[50],
     backgroundHover2: colors.brand[100],
+    backgroundHover3: colors.brand[100],
 
     foregroundPressed: colors.brand[800],
     foregroundPressed1: colors.white,
-    backgroundPressed: colors.brand[800], // it's 900 on the button - 800 is same as hover
+    backgroundPressed: colors.brand[800],
     backgroundPressed1: colors.brand[100],
+    backgroundPressed2: colors.brand[100],
     borderPressed: colors.brand[300],
 
     foregroundActive: colors.brand[600],
@@ -359,7 +364,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
 
     borderFocus: colors.black,
     borderFocusWithin: colors.white,
-    borderFocus1: colors.brand[600], // only input
+    borderFocus1: colors.brand[600],
 
     foregroundDisabled: colors.grey[250],
     foregroundDisabled1: colors.grey[250],
@@ -464,7 +469,6 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground: colors.red[400],
     foreground1: colors.white,
     foreground2: colors.white,
-    foreground3: colors.red[300],
     background: colors.red[400],
     background1: colors.red[50],
     background2: colors.ruby[500],

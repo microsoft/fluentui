@@ -1,31 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Label renders label correctly 1`] = `
-<label
-  className=
-      ms-Label
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        box-shadow: none;
-        box-sizing: border-box;
-        color: #323130;
-        display: block;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        overflow-wrap: break-word;
-        padding-bottom: 5px;
-        padding-left: 0;
-        padding-right: 0;
-        padding-top: 5px;
-        word-wrap: break-word;
-      }
->
-  test
-</label>
+<div>
+  <label
+    class=
+        ms-Label
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #323130;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+  >
+    test
+  </label>
+</div>
 `;

@@ -1,8 +1,71 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Wed, 31 May 2023 07:38:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.12](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.12)
+
+Wed, 31 May 2023 07:38:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.4.8..@fluentui/codemods_v8.4.12)
+
+### Patches
+
+- fix: tweak type errors exposed in ts 4.5 ([PR #27936](https://github.com/microsoft/fluentui/pull/27936) by martinhochel@microsoft.com)
+
+## [8.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.5)
+
+Wed, 12 Oct 2022 07:38:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.4.4..@fluentui/codemods_v8.4.5)
+
+### Patches
+
+- fix: Do not fail on empty configMod config ([PR #25148](https://github.com/microsoft/fluentui/pull/25148) by miroslav.stastny@microsoft.com)
+
+## [8.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.4)
+
+Wed, 24 Aug 2022 16:36:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.4.3..@fluentui/codemods_v8.4.4)
+
+### Patches
+
+- fix: fixes broken publish. ([PR #24500](https://github.com/microsoft/fluentui/pull/24500) by tristan.watanabe@gmail.com)
+
+## [8.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.3)
+
+Tue, 23 Aug 2022 07:22:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.4.1..@fluentui/codemods_v8.4.3)
+
+### Patches
+
+- fix: Update React dependency to 17.0.2. ([PR #24356](https://github.com/microsoft/fluentui/pull/24356) by tristan.watanabe@gmail.com)
+
+## [8.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.0)
+
+Tue, 08 Mar 2022 07:35:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.3.2..@fluentui/codemods_v8.4.0)
+
+### Minor changes
+
+- Update React dependency to 16.14 ([PR #21769](https://github.com/microsoft/fluentui/pull/21769) by elcraig@microsoft.com)
+
+## [8.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.3.2)
+
+Fri, 07 Jan 2022 07:27:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.3.1..@fluentui/codemods_v8.3.2)
+
+### Patches
+
+- Removing makeStyles related codemods as they are not relevant anymore. ([PR #21201](https://github.com/microsoft/fluentui/pull/21201) by Humberto.Morimoto@microsoft.com)
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.3.0)
+
+Mon, 04 Oct 2021 07:27:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.2.1..@fluentui/codemods_v8.3.0)
+
+### Minor changes
+
+- add new codemod to apply changes in theme for v9 beta ([PR #20051](https://github.com/microsoft/fluentui/pull/20051) by olfedias@microsoft.com)
 
 ## [8.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.2.1)
 

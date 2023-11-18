@@ -1,7 +1,7 @@
 import { getGlobalClassNames, HighContrastSelector } from '@fluentui/style-utilities';
 import type { ILinkStyleProps, ILinkStyles } from './Link.types';
 
-const GlobalClassNames = {
+export const GlobalClassNames = {
   root: 'ms-Link',
 };
 
@@ -88,6 +88,11 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
           selectors: {
             '&:link, &:visited': {
               pointerEvents: 'none',
+            },
+
+            [HighContrastSelector]: {
+              // We need to specify the color in High Contrast because of the case of Links rendering as buttons.
+              color: 'GrayText',
             },
           },
         },

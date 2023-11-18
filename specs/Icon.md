@@ -277,7 +277,7 @@ The following section documents the DOM structure for the component from differe
 <div role="presentation" aria-hidden="true" class="ms-Icon root-38 ms-Icon-imageContainer image-40 one-149">
   <div class="ms-Image oneImage-266">
     <img
-      src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-one.png"
+      src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/icon-one.png"
       class="ms-Image-image is-loaded ms-Image-image--portrait is-fadeIn image-264"
     />
   </div>

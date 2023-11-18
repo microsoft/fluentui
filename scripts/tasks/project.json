@@ -1,0 +1,7 @@
+{
+  "name": "@fluentui/scripts-tasks",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "scripts/tasks/src",
+  "projectType": "library",
+  "tags": ["tools"]
+}

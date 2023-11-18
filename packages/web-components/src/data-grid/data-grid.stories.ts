@@ -2,7 +2,7 @@ import { html } from '@microsoft/fast-element';
 import { Button, ColumnDefinition, DataGrid, DataGridCell, DataGridRow } from '@microsoft/fast-foundation';
 import { GenerateHeaderOptions } from '@microsoft/fast-foundation/dist/esm/data-grid/data-grid.options';
 import addons from '@storybook/addons';
-import { STORY_RENDERED } from '@storybook/core-events';
+import { DOCS_RENDERED } from '@storybook/core-events';
 import DataGridTemplate from './fixtures/base.html';
 import './index';
 
@@ -47,8 +47,8 @@ const customHeaderCellItemTemplate = html`
     ></fast-data-grid-header-cell>
 `;
 
-addons.getChannel().addListener(STORY_RENDERED, (name: string) => {
-  if (name.toLowerCase().startsWith('components-data-grid')) {
+addons.getChannel().addListener(DOCS_RENDERED, (name: string) => {
+  if (name.toLowerCase().includes('data-grid')) {
     defaultGridElement = document.getElementById('defaultGrid') as DataGrid;
     reset();
 

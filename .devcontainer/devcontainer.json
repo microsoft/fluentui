@@ -1,0 +1,21 @@
+{
+  "name": "Node.js",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "VARIANT": "18-bookworm"
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "containerEnv": {
+    // Required Environment Variable to properly run Cypress
+    "DISPLAY": "${localEnv:DISPLAY}"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"]
+    }
+  }
+}

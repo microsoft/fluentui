@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { registerIcons } from '@fluentui/style-utilities';
+import { registerIcons, FLUENT_CDN_BASE_URL } from '@fluentui/style-utilities';
 import { FileTypeIconMap } from './FileTypeIconMap';
 import type { IIconOptions } from '@fluentui/style-utilities';
 
 const PNG_SUFFIX = '_png';
 const SVG_SUFFIX = '_svg';
 
-export const DEFAULT_BASE_URL = 'https://spoprod-a.akamaihd.net/files/fabric-cdn-prod_20210115.001/assets/item-types/';
+export const DEFAULT_BASE_URL = `${FLUENT_CDN_BASE_URL}/assets/item-types/`;
 export const ICON_SIZES: number[] = [16, 20, 24, 32, 40, 48, 64, 96];
 
 export function initializeFileTypeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: Partial<IIconOptions>): void {

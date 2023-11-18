@@ -1,0 +1,1 @@
+**Presets** are a set of components with predefined styles for typography, based in our [Theme Tokens](./?path=/docs/theme-typography--page). They are used to create and share a consistent look and feel.<br> All the base `Text` props can be used, except for `font`, `size` and `weight`.

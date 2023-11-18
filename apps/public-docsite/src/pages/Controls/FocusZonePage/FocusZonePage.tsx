@@ -3,5 +3,5 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { FocusZonePageProps } from './FocusZonePage.doc';
 
 export const FocusZonePage: React.FunctionComponent<IControlsPageProps> = props => {
-  return <ControlsAreaPage {...props} {...FocusZonePageProps[props.platform]} />;
+  return <ControlsAreaPage {...props} {...FocusZonePageProps[props.platform!]} />;
 };

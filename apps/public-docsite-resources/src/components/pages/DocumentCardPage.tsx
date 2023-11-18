@@ -5,7 +5,7 @@ import { DocumentCardPageProps } from '@fluentui/react-examples/lib/react/Docume
 
 export const DocumentCardPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@fluentui/api-docs/lib/pages/react/DocumentCard.page.json')}
+    jsonDocs={require('../../../dist/api/react/DocumentCard.page.json')}
     {...{ ...DocumentCardPageProps, ...props }}
   />
 );

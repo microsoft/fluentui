@@ -4,7 +4,7 @@ import { DemoPage } from '../DemoPage';
 
 export const ActivityItemPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@fluentui/api-docs/lib/pages/react/ActivityItem.page.json')}
+    jsonDocs={require('../../../dist/api/react/ActivityItem.page.json')}
     {...{ ...ActivityItemPageProps, ...props }}
   />
 );

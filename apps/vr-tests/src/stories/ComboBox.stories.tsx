@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTallFixedWidth } from '../utilities/index';
+import { TestWrapperDecoratorTallFixedWidth } from '../utilities/index';
 import { ComboBox, SelectableOptionMenuItemType, ISelectableOption } from '@fluentui/react';
 
 const testOptions = [
@@ -34,14 +34,14 @@ const onRenderFontOption = (item: ISelectableOption) => {
     fontFamily = fontMapping[newFontName] = `"${newFontName}","Segoe UI",Tahoma,Sans-Serif`;
   }
 
-  return <span style={{ fontFamily: fontFamily }}>{item.text}</span>;
+  return <span style={{ fontFamily }}>{item.text}</span>;
 };
 
 storiesOf('ComboBox', module)
-  .addDecorator(FabricDecoratorTallFixedWidth)
+  .addDecorator(TestWrapperDecoratorTallFixedWidth)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-ComboBox-Input')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -51,7 +51,7 @@ storiesOf('ComboBox', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'Root',
@@ -64,7 +64,7 @@ storiesOf('ComboBox', module)
       />
     ),
     {
-      rtl: true,
+      includeRtl: true,
     },
   )
   .addStory('Styled', () => (

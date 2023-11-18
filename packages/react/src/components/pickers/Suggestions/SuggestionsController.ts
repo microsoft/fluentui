@@ -13,8 +13,12 @@ export class SuggestionsController<T> {
     this.currentIndex = -1;
   }
 
-  public updateSuggestions(newSuggestions: T[], selectedIndex?: number): void {
+  public updateSuggestions(newSuggestions: T[], selectedIndex?: number, maxCount?: number): void {
     if (newSuggestions && newSuggestions.length > 0) {
+      if (maxCount && newSuggestions.length > maxCount) {
+        const startIndex = selectedIndex && selectedIndex > maxCount ? selectedIndex + 1 - maxCount : 0;
+        newSuggestions = newSuggestions.slice(startIndex, startIndex + maxCount - 1);
+      }
       this.suggestions = this.convertSuggestionsToSuggestionItems(newSuggestions);
       this.currentIndex = selectedIndex ? selectedIndex : 0;
       if (selectedIndex! === -1) {
@@ -127,7 +131,7 @@ export class SuggestionsController<T> {
       return {
         item: suggestion,
         selected: false,
-        ariaLabel: (<any>suggestion).name || (<any>suggestion).primaryText,
+        ariaLabel: (<any>suggestion).ariaLabel,
       } as ISuggestionModel<T>;
     }
   };

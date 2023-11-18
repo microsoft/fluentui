@@ -1,4 +1,4 @@
-import { objectKeyToValues, withDebugId } from '@fluentui/styles';
+import { objectKeyToValues, SiteVariablesPrepared, withDebugId } from '@fluentui/styles';
 
 import * as debugEnabled from '../../src/debugEnabled';
 import { mergeComponentVariables__PROD, mergeComponentVariables__DEV } from '../../src/mergeThemes';
@@ -22,29 +22,16 @@ describe('mergeComponentVariables', () => {
     });
   }
 
-  function testMergeComponentVariables(mergeComponentVariables) {
+  function testMergeComponentVariables(mergeComponentVariables: typeof mergeComponentVariables__PROD) {
     test(`always returns a function that returns an object`, () => {
       expect(mergeComponentVariables({}, {})()).toMatchObject({});
-      expect(mergeComponentVariables(null, null)()).toMatchObject({});
       expect(mergeComponentVariables(undefined, undefined)()).toMatchObject({});
-
-      expect(mergeComponentVariables(null, undefined)()).toMatchObject({});
-      expect(mergeComponentVariables(undefined, null)()).toMatchObject({});
 
       expect(mergeComponentVariables({}, undefined)()).toMatchObject({});
       expect(mergeComponentVariables(undefined, {})()).toMatchObject({});
-
-      expect(mergeComponentVariables({}, null)()).toMatchObject({});
-      expect(mergeComponentVariables(null, {})()).toMatchObject({});
     });
 
-    test('gracefully handles null and undefined', () => {
-      expect(mergeComponentVariables({ color: 'black' }, null)).not.toThrow();
-      expect(mergeComponentVariables({ color: 'black' }, { color: null })).not.toThrow();
-
-      expect(mergeComponentVariables(null, { color: 'black' })).not.toThrow();
-      expect(mergeComponentVariables({ color: null }, { color: 'black' })).not.toThrow();
-
+    test('gracefully handles undefined', () => {
       expect(mergeComponentVariables({ color: 'black' }, undefined)).not.toThrow();
       expect(mergeComponentVariables({ color: 'black' }, { color: undefined })).not.toThrow();
 
@@ -111,17 +98,23 @@ describe('mergeComponentVariables', () => {
     });
 
     test('merges multiple objects', () => {
-      const siteVariables = {
+      const siteVariables: SiteVariablesPrepared = {
         colors: {
           colorForC: 'c_color',
         },
+        fontSizes: {},
       };
       const target = { a: 1, b: 2, c: 3, d: 4, e: 5 };
       const source1 = { b: 'bS1', d: false, bb: 'bbS1' };
       const source2 = sv => ({ c: sv.colors.colorForC, cc: 'bbS2' });
       const source3 = { d: 'bS3', dd: 'bbS3' };
 
-      expect(mergeComponentVariables(target, source1, source2, source3)(siteVariables)).toMatchObject({
+      expect(
+        mergeComponentVariables(
+          mergeComponentVariables(target, source1),
+          mergeComponentVariables(source2, source3),
+        )(siteVariables),
+      ).toMatchObject({
         a: 1,
         b: 'bS1',
         c: 'c_color',
@@ -151,7 +144,7 @@ describe('mergeComponentVariables', () => {
     test('useless frames are not created', () => {
       const target = () => ({});
 
-      expect(mergeComponentVariables__PROD(target)).toBe(target);
+      expect(mergeComponentVariables__PROD(undefined, target)).toBe(target);
       expect(mergeComponentVariables__PROD(target, undefined)).toBe(target);
     });
   });
@@ -228,7 +221,7 @@ describe('mergeComponentVariables', () => {
         const source1 = withDebugId({ b: 'bS1', d: false, bb: 'bbS1' }, 'source1');
         const source2 = withDebugId(sv => ({ c: sv.colors.colorForC, cc: 'bbS2' }), 'source2');
 
-        const merged1 = mergeComponentVariables__DEV(target, source1, source2)(siteVariables as any);
+        const merged1 = mergeComponentVariables__DEV(target, source1)(siteVariables as any);
         const merged2 = mergeComponentVariables__DEV(
           mergeComponentVariables__DEV(target, source1),
           source2,
@@ -239,7 +232,7 @@ describe('mergeComponentVariables', () => {
         )(siteVariables as any);
 
         expect(merged1).toMatchObject({
-          _debug: [{ debugId: 'target' }, { debugId: 'source1' }, { debugId: 'source2' }],
+          _debug: [{ debugId: 'target' }, { debugId: 'source1' }],
         });
         expect(merged2).toMatchObject({
           _debug: [{ debugId: 'target' }, { debugId: 'source1' }, { debugId: 'source2' }],

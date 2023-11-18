@@ -57,4 +57,20 @@ describe('keyframes', () => {
 
     expect(_stylesheet.getRules()).toEqual('@keyframes css-0{0%{opacity:0;}50%{opacity:0.8;}100%{opacity:1;}}');
   });
+
+  it('caches keyframe definitions', () => {
+    const definition = {
+      from: {
+        opacity: 0,
+      },
+      to: {
+        opacity: 1,
+      },
+    };
+    keyframes(definition);
+    keyframes(definition);
+    keyframes(definition);
+
+    expect(_stylesheet.getRules()).toEqual('@keyframes css-0{from{opacity:0;}to{opacity:1;}}');
+  });
 });

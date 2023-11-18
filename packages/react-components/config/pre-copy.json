@@ -1,5 +1,0 @@
-{
-  "copyTo": {
-    "unstable": ["./src/unstable/package.json"]
-  }
-}

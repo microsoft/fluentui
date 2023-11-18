@@ -10,7 +10,7 @@ export class StackedBarChartBasicExample extends React.Component<{}, {}> {
         data: 3000000,
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '40%',
+        yAxisCalloutData: '99%',
       },
       { legend: 'second', data: 1, color: DefaultPalette.green },
     ];
@@ -27,9 +27,15 @@ export class StackedBarChartBasicExample extends React.Component<{}, {}> {
 
     return (
       <>
-        <StackedBarChart data={data0} href={'https://developer.microsoft.com/en-us/'} ignoreFixStyle={false} />
+        <StackedBarChart
+          culture={window.navigator.language}
+          data={data0}
+          href={'https://developer.microsoft.com/en-us/'}
+          ignoreFixStyle={false}
+        />
         <br />
         <StackedBarChart
+          culture={window.navigator.language}
           data={data1}
           href={'https://developer.microsoft.com/en-us/'}
           ignoreFixStyle={true}

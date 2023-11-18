@@ -48,6 +48,14 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React
    * focus will not be restored automatically, and you'll need to call `params.originalElement.focus()`.
    */
   onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
+
+  /**
+   * Puts aria-hidden=true on all non-ancestors of the current popup, for screen readers.
+   * @defaultvalue true
+   * @deprecated Setting this to `false` is deprecated since it breaks modal behavior for some screen readers.
+   * It will not be supported in future versions of the library.
+   */
+  enableAriaHiddenSiblings?: boolean;
 }
 
 /**
@@ -56,7 +64,7 @@ export interface IPopupProps extends React.HTMLAttributes<HTMLDivElement>, React
  */
 export interface IPopupRestoreFocusParams {
   /** Element the underlying Popup believes focus should go to */
-  originalElement?: HTMLElement | Window;
+  originalElement?: HTMLElement | Window | null;
   /** Whether the popup currently contains focus */
   containsFocus: boolean;
   /** Whether the document the popup belongs to contains focus (or false if unknown) */

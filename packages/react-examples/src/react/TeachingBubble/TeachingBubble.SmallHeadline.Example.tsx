@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { DefaultButton, IButtonProps } from '@fluentui/react/lib/Button';
 import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
-import { useBoolean } from '@fluentui/react-hooks';
+import { useBoolean, useId } from '@fluentui/react-hooks';
 
 export const TeachingBubbleSmallHeadlineExample: React.FunctionComponent = () => {
+  const buttonId = useId('targetButton');
   const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
   const examplePrimaryButtonProps: IButtonProps = {
     children: 'Try it out',
@@ -13,14 +14,14 @@ export const TeachingBubbleSmallHeadlineExample: React.FunctionComponent = () =>
   return (
     <div>
       <DefaultButton
-        id="targetButton"
+        id={buttonId}
         onClick={toggleTeachingBubbleVisible}
         text={teachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
       />
 
       {teachingBubbleVisible && (
         <TeachingBubble
-          target="#targetButton"
+          target={`#${buttonId}`}
           primaryButtonProps={examplePrimaryButtonProps}
           hasSmallHeadline={true}
           onDismiss={toggleTeachingBubbleVisible}

@@ -2,6 +2,1327 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Thu, 09 Nov 2023 07:29:19 GMT",
+      "tag": "@fluentui/utilities_v8.13.21",
+      "version": "8.13.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "175914f0e5815eee6e040105527703e09f5da19f",
+            "comment": "chore: use package.json#files setup instead of npmignore"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 28 Oct 2023 00:29:15 GMT",
+      "tag": "@fluentui/utilities_v8.13.20",
+      "version": "8.13.20",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "9dce1d4962e1f62ec8fce4359f0074dee5b38072",
+            "comment": "chore: use Timers types based on environment to avoid TS failures introduced with node 18 types"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.2.12",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.13",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.12",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Oct 2023 07:35:35 GMT",
+      "tag": "@fluentui/utilities_v8.13.19",
+      "version": "8.13.19",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "d22e99a22d1e52347c3c0a8c9cd1ff870b528a9d",
+            "comment": "chore: add verify-packaging task"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 Sep 2023 07:45:30 GMT",
+      "tag": "@fluentui/utilities_v8.13.19",
+      "version": "8.13.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "d701af33ee0742cbbbc765be8eb9cec273136953",
+            "comment": "fix: focusAsync still works even if past animationFrame fails to run"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Jul 2023 07:36:55 GMT",
+      "tag": "@fluentui/utilities_v8.13.18",
+      "version": "8.13.18",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "8a9e1018f2abb2c7608c49d32acf44e93c43cba6",
+            "comment": "chore: update devDependencies to use * for inner workspace dependencies"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 07:37:30 GMT",
+      "tag": "@fluentui/utilities_v8.13.18",
+      "version": "8.13.18",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "b75bc1a413fb4dce6b50c28947730e3fdc0e0dad",
+            "comment": "fix: Checking for the existence of addEventListener on element coming from context in useFocusRects."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Jun 2023 07:36:38 GMT",
+      "tag": "@fluentui/utilities_v8.13.17",
+      "version": "8.13.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "cf6b94ba6559236150bc1f1814b023607edaeb20",
+            "comment": "fix: cast to String keys interpolated within string literals"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Jun 2023 07:38:37 GMT",
+      "tag": "@fluentui/utilities_v8.13.16",
+      "version": "8.13.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "andrew.stegmaier@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "170594a14c0b892bf418831d5be7f995b0e981f8",
+            "comment": "fix: Avoid inlining setCallbackMap with terser to prevent memory leaks."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 May 2023 07:38:40 GMT",
+      "tag": "@fluentui/utilities_v8.13.15",
+      "version": "8.13.15",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "4b637ced41e430bf8d79c7fc67c103d5efdfd3a8",
+            "comment": "fix: tweak type errors exposed in ts 4.5"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.2.11",
+            "commit": "dd8c30d9b97f68eb332366fc0e69775a88775319"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.12",
+            "commit": "dd8c30d9b97f68eb332366fc0e69775a88775319"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.11",
+            "commit": "dd8c30d9b97f68eb332366fc0e69775a88775319"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.29",
+            "commit": "dd8c30d9b97f68eb332366fc0e69775a88775319"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.3.6",
+            "commit": "dd8c30d9b97f68eb332366fc0e69775a88775319"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 May 2023 07:36:09 GMT",
+      "tag": "@fluentui/utilities_v8.13.14",
+      "version": "8.13.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.2.10",
+            "commit": "588b9393a673137dd8a867686d1e1cd45c350ca4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.11",
+            "commit": "588b9393a673137dd8a867686d1e1cd45c350ca4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.10",
+            "commit": "588b9393a673137dd8a867686d1e1cd45c350ca4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.28",
+            "commit": "588b9393a673137dd8a867686d1e1cd45c350ca4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.3.5",
+            "commit": "588b9393a673137dd8a867686d1e1cd45c350ca4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 May 2023 18:14:01 GMT",
+      "tag": "@fluentui/utilities_v8.13.13",
+      "version": "8.13.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2",
+            "comment": "fix: explicitly ship dist/ folder."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.2.9",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.10",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.9",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.27",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.3.4",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 May 2023 22:20:25 GMT",
+      "tag": "@fluentui/utilities_v8.13.12",
+      "version": "8.13.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.3.3",
+            "commit": "1235c3caf6133d0478ef8a4173034124c53ae833"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 May 2023 00:58:19 GMT",
+      "tag": "@fluentui/utilities_v8.13.11",
+      "version": "8.13.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2",
+            "comment": "fix: esm, cjs, and amd folders should all be published correctly."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.2.8",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.9",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.8",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.26",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 May 2023 07:39:54 GMT",
+      "tag": "@fluentui/utilities_v8.13.10",
+      "version": "8.13.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.2.7",
+            "commit": "46f19b90d2088f055f9cd4bfad840f72fe68f0d8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.8",
+            "commit": "46f19b90d2088f055f9cd4bfad840f72fe68f0d8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.7",
+            "commit": "46f19b90d2088f055f9cd4bfad840f72fe68f0d8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.25",
+            "commit": "46f19b90d2088f055f9cd4bfad840f72fe68f0d8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.3.2",
+            "commit": "46f19b90d2088f055f9cd4bfad840f72fe68f0d8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Mar 2023 08:15:56 GMT",
+      "tag": "@fluentui/utilities_v8.13.9",
+      "version": "8.13.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.2.6",
+            "commit": "36f3bd6c4f0280b91ad10133b5ddd9c439a1de73"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.7",
+            "commit": "36f3bd6c4f0280b91ad10133b5ddd9c439a1de73"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.6",
+            "commit": "36f3bd6c4f0280b91ad10133b5ddd9c439a1de73"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.24",
+            "commit": "36f3bd6c4f0280b91ad10133b5ddd9c439a1de73"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.3.1",
+            "commit": "36f3bd6c4f0280b91ad10133b5ddd9c439a1de73"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Mar 2023 07:47:17 GMT",
+      "tag": "@fluentui/utilities_v8.13.8",
+      "version": "8.13.8",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Mar 2023 07:45:40 GMT",
+      "tag": "@fluentui/utilities_v8.13.8",
+      "version": "8.13.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "dd0f5b76fc8905c067cc58556ec1f9626dcfc640",
+            "comment": "fix: remove private test/ helpers used within monorepo tests"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.3.0",
+            "commit": "020829cf01db3ca0baffcd0dc640a34a91b548d3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 18 Feb 2023 01:37:02 GMT",
+      "tag": "@fluentui/utilities_v8.13.7",
+      "version": "8.13.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "jimsleon@hotmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "9e287be4544ad39f0041349a0d1da0e9100800b0",
+            "comment": "chore: Removing deprecated React.Props from DelayedRender."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Feb 2023 07:46:37 GMT",
+      "tag": "@fluentui/utilities_v8.13.6",
+      "version": "8.13.6",
+      "comments": {
+        "none": [
+          {
+            "author": "jimsleon@hotmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "9e287be4544ad39f0041349a0d1da0e9100800b0",
+            "comment": "chore: Removing deprecated React.Props from DelayedRender."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Feb 2023 07:50:06 GMT",
+      "tag": "@fluentui/utilities_v8.13.6",
+      "version": "8.13.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.2.5",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.6",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.5",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.23",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.2.6",
+            "commit": "09da68fa3dd4695fb969b76814d76f88e671111f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Jan 2023 07:50:49 GMT",
+      "tag": "@fluentui/utilities_v8.13.5",
+      "version": "8.13.5",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "64bb45980d68de1219c6b36a7db5363f0a9cff9f",
+            "comment": "chore: migrate to packaged scripts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Jan 2023 07:50:15 GMT",
+      "tag": "@fluentui/utilities_v8.13.5",
+      "version": "8.13.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.2.4",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.5",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.4",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.22",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.2.5",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Jan 2023 07:46:39 GMT",
+      "tag": "@fluentui/utilities_v8.13.4",
+      "version": "8.13.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "4ec2b998b294d6d9c3196d3d82893bdd97d0c105",
+            "comment": "chore(scripts): move index.ts to  to follow sub-folder domain packaging"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 30 Dec 2022 07:51:10 GMT",
+      "tag": "@fluentui/utilities_v8.13.4",
+      "version": "8.13.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "194b0cf0cc27c1c1233aa945f09b3ad29778d8ca",
+            "comment": "chore(scripts): use for @fluentui/scripts version within all package.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Nov 2022 07:44:58 GMT",
+      "tag": "@fluentui/utilities_v8.13.4",
+      "version": "8.13.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "b75de6cbb07fae634938821eb1afef450e1e46ef",
+            "comment": "fix: handle null and undefined in shallowCompare, add tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Nov 2022 07:48:12 GMT",
+      "tag": "@fluentui/utilities_v8.13.3",
+      "version": "8.13.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.2.3",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.4",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.3",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.21",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.2.4",
+            "commit": "99542b13a50433f03228b30113f305bc38a1340c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Oct 2022 07:43:13 GMT",
+      "tag": "@fluentui/utilities_v8.13.2",
+      "version": "8.13.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "772f9e3ebde2d5b8157a3204c1a4e007e56f5508",
+            "comment": "chore: Bump react peer dependency to react 18."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.2.3",
+            "commit": "433209a6b5e8adb7619d3658c1606ec8adb02745"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 07:48:51 GMT",
+      "tag": "@fluentui/utilities_v8.13.1",
+      "version": "8.13.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "130d5848fa9639db3c7eafcd6845b3e1ee91b1f6",
+            "comment": "fix: Add check for FocusRectsProvider providerRef being undefined"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Aug 2022 07:44:38 GMT",
+      "tag": "@fluentui/utilities_v8.13.0",
+      "version": "8.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665",
+            "comment": "Fix backwards compatibility of Group Selection changes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Aug 2022 23:39:30 GMT",
+      "tag": "@fluentui/utilities_v8.12.0",
+      "version": "8.12.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jspurlin@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84",
+            "comment": "FocusZone: enable focus to be able to bypass hidden elements"
+          }
+        ],
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "3ce6e295fa7c514409413e5ce6b812338fd5ad1c",
+            "comment": "fix: Make focus rects visible again in Combobox"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Aug 2022 07:39:40 GMT",
+      "tag": "@fluentui/utilities_v8.11.0",
+      "version": "8.11.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "7c797fb44915964da8f764a93557f2b5c4c7067f",
+            "comment": "Support range selection from Group headers"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Aug 2022 07:39:33 GMT",
+      "tag": "@fluentui/utilities_v8.10.2",
+      "version": "8.10.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.2.2",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.3",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.2",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.20",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.2.2",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Aug 2022 07:44:44 GMT",
+      "tag": "@fluentui/utilities_v8.10.1",
+      "version": "8.10.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "07c2ec12f64349b852a2b5afea163745e848de7e",
+            "comment": "fix: Miscellaneous TS fixes for React 18 usage."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Aug 2022 07:39:03 GMT",
+      "tag": "@fluentui/utilities_v8.10.0",
+      "version": "8.10.0",
+      "comments": {
+        "none": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "02536d4b808deadafd13c9c990b41027fec07cda",
+            "comment": "chore: Updating description in comments of useFocusRects function."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Jul 2022 07:39:35 GMT",
+      "tag": "@fluentui/utilities_v8.10.0",
+      "version": "8.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "9dfca5c711afb616147faf111504d11ec1e24856",
+            "comment": "fix: Scope focus visible classnames and event listeners to ThemeProvider by default, and to the window body as a fallback."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Jul 2022 07:40:59 GMT",
+      "tag": "@fluentui/utilities_v8.9.0",
+      "version": "8.9.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "16495a93e0f4eb4cf793f6462e3546eb101dae82",
+            "comment": "feat: Add canUseDOM, deprecate setSRR, replace setSSR's functionality with a warning, and replace all _isSSR checks with canUseDOM."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 May 2022 07:45:35 GMT",
+      "tag": "@fluentui/utilities_v8.8.3",
+      "version": "8.8.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.2.1",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.2",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.1",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.19",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.2.1",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Apr 2022 07:42:48 GMT",
+      "tag": "@fluentui/utilities_v8.8.2",
+      "version": "8.8.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.1",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.18",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Mar 2022 07:45:54 GMT",
+      "tag": "@fluentui/utilities_v8.8.1",
+      "version": "8.8.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "4123478+tido64@users.noreply.github.com",
+            "package": "@fluentui/utilities",
+            "commit": "c2ec9d827e3af561d2bdc971d4949f6e8153a6ad",
+            "comment": "Ban `export *` in `@fluentui/utilities` for better tree-shakeability"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Mar 2022 07:34:41 GMT",
+      "tag": "@fluentui/utilities_v8.8.0",
+      "version": "8.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "f45738ec1d2156e69f6e3ce3fd0d063a6ee83026",
+            "comment": "Adding additional exports to support existing 1js imports (which will be resolved separately.)"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.0",
+            "commit": "8e02823339296401393a13fc2f38d4629ffe48b3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.17",
+            "commit": "8e02823339296401393a13fc2f38d4629ffe48b3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Mar 2022 07:37:29 GMT",
+      "tag": "@fluentui/utilities_v8.7.0",
+      "version": "8.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "fb377e0b4400b99499d69e9ca956fd433f3e2804",
+            "comment": "Enhance selection to support better micro-management"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Mar 2022 07:35:11 GMT",
+      "tag": "@fluentui/utilities_v8.6.0",
+      "version": "8.6.0",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "b7f17e976f9e058f39c9fce4f0f9bb6eb4dfa577",
+            "comment": "Update React dev deps and hoist them to the repo root"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Mar 2022 07:24:25 GMT",
+      "tag": "@fluentui/utilities_v8.6.0",
+      "version": "8.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "dzearing@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "f2f1c0ea948cc3517eeb442c05433eb0918def29",
+            "comment": "Adding explicit export maps on all consumer packages for FUIR 8 and 9."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.2.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.4.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.0",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.16",
+            "commit": "e6fd843a2d46bb138f5b05f4656b4c3726bc5aed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Mar 2022 07:23:42 GMT",
+      "tag": "@fluentui/utilities_v8.5.0",
+      "version": "8.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "36821475e9f24b3212f998c3b23e625a6503183e",
+            "comment": "Add useIsomorphicLayoutEffect"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Feb 2022 07:29:50 GMT",
+      "tag": "@fluentui/utilities_v8.4.3",
+      "version": "8.4.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "john.collier4@gmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "73454794571f7a94672124631a4c939b3e5f1259",
+            "comment": "make ./packages/utilities/src/DelayedRender.tsx render during SSR"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Feb 2022 07:28:31 GMT",
+      "tag": "@fluentui/utilities_v8.4.2",
+      "version": "8.4.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "jarmit@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "c0e3a0a1f3736230c1328aae837ea03d2cc4b6d9",
+            "comment": "Store the styles property in a local variable so the rest of the props are not bound to the concatednatedStyles function"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Feb 2022 07:27:48 GMT",
+      "tag": "@fluentui/utilities_v8.4.1",
+      "version": "8.4.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "99a30a94f7c44064de9a20e26650aa609f4dc78d",
+            "comment": "modalize: don't access document in SSR"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Feb 2022 07:30:50 GMT",
+      "tag": "@fluentui/utilities_v8.4.0",
+      "version": "8.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "ae67454c2af28710b9d197ce91fd2ded069d9ebf",
+            "comment": "Marked \"raiseClick()\" as deprecated"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 03 Feb 2022 07:29:41 GMT",
+      "tag": "@fluentui/utilities_v8.3.10",
+      "version": "8.3.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.3.0",
+            "commit": "946f57cad4378ec779605d466ef1df3dd88ebc78"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.15",
+            "commit": "946f57cad4378ec779605d466ef1df3dd88ebc78"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jan 2022 23:32:11 GMT",
+      "tag": "@fluentui/utilities_v8.3.9",
+      "version": "8.3.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.2.3",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.14",
+            "commit": "25864f8b51dbcdfa2b5d51246cea4f868646287c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Dec 2021 07:26:41 GMT",
+      "tag": "@fluentui/utilities_v8.3.8",
+      "version": "8.3.8",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "f71032d515f2395d85e935f075f8dbfede670b05",
+            "comment": "Fix test issues"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.2.0",
+            "commit": "d7d472d3564c7c08465743b2517e4f29428b87b4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Dec 2021 07:31:29 GMT",
+      "tag": "@fluentui/utilities_v8.3.8",
+      "version": "8.3.8",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4",
+            "comment": "test(utilities): fix test with JSDOM 16 in place"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.1.0",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Dec 2021 07:30:35 GMT",
+      "tag": "@fluentui/utilities_v8.3.7",
+      "version": "8.3.7",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "3360b45ec159250b1346c91afad7dce138e6bc20",
+            "comment": "Update API file to version generated by typescript 4.3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Nov 2021 14:54:16 GMT",
+      "tag": "@fluentui/utilities_v8.3.7",
+      "version": "8.3.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.1.5",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.2.2",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.1.5",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.13",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/test-utilities to v8.0.9",
+            "commit": "b851427662a56e25eb4af2c7e5583ea162356186"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Nov 2021 07:31:59 GMT",
+      "tag": "@fluentui/utilities_v8.3.6",
+      "version": "8.3.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.2.1",
+            "commit": "1aa9eec5d9dd53544b2755af4d177246a9ec939d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.12",
+            "commit": "1aa9eec5d9dd53544b2755af4d177246a9ec939d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Nov 2021 07:37:01 GMT",
+      "tag": "@fluentui/utilities_v8.3.5",
+      "version": "8.3.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "42315bf9bdc7810cd0fba0cc77ecb975d95ea86e",
+            "comment": "Add isElementVisibleAndNotHidden utility function"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 07:37:17 GMT",
+      "tag": "@fluentui/utilities_v8.3.4",
+      "version": "8.3.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "mail@emanuel-kluge.de",
+            "package": "@fluentui/utilities",
+            "comment": "fix(utilities): add missing minLength-property to text fields",
+            "commit": "de0266f3ced68c137aa5e27b30691f960982df9e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Sep 2021 22:17:07 GMT",
+      "tag": "@fluentui/utilities_v8.3.3",
+      "version": "8.3.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.2.0",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.11",
+            "commit": "7a7811f03ab0abefbcb58415f4d3a53bc8edd8e0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Sep 2021 07:36:26 GMT",
+      "tag": "@fluentui/utilities_v8.3.2",
+      "version": "8.3.2",
+      "comments": {
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/utilities",
+            "comment": "chore: use  versioon eslint-plugin and react-conformance in dev dependencies",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/utilities",
+            "commit": "b8a304770f77c0353553a152dad34421070400a6",
+            "comment": "Bump @fluentui/utilities to v8.3.2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Sep 2021 07:36:46 GMT",
       "tag": "@fluentui/utilities_v8.3.2",
       "version": "8.3.2",

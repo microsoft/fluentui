@@ -39,7 +39,7 @@ export function createComponent<
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps extends TComponentProps = TComponentProps,
-  TStatics = {}
+  TStatics = {},
 >(
   view: IViewComponent<TViewProps>,
   options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics> = {},
@@ -78,13 +78,13 @@ export function createComponent<
       componentProps.styles,
     );
 
-    const viewProps = ({
+    const viewProps = {
       ...componentProps,
       styles,
       tokens,
       _defaultStyles: styles,
       theme,
-    } as unknown) as TViewProps & IDefaultSlotProps<any>;
+    } as unknown as TViewProps & IDefaultSlotProps<any>;
 
     return view(viewProps);
   };

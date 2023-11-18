@@ -11,13 +11,15 @@ const componentUrl =
 export const BottomNavigationPageProps: TFabricPlatformPageProps = {
   ios: {
     title: 'Tab Bar',
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/BottomNavigationPage/docs/ios/BottomNavigationOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/BottomNavigationPage/docs/ios/BottomNavigationOverview.md') as string,
     related,
     componentUrl,
   },
   android: {
     title: 'Bottom Navigation',
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/BottomNavigationPage/docs/android/BottomNavigationOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/BottomNavigationPage/docs/android/BottomNavigationOverview.md') as string,
     related,
     componentUrl,
   },

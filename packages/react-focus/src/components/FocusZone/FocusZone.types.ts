@@ -10,9 +10,10 @@ export interface IFocusZone {
    * Sets focus to the first tabbable item in the zone.
    * @param forceIntoFirstElement - If true, focus will be forced into the first element, even
    * if focus is already in the focus zone.
+   * @param bypassHiddenElements - If true, focus will be not be set on hidden elements.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
-  focus(forceIntoFirstElement?: boolean): boolean;
+  focus(forceIntoFirstElement?: boolean, bypassHiddenElements?: boolean): boolean;
 
   /**
    * Sets focus to the last tabbable item in the zone.
@@ -202,11 +203,25 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement> {
   shouldRaiseClicks?: boolean;
 
   /**
-   * A callback method to determine if the input element should lose focus on arrow keys
-   *  @param inputElement - The input element which is to loose focus.
+   * Relates to `shouldRaiseClicks`.
+   * Allows the click event raising for the "Enter" key to be set independently from `shouldRaiseClicks`.
+   * Inherits the value of `shouldRaiseClicks` if not set explicitly.
+   */
+  shouldRaiseClicksOnEnter?: boolean;
+
+  /**
+   * Relates to `shouldRaiseClicks`.
+   * Allows the click event raising for the "Space" key to be set independently from `shouldRaiseClicks`.
+   * Inherits the value of `shouldRaiseClicks` if not set explicitly.
+   */
+  shouldRaiseClicksOnSpace?: boolean;
+
+  /**
+   * A callback method to determine if an input or textarea element should lose focus on arrow keys
+   *  @param inputElement - The input or textarea element which is to lose focus.
    *  @returns True if input element should loose focus or false otherwise.
    */
-  shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
+  shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement | HTMLTextAreaElement) => boolean;
 
   /**
    * Determines whether to disable the paging support for Page Up and Page Down keyboard scenarios.
@@ -274,7 +289,7 @@ export const FocusZoneTabbableElements = {
 /**
  * {@docCategory FocusZone}
  */
-export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof typeof FocusZoneTabbableElements];
+export type FocusZoneTabbableElements = (typeof FocusZoneTabbableElements)[keyof typeof FocusZoneTabbableElements];
 
 /**
  * {@docCategory FocusZone}

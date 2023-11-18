@@ -12,20 +12,21 @@ export const ShimmerPage: React.FunctionComponent<IControlsPageProps> = props =>
     <ControlsAreaPage
       {...props}
       title="Shimmer"
-      {...ShimmerPageProps[platform]}
-      otherSections={_otherSections(platform) as any}
+      {...ShimmerPageProps[platform!]}
+      otherSections={_otherSections(platform!) as any}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   switch (platform) {
     case 'ios':
       return [
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/ShimmerImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ShimmerPage/docs/ios/ShimmerImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ShimmerPage/docs/ios/ShimmerImplementation.md') as string,
         },
       ];
   }

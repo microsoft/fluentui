@@ -48,7 +48,7 @@ export const AnnouncedLazyLoadingExample = () => {
     const width = 100;
     const height = 100;
     return createArray(PHOTO_COUNT, () => ({
-      url: `http://via.placeholder.com/${width}x${height}`,
+      url: `https://fabricweb.azureedge.net/fabric-website/placeholders/${width}x${height}.png`,
       width,
       height,
     }));

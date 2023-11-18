@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "lib": ["es2019", "dom"],
+    "types": ["node", "jest"],
+    "jsx": "react",
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "emitDeclarationOnly": true,
+    "pretty": true,
+    "allowJs": false,
+    "noImplicitReturns": true,
+    "noImplicitThis": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "noUnusedLocals": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "typeRoots": ["node_modules/@types", "./typings"],
+    "baseUrl": ".",
+    "paths": {
+      "@fluentui/react-portal-compat-context": ["packages/react-components/react-portal-compat-context/src/index.ts"],
+
+      "@fluentui/a11y-testing": ["packages/a11y-testing/src/index.ts"],
+      "@fluentui/ability-attributes": ["packages/fluentui/ability-attributes/src/index.ts"],
+      "@fluentui/accessibility": ["packages/fluentui/accessibility/src/index.ts"],
+      "@fluentui/code-sandbox": ["packages/fluentui/code-sandbox/src/index.ts"],
+      "@fluentui/digest": ["packages/fluentui/digest/src/index.ts"],
+      "@fluentui/docs-components": ["packages/fluentui/docs-components/src/index.ts"],
+      "@fluentui/react-bindings": ["packages/fluentui/react-bindings/src/index.ts"],
+      "@fluentui/react-builder": ["packages/fluentui/react-builder/src/index.ts"],
+      "@fluentui/react-component-event-listener": ["packages/fluentui/react-component-event-listener/src/index.ts"],
+      "@fluentui/react-component-nesting-registry": ["packages/fluentui/react-component-nesting-registry/src/index.ts"],
+      "@fluentui/react-component-ref": ["packages/fluentui/react-component-ref/src/index.ts"],
+      "@fluentui/react-icons-northstar": ["packages/fluentui/react-icons-northstar/src/index.ts"],
+      "@fluentui/react-northstar": ["packages/fluentui/react-northstar/src/index.ts"],
+      "@fluentui/react-northstar-emotion-renderer": ["packages/fluentui/react-northstar-emotion-renderer/src/index.ts"],
+      "@fluentui/react-northstar-fela-renderer": ["packages/fluentui/react-northstar-fela-renderer/src/index.ts"],
+      "@fluentui/react-northstar-styles-renderer": ["packages/fluentui/react-northstar-styles-renderer/src/index.ts"],
+      "@fluentui/react-northstar-prototypes": ["packages/fluentui/react-northstar-prototypes/src/index.ts"],
+      "@fluentui/react-telemetry": ["packages/fluentui/react-telemetry/src/index.ts"],
+      "@fluentui/react-proptypes": ["packages/fluentui/react-proptypes/src/index.ts"],
+      "@fluentui/state": ["packages/fluentui/state/src/index.ts"],
+      "@fluentui/styles": ["packages/fluentui/styles/src/index.ts"]
+    }
+  }
+}

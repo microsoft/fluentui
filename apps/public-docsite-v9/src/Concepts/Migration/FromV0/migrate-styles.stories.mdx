@@ -1,0 +1,15 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Custom Style Overrides" />
+
+# Migrate Custom Style Overrides
+
+This guide provides instructions for migrate style overrides on react-northstar (v0) components to v9 components.
+
+React-northstar provides a flexible styling and theming infrastructure and different consumers might have built their own way of adjusting the styles based on it. The component migration guides provide abstracted examples that show how to migrate one of the approaches used with v0 components to the v9 standardized `makeStyles` approach.
+
+## Overview
+
+1. create/modify _COMPONENT_NAME.styles.ts_ file (COMPONENT_NAME is the name of your component file)
+2. in _COMPONENT_NAME.styles.ts_, move your custom styles into hooks from `makeStyles`
+   > if this is your first time using `makeStyles`, please check [this guide on how to style components](http://aka.ms/fluentui-storybook/?path=/docs/concepts-developer-styling-components--page) on fluentui docmentation site.

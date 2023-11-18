@@ -1,11 +1,12 @@
 {
-  "extends": "../../../scripts/typescript/tsconfig.fluentui",
+  "extends": "../../../tsconfig.base.v0.json",
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "isolatedModules": false,
+    "noEmit": true,
+    "emitDeclarationOnly": false,
     "module": "esnext",
-    "types": ["node", "webpack-env", "cypress", "cypress-real-events"],
-    "skipLibCheck": true
+    "types": ["node", "webpack-env", "cypress", "cypress-real-events"]
   },
   "include": ["."]
 }

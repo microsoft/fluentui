@@ -3,7 +3,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ThemeProvider } from '@fluentui/react';
-import { initializeIcons } from '@fluentui/font-icons-mdl2/lib/index';
+import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import {
   INavPage,
   ISiteDefinition,
@@ -14,6 +14,7 @@ import { Route, Router } from '@fluentui/react-docsite-components';
 import { SiteGlobals } from '@fluentui/public-docsite-setup';
 import { Site } from '../components/Site/index';
 import { hasUHF } from './location';
+import { cdnUrl } from './cdn';
 
 import '../styles/styles.scss';
 
@@ -33,12 +34,8 @@ if (window.__siteConfig?.baseCDNUrl) {
 
 initializeIcons();
 
-const corePackageVersion: string = require<any>('office-ui-fabric-core/package.json').version;
-addCSSToHeader(
-  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/' +
-    corePackageVersion +
-    '/css/fabric.min.css',
-);
+// blog storage is now immutable, so new versions of fabric-core will be at a new url based on the build number
+addCSSToHeader(`${cdnUrl}/office-ui-fabric-core/11.1.0/css/fabric.min.css`);
 
 let rootElement: HTMLElement;
 
@@ -69,7 +66,7 @@ export function createSite<TPlatforms extends string>(
       }
       if (page.platforms) {
         Object.keys(page.platforms).forEach((plat: TPlatforms) => {
-          const platformPages: INavPage<TPlatforms>[] = page.platforms && page.platforms[plat];
+          const platformPages: INavPage<TPlatforms>[] | undefined = page.platforms && page.platforms[plat];
           routes = routes.concat(_createRoutes(platformPages || []));
         });
       }
@@ -130,9 +127,16 @@ export function createSite<TPlatforms extends string>(
 function addCSSToHeader(fileName: string): void {
   const headEl = document.head;
   const linkEl = document.createElement('link');
+  const styleTags = headEl.getElementsByTagName('style');
 
   linkEl.type = 'text/css';
   linkEl.rel = 'stylesheet';
   linkEl.href = fileName;
-  headEl.appendChild(linkEl);
+
+  // insert fabric css before other styles so it doesn't override component styles
+  if (styleTags.length) {
+    headEl.insertBefore(linkEl, styleTags[0]);
+  } else {
+    headEl.appendChild(linkEl);
+  }
 }

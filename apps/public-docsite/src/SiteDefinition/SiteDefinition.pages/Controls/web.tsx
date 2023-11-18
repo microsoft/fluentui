@@ -12,7 +12,7 @@ export interface ICategory {
 // Exporting this object to be used in generating a TOC (table of content) for docs.microsoft documentation repo.
 // Any changes to this object need to be communicated to avoid accidental breaking of the documentation
 // and to allow the appropriate actions to be taken to mitigate this.
-export const categories: { Other?: ICategory; [name: string]: ICategory } = {
+export const categories: { [name: string]: ICategory } = {
   'Basic Inputs': {
     Button: {},
     Checkbox: {},
@@ -35,6 +35,7 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     DatePicker: {},
     PeoplePicker: {},
     SwatchColorPicker: {},
+    TimePicker: {},
   },
   'Items & Lists': {
     List: { title: 'Basic List' },
@@ -57,14 +58,20 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
         Compact: {},
         Grouped: {},
         LargeGrouped: { title: 'Large Grouped' },
+        GroupedV2: { title: 'Grouped V2' },
+        LargeGroupedV2: { title: 'Large Grouped V2' },
+        ScrollToIndexGroupedV2: { title: 'Scroll To Index Grouped V2' },
         CustomColumns: { title: 'Custom Item Columns', url: 'customitemcolumns' },
         CustomRows: { title: 'Custom Item Rows', url: 'customitemrows' },
         CustomFooter: { title: 'Custom Footer' },
         CustomGroupHeaders: { title: 'Custom Group Headers' },
         Advanced: { title: 'Variable Row Heights', url: 'variablerowheights' },
+        KeyboardDragDrop: { title: 'Keyboard Column Reorder & Resize', url: 'keyboardcolumnreorderresize' },
+        KeyboardOverrides: { title: 'Keyboard Overrides', url: 'keyboardoverrides' },
         DragDrop: { title: 'Drag & Drop', url: 'draganddrop' },
         NavigatingFocus: { title: 'Inner Navigation', url: 'innernavigation' },
         Shimmer: {},
+        ProportionalColumns: { title: 'Proportional Columns', url: 'proportionalcolumns' },
       },
     },
     GroupedList: {},
@@ -100,6 +107,31 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     ScrollablePane: {},
     Tooltip: {},
   },
+  Charts: {
+    Legends: {},
+    LineChart: {},
+    AreaChart: {},
+    DonutChart: {},
+    VerticalBarChart: {
+      subPages: {
+        Grouped: { title: 'Grouped' },
+        VerticalStackedBarChart: { title: 'Stacked' },
+      },
+    },
+    GaugeChart: {},
+    HeatMapChart: {},
+    HorizontalBarChart: {
+      subPages: {
+        StackedBarChart: { title: 'Stacked' },
+        MultiStackedBarChart: { title: 'Multi Stacked' },
+        WithAxis: { title: 'With Axis' },
+      },
+    },
+    PieChart: {},
+    SankeyChart: {},
+    SparklineChart: {},
+    TreeChart: {},
+  },
   Utilities: {
     Announced: {
       subPages: {
@@ -117,6 +149,7 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     Layer: {},
     MarqueeSelection: {},
     Overlay: {},
+    Popup: {},
     ResizeGroup: {},
     Selection: {},
     Separator: {},
@@ -257,7 +290,12 @@ function _generatePage(
 }
 
 function _loadReferences(): INavPage[] {
-  const requireContext = require.context('@fluentui/api-docs/lib/pages/references', false, /\w+\.page\.json$/, 'lazy');
+  const requireContext = require.context(
+    '@fluentui/public-docsite-resources/dist/api/references',
+    false,
+    /\w+\.page\.json$/,
+    'lazy',
+  );
 
   return requireContext.keys().map(pagePath => {
     const pageName = pagePath.match(/(\w+)\.page\.json/)![1];

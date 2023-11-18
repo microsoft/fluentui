@@ -16,25 +16,27 @@ export const selectors = {
   popupContentId: index => `popup-content-${index}`,
 };
 
-const renderItem = (index: number): ShorthandRenderFunction<MenuItemProps & { key: string }> => (Component, props) => {
-  if (props.key === 'focus-trap') {
+const renderItem =
+  (index: number): ShorthandRenderFunction<MenuItemProps & { key: string }> =>
+  (Component, props) => {
+    if (props.key === 'focus-trap') {
+      return (
+        <Popup
+          key={index}
+          trigger={<MenuItem id={selectors.menuItemId(index)} {...props} />}
+          trapFocus
+          content={<Button content="Test Content" id={selectors.popupContentId(index)} />}
+        />
+      );
+    }
     return (
       <Popup
         key={index}
         trigger={<MenuItem id={selectors.menuItemId(index)} {...props} />}
-        trapFocus
-        content={<Button content="Test Content" id={selectors.popupContentId(index)} />}
+        content={{ content: 'Test Content', id: selectors.popupContentId(index) }}
       />
     );
-  }
-  return (
-    <Popup
-      key={index}
-      trigger={<MenuItem id={selectors.menuItemId(index)} {...props} />}
-      content={{ content: 'Test Content', id: selectors.popupContentId(index) }}
-    />
-  );
-};
+  };
 
 const items = [
   { key: 'editorials', content: 'Editorials', children: renderItem(0) },

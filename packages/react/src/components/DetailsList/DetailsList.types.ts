@@ -3,7 +3,7 @@ import { DetailsListBase } from './DetailsList.base';
 import { SelectionMode } from '../../Selection';
 import { ScrollToMode } from '../../List';
 import type { ISelection, ISelectionZoneProps } from '../../Selection';
-import type { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import type { IDragDropEvents, IDragDropContext, IDragDropHelper, IDragDropOptions } from '../../DragDrop';
 import type { IGroup, IGroupRenderProps, IGroupDividerProps, IGroupedListProps } from '../GroupedList/index';
 import type { IDetailsRowProps, IDetailsRowBaseProps } from '../DetailsList/DetailsRow';
@@ -19,6 +19,7 @@ import type {
   IDetailsColumnProps,
   IDetailsColumnStyles,
   IDetailsColumnFilterIconProps,
+  IDetailsColumnFieldProps,
 } from './DetailsColumn.types';
 import { IFocusZoneProps } from '../../FocusZone';
 
@@ -55,6 +56,14 @@ export interface IDetailsList extends IList {
    * Get the start index of the page that is currently in view
    */
   getStartItemIndexInView: () => number;
+
+  /**
+   * Use to programatically resize and/or reorder columns in the DetailsList.
+   * @param column - column to resize/reorder.
+   * @param options - includes width which is desired width in pixels the column should be resized
+   * to and newColumnIndex which is desired index position where the column should be moved to.
+   */
+  updateColumn: (column: IColumn, options: { width?: number; newColumnIndex?: number }) => void;
 }
 
 /**
@@ -116,7 +125,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /**
    * Additional props to pass through to the SelectionZone created by default.
    */
-  selectionZoneProps?: ISelectionZoneProps;
+  selectionZoneProps?: Partial<ISelectionZoneProps>;
 
   /** Controls how the columns are adjusted. */
   layoutMode?: DetailsListLayoutMode;
@@ -187,6 +196,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React.ReactNode;
 
   /**
+   * Render function which is composed around rendering every cell.
+   */
+  onRenderField?: IRenderFunction<IDetailsColumnFieldProps>;
+
+  /**
    * If provided, will be the "default" item column cell value return.
    * A column's `getValueKey` can override `getCellValueKey`.
    */
@@ -237,7 +251,10 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    */
   getKey?: (item: any, index?: number) => string;
 
-  /** Accessible label describing or summarizing the list. */
+  /**
+   * Accessible label describing or summarizing the list.
+   * @deprecated use `ariaLabelForGrid`
+   */
   ariaLabel?: string;
 
   /** Accessible label for the row check button, e.g. "select row". */
@@ -255,6 +272,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /**
    * Whether the role `application` should be applied to the list.
    * @defaultvalue false
+   * @deprecated using the application role in this case is an antipattern, and heavily discouraged.
    */
   shouldApplyApplicationRole?: boolean;
 
@@ -313,6 +331,13 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
 
   /** Whether to disable the built-in SelectionZone, so the host component can provide its own. */
   disableSelectionZone?: boolean;
+
+  /**
+   * Determines if an item is selected on focus.
+   *
+   * @defaultvalue true
+   */
+  isSelectedOnFocus?: boolean;
 
   /** Whether to animate updates */
   enableUpdateAnimations?: boolean;
@@ -415,6 +440,9 @@ export interface IColumn {
   /** If true, allow the column to be collapsed when rendered in justified layout. */
   isCollapsible?: boolean;
 
+  /** If true, column header will render an icon indicating column is sortable while unsorted */
+  showSortIconWhenUnsorted?: boolean;
+
   /** Determines if the column is currently sorted. Renders a sort arrow in the column header. */
   isSorted?: boolean;
 
@@ -432,6 +460,8 @@ export interface IColumn {
 
   /** Custom override for the parent list's `getCellValueKey`. */
   getValueKey?: (item?: any, index?: number, column?: IColumn) => string;
+
+  onRenderField?: IRenderFunction<IDetailsColumnFieldProps>;
 
   /** Custom renderer for column header divider. */
   onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
@@ -492,6 +522,12 @@ export interface IColumn {
    * This will be read after the main column header label.
    */
   sortDescendingAriaLabel?: string;
+
+  /**
+   * Accessible label for indicating that the list could be sorted by this column but isn't currently.
+   * This will be read after the main column header label.
+   */
+  sortableAriaLabel?: string;
 
   /** Accessible label for the status of this column when grouped. */
   groupAriaLabel?: string;
@@ -664,6 +700,7 @@ export interface IDetailsListStyles {
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
   onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
   onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
+  groupedListAs?: IComponentAs<IGroupedListProps>;
 }
 
 /**

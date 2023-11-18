@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { ResponsiveMode } from '../../ResponsiveMode';
-import type { IStyle, ITheme } from '../../Styling';
-import type { ILayerProps } from '../../Layer';
 import type { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
-import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import type { IIconProps } from '../../Icon';
 import type { IContextualMenuProps } from '../../ContextualMenu';
+import type { IFocusTrapZoneProps } from '../../FocusTrapZone';
+import type { IIconProps } from '../../Icon';
+import type { ILayerProps } from '../../Layer';
 import type { IOverlayProps } from '../../Overlay';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IPopupProps } from '../Popup/Popup.types';
 
 export interface IDragOptions {
   /**
@@ -75,13 +77,13 @@ export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAcces
 
   /**
    * Whether the dialog is displayed.
-   * @defaultvalue false
+   * @default false
    */
   isOpen?: boolean;
 
   /**
    * Whether the overlay is dark themed.
-   * @defaultvalue true
+   * @default true
    */
   isDarkOverlay?: boolean;
 
@@ -97,7 +99,7 @@ export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAcces
 
   /**
    * The specified responsiveMode value for Modal to use.
-   * @defaultvalue ResponsiveMode.small
+   * @default ResponsiveMode.small
    */
   responsiveMode?: ResponsiveMode;
 
@@ -113,7 +115,7 @@ export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAcces
 
   /**
    * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).
-   * @defaultvalue false
+   * @default false
    */
   isBlocking?: boolean;
 
@@ -176,16 +178,29 @@ export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAcces
 
   /**
    * Allow body scroll on content and overlay on touch devices. Changing after mounting has no effect.
-   * @defaultvalue false
+   * @default false
    */
   allowTouchBodyScroll?: boolean;
 
   /**
-   * Puts aria-hidden=true on all non-ancestors of the current modal, for screen readers.
-   * This is an experimental feature that will be graduated to default behavior after testing.
-   * This flag will be removed with the next major release.
+   * Puts aria-hidden=true on all non-ancestors of the current modal, for screen readers
+   * (unless `isModeless` is true).
+   * @default true
+   * @deprecated Setting this to `false` is deprecated since it breaks modal behavior for some screen readers.
+   * It will not be supported in future versions of the library (except for modeless modals).
    */
   enableAriaHiddenSiblings?: boolean;
+
+  /**
+   * Set of props to customize the `FocusTrapZone` inside of the `Modal`.
+   * @default `{}`
+   */
+  focusTrapZoneProps?: IFocusTrapZoneProps;
+
+  /**
+   * Props to be passed through to Popup
+   */
+  popupProps?: IPopupProps;
 }
 
 /**

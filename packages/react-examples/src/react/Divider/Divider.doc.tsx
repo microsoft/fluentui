@@ -4,9 +4,11 @@ import { VerticalDividerBasicExample } from './VerticalDivider.Basic.Example';
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { VerticalDividerCustomExample } from './VerticalDivider.Custom.Example';
 
-const VerticalDividerBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Divider/VerticalDivider.Basic.Example.tsx') as string;
+const VerticalDividerBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Divider/VerticalDivider.Basic.Example.tsx') as string;
 
-const VerticalDividerCustomExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Divider/VerticalDivider.Custom.Example.tsx') as string;
+const VerticalDividerCustomExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Divider/VerticalDivider.Custom.Example.tsx') as string;
 
 export const DividerPageProps: IDocPageProps = {
   title: 'Divider',

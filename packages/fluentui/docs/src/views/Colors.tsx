@@ -18,6 +18,7 @@ import { Link } from 'react-router-dom';
 
 import ColorBox, { colorBoxStyles, colorBoxVariables } from '../components/ColorBox';
 import Fader, { faderStyles } from '../components/Fader';
+import SystemColors from '../components/SystemColors';
 import ColorVariants, { colorVariantsStyles } from '../components/ColorVariants';
 import DocPage from '../components/DocPage/DocPage';
 import ExampleSnippet from '../components/ExampleSnippet';
@@ -182,6 +183,39 @@ const Colors = () => (
             To see all colors variants in the palette, follow this{' '}
             <Text as={Link} weight="bold" content="link" color="brand" to="color-palette" />.
           </p>
+
+          <Header as="h3">System colors</Header>
+          <p>
+            When styling web content for Windows high contrast mode, very little CSS rules should be required. In the
+            case where the color needs to be explicitly set in high contrast mode, there is only a limited set of colors
+            that can be used. The complete set of system colors can be found{' '}
+            <Text
+              as={Link}
+              weight="bold"
+              content="in the new CSS standard"
+              color="brand"
+              to={{ pathname: 'https://www.w3.org/TR/css-color-4/#css-system-colors' }}
+            />
+            .
+          </p>
+
+          <p>
+            You can view this page in on windows in high contrast mode with different themes and see these colors change
+            based on the high contrast theme you pick. You can find the instructions to turn on windows high contrast
+            mode by folow this{' '}
+            <Text
+              as={Link}
+              weight="bold"
+              content="link"
+              color="brand"
+              to={{
+                pathname:
+                  'https://support.microsoft.com/en-us/windows/change-color-contrast-in-windows-fedc744c-90ac-69df-aed5-c8a90125e696',
+              }}
+            />
+          </p>
+
+          <SystemColors />
 
           <Header as="h2" content="Color scheme" />
           <p>

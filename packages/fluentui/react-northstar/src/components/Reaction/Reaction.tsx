@@ -16,13 +16,13 @@ import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import { ReactionGroup } from './ReactionGroup';
 import {
-  ComponentWithAs,
   useTelemetry,
   useFluentContext,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface ReactionSlotClassNames {
@@ -57,10 +57,7 @@ export const reactionSlotClassNames: ReactionSlotClassNames = {
  * A Reaction indicates user's emotion or perception.
  * Used to display user's reaction for entity in Chat (e.g. message).
  */
-export const Reaction: ComponentWithAs<'span', ReactionProps> &
-  FluentComponentStaticProps<ReactionProps> & {
-    Group: typeof ReactionGroup;
-  } = props => {
+export const Reaction = React.forwardRef<HTMLSpanElement, ReactionProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Reaction.displayName, context.telemetry);
   setStart();
@@ -91,6 +88,7 @@ export const Reaction: ComponentWithAs<'span', ReactionProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
       {...rtlTextContainer.getAttributes({ forElements: [children] })}
@@ -120,7 +118,10 @@ export const Reaction: ComponentWithAs<'span', ReactionProps> &
 
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, ReactionProps> &
+  FluentComponentStaticProps<ReactionProps> & {
+    Group: typeof ReactionGroup;
+  };
 
 Reaction.displayName = 'Reaction';
 

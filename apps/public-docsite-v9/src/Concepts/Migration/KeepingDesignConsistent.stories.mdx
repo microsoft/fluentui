@@ -1,0 +1,208 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/Keeping Design Consistent" />
+
+# Keeping Design Consistent
+
+Fluent 2 is the next version of the Fluent design language.
+Fluent UI React v9 uses the Fluent 2 design language for layout and style of components.
+
+The design language defines a set of design tokens.
+Themes consist of a property/value pair for each token.
+Designers reference these tokens in the design specs detailing the layout and style of components.
+
+The themes in v0 and v8 were specific to component, component part, and state.
+While this allowed for fine-grained control over each component's style, it led to an explosion of theme properties.
+Too many theme properties can make defining new themes an arduous chore, can make themes fragile when properties are added or removed, and can leave dead theme properties behind when components stop using them.
+
+In v9, the theme properties are called design tokens.
+They are much more general purpose.
+They are partitioned by neutral vs. brand, usage (e.g. foreground, background, stroke), and state.
+
+This topic covers ways you can maintain a consistent theme and style during migration.
+
+## You can choose to live with and limit style differences during migration
+
+The visual style differences between v9 and previous versions are slight.
+If your migration effort is small, you can migrate all at once, or if your users are OK with some inconsistency, you might decide to avoid extra effort and live with it.
+
+For example, you can see differences between v8's and v9's Button components when you put them side-by-side.
+However, the design differences between v8's Input and v9's Button are difficult to detect.
+
+You can reduce the visual friction between Fluent 1 and Fluent 2 designs during migration by migrating all instances of one component type to v9.
+
+## You can use theme providers side-by-side
+
+In v0/v8, you pass the `ThemeProvider` component a theme.
+This puts the theme object on React's context.
+Component style methods then reference the theme properties when building styles.
+
+In v9, you pass the `FluentProvider` component a theme.
+This defines a CSS variable for each design token.
+Component CSS styles then reference the CSS variables.
+
+When migrating to v9, you will have v0/v8 and v9 components side-by-side.
+You can wrap both `ThemeProvider` and `FluentProvider` around components.
+Both `ThemeProvider` and `FluentProvider` support nesting to define a theme or partial theme at different scopes.
+
+```tsx
+import { ThemeProvider, Button as ButtonV8 } from '@fluentui/react';
+import { FluentProvider, Button as ButtonV9, webLightTheme } from '@fluentui/react-components';
+
+function App() {
+  return (
+    <ThemeProvider>
+      <FluentProvider theme={webLightTheme}>
+        <ButtonV8>Hello migration</ButtonV8>
+        <ButtonV9>Hello migration</ButtonV9>
+      </FluentProvider>
+    </ThemeProvider>
+  );
+}
+```
+
+## You can use design token styles in your own components
+
+Fluent UI React v9 leverages the Griffel CSS-in-JS library.
+The `makeStyles` and `mergeClasses` methods are exported by `@fluentui/react-components` package.
+Read [Styling Components](/docs/concepts-developer-styling-components--page) for details.
+
+Because `FluentProvider` defines design token values as CSS variables, you can reference them your own component styles.
+Read [Theming](/docs/concepts-developer-theming--page) to see examples.
+
+## You can extend the theme with new design tokens
+
+The v9 `FluentProvider` defines CSS variables consumed by components.
+You can extend the `Theme` type with your own design tokens, set values when creating an instance of your theme, and then consume them in your own components.
+
+See _Extending themes with new tokens_ section in [Theming](/docs/concepts-developer-theming--page).
+
+## You can make v0, v8, v9 components have the same style
+
+While you have both old and new components together in your application, you may see some differences in the theme and styling of components.
+You can choose to live with the minor discrepancies during migration, or make everything look the same.
+
+> We recommend moving to v9's Fluent 2 design. It has improved accessibility and has consistent style across components.
+
+### You can use the Fluent 2 theme for v8
+
+If you want to make v8 components look like v9, you can pass the Fluent 2 theme for v8 to the ThemeProvider.
+For more information read the [v8 Fluent 2 theme documentation](https://developer.microsoft.com/en-us/fluentui#/controls/web/themes).
+
+In the v8 documentation for each component, you can select the Fluent 2 theme to see how it looks.
+
+### You can create custom themes
+
+By passing a v8 theme to `ThemeProvider` that uses v9 colors, v8 will look more like v9.
+Conversely, passing a v9 theme to `FluentProvider` that uses v8 colors will make v9 look more like v8.
+
+### You can use theme shims
+
+We have developed some shims (code that helps with migration) that let you create a v9 theme from the default v8 theme, create a v8 theme from the `webLightTheme` or `webDarkTheme` v9 themes.
+
+One of our key partner teams has developed a Fluent 2 theme for v8 that includes custom component styles to exactly match the Fluent 2 theme of v9.
+
+Check them out in the _/Migration Shims/Themes_ topics.
+
+## You can define custom styles with className
+
+As detailed in the _/Concepts/Developer/Styling Components_ topic, you can create styles with `makeStyles` and `mergeClasses` and then pass the className to any v9 component or component slot.Those styles will be applied last, allowing you to modify the default component style.
+
+If you do create custom styles, we strongly recommend using design tokens.
+This ensures styles update with theme changes.
+
+## You can recompose components with different styles
+
+Fluent v9 has a powerful composition model using React hooks.
+Each component is separated into a hook that maps props to state, a hook that uses state to set className styles on each slot, and a render function that outputs each slot with applied props.
+
+While you can create a wrapper component that renders a v9 component with custom styles applied, this often introduces more virtual DOM elements that may affect performance.
+
+Instead, you can create a component that reuses the same hooks of the component.
+You can substitute your own hooks or call additional hooks.
+Because you are leveraging the same infrastructure v9 components use, no additional wrapper virtual DOM elements are created.
+
+This example defines a new button component.
+The props to state hooks and render method from `Button` are reused.
+A new style hook is substituted for `useButtonStyle`.
+
+```tsx
+import * as React from 'react';
+import {
+  makeStyles,
+  tokens,
+  renderButton_unstable as renderButton,
+  useButton_unstable as useButton,
+} from '@fluentui/react-components';
+import type { ButtonProps, ButtonState, ForwardRefComponent } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  root: {
+    background: tokens.colorNeutralBackground2,
+    //...
+  },
+});
+
+// This is an example of a custom style hook
+const useCustomButtonStyles = (state: ButtonState): ButtonState => {
+  const styles = useStyles();
+
+  state.root.className = styles.root;
+  //...
+
+  return state;
+};
+
+export const MyButton: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
+  const state = useButton(props, ref);
+  useCustomButtonStyles(state);
+  return renderButton(state);
+}) as ForwardRefComponent<ButtonProps>;
+```
+
+This is the most advanced form of customization in Fluent UI React v9, but provides you complete control over components.
+
+## You can set custom style hooks per component type
+
+**⚠ Avoid custom style hooks**
+
+Prefer creating custom themes, setting className, replacing slots, extending theme tokens, and component recomposition.
+This approach is meant as an escape-hatch when all other customizations are not enough for your use case.
+
+**⚠ Be careful **
+
+- Never change any state properties other than `className`.
+- Never dynamically change hooks at runtime. This will lead to unstable hook calls.
+- Custom style hooks are called from within the component and receive the component state.
+- Be judicious with creating styles and making `mergeClasses` call as you may affect the performance.
+
+You can pass `FluentProvider.customStyleHooks_unstable` a set of custom style hooks. The custom style hooks are considered unstable and the API may change at any time.
+Each custom style hook can update root or slot class names.
+
+```tsx
+import { makeStyles, mergeClasses, FluentProvider } from '@fluentui/react-components';
+import type { FluentProviderCustomStyleHooks, ButtonState } from '@fluentui/react-components';
+
+const useMyButtonStyles = makeStyles({
+  root: {
+    //...
+  },
+});
+
+const myCustomStyles: FluentProviderCustomStyleHooks = {
+  useButtonStyles_unstable: state => {
+    const myButtonStyles = useMyButtonStyles();
+    const buttonState = state as ButtonState;
+    buttonState.root.className = mergeClasses(buttonState.root.className, myButtonStyles.root);
+  },
+};
+
+function App() {
+  return <FluentProvider customStyleHooks_unstable={myCustomStyles}></FluentProvider>;
+}
+```
+
+To override existing styles, use `makeStyles` to create your custom styles and then call `mergeClasses` with state `className` and the your new styles.
+To completely replace existing styles, overwrite the state `className`.
+
+When `FluentProvider` are nested, custom style hooks will be shallow merged.

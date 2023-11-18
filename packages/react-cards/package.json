@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-cards",
-  "version": "0.200.27",
+  "version": "0.205.123",
   "description": "Deprecated experimental Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,29 +26,31 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.10",
-    "@fluentui/scripts": "^1.0.0",
-    "@types/enzyme": "3.10.3",
-    "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/react-test-renderer": "^16.0.0",
-    "enzyme": "~3.10.0",
-    "enzyme-adapter-react-16": "^1.15.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/jest-serializer-merge-styles": "*",
+    "@fluentui/scripts-api-extractor": "*",
+    "@fluentui/scripts-jest": "*",
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.33.0",
-    "@fluentui/foundation-legacy": "^8.1.11",
-    "@fluentui/set-version": "^8.1.4",
+    "@fluentui/react": "^8.112.9",
+    "@fluentui/foundation-legacy": "^8.2.47",
+    "@fluentui/set-version": "^8.2.12",
     "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <18.0.0",
-    "@types/react-dom": ">=16.8.0 <18.0.0",
-    "react": ">=16.8.0 <18.0.0",
-    "react-dom": ">=16.8.0 <18.0.0"
+    "@types/react": ">=16.8.0 <19.0.0",
+    "@types/react-dom": ">=16.8.0 <19.0.0",
+    "react": ">=16.8.0 <19.0.0",
+    "react-dom": ">=16.8.0 <19.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

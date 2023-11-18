@@ -49,7 +49,7 @@ describe('SelectedItemsList', () => {
         expect(items![0].name).toBe('b');
       };
 
-      const itemsList: TypedBaseSelectedItemsList = (ReactDOM.render(
+      const itemsList: TypedBaseSelectedItemsList = ReactDOM.render(
         <BaseSelectedItemsListWithType
           onRenderItem={basicItemRenderer}
           selectedItems={[
@@ -59,7 +59,7 @@ describe('SelectedItemsList', () => {
           onChange={onChange}
         />,
         root,
-      ) as unknown) as TypedBaseSelectedItemsList;
+      ) as unknown as TypedBaseSelectedItemsList;
 
       expect(itemsList.items.length).toEqual(2);
       itemsList.removeItemAt(0);
@@ -67,10 +67,10 @@ describe('SelectedItemsList', () => {
 
     it('can add items', () => {
       const root = document.createElement('div');
-      const itemsList: TypedBaseSelectedItemsList = (ReactDOM.render(
+      const itemsList: TypedBaseSelectedItemsList = ReactDOM.render(
         <BaseSelectedItemsListWithType onRenderItem={basicItemRenderer} />,
         root,
-      ) as unknown) as TypedBaseSelectedItemsList;
+      ) as unknown as TypedBaseSelectedItemsList;
 
       const items: ISimple[] = [
         { key: '1', name: 'a' },

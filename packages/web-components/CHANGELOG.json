@@ -2,6 +2,954 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 20 Jul 2023 07:35:18 GMT",
+      "tag": "@fluentui/web-components_v2.5.16",
+      "version": "2.5.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "vnbaaij@outlook.com",
+            "package": "@fluentui/web-components",
+            "commit": "9e52c0283219050674955e656d2934163a52a767",
+            "comment": "fix(web-components): ensures that text area size responds to rows and cols attributes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 07:37:30 GMT",
+      "tag": "@fluentui/web-components_v2.5.15",
+      "version": "2.5.15",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Jun 2023 07:38:37 GMT",
+      "tag": "@fluentui/web-components_v2.5.15",
+      "version": "2.5.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "629df3c452dd3d0fd83472eb78ab8c98e22eb96e",
+            "comment": "fix listbox-option selected indicator position in RTL instances"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Apr 2023 07:40:25 GMT",
+      "tag": "@fluentui/web-components_v2.5.14",
+      "version": "2.5.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2e1cf8928df3e4f0b64b7390408374db94ae9e2c",
+            "comment": "update FAST dependencies to mitigate Safari 16.4 AdoptedStyleSheets bug"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Apr 2023 07:43:45 GMT",
+      "tag": "@fluentui/web-components_v2.5.13",
+      "version": "2.5.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "d641ed3418a70dbcfcc29ca56acb4f2711551044",
+            "comment": "update fast foundation packages to import bug fixes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Mar 2023 07:47:17 GMT",
+      "tag": "@fluentui/web-components_v2.5.12",
+      "version": "2.5.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Feb 2023 07:37:39 GMT",
+      "tag": "@fluentui/web-components_v2.5.12",
+      "version": "2.5.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "cbba19f7ed8a619b5fa856575fde872e79be99b9",
+            "comment": "style: fix formatting in files that were silently passed previously"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Jan 2023 07:35:32 GMT",
+      "tag": "@fluentui/web-components_v2.5.12",
+      "version": "2.5.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c5ad495ac5b9f4a10906f241b6b4ce54dbd9e7d1",
+            "comment": "feat: bump tslib to 2.1 to align with rest of monorepo packages"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Jan 2023 07:50:49 GMT",
+      "tag": "@fluentui/web-components_v2.5.11",
+      "version": "2.5.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "854d1159c9a57d496f6db1ab9f20885136d20cc6",
+            "comment": "chore: upgrade version of storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Jan 2023 07:50:14 GMT",
+      "tag": "@fluentui/web-components_v2.5.10",
+      "version": "2.5.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "49ead1dcd8c34cf87b151e0c0cc7bd716260f22f",
+            "comment": "fix: layering zindex issue with sub menus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Jan 2023 07:59:57 GMT",
+      "tag": "@fluentui/web-components_v2.5.9",
+      "version": "2.5.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "abcy@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "b53326ef8367bbd954237bd039c5520188ed1071",
+            "comment": "Fix fluent-tooltip not showing anchor pointer when wc prefix is changed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Nov 2022 07:44:58 GMT",
+      "tag": "@fluentui/web-components_v2.5.8",
+      "version": "2.5.8",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "d419dfa7124fb15ebae8a27b30bdad869964301b",
+            "comment": "chore(.storybook): disable telemetry"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Oct 2022 07:52:54 GMT",
+      "tag": "@fluentui/web-components_v2.5.8",
+      "version": "2.5.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "400b81dc432ff1720a89ffafee0666c4e920272b",
+            "comment": "emit activeid as part of accordion change event"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Oct 2022 07:44:53 GMT",
+      "tag": "@fluentui/web-components_v2.5.7",
+      "version": "2.5.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "b63fc36cbcbe821d2e53d7924a3cc5aedb6a33a2",
+            "comment": "Cleaned up shared styles for button and input for improved reuse and color updates"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Oct 2022 07:38:23 GMT",
+      "tag": "@fluentui/web-components_v2.5.6",
+      "version": "2.5.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "337a32b1a4f2e82235e193e115666aee659c650c",
+            "comment": "chore: migrate to webpack5 and apply single version policy"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Sep 2022 07:47:29 GMT",
+      "tag": "@fluentui/web-components_v2.5.6",
+      "version": "2.5.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "2420757404f54aba8e92cdbc41965a6fdbce8a3d",
+            "comment": "Standardized focus treatment to use `outline` instead of a combination of `border` and `box-shadow`"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Sep 2022 07:54:43 GMT",
+      "tag": "@fluentui/web-components_v2.5.5",
+      "version": "2.5.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "44bd582ade25f325c4707b75b94ab526fc657cb6",
+            "comment": "update fast-foundation to latest packages to resovle 24561"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 07:48:52 GMT",
+      "tag": "@fluentui/web-components_v2.5.4",
+      "version": "2.5.4",
+      "comments": {
+        "none": [
+          {
+            "author": "aelkholy248@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "6f68ec25042436f1fd33d8edb7ca82bd622b80d3",
+            "comment": "Fix typos in webpack integration instructions"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Aug 2022 07:41:54 GMT",
+      "tag": "@fluentui/web-components_v2.5.4",
+      "version": "2.5.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9e86978c43db785ec3f40ee9e0bd35693e26189d",
+            "comment": "update FAST packages to resolve issues with form constraint validation on form associated elements"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Aug 2022 07:37:33 GMT",
+      "tag": "@fluentui/web-components_v2.5.3",
+      "version": "2.5.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5a44edc603012847bbe5cc7b29d65bb86c7fb8b2",
+            "comment": "chore: use only 1 instance of ts-node in monorepo"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Jul 2022 07:36:55 GMT",
+      "tag": "@fluentui/web-components_v2.5.3",
+      "version": "2.5.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5aa33cbb283143f8dda9a836faa1b69d94c1ca64",
+            "comment": "chore(storybook): remove deprecated --static-dir CLI flag usage"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Jun 2022 23:03:44 GMT",
+      "tag": "@fluentui/web-components_v2.5.3",
+      "version": "2.5.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "5d8b70afcccb439ffb41c4442860b61212da2492",
+            "comment": "update to latest stable versions of FAST packages"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Jun 2022 07:52:10 GMT",
+      "tag": "@fluentui/web-components_v2.5.2",
+      "version": "2.5.2",
+      "comments": {
+        "none": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "71cf20976f873e7aed3abd2aa3daf953d06941f9",
+            "comment": "Fixed Storybook loading page name check"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Jun 2022 07:48:04 GMT",
+      "tag": "@fluentui/web-components_v2.5.2",
+      "version": "2.5.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "8949b3e8dcdb3dcb4b987fcb08ff48e549133828",
+            "comment": "(web-components) Fix issue loading Color Explorer values"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Jun 2022 07:38:04 GMT",
+      "tag": "@fluentui/web-components_v2.5.1",
+      "version": "2.5.1",
+      "comments": {
+        "none": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "d989caf6db389bb92221f372c8028cf7a85210b4",
+            "comment": "upgrade storybook to 6.5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 May 2022 07:45:01 GMT",
+      "tag": "@fluentui/web-components_v2.5.1",
+      "version": "2.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "d5706692da2077930b084bff166d0981c058eb7e",
+            "comment": "Added the Color Explorer as a web components Storybook page"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 May 2022 07:36:53 GMT",
+      "tag": "@fluentui/web-components_v2.5.0",
+      "version": "2.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "b60bcd3b01d2927a03660523eea42b42f507e85b",
+            "comment": "Added support for Segoe UI Variable font with variant configurations Added type ramp helpers to conveniently and consistently apply all necessary font attributes."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Apr 2022 07:39:56 GMT",
+      "tag": "@fluentui/web-components_v2.4.0",
+      "version": "2.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7b73745e44fb4be6c228de0f1a500eea0d9db00b",
+            "comment": "update to latest versions of fast-element and fast-foundation for web components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Mar 2022 23:29:58 GMT",
+      "tag": "@fluentui/web-components_v2.3.1",
+      "version": "2.3.1",
+      "comments": {
+        "none": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "61d1ec16271c2beff80f449c35b10e0b8a1817b5",
+            "comment": "basic storybook upgrade without the new story store format"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Mar 2022 07:41:14 GMT",
+      "tag": "@fluentui/web-components_v2.3.1",
+      "version": "2.3.1",
+      "comments": {
+        "none": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "415b189f76b7f5bca11ebc62d3a6855c01b59c53",
+            "comment": "update karma to latest stable version for web components"
+          }
+        ],
+        "patch": [
+          {
+            "author": "john.kreitlow@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9d0611016f1e6f5a39b105df1d6e85beecb1e469",
+            "comment": "fix d.ts errors generated by api-extractor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Mar 2022 07:23:43 GMT",
+      "tag": "@fluentui/web-components_v2.3.0",
+      "version": "2.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "john.kreitlow@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7f08d68021d8f41d6de1fa2e18e78be3d0868e73",
+            "comment": "update package dependencies in web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Feb 2022 07:22:08 GMT",
+      "tag": "@fluentui/web-components_v2.2.3",
+      "version": "2.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "b8bea1a92f7aee43b6887c9f035e33d4c26ddac0",
+            "comment": "Aligned \"plus 2\" type ramp line height size"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Jan 2022 07:34:08 GMT",
+      "tag": "@fluentui/web-components_v2.2.2",
+      "version": "2.2.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "robarb@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "739a799bb753ced2968289ed6a6b253319ae7138",
+            "comment": "Updating fast-foundation to v2.32.0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Jan 2022 09:43:48 GMT",
+      "tag": "@fluentui/web-components_v2.2.1",
+      "version": "2.2.1",
+      "comments": {
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "4dcdb85d20d7cf5d0aa71c09098142e8c933530b",
+            "comment": "Remove unused declared variables in combobox styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Jan 2022 07:32:29 GMT",
+      "tag": "@fluentui/web-components_v2.2.1",
+      "version": "2.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "06cb25c66838875a18dc264ebfa8c5547ce4ebb2",
+            "comment": "Update tab panel to base type size"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Jan 2022 07:27:47 GMT",
+      "tag": "@fluentui/web-components_v2.2.0",
+      "version": "2.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ebe29c6b802a65fd6a568d511e067ec4a272f817",
+            "comment": "feat: add search web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Dec 2021 07:31:29 GMT",
+      "tag": "@fluentui/web-components_v2.1.3",
+      "version": "2.1.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bd40a6eca1aaa0702e7989087b01de32c9aa6c3d",
+            "comment": "fix: prevent disabled flipper from emitting event"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "28ceaaa83cd92a0389c466f0b15b283e3d9b08e4",
+            "comment": "chore: update all jest deps to v26"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Dec 2021 07:30:35 GMT",
+      "tag": "@fluentui/web-components_v2.1.2",
+      "version": "2.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "robarb@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "89deee5b2a8a5da67a557cd6b19fe9c51ab36de1",
+            "comment": "fix: z-index in accordion header renders above content"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Dec 2021 07:36:29 GMT",
+      "tag": "@fluentui/web-components_v2.1.1",
+      "version": "2.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "a69b283c2eb799c0edc5276d9d1094d1f3d4e4ac",
+            "comment": "fix: tabpanel shifting in vertical layout"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Nov 2021 07:27:34 GMT",
+      "tag": "@fluentui/web-components_v2.1.0",
+      "version": "2.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2dbe9eadd8ae071bbb056ad15461c1c7ea8d9430",
+            "comment": "fix: remove margins from host elements"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Nov 2021 07:38:11 GMT",
+      "tag": "@fluentui/web-components_v2.0.2",
+      "version": "2.0.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "robarb@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "55a9400f93758ad7cb37789aa524a6eb6b2a5322",
+            "comment": "FluentUI calendar component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Nov 2021 07:37:01 GMT",
+      "tag": "@fluentui/web-components_v2.0.1",
+      "version": "2.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "71d4e117d0bad7e238ff53e4d1a0671a6ead7085",
+            "comment": "fix web components webpack integration docs and update the package dependencies"
+          },
+          {
+            "author": "khamu@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2cb0ac33d03c843c556c2cd554fd6ac9a91f4f33",
+            "comment": "fixed high contrast visual for web components"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e9e7f438f1530d5629108a27dfd1d81d7c107293",
+            "comment": "change input state styles to fix height and prevent z-index from blocking cursor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Nov 2021 21:28:50 GMT",
+      "tag": "@fluentui/web-components_v2.0.0",
+      "version": "2.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "brookdozer@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "197823fe1233c21127dbce9c546c90e3e0e548be",
+            "comment": "Fixing visual update merge conflicts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Oct 2021 07:38:02 GMT",
+      "tag": "@fluentui/web-components_v2.0.0",
+      "version": "2.0.0",
+      "comments": {
+        "none": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "remove beachball configuration override to again disallow major versions",
+            "commit": "a88fb53fb38a20912b7ddea33b5f3313a721e148"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 22 Oct 2021 23:04:22 GMT",
+      "tag": "@fluentui/web-components_v2.0.0",
+      "version": "2.0.0",
+      "comments": {
+        "major": [
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "comment": "Update to Sun Valley visual styling",
+            "commit": "4e422ca35d0eb8dcf173031e1b0915e2439b2e19"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 22 Oct 2021 19:30:28 GMT",
+      "tag": "@fluentui/web-components_v1.6.3",
+      "version": "1.6.3",
+      "comments": {
+        "none": [
+          {
+            "author": "brookdozer@gmail.com",
+            "package": "@fluentui/web-components",
+            "comment": "Web-components Storybook content updates",
+            "commit": "ed06ea1fabb97a1ee5ee4f73cf2eaac169dc69be"
+          }
+        ],
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "update foundation package and react documentation",
+            "commit": "ed06ea1fabb97a1ee5ee4f73cf2eaac169dc69be"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Oct 2021 07:28:35 GMT",
+      "tag": "@fluentui/web-components_v1.6.2",
+      "version": "1.6.2",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "Fix web-components storybook",
+            "commit": "619163b3e099a775a2486a21e0187cec86b2b7c2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Oct 2021 07:38:09 GMT",
+      "tag": "@fluentui/web-components_v1.6.2",
+      "version": "1.6.2",
+      "comments": {
+        "none": [
+          {
+            "author": "elcraig@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "Move storybook/html dev dep back to web-components and update scripts",
+            "commit": "ed3a8350b8d760cdef9323bb5646012888c75afd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Oct 2021 00:11:22 GMT",
+      "tag": "@fluentui/web-components_v1.6.2",
+      "version": "1.6.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "remove dependency on lodash-es with fast-web-utilities",
+            "commit": "99f64c155271dba50e57ced4cec6ac5e98387056"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 Oct 2021 07:31:50 GMT",
+      "tag": "@fluentui/web-components_v1.6.1",
+      "version": "1.6.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "add progress animated examples",
+            "commit": "3c3fae80fd74eb02fa0daa59b49afde39de83370"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 Oct 2021 07:30:53 GMT",
+      "tag": "@fluentui/web-components_v1.6.0",
+      "version": "1.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "create explicit classes for progress ring and progress to prevent conflicts during tagFor retrieval",
+            "commit": "41f9ce245c6d38ab880ca4696c3ff4f83537df4d"
+          },
+          {
+            "author": "47367562+bheston@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "comment": "Update token file order and deprecations to prepare for vNext",
+            "commit": "41f9ce245c6d38ab880ca4696c3ff4f83537df4d"
+          }
+        ],
+        "patch": [
+          {
+            "author": "khamu@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "add end start selector",
+            "commit": "41f9ce245c6d38ab880ca4696c3ff4f83537df4d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Oct 2021 11:11:56 GMT",
+      "tag": "@fluentui/web-components_v1.5.6",
+      "version": "1.5.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "update web components progress determinate color to accentFillRest",
+            "commit": "19e3ce0c93afbd30b32dca7f07f2a630eb7a01a2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Oct 2021 07:37:17 GMT",
+      "tag": "@fluentui/web-components_v1.5.5",
+      "version": "1.5.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "brookdozer@gmail.com",
+            "package": "@fluentui/web-components",
+            "comment": "Update installation doc story",
+            "commit": "de0266f3ced68c137aa5e27b30691f960982df9e"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "fix issue where tree item selection was being impacted due to event issues",
+            "commit": "de0266f3ced68c137aa5e27b30691f960982df9e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Sep 2021 07:36:23 GMT",
+      "tag": "@fluentui/web-components_v1.5.4",
+      "version": "1.5.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "fix syntax issue causing padding to not be applied to text area",
+            "commit": "e726d8b364e68d28821710ea168b3ee0f7a23345"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Sep 2021 07:35:13 GMT",
+      "tag": "@fluentui/web-components_v1.5.3",
+      "version": "1.5.3",
+      "comments": {
+        "none": [
+          {
+            "author": "brookdozer@gmail.com",
+            "package": "@fluentui/web-components",
+            "comment": "Update content for web component overview docs",
+            "commit": "e356b30fbc9830f64d23ca4d73cc0ad11e48faf3"
+          }
+        ],
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "add additional param to allComponents registry",
+            "commit": "e356b30fbc9830f64d23ca4d73cc0ad11e48faf3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Sep 2021 07:35:26 GMT",
+      "tag": "@fluentui/web-components_v1.5.2",
+      "version": "1.5.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "fix slider thumb positioning math",
+            "commit": "90d71a0914acbb73a0365d60a85237e3d58ef575"
+          },
+          {
+            "author": "nicholasrice@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "comment": "implement caching mechanism for PaletteRGB.closestIndexOf",
+            "commit": "90d71a0914acbb73a0365d60a85237e3d58ef575"
+          }
+        ],
+        "none": [
+          {
+            "author": "brookdozer@gmail.com",
+            "package": "@fluentui/web-components",
+            "comment": "Fix web-component toolbar storybook location",
+            "commit": "90d71a0914acbb73a0365d60a85237e3d58ef575"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Sep 2021 20:09:02 GMT",
+      "tag": "@fluentui/web-components_v1.5.1",
+      "version": "1.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "add toolbar as new web component",
+            "commit": "10495c31fb5c5cf48b4665601a75a0cfabb6a03c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Sep 2021 07:37:03 GMT",
+      "tag": "@fluentui/web-components_v1.5.0",
+      "version": "1.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "comment": "implement base class for components which extend beyond foundation",
+            "commit": "39625b321acf26a327021e5d904f6f91dbf9a9e2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Sep 2021 07:39:51 GMT",
       "tag": "@fluentui/web-components_v1.4.2",
       "version": "1.4.2",

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { AreaChart } from '@fluentui/react-charting';
-import { ILineChartProps } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { ILineChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 
 interface IAreaChartBasicState {
   width: number;
@@ -80,28 +79,56 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
       {
         legend: 'legend1',
         data: chart1Points,
-        color: DefaultPalette.accent,
+        color: DataVizPalette.color2,
+        opacity: 0.7,
+        lineOptions: {
+          strokeWidth: 2,
+          strokeDasharray: '5 5',
+        },
       },
       {
         legend: 'legend2',
         data: chart2Points,
-        color: DefaultPalette.blueLight,
+        color: DataVizPalette.color3,
+        opacity: 0.8,
+        lineOptions: {
+          strokeWidth: 5,
+          stroke: getColorFromToken(DataVizPalette.color13),
+        },
       },
     ];
 
     const chartData = {
       chartTitle: 'Area chart styled example',
       lineChartData: chartPoints,
+      pointOptions: { r: 10, strokeWidth: 3, opacity: 1, stroke: getColorFromToken(DataVizPalette.color13) },
+      pointLineOptions: { strokeWidth: 2, strokeDasharray: '10 10', stroke: getColorFromToken(DataVizPalette.color13) },
     };
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
       <>
-        <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
-        <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <label htmlFor="changeWidth_Styled">Change Width:</label>
+        <input
+          type="range"
+          value={this.state.width}
+          min={200}
+          max={1000}
+          id="changeWidth_Styled"
+          onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
+        />
+        <label htmlFor="changeHeight_Styled">Change Height:</label>
+        <input
+          type="range"
+          value={this.state.height}
+          min={200}
+          max={1000}
+          id="changeHeight_Styled"
+          onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
+        />
         <div style={rootStyle}>
           <AreaChart
             showXAxisLablesTooltip
@@ -109,6 +136,8 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
             width={this.state.width}
             data={chartData}
             showYAxisGridLines={false}
+            enablePerfOptimization={true}
+            enableReflow={true}
           />
         </div>
       </>

@@ -1,12 +1,12 @@
 import { Accessibility, AccessibilityAttributes, imageBehavior, ImageBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -50,7 +50,7 @@ export const imageClassName = 'ui-image';
  *  - when image has role='presentation' then screen readers navigate to the element in scan/virtual mode. To avoid this, the attribute "aria-hidden='true'" is applied by the default image behavior.
  *  - when alt property is used in combination with aria-label, arialabbeledby or title, additional screen readers verification is needed as each screen reader handles this combination differently.
  */
-export const Image: ComponentWithAs<'img', ImageProps> & FluentComponentStaticProps<ImageProps> = props => {
+export const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Image.displayName, context.telemetry);
   setStart();
@@ -95,16 +95,16 @@ export const Image: ComponentWithAs<'img', ImageProps> & FluentComponentStaticPr
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Image.handledProps, props);
 
-  const result = <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })} />;
+  const result = <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })} />;
 
   setEnd();
 
   return result;
-};
+}) as unknown as ForwardRefWithAs<'img', HTMLImageElement, ImageProps> & FluentComponentStaticProps<ImageProps>;
 
 Image.displayName = 'Image';
 Image.defaultProps = {
-  as: 'img',
+  as: 'img' as const,
   accessibility: imageBehavior,
 };
 

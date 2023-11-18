@@ -41,8 +41,7 @@ const gridStyles: Partial<IDetailsListStyles> = {
   },
   contentWrapper: {
     flex: '1 1 auto',
-    overflowY: 'auto',
-    overflowX: 'hidden',
+    overflow: 'hidden',
   },
 };
 
@@ -52,6 +51,15 @@ const classNames = mergeStyleSets({
   },
   row: {
     flex: '0 0 auto',
+  },
+  focusZone: {
+    height: '100%',
+    overflowY: 'auto',
+    overflowX: 'hidden',
+  },
+  selectionZone: {
+    height: '100%',
+    overflow: 'hidden',
   },
 });
 
@@ -128,6 +136,11 @@ const onRenderDetailsFooter: IRenderFunction<IDetailsFooterProps> = (props, defa
 };
 
 export const ScrollablePaneDetailsListExample: React.FunctionComponent = () => {
+  const focusZoneProps = {
+    className: classNames.focusZone,
+    'data-is-scrollable': 'true',
+  } as React.HTMLAttributes<HTMLElement>;
+
   return (
     <div>
       <h1 className={classNames.header}>Item list</h1>
@@ -143,7 +156,12 @@ export const ScrollablePaneDetailsListExample: React.FunctionComponent = () => {
         styles={gridStyles}
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        checkButtonAriaLabel="select row"
         onItemInvoked={onItemInvoked}
+        focusZoneProps={focusZoneProps}
+        selectionZoneProps={{
+          className: classNames.selectionZone,
+        }}
       />
     </div>
   );

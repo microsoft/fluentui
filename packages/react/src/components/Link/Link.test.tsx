@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/server';
-import { create } from '@fluentui/utilities/lib/test';
+import { create } from '@fluentui/test-utilities';
 import { Customizer } from '@fluentui/utilities';
 import { createTheme } from '@fluentui/style-utilities';
 import { isConformant } from '../../common/isConformant';
@@ -72,8 +72,6 @@ describe('Link', () => {
   isConformant({
     Component: Link,
     displayName: 'Link',
-    skipAsPropTests: false,
-    asPropHandlesRef: true,
   });
 
   it('renders Link with "as=Route" a Route element', () => {

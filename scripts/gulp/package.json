@@ -1,0 +1,21 @@
+{
+  "name": "@fluentui/scripts-gulp",
+  "version": "0.0.1",
+  "private": true,
+  "main": "src/index.ts",
+  "scripts": {
+    "format": "prettier -w --ignore-path ../../.prettierignore .",
+    "format:check": "yarn format -c",
+    "lint": "eslint --ext .ts,.js .",
+    "test": "jest --passWithNoTests",
+    "type-check": "tsc -b tsconfig.json"
+  },
+  "dependencies": {
+    "@fluentui/scripts-monorepo": "*",
+    "@fluentui/scripts-utils": "*",
+    "@fluentui/scripts-prettier": "*",
+    "@fluentui/scripts-puppeteer": "*",
+    "@fluentui/scripts-babel": "*",
+    "@fluentui/scripts-projects-test": "*"
+  }
+}

@@ -21,6 +21,7 @@ export interface ISelectableOption<T = any> {
 
   /**
    * Text to render for this option
+   * Note: the SelectAll itemType is only supported on one option in multiselect components
    */
   itemType?: SelectableOptionMenuItemType;
 
@@ -59,4 +60,5 @@ export enum SelectableOptionMenuItemType {
   Normal = 0,
   Divider = 1,
   Header = 2,
+  SelectAll = 3,
 }

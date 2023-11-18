@@ -68,6 +68,8 @@ export interface AttachmentProps extends UIComponentProps, ChildrenComponentProp
 
 export type AttachmentStylesProps = Required<Pick<AttachmentProps, 'actionable' | 'disabled'>>;
 export const attachmentClassName = 'ui-attachment';
+export const attachmentProgressContainerClassName = `${attachmentClassName}__progress-container`;
+export const attachmentProgressBarClassName = `${attachmentClassName}__progress`;
 
 /**
  * An Attachment represents a file or media attachment, which may contain some metadata or actions.
@@ -179,7 +181,11 @@ export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps,
             variables: mergeVariablesOverrides(variables, predefinedProps.variables),
           }),
         })}
-        {!_.isNil(progress) && <div className="ui-attachment__progress" style={{ width: `${progress}%` }} />}
+        {!_.isNil(progress) && (
+          <div className={attachmentProgressContainerClassName}>
+            <div className={attachmentProgressBarClassName} style={{ width: `${progress}%` }} />
+          </div>
+        )}
       </ElementType>,
     );
     setEnd();

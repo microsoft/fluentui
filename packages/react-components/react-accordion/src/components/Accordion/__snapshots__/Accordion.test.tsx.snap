@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion renders a default state 1`] = `
+<div
+  className="fui-Accordion"
+>
+  Default Accordion
+</div>
+`;

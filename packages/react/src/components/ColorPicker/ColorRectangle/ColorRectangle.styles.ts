@@ -26,6 +26,9 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
 
           [`.${IsFocusVisibleClassName} &:focus`]: {
             outline: `1px solid ${palette.neutralSecondary}`,
+            [`${HighContrastSelector}`]: {
+              outline: '2px solid CanvasText',
+            },
           },
         },
       },

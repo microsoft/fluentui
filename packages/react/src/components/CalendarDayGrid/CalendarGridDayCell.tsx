@@ -225,14 +225,21 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
       ref={(element: HTMLTableCellElement) => {
         customDayCellRef?.(element, day.originalDate, classNames);
         day.setRef(element);
+        isNavigatedDate && (navigatedDayRef.current = element);
       }}
       aria-hidden={ariaHidden}
+      aria-disabled={!ariaHidden && !day.isInBounds}
       onClick={day.isInBounds && !ariaHidden ? day.onSelected : undefined}
       onMouseOver={!ariaHidden ? onMouseOverDay : undefined}
       onMouseDown={!ariaHidden ? onMouseDownDay : undefined}
       onMouseUp={!ariaHidden ? onMouseUpDay : undefined}
       onMouseOut={!ariaHidden ? onMouseOutDay : undefined}
-      role="presentation" // the child <button> is the gridcell that our parent <tr> contains, so tell ARIA we are not
+      onKeyDown={!ariaHidden ? onDayKeyDown : undefined}
+      role="gridcell"
+      tabIndex={isNavigatedDate ? 0 : undefined}
+      aria-current={day.isToday ? 'date' : undefined}
+      aria-selected={day.isInBounds ? day.isSelected : undefined}
+      data-is-focusable={!ariaHidden && (allFocusable || (day.isInBounds ? true : undefined))}
     >
       <button
         key={day.key + 'button'}
@@ -242,19 +249,12 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
           day.isToday && classNames.dayIsToday,
           day.isToday && 'ms-CalendarDay-dayIsToday',
         )}
-        onKeyDown={!ariaHidden ? onDayKeyDown : undefined}
         aria-label={ariaLabel}
         id={isNavigatedDate ? activeDescendantId : undefined}
-        aria-current={day.isSelected ? 'date' : undefined}
-        aria-selected={day.isInBounds ? day.isSelected : undefined}
-        data-is-focusable={!ariaHidden && (allFocusable || (day.isInBounds ? true : undefined))}
-        ref={isNavigatedDate ? navigatedDayRef : undefined}
-        disabled={!allFocusable && !day.isInBounds}
-        aria-disabled={!ariaHidden && !day.isInBounds}
+        disabled={!ariaHidden && !day.isInBounds}
         type="button"
-        role="gridcell" // create grid structure
-        aria-readonly={true} // prevent grid from being "editable"
-        tabIndex={isNavigatedDate ? 0 : undefined}
+        tabIndex={-1}
+        data-is-focusable="false"
       >
         <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
         {day.isMarked && <div aria-hidden="true" className={classNames.dayMarker} />}

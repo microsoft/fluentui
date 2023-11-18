@@ -5,10 +5,23 @@ const createRule = require('../utils/createRule');
 // Nasty syntax required for type imports until https://github.com/microsoft/TypeScript/issues/22160 is implemented.
 // For some reason just importing TSESTree and accessing properties off that doesn't work.
 /**
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ExportNamedDeclaration} ExportNamedDeclaration
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ExportSpecifier} ExportSpecifier
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.Identifier} Identifier
+ * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ImportDeclaration} ImportDeclaration
  * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ImportSpecifier} ImportSpecifier
  *
- * @typedef {{ path?: string; pathRegex?: string; names?: string[]; message?: string; }} OptionsInput
- * @typedef {{ path?: string; pathRegex?: RegExp; names?: string[]; message?: string; }} Options
+ * @typedef {{
+ *   path?: string;
+ *   pathRegex?: string;
+ *   names?: (string | { regex: string })[];
+ *   message?: string;
+ * }} OptionsInput
+ * @typedef {{
+ *   path: string | RegExp;
+ *   names?: (string | RegExp)[];
+ *   message?: string;
+ * }} Options
  */
 
 /** */
@@ -17,13 +30,13 @@ module.exports = createRule({
   meta: {
     type: 'problem',
     docs: {
-      description: 'Ban importing certain identifiers from certain paths or modules.',
+      description: 'Ban importing (or re-exporting) certain identifiers from certain paths or modules.',
       category: 'Best Practices',
       recommended: false,
     },
     messages: {
-      pathNotAllowed: "Importing from '{{path}}' is not allowed{{message}}",
-      nameNotAllowed: "Importing '{{name}}' from '{{path}}' is not allowed{{message}}",
+      pathNotAllowed: "{{verb}} from '{{path}}' is not allowed{{message}}",
+      nameNotAllowed: "{{verb}} '{{name}}' from '{{path}}' is not allowed{{message}}",
     },
     schema: {
       type: 'array',
@@ -33,17 +46,27 @@ module.exports = createRule({
         properties: {
           path: {
             type: 'string',
-            description: 'Path or module to ban importing from (non-regex)',
+            description: 'Path or module to ban importing or re-exporting from (non-regex)',
           },
           pathRegex: {
             type: 'string',
-            description: 'Regex for path or module to ban importing from',
+            description: 'Regex for path or module to ban importing or re-exporting from',
           },
           names: {
             type: 'array',
-            items: { type: 'string' },
+            items: {
+              oneOf: [
+                { type: 'string' },
+                {
+                  type: 'object',
+                  properties: {
+                    regex: { type: 'string', description: 'Regex for names to ban' },
+                  },
+                },
+              ],
+            },
             description:
-              'If specified, only ban importing these names (if not specified, ban all imports from this path)',
+              'If specified, only ban importing or re-exporting these names (if not specified, ban all from this path)',
           },
           message: {
             type: 'string',
@@ -67,51 +90,93 @@ module.exports = createRule({
         throw new Error('ban-imports: each objects object must specify only one of `path` or `pathRegex`');
       }
       return {
-        path: entry.path,
-        pathRegex: entry.pathRegex ? new RegExp(entry.pathRegex) : undefined,
-        names: entry.names,
+        path: entry.path || new RegExp(/** @type {string} */ (entry.pathRegex)),
+        names: entry.names
+          ? entry.names.map(name => (typeof name === 'string' ? name : new RegExp(name.regex)))
+          : undefined,
       };
     });
 
+    /**
+     * @param {string} value
+     * @param {string | RegExp} stringOrRegex
+     */
+    function isMatch(value, stringOrRegex) {
+      return typeof stringOrRegex === 'string' ? value === stringOrRegex : stringOrRegex.test(value);
+    }
+
+    /**
+     * @param {ImportDeclaration | ExportNamedDeclaration} importOrExport the whole import/export node
+     * @param {string} importPath path importing/exporting from
+     * @param {Identifier[]} identifiers imported/exported identifiers
+     */
+    function checkImportOrExport(importOrExport, importPath, identifiers) {
+      for (const rule of options) {
+        const { path, names, message } = rule;
+
+        if (!isMatch(importPath, path)) {
+          continue;
+        }
+
+        const errorData = {
+          path: typeof path === 'string' ? path : path.source,
+          message: message ? `: ${message}` : '',
+          verb: importOrExport.type === AST_NODE_TYPES.ImportDeclaration ? 'Importing' : 'Exporting',
+        };
+
+        if (names) {
+          // Only certain imports from this path are banned
+          for (const identifier of identifiers) {
+            if (names.some(name => isMatch(identifier.name, name))) {
+              context.report({
+                node: identifier,
+                messageId: 'nameNotAllowed',
+                data: { ...errorData, name: identifier.name },
+              });
+            }
+          }
+        } else {
+          // All imports from this path are banned
+          context.report({
+            node: importOrExport,
+            messageId: 'pathNotAllowed',
+            data: errorData,
+          });
+        }
+      }
+    }
+
     return {
       ImportDeclaration: imprt => {
-        if (imprt.source.type !== AST_NODE_TYPES.Literal || typeof imprt.source.value !== 'string') {
+        // imprt.source.value is the import path (should always be a string in practice, but it's
+        // typed to allow any literal type such as number for some reason)
+        if (typeof imprt.source.value !== 'string') {
           return;
         }
 
-        const importPath = imprt.source.value;
-        // Filter out default imports and namespace (star) imports
-        const specifiers = /** @type {ImportSpecifier[]} */ (imprt.specifiers.filter(
-          spec => spec.type === AST_NODE_TYPES.ImportSpecifier,
-        ));
+        const specifiers = /** @type {ImportSpecifier[]} */ (
+          imprt.specifiers.filter(
+            // Filter out default imports and namespace (star) imports
+            spec => spec.type === AST_NODE_TYPES.ImportSpecifier,
+          )
+        )
+          // spec.imported is the original name: `foo` in `import { foo as bar } from 'whatever'`
+          .map(spec => spec.imported);
 
-        for (const rule of options) {
-          const { path, pathRegex, names, message = '' } = rule;
-          const pathForErrors = path || /** @type {RegExp} */ (pathRegex).source;
-          const messageForErrors = message && `: ${message}`;
-
-          if ((path && path === importPath) || (pathRegex && pathRegex.test(importPath))) {
-            if (!names) {
-              // All imports from this path are banned
-              context.report({
-                node: imprt,
-                messageId: 'pathNotAllowed',
-                data: { path: pathForErrors, message: messageForErrors },
-              });
-            } else {
-              // Only certain imports from this path are banned
-              for (const spec of specifiers) {
-                if (names.includes(spec.imported.name)) {
-                  context.report({
-                    node: spec.imported,
-                    messageId: 'nameNotAllowed',
-                    data: { path: pathForErrors, name: spec.imported.name, message: messageForErrors },
-                  });
-                }
-              }
-            }
-          }
+        checkImportOrExport(imprt, imprt.source.value, specifiers);
+      },
+      ExportNamedDeclaration: exprt => {
+        // Verify that the import or export is from a literal path, not an export of a local name
+        if (exprt.source?.type !== AST_NODE_TYPES.Literal || typeof exprt.source.value !== 'string') {
+          return;
         }
+
+        checkImportOrExport(
+          exprt,
+          exprt.source.value,
+          // spec.local is the original name: `foo` in `export { foo as bar } from 'whatever'`
+          exprt.specifiers.map(spec => spec.local),
+        );
       },
     };
   },

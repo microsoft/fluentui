@@ -9,18 +9,13 @@ import {
   on,
   shallowCompare,
   getPropsWithDefaults,
+  Async,
 } from '../../Utilities';
-import {
-  positionCallout,
-  getMaxHeight,
-  RectangleEdge,
-  positionCard,
-  getBoundsFromTargetWindow,
-} from '../../Positioning';
+import { positionCallout, RectangleEdge, positionCard, getBoundsFromTargetWindow } from '../../Positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
 import { AnimationClassNames } from '../../Styling';
-import { useMergedRefs, useAsync, useConst, useTarget } from '@fluentui/react-hooks';
+import { useMergedRefs, useAsync, useConst, useTarget, useOnEvent } from '@fluentui/react-hooks';
 import type { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
 import type { Point, IRectangle } from '../../Utilities';
 import type { ICalloutPositionedInfo, IPositionProps, IPosition } from '../../Positioning';
@@ -41,7 +36,11 @@ const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 // filter needs to be added as an additional way to set opacity.
 // Also set pointer-events: none so that the callout will not occlude the element it is
 // going to be positioned against
-const OFF_SCREEN_STYLE: React.CSSProperties = { opacity: 0, filter: 'opacity(0)', pointerEvents: 'none' };
+const OFF_SCREEN_STYLE: React.CSSProperties = {
+  opacity: 0,
+  filter: 'opacity(0)',
+  pointerEvents: 'none',
+};
 // role and role description go hand-in-hand. Both would be included by spreading getNativeProps for a basic element
 // This constant array can be used to filter these out of native props spread on callout root and apply them together on
 // calloutMain (the Popup component within the callout)
@@ -70,10 +69,11 @@ function useBounds(
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   targetWindow: Window | undefined,
 ) {
+  const [targetWindowResized, setTargetWindowResized] = React.useState(false);
   const cachedBounds = React.useRef<IRectangle | undefined>();
 
   const getBounds = React.useCallback((): IRectangle | undefined => {
-    if (!cachedBounds.current) {
+    if (!cachedBounds.current || targetWindowResized) {
       let currentBounds =
         typeof bounds === 'function' ? (targetWindow ? bounds(target, targetWindow) : undefined) : bounds;
 
@@ -89,10 +89,24 @@ function useBounds(
         };
       }
       cachedBounds.current = currentBounds;
+      targetWindowResized && setTargetWindowResized(false);
     }
 
     return cachedBounds.current;
-  }, [bounds, minPagePadding, target, targetRef, targetWindow]);
+  }, [bounds, minPagePadding, target, targetRef, targetWindow, targetWindowResized]);
+
+  const async: Async = useAsync();
+  useOnEvent(
+    targetWindow,
+    'resize',
+    async.debounce(
+      () => {
+        setTargetWindowResized(true);
+      },
+      500,
+      { leading: true },
+    ),
+  );
 
   return getBounds;
 }
@@ -101,92 +115,36 @@ function useBounds(
  * (Hook) to return the maximum available height for the Callout to render into.
  */
 function useMaxHeight(
-  { beakWidth, coverTarget, directionalHint, directionalHintFixed, gapSpace, isBeakVisible, hidden }: ICalloutProps,
-  targetRef: React.RefObject<Element | MouseEvent | Point | null>,
+  { calloutMaxHeight, finalHeight, directionalHint, directionalHintFixed, hidden }: ICalloutProps,
   getBounds: () => IRectangle | undefined,
+  positions?: ICalloutPositionedInfo,
 ) {
   const [maxHeight, setMaxHeight] = React.useState<number | undefined>();
-  const async = useAsync();
-
-  // Updating targetRef won't re-render the component, but it's recalculated (if needed) with every render
-  // If it mutates, we want to re-run the effect
-  const currentTarget = targetRef.current;
+  const { top, bottom } = positions?.elementPosition ?? {};
 
   React.useEffect(() => {
-    if (!maxHeight && !hidden) {
-      if (directionalHintFixed && currentTarget) {
-        // Since the callout cannot measure it's border size it must be taken into account here. Otherwise it will
-        // overlap with the target.
-        const totalGap: number = (gapSpace ?? 0) + (isBeakVisible && beakWidth ? beakWidth : 0);
-        async.requestAnimationFrame(() => {
-          if (targetRef.current) {
-            setMaxHeight(getMaxHeight(targetRef.current, directionalHint!, totalGap, getBounds(), coverTarget));
-          }
-        });
-      } else {
-        setMaxHeight(getBounds()?.height);
-      }
-    } else if (hidden) {
+    const { top: topBounds, bottom: bottomBounds } = getBounds() ?? {};
+    let calculatedHeight: number | undefined;
+
+    if (typeof top === 'number' && bottomBounds) {
+      calculatedHeight = bottomBounds - top;
+    } else if (typeof bottom === 'number' && typeof topBounds === 'number' && bottomBounds) {
+      calculatedHeight = bottomBounds - topBounds - bottom;
+    }
+
+    if (
+      (!calloutMaxHeight && !hidden) ||
+      (calloutMaxHeight && calculatedHeight && calloutMaxHeight > calculatedHeight)
+    ) {
+      setMaxHeight(calculatedHeight);
+    } else if (calloutMaxHeight) {
+      setMaxHeight(calloutMaxHeight);
+    } else {
       setMaxHeight(undefined);
     }
-  }, [
-    targetRef,
-    currentTarget,
-    gapSpace,
-    beakWidth,
-    getBounds,
-    hidden,
-    async,
-    coverTarget,
-    directionalHint,
-    directionalHintFixed,
-    isBeakVisible,
-    maxHeight,
-  ]);
+  }, [bottom, calloutMaxHeight, finalHeight, directionalHint, directionalHintFixed, getBounds, hidden, positions, top]);
 
   return maxHeight;
-}
-
-/**
- * (Hook) to return the height offset of the callout element and updates it each frame to approach the configured
- * finalHeight.
- */
-function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement: React.RefObject<HTMLDivElement>) {
-  const [heightOffset, setHeightOffset] = React.useState<number>(0);
-  const async = useAsync();
-  const setHeightOffsetTimer = React.useRef<number | undefined>();
-
-  const setHeightOffsetEveryFrame = React.useCallback((): void => {
-    if (calloutElement.current && finalHeight) {
-      setHeightOffsetTimer.current = async.requestAnimationFrame(() => {
-        const calloutMainElem = calloutElement.current?.lastChild as HTMLElement;
-
-        if (!calloutMainElem) {
-          return;
-        }
-
-        const cardScrollHeight: number = calloutMainElem.scrollHeight;
-        const cardCurrHeight: number = calloutMainElem.offsetHeight;
-        const scrollDiff: number = cardScrollHeight - cardCurrHeight;
-
-        setHeightOffset(currentHeightOffset => currentHeightOffset + scrollDiff);
-
-        if (calloutMainElem.offsetHeight < finalHeight) {
-          setHeightOffsetEveryFrame();
-        } else {
-          async.cancelAnimationFrame(setHeightOffsetTimer.current!, calloutElement.current);
-        }
-      }, calloutElement.current);
-    }
-  }, [async, calloutElement, finalHeight]);
-
-  React.useEffect(() => {
-    if (!hidden) {
-      setHeightOffsetEveryFrame();
-    }
-  }, [finalHeight, hidden, setHeightOffsetEveryFrame]);
-
-  return heightOffset;
 }
 
 /**
@@ -195,7 +153,7 @@ function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement:
 function usePositions(
   props: ICalloutProps,
   hostElement: React.RefObject<HTMLDivElement>,
-  calloutElement: React.RefObject<HTMLDivElement>,
+  calloutElement: HTMLDivElement | null,
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   getBounds: () => IRectangle | undefined,
 ) {
@@ -203,31 +161,37 @@ function usePositions(
   const positionAttempts = React.useRef(0);
   const previousTarget = React.useRef<Target>();
   const async = useAsync();
-  const { hidden, target, finalHeight, onPositioned, directionalHint } = props;
+  const { hidden, target, finalHeight, calloutMaxHeight, onPositioned, directionalHint } = props;
 
   React.useEffect(() => {
     if (!hidden) {
       const timerId = async.requestAnimationFrame(() => {
-        // If we expect a target element to position against, we need to wait until `targetRef.current`
-        // is resolved. Otherwise we can try to position.
-        const expectsTarget = !!target;
-
-        if (hostElement.current && calloutElement.current && (!expectsTarget || targetRef.current)) {
+        if (hostElement.current && calloutElement) {
           const currentProps: IPositionProps = {
             ...props,
             target: targetRef.current!,
             bounds: getBounds(),
           };
 
+          // duplicate calloutElement & remove useMaxHeight's maxHeight for position calc
+          const dupeCalloutElement = calloutElement.cloneNode(true) as HTMLElement;
+          dupeCalloutElement.style.maxHeight = calloutMaxHeight ? `${calloutMaxHeight}` : '';
+          dupeCalloutElement.style.visibility = 'hidden';
+          calloutElement.parentElement?.appendChild(dupeCalloutElement);
+
           const previousPositions = previousTarget.current === target ? positions : undefined;
 
           // If there is a finalHeight given then we assume that the user knows and will handle
           // additional positioning adjustments so we should call positionCard
           const newPositions: ICalloutPositionedInfo = finalHeight
-            ? positionCard(currentProps, hostElement.current, calloutElement.current, previousPositions)
-            : positionCallout(currentProps, hostElement.current, calloutElement.current, previousPositions);
-          // Set the new position only when the positions are not exists or one of the new callout positions
-          // are different. The position should not change if the position is within 2 decimal places.
+            ? positionCard(currentProps, hostElement.current, dupeCalloutElement, previousPositions)
+            : positionCallout(currentProps, hostElement.current, dupeCalloutElement, previousPositions);
+
+          // clean up duplicate calloutElement
+          calloutElement.parentElement?.removeChild(dupeCalloutElement);
+
+          // Set the new position only when the positions do not exist or one of the new callout positions
+          // is different. The position should not change if the position is within 2 decimal places.
           if (
             (!positions && newPositions) ||
             (positions && newPositions && !arePositionsEqual(positions, newPositions) && positionAttempts.current < 5)
@@ -242,7 +206,7 @@ function usePositions(
             onPositioned?.(positions);
           }
         }
-      }, calloutElement.current);
+      }, calloutElement);
 
       previousTarget.current = target;
 
@@ -250,12 +214,17 @@ function usePositions(
         async.cancelAnimationFrame(timerId);
         previousTarget.current = undefined;
       };
+    } else {
+      // When the callout is hidden, clear position state so that it is not accidentally used next render.
+      setPositions(undefined);
+      positionAttempts.current = 0;
     }
   }, [
     hidden,
     directionalHint,
     async,
     calloutElement,
+    calloutMaxHeight,
     hostElement,
     targetRef,
     finalHeight,
@@ -275,16 +244,13 @@ function usePositions(
 function useAutoFocus(
   { hidden, setInitialFocus }: ICalloutProps,
   positions: ICalloutPositionedInfo | undefined,
-  calloutElement: React.RefObject<HTMLDivElement>,
+  calloutElement: HTMLDivElement | null,
 ) {
   const async = useAsync();
   const hasPositions = !!positions;
   React.useEffect(() => {
-    if (!hidden && setInitialFocus && hasPositions && calloutElement.current) {
-      const timerId = async.requestAnimationFrame(
-        () => focusFirstChild(calloutElement.current!),
-        calloutElement.current,
-      );
+    if (!hidden && setInitialFocus && hasPositions && calloutElement) {
+      const timerId = async.requestAnimationFrame(() => focusFirstChild(calloutElement), calloutElement);
 
       return () => async.cancelAnimationFrame(timerId);
     }
@@ -347,7 +313,8 @@ function useDismissHandlers(
     };
 
     const dismissOnClickOrScroll = (ev: Event) => {
-      const target = ev.target as HTMLElement;
+      const eventPaths: Array<EventTarget> = ev.composedPath ? ev.composedPath() : [];
+      const target = eventPaths.length > 0 ? (eventPaths[0] as HTMLElement) : (ev.target as HTMLElement);
       const isEventTargetOutsideCallout = hostElement.current && !elementContains(hostElement.current, target);
 
       // If mouse is pressed down on callout but moved outside then released, don't dismiss the callout.
@@ -460,17 +427,22 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       target,
       hidden,
       onLayerMounted,
+      popupProps,
     } = props;
 
     const hostElement = React.useRef<HTMLDivElement>(null);
-    const calloutElement = React.useRef<HTMLDivElement>(null);
+    const [calloutElement, setCalloutElement] = React.useState<HTMLDivElement | null>(null);
+    const calloutCallback = React.useCallback((calloutEl: any) => {
+      setCalloutElement(calloutEl);
+    }, []);
     const rootRef = useMergedRefs(hostElement, forwardedRef);
 
-    const [targetRef, targetWindow] = useTarget(props.target, calloutElement);
+    const [targetRef, targetWindow] = useTarget(props.target, {
+      current: calloutElement,
+    });
     const getBounds = useBounds(props, targetRef, targetWindow);
-    const maxHeight = useMaxHeight(props, targetRef, getBounds);
-    const heightOffset = useHeightOffset(props, calloutElement);
     const positions = usePositions(props, hostElement, calloutElement, targetRef, getBounds);
+    const maxHeight = useMaxHeight(props, getBounds, positions);
     const [mouseDownOnPopup, mouseUpOnPopup] = useDismissHandlers(
       props,
       positions,
@@ -478,6 +450,17 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       targetRef,
       targetWindow,
     );
+
+    // do not set both top and bottom css props from positions
+    // instead, use maxHeight
+    const isForcedInBounds = positions?.elementPosition.top && positions?.elementPosition.bottom;
+    const cssPositions = {
+      ...positions?.elementPosition,
+      maxHeight,
+    };
+    if (isForcedInBounds) {
+      cssPositions.bottom = undefined;
+    }
 
     useAutoFocus(props, positions, calloutElement);
 
@@ -493,15 +476,13 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       return null;
     }
 
-    const getContentMaxHeight: number | undefined = maxHeight ? maxHeight + heightOffset : undefined;
-    const contentMaxHeight: number | undefined = calloutMaxHeight || getContentMaxHeight;
     const overflowYHidden = hideOverflow;
 
     const beakVisible = isBeakVisible && !!target;
     const classNames = getClassNames(styles!, {
       theme: props.theme!,
       className,
-      overflowYHidden: overflowYHidden,
+      overflowYHidden,
       calloutWidth,
       positions,
       beakWidth,
@@ -512,28 +493,31 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
     });
 
     const overflowStyle: React.CSSProperties = {
-      maxHeight: contentMaxHeight,
+      maxHeight: calloutMaxHeight ? calloutMaxHeight : '100%',
       ...style,
       ...(overflowYHidden && { overflowY: 'hidden' }),
     };
 
     const visibilityStyle: React.CSSProperties | undefined = props.hidden ? { visibility: 'hidden' } : undefined;
     // React.CSSProperties does not understand IRawStyle, so the inline animations will need to be cast as any for now.
-    const content = (
+    return (
       <div ref={rootRef} className={classNames.container} style={visibilityStyle}>
         <div
           {...getNativeProps(props, divProperties, ARIA_ROLE_ATTRIBUTES)}
           className={css(classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!])}
-          style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
+          style={positions ? { ...cssPositions } : OFF_SCREEN_STYLE}
           // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
           tabIndex={-1}
-          ref={calloutElement}
+          ref={calloutCallback}
         >
           {beakVisible && <div className={classNames.beak} style={getBeakPosition(positions)} />}
           {beakVisible && <div className={classNames.beakCurtain} />}
           <Popup
-            {...getNativeProps(props, ARIA_ROLE_ATTRIBUTES)}
+            // don't use getNativeElementProps for role and roledescription because it will also
+            // pass through data-* props (resulting in them being used in two places)
+            role={props.role}
+            aria-roledescription={props['aria-roledescription']}
             ariaDescribedBy={ariaDescribedBy}
             ariaLabel={ariaLabel}
             ariaLabelledBy={ariaLabelledBy}
@@ -545,14 +529,13 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
             onScroll={onScroll}
             shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
+            {...popupProps}
           >
             {children}
           </Popup>
         </div>
       </div>
     );
-
-    return content;
   }),
   (previousProps: ICalloutProps, nextProps: ICalloutProps) => {
     if (!nextProps.shouldUpdateWhenHidden && previousProps.hidden && nextProps.hidden) {
@@ -571,6 +554,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
 function getBeakPosition(positions?: ICalloutPositionedInfo): React.CSSProperties {
   const beakPositionStyle: React.CSSProperties = {
     ...positions?.beakPosition?.elementPosition,
+    display: positions?.beakPosition?.hideBeak ? 'none' : undefined,
   };
 
   if (!beakPositionStyle.top && !beakPositionStyle.bottom && !beakPositionStyle.left && !beakPositionStyle.right) {

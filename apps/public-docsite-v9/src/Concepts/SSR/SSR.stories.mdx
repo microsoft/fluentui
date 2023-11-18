@@ -1,0 +1,82 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Developer/Server-Side Rendering/Basic setup" />
+
+## Server-Side Rendering
+
+Fluent UI React v9 supports Server-Side Rendering.
+
+### Basic setup
+
+Add `@fluentui/react-components` dependency:
+
+```shell
+# Using Yarn
+yarn add @fluentui/react-components
+
+# Using NPM
+npm install @fluentui/react-components
+```
+
+For any setup using SSR, you need to provide a `RendererProvider`, `SSRProvider` and `FluentProvider` in the root of your app. If these providers are not added, there will be issues when hydrating. See the following example:
+
+```tsx
+import express from 'express';
+import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import {
+  createDOMRenderer,
+  RendererProvider,
+  renderToStyleElements,
+  FluentProvider,
+  webLightTheme,
+  SSRProvider,
+} from '@fluentui/react-components';
+
+const useExampleStyles = makeStyles({
+  root: {
+    color: 'red',
+  },
+});
+
+const ExampleComponent: React.FC = () => {
+  const classes = useExampleStyles();
+
+  return <div className={classes.root}>Hello world</div>;
+};
+
+const server = express();
+
+server.get('/', (req, res) => {
+  const renderer = createDOMRenderer();
+
+  const html = ReactDOMServer.renderToString(
+    <RendererProvider renderer={renderer}>
+      <SSRProvider>
+        <FluentProvider theme={webLightTheme}>
+          <ExampleComponent />
+        </FluentProvider>
+      </SSRProvider>
+    </RendererProvider>,
+  );
+
+  // Converting Fluent UI styles to style elements. 👇
+  const style = ReactDOMServer.renderToStaticMarkup(<>{renderToStyleElements(renderer)}</>);
+
+  res.write(`
+  <!DOCTYPE html>
+  <html>
+    <head>
+      ${/* 👇 adding Fluent UI styles elements to output */}
+      ${style}
+    </head>
+    <body>
+      <div id="root">${html}</div>
+    </body>
+  </html>
+  `);
+  res.end();
+});
+
+server.listen(3000, 'localhost');
+```

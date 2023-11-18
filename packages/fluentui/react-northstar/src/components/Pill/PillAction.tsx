@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Accessibility, pillActionBehavior, PillActionBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import {
   childrenExist,
@@ -39,8 +39,7 @@ export const pillActionClassName = 'ui-pill__action';
 /**
  * A PillAction allows user to execute an action.
  */
-export const PillAction: ComponentWithAs<'div', PillActionProps> &
-  FluentComponentStaticProps<PillActionProps> = props => {
+export const PillAction = React.forwardRef<HTMLDivElement, PillActionProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(PillAction.displayName, context.telemetry);
   setStart();
@@ -66,6 +65,7 @@ export const PillAction: ComponentWithAs<'div', PillActionProps> &
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
+        ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
@@ -77,7 +77,7 @@ export const PillAction: ComponentWithAs<'div', PillActionProps> &
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, PillActionProps> & FluentComponentStaticProps<PillActionProps>;
 
 PillAction.displayName = 'PillAction';
 

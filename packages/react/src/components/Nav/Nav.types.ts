@@ -3,6 +3,7 @@ import type { IStyle, ITheme } from '../../Styling';
 import type { IRefObject, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
 import type { IIconProps } from '../Icon/Icon.types';
 import type { IButtonProps } from '../../Button';
+import type { IFocusZoneProps } from '../../FocusZone';
 
 /**
  * {@doccategory Nav}
@@ -102,6 +103,12 @@ export interface INavProps {
   initialSelectedKey?: string;
 
   /**
+   * (Optional) Override the role of the `<nav>` element.
+   * This is only recommended if you're nesting `Nav` inside a parent navigation region.
+   */
+  role?: string;
+
+  /**
    * (Optional) The key of the nav item selected by caller.
    */
   selectedKey?: string;
@@ -123,6 +130,11 @@ export interface INavProps {
    * @deprecated Use ariaCurrent on links instead
    */
   selectedAriaLabel?: string;
+
+  /**
+   * (Optional) Used to define the props of the FocusZone wrapper.
+   */
+  focusZoneProps?: IFocusZoneProps;
 }
 
 /**
@@ -161,6 +173,9 @@ export interface INavLinkGroup {
 
   /**
    * ARIA label when group is collapsed and can be expanded.
+   * WARNING: using separate labels for expanded and collapsed state is not recommended.
+   *
+   * @deprecated Use `expandAriaLabel` on its own instead.
    */
   collapseAriaLabel?: string;
 
@@ -168,6 +183,10 @@ export interface INavLinkGroup {
    * (Optional) Any additional properties to apply to a group.
    */
   groupData?: any;
+  /**
+   * Provides consumer control to update the collapsed/expanded state of the group.
+   */
+  isExpanded?: boolean;
 }
 
 /**

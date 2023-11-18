@@ -1,1 +1,1 @@
-export * from '@fluentui/theme/lib/types/IAnimationStyles';
+export type { IAnimationStyles, IAnimationVariables } from '@fluentui/theme';

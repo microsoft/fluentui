@@ -17,7 +17,12 @@ import { ReactWrapper } from 'enzyme';
 const menuImplementsCollectionShorthandProp = implementsCollectionShorthandProp(Menu);
 
 describe('Menu', () => {
-  isConformant(Menu, { testPath: __filename, constructorName: 'Menu', autoControlledProps: ['activeIndex'] });
+  isConformant(Menu, {
+    testPath: __filename,
+    constructorName: 'Menu',
+    autoControlledProps: ['activeIndex'],
+    skipAsPropTests: 'as-component',
+  });
   menuImplementsCollectionShorthandProp('items', MenuItem);
 
   const getItems = () => [
@@ -59,6 +64,8 @@ describe('Menu', () => {
       const items: MenuItemProps[] = getNestedItems();
       items[1].on = 'hover';
       const menu = mountWithProvider(<Menu items={items} />);
+
+      expect(menu.find('li').at(1).getDOMNode().getAttribute('on')).toBeNull();
 
       expect(menu.find('MenuItem').length).toBe(2);
 

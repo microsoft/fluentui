@@ -35,7 +35,7 @@ describe('safeSetTimeout', () => {
 
     expect(setTimeoutCalled).toEqual(false);
 
-    jest.runTimersToTime(100);
+    jest.advanceTimersByTime(100);
 
     expect(setTimeoutCalled).toEqual(true);
   });
@@ -47,7 +47,7 @@ describe('safeSetTimeout', () => {
 
     wrapper.unmount();
 
-    jest.runTimersToTime(100);
+    jest.advanceTimersByTime(100);
 
     expect(setTimeoutCalled).toEqual(false);
   });

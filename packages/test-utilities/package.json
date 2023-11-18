@@ -1,9 +1,9 @@
 {
   "name": "@fluentui/test-utilities",
-  "version": "8.0.8",
+  "version": "8.3.7",
   "description": "Utilities used when testing components.",
-  "main": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "lib-commonjs/index.js",
+  "typings": "lib-commonjs/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -19,19 +19,20 @@
     "test": "just-scripts test"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.4.1",
-    "@types/enzyme": "3.10.3",
-    "@types/react": "16.9.42",
-    "@types/react-test-renderer": "^16.0.0",
-    "enzyme": "~3.10.0",
-    "react": "16.8.6",
-    "react-test-renderer": "^16.3.0",
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/eslint-plugin": "*",
+    "@fluentui/scripts-jest": "*",
+    "@fluentui/scripts-tasks": "*"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react": ">=16.8.0 <19.0.0",
     "enzyme": "^3.0.0",
-    "react": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <19.0.0",
     "react-test-renderer": ">=16.3.0 <18.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./lib-commonjs/index.d.ts",
+      "require": "./lib-commonjs/index.js"
+    }
   }
 }

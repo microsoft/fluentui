@@ -5,11 +5,14 @@ import { SeparatorIconExample } from './Separator.Icon.Example';
 
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
-const SeparatorBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/Separator.Basic.Example.tsx') as string;
+const SeparatorBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/Separator.Basic.Example.tsx') as string;
 
-const SeparatorThemingExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/Separator.Theming.Example.tsx') as string;
+const SeparatorThemingExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/Separator.Theming.Example.tsx') as string;
 
-const SeparatorIconExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/Separator.Icon.Example.tsx') as string;
+const SeparatorIconExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/Separator.Icon.Example.tsx') as string;
 
 export const SeparatorPageProps: IDocPageProps = {
   title: 'Separator',
