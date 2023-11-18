@@ -124,6 +124,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
             {...child.props}
             key={child.key}
             ref={(element: HTMLElement & IndexedResizeCallbackElement) => {
+              // If a ref exists in props, call it
               if (typeof child.props.ref === 'function') {
                 child.props.ref(element);
               } else if (child.props.ref) {
@@ -142,6 +143,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
                 }
               }
 
+              // Call the auto-measure ref attachment.
               measureObject.createIndexedRef(index)(element);
             }}
           />

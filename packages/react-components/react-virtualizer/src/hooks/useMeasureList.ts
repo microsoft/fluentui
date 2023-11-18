@@ -33,7 +33,7 @@ export function useMeasureList<
     [currentIndex, defaultItemSize],
   );
 
-  const handleResize = (entries: ResizeObserverEntry[]) => {
+  const handleElementResizeCallback = (entries: ResizeObserverEntry[]) => {
     for (const entry of entries) {
       const target = entry.target as TElement;
       // Call the elements own resize handler (indexed)
@@ -46,13 +46,18 @@ export function useMeasureList<
     heightArray.current = new Array(totalLength).fill(defaultItemSize);
   }, [defaultItemSize, totalLength]);
 
-  // Keep the reference of ResizeObserver in the state, as it should live through renders
-  const [resizeObserver] = React.useState(() => createResizeObserverFromDocument(targetDocument, handleResize));
+  // Keep the reference of ResizeObserver as a ref, as it should live through renders
+  const resizeObserver = React.useRef(createResizeObserverFromDocument(targetDocument, handleElementResizeCallback));
 
+  /* createIndexedRef provides a dynamic function to create an undefined number of refs at render time
+   * these refs then provide an indexed callback via attaching 'handleResize' to the element itself
+   * this function is then called on resize by handleElementResize and relies on indexing
+   * to track continuous sizes throughout renders while releasing all virtualized element refs each render cycle.
+   */
   const createIndexedRef = React.useCallback(
     (index: number) => {
       const measureElementRef = (el: TElement) => {
-        if (!targetDocument || !resizeObserver) {
+        if (!targetDocument || !resizeObserver.current) {
           return;
         }
 
@@ -64,15 +69,13 @@ export function useMeasureList<
 
         // cleanup previous container
         if (refArray.current[index] !== undefined && refArray.current[index] !== null) {
-          resizeObserver.unobserve(refArray.current[index]!);
+          resizeObserver.current.unobserve(refArray.current[index]!);
         }
 
         refArray.current[index] = undefined;
         if (el) {
           refArray.current[index] = el;
-          if (el !== undefined) {
-            resizeObserver.observe(el);
-          }
+          resizeObserver.current.observe(el);
           handleIndexUpdate(index);
         }
       };
@@ -83,7 +86,8 @@ export function useMeasureList<
   );
 
   React.useEffect(() => {
-    return () => resizeObserver?.disconnect();
+    const _resizeObserver = resizeObserver;
+    return () => _resizeObserver.current?.disconnect();
   }, [resizeObserver]);
 
   return { widthArray, heightArray, createIndexedRef, refArray };
