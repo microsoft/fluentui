@@ -6,9 +6,6 @@ import { renderListItem_unstable } from './renderListItem';
 import { useListItemStyles_unstable } from './useListItemStyles.styles';
 import type { ListItemProps } from './ListItem.types';
 
-/**
- * ListItem component - TODO: add more docs
- */
 export const ListItem: ForwardRefComponent<ListItemProps> = React.forwardRef<HTMLElement>((props, ref) => {
   const state = useListItem_unstable(props, ref);
 

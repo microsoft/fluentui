@@ -7,9 +7,6 @@ import { useListStyles_unstable } from './useListStyles.styles';
 import type { ListProps } from './List.types';
 import { useListContextValues_unstable } from './useListContextValues';
 
-/**
- * List component - TODO: add more docs
- */
 export const List: ForwardRefComponent<ListProps> = React.forwardRef((props, ref) => {
   const state = useList_unstable(props, ref);
   const listContext = useListContextValues_unstable(state);
