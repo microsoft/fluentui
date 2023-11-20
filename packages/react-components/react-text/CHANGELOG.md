@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Thu, 09 Nov 2023 17:29:45 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Nov 2023 09:55:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.3.47)
+
+Mon, 20 Nov 2023 09:55:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.3.46..@fluentui/react-text_v9.3.47)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.13.0 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
 
 ## [9.3.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.3.46)
 
