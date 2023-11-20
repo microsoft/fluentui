@@ -4,9 +4,9 @@ import { List, ListItem } from '@fluentui/react-list-preview';
 
 import countries from './countries';
 
-const CountriesList = (props: React.ComponentProps<typeof List>) => (
-  <List aria-label="Countries" tabIndex={0} {...props} />
-);
+const CountriesList = React.forwardRef<HTMLUListElement>((props: React.ComponentProps<typeof List>, ref) => (
+  <List aria-label="Countries" tabIndex={0} {...props} ref={ref} />
+));
 
 export const VirtualizedList = () => {
   return (
