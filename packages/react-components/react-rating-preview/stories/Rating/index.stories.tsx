@@ -9,6 +9,7 @@ export { Max } from './RatingMax.stories';
 export { Precision } from './RatingPrecision.stories';
 export { ReadOnly } from './RatingReadOnly.stories';
 export { Size } from './RatingSize.stories';
+export { Shape } from './RatingShape.stories';
 
 export default {
   title: 'Preview Components/Rating',
