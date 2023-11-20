@@ -38,9 +38,9 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
     { elementType: 'span' },
   );
 
-  let outlineIcon;
+  let unselectedOutlineIcon;
   if (iconFillWidth < 1) {
-    outlineIcon = slot.always(props.unfilledIcon, {
+    unselectedOutlineIcon = slot.always(props.unselectedFilledIcon, {
       defaultProps: {
         children: context.iconOutline,
         'aria-hidden': true,
@@ -49,9 +49,9 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
     });
   }
 
-  let unfilledIcon;
+  let unselectedFilledIcon;
   if (iconFillWidth < 1 && context.readOnly /** TODO add prop to control this instead of using readOnly */) {
-    unfilledIcon = slot.always(props.unfilledIcon, {
+    unselectedFilledIcon = slot.always(props.unselectedFilledIcon, {
       defaultProps: {
         children: context.iconFilled,
         'aria-hidden': true,
@@ -60,9 +60,9 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
     });
   }
 
-  let filledIcon;
+  let selectedIcon;
   if (iconFillWidth > 0) {
-    filledIcon = slot.always(props.filledIcon, {
+    selectedIcon = slot.always(props.selectedIcon, {
       defaultProps: {
         children: context.iconFilled,
         'aria-hidden': true,
@@ -114,16 +114,16 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
     value,
     components: {
       root: 'span',
-      unfilledIcon: 'div',
-      filledIcon: 'div',
-      outlineIcon: 'div',
+      selectedIcon: 'div',
+      unselectedFilledIcon: 'div',
+      unselectedOutlineIcon: 'div',
       halfValueInput: 'input',
       fullValueInput: 'input',
     },
     root,
-    unfilledIcon,
-    filledIcon,
-    outlineIcon,
+    selectedIcon,
+    unselectedFilledIcon,
+    unselectedOutlineIcon,
     halfValueInput,
     fullValueInput,
   };

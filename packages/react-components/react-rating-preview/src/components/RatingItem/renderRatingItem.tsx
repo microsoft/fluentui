@@ -14,9 +14,9 @@ export const renderRatingItem_unstable = (state: RatingItemState) => {
     <state.root>
       {state.halfValueInput && <state.halfValueInput />}
       {state.fullValueInput && <state.fullValueInput />}
-      {state.unfilledIcon && <state.unfilledIcon />}
-      {state.outlineIcon && <state.outlineIcon />}
-      {state.filledIcon && <state.filledIcon />}
+      {state.unselectedFilledIcon && <state.unselectedFilledIcon />}
+      {state.unselectedOutlineIcon && <state.unselectedOutlineIcon />}
+      {state.selectedIcon && <state.selectedIcon />}
     </state.root>
   );
 };

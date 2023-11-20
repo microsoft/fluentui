@@ -7,9 +7,18 @@ export type RatingItemSlots = {
    * Default html element is span
    */
   root: NonNullable<Slot<'span'>>;
-  outlineIcon?: NonNullable<Slot<'div'>>;
-  unfilledIcon?: NonNullable<Slot<'div'>>;
-  filledIcon?: NonNullable<Slot<'div'>>;
+  /**
+   * Icon displayed when the rating value is greater than or equal to the item's value.
+   */
+  selectedIcon?: NonNullable<Slot<'div'>>;
+  /**
+   * Icon displayed when the rating value is less than the item's value, when using 'filled' style.
+   */
+  unselectedFilledIcon?: NonNullable<Slot<'div'>>;
+  /**
+   * Icon displayed when the rating value is less than the item's value, when using 'outline' style or high contrast.
+   */
+  unselectedOutlineIcon?: NonNullable<Slot<'div'>>;
   /**
    * Radio input slot used for half star precision
    */

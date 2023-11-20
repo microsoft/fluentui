@@ -6,9 +6,9 @@ import { tokens } from '@fluentui/react-theme';
 
 export const ratingItemClassNames: SlotClassNames<RatingItemSlots> = {
   root: 'fui-RatingItem',
-  unfilledIcon: 'fui-RatingItem__unfilledIcon',
-  filledIcon: 'fui-RatingItem__filledIcon',
-  outlineIcon: 'fui-RatingItem__outlineIcon',
+  selectedIcon: 'fui-RatingItem__selectedIcon',
+  unselectedFilledIcon: 'fui-RatingItem__unselectedFilledIcon',
+  unselectedOutlineIcon: 'fui-RatingItem__unselectedOutlineIcon',
   halfValueInput: 'fui-RatingItem__halfValueInput',
   fullValueInput: 'fui-RatingItem__fullValueInput',
 };
@@ -85,7 +85,7 @@ const useIndicatorStyles = makeStyles({
     left: '50%',
     marginLeft: '-50%',
   },
-  filledUnselected: {
+  unselectedFilled: {
     color: tokens.colorNeutralBackground6,
     '@media (forced-colors: active)': {
       // In high contrast, the 'outline' icon is always visible,
@@ -93,10 +93,10 @@ const useIndicatorStyles = makeStyles({
       display: 'none',
     },
   },
-  outlineUnselected: {
+  unselectedOutline: {
     color: tokens.colorNeutralForeground3,
   },
-  outlineHighContrastOnly: {
+  unselectedOutlineHighContrast: {
     // When the style is 'filled' for unselected icons, we still
     // need to show the outline version for high contrast.
     color: tokens.colorTransparentStroke,
@@ -134,31 +134,31 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
     );
   }
 
-  if (state.unfilledIcon) {
-    state.unfilledIcon.className = mergeClasses(
-      ratingItemClassNames.unfilledIcon,
+  if (state.unselectedOutlineIcon) {
+    state.unselectedOutlineIcon.className = mergeClasses(
+      ratingItemClassNames.unselectedOutlineIcon,
       indicatorBaseClassName,
-      indicatorStyles.filledUnselected,
+      indicatorStyles.unselectedOutline,
+      state.unselectedFilledIcon ? indicatorStyles.unselectedOutlineHighContrast : indicatorStyles.unselectedOutline,
       iconFillWidth === 0.5 && indicatorStyles.upperHalf,
-      state.unfilledIcon.className,
+      state.unselectedOutlineIcon.className,
     );
   }
-  if (state.outlineIcon) {
-    state.outlineIcon.className = mergeClasses(
-      ratingItemClassNames.outlineIcon,
+  if (state.unselectedFilledIcon) {
+    state.unselectedFilledIcon.className = mergeClasses(
+      ratingItemClassNames.unselectedFilledIcon,
       indicatorBaseClassName,
-      indicatorStyles.outlineUnselected,
-      state.unfilledIcon ? indicatorStyles.outlineHighContrastOnly : indicatorStyles.outlineUnselected,
+      indicatorStyles.unselectedFilled,
       iconFillWidth === 0.5 && indicatorStyles.upperHalf,
-      state.outlineIcon.className,
+      state.unselectedFilledIcon.className,
     );
   }
-  if (state.filledIcon) {
-    state.filledIcon.className = mergeClasses(
-      ratingItemClassNames.filledIcon,
+  if (state.selectedIcon) {
+    state.selectedIcon.className = mergeClasses(
+      ratingItemClassNames.selectedIcon,
       indicatorBaseClassName,
       iconFillWidth === 0.5 && indicatorStyles.lowerHalf,
-      state.filledIcon.className,
+      state.selectedIcon.className,
     );
   }
 
