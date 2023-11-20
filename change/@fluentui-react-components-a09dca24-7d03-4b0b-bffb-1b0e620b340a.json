@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "chore: Re-export missing exports from @fluentui/react-drawer in @fluentui/react-components.",
-  "packageName": "@fluentui/react-components",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,45 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Mon, 20 Nov 2023 09:55:08 GMT",
+      "tag": "@fluentui/react-checkbox_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "31f1f61ba423c280294f610e076251d3b735ca17",
+            "comment": "fix: Replace child selectors with css vars in Checkbox styles"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-field to v9.1.42",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-label to v9.1.50",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.13.0",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-checkbox",
+            "comment": "Bump @fluentui/react-tabster to v9.14.6",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Nov 2023 17:51:27 GMT",
       "tag": "@fluentui/react-checkbox_v9.1.56",
       "version": "9.1.56",

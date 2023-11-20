@@ -2,6 +2,27 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Mon, 20 Nov 2023 09:55:10 GMT",
+      "tag": "@fluentui/react-tabster_v9.14.6",
+      "version": "9.14.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "5103727605543cf631cd50f5348562b763f08ee0",
+            "comment": "chore: Export KeyborgFocusInEvent and KEYBORG_FOCUSIN"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.13.0",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Nov 2023 17:51:27 GMT",
       "tag": "@fluentui/react-tabster_v9.14.5",
       "version": "9.14.5",

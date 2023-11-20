@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 14 Nov 2023 17:51:26 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Nov 2023 09:55:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.41.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.41.0)
+
+Mon, 20 Nov 2023 09:55:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.40.0..@fluentui/react-components_v9.41.0)
+
+### Minor changes
+
+- `@fluentui/react-checkbox`
+  - fix: Replace child selectors with css vars in Checkbox styles ([PR #29796](https://github.com/microsoft/fluentui/pull/29796) by behowell@microsoft.com)
+- `@fluentui/react-components`
+  - chore: Re-export missing exports from @fluentui/react-drawer in @fluentui/react-components. ([PR #29873](https://github.com/microsoft/fluentui/pull/29873) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-provider`
+  - feat: Add TeachingPopover style hooks ([PR #29782](https://github.com/microsoft/fluentui/pull/29782) by mifraser@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - feat: TeachingPopover style hooks added ([PR #29782](https://github.com/microsoft/fluentui/pull/29782) by mifraser@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: Tooltips are no longer triggered by programmatic focus() moves. ([PR #29791](https://github.com/microsoft/fluentui/pull/29791) by behowell@microsoft.com)
+
+### Patches
+
+- `@fluentui/priority-overflow`
+  - fix: disconnect should dispose all state correctly ([PR #29375](https://github.com/microsoft/fluentui/pull/29375) by lingfan.gao@microsoft.com)
+- `@fluentui/react-dialog`
+  - Remove CSS containment from DialogSurface ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by jurokapsiar@gmail.com)
+- `@fluentui/react-overflow`
+  - fix: register should happen again once observe options change ([PR #29375](https://github.com/microsoft/fluentui/pull/29375) by lingfan.gao@microsoft.com)
+- `@fluentui/react-tabster`
+  - chore: Export KeyborgFocusInEvent and KEYBORG_FOCUSIN ([PR #29791](https://github.com/microsoft/fluentui/pull/29791) by behowell@microsoft.com)
 
 ## [9.40.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.40.0)
 
