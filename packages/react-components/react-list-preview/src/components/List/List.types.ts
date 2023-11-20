@@ -13,7 +13,7 @@ import { ListSelectionState } from '../../hooks/types';
 export type ListLayout = 'horizontal' | 'vertical' | 'grid';
 
 // Component ref interface
-export type IList = {
+export type ListComponentRef = {
   selection: ListState['selection'];
 };
 
@@ -32,7 +32,7 @@ export type ListProps = ComponentProps<ListSlots> & {
   selectionMode?: SelectionMode;
   defaultSelectedItems?: SelectionItemId[];
   onSelectionChange?: (event: React.SyntheticEvent, data: OnSelectionChangeData) => void;
-  componentRef?: React.Ref<IList>;
+  componentRef?: React.Ref<ListComponentRef>;
 };
 
 export type ListContextValue = {

@@ -20,7 +20,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { UseArrowNavigationGroupOptions } from '@fluentui/react-components';
 
 // @public (undocumented)
-export type IList = {
+export type ListComponentRef = {
     selection: ListState['selection'];
 };
 
@@ -86,7 +86,7 @@ export type ListProps = ComponentProps<ListSlots> & {
     selectionMode?: SelectionMode_2;
     defaultSelectedItems?: SelectionItemId[];
     onSelectionChange?: (event: React_2.SyntheticEvent, data: OnSelectionChangeData) => void;
-    componentRef?: React_2.Ref<IList>;
+    componentRef?: React_2.Ref<ListComponentRef>;
 };
 
 // @public (undocumented)

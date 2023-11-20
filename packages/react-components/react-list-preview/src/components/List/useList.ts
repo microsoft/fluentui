@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { ListProps, ListState, IList } from './List.types';
+import { ListProps, ListState, ListComponentRef } from './List.types';
 import { useListFeatures } from '../../hooks/useListFeatures';
 import { useListSelection } from '../../hooks/useListSelection';
 
-const useComponentRef = (componentRef: React.Ref<IList> | undefined, selection: ListState['selection']) => {
+const useComponentRef = (componentRef: React.Ref<ListComponentRef> | undefined, selection: ListState['selection']) => {
   React.useImperativeHandle(
     componentRef,
     () => ({

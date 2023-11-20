@@ -1,5 +1,5 @@
 import { Button, makeStyles, Persona, shorthands } from '@fluentui/react-components';
-import { IList, List, ListItem } from '@fluentui/react-list-preview';
+import { ListComponentRef, List, ListItem } from '@fluentui/react-list-preview';
 import * as React from 'react';
 import names from './names';
 
@@ -42,7 +42,7 @@ export const ListSelectionUncontrolled = () => {
 
   const defaultSelectedItems = ['Demetra Manwaring', 'Bart Merrill'];
 
-  const ref = React.useRef<IList>(null);
+  const ref = React.useRef<ListComponentRef>(null);
 
   return (
     <div className={classes.wrapper}>
