@@ -21,6 +21,15 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
 
   const displayedRatingValue = context.hoveredValue ?? ratingValue;
 
+  let iconFillWidth;
+  if (context.compact || displayedRatingValue >= value) {
+    iconFillWidth = 1;
+  } else if (displayedRatingValue >= value - 0.5) {
+    iconFillWidth = 0.5;
+  } else {
+    iconFillWidth = 0;
+  }
+
   const root = slot.always(
     getIntrinsicElementProps('span', {
       ref: useMergedRefs(useFocusWithin<HTMLSpanElement>(), ref),
@@ -29,20 +38,38 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
     { elementType: 'span' },
   );
 
-  const unfilledIcon = slot.always(props.unfilledIcon, {
-    defaultProps: {
-      children: context.iconOutline,
-      'aria-hidden': true,
-    },
-    elementType: 'div',
-  });
-  const filledIcon = slot.always(props.filledIcon, {
-    defaultProps: {
-      children: context.iconFilled,
-      'aria-hidden': true,
-    },
-    elementType: 'div',
-  });
+  let outlineIcon;
+  if (iconFillWidth < 1) {
+    outlineIcon = slot.always(props.unfilledIcon, {
+      defaultProps: {
+        children: context.iconOutline,
+        'aria-hidden': true,
+      },
+      elementType: 'div',
+    });
+  }
+
+  let unfilledIcon;
+  if (iconFillWidth < 1 && context.readOnly /** TODO add prop to control this instead of using readOnly */) {
+    unfilledIcon = slot.always(props.unfilledIcon, {
+      defaultProps: {
+        children: context.iconFilled,
+        'aria-hidden': true,
+      },
+      elementType: 'div',
+    });
+  }
+
+  let filledIcon;
+  if (iconFillWidth > 0) {
+    filledIcon = slot.always(props.filledIcon, {
+      defaultProps: {
+        children: context.iconFilled,
+        'aria-hidden': true,
+      },
+      elementType: 'div',
+    });
+  }
 
   let halfValueInput;
   if (!context.readOnly && context.precision && !context.compact) {
@@ -83,18 +110,20 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
     compact: context.compact,
     precision: context.precision,
     size: context.size,
-    displayedRatingValue,
+    iconFillWidth,
     value,
     components: {
       root: 'span',
       unfilledIcon: 'div',
       filledIcon: 'div',
+      outlineIcon: 'div',
       halfValueInput: 'input',
       fullValueInput: 'input',
     },
     root,
     unfilledIcon,
     filledIcon,
+    outlineIcon,
     halfValueInput,
     fullValueInput,
   };

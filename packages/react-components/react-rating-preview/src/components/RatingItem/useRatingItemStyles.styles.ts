@@ -8,6 +8,7 @@ export const ratingItemClassNames: SlotClassNames<RatingItemSlots> = {
   root: 'fui-RatingItem',
   unfilledIcon: 'fui-RatingItem__unfilledIcon',
   filledIcon: 'fui-RatingItem__filledIcon',
+  outlineIcon: 'fui-RatingItem__outlineIcon',
   halfValueInput: 'fui-RatingItem__halfValueInput',
   fullValueInput: 'fui-RatingItem__fullValueInput',
 };
@@ -67,7 +68,6 @@ const useInputStyles = makeStyles({
 
 const useIndicatorBaseClassName = makeResetStyles({
   display: 'inline-block',
-  color: tokens.colorNeutralForeground1,
   overflow: 'hidden',
   fill: 'currentColor',
   pointerEvents: 'none',
@@ -83,9 +83,23 @@ const useIndicatorStyles = makeStyles({
   },
   upperHalf: {
     left: '50%',
+    marginLeft: '-50%',
   },
-  hidden: {
-    display: 'none',
+  filledUnselected: {
+    color: tokens.colorNeutralBackground6,
+    '@media (forced-colors: active)': {
+      // In high contrast, the 'outline' icon is always visible,
+      // so we need to hide the 'filled' icon.
+      display: 'none',
+    },
+  },
+  outlineUnselected: {
+    color: tokens.colorNeutralForeground3,
+  },
+  outlineHighContrastOnly: {
+    // When the style is 'filled' for unselected icons, we still
+    // need to show the outline version for high contrast.
+    color: tokens.colorTransparentStroke,
   },
 });
 
@@ -93,24 +107,12 @@ const useIndicatorStyles = makeStyles({
  * Apply styling to the RatingItem slots based on the state
  */
 export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItemState => {
-  const { size, displayedRatingValue, value, compact } = state;
+  const { size, iconFillWidth } = state;
   const styles = useStyles();
   const inputBaseClassName = useInputBaseClassName();
   const inputStyles = useInputStyles();
   const indicatorBaseClassName = useIndicatorBaseClassName();
   const indicatorStyles = useIndicatorStyles();
-
-  let iconWidth;
-  //to-do : 5 should be max
-  if (compact) {
-    iconWidth = value / 5.0;
-  } else if (displayedRatingValue >= value) {
-    iconWidth = 1;
-  } else if (displayedRatingValue >= value - 0.5) {
-    iconWidth = 0.5;
-  } else {
-    iconWidth = 0;
-  }
 
   state.root.className = mergeClasses(ratingItemClassNames.root, styles.root, styles[size], state.root.className);
 
@@ -136,28 +138,28 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
     state.unfilledIcon.className = mergeClasses(
       ratingItemClassNames.unfilledIcon,
       indicatorBaseClassName,
-      iconWidth === 1 && indicatorStyles.hidden,
+      indicatorStyles.filledUnselected,
+      iconFillWidth === 0.5 && indicatorStyles.upperHalf,
       state.unfilledIcon.className,
     );
-    if (iconWidth > 0) {
-      state.unfilledIcon.style = {
-        left: -(1 - iconWidth) * 100 + '%',
-        marginLeft: (1 - iconWidth) * 100 + '%',
-      };
-    }
+  }
+  if (state.outlineIcon) {
+    state.outlineIcon.className = mergeClasses(
+      ratingItemClassNames.outlineIcon,
+      indicatorBaseClassName,
+      indicatorStyles.outlineUnselected,
+      state.unfilledIcon ? indicatorStyles.outlineHighContrastOnly : indicatorStyles.outlineUnselected,
+      iconFillWidth === 0.5 && indicatorStyles.upperHalf,
+      state.outlineIcon.className,
+    );
   }
   if (state.filledIcon) {
     state.filledIcon.className = mergeClasses(
       ratingItemClassNames.filledIcon,
       indicatorBaseClassName,
-      iconWidth === 0 && indicatorStyles.hidden,
+      iconFillWidth === 0.5 && indicatorStyles.lowerHalf,
       state.filledIcon.className,
     );
-    if (iconWidth < 1) {
-      state.filledIcon.style = {
-        right: iconWidth * 100 + '%',
-      };
-    }
   }
 
   return state;

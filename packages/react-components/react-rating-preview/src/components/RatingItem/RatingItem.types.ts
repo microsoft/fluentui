@@ -7,12 +7,9 @@ export type RatingItemSlots = {
    * Default html element is span
    */
   root: NonNullable<Slot<'span'>>;
-  /**
-   * The div that will render an empty icon, a half-filled icon, or a full icon
-   */
-  // indicator: NonNullable<Slot<'div'>>;
-  unfilledIcon: NonNullable<Slot<'div'>>;
-  filledIcon: NonNullable<Slot<'div'>>;
+  outlineIcon?: NonNullable<Slot<'div'>>;
+  unfilledIcon?: NonNullable<Slot<'div'>>;
+  filledIcon?: NonNullable<Slot<'div'>>;
   /**
    * Radio input slot used for half star precision
    */
@@ -39,5 +36,5 @@ export type RatingItemProps = ComponentProps<Partial<RatingItemSlots>> & {
 export type RatingItemState = ComponentState<RatingItemSlots> &
   Required<Pick<RatingItemProps, 'value'>> &
   Pick<RatingState, 'compact' | 'precision' | 'size'> & {
-    displayedRatingValue: number;
+    iconFillWidth: number;
   };
