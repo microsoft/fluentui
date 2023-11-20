@@ -11,7 +11,7 @@ import {
 } from './tokens';
 import type { MotionAtom } from '../types';
 
-type ScaleParams = {
+export type ScaleParams = {
   fromValue?: number;
 };
 

@@ -282,10 +282,12 @@ import { DividerState } from '@fluentui/react-divider';
 import { Drawer } from '@fluentui/react-drawer';
 import { DrawerBody } from '@fluentui/react-drawer';
 import { drawerBodyClassNames } from '@fluentui/react-drawer';
+import { DrawerBodyProps } from '@fluentui/react-drawer';
 import { DrawerBodySlots } from '@fluentui/react-drawer';
 import { DrawerBodyState } from '@fluentui/react-drawer';
 import { DrawerFooter } from '@fluentui/react-drawer';
 import { drawerFooterClassNames } from '@fluentui/react-drawer';
+import { DrawerFooterProps } from '@fluentui/react-drawer';
 import { DrawerFooterSlots } from '@fluentui/react-drawer';
 import { DrawerFooterState } from '@fluentui/react-drawer';
 import { DrawerHeader } from '@fluentui/react-drawer';
@@ -295,10 +297,12 @@ import { drawerHeaderNavigationClassNames } from '@fluentui/react-drawer';
 import { DrawerHeaderNavigationProps } from '@fluentui/react-drawer';
 import { DrawerHeaderNavigationSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderNavigationState } from '@fluentui/react-drawer';
+import { DrawerHeaderProps } from '@fluentui/react-drawer';
 import { DrawerHeaderSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderState } from '@fluentui/react-drawer';
 import { DrawerHeaderTitle } from '@fluentui/react-drawer';
 import { drawerHeaderTitleClassNames } from '@fluentui/react-drawer';
+import { DrawerHeaderTitleProps } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleState } from '@fluentui/react-drawer';
 import { DrawerProps } from '@fluentui/react-drawer';
@@ -1969,6 +1973,8 @@ export { DrawerBody }
 
 export { drawerBodyClassNames }
 
+export { DrawerBodyProps }
+
 export { DrawerBodySlots }
 
 export { DrawerBodyState }
@@ -1976,6 +1982,8 @@ export { DrawerBodyState }
 export { DrawerFooter }
 
 export { drawerFooterClassNames }
+
+export { DrawerFooterProps }
 
 export { DrawerFooterSlots }
 
@@ -1995,6 +2003,8 @@ export { DrawerHeaderNavigationSlots }
 
 export { DrawerHeaderNavigationState }
 
+export { DrawerHeaderProps }
+
 export { DrawerHeaderSlots }
 
 export { DrawerHeaderState }
@@ -2002,6 +2012,8 @@ export { DrawerHeaderState }
 export { DrawerHeaderTitle }
 
 export { drawerHeaderTitleClassNames }
+
+export { DrawerHeaderTitleProps }
 
 export { DrawerHeaderTitleSlots }
 

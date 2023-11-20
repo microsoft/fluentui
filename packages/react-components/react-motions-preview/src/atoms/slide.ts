@@ -11,7 +11,7 @@ import {
 } from './tokens';
 import type { MotionAtom } from '../types';
 
-type SlideParams = {
+export type SlideParams = {
   fromValue?: string;
 };
 

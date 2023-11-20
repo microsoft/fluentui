@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: disconnect should dispose all state correctly",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
