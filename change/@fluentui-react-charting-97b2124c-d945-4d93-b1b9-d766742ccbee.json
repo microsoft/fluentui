@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add defaultSelectedLegeands and onChange for Legends",
-  "packageName": "@fluentui/react-charting",
-  "email": "NewFuture@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

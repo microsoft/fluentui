@@ -11,6 +11,7 @@ import {
   useOverflowContext,
 } from '@fluentui/react-overflow';
 import { Portal } from '@fluentui/react-portal';
+import { OverflowAxis } from '@fluentui/priority-overflow';
 
 const selectors = {
   container: 'data-test-container',
@@ -19,25 +20,33 @@ const selectors = {
   menu: 'data-test-menu',
 };
 
-const Container: React.FC<{ children?: React.ReactNode; width?: number } & Omit<OverflowProps, 'children'>> = ({
+const Container: React.FC<{ children?: React.ReactNode; size?: number } & Omit<OverflowProps, 'children'>> = ({
   children,
-  width,
-  ...overflowProps
+  size,
+  overflowAxis = 'horizontal' as const,
+  ...userProps
 }) => {
   const selector = {
     [selectors.container]: '',
   };
 
   return (
-    <Overflow padding={0} {...overflowProps}>
+    <Overflow padding={0} {...userProps} overflowAxis={overflowAxis}>
       <div
         {...selector}
         style={{
-          width: width ?? 500,
+          display: 'flex',
+          ...(overflowAxis === 'horizontal' && {
+            width: size,
+          }),
+          ...(overflowAxis === 'vertical' && {
+            height: size,
+            flexDirection: 'column',
+          }),
           border: '1px dashed red',
           whiteSpace: 'nowrap',
           overflow: 'hidden',
-          resize: 'horizontal',
+          resize: overflowAxis,
         }}
       >
         {children}
@@ -46,13 +55,21 @@ const Container: React.FC<{ children?: React.ReactNode; width?: number } & Omit<
   );
 };
 
-const setContainerSize = (size: number) => {
+const setContainerSize = (size: number, dimension: 'width' | 'height') => {
   cy.get(`[${selectors.container}]`)
     .then(container => {
-      container.css('width', `${size}px`);
+      container.css(dimension, `${size}px`);
     })
     .log(`Setting container size to ${size}px`)
     .wait(1);
+};
+
+const setContainerWidth = (size: number) => {
+  setContainerSize(size, 'width');
+};
+
+const setContainerHeight = (size: number) => {
+  setContainerSize(size, 'height');
 };
 
 const Item: React.FC<{ children?: React.ReactNode; width?: number | string } & Omit<OverflowItemProps, 'children'>> = ({
@@ -66,7 +83,7 @@ const Item: React.FC<{ children?: React.ReactNode; width?: number | string } & O
 
   return (
     <OverflowItem {...overflowItemProps}>
-      <button {...selector} style={{ width: width ?? 50, height: 20 }}>
+      <button {...selector} style={{ width: width ?? 50, height: 50, flexShrink: 0 }}>
         {children}
       </button>
     </OverflowItem>
@@ -87,7 +104,7 @@ const Menu: React.FC<{ width?: number }> = ({ width }) => {
   // No need to actually render a menu, we're testing state
   return (
     <>
-      <button {...selector} ref={ref} style={{ width: width ?? 50, height: 20 }}>
+      <button {...selector} ref={ref} style={{ width: width ?? 50, height: 50 }}>
         +{overflowCount}
       </button>
       <Portal>
@@ -169,6 +186,7 @@ export const CustomDivider: React.FC<{
     width: '30px',
     backgroundColor: 'red',
     height: '20px',
+    flexShrink: 0,
   };
 
   return (
@@ -181,7 +199,7 @@ export const CustomDivider: React.FC<{
 };
 
 describe('Overflow', () => {
-  before(() => {
+  beforeEach(() => {
     cy.viewport(700, 700);
   });
 
@@ -198,7 +216,7 @@ describe('Overflow', () => {
       </Container>,
     );
 
-    setContainerSize(500);
+    setContainerWidth(500);
     cy.get(`[${selectors.menu}]`).should('not.exist');
   });
 
@@ -227,7 +245,7 @@ describe('Overflow', () => {
     ];
 
     overflowCases.forEach(({ overflowCount, containerSize }) => {
-      setContainerSize(containerSize);
+      setContainerWidth(containerSize);
       cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
     });
   });
@@ -236,7 +254,7 @@ describe('Overflow', () => {
     const mapHelper = new Array(10).fill(0).map((_, i) => i);
     const overflowElementIndex = 6;
     mount(
-      <Container width={350}>
+      <Container size={350}>
         <div>
           {mapHelper.map(i => (
             <Item key={i} id={i.toString()}>
@@ -282,7 +300,7 @@ describe('Overflow', () => {
     ];
 
     overflowCases.forEach(({ containerSize, latestOverflowed }) => {
-      setContainerSize(containerSize);
+      setContainerWidth(containerSize);
       cy.get(`[${selectors.item}=${latestOverflowed}]`).should('not.be.visible');
     });
   });
@@ -313,7 +331,7 @@ describe('Overflow', () => {
     ];
 
     overflowCases.forEach(({ containerSize, latestOverflowed }) => {
-      setContainerSize(containerSize);
+      setContainerWidth(containerSize);
       cy.get(`[${selectors.item}=${latestOverflowed}]`).should('not.be.visible');
     });
   });
@@ -343,7 +361,7 @@ describe('Overflow', () => {
     ];
 
     overflowCases.forEach(({ overflowCount, containerSize }) => {
-      setContainerSize(containerSize);
+      setContainerWidth(containerSize);
       cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
     });
   });
@@ -372,7 +390,7 @@ describe('Overflow', () => {
     ];
 
     overflowCases.forEach(({ containerSize, latestOverflowed }) => {
-      setContainerSize(containerSize);
+      setContainerWidth(containerSize);
       cy.get(`[${selectors.item}=${latestOverflowed}]`).should('be.visible');
     });
   });
@@ -402,7 +420,7 @@ describe('Overflow', () => {
     ];
 
     overflowCases.forEach(({ containerSize, latestOverflowed }) => {
-      setContainerSize(containerSize);
+      setContainerWidth(containerSize);
       cy.get(`[${selectors.item}=${latestOverflowed}]`).should('be.visible');
     });
   });
@@ -435,7 +453,7 @@ describe('Overflow', () => {
     mount(<Example />);
 
     cy.get(`[${selectors.item}="3"]`).click();
-    setContainerSize(150);
+    setContainerWidth(150);
     cy.get(`[${selectors.item}="3"]`).should('be.visible');
     cy.get('#select-9').click();
     cy.get(`[${selectors.item}="9"]`).should('be.visible');
@@ -485,13 +503,13 @@ describe('Overflow', () => {
       </Container>,
     );
 
-    setContainerSize(350);
+    setContainerWidth(350);
     cy.get(`[${selectors.divider}="4"]`).should('not.exist');
     cy.get(`[${selectors.divider}]`).should('have.length', 3);
-    setContainerSize(250);
+    setContainerWidth(250);
     cy.get(`[${selectors.divider}="3"]`).should('not.exist');
     cy.get(`[${selectors.divider}]`).should('have.length', 2);
-    setContainerSize(200);
+    setContainerWidth(200);
     cy.get(`[${selectors.divider}="1"]`).should('not.exist');
     cy.get(`[${selectors.divider}]`).should('have.length', 1);
   });
@@ -539,16 +557,17 @@ describe('Overflow', () => {
       </Container>,
     );
 
+    setContainerWidth(500);
     cy.get(`[${selectors.item}="8"]`).should('not.be.visible');
-    setContainerSize(350);
+    setContainerWidth(350);
     cy.get(`[${selectors.divider}="4"]`).should('not.exist');
     cy.get(`[${selectors.divider}]`).should('have.length', 3);
     cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
-    setContainerSize(250);
+    setContainerWidth(250);
     cy.get(`[${selectors.divider}="3"]`).should('not.exist');
     cy.get(`[${selectors.divider}]`).should('have.length', 2);
     cy.get(`[${selectors.item}="3"]`).should('not.be.visible');
-    setContainerSize(200);
+    setContainerWidth(200);
     cy.get(`[${selectors.divider}="1"]`).should('exist');
     cy.get(`[${selectors.divider}]`).should('have.length', 1);
     cy.get(`[${selectors.item}="1"]`).should('be.visible');
@@ -576,15 +595,15 @@ describe('Overflow', () => {
       </Container>,
     );
 
-    setContainerSize(355);
+    setContainerWidth(355);
     cy.get(`[${selectors.item}="4"]`).should('be.visible');
-    setContainerSize(354);
+    setContainerWidth(354);
     cy.get(`[${selectors.item}="3"]`).should('be.visible');
     cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
-    setContainerSize(353);
+    setContainerWidth(353);
     cy.get(`[${selectors.item}="3"]`).should('be.visible');
     cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
-    setContainerSize(352);
+    setContainerWidth(352);
     cy.get(`[${selectors.item}="3"]`).should('be.visible');
     cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
   });
@@ -623,23 +642,23 @@ describe('Overflow', () => {
       </Container>,
     );
 
-    setContainerSize(470);
+    setContainerWidth(470);
     cy.get(`[${selectors.item}="5"]`).should('be.visible');
-    setContainerSize(469);
+    setContainerWidth(469);
     cy.get(`[${selectors.divider}="5"]`).should('exist');
     cy.get(`[${selectors.item}="6"]`).should('not.be.visible');
     cy.get(`[${selectors.item}="5"]`).should('be.visible');
     cy.get(`[${selectors.divider}]`).should('have.length', 5);
-    setContainerSize(468);
+    setContainerWidth(468);
     cy.get(`[${selectors.item}="6"]`).should('not.be.visible');
     cy.get(`[${selectors.item}="5"]`).should('be.visible');
-    setContainerSize(467);
+    setContainerWidth(467);
     cy.get(`[${selectors.item}="6"]`).should('not.be.visible');
     cy.get(`[${selectors.item}="5"]`).should('be.visible');
-    setContainerSize(466);
+    setContainerWidth(466);
     cy.get(`[${selectors.item}="6"]`).should('not.be.visible');
     cy.get(`[${selectors.item}="5"]`).should('be.visible');
-    setContainerSize(449);
+    setContainerWidth(449);
     cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
     cy.get(`[${selectors.item}="4"]`).should('be.visible');
   });
@@ -657,10 +676,10 @@ describe('Overflow', () => {
       </Container>,
     );
 
-    setContainerSize(497);
-    setContainerSize(498);
-    setContainerSize(499);
-    setContainerSize(500);
+    setContainerWidth(497);
+    setContainerWidth(498);
+    setContainerWidth(499);
+    setContainerWidth(500);
     cy.get(`[${selectors.menu}]`).should('not.exist');
   });
 
@@ -685,38 +704,38 @@ describe('Overflow', () => {
       </Container>,
     );
 
-    setContainerSize(355);
+    setContainerWidth(355);
     cy.get(`[${selectors.menu}]`).should('not.exist');
-    setContainerSize(354);
+    setContainerWidth(354);
     cy.get(`[${selectors.menu}]`).should('exist');
     cy.get(`[${selectors.item}="3"]`).should('be.visible');
     cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
     cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
-    setContainerSize(355);
+    setContainerWidth(355);
     cy.get(`[${selectors.menu}]`).should('not.exist');
-    setContainerSize(305);
+    setContainerWidth(305);
     cy.get(`[${selectors.item}="3"]`).should('be.visible');
     cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
     cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
-    setContainerSize(304);
+    setContainerWidth(304);
     cy.get(`[${selectors.item}="2"]`).should('be.visible');
     cy.get(`[${selectors.item}="3"]`).should('not.be.visible');
-    setContainerSize(305);
+    setContainerWidth(305);
     cy.get(`[${selectors.item}="3"]`).should('be.visible');
     cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
-    setContainerSize(282);
+    setContainerWidth(282);
     cy.get(`[${selectors.item}="2"]`).should('be.visible');
     cy.get(`[${selectors.item}="3"]`).should('not.be.visible');
-    setContainerSize(281);
+    setContainerWidth(281);
     cy.get(`[${selectors.item}="1"]`).should('be.visible');
     cy.get(`[${selectors.item}="2"]`).should('not.be.visible');
-    setContainerSize(282);
+    setContainerWidth(282);
     cy.get(`[${selectors.item}="2"]`).should('be.visible');
     cy.get(`[${selectors.item}="3"]`).should('not.be.visible');
-    setContainerSize(104);
+    setContainerWidth(104);
     cy.get(`[${selectors.item}="0"]`).should('be.visible');
     cy.get(`[${selectors.item}="1"]`).should('not.be.visible');
-    setContainerSize(102);
+    setContainerWidth(102);
     cy.get(`[${selectors.item}="0"]`).should('not.be.visible');
   });
 
@@ -733,7 +752,7 @@ describe('Overflow', () => {
       </Container>,
     );
 
-    setContainerSize(195);
+    setContainerWidth(195);
     cy.get(`[${selectors.menu}]`).should('not.be.visible');
     cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
   });
@@ -781,7 +800,7 @@ describe('Overflow', () => {
     };
     mount(<Example />);
 
-    setContainerSize(500);
+    setContainerWidth(500);
     cy.contains('Update priority').click().get('#foo-visibility').should('have.text', 'visible');
   });
 
@@ -816,7 +835,7 @@ describe('Overflow', () => {
     mount(<Example />);
 
     cy.get(`[${selectors.item}="3"]`).click();
-    setContainerSize(250);
+    setContainerWidth(250);
     cy.get('#select-9').click();
     cy.get(`[${selectors.item}="9"]`).should('be.visible');
     cy.get(`[${selectors.item}="0"]`).should('be.visible');
@@ -830,5 +849,82 @@ describe('Overflow', () => {
     cy.get(`[${selectors.item}="1"]`).should('be.visible');
     cy.get(`[${selectors.item}="2"]`).should('be.visible');
     cy.get(`[${selectors.item}="3"]`).should('be.visible');
+  });
+
+  it('should overflow in the vertical axis', () => {
+    const mapHelper = new Array(10).fill(0).map((_, i) => i);
+    mount(
+      <Container overflowAxis="vertical">
+        {mapHelper.map(i => (
+          <Item key={i} id={i.toString()}>
+            {i}
+          </Item>
+        ))}
+        <Menu />
+      </Container>,
+    );
+
+    setContainerHeight(500);
+    const overflowCases = [
+      { containerSize: 450, overflowCount: 2 },
+      { containerSize: 400, overflowCount: 3 },
+      { containerSize: 350, overflowCount: 4 },
+      { containerSize: 300, overflowCount: 5 },
+      { containerSize: 250, overflowCount: 6 },
+      { containerSize: 200, overflowCount: 7 },
+      { containerSize: 150, overflowCount: 8 },
+      { containerSize: 100, overflowCount: 9 },
+      { containerSize: 50, overflowCount: 10 },
+    ];
+
+    overflowCases.forEach(({ overflowCount, containerSize }) => {
+      setContainerHeight(containerSize);
+      cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+    });
+  });
+
+  it('should toggle between vertical and horizontal axis', () => {
+    const mapHelper = new Array(10).fill(0).map((_, i) => i);
+    const TestComponent = () => {
+      const [axis, setAxis] = React.useState<OverflowAxis>('horizontal');
+      return (
+        <>
+          <button id="toggle" onClick={() => setAxis(s => (s === 'horizontal' ? 'vertical' : 'horizontal'))}>
+            toggle: {axis}
+          </button>
+          <Container overflowAxis={axis}>
+            {mapHelper.map(i => (
+              <Item key={i} id={i.toString()}>
+                {i}
+              </Item>
+            ))}
+            <Menu />
+          </Container>
+        </>
+      );
+    };
+
+    mount(<TestComponent />);
+
+    setContainerWidth(500);
+    const overflowCases = [
+      { containerSize: 450, overflowCount: 2 },
+      { containerSize: 400, overflowCount: 3 },
+      { containerSize: 350, overflowCount: 4 },
+      { containerSize: 300, overflowCount: 5 },
+      { containerSize: 250, overflowCount: 6 },
+      { containerSize: 200, overflowCount: 7 },
+      { containerSize: 150, overflowCount: 8 },
+    ];
+
+    for (let i = 0; i < 3; i++) {
+      const setSize = i % 2 === 0 ? setContainerWidth : setContainerHeight;
+      overflowCases.forEach(({ overflowCount, containerSize }) => {
+        setSize(containerSize);
+        cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+      });
+
+      cy.get('#toggle').click();
+    }
   });
 });

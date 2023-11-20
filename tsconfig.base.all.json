@@ -171,7 +171,10 @@
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-breadcrumb": ["packages/react-components/react-breadcrumb/src/index.ts"]
+      "@fluentui/react-breadcrumb": ["packages/react-components/react-breadcrumb/src/index.ts"],
+      "@fluentui/react-teaching-popover-preview": [
+        "packages/react-components/react-teaching-popover-preview/src/index.ts"
+      ]
     }
   }
 }
