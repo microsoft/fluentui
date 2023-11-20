@@ -110,6 +110,10 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   private _pageRefs: Record<string, unknown> = {};
   private _async: Async;
   private _events: EventGroup;
+  private _onAsyncScrollDebounced: () => void;
+  private _onAsyncIdleDebounced: () => void;
+  private _onScrollingDoneDebounced: () => void;
+  private _onAsyncResizeDebounced: () => void;
   private _estimatedPageHeight: number;
   private _totalEstimates: number;
   private _cachedPageHeights: {
@@ -391,8 +395,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   }
 
   public componentWillUnmount(): void {
-    this._async.dispose();
-    this._events.dispose();
+    this._async?.dispose();
+    this._events?.dispose();
 
     delete this._scrollElement;
   }
