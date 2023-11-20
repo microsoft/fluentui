@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Remove CSS containment from DialogSurface",
+  "packageName": "@fluentui/react-dialog",
+  "email": "jurokapsiar@gmail.com",
+  "dependentChangeType": "patch"
+}
