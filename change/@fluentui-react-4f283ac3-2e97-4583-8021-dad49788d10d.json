@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: List async and events to allow remounting component.",
+  "packageName": "@fluentui/react",
+  "email": "m.verbakel@eshgro.nl",
+  "dependentChangeType": "patch"
+}
