@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motion-preview
 
-This log was last generated on Thu, 09 Nov 2023 17:29:38 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Nov 2023 09:55:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.5.2)
+
+Mon, 20 Nov 2023 09:55:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.5.1..@fluentui/react-motion-preview_v0.5.2)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.13.0 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
 
 ## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.5.1)
 

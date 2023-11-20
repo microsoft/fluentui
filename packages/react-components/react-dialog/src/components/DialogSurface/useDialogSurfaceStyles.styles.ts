@@ -24,7 +24,6 @@ const useRootBaseStyle = makeResetStyles({
   ...shorthands.border(SURFACE_BORDER_WIDTH, 'solid', tokens.colorTransparentStroke),
   ...shorthands.borderRadius(tokens.borderRadiusXLarge),
 
-  contain: 'content',
   display: 'block',
   userSelect: 'unset',
   visibility: 'unset',
