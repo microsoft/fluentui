@@ -73,7 +73,7 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
       tabIndex: focusableItems ? 0 : undefined,
       role: 'listitem',
       id: String(value),
-      ...selectionProps,
+      ...(isSelectionEnabled ? selectionProps : {}),
       ...focusableGroupAttrs,
       ...props,
       onKeyDown: isSelectionEnabled ? handleKeyDown : onKeyDown,
