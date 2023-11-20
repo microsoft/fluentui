@@ -6,7 +6,8 @@ import { tokens } from '@fluentui/react-theme';
 
 export const ratingItemClassNames: SlotClassNames<RatingItemSlots> = {
   root: 'fui-RatingItem',
-  indicator: 'fui-RatingItem__indicator',
+  unfilledIcon: 'fui-RatingItem__unfilledIcon',
+  filledIcon: 'fui-RatingItem__filledIcon',
   halfValueInput: 'fui-RatingItem__halfValueInput',
   fullValueInput: 'fui-RatingItem__fullValueInput',
 };
@@ -23,6 +24,23 @@ const indicatorSizes = {
 const useStyles = makeStyles({
   root: {
     position: 'relative',
+  },
+  small: {
+    fontSize: indicatorSizes.small,
+    width: indicatorSizes.small,
+    height: indicatorSizes.small,
+  },
+
+  medium: {
+    fontSize: indicatorSizes.medium,
+    width: indicatorSizes.medium,
+    height: indicatorSizes.medium,
+  },
+
+  large: {
+    fontSize: indicatorSizes.large,
+    width: indicatorSizes.large,
+    height: indicatorSizes.large,
   },
 });
 
@@ -53,19 +71,21 @@ const useIndicatorBaseClassName = makeResetStyles({
   overflow: 'hidden',
   fill: 'currentColor',
   pointerEvents: 'none',
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  bottom: 0,
 });
 
 const useIndicatorStyles = makeStyles({
-  small: {
-    fontSize: indicatorSizes.small,
+  lowerHalf: {
+    right: '50%',
   },
-
-  medium: {
-    fontSize: indicatorSizes.medium,
+  upperHalf: {
+    left: '50%',
   },
-
-  large: {
-    fontSize: indicatorSizes.large,
+  hidden: {
+    display: 'none',
   },
 });
 
@@ -73,14 +93,26 @@ const useIndicatorStyles = makeStyles({
  * Apply styling to the RatingItem slots based on the state
  */
 export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItemState => {
-  const { size } = state;
+  const { size, displayedRatingValue, value, compact } = state;
   const styles = useStyles();
   const inputBaseClassName = useInputBaseClassName();
   const inputStyles = useInputStyles();
   const indicatorBaseClassName = useIndicatorBaseClassName();
   const indicatorStyles = useIndicatorStyles();
 
-  state.root.className = mergeClasses(ratingItemClassNames.root, styles.root, state.root.className);
+  let iconWidth;
+  //to-do : 5 should be max
+  if (compact) {
+    iconWidth = value / 5.0;
+  } else if (displayedRatingValue >= value) {
+    iconWidth = 1;
+  } else if (displayedRatingValue >= value - 0.5) {
+    iconWidth = 0.5;
+  } else {
+    iconWidth = 0;
+  }
+
+  state.root.className = mergeClasses(ratingItemClassNames.root, styles.root, styles[size], state.root.className);
 
   if (state.halfValueInput) {
     state.halfValueInput.className = mergeClasses(
@@ -100,13 +132,32 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
     );
   }
 
-  if (state.indicator) {
-    state.indicator.className = mergeClasses(
-      ratingItemClassNames.indicator,
+  if (state.unfilledIcon) {
+    state.unfilledIcon.className = mergeClasses(
+      ratingItemClassNames.unfilledIcon,
       indicatorBaseClassName,
-      indicatorStyles[size],
-      state.indicator.className,
+      iconWidth === 1 && indicatorStyles.hidden,
+      state.unfilledIcon.className,
     );
+    if (iconWidth > 0) {
+      state.unfilledIcon.style = {
+        left: -(1 - iconWidth) * 100 + '%',
+        marginLeft: (1 - iconWidth) * 100 + '%',
+      };
+    }
+  }
+  if (state.filledIcon) {
+    state.filledIcon.className = mergeClasses(
+      ratingItemClassNames.filledIcon,
+      indicatorBaseClassName,
+      iconWidth === 0 && indicatorStyles.hidden,
+      state.filledIcon.className,
+    );
+    if (iconWidth < 1) {
+      state.filledIcon.style = {
+        right: iconWidth * 100 + '%',
+      };
+    }
   }
 
   return state;

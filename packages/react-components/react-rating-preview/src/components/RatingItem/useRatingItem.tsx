@@ -3,7 +3,7 @@ import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-u
 import { useFocusWithin } from '@fluentui/react-tabster';
 import type { RatingItemProps, RatingItemState } from './RatingItem.types';
 import { useRatingContextValue_unstable } from '../../contexts/RatingContext';
-import { StarRegular, StarFilled, StarHalfRegular } from '@fluentui/react-icons';
+import { StarRegular, StarFilled } from '@fluentui/react-icons';
 
 /**
  * Create the state required to render RatingItem.
@@ -30,17 +30,24 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
     { elementType: 'span' },
   );
 
-  let icon;
-  if (displayedRatingValue >= value || context.compact) {
-    icon = <StarFilled />;
-  } else if (displayedRatingValue >= value - 0.5) {
-    icon = <StarHalfRegular />;
-  } else {
-    icon = <StarRegular />;
-  }
-  const indicator = slot.always(props.indicator, {
+  // let icon;
+  // if (displayedRatingValue >= value || context.compact) {
+  //   icon = <StarFilled />;
+  // } else if (displayedRatingValue >= value - 0.5) {
+  //   icon = <StarHalfRegular />;
+  // } else {
+  //   icon = <StarRegular />;
+  // }
+  const unfilledIcon = slot.always(props.unfilledIcon, {
     defaultProps: {
-      children: icon,
+      children: <StarRegular />,
+      'aria-hidden': true,
+    },
+    elementType: 'div',
+  });
+  const filledIcon = slot.always(props.filledIcon, {
+    defaultProps: {
+      children: <StarFilled />,
       'aria-hidden': true,
     },
     elementType: 'div',
@@ -82,17 +89,21 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   const state: RatingItemState = {
+    compact: context.compact,
     precision: context.precision,
     size: context.size,
+    displayedRatingValue,
     value,
     components: {
       root: 'span',
-      indicator: 'div',
+      unfilledIcon: 'div',
+      filledIcon: 'div',
       halfValueInput: 'input',
       fullValueInput: 'input',
     },
     root,
-    indicator,
+    unfilledIcon,
+    filledIcon,
     halfValueInput,
     fullValueInput,
   };

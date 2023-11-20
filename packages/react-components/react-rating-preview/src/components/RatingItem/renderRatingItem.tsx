@@ -14,7 +14,8 @@ export const renderRatingItem_unstable = (state: RatingItemState) => {
     <state.root>
       {state.halfValueInput && <state.halfValueInput />}
       {state.fullValueInput && <state.fullValueInput />}
-      {state.indicator && <state.indicator />}
+      {state.unfilledIcon && <state.unfilledIcon />}
+      {state.filledIcon && <state.filledIcon />}
     </state.root>
   );
 };

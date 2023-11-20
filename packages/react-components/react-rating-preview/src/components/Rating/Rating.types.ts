@@ -1,12 +1,12 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
+//import { Label } from '@fluentui/react-label';
 
 export type RatingSlots = {
   root: NonNullable<Slot<'div'>>;
-  ratingLabel?: NonNullable<Slot<typeof Label>>;
-  ratingCountLabel?: NonNullable<Slot<typeof Label>>;
-  divider?: NonNullable<Slot<'span'>>;
+  ratingLabel?: NonNullable<Slot<'label'>>;
+  ratingCountLabel?: NonNullable<Slot<'label'>>;
+  //divider?: NonNullable<Slot<'span'>>;
 };
 
 /**
@@ -18,10 +18,6 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    * @default false
    */
   compact?: boolean;
-  /**
-   * Sets the value of the total rating counts
-   */
-  countLabel?: string;
   /**
    * Default value of the Rating
    */
@@ -63,10 +59,6 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    * The value of the rating
    */
   value?: number;
-  /**
-   * Sets the rating value label
-   */
-  valueLabel?: number;
 };
 
 /**
@@ -84,10 +76,7 @@ export type RatingOnChangeData = {
  */
 export type RatingState = ComponentState<RatingSlots> &
   Required<Pick<RatingProps, 'size'>> &
-  Pick<
-    RatingProps,
-    'compact' | 'countLabel' | 'defaultValue' | 'name' | 'precision' | 'readOnly' | 'shape' | 'value' | 'valueLabel'
-  > & {
+  Pick<RatingProps, 'compact' | 'defaultValue' | 'name' | 'precision' | 'readOnly' | 'shape' | 'value'> & {
     hoveredValue?: number | undefined;
   };
 

@@ -8,7 +8,6 @@ import {
   useId,
 } from '@fluentui/react-utilities';
 import type { RatingProps, RatingState } from './Rating.types';
-import { Label } from '@fluentui/react-label';
 import { RatingItem } from '../../RatingItem';
 
 /**
@@ -24,7 +23,6 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
   const generatedName = useId('rating-');
   const {
     compact = false,
-    countLabel = undefined,
     max = 5,
     name = generatedName,
     onChange,
@@ -32,7 +30,6 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
     readOnly,
     shape = 'star',
     size = 'medium',
-    valueLabel = undefined,
   } = props;
 
   const ratingId = useId('ratingLabel');
@@ -60,20 +57,17 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
 
   const state: RatingState = {
     compact,
-    countLabel,
     name,
     precision,
     readOnly,
     shape,
     size,
     value,
-    valueLabel,
     hoveredValue,
     components: {
       root: 'div',
-      ratingLabel: Label,
-      ratingCountLabel: Label,
-      divider: 'span',
+      ratingLabel: 'label',
+      ratingCountLabel: 'label',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
@@ -83,18 +77,13 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
       }),
       { elementType: 'div' },
     ),
-    ratingLabel: slot.always(props.ratingLabel, {
-      defaultProps: { id: ratingId, children: valueLabel },
-      elementType: Label,
+    ratingLabel: slot.optional(props.ratingLabel, {
+      defaultProps: { id: ratingId },
+      elementType: 'label',
     }),
-    ratingCountLabel: slot.always(props.countLabel, {
-      defaultProps: { id: countId, children: countLabel },
-      elementType: Label,
-    }),
-    divider: slot.optional(props.divider, {
-      defaultProps: { children: '.' },
-      elementType: 'span',
-      renderByDefault: true,
+    ratingCountLabel: slot.optional(props.ratingCountLabel, {
+      defaultProps: { id: countId },
+      elementType: 'label',
     }),
   };
 
