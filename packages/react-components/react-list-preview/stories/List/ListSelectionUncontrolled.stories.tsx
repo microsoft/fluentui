@@ -1,7 +1,21 @@
 import { Button, makeStyles, Persona, shorthands } from '@fluentui/react-components';
 import { ListComponentRef, List, ListItem } from '@fluentui/react-list-preview';
 import * as React from 'react';
-import names from './names';
+const names = [
+  'Melda Bevel',
+  'Demetra Manwaring',
+  'Eusebia Stufflebeam',
+  'Israel Rabin',
+  'Bart Merrill',
+  'Sonya Farner',
+  'Kristan Cable',
+  'Cythia Ignacio',
+  'Gia Laura',
+  'Dewayne Oda',
+  'Lang Yeldell',
+  'Kathlyn Brewer',
+  'Nia Woodworth',
+];
 
 type Item = {
   name: string;

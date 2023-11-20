@@ -68,7 +68,6 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
     root: slot.always(
       getIntrinsicElementProps('ul', {
         ref,
-        tabIndex: -1,
         ...(selectable ? selection.getListProps() : {}),
         ...arrowNavigationAttributes,
         ...props,

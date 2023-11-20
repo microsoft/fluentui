@@ -3,7 +3,22 @@ import { List, ListItem, useListFeatures, useListSelection } from '@fluentui/rea
 
 import * as React from 'react';
 import { ListSelectionState } from '../../src/hooks/types';
-import names from './names';
+
+const names = [
+  'Melda Bevel',
+  'Demetra Manwaring',
+  'Eusebia Stufflebeam',
+  'Israel Rabin',
+  'Bart Merrill',
+  'Sonya Farner',
+  'Kristan Cable',
+  'Cythia Ignacio',
+  'Gia Laura',
+  'Dewayne Oda',
+  'Lang Yeldell',
+  'Kathlyn Brewer',
+  'Nia Woodworth',
+];
 
 type Item = {
   name: string;
