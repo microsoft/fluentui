@@ -9,7 +9,6 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -21,7 +20,7 @@ export const Rating: ForwardRefComponent<RatingProps>;
 export const ratingClassNames: SlotClassNames<RatingSlots>;
 
 // @public (undocumented)
-export type RatingContextValue = Pick<RatingState, 'defaultValue' | 'name' | 'precision' | 'readOnly' | 'shape' | 'size' | 'value' | 'hoveredValue'>;
+export type RatingContextValue = Pick<RatingState, 'compact' | 'defaultValue' | 'iconFilled' | 'iconOutline' | 'name' | 'precision' | 'readOnly' | 'size' | 'value' | 'hoveredValue'>;
 
 // @public (undocumented)
 export type RatingContextValues = {
@@ -35,20 +34,24 @@ export const RatingItem: ForwardRefComponent<RatingItemProps>;
 export const ratingItemClassNames: SlotClassNames<RatingItemSlots>;
 
 // @public
-export type RatingItemProps = ComponentProps<Partial<RatingItemSlots>, 'fullValueInput'> & {
+export type RatingItemProps = ComponentProps<Partial<RatingItemSlots>> & {
     value?: number;
 };
 
 // @public (undocumented)
 export type RatingItemSlots = {
     root: NonNullable<Slot<'span'>>;
-    indicator: NonNullable<Slot<'div'>>;
+    selectedIcon?: NonNullable<Slot<'div'>>;
+    unselectedFilledIcon?: NonNullable<Slot<'div'>>;
+    unselectedOutlineIcon?: NonNullable<Slot<'div'>>;
     halfValueInput?: NonNullable<Slot<'input'>>;
     fullValueInput?: NonNullable<Slot<'input'>>;
 };
 
 // @public
-export type RatingItemState = ComponentState<RatingItemSlots> & Required<Pick<RatingItemProps, 'value'>> & Pick<RatingState, 'precision' | 'size'>;
+export type RatingItemState = ComponentState<RatingItemSlots> & Required<Pick<RatingItemProps, 'value'>> & Pick<RatingState, 'compact' | 'precision' | 'size'> & {
+    iconFillWidth: number;
+};
 
 // @public
 export type RatingOnChangeData = {
@@ -59,16 +62,15 @@ export type RatingOnChangeData = {
 export type RatingProps = ComponentProps<RatingSlots> & {
     compact?: boolean;
     defaultValue?: number;
+    iconFilled?: React_2.ReactElement;
+    iconOutline?: React_2.ReactElement;
+    max?: number;
     onChange?: (ev: React_2.SyntheticEvent | Event, data: RatingOnChangeData) => void;
     name?: string;
     precision?: boolean;
     readOnly?: boolean;
-    shape?: 'star' | 'circle' | 'square';
-    showRatingCount?: boolean;
-    showRatingString?: boolean;
     size?: 'small' | 'medium' | 'large';
     value?: number;
-    max?: number;
 };
 
 // @public (undocumented)
@@ -77,12 +79,12 @@ export const RatingProvider: React_2.Provider<RatingContextValue | undefined>;
 // @public (undocumented)
 export type RatingSlots = {
     root: NonNullable<Slot<'div'>>;
-    ratingLabel?: Slot<typeof Label>;
-    countLabel?: Slot<typeof Label>;
+    ratingLabel?: NonNullable<Slot<'label'>>;
+    ratingCountLabel?: NonNullable<Slot<'label'>>;
 };
 
 // @public
-export type RatingState = ComponentState<RatingSlots> & Required<Pick<RatingProps, 'size'>> & Pick<RatingProps, 'defaultValue' | 'name' | 'precision' | 'readOnly' | 'shape' | 'value'> & {
+export type RatingState = ComponentState<RatingSlots> & Required<Pick<RatingProps, 'size'>> & Pick<RatingProps, 'compact' | 'defaultValue' | 'iconFilled' | 'iconOutline' | 'name' | 'precision' | 'readOnly' | 'value'> & {
     hoveredValue?: number | undefined;
 };
 
@@ -102,7 +104,7 @@ export const useRatingContextValue_unstable: () => RatingContextValue;
 export const useRatingContextValues: (state: RatingState) => RatingContextValues;
 
 // @public
-export const useRatingItem_unstable: (props: RatingItemProps, ref: React_2.Ref<HTMLInputElement>) => RatingItemState;
+export const useRatingItem_unstable: (props: RatingItemProps, ref: React_2.Ref<HTMLSpanElement>) => RatingItemState;
 
 // @public
 export const useRatingItemStyles_unstable: (state: RatingItemState) => RatingItemState;
