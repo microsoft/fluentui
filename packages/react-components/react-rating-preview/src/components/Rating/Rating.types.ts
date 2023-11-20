@@ -23,6 +23,14 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    */
   defaultValue?: number;
   /**
+   *
+   */
+  iconFilled?: React.ReactElement;
+  /**
+   *
+   */
+  iconOutline?: React.ReactElement;
+  /**
    * The max value of the rating.
    * @default 5
    */
@@ -45,11 +53,6 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    * @default false
    */
   readOnly?: boolean;
-  /**
-   * Sets the shape of the Rating icon
-   * @default 'star'
-   */
-  shape?: 'star' | 'circle' | 'square';
   /**
    * Sets the size of the Rating star in pixels
    * @default medium
@@ -76,13 +79,25 @@ export type RatingOnChangeData = {
  */
 export type RatingState = ComponentState<RatingSlots> &
   Required<Pick<RatingProps, 'size'>> &
-  Pick<RatingProps, 'compact' | 'defaultValue' | 'name' | 'precision' | 'readOnly' | 'shape' | 'value'> & {
+  Pick<
+    RatingProps,
+    'compact' | 'defaultValue' | 'iconFilled' | 'iconOutline' | 'name' | 'precision' | 'readOnly' | 'value'
+  > & {
     hoveredValue?: number | undefined;
   };
 
 export type RatingContextValue = Pick<
   RatingState,
-  'compact' | 'defaultValue' | 'name' | 'precision' | 'readOnly' | 'shape' | 'size' | 'value' | 'hoveredValue'
+  | 'compact'
+  | 'defaultValue'
+  | 'iconFilled'
+  | 'iconOutline'
+  | 'name'
+  | 'precision'
+  | 'readOnly'
+  | 'size'
+  | 'value'
+  | 'hoveredValue'
 >;
 
 export type RatingContextValues = {

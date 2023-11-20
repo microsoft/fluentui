@@ -3,14 +3,6 @@ import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-u
 import { useFocusWithin } from '@fluentui/react-tabster';
 import type { RatingItemProps, RatingItemState } from './RatingItem.types';
 import { useRatingContextValue_unstable } from '../../contexts/RatingContext';
-import {
-  CircleFilled,
-  CircleRegular,
-  SquareFilled,
-  SquareRegular,
-  StarRegular,
-  StarFilled,
-} from '@fluentui/react-icons';
 
 /**
  * Create the state required to render RatingItem.
@@ -37,28 +29,16 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
     { elementType: 'span' },
   );
 
-  let unfilledicon;
-  let filledicon;
-  if (context.shape === 'circle') {
-    unfilledicon = <CircleRegular />;
-    filledicon = <CircleFilled />;
-  } else if (context.shape === 'square') {
-    unfilledicon = <SquareRegular />;
-    filledicon = <SquareFilled />;
-  } else {
-    unfilledicon = <StarRegular />;
-    filledicon = <StarFilled />;
-  }
   const unfilledIcon = slot.always(props.unfilledIcon, {
     defaultProps: {
-      children: unfilledicon,
+      children: context.iconOutline,
       'aria-hidden': true,
     },
     elementType: 'div',
   });
   const filledIcon = slot.always(props.filledIcon, {
     defaultProps: {
-      children: filledicon,
+      children: context.iconFilled,
       'aria-hidden': true,
     },
     elementType: 'div',

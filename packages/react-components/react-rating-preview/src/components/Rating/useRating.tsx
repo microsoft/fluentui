@@ -9,6 +9,7 @@ import {
 } from '@fluentui/react-utilities';
 import type { RatingProps, RatingState } from './Rating.types';
 import { RatingItem } from '../../RatingItem';
+import { StarFilled, StarRegular } from '@fluentui/react-icons';
 
 /**
  * Create the state required to render Rating.
@@ -23,12 +24,13 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
   const generatedName = useId('rating-');
   const {
     compact = false,
+    iconFilled = <StarFilled />,
+    iconOutline = <StarRegular />,
     max = 5,
     name = generatedName,
     onChange,
     precision,
     readOnly,
-    shape = 'star',
     size = 'medium',
   } = props;
 
@@ -57,10 +59,11 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
 
   const state: RatingState = {
     compact,
+    iconFilled,
+    iconOutline,
     name,
     precision,
     readOnly,
-    shape,
     size,
     value,
     hoveredValue,
