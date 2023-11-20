@@ -16,12 +16,12 @@ export const ratingClassNames: SlotClassNames<RatingSlots> = {
 
 const useStyles = makeResetStyles({
   display: 'flex',
+  alignItems: 'center',
   color: tokens.colorNeutralForeground1,
   ...createFocusOutlineStyle({ style: {}, selector: 'focus' }),
 });
 
 const useBaseLabelStyles = makeResetStyles({
-  verticalAlign: 'top',
   color: tokens.colorNeutralForeground1,
   ...shorthands.margin('0px', '2px'),
   ...typographyStyles.caption1,
