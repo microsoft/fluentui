@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type ListItemSlots = {
-  root: NonNullable<Slot<'li', 'div' | 'dt' | 'dd'>>;
+  root: NonNullable<Slot<'li', 'div'>>;
   checkmark?: Slot<'div'>;
 };
 

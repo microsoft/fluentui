@@ -18,7 +18,7 @@ export type ListComponentRef = {
 };
 
 export type ListSlots = {
-  root: NonNullable<Slot<'ul', 'div' | 'ol' | 'dl'>>;
+  root: NonNullable<Slot<'ul', 'div' | 'ol'>>;
 };
 
 /**
