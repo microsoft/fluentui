@@ -16,7 +16,7 @@ import {
   tokens,
 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
-import { List, ListItem, ListLayout, ListProps } from '@fluentui/react-list-preview';
+import { List, ListItem, ListProps } from '@fluentui/react-list-preview';
 import * as React from 'react';
 
 const resolveAsset = (asset: string) => {
@@ -153,7 +153,7 @@ export const ListMultipleActions = (props: Partial<ListProps>) => {
 
   return (
     <List
-      layout={ListLayout.Grid}
+      layout={'grid'}
       className={classes.list}
       focusableItems
       selectable

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { ListLayout, ListProps, ListState, IList } from './List.types';
+import { ListProps, ListState, IList } from './List.types';
 import { useListFeatures } from '../../hooks/useListFeatures';
 import { useListSelection } from '../../hooks/useListSelection';
 
@@ -26,7 +26,7 @@ const useComponentRef = (componentRef: React.Ref<IList> | undefined, selection: 
  */
 export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>): ListState => {
   const {
-    layout = ListLayout.Vertical,
+    layout = 'vertical',
     focusableItems = false,
     customArrowNavigationOptions,
     selectable = false,
@@ -37,7 +37,7 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
   } = props;
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
-    axis: layout === ListLayout.Grid ? 'grid-linear' : 'both',
+    axis: layout === 'grid' ? 'grid-linear' : 'both',
     memorizeCurrent: true,
     ...(customArrowNavigationOptions || {}),
   });

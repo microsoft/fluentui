@@ -1,6 +1,6 @@
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { ListLayout, ListSlots, ListState } from './List.types';
+import { ListSlots, ListState } from './List.types';
 
 export const listClassNames: SlotClassNames<ListSlots> = {
   root: 'fui-List',
@@ -37,9 +37,9 @@ export const useListStyles_unstable = (state: ListState): ListState => {
   const styles = useStyles();
 
   const layoutToStyles = {
-    [ListLayout.Vertical]: styles.root,
-    [ListLayout.Horizontal]: styles.rootHorizontal,
-    [ListLayout.Grid]: styles.rootGrid,
+    ['vertical']: styles.root,
+    ['horizontal']: styles.rootHorizontal,
+    ['grid']: styles.rootGrid,
   };
 
   state.root.className = mergeClasses(

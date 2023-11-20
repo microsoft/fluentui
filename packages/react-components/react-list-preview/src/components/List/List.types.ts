@@ -10,11 +10,7 @@ import type {
 import type { UseArrowNavigationGroupOptions } from '@fluentui/react-components';
 import { ListSelectionState } from '../../hooks/types';
 
-export enum ListLayout {
-  Horizontal = 'horizontal',
-  Vertical = 'vertical',
-  Grid = 'grid',
-}
+export type ListLayout = 'horizontal' | 'vertical' | 'grid';
 
 // Component ref interface
 export type IList = {

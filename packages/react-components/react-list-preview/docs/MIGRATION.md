@@ -163,7 +163,7 @@ We recommend using a component like `Persona` where possible, or creating a cust
 | `debug`                 | N/A                                                                                                                                                        |
 | `defaultSelectedIndex`  | `defaultSelectedItems`                                                                                                                                     |
 | `design`                | N/A                                                                                                                                                        |
-| `horizontal`            | use `layout` with a value `ListLayout.horizontal`                                                                                                          |
+| `horizontal`            | use `layout` with a value `horizontal`                                                                                                                     |
 | `items`                 | N/A - use `ListItem` components as Children                                                                                                                |
 | `navigable`             | `focusableItems` if the `ListItem` contains more than 1 actionable element, otherwise use `ListItemButton` component as a child.                           |
 | `onSelectedIndexChange` | `onSelectionChange`                                                                                                                                        |

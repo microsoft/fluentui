@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, ListProps, ListItem, ListLayout, ListItemButton } from '@fluentui/react-list-preview';
+import { List, ListProps, ListItem, ListItemButton } from '@fluentui/react-list-preview';
 import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -11,7 +11,7 @@ const useStyles = makeStyles({
 export const ListGrid = (props: Partial<ListProps>) => {
   const classes = useStyles();
   return (
-    <List layout={ListLayout.Grid} className={classes.root}>
+    <List layout={'grid'} className={classes.root}>
       <ListItem>
         <ListItemButton onClick={() => alert('Asia')}>Asia</ListItemButton>
       </ListItem>

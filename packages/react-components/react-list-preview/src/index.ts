@@ -1,13 +1,6 @@
-export {
-  List,
-  listClassNames,
-  renderList_unstable,
-  useListStyles_unstable,
-  useList_unstable,
-  ListLayout,
-} from './List';
+export { List, listClassNames, renderList_unstable, useListStyles_unstable, useList_unstable } from './List';
 
-export type { ListProps, ListSlots, ListState, IList } from './List';
+export type { ListProps, ListSlots, ListState, IList, ListLayout } from './List';
 export {
   ListItem,
   listItemClassNames,

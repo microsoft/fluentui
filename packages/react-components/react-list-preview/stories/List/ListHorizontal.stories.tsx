@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, ListItem, ListLayout } from '@fluentui/react-list-preview';
+import { List, ListItem } from '@fluentui/react-list-preview';
 import { makeStyles, shorthands } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -11,7 +11,7 @@ const useStyles = makeStyles({
 export const ListHorizontal = () => {
   const classes = useStyles();
   return (
-    <List layout={ListLayout.Horizontal}>
+    <List layout={'horizontal'}>
       <ListItem className={classes.listItem}>Asia</ListItem>
       <ListItem className={classes.listItem}>Africa</ListItem>
       <ListItem className={classes.listItem}>Europe</ListItem>
