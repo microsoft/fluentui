@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useFocusableGroup } from '@fluentui/react-tabster';
-import { getNativeElementProps, slot, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
 import type { ListItemProps, ListItemState } from './ListItem.types';
 import { useListContext_unstable } from '../List/listContext';
 import { Checkmark16Filled } from '@fluentui/react-icons';
@@ -68,11 +68,11 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
   });
 
   const root = slot.always(
-    getNativeElementProps('li', {
+    getIntrinsicElementProps('li', {
       ref: useMergedRefs(ref, innerRef),
       tabIndex: focusableItems ? 0 : undefined,
       role: 'listitem',
-      id: value,
+      id: String(value),
       ...selectionProps,
       ...focusableGroupAttrs,
       ...props,

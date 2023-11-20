@@ -9,13 +9,10 @@ import type { ListItemProps } from './ListItem.types';
 /**
  * ListItem component - TODO: add more docs
  */
-export const ListItem: ForwardRefComponent<ListItemProps> = React.forwardRef((props, ref) => {
+export const ListItem: ForwardRefComponent<ListItemProps> = React.forwardRef<HTMLElement>((props, ref) => {
   const state = useListItem_unstable(props, ref);
 
   useListItemStyles_unstable(state);
-
-  // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
-  // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
   useCustomStyleHook_unstable('useListItemStyles_unstable')(state);
   return renderListItem_unstable(state);
 });
