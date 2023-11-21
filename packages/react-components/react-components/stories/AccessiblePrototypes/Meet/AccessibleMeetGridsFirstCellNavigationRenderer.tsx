@@ -268,9 +268,6 @@ export const RecentMeetingsTreeGridFirstCellNavigationRenderer: React.FC<
                     {meeting.titleWithTime}
                   </TableCell>
                   <TableCell role="gridcell">
-                    <Button>Agenda and notes</Button>
-                  </TableCell>
-                  <TableCell role="gridcell">
                     <Button>Chat with participants</Button>
                   </TableCell>
                   <TableCell role="gridcell">

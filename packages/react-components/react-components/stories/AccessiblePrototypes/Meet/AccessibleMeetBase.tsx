@@ -30,6 +30,13 @@ import {
   Input,
 } from '@fluentui/react-components';
 
+type PrototypeVariant =
+  | 'stitchedGridsRowNavigation'
+  | 'gridsRowNavigation'
+  | 'gridsCellNavigation'
+  | 'gridsFirstCellNavigation'
+  | 'lists';
+
 export const categoriesTitles: Record<string, string> = {
   today: 'Today',
   yesterday: 'Yesterday',
@@ -39,7 +46,16 @@ export const categoriesTitles: Record<string, string> = {
 const dateLocale = 'en-US';
 const nowDate = new Date('2023-10-01 12:30');
 
-const meetings = [
+type MeetingProperty = 'includingContent' | 'transcript' | 'recorded' | 'mentionsOfYou' | 'missed';
+type Meeting = {
+  title: string;
+  startDate: string;
+  endDate: string;
+  properties?: MeetingProperty[];
+  tasksCount?: number;
+};
+
+const meetings: Meeting[] = [
   // Upcoming meetings
   {
     title: 'Weekly summary #3',
@@ -102,6 +118,25 @@ const meetings = [
     endDate: '2023-09-22 14:15',
     properties: ['includingContent', 'transcript'],
   },
+  {
+    title: 'All hands meeting #1',
+    startDate: '2023-09-19 15:00',
+    endDate: '2023-09-19 16:00',
+    properties: ['recorded', 'missed'],
+  },
+  {
+    title: 'Presentation about TreeGrid',
+    startDate: '2023-09-19 14:00',
+    endDate: '2023-09-19 15:00',
+    properties: ['includingContent', 'recorded', 'transcript'],
+  },
+  {
+    title: 'Meeting with George',
+    startDate: '2023-09-19 10:00',
+    endDate: '2023-09-19 10:30',
+    properties: ['includingContent'],
+    tasksCount: 1,
+  },
 ];
 
 export type UpcomingMeeting = {
@@ -140,7 +175,7 @@ const getFormattedTime = (date: Date) => {
 };
 
 interface AccessibleMeetBaseProps {
-  variant: string;
+  variant: PrototypeVariant;
 }
 export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant }) => {
   const recentCategoriesRef = React.useRef<RecentCategory[]>([]);
