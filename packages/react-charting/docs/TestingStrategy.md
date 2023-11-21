@@ -92,15 +92,11 @@ If required, extract the unit testable portions out of the functions which can b
 
 Sample PRs and Test Plans:
 
-1. Unit test plan and unit tests: [Adding unit tests for donut chart by srmukher · Pull Request #27424 · microsoft/fluentui (github.com)](https://github.com/microsoft/fluentui/pull/27424/files)
+1. Unit tests: [Adding unit tests for donut chart by srmukher · Pull Request #27424 · microsoft/fluentui (github.com)](https://github.com/microsoft/fluentui/pull/27424/files)
 
-Test Plan: [https://microsoftapc-my.sharepoint.com/:w:/g/personal/srmukher_microsoft_com/EZffGTRDJDBBg3nb1CnF8koB3RDDYHxWErXdp7StPqKZeQ?e=72HMsD](https://microsoftapc-my.sharepoint.com/:w:/g/personal/srmukher_microsoft_com/EZffGTRDJDBBg3nb1CnF8koB3RDDYHxWErXdp7StPqKZeQ?e=72HMsD)
+2. Component test plan and component tests: [Component testing - Donut chart by srmukher · Pull Request #27033 · microsoft/fluentui (github.com)](https://github.com/microsoft/fluentui/pull/27033)
 
-1. Component test plan and component tests: [Component testing - Donut chart by srmukher · Pull Request #27033 · microsoft/fluentui (github.com)](https://github.com/microsoft/fluentui/pull/27033)
-
-Test Plan: [https://microsoftapc-my.sharepoint.com/:w:/g/personal/srmukher_microsoft_com/ETTvf39KoK1EkS6s-jPqy_4BPaOzBOBEguejUr_W6f5MSQ?e=oMIr10](https://microsoftapc-my.sharepoint.com/:w:/g/personal/srmukher_microsoft_com/ETTvf39KoK1EkS6s-jPqy_4BPaOzBOBEguejUr_W6f5MSQ?e=oMIr10)
-
-1. E2E test plan: [https://microsoftapc-my.sharepoint.com/:w:/g/personal/srmukher_microsoft_com/EUgOD5GcrbpDnFShCBFE3MUBX29tTNsgODWc1ws7DV_wiA?e=IEG8hP](https://microsoftapc-my.sharepoint.com/:w:/g/personal/srmukher_microsoft_com/EUgOD5GcrbpDnFShCBFE3MUBX29tTNsgODWc1ws7DV_wiA?e=IEG8hP)
+3. Test Plans: https://github.com/microsoft/fluentui/tree/master/packages/react-charting/docs/TestPlans
 
 **Test categorization**
 
