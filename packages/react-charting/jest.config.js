@@ -12,6 +12,7 @@ function getEsmOnlyPackagesToCjsMapping() {
     '^d3-scale$': prefix + 'node_modules/d3-scale/dist/d3-scale.js',
     '^d3-shape$': prefix + 'node_modules/d3-shape/dist/d3-shape.js',
     '^d3-path$': prefix + 'node_modules/d3-path/dist/d3-path.js',
+    '^d3-time-format$': prefix + 'node_modules/d3-time-format/dist/d3-time-format.js',
   };
   return cjsPathsToEsmOnlyPackages;
 }
