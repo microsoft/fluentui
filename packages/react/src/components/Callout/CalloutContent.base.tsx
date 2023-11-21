@@ -132,13 +132,13 @@ function useMaxHeight(
 ) {
   const [maxHeight, setMaxHeight] = React.useState<number | undefined>();
   const { top, bottom } = positions?.elementPosition ?? {};
+  const targetRect = targetRef?.current ? getRectangleFromTarget(targetRef?.current) : undefined;
 
   React.useEffect(() => {
     const bounds = getBounds();
     const { top: topBounds } = bounds ?? {};
     let { bottom: bottomBounds } = bounds ?? {};
     let calculatedHeight: number | undefined;
-    const targetRect = targetRef?.current ? getRectangleFromTarget(targetRef?.current) : undefined;
 
     // If aligned to top edge of target, update bottom bounds to the top of the target
     // (accounting for gap space and beak)
@@ -172,10 +172,10 @@ function useMaxHeight(
     hidden,
     positions,
     top,
-    targetRef,
     gapSpace,
     beakWidth,
     isBeakVisible,
+    targetRect,
   ]);
 
   return maxHeight;
@@ -207,6 +207,9 @@ function usePositions(
     preferScrollResizePositioning,
   } = props;
 
+  const popupStyles = popupRef?.current ? window.getComputedStyle(popupRef.current) : undefined;
+  const popupOverflowY = popupStyles?.overflowY;
+
   React.useEffect(() => {
     if (!hidden) {
       const timerId = async.requestAnimationFrame(() => {
@@ -227,9 +230,7 @@ function usePositions(
 
           // only account for scroll resizing if styles allow callout to scroll
           // (popup styles determine if callout will scroll)
-          const popupStyles = popupRef?.current ? window.getComputedStyle(popupRef.current) : undefined;
-          const isOverflowYHidden =
-            hideOverflow || popupStyles?.overflowY === 'clip' || popupStyles?.overflowY === 'hidden';
+          const isOverflowYHidden = hideOverflow || popupOverflowY === 'clip' || popupOverflowY === 'hidden';
           const shouldScroll = preferScrollResizePositioning && !isOverflowYHidden;
 
           // If there is a finalHeight given then we assume that the user knows and will handle
@@ -286,7 +287,7 @@ function usePositions(
     target,
     hideOverflow,
     preferScrollResizePositioning,
-    popupRef,
+    popupOverflowY,
   ]);
 
   return positions;
@@ -585,8 +586,8 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
             onScroll={onScroll}
             shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
-            ref={mergedPopupRefs}
             {...popupProps}
+            ref={mergedPopupRefs}
           >
             {children}
           </Popup>
