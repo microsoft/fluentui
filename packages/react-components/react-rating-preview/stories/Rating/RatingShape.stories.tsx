@@ -5,8 +5,8 @@ import { CircleFilled, CircleRegular, SquareFilled, SquareRegular } from '@fluen
 export const Shape = () => {
   return (
     <>
-      <Rating iconFilled={<CircleFilled />} iconOutline={<CircleRegular />} precision />
-      <Rating iconFilled={<SquareFilled />} iconOutline={<SquareRegular />} precision />
+      <Rating iconFilled={<CircleFilled />} iconOutline={<CircleRegular />} />
+      <Rating iconFilled={<SquareFilled />} iconOutline={<SquareRegular />} />
       <Rating />
     </>
   );
@@ -16,7 +16,7 @@ Shape.parameters = {
   docs: {
     description: {
       story:
-        'You can use different shapes to represent the Rating. By default it is star but it can also be circle or square',
+        'You can pass in custom icons to the Rating component. You can specify the icons with the "iconFilled" and "iconOutline" props.',
     },
   },
 };

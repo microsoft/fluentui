@@ -1,9 +1,19 @@
 import * as React from 'react';
 import { Rating } from '@fluentui/react-rating-preview';
+import { makeStyles, shorthands } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.gap('10px'),
+  },
+});
 
 export const Size = () => {
+  const classes = useStyles();
   return (
-    <div>
+    <div className={classes.root}>
       <Rating size="small" />
       <Rating size="medium" />
       <Rating size="large" />
