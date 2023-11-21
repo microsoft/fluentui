@@ -298,7 +298,15 @@ export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant 
 
   return (
     <>
-      <h1>Accessible Meet</h1>
+      {variant === 'stitchedGridsRowNavigation' && <h1>Accessible Meet Using Stitched Grids Row Navigation</h1>}
+
+      {variant === 'gridsRowNavigation' && <h1>Accessible Meet Using Grids Row Navigation</h1>}
+
+      {variant === 'gridsFirstCellNavigation' && <h1>Accessible Meet Using Grids First Cell Navigation</h1>}
+
+      {variant === 'gridsCellNavigation' && <h1>Accessible Meet Using Grids Cell Navigation</h1>}
+
+      {variant === 'lists' && <h1>Accessible Meet Using List</h1>}
 
       <div>
         <Toolbar>
