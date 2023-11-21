@@ -126,6 +126,9 @@ export function useRestoreFocusTarget(): Types.TabsterDOMAttribute;
 // @internal
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
 
+// @public
+export function useTabsterUncontrolled(): Types.TabsterDOMAttribute;
+
 // (No @packageDocumentation comment for this package)
 
 ```
