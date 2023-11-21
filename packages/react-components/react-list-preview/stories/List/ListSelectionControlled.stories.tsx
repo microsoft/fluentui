@@ -1,5 +1,5 @@
 import { Button, makeStyles, Persona, shorthands, useEventCallback } from '@fluentui/react-components';
-import { List, ListItem, useListFeatures, useListSelection } from '@fluentui/react-list-preview';
+import { List, ListItem, useListSelection } from '@fluentui/react-list-preview';
 
 import * as React from 'react';
 import { ListSelectionState } from '../../src/hooks/types';
@@ -132,9 +132,7 @@ ListSelectionControlled.parameters = {
   docs: {
     description: {
       story: [
-        'In the controlled approach you are in charge of the selection state. First, you create the state using `useListFeatures` in combination with `useListSelection` hooks.',
-        '',
-        'This will return a List state object with `selection` property. You can then use the `selection` object to control the selection state.',
+        'In the controlled approach you are in charge of the selection state. First, you create the state using ``useListSelection` hook. This will return a selection state object with a handful of useful methods to control the selection state.',
         '',
         'In this case, you are in control of deciding what item should be selected and when, including listening on events and calling the `selection` methods.',
         '',

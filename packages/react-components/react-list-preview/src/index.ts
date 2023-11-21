@@ -18,4 +18,4 @@ export {
 } from './ListItemButton';
 export type { ListItemButtonProps, ListItemButtonSlots, ListItemButtonState } from './ListItemButton';
 
-export { useListFeatures, useListSelection } from './hooks';
+export { useListSelection } from './hooks';

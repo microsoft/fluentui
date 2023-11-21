@@ -2,10 +2,6 @@ import * as React from 'react';
 import { List } from '../List';
 import { ListItem } from '../ListItem';
 
-export type UseListFeaturesOptions<TItem extends { id: string | number }> = {
-  items: TItem[];
-};
-
 export type ListSelectionState = {
   isSelected: (item: string | number) => boolean;
   toggleItem: (e: React.SyntheticEvent, id: string | number) => void;
@@ -21,12 +17,3 @@ export type ListSelectionState = {
 };
 
 export type UseListSelectionOptions = {}; // multiselect etc
-
-export interface ListFeaturesState<TItem extends { id: string | number }>
-  extends Pick<UseListFeaturesOptions<TItem>, 'items'> {
-  selection: ListSelectionState;
-}
-
-export type ListFeaturePlugin = <TItem extends { id: string | number }>(
-  listState: ListFeaturesState<TItem>,
-) => ListFeaturesState<TItem>;

@@ -109,14 +109,6 @@ export const renderListItemButton_unstable: (state: ListItemButtonState) => JSX.
 // @public
 export const useList_unstable: (props: ListProps, ref: React_2.Ref<HTMLElement>) => ListState;
 
-// @public (undocumented)
-export function useListFeatures<TItem extends {
-    id: string | number;
-}>(options: UseListFeaturesOptions<TItem>, plugins?: ListFeaturePlugin[]): {
-    items: TItem[];
-    selection: ListSelectionState;
-};
-
 // @public
 export const useListItem_unstable: (props: ListItemProps, ref: React_2.Ref<HTMLElement>) => ListItemState;
 

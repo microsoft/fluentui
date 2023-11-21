@@ -76,6 +76,7 @@ export const ListSelectionControlledWithState = () => {
         >
           Toggle all
         </Button>
+        <Button onClick={e => selection.clearSelection(e)}>Clear selection</Button>
       </div>
 
       <List
