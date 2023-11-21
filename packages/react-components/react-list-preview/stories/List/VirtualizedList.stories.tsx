@@ -240,12 +240,3 @@ VirtualizedList.parameters = {
     },
   },
 };
-
-VirtualizedList.decorators = [
-  Story => (
-    <div>
-      dfaeafasefase
-      <Story />
-    </div>
-  ),
-];
