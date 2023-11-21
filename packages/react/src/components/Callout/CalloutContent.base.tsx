@@ -11,6 +11,7 @@ import {
   getPropsWithDefaults,
   Async,
 } from '../../Utilities';
+import { calculateGapSpace, getRectangleFromTarget } from '../../utilities/positioning/positioning';
 import { positionCallout, RectangleEdge, positionCard, getBoundsFromTargetWindow } from '../../Positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
@@ -20,7 +21,6 @@ import type { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } 
 import type { Point, IRectangle } from '../../Utilities';
 import type { ICalloutPositionedInfo, IPositionProps, IPosition } from '../../Positioning';
 import type { Target } from '@fluentui/react-hooks';
-import { calculateGapSpace, getRectangleFromTarget } from '../../utilities/positioning/positioning';
 
 const COMPONENT_NAME = 'CalloutContentBase';
 
@@ -486,6 +486,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
 
     const hostElement = React.useRef<HTMLDivElement>(null);
     const popupRef = React.useRef<HTMLDivElement>(null);
+    const mergedPopupRefs = useMergedRefs(popupRef, popupProps?.ref);
     const [calloutElement, setCalloutElement] = React.useState<HTMLDivElement | null>(null);
     const calloutCallback = React.useCallback((calloutEl: any) => {
       setCalloutElement(calloutEl);
@@ -496,7 +497,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       current: calloutElement,
     });
     const getBounds = useBounds(props, targetRef, targetWindow);
-    const positions = usePositions(props, hostElement, calloutElement, targetRef, getBounds, popupRef);
+    const positions = usePositions(props, hostElement, calloutElement, targetRef, getBounds, mergedPopupRefs);
     const maxHeight = useMaxHeight(props, getBounds, targetRef, positions);
     const [mouseDownOnPopup, mouseUpOnPopup] = useDismissHandlers(
       props,
@@ -584,7 +585,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
             onScroll={onScroll}
             shouldRestoreFocus={shouldRestoreFocus}
             style={overflowStyle}
-            ref={popupRef}
+            ref={mergedPopupRefs}
             {...popupProps}
           >
             {children}

@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Update useMaxHeight hook for callout to use target top as bottom bound when aligned to top edge; account for scroll resizing when picking the best edge for positioning alignment",
+  "comment": "fix(Callout): Update useMaxHeight hook for callout to use target top as bottom bound when aligned to top edge; account for scroll resizing when picking the best edge for positioning alignment",
   "packageName": "@fluentui/react",
   "email": "nipope@microsoft.com",
   "dependentChangeType": "patch"
