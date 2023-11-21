@@ -178,29 +178,29 @@ We recommend using a component like `Persona` where possible, or creating a cust
 
 #### ListItem
 
-| v0 ListItem       | v9 ListItem                                                                                                                                                                                                     |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `accessibility`   | N/A                                                                                                                                                                                                             |
-| `as`              | `as`                                                                                                                                                                                                            |
-| `className`       | `className`                                                                                                                                                                                                     |
-| `content`         | N/A - use children                                                                                                                                                                                              |
-| `contentMedia`    | N/A - use children                                                                                                                                                                                              |
-| `debug`           | N/A                                                                                                                                                                                                             |
-| `design`          | N/A                                                                                                                                                                                                             |
-| `endMedia`        | N/A - use children                                                                                                                                                                                              |
-| `header`          | N/A - use children                                                                                                                                                                                              |
-| `headerMedia`     | N/A - use children                                                                                                                                                                                              |
-| `important`       | N/A                                                                                                                                                                                                             |
-| `index`           | N/A                                                                                                                                                                                                             |
-| `media`           | N/A - use children                                                                                                                                                                                              |
-| `navigable`       | N/A - use `List` property `focusableItems` or render `ListItemButton` if the `ListItem` only has one action                                                                                                     |
-| `onClick`         | `onClick`                                                                                                                                                                                                       |
-| `ref`             | ref                                                                                                                                                                                                             |
-| `selectable`      | N/A - use `List` property `selectable` for uncontrolled selection, or use `useListSelection` hook to control the state                                                                                          |
-| `selected`        | N/A - when in controlled state, use `selection.getListItemProps` [example](https://react.fluentui.dev/?path=/story/preview-components-list--list-selection-controlled) to pass proper role and aria attributes. |
-| `styles`          | N/A - use `className` for any slot                                                                                                                                                                              |
-| `truncateContent` | N/A - the `List` is not concerned about it's content                                                                                                                                                            |
-| `truncateHeader`  | N/A - the `List` is not concerned about it's content                                                                                                                                                            |
+| v0 ListItem       | v9 ListItem                                                                                                            |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `accessibility`   | N/A                                                                                                                    |
+| `as`              | `as`                                                                                                                   |
+| `className`       | `className`                                                                                                            |
+| `content`         | N/A - use children                                                                                                     |
+| `contentMedia`    | N/A - use children                                                                                                     |
+| `debug`           | N/A                                                                                                                    |
+| `design`          | N/A                                                                                                                    |
+| `endMedia`        | N/A - use children                                                                                                     |
+| `header`          | N/A - use children                                                                                                     |
+| `headerMedia`     | N/A - use children                                                                                                     |
+| `important`       | N/A                                                                                                                    |
+| `index`           | N/A                                                                                                                    |
+| `media`           | N/A - use children                                                                                                     |
+| `navigable`       | N/A - use `List` property `focusableItems` or render `ListItemButton` if the `ListItem` only has one action            |
+| `onClick`         | `onClick`                                                                                                              |
+| `ref`             | ref                                                                                                                    |
+| `selectable`      | N/A - use `List` property `selectable` for uncontrolled selection, or use `useListSelection` hook to control the state |
+| `selected`        | N/A - the selection state takes care of this automatically                                                             |
+| `styles`          | N/A - use `className` for any slot                                                                                     |
+| `truncateContent` | N/A - the `List` is not concerned about it's content                                                                   |
+| `truncateHeader`  | N/A - the `List` is not concerned about it's content                                                                   |
 
 #### Other
 

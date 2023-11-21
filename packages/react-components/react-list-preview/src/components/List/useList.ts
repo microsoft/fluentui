@@ -8,8 +8,9 @@ import {
 } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ListProps, ListState } from './List.types';
-import { useListFeatures } from '../../hooks/useListFeatures';
 import { useListSelection } from '../../hooks/useListSelection';
+
+const EMPTY_OBJECT = {};
 
 /**
  * Create the state required to render List.
@@ -71,6 +72,14 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
     }
   });
 
+  const selectableListProps = React.useMemo(
+    () => ({
+      role: 'listbox',
+      'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
+    }),
+    [selectionMode],
+  );
+
   return {
     components: {
       root: 'ul',
@@ -78,7 +87,7 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
     root: slot.always(
       getIntrinsicElementProps('ul', {
         ref,
-        ...(selectable ? selection.getListProps() : {}),
+        ...(selectable ? selectableListProps : EMPTY_OBJECT),
         ...arrowNavigationAttributes,
         ...props,
       }),

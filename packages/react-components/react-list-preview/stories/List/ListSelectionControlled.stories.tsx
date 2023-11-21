@@ -56,8 +56,7 @@ const MyListItem: React.FC<{
   name: string;
   avatar: string;
   toggleItem: (e: React.SyntheticEvent, id: string) => void;
-  selectionProps: ReturnType<ListSelectionState['getListItemProps']>;
-}> = React.memo(({ name, avatar, toggleItem, selectionProps }) => {
+}> = React.memo(({ name, avatar, toggleItem }) => {
   const onClick = useEventCallback((e: React.MouseEvent) => toggleItem(e, name));
   const onKeyDown = useEventCallback((e: React.KeyboardEvent) => {
     if (e.key === ' ') {
@@ -67,7 +66,7 @@ const MyListItem: React.FC<{
   });
 
   return (
-    <ListItem key={name} aria-label={name} {...selectionProps} onClick={onClick} onKeyDown={onKeyDown}>
+    <ListItem key={name} aria-label={name} onClick={onClick} onKeyDown={onKeyDown}>
       <Persona
         name={name}
         secondaryText="Available"
@@ -113,15 +112,9 @@ export const ListSelectionControlled = () => {
         </Button>
       </div>
 
-      <List {...selection.getListProps()}>
+      <List>
         {items.map(({ name, avatar }) => (
-          <MyListItem
-            name={name}
-            avatar={avatar}
-            key={name}
-            toggleItem={selection.toggleItem}
-            selectionProps={selection.getListItemProps(name)}
-          />
+          <MyListItem name={name} avatar={avatar} key={name} toggleItem={selection.toggleItem} />
         ))}
       </List>
     </div>
@@ -135,10 +128,6 @@ ListSelectionControlled.parameters = {
         'In the controlled approach you are in charge of the selection state. First, you create the state using ``useListSelection` hook. This will return a selection state object with a handful of useful methods to control the selection state.',
         '',
         'In this case, you are in control of deciding what item should be selected and when, including listening on events and calling the `selection` methods.',
-        '',
-        'The `selection` object also provides utility functions like `getListProps` and `getListItemProps`. These functions return props that should be applied to the List and ListItems respectively to ensure the right accessibility attributes are passed.',
-        '',
-        'The `getListItemProps` also configures the `checkmark` hook to visualize the selection state of the item. Feel free to override this behavior by passing your own `checkmark` prop to the ListItem.',
       ].join('\n'),
     },
   },

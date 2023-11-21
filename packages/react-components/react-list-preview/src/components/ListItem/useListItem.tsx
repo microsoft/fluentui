@@ -7,6 +7,24 @@ import { Checkmark16Filled } from '@fluentui/react-icons';
 
 const EMPTY_OBJECT = {};
 
+const listPropsForSelected = {
+  tabIndex: 0,
+  role: 'option',
+  'aria-selected': true,
+  checkmark: {
+    children: <Checkmark16Filled />,
+  },
+};
+
+const listPropsForNotSelected = {
+  tabIndex: 0,
+  role: 'option',
+  'aria-selected': false,
+  checkmark: {
+    children: null,
+  },
+};
+
 /**
  * Create the state required to render ListItem.
  *
@@ -26,7 +44,8 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
   const toggleItem = useListContext_unstable(ctx => ctx.selection?.toggleItem);
   const isSelectionEnabled = useListContext_unstable(ctx => !!ctx.selection);
   const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value));
-  const selectionProps = useListContext_unstable(ctx => ctx.selection?.getListItemProps(value) || EMPTY_OBJECT);
+
+  const listItemProps = isSelected ? listPropsForSelected : listPropsForNotSelected;
 
   const focusableGroupAttrs = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
 
@@ -73,7 +92,7 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
       tabIndex: focusableItems ? 0 : undefined,
       role: 'listitem',
       id: String(value),
-      ...(isSelectionEnabled ? selectionProps : {}),
+      ...(isSelectionEnabled ? listItemProps : EMPTY_OBJECT),
       ...focusableGroupAttrs,
       ...props,
       onKeyDown: isSelectionEnabled ? handleKeyDown : onKeyDown,

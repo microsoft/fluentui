@@ -134,8 +134,6 @@ export function useListSelection<TItem extends {
         setSelectedItems: React_2.Dispatch<React_2.SetStateAction<Set<string | number>>>;
         isSelected: (id: string | number) => boolean;
         clearSelection: (e: React_2.SyntheticEvent<Element, Event>) => void;
-        getListProps: () => Pick<ListProps & React_2.RefAttributes<HTMLDivElement | HTMLDListElement>, "role" | "aria-multiselectable">;
-        getListItemProps: (value: string | number) => Pick<ListItemProps & React_2.RefAttributes<HTMLElement>, "tabIndex" | "role" | "aria-selected">;
     };
     items: TItem[];
 };

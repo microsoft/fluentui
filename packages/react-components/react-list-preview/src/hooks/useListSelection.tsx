@@ -10,14 +10,10 @@ export const defaultListSelectionState: ListSelectionState = {
   deselectItem: () => undefined,
   clearSelection: () => undefined,
   toggleAllItems: () => undefined,
-  getListProps: () => ({}),
-  getListItemProps: () => ({}),
-  selectedItems: new Set(),
+  selectedItems: [],
 };
 
-export function useListSelection<TItem extends { id: string | number }>(
-  options: SelectionHookParams = { selectionMode: 'multiselect' },
-) {
+export function useListSelection(options: SelectionHookParams = { selectionMode: 'multiselect' }): ListSelectionState {
   const { selectionMode, defaultSelectedItems, onSelectionChange } = options;
 
   const [selectedItems, setSelectedItems] = useControllableState({
@@ -54,40 +50,6 @@ export function useListSelection<TItem extends { id: string | number }>(
 
   const clearSelection: ListSelectionState['clearSelection'] = useEventCallback(e => selectionMethods.clearItems(e));
 
-  const getListProps: ListSelectionState['getListProps'] = () => {
-    return {
-      role: 'listbox',
-      'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
-    };
-  };
-
-  const listPropsForSelected = React.useMemo(() => {
-    return {
-      tabIndex: 0,
-      role: 'option',
-      'aria-selected': true,
-      checkmark: {
-        children: <Checkmark16Filled />,
-      },
-    };
-  }, []);
-
-  const listPropsForNotSelected = React.useMemo(() => {
-    return {
-      tabIndex: 0,
-      role: 'option',
-      'aria-selected': false,
-      checkmark: {
-        children: null,
-      },
-    };
-  }, []);
-
-  const getListItemProps: ListSelectionState['getListItemProps'] = React.useCallback(
-    value => (selectionMethods.isSelected(value) ? listPropsForSelected : listPropsForNotSelected),
-    [listPropsForNotSelected, listPropsForSelected, selectionMethods],
-  );
-
   const selectedArray = React.useMemo(() => Array.from(selected), [selected]);
 
   return {
@@ -99,7 +61,5 @@ export function useListSelection<TItem extends { id: string | number }>(
     setSelectedItems,
     isSelected: (id: string | number) => selectionMethods.isSelected(id),
     clearSelection,
-    getListProps,
-    getListItemProps,
   };
 }
