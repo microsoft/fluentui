@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Add TeachingPopover style hooks",
-  "packageName": "@fluentui/react-provider",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

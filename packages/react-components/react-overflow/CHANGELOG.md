@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Fri, 10 Nov 2023 13:46:33 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Nov 2023 09:55:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.1.1)
+
+Mon, 20 Nov 2023 09:55:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.1.0..@fluentui/react-overflow_v9.1.1)
+
+### Patches
+
+- fix: register should happen again once observe options change ([PR #29375](https://github.com/microsoft/fluentui/pull/29375) by lingfan.gao@microsoft.com)
+- Bump @fluentui/priority-overflow to v9.1.10 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
 
 ## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.1.0)
 

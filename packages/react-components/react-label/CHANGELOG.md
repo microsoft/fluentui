@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-label
 
-This log was last generated on Thu, 09 Nov 2023 17:29:37 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Nov 2023 09:55:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.1.50)
+
+Mon, 20 Nov 2023 09:55:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.1.49..@fluentui/react-label_v9.1.50)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.13.0 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
 
 ## [9.1.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.1.49)
 
