@@ -20,7 +20,7 @@ export const Rating: ForwardRefComponent<RatingProps>;
 export const ratingClassNames: SlotClassNames<RatingSlots>;
 
 // @public (undocumented)
-export type RatingContextValue = Pick<RatingState, 'compact' | 'defaultValue' | 'iconFilled' | 'iconOutline' | 'name' | 'precision' | 'readOnly' | 'size' | 'value' | 'hoveredValue'>;
+export type RatingContextValue = Pick<RatingState, 'compact' | 'defaultValue' | 'iconFilled' | 'iconOutline' | 'name' | 'outlineStyle' | 'precision' | 'readOnly' | 'size' | 'value' | 'hoveredValue'>;
 
 // @public (undocumented)
 export type RatingContextValues = {
@@ -65,8 +65,9 @@ export type RatingProps = ComponentProps<RatingSlots> & {
     iconFilled?: React_2.ReactElement;
     iconOutline?: React_2.ReactElement;
     max?: number;
-    onChange?: (ev: React_2.SyntheticEvent | Event, data: RatingOnChangeData) => void;
     name?: string;
+    onChange?: (ev: React_2.SyntheticEvent | Event, data: RatingOnChangeData) => void;
+    outlineStyle?: 'filled' | 'outline';
     precision?: boolean;
     readOnly?: boolean;
     size?: 'small' | 'medium' | 'large';
@@ -84,7 +85,7 @@ export type RatingSlots = {
 };
 
 // @public
-export type RatingState = ComponentState<RatingSlots> & Required<Pick<RatingProps, 'size'>> & Pick<RatingProps, 'compact' | 'defaultValue' | 'iconFilled' | 'iconOutline' | 'name' | 'precision' | 'readOnly' | 'value'> & {
+export type RatingState = ComponentState<RatingSlots> & Required<Pick<RatingProps, 'size'>> & Pick<RatingProps, 'compact' | 'defaultValue' | 'iconFilled' | 'iconOutline' | 'name' | 'outlineStyle' | 'precision' | 'readOnly' | 'value'> & {
     hoveredValue?: number | undefined;
 };
 

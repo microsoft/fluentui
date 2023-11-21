@@ -39,7 +39,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   );
 
   let unselectedOutlineIcon;
-  if (iconFillWidth < 1) {
+  if (iconFillWidth < 1 && context.outlineStyle === 'outline') {
     unselectedOutlineIcon = slot.always(props.unselectedFilledIcon, {
       defaultProps: {
         children: context.iconOutline,
@@ -50,7 +50,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   let unselectedFilledIcon;
-  if (iconFillWidth < 1 && context.readOnly /** TODO add prop to control this instead of using readOnly */) {
+  if (iconFillWidth < 1 && (context.outlineStyle === 'filled' || context.readOnly)) {
     unselectedFilledIcon = slot.always(props.unselectedFilledIcon, {
       defaultProps: {
         children: context.iconFilled,

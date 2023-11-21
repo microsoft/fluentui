@@ -1,12 +1,10 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-//import { Label } from '@fluentui/react-label';
 
 export type RatingSlots = {
   root: NonNullable<Slot<'div'>>;
   ratingLabel?: NonNullable<Slot<'label'>>;
   ratingCountLabel?: NonNullable<Slot<'label'>>;
-  //divider?: NonNullable<Slot<'span'>>;
 };
 
 /**
@@ -23,11 +21,11 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    */
   defaultValue?: number;
   /**
-   *
+   * The icon to display when the rating value is greater than or equal to the item's value.
    */
   iconFilled?: React.ReactElement;
   /**
-   *
+   * The icon to display when the rating value is less than the item's value.
    */
   iconOutline?: React.ReactElement;
   /**
@@ -36,13 +34,18 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    */
   max?: number;
   /**
+   * Name for the Radio inputs. If not provided, one will be automatically generated
+   */
+  name?: string;
+  /**
    * Callback when the rating value is changed by the user.
    */
   onChange?: (ev: React.SyntheticEvent | Event, data: RatingOnChangeData) => void;
   /**
-   * Name for the Radio inputs. If not provided, one will be automatically generated
+   * Sets the background color of the rating to be transparent or filled.
+   * @default outline
    */
-  name?: string;
+  outlineStyle?: 'filled' | 'outline';
   /**
    * Sets the precision to allow half-filled shapes in Rating
    * @default false
@@ -81,7 +84,15 @@ export type RatingState = ComponentState<RatingSlots> &
   Required<Pick<RatingProps, 'size'>> &
   Pick<
     RatingProps,
-    'compact' | 'defaultValue' | 'iconFilled' | 'iconOutline' | 'name' | 'precision' | 'readOnly' | 'value'
+    | 'compact'
+    | 'defaultValue'
+    | 'iconFilled'
+    | 'iconOutline'
+    | 'name'
+    | 'outlineStyle'
+    | 'precision'
+    | 'readOnly'
+    | 'value'
   > & {
     hoveredValue?: number | undefined;
   };
@@ -93,6 +104,7 @@ export type RatingContextValue = Pick<
   | 'iconFilled'
   | 'iconOutline'
   | 'name'
+  | 'outlineStyle'
   | 'precision'
   | 'readOnly'
   | 'size'
