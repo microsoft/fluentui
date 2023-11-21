@@ -12,7 +12,7 @@ export type ListSelectionState = {
   deselectItem: (e: React.SyntheticEvent, id: string | number) => void;
   selectItem: (e: React.SyntheticEvent, id: string | number) => void;
   clearSelection: (e: React.SyntheticEvent) => void;
-  toggleAllItems: (e: React.SyntheticEvent) => void;
+  toggleAllItems: (e: React.SyntheticEvent, itemIds: string[] | number[]) => void;
   getListProps: () => Pick<React.ComponentProps<typeof List>, 'role' | 'aria-multiselectable'>;
   getListItemProps: (
     value: string | number,

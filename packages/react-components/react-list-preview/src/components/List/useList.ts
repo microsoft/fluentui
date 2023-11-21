@@ -1,19 +1,15 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  OnSelectionChangeData,
+  slot,
+  useControllableState,
+  useEventCallback,
+} from '@fluentui/react-utilities';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { ListProps, ListState, ListComponentRef } from './List.types';
+import { ListProps, ListState } from './List.types';
 import { useListFeatures } from '../../hooks/useListFeatures';
 import { useListSelection } from '../../hooks/useListSelection';
-
-const useComponentRef = (componentRef: React.Ref<ListComponentRef> | undefined, selection: ListState['selection']) => {
-  React.useImperativeHandle(
-    componentRef,
-    () => ({
-      selection,
-    }),
-    [selection],
-  );
-};
 
 /**
  * Create the state required to render List.
@@ -28,26 +24,40 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
   const {
     layout = 'vertical',
     focusableItems = false,
-    customArrowNavigationOptions,
+    // customArrowNavigationOptions,
     selectable = false,
     selectionMode = 'multiselect',
+    selectedItems,
     defaultSelectedItems,
-    componentRef,
     onSelectionChange,
   } = props;
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: layout === 'grid' ? 'grid-linear' : 'both',
     memorizeCurrent: true,
-    ...(customArrowNavigationOptions || {}),
+    // ...(customArrowNavigationOptions || {}),
   });
 
   const [items, setItems] = React.useState<Array<{ id: string | number }>>([]);
 
-  const { selection } = useListFeatures({ items }, [
-    useListSelection({ defaultSelectedItems, onSelectionChange, selectionMode }),
-  ]);
-  useComponentRef(componentRef, selection);
+  const [selectionState, setSelectionState] = useControllableState({
+    state: selectedItems,
+    defaultState: defaultSelectedItems,
+    initialState: [],
+  });
+
+  const onChange = useEventCallback((e: React.SyntheticEvent<Element, Event>, data: OnSelectionChangeData) => {
+    const selectedItemsAsArray = Array.from(data.selectedItems);
+    setSelectionState(selectedItemsAsArray);
+    onSelectionChange?.(e, { selectedItems: selectedItemsAsArray });
+  });
+
+  const selection = useListSelection({
+    onSelectionChange: onChange,
+    selectionMode,
+    selectedItems: selectionState,
+    defaultSelectedItems,
+  });
 
   const registerItem = useEventCallback((id: string | number) => {
     if (!items.find(item => item.id === id)) {

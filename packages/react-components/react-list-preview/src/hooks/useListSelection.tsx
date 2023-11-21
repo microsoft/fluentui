@@ -1,7 +1,7 @@
 import { Checkmark16Filled } from '@fluentui/react-icons';
-import { SelectionHookParams, useEventCallback, useSelection } from '@fluentui/react-utilities';
+import { SelectionHookParams, useControllableState, useEventCallback, useSelection } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { ListFeaturesState, ListSelectionState } from './types';
+import { ListSelectionState } from './types';
 
 export const defaultListSelectionState: ListSelectionState = {
   isSelected: () => false,
@@ -18,17 +18,13 @@ export const defaultListSelectionState: ListSelectionState = {
 export function useListSelection<TItem extends { id: string | number }>(
   options: SelectionHookParams = { selectionMode: 'multiselect' },
 ) {
-  // False positive, these plugin hooks are intended to be run on every render
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  return (listState: ListFeaturesState<TItem>) => useListSelectionState(listState, options);
-}
-
-export function useListSelectionState<TItem extends { id: string | number }>(
-  listState: ListFeaturesState<TItem>,
-  options: SelectionHookParams,
-) {
   const { selectionMode, defaultSelectedItems, onSelectionChange } = options;
-  const [selectedItems, setSelectedItems] = React.useState(() => new Set<string | number>(defaultSelectedItems || []));
+
+  const [selectedItems, setSelectedItems] = useControllableState({
+    state: options.selectedItems,
+    defaultState: defaultSelectedItems || [],
+    initialState: [],
+  });
 
   const [selected, selectionMethods] = useSelection({
     selectionMode,
@@ -44,11 +40,8 @@ export function useListSelectionState<TItem extends { id: string | number }>(
     selectionMethods.toggleItem(e, itemId),
   );
 
-  const toggleAllItems: ListSelectionState['toggleAllItems'] = useEventCallback(e => {
-    selectionMethods.toggleAllItems(
-      e,
-      listState.items.map(item => item.id),
-    );
+  const toggleAllItems: ListSelectionState['toggleAllItems'] = useEventCallback((e, itemIds) => {
+    selectionMethods.toggleAllItems(e, itemIds);
   });
 
   const deselectItem: ListSelectionState['deselectItem'] = useEventCallback((e, itemId: string | number) =>
@@ -95,19 +88,18 @@ export function useListSelectionState<TItem extends { id: string | number }>(
     [listPropsForNotSelected, listPropsForSelected, selectionMethods],
   );
 
+  const selectedArray = React.useMemo(() => Array.from(selected), [selected]);
+
   return {
-    ...listState,
-    selection: {
-      selectedItems: selected,
-      toggleItem,
-      toggleAllItems,
-      deselectItem,
-      selectItem,
-      setSelectedItems,
-      isSelected: (id: string | number) => selectionMethods.isSelected(id),
-      clearSelection,
-      getListProps,
-      getListItemProps,
-    },
+    selectedItems: selectedArray,
+    toggleItem,
+    toggleAllItems,
+    deselectItem,
+    selectItem,
+    setSelectedItems,
+    isSelected: (id: string | number) => selectionMethods.isSelected(id),
+    clearSelection,
+    getListProps,
+    getListItemProps,
   };
 }

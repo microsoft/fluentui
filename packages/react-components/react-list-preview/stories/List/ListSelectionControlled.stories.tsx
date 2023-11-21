@@ -92,18 +92,25 @@ export const ListSelectionControlled = () => {
     return origItems.slice(0, currentIndex);
   }, [currentIndex]);
 
-  const { selection } = useListFeatures({ items }, [
-    useListSelection({
-      selectionMode: 'multiselect',
-      onSelectionChange: (_, data) => console.log(data.selectedItems),
-    }),
-  ]);
+  const selection = useListSelection({
+    selectionMode: 'multiselect',
+    onSelectionChange: (_, data) => console.log(data.selectedItems),
+  });
 
   return (
     <div className={classes.wrapper}>
       <div className={classes.buttonControls}>
         <Button onClick={e => setCurrentIndex(cur => cur + 1)}>Add one</Button>
-        <Button onClick={e => selection.toggleAllItems(e)}>Toggle all</Button>
+        <Button
+          onClick={e =>
+            selection.toggleAllItems(
+              e,
+              items.map(({ id }) => id),
+            )
+          }
+        >
+          Toggle all
+        </Button>
       </div>
 
       <List {...selection.getListProps()}>

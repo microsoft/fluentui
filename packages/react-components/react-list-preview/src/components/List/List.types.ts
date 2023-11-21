@@ -1,21 +1,9 @@
 import * as React from 'react';
-import type {
-  ComponentProps,
-  ComponentState,
-  OnSelectionChangeData,
-  Slot,
-  SelectionMode,
-  SelectionItemId,
-} from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot, SelectionMode, SelectionItemId } from '@fluentui/react-utilities';
 import type { UseArrowNavigationGroupOptions } from '@fluentui/react-components';
 import { ListSelectionState } from '../../hooks/types';
 
 export type ListLayout = 'horizontal' | 'vertical' | 'grid';
-
-// Component ref interface
-export type ListComponentRef = {
-  selection: ListState['selection'];
-};
 
 export type ListSlots = {
   root: NonNullable<Slot<'ul', 'div' | 'ol'>>;
@@ -30,9 +18,9 @@ export type ListProps = ComponentProps<ListSlots> & {
   focusableItems?: boolean;
   selectable?: boolean;
   selectionMode?: SelectionMode;
+  selectedItems?: SelectionItemId[];
   defaultSelectedItems?: SelectionItemId[];
-  onSelectionChange?: (event: React.SyntheticEvent, data: OnSelectionChangeData) => void;
-  componentRef?: React.Ref<ListComponentRef>;
+  onSelectionChange?: (event: React.SyntheticEvent, data: { selectedItems: SelectionItemId[] }) => void;
 };
 
 export type ListContextValue = {

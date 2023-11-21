@@ -1,5 +1,5 @@
 import { Button, makeStyles, Persona, shorthands, SelectionItemId } from '@fluentui/react-components';
-import { ListComponentRef, List, ListItem } from '@fluentui/react-list-preview';
+import { List, ListItem, useListSelection } from '@fluentui/react-list-preview';
 
 import * as React from 'react';
 const names = [
@@ -47,7 +47,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ListSelectionUncontrolled = () => {
+export const ListSelectionControlledWithState = () => {
   const classes = useStyles();
   const [currentIndex, setCurrentIndex] = React.useState(4);
 
@@ -57,18 +57,32 @@ export const ListSelectionUncontrolled = () => {
 
   const defaultSelectedItems = ['Demetra Manwaring', 'Bart Merrill'];
 
-  const [selectedItems, setSelectedItems] = React.useState<SelectionItemId[]>(defaultSelectedItems);
+  const selection = useListSelection({
+    selectionMode: 'multiselect',
+    defaultSelectedItems,
+  });
 
   return (
     <div className={classes.wrapper}>
       <div className={classes.buttonControls}>
         <Button onClick={e => setCurrentIndex(cur => cur + 1)}>Add item</Button>
+        <Button
+          onClick={e =>
+            selection.toggleAllItems(
+              e,
+              items.map(({ id }) => id),
+            )
+          }
+        >
+          Toggle all
+        </Button>
       </div>
 
       <List
         selectable
         defaultSelectedItems={defaultSelectedItems}
-        onSelectionChange={(_, data) => setSelectedItems(data.selectedItems)}
+        selectedItems={selection.selectedItems}
+        onSelectionChange={(_, data) => selection.setSelectedItems(data.selectedItems)}
       >
         {items.map(({ name, avatar }) => {
           return (
@@ -87,12 +101,12 @@ export const ListSelectionUncontrolled = () => {
           );
         })}
       </List>
-      <div>Selected people: {selectedItems.join(', ')}</div>
+      <div>Selected people: {selection.selectedItems.join(', ')}</div>
     </div>
   );
 };
 
-ListSelectionUncontrolled.parameters = {
+ListSelectionControlledWithState.parameters = {
   docs: {
     description: {
       story: [

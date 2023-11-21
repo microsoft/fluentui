@@ -1,5 +1,5 @@
 import { Button, makeStyles, Persona, shorthands, SelectionItemId } from '@fluentui/react-components';
-import { ListComponentRef, List, ListItem } from '@fluentui/react-list-preview';
+import { List, ListItem } from '@fluentui/react-list-preview';
 
 import * as React from 'react';
 const names = [
@@ -47,7 +47,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ListSelectionUncontrolled = () => {
+export const ListSelectionControlledBasic = () => {
   const classes = useStyles();
   const [currentIndex, setCurrentIndex] = React.useState(4);
 
@@ -63,11 +63,13 @@ export const ListSelectionUncontrolled = () => {
     <div className={classes.wrapper}>
       <div className={classes.buttonControls}>
         <Button onClick={e => setCurrentIndex(cur => cur + 1)}>Add item</Button>
+        <Button onClick={e => setSelectedItems(items.map(({ id }) => id))}>Select all</Button>
       </div>
 
       <List
         selectable
         defaultSelectedItems={defaultSelectedItems}
+        selectedItems={selectedItems}
         onSelectionChange={(_, data) => setSelectedItems(data.selectedItems)}
       >
         {items.map(({ name, avatar }) => {
@@ -92,7 +94,7 @@ export const ListSelectionUncontrolled = () => {
   );
 };
 
-ListSelectionUncontrolled.parameters = {
+ListSelectionControlledBasic.parameters = {
   docs: {
     description: {
       story: [
