@@ -30,6 +30,7 @@
     "@swc/helpers": "^0.5.1",
     "@types/dedent": "0.7.0",
     "codesandbox-import-utils": "2.2.3",
+    "@fluentui/babel-preset-storybook-full-source": "^0.0.1",
     "dedent": "0.7.0"
   },
   "peerDependencies": {
@@ -49,5 +50,12 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs",
+    "preset.js"
+  ]
 }

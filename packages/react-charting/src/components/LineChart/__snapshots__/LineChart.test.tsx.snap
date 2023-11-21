@@ -173,6 +173,22 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
             stroke="red"
             strokeWidth={4}
           />
+          <circle
+            cx={80}
+            cy={20}
+            focusable={false}
+            id="circle0_0_11D"
+            key="circle0_0_11D"
+            onBlur={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity={0}
+            r={8}
+            role="none"
+            strokeWidth={0}
+            width={0}
+          />
         </g>
       </g>
     </svg>
@@ -708,6 +724,22 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
             stroke="red"
             strokeWidth={4}
           />
+          <circle
+            cx={80}
+            cy={20}
+            focusable={false}
+            id="circle0_0_11D"
+            key="circle0_0_11D"
+            onBlur={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity={0}
+            r={8}
+            role="none"
+            strokeWidth={0}
+            width={0}
+          />
         </g>
       </g>
     </svg>
@@ -1140,6 +1172,22 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
             role="img"
             stroke="red"
             strokeWidth={4}
+          />
+          <circle
+            cx={80}
+            cy={20}
+            focusable={false}
+            id="circle0_0_11D"
+            key="circle0_0_11D"
+            onBlur={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity={0}
+            r={8}
+            role="none"
+            strokeWidth={0}
+            width={0}
           />
         </g>
       </g>
@@ -1574,6 +1622,22 @@ exports[`LineChart snapShot testing Should render with default colors when line 
             stroke="#637cef"
             strokeWidth={4}
           />
+          <circle
+            cx={80}
+            cy={20}
+            focusable={false}
+            id="circle0_0_11D"
+            key="circle0_0_11D"
+            onBlur={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity={0}
+            r={8}
+            role="none"
+            strokeWidth={0}
+            width={0}
+          />
         </g>
       </g>
     </svg>
@@ -1914,6 +1978,22 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             role="img"
             stroke="red"
             strokeWidth={4}
+          />
+          <circle
+            cx={80}
+            cy={20}
+            focusable={false}
+            id="circle0_0_11D"
+            key="circle0_0_11D"
+            onBlur={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity={0}
+            r={8}
+            role="none"
+            strokeWidth={0}
+            width={0}
           />
         </g>
       </g>
@@ -2256,6 +2336,22 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             stroke="red"
             strokeWidth={4}
           />
+          <circle
+            cx={80}
+            cy={20}
+            focusable={false}
+            id="circle0_0_11D"
+            key="circle0_0_11D"
+            onBlur={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity={0}
+            r={8}
+            role="none"
+            strokeWidth={0}
+            width={0}
+          />
         </g>
       </g>
     </svg>
@@ -2577,6 +2673,22 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             stroke="red"
             strokeWidth={4}
           />
+          <circle
+            cx={80}
+            cy={20}
+            focusable={false}
+            id="circle0_0_11D"
+            key="circle0_0_11D"
+            onBlur={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity={0}
+            r={8}
+            role="none"
+            strokeWidth={0}
+            width={0}
+          />
         </g>
       </g>
     </svg>
@@ -2756,6 +2868,22 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             role="img"
             stroke="red"
             strokeWidth={4}
+          />
+          <circle
+            cx={80}
+            cy={20}
+            focusable={false}
+            id="circle0_0_11D"
+            key="circle0_0_11D"
+            onBlur={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity={0}
+            r={8}
+            role="none"
+            strokeWidth={0}
+            width={0}
           />
         </g>
       </g>
@@ -3098,6 +3226,22 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             stroke="red"
             strokeWidth={4}
           />
+          <circle
+            cx={80}
+            cy={20}
+            focusable={false}
+            id="circle0_0_11D"
+            key="circle0_0_11D"
+            onBlur={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity={0}
+            r={8}
+            role="none"
+            strokeWidth={0}
+            width={0}
+          />
         </g>
       </g>
     </svg>
@@ -3439,6 +3583,23 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             stroke="red"
             strokeWidth={4}
           />
+          <circle
+            aria-label="40. metaData1, 80."
+            cx={120}
+            cy={20}
+            focusable={false}
+            id="circle0_0_11D"
+            key="circle0_0_11D"
+            onBlur={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity={0}
+            r={8}
+            role="none"
+            strokeWidth={0}
+            width={0}
+          />
         </g>
       </g>
     </svg>
@@ -3779,6 +3940,22 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             role="img"
             stroke="red"
             strokeWidth={4}
+          />
+          <circle
+            cx={80}
+            cy={20}
+            focusable={false}
+            id="circle0_0_11D"
+            key="circle0_0_11D"
+            onBlur={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity={0}
+            r={8}
+            role="none"
+            strokeWidth={0}
+            width={0}
           />
         </g>
       </g>

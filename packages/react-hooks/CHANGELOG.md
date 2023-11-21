@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-hooks
 
-This log was last generated on Sat, 28 Oct 2023 00:29:16 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Nov 2023 07:29:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.33)
+
+Thu, 09 Nov 2023 07:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.6.32..@fluentui/react-hooks_v8.6.33)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.13.21 ([PR #29772](https://github.com/microsoft/fluentui/pull/29772) by beachball)
+
+## [8.6.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.32)
+
+Wed, 01 Nov 2023 07:29:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.6.31..@fluentui/react-hooks_v8.6.32)
+
+### Patches
+
+- Add sanity check for addEventListener in useOnEvent ([PR #29699](https://github.com/microsoft/fluentui/pull/29699) by mikula@gmail.com)
 
 ## [8.6.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.31)
 

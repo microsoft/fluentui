@@ -14,3 +14,9 @@ interface ParametersConfig {
 export interface ParametersExtension {
   exportToSandbox?: ParametersConfig;
 }
+
+export interface PresetConfig {
+  importMappings: import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions;
+  webpackRule?: import('webpack').RuleSetRule;
+  babelLoaderOptionsUpdater?: (value: import('@babel/core').TransformOptions) => typeof value;
+}

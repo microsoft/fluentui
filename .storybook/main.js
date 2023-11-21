@@ -1,7 +1,12 @@
 const path = require('path');
 const fs = require('fs');
 
-const { loadWorkspaceAddon, registerTsPaths, registerRules, rules } = require('@fluentui/scripts-storybook');
+const {
+  loadWorkspaceAddon,
+  registerTsPaths,
+  processBabelLoaderOptions,
+  getImportMappingsForExportToSandboxAddon,
+} = require('@fluentui/scripts-storybook');
 
 const tsConfigPath = path.resolve(__dirname, '../tsconfig.base.json');
 
@@ -62,13 +67,24 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
 
     // internal monorepo custom addons
 
-    /**  @see ../packages/react-components/react-storybook-addon */
+    /**  {@link file://./../packages/react-components/react-storybook-addon/package.json} */
     loadWorkspaceAddon('@fluentui/react-storybook-addon', { tsConfigPath }),
-    loadWorkspaceAddon('@fluentui/react-storybook-addon-export-to-sandbox', { tsConfigPath }),
+    /** {@link file://./../packages/react-components/react-storybook-addon-export-to-sandbox/package.json} */
+    loadWorkspaceAddon('@fluentui/react-storybook-addon-export-to-sandbox', {
+      tsConfigPath,
+      /** @type {import('../packages/react-components/react-storybook-addon-export-to-sandbox/src/public-types').PresetConfig} */
+      options: {
+        importMappings: getImportMappingsForExportToSandboxAddon(),
+        babelLoaderOptionsUpdater: processBabelLoaderOptions,
+        webpackRule: {
+          test: /\.stories\.tsx$/,
+          include: /stories/,
+        },
+      },
+    }),
   ],
   webpackFinal: config => {
     registerTsPaths({ config, configFile: tsConfigPath });
-    registerRules({ config, rules: [rules.codesandboxRule] });
 
     if ((process.env.CI || process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) && config.plugins) {
       // Disable ProgressPlugin in PR/CI builds to reduce log verbosity (warnings and errors are still logged)

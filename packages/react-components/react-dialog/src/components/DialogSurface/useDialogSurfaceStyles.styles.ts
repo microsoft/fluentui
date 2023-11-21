@@ -24,7 +24,6 @@ const useRootBaseStyle = makeResetStyles({
   ...shorthands.border(SURFACE_BORDER_WIDTH, 'solid', tokens.colorTransparentStroke),
   ...shorthands.borderRadius(tokens.borderRadiusXLarge),
 
-  contain: 'content',
   display: 'block',
   userSelect: 'unset',
   visibility: 'unset',
@@ -39,18 +38,19 @@ const useRootBaseStyle = makeResetStyles({
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
   },
-
-  // initial style before animation:
-  opacity: 0,
-  transitionDuration: tokens.durationGentle,
-  transitionProperty: 'opacity, transform, box-shadow',
-  // // FIXME: https://github.com/microsoft/fluentui/issues/29473
-  transitionTimingFunction: tokens.curveDecelerateMid,
-  boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0.1)',
-  transform: 'scale(0.85) translateZ(0)',
 });
 
 const useRootStyles = makeStyles({
+  animated: {
+    // initial style before animation:
+    opacity: 0,
+    transitionDuration: tokens.durationGentle,
+    transitionProperty: 'opacity, transform, box-shadow',
+    // // FIXME: https://github.com/microsoft/fluentui/issues/29473
+    transitionTimingFunction: tokens.curveDecelerateMid,
+    boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0.1)',
+    transform: 'scale(0.85) translateZ(0)',
+  },
   unmounted: {},
   entering: {},
   entered: {
@@ -101,7 +101,7 @@ const useBackdropStyles = makeStyles({
  * Apply styling to the DialogSurface slots based on the state
  */
 export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): DialogSurfaceState => {
-  const { isNestedDialog, root, backdrop, transitionStatus = 'unmounted' } = state;
+  const { isNestedDialog, root, backdrop, transitionStatus } = state;
 
   const rootBaseStyle = useRootBaseStyle();
   const rootStyles = useRootStyles();
@@ -112,7 +112,8 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
   root.className = mergeClasses(
     dialogSurfaceClassNames.root,
     rootBaseStyle,
-    rootStyles[transitionStatus],
+    transitionStatus && rootStyles.animated,
+    transitionStatus && rootStyles[transitionStatus],
     root.className,
   );
 
@@ -121,7 +122,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
       dialogSurfaceClassNames.backdrop,
       backdropBaseStyle,
       isNestedDialog && backdropStyles.nestedDialogBackdrop,
-      backdropStyles[transitionStatus],
+      transitionStatus && backdropStyles[transitionStatus],
       backdrop.className,
     );
   }

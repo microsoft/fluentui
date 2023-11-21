@@ -1,8 +1,53 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Sat, 28 Oct 2023 23:35:59 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Nov 2023 09:55:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.4.2)
+
+Mon, 20 Nov 2023 09:55:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.4.1..@fluentui/react-portal_v9.4.2)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.13.0 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+- Bump @fluentui/react-tabster to v9.14.6 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+
+## [9.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.4.1)
+
+Tue, 14 Nov 2023 17:51:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.4.0..@fluentui/react-portal_v9.4.1)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.14.5 ([PR #29835](https://github.com/microsoft/fluentui/pull/29835) by beachball)
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.4.0)
+
+Thu, 09 Nov 2023 17:29:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.3.27..@fluentui/react-portal_v9.4.0)
+
+### Minor changes
+
+- feat: export toMountNodeProps() ([PR #29772](https://github.com/microsoft/fluentui/pull/29772) by jaguilarvega@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.12.0 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-tabster to v9.14.4 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-utilities to v9.15.2 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+
+## [9.3.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.3.27)
+
+Wed, 01 Nov 2023 12:55:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.3.26..@fluentui/react-portal_v9.3.27)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.11.1 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-tabster to v9.14.3 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
 
 ## [9.3.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.3.26)
 

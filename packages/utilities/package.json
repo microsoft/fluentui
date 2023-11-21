@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/utilities",
-  "version": "8.13.20",
+  "version": "8.13.21",
   "description": "Fluent UI React utilities for building components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,6 +13,13 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-amd",
+    "lib-commonjs"
+  ],
   "scripts": {
     "build": "just-scripts build",
     "clean": "just-scripts clean",

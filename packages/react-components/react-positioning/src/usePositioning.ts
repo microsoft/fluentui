@@ -19,6 +19,7 @@ import {
   resetMaxSize as resetMaxSizeMiddleware,
   offset as offsetMiddleware,
   intersecting as intersectingMiddleware,
+  matchTargetSize as matchTargetSizeMiddleware,
 } from './middleware';
 import { createPositionManager } from './createPositionManager';
 
@@ -168,6 +169,7 @@ function usePositioningOptions(options: PositioningOptions) {
     overflowBoundaryPadding,
     fallbackPositions,
     useTransform,
+    matchTargetSize,
   } = options;
 
   const { dir } = useFluent();
@@ -181,6 +183,7 @@ function usePositioningOptions(options: PositioningOptions) {
 
       const middleware = [
         autoSize && resetMaxSizeMiddleware(autoSize),
+        matchTargetSize && matchTargetSizeMiddleware(),
         offset && offsetMiddleware(offset),
         coverTarget && coverTargetMiddleware(),
         !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement, isRtl, fallbackPositions }),
@@ -224,6 +227,7 @@ function usePositioningOptions(options: PositioningOptions) {
       overflowBoundaryPadding,
       fallbackPositions,
       useTransform,
+      matchTargetSize,
     ],
   );
 }

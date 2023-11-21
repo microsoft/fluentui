@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-hooks",
-  "version": "8.6.31",
+  "version": "8.6.33",
   "description": "Fluent UI React hooks.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,7 +34,7 @@
   "dependencies": {
     "@fluentui/react-window-provider": "^2.2.16",
     "@fluentui/set-version": "^8.2.12",
-    "@fluentui/utilities": "^8.13.20",
+    "@fluentui/utilities": "^8.13.21",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

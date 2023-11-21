@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Tue, 26 Sep 2023 17:49:04 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Nov 2023 17:29:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.18.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.18.3)
+
+Thu, 09 Nov 2023 17:29:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.18.2..@fluentui/react-conformance_v0.18.3)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
 
 ## [0.18.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.18.2)
 
