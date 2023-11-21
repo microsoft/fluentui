@@ -5,6 +5,10 @@ import {
   RecentMeetingsTreeGridRowNavigationRenderer,
 } from './AccessibleMeetGridsRowNavigationRenderer';
 import {
+  UpcomingMeetingsGridFirstCellNavigationRenderer,
+  RecentMeetingsTreeGridFirstCellNavigationRenderer,
+} from './AccessibleMeetGridsFirstCellNavigationRenderer';
+import {
   UpcomingMeetingsGridCellNavigationRenderer,
   RecentMeetingsTreeGridCellNavigationRenderer,
 } from './AccessibleMeetGridsCellNavigationRenderer';
@@ -299,6 +303,10 @@ export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant 
           <UpcomingMeetingsGridRowNavigationRenderer threeUpcomingMeetings={threeUpcomingMeetings} />
         )}
 
+        {variant === 'gridsFirstCellNavigation' && (
+          <UpcomingMeetingsGridFirstCellNavigationRenderer threeUpcomingMeetings={threeUpcomingMeetings} />
+        )}
+
         {variant === 'gridsCellNavigation' && (
           <UpcomingMeetingsGridCellNavigationRenderer threeUpcomingMeetings={threeUpcomingMeetings} />
         )}
@@ -330,6 +338,13 @@ export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant 
 
         {variant === 'gridsRowNavigation' && (
           <RecentMeetingsTreeGridRowNavigationRenderer
+            recentCategories={recentCategoriesRef.current}
+            recentMeetings={recentMeetings}
+          />
+        )}
+
+        {variant === 'gridsFirstCellNavigation' && (
+          <RecentMeetingsTreeGridFirstCellNavigationRenderer
             recentCategories={recentCategoriesRef.current}
             recentMeetings={recentMeetings}
           />

@@ -44,8 +44,8 @@ export const RecentMeetingsStitchedTreeGridRowNavigationRenderer: React.FC<
 
   const handleRowClick = React.useCallback(
     (event: React.MouseEvent) => {
-      const element = event.currentTarget as HTMLElement;
-      const selectedRowId = element.id;
+      const currentTarget = event.currentTarget as HTMLElement;
+      const selectedRowId = currentTarget.id;
       const category = getCategoryById(selectedRowId);
       changeRecentCategoryExpandedState(category, !category?.expanded);
     },
@@ -55,13 +55,13 @@ export const RecentMeetingsStitchedTreeGridRowNavigationRenderer: React.FC<
   const handleTreeGridKeyDown = React.useCallback(
     (event: React.KeyboardEvent) => {
       let callTabsterKeyboardHandler = true;
-      const element = event.target as HTMLElement;
-      if (element.role === 'row') {
-        const isModifierDown = event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
-        if (!isModifierDown) {
-          const selectedRowId = element.id;
+      const isModifierDown = event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
+      if (!isModifierDown) {
+        const target = event.target as HTMLElement;
+        if (target.role === 'row') {
+          const selectedRowId = target.id;
           const category = getCategoryById(selectedRowId);
-          const level = element.getAttribute('aria-level');
+          const level = target.getAttribute('aria-level');
           if (event.key === 'ArrowRight' && level === '1' && category && !category.expanded) {
             changeRecentCategoryExpandedState(category, true);
             callTabsterKeyboardHandler = false;

@@ -18,13 +18,20 @@ import {
 } from '@fluentui/react-components';
 import { createTabster, getMover, getGroupper, getTabsterAttribute, Types } from 'tabster';
 
+export const getFirstCellChild = (element: HTMLElement) => {
+  return element?.querySelectorAll('[role="gridcell"]')[0] as HTMLElement;
+};
+
 interface UpcomingMeetingsGridCellNavigationRendererProps {
   threeUpcomingMeetings: UpcomingMeeting[];
 }
 export const UpcomingMeetingsGridCellNavigationRenderer: React.FC<UpcomingMeetingsGridCellNavigationRendererProps> = ({
   threeUpcomingMeetings,
 }) => {
-  const tableTabsterAttribute = useArrowNavigationGroup({ axis: 'grid' });
+  const tableTabsterAttribute = useArrowNavigationGroup({
+    axis: 'grid',
+    memorizeCurrent: true,
+  });
 
   const threeUpcomingMeetingsItems = React.useMemo(
     () =>
@@ -81,13 +88,14 @@ export const UpcomingMeetingsGridCellNavigationRenderer: React.FC<UpcomingMeetin
   );
 };
 
-interface RecentMeetingsGridCellNavigationRendererrerProps {
+interface RecentMeetingsGridCellNavigationRendererProps {
   recentCategories: RecentCategory[];
   recentMeetings: RecentMeetings;
 }
-export const RecentMeetingsTreeGridCellNavigationRenderer: React.FC<
-  RecentMeetingsGridCellNavigationRendererrerProps
-> = ({ recentCategories, recentMeetings }) => {
+export const RecentMeetingsTreeGridCellNavigationRenderer: React.FC<RecentMeetingsGridCellNavigationRendererProps> = ({
+  recentCategories,
+  recentMeetings,
+}) => {
   const { targetDocument } = useFluent();
   const [recentCategoriesState, setRecentCategoryState] = React.useState(recentCategories);
 
@@ -116,8 +124,8 @@ export const RecentMeetingsTreeGridCellNavigationRenderer: React.FC<
 
   const handleRowClick = React.useCallback(
     (event: React.MouseEvent) => {
-      const element = event.currentTarget as HTMLElement;
-      const selectedRowId = element.id;
+      const currentTarget = event.currentTarget as HTMLElement;
+      const selectedRowId = currentTarget.id;
       const category = getCategoryById(selectedRowId);
       changeRecentCategoryExpandedState(category, !category?.expanded);
     },
@@ -126,22 +134,22 @@ export const RecentMeetingsTreeGridCellNavigationRenderer: React.FC<
 
   const handleTreeGridKeyDown = React.useCallback(
     (event: React.KeyboardEvent) => {
-      const element = event.target as HTMLElement;
-      if (element.role === 'gridcell') {
-        const isModifierDown = event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
-        if (!isModifierDown) {
-          const parent = element.parentElement;
-          const isFirstChild = (parent?.querySelector('*:first-child') as HTMLElement) === element;
-          const selectedRowId = parent?.id || '';
+      const isModifierDown = event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
+      if (!isModifierDown) {
+        const target = event.target as HTMLElement;
+        if (target.role === 'gridcell') {
+          const row = target.parentElement;
+          const isFirstCellChild = getFirstCellChild(row as HTMLElement) === target;
+          const selectedRowId = row?.id || '';
           const category = getCategoryById(selectedRowId);
-          const level = parent?.getAttribute('aria-level') || 1;
-          if (event.key === 'ArrowRight' && level === '1' && isFirstChild && category && !category.expanded) {
+          const level = row?.getAttribute('aria-level') || 1;
+          if (event.key === 'ArrowRight' && level === '1' && isFirstCellChild && category && !category.expanded) {
             changeRecentCategoryExpandedState(category, true);
-          } else if (event.key === 'ArrowLeft' && level === '1' && isFirstChild) {
+          } else if (event.key === 'ArrowLeft' && level === '1' && isFirstCellChild) {
             changeRecentCategoryExpandedState(category, false);
           } else if ((event.key === 'Enter' || event.key === ' ') && level === '1') {
             changeRecentCategoryExpandedState(category, !category?.expanded);
-          } else if (event.key === 'ArrowLeft' && level === '2' && isFirstChild) {
+          } else if (event.key === 'ArrowLeft' && level === '2' && isFirstCellChild) {
             const categoryToFocus = recentCategories.find(testedCategory => {
               return !!recentMeetings[testedCategory.id].find(meeting => {
                 return meeting.id === selectedRowId;
@@ -166,7 +174,10 @@ export const RecentMeetingsTreeGridCellNavigationRenderer: React.FC<
         groupper: {
           tabbability: Types.GroupperTabbabilities.Unlimited,
         },
-        mover: { direction: Types.MoverDirections.Grid },
+        mover: {
+          direction: Types.MoverDirections.Grid,
+          memorizeCurrent: true,
+        },
       })}
     >
       {recentCategories.map(category => (
@@ -187,7 +198,6 @@ export const RecentMeetingsTreeGridCellNavigationRenderer: React.FC<
                     {meeting.titleWithTime}
                   </TableCell>
                   <TableCell role="gridcell">
-                    {' '}
                     <Button>Agenda and notes</Button>
                   </TableCell>
                   <TableCell role="gridcell">
