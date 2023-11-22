@@ -1,8 +1,9 @@
 import { makeStyles, shorthands, tokens, Label, Slider, useId, Checkbox } from '@fluentui/react-components';
 import { atoms, createAtom } from '@fluentui/react-motions-preview';
+import type { MotionImperativeRef } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
-import description from './TransitionUnmountOnExit.stories.md';
+import description from './ImperativeRefPlayState.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -44,26 +45,29 @@ const useClasses = makeStyles({
 
 const FadeEnter = createAtom(atoms.fade.enterUltraSlow());
 
-export const AtomPlayState = () => {
+export const ImperativeRefPlayState = () => {
   const classes = useClasses();
   const sliderId = useId();
 
-  const elementRef = React.useRef<HTMLDivElement>(null);
+  const motionRef = React.useRef<MotionImperativeRef>();
+
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [isRunning, setIsRunning] = React.useState<boolean>(false);
 
   React.useEffect(() => {
-    elementRef.current?.getAnimations().forEach(animation => {
-      animation.playbackRate = playbackRate / 100;
-    });
-  }, [playbackRate, isRunning]);
+    motionRef.current?.setPlaybackRate(playbackRate / 100);
+  }, [playbackRate]);
+
+  React.useEffect(() => {
+    motionRef.current?.setPlayState(isRunning ? 'running' : 'paused');
+  }, [isRunning]);
 
   return (
     <>
       <div className={classes.container}>
         <div className={classes.card}>
-          <FadeEnter playState={isRunning ? 'running' : 'paused'} iterations={Infinity}>
-            <div className={classes.item} ref={elementRef} />
+          <FadeEnter iterations={Infinity} imperativeRef={motionRef}>
+            <div className={classes.item} />
           </FadeEnter>
 
           <code className={classes.description}>fadeEnterSlow</code>
@@ -97,7 +101,7 @@ export const AtomPlayState = () => {
   );
 };
 
-AtomPlayState.parameters = {
+ImperativeRefPlayState.parameters = {
   docs: {
     description: {
       story: description,
