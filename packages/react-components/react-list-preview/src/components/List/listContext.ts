@@ -12,6 +12,7 @@ export const listContextDefaultValue: ListContextValue = {
   registerItem: noop,
   deregisterItem: noop,
   selection: undefined,
+  as: undefined,
 };
 
 const listContext = createContext<ListContextValue | undefined>(undefined);

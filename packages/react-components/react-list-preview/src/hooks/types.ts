@@ -1,6 +1,5 @@
+import { SelectionItemId } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { List } from '../List';
-import { ListItem } from '../ListItem';
 
 export type ListSelectionState = {
   isSelected: (item: string | number) => boolean;
@@ -9,7 +8,8 @@ export type ListSelectionState = {
   selectItem: (e: React.SyntheticEvent, id: string | number) => void;
   clearSelection: (e: React.SyntheticEvent) => void;
   toggleAllItems: (e: React.SyntheticEvent, itemIds: string[] | number[]) => void;
-  selectedItems: string[] | number[];
+  setSelectedItems: React.Dispatch<React.SetStateAction<Iterable<SelectionItemId>>>;
+  selectedItems: SelectionItemId[];
 };
 
 export type UseListSelectionOptions = {}; // multiselect etc

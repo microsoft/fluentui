@@ -11,6 +11,7 @@ import { ListProps, ListState } from './List.types';
 import { useListSelection } from '../../hooks/useListSelection';
 
 const EMPTY_OBJECT = {};
+const DEFAULT_ROOT_EL_TYPE = 'ul';
 
 /**
  * Create the state required to render List.
@@ -30,6 +31,7 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
     selectionMode = 'multiselect',
     selectedItems,
     defaultSelectedItems,
+    as,
     onSelectionChange,
   } = props;
 
@@ -82,20 +84,21 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
 
   return {
     components: {
-      root: 'ul',
+      root: DEFAULT_ROOT_EL_TYPE,
     },
     root: slot.always(
-      getIntrinsicElementProps('ul', {
+      getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
         ref,
         ...(selectable ? selectableListProps : EMPTY_OBJECT),
         ...arrowNavigationAttributes,
         ...props,
       }),
-      { elementType: 'ul' },
+      { elementType: DEFAULT_ROOT_EL_TYPE },
     ),
     layout,
     // context:
     focusableItems,
+    as: as || DEFAULT_ROOT_EL_TYPE,
     items,
     registerItem: selectable ? registerItem : undefined,
     deregisterItem: selectable ? deregisterItem : undefined,

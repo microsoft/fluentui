@@ -6,6 +6,7 @@ import { useListContext_unstable } from '../List/listContext';
 import { Checkmark16Filled } from '@fluentui/react-icons';
 
 const EMPTY_OBJECT = {};
+const DEFAULT_ROOT_EL_TYPE = 'li';
 
 const listPropsForSelected = {
   tabIndex: 0,
@@ -24,6 +25,15 @@ const listPropsForNotSelected = {
     children: null,
   },
 };
+
+function validateProperElementTypes(parentRenderedAs?: 'div' | 'ul' | 'ol', renderedAs?: 'div' | 'li') {
+  if (renderedAs === 'div' && parentRenderedAs !== 'div') {
+    throw new Error('ListItem cannot be rendered as a div when its parent is not a div.');
+  }
+  if (renderedAs === 'li' && parentRenderedAs === 'div') {
+    throw new Error('ListItem cannot be rendered as a li when its parent is a div.');
+  }
+}
 
 /**
  * Create the state required to render ListItem.
@@ -44,6 +54,11 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
   const toggleItem = useListContext_unstable(ctx => ctx.selection?.toggleItem);
   const isSelectionEnabled = useListContext_unstable(ctx => !!ctx.selection);
   const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value));
+
+  const parentRenderedAs = useListContext_unstable(ctx => ctx.as);
+  const renderedAs = props.as || DEFAULT_ROOT_EL_TYPE;
+
+  validateProperElementTypes(parentRenderedAs, renderedAs);
 
   const listItemProps = isSelected ? listPropsForSelected : listPropsForNotSelected;
 
@@ -87,7 +102,7 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
   });
 
   const root = slot.always(
-    getIntrinsicElementProps('li', {
+    getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
       ref: useMergedRefs(ref, innerRef),
       tabIndex: focusableItems ? 0 : undefined,
       role: 'listitem',
@@ -98,7 +113,7 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
       onKeyDown: isSelectionEnabled ? handleKeyDown : onKeyDown,
       onClick: isSelectionEnabled ? handleClick : onClick,
     }),
-    { elementType: 'li' },
+    { elementType: DEFAULT_ROOT_EL_TYPE },
   );
 
   const checkmark = slot.optional(props.checkmark, {
@@ -109,7 +124,7 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
 
   const state: ListItemState = {
     components: {
-      root: 'li',
+      root: DEFAULT_ROOT_EL_TYPE,
       checkmark: 'div',
     },
     root,

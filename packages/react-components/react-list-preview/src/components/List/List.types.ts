@@ -29,6 +29,7 @@ export type ListContextValue = {
   selection?: ListSelectionState;
   registerItem?: (id: string | number, ref: React.RefObject<HTMLElement>) => void;
   deregisterItem?: (id: string | number, ref: React.RefObject<HTMLElement>) => void;
+  as?: 'div' | 'ol' | 'ul';
 };
 
 export type ListContextValues = {

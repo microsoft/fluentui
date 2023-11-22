@@ -1,4 +1,3 @@
-import { Checkmark16Filled } from '@fluentui/react-icons';
 import { SelectionHookParams, useControllableState, useEventCallback, useSelection } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { ListSelectionState } from './types';
@@ -10,6 +9,7 @@ export const defaultListSelectionState: ListSelectionState = {
   deselectItem: () => undefined,
   clearSelection: () => undefined,
   toggleAllItems: () => undefined,
+  setSelectedItems: () => undefined,
   selectedItems: [],
 };
 
