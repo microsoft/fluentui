@@ -25,8 +25,6 @@ export type ListContextValue = {
   focusableItems: boolean;
   items: Array<{ id: string | number }>;
   selection?: ListSelectionState;
-  registerItem?: (id: string | number, ref: React.RefObject<HTMLElement>) => void;
-  deregisterItem?: (id: string | number, ref: React.RefObject<HTMLElement>) => void;
   as?: 'div' | 'ol' | 'ul';
 };
 

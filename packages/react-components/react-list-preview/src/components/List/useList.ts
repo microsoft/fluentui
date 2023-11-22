@@ -60,18 +60,6 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
     defaultSelectedItems,
   });
 
-  const registerItem = useEventCallback((id: string | number) => {
-    if (!items.find(item => item.id === id)) {
-      setItems(current => [...current, { id }]);
-    }
-  });
-
-  const deregisterItem = useEventCallback((id: string | number) => {
-    if (items.find(k => k.id === id)) {
-      setItems(current => current.filter(item => item.id !== id));
-    }
-  });
-
   const selectableListProps = React.useMemo(
     () => ({
       role: 'listbox',
@@ -98,8 +86,6 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
     focusableItems,
     as: as || DEFAULT_ROOT_EL_TYPE,
     items,
-    registerItem: selectable ? registerItem : undefined,
-    deregisterItem: selectable ? deregisterItem : undefined,
     // only pass down selection state if its handled internally, otherwise just report the events
     selection: selectable ? selection : undefined,
   };

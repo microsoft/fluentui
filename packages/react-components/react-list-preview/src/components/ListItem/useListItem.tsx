@@ -49,8 +49,6 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
   const { value = id, onKeyDown, onClick } = props;
 
   const focusableItems = useListContext_unstable(ctx => ctx.focusableItems);
-  const registerItem = useListContext_unstable(ctx => ctx.registerItem);
-  const deregisterItem = useListContext_unstable(ctx => ctx.deregisterItem);
   const toggleItem = useListContext_unstable(ctx => ctx.selection?.toggleItem);
   const isSelectionEnabled = useListContext_unstable(ctx => !!ctx.selection);
   const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value));
@@ -65,16 +63,6 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
   const focusableGroupAttrs = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
 
   const innerRef = React.useRef<HTMLElement>(null);
-
-  React.useEffect(() => {
-    registerItem?.(value, innerRef);
-
-    return () => {
-      deregisterItem?.(value, innerRef);
-    };
-    // Always make sure the dependencies are stable across re-renders, otherwise we go
-    // in a loop of registering and deregistering.
-  }, [innerRef, value, registerItem, deregisterItem]);
 
   const handleKeyDown: typeof onKeyDown = useEventCallback(e => {
     onKeyDown?.(e);
