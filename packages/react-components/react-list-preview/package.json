@@ -37,12 +37,12 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-button": "^9.3.53",
-    "@fluentui/react-checkbox": "^9.1.54",
-    "@fluentui/react-context-selector": "^9.1.41",
+    "@fluentui/react-button": "^9.3.56",
+    "@fluentui/react-checkbox": "^9.2.0",
+    "@fluentui/react-context-selector": "^9.1.42",
     "@fluentui/react-icons": "^2.0.217",
     "@fluentui/react-jsx-runtime": "^9.0.19",
-    "@fluentui/react-tabster": "^9.14.3",
+    "@fluentui/react-tabster": "^9.14.6",
     "@fluentui/react-theme": "^9.1.16",
     "@fluentui/react-utilities": "^9.15.2",
     "@fluentui/react-shared-contexts": "^9.13.0",
