@@ -1,0 +1,1 @@
+`createTransition()` is a factory function that creates a React component based on the provided transition definition. This component can be used to animate any element and intended to have a state via the `visible` prop.
