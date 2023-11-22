@@ -39,8 +39,6 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
     memorizeCurrent: true,
   });
 
-  const [items, setItems] = React.useState<Array<{ id: string | number }>>([]);
-
   const [selectionState, setSelectionState] = useControllableState({
     state: selectedItems,
     defaultState: defaultSelectedItems,
@@ -85,7 +83,6 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
     // context:
     focusableItems,
     as: as || DEFAULT_ROOT_EL_TYPE,
-    items,
     // only pass down selection state if its handled internally, otherwise just report the events
     selection: selectable ? selection : undefined,
   };

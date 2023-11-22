@@ -4,7 +4,6 @@ import { ListContextValue } from './List.types';
 
 export const listContextDefaultValue: ListContextValue = {
   focusableItems: false,
-  items: [],
   selection: undefined,
   as: undefined,
 };

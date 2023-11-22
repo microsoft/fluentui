@@ -23,7 +23,6 @@ export type ListProps = ComponentProps<ListSlots> & {
 
 export type ListContextValue = {
   focusableItems: boolean;
-  items: Array<{ id: string | number }>;
   selection?: ListSelectionState;
   as?: 'div' | 'ol' | 'ul';
 };
