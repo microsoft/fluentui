@@ -1,5 +1,6 @@
 import { makeStyles, shorthands, tokens, Label, Slider, useId, Checkbox } from '@fluentui/react-components';
 import { createTransition, transitions } from '@fluentui/react-motions-preview';
+import type { MotionImperativeRef } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
 import description from './CreateTransition.stories.md';
@@ -48,22 +49,21 @@ export const CreateTransition = () => {
   const classes = useClasses();
   const sliderId = useId();
 
-  const elementRef = React.useRef<HTMLDivElement>(null);
+  const motionRef = React.useRef<MotionImperativeRef>();
+
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [visible, setVisible] = React.useState<boolean>(false);
 
   React.useEffect(() => {
-    elementRef.current?.getAnimations().forEach(animation => {
-      animation.playbackRate = playbackRate / 100;
-    });
+    motionRef.current?.setPlaybackRate(playbackRate / 100);
   }, [playbackRate, visible]);
 
   return (
     <>
       <div className={classes.container}>
         <div className={classes.card}>
-          <Fade visible={visible}>
-            <div className={classes.item} ref={elementRef} />
+          <Fade imperativeRef={motionRef} visible={visible}>
+            <div className={classes.item} />
           </Fade>
 
           <code className={classes.description}>fadeSlow</code>

@@ -1,5 +1,6 @@
 import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
 import { atoms, createAtom } from '@fluentui/react-motions-preview';
+import type { MotionImperativeRef } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
 const useClasses = makeStyles({
@@ -22,19 +23,20 @@ const useClasses = makeStyles({
   },
 });
 
-const motionAtom = atoms.fade.enterUltraSlow();
-const FadeEnter = createAtom({
-  keyframes: motionAtom.keyframes,
-  options: { ...motionAtom.options, duration: 2000 },
-});
+const FadeEnter = createAtom(atoms.fade.enterUltraSlow());
 
 export const MotionDefault = () => {
   const classes = useClasses();
+  const motionRef = React.useRef<MotionImperativeRef>();
+
+  React.useEffect(() => {
+    motionRef.current?.setPlaybackRate(0.3);
+  }, []);
 
   return (
     <div className={classes.container}>
       <div className={classes.card}>
-        <FadeEnter iterations={Infinity}>
+        <FadeEnter iterations={Infinity} imperativeRef={motionRef}>
           <div className={classes.item} />
         </FadeEnter>
       </div>
