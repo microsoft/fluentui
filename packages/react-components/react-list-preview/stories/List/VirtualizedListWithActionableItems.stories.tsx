@@ -201,7 +201,9 @@ const countries = [
   'Zimbabwe',
 ];
 
-const CountriesList = (props: React.ComponentProps<typeof List>) => <List aria-label="Countries" {...props} />;
+const CountriesList = React.forwardRef<HTMLUListElement>((props: React.ComponentProps<typeof List>, ref) => (
+  <List aria-label="Countries" {...props} ref={ref} />
+));
 
 export const VirtualizedListWithActionableItems = () => {
   return (
