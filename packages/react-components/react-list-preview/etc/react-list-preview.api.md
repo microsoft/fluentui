@@ -80,7 +80,6 @@ export enum ListLayout {
 // @public
 export type ListProps = ComponentProps<ListSlots> & {
     layout?: ListLayout;
-    customArrowNavigationOptions?: Partial<UseArrowNavigationGroupOptions>;
     focusableItems?: boolean;
     selectable?: boolean;
     selectionMode?: SelectionMode_2;

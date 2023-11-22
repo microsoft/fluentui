@@ -69,7 +69,6 @@ Most of the v8 props are for it's virtualization functionality. Since the v9 `Li
 | `startIndex`              | N/A                              |
 | `usePageCache`            | N/A                              |
 | `version`                 | N/A                              |
-| -                         | `customArrowNavigationOptions`   |
 | -                         | `defaultSelectedItems`           |
 | -                         | `focusableItems`                 |
 | -                         | `layout`                         |
@@ -157,7 +156,7 @@ We recommend using a component like `Persona` where possible, or creating a cust
 
 | v0 List                 | v9 List                                                                                                                                                    |
 | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `accessibility`         | `customArrowNavigationOptions` from `tabster`                                                                                                              |
+| `accessibility`         | built in, customize with `useArrowNavigationGroup` from `tabster`                                                                                          |
 | `as`                    | `as`                                                                                                                                                       |
 | `className`             | `className`                                                                                                                                                |
 | `debug`                 | N/A                                                                                                                                                        |

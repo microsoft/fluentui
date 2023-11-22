@@ -26,7 +26,6 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
   const {
     layout = 'vertical',
     focusableItems = false,
-    // customArrowNavigationOptions,
     selectable = false,
     selectionMode = 'multiselect',
     selectedItems,
@@ -38,7 +37,6 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
   const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: layout === 'grid' ? 'grid-linear' : 'both',
     memorizeCurrent: true,
-    // ...(customArrowNavigationOptions || {}),
   });
 
   const [items, setItems] = React.useState<Array<{ id: string | number }>>([]);

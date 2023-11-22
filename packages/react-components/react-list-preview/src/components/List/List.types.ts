@@ -1,6 +1,5 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, SelectionMode, SelectionItemId } from '@fluentui/react-utilities';
-import type { UseArrowNavigationGroupOptions } from '@fluentui/react-components';
 import { ListSelectionState } from '../../hooks/types';
 
 export type ListLayout = 'horizontal' | 'vertical' | 'grid';
@@ -14,7 +13,6 @@ export type ListSlots = {
  */
 export type ListProps = ComponentProps<ListSlots> & {
   layout?: ListLayout;
-  customArrowNavigationOptions?: Partial<UseArrowNavigationGroupOptions>;
   focusableItems?: boolean;
   selectable?: boolean;
   selectionMode?: SelectionMode;
