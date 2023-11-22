@@ -1,6 +1,6 @@
 export { List, listClassNames, renderList_unstable, useListStyles_unstable, useList_unstable } from './List';
 
-export type { ListProps, ListSlots, ListState, ListComponentRef, ListLayout } from './List';
+export type { ListProps, ListSlots, ListState, ListLayout } from './List';
 export {
   ListItem,
   listItemClassNames,

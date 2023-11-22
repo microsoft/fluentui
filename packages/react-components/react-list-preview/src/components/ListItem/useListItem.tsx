@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useFocusableGroup } from '@fluentui/react-tabster';
-import { getIntrinsicElementProps, slot, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useEventCallback, useId } from '@fluentui/react-utilities';
 import type { ListItemProps, ListItemState } from './ListItem.types';
 import { useListContext_unstable } from '../List/listContext';
 import { Checkmark16Filled } from '@fluentui/react-icons';
@@ -42,9 +42,12 @@ function validateProperElementTypes(parentRenderedAs?: 'div' | 'ul' | 'ol', rend
  * before being passed to renderListItem_unstable.
  *
  * @param props - props from this instance of ListItem
- * @param ref - reference to root HTMLElement of ListItem
+ * @param ref - reference to root HTMLLIElement | HTMLDivElementof ListItem
  */
-export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLElement>): ListItemState => {
+export const useListItem_unstable = (
+  props: ListItemProps,
+  ref: React.Ref<HTMLLIElement | HTMLDivElement>,
+): ListItemState => {
   const id = useId('listItem');
   const { value = id, onKeyDown, onClick } = props;
 
@@ -62,14 +65,12 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
 
   const focusableGroupAttrs = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
 
-  const innerRef = React.useRef<HTMLElement>(null);
-
-  const handleKeyDown: typeof onKeyDown = useEventCallback(e => {
+  const handleKeyDown: React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement> = useEventCallback(e => {
     onKeyDown?.(e);
 
     // Compare targets to make sure this only triggers when the event is fired on the list item
     // and not on a button inside
-    if (e.defaultPrevented || e.target !== e.currentTarget) {
+    if (!isSelectionEnabled || e.defaultPrevented || e.target !== e.currentTarget) {
       return;
     }
 
@@ -79,10 +80,10 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
     }
   });
 
-  const handleClick: typeof onClick = useEventCallback(e => {
+  const handleClick: React.MouseEventHandler<HTMLLIElement & HTMLDivElement> = useEventCallback(e => {
     onClick?.(e);
 
-    if (e.defaultPrevented) {
+    if (!isSelectionEnabled || e.defaultPrevented) {
       return;
     }
 
@@ -91,15 +92,15 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
 
   const root = slot.always(
     getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
-      ref: useMergedRefs(ref, innerRef),
+      ref: ref as React.Ref<HTMLLIElement & HTMLDivElement>,
       tabIndex: focusableItems ? 0 : undefined,
       role: 'listitem',
       id: String(value),
       ...(isSelectionEnabled ? listItemProps : EMPTY_OBJECT),
       ...focusableGroupAttrs,
       ...props,
-      onKeyDown: isSelectionEnabled ? handleKeyDown : onKeyDown,
-      onClick: isSelectionEnabled ? handleClick : onClick,
+      onKeyDown: handleKeyDown,
+      onClick: handleClick,
     }),
     { elementType: DEFAULT_ROOT_EL_TYPE },
   );

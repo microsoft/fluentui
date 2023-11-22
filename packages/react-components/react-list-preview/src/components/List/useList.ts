@@ -22,7 +22,7 @@ const DEFAULT_ROOT_EL_TYPE = 'ul';
  * @param props - props from this instance of List
  * @param ref - reference to root HTMLElement of List
  */
-export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>): ListState => {
+export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement | HTMLUListElement>): ListState => {
   const {
     layout = 'vertical',
     focusableItems = false,

@@ -10,30 +10,23 @@ import { Button } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { OnSelectionChangeData } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import { SelectionHookParams } from '@fluentui/react-utilities';
 import { SelectionItemId } from '@fluentui/react-utilities';
 import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { UseArrowNavigationGroupOptions } from '@fluentui/react-components';
 
 // @public (undocumented)
-export type ListComponentRef = {
-    selection: ListState['selection'];
-};
-
-// @public
 export const List: ForwardRefComponent<ListProps>;
 
 // @public (undocumented)
 export const listClassNames: SlotClassNames<ListSlots>;
 
-// @public
+// @public (undocumented)
 export const ListItem: ForwardRefComponent<ListItemProps>;
 
-// @public
+// @public (undocumented)
 export const ListItemButton: ForwardRefComponent<ListItemButtonProps>;
 
 // @public (undocumented)
@@ -60,7 +53,7 @@ export type ListItemProps = ComponentProps<ListItemSlots> & {
 
 // @public (undocumented)
 export type ListItemSlots = {
-    root: NonNullable<Slot<'li', 'div' | 'dt' | 'dd'>>;
+    root: NonNullable<Slot<'li', 'div'>>;
     checkmark?: Slot<'div'>;
 };
 
@@ -68,14 +61,7 @@ export type ListItemSlots = {
 export type ListItemState = ComponentState<ListItemSlots> & {};
 
 // @public (undocumented)
-export enum ListLayout {
-    // (undocumented)
-    Grid = "grid",
-    // (undocumented)
-    Horizontal = "horizontal",
-    // (undocumented)
-    Vertical = "vertical"
-}
+export type ListLayout = 'horizontal' | 'vertical' | 'grid';
 
 // @public
 export type ListProps = ComponentProps<ListSlots> & {
@@ -83,14 +69,16 @@ export type ListProps = ComponentProps<ListSlots> & {
     focusableItems?: boolean;
     selectable?: boolean;
     selectionMode?: SelectionMode_2;
+    selectedItems?: SelectionItemId[];
     defaultSelectedItems?: SelectionItemId[];
-    onSelectionChange?: (event: React_2.SyntheticEvent, data: OnSelectionChangeData) => void;
-    componentRef?: React_2.Ref<ListComponentRef>;
+    onSelectionChange?: (event: React_2.SyntheticEvent, data: {
+        selectedItems: SelectionItemId[];
+    }) => void;
 };
 
 // @public (undocumented)
 export type ListSlots = {
-    root: NonNullable<Slot<'ul', 'div' | 'ol' | 'dl'>>;
+    root: NonNullable<Slot<'ul', 'div' | 'ol'>>;
 };
 
 // @public
@@ -106,10 +94,10 @@ export const renderListItem_unstable: (state: ListItemState) => JSX.Element;
 export const renderListItemButton_unstable: (state: ListItemButtonState) => JSX.Element;
 
 // @public
-export const useList_unstable: (props: ListProps, ref: React_2.Ref<HTMLElement>) => ListState;
+export const useList_unstable: (props: ListProps, ref: React_2.Ref<HTMLDivElement | HTMLUListElement>) => ListState;
 
 // @public
-export const useListItem_unstable: (props: ListItemProps, ref: React_2.Ref<HTMLElement>) => ListItemState;
+export const useListItem_unstable: (props: ListItemProps, ref: React_2.Ref<HTMLLIElement | HTMLDivElement>) => ListItemState;
 
 // @public
 export const useListItemButton_unstable: (props: ListItemButtonProps, ref: React_2.Ref<HTMLElement>) => ListItemButtonState;
@@ -121,21 +109,7 @@ export const useListItemButtonStyles_unstable: (state: ListItemButtonState) => L
 export const useListItemStyles_unstable: (state: ListItemState) => ListItemState;
 
 // @public (undocumented)
-export function useListSelection<TItem extends {
-    id: string | number;
-}>(options?: SelectionHookParams): (listState: ListFeaturesState<TItem>) => {
-    selection: {
-        selectedItems: Set<SelectionItemId>;
-        toggleItem: (e: React_2.SyntheticEvent<Element, Event>, id: string | number) => void;
-        toggleAllItems: (e: React_2.SyntheticEvent<Element, Event>) => void;
-        deselectItem: (e: React_2.SyntheticEvent<Element, Event>, id: string | number) => void;
-        selectItem: (e: React_2.SyntheticEvent<Element, Event>, id: string | number) => void;
-        setSelectedItems: React_2.Dispatch<React_2.SetStateAction<Set<string | number>>>;
-        isSelected: (id: string | number) => boolean;
-        clearSelection: (e: React_2.SyntheticEvent<Element, Event>) => void;
-    };
-    items: TItem[];
-};
+export function useListSelection(options?: SelectionHookParams): ListSelectionState;
 
 // @public
 export const useListStyles_unstable: (state: ListState) => ListState;
