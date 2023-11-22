@@ -12,7 +12,11 @@ import {
   UpcomingMeetingsGridCellNavigationRenderer,
   RecentMeetingsTreeGridCellNavigationRenderer,
 } from './AccessibleMeetGridsCellNavigationRenderer';
-import { UpcomingMeetingsListRenderer, RecentMeetingsTreeListRenderer } from './AccessibleMeetListsRenderer';
+import {
+  UpcomingMeetingsListWithActionsRenderer,
+  RecentMeetingsTreeWithActionsRenderer,
+} from './AccessibleMeetListsWithActionsRenderer';
+import { UpcomingMeetingsListRenderer, RecentMeetingsTreeRenderer } from './AccessibleMeetListsRenderer';
 
 import {
   Button,
@@ -35,6 +39,7 @@ type PrototypeVariant =
   | 'gridsRowNavigation'
   | 'gridsCellNavigation'
   | 'gridsFirstCellNavigation'
+  | 'listsWithActions'
   | 'lists';
 
 export const categoriesTitles: Record<string, string> = {
@@ -46,7 +51,7 @@ export const categoriesTitles: Record<string, string> = {
 const dateLocale = 'en-US';
 const nowDate = new Date('2023-10-01 12:30');
 
-type MeetingProperty = 'includingContent' | 'transcript' | 'recorded' | 'mentionsOfYou' | 'missed';
+export type MeetingProperty = 'includingContent' | 'transcript' | 'recorded' | 'mentionsOfYou' | 'missed';
 type Meeting = {
   title: string;
   startDate: string;
@@ -157,7 +162,7 @@ export type RecentMeetings = Record<
     id: string;
     title: string;
     titleWithTime: string;
-    properties?: string[];
+    properties?: MeetingProperty[];
     tasksCount?: number;
     revealed: boolean;
   }[]
@@ -299,14 +304,11 @@ export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant 
   return (
     <>
       {variant === 'stitchedGridsRowNavigation' && <h1>Accessible Meet Using Stitched Grids Row Navigation</h1>}
-
       {variant === 'gridsRowNavigation' && <h1>Accessible Meet Using Grids Row Navigation</h1>}
-
       {variant === 'gridsFirstCellNavigation' && <h1>Accessible Meet Using Grids First Cell Navigation</h1>}
-
       {variant === 'gridsCellNavigation' && <h1>Accessible Meet Using Grids Cell Navigation</h1>}
-
-      {variant === 'lists' && <h1>Accessible Meet Using List</h1>}
+      {variant === 'listsWithActions' && <h1>Accessible Meet Using Lists With Actions</h1>}
+      {variant === 'lists' && <h1>Accessible Meet Using Lists</h1>}
 
       <div>
         <Toolbar>
@@ -352,6 +354,10 @@ export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant 
 
         {variant === 'gridsCellNavigation' && (
           <UpcomingMeetingsGridCellNavigationRenderer threeUpcomingMeetings={threeUpcomingMeetings} />
+        )}
+
+        {variant === 'listsWithActions' && (
+          <UpcomingMeetingsListWithActionsRenderer threeUpcomingMeetings={threeUpcomingMeetings} />
         )}
 
         {variant === 'lists' && <UpcomingMeetingsListRenderer threeUpcomingMeetings={threeUpcomingMeetings} />}
@@ -400,11 +406,15 @@ export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant 
           />
         )}
 
-        {variant === 'lists' && (
-          <RecentMeetingsTreeListRenderer
+        {variant === 'listsWithActions' && (
+          <RecentMeetingsTreeWithActionsRenderer
             recentCategories={recentCategoriesRef.current}
             recentMeetings={recentMeetings}
           />
+        )}
+
+        {variant === 'lists' && (
+          <RecentMeetingsTreeRenderer recentCategories={recentCategoriesRef.current} recentMeetings={recentMeetings} />
         )}
       </div>
     </>

@@ -2,6 +2,7 @@ export { UsingStitchedGridsRowNavigation } from './Meet/AccessibleMeetUsingStitc
 export { UsingGridsRowNavigation } from './Meet/AccessibleMeetUsingGridsRowNavigation.stories';
 export { UsingGridsFirstCellNavigation } from './Meet/AccessibleMeetUsingGridsFirstCellNavigation.stories';
 export { UsingGridsCellNavigation } from './Meet/AccessibleMeetUsingGridsCellNavigation.stories';
+export { UsingListsWithActions } from './Meet/AccessibleMeetUsingListsWithActions.stories';
 export { UsingLists } from './Meet/AccessibleMeetUsingLists.stories';
 
 export default {

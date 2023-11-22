@@ -63,11 +63,11 @@ export const UpcomingMeetingsListRenderer: React.FC<UpcomingMeetingsListRenderer
   );
 };
 
-interface RecentMeetingsTreeRendererrerProps {
+interface RecentMeetingsTreeRendererProps {
   recentCategories: RecentCategory[];
   recentMeetings: RecentMeetings;
 }
-export const RecentMeetingsTreeListRenderer: React.FC<RecentMeetingsTreeRendererrerProps> = ({
+export const RecentMeetingsTreeRenderer: React.FC<RecentMeetingsTreeRendererProps> = ({
   recentCategories,
   recentMeetings,
 }) => {
