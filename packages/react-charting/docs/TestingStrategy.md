@@ -1,14 +1,14 @@
 **Details**
 
-<img width="455" alt="image" src="https://github.com/srmukher/fluentui/assets/120183316/261b1944-b0f3-4e4f-80a3-9f8f88d9f82f">
+<img width="455" alt="image" src="./images/TestingStrategy/TestingStrategy1.png">
 
 **Summary**
 
-<img width="755" alt="image" src="https://github.com/srmukher/fluentui/assets/120183316/c17d5580-d57c-45fc-a6f2-f42d039328be">
+<img width="755" alt="image" src="./images/TestingStrategy/TestingStrategy2.png">
 
 **Flowchart**
 
-<img width="594" alt="image" src="https://github.com/srmukher/fluentui/assets/120183316/fcd79ac2-452c-4fee-96ce-16bf0df59f59">
+<img width="594" alt="image" src="./images/TestingStrategy/TestingStrategy3.png">
 
 Details on the above mentioned steps:
 
@@ -47,13 +47,13 @@ Steps to Measure Test Coverage:
 
 Currently, the code coverage for master branch:
 
-Commit Id:
+Commit Id: "1da7bd9a64b1fdf4a3944edc52dc5e851ca47548"
 
-![](RackMultipart20231026-1-6nzx5m_html_e4b63f8ce1082fed.png)
+![](./images/TestingStrategy/Coverage.png)
 
 **Example: How to Add Tests for Donut Chart**
 
-![](RackMultipart20231026-1-6nzx5m_html_dffcd29538dede80.png)
+![](./images/TestingStrategy/DonutCoverage.png)
 
 **Step 1 [Unit Tests]:**
 
