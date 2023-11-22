@@ -2,6 +2,8 @@ import { makeStyles, shorthands, tokens, Label, Slider, useId, Checkbox } from '
 import { createTransition, transitions } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
+import description from './CreateTransition.stories.md';
+
 const useClasses = makeStyles({
   container: {
     display: 'grid',
@@ -46,11 +48,12 @@ export const CreateTransition = () => {
   const classes = useClasses();
   const sliderId = useId();
 
+  const elementRef = React.useRef<HTMLDivElement>(null);
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [visible, setVisible] = React.useState<boolean>(false);
 
   React.useEffect(() => {
-    document.getAnimations().forEach(animation => {
+    elementRef.current?.getAnimations().forEach(animation => {
       animation.playbackRate = playbackRate / 100;
     });
   }, [playbackRate, visible]);
@@ -60,7 +63,7 @@ export const CreateTransition = () => {
       <div className={classes.container}>
         <div className={classes.card}>
           <Fade visible={visible}>
-            <div className={classes.item} />
+            <div className={classes.item} ref={elementRef} />
           </Fade>
 
           <code className={classes.description}>fadeSlow</code>
@@ -88,4 +91,12 @@ export const CreateTransition = () => {
       </div>
     </>
   );
+};
+
+CreateTransition.parameters = {
+  docs: {
+    description: {
+      story: description,
+    },
+  },
 };
