@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Thu, 09 Nov 2023 07:29:20 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Nov 2023 07:26:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.33)
+
+Thu, 16 Nov 2023 07:26:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.32..@fluentui/react-docsite-components_v8.13.33)
+
+### Patches
+
+- Bump @fluentui/react to v8.112.9 ([PR #29791](https://github.com/microsoft/fluentui/pull/29791) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.151 ([PR #29791](https://github.com/microsoft/fluentui/pull/29791) by beachball)
+
+## [8.13.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.32)
+
+Wed, 15 Nov 2023 07:28:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.31..@fluentui/react-docsite-components_v8.13.32)
+
+### Patches
+
+- Bump @fluentui/react-monaco-editor to v1.7.150 ([PR #29796](https://github.com/microsoft/fluentui/pull/29796) by beachball)
+
+## [8.13.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.31)
+
+Tue, 14 Nov 2023 07:26:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.30..@fluentui/react-docsite-components_v8.13.31)
+
+### Patches
+
+- Bump @fluentui/react-monaco-editor to v1.7.149 ([PR #29817](https://github.com/microsoft/fluentui/pull/29817) by beachball)
+
+## [8.13.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.30)
+
+Fri, 10 Nov 2023 07:26:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.29..@fluentui/react-docsite-components_v8.13.30)
+
+### Patches
+
+- Bump @fluentui/react-monaco-editor to v1.7.148 ([PR #29807](https://github.com/microsoft/fluentui/pull/29807) by beachball)
 
 ## [8.13.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.29)
 

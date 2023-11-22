@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-combobox",
-  "version": "9.5.28",
+  "version": "9.5.31",
   "description": "Fluent UI React Combobox component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,16 +33,16 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/keyboard-keys": "^9.0.6",
-    "@fluentui/react-context-selector": "^9.1.41",
-    "@fluentui/react-field": "^9.1.40",
+    "@fluentui/keyboard-keys": "^9.0.7",
+    "@fluentui/react-context-selector": "^9.1.42",
+    "@fluentui/react-field": "^9.1.42",
     "@fluentui/react-icons": "^2.0.217",
-    "@fluentui/react-jsx-runtime": "^9.0.18",
-    "@fluentui/react-portal": "^9.3.27",
-    "@fluentui/react-positioning": "^9.9.23",
-    "@fluentui/react-shared-contexts": "^9.11.1",
-    "@fluentui/react-theme": "^9.1.15",
-    "@fluentui/react-utilities": "^9.15.1",
+    "@fluentui/react-jsx-runtime": "^9.0.19",
+    "@fluentui/react-portal": "^9.4.2",
+    "@fluentui/react-positioning": "^9.10.1",
+    "@fluentui/react-shared-contexts": "^9.13.0",
+    "@fluentui/react-theme": "^9.1.16",
+    "@fluentui/react-utilities": "^9.15.2",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },

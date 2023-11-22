@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: useFluentProvider now returns the same empty object every time, fixing unnecessary re-renders",
-  "packageName": "@fluentui/react-provider",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 09 Nov 2023 07:29:20 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Nov 2023 07:26:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.1)
+
+Thu, 16 Nov 2023 07:26:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.0..@fluentui/react-charting_v5.19.1)
+
+### Patches
+
+- fix: MultiStackedBarChart duplicate id and text overlap in [RTL] mode ([PR #29815](https://github.com/microsoft/fluentui/pull/29815) by gautam33776@gmail.com)
+- Bump @fluentui/theme-samples to v8.7.123 ([PR #29791](https://github.com/microsoft/fluentui/pull/29791) by beachball)
+- Bump @fluentui/react to v8.112.9 ([PR #29791](https://github.com/microsoft/fluentui/pull/29791) by beachball)
+
+## [5.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.0)
+
+Wed, 15 Nov 2023 07:28:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.18.18..@fluentui/react-charting_v5.19.0)
+
+### Minor changes
+
+- add defaultSelectedLegeands and onChange for Legends ([PR #29799](https://github.com/microsoft/fluentui/pull/29799) by NewFuture@users.noreply.github.com)
+
+## [5.18.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.18)
+
+Tue, 14 Nov 2023 07:26:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.18.17..@fluentui/react-charting_v5.18.18)
+
+### Patches
+
+- fix: Text in sparkline does not render correctly in RTL mode ([PR #29817](https://github.com/microsoft/fluentui/pull/29817) by gautam33776@gmail.com)
+- Upgrading d3-scale dependent libraries ([PR #29754](https://github.com/microsoft/fluentui/pull/29754) by ankityadav@microsoft.com)
+
+## [5.18.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.17)
+
+Fri, 10 Nov 2023 07:26:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.18.16..@fluentui/react-charting_v5.18.17)
+
+### Patches
+
+- [Bug]: React Charting Heat Map Chart tooltip appears above the wrong cell fixed ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by gautam33776@gmail.com)
 
 ## [5.18.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.16)
 
