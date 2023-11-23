@@ -180,10 +180,18 @@ export const RecentMeetingsTreeGridCellNavigationRenderer: React.FC<RecentMeetin
         },
       })}
     >
-      {recentCategories.map(category => (
+      {recentCategories.map((category, categoryIndex) => (
         <Table key={category.id} role="presentation" noNativeElements>
           <TableBody role="presentation">
-            <TableRow role="row" id={category.id} onClick={handleRowClick} aria-level={1}>
+            <TableRow
+              role="row"
+              id={category.id}
+              onClick={handleRowClick}
+              tabIndex={-1}
+              aria-level={1}
+              aria-posinset={categoryIndex + 1}
+              aria-setsize={recentCategories.length}
+            >
               <TableCell role="gridcell" tabIndex={0} aria-expanded={category.expanded}>
                 {category.title}
               </TableCell>
@@ -192,8 +200,16 @@ export const RecentMeetingsTreeGridCellNavigationRenderer: React.FC<RecentMeetin
               </TableCell>
             </TableRow>
             {category.expanded &&
-              recentMeetings[category.id].map(meeting => (
-                <TableRow key={meeting.id} id={meeting.id} role="row" aria-level={2}>
+              recentMeetings[category.id].map((meeting, meetingIndex) => (
+                <TableRow
+                  key={meeting.id}
+                  id={meeting.id}
+                  role="row"
+                  tabIndex={-1}
+                  aria-level={2}
+                  aria-posinset={meetingIndex + 1}
+                  aria-setsize={recentMeetings[category.id].length}
+                >
                   <TableCell role="gridcell" tabIndex={0}>
                     {meeting.titleWithTime}
                   </TableCell>

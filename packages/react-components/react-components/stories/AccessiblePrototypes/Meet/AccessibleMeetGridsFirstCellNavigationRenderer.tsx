@@ -242,14 +242,16 @@ export const RecentMeetingsTreeGridFirstCellNavigationRenderer: React.FC<
       {recentCategories.map((category, categoryIndex) => (
         <Table key={category.id} role="presentation" noNativeElements>
           <TableBody role="presentation">
-            <TableRow role="row" id={category.id} onClick={handleRowClick} aria-level={1}>
-              <TableCell
-                role="gridcell"
-                tabIndex={0}
-                aria-expanded={category.expanded}
-                aria-posinset={categoryIndex + 1}
-                aria-setsize={recentCategories.length}
-              >
+            <TableRow
+              role="row"
+              id={category.id}
+              onClick={handleRowClick}
+              tabIndex={-1}
+              aria-level={1}
+              aria-posinset={categoryIndex + 1}
+              aria-setsize={recentCategories.length}
+            >
+              <TableCell role="gridcell" tabIndex={0} aria-expanded={category.expanded}>
                 {category.title}
               </TableCell>
               <TableCell role="gridcell" aria-colspan={category.columns.length + 2}>
@@ -258,13 +260,16 @@ export const RecentMeetingsTreeGridFirstCellNavigationRenderer: React.FC<
             </TableRow>
             {category.expanded &&
               recentMeetings[category.id].map((meeting, meetingIndex) => (
-                <TableRow key={meeting.id} id={meeting.id} role="row" aria-level={2}>
-                  <TableCell
-                    role="gridcell"
-                    tabIndex={0}
-                    aria-posinset={meetingIndex + 1}
-                    aria-setsize={recentMeetings[category.id].length}
-                  >
+                <TableRow
+                  key={meeting.id}
+                  id={meeting.id}
+                  role="row"
+                  tabIndex={-1}
+                  aria-level={2}
+                  aria-posinset={meetingIndex + 1}
+                  aria-setsize={recentMeetings[category.id].length}
+                >
+                  <TableCell role="gridcell" tabIndex={0}>
                     {meeting.titleWithTime}
                   </TableCell>
                   <TableCell role="gridcell">
