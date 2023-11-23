@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Dropdown button gets focus in Safari when clicked",
+  "packageName": "@fluentui/react-combobox",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
