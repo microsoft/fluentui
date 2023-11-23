@@ -28,7 +28,7 @@ describe('useActivedescendant', () => {
     const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
     const { container } = render(<Test imperativeRef={imperativeRef} />);
 
-    imperativeRef.current?.focusFirst();
+    imperativeRef.current?.first();
     expect(container.querySelector('#option-1')?.hasAttribute(ACTIVEDESCENDANT_ATTRIBUTE)).toBe(true);
   });
 
@@ -37,7 +37,7 @@ describe('useActivedescendant', () => {
     const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
     const { container, getByRole } = render(<Test imperativeRef={imperativeRef} />);
 
-    imperativeRef.current?.focusFirst();
+    imperativeRef.current?.first();
     imperativeRef.current?.next();
     expect(container.querySelectorAll(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`).length).toBe(1);
     expect(container.querySelector(`#${expectedOption}`)?.hasAttribute(ACTIVEDESCENDANT_ATTRIBUTE)).toBe(true);
@@ -49,7 +49,7 @@ describe('useActivedescendant', () => {
     const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
     const { container, getByRole } = render(<Test imperativeRef={imperativeRef} />);
 
-    imperativeRef.current?.focusFirst();
+    imperativeRef.current?.first();
     imperativeRef.current?.next();
     imperativeRef.current?.prev();
     expect(container.querySelectorAll(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`).length).toBe(1);
@@ -62,7 +62,7 @@ describe('useActivedescendant', () => {
     const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
     const { container, getByRole } = render(<Test imperativeRef={imperativeRef} />);
 
-    imperativeRef.current?.focusFirst();
+    imperativeRef.current?.first();
     imperativeRef.current?.focus(expectedOption);
     expect(container.querySelectorAll(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`).length).toBe(1);
     expect(container.querySelector(`#${expectedOption}`)?.hasAttribute(ACTIVEDESCENDANT_ATTRIBUTE)).toBe(true);

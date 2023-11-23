@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface ActiveDescendantImperativeRef {
-  focusFirst: () => void;
+  first: () => void;
   next: () => void;
   prev: () => void;
   blur: () => void;

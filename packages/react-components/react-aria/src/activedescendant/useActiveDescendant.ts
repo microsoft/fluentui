@@ -29,7 +29,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   };
 
   React.useImperativeHandle(imperativeRef, () => ({
-    focusFirst: () => {
+    first: () => {
       if (!listboxRef.current || !activeParentRef.current) {
         return;
       }
