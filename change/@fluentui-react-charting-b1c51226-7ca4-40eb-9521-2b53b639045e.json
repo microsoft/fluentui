@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: react-charting VBC - RTL mode mouseover on bar chart the data is not displaying correctly",
+  "packageName": "@fluentui/react-charting",
+  "email": "gautam33776@gmail.com",
+  "dependentChangeType": "patch"
+}
