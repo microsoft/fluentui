@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "line chart rtl mode color fillbar bug fix",
-  "packageName": "@fluentui/react-charting",
-  "email": "gautam33776@gmail.com",
-  "dependentChangeType": "patch"
-}
