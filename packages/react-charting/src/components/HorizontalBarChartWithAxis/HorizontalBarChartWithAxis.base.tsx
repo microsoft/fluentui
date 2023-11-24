@@ -113,6 +113,22 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       theme: this.props.theme!,
       legendColor: this.state.color,
     });
+    // console.log('_calloutId', {
+    //   isCalloutVisible: this.state.isCalloutVisible,
+    //   directionalHint: DirectionalHint.topAutoEdge,
+    //   id: `toolTip${this._calloutId}`,
+    //   target: this.state.refSelected,
+    //   isBeakVisible: false,
+    //   gapSpace: 15,
+    //   color: this.state.color,
+    //   legend: this.state.selectedLegendTitle,
+    //   XValue: this.state.xCalloutValue,
+    //   YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
+    //   onDismiss: this._closeCallout,
+    //   preventDismissOnLostFocus: true,
+    //   ...this.props.calloutProps,
+    //   ...getAccessibleDataObject(this.state.callOutAccessibilityData),
+    // });
     const calloutProps = {
       isCalloutVisible: this.state.isCalloutVisible,
       directionalHint: DirectionalHint.topAutoEdge,
@@ -425,7 +441,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         legendColor: this.state.color,
-        shouldHighlight: shouldHighlight,
+        shouldHighlight,
       });
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       if (barHeight < 1) {
@@ -593,31 +609,41 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     });
   };
 
-  private _onLegendClick(customMessage: string): void {
+  private _onLegendClick(point: IHorizontalBarChartWithAxisDataPoint): void {
+    const hoveredData = {
+      selectedLegendTitle: point.legend!,
+      color: point.color,
+      xCalloutValue: point.yAxisCalloutData,
+      yCalloutValue: point.xAxisCalloutData,
+    };
+
     if (this.state.isLegendSelected) {
-      if (this.state.selectedLegendTitle === customMessage) {
+      if (this.state.selectedLegendTitle === point.legend!) {
         this.setState({
           isLegendSelected: false,
-          selectedLegendTitle: customMessage,
+          ...hoveredData,
         });
       } else {
         this.setState({
-          selectedLegendTitle: customMessage,
+          ...hoveredData,
         });
       }
     } else {
       this.setState({
         isLegendSelected: true,
-        selectedLegendTitle: customMessage,
+        ...hoveredData,
       });
     }
   }
 
-  private _onLegendHover(customMessage: string): void {
+  private _onLegendHover(point: IHorizontalBarChartWithAxisDataPoint): void {
     if (this.state.isLegendSelected === false) {
       this.setState({
         isLegendHovered: true,
-        selectedLegendTitle: customMessage,
+        selectedLegendTitle: point.legend!,
+        color: point.color,
+        xCalloutValue: point.yAxisCalloutData,
+        yCalloutValue: point.xAxisCalloutData,
       });
     }
   }
@@ -644,12 +670,12 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
-        color: color,
+        color,
         action: () => {
-          this._onLegendClick(point.legend!);
+          this._onLegendClick(point);
         },
         hoverAction: () => {
-          this._onLegendHover(point.legend!);
+          this._onLegendHover(point);
         },
         onMouseOutAction: (isLegendSelected?: boolean) => {
           this._onLegendLeave(isLegendSelected);
