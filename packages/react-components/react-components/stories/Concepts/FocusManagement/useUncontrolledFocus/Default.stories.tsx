@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { FocusTrapZone } from '@fluentui/react';
 import {
-  useTabsterUncontrolled,
+  useUncontrolledFocus,
   Field,
   Switch,
   Button,
@@ -37,7 +37,7 @@ const useStyles = makeStyles({
 });
 
 export const Default = () => {
-  const attr = useTabsterUncontrolled();
+  const attr = useUncontrolledFocus();
   const [uncontrolled, setUncontrolled] = React.useState(false);
   const styles = useStyles();
   return (

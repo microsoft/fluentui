@@ -12,7 +12,7 @@ export {
   useMergedTabsterAttributes_unstable,
   useRestoreFocusSource,
   useRestoreFocusTarget,
-  useTabsterUncontrolled,
+  useUncontrolledFocus,
 } from './hooks/index';
 export type {
   UseArrowNavigationGroupOptions,

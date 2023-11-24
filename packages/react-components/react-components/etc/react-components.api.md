@@ -1358,7 +1358,6 @@ import { useTabList_unstable } from '@fluentui/react-tabs';
 import { useTabListContext_unstable } from '@fluentui/react-tabs';
 import { useTabListContextValues_unstable } from '@fluentui/react-tabs';
 import { useTabListStyles_unstable } from '@fluentui/react-tabs';
-import { useTabsterUncontrolled } from '@fluentui/react-tabster';
 import { useTabStyles_unstable } from '@fluentui/react-tabs';
 import { useTag_unstable } from '@fluentui/react-tags';
 import { useTagAvatarContextValues_unstable } from '@fluentui/react-tags';
@@ -1413,6 +1412,7 @@ import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
 import { useTreeStyles_unstable } from '@fluentui/react-tree';
+import { useUncontrolledFocus } from '@fluentui/react-tabster';
 import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
@@ -4125,8 +4125,6 @@ export { useTabListContextValues_unstable }
 
 export { useTabListStyles_unstable }
 
-export { useTabsterUncontrolled }
-
 export { useTabStyles_unstable }
 
 export { useTag_unstable }
@@ -4234,6 +4232,8 @@ export { useTreeItemPersonaLayoutStyles_unstable }
 export { useTreeItemStyles_unstable }
 
 export { useTreeStyles_unstable }
+
+export { useUncontrolledFocus }
 
 export { VerticalSpacingTokens }
 
