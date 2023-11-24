@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { isHTMLElement } from '@fluentui/react-utilities';
 import { useOptionWalker } from './useOptionWalker';
-import { ActiveDescendantOptions } from './types';
+import type { ActiveDescendantOptions } from './types';
 import { ACTIVEDESCENDANT_ATTRIBUTE } from './constants';
 
 export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(
@@ -11,12 +10,12 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   const activeParentRef = React.useRef<TActiveParentElement>(null);
   const { listboxRef, optionWalker } = useOptionWalker<TListboxElement>({ matchOption });
   const getActiveDescendant = () => {
-    return listboxRef.current?.querySelector(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`);
+    return listboxRef.current?.querySelector<HTMLElement>(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`);
   };
 
   const setActiveDescendant = (nextActive: HTMLElement | undefined) => {
     const active = getActiveDescendant();
-    if (isHTMLElement(active)) {
+    if (active) {
       active.removeAttribute(ACTIVEDESCENDANT_ATTRIBUTE);
     }
 
@@ -35,12 +34,9 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       }
 
       const first = optionWalker.first();
-
-      if (!first || !isHTMLElement(first)) {
-        return;
+      if (first) {
+        setActiveDescendant(first);
       }
-
-      setActiveDescendant(first);
     },
     next: () => {
       if (!listboxRef.current || !activeParentRef.current) {
@@ -48,17 +44,15 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       }
 
       const active = getActiveDescendant();
-      if (!isHTMLElement(active)) {
+      if (!active) {
         return;
       }
 
       optionWalker.setCurrent(active);
       const next = optionWalker.next();
-      if (!next) {
-        return;
+      if (next) {
+        setActiveDescendant(next);
       }
-
-      setActiveDescendant(next);
     },
     prev: () => {
       if (!listboxRef.current || !activeParentRef.current) {
@@ -66,20 +60,16 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       }
 
       const active = getActiveDescendant();
-      if (!isHTMLElement(active)) {
+      if (!active) {
         return;
       }
 
       optionWalker.setCurrent(active);
       const next = optionWalker.prev();
-      if (!next || next === listboxRef.current) {
-        return;
-      }
 
-      active.removeAttribute(ACTIVEDESCENDANT_ATTRIBUTE);
-      next.setAttribute(ACTIVEDESCENDANT_ATTRIBUTE, '');
-      activeParentRef.current.setAttribute('aria-activedescendant', next.id);
-      setActiveDescendant(next);
+      if (next && next !== listboxRef.current) {
+        setActiveDescendant(next);
+      }
     },
     blur: () => {
       if (!listboxRef.current || !activeParentRef.current) {
@@ -89,15 +79,9 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       setActiveDescendant(undefined);
     },
     active: () => {
-      if (!listboxRef.current) {
-        return;
+      if (listboxRef.current) {
+        return getActiveDescendant()?.id;
       }
-      const active = getActiveDescendant();
-      if (!isHTMLElement(active)) {
-        return;
-      }
-
-      return active.id;
     },
 
     focus: (id: string) => {

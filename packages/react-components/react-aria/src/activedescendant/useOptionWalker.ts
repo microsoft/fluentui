@@ -14,11 +14,11 @@ export function useOptionWalker<TListboxElement extends HTMLElement>(options: Us
 
   const optionFilter = React.useCallback(
     (node: Node) => {
-      if (!isHTMLElement(node)) {
-        return NodeFilter.FILTER_SKIP;
+      if (isHTMLElement(node) && matchOption(node)) {
+        return NodeFilter.FILTER_ACCEPT;
       }
 
-      return matchOption(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+      return NodeFilter.FILTER_SKIP;
     },
     [matchOption],
   );
@@ -31,60 +31,45 @@ export function useOptionWalker<TListboxElement extends HTMLElement>(options: Us
     treeWalkerRef.current = targetDocument.createTreeWalker(listboxRef.current, NodeFilter.SHOW_ELEMENT, optionFilter);
   }, [targetDocument, optionFilter]);
 
-  const first = React.useCallback(() => {
-    if (!treeWalkerRef.current) {
-      return;
-    }
+  const optionWalker = React.useMemo(
+    () => ({
+      first: () => {
+        if (!treeWalkerRef.current) {
+          return;
+        }
 
-    const node = treeWalkerRef.current.firstChild();
-    if (!isHTMLElement(node)) {
-      return null;
-    }
+        const node = treeWalkerRef.current.firstChild() as HTMLElement | null;
+        return node;
+      },
+      next: () => {
+        if (!treeWalkerRef.current) {
+          return;
+        }
 
-    return node;
-  }, []);
+        const node = treeWalkerRef.current.nextNode() as HTMLElement | null;
+        return node;
+      },
+      prev: () => {
+        if (!treeWalkerRef.current) {
+          return;
+        }
 
-  const next = React.useCallback(() => {
-    if (!treeWalkerRef.current) {
-      return;
-    }
+        const node = treeWalkerRef.current.previousNode() as HTMLElement | null;
+        return node;
+      },
+      setCurrent: (el: HTMLElement) => {
+        if (!treeWalkerRef.current) {
+          return;
+        }
 
-    const node = treeWalkerRef.current.nextNode();
-    if (!isHTMLElement(node)) {
-      return null;
-    }
-
-    return node;
-  }, []);
-
-  const prev = React.useCallback(() => {
-    if (!treeWalkerRef.current) {
-      return;
-    }
-
-    const node = treeWalkerRef.current.previousNode();
-    if (!isHTMLElement(node)) {
-      return null;
-    }
-
-    return node;
-  }, []);
-
-  const setCurrent = React.useCallback((el: HTMLElement) => {
-    if (!treeWalkerRef.current) {
-      return;
-    }
-
-    treeWalkerRef.current.currentNode = el;
-  }, []);
+        treeWalkerRef.current.currentNode = el;
+      },
+    }),
+    [],
+  );
 
   return {
-    optionWalker: {
-      first,
-      next,
-      prev,
-      setCurrent,
-    },
+    optionWalker,
     listboxRef,
   };
 }
