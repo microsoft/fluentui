@@ -113,22 +113,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       theme: this.props.theme!,
       legendColor: this.state.color,
     });
-    // console.log('_calloutId', {
-    //   isCalloutVisible: this.state.isCalloutVisible,
-    //   directionalHint: DirectionalHint.topAutoEdge,
-    //   id: `toolTip${this._calloutId}`,
-    //   target: this.state.refSelected,
-    //   isBeakVisible: false,
-    //   gapSpace: 15,
-    //   color: this.state.color,
-    //   legend: this.state.selectedLegendTitle,
-    //   XValue: this.state.xCalloutValue,
-    //   YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
-    //   onDismiss: this._closeCallout,
-    //   preventDismissOnLostFocus: true,
-    //   ...this.props.calloutProps,
-    //   ...getAccessibleDataObject(this.state.callOutAccessibilityData),
-    // });
     const calloutProps = {
       isCalloutVisible: this.state.isCalloutVisible,
       directionalHint: DirectionalHint.topAutoEdge,
