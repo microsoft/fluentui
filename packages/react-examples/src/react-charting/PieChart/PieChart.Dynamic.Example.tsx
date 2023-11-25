@@ -8,7 +8,20 @@ export interface IExampleState {
   colors: string[];
   width: number;
   height: number;
+  statusKey: number;
+  statusMessage: string;
 }
+
+const screenReaderOnlyStyle: React.CSSProperties = {
+  position: 'absolute',
+  width: '1px',
+  height: '1px',
+  padding: 0,
+  margin: '-1px',
+  overflow: 'hidden',
+  clip: 'rect(0,0,0,0)',
+  border: 0,
+};
 
 export class PieChartDynamicExample extends React.Component<IPieChartProps, IExampleState> {
   private _colors = [
@@ -30,6 +43,8 @@ export class PieChartDynamicExample extends React.Component<IPieChartProps, IExa
       colors: this._colors[0],
       width: 600,
       height: 350,
+      statusKey: 0,
+      statusMessage: '',
     };
 
     this._changeData = this._changeData.bind(this);
@@ -74,6 +89,11 @@ export class PieChartDynamicExample extends React.Component<IPieChartProps, IExa
         />
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
+        <div aria-live="polite" aria-atomic="true">
+          <p key={this.state.statusKey} style={screenReaderOnlyStyle}>
+            {this.state.statusMessage}
+          </p>
+        </div>
       </div>
     );
   }
@@ -84,20 +104,24 @@ export class PieChartDynamicExample extends React.Component<IPieChartProps, IExa
     const c = this._randomY(100 - a - b - 10);
     const d = 100 - a - b - c;
 
-    this.setState({
+    this.setState(prevState => ({
       dynamicData: [
         { x: 'A', y: a },
         { x: 'B', y: b },
         { x: 'C', y: c },
         { x: 'D', y: d },
       ],
-    });
+      statusKey: prevState.statusKey + 1,
+      statusMessage: 'Pie chart data changed',
+    }));
   }
 
   private _changeColors(): void {
-    this.setState({
+    this.setState(prevState => ({
       colors: [this._randomColor(0), this._randomColor(1), this._randomColor(2), this._randomColor(3)],
-    });
+      statusKey: prevState.statusKey + 1,
+      statusMessage: 'Pie chart colors changed',
+    }));
   }
 
   private _randomY(max: number): number {

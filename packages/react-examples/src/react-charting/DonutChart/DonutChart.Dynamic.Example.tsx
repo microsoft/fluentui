@@ -15,7 +15,20 @@ export interface IExampleState {
   hideLabels: boolean;
   showLabelsInPercent: boolean;
   innerRadius: number;
+  statusKey: number;
+  statusMessage: string;
 }
+
+const screenReaderOnlyStyle: React.CSSProperties = {
+  position: 'absolute',
+  width: '1px',
+  height: '1px',
+  padding: 0,
+  margin: '-1px',
+  overflow: 'hidden',
+  clip: 'rect(0,0,0,0)',
+  border: 0,
+};
 
 export class DonutChartDynamicExample extends React.Component<IDonutChartProps, IExampleState> {
   private _colors = [
@@ -37,6 +50,8 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
       hideLabels: false,
       showLabelsInPercent: false,
       innerRadius: 35,
+      statusKey: 0,
+      statusMessage: '',
     };
 
     this._changeData = this._changeData.bind(this);
@@ -72,30 +87,39 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
         />
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
+        <div aria-live="polite" aria-atomic="true">
+          <p key={this.state.statusKey} style={screenReaderOnlyStyle}>
+            {this.state.statusMessage}
+          </p>
+        </div>
       </div>
     );
   }
 
   private _changeData(): void {
-    this.setState({
+    this.setState(prevState => ({
       dynamicData: [
         { legend: 'first', data: this._randomY(), color: getColorFromToken(DataVizPalette.color1) },
         { legend: 'second', data: this._randomY(), color: getColorFromToken(DataVizPalette.color2) },
         { legend: 'third', data: this._randomY(), color: getColorFromToken(DataVizPalette.color3) },
         { legend: 'fourth', data: this._randomY(), color: getColorFromToken(DataVizPalette.color4) },
       ],
-    });
+      statusKey: prevState.statusKey + 1,
+      statusMessage: 'Donut chart data changed',
+    }));
   }
 
   private _changeColors(): void {
-    this.setState({
+    this.setState(prevState => ({
       dynamicData: [
         { legend: 'first', data: 40, color: this._randomColor(0) },
         { legend: 'second', data: 20, color: this._randomColor(1) },
         { legend: 'third', data: 30, color: this._randomColor(2) },
         { legend: 'fourth', data: 10, color: this._randomColor(3) },
       ],
-    });
+      statusKey: prevState.statusKey + 1,
+      statusMessage: 'Donut chart colors changed',
+    }));
   }
 
   private _randomY(max = 300): number {
