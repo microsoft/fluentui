@@ -20,6 +20,7 @@
     "test": "just-scripts test",
     "just": "just-scripts",
     "clean": "just-scripts clean",
+    "codepen": "node local-codepen.js",
     "code-style": "just-scripts code-style",
     "start": "just-scripts dev:storybook",
     "start:legacy": "just-scripts dev",
