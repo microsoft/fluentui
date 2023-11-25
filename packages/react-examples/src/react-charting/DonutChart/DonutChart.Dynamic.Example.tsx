@@ -88,6 +88,7 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
         <div aria-live="polite" aria-atomic="true">
+          {/* Change the key so that React treats it as an update even if the message is same */}
           <p key={this.state.statusKey} style={screenReaderOnlyStyle}>
             {this.state.statusMessage}
           </p>
