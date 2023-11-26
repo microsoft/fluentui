@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: export useTabsterUncontrolled hook",
+  "comment": "feat: export useUncontrolledFocus hook",
   "packageName": "@fluentui/react-components",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
