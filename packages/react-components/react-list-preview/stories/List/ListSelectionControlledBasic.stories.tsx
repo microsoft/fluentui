@@ -47,6 +47,24 @@ const useStyles = makeStyles({
   },
 });
 
+// Memoizing the ListItem like this allows the unaffected ListItem not to be re-rendered when the selection changes.
+const MyListItem = React.memo(({ name, avatar }: { name: string; avatar: string }) => {
+  return (
+    <ListItem key={name} value={name} aria-label={name}>
+      <Persona
+        name={name}
+        secondaryText="Available"
+        presence={{ status: 'available' }}
+        avatar={{
+          image: {
+            src: avatar,
+          },
+        }}
+      />
+    </ListItem>
+  );
+});
+
 export const ListSelectionControlledBasic = () => {
   const classes = useStyles();
   const [currentIndex, setCurrentIndex] = React.useState(4);
@@ -72,22 +90,9 @@ export const ListSelectionControlledBasic = () => {
         selectedItems={selectedItems}
         onSelectionChange={(_, data) => setSelectedItems(data.selectedItems)}
       >
-        {items.map(({ name, avatar }) => {
-          return (
-            <ListItem key={name} value={name} aria-label={name}>
-              <Persona
-                name={name}
-                secondaryText="Available"
-                presence={{ status: 'available' }}
-                avatar={{
-                  image: {
-                    src: avatar,
-                  },
-                }}
-              />
-            </ListItem>
-          );
-        })}
+        {items.map(({ name, avatar }) => (
+          <MyListItem key={name} name={name} avatar={avatar} />
+        ))}
       </List>
       <div>Selected people: {selectedItems.join(', ')}</div>
     </div>
