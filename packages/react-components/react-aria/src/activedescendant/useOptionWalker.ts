@@ -35,27 +35,24 @@ export function useOptionWalker<TListboxElement extends HTMLElement>(options: Us
     () => ({
       first: () => {
         if (!treeWalkerRef.current) {
-          return;
+          return null;
         }
 
-        const node = treeWalkerRef.current.firstChild() as HTMLElement | null;
-        return node;
+        return treeWalkerRef.current.firstChild() as HTMLElement | null;
       },
       next: () => {
         if (!treeWalkerRef.current) {
-          return;
+          return null;
         }
 
-        const node = treeWalkerRef.current.nextNode() as HTMLElement | null;
-        return node;
+        return treeWalkerRef.current.nextNode() as HTMLElement | null;
       },
       prev: () => {
         if (!treeWalkerRef.current) {
-          return;
+          return null;
         }
 
-        const node = treeWalkerRef.current.previousNode() as HTMLElement | null;
-        return node;
+        return treeWalkerRef.current.previousNode() as HTMLElement | null;
       },
       setCurrent: (el: HTMLElement) => {
         if (!treeWalkerRef.current) {
