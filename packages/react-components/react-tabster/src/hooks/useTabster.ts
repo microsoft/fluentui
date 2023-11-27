@@ -19,7 +19,13 @@ export const useTabster = (): TabsterTypes.TabsterCore | null => {
       return null;
     }
 
-    return createTabster(defaultView, { autoRoot: {}, controlTab: false, getParent });
+    return createTabster(defaultView, {
+      autoRoot: {},
+      controlTab: false,
+      getParent,
+      checkUncontrolledTrappingFocus: element =>
+        !!element.firstElementChild?.hasAttribute('data-is-focus-trap-zone-bumper'),
+    });
   }, [defaultView]);
 
   useIsomorphicLayoutEffect(() => {
