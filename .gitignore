@@ -163,3 +163,6 @@ tsdoc-metadata.json
 
 # swc cache
 .swc
+
+# Local Codepen ngrok token
+.codepen_auth
