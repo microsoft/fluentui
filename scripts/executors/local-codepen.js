@@ -23,7 +23,7 @@ if (fs.existsSync(configPath)) {
   try {
     console.log("Attempting to npm link globally installed ngrok so it can be require'd");
     // This will probably install ngrok globally if it's not already present
-    execSync('npm link ngrok@3 --force', { cwd: gitRoot, stdio: 'inherit' });
+    execSync('npm link ngrok@5 --force', { cwd: gitRoot, stdio: 'inherit' });
     // @ts-expect-error - no types for ngrok
     // eslint-disable-next-line import/no-extraneous-dependencies
     ngrok = require('ngrok');
