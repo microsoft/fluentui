@@ -1,4 +1,5 @@
 import * as React from 'react';
-import { ListItemButton, ListItemButtonProps } from '@fluentui/react-list-preview';
+import { ListItemButton } from '@fluentui/react-list-preview';
+import { ButtonProps } from '@fluentui/react-components';
 
-export const Default = (props: Partial<ListItemButtonProps>) => <ListItemButton {...props} />;
+export const Default = (props: ButtonProps) => <ListItemButton {...props} />;

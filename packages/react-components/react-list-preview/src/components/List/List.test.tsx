@@ -2,10 +2,11 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { List } from './List';
+import { ListProps } from './List.types';
 
 describe('List', () => {
   isConformant({
-    Component: List,
+    Component: List as React.FunctionComponent<ListProps>,
     displayName: 'List',
     testOptions: {
       'consistent-callback-args': {

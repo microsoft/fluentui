@@ -2,10 +2,11 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { ListItemButton } from './ListItemButton';
+import { ButtonProps } from '../../../../react-button/src/Button';
 
 describe('ListItemButton', () => {
   isConformant({
-    Component: ListItemButton,
+    Component: ListItemButton as React.FunctionComponent<ButtonProps>,
     displayName: 'ListItemButton',
     disabledTests: ['component-has-static-classnames-object'],
   });

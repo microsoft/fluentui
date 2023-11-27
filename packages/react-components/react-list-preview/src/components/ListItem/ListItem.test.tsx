@@ -2,10 +2,11 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { ListItem } from './ListItem';
+import { ListItemProps } from './ListItem.types';
 
 describe('ListItem', () => {
   isConformant({
-    Component: ListItem,
+    Component: ListItem as React.FunctionComponent<ListItemProps>,
     displayName: 'ListItem',
     testOptions: {
       'has-static-classnames': [

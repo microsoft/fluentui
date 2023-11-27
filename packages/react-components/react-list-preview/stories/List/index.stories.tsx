@@ -11,7 +11,6 @@ export { ListMultipleActions } from './ListMultipleActions.stories';
 export { ListSelectionUncontrolled } from './ListSelectionUncontrolled.stories';
 export { ListSelectionControlledBasic } from './ListSelectionControlledBasic.stories';
 export { ListSelectionControlledWithState } from './ListSelectionControlledWithState.stories';
-export { ListSelectionControlled } from './ListSelectionControlled.stories';
 export { VirtualizedList } from './VirtualizedList.stories';
 export { VirtualizedListWithActionableItems } from './VirtualizedListWithActionableItems.stories';
 
