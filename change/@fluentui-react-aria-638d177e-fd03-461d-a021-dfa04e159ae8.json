@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Implement aria-activedescendant utility",
+  "packageName": "@fluentui/react-aria",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

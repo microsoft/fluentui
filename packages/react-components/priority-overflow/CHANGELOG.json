@@ -2,6 +2,21 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Mon, 20 Nov 2023 09:55:08 GMT",
+      "tag": "@fluentui/priority-overflow_v9.1.10",
+      "version": "9.1.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "b81eb56d5f2f7ae9728ada432e30d8142520117f",
+            "comment": "fix: disconnect should dispose all state correctly"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 17:29:49 GMT",
       "tag": "@fluentui/priority-overflow_v9.1.9",
       "version": "9.1.9",

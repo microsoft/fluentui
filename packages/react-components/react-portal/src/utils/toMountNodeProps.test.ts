@@ -1,4 +1,4 @@
-import { toMountNodeProps } from './usePortal';
+import { toMountNodeProps } from './toMountNodeProps';
 
 describe('toMountNodeProps', () => {
   it('handles HTMLElement', () => {

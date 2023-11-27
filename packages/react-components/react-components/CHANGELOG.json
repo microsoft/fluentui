@@ -2,6 +2,71 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 20 Nov 2023 09:55:08 GMT",
+      "tag": "@fluentui/react-components_v9.41.0",
+      "version": "9.41.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "b81eb56d5f2f7ae9728ada432e30d8142520117f",
+            "comment": "fix: disconnect should dispose all state correctly"
+          },
+          {
+            "author": "jurokapsiar@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a",
+            "comment": "Remove CSS containment from DialogSurface"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "b81eb56d5f2f7ae9728ada432e30d8142520117f",
+            "comment": "fix: register should happen again once observe options change"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "5103727605543cf631cd50f5348562b763f08ee0",
+            "comment": "chore: Export KeyborgFocusInEvent and KEYBORG_FOCUSIN"
+          }
+        ],
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "31f1f61ba423c280294f610e076251d3b735ca17",
+            "comment": "fix: Replace child selectors with css vars in Checkbox styles"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "1a26dc71a18fed4b842ec6b551189da2d0c389b2",
+            "comment": "chore: Re-export missing exports from @fluentui/react-drawer in @fluentui/react-components."
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "88efc19c9513db18cb5b7c63fa0f47ba496755a2",
+            "comment": "feat: Add TeachingPopover style hooks"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "88efc19c9513db18cb5b7c63fa0f47ba496755a2",
+            "comment": "feat: TeachingPopover style hooks added"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "5103727605543cf631cd50f5348562b763f08ee0",
+            "comment": "fix: Tooltips are no longer triggered by programmatic focus() moves."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Nov 2023 17:51:26 GMT",
       "tag": "@fluentui/react-components_v9.40.0",
       "version": "9.40.0",

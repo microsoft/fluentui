@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 16 Nov 2023 07:26:51 GMT and should not be manually modified.
+This log was last generated on Fri, 24 Nov 2023 07:27:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.2)
+
+Fri, 24 Nov 2023 07:27:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.1..@fluentui/react-charting_v5.19.2)
+
+### Patches
+
+- fix: react-charting VBC - RTL mode mouseover on bar chart the data is not displaying correctly ([PR #29876](https://github.com/microsoft/fluentui/pull/29876) by gautam33776@gmail.com)
+- line chart rtl mode color fillbar bug fix ([PR #29893](https://github.com/microsoft/fluentui/pull/29893) by gautam33776@gmail.com)
 
 ## [5.19.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.1)
 
