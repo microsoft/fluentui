@@ -1,17 +1,15 @@
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
-import { useListItemButton_unstable } from './useListItemButton';
-import { renderListItemButton_unstable } from './renderListItemButton';
 import { useListItemButtonStyles_unstable } from './useListItemButtonStyles.styles';
-import type { ListItemButtonProps } from './ListItemButton.types';
+import { ButtonProps, renderButton_unstable, useButton_unstable } from '@fluentui/react-button';
 
-export const ListItemButton: ForwardRefComponent<ListItemButtonProps> = React.forwardRef((props, ref) => {
-  const state = useListItemButton_unstable(props, ref);
+export const ListItemButton: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
+  const state = useButton_unstable({ appearance: 'transparent', ...props }, ref);
 
   useListItemButtonStyles_unstable(state);
   useCustomStyleHook_unstable('useListItemButtonStyles_unstable')(state);
-  return renderListItemButton_unstable(state);
+  return renderButton_unstable(state);
 });
 
 ListItemButton.displayName = 'ListItemButton';

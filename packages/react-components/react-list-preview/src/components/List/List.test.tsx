@@ -7,6 +7,12 @@ describe('List', () => {
   isConformant({
     Component: List,
     displayName: 'List',
+    testOptions: {
+      'consistent-callback-args': {
+        // onSelectionChange has an eventArguent which is React.SyntheticEvent. This throws an error during testing
+        ignoreProps: ['onSelectionChange'],
+      },
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

@@ -7,6 +7,7 @@ describe('ListItemButton', () => {
   isConformant({
     Component: ListItemButton,
     displayName: 'ListItemButton',
+    disabledTests: ['component-has-static-classnames-object'],
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

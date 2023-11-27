@@ -2,10 +2,11 @@
 
 exports[`ListItemButton renders a default state 1`] = `
 <div>
-  <div
-    class="fui-ListItemButton"
+  <button
+    class="fui-Button"
+    type="button"
   >
     Default ListItemButton
-  </div>
+  </button>
 </div>
 `;

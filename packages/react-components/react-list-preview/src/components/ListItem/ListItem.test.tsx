@@ -7,6 +7,15 @@ describe('ListItem', () => {
   isConformant({
     Component: ListItem,
     displayName: 'ListItem',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            checkmark: 'test checkmark',
+          },
+        },
+      ],
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
