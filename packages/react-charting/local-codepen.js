@@ -36,9 +36,16 @@ if (fs.existsSync(configPath)) {
   const server = new WebpackDevServer(compiler, webpackConfig.devServer);
   const port = 8080;
   server.listen(port, '127.0.0.1', async () => {
-    ngrok.authtoken('YOUR_NGROK_AUTHTOKEN');
+    if (!fs.existsSync('.codepen_auth')) {
+      console.error(
+        // eslint-disable-next-line @fluentui/max-len
+        '\nngrok requires an authToken in a file named .codepen_auth. Create an ngrok account and simply paste your authToken in a file name .codepen_auth',
+      );
+      process.exit(1);
+    }
+    const ngrokAuthToken = fs.readFileSync('./.codepen_auth', 'utf8').replace(/(\r\n|\n|\r)/gm, '');
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    const url = await ngrok.connect({ port, host_header: 'localhost:' + port });
+    const url = await ngrok.connect({ authtoken: ngrokAuthToken, port, host_header: 'localhost:' + port });
     console.log(`Starting server on http://${url}`);
     // Put the script tag in a big yellow box so it's easier to find
     const scriptTag = `  <script src="${url}/react-charting.js"></script>  `;
