@@ -9,6 +9,30 @@ import * as React_2 from 'react';
 import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 
+// @public (undocumented)
+export interface ActiveDescendantImperativeRef {
+    // (undocumented)
+    active: () => string | undefined;
+    // (undocumented)
+    blur: () => void;
+    // (undocumented)
+    first: () => void;
+    // (undocumented)
+    focus: (id: string) => void;
+    // (undocumented)
+    next: () => void;
+    // (undocumented)
+    prev: () => void;
+}
+
+// @public (undocumented)
+export interface ActiveDescendantOptions {
+    // (undocumented)
+    imperativeRef?: React_2.RefObject<ActiveDescendantImperativeRef>;
+    // (undocumented)
+    matchOption: (el: HTMLElement) => boolean;
+}
+
 // @public
 export type ARIAButtonAlteredProps<Type extends ARIAButtonType> = (Type extends 'button' ? Pick<JSX.IntrinsicElements['button'], 'onClick' | 'onKeyDown' | 'onKeyUp' | 'disabled' | 'aria-disabled' | 'tabIndex'> : never) | (Type extends 'a' ? Pick<JSX.IntrinsicElements['a'], 'onClick' | 'onKeyDown' | 'onKeyUp' | 'aria-disabled' | 'tabIndex' | 'role' | 'href'> : never) | (Type extends 'div' ? Pick<JSX.IntrinsicElements['div'], 'onClick' | 'onKeyDown' | 'onKeyUp' | 'aria-disabled' | 'tabIndex' | 'role'> : never);
 
@@ -32,6 +56,12 @@ export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> =
 
 // @public (undocumented)
 export type ARIAButtonType = 'button' | 'a' | 'div';
+
+// @public (undocumented)
+export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(options: ActiveDescendantOptions): {
+    listboxRef: React_2.MutableRefObject<TListboxElement | null>;
+    activeParentRef: React_2.RefObject<TActiveParentElement>;
+};
 
 // @internal
 export function useARIAButtonProps<Type extends ARIAButtonType, Props extends ARIAButtonProps<Type>>(type?: Type, props?: Props): ARIAButtonResultProps<Type, Props>;
