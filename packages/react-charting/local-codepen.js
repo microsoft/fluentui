@@ -22,7 +22,7 @@ if (fs.existsSync(configPath)) {
   try {
     console.log("Attempting to npm link globally installed ngrok so it can be require'd");
     // This will probably install ngrok globally if it's not already present
-    execSync('npm link ngrok@3 --legacy-peer-dep', { cwd: gitRoot, stdio: 'inherit' });
+    execSync('npm link ngrok@3 --force', { cwd: gitRoot, stdio: 'inherit' });
     // @ts-expect-error - no types for ngrok
     ngrok = require('ngrok');
   } catch (err) {
@@ -34,14 +34,22 @@ if (fs.existsSync(configPath)) {
   const webpackConfig = require(configPath);
   const compiler = webpack(webpackConfig);
   const server = new WebpackDevServer(compiler, webpackConfig.devServer);
-  const port = webpackConfig.devServer.port || 8080;
+  const port = 8080;
   server.listen(port, '127.0.0.1', async () => {
+    ngrok.authtoken('YOUR_NGROK_AUTHTOKEN');
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    const url = await ngrok.connect(); //{ port, host_header: 'localhost:' + port });
+    const url = await ngrok.connect({ port, host_header: 'localhost:' + port });
     console.log(`Starting server on http://${url}`);
     // Put the script tag in a big yellow box so it's easier to find
-    const scriptTag = `  <script src="${url}/fluentui-react.js"></script>  `;
-    const message = ['', '  Replace the @fluentui/react script tag in your codepen with this:', '', scriptTag, ''];
+    const scriptTag = `  <script src="${url}/react-charting.js"></script>  `;
+    // eslint-disable-next-line @fluentui/max-len
+    const message = [
+      '',
+      '  Replace the @fluentui/react-charting script tag in your codepen with this:',
+      '',
+      scriptTag,
+      '',
+    ];
     console.log(chalk.bgYellowBright.bold(message.map(line => line.padEnd(scriptTag.length)).join('\n')));
   });
 }
