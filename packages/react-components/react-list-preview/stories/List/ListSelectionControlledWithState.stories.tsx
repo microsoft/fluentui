@@ -116,12 +116,11 @@ ListSelectionControlledWithState.parameters = {
   docs: {
     description: {
       story: [
-        'Any List can be selectable. You have an option to control the selection state yourself or let the List manage it for you.',
+        'This example is an extension of the previous examle of controlled selection. ',
+        'It shows how to use the `useListSelection` hook to control the selection state.',
         '',
-        'You can pass `selectable` prop inside of the List component to get built-in selection. The List notifies the parent about changes in selection via the `onSelectionChange` props. In the example we are also using the `defaultSelectedItems` prop to set the initial selection state.',
-        '',
-        "You can see that the default selection contains an object, which is not yet rendered in the list. Try adding a new item and see that it's selected by default. This is to demonstrate that you can decouple your selection state from ",
-        'your list items and even store and retrieve them separately.',
+        'The `useListSelection` hook is by no means required for the selection to work, but it provides a convenient ',
+        'way to control the selection state by providing selection specific helper functions.',
       ].join('\n'),
     },
   },

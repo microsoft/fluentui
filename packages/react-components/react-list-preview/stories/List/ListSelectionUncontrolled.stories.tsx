@@ -103,7 +103,7 @@ ListSelectionUncontrolled.parameters = {
       story: [
         'Any List can be selectable. You have an option to control the selection state yourself or let the List manage it for you.',
         '',
-        'You can pass `selectable` prop inside of the List component to get built-in selection. The List notifies the parent about changes in selection via the `onSelectionChange` props. In the example we are also using the `defaultSelectedItems` prop to set the initial selection state.',
+        'You can pass `selectable` prop inside of the List component to get support for selection. The List notifies the parent about changes in selection via the `onSelectionChange` props. In the example we are also using the `defaultSelectedItems` prop to set the initial selection state. While we are saving the results of `onSelectionChange`, it is purely for keeping track of the selection state and is not used to control the selection.',
         '',
         "You can see that the default selection contains an object, which is not yet rendered in the list. Try adding a new item and see that it's selected by default. This is to demonstrate that you can decouple your selection state from ",
         'your list items and even store and retrieve them separately.',
