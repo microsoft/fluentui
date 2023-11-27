@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 13 Oct 2023 04:17:27 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Oct 2023 04:16:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.6)
+
+Thu, 26 Oct 2023 04:16:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.5..@fluentui/web-components_v3.0.0-beta.6)
+
+### Changes
+
+- feat(dialog): add dialog web component ([PR #28569](https://github.com/microsoft/fluentui/pull/28569) by brian.christopher.brady@gmail.com)
+
+## [3.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.5)
+
+Thu, 19 Oct 2023 04:18:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.4..@fluentui/web-components_v3.0.0-beta.5)
+
+### Changes
+
+- Updates package with Menu component sideEffect. ([PR #29581](https://github.com/microsoft/fluentui/pull/29581) by hale.rankin@microsoft.com)
 
 ## [3.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.4)
 

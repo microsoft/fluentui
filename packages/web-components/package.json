@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.4",
+  "version": "3.0.0-beta.6",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -58,6 +58,10 @@
     "./counter-badge.js": {
       "types": "./dist/dts/counter-badge/define.d.ts",
       "default": "./dist/esm/counter-badge/define.js"
+    },
+    "./dialog.js": {
+      "types": "./dist/dts/dialog/define.d.ts",
+      "default": "./dist/esm/dialog/define.js"
     },
     "./divider.js": {
       "types": "./dist/dts/divider/define.d.ts",
@@ -150,9 +154,11 @@
     "./dist/esm/checkbox/define.js",
     "./dist/esm/compound-button/define.js",
     "./dist/esm/counter-badge/define.js",
+    "./dist/esm/dialog/define.js",
     "./dist/esm/divider/define.js",
     "./dist/esm/image/define.js",
     "./dist/esm/label/define.js",
+    "./dist/esm/menu/define.js",
     "./dist/esm/menu-list/define.js",
     "./dist/esm/menu-button/define.js",
     "./dist/esm/menu-item/define.js",
