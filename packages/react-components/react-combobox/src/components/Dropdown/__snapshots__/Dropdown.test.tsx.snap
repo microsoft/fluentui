@@ -9,6 +9,7 @@ exports[`Dropdown renders a default state 1`] = `
       aria-expanded="false"
       class="fui-Dropdown__button"
       role="combobox"
+      tabindex="0"
       type="button"
     >
       <span
@@ -44,6 +45,7 @@ exports[`Dropdown renders an open listbox 1`] = `
       aria-expanded="true"
       class="fui-Dropdown__button"
       role="combobox"
+      tabindex="0"
       type="button"
     >
       <span
