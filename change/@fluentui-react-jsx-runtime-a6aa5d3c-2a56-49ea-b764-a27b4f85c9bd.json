@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: move up NODE_ENV check in warnIfElementTypeIsInvalid",
+  "packageName": "@fluentui/react-jsx-runtime",
+  "email": "wfwf1997@gmail.com",
+  "dependentChangeType": "patch"
+}

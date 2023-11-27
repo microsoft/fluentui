@@ -2,6 +2,21 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Fri, 24 Nov 2023 07:27:54 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.34",
+      "version": "8.13.34",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.152",
+            "commit": "033af48f49f83c79d61cdc3cfb1a86c28ebda9ef"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Nov 2023 07:26:51 GMT",
       "tag": "@fluentui/react-docsite-components_v8.13.33",
       "version": "8.13.33",
