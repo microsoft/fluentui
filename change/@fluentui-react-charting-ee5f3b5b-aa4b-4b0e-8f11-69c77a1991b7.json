@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Local Codepen support for react-charting package",
+  "packageName": "@fluentui/react-charting",
+  "email": "shubhabrata08@gmail.com",
+  "dependentChangeType": "patch"
+}
