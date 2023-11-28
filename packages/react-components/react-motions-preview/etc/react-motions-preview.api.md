@@ -287,6 +287,12 @@ export type MotionAtom = {
 };
 
 // @public (undocumented)
+export type MotionImperativeRef = {
+    setPlaybackRate: (rate: number) => void;
+    setPlayState: (state: 'running' | 'paused') => void;
+};
+
+// @public (undocumented)
 export type MotionTransition = {
     enter: MotionAtom;
     exit: MotionAtom;
