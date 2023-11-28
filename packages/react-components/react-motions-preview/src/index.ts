@@ -5,4 +5,4 @@ export { createAtom } from './factories/createAtom';
 export { createTransition } from './factories/createTransition';
 
 export { atoms, transitions };
-export type { MotionAtom, MotionTransition } from './types';
+export type { MotionAtom, MotionTransition, MotionImperativeRef } from './types';

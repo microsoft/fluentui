@@ -59,7 +59,7 @@ describe('matchTargetSize', () => {
     const floatingElement = document.createElement('div');
     const referenceWidth = 100;
     const middlewareArguments = {
-      middlewareData: { matchTargetSizeAttempt: true },
+      middlewareData: { matchTargetSize: { matchTargetSizeAttempt: true } },
       elements: {
         floating: floatingElement,
       },

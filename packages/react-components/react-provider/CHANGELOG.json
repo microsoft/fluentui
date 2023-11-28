@@ -2,6 +2,33 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Mon, 20 Nov 2023 09:55:09 GMT",
+      "tag": "@fluentui/react-provider_v9.13.0",
+      "version": "9.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "88efc19c9513db18cb5b7c63fa0f47ba496755a2",
+            "comment": "feat: Add TeachingPopover style hooks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.13.0",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.14.6",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Nov 2023 17:51:27 GMT",
       "tag": "@fluentui/react-provider_v9.12.1",
       "version": "9.12.1",
