@@ -35,6 +35,14 @@ function addActionButton(container: HTMLElement, config: Data, classList: string
   const files = scaffold[config.bundler](config);
   const action = actionConfig[config.provider];
 
+  // Check if button does not exist already in container
+  for (let i = 0; i < container.children.length; i++) {
+    const child = container.children[i];
+    if (child.tagName === 'BUTTON' && child.textContent === 'Open in CodeSandbox') {
+      return;
+    }
+  }
+
   const button = document.createElement('button');
   button.classList.add(...classList);
   button.textContent = `Open in ${action.label}`;
