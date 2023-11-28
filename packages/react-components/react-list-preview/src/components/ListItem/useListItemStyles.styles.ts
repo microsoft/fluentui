@@ -51,7 +51,7 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
   state.root.className = mergeClasses(
     listItemClassNames.root,
     rootBaseStyles,
-    state.root.onClick && styles.rootClickable,
+    state.selectable && styles.rootClickable,
     state.root.className,
   );
 

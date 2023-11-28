@@ -15,4 +15,4 @@ export type ListItemProps = ComponentProps<ListItemSlots> & {
 /**
  * State used in rendering ListItem
  */
-export type ListItemState = ComponentState<ListItemSlots> & {};
+export type ListItemState = ComponentState<ListItemSlots> & { selectable?: boolean };

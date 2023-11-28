@@ -118,6 +118,7 @@ export const useListItem_unstable = (
     },
     root,
     checkmark,
+    selectable: isSelectionEnabled,
   };
 
   return state;
