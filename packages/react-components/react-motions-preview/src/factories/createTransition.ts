@@ -2,11 +2,15 @@ import { useEventCallback, useIsomorphicLayoutEffect, useMergedRefs } from '@flu
 import * as React from 'react';
 
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
+import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { getChildElement } from '../utils/getChildElement';
-import type { MotionTransition } from '../types';
+import type { MotionTransition, MotionImperativeRef } from '../types';
 
 type TransitionProps = {
   children: React.ReactElement;
+
+  /** Provides imperative controls for the animation. */
+  imperativeRef?: React.Ref<MotionImperativeRef | undefined>;
 
   appear?: boolean;
   visible?: boolean;
@@ -16,10 +20,11 @@ type TransitionProps = {
 
 export function createTransition(transition: MotionTransition) {
   const Transition: React.FC<TransitionProps> = props => {
-    const { appear, children, visible, unmountOnExit } = props;
+    const { appear, children, imperativeRef, visible, unmountOnExit } = props;
 
     const child = getChildElement(children);
 
+    const animationRef = useMotionImperativeRef(imperativeRef);
     const elementRef = React.useRef<HTMLElement>();
     const ref = useMergedRefs(elementRef, child.ref);
 
@@ -55,6 +60,7 @@ export function createTransition(transition: MotionTransition) {
           return;
         }
 
+        animationRef.current = animation;
         animation.onfinish = onExitFinish;
 
         return () => {
@@ -62,7 +68,7 @@ export function createTransition(transition: MotionTransition) {
           animation.cancel();
         };
       }
-    }, [isReducedMotion, onExitFinish, visible]);
+    }, [animationRef, isReducedMotion, onExitFinish, visible]);
 
     useIsomorphicLayoutEffect(() => {
       if (!elementRef.current) {
@@ -79,11 +85,13 @@ export function createTransition(transition: MotionTransition) {
           ...(isReducedMotion() && { duration: 1 }),
         });
 
+        animationRef.current = animation;
+
         return () => {
           animation.cancel();
         };
       }
-    }, [isReducedMotion, mounted, visible, appear]);
+    }, [animationRef, isReducedMotion, mounted, visible, appear]);
 
     useIsomorphicLayoutEffect(() => {
       isFirstMount.current = false;
