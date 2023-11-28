@@ -21,7 +21,7 @@ import { NavGroupRegisterData, NavGroupValue, SelectNavGroupData, SelectNavGroup
  * @param props - props from this instance of Nav
  * @param ref - reference to root HTMLDivElement of Nav
  */
-export const useNav = (props: NavProps, ref: React.Ref<HTMLDivElement>): NavState => {
+export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>): NavState => {
   const { onNavGroupSelect } = props;
 
   const innerRef = React.useRef<HTMLElement>(null);

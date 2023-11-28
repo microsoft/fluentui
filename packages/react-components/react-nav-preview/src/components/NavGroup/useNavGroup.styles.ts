@@ -188,7 +188,7 @@ const useContentStyles = makeStyles({
 /**
  * Apply styling to the Tab slots based on the state
  */
-export const useNavGroupStyles = (state: NavGroupState): NavGroupState => {
+export const useNavGroupStyles_unstable = (state: NavGroupState): NavGroupState => {
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
   const pendingIndicatorStyles = usePendingIndicatorStyles();

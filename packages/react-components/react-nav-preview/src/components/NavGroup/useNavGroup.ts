@@ -19,7 +19,7 @@ import { SelectNavGroupEvent } from '../NavContext.types';
  * @param props - props from this instance of NavGroup
  * @param ref - reference to root HTMLButtonElement of NavGroup
  */
-export const useNavGroup = (props: NavGroupProps, ref: React.Ref<HTMLButtonElement>): NavGroupState => {
+export const useNavGroup_unstable = (props: NavGroupProps, ref: React.Ref<HTMLButtonElement>): NavGroupState => {
   const { content, icon, onClick, value } = props;
 
   const selected = useNavContext(ctx => ctx.selectedValue === value);

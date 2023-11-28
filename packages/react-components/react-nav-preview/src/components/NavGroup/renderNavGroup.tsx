@@ -8,7 +8,7 @@ import type { NavGroupState, NavGroupInternalSlots } from './NavGroup.types';
 /**
  * Render the final JSX of navGroup
  */
-export const renderNavGroup = (state: NavGroupState) => {
+export const renderNavGroup_unstable = (state: NavGroupState) => {
   assertSlots<NavGroupInternalSlots>(state);
 
   return (

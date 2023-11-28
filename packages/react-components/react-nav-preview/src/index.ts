@@ -1,12 +1,12 @@
-export { Nav, navClassNames, renderNav, useNav } from './Nav';
+export { Nav, navClassNames, renderNav, useNav_unstable as useNav } from './Nav';
 export type { NavProps, NavSlots, NavState } from './Nav';
 // these should probably be explicity as they are above.
 export {
   NavGroup,
   navGroupClassNames,
-  renderNavGroup,
+  renderNavGroup_unstable as renderNavGroup,
   useNavGroup,
-  useNavGroupStyles,
+  useNavGroupStyles_unstable as useNavGroupStyles,
 } from './components/NavGroup/index';
 export type { NavGroupInternalSlots, NavGroupProps, NavGroupSlots, NavGroupState } from './components/NavGroup/index';
 export { NavContext, NavProvider, useNavContext } from './components/NavContext';
