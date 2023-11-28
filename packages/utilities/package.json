@@ -42,6 +42,7 @@
   "dependencies": {
     "@fluentui/dom-utilities": "^2.2.12",
     "@fluentui/merge-styles": "^8.5.13",
+    "@fluentui/react-window-provider": "^2.2.16",
     "@fluentui/set-version": "^8.2.12",
     "tslib": "^2.1.0"
   },
