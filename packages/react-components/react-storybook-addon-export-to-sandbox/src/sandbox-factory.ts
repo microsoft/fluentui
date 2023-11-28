@@ -38,7 +38,7 @@ function addActionButton(container: HTMLElement, config: Data, classList: string
   // Check if button does not exist already in container
   for (let i = 0; i < container.children.length; i++) {
     const child = container.children[i];
-    if (child.tagName === 'BUTTON' && child.textContent === 'Open in CodeSandbox') {
+    if (child.tagName === 'BUTTON' && child.textContent === `Open in ${action.label}`) {
       return;
     }
   }
