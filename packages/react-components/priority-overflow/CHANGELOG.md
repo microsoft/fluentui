@@ -1,8 +1,17 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Thu, 09 Nov 2023 17:29:49 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Nov 2023 09:55:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.10)
+
+Mon, 20 Nov 2023 09:55:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.9..@fluentui/priority-overflow_v9.1.10)
+
+### Patches
+
+- fix: disconnect should dispose all state correctly ([PR #29375](https://github.com/microsoft/fluentui/pull/29375) by lingfan.gao@microsoft.com)
 
 ## [9.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.9)
 

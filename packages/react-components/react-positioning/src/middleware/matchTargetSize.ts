@@ -7,7 +7,7 @@ export function matchTargetSize(): Middleware {
       const {
         rects: { reference: referenceRect, floating: floatingRect },
         elements: { floating: floatingElement },
-        middlewareData: { matchTargetSizeAttempt = false },
+        middlewareData: { matchTargetSize: { matchTargetSizeAttempt = false } = {} },
       } = middlewareArguments;
 
       if (referenceRect.width === floatingRect.width || matchTargetSizeAttempt) {

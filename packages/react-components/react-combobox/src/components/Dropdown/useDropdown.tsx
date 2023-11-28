@@ -104,6 +104,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   triggerSlot = slot.always(props.button, {
     defaultProps: {
       type: 'button',
+      tabIndex: 0, // Safari doesn't focus the button on click without this
       children: baseState.value || props.placeholder,
       ...triggerNativeProps,
     },

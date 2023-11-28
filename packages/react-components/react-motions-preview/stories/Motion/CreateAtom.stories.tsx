@@ -1,6 +1,9 @@
 import { makeStyles, shorthands, tokens, Label, Slider, useId } from '@fluentui/react-components';
 import { atoms, createAtom } from '@fluentui/react-motions-preview';
+import type { MotionImperativeRef } from '@fluentui/react-motions-preview';
 import * as React from 'react';
+
+import description from './CreateAtom.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -57,26 +60,28 @@ export const CreateAtom = () => {
   const classes = useClasses();
   const sliderId = useId();
 
+  const motionEnterRef = React.useRef<MotionImperativeRef>();
+  const motionExitRef = React.useRef<MotionImperativeRef>();
+
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
 
   React.useEffect(() => {
-    document.getAnimations().forEach(animation => {
-      animation.playbackRate = playbackRate / 100;
-    });
+    motionEnterRef.current?.setPlaybackRate(playbackRate / 100);
+    motionExitRef.current?.setPlaybackRate(playbackRate / 100);
   }, [playbackRate]);
 
   return (
     <>
       <div className={classes.container}>
         <div className={classes.card}>
-          <FadeEnter iterations={Infinity}>
+          <FadeEnter iterations={Infinity} imperativeRef={motionEnterRef}>
             <div className={classes.item} />
           </FadeEnter>
 
           <code className={classes.description}>fadeEnterUltraSlow</code>
         </div>
         <div className={classes.card}>
-          <FadeExit iterations={Infinity}>
+          <FadeExit iterations={Infinity} imperativeRef={motionExitRef}>
             <div className={classes.item} />
           </FadeExit>
 
@@ -102,4 +107,12 @@ export const CreateAtom = () => {
       </div>
     </>
   );
+};
+
+CreateAtom.parameters = {
+  docs: {
+    description: {
+      story: description,
+    },
+  },
 };

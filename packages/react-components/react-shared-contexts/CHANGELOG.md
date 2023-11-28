@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Thu, 09 Nov 2023 17:29:42 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Nov 2023 09:55:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.13.0)
+
+Mon, 20 Nov 2023 09:55:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.12.0..@fluentui/react-shared-contexts_v9.13.0)
+
+### Minor changes
+
+- feat: TeachingPopover style hooks added ([PR #29782](https://github.com/microsoft/fluentui/pull/29782) by mifraser@microsoft.com)
 
 ## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.12.0)
 
