@@ -10,7 +10,6 @@ import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ListProps, ListState } from './List.types';
 import { useListSelection } from '../../hooks/useListSelection';
 
-const EMPTY_OBJECT = {};
 const DEFAULT_ROOT_EL_TYPE = 'ul';
 
 /**
@@ -73,7 +72,7 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
     root: slot.always(
       getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
         ref,
-        ...(selectable ? selectableListProps : EMPTY_OBJECT),
+        ...(selectable && selectableListProps),
         ...arrowNavigationAttributes,
         ...props,
       }),

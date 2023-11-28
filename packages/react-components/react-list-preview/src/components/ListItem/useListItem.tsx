@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot, useEventCallback, useId } from '@fluentui/react-utilities';
+import { Space } from '@fluentui/keyboard-keys';
 import type { ListItemProps, ListItemState } from './ListItem.types';
 import { useListContext_unstable } from '../List/listContext';
 import { Checkmark16Filled } from '@fluentui/react-icons';
 
-const EMPTY_OBJECT = {};
 const DEFAULT_ROOT_EL_TYPE = 'li';
 
 const listPropsForSelected = {
@@ -27,6 +27,10 @@ const listPropsForNotSelected = {
 };
 
 function validateProperElementTypes(parentRenderedAs?: 'div' | 'ul' | 'ol', renderedAs?: 'div' | 'li') {
+  if (process.env.NODE_ENV === 'production') {
+    return;
+  }
+
   if (renderedAs === 'div' && parentRenderedAs !== 'div') {
     throw new Error('ListItem cannot be rendered as a div when its parent is not a div.');
   }
@@ -74,7 +78,7 @@ export const useListItem_unstable = (
       return;
     }
 
-    if (e.key === ' ') {
+    if (e.key === Space) {
       e.preventDefault();
       toggleItem?.(e, value);
     }
@@ -96,7 +100,7 @@ export const useListItem_unstable = (
       tabIndex: focusableItems ? 0 : undefined,
       role: 'listitem',
       id: String(value),
-      ...(isSelectionEnabled ? listItemProps : EMPTY_OBJECT),
+      ...(isSelectionEnabled && listItemProps),
       ...focusableGroupAttrs,
       ...props,
       onKeyDown: handleKeyDown,

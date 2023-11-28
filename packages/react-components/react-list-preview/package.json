@@ -42,6 +42,7 @@
     "@fluentui/react-context-selector": "^9.1.42",
     "@fluentui/react-icons": "^2.0.217",
     "@fluentui/react-jsx-runtime": "^9.0.19",
+    "@fluentui/keyboard-keys": "^9.0.7",
     "@fluentui/react-tabster": "^9.14.6",
     "@fluentui/react-theme": "^9.1.16",
     "@fluentui/react-utilities": "^9.15.2",
