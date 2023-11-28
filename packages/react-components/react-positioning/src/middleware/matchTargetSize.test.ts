@@ -1,4 +1,4 @@
-import type { MiddlewareArguments } from '@floating-ui/dom';
+import type { MiddlewareState } from '@floating-ui/dom';
 import { matchTargetSize } from './matchTargetSize';
 
 describe('matchTargetSize', () => {
@@ -7,7 +7,7 @@ describe('matchTargetSize', () => {
     expect.assertions(3);
     const floatingElement = document.createElement('div');
     const referenceWidth = 100;
-    const middlewareArguments = {
+    const middlewareState = {
       middlewareData: {},
       elements: {
         floating: floatingElement,
@@ -17,9 +17,9 @@ describe('matchTargetSize', () => {
         reference: { width: referenceWidth },
         floating: { width: '1px' },
       },
-    } as unknown as MiddlewareArguments;
+    } as unknown as MiddlewareState;
 
-    const result = await middlewareFn(middlewareArguments);
+    const result = await middlewareFn(middlewareState);
 
     expect(result).toEqual({
       data: {
@@ -37,7 +37,7 @@ describe('matchTargetSize', () => {
     expect.assertions(1);
     const floatingElement = document.createElement('div');
     const referenceWidth = 100;
-    const middlewareArguments = {
+    const middlewareState = {
       middlewareData: {},
       elements: {
         floating: floatingElement,
@@ -47,9 +47,9 @@ describe('matchTargetSize', () => {
         reference: { width: referenceWidth },
         floating: { width: referenceWidth },
       },
-    } as unknown as MiddlewareArguments;
+    } as unknown as MiddlewareState;
 
-    const result = await middlewareFn(middlewareArguments);
+    const result = await middlewareFn(middlewareState);
 
     expect(result).toEqual({});
   });
@@ -58,7 +58,7 @@ describe('matchTargetSize', () => {
     expect.assertions(1);
     const floatingElement = document.createElement('div');
     const referenceWidth = 100;
-    const middlewareArguments = {
+    const middlewareState = {
       middlewareData: { matchTargetSize: { matchTargetSizeAttempt: true } },
       elements: {
         floating: floatingElement,
@@ -68,9 +68,9 @@ describe('matchTargetSize', () => {
         reference: { width: referenceWidth },
         floating: { width: '1px' },
       },
-    } as unknown as MiddlewareArguments;
+    } as unknown as MiddlewareState;
 
-    const result = await middlewareFn(middlewareArguments);
+    const result = await middlewareFn(middlewareState);
 
     expect(result).toEqual({});
   });

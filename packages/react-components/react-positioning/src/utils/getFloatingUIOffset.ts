@@ -1,5 +1,5 @@
 import type { Offset } from '../types';
-import type { MiddlewareArguments } from '@floating-ui/dom';
+import type { MiddlewareState } from '@floating-ui/dom';
 import { fromFloatingUIPlacement } from './fromFloatingUIPlacement';
 /**
  * Type taken from Floating UI since they are not exported
@@ -30,7 +30,7 @@ export type FloatingUIOffsetValue =
 /**
  * Type taken from Floating UI since they are not exported
  */
-export type FloatingUIOffsetFunction = (args: MiddlewareArguments) => FloatingUIOffsetValue;
+export type FloatingUIOffsetFunction = (state: MiddlewareState) => FloatingUIOffsetValue;
 
 /**
  * Shim to transform offset values from this library to Floating UI

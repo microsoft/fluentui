@@ -1,9 +1,9 @@
-import { MiddlewareArguments } from '@floating-ui/dom';
+import { MiddlewareState } from '@floating-ui/dom';
 import { OffsetFunction } from '../types';
 import { FloatingUIOffsetFunction, getFloatingUIOffset } from './getFloatingUIOffset';
 
 describe('getFloatingUIOffset', () => {
-  const testMiddlewareArgs: MiddlewareArguments = {
+  const testMiddlewareState: MiddlewareState = {
     elements: {
       reference: document.createElement('div'),
       floating: document.createElement('div'),
@@ -59,7 +59,7 @@ describe('getFloatingUIOffset', () => {
     const transformedOffset = getFloatingUIOffset(() => offset) as FloatingUIOffsetFunction;
     expect(
       transformedOffset({
-        ...testMiddlewareArgs,
+        ...testMiddlewareState,
         rects: { floating: dummyRect, reference: dummyRect },
         placement: 'top',
       }),
@@ -78,7 +78,7 @@ describe('getFloatingUIOffset', () => {
     const transformedOffset = getFloatingUIOffset(offsetFn) as FloatingUIOffsetFunction;
     expect(
       transformedOffset({
-        ...testMiddlewareArgs,
+        ...testMiddlewareState,
         rects: { floating: dummyRect, reference: dummyRect },
         placement: 'top-start',
       }),
@@ -97,7 +97,7 @@ describe('getFloatingUIOffset', () => {
     const transformedOffset = getFloatingUIOffset(offsetFn) as FloatingUIOffsetFunction;
     expect(
       transformedOffset({
-        ...testMiddlewareArgs,
+        ...testMiddlewareState,
         rects: { floating: dummyRect, reference: dummyRect },
         placement: 'top-start',
       }),
@@ -116,7 +116,7 @@ describe('getFloatingUIOffset', () => {
     const transformedOffset = getFloatingUIOffset(offsetFn) as FloatingUIOffsetFunction;
     expect(
       transformedOffset({
-        ...testMiddlewareArgs,
+        ...testMiddlewareState,
         rects: { floating: dummyRect, reference: dummyRect },
         placement: 'top-start',
       }),
