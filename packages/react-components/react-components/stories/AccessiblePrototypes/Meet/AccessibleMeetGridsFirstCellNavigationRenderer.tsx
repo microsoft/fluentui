@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { RecentCategory, UpcomingMeeting, RecentMeetings } from './AccessibleMeetBase';
-import { getFirstCellChild } from './AccessibleMeetGridsCellNavigationRenderer';
+import { getNearestRowAncestor, getFirstCellChild } from './Utils';
 
 import {
   Table,
@@ -19,14 +19,6 @@ import {
 } from '@fluentui/react-components';
 import { createTabster, getMover, getGroupper, getTabsterAttribute, Types } from 'tabster';
 
-const getParentRow = (element: HTMLElement) => {
-  let parent = element.parentElement as HTMLElement;
-  while (parent.role !== 'row') {
-    parent = parent.parentElement as HTMLElement;
-  }
-  return parent;
-};
-
 interface UpcomingMeetingsGridFirstCellNavigationRendererProps {
   threeUpcomingMeetings: UpcomingMeeting[];
 }
@@ -43,7 +35,7 @@ export const UpcomingMeetingsGridFirstCellNavigationRenderer: React.FC<
     const isModifierDown = event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
     if (!isModifierDown) {
       const target = event.target as HTMLElement;
-      const row = getParentRow(target);
+      const row = getNearestRowAncestor(target);
       let rowToFocus;
       if (event.key === 'ArrowDown' && row.nextElementSibling) {
         rowToFocus = row.nextElementSibling;
@@ -166,7 +158,7 @@ export const RecentMeetingsTreeGridFirstCellNavigationRenderer: React.FC<
       const isModifierDown = event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
       if (!isModifierDown) {
         const target = event.target as HTMLElement;
-        const row = getParentRow(target);
+        const row = getNearestRowAncestor(target);
         const table = row.parentElement?.parentElement as HTMLElement;
         let rowToFocus;
         if (event.key === 'ArrowDown') {

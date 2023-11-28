@@ -1,4 +1,8 @@
 import * as React from 'react';
+import {
+  UpcomingMeetingsGridActiveOnlyNavigationRenderer,
+  RecentMeetingsTreeGridActiveOnlyNavigationRenderer,
+} from './AccessibleMeetGridsActiveOnlyNavigationRenderer';
 import { RecentMeetingsStitchedTreeGridRowNavigationRenderer } from './AccessibleMeetStitchedGridsRowNavigationRenderer';
 import {
   UpcomingMeetingsGridRowNavigationRenderer,
@@ -35,6 +39,7 @@ import {
 } from '@fluentui/react-components';
 
 type PrototypeVariant =
+  | 'gridsActiveOnlyNavigation'
   | 'stitchedGridsRowNavigation'
   | 'gridsRowNavigation'
   | 'gridsCellNavigation'
@@ -303,6 +308,7 @@ export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant 
 
   return (
     <>
+      {variant === 'gridsActiveOnlyNavigation' && <h1>Accessible Meet Using Grids Active Only Navigation</h1>}
       {variant === 'stitchedGridsRowNavigation' && <h1>Accessible Meet Using Stitched Grids Row Navigation</h1>}
       {variant === 'gridsRowNavigation' && <h1>Accessible Meet Using Grids Row Navigation</h1>}
       {variant === 'gridsFirstCellNavigation' && <h1>Accessible Meet Using Grids First Cell Navigation</h1>}
@@ -339,6 +345,10 @@ export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant 
         <Button>Open my calendar</Button>
         <Button disabledFocusable={true}>Previous meetings</Button>
         <Button>Next meetings</Button>
+
+        {variant === 'gridsActiveOnlyNavigation' && (
+          <UpcomingMeetingsGridActiveOnlyNavigationRenderer threeUpcomingMeetings={threeUpcomingMeetings} />
+        )}
 
         {variant === 'stitchedGridsRowNavigation' && (
           <UpcomingMeetingsGridRowNavigationRenderer threeUpcomingMeetings={threeUpcomingMeetings} />
@@ -377,6 +387,13 @@ export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant 
         <Field label="Filter by keyword">
           <Input />
         </Field>
+
+        {variant === 'gridsActiveOnlyNavigation' && (
+          <RecentMeetingsTreeGridActiveOnlyNavigationRenderer
+            recentCategories={recentCategoriesRef.current}
+            recentMeetings={recentMeetings}
+          />
+        )}
 
         {variant === 'stitchedGridsRowNavigation' && (
           <RecentMeetingsStitchedTreeGridRowNavigationRenderer
