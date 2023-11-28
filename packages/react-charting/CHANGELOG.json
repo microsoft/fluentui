@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 28 Nov 2023 07:26:33 GMT",
+      "tag": "@fluentui/react-charting_v5.19.2",
+      "version": "5.19.2",
+      "comments": {
+        "none": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5643602bed8eb88c833459d9ebee36358c0b0ff1",
+            "comment": "Testing strategy doc added"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 24 Nov 2023 07:27:54 GMT",
       "tag": "@fluentui/react-charting_v5.19.2",
       "version": "5.19.2",
