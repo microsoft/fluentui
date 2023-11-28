@@ -190,7 +190,7 @@ packages/react-components/react-badge @microsoft/cxe-red @behowell
 packages/react-components/react-button @microsoft/cxe-red @khmakoto
 packages/react-components/react-card @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-checkbox @microsoft/cxe-red @khmakoto
-packages/react-components/react-combobox @microsoft/cxe-red @smhigley
+packages/react-components/react-combobox @microsoft/cxe-red @microsoft/teams-prg @smhigley
 packages/react-components/react-components @microsoft/fluentui-react
 packages/react-components/react-dialog @microsoft/teams-prg
 packages/react-components/react-divider @microsoft/cxe-red
