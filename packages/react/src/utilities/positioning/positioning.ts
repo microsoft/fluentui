@@ -930,12 +930,8 @@ function _positionElement(
   return _finalizePositionData(positionedElement, hostElement, boundingRect, props.coverTarget);
 }
 
-function _calculateGapSpace(
-  isBeakVisible: boolean | undefined,
-  beakWidth: number | undefined,
-  gapSpace: number | undefined,
-): number {
-  return _calculateActualBeakWidthInPixels(isBeakVisible ? beakWidth || 0 : 0) / 2 + (gapSpace ? gapSpace : 0);
+function _calculateGapSpace(isBeakVisible: boolean | undefined, beakWidth = 0, gapSpace = 0): number {
+  return _calculateActualBeakWidthInPixels(isBeakVisible ? beakWidth : 0) / 2 + gapSpace;
 }
 
 function _positionCallout(

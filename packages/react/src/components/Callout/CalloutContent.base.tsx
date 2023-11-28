@@ -21,6 +21,7 @@ import type { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } 
 import type { Point, IRectangle } from '../../Utilities';
 import type { ICalloutPositionedInfo, IPositionProps, IPosition } from '../../Positioning';
 import type { Target } from '@fluentui/react-hooks';
+import { useWindow } from '@fluentui/react-window-provider';
 
 const COMPONENT_NAME = 'CalloutContentBase';
 
@@ -132,12 +133,12 @@ function useMaxHeight(
 ) {
   const [maxHeight, setMaxHeight] = React.useState<number | undefined>();
   const { top, bottom } = positions?.elementPosition ?? {};
-  const targetRect = targetRef?.current ? getRectangleFromTarget(targetRef?.current) : undefined;
+  const targetRect = targetRef?.current ? getRectangleFromTarget(targetRef.current) : undefined;
 
   React.useEffect(() => {
-    const bounds = getBounds();
-    const { top: topBounds } = bounds ?? {};
-    let { bottom: bottomBounds } = bounds ?? {};
+    const bounds = getBounds() ?? ({} as IRectangle);
+    const { top: topBounds } = bounds;
+    let { bottom: bottomBounds } = bounds;
     let calculatedHeight: number | undefined;
 
     // If aligned to top edge of target, update bottom bounds to the top of the target
@@ -207,7 +208,13 @@ function usePositions(
     preferScrollResizePositioning,
   } = props;
 
-  const popupStyles = popupRef?.current ? window.getComputedStyle(popupRef.current) : undefined;
+  const win = useWindow();
+  const localRef = React.useRef<HTMLDivElement | null>();
+  let popupStyles: CSSStyleDeclaration | undefined;
+  if (localRef.current !== popupRef.current) {
+    localRef.current = popupRef.current;
+    popupStyles = popupRef.current ? win?.getComputedStyle(popupRef.current) : undefined;
+  }
   const popupOverflowY = popupStyles?.overflowY;
 
   React.useEffect(() => {
