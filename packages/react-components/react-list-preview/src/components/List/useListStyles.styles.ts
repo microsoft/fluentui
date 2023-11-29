@@ -1,14 +1,14 @@
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
-import { ListSlots, ListState } from './List.types';
+import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
+import type { ListSlots, ListState } from './List.types';
 
 export const listClassNames: SlotClassNames<ListSlots> = {
   root: 'fui-List',
 };
 
 const useRootBaseStyles = makeResetStyles({
-  ...shorthands.padding(0),
-  ...shorthands.margin(0),
+  padding: 0,
+  margin: 0,
   textIndent: 0,
   listStyleType: 'none',
 });

@@ -1,5 +1,5 @@
 import { ButtonState, useButtonStyles_unstable } from '@fluentui/react-button';
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, mergeClasses } from '@griffel/react';
 
 /**
  * Styles for the root slot
@@ -8,17 +8,12 @@ const useRootBaseStyles = makeResetStyles({
   display: 'block',
   width: '100%',
   textAlign: 'left',
-  ...shorthands.padding(0),
-});
-
-const useStyles = makeStyles({
-  root: {
-    '&:hover': {
-      color: 'unset',
-    },
-    '&:hover:active': {
-      color: 'unset',
-    },
+  padding: 0,
+  '&:hover': {
+    color: 'unset',
+  },
+  '&:hover:active': {
+    color: 'unset',
   },
 });
 
@@ -29,8 +24,7 @@ export const useListItemButtonStyles_unstable = (state: ButtonState): ButtonStat
   useButtonStyles_unstable(state);
 
   const baseStyles = useRootBaseStyles();
-  const styles = useStyles();
-  state.root.className = mergeClasses(state.root.className, baseStyles, styles.root);
+  state.root.className = mergeClasses(state.root.className, baseStyles);
 
   return state;
 };

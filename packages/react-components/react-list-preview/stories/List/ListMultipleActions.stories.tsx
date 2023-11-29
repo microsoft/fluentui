@@ -153,7 +153,7 @@ export const ListMultipleActions = (props: Partial<ListProps>) => {
 
   return (
     <List
-      layout={'grid'}
+      layout="grid"
       className={classes.list}
       focusableItems
       selectable
