@@ -11,7 +11,7 @@ import type { LinkProps, LinkState } from './Link.types';
  */
 export const useLink_unstable = (
   props: LinkProps,
-  ref: React.Ref<HTMLAnchorElement | HTMLButtonElement>,
+  ref: React.Ref<HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>,
 ): LinkState => {
   const backgroundAppearance = useBackgroundAppearance();
   const { appearance = 'default', disabled = false, disabledFocusable = false, inline = false } = props;
