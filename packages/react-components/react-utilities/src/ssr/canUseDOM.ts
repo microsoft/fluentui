@@ -3,12 +3,7 @@
  */
 export function canUseDOM(): boolean {
   return (
-    // eslint-disable-next-line no-restricted-globals
-    typeof window !== 'undefined' &&
-    !!(
-      window.document && // eslint-disable-line no-restricted-globals
-      // eslint-disable-next-line deprecation/deprecation, no-restricted-globals
-      window.document.createElement
-    )
+    // eslint-disable-next-line deprecation/deprecation, no-restricted-globals
+    typeof window !== 'undefined' && !!(window.document && window.document.createElement)
   );
 }

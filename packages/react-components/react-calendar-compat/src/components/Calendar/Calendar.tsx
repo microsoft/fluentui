@@ -85,7 +85,7 @@ function useVisibilityState({
   showMonthPickerAsOverlay,
 }: CalendarProps) {
   /** State used to show/hide month picker */
-  const showMonthPickerAsOverlayState = useShowMonthPickerAsOverloay({
+  const showMonthPickerAsOverlayState = useShowMonthPickerAsOverlay({
     isDayPickerVisible: isDayPickerVisibleProp,
     showMonthPickerAsOverlay,
   });
@@ -243,7 +243,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
       navigateDay(date);
     };
 
-    const showMonthPickerAsOverlay = useShowMonthPickerAsOverloay({
+    const showMonthPickerAsOverlay = useShowMonthPickerAsOverlay({
       isDayPickerVisible: isDayPickerVisibleProp,
       showMonthPickerAsOverlay: showMonthPickerAsOverlayProp,
     });
@@ -411,7 +411,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
 );
 Calendar.displayName = 'Calendar';
 
-const useShowMonthPickerAsOverloay = ({ isDayPickerVisible, showMonthPickerAsOverlay }: CalendarProps) => {
+const useShowMonthPickerAsOverlay = ({ isDayPickerVisible, showMonthPickerAsOverlay }: CalendarProps) => {
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
   return showMonthPickerAsOverlay || (isDayPickerVisible && win && win.innerWidth <= MIN_SIZE_FORCE_OVERLAY);

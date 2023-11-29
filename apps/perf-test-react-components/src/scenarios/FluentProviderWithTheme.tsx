@@ -5,11 +5,9 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 const LayoutShift: React.FunctionComponent = ({ children }) => {
   // eslint-disable-next-line no-restricted-properties
   React.useLayoutEffect(() => {
-    // eslint-disable-next-line no-restricted-globals
     if (document.body) {
       // Accessing the offsetWidth forces reflow (browser synchronously calculates style and layout.
       // This allows us to measure theme impact on the rendering performance.
-      // eslint-disable-next-line no-restricted-globals
       document.body.offsetWidth;
     }
   });
