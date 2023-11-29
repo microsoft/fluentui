@@ -30,11 +30,9 @@ export function prepareSandboxContainer(context: StoryContext) {
 
   const classList = (showCodeButton.classList.value + ' with-code-sandbox-button').split(' ');
 
-  // this is needed in dev loop as every hot reload will add new buttons
-  if (process.env.NODE_ENV !== 'production') {
-    const ourButtons = container.querySelectorAll(`.with-code-sandbox-button`);
-    ourButtons.forEach(node => node.remove());
-  }
+  // remove button if it already existed
+  const ourButtons = container.querySelectorAll(`.with-code-sandbox-button`);
+  ourButtons.forEach(node => node.remove());
 
   return {
     container,
