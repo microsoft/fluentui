@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Adding span as an option for Link to render as.",
+  "packageName": "@fluentui/react-link",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch"
+}
