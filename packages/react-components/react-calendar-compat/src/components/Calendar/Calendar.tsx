@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Backspace, Enter, Escape, PageDown, PageUp, Space } from '@fluentui/keyboard-keys';
 import { useControllableState } from '@fluentui/react-utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import {
   addMonths,
   addYears,
@@ -10,7 +11,6 @@ import {
   DEFAULT_DATE_FORMATTING,
   FirstWeekOfYear,
   focusAsync,
-  getWindow,
 } from '../../utils';
 import { CalendarDay } from '../CalendarDay/CalendarDay';
 import { CalendarMonth } from '../CalendarMonth/CalendarMonth';
@@ -85,20 +85,21 @@ function useVisibilityState({
   showMonthPickerAsOverlay,
 }: CalendarProps) {
   /** State used to show/hide month picker */
+  const showMonthPickerAsOverlayState = useShowMonthPickerAsOverloay({
+    isDayPickerVisible: isDayPickerVisibleProp,
+    showMonthPickerAsOverlay,
+  });
+
   const [isMonthPickerVisible, setIsMonthPickerVisible] = useControllableState({
     defaultState: false,
     initialState: true,
-    state: getShowMonthPickerAsOverlay({ isDayPickerVisible: isDayPickerVisibleProp, showMonthPickerAsOverlay })
-      ? undefined
-      : isMonthPickerVisibleProp,
+    state: showMonthPickerAsOverlayState ? undefined : isMonthPickerVisibleProp,
   });
   /** State used to show/hide day picker */
   const [isDayPickerVisible, setIsDayPickerVisible] = useControllableState({
     defaultState: true,
     initialState: true,
-    state: getShowMonthPickerAsOverlay({ isDayPickerVisible: isDayPickerVisibleProp, showMonthPickerAsOverlay })
-      ? undefined
-      : isDayPickerVisibleProp,
+    state: showMonthPickerAsOverlayState ? undefined : isDayPickerVisibleProp,
   });
 
   const toggleDayMonthPickerVisibility = () => {
@@ -113,14 +114,16 @@ function useFocusLogic({ componentRef }: CalendarProps, isDayPickerVisible: bool
   const dayPicker = React.useRef<ICalendarDay>(null);
   const monthPicker = React.useRef<ICalendarMonth>(null);
   const focusOnUpdate = React.useRef(false);
+  const { targetDocument } = useFluent();
+  const win = targetDocument?.defaultView;
 
   const focus = React.useCallback(() => {
     if (isDayPickerVisible && dayPicker.current) {
-      focusAsync(dayPicker.current);
+      focusAsync(dayPicker.current, win);
     } else if (isMonthPickerVisible && monthPicker.current) {
-      focusAsync(monthPicker.current);
+      focusAsync(monthPicker.current, win);
     }
-  }, [isDayPickerVisible, isMonthPickerVisible]);
+  }, [isDayPickerVisible, isMonthPickerVisible, win]);
 
   React.useImperativeHandle(componentRef, () => ({ focus }), [focus]);
 
@@ -240,10 +243,12 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
       navigateDay(date);
     };
 
-    const onHeaderSelect = getShowMonthPickerAsOverlay({
+    const showMonthPickerAsOverlay = useShowMonthPickerAsOverloay({
       isDayPickerVisible: isDayPickerVisibleProp,
       showMonthPickerAsOverlay: showMonthPickerAsOverlayProp,
-    })
+    });
+
+    const onHeaderSelect = showMonthPickerAsOverlay
       ? (): void => {
           toggleDayMonthPickerVisibility();
 
@@ -306,10 +311,6 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
           break;
       }
     };
-    const showMonthPickerAsOverlay = getShowMonthPickerAsOverlay({
-      isDayPickerVisible: isDayPickerVisibleProp,
-      showMonthPickerAsOverlay: showMonthPickerAsOverlayProp,
-    });
 
     const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
 
@@ -410,7 +411,8 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
 );
 Calendar.displayName = 'Calendar';
 
-function getShowMonthPickerAsOverlay({ isDayPickerVisible, showMonthPickerAsOverlay }: CalendarProps) {
-  const win = getWindow();
+const useShowMonthPickerAsOverloay = ({ isDayPickerVisible, showMonthPickerAsOverlay }: CalendarProps) => {
+  const { targetDocument } = useFluent();
+  const win = targetDocument?.defaultView;
   return showMonthPickerAsOverlay || (isDayPickerVisible && win && win.innerWidth <= MIN_SIZE_FORCE_OVERLAY);
-}
+};
