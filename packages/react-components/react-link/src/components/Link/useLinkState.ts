@@ -10,15 +10,19 @@ export const useLinkState_unstable = (state: LinkState): LinkState => {
   const { disabled, disabledFocusable } = state;
   const { onClick, onKeyDown, role, tabIndex } = state.root;
 
-  // Add href and tabIndex=0 for anchor elements.
+  // Add href for anchor elements.
   if (state.root.as === 'a') {
     state.root.href = disabled ? undefined : state.root.href;
-    state.root.tabIndex = tabIndex ?? (disabled && !disabledFocusable ? undefined : 0);
 
     // Add role="link" for disabled and disabledFocusable links.
     if (disabled || disabledFocusable) {
       state.root.role = role || 'link';
     }
+  }
+
+  // Add tabIndex=0 for anchor and span elements.
+  if (state.root.as === 'a' || state.root.as === 'span') {
+    state.root.tabIndex = tabIndex ?? (disabled && !disabledFocusable ? undefined : 0);
   }
 
   // Disallow click event when component is disabled and eat events when disabledFocusable is set to true.
