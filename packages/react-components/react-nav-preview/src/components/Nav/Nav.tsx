@@ -1,10 +1,10 @@
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useNav_unstable } from './useNav';
-import { renderNav as renderNav_unstable } from './renderNav';
+import { renderNav_unstable } from './renderNav';
 import { useNavStyles_unstable } from './useNavStyles.styles';
-import type { NavProps } from './Nav.types';
 import { useNavContextValues_unstable } from '../useNavContextValues';
+import type { NavProps } from './Nav.types';
 
 /**
  * Nav component - provides 2 layers of nesting for navigation items.

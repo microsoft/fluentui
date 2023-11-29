@@ -26,5 +26,5 @@ export const NavContext: Context<NavContextValue> = createContext<NavContextValu
 ) as Context<NavContextValue>;
 
 export const NavProvider = NavContext.Provider;
-export const useNavContext = <T>(selector: ContextSelector<NavContextValue, T>): T =>
+export const useNavContext_unstable = <T>(selector: ContextSelector<NavContextValue, T>): T =>
   useContextSelector(NavContext, (ctx = navContextDefaultValue) => selector(ctx));

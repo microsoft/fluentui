@@ -6,7 +6,7 @@ import {
   useMergedRefs,
   slot,
 } from '@fluentui/react-utilities';
-import { useNavContext } from '../NavContext';
+import { useNavContext_unstable } from '../NavContext';
 import { NavGroupProps, NavGroupState } from './NavGroup.types';
 import { SelectNavGroupEvent } from '../NavContext.types';
 
@@ -22,10 +22,10 @@ import { SelectNavGroupEvent } from '../NavContext.types';
 export const useNavGroup_unstable = (props: NavGroupProps, ref: React.Ref<HTMLButtonElement>): NavGroupState => {
   const { content, icon, onClick, value } = props;
 
-  const selected = useNavContext(ctx => ctx.selectedValue === value);
-  const onRegister = useNavContext(ctx => ctx.onRegister);
-  const onUnregister = useNavContext(ctx => ctx.onUnregister);
-  const onSelect = useNavContext(ctx => ctx.onSelect);
+  const selected = useNavContext_unstable(ctx => ctx.selectedValue === value);
+  const onRegister = useNavContext_unstable(ctx => ctx.onRegister);
+  const onUnregister = useNavContext_unstable(ctx => ctx.onUnregister);
+  const onSelect = useNavContext_unstable(ctx => ctx.onSelect);
 
   const innerRef = React.useRef<HTMLElement>(null);
   const onNavGroupClick = useEventCallback(

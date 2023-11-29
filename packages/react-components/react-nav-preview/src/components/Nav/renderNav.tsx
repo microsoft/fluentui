@@ -9,7 +9,7 @@ import type { NavState, NavSlots } from './Nav.types';
 import type { NavContextValues } from '../NavContext.types';
 import { NavProvider } from '../NavContext';
 
-export const renderNav = (state: NavState, contextValues: NavContextValues) => {
+export const renderNav_unstable = (state: NavState, contextValues: NavContextValues) => {
   assertSlots<NavSlots>(state);
 
   return (
