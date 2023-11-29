@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 29 Nov 2023 07:26:35 GMT",
+      "tag": "@fluentui/react-charting_v5.19.3",
+      "version": "5.19.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c0cb66bd62b59ac37d476945da003a5eedb7b9dd",
+            "comment": "Updating the d3-time-format package for react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 28 Nov 2023 07:26:33 GMT",
       "tag": "@fluentui/react-charting_v5.19.2",
       "version": "5.19.2",
