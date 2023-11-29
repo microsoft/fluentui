@@ -1195,6 +1195,7 @@ import { useFocusableGroup } from '@fluentui/react-tabster';
 import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFocusObserved } from '@fluentui/react-tabster';
+import { useFocusVisible } from '@fluentui/react-tabster';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { useHeadlessFlatTree_unstable } from '@fluentui/react-tree';
 import { useId } from '@fluentui/react-utilities';
@@ -3798,6 +3799,8 @@ export { UseFocusableGroupOptions }
 export { useFocusFinders }
 
 export { useFocusObserved }
+
+export { useFocusVisible }
 
 export { useFocusWithin }
 
