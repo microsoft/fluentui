@@ -1,12 +1,14 @@
 import { ListContextValues, ListState } from './List.types';
 
 export function useListContextValues_unstable(state: ListState): ListContextValues {
-  const { focusableItems, selection, as } = state;
+  const { navigable, selection, as, truncateContent, truncateHeader } = state;
 
   const listContext = {
-    focusableItems,
+    navigable,
     selection,
     as,
+    truncateContent,
+    truncateHeader,
   };
 
   return {

@@ -13,6 +13,9 @@ export { ListSelectionControlledBasic } from './ListSelectionControlledBasic.sto
 export { ListSelectionControlledWithState } from './ListSelectionControlledWithState.stories';
 export { VirtualizedList } from './VirtualizedList.stories';
 export { VirtualizedListWithActionableItems } from './VirtualizedListWithActionableItems.stories';
+export { ListV0Compat } from './ListV0Compat.stories';
+export { ListV0CompatNavigable } from './ListV0CompatNavigable.stories';
+export { ListV0CompatSelectable } from './ListV0CompatSelectable.stories';
 
 export default {
   title: 'Preview Components/List',

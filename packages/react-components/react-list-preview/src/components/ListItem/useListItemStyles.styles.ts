@@ -7,10 +7,16 @@ import { tokens } from '@fluentui/react-theme';
 export const listItemClassNames: SlotClassNames<ListItemSlots> = {
   root: 'fui-ListItem',
   checkmark: 'fui-ListItem__checkmark',
+  media: 'fui-ListItem__media',
+  header: 'fui-ListItem__header',
+  contentWrapper: 'fui-ListItem__contentWrapper',
+  headerMedia: 'fui-ListItem__headerMedia',
+  contentMedia: 'fui-ListItem__contentMedia',
+  endMedia: 'fui-ListItem__endMedia',
 };
 
 const useRootBaseStyles = makeResetStyles({
-  ...shorthands.padding(0),
+  ...shorthands.padding(0, '10px'),
   ...shorthands.margin(0),
   textIndent: 0,
   listStyleType: 'none',
@@ -23,20 +29,27 @@ const useRootBaseStyles = makeResetStyles({
   ),
 });
 
-const useCheckmarkBaseStyles = makeResetStyles({
-  alignSelf: 'center',
-  marginRight: tokens.spacingHorizontalS,
-  width: tokens.spacingHorizontalL,
-  height: tokens.spacingVerticalL,
-});
-
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
+  contentWrapper: {
+    fontSize: tokens.fontSizeBase200,
+  },
+  truncate: {
+    ...shorthands.overflow('hidden'),
+    textWrap: 'nowrap',
+    textOverflow: 'ellipsis',
+  },
+  rootSelected: {
+    backgroundColor: tokens.colorNeutralBackground1Selected,
+  },
   rootClickable: {
-    display: 'flex',
     cursor: 'pointer',
+
+    '&:hover': {
+      backgroundColor: tokens.colorNeutralBackground1Hover,
+    },
   },
 });
 
@@ -45,21 +58,25 @@ const useStyles = makeStyles({
  */
 export const useListItemStyles_unstable = (state: ListItemState): ListItemState => {
   const rootBaseStyles = useRootBaseStyles();
-  const checkmarkBaseStyles = useCheckmarkBaseStyles();
   const styles = useStyles();
 
   state.root.className = mergeClasses(
     listItemClassNames.root,
     rootBaseStyles,
-    state.selectable && styles.rootClickable,
+    (state.selectable || state.navigable) && styles.rootClickable,
+    state.selected && styles.rootSelected,
     state.root.className,
   );
 
-  if (state.checkmark) {
-    state.checkmark.className = mergeClasses(
-      listItemClassNames.checkmark,
-      checkmarkBaseStyles,
-      state.checkmark?.className,
+  if (state.header) {
+    state.header.className = mergeClasses(state.truncateHeader && styles.truncate, state.header?.className);
+  }
+
+  if (state.contentWrapper) {
+    state.contentWrapper.className = mergeClasses(
+      styles.contentWrapper,
+      state.truncateContent && styles.truncate,
+      state.contentWrapper?.className,
     );
   }
 

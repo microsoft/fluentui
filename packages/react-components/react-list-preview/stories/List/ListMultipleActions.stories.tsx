@@ -155,7 +155,7 @@ export const ListMultipleActions = (props: Partial<ListProps>) => {
     <List
       layout={'grid'}
       className={classes.list}
-      focusableItems
+      navigable
       selectable
       onSelectionChange={(e, data) => setSelectedItems(Array.from(data.selectedItems))}
       selectionMode="multiselect"

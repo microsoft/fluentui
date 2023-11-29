@@ -37,7 +37,7 @@ export const ListWithMultipleActions = () => {
   const classes = useStyles();
   return (
     <div className={classes.wrapper}>
-      <List focusableItems>
+      <List navigable>
         {names.map(name => (
           <ListItem key={name} className={classes.listItem} aria-label={name}>
             <Button

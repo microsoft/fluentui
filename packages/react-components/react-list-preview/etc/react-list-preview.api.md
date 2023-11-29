@@ -11,6 +11,7 @@ import { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { ItemLayout } from '@fluentui/react-migration-v0-v9';
 import * as React_2 from 'react';
 import { SelectionHookParams } from '@fluentui/react-utilities';
 import { SelectionItemId } from '@fluentui/react-utilities';
@@ -42,10 +43,20 @@ export type ListItemProps = ComponentProps<ListItemSlots> & {
 export type ListItemSlots = {
     root: NonNullable<Slot<'li', 'div'>>;
     checkmark?: Slot<'div'>;
+    media?: React_2.ComponentProps<typeof ItemLayout>['startMedia'];
+    header?: React_2.ComponentProps<typeof ItemLayout>['header'];
+    contentWrapper?: React_2.ComponentProps<typeof ItemLayout>['contentWrapper'];
+    headerMedia?: React_2.ComponentProps<typeof ItemLayout>['headerMedia'];
+    contentMedia?: React_2.ComponentProps<typeof ItemLayout>['contentMedia'];
+    endMedia?: React_2.ComponentProps<typeof ItemLayout>['endMedia'];
 };
 
 // @public
-export type ListItemState = ComponentState<ListItemSlots> & {};
+export type ListItemState = ComponentState<ListItemSlots> & {
+    selectable?: boolean;
+    truncateHeader?: boolean;
+    truncateContent?: boolean;
+};
 
 // @public (undocumented)
 export type ListLayout = 'horizontal' | 'vertical' | 'grid';
@@ -53,7 +64,7 @@ export type ListLayout = 'horizontal' | 'vertical' | 'grid';
 // @public
 export type ListProps = ComponentProps<ListSlots> & {
     layout?: ListLayout;
-    focusableItems?: boolean;
+    navigable?: boolean;
     selectable?: boolean;
     selectionMode?: SelectionMode_2;
     selectedItems?: SelectionItemId[];
@@ -61,6 +72,8 @@ export type ListProps = ComponentProps<ListSlots> & {
     onSelectionChange?: (event: React_2.SyntheticEvent, data: {
         selectedItems: SelectionItemId[];
     }) => void;
+    truncateHeader?: boolean;
+    truncateContent?: boolean;
 };
 
 // @public (undocumented)

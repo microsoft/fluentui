@@ -1,10 +1,9 @@
-import * as React from 'react';
+import { useARIAButtonProps } from '@fluentui/react-aria';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot, useEventCallback, useId } from '@fluentui/react-utilities';
-import { Space } from '@fluentui/keyboard-keys';
-import type { ListItemProps, ListItemState } from './ListItem.types';
+import * as React from 'react';
 import { useListContext_unstable } from '../List/listContext';
-import { Checkmark16Filled } from '@fluentui/react-icons';
+import type { ListItemProps, ListItemState } from './ListItem.types';
 
 const DEFAULT_ROOT_EL_TYPE = 'li';
 
@@ -12,18 +11,12 @@ const listPropsForSelected = {
   tabIndex: 0,
   role: 'option',
   'aria-selected': true,
-  checkmark: {
-    children: <Checkmark16Filled />,
-  },
 };
 
 const listPropsForNotSelected = {
   tabIndex: 0,
   role: 'option',
   'aria-selected': false,
-  checkmark: {
-    children: null,
-  },
 };
 
 function validateProperElementTypes(parentRenderedAs?: 'div' | 'ul' | 'ol', renderedAs?: 'div' | 'li') {
@@ -53,12 +46,15 @@ export const useListItem_unstable = (
   ref: React.Ref<HTMLLIElement | HTMLDivElement>,
 ): ListItemState => {
   const id = useId('listItem');
-  const { value = id, onKeyDown, onClick } = props;
+  const { value = id, truncateHeader, truncateContent, onClick, onKeyDown, onKeyUp } = props;
 
-  const focusableItems = useListContext_unstable(ctx => ctx.focusableItems);
+  const navigable = useListContext_unstable(ctx => ctx.navigable);
   const toggleItem = useListContext_unstable(ctx => ctx.selection?.toggleItem);
   const isSelectionEnabled = useListContext_unstable(ctx => !!ctx.selection);
   const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value));
+
+  const truncateHeaderOnList = useListContext_unstable(ctx => ctx.truncateHeader);
+  const truncateContentOnList = useListContext_unstable(ctx => ctx.truncateContent);
 
   const parentRenderedAs = useListContext_unstable(ctx => ctx.as);
   const renderedAs = props.as || DEFAULT_ROOT_EL_TYPE;
@@ -68,21 +64,6 @@ export const useListItem_unstable = (
   const listItemProps = isSelected ? listPropsForSelected : listPropsForNotSelected;
 
   const focusableGroupAttrs = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
-
-  const handleKeyDown: React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement> = useEventCallback(e => {
-    onKeyDown?.(e);
-
-    // Compare targets to make sure this only triggers when the event is fired on the list item
-    // and not on a button inside
-    if (!isSelectionEnabled || e.defaultPrevented || e.target !== e.currentTarget) {
-      return;
-    }
-
-    if (e.key === Space) {
-      e.preventDefault();
-      toggleItem?.(e, value);
-    }
-  });
 
   const handleClick: React.MouseEventHandler<HTMLLIElement & HTMLDivElement> = useEventCallback(e => {
     onClick?.(e);
@@ -94,35 +75,51 @@ export const useListItem_unstable = (
     toggleItem?.(e, value);
   });
 
+  // This will give us the onKeyDown and onKeyUp props for Enter and Space
+  const buttonProps = useARIAButtonProps('div', {
+    onClick: handleClick,
+    onKeyDown: onKeyDown as React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement>,
+    onKeyUp: onKeyUp as React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement>,
+  });
+
   const root = slot.always(
     getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
       ref: ref as React.Ref<HTMLLIElement & HTMLDivElement>,
-      tabIndex: focusableItems ? 0 : undefined,
-      role: 'listitem',
+      tabIndex: navigable ? 0 : undefined,
+      role: navigable ? 'menuitem' : 'listitem',
       id: String(value),
       ...(isSelectionEnabled && listItemProps),
       ...focusableGroupAttrs,
       ...props,
-      onKeyDown: handleKeyDown,
-      onClick: handleClick,
+      onKeyDown: buttonProps.onKeyDown as React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement>,
+      onKeyUp: buttonProps.onKeyUp as React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement>,
+      onClick: buttonProps.onClick as React.MouseEventHandler<HTMLLIElement & HTMLDivElement>,
     }),
     { elementType: DEFAULT_ROOT_EL_TYPE },
   );
 
-  const checkmark = slot.optional(props.checkmark, {
-    defaultProps: { children: isSelected ? <Checkmark16Filled /> : null },
-    renderByDefault: isSelectionEnabled,
-    elementType: 'div',
-  });
-
   const state: ListItemState = {
     components: {
       root: DEFAULT_ROOT_EL_TYPE,
-      checkmark: 'div',
+      media: 'div',
+      header: 'div',
+      contentWrapper: 'div',
+      headerMedia: 'div',
+      contentMedia: 'div',
+      endMedia: 'div',
     },
     root,
-    checkmark,
+    navigable,
     selectable: isSelectionEnabled,
+    selected: isSelected,
+    media: slot.optional(props.media, { elementType: 'div' }),
+    header: slot.optional(props.header, { elementType: 'div', renderByDefault: true }),
+    contentWrapper: slot.optional(props.contentWrapper, { elementType: 'div', renderByDefault: true }),
+    headerMedia: slot.optional(props.headerMedia, { elementType: 'div' }),
+    contentMedia: slot.optional(props.contentMedia, { elementType: 'div' }),
+    endMedia: slot.optional(props.endMedia, { elementType: 'div' }),
+    truncateHeader: truncateHeader ?? truncateHeaderOnList,
+    truncateContent: truncateContent ?? truncateContentOnList,
   };
 
   return state;

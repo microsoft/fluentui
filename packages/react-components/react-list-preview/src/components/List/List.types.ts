@@ -13,18 +13,23 @@ export type ListSlots = {
  */
 export type ListProps = ComponentProps<ListSlots> & {
   layout?: ListLayout;
-  focusableItems?: boolean;
+  navigable?: boolean;
   selectable?: boolean;
   selectionMode?: SelectionMode;
   selectedItems?: SelectionItemId[];
   defaultSelectedItems?: SelectionItemId[];
   onSelectionChange?: (event: React.SyntheticEvent, data: { selectedItems: SelectionItemId[] }) => void;
+
+  truncateHeader?: boolean;
+  truncateContent?: boolean;
 };
 
 export type ListContextValue = {
-  focusableItems: boolean;
+  navigable: boolean;
   selection?: ListSelectionState;
   as?: 'div' | 'ol' | 'ul';
+  truncateHeader?: ListProps['truncateHeader'];
+  truncateContent?: ListProps['truncateContent'];
 };
 
 export type ListContextValues = {

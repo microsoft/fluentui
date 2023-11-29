@@ -24,13 +24,15 @@ const DEFAULT_ROOT_EL_TYPE = 'ul';
 export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement | HTMLUListElement>): ListState => {
   const {
     layout = 'vertical',
-    focusableItems = false,
+    navigable = false,
     selectable = false,
-    selectionMode = 'multiselect',
+    selectionMode = 'single',
     selectedItems,
     defaultSelectedItems,
     as,
     onSelectionChange,
+    truncateContent = false,
+    truncateHeader = false,
   } = props;
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
@@ -72,6 +74,7 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
     root: slot.always(
       getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
         ref,
+        ...(navigable && { role: 'menu' }),
         ...(selectable && selectableListProps),
         ...arrowNavigationAttributes,
         ...props,
@@ -80,8 +83,10 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
     ),
     layout,
     // context:
-    focusableItems,
+    navigable,
     as: as || DEFAULT_ROOT_EL_TYPE,
+    truncateContent,
+    truncateHeader,
     // only pass down selection state if its handled internally, otherwise just report the events
     selection: selectable ? selection : undefined,
   };
