@@ -15,6 +15,7 @@ export interface IExampleState {
   statusMessage: string;
 }
 
+/** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
 const screenReaderOnlyStyle: React.CSSProperties = {
   position: 'absolute',
   width: '1px',
