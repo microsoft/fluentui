@@ -157,7 +157,7 @@ export const ListMultipleActions = (props: Partial<ListProps>) => {
       className={classes.list}
       focusableItems
       selectable
-      onSelectionChange={(e, data) => setSelectedItems(Array.from(data.selectedItems))}
+      onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
       selectionMode="multiselect"
     >
       <CardExample value="card-1" selected={selectedItems.includes('card-1')} />

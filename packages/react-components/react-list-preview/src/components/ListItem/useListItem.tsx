@@ -8,24 +8,6 @@ import { Checkmark16Filled } from '@fluentui/react-icons';
 
 const DEFAULT_ROOT_EL_TYPE = 'li';
 
-const listPropsForSelected = {
-  tabIndex: 0,
-  role: 'option',
-  'aria-selected': true,
-  checkmark: {
-    children: <Checkmark16Filled />,
-  },
-};
-
-const listPropsForNotSelected = {
-  tabIndex: 0,
-  role: 'option',
-  'aria-selected': false,
-  checkmark: {
-    children: null,
-  },
-};
-
 function validateProperElementTypes(parentRenderedAs?: 'div' | 'ul' | 'ol', renderedAs?: 'div' | 'li') {
   if (process.env.NODE_ENV === 'production') {
     return;
@@ -65,8 +47,6 @@ export const useListItem_unstable = (
 
   validateProperElementTypes(parentRenderedAs, renderedAs);
 
-  const listItemProps = isSelected ? listPropsForSelected : listPropsForNotSelected;
-
   const focusableGroupAttrs = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
 
   const handleKeyDown: React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement> = useEventCallback(e => {
@@ -97,10 +77,13 @@ export const useListItem_unstable = (
   const root = slot.always(
     getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
       ref: ref as React.Ref<HTMLLIElement & HTMLDivElement>,
-      tabIndex: focusableItems ? 0 : undefined,
+      tabIndex: focusableItems || isSelectionEnabled ? 0 : undefined,
       role: 'listitem',
       id: String(value),
-      ...(isSelectionEnabled && listItemProps),
+      ...(isSelectionEnabled && {
+        role: 'option',
+        'aria-selected': isSelected,
+      }),
       ...focusableGroupAttrs,
       ...props,
       onKeyDown: handleKeyDown,
