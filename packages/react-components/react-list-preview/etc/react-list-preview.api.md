@@ -45,10 +45,9 @@ export type ListItemSlots = {
 };
 
 // @public
-export type ListItemState = ComponentState<ListItemSlots> & {};
-
-// @public (undocumented)
-export type ListLayout = 'horizontal' | 'vertical' | 'grid';
+export type ListItemState = ComponentState<ListItemSlots> & {
+    selectable?: boolean;
+};
 
 // @public
 export type ListProps = ComponentProps<ListSlots> & {
