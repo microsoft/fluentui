@@ -6,7 +6,6 @@ import { tokens } from '@fluentui/react-theme';
 
 export const listItemClassNames: SlotClassNames<ListItemSlots> = {
   root: 'fui-ListItem',
-  checkmark: 'fui-ListItem__checkmark',
   media: 'fui-ListItem__media',
   header: 'fui-ListItem__header',
   contentWrapper: 'fui-ListItem__contentWrapper',
