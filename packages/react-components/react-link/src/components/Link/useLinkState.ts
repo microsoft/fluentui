@@ -8,7 +8,7 @@ import type { LinkState } from './Link.types';
  */
 export const useLinkState_unstable = (state: LinkState): LinkState => {
   const { disabled, disabledFocusable } = state;
-  const { onClick, onKeyDown, role, tabIndex, type } = state.root;
+  const { onClick, onKeyDown, role, tabIndex } = state.root;
 
   // Add href and tabIndex=0 for anchor elements.
   if (state.root.as === 'a') {
@@ -19,10 +19,6 @@ export const useLinkState_unstable = (state: LinkState): LinkState => {
     if (disabled || disabledFocusable) {
       state.root.role = role || 'link';
     }
-  }
-  // Add type="button" for button elements.
-  else {
-    state.root.type = type || 'button';
   }
 
   // Disallow click event when component is disabled and eat events when disabledFocusable is set to true.

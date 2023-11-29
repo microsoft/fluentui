@@ -18,8 +18,13 @@ export const useLink_unstable = (
 
   const elementType = props.as || (props.href ? 'a' : 'button');
 
-  // Casting is required here as `as` prop would break the union between `a` and `button` types
-  const propsWithAssignedAs = { ...props, as: elementType } as LinkProps;
+  // Casting is required here as `as` prop would break the union between `a`, `button` and `span` types
+  const propsWithAssignedAs = {
+    ...props,
+    as: elementType,
+    role: elementType === 'span' ? 'button' : undefined,
+    type: elementType === 'button' ? 'button' : undefined,
+  } as LinkProps;
 
   const state: LinkState = {
     // Props passed at the top-level
@@ -36,7 +41,6 @@ export const useLink_unstable = (
     root: slot.always(
       getIntrinsicElementProps<LinkProps>(elementType, {
         ref,
-        type: elementType === 'button' ? 'button' : undefined,
         ...propsWithAssignedAs,
       } as const),
       { elementType },
