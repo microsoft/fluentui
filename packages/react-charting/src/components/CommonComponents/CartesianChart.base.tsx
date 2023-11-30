@@ -432,7 +432,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           this._isRtl,
         );
 
-      // this.props.getAxisData && this.props.getAxisData(axisData);
+      this.props.getAxisData && this.props.getAxisData(axisData);
       // Callback function for chart, returns axis
       this._getData(xScale, yScale);
 
