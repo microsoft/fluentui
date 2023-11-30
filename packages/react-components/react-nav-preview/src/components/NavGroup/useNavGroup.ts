@@ -8,8 +8,6 @@ import {
 } from '@fluentui/react-utilities';
 import { useNavContext_unstable } from '../NavContext';
 import { NavGroupProps, NavGroupState } from './NavGroup.types';
-import { OnSelectData } from '../NavContext.types';
-import { EventHandler } from '@fluentui/react-utilities/src/compose/types';
 
 /**
  * Create the state required to render NavGroup.
@@ -29,8 +27,9 @@ export const useNavGroup_unstable = (props: NavGroupProps, ref: React.Ref<HTMLBu
   const onSelect = useNavContext_unstable(ctx => ctx.onSelect);
 
   const innerRef = React.useRef<HTMLElement>(null);
+  // This needs to be updated
   const onNavGroupClick = useEventCallback(
-    mergeCallbacks(onClick, (event: EventHandler<OnSelectData>) => onSelect(event, { value })),
+    mergeCallbacks(onClick, event => onSelect(event, { type: 'click', event, value })),
   );
 
   React.useEffect(() => {
