@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: adds floating-ui-devtools support",
+  "packageName": "@fluentui/react-positioning",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
