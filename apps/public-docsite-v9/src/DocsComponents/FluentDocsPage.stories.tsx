@@ -12,7 +12,8 @@ import {
 } from '@storybook/addon-docs';
 import { makeStyles, shorthands } from '@griffel/react';
 import { Toc, nameToHash } from './Toc.stories';
-import { THEME_ID, themes } from '@fluentui/react-storybook-addon';
+import { DIR_ID, THEME_ID, themes } from '@fluentui/react-storybook-addon';
+import { DirSwitch } from './DirSwitch.stories';
 import { ThemePicker } from './ThemePicker.stories';
 
 const useStyles = makeStyles({
@@ -43,6 +44,7 @@ const useStyles = makeStyles({
 export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
 
+  const dir = context.parameters?.dir ?? context.globals?.[DIR_ID] ?? 'ltr';
   const selectedTheme = themes.find(theme => theme.id === context.globals![THEME_ID]);
   const stories = context.componentStories();
   const primaryStory = stories[0];
@@ -66,6 +68,7 @@ export const FluentDocsPage = () => {
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <ThemePicker selectedThemeId={selectedTheme?.id} />
+          <DirSwitch dir={dir} />
           <Subtitle />
           <Description />
           <hr className={styles.divider} />
