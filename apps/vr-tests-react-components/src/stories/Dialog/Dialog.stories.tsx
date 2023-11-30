@@ -9,6 +9,7 @@ import {
   DialogTrigger,
 } from '@fluentui/react-dialog';
 import { Button } from '@fluentui/react-button';
+import { Combobox, Option } from '@fluentui/react-combobox';
 import { Rocket24Regular } from '@fluentui/react-icons';
 import { ComponentMeta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
@@ -488,6 +489,35 @@ export const FluidActionsEnd = () => {
           <DialogActions fluid position="end">
             <Button appearance="secondary">Something Else</Button>
             <Button appearance="secondary">Something Else</Button>
+            <DialogTrigger disableButtonEnhancement>
+              <Button appearance="secondary">Close</Button>
+            </DialogTrigger>
+            <Button appearance="primary">Do Something</Button>
+          </DialogActions>
+        </DialogBody>
+      </DialogSurface>
+    </Dialog>
+  );
+};
+
+export const IntegrationComboboxInline = () => {
+  return (
+    <Dialog open>
+      <DialogSurface>
+        <DialogBody>
+          <DialogTitle>Dialog title</DialogTitle>
+          {/* Forces the dialog not to be scrollable, so combobox options are not cut off */}
+          <DialogContent style={{ overflow: 'visible' }}>
+            {/* "inlinePopup" renders the popup in the DOM tree of the dialog, so it's inside the dialog's boundary */}
+            <Combobox open inlinePopup placeholder="Select an animal">
+              {['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'].map(option => (
+                <Option key={option} disabled={option === 'Ferret'}>
+                  {option}
+                </Option>
+              ))}
+            </Combobox>
+          </DialogContent>
+          <DialogActions>
             <DialogTrigger disableButtonEnhancement>
               <Button appearance="secondary">Close</Button>
             </DialogTrigger>
