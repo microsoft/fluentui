@@ -7,10 +7,8 @@ import addons from '@storybook/addons';
 const useStyles = makeStyles({
   container: {
     alignItems: 'center',
-    columnGap: tokens.spacingHorizontalXS,
     display: 'flex',
     justifyContent: 'start',
-    ...shorthands.margin(tokens.spacingVerticalS, 0),
   },
   label: {
     ...typographyStyles.subtitle2,

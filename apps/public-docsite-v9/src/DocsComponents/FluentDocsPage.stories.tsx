@@ -11,10 +11,11 @@ import {
   Stories,
 } from '@storybook/addon-docs';
 import { makeStyles, shorthands } from '@griffel/react';
-import { Toc, nameToHash } from './Toc.stories';
+import { tokens } from '@fluentui/react-components';
 import { DIR_ID, THEME_ID, themes } from '@fluentui/react-storybook-addon';
 import { DirSwitch } from './DirSwitch.stories';
 import { ThemePicker } from './ThemePicker.stories';
+import { Toc, nameToHash } from './Toc.stories';
 
 const useStyles = makeStyles({
   divider: {
@@ -38,6 +39,10 @@ const useStyles = makeStyles({
     // without a width, this div grows wider than its parent
     width: '200px',
     flexGrow: 1,
+  },
+  globalTogglesContainer: {
+    columnGap: tokens.spacingHorizontalXXXL,
+    display: 'flex',
   },
 });
 
@@ -67,8 +72,10 @@ export const FluentDocsPage = () => {
 
       <div className={styles.wrapper}>
         <div className={styles.container}>
-          <ThemePicker selectedThemeId={selectedTheme?.id} />
-          <DirSwitch dir={dir} />
+          <div className={styles.globalTogglesContainer}>
+            <ThemePicker selectedThemeId={selectedTheme?.id} />
+            <DirSwitch dir={dir} />
+          </div>
           <Subtitle />
           <Description />
           <hr className={styles.divider} />
