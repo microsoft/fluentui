@@ -19,14 +19,12 @@ export type ListProps = ComponentProps<ListSlots> & {
   selectedItems?: SelectionItemId[];
   defaultSelectedItems?: SelectionItemId[];
   onSelectionChange?: (event: React.SyntheticEvent, data: { selectedItems: SelectionItemId[] }) => void;
-
   truncateHeader?: boolean;
   truncateContent?: boolean;
 };
 
 export type ListContextValue = {
   navigable: boolean;
-  selection?: ListSelectionState;
   as?: 'div' | 'ol' | 'ul';
   truncateHeader?: ListProps['truncateHeader'];
   truncateContent?: ListProps['truncateContent'];

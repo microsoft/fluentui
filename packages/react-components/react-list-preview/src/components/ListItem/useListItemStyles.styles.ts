@@ -35,6 +35,11 @@ const useStyles = makeStyles({
   contentWrapper: {
     fontSize: tokens.fontSizeBase200,
   },
+
+  // The content should go all the way to the end if the content media is not present
+  contentWrapperWithoutMedia: {
+    gridColumnEnd: 4,
+  },
   truncate: {
     ...shorthands.overflow('hidden'),
     textWrap: 'nowrap',
@@ -75,6 +80,7 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
     state.contentWrapper.className = mergeClasses(
       styles.contentWrapper,
       state.truncateContent && styles.truncate,
+      !state.contentMedia && styles.contentWrapperWithoutMedia,
       state.contentWrapper?.className,
     );
   }

@@ -102,7 +102,7 @@ export const useListItem_unstable = (
     selectable: isSelectionEnabled,
     selected: isSelected,
     media: slot.optional(props.media, { elementType: 'div' }),
-    header: slot.optional(props.header, { elementType: 'div', renderByDefault: true }),
+    header: slot.optional(props.header, { elementType: 'div' }),
     contentWrapper: slot.optional(props.contentWrapper, { elementType: 'div', renderByDefault: true }),
     headerMedia: slot.optional(props.headerMedia, { elementType: 'div' }),
     contentMedia: slot.optional(props.contentMedia, { elementType: 'div' }),
