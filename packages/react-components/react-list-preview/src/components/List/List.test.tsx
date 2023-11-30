@@ -10,7 +10,7 @@ describe('List', () => {
     displayName: 'List',
     testOptions: {
       'consistent-callback-args': {
-        // onSelectionChange has an eventArguent which is React.SyntheticEvent. This throws an error during testing
+        // onSelectionChange has an eventArgument which is React.SyntheticEvent. This throws an error during testing
         ignoreProps: ['onSelectionChange'],
       },
     },

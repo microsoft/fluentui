@@ -7,18 +7,6 @@ import type { ListItemProps, ListItemState } from './ListItem.types';
 
 const DEFAULT_ROOT_EL_TYPE = 'li';
 
-const listPropsForSelected = {
-  tabIndex: 0,
-  role: 'option',
-  'aria-selected': true,
-};
-
-const listPropsForNotSelected = {
-  tabIndex: 0,
-  role: 'option',
-  'aria-selected': false,
-};
-
 function validateProperElementTypes(parentRenderedAs?: 'div' | 'ul' | 'ol', renderedAs?: 'div' | 'li') {
   if (process.env.NODE_ENV === 'production') {
     return;
@@ -61,8 +49,6 @@ export const useListItem_unstable = (
 
   validateProperElementTypes(parentRenderedAs, renderedAs);
 
-  const listItemProps = isSelected ? listPropsForSelected : listPropsForNotSelected;
-
   const focusableGroupAttrs = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
 
   const handleClick: React.MouseEventHandler<HTMLLIElement & HTMLDivElement> = useEventCallback(e => {
@@ -85,10 +71,13 @@ export const useListItem_unstable = (
   const root = slot.always(
     getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
       ref: ref as React.Ref<HTMLLIElement & HTMLDivElement>,
-      tabIndex: navigable ? 0 : undefined,
+      tabIndex: navigable || isSelectionEnabled ? 0 : undefined,
       role: navigable ? 'menuitem' : 'listitem',
       id: String(value),
-      ...(isSelectionEnabled && listItemProps),
+      ...(isSelectionEnabled && {
+        role: 'option',
+        'aria-selected': isSelected,
+      }),
       ...focusableGroupAttrs,
       ...props,
       onKeyDown: buttonProps.onKeyDown as React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement>,

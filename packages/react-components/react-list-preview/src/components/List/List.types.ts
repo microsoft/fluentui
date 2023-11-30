@@ -1,8 +1,8 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, SelectionMode, SelectionItemId } from '@fluentui/react-utilities';
-import { ListSelectionState } from '../../hooks/types';
+import type { ListSelectionState } from '../../hooks/types';
 
-export type ListLayout = 'horizontal' | 'vertical' | 'grid';
+type ListLayout = 'horizontal' | 'vertical' | 'grid';
 
 export type ListSlots = {
   root: NonNullable<Slot<'ul', 'div' | 'ol'>>;

@@ -11,7 +11,7 @@ const useStyles = makeStyles({
 export const ListHorizontal = () => {
   const classes = useStyles();
   return (
-    <List layout={'horizontal'}>
+    <List layout="horizontal">
       <ListItem className={classes.listItem}>Asia</ListItem>
       <ListItem className={classes.listItem}>Africa</ListItem>
       <ListItem className={classes.listItem}>Europe</ListItem>

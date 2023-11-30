@@ -11,5 +11,3 @@ export type ListSelectionState = {
   setSelectedItems: React.Dispatch<React.SetStateAction<Iterable<SelectionItemId>>>;
   selectedItems: SelectionItemId[];
 };
-
-export type UseListSelectionOptions = {}; // multiselect etc

@@ -46,7 +46,7 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
     initialState: [],
   });
 
-  const onChange = useEventCallback((e: React.SyntheticEvent<Element, Event>, data: OnSelectionChangeData) => {
+  const onChange = useEventCallback((e: React.SyntheticEvent, data: OnSelectionChangeData) => {
     const selectedItemsAsArray = Array.from(data.selectedItems);
     setSelectionState(selectedItemsAsArray);
     onSelectionChange?.(e, { selectedItems: selectedItemsAsArray });
@@ -59,14 +59,6 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
     defaultSelectedItems,
   });
 
-  const selectableListProps = React.useMemo(
-    () => ({
-      role: 'listbox',
-      'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
-    }),
-    [selectionMode],
-  );
-
   return {
     components: {
       root: DEFAULT_ROOT_EL_TYPE,
@@ -75,7 +67,10 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
       getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
         ref,
         ...(navigable && { role: 'menu' }),
-        ...(selectable && selectableListProps),
+        ...(selectable && {
+          role: 'listbox',
+          'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
+        }),
         ...arrowNavigationAttributes,
         ...props,
       }),

@@ -1,24 +1,13 @@
 import { SelectionHookParams, useControllableState, useEventCallback, useSelection } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { ListSelectionState } from './types';
-
-export const defaultListSelectionState: ListSelectionState = {
-  isSelected: () => false,
-  toggleItem: () => undefined,
-  selectItem: () => undefined,
-  deselectItem: () => undefined,
-  clearSelection: () => undefined,
-  toggleAllItems: () => undefined,
-  setSelectedItems: () => undefined,
-  selectedItems: [],
-};
+import type { ListSelectionState } from './types';
 
 export function useListSelection(options: SelectionHookParams = { selectionMode: 'multiselect' }): ListSelectionState {
   const { selectionMode, defaultSelectedItems, onSelectionChange } = options;
 
   const [selectedItems, setSelectedItems] = useControllableState({
     state: options.selectedItems,
-    defaultState: defaultSelectedItems || [],
+    defaultState: defaultSelectedItems,
     initialState: [],
   });
 
