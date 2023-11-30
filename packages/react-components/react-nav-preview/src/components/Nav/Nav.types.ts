@@ -1,5 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { NavContextValue, NavGroupValue, SelectNavGroupEventHandler } from '../NavContext.types';
+import { NavContextValue, NavGroupValue, OnSelectData } from '../NavContext.types';
+import { EventHandler } from '@fluentui/react-utilities/src/compose/types';
 
 export type NavSlots = {
   root: NonNullable<Slot<'div'>>;
@@ -28,7 +29,7 @@ export type NavProps = ComponentProps<NavSlots> & {
   /**
    * Raised when a navGroup is selected.
    */
-  onNavGroupSelect?: SelectNavGroupEventHandler;
+  onNavGroupSelect?: EventHandler<OnSelectData>;
 
   /**
    * The value of the currently selected navGroup.

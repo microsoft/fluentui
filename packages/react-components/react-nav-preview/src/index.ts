@@ -16,7 +16,4 @@ export type {
   NavGroupRegisterData,
   NavGroupValue,
   RegisterNavGroupEventHandler,
-  SelectNavGroupData,
-  SelectNavGroupEvent,
-  SelectNavGroupEventHandler,
 } from './components/NavContext.types';

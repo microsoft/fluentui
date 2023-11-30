@@ -10,7 +10,8 @@ import type { NavProps, NavState } from './Nav.types';
 
 // todo - light this up
 // import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import type { NavGroupRegisterData, NavGroupValue, SelectNavGroupData, SelectNavGroupEvent } from '../NavContext.types';
+import type { NavGroupRegisterData, NavGroupValue, OnSelectData } from '../NavContext.types';
+import { EventHandler } from '@fluentui/react-utilities/src/compose/types';
 
 /**
  * Create the state required to render Nav.
@@ -44,7 +45,7 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     currentSelectedValue.current = selectedValue;
   }, [selectedValue]);
 
-  const onSelect = useEventCallback((event: SelectNavGroupEvent, data: SelectNavGroupData) => {
+  const onSelect: EventHandler<OnSelectData> = useEventCallback((event, data) => {
     setSelectedValue(data.value);
     onNavGroupSelect?.(event, data);
   });
