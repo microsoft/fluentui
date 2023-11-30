@@ -86,6 +86,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xScale: any;
+  private isIntegralDataset: boolean = true;
 
   constructor(props: IModifiedCartesianChartProps) {
     super(props);
@@ -159,6 +160,12 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         startFromX: 0,
       });
     }
+    for (let i = 0; i < this.props.points.length; i += 1) {
+      if (this.props.points[i].y - Math.floor(this.props.points[i].y) > 0) {
+        this.isIntegralDataset = false;
+        break;
+      }
+    }
   }
 
   public componentWillUnmount(): void {
@@ -208,6 +215,12 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       this.setState({
         startFromX: 0,
       });
+    }
+    for (let i = 0; i < this.props.points.length; i += 1) {
+      if (this.props.points[i].y - Math.floor(this.props.points[i].y) > 0) {
+        this.isIntegralDataset = false;
+        break;
+      }
     }
   }
 
@@ -389,10 +402,18 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             axisData,
             chartType,
             this.props.barwidth!,
+            this.isIntegralDataset,
             true,
           );
         }
-        yScale = createYAxis(YAxisParams, this._isRtl, axisData, chartType, this.props.barwidth!);
+        yScale = createYAxis(
+          YAxisParams,
+          this._isRtl,
+          axisData,
+          chartType,
+          this.props.barwidth!,
+          this.isIntegralDataset,
+        );
       }
 
       /*
@@ -411,7 +432,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           this._isRtl,
         );
 
-      this.props.getAxisData && this.props.getAxisData(axisData);
+      // this.props.getAxisData && this.props.getAxisData(axisData);
       // Callback function for chart, returns axis
       this._getData(xScale, yScale);
 
