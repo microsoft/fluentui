@@ -1,4 +1,4 @@
-export { UsingGridsActiveOnlyNavigation } from './Meet/AccessibleMeetUsingGridsActiveOnlyNavigation.stories';
+export { UsingGridsActiveOnlyRowNavigation } from './Meet/AccessibleMeetUsingGridsActiveOnlyRowNavigation.stories';
 export { UsingStitchedGridsRowNavigation } from './Meet/AccessibleMeetUsingStitchedGridsRowNavigation.stories';
 export { UsingGridsRowNavigation } from './Meet/AccessibleMeetUsingGridsRowNavigation.stories';
 export { UsingGridsFirstCellNavigation } from './Meet/AccessibleMeetUsingGridsFirstCellNavigation.stories';

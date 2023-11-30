@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {
-  UpcomingMeetingsGridActiveOnlyNavigationRenderer,
-  RecentMeetingsTreeGridActiveOnlyNavigationRenderer,
-} from './AccessibleMeetGridsActiveOnlyNavigationRenderer';
+  UpcomingMeetingsGridActiveOnlyRowNavigationRenderer,
+  RecentMeetingsTreeGridActiveOnlyRowNavigationRenderer,
+} from './AccessibleMeetGridsActiveOnlyRowNavigationRenderer';
 import { RecentMeetingsStitchedTreeGridRowNavigationRenderer } from './AccessibleMeetStitchedGridsRowNavigationRenderer';
 import {
   UpcomingMeetingsGridRowNavigationRenderer,
@@ -39,7 +39,7 @@ import {
 } from '@fluentui/react-components';
 
 type PrototypeVariant =
-  | 'gridsActiveOnlyNavigation'
+  | 'gridsActiveOnlyRowNavigation'
   | 'stitchedGridsRowNavigation'
   | 'gridsRowNavigation'
   | 'gridsCellNavigation'
@@ -308,7 +308,7 @@ export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant 
 
   return (
     <>
-      {variant === 'gridsActiveOnlyNavigation' && <h1>Accessible Meet Using Grids Active Only Navigation</h1>}
+      {variant === 'gridsActiveOnlyRowNavigation' && <h1>Accessible Meet Using Grids Active Only Row Navigation</h1>}
       {variant === 'stitchedGridsRowNavigation' && <h1>Accessible Meet Using Stitched Grids Row Navigation</h1>}
       {variant === 'gridsRowNavigation' && <h1>Accessible Meet Using Grids Row Navigation</h1>}
       {variant === 'gridsFirstCellNavigation' && <h1>Accessible Meet Using Grids First Cell Navigation</h1>}
@@ -346,8 +346,8 @@ export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant 
         <Button disabledFocusable={true}>Previous meetings</Button>
         <Button>Next meetings</Button>
 
-        {variant === 'gridsActiveOnlyNavigation' && (
-          <UpcomingMeetingsGridActiveOnlyNavigationRenderer threeUpcomingMeetings={threeUpcomingMeetings} />
+        {variant === 'gridsActiveOnlyRowNavigation' && (
+          <UpcomingMeetingsGridActiveOnlyRowNavigationRenderer threeUpcomingMeetings={threeUpcomingMeetings} />
         )}
 
         {variant === 'stitchedGridsRowNavigation' && (
@@ -388,8 +388,8 @@ export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant 
           <Input />
         </Field>
 
-        {variant === 'gridsActiveOnlyNavigation' && (
-          <RecentMeetingsTreeGridActiveOnlyNavigationRenderer
+        {variant === 'gridsActiveOnlyRowNavigation' && (
+          <RecentMeetingsTreeGridActiveOnlyRowNavigationRenderer
             recentCategories={recentCategoriesRef.current}
             recentMeetings={recentMeetings}
           />

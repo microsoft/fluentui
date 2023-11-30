@@ -18,11 +18,11 @@ import {
   useFluent,
 } from '@fluentui/react-components';
 
-interface UpcomingMeetingsGridActiveOnlyNavigationRendererProps {
+interface UpcomingMeetingsGridActiveOnlyRowNavigationRendererProps {
   threeUpcomingMeetings: UpcomingMeeting[];
 }
-export const UpcomingMeetingsGridActiveOnlyNavigationRenderer: React.FC<
-  UpcomingMeetingsGridActiveOnlyNavigationRendererProps
+export const UpcomingMeetingsGridActiveOnlyRowNavigationRenderer: React.FC<
+  UpcomingMeetingsGridActiveOnlyRowNavigationRendererProps
 > = ({ threeUpcomingMeetings }) => {
   const { tableRowTabsterAttribute, tableTabsterAttribute, onTableKeyDown } = useAdamTableCompositeNavigation();
 
@@ -103,12 +103,12 @@ export const UpcomingMeetingsGridActiveOnlyNavigationRenderer: React.FC<
   );
 };
 
-interface RecentMeetingsGridActiveOnlyNavigationRendererProps {
+interface RecentMeetingsGridActiveOnlyRowNavigationRendererProps {
   recentCategories: RecentCategory[];
   recentMeetings: RecentMeetings;
 }
-export const RecentMeetingsTreeGridActiveOnlyNavigationRenderer: React.FC<
-  RecentMeetingsGridActiveOnlyNavigationRendererProps
+export const RecentMeetingsTreeGridActiveOnlyRowNavigationRenderer: React.FC<
+  RecentMeetingsGridActiveOnlyRowNavigationRendererProps
 > = ({ recentCategories, recentMeetings }) => {
   const { targetDocument } = useFluent();
   const [recentCategoriesState, setRecentCategoryState] = React.useState(recentCategories);
