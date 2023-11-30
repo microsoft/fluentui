@@ -1,6 +1,6 @@
 import type { NavGroupSlots, NavGroupState } from './NavGroup.types';
 
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
@@ -26,7 +26,7 @@ const iconClassNames = {
  * Styles for the root slot
  */
 /* eslint-disable @typescript-eslint/naming-convention */
-const useRootStyles = makeStyles({
+const useRootStyles = makeResetStyles({
   base: {
     alignItems: 'center',
     ...shorthands.borderColor('none'),

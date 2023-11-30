@@ -10,7 +10,7 @@ import type { NavProps, NavState } from './Nav.types';
 
 // todo - light this up
 // import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { NavGroupRegisterData, NavGroupValue, SelectNavGroupData, SelectNavGroupEvent } from '../NavContext.types';
+import type { NavGroupRegisterData, NavGroupValue, SelectNavGroupData, SelectNavGroupEvent } from '../NavContext.types';
 
 /**
  * Create the state required to render Nav.

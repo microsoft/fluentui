@@ -21,6 +21,7 @@ export type NavProps = ComponentProps<NavSlots> & {
   /**
    * The value of the navGroup to be selected by default.
    * Typically useful when the selectedValue is uncontrolled.
+   *  Mutually exclusive with selectedValue.
    */
   defaultSelectedValue?: NavGroupValue;
 
@@ -31,6 +32,7 @@ export type NavProps = ComponentProps<NavSlots> & {
 
   /**
    * The value of the currently selected navGroup.
+   * Mutually exclusive with defaultSelectedValue.
    */
   selectedValue?: NavGroupValue;
 };

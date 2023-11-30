@@ -14,7 +14,7 @@ export const renderNavGroup_unstable = (state: NavGroupState) => {
   return (
     <state.root>
       {state.icon && <state.icon />}
-      {state.content && <state.content />}
+      <state.content />
       {state.contentReservedSpace && <state.contentReservedSpace />}
     </state.root>
   );
