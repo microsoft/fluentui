@@ -6,3 +6,4 @@ export * from './createColumn';
 export * from './useTableColumnSizing';
 export * from './useTableCompositeNavigation';
 export * from './useAdamTableCompositeNavigation';
+export * from './useAdamTableCombinedNavigation';

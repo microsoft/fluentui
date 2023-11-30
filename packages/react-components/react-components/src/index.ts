@@ -1007,6 +1007,7 @@ export {
   useTableSort,
   useTableCompositeNavigation,
   useAdamTableCompositeNavigation,
+  useAdamTableCombinedNavigation,
   createTableColumn,
   DataGridCell,
   dataGridCellClassNames,
