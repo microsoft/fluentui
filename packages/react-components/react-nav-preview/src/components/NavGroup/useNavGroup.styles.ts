@@ -27,24 +27,22 @@ const iconClassNames = {
  */
 /* eslint-disable @typescript-eslint/naming-convention */
 const useRootStyles = makeResetStyles({
-  base: {
-    alignItems: 'center',
-    ...shorthands.borderColor('none'),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.borderWidth(0),
-    cursor: 'pointer',
-    display: 'grid',
-    flexShrink: 0,
-    gridAutoFlow: 'column',
-    gridTemplateColumns: 'auto',
-    gridTemplateRows: 'auto',
-    fontFamily: tokens.fontFamilyBase,
-    lineHeight: tokens.lineHeightBase300,
-    outlineStyle: 'none',
-    position: 'relative',
-    ...shorthands.overflow('hidden'),
-    textTransform: 'none',
-  },
+  alignItems: 'center',
+  ...shorthands.borderColor('none'),
+  ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  ...shorthands.borderWidth(0),
+  cursor: 'pointer',
+  display: 'grid',
+  flexShrink: 0,
+  gridAutoFlow: 'column',
+  gridTemplateColumns: 'auto',
+  gridTemplateRows: 'auto',
+  fontFamily: tokens.fontFamilyBase,
+  lineHeight: tokens.lineHeightBase300,
+  outlineStyle: 'none',
+  position: 'relative',
+  ...shorthands.overflow('hidden'),
+  textTransform: 'none',
 });
 /* eslint-enable @typescript-eslint/naming-convention */
 
@@ -200,7 +198,7 @@ export const useNavGroupStyles_unstable = (state: NavGroupState): NavGroupState 
 
   state.root.className = mergeClasses(
     navGroupClassNames.root,
-    rootStyles.base,
+    rootStyles,
     focusStyles.base,
 
     // pending indicator (before pseudo element)
