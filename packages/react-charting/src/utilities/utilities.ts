@@ -311,8 +311,8 @@ export function prepareDatapoints(
   isIntegralDataset: boolean,
 ): number[] {
   const val = isIntegralDataset
-    ? 1
-    : (maxVal - minVal) / splitInto > 1
+    ? Math.ceil((maxVal - minVal) / splitInto)
+    : (maxVal - minVal) / splitInto >= 1
     ? Math.ceil((maxVal - minVal) / splitInto)
     : (maxVal - minVal) / splitInto;
   const dataPointsArray: number[] = [minVal, minVal + val];
