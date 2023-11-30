@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Brand row appearance should be brandBackground2 in pressed state",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

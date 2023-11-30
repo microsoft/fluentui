@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add useFocusVisible() to exports",
-  "packageName": "@fluentui/react-components",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

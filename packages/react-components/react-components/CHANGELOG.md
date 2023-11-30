@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 20 Nov 2023 09:55:08 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Nov 2023 13:42:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.42.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.42.0)
+
+Thu, 30 Nov 2023 13:42:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.41.0..@fluentui/react-components_v9.42.0)
+
+### Minor changes
+
+- `@fluentui/react-aria`
+  - feat: Implement aria-activedescendant utility ([PR #29904](https://github.com/microsoft/fluentui/pull/29904) by lingfan.gao@microsoft.com)
+- `@fluentui/react-components`
+  - feat: export useUncontrolledFocus hook ([PR #29895](https://github.com/microsoft/fluentui/pull/29895) by lingfangao@hotmail.com)
+  - add useFocusVisible() to exports ([PR #29935](https://github.com/microsoft/fluentui/pull/29935) by seanmonahan@microsoft.com)
+- `@fluentui/react-link`
+  - feat: Adding span as an option for Link to render as. ([PR #29937](https://github.com/microsoft/fluentui/pull/29937) by humbertomakotomorimoto@gmail.com)
+- `@fluentui/react-tabster`
+  - feat: implement useTabsterUncontrolled hook ([PR #29895](https://github.com/microsoft/fluentui/pull/29895) by lingfangao@hotmail.com)
+- `@fluentui/react-text`
+  - feature: adds semantic elements (strong, b, em, i) to Text root signature ([PR #29884](https://github.com/microsoft/fluentui/pull/29884) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-combobox`
+  - fix: listbox closes on blur after scroll click ([PR #29877](https://github.com/microsoft/fluentui/pull/29877) by sarah.higley@microsoft.com)
+  - fix: Dropdown button gets focus in Safari when clicked ([PR #29855](https://github.com/microsoft/fluentui/pull/29855) by sarah.higley@microsoft.com)
+- `@fluentui/react-jsx-runtime`
+  - chore: move up NODE_ENV check in warnIfElementTypeIsInvalid ([PR #29886](https://github.com/microsoft/fluentui/pull/29886) by wfwf1997@gmail.com)
+- `@fluentui/react-positioning`
+  - feat: adds floating-ui-devtools support ([PR #29905](https://github.com/microsoft/fluentui/pull/29905) by bernardo.sunderhus@gmail.com)
+  - fix: Infinite reset loop in matchTargetSize middleware ([PR #29915](https://github.com/microsoft/fluentui/pull/29915) by lingfan.gao@microsoft.com)
+- `@fluentui/react-table`
+  - fix: Brand row appearance should be brandBackground2 in pressed state ([PR #29957](https://github.com/microsoft/fluentui/pull/29957) by lingfangao@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - feat: Add default auto-measuring on dynamic virtualizezr if no sizing function provided ([PR #29868](https://github.com/microsoft/fluentui/pull/29868) by mifraser@microsoft.com)
 
 ## [9.41.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.41.0)
 

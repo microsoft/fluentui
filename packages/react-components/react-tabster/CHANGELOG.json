@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Thu, 30 Nov 2023 13:42:07 GMT",
+      "tag": "@fluentui/react-tabster_v9.15.0",
+      "version": "9.15.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "499eb8b3c02e05e817ff907b740af703c4a19bf1",
+            "comment": "feat: implement useTabsterUncontrolled hook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Nov 2023 09:55:10 GMT",
       "tag": "@fluentui/react-tabster_v9.14.6",
       "version": "9.14.6",
