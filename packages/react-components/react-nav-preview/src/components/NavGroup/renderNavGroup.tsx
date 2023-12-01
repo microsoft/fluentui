@@ -13,7 +13,8 @@ export const renderNavGroup_unstable = (state: NavGroupState) => {
 
   return (
     <state.root>
-      {state.icon && <state.icon />}
+      {/* TODO: light this up when we have design spec */}
+      {/* {state.icon && <state.icon />} */}
       <state.content />
       {state.contentReservedSpace && <state.contentReservedSpace />}
     </state.root>

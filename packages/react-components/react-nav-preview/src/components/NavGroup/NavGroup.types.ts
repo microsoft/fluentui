@@ -6,10 +6,11 @@ export type NavGroupSlots = {
    */
   root: Slot<'button'>;
 
-  /**
-   * Icon that renders before the content.
-   */
-  icon?: Slot<'span'>;
+  // TODO - light this up when we get design spec
+  // /**
+  //  * Icon that renders before the content.
+  //  */
+  // icon?: Slot<'span'>;
 
   /**
    * Component children are placed in this slot

@@ -19,12 +19,7 @@ import { NavGroupProps, NavGroupState } from './NavGroup.types';
  * @param ref - reference to root HTMLButtonElement of NavGroup
  */
 export const useNavGroup_unstable = (props: NavGroupProps, ref: React.Ref<HTMLButtonElement>): NavGroupState => {
-  const { content, icon, onClick, value } = props;
-
-  // const selected = useNavContext_unstable(ctx => ctx.selectedValue === value);
-  // const onRegister = useNavContext_unstable(ctx => ctx.onRegister);
-  // const onUnregister = useNavContext_unstable(ctx => ctx.onUnregister);
-  // const onSelect = useNavContext_unstable(ctx => ctx.onSelect);
+  const { content, onClick, value } = props;
 
   const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
 
@@ -46,14 +41,13 @@ export const useNavGroup_unstable = (props: NavGroupProps, ref: React.Ref<HTMLBu
     };
   }, [onRegister, onUnregister, innerRef, value]);
 
-  const iconSlot = slot.optional(icon, { elementType: 'span' });
   const contentSlot = slot.always(content, {
     defaultProps: { children: props.children },
     elementType: 'span',
   });
 
   return {
-    components: { root: 'button', icon: 'span', content: 'span', contentReservedSpace: 'span' },
+    components: { root: 'button', content: 'span', contentReservedSpace: 'span' },
     root: slot.always(
       getIntrinsicElementProps('button', {
         ref: useMergedRefs(ref, innerRef),
@@ -64,7 +58,6 @@ export const useNavGroup_unstable = (props: NavGroupProps, ref: React.Ref<HTMLBu
       }),
       { elementType: 'button' },
     ),
-    icon: iconSlot,
     content: contentSlot,
     contentReservedSpace: slot.optional(content, {
       defaultProps: { children: props.children },

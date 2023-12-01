@@ -6,12 +6,12 @@ const useStyles = makeStyles({
   root: {},
 });
 
-export const Default = (props: Partial<NavProps>) => {
+export const WithDefaultSelection = (props: Partial<NavProps>) => {
   const styles = useStyles();
 
   return (
     <div className={styles.root}>
-      <Nav>
+      <Nav defaultSelectedValue={'2'}>
         <NavGroup value="1">First</NavGroup>
         <NavGroup value="2">Second</NavGroup>
         <NavGroup value="3">Third</NavGroup>
