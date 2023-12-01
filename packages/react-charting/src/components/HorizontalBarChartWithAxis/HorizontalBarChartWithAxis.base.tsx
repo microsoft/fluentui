@@ -618,7 +618,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       this.setState({
         isLegendHovered: true,
         selectedLegendTitle: customMessage,
-        isCalloutVisible: false,
       });
     }
   }
@@ -650,6 +649,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
           this._onLegendClick(point.legend!);
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this._onLegendHover(point.legend!);
         },
         onMouseOutAction: (isLegendSelected?: boolean) => {
