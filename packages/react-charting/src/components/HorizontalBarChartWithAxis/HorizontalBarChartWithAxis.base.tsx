@@ -593,41 +593,31 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     });
   };
 
-  private _onLegendClick(point: IHorizontalBarChartWithAxisDataPoint): void {
-    const hoveredData = {
-      selectedLegendTitle: point.legend!,
-      color: point.color,
-      xCalloutValue: point.yAxisCalloutData,
-      yCalloutValue: point.xAxisCalloutData,
-    };
-
+  private _onLegendClick(customMessage: string): void {
     if (this.state.isLegendSelected) {
-      if (this.state.selectedLegendTitle === point.legend!) {
+      if (this.state.selectedLegendTitle === customMessage) {
         this.setState({
           isLegendSelected: false,
-          ...hoveredData,
+          selectedLegendTitle: customMessage,
         });
       } else {
         this.setState({
-          ...hoveredData,
+          selectedLegendTitle: customMessage,
         });
       }
     } else {
       this.setState({
         isLegendSelected: true,
-        ...hoveredData,
+        selectedLegendTitle: customMessage,
       });
     }
   }
 
-  private _onLegendHover(point: IHorizontalBarChartWithAxisDataPoint): void {
+  private _onLegendHover(customMessage: string): void {
     if (this.state.isLegendSelected === false) {
       this.setState({
         isLegendHovered: true,
-        selectedLegendTitle: point.legend!,
-        color: point.color,
-        xCalloutValue: point.yAxisCalloutData,
-        yCalloutValue: point.xAxisCalloutData,
+        selectedLegendTitle: customMessage,
       });
     }
   }
@@ -637,6 +627,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       this.setState({
         isLegendHovered: false,
         selectedLegendTitle: '',
+        isCalloutVisible: false,
         isLegendSelected: isLegendFocused ? false : this.state.isLegendSelected,
       });
     }
@@ -656,10 +647,10 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         title: point.legend!,
         color,
         action: () => {
-          this._onLegendClick(point);
+          this._onLegendClick(point.legend!);
         },
         hoverAction: () => {
-          this._onLegendHover(point);
+          this._onLegendHover(point.legend!);
         },
         onMouseOutAction: (isLegendSelected?: boolean) => {
           this._onLegendLeave(isLegendSelected);
