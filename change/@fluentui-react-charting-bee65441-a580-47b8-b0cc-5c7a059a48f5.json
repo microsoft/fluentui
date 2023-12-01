@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: react-charting horizontal-bar-chart-axis on hover render correct data",
+  "packageName": "@fluentui/react-charting",
+  "email": "gautam33776@gmail.com",
+  "dependentChangeType": "patch"
+}
