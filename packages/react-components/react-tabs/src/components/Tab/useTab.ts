@@ -35,8 +35,9 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
   const disabled = listDisabled || tabDisabled;
 
   const innerRef = React.useRef<HTMLElement>(null);
-  const onTabClick = useEventCallback(mergeCallbacks(onClick, (event: SelectTabEvent) => onSelect(event, { value })));
-  const onTabFocus = useEventCallback(mergeCallbacks(onFocus, (event: SelectTabEvent) => onSelect(event, { value })));
+  const onSelectCallback = (event: SelectTabEvent) => onSelect(event, { value });
+  const onTabClick = useEventCallback(mergeCallbacks(onClick, onSelectCallback));
+  const onTabFocus = useEventCallback(mergeCallbacks(onFocus, onSelectCallback));
 
   React.useEffect(() => {
     onRegister({
