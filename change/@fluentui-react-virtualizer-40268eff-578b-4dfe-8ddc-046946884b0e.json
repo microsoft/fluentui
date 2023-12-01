@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Add default auto-measuring on dynamic virtualizezr if no sizing function provided",
-  "packageName": "@fluentui/react-virtualizer",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

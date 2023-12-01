@@ -425,7 +425,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         legendColor: this.state.color,
-        shouldHighlight: shouldHighlight,
+        shouldHighlight,
       });
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       if (barHeight < 1) {
@@ -644,11 +644,12 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
-        color: color,
+        color,
         action: () => {
           this._onLegendClick(point.legend!);
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this._onLegendHover(point.legend!);
         },
         onMouseOutAction: (isLegendSelected?: boolean) => {
