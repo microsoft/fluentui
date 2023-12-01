@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Added support for sticking to old ceil logic in case of integral datasets",
+  "packageName": "@fluentui/react-charting",
+  "email": "shubhabrata08@gmail.com",
+  "dependentChangeType": "patch"
+}
