@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 01 Dec 2023 04:08:50 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.6",
+      "version": "3.0.0-beta.6",
+      "comments": {
+        "none": [
+          {
+            "author": "mibaraka@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ebe7e4837a07b1218f9f7196b5c3043c0ad4cbb3",
+            "comment": "Updating disclaimer on storybook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Oct 2023 04:16:51 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.6",
       "version": "3.0.0-beta.6",
