@@ -1,6 +1,6 @@
 import * as React from 'react';
-import type { EventData, EventHandler, NavProps } from './Nav/Nav.types';
-import { NavGroupValue } from './NavGroup/NavGroup.types';
+import type { EventHandler, NavProps, OnNavGroupSelectData } from './Nav/Nav.types';
+import type { NavGroupValue } from './NavGroup/NavGroup.types';
 
 export type NavContextValue = Pick<NavProps, 'onNavGroupSelect' | 'selectedValue' | 'reserveSelectedNavGroupSpace'> & {
   /** A callback to allow a navGroup to register itself with the navGroup list. */
@@ -11,7 +11,7 @@ export type NavContextValue = Pick<NavProps, 'onNavGroupSelect' | 'selectedValue
   /**
    * A callback to allow a navGroup to select itself when pressed.
    */
-  onSelect: EventHandler<OnSelectData>;
+  onSelect: EventHandler<OnNavGroupSelectData>;
   /**
    * Gets the registered navGroup data along with current and previous selected values.
    */
@@ -42,13 +42,6 @@ export type NavGroupRegisterData = {
    * The reference to the navGroup HTML element.
    */
   ref: React.RefObject<HTMLElement>;
-};
-
-export type OnSelectData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
-  /**
-   * The value of the selected navGroup.
-   */
-  value: NavGroupValue;
 };
 
 export type RegisterNavGroupEventHandler = (data: NavGroupRegisterData) => void;

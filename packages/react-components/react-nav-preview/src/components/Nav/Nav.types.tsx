@@ -1,6 +1,7 @@
+import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { NavContextValue, OnSelectData } from '../NavContext.types';
-import { NavGroupValue } from '../NavGroup/NavGroup.types';
+import type { NavContextValue } from '../NavContext.types';
+import type { NavGroupValue } from '../NavGroup/NavGroup.types';
 
 export type NavSlots = {
   root: NonNullable<Slot<'div'>>;
@@ -29,13 +30,20 @@ export type NavProps = ComponentProps<NavSlots> & {
   /**
    * Raised when a navGroup is selected.
    */
-  onNavGroupSelect?: EventHandler<OnSelectData>;
+  onNavGroupSelect?: EventHandler<OnNavGroupSelectData>;
 
   /**
    * The value of the currently selected navGroup.
    * Mutually exclusive with defaultSelectedValue.
    */
   selectedValue?: NavGroupValue;
+};
+
+export type OnNavGroupSelectData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
+  /**
+   * The value of the selected navGroup.
+   */
+  value: NavGroupValue;
 };
 
 /**
