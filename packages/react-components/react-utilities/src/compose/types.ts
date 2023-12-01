@@ -262,12 +262,3 @@ export type SlotComponentType<Props extends UnknownSlotProps> = Props & {
     | React.ComponentType<Props>
     | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
 };
-
-export type EventData<Type extends string, TEvent> =
-  | { type: undefined; event: React.SyntheticEvent | Event }
-  | { type: Type; event: TEvent };
-
-export type EventHandler<TData extends EventData<string, unknown>> = (
-  ev: React.SyntheticEvent | Event,
-  data: TData,
-) => void;

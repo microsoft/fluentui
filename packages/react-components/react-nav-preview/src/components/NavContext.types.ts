@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { NavProps } from './Nav/Nav.types';
-import { EventData, EventHandler } from '@fluentui/react-utilities/src/compose/types';
+import type { EventData, EventHandler, NavProps } from './Nav/Nav.types';
+import { NavGroupValue } from './NavGroup/NavGroup.types';
 
 export type NavContextValue = Pick<NavProps, 'onNavGroupSelect' | 'selectedValue' | 'reserveSelectedNavGroupSpace'> & {
   /** A callback to allow a navGroup to register itself with the navGroup list. */
@@ -44,14 +44,7 @@ export type NavGroupRegisterData = {
   ref: React.RefObject<HTMLElement>;
 };
 
-/**
- * Any value that identifies a specific navGroup.
- */
-export type NavGroupValue = unknown;
-
-export type NavGroupElement = HTMLButtonElement;
-
-export type OnSelectData = EventData<'click', React.MouseEvent<NavGroupElement>> & {
+export type OnSelectData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
   /**
    * The value of the selected navGroup.
    */

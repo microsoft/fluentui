@@ -1,5 +1,4 @@
-import { createContext, useContextSelector } from '@fluentui/react-context-selector';
-import type { Context, ContextSelector } from '@fluentui/react-context-selector';
+import * as React from 'react';
 import { NavContextValue } from './NavContext.types';
 
 const navContextDefaultValue: NavContextValue = {
@@ -21,10 +20,10 @@ const navContextDefaultValue: NavContextValue = {
   },
 };
 
-export const NavContext: Context<NavContextValue> = createContext<NavContextValue | undefined>(
-  undefined,
-) as Context<NavContextValue>;
+export const NavContext = React.createContext<NavContextValue | undefined>(undefined);
 
 export const NavProvider = NavContext.Provider;
-export const useNavContext_unstable = <T>(selector: ContextSelector<NavContextValue, T>): T =>
-  useContextSelector(NavContext, (ctx = navContextDefaultValue) => selector(ctx));
+// export const useNavContext_unstable = <T>(selector: ContextSelector<NavContextValue, T>): T =>
+//   useContextSelector(NavContext, (ctx = navContextDefaultValue) => selector(ctx));
+
+export const useNavContext_unstable = () => React.useContext(NavContext) || navContextDefaultValue;

@@ -6,12 +6,12 @@ import {
   slot,
   getIntrinsicElementProps,
 } from '@fluentui/react-utilities';
-import type { NavProps, NavState } from './Nav.types';
+import type { EventHandler, NavProps, NavState } from './Nav.types';
 
 // todo - light this up
 // import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import type { NavGroupRegisterData, NavGroupValue, OnSelectData } from '../NavContext.types';
-import { EventHandler } from '@fluentui/react-utilities/src/compose/types';
+import type { NavGroupRegisterData, OnSelectData } from '../NavContext.types';
+import { NavGroupValue } from '../NavGroup/NavGroup.types';
 
 /**
  * Create the state required to render Nav.

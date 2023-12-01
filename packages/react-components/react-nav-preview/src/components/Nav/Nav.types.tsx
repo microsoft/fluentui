@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { NavContextValue, NavGroupValue, OnSelectData } from '../NavContext.types';
-import { EventHandler } from '@fluentui/react-utilities/src/compose/types';
+import { NavContextValue, OnSelectData } from '../NavContext.types';
+import { NavGroupValue } from '../NavGroup/NavGroup.types';
 
 export type NavSlots = {
   root: NonNullable<Slot<'div'>>;
@@ -42,3 +42,13 @@ export type NavProps = ComponentProps<NavSlots> & {
  * State used in rendering Nav
  */
 export type NavState = ComponentState<NavSlots> & NavContextValue;
+
+// Temporarily here until they go into @fluentui/react-utilities
+export type EventData<Type extends string, TEvent> =
+  | { type: undefined; event: React.SyntheticEvent | Event }
+  | { type: Type; event: TEvent };
+
+export type EventHandler<TData extends EventData<string, unknown>> = (
+  ev: React.SyntheticEvent | Event,
+  data: TData,
+) => void;

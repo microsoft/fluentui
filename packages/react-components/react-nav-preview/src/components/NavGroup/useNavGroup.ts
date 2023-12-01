@@ -21,13 +21,16 @@ import { NavGroupProps, NavGroupState } from './NavGroup.types';
 export const useNavGroup_unstable = (props: NavGroupProps, ref: React.Ref<HTMLButtonElement>): NavGroupState => {
   const { content, icon, onClick, value } = props;
 
-  const selected = useNavContext_unstable(ctx => ctx.selectedValue === value);
-  const onRegister = useNavContext_unstable(ctx => ctx.onRegister);
-  const onUnregister = useNavContext_unstable(ctx => ctx.onUnregister);
-  const onSelect = useNavContext_unstable(ctx => ctx.onSelect);
+  // const selected = useNavContext_unstable(ctx => ctx.selectedValue === value);
+  // const onRegister = useNavContext_unstable(ctx => ctx.onRegister);
+  // const onUnregister = useNavContext_unstable(ctx => ctx.onUnregister);
+  // const onSelect = useNavContext_unstable(ctx => ctx.onSelect);
+
+  const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
+
+  const selected = selectedValue === value;
 
   const innerRef = React.useRef<HTMLElement>(null);
-  // This needs to be updated
   const onNavGroupClick = useEventCallback(
     mergeCallbacks(onClick, event => onSelect(event, { type: 'click', event, value })),
   );

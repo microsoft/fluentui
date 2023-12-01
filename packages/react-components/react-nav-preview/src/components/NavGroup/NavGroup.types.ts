@@ -1,5 +1,4 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { NavGroupValue } from '../NavContext.types';
 
 export type NavGroupSlots = {
   /**
@@ -17,14 +16,16 @@ export type NavGroupSlots = {
    * Avoid using the `children` property in this slot in favour of Component children whenever possible.
    */
   content: NonNullable<Slot<'span'>>;
-
-  // TODO: build out
-  // Size: 'small' | 'medium' | 'large';
 };
 
 export type NavGroupInternalSlots = NavGroupSlots & {
   contentReservedSpace?: Slot<'span'>;
 };
+
+/**
+ * Any value that identifies a specific navGroup.
+ */
+export type NavGroupValue = unknown;
 
 /**
  * navGroup Props
