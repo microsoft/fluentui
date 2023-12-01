@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: implement useTabsterUncontrolled hook",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
