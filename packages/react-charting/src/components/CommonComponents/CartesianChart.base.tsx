@@ -160,12 +160,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         startFromX: 0,
       });
     }
-    for (let i = 0; i < this.props.points.length; i += 1) {
-      if (this.props.points[i].y - Math.floor(this.props.points[i].y) > 0) {
-        this.isIntegralDataset = false;
-        break;
-      }
-    }
+    this.isIntegralDataset = !this.props.points.some((point: { y: number }) => {
+      return point.y % 1 !== 0;
+    });
   }
 
   public componentWillUnmount(): void {
@@ -217,12 +214,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       });
     }
     if (prevProps.points !== this.props.points) {
-      for (let i = 0; i < this.props.points.length; i += 1) {
-        if (this.props.points[i].y - Math.floor(this.props.points[i].y) > 0) {
-          this.isIntegralDataset = false;
-          break;
-        }
-      }
+      this.isIntegralDataset = !this.props.points.some((point: { y: number }) => {
+        return point.y % 1 !== 0;
+      });
     }
   }
 
