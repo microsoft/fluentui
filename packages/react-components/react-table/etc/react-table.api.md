@@ -566,6 +566,13 @@ export interface TableSortState<TItem> {
 export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements'> & TableContextValue;
 
 // @public (undocumented)
+export function useAdamTableCombinedNavigation(): {
+    onTableKeyDown: React_2.KeyboardEventHandler;
+    tableTabsterAttribute: TabsterDOMAttribute;
+    tableRowTabsterAttribute: TabsterDOMAttribute;
+};
+
+// @public (undocumented)
 export function useAdamTableCompositeNavigation(): {
     onTableKeyDown: React_2.KeyboardEventHandler;
     tableTabsterAttribute: TabsterDOMAttribute;
