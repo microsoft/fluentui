@@ -19,10 +19,6 @@ export type NavGroupSlots = {
   content: NonNullable<Slot<'span'>>;
 };
 
-export type NavGroupInternalSlots = NavGroupSlots & {
-  contentReservedSpace?: Slot<'span'>;
-};
-
 /**
  * Any value that identifies a specific navGroup.
  */
@@ -41,7 +37,7 @@ export type NavGroupProps = ComponentProps<Partial<NavGroupSlots>> & {
 /**
  * State used in rendering NavGroup
  */
-export type NavGroupState = ComponentState<NavGroupInternalSlots> &
+export type NavGroupState = ComponentState<NavGroupSlots> &
   Pick<NavGroupProps, 'value'> & {
     /**
      * If this navGroup is selected

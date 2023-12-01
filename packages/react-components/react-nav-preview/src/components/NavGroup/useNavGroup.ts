@@ -47,7 +47,7 @@ export const useNavGroup_unstable = (props: NavGroupProps, ref: React.Ref<HTMLBu
   });
 
   return {
-    components: { root: 'button', content: 'span', contentReservedSpace: 'span' },
+    components: { root: 'button', content: 'span' },
     root: slot.always(
       getIntrinsicElementProps('button', {
         ref: useMergedRefs(ref, innerRef),
@@ -59,10 +59,6 @@ export const useNavGroup_unstable = (props: NavGroupProps, ref: React.Ref<HTMLBu
       { elementType: 'button' },
     ),
     content: contentSlot,
-    contentReservedSpace: slot.optional(content, {
-      defaultProps: { children: props.children },
-      elementType: 'span',
-    }),
     selected,
     value,
   };
