@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-jsx-runtime
 
-This log was last generated on Thu, 09 Nov 2023 17:29:36 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Nov 2023 13:42:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.20)
+
+Thu, 30 Nov 2023 13:42:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.19..@fluentui/react-jsx-runtime_v9.0.20)
+
+### Patches
+
+- chore: move up NODE_ENV check in warnIfElementTypeIsInvalid ([PR #29886](https://github.com/microsoft/fluentui/pull/29886) by wfwf1997@gmail.com)
 
 ## [9.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.19)
 

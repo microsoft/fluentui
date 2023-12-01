@@ -9,6 +9,7 @@ export { Inline } from './LinkInline.stories';
 export { Disabled } from './LinkDisabled.stories';
 export { DisabledFocusable } from './LinkDisabledFocusable.stories';
 export { AsButton } from './LinkAsButton.stories';
+export { AsSpan } from './LinkAsSpan.stories';
 
 export default {
   title: 'Components/Link',

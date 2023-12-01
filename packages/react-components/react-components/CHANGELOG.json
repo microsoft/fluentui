@@ -2,6 +2,105 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 30 Nov 2023 13:42:05 GMT",
+      "tag": "@fluentui/react-components_v9.42.0",
+      "version": "9.42.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "29bddb19fbcf2f63711e9b5153b02066172dce9d",
+            "comment": "feat: Implement aria-activedescendant utility"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "499eb8b3c02e05e817ff907b740af703c4a19bf1",
+            "comment": "feat: export useUncontrolledFocus hook"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "6438f49dcad090446fdec9b189a027751e8dca11",
+            "comment": "add useFocusVisible() to exports"
+          },
+          {
+            "author": "humbertomakotomorimoto@gmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "3d31f25ab5321f10c1df4c5d113e7d78d89ca7b4",
+            "comment": "feat: Adding span as an option for Link to render as."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "499eb8b3c02e05e817ff907b740af703c4a19bf1",
+            "comment": "feat: implement useTabsterUncontrolled hook"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "d82568581b73996acbfdf78966e55572e0f869f6",
+            "comment": "feature: adds semantic elements (strong, b, em, i) to Text root signature"
+          }
+        ],
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "f72acbfc210a6477265b88d794fba38639666e5c",
+            "comment": "fix: listbox closes on blur after scroll click"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "81bc562773bf52c5806054de35a206a250cfd28e",
+            "comment": "fix: Dropdown button gets focus in Safari when clicked"
+          },
+          {
+            "author": "wfwf1997@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "ff672d6094b3fa211b96677ebe8c05f602f1ed01",
+            "comment": "chore: move up NODE_ENV check in warnIfElementTypeIsInvalid"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "7bb7f3dfe62dcbc678cc631c3683b11df942960e",
+            "comment": "feat: adds floating-ui-devtools support"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "faf18b048818bc55bb1ae1dc917b81aff898d00c",
+            "comment": "fix: Infinite reset loop in matchTargetSize middleware"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "75b0af0922b6d5e71bead8b378bf98ba659f70f2",
+            "comment": "fix: Brand row appearance should be brandBackground2 in pressed state"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "5219f3b7f8e802d4c95370bc97acb6b25a469839",
+            "comment": "docs: add docs for mountNodeProps"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "4dddcd651b848e2f4d5b90a28e64e13118da31b6",
+            "comment": "feat: Add default auto-measuring on dynamic virtualizezr if no sizing function provided"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Nov 2023 09:55:08 GMT",
       "tag": "@fluentui/react-components_v9.41.0",
       "version": "9.41.0",

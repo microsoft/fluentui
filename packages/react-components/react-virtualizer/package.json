@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-virtualizer",
-  "version": "9.0.0-alpha.58",
+  "version": "9.0.0-alpha.59",
   "description": "Generic and composable virtualizer framework built on browser intersection observer",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -32,7 +32,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "^9.0.19",
+    "@fluentui/react-jsx-runtime": "^9.0.20",
     "@fluentui/react-utilities": "^9.15.2",
     "@fluentui/react-shared-contexts": "^9.13.0",
     "@griffel/react": "^1.5.14",

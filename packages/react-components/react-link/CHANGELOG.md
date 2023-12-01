@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Mon, 20 Nov 2023 09:55:10 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Nov 2023 13:42:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.2.0)
+
+Thu, 30 Nov 2023 13:42:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.1.35..@fluentui/react-link_v9.2.0)
+
+### Minor changes
+
+- feat: Adding span as an option for Link to render as. ([PR #29937](https://github.com/microsoft/fluentui/pull/29937) by humbertomakotomorimoto@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.20 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+- Bump @fluentui/react-tabster to v9.15.0 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
 
 ## [9.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.1.35)
 
