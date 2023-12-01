@@ -2,6 +2,29 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Thu, 30 Nov 2023 13:42:06 GMT",
+      "tag": "@fluentui/react-portal_v9.4.3",
+      "version": "9.4.3",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "5219f3b7f8e802d4c95370bc97acb6b25a469839",
+            "comment": "docs: add docs for mountNodeProps"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-tabster to v9.15.0",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Nov 2023 09:55:10 GMT",
       "tag": "@fluentui/react-portal_v9.4.2",
       "version": "9.4.2",

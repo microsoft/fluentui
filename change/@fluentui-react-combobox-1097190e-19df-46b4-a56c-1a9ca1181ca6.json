@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: listbox closes on blur after scroll click",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

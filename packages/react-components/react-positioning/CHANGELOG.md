@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 20 Nov 2023 09:55:10 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Nov 2023 13:42:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.10.2)
+
+Thu, 30 Nov 2023 13:42:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.10.1..@fluentui/react-positioning_v9.10.2)
+
+### Patches
+
+- feat: adds floating-ui-devtools support ([PR #29905](https://github.com/microsoft/fluentui/pull/29905) by bernardo.sunderhus@gmail.com)
+- fix: Infinite reset loop in matchTargetSize middleware ([PR #29915](https://github.com/microsoft/fluentui/pull/29915) by lingfan.gao@microsoft.com)
 
 ## [9.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.10.1)
 

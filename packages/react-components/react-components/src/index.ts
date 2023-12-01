@@ -37,6 +37,7 @@ export {
   useArrowNavigationGroup,
   useFocusableGroup,
   useFocusFinders,
+  useFocusVisible,
   useFocusWithin,
   useKeyboardNavAttribute,
   useModalAttributes,
@@ -44,6 +45,7 @@ export {
   useFocusObserved,
   useRestoreFocusTarget,
   useRestoreFocusSource,
+  useUncontrolledFocus,
 } from '@fluentui/react-tabster';
 export type {
   CreateCustomFocusIndicatorStyleOptions,

@@ -1195,6 +1195,7 @@ import { useFocusableGroup } from '@fluentui/react-tabster';
 import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFocusObserved } from '@fluentui/react-tabster';
+import { useFocusVisible } from '@fluentui/react-tabster';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { useHeadlessFlatTree_unstable } from '@fluentui/react-tree';
 import { useId } from '@fluentui/react-utilities';
@@ -1412,6 +1413,7 @@ import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
 import { useTreeStyles_unstable } from '@fluentui/react-tree';
+import { useUncontrolledFocus } from '@fluentui/react-tabster';
 import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
@@ -3798,6 +3800,8 @@ export { useFocusFinders }
 
 export { useFocusObserved }
 
+export { useFocusVisible }
+
 export { useFocusWithin }
 
 export { useHeadlessFlatTree_unstable }
@@ -4231,6 +4235,8 @@ export { useTreeItemPersonaLayoutStyles_unstable }
 export { useTreeItemStyles_unstable }
 
 export { useTreeStyles_unstable }
+
+export { useUncontrolledFocus }
 
 export { VerticalSpacingTokens }
 

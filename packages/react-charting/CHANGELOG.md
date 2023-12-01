@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 24 Nov 2023 07:27:54 GMT and should not be manually modified.
+This log was last generated on Wed, 29 Nov 2023 07:26:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.3)
+
+Wed, 29 Nov 2023 07:26:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.2..@fluentui/react-charting_v5.19.3)
+
+### Patches
+
+- Updating the d3-time-format package for react-charting ([PR #29890](https://github.com/microsoft/fluentui/pull/29890) by srmukher@microsoft.com)
 
 ## [5.19.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.2)
 

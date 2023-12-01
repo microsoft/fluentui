@@ -1,27 +1,9 @@
-import { isHTMLElement, setVirtualParent } from '@fluentui/react-utilities';
+import { setVirtualParent } from '@fluentui/react-utilities';
 import * as React from 'react';
 
+import { toMountNodeProps } from '../../utils/toMountNodeProps';
 import { usePortalMountNode } from './usePortalMountNode';
 import type { PortalProps, PortalState } from './Portal.types';
-
-export function toMountNodeProps(mountNode: PortalProps['mountNode']): {
-  element?: HTMLElement | null;
-  className?: string;
-} {
-  if (isHTMLElement(mountNode)) {
-    return { element: mountNode };
-  }
-
-  if (typeof mountNode === 'object') {
-    if (mountNode === null) {
-      return { element: null };
-    }
-
-    return mountNode;
-  }
-
-  return {};
-}
 
 /**
  * Create the state required to render Portal.
