@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Export useAvatarGroupPopovercontextValues hook.",
+  "packageName": "@fluentui/react-components",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
