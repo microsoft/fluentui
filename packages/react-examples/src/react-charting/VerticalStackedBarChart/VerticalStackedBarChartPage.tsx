@@ -13,6 +13,7 @@ import { VerticalStackedBarChartStyledExample } from './VerticalStackedBarChart.
 import { VerticalStackedBarChartCalloutExample } from './VerticalStackedBarChart.Callout.Example';
 import { VerticalStackedBarChartTooltipExample } from './VerticalStackedBarChart.AxisTooltip.Example';
 import { VerticalStackedBarChartCustomAccessibilityExample } from './VerticalStackedBarChart.CustomAccessibility.Example';
+import { VerticalStackedBarChartDateLabelExample } from './VerticalStackedBarChart.DateLabel.Example';
 
 const VerticalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Basic.Example.tsx') as string;
@@ -24,6 +25,8 @@ const VerticalBarChartTooltipExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.AxisTooltip.Example') as string;
 const VerticalBarChartCustomAccessibilityExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.CustomAccessibility.Example') as string;
+const VerticalBarChartDateLabelExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.DateLabel.Example') as string;
 
 export class VerticalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -50,6 +53,9 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
               code={VerticalBarChartCustomAccessibilityExampleCode}
             >
               <VerticalStackedBarChartCustomAccessibilityExample />
+            </ExampleCard>
+            <ExampleCard title="VerticalStackedBarChart Date Axis" code={VerticalBarChartDateLabelExampleCode}>
+              <VerticalStackedBarChartDateLabelExample />
             </ExampleCard>
           </div>
         }
