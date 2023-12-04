@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: CommandBar menu icon is not disabled in high contrast mode",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
