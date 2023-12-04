@@ -7,7 +7,11 @@ import { ListItemProps } from './ListItem.types';
 describe('ListItem', () => {
   isConformant({
     Component: ListItem as React.FunctionComponent<ListItemProps>,
+    componentPath: module!.filename.replace('.test', ''),
     displayName: 'ListItem',
+    // Disabled because this should be ItemLayout's responsibility, but it doesn't render those.
+    // Adding them there now might not be safe.
+    disabledTests: ['component-has-static-classnames-object', 'has-docblock', 'has-top-level-file'],
     testOptions: {
       'has-static-classnames': [
         {

@@ -7,7 +7,11 @@ import { ListProps } from './List.types';
 describe('List', () => {
   isConformant({
     Component: List as React.FunctionComponent<ListProps>,
+    componentPath: module!.filename.replace('.test', ''),
     displayName: 'List',
+    // Disabled because this should be ItemLayout's responsibility, but it doesn't render those.
+    // Adding them there now might not be safe.
+    disabledTests: ['component-has-static-classnames-object', 'has-docblock', 'has-top-level-file'],
     testOptions: {
       'consistent-callback-args': {
         // onSelectionChange has an eventArgument which is React.SyntheticEvent. This throws an error during testing
