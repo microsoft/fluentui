@@ -11,7 +11,6 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  useAdamTableCompositeNavigation,
   useAdamTableCombinedNavigation,
   Button,
   Menu,
@@ -29,7 +28,7 @@ interface UpcomingMeetingsGridActiveOnlyCombinedNavigationRendererProps {
 export const UpcomingMeetingsGridActiveOnlyCombinedNavigationRenderer: React.FC<
   UpcomingMeetingsGridActiveOnlyCombinedNavigationRendererProps
 > = ({ threeUpcomingMeetings }) => {
-  const { tableRowTabsterAttribute, tableTabsterAttribute, onTableKeyDown } = useAdamTableCompositeNavigation();
+  const { tableRowTabsterAttribute, tableTabsterAttribute, onTableKeyDown } = useAdamTableCombinedNavigation();
 
   const threeUpcomingMeetingsItems = React.useMemo(
     () =>
@@ -41,18 +40,51 @@ export const UpcomingMeetingsGridActiveOnlyCombinedNavigationRenderer: React.FC<
 
   const handleGridKeyDown = React.useCallback(
     (event: React.KeyboardEvent) => {
+      let callTabsterKeyboardHandler = true;
       const isModifierDown = event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
       if (!isModifierDown) {
         const target = event.target as HTMLElement;
-        const gridCell = getNearestGridCellAncestorOrSelf(target);
+        const gridCell = getNearestGridCellAncestorOrSelf(target) as HTMLElement;
+        let rowToFocus;
         if (gridCell) {
+          const row = getNearestRowAncestor(gridCell);
+          if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            callTabsterKeyboardHandler = false;
+          }
           if (event.key === 'ArrowLeft') {
-            const row = getNearestRowAncestor(gridCell);
             row.focus();
+          } else if (event.key === 'ArrowDown' && row.nextElementSibling && row.nextElementSibling.role === 'row') {
+            rowToFocus = row.nextElementSibling;
+          } else if (
+            event.key === 'ArrowUp' &&
+            row.previousElementSibling &&
+            row.previousElementSibling.role === 'row'
+          ) {
+            rowToFocus = row.previousElementSibling;
+          }
+          if (rowToFocus) {
+            const elementToFocus = getFirstActiveElementInVerticalNavigation(gridCell, rowToFocus as HTMLElement);
+            elementToFocus?.focus();
+          }
+        } else if (target.role === 'row') {
+          if (event.key === 'ArrowDown' && target.nextElementSibling && target.nextElementSibling.role === 'row') {
+            rowToFocus = target.nextElementSibling as HTMLElement;
+          } else if (
+            event.key === 'ArrowUp' &&
+            target.previousElementSibling &&
+            target.previousElementSibling.role === 'row'
+          ) {
+            rowToFocus = target.previousElementSibling as HTMLElement;
+          }
+          if (rowToFocus) {
+            callTabsterKeyboardHandler = false;
+            rowToFocus.focus();
           }
         }
       }
-      onTableKeyDown(event);
+      if (callTabsterKeyboardHandler) {
+        onTableKeyDown(event);
+      }
     },
     [onTableKeyDown],
   );
