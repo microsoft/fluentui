@@ -33,12 +33,16 @@
     "@fluentui/scripts-storybook": "*"
   },
   "dependencies": {
+    "@fluentui/react-aria": "^9.4.0",
+    "@fluentui/react-components": "^9.42.0",
+    "@fluentui/react-context-selector": "^9.1.42",
     "@fluentui/react-icons": "^2.0.217",
+    "@fluentui/react-jsx-runtime": "^9.0.20",
+    "@fluentui/react-northstar": "^0.66.4",
+    "@fluentui/react-shared-contexts": "^9.13.0",
+    "@fluentui/react-tabster": "^9.15.0",
     "@fluentui/react-theme": "^9.1.16",
     "@fluentui/react-utilities": "^9.15.2",
-    "@fluentui/react-jsx-runtime": "^9.0.20",
-    "@fluentui/react-components": "^9.42.0",
-    "@fluentui/react-northstar": "^0.66.4",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
