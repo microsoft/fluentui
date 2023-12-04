@@ -37,9 +37,9 @@ export const UpcomingMeetingsGridFirstCellNavigationRenderer: React.FC<
       const target = event.target as HTMLElement;
       const row = getNearestRowAncestor(target);
       let rowToFocus;
-      if (event.key === 'ArrowDown' && row.nextElementSibling) {
+      if (event.key === 'ArrowDown' && row.nextElementSibling && row.nextElementSibling.role === 'row') {
         rowToFocus = row.nextElementSibling;
-      } else if (event.key === 'ArrowUp' && row.previousElementSibling) {
+      } else if (event.key === 'ArrowUp' && row.previousElementSibling && row.previousElementSibling.role === 'row') {
         rowToFocus = row.previousElementSibling;
       }
       if (rowToFocus) {
