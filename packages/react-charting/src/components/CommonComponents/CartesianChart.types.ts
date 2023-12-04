@@ -486,7 +486,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     isCalloutVisible: boolean;
     id: string;
     YValueHover?: IYValueHover[];
-    hoverXValue?: string | number | null;
+    hoverXValue?: string | number | Date | null;
     legend?: string;
     color?: string;
     YValue?: string | number;

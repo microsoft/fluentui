@@ -177,7 +177,7 @@ export interface IBasestate {
     // (undocumented)
     hoveredLineColor?: string;
     // (undocumented)
-    hoverXValue?: string | number | null;
+    hoverXValue?: string | number | Date | null;
     // (undocumented)
     hoverYValue?: string | number | null;
     // (undocumented)
@@ -949,7 +949,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
         isCalloutVisible: boolean;
         id: string;
         YValueHover?: IYValueHover[];
-        hoverXValue?: string | number | null;
+        hoverXValue?: string | number | Date | null;
         legend?: string;
         color?: string;
         YValue?: string | number;
@@ -1301,7 +1301,7 @@ export interface IVerticalBarChartDataPoint {
     legend?: string;
     lineData?: ILineDataInVerticalBarChart;
     onClick?: VoidFunction;
-    x: number | string;
+    x: number | string | Date;
     xAxisCalloutData?: string;
     y: number;
     yAxisCalloutData?: string;
@@ -1398,12 +1398,17 @@ export interface IVerticalStackedBarChartStyles extends ICartesianChartStyles {
 }
 
 // @public (undocumented)
+export interface IVerticalStackedBarDataPoint extends Omit<IDataPoint, 'x'> {
+    x: number | string | Date;
+}
+
+// @public (undocumented)
 export interface IVerticalStackedChartProps {
     chartData: IVSChartDataPoint[];
     lineData?: ILineDataInVerticalStackedBarChart[];
     stackCallOutAccessibilityData?: IAccessibilityProps;
     xAxisCalloutData?: string;
-    xAxisPoint: number | string;
+    xAxisPoint: number | string | Date;
 }
 
 // @public (undocumented)
