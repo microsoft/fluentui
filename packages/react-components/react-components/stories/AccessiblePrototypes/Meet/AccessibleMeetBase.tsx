@@ -314,9 +314,11 @@ export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant 
   return (
     <>
       {variant === 'gridsActiveOnlyCombinedNavigation' && (
-        <h1>Accessible Meet Using Grids Active Only Combined Navigation</h1>
+        <h1>Variant B: Accessible Meet Using Grids Active Only Combined Navigation</h1>
       )}
-      {variant === 'gridsActiveOnlyRowNavigation' && <h1>Accessible Meet Using Grids Active Only Row Navigation</h1>}
+      {variant === 'gridsActiveOnlyRowNavigation' && (
+        <h1>Variant A: Accessible Meet Using Grids Active Only Row Navigation</h1>
+      )}
       {variant === 'stitchedGridsRowNavigation' && <h1>Accessible Meet Using Stitched Grids Row Navigation</h1>}
       {variant === 'gridsRowNavigation' && <h1>Accessible Meet Using Grids Row Navigation</h1>}
       {variant === 'gridsFirstCellNavigation' && <h1>Accessible Meet Using Grids First Cell Navigation</h1>}
