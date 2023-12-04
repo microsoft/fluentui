@@ -45,7 +45,7 @@ export const UpcomingMeetingsGridActiveOnlyCombinedNavigationRenderer: React.FC<
       if (!isModifierDown) {
         const target = event.target as HTMLElement;
         const gridCell = getNearestGridCellAncestorOrSelf(target);
-        if (gridCell?.role === 'gridcell') {
+        if (gridCell) {
           if (event.key === 'ArrowLeft') {
             const row = getNearestRowAncestor(gridCell);
             row.focus();
@@ -157,7 +157,7 @@ export const RecentMeetingsTreeGridActiveOnlyCombinedNavigationRenderer: React.F
         const target = event.target as HTMLElement;
         const gridCell = getNearestGridCellAncestorOrSelf(target);
         let rowToFocus;
-        if (gridCell?.role === 'gridcell') {
+        if (gridCell) {
           const row = getNearestRowAncestor(gridCell);
           const table = row.parentElement?.parentElement as HTMLElement;
           if (event.key === 'ArrowLeft') {
