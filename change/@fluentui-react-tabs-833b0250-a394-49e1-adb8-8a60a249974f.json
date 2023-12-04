@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: added select tab on focus behavior",
+  "packageName": "@fluentui/react-tabs",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
