@@ -99,7 +99,6 @@ export const Toc = ({ stories }: { stories: TocItem[] }) => {
     );
 
     stories.forEach(link => {
-      // eslint-disable-next-line no-restricted-globals
       const element = document.getElementById(nameToHash(link.name));
       if (element) {
         observer.observe(element);

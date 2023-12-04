@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": " `window` and `document` access",
+  "comment": "chore: disallow `window` and `document` access",
   "packageName": "@fluentui/react-window-provider",
   "email": "seanmonahan@microsoft.com",
   "dependentChangeType": "patch"

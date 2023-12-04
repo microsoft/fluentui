@@ -1,7 +1,6 @@
 import { mergeClasses, makeStyles, createDOMRenderer } from '@griffel/core';
 import * as React from 'react';
 
-// eslint-disable-next-line no-restricted-globals
 const renderer = createDOMRenderer(document);
 
 const useStyles = makeStyles({

@@ -6,7 +6,6 @@ export const useDebounce = (fn: (...args: unknown[]) => void, duration: number) 
   return React.useCallback(
     (...args: unknown[]) => {
       clearTimeout(timeoutRef.current);
-      // eslint-disable-next-line no-restricted-globals
       timeoutRef.current = window.setTimeout(() => {
         fn(...args);
       }, duration);
