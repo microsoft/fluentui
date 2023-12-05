@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "[BugFix] ThemeProvider will now respect scopeSettings from Customizer",
+  "packageName": "@fluentui/utilities",
+  "email": "aviellavie@microsoft.com",
+  "dependentChangeType": "patch"
+}
