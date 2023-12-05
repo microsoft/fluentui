@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
+import { makeStyles, Button, Link, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
 import type { PopoverProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -21,6 +21,7 @@ const ExampleContent = () => {
 
 export const InternalUpdateContent = () => {
   const [visible, setVisible] = React.useState(false);
+  const focusRef = React.useRef<HTMLAnchorElement>(null);
 
   const changeContent = () => setVisible(true);
   const onOpenChange: PopoverProps['onOpenChange'] = (e, data) => {
@@ -28,6 +29,12 @@ export const InternalUpdateContent = () => {
       setVisible(false);
     }
   };
+
+  React.useEffect(() => {
+    if (visible) {
+      focusRef.current?.focus();
+    }
+  }, [visible]);
 
   return (
     <Popover onOpenChange={onOpenChange}>
@@ -39,7 +46,12 @@ export const InternalUpdateContent = () => {
         <ExampleContent />
 
         {visible ? (
-          <div>The second panel</div>
+          <div>
+            The second panel content{' '}
+            <Link href="#" ref={focusRef}>
+              and a link
+            </Link>
+          </div>
         ) : (
           <div>
             <Button onClick={changeContent}>Action</Button>

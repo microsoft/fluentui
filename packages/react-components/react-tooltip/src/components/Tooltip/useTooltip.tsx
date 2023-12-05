@@ -4,6 +4,8 @@ import {
   useTooltipVisibility_unstable as useTooltipVisibility,
   useFluent_unstable as useFluent,
 } from '@fluentui/react-shared-contexts';
+import type { KeyborgFocusInEvent } from '@fluentui/react-tabster';
+import { KEYBORG_FOCUSIN } from '@fluentui/react-tabster';
 import {
   applyTriggerPropsToChildren,
   useControllableState,
@@ -149,11 +151,8 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     }
   }, [context, targetDocument, visible, setVisible]);
 
-  // The focused element gets a blur event when the document loses focus
-  // (e.g. switching tabs in the browser), but we don't want to show the
-  // tooltip again when the document gets focus back. Handle this case by
-  // checking if the blurred element is still the document's activeElement.
-  // See https://github.com/microsoft/fluentui/issues/13541
+  // Used to skip showing the tooltip  in certain situations when the trigger is focued.
+  // See comments where this is set for more info.
   const ignoreNextFocusEventRef = React.useRef(false);
 
   // Listener for onPointerEnter and onFocus on the trigger element
@@ -176,6 +175,29 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     [setDelayTimeout, setVisible, state.showDelay, context],
   );
 
+  // Callback ref that attaches a keyborg:focusin event listener.
+  const [keyborgListenerCallbackRef] = React.useState(() => {
+    const onKeyborgFocusIn = ((ev: KeyborgFocusInEvent) => {
+      // Skip showing the tooltip if focus moved programmatically.
+      // For example, we don't want to show the tooltip when a dialog is closed
+      // and Tabster programmatically restores focus to the trigger button.
+      // See https://github.com/microsoft/fluentui/issues/27576
+      if (ev.details?.isFocusedProgrammatically) {
+        ignoreNextFocusEventRef.current = true;
+      }
+    }) as EventListener;
+
+    // Save the current element to remove the listener when the ref changes
+    let current: Element | null = null;
+
+    // Callback ref that attaches the listener to the element
+    return (element: Element | null) => {
+      current?.removeEventListener(KEYBORG_FOCUSIN, onKeyborgFocusIn);
+      element?.addEventListener(KEYBORG_FOCUSIN, onKeyborgFocusIn);
+      current = element;
+    };
+  });
+
   // Listener for onPointerLeave and onBlur on the trigger element
   const onLeaveTrigger = React.useCallback(
     (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
@@ -185,6 +207,11 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
         // Hide immediately when losing focus
         delay = 0;
 
+        // The focused element gets a blur event when the document loses focus
+        // (e.g. switching tabs in the browser), but we don't want to show the
+        // tooltip again when the document gets focus back. Handle this case by
+        // checking if the blurred element is still the document's activeElement.
+        // See https://github.com/microsoft/fluentui/issues/13541
         ignoreNextFocusEventRef.current = targetDocument?.activeElement === ev.target;
       }
 
@@ -228,14 +255,16 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     state.shouldRenderTooltip = false;
   }
 
-  const childTargetRef = useMergedRefs(child?.ref, targetRef);
-
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
   state.children = applyTriggerPropsToChildren(children, {
     ...triggerAriaProps,
     ...child?.props,
-    // If the target prop is not provided, attach targetRef to the trigger element's ref prop
-    ref: positioningOptions.target === undefined ? childTargetRef : child?.ref,
+    ref: useMergedRefs(
+      child?.ref,
+      keyborgListenerCallbackRef,
+      // If the target prop is not provided, attach targetRef to the trigger element's ref prop
+      positioningOptions.target === undefined ? targetRef : undefined,
+    ),
     onPointerEnter: useEventCallback(mergeCallbacks(child?.props?.onPointerEnter, onEnterTrigger)),
     onPointerLeave: useEventCallback(mergeCallbacks(child?.props?.onPointerLeave, onLeaveTrigger)),
     onFocus: useEventCallback(mergeCallbacks(child?.props?.onFocus, onEnterTrigger)),

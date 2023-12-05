@@ -6,7 +6,7 @@ import {
   BreadcrumbProps,
   BreadcrumbItem,
   BreadcrumbDivider,
-} from '@fluentui/react-breadcrumb-preview';
+} from '@fluentui/react-breadcrumb';
 import { bundleIcon, CalendarMonth20Filled, CalendarMonth20Regular } from '@fluentui/react-icons';
 const CalendarMonth = bundleIcon(CalendarMonth20Filled, CalendarMonth20Regular);
 

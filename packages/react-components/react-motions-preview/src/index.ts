@@ -1,4 +1,8 @@
-import * as atoms from './atoms';
+import * as atom from './motions/atom';
+import * as presence from './motions/presence';
 
-export { atoms };
-export type { MotionAtom } from './types';
+export { createAtom } from './factories/createAtom';
+export { createPresence } from './factories/createPresence';
+
+export { atom, presence };
+export type { AtomMotion, PresenceMotion, MotionImperativeRef } from './types';

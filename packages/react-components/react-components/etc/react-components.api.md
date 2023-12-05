@@ -86,6 +86,28 @@ import { Body2 } from '@fluentui/react-text';
 import { body2ClassNames } from '@fluentui/react-text';
 import { BorderRadiusTokens } from '@fluentui/react-theme';
 import { BrandVariants } from '@fluentui/react-theme';
+import { Breadcrumb } from '@fluentui/react-breadcrumb';
+import { BreadcrumbButton } from '@fluentui/react-breadcrumb';
+import { breadcrumbButtonClassNames } from '@fluentui/react-breadcrumb';
+import { BreadcrumbButtonProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbButtonSlots } from '@fluentui/react-breadcrumb';
+import { BreadcrumbButtonState } from '@fluentui/react-breadcrumb';
+import { breadcrumbClassNames } from '@fluentui/react-breadcrumb';
+import { BreadcrumbContextValues } from '@fluentui/react-breadcrumb';
+import { BreadcrumbDivider } from '@fluentui/react-breadcrumb';
+import { breadcrumbDividerClassNames } from '@fluentui/react-breadcrumb';
+import { BreadcrumbDividerProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbDividerSlots } from '@fluentui/react-breadcrumb';
+import { BreadcrumbDividerState } from '@fluentui/react-breadcrumb';
+import { BreadcrumbItem } from '@fluentui/react-breadcrumb';
+import { breadcrumbItemClassNames } from '@fluentui/react-breadcrumb';
+import { BreadcrumbItemProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbItemSlots } from '@fluentui/react-breadcrumb';
+import { BreadcrumbItemState } from '@fluentui/react-breadcrumb';
+import { BreadcrumbProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbProvider } from '@fluentui/react-breadcrumb';
+import { BreadcrumbSlots } from '@fluentui/react-breadcrumb';
+import { BreadcrumbState } from '@fluentui/react-breadcrumb';
 import { Button } from '@fluentui/react-button';
 import { buttonClassNames } from '@fluentui/react-button';
 import { ButtonProps } from '@fluentui/react-button';
@@ -260,10 +282,12 @@ import { DividerState } from '@fluentui/react-divider';
 import { Drawer } from '@fluentui/react-drawer';
 import { DrawerBody } from '@fluentui/react-drawer';
 import { drawerBodyClassNames } from '@fluentui/react-drawer';
+import { DrawerBodyProps } from '@fluentui/react-drawer';
 import { DrawerBodySlots } from '@fluentui/react-drawer';
 import { DrawerBodyState } from '@fluentui/react-drawer';
 import { DrawerFooter } from '@fluentui/react-drawer';
 import { drawerFooterClassNames } from '@fluentui/react-drawer';
+import { DrawerFooterProps } from '@fluentui/react-drawer';
 import { DrawerFooterSlots } from '@fluentui/react-drawer';
 import { DrawerFooterState } from '@fluentui/react-drawer';
 import { DrawerHeader } from '@fluentui/react-drawer';
@@ -273,10 +297,12 @@ import { drawerHeaderNavigationClassNames } from '@fluentui/react-drawer';
 import { DrawerHeaderNavigationProps } from '@fluentui/react-drawer';
 import { DrawerHeaderNavigationSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderNavigationState } from '@fluentui/react-drawer';
+import { DrawerHeaderProps } from '@fluentui/react-drawer';
 import { DrawerHeaderSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderState } from '@fluentui/react-drawer';
 import { DrawerHeaderTitle } from '@fluentui/react-drawer';
 import { drawerHeaderTitleClassNames } from '@fluentui/react-drawer';
+import { DrawerHeaderTitleProps } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleState } from '@fluentui/react-drawer';
 import { DrawerProps } from '@fluentui/react-drawer';
@@ -371,6 +397,7 @@ import { InteractionTagSecondarySlots } from '@fluentui/react-tags';
 import { InteractionTagSecondaryState } from '@fluentui/react-tags';
 import { InteractionTagSlots } from '@fluentui/react-tags';
 import { InteractionTagState } from '@fluentui/react-tags';
+import { isTruncatableBreadcrumbContent } from '@fluentui/react-breadcrumb';
 import { Label } from '@fluentui/react-label';
 import { labelClassNames } from '@fluentui/react-label';
 import { LabelProps } from '@fluentui/react-label';
@@ -532,6 +559,9 @@ import { PartialTheme } from '@fluentui/react-theme';
 import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-avatar';
+import { PartitionBreadcrumbItems } from '@fluentui/react-breadcrumb';
+import { partitionBreadcrumbItems } from '@fluentui/react-breadcrumb';
+import { PartitionBreadcrumbItemsOptions } from '@fluentui/react-breadcrumb';
 import { Persona } from '@fluentui/react-persona';
 import { personaClassNames } from '@fluentui/react-persona';
 import { PersonaProps } from '@fluentui/react-persona';
@@ -607,6 +637,10 @@ import { renderAvatarGroup_unstable } from '@fluentui/react-avatar';
 import { renderAvatarGroupItem_unstable } from '@fluentui/react-avatar';
 import { renderAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
 import { renderBadge_unstable } from '@fluentui/react-badge';
+import { renderBreadcrumb_unstable } from '@fluentui/react-breadcrumb';
+import { renderBreadcrumbButton_unstable } from '@fluentui/react-breadcrumb';
+import { renderBreadcrumbDivider_unstable } from '@fluentui/react-breadcrumb';
+import { renderBreadcrumbItem_unstable } from '@fluentui/react-breadcrumb';
 import { renderButton_unstable } from '@fluentui/react-button';
 import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
@@ -1033,6 +1067,8 @@ import { TreeProvider } from '@fluentui/react-tree';
 import { TreeSelectionValue } from '@fluentui/react-tree';
 import { TreeSlots } from '@fluentui/react-tree';
 import { TreeState } from '@fluentui/react-tree';
+import { truncateBreadcrumbLongName } from '@fluentui/react-breadcrumb';
+import { truncateBreadcrumLongTooltip } from '@fluentui/react-breadcrumb';
 import { TypographyStyle } from '@fluentui/react-theme';
 import { TypographyStyles } from '@fluentui/react-theme';
 import { typographyStyles } from '@fluentui/react-theme';
@@ -1059,11 +1095,21 @@ import { useAvatarGroupContextValues } from '@fluentui/react-avatar';
 import { useAvatarGroupItem_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupItemStyles_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupPopoverContextValues_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupPopoverStyles_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupStyles_unstable } from '@fluentui/react-avatar';
 import { useAvatarStyles_unstable } from '@fluentui/react-avatar';
 import { useBadge_unstable } from '@fluentui/react-badge';
 import { useBadgeStyles_unstable } from '@fluentui/react-badge';
+import { useBreadcrumb_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbButton_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbButtonStyles_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbContext_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbDivider_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbDividerStyles_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbItem_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbItemStyles_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbStyles_unstable } from '@fluentui/react-breadcrumb';
 import { useButton_unstable } from '@fluentui/react-button';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
 import { useCard_unstable } from '@fluentui/react-card';
@@ -1150,6 +1196,7 @@ import { useFocusableGroup } from '@fluentui/react-tabster';
 import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFocusObserved } from '@fluentui/react-tabster';
+import { useFocusVisible } from '@fluentui/react-tabster';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { useHeadlessFlatTree_unstable } from '@fluentui/react-tree';
 import { useId } from '@fluentui/react-utilities';
@@ -1367,6 +1414,7 @@ import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
 import { useTreeStyles_unstable } from '@fluentui/react-tree';
+import { useUncontrolledFocus } from '@fluentui/react-tabster';
 import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
@@ -1534,6 +1582,50 @@ export { body2ClassNames }
 export { BorderRadiusTokens }
 
 export { BrandVariants }
+
+export { Breadcrumb }
+
+export { BreadcrumbButton }
+
+export { breadcrumbButtonClassNames }
+
+export { BreadcrumbButtonProps }
+
+export { BreadcrumbButtonSlots }
+
+export { BreadcrumbButtonState }
+
+export { breadcrumbClassNames }
+
+export { BreadcrumbContextValues }
+
+export { BreadcrumbDivider }
+
+export { breadcrumbDividerClassNames }
+
+export { BreadcrumbDividerProps }
+
+export { BreadcrumbDividerSlots }
+
+export { BreadcrumbDividerState }
+
+export { BreadcrumbItem }
+
+export { breadcrumbItemClassNames }
+
+export { BreadcrumbItemProps }
+
+export { BreadcrumbItemSlots }
+
+export { BreadcrumbItemState }
+
+export { BreadcrumbProps }
+
+export { BreadcrumbProvider }
+
+export { BreadcrumbSlots }
+
+export { BreadcrumbState }
 
 export { Button }
 
@@ -1883,6 +1975,8 @@ export { DrawerBody }
 
 export { drawerBodyClassNames }
 
+export { DrawerBodyProps }
+
 export { DrawerBodySlots }
 
 export { DrawerBodyState }
@@ -1890,6 +1984,8 @@ export { DrawerBodyState }
 export { DrawerFooter }
 
 export { drawerFooterClassNames }
+
+export { DrawerFooterProps }
 
 export { DrawerFooterSlots }
 
@@ -1909,6 +2005,8 @@ export { DrawerHeaderNavigationSlots }
 
 export { DrawerHeaderNavigationState }
 
+export { DrawerHeaderProps }
+
 export { DrawerHeaderSlots }
 
 export { DrawerHeaderState }
@@ -1916,6 +2014,8 @@ export { DrawerHeaderState }
 export { DrawerHeaderTitle }
 
 export { drawerHeaderTitleClassNames }
+
+export { DrawerHeaderTitleProps }
 
 export { DrawerHeaderTitleSlots }
 
@@ -2104,6 +2204,8 @@ export { InteractionTagSecondaryState }
 export { InteractionTagSlots }
 
 export { InteractionTagState }
+
+export { isTruncatableBreadcrumbContent }
 
 export { Label }
 
@@ -2427,6 +2529,12 @@ export { partitionAvatarGroupItems }
 
 export { PartitionAvatarGroupItemsOptions }
 
+export { PartitionBreadcrumbItems }
+
+export { partitionBreadcrumbItems }
+
+export { PartitionBreadcrumbItemsOptions }
+
 export { Persona }
 
 export { personaClassNames }
@@ -2576,6 +2684,14 @@ export { renderAvatarGroupItem_unstable }
 export { renderAvatarGroupPopover_unstable }
 
 export { renderBadge_unstable }
+
+export { renderBreadcrumb_unstable }
+
+export { renderBreadcrumbButton_unstable }
+
+export { renderBreadcrumbDivider_unstable }
+
+export { renderBreadcrumbItem_unstable }
 
 export { renderButton_unstable }
 
@@ -3429,6 +3545,10 @@ export { TreeSlots }
 
 export { TreeState }
 
+export { truncateBreadcrumbLongName }
+
+export { truncateBreadcrumLongTooltip }
+
 export { TypographyStyle }
 
 export { TypographyStyles }
@@ -3481,6 +3601,8 @@ export { useAvatarGroupItemStyles_unstable }
 
 export { useAvatarGroupPopover_unstable }
 
+export { useAvatarGroupPopoverContextValues_unstable }
+
 export { useAvatarGroupPopoverStyles_unstable }
 
 export { useAvatarGroupStyles_unstable }
@@ -3490,6 +3612,24 @@ export { useAvatarStyles_unstable }
 export { useBadge_unstable }
 
 export { useBadgeStyles_unstable }
+
+export { useBreadcrumb_unstable }
+
+export { useBreadcrumbButton_unstable }
+
+export { useBreadcrumbButtonStyles_unstable }
+
+export { useBreadcrumbContext_unstable }
+
+export { useBreadcrumbDivider_unstable }
+
+export { useBreadcrumbDividerStyles_unstable }
+
+export { useBreadcrumbItem_unstable }
+
+export { useBreadcrumbItemStyles_unstable }
+
+export { useBreadcrumbStyles_unstable }
 
 export { useButton_unstable }
 
@@ -3662,6 +3802,8 @@ export { UseFocusableGroupOptions }
 export { useFocusFinders }
 
 export { useFocusObserved }
+
+export { useFocusVisible }
 
 export { useFocusWithin }
 
@@ -4096,6 +4238,8 @@ export { useTreeItemPersonaLayoutStyles_unstable }
 export { useTreeItemStyles_unstable }
 
 export { useTreeStyles_unstable }
+
+export { useUncontrolledFocus }
 
 export { VerticalSpacingTokens }
 

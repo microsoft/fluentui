@@ -4,371 +4,601 @@
 
 ```ts
 
-declare namespace atoms {
+import * as React_2 from 'react';
+
+declare namespace atom {
     export {
         fade,
         scale,
         slide
     }
 }
-export { atoms }
-
-declare namespace fade {
-    export {
-        fadeEnterUltraFast,
-        fadeEnterFaster,
-        fadeEnterFast,
-        fadeEnterNormal,
-        fadeEnterSlow,
-        fadeEnterSlower,
-        fadeEnterUltraSlow,
-        fadeExitUltraFast,
-        fadeExitFaster,
-        fadeExitFast,
-        fadeExitNormal,
-        fadeExitSlow,
-        fadeExitSlower,
-        fadeExitUltraSlow
-    }
-}
+export { atom }
 
 // @public (undocumented)
-const fadeEnterFast: ({ fromValue }: FadeParams) => MotionAtom;
-
-// @public (undocumented)
-const fadeEnterFaster: ({ fromValue }: FadeParams) => MotionAtom;
-
-// @public (undocumented)
-const fadeEnterNormal: ({ fromValue }: FadeParams) => MotionAtom;
-
-// @public (undocumented)
-const fadeEnterSlow: ({ fromValue }: FadeParams) => MotionAtom;
-
-// @public (undocumented)
-const fadeEnterSlower: ({ fromValue }: FadeParams) => MotionAtom;
-
-// @public (undocumented)
-const fadeEnterUltraFast: ({ fromValue }: FadeParams) => MotionAtom;
-
-// @public (undocumented)
-const fadeEnterUltraSlow: ({ fromValue }: FadeParams) => MotionAtom;
-
-// @public (undocumented)
-const fadeExitFast: ({ fromValue }: FadeParams) => MotionAtom;
-
-// @public (undocumented)
-const fadeExitFaster: ({ fromValue }: FadeParams) => MotionAtom;
-
-// @public (undocumented)
-const fadeExitNormal: ({ fromValue }: FadeParams) => MotionAtom;
-
-// @public (undocumented)
-const fadeExitSlow: ({ fromValue }: FadeParams) => MotionAtom;
-
-// @public (undocumented)
-const fadeExitSlower: ({ fromValue }: FadeParams) => MotionAtom;
-
-// @public (undocumented)
-const fadeExitUltraFast: ({ fromValue }: FadeParams) => MotionAtom;
-
-// @public (undocumented)
-const fadeExitUltraSlow: ({ fromValue }: FadeParams) => MotionAtom;
-
-// @public (undocumented)
-export type MotionAtom = {
+export type AtomMotion = {
     keyframes: Keyframe[];
     options: KeyframeEffectOptions;
 };
 
-declare namespace scale {
+// @public
+export function createAtom(motion: AtomMotion): React_2.FC<AtomProps>;
+
+// @public (undocumented)
+export function createPresence(motion: PresenceMotion): React_2.FC<PresenceProps>;
+
+// @public (undocumented)
+const downEnterFast: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const downEnterFaster: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const downEnterNormal: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const downEnterSlow: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const downEnterSlower: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const downEnterUltraFast: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const downEnterUltraSlow: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const downExitFast: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const downExitFaster: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const downExitNormal: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const downExitSlow: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const downExitSlower: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const downExitUltraFast: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const downExitUltraSlow: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const downFast: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const downFaster: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const downNormal: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const downSlow: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const downSlower: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const downUltraFast: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const downUltraSlow: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const enterFast: ({ fromValue }?: FadeParams) => AtomMotion;
+
+// @public (undocumented)
+const enterFast_2: ({ fromValue }?: ScaleParams) => AtomMotion;
+
+// @public (undocumented)
+const enterFaster: ({ fromValue }?: FadeParams) => AtomMotion;
+
+// @public (undocumented)
+const enterFaster_2: ({ fromValue }?: ScaleParams) => AtomMotion;
+
+// @public (undocumented)
+const enterNormal: ({ fromValue }?: FadeParams) => AtomMotion;
+
+// @public (undocumented)
+const enterNormal_2: ({ fromValue }?: ScaleParams) => AtomMotion;
+
+// @public (undocumented)
+const enterSlow: ({ fromValue }?: FadeParams) => AtomMotion;
+
+// @public (undocumented)
+const enterSlow_2: ({ fromValue }?: ScaleParams) => AtomMotion;
+
+// @public (undocumented)
+const enterSlower: ({ fromValue }?: FadeParams) => AtomMotion;
+
+// @public (undocumented)
+const enterSlower_2: ({ fromValue }?: ScaleParams) => AtomMotion;
+
+// @public (undocumented)
+const enterUltraFast: ({ fromValue }?: FadeParams) => AtomMotion;
+
+// @public (undocumented)
+const enterUltraFast_2: ({ fromValue }?: ScaleParams) => AtomMotion;
+
+// @public (undocumented)
+const enterUltraSlow: ({ fromValue }?: FadeParams) => AtomMotion;
+
+// @public (undocumented)
+const enterUltraSlow_2: ({ fromValue }?: ScaleParams) => AtomMotion;
+
+// @public (undocumented)
+const exitFast: ({ fromValue }?: FadeParams) => AtomMotion;
+
+// @public (undocumented)
+const exitFast_2: ({ fromValue }?: ScaleParams) => AtomMotion;
+
+// @public (undocumented)
+const exitFaster: ({ fromValue }?: FadeParams) => AtomMotion;
+
+// @public (undocumented)
+const exitFaster_2: ({ fromValue }?: ScaleParams) => AtomMotion;
+
+// @public (undocumented)
+const exitNormal: ({ fromValue }?: FadeParams) => AtomMotion;
+
+// @public (undocumented)
+const exitNormal_2: ({ fromValue }?: ScaleParams) => AtomMotion;
+
+// @public (undocumented)
+const exitSlow: ({ fromValue }?: FadeParams) => AtomMotion;
+
+// @public (undocumented)
+const exitSlow_2: ({ fromValue }?: ScaleParams) => AtomMotion;
+
+// @public (undocumented)
+const exitSlower: ({ fromValue }?: FadeParams) => AtomMotion;
+
+// @public (undocumented)
+const exitSlower_2: ({ fromValue }?: ScaleParams) => AtomMotion;
+
+// @public (undocumented)
+const exitUltraFast: ({ fromValue }?: FadeParams) => AtomMotion;
+
+// @public (undocumented)
+const exitUltraFast_2: ({ fromValue }?: ScaleParams) => AtomMotion;
+
+// @public (undocumented)
+const exitUltraSlow: ({ fromValue }?: FadeParams) => AtomMotion;
+
+// @public (undocumented)
+const exitUltraSlow_2: ({ fromValue }?: ScaleParams) => AtomMotion;
+
+declare namespace fade {
     export {
-        scaleEnterUltraFast,
-        scaleEnterFaster,
-        scaleEnterFast,
-        scaleEnterNormal,
-        scaleEnterSlow,
-        scaleEnterSlower,
-        scaleEnterUltraSlow,
-        scaleExitUltraFast,
-        scaleExitFaster,
-        scaleExitFast,
-        scaleExitNormal,
-        scaleExitSlow,
-        scaleExitSlower,
-        scaleExitUltraSlow
+        FadeParams,
+        enterUltraFast,
+        enterFaster,
+        enterFast,
+        enterNormal,
+        enterSlow,
+        enterSlower,
+        enterUltraSlow,
+        exitUltraFast,
+        exitFaster,
+        exitFast,
+        exitNormal,
+        exitSlow,
+        exitSlower,
+        exitUltraSlow
+    }
+}
+
+declare namespace fade_2 {
+    export {
+        ultraFast,
+        faster,
+        fast,
+        normal,
+        slow,
+        slower,
+        ultraSlow
     }
 }
 
 // @public (undocumented)
-const scaleEnterFast: ({ fromValue }: ScaleParams) => MotionAtom;
+type FadeParams = {
+    fromValue?: number;
+};
 
 // @public (undocumented)
-const scaleEnterFaster: ({ fromValue }: ScaleParams) => MotionAtom;
+const fast: (params?: FadeParams) => PresenceMotion;
 
 // @public (undocumented)
-const scaleEnterNormal: ({ fromValue }: ScaleParams) => MotionAtom;
+const fast_2: (params?: ScaleParams) => PresenceMotion;
 
 // @public (undocumented)
-const scaleEnterSlow: ({ fromValue }: ScaleParams) => MotionAtom;
+const faster: (params?: FadeParams) => PresenceMotion;
 
 // @public (undocumented)
-const scaleEnterSlower: ({ fromValue }: ScaleParams) => MotionAtom;
+const faster_2: (params?: ScaleParams) => PresenceMotion;
 
 // @public (undocumented)
-const scaleEnterUltraFast: ({ fromValue }: ScaleParams) => MotionAtom;
+const leftEnterFast: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const scaleEnterUltraSlow: ({ fromValue }: ScaleParams) => MotionAtom;
+const leftEnterFaster: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const scaleExitFast: ({ fromValue }: ScaleParams) => MotionAtom;
+const leftEnterNormal: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const scaleExitFaster: ({ fromValue }: ScaleParams) => MotionAtom;
+const leftEnterSlow: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const scaleExitNormal: ({ fromValue }: ScaleParams) => MotionAtom;
+const leftEnterSlower: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const scaleExitSlow: ({ fromValue }: ScaleParams) => MotionAtom;
+const leftEnterUltraFast: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const scaleExitSlower: ({ fromValue }: ScaleParams) => MotionAtom;
+const leftEnterUltraSlow: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const scaleExitUltraFast: ({ fromValue }: ScaleParams) => MotionAtom;
+const leftExitFast: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const scaleExitUltraSlow: ({ fromValue }: ScaleParams) => MotionAtom;
+const leftExitFaster: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const leftExitNormal: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const leftExitSlow: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const leftExitSlower: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const leftExitUltraFast: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const leftExitUltraSlow: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const leftFast: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const leftFaster: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const leftNormal: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const leftSlow: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const leftSlower: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const leftUltraFast: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const leftUltraSlow: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+export type MotionImperativeRef = {
+    setPlaybackRate: (rate: number) => void;
+    setPlayState: (state: 'running' | 'paused') => void;
+};
+
+// @public (undocumented)
+const normal: (params?: FadeParams) => PresenceMotion;
+
+// @public (undocumented)
+const normal_2: (params?: ScaleParams) => PresenceMotion;
+
+declare namespace presence {
+    export {
+        fade_2 as fade,
+        scale_2 as scale,
+        slide_2 as slide
+    }
+}
+export { presence }
+
+// @public (undocumented)
+export type PresenceMotion = {
+    enter: AtomMotion;
+    exit: AtomMotion;
+};
+
+// @public (undocumented)
+const rightEnterFast: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const rightEnterFaster: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const rightEnterNormal: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const rightEnterSlow: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const rightEnterSlower: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const rightEnterUltraFast: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const rightEnterUltraSlow: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const rightExitFast: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const rightExitFaster: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const rightExitNormal: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const rightExitSlow: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const rightExitSlower: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const rightExitUltraFast: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const rightExitUltraSlow: ({ fromValue }?: SlideParams) => AtomMotion;
+
+// @public (undocumented)
+const rightFast: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const rightFaster: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const rightNormal: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const rightSlow: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const rightSlower: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const rightUltraFast: (params?: SlideParams) => PresenceMotion;
+
+// @public (undocumented)
+const rightUltraSlow: (params?: SlideParams) => PresenceMotion;
+
+declare namespace scale {
+    export {
+        ScaleParams,
+        enterUltraFast_2 as enterUltraFast,
+        enterFaster_2 as enterFaster,
+        enterFast_2 as enterFast,
+        enterNormal_2 as enterNormal,
+        enterSlow_2 as enterSlow,
+        enterSlower_2 as enterSlower,
+        enterUltraSlow_2 as enterUltraSlow,
+        exitUltraFast_2 as exitUltraFast,
+        exitFaster_2 as exitFaster,
+        exitFast_2 as exitFast,
+        exitNormal_2 as exitNormal,
+        exitSlow_2 as exitSlow,
+        exitSlower_2 as exitSlower,
+        exitUltraSlow_2 as exitUltraSlow
+    }
+}
+
+declare namespace scale_2 {
+    export {
+        ultraFast_2 as ultraFast,
+        faster_2 as faster,
+        fast_2 as fast,
+        normal_2 as normal,
+        slow_2 as slow,
+        slower_2 as slower,
+        ultraSlow_2 as ultraSlow
+    }
+}
+
+// @public (undocumented)
+type ScaleParams = {
+    fromValue?: number;
+};
 
 declare namespace slide {
     export {
-        slideDownEnterUltraFast,
-        slideDownEnterFaster,
-        slideDownEnterFast,
-        slideDownEnterNormal,
-        slideDownEnterSlow,
-        slideDownEnterSlower,
-        slideDownEnterUltraSlow,
-        slideUpEnterUltraFast,
-        slideUpEnterFaster,
-        slideUpEnterFast,
-        slideUpEnterNormal,
-        slideUpEnterSlow,
-        slideUpEnterSlower,
-        slideUpEnterUltraSlow,
-        slideLeftEnterUltraFast,
-        slideLeftEnterFaster,
-        slideLeftEnterFast,
-        slideLeftEnterNormal,
-        slideLeftEnterSlow,
-        slideLeftEnterSlower,
-        slideLeftEnterUltraSlow,
-        slideRightEnterUltraFast,
-        slideRightEnterFaster,
-        slideRightEnterFast,
-        slideRightEnterNormal,
-        slideRightEnterSlow,
-        slideRightEnterSlower,
-        slideRightEnterUltraSlow,
-        slideDownExitUltraFast,
-        slideDownExitFaster,
-        slideDownExitFast,
-        slideDownExitNormal,
-        slideDownExitSlow,
-        slideDownExitSlower,
-        slideDownExitUltraSlow,
-        slideUpExitUltraFast,
-        slideUpExitFaster,
-        slideUpExitFast,
-        slideUpExitNormal,
-        slideUpExitSlow,
-        slideUpExitSlower,
-        slideUpExitUltraSlow,
-        slideRightExitUltraFast,
-        slideRightExitFaster,
-        slideRightExitFast,
-        slideRightExitNormal,
-        slideRightExitSlow,
-        slideRightExitSlower,
-        slideRightExitUltraSlow,
-        slideLeftExitUltraFast,
-        slideLeftExitFaster,
-        slideLeftExitFast,
-        slideLeftExitNormal,
-        slideLeftExitSlow,
-        slideLeftExitSlower,
-        slideLeftExitUltraSlow
+        SlideParams,
+        downEnterUltraFast,
+        downEnterFaster,
+        downEnterFast,
+        downEnterNormal,
+        downEnterSlow,
+        downEnterSlower,
+        downEnterUltraSlow,
+        upEnterUltraFast,
+        upEnterFaster,
+        upEnterFast,
+        upEnterNormal,
+        upEnterSlow,
+        upEnterSlower,
+        upEnterUltraSlow,
+        leftEnterUltraFast,
+        leftEnterFaster,
+        leftEnterFast,
+        leftEnterNormal,
+        leftEnterSlow,
+        leftEnterSlower,
+        leftEnterUltraSlow,
+        rightEnterUltraFast,
+        rightEnterFaster,
+        rightEnterFast,
+        rightEnterNormal,
+        rightEnterSlow,
+        rightEnterSlower,
+        rightEnterUltraSlow,
+        downExitUltraFast,
+        downExitFaster,
+        downExitFast,
+        downExitNormal,
+        downExitSlow,
+        downExitSlower,
+        downExitUltraSlow,
+        upExitUltraFast,
+        upExitFaster,
+        upExitFast,
+        upExitNormal,
+        upExitSlow,
+        upExitSlower,
+        upExitUltraSlow,
+        rightExitUltraFast,
+        rightExitFaster,
+        rightExitFast,
+        rightExitNormal,
+        rightExitSlow,
+        rightExitSlower,
+        rightExitUltraSlow,
+        leftExitUltraFast,
+        leftExitFaster,
+        leftExitFast,
+        leftExitNormal,
+        leftExitSlow,
+        leftExitSlower,
+        leftExitUltraSlow
+    }
+}
+
+declare namespace slide_2 {
+    export {
+        downUltraFast,
+        downFaster,
+        downFast,
+        downNormal,
+        downSlow,
+        downSlower,
+        downUltraSlow,
+        upUltraFast,
+        upFaster,
+        upFast,
+        upNormal,
+        upSlow,
+        upSlower,
+        upUltraSlow,
+        leftUltraFast,
+        leftFaster,
+        leftFast,
+        leftNormal,
+        leftSlow,
+        leftSlower,
+        leftUltraSlow,
+        rightUltraFast,
+        rightFaster,
+        rightFast,
+        rightNormal,
+        rightSlow,
+        rightSlower,
+        rightUltraSlow
     }
 }
 
 // @public (undocumented)
-const slideDownEnterFast: ({ fromValue }: SlideParams) => MotionAtom;
+type SlideParams = {
+    fromValue?: string;
+};
 
 // @public (undocumented)
-const slideDownEnterFaster: ({ fromValue }: SlideParams) => MotionAtom;
+const slow: (params?: FadeParams) => PresenceMotion;
 
 // @public (undocumented)
-const slideDownEnterNormal: ({ fromValue }: SlideParams) => MotionAtom;
+const slow_2: (params?: ScaleParams) => PresenceMotion;
 
 // @public (undocumented)
-const slideDownEnterSlow: ({ fromValue }: SlideParams) => MotionAtom;
+const slower: (params?: FadeParams) => PresenceMotion;
 
 // @public (undocumented)
-const slideDownEnterSlower: ({ fromValue }: SlideParams) => MotionAtom;
+const slower_2: (params?: ScaleParams) => PresenceMotion;
 
 // @public (undocumented)
-const slideDownEnterUltraFast: ({ fromValue }: SlideParams) => MotionAtom;
+const ultraFast: (params?: FadeParams) => PresenceMotion;
 
 // @public (undocumented)
-const slideDownEnterUltraSlow: ({ fromValue }: SlideParams) => MotionAtom;
+const ultraFast_2: (params?: ScaleParams) => PresenceMotion;
 
 // @public (undocumented)
-const slideDownExitFast: ({ fromValue }: SlideParams) => MotionAtom;
+const ultraSlow: (params?: FadeParams) => PresenceMotion;
 
 // @public (undocumented)
-const slideDownExitFaster: ({ fromValue }: SlideParams) => MotionAtom;
+const ultraSlow_2: (params?: ScaleParams) => PresenceMotion;
 
 // @public (undocumented)
-const slideDownExitNormal: ({ fromValue }: SlideParams) => MotionAtom;
+const upEnterFast: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const slideDownExitSlow: ({ fromValue }: SlideParams) => MotionAtom;
+const upEnterFaster: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const slideDownExitSlower: ({ fromValue }: SlideParams) => MotionAtom;
+const upEnterNormal: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const slideDownExitUltraFast: ({ fromValue }: SlideParams) => MotionAtom;
+const upEnterSlow: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const slideDownExitUltraSlow: ({ fromValue }: SlideParams) => MotionAtom;
+const upEnterSlower: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const slideLeftEnterFast: ({ fromValue }: SlideParams) => MotionAtom;
+const upEnterUltraFast: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const slideLeftEnterFaster: ({ fromValue }: SlideParams) => MotionAtom;
+const upEnterUltraSlow: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const slideLeftEnterNormal: ({ fromValue }: SlideParams) => MotionAtom;
+const upExitFast: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const slideLeftEnterSlow: ({ fromValue }: SlideParams) => MotionAtom;
+const upExitFaster: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const slideLeftEnterSlower: ({ fromValue }: SlideParams) => MotionAtom;
+const upExitNormal: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const slideLeftEnterUltraFast: ({ fromValue }: SlideParams) => MotionAtom;
+const upExitSlow: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const slideLeftEnterUltraSlow: ({ fromValue }: SlideParams) => MotionAtom;
+const upExitSlower: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const slideLeftExitFast: ({ fromValue }: SlideParams) => MotionAtom;
+const upExitUltraFast: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const slideLeftExitFaster: ({ fromValue }: SlideParams) => MotionAtom;
+const upExitUltraSlow: ({ fromValue }?: SlideParams) => AtomMotion;
 
 // @public (undocumented)
-const slideLeftExitNormal: ({ fromValue }: SlideParams) => MotionAtom;
+const upFast: (params?: SlideParams) => PresenceMotion;
 
 // @public (undocumented)
-const slideLeftExitSlow: ({ fromValue }: SlideParams) => MotionAtom;
+const upFaster: (params?: SlideParams) => PresenceMotion;
 
 // @public (undocumented)
-const slideLeftExitSlower: ({ fromValue }: SlideParams) => MotionAtom;
+const upNormal: (params?: SlideParams) => PresenceMotion;
 
 // @public (undocumented)
-const slideLeftExitUltraFast: ({ fromValue }: SlideParams) => MotionAtom;
+const upSlow: (params?: SlideParams) => PresenceMotion;
 
 // @public (undocumented)
-const slideLeftExitUltraSlow: ({ fromValue }: SlideParams) => MotionAtom;
+const upSlower: (params?: SlideParams) => PresenceMotion;
 
 // @public (undocumented)
-const slideRightEnterFast: ({ fromValue }: SlideParams) => MotionAtom;
+const upUltraFast: (params?: SlideParams) => PresenceMotion;
 
 // @public (undocumented)
-const slideRightEnterFaster: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideRightEnterNormal: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideRightEnterSlow: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideRightEnterSlower: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideRightEnterUltraFast: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideRightEnterUltraSlow: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideRightExitFast: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideRightExitFaster: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideRightExitNormal: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideRightExitSlow: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideRightExitSlower: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideRightExitUltraFast: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideRightExitUltraSlow: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideUpEnterFast: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideUpEnterFaster: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideUpEnterNormal: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideUpEnterSlow: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideUpEnterSlower: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideUpEnterUltraFast: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideUpEnterUltraSlow: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideUpExitFast: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideUpExitFaster: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideUpExitNormal: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideUpExitSlow: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideUpExitSlower: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideUpExitUltraFast: ({ fromValue }: SlideParams) => MotionAtom;
-
-// @public (undocumented)
-const slideUpExitUltraSlow: ({ fromValue }: SlideParams) => MotionAtom;
+const upUltraSlow: (params?: SlideParams) => PresenceMotion;
 
 // (No @packageDocumentation comment for this package)
 

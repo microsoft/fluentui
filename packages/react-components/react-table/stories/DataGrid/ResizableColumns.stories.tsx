@@ -189,7 +189,7 @@ export const ResizableColumns = () => {
         columnSizingOptions={columnSizingOptions}
       >
         <DataGridHeader>
-          <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
+          <DataGridRow selectionCell={{ checkboxIndicator: { 'aria-label': 'Select all rows' } }}>
             {({ renderHeaderCell, columnId }, dataGrid) =>
               dataGrid.resizableColumns ? (
                 <Menu openOnContext>
@@ -214,7 +214,7 @@ export const ResizableColumns = () => {
         </DataGridHeader>
         <DataGridBody<Item>>
           {({ item, rowId }) => (
-            <DataGridRow<Item> key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
+            <DataGridRow<Item> key={rowId} selectionCell={{ checkboxIndicator: { 'aria-label': 'Select row' } }}>
               {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
             </DataGridRow>
           )}
