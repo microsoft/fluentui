@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Rating } from '@fluentui/react-rating-preview';
 
 export const Precision = () => {
-  return <Rating precision defaultValue={3.5} />;
+  return <Rating precision value={3.5} />;
 };
 
 Precision.parameters = {

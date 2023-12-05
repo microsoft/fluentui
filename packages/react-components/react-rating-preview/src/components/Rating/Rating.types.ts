@@ -12,6 +12,11 @@ export type RatingSlots = {
  */
 export type RatingProps = ComponentProps<RatingSlots> & {
   /**
+   * Controls the appearance of unselected rating items.
+   * @default outline (filled if readOnly is set)
+   */
+  appearance?: 'filled' | 'outline';
+  /**
    * Sets whether to render a full or compact Rating
    * @default false
    */
@@ -29,7 +34,8 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    */
   iconOutline?: React.ReactElement;
   /**
-   * The max value of the rating.
+   * The max value of the rating. This controls the number of rating items displayed.
+   * Must be a whole number greater than 1.
    * @default 5
    */
   max?: number;
@@ -42,11 +48,6 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    */
   onChange?: (ev: React.SyntheticEvent | Event, data: RatingOnChangeData) => void;
   /**
-   * Sets the background color of the rating to be transparent or filled.
-   * @default outline
-   */
-  outlineStyle?: 'filled' | 'outline';
-  /**
    * Sets the precision to allow half-filled shapes in Rating
    * @default false
    */
@@ -57,7 +58,7 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    */
   readOnly?: boolean;
   /**
-   * Sets the size of the Rating star in pixels
+   * Sets the size of the Rating items.
    * @default medium
    */
   size?: 'small' | 'medium' | 'large';
@@ -81,30 +82,22 @@ export type RatingOnChangeData = {
  * State used in rendering Rating
  */
 export type RatingState = ComponentState<RatingSlots> &
-  Required<Pick<RatingProps, 'size'>> &
-  Pick<
-    RatingProps,
-    | 'compact'
-    | 'defaultValue'
-    | 'iconFilled'
-    | 'iconOutline'
-    | 'name'
-    | 'outlineStyle'
-    | 'precision'
-    | 'readOnly'
-    | 'value'
+  Required<
+    Pick<
+      RatingProps,
+      'appearance' | 'compact' | 'iconFilled' | 'iconOutline' | 'name' | 'precision' | 'readOnly' | 'size' | 'value'
+    >
   > & {
     hoveredValue?: number | undefined;
   };
 
 export type RatingContextValue = Pick<
   RatingState,
+  | 'appearance'
   | 'compact'
-  | 'defaultValue'
   | 'iconFilled'
   | 'iconOutline'
   | 'name'
-  | 'outlineStyle'
   | 'precision'
   | 'readOnly'
   | 'size'
