@@ -2,6 +2,78 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 04 Dec 2023 07:27:00 GMT",
+      "tag": "@fluentui/react-charting_v5.19.4",
+      "version": "5.19.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0d3dda114716876f1139b649fb08b3c0553b09ca",
+            "comment": "Added support for sticking to old ceil logic in case of integral datasets"
+          },
+          {
+            "author": "gautam33776@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "014c273d325606179e7277702214687694f55bd0",
+            "comment": "fix: react-charting horizontal-bar-chart-axis on hover render correct data"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 29 Nov 2023 07:26:35 GMT",
+      "tag": "@fluentui/react-charting_v5.19.3",
+      "version": "5.19.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c0cb66bd62b59ac37d476945da003a5eedb7b9dd",
+            "comment": "Updating the d3-time-format package for react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Nov 2023 07:26:33 GMT",
+      "tag": "@fluentui/react-charting_v5.19.2",
+      "version": "5.19.2",
+      "comments": {
+        "none": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5643602bed8eb88c833459d9ebee36358c0b0ff1",
+            "comment": "Testing strategy doc added"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Nov 2023 07:27:54 GMT",
+      "tag": "@fluentui/react-charting_v5.19.2",
+      "version": "5.19.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "gautam33776@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "033af48f49f83c79d61cdc3cfb1a86c28ebda9ef",
+            "comment": "fix: react-charting VBC - RTL mode mouseover on bar chart the data is not displaying correctly"
+          },
+          {
+            "author": "gautam33776@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "bab96c5f09235abc67c7c8461b9bff844bc02bad",
+            "comment": "line chart rtl mode color fillbar bug fix"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Nov 2023 07:26:51 GMT",
       "tag": "@fluentui/react-charting_v5.19.1",
       "version": "5.19.1",
