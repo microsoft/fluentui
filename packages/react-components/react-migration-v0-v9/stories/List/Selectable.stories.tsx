@@ -39,29 +39,27 @@ export const Selectable = () => {
   const selection = useListSelection({ selectionMode: 'single' });
 
   return (
-    <div>
-      <List
-        truncateContent
-        truncateHeader
-        selectable
-        defaultSelectedItems={[]}
-        selectedItems={selection.selectedItems}
-        onSelectionChange={(_, data) => selection.setSelectedItems(data.selectedItems)}
-      >
-        {items.map(({ key, media, header, headerMedia, content }) => (
-          <ListItem
-            key={key}
-            value={key}
-            aria-label={header}
-            media={<Image src={media} alt="" shape="circular" width={32} />}
-            header={header}
-            headerMedia={headerMedia}
-          >
-            {content}
-          </ListItem>
-        ))}
-      </List>
-    </div>
+    <List
+      truncateContent
+      truncateHeader
+      selectable
+      defaultSelectedItems={[]}
+      selectedItems={selection.selectedItems}
+      onSelectionChange={(_, data) => selection.setSelectedItems(data.selectedItems)}
+    >
+      {items.map(({ key, media, header, headerMedia, content }) => (
+        <ListItem
+          key={key}
+          value={key}
+          aria-label={header}
+          media={<Image src={media} alt="" shape="circular" width={32} />}
+          header={header}
+          headerMedia={headerMedia}
+        >
+          {content}
+        </ListItem>
+      ))}
+    </List>
   );
 };
 

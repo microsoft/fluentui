@@ -37,29 +37,19 @@ const items: Item[] = [
 
 export const Default = () => {
   return (
-    <div>
-      <List truncateContent truncateHeader>
-        {items.map(({ key, media, header, headerMedia, content }) => (
-          <ListItem
-            key={key}
-            value={key}
-            aria-label={header}
-            media={<Image src={media} alt="" shape="circular" width={32} />}
-            header={header}
-            headerMedia={headerMedia}
-          >
-            {content}
-          </ListItem>
-        ))}
-      </List>
-    </div>
+    <List truncateContent truncateHeader>
+      {items.map(({ key, media, header, headerMedia, content }) => (
+        <ListItem
+          key={key}
+          value={key}
+          aria-label={header}
+          media={<Image src={media} alt="" shape="circular" width={32} />}
+          header={header}
+          headerMedia={headerMedia}
+        >
+          {content}
+        </ListItem>
+      ))}
+    </List>
   );
-};
-
-Default.parameters = {
-  docs: {
-    description: {
-      story: [''].join('\n'),
-    },
-  },
 };
