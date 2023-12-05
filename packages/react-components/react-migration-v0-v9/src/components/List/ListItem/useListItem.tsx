@@ -1,5 +1,4 @@
 import { useARIAButtonProps } from '@fluentui/react-aria';
-import { useFocusableGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot, useEventCallback, useId } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useListContext_unstable } from '../List/listContext';
@@ -61,8 +60,6 @@ export const useListItem_unstable = (
 
   validateNavigableWhenOnClickPresent(navigable, onClick);
 
-  const focusableGroupAttrs = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
-
   const handleClick: React.MouseEventHandler<HTMLLIElement & HTMLDivElement> = useEventCallback(e => {
     onClick?.(e);
 
@@ -90,7 +87,6 @@ export const useListItem_unstable = (
         role: 'option',
         'aria-selected': isSelected,
       }),
-      ...focusableGroupAttrs,
       ...props,
       onKeyDown: buttonProps.onKeyDown as React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement>,
       onKeyUp: buttonProps.onKeyUp as React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement>,
