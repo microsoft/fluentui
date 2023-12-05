@@ -368,7 +368,6 @@ export class Stylesheet {
    * @returns true if the browser supports constructable stylesheets
    */
   public supportsConstructableStylesheets(): boolean {
-    return false;
     return SUPPORTS_CONSTRUCTABLE_STYLESHEETS;
   }
 

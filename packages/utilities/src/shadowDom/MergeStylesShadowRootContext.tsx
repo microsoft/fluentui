@@ -132,8 +132,16 @@ const adoptSheet = (
   const shadowRoot = shadowCtx.shadowRoot!;
 
   shadowCtx.stylesheets.set(stylesheetKey, stylesheet);
-  if (Stylesheet.getInstance().supportsConstructableStylesheets()) {
-    shadowRoot.adoptedStyleSheets = [...shadowRoot.adoptedStyleSheets, stylesheet];
+  const sheet = Stylesheet.getInstance();
+  if (sheet.supportsConstructableStylesheets()) {
+    // The current spec allows the `adoptedStyleSheets` array to be modified.
+    // Previous versions of the spec required a new array to be created.
+    // For more details see: https://github.com/microsoft/fast/pull/6703
+    if (sheet.supportsModifyingAdoptedStyleSheets()) {
+      shadowRoot.adoptedStyleSheets.push(stylesheet);
+    } else {
+      shadowRoot.adoptedStyleSheets = [...shadowRoot.adoptedStyleSheets, stylesheet];
+    }
   } else {
     const style = doc.createElement('style');
     style.setAttribute('data-merge-styles-stylesheet-key', stylesheetKey);
@@ -155,8 +163,10 @@ const adoptSheet = (
             }
           }
         };
-        const sheet = Stylesheet.getInstance(makeShadowConfig(stylesheetKey, true, doc.defaultView ?? undefined));
-        sheet.onInsertRuleIntoConstructableStyleSheet(onInsert);
+        const polyfillSheet = Stylesheet.getInstance(
+          makeShadowConfig(stylesheetKey, true, doc.defaultView ?? undefined),
+        );
+        polyfillSheet.onInsertRuleIntoConstructableStyleSheet(onInsert);
         listenerRef[stylesheetKey] = onInsert;
       }
     }
