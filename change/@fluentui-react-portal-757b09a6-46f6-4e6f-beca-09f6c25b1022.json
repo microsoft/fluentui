@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Virtual parent cannot be the DOM child of mount node",
+  "packageName": "@fluentui/react-portal",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
