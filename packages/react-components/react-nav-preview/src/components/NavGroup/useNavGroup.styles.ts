@@ -14,8 +14,7 @@ export const navGroupClassNames: SlotClassNames<NavGroupSlots> = {
  */
 const useStyles = makeResetStyles({
   display: 'flex',
-  fontFamily: tokens.fontFamilyBase,
-  lineHeight: tokens.lineHeightBase300,
+  ...typographyStyles.body1,
 });
 
 /**

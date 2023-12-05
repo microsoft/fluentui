@@ -52,13 +52,13 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
 
   const registeredNavGroups = React.useRef<Record<string, NavGroupRegisterData>>({});
 
-  const onRegister = useEventCallback((data: NavGroupRegisterData) => {
+  const onRegister = React.useCallback((data: NavGroupRegisterData) => {
     registeredNavGroups.current[JSON.stringify(data.value)] = data;
-  });
+  }, []);
 
-  const onUnregister = useEventCallback((data: NavGroupRegisterData) => {
+  const onUnregister = React.useCallback((data: NavGroupRegisterData) => {
     delete registeredNavGroups.current[JSON.stringify(data.value)];
-  });
+  }, []);
 
   const getRegisteredNavGroups = React.useCallback(() => {
     return {

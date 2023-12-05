@@ -23,7 +23,5 @@ const navContextDefaultValue: NavContextValue = {
 export const NavContext = React.createContext<NavContextValue | undefined>(undefined);
 
 export const NavProvider = NavContext.Provider;
-// export const useNavContext_unstable = <T>(selector: ContextSelector<NavContextValue, T>): T =>
-//   useContextSelector(NavContext, (ctx = navContextDefaultValue) => selector(ctx));
 
 export const useNavContext_unstable = () => React.useContext(NavContext) || navContextDefaultValue;
