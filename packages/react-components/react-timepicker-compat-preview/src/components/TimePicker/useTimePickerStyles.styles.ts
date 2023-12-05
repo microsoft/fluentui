@@ -12,7 +12,7 @@ export const timePickerClassNames: SlotClassNames<TimePickerSlots> = {
 
 const useStyles = makeStyles({
   listbox: {
-    maxHeight: '416px', // height for 12 items
+    maxHeight: 'min(80vh, 416px)', // height for 12 items or 80vh, whichever is smaller
   },
 });
 
