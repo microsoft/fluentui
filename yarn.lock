@@ -12938,6 +12938,11 @@ flatted@^3.1.0, flatted@^3.2.5:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.5.tgz#76c8584f4fc843db64702a6bd04ab7a8bd666da3"
   integrity sha512-WIWGi2L3DyTUvUrwRKgGi9TwxQMUEqPOPQBVi71R96jZXJdFskXEmf54BoZaS1kknGODoIGASGEzBUYdyMCBJg==
 
+floating-ui-devtools@0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/floating-ui-devtools/-/floating-ui-devtools-0.1.2.tgz#5d0ab3460daea9dd5dc8de313cd66d89885b66a6"
+  integrity sha512-6QZH99AdZx9by0fJt2AI0axAeOxLpcHgpmaJXYxJWLCblv9iKz7i4lcLKwYvPA9B5brkLwehgjlbi2kI6uq/Eg==
+
 flush-write-stream@^1.0.0, flush-write-stream@^1.0.2:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/flush-write-stream/-/flush-write-stream-1.1.1.tgz#8dd7d873a1babc207d94ead0c2e0e44276ebf2e8"

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-calendar-compat
 
-This log was last generated on Mon, 20 Nov 2023 09:55:10 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Nov 2023 13:42:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.0.9)
+
+Thu, 30 Nov 2023 13:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.0.8..@fluentui/react-calendar-compat_v0.0.9)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.20 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+- Bump @fluentui/react-tabster to v9.15.0 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
 
 ## [0.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.0.8)
 

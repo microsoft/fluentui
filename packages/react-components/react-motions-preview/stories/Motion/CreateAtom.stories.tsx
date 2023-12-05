@@ -1,5 +1,5 @@
 import { makeStyles, shorthands, tokens, Label, Slider, useId } from '@fluentui/react-components';
-import { atoms, createAtom } from '@fluentui/react-motions-preview';
+import { atom, createAtom } from '@fluentui/react-motions-preview';
 import type { MotionImperativeRef } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
@@ -53,8 +53,8 @@ const useClasses = makeStyles({
   },
 });
 
-const FadeEnter = createAtom(atoms.fade.enterUltraSlow());
-const FadeExit = createAtom(atoms.fade.exitUltraSlow());
+const FadeEnter = createAtom(atom.fade.enterUltraSlow());
+const FadeExit = createAtom(atom.fade.exitUltraSlow());
 
 export const CreateAtom = () => {
   const classes = useClasses();

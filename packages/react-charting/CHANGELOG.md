@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 24 Nov 2023 07:27:54 GMT and should not be manually modified.
+This log was last generated on Mon, 04 Dec 2023 07:27:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.4)
+
+Mon, 04 Dec 2023 07:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.3..@fluentui/react-charting_v5.19.4)
+
+### Patches
+
+- Added support for sticking to old ceil logic in case of integral datasets ([PR #29959](https://github.com/microsoft/fluentui/pull/29959) by shubhabrata08@gmail.com)
+- fix: react-charting horizontal-bar-chart-axis on hover render correct data ([PR #29909](https://github.com/microsoft/fluentui/pull/29909) by gautam33776@gmail.com)
+
+## [5.19.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.3)
+
+Wed, 29 Nov 2023 07:26:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.2..@fluentui/react-charting_v5.19.3)
+
+### Patches
+
+- Updating the d3-time-format package for react-charting ([PR #29890](https://github.com/microsoft/fluentui/pull/29890) by srmukher@microsoft.com)
 
 ## [5.19.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.2)
 

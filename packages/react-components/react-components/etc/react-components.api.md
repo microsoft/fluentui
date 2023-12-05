@@ -1095,6 +1095,7 @@ import { useAvatarGroupContextValues } from '@fluentui/react-avatar';
 import { useAvatarGroupItem_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupItemStyles_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupPopoverContextValues_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupPopoverStyles_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupStyles_unstable } from '@fluentui/react-avatar';
 import { useAvatarStyles_unstable } from '@fluentui/react-avatar';
@@ -1195,6 +1196,7 @@ import { useFocusableGroup } from '@fluentui/react-tabster';
 import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFocusObserved } from '@fluentui/react-tabster';
+import { useFocusVisible } from '@fluentui/react-tabster';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { useHeadlessFlatTree_unstable } from '@fluentui/react-tree';
 import { useId } from '@fluentui/react-utilities';
@@ -3599,6 +3601,8 @@ export { useAvatarGroupItemStyles_unstable }
 
 export { useAvatarGroupPopover_unstable }
 
+export { useAvatarGroupPopoverContextValues_unstable }
+
 export { useAvatarGroupPopoverStyles_unstable }
 
 export { useAvatarGroupStyles_unstable }
@@ -3798,6 +3802,8 @@ export { UseFocusableGroupOptions }
 export { useFocusFinders }
 
 export { useFocusObserved }
+
+export { useFocusVisible }
 
 export { useFocusWithin }
 

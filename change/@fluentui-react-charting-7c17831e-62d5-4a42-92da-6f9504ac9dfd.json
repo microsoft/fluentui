@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating the d3-time-format package for react-charting",
-  "packageName": "@fluentui/react-charting",
-  "email": "srmukher@microsoft.com",
-  "dependentChangeType": "patch"
-}

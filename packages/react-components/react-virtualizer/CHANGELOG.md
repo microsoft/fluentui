@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-virtualizer
 
-This log was last generated on Mon, 20 Nov 2023 09:55:10 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Nov 2023 13:42:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.59)
+
+Thu, 30 Nov 2023 13:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.58..@fluentui/react-virtualizer_v9.0.0-alpha.59)
+
+### Changes
+
+- feat: Add default auto-measuring on dynamic virtualizezr if no sizing function provided ([PR #29868](https://github.com/microsoft/fluentui/pull/29868) by mifraser@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.20 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
 
 ## [9.0.0-alpha.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.58)
 
