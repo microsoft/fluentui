@@ -4,9 +4,9 @@ import * as React from 'react';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { getChildElement } from '../utils/getChildElement';
-import type { MotionTransition, MotionImperativeRef } from '../types';
+import type { PresenceMotion, MotionImperativeRef } from '../types';
 
-type TransitionProps = {
+type PresenceProps = {
   children: React.ReactElement;
 
   /** Provides imperative controls for the animation. */
@@ -18,8 +18,8 @@ type TransitionProps = {
   unmountOnExit?: boolean;
 };
 
-export function createTransition(transition: MotionTransition) {
-  const Transition: React.FC<TransitionProps> = props => {
+export function createPresence(motion: PresenceMotion) {
+  const Presence: React.FC<PresenceProps> = props => {
     const { appear, children, imperativeRef, visible, unmountOnExit } = props;
 
     const child = getChildElement(children);
@@ -46,10 +46,10 @@ export function createTransition(transition: MotionTransition) {
       }
 
       if (elementRef.current) {
-        const animation = elementRef.current.animate(transition.exit.keyframes, {
+        const animation = elementRef.current.animate(motion.exit.keyframes, {
           fill: 'forwards',
 
-          ...transition.exit.options,
+          ...motion.exit.options,
           ...(isReducedMotion() && { duration: 1 }),
         });
 
@@ -78,10 +78,10 @@ export function createTransition(transition: MotionTransition) {
       const shouldEnter = isFirstMount.current ? appear && visible : mounted && visible;
 
       if (shouldEnter) {
-        const animation = elementRef.current.animate(transition.enter.keyframes, {
+        const animation = elementRef.current.animate(motion.enter.keyframes, {
           fill: 'forwards',
 
-          ...transition.enter.options,
+          ...motion.enter.options,
           ...(isReducedMotion() && { duration: 1 }),
         });
 
@@ -104,5 +104,5 @@ export function createTransition(transition: MotionTransition) {
     return null;
   };
 
-  return Transition;
+  return Presence;
 }

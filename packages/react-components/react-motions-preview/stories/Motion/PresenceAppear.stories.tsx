@@ -1,9 +1,9 @@
 import { makeStyles, shorthands, tokens, Label, Slider, useId, Checkbox } from '@fluentui/react-components';
-import { createTransition, transitions } from '@fluentui/react-motions-preview';
+import { createPresence, presence } from '@fluentui/react-motions-preview';
 import type { MotionImperativeRef } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
-import description from './TransitionUnmountOnExit.stories.md';
+import description from './PresenceAppear.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -43,29 +43,30 @@ const useClasses = makeStyles({
   },
 });
 
-const Fade = createTransition(transitions.fade.slow());
+const Fade = createPresence(presence.fade.slow());
 
-export const TransitionUnmountOnExit = () => {
+export const PresenceAppear = () => {
   const classes = useClasses();
   const sliderId = useId();
 
   const motionRef = React.useRef<MotionImperativeRef>();
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
-  const [visible, setVisible] = React.useState<boolean>(true);
-  const [unmountOnExit, setUnmountOnExit] = React.useState<boolean>(true);
+  const [isMounted, setIsMounted] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     motionRef.current?.setPlaybackRate(playbackRate / 100);
-  }, [playbackRate, visible]);
+  }, [playbackRate, isMounted]);
 
   return (
     <>
       <div className={classes.container}>
         <div className={classes.card}>
-          <Fade imperativeRef={motionRef} visible={visible} unmountOnExit={unmountOnExit}>
-            <div className={classes.item} />
-          </Fade>
+          {isMounted && (
+            <Fade appear imperativeRef={motionRef} visible>
+              <div className={classes.item} />
+            </Fade>
+          )}
 
           <code className={classes.description}>fadeSlow</code>
         </div>
@@ -73,14 +74,7 @@ export const TransitionUnmountOnExit = () => {
 
       <div className={classes.controls}>
         <div>
-          <Checkbox
-            label={<code>unmountOnExit</code>}
-            checked={unmountOnExit}
-            onChange={() => setUnmountOnExit(v => !v)}
-          />
-        </div>
-        <div>
-          <Checkbox label={<code>visible</code>} checked={visible} onChange={() => setVisible(v => !v)} />
+          <Checkbox label="Mount an element?" checked={isMounted} onChange={() => setIsMounted(v => !v)} />
         </div>
         <div>
           <Label htmlFor={sliderId}>
@@ -101,7 +95,7 @@ export const TransitionUnmountOnExit = () => {
   );
 };
 
-TransitionUnmountOnExit.parameters = {
+PresenceAppear.parameters = {
   docs: {
     description: {
       story: description,

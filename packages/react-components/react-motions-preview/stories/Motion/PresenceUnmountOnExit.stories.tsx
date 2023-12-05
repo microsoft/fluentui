@@ -1,9 +1,9 @@
 import { makeStyles, shorthands, tokens, Label, Slider, useId, Checkbox } from '@fluentui/react-components';
-import { createTransition, transitions } from '@fluentui/react-motions-preview';
+import { createPresence, presence } from '@fluentui/react-motions-preview';
 import type { MotionImperativeRef } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
-import description from './CreateTransition.stories.md';
+import description from './PresenceUnmountOnExit.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -43,16 +43,17 @@ const useClasses = makeStyles({
   },
 });
 
-const Fade = createTransition(transitions.fade.slow());
+const Fade = createPresence(presence.fade.slow());
 
-export const CreateTransition = () => {
+export const PresenceUnmountOnExit = () => {
   const classes = useClasses();
   const sliderId = useId();
 
   const motionRef = React.useRef<MotionImperativeRef>();
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
-  const [visible, setVisible] = React.useState<boolean>(false);
+  const [visible, setVisible] = React.useState<boolean>(true);
+  const [unmountOnExit, setUnmountOnExit] = React.useState<boolean>(true);
 
   React.useEffect(() => {
     motionRef.current?.setPlaybackRate(playbackRate / 100);
@@ -62,7 +63,7 @@ export const CreateTransition = () => {
     <>
       <div className={classes.container}>
         <div className={classes.card}>
-          <Fade imperativeRef={motionRef} visible={visible}>
+          <Fade imperativeRef={motionRef} visible={visible} unmountOnExit={unmountOnExit}>
             <div className={classes.item} />
           </Fade>
 
@@ -71,6 +72,13 @@ export const CreateTransition = () => {
       </div>
 
       <div className={classes.controls}>
+        <div>
+          <Checkbox
+            label={<code>unmountOnExit</code>}
+            checked={unmountOnExit}
+            onChange={() => setUnmountOnExit(v => !v)}
+          />
+        </div>
         <div>
           <Checkbox label={<code>visible</code>} checked={visible} onChange={() => setVisible(v => !v)} />
         </div>
@@ -93,7 +101,7 @@ export const CreateTransition = () => {
   );
 };
 
-CreateTransition.parameters = {
+PresenceUnmountOnExit.parameters = {
   docs: {
     description: {
       story: description,

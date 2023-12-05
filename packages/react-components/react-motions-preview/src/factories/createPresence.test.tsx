@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 import * as React from 'react';
 
-import type { MotionTransition } from '../types';
-import { createTransition } from './createTransition';
+import type { PresenceMotion } from '../types';
+import { createPresence } from './createPresence';
 
-const transition: MotionTransition = {
+const presence: PresenceMotion = {
   enter: {
     keyframes: [{ opacity: 0 }, { opacity: 1 }],
     options: {
@@ -43,10 +43,10 @@ function createElementMock() {
   };
 }
 
-describe('createTransition', () => {
+describe('createPresence', () => {
   describe('appear', () => {
     it('does not animate by default', () => {
-      const TestAtom = createTransition(transition);
+      const TestAtom = createPresence(presence);
       const { animateMock, ElementMock } = createElementMock();
 
       render(
@@ -59,7 +59,7 @@ describe('createTransition', () => {
     });
 
     it('animates when is "true"', () => {
-      const TestAtom = createTransition(transition);
+      const TestAtom = createPresence(presence);
       const { animateMock, ElementMock } = createElementMock();
 
       render(
@@ -68,13 +68,13 @@ describe('createTransition', () => {
         </TestAtom>,
       );
 
-      expect(animateMock).toHaveBeenCalledWith(transition.enter.keyframes, transition.enter.options);
+      expect(animateMock).toHaveBeenCalledWith(presence.enter.keyframes, presence.enter.options);
     });
   });
 
   describe('visible', () => {
     it('animates when state changes', () => {
-      const TestAtom = createTransition(transition);
+      const TestAtom = createPresence(presence);
       const { animateMock, ElementMock } = createElementMock();
 
       const { rerender } = render(
@@ -91,13 +91,13 @@ describe('createTransition', () => {
         </TestAtom>,
       );
 
-      expect(animateMock).toHaveBeenCalledWith(transition.exit.keyframes, transition.exit.options);
+      expect(animateMock).toHaveBeenCalledWith(presence.exit.keyframes, presence.exit.options);
     });
   });
 
   describe('unmountOnExit', () => {
     it('unmounts when state changes', () => {
-      const TestAtom = createTransition(transition);
+      const TestAtom = createPresence(presence);
       const { animateMock, ElementMock } = createElementMock();
 
       const { rerender, queryByText } = render(
@@ -116,7 +116,7 @@ describe('createTransition', () => {
       );
 
       expect(queryByText('ElementMock')).toBe(null);
-      expect(animateMock).toHaveBeenCalledWith(transition.exit.keyframes, transition.exit.options);
+      expect(animateMock).toHaveBeenCalledWith(presence.exit.keyframes, presence.exit.options);
     });
   });
 });
