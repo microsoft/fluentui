@@ -3,11 +3,7 @@
   "compilerOptions": {
     "composite": true,
     "outDir": "dist/dts",
-    "types": ["node", "jest", "@testing-library/jest-dom"],
-    "paths": {
-      "src/*": ["packages/fluentui/react-northstar/src/*"],
-      "test/*": ["packages/fluentui/react-northstar/test/*"]
-    }
+    "types": ["node", "jest", "@testing-library/jest-dom"]
   },
   "include": ["src", "test"],
   "references": [
