@@ -25,15 +25,16 @@ export const usePortal_unstable = (props: PortalProps): PortalState => {
   };
 
   React.useEffect(() => {
-    if (state.virtualParentRootRef.current && state.mountNode) {
-      setVirtualParent(state.mountNode, state.virtualParentRootRef.current);
+    const virtualParent = virtualParentRootRef.current;
+    if (virtualParent && state.mountNode && !state.mountNode.contains(virtualParent)) {
+      setVirtualParent(state.mountNode, virtualParent);
+      return () => {
+        if (state.mountNode) {
+          setVirtualParent(state.mountNode, undefined);
+        }
+      };
     }
-    return () => {
-      if (state.mountNode) {
-        setVirtualParent(state.mountNode, undefined);
-      }
-    };
-  }, [state.virtualParentRootRef, state.mountNode]);
+  }, [virtualParentRootRef, state.mountNode]);
 
   return state;
 };
