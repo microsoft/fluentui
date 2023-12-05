@@ -36,12 +36,12 @@ export const styles = css`
     display: grid;
     position: relative;
     vertical-align: middle;
-    padding-inline: ${spacingHorizontalM} ${spacingHorizontalMNudge};
-    border-radius: ${borderRadiusMedium};
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase300};
-    font-weight: ${fontWeightRegular};
-    line-height: ${lineHeightBase300};
+    padding-inline: var(${spacingHorizontalM}) var(${spacingHorizontalMNudge});
+    border-radius: var(${borderRadiusMedium});
+    font-family: var(${fontFamilyBase});
+    font-size: var(${fontSizeBase300});
+    font-weight: var(${fontWeightRegular});
+    line-height: var(${lineHeightBase300});
     grid-template-columns: auto auto 1fr auto;
   }
 
@@ -60,9 +60,9 @@ export const styles = css`
     cursor: pointer;
     font-family: inherit;
     height: 44px;
-    color: ${colorNeutralForeground1};
-    background: ${colorTransparentBackground};
-    line-height: ${lineHeightBase300};
+    color: var(${colorNeutralForeground1});
+    background: var(${colorTransparentBackground});
+    line-height: var(${lineHeightBase300});
     height: auto;
     padding: 0;
     font-size: inherit;
@@ -75,7 +75,7 @@ export const styles = css`
     position: absolute;
     inset: 0px;
     cursor: pointer;
-    border-radius: ${borderRadiusSmall};
+    border-radius: var(${borderRadiusSmall});
   }
 
   .icon {
@@ -85,20 +85,20 @@ export const styles = css`
     pointer-events: none;
     position: relative;
     height: 100%;
-    padding-right: ${spacingHorizontalS};
+    padding-right: var(${spacingHorizontalS});
     grid-column: 1 / span 1;
     grid-row: 1;
   }
 
   .region {
-    margin: 0 ${spacingHorizontalM};
+    margin: 0 var(${spacingHorizontalM});
   }
 
   ::slotted([slot='start']),
   ::slotted([slot='end']) {
     justify-content: center;
     align-items: center;
-    padding-right: ${spacingHorizontalS};
+    padding-right: var(${spacingHorizontalS});
     grid-column: 2 / span 1;
     grid-row: 1 / span 1;
   }
@@ -108,16 +108,16 @@ export const styles = css`
     position: absolute;
     inset: 0px;
     cursor: pointer;
-    border-radius: ${borderRadiusSmall};
+    border-radius: var(${borderRadiusSmall});
     outline: none;
-    border: 2px solid ${colorStrokeFocus1};
-    box-shadow: inset 0 0 0 1px ${colorStrokeFocus2};
+    border: 2px solid var(${colorStrokeFocus1});
+    box-shadow: inset 0 0 0 1px var(${colorStrokeFocus2});
   }
 
   /* --- Disabled attr styles --- */
 
   :host([disabled]) .button {
-    color: ${colorNeutralForegroundDisabled};
+    color: var(${colorNeutralForegroundDisabled});
   }
   :host([disabled]) svg {
     filter: invert(89%) sepia(0%) saturate(569%) hue-rotate(155deg) brightness(88%) contrast(87%);
@@ -149,23 +149,23 @@ export const styles = css`
   /* --- Appearance attr styles --- */
 
   .heading {
-    font-size: ${fontSizeBase300};
-    line-height: ${lineHeightBase300};
+    font-size: var(${fontSizeBase300});
+    line-height: var(${lineHeightBase300});
   }
 
   :host([size='small']) .heading {
-    font-size: ${fontSizeBase200};
-    line-height: ${lineHeightBase200};
+    font-size: var(${fontSizeBase200});
+    line-height: var(${lineHeightBase200});
   }
 
   :host([size='large']) .heading {
-    font-size: ${fontSizeBase400};
-    line-height: ${lineHeightBase400};
+    font-size: var(${fontSizeBase400});
+    line-height: var(${lineHeightBase400});
   }
 
   :host([size='extra-large']) .heading {
-    font-size: ${fontSizeBase500};
-    line-height: ${lineHeightBase500};
+    font-size: var(${fontSizeBase500});
+    line-height: var(${lineHeightBase500});
   }
 
   /* --- expand-icon-position attr styles --- */

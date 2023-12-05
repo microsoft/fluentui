@@ -21,17 +21,17 @@ export const styles = css`
   :host {
     align-items: flex-start;
     flex-direction: column;
-    row-gap: ${spacingVerticalS};
+    row-gap: var(${spacingVerticalS};
   }
   :host([disabled]) ::slotted([role='radio']) {
-    --control-border-color: ${colorNeutralForegroundDisabled};
-    --checked-indicator-background-color: ${colorNeutralForegroundDisabled};
-    --state-color: ${colorNeutralForegroundDisabled};
+    --control-border-color: var(${colorNeutralForegroundDisabled});
+    --checked-indicator-background-color: var(${colorNeutralForegroundDisabled});
+    --state-color: var(${colorNeutralForegroundDisabled});
   }
   ::slotted([slot='label']) {
-    color: ${colorNeutralForeground1};
-    padding: ${spacingVerticalS} ${spacingHorizontalS} ${spacingVerticalS} ${spacingHorizontalXS};
-    font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
+    color: var(${colorNeutralForeground1};
+    padding: var(${spacingVerticalS}) var(${spacingHorizontalS}) var(${spacingVerticalS}) var(${spacingHorizontalXS});
+    font: var(${fontWeightRegular}) var(${fontSizeBase300}) / var(${lineHeightBase300}) var(${fontFamilyBase});
     cursor: default;
   }
   .positioning-region {
@@ -46,12 +46,12 @@ export const styles = css`
     flex-direction: row;
   }
   :host([orientation='horizontal']) ::slotted([role='radio']) {
-    padding-inline-end: ${spacingHorizontalS};
+    padding-inline-end: var(${spacingHorizontalS});
   }
   :host([orientation='horizontal'][stacked]) ::slotted([role='radio']) {
     display: flex;
     flex-direction: column;
-    padding-inline: ${spacingHorizontalS};
+    padding-inline: var(${spacingHorizontalS});
     height: auto;
     align-items: center;
     justify-content: center;

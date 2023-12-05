@@ -33,78 +33,78 @@ export const styles = css`
   ${ButtonStyles}
 
   :host([aria-pressed="true"]) .control {
-    border-color: ${colorNeutralStroke1};
-    background-color: ${colorNeutralBackground1Selected};
-    color: ${colorNeutralForeground1};
-    border-width: ${strokeWidthThin};
+    border-color: var(${colorNeutralStroke1});
+    background-color: var(${colorNeutralBackground1Selected});
+    color: var(${colorNeutralForeground1});
+    border-width: var(${strokeWidthThin});
   }
 
   :host([aria-pressed='true']:hover) .control {
-    border-color: ${colorNeutralStroke1Hover};
-    background-color: ${colorNeutralBackground1Hover};
+    border-color: var(${colorNeutralStroke1Hover});
+    background-color: var(${colorNeutralBackground1Hover});
   }
 
   :host([aria-pressed='true']:active) .control {
-    border-color: ${colorNeutralStroke1Pressed};
-    background-color: ${colorNeutralBackground1Pressed};
+    border-color: var(${colorNeutralStroke1Pressed});
+    background-color: var(${colorNeutralBackground1Pressed});
   }
 
   :host([aria-pressed='true'][appearance='primary']) .control {
     border-color: transparent;
-    background-color: ${colorBrandBackgroundSelected};
-    color: ${colorNeutralForegroundOnBrand};
+    background-color: var(${colorBrandBackgroundSelected});
+    color: var(${colorNeutralForegroundOnBrand});
   }
 
   :host([aria-pressed='true'][appearance='primary']:hover) .control {
-    background-color: ${colorBrandBackgroundHover};
+    background-color: var(${colorBrandBackgroundHover});
   }
 
   :host([aria-pressed='true'][appearance='primary']:active) .control {
-    background-color: ${colorBrandBackgroundPressed};
+    background-color: var(${colorBrandBackgroundPressed});
   }
 
   :host([aria-pressed='true'][appearance='subtle']) .control {
     border-color: transparent;
-    background-color: ${colorSubtleBackgroundSelected};
-    color: ${colorNeutralForeground2Selected};
+    background-color: var(${colorSubtleBackgroundSelected});
+    color: var(${colorNeutralForeground2Selected});
   }
 
   :host([aria-pressed='true'][appearance='subtle']:hover) .control {
-    background-color: ${colorSubtleBackgroundHover};
-    color: ${colorNeutralForeground2Hover};
+    background-color: var(${colorSubtleBackgroundHover});
+    color: var(${colorNeutralForeground2Hover});
   }
 
   :host([aria-pressed='true'][appearance='subtle']:active) .control {
-    background-color: ${colorSubtleBackgroundPressed};
-    color: ${colorNeutralForeground2Pressed};
+    background-color: var(${colorSubtleBackgroundPressed});
+    color: var(${colorNeutralForeground2Pressed});
   }
 
   :host([aria-pressed='true'][appearance='outline']) .control,
   :host([aria-pressed='true'][appearance='transparent']) .control {
-    background-color: ${colorTransparentBackgroundSelected};
+    background-color: var(${colorTransparentBackgroundSelected});
   }
 
   :host([aria-pressed='true'][appearance='outline']:hover) .control,
   :host([aria-pressed='true'][appearance='transparent']:hover) .control {
-    background-color: ${colorTransparentBackgroundHover};
+    background-color: var(${colorTransparentBackgroundHover});
   }
 
   :host([aria-pressed='true'][appearance='outline']:active) .control,
   :host([aria-pressed='true'][appearance='transparent']:active) .control {
-    background-color: ${colorTransparentBackgroundPressed};
+    background-color: var(${colorTransparentBackgroundPressed});
   }
 
   :host([aria-pressed='true'][appearance='transparent']) .control {
     border-color: transparent;
-    color: ${colorNeutralForeground2BrandSelected};
+    color: var(${colorNeutralForeground2BrandSelected});
   }
 
   :host([aria-pressed='true'][appearance='transparent']:hover) .control {
-    color: ${colorNeutralForeground2BrandHover};
+    color: var(${colorNeutralForeground2BrandHover});
   }
 
   :host([aria-pressed='true'][appearance='transparent']:active) .control {
-    color: ${colorNeutralForeground2BrandPressed};
+    color: var(${colorNeutralForeground2BrandPressed});
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
