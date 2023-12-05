@@ -253,6 +253,7 @@ packages/react-components/react-infolabel @microsoft/cxe-red @sopranopillow
 packages/react-components/react-list-preview @microsoft/teams-prg
 packages/react-components/react-motions-preview @microsoft/teams-prg
 packages/react-components/react-teaching-popover-preview @microsoft/xc-uxe @Mitch-At-Work
+packages/react-components/react-icons-compat @microsoft/cxe-red
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
