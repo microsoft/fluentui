@@ -1,9 +1,9 @@
 import { makeStyles, shorthands, tokens, Label, Slider, useId, Checkbox } from '@fluentui/react-components';
-import { createTransition, transitions } from '@fluentui/react-motions-preview';
+import { createPresence, presence } from '@fluentui/react-motions-preview';
 import type { MotionImperativeRef } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
-import description from './TransitionUnmountOnExit.stories.md';
+import description from './CreatePresence.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -43,30 +43,28 @@ const useClasses = makeStyles({
   },
 });
 
-const Fade = createTransition(transitions.fade.slow());
+const Fade = createPresence(presence.fade.slow());
 
-export const TransitionAppear = () => {
+export const CreatePresence = () => {
   const classes = useClasses();
   const sliderId = useId();
 
   const motionRef = React.useRef<MotionImperativeRef>();
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
-  const [isMounted, setIsMounted] = React.useState<boolean>(false);
+  const [visible, setVisible] = React.useState<boolean>(false);
 
   React.useEffect(() => {
     motionRef.current?.setPlaybackRate(playbackRate / 100);
-  }, [playbackRate, isMounted]);
+  }, [playbackRate, visible]);
 
   return (
     <>
       <div className={classes.container}>
         <div className={classes.card}>
-          {isMounted && (
-            <Fade appear imperativeRef={motionRef} visible>
-              <div className={classes.item} />
-            </Fade>
-          )}
+          <Fade imperativeRef={motionRef} visible={visible}>
+            <div className={classes.item} />
+          </Fade>
 
           <code className={classes.description}>fadeSlow</code>
         </div>
@@ -74,7 +72,7 @@ export const TransitionAppear = () => {
 
       <div className={classes.controls}>
         <div>
-          <Checkbox label="Mount an element?" checked={isMounted} onChange={() => setIsMounted(v => !v)} />
+          <Checkbox label={<code>visible</code>} checked={visible} onChange={() => setVisible(v => !v)} />
         </div>
         <div>
           <Label htmlFor={sliderId}>
@@ -95,7 +93,7 @@ export const TransitionAppear = () => {
   );
 };
 
-TransitionAppear.parameters = {
+CreatePresence.parameters = {
   docs: {
     description: {
       story: description,

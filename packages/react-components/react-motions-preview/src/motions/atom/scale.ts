@@ -9,7 +9,7 @@ import {
   easingAccelerateMax,
   easingDecelerateMax,
 } from './tokens';
-import type { MotionAtom } from '../types';
+import type { AtomMotion } from '../../types';
 
 export type ScaleParams = {
   fromValue?: number;
@@ -18,7 +18,7 @@ export type ScaleParams = {
 // Scale Ins
 // --------------------------------------------------
 
-export const enterUltraFast = ({ fromValue = 0.88 }: ScaleParams = {}): MotionAtom => ({
+export const enterUltraFast = ({ fromValue = 0.88 }: ScaleParams = {}): AtomMotion => ({
   keyframes: [
     { transform: `scale(${fromValue})`, opacity: 0 },
     { transform: 'scale(1)', opacity: 1 },
@@ -29,7 +29,7 @@ export const enterUltraFast = ({ fromValue = 0.88 }: ScaleParams = {}): MotionAt
   },
 });
 
-export const enterFaster = ({ fromValue = 0.88 }: ScaleParams = {}): MotionAtom => ({
+export const enterFaster = ({ fromValue = 0.88 }: ScaleParams = {}): AtomMotion => ({
   keyframes: [
     { transform: `scale(${fromValue})`, opacity: 0 },
     { transform: 'scale(1)', opacity: 1 },
@@ -40,7 +40,7 @@ export const enterFaster = ({ fromValue = 0.88 }: ScaleParams = {}): MotionAtom 
   },
 });
 
-export const enterFast = ({ fromValue = 0.88 }: ScaleParams = {}): MotionAtom => ({
+export const enterFast = ({ fromValue = 0.88 }: ScaleParams = {}): AtomMotion => ({
   keyframes: [
     { transform: `scale(${fromValue})`, opacity: 0 },
     { transform: 'scale(1)', opacity: 1 },
@@ -51,7 +51,7 @@ export const enterFast = ({ fromValue = 0.88 }: ScaleParams = {}): MotionAtom =>
   },
 });
 
-export const enterNormal = ({ fromValue = 0.88 }: ScaleParams = {}): MotionAtom => ({
+export const enterNormal = ({ fromValue = 0.88 }: ScaleParams = {}): AtomMotion => ({
   keyframes: [
     { transform: `scale(${fromValue})`, opacity: 0 },
     { transform: 'scale(1)', opacity: 1 },
@@ -62,7 +62,7 @@ export const enterNormal = ({ fromValue = 0.88 }: ScaleParams = {}): MotionAtom 
   },
 });
 
-export const enterSlow = ({ fromValue = 0.88 }: ScaleParams = {}): MotionAtom => ({
+export const enterSlow = ({ fromValue = 0.88 }: ScaleParams = {}): AtomMotion => ({
   keyframes: [
     { transform: `scale(${fromValue})`, opacity: 0 },
     { transform: 'scale(1)', opacity: 1 },
@@ -73,7 +73,7 @@ export const enterSlow = ({ fromValue = 0.88 }: ScaleParams = {}): MotionAtom =>
   },
 });
 
-export const enterSlower = ({ fromValue = 0.88 }: ScaleParams = {}): MotionAtom => ({
+export const enterSlower = ({ fromValue = 0.88 }: ScaleParams = {}): AtomMotion => ({
   keyframes: [
     { transform: `scale(${fromValue})`, opacity: 0 },
     { transform: 'scale(1)', opacity: 1 },
@@ -84,7 +84,7 @@ export const enterSlower = ({ fromValue = 0.88 }: ScaleParams = {}): MotionAtom 
   },
 });
 
-export const enterUltraSlow = ({ fromValue = 0.88 }: ScaleParams = {}): MotionAtom => ({
+export const enterUltraSlow = ({ fromValue = 0.88 }: ScaleParams = {}): AtomMotion => ({
   keyframes: [
     { transform: `scale(${fromValue})`, opacity: 0 },
     { transform: 'scale(1)', opacity: 1 },
@@ -98,7 +98,7 @@ export const enterUltraSlow = ({ fromValue = 0.88 }: ScaleParams = {}): MotionAt
 // Scale Outs
 // --------------------------------------------------
 
-export const exitUltraFast = ({ fromValue = 0.9 }: ScaleParams = {}): MotionAtom => ({
+export const exitUltraFast = ({ fromValue = 0.9 }: ScaleParams = {}): AtomMotion => ({
   keyframes: [
     { transform: 'scale(1)', opacity: 1 },
     { transform: `scale(${fromValue})`, opacity: 0 },
@@ -109,7 +109,7 @@ export const exitUltraFast = ({ fromValue = 0.9 }: ScaleParams = {}): MotionAtom
   },
 });
 
-export const exitFaster = ({ fromValue = 0.9 }: ScaleParams = {}): MotionAtom => ({
+export const exitFaster = ({ fromValue = 0.9 }: ScaleParams = {}): AtomMotion => ({
   keyframes: [
     { transform: 'scale(1)', opacity: 1 },
     { transform: `scale(${fromValue})`, opacity: 0 },
@@ -120,7 +120,7 @@ export const exitFaster = ({ fromValue = 0.9 }: ScaleParams = {}): MotionAtom =>
   },
 });
 
-export const exitFast = ({ fromValue = 0.88 }: ScaleParams = {}): MotionAtom => ({
+export const exitFast = ({ fromValue = 0.88 }: ScaleParams = {}): AtomMotion => ({
   keyframes: [
     { transform: 'scale(1)', opacity: 1 },
     { transform: `scale(${fromValue})`, opacity: 0 },
@@ -131,7 +131,7 @@ export const exitFast = ({ fromValue = 0.88 }: ScaleParams = {}): MotionAtom => 
   },
 });
 
-export const exitNormal = ({ fromValue = 0.9 }: ScaleParams = {}): MotionAtom => ({
+export const exitNormal = ({ fromValue = 0.9 }: ScaleParams = {}): AtomMotion => ({
   keyframes: [
     { transform: 'scale(1)', opacity: 1 },
     { transform: `scale(${fromValue})`, opacity: 0 },
@@ -142,7 +142,7 @@ export const exitNormal = ({ fromValue = 0.9 }: ScaleParams = {}): MotionAtom =>
   },
 });
 
-export const exitSlow = ({ fromValue = 0.9 }: ScaleParams = {}): MotionAtom => ({
+export const exitSlow = ({ fromValue = 0.9 }: ScaleParams = {}): AtomMotion => ({
   keyframes: [
     { transform: 'scale(1)', opacity: 1 },
     { transform: `scale(${fromValue})`, opacity: 0 },
@@ -153,7 +153,7 @@ export const exitSlow = ({ fromValue = 0.9 }: ScaleParams = {}): MotionAtom => (
   },
 });
 
-export const exitSlower = ({ fromValue = 0.9 }: ScaleParams = {}): MotionAtom => ({
+export const exitSlower = ({ fromValue = 0.9 }: ScaleParams = {}): AtomMotion => ({
   keyframes: [
     { transform: 'scale(1)', opacity: 1 },
     { transform: `scale(${fromValue})`, opacity: 0 },
@@ -164,7 +164,7 @@ export const exitSlower = ({ fromValue = 0.9 }: ScaleParams = {}): MotionAtom =>
   },
 });
 
-export const exitUltraSlow = ({ fromValue = 0.88 }: ScaleParams = {}): MotionAtom => ({
+export const exitUltraSlow = ({ fromValue = 0.88 }: ScaleParams = {}): AtomMotion => ({
   keyframes: [
     { transform: 'scale(1)', opacity: 1 },
     { transform: `scale(${fromValue})`, opacity: 0 },

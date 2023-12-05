@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { getChildElement } from '../utils/getChildElement';
-import type { MotionAtom, MotionImperativeRef } from '../types';
+import type { AtomMotion, MotionImperativeRef } from '../types';
 
 export type AtomProps = {
   children: React.ReactElement;
@@ -20,7 +20,7 @@ export type AtomProps = {
  *
  * @param motion - A motion definition.
  */
-export function createAtom(motion: MotionAtom) {
+export function createAtom(motion: AtomMotion) {
   const Atom: React.FC<AtomProps> = props => {
     const { children, iterations = 1, imperativeRef } = props;
 
