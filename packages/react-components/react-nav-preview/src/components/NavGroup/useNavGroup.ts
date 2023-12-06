@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  getIntrinsicElementProps,
-  mergeCallbacks,
-  useEventCallback,
-  useMergedRefs,
-  slot,
-} from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, mergeCallbacks, useEventCallback, slot } from '@fluentui/react-utilities';
 import { useNavContext_unstable } from '../NavContext';
 import { NavGroupProps, NavGroupState } from './NavGroup.types';
 
@@ -50,10 +44,7 @@ export const useNavGroup_unstable = (props: NavGroupProps, ref: React.Ref<HTMLBu
     components: { root: 'button', content: 'span' },
     root: slot.always(
       getIntrinsicElementProps('button', {
-        // FIXME: Follow up with Ben to understand more about what's going on here.
-        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLButtonElement`
-        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLButtonElement>,
+        ref,
         role: 'nav',
         type: 'navigation',
         ...props,
