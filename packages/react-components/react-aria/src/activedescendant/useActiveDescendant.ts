@@ -13,6 +13,32 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
     return listboxRef.current?.querySelector<HTMLElement>(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`);
   };
 
+  const scrollActiveIntoView = (active: HTMLElement) => {
+    if (!listboxRef.current) {
+      return;
+    }
+
+    if (listboxRef.current.offsetHeight >= listboxRef.current.scrollHeight) {
+      return;
+    }
+
+    const { offsetHeight, offsetTop } = active;
+    const { offsetHeight: parentOffsetHeight, scrollTop } = listboxRef.current;
+
+    const isAbove = offsetTop < scrollTop;
+    const isBelow = offsetTop + offsetHeight > scrollTop + parentOffsetHeight;
+
+    const buffer = 2;
+
+    if (isAbove) {
+      listboxRef.current.scrollTo(0, offsetTop - buffer);
+    }
+
+    if (isBelow) {
+      listboxRef.current.scrollTo(0, offsetTop - parentOffsetHeight + offsetHeight + buffer);
+    }
+  };
+
   const setActiveDescendant = (nextActive: HTMLElement | undefined) => {
     const active = getActiveDescendant();
     if (active) {
@@ -21,6 +47,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
 
     if (nextActive) {
       nextActive.setAttribute(ACTIVEDESCENDANT_ATTRIBUTE, '');
+      scrollActiveIntoView(nextActive);
       activeParentRef.current?.setAttribute('aria-activedescendant', nextActive.id);
     } else {
       activeParentRef.current?.removeAttribute('aria-activedescendant');
@@ -33,6 +60,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
         return;
       }
 
+      optionWalker.setCurrent(listboxRef.current);
       const first = optionWalker.first();
       if (first) {
         setActiveDescendant(first);
@@ -65,6 +93,10 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       }
 
       optionWalker.setCurrent(active);
+      if (!matchOption(active)) {
+        optionWalker.prev();
+      }
+
       const next = optionWalker.prev();
 
       if (next && next !== listboxRef.current) {
@@ -72,7 +104,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       }
     },
     blur: () => {
-      if (!listboxRef.current || !activeParentRef.current) {
+      if (!activeParentRef.current) {
         return;
       }
 
