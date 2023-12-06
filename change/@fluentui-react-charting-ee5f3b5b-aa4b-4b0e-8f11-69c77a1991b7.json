@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "Local Codepen support for react-charting package",
+  "type": "patch",
+  "comment": "Local Codepen support update to ngrok@5 with authentication",
   "packageName": "@fluentui/react-charting",
   "email": "shubhabrata08@gmail.com",
   "dependentChangeType": "patch"
