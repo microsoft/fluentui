@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { GlobalSettings } from './GlobalSettings';
-import { warn } from './warn';
 
 export type T = React.ReactNode;
 
-export interface IIconSubset {
+export interface IconSubset {
   icons: {
     [key: string]: string | JSX.Element;
   };
@@ -15,17 +14,17 @@ export interface IIconSubset {
   mergeImageProps?: boolean;
 }
 
-export interface IIconSubsetRecord extends IIconSubset {
+export interface IconSubsetRecord extends IconSubset {
   isRegistered?: boolean;
   className?: string;
 }
 
-export interface IIconRecord {
+export interface IconRecord {
   code: string | undefined;
-  subset: IIconSubsetRecord;
+  subset: IconSubsetRecord;
 }
 
-export interface IIconOptions {
+export interface IconOptions {
   /**
    * By default, registering the same set of icons will generate a console warning per duplicate icon
    * registered, because this scenario can create unexpected consequences.
@@ -48,15 +47,15 @@ export interface IIconOptions {
   warnOnMissingIcons?: boolean;
 }
 
-export interface IIconRecords {
-  __options: IIconOptions;
+export interface IconRecords {
+  __options: IconOptions;
   __remapped: { [key: string]: string };
-  [key: string]: IIconRecord | {};
+  [key: string]: IconRecord | {};
 }
 
 const ICON_SETTING_NAME = 'icons';
 
-const _iconSettings = GlobalSettings.getValue<IIconRecords>(ICON_SETTING_NAME, {
+const _iconSettings = GlobalSettings.getValue<IconRecords>(ICON_SETTING_NAME, {
   __options: {
     disableWarnings: false,
     warnOnMissingIcons: true,
@@ -78,7 +77,7 @@ const normalizeIconName = (name: string): string => name.toLowerCase();
  *
  * @param iconSubset - the icon subset definition.
  */
-export function registerIcons(iconSubset: IIconSubset, options?: Partial<IIconOptions>): void {
+export function registerIcons(iconSubset: IconSubset, options?: Partial<IconOptions>): void {
   let subset = {
     ...iconSubset,
     isRegistered: false,
@@ -100,7 +99,7 @@ export function registerIcons(iconSubset: IIconSubset, options?: Partial<IIconOp
         _iconSettings[normalizedIconName] = {
           code,
           subset,
-        } as IIconRecord;
+        } as IconRecord;
       }
     }
   }
@@ -121,7 +120,7 @@ export function unregisterIcons(iconNames: string[]): void {
     } else {
       // Warn that we are trying to delete an icon that doesn't exist
       if (!options.disableWarnings) {
-        warn(`The icon "${iconName}" tried to unregister but was not registered.`);
+        console.warn(`The icon "${iconName}" tried to unregister but was not registered.`);
       }
     }
 
@@ -153,15 +152,15 @@ export function registerIconAlias(iconName: string, mappedToName: string): void 
  * @public
  * @param name - Name of icon.
  */
-export function getIcon(name?: string): IIconRecord | undefined {
-  let icon: IIconRecord | undefined = undefined;
+export function getIcon(name?: string): IconRecord | undefined {
+  let icon: IconRecord | undefined = undefined;
   const options = _iconSettings.__options;
 
   name = name ? normalizeIconName(name) : '';
   name = _iconSettings.__remapped[name] || name;
 
   if (name) {
-    icon = _iconSettings[name!] as IIconRecord;
+    icon = _iconSettings[name!] as IconRecord;
 
     if (icon) {
       let { subset } = icon;
@@ -173,7 +172,7 @@ export function getIcon(name?: string): IIconRecord | undefined {
     } else {
       // eslint-disable-next-line deprecation/deprecation
       if (!options.disableWarnings && options.warnOnMissingIcons) {
-        warn(
+        console.warn(
           `The icon "${name}" was used but not registered. See https://github.com/microsoft/fluentui/wiki/Using-icons for more information.`,
         );
       }
@@ -188,7 +187,7 @@ export function getIcon(name?: string): IIconRecord | undefined {
  *
  * @public
  */
-export function setIconOptions(options: Partial<IIconOptions>): void {
+export function setIconOptions(options: Partial<IconOptions>): void {
   _iconSettings.__options = {
     ..._iconSettings.__options,
     ...options,
@@ -207,7 +206,7 @@ function _warnDuplicateIcon(iconName: string): void {
     _missingIcons.push(iconName);
     if (_missingIconsTimer === undefined) {
       _missingIconsTimer = setTimeout(() => {
-        warn(
+        console.warn(
           `Some icons were re-registered. Applications should only call registerIcons for any given ` +
             `icon once. Redefining what an icon is may have unintended consequences. Duplicates ` +
             `include: \n` +

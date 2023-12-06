@@ -5,62 +5,29 @@
 ```ts
 
 // @public
-export function getIcon(name?: string): IIconRecord | undefined;
-
-// @public
-export function getWindow(rootElement?: Element | null): Window | undefined;
-
-// @public
-export class GlobalSettings {
-    // (undocumented)
-    static addChangeListener(cb: IChangeEventCallback): void;
-    // (undocumented)
-    static getValue<T>(key: string, defaultValue?: T | (() => T)): T;
-    // (undocumented)
-    static removeChangeListener(cb: IChangeEventCallback): void;
-    // (undocumented)
-    static setValue<T>(key: string, value: T): T;
-}
-
-// @public
-export interface IChangeDescription {
-    // (undocumented)
-    key: string;
-    // (undocumented)
-    oldValue: any;
-    // (undocumented)
-    value: any;
-}
-
-// @public
-export interface IChangeEventCallback {
-    // (undocumented)
-    (changeDescription?: IChangeDescription): void;
-    // (undocumented)
-    __id__?: string;
-}
+export function getIcon(name?: string): IconRecord | undefined;
 
 // @public (undocumented)
-export interface IIconOptions {
+export interface IconOptions {
     disableWarnings: boolean;
     // @deprecated (undocumented)
     warnOnMissingIcons?: boolean;
 }
 
 // @public (undocumented)
-export interface IIconRecord {
+export interface IconRecord {
     // (undocumented)
     code: string | undefined;
     // (undocumented)
-    subset: IIconSubsetRecord;
+    subset: IconSubsetRecord;
 }
 
 // @public (undocumented)
-export interface IIconRecords {
+export interface IconRecords {
     // (undocumented)
-    [key: string]: IIconRecord | {};
+    [key: string]: IconRecord | {};
     // (undocumented)
-    __options: IIconOptions;
+    __options: IconOptions;
     // (undocumented)
     __remapped: {
         [key: string]: string;
@@ -68,7 +35,7 @@ export interface IIconRecords {
 }
 
 // @public (undocumented)
-export interface IIconSubset {
+export interface IconSubset {
     // (undocumented)
     icons: {
         [key: string]: string | JSX.Element;
@@ -77,35 +44,24 @@ export interface IIconSubset {
 }
 
 // @public (undocumented)
-export interface IIconSubsetRecord extends IIconSubset {
+export interface IconSubsetRecord extends IconSubset {
     // (undocumented)
     className?: string;
     // (undocumented)
     isRegistered?: boolean;
 }
 
-// @public (undocumented)
-export type ISettingsMap<T> = {
-    [P in keyof T]?: string;
-};
-
 // @public
 export function registerIconAlias(iconName: string, mappedToName: string): void;
 
 // @public
-export function registerIcons(iconSubset: IIconSubset, options?: Partial<IIconOptions>): void;
+export function registerIcons(iconSubset: IconSubset, options?: Partial<IconOptions>): void;
 
 // @public
-export function setIconOptions(options: Partial<IIconOptions>): void;
-
-// @public
-export function setWarningCallback(warningCallback?: (message: string) => void): void;
+export function setIconOptions(options: Partial<IconOptions>): void;
 
 // @public
 export function unregisterIcons(iconNames: string[]): void;
-
-// @public
-export function warn(message: string): void;
 
 // (No @packageDocumentation comment for this package)
 

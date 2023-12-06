@@ -2,7 +2,7 @@ import { getWindow } from './getWindow';
 
 /**
  * Storing global state in local module variables has issues when more than one copy
- * if the module gets loaded on the page (due to a bundling error or simply by consuming
+ * of the module gets loaded on the page (due to a bundling error or simply by consuming
  * a prebundled script.)
  *
  * This file contains helpers to deal with the getting and setting local state, and allows
@@ -18,9 +18,8 @@ let _counter = 0;
  * Change description used for change callbacks in GlobalSettings.
  *
  * @public
- * {@docCategory IChangeDescription}
  */
-export interface IChangeDescription {
+export interface ChangeDescription {
   key: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   oldValue: any;
@@ -32,11 +31,10 @@ export interface IChangeDescription {
  * Change event callback.
  *
  * @public
- * {@docCategory IChangeEventCallback}
  */
-export interface IChangeEventCallback {
+export interface ChangeEventCallback {
   __id__?: string;
-  (changeDescription?: IChangeDescription): void;
+  (changeDescription?: ChangeDescription): void;
 }
 
 /**
@@ -45,7 +43,6 @@ export interface IChangeEventCallback {
  * way to observe changes as well when their values change.
  *
  * @public
- * {@docCategory GlobalSettings}
  */
 export class GlobalSettings {
   public static getValue<T>(key: string, defaultValue?: T | (() => T)): T {
@@ -82,7 +79,7 @@ export class GlobalSettings {
     return value;
   }
 
-  public static addChangeListener(cb: IChangeEventCallback): void {
+  public static addChangeListener(cb: ChangeEventCallback): void {
     // Note: we use generated ids on the callbacks to create a map of the callbacks, which optimizes removal.
     // (It's faster to delete a key than it is to look up the index of an object and splice an array.)
     let id = cb.__id__;
@@ -95,7 +92,7 @@ export class GlobalSettings {
     callbacks[id] = cb;
   }
 
-  public static removeChangeListener(cb: IChangeEventCallback): void {
+  public static removeChangeListener(cb: ChangeEventCallback): void {
     const callbacks = _getCallbacks();
     delete callbacks[cb.__id__ as string];
   }
