@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: updates should be synchronous in unit tests",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
