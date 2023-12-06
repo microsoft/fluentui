@@ -18,7 +18,7 @@ import {
 export type { IChildProps, IRefArrayData, IBasestate, ILineChartDataPoint, ILineChartPoints, IMargins };
 
 /**
- * IAreaChartProps properties for area chart.
+ * Area Chart properties.
  * {@docCategory AreaChart}
  */
 export interface IAreaChartProps extends ICartesianChartProps {
@@ -66,6 +66,14 @@ export interface IAreaChartProps extends ICartesianChartProps {
   optimizeLargeData?: boolean;
 }
 
+/**
+ * Area Chart styles
+ * {@docCategory AreaChart}
+ */
 export interface IAreaChartStyles extends ICartesianChartStyles {}
 
+/**
+ * Area Chart style properties
+ * {@docCategory AreaChart}
+ */
 export interface IAreaChartStyleProps extends ICartesianChartStyleProps {}

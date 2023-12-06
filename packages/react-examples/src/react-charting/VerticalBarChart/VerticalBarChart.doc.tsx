@@ -61,6 +61,8 @@ export const VerticalBarChartPageProps: IDocPageProps = {
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/docs/VerticalBarChartOverview.md'),
   bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/docs/VerticalBarChartBestPractices.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/docs/VerticalBarChartDos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/docs/VerticalBarChartDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

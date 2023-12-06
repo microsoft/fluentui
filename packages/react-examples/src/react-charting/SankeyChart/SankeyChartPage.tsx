@@ -50,6 +50,16 @@ export class SankeyChartPage extends React.Component<IComponentDemoPageProps, {}
             {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/docs/SankeyChartBestPractices.md')}
           </Markdown>
         }
+        dos={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/docs/SankeyChartDos.md')}
+          </Markdown>
+        }
+        donts={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SankeyChart/docs/SankeyChartDonts.md')}
+          </Markdown>
+        }
       />
     );
   }

@@ -301,10 +301,20 @@ export function createStringXAxis(
  * @param {number} maxVal
  * @param {number} minVal
  * @param {number} splitInto
+ * @param {boolean} isIntegralDataset
  * @returns {number[]}
  */
-export function prepareDatapoints(maxVal: number, minVal: number, splitInto: number): number[] {
-  const val = Math.ceil((maxVal - minVal) / splitInto);
+export function prepareDatapoints(
+  maxVal: number,
+  minVal: number,
+  splitInto: number,
+  isIntegralDataset: boolean,
+): number[] {
+  const val = isIntegralDataset
+    ? Math.ceil((maxVal - minVal) / splitInto)
+    : (maxVal - minVal) / splitInto >= 1
+    ? Math.ceil((maxVal - minVal) / splitInto)
+    : (maxVal - minVal) / splitInto;
   const dataPointsArray: number[] = [minVal, minVal + val];
   while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
     dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
@@ -324,13 +334,14 @@ export function createYAxis(
   axisData: IAxisData,
   chartType: ChartTypes,
   barWidth: number,
+  isIntegralDataset: boolean,
   useSecondaryYScale: boolean = false,
 ) {
   switch (chartType) {
     case ChartTypes.HorizontalBarChartWithAxis:
       return createYAxisForHorizontalBarChartWithAxis(yAxisParams, isRtl, axisData, barWidth!);
     default:
-      return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, useSecondaryYScale);
+      return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
   }
 }
 
@@ -371,6 +382,7 @@ export function createYAxisForOtherCharts(
   yAxisParams: IYAxisParams,
   isRtl: boolean,
   axisData: IAxisData,
+  isIntegralDataset: boolean,
   useSecondaryYScale: boolean = false,
 ) {
   const {
@@ -393,7 +405,7 @@ export function createYAxisForOtherCharts(
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
   const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount);
+  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset);
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
@@ -501,6 +513,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
       legend: string;
       y: number;
       color: string;
+      xAxisCalloutData?: string;
       yAxisCalloutData?: string | { [id: string]: number };
       callOutAccessibilityData?: IAccessibilityProps;
       index?: number;
@@ -509,6 +522,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
       legend: string;
       y: number;
       color: string;
+      xAxisCalloutData?: string;
       yAxisCalloutData?: string | { [id: string]: number };
       callOutAccessibilityData?: IAccessibilityProps;
       index?: number;
@@ -521,6 +535,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
         legend: ele.legend,
         y: ele.y,
         color: ele.color!,
+        xAxisCalloutData: ele.xAxisCalloutData,
         yAxisCalloutData: ele.yAxisCalloutData,
         callOutAccessibilityData: ele.callOutAccessibilityData,
         index: ele.index,
@@ -531,6 +546,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
           legend: ele.legend,
           y: ele.y,
           color: ele.color!,
+          xAxisCalloutData: ele.xAxisCalloutData,
           yAxisCalloutData: ele.yAxisCalloutData,
           callOutAccessibilityData: ele.callOutAccessibilityData,
           index: ele.index,

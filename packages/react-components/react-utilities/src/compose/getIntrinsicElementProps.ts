@@ -22,6 +22,7 @@ export const getIntrinsicElementProps = <
   /** List of native props to exclude from the returned value */
   excludedPropNames?: ExcludedPropKeys[],
 ) => {
+  // eslint-disable-next-line deprecation/deprecation
   return getNativeElementProps<
     OmitWithoutExpanding<Props, Exclude<keyof Props, keyof HTMLAttributes | keyof UnknownSlotProps> | ExcludedPropKeys>
   >(props.as ?? tagName, props, excludedPropNames);

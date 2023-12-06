@@ -72,13 +72,13 @@ export const renderNavLink_unstable: (state: NavLinkState) => JSX.Element;
 export const renderNavLinkGroup_unstable: (state: NavLinkGroupState) => JSX.Element;
 
 // @public
-export const useNav_unstable: (props: NavProps, ref: React_2.Ref<HTMLElement>) => NavState;
+export const useNav_unstable: (props: NavProps, ref: React_2.Ref<HTMLDivElement>) => NavState;
 
 // @public
-export const useNavLink_unstable: (props: NavLinkProps, ref: React_2.Ref<HTMLElement>) => NavLinkState;
+export const useNavLink_unstable: (props: NavLinkProps, ref: React_2.Ref<HTMLDivElement>) => NavLinkState;
 
 // @public
-export const useNavLinkGroup_unstable: (props: NavLinkGroupProps, ref: React_2.Ref<HTMLElement>) => NavLinkGroupState;
+export const useNavLinkGroup_unstable: (props: NavLinkGroupProps, ref: React_2.Ref<HTMLDivElement>) => NavLinkGroupState;
 
 // @public
 export const useNavLinkGroupStyles_unstable: (state: NavLinkGroupState) => NavLinkGroupState;

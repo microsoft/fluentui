@@ -21,6 +21,9 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_3"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -29,7 +32,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone4"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -233,7 +236,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -628,7 +631,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone5"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1211,6 +1214,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_3"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -1219,7 +1225,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone4"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1363,7 +1369,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone5"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1766,10 +1772,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         overflow: hidden;
         width: 100%;
       }
-  id="chart_7"
+  id="chart_8"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_9"
+  />
   <div
     className=
         ms-FocusZone
@@ -1779,7 +1788,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone8"
+    data-focuszone-id="FocusZone10"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1819,7 +1828,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
             & path {
               display: none;
             }
-        id="xAxisGElementchart_7"
+        id="xAxisGElementchart_8"
         transform="translate(0, -35)"
       />
       <g
@@ -1847,13 +1856,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_7"
+        id="yAxisGElementchart_8"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           aria-label="2020/04/30. 20%."
-          aria-labelledby="toolTipcallout5"
+          aria-labelledby="toolTipcallout6"
           className=
 
               {
@@ -1896,10 +1905,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         overflow: hidden;
         width: 100%;
       }
-  id="chart_11"
+  id="chart_13"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_14"
+  />
   <div
     className=
         ms-FocusZone
@@ -1909,7 +1921,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone12"
+    data-focuszone-id="FocusZone15"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1949,7 +1961,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
             & path {
               display: none;
             }
-        id="xAxisGElementchart_11"
+        id="xAxisGElementchart_13"
         transform="translate(0, -35)"
       />
       <g
@@ -1977,13 +1989,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_11"
+        id="yAxisGElementchart_13"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           aria-label="1000. String One."
-          aria-labelledby="toolTipcallout9"
+          aria-labelledby="toolTipcallout11"
           data-is-focusable={true}
           fill="#0078d4"
           height={32}
@@ -2049,7 +2061,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone13"
+              data-focuszone-id="FocusZone16"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2444,10 +2456,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         overflow: hidden;
         width: 100%;
       }
-  id="chart_16"
+  id="chart_19"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_20"
+  />
   <div
     className=
         ms-FocusZone
@@ -2457,7 +2472,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone21"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2497,7 +2512,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
             & path {
               display: none;
             }
-        id="xAxisGElementchart_16"
+        id="xAxisGElementchart_19"
         transform="translate(0, -35)"
       />
       <g
@@ -2525,13 +2540,13 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_16"
+        id="yAxisGElementchart_19"
         transform="translate(40, 0)"
       />
       <g>
         <rect
           aria-label="1000. String One."
-          aria-labelledby="toolTipcallout14"
+          aria-labelledby="toolTipcallout17"
           data-is-focusable={true}
           fill="#0078d4"
           height={32}
@@ -2597,7 +2612,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone18"
+              data-focuszone-id="FocusZone22"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

@@ -340,7 +340,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
         </div>
         <table>
           <tbody>
-            <tr style={{ borderBottom: '1pt solid black' }}>
+            <tr>
               <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 1</td>
               <td>
                 <Sparkline data={sl1} showLegend={true} />

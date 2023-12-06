@@ -2,6 +2,324 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Thu, 30 Nov 2023 13:42:05 GMT",
+      "tag": "@fluentui/react-combobox_v9.5.32",
+      "version": "9.5.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "f72acbfc210a6477265b88d794fba38639666e5c",
+            "comment": "fix: listbox closes on blur after scroll click"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "81bc562773bf52c5806054de35a206a250cfd28e",
+            "comment": "fix: Dropdown button gets focus in Safari when clicked"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.1.43",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.20",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.4.3",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.10.2",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Nov 2023 09:55:10 GMT",
+      "tag": "@fluentui/react-combobox_v9.5.31",
+      "version": "9.5.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.1.42",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.4.2",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.10.1",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.13.0",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Nov 2023 17:51:27 GMT",
+      "tag": "@fluentui/react-combobox_v9.5.30",
+      "version": "9.5.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.4.1",
+            "commit": "74af9993e1f812bdc9d8a4635f8477295168efa8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Nov 2023 17:29:31 GMT",
+      "tag": "@fluentui/react-combobox_v9.5.29",
+      "version": "9.5.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "a16f104e5ae9da7a2fb74259fb67ae1479eb00a5",
+            "comment": "refactor: Removes double render infavour of matchTargetSize"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.7",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.42",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.1.41",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.19",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.4.0",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.10.0",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.12.0",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-theme to v9.1.16",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-utilities to v9.15.2",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Nov 2023 12:55:58 GMT",
+      "tag": "@fluentui/react-combobox_v9.5.28",
+      "version": "9.5.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "787e8e99a558d76ac2c2bdfe9f1537cf723b74cb",
+            "comment": "fix: Combobox now collapses when mousing up outside of listbox after having moused within it."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.1.40",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.3.27",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.9.23",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.11.1",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-theme to v9.1.15",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 28 Oct 2023 23:35:55 GMT",
+      "tag": "@fluentui/react-combobox_v9.5.27",
+      "version": "9.5.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "fcb66088ae79124fabbc12cb57197930dc0f5a80",
+            "comment": "fix: update `setActiveOption` type to be React Dispatch."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.1.39",
+            "commit": "555b0fae3ec7f052e765557ae243c58000514f92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.3.26",
+            "commit": "555b0fae3ec7f052e765557ae243c58000514f92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.9.22",
+            "commit": "555b0fae3ec7f052e765557ae243c58000514f92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.11.0",
+            "commit": "555b0fae3ec7f052e765557ae243c58000514f92"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Oct 2023 09:51:57 GMT",
+      "tag": "@fluentui/react-combobox_v9.5.26",
+      "version": "9.5.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.3.25",
+            "commit": "e4ef1febe8a185dddc10f8936944d177d50bc396"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Oct 2023 17:54:02 GMT",
+      "tag": "@fluentui/react-combobox_v9.5.25",
+      "version": "9.5.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.41",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.1.38",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.18",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-portal to v9.3.24",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.9.21",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-utilities to v9.15.1",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Oct 2023 14:55:44 GMT",
       "tag": "@fluentui/react-combobox_v9.5.24",
       "version": "9.5.24",

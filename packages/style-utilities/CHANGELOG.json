@@ -2,6 +2,60 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Thu, 09 Nov 2023 07:29:20 GMT",
+      "tag": "@fluentui/style-utilities_v8.9.20",
+      "version": "8.9.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/theme to v2.6.38",
+            "commit": "c139fc66cca05255b5c96f6c92d9230b37975276"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/utilities to v8.13.21",
+            "commit": "c139fc66cca05255b5c96f6c92d9230b37975276"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 28 Oct 2023 00:29:16 GMT",
+      "tag": "@fluentui/style-utilities_v8.9.19",
+      "version": "8.9.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/theme to v2.6.37",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.13",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.12",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/utilities to v8.13.20",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 29 Sep 2023 07:45:30 GMT",
       "tag": "@fluentui/style-utilities_v8.9.18",
       "version": "8.9.18",

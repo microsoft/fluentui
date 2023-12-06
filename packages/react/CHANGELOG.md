@@ -1,8 +1,87 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 09 Oct 2023 07:37:25 GMT and should not be manually modified.
+This log was last generated on Thu, 16 Nov 2023 07:26:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.112.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.9)
+
+Thu, 16 Nov 2023 07:26:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.112.8..@fluentui/react_v8.112.9)
+
+### Patches
+
+- docs(FacePile): Updated FacePile API documentation for a better understanding ([PR #29752](https://github.com/microsoft/fluentui/pull/29752) by kapil.kashyaps@gmail.com)
+
+## [8.112.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.8)
+
+Thu, 09 Nov 2023 07:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.112.7..@fluentui/react_v8.112.8)
+
+### Patches
+
+- Bump @fluentui/foundation-legacy to v8.2.47 ([PR #29772](https://github.com/microsoft/fluentui/pull/29772) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.27 ([PR #29772](https://github.com/microsoft/fluentui/pull/29772) by beachball)
+- Bump @fluentui/react-focus to v8.8.34 ([PR #29772](https://github.com/microsoft/fluentui/pull/29772) by beachball)
+- Bump @fluentui/react-hooks to v8.6.33 ([PR #29772](https://github.com/microsoft/fluentui/pull/29772) by beachball)
+- Bump @fluentui/style-utilities to v8.9.20 ([PR #29772](https://github.com/microsoft/fluentui/pull/29772) by beachball)
+- Bump @fluentui/theme to v2.6.38 ([PR #29772](https://github.com/microsoft/fluentui/pull/29772) by beachball)
+- Bump @fluentui/utilities to v8.13.21 ([PR #29772](https://github.com/microsoft/fluentui/pull/29772) by beachball)
+
+## [8.112.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.7)
+
+Wed, 08 Nov 2023 07:27:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.112.6..@fluentui/react_v8.112.7)
+
+### Patches
+
+- fix: preventDismissOnEvent does not override passed-in prop ([PR #29737](https://github.com/microsoft/fluentui/pull/29737) by sarah.higley@microsoft.com)
+
+## [8.112.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.6)
+
+Mon, 06 Nov 2023 07:27:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.112.5..@fluentui/react_v8.112.6)
+
+### Patches
+
+- fix(Calendar): Calendar should memoize today's default value since it causes rerenders by creating a new object each time. ([PR #29747](https://github.com/microsoft/fluentui/pull/29747) by esteban.230@hotmail.com)
+
+## [8.112.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.5)
+
+Wed, 01 Nov 2023 07:29:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.112.4..@fluentui/react_v8.112.5)
+
+### Patches
+
+- Bump @fluentui/react-hooks to v8.6.32 ([PR #29699](https://github.com/microsoft/fluentui/pull/29699) by beachball)
+
+## [8.112.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.4)
+
+Sat, 28 Oct 2023 00:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.112.3..@fluentui/react_v8.112.4)
+
+### Patches
+
+- Bump @fluentui/date-time-utilities to v8.5.14 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.46 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.26 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/merge-styles to v8.5.13 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/react-focus to v8.8.33 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/react-hooks to v8.6.31 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.16 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/set-version to v8.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/style-utilities to v8.9.19 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/theme to v2.6.37 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/utilities to v8.13.20 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+
+## [8.112.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.3)
+
+Mon, 16 Oct 2023 07:37:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.112.2..@fluentui/react_v8.112.3)
+
+### Patches
+
+- fix: avoid edge case where Sticky/ScrollablePane could fall into infinite loop ([PR #29054](https://github.com/microsoft/fluentui/pull/29054) by seanmonahan@microsoft.com)
 
 ## [8.112.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.2)
 

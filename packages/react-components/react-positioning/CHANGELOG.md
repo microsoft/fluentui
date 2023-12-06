@@ -1,8 +1,71 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Wed, 11 Oct 2023 13:54:26 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Nov 2023 13:42:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.10.2)
+
+Thu, 30 Nov 2023 13:42:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.10.1..@fluentui/react-positioning_v9.10.2)
+
+### Patches
+
+- feat: adds floating-ui-devtools support ([PR #29905](https://github.com/microsoft/fluentui/pull/29905) by bernardo.sunderhus@gmail.com)
+- fix: Infinite reset loop in matchTargetSize middleware ([PR #29915](https://github.com/microsoft/fluentui/pull/29915) by lingfan.gao@microsoft.com)
+
+## [9.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.10.1)
+
+Mon, 20 Nov 2023 09:55:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.10.0..@fluentui/react-positioning_v9.10.1)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.13.0 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+
+## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.10.0)
+
+Thu, 09 Nov 2023 17:29:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.9.23..@fluentui/react-positioning_v9.10.0)
+
+### Minor changes
+
+- feat: add `matchTargetSize` positioning option ([PR #29690](https://github.com/microsoft/fluentui/pull/29690) by lingfangao@hotmail.com)
+- Bump @fluentui/react-shared-contexts to v9.12.0 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-theme to v9.1.16 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-utilities to v9.15.2 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+
+## [9.9.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.9.23)
+
+Wed, 01 Nov 2023 12:55:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.9.22..@fluentui/react-positioning_v9.9.23)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.11.1 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-theme to v9.1.15 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+
+## [9.9.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.9.22)
+
+Sat, 28 Oct 2023 23:35:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.9.21..@fluentui/react-positioning_v9.9.22)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+
+## [9.9.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.9.21)
+
+Wed, 18 Oct 2023 17:54:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.9.20..@fluentui/react-positioning_v9.9.21)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.15.1 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
 
 ## [9.9.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.9.20)
 

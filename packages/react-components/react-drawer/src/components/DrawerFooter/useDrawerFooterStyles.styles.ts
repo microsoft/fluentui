@@ -14,10 +14,13 @@ export const drawerFooterClassNames: SlotClassNames<DrawerFooterSlots> = {
 const useStyles = makeResetStyles({
   ...shorthands.padding(tokens.spacingVerticalL, tokens.spacingHorizontalXXL, tokens.spacingVerticalXXL),
 
+  width: '100%',
+  maxWidth: '100%',
   display: 'flex',
   justifyContent: 'flex-start',
   alignItems: 'center',
   columnGap: tokens.spacingHorizontalS,
+  boxSizing: 'border-box',
 });
 
 /**

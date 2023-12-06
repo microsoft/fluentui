@@ -75,6 +75,16 @@ export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
             {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/docs/AreaChartBestPractices.md')}
           </Markdown>
         }
+        dos={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/docs/AreaChartDos.md')}
+          </Markdown>
+        }
+        donts={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/docs/AreaChartDonts.md')}
+          </Markdown>
+        }
       />
     );
   }

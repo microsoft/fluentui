@@ -9,7 +9,7 @@ export interface IStackedBarChart {}
 import { IChartProps, IChartDataPoint } from './index';
 
 /**
- * IStackedBarChartProps for StackedBarchart component.
+ * Stacked Bar Chart properties
  * {@docCategory StackedBarChart}
  */
 export interface IStackedBarChartProps {
@@ -136,6 +136,10 @@ export interface IStackedBarChartProps {
   culture?: string;
 }
 
+/**
+ * Stacked Bar Chart style properties
+ * {@docCategory StackedBarChart}
+ */
 export interface IStackedBarChartStyleProps {
   /**
    * Theme (provided through customization.)
@@ -203,6 +207,10 @@ export interface IStackedBarChartStyleProps {
   showTriangle?: boolean;
 }
 
+/**
+ * Stacked Bar Chart styles
+ * {@docCategory StackedBarChart}
+ */
 export interface IStackedBarChartStyles {
   /**
    *  Style for the root element.

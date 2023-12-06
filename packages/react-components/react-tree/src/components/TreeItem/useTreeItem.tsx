@@ -3,12 +3,12 @@ import * as ReactDOM from 'react-dom';
 import {
   getIntrinsicElementProps,
   useId,
-  useMergedRefs,
   useEventCallback,
   slot,
   elementContains,
+  useMergedRefs,
 } from '@fluentui/react-utilities';
-import type { TreeItemProps, TreeItemState } from './TreeItem.types';
+import type { TreeItemProps, TreeItemState, TreeItemValue } from './TreeItem.types';
 import { Space } from '@fluentui/keyboard-keys';
 import { treeDataTypes } from '../../utils/tokens';
 import { useTreeContext_unstable, useSubtreeContext_unstable, useTreeItemContext_unstable } from '../../contexts';
@@ -34,7 +34,8 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
 
   // note, if the value is not externally provided,
   // then selection and expansion will not work properly
-  const value = useId('fuiTreeItemValue-', props.value?.toString());
+  const internalValue = useId('fuiTreeItemValue-');
+  const value: TreeItemValue = props.value ?? internalValue;
 
   const {
     onClick,
@@ -50,18 +51,12 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     ...rest
   } = props;
 
-  const [isActionsVisible, setActionsVisible] = React.useState(false);
-  const [isAsideVisible, setAsideVisible] = React.useState(true);
-
-  const handleActionsRef = React.useCallback((actionsElement: HTMLDivElement | null) => {
-    setAsideVisible(actionsElement === null);
-  }, []);
-
   const actionsRef = React.useRef<HTMLDivElement>(null);
   const expandIconRef = React.useRef<HTMLDivElement>(null);
   const layoutRef = React.useRef<HTMLDivElement>(null);
   const subtreeRef = React.useRef<HTMLDivElement>(null);
   const selectionRef = React.useRef<HTMLInputElement>(null);
+  const treeItemRef = React.useRef<HTMLDivElement>(null);
 
   const open = useTreeContext_unstable(ctx => props.open ?? ctx.openItems.has(value));
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
@@ -199,51 +194,6 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     }
   });
 
-  const setActionsVisibleIfNotFromSubtree = React.useCallback((event: React.SyntheticEvent<HTMLDivElement>) => {
-    const isTargetFromSubtree = Boolean(
-      subtreeRef.current && elementContains(subtreeRef.current, event.target as Node),
-    );
-    if (!isTargetFromSubtree) {
-      setActionsVisible(true);
-    }
-  }, []);
-  const setActionsInvisibleIfNotFromSubtree = React.useCallback(
-    (event: React.MouseEvent<HTMLDivElement> | React.FocusEvent<HTMLDivElement>) => {
-      const isTargetFromSubtree = Boolean(
-        subtreeRef.current && elementContains(subtreeRef.current, event.target as Node),
-      );
-      const isRelatedTargetFromActions = Boolean(
-        actionsRef.current && elementContains(actionsRef.current, event.relatedTarget as Node),
-      );
-      if (isRelatedTargetFromActions) {
-        return setActionsVisible(true);
-      }
-      if (!isTargetFromSubtree) {
-        return setActionsVisible(false);
-      }
-    },
-    [],
-  );
-
-  const handleMouseOver = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    onMouseOver?.(event);
-    setActionsVisibleIfNotFromSubtree(event);
-  });
-
-  const handleFocus = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
-    onFocus?.(event);
-    setActionsVisibleIfNotFromSubtree(event);
-  });
-
-  const handleMouseOut = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    onMouseOut?.(event);
-    setActionsInvisibleIfNotFromSubtree(event);
-  });
-  const handleBlur = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
-    onBlur?.(event);
-    setActionsInvisibleIfNotFromSubtree(event);
-  });
-
   const handleChange = useEventCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     onChange?.(event);
     if (event.isDefaultPrevented()) {
@@ -272,20 +222,23 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     layoutRef,
     selectionRef,
     expandIconRef,
-    actionsRef: useMergedRefs(handleActionsRef, actionsRef),
+    treeItemRef,
+    actionsRef,
     itemType,
     level,
     components: {
       root: 'div',
     },
-    isAsideVisible,
-    isActionsVisible,
+    // FIXME: this property is not necessary anymore, but as removing it would be a breaking change, we need to keep it as false
+    isAsideVisible: false,
+    // FIXME: this property is not necessary anymore, but as removing it would be a breaking change, we need to keep it as false
+    isActionsVisible: false,
     root: slot.always(
       getIntrinsicElementProps(as, {
         tabIndex: -1,
         [dataTreeItemValueAttrName]: value,
         ...rest,
-        ref,
+        ref: useMergedRefs(ref, treeItemRef),
         role: 'treeitem',
         'aria-level': level,
         'aria-checked': selectionMode === 'multiselect' ? checked : undefined,
@@ -296,10 +249,6 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         'aria-expanded': itemType === 'branch' ? open : undefined,
         onClick: handleClick,
         onKeyDown: handleKeyDown,
-        onMouseOver: handleMouseOver,
-        onFocus: handleFocus,
-        onMouseOut: handleMouseOut,
-        onBlur: handleBlur,
         onChange: handleChange,
       } as const),
       { elementType: 'div' },

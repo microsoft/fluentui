@@ -323,7 +323,7 @@ export const CustomAnimation = () => {
 ##### Fluent Component:
 
 ```tsx
-export const useDrawer_unstable = ({ open }: DrawerInlineProps, ref: React.Ref<HTMLDivElement>): DrawerInlineState => {
+export const useDrawer_unstable = ({ open }: InlineDrawerProps, ref: React.Ref<HTMLDivElement>): InlineDrawerState => {
   // Call useMotion with given motion values
   const motion = useMotion(open);
 

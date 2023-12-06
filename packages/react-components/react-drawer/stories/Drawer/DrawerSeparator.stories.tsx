@@ -1,6 +1,14 @@
 import * as React from 'react';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerInline } from '@fluentui/react-drawer';
-import { Button, makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import {
+  DrawerBody,
+  DrawerHeader,
+  DrawerHeaderTitle,
+  InlineDrawer,
+  Button,
+  makeStyles,
+  shorthands,
+  tokens,
+} from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -30,7 +38,7 @@ export const Separator = () => {
 
   return (
     <div className={styles.root}>
-      <DrawerInline position="start" open={leftOpen}>
+      <InlineDrawer position="start" open={leftOpen}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -49,7 +57,7 @@ export const Separator = () => {
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </DrawerInline>
+      </InlineDrawer>
 
       <div className={styles.content}>
         <Button appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
@@ -61,7 +69,7 @@ export const Separator = () => {
         </Button>
       </div>
 
-      <DrawerInline separator position="end" open={rightOpen}>
+      <InlineDrawer separator position="end" open={rightOpen}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -80,7 +88,7 @@ export const Separator = () => {
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </DrawerInline>
+      </InlineDrawer>
     </div>
   );
 };

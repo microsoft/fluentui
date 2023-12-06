@@ -62,6 +62,16 @@ export class TreeChartPage extends React.Component<IComponentDemoPageProps, {}> 
             {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/docs/TreeChartBestPractices.md')}
           </Markdown>
         }
+        dos={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/docs/TreeChartDos.md')}
+          </Markdown>
+        }
+        donts={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/docs/TreeChartDonts.md')}
+          </Markdown>
+        }
       />
     );
   }

@@ -1,4 +1,4 @@
-import { mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TimePickerSlots, TimePickerState } from './TimePicker.types';
 import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
@@ -10,11 +10,17 @@ export const timePickerClassNames: SlotClassNames<TimePickerSlots> = {
   listbox: 'fui-TimePicker__listbox',
 };
 
+const useStyles = makeStyles({
+  listbox: {
+    maxHeight: 'min(80vh, 416px)', // height for 12 items or 80vh, whichever is smaller
+  },
+});
+
 /**
  * Apply styling to the TimePicker slots based on the state
  */
 export const useTimePickerStyles_unstable = (state: TimePickerState): TimePickerState => {
-  useComboboxStyles_unstable(state);
+  const styles = useStyles();
 
   state.root.className = mergeClasses(timePickerClassNames.root, state.root.className);
 
@@ -25,8 +31,10 @@ export const useTimePickerStyles_unstable = (state: TimePickerState): TimePicker
   }
 
   if (state.listbox) {
-    state.listbox.className = mergeClasses(timePickerClassNames.listbox, state.listbox.className);
+    state.listbox.className = mergeClasses(timePickerClassNames.listbox, styles.listbox, state.listbox.className);
   }
+
+  useComboboxStyles_unstable(state);
 
   return state;
 };
