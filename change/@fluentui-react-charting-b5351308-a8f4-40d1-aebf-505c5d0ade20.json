@@ -1,7 +1,7 @@
 {
-  "type": "minor",
+  "type": "null",
   "comment": "Added webpack config for local codepen support in react-charting",
   "packageName": "@fluentui/react-charting",
   "email": "shubhabrata08@gmail.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "null"
 }
