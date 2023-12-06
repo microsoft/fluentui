@@ -1,7 +1,7 @@
 import type { NavGroupSlots, NavGroupState } from './NavGroup.types';
 
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 export const navGroupClassNames: SlotClassNames<NavGroupSlots> = {

@@ -52,8 +52,11 @@ export type OnNavGroupSelectData = EventData<'click', React.MouseEvent<HTMLButto
 export type NavState = ComponentState<NavSlots> & NavContextValue;
 
 // Temporarily here until they go into @fluentui/react-utilities
-type EventData<Type extends string, TEvent> =
+export type EventData<Type extends string, TEvent> =
   | { type: undefined; event: React.SyntheticEvent | Event }
   | { type: Type; event: TEvent };
 
-type EventHandler<TData extends EventData<string, unknown>> = (ev: React.SyntheticEvent | Event, data: TData) => void;
+export type EventHandler<TData extends EventData<string, unknown>> = (
+  ev: React.SyntheticEvent | Event,
+  data: TData,
+) => void;

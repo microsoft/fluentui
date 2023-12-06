@@ -8,12 +8,11 @@ export {
   useNavGroup_unstable,
   useNavGroupStyles_unstable,
 } from './components/NavGroup/index';
-export type { NavGroupInternalSlots, NavGroupProps, NavGroupSlots, NavGroupState } from './components/NavGroup/index';
+export type { NavGroupProps, NavGroupSlots, NavGroupValue, NavGroupState } from './components/NavGroup/index';
 export { NavContext, NavProvider, useNavContext_unstable } from './components/NavContext';
 export type {
   NavContextValue,
   NavContextValues,
   NavGroupRegisterData,
-  NavGroupValue,
   RegisterNavGroupEventHandler,
 } from './components/NavContext.types';

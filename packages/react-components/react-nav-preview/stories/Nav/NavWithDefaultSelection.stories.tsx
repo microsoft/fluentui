@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Nav, NavProps, NavGroup } from '@fluentui/react-nav-preview';
+import { Nav, NavGroup } from '@fluentui/react-nav-preview';
 
-export const WithDefaultSelection = (props: Partial<NavProps>) => {
+export const WithDefaultSelection = () => {
   return (
     <Nav defaultSelectedValue={'2'}>
       <NavGroup value="1">First</NavGroup>
