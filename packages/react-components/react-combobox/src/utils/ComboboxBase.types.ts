@@ -82,7 +82,10 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
     // Whether the keyboard focus outline style should be visible
     focusVisible: boolean;
 
-    // whether the combobox/dropdown currently has focus
+    /**
+     * @deprecated
+     * whether the combobox/dropdown currently has focus
+     */
     hasFocus: boolean;
 
     /* Whether the next blur event should be ignored, and the combobox/dropdown will not close.*/
@@ -92,6 +95,9 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
 
     setFocusVisible(focusVisible: boolean): void;
 
+    /**
+     * @deprecated
+     */
     setHasFocus(hasFocus: boolean): void;
 
     setOpen(event: ComboboxBaseOpenEvents, newState: boolean): void;
