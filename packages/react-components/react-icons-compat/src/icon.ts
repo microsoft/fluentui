@@ -78,12 +78,12 @@ const normalizeIconName = (name: string): string => name.toLowerCase();
  * @param iconSubset - the icon subset definition.
  */
 export function registerIcons(iconSubset: IconSubset, options?: Partial<IconOptions>): void {
-  let subset = {
+  const subset = {
     ...iconSubset,
     isRegistered: false,
     className: undefined,
   };
-  let { icons } = iconSubset;
+  const { icons } = iconSubset;
 
   // Grab options, optionally mix user provided ones on top.
   options = options ? { ..._iconSettings.__options, ...options } : _iconSettings.__options;
@@ -120,6 +120,7 @@ export function unregisterIcons(iconNames: string[]): void {
     } else {
       // Warn that we are trying to delete an icon that doesn't exist
       if (!options.disableWarnings) {
+        // eslint-disable-next-line no-console
         console.warn(`The icon "${iconName}" tried to unregister but was not registered.`);
       }
     }
@@ -163,7 +164,7 @@ export function getIcon(name?: string): IconRecord | undefined {
     icon = _iconSettings[name!] as IconRecord;
 
     if (icon) {
-      let { subset } = icon;
+      const { subset } = icon;
       if (subset) {
         if (!subset.isRegistered) {
           subset.isRegistered = true;
@@ -172,6 +173,7 @@ export function getIcon(name?: string): IconRecord | undefined {
     } else {
       // eslint-disable-next-line deprecation/deprecation
       if (!options.disableWarnings && options.warnOnMissingIcons) {
+        // eslint-disable-next-line no-console
         console.warn(
           `The icon "${name}" was used but not registered. See https://github.com/microsoft/fluentui/wiki/Using-icons for more information.`,
         );
@@ -206,6 +208,7 @@ function _warnDuplicateIcon(iconName: string): void {
     _missingIcons.push(iconName);
     if (_missingIconsTimer === undefined) {
       _missingIconsTimer = setTimeout(() => {
+        // eslint-disable-next-line no-console
         console.warn(
           `Some icons were re-registered. Applications should only call registerIcons for any given ` +
             `icon once. Redefining what an icon is may have unintended consequences. Duplicates ` +
