@@ -18,11 +18,11 @@ import {
   useFluent,
 } from '@fluentui/react-components';
 
-interface UpcomingMeetingsGridActiveOnlyRowNavigationRendererProps {
+interface UpcomingMeetingsGridActiveOnlyEntireRowNarrationRendererProps {
   threeUpcomingMeetings: UpcomingMeeting[];
 }
-export const UpcomingMeetingsGridActiveOnlyRowNavigationRenderer: React.FC<
-  UpcomingMeetingsGridActiveOnlyRowNavigationRendererProps
+export const UpcomingMeetingsGridActiveOnlyEntireRowNarrationRenderer: React.FC<
+  UpcomingMeetingsGridActiveOnlyEntireRowNarrationRendererProps
 > = ({ threeUpcomingMeetings }) => {
   const { tableRowTabsterAttribute, tableTabsterAttribute, onTableKeyDown } = useAdamTableCompositeNavigation();
 
@@ -62,7 +62,7 @@ export const UpcomingMeetingsGridActiveOnlyRowNavigationRenderer: React.FC<
     >
       <TableBody>
         {threeUpcomingMeetingsItems.map((meeting, index) => (
-          <TableRow key={index} tabIndex={0} aria-label={meeting.title} {...tableRowTabsterAttribute}>
+          <TableRow key={index} tabIndex={0} {...tableRowTabsterAttribute}>
             <TableCell role="rowheader">{meeting.title}</TableCell>
             <TableCell role="gridcell">
               <Button>View details</Button>
@@ -103,12 +103,12 @@ export const UpcomingMeetingsGridActiveOnlyRowNavigationRenderer: React.FC<
   );
 };
 
-interface RecentMeetingsGridActiveOnlyRowNavigationRendererProps {
+interface RecentMeetingsGridActiveOnlyEntireRowNarrationRendererProps {
   recentCategories: RecentCategory[];
   recentMeetings: RecentMeetings;
 }
-export const RecentMeetingsTreeGridActiveOnlyRowNavigationRenderer: React.FC<
-  RecentMeetingsGridActiveOnlyRowNavigationRendererProps
+export const RecentMeetingsTreeGridActiveOnlyEntireRowNarrationRenderer: React.FC<
+  RecentMeetingsGridActiveOnlyEntireRowNarrationRendererProps
 > = ({ recentCategories, recentMeetings }) => {
   const { targetDocument } = useFluent();
   const [recentCategoriesState, setRecentCategoryState] = React.useState(recentCategories);
@@ -210,7 +210,6 @@ export const RecentMeetingsTreeGridActiveOnlyRowNavigationRenderer: React.FC<
               onClick={handleRowClick}
               aria-level={1}
               aria-expanded={category.expanded}
-              aria-label={category.title}
               {...tableRowTabsterAttribute}
             >
               <TableCell role="rowheader">{category.title}</TableCell>
@@ -226,7 +225,6 @@ export const RecentMeetingsTreeGridActiveOnlyRowNavigationRenderer: React.FC<
                   id={meeting.id}
                   tabIndex={0}
                   aria-level={2}
-                  aria-label={meeting.titleWithTime}
                   {...tableRowTabsterAttribute}
                 >
                   <TableCell role="rowheader">{meeting.titleWithTime}</TableCell>

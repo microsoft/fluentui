@@ -1,5 +1,9 @@
 import * as React from 'react';
 import {
+  UpcomingMeetingsGridActiveOnlyEntireRowNarrationRenderer,
+  RecentMeetingsTreeGridActiveOnlyEntireRowNarrationRenderer,
+} from './AccessibleMeetGridsActiveOnlyEntireRowNarrationRenderer';
+import {
   UpcomingMeetingsGridActiveOnlyCombinedNavigationRenderer,
   RecentMeetingsTreeGridActiveOnlyCombinedNavigationRenderer,
 } from './AccessibleMeetGridsActiveOnlyCombinedNavigationRenderer';
@@ -43,6 +47,7 @@ import {
 } from '@fluentui/react-components';
 
 type PrototypeVariant =
+  | 'gridsActiveOnlyEntireRowNarration'
   | 'gridsActiveOnlyCombinedNavigation'
   | 'gridsActiveOnlyRowNavigation'
   | 'stitchedGridsRowNavigation'
@@ -316,6 +321,9 @@ export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant 
       {variant === 'gridsActiveOnlyCombinedNavigation' && (
         <h1>Variant B: Accessible Meet Using Grids Active Only Combined Navigation</h1>
       )}
+      {variant === 'gridsActiveOnlyEntireRowNarration' && (
+        <h1>Variant C: Accessible Meet Using Grids Active Only Entire Row Narration</h1>
+      )}
       {variant === 'gridsActiveOnlyRowNavigation' && (
         <h1>Variant A: Accessible Meet Using Grids Active Only Row Navigation</h1>
       )}
@@ -355,6 +363,10 @@ export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant 
         <Button>Open my calendar</Button>
         <Button disabledFocusable={true}>Previous meetings</Button>
         <Button>Next meetings</Button>
+
+        {variant === 'gridsActiveOnlyEntireRowNarration' && (
+          <UpcomingMeetingsGridActiveOnlyEntireRowNarrationRenderer threeUpcomingMeetings={threeUpcomingMeetings} />
+        )}
 
         {variant === 'gridsActiveOnlyCombinedNavigation' && (
           <UpcomingMeetingsGridActiveOnlyCombinedNavigationRenderer threeUpcomingMeetings={threeUpcomingMeetings} />
@@ -401,6 +413,13 @@ export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant 
         <Field label="Filter by keyword">
           <Input />
         </Field>
+
+        {variant === 'gridsActiveOnlyEntireRowNarration' && (
+          <RecentMeetingsTreeGridActiveOnlyEntireRowNarrationRenderer
+            recentCategories={recentCategoriesRef.current}
+            recentMeetings={recentMeetings}
+          />
+        )}
 
         {variant === 'gridsActiveOnlyCombinedNavigation' && (
           <RecentMeetingsTreeGridActiveOnlyCombinedNavigationRenderer

@@ -100,7 +100,7 @@ export const UpcomingMeetingsGridActiveOnlyCombinedNavigationRenderer: React.FC<
       <TableBody>
         {threeUpcomingMeetingsItems.map((meeting, index) => (
           <TableRow key={index} tabIndex={0} aria-label={meeting.title} {...tableRowTabsterAttribute}>
-            <TableCell role="gridcell">{meeting.title}</TableCell>
+            <TableCell role="rowheader">{meeting.title}</TableCell>
             <TableCell role="gridcell">
               <Button>View details</Button>
             </TableCell>
@@ -303,7 +303,7 @@ export const RecentMeetingsTreeGridActiveOnlyCombinedNavigationRenderer: React.F
               aria-label={category.title}
               {...tableRowTabsterAttribute}
             >
-              <TableCell role="gridcell">{category.title}</TableCell>
+              <TableCell role="rowheader">{category.title}</TableCell>
               <TableCell role="gridcell" aria-colspan={category.columns.length + 2}>
                 <Button>Header action</Button>
               </TableCell>
@@ -319,7 +319,7 @@ export const RecentMeetingsTreeGridActiveOnlyCombinedNavigationRenderer: React.F
                   aria-label={meeting.titleWithTime}
                   {...tableRowTabsterAttribute}
                 >
-                  <TableCell role="gridcell">{meeting.titleWithTime}</TableCell>
+                  <TableCell role="rowheader">{meeting.titleWithTime}</TableCell>
                   <TableCell role="gridcell">
                     <Button>Chat with participants</Button>
                   </TableCell>

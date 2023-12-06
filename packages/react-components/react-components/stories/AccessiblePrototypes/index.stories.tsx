@@ -1,3 +1,4 @@
+export { UsingGridsActiveOnlyEntireRowNarration } from './Meet/AccessibleMeetUsingGridsActiveOnlyEntireRowNarration.stories';
 export { UsingGridsActiveOnlyCombinedNavigation } from './Meet/AccessibleMeetUsingGridsActiveOnlyCombinedNavigation.stories';
 export { UsingGridsActiveOnlyRowNavigation } from './Meet/AccessibleMeetUsingGridsActiveOnlyRowNavigation.stories';
 export { UsingStitchedGridsRowNavigation } from './Meet/AccessibleMeetUsingStitchedGridsRowNavigation.stories';
