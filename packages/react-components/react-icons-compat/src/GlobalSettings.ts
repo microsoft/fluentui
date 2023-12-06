@@ -58,18 +58,18 @@ export class GlobalSettings {
   public static setValue<T>(key: string, value: T): T {
     const globalSettings = _getGlobalSettings();
     const callbacks = globalSettings[CALLBACK_STATE_PROP_NAME];
-    let oldValue = globalSettings[key];
+    const oldValue = globalSettings[key];
 
     if (value !== oldValue) {
       globalSettings[key] = value;
 
-      let changeDescription = {
+      const changeDescription = {
         oldValue,
         value,
         key,
       };
 
-      for (let id in callbacks) {
+      for (const id in callbacks) {
         if (callbacks.hasOwnProperty(id)) {
           callbacks[id](changeDescription);
         }
