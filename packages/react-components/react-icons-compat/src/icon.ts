@@ -1,5 +1,8 @@
+import * as React from 'react';
 import { GlobalSettings } from './GlobalSettings';
 import { warn } from './warn';
+
+export type T = React.ReactNode;
 
 export interface IIconSubset {
   icons: {
