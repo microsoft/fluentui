@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "ToolbarButton's appearance to accept 'secondary'",
+  "packageName": "@fluentui/react-toolbar",
+  "email": "ggiunchi@microsoft.com",
+  "dependentChangeType": "patch"
+}
