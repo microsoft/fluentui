@@ -9,7 +9,7 @@ export {
   useNavGroupStyles_unstable,
 } from './components/NavGroup/index';
 export type { NavGroupProps, NavGroupSlots, NavGroupValue, NavGroupState } from './components/NavGroup/index';
-export { NavContext, NavProvider, useNavContext_unstable } from './components/NavContext';
+export { NavProvider, useNavContext_unstable } from './components/NavContext';
 export type {
   NavContextValue,
   NavContextValues,
