@@ -20,6 +20,11 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 
+const beforeAll = () => {
+  jest.spyOn(Date.prototype, 'toLocaleString').mockReturnValue('08/25/2023');
+  jest.spyOn(Date.prototype, 'toLocaleTimeString').mockReturnValue('08/25/2023');
+};
+
 const originalRAF = window.requestAnimationFrame;
 
 function sharedBeforeEach() {
@@ -298,6 +303,8 @@ describe('Vertical bar chart rendering', () => {
       // Assert
       expect(container).toMatchSnapshot();
     },
+    undefined,
+    beforeAll,
   );
 
   testWithoutWait(
@@ -312,6 +319,8 @@ describe('Vertical bar chart rendering', () => {
       // Assert
       expect(container).toMatchSnapshot();
     },
+    undefined,
+    beforeAll,
   );
 
   testWithoutWait(
@@ -325,6 +334,8 @@ describe('Vertical bar chart rendering', () => {
       // Assert
       expect(container).toMatchSnapshot();
     },
+    undefined,
+    beforeAll,
   );
 
   testWithoutWait(
@@ -338,6 +349,8 @@ describe('Vertical bar chart rendering', () => {
       // Assert
       expect(container).toMatchSnapshot();
     },
+    undefined,
+    beforeAll,
   );
 
   testWithoutWait(
@@ -350,6 +363,8 @@ describe('Vertical bar chart rendering', () => {
       // Assert
       expect(container).toMatchSnapshot();
     },
+    undefined,
+    beforeAll,
   );
 });
 

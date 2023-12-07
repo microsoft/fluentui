@@ -877,7 +877,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   };
 
   private _getAriaLabel = (point: IVerticalBarChartDataPoint): string => {
-    const xValue = point.xAxisCalloutData || point.x;
+    const xValue = point.xAxisCalloutData
+      ? point.xAxisCalloutData
+      : point.x instanceof Date
+      ? point.x.toLocaleString()
+      : point.x;
     const legend = point.legend;
     const yValue = point.yAxisCalloutData || point.y;
     const lineLegend = this.props.lineLegendText || 'Line';
