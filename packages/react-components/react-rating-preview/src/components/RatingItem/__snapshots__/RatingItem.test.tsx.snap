@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RatingItem renders a default state 1`] = `
+<div>
+  <span
+    class="fui-RatingItem"
+  >
+    <input
+      checked=""
+      class="fui-RatingItem__fullValueInput"
+      name=""
+      type="radio"
+      value="0"
+    />
+    <div
+      aria-hidden="true"
+      class="fui-RatingItem__selectedIcon"
+    >
+      <div />
+    </div>
+  </span>
+</div>
+`;
