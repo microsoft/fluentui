@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { createOverflowManager, OverflowManager } from '@fluentui/priority-overflow';
+import { createOverflowManager, OverflowAxis, OverflowManager } from '@fluentui/priority-overflow';
 import { useOverflowContainer } from './useOverflowContainer';
 import { renderHook } from '@testing-library/react-hooks';
 
@@ -94,5 +94,29 @@ describe('useOverflowContainer', () => {
     result.current.updateOverflow();
 
     expect(updateMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not re-render on first mount', () => {
+    mockOverflowManager();
+    const { result } = renderHook(() =>
+      useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined }),
+    );
+
+    expect(result.all.length).toEqual(1);
+  });
+
+  it('should re-render when option changes', () => {
+    let overflowAxis: OverflowAxis = 'horizontal';
+    mockOverflowManager();
+    const { result, rerender } = renderHook(() =>
+      useOverflowContainer(() => undefined, { onUpdateItemVisibility: () => undefined, overflowAxis }),
+    );
+
+    expect(result.all.length).toEqual(1);
+
+    overflowAxis = 'vertical';
+    rerender();
+
+    expect(result.all.length).toEqual(2);
   });
 });

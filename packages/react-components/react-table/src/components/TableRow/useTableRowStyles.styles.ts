@@ -90,7 +90,8 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorBrandBackground2,
     ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     ':active': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
+      backgroundColor: tokens.colorBrandBackground2,
+      color: tokens.colorNeutralForeground1,
     },
 
     '@media(forced-colors: active)': {

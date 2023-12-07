@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Wed, 01 Nov 2023 12:55:59 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Nov 2023 13:42:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.51)
+
+Thu, 30 Nov 2023 13:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.50..@fluentui/react-divider_v9.2.51)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.20 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+
+## [9.2.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.50)
+
+Mon, 20 Nov 2023 09:55:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.49..@fluentui/react-divider_v9.2.50)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.13.0 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+
+## [9.2.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.49)
+
+Thu, 09 Nov 2023 17:29:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.48..@fluentui/react-divider_v9.2.49)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.19 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.12.0 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-theme to v9.1.16 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-utilities to v9.15.2 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
 
 ## [9.2.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.48)
 

@@ -2,6 +2,117 @@
   "name": "@fluentui/react-portal-compat",
   "entries": [
     {
+      "date": "Thu, 30 Nov 2023 13:42:08 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.112",
+      "version": "9.0.112",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.15.0",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.42.0",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Nov 2023 09:55:10 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.111",
+      "version": "9.0.111",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.14.6",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.41.0",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Nov 2023 17:51:27 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.110",
+      "version": "9.0.110",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.14.5",
+            "commit": "74af9993e1f812bdc9d8a4635f8477295168efa8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.40.0",
+            "commit": "74af9993e1f812bdc9d8a4635f8477295168efa8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Nov 2023 13:46:33 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.109",
+      "version": "9.0.109",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.39.0",
+            "commit": "af9cde68a324d0b14d5a584b4589c90743483f03"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Nov 2023 17:29:39 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.108",
+      "version": "9.0.108",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-portal-compat-context to v9.0.10",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.14.4",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.38.0",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Nov 2023 13:16:04 GMT",
       "tag": "@fluentui/react-portal-compat_v9.0.107",
       "version": "9.0.107",

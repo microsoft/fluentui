@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 16 Nov 2023 07:26:50 GMT",
+      "tag": "@fluentui/react_v8.112.9",
+      "version": "8.112.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "kapil.kashyaps@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "963d6df3de083c860547708ccf3cba6b3a8e5944",
+            "comment": "docs(FacePile): Updated FacePile API documentation for a better understanding"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 07:29:20 GMT",
       "tag": "@fluentui/react_v8.112.8",
       "version": "8.112.8",

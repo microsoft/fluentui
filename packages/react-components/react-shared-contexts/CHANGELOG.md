@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Wed, 01 Nov 2023 12:55:59 GMT and should not be manually modified.
+This log was last generated on Mon, 20 Nov 2023 09:55:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.13.0)
+
+Mon, 20 Nov 2023 09:55:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.12.0..@fluentui/react-shared-contexts_v9.13.0)
+
+### Minor changes
+
+- feat: TeachingPopover style hooks added ([PR #29782](https://github.com/microsoft/fluentui/pull/29782) by mifraser@microsoft.com)
+
+## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.12.0)
+
+Thu, 09 Nov 2023 17:29:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.11.1..@fluentui/react-shared-contexts_v9.12.0)
+
+### Minor changes
+
+- feat: Add custom style hook types for List ([PR #29771](https://github.com/microsoft/fluentui/pull/29771) by jirivyhnalek@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.16 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
 
 ## [9.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.11.1)
 

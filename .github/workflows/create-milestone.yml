@@ -20,7 +20,7 @@ jobs:
           quarter=$(date +"%q")
           year=$(date +"%Y")
           title="${month} Project Cycle Q${quarter} ${year}"
-          due_on=$(date -v1d -v${month_numeric}m -v-1d +"%Y-%m-%dT%H:%M:%S%z")
+          due_on=$(date -d "$(date -d "next month" +%Y-%m-01) -1 day" +"%Y-%m-%dT%H:%M:%S%z")
           echo "Using title '${title}' and setting due date: '${due-on}'"
           gh api --method POST repos/microsoft/fluentui/milestones -f title="${title} -f due_on="${due_on}"
         env:

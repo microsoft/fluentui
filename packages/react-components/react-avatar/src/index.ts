@@ -44,8 +44,9 @@ export {
   AvatarGroupPopover,
   avatarGroupPopoverClassNames,
   renderAvatarGroupPopover_unstable,
-  useAvatarGroupPopoverStyles_unstable,
   useAvatarGroupPopover_unstable,
+  useAvatarGroupPopoverContextValues_unstable,
+  useAvatarGroupPopoverStyles_unstable,
 } from './AvatarGroupPopover';
 export type { AvatarGroupPopoverProps, AvatarGroupPopoverSlots, AvatarGroupPopoverState } from './AvatarGroupPopover';
 export {

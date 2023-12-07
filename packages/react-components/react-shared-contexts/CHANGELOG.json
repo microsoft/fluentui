@@ -2,6 +2,50 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Mon, 20 Nov 2023 09:55:09 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.13.0",
+      "version": "9.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "88efc19c9513db18cb5b7c63fa0f47ba496755a2",
+            "comment": "feat: TeachingPopover style hooks added"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Nov 2023 17:29:42 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.12.0",
+      "version": "9.12.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          }
+        ],
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "9343f295b18084e44f6751081907aa7e9987b767",
+            "comment": "feat: Add custom style hook types for List"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.1.16",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Nov 2023 12:55:59 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.11.1",
       "version": "9.11.1",

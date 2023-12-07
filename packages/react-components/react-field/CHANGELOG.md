@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Wed, 01 Nov 2023 12:55:59 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Nov 2023 13:42:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.43)
+
+Thu, 30 Nov 2023 13:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.1.42..@fluentui/react-field_v9.1.43)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.20 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+- Bump @fluentui/react-label to v9.1.51 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+
+## [9.1.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.42)
+
+Mon, 20 Nov 2023 09:55:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.1.41..@fluentui/react-field_v9.1.42)
+
+### Patches
+
+- Bump @fluentui/react-label to v9.1.50 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+
+## [9.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.41)
+
+Thu, 09 Nov 2023 17:29:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.1.40..@fluentui/react-field_v9.1.41)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.42 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.19 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-label to v9.1.49 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-theme to v9.1.16 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-utilities to v9.15.2 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
 
 ## [9.1.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.40)
 

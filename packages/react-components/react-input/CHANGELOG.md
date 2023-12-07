@@ -1,8 +1,42 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Wed, 01 Nov 2023 12:55:59 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Nov 2023 13:42:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.53)
+
+Thu, 30 Nov 2023 13:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.4.52..@fluentui/react-input_v9.4.53)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.43 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.20 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+
+## [9.4.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.52)
+
+Mon, 20 Nov 2023 09:55:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.4.51..@fluentui/react-input_v9.4.52)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.42 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.13.0 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+
+## [9.4.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.51)
+
+Thu, 09 Nov 2023 17:29:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.4.50..@fluentui/react-input_v9.4.51)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- Bump @fluentui/react-field to v9.1.41 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.19 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.12.0 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-theme to v9.1.16 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-utilities to v9.15.2 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
 
 ## [9.4.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.50)
 
