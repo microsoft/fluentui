@@ -20,7 +20,7 @@ const navContextDefaultValue: NavContextValue = {
   },
 };
 
-export const NavContext = React.createContext<NavContextValue | undefined>(undefined);
+const NavContext = React.createContext<NavContextValue | undefined>(undefined);
 
 export const NavProvider = NavContext.Provider;
 

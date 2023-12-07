@@ -6,6 +6,6 @@ describe('Nav', () => {
     Component: Nav,
     displayName: 'Nav',
     // todo - # 30012, remove when conformance is updated
-    disabledTests: ['consistent-callback-args', 'ban-context-export'],
+    disabledTests: ['consistent-callback-args'],
   });
 });
