@@ -18,7 +18,7 @@ describe('Overflow', () => {
     };
   });
 
-  it('foo', async () => {
+  it('should not throw on console.error', async () => {
     // Updates to overflow state are batched with a microtask debouncer (see createOverflowManager)
     // This means that unit tests will often warn on updates happening outside of act
     // There's no real way to fix this nicely because there's nothing obvious to wait for since the
