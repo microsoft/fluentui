@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { UpcomingMeeting, RecentCategory, RecentMeetings } from './AccessibleMeetBase';
-import { getNearestGridCellAncestorOrSelf, getNearestRowAncestor } from './Utils';
+import { getNearestGridCellAncestorOrSelf, getNearestRowAncestor } from './../TreeGridUtils';
 
 import {
   Table,

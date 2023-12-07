@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { UpcomingMeeting, RecentCategory, RecentMeetings } from './AccessibleMeetBase';
+import { RecentCategory, RecentMeetings } from './TreeGridBase';
 import { getNearestGridCellAncestorOrSelf, getNearestRowAncestor } from './../TreeGridUtils';
 
 import {
@@ -9,107 +9,19 @@ import {
   TableCell,
   useAdamTableCompositeNavigation,
   Button,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  MenuPopover,
-  MenuTrigger,
+  Input,
+  Field,
   useFluent,
 } from '@fluentui/react-components';
 
-interface UpcomingMeetingsGridActiveOnlyEntireRowNarrationRendererProps {
-  threeUpcomingMeetings: UpcomingMeeting[];
-}
-export const UpcomingMeetingsGridActiveOnlyEntireRowNarrationRenderer: React.FC<
-  UpcomingMeetingsGridActiveOnlyEntireRowNarrationRendererProps
-> = ({ threeUpcomingMeetings }) => {
-  const { tableRowTabsterAttribute, tableTabsterAttribute, onTableKeyDown } = useAdamTableCompositeNavigation();
-
-  const threeUpcomingMeetingsItems = React.useMemo(
-    () =>
-      threeUpcomingMeetings.map(meeting => ({
-        title: meeting.titleWithDateAndTime,
-      })),
-    [threeUpcomingMeetings],
-  );
-
-  const handleGridKeyDown = React.useCallback(
-    (event: React.KeyboardEvent) => {
-      const isModifierDown = event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
-      if (!isModifierDown) {
-        const target = event.target as HTMLElement;
-        const gridCell = getNearestGridCellAncestorOrSelf(target);
-        if (gridCell) {
-          if (event.key === 'ArrowLeft') {
-            const row = getNearestRowAncestor(gridCell);
-            row.focus();
-          }
-        }
-      }
-      onTableKeyDown(event);
-    },
-    [onTableKeyDown],
-  );
-
-  return (
-    <Table
-      role="grid"
-      noNativeElements
-      onKeyDown={handleGridKeyDown}
-      aria-label="Upcoming meetings"
-      {...tableTabsterAttribute}
-    >
-      <TableBody>
-        {threeUpcomingMeetingsItems.map((meeting, index) => (
-          <TableRow key={index} tabIndex={0} {...tableRowTabsterAttribute}>
-            <TableCell role="rowheader">{meeting.title}</TableCell>
-            <TableCell role="gridcell">
-              <Button>View details</Button>
-            </TableCell>
-            <TableCell role="gridcell">
-              <Menu>
-                <MenuTrigger disableButtonEnhancement>
-                  <MenuButton>RSVP</MenuButton>
-                </MenuTrigger>
-                <MenuPopover>
-                  <MenuList>
-                    <MenuItem>Respond to occurrence</MenuItem>
-                    <MenuItem>Respond to series</MenuItem>
-                  </MenuList>
-                </MenuPopover>
-              </Menu>
-            </TableCell>
-            <TableCell role="gridcell">
-              <Button>Chat with participants</Button>
-            </TableCell>
-            <TableCell role="gridcell">
-              <Menu>
-                <MenuTrigger disableButtonEnhancement>
-                  <MenuButton>More options</MenuButton>
-                </MenuTrigger>
-                <MenuPopover>
-                  <MenuList>
-                    <MenuItem>View meeting details</MenuItem>
-                    <MenuItem>Copy meeting link</MenuItem>
-                  </MenuList>
-                </MenuPopover>
-              </Menu>
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  );
-};
-
-interface RecentMeetingsGridActiveOnlyEntireRowNarrationRendererProps {
+interface TreeGridWithInputsRendererProps {
   recentCategories: RecentCategory[];
   recentMeetings: RecentMeetings;
 }
-export const RecentMeetingsTreeGridActiveOnlyEntireRowNarrationRenderer: React.FC<
-  RecentMeetingsGridActiveOnlyEntireRowNarrationRendererProps
-> = ({ recentCategories, recentMeetings }) => {
+export const TreeGridWithInputsRenderer: React.FC<TreeGridWithInputsRendererProps> = ({
+  recentCategories,
+  recentMeetings,
+}) => {
   const { targetDocument } = useFluent();
   const [recentCategoriesState, setRecentCategoryState] = React.useState(recentCategories);
 
@@ -230,9 +142,13 @@ export const RecentMeetingsTreeGridActiveOnlyEntireRowNarrationRenderer: React.F
                   <TableCell role="rowheader">{meeting.titleWithTime}</TableCell>
                   <TableCell role="gridcell">
                     <Button>Chat with participants</Button>
+                    <Field label="Type here">
+                      <Input />
+                    </Field>
                   </TableCell>
                   <TableCell role="gridcell">
                     <Button>View recap</Button>
+                    <Button>Another</Button>
                   </TableCell>
                   {category.columns.includes('includingContent') && (
                     <TableCell role="gridcell">

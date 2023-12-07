@@ -1,3 +1,5 @@
+export { TreeGridWithInputs } from './InteractiveTreeGrids/TreeGridWithInputs.stories';
+
 export { UsingGridsActiveOnlyEntireRowNarration } from './Meet/AccessibleMeetUsingGridsActiveOnlyEntireRowNarration.stories';
 export { UsingGridsActiveOnlyCombinedNavigation } from './Meet/AccessibleMeetUsingGridsActiveOnlyCombinedNavigation.stories';
 export { UsingGridsActiveOnlyRowNavigation } from './Meet/AccessibleMeetUsingGridsActiveOnlyRowNavigation.stories';

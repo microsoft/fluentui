@@ -4,7 +4,7 @@ import {
   getNearestGridCellAncestorOrSelf,
   getNearestRowAncestor,
   getFirstActiveElementInVerticalNavigation,
-} from './Utils';
+} from './../TreeGridUtils';
 
 import {
   Table,
