@@ -37,7 +37,7 @@ const dropInMotion: AtomMotion = {
     { transform: 'rotate(-30deg) translateY(-100%)', opacity: 0 },
     { transform: 'rotate(0deg) translateY(0%)', opacity: 1 },
   ],
-  options: { duration: 4000 },
+  duration: 4000,
 };
 
 const DropIn = createAtom(dropInMotion);

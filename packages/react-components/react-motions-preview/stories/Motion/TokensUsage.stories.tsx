@@ -37,7 +37,7 @@ const dropInMotion: AtomMotion = {
     { backgroundColor: tokens.colorStatusDangerBackground3 },
     { backgroundColor: tokens.colorStatusSuccessBackground3 },
   ],
-  options: { duration: 3000 },
+  duration: 3000,
 };
 
 const BackgroundChange = createAtom(dropInMotion);

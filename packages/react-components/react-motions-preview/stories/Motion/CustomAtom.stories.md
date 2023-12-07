@@ -11,7 +11,7 @@ const AtomMotion: AtomMotion = {
   // opacity will be animated from 0 to 1
   keyframes: { opacity: [0, 1] },
   // duration of the animation will be "1000ms"
-  options: { duration: 1000 },
+  duration: 1000,
 };
 ```
 
@@ -24,14 +24,14 @@ const enterAtom = {
   // opacity will be animated from 0 to 1
   keyframes: { opacity: [0, 1] },
   // duration of the animation will be "1000ms"
-  options: { duration: 1000 },
+  duration: 1000,
 };
 
 const exitAtom = {
   // opacity will be animated from 1 to 0
   keyframes: { opacity: [1, 0] },
   // duration of the animation will be "500ms"
-  options: { duration: 500 },
+  duration: 500,
 };
 
 const presense: PresenceMotion = {
