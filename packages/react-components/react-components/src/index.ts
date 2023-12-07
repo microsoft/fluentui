@@ -219,6 +219,7 @@ export {
   useAvatarGroupItem_unstable,
   renderAvatarGroupPopover_unstable,
   useAvatarGroupPopoverStyles_unstable,
+  useAvatarGroupPopoverContextValues_unstable,
   useAvatarGroupPopover_unstable,
   useAvatarGroupContext_unstable,
   partitionAvatarGroupItems,

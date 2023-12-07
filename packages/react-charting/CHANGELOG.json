@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 04 Dec 2023 07:27:00 GMT",
+      "tag": "@fluentui/react-charting_v5.19.4",
+      "version": "5.19.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0d3dda114716876f1139b649fb08b3c0553b09ca",
+            "comment": "Added support for sticking to old ceil logic in case of integral datasets"
+          },
+          {
+            "author": "gautam33776@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "014c273d325606179e7277702214687694f55bd0",
+            "comment": "fix: react-charting horizontal-bar-chart-axis on hover render correct data"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 29 Nov 2023 07:26:35 GMT",
       "tag": "@fluentui/react-charting_v5.19.3",
       "version": "5.19.3",

@@ -1097,6 +1097,7 @@ import { useAvatarGroupContextValues } from '@fluentui/react-avatar';
 import { useAvatarGroupItem_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupItemStyles_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupPopoverContextValues_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupPopoverStyles_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupStyles_unstable } from '@fluentui/react-avatar';
 import { useAvatarStyles_unstable } from '@fluentui/react-avatar';
@@ -3605,6 +3606,8 @@ export { useAvatarGroupItem_unstable }
 export { useAvatarGroupItemStyles_unstable }
 
 export { useAvatarGroupPopover_unstable }
+
+export { useAvatarGroupPopoverContextValues_unstable }
 
 export { useAvatarGroupPopoverStyles_unstable }
 

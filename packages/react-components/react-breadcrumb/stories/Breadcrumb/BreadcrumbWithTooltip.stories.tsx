@@ -6,7 +6,6 @@ import {
   BreadcrumbDivider,
   partitionBreadcrumbItems,
   truncateBreadcrumbLongName,
-  truncateBreadcrumLongTooltip,
   isTruncatableBreadcrumbContent,
   makeStyles,
   shorthands,
@@ -76,7 +75,7 @@ const itemsWithLongNames: Item[] = [
   },
   {
     key: 2,
-    item: "Item 3 is long even for tooltip. Don't think about what you want to be, but what you want to do.",
+    item: "Item 3 is long. Don't think about what you want to be, but what you want to do.",
   },
   {
     key: 3,
@@ -101,7 +100,7 @@ function renderItem(entry: Item, isLastItem: boolean) {
     <React.Fragment key={`item-${entry.key}`}>
       {isTruncatableBreadcrumbContent(entry.item, 30) ? (
         <BreadcrumbItem>
-          <Tooltip withArrow content={truncateBreadcrumLongTooltip(entry.item)} relationship="label">
+          <Tooltip withArrow content={entry.item} relationship="label">
             <BreadcrumbButton current={isLastItem}>{truncateBreadcrumbLongName(entry.item)}</BreadcrumbButton>
           </Tooltip>
         </BreadcrumbItem>
@@ -134,18 +133,19 @@ const MenuWithTooltip = (props: PartitionBreadcrumbItems<Item>) => {
   if (!isOverflowing && overflowItems && overflowItems.length === 0) {
     return null;
   }
+  const overflowItemsLength = overflowItems?.length ?? 0;
+  const tooltipContent =
+    overflowItemsLength > 3
+      ? `${overflowItemsLength} items`
+      : {
+          children: getTooltipContent(overflowItems),
+          className: tooltipStyles.tooltip,
+        };
 
   return (
     <Menu hasIcons>
       <MenuTrigger disableButtonEnhancement>
-        <Tooltip
-          withArrow
-          content={{
-            children: getTooltipContent(overflowItems),
-            className: tooltipStyles.tooltip,
-          }}
-          relationship="label"
-        >
+        <Tooltip withArrow content={tooltipContent} relationship="label">
           <Button
             id="menu"
             appearance="subtle"
@@ -210,8 +210,8 @@ export const BreadcrumbWithTooltip = () => {
   const itemsLength = itemsWithLongNames.length - 1;
   return (
     <>
-      <h3>Interactive Breadcrumb with a tooltip</h3>
-      <BreadcrumbWithTooltipExample aria-label="interactive-breadcrumb-with-tooltip" />
+      <h3>Breadcrumb with a tooltip</h3>
+      <BreadcrumbWithTooltipExample aria-label="breadcrumb-with-tooltip" />
       <h3>Breadcrumb with long names</h3>
       <Breadcrumb aria-label="breadcrumb-with-long-names">
         {itemsWithLongNames.map(item => renderItem(item, itemsLength === item.key))}

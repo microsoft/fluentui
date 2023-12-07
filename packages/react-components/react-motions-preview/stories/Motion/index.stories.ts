@@ -3,12 +3,17 @@ import MotionDescription from './MotionDescription.md';
 export { MotionDefault } from './MotionDefault.stories';
 
 export { CreateAtom as createAtom } from './CreateAtom.stories';
-export { CreateTransition as createTransition } from './CreateTransition.stories';
+export { CreatePresence as createPresence } from './CreatePresence.stories';
 
-export { TransitionAppear as appear } from './TransitionAppear.stories';
-export { TransitionUnmountOnExit as unmountOnExit } from './TransitionUnmountOnExit.stories';
+export { PresenceAppear as appear } from './PresenceAppear.stories';
+export { PresenceUnmountOnExit as unmountOnExit } from './PresenceUnmountOnExit.stories';
 
 export { ImperativeRefPlayState as setPlayState } from './ImperativeRefPlayState.stories';
+
+export { CustomAtom } from './CustomAtom.stories';
+export { TokensUsage } from './TokensUsage.stories';
+
+export { MotionLibrary } from './MotionLibrary.stories';
 
 export default {
   title: 'Utilities/Motions (Preview)',
