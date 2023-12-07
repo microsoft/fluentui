@@ -83,9 +83,10 @@ export function paletteShadesFromCurve(
   curveDepth = 24,
 ): Vec3[] {
   return paletteShadesFromCurvePoints(
-    getPointsOnCurvePath(curve, Math.ceil((curveDepth * (1 + Math.abs(curve.torsion || 1))) / 2)).map(
-      (curvePoint: Vec3) => getPointOnHelix(curvePoint, curve.torsion, curve.torsionT0),
-    ),
+    getPointsOnCurvePath(
+      curve,
+      Math.ceil((curveDepth * (1 + Math.abs(curve.torsion || 1))) / 2),
+    ).map((curvePoint: Vec3) => getPointOnHelix(curvePoint, curve.torsion, curve.torsionT0)),
     nShades,
     range,
     linearity,
