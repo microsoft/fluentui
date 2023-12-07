@@ -1,6 +1,6 @@
 # Install versions of Node and Yarn required by build pipelines.
 steps:
-  - task: NodeTool@0
+  - task: UseNode@1
     inputs:
       # 👉 NOTE:
       # - we can use only versions that ship with container, otherwise we will run into nodejs installation issues.
