@@ -8,7 +8,7 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "engines": {
-    "node": "^16.18.1"
+    "node": "^18.0.0 || ^20.0.0"
   },
   "scripts": {
     "build": "lage build --verbose",
