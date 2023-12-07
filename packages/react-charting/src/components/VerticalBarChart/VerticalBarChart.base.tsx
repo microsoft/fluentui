@@ -914,7 +914,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   }
 
   private _getDomainMargins = (containerWidth: number): IMargins => {
-    if (this._xAxisType !== XAxisTypes.NumericAxis) {
+    if (this._xAxisType !== XAxisTypes.NumericAxis && this._xAxisType !== XAxisTypes.DateAxis) {
+      /*) {
       /** Total width available to render the bars */
       const totalWidth =
         containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
