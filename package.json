@@ -192,7 +192,7 @@
     "ajv": "8.4.0",
     "autoprefixer": "10.2.1",
     "babel-jest": "26.6.3",
-    "babel-loader": "8.2.2",
+    "babel-loader": "8.3.0",
     "babel-plugin-annotate-pure-calls": "0.4.0",
     "babel-plugin-annotate-pure-imports": "1.0.0-1",
     "babel-plugin-iife-wrap-react-components": "1.0.0-5",
