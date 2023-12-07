@@ -18,9 +18,6 @@ export const Nav: ForwardRefComponent<NavProps>;
 export const navClassNames: SlotClassNames<NavSlots>;
 
 // @public (undocumented)
-export const NavContext: React_2.Context<NavContextValue | undefined>;
-
-// @public (undocumented)
 export type NavContextValue = Pick<NavProps, 'onNavGroupSelect' | 'selectedValue' | 'reserveSelectedNavGroupSpace'> & {
     onRegister: RegisterNavGroupEventHandler;
     onUnregister: RegisterNavGroupEventHandler;
