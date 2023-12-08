@@ -1,25 +1,11 @@
 import * as React from 'react';
 import { useTimeout, type ExtractSlotProps, type Slot, mergeCallbacks } from '@fluentui/react-utilities';
-import { useTriggerSlot } from '../../utils/useTriggerSlot';
+import { useTriggerSlot, UseTriggerSlotState } from '../../utils/useTriggerSlot';
 import { OptionValue } from '../../utils/OptionCollection.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
-import { DropdownState, DropdownProps } from './Dropdown.types';
+import { DropdownState } from './Dropdown.types';
 
-type UsedDropdownState = Pick<
-  DropdownState,
-  | 'open'
-  | 'value'
-  | 'activeOption'
-  | 'selectOption'
-  | 'setValue'
-  | 'setActiveOption'
-  | 'setFocusVisible'
-  | 'getOptionsMatchingText'
-  | 'getIndexOfId'
-  | 'setOpen'
-  | 'getCount'
-  | 'getOptionAtIndex'
->;
+type UsedDropdownState = UseTriggerSlotState & Pick<DropdownState, 'getOptionsMatchingText'>;
 
 /*
  * useButtonTriggerSlot returns a tuple of trigger/listbox shorthand,
@@ -27,10 +13,9 @@ type UsedDropdownState = Pick<
  * The element type of the ref should always match the element type used in the trigger shorthand.
  */
 export function useButtonTriggerSlot(
-  props: DropdownProps,
   state: UsedDropdownState,
   ref: React.Ref<HTMLButtonElement>,
-  triggerSlot?: ExtractSlotProps<Slot<'button'>>,
+  triggerFromProps?: ExtractSlotProps<Slot<'button'>>,
 ): ExtractSlotProps<Slot<'button'>> {
   const { open, activeOption, setOpen, getOptionsMatchingText, getIndexOfId, setActiveOption, setFocusVisible } = state;
 
@@ -95,8 +80,8 @@ export function useButtonTriggerSlot(
     }
   };
 
-  const triggerSlot2 = useTriggerSlot(props, state, ref, triggerSlot);
-  triggerSlot2.onKeyDown = mergeCallbacks(onTriggerKeyDown, triggerSlot2.onKeyDown);
+  const trigger = useTriggerSlot(state, ref, triggerFromProps);
+  trigger.onKeyDown = mergeCallbacks(onTriggerKeyDown, trigger.onKeyDown);
 
-  return triggerSlot2;
+  return trigger;
 }

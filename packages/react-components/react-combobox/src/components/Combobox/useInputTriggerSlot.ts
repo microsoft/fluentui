@@ -2,29 +2,13 @@ import * as React from 'react';
 import { mergeCallbacks, useEventCallback } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
-import { useTriggerSlot } from '../../utils/useTriggerSlot';
-import { ComboboxProps, ComboboxState } from './Combobox.types';
+import { useTriggerSlot, UseTriggerSlotState } from '../../utils/useTriggerSlot';
+import { ComboboxState } from './Combobox.types';
 import { OptionValue } from '../../utils/OptionCollection.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 
-type UsedComboboxState = Pick<
-  ComboboxState,
-  | 'open'
-  | 'value'
-  | 'activeOption'
-  | 'selectOption'
-  | 'setValue'
-  | 'setActiveOption'
-  | 'setFocusVisible'
-  | 'multiselect'
-  | 'selectedOptions'
-  | 'clearSelection'
-  | 'getOptionsMatchingText'
-  | 'getIndexOfId'
-  | 'setOpen'
-  | 'getCount'
-  | 'getOptionAtIndex'
->;
+type UsedComboboxState = UseTriggerSlotState &
+  Pick<ComboboxState, 'value' | 'setValue' | 'selectedOptions' | 'clearSelection' | 'getOptionsMatchingText'>;
 
 /*
  * useInputTriggerSlot returns a tuple of trigger/listbox shorthand,
@@ -32,8 +16,8 @@ type UsedComboboxState = Pick<
  * The element type of the ref should always match the element type used in the trigger shorthand.
  */
 export function useInputTriggerSlot(
-  props: ComboboxProps,
   state: UsedComboboxState,
+  freeform: boolean | undefined,
   ref: React.Ref<HTMLInputElement>,
   triggerFromProps?: ExtractSlotProps<Slot<'input'>>,
 ): ExtractSlotProps<Slot<'input'>> {
@@ -52,7 +36,6 @@ export function useInputTriggerSlot(
     getIndexOfId,
     setOpen,
   } = state;
-  const { freeform } = props;
 
   const onBlur = (ev: React.FocusEvent<HTMLInputElement>) => {
     // handle selection and updating value if freeform is false
@@ -105,7 +88,7 @@ export function useInputTriggerSlot(
     }
   };
 
-  const trigger = useTriggerSlot(props, state, ref, triggerFromProps);
+  const trigger = useTriggerSlot(state, ref, triggerFromProps);
   trigger.onChange = mergeCallbacks(trigger.onChange, onChange);
   trigger.onBlur = mergeCallbacks(trigger.onBlur, onBlur);
 

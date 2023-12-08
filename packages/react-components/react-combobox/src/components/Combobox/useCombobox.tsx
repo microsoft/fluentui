@@ -80,7 +80,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     },
     elementType: 'input',
   });
-  triggerSlot = useInputTriggerSlot(props, baseState, ref, triggerSlot);
+  triggerSlot = useInputTriggerSlot(baseState, freeform, ref, triggerSlot);
 
   const rootSlot = slot.always(props.root, {
     defaultProps: {

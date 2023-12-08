@@ -2,9 +2,9 @@ import * as React from 'react';
 import { mergeCallbacks, useMergedRefs } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey, getIndexFromAction } from '../utils/dropdownKeyActions';
-import type { ComboboxBaseProps, ComboboxBaseState } from './ComboboxBase.types';
+import type { ComboboxBaseState } from './ComboboxBase.types';
 
-type ComboboxStateUsed = Pick<
+export type UseTriggerSlotState = Pick<
   ComboboxBaseState,
   | 'activeOption'
   | 'getCount'
@@ -15,18 +15,17 @@ type ComboboxStateUsed = Pick<
   | 'setActiveOption'
   | 'setFocusVisible'
   | 'setOpen'
+  | 'multiselect'
 >;
 
 export function useTriggerSlot(
-  props: ComboboxBaseProps,
-  state: ComboboxStateUsed,
+  state: UseTriggerSlotState,
   ref: React.Ref<HTMLButtonElement>,
   triggerSlot?: ExtractSlotProps<Slot<'button'>>,
 ): ExtractSlotProps<Slot<'button'>>;
 
 export function useTriggerSlot(
-  props: ComboboxBaseProps,
-  state: ComboboxStateUsed,
+  state: UseTriggerSlotState,
   ref: React.Ref<HTMLInputElement>,
   triggerSlot?: ExtractSlotProps<Slot<'input'>>,
 ): ExtractSlotProps<Slot<'input'>>;
@@ -36,12 +35,10 @@ export function useTriggerSlot(
  * @returns trigger slot with desired behaviour and props
  */
 export function useTriggerSlot(
-  props: ComboboxBaseProps,
-  state: ComboboxStateUsed,
+  state: UseTriggerSlotState,
   ref: React.Ref<HTMLButtonElement | HTMLInputElement>,
   triggerSlot?: ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>,
 ): ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>> {
-  const { multiselect } = props;
   const {
     activeOption,
     getCount,
@@ -52,6 +49,7 @@ export function useTriggerSlot(
     setActiveOption,
     setFocusVisible,
     setOpen,
+    multiselect,
   } = state;
 
   // handle trigger focus/blur
