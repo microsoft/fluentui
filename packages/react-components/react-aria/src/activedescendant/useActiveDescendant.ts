@@ -1,16 +1,14 @@
 import * as React from 'react';
 import { useOptionWalker } from './useOptionWalker';
-import type { ActiveDescendantImperativeRef, ActiveDescendantOptions } from './types';
+import type { ActiveDescendantOptions } from './types';
 import { ACTIVEDESCENDANT_ATTRIBUTE } from './constants';
-import { useMergedRefs } from '@fluentui/react-utilities';
 
 export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(
   options: ActiveDescendantOptions,
 ) {
-  const { imperativeRef: imperativeRefProp, matchOption } = options;
+  const { imperativeRef, matchOption } = options;
   const activeParentRef = React.useRef<TActiveParentElement>(null);
   const { listboxRef, optionWalker } = useOptionWalker<TListboxElement>({ matchOption });
-  const imperativeRef = React.useRef<ActiveDescendantImperativeRef>();
   const getActiveDescendant = () => {
     return listboxRef.current?.querySelector<HTMLElement>(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`);
   };
@@ -56,7 +54,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
     }
   };
 
-  React.useImperativeHandle(useMergedRefs(imperativeRef, imperativeRefProp), () => ({
+  React.useImperativeHandle(imperativeRef, () => ({
     first: () => {
       if (!listboxRef.current || !activeParentRef.current) {
         return;
@@ -136,5 +134,5 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
     },
   }));
 
-  return { listboxRef, activeParentRef, imperativeRef };
+  return { listboxRef, activeParentRef };
 }
