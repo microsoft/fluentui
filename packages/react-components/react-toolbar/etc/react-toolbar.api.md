@@ -34,7 +34,7 @@ export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
 
 // @public
 export type ToolbarButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ButtonProps, 'disabled' | 'disabledFocusable'>> & {
-    appearance?: 'primary' | 'subtle';
+    appearance?: 'primary' | 'secondary' | 'subtle';
 } & {
     vertical?: boolean;
 };
