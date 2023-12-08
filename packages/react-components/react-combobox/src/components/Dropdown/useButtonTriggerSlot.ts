@@ -14,7 +14,6 @@ type UsedDropdownState = UseTriggerSlotState & Pick<DropdownState, 'getOptionsMa
  */
 export function useButtonTriggerSlot(
   state: UsedDropdownState,
-  ref: React.Ref<HTMLButtonElement>,
   triggerFromProps?: ExtractSlotProps<Slot<'button'>>,
 ): ExtractSlotProps<Slot<'button'>> {
   const { open, activeOption, setOpen, getOptionsMatchingText, getIndexOfId, setActiveOption, setFocusVisible } = state;
@@ -80,7 +79,7 @@ export function useButtonTriggerSlot(
     }
   };
 
-  const trigger = useTriggerSlot(state, ref, triggerFromProps);
+  const trigger = useTriggerSlot(state, triggerFromProps);
   trigger.onKeyDown = mergeCallbacks(onTriggerKeyDown, trigger.onKeyDown);
 
   return trigger;

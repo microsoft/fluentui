@@ -73,14 +73,14 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   let triggerSlot: Slot<'input'> = slot.always(props.input, {
     defaultProps: {
-      ref: useMergedRefs(props.input?.ref, triggerRef),
       type: 'text',
       value: value ?? '',
       ...triggerNativeProps,
     },
     elementType: 'input',
   });
-  triggerSlot = useInputTriggerSlot(baseState, freeform, ref, triggerSlot);
+  triggerSlot.ref = useMergedRefs(triggerSlot.ref, triggerRef, ref);
+  triggerSlot = useInputTriggerSlot(baseState, freeform, triggerSlot);
 
   const rootSlot = slot.always(props.root, {
     defaultProps: {

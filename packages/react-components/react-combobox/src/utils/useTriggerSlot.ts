@@ -20,13 +20,11 @@ export type UseTriggerSlotState = Pick<
 
 export function useTriggerSlot(
   state: UseTriggerSlotState,
-  ref: React.Ref<HTMLButtonElement>,
   triggerSlot?: ExtractSlotProps<Slot<'button'>>,
 ): ExtractSlotProps<Slot<'button'>>;
 
 export function useTriggerSlot(
   state: UseTriggerSlotState,
-  ref: React.Ref<HTMLInputElement>,
   triggerSlot?: ExtractSlotProps<Slot<'input'>>,
 ): ExtractSlotProps<Slot<'input'>>;
 
@@ -36,7 +34,6 @@ export function useTriggerSlot(
  */
 export function useTriggerSlot(
   state: UseTriggerSlotState,
-  ref: React.Ref<HTMLButtonElement | HTMLInputElement>,
   triggerSlot?: ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>,
 ): ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>> {
   const {
@@ -53,7 +50,7 @@ export function useTriggerSlot(
   } = state;
 
   // handle trigger focus/blur
-  const triggerRef: typeof ref = React.useRef(null);
+  const triggerRef = React.useRef<HTMLButtonElement | HTMLInputElement>(null);
 
   // resolve trigger shorthand props
   const trigger: typeof triggerSlot = {
@@ -64,7 +61,7 @@ export function useTriggerSlot(
     // explicitly type the ref as an intersection here to prevent type errors
     // since the `children` prop has mutually incompatible types between input/button
     // functionally both ref and triggerRef will always be the same element type
-    ref: useMergedRefs(ref, triggerSlot?.ref, triggerRef) as React.Ref<HTMLButtonElement & HTMLInputElement>,
+    ref: useMergedRefs(triggerRef, triggerSlot?.ref) as React.Ref<HTMLButtonElement & HTMLInputElement>,
   };
 
   // the trigger should open/close the popup on click or blur

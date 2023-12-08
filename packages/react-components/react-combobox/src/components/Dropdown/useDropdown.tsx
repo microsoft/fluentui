@@ -52,7 +52,8 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     },
     elementType: 'button',
   });
-  trigger = useButtonTriggerSlot(props, baseState, useMergedRefs(ref, triggerRef), trigger);
+  trigger.ref = useMergedRefs(trigger.ref, triggerRef, ref);
+  trigger = useButtonTriggerSlot(baseState, trigger);
 
   const rootSlot = slot.always(props.root, {
     defaultProps: {

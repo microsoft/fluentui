@@ -18,7 +18,6 @@ type UsedComboboxState = UseTriggerSlotState &
 export function useInputTriggerSlot(
   state: UsedComboboxState,
   freeform: boolean | undefined,
-  ref: React.Ref<HTMLInputElement>,
   triggerFromProps?: ExtractSlotProps<Slot<'input'>>,
 ): ExtractSlotProps<Slot<'input'>> {
   const {
@@ -88,7 +87,7 @@ export function useInputTriggerSlot(
     }
   };
 
-  const trigger = useTriggerSlot(state, ref, triggerFromProps);
+  const trigger = useTriggerSlot(state, triggerFromProps);
   trigger.onChange = mergeCallbacks(trigger.onChange, onChange);
   trigger.onBlur = mergeCallbacks(trigger.onBlur, onBlur);
 
