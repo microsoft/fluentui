@@ -63,13 +63,18 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   };
 
   const triggerRef = React.useRef<HTMLInputElement>(null);
-  let listbox: Slot<typeof Listbox> | undefined = slot.optional(props.listbox, {
+  let listbox = slot.optional(props.listbox, {
     renderByDefault: true,
     defaultProps: { children: props.children },
     elementType: Listbox,
   });
-  listbox = useListboxSlot(props, listbox, comboboxPopupRef, triggerRef);
-  listbox = open ? listbox : undefined;
+
+  const listboxRef = useMergedRefs(listbox?.ref, comboboxPopupRef);
+  if (listbox) {
+    listbox.ref = listboxRef;
+  }
+
+  listbox = useListboxSlot(props, listbox, triggerRef) as typeof listbox;
 
   let triggerSlot: Slot<'input'> = slot.always(props.input, {
     defaultProps: {
@@ -84,7 +89,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   const rootSlot = slot.always(props.root, {
     defaultProps: {
-      'aria-owns': !inlinePopup ? listbox?.id : undefined,
+      'aria-owns': !inlinePopup && open ? listbox?.id : undefined,
       ...rootNativeProps,
     },
     elementType: 'div',
@@ -95,7 +100,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     components: { root: 'div', input: 'input', expandIcon: 'span', listbox: Listbox },
     root: rootSlot,
     input: triggerSlot,
-    listbox,
+    listbox: open ? listbox : undefined,
     expandIcon: slot.optional(props.expandIcon, {
       renderByDefault: true,
       defaultProps: {

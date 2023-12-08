@@ -35,13 +35,16 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
 
   const triggerRef = React.useRef<HTMLButtonElement>(null);
-  let listbox: Slot<typeof Listbox> | undefined = slot.optional(props.listbox, {
+  let listbox = slot.optional(props.listbox, {
     renderByDefault: true,
     defaultProps: { children: props.children },
     elementType: Listbox,
   });
-  listbox = useListboxSlot(props, listbox, comboboxPopupRef, triggerRef);
-  listbox = open ? listbox : undefined;
+  const listboxRef = useMergedRefs(listbox?.ref, comboboxPopupRef);
+  if (listbox) {
+    listbox.ref = listboxRef;
+  }
+  listbox = useListboxSlot(props, listbox, triggerRef) as typeof listbox;
 
   let trigger: Slot<'button'> = slot.always(props.button, {
     defaultProps: {
@@ -57,7 +60,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
 
   const rootSlot = slot.always(props.root, {
     defaultProps: {
-      'aria-owns': !props.inlinePopup ? listbox?.id : undefined,
+      'aria-owns': !props.inlinePopup && open ? listbox?.id : undefined,
       children: props.children,
       ...rootNativeProps,
     },
@@ -69,7 +72,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     components: { root: 'div', button: 'button', expandIcon: 'span', listbox: Listbox },
     root: rootSlot,
     button: trigger,
-    listbox,
+    listbox: open ? listbox : undefined,
     expandIcon: slot.optional(props.expandIcon, {
       renderByDefault: true,
       defaultProps: {

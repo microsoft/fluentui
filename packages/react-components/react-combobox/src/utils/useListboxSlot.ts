@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeCallbacks, useId, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { mergeCallbacks, useId, useEventCallback } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { Listbox } from '../components/Listbox/Listbox';
 import type { ComboboxBaseProps } from './ComboboxBase.types';
@@ -10,9 +10,8 @@ import type { ComboboxBaseProps } from './ComboboxBase.types';
 export function useListboxSlot(
   props: ComboboxBaseProps,
   listboxSlot: ExtractSlotProps<Slot<typeof Listbox>> | undefined,
-  ref: React.Ref<HTMLDivElement>,
   triggerRef: React.RefObject<HTMLInputElement> | React.RefObject<HTMLButtonElement>,
-): ExtractSlotProps<Slot<typeof Listbox>> | undefined {
+): ExtractSlotProps<Slot<typeof Listbox>> {
   const { multiselect } = props;
 
   /**
@@ -41,7 +40,6 @@ export function useListboxSlot(
     ...listboxSlot,
     onMouseDown,
     onClick,
-    ref: useMergedRefs(listboxSlot?.ref, ref),
   };
 
   return listbox;
