@@ -1,12 +1,8 @@
 import * as React from 'react';
 import { useRootTree } from '../../hooks/useRootTree';
 import { FlatTreeProps, FlatTreeState } from './FlatTree.types';
-import { useFlatTreeNavigation } from './useFlatTreeNavigation';
-import { HTMLElementWalker, createHTMLElementWalker } from '../../utils/createHTMLElementWalker';
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { treeItemFilter } from '../../utils/treeItemFilter';
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
-import type { TreeNavigationData_unstable, TreeNavigationEvent_unstable } from '../Tree/Tree.types';
+import { useFlatTreeNavigation } from '../../hooks/useFlatTreeNavigation';
 import { useSubtree } from '../../hooks/useSubtree';
 import { ImmutableSet } from '../../utils/ImmutableSet';
 import { ImmutableMap } from '../../utils/ImmutableMap';
@@ -24,33 +20,23 @@ export const useFlatTree_unstable: (props: FlatTreeProps, ref: React.Ref<HTMLEle
 };
 
 function useRootFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): FlatTreeState {
-  const { navigate, initialize } = useFlatTreeNavigation();
-  const walkerRef = React.useRef<HTMLElementWalker>();
-  const { targetDocument } = useFluent_unstable();
+  const navigation = useFlatTreeNavigation();
 
-  const initializeWalker = React.useCallback(
-    (root: HTMLElement | null) => {
-      if (root && targetDocument) {
-        walkerRef.current = createHTMLElementWalker(root, targetDocument, treeItemFilter);
-        initialize(walkerRef.current);
-      }
-    },
-    [initialize, targetDocument],
+  return Object.assign(
+    useRootTree(
+      {
+        ...props,
+        onNavigation: useEventCallback((event, data) => {
+          props.onNavigation?.(event, data);
+          if (!event.isDefaultPrevented()) {
+            navigation.navigate(data);
+          }
+        }),
+      },
+      useMergedRefs(ref, navigation.rootRef),
+    ),
+    { treeType: 'flat' } as const,
   );
-
-  const handleNavigation = useEventCallback(
-    (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
-      props.onNavigation?.(event, data);
-      if (walkerRef.current && !event.isDefaultPrevented()) {
-        navigate(data, walkerRef.current);
-      }
-    },
-  );
-
-  return {
-    treeType: 'flat',
-    ...useRootTree({ ...props, onNavigation: handleNavigation }, useMergedRefs(ref, initializeWalker)),
-  };
 }
 
 function useSubFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): FlatTreeState {

@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Thu, 09 Nov 2023 17:29:38 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Nov 2023 13:42:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.4.37)
+
+Thu, 30 Nov 2023 13:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.4.36..@fluentui/react-migration-v8-v9_v9.4.37)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.42.0 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+
+## [9.4.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.4.36)
+
+Mon, 20 Nov 2023 09:55:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.4.35..@fluentui/react-migration-v8-v9_v9.4.36)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.41.0 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+
+## [9.4.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.4.35)
+
+Tue, 14 Nov 2023 17:51:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.4.34..@fluentui/react-migration-v8-v9_v9.4.35)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.40.0 ([PR #29835](https://github.com/microsoft/fluentui/pull/29835) by beachball)
+
+## [9.4.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.4.34)
+
+Fri, 10 Nov 2023 13:46:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.4.33..@fluentui/react-migration-v8-v9_v9.4.34)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.39.0 ([PR #29809](https://github.com/microsoft/fluentui/pull/29809) by beachball)
 
 ## [9.4.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.4.33)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-jsx-runtime",
   "entries": [
     {
+      "date": "Thu, 30 Nov 2023 13:42:06 GMT",
+      "tag": "@fluentui/react-jsx-runtime_v9.0.20",
+      "version": "9.0.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "wfwf1997@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "ff672d6094b3fa211b96677ebe8c05f602f1ed01",
+            "comment": "chore: move up NODE_ENV check in warnIfElementTypeIsInvalid"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 17:29:36 GMT",
       "tag": "@fluentui/react-jsx-runtime_v9.0.19",
       "version": "9.0.19",

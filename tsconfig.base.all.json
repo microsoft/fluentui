@@ -92,7 +92,6 @@
       "@fluentui/react-aria": ["packages/react-components/react-aria/src/index.ts"],
       "@fluentui/react-avatar": ["packages/react-components/react-avatar/src/index.ts"],
       "@fluentui/react-badge": ["packages/react-components/react-badge/src/index.ts"],
-      "@fluentui/react-breadcrumb-preview": ["packages/react-components/react-breadcrumb-preview/src/index.ts"],
       "@fluentui/react-button": ["packages/react-components/react-button/src/index.ts"],
       "@fluentui/react-calendar-compat": ["packages/react-components/react-calendar-compat/src/index.ts"],
       "@fluentui/react-card": ["packages/react-components/react-card/src/index.ts"],
@@ -127,6 +126,7 @@
       "@fluentui/react-migration-v0-v9": ["packages/react-components/react-migration-v0-v9/src/index.ts"],
       "@fluentui/react-migration-v8-v9": ["packages/react-components/react-migration-v8-v9/src/index.ts"],
       "@fluentui/react-motion-preview": ["packages/react-components/react-motion-preview/src/index.ts"],
+      "@fluentui/react-motions-preview": ["packages/react-components/react-motions-preview/src/index.ts"],
       "@fluentui/react-nav-preview": ["packages/react-components/react-nav-preview/src/index.ts"],
       "@fluentui/react-overflow": ["packages/react-components/react-overflow/src/index.ts"],
       "@fluentui/react-persona": ["packages/react-components/react-persona/src/index.ts"],
@@ -170,7 +170,11 @@
       "@fluentui/react-virtualizer": ["packages/react-components/react-virtualizer/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
-      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
+      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
+      "@fluentui/react-breadcrumb": ["packages/react-components/react-breadcrumb/src/index.ts"],
+      "@fluentui/react-teaching-popover-preview": [
+        "packages/react-components/react-teaching-popover-preview/src/index.ts"
+      ]
     }
   }
 }

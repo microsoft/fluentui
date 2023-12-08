@@ -26,6 +26,7 @@ import {
   MenuTrigger,
 } from '@fluentui/react-components';
 import {
+  DismissRegular,
   DocumentRegular,
   EditRegular,
   FolderRegular,
@@ -37,10 +38,17 @@ import {
 import * as React from 'react';
 import { useState } from 'react';
 
+const columnNames: { [key: TableColumnId]: string } = {
+  file: 'File',
+  author: 'Author',
+  lastUpdated: 'Last updated',
+  lastUpdate: 'Last update',
+};
+
 const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'file',
-    renderHeaderCell: () => <>File</>,
+    renderHeaderCell: () => <>{columnNames.file}</>,
     renderCell: (item: Item) => (
       <TableCellLayout truncate media={item.file.icon}>
         {item.file.label}
@@ -52,7 +60,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
   }),
   createTableColumn<Item>({
     columnId: 'author',
-    renderHeaderCell: () => <>Author</>,
+    renderHeaderCell: () => <>{columnNames.author}</>,
     renderCell: (item: Item) => (
       <TableCellLayout
         truncate
@@ -67,7 +75,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
   }),
   createTableColumn<Item>({
     columnId: 'lastUpdated',
-    renderHeaderCell: () => <>Last updated</>,
+    renderHeaderCell: () => <>{columnNames.lastUpdated}</>,
     renderCell: (item: Item) => <TableCellLayout truncate>{item.lastUpdated.label}</TableCellLayout>,
     compare: (a, b) => {
       return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
@@ -75,7 +83,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
   }),
   createTableColumn<Item>({
     columnId: 'lastUpdate',
-    renderHeaderCell: () => <>Last update</>,
+    renderHeaderCell: () => <>{columnNames.lastUpdate}</>,
     renderCell: (item: Item) => (
       <TableCellLayout truncate media={item.lastUpdate.icon}>
         {item.lastUpdate.label}
@@ -163,6 +171,9 @@ export const ResizableColumnsControlled = () => {
     author: {
       minWidth: 170,
       defaultWidth: 250,
+    },
+    lastUpdated: {
+      minWidth: 120,
     },
     lastUpdate: {
       minWidth: 220,
@@ -285,9 +296,14 @@ export const ResizableColumnsControlled = () => {
                       {...headerSortProps(column.columnId)}
                     >
                       {column.renderHeaderCell()}
-                      <span style={{ position: 'absolute', right: 0 }} onClick={() => removeColumn(index)}>
-                        x
-                      </span>
+                      <Button
+                        appearance="transparent"
+                        aria-label={`Remove ${columnNames[column.columnId]} column`}
+                        size="small"
+                        icon={<DismissRegular />}
+                        style={{ position: 'absolute', right: 0 }}
+                        onClick={() => removeColumn(index)}
+                      />
                     </TableHeaderCell>
                   </MenuTrigger>
                   <MenuPopover>

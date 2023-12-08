@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Thu, 09 Nov 2023 17:29:50 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Nov 2023 13:42:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.4.0)
+
+Thu, 30 Nov 2023 13:42:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.44..@fluentui/react-aria_v9.4.0)
+
+### Minor changes
+
+- feat: Implement aria-activedescendant utility ([PR #29904](https://github.com/microsoft/fluentui/pull/29904) by lingfan.gao@microsoft.com)
 
 ## [9.3.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.44)
 

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: add a explainer a check",
+  "packageName": "@fluentui/react-portal",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}

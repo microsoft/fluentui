@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Thu, 09 Nov 2023 17:29:41 GMT and should not be manually modified.
+This log was last generated on Thu, 30 Nov 2023 13:42:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.13.1)
+
+Thu, 30 Nov 2023 13:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.13.0..@fluentui/react-provider_v9.13.1)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.15.0 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.20 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+
+## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.13.0)
+
+Mon, 20 Nov 2023 09:55:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.12.1..@fluentui/react-provider_v9.13.0)
+
+### Minor changes
+
+- feat: Add TeachingPopover style hooks ([PR #29782](https://github.com/microsoft/fluentui/pull/29782) by mifraser@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.13.0 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+- Bump @fluentui/react-tabster to v9.14.6 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+
+## [9.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.12.1)
+
+Tue, 14 Nov 2023 17:51:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.12.0..@fluentui/react-provider_v9.12.1)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.14.5 ([PR #29835](https://github.com/microsoft/fluentui/pull/29835) by beachball)
 
 ## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.12.0)
 

@@ -2,6 +2,42 @@
   "name": "@fluentui/react-text",
   "entries": [
     {
+      "date": "Thu, 30 Nov 2023 13:42:08 GMT",
+      "tag": "@fluentui/react-text_v9.4.0",
+      "version": "9.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "d82568581b73996acbfdf78966e55572e0f869f6",
+            "comment": "feature: adds semantic elements (strong, b, em, i) to Text root signature"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.20",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Nov 2023 09:55:10 GMT",
+      "tag": "@fluentui/react-text_v9.3.47",
+      "version": "9.3.47",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-text",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.13.0",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 17:29:45 GMT",
       "tag": "@fluentui/react-text_v9.3.46",
       "version": "9.3.46",

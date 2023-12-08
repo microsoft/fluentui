@@ -2,6 +2,36 @@
   "name": "@fluentui/react-motion-preview",
   "entries": [
     {
+      "date": "Thu, 30 Nov 2023 13:42:08 GMT",
+      "tag": "@fluentui/react-motion-preview_v0.5.3",
+      "version": "0.5.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.20",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Nov 2023 09:55:10 GMT",
+      "tag": "@fluentui/react-motion-preview_v0.5.2",
+      "version": "0.5.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.13.0",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 17:29:38 GMT",
       "tag": "@fluentui/react-motion-preview_v0.5.1",
       "version": "0.5.1",

@@ -2,6 +2,262 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 30 Nov 2023 13:42:05 GMT",
+      "tag": "@fluentui/react-components_v9.42.0",
+      "version": "9.42.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "29bddb19fbcf2f63711e9b5153b02066172dce9d",
+            "comment": "feat: Implement aria-activedescendant utility"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "499eb8b3c02e05e817ff907b740af703c4a19bf1",
+            "comment": "feat: export useUncontrolledFocus hook"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "6438f49dcad090446fdec9b189a027751e8dca11",
+            "comment": "add useFocusVisible() to exports"
+          },
+          {
+            "author": "humbertomakotomorimoto@gmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "3d31f25ab5321f10c1df4c5d113e7d78d89ca7b4",
+            "comment": "feat: Adding span as an option for Link to render as."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "499eb8b3c02e05e817ff907b740af703c4a19bf1",
+            "comment": "feat: implement useTabsterUncontrolled hook"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "d82568581b73996acbfdf78966e55572e0f869f6",
+            "comment": "feature: adds semantic elements (strong, b, em, i) to Text root signature"
+          }
+        ],
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "f72acbfc210a6477265b88d794fba38639666e5c",
+            "comment": "fix: listbox closes on blur after scroll click"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "81bc562773bf52c5806054de35a206a250cfd28e",
+            "comment": "fix: Dropdown button gets focus in Safari when clicked"
+          },
+          {
+            "author": "wfwf1997@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "ff672d6094b3fa211b96677ebe8c05f602f1ed01",
+            "comment": "chore: move up NODE_ENV check in warnIfElementTypeIsInvalid"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "7bb7f3dfe62dcbc678cc631c3683b11df942960e",
+            "comment": "feat: adds floating-ui-devtools support"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "faf18b048818bc55bb1ae1dc917b81aff898d00c",
+            "comment": "fix: Infinite reset loop in matchTargetSize middleware"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "75b0af0922b6d5e71bead8b378bf98ba659f70f2",
+            "comment": "fix: Brand row appearance should be brandBackground2 in pressed state"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "5219f3b7f8e802d4c95370bc97acb6b25a469839",
+            "comment": "docs: add docs for mountNodeProps"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "4dddcd651b848e2f4d5b90a28e64e13118da31b6",
+            "comment": "feat: Add default auto-measuring on dynamic virtualizezr if no sizing function provided"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Nov 2023 09:55:08 GMT",
+      "tag": "@fluentui/react-components_v9.41.0",
+      "version": "9.41.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "b81eb56d5f2f7ae9728ada432e30d8142520117f",
+            "comment": "fix: disconnect should dispose all state correctly"
+          },
+          {
+            "author": "jurokapsiar@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a",
+            "comment": "Remove CSS containment from DialogSurface"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "b81eb56d5f2f7ae9728ada432e30d8142520117f",
+            "comment": "fix: register should happen again once observe options change"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "5103727605543cf631cd50f5348562b763f08ee0",
+            "comment": "chore: Export KeyborgFocusInEvent and KEYBORG_FOCUSIN"
+          }
+        ],
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "31f1f61ba423c280294f610e076251d3b735ca17",
+            "comment": "fix: Replace child selectors with css vars in Checkbox styles"
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "1a26dc71a18fed4b842ec6b551189da2d0c389b2",
+            "comment": "chore: Re-export missing exports from @fluentui/react-drawer in @fluentui/react-components."
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "88efc19c9513db18cb5b7c63fa0f47ba496755a2",
+            "comment": "feat: Add TeachingPopover style hooks"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "88efc19c9513db18cb5b7c63fa0f47ba496755a2",
+            "comment": "feat: TeachingPopover style hooks added"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "5103727605543cf631cd50f5348562b763f08ee0",
+            "comment": "fix: Tooltips are no longer triggered by programmatic focus() moves."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Nov 2023 17:51:26 GMT",
+      "tag": "@fluentui/react-components_v9.40.0",
+      "version": "9.40.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "1ab86f8d92e16e29a5de8502f84b750f47823c47",
+            "comment": "docs(breadcrumb): removed preview from all the links"
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "5a3da360acdc28e15ea5bcb481a8b25204e19c1e",
+            "comment": "Improving how Tabster uncontrolled areas are handled for better interop with third party focus management tools like FocusZone."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "ee8ca9b273641f6fe348338086a7aa29424fbbfb",
+            "comment": "chore: refactor tree navigation"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "69fef129d9fba9bab5824281dd5c2f4fac1291ee",
+            "comment": "feat: release stable"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "69fef129d9fba9bab5824281dd5c2f4fac1291ee",
+            "comment": "feat: add @fluentui/react-breadcrumb to suite"
+          }
+        ],
+        "none": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "4189b9dbe75e9be3e9344c077e3afc8ca5939991",
+            "comment": "docs: Copying SPEC.md from react-infobutton."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Nov 2023 13:46:32 GMT",
+      "tag": "@fluentui/react-components_v9.39.0",
+      "version": "9.39.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "506c225d88c8d1452cf64dffad3d7243ad161d11",
+            "comment": "fix: use button when no href is defined"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e6172eb364bd61f02d998e6fa11676aadb34af6c",
+            "comment": "fix: MenuTrigger tabster attributes can be overriden by user"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "af9cde68a324d0b14d5a584b4589c90743483f03",
+            "comment": "feat: export useOverflowVisibility hook"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "af9cde68a324d0b14d5a584b4589c90743483f03",
+            "comment": "feat: Implement useOverflowVisibility hook"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "7a359e8d433593f9ee27d86be56af4b0babe09a4",
+            "comment": "feat: Ensure IO handles RTL margin and mutations"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 17:29:30 GMT",
       "tag": "@fluentui/react-components_v9.38.0",
       "version": "9.38.0",

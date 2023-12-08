@@ -2,6 +2,87 @@
   "name": "@fluentui/react-switch",
   "entries": [
     {
+      "date": "Thu, 30 Nov 2023 13:42:08 GMT",
+      "tag": "@fluentui/react-switch_v9.1.58",
+      "version": "9.1.58",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-field to v9.1.43",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.20",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-label to v9.1.51",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-tabster to v9.15.0",
+            "commit": "f882fe7c3fbe6b4d6c3153732d384880bfd351dc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Nov 2023 09:55:10 GMT",
+      "tag": "@fluentui/react-switch_v9.1.57",
+      "version": "9.1.57",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-field to v9.1.42",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-label to v9.1.50",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.13.0",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-tabster to v9.14.6",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Nov 2023 17:51:27 GMT",
+      "tag": "@fluentui/react-switch_v9.1.56",
+      "version": "9.1.56",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-tabster to v9.14.5",
+            "commit": "74af9993e1f812bdc9d8a4635f8477295168efa8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 17:29:44 GMT",
       "tag": "@fluentui/react-switch_v9.1.55",
       "version": "9.1.55",
