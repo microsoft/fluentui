@@ -57,16 +57,16 @@ export type CounterBadgeProps = Omit<BadgeProps, 'appearance' | 'color' | 'shape
 // @public (undocumented)
 export type CounterBadgeState = Omit<BadgeState, 'appearance' | 'color' | 'shape'> & Required<Pick<CounterBadgeProps, 'appearance' | 'color' | 'count' | 'dot' | 'shape' | 'showZero'>>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const presenceAvailableFilled: Record<PresenceBadgeState['size'], React_2.FunctionComponent>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const presenceAvailableRegular: Record<PresenceBadgeState['size'], React_2.FunctionComponent>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const presenceAwayFilled: Record<PresenceBadgeState['size'], React_2.FunctionComponent>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const presenceAwayRegular: Record<PresenceBadgeState['size'], React_2.FunctionComponent>;
 
 // @public
@@ -87,25 +87,25 @@ export type PresenceBadgeState = ComponentState<BadgeSlots> & BadgeState & Requi
 // @public (undocumented)
 export type PresenceBadgeStatus = 'busy' | 'out-of-office' | 'away' | 'available' | 'offline' | 'do-not-disturb' | 'unknown' | 'blocked';
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const presenceBlockedRegular: Record<PresenceBadgeState['size'], React_2.FunctionComponent>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const presenceBusyFilled: Record<PresenceBadgeState['size'], React_2.FunctionComponent>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const presenceDndFilled: Record<PresenceBadgeState['size'], React_2.FunctionComponent>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const presenceDndRegular: Record<PresenceBadgeState['size'], React_2.FunctionComponent>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const presenceOfflineRegular: Record<PresenceBadgeState['size'], React_2.FunctionComponent>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const presenceOofRegular: Record<PresenceBadgeState['size'], React_2.FunctionComponent>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const presenceUnknownRegular: Record<PresenceBadgeState['size'], React_2.FunctionComponent>;
 
 // @public (undocumented)

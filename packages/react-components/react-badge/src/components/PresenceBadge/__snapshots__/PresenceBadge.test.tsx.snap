@@ -13,13 +13,13 @@ exports[`PresenceBadge renders a default state 1`] = `
       aria-hidden={true}
       className=""
       fill="currentColor"
-      height="16"
-      viewBox="0 0 16 16"
-      width="16"
+      height="1em"
+      viewBox="0 0 20 20"
+      width="1em"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16Zm3.7-9.3-4 4a1 1 0 0 1-1.41 0l-2-2a1 1 0 1 1 1.42-1.4L7 8.58l3.3-3.3a1 1 0 0 1 1.4 1.42Z"
+        d="M10 20a10 10 0 1 0 0-20 10 10 0 0 0 0 20Zm4.2-11.8-4.5 4.5a1 1 0 0 1-1.4 0l-2-2a1 1 0 1 1 1.4-1.4L9 10.58l3.8-3.8a1 1 0 1 1 1.4 1.42Z"
         fill="currentColor"
       />
     </svg>

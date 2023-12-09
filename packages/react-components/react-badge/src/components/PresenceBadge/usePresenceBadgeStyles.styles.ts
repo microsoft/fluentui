@@ -71,33 +71,28 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground3,
   },
 
-  // Icons are not resizeable, and these sizes are currently missing
-  // use `!important` to size the currently available icons to the missing ones
-  //
   tiny: {
     aspectRatio: '1',
     width: '6px',
     backgroundClip: 'unset', // tiny icons have a border less than 1px wide, and can't use the backgroundClip fix
     '& svg': {
-      width: '6px !important',
-      height: '6px !important',
+      fontSize: '6px',
     },
+  },
+  'extra-small': {
+    fontSize: '10px',
+  },
+  small: {
+    fontSize: '12px',
+  },
+  medium: {
+    fontSize: '16px',
   },
   large: {
-    aspectRatio: '1',
-    width: '20px',
-    '& svg': {
-      width: '20px !important',
-      height: '20px !important',
-    },
+    fontSize: '20px',
   },
-  extraLarge: {
-    aspectRatio: '1',
-    width: '28px',
-    '& svg': {
-      width: '28px !important',
-      height: '28px !important',
-    },
+  'extra-large': {
+    fontSize: '28px',
   },
 });
 
@@ -125,9 +120,7 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
       (state.status === 'out-of-office' || state.status === 'away' || state.status === 'offline') &&
       styles.statusOutOfOffice,
     state.outOfOffice && state.status === 'unknown' && styles.outOfOfficeUnknown,
-    state.size === 'tiny' && styles.tiny,
-    state.size === 'large' && styles.large,
-    state.size === 'extra-large' && styles.extraLarge,
+    state.size && styles[state.size],
     state.root.className,
   );
 
