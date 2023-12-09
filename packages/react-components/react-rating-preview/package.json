@@ -32,7 +32,9 @@
   },
   "dependencies": {
     "@fluentui/react-jsx-runtime": "^9.0.20",
+    "@fluentui/react-icons": "^2.0.217",
     "@fluentui/react-theme": "^9.1.16",
+    "@fluentui/react-tabster": "^9.15.0",
     "@fluentui/react-utilities": "^9.15.2",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"

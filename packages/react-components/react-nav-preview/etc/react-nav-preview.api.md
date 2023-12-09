@@ -9,7 +9,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const Nav: ForwardRefComponent<NavProps>;
@@ -17,77 +17,93 @@ export const Nav: ForwardRefComponent<NavProps>;
 // @public (undocumented)
 export const navClassNames: SlotClassNames<NavSlots>;
 
-// @public
-export const NavLink: ForwardRefComponent<NavLinkProps>;
-
 // @public (undocumented)
-export const navLinkClassNames: SlotClassNames<NavLinkSlots>;
-
-// @public
-export const NavLinkGroup: ForwardRefComponent<NavLinkGroupProps>;
-
-// @public (undocumented)
-export const navLinkGroupClassNames: SlotClassNames<NavLinkGroupSlots>;
-
-// @public
-export type NavLinkGroupProps = ComponentProps<NavLinkGroupSlots> & {};
-
-// @public (undocumented)
-export type NavLinkGroupSlots = {
-    root: Slot<'div'>;
+export type NavContextValue = Pick<NavProps, 'onNavGroupSelect' | 'selectedValue' | 'reserveSelectedNavGroupSpace'> & {
+    onRegister: RegisterNavGroupEventHandler;
+    onUnregister: RegisterNavGroupEventHandler;
+    onSelect: EventHandler<OnNavGroupSelectData>;
+    getRegisteredNavGroups: () => {
+        selectedValue?: NavGroupValue;
+        previousSelectedValue?: NavGroupValue;
+        registeredNavGroups: Record<string, NavGroupRegisterData>;
+    };
 };
 
 // @public
-export type NavLinkGroupState = ComponentState<NavLinkGroupSlots>;
-
-// @public
-export type NavLinkProps = ComponentProps<NavLinkSlots> & {};
-
-// @public (undocumented)
-export type NavLinkSlots = {
-    root: Slot<'div'>;
+export type NavContextValues = {
+    nav: NavContextValue;
 };
 
 // @public
-export type NavLinkState = ComponentState<NavLinkSlots>;
+export const NavGroup: ForwardRefComponent<NavGroupProps>;
+
+// @public (undocumented)
+export const navGroupClassNames: SlotClassNames<NavGroupSlots>;
 
 // @public
-export type NavProps = ComponentProps<NavSlots> & {};
+export type NavGroupProps = ComponentProps<Partial<NavGroupSlots>> & {
+    value: NavGroupValue;
+};
+
+// @public (undocumented)
+export type NavGroupRegisterData = {
+    value: NavGroupValue;
+    ref: React_2.RefObject<HTMLElement>;
+};
+
+// @public (undocumented)
+export type NavGroupSlots = {
+    root: Slot<'button'>;
+    content: NonNullable<Slot<'span'>>;
+};
+
+// @public
+export type NavGroupState = ComponentState<NavGroupSlots> & Pick<NavGroupProps, 'value'> & {
+    selected: boolean;
+};
+
+// @public
+export type NavGroupValue = unknown;
+
+// @public
+export type NavProps = ComponentProps<NavSlots> & {
+    reserveSelectedNavGroupSpace?: boolean;
+    defaultSelectedValue?: NavGroupValue;
+    onNavGroupSelect?: EventHandler<OnNavGroupSelectData>;
+    selectedValue?: NavGroupValue;
+};
+
+// @public (undocumented)
+export const NavProvider: React_2.Provider<NavContextValue | undefined>;
 
 // @public (undocumented)
 export type NavSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
 };
 
 // @public
-export type NavState = ComponentState<NavSlots>;
+export type NavState = ComponentState<NavSlots> & NavContextValue;
+
+// @public (undocumented)
+export type RegisterNavGroupEventHandler = (data: NavGroupRegisterData) => void;
+
+// @public (undocumented)
+export const renderNav_unstable: (state: NavState, contextValues: NavContextValues) => JSX.Element;
 
 // @public
-export const renderNav_unstable: (state: NavState) => JSX.Element;
-
-// @public
-export const renderNavLink_unstable: (state: NavLinkState) => JSX.Element;
-
-// @public
-export const renderNavLinkGroup_unstable: (state: NavLinkGroupState) => JSX.Element;
+export const renderNavGroup_unstable: (state: NavGroupState) => JSX.Element;
 
 // @public
 export const useNav_unstable: (props: NavProps, ref: React_2.Ref<HTMLDivElement>) => NavState;
 
-// @public
-export const useNavLink_unstable: (props: NavLinkProps, ref: React_2.Ref<HTMLDivElement>) => NavLinkState;
+// @public (undocumented)
+export const useNavContext_unstable: () => NavContextValue;
 
 // @public
-export const useNavLinkGroup_unstable: (props: NavLinkGroupProps, ref: React_2.Ref<HTMLDivElement>) => NavLinkGroupState;
+export const useNavGroup_unstable: (props: NavGroupProps, ref: React_2.Ref<HTMLButtonElement>) => NavGroupState;
 
 // @public
-export const useNavLinkGroupStyles_unstable: (state: NavLinkGroupState) => NavLinkGroupState;
-
-// @public
-export const useNavLinkStyles_unstable: (state: NavLinkState) => NavLinkState;
-
-// @public
-export const useNavStyles_unstable: (state: NavState) => NavState;
+export const useNavGroupStyles_unstable: (state: NavGroupState) => NavGroupState;
 
 // (No @packageDocumentation comment for this package)
 
