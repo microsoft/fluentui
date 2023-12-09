@@ -4,6 +4,7 @@ import descriptionMd from './NavDescription.md';
 import bestPracticesMd from './NavBestPractices.md';
 
 export { Default } from './NavDefault.stories';
+export { WithDefaultSelection } from './NavWithDefaultSelection.stories';
 
 export default {
   title: 'Preview Components/Nav',

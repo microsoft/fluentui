@@ -4,3 +4,5 @@ This implementation is based on [Web Animations API](https://developer.mozilla.o
 
 - Atoms are the smallest building blocks of animations
 - Presences are the combination of atoms that define the in/out animation
+
+The package provides a set of predefined atoms and presence animations that can be used in Fluent UI components. You can also create your own atoms and presence animations.
