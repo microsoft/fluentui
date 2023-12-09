@@ -17,12 +17,12 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   const context = useRatingContextValue_unstable();
   const { value = 0 } = props;
 
-  const ratingValue = context.value || 0;
+  const ratingValue = context?.value || 0;
 
-  const displayedRatingValue = context.hoveredValue ?? ratingValue;
+  const displayedRatingValue = context?.hoveredValue ?? ratingValue;
 
   let iconFillWidth;
-  if (context.compact || displayedRatingValue >= value) {
+  if ((context && context.compact) || displayedRatingValue >= value) {
     iconFillWidth = 1;
   } else if (displayedRatingValue >= value - 0.5) {
     iconFillWidth = 0.5;
@@ -39,10 +39,12 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   );
 
   let unselectedOutlineIcon;
-  if (iconFillWidth < 1 && context.appearance === 'outline') {
-    unselectedOutlineIcon = slot.always(props.unselectedFilledIcon, {
+  // The unselectedOutlineIcon always needs to be rendered when unselected,
+  // even for 'filled' appearance, since high contrast always shows an outline.
+  if (iconFillWidth < 1) {
+    unselectedOutlineIcon = slot.always(props.unselectedOutlineIcon, {
       defaultProps: {
-        children: context.iconOutline,
+        children: context?.iconOutline,
         'aria-hidden': true,
       },
       elementType: 'div',
@@ -50,7 +52,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   let unselectedFilledIcon;
-  if (iconFillWidth < 1 && context.appearance === 'filled') {
+  if (context && iconFillWidth < 1 && context.appearance === 'filled') {
     unselectedFilledIcon = slot.always(props.unselectedFilledIcon, {
       defaultProps: {
         children: context.iconFilled,
@@ -64,7 +66,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   if (iconFillWidth > 0) {
     selectedIcon = slot.always(props.selectedIcon, {
       defaultProps: {
-        children: context.iconFilled,
+        children: context?.iconFilled,
         'aria-hidden': true,
       },
       elementType: 'div',
@@ -72,7 +74,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   let halfValueInput;
-  if (!context.readOnly && context.precision && !context.compact) {
+  if (context && !context.readOnly && context.precision && !context.compact) {
     halfValueInput = slot.always(props.halfValueInput, {
       defaultProps: {
         type: 'radio',
@@ -89,7 +91,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   let fullValueInput;
-  if (!context.readOnly && !context.compact) {
+  if (context && !context.readOnly && !context.compact) {
     fullValueInput = slot.always(props.fullValueInput, {
       defaultProps: {
         type: 'radio',
@@ -107,9 +109,9 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   const state: RatingItemState = {
-    compact: context.compact,
-    precision: context.precision,
-    size: context.size,
+    compact: context ? context.compact : false,
+    precision: context ? context.precision : false,
+    size: context ? context.size : 'medium',
     iconFillWidth,
     value,
     components: {

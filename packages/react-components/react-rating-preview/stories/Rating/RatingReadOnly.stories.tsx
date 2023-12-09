@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Rating } from '@fluentui/react-rating-preview';
 
 export const ReadOnly = () => {
-  return <Rating readOnly defaultValue={3} ratingLabel={3} ratingCountLabel={'1,160'} />;
+  return <Rating readOnly value={3} ratingLabel={3} ratingCountLabel={'1,160'} />;
 };
 
 ReadOnly.parameters = {

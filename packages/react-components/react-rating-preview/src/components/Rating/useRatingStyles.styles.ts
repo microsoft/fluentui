@@ -7,21 +7,21 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 export const ratingClassNames: SlotClassNames<RatingSlots> = {
   root: 'fui-Rating',
   ratingLabel: 'fui-Rating__ratingLabel',
-  ratingCountLabel: 'fui-Rating__countLabel',
+  ratingCountLabel: 'fui-Rating__ratingCountLabel',
 };
 
 /**
  * Styles for the root slot
  */
 
-const useStyles = makeResetStyles({
+const useRootClassName = makeResetStyles({
   display: 'flex',
   alignItems: 'center',
   color: tokens.colorNeutralForeground1,
   ...createFocusOutlineStyle({ style: {}, selector: 'focus' }),
 });
 
-const useBaseLabelStyles = makeResetStyles({
+const useLabelClassName = makeResetStyles({
   color: tokens.colorNeutralForeground1,
   ...shorthands.margin('0px', '2px'),
   ...typographyStyles.caption1,
@@ -46,8 +46,8 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Rating slots based on the state
  */
 export const useRatingStyles_unstable = (state: RatingState): RatingState => {
-  const styles = useStyles();
-  const labelBaseStyles = useBaseLabelStyles();
+  const styles = useRootClassName();
+  const labelBaseStyles = useLabelClassName();
   const labelStyles = useLabelStyles();
   state.root.className = mergeClasses(ratingClassNames.root, styles, state.root.className);
   if (state.ratingLabel) {

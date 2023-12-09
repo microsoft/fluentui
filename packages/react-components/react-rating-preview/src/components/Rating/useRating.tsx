@@ -1,9 +1,15 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, mergeCallbacks, slot, useControllableState, useId } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  isHTMLElement,
+  mergeCallbacks,
+  slot,
+  useControllableState,
+  useId,
+} from '@fluentui/react-utilities';
 import type { RatingProps, RatingState } from './Rating.types';
 import { RatingItem } from '../../RatingItem';
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
-import { isRatingRadioItem } from './isRatingRadioItem';
 
 /**
  * Create the state required to render Rating.
@@ -37,6 +43,9 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
     defaultState: props.defaultValue,
     initialState: 0,
   });
+
+  const isRatingRadioItem = (target: EventTarget): target is HTMLInputElement =>
+    isHTMLElement(target, { constructorName: 'HTMLInputElement' }) && target.type === 'radio' && target.name === name;
 
   const [hoveredValue, setHoveredValue] = React.useState<number | undefined>(undefined);
 
@@ -85,7 +94,7 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
 
   if (!readOnly) {
     state.root.onChange = ev => {
-      if (isRatingRadioItem(name, ev.target)) {
+      if (isRatingRadioItem(ev.target)) {
         const newValue = parseFloat(ev.target.value);
         if (!isNaN(newValue)) {
           setValue(newValue);
@@ -94,7 +103,7 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
       }
     };
     state.root.onMouseOver = mergeCallbacks(props.onMouseOver, ev => {
-      if (isRatingRadioItem(name, ev.target)) {
+      if (isRatingRadioItem(ev.target)) {
         const newValue = parseFloat(ev.target.value);
         if (!isNaN(newValue)) {
           setHoveredValue(newValue);

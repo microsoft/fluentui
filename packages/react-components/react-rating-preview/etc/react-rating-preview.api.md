@@ -99,7 +99,7 @@ export const renderRatingItem_unstable: (state: RatingItemState) => JSX.Element;
 export const useRating_unstable: (props: RatingProps, ref: React_2.Ref<HTMLDivElement>) => RatingState;
 
 // @public
-export const useRatingContextValue_unstable: () => RatingContextValue;
+export const useRatingContextValue_unstable: () => RatingContextValue | undefined;
 
 // @public (undocumented)
 export const useRatingContextValues: (state: RatingState) => RatingContextValues;
