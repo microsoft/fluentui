@@ -1,11 +1,6 @@
 import * as React from 'react';
-import {
-  makeStyles,
-  Persona,
-  presenceAvailableRegular,
-  presenceOfflineRegular,
-  tokens,
-} from '@fluentui/react-components';
+import { makeStyles, Persona, tokens } from '@fluentui/react-components';
+import { PresenceAvailableRegular, PresenceOfflineRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   statusAway: {
@@ -27,8 +22,8 @@ const useStyles = makeStyles({
 
 export const PresencePreviousBehavior = () => {
   const styles = useStyles();
-  const AwayFilledIcon = presenceAvailableRegular.small;
-  const OfflineRegularIcon = presenceOfflineRegular.small;
+  const AwayFilledIcon = PresenceAvailableRegular;
+  const OfflineRegularIcon = PresenceOfflineRegular;
 
   return (
     <div className={styles.root}>
@@ -41,7 +36,7 @@ export const PresencePreviousBehavior = () => {
         presence={{
           status: 'away',
           outOfOffice: true,
-          icon: <AwayFilledIcon />,
+          icon: <AwayFilledIcon fontSize={'12px'} />,
           className: styles.statusAway,
         }}
         name="Kevin Sturgis"
@@ -51,7 +46,7 @@ export const PresencePreviousBehavior = () => {
         presence={{
           status: 'offline',
           outOfOffice: true,
-          icon: <OfflineRegularIcon />,
+          icon: <OfflineRegularIcon fontSize={'12px'} />,
           className: styles.statusOffline,
         }}
         name="Kevin Sturgis"
