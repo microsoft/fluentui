@@ -261,16 +261,27 @@ export {
   useCounterBadgeStyles_unstable,
   usePresenceBadge_unstable,
   usePresenceBadgeStyles_unstable,
+  /** @deprecated Use PresenceAwayRegular from \@fluentui/react-icons */
   presenceAwayRegular,
+  /** @deprecated Use PresenceAwayFilled from \@fluentui/react-icons */
   presenceAwayFilled,
+  /** @deprecated Use PresenceAvailableRegular from \@fluentui/react-icons */
   presenceAvailableRegular,
+  /** @deprecated Use PresenceAvailableFilled from \@fluentui/react-icons */
   presenceAvailableFilled,
+  /** @deprecated Use PresenceBlockedRegular from \@fluentui/react-icons */
   presenceBlockedRegular,
+  /** @deprecated Use PresenceBusyFilled from \@fluentui/react-icons */
   presenceBusyFilled,
+  /** @deprecated Use PresenceDndRegular from \@fluentui/react-icons */
   presenceDndRegular,
+  /** @deprecated Use PresenceDndFilled from \@fluentui/react-icons */
   presenceDndFilled,
+  /** @deprecated Use PresenceOofRegular from \@fluentui/react-icons */
   presenceOofRegular,
+  /** @deprecated Use PresenceOfflineRegular from \@fluentui/react-icons */
   presenceOfflineRegular,
+  /** @deprecated Use PresenceUnknownRegular from \@fluentui/react-icons */
   presenceUnknownRegular,
 } from '@fluentui/react-badge';
 export type {
