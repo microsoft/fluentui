@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "deprecate usage of badge icon enum",
+  "packageName": "@fluentui/react-components",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
