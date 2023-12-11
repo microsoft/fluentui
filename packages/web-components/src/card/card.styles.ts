@@ -2,6 +2,8 @@ import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusMedium,
+  colorBrandBackground2,
+  colorBrandStroke2,
   colorNeutralBackground1,
   colorNeutralBackground1Hover,
   colorNeutralBackground1Pressed,
@@ -65,8 +67,8 @@ export const styles = css`
   .card:focus-visible::after {
     content: '';
     position: absolute;
-    inset: 3px;
-    border-color: ${colorTransparentStroke};
+    inset: -1px;
+    border-color: ${colorBrandBackground2};
     outline: ${strokeWidthThick} solid ${colorTransparentStroke};
     box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
   }
