@@ -117,5 +117,11 @@
     "lib",
     "lib-commonjs",
     "unstable"
-  ]
+  ],
+  "wyw-in-js": {
+    "tags": {
+      "makeStyles": "@griffel/tag-processor/make-styles",
+      "makeResetStyles": "@griffel/tag-processor/make-reset-styles"
+    }
+  }
 }
