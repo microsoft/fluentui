@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FocusRectsProvider, MergeStylesRootProvider, MergeStylesShadowRootProvider } from '@fluentui/react';
+import { MergeStylesRootProvider, MergeStylesShadowRootProvider } from '@fluentui/react';
 import root from 'react-shadow';
 
 export type ShadowProps = {
