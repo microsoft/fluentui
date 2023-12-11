@@ -1,6 +1,15 @@
 import * as React from 'react';
-import { GLOBAL_STYLESHEET_KEY, makeShadowConfig } from '@fluentui/merge-styles';
+import {
+  GLOBAL_STYLESHEET_KEY,
+  Stylesheet,
+  makeShadowConfig,
+  cloneCSSStyleSheet,
+  EventHandler,
+} from '@fluentui/merge-styles';
 import { useMergeStylesRootStylesheets } from './MergeStylesRootContext';
+import { useDocument, useWindow } from '@fluentui/react-window-provider';
+
+type PolyfileInsertListeners = Record<string, EventHandler<CSSStyleSheet>>;
 
 export type MergeStylesShadowRootContextValue = {
   /**
@@ -74,6 +83,22 @@ const GlobalStyles: React.FC = props => {
 export const useAdoptedStylesheet = (stylesheetKey: string): boolean => {
   const shadowCtx = useMergeStylesShadowRootContext();
   const rootMergeStyles = useMergeStylesRootStylesheets();
+  const doc = useDocument();
+  const win = useWindow();
+  // console.log(doc?.defaultView.__SENTINAL__);
+  const polyfillInsertListners = React.useRef<PolyfileInsertListeners>({});
+
+  React.useEffect(() => {
+    const polyfillListeners = polyfillInsertListners.current;
+    polyfillInsertListners.current = {};
+
+    return () => {
+      const sheet = Stylesheet.getInstance(makeShadowConfig(stylesheetKey, true, win));
+      Object.keys(polyfillListeners).forEach(key => {
+        sheet.offInsertRuleIntoConstructableStyleSheet(polyfillListeners[key]);
+      });
+    };
+  }, [win, stylesheetKey]);
 
   if (!shadowCtx) {
     return false;
@@ -81,13 +106,71 @@ export const useAdoptedStylesheet = (stylesheetKey: string): boolean => {
 
   if (shadowCtx.shadowRoot && !shadowCtx.stylesheets.has(stylesheetKey)) {
     const adoptableStyleSheet = rootMergeStyles.get(stylesheetKey);
-    if (adoptableStyleSheet) {
-      shadowCtx.stylesheets.set(stylesheetKey, adoptableStyleSheet);
-      shadowCtx.shadowRoot.adoptedStyleSheets = [...shadowCtx.shadowRoot.adoptedStyleSheets, adoptableStyleSheet];
+    if (adoptableStyleSheet && doc) {
+      adoptSheet(shadowCtx, doc, stylesheetKey, adoptableStyleSheet, polyfillInsertListners.current);
     }
   }
 
   return true;
+};
+
+const updatePolyfillSheet = (shadowCtx: MergeStylesShadowRootContextValue, stylesheetKey: string, rule: string) => {
+  const shadowRoot = shadowCtx.shadowRoot!;
+  const style = shadowRoot.querySelector(`[data-merge-styles-stylesheet-key="${stylesheetKey}"]`) as HTMLStyleElement;
+  if (style?.sheet) {
+    style.sheet.insertRule(rule);
+  }
+};
+
+const adoptSheet = (
+  shadowCtx: MergeStylesShadowRootContextValue,
+  doc: Document,
+  stylesheetKey: string,
+  stylesheet: CSSStyleSheet,
+  listenerRef: PolyfileInsertListeners,
+) => {
+  const shadowRoot = shadowCtx.shadowRoot!;
+
+  shadowCtx.stylesheets.set(stylesheetKey, stylesheet);
+  const sheet = Stylesheet.getInstance();
+  if (sheet.supportsConstructableStylesheets()) {
+    // The current spec allows the `adoptedStyleSheets` array to be modified.
+    // Previous versions of the spec required a new array to be created.
+    // For more details see: https://github.com/microsoft/fast/pull/6703
+    if (sheet.supportsModifyingAdoptedStyleSheets()) {
+      shadowRoot.adoptedStyleSheets.push(stylesheet);
+    } else {
+      shadowRoot.adoptedStyleSheets = [...shadowRoot.adoptedStyleSheets, stylesheet];
+    }
+  } else {
+    const style = doc.createElement('style');
+    style.setAttribute('data-merge-styles-stylesheet-key', stylesheetKey);
+
+    const otherStyles = shadowRoot.querySelectorAll('[data-merge-styles-stylesheet-key]');
+    if (otherStyles.length > 0) {
+      shadowRoot.insertBefore(style, otherStyles[otherStyles.length - 1].nextSibling);
+    } else {
+      shadowRoot.insertBefore(style, shadowRoot.firstChild);
+    }
+
+    if (style.sheet) {
+      cloneCSSStyleSheet(stylesheet, style.sheet);
+      if (!listenerRef[stylesheetKey]) {
+        const onInsert: EventHandler<CSSStyleSheet> = ({ key, rule }) => {
+          if (key === stylesheetKey) {
+            if (shadowCtx && rule) {
+              updatePolyfillSheet(shadowCtx, key, rule);
+            }
+          }
+        };
+        const polyfillSheet = Stylesheet.getInstance(
+          makeShadowConfig(stylesheetKey, true, doc.defaultView ?? undefined),
+        );
+        polyfillSheet.onInsertRuleIntoConstructableStyleSheet(onInsert);
+        listenerRef[stylesheetKey] = onInsert;
+      }
+    }
+  }
 };
 
 /**
