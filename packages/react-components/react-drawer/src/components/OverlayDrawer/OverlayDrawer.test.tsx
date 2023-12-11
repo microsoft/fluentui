@@ -40,4 +40,16 @@ describe('OverlayDrawer', () => {
     const result = render(<OverlayDrawer>Default OverlayDrawer</OverlayDrawer>);
     expect(result.container).toMatchInlineSnapshot(`<div />`);
   });
+
+  it('respects the mountNode prop', () => {
+    const mountNode = document.createElement('div');
+    render(
+      <OverlayDrawer id="drawer" mountNode={mountNode} open={true}>
+        Default OverlayDrawer
+      </OverlayDrawer>,
+    );
+
+    const result = mountNode.querySelector('#drawer');
+    expect(result).toBeTruthy();
+  });
 });

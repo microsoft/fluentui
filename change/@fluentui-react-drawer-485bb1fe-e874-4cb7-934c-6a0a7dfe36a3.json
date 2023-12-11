@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: OverlayDrawer accepts mountNode in types",
+  "packageName": "@fluentui/react-drawer",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
