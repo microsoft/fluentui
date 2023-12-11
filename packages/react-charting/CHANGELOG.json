@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 11 Dec 2023 07:28:17 GMT",
+      "tag": "@fluentui/react-charting_v5.19.4",
+      "version": "5.19.4",
+      "comments": {
+        "none": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "872548854fe302a49fb60bd479de95949a66a078",
+            "comment": "Added webpack config for local codepen support in react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 04 Dec 2023 07:27:00 GMT",
       "tag": "@fluentui/react-charting_v5.19.4",
       "version": "5.19.4",
