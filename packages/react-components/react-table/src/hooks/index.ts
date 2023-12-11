@@ -7,3 +7,4 @@ export * from './useTableColumnSizing';
 export * from './useTableCompositeNavigation';
 export * from './useAdamTableCompositeNavigation';
 export * from './useAdamTableCombinedNavigation';
+export * from './useAdamTableInteractiveNavigation';

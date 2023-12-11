@@ -5,8 +5,9 @@ export {
   createTableColumn,
   useTableColumnSizing_unstable,
   useTableCompositeNavigation,
-  useAdamTableCombinedNavigation,
+  useAdamTableInteractiveNavigation,
   useAdamTableCompositeNavigation,
+  useAdamTableCombinedNavigation,
 } from './hooks';
 
 export type {

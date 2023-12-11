@@ -29,7 +29,6 @@ export const getFirstActiveElementInVerticalNavigation = (originCell: HTMLElemen
     }
     cell = cell.previousElementSibling as HTMLElement;
   }
-  // alert(columnNumber);
   let targetCell = targetRow.querySelector('[role="gridcell"]') as HTMLElement;
   for (let i = 1; i < columnNumber; i++) {
     if (targetCell.nextElementSibling) {
@@ -37,6 +36,30 @@ export const getFirstActiveElementInVerticalNavigation = (originCell: HTMLElemen
     }
   }
   const firstActiveElement = targetCell.querySelector('button');
-  // alert(firstActiveElement?.innerText);
   return firstActiveElement;
+};
+
+export const getNextOrPrevFocusable = (
+  row: HTMLElement,
+  current: HTMLElement | undefined,
+  direction: 'next' | 'prev',
+): HTMLElement | undefined => {
+  const focusables = Array.from(row.querySelectorAll('a, button, input, select, [tabindex="0"]')).filter(focusable => {
+    return !focusable.getAttribute('data-tabster-dummy');
+  });
+  if (!current && focusables.length >= 1) {
+    return focusables[0] as HTMLElement;
+  }
+  let result;
+  focusables.forEach((focusable, index) => {
+    if (focusable === current) {
+      if (direction === 'next' && index + 1 < focusables.length) {
+        result = focusables[index + 1];
+      } else if (direction === 'prev' && index > 0) {
+        result = focusables[index - 1];
+      }
+      return;
+    }
+  });
+  return result;
 };

@@ -1,13 +1,18 @@
 import * as React from 'react';
 import { RecentCategory, RecentMeetings } from './TreeGridBase';
-import { getNearestGridCellAncestorOrSelf, getNearestRowAncestor } from './../TreeGridUtils';
+import {
+  getNearestGridCellAncestorOrSelf,
+  getNearestRowAncestor,
+  getFirstCellChild,
+  getNextOrPrevFocusable,
+} from './../TreeGridUtils';
 
 import {
   Table,
   TableBody,
   TableRow,
   TableCell,
-  useAdamTableCompositeNavigation,
+  useAdamTableInteractiveNavigation,
   Button,
   Input,
   Field,
@@ -25,7 +30,7 @@ export const TreeGridWithInputsRenderer: React.FC<TreeGridWithInputsRendererProp
   const { targetDocument } = useFluent();
   const [recentCategoriesState, setRecentCategoryState] = React.useState(recentCategories);
 
-  const { tableTabsterAttribute, tableRowTabsterAttribute, onTableKeyDown } = useAdamTableCompositeNavigation();
+  const { tableTabsterAttribute, tableRowTabsterAttribute, onTableKeyDown } = useAdamTableInteractiveNavigation();
 
   const getCategoryById = React.useCallback(
     (id: string) => {
@@ -64,14 +69,28 @@ export const TreeGridWithInputsRenderer: React.FC<TreeGridWithInputsRendererProp
         const target = event.target as HTMLElement;
         const gridCell = getNearestGridCellAncestorOrSelf(target);
         if (gridCell) {
+          const row = getNearestRowAncestor(gridCell);
           if (event.key === 'ArrowLeft') {
-            const row = getNearestRowAncestor(gridCell);
-            row.focus();
+            const isFirstCellChild = gridCell === getFirstCellChild(row);
+            if (isFirstCellChild) {
+              row.focus();
+            } else {
+              const prevFocusable = getNextOrPrevFocusable(row, target, 'prev');
+              prevFocusable?.focus();
+            }
+          } else if (event.key === 'ArrowRight') {
+            const nextFocusable = getNextOrPrevFocusable(row, target, 'next');
+            nextFocusable?.focus();
           }
         } else if (target.role === 'row') {
           const selectedRowId = target.id;
           const category = getCategoryById(selectedRowId);
           const level = target.getAttribute('aria-level');
+          if (event.key === 'ArrowRight' && (!category || (category && category.expanded))) {
+            const nextFocusable = getNextOrPrevFocusable(target, undefined, 'next');
+            nextFocusable?.focus();
+            callTabsterKeyboardHandler = false;
+          }
           if (event.key === 'ArrowRight' && level === '1' && category && !category.expanded) {
             changeRecentCategoryExpandedState(category, true);
             callTabsterKeyboardHandler = false;
