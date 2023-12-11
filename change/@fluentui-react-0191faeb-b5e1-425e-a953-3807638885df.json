@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adding `edgeAxisFixed` prop to IPositionProps and ICalloutProps - this prop limits the positioning logic to edges on the same axis as the directionalHint (top/bottom vs. left/right)\"",
+  "packageName": "@fluentui/react",
+  "email": "nipope@microsoft.com",
+  "dependentChangeType": "patch"
+}
