@@ -1,4 +1,4 @@
-export type EventArgs<T> = { key: string; sheet: T };
+export type EventArgs<T> = { key: string; sheet: T; rule?: string };
 export type EventHandler<T> = (args: EventArgs<T>) => void;
 
 export class EventMap<K, V> {

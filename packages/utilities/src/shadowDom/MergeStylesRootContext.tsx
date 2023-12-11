@@ -65,7 +65,7 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
       return;
     }
 
-    const sheet = Stylesheet.getInstance();
+    const sheet = Stylesheet.getInstance(makeShadowConfig(GLOBAL_STYLESHEET_KEY, false, win));
 
     sheet.onAddConstructableStyleSheet(sheetHandler);
 

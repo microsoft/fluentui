@@ -42,4 +42,8 @@ export type { ObjectOnly } from './ObjectOnly';
 export { GLOBAL_STYLESHEET_KEY, makeShadowConfig } from './shadowConfig';
 export type { ShadowConfig } from './shadowConfig';
 
+export { cloneCSSStyleSheet } from './cloneCSSStyleSheet';
+
+export type { EventHandler } from './EventMap';
+
 import './version';
