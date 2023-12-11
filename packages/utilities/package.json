@@ -43,6 +43,7 @@
     "@fluentui/dom-utilities": "^2.2.14",
     "@fluentui/merge-styles": "^8.5.15",
     "@fluentui/set-version": "^8.2.14",
+    "@fluentui/react-window-provider": "^2.2.16",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

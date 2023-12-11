@@ -4,6 +4,9 @@
 
 ```ts
 
+// @public (undocumented)
+export const cloneCSSStyleSheet: (srcSheet: CSSStyleSheet, targetSheet: CSSStyleSheet) => CSSStyleSheet;
+
 // @public
 export function concatStyleSets<TStyleSet>(styleSet: TStyleSet | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet>>;
 
@@ -32,6 +35,11 @@ export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSe
 export type DeepPartial<T> = {
     [P in keyof T]?: T[P] extends (infer U)[] ? DeepPartial<U>[] : T[P] extends object ? DeepPartial<T[P]> : T[P];
 };
+
+// Warning: (ae-forgotten-export) The symbol "EventArgs" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type EventHandler<T> = (args: EventArgs<T>) => void;
 
 // @public
 export function fontFace(font: IFontFace): void;
@@ -452,8 +460,6 @@ export interface IStyleSheetConfig {
         [key: string]: string;
     };
     cspSettings?: ICSPSettings;
-    // (undocumented)
-    currentStylesheetKey?: string;
     defaultPrefix?: string;
     injectionMode?: InjectionMode;
     // (undocumented)
@@ -461,9 +467,11 @@ export interface IStyleSheetConfig {
     namespace?: string;
     // @deprecated
     onInsertRule?: (rule: string) => void;
-    // (undocumented)
-    ownerWindow?: Window;
     rtl?: boolean;
+    // (undocumented)
+    stylesheetKey?: string;
+    // (undocumented)
+    window?: Window;
 }
 
 // @public
@@ -566,12 +574,16 @@ export class Stylesheet {
     insertedRulesFromClassName(className: string): string[] | undefined;
     insertRule(rule: string, preserve?: boolean): void;
     // (undocumented)
+    makeCSSStyleSheet(win: Window): CSSStyleSheet;
+    // (undocumented)
     offAddConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void;
-    // Warning: (ae-forgotten-export) The symbol "EventHandler" needs to be exported by the entry point index.d.ts
-    //
+    // (undocumented)
+    offInsertRuleIntoConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void;
     // (undocumented)
     onAddConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void;
     onInsertRule(callback: Function): Function;
+    // (undocumented)
+    onInsertRuleIntoConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void;
     onReset(callback: Function): Function;
     // (undocumented)
     projectStylesToWindow(targetWindow: Window): void;
@@ -580,6 +592,8 @@ export class Stylesheet {
     resetKeys(): void;
     serialize(): string;
     setConfig(config?: IStyleSheetConfig): void;
+    supportsConstructableStylesheets(): boolean;
+    supportsModifyingAdoptedStyleSheets(): boolean;
 }
 
 // Warnings were encountered during analysis:
