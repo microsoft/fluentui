@@ -158,6 +158,8 @@ describe('createNumericXAxis', () => {
     matchResult(convertXAxisResultToJson(result));
   });
 
+  // Tick size determines the length of the tick marks on the axis line.
+  // Tick padding refers to the space between a tick mark and its corresponding tick label.
   it('should render the x-axis labels correctly for specific tick size and padding values', () => {
     const xAxisParams = createXAxisParams({ xAxistickSize: 10, tickPadding: 5 });
     utils.createNumericXAxis(xAxisParams, utils.ChartTypes.VerticalBarChart);
@@ -203,9 +205,10 @@ describe('createDateXAxis', () => {
 
   it('should create the x-axis labels correctly when customDateTimeFormatter is provided', () => {
     const xAxisParams = createXAxisParams({ domainNRangeValues });
-    const result = utils.createDateXAxis(xAxisParams, {}, undefined, undefined, undefined, (dateTime: Date) =>
-      dateTime.toDateString(),
-    );
+    const customDateTimeFormatter = (dateTime: Date) => {
+      return `${dateTime.getMonth() + 1}/${dateTime.getFullYear()}`;
+    };
+    const result = utils.createDateXAxis(xAxisParams, {}, undefined, undefined, undefined, customDateTimeFormatter);
     matchResult(convertXAxisResultToJson(result));
   });
 
@@ -216,30 +219,7 @@ describe('createDateXAxis', () => {
   });
 
   it('should create the x-axis labels correctly when timeFormatLocale is provided', () => {
-    // Fetched from https://unpkg.com/d3-time-format@2/locale/it-IT.json
-    const timeFormatLocale: d3TimeLocaleDefinition = {
-      dateTime: '%A %e %B %Y, %X',
-      date: '%d/%m/%Y',
-      time: '%H:%M:%S',
-      periods: ['AM', 'PM'],
-      days: ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'],
-      shortDays: ['Dom', 'Lun', 'Mar', 'Mer', 'Gio', 'Ven', 'Sab'],
-      months: [
-        'Gennaio',
-        'Febbraio',
-        'Marzo',
-        'Aprile',
-        'Maggio',
-        'Giugno',
-        'Luglio',
-        'Agosto',
-        'Settembre',
-        'Ottobre',
-        'Novembre',
-        'Dicembre',
-      ],
-      shortMonths: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
-    };
+    const timeFormatLocale: d3TimeLocaleDefinition = require('d3-time-format/locale/it-IT.json');
     const xAxisParams = createXAxisParams({ domainNRangeValues });
     const result = utils.createDateXAxis(xAxisParams, {}, undefined, undefined, timeFormatLocale);
     matchResult(convertXAxisResultToJson(result));
@@ -276,12 +256,16 @@ describe('createStringXAxis', () => {
     expect(xAxisParams.xAxisElement).toMatchSnapshot();
   });
 
+  // Padding is a convenience method for setting the inner and outer padding to the same value.
   it('should create the x-axis labels correctly for specific padding values', () => {
     const xAxisParams = createXAxisParams({ xAxisPadding: 0.5 });
     const result = utils.createStringXAxis(xAxisParams, {}, dataset);
     matchResult(convertXAxisResultToJson(result, true));
   });
 
+  // Inner padding specifies the percentage of the range to reserve for blank space between bands (bars).
+  // Outer padding specifies the percentage of the range to reserve for blank space
+  // before the first band (bar) and after the last band (bar).
   it('should create the x-axis labels correctly for specific inner and outer padding values', () => {
     const xAxisParams = createXAxisParams({ xAxisInnerPadding: 0.5, xAxisOuterPadding: 1 / 3 });
     const result = utils.createStringXAxis(xAxisParams, {}, dataset);

@@ -190,19 +190,19 @@ exports[`createDateXAxis should create the x-axis labels correctly when customDa
 Array [
   Array [
     0,
-    "Thu Jul 01 2021",
+    "7/2021",
   ],
   Array [
     25.274725274725274,
-    "Fri Oct 01 2021",
+    "10/2021",
   ],
   Array [
     50.54945054945055,
-    "Sat Jan 01 2022",
+    "1/2022",
   ],
   Array [
     75.27472527472527,
-    "Fri Apr 01 2022",
+    "4/2022",
   ],
 ]
 `;
