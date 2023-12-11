@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { EventHandler, NavProps, OnNavGroupSelectData } from './Nav/Nav.types';
-import type { NavGroupValue } from './NavGroup/NavGroup.types';
+import type { NavCategoryItemValue } from './NavCategoryItem/NavCategoryItem.types';
 
 export type NavContextValue = Pick<NavProps, 'onNavGroupSelect' | 'selectedValue' | 'reserveSelectedNavGroupSpace'> & {
   /** A callback to allow a navGroup to register itself with the navGroup list. */
@@ -16,8 +16,8 @@ export type NavContextValue = Pick<NavProps, 'onNavGroupSelect' | 'selectedValue
    * Gets the registered navGroup data along with current and previous selected values.
    */
   getRegisteredNavGroups: () => {
-    selectedValue?: NavGroupValue;
-    previousSelectedValue?: NavGroupValue;
+    selectedValue?: NavCategoryItemValue;
+    previousSelectedValue?: NavCategoryItemValue;
     registeredNavGroups: Record<string, NavGroupRegisterData>;
   };
 };
@@ -36,7 +36,7 @@ export type NavGroupRegisterData = {
   /**
    * The value of the navGroup.
    */
-  value: NavGroupValue;
+  value: NavCategoryItemValue;
 
   /**
    * The reference to the navGroup HTML element.

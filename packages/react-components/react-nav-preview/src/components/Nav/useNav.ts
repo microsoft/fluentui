@@ -11,7 +11,7 @@ import type { EventHandler, NavProps, NavState, OnNavGroupSelectData } from './N
 // todo - light this up
 // import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import type { NavGroupRegisterData } from '../NavContext.types';
-import { NavGroupValue } from '../NavGroup/NavGroup.types';
+import { NavCategoryItemValue } from '../NavCategoryItem/NavCategoryItem.types';
 
 /**
  * Create the state required to render Nav.
@@ -37,8 +37,8 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
   // this could cause the previous to move to current in the case where the navGroup list re-renders.
   // these refs avoid getRegisteredNavGroups changing when selectedValue changes and causing
   // renders for navGroups that have not changed.
-  const currentSelectedValue = React.useRef<NavGroupValue | undefined>(undefined);
-  const previousSelectedValue = React.useRef<NavGroupValue | undefined>(undefined);
+  const currentSelectedValue = React.useRef<NavCategoryItemValue | undefined>(undefined);
+  const previousSelectedValue = React.useRef<NavCategoryItemValue | undefined>(undefined);
 
   React.useEffect(() => {
     previousSelectedValue.current = currentSelectedValue.current;
