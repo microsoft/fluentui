@@ -4269,6 +4269,23 @@ Array [
 ]
 `;
 
+exports[`prepareDatapoints should return fractional data points when interval is less than 1 1`] = `
+Array [
+  0,
+  0.6666666666666666,
+  1.3333333333333333,
+  2,
+]
+`;
+
+exports[`prepareDatapoints should return integer data points when dataset only consists of integers 1`] = `
+Array [
+  0,
+  1,
+  2,
+]
+`;
+
 exports[`rotateXAxisLabels should rotate x-axis labels to 45 degrees anticlockwise 1`] = `
 <g
   fill="none"
