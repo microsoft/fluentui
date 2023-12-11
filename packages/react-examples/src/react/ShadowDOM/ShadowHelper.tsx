@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FocusRectsProvider, MergeStylesRootProvider, MergeStylesShadowRootProvider } from '@fluentui/react';
+import { MergeStylesRootProvider, MergeStylesShadowRootProvider } from '@fluentui/react';
 import root from 'react-shadow';
 
 export type ShadowProps = {
@@ -21,13 +21,9 @@ export const Shadow: React.FC<ShadowProps> = ({ window, children }) => {
 
   return (
     <MergeStylesRootProvider window={window}>
-      <FocusRectsProvider providerRef={ref}>
-        <root.div className="shadow-root" delegatesFocus ref={ref}>
-          <MergeStylesShadowRootProvider shadowRoot={shadowRootEl?.shadowRoot}>
-            {children}
-          </MergeStylesShadowRootProvider>
-        </root.div>
-      </FocusRectsProvider>
+      <root.div className="shadow-root" delegatesFocus ref={ref}>
+        <MergeStylesShadowRootProvider shadowRoot={shadowRootEl?.shadowRoot}>{children}</MergeStylesShadowRootProvider>
+      </root.div>
     </MergeStylesRootProvider>
   );
 };
