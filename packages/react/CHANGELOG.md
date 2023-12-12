@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 16 Nov 2023 07:26:50 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Dec 2023 07:27:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.113.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.113.0)
+
+Tue, 12 Dec 2023 07:27:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.112.9..@fluentui/react_v8.113.0)
+
+### Minor changes
+
+- fix(Callout): Update useMaxHeight hook for callout to use target top as bottom bound when aligned to top edge; account for scroll resizing when picking the best edge for positioning alignment ([PR #29766](https://github.com/microsoft/fluentui/pull/29766) by nipope@microsoft.com)
 
 ## [8.112.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.9)
 

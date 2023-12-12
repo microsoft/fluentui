@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 12 Dec 2023 07:27:25 GMT",
+      "tag": "@fluentui/react_v8.113.0",
+      "version": "8.113.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "nipope@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "56a76c98ec1f66ccf95658ba2bd4bae567c335a9",
+            "comment": "fix(Callout): Update useMaxHeight hook for callout to use target top as bottom bound when aligned to top edge; account for scroll resizing when picking the best edge for positioning alignment"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 16 Nov 2023 07:26:50 GMT",
       "tag": "@fluentui/react_v8.112.9",
       "version": "8.112.9",
