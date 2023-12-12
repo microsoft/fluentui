@@ -1,4 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { NavItemValue } from '../NavContext.types';
 
 export type NavCategoryItemSlots = {
   /**
@@ -20,18 +21,13 @@ export type NavCategoryItemSlots = {
 };
 
 /**
- * Any value that identifies a specific CategoryItem.
- */
-export type NavCategoryItemValue = unknown;
-
-/**
  * navCategoryItem Props
  */
 export type NavCategoryItemProps = ComponentProps<Partial<NavCategoryItemSlots>> & {
   /**
    * The value that identifies this navCategoryItem when selected.
    */
-  value: NavCategoryItemValue;
+  value: NavItemValue;
 };
 
 /**

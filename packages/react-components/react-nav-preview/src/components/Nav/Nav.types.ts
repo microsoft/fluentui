@@ -1,7 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { NavContextValue } from '../NavContext.types';
-import type { NavCategoryItemValue } from '../NavCategoryItem/NavCategoryItem.types';
+import type { NavContextValue, NavItemValue } from '../NavContext.types';
 
 export type NavSlots = {
   root: NonNullable<Slot<'div'>>;
@@ -25,7 +24,7 @@ export type NavProps = ComponentProps<NavSlots> & {
    * Typically useful when the selectedValue is uncontrolled.
    *  Mutually exclusive with selectedValue.
    */
-  defaultSelectedValue?: NavCategoryItemValue;
+  defaultSelectedValue?: NavItemValue;
 
   /**
    * Raised when a navItem is selected.
@@ -36,14 +35,14 @@ export type NavProps = ComponentProps<NavSlots> & {
    * The value of the currently selected navItem.
    * Mutually exclusive with defaultSelectedValue.
    */
-  selectedValue?: NavCategoryItemValue;
+  selectedValue?: NavItemValue;
 };
 
 export type OnNavItemSelectData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
   /**
    * The value of the selected navItem.
    */
-  value: NavCategoryItemValue;
+  value: NavItemValue;
 };
 
 /**

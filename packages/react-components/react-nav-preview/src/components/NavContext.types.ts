@@ -1,6 +1,5 @@
 import * as React from 'react';
 import type { EventHandler, NavProps, OnNavItemSelectData } from './Nav/Nav.types';
-import type { NavCategoryItemValue } from './NavCategoryItem/NavCategoryItem.types';
 
 export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue' | 'reserveSelectedNavItemSpace'> & {
   /** A callback to allow a navItem to register itself with the navItem list. */
@@ -16,11 +15,16 @@ export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue'
    * Gets the registered navItem data along with current and previous selected values.
    */
   getRegisteredNavItems: () => {
-    selectedValue?: NavCategoryItemValue;
-    previousSelectedValue?: NavCategoryItemValue;
+    selectedValue?: NavItemValue;
+    previousSelectedValue?: NavItemValue;
     registeredNavItems: Record<string, NavItemRegisterData>;
   };
 };
+
+/**
+ * Any value that identifies a specific Item.
+ */
+export type NavItemValue = unknown;
 
 /**
  * Context values used in rendering navItemList.
@@ -36,7 +40,7 @@ export type NavItemRegisterData = {
   /**
    * The value of the navItem.
    */
-  value: NavCategoryItemValue;
+  value: NavItemValue;
 
   /**
    * The reference to the navItem HTML element.

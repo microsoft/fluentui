@@ -11,7 +11,7 @@ export {
 export type {
   NavCategoryItemProps,
   NavCategoryItemSlots,
-  NavCategoryItemValue,
+  NavItemValue as NavCategoryItemValue,
   NavCategoryItemState,
 } from './components/NavCategoryItem/index';
 export { NavProvider, useNavContext_unstable } from './components/NavContext';
