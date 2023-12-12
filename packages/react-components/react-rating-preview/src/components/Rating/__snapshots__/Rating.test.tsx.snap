@@ -5,7 +5,7 @@ exports[`Rating renders a default state 1`] = `
   <div
     class="fui-Rating"
   >
-    Default Rating
+    Default RatingItem
   </div>
 </div>
 `;
