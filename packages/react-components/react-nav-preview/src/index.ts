@@ -11,11 +11,11 @@ export {
 export type {
   NavCategoryItemProps,
   NavCategoryItemSlots,
-  NavItemValue as NavCategoryItemValue,
   NavCategoryItemState,
 } from './components/NavCategoryItem/index';
 export { NavProvider, useNavContext_unstable } from './components/NavContext';
 export type {
+  NavItemValue,
   NavContextValue,
   NavContextValues,
   NavItemRegisterData,
