@@ -3,7 +3,7 @@ import { AreaChart } from '../src/components/AreaChart/index';
 
 import { getById, testWithoutWait } from '../src/utilities/TestUtility.test';
 import { DarkTheme } from '@fluentui/theme-samples';
-import { env } from './configUT';
+const env = require('../config/tests');
 
 const runTest = env === 'TEST' ? describe : describe.skip;
 
@@ -477,19 +477,6 @@ runTest('_getCircleRadius', () => {
 runTest('_addDefaultColors', () => {
   testWithoutWait(
     'Should return an array with the same length as the input array',
-    AreaChart,
-    { data: chartDataWithoutDefaultColor },
-    container => {
-      const points = getById(container, /circle/i);
-      expect(points).toHaveLength(10);
-      points.forEach(point => {
-        expect(point).toHaveAttribute('fill');
-      });
-    },
-  );
-
-  testWithoutWait(
-    'Should add default colors to each item in the input array',
     AreaChart,
     { data: chartDataWithoutDefaultColor },
     container => {

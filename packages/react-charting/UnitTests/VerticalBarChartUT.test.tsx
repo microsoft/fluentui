@@ -7,7 +7,7 @@ import { VerticalBarChartBase } from '../src/components/VerticalBarChart/Vertica
 import { VerticalBarChart } from '../src/components/VerticalBarChart/VerticalBarChart';
 import { max as d3Max } from 'd3-array';
 import { IVerticalBarChartDataPoint } from '../src/index';
-import { env } from './configUT';
+const env = require('../config/tests');
 
 const runTest = env === 'TEST' ? describe : describe.skip;
 
@@ -42,7 +42,7 @@ runTest('VerticalBarChart unit tests', () => {
       expect(instance).toBeDefined();
       instance._xAxisLabels = stringPoints!.map((point: IVerticalBarChartDataPoint) => point.x as string);
       instance._getMargins(margin);
-      const margins = instance._getDomainMargins(1000);
+      const margins = instance._getDomainMargins(width);
       expect(margins).toBeDefined();
       expect(margins.left).toEqual(468);
       expect(margins.right).toEqual(468);
@@ -56,7 +56,7 @@ runTest('VerticalBarChart unit tests', () => {
         top: 10,
         bottom: 10,
       };
-      const width = 1000;
+      const width = 10;
       const instance = new VerticalBarChartBase({
         data: stringPoints,
         width: width,
@@ -65,7 +65,7 @@ runTest('VerticalBarChart unit tests', () => {
       expect(instance).toBeDefined();
       instance._getMargins(margin);
       instance._xAxisLabels = stringPoints!.map((point: IVerticalBarChartDataPoint) => point.x as string);
-      const margins = instance._getDomainMargins();
+      const margins = instance._getDomainMargins(width);
       expect(margins).toBeDefined();
       expect(margins.left).toEqual(18);
       expect(margins.right).toEqual(18);

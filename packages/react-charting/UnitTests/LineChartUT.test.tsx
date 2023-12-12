@@ -5,7 +5,7 @@ import { IChartProps, ILineChartGap } from '../src/index';
 import { LineChartBase } from '../src/components/LineChart/LineChart.base';
 import { getById, testWithWait, testWithoutWait } from '../src/utilities/TestUtility.test';
 import { DarkTheme } from '@fluentui/theme-samples';
-import { env } from './configUT';
+const env = require('../config/tests');
 
 const runTest = env === 'TEST' ? describe : describe.skip;
 
@@ -230,7 +230,7 @@ const data: IChartProps = {
 
 runTest('Unit tests for _getPath function', () => {
   testWithoutWait(
-    'Should return correct path when multiple shapes for points are not allowed and widthRatio and w equal to 1',
+    'Should return correct path when multiple point shapes are not allowed, widthRatio and width of shape equal to 1',
     LineChart,
     { data: basicChartPoints, allowMultipleShapesForPoints: false, strokeWidth: 0.5 },
     container => {
@@ -257,7 +257,7 @@ runTest('Unit tests for _getPath function', () => {
   );
 
   testWithWait(
-    'Should return path on hovering on a point, multiple shapes for points not allowed, widthRatio and w equal to 1',
+    'Should return path on hovering on a point, multiple shapes are not allowed, widthRatio and width of shape equal to 1',
     LineChart,
     { data: basicChartPoints, allowMultipleShapesForPoints: false, strokeWidth: 0.5 },
     container => {
@@ -518,8 +518,11 @@ runTest('Unit tests for __injectIndexPropertyInLineChartData function', () => {
     const result = instance._injectIndexPropertyInLineChartData(simpleChartPoints.lineChartData);
     expect(result).toHaveLength(3);
     expect(result[0].color).toBeDefined();
+    expect(result[0].color).toEqual('#637cef');
     expect(result[1].color).toBeDefined();
+    expect(result[1].color).toEqual('#e3008c');
     expect(result[2].color).toBeDefined();
+    expect(result[2].color).toEqual('#2aa0a4');
   });
 
   test('Should generate a color for each item in lineChartData with tokens when color is defined', () => {
@@ -527,7 +530,10 @@ runTest('Unit tests for __injectIndexPropertyInLineChartData function', () => {
     const result = instance._injectIndexPropertyInLineChartData(basicChartPoints.lineChartData);
     expect(result).toHaveLength(3);
     expect(result[0].color).toBeDefined();
+    expect(result[0].color).toEqual('red');
     expect(result[1].color).toBeDefined();
+    expect(result[1].color).toEqual('green');
     expect(result[2].color).toBeDefined();
+    expect(result[2].color).toEqual('yellow');
   });
 });
