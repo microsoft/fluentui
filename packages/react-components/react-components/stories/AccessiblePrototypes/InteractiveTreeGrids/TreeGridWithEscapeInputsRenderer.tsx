@@ -19,16 +19,17 @@ import {
   useFluent,
 } from '@fluentui/react-components';
 
-interface TreeGridWithInputsRendererProps {
+interface TreeGridWithEscapeInputsRendererProps {
   recentCategories: RecentCategory[];
   recentMeetings: RecentMeetings;
 }
-export const TreeGridWithInputsRenderer: React.FC<TreeGridWithInputsRendererProps> = ({
+export const TreeGridWithEscapeInputsRenderer: React.FC<TreeGridWithEscapeInputsRendererProps> = ({
   recentCategories,
   recentMeetings,
 }) => {
   const { targetDocument } = useFluent();
   const [recentCategoriesState, setRecentCategoryState] = React.useState(recentCategories);
+  const [isNavigationMode, setIsNavigationMode] = React.useState(false);
 
   const { tableTabsterAttribute, tableRowTabsterAttribute, onTableKeyDown } = useAdamTableInteractiveNavigation();
 
@@ -65,8 +66,23 @@ export const TreeGridWithInputsRenderer: React.FC<TreeGridWithInputsRendererProp
     (event: React.KeyboardEvent) => {
       let callTabsterKeyboardHandler = true;
       const isModifierDown = event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
-      if (!isModifierDown) {
-        const target = event.target as HTMLElement;
+      const target = event.target as HTMLElement;
+      if (target.tagName === 'INPUT' || target.role === 'textbox') {
+        if (isNavigationMode) {
+          const row = getNearestRowAncestor(target);
+          if (event.key === 'ArrowRight') {
+            const nextFocusable = getNextOrPrevFocusable(row, target, 'next');
+            nextFocusable?.focus();
+            setIsNavigationMode(false);
+          } else if (event.key === 'ArrowLeft') {
+            const prevFocusable = getNextOrPrevFocusable(row, target, 'prev');
+            prevFocusable?.focus();
+            setIsNavigationMode(false);
+          }
+        } else if (event.key === 'Escape') {
+          setIsNavigationMode(true);
+        }
+      } else if (!isModifierDown) {
         const gridCell = getNearestGridCellAncestorOrSelf(target);
         if (gridCell) {
           const row = getNearestRowAncestor(gridCell);
@@ -114,6 +130,7 @@ export const TreeGridWithInputsRenderer: React.FC<TreeGridWithInputsRendererProp
       }
     },
     [
+      isNavigationMode,
       changeRecentCategoryExpandedState,
       getCategoryById,
       recentCategories,

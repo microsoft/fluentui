@@ -19,7 +19,7 @@ export function useAdamTableInteractiveNavigation(): {
   const gridAttr = useArrowNavigationGroup({ axis: 'grid', memorizeCurrent: true });
   const groupperAttr = useFocusableGroup({
     tabBehavior: 'limited-trap-focus',
-    ignoreDefaultKeydown: { Enter: true, ArrowLeft: true, ArrowRight: true },
+    ignoreDefaultKeydown: { Enter: true, ArrowLeft: true, ArrowRight: true, Escape: true },
   });
   const { findFirstFocusable } = useFocusFinders();
   const { targetDocument } = useFluent();

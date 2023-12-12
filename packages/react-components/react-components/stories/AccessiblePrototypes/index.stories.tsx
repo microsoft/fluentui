@@ -1,4 +1,4 @@
-export { TreeGridWithInputs } from './InteractiveTreeGrids/TreeGridWithInputs.stories';
+export { TreeGridWithEscapeInputs } from './InteractiveTreeGrids/TreeGridWithEscapeInputs.stories';
 
 export { UsingGridsActiveOnlyEntireRowNarration } from './Meet/AccessibleMeetUsingGridsActiveOnlyEntireRowNarration.stories';
 export { UsingGridsActiveOnlyCombinedNavigation } from './Meet/AccessibleMeetUsingGridsActiveOnlyCombinedNavigation.stories';
