@@ -1128,6 +1128,7 @@ import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
 import { useColumnIdContext } from '@fluentui/react-table';
 import { useCombobox_unstable } from '@fluentui/react-combobox';
 import { useComboboxContextValues } from '@fluentui/react-combobox';
+import { useComboboxFilter } from '@fluentui/react-combobox';
 import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
 import { useCompoundButton_unstable } from '@fluentui/react-button';
 import { useCompoundButtonStyles_unstable } from '@fluentui/react-button';
@@ -3668,6 +3669,8 @@ export { useColumnIdContext }
 export { useCombobox_unstable }
 
 export { useComboboxContextValues }
+
+export { useComboboxFilter }
 
 export { useComboboxStyles_unstable }
 
