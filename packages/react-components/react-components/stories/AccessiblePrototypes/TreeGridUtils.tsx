@@ -1,3 +1,23 @@
+let narrateTimeout;
+
+export const srNarrate = (message: string, priority = 'polite') => {
+  const element = document.createElement('div');
+  element.setAttribute(
+    'style',
+    'position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;',
+  );
+  element.setAttribute('aria-live', priority);
+  document.body.appendChild(element);
+
+  narrateTimeout = setTimeout(() => {
+    element.innerText = message;
+  }, 800);
+
+  setTimeout(() => {
+    document.body.removeChild(element);
+  }, 1100);
+};
+
 export const getNearestGridCellAncestorOrSelf = (element: HTMLElement) => {
   while (element.role !== 'gridcell') {
     if (element === document.body) {

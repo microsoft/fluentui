@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { TreeGridWithEscapeInputsRenderer } from './TreeGridWithEscapeInputsRenderer';
+import { TreeGridWithEnterInputsRenderer } from './TreeGridWithEnterInputsRenderer';
 
 import { Button } from '@fluentui/react-components';
 
-type PrototypeVariant = 'escapeInputs';
+type PrototypeVariant = 'escapeInputs' | 'enterInputs';
 
 export const categoriesTitles: Record<string, string> = {
   today: 'Today',
@@ -243,9 +244,17 @@ export const TreeGridBase: React.FC<TreeGridBaseProps> = ({ variant }) => {
       <Button>Start here</Button>
 
       {variant === 'escapeInputs' && <h1>TreeGrid with Escape Inputs</h1>}
+      {variant === 'enterInputs' && <h1>TreeGrid with Enter Inputs</h1>}
 
       {variant === 'escapeInputs' && (
         <TreeGridWithEscapeInputsRenderer
+          recentCategories={recentCategoriesRef.current}
+          recentMeetings={recentMeetings}
+        />
+      )}
+
+      {variant === 'enterInputs' && (
+        <TreeGridWithEnterInputsRenderer
           recentCategories={recentCategoriesRef.current}
           recentMeetings={recentMeetings}
         />

@@ -50,11 +50,11 @@ const focusNextOrPrevRow = (currentRow: HTMLElement, event: React.KeyboardEvent)
   }
 };
 
-interface TreeGridWithEscapeInputsRendererProps {
+interface TreeGridWithEnterInputsRendererProps {
   recentCategories: RecentCategory[];
   recentMeetings: RecentMeetings;
 }
-export const TreeGridWithEscapeInputsRenderer: React.FC<TreeGridWithEscapeInputsRendererProps> = ({
+export const TreeGridWithEnterInputsRenderer: React.FC<TreeGridWithEnterInputsRendererProps> = ({
   recentCategories,
   recentMeetings,
 }) => {
