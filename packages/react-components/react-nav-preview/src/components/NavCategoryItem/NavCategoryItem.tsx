@@ -16,7 +16,7 @@ export const NavCategoryItem: ForwardRefComponent<NavCategoryItemProps> = React.
   useNavCategoryItemStyles_unstable(state);
 
   // todo: add custom style hook
-  // useCustomStyleHook_unstable('useNavGroupStyles')(state);
+  // useCustomStyleHook_unstable('useNavCategoryItemStyles')(state);
 
   return renderNavCategoryItem_unstable(state);
 });

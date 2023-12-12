@@ -1,47 +1,47 @@
 import * as React from 'react';
-import type { EventHandler, NavProps, OnNavGroupSelectData } from './Nav/Nav.types';
+import type { EventHandler, NavProps, OnNavItemSelectData } from './Nav/Nav.types';
 import type { NavCategoryItemValue } from './NavCategoryItem/NavCategoryItem.types';
 
-export type NavContextValue = Pick<NavProps, 'onNavGroupSelect' | 'selectedValue' | 'reserveSelectedNavGroupSpace'> & {
-  /** A callback to allow a navGroup to register itself with the navGroup list. */
-  onRegister: RegisterNavGroupEventHandler;
+export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue' | 'reserveSelectedNavItemSpace'> & {
+  /** A callback to allow a navItem to register itself with the navItem list. */
+  onRegister: RegisterNavItemEventHandler;
 
-  /** A callback to allow a navGroup to unregister itself with the navGroup list. */
-  onUnregister: RegisterNavGroupEventHandler;
+  /** A callback to allow a navItem to unregister itself with the navItem list. */
+  onUnregister: RegisterNavItemEventHandler;
   /**
-   * A callback to allow a navGroup to select itself when pressed.
+   * A callback to allow a navItem to select itself when pressed.
    */
-  onSelect: EventHandler<OnNavGroupSelectData>;
+  onSelect: EventHandler<OnNavItemSelectData>;
   /**
-   * Gets the registered navGroup data along with current and previous selected values.
+   * Gets the registered navItem data along with current and previous selected values.
    */
-  getRegisteredNavGroups: () => {
+  getRegisteredNavItems: () => {
     selectedValue?: NavCategoryItemValue;
     previousSelectedValue?: NavCategoryItemValue;
-    registeredNavGroups: Record<string, NavGroupRegisterData>;
+    registeredNavItems: Record<string, NavItemRegisterData>;
   };
 };
 
 /**
- * Context values used in rendering navGroupList.
+ * Context values used in rendering navItemList.
  */
 export type NavContextValues = {
   /**
-   * The context of the navGroup list available to each navGroup.
+   * The context of the navItem list available to each navItem.
    */
   nav: NavContextValue;
 };
 
-export type NavGroupRegisterData = {
+export type NavItemRegisterData = {
   /**
-   * The value of the navGroup.
+   * The value of the navItem.
    */
   value: NavCategoryItemValue;
 
   /**
-   * The reference to the navGroup HTML element.
+   * The reference to the navItem HTML element.
    */
   ref: React.RefObject<HTMLElement>;
 };
 
-export type RegisterNavGroupEventHandler = (data: NavGroupRegisterData) => void;
+export type RegisterNavItemEventHandler = (data: NavItemRegisterData) => void;

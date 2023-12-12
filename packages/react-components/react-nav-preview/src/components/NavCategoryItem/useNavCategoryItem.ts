@@ -4,13 +4,13 @@ import { useNavContext_unstable } from '../NavContext';
 import { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
 
 /**
- * Create the state required to render NavGroup.
+ * Create the state required to render NavCategoryItem.
  *
- * The returned state can be modified with hooks such as useNavGroupStyles,
- * before being passed to renderNavGroup.
+ * The returned state can be modified with hooks such as useNavCategoryItemStyles,
+ * before being passed to renderNavCategoryItem.
  *
- * @param props - props from this instance of NavGroup
- * @param ref - reference to root HTMLButtonElement of NavGroup
+ * @param props - props from this instance of NavCategoryItem
+ * @param ref - reference to root HTMLButtonElement of NavCategoryItem
  */
 export const useNavCategoryItem_unstable = (
   props: NavCategoryItemProps,

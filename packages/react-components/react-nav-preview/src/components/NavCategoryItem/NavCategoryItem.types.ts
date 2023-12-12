@@ -20,27 +20,27 @@ export type NavCategoryItemSlots = {
 };
 
 /**
- * Any value that identifies a specific navGroup.
+ * Any value that identifies a specific CategoryItem.
  */
 export type NavCategoryItemValue = unknown;
 
 /**
- * navGroup Props
+ * navCategoryItem Props
  */
 export type NavCategoryItemProps = ComponentProps<Partial<NavCategoryItemSlots>> & {
   /**
-   * The value that identifies this navGroup when selected.
+   * The value that identifies this navCategoryItem when selected.
    */
   value: NavCategoryItemValue;
 };
 
 /**
- * State used in rendering NavGroup
+ * State used in rendering NavCategoryItem
  */
 export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> &
   Pick<NavCategoryItemProps, 'value'> & {
     /**
-     * If this navGroup is selected
+     * If this navCategoryItem is selected
      */
     selected: boolean;
   };
