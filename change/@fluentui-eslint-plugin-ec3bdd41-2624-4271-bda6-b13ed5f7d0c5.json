@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: disallow `window` and `document` access for @fluentui/react-components",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
