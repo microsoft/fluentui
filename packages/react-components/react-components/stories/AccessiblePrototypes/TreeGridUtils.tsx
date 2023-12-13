@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-let narrateTimeout;
-
 export const srNarrate = (message: string, priority = 'polite') => {
   const element = document.createElement('div');
   element.setAttribute(
@@ -11,7 +9,7 @@ export const srNarrate = (message: string, priority = 'polite') => {
   element.setAttribute('aria-live', priority);
   document.body.appendChild(element);
 
-  narrateTimeout = setTimeout(() => {
+  setTimeout(() => {
     element.innerText = message;
   }, 800);
 
@@ -66,9 +64,7 @@ export const getNextOrPrevFocusable = (
   current: HTMLElement | undefined,
   direction: 'next' | 'prev',
 ): HTMLElement | undefined => {
-  const focusables = Array.from(row.querySelectorAll('a, button, input, select, [tabindex="0"]')).filter(focusable => {
-    return !focusable.getAttribute('data-tabster-dummy');
-  });
+  const focusables = row.querySelectorAll('a, button, input, select');
   if (!current && focusables.length >= 1) {
     return focusables[0] as HTMLElement;
   }
