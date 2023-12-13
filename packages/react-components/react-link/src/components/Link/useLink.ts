@@ -20,10 +20,10 @@ export const useLink_unstable = (
 
   // Casting is required here as `as` prop would break the union between `a`, `button` and `span` types
   const propsWithAssignedAs = {
-    ...props,
-    as: elementType,
     role: elementType === 'span' ? 'button' : undefined,
     type: elementType === 'button' ? 'button' : undefined,
+    ...props,
+    as: elementType,
   } as LinkProps;
 
   const state: LinkState = {
