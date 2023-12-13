@@ -8,7 +8,6 @@ import {
   getNextOrPrevFocusable,
 } from './../TreeGridUtils';
 
-// import { useAnnounce_unstable } from '@fluentui/react-shared-contexts';
 import {
   Table,
   TableBody,
@@ -59,7 +58,6 @@ export const TreeGridWithEscapeInputsRenderer: React.FC<TreeGridWithEscapeInputs
   recentMeetings,
 }) => {
   const { targetDocument } = useFluent();
-  // const { announce } = useAnnounce_unstable();
 
   const [recentCategoriesState, setRecentCategoryState] = React.useState(recentCategories);
   const [isNavigationMode, setIsNavigationMode] = React.useState(false);
@@ -89,7 +87,6 @@ export const TreeGridWithEscapeInputsRenderer: React.FC<TreeGridWithEscapeInputs
     if ((element.tagName === 'INPUT' && element.getAttribute('type') === 'text') || element.role === 'textbox') {
       const message = 'Press Escape to cancel editing, then navigate with arrow keys';
       srNarrate(message);
-      // announce(message, { polite: true } );
     }
   }, []);
 
