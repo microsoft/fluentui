@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Style changes to handle UI bug in Safari on MacOS",
+  "packageName": "@fluentui/web-components",
+  "email": "harankin@microsoft.com",
+  "dependentChangeType": "patch"
+}

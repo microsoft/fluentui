@@ -17,6 +17,7 @@ import {
   lineHeightBase300,
   spacingHorizontalM,
   spacingHorizontalMNudge,
+  strokeWidthThicker,
 } from '../theme/design-tokens.js';
 
 export const styles = css`
@@ -61,6 +62,7 @@ export const styles = css`
     background-color: ${colorCompoundBrandStroke};
     border-radius: ${borderRadiusCircular};
     content: '';
+    height: ${strokeWidthThicker};
     inset: 0;
     position: absolute;
     z-index: 2;
@@ -71,6 +73,7 @@ export const styles = css`
     border-radius: ${borderRadiusCircular};
     content: '';
     inset: 0;
+    height: ${strokeWidthThicker};
     position: absolute;
     z-index: 1;
   }
