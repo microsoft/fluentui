@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: generate ES5 code to make v8 work in ES5 only browsers",
+  "packageName": "@fluentui/react-portal-compat-context",
+  "email": "wfwf1997@gmail.com",
+  "dependentChangeType": "patch"
+}
