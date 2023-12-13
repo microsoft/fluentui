@@ -15,13 +15,16 @@ import {
   colorNeutralStrokeAccessiblePressed,
   colorStrokeFocus1,
   colorStrokeFocus2,
+  colorTransparentStroke,
   fontFamilyBase,
   fontSizeBase300,
   fontWeightRegular,
   lineHeightBase300,
+  shadow4,
   spacingHorizontalS,
   spacingHorizontalXS,
   spacingVerticalS,
+  strokeWidthThick,
 } from '../theme/design-tokens.js';
 
 /** Radio styles
@@ -86,8 +89,8 @@ export const styles = css`
   }
   :host(:focus-visible) {
     border-radius: ${borderRadiusSmall};
-    box-shadow: 0 0 0 3px ${colorStrokeFocus2};
-    outline: 1px solid ${colorStrokeFocus1};
+    outline: ${strokeWidthThick} solid ${colorTransparentStroke};
+    box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
   }
   :host(:hover) .control {
     border-color: ${colorNeutralStrokeAccessibleHover};
