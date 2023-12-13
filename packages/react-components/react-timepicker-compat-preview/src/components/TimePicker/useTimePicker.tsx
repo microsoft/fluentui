@@ -98,6 +98,7 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
 
   const baseState = useCombobox_unstable(
     {
+      autoComplete: 'off',
       ...rest,
       selectedOptions,
       onOptionSelect: handleOptionSelect,
