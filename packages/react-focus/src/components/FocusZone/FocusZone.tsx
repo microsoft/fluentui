@@ -59,12 +59,14 @@ function raiseClickFromKeyboardEvent(target: Element, ev?: React.KeyboardEvent<H
       cancelable: ev?.cancelable,
     });
   } else {
+    // eslint-disable-next-line no-restricted-globals
     event = document.createEvent('MouseEvents');
     // eslint-disable-next-line deprecation/deprecation
     event.initMouseEvent(
       'click',
       ev ? ev.bubbles : false,
       ev ? ev.cancelable : false,
+      // eslint-disable-next-line no-restricted-globals
       window, // not using getWindow() since this can only be run client side
       0, // detail
       0, // screen x

@@ -382,12 +382,13 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
  *
  * @public
  */
-export function isElementVisibleAndNotHidden(element: HTMLElement | undefined | null): boolean {
+export function isElementVisibleAndNotHidden(element: HTMLElement | undefined | null, win?: Window): boolean {
+  const theWin = win ?? getWindow()!;
   return (
     !!element &&
     isElementVisible(element) &&
     !element.hidden &&
-    window.getComputedStyle(element).visibility !== 'hidden'
+    theWin.getComputedStyle(element).visibility !== 'hidden'
   );
 }
 
@@ -456,8 +457,8 @@ export function isElementFocusSubZone(element?: HTMLElement): boolean {
  * @public
  */
 export function doesElementContainFocus(element: HTMLElement): boolean {
-  let document = getDocument(element);
-  let currentActiveElement: HTMLElement | undefined = document && (document.activeElement as HTMLElement);
+  let doc = getDocument(element);
+  let currentActiveElement: HTMLElement | undefined = doc && (doc.activeElement as HTMLElement);
   if (currentActiveElement && elementContains(element, currentActiveElement)) {
     return true;
   }
@@ -473,8 +474,10 @@ export function doesElementContainFocus(element: HTMLElement): boolean {
 export function shouldWrapFocus(
   element: HTMLElement,
   noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap',
+  doc?: Document,
 ): boolean {
-  return elementContainsAttribute(element, noWrapDataAttribute) === 'true' ? false : true;
+  const theDoc = doc ?? getDocument()!;
+  return elementContainsAttribute(element, noWrapDataAttribute, theDoc) === 'true' ? false : true;
 }
 
 let animationId: number | undefined = undefined;

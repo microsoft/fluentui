@@ -1,3 +1,4 @@
+import { getDocument } from '@fluentui/utilities';
 import { MAX_COLOR_ALPHA } from './consts';
 import { hsl2rgb } from './hsl2rgb';
 import type { IRGB } from './interfaces';
@@ -8,10 +9,12 @@ import type { IRGB } from './interfaces';
  * Alpha in returned color defaults to 100.
  * Four and eight digit hex values (with alpha) are supported if the current browser supports them.
  */
-export function cssColor(color?: string): IRGB | undefined {
+export function cssColor(color?: string, doc?: Document): IRGB | undefined {
   if (!color) {
     return undefined;
   }
+
+  const theDoc = doc ?? getDocument()!;
 
   // Need to check the following valid color formats: RGB(A), HSL(A), hex, named color
 
@@ -24,7 +27,7 @@ export function cssColor(color?: string): IRGB | undefined {
   }
 
   // if the above fails, do the more expensive catch-all
-  return _browserCompute(color);
+  return _browserCompute(color, theDoc);
 }
 
 /**
@@ -33,12 +36,12 @@ export function cssColor(color?: string): IRGB | undefined {
  * This works by attaching an element to the DOM, which may fail in server-side rendering
  *   or with headless browsers.
  */
-function _browserCompute(str: string): IRGB | undefined {
-  if (typeof document === 'undefined') {
+function _browserCompute(str: string, doc: Document): IRGB | undefined {
+  if (typeof doc === 'undefined') {
     // don't throw an error when used server-side
     return undefined;
   }
-  const elem = document.createElement('div');
+  const elem = doc.createElement('div');
   elem.style.backgroundColor = str;
   // This element must be attached to the DOM for getComputedStyle() to have a value
   elem.style.position = 'absolute';
@@ -46,10 +49,10 @@ function _browserCompute(str: string): IRGB | undefined {
   elem.style.left = '-9999px';
   elem.style.height = '1px';
   elem.style.width = '1px';
-  document.body.appendChild(elem);
-  const eComputedStyle = getComputedStyle(elem);
+  doc.body.appendChild(elem);
+  const eComputedStyle = doc.defaultView?.getComputedStyle(elem);
   const computedColor = eComputedStyle && eComputedStyle.backgroundColor;
-  document.body.removeChild(elem);
+  doc.body.removeChild(elem);
   // computedColor is always an RGB(A) string, except for invalid colors in IE/Edge which return 'transparent'
 
   // browsers return one of these if the color string is invalid,

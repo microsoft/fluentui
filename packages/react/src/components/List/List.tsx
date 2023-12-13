@@ -24,6 +24,8 @@ import type {
   IListOnRenderSurfaceProps,
   IListOnRenderRootProps,
 } from './List.types';
+import { WindowContext } from '@fluentui/react-window-provider';
+import { getWindowEx } from '../../utilities/dom';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
@@ -104,6 +106,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     renderedWindowsAhead: DEFAULT_RENDERED_WINDOWS_AHEAD,
     renderedWindowsBehind: DEFAULT_RENDERED_WINDOWS_BEHIND,
   };
+
+  public static contextType = WindowContext;
 
   private _root = React.createRef<HTMLDivElement>();
   private _surface = React.createRef<HTMLDivElement>();
@@ -347,7 +351,9 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     this.setState({ ...this._updatePages(this.props, this.state), hasMounted: true });
     this._measureVersion++;
 
-    this._events.on(window, 'resize', this._onAsyncResizeDebounced);
+    const win = getWindowEx(this.context);
+
+    this._events.on(win, 'resize', this._onAsyncResizeDebounced);
     if (this._root.current) {
       this._events.on(this._root.current, 'focus', this._onFocus, true);
     }
