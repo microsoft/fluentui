@@ -5,7 +5,7 @@ import { TreeGridBase } from './TreeGridBase';
 
 export const TreeGridWithEscapeInputs: React.FC = () => {
   return (
-    <Prototype pageTitle="TreeGrid with Escape Inputs">
+    <Prototype pageTitle="Variant A: TreeGrid with Escape Inputs">
       <TreeGridBase variant="escapeInputs" />
     </Prototype>
   );
