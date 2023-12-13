@@ -24,6 +24,7 @@ export const renderDialog_unstable = (state: DialogState, contextValues: DialogC
             unmountOnExit
             in={state.open}
             nodeRef={state.dialogRef}
+            appear={true}
             // FIXME: this should not be hardcoded tokens.durationGentle
             timeout={250}
           >

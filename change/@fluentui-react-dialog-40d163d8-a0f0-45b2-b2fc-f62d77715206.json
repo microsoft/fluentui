@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: Dialog now transitions in on first render",
+  "packageName": "@fluentui/react-dialog",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "patch"
+}
