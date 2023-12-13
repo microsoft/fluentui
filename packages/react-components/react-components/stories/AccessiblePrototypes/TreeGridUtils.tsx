@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 let narrateTimeout;
 
 export const srNarrate = (message: string, priority = 'polite') => {
@@ -82,4 +84,33 @@ export const getNextOrPrevFocusable = (
     }
   });
   return result;
+};
+
+export const focusNextOrPrevRow = (currentRow: HTMLElement, event: React.KeyboardEvent) => {
+  const table = currentRow.parentElement?.parentElement as HTMLElement;
+  let rowToFocus: HTMLElement | undefined;
+  if (event.key === 'ArrowDown') {
+    const nextTableRow = table.nextElementSibling?.querySelector('[aria-level="1"]') as HTMLElement;
+    if (currentRow.nextElementSibling) {
+      rowToFocus = currentRow.nextElementSibling as HTMLElement;
+    } else if (nextTableRow) {
+      rowToFocus = nextTableRow;
+    }
+  } else if (event.key === 'ArrowUp') {
+    const prevTableRow = table.previousElementSibling?.querySelector('[aria-level="1"]') as HTMLElement;
+    if (currentRow.previousElementSibling) {
+      rowToFocus = currentRow.previousElementSibling as HTMLElement;
+    } else if (prevTableRow) {
+      const isPrevTableRowExpanded = prevTableRow.getAttribute('aria-expanded');
+      if (isPrevTableRowExpanded === 'true') {
+        const prevTableRows = table.previousElementSibling?.querySelectorAll('[role="row"]');
+        rowToFocus = prevTableRows && (prevTableRows[prevTableRows.length - 1] as HTMLElement);
+      } else {
+        rowToFocus = prevTableRow;
+      }
+    }
+  }
+  if (rowToFocus) {
+    (rowToFocus as HTMLElement).focus();
+  }
 };

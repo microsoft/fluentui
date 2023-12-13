@@ -6,6 +6,7 @@ import {
   getNearestRowAncestor,
   getFirstCellChild,
   getNextOrPrevFocusable,
+  focusNextOrPrevRow,
 } from './../TreeGridUtils';
 
 import {
@@ -20,32 +21,10 @@ import {
   useFluent,
 } from '@fluentui/react-components';
 
-const focusNextOrPrevRow = (currentRow: HTMLElement, event: React.KeyboardEvent) => {
-  const table = currentRow.parentElement?.parentElement as HTMLElement;
-  let rowToFocus: HTMLElement | undefined;
-  if (event.key === 'ArrowDown') {
-    const nextTableRow = table.nextElementSibling?.querySelector('[aria-level="1"]') as HTMLElement;
-    if (currentRow.nextElementSibling) {
-      rowToFocus = currentRow.nextElementSibling as HTMLElement;
-    } else if (nextTableRow) {
-      rowToFocus = nextTableRow;
-    }
-  } else if (event.key === 'ArrowUp') {
-    const prevTableRow = table.previousElementSibling?.querySelector('[aria-level="1"]') as HTMLElement;
-    if (currentRow.previousElementSibling) {
-      rowToFocus = currentRow.previousElementSibling as HTMLElement;
-    } else if (prevTableRow) {
-      const isPrevTableRowExpanded = prevTableRow.getAttribute('aria-expanded');
-      if (isPrevTableRowExpanded === 'true') {
-        const prevTableRows = table.previousElementSibling?.querySelectorAll('[role="row"]');
-        rowToFocus = prevTableRows && (prevTableRows[prevTableRows.length - 1] as HTMLElement);
-      } else {
-        rowToFocus = prevTableRow;
-      }
-    }
-  }
-  if (rowToFocus) {
-    (rowToFocus as HTMLElement).focus();
+const narrateInputHint = (element: HTMLElement | undefined) => {
+  if ((element?.tagName === 'INPUT' && element.getAttribute('type') === 'text') || element?.role === 'textbox') {
+    const message = 'Press Escape to cancel editing, then navigate with arrow keys';
+    srNarrate(message);
   }
 };
 
@@ -82,13 +61,6 @@ export const TreeGridWithEscapeInputsRenderer: React.FC<TreeGridWithEscapeInputs
     },
     [recentCategoriesState],
   );
-
-  const narrateInputHint = React.useCallback(element => {
-    if ((element.tagName === 'INPUT' && element.getAttribute('type') === 'text') || element.role === 'textbox') {
-      const message = 'Press Escape to cancel editing, then navigate with arrow keys';
-      srNarrate(message);
-    }
-  }, []);
 
   const handleRowClick = React.useCallback(
     (event: React.MouseEvent) => {
@@ -181,7 +153,6 @@ export const TreeGridWithEscapeInputsRenderer: React.FC<TreeGridWithEscapeInputs
     },
     [
       isNavigationMode,
-      narrateInputHint,
       changeRecentCategoryExpandedState,
       getCategoryById,
       recentCategories,
@@ -212,7 +183,7 @@ export const TreeGridWithEscapeInputsRenderer: React.FC<TreeGridWithEscapeInputs
               {...tableRowTabsterAttribute}
             >
               <TableCell role="rowheader">{category.title}</TableCell>
-              <TableCell role="gridcell" aria-colspan={category.columns.length + 2}>
+              <TableCell role="gridcell" aria-colspan={category.columns.length + 3}>
                 <Button>Header action</Button>
               </TableCell>
             </TableRow>
@@ -229,6 +200,8 @@ export const TreeGridWithEscapeInputsRenderer: React.FC<TreeGridWithEscapeInputs
                   <TableCell role="rowheader">{meeting.titleWithTime}</TableCell>
                   <TableCell role="gridcell">
                     <Button>Chat with participants</Button>
+                  </TableCell>
+                  <TableCell role="gridcell">
                     <Field label="Type here">
                       <Input />
                     </Field>
