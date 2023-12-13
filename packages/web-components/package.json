@@ -139,6 +139,10 @@
       "types": "./dist/dts/toggle-button/define.d.ts",
       "default": "./dist/esm/toggle-button/define.js"
     },
+    "./toolbar.js": {
+      "types": "./dist/esm/toolbar/define.d.ts",
+      "default": "./dist/esm/toolbar/define.js"
+    },
     "./theme.js": {
       "types": "./dist/dts/theme/index.d.ts",
       "default": "./dist/esm/theme/index.js"

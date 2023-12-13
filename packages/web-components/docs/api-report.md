@@ -31,6 +31,7 @@ import { FASTTab } from '@microsoft/fast-foundation/tab.js';
 import { FASTTabPanel } from '@microsoft/fast-foundation/tab-panel.js';
 import { FASTTabs } from '@microsoft/fast-foundation/tabs.js';
 import { FASTTextField } from '@microsoft/fast-foundation/text-field.js';
+import { FASTToolbar } from '@microsoft/fast-foundation/toolbar.js';
 import { MenuItemRole } from '@microsoft/fast-foundation/menu-item.js';
 import { RadioGroupOrientation } from '@microsoft/fast-foundation/radio-group.js';
 import { SliderOrientation } from '@microsoft/fast-foundation/slider.js';
@@ -40,6 +41,8 @@ import type { StaticallyComposableHTML } from '@microsoft/fast-foundation/utilit
 import { TabsOrientation } from '@microsoft/fast-foundation/tabs.js';
 import { TextFieldType as TextInputType } from '@microsoft/fast-foundation/text-field.js';
 import type { Theme } from '@fluentui/tokens';
+import type { ToolbarOptions } from '@microsoft/fast-foundation/toolbar.js';
+import { ToolbarOrientation } from '@microsoft/fast-foundation/toolbar.js';
 import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
 
 // @public
@@ -124,7 +127,10 @@ export const AnchorButtonAppearance: {
     readonly outline: "outline";
     readonly subtle: "subtle";
     readonly secondary: "secondary";
-    readonly transparent: "transparent";
+    readonly transparent: "transparent"; /**
+    * An Anchor Button can be secondary, primary, outline, subtle, transparent
+    * @public
+    */
 };
 
 // @public
@@ -2381,6 +2387,34 @@ export const ToggleButtonStyles: ElementStyles;
 
 // @public
 export const ToggleButtonTemplate: ElementViewTemplate<ToggleButton>;
+
+// @public
+export class Toolbar extends FASTToolbar {
+    size?: ToolbarSize;
+}
+
+// @public
+export const ToolbarDefinition: FASTElementDefinition<typeof Toolbar>;
+
+export { ToolbarOptions }
+
+export { ToolbarOrientation }
+
+// @public
+export const ToolbarSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type ToolbarSize = ValuesOf<typeof ToolbarSize>;
+
+// @public
+export const ToolbarStyles: ElementStyles;
+
+// @public (undocumented)
+export const ToolbarTemplate: ElementViewTemplate<Toolbar>;
 
 // (No @packageDocumentation comment for this package)
 
