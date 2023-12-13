@@ -31,7 +31,7 @@ export const ThemeDesigner: React.FC<ThemeDesignerProps> = props => {
   useStaticStyles();
 
   const [appState, dispatchAppState] = useThemeDesignerReducer();
-  const [name, setName] = React.useState<string>('myTheme');
+  const [name, setName] = React.useState<string>('Untitled');
 
   const { darkOverrides, isDark, lightOverrides, theme } = appState;
   const overrides = isDark ? darkOverrides : lightOverrides;

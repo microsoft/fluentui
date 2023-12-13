@@ -1,4 +1,4 @@
-import { contrast, hex_to_sRGB, Vec3 } from '@fluent-blocks/colors';
+import { contrast, hex_to_sRGB, Vec3 } from '../../colors';
 import { Theme } from '@fluentui/react-components';
 import { accessiblePairs } from './AccessiblePairs';
 

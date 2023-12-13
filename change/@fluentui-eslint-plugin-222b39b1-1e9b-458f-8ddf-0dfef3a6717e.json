@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: bump eslint-plugin-jsdoc to version which support node 18",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
