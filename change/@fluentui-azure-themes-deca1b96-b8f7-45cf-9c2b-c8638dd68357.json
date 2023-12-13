@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "link in detailslist a11y bug fix and choicegroup with icon/image bug fix",
+  "packageName": "@fluentui/azure-themes",
+  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
