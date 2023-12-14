@@ -472,6 +472,5 @@ describe('Vertical bar chart re-rendering', () => {
 test('Should pass accessibility tests', async () => {
   const { container } = render(<VerticalBarChart data={chartPoints} />);
   const axeResults = await axe(container);
-  console.log(axeResults);
   expect(axeResults).toHaveNoViolations();
 }, 10000);
