@@ -1,15 +1,19 @@
-/** @jsxRuntime automatic */
-/** @jsxImportSource @fluentui/react-jsx-runtime */
-
-import { assertSlots } from '@fluentui/react-utilities';
-import type { TeachingPopoverHeaderState, TeachingPopoverHeaderSlots } from './TeachingPopoverHeader.types';
+import * as React from 'react';
+import type { TeachingPopoverHeaderState } from './TeachingPopoverHeader.types';
+import { getSlotsNext } from '@fluentui/react-utilities';
+import { TeachingPopoverHeaderSlots } from './TeachingPopoverHeader.types';
 
 /**
  * Render the final JSX of TeachingPopoverHeader
  */
 export const renderTeachingPopoverHeader_unstable = (state: TeachingPopoverHeaderState) => {
-  assertSlots<TeachingPopoverHeaderSlots>(state);
+  const { slots, slotProps } = getSlotsNext<TeachingPopoverHeaderSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return (
+    <slots.root {...slotProps.root}>
+      {slots.icon && <slots.icon {...slotProps.icon} />}
+      {slotProps.root.children}
+      {slots.dismissButton && <slots.dismissButton {...slotProps.dismissButton} />}
+    </slots.root>
+  );
 };

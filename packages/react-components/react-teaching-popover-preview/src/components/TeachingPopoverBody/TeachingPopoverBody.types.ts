@@ -1,17 +1,21 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+
+export type TeachingPopoverBodyMediaLength = 'short' | 'medium' | 'tall';
 
 export type TeachingPopoverBodySlots = {
-  root: Slot<'div'>;
+  /**
+   * The element wrapping the buttons.
+   */
+  root: NonNullable<Slot<'div'>>;
+  /**
+   * Optional Media Content.
+   */
+  media?: Slot<'span'>;
 };
 
-/**
- * TeachingPopoverBody Props
- */
-export type TeachingPopoverBodyProps = ComponentProps<TeachingPopoverBodySlots> & {};
+export type TeachingPopoverBodyProps = ComponentProps<Partial<TeachingPopoverBodySlots>> & {
+  mediaLength?: TeachingPopoverBodyMediaLength;
+};
 
-/**
- * State used in rendering TeachingPopoverBody
- */
-export type TeachingPopoverBodyState = ComponentState<TeachingPopoverBodySlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from TeachingPopoverBodyProps.
-// & Required<Pick<TeachingPopoverBodyProps, 'propName'>>
+export type TeachingPopoverBodyState = ComponentState<TeachingPopoverBodySlots> &
+  Partial<Pick<TeachingPopoverBodyProps, 'mediaLength'>>;

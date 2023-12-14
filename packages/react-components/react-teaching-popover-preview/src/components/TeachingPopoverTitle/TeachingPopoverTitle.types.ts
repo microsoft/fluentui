@@ -1,17 +1,25 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type TeachingPopoverTitleSlots = {
-  root: Slot<'div'>;
+  /**
+   * Title for teaching bubble
+   */
+  root: Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>;
+  /**
+   * An alternate close button path if not placed in the TeachingPopoverHeader
+   */
+  dismissButton?: Slot<'button'>;
 };
 
 /**
  * TeachingPopoverTitle Props
  */
-export type TeachingPopoverTitleProps = ComponentProps<TeachingPopoverTitleSlots> & {};
+export type TeachingPopoverTitleProps = ComponentProps<TeachingPopoverTitleSlots> & {
+  showDismiss?: boolean;
+};
 
 /**
  * State used in rendering TeachingPopoverTitle
  */
-export type TeachingPopoverTitleState = ComponentState<TeachingPopoverTitleSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from TeachingPopoverTitleProps.
-// & Required<Pick<TeachingPopoverTitleProps, 'propName'>>
+export type TeachingPopoverTitleState = ComponentState<TeachingPopoverTitleSlots> &
+  Pick<TeachingPopoverTitleProps, 'showDismiss'>;

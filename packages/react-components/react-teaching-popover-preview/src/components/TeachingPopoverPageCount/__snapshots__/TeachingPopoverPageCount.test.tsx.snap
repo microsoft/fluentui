@@ -5,7 +5,9 @@ exports[`TeachingPopoverPageCount renders a default state 1`] = `
   <div
     class="fui-TeachingPopoverPageCount"
   >
+    1 
     Default TeachingPopoverPageCount
+     2
   </div>
 </div>
 `;

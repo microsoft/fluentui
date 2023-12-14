@@ -1,35 +1,95 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { useButtonStyles_unstable } from '@fluentui/react-button';
 import type { TeachingPopoverButtonSlots, TeachingPopoverButtonState } from './TeachingPopoverButton.types';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import { usePopoverContext_unstable } from '@fluentui/react-popover';
+import { tokens } from '@fluentui/react-theme';
+import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
+import { SlotClassNames } from '@fluentui/react-utilities';
 
 export const teachingPopoverButtonClassNames: SlotClassNames<TeachingPopoverButtonSlots> = {
   root: 'fui-TeachingPopoverButton',
-  // TODO: add class names for all slots on TeachingPopoverButtonSlots.
-  // Should be of the form `<slotName>: 'fui-TeachingPopoverButton__<slotName>`
+  icon: 'fui-TeachingPopoverButton__icon',
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
+  brandPrimary: {
+    borderBlockColor: tokens.colorNeutralForegroundOnBrand,
+    borderInlineColor: tokens.colorNeutralForegroundOnBrand,
   },
-
-  // TODO add additional classes for different states and/or slots
+  brandPrimaryCarousel: {
+    color: tokens.colorBrandForeground1,
+    backgroundColor: tokens.colorNeutralForegroundOnBrand,
+    borderBlockColor: tokens.colorTransparentBackground,
+    borderInlineColor: tokens.colorTransparentBackground,
+    ':hover': {
+      color: tokens.colorCompoundBrandForeground1Hover,
+      backgroundColor: tokens.colorNeutralForegroundOnBrand,
+    },
+    ':hover:active': {
+      color: tokens.colorCompoundBrandForeground1Pressed,
+      backgroundColor: tokens.colorNeutralForegroundOnBrand,
+    },
+  },
+  brandSecondary: {
+    color: tokens.colorBrandForeground1,
+    backgroundColor: tokens.colorNeutralForegroundOnBrand,
+    ':hover': {
+      color: tokens.colorCompoundBrandForeground1Hover,
+      backgroundColor: tokens.colorNeutralForegroundOnBrand,
+    },
+    ':hover:active': {
+      color: tokens.colorCompoundBrandForeground1Pressed,
+      backgroundColor: tokens.colorNeutralForegroundOnBrand,
+    },
+  },
+  brandSecondaryCarousel: {
+    // In brand, this is always 'NeutralForegroundOnBrand'
+    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: tokens.colorBrandBackground,
+    borderBlockColor: tokens.colorNeutralForegroundOnBrand,
+    borderInlineColor: tokens.colorNeutralForegroundOnBrand,
+    ':hover': {
+      color: tokens.colorNeutralForegroundOnBrand,
+      borderBlockColor: tokens.colorNeutralForegroundOnBrand,
+      borderInlineColor: tokens.colorNeutralForegroundOnBrand,
+      backgroundColor: tokens.colorBrandBackgroundHover,
+    },
+    ':hover:active': {
+      color: tokens.colorNeutralForegroundOnBrand,
+      borderBlockColor: tokens.colorNeutralForegroundOnBrand,
+      borderInlineColor: tokens.colorNeutralForegroundOnBrand,
+      backgroundColor: tokens.colorBrandBackgroundPressed,
+    },
+  },
 });
 
-/**
- * Apply styling to the TeachingPopoverButton slots based on the state
- */
 export const useTeachingPopoverButtonStyles_unstable = (
   state: TeachingPopoverButtonState,
 ): TeachingPopoverButtonState => {
+  const appearance = usePopoverContext_unstable(context => context.appearance);
+  const totalPages = useTeachingPopoverContext_unstable(context => context.totalPages);
+  const isCarousel = totalPages > 1;
   const styles = useStyles();
-  state.root.className = mergeClasses(teachingPopoverButtonClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(teachingPopoverButtonClassNames.root, state.root.className);
+  if (state.icon) {
+    state.icon.className = mergeClasses(teachingPopoverButtonClassNames.icon, state.icon.className);
+  }
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
-
+  useButtonStyles_unstable(state);
+  if (state.buttonType === 'primary') {
+    if (appearance === 'brand') {
+      state.root.className = mergeClasses(
+        state.root.className,
+        isCarousel ? styles.brandPrimaryCarousel : styles.brandPrimary,
+      );
+    }
+  } else {
+    if (appearance === 'brand') {
+      state.root.className = mergeClasses(
+        state.root.className,
+        isCarousel ? styles.brandSecondaryCarousel : styles.brandSecondary,
+      );
+    }
+  }
   return state;
 };

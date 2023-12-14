@@ -1,34 +1,65 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps } from '@fluentui/react-utilities';
 import type { TeachingPopoverPageCountProps, TeachingPopoverPageCountState } from './TeachingPopoverPageCount.types';
 
+import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
+import { useARIAButtonShorthand } from '@fluentui/react-aria';
+import { useFocusableGroup } from '@fluentui/react-tabster';
+
 /**
- * Create the state required to render TeachingPopoverPageCount.
- *
- * The returned state can be modified with hooks such as useTeachingPopoverPageCountStyles_unstable,
- * before being passed to renderTeachingPopoverPageCount_unstable.
- *
- * @param props - props from this instance of TeachingPopoverPageCount
- * @param ref - reference to root HTMLDivElement of TeachingPopoverPageCount
+ * Returns the props and state required to render the component
+ * @param props - TeachingPopoverPageCount properties
+ * @param ref - reference to root HTMLElement of TeachingPopoverPageCount
  */
 export const useTeachingPopoverPageCount_unstable = (
   props: TeachingPopoverPageCountProps,
-  ref: React.Ref<HTMLDivElement>,
+  ref: React.Ref<HTMLElement>,
 ): TeachingPopoverPageCountState => {
-  return {
-    // TODO add appropriate props/defaults
-    components: {
-      // TODO add each slot's element type or component
-      root: 'div',
+  const { as, carouselIcon, carouselSelectedIcon } = props;
+  const focusableGroupAttr = useFocusableGroup({ tabBehavior: 'limited' });
+
+  const totalPages = useTeachingPopoverContext_unstable(context => context.totalPages);
+  const currentPage = useTeachingPopoverContext_unstable(context => context.currentPage);
+  const setCurrentPage = useTeachingPopoverContext_unstable(context => context.setCurrentPage);
+
+  const carouselIconShorthand = useARIAButtonShorthand(carouselIcon, {
+    required: true,
+    defaultProps: {
+      role: 'button',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        ...props,
-      }),
-      { elementType: 'div' },
-    ),
+  });
+
+  const carouselSelectedIconShorthand = useARIAButtonShorthand(carouselSelectedIcon, {
+    required: true,
+    defaultProps: {
+      role: 'button',
+    },
+  });
+  const tabsterMod =
+    props.countStyle === 'icon'
+      ? {
+          role: 'list',
+          tabIndex: 0,
+          ...focusableGroupAttr,
+        }
+      : {};
+
+  return {
+    totalPages,
+    currentPage,
+    setCurrentPage,
+    countStyle: props.countStyle ?? 'text',
+    components: {
+      root: 'div',
+      carouselIcon: 'button',
+      carouselSelectedIcon: 'button',
+    },
+    root: getIntrinsicElementProps(as || 'div', {
+      ref: ref as React.Ref<HTMLDivElement>,
+      ...props,
+      ...tabsterMod,
+    }),
+    carouselIcon: carouselIconShorthand,
+    carouselSelectedIcon: carouselSelectedIconShorthand,
   };
 };

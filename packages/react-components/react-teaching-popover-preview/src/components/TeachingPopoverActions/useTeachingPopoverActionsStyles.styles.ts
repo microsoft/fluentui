@@ -1,35 +1,42 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TeachingPopoverActionsSlots, TeachingPopoverActionsState } from './TeachingPopoverActions.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
 
 export const teachingPopoverActionsClassNames: SlotClassNames<TeachingPopoverActionsSlots> = {
   root: 'fui-TeachingPopoverActions',
-  // TODO: add class names for all slots on TeachingPopoverActionsSlots.
-  // Should be of the form `<slotName>: 'fui-TeachingPopoverActions__<slotName>`
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    display: 'flex',
+    flexDirection: 'row',
+    ...shorthands.borderRadius('4px'),
+    columnGap: '8px',
+    rowGap: '8px',
+    paddingTop: '12px',
   },
-
-  // TODO add additional classes for different states and/or slots
+  rootCarousel: {
+    justifyContent: 'space-between',
+  },
+  rootPage: {
+    justifyContent: 'flex-end',
+  },
 });
 
-/**
- * Apply styling to the TeachingPopoverActions slots based on the state
- */
-export const useTeachingPopoverActionsStyles_unstable = (
-  state: TeachingPopoverActionsState,
-): TeachingPopoverActionsState => {
+/** Applies style classnames to slots */
+export const useTeachingPopoverActionsStyles_unstable = (state: TeachingPopoverActionsState) => {
   const styles = useStyles();
-  state.root.className = mergeClasses(teachingPopoverActionsClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const totalPages = useTeachingPopoverContext_unstable(context => context.totalPages);
+  const actionButtonStyles = totalPages > 1 ? styles.rootCarousel : styles.rootPage;
+
+  state.root.className = mergeClasses(
+    teachingPopoverActionsClassNames.root,
+    styles.root,
+    actionButtonStyles,
+    state.root.className,
+  );
 
   return state;
 };

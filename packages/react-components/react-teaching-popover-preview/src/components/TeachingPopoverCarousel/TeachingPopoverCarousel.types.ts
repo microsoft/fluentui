@@ -1,17 +1,20 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { TeachingPopoverState } from '../TeachingPopover/TeachingPopover.types';
 
 export type TeachingPopoverCarouselSlots = {
-  root: Slot<'div'>;
+  /**
+   * The element wrapping the text and close button. By default this is a div, but can be a heading.
+   */
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**
  * TeachingPopoverCarousel Props
  */
-export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouselSlots> & {};
+export type TeachingPopoverCarouselProps = ComponentProps<Partial<TeachingPopoverCarouselSlots>>;
 
 /**
- * State used in rendering TeachingPopoverCarousel
+ * TeachingPopoverCarousel State and Context Hooks
  */
-export type TeachingPopoverCarouselState = ComponentState<TeachingPopoverCarouselSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from TeachingPopoverCarouselProps.
-// & Required<Pick<TeachingPopoverCarouselProps, 'propName'>>
+export type TeachingPopoverCarouselState = ComponentState<TeachingPopoverCarouselSlots> &
+  Required<Pick<TeachingPopoverState, 'currentPage' | 'setCurrentPage' | 'totalPages' | 'setTotalPages'>>;

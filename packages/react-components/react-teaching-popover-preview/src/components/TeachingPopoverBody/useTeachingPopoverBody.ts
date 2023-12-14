@@ -1,34 +1,27 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { TeachingPopoverBodyProps, TeachingPopoverBodyState } from './TeachingPopoverBody.types';
-
 /**
- * Create the state required to render TeachingPopoverBody.
- *
- * The returned state can be modified with hooks such as useTeachingPopoverBodyStyles_unstable,
- * before being passed to renderTeachingPopoverBody_unstable.
- *
- * @param props - props from this instance of TeachingPopoverBody
- * @param ref - reference to root HTMLDivElement of TeachingPopoverBody
+ * Returns the props and state required to render the component
+ * @param props - TeachingPopoverBody properties
+ * @param ref - reference to root HTMLElement of TeachingPopoverBody
  */
 export const useTeachingPopoverBody_unstable = (
   props: TeachingPopoverBodyProps,
-  ref: React.Ref<HTMLDivElement>,
+  ref: React.Ref<HTMLElement>,
 ): TeachingPopoverBodyState => {
+  const { as, mediaLength } = props;
+
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
+      media: 'span',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        ...props,
-      }),
-      { elementType: 'div' },
-    ),
+    root: getIntrinsicElementProps(as || 'div', {
+      ref: ref as React.Ref<HTMLDivElement>,
+      ...props,
+    }),
+    media: slot.optional(props.media, { elementType: 'span' }),
+    mediaLength: mediaLength ?? 'short',
   };
 };
