@@ -34,7 +34,7 @@ export const Carousel = (props: TeachingPopoverProps) => (
       <TeachingPopoverCarousel>
         {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
         <TeachingPopoverBody media={<img src={SwapImage} />}>
-          <TeachingPopoverTitle showDismiss>{'Teaching Bubble Title'}</TeachingPopoverTitle>
+          <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
           {ExampleContent(1)}
         </TeachingPopoverBody>
 
