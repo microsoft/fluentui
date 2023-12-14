@@ -38,7 +38,7 @@
     "react-transition-group": "^4.4.1",
     "@fluentui/keyboard-keys": "^9.0.7",
     "@fluentui/react-aria": "^9.5.0",
-    "@fluentui/react-icons": "^2.0.217",
+    "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-jsx-runtime": "^9.0.21",
     "@fluentui/react-portal": "^9.4.4",
     "@fluentui/react-shared-contexts": "^9.13.1",
