@@ -1,26 +1,31 @@
 import * as React from 'react';
 
-export const srNarrate = (message: string, priority = 'polite') => {
-  const element = document.createElement('div');
-  element.setAttribute(
-    'style',
-    'position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;',
-  );
-  element.setAttribute('aria-live', priority);
-  document.body.appendChild(element);
+export const useSrNarration = (targetDocument: HTMLDocument | undefined) => {
+  return (message: string, priority = 'polite') => {
+    if (!targetDocument) {
+      return;
+    }
+    const element = targetDocument.createElement('div');
+    element.setAttribute(
+      'style',
+      'position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;',
+    );
+    element.setAttribute('aria-live', priority);
+    targetDocument.body.appendChild(element);
 
-  setTimeout(() => {
-    element.innerText = message;
-  }, 800);
+    setTimeout(() => {
+      element.innerText = message;
+    }, 800);
 
-  setTimeout(() => {
-    document.body.removeChild(element);
-  }, 1100);
+    setTimeout(() => {
+      targetDocument.body.removeChild(element);
+    }, 1100);
+  };
 };
 
 export const getNearestGridCellAncestorOrSelf = (element: HTMLElement) => {
   while (element.role !== 'gridcell') {
-    if (element === document.body) {
+    if (element.tagName === 'BODY') {
       return undefined;
     }
     element = element.parentElement as HTMLElement;
@@ -87,14 +92,14 @@ export const focusNextOrPrevRow = (currentRow: HTMLElement, event: React.Keyboar
   let rowToFocus: HTMLElement | undefined;
   if (event.key === 'ArrowDown') {
     const nextTableRow = table.nextElementSibling?.querySelector('[aria-level="1"]') as HTMLElement;
-    if (currentRow.nextElementSibling) {
+    if (currentRow.nextElementSibling && currentRow.nextElementSibling.role === 'row') {
       rowToFocus = currentRow.nextElementSibling as HTMLElement;
     } else if (nextTableRow) {
       rowToFocus = nextTableRow;
     }
   } else if (event.key === 'ArrowUp') {
     const prevTableRow = table.previousElementSibling?.querySelector('[aria-level="1"]') as HTMLElement;
-    if (currentRow.previousElementSibling) {
+    if (currentRow.previousElementSibling && currentRow.previousElementSibling.role === 'row') {
       rowToFocus = currentRow.previousElementSibling as HTMLElement;
     } else if (prevTableRow) {
       const isPrevTableRowExpanded = prevTableRow.getAttribute('aria-expanded');

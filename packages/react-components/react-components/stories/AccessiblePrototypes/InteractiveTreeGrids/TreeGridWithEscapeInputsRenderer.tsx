@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RecentCategory, RecentMeetings } from './TreeGridBase';
 import {
-  srNarrate,
+  useSrNarration,
   getNearestGridCellAncestorOrSelf,
   getNearestRowAncestor,
   getFirstCellChild,
@@ -21,13 +21,6 @@ import {
   useFluent,
 } from '@fluentui/react-components';
 
-const narrateInputHint = (element: HTMLElement | undefined) => {
-  if ((element?.tagName === 'INPUT' && element.getAttribute('type') === 'text') || element?.role === 'textbox') {
-    const message = 'Press Escape to cancel editing, then navigate with arrow keys';
-    srNarrate(message);
-  }
-};
-
 interface TreeGridWithEscapeInputsRendererProps {
   recentCategories: RecentCategory[];
   recentMeetings: RecentMeetings;
@@ -37,11 +30,22 @@ export const TreeGridWithEscapeInputsRenderer: React.FC<TreeGridWithEscapeInputs
   recentMeetings,
 }) => {
   const { targetDocument } = useFluent();
+  const srNarrate = useSrNarration(targetDocument);
 
   const [recentCategoriesState, setRecentCategoryState] = React.useState(recentCategories);
   const [isNavigationMode, setIsNavigationMode] = React.useState(false);
 
   const { tableTabsterAttribute, tableRowTabsterAttribute, onTableKeyDown } = useAdamTableInteractiveNavigation();
+
+  const narrateInputHint = React.useCallback(
+    (element: HTMLElement | undefined) => {
+      if ((element?.tagName === 'INPUT' && element.getAttribute('type') === 'text') || element?.role === 'textbox') {
+        const message = 'Press Escape to cancel editing, then navigate with arrow keys';
+        srNarrate(message);
+      }
+    },
+    [srNarrate],
+  );
 
   const getCategoryById = React.useCallback(
     (id: string) => {
@@ -152,6 +156,7 @@ export const TreeGridWithEscapeInputsRenderer: React.FC<TreeGridWithEscapeInputs
       }
     },
     [
+      narrateInputHint,
       isNavigationMode,
       changeRecentCategoryExpandedState,
       getCategoryById,

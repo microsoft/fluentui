@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { RecentCategory, RecentMeetings } from './TreeGridBase';
-import { getNearestGridCellAncestorOrSelf, getNearestRowAncestor, getFirstCellChild } from './../TreeGridUtils';
+import {
+  getNearestGridCellAncestorOrSelf,
+  getNearestRowAncestor,
+  getFirstCellChild,
+  focusNextOrPrevRow,
+} from './../TreeGridUtils';
 
 import {
   Table,
@@ -8,8 +13,7 @@ import {
   TableRow,
   TableCell,
   useFocusableGroup,
-  // useAdamTableCompositeNavigation,
-  useTableCompositeNavigation,
+  useAdamTableInteractive2Navigation,
   Button,
   Input,
   Field,
@@ -27,7 +31,7 @@ export const TreeGridWithEnterInputsRenderer: React.FC<TreeGridWithEnterInputsRe
   const { targetDocument } = useFluent();
   const [recentCategoriesState, setRecentCategoryState] = React.useState(recentCategories);
 
-  const { tableTabsterAttribute, tableRowTabsterAttribute, onTableKeyDown } = useTableCompositeNavigation();
+  const { tableTabsterAttribute, tableRowTabsterAttribute, onTableKeyDown } = useAdamTableInteractive2Navigation();
   const focusableGroupAttribute = useFocusableGroup({
     tabBehavior: 'limited-trap-focus',
   });
@@ -73,12 +77,19 @@ export const TreeGridWithEnterInputsRenderer: React.FC<TreeGridWithEnterInputsRe
           const isFirstCellChild = gridCell === getFirstCellChild(row);
           if (event.key === 'ArrowLeft' && isFirstCellChild) {
             row.focus();
+          } else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            callTabsterKeyboardHandler = false;
+            if ((target.tagName !== 'INPUT' || target.getAttribute('type') !== 'text') && target.role !== 'textbox') {
+              focusNextOrPrevRow(row, event);
+            }
           }
         } else if (target.role === 'row') {
           const selectedRowId = target.id;
           const category = getCategoryById(selectedRowId);
           const level = target.getAttribute('aria-level');
-          if (event.key === 'ArrowRight' && level === '1' && category && !category.expanded) {
+          if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            focusNextOrPrevRow(target, event);
+          } else if (event.key === 'ArrowRight' && level === '1' && category && !category.expanded) {
             changeRecentCategoryExpandedState(category, true);
             callTabsterKeyboardHandler = false;
           } else if (event.key === 'ArrowLeft' && level === '1') {

@@ -6,6 +6,7 @@ export {
   useTableColumnSizing_unstable,
   useTableCompositeNavigation,
   useAdamTableInteractiveNavigation,
+  useAdamTableInteractive2Navigation,
   useAdamTableCompositeNavigation,
   useAdamTableCombinedNavigation,
 } from './hooks';

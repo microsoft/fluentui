@@ -1009,6 +1009,7 @@ export {
   useTableSort,
   useTableCompositeNavigation,
   useAdamTableInteractiveNavigation,
+  useAdamTableInteractive2Navigation,
   useAdamTableCompositeNavigation,
   useAdamTableCombinedNavigation,
   createTableColumn,

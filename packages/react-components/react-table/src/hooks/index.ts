@@ -8,3 +8,4 @@ export * from './useTableCompositeNavigation';
 export * from './useAdamTableCompositeNavigation';
 export * from './useAdamTableCombinedNavigation';
 export * from './useAdamTableInteractiveNavigation';
+export * from './useAdamTableInteractive2Navigation';
