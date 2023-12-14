@@ -580,6 +580,13 @@ export function useAdamTableCompositeNavigation(): {
 };
 
 // @public (undocumented)
+export function useAdamTableInteractive2Navigation(): {
+    onTableKeyDown: React_2.KeyboardEventHandler;
+    tableTabsterAttribute: TabsterDOMAttribute;
+    tableRowTabsterAttribute: TabsterDOMAttribute;
+};
+
+// @public (undocumented)
 export function useAdamTableInteractiveNavigation(): {
     onTableKeyDown: React_2.KeyboardEventHandler;
     tableTabsterAttribute: TabsterDOMAttribute;
