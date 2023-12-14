@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: User-provided props win over defined defaults in Link component.",
-  "packageName": "@fluentui/react-link",
-  "email": "makotom@microsoft.com",
-  "dependentChangeType": "patch"
-}

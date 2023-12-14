@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-calendar-compat
 
-This log was last generated on Thu, 30 Nov 2023 13:42:08 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Dec 2023 09:58:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.0.10)
+
+Thu, 14 Dec 2023 09:58:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.0.9..@fluentui/react-calendar-compat_v0.0.10)
+
+### Patches
+
+- chore: disallow `window` and `document` access ([PR #29962](https://github.com/microsoft/fluentui/pull/29962) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.21 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.13.1 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-tabster to v9.15.1 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-utilities to v9.15.3 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
 
 ## [0.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.0.9)
 

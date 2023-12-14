@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: disallow `window` and `document` access",
-  "packageName": "@fluentui/react-utilities",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
