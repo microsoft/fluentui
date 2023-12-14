@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adding planner and todoitem filetype icon support.",
+  "packageName": "@fluentui/style-utilities",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
