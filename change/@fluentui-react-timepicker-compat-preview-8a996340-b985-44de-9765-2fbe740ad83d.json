@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: add max-height to show 12 items in listbox",
+  "comment": "fix: use useEventCallback instead of useCallback",
   "packageName": "@fluentui/react-timepicker-compat-preview",
   "email": "yuanboxue@microsoft.com",
   "dependentChangeType": "patch"

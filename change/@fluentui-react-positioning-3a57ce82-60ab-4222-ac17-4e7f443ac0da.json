@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Allows matchTargetSize middleware to be overidden with inline style",
-  "packageName": "@fluentui/react-positioning",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

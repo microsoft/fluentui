@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "partitionBreadcrumbItems miscalculated endDisplayedItems when endDisplayedItems is incorrect when numberOfItemsToHide <= 0",
+  "packageName": "@fluentui/react-breadcrumb",
+  "email": "GordonJSmith@gmail.com",
+  "dependentChangeType": "patch"
+}

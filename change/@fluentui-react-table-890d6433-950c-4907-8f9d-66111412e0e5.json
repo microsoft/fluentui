@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: adopts useARIAButtonProps instead of deprecated method useARIAButtonShorthand",
+  "packageName": "@fluentui/react-table",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

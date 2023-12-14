@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Applies border-box sizing to listbox slot",
-  "packageName": "@fluentui/react-combobox",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

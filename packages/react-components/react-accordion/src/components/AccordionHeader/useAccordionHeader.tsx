@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, isResolvedShorthand, useEventCallback, slot } from '@fluentui/react-utilities';
-import { ARIAButtonSlotProps, useARIAButtonShorthand } from '@fluentui/react-aria';
+import { getIntrinsicElementProps, useEventCallback, slot, isResolvedShorthand } from '@fluentui/react-utilities';
+import { useARIAButtonProps } from '@fluentui/react-aria';
 import type { AccordionHeaderProps, AccordionHeaderState } from './AccordionHeader.types';
 import { useAccordionContext_unstable } from '../../contexts/accordion';
 import { ChevronRightRegular } from '@fluentui/react-icons';
@@ -38,6 +38,25 @@ export const useAccordionHeader_unstable = (
     expandIconRotation = open ? 90 : dir !== 'rtl' ? 0 : 180;
   }
 
+  const buttonSlot = slot.always(button, {
+    elementType: 'button',
+    defaultProps: {
+      disabled,
+      disabledFocusable,
+      'aria-expanded': open,
+      type: 'button',
+    },
+  });
+
+  buttonSlot.onClick = useEventCallback(event => {
+    if (isResolvedShorthand(button)) {
+      button.onClick?.(event);
+    }
+    if (!event.defaultPrevented) {
+      requestToggle({ value, event });
+    }
+  });
+
   return {
     disabled,
     open,
@@ -69,27 +88,6 @@ export const useAccordionHeader_unstable = (
       },
       elementType: 'span',
     }),
-    button: slot.always<ARIAButtonSlotProps<'a'>>(
-      {
-        ...useARIAButtonShorthand(button, {
-          required: true,
-          defaultProps: {
-            disabled,
-            disabledFocusable,
-            'aria-expanded': open,
-            type: 'button',
-          },
-        }),
-        onClick: useEventCallback(event => {
-          if (isResolvedShorthand(button)) {
-            button.onClick?.(event);
-          }
-          if (!event.defaultPrevented) {
-            requestToggle({ value, event });
-          }
-        }),
-      },
-      { elementType: 'button' },
-    ),
+    button: useARIAButtonProps(buttonSlot.as, buttonSlot),
   };
 };
