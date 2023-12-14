@@ -21,6 +21,8 @@ const FORM = 'form';
 const SWAY = 'sway';
 const PLAYLIST = 'playlist';
 const LOOP_WORKSPACE = 'loopworkspace';
+const TODOITEM = 'todoitem';
+const PLANNER = 'planner';
 
 export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
@@ -146,6 +148,12 @@ export function getFileTypeIconNameFromExtensionOrType(
         break;
       case FileIconType.loopworkspace:
         iconBaseName = LOOP_WORKSPACE;
+        break;
+      case FileIconType.planner:
+        iconBaseName = PLANNER;
+        break;
+      case FileIconType.todoItem:
+        iconBaseName = TODOITEM;
         break;
     }
   }
