@@ -3,7 +3,7 @@ import { mount as mountBase } from '@cypress/react';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
-import { TimePicker, TimePickerProps } from '@fluentui/react-timepicker-compat-preview';
+import { TimePicker, TimePickerProps, TimeSelectionData } from '@fluentui/react-timepicker-compat-preview';
 
 const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
@@ -135,5 +135,60 @@ describe('TimePicker', () => {
         cy.get('#selected-time-text').should('have.text', '10:30');
       });
     });
+  });
+});
+
+describe('TimePicker with custom parsing', () => {
+  const Example = () => {
+    const [anchor] = React.useState(() => new Date(2023, 1, 1));
+    const formatDateToTimeString = (date: Date) => {
+      const localeTimeString = date.toLocaleTimeString([], {
+        hour: 'numeric',
+        minute: '2-digit',
+        hourCycle: 'h12',
+      });
+      if (date.getHours() < 12) {
+        return `Morning: ${localeTimeString}`;
+      }
+      return `Afternoon: ${localeTimeString}`;
+    };
+
+    const parseTimeStringToDate: TimePickerProps['parseTimeStringToDate'] = (time: string | undefined) => {
+      if (!time) {
+        return { date: null };
+      }
+
+      const [hours, minutes] = (time.split(' ')[1].match(/\d+/g) ?? []).map(Number);
+      const adjustedHours = time.includes('Afternoon: ') && hours !== 12 ? hours + 12 : hours;
+      const date = new Date(anchor.getFullYear(), anchor.getMonth(), anchor.getDate(), adjustedHours, minutes);
+
+      return { date };
+    };
+
+    const [selectedTimeText, setSelectedTimeText] = React.useState<string | undefined>(undefined);
+    const onTimeChange: TimePickerProps['onTimeChange'] = (_ev, data) => {
+      setSelectedTimeText(data.selectedTimeText);
+    };
+    return (
+      <div>
+        <TimePicker
+          freeform
+          dateAnchor={anchor}
+          startHour={9}
+          endHour={13}
+          formatDateToTimeString={formatDateToTimeString}
+          parseTimeStringToDate={parseTimeStringToDate}
+          onTimeChange={onTimeChange}
+        />
+        {<div id="selected-time-text">{selectedTimeText}</div>}
+      </div>
+    );
+  };
+  it('letter navigation should be case insensitive and select option on enter', () => {
+    mount(<Example />);
+    cy.get(inputSelector).click().get(optionSelector(0)).should('be.visible');
+    cy.get(inputSelector).click().type('a').realPress('Enter');
+    cy.get(inputSelector).should('have.value', 'Afternoon: 12:00 pm');
+    cy.get('#selected-time-text').should('have.text', 'Afternoon: 12:00 pm');
   });
 });
