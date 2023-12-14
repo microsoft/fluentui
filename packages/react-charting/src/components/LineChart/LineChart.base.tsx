@@ -860,7 +860,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   )}
                   onMouseOut={this._handleMouseOut}
                   strokeWidth={0}
-                  role="none"
+                  role="img"
                   focusable={false}
                   onBlur={this._handleMouseOut}
                   aria-label={this._getAriaLabel(i, j)}
