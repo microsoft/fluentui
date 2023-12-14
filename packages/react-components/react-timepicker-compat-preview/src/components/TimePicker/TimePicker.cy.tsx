@@ -145,7 +145,6 @@ describe('TimePicker with custom parsing', () => {
       const localeTimeString = date.toLocaleTimeString([], {
         hour: 'numeric',
         minute: '2-digit',
-        hourCycle: 'h12',
       });
       if (date.getHours() < 12) {
         return `Morning: ${localeTimeString}`;
@@ -159,8 +158,7 @@ describe('TimePicker with custom parsing', () => {
       }
 
       const [hours, minutes] = (time.split(' ')[1].match(/\d+/g) ?? []).map(Number);
-      const adjustedHours = time.includes('Afternoon: ') && hours !== 12 ? hours + 12 : hours;
-      const date = new Date(anchor.getFullYear(), anchor.getMonth(), anchor.getDate(), adjustedHours, minutes);
+      const date = new Date(anchor.getFullYear(), anchor.getMonth(), anchor.getDate(), hours, minutes);
 
       return { date };
     };
@@ -188,7 +186,7 @@ describe('TimePicker with custom parsing', () => {
     mount(<Example />);
     cy.get(inputSelector).click().get(optionSelector(0)).should('be.visible');
     cy.get(inputSelector).click().type('a').realPress('Enter');
-    cy.get(inputSelector).should('have.value', 'Afternoon: 12:00 pm');
-    cy.get('#selected-time-text').should('have.text', 'Afternoon: 12:00 pm');
+    cy.get(inputSelector).should('have.value', 'Afternoon: 12:00');
+    cy.get('#selected-time-text').should('have.text', 'Afternoon: 12:00');
   });
 });
