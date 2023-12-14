@@ -5,7 +5,8 @@
     {
       "files": ["bin/*.js", "src/loadSite.ts"],
       "rules": {
-        "no-console": "off"
+        "no-console": "off",
+        "no-restricted-globals": "off"
       }
     },
     {

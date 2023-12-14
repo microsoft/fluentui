@@ -148,6 +148,7 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useTeachingPopoverPageCountStyles_unstable: (state: unknown) => void;
         useTeachingPopoverSurfaceStyles_unstable: (state: unknown) => void;
         useTeachingPopoverTitleStyles_unstable: (state: unknown) => void;
+        useTimePickerCompatStyles_unstable: (state: unknown) => void;
     }> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;

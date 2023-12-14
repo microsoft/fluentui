@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 16 Nov 2023 07:26:50 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Dec 2023 07:30:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.113.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.113.1)
+
+Thu, 14 Dec 2023 07:30:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.113.0..@fluentui/react_v8.113.1)
+
+### Patches
+
+- Bump @fluentui/date-time-utilities to v8.5.15 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.48 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.28 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/merge-styles to v8.5.14 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/react-focus to v8.8.35 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/react-hooks to v8.6.34 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.17 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/set-version to v8.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/style-utilities to v8.9.21 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/theme to v2.6.39 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/utilities to v8.13.22 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+
+## [8.113.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.113.0)
+
+Tue, 12 Dec 2023 07:27:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.112.9..@fluentui/react_v8.113.0)
+
+### Minor changes
+
+- fix(Callout): Update useMaxHeight hook for callout to use target top as bottom bound when aligned to top edge; account for scroll resizing when picking the best edge for positioning alignment ([PR #29766](https://github.com/microsoft/fluentui/pull/29766) by nipope@microsoft.com)
 
 ## [8.112.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.9)
 

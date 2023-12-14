@@ -1,11 +1,15 @@
 import type { MiddlewareArguments } from '@floating-ui/dom';
-import { matchTargetSize } from './matchTargetSize';
+import { matchTargetSize, matchTargetSizeCssVar } from './matchTargetSize';
+import { CSSProperties } from 'react';
 
 describe('matchTargetSize', () => {
   const middlewareFn = matchTargetSize().fn;
+  const createElementMock = () => ({
+    style: { setProperty: jest.fn() } as CSSProperties & { setProperty: jest.Mock },
+  });
   it('should match reference width if not same', async () => {
     expect.assertions(3);
-    const floatingElement = document.createElement('div');
+    const floatingElement = createElementMock();
     const referenceWidth = 100;
     const middlewareArguments = {
       middlewareData: {},
@@ -29,8 +33,39 @@ describe('matchTargetSize', () => {
         rects: true,
       },
     });
-    expect(floatingElement.style.width).toBe(`${referenceWidth}px`);
-    expect(floatingElement.style.boxSizing).toBe('border-box');
+    expect(floatingElement.style.setProperty).toHaveBeenCalledWith(matchTargetSizeCssVar, `${referenceWidth}px`);
+    expect(floatingElement.style.width).toEqual('var(--fui-match-target-size)');
+  });
+
+  it('should not apply width style if already set', async () => {
+    expect.assertions(3);
+    const floatingElement = createElementMock();
+    floatingElement.style.width = '100px';
+    const referenceWidth = 100;
+    const middlewareArguments = {
+      middlewareData: {},
+      elements: {
+        floating: floatingElement,
+      },
+
+      rects: {
+        reference: { width: referenceWidth },
+        floating: { width: '1px' },
+      },
+    } as unknown as MiddlewareArguments;
+
+    const result = await middlewareFn(middlewareArguments);
+
+    expect(result).toEqual({
+      data: {
+        matchTargetSizeAttempt: true,
+      },
+      reset: {
+        rects: true,
+      },
+    });
+    expect(floatingElement.style.setProperty).toHaveBeenCalledWith(matchTargetSizeCssVar, `${referenceWidth}px`);
+    expect(floatingElement.style.width).toEqual('100px');
   });
 
   it('should do nothing if reference width is equal to floating width', async () => {
@@ -59,7 +94,7 @@ describe('matchTargetSize', () => {
     const floatingElement = document.createElement('div');
     const referenceWidth = 100;
     const middlewareArguments = {
-      middlewareData: { matchTargetSizeAttempt: true },
+      middlewareData: { matchTargetSize: { matchTargetSizeAttempt: true } },
       elements: {
         floating: floatingElement,
       },

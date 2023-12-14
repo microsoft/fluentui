@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react';
 import { FluentProvider } from '@fluentui/react-provider';
+import { getParent } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { Portal } from './Portal';
@@ -39,5 +40,23 @@ describe('Portal', () => {
     expect(element).toHaveStyle({
       zIndex: 1000000,
     });
+  });
+
+  it('should not set virtual parent if mount node contains virtual parent', () => {
+    const Test = () => {
+      const [el, setEl] = React.useState<HTMLDivElement | null>(null);
+      return (
+        <div id="parent">
+          <div id="container" ref={setEl}>
+            <Portal mountNode={el}>Foo</Portal>
+          </div>
+        </div>
+      );
+    };
+
+    const { container } = render(<Test />);
+
+    const mountNode = container.querySelector<HTMLSpanElement>('#container');
+    expect((getParent(mountNode) as HTMLElement).id).toBe('parent');
   });
 });

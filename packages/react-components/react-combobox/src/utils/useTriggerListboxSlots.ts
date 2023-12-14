@@ -110,11 +110,20 @@ export function useTriggerListboxSlots(
     }, listbox?.onMouseDown),
   );
 
+  const listboxOnMouseUp = useEventCallback(
+    mergeCallbacks((event: React.MouseEvent<HTMLDivElement>) => {
+      // some listbox clicks don't blur the input (e.g. clicking a scrollbar)
+      // this ensures future blurs that occur after the click aren't ignored
+      ignoreNextBlur.current = false;
+    }, listbox?.onMouseUp),
+  );
+
   // listbox is nullable, only add event handlers if it exists
   if (listbox) {
     listbox.onClick = listboxOnClick;
     listbox.onMouseOver = listboxOnMouseOver;
     listbox.onMouseDown = listboxOnMouseDown;
+    listbox.onMouseUp = listboxOnMouseUp;
   }
 
   // the trigger should open/close the popup on click or blur

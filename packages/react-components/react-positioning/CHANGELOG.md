@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 20 Nov 2023 09:55:10 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Dec 2023 09:58:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.10.3)
+
+Thu, 14 Dec 2023 09:58:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.10.2..@fluentui/react-positioning_v9.10.3)
+
+### Patches
+
+- fix: Allows matchTargetSize middleware to be overidden with inline style ([PR #30028](https://github.com/microsoft/fluentui/pull/30028) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.13.1 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-utilities to v9.15.3 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+
+## [9.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.10.2)
+
+Thu, 30 Nov 2023 13:42:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.10.1..@fluentui/react-positioning_v9.10.2)
+
+### Patches
+
+- feat: adds floating-ui-devtools support ([PR #29905](https://github.com/microsoft/fluentui/pull/29905) by bernardo.sunderhus@gmail.com)
+- fix: Infinite reset loop in matchTargetSize middleware ([PR #29915](https://github.com/microsoft/fluentui/pull/29915) by lingfan.gao@microsoft.com)
 
 ## [9.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.10.1)
 
