@@ -3596,7 +3596,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             onMouseOver={[Function]}
             opacity={0}
             r={8}
-            role="none"
+            role="img"
             strokeWidth={0}
             width={0}
           />

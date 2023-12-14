@@ -324,7 +324,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
               id="circle13_0_55D"
               opacity="0"
               r="8"
-              role="none"
+              role="img"
               stroke-width="0"
               width="0"
             />
@@ -641,7 +641,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               id="circle0_2_11D"
               opacity="0"
               r="8"
-              role="none"
+              role="img"
               stroke-width="0"
               width="0"
             />
@@ -696,7 +696,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               id="circle0_1_11D"
               opacity="0"
               r="8"
-              role="none"
+              role="img"
               stroke-width="0"
               width="0"
             />
@@ -751,7 +751,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               id="circle0_0_11D"
               opacity="0"
               r="8"
-              role="none"
+              role="img"
               stroke-width="0"
               width="0"
             />
@@ -1236,7 +1236,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               id="circle26_2_11D"
               opacity="0"
               r="8"
-              role="none"
+              role="img"
               stroke-width="0"
               width="0"
             />
@@ -1291,7 +1291,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               id="circle26_1_11D"
               opacity="0"
               r="8"
-              role="none"
+              role="img"
               stroke-width="0"
               width="0"
             />
@@ -1346,7 +1346,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               id="circle26_0_11D"
               opacity="0"
               r="8"
-              role="none"
+              role="img"
               stroke-width="0"
               width="0"
             />
@@ -1841,7 +1841,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               id="circle227_2_11D"
               opacity="0"
               r="8"
-              role="none"
+              role="img"
               stroke-width="0"
               width="0"
             />
@@ -1896,7 +1896,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               id="circle227_1_11D"
               opacity="0"
               r="8"
-              role="none"
+              role="img"
               stroke-width="0"
               width="0"
             />
@@ -1951,7 +1951,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               id="circle227_0_11D"
               opacity="0"
               r="8"
-              role="none"
+              role="img"
               stroke-width="0"
               width="0"
             />
@@ -2440,7 +2440,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               id="circle240_2_11D"
               opacity="0"
               r="8"
-              role="none"
+              role="img"
               stroke-width="0"
               width="0"
             />
@@ -2495,7 +2495,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               id="circle240_1_11D"
               opacity="0"
               r="8"
-              role="none"
+              role="img"
               stroke-width="0"
               width="0"
             />
@@ -2550,7 +2550,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               id="circle240_0_11D"
               opacity="0"
               r="8"
-              role="none"
+              role="img"
               stroke-width="0"
               width="0"
             />
@@ -3052,7 +3052,7 @@ exports[`Should reflect theme change 1`] = `
                 id="circle256_2_11D"
                 opacity="0"
                 r="8"
-                role="none"
+                role="img"
                 stroke-width="0"
                 width="0"
               />
@@ -3107,7 +3107,7 @@ exports[`Should reflect theme change 1`] = `
                 id="circle256_1_11D"
                 opacity="0"
                 r="8"
-                role="none"
+                role="img"
                 stroke-width="0"
                 width="0"
               />
@@ -3162,7 +3162,7 @@ exports[`Should reflect theme change 1`] = `
                 id="circle256_0_11D"
                 opacity="0"
                 r="8"
-                role="none"
+                role="img"
                 stroke-width="0"
                 width="0"
               />
