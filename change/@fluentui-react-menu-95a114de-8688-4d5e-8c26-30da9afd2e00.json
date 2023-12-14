@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Using correct colors when MenuItem is pressed.",
-  "packageName": "@fluentui/react-menu",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
