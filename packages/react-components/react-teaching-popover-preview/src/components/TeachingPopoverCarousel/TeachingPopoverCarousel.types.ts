@@ -1,5 +1,5 @@
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TeachingPopoverState } from '../TeachingPopover/TeachingPopover.types';
+import { TeachingPopoverContextValue } from '../../TeachingPopoverContext';
 
 export type TeachingPopoverCarouselSlots = {
   /**
@@ -17,4 +17,4 @@ export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouse
  * TeachingPopoverCarousel State and Context Hooks
  */
 export type TeachingPopoverCarouselState = ComponentState<TeachingPopoverCarouselSlots> &
-  Required<Pick<TeachingPopoverState, 'currentPage' | 'setCurrentPage' | 'totalPages' | 'setTotalPages'>>;
+  Required<Pick<TeachingPopoverContextValue, 'currentPage' | 'setCurrentPage' | 'totalPages' | 'setTotalPages'>>;

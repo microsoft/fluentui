@@ -142,7 +142,7 @@ export type TeachingPopoverCarouselSlots = {
 };
 
 // @public
-export type TeachingPopoverCarouselState = ComponentState<TeachingPopoverCarouselSlots> & Required<Pick<TeachingPopoverState, 'currentPage' | 'setCurrentPage' | 'totalPages' | 'setTotalPages'>>;
+export type TeachingPopoverCarouselState = ComponentState<TeachingPopoverCarouselSlots> & Required<Pick<TeachingPopoverContextValue, 'currentPage' | 'setCurrentPage' | 'totalPages' | 'setTotalPages'>>;
 
 // @public (undocumented)
 export type TeachingPopoverContextValues = {
