@@ -1,4 +1,5 @@
-import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
+import { StaticallyComposableHTML, ValuesOf } from '../utils/index.js';
+import { ProgressBar } from './progress-bar.js';
 
 /**
  * ProgressBarThickness Constants
@@ -45,3 +46,12 @@ export const ProgressBarValidationState = {
  * @public
  */
 export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
+
+/**
+ * Progress configuration options
+ * @public
+ */
+export type ProgressOptions = {
+  indeterminateIndicator1?: StaticallyComposableHTML<ProgressBar>;
+  indeterminateIndicator2?: StaticallyComposableHTML<ProgressBar>;
+};

@@ -1,17 +1,39 @@
-import { DividerOrientation, DividerRole } from '@microsoft/fast-foundation/divider.js';
-import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
+import { Orientation } from '@microsoft/fast-web-utilities';
+import { ValuesOf } from '../utils/index.js';
 
 /**
- * Fast Foundation DividerRole property
+ * Divider roles
  * @public
  */
-export { DividerRole };
+export const DividerRole = {
+  /**
+   * The divider semantically separates content
+   */
+  separator: 'separator',
+
+  /**
+   * The divider has no semantic value and is for visual presentation only.
+   */
+  presentation: 'presentation',
+} as const;
 
 /**
- * Fast Foundation Orientation property
+ * The types for Divider roles
  * @public
  */
-export { DividerOrientation };
+export type DividerRole = ValuesOf<typeof DividerRole>;
+
+/**
+ * Divider orientation
+ * @public
+ */
+export const DividerOrientation = Orientation;
+
+/**
+ * The types for Divider orientation
+ * @public
+ */
+export type DividerOrientation = ValuesOf<typeof DividerOrientation>;
 
 /**
  * Align content within divider

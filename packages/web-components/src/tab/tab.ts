@@ -1,10 +1,26 @@
-import { css, ElementStyles } from '@microsoft/fast-element';
-import { FASTTab } from '@microsoft/fast-foundation/tab.js';
+import { attr, css, ElementStyles, FASTElement } from '@microsoft/fast-element';
+import { StartEnd, StartEndOptions } from '../patterns/index.js';
+import { applyMixins } from '../utils/apply-mixins.js';
+
+/**
+ * Tab configuration options
+ * @public
+ */
+export type TabOptions = StartEndOptions<Tab>;
 
 /**
  * Tab extends the FASTTab and is a child of the TabList
  */
-export class Tab extends FASTTab {
+export class Tab extends FASTElement {
+  /**
+   * When true, the control will be immutable by user interaction. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled | disabled HTML attribute} for more information.
+   * @public
+   * @remarks
+   * HTML Attribute: disabled
+   */
+  @attr({ mode: 'boolean' })
+  public disabled!: boolean;
+
   private styles: ElementStyles | undefined;
 
   connectedCallback() {
@@ -23,3 +39,6 @@ export class Tab extends FASTTab {
     this.$fastController.addStyles(this.styles);
   }
 }
+
+export type Tab = StartEnd
+applyMixins(Tab, StartEnd);

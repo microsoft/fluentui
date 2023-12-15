@@ -4,9 +4,6 @@ import { styles } from './button.styles.js';
 import { template } from './button.template.js';
 
 /**
- * The Fluent Button Element. Implements {@link @microsoft/fast-foundation#Button },
- * {@link @microsoft/fast-foundation#buttonTemplate}
- *
  * @public
  * @remarks
  * HTML Element: \<fluent-button\>

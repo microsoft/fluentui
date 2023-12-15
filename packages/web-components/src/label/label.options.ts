@@ -1,4 +1,4 @@
-import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
+import { ValuesOf } from '../utils/index.js';
 
 /**
  * A Labels font size can be small, medium, or large

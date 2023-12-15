@@ -1,4 +1,4 @@
-import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
+import { ValuesOf } from '../utils/index.js';
 
 /**
  * SwitchLabelPosition Constants

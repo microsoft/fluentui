@@ -1,5 +1,7 @@
-import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
-import { TabsOrientation } from '@microsoft/fast-foundation/tabs.js';
+import { Orientation } from '@microsoft/fast-web-utilities';
+import { StartEndOptions } from '../patterns/index.js';
+import { ValuesOf } from '../utils/index.js';
+import { Tabs } from './tabs.js';
 
 export const TabsAppearance = {
   subtle: 'subtle',
@@ -16,4 +18,20 @@ export const TabsSize = {
 
 export type TabsSize = ValuesOf<typeof TabsSize>;
 
-export { TabsOrientation };
+/**
+ * Tabs option configuration options
+ * @public
+ */
+export type TabsOptions = StartEndOptions<Tabs>;
+
+/**
+ * The orientation of the component
+ * @public
+ */
+export const TabsOrientation = Orientation;
+
+/**
+ * The types for the Tabs component
+ * @public
+ */
+export type TabsOrientation = ValuesOf<typeof TabsOrientation>;

@@ -1,12 +1,12 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTProgressRing } from '@microsoft/fast-foundation/progress-ring.js';
+import { ProgressRing } from '../progress-ring/progress-ring.js';
 import type { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
 
 /**
  * The base class used for constructing a fluent-spinner custom element
  * @public
  */
-export class Spinner extends FASTProgressRing {
+export class Spinner extends ProgressRing {
   /**
    * The size of the spinner
    *
