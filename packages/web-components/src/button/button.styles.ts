@@ -65,6 +65,10 @@ export const styles = css`
     --icon-spacing: ${spacingHorizontalSNudge};
     contain: layout style;
     vertical-align: middle;
+    min-width: 96px;
+    min-height: 32px;
+    width: any;
+    height: any;
   }
 
   :host .control {
@@ -74,13 +78,11 @@ export const styles = css`
     justify-content: center;
     text-decoration-line: none;
     margin: 0;
-    min-height: 32px;
     outline-style: none;
     background-color: ${colorNeutralBackground1};
     color: ${colorNeutralForeground1};
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
     padding: 0 ${spacingHorizontalM};
-    min-width: 96px;
     border-radius: ${borderRadiusMedium};
     font-size: ${fontSizeBase300};
     font-family: ${fontFamilyBase};
@@ -90,6 +92,10 @@ export const styles = css`
     transition-property: background, border, color;
     transition-timing-function: ${curveEasyEase};
     cursor: pointer;
+    min-width: inherit;
+    min-height: inherit;
+    width: inherit;
+    height: inherit;
   }
 
   .content {
@@ -136,18 +142,18 @@ export const styles = css`
     margin-inline-start: var(--icon-spacing);
   }
 
-  :host([icon-only]) .control {
+  :host([icon-only]) {
     min-width: 32px;
     max-width: 32px;
   }
 
   :host([size='small']) {
     --icon-spacing: ${spacingHorizontalXS};
+    min-height: 24px;
+    min-width: 64px;
   }
 
   :host([size='small']) .control {
-    min-height: 24px;
-    min-width: 64px;
     padding: 0 ${spacingHorizontalS};
     border-radius: ${borderRadiusSmall};
     font-size: ${fontSizeBase200};
@@ -155,20 +161,23 @@ export const styles = css`
     font-weight: ${fontWeightRegular};
   }
 
-  :host([size='small'][icon-only]) .control {
+  :host([size='small'][icon-only]) {
     min-width: 24px;
     max-width: 24px;
   }
 
-  :host([size='large']) .control {
+  :host([size='large']) {
     min-height: 40px;
+  }
+
+  :host([size='large']) .control {
     border-radius: ${borderRadiusLarge};
     padding: 0 ${spacingHorizontalL};
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
 
-  :host([size='large'][icon-only]) .control {
+  :host([size='large'][icon-only]) {
     min-width: 40px;
     max-width: 40px;
   }

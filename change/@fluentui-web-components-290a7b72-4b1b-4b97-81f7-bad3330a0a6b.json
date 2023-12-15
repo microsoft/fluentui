@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(button): sets control width to inherit",
+  "packageName": "@fluentui/web-components",
+  "email": "brian.christopher.brady@gmail.com",
+  "dependentChangeType": "patch"
+}
