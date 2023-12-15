@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: interactive cards not having the focus ring when focused",
+  "packageName": "@fluentui/react-card",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}
