@@ -4,6 +4,7 @@ import type { TeachingPopoverHeaderProps, TeachingPopoverHeaderState } from './T
 
 import { Dismiss16Regular, Lightbulb16Regular } from '@fluentui/react-icons';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
+import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
 
 /**
  * Returns the props and state required to render the component
@@ -18,6 +19,7 @@ export const useTeachingPopoverHeader_unstable = (
 
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
+  const appearance = useTeachingPopoverContext_unstable(context => context.appearance);
 
   const onDismissButtonClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     if (!ev.defaultPrevented) {
@@ -30,6 +32,7 @@ export const useTeachingPopoverHeader_unstable = (
   });
 
   return {
+    appearance,
     components: {
       root: 'h3',
       dismissButton: 'button',

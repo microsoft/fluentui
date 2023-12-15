@@ -6,7 +6,6 @@ import { tokens } from '@fluentui/react-theme';
 
 export const teachingPopoverSurfaceClassNames: SlotClassNames<TeachingPopoverSurfaceSlots> = {
   root: 'fui-TeachingPopoverSurface',
-  arrow: 'fui-TeachingPopoverSurfaceArrow',
 };
 
 const useStyles = makeStyles({
@@ -35,10 +34,6 @@ export const useTeachingPopoverSurfaceStyles_unstable = (
     styles.root,
     state.root.className,
   );
-
-  if (updatedState.arrow) {
-    updatedState.arrow.className = mergeClasses(teachingPopoverSurfaceClassNames.arrow, updatedState.arrow.className);
-  }
 
   return updatedState;
 };

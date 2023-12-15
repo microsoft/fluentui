@@ -3,6 +3,7 @@ import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/reac
 import type { TeachingPopoverTitleProps, TeachingPopoverTitleState } from './TeachingPopoverTitle.types';
 import { DismissFilled, DismissRegular, bundleIcon } from '@fluentui/react-icons';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
+import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
 
 const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
 /**
@@ -18,6 +19,7 @@ export const useTeachingPopoverTitle_unstable = (
 
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
+  const appearance = useTeachingPopoverContext_unstable(context => context.appearance);
 
   const onDismissButtonClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     if (!ev.defaultPrevented) {
@@ -30,6 +32,7 @@ export const useTeachingPopoverTitle_unstable = (
   });
 
   return {
+    appearance,
     showDismiss,
     components: {
       root: 'h2',

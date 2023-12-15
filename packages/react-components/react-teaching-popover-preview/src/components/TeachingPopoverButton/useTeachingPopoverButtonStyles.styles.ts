@@ -61,8 +61,8 @@ const useStyles = makeStyles({
 export const useTeachingPopoverButtonStyles_unstable = (
   state: TeachingPopoverButtonState,
 ): TeachingPopoverButtonState => {
-  const appearance = usePopoverContext_unstable(context => context.appearance);
-  const totalPages = useTeachingPopoverContext_unstable(context => context.totalPages);
+  const { popoverAppearance, totalPages } = state;
+
   const isCarousel = totalPages > 1;
   const styles = useStyles();
   state.root.className = mergeClasses(teachingPopoverButtonClassNames.root, state.root.className);
@@ -72,14 +72,14 @@ export const useTeachingPopoverButtonStyles_unstable = (
 
   useButtonStyles_unstable(state);
   if (state.buttonType === 'primary') {
-    if (appearance === 'brand') {
+    if (popoverAppearance === 'brand') {
       state.root.className = mergeClasses(
         state.root.className,
         isCarousel ? styles.brandPrimaryCarousel : styles.brandPrimary,
       );
     }
   } else {
-    if (appearance === 'brand') {
+    if (popoverAppearance === 'brand') {
       state.root.className = mergeClasses(
         state.root.className,
         isCarousel ? styles.brandSecondaryCarousel : styles.brandSecondary,

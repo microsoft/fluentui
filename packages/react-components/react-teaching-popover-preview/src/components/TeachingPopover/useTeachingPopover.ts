@@ -2,6 +2,7 @@ import { usePopover_unstable } from '@fluentui/react-popover';
 import type { TeachingPopoverProps, TeachingPopoverState } from './TeachingPopover.types';
 import * as React from 'react';
 import { TeachingPopoverCarousel } from '../TeachingPopoverCarousel/TeachingPopoverCarousel';
+import { useControllableState } from '@fluentui/react-utilities';
 
 export function countCarouselChildren(children: React.ReactElement | React.ReactElement[]): number {
   const childArray = Array.isArray(children) ? children : [children];
@@ -27,7 +28,7 @@ export const useTeachingPopover_unstable = (props: TeachingPopoverProps): Teachi
   const popoverState = usePopover_unstable(props);
   const { onFinish, onPageChange } = props;
 
-  const carouselPageCount = React.useCallback(() => {
+  const carouselPageCount = React.useMemo(() => {
     /* We intentionally run this once prior to render
      * Distinguishes between carousel vs non-carousel visual state
      * Done prior to initial render to prevent UI change post-render
@@ -37,15 +38,20 @@ export const useTeachingPopover_unstable = (props: TeachingPopoverProps): Teachi
   }, []);
 
   // ToDo: Imperative setCurrentPage hook
-  const [currentPage, setCurrentPage] = React.useState<number>(0);
+  const [currentPage, setCurrentPage] = useControllableState({
+    initialState: 0,
+    defaultState: props.currentPage,
+    state: props.currentPage,
+  });
+
   const [totalPages, setTotalPages] = React.useState<number>(carouselPageCount);
 
   return {
     ...popoverState,
     appearance: props.appearance,
     withArrow: props.withArrow ?? true,
-    currentPage: props.currentPage ?? currentPage,
-    // We trap focus because the default view has button/carousel.
+    currentPage,
+    // We trap focus because the default view has buttons/carousel.
     trapFocus: props.trapFocus ?? true,
     setCurrentPage,
     totalPages,

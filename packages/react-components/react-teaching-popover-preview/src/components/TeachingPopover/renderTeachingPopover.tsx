@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { PopoverProvider } from '@fluentui/react-popover';
 import { TeachingPopoverProvider } from '../../TeachingPopoverContext';
-import type { TeachingPopoverState } from './TeachingPopover.types';
+import type { TeachingPopoverContextValues, TeachingPopoverState } from './TeachingPopover.types';
 
 /**
  * Render the final JSX of TeachingPopover
  */
-export const renderTeachingPopover_unstable = (state: TeachingPopoverState) => {
+export const renderTeachingPopover_unstable = (
+  state: TeachingPopoverState,
+  contextValues: TeachingPopoverContextValues,
+) => {
   const {
     appearance,
     arrowRef,
@@ -23,15 +26,10 @@ export const renderTeachingPopover_unstable = (state: TeachingPopoverState) => {
     triggerRef,
     withArrow,
     inertTrapFocus,
-    totalPages,
-    currentPage,
-    setCurrentPage,
-    setTotalPages,
-    onFinish,
-    onPageChange,
   } = state;
 
   return (
+    // Popover passes context values as part of PopoverState that we inherit
     <PopoverProvider
       value={{
         appearance,
@@ -51,9 +49,7 @@ export const renderTeachingPopover_unstable = (state: TeachingPopoverState) => {
         withArrow,
       }}
     >
-      <TeachingPopoverProvider
-        value={{ totalPages, currentPage, setTotalPages, setCurrentPage, appearance, onFinish, onPageChange }}
-      >
+      <TeachingPopoverProvider value={contextValues.teachingPopover}>
         {state.popoverTrigger}
         {state.open && state.popoverSurface}
       </TeachingPopoverProvider>

@@ -61,7 +61,7 @@ export const CarouselText = (props: TeachingPopoverProps) => (
         {/*Function use*/}
         <TeachingPopoverPageCount countStyle="text">
           {(currentPage: number, totalPages: number) => {
-            return `${currentPage} of ${totalPages}`;
+            return `${currentPage + 1} of ${totalPages}`;
           }}
         </TeachingPopoverPageCount>
         <TeachingPopoverButton buttonType="primary" altStepText="Finish">

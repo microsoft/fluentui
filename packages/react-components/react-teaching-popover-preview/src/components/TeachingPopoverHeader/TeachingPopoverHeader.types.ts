@@ -1,4 +1,5 @@
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { TeachingPopoverAppearance } from '../TeachingPopover/TeachingPopover.types';
 
 export type TeachingPopoverHeaderSlots = {
   /**
@@ -16,6 +17,11 @@ export type TeachingPopoverHeaderSlots = {
   icon?: Slot<'div'>;
 };
 
-export type TeachingPopoverHeaderState = ComponentState<TeachingPopoverHeaderSlots>;
+export type TeachingPopoverHeaderState = ComponentState<TeachingPopoverHeaderSlots> & {
+  /**
+   * Enables branded appearance state.
+   */
+  appearance: TeachingPopoverAppearance;
+};
 
 export type TeachingPopoverHeaderProps = ComponentProps<TeachingPopoverHeaderSlots>;

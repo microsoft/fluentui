@@ -1,4 +1,5 @@
 import type { ButtonProps, ButtonSlots, ButtonState } from '@fluentui/react-button';
+import { TeachingPopoverAppearance } from '../TeachingPopover/TeachingPopover.types';
 
 /*
  * These buttons are the same as a default fluent v9 button
@@ -21,8 +22,10 @@ export type TeachingPopoverButtonProps = ButtonProps & {
   altStepText?: string;
 };
 
-export type TeachingPopoverButtonState = ButtonState &
-  Required<
+export type TeachingPopoverButtonState = ButtonState & {
+  popoverAppearance: TeachingPopoverAppearance;
+  totalPages: number;
+} & Required<
     Pick<
       TeachingPopoverButtonProps,
       'buttonType' | 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'

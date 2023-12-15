@@ -72,6 +72,8 @@ export type {
   TeachingPopoverPageCountSlots,
   TeachingPopoverPageCountState,
   TeachingPopoverPageCountStyle,
+  TeachingPopoverPageCountChildRenderFunction,
+  TeachingPopoverPageCountRenderType,
 } from './TeachingPopoverPageCount';
 export {
   TeachingPopoverSurface,
@@ -112,5 +114,11 @@ export {
   countCarouselChildren,
   renderTeachingPopover_unstable,
   useTeachingPopover_unstable,
+  useTeachingPopoverContextValues_unstable,
 } from './TeachingPopover';
-export type { TeachingPopoverProps, TeachingPopoverState } from './TeachingPopover';
+export type {
+  TeachingPopoverProps,
+  TeachingPopoverState,
+  TeachingPopoverContextValues,
+  TeachingPopoverPageChangeData,
+} from './TeachingPopover';

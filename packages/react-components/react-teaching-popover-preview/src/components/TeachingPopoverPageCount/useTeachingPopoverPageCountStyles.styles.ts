@@ -44,7 +44,7 @@ const useStyles = makeStyles({
 /** Applies style classnames to slots */
 export const useTeachingPopoverPageCountStyles_unstable = (state: TeachingPopoverPageCountState) => {
   const styles = useStyles();
-  const appearance = usePopoverContext_unstable(context => context.appearance);
+  const { appearance } = state;
 
   const carouselIconMod = appearance === 'brand' ? styles.carouselIconBrand : undefined;
   const carouselIconSelectedMod = appearance === 'brand' ? styles.carouselSelectedIconBrand : undefined;

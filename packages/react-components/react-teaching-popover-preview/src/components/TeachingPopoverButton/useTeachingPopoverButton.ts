@@ -72,20 +72,20 @@ export const useTeachingPopoverButton_unstable = (
           }
           toggleOpen(event);
         } else {
-          onPageChange?.(currentPage - 1);
+          onPageChange?.(event, { currentPage: currentPage - 1 });
           setCurrentPage(currentPage - 1);
         }
       } else {
         if (currentPage >= totalPages - 1 || !isCarousel) {
           if (isCarousel) {
-            onFinish?.();
+            onFinish?.(event);
           }
           if (triggerRef.current) {
             triggerRef.current.focus();
           }
           toggleOpen(event);
         } else {
-          onPageChange?.(currentPage + 1);
+          onPageChange?.(event, { currentPage: currentPage + 1 });
           setCurrentPage(currentPage + 1);
         }
       }
@@ -111,6 +111,8 @@ export const useTeachingPopoverButton_unstable = (
       ...buttonState.root,
       ...buttonTextMod,
     },
+    popoverAppearance: appearance,
+    totalPages,
   };
 
   return state;

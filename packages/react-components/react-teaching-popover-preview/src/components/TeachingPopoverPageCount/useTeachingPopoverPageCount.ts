@@ -32,6 +32,7 @@ export const useTeachingPopoverPageCount_unstable = (
   const totalPages = useTeachingPopoverContext_unstable(context => context.totalPages);
   const currentPage = useTeachingPopoverContext_unstable(context => context.currentPage);
   const setCurrentPage = useTeachingPopoverContext_unstable(context => context.setCurrentPage);
+  const appearance = useTeachingPopoverContext_unstable(context => context.appearance);
 
   const _carouselIcon = slot.always(carouselIcon, {
     elementType: 'button',
@@ -84,6 +85,7 @@ export const useTeachingPopoverPageCount_unstable = (
   }
 
   return {
+    appearance,
     totalPages,
     currentPage,
     setCurrentPage,

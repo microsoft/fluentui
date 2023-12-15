@@ -52,7 +52,7 @@ const useStyles = makeStyles({
 /** Applies style classnames to slots */
 export const useTeachingPopoverTitleStyles_unstable = (state: TeachingPopoverTitleState) => {
   const styles = useStyles();
-  const appearance = useTeachingPopoverContext_unstable(context => context.appearance);
+  const { appearance } = state;
 
   state.root.className = mergeClasses(
     teachingPopoverTitleClassNames.root,
