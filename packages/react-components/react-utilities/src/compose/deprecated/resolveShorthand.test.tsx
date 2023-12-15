@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { resolveShorthand } from './resolveShorthand';
-import type { Slot } from './types';
+import type { Slot } from '../types';
 
 type TestProps = {
   slotA?: Slot<'div'>;
@@ -13,6 +13,7 @@ type TestProps = {
 describe('resolveShorthand', () => {
   it('resolves a string', () => {
     const props: TestProps = { slotA: 'hello' };
+    // eslint-disable-next-line deprecation/deprecation
     const resolvedProps = resolveShorthand(props.slotA);
 
     expect(resolvedProps).toEqual({
@@ -22,6 +23,7 @@ describe('resolveShorthand', () => {
 
   it('resolves a JSX element', () => {
     const props: TestProps = { slotA: <div>hello</div> };
+    // eslint-disable-next-line deprecation/deprecation
     const resolvedProps = resolveShorthand(props.slotA);
 
     expect(resolvedProps).toEqual({
@@ -31,6 +33,7 @@ describe('resolveShorthand', () => {
 
   it('resolves a number', () => {
     const props: TestProps = { slotA: 42 };
+    // eslint-disable-next-line deprecation/deprecation
     const resolvedProps = resolveShorthand(props.slotA);
 
     expect(resolvedProps).toEqual({
@@ -41,6 +44,7 @@ describe('resolveShorthand', () => {
   it('resolves an object as its copy', () => {
     const slotA = {};
     const props: TestProps = { slotA };
+    // eslint-disable-next-line deprecation/deprecation
     const resolvedProps = resolveShorthand(props.slotA);
 
     expect(resolvedProps).toEqual({});
@@ -50,12 +54,15 @@ describe('resolveShorthand', () => {
   it('resolves "null" without creating a child element', () => {
     const props: TestProps = { slotA: null, slotB: null };
 
+    // eslint-disable-next-line deprecation/deprecation
     expect(resolveShorthand(props.slotA)).toEqual(undefined);
+    // eslint-disable-next-line deprecation/deprecation
     expect(resolveShorthand(null, { required: true })).toEqual(undefined);
   });
 
   it('resolves undefined without creating a child element', () => {
     const props: TestProps = { slotA: undefined };
+    // eslint-disable-next-line deprecation/deprecation
     const resolvedProps = resolveShorthand(props.slotA);
 
     expect(resolvedProps).toEqual(undefined);
@@ -63,6 +70,7 @@ describe('resolveShorthand', () => {
 
   it('resolves to empty object creating a child element', () => {
     const props: TestProps = { slotA: undefined };
+    // eslint-disable-next-line deprecation/deprecation
     const resolvedProps = resolveShorthand(props.slotA, { required: true });
 
     expect(resolvedProps).toEqual({});
