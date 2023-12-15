@@ -1,5 +1,10 @@
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 import * as React from 'react';
-import type { TeachingPopoverPageCountState } from './TeachingPopoverPageCount.types';
+import type {
+  TeachingPopoverPageCountRenderType,
+  TeachingPopoverPageCountState,
+} from './TeachingPopoverPageCount.types';
 import { getSlotsNext } from '@fluentui/react-utilities';
 import { TeachingPopoverPageCountSlots } from './TeachingPopoverPageCount.types';
 

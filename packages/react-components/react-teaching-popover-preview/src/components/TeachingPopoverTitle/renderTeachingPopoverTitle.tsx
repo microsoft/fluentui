@@ -1,3 +1,5 @@
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 import * as React from 'react';
 import type { TeachingPopoverTitleState } from './TeachingPopoverTitle.types';
 import { getSlotsNext } from '@fluentui/react-utilities';

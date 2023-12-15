@@ -1,3 +1,5 @@
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 import * as React from 'react';
 import type { TeachingPopoverBodyState } from './TeachingPopoverBody.types';
 import { TeachingPopoverBodySlots } from './TeachingPopoverBody.types';
