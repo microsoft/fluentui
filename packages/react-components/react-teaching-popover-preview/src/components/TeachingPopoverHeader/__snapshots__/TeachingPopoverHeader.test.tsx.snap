@@ -27,7 +27,7 @@ exports[`TeachingPopoverHeader renders a default state 1`] = `
     Default TeachingPopoverHeader
     <button
       class="fui-TeachingPopoverHeader__dismissButton"
-      type="button"
+      role="img"
     >
       <svg
         aria-hidden="true"
