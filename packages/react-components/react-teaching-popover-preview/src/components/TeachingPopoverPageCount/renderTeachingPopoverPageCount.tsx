@@ -2,10 +2,11 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import * as React from 'react';
 import type {
+  TeachingPopoverPageCountChildRenderFunction,
   TeachingPopoverPageCountRenderType,
   TeachingPopoverPageCountState,
 } from './TeachingPopoverPageCount.types';
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import { TeachingPopoverPageCountSlots } from './TeachingPopoverPageCount.types';
 
 /**
@@ -14,7 +15,7 @@ import { TeachingPopoverPageCountSlots } from './TeachingPopoverPageCount.types'
 export const renderTeachingPopoverPageCount_unstable = (
   state: TeachingPopoverPageCountState,
 ): TeachingPopoverPageCountRenderType => {
-  const { slots, slotProps } = getSlotsNext<TeachingPopoverPageCountSlots>(state);
+  assertSlots<TeachingPopoverPageCountSlots>(state);
 
   const { setCurrentPage, currentPage, totalPages, countStyle } = state;
 
@@ -23,18 +24,19 @@ export const renderTeachingPopoverPageCount_unstable = (
     return null;
   }
   // Can be function for additional localization or page knowledge
-  if (typeof slotProps.root.children === 'function') {
+  if (typeof state.root.children === 'function') {
+    const renderFunc = state.root.children as TeachingPopoverPageCountChildRenderFunction;
     // Allow the user to inject their own return with page knowledge
-    return slotProps.root.children(currentPage + 1, totalPages);
+    return renderFunc(currentPage + 1, totalPages);
   } else if (countStyle === 'text') {
     // Users pass localized text as child (i.e. 'of').
     // If users do not pass in localized text, default to iconography '/'
     return (
-      <slots.root {...slotProps.root}>
+      <state.root>
         {`${currentPage + 1} `}
-        {slotProps.root.children ?? '/'}
+        {state.root.children ?? '/'}
         {` ${totalPages}`}
-      </slots.root>
+      </state.root>
     );
   } else {
     const carouselIconKey = 'fui-carouselIcon-';
@@ -42,36 +44,12 @@ export const renderTeachingPopoverPageCount_unstable = (
     const icons = [];
     for (let i = 0; i < totalPages; i++) {
       if (currentPage === i) {
-        icons.push(
-          <slots.carouselSelectedIcon
-            key={carouselIconKey + i}
-            {...slotProps.carouselSelectedIcon}
-            onClick={clickEvent => {
-              slotProps.carouselSelectedIcon.onClick?.(clickEvent);
-              if (clickEvent.defaultPrevented) {
-                return;
-              }
-              setCurrentPage(i);
-            }}
-          />,
-        );
+        icons.push(<state.carouselSelectedIcon key={carouselIconKey + i} data-index={i} />);
       } else {
-        icons.push(
-          <slots.carouselIcon
-            key={carouselIconKey + i}
-            {...slotProps.carouselIcon}
-            onClick={clickEvent => {
-              slotProps.carouselIcon.onClick?.(clickEvent);
-              if (clickEvent.defaultPrevented) {
-                return;
-              }
-              setCurrentPage(i);
-            }}
-          />,
-        );
+        icons.push(<state.carouselIcon key={carouselIconKey + i} data-index={i} />);
       }
     }
 
-    return <slots.root {...slotProps.root}>{icons}</slots.root>;
+    return <state.root>{icons}</state.root>;
   }
 };
