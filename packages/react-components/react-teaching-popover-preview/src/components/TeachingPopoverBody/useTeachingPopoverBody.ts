@@ -8,19 +8,22 @@ import type { TeachingPopoverBodyProps, TeachingPopoverBodyState } from './Teach
  */
 export const useTeachingPopoverBody_unstable = (
   props: TeachingPopoverBodyProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverBodyState => {
-  const { as, mediaLength } = props;
+  const { mediaLength } = props;
 
   return {
     components: {
       root: 'div',
       media: 'span',
     },
-    root: getIntrinsicElementProps(as || 'div', {
-      ref: ref as React.Ref<HTMLDivElement>,
-      ...props,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        ref,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
     media: slot.optional(props.media, { elementType: 'span' }),
     mediaLength: mediaLength ?? 'short',
   };

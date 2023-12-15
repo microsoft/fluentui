@@ -1,18 +1,17 @@
 import * as React from 'react';
-import { getIntrinsicElementProps } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
 import type { TeachingPopoverCarouselProps, TeachingPopoverCarouselState } from './TeachingPopoverCarousel.types';
 
 export const useTeachingPopoverCarousel_unstable = (
   props: TeachingPopoverCarouselProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselState => {
   const totalPages = useTeachingPopoverContext_unstable(context => context.totalPages);
   const setTotalPages = useTeachingPopoverContext_unstable(context => context.setTotalPages);
   const currentPage = useTeachingPopoverContext_unstable(context => context.currentPage);
   const setCurrentPage = useTeachingPopoverContext_unstable(context => context.setCurrentPage);
 
-  const { as } = props;
   const reactChildArray = React.Children.toArray(props.children);
 
   React.useEffect(() => {
@@ -34,10 +33,13 @@ export const useTeachingPopoverCarousel_unstable = (
     components: {
       root: 'div',
     },
-    root: getIntrinsicElementProps(as || 'div', {
-      ref: ref as React.Ref<HTMLDivElement>,
-      ...props,
-      children: currentPageElement,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        ref,
+        ...props,
+        children: currentPageElement,
+      }),
+      { elementType: 'div' },
+    ),
   };
 };

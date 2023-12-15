@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-components';
+import { Button, Image } from '@fluentui/react-components';
 
 import {
   TeachingPopover,
@@ -33,19 +33,19 @@ export const CarouselText = (props: TeachingPopoverProps) => (
       <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
       <TeachingPopoverCarousel>
         {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
-        <TeachingPopoverBody media={<img src={SwapImage} />}>
+        <TeachingPopoverBody media={<Image fit={'cover'} src={SwapImage} />}>
           <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
           {ExampleContent(1)}
         </TeachingPopoverBody>
 
         {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
-        <TeachingPopoverBody media={<img src={SwapImage} />}>
+        <TeachingPopoverBody media={<Image fit={'cover'} src={SwapImage} />}>
           <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
           {ExampleContent(2)}
         </TeachingPopoverBody>
 
         {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
-        <TeachingPopoverBody media={<img src={SwapImage} />}>
+        <TeachingPopoverBody media={<Image fit={'cover'} src={SwapImage} />}>
           <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
           {ExampleContent(3)}
         </TeachingPopoverBody>

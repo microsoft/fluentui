@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-components';
+import { Button, Image } from '@fluentui/react-components';
 
 import {
   TeachingPopover,
@@ -29,7 +29,7 @@ export const Default = (props: TeachingPopoverProps) => (
     </TeachingPopoverTrigger>
     <TeachingPopoverSurface>
       <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
-      <TeachingPopoverBody media={<img src={SwapImage} />}>
+      <TeachingPopoverBody media={<Image fit={'cover'} src={SwapImage} />}>
         <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
         {ExampleContent(1)}
       </TeachingPopoverBody>

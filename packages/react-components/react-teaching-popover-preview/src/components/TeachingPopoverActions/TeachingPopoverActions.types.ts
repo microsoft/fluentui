@@ -1,4 +1,3 @@
-// import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type TeachingPopoverActionsSlots = {
@@ -8,6 +7,8 @@ export type TeachingPopoverActionsSlots = {
   root: NonNullable<Slot<'div'>>;
 };
 
-export type TeachingPopoverActionsState = ComponentState<TeachingPopoverActionsSlots>;
+export type TeachingPopoverActionsState = ComponentState<TeachingPopoverActionsSlots> & {
+  totalPages: number;
+};
 
 export type TeachingPopoverActionsProps = ComponentProps<Partial<TeachingPopoverActionsSlots>>;

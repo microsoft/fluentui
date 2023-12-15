@@ -42,8 +42,9 @@ export type TeachingPopoverPageCountState = ComponentState<TeachingPopoverPageCo
 
 // For localization or customization, users may want to modify this for their own purposes
 export type TeachingPopoverPageCountChildRenderFunction = (currentPage: number, totalPages: number) => React.ReactNode;
+export type TeachingPopoverPageCountRenderType = TeachingPopoverPageCountChildRenderFunction | React.ReactNode;
 
 export type TeachingPopoverPageCountProps = ComponentProps<Partial<TeachingPopoverPageCountSlots>> &
   Partial<Pick<TeachingPopoverPageCountState, 'countStyle'>> & {
-    children?: TeachingPopoverPageCountChildRenderFunction | React.ReactNode;
+    children?: TeachingPopoverPageCountRenderType;
   };

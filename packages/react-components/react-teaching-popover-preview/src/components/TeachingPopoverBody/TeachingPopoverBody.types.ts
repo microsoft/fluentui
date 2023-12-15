@@ -13,7 +13,7 @@ export type TeachingPopoverBodySlots = {
   media?: Slot<'span'>;
 };
 
-export type TeachingPopoverBodyProps = ComponentProps<Partial<TeachingPopoverBodySlots>> & {
+export type TeachingPopoverBodyProps = ComponentProps<TeachingPopoverBodySlots> & {
   mediaLength?: TeachingPopoverBodyMediaLength;
 };
 

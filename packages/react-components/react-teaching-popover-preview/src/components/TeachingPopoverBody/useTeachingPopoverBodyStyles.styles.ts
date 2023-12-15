@@ -16,10 +16,6 @@ export const useMediaStyles = makeStyles({
     verticalAlign: 'middle',
     justifyContent: 'center',
     display: 'flex',
-    '& > img': {
-      objectFit: 'cover',
-      display: 'inline-block',
-    },
   },
   short: {
     '@supports not (aspect-ratio)': {

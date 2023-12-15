@@ -1,6 +1,6 @@
 import { useButtonStyles_unstable } from '@fluentui/react-button';
 import type { TeachingPopoverButtonSlots, TeachingPopoverButtonState } from './TeachingPopoverButton.types';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { tokens } from '@fluentui/react-theme';
 import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
@@ -13,14 +13,12 @@ export const teachingPopoverButtonClassNames: SlotClassNames<TeachingPopoverButt
 
 const useStyles = makeStyles({
   brandPrimary: {
-    borderBlockColor: tokens.colorNeutralForegroundOnBrand,
-    borderInlineColor: tokens.colorNeutralForegroundOnBrand,
+    ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
   },
   brandPrimaryCarousel: {
     color: tokens.colorBrandForeground1,
     backgroundColor: tokens.colorNeutralForegroundOnBrand,
-    borderBlockColor: tokens.colorTransparentBackground,
-    borderInlineColor: tokens.colorTransparentBackground,
+    ...shorthands.borderColor(tokens.colorTransparentBackground),
     ':hover': {
       color: tokens.colorCompoundBrandForeground1Hover,
       backgroundColor: tokens.colorNeutralForegroundOnBrand,
@@ -46,18 +44,15 @@ const useStyles = makeStyles({
     // In brand, this is always 'NeutralForegroundOnBrand'
     color: tokens.colorNeutralForegroundOnBrand,
     backgroundColor: tokens.colorBrandBackground,
-    borderBlockColor: tokens.colorNeutralForegroundOnBrand,
-    borderInlineColor: tokens.colorNeutralForegroundOnBrand,
+    ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
     ':hover': {
       color: tokens.colorNeutralForegroundOnBrand,
-      borderBlockColor: tokens.colorNeutralForegroundOnBrand,
-      borderInlineColor: tokens.colorNeutralForegroundOnBrand,
+      ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
       backgroundColor: tokens.colorBrandBackgroundHover,
     },
     ':hover:active': {
       color: tokens.colorNeutralForegroundOnBrand,
-      borderBlockColor: tokens.colorNeutralForegroundOnBrand,
-      borderInlineColor: tokens.colorNeutralForegroundOnBrand,
+      ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
       backgroundColor: tokens.colorBrandBackgroundPressed,
     },
   },

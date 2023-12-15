@@ -12,7 +12,7 @@ const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
  */
 export const useTeachingPopoverTitle_unstable = (
   props: TeachingPopoverTitleProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverTitleState => {
   const { dismissButton, showDismiss } = props;
 
@@ -37,7 +37,7 @@ export const useTeachingPopoverTitle_unstable = (
     },
     root: slot.always(
       getIntrinsicElementProps('h2', {
-        ref: ref as React.Ref<HTMLDivElement>,
+        ref,
         ...props,
       }),
       { elementType: 'h2' },

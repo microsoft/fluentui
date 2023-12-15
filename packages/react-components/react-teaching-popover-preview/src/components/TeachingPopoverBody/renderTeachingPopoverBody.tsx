@@ -1,18 +1,18 @@
 import * as React from 'react';
 import type { TeachingPopoverBodyState } from './TeachingPopoverBody.types';
-import { getSlotsNext } from '@fluentui/react-utilities';
 import { TeachingPopoverBodySlots } from './TeachingPopoverBody.types';
+import { assertSlots } from '@fluentui/react-utilities';
 
 /**
  * Render the final JSX of TeachingPopoverBody
  */
 export const renderTeachingPopoverBody_unstable = (state: TeachingPopoverBodyState) => {
-  const { slots, slotProps } = getSlotsNext<TeachingPopoverBodySlots>(state);
+  assertSlots<TeachingPopoverBodySlots>(state);
 
   return (
-    <slots.root {...slotProps.root}>
-      {slots.media && <slots.media {...slotProps.media} />}
-      {slotProps.root.children}
-    </slots.root>
+    <state.root>
+      {state.media && <state.media />}
+      {state.root.children}
+    </state.root>
   );
 };

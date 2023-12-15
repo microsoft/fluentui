@@ -6,7 +6,9 @@ import { TeachingPopoverPageCountSlots } from './TeachingPopoverPageCount.types'
 /**
  * Render the final JSX of TeachingPopoverPageCount
  */
-export const renderTeachingPopoverPageCount_unstable = (state: TeachingPopoverPageCountState) => {
+export const renderTeachingPopoverPageCount_unstable = (
+  state: TeachingPopoverPageCountState,
+): TeachingPopoverPageCountRenderType => {
   const { slots, slotProps } = getSlotsNext<TeachingPopoverPageCountSlots>(state);
 
   const { setCurrentPage, currentPage, totalPages, countStyle } = state;

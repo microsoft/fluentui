@@ -3,14 +3,14 @@ import { PopoverTriggerChildProps, PopoverTriggerProps, PopoverTriggerState } fr
 /**
  * TeachingPopoverTrigger Props
  */
-export type TeachingPopoverTriggerProps = PopoverTriggerProps & {};
+export type TeachingPopoverTriggerProps = PopoverTriggerProps;
 
 /**
  * TeachingPopoverTrigger State
  */
-export type TeachingPopoverTriggerState = PopoverTriggerState & {};
+export type TeachingPopoverTriggerState = PopoverTriggerState;
 
 /**
  * Props that are passed to the child of the DialogTrigger when cloned to ensure correct behavior for the Dialog
  */
-export type TeachingPopoverTriggerChildProps = PopoverTriggerChildProps & {};
+export type TeachingPopoverTriggerChildProps = PopoverTriggerChildProps;

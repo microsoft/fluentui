@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { getIntrinsicElementProps } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, isResolvedShorthand, slot, useEventCallback } from '@fluentui/react-utilities';
 import type { TeachingPopoverPageCountProps, TeachingPopoverPageCountState } from './TeachingPopoverPageCount.types';
 
 import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
-import { useARIAButtonShorthand } from '@fluentui/react-aria';
+import { useARIAButtonProps } from '@fluentui/react-aria';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 
 /**
@@ -13,7 +13,7 @@ import { useFocusableGroup } from '@fluentui/react-tabster';
  */
 export const useTeachingPopoverPageCount_unstable = (
   props: TeachingPopoverPageCountProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverPageCountState => {
   const { as, carouselIcon, carouselSelectedIcon } = props;
   const focusableGroupAttr = useFocusableGroup({ tabBehavior: 'limited' });
@@ -22,19 +22,41 @@ export const useTeachingPopoverPageCount_unstable = (
   const currentPage = useTeachingPopoverContext_unstable(context => context.currentPage);
   const setCurrentPage = useTeachingPopoverContext_unstable(context => context.setCurrentPage);
 
-  const carouselIconShorthand = useARIAButtonShorthand(carouselIcon, {
-    required: true,
+  const _carouselIcon = slot.always(carouselIcon, {
+    elementType: 'button',
     defaultProps: {
-      role: 'button',
+      type: 'button',
     },
   });
 
-  const carouselSelectedIconShorthand = useARIAButtonShorthand(carouselSelectedIcon, {
-    required: true,
+  _carouselIcon.onClick = useEventCallback(event => {
+    if (isResolvedShorthand(carouselIcon)) {
+      carouselIcon.onClick?.(event);
+    }
+    if (!event.defaultPrevented) {
+      setCurrentPage(0);
+    }
+  });
+
+  const carouselIconShorthand = useARIAButtonProps(_carouselIcon?.as, _carouselIcon);
+
+  const _carouselSelectedIcon = slot.always(carouselSelectedIcon, {
+    elementType: 'button',
     defaultProps: {
-      role: 'button',
+      type: 'button',
     },
   });
+
+  _carouselSelectedIcon.onClick = useEventCallback(event => {
+    if (isResolvedShorthand(carouselSelectedIcon)) {
+      carouselSelectedIcon.onClick?.(event);
+    }
+    if (!event.defaultPrevented) {
+      setCurrentPage(0);
+    }
+  });
+  const carouselSelectedIconShorthand = useARIAButtonProps(_carouselSelectedIcon?.as, { ..._carouselSelectedIcon });
+
   const tabsterMod =
     props.countStyle === 'icon'
       ? {
@@ -54,11 +76,14 @@ export const useTeachingPopoverPageCount_unstable = (
       carouselIcon: 'button',
       carouselSelectedIcon: 'button',
     },
-    root: getIntrinsicElementProps(as || 'div', {
-      ref: ref as React.Ref<HTMLDivElement>,
-      ...props,
-      ...tabsterMod,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        ref,
+        ...props,
+        ...tabsterMod,
+      }),
+      { elementType: 'div' },
+    ),
     carouselIcon: carouselIconShorthand,
     carouselSelectedIcon: carouselSelectedIconShorthand,
   };

@@ -12,7 +12,7 @@ import { usePopoverContext_unstable } from '@fluentui/react-popover';
  */
 export const useTeachingPopoverHeader_unstable = (
   props: TeachingPopoverHeaderProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverHeaderState => {
   const { dismissButton, icon } = props;
 
@@ -37,7 +37,7 @@ export const useTeachingPopoverHeader_unstable = (
     },
     root: slot.always(
       getIntrinsicElementProps('h3', {
-        ref: ref as React.Ref<HTMLDivElement>,
+        ref,
         ...props,
       }),
       { elementType: 'h3' },
