@@ -11,7 +11,7 @@ export type TeachingPopoverCarouselSlots = {
 /**
  * TeachingPopoverCarousel Props
  */
-export type TeachingPopoverCarouselProps = ComponentProps<Partial<TeachingPopoverCarouselSlots>>;
+export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouselSlots>;
 
 /**
  * TeachingPopoverCarousel State and Context Hooks

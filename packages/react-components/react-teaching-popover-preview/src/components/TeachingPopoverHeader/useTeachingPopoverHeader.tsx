@@ -50,7 +50,8 @@ export const useTeachingPopoverHeader_unstable = (
       },
       elementType: 'div',
     }),
-    dismissButton: slot.always(dismissButton ?? { as: 'button' }, {
+    dismissButton: slot.optional(dismissButton, {
+      renderByDefault: true,
       defaultProps: {
         children: <Dismiss16Regular />,
         role: 'img',

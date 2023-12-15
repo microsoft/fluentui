@@ -9,13 +9,13 @@ export type TeachingPopoverHeaderSlots = {
   /**
    * The component to be used as close button in heading
    */
-  dismissButton: Slot<'button'>;
+  dismissButton?: Slot<'button'>;
   /**
    * Initial icon slot rendered before children content in heading.
    */
-  icon: Slot<'div'>;
+  icon?: Slot<'div'>;
 };
 
 export type TeachingPopoverHeaderState = ComponentState<TeachingPopoverHeaderSlots>;
 
-export type TeachingPopoverHeaderProps = ComponentProps<Partial<TeachingPopoverHeaderSlots>>;
+export type TeachingPopoverHeaderProps = ComponentProps<TeachingPopoverHeaderSlots>;
