@@ -17,11 +17,6 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    */
   appearance?: 'filled' | 'outline';
   /**
-   * Sets whether to render a full or compact Rating
-   * @default false
-   */
-  compact?: boolean;
-  /**
    * Default value of the Rating
    */
   defaultValue?: number;
@@ -40,6 +35,11 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    */
   max?: number;
   /**
+   * The mode of the rating.
+   * @default 'interactive'
+   */
+  mode?: 'interactive' | 'readonly' | 'readonly-compact';
+  /**
    * Name for the Radio inputs. If not provided, one will be automatically generated
    */
   name?: string;
@@ -52,11 +52,6 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    * @default false
    */
   precision?: boolean;
-  /**
-   * Sets Rating to be read only
-   * @default false
-   */
-  readOnly?: boolean;
   /**
    * Sets the size of the Rating items.
    * @default medium
@@ -83,26 +78,14 @@ export type RatingOnChangeData = {
  */
 export type RatingState = ComponentState<RatingSlots> &
   Required<
-    Pick<
-      RatingProps,
-      'appearance' | 'compact' | 'iconFilled' | 'iconOutline' | 'name' | 'precision' | 'readOnly' | 'size' | 'value'
-    >
+    Pick<RatingProps, 'appearance' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'precision' | 'size' | 'value'>
   > & {
     hoveredValue?: number | undefined;
   };
 
 export type RatingContextValue = Pick<
   RatingState,
-  | 'appearance'
-  | 'compact'
-  | 'iconFilled'
-  | 'iconOutline'
-  | 'name'
-  | 'precision'
-  | 'readOnly'
-  | 'size'
-  | 'value'
-  | 'hoveredValue'
+  'appearance' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'precision' | 'size' | 'value' | 'hoveredValue'
 >;
 
 export type RatingContextValues = {

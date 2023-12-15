@@ -22,7 +22,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   const displayedRatingValue = context?.hoveredValue ?? ratingValue;
 
   let iconFillWidth;
-  if ((context && context.compact) || displayedRatingValue >= value) {
+  if ((context && context.mode === 'readonly-compact') || displayedRatingValue >= value) {
     iconFillWidth = 1;
   } else if (displayedRatingValue >= value - 0.5) {
     iconFillWidth = 0.5;
@@ -74,7 +74,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   let halfValueInput;
-  if (context && !context.readOnly && context.precision && !context.compact) {
+  if (context && context.mode === 'interactive' && context.precision) {
     halfValueInput = slot.always(props.halfValueInput, {
       defaultProps: {
         type: 'radio',
@@ -91,7 +91,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   let fullValueInput;
-  if (context && !context.readOnly && !context.compact) {
+  if (context && context.mode === 'interactive') {
     fullValueInput = slot.always(props.fullValueInput, {
       defaultProps: {
         type: 'radio',
@@ -109,7 +109,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   const state: RatingItemState = {
-    compact: context ? context.compact : false,
+    mode: context ? context.mode : 'interactive',
     precision: context ? context.precision : false,
     size: context ? context.size : 'medium',
     iconFillWidth,
