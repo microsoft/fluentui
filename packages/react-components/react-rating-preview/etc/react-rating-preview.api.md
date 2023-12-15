@@ -20,7 +20,7 @@ export const Rating: ForwardRefComponent<RatingProps>;
 export const ratingClassNames: SlotClassNames<RatingSlots>;
 
 // @public (undocumented)
-export type RatingContextValue = Pick<RatingState, 'appearance' | 'compact' | 'iconFilled' | 'iconOutline' | 'name' | 'precision' | 'readOnly' | 'size' | 'value' | 'hoveredValue'>;
+export type RatingContextValue = Pick<RatingState, 'appearance' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'precision' | 'size' | 'value' | 'hoveredValue'>;
 
 // @public (undocumented)
 export type RatingContextValues = {
@@ -49,7 +49,7 @@ export type RatingItemSlots = {
 };
 
 // @public
-export type RatingItemState = ComponentState<RatingItemSlots> & Required<Pick<RatingItemProps, 'value'>> & Pick<RatingState, 'compact' | 'precision' | 'size'> & {
+export type RatingItemState = ComponentState<RatingItemSlots> & Required<Pick<RatingItemProps, 'value'>> & Pick<RatingState, 'mode' | 'precision' | 'size'> & {
     iconFillWidth: number;
 };
 
@@ -61,15 +61,14 @@ export type RatingOnChangeData = {
 // @public
 export type RatingProps = ComponentProps<RatingSlots> & {
     appearance?: 'filled' | 'outline';
-    compact?: boolean;
     defaultValue?: number;
     iconFilled?: React_2.ReactElement;
     iconOutline?: React_2.ReactElement;
     max?: number;
+    mode?: 'interactive' | 'readonly' | 'readonly-compact';
     name?: string;
     onChange?: (ev: React_2.SyntheticEvent | Event, data: RatingOnChangeData) => void;
     precision?: boolean;
-    readOnly?: boolean;
     size?: 'small' | 'medium' | 'large';
     value?: number;
 };
@@ -85,7 +84,7 @@ export type RatingSlots = {
 };
 
 // @public
-export type RatingState = ComponentState<RatingSlots> & Required<Pick<RatingProps, 'appearance' | 'compact' | 'iconFilled' | 'iconOutline' | 'name' | 'precision' | 'readOnly' | 'size' | 'value'>> & {
+export type RatingState = ComponentState<RatingSlots> & Required<Pick<RatingProps, 'appearance' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'precision' | 'size' | 'value'>> & {
     hoveredValue?: number | undefined;
 };
 
