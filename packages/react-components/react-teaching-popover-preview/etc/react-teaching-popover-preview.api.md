@@ -29,7 +29,7 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 export function countCarouselChildren(children: React_2.ReactElement | React_2.ReactElement[]): number;
 
 // @public
-export const renderTeachingPopover_unstable: (state: TeachingPopoverState) => JSX.Element;
+export const renderTeachingPopover_unstable: (state: TeachingPopoverState, contextValues: TeachingPopoverContextValues) => JSX.Element;
 
 // @public
 export const renderTeachingPopoverActions_unstable: (state: TeachingPopoverActionsState) => JSX.Element;
@@ -47,7 +47,7 @@ export const renderTeachingPopoverCarousel_unstable: (state: TeachingPopoverCaro
 export const renderTeachingPopoverHeader_unstable: (state: TeachingPopoverHeaderState) => JSX.Element;
 
 // @public
-export const renderTeachingPopoverPageCount_unstable: (state: TeachingPopoverPageCountState) => any;
+export const renderTeachingPopoverPageCount_unstable: (state: TeachingPopoverPageCountState) => JSX.Element | null;
 
 // @public
 export const renderTeachingPopoverSurface_unstable: (state: TeachingPopoverSurfaceState) => JSX.Element;
@@ -76,7 +76,9 @@ export type TeachingPopoverActionsSlots = {
 };
 
 // @public (undocumented)
-export type TeachingPopoverActionsState = ComponentState<TeachingPopoverActionsSlots>;
+export type TeachingPopoverActionsState = ComponentState<TeachingPopoverActionsSlots> & {
+    totalPages: number;
+};
 
 // @public
 export const TeachingPopoverBody: ForwardRefComponent<TeachingPopoverBodyProps>;
@@ -88,7 +90,7 @@ export const teachingPopoverBodyClassNames: SlotClassNames<TeachingPopoverBodySl
 export type TeachingPopoverBodyMediaLength = 'short' | 'medium' | 'tall';
 
 // @public (undocumented)
-export type TeachingPopoverBodyProps = ComponentProps<Partial<TeachingPopoverBodySlots>> & {
+export type TeachingPopoverBodyProps = ComponentProps<TeachingPopoverBodySlots> & {
     mediaLength?: TeachingPopoverBodyMediaLength;
 };
 
@@ -117,7 +119,10 @@ export type TeachingPopoverButtonProps = ButtonProps & {
 export type TeachingPopoverButtonSlots = ButtonSlots;
 
 // @public (undocumented)
-export type TeachingPopoverButtonState = ButtonState & Required<Pick<TeachingPopoverButtonProps, 'buttonType' | 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>>;
+export type TeachingPopoverButtonState = ButtonState & {
+    popoverAppearance: TeachingPopoverAppearance;
+    totalPages: number;
+} & Required<Pick<TeachingPopoverButtonProps, 'buttonType' | 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>>;
 
 // @public (undocumented)
 export type TeachingPopoverButtonType = 'primary' | 'secondary';
@@ -129,7 +134,7 @@ export const TeachingPopoverCarousel: ForwardRefComponent<TeachingPopoverCarouse
 export const teachingPopoverCarouselClassNames: SlotClassNames<TeachingPopoverCarouselSlots>;
 
 // @public
-export type TeachingPopoverCarouselProps = ComponentProps<Partial<TeachingPopoverCarouselSlots>>;
+export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouselSlots>;
 
 // @public (undocumented)
 export type TeachingPopoverCarouselSlots = {
@@ -139,6 +144,11 @@ export type TeachingPopoverCarouselSlots = {
 // @public
 export type TeachingPopoverCarouselState = ComponentState<TeachingPopoverCarouselSlots> & Required<Pick<TeachingPopoverState, 'currentPage' | 'setCurrentPage' | 'totalPages' | 'setTotalPages'>>;
 
+// @public (undocumented)
+export type TeachingPopoverContextValues = {
+    teachingPopover: TeachingPopoverContextValue;
+};
+
 // @public
 export const TeachingPopoverHeader: ForwardRefComponent<TeachingPopoverHeaderProps>;
 
@@ -146,28 +156,41 @@ export const TeachingPopoverHeader: ForwardRefComponent<TeachingPopoverHeaderPro
 export const teachingPopoverHeaderClassNames: SlotClassNames<TeachingPopoverHeaderSlots>;
 
 // @public (undocumented)
-export type TeachingPopoverHeaderProps = ComponentProps<Partial<TeachingPopoverHeaderSlots>>;
+export type TeachingPopoverHeaderProps = ComponentProps<TeachingPopoverHeaderSlots>;
 
 // @public (undocumented)
 export type TeachingPopoverHeaderSlots = {
     root: Slot<'h3', 'h1' | 'h2' | 'h4' | 'h5' | 'h6' | 'div'>;
-    dismissButton: Slot<'button'>;
-    icon: Slot<'div'>;
+    dismissButton?: Slot<'button'>;
+    icon?: Slot<'div'>;
 };
 
 // @public (undocumented)
-export type TeachingPopoverHeaderState = ComponentState<TeachingPopoverHeaderSlots>;
+export type TeachingPopoverHeaderState = ComponentState<TeachingPopoverHeaderSlots> & {
+    appearance: TeachingPopoverAppearance;
+};
+
+// @public (undocumented)
+export type TeachingPopoverPageChangeData = {
+    currentPage: number;
+};
 
 // @public
 export const TeachingPopoverPageCount: ForwardRefComponent<TeachingPopoverPageCountProps>;
+
+// @public (undocumented)
+export type TeachingPopoverPageCountChildRenderFunction = (currentPage: number, totalPages: number) => React_2.ReactNode;
 
 // @public (undocumented)
 export const teachingPopoverPageCountClassNames: SlotClassNames<TeachingPopoverPageCountSlots>;
 
 // @public (undocumented)
 export type TeachingPopoverPageCountProps = ComponentProps<Partial<TeachingPopoverPageCountSlots>> & Partial<Pick<TeachingPopoverPageCountState, 'countStyle'>> & {
-    children?: TeachingPopoverPageCountChildRenderFunction | React_2.ReactNode;
+    children?: TeachingPopoverPageCountRenderType;
 };
+
+// @public (undocumented)
+export type TeachingPopoverPageCountRenderType = TeachingPopoverPageCountChildRenderFunction | React_2.ReactNode;
 
 // @public (undocumented)
 export type TeachingPopoverPageCountSlots = {
@@ -182,6 +205,7 @@ export type TeachingPopoverPageCountState = ComponentState<TeachingPopoverPageCo
     totalPages: number;
     setCurrentPage: (index: number) => void;
     countStyle: TeachingPopoverPageCountStyle;
+    appearance: TeachingPopoverAppearance;
 };
 
 // @public (undocumented)
@@ -190,9 +214,9 @@ export type TeachingPopoverPageCountStyle = 'text' | 'icon';
 // @public
 export type TeachingPopoverProps = Omit<PopoverProps, 'appearance'> & {
     currentPage?: number;
-    onPageChange?: (index: number) => void;
-    onFinish?: () => void;
-    appearance?: 'brand';
+    onPageChange?: (event: React_2.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>, data: TeachingPopoverPageChangeData) => void;
+    onFinish?: (event: React_2.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => void;
+    appearance?: TeachingPopoverAppearance;
 };
 
 // @public
@@ -235,31 +259,33 @@ export type TeachingPopoverTitleSlots = {
 };
 
 // @public
-export type TeachingPopoverTitleState = ComponentState<TeachingPopoverTitleSlots> & Pick<TeachingPopoverTitleProps, 'showDismiss'>;
+export type TeachingPopoverTitleState = ComponentState<TeachingPopoverTitleSlots> & Pick<TeachingPopoverTitleProps, 'showDismiss'> & {
+    appearance: TeachingPopoverAppearance;
+};
 
 // @public
 export const TeachingPopoverTrigger: React_2.FC<TeachingPopoverTriggerProps>;
 
 // @public
-export type TeachingPopoverTriggerChildProps = PopoverTriggerChildProps & {};
+export type TeachingPopoverTriggerChildProps = PopoverTriggerChildProps;
 
 // @public
-export type TeachingPopoverTriggerProps = PopoverTriggerProps & {};
+export type TeachingPopoverTriggerProps = PopoverTriggerProps;
 
 // @public
-export type TeachingPopoverTriggerState = PopoverTriggerState & {};
+export type TeachingPopoverTriggerState = PopoverTriggerState;
 
 // @public (undocumented)
 export const useTeachingPopover_unstable: (props: TeachingPopoverProps) => TeachingPopoverState;
 
 // @public
-export const useTeachingPopoverActions_unstable: (props: TeachingPopoverActionsProps, ref: React_2.Ref<HTMLElement>) => TeachingPopoverActionsState;
+export const useTeachingPopoverActions_unstable: (props: TeachingPopoverActionsProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverActionsState;
 
 // @public
 export const useTeachingPopoverActionsStyles_unstable: (state: TeachingPopoverActionsState) => TeachingPopoverActionsState;
 
 // @public
-export const useTeachingPopoverBody_unstable: (props: TeachingPopoverBodyProps, ref: React_2.Ref<HTMLElement>) => TeachingPopoverBodyState;
+export const useTeachingPopoverBody_unstable: (props: TeachingPopoverBodyProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverBodyState;
 
 // @public
 export const useTeachingPopoverBodyStyles_unstable: (state: TeachingPopoverBodyState) => TeachingPopoverBodyState;
@@ -271,19 +297,22 @@ export const useTeachingPopoverButton_unstable: (props: TeachingPopoverButtonPro
 export const useTeachingPopoverButtonStyles_unstable: (state: TeachingPopoverButtonState) => TeachingPopoverButtonState;
 
 // @public (undocumented)
-export const useTeachingPopoverCarousel_unstable: (props: TeachingPopoverCarouselProps, ref: React_2.Ref<HTMLElement>) => TeachingPopoverCarouselState;
+export const useTeachingPopoverCarousel_unstable: (props: TeachingPopoverCarouselProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselState;
 
 // @public
 export const useTeachingPopoverCarouselStyles_unstable: (state: TeachingPopoverCarouselState) => TeachingPopoverCarouselState;
 
+// @public (undocumented)
+export function useTeachingPopoverContextValues_unstable(state: TeachingPopoverState): TeachingPopoverContextValues;
+
 // @public
-export const useTeachingPopoverHeader_unstable: (props: TeachingPopoverHeaderProps, ref: React_2.Ref<HTMLElement>) => TeachingPopoverHeaderState;
+export const useTeachingPopoverHeader_unstable: (props: TeachingPopoverHeaderProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverHeaderState;
 
 // @public
 export const useTeachingPopoverHeaderStyles_unstable: (state: TeachingPopoverHeaderState) => TeachingPopoverHeaderState;
 
 // @public
-export const useTeachingPopoverPageCount_unstable: (props: TeachingPopoverPageCountProps, ref: React_2.Ref<HTMLElement>) => TeachingPopoverPageCountState;
+export const useTeachingPopoverPageCount_unstable: (props: TeachingPopoverPageCountProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverPageCountState;
 
 // @public
 export const useTeachingPopoverPageCountStyles_unstable: (state: TeachingPopoverPageCountState) => TeachingPopoverPageCountState;
@@ -295,7 +324,7 @@ export const useTeachingPopoverSurface_unstable: (props: TeachingPopoverSurfaceP
 export const useTeachingPopoverSurfaceStyles_unstable: (state: TeachingPopoverSurfaceState) => TeachingPopoverSurfaceState;
 
 // @public
-export const useTeachingPopoverTitle_unstable: (props: TeachingPopoverTitleProps, ref: React_2.Ref<HTMLElement>) => TeachingPopoverTitleState;
+export const useTeachingPopoverTitle_unstable: (props: TeachingPopoverTitleProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverTitleState;
 
 // @public
 export const useTeachingPopoverTitleStyles_unstable: (state: TeachingPopoverTitleState) => TeachingPopoverTitleState;

@@ -1,9 +1,7 @@
 import { useButtonStyles_unstable } from '@fluentui/react-button';
 import type { TeachingPopoverButtonSlots, TeachingPopoverButtonState } from './TeachingPopoverButton.types';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { tokens } from '@fluentui/react-theme';
-import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 export const teachingPopoverButtonClassNames: SlotClassNames<TeachingPopoverButtonSlots> = {

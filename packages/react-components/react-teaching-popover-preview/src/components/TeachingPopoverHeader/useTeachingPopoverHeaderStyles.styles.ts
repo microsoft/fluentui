@@ -3,7 +3,6 @@ import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { TeachingPopoverHeaderSlots, TeachingPopoverHeaderState } from './TeachingPopoverHeader.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
 
 export const teachingPopoverHeaderClassNames: SlotClassNames<TeachingPopoverHeaderSlots> = {
   root: 'fui-TeachingPopoverHeader',

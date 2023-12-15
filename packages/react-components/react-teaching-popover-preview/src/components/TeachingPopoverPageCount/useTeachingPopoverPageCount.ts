@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  getIntrinsicElementProps,
-  isHTMLElement,
-  isResolvedShorthand,
-  mergeCallbacks,
-  slot,
-  useEventCallback,
-} from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, isHTMLElement, mergeCallbacks, slot } from '@fluentui/react-utilities';
 import type {
   TeachingPopoverPageCountChildRenderFunction,
   TeachingPopoverPageCountProps,

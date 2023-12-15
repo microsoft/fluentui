@@ -1,6 +1,5 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
-import * as React from 'react';
 import type { TeachingPopoverCarouselState } from './TeachingPopoverCarousel.types';
 import { TeachingPopoverCarouselSlots } from './TeachingPopoverCarousel.types';
 import { assertSlots } from '@fluentui/react-utilities';

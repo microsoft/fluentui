@@ -3,7 +3,6 @@ import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { TeachingPopoverPageCountSlots, TeachingPopoverPageCountState } from './TeachingPopoverPageCount.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { usePopoverContext_unstable } from '@fluentui/react-popover';
 
 export const teachingPopoverPageCountClassNames: SlotClassNames<TeachingPopoverPageCountSlots> = {
   root: 'fui-TeachingPopoverPageCount',
