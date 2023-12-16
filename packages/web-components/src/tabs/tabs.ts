@@ -318,9 +318,9 @@ export class Tabs extends FASTElement {
 
       // If the original property isn't emptied out,
       // the next set will morph into a grid-area style setting that is not what we want
-      tab.style.setProperty(gridHorizontalProperty, '');
-      tab.style.setProperty(gridVerticalProperty, '');
-      tab.style.setProperty(gridProperty, `${index + 1}`);
+      tab.style[gridHorizontalProperty] = '';
+      tab.style[gridVerticalProperty] = '';
+      tab.style[gridProperty] = `${index + 1}`;
     });
   };
 
@@ -490,5 +490,5 @@ export class Tabs extends FASTElement {
   }
 }
 
-export type Tabs = StartEnd
+export type Tabs = StartEnd;
 applyMixins(Tabs, StartEnd);
