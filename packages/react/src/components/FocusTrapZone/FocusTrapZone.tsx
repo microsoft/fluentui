@@ -211,7 +211,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     if (ev.target !== ev.currentTarget && !(ev.target === firstBumper.current || ev.target === lastBumper.current)) {
       // every time focus changes within the trap zone, remember the focused element so that
       // it can be restored if focus leaves the pane and returns via keystroke (i.e. via a call to this.focus(true))
-      internalState.previouslyFocusedElementInTrapZone = ev.target as HTMLElement;
+      internalState.previouslyFocusedElementInTrapZone = getEventTarget(ev) as HTMLElement;
     }
   };
 
@@ -223,12 +223,16 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
       return;
     }
 
-    const activeElement = getActiveElement(doc) as HTMLElement;
+    // Do not use getActiveElement() here.
+    // When the FTZ is in shadow DOM focus returns to the
+    // shadow host rather than body so we need to be
+    // able to inspect that
+    const activeElement = doc.activeElement as HTMLElement;
     if (
       !disableRestoreFocus &&
       typeof elementToFocusOnDismiss?.focus === 'function' &&
       // only restore focus if the current focused element is within the FTZ, or if nothing is focused
-      (elementContains(root.current, activeElement) || activeElement === doc.body)
+      (elementContains(root.current, activeElement) || activeElement === doc.body || activeElement.shadowRoot)
     ) {
       focusElementAsync(elementToFocusOnDismiss);
     }
