@@ -20,6 +20,12 @@ import { ShadowDOMDropdownExample } from './ShadowDOM.Dropdown.Example';
 import { ShadowDOMExtendedPeoplePickerExample } from './ShadowDOM.ExtendedPeoplePicker.Example';
 import { ShadowDOMFacepileExample } from './ShadowDOM.Facepile.Example';
 import { ShadowDOMFloatingPeoplePickerExample } from './ShadowDOM.FloatingPeoplePicker.Example';
+import { ShadowDOMFocusTrapZoneBoxExample } from './ShadowDOM.FocusTrapZone.Box.Example';
+import { ShadowDOMFocusTrapZoneBoxClickExample } from './ShadowDOM.FocusTrapZone.BoxClick.Example';
+import { ShadowDOMFocusTrapZoneDialogInPanelExample } from './ShadowDOM.FocusTrapZone.DialogInPanel.Example';
+import { ShadowDOMFocusTrapZoneFocusOnCustomElementExample } from './ShadowDOM.FocusTrapZone.FocusOnCustomElement.Example';
+import { ShadowDOMFocusTrapZoneFocusZoneExample } from './ShadowDOM.FocusTrapZone.FocusZone.Example';
+import { ShadowDOMFocusTrapZoneNestedExample } from './ShadowDOM.FocusTrapZone.Nested.Example';
 import { ShadowDOMGroupedListExample } from './ShadowDOM.GroupedList.Example';
 import { ShadowDOMHoverCardExample } from './ShadowDOM.HoverCard.Example';
 import { ShadowDOMIconExample } from './ShadowDOM.Icon.Example';
@@ -134,6 +140,24 @@ const ShadowDOMFacepileExampleCode =
 
 const ShadowDOMFloatingPeoplePickerExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FloatingPeoplePicker.Example.tsx') as string;
+
+const ShadowDOMFocusTrapZoneBoxExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusTrapZone.Box.Example.tsx') as string;
+
+const ShadowDOMFocusTrapZoneBoxClickExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusTrapZone.BoxClick.Example.tsx') as string;
+
+const ShadowDOMFocusTrapZoneDialogInPanelExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusTrapZone.DialogInPanel.Example.tsx') as string;
+
+const ShadowDOMFocusTrapZoneFocusOnCustomElementExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusTrapZone.FocusOnCustomElement.Example.tsx') as string;
+
+const ShadowDOMFocusTrapZoneFocusZoneExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusTrapZone.FocusZone.Example.tsx') as string;
+
+const ShadowDOMFocusTrapZoneNestedExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusTrapZone.Nested.Example.tsx') as string;
 
 const ShadowDOMGroupedListExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.GroupedList.Example.tsx') as string;
@@ -398,6 +422,36 @@ export const ShadowDOMPageProps = (): IDocPageProps => ({
       title: 'FloatingPeoplePicker',
       code: ShadowDOMFloatingPeoplePickerExampleCode,
       view: <ShadowDOMFloatingPeoplePickerExample />,
+    },
+    {
+      title: 'FocusTrapZoneBox',
+      code: ShadowDOMFocusTrapZoneBoxExampleCode,
+      view: <ShadowDOMFocusTrapZoneBoxExample />,
+    },
+    {
+      title: 'FocusTrapZoneBoxClick',
+      code: ShadowDOMFocusTrapZoneBoxClickExampleCode,
+      view: <ShadowDOMFocusTrapZoneBoxClickExample />,
+    },
+    {
+      title: 'FocusTrapZoneDialogInPanel',
+      code: ShadowDOMFocusTrapZoneDialogInPanelExampleCode,
+      view: <ShadowDOMFocusTrapZoneDialogInPanelExample />,
+    },
+    {
+      title: 'FocusTrapZoneFocusOnCustomElement',
+      code: ShadowDOMFocusTrapZoneFocusOnCustomElementExampleCode,
+      view: <ShadowDOMFocusTrapZoneFocusOnCustomElementExample />,
+    },
+    {
+      title: 'FocusTrapZoneFocusZone',
+      code: ShadowDOMFocusTrapZoneFocusZoneExampleCode,
+      view: <ShadowDOMFocusTrapZoneFocusZoneExample />,
+    },
+    {
+      title: 'FocusTrapZoneNested',
+      code: ShadowDOMFocusTrapZoneNestedExampleCode,
+      view: <ShadowDOMFocusTrapZoneNestedExample />,
     },
     {
       title: 'GroupedList',
