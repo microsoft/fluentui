@@ -1,5 +1,7 @@
 import * as React from 'react';
 import {
+  getActiveElement,
+  getEventTarget,
   elementContains,
   getNativeProps,
   divProperties,
@@ -187,7 +189,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
       // even when it's not. Using document.activeElement is another way
       // for us to be able to get what the relatedTarget without relying
       // on the event
-      relatedTarget = doc!.activeElement as Element;
+      relatedTarget = getActiveElement(doc!) as Element;
     }
     if (!elementContains(root.current, relatedTarget as HTMLElement)) {
       internalState.hasFocus = false;
@@ -221,7 +223,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
       return;
     }
 
-    const activeElement = doc.activeElement as HTMLElement;
+    const activeElement = getActiveElement(doc) as HTMLElement;
     if (
       !disableRestoreFocus &&
       typeof elementToFocusOnDismiss?.focus === 'function' &&
@@ -239,11 +241,11 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
       return;
     }
     if (internalState.focusStackId === FocusTrapZone.focusStack!.slice(-1)[0]) {
-      const targetElement = ev.target as HTMLElement | null;
+      const targetElement = getEventTarget(ev);
       if (targetElement && !elementContains(root.current, targetElement)) {
-        if (doc && doc.activeElement === doc.body) {
+        if (doc && getActiveElement(doc) === doc.body) {
           setTimeout(() => {
-            if (doc && doc.activeElement === doc.body) {
+            if (doc && getActiveElement(doc) === doc.body) {
               focusFTZ();
               internalState.hasFocus = true; // set focus here since we stop event propagation
             }
@@ -287,7 +289,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     // Transition from forceFocusInsideTrap / FTZ disabled to enabled (or initial mount)
     FocusTrapZone.focusStack!.push(internalState.focusStackId);
 
-    const elementToFocusOnDismiss = props.elementToFocusOnDismiss || (doc!.activeElement as HTMLElement | null);
+    const elementToFocusOnDismiss = props.elementToFocusOnDismiss || (getActiveElement(doc!) as HTMLElement | null);
 
     if (!disableFirstFocus && !elementContains(root.current, elementToFocusOnDismiss)) {
       focusFTZ();
