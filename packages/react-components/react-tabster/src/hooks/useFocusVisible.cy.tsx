@@ -4,7 +4,7 @@ import root from 'react-shadow';
 import { useFocusVisible } from './useFocusVisible';
 import { FOCUS_VISIBLE_ATTR } from '../focus/constants';
 
-describe('useFocusObserved', () => {
+describe('useFocusVisible', () => {
   it('should apply focus visible attribute elements in an open shadow root', () => {
     const Example = () => {
       const ref = useFocusVisible<HTMLDivElement>();
