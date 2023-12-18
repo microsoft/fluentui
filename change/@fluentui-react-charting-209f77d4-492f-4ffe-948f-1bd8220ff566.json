@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "Added accessibility tests for LineChart, VerticalBarChart and AreaChart",
   "packageName": "@fluentui/react-charting",
   "email": "shubhabrata08@gmail.com",
