@@ -60,10 +60,22 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
 
   const [open, setOpenState] = useOpenState(initialState);
 
-  const setOpenTimeoutRef = React.useRef(0);
+  const setOpenTimeoutRef = React.useRef(-1);
+  const clearOpenTimeout = React.useCallback(() => {
+    if (setOpenTimeoutRef.current >= 0) {
+      clearTimeout(setOpenTimeoutRef.current);
+      setOpenTimeoutRef.current = -1;
+    }
+  }, []);
+
+  const setOpenTimeout = (e: OpenPopoverEvents, shouldOpen: boolean) => {
+    setOpenTimeoutRef.current = setTimeout(() => {
+      setOpenState(e, shouldOpen);
+    }, props.mouseLeaveDelay ?? 500);
+  };
 
   const setOpen = useEventCallback((e: OpenPopoverEvents, shouldOpen: boolean) => {
-    clearTimeout(setOpenTimeoutRef.current);
+    clearOpenTimeout();
     if (!(e instanceof Event) && e.persist) {
       // < React 17 still uses pooled synthetic events
       e.persist();
@@ -73,9 +85,7 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
       // FIXME leaking Node timeout type
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      setOpenTimeoutRef.current = setTimeout(() => {
-        setOpenState(e, shouldOpen);
-      }, props.mouseLeaveDelay ?? 500);
+      setOpenTimeout(e, shouldOpen);
     } else {
       setOpenState(e, shouldOpen);
     }
@@ -85,9 +95,9 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   // Setting state after a component unmounts can cause memory leaks
   React.useEffect(() => {
     return () => {
-      clearTimeout(setOpenTimeoutRef.current);
+      clearOpenTimeout();
     };
-  }, []);
+  }, [clearOpenTimeout]);
 
   const toggleOpen = React.useCallback<PopoverState['toggleOpen']>(
     e => {
