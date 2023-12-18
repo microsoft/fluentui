@@ -7,6 +7,9 @@ import { ILineChartPoints, LineChart } from './index';
 import { mergeStyles } from '@fluentui/merge-styles';
 
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 const beforeAll = () => {
   jest.spyOn(Date.prototype, 'toLocaleString').mockReturnValue('08/25/2023');
@@ -654,3 +657,9 @@ test('Should reflect theme change', () => {
   // Assert
   expect(container).toMatchSnapshot();
 });
+
+test('Should pass accessibility tests', async () => {
+  const { container } = render(<LineChart data={basicChartPoints} />);
+  const axeResults = await axe(container);
+  expect(axeResults).toHaveNoViolations();
+}, 10000);
