@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "completely prop for uncontrolled areas, tabster:movefocus custom event to for custom handling Tabster behaviour, async Esc press handling in Groupper to interfere with the application logic less.",
+  "packageName": "@fluentui/react-tabster",
+  "email": "marata@microsoft.com",
+  "dependentChangeType": "patch"
+}
