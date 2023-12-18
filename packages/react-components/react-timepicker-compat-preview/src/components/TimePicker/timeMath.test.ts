@@ -170,14 +170,14 @@ describe('Time Utilities', () => {
 
       expect(result.length).toBe(3);
       expect(
-        result[0].toLocaleString('en-US', { timeZone: 'America/Los_Angeles', timeZoneName: 'short' }),
-      ).toMatchInlineSnapshot(`"11/5/2023, 1:00:00 AM PDT"`);
-      expect(
-        result[1].toLocaleString('en-US', { timeZone: 'America/Los_Angeles', timeZoneName: 'short' }),
-      ).toMatchInlineSnapshot(`"11/5/2023, 1:00:00 AM PST"`);
-      expect(
-        result[2].toLocaleString('en-US', { timeZone: 'America/Los_Angeles', timeZoneName: 'short' }),
-      ).toMatchInlineSnapshot(`"11/5/2023, 2:00:00 AM PST"`);
+        result.map(date => date.toLocaleString('en-US', { timeZone: 'America/Los_Angeles', timeZoneName: 'short' })),
+      ).toMatchInlineSnapshot(`
+        Array [
+          "11/5/2023, 1:00:00 AM PDT",
+          "11/5/2023, 1:00:00 AM PST",
+          "11/5/2023, 2:00:00 AM PST",
+        ]
+      `);
     });
   });
 
