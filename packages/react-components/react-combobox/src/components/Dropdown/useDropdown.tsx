@@ -44,7 +44,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   if (listbox) {
     listbox.ref = listboxRef;
   }
-  listbox = useListboxSlot(props, listbox, triggerRef) as typeof listbox;
+  listbox = useListboxSlot(baseState, listbox, triggerRef) as typeof listbox;
 
   let trigger: Slot<'button'> = slot.always(props.button, {
     defaultProps: {

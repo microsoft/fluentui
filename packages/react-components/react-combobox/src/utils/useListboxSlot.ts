@@ -2,17 +2,19 @@ import * as React from 'react';
 import { mergeCallbacks, useId, useEventCallback } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { Listbox } from '../components/Listbox/Listbox';
-import type { ComboboxBaseProps } from './ComboboxBase.types';
+import type { ComboboxBaseState } from './ComboboxBase.types';
+
+export type UseTriggerSlotState = Pick<ComboboxBaseState, 'multiselect'>;
 
 /**
  * @returns  listbox slot with desired behaviour and props
  */
 export function useListboxSlot(
-  props: ComboboxBaseProps,
+  state: ComboboxBaseState,
   listboxSlot: ExtractSlotProps<Slot<typeof Listbox>> | undefined,
   triggerRef: React.RefObject<HTMLInputElement> | React.RefObject<HTMLButtonElement>,
 ): ExtractSlotProps<Slot<typeof Listbox>> {
-  const { multiselect } = props;
+  const { multiselect } = state;
 
   /**
    * Clicking on the listbox should never blur the trigger
@@ -31,7 +33,6 @@ export function useListboxSlot(
     }, listboxSlot?.onClick),
   );
 
-  // resolve listbox shorthand props
   const listboxId = useId('fluent-listbox', listboxSlot?.id);
   const listbox: typeof listboxSlot = {
     id: listboxId,

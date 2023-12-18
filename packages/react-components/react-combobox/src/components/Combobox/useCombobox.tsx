@@ -74,7 +74,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     listbox.ref = listboxRef;
   }
 
-  listbox = useListboxSlot(props, listbox, triggerRef) as typeof listbox;
+  listbox = useListboxSlot(baseState, listbox, triggerRef) as typeof listbox;
 
   let triggerSlot: Slot<'input'> = slot.always(props.input, {
     defaultProps: {

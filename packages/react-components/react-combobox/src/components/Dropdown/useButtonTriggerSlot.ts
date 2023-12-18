@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { useTimeout, type ExtractSlotProps, type Slot, mergeCallbacks } from '@fluentui/react-utilities';
+import { useTimeout, mergeCallbacks } from '@fluentui/react-utilities';
+import type { Slot, ExtractSlotProps } from '@fluentui/react-utilities';
 import { useTriggerSlot, UseTriggerSlotState } from '../../utils/useTriggerSlot';
 import { OptionValue } from '../../utils/OptionCollection.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
