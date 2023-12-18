@@ -163,7 +163,7 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
   React.useEffect(() => {
     if (freeform && value) {
       setActiveOption(prevActiveOption => {
-        if (prevActiveOption?.text?.indexOf(value) === 0) {
+        if (prevActiveOption?.text && prevActiveOption.text.toLowerCase().indexOf(value.toLowerCase()) === 0) {
           return prevActiveOption;
         }
         return undefined;
