@@ -169,15 +169,15 @@ describe('Time Utilities', () => {
       const result = getTimesBetween(start, end, 60);
 
       expect(result.length).toBe(3);
-      expect(result[0].toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })).toMatchInlineSnapshot(
-        `"11/5/2023, 1:00:00 AM"`,
-      );
-      expect(result[1].toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })).toMatchInlineSnapshot(
-        `"11/5/2023, 1:00:00 AM"`,
-      );
-      expect(result[2].toLocaleString('en-US', { timeZone: 'America/Los_Angeles' })).toMatchInlineSnapshot(
-        `"11/5/2023, 2:00:00 AM"`,
-      );
+      expect(
+        result[0].toLocaleString('en-US', { timeZone: 'America/Los_Angeles', timeZoneName: 'short' }),
+      ).toMatchInlineSnapshot(`"11/5/2023, 1:00:00 AM PDT"`);
+      expect(
+        result[1].toLocaleString('en-US', { timeZone: 'America/Los_Angeles', timeZoneName: 'short' }),
+      ).toMatchInlineSnapshot(`"11/5/2023, 1:00:00 AM PST"`);
+      expect(
+        result[2].toLocaleString('en-US', { timeZone: 'America/Los_Angeles', timeZoneName: 'short' }),
+      ).toMatchInlineSnapshot(`"11/5/2023, 2:00:00 AM PST"`);
     });
   });
 
