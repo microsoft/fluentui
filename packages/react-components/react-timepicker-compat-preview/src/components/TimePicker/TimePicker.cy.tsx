@@ -150,6 +150,9 @@ describe('TimePicker with custom parsing', () => {
       if (date.getHours() < 12) {
         return `Morning: ${localeTimeString}`;
       }
+      if (date.getHours() === 12) {
+        return `noon: ${localeTimeString}`;
+      }
       return `Afternoon: ${localeTimeString}`;
     };
 
@@ -174,7 +177,8 @@ describe('TimePicker with custom parsing', () => {
           freeform
           dateAnchor={anchor}
           startHour={9}
-          endHour={13}
+          endHour={14}
+          increment={60}
           formatDateToTimeString={formatDateToTimeString}
           parseTimeStringToDate={parseTimeStringToDate}
           onTimeChange={onTimeChange}
@@ -186,8 +190,13 @@ describe('TimePicker with custom parsing', () => {
   it('letter navigation should be case insensitive and select option on enter', () => {
     mount(<Example />);
     cy.get(inputSelector).click().get(optionSelector(0)).should('be.visible');
+
     cy.get(inputSelector).click().type('a').realPress('Enter');
-    cy.get(inputSelector).should('have.value', 'Afternoon: 12:00');
-    cy.get('#selected-time-text').should('have.text', 'Afternoon: 12:00');
+    cy.get(inputSelector).should('have.value', 'Afternoon: 13:00');
+    cy.get('#selected-time-text').should('have.text', 'Afternoon: 13:00');
+
+    cy.get(inputSelector).clear().click().type('N').realPress('Enter');
+    cy.get(inputSelector).should('have.value', 'noon: 12:00');
+    cy.get('#selected-time-text').should('have.text', 'noon: 12:00');
   });
 });
