@@ -133,10 +133,10 @@ const MenuWithTooltip = (props: PartitionBreadcrumbItems<Item>) => {
   if (!isOverflowing && overflowItems && overflowItems.length === 0) {
     return null;
   }
-  const overflowItemsLength = overflowItems?.length ?? 0;
+  const overflowItemsCount = overflowItems ? overflowItems.length + overflowCount : overflowCount;
   const tooltipContent =
-    overflowItemsLength > 3
-      ? `${overflowItemsLength} items`
+    overflowItemsCount > 3
+      ? `${overflowItemsCount} items`
       : {
           children: getTooltipContent(overflowItems),
           className: tooltipStyles.tooltip,
@@ -151,7 +151,7 @@ const MenuWithTooltip = (props: PartitionBreadcrumbItems<Item>) => {
             appearance="subtle"
             ref={ref}
             icon={<MoreHorizontal />}
-            aria-label={`${overflowItemsLength} more items`}
+            aria-label={`${overflowItemsCount} more items`}
             role="button"
           />
         </Tooltip>
