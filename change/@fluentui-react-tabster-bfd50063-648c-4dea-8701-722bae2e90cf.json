@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: focus-visible polyfill shadow DOM support",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

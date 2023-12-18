@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: provides a default aria-labelledby for the chevron icon if the TimePicker is wrapped in a Field.",
+  "packageName": "@fluentui/react-timepicker-compat-preview",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}

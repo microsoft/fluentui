@@ -1,5 +1,3 @@
-import { getWindow } from './dom';
-
 let targetToFocusOnNextRepaint: HTMLElement | { focus: () => void } | null | undefined = undefined;
 
 /**
@@ -8,7 +6,10 @@ let targetToFocusOnNextRepaint: HTMLElement | { focus: () => void } | null | und
  * only the latest called focusAsync element will actually be focused
  * @param element - The element to focus
  */
-export function focusAsync(element: HTMLElement | { focus: () => void } | undefined | null): void {
+export function focusAsync(
+  element: HTMLElement | { focus: () => void } | undefined | null,
+  win: Window | undefined | null,
+): void {
   if (element) {
     // An element was already queued to be focused, so replace that one with the new element
     if (targetToFocusOnNextRepaint) {
@@ -17,8 +18,6 @@ export function focusAsync(element: HTMLElement | { focus: () => void } | undefi
     }
 
     targetToFocusOnNextRepaint = element;
-
-    const win = getWindow(element as Element);
 
     if (win) {
       // element.focus() is a no-op if the element is no longer in the DOM, meaning this is always safe

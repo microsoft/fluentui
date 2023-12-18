@@ -47,7 +47,7 @@ export function keyToDate(key: string): Date | null {
 export function formatDateToTimeString(date: Date, { hourCycle, showSeconds }: TimeFormatOptions = {}): string {
   return date.toLocaleTimeString([], {
     hour: 'numeric',
-    hourCycle: hourCycle ?? 'h23',
+    hourCycle,
     minute: '2-digit',
     second: showSeconds ? '2-digit' : undefined,
   });

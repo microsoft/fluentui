@@ -213,6 +213,25 @@ function _getOutOfBoundsDegree(rect: Rectangle, bounds: Rectangle) {
 }
 
 /**
+ * Returns true if scroll-resizing will move the target edge within the bounding rectangle,
+ * and there is room between the target edge and the bounding edge for scrolled content.
+ * Returns false otherwise.
+ */
+function _canScrollResizeToFitEdge(
+  target: Rectangle,
+  bounding: Rectangle,
+  targetEdge: RectangleEdge,
+  minimumScrollResizeHeight = 200,
+) {
+  // Only scroll vertically to fit - cannot scroll to fit right or left edges
+  if (targetEdge !== RectangleEdge.bottom && targetEdge !== RectangleEdge.top) {
+    return false;
+  }
+
+  return _getRelativeEdgeDifference(target, bounding, targetEdge) >= minimumScrollResizeHeight;
+}
+
+/**
  * Attempts to move the rectangle through various sides of the target to find a place to fit.
  * If no fit is found, the least bad option should be returned.
  */
@@ -221,6 +240,8 @@ function _flipToFit(
   target: Rectangle,
   bounding: Rectangle,
   positionData: IPositionDirectionalHintData,
+  shouldScroll = false,
+  minimumScrollResizeHeight?: number,
   gap: number = 0,
 ): IElementPosition {
   const directions: RectangleEdge[] = [
@@ -246,7 +267,31 @@ function _flipToFit(
   // Keep switching sides until one is found with enough space.
   // If all sides don't fit then return the unmodified element.
   for (let i = 0; i < 4; i++) {
-    if (!_isEdgeInBounds(currentEstimate, bounding, currentEdge)) {
+    if (_isEdgeInBounds(currentEstimate, bounding, currentEdge)) {
+      // Edge is in bounds, return current estimate
+      return {
+        elementRectangle: currentEstimate,
+        targetEdge: currentEdge,
+        alignmentEdge: currentAlignment,
+      };
+    } else if (shouldScroll && _canScrollResizeToFitEdge(target, bounding, currentEdge, minimumScrollResizeHeight)) {
+      // Scrolling will allow edge to fit, move the estimate currentEdge inside the bounds and return
+      switch (currentEdge) {
+        case RectangleEdge.bottom:
+          currentEstimate.bottom = bounding.bottom;
+          break;
+        case RectangleEdge.top:
+          currentEstimate.top = bounding.top;
+          break;
+      }
+
+      return {
+        elementRectangle: currentEstimate,
+        targetEdge: currentEdge,
+        alignmentEdge: currentAlignment,
+        forcedInBounds: true,
+      };
+    } else {
       // update least-bad edges
       const currentOOBDegree = _getOutOfBoundsDegree(currentEstimate, bounding);
       if (!oobDegree || currentOOBDegree < oobDegree) {
@@ -270,12 +315,6 @@ function _flipToFit(
           gap,
         );
       }
-    } else {
-      return {
-        elementRectangle: currentEstimate,
-        targetEdge: currentEdge,
-        alignmentEdge: currentAlignment,
-      };
     }
   }
 
@@ -324,6 +363,8 @@ function _adjustFitWithinBounds(
   target: Rectangle,
   bounding: Rectangle,
   positionData: IPositionDirectionalHintData,
+  shouldScroll = false,
+  minimumScrollResizeHeight?: number,
   gap: number = 0,
   directionalHintFixed?: boolean,
   coverTarget?: boolean,
@@ -336,7 +377,7 @@ function _adjustFitWithinBounds(
   };
 
   if (!directionalHintFixed && !coverTarget) {
-    elementEstimate = _flipToFit(element, target, bounding, positionData, gap);
+    elementEstimate = _flipToFit(element, target, bounding, positionData, shouldScroll, minimumScrollResizeHeight, gap);
   }
   const outOfBounds = _getOutOfBoundsEdges(elementEstimate.elementRectangle, bounding);
   // if directionalHintFixed is specified, we need to force the target edge to not change
@@ -630,6 +671,8 @@ function _positionElementWithinBounds(
   bounding: Rectangle,
   positionData: IPositionDirectionalHintData,
   gap: number,
+  shouldScroll = false,
+  minimumScrollResizeHeight?: number,
   directionalHintFixed?: boolean,
   coverTarget?: boolean,
 ): IElementPosition {
@@ -652,6 +695,8 @@ function _positionElementWithinBounds(
       target,
       bounding,
       positionData,
+      shouldScroll,
+      minimumScrollResizeHeight,
       gap,
       directionalHintFixed,
       coverTarget,
@@ -817,6 +862,8 @@ function _positionElementRelative(
   elementToPosition: HTMLElement,
   boundingRect: Rectangle,
   previousPositions?: IPositionedData,
+  shouldScroll = false,
+  minimumScrollResizeHeight?: number,
 ): IElementPositionInfo {
   const gap: number = props.gapSpace ? props.gapSpace : 0;
   const targetRect: Rectangle = _getTargetRect(boundingRect, props.target);
@@ -833,6 +880,8 @@ function _positionElementRelative(
     boundingRect,
     positionData,
     gap,
+    shouldScroll,
+    minimumScrollResizeHeight,
     props.directionalHintFixed,
     props.coverTarget,
   );
@@ -881,25 +930,34 @@ function _positionElement(
   return _finalizePositionData(positionedElement, hostElement, boundingRect, props.coverTarget);
 }
 
+function _calculateGapSpace(isBeakVisible: boolean | undefined, beakWidth = 0, gapSpace = 0): number {
+  return _calculateActualBeakWidthInPixels(isBeakVisible ? beakWidth : 0) / 2 + gapSpace;
+}
+
 function _positionCallout(
   props: ICalloutPositionProps,
   hostElement: HTMLElement,
   callout: HTMLElement,
   previousPositions?: ICalloutPositionedInfo,
+  shouldScroll = false,
+  minimumScrollResizeHeight?: number,
   doNotFinalizeReturnEdge?: boolean,
 ): ICalloutPositionedInfo {
   const beakWidth: number = props.isBeakVisible ? props.beakWidth || 0 : 0;
-  const gap: number = _calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
+  const gap = _calculateGapSpace(props.isBeakVisible, props.beakWidth, props.gapSpace);
   const positionProps: IPositionProps = props;
   positionProps.gapSpace = gap;
   const boundingRect: Rectangle = props.bounds
     ? _getRectangleFromIRect(props.bounds)
     : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
+
   const positionedElement: IElementPositionInfo = _positionElementRelative(
     positionProps,
     callout,
     boundingRect,
     previousPositions,
+    shouldScroll,
+    minimumScrollResizeHeight,
   );
 
   const beakPositioned: Rectangle = _positionBeak(beakWidth, positionedElement);
@@ -921,7 +979,32 @@ function _positionCard(
   callout: HTMLElement,
   previousPositions?: ICalloutPositionedInfo,
 ): ICalloutPositionedInfo {
-  return _positionCallout(props, hostElement, callout, previousPositions, true);
+  return _positionCallout(props, hostElement, callout, previousPositions, false, undefined, true);
+}
+
+function _getRectangleFromTarget(target: Element | MouseEvent | Point | Rectangle): Rectangle {
+  const mouseTarget: MouseEvent = target as MouseEvent;
+  const elementTarget: Element = target as Element;
+  const rectOrPointTarget: Point & Rectangle = target as Point & Rectangle;
+  let targetRect: Rectangle;
+
+  // eslint-disable-next-line deprecation/deprecation
+  const left = rectOrPointTarget.left || rectOrPointTarget.x;
+  // eslint-disable-next-line deprecation/deprecation
+  const top = rectOrPointTarget.top || rectOrPointTarget.y;
+  const right = rectOrPointTarget.right || left;
+  const bottom = rectOrPointTarget.bottom || top;
+
+  // eslint-disable-next-line no-extra-boolean-cast -- may not actually be a MouseEvent
+  if (!!mouseTarget.stopPropagation) {
+    targetRect = new Rectangle(mouseTarget.clientX, mouseTarget.clientX, mouseTarget.clientY, mouseTarget.clientY);
+  } else if (left !== undefined && top !== undefined) {
+    targetRect = new Rectangle(left, right, top, bottom);
+  } else {
+    targetRect = _getRectangleFromElement(elementTarget);
+  }
+
+  return targetRect;
 }
 // END PRIVATE FUNCTIONS
 
@@ -954,8 +1037,17 @@ export function positionCallout(
   hostElement: HTMLElement,
   elementToPosition: HTMLElement,
   previousPositions?: ICalloutPositionedInfo,
+  shouldScroll?: boolean,
+  minimumScrollResizeHeight?: number,
 ): ICalloutPositionedInfo {
-  return _positionCallout(props, hostElement, elementToPosition, previousPositions);
+  return _positionCallout(
+    props,
+    hostElement,
+    elementToPosition,
+    previousPositions,
+    shouldScroll,
+    minimumScrollResizeHeight,
+  );
 }
 
 export function positionCard(
@@ -980,29 +1072,10 @@ export function getMaxHeight(
   bounds?: IRectangle,
   coverTarget?: boolean,
 ): number {
-  const mouseTarget: MouseEvent = target as MouseEvent;
-  const elementTarget: Element = target as Element;
-  const rectOrPointTarget: Point & Rectangle = target as Point & Rectangle;
-  let targetRect: Rectangle;
+  const targetRect = _getRectangleFromTarget(target);
   const boundingRectangle = bounds
     ? _getRectangleFromIRect(bounds)
     : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
-
-  // eslint-disable-next-line deprecation/deprecation
-  const left = rectOrPointTarget.left || rectOrPointTarget.x;
-  // eslint-disable-next-line deprecation/deprecation
-  const top = rectOrPointTarget.top || rectOrPointTarget.y;
-  const right = rectOrPointTarget.right || left;
-  const bottom = rectOrPointTarget.bottom || top;
-
-  // eslint-disable-next-line no-extra-boolean-cast -- may not actually be a MouseEvent
-  if (!!mouseTarget.stopPropagation) {
-    targetRect = new Rectangle(mouseTarget.clientX, mouseTarget.clientX, mouseTarget.clientY, mouseTarget.clientY);
-  } else if (left !== undefined && top !== undefined) {
-    targetRect = new Rectangle(left, right, top, bottom);
-  } else {
-    targetRect = _getRectangleFromElement(elementTarget);
-  }
 
   return _getMaxHeightFromTargetRectangle(targetRect, targetEdge, gapSpace, boundingRectangle, coverTarget);
 }
@@ -1077,4 +1150,16 @@ export function getBoundsFromTargetWindow(
   targetWindow: IWindowWithSegments,
 ): IRectangle {
   return _getBoundsFromTargetWindow(target, targetWindow);
+}
+
+export function calculateGapSpace(
+  isBeakVisible: boolean | undefined,
+  beakWidth: number | undefined,
+  gapSpace: number | undefined,
+): number {
+  return _calculateGapSpace(isBeakVisible, beakWidth, gapSpace);
+}
+
+export function getRectangleFromTarget(target: Element | MouseEvent | Point | Rectangle): Rectangle {
+  return _getRectangleFromTarget(target);
 }

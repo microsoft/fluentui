@@ -35,10 +35,11 @@ export function createAtom(motion: AtomMotion) {
       const element = elementRef.current;
 
       if (element) {
-        const animation = element.animate(motion.keyframes, {
+        const { keyframes, ...options } = motion;
+        const animation = element.animate(keyframes, {
           fill: 'forwards',
 
-          ...motion.options,
+          ...options,
           iterations,
 
           ...(isReducedMotion() && { duration: 1 }),
