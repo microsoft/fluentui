@@ -4,11 +4,13 @@ import {
   mergeCallbacks,
   useControllableState,
   useEventCallback,
+  useId,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { Enter } from '@fluentui/keyboard-keys';
 import type { Hour, TimePickerOption, TimePickerProps, TimePickerState, TimeSelectionData } from './TimePicker.types';
 import { ComboboxProps, useCombobox_unstable, Option } from '@fluentui/react-combobox';
+import { useFieldContext_unstable as useFieldContext } from '@fluentui/react-field';
 import {
   dateToKey,
   keyToDate,
@@ -122,6 +124,7 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     submittedText,
   };
 
+  useDefaultChevronIconLabel(state);
   useSelectTimeFromValue(state, selectTime);
 
   return state;
@@ -163,7 +166,7 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
   React.useEffect(() => {
     if (freeform && value) {
       setActiveOption(prevActiveOption => {
-        if (prevActiveOption?.text?.indexOf(value) === 0) {
+        if (prevActiveOption?.text && prevActiveOption.text.toLowerCase().indexOf(value.toLowerCase()) === 0) {
           return prevActiveOption;
         }
         return undefined;
@@ -211,4 +214,18 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
     }
   });
   state.input.onBlur = mergeCallbacks(handleInputBlur, state.input.onBlur);
+};
+
+/**
+ * Provides a default aria-labelledby for the chevron icon if the TimePicker is wrapped in a Field.
+ */
+const useDefaultChevronIconLabel = (state: TimePickerState) => {
+  const fieldContext = useFieldContext();
+  const chevronDefaultId = useId('timepicker-chevron-');
+  const defaultLabelFromCombobox = 'Open';
+
+  if (fieldContext?.labelId && state.expandIcon?.['aria-label'] === defaultLabelFromCombobox) {
+    const chevronId = state.expandIcon.id ?? chevronDefaultId;
+    state.expandIcon['aria-labelledby'] = `${chevronId} ${fieldContext.labelId}`;
+  }
 };
