@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: move from floating-ui-devtools to @floating-ui/devtools",
+  "packageName": "@fluentui/react-positioning",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
