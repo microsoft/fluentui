@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-infolabel
 
-This log was last generated on Mon, 18 Dec 2023 14:40:46 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Dec 2023 17:48:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-infolabel_v9.0.9)
+
+Mon, 18 Dec 2023 17:48:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infolabel_v9.0.8..@fluentui/react-infolabel_v9.0.9)
+
+### Patches
+
+- Bump @fluentui/react-popover to v9.8.26 ([PR #30010](https://github.com/microsoft/fluentui/pull/30010) by beachball)
 
 ## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-infolabel_v9.0.8)
 

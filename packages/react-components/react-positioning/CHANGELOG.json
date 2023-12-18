@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Mon, 18 Dec 2023 17:48:16 GMT",
+      "tag": "@fluentui/react-positioning_v9.10.5",
+      "version": "9.10.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "91029810542e996b201ed9b5919691b24dfbcdd3",
+            "comment": "chore: move from floating-ui-devtools to @floating-ui/devtools"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Dec 2023 14:40:45 GMT",
       "tag": "@fluentui/react-positioning_v9.10.4",
       "version": "9.10.4",

@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 18 Dec 2023 14:40:42 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Dec 2023 17:48:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.43.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.43.2)
+
+Mon, 18 Dec 2023 17:48:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.43.1..@fluentui/react-components_v9.43.2)
+
+### Patches
+
+- `@fluentui/react-combobox`
+  - refactor: Encapsulates listbox and trigger slot construction ([PR #30010](https://github.com/microsoft/fluentui/pull/30010) by lingfan.gao@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: move from floating-ui-devtools to @floating-ui/devtools ([PR #30107](https://github.com/microsoft/fluentui/pull/30107) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-timepicker-compat-preview`
+  - fix: provides a default aria-labelledby for the chevron icon if the TimePicker is wrapped in a Field. ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by yuanboxue@microsoft.com)
 
 ## [9.43.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.43.1)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 18 Dec 2023 14:40:45 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Dec 2023 17:48:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.10.5)
+
+Mon, 18 Dec 2023 17:48:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.10.4..@fluentui/react-positioning_v9.10.5)
+
+### Patches
+
+- chore: move from floating-ui-devtools to @floating-ui/devtools ([PR #30107](https://github.com/microsoft/fluentui/pull/30107) by bernardo.sunderhus@gmail.com)
 
 ## [9.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.10.4)
 

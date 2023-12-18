@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor: Encapsulates listbox and trigger slot construction",
-  "packageName": "@fluentui/react-combobox",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

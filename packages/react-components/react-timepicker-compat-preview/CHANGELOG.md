@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-timepicker-compat-preview
 
-This log was last generated on Mon, 18 Dec 2023 14:40:43 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Dec 2023 17:48:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat-preview_v0.1.7)
+
+Mon, 18 Dec 2023 17:48:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-timepicker-compat-preview_v0.1.6..@fluentui/react-timepicker-compat-preview_v0.1.7)
+
+### Patches
+
+- fix: provides a default aria-labelledby for the chevron icon if the TimePicker is wrapped in a Field. ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-combobox to v9.5.35 ([PR #30010](https://github.com/microsoft/fluentui/pull/30010) by beachball)
 
 ## [0.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat-preview_v0.1.6)
 

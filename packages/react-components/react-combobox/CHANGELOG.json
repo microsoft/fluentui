@@ -2,6 +2,27 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Mon, 18 Dec 2023 17:48:16 GMT",
+      "tag": "@fluentui/react-combobox_v9.5.35",
+      "version": "9.5.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "2034818a2dd109f3e9f7bb5cdf4caae47a9116d4",
+            "comment": "refactor: Encapsulates listbox and trigger slot construction"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.10.5",
+            "commit": "2034818a2dd109f3e9f7bb5cdf4caae47a9116d4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Dec 2023 14:40:46 GMT",
       "tag": "@fluentui/react-combobox_v9.5.34",
       "version": "9.5.34",

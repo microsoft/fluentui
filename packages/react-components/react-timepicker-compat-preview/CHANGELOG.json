@@ -2,6 +2,27 @@
   "name": "@fluentui/react-timepicker-compat-preview",
   "entries": [
     {
+      "date": "Mon, 18 Dec 2023 17:48:16 GMT",
+      "tag": "@fluentui/react-timepicker-compat-preview_v0.1.7",
+      "version": "0.1.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4",
+            "comment": "fix: provides a default aria-labelledby for the chevron icon if the TimePicker is wrapped in a Field."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "comment": "Bump @fluentui/react-combobox to v9.5.35",
+            "commit": "2034818a2dd109f3e9f7bb5cdf4caae47a9116d4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Dec 2023 14:40:43 GMT",
       "tag": "@fluentui/react-timepicker-compat-preview_v0.1.6",
       "version": "0.1.6",

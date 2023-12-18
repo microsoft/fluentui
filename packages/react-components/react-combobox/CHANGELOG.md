@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Mon, 18 Dec 2023 14:40:46 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Dec 2023 17:48:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.5.35)
+
+Mon, 18 Dec 2023 17:48:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.5.34..@fluentui/react-combobox_v9.5.35)
+
+### Patches
+
+- refactor: Encapsulates listbox and trigger slot construction ([PR #30010](https://github.com/microsoft/fluentui/pull/30010) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-positioning to v9.10.5 ([PR #30010](https://github.com/microsoft/fluentui/pull/30010) by beachball)
 
 ## [9.5.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.5.34)
 
