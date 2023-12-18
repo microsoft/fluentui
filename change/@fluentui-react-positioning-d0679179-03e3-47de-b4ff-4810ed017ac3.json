@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Add a namespace to CSS variables in react-positioning package to avoid potential collisions.",
+  "packageName": "@fluentui/react-positioning",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "patch"
+}

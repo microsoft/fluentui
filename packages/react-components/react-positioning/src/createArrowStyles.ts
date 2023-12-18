@@ -91,25 +91,25 @@ export function createArrowStyles(options: CreateArrowStylesOptions): GriffelSty
       ),
       ...shorthands.borderBottom(borderWidth, borderStyle, borderColor),
       borderBottomRightRadius: tokens.borderRadiusSmall,
-      transform: 'rotate(var(--angle)) translate(0, 50%) rotate(45deg)',
+      transform: 'rotate(var(--fui-positioning-angle)) translate(0, 50%) rotate(45deg)',
     },
 
     // Popper sets data-popper-placement on the root element, which is used to align the arrow
     ':global([data-popper-placement^="top"])': {
       bottom: `-${borderWidth}`,
-      '--angle': '0',
+      '--fui-positioning-angle': '0',
     },
     ':global([data-popper-placement^="right"])': {
       left: `-${borderWidth} /* @noflip */`,
-      '--angle': '90deg',
+      '--fui-positioning-angle': '90deg',
     },
     ':global([data-popper-placement^="bottom"])': {
       top: `-${borderWidth}`,
-      '--angle': '180deg',
+      '--fui-positioning-angle': '180deg',
     },
     ':global([data-popper-placement^="left"])': {
       right: `-${borderWidth} /* @noflip */`,
-      '--angle': '270deg',
+      '--fui-positioning-angle': '270deg',
     },
   };
 }
