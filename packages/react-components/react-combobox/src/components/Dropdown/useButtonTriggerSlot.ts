@@ -1,12 +1,16 @@
 import * as React from 'react';
 import { useTimeout, mergeCallbacks } from '@fluentui/react-utilities';
-import type { Slot, ExtractSlotProps } from '@fluentui/react-utilities';
+import type { Slot, ExtractSlotProps, SlotComponentType } from '@fluentui/react-utilities';
 import { useTriggerSlot, UseTriggerSlotState } from '../../utils/useTriggerSlot';
 import { OptionValue } from '../../utils/OptionCollection.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { DropdownState } from './Dropdown.types';
 
 type UsedDropdownState = UseTriggerSlotState & Pick<DropdownState, 'getOptionsMatchingText'>;
+type UseButtonTriggerSlotOptions = {
+  state: UsedDropdownState;
+  defaultProps: unknown;
+};
 
 /*
  * useButtonTriggerSlot returns a tuple of trigger/listbox shorthand,
@@ -14,10 +18,14 @@ type UsedDropdownState = UseTriggerSlotState & Pick<DropdownState, 'getOptionsMa
  * The element type of the ref should always match the element type used in the trigger shorthand.
  */
 export function useButtonTriggerSlot(
-  state: UsedDropdownState,
-  triggerFromProps?: ExtractSlotProps<Slot<'button'>>,
-): ExtractSlotProps<Slot<'button'>> {
-  const { open, activeOption, setOpen, getOptionsMatchingText, getIndexOfId, setActiveOption, setFocusVisible } = state;
+  triggerFromProps: NonNullable<Slot<'button'>>,
+  ref: React.Ref<HTMLButtonElement>,
+  options: UseButtonTriggerSlotOptions,
+): SlotComponentType<ExtractSlotProps<Slot<'button'>>> {
+  const {
+    state: { open, activeOption, setOpen, getOptionsMatchingText, getIndexOfId, setActiveOption, setFocusVisible },
+    defaultProps,
+  } = options;
 
   // jump to matching option based on typing
   const searchString = React.useRef('');
@@ -80,7 +88,7 @@ export function useButtonTriggerSlot(
     }
   };
 
-  const trigger = useTriggerSlot(state, triggerFromProps);
+  const trigger = useTriggerSlot(triggerFromProps, ref, { state: options.state, defaultProps, elementType: 'button' });
   trigger.onKeyDown = mergeCallbacks(onTriggerKeyDown, trigger.onKeyDown);
 
   return trigger;

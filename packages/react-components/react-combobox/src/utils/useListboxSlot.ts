@@ -1,20 +1,54 @@
 import * as React from 'react';
-import { mergeCallbacks, useId, useEventCallback } from '@fluentui/react-utilities';
-import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
-import { Listbox } from '../components/Listbox/Listbox';
+import {
+  mergeCallbacks,
+  useId,
+  useEventCallback,
+  slot,
+  isResolvedShorthand,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
+import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import type { ComboboxBaseState } from './ComboboxBase.types';
+import { Listbox } from '../Listbox';
+import { ListboxProps } from '../Listbox';
 
 export type UseTriggerSlotState = Pick<ComboboxBaseState, 'multiselect'>;
+
+type UseListboxSlotOptions = {
+  state: ComboboxBaseState;
+  triggerRef: React.RefObject<HTMLInputElement> | React.RefObject<HTMLButtonElement>;
+  defaultProps?: Partial<ListboxProps>;
+};
 
 /**
  * @returns  listbox slot with desired behaviour and props
  */
 export function useListboxSlot(
-  state: ComboboxBaseState,
-  listboxSlot: ExtractSlotProps<Slot<typeof Listbox>> | undefined,
-  triggerRef: React.RefObject<HTMLInputElement> | React.RefObject<HTMLButtonElement>,
-): ExtractSlotProps<Slot<typeof Listbox>> {
-  const { multiselect } = state;
+  listboxSlotFromProp: Slot<typeof Listbox> | undefined,
+  ref: React.Ref<HTMLDivElement>,
+  options: UseListboxSlotOptions,
+): SlotComponentType<ExtractSlotProps<Slot<typeof Listbox>>> | undefined {
+  const {
+    state: { multiselect },
+    triggerRef,
+    defaultProps,
+  } = options;
+
+  const listboxId = useId(
+    'fluent-listbox',
+    isResolvedShorthand(listboxSlotFromProp) ? listboxSlotFromProp.id : undefined,
+  );
+
+  const listboxSlot = slot.optional(listboxSlotFromProp, {
+    renderByDefault: true,
+    elementType: Listbox,
+    defaultProps: {
+      id: listboxId,
+      multiselect,
+      tabIndex: undefined,
+      ...defaultProps,
+    },
+  });
 
   /**
    * Clicking on the listbox should never blur the trigger
@@ -33,15 +67,12 @@ export function useListboxSlot(
     }, listboxSlot?.onClick),
   );
 
-  const listboxId = useId('fluent-listbox', listboxSlot?.id);
-  const listbox: typeof listboxSlot = {
-    id: listboxId,
-    multiselect,
-    tabIndex: undefined,
-    ...listboxSlot,
-    onMouseDown,
-    onClick,
-  };
+  const listboxRef = useMergedRefs(listboxSlot?.ref, ref);
+  if (listboxSlot) {
+    listboxSlot.ref = listboxRef;
+    listboxSlot.onMouseDown = onMouseDown;
+    listboxSlot.onClick = onClick;
+  }
 
-  return listbox;
+  return listboxSlot;
 }

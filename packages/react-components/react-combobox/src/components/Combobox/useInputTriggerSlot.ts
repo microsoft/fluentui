@@ -1,14 +1,20 @@
 import * as React from 'react';
 import { mergeCallbacks, useEventCallback } from '@fluentui/react-utilities';
-import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
+import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import { ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
 import { useTriggerSlot, UseTriggerSlotState } from '../../utils/useTriggerSlot';
-import { ComboboxState } from './Combobox.types';
+import { ComboboxProps, ComboboxState } from './Combobox.types';
 import { OptionValue } from '../../utils/OptionCollection.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 
 type UsedComboboxState = UseTriggerSlotState &
   Pick<ComboboxState, 'value' | 'setValue' | 'selectedOptions' | 'clearSelection' | 'getOptionsMatchingText'>;
+
+type UseInputTriggerSlotOptions = {
+  state: UsedComboboxState;
+  freeform: boolean | undefined;
+  defaultProps: Partial<ComboboxProps>;
+};
 
 /*
  * useInputTriggerSlot returns a tuple of trigger/listbox shorthand,
@@ -16,25 +22,29 @@ type UsedComboboxState = UseTriggerSlotState &
  * The element type of the ref should always match the element type used in the trigger shorthand.
  */
 export function useInputTriggerSlot(
-  state: UsedComboboxState,
-  freeform: boolean | undefined,
-  triggerFromProps?: ExtractSlotProps<Slot<'input'>>,
-): ExtractSlotProps<Slot<'input'>> {
+  triggerFromProps: NonNullable<Slot<'input'>>,
+  ref: React.Ref<HTMLInputElement>,
+  options: UseInputTriggerSlotOptions,
+): SlotComponentType<ExtractSlotProps<Slot<'input'>>> {
   const {
-    open,
-    value,
-    activeOption,
-    selectOption,
-    setValue,
-    setActiveOption,
-    setFocusVisible,
-    multiselect,
-    selectedOptions,
-    clearSelection,
-    getOptionsMatchingText,
-    getIndexOfId,
-    setOpen,
-  } = state;
+    state: {
+      open,
+      value,
+      activeOption,
+      selectOption,
+      setValue,
+      setActiveOption,
+      setFocusVisible,
+      multiselect,
+      selectedOptions,
+      clearSelection,
+      getOptionsMatchingText,
+      getIndexOfId,
+      setOpen,
+    },
+    freeform,
+    defaultProps,
+  } = options;
 
   const onBlur = (ev: React.FocusEvent<HTMLInputElement>) => {
     // handle selection and updating value if freeform is false
@@ -87,7 +97,12 @@ export function useInputTriggerSlot(
     }
   };
 
-  const trigger = useTriggerSlot(state, triggerFromProps);
+  const trigger = useTriggerSlot(triggerFromProps, ref, {
+    state: options.state,
+    defaultProps,
+    elementType: 'input',
+  });
+
   trigger.onChange = mergeCallbacks(trigger.onChange, onChange);
   trigger.onBlur = mergeCallbacks(trigger.onBlur, onBlur);
 

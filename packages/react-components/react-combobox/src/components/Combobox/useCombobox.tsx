@@ -9,7 +9,6 @@ import {
   useMergedRefs,
   slot,
 } from '@fluentui/react-utilities';
-import type { Slot } from '@fluentui/react-utilities';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
 import { Listbox } from '../Listbox/Listbox';
@@ -63,29 +62,24 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   };
 
   const triggerRef = React.useRef<HTMLInputElement>(null);
-  let listbox = slot.optional(props.listbox, {
-    renderByDefault: true,
-    defaultProps: { children: props.children },
-    elementType: Listbox,
+
+  const listbox = useListboxSlot(props.listbox, comboboxPopupRef, {
+    state: baseState,
+    triggerRef,
+    defaultProps: {
+      children: props.children,
+    },
   });
 
-  const listboxRef = useMergedRefs(listbox?.ref, comboboxPopupRef);
-  if (listbox) {
-    listbox.ref = listboxRef;
-  }
-
-  listbox = useListboxSlot(baseState, listbox, triggerRef) as typeof listbox;
-
-  let triggerSlot: Slot<'input'> = slot.always(props.input, {
+  const triggerSlot = useInputTriggerSlot(props.input ?? {}, useMergedRefs(triggerRef, ref), {
+    state: baseState,
+    freeform,
     defaultProps: {
       type: 'text',
       value: value ?? '',
       ...triggerNativeProps,
     },
-    elementType: 'input',
   });
-  triggerSlot.ref = useMergedRefs(triggerSlot.ref, triggerRef, ref);
-  triggerSlot = useInputTriggerSlot(baseState, freeform, triggerSlot);
 
   const rootSlot = slot.always(props.root, {
     defaultProps: {

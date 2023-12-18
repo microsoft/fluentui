@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import { getPartitionedNativeProps, useMergedRefs, slot } from '@fluentui/react-utilities';
-import type { Slot } from '@fluentui/react-utilities';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
 import { Listbox } from '../Listbox/Listbox';
@@ -35,28 +34,23 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
 
   const triggerRef = React.useRef<HTMLButtonElement>(null);
-  let listbox = slot.optional(props.listbox, {
-    renderByDefault: true,
-    defaultProps: { children: props.children },
-    elementType: Listbox,
+  const listbox = useListboxSlot(props.listbox, comboboxPopupRef, {
+    state: baseState,
+    triggerRef,
+    defaultProps: {
+      children: props.children,
+    },
   });
-  const listboxRef = useMergedRefs(listbox?.ref, comboboxPopupRef);
-  if (listbox) {
-    listbox.ref = listboxRef;
-  }
-  listbox = useListboxSlot(baseState, listbox, triggerRef) as typeof listbox;
 
-  let trigger: Slot<'button'> = slot.always(props.button, {
+  const trigger = useButtonTriggerSlot(props.button ?? {}, useMergedRefs(triggerRef, ref), {
+    state: baseState,
     defaultProps: {
       type: 'button',
-      tabIndex: 0, // Safari doesn't focus the button on click without this
+      tabIndex: 0,
       children: baseState.value || props.placeholder,
       ...triggerNativeProps,
     },
-    elementType: 'button',
   });
-  trigger.ref = useMergedRefs(trigger.ref, triggerRef, ref);
-  trigger = useButtonTriggerSlot(baseState, trigger);
 
   const rootSlot = slot.always(props.root, {
     defaultProps: {

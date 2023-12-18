@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { mergeCallbacks, useMergedRefs } from '@fluentui/react-utilities';
-import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
+import { mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
+import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey, getIndexFromAction } from '../utils/dropdownKeyActions';
 import type { ComboboxBaseState } from './ComboboxBase.types';
 
@@ -16,53 +16,66 @@ export type UseTriggerSlotState = Pick<
   | 'setFocusVisible'
   | 'setOpen'
   | 'multiselect'
+  | 'value'
 >;
 
-export function useTriggerSlot(
-  state: UseTriggerSlotState,
-  triggerSlot?: ExtractSlotProps<Slot<'button'>>,
-): ExtractSlotProps<Slot<'button'>>;
+type UseTriggerSlotOptions = {
+  state: UseTriggerSlotState;
+  defaultProps: unknown;
+};
 
 export function useTriggerSlot(
-  state: UseTriggerSlotState,
-  triggerSlot?: ExtractSlotProps<Slot<'input'>>,
-): ExtractSlotProps<Slot<'input'>>;
+  triggerSlotFromProp: NonNullable<Slot<'button'>>,
+  ref: React.Ref<HTMLButtonElement>,
+  options: UseTriggerSlotOptions & { elementType: 'button' },
+): SlotComponentType<ExtractSlotProps<Slot<'button'>>>;
+
+export function useTriggerSlot(
+  triggerSlotFromProp: NonNullable<Slot<'input'>>,
+  ref: React.Ref<HTMLInputElement>,
+  options: UseTriggerSlotOptions & { elementType: 'input' },
+): SlotComponentType<ExtractSlotProps<Slot<'input'>>>;
 
 /**
  * Shared trigger behaviour for combobox and dropdown
  * @returns trigger slot with desired behaviour and props
  */
 export function useTriggerSlot(
-  state: UseTriggerSlotState,
-  triggerSlot?: ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>,
-): ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>> {
+  triggerSlotFromProp: NonNullable<Slot<'input'>> | NonNullable<Slot<'button'>>,
+  ref: React.Ref<HTMLButtonElement> | React.Ref<HTMLInputElement>,
+  options: UseTriggerSlotOptions & { elementType: 'input' | 'button' },
+): SlotComponentType<ExtractSlotProps<Slot<'button'>>> | SlotComponentType<ExtractSlotProps<Slot<'input'>>> {
   const {
-    activeOption,
-    getCount,
-    getIndexOfId,
-    getOptionAtIndex,
-    open,
-    selectOption,
-    setActiveOption,
-    setFocusVisible,
-    setOpen,
-    multiselect,
-  } = state;
+    state: {
+      activeOption,
+      getCount,
+      getIndexOfId,
+      getOptionAtIndex,
+      open,
+      selectOption,
+      setActiveOption,
+      setFocusVisible,
+      setOpen,
+      multiselect,
+    },
+    defaultProps,
+    elementType,
+  } = options;
+
+  const trigger = slot.always(triggerSlotFromProp, {
+    defaultProps: {
+      type: 'text',
+      'aria-expanded': open,
+      'aria-activedescendant': open ? activeOption?.id : undefined,
+      role: 'combobox',
+      ...(typeof defaultProps === 'object' && defaultProps),
+    },
+    elementType,
+  });
 
   // handle trigger focus/blur
   const triggerRef = React.useRef<HTMLButtonElement | HTMLInputElement>(null);
-
-  // resolve trigger shorthand props
-  const trigger: typeof triggerSlot = {
-    'aria-expanded': open,
-    'aria-activedescendant': open ? activeOption?.id : undefined,
-    role: 'combobox',
-    ...triggerSlot,
-    // explicitly type the ref as an intersection here to prevent type errors
-    // since the `children` prop has mutually incompatible types between input/button
-    // functionally both ref and triggerRef will always be the same element type
-    ref: useMergedRefs(triggerRef, triggerSlot?.ref) as React.Ref<HTMLButtonElement & HTMLInputElement>,
-  };
+  trigger.ref = useMergedRefs(triggerRef, trigger.ref, ref) as React.Ref<HTMLButtonElement & HTMLInputElement>;
 
   // the trigger should open/close the popup on click or blur
   trigger.onBlur = mergeCallbacks((event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => {
@@ -126,5 +139,6 @@ export function useTriggerSlot(
     trigger.onMouseOver,
   );
 
-  return trigger;
+  // TODO fix cast
+  return trigger as SlotComponentType<ExtractSlotProps<Slot<'input'>>>;
 }
