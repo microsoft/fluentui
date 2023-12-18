@@ -70,11 +70,11 @@ describe('Time Utilities', () => {
     const testDate = new Date(2023, 9, 6, 23, 45, 12);
 
     it('should format time in 24-hour format without seconds', () => {
-      expect(formatDateToTimeString(testDate)).toBe('23:45');
+      expect(formatDateToTimeString(testDate, { hourCycle: 'h23' })).toBe('23:45');
     });
 
     it('should format time in 24-hour format with seconds', () => {
-      expect(formatDateToTimeString(testDate, { showSeconds: true })).toBe('23:45:12');
+      expect(formatDateToTimeString(testDate, { showSeconds: true, hourCycle: 'h23' })).toBe('23:45:12');
     });
 
     it('should format time in 12-hour format with seconds', () => {
@@ -83,18 +83,33 @@ describe('Time Utilities', () => {
 
     it('should format midnight correctly in 24-hour format', () => {
       const midnight = new Date(2023, 9, 7, 0, 0, 0);
-      expect(formatDateToTimeString(midnight)).toBe('00:00');
+      expect(formatDateToTimeString(midnight, { hourCycle: 'h23' })).toBe('00:00');
     });
 
     it('should format time in Japanese locale', () => {
       const { toLocaleTimeString } = Date.prototype;
       const toLocaleTimeStringMock = jest.spyOn(Date.prototype, 'toLocaleTimeString');
       // Mock toLocaleTimeString to simulate running in a Japanese locale
-      toLocaleTimeStringMock.mockImplementation(function (this: Date, _locales, options) {
-        return toLocaleTimeString.call(this, 'ja-JP', options);
+      toLocaleTimeStringMock.mockImplementationOnce(function (this: Date, _locales, options) {
+        return toLocaleTimeString.call(this, 'ja-JP', { ...options, timeZone: 'Japan' });
       });
 
-      expect(formatDateToTimeString(testDate, { showSeconds: true, hourCycle: 'h11' })).toBe('午後11:45:12');
+      expect(
+        formatDateToTimeString(new Date(Date.UTC(2023, 9, 6, 14, 45, 12)), { showSeconds: true, hourCycle: 'h11' }),
+      ).toBe('午後11:45:12');
+
+      toLocaleTimeStringMock.mockClear();
+    });
+
+    it('should format time without prefix 0 in US local', () => {
+      const { toLocaleTimeString } = Date.prototype;
+      const toLocaleTimeStringMock = jest.spyOn(Date.prototype, 'toLocaleTimeString');
+      // Mock toLocaleTimeString to simulate running in PST locale
+      toLocaleTimeStringMock.mockImplementationOnce(function (this: Date, _locales, options) {
+        return toLocaleTimeString.call(this, 'en-US', { ...options, timeZone: 'America/Los_Angeles' });
+      });
+
+      expect(formatDateToTimeString(new Date(Date.UTC(2023, 9, 6, 15, 45, 12)))).toBe('8:45 AM');
 
       toLocaleTimeStringMock.mockClear();
     });

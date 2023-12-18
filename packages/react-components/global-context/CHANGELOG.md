@@ -1,8 +1,19 @@
 # Change Log - @fluentui/global-context
 
-This log was last generated on Thu, 09 Nov 2023 17:29:49 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Dec 2023 09:58:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.50)
+
+Thu, 14 Dec 2023 09:58:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.49..@fluentui/global-context_v9.0.0-beta.50)
+
+### Changes
+
+- chore: disallow `window` and `document` access ([PR #29962](https://github.com/microsoft/fluentui/pull/29962) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.43 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-utilities to v9.15.3 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
 
 ## [9.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.49)
 

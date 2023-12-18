@@ -66,7 +66,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
 // @internal
 export function useARIAButtonProps<Type extends ARIAButtonType, Props extends ARIAButtonProps<Type>>(type?: Type, props?: Props): ARIAButtonResultProps<Type, Props>;
 
-// @internal
+// @internal @deprecated (undocumented)
 export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps>;
 
 // (No @packageDocumentation comment for this package)

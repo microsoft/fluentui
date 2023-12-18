@@ -20,58 +20,51 @@ export type FadeParams = {
 
 export const enterUltraFast = ({ fromValue = 0 }: FadeParams = {}): AtomMotion => ({
   keyframes: [{ opacity: fromValue }, { opacity: 1 }],
-  options: {
-    duration: durationUltraFast,
-    easing: easingLinear,
-  },
+
+  duration: durationUltraFast,
+  easing: easingLinear,
 });
 
 export const enterFaster = ({ fromValue = 0 }: FadeParams = {}): AtomMotion => ({
   keyframes: [{ opacity: fromValue }, { opacity: 1 }],
-  options: {
-    duration: durationFaster,
-    easing: easingLinear,
-  },
+
+  duration: durationFaster,
+  easing: easingLinear,
 });
 
 export const enterFast = ({ fromValue = 0 }: FadeParams = {}): AtomMotion => ({
   keyframes: [{ opacity: fromValue }, { opacity: 1 }],
-  options: {
-    duration: durationFast,
-    easing: easingLinear,
-  },
+
+  duration: durationFast,
+  easing: easingLinear,
 });
 
 export const enterNormal = ({ fromValue = 0 }: FadeParams = {}): AtomMotion => ({
   keyframes: [{ opacity: fromValue }, { opacity: 1 }],
-  options: {
-    duration: durationNormal,
-    easing: easingLinear,
-  },
+
+  duration: durationNormal,
+  easing: easingLinear,
 });
 
 export const enterSlow = ({ fromValue = 0 }: FadeParams = {}): AtomMotion => ({
   keyframes: [{ opacity: fromValue }, { opacity: 1 }],
-  options: {
-    duration: durationSlow,
-    easing: easingLinear,
-  },
+
+  duration: durationSlow,
+  easing: easingLinear,
 });
 
 export const enterSlower = ({ fromValue = 0 }: FadeParams = {}): AtomMotion => ({
   keyframes: [{ opacity: fromValue }, { opacity: 1 }],
-  options: {
-    duration: durationSlower,
-    easing: easingLinear,
-  },
+
+  duration: durationSlower,
+  easing: easingLinear,
 });
 
 export const enterUltraSlow = ({ fromValue = 0 }: FadeParams = {}): AtomMotion => ({
   keyframes: [{ opacity: fromValue }, { opacity: 1 }],
-  options: {
-    duration: durationUltraSlow,
-    easing: easingLinear,
-  },
+
+  duration: durationUltraSlow,
+  easing: easingLinear,
 });
 
 // Fade Outs
@@ -79,56 +72,49 @@ export const enterUltraSlow = ({ fromValue = 0 }: FadeParams = {}): AtomMotion =
 
 export const exitUltraFast = ({ fromValue = 0 }: FadeParams = {}): AtomMotion => ({
   keyframes: [{ opacity: 1 }, { opacity: fromValue }],
-  options: {
-    duration: durationUltraFast,
-    easing: easingLinear,
-  },
+
+  duration: durationUltraFast,
+  easing: easingLinear,
 });
 
 export const exitFaster = ({ fromValue = 0 }: FadeParams = {}): AtomMotion => ({
   keyframes: [{ opacity: 1 }, { opacity: fromValue }],
-  options: {
-    duration: durationFaster,
-    easing: easingLinear,
-  },
+
+  duration: durationFaster,
+  easing: easingLinear,
 });
 
 export const exitFast = ({ fromValue = 0 }: FadeParams = {}): AtomMotion => ({
   keyframes: [{ opacity: 1 }, { opacity: fromValue }],
-  options: {
-    duration: durationFast,
-    easing: easingLinear,
-  },
+
+  duration: durationFast,
+  easing: easingLinear,
 });
 
 export const exitNormal = ({ fromValue = 0 }: FadeParams = {}): AtomMotion => ({
   keyframes: [{ opacity: 1 }, { opacity: fromValue }],
-  options: {
-    duration: durationNormal,
-    easing: easingLinear,
-  },
+
+  duration: durationNormal,
+  easing: easingLinear,
 });
 
 export const exitSlow = ({ fromValue = 0 }: FadeParams = {}): AtomMotion => ({
   keyframes: [{ opacity: 1 }, { opacity: fromValue }],
-  options: {
-    duration: durationSlow,
-    easing: easingLinear,
-  },
+
+  duration: durationSlow,
+  easing: easingLinear,
 });
 
 export const exitSlower = ({ fromValue = 0 }: FadeParams = {}): AtomMotion => ({
   keyframes: [{ opacity: 1 }, { opacity: fromValue }],
-  options: {
-    duration: durationSlower,
-    easing: easingLinear,
-  },
+
+  duration: durationSlower,
+  easing: easingLinear,
 });
 
 export const exitUltraSlow = ({ fromValue = 0 }: FadeParams = {}): AtomMotion => ({
   keyframes: [{ opacity: 1 }, { opacity: fromValue }],
-  options: {
-    duration: durationUltraSlow,
-    easing: easingLinear,
-  },
+
+  duration: durationUltraSlow,
+  easing: easingLinear,
 });

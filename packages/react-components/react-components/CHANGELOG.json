@@ -2,6 +2,147 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 14 Dec 2023 09:58:41 GMT",
+      "tag": "@fluentui/react-components_v9.43.0",
+      "version": "9.43.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "b6766ba321b57331266f3f391d7274c77730459d",
+            "comment": "chore: disallow `window` and `document` access"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "841ad6af34ceb7266d0c4c71fa5828f581e0e5cc",
+            "comment": "fix: updates should be synchronous in unit tests"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "b6766ba321b57331266f3f391d7274c77730459d",
+            "comment": "chore: disallow `window` and `document` access"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "8a6a4559b2b24325cd5303fb3b9cc4f6d450a47a",
+            "comment": "fix: Applies border-box sizing to listbox slot"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "21548962723950b640bcd75c5befa58120f00b15",
+            "comment": "fix: OverlayDrawer accepts mountNode in types"
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "6fbf7dc04a3bd6594a3f510da4aa9f2946aa8909",
+            "comment": "fix: User-provided props win over defined defaults in Link component."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "62312d15851d9ec28b2e84216e2ba2aa19b14d70",
+            "comment": "fix: Using correct colors when MenuItem is pressed."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-motion-preview",
+            "commit": "b6766ba321b57331266f3f391d7274c77730459d",
+            "comment": "chore: disallow `window` and `document` access"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "95c9391107523207d8a14c154179326314be9322",
+            "comment": "fix: Virtual parent cannot be the DOM child of mount node"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "8a6a4559b2b24325cd5303fb3b9cc4f6d450a47a",
+            "comment": "fix: Allows matchTargetSize middleware to be overidden with inline style"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "b6766ba321b57331266f3f391d7274c77730459d",
+            "comment": "chore: disallow `window` and `document` access"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "07bc7ffdd9a6abb244e1ac339677998729dee7eb",
+            "comment": "fix: add max-height to show 12 items in listbox"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "0d1d32a39687023d0d09632cbfc6e40fb04fa888",
+            "comment": "fix: use default time format instead of h23 hour cycle."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b6766ba321b57331266f3f391d7274c77730459d",
+            "comment": "chore: disallow `window` and `document` access"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "8a9fadf20b39eb154fdfda8084b38baeb1d8dce8",
+            "comment": "feat(useActiveDescendant): Changing active descendant scrolls into view"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "a434b543fb6724cf9925aabbcd69f5605220382a",
+            "comment": "feat: Export useAvatarGroupPopovercontextValues hook."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "a434b543fb6724cf9925aabbcd69f5605220382a",
+            "comment": "feat: Export useAvatarGroupPopovercontextValues hook."
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "3337f63dc7307d8bbc99499d6af70ebf2cb9b466",
+            "comment": "fix: Dialog now transitions in on first render"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "eb8a750dfd750779fbe38b0541decddaef2103ef",
+            "comment": "feat: List v0 migration shim"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "6244dc6778c65b6e8a29dd2baad7cc59a9b8ce80",
+            "comment": "feat: added select tab on focus behavior"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "7c8171182c0ba192ded028d1cb5c40626838397d",
+            "comment": "chore: add a explainer a check"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 30 Nov 2023 13:42:05 GMT",
       "tag": "@fluentui/react-components_v9.42.0",
       "version": "9.42.0",

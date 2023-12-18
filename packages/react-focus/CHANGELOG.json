@@ -2,6 +2,45 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Thu, 14 Dec 2023 07:30:10 GMT",
+      "tag": "@fluentui/react-focus_v8.8.35",
+      "version": "8.8.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/keyboard-key to v0.4.13",
+            "commit": "26acec917d2d47c80b9d06215c2f8454aa9520b3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/merge-styles to v8.5.14",
+            "commit": "26acec917d2d47c80b9d06215c2f8454aa9520b3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/set-version to v8.2.13",
+            "commit": "26acec917d2d47c80b9d06215c2f8454aa9520b3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.9.21",
+            "commit": "26acec917d2d47c80b9d06215c2f8454aa9520b3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.13.22",
+            "commit": "26acec917d2d47c80b9d06215c2f8454aa9520b3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 07:29:20 GMT",
       "tag": "@fluentui/react-focus_v8.8.34",
       "version": "8.8.34",
