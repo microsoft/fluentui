@@ -45,7 +45,7 @@ export function keyToDate(key: string): Date | null {
  * formatDateToTimeString(date, \{ hourCycle: 'h12', showSeconds: true \}); // Returns "11:45:12 PM" in CET
  */
 export function formatDateToTimeString(date: Date, { hourCycle, showSeconds }: TimeFormatOptions = {}): string {
-  return date.toLocaleTimeString([], {
+  return date.toLocaleTimeString(undefined, {
     hour: 'numeric',
     hourCycle,
     minute: '2-digit',
