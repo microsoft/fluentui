@@ -3,7 +3,7 @@ import { mount as mountBase } from '@cypress/react';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
-import { TimePicker, TimePickerProps, TimeSelectionData } from '@fluentui/react-timepicker-compat-preview';
+import { TimePicker, TimePickerProps } from '@fluentui/react-timepicker-compat-preview';
 
 const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
