@@ -76,6 +76,12 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   autoAdjustHeight?: boolean;
 
   /**
+   * Callback executed after a multiline TextField's height is adjusted.
+   * This callback is only executed when `autoAdjustHeight` is true.
+   */
+  onAdjustHeight?: (scrollHeight: number) => void;
+
+  /**
    * Whether or not the text field is underlined.
    * @defaultvalue false
    */

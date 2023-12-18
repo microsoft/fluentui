@@ -13,13 +13,33 @@ const columnProps: Partial<IStackProps> = {
 };
 
 export const TextFieldMultilineExample: React.FunctionComponent = () => {
+  const containerRef = React.useRef<HTMLDivElement>(null);
   const [multiline, { toggle: toggleMultiline }] = useBoolean(false);
-  const onChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newText: string): void => {
+  const [containerScroll, setContainerScroll] = React.useState<number | undefined>();
+  const [value, setValue] = React.useState<string>();
+
+  const onChange = (_: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newText: string): void => {
     const newMultiline = newText.length > 50;
     if (newMultiline !== multiline) {
       toggleMultiline();
     }
   };
+  const onMultilineChange = React.useCallback(
+    (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+      setValue(ev.currentTarget.value);
+      setContainerScroll(containerRef.current?.scrollTop);
+    },
+    [containerRef],
+  );
+  const onAdjustHeight = React.useCallback(
+    (_screenHeight: number) => {
+      if (containerRef.current && containerScroll) {
+        containerRef.current.scrollTop = containerScroll;
+      }
+    },
+    [containerRef, containerScroll],
+  );
+
   return (
     <Stack horizontal tokens={stackTokens} styles={stackStyles}>
       <Stack {...columnProps}>
@@ -29,7 +49,20 @@ export const TextFieldMultilineExample: React.FunctionComponent = () => {
       </Stack>
 
       <Stack {...columnProps}>
-        <TextField label="With auto adjusting height" multiline autoAdjustHeight />
+        {/*
+        When using autoAdjustHeight, if the TextField extends past the container's height and the container allows
+        scrolling, deleting a line scrolls the container to the top. To avoid this, use onAdjustHeight as shown below.
+        */}
+        <div ref={containerRef} style={{ maxHeight: '300px', overflowY: 'scroll' }}>
+          <TextField
+            label="With auto adjusting height"
+            multiline
+            autoAdjustHeight
+            onAdjustHeight={onAdjustHeight}
+            value={value}
+            onChange={onMultilineChange}
+          />
+        </div>
         <TextField
           label="Switches from single to multiline if more than 50 characters are entered"
           multiline={multiline}

@@ -9310,6 +9310,7 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     invalid?: boolean;
     label?: string;
     multiline?: boolean;
+    onAdjustHeight?: (scrollHeight: number) => void;
     onChange?: (event: React_2.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
     onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
     onNotifyValidationResult?: (errorMessage: string | JSX.Element, value: string | undefined) => void;

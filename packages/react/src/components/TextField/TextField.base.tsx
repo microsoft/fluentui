@@ -642,6 +642,7 @@ export class TextFieldBase
       const textField = this._textElement.current;
       textField.style.height = '';
       textField.style.height = textField.scrollHeight + 'px';
+      this.props.onAdjustHeight?.(textField.scrollHeight);
     }
   }
 }
