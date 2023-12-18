@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: letter key navigation in listbox should be case insensitive",
-  "packageName": "@fluentui/react-timepicker-compat-preview",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

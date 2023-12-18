@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: focus outline should have `Highlight` colour in high contrast",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

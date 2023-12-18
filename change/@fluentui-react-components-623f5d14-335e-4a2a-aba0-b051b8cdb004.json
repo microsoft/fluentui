@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: add \"wyw-in-js\" field for tag processor",
-  "packageName": "@fluentui/react-components",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

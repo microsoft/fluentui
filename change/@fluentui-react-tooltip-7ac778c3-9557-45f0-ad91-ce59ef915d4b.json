@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: stop using deprecated keyborg property",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
