@@ -1,6 +1,6 @@
 import { attr, observable } from '@microsoft/fast-element';
 import { keyEnter, keySpace } from '@microsoft/fast-web-utilities';
-import { StaticallyComposableHTML } from '../utils/index.js';
+import type { StaticallyComposableHTML } from '../utils/index.js';
 import { SwitchLabelPosition } from './switch.options.js';
 import { FormAssociatedSwitch } from './switch.form-associated.js';
 

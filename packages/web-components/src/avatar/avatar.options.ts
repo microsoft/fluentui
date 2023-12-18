@@ -1,4 +1,4 @@
-import { ValuesOf } from '../utils/index.js';
+import type { ValuesOf } from '../utils/index.js';
 
 /**
  * The Avatar "active" state

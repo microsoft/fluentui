@@ -1,4 +1,4 @@
-import { StaticallyComposableHTML, ValuesOf } from '../utils/index.js';
+import type { StaticallyComposableHTML, ValuesOf } from '../utils/index.js';
 import { ProgressBar } from './progress-bar.js';
 
 /**

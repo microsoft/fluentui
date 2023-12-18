@@ -1,6 +1,6 @@
 import { ButtonAppearance, ButtonShape, ButtonSize } from '../button/button.options.js';
 import type { ButtonOptions } from '../button/index.js';
-import { ValuesOf } from '../utils/index.js';
+import type { ValuesOf } from '../utils/index.js';
 
 /**
  * Toggle Button Appearance constants

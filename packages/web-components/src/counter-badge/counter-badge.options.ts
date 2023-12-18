@@ -1,5 +1,5 @@
 import { BadgeOptions } from '../badge/badge.options.js';
-import { ValuesOf } from '../utils/index.js';
+import type { ValuesOf } from '../utils/index.js';
 
 /**
  * CounterBadge options

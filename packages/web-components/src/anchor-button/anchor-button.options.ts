@@ -1,5 +1,5 @@
 import { ButtonAppearance, ButtonShape, ButtonSize } from '../button/button.options.js';
-import { ValuesOf } from '../utils/index.js';
+import type { ValuesOf } from '../utils/index.js';
 import type { AnchorOptions } from './anchor-button.js';
 
 /**

@@ -1,5 +1,5 @@
 import { Orientation } from '@microsoft/fast-web-utilities';
-import { ValuesOf } from '../utils/index.js';
+import type { ValuesOf } from '../utils/index.js';
 
 /**
  * Divider roles
