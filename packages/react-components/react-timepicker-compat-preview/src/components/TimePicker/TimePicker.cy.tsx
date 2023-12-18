@@ -144,6 +144,7 @@ describe('TimePicker with custom parsing', () => {
     const formatDateToTimeString = (date: Date) => {
       const localeTimeString = date.toLocaleTimeString([], {
         hour: 'numeric',
+        hourCycle: 'h23',
         minute: '2-digit',
       });
       if (date.getHours() < 12) {
