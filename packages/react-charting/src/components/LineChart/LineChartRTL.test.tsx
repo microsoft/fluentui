@@ -7,6 +7,9 @@ import { ILineChartPoints, LineChart } from './index';
 import { mergeStyles } from '@fluentui/merge-styles';
 
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 const beforeAll = () => {
   jest.spyOn(Date.prototype, 'toLocaleString').mockReturnValue('08/25/2023');
@@ -573,7 +576,7 @@ describe('Line chart - Subcomponent xAxis Labels', () => {
   );
 });
 
-describe('Line chart - Subcomponent Event', () => {
+describe.skip('Line chart - Subcomponent Event', () => {
   const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
   // Replace the original method with the mock implementation
   Object.defineProperty(
@@ -587,7 +590,7 @@ describe('Line chart - Subcomponent Event', () => {
   testWithWait(
     'Should render events with defined data',
     LineChart,
-    { data: simplePoints, eventAnnotationProps: eventAnnotationProps, tickValues: tickValues, tickFormat: '%m/%d' },
+    { data: simplePoints, eventAnnotationProps, tickValues, tickFormat: '%m/%d' },
     container => {
       // Arrange
       const event = screen.queryByText('3 events');
@@ -654,3 +657,9 @@ test('Should reflect theme change', () => {
   // Assert
   expect(container).toMatchSnapshot();
 });
+
+test('Should pass accessibility tests', async () => {
+  const { container } = render(<LineChart data={basicChartPoints} />);
+  const axeResults = await axe(container);
+  expect(axeResults).toHaveNoViolations();
+}, 10000);

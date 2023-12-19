@@ -32,7 +32,8 @@
             "glob": "executors.json",
             "output": "."
           }
-        ]
+        ],
+        "updateBuildableProjectDepsInPackageJson": true
       }
     },
     "lint": {
@@ -70,5 +71,5 @@
       "command": "node ./tools/workspace-plugin/scripts/check-dep-graph.js"
     }
   },
-  "tags": ["platform:any", "tools"]
+  "tags": ["platform:node", "tools"]
 }

@@ -1,8 +1,120 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Thu, 12 Oct 2023 14:55:44 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Dec 2023 14:40:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.2.2)
+
+Mon, 18 Dec 2023 14:40:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.2.1..@fluentui/react-link_v9.2.2)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.22 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.13.2 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-tabster to v9.16.0 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-utilities to v9.15.4 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.2.1)
+
+Thu, 14 Dec 2023 09:58:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.2.0..@fluentui/react-link_v9.2.1)
+
+### Patches
+
+- fix: User-provided props win over defined defaults in Link component. ([PR #30062](https://github.com/microsoft/fluentui/pull/30062) by makotom@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.21 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.13.1 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-tabster to v9.15.1 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-utilities to v9.15.3 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.2.0)
+
+Thu, 30 Nov 2023 13:42:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.1.35..@fluentui/react-link_v9.2.0)
+
+### Minor changes
+
+- feat: Adding span as an option for Link to render as. ([PR #29937](https://github.com/microsoft/fluentui/pull/29937) by humbertomakotomorimoto@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.20 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+- Bump @fluentui/react-tabster to v9.15.0 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+
+## [9.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.1.35)
+
+Mon, 20 Nov 2023 09:55:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.1.34..@fluentui/react-link_v9.1.35)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.13.0 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+- Bump @fluentui/react-tabster to v9.14.6 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+
+## [9.1.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.1.34)
+
+Tue, 14 Nov 2023 17:51:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.1.33..@fluentui/react-link_v9.1.34)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.14.5 ([PR #29835](https://github.com/microsoft/fluentui/pull/29835) by beachball)
+
+## [9.1.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.1.33)
+
+Thu, 09 Nov 2023 17:29:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.1.32..@fluentui/react-link_v9.1.33)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.7 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.19 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.12.0 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-tabster to v9.14.4 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-theme to v9.1.16 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-utilities to v9.15.2 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+
+## [9.1.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.1.32)
+
+Wed, 01 Nov 2023 12:55:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.1.31..@fluentui/react-link_v9.1.32)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.11.1 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-tabster to v9.14.3 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-theme to v9.1.15 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+
+## [9.1.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.1.31)
+
+Sat, 28 Oct 2023 23:35:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.1.30..@fluentui/react-link_v9.1.31)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+- Bump @fluentui/react-tabster to v9.14.2 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+
+## [9.1.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.1.30)
+
+Mon, 23 Oct 2023 09:51:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.1.29..@fluentui/react-link_v9.1.30)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.14.1 ([commit](https://github.com/microsoft/fluentui/commit/e4ef1febe8a185dddc10f8936944d177d50bc396) by beachball)
+
+## [9.1.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.1.29)
+
+Wed, 18 Oct 2023 17:54:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.1.28..@fluentui/react-link_v9.1.29)
+
+### Patches
+
+- chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.18 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-tabster to v9.14.0 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-utilities to v9.15.1 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
 
 ## [9.1.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.1.28)
 

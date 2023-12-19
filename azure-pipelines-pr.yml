@@ -1,0 +1,31 @@
+pr:
+  - master
+
+# There's a separate pipeline for CI which also uses this file, but with a trigger override in the UI
+# https://dev.azure.com/uifabric/fabricpublic/_apps/hub/ms.vss-ciworkflow.build-ci-hub?_a=edit-build-definition&id=164&view=Tab_Triggers
+trigger: none
+
+variables:
+  - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
+      - name: sinceArg
+        value: --since $(targetBranch)
+
+  - group: fabric-variables
+
+  - template: .devops/templates/variables.yml
+
+pool: '1ES-Host-Ubuntu'
+
+jobs:
+  - job: BuildTestLint
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/build-test-lint.yml
+
+  - job: DeployE2E
+    displayName: Deploy and E2E
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/deployE2E.yml

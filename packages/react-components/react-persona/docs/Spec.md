@@ -17,7 +17,7 @@ Persona is used in PeoplePicker, Team's left rail and menus, chiclets, and Card.
 
 ## Anatomy
 
-![Anatomy](./etc/images/anatomy.png)
+![Anatomy](../etc/images/anatomy.png)
 
 ### Avatar, PresenceBadge, and Avatar + PresenceBadge
 

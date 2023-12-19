@@ -27,7 +27,7 @@ import { SVGProps } from 'react';
 // @public
 export const AreaChart: React_2.FunctionComponent<IAreaChartProps>;
 
-// @public (undocumented)
+// @public
 export const CartesianChart: React_2.FunctionComponent<IModifiedCartesianChartProps>;
 
 // @public
@@ -151,11 +151,11 @@ export interface IAreaChartProps extends ICartesianChartProps {
     styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
 }
 
-// @public (undocumented)
+// @public
 export interface IAreaChartStyleProps extends ICartesianChartStyleProps {
 }
 
-// @public (undocumented)
+// @public
 export interface IAreaChartStyles extends ICartesianChartStyles {
 }
 
@@ -205,7 +205,7 @@ export interface IBasestate {
     }[];
 }
 
-// @public (undocumented)
+// @public
 export interface ICartesianChartProps {
     calloutProps?: Partial<ICalloutProps>;
     // @deprecated
@@ -257,7 +257,7 @@ export interface ICartesianChartProps {
     yMinValue?: number;
 }
 
-// @public (undocumented)
+// @public
 export interface ICartesianChartStyleProps {
     className?: string;
     color?: string;
@@ -271,7 +271,7 @@ export interface ICartesianChartStyleProps {
     width?: number;
 }
 
-// @public (undocumented)
+// @public
 export interface ICartesianChartStyles {
     axisTitle?: IStyle;
     calloutBlockContainer?: IStyle;
@@ -439,11 +439,11 @@ export interface IDonutChartProps extends ICartesianChartProps {
     valueInsideDonut?: string | number;
 }
 
-// @public (undocumented)
+// @public
 export interface IDonutChartStyleProps extends ICartesianChartStyleProps {
 }
 
-// @public (undocumented)
+// @public
 export interface IDonutChartStyles {
     chart?: IStyle;
     legendContainer: IStyle;
@@ -499,7 +499,7 @@ export interface IGaugeChartSegment {
     size: number;
 }
 
-// @public (undocumented)
+// @public
 export interface IGaugeChartStyleProps {
     chartHeight?: number;
     chartValueSize?: number;
@@ -510,7 +510,7 @@ export interface IGaugeChartStyleProps {
     toDrawShape?: boolean;
 }
 
-// @public (undocumented)
+// @public
 export interface IGaugeChartStyles {
     calloutBlockContainer?: IStyle;
     calloutContentRoot?: IStyle;
@@ -561,11 +561,11 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     styles?: IStyleFunctionOrObject<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>;
 }
 
-// @public (undocumented)
+// @public
 export interface IGroupedVerticalBarChartStyleProps extends ICartesianChartStyleProps {
 }
 
-// @public (undocumented)
+// @public
 export interface IGroupedVerticalBarChartStyles extends ICartesianChartStyles {
     barLabel: IStyle;
     opacityChangeOnHover: IStyle;
@@ -638,11 +638,11 @@ export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<k
     yAxisStringFormatter?: (point: string) => string;
 }
 
-// @public (undocumented)
+// @public
 export interface IHeatMapChartStyleProps extends ICartesianChartStyleProps {
 }
 
-// @public (undocumented)
+// @public
 export interface IHeatMapChartStyles {
     // (undocumented)
     root?: IStyle;
@@ -674,7 +674,7 @@ export interface IHorizontalBarChartProps {
     width?: number;
 }
 
-// @public (undocumented)
+// @public
 export interface IHorizontalBarChartStyleProps {
     barHeight?: number;
     className?: string;
@@ -686,7 +686,7 @@ export interface IHorizontalBarChartStyleProps {
     width: number | undefined;
 }
 
-// @public (undocumented)
+// @public
 export interface IHorizontalBarChartStyles {
     barLabel: IStyle;
     barWrapper: IStyle;
@@ -729,12 +729,12 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
     yAxisPadding?: number;
 }
 
-// @public (undocumented)
+// @public
 export interface IHorizontalBarChartWithAxisStyleProps extends ICartesianChartStyleProps {
     legendColor?: string;
 }
 
-// @public (undocumented)
+// @public
 export interface IHorizontalBarChartWithAxisStyles extends ICartesianChartStyles {
     chartLabel?: IStyle;
     opacityChangeOnHover: IStyle;
@@ -773,7 +773,7 @@ export interface ILegendDataItem {
     legendText: string | number;
 }
 
-// @public
+// @public (undocumented)
 export interface ILegendOverflowData {
     // (undocumented)
     overflow?: ILegend[];
@@ -781,19 +781,21 @@ export interface ILegendOverflowData {
     primary: ILegend[];
 }
 
-// @public (undocumented)
+// @public
 export interface ILegendsProps {
     allowFocusOnLegends?: boolean;
     canSelectMultipleLegends?: boolean;
     centerLegends?: boolean;
     className?: string;
+    defaultSelectedLegend?: string;
+    defaultSelectedLegends?: string[];
     enabledWrapLines?: boolean;
     focusZonePropsInHoverCard?: IFocusZoneProps;
     legends: ILegend[];
+    onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: ILegend) => void;
     onLegendHoverCardLeave?: VoidFunction;
     overflowProps?: Partial<IOverflowSetProps>;
     overflowText?: string;
-    selectedLegend?: string;
     styles?: IStyleFunctionOrObject<ILegendStyleProps, ILegendsStyles>;
     theme?: ITheme;
 }
@@ -812,7 +814,7 @@ export interface ILegendsStyles {
     triangle: IStyle;
 }
 
-// @public (undocumented)
+// @public
 export interface ILegendStyleProps {
     // (undocumented)
     borderColor?: string;
@@ -832,7 +834,7 @@ export interface ILegendStyleProps {
     theme?: ITheme;
 }
 
-// @public
+// @public (undocumented)
 export interface ILegendSubComponentStyles {
     // (undocumented)
     hoverCardStyles: IStyleFunctionOrObject<IHoverCardStyleProps, IHoverCardStyles>;
@@ -899,11 +901,11 @@ export interface ILineChartProps extends ICartesianChartProps {
     styles?: IStyleFunctionOrObject<ILineChartStyleProps, ILineChartStyles>;
 }
 
-// @public (undocumented)
+// @public
 export interface ILineChartStyleProps extends ICartesianChartStyleProps {
 }
 
-// @public (undocumented)
+// @public
 export interface ILineChartStyles extends ICartesianChartStyles {
 }
 
@@ -1015,7 +1017,7 @@ export interface IMultiStackedBarChartProps {
     width?: number;
 }
 
-// @public (undocumented)
+// @public
 export interface IMultiStackedBarChartStyleProps {
     barHeight?: number;
     className?: string;
@@ -1028,7 +1030,7 @@ export interface IMultiStackedBarChartStyleProps {
     width?: number;
 }
 
-// @public (undocumented)
+// @public
 export interface IMultiStackedBarChartStyles {
     barLabel: IStyle;
     chart: IStyle;
@@ -1064,10 +1066,10 @@ export interface IPieChartProps {
     width?: number;
 }
 
-// @public (undocumented)
+// @public
 export type IPieChartStyleProps = Required<Pick<IPieChartProps, 'theme' | 'width' | 'height'>> & Pick<IPieChartProps, 'className'>;
 
-// @public (undocumented)
+// @public
 export interface IPieChartStyles {
     chart?: IStyle;
     chartTitle?: IStyle;
@@ -1105,7 +1107,7 @@ export interface ISankeyChartProps {
     width?: number;
 }
 
-// @public (undocumented)
+// @public
 export interface ISankeyChartStyleProps {
     // (undocumented)
     className?: string;
@@ -1119,7 +1121,7 @@ export interface ISankeyChartStyleProps {
     width: number;
 }
 
-// @public (undocumented)
+// @public
 export interface ISankeyChartStyles {
     calloutContentRoot?: IStyle;
     links?: IStyle;
@@ -1158,7 +1160,7 @@ export interface ISparklineProps {
 export interface ISparklineStyleProps extends ICartesianChartStyleProps {
 }
 
-// @public (undocumented)
+// @public
 export interface ISparklineStyles {
     // (undocumented)
     inlineBlock?: IStyle;
@@ -1197,7 +1199,7 @@ export interface IStackedBarChartProps {
     width?: number;
 }
 
-// @public (undocumented)
+// @public
 export interface IStackedBarChartStyleProps {
     barHeight?: number;
     benchmarkColor?: string;
@@ -1214,7 +1216,7 @@ export interface IStackedBarChartStyleProps {
     width?: number;
 }
 
-// @public (undocumented)
+// @public
 export interface IStackedBarChartStyles {
     benchmark: IStyle;
     benchmarkContainer: IStyle;
@@ -1229,7 +1231,7 @@ export interface IStackedBarChartStyles {
     target: IStyle;
 }
 
-// @public
+// @public (undocumented)
 export interface ITreeChartDataPoint {
     bodytext?: string;
     children?: Array<ITreeChartDataPoint>;
@@ -1253,7 +1255,7 @@ export interface ITreeDataStructure {
     y: number;
 }
 
-// @public (undocumented)
+// @public
 export interface ITreeProps {
     className?: string;
     composition?: NodesComposition.long | NodesComposition.compact;
@@ -1274,13 +1276,13 @@ export interface ITreeState {
     _width: number;
 }
 
-// @public (undocumented)
+// @public
 export interface ITreeStyleProps {
     className?: string;
     theme: ITheme;
 }
 
-// @public (undocumented)
+// @public
 export interface ITreeStyles {
     link: IStyle;
     rectBodyText: IStyle;
@@ -1321,12 +1323,12 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
     xAxisPadding?: number;
 }
 
-// @public (undocumented)
+// @public
 export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {
     legendColor?: string;
 }
 
-// @public (undocumented)
+// @public
 export interface IVerticalBarChartStyles extends ICartesianChartStyles {
     barLabel: IStyle;
     // @deprecated
@@ -1370,11 +1372,11 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     yMinValue?: undefined;
 }
 
-// @public (undocumented)
+// @public
 export interface IVerticalStackedBarChartStyleProps extends ICartesianChartStyleProps {
 }
 
-// @public (undocumented)
+// @public
 export interface IVerticalStackedBarChartStyles extends ICartesianChartStyles {
     barLabel: IStyle;
     // @deprecated

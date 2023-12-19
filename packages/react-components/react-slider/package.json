@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-slider",
-  "version": "9.1.50",
+  "version": "9.1.60",
   "description": "Fluent UI React Slider component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,12 +34,12 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-field": "^9.1.37",
-    "@fluentui/react-jsx-runtime": "^9.0.17",
-    "@fluentui/react-shared-contexts": "^9.10.0",
-    "@fluentui/react-tabster": "^9.13.6",
-    "@fluentui/react-theme": "^9.1.14",
-    "@fluentui/react-utilities": "^9.15.0",
+    "@fluentui/react-field": "^9.1.45",
+    "@fluentui/react-jsx-runtime": "^9.0.22",
+    "@fluentui/react-shared-contexts": "^9.13.2",
+    "@fluentui/react-tabster": "^9.16.0",
+    "@fluentui/react-theme": "^9.1.16",
+    "@fluentui/react-utilities": "^9.15.4",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
@@ -63,5 +63,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

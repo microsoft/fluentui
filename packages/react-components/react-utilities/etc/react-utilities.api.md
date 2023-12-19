@@ -60,7 +60,7 @@ export function getEventClientCoords(event: TouchOrMouseEvent): {
 // @public
 export const getIntrinsicElementProps: <Props extends UnknownSlotProps, ExcludedPropKeys extends Extract<keyof Props, string> = never>(tagName: NonNullable<Props["as"]>, props: Props & React_2.RefAttributes<InferredElementRefType<Props>>, excludedPropNames?: ExcludedPropKeys[] | undefined) => OmitWithoutExpanding<Props, ExcludedPropKeys | Exclude<keyof Props, "as" | keyof HTMLAttributes>>;
 
-// @public
+// @public @deprecated
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
 
 // @internal

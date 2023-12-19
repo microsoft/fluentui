@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps",
-  "packageName": "@fluentui/react-accordion",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

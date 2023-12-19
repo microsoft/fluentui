@@ -10,7 +10,7 @@ import { getMultiStackedBarChartStyles } from './MultiStackedBarChart.styles';
 
 // Create a MultiStackedBarChart variant which uses these default styles and this styled subcomponent.
 /**
- * MultiStackedBarchart component.
+ * MultiStackedBarchart component
  * {@docCategory MultiStackedBarChart}
  */
 export const MultiStackedBarChart: React.FunctionComponent<IMultiStackedBarChartProps> = styled<

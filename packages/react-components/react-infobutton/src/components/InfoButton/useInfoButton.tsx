@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 import { DefaultInfoButtonIcon12, DefaultInfoButtonIcon16, DefaultInfoButtonIcon20 } from './DefaultInfoButtonIcons';
 import {
@@ -33,6 +34,8 @@ const popoverSizeMap = {
  *
  * @param props - props from this instance of InfoButton
  * @param ref - reference to root HTMLElement of InfoButton
+ *
+ * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
  */
 export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLElement>): InfoButtonState => {
   const { size = 'medium', inline = true } = props;

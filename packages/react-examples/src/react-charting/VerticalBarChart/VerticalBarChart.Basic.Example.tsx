@@ -170,6 +170,11 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
 
     return (
       <>
+        <p>
+          In this example the <code>xAxisCalloutData</code> property overrides the x value that is shown on the callout.
+          So instead of a numeric value, the callout will show the date that is passed in the{' '}
+          <code>xAxisCalloutData</code> property.
+        </p>
         <label htmlFor="changeWidth">Change Width:</label>
         <input
           type="range"
