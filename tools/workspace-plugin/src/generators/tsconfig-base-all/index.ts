@@ -15,6 +15,8 @@ export default async function (tree: Tree, schema: TsconfigBaseAllGeneratorSchem
   if (!normalizedOptions.verify) {
     writeJson(tree, tsConfigAllPath, mergedTsConfig);
     await formatFiles(tree);
+
+    return;
   }
 
   if (!isEqual(existingTsConfig, mergedTsConfig)) {
@@ -25,7 +27,7 @@ export default async function (tree: Tree, schema: TsconfigBaseAllGeneratorSchem
     `);
   }
 
-  console.log('✅: tsconfig.base.all.json is up to date');
+  console.log('✅ tsconfig.base.all.json is up to date');
 }
 
 function normalizeOptions(tree: Tree, options: TsconfigBaseAllGeneratorSchema) {
