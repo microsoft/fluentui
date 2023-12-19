@@ -81,9 +81,7 @@ const colorFillBarData = [
     color: 'blue',
     data: [
       {
-        // startX: new Date('01/01/2020'),
         startX: new Date('2020-01-01T00:00:00.000Z'),
-        // endX: new Date('02/01/2020'),
         endX: new Date('2020-02-01T00:00:00.000Z'),
       },
     ],
@@ -93,9 +91,7 @@ const colorFillBarData = [
     color: 'red',
     data: [
       {
-        // startX: new Date('04/01/2018'),
         startX: new Date('2018-04-01T00:00:00.000Z'),
-        // endX: new Date('05/01/2018'),
         endX: new Date('2020-05-01T00:00:00.000Z'),
       },
     ],
