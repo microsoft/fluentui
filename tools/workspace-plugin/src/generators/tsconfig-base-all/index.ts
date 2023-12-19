@@ -12,7 +12,12 @@ export default async function (tree: Tree, schema: TsconfigBaseAllGeneratorSchem
 
   const { existingTsConfig, mergedTsConfig, tsConfigAllPath } = createPathAliasesConfig(tree);
 
-  if (normalizedOptions.verify && !isEqual(existingTsConfig, mergedTsConfig)) {
+  if (!normalizedOptions.verify) {
+    writeJson(tree, tsConfigAllPath, mergedTsConfig);
+    await formatFiles(tree);
+  }
+
+  if (!isEqual(existingTsConfig, mergedTsConfig)) {
     throw new Error(`
       🚨 ${tsConfigAllPath} is out of date.
 
@@ -20,8 +25,7 @@ export default async function (tree: Tree, schema: TsconfigBaseAllGeneratorSchem
     `);
   }
 
-  writeJson(tree, tsConfigAllPath, mergedTsConfig);
-  await formatFiles(tree);
+  console.log('✅: tsconfig.base.all.json is up to date');
 }
 
 function normalizeOptions(tree: Tree, options: TsconfigBaseAllGeneratorSchema) {
