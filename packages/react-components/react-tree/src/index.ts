@@ -5,6 +5,7 @@ export {
   useTreeStyles_unstable,
   useTreeContextValues_unstable,
   renderTree_unstable,
+  Collapse,
 } from './Tree';
 
 export type {
