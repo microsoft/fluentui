@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Field } from '@fluentui/react-components';
 import { isConformant } from '../../testing/isConformant';
 import { TimePicker } from './TimePicker';
 import { TimePickerProps } from './TimePicker.types';
@@ -63,6 +64,17 @@ describe('TimePicker', () => {
 
     userEvent.click(getAllByRole('option')[10]);
     expect(getByRole('combobox').getAttribute('value')).toBe('10:00');
+  });
+
+  it('when wrapped in Field, sets default aria-labelledby on chevron icon', () => {
+    const { getByRole } = render(
+      <Field label="Coffee time">
+        <TimePicker />
+      </Field>,
+    );
+
+    const chevronIcon = getByRole('button');
+    expect(chevronIcon.getAttribute('aria-labelledby')).not.toBeNull();
   });
 
   describe('freeform', () => {

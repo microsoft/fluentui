@@ -2,6 +2,146 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 18 Dec 2023 17:48:15 GMT",
+      "tag": "@fluentui/react-components_v9.43.2",
+      "version": "9.43.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "2034818a2dd109f3e9f7bb5cdf4caae47a9116d4",
+            "comment": "refactor: Encapsulates listbox and trigger slot construction"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "91029810542e996b201ed9b5919691b24dfbcdd3",
+            "comment": "chore: move from floating-ui-devtools to @floating-ui/devtools"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4",
+            "comment": "fix: provides a default aria-labelledby for the chevron icon if the TimePicker is wrapped in a Field."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 Dec 2023 14:40:42 GMT",
+      "tag": "@fluentui/react-components_v9.43.1",
+      "version": "9.43.1",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "3e0b68baf6557730ee49eccdd54a32ba36419324",
+            "comment": "feat: focus-visible polyfill shadow DOM support"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "4dad5d72ae2008003da76a6e0979de7cd4585b3d",
+            "comment": "feat: deprecates useARIAButtonShorthand in favor of useARIAButtonProps"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "8d6ffef8ed0d4e6f500939dfbb90886632a29419",
+            "comment": "fix: focus outline should have `Highlight` colour in high contrast"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "73c8cb55e5957d6ce321ecabe35d177d791ff0b6",
+            "comment": "fix: use useEventCallback instead of useCallback"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "a657b210377643bdab23b145b47f715e1d7effa9",
+            "comment": "fix: letter key navigation in listbox should be case insensitive"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "af6a9cb92082860c218fe72c99a03d45d6d7d1e4",
+            "comment": "fix: add custom style hook for TimePicker compat."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "8012cdf639e843847ee633040994c2d4e135185b",
+            "comment": "fix: set autoComeplete to off by default"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "3e0b68baf6557730ee49eccdd54a32ba36419324",
+            "comment": "fix: stop using deprecated keyborg property"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "4dad5d72ae2008003da76a6e0979de7cd4585b3d",
+            "comment": "chore: adopts useARIAButtonProps instead of deprecated method useARIAButtonShorthand"
+          },
+          {
+            "author": "GordonJSmith@gmail.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "bf0099d4ecd4c241c90832b2430f3c1a5b76d93a",
+            "comment": "partitionBreadcrumbItems miscalculated endDisplayedItems when endDisplayedItems is incorrect when numberOfItemsToHide <= 0"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "4dad5d72ae2008003da76a6e0979de7cd4585b3d",
+            "comment": "chore: adopts useARIAButtonProps instead of deprecated method useARIAButtonShorthand"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "1d3f0fd8ca328be619edbd03081f8fe8ea8ef640",
+            "comment": "fix: interactive cards not having the focus ring when focused"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "843f7681c7720d2a62622befd0034e0838745baf",
+            "comment": "chore: add \"wyw-in-js\" field for tag processor"
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "22942e7472cb7bf8650acf65e405b8abb7585acf",
+            "comment": "fix: Add a namespace to CSS variables in react-positioning package to avoid potential collisions."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "af6a9cb92082860c218fe72c99a03d45d6d7d1e4",
+            "comment": "fix: add custom style hook for TimePicker compat."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "af6a9cb92082860c218fe72c99a03d45d6d7d1e4",
+            "comment": "fix: add custom style hook for TimePicker compat."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "4dad5d72ae2008003da76a6e0979de7cd4585b3d",
+            "comment": "chore: adopts useARIAButtonProps instead of deprecated method useARIAButtonShorthand"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Dec 2023 09:58:41 GMT",
       "tag": "@fluentui/react-components_v9.43.0",
       "version": "9.43.0",

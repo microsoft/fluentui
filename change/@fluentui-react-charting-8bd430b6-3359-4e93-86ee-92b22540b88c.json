@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix:[HorChartWAxis][RTL] y axis same text and truncation fixed",
+  "packageName": "@fluentui/react-charting",
+  "email": "gautam33776@gmail.com",
+  "dependentChangeType": "patch"
+}
