@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: deprecates useARIAButtonShorthand in favor of useARIAButtonProps",
-  "packageName": "@fluentui/react-aria",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

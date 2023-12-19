@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Thu, 14 Dec 2023 09:58:46 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Dec 2023 14:40:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.58)
+
+Mon, 18 Dec 2023 14:40:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.57..@fluentui/react-card_v9.0.58)
+
+### Patches
+
+- fix: interactive cards not having the focus ring when focused ([PR #30067](https://github.com/microsoft/fluentui/pull/30067) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-tabster to v9.16.0 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-utilities to v9.15.4 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.22 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
 
 ## [9.0.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.57)
 

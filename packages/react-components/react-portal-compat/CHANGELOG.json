@@ -2,6 +2,42 @@
   "name": "@fluentui/react-portal-compat",
   "entries": [
     {
+      "date": "Mon, 18 Dec 2023 17:48:16 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.115",
+      "version": "9.0.115",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.43.2",
+            "commit": "2034818a2dd109f3e9f7bb5cdf4caae47a9116d4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 Dec 2023 14:40:46 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.114",
+      "version": "9.0.114",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.16.0",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.43.1",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Dec 2023 09:58:46 GMT",
       "tag": "@fluentui/react-portal-compat_v9.0.113",
       "version": "9.0.113",
