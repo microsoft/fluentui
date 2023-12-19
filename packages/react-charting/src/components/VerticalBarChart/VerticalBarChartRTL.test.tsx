@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { chartPoints } from './VerticalBarChart.test';
+import { chartPoints } from './tests/test-data';
 import { DefaultPalette } from '@fluentui/react';
 import { VerticalBarChart } from './VerticalBarChart';
 import { VerticalBarChartBase } from './VerticalBarChart.base';
