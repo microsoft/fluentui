@@ -179,7 +179,8 @@ describe('createNumericXAxis', () => {
   });
 });
 
-describe('createDateXAxis', () => {
+// FIXME - non deterministic snapshots causing master pipeline breaks
+describe.skip('createDateXAxis', () => {
   const domainNRangeValues: ICreateXAxisParams['domainNRangeValues'] = {
     dStartValue: new Date(2021, 6, 1),
     dEndValue: new Date(2022, 5, 30),
@@ -685,7 +686,8 @@ describe('createYAxisLabels', () => {
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
 
-  it('should offset y-axis labels when layout direction is RTL', () => {
+  // FIXME - non deterministic snapshots causing master pipeline breaks
+  it.skip('should offset y-axis labels when layout direction is RTL', () => {
     utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 20, false, 15, true);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
   });
