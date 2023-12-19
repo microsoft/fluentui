@@ -5,7 +5,7 @@ import { colorNeutralBackgroundInverted, colorNeutralForegroundInverted2 } from 
 import type { Dropdown as FluentDropdown } from './dropdown.js';
 import './define.js';
 import '../option/define';
-import { DropdownAppearance, DropdownControlSizes } from './dropdown.options.js';
+import { DropdownAppearance, DropdownControlSize } from './dropdown.options.js';
 
 type DropdownStoryArgs = Args & FluentDropdown;
 type DropdownStoryMeta = Meta<DropdownStoryArgs>;
@@ -69,12 +69,9 @@ const AnimalDog16Filled = html`<svg
 const dropdownTemplate = html<DropdownStoryArgs>`
   <div>
     <fluent-dropdown
-      size="${x => x.size}"
-      ?multiple="${x => x.multiple}"
       appearance="${x => x.appearance}"
       control-size="${x => x.controlSize}"
       ?disabled="${x => x.disabled}"
-      placeholder="${x => x.placeholder}"
     >
       <fluent-option>Fish</fluent-option>
       <fluent-option>Cat</fluent-option>
@@ -88,17 +85,11 @@ export default {
   title: 'Components/Dropdown',
   args: {
     appearance: DropdownAppearance.outline,
-    controlSize: DropdownControlSizes.medium,
+    controlSize: DropdownControlSize.medium,
     multiple: false,
     disabled: false,
-    placeholder: 'Select an Animal',
   },
   argTypes: {
-    multiple: {
-      control: {
-        type: 'boolean',
-      },
-    },
     appearance: {
       options: Object.values(DropdownAppearance),
       control: {
@@ -106,14 +97,10 @@ export default {
       },
     },
     controlSize: {
-      options: Object.values(DropdownControlSizes),
+      options: Object.values(DropdownControlSize),
       control: {
         type: 'select',
       },
-    },
-    size: {
-      control: 'number',
-      defaultValue: null,
     },
     disabled: {
       description: 'Sets disabled state on Accordion Item',
@@ -123,40 +110,10 @@ export default {
       control: 'boolean',
       defaultValue: false,
     },
-    placeholder: {
-      description: 'Sets control placeholder text',
-      table: {
-        defaultValue: { summary: '' },
-      },
-      control: 'text',
-      defaultValue: 'Select an Animal',
-    },
   },
 } as DropdownStoryMeta;
 
 export const Dropdown = renderComponent(dropdownTemplate).bind({});
-
-export const DropdownPlaceholder = renderComponent(html<DropdownStoryArgs>`
-  <div style="width: 128px; position: relative;">
-    <fluent-dropdown placeholder="Placeholder">
-      <fluent-option>Fish</fluent-option>
-      <fluent-option>Cat</fluent-option>
-      <fluent-option>Turtle</fluent-option>
-      <fluent-option>Dog</fluent-option>
-    </fluent-dropdown>
-  </div>
-`);
-
-export const DropdownMultiple = renderComponent(html<DropdownStoryArgs>`
-  <div style="width: 128px; position: relative;">
-    <fluent-dropdown multiple placeholder="-">
-      <fluent-option>Fish</fluent-option>
-      <fluent-option>Cat</fluent-option>
-      <fluent-option>Turtle</fluent-option>
-      <fluent-option>Dog</fluent-option>
-    </fluent-dropdown>
-  </div>
-`);
 
 export const DropdownAppearances = renderComponent(html<DropdownStoryArgs>`
   <div style="width: 290px; position: relative; display: flex; flex-direction: column; row-gap: 20px;">
@@ -209,7 +166,7 @@ export const DropdownAppearances = renderComponent(html<DropdownStoryArgs>`
   </div>
 `);
 
-export const DropdownCustom = renderComponent(html<DropdownStoryArgs>`
+export const DropdownWithIcons = renderComponent(html<DropdownStoryArgs>`
   <div style="width: 128px; position: relative;">
     <fluent-dropdown placeholder="-">
       <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
@@ -221,13 +178,27 @@ export const DropdownCustom = renderComponent(html<DropdownStoryArgs>`
 `);
 
 export const DropdownControlled = renderComponent(html<DropdownStoryArgs>`
-  <div style="width: 128px; position: relative;">
-    <fluent-dropdown placeholder="-">
-      <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
-      <fluent-option selected><span slot="icon">${AnimalCat16Filled}</span>Cat</fluent-option>
-      <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
-      <fluent-option><span slot="icon">${AnimalDog16Filled}</span>Dog</fluent-option>
-    </fluent-dropdown>
+  <div style="width: 290px; position: relative; display: flex; flex-direction: column; row-gap: 20px;">
+    <div style="display: flex; flex-direction: column; justify-content: center; padding: 20px;">
+      <fluent-label size="large" style="margin-bottom: 10px;">Controlled</fluent-label>
+      <fluent-label>Select an Animal</fluent-label>
+      <fluent-dropdown placeholder="-">
+        <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
+        <fluent-option selected><span slot="icon">${AnimalCat16Filled}</span>Cat</fluent-option>
+        <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
+        <fluent-option><span slot="icon">${AnimalDog16Filled}</span>Dog</fluent-option>
+      </fluent-dropdown>
+    </div>
+    <div style="display: flex; flex-direction: column; justify-content: center; padding: 20px;">
+      <fluent-label size="large" style="margin-bottom: 10px;">Uncontrolled</fluent-label>
+      <fluent-label>Select an Animal</fluent-label>
+      <fluent-dropdown value="Cat">
+        <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
+        <fluent-option><span slot="icon">${AnimalCat16Filled}</span>Cat</fluent-option>
+        <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
+        <fluent-option><span slot="icon">${AnimalDog16Filled}</span>Dog</fluent-option>
+      </fluent-dropdown>
+    </div>
   </div>
 `);
 

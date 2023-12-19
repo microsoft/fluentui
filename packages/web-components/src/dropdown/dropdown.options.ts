@@ -21,7 +21,7 @@ export type DropdownAppearance = ValuesOf<typeof DropdownAppearance>;
  * DropdownSizes - dropdown size defined by css.
  * @public
  */
-export const DropdownControlSizes = {
+export const DropdownControlSize = {
   small: 'small',
   medium: 'medium',
   large: 'large',
@@ -31,4 +31,4 @@ export const DropdownControlSizes = {
  * The types for styleSizes
  * @public
  */
-export type DropdownControlSizes = ValuesOf<typeof DropdownControlSizes>;
+export type DropdownControlSize = ValuesOf<typeof DropdownControlSize>;

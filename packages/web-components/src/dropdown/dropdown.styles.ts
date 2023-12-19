@@ -63,6 +63,7 @@ export const styles = css`
     outline: none;
     vertical-align: middle;
     min-width: 250px;
+    --size: fit-content;
   }
   :host([disabled]) {
     color: ${colorNeutralForegroundDisabled};
