@@ -1,4 +1,6 @@
+import * as React from 'react';
 import type { ComboboxSlots, ComboboxState, ComboboxProps, SelectionEvents } from '@fluentui/react-combobox';
+import type { ComponentProps } from '@fluentui/react-utilities';
 
 export type Hour =
   | 0
@@ -47,19 +49,42 @@ export type TimePickerOption = {
   text: string;
 };
 
+/**
+ * Error types returned by the `onValidationResult` callback.
+ */
+export type TimePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';
+
+export type TimeStringValidationResult = {
+  date: Date | null;
+  errorType?: TimePickerErrorType;
+};
+
 export type TimePickerSlots = ComboboxSlots;
 
-export type TimeSelectionEvents = SelectionEvents;
+export type TimeSelectionEvents = SelectionEvents | React.FocusEvent<HTMLElement>;
 export type TimeSelectionData = {
-  selectedTime: Date | undefined;
+  /**
+   * The Date object associated with the selected option. For freeform TimePicker it can also be the Date object parsed from the user input.
+   */
+  selectedTime: Date | null;
+  /**
+   * The display text for the selected option. For freeform TimePicker it can also be the value in user input.
+   */
   selectedTimeText: string | undefined;
+  /**
+   * The error type for the selected option.
+   */
+  errorType: TimePickerErrorType | undefined;
 };
 
 export type TimeFormatOptions = {
   /**
-   * If true, use 12-hour time format. Otherwise, use 24-hour format.
+   * A string value indicating whether the 12-hour format ("h11", "h12") or the 24-hour format ("h23", "h24") should be used.
+   * - 'h11' and 'h23' start with hour 0 and go up to 11 and 23 respectively.
+   * - 'h12' and 'h24' start with hour 1 and go up to 12 and 24 respectively.
+   * @default 'h23'
    */
-  hour12?: boolean;
+  hourCycle?: 'h11' | 'h12' | 'h23' | 'h24' | undefined;
 
   /**
    * If true, show seconds in the dropdown options and consider seconds for default validation purposes.
@@ -70,16 +95,22 @@ export type TimeFormatOptions = {
 /**
  * TimePicker Props
  */
-export type TimePickerProps = Omit<
-  ComboboxProps,
-  // Omit children as TimePicker has predefined children
-  | 'children'
-  // Omit selection props as TimePicker has `selectedTime` props
-  | 'defaultSelectedOptions'
-  | 'multiselect'
-  | 'onOptionSelect'
-  | 'selectedOptions'
-> &
+export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> &
+  Pick<
+    ComboboxProps,
+    | 'appearance'
+    | 'defaultOpen'
+    | 'defaultValue'
+    | 'inlinePopup'
+    | 'onOpenChange'
+    | 'open'
+    | 'placeholder'
+    | 'positioning'
+    | 'size'
+    | 'value'
+    | 'mountNode'
+    | 'freeform'
+  > &
   TimeFormatOptions & {
     /**
      * Start hour (inclusive) for the time range, 0-24.
@@ -104,7 +135,7 @@ export type TimePickerProps = Omit<
     /**
      * Currently selected time in the TimePicker.
      */
-    selectedTime?: Date;
+    selectedTime?: Date | null;
 
     /**
      * Default selected time in the TimePicker, for uncontrolled scenarios.
@@ -114,15 +145,26 @@ export type TimePickerProps = Omit<
     /**
      * Callback for when a time selection is made.
      */
-    onTimeSelect?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
+    onTimeChange?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
 
     /**
-     * Custom the date strings displayed (in dropdown options and input).
+     * Customizes the formatting of date strings displayed in dropdown options.
      */
     formatDateToTimeString?: (date: Date) => string;
+
+    /**
+     * In the freeform TimePicker, customizes the parsing from the input time string into a Date and provides custom validation.
+     */
+    parseTimeStringToDate?: (time: string | undefined) => TimeStringValidationResult;
   };
 
 /**
  * State used in rendering TimePicker
  */
-export type TimePickerState = ComboboxState;
+export type TimePickerState = ComboboxState &
+  Required<Pick<TimePickerProps, 'freeform' | 'parseTimeStringToDate'>> & {
+    /**
+     * Submitted text from the input field. It is used to determine if the input value has changed when user submit a new value on Enter or blur from input.
+     */
+    submittedText: string | undefined;
+  };

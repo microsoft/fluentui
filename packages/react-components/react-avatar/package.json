@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-avatar",
-  "version": "9.5.40",
+  "version": "9.6.2",
   "description": "React components for building Microsoft web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -37,16 +37,16 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-badge": "^9.2.9",
-    "@fluentui/react-context-selector": "^9.1.40",
+    "@fluentui/react-badge": "^9.2.17",
+    "@fluentui/react-context-selector": "^9.1.44",
     "@fluentui/react-icons": "^2.0.217",
-    "@fluentui/react-popover": "^9.8.15",
-    "@fluentui/react-shared-contexts": "^9.10.0",
-    "@fluentui/react-tabster": "^9.13.6",
-    "@fluentui/react-theme": "^9.1.14",
-    "@fluentui/react-tooltip": "^9.3.16",
-    "@fluentui/react-utilities": "^9.15.0",
-    "@fluentui/react-jsx-runtime": "^9.0.17",
+    "@fluentui/react-popover": "^9.8.26",
+    "@fluentui/react-shared-contexts": "^9.13.2",
+    "@fluentui/react-tabster": "^9.16.0",
+    "@fluentui/react-theme": "^9.1.16",
+    "@fluentui/react-tooltip": "^9.4.4",
+    "@fluentui/react-utilities": "^9.15.4",
+    "@fluentui/react-jsx-runtime": "^9.0.22",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
@@ -71,5 +71,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

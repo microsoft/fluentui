@@ -1,4 +1,37 @@
-import { MotionShorthand, MotionState } from '@fluentui/react-motion-preview';
+import * as React from 'react';
+
+type MotionType = 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
+
+type MotionState<Element extends HTMLElement = HTMLElement> = {
+  /**
+   * Ref to the element.
+   */
+  ref: React.Ref<Element>;
+
+  /**
+   * Current state of the element.
+   *
+   * - `unmounted` - The element is not yet rendered or can be safely removed from the DOM.
+   * - `entering` - The element is performing enter animation.
+   * - `entered` - The element has finished enter animation.
+   * - `idle` - The element is currently not animating, but rendered on screen.
+   * - `exiting` - The element is performing exit animation.
+   * - `exited` - The element has finished exit animation.
+   */
+  type: MotionType;
+
+  /**
+   * Indicates whether the component can be rendered.
+   * Useful to render the element before animating it or to remove it from the DOM after exit animation.
+   */
+  canRender: boolean;
+
+  /**
+   * Indicates whether the component is ready to receive a CSS transition className.
+   * Useful to apply CSS transitions when the element is mounted and ready to be animated.
+   */
+  active: boolean;
+};
 
 export type DrawerBaseProps = {
   /**
@@ -25,7 +58,7 @@ export type DrawerBaseProps = {
    *
    * @default false
    */
-  open?: MotionShorthand<HTMLDivElement>;
+  open?: boolean;
 };
 
 export type DrawerBaseState = Required<Pick<DrawerBaseProps, 'position' | 'size'>> & {

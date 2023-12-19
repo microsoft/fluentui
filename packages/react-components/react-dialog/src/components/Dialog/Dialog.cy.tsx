@@ -259,11 +259,13 @@ describe('Dialog', () => {
     cy.get('#open-menu-btn').realClick();
     cy.focused().realType('{esc}');
     cy.get(dialogSurfaceSelector).should('exist');
+    cy.get('#open-menu-btn').should('have.focus');
 
     // Open Popover and then close it with Escape
     cy.get('#open-popover-btn').realClick();
     cy.focused().realType('{esc}');
     cy.get(dialogSurfaceSelector).should('exist');
+    cy.get('#open-popover-btn').should('have.focus');
 
     // Open Tooltip, wait for the tooltip to appear and then close it with Escape
     cy.get(dialogTriggerCloseSelector).focus().wait(0).realType('{esc}');

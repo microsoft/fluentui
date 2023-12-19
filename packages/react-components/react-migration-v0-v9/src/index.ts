@@ -11,3 +11,17 @@ export type { StyledTextProps, StyledTextSlots } from './components/StyledText';
 export { Primitive, primitiveClassName } from './components/Primitive';
 export { ItemLayout, itemLayoutClassName, useItemLayoutStyles } from './components/ItemLayout';
 export { Flex, flexClassName, flexItem, useFlexStyles } from './components/Flex';
+export {
+  List,
+  ListItem,
+  listClassNames,
+  listItemClassNames,
+  renderListItem_unstable,
+  renderList_unstable,
+  useListItemStyles_unstable,
+  useListItem_unstable,
+  useListSelection,
+  useListStyles_unstable,
+  useList_unstable,
+} from './components/List';
+export type { ListItemProps, ListItemSlots, ListItemState, ListProps, ListSlots, ListState } from './components/List';

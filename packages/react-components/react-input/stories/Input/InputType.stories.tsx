@@ -19,7 +19,7 @@ export const Type = () => {
   const styles = useStyles();
 
   return (
-    <div className={styles.root}>
+    <form noValidate autoComplete="off" className={styles.root}>
       <div>
         <Label htmlFor={emailId}>Email input</Label>
         <Input type="email" id={emailId} />
@@ -34,7 +34,7 @@ export const Type = () => {
         <Label htmlFor={passwordId}>Password input</Label>
         <Input type="password" defaultValue="password" id={passwordId} />
       </div>
-    </div>
+    </form>
   );
 };
 

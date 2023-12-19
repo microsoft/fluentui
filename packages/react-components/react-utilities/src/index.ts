@@ -52,6 +52,7 @@ export { canUseDOM, useIsSSR, SSRProvider } from './ssr/index';
 
 export {
   clamp,
+  // eslint-disable-next-line deprecation/deprecation
   getNativeElementProps,
   getPartitionedNativeProps,
   getRTLSafeKey,

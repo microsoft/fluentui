@@ -141,16 +141,6 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
             lineBorderWidth: '4',
           },
         },
-        {
-          legend: 'single point',
-          data: [
-            {
-              x: new Date('2020-07-05T00:00:00.000Z'),
-              y: 282000,
-            },
-          ],
-          color: DataVizPalette.color10,
-        },
       ],
     };
 

@@ -1,8 +1,71 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Mon, 09 Oct 2023 20:45:43 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Dec 2023 14:40:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.13.2)
+
+Mon, 18 Dec 2023 14:40:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.13.1..@fluentui/react-shared-contexts_v9.13.2)
+
+### Patches
+
+- fix: add custom style hook for TimePicker compat. ([PR #30058](https://github.com/microsoft/fluentui/pull/30058) by yuanboxue@microsoft.com)
+
+## [9.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.13.1)
+
+Thu, 14 Dec 2023 09:58:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.13.0..@fluentui/react-shared-contexts_v9.13.1)
+
+### Patches
+
+- chore: disallow `window` and `document` access ([PR #29962](https://github.com/microsoft/fluentui/pull/29962) by seanmonahan@microsoft.com)
+
+## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.13.0)
+
+Mon, 20 Nov 2023 09:55:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.12.0..@fluentui/react-shared-contexts_v9.13.0)
+
+### Minor changes
+
+- feat: TeachingPopover style hooks added ([PR #29782](https://github.com/microsoft/fluentui/pull/29782) by mifraser@microsoft.com)
+
+## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.12.0)
+
+Thu, 09 Nov 2023 17:29:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.11.1..@fluentui/react-shared-contexts_v9.12.0)
+
+### Minor changes
+
+- feat: Add custom style hook types for List ([PR #29771](https://github.com/microsoft/fluentui/pull/29771) by jirivyhnalek@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.16 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+
+## [9.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.11.1)
+
+Wed, 01 Nov 2023 12:55:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.11.0..@fluentui/react-shared-contexts_v9.11.1)
+
+### Patches
+
+- Bump @fluentui/react-theme to v9.1.15 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+
+## [9.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.11.0)
+
+Sat, 28 Oct 2023 23:35:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.10.0..@fluentui/react-shared-contexts_v9.11.0)
+
+### Minor changes
+
+- refactor: rename main DrawerOverlay/DrawerInline components ([PR #29523](https://github.com/microsoft/fluentui/pull/29523) by marcosvmmoura@gmail.com)
+
+### Patches
+
+- fix: invoke useCustomStyleHook_unstable() ([PR #29632](https://github.com/microsoft/fluentui/pull/29632) by olfedias@microsoft.com)
 
 ## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.10.0)
 

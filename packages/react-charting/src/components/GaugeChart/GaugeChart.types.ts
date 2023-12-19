@@ -5,7 +5,7 @@ import { IAccessibilityProps } from '../../types/index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 
 /**
- * IGaugeChartSegment interface for Gaugechart.
+ * Gauge Chart segment interface.
  * {@docCategory GaugeChart}
  */
 export interface IGaugeChartSegment {
@@ -30,13 +30,16 @@ export interface IGaugeChartSegment {
   accessibilityData?: IAccessibilityProps;
 }
 
+/**
+ * {@docCategory GaugeChart}
+ */
 export enum GaugeValueFormat {
   Percentage = 'percentage',
   Fraction = 'fraction',
 }
 
 /**
- * IGaugeChartProps for Gaugechart component.
+ * Gauge Chart properties
  * {@docCategory GaugeChart}
  */
 export interface IGaugeChartProps {
@@ -136,6 +139,10 @@ export interface IGaugeChartProps {
   calloutProps?: Partial<ICalloutProps>;
 }
 
+/**
+ * Gauge Chart style properties
+ * {@docCategory GaugeChart}
+ */
 export interface IGaugeChartStyleProps {
   /**
    * Theme (provided through customization)
@@ -173,6 +180,10 @@ export interface IGaugeChartStyleProps {
   toDrawShape?: boolean;
 }
 
+/**
+ * Gauge Chart styles
+ * {@docCategory GaugeChart}
+ */
 export interface IGaugeChartStyles {
   /**
    * Styles for the root element

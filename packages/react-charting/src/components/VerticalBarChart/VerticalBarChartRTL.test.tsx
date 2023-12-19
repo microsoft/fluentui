@@ -15,6 +15,9 @@ import {
   testWithoutWait,
 } from '../../utilities/TestUtility.test';
 import { IVerticalBarChartProps } from './VerticalBarChart.types';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 const pointsWithLine = [
   {
@@ -465,3 +468,9 @@ describe('Vertical bar chart re-rendering', () => {
     });
   });
 });
+
+test('Should pass accessibility tests', async () => {
+  const { container } = render(<VerticalBarChart data={chartPoints} />);
+  const axeResults = await axe(container);
+  expect(axeResults).toHaveNoViolations();
+}, 10000);
