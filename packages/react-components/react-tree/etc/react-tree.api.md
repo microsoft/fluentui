@@ -22,14 +22,19 @@ import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { End } from '@fluentui/keyboard-keys';
 import type { Enter } from '@fluentui/keyboard-keys';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
+import { FC } from 'react';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Home } from '@fluentui/keyboard-keys';
 import { Radio } from '@fluentui/react-radio';
 import { RadioProps } from '@fluentui/react-radio';
 import * as React_2 from 'react';
+import { ReactNode } from 'react';
 import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public (undocumented)
+export const Collapse: FC<CollapseProps>;
 
 // @public
 export const flattenTree_unstable: <Props extends TreeItemProps>(items: FlattenTreeItem<Props>[]) => FlattenedTreeItem<Props>[];

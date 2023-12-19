@@ -9,7 +9,11 @@ export const TreeItemChevron = React.memo(() => {
   const { dir } = useFluent_unstable();
 
   const expandIconRotation = open ? 90 : dir !== 'rtl' ? 0 : 180;
-  return <ChevronRight12Regular style={expandIconInlineStyles[expandIconRotation]} />;
+  return (
+    <ChevronRight12Regular
+      style={{ ...expandIconInlineStyles[expandIconRotation], transition: 'transform 200ms ease-out' }}
+    />
+  );
 });
 TreeItemChevron.displayName = 'TreeItemChevron';
 

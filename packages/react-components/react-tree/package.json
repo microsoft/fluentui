@@ -19,7 +19,6 @@
     "start": "yarn storybook",
     "storybook": "start-storybook",
     "test": "jest --passWithNoTests",
-    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
     "type-check": "tsc -b tsconfig.json",
     "e2e": "cypress run --component",
     "e2e:local": "cypress open --component"
@@ -43,6 +42,8 @@
     "@fluentui/react-checkbox": "^9.2.9",
     "@fluentui/react-context-selector": "^9.1.50",
     "@fluentui/react-icons": "^2.0.224",
+    "@fluentui/react-motion-preview": "^0.5.11",
+    "@fluentui/react-motions-preview": "^0.1.0",
     "@fluentui/react-radio": "^9.2.4",
     "@fluentui/react-shared-contexts": "^9.14.0",
     "@fluentui/react-tabster": "^9.17.4",
@@ -50,7 +51,8 @@
     "@fluentui/react-utilities": "^9.17.0",
     "@fluentui/react-jsx-runtime": "^9.0.28",
     "@griffel/react": "^1.5.14",
-    "@swc/helpers": "^0.5.1"
+    "@swc/helpers": "^0.5.1",
+    "react-transition-group": "^4.4.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",

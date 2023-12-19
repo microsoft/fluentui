@@ -3,11 +3,16 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { AccordionPanelState, AccordionPanelSlots } from './AccordionPanel.types';
+import { Collapse } from '@fluentui/react-tree';
 
 /**
  * Function that renders the final JSX of the component
  */
 export const renderAccordionPanel_unstable = (state: AccordionPanelState) => {
   assertSlots<AccordionPanelSlots>(state);
-  return state.open ? <state.root>{state.root.children}</state.root> : null;
+  // Original show/hide without transition
+  // return state.open ? <state.root>{state.root.children}</state.root> : null;
+
+  // Wrap child content in a Collapse transition which manages show/hide
+  return <Collapse visible={state.open}>{state.root.children}</Collapse>;
 };
