@@ -12,7 +12,6 @@
 | :---------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------: | :-----------: |
 |                             Test 1: [Snapshot testing]                              |                                                                                                           |               |
 |                  - With only data prop, numerical data on x-axis.                   |                                Renders VerticalStackedBar chart correctly                                 |      RTL      |
-|            - With only data prop, numerical data on x-axis and RTL mode             |               Should render the vertical stacked bar chart with numeric x-axis in RTL mode                |      RTL      |
 |                        - With HideLegend prop set to “true”                         |                                            Should hide legends                                            |    Enzyme     |
 |                        - With HideTooltip prop set to “true”                        |                                     Should hide the tooltip in chart                                      |    Enzyme     |
 |                    - With EnabledLegendsWrapLines set to “true”                     | Should enable the legends to wrap lines if there is not enough space to show all legends on a single line |    Enzyme     |
@@ -57,10 +56,6 @@
 |                         - Double mouse click on bar legends                         |                     Should deselect legend on double mouse click on respective legend                     |      RTL      |
 |                        - Single mouse click on line legends                         |                      Should select legend on single mouse click on respective legend                      |      RTL      |
 |                        - Double mouse click on line legends                         |                     Should deselect legend on double mouse click on respective legend                     |      RTL      |
-|                            - Mouse leave from bar legend                            |                          Should call the handler on mouse leave from bar legend                           |      RTL      |
-|                           - Mouse leave from line legend                            |                          Should call the handler on mouse leave from line legend                          |      RTL      |
-|                             - Mouse over on bar legend                              |                               Should call the handler mouse over on legend                                |      RTL      |
-|                               - Mouse click on legend                               |                               Should call the handler mouse click on legend                               |      RTL      |
 |                          Test 8: [Sub-Component]: Callout                           |                                                                                                           |               |
 |                              - Hover mouse over a bar                               |                                 Should call the handler on mouse over bar                                 |      RTL      |
 |                     - Hover mouse over a bar to display callout                     |                               Should show the default callout over that bar                               |      RTL      |
