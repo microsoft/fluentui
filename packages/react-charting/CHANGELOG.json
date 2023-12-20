@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 20 Dec 2023 07:26:54 GMT",
+      "tag": "@fluentui/react-charting_v5.19.7",
+      "version": "5.19.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e8f375b7afe202dbf64f2b51466413d34794b5cb",
+            "comment": "Added accessibility tests for LineChart, VerticalBarChart and AreaChart"
+          },
+          {
+            "author": "gautam33776@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "197dfaaae117908e389e095592cb6ea6d0d736f3",
+            "comment": "fix:[HorChartWAxis][RTL] y axis same text and truncation fixed"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Dec 2023 07:30:10 GMT",
       "tag": "@fluentui/react-charting_v5.19.6",
       "version": "5.19.6",

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 14 Dec 2023 07:30:10 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Dec 2023 07:26:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.7)
+
+Wed, 20 Dec 2023 07:26:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.6..@fluentui/react-charting_v5.19.7)
+
+### Patches
+
+- Added accessibility tests for LineChart, VerticalBarChart and AreaChart ([PR #30059](https://github.com/microsoft/fluentui/pull/30059) by shubhabrata08@gmail.com)
+- fix:[HorChartWAxis][RTL] y axis same text and truncation fixed ([PR #30031](https://github.com/microsoft/fluentui/pull/30031) by gautam33776@gmail.com)
 
 ## [5.19.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.6)
 
