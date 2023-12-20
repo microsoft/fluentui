@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Docs: Deprecate unused style hook",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "none"
+}
