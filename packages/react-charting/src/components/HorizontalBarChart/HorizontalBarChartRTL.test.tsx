@@ -352,7 +352,7 @@ describe('Horizontal bar chart re-rendering', () => {
   });
 });
 
-describe('Vertical Stacked Bar Chart - axe-core', () => {
+describe('Horizontal Bar Chart - axe-core', () => {
   test('Should pass accessibility tests', async () => {
     const { container } = render(<HorizontalBarChart data={chartPoints} />);
     const axeResults = await axe(container);
