@@ -40,6 +40,7 @@
     "@fluentui/react-shared-contexts": "^9.13.2",
     "@fluentui/react-tabster": "^9.16.0",
     "@fluentui/react-theme": "^9.1.16",
+    "@fluentui/react-tree": "^9.4.18",
     "@fluentui/react-utilities": "^9.15.4",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"

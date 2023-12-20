@@ -5,7 +5,6 @@ export {
   useTreeStyles_unstable,
   useTreeContextValues_unstable,
   renderTree_unstable,
-  Collapse,
 } from './Tree';
 
 export type {
@@ -98,3 +97,5 @@ export type {
 
 export { flattenTree_unstable } from './utils/flattenTree';
 export type { FlattenTreeItem } from './utils/flattenTree';
+
+export { Collapse } from './Collapse';

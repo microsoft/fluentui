@@ -43,6 +43,7 @@
     "@fluentui/react-checkbox": "^9.2.3",
     "@fluentui/react-context-selector": "^9.1.44",
     "@fluentui/react-icons": "^2.0.217",
+    "@fluentui/react-motion-preview": "^0.5.5",
     "@fluentui/react-radio": "^9.1.60",
     "@fluentui/react-shared-contexts": "^9.13.2",
     "@fluentui/react-tabster": "^9.16.0",

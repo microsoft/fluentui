@@ -3,7 +3,7 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { AccordionPanelState, AccordionPanelSlots } from './AccordionPanel.types';
-import { Collapse } from '../../../../react-tree/src/components/Tree/Collapse';
+import { Collapse } from '@fluentui/react-tree';
 
 /**
  * Function that renders the final JSX of the component

@@ -3,7 +3,7 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { TreeContextValues, TreeSlots, TreeState } from '../Tree/Tree.types';
 import { TreeProvider } from '../TreeProvider';
-import { Collapse } from './Collapse';
+import { Collapse } from '../../Collapse';
 
 export const renderTree_unstable = (state: TreeState, contextValues: TreeContextValues) => {
   assertSlots<TreeSlots>(state);

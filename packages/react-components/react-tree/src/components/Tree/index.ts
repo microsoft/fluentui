@@ -4,4 +4,3 @@ export * from './useTree';
 export * from './useTreeContextValues';
 export * from './useTreeStyles.styles';
 export * from './renderTree';
-export * from './Collapse';
