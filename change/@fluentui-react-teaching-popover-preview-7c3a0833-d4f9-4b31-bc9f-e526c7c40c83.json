@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: Release TeachingPopover preview package",
+  "comment": "feat: Release react-teaching-popover-preview package",
   "packageName": "@fluentui/react-teaching-popover-preview",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"
