@@ -11,3 +11,4 @@ export { getProjectMetadata, workspaceRoot, getUncommittedFiles, getUntrackedFil
 export * as eslintConstants from './eslint-constants';
 export { getNthCommit } from './getNthCommit';
 export { tree, flushTreeChanges } from './tree';
+export { getWorkspaceProjects, getWorkspaceProjectsAliases } from './workspace-utils';

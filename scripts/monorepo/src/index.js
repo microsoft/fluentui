@@ -11,4 +11,5 @@ module.exports = {
   ...require('./get-lerna-aliases'),
   ...require('./utils'),
   ...require('./tree'),
+  ...require('./workspace-utils'),
 };
