@@ -5,6 +5,8 @@ import { DarkTheme } from '@fluentui/theme-samples';
 import { DefaultPalette, ThemeProvider } from '@fluentui/react';
 import { ILineChartPoints, LineChart } from './index';
 import { mergeStyles } from '@fluentui/merge-styles';
+import { validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
+import { LineChartBehaviorDefinition } from './LineChartBehaviorDefinition.js/LineChartBehaviorDefinition';
 
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
@@ -663,9 +665,6 @@ test('Should pass accessibility tests', async () => {
   const axeResults = await axe(container);
   expect(axeResults).toHaveNoViolations();
 }, 10000);
-
-import { validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
-import { LineChartBehaviorDefinition } from './LineChartBehaviorDefinition.js/LineChartBehaviorDefinition';
 
 describe('meets accessibility requirements', () => {
   const testFacade = new ComponentTestFacade(LineChart, { data: { basicChartPoints } });
