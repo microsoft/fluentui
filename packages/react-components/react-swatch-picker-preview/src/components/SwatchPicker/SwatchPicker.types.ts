@@ -2,6 +2,8 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type SwatchPickerSlots = {
   root: Slot<'div'>;
+  row: Slot<'div'>;
+  swatch: Slot<'button'>;
 };
 
 /**

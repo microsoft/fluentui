@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render SwatchPicker.
@@ -15,20 +16,34 @@ export const useSwatchPicker_unstable = (
   props: SwatchPickerProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
+  const focusAttributes = useArrowNavigationGroup({
+    circular: true,
+    // axis: layout === 'row' ? 'both' : 'grid-linear',
+    axis: 'grid-linear',
+    memorizeCurrent: true,
+  });
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
+      row: 'div',
+      swatch: 'button',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
+        ...focusAttributes,
         ...props,
+        role: 'grid',
       }),
       { elementType: 'div' },
     ),
+    row: {
+      role: 'row',
+    },
+    swatch: {
+      role: 'gridcell',
+      tabIndex: 0,
+      'aria-selected': false,
+    },
   };
 };
