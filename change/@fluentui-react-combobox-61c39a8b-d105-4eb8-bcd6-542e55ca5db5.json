@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: add color tokens for option hover and pressed states",
+  "packageName": "@fluentui/react-combobox",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

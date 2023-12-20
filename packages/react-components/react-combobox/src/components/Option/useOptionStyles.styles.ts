@@ -27,10 +27,12 @@ const useStyles = makeStyles({
 
     '&:hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
+      color: tokens.colorNeutralForeground1Hover,
     },
 
     '&:active': {
       backgroundColor: tokens.colorNeutralBackground1Pressed,
+      color: tokens.colorNeutralForeground1Pressed,
     },
   },
 
