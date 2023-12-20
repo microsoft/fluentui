@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: make hover color in contrast theme accessible.",
+  "packageName": "@fluentui/react-combobox",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
