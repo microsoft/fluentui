@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useARIAButtonShorthand } from '../../src/button';
+import { useARIAButtonProps } from '../../src/button';
 import type { ARIAButtonSlotProps } from '../../src/button';
 import { getSlots } from '@fluentui/react-components';
 import type { ComponentState, Slot } from '@fluentui/react-components';
@@ -20,7 +20,7 @@ export const Default = (args: DefaultArgs) => {
     components: { root: 'div', button: 'button' },
     root: {},
     button: {
-      ...useARIAButtonShorthand({ as: 'button', onClick: args.onClick }, { required: true }),
+      ...useARIAButtonProps('button', { as: 'button', onClick: args.onClick } as const),
       children: React.Fragment,
     },
   };
@@ -36,17 +36,14 @@ export const Anchor = (args: DefaultArgs) => {
   type AnchorSlots = {
     root: ARIAButtonSlotProps;
   };
-  const props = useARIAButtonShorthand(
-    {
-      as: 'a',
-      href: '/',
-      onClick: ev => {
-        ev.preventDefault();
-        args.onClick(ev);
-      },
+  const props = useARIAButtonProps('a', {
+    as: 'a',
+    href: '/',
+    onClick: ev => {
+      ev.preventDefault();
+      args.onClick(ev);
     },
-    { required: true },
-  );
+  } as const);
   const { slots, slotProps } = getSlots<AnchorSlots>({
     components: { root: 'a' },
     root: props,

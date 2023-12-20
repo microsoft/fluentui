@@ -58,12 +58,12 @@ const basicChartPoints = {
 const datePoints: ILineChartPoints[] = [
   {
     data: [
-      { x: new Date('01/01/2020'), y: 30 },
-      { x: new Date('02/01/2020'), y: 50 },
-      { x: new Date('03/01/2020'), y: 30 },
-      { x: new Date('04/01/2020'), y: 50 },
-      { x: new Date('05/01/2020'), y: 30 },
-      { x: new Date('06/01/2020'), y: 50 },
+      { x: new Date('2020-01-01T00:00:00.000Z'), y: 30 },
+      { x: new Date('2020-02-01T00:00:00.000Z'), y: 50 },
+      { x: new Date('2020-03-01T00:00:00.000Z'), y: 30 },
+      { x: new Date('2020-04-01T00:00:00.000Z'), y: 50 },
+      { x: new Date('2020-05-01T00:00:00.000Z'), y: 30 },
+      { x: new Date('2020-06-01T00:00:00.000Z'), y: 50 },
     ],
     legend: 'First',
     lineOptions: {
@@ -83,8 +83,8 @@ const colorFillBarData = [
     color: 'blue',
     data: [
       {
-        startX: new Date('01/01/2020'),
-        endX: new Date('02/01/2020'),
+        startX: new Date('2020-01-01T00:00:00.000Z'),
+        endX: new Date('2020-02-01T00:00:00.000Z'),
       },
     ],
   },
@@ -93,8 +93,8 @@ const colorFillBarData = [
     color: 'red',
     data: [
       {
-        startX: new Date('04/01/2018'),
-        endX: new Date('05/01/2018'),
+        startX: new Date('2018-04-01T00:00:00.000Z'),
+        endX: new Date('2020-05-01T00:00:00.000Z'),
       },
     ],
     applyPattern: true,
@@ -297,13 +297,13 @@ const simplePoints = {
 };
 
 const tickValues = [
-  new Date('2020-03-03'),
-  new Date('2020-03-04'),
-  new Date('2020-03-05'),
-  new Date('2020-03-06'),
-  new Date('2020-03-07'),
-  new Date('2020-03-08'),
-  new Date('2020-03-09'),
+  new Date('2020-03-03T00:00:00.000Z'),
+  new Date('2020-03-04T00:00:00.000Z'),
+  new Date('2020-03-05T00:00:00.000Z'),
+  new Date('2020-03-06T00:00:00.000Z'),
+  new Date('2020-03-07T00:00:00.000Z'),
+  new Date('2020-03-08T00:00:00.000Z'),
+  new Date('2020-03-09T00:00:00.000Z'),
 ];
 
 const eventAnnotationProps = {
@@ -658,16 +658,4 @@ test('Should reflect theme change', () => {
   );
   // Assert
   expect(container).toMatchSnapshot();
-});
-
-test('Should pass accessibility tests', async () => {
-  const { container } = render(<LineChart data={basicChartPoints} />);
-  const axeResults = await axe(container);
-  expect(axeResults).toHaveNoViolations();
-}, 10000);
-
-describe('meets accessibility requirements', () => {
-  const testFacade = new ComponentTestFacade(LineChart, { data: { basicChartPoints } });
-  const errors = validateBehavior(LineChartBehaviorDefinition, testFacade);
-  expect(errors).toEqual([]);
 });

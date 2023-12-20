@@ -1,8 +1,16 @@
 import * as React from 'react';
-import { elementContains, mergeCallbacks, useControllableState, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  elementContains,
+  mergeCallbacks,
+  useControllableState,
+  useEventCallback,
+  useId,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { Enter } from '@fluentui/keyboard-keys';
 import type { Hour, TimePickerOption, TimePickerProps, TimePickerState, TimeSelectionData } from './TimePicker.types';
 import { ComboboxProps, useCombobox_unstable, Option } from '@fluentui/react-combobox';
+import { useFieldContext_unstable as useFieldContext } from '@fluentui/react-field';
 import {
   dateToKey,
   keyToDate,
@@ -12,8 +20,6 @@ import {
   getTimesBetween,
   getDateFromTimeString,
 } from './timeMath';
-
-// TODO before stable, replace useCallback to useEventCallback if needed
 
 /**
  * Create the state required to render TimePicker.
@@ -30,7 +36,7 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     defaultSelectedTime: defaultSelectedTimeInProps,
     endHour = 24,
     formatDateToTimeString = defaultFormatDateToTimeString,
-    hourCycle = 'h23',
+    hourCycle,
     increment = 30,
     onTimeChange,
     selectedTime: selectedTimeInProps,
@@ -65,14 +71,11 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
 
   const [submittedText, setSubmittedText] = React.useState<string | undefined>(undefined);
 
-  const selectTime: TimePickerProps['onTimeChange'] = React.useCallback(
-    (e, data) => {
-      setSelectedTime(data.selectedTime);
-      setSubmittedText(data.selectedTimeText);
-      onTimeChange?.(e, data);
-    },
-    [onTimeChange, setSelectedTime],
-  );
+  const selectTime: TimePickerProps['onTimeChange'] = useEventCallback((e, data) => {
+    setSelectedTime(data.selectedTime);
+    setSubmittedText(data.selectedTimeText);
+    onTimeChange?.(e, data);
+  });
 
   const selectedOptions = React.useMemo(() => {
     const selectedTimeKey = dateToKey(selectedTime);
@@ -80,24 +83,22 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     return selectedOption ? [selectedOption.key] : [];
   }, [options, selectedTime]);
 
-  const handleOptionSelect: ComboboxProps['onOptionSelect'] = React.useCallback(
-    (e, data) => {
-      if (freeform && data.optionValue === undefined) {
-        // Combobox clears selection when input value not matching any option; but we allow this case in freeform TimePicker.
-        return;
-      }
-      const timeSelectionData: TimeSelectionData = {
-        selectedTime: keyToDate(data.optionValue),
-        selectedTimeText: data.optionText,
-        errorType: undefined,
-      };
-      selectTime(e, timeSelectionData);
-    },
-    [freeform, selectTime],
-  );
+  const handleOptionSelect: ComboboxProps['onOptionSelect'] = useEventCallback((e, data) => {
+    if (freeform && data.optionValue === undefined) {
+      // Combobox clears selection when input value not matching any option; but we allow this case in freeform TimePicker.
+      return;
+    }
+    const timeSelectionData: TimeSelectionData = {
+      selectedTime: keyToDate(data.optionValue ?? ''),
+      selectedTimeText: data.optionText,
+      errorType: undefined,
+    };
+    selectTime(e, timeSelectionData);
+  });
 
   const baseState = useCombobox_unstable(
     {
+      autoComplete: 'off',
       ...rest,
       selectedOptions,
       onOptionSelect: handleOptionSelect,
@@ -123,6 +124,7 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     submittedText,
   };
 
+  useDefaultChevronIconLabel(state);
   useSelectTimeFromValue(state, selectTime);
 
   return state;
@@ -164,7 +166,7 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
   React.useEffect(() => {
     if (freeform && value) {
       setActiveOption(prevActiveOption => {
-        if (prevActiveOption?.text?.indexOf(value) === 0) {
+        if (prevActiveOption?.text && prevActiveOption.text.toLowerCase().indexOf(value.toLowerCase()) === 0) {
           return prevActiveOption;
         }
         return undefined;
@@ -172,7 +174,7 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
     }
   }, [freeform, setActiveOption, value]);
 
-  const selectTimeFromValue = React.useCallback(
+  const selectTimeFromValue = useEventCallback(
     (e: React.KeyboardEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>) => {
       if (!freeform) {
         return;
@@ -185,17 +187,13 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
         callback?.(e, { selectedTime, selectedTimeText: value, errorType });
       }
     },
-    [callback, freeform, submittedText, parseTimeStringToDate, value],
   );
 
-  const handleKeyDown: ComboboxProps['onKeyDown'] = React.useCallback(
-    e => {
-      if (!activeOption && e.key === Enter) {
-        selectTimeFromValue(e);
-      }
-    },
-    [activeOption, selectTimeFromValue],
-  );
+  const handleKeyDown: ComboboxProps['onKeyDown'] = useEventCallback(e => {
+    if (!activeOption && e.key === Enter) {
+      selectTimeFromValue(e);
+    }
+  });
   state.root.onKeyDown = mergeCallbacks(handleKeyDown, state.root.onKeyDown);
 
   const rootRef = React.useRef<HTMLDivElement>(null);
@@ -209,14 +207,25 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
     state.expandIcon.tabIndex = -1; // allows it to be the relatedTarget of a blur event.
   }
 
-  const handleInputBlur = React.useCallback(
-    (e: React.FocusEvent<HTMLInputElement>) => {
-      const isOutside = e.relatedTarget ? !elementContains(rootRef.current, e.relatedTarget) : true;
-      if (isOutside) {
-        selectTimeFromValue(e);
-      }
-    },
-    [selectTimeFromValue],
-  );
+  const handleInputBlur = useEventCallback((e: React.FocusEvent<HTMLInputElement>) => {
+    const isOutside = e.relatedTarget ? !elementContains(rootRef.current, e.relatedTarget) : true;
+    if (isOutside) {
+      selectTimeFromValue(e);
+    }
+  });
   state.input.onBlur = mergeCallbacks(handleInputBlur, state.input.onBlur);
+};
+
+/**
+ * Provides a default aria-labelledby for the chevron icon if the TimePicker is wrapped in a Field.
+ */
+const useDefaultChevronIconLabel = (state: TimePickerState) => {
+  const fieldContext = useFieldContext();
+  const chevronDefaultId = useId('timepicker-chevron-');
+  const defaultLabelFromCombobox = 'Open';
+
+  if (fieldContext?.labelId && state.expandIcon?.['aria-label'] === defaultLabelFromCombobox) {
+    const chevronId = state.expandIcon.id ?? chevronDefaultId;
+    state.expandIcon['aria-labelledby'] = `${chevronId} ${fieldContext.labelId}`;
+  }
 };

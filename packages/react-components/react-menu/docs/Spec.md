@@ -938,24 +938,24 @@ Below is a set of diagrams that tries to illustrates all the interactions menus 
 > TODO convert these diagrams to excalidraw or smth that is text format
 > TODO add extra descriptions to diagrams
 
-<img src="./etc/images/menu-interactions/Slide1.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide2.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide3.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide4.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide5.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide6.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide7.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide8.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide9.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide10.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide11.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide12.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide13.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide14.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide15.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide16.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide17.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide18.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide1.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide2.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide3.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide4.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide5.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide6.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide7.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide8.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide9.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide10.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide11.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide12.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide13.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide14.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide15.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide16.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide17.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide18.PNG" width="700" />
 
 ### Split button MenuItem submenu
 
@@ -964,10 +964,10 @@ All of the above Mouse events seen previously should apply to the part of the sp
 > TODO convert these diagrams to excalidraw or smth that is text format
 > TODO add extra descriptions to diagrams
 
-<img src="./etc/images/menu-interactions/Slide19.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide20.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide21.PNG" width="700" />
-<img src="./etc/images/menu-interactions/Slide22.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide19.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide20.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide21.PNG" width="700" />
+<img src="../etc/images/menu-interactions/Slide22.PNG" width="700" />
 
 ### MenuItem selection
 
@@ -985,7 +985,7 @@ In the event that the selection method is a radio, the previous selected item mu
 
 When a user sets focus on menu items using keyboard navigation, and then switches to mouse hover there should be one unique 'active' state for menu items. There should not be two different indicators at this point for hover and focus. Below is a GIF of the `ContextualMenu` in v7 that also supports this behaviour.
 
-![Linked keyboard and mouse navigation](./etc/images/linked-keyboard-mouse-navigation.gif)
+![Linked keyboard and mouse navigation](../etc/images/linked-keyboard-mouse-navigation.gif)
 
 ### Positioning
 

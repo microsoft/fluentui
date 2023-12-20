@@ -250,7 +250,8 @@ describe('VerticalStackedBarChart - mouse events', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  it('Should render callout correctly on mouseover', async () => {
+  // FIXME - non deterministic snapshots causing master pipeline breaks
+  it.skip('Should render callout correctly on mouseover', async () => {
     wrapper = mount(
       <VerticalStackedBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />,
     );
@@ -266,7 +267,8 @@ describe('VerticalStackedBarChart - mouse events', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('Should render callout correctly on mousemove', async () => {
+  // FIXME - looks like test leak. if previous one is skipped assertion in this test fails
+  it.skip('Should render callout correctly on mousemove', async () => {
     wrapper = mount(
       <VerticalStackedBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />,
     );

@@ -81,7 +81,11 @@ export const hasCSSOMSupport = (node: HTMLElementWithStyledMap) => {
  * @returns - CSS styles.
  */
 export const getElementComputedStyle = (node: HTMLElement): CSSStyleDeclaration => {
-  const win = canUseDOM() && (node.ownerDocument?.defaultView ?? window);
+  const win =
+    canUseDOM() &&
+    (node.ownerDocument?.defaultView ??
+      // eslint-disable-next-line no-restricted-globals
+      window);
 
   if (!win) {
     return {

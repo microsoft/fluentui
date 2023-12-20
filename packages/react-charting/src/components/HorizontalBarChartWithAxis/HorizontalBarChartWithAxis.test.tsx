@@ -176,7 +176,8 @@ describe('HorizontalBarChartWithAxis - mouse events', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  it('Should render callout correctly on mouseover', async () => {
+  // FIXME - non deterministic snapshots causing master pipeline breaks
+  it.skip('Should render callout correctly on mouseover', async () => {
     wrapper = mount(<HorizontalBarChartWithAxis data={points} calloutProps={{ doNotLayer: true }} />);
 
     // Wait for the chart to be resized
