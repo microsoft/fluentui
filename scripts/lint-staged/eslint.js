@@ -6,7 +6,8 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const { promisify } = require('util');
-const { rollup: lernaAliases } = require('lerna-alias');
+
+const { getLernaAliases } = require('@fluentui/scripts-monorepo');
 const { default: PQueue } = require('p-queue');
 const exec = promisify(child_process.exec);
 
@@ -28,12 +29,13 @@ function groupFilesByPackage() {
   /** @type {{ [packagePath: string]: string[] }} */
   const filesByPackage = {};
 
-  const packagesWithEslint = Object.values(lernaAliases({ sourceDirectory: false })).filter(
-    packagePath =>
-      // exclude @fluentui/noop (northstar packages root)
-      path.basename(packagePath) !== 'fluentui' &&
-      // only include packages with an eslintrc (any extension)
-      fs.readdirSync(packagePath).some(f => f.startsWith('.eslintrc')),
+  const packagesWithEslint = Object.values(
+    getLernaAliases({ sourceDirectory: false, excludedPackages: ['@fluentui/noop'], type: 'rollup' }),
+  ).filter(packagePath =>
+    // exclude @fluentui/noop (northstar packages root)
+    // path.basename(packagePath) !== 'fluentui' &&
+    // only include packages with an eslintrc (any extension)
+    fs.readdirSync(packagePath).some(f => f.startsWith('.eslintrc')),
   );
 
   for (const file of files) {

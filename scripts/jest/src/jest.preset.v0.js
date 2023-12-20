@@ -1,4 +1,4 @@
-const { getLernaAliases, workspaceRoot } = require('@fluentui/scripts-monorepo');
+const { getLernaAliases } = require('@fluentui/scripts-monorepo');
 
 // northstar packages should pull these from npm, not the repo
 const excludedPackages = ['@fluentui/dom-utilities'];
@@ -23,7 +23,7 @@ const createConfig = (/** @type {import('@jest/types').Config.InitialOptions} */
     ...getLernaAliases({
       type: 'jest',
       excludedPackages,
-      directory: workspaceRoot,
+      sourceDirectory: false,
     }),
     ...customConfig.moduleNameMapper,
   },

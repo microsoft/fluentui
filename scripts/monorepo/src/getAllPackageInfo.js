@@ -1,7 +1,8 @@
-const fs = require('fs-extra');
+const fs = require('fs');
 const path = require('path');
-const lernaAlias = require('lerna-alias');
+
 const findGitRoot = require('./findGitRoot');
+const { getLernaAliases } = require('./get-lerna-aliases');
 
 /**
  * @type {import('./types').AllPackageInfo}
@@ -22,8 +23,14 @@ function getAllPackageInfo() {
 
   // Get mapping from package name to package path
   // (rollup helper happens to be good for getting basic package name/path pairs)
-  const packagePaths = lernaAlias.rollup({ sourceDirectory: false });
-  delete packagePaths['@fluentui/noop']; // not a real package
+  const packagePaths = getLernaAliases({
+    type: 'rollup',
+    sourceDirectory: false,
+    excludedPackages: [
+      // not a real package
+      '@fluentui/noop',
+    ],
+  });
 
   packageInfo = {};
   cwdForPackageInfo = process.cwd();
@@ -32,7 +39,7 @@ function getAllPackageInfo() {
   for (const [packageName, packagePath] of Object.entries(packagePaths)) {
     packageInfo[packageName] = {
       packagePath: path.relative(gitRoot, packagePath),
-      packageJson: fs.readJSONSync(path.join(packagePath, 'package.json')),
+      packageJson: JSON.parse(fs.readFileSync(path.join(packagePath, 'package.json'), 'utf-8')),
     };
   }
 
