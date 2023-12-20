@@ -319,6 +319,7 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
     VerticalStackedBarChart,
     { data: simplePoints, calloutProps: { doNotLayer: true } },
     container => {
+      // eslint-disable-next-line
       const handleMouseLeave = jest.spyOn(VerticalStackedBarChartBase.prototype as any, '_onLegendLeave');
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       fireEvent.mouseLeave(legends[0]);
@@ -332,6 +333,7 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
     VerticalStackedBarChart,
     { data: simplePointsWithLine, calloutProps: { doNotLayer: true } },
     container => {
+      // eslint-disable-next-line
       const handleMouseLeave = jest.spyOn(VerticalStackedBarChartBase.prototype as any, '_onLegendLeave');
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       fireEvent.mouseLeave(legends[0]);
@@ -345,6 +347,7 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
     VerticalStackedBarChart,
     { data: simplePointsWithLine, calloutProps: { doNotLayer: true } },
     container => {
+      // eslint-disable-next-line
       const handleMouseOver = jest.spyOn(VerticalStackedBarChartBase.prototype as any, '_onLegendHover');
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       fireEvent.mouseOver(legends[0]);
@@ -358,6 +361,7 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
     VerticalStackedBarChart,
     { data: simplePointsWithLine, calloutProps: { doNotLayer: true } },
     container => {
+      // eslint-disable-next-line
       const handleMouseClick = jest.spyOn(VerticalStackedBarChartBase.prototype as any, '_onLegendClick');
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       fireEvent.click(legends[0]);
