@@ -663,3 +663,12 @@ test('Should pass accessibility tests', async () => {
   const axeResults = await axe(container);
   expect(axeResults).toHaveNoViolations();
 }, 10000);
+
+import { validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
+import { LineChartBehaviorDefinition } from './LineChartBehaviorDefinition.js/LineChartBehaviorDefinition';
+
+describe('meets accessibility requirements', () => {
+  const testFacade = new ComponentTestFacade(LineChart, { data: { basicChartPoints } });
+  const errors = validateBehavior(LineChartBehaviorDefinition, testFacade);
+  expect(errors).toEqual([]);
+});
