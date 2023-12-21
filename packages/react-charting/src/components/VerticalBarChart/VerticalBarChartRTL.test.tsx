@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { chartPoints } from './VerticalBarChart.test';
+import { chartPoints } from './tests/test-data';
 import { DefaultPalette } from '@fluentui/react';
 import { VerticalBarChart } from './VerticalBarChart';
 import { VerticalBarChartBase } from './VerticalBarChart.base';
@@ -15,6 +15,9 @@ import {
   testWithoutWait,
 } from '../../utilities/TestUtility.test';
 import { IVerticalBarChartProps } from './VerticalBarChart.types';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 const pointsWithLine = [
   {
@@ -465,3 +468,9 @@ describe('Vertical bar chart re-rendering', () => {
     });
   });
 });
+
+test('Should pass accessibility tests', async () => {
+  const { container } = render(<VerticalBarChart data={chartPoints} />);
+  const axeResults = await axe(container);
+  expect(axeResults).toHaveNoViolations();
+}, 10000);

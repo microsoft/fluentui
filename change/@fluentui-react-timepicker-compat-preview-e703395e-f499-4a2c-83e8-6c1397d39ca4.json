@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: set autoComeplete to off by default",
-  "packageName": "@fluentui/react-timepicker-compat-preview",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -8,6 +8,9 @@ import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilit
 import { IGroupedVerticalBarChartData, IVSChartDataPoint } from '../../index';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 const accessibilityDataPoints: IGroupedVerticalBarChartData[] = [
   {
@@ -481,3 +484,11 @@ testWithWait(
     expect(bars[1].getAttribute('width')).toEqual('16');
   },
 );
+
+describe('Grouped Vertical Bar Chart - axe-core', () => {
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<GroupedVerticalBarChart data={accessibilityDataPoints} />);
+    const axeResults = await axe(container);
+    expect(axeResults).toHaveNoViolations();
+  }, 10000);
+});

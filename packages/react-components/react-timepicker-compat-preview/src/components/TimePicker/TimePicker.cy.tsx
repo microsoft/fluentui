@@ -16,7 +16,14 @@ const Default = ({ freeform }: Pick<TimePickerProps, 'freeform'>) => {
   };
   return (
     <div>
-      <TimePicker freeform={freeform} startHour={10} endHour={20} increment={60} onTimeChange={onTimeChange} />
+      <TimePicker
+        freeform={freeform}
+        startHour={10}
+        endHour={20}
+        increment={60}
+        onTimeChange={onTimeChange}
+        hourCycle="h23"
+      />
       {<div id="selected-time-text">{selectedTimeText}</div>}
     </div>
   );
@@ -43,6 +50,7 @@ const Controlled = ({ freeform }: Pick<TimePickerProps, 'freeform'>) => {
         startHour={10}
         endHour={20}
         increment={60}
+        hourCycle="h23"
         selectedTime={selectedTime}
         onTimeChange={onTimeChange}
         value={value}
@@ -135,5 +143,69 @@ describe('TimePicker', () => {
         cy.get('#selected-time-text').should('have.text', '10:30');
       });
     });
+  });
+});
+
+describe('TimePicker with custom parsing', () => {
+  const Example = () => {
+    const [anchor] = React.useState(() => new Date(2023, 1, 1));
+    const formatDateToTimeString = (date: Date) => {
+      const localeTimeString = date.toLocaleTimeString([], {
+        hour: 'numeric',
+        hourCycle: 'h23',
+        minute: '2-digit',
+      });
+      if (date.getHours() < 12) {
+        return `Morning: ${localeTimeString}`;
+      }
+      if (date.getHours() === 12) {
+        return `noon: ${localeTimeString}`;
+      }
+      return `Afternoon: ${localeTimeString}`;
+    };
+
+    const parseTimeStringToDate: TimePickerProps['parseTimeStringToDate'] = (time: string | undefined) => {
+      if (!time) {
+        return { date: null };
+      }
+
+      const [hours, minutes] = (time.split(' ')[1].match(/\d+/g) ?? []).map(Number);
+      const date = new Date(anchor.getFullYear(), anchor.getMonth(), anchor.getDate(), hours, minutes);
+
+      return { date };
+    };
+
+    const [selectedTimeText, setSelectedTimeText] = React.useState<string | undefined>(undefined);
+    const onTimeChange: TimePickerProps['onTimeChange'] = (_ev, data) => {
+      setSelectedTimeText(data.selectedTimeText);
+    };
+    return (
+      <div>
+        <TimePicker
+          freeform
+          dateAnchor={anchor}
+          startHour={9}
+          endHour={14}
+          increment={60}
+          hourCycle="h23"
+          formatDateToTimeString={formatDateToTimeString}
+          parseTimeStringToDate={parseTimeStringToDate}
+          onTimeChange={onTimeChange}
+        />
+        {<div id="selected-time-text">{selectedTimeText}</div>}
+      </div>
+    );
+  };
+  it('letter navigation should be case insensitive and select option on enter', () => {
+    mount(<Example />);
+    cy.get(inputSelector).click().get(optionSelector(0)).should('be.visible');
+
+    cy.get(inputSelector).click().type('a').realPress('Enter');
+    cy.get(inputSelector).should('have.value', 'Afternoon: 13:00');
+    cy.get('#selected-time-text').should('have.text', 'Afternoon: 13:00');
+
+    cy.get(inputSelector).clear().click().type('N').realPress('Enter');
+    cy.get(inputSelector).should('have.value', 'noon: 12:00');
+    cy.get('#selected-time-text').should('have.text', 'noon: 12:00');
   });
 });

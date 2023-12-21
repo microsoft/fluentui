@@ -127,5 +127,6 @@ export const useComboboxBaseState = (
     setValue,
     size,
     value,
+    multiselect,
   };
 };

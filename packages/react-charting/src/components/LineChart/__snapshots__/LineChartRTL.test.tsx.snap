@@ -317,14 +317,12 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
               tabindex="-1"
             />
             <circle
-              aria-label="08/25/2023. First, 50."
               cx="-20"
               cy="17.884615384615383"
               focusable="false"
               id="circle13_0_55D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -634,14 +632,12 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               tabindex="-1"
             />
             <circle
-              aria-label="40. metaData3, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
               id="circle0_2_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -689,14 +685,12 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               tabindex="-1"
             />
             <circle
-              aria-label="50. metaData2, 90."
               cx="4"
               cy="18.804347826086957"
               focusable="false"
               id="circle0_1_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -744,14 +738,12 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               tabindex="-1"
             />
             <circle
-              aria-label="40. metaData1, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
               id="circle0_0_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -1229,14 +1221,12 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               tabindex="-1"
             />
             <circle
-              aria-label="40. metaData3, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
               id="circle26_2_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -1284,14 +1274,12 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               tabindex="-1"
             />
             <circle
-              aria-label="50. metaData2, 90."
               cx="4"
               cy="18.804347826086957"
               focusable="false"
               id="circle26_1_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -1339,14 +1327,12 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               tabindex="-1"
             />
             <circle
-              aria-label="40. metaData1, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
               id="circle26_0_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -1834,14 +1820,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="-1"
             />
             <circle
-              aria-label="40. metaData3, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
               id="circle227_2_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -1889,14 +1873,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="-1"
             />
             <circle
-              aria-label="50. metaData2, 90."
               cx="4"
               cy="18.804347826086957"
               focusable="false"
               id="circle227_1_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -1944,14 +1926,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="-1"
             />
             <circle
-              aria-label="40. metaData1, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
               id="circle227_0_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -2433,14 +2413,12 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="-1"
             />
             <circle
-              aria-label="40. metaData3, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
               id="circle240_2_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -2488,14 +2466,12 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="-1"
             />
             <circle
-              aria-label="50. metaData2, 90."
               cx="4"
               cy="18.804347826086957"
               focusable="false"
               id="circle240_1_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -2543,14 +2519,12 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="-1"
             />
             <circle
-              aria-label="40. metaData1, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
               id="circle240_0_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -3045,14 +3019,12 @@ exports[`Should reflect theme change 1`] = `
                 tabindex="-1"
               />
               <circle
-                aria-label="40. metaData3, 80."
                 cx="16"
                 cy="12.826086956521738"
                 focusable="false"
                 id="circle256_2_11D"
                 opacity="0"
                 r="8"
-                role="none"
                 stroke-width="0"
                 width="0"
               />
@@ -3100,14 +3072,12 @@ exports[`Should reflect theme change 1`] = `
                 tabindex="-1"
               />
               <circle
-                aria-label="50. metaData2, 90."
                 cx="4"
                 cy="18.804347826086957"
                 focusable="false"
                 id="circle256_1_11D"
                 opacity="0"
                 r="8"
-                role="none"
                 stroke-width="0"
                 width="0"
               />
@@ -3155,14 +3125,12 @@ exports[`Should reflect theme change 1`] = `
                 tabindex="-1"
               />
               <circle
-                aria-label="40. metaData1, 80."
                 cx="16"
                 cy="12.826086956521738"
                 focusable="false"
                 id="circle256_0_11D"
                 opacity="0"
                 r="8"
-                role="none"
                 stroke-width="0"
                 width="0"
               />
