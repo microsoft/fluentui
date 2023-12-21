@@ -1,15 +1,14 @@
-/** @jsxRuntime automatic */
-/** @jsxImportSource @fluentui/react-jsx-runtime */
-
+/** @jsxRuntime classic */
+/** @jsx createElement */
 import { assertSlots } from '@fluentui/react-utilities';
-import type { TeachingPopoverButtonState, TeachingPopoverButtonSlots } from './TeachingPopoverButton.types';
+import { TeachingPopoverButtonSlots, type TeachingPopoverButtonState } from './TeachingPopoverButton.types';
+import { renderButton_unstable } from '@fluentui/react-button';
 
 /**
- * Render the final JSX of TeachingPopoverButton
+ * Renders a TeachingPopoverButton component is rendered as a default react-button with extended styles/props
  */
 export const renderTeachingPopoverButton_unstable = (state: TeachingPopoverButtonState) => {
   assertSlots<TeachingPopoverButtonSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return renderButton_unstable(state);
 };

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Mon, 18 Dec 2023 17:48:16 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Dec 2023 17:00:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.5.36)
+
+Thu, 21 Dec 2023 17:00:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.5.35..@fluentui/react-combobox_v9.5.36)
+
+### Patches
+
+- fix: make hover color in contrast theme accessible. ([PR #30101](https://github.com/microsoft/fluentui/pull/30101) by yuanboxue@microsoft.com)
 
 ## [9.5.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.5.35)
 

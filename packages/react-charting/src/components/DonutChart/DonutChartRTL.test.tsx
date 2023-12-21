@@ -6,6 +6,9 @@ import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import * as utils from '../../utilities/utilities';
 import { resetIds } from '../../Utilities';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 describe('Donut chart interactions', () => {
   beforeEach(() => {
@@ -177,4 +180,12 @@ describe('Donut chart interactions', () => {
     // Assert
     expect(container).toMatchSnapshot();
   });
+});
+
+describe('Donut Chart - axe-core', () => {
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<DonutChart data={chartPoints} />);
+    const axeResults = await axe(container);
+    expect(axeResults).toHaveNoViolations();
+  }, 10000);
 });

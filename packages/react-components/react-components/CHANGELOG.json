@@ -2,6 +2,56 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 21 Dec 2023 17:00:40 GMT",
+      "tag": "@fluentui/react-components_v9.43.3",
+      "version": "9.43.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "b4844e599d85c9c135b8a0ea48d77c6d550b6b8f",
+            "comment": "fix(breadcrumb): BreadcrumbButton focus border has incorrent width and transition"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "4d269ba336f4a4cd9d1b5ab06949baacc9dc104d",
+            "comment": "fix: make hover color in contrast theme accessible."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "430e58ba1d1a6f0b2bcad8577070f01af099770c",
+            "comment": "fix: set default value of hourCycle to undefined"
+          }
+        ],
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "commit": "fe0792a703aec2388daee8d6c0b727f1736147f1",
+            "comment": "feat: Release react-teaching-popover-preview package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Dec 2023 01:35:07 GMT",
+      "tag": "@fluentui/react-components_v9.43.2",
+      "version": "9.43.2",
+      "comments": {
+        "none": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "9287dccfb14c7e7c06c1aaabdd3efef2d01149e2",
+            "comment": "Docs: Deprecate unused style hook"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Dec 2023 17:48:15 GMT",
       "tag": "@fluentui/react-components_v9.43.2",
       "version": "9.43.2",

@@ -82,7 +82,7 @@ export type TimeFormatOptions = {
    * A string value indicating whether the 12-hour format ("h11", "h12") or the 24-hour format ("h23", "h24") should be used.
    * - 'h11' and 'h23' start with hour 0 and go up to 11 and 23 respectively.
    * - 'h12' and 'h24' start with hour 1 and go up to 12 and 24 respectively.
-   * @default 'h23'
+   * @default undefined
    */
   hourCycle?: 'h11' | 'h12' | 'h23' | 'h24' | undefined;
 

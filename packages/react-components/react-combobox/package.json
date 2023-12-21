@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-combobox",
-  "version": "9.5.35",
+  "version": "9.5.36",
   "description": "Fluent UI React Combobox component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

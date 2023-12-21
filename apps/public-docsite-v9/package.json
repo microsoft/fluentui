@@ -36,6 +36,7 @@
     "@fluentui/theme-designer": "*",
     "@fluentui/react-search-preview": "*",
     "@fluentui/react-motion-preview": "*",
+    "@fluentui/react-teaching-popover-preview": "*",
     "@fluentui/react-timepicker-compat-preview": "*",
     "@griffel/react": "^1.5.14",
     "@microsoft/applicationinsights-web": "^3",
