@@ -21,7 +21,6 @@ type ProjectIssues = { [projectName: string]: { [depName: string]: string } };
 
 const NORMALIZED_INNER_WORKSPACE_VERSION = '*';
 const NORMALIZED_PRERELEASE_RANGE_VERSION = '>=9.0.0-alpha';
-const NORMALIZED_COMPAT_PRERELEASE_RANGE_VERSION = '>=0.0.0-alpha';
 const BEACHBALL_UNWANTED_PRERELEASE_RANGE_VERSION_REGEXP = /<9.0.0$/;
 
 export default async function (tree: Tree, schema: NormalizePackageDependenciesGeneratorSchema) {
@@ -115,21 +114,16 @@ function getVersion(tree: Tree, deps: Record<string, string>, packageName: strin
   return { updated, match };
 
   function getUpdatedVersion(currentVersion: string) {
-    const isCompatPackage = packageName.endsWith('-compat');
-
     if (BEACHBALL_UNWANTED_PRERELEASE_RANGE_VERSION_REGEXP.test(current)) {
       return NORMALIZED_PRERELEASE_RANGE_VERSION;
     }
 
-    const expectedVersion = isCompatPackage
-      ? NORMALIZED_COMPAT_PRERELEASE_RANGE_VERSION
-      : NORMALIZED_PRERELEASE_RANGE_VERSION;
-    if (currentVersion === expectedVersion) {
+    if (currentVersion === NORMALIZED_PRERELEASE_RANGE_VERSION) {
       const prereleasePkg = readProjectConfiguration(tree, packageName);
       const prereleasePkgJson = readJson<PackageJson>(tree, joinPathFragments(prereleasePkg.root, 'package.json'));
       const isPrerelease = semver.prerelease(prereleasePkgJson.version) !== null;
 
-      return isPrerelease ? expectedVersion : NORMALIZED_INNER_WORKSPACE_VERSION;
+      return isPrerelease ? NORMALIZED_PRERELEASE_RANGE_VERSION : NORMALIZED_INNER_WORKSPACE_VERSION;
     }
 
     if (semver.prerelease(current)) {
