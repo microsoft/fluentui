@@ -1,14 +1,12 @@
-import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
-import { ThemeProvider } from '@fluentui/react';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { HorizontalBarChart } from './HorizontalBarChart';
 import { HorizontalBarChartBase } from './HorizontalBarChart.base';
-import { HorizontalBarChartVariant, IChartProps } from './index';
+import { IAccessibilityProps, IChartDataPoint, IChartProps } from './index';
 
 const env = require('../../../config/tests');
-
 const runTest = env === 'TEST' ? describe : describe.skip;
 
 const chartPoints: IChartProps[] = [
@@ -65,8 +63,8 @@ const chartPointsWithBenchMark: IChartProps[] = [
   },
 ];
 
-describe('_getDefaultTextData', () => {
-  test('Should return proper test data without chartDataMode', () => {
+runTest('_getDefaultTextData', () => {
+  test('Should return proper axis data without chartDataMode defined', () => {
     render(<HorizontalBarChart data={chartPoints} />);
     const instance = new HorizontalBarChartBase({
       data: chartPoints,
@@ -77,7 +75,7 @@ describe('_getDefaultTextData', () => {
     expect(defaultText.props.children).toEqual('1,543');
   });
 
-  test('Should return proper test data with default chartDataMode', () => {
+  test('Should return proper axis data with default chartDataMode', () => {
     const instance = new HorizontalBarChartBase({
       data: chartPoints,
       chartDataMode: 'default',
@@ -88,7 +86,7 @@ describe('_getDefaultTextData', () => {
     expect(defaultText.props.children).toEqual('1,543');
   });
 
-  test('Should return proper test data with fraction chartDataMode', () => {
+  test('Should return proper axis data with fraction chartDataMode', () => {
     const instance = new HorizontalBarChartBase({
       data: chartPoints,
       chartDataMode: 'fraction',
@@ -100,7 +98,7 @@ describe('_getDefaultTextData', () => {
     expect(defaultText.props.children[1].props.children).toEqual(' / 15,000');
   });
 
-  test('Should return proper test data with percentage chartDataMode', () => {
+  test('Should return proper axis data with percentage chartDataMode', () => {
     const instance = new HorizontalBarChartBase({
       data: chartPoints,
       chartDataMode: 'percentage',
@@ -112,8 +110,8 @@ describe('_getDefaultTextData', () => {
   });
 });
 
-describe('_getChartDataText', () => {
-  test('Should return proper test data with default text data', () => {
+runTest('_getChartDataText', () => {
+  test('Should return proper text data with default data', () => {
     const instance = new HorizontalBarChartBase({
       data: chartPoints,
     });
@@ -123,7 +121,7 @@ describe('_getChartDataText', () => {
     expect(defaultText.props.children).toEqual('1,543');
   });
 
-  test('Should return proper test data with custom chat data', () => {
+  test('Should return proper text data with custom chat data', () => {
     const instance = new HorizontalBarChartBase({
       data: chartPoints,
       barChartCustomData: (props: IChartProps) =>
@@ -140,7 +138,7 @@ describe('_getChartDataText', () => {
   });
 });
 
-describe('_createBenchmark', () => {
+runTest('_createBenchmark', () => {
   test('Should return proper bench mark data without any benachmark data in input', () => {
     const instance = new HorizontalBarChartBase({
       data: chartPoints,
@@ -151,7 +149,7 @@ describe('_createBenchmark', () => {
     expect(defaultText.props.children.props.style.left).toEqual('calc(0% - 4px)');
   });
 
-  test('Should return proper bench mark data proper benachmark data in input', () => {
+  test('Should return proper bench mark data with proper benachmark data in input', () => {
     const instance = new HorizontalBarChartBase({
       data: chartPoints,
     });
@@ -159,5 +157,165 @@ describe('_createBenchmark', () => {
     instance._adjustProps();
     const defaultText = instance._createBenchmark(chartPointsWithBenchMark[0]);
     expect(defaultText.props.children.props.style.left).toEqual('calc(50% - 4px)');
+  });
+});
+
+runTest('_createBars', () => {
+  test('Should return bar count properly', () => {
+    const instance = new HorizontalBarChartBase({
+      data: chartPoints,
+    });
+    expect(instance).toBeDefined();
+    instance._adjustProps();
+    const { palette } = DarkTheme;
+    const bars = instance._createBars(chartPoints[0], palette);
+    expect(bars).toHaveLength(2);
+  });
+
+  test('Should return bar width properly', () => {
+    const instance = new HorizontalBarChartBase({
+      data: chartPoints,
+    });
+    expect(instance).toBeDefined();
+    instance._adjustProps();
+    const { palette } = DarkTheme;
+    const bars = instance._createBars(chartPoints[0], palette);
+    expect(bars).toHaveLength(2);
+    expect(bars[0].props.width).toEqual('10.286666666666665%');
+    expect(bars[1].props.width).toEqual('89.71333333333334%');
+  });
+
+  test('Should return bar heigh properly', () => {
+    const instance = new HorizontalBarChartBase({
+      data: chartPoints,
+      barHeight: 15,
+    });
+    expect(instance).toBeDefined();
+    instance._adjustProps();
+    const { palette } = DarkTheme;
+    const bars = instance._createBars(chartPoints[0], palette);
+    expect(bars).toHaveLength(2);
+    expect(bars[0].props.height).toEqual(15);
+    expect(bars[1].props.height).toEqual(15);
+  });
+});
+
+runTest('_getAriaLabel', () => {
+  test('Should return bar aria-label as 0 when there is no chart data', () => {
+    const instance = new HorizontalBarChartBase({
+      data: chartPoints,
+    });
+    expect(instance).toBeDefined();
+    const emptyChartPoint: IChartDataPoint = {};
+    const ariaLabel = instance._getAriaLabel(emptyChartPoint);
+    expect(ariaLabel).toEqual('0.');
+  });
+
+  test('Should return bar aria-label properly when proper chart data is there', () => {
+    const instance = new HorizontalBarChartBase({
+      data: chartPoints,
+    });
+    expect(instance).toBeDefined();
+    const chartPoint: IChartDataPoint = {
+      legend: 'one',
+      horizontalBarChartdata: { x: 1543, y: 15000 },
+      color: DefaultPalette.tealDark,
+      xAxisCalloutData: '2020/04/30',
+      yAxisCalloutData: '10%',
+    };
+    const ariaLabel = instance._getAriaLabel(chartPoint);
+    expect(ariaLabel).toEqual('2020/04/30, 10%.');
+  });
+
+  test('Should return bar aria-label properly when there is no yAxisCalloutData', () => {
+    const instance = new HorizontalBarChartBase({
+      data: chartPoints,
+    });
+    expect(instance).toBeDefined();
+    const chartPoint: IChartDataPoint = {
+      legend: 'one',
+      horizontalBarChartdata: { x: 1543, y: 15000 },
+      color: DefaultPalette.tealDark,
+      xAxisCalloutData: '2020/04/30',
+    };
+    const ariaLabel = instance._getAriaLabel(chartPoint);
+    expect(ariaLabel).toEqual('2020/04/30, 1543/15000.');
+  });
+
+  test('Should return bar aria-label properly when there is no xAxisCalloutData', () => {
+    const instance = new HorizontalBarChartBase({
+      data: chartPoints,
+    });
+    expect(instance).toBeDefined();
+    const chartPoint: IChartDataPoint = {
+      legend: 'one',
+      horizontalBarChartdata: { x: 1543, y: 15000 },
+      color: DefaultPalette.tealDark,
+      yAxisCalloutData: '10%',
+    };
+    const ariaLabel = instance._getAriaLabel(chartPoint);
+    expect(ariaLabel).toEqual('one, 10%.');
+  });
+
+  test('Should return bar aria- label properly when there is no xAxisCalloutData and yAxisCalloutData', () => {
+    const instance = new HorizontalBarChartBase({
+      data: chartPoints,
+    });
+    expect(instance).toBeDefined();
+    const chartPoint: IChartDataPoint = {
+      legend: 'one',
+      horizontalBarChartdata: { x: 1543, y: 15000 },
+      color: DefaultPalette.tealDark,
+    };
+    const ariaLabel = instance._getAriaLabel(chartPoint);
+    expect(ariaLabel).toEqual('one, 1543/15000.');
+  });
+
+  test('Should return bar aria-label properly when there is no xAxisCalloutData, yAxisCalloutData and horizontalBarChartdata', () => {
+    const instance = new HorizontalBarChartBase({
+      data: chartPoints,
+    });
+    expect(instance).toBeDefined();
+    const chartPoint: IChartDataPoint = {
+      legend: 'one',
+      color: DefaultPalette.tealDark,
+    };
+    const ariaLabel = instance._getAriaLabel(chartPoint);
+    expect(ariaLabel).toEqual('one, 0.');
+  });
+
+  test('Should return bar aria-label properly when we have callOutAccessibilityData', () => {
+    const instance = new HorizontalBarChartBase({
+      data: chartPoints,
+    });
+    expect(instance).toBeDefined();
+    const accessibilityData: IAccessibilityProps = {
+      ariaLabel: 'Accessibility label',
+    };
+    const chartPoint: IChartDataPoint = {
+      legend: 'one',
+      callOutAccessibilityData: accessibilityData,
+    };
+    const ariaLabel = instance._getAriaLabel(chartPoint);
+    expect(ariaLabel).toEqual('Accessibility label');
+  });
+
+  test('Should return bar aria-label properly when we have callOutAccessibilityData and other properties', () => {
+    const instance = new HorizontalBarChartBase({
+      data: chartPoints,
+    });
+    expect(instance).toBeDefined();
+    const accessibilityData: IAccessibilityProps = {
+      ariaLabel: 'Accessibility label',
+    };
+    const chartPoint: IChartDataPoint = {
+      legend: 'one',
+      horizontalBarChartdata: { x: 1543, y: 15000 },
+      color: DefaultPalette.tealDark,
+      xAxisCalloutData: '2020/04/30',
+      callOutAccessibilityData: accessibilityData,
+    };
+    const ariaLabel = instance._getAriaLabel(chartPoint);
+    expect(ariaLabel).toEqual('Accessibility label');
   });
 });
