@@ -1,4 +1,4 @@
-# @fluentui/react-timepicker-compat-preview Migration Guide
+# @fluentui/react-timepicker-compat Migration Guide
 
 ## Migration from v8 TimePicker
 

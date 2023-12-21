@@ -1,4 +1,4 @@
-import { TimePicker } from '@fluentui/react-timepicker-compat-preview';
+import { TimePicker } from '@fluentui/react-timepicker-compat';
 
 console.log(TimePicker);
 

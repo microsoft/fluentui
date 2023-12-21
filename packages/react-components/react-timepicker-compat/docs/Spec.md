@@ -1,4 +1,4 @@
-# @fluentui/react-timepicker-compat-preview Spec
+# @fluentui/react-timepicker-compat Spec
 
 ## Background
 
