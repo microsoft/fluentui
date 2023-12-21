@@ -762,11 +762,11 @@ import { ResolveShorthandOptions } from '@fluentui/react-utilities';
 import { Select } from '@fluentui/react-select';
 import { SelectableHandler } from '@fluentui/react-menu';
 import { selectClassNames } from '@fluentui/react-select';
+import { SelectionEvents } from '@fluentui/react-combobox';
 import { SelectionHookParams } from '@fluentui/react-utilities';
 import { SelectionItemId } from '@fluentui/react-utilities';
 import { SelectionMethods } from '@fluentui/react-utilities';
 import { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
-import { SelectionEvents } from '@fluentui/react-combobox';
 import { SelectOnChangeData } from '@fluentui/react-select';
 import { SelectProps } from '@fluentui/react-select';
 import { SelectSlots } from '@fluentui/react-select';
@@ -2937,6 +2937,8 @@ export { SelectableHandler }
 
 export { selectClassNames }
 
+export { SelectionEvents }
+
 export { SelectionHookParams }
 
 export { SelectionItemId }
@@ -2944,8 +2946,6 @@ export { SelectionItemId }
 export { SelectionMethods }
 
 export { SelectionMode_2 as SelectionMode }
-
-export { SelectionEvents }
 
 export { SelectOnChangeData }
 
