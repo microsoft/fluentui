@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Field, makeStyles } from '@fluentui/react-components';
-import { TimePicker, TimePickerProps, formatDateToTimeString } from '@fluentui/react-components';
+import { TimePicker, TimePickerProps, formatDateToTimeString } from '@fluentui/react-timepicker-compat';
 import story from './TimePickerControlled.md';
 
 const useStyles = makeStyles({
