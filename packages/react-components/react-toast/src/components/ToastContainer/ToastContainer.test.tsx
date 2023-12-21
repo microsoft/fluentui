@@ -43,7 +43,7 @@ describe('ToastContainer', () => {
     displayName: 'ToastContainer',
     requiredProps: defaultToastContainerProps,
     isInternal: true,
-    disabledTests: ['consistent-callback-args'],
+    disabledTests: ['consistent-callback-args-legacy'],
   });
 
   it('renders a default state', () => {

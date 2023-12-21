@@ -14,7 +14,7 @@ export function isConformant<TProps = {}>(
       'component-has-static-classname-exported',
       // Will enable with appropriate overrides separately
       'consistent-callback-names',
-      'consistent-callback-args',
+      'consistent-callback-args-legacy',
       'component-has-static-classnames-object',
     ],
     componentPath: require.main?.filename.replace('.test', ''),

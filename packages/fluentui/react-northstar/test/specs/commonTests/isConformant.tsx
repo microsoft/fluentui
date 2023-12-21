@@ -86,7 +86,7 @@ export function isConformant(
     // v0 doesn't use the patterns these tests look at
     disabledTests: [
       'has-top-level-file',
-      'consistent-callback-args',
+      'consistent-callback-args-legacy',
       'component-has-static-classname',
       'component-has-static-classnames-object',
       'component-has-static-classname-exported',

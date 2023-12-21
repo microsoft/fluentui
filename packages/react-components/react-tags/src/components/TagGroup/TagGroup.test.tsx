@@ -9,7 +9,7 @@ describe('TagGroup', () => {
     Component: TagGroup,
     displayName: 'TagGroup',
     testOptions: {
-      'consistent-callback-args': {
+      'consistent-callback-args-legacy': {
         ignoreProps: ['onDismiss'], // onDismiss uses generics, this test does not support that
       },
     },

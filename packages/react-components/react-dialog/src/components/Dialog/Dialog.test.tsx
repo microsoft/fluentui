@@ -19,7 +19,7 @@ describe('Dialog', () => {
       'component-has-static-classnames-object',
       // TODO:
       // onOpenChange: A second (data) argument cannot be a union
-      'consistent-callback-args',
+      'consistent-callback-args-legacy',
       // Dialog does not have own styles
       'make-styles-overrides-win',
     ],

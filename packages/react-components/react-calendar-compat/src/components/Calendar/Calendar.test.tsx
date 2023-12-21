@@ -7,7 +7,7 @@ describe('Calendar', () => {
     displayName: 'Calendar',
     disabledTests: [
       // compat components that are closer to their v8 counterparts do not adhere to this test
-      'consistent-callback-args',
+      'consistent-callback-args-legacy',
       // Calendar is not exported at the top level since it's an internal component
       'exported-top-level',
       // Calendar classnames are not exported since they are internal and are used differently compared to how v9

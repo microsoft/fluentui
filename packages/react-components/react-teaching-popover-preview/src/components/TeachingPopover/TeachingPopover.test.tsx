@@ -16,7 +16,7 @@ describe('TeachingPopover', () => {
       // Popover does not have own styles
       'make-styles-overrides-win',
       // Our callbacks are intended to be simplified
-      'consistent-callback-args',
+      'consistent-callback-args-legacy',
     ],
   });
 

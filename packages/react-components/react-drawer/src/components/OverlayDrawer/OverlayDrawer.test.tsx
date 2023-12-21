@@ -20,7 +20,7 @@ describe('OverlayDrawer', () => {
    * Why these tests are disabled:
    * component-handles-ref|component-has-root-ref: OverlayDrawer uses the Dialog under the hood and Dialog do not handle ref, as it is a renderless component
    * component-handles-classname|component-has-static-classnames-object|make-styles-overrides-win: OverlayDrawer uses the DialogSurface component to render the className, so the main component do not handle className.
-   * consistent-callback-args: Disabled that as the OverlayDrawer callback function uses the same signature as the Dialog, and Dialog has those tests disabled.
+   * consistent-callback-args-legacy: Disabled that as the OverlayDrawer callback function uses the same signature as the Dialog, and Dialog has those tests disabled.
    */
   isConformant({
     Component: OverlayDrawer,
@@ -30,7 +30,7 @@ describe('OverlayDrawer', () => {
       'component-has-root-ref',
       'component-handles-classname',
       'component-has-static-classnames-object',
-      'consistent-callback-args',
+      'consistent-callback-args-legacy',
     ],
     requiredProps: props,
     getTargetElement: result => result.getByTestId(testid),

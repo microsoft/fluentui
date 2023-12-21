@@ -7,7 +7,7 @@ describe('FlatTree', () => {
   isConformant({
     Component: FlatTree,
     displayName: 'FlatTree',
-    disabledTests: ['consistent-callback-args'],
+    disabledTests: ['consistent-callback-args-legacy'],
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

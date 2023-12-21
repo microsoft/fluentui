@@ -445,12 +445,12 @@ export const defaultTests: DefaultTestObject = {
   },
 
   /** Ensures that components have consistent callback arguments (ev, data) */
-  'consistent-callback-args': (testInfo, componentInfo, tsProgram) => {
-    it('has consistent custom callback arguments (consistent-callback-args)', () => {
+  'consistent-callback-args-legacy': (testInfo, componentInfo, tsProgram) => {
+    it('has consistent custom callback arguments (consistent-callback-args-legacy)', () => {
       const { testOptions = {} } = testInfo;
 
       const propNames = Object.keys(componentInfo.props);
-      const ignoreProps = testOptions['consistent-callback-args']?.ignoreProps || [];
+      const ignoreProps = testOptions['consistent-callback-args-legacy']?.ignoreProps || [];
 
       const invalidProps = propNames.reduce<Record<string, Error>>((errors, propName) => {
         if (!ignoreProps.includes(propName) && CALLBACK_REGEX.test(propName)) {
@@ -495,7 +495,7 @@ export const defaultTests: DefaultTestObject = {
       try {
         expect(invalidProps).toEqual({});
       } catch (e: OptOutStrictCatchTypes) {
-        throw new Error(defaultErrorMessages['consistent-callback-args'](testInfo, invalidProps));
+        throw new Error(defaultErrorMessages['consistent-callback-args-legacy'](testInfo, invalidProps));
       }
     });
   },

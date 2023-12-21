@@ -7,7 +7,7 @@ describe('Tree', () => {
   isConformant({
     Component: Tree,
     displayName: 'Tree',
-    disabledTests: ['consistent-callback-args'],
+    disabledTests: ['consistent-callback-args-legacy'],
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

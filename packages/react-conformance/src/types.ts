@@ -11,7 +11,7 @@ export interface TestOptions {
   'consistent-callback-names'?: {
     ignoreProps?: string[];
   };
-  'consistent-callback-args'?: {
+  'consistent-callback-args-legacy'?: {
     ignoreProps?: string[];
   };
   'has-static-classnames'?: {
@@ -137,6 +137,6 @@ export interface DefaultTestObject<TProps = {}> {
   'has-top-level-file': BaseConformanceTest<TProps>;
   'kebab-aria-attributes': ConformanceTest<TProps>;
   'consistent-callback-names': ConformanceTest<TProps>;
-  'consistent-callback-args': ConformanceTest<TProps>;
+  'consistent-callback-args-legacy': ConformanceTest<TProps>;
   'primary-slot-gets-native-props': BaseConformanceTest<TProps>;
 }

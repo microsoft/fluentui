@@ -23,7 +23,7 @@ describe('Menu', () => {
       'make-styles-overrides-win',
       // TODO:
       // onOpenChange: A second (data) argument cannot be a union
-      'consistent-callback-args',
+      'consistent-callback-args-legacy',
     ],
     Component: Menu,
     displayName: 'Menu',
