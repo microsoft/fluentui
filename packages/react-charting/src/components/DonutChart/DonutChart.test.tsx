@@ -138,58 +138,61 @@ describe('DonutChart snapShot testing', () => {
   });
 });
 
-// describe('DonutChart - basic props', () => {
-//   beforeEach(sharedBeforeEach);
-//   afterEach(sharedAfterEach);
+describe('DonutChart - basic props', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
 
-// it('Should mount legend when hideLegend false ', async () => {
-//   let component;
-//   await rendererAct(async () => {
-//     component = renderer.create(<DonutChart data={chartPoints} />);
-//   });
-//   const tree = component!.toJSON();
-//   const hideLegendDOM = tree!.querySelectorAll('[class^="legendContainer"]');
-//   expect(hideLegendDOM).toBeDefined();
-// });
+  it('Should mount legend when hideLegend false ', () => {
+    domAct(() => {
+      wrapper = mount(<DonutChart data={chartPoints} />);
+    });
+    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
+    expect(hideLegendDOM).toBeDefined();
+  });
 
-// it('Should mount callout when hideTootip false ', () => {
-//   let wrapper;
-//   rendererAct(() => {
-//     wrapper = mount(<DonutChart data={chartPoints} />);
-//   });
-//   const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
-//   expect(hideLegendDOM).toBeDefined();
-// });
+  it('Should mount callout when hideTootip false ', () => {
+    domAct(() => {
+      wrapper = mount(<DonutChart data={chartPoints} />);
+    });
+    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
+    expect(hideLegendDOM).toBeDefined();
+  });
 
-//   it('Should not render onRenderCalloutPerStack ', () => {
-//     wrapper = mount(<DonutChart data={chartPoints} />);
-//     const renderedDOM = wrapper.getDOMNode().getElementsByClassName('.onRenderCalloutPerStack');
-//     expect(renderedDOM!.length).toBe(0);
-//   });
+  it('Should not render onRenderCalloutPerStack ', () => {
+    domAct(() => {
+      wrapper = mount(<DonutChart data={chartPoints} />);
+    });
+    const renderedDOM = wrapper!.getDOMNode().getElementsByClassName('.onRenderCalloutPerStack');
+    expect(renderedDOM!.length).toBe(0);
+  });
 
-//   it('Should render onRenderCalloutPerDataPoint ', () => {
-//     wrapper = mount(
-//       <DonutChart
-//         data={chartPoints}
-//         onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
-//           props ? (
-//             <div className="onRenderCalloutPerDataPoint">
-//               <p>Custom Callout Content</p>
-//             </div>
-//           ) : null
-//         }
-//       />,
-//     );
-//     const renderedDOM = wrapper.getDOMNode().getElementsByClassName('.onRenderCalloutPerDataPoint');
-//     expect(renderedDOM).toBeDefined();
-//   });
+  it('Should render onRenderCalloutPerDataPoint ', () => {
+    domAct(() => {
+      wrapper = mount(
+        <DonutChart
+          data={chartPoints}
+          onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
+            props ? (
+              <div className="onRenderCalloutPerDataPoint">
+                <p>Custom Callout Content</p>
+              </div>
+            ) : null
+          }
+        />,
+      );
+    });
+    const renderedDOM = wrapper!.getDOMNode().getElementsByClassName('.onRenderCalloutPerDataPoint');
+    expect(renderedDOM).toBeDefined();
+  });
 
-//   it('Should not render onRenderCalloutPerDataPoint ', () => {
-//     wrapper = mount(<DonutChart data={chartPoints} />);
-//     const renderedDOM = wrapper.getDOMNode().getElementsByClassName('.onRenderCalloutPerDataPoint');
-//     expect(renderedDOM!.length).toBe(0);
-//   });
-// });
+  it('Should not render onRenderCalloutPerDataPoint ', () => {
+    domAct(() => {
+      wrapper = mount(<DonutChart data={chartPoints} />);
+    });
+    const renderedDOM = wrapper!.getDOMNode().getElementsByClassName('.onRenderCalloutPerDataPoint');
+    expect(renderedDOM!.length).toBe(0);
+  });
+});
 
 describe('DonutChart - mouse events', () => {
   beforeEach(sharedBeforeEach);
