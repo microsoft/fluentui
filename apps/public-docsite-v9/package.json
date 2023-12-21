@@ -34,6 +34,7 @@
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/theme-designer": "*",
+    "@fluentui/react-rating-preview": "*",
     "@fluentui/react-search-preview": "*",
     "@fluentui/react-motion-preview": "*",
     "@fluentui/react-teaching-popover-preview": "*",
@@ -43,7 +44,6 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-window": "^1.8.6",
-    "tslib": "^2.1.0",
-    "@fluentui/react-rating-preview": "*"
+    "tslib": "^2.1.0"
   }
 }
