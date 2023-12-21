@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(breadcrumb): BreadcrumbButton focus border has incorrent width and transition",
-  "packageName": "@fluentui/react-breadcrumb",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}
