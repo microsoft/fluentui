@@ -1,12 +1,12 @@
+import { getDefaultEnvironmentVars } from '@fluentui/scripts-monorepo';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import _ from 'lodash';
-import webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
-import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
+import webpack from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
-import { getDefaultEnvironmentVars } from '@fluentui/scripts-monorepo';
 
 import config from '../config';
 
@@ -125,7 +125,7 @@ const webpackConfig: webpack.Configuration &
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
-      ...config.lernaAliases({ type: 'webpack' }),
+      ...config.webpackAliases,
       src: paths.packageSrc('react-northstar'),
       faker: 'faker/locale/en',
       'react-hook-form': 'react-hook-form/dist/react-hook-form.ie11',

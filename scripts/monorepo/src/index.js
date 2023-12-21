@@ -8,7 +8,6 @@ module.exports = {
   ...require('./getAffectedPackages'),
   ...require('./getNthCommit'),
   ...require('./getDefaultEnvironmentVars'),
-  ...require('./get-lerna-aliases'),
   ...require('./utils'),
   ...require('./tree'),
   ...require('./workspace-utils'),

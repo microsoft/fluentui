@@ -7,7 +7,7 @@ const os = require('os');
 const path = require('path');
 const { promisify } = require('util');
 
-const { getLernaAliases } = require('@fluentui/scripts-monorepo');
+const { getWorkspaceProjects, workspaceRoot } = require('@fluentui/scripts-monorepo');
 const { default: PQueue } = require('p-queue');
 const exec = promisify(child_process.exec);
 
@@ -29,14 +29,14 @@ function groupFilesByPackage() {
   /** @type {{ [packagePath: string]: string[] }} */
   const filesByPackage = {};
 
-  const packagesWithEslint = Object.values(
-    getLernaAliases({ sourceDirectory: false, excludedPackages: ['@fluentui/noop'], type: 'rollup' }),
-  ).filter(packagePath =>
-    // exclude @fluentui/noop (northstar packages root)
-    // path.basename(packagePath) !== 'fluentui' &&
-    // only include packages with an eslintrc (any extension)
-    fs.readdirSync(packagePath).some(f => f.startsWith('.eslintrc')),
-  );
+  const packagesWithEslint = [];
+  const projects = getWorkspaceProjects();
+  for (const [, projectConfig] of projects) {
+    const absoluteRootPath = path.join(workspaceRoot, projectConfig.root);
+    if (fs.readdirSync(absoluteRootPath).some(f => f.startsWith('.eslintrc'))) {
+      packagesWithEslint.push(absoluteRootPath);
+    }
+  }
 
   for (const file of files) {
     // eslint-disable-next-line no-shadow

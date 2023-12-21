@@ -1,9 +1,9 @@
 import { ExecFileException, execSync } from 'child_process';
 import * as path from 'path';
 
+import { getWorkspaceProjects } from '@fluentui/scripts-monorepo';
 import { ChangelogJson } from 'beachball';
 import * as fs from 'fs-extra';
-import { rollup as lernaAliases } from 'lerna-alias';
 
 import { IChangelogEntry } from './types';
 
@@ -19,12 +19,10 @@ export function getTagToChangelogMap(maxAgeDays?: number): Map<string, IChangelo
 
   const map = new Map<string, IChangelogEntry>();
 
-  // Get all package directories so we can check if they have a CHANGELOG.json
-  // (sourceDirectory: false means don't append src/index)
-  const packagePaths = Object.values(lernaAliases({ sourceDirectory: false }));
+  const workspaceProjects = getWorkspaceProjects();
 
-  for (const packagePath of packagePaths) {
-    const changelogPath = path.join(packagePath, 'CHANGELOG.json');
+  for (const [, projectConfig] of workspaceProjects) {
+    const changelogPath = path.join(projectConfig.root, 'CHANGELOG.json');
     if (fs.existsSync(changelogPath)) {
       const changelog: ChangelogJson = fs.readJSONSync(changelogPath);
       for (const entry of changelog.entries) {

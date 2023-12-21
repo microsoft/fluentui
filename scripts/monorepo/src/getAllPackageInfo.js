@@ -1,8 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const findGitRoot = require('./findGitRoot');
-const { getLernaAliases } = require('./get-lerna-aliases');
+const { workspaceRoot } = require('@nx/devkit');
+
+const { getWorkspaceProjects } = require('./workspace-utils');
 
 /**
  * @type {import('./types').AllPackageInfo}
@@ -21,25 +22,15 @@ function getAllPackageInfo() {
     return packageInfo;
   }
 
-  // Get mapping from package name to package path
-  // (rollup helper happens to be good for getting basic package name/path pairs)
-  const packagePaths = getLernaAliases({
-    type: 'rollup',
-    sourceDirectory: false,
-    excludedPackages: [
-      // not a real package
-      '@fluentui/noop',
-    ],
-  });
+  const projects = getWorkspaceProjects();
 
   packageInfo = {};
   cwdForPackageInfo = process.cwd();
-  const gitRoot = findGitRoot();
 
-  for (const [packageName, packagePath] of Object.entries(packagePaths)) {
-    packageInfo[packageName] = {
-      packagePath: path.relative(gitRoot, packagePath),
-      packageJson: JSON.parse(fs.readFileSync(path.join(packagePath, 'package.json'), 'utf-8')),
+  for (const [projectName, projectConfig] of projects) {
+    packageInfo[projectName] = {
+      packagePath: projectConfig.root,
+      packageJson: JSON.parse(fs.readFileSync(path.join(workspaceRoot, projectConfig.root, 'package.json'), 'utf-8')),
     };
   }
 
