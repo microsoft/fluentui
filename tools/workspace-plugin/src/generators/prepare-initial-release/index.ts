@@ -300,7 +300,7 @@ function generateChangefileTask(
   projectName: string,
   options: { changeType: 'minor' | 'patch'; message: string },
 ) {
-  const cmd = `yarn change --message '${options.message}' --type ${options.changeType}  --package ${projectName}`;
+  const cmd = `yarn change --message '${options.message}' --type ${options.changeType} --package ${projectName}`;
   return execSync(cmd, { cwd: workspaceRoot, stdio: 'inherit' });
 }
 
@@ -316,20 +316,31 @@ function assertProject(tree: Tree, options: NormalizedSchema) {
   const isPreviewPackage = pkgJson.version.startsWith('0') && pkgJson.name.endsWith('-preview');
   const isCompatPackage = isVnextPackage && options.projectConfig.tags?.includes('compat');
   const isPreparedForStableAlready = pkgJson.version === '9.0.0-alpha.0';
+  const isStableAlready = /^9\.\d+.\d+$/.test(pkgJson.version);
 
   if (!isVnextPackage) {
     throw new Error(`${options.project} is not a v9 package.`);
   }
 
-  if (isPreviewPackage || isCompatPackage) {
-    return;
+  if (isCompatPackage && options.phase !== 'compat') {
+    throw new Error(
+      `Invalid phase(${options.phase}) option provided. ${options.project} is a COMPAT package thus phase needs to be 'compat'.`,
+    );
+  }
+
+  if (isPreviewPackage && options.phase === 'compat') {
+    throw new Error(
+      `Invalid phase(${options.phase}) option provided. ${options.project} is a PREVIEW package thus phase needs to be one of 'preview'|'stable'.`,
+    );
   }
 
   if (isPreparedForStableAlready) {
     throw new Error(`${options.project} is already prepared for stable release. Please trigger RELEASE pipeline.`);
   }
 
-  throw new Error(`${options.project} is already released as stable.`);
+  if (isStableAlready) {
+    throw new Error(`${options.project} is already released as stable.`);
+  }
 }
 
 function createExportsInSuite(content: string, packageName: string) {
