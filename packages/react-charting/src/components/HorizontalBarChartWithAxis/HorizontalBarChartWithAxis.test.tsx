@@ -1,4 +1,5 @@
 jest.mock('react-dom');
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
@@ -8,7 +9,7 @@ import { IHorizontalBarChartWithAxisState, HorizontalBarChartWithAxisBase } from
 import { resetIds } from '@fluentui/react';
 const rendererAct = renderer.act;
 import { act as domAct } from 'react-dom/test-utils';
-import { points_HBCWA } from '../../utilities/testData';
+import { points_HBCWA } from '../../utilities/testData.test';
 
 let wrapper:
   | ReactWrapper<IHorizontalBarChartWithAxisProps, IHorizontalBarChartWithAxisState, HorizontalBarChartWithAxisBase>
@@ -32,7 +33,7 @@ function sharedAfterEach() {
   }
 }
 
-const points_HBCWAForWrapLabels = [
+const pointsForWrapLabels = [
   {
     y: 'String One',
     x: 1000,
@@ -77,7 +78,7 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
     let component: any;
     rendererAct(() => {
       component = renderer.create(
-        <HorizontalBarChartWithAxis data={points_HBCWAForWrapLabels} showYAxisLablesTooltip={true} />,
+        <HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLablesTooltip={true} />,
       );
     });
     const tree = component!.toJSON();

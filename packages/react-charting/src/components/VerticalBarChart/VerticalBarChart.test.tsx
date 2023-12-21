@@ -8,7 +8,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../index';
 import { IVerticalBarChartState, VerticalBarChartBase } from './VerticalBarChart.base';
 import { act } from 'react-dom/test-utils';
-import { chartPoints_VBC } from '../../utilities/testData';
+import { chartPoints_VBC } from '../../utilities/testData.test';
 
 const rendererAct = renderer.act;
 

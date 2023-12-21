@@ -1,7 +1,7 @@
 import { fireEvent } from '@testing-library/dom';
 import { testWithWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
-import { points_HBCWA } from '../../utilities/testData';
+import { points_HBCWA } from '../../utilities/testData.test';
 
 describe('HorizontalBarChartWithAxis - mouse events', () => {
   testWithWait(

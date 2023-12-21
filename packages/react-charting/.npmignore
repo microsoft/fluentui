@@ -37,3 +37,4 @@ visualtests
 !lib-amd
 !dist
 docs
+testData.test.ts

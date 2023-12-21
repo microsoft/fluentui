@@ -15,7 +15,7 @@ import {
 } from '../../utilities/TestUtility.test';
 import { IVerticalBarChartProps } from './VerticalBarChart.types';
 import { IVerticalBarChartDataPoint } from '../../index';
-import { chartPoints_VBC } from '../../utilities/testData';
+import { chartPoints_VBC } from '../../utilities/testData.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
