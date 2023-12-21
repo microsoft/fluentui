@@ -1,22 +1,21 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { TeachingPopoverSurfaceSlots, TeachingPopoverSurfaceState } from './TeachingPopoverSurface.types';
+import { TeachingPopoverSurfaceSlots, TeachingPopoverSurfaceState } from './TeachingPopoverSurface.types';
+import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
+import { tokens } from '@fluentui/react-theme';
 
 export const teachingPopoverSurfaceClassNames: SlotClassNames<TeachingPopoverSurfaceSlots> = {
   root: 'fui-TeachingPopoverSurface',
-  // TODO: add class names for all slots on TeachingPopoverSurfaceSlots.
-  // Should be of the form `<slotName>: 'fui-TeachingPopoverSurface__<slotName>`
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingVerticalL),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    maxWidth: '320px',
+    width: '320px',
+    boxSizing: 'border-box',
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
@@ -26,10 +25,15 @@ export const useTeachingPopoverSurfaceStyles_unstable = (
   state: TeachingPopoverSurfaceState,
 ): TeachingPopoverSurfaceState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(teachingPopoverSurfaceClassNames.root, styles.root, state.root.className);
+  const updatedState = usePopoverSurfaceStyles_unstable(state);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  // Make sure to merge teaching bubble surface on top of popover styles
+  updatedState.root.className = mergeClasses(
+    teachingPopoverSurfaceClassNames.root,
+    updatedState.root.className,
+    styles.root,
+    state.root.className,
+  );
 
-  return state;
+  return updatedState;
 };

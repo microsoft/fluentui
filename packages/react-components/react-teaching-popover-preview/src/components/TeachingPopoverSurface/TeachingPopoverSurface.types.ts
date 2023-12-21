@@ -1,17 +1,18 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-
-export type TeachingPopoverSurfaceSlots = {
-  root: Slot<'div'>;
-};
+import type { ComponentProps } from '@fluentui/react-utilities';
+import { PopoverSurfaceState } from '@fluentui/react-popover';
+import { PopoverSurfaceSlots } from '@fluentui/react-popover';
 
 /**
  * TeachingPopoverSurface Props
  */
-export type TeachingPopoverSurfaceProps = ComponentProps<TeachingPopoverSurfaceSlots> & {};
+export type TeachingPopoverSurfaceProps = ComponentProps<TeachingPopoverSurfaceSlots>;
 
 /**
- * State used in rendering TeachingPopoverSurface
+ * Names of the slots in TeachingPopoverSurface
  */
-export type TeachingPopoverSurfaceState = ComponentState<TeachingPopoverSurfaceSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from TeachingPopoverSurfaceProps.
-// & Required<Pick<TeachingPopoverSurfaceProps, 'propName'>>
+export type TeachingPopoverSurfaceSlots = PopoverSurfaceSlots;
+
+/**
+ * TeachingPopoverSurface State
+ */
+export type TeachingPopoverSurfaceState = PopoverSurfaceState;
