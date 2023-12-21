@@ -4,12 +4,11 @@ import { renderHook } from '@testing-library/react-hooks';
 import { fireEvent, render } from '@testing-library/react';
 import { getSlots, Slot, ComponentProps } from '@fluentui/react-utilities';
 import { ARIAButtonProps, ARIAButtonSlotProps } from './types';
-import { useARIAButtonShorthand } from './useARIAButtonShorthand';
 
 const TestButton = (props: ComponentProps<{ root: Slot<ARIAButtonSlotProps> }>) => {
   const { slots, slotProps } = getSlots<{ root: Slot<ARIAButtonSlotProps> }>({
     components: { root: 'button' },
-    root: useARIAButtonShorthand(props, { required: true }),
+    root: useARIAButtonProps(props.as, props),
   });
   return <slots.root {...slotProps.root} />;
 };

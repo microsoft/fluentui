@@ -1,17 +1,27 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { TeachingPopoverAppearance } from '../TeachingPopover/TeachingPopover.types';
 
 export type TeachingPopoverHeaderSlots = {
-  root: Slot<'div'>;
+  /**
+   * The element wrapping the text and close button. By default this is an h3, but can be a div.
+   * Be sure to include role and aria heading level if div is used.
+   */
+  root: Slot<'h3', 'h1' | 'h2' | 'h4' | 'h5' | 'h6' | 'div'>;
+  /**
+   * The component to be used as close button in heading
+   */
+  dismissButton?: Slot<'button'>;
+  /**
+   * Initial icon slot rendered before children content in heading.
+   */
+  icon?: Slot<'div'>;
 };
 
-/**
- * TeachingPopoverHeader Props
- */
-export type TeachingPopoverHeaderProps = ComponentProps<TeachingPopoverHeaderSlots> & {};
+export type TeachingPopoverHeaderState = ComponentState<TeachingPopoverHeaderSlots> & {
+  /**
+   * Enables branded appearance state.
+   */
+  appearance: TeachingPopoverAppearance;
+};
 
-/**
- * State used in rendering TeachingPopoverHeader
- */
-export type TeachingPopoverHeaderState = ComponentState<TeachingPopoverHeaderSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from TeachingPopoverHeaderProps.
-// & Required<Pick<TeachingPopoverHeaderProps, 'propName'>>
+export type TeachingPopoverHeaderProps = ComponentProps<TeachingPopoverHeaderSlots>;

@@ -5,6 +5,7 @@ import { TabListContextValue } from './TabList.types';
 const tabListContextDefaultValue: TabListContextValue = {
   appearance: 'transparent',
   reserveSelectedTabSpace: true,
+  selectTabOnFocus: false,
   disabled: false,
   selectedValue: undefined,
   onRegister: () => {

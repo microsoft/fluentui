@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feature: adds semantic elements (strong, b, em, i) to Text root signature",
-  "packageName": "@fluentui/react-text",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

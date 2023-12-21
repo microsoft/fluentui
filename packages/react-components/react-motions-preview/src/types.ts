@@ -1,11 +1,8 @@
-export type MotionAtom = {
-  keyframes: Keyframe[];
-  options: KeyframeEffectOptions;
-};
+export type AtomMotion = { keyframes: Keyframe[] } & KeyframeEffectOptions;
 
-export type MotionTransition = {
-  enter: MotionAtom;
-  exit: MotionAtom;
+export type PresenceMotion = {
+  enter: AtomMotion;
+  exit: AtomMotion;
 };
 
 export type MotionImperativeRef = {

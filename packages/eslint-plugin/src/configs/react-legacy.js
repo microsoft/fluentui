@@ -9,6 +9,7 @@ module.exports = {
   rules: {
     'jsdoc/check-tag-names': 'off',
     '@griffel/no-shorthands': 'off',
+    'no-restricted-globals': 'off',
   },
   overrides: [],
 };

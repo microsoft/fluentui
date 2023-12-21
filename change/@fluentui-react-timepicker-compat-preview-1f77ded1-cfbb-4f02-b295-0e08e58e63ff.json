@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: set default value of hourCycle to undefined",
+  "packageName": "@fluentui/react-timepicker-compat-preview",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
