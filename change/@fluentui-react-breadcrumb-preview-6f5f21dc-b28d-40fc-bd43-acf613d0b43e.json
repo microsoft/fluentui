@@ -1,7 +1,0 @@
-{
-  "type": "major",
-  "comment": "BREAKING CHANGE: Removed non-interactive item and `slash` divider",
-  "packageName": "@fluentui/react-breadcrumb-preview",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}

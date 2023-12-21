@@ -37,6 +37,8 @@ export const MultiStackedBarChartPageProps: IDocPageProps = {
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/MultiStackedBarChart/docs/MultiStackedBarChartOverview.md'),
   bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/MultiStackedBarChart/docs/MultiStackedBarChartBestPractices.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/MultiStackedBarChart/docs/MultiStackedBarChartDos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/MultiStackedBarChart/docs/MultiStackedBarChartDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

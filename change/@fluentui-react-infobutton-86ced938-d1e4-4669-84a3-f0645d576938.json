@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: Deprecate InfoLabel and InfoButton from react-infobutton in favor of react-infolabel.",
-  "packageName": "@fluentui/react-infobutton",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

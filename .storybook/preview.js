@@ -1,9 +1,9 @@
 import 'cypress-storybook/react';
 import './docs-root.css';
-import '../packages/react-components/react-storybook-addon-codesandbox/src/styles.css';
+import '../packages/react-components/react-storybook-addon-export-to-sandbox/src/styles.css';
 import { withLinks } from '@storybook/addon-links';
 
-/** @typedef {import('../packages/react-components/react-storybook-addon-codesandbox/src/public-types').ParametersExtension & import('@storybook/addons').Parameters} Parameters */
+/** @typedef {import('../packages/react-components/react-storybook-addon-export-to-sandbox/src/public-types').ParametersExtension & import('@storybook/addons').Parameters} Parameters */
 
 // This patches globals set up by cypress-storybook to work around its usage of the deprecated
 // forceReRender API that no longer works with storyStoreV7
@@ -39,9 +39,6 @@ export const parameters = {
       excludeDecorators: true,
       type: 'source',
     },
-    // This config reuses sources generated for CodeSandbox export feature
-    // (@fluentui/babel-preset-storybook-full-source).
-    transformSource: (snippet, story) => story.parameters.fullSource,
   },
   exportToSandbox: {
     provider: 'codesandbox-browser',

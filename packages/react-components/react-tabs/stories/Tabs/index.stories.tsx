@@ -13,6 +13,7 @@ export { SizeMedium } from './TabListSizeMedium.stories';
 export { SizeLarge } from './TabListSizeLarge.stories';
 export { WithIcon } from './TabListWithIcon.stories';
 export { IconOnly } from './TabListIconOnly.stories';
+export { SelectTabOnFocus } from './TabListSelectTabOnFocus.stories';
 export { WithOverflow } from './TabListWithOverflow.stories';
 export { WithPanels } from './TabListWithPanels.stories';
 

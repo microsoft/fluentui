@@ -70,31 +70,46 @@ describe('Time Utilities', () => {
     const testDate = new Date(2023, 9, 6, 23, 45, 12);
 
     it('should format time in 24-hour format without seconds', () => {
-      expect(formatDateToTimeString(testDate)).toBe('23:45');
+      expect(formatDateToTimeString(testDate, { hourCycle: 'h23' })).toBe('23:45');
     });
 
     it('should format time in 24-hour format with seconds', () => {
-      expect(formatDateToTimeString(testDate, { showSeconds: true })).toBe('23:45:12');
+      expect(formatDateToTimeString(testDate, { showSeconds: true, hourCycle: 'h23' })).toBe('23:45:12');
     });
 
     it('should format time in 12-hour format with seconds', () => {
-      expect(formatDateToTimeString(testDate, { showSeconds: true, hour12: true })).toBe('11:45:12 PM');
+      expect(formatDateToTimeString(testDate, { showSeconds: true, hourCycle: 'h11' })).toBe('11:45:12 PM');
     });
 
     it('should format midnight correctly in 24-hour format', () => {
       const midnight = new Date(2023, 9, 7, 0, 0, 0);
-      expect(formatDateToTimeString(midnight)).toBe('00:00');
+      expect(formatDateToTimeString(midnight, { hourCycle: 'h23' })).toBe('00:00');
     });
 
     it('should format time in Japanese locale', () => {
       const { toLocaleTimeString } = Date.prototype;
       const toLocaleTimeStringMock = jest.spyOn(Date.prototype, 'toLocaleTimeString');
       // Mock toLocaleTimeString to simulate running in a Japanese locale
-      toLocaleTimeStringMock.mockImplementation(function (this: Date, _locales, options) {
-        return toLocaleTimeString.call(this, 'ja-JP', options);
+      toLocaleTimeStringMock.mockImplementationOnce(function (this: Date, _locales, options) {
+        return toLocaleTimeString.call(this, 'ja-JP', { ...options, timeZone: 'Japan' });
       });
 
-      expect(formatDateToTimeString(testDate, { showSeconds: true, hour12: true })).toBe('午後11:45:12');
+      expect(
+        formatDateToTimeString(new Date(Date.UTC(2023, 9, 6, 14, 45, 12)), { showSeconds: true, hourCycle: 'h11' }),
+      ).toBe('午後11:45:12');
+
+      toLocaleTimeStringMock.mockClear();
+    });
+
+    it('should format time without prefix 0 in US local', () => {
+      const { toLocaleTimeString } = Date.prototype;
+      const toLocaleTimeStringMock = jest.spyOn(Date.prototype, 'toLocaleTimeString');
+      // Mock toLocaleTimeString to simulate running in PST locale
+      toLocaleTimeStringMock.mockImplementationOnce(function (this: Date, _locales, options) {
+        return toLocaleTimeString.call(this, 'en-US', { ...options, timeZone: 'America/Los_Angeles' });
+      });
+
+      expect(formatDateToTimeString(new Date(Date.UTC(2023, 9, 6, 15, 45, 12)))).toBe('8:45 AM');
 
       toLocaleTimeStringMock.mockClear();
     });
@@ -147,6 +162,23 @@ describe('Time Utilities', () => {
       expect([result[0].getHours(), result[0].getMinutes()]).toEqual([23, 30]);
       expect([result[1].getHours(), result[1].getMinutes()]).toEqual([0, 0]);
     });
+
+    it('should return correct Date objects for day light saving', () => {
+      const start = new Date('2023-11-05T01:00:00-07:00'); // UTC-7 is PDT
+      const end = new Date('2023-11-05T03:00:00-08:00'); // UTC-8 is PST
+      const result = getTimesBetween(start, end, 60);
+
+      expect(result.length).toBe(3);
+      expect(
+        result.map(date => date.toLocaleString('en-US', { timeZone: 'America/Los_Angeles', timeZoneName: 'short' })),
+      ).toMatchInlineSnapshot(`
+        Array [
+          "11/5/2023, 1:00:00 AM PDT",
+          "11/5/2023, 1:00:00 AM PST",
+          "11/5/2023, 2:00:00 AM PST",
+        ]
+      `);
+    });
   });
 
   describe('getDateFromTimeString', () => {
@@ -155,34 +187,45 @@ describe('Time Utilities', () => {
 
     it('returns a valid date when given a valid time string', () => {
       const result = getDateFromTimeString('2:30 PM', dateStartAnchor, dateEndAnchor, {
-        hour12: true,
+        hourCycle: 'h11',
         showSeconds: false,
       });
       expect(result.date?.getHours()).toBe(14);
       expect(result.date?.getMinutes()).toBe(30);
-      expect(result.error).toBeUndefined();
+      expect(result.errorType).toBeUndefined();
     });
 
-    it('returns an error when no time string is provided', () => {
+    it('returns an errorType when no time string is provided', () => {
       const result = getDateFromTimeString(undefined, dateStartAnchor, dateEndAnchor, {});
       expect(result.date).toBeNull();
-      expect(result.error).toBe('invalid-input');
+      expect(result.errorType).toBe('required-input');
     });
 
-    it('returns an error for an invalid time string', () => {
+    it('returns an errorType for an invalid time string', () => {
       const result = getDateFromTimeString('25:30', dateStartAnchor, dateEndAnchor, {});
       expect(result.date).toBeNull();
-      expect(result.error).toBe('invalid-input');
+      expect(result.errorType).toBe('invalid-input');
     });
 
-    it('returns a date in the next day and an out-of-bounds error when the time is before the dateStartAnchor', () => {
-      const result = getDateFromTimeString('1:30 PM', dateStartAnchor, new Date('November 25, 2023 13:00:00'), {
-        hour12: true,
+    it('returns a date in the next day and an out-of-bounds errorType when the time is before the dateStartAnchor', () => {
+      const result = getDateFromTimeString('11:30 AM', dateStartAnchor, new Date('November 25, 2023 13:00:00'), {
+        hourCycle: 'h11',
+        showSeconds: false,
+      });
+      expect(result.date?.getDate()).toBe(26);
+      expect(result.date?.getHours()).toBe(11);
+      expect(result.date?.getMinutes()).toBe(30);
+      expect(result.errorType).toBe('out-of-bounds');
+    });
+
+    it('returns an out-of-bounds errorType when the time is same as the dateEndAnchor', () => {
+      const result = getDateFromTimeString('1:00 PM', dateStartAnchor, new Date('November 25, 2023 13:00:00'), {
+        hourCycle: 'h11',
         showSeconds: false,
       });
       expect(result.date?.getHours()).toBe(13);
-      expect(result.date?.getMinutes()).toBe(30);
-      expect(result.error).toBe('out-of-bounds');
+      expect(result.date?.getMinutes()).toBe(0);
+      expect(result.errorType).toBe('out-of-bounds');
     });
   });
 });

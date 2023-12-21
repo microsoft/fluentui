@@ -37,6 +37,7 @@ export {
   useArrowNavigationGroup,
   useFocusableGroup,
   useFocusFinders,
+  useFocusVisible,
   useFocusWithin,
   useKeyboardNavAttribute,
   useModalAttributes,
@@ -44,6 +45,7 @@ export {
   useFocusObserved,
   useRestoreFocusTarget,
   useRestoreFocusSource,
+  useUncontrolledFocus,
 } from '@fluentui/react-tabster';
 export type {
   CreateCustomFocusIndicatorStyleOptions,
@@ -116,6 +118,7 @@ export {
   useIsSSR,
   useMergedRefs,
   useScrollbarWidth,
+  useSelection,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,
@@ -129,6 +132,12 @@ export type {
   SlotClassNames,
   SlotPropsRecord,
   SlotRenderFunction,
+  OnSelectionChangeCallback,
+  OnSelectionChangeData,
+  SelectionHookParams,
+  SelectionItemId,
+  SelectionMethods,
+  SelectionMode,
 } from '@fluentui/react-utilities';
 
 // Components
@@ -210,6 +219,7 @@ export {
   useAvatarGroupItem_unstable,
   renderAvatarGroupPopover_unstable,
   useAvatarGroupPopoverStyles_unstable,
+  useAvatarGroupPopoverContextValues_unstable,
   useAvatarGroupPopover_unstable,
   useAvatarGroupContext_unstable,
   partitionAvatarGroupItems,
@@ -586,7 +596,7 @@ export type {
   PopoverTriggerProps,
   PopoverTriggerState,
 } from '@fluentui/react-popover';
-export { Portal, usePortal_unstable, renderPortal_unstable } from '@fluentui/react-portal';
+export { Portal, usePortal_unstable, renderPortal_unstable, toMountNodeProps } from '@fluentui/react-portal';
 export type { PortalProps, PortalState } from '@fluentui/react-portal';
 export {
   Radio,
@@ -884,6 +894,7 @@ export {
   DATA_OVERFLOW_MENU,
   DATA_OVERFLOW_ITEM,
   DATA_OVERFLOW_DIVIDER,
+  useOverflowVisibility,
 } from '@fluentui/react-overflow';
 
 export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';
@@ -1423,3 +1434,118 @@ export {
   useInfoLabel_unstable,
 } from '@fluentui/react-infolabel';
 export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from '@fluentui/react-infolabel';
+
+export {
+  Drawer,
+  renderDrawer_unstable,
+  useDrawerStyles_unstable,
+  useDrawer_unstable,
+  OverlayDrawer,
+  overlayDrawerClassNames,
+  renderOverlayDrawer_unstable,
+  useOverlayDrawerStyles_unstable,
+  useOverlayDrawer_unstable,
+  InlineDrawer,
+  inlineDrawerClassNames,
+  renderInlineDrawer_unstable,
+  useInlineDrawerStyles_unstable,
+  useInlineDrawer_unstable,
+  DrawerBody,
+  drawerBodyClassNames,
+  renderDrawerBody_unstable,
+  useDrawerBodyStyles_unstable,
+  useDrawerBody_unstable,
+  DrawerHeader,
+  drawerHeaderClassNames,
+  renderDrawerHeader_unstable,
+  useDrawerHeaderStyles_unstable,
+  useDrawerHeader_unstable,
+  DrawerHeaderTitle,
+  drawerHeaderTitleClassNames,
+  renderDrawerHeaderTitle_unstable,
+  useDrawerHeaderTitleStyles_unstable,
+  useDrawerHeaderTitle_unstable,
+  DrawerHeaderNavigation,
+  drawerHeaderNavigationClassNames,
+  renderDrawerHeaderNavigation_unstable,
+  useDrawerHeaderNavigationStyles_unstable,
+  useDrawerHeaderNavigation_unstable,
+  DrawerFooter,
+  drawerFooterClassNames,
+  renderDrawerFooter_unstable,
+  useDrawerFooterStyles_unstable,
+  useDrawerFooter_unstable,
+} from '@fluentui/react-drawer';
+
+export type {
+  DrawerProps,
+  DrawerSlots,
+  DrawerState,
+  OverlayDrawerProps,
+  OverlayDrawerSlots,
+  OverlayDrawerState,
+  InlineDrawerProps,
+  InlineDrawerSlots,
+  InlineDrawerState,
+  DrawerBodyProps,
+  DrawerBodySlots,
+  DrawerBodyState,
+  DrawerHeaderProps,
+  DrawerHeaderSlots,
+  DrawerHeaderState,
+  DrawerHeaderTitleProps,
+  DrawerHeaderTitleSlots,
+  DrawerHeaderTitleState,
+  DrawerFooterProps,
+  DrawerFooterSlots,
+  DrawerFooterState,
+  DrawerHeaderNavigationProps,
+  DrawerHeaderNavigationSlots,
+  DrawerHeaderNavigationState,
+} from '@fluentui/react-drawer';
+
+export {
+  Breadcrumb,
+  renderBreadcrumb_unstable,
+  useBreadcrumb_unstable,
+  useBreadcrumbStyles_unstable,
+  breadcrumbClassNames,
+  BreadcrumbDivider,
+  breadcrumbDividerClassNames,
+  renderBreadcrumbDivider_unstable,
+  useBreadcrumbDividerStyles_unstable,
+  useBreadcrumbDivider_unstable,
+  BreadcrumbItem,
+  breadcrumbItemClassNames,
+  renderBreadcrumbItem_unstable,
+  useBreadcrumbItemStyles_unstable,
+  useBreadcrumbItem_unstable,
+  partitionBreadcrumbItems,
+  truncateBreadcrumbLongName,
+  truncateBreadcrumLongTooltip,
+  isTruncatableBreadcrumbContent,
+  BreadcrumbButton,
+  breadcrumbButtonClassNames,
+  renderBreadcrumbButton_unstable,
+  useBreadcrumbButtonStyles_unstable,
+  useBreadcrumbButton_unstable,
+  BreadcrumbProvider,
+  useBreadcrumbContext_unstable,
+} from '@fluentui/react-breadcrumb';
+export type {
+  BreadcrumbSlots,
+  BreadcrumbProps,
+  BreadcrumbState,
+  BreadcrumbDividerProps,
+  BreadcrumbDividerSlots,
+  BreadcrumbDividerState,
+  BreadcrumbItemProps,
+  BreadcrumbItemSlots,
+  BreadcrumbItemState,
+  PartitionBreadcrumbItemsOptions,
+  PartitionBreadcrumbItems,
+  BreadcrumbButtonProps,
+  BreadcrumbButtonSlots,
+  BreadcrumbButtonState,
+  BreadcrumbContextValues,
+} from '@fluentui/react-breadcrumb';

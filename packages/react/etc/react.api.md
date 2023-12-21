@@ -3201,6 +3201,7 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement>, R
     hideOverflow?: boolean;
     isBeakVisible?: boolean;
     layerProps?: ILayerProps;
+    minimumScrollResizeHeight?: number;
     minPagePadding?: number;
     onDismiss?: (ev?: Event | React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>) => void;
     onLayerMounted?: () => void;
@@ -3208,6 +3209,7 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement>, R
     onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
     onScroll?: () => void;
     popupProps?: IPopupProps;
+    preferScrollResizePositioning?: boolean;
     preventDismissOnEvent?: (ev: Event | React_2.FocusEvent | React_2.KeyboardEvent | React_2.MouseEvent) => boolean;
     // @deprecated
     preventDismissOnLostFocus?: boolean;
@@ -10395,7 +10397,7 @@ export enum Position {
 }
 
 // @public (undocumented)
-export function positionCallout(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: ICalloutPositionedInfo): ICalloutPositionedInfo;
+export function positionCallout(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: ICalloutPositionedInfo, shouldScroll?: boolean, minimumScrollResizeHeight?: number): ICalloutPositionedInfo;
 
 // @public (undocumented)
 export function positionCard(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: ICalloutPositionedInfo): ICalloutPositionedInfo;

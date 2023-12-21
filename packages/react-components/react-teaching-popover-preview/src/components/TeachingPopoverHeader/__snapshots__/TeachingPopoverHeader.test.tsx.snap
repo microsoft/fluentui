@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeachingPopoverHeader renders a default state 1`] = `
+<div>
+  <h3
+    class="fui-TeachingPopoverHeader"
+  >
+    <div
+      aria-hidden="true"
+      class="fui-TeachingPopoverHeader__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="16"
+        viewBox="0 0 16 16"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M4.5 6.5A3.5 3.5 0 1 1 10.45 9c-.19.19-.36.43-.44.73L9.66 11H6.34l-.35-1.27c-.08-.3-.25-.54-.44-.73A3.49 3.49 0 0 1 4.5 6.5ZM6.6 12h2.8l-.18.63a.5.5 0 0 1-.48.37H7.26a.5.5 0 0 1-.48-.37L6.61 12ZM8 2a4.5 4.5 0 0 0-3.16 7.7c.1.1.16.2.19.3l.79 2.9c.17.65.77 1.1 1.44 1.1h1.48a1.5 1.5 0 0 0 1.44-1.1l.8-2.9c.02-.1.08-.2.18-.3A4.49 4.49 0 0 0 8 2Z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+    Default TeachingPopoverHeader
+    <button
+      class="fui-TeachingPopoverHeader__dismissButton"
+      role="img"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="16"
+        viewBox="0 0 16 16"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="m2.59 2.72.06-.07a.5.5 0 0 1 .63-.06l.07.06L8 7.29l4.65-4.64a.5.5 0 0 1 .7.7L8.71 8l4.64 4.65c.18.17.2.44.06.63l-.06.07a.5.5 0 0 1-.63.06l-.07-.06L8 8.71l-4.65 4.64a.5.5 0 0 1-.7-.7L7.29 8 2.65 3.35a.5.5 0 0 1-.06-.63l.06-.07-.06.07Z"
+          fill="currentColor"
+        />
+      </svg>
+    </button>
+  </h3>
+</div>
+`;

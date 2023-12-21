@@ -49,6 +49,11 @@ const useRootBaseStyles = makeResetStyles({
     },
   },
 
+  ':hover:active': {
+    backgroundColor: tokens.colorNeutralBackground1Pressed,
+    color: tokens.colorNeutralForeground2Pressed,
+  },
+
   userSelect: 'none',
   ...createFocusOutlineStyle(),
 });

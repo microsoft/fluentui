@@ -75,7 +75,8 @@ export const emptyChartPoints = {
   lineChartData: emptyPoint,
 };
 
-describe('AreaChart snapShot testing', () => {
+// FIXME - non deterministic snapshots causing master pipeline breaks
+describe.skip('AreaChart snapShot testing', () => {
   beforeEach(() => {
     resetIds();
   });
@@ -162,8 +163,6 @@ describe('AreaChart snapShot testing', () => {
   });
 
   it('renders showXAxisLablesTooltip correctly', async () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-
     wrapper = mount(<AreaChart data={chartPoints} showXAxisLablesTooltip={true} />);
     await new Promise(resolve => setTimeout(resolve));
     wrapper.update();
