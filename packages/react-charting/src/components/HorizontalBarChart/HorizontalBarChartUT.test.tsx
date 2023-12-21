@@ -22,44 +22,12 @@ const chartPoints: IChartProps[] = [
       },
     ],
   },
-  {
-    chartTitle: 'two',
-    chartData: [
-      {
-        legend: 'two',
-        horizontalBarChartdata: { x: 800, y: 15000 },
-        color: DefaultPalette.purple,
-        xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '5%',
-      },
-    ],
-  },
-  {
-    chartTitle: 'three',
-    chartData: [
-      {
-        legend: 'three',
-        horizontalBarChartdata: { x: 8888, y: 15000 },
-        color: DefaultPalette.redDark,
-        xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '59%',
-      },
-    ],
-  },
 ];
 
 const chartPointsWithBenchMark: IChartProps[] = [
   {
     chartTitle: 'one',
     chartData: [{ legend: 'one', data: 50, horizontalBarChartdata: { x: 10, y: 100 }, color: DefaultPalette.tealDark }],
-  },
-  {
-    chartTitle: 'two',
-    chartData: [{ legend: 'two', data: 30, horizontalBarChartdata: { x: 30, y: 200 }, color: DefaultPalette.purple }],
-  },
-  {
-    chartTitle: 'three',
-    chartData: [{ legend: 'three', data: 5, horizontalBarChartdata: { x: 15, y: 50 }, color: DefaultPalette.redDark }],
   },
 ];
 
@@ -111,13 +79,13 @@ runTest('_getDefaultTextData', () => {
 });
 
 runTest('_getChartDataText', () => {
-  test('Should return proper text data with default data', () => {
+  test('Should return proper text data with default chat data', () => {
     const instance = new HorizontalBarChartBase({
       data: chartPoints,
     });
     expect(instance).toBeDefined();
     instance._adjustProps();
-    const defaultText = instance._getDefaultTextData(chartPoints[0]);
+    const defaultText = instance._getChartDataText(chartPoints[0]);
     expect(defaultText.props.children).toEqual('1,543');
   });
 
@@ -139,7 +107,7 @@ runTest('_getChartDataText', () => {
 });
 
 runTest('_createBenchmark', () => {
-  test('Should return proper bench mark data without any benachmark data in input', () => {
+  test('Should return proper benchmark data without any benachmark data in input', () => {
     const instance = new HorizontalBarChartBase({
       data: chartPoints,
     });
@@ -149,7 +117,7 @@ runTest('_createBenchmark', () => {
     expect(defaultText.props.children.props.style.left).toEqual('calc(0% - 4px)');
   });
 
-  test('Should return proper bench mark data with proper benachmark data in input', () => {
+  test('Should return proper benchmark data with proper benachmark data in input', () => {
     const instance = new HorizontalBarChartBase({
       data: chartPoints,
     });
