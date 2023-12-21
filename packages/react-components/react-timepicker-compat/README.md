@@ -1,4 +1,4 @@
-# @fluentui/react-timepicker-compat-preview
+# @fluentui/react-timepicker-compat
 
 **React Timepicker components for [Fluent UI React](https://react.fluentui.dev/)**
 
@@ -11,7 +11,7 @@ TimePicker offers a control that’s optimized for selecting a time from a drop-
 To import Timepicker:
 
 ```js
-import { TimePicker } from '@fluentui/react-timepicker-compat-preview';
+import { TimePicker } from '@fluentui/react-timepicker-compat';
 ```
 
 ### Examples

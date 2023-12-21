@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Field, makeStyles } from '@fluentui/react-components';
 import { DatePicker, DatePickerProps } from '@fluentui/react-datepicker-compat';
-import { TimePicker, TimePickerProps, formatDateToTimeString } from '@fluentui/react-timepicker-compat-preview';
+import { TimePicker, TimePickerProps, formatDateToTimeString } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {

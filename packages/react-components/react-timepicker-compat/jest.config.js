@@ -4,7 +4,7 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-timepicker-compat-preview',
+  displayName: 'react-timepicker-compat',
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': [

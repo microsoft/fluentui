@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Field, FieldProps, makeStyles } from '@fluentui/react-components';
-import { TimePicker, TimePickerErrorType, TimePickerProps } from '@fluentui/react-timepicker-compat-preview';
+import { TimePicker, TimePickerErrorType, TimePickerProps } from '@fluentui/react-components';
 import story from './TimePickerFreeformWithErrorHandling.md';
 
 const useStyles = makeStyles({

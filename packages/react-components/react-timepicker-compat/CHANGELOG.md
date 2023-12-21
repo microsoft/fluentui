@@ -16,7 +16,7 @@ Thu, 21 Dec 2023 17:00:41 GMT
 
 ## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat-preview_v0.1.7)
 
-Mon, 18 Dec 2023 17:48:16 GMT 
+Mon, 18 Dec 2023 17:48:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-timepicker-compat-preview_v0.1.6..@fluentui/react-timepicker-compat-preview_v0.1.7)
 
 ### Patches
@@ -26,7 +26,7 @@ Mon, 18 Dec 2023 17:48:16 GMT
 
 ## [0.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat-preview_v0.1.6)
 
-Mon, 18 Dec 2023 14:40:43 GMT 
+Mon, 18 Dec 2023 14:40:43 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-timepicker-compat-preview_v0.1.5..@fluentui/react-timepicker-compat-preview_v0.1.6)
 
 ### Patches
@@ -42,7 +42,7 @@ Mon, 18 Dec 2023 14:40:43 GMT
 
 ## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat-preview_v0.1.5)
 
-Thu, 14 Dec 2023 09:58:46 GMT 
+Thu, 14 Dec 2023 09:58:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-timepicker-compat-preview_v0.1.4..@fluentui/react-timepicker-compat-preview_v0.1.5)
 
 ### Patches
@@ -55,7 +55,7 @@ Thu, 14 Dec 2023 09:58:46 GMT
 
 ## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat-preview_v0.1.4)
 
-Thu, 30 Nov 2023 13:42:08 GMT 
+Thu, 30 Nov 2023 13:42:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-timepicker-compat-preview_v0.1.3..@fluentui/react-timepicker-compat-preview_v0.1.4)
 
 ### Patches
@@ -65,7 +65,7 @@ Thu, 30 Nov 2023 13:42:08 GMT
 
 ## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat-preview_v0.1.3)
 
-Mon, 20 Nov 2023 09:55:10 GMT 
+Mon, 20 Nov 2023 09:55:10 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-timepicker-compat-preview_v0.1.2..@fluentui/react-timepicker-compat-preview_v0.1.3)
 
 ### Patches
@@ -74,7 +74,7 @@ Mon, 20 Nov 2023 09:55:10 GMT
 
 ## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat-preview_v0.1.2)
 
-Tue, 14 Nov 2023 17:51:27 GMT 
+Tue, 14 Nov 2023 17:51:27 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-timepicker-compat-preview_v0.1.1..@fluentui/react-timepicker-compat-preview_v0.1.2)
 
 ### Patches
@@ -83,7 +83,7 @@ Tue, 14 Nov 2023 17:51:27 GMT
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat-preview_v0.1.1)
 
-Thu, 09 Nov 2023 17:29:46 GMT 
+Thu, 09 Nov 2023 17:29:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-timepicker-compat-preview_v0.1.0..@fluentui/react-timepicker-compat-preview_v0.1.1)
 
 ### Patches

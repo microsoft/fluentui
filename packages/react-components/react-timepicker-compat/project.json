@@ -1,8 +1,8 @@
 {
-  "name": "@fluentui/react-timepicker-compat-preview",
+  "name": "@fluentui/react-timepicker-compat",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "packages/react-components/react-timepicker-compat-preview/src",
+  "sourceRoot": "packages/react-components/react-timepicker-compat/src",
   "tags": ["platform:web", "vNext", "compat"],
   "implicitDependencies": []
 }

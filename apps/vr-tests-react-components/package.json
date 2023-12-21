@@ -65,7 +65,6 @@
     "@fluentui/react-text": "*",
     "@fluentui/react-textarea": "*",
     "@fluentui/react-theme": "*",
-    "@fluentui/react-timepicker-compat-preview": "*",
     "@fluentui/react-toast": "*",
     "@fluentui/react-tooltip": "*",
     "@fluentui/react-toolbar": "*",
@@ -75,6 +74,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tslib": "^2.1.0",
-    "@fluentui/react-breadcrumb": "*"
+    "@fluentui/react-breadcrumb": "*",
+    "@fluentui/react-timepicker-compat": ">=0.0.0-alpha"
   }
 }
