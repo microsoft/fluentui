@@ -7,6 +7,10 @@ import { HorizontalBarChartWithAxis, IHorizontalBarChartWithAxisProps } from '..
 import { IHorizontalBarChartWithAxisState, HorizontalBarChartWithAxisBase } from './HorizontalBarChartWithAxis.base';
 import { resetIds } from '@fluentui/react';
 import toJson from 'enzyme-to-json';
+import { axe, toHaveNoViolations } from 'jest-axe';
+import { render } from '@testing-library/react';
+
+expect.extend(toHaveNoViolations);
 
 let wrapper:
   | ReactWrapper<IHorizontalBarChartWithAxisProps, IHorizontalBarChartWithAxisState, HorizontalBarChartWithAxisBase>
@@ -191,4 +195,12 @@ describe('HorizontalBarChartWithAxis - mouse events', () => {
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
+});
+
+describe('Horizontal Bar Chart With Axis - axe-core', () => {
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<HorizontalBarChartWithAxis data={points} />);
+    const axeResults = await axe(container);
+    expect(axeResults).toHaveNoViolations();
+  }, 10000);
 });
