@@ -15,7 +15,10 @@ import {
 } from '../../utilities/TestUtility.test';
 import { IVerticalBarChartProps } from './VerticalBarChart.types';
 import { IVerticalBarChartDataPoint } from '../../index';
-import { chartPoints_VBC } from '../../utilities/data';
+import { chartPoints_VBC } from '../../utilities/testData';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 const pointsWithLine = [
   {
@@ -502,3 +505,9 @@ describe('VerticalBarChart - mouse events', () => {
     },
   );
 });
+
+test('Should pass accessibility tests', async () => {
+  const { container } = render(<VerticalBarChart data={chartPoints_VBC} />);
+  const axeResults = await axe(container);
+  expect(axeResults).toHaveNoViolations();
+}, 10000);

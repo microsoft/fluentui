@@ -3,11 +3,13 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { resetIds } from '../../Utilities';
 import { mount, ReactWrapper } from 'enzyme';
+
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../index';
 import { IVerticalBarChartState, VerticalBarChartBase } from './VerticalBarChart.base';
-const rendererAct = renderer.act;
 import { act } from 'react-dom/test-utils';
-import { chartPoints_VBC } from '../../utilities/data';
+import { chartPoints_VBC } from '../../utilities/testData';
+
+const rendererAct = renderer.act;
 
 // Wrapper of the VerticalBarChart to be tested.
 let wrapper: ReactWrapper<IVerticalBarChartProps, IVerticalBarChartState, VerticalBarChartBase> | undefined;

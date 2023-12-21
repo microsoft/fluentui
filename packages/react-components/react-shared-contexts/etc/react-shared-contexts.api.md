@@ -143,6 +143,7 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
     useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
     useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
+    useTimePickerCompatStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @public (undocumented)
@@ -267,6 +268,7 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
     useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
     useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
+    useTimePickerCompatStyles_unstable: CustomStyleHook;
 }>;
 
 // @internal (undocumented)
@@ -391,6 +393,7 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
     useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
     useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
+    useTimePickerCompatStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @internal (undocumented)

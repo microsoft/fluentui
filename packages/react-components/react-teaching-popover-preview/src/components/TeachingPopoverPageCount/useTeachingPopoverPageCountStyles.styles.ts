@@ -1,35 +1,69 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-theme';
 import type { TeachingPopoverPageCountSlots, TeachingPopoverPageCountState } from './TeachingPopoverPageCount.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const teachingPopoverPageCountClassNames: SlotClassNames<TeachingPopoverPageCountSlots> = {
   root: 'fui-TeachingPopoverPageCount',
-  // TODO: add class names for all slots on TeachingPopoverPageCountSlots.
-  // Should be of the form `<slotName>: 'fui-TeachingPopoverPageCount__<slotName>`
+  carouselIcon: 'fui-TeachingPopoverPageCount__carouselIcon',
+  carouselSelectedIcon: 'fui-TeachingPopoverPageCount__carouselSelectedIcon',
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
+  root: { display: 'flex', flexDirection: 'row', columnGap: '4px', alignItems: 'center' },
+  carouselIcon: {
+    display: 'inline-block',
+    ...shorthands.border(0),
+    ...shorthands.borderRadius('50%'),
+    ...shorthands.padding('0px'),
+    width: '8px',
+    height: '8px',
+    backgroundColor: tokens.colorBrandBackground,
+    opacity: 0.3,
+    cursor: 'pointer',
+    boxSizing: 'border-box',
+    ...createCustomFocusIndicatorStyle({ ...shorthands.borderRadius(tokens.borderRadiusCircular) }),
   },
-
-  // TODO add additional classes for different states and/or slots
+  carouselSelectedIcon: {
+    width: '16px',
+    ...shorthands.border(0),
+    ...shorthands.borderRadius('4px'),
+    ...shorthands.padding('0px'),
+    backgroundColor: tokens.colorBrandBackground,
+    opacity: 1.0,
+    ...createCustomFocusIndicatorStyle({ ...shorthands.borderRadius('4px') }),
+  },
+  carouselIconBrand: { backgroundColor: tokens.colorNeutralForegroundOnBrand },
+  carouselSelectedIconBrand: {
+    backgroundColor: tokens.colorNeutralForegroundOnBrand,
+  },
 });
 
-/**
- * Apply styling to the TeachingPopoverPageCount slots based on the state
- */
-export const useTeachingPopoverPageCountStyles_unstable = (
-  state: TeachingPopoverPageCountState,
-): TeachingPopoverPageCountState => {
+/** Applies style classnames to slots */
+export const useTeachingPopoverPageCountStyles_unstable = (state: TeachingPopoverPageCountState) => {
   const styles = useStyles();
+  const { appearance } = state;
+
+  const carouselIconMod = appearance === 'brand' ? styles.carouselIconBrand : undefined;
+  const carouselIconSelectedMod = appearance === 'brand' ? styles.carouselSelectedIconBrand : undefined;
+
   state.root.className = mergeClasses(teachingPopoverPageCountClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  state.carouselIcon.className = mergeClasses(
+    teachingPopoverPageCountClassNames.carouselIcon,
+    styles.carouselIcon,
+    carouselIconMod,
+    state.carouselIcon.className,
+  );
+
+  state.carouselSelectedIcon.className = mergeClasses(
+    teachingPopoverPageCountClassNames.carouselSelectedIcon,
+    styles.carouselIcon,
+    styles.carouselSelectedIcon,
+    carouselIconSelectedMod,
+    state.carouselSelectedIcon.className,
+  );
 
   return state;
 };

@@ -11,7 +11,7 @@ import {
 } from '../../index';
 import { IVerticalStackedBarChartState, VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
 import { act as domAct } from 'react-dom/test-utils';
-import { chartPoints_VSBC, emptychartPoints_VSBC } from '../../utilities/data';
+import { chartPoints_VSBC, emptychartPoints_VSBC } from '../../utilities/testData';
 
 // Wrapper of the VerticalStackedBarChart to be tested.
 let wrapper:
