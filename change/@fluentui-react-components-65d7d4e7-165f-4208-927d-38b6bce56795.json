@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Export combobox selection types",
+  "comment": "chore: Export combobox selection types.",
   "packageName": "@fluentui/react-components",
   "email": "tfaller1@gmx.de",
   "dependentChangeType": "patch"
