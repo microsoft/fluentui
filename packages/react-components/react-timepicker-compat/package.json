@@ -1,6 +1,7 @@
 {
   "name": "@fluentui/react-timepicker-compat",
   "version": "0.0.0-alpha.0",
+  "private": true,
   "description": "Fluent UI TimePicker Compat Component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
