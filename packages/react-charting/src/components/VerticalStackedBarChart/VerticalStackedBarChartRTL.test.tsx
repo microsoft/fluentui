@@ -1,13 +1,13 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
-import { chartPoints } from './VerticalStackedBarChart.test';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { IVSChartDataPoint } from '../../index';
+import { IVSChartDataPoint, IVerticalStackedChartProps } from '../../index';
 import { VerticalStackedBarChart } from './VerticalStackedBarChart';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
+import { chartPoints2_VSBC, chartPoints_VSBC } from '../../utilities/data';
 
 const firstChartPoints: IVSChartDataPoint[] = [
   { legend: 'Metadata1', data: 2, color: DefaultPalette.blue },
@@ -71,7 +71,7 @@ describe('Vertical stacked bar chart rendering', () => {
   testWithoutWait(
     'Should render the vertical stacked bar chart with numeric x-axis data',
     VerticalStackedBarChart,
-    { data: chartPoints },
+    { data: chartPoints_VSBC },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -484,10 +484,83 @@ describe('Vertical stacked bar chart - Theme', () => {
     // Arrange
     const { container } = render(
       <ThemeProvider theme={DarkTheme}>
-        <VerticalStackedBarChart culture={window.navigator.language} data={chartPoints} />
+        <VerticalStackedBarChart culture={window.navigator.language} data={chartPoints_VSBC} />
       </ThemeProvider>,
     );
     // Assert
     expect(container).toMatchSnapshot();
   });
+});
+
+describe('VerticalStackedBarChart - mouse events', () => {
+  testWithWait(
+    'Should render callout correctly on mouseover',
+    VerticalStackedBarChart,
+    { data: chartPoints_VSBC, calloutProps: { doNotLayer: true }, enabledLegendsWrapLines: true },
+    container => {
+      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      expect(bars).toHaveLength(4);
+      fireEvent.mouseOver(bars[0]);
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithWait(
+    'Should render callout correctly on mousemove',
+    VerticalStackedBarChart,
+    { data: chartPoints_VSBC, calloutProps: { doNotLayer: true }, enabledLegendsWrapLines: true },
+    container => {
+      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      expect(bars).toHaveLength(4);
+      fireEvent.mouseMove(bars[2]);
+      const html1 = container.innerHTML;
+      fireEvent.mouseMove(bars[3]);
+      const html2 = container.innerHTML;
+      expect(html1).not.toBe(html2);
+    },
+  );
+
+  testWithWait(
+    'Should render customized callout on mouseover',
+    VerticalStackedBarChart,
+    {
+      data: chartPoints_VSBC,
+      calloutProps: { doNotLayer: true },
+      enabledLegendsWrapLines: true,
+      onRenderCalloutPerDataPoint: (props: IVSChartDataPoint) =>
+        props ? (
+          <div>
+            <pre>{JSON.stringify(props, null, 2)}</pre>
+          </div>
+        ) : null,
+    },
+    container => {
+      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      expect(bars).toHaveLength(4);
+      fireEvent.mouseOver(bars[0]);
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithWait(
+    'Should render customized callout per stack on mouseover',
+    VerticalStackedBarChart,
+    {
+      data: chartPoints2_VSBC,
+      calloutProps: { doNotLayer: true },
+      enabledLegendsWrapLines: true,
+      onRenderCalloutPerStack: (props: IVerticalStackedChartProps) =>
+        props ? (
+          <div>
+            <pre>{JSON.stringify(props, null, 2)}</pre>
+          </div>
+        ) : null,
+    },
+    container => {
+      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      expect(bars).toHaveLength(4);
+      fireEvent.mouseOver(bars[0]);
+      expect(container).toMatchSnapshot();
+    },
+  );
 });
