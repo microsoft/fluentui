@@ -1,4 +1,5 @@
 jest.mock('react-dom');
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { resetIds } from '../../Utilities';
@@ -34,11 +35,11 @@ function sharedAfterEach() {
 
 describe('VerticalBarChart snapShot testing', () => {
   it('renders VerticalBarChart correctly', () => {
-    let component: any, tree: any;
+    let component: any;
     renderer.act(() => {
       component = renderer.create(<VerticalBarChart data={chartPoints_VBC} />);
     });
-    tree = component!.toJSON();
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
