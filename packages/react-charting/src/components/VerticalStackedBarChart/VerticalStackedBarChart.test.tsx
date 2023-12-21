@@ -38,7 +38,7 @@ function sharedAfterEach() {
 
 describe('VerticalStackedBarChart snapShot testing', () => {
   it('renders VerticalStackedBarChart correctly', () => {
-    let component;
+    let component: any;
     let tree;
 
     renderer.act(() => {
@@ -49,7 +49,7 @@ describe('VerticalStackedBarChart snapShot testing', () => {
   });
 
   it('renders hideLegend correctly', () => {
-    let component;
+    let component: any;
     let tree;
 
     renderer.act(() => {
@@ -60,7 +60,7 @@ describe('VerticalStackedBarChart snapShot testing', () => {
   });
 
   it('renders hideTooltip correctly', () => {
-    let component;
+    let component: any;
     let tree;
 
     renderer.act(() => {
@@ -71,7 +71,7 @@ describe('VerticalStackedBarChart snapShot testing', () => {
   });
 
   it('renders enabledLegendsWrapLines correctly', () => {
-    let component;
+    let component: any;
     let tree;
 
     renderer.act(() => {
@@ -82,7 +82,7 @@ describe('VerticalStackedBarChart snapShot testing', () => {
   });
 
   it('renders showXAxisLablesTooltip correctly', () => {
-    let component;
+    let component: any;
     let tree;
 
     renderer.act(() => {
@@ -93,7 +93,7 @@ describe('VerticalStackedBarChart snapShot testing', () => {
   });
 
   it('renders wrapXAxisLables correctly', () => {
-    let component;
+    let component: any;
     let tree;
 
     renderer.act(() => {
@@ -104,7 +104,7 @@ describe('VerticalStackedBarChart snapShot testing', () => {
   });
 
   it('renders isCalloutForStack correctly', () => {
-    let component;
+    let component: any;
     let tree;
 
     renderer.act(() => {
@@ -115,7 +115,7 @@ describe('VerticalStackedBarChart snapShot testing', () => {
   });
 
   it('renders yAxisTickFormat correctly', () => {
-    let component;
+    let component: any;
     let tree;
 
     renderer.act(() => {
@@ -126,7 +126,7 @@ describe('VerticalStackedBarChart snapShot testing', () => {
   });
 
   it('Should not render bar labels', () => {
-    let component;
+    let component: any;
     let tree;
 
     renderer.act(() => {
@@ -237,7 +237,7 @@ describe('Render calling with respective to props', () => {
       height: 300,
       width: 600,
     };
-    let component;
+    let component: any;
     domAct(() => {
       component = mount(<VerticalStackedBarChart {...props} />);
     });
@@ -254,7 +254,7 @@ describe('Render calling with respective to props', () => {
       width: 600,
       hideLegend: true,
     };
-    let component;
+    let component: any;
     domAct(() => {
       component = mount(<VerticalStackedBarChart {...props} />);
     });

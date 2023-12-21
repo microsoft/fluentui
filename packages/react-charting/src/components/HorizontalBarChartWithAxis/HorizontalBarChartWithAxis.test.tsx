@@ -8,7 +8,7 @@ import { IHorizontalBarChartWithAxisState, HorizontalBarChartWithAxisBase } from
 import { resetIds } from '@fluentui/react';
 const rendererAct = renderer.act;
 import { act as domAct } from 'react-dom/test-utils';
-import { points_HBCWA } from '../../utilities/data';
+import { points_HBCWA } from '../../utilities/testData';
 
 let wrapper:
   | ReactWrapper<IHorizontalBarChartWithAxisProps, IHorizontalBarChartWithAxisState, HorizontalBarChartWithAxisBase>
@@ -57,7 +57,7 @@ const points_HBCWAForWrapLabels = [
 
 describe('HorizontalBarChartWithAxis snapShot testing', () => {
   it('renders HorizontalBarChartWithAxis correctly', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(<HorizontalBarChartWithAxis data={points_HBCWA} />);
     });
@@ -65,7 +65,7 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
     expect(tree).toMatchSnapshot();
   });
   it('renders hideLegend correctly', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(<HorizontalBarChartWithAxis data={points_HBCWA} hideLegend={true} />);
     });
@@ -74,7 +74,7 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
   });
 
   it('renders showToolTipForYAxisLabels correctly', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(
         <HorizontalBarChartWithAxis data={points_HBCWAForWrapLabels} showYAxisLablesTooltip={true} />,
@@ -85,7 +85,7 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
   });
 
   it('renders showYAxisLables correctly', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(
         <HorizontalBarChartWithAxis

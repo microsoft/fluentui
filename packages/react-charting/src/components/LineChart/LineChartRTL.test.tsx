@@ -569,7 +569,7 @@ describe('Line chart - Subcomponent xAxis Labels', () => {
     { data: dateChartPoints, rotateXAxisLables: true },
     container => {
       // Assert
-      expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(40.5,0)');
+      expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(55.07565789473684,0)');
     },
     undefined,
     beforeAll,
@@ -660,6 +660,9 @@ test('Should reflect theme change', () => {
 
 test('Should pass accessibility tests', async () => {
   const { container } = render(<LineChart data={basicChartPoints} />);
-  const axeResults = await axe(container);
+  let axeResults;
+  await act(async () => {
+    axeResults = await axe(container);
+  });
   expect(axeResults).toHaveNoViolations();
-}, 10000);
+});

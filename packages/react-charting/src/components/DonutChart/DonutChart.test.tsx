@@ -62,7 +62,7 @@ export const noColorsChartPoints: IChartProps = {
 
 describe('DonutChart snapShot testing', () => {
   it('renders DonutChart correctly', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(<DonutChart data={chartPoints} innerRadius={55} />);
     });
@@ -74,7 +74,7 @@ describe('DonutChart snapShot testing', () => {
     const chartPointColor = points[0].color;
     delete points[0].color;
 
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(<DonutChart data={noColorsChartPoints} />);
     });
@@ -84,7 +84,7 @@ describe('DonutChart snapShot testing', () => {
   });
 
   it('renders hideLegend correctly', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(<DonutChart data={chartPoints} hideLegend={true} />);
     });
@@ -93,7 +93,7 @@ describe('DonutChart snapShot testing', () => {
   });
 
   it('renders hideTooltip correctly', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(<DonutChart data={chartPoints} hideTooltip={true} />);
     });
@@ -102,7 +102,7 @@ describe('DonutChart snapShot testing', () => {
   });
 
   it('renders enabledLegendsWrapLines correctly', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(<DonutChart data={chartPoints} enabledLegendsWrapLines={true} />);
     });
@@ -111,7 +111,7 @@ describe('DonutChart snapShot testing', () => {
   });
 
   it('renders value inside onf the pie', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(<DonutChart data={chartPoints} valueInsideDonut={1000} />);
     });
@@ -120,7 +120,7 @@ describe('DonutChart snapShot testing', () => {
   });
 
   it('Should render arc labels', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(<DonutChart data={chartPoints} hideLabels={false} />);
     });
@@ -129,7 +129,7 @@ describe('DonutChart snapShot testing', () => {
   });
 
   it('Should render arc labels in percentage format', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(<DonutChart data={chartPoints} hideLabels={false} showLabelsInPercent={true} />);
     });
@@ -199,7 +199,6 @@ describe('DonutChart - mouse events', () => {
   afterEach(sharedAfterEach);
 
   it('Should render callout correctly on mouseover', () => {
-    let wrapper;
     domAct(() => {
       wrapper = mount(<DonutChart data={chartPoints} innerRadius={55} calloutProps={{ doNotLayer: true }} />);
     });
@@ -209,7 +208,6 @@ describe('DonutChart - mouse events', () => {
   });
 
   it('Should render callout correctly on mousemove', () => {
-    let wrapper;
     domAct(() => {
       wrapper = mount(<DonutChart data={chartPoints} innerRadius={55} calloutProps={{ doNotLayer: true }} />);
     });
@@ -222,7 +220,6 @@ describe('DonutChart - mouse events', () => {
   });
 
   it('Should render customized callout on mouseover', () => {
-    let wrapper;
     domAct(() => {
       wrapper = mount(
         <DonutChart
@@ -247,7 +244,6 @@ describe('DonutChart - mouse events', () => {
 
 describe('Render empty chart aria label div when chart is empty', () => {
   it('No empty chart aria label div rendered', () => {
-    let wrapper;
     domAct(() => {
       wrapper = mount(<DonutChart data={chartPoints} />);
     });
@@ -258,7 +254,6 @@ describe('Render empty chart aria label div when chart is empty', () => {
   });
 
   it('Empty chart aria label div rendered', () => {
-    let wrapper;
     domAct(() => {
       wrapper = mount(<DonutChart data={emptyChartPoints} />);
     });

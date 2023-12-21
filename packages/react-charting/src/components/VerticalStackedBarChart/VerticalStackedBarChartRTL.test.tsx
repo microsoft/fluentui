@@ -7,7 +7,7 @@ import { IVSChartDataPoint, IVerticalStackedChartProps } from '../../index';
 import { VerticalStackedBarChart } from './VerticalStackedBarChart';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
-import { chartPoints2_VSBC, chartPoints_VSBC } from '../../utilities/data';
+import { chartPoints2_VSBC, chartPoints_VSBC } from '../../utilities/testData';
 
 const firstChartPoints: IVSChartDataPoint[] = [
   { legend: 'Metadata1', data: 2, color: DefaultPalette.blue },

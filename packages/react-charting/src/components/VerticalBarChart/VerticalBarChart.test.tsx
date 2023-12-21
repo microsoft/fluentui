@@ -34,7 +34,7 @@ function sharedAfterEach() {
 
 describe('VerticalBarChart snapShot testing', () => {
   it('renders VerticalBarChart correctly', () => {
-    let component, tree;
+    let component: any, tree: any;
     renderer.act(() => {
       component = renderer.create(<VerticalBarChart data={chartPoints_VBC} />);
     });
@@ -43,7 +43,7 @@ describe('VerticalBarChart snapShot testing', () => {
   });
 
   it('renders hideLegend correctly', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(<VerticalBarChart data={chartPoints_VBC} hideLegend={true} />);
     });
@@ -52,7 +52,7 @@ describe('VerticalBarChart snapShot testing', () => {
   });
 
   it('renders hideTooltip correctly', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(<VerticalBarChart data={chartPoints_VBC} hideTooltip={true} />);
     });
@@ -61,7 +61,7 @@ describe('VerticalBarChart snapShot testing', () => {
   });
 
   it('renders enabledLegendsWrapLines correctly', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(<VerticalBarChart data={chartPoints_VBC} enabledLegendsWrapLines={true} />);
     });
@@ -70,7 +70,7 @@ describe('VerticalBarChart snapShot testing', () => {
   });
 
   it('renders showXAxisLablesTooltip correctly', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(<VerticalBarChart data={chartPoints_VBC} showXAxisLablesTooltip={true} />);
     });
@@ -79,7 +79,7 @@ describe('VerticalBarChart snapShot testing', () => {
   });
 
   it('renders wrapXAxisLables correctly', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(<VerticalBarChart data={chartPoints_VBC} wrapXAxisLables={true} />);
     });
@@ -88,7 +88,7 @@ describe('VerticalBarChart snapShot testing', () => {
   });
 
   it('renders yAxisTickFormat correctly', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(<VerticalBarChart data={chartPoints_VBC} yAxisTickFormat={'/%d'} />);
     });
@@ -97,7 +97,7 @@ describe('VerticalBarChart snapShot testing', () => {
   });
 
   it('Should not render bar labels', () => {
-    let component;
+    let component: any;
     rendererAct(() => {
       component = renderer.create(<VerticalBarChart data={chartPoints_VBC} hideLabels={true} />);
     });

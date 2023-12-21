@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { DefaultPalette } from '@fluentui/react';
 import { VerticalBarChart } from './VerticalBarChart';
 import { VerticalBarChartBase } from './VerticalBarChart.base';
@@ -508,6 +508,9 @@ describe('VerticalBarChart - mouse events', () => {
 
 test('Should pass accessibility tests', async () => {
   const { container } = render(<VerticalBarChart data={chartPoints_VBC} />);
-  const axeResults = await axe(container);
+  let axeResults;
+  await act(async () => {
+    axeResults = await axe(container);
+  });
   expect(axeResults).toHaveNoViolations();
-}, 10000);
+});
