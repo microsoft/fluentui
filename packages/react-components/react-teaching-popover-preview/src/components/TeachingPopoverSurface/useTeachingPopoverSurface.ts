@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { TeachingPopoverSurfaceProps, TeachingPopoverSurfaceState } from './TeachingPopoverSurface.types';
+import { usePopoverSurface_unstable } from '@fluentui/react-popover';
 
 /**
  * Create the state required to render TeachingPopoverSurface.
@@ -15,20 +15,7 @@ export const useTeachingPopoverSurface_unstable = (
   props: TeachingPopoverSurfaceProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverSurfaceState => {
-  return {
-    // TODO add appropriate props/defaults
-    components: {
-      // TODO add each slot's element type or component
-      root: 'div',
-    },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        ...props,
-      }),
-      { elementType: 'div' },
-    ),
-  };
+  const state = usePopoverSurface_unstable(props, ref);
+
+  return state;
 };

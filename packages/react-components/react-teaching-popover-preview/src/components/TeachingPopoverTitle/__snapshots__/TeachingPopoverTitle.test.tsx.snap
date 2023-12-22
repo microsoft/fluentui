@@ -2,10 +2,10 @@
 
 exports[`TeachingPopoverTitle renders a default state 1`] = `
 <div>
-  <div
+  <h2
     class="fui-TeachingPopoverTitle"
   >
     Default TeachingPopoverTitle
-  </div>
+  </h2>
 </div>
 `;

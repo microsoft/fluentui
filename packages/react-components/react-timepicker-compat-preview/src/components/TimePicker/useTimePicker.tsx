@@ -36,7 +36,7 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     defaultSelectedTime: defaultSelectedTimeInProps,
     endHour = 24,
     formatDateToTimeString = defaultFormatDateToTimeString,
-    hourCycle = 'h23',
+    hourCycle,
     increment = 30,
     onTimeChange,
     selectedTime: selectedTimeInProps,

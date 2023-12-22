@@ -7,6 +7,9 @@ import { HorizontalBarChart } from './HorizontalBarChart';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartBase } from './HorizontalBarChart.base';
 import { HorizontalBarChartVariant, IChartProps } from './index';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 const chartPoints: IChartProps[] = [
   {
@@ -347,4 +350,12 @@ describe('Horizontal bar chart re-rendering', () => {
       expect(getById(container, /_HBC_empty/i)).toHaveLength(0);
     });
   });
+});
+
+describe('Horizontal Bar Chart - axe-core', () => {
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<HorizontalBarChart data={chartPoints} />);
+    const axeResults = await axe(container);
+    expect(axeResults).toHaveNoViolations();
+  }, 10000);
 });

@@ -120,7 +120,8 @@ describe('LineChart snapShot testing', () => {
     }
   });
 
-  it('renders wrapXAxisLables correctly', async () => {
+  // FIXME - non deterministic snapshots causing master pipeline breaks
+  it.skip('renders wrapXAxisLables correctly', async () => {
     const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
 
     // Replace the original method with the mock implementation

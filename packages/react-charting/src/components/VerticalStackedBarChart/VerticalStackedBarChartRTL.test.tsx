@@ -9,6 +9,8 @@ import { VerticalStackedBarChart } from './VerticalStackedBarChart';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
 import * as utils from '@fluentui/react/lib/Utilities';
+import { axe, toHaveNoViolations } from 'jest-axe';
+expect.extend(toHaveNoViolations);
 
 const firstChartPoints: IVSChartDataPoint[] = [
   { legend: 'Metadata1', data: 2, color: DefaultPalette.blue },
@@ -566,4 +568,12 @@ describe('Vertical stacked bar chart - Theme', () => {
     // Assert
     expect(container).toMatchSnapshot();
   });
+});
+
+describe('Vertical Stacked Bar Chart - axe-core', () => {
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<VerticalStackedBarChart data={chartPoints} />);
+    const axeResults = await axe(container);
+    expect(axeResults).toHaveNoViolations();
+  }, 10000);
 });

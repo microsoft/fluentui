@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 18 Dec 2023 17:48:15 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Dec 2023 17:00:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.43.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.43.3)
+
+Thu, 21 Dec 2023 17:00:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.43.2..@fluentui/react-components_v9.43.3)
+
+### Minor changes
+
+- `@fluentui/react-teaching-popover-preview`
+  - feat: Release react-teaching-popover-preview package ([PR #30140](https://github.com/microsoft/fluentui/pull/30140) by behowell@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-breadcrumb`
+  - fix(breadcrumb): BreadcrumbButton focus border has incorrent width and transition ([PR #30135](https://github.com/microsoft/fluentui/pull/30135) by vkozlova@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: make hover color in contrast theme accessible. ([PR #30101](https://github.com/microsoft/fluentui/pull/30101) by yuanboxue@microsoft.com)
+- `@fluentui/react-timepicker-compat-preview`
+  - fix: set default value of hourCycle to undefined ([PR #30108](https://github.com/microsoft/fluentui/pull/30108) by yuanboxue@microsoft.com)
 
 ## [9.43.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.43.2)
 
