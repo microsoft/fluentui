@@ -71,13 +71,14 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * For multiline text fields, whether or not to auto adjust text field height.
+   * If inside a scrollable container, also set `scrollContainerRef`.
    * @defaultvalue false
    */
   autoAdjustHeight?: boolean;
 
   /**
-   * Ref used to keep the current scrollTop position when having a scrollable wrapper. This helps avoid issues when
-   * deleting a line of text causing the container to scroll to the top.
+   * A read-only ref to the scrollable element that contains this TextField, if any. Only needed if
+   * `autoAdjustHeight` is set. This allows TextField to maintain the scroll position when text is edited.
    */
   scrollContainerRef?: React.RefObject<HTMLElement>;
 

@@ -645,7 +645,8 @@ export class TextFieldBase
       textField.style.height = textField.scrollHeight + 'px';
 
       if (scrollTop) {
-        this.props.scrollContainerRef.current.scrollTop = scrollTop;
+        // Safe to assert not null, otherwise we wouldn't have a scrollTop;
+        this.props.scrollContainerRef!.current!.scrollTop = scrollTop;
       }
     }
   }
