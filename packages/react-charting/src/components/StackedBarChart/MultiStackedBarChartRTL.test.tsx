@@ -10,7 +10,7 @@ import {
 import { MultiStackedBarChart } from './MultiStackedBarChart';
 import { IChartDataPoint, IChartProps, IMultiStackedBarChartProps } from './index';
 import { DefaultPalette, ThemeProvider } from '@fluentui/react';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { MultiStackedBarChartBase } from './MultiStackedBarChart.base';
 import { axe, toHaveNoViolations } from 'jest-axe';
@@ -382,7 +382,10 @@ test('Should reflect theme change', () => {
 describe('Multi Stacked Bar Chart - axe-core', () => {
   test('Should pass accessibility tests', async () => {
     const { container } = render(<MultiStackedBarChart data={data} />);
-    const axeResults = await axe(container);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
     expect(axeResults).toHaveNoViolations();
-  }, 10000);
+  });
 });

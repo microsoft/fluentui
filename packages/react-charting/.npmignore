@@ -38,3 +38,4 @@ visualtests
 !dist
 docs
 UnitTests
+test-data.ts

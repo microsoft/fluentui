@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { omit } from '../utils/omit';
+import { omit } from '../../utils/omit';
 import type {
   AsIntrinsicElement,
   ComponentState,
@@ -8,10 +8,13 @@ import type {
   SlotRenderFunction,
   UnionToIntersection,
   UnknownSlotProps,
-} from './types';
-import { isSlot } from './isSlot';
-import { SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+} from '../types';
+import { isSlot } from '../isSlot';
+import { SLOT_RENDER_FUNCTION_SYMBOL } from '../constants';
 
+/**
+ * @deprecated - use slot.always or slot.optional combined with assertSlots instead
+ */
 export type Slots<S extends SlotPropsRecord> = {
   [K in keyof S]: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As>
     ? // for slots with an `as` prop, the slot will be any one of the possible values of `as`
@@ -21,6 +24,9 @@ export type Slots<S extends SlotPropsRecord> = {
     : React.ElementType<ExtractSlotProps<S[K]>>;
 };
 
+/**
+ * @deprecated - use slot.always or slot.optional combined with assertSlots instead
+ */
 export type ObjectSlotProps<S extends SlotPropsRecord> = {
   [K in keyof S]-?: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As>
     ? // For intrinsic element types, return the intersection of all possible
@@ -45,24 +51,31 @@ export type ObjectSlotProps<S extends SlotPropsRecord> = {
  * anchor props. Note that this is only enforced at build time by Typescript -- there is no
  * runtime code filtering props in this function.
  *
+ * @deprecated use slot.always or slot.optional combined with assertSlots instead
+ *
  * @param state - State including slot definitions
  * @returns An object containing the `slots` map and `slotProps` map.
  */
 export function getSlots<R extends SlotPropsRecord>(
   state: ComponentState<R>,
 ): {
+  // eslint-disable-next-line deprecation/deprecation
   slots: Slots<R>;
+  // eslint-disable-next-line deprecation/deprecation
   slotProps: ObjectSlotProps<R>;
 } {
+  // eslint-disable-next-line deprecation/deprecation
   const slots = {} as Slots<R>;
   const slotProps = {} as R;
 
   const slotNames: (keyof R)[] = Object.keys(state.components);
   for (const slotName of slotNames) {
     const [slot, props] = getSlot(state, slotName);
+    // eslint-disable-next-line deprecation/deprecation
     slots[slotName] = slot as Slots<R>[typeof slotName];
     slotProps[slotName] = props;
   }
+  // eslint-disable-next-line deprecation/deprecation
   return { slots, slotProps: slotProps as unknown as ObjectSlotProps<R> };
 }
 

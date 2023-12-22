@@ -648,6 +648,9 @@ test('Should reflect theme change', () => {
 
 test('Should pass accessibility tests', async () => {
   const { container } = render(<LineChart data={basicChartPoints} />);
-  const axeResults = await axe(container);
+  let axeResults;
+  await act(async () => {
+    axeResults = await axe(container);
+  });
   expect(axeResults).toHaveNoViolations();
-}, 10000);
+});
