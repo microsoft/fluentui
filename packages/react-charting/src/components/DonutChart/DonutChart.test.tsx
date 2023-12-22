@@ -1,7 +1,7 @@
 jest.mock('react-dom');
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { chartPoints_DC, points_DC } from '../../utilities/test-data';
+import { chartPointsDC, pointsDC } from '../../utilities/test-data';
 import { resetIds } from '../../Utilities';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
@@ -55,15 +55,15 @@ describe('DonutChart snapShot testing', () => {
   it('renders DonutChart correctly', () => {
     let component: any;
     rendererAct(() => {
-      component = renderer.create(<DonutChart data={chartPoints_DC} innerRadius={55} />);
+      component = renderer.create(<DonutChart data={chartPointsDC} innerRadius={55} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders DonutChart correctly without color points', () => {
-    const chartPointColor = points_DC[0].color;
-    delete points_DC[0].color;
+    const chartPointColor = pointsDC[0].color;
+    delete pointsDC[0].color;
 
     let component: any;
     rendererAct(() => {
@@ -71,13 +71,13 @@ describe('DonutChart snapShot testing', () => {
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
-    points_DC[0].color = chartPointColor;
+    pointsDC[0].color = chartPointColor;
   });
 
   it('renders hideLegend correctly', () => {
     let component: any;
     rendererAct(() => {
-      component = renderer.create(<DonutChart data={chartPoints_DC} hideLegend={true} />);
+      component = renderer.create(<DonutChart data={chartPointsDC} hideLegend={true} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -86,7 +86,7 @@ describe('DonutChart snapShot testing', () => {
   it('renders hideTooltip correctly', () => {
     let component: any;
     rendererAct(() => {
-      component = renderer.create(<DonutChart data={chartPoints_DC} hideTooltip={true} />);
+      component = renderer.create(<DonutChart data={chartPointsDC} hideTooltip={true} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -95,7 +95,7 @@ describe('DonutChart snapShot testing', () => {
   it('renders enabledLegendsWrapLines correctly', () => {
     let component: any;
     rendererAct(() => {
-      component = renderer.create(<DonutChart data={chartPoints_DC} enabledLegendsWrapLines={true} />);
+      component = renderer.create(<DonutChart data={chartPointsDC} enabledLegendsWrapLines={true} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -104,7 +104,7 @@ describe('DonutChart snapShot testing', () => {
   it('renders value inside onf the pie', () => {
     let component: any;
     rendererAct(() => {
-      component = renderer.create(<DonutChart data={chartPoints_DC} valueInsideDonut={1000} />);
+      component = renderer.create(<DonutChart data={chartPointsDC} valueInsideDonut={1000} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -113,7 +113,7 @@ describe('DonutChart snapShot testing', () => {
   it('Should render arc labels', () => {
     let component: any;
     rendererAct(() => {
-      component = renderer.create(<DonutChart data={chartPoints_DC} hideLabels={false} />);
+      component = renderer.create(<DonutChart data={chartPointsDC} hideLabels={false} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -122,7 +122,7 @@ describe('DonutChart snapShot testing', () => {
   it('Should render arc labels in percentage format', () => {
     let component: any;
     rendererAct(() => {
-      component = renderer.create(<DonutChart data={chartPoints_DC} hideLabels={false} showLabelsInPercent={true} />);
+      component = renderer.create(<DonutChart data={chartPointsDC} hideLabels={false} showLabelsInPercent={true} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -135,7 +135,7 @@ describe('DonutChart - basic props', () => {
 
   it('Should mount legend when hideLegend false ', () => {
     domAct(() => {
-      wrapper = mount(<DonutChart data={chartPoints_DC} />);
+      wrapper = mount(<DonutChart data={chartPointsDC} />);
     });
     const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
@@ -143,7 +143,7 @@ describe('DonutChart - basic props', () => {
 
   it('Should mount callout when hideTootip false ', () => {
     domAct(() => {
-      wrapper = mount(<DonutChart data={chartPoints_DC} />);
+      wrapper = mount(<DonutChart data={chartPointsDC} />);
     });
     const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM).toBeDefined();
@@ -151,7 +151,7 @@ describe('DonutChart - basic props', () => {
 
   it('Should not render onRenderCalloutPerStack ', () => {
     domAct(() => {
-      wrapper = mount(<DonutChart data={chartPoints_DC} />);
+      wrapper = mount(<DonutChart data={chartPointsDC} />);
     });
     const renderedDOM = wrapper!.getDOMNode().getElementsByClassName('.onRenderCalloutPerStack');
     expect(renderedDOM!.length).toBe(0);
@@ -161,7 +161,7 @@ describe('DonutChart - basic props', () => {
     domAct(() => {
       wrapper = mount(
         <DonutChart
-          data={chartPoints_DC}
+          data={chartPointsDC}
           onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
             props ? (
               <div className="onRenderCalloutPerDataPoint">
@@ -178,7 +178,7 @@ describe('DonutChart - basic props', () => {
 
   it('Should not render onRenderCalloutPerDataPoint ', () => {
     domAct(() => {
-      wrapper = mount(<DonutChart data={chartPoints_DC} />);
+      wrapper = mount(<DonutChart data={chartPointsDC} />);
     });
     const renderedDOM = wrapper!.getDOMNode().getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM!.length).toBe(0);
@@ -191,7 +191,7 @@ describe('DonutChart - mouse events', () => {
 
   it('Should render callout correctly on mouseover', () => {
     domAct(() => {
-      wrapper = mount(<DonutChart data={chartPoints_DC} innerRadius={55} calloutProps={{ doNotLayer: true }} />);
+      wrapper = mount(<DonutChart data={chartPointsDC} innerRadius={55} calloutProps={{ doNotLayer: true }} />);
     });
     wrapper!.find('path[id^="_Pie_"]').at(0).simulate('mouseover');
     const tree = toJson(wrapper!, { mode: 'deep' });
@@ -200,7 +200,7 @@ describe('DonutChart - mouse events', () => {
 
   it('Should render callout correctly on mousemove', () => {
     domAct(() => {
-      wrapper = mount(<DonutChart data={chartPoints_DC} innerRadius={55} calloutProps={{ doNotLayer: true }} />);
+      wrapper = mount(<DonutChart data={chartPointsDC} innerRadius={55} calloutProps={{ doNotLayer: true }} />);
     });
     wrapper!.find('path[id^="_Pie_"]').at(0).simulate('mousemove');
     const html1 = wrapper!.html();
@@ -214,7 +214,7 @@ describe('DonutChart - mouse events', () => {
     domAct(() => {
       wrapper = mount(
         <DonutChart
-          data={chartPoints_DC}
+          data={chartPointsDC}
           innerRadius={55}
           calloutProps={{ doNotLayer: true }}
           onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
@@ -236,7 +236,7 @@ describe('DonutChart - mouse events', () => {
 describe('Render empty chart aria label div when chart is empty', () => {
   it('No empty chart aria label div rendered', () => {
     domAct(() => {
-      wrapper = mount(<DonutChart data={chartPoints_DC} />);
+      wrapper = mount(<DonutChart data={chartPointsDC} />);
     });
     const renderedDOM = wrapper!.findWhere(
       (node: ReactWrapper) => node.prop('aria-label') === 'Graph has no data to display',

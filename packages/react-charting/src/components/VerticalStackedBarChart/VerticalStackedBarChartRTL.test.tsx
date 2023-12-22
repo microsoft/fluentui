@@ -7,7 +7,7 @@ import { IVSChartDataPoint, IVerticalStackedChartProps } from '../../index';
 import { VerticalStackedBarChart } from './VerticalStackedBarChart';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
-import { chartPoints2_VSBC, chartPoints_VSBC } from '../../utilities/test-data';
+import { chartPoints2VSBC, chartPointsVSBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
@@ -74,7 +74,7 @@ describe('Vertical stacked bar chart rendering', () => {
   testWithoutWait(
     'Should render the vertical stacked bar chart with numeric x-axis data',
     VerticalStackedBarChart,
-    { data: chartPoints_VSBC },
+    { data: chartPointsVSBC },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -487,7 +487,7 @@ describe('Vertical stacked bar chart - Theme', () => {
     // Arrange
     const { container } = render(
       <ThemeProvider theme={DarkTheme}>
-        <VerticalStackedBarChart culture={window.navigator.language} data={chartPoints_VSBC} />
+        <VerticalStackedBarChart culture={window.navigator.language} data={chartPointsVSBC} />
       </ThemeProvider>,
     );
     // Assert
@@ -499,7 +499,7 @@ describe('VerticalStackedBarChart - mouse events', () => {
   testWithWait(
     'Should render callout correctly on mouseover',
     VerticalStackedBarChart,
-    { data: chartPoints_VSBC, calloutProps: { doNotLayer: true }, enabledLegendsWrapLines: true },
+    { data: chartPointsVSBC, calloutProps: { doNotLayer: true }, enabledLegendsWrapLines: true },
     container => {
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       expect(bars).toHaveLength(4);
@@ -511,7 +511,7 @@ describe('VerticalStackedBarChart - mouse events', () => {
   testWithWait(
     'Should render callout correctly on mousemove',
     VerticalStackedBarChart,
-    { data: chartPoints_VSBC, calloutProps: { doNotLayer: true }, enabledLegendsWrapLines: true },
+    { data: chartPointsVSBC, calloutProps: { doNotLayer: true }, enabledLegendsWrapLines: true },
     container => {
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       expect(bars).toHaveLength(4);
@@ -527,7 +527,7 @@ describe('VerticalStackedBarChart - mouse events', () => {
     'Should render customized callout on mouseover',
     VerticalStackedBarChart,
     {
-      data: chartPoints_VSBC,
+      data: chartPointsVSBC,
       calloutProps: { doNotLayer: true },
       enabledLegendsWrapLines: true,
       onRenderCalloutPerDataPoint: (props: IVSChartDataPoint) =>
@@ -549,7 +549,7 @@ describe('VerticalStackedBarChart - mouse events', () => {
     'Should render customized callout per stack on mouseover',
     VerticalStackedBarChart,
     {
-      data: chartPoints2_VSBC,
+      data: chartPoints2VSBC,
       calloutProps: { doNotLayer: true },
       enabledLegendsWrapLines: true,
       onRenderCalloutPerStack: (props: IVerticalStackedChartProps) =>
@@ -570,7 +570,7 @@ describe('VerticalStackedBarChart - mouse events', () => {
 
 describe('Vertical Stacked Bar Chart - axe-core', () => {
   test('Should pass accessibility tests', async () => {
-    const { container } = render(<VerticalStackedBarChart data={chartPoints_VSBC} />);
+    const { container } = render(<VerticalStackedBarChart data={chartPointsVSBC} />);
     let axeResults;
     await act(async () => {
       axeResults = await axe(container);

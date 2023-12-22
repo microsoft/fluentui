@@ -1,4 +1,5 @@
 jest.mock('react-dom');
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { resetIds } from '../../Utilities';
 import * as renderer from 'react-test-renderer';
@@ -11,7 +12,7 @@ import {
 } from '../../index';
 import { IVerticalStackedBarChartState, VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
 import { act as domAct } from 'react-dom/test-utils';
-import { chartPoints_VSBC, emptychartPoints_VSBC } from '../../utilities/test-data';
+import { chartPointsVSBC, emptychartPointsVSBC } from '../../utilities/test-data';
 
 // Wrapper of the VerticalStackedBarChart to be tested.
 let wrapper:
@@ -39,100 +40,82 @@ function sharedAfterEach() {
 describe('VerticalStackedBarChart snapShot testing', () => {
   it('renders VerticalStackedBarChart correctly', () => {
     let component: any;
-    let tree;
-
     renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPoints_VSBC} />);
+      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} />);
     });
-    tree = component!.toJSON();
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders hideLegend correctly', () => {
     let component: any;
-    let tree;
-
     renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPoints_VSBC} hideLegend={true} />);
+      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} hideLegend={true} />);
     });
-    tree = component!.toJSON();
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders hideTooltip correctly', () => {
     let component: any;
-    let tree;
-
     renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPoints_VSBC} hideTooltip={true} />);
+      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} hideTooltip={true} />);
     });
-    tree = component!.toJSON();
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders enabledLegendsWrapLines correctly', () => {
     let component: any;
-    let tree;
-
     renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPoints_VSBC} enabledLegendsWrapLines={true} />);
+      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} enabledLegendsWrapLines={true} />);
     });
-    tree = component!.toJSON();
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders showXAxisLablesTooltip correctly', () => {
     let component: any;
-    let tree;
-
     renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPoints_VSBC} showXAxisLablesTooltip={true} />);
+      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} showXAxisLablesTooltip={true} />);
     });
-    tree = component!.toJSON();
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders wrapXAxisLables correctly', () => {
     let component: any;
-    let tree;
-
     renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPoints_VSBC} wrapXAxisLables={true} />);
+      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} wrapXAxisLables={true} />);
     });
-    tree = component!.toJSON();
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders isCalloutForStack correctly', () => {
     let component: any;
-    let tree;
-
     renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPoints_VSBC} isCalloutForStack={true} />);
+      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} isCalloutForStack={true} />);
     });
-    tree = component!.toJSON();
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders yAxisTickFormat correctly', () => {
     let component: any;
-    let tree;
-
     renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPoints_VSBC} yAxisTickFormat={'/%d'} />);
+      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} yAxisTickFormat={'/%d'} />);
     });
-    tree = component!.toJSON();
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('Should not render bar labels', () => {
     let component: any;
-    let tree;
-
     renderer.act(() => {
-      component = renderer.create(<VerticalStackedBarChart data={chartPoints_VSBC} hideLabels={true} />);
+      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} hideLabels={true} />);
     });
-    tree = component!.toJSON();
+    const tree = component!.toJSON();
 
     expect(tree).toMatchSnapshot();
   });
@@ -144,7 +127,7 @@ describe('VerticalStackedBarChart - basic props', () => {
 
   it('Should not mount legend when hideLegend true ', () => {
     domAct(() => {
-      wrapper = mount(<VerticalStackedBarChart data={chartPoints_VSBC} hideLegend={true} />);
+      wrapper = mount(<VerticalStackedBarChart data={chartPointsVSBC} hideLegend={true} />);
     });
     const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM!.length).toBe(0);
@@ -152,7 +135,7 @@ describe('VerticalStackedBarChart - basic props', () => {
 
   it('Should mount legend when hideLegend false ', () => {
     domAct(() => {
-      wrapper = mount(<VerticalStackedBarChart data={chartPoints_VSBC} />);
+      wrapper = mount(<VerticalStackedBarChart data={chartPointsVSBC} />);
     });
     const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
@@ -160,7 +143,7 @@ describe('VerticalStackedBarChart - basic props', () => {
 
   it('Should mount callout when hideTootip false ', () => {
     domAct(() => {
-      wrapper = mount(<VerticalStackedBarChart data={chartPoints_VSBC} />);
+      wrapper = mount(<VerticalStackedBarChart data={chartPointsVSBC} />);
     });
     const hideTooltipDom = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
     expect(hideTooltipDom).toBeDefined();
@@ -168,7 +151,7 @@ describe('VerticalStackedBarChart - basic props', () => {
 
   it('Should not mount callout when hideTootip true ', () => {
     domAct(() => {
-      wrapper = mount(<VerticalStackedBarChart data={chartPoints_VSBC} hideTooltip={true} />);
+      wrapper = mount(<VerticalStackedBarChart data={chartPointsVSBC} hideTooltip={true} />);
     });
     const hideTooltipDom = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
     expect(hideTooltipDom.length).toBe(0);
@@ -178,7 +161,7 @@ describe('VerticalStackedBarChart - basic props', () => {
     domAct(() => {
       wrapper = mount(
         <VerticalStackedBarChart
-          data={chartPoints_VSBC}
+          data={chartPointsVSBC}
           onRenderCalloutPerStack={(props: IVerticalStackedChartProps) =>
             props ? (
               <div className="onRenderCalloutPerStack">
@@ -195,7 +178,7 @@ describe('VerticalStackedBarChart - basic props', () => {
 
   it('Should not render onRenderCalloutPerStack ', () => {
     domAct(() => {
-      wrapper = mount(<VerticalStackedBarChart data={chartPoints_VSBC} />);
+      wrapper = mount(<VerticalStackedBarChart data={chartPointsVSBC} />);
     });
     const renderedDOM = wrapper!.getDOMNode().getElementsByClassName('.onRenderCalloutPerStack');
     expect(renderedDOM!.length).toBe(0);
@@ -205,7 +188,7 @@ describe('VerticalStackedBarChart - basic props', () => {
     domAct(() => {
       wrapper = mount(
         <VerticalStackedBarChart
-          data={chartPoints_VSBC}
+          data={chartPointsVSBC}
           onRenderCalloutPerDataPoint={(props: IVSChartDataPoint) =>
             props ? (
               <div className="onRenderCalloutPerDataPoint">
@@ -222,7 +205,7 @@ describe('VerticalStackedBarChart - basic props', () => {
 
   it('Should not render onRenderCalloutPerDataPoint ', () => {
     domAct(() => {
-      wrapper = mount(<VerticalStackedBarChart data={chartPoints_VSBC} />);
+      wrapper = mount(<VerticalStackedBarChart data={chartPointsVSBC} />);
     });
     const renderedDOM = wrapper!.getDOMNode().getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM!.length).toBe(0);
@@ -233,7 +216,7 @@ describe('Render calling with respective to props', () => {
   it('No prop changes', () => {
     const renderMock = jest.spyOn(VerticalStackedBarChartBase.prototype, 'render');
     const props = {
-      data: chartPoints_VSBC,
+      data: chartPointsVSBC,
       height: 300,
       width: 600,
     };
@@ -249,7 +232,7 @@ describe('Render calling with respective to props', () => {
   it('prop changes', () => {
     const renderMock = jest.spyOn(VerticalStackedBarChartBase.prototype, 'render');
     const props = {
-      data: chartPoints_VSBC,
+      data: chartPointsVSBC,
       height: 300,
       width: 600,
       hideLegend: true,
@@ -269,7 +252,7 @@ describe('Render empty chart aria label div when chart is empty', () => {
   afterEach(sharedAfterEach);
   it('No empty chart aria label div rendered', () => {
     domAct(() => {
-      wrapper = mount(<VerticalStackedBarChart data={chartPoints_VSBC} />);
+      wrapper = mount(<VerticalStackedBarChart data={chartPointsVSBC} />);
     });
     const renderedDOM = wrapper!.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
     expect(renderedDOM!.length).toBe(0);
@@ -277,7 +260,7 @@ describe('Render empty chart aria label div when chart is empty', () => {
 
   it('Empty chart aria label div rendered', () => {
     domAct(() => {
-      wrapper = mount(<VerticalStackedBarChart data={emptychartPoints_VSBC} />);
+      wrapper = mount(<VerticalStackedBarChart data={emptychartPointsVSBC} />);
     });
     const renderedDOM = wrapper!.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
     expect(renderedDOM!.length).toBe(1);

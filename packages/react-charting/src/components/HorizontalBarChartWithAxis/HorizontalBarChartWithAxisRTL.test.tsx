@@ -1,7 +1,7 @@
 import { fireEvent } from '@testing-library/dom';
 import { testWithWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
-import { points_HBCWA } from '../../utilities/test-data';
+import { pointsHBCWA } from '../../utilities/test-data';
 import { act, render } from '@testing-library/react';
 import { axe } from 'jest-axe';
 import * as React from 'react';
@@ -13,7 +13,7 @@ describe('HorizontalBarChartWithAxis - mouse events', () => {
   testWithWait(
     'Should render callout correctly on mouseover',
     HorizontalBarChartWithAxis,
-    { data: points_HBCWA, calloutProps: { doNotLayer: true } },
+    { data: pointsHBCWA, calloutProps: { doNotLayer: true } },
     container => {
       const bars = container.querySelectorAll('rect');
       fireEvent.mouseOver(bars[1]);
@@ -24,7 +24,7 @@ describe('HorizontalBarChartWithAxis - mouse events', () => {
 
 describe('Horizontal Bar Chart With Axis - axe-core', () => {
   test('Should pass accessibility tests', async () => {
-    const { container } = render(<HorizontalBarChartWithAxis data={points_HBCWA} />);
+    const { container } = render(<HorizontalBarChartWithAxis data={pointsHBCWA} />);
     let axeResults;
     await act(async () => {
       axeResults = await axe(container);

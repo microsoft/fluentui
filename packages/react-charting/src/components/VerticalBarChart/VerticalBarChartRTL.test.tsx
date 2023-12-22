@@ -15,7 +15,7 @@ import {
 } from '../../utilities/TestUtility.test';
 import { IVerticalBarChartProps } from './VerticalBarChart.types';
 import { IVerticalBarChartDataPoint } from '../../index';
-import { chartPoints_VBC } from '../../utilities/test-data';
+import { chartPointsVBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
@@ -138,7 +138,7 @@ describe('Vertical bar chart rendering', () => {
   testWithoutWait(
     'Should render the vertical bar chart with numeric x-axis data',
     VerticalBarChart,
-    { data: chartPoints_VBC },
+    { data: chartPointsVBC },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -160,7 +160,7 @@ describe('Vertical bar chart - Subcomponent bar', () => {
   testWithWait(
     'Should render the bar with the given width',
     VerticalBarChart,
-    { data: chartPoints_VBC, barWidth: 100 },
+    { data: chartPointsVBC, barWidth: 100 },
     container => {
       // Assert
       const bars = getById(container, /_VBC_bar/i);
@@ -174,7 +174,7 @@ describe('Vertical bar chart - Subcomponent bar', () => {
   testWithWait(
     'Should render the bars with the specified colors',
     VerticalBarChart,
-    { data: chartPoints_VBC },
+    { data: chartPointsVBC },
     container => {
       // colors mentioned in the data points itself
       // Assert
@@ -188,7 +188,7 @@ describe('Vertical bar chart - Subcomponent bar', () => {
   testWithWait(
     'Should render the bars with the a single color',
     VerticalBarChart,
-    { data: chartPoints_VBC, useSingleColor: true },
+    { data: chartPointsVBC, useSingleColor: true },
     container => {
       // Assert
       const bars = getById(container, /_VBC_bar/i);
@@ -201,7 +201,7 @@ describe('Vertical bar chart - Subcomponent bar', () => {
   testWithWait(
     'Should render the bars with labels hidden',
     VerticalBarChart,
-    { data: chartPoints_VBC, hideLabels: true },
+    { data: chartPointsVBC, hideLabels: true },
     container => {
       // Assert
       expect(getByClass(container, /barLabel/i)).toHaveLength(0);
@@ -436,7 +436,7 @@ describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
 
 describe('Screen resolution', () => {
   testScreenResolutionChanges(() => {
-    const { container } = render(<VerticalBarChart data={chartPoints_VBC} width={300} height={300} />);
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} width={300} height={300} />);
     // Assert
     expect(container).toMatchSnapshot();
   });
@@ -446,7 +446,7 @@ test('Should reflect theme change', () => {
   // Arrange
   const { container } = render(
     <ThemeProvider theme={DarkTheme}>
-      <VerticalBarChart culture={window.navigator.language} data={chartPoints_VBC} />
+      <VerticalBarChart culture={window.navigator.language} data={chartPointsVBC} />
     </ThemeProvider>,
   );
   // Assert
@@ -461,7 +461,7 @@ describe('Vertical bar chart re-rendering', () => {
     expect(container).toMatchSnapshot();
     expect(getById(container, /_VBC_empty/i)).toHaveLength(1);
     // Act
-    rerender(<VerticalBarChart data={chartPoints_VBC} />);
+    rerender(<VerticalBarChart data={chartPointsVBC} />);
     await waitFor(() => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -474,7 +474,7 @@ describe('VerticalBarChart - mouse events', () => {
   testWithWait(
     'Should render callout correctly on mouseover',
     VerticalBarChart,
-    { data: chartPoints_VBC, calloutProps: { doNotLayer: true }, enabledLegendsWrapLines: true },
+    { data: chartPointsVBC, calloutProps: { doNotLayer: true }, enabledLegendsWrapLines: true },
     container => {
       const bars = getById(container, /_VBC_bar/i);
       expect(bars).toHaveLength(3);
@@ -487,7 +487,7 @@ describe('VerticalBarChart - mouse events', () => {
     'Should render customized callout on mouseover',
     VerticalBarChart,
     {
-      data: chartPoints_VBC,
+      data: chartPointsVBC,
       calloutProps: { doNotLayer: true },
       enabledLegendsWrapLines: true,
       onRenderCalloutPerDataPoint: (props: IVerticalBarChartDataPoint) =>
@@ -507,7 +507,7 @@ describe('VerticalBarChart - mouse events', () => {
 });
 
 test('Should pass accessibility tests', async () => {
-  const { container } = render(<VerticalBarChart data={chartPoints_VBC} />);
+  const { container } = render(<VerticalBarChart data={chartPointsVBC} />);
   let axeResults;
   await act(async () => {
     axeResults = await axe(container);

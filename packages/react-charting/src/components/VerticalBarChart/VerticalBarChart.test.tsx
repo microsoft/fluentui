@@ -8,7 +8,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../index';
 import { IVerticalBarChartState, VerticalBarChartBase } from './VerticalBarChart.base';
 import { act } from 'react-dom/test-utils';
-import { chartPoints_VBC } from '../../utilities/test-data';
+import { chartPointsVBC } from '../../utilities/test-data';
 
 const rendererAct = renderer.act;
 
@@ -37,7 +37,7 @@ describe('VerticalBarChart snapShot testing', () => {
   it('renders VerticalBarChart correctly', () => {
     let component: any;
     renderer.act(() => {
-      component = renderer.create(<VerticalBarChart data={chartPoints_VBC} />);
+      component = renderer.create(<VerticalBarChart data={chartPointsVBC} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -46,7 +46,7 @@ describe('VerticalBarChart snapShot testing', () => {
   it('renders hideLegend correctly', () => {
     let component: any;
     rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={chartPoints_VBC} hideLegend={true} />);
+      component = renderer.create(<VerticalBarChart data={chartPointsVBC} hideLegend={true} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -55,7 +55,7 @@ describe('VerticalBarChart snapShot testing', () => {
   it('renders hideTooltip correctly', () => {
     let component: any;
     rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={chartPoints_VBC} hideTooltip={true} />);
+      component = renderer.create(<VerticalBarChart data={chartPointsVBC} hideTooltip={true} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -64,7 +64,7 @@ describe('VerticalBarChart snapShot testing', () => {
   it('renders enabledLegendsWrapLines correctly', () => {
     let component: any;
     rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={chartPoints_VBC} enabledLegendsWrapLines={true} />);
+      component = renderer.create(<VerticalBarChart data={chartPointsVBC} enabledLegendsWrapLines={true} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -73,7 +73,7 @@ describe('VerticalBarChart snapShot testing', () => {
   it('renders showXAxisLablesTooltip correctly', () => {
     let component: any;
     rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={chartPoints_VBC} showXAxisLablesTooltip={true} />);
+      component = renderer.create(<VerticalBarChart data={chartPointsVBC} showXAxisLablesTooltip={true} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -82,7 +82,7 @@ describe('VerticalBarChart snapShot testing', () => {
   it('renders wrapXAxisLables correctly', () => {
     let component: any;
     rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={chartPoints_VBC} wrapXAxisLables={true} />);
+      component = renderer.create(<VerticalBarChart data={chartPointsVBC} wrapXAxisLables={true} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -91,7 +91,7 @@ describe('VerticalBarChart snapShot testing', () => {
   it('renders yAxisTickFormat correctly', () => {
     let component: any;
     rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={chartPoints_VBC} yAxisTickFormat={'/%d'} />);
+      component = renderer.create(<VerticalBarChart data={chartPointsVBC} yAxisTickFormat={'/%d'} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -100,7 +100,7 @@ describe('VerticalBarChart snapShot testing', () => {
   it('Should not render bar labels', () => {
     let component: any;
     rendererAct(() => {
-      component = renderer.create(<VerticalBarChart data={chartPoints_VBC} hideLabels={true} />);
+      component = renderer.create(<VerticalBarChart data={chartPointsVBC} hideLabels={true} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -113,7 +113,7 @@ describe('VerticalBarChart - basic props', () => {
 
   it('Should not mount legend when hideLegend true ', () => {
     act(() => {
-      wrapper = mount(<VerticalBarChart data={chartPoints_VBC} hideLegend={true} />);
+      wrapper = mount(<VerticalBarChart data={chartPointsVBC} hideLegend={true} />);
     });
     const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM!.length).toBe(0);
@@ -121,7 +121,7 @@ describe('VerticalBarChart - basic props', () => {
 
   it('Should mount legend when hideLegend false ', () => {
     act(() => {
-      wrapper = mount(<VerticalBarChart data={chartPoints_VBC} />);
+      wrapper = mount(<VerticalBarChart data={chartPointsVBC} />);
     });
     const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
@@ -129,7 +129,7 @@ describe('VerticalBarChart - basic props', () => {
 
   it('Should mount callout when hideTootip false ', () => {
     act(() => {
-      wrapper = mount(<VerticalBarChart data={chartPoints_VBC} />);
+      wrapper = mount(<VerticalBarChart data={chartPointsVBC} />);
     });
     const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM).toBeDefined();
@@ -137,7 +137,7 @@ describe('VerticalBarChart - basic props', () => {
 
   it('Should not mount callout when hideTootip true ', () => {
     act(() => {
-      wrapper = mount(<VerticalBarChart data={chartPoints_VBC} hideTooltip={true} />);
+      wrapper = mount(<VerticalBarChart data={chartPointsVBC} hideTooltip={true} />);
     });
     const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM!.length).toBe(0);
@@ -145,7 +145,7 @@ describe('VerticalBarChart - basic props', () => {
 
   it('Should not render onRenderCalloutPerStack ', () => {
     act(() => {
-      wrapper = mount(<VerticalBarChart data={chartPoints_VBC} />);
+      wrapper = mount(<VerticalBarChart data={chartPointsVBC} />);
     });
     const renderedDOM = wrapper!.getDOMNode().getElementsByClassName('.onRenderCalloutPerStack');
     expect(renderedDOM!.length).toBe(0);
@@ -155,7 +155,7 @@ describe('VerticalBarChart - basic props', () => {
     act(() => {
       wrapper = mount(
         <VerticalBarChart
-          data={chartPoints_VBC}
+          data={chartPointsVBC}
           onRenderCalloutPerDataPoint={(props: IVerticalBarChartDataPoint) =>
             props ? (
               <div className="onRenderCalloutPerDataPoint">
@@ -172,7 +172,7 @@ describe('VerticalBarChart - basic props', () => {
 
   it('Should not render onRenderCalloutPerDataPoint ', () => {
     act(() => {
-      wrapper = mount(<VerticalBarChart data={chartPoints_VBC} />);
+      wrapper = mount(<VerticalBarChart data={chartPointsVBC} />);
     });
     const renderedDOM = wrapper!.getDOMNode().getElementsByClassName('.onRenderCalloutPerDataPoint');
     expect(renderedDOM!.length).toBe(0);
@@ -183,7 +183,7 @@ describe('Render calling with respective to props', () => {
   it('No prop changes', () => {
     const renderMock = jest.spyOn(VerticalBarChartBase.prototype, 'render');
     const props = {
-      data: chartPoints_VBC,
+      data: chartPointsVBC,
       height: 300,
       width: 600,
     };
@@ -198,7 +198,7 @@ describe('Render calling with respective to props', () => {
   it('prop changes', () => {
     const renderMock = jest.spyOn(VerticalBarChartBase.prototype, 'render');
     const props = {
-      data: chartPoints_VBC,
+      data: chartPointsVBC,
       height: 300,
       width: 600,
       hideLegend: true,
@@ -216,7 +216,7 @@ describe('Render empty chart aria label div when chart is empty', () => {
   it('No empty chart aria label div rendered', () => {
     act(() => {
       wrapper = mount(
-        <VerticalBarChart data={chartPoints_VBC} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />,
+        <VerticalBarChart data={chartPointsVBC} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />,
       );
     });
     const renderedDOM = wrapper!.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
@@ -236,7 +236,7 @@ describe('Render empty chart calling with respective to props', () => {
   it('No prop changes', () => {
     const renderMock = jest.spyOn(VerticalBarChartBase.prototype, 'render');
     const props = {
-      data: chartPoints_VBC,
+      data: chartPointsVBC,
     };
     act(() => {
       const component = mount(<VerticalBarChart {...props} />);
@@ -253,7 +253,7 @@ describe('Render empty chart calling with respective to props', () => {
     };
     act(() => {
       const component = mount(<VerticalBarChart {...props} />);
-      component.setProps({ ...props, data: chartPoints_VBC });
+      component.setProps({ ...props, data: chartPointsVBC });
     });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();

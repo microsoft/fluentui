@@ -9,7 +9,7 @@ import { IHorizontalBarChartWithAxisState, HorizontalBarChartWithAxisBase } from
 import { resetIds } from '@fluentui/react';
 const rendererAct = renderer.act;
 import { act as domAct } from 'react-dom/test-utils';
-import { points_HBCWA } from '../../utilities/test-data';
+import { pointsHBCWA } from '../../utilities/test-data';
 import toJson from 'enzyme-to-json';
 import { toHaveNoViolations } from 'jest-axe';
 
@@ -64,7 +64,7 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
   it('renders HorizontalBarChartWithAxis correctly', () => {
     let component: any;
     rendererAct(() => {
-      component = renderer.create(<HorizontalBarChartWithAxis data={points_HBCWA} />);
+      component = renderer.create(<HorizontalBarChartWithAxis data={pointsHBCWA} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -72,7 +72,7 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
   it('renders hideLegend correctly', () => {
     let component: any;
     rendererAct(() => {
-      component = renderer.create(<HorizontalBarChartWithAxis data={points_HBCWA} hideLegend={true} />);
+      component = renderer.create(<HorizontalBarChartWithAxis data={pointsHBCWA} hideLegend={true} />);
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
@@ -107,7 +107,7 @@ describe('HorizontalBarChartWithAxis - basic props', () => {
 
   it('Should not mount legend when hideLegend true ', () => {
     domAct(() => {
-      wrapper = mount(<HorizontalBarChartWithAxis data={points_HBCWA} hideLegend={true} />);
+      wrapper = mount(<HorizontalBarChartWithAxis data={pointsHBCWA} hideLegend={true} />);
     });
     const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM!.length).toBe(0);
@@ -115,7 +115,7 @@ describe('HorizontalBarChartWithAxis - basic props', () => {
 
   it('Should mount legend when hideLegend false ', () => {
     domAct(() => {
-      wrapper = mount(<HorizontalBarChartWithAxis data={points_HBCWA} />);
+      wrapper = mount(<HorizontalBarChartWithAxis data={pointsHBCWA} />);
     });
     const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
@@ -123,7 +123,7 @@ describe('HorizontalBarChartWithAxis - basic props', () => {
 
   it('Should mount callout when hideTootip false ', () => {
     domAct(() => {
-      wrapper = mount(<HorizontalBarChartWithAxis data={points_HBCWA} />);
+      wrapper = mount(<HorizontalBarChartWithAxis data={pointsHBCWA} />);
     });
     const calloutDOM = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
     expect(calloutDOM).toBeDefined();
@@ -131,7 +131,7 @@ describe('HorizontalBarChartWithAxis - basic props', () => {
 
   it('Should not mount callout when hideTootip true ', () => {
     domAct(() => {
-      wrapper = mount(<HorizontalBarChartWithAxis data={points_HBCWA} hideTooltip={true} />);
+      wrapper = mount(<HorizontalBarChartWithAxis data={pointsHBCWA} hideTooltip={true} />);
     });
     const calloutDOM = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
     expect(calloutDOM!.length).toBe(0);
@@ -141,7 +141,7 @@ describe('Render calling with respective to props', () => {
   it('No prop changes', () => {
     const renderMock = jest.spyOn(HorizontalBarChartWithAxisBase.prototype, 'render');
     const props = {
-      data: points_HBCWA,
+      data: pointsHBCWA,
       height: 300,
       width: 600,
     };
@@ -155,7 +155,7 @@ describe('Render calling with respective to props', () => {
   it('prop changes', () => {
     const renderMock = jest.spyOn(HorizontalBarChartWithAxisBase.prototype, 'render');
     const props = {
-      data: points_HBCWA,
+      data: pointsHBCWA,
       height: 300,
       width: 600,
       hideLegend: true,
@@ -175,7 +175,7 @@ describe('HorizontalBarChartWithAxis - mouse events', () => {
 
   // FIXME - non deterministic snapshots causing master pipeline breaks
   it.skip('Should render callout correctly on mouseover', async () => {
-    wrapper = mount(<HorizontalBarChartWithAxis data={points_HBCWA} calloutProps={{ doNotLayer: true }} />);
+    wrapper = mount(<HorizontalBarChartWithAxis data={pointsHBCWA} calloutProps={{ doNotLayer: true }} />);
 
     // Wait for the chart to be resized
 
