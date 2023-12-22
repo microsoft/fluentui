@@ -1,4 +1,4 @@
-import { makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ColorSwatchSlots, ColorSwatchState } from './ColorSwatch.types';
 
@@ -20,7 +20,7 @@ const useStyles = makeResetStyles({
   ...shorthands.border('none'),
   width: '28px',
   height: '28px',
-  backgroundColor: `var(${swatchColor})`,
+  background: `var(${swatchColor})`,
   ...shorthands.transition('all', '0.1s', 'ease-in-out'),
   '&:hover': {
     cursor: 'pointer',
@@ -30,16 +30,27 @@ const useStyles = makeResetStyles({
 
 const useIconStyles = makeResetStyles({});
 
+const useStylesSelected = makeStyles({
+  selected: {
+    boxShadow: `inset 0 0 0 4px var(${swatchColor}), inset 0 0 0 6px #fff`,
+  },
+});
+
 /**
  * Apply styling to the ColorSwatch slots based on the state
  */
 export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwatchState => {
   const styles = useStyles();
   const iconStyles = useIconStyles();
+  const selectedStyles = useStylesSelected();
   state.root.className = mergeClasses(colorSwatchClassNames.root, styles, state.root.className);
 
   if (state.icon) {
     state.icon.className = mergeClasses(colorSwatchClassNames.icon, iconStyles, state.icon.className);
+  }
+
+  if (state.selected) {
+    state.root.className = mergeClasses(state.root.className, selectedStyles.selected);
   }
   return state;
 };

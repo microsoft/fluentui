@@ -2,13 +2,15 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type SwatchPickerSlots = {
   root: Slot<'div'>;
-  row: Slot<'div'>;
 };
 
 /**
  * SwatchPicker Props
  */
-export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {};
+export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
+  layout?: 'grid' | 'row';
+  size?: 'extraSmall' | 'small' | 'medium' | 'large';
+};
 
 /**
  * State used in rendering SwatchPicker

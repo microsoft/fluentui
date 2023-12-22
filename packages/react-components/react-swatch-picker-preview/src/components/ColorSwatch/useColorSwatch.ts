@@ -17,6 +17,8 @@ export const useColorSwatch_unstable = (
   props: ColorSwatchProps,
   ref: React.Ref<HTMLButtonElement>,
 ): ColorSwatchState => {
+  const { selected = false, icon } = props;
+  const iconShorthand = slot.optional(icon, { elementType: 'span' });
   const state: ColorSwatchState = {
     components: {
       root: 'button',
@@ -26,15 +28,17 @@ export const useColorSwatch_unstable = (
       getIntrinsicElementProps('button', {
         ref,
         ...props,
-        role: 'gridcell',
+        role: props.role ?? 'gridcell',
         tabIndex: 0,
-        'aria-selected': false,
+        'aria-selected': selected,
       }),
       { elementType: 'button' },
     ),
+    icon: iconShorthand,
   };
 
   state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLButtonElement>());
+  state.selected = props.selected;
 
   useColorSwatchState_unstable(state, props);
   return state;

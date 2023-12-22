@@ -10,9 +10,5 @@ import type { SwatchPickerState, SwatchPickerSlots } from './SwatchPicker.types'
 export const renderSwatchPicker_unstable = (state: SwatchPickerState) => {
   assertSlots<SwatchPickerSlots>(state);
 
-  return (
-    <state.root>
-      <state.row>{state.root.children}</state.row>
-    </state.root>
-  );
+  return <state.root>{state.root.children}</state.root>;
 };

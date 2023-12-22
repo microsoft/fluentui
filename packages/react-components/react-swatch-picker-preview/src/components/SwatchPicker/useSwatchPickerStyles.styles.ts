@@ -4,7 +4,6 @@ import type { SwatchPickerSlots, SwatchPickerState } from './SwatchPicker.types'
 
 export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots> = {
   root: 'fui-SwatchPicker',
-  row: 'fui-SwatchPicker__row',
 };
 
 /**

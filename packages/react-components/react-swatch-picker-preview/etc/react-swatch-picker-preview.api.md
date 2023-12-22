@@ -19,7 +19,11 @@ export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots>;
 
 // @public
 export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & {
-    color?: string;
+    value?: string;
+    disabled?: boolean;
+    selected?: boolean;
+    defaultSelected?: boolean;
+    empty?: boolean;
 };
 
 // @public (undocumented)
@@ -29,7 +33,7 @@ export type ColorSwatchSlots = {
 };
 
 // @public
-export type ColorSwatchState = ComponentState<ColorSwatchSlots>;
+export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwatchProps, 'disabled' | 'selected' | 'empty' | 'value'>;
 
 // @public
 export const renderColorSwatch_unstable: (state: ColorSwatchState) => JSX.Element;
@@ -49,12 +53,14 @@ export const SwatchPicker: ForwardRefComponent<SwatchPickerProps>;
 export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots>;
 
 // @public
-export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {};
+export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
+    layout?: 'grid' | 'row';
+    size?: 'extraSmall' | 'small' | 'medium' | 'large';
+};
 
 // @public (undocumented)
 export type SwatchPickerSlots = {
     root: Slot<'div'>;
-    row: Slot<'div'>;
 };
 
 // @public

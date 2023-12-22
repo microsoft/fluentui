@@ -10,11 +10,5 @@ import type { ColorSwatchState, ColorSwatchSlots } from './ColorSwatch.types';
 export const renderColorSwatch_unstable = (state: ColorSwatchState) => {
   assertSlots<ColorSwatchSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return (
-    <state.root>
-      {state.icon && <state.icon />}
-      {/* {state.root.children} */}
-    </state.root>
-  );
+  return <state.root>{state.icon && <state.icon />}</state.root>;
 };

@@ -12,7 +12,7 @@ export type ColorSwatchSlots = {
  * ColorSwatch Props
  */
 export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & {
-  color?: string;
+  value?: string;
   /**
    *  Disabled swatch.
    *
@@ -21,11 +21,16 @@ export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & {
   disabled?: boolean;
 
   selected?: boolean;
+
+  defaultSelected?: boolean;
+
+  empty?: boolean;
 };
 
 /**
  * State used in rendering ColorSwatch
  */
-export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwatchProps, 'disabled' | 'selected'>;
+export type ColorSwatchState = ComponentState<ColorSwatchSlots> &
+  Pick<ColorSwatchProps, 'disabled' | 'selected' | 'empty' | 'value'>;
 // TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from ColorSwatchProps.
 // & Required<Pick<ColorSwatchProps, 'propName'>>
