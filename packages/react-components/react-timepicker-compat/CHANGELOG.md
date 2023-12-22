@@ -1,4 +1,4 @@
-# Change Log - @fluentui/react-timepicker-compat-preview
+# Change Log - @fluentui/react-timepicker-compat
 
 This log was last generated on Thu, 21 Dec 2023 17:00:41 GMT and should not be manually modified.
 
@@ -6,7 +6,7 @@ This log was last generated on Thu, 21 Dec 2023 17:00:41 GMT and should not be m
 
 ## [0.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat-preview_v0.1.8)
 
-Thu, 21 Dec 2023 17:00:41 GMT 
+Thu, 21 Dec 2023 17:00:41 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-timepicker-compat-preview_v0.1.7..@fluentui/react-timepicker-compat-preview_v0.1.8)
 
 ### Patches

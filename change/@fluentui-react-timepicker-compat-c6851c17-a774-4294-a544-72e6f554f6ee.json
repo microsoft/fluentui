@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: release stable",
+  "comment": "feat: release",
   "packageName": "@fluentui/react-timepicker-compat",
   "email": "yuanboxue@microsoft.com",
   "dependentChangeType": "patch"
