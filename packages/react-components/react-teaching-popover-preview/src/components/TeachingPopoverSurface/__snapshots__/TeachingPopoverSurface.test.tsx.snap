@@ -2,10 +2,8 @@
 
 exports[`TeachingPopoverSurface renders a default state 1`] = `
 <div>
-  <div
-    class="fui-TeachingPopoverSurface"
-  >
-    Default TeachingPopoverSurface
-  </div>
+  <span
+    hidden=""
+  />
 </div>
 `;

@@ -212,7 +212,7 @@ const OverflowMenu = (props: PartitionBreadcrumbItems<Item>) => {
               appearance="subtle"
               ref={ref}
               icon={<MoreHorizontal />}
-              aria-label={`${overflowCount} more items`}
+              aria-label={`${overflowItemsCount} more items`}
               role="button"
             />
           </Tooltip>

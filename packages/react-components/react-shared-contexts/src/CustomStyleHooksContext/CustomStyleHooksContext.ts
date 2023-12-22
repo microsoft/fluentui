@@ -119,6 +119,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useMessageBarActionsStyles_unstable: CustomStyleHook;
   useMessageBarGroupStyles_unstable: CustomStyleHook;
   useToasterStyles_unstable: CustomStyleHook;
+  /** @deprecated TeachingPopover wrapper has no styles (non-UI hooks only). */
   useTeachingPopoverStyles_unstable: CustomStyleHook;
   useTeachingPopoverActionsStyles_unstable: CustomStyleHook;
   useTeachingPopoverBodyStyles_unstable: CustomStyleHook;

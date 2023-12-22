@@ -13,6 +13,9 @@ import { DefaultPalette, ThemeProvider } from '@fluentui/react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { StackedBarChartBase } from './StackedBarChart.base';
 import { DarkTheme } from '@fluentui/theme-samples';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 const points: IChartDataPoint[] = [
   {
@@ -382,4 +385,12 @@ test('Should reflect theme change', () => {
   );
   // Assert
   expect(container).toMatchSnapshot();
+});
+
+describe('Stacked Bar Chart - axe-core', () => {
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<StackedBarChart data={data} />);
+    const axeResults = await axe(container);
+    expect(axeResults).toHaveNoViolations();
+  }, 10000);
 });

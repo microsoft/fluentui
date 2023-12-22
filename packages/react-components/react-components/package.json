@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.43.2",
+  "version": "9.43.3",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -39,7 +39,7 @@
     "@fluentui/react-button": "^9.3.59",
     "@fluentui/react-card": "^9.0.58",
     "@fluentui/react-checkbox": "^9.2.3",
-    "@fluentui/react-combobox": "^9.5.35",
+    "@fluentui/react-combobox": "^9.5.36",
     "@fluentui/react-dialog": "^9.9.1",
     "@fluentui/react-divider": "^9.2.53",
     "@fluentui/react-drawer": "^9.0.5",
@@ -82,7 +82,7 @@
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1",
     "@fluentui/react-message-bar": "^9.0.10",
-    "@fluentui/react-breadcrumb": "^9.0.4"
+    "@fluentui/react-breadcrumb": "^9.0.5"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
