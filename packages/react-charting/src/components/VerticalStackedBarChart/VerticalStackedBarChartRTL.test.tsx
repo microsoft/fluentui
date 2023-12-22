@@ -7,7 +7,10 @@ import { IVSChartDataPoint, IVerticalStackedChartProps } from '../../index';
 import { VerticalStackedBarChart } from './VerticalStackedBarChart';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
-import { chartPoints2_VSBC, chartPoints_VSBC } from '../../utilities/testData.test';
+import { chartPoints2_VSBC, chartPoints_VSBC } from '../../utilities/test-data';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 const firstChartPoints: IVSChartDataPoint[] = [
   { legend: 'Metadata1', data: 2, color: DefaultPalette.blue },
@@ -563,4 +566,15 @@ describe('VerticalStackedBarChart - mouse events', () => {
       expect(container).toMatchSnapshot();
     },
   );
+});
+
+describe('Vertical Stacked Bar Chart - axe-core', () => {
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<VerticalStackedBarChart data={chartPoints_VSBC} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
+  });
 });

@@ -9,7 +9,8 @@ import { IHorizontalBarChartWithAxisState, HorizontalBarChartWithAxisBase } from
 import { resetIds } from '@fluentui/react';
 const rendererAct = renderer.act;
 import { act as domAct } from 'react-dom/test-utils';
-import { points_HBCWA } from '../../utilities/testData.test';
+import { points_HBCWA } from '../../utilities/test-data';
+import toJson from 'enzyme-to-json';
 
 let wrapper:
   | ReactWrapper<IHorizontalBarChartWithAxisProps, IHorizontalBarChartWithAxisState, HorizontalBarChartWithAxisBase>
@@ -162,5 +163,26 @@ describe('Render calling with respective to props', () => {
     });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('HorizontalBarChartWithAxis - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  // FIXME - non deterministic snapshots causing master pipeline breaks
+  it.skip('Should render callout correctly on mouseover', async () => {
+    wrapper = mount(<HorizontalBarChartWithAxis data={points_HBCWA} calloutProps={{ doNotLayer: true }} />);
+
+    // Wait for the chart to be resized
+
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+
+    wrapper.find('rect').at(1).simulate('mouseover');
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
   });
 });

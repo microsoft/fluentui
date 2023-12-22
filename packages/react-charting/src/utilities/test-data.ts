@@ -1,5 +1,5 @@
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { IVSChartDataPoint, IVerticalStackedChartProps } from '../index';
+import { IChartDataPoint, IChartProps, IVSChartDataPoint, IVerticalStackedChartProps } from '../index';
 
 export const chartPoints_VBC = [
   {
@@ -117,3 +117,14 @@ export const points_HBCWA = [
     yAxisCalloutData: '88%',
   },
 ];
+
+const points_DC: IChartDataPoint[] = [
+  { legend: 'first', data: 20000, color: '#E5E5E5', xAxisCalloutData: '2020/04/30' },
+  { legend: 'second', data: 39000, color: '#0078D4', xAxisCalloutData: '2020/04/20' },
+  { legend: 'third', data: 45000, color: '#DADADA', xAxisCalloutData: '2020/04/25' },
+];
+
+export const chartPoints_DC: IChartProps = {
+  chartTitle: 'Donut chart example',
+  chartData: points_DC,
+};

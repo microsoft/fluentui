@@ -2,6 +2,21 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Thu, 21 Dec 2023 17:00:41 GMT",
+      "tag": "@fluentui/react-combobox_v9.5.36",
+      "version": "9.5.36",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "4d269ba336f4a4cd9d1b5ab06949baacc9dc104d",
+            "comment": "fix: make hover color in contrast theme accessible."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Dec 2023 17:48:16 GMT",
       "tag": "@fluentui/react-combobox_v9.5.35",
       "version": "9.5.35",
