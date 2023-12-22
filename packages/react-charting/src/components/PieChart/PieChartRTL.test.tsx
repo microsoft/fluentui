@@ -32,6 +32,9 @@ describe('Pie chart rendering', () => {
 
 describe('Pie Chart - axe-core', () => {
   test('Should pass accessibility tests', async () => {
+    // Mock the implementation of wrapContent as it internally calls a Browser Function like
+    // getComputedTextLength() which will otherwise lead to a crash if mounted
+    jest.spyOn(utils, 'wrapContent').mockImplementation(() => false);
     const { container } = render(<PieChart data={chartPoints} colors={colors} />);
     const axeResults = await axe(container);
     expect(axeResults).toHaveNoViolations();
