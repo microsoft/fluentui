@@ -395,6 +395,7 @@ runTest('_getCircleRadius', () => {
       fireEvent.mouseOver(points[1]);
       fireEvent.click(points[0]);
       // nearest circle to highlight has index 6
+      // activePoint does not matche the point circle whose radius is checked
       expect(points[6].getAttribute('r')).toEqual('1');
     },
   );
@@ -407,6 +408,7 @@ runTest('_getCircleRadius', () => {
       const points = getById(container, /circle/i);
       expect(points).toHaveLength(10);
       fireEvent.focus(points[0]);
+      // activePoint matches the point circle whose radius is checked
       expect(points[0].getAttribute('r')).toEqual('8');
     },
   );

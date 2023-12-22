@@ -1,10 +1,10 @@
 import { DarkTheme } from '@fluentui/theme-samples';
-import { chartPoints } from '../src/components/VerticalBarChart/VerticalBarChart.test';
+import { chartPoints } from '../src/components/VerticalBarChart/tests/test-data';
 import { testWithoutWait } from '../src/utilities/TestUtility.test';
 import * as utils from '@fluentui/react/lib/Utilities';
 import { DefaultPalette } from '@fluentui/react';
-import { VerticalBarChartBase } from '../src/components/VerticalBarChart/VerticalBarChart.base';
 import { VerticalBarChart } from '../src/components/VerticalBarChart/VerticalBarChart';
+import { VerticalBarChartBase } from '../src/components/VerticalBarChart/VerticalBarChart.base';
 import { max as d3Max } from 'd3-array';
 import { IVerticalBarChartDataPoint } from '../src/index';
 const env = require('../config/tests');
@@ -99,15 +99,16 @@ runTest('VerticalBarChart unit tests', () => {
       const isNumericAxis = true;
 
       const scales = instance._getScales(containerHeight, containerWidth, isNumericAxis);
-
       expect(scales.xBarScale).toBeDefined();
       expect(scales.yBarScale).toBeDefined();
       expect(scales.xBarScale(-1000)).toBeLessThan(0);
       expect(scales.xBarScale(20000)).toBeLessThanOrEqual(containerWidth);
       expect(scales.xBarScale(40000)).toBeGreaterThan(containerWidth);
+      expect(Math.ceil(scales.xBarScale(27181))).toEqual(containerWidth);
       expect(scales.yBarScale(-5000)).toBeLessThan(0);
       expect(scales.yBarScale(5000)).toBeLessThanOrEqual(containerHeight);
       expect(scales.yBarScale(60000)).toBeGreaterThan(containerHeight);
+      expect(Math.ceil(scales.yBarScale(52083))).toEqual(containerHeight);
     });
 
     it('Should return scales for non-numeric axis', () => {
@@ -142,6 +143,7 @@ runTest('VerticalBarChart unit tests', () => {
       expect(scales.yBarScale(-1000)).toBeLessThan(0);
       expect(scales.yBarScale(1000)).toBeLessThanOrEqual(containerHeight);
       expect(scales.yBarScale(6000)).toBeGreaterThan(containerHeight);
+      expect(Math.ceil(scales.yBarScale(3645))).toEqual(containerHeight);
     });
 
     testWithoutWait(
@@ -188,10 +190,12 @@ runTest('VerticalBarChart unit tests', () => {
       expect(scales.yBarScale).toBeDefined();
       expect(scales.xBarScale(-2000)).toBeGreaterThan(containerWidth);
       expect(scales.xBarScale(20000)).toBeLessThanOrEqual(containerWidth);
+      expect(Math.ceil(scales.xBarScale(-1181))).toEqual(containerWidth);
       expect(scales.xBarScale(40000)).toBeLessThan(0);
       expect(scales.yBarScale(-5000)).toBeLessThan(0);
       expect(scales.yBarScale(5000)).toBeLessThanOrEqual(containerHeight);
       expect(scales.yBarScale(60000)).toBeGreaterThan(containerHeight);
+      expect(Math.ceil(scales.yBarScale(52083))).toEqual(containerHeight);
     });
   });
 

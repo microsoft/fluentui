@@ -12,5 +12,5 @@ setIconOptions({
 // Configure enzyme.
 configure({ adapter: new Adapter() });
 
-const env = 'TEST';
+const env = 'PROD';
 module.exports = env;

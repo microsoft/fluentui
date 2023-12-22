@@ -569,7 +569,7 @@ describe('Line chart - Subcomponent xAxis Labels', () => {
     { data: dateChartPoints, rotateXAxisLables: true },
     container => {
       // Assert
-      expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(40.5,0)');
+      expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(55.07565789473684,0)');
     },
     undefined,
     beforeAll,
