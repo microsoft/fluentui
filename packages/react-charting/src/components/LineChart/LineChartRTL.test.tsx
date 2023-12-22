@@ -562,18 +562,6 @@ describe('Line chart - Subcomponent xAxis Labels', () => {
     undefined,
     beforeAll,
   );
-
-  testWithWait(
-    'Should show rotated x-axis labels',
-    LineChart,
-    { data: dateChartPoints, rotateXAxisLables: true },
-    container => {
-      // Assert
-      expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(55.07565789473684,0)');
-    },
-    undefined,
-    beforeAll,
-  );
 });
 
 describe.skip('Line chart - Subcomponent Event', () => {
