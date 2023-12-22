@@ -6,7 +6,7 @@ import bestPracticesMd from './<%= componentName %>BestPractices.md';
 export { Default } from './<%= componentName %>Default.stories';
 
 export default {
-  title: '<%= componentPhase %> Components/<%= componentName %>',
+  title: '<%= storiesTitle %>',
   component: <%= componentName %>,
   parameters: {
     docs: {

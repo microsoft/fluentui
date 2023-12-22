@@ -149,8 +149,6 @@ describe('react-component generator', () => {
   });
 
   describe(`stories`, () => {
-    const componentStoryRootPath = 'packages/react-components/react-one/stories/MyOne';
-
     it(`should remove stories/.gitkeep`, async () => {
       const gitkeepPath = joinPathFragments(metadata.paths.storiesRoot, '.gitkeep');
       expect(tree.exists(gitkeepPath)).toBe(true);
@@ -161,6 +159,7 @@ describe('react-component generator', () => {
     });
 
     it('should create component story files', async () => {
+      const componentStoryRootPath = 'packages/react-components/react-one/stories/MyOne';
       await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
 
       expect(tree.children(componentStoryRootPath)).toMatchInlineSnapshot(`
@@ -173,11 +172,42 @@ describe('react-component generator', () => {
     `);
     });
 
-    it('should create component story for PREVIEW package', async () => {
+    it('should create component story for STABLE package', async () => {
+      const componentStoryRootPath = 'packages/react-components/react-one/stories/MyOne';
       await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
 
       expect(tree.read(joinPathFragments(componentStoryRootPath, 'index.stories.tsx'), 'utf-8')).toMatchInlineSnapshot(`
       "import { MyOne } from '@proj/react-one';
+
+      import descriptionMd from './MyOneDescription.md';
+      import bestPracticesMd from './MyOneBestPractices.md';
+
+      export { Default } from './MyOneDefault.stories';
+
+      export default {
+        title: 'Components/MyOne',
+        component: MyOne,
+        parameters: {
+          docs: {
+            description: {
+              component: [descriptionMd, bestPracticesMd].join('\\\\n'),
+            },
+          },
+        },
+      };
+      "
+    `);
+    });
+
+    it('should create component story for PREVIEW package', async () => {
+      createLibrary(tree, 'react-one-preview');
+
+      const componentStoryRootPath = 'packages/react-components/react-one-preview/stories/MyOne';
+
+      await generator(tree, { project: '@proj/react-one-preview', name: 'MyOne' });
+
+      expect(tree.read(joinPathFragments(componentStoryRootPath, 'index.stories.tsx'), 'utf-8')).toMatchInlineSnapshot(`
+      "import { MyOne } from '@proj/react-one-preview';
 
       import descriptionMd from './MyOneDescription.md';
       import bestPracticesMd from './MyOneBestPractices.md';
@@ -200,15 +230,14 @@ describe('react-component generator', () => {
     });
 
     it('should create component story for COMPAT package', async () => {
-      updateProjectConfiguration(tree, '@proj/react-one', {
-        ...metadata.projectConfiguration,
-        tags: [...metadata.projectConfiguration.tags, 'compat'],
-      });
+      createLibrary(tree, 'react-one-compat', { tags: ['compat'] });
 
-      await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
+      const componentStoryRootPath = 'packages/react-components/react-one-compat/stories/MyOne';
+
+      await generator(tree, { project: '@proj/react-one-compat', name: 'MyOne' });
 
       expect(tree.read(joinPathFragments(componentStoryRootPath, 'index.stories.tsx'), 'utf-8')).toMatchInlineSnapshot(`
-      "import { MyOne } from '@proj/react-one';
+      "import { MyOne } from '@proj/react-one-compat';
 
       import descriptionMd from './MyOneDescription.md';
       import bestPracticesMd from './MyOneBestPractices.md';
@@ -233,7 +262,7 @@ describe('react-component generator', () => {
 });
 
 function createLibrary(tree: Tree, name: string, options: Partial<{ version: string; tags: string[] }> = {}) {
-  const _options = { version: '9.0.0', tags: ['vNext'], ...options };
+  const _options = { version: '9.0.0', tags: ['vNext', ...(options.tags ?? [])], ...options };
   const projectName = '@proj/' + name;
   const root = `packages/react-components/${name}`;
   const sourceRoot = `${root}/src`;
@@ -246,7 +275,7 @@ function createLibrary(tree: Tree, name: string, options: Partial<{ version: str
   tree.write(joinPathFragments(sourceRoot, 'index.ts'), 'export {}');
 
   const metadata = {
-    projectConfiguration: { root, tags: _options.tags, sourceRoot },
+    projectConfiguration: { name: projectName, root, tags: _options.tags, sourceRoot },
     paths: { root, sourceRoot, storiesRoot: joinPathFragments(root, 'stories') },
   };
 
