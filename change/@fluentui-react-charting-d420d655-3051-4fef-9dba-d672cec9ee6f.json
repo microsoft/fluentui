@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Added img aria role to <path/> in SparklineChart",
+  "packageName": "@fluentui/react-charting",
+  "email": "shubhabrata08@gmail.com",
+  "dependentChangeType": "patch"
+}
