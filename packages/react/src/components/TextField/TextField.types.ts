@@ -76,10 +76,10 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   autoAdjustHeight?: boolean;
 
   /**
-   * Callback executed after a multiline TextField's height is adjusted.
-   * This callback is only executed when `autoAdjustHeight` is true.
+   * Ref used to keep the current scrollTop position when having a scrollable wrapper. This helps avoid issues when
+   * deleting a line of text causing the container to scroll to the top.
    */
-  onAdjustHeight?: (scrollHeight: number) => void;
+  scrollContainerRef?: React.RefObject<HTMLElement>;
 
   /**
    * Whether or not the text field is underlined.
