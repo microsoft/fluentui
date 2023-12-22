@@ -83,7 +83,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 }
 ```
 
-3. Finally add your code to the `page.tsx` file in your `app` folder:
+3. Add `fluentui-next-appdir-directive` plugin with the paths for `@griffel` and `@fluentui`:
+
+```js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  experimental: {
+    swcPlugins: [['fluentui-next-appdir-directive', { paths: ['@griffel', '@fluentui'] }]],
+  },
+};
+
+module.exports = nextConfig;
+```
+
+4. Finally add your code to the `page.tsx` file in your `app` folder:
 
 ```tsx
 import * as React from 'react';
