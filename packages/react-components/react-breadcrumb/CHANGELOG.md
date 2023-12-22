@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-breadcrumb
 
-This log was last generated on Mon, 18 Dec 2023 14:40:44 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Dec 2023 17:00:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb_v9.0.5)
+
+Thu, 21 Dec 2023 17:00:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb_v9.0.4..@fluentui/react-breadcrumb_v9.0.5)
+
+### Patches
+
+- fix(breadcrumb): BreadcrumbButton focus border has incorrent width and transition ([PR #30135](https://github.com/microsoft/fluentui/pull/30135) by vkozlova@microsoft.com)
 
 ## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb_v9.0.4)
 

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-timepicker-compat-preview",
   "entries": [
     {
+      "date": "Thu, 21 Dec 2023 17:00:41 GMT",
+      "tag": "@fluentui/react-timepicker-compat-preview_v0.1.8",
+      "version": "0.1.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "430e58ba1d1a6f0b2bcad8577070f01af099770c",
+            "comment": "fix: set default value of hourCycle to undefined"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "comment": "Bump @fluentui/react-combobox to v9.5.36",
+            "commit": "fe0792a703aec2388daee8d6c0b727f1736147f1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Dec 2023 17:48:16 GMT",
       "tag": "@fluentui/react-timepicker-compat-preview_v0.1.7",
       "version": "0.1.7",
