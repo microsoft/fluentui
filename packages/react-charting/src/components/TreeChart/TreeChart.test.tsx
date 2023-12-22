@@ -199,7 +199,7 @@ describe('Render calling with respective to props', () => {
   });
 });
 
-describe('Stacked Bar Chart - axe-core', () => {
+describe('Tree Chart - axe-core', () => {
   test('Should pass accessibility tests', async () => {
     const { container } = render(<TreeChart treeData={threeLayerChart} />);
     const axeResults = await axe(container);
