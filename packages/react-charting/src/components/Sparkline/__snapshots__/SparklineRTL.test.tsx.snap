@@ -84,6 +84,7 @@ exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
         fill="#00AA00"
         fillOpacity={0.2}
         opacity={1}
+        role="img"
       />
     </svg>
     <svg
