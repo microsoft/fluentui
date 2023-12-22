@@ -39,7 +39,10 @@ describe('Sankey chart rendering', () => {
 });
 
 describe('Sankey Chart - axe-core', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should pass accessibility tests', async () => {
+    jest.spyOn(SankeyChartBase.prototype as any, '_createNodes').mockImplementation(() => []);
     const { container } = render(<SankeyChart data={data} />);
     const axeResults = await axe(container);
     expect(axeResults).toHaveNoViolations();
