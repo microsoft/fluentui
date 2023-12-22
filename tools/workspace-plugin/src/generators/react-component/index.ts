@@ -58,6 +58,7 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
   const sourceRoot = options.projectConfig.sourceRoot as string;
   const templateOptions = {
     ...options,
+    componentPhase: options.projectConfig.tags?.includes('compat') ? 'Compat' : 'Preview',
     tmpl: '',
   };
 

@@ -1,5 +1,5 @@
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
-import { Tree, addProjectConfiguration, writeJson, joinPathFragments } from '@nx/devkit';
+import { Tree, addProjectConfiguration, writeJson, joinPathFragments, updateProjectConfiguration } from '@nx/devkit';
 
 import generator from './index';
 
@@ -148,20 +148,22 @@ describe('react-component generator', () => {
     `);
   });
 
-  it(`should remove stores/.gitkeep`, async () => {
-    const gitkeepPath = joinPathFragments(metadata.paths.storiesRoot, '.gitkeep');
-    expect(tree.exists(gitkeepPath)).toBe(true);
-
-    await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
-
-    expect(tree.exists(gitkeepPath)).toBe(false);
-  });
-
-  it('should create component story', async () => {
-    await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
-
+  describe(`stories`, () => {
     const componentStoryRootPath = 'packages/react-components/react-one/stories/MyOne';
-    expect(tree.children(componentStoryRootPath)).toMatchInlineSnapshot(`
+
+    it(`should remove stories/.gitkeep`, async () => {
+      const gitkeepPath = joinPathFragments(metadata.paths.storiesRoot, '.gitkeep');
+      expect(tree.exists(gitkeepPath)).toBe(true);
+
+      await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
+
+      expect(tree.exists(gitkeepPath)).toBe(false);
+    });
+
+    it('should create component story files', async () => {
+      await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
+
+      expect(tree.children(componentStoryRootPath)).toMatchInlineSnapshot(`
       Array [
         "MyOneBestPractices.md",
         "MyOneDefault.stories.tsx",
@@ -169,8 +171,12 @@ describe('react-component generator', () => {
         "index.stories.tsx",
       ]
     `);
+    });
 
-    expect(tree.read(joinPathFragments(componentStoryRootPath, 'index.stories.tsx'), 'utf-8')).toMatchInlineSnapshot(`
+    it('should create component story for PREVIEW package', async () => {
+      await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
+
+      expect(tree.read(joinPathFragments(componentStoryRootPath, 'index.stories.tsx'), 'utf-8')).toMatchInlineSnapshot(`
       "import { MyOne } from '@proj/react-one';
 
       import descriptionMd from './MyOneDescription.md';
@@ -191,6 +197,38 @@ describe('react-component generator', () => {
       };
       "
     `);
+    });
+
+    it('should create component story for COMPAT package', async () => {
+      updateProjectConfiguration(tree, '@proj/react-one', {
+        ...metadata.projectConfiguration,
+        tags: [...metadata.projectConfiguration.tags, 'compat'],
+      });
+
+      await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
+
+      expect(tree.read(joinPathFragments(componentStoryRootPath, 'index.stories.tsx'), 'utf-8')).toMatchInlineSnapshot(`
+      "import { MyOne } from '@proj/react-one';
+
+      import descriptionMd from './MyOneDescription.md';
+      import bestPracticesMd from './MyOneBestPractices.md';
+
+      export { Default } from './MyOneDefault.stories';
+
+      export default {
+        title: 'Compat Components/MyOne',
+        component: MyOne,
+        parameters: {
+          docs: {
+            description: {
+              component: [descriptionMd, bestPracticesMd].join('\\\\n'),
+            },
+          },
+        },
+      };
+      "
+    `);
+    });
   });
 });
 
@@ -208,6 +246,7 @@ function createLibrary(tree: Tree, name: string, options: Partial<{ version: str
   tree.write(joinPathFragments(sourceRoot, 'index.ts'), 'export {}');
 
   const metadata = {
+    projectConfiguration: { root, tags: _options.tags, sourceRoot },
     paths: { root, sourceRoot, storiesRoot: joinPathFragments(root, 'stories') },
   };
 
