@@ -12,7 +12,35 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
+export const ColorSwatch: ForwardRefComponent<ColorSwatchProps>;
+
+// @public (undocumented)
+export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots>;
+
+// @public
+export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & {
+    color?: string;
+};
+
+// @public (undocumented)
+export type ColorSwatchSlots = {
+    root: Slot<'button'>;
+    icon?: Slot<'span'>;
+};
+
+// @public
+export type ColorSwatchState = ComponentState<ColorSwatchSlots>;
+
+// @public
+export const renderColorSwatch_unstable: (state: ColorSwatchState) => JSX.Element;
+
+// @public
 export const renderSwatchPicker_unstable: (state: SwatchPickerState) => JSX.Element;
+
+// @public (undocumented)
+export const swatchCSSVars: {
+    swatchColor: string;
+};
 
 // @public
 export const SwatchPicker: ForwardRefComponent<SwatchPickerProps>;
@@ -26,10 +54,17 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {};
 // @public (undocumented)
 export type SwatchPickerSlots = {
     root: Slot<'div'>;
+    row: Slot<'div'>;
 };
 
 // @public
 export type SwatchPickerState = ComponentState<SwatchPickerSlots>;
+
+// @public
+export const useColorSwatch_unstable: (props: ColorSwatchProps, ref: React_2.Ref<HTMLButtonElement>) => ColorSwatchState;
+
+// @public
+export const useColorSwatchStyles_unstable: (state: ColorSwatchState) => ColorSwatchState;
 
 // @public
 export const useSwatchPicker_unstable: (props: SwatchPickerProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerState;

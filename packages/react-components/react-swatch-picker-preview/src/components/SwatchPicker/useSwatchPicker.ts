@@ -22,11 +22,11 @@ export const useSwatchPicker_unstable = (
     axis: 'grid-linear',
     memorizeCurrent: true,
   });
+
   return {
     components: {
       root: 'div',
       row: 'div',
-      swatch: 'button',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
@@ -39,11 +39,6 @@ export const useSwatchPicker_unstable = (
     ),
     row: {
       role: 'row',
-    },
-    swatch: {
-      role: 'gridcell',
-      tabIndex: 0,
-      'aria-selected': false,
     },
   };
 };
