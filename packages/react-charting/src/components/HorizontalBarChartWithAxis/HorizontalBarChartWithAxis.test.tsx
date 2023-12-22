@@ -89,11 +89,7 @@ describe('HorizontalBarChartWithAxis snapShot testing', () => {
     let component: any;
     rendererAct(() => {
       component = renderer.create(
-        <HorizontalBarChartWithAxis
-          data={points_HBCWAForWrapLabels}
-          showYAxisLables={true}
-          showYAxisLablesTooltip={false}
-        />,
+        <HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLables={true} showYAxisLablesTooltip={false} />,
       );
     });
     const tree = component!.toJSON();

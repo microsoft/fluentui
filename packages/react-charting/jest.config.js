@@ -23,6 +23,7 @@ const config = createConfig({
   moduleNameMapper: {
     ...getEsmOnlyPackagesToCjsMapping(),
   },
+  modulePathIgnorePatterns: ['<rootDir>/src/utilities/testData.test.ts'],
 });
 
 module.exports = config;
