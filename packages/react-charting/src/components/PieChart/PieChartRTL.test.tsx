@@ -32,7 +32,7 @@ describe('Pie chart rendering', () => {
 
 describe('Pie Chart - axe-core', () => {
   test('Should pass accessibility tests', async () => {
-    const { container } = render(<PieChart data={chartPoints} />);
+    const { container } = render(<PieChart data={chartPoints} colors={colors} />);
     const axeResults = await axe(container);
     expect(axeResults).toHaveNoViolations();
   }, 10000);

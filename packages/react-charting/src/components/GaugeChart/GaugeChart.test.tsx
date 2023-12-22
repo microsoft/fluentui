@@ -313,6 +313,20 @@ describe('GaugeChart - event listeners testing', () => {
 });
 
 describe('Gauge Chart - axe-core', () => {
+  beforeEach(() => {
+    sharedBeforeEach();
+
+    originalGetComputedTextLength = SVGElement.prototype.getComputedTextLength;
+    SVGElement.prototype.getComputedTextLength = () => {
+      return 0;
+    };
+  });
+
+  afterEach(() => {
+    sharedAfterEach();
+
+    SVGElement.prototype.getComputedTextLength = originalGetComputedTextLength;
+  });
   it('Should pass accessibility tests', async () => {
     const { container } = render(<GaugeChart segments={segments} chartValue={25} />);
     const axeResults = await axe(container);
