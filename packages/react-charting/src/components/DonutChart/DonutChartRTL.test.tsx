@@ -182,13 +182,13 @@ describe('Donut chart interactions', () => {
   });
 });
 
-// describe('Donut Chart - axe-core', () => {
-//   test('Should pass accessibility tests', async () => {
-//     const { container } = render(<DonutChart data={chartPoints_DC} />);
-//     let axeResults;
-//     await act(async () => {
-//       axeResults = await axe(container);
-//     });
-//     expect(axeResults).toHaveNoViolations();
-//   });
-// });
+describe('Donut Chart - axe-core', () => {
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<DonutChart data={chartPoints_DC} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
+  });
+});

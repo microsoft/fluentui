@@ -118,7 +118,7 @@ export const points_HBCWA = [
   },
 ];
 
-const points_DC: IChartDataPoint[] = [
+export const points_DC: IChartDataPoint[] = [
   { legend: 'first', data: 20000, color: '#E5E5E5', xAxisCalloutData: '2020/04/30' },
   { legend: 'second', data: 39000, color: '#0078D4', xAxisCalloutData: '2020/04/20' },
   { legend: 'third', data: 45000, color: '#DADADA', xAxisCalloutData: '2020/04/25' },

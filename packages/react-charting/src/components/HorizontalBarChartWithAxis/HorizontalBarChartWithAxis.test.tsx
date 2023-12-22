@@ -11,6 +11,9 @@ const rendererAct = renderer.act;
 import { act as domAct } from 'react-dom/test-utils';
 import { points_HBCWA } from '../../utilities/test-data';
 import toJson from 'enzyme-to-json';
+import { toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 let wrapper:
   | ReactWrapper<IHorizontalBarChartWithAxisProps, IHorizontalBarChartWithAxisState, HorizontalBarChartWithAxisBase>

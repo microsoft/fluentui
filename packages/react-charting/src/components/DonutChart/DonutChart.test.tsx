@@ -1,7 +1,7 @@
 jest.mock('react-dom');
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { chartPoints_DC } from '../../utilities/test-data';
+import { chartPoints_DC, points_DC } from '../../utilities/test-data';
 import { resetIds } from '../../Utilities';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
@@ -62,8 +62,8 @@ describe('DonutChart snapShot testing', () => {
   });
 
   it('renders DonutChart correctly without color points', () => {
-    const chartPointColor = chartPoints_DC.chartData![0].color;
-    delete chartPoints_DC.chartData![0].color;
+    const chartPointColor = points_DC[0].color;
+    delete points_DC[0].color;
 
     let component: any;
     rendererAct(() => {
@@ -71,7 +71,7 @@ describe('DonutChart snapShot testing', () => {
     });
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
-    chartPoints_DC.chartData![0].color = chartPointColor;
+    points_DC[0].color = chartPointColor;
   });
 
   it('renders hideLegend correctly', () => {
