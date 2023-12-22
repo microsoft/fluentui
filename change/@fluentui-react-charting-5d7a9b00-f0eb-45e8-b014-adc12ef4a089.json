@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Fixing act errors in terminal",
+  "comment": "test: fix act errors in terminal",
   "packageName": "@fluentui/react-charting",
   "email": "srmukher@microsoft.com",
   "dependentChangeType": "none"
