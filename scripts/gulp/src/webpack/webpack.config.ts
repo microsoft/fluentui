@@ -7,7 +7,6 @@ import TerserPlugin from 'terser-webpack-plugin';
 import webpack from 'webpack';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
-
 import config from '../config';
 
 const { paths } = config;
