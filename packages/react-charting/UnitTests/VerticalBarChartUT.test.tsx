@@ -1,5 +1,5 @@
 import { DarkTheme } from '@fluentui/theme-samples';
-import { chartPoints } from '../src/components/VerticalBarChart/tests/test-data';
+import { chartPointsVBC } from '../src/Utilities/test-data';
 import { testWithoutWait } from '../src/utilities/TestUtility.test';
 import * as utils from '@fluentui/react/lib/Utilities';
 import { DefaultPalette } from '@fluentui/react';
@@ -82,7 +82,7 @@ runTest('VerticalBarChart unit tests', () => {
         bottom: 10,
       };
       const instance = new VerticalBarChartBase({
-        data: chartPoints,
+        data: chartPointsVBC,
         theme: DarkTheme,
         margins: margin,
       });
@@ -92,7 +92,7 @@ runTest('VerticalBarChart unit tests', () => {
         d3Max(instance._points, (point: IVerticalBarChartDataPoint) => point.y)!,
         instance.props.yMaxValue || 0,
       );
-      instance._xAxisLabels = chartPoints!.map((point: IVerticalBarChartDataPoint) => point.x as string);
+      instance._xAxisLabels = chartPointsVBC!.map((point: IVerticalBarChartDataPoint) => point.x as string);
       instance._getMargins(margin!);
       const containerHeight = 500;
       const containerWidth = 800;
@@ -149,7 +149,7 @@ runTest('VerticalBarChart unit tests', () => {
     testWithoutWait(
       'Should render the vertical bar chart with numeric x-axis data - RTL',
       VerticalBarChart,
-      { data: chartPoints },
+      { data: chartPointsVBC },
       container => {
         // Assert
         expect(container).toMatchSnapshot();
@@ -168,7 +168,7 @@ runTest('VerticalBarChart unit tests', () => {
         bottom: 10,
       };
       const instance = new VerticalBarChartBase({
-        data: chartPoints,
+        data: chartPointsVBC,
         theme: DarkTheme,
         margins: margin,
       });
@@ -178,7 +178,7 @@ runTest('VerticalBarChart unit tests', () => {
         d3Max(instance._points, (point: IVerticalBarChartDataPoint) => point.y)!,
         instance.props.yMaxValue || 0,
       );
-      instance._xAxisLabels = chartPoints!.map((point: IVerticalBarChartDataPoint) => point.x as string);
+      instance._xAxisLabels = chartPointsVBC!.map((point: IVerticalBarChartDataPoint) => point.x as string);
       instance._getMargins(margin!);
       const containerHeight = 500;
       const containerWidth = 800;
@@ -202,43 +202,43 @@ runTest('VerticalBarChart unit tests', () => {
   runTest('create colors', () => {
     test('should return the color scale - using single color', () => {
       const instance = new VerticalBarChartBase({
-        data: chartPoints,
+        data: chartPointsVBC,
         colors: [DefaultPalette.green],
         theme: DarkTheme,
         useSingleColor: true,
       });
       expect(instance).toBeDefined();
-      instance._getAxisData({ yAxisDomainValues: chartPoints.map(item => item.y) });
+      instance._getAxisData({ yAxisDomainValues: chartPointsVBC.map(item => item.y) });
       instance._adjustProps();
       const result = instance._createColors();
       expect(result).toBeDefined();
-      expect(result(chartPoints[0].y)).toBe(DefaultPalette.green);
-      expect(result(chartPoints[1].y)).toBe(DefaultPalette.green);
-      expect(result(chartPoints[2].y)).toBe(DefaultPalette.green);
+      expect(result(chartPointsVBC[0].y)).toBe(DefaultPalette.green);
+      expect(result(chartPointsVBC[1].y)).toBe(DefaultPalette.green);
+      expect(result(chartPointsVBC[2].y)).toBe(DefaultPalette.green);
     });
     test('should return the color scale - using multiple color', () => {
       const instance = new VerticalBarChartBase({
-        data: chartPoints,
+        data: chartPointsVBC,
         colors: [DefaultPalette.red, DefaultPalette.blue, DefaultPalette.green],
         theme: DarkTheme,
         useSingleColor: false,
       });
       expect(instance).toBeDefined();
-      instance._getAxisData({ yAxisDomainValues: chartPoints.map(item => item.y) });
+      instance._getAxisData({ yAxisDomainValues: chartPointsVBC.map(item => item.y) });
       instance._adjustProps();
       const result = instance._createColors();
       expect(result).toBeDefined();
-      expect(result(chartPoints[0].y)).toBe('rgb(77, 86, 153)');
-      expect(result(chartPoints[1].y)).toBe('rgb(37, 129, 0)');
-      expect(result(chartPoints[2].y)).toBe('rgb(16, 124, 16)');
+      expect(result(chartPointsVBC[0].y)).toBe('rgb(77, 86, 153)');
+      expect(result(chartPointsVBC[1].y)).toBe('rgb(37, 129, 0)');
+      expect(result(chartPointsVBC[2].y)).toBe('rgb(16, 124, 16)');
     });
   });
 
   runTest('get aria labels', () => {
     test('returns an array of aria labels for each data point', () => {
-      const instance = new VerticalBarChartBase({ data: chartPoints });
+      const instance = new VerticalBarChartBase({ data: chartPointsVBC });
       expect(instance).toBeDefined();
-      const result = instance._getAriaLabel(chartPoints[0]);
+      const result = instance._getAriaLabel(chartPointsVBC[0]);
       expect(result).toEqual('2020/04/30. First, 10%.');
     });
   });
