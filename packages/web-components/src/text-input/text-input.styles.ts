@@ -157,7 +157,7 @@ export const styles = css`
     border-bottom-color: var(${colorCompoundBrandStrokePressed});
   }
   :host([appearance='outline']:focus-within) .root {
-    border: var(${strokeWidthThin} solid var(${colorNeutralStroke1});
+    border: var(${strokeWidthThin}) solid var(${colorNeutralStroke1});
   }
   :host(:focus-within) .control {
     color: var(${colorNeutralForeground1});

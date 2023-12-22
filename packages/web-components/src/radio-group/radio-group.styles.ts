@@ -21,7 +21,7 @@ export const styles = css`
   :host {
     align-items: flex-start;
     flex-direction: column;
-    row-gap: var(${spacingVerticalS};
+    row-gap: var(${spacingVerticalS});
   }
   :host([disabled]) ::slotted([role='radio']) {
     --control-border-color: var(${colorNeutralForegroundDisabled});
@@ -29,7 +29,7 @@ export const styles = css`
     --state-color: var(${colorNeutralForegroundDisabled});
   }
   ::slotted([slot='label']) {
-    color: var(${colorNeutralForeground1};
+    color: var(${colorNeutralForeground1});
     padding: var(${spacingVerticalS}) var(${spacingHorizontalS}) var(${spacingVerticalS}) var(${spacingHorizontalXS});
     font: var(${fontWeightRegular}) var(${fontSizeBase300}) / var(${lineHeightBase300}) var(${fontFamilyBase});
     cursor: default;

@@ -498,7 +498,7 @@ export const styles = css`
     transition-delay: var(${animations.fastEase}), var(${animations.nullEasing});
   }
   :host([active])::before {
-    box-shadow: var(${shadow8};
+    box-shadow: var(${shadow8});
     border-style: solid;
     border-color: var(${colorBrandBackgroundStatic});
   }
