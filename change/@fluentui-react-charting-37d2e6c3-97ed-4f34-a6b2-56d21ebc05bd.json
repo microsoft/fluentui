@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "presentation role attribute removed from svg element due to ARIA violations",
+  "packageName": "@fluentui/react-charting",
+  "email": "shubhabrata08@gmail.com",
+  "dependentChangeType": "patch"
+}
