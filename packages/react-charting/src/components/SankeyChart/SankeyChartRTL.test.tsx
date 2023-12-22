@@ -5,6 +5,9 @@ import { data } from './SankeyChart.test';
 import { IChartProps, SankeyChart } from './index';
 import { resetIds } from '../../Utilities';
 import { SankeyChartBase } from './SankeyChart.base';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 const emptyChartPoints: IChartProps = {
   chartData: [],
@@ -33,4 +36,12 @@ describe('Sankey chart rendering', () => {
       expect(getById(container, /_SankeyChart_empty/i)).toHaveLength(0);
     });
   });
+});
+
+describe('Sankey Chart - axe-core', () => {
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<SankeyChart data={data} />);
+    const axeResults = await axe(container);
+    expect(axeResults).toHaveNoViolations();
+  }, 10000);
 });

@@ -3,6 +3,9 @@ import { queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import { PieChart } from './index';
 import { chartPoints, colors } from './PieChart.test';
 import * as utils from '../../utilities/utilities';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 describe('Pie chart rendering', () => {
   test('Should re-render the Pie chart with data', async () => {
@@ -25,4 +28,12 @@ describe('Pie chart rendering', () => {
       expect(getById(container, /_PieChart_empty/i)).toHaveLength(0);
     });
   });
+});
+
+describe('Pie Chart - axe-core', () => {
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<PieChart data={chartPoints} />);
+    const axeResults = await axe(container);
+    expect(axeResults).toHaveNoViolations();
+  }, 10000);
 });

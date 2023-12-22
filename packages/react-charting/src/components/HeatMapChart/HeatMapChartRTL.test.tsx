@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import { HeatMapChart, IHeatMapChartProps } from './index';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 const yPoint: string[] = ['p1', 'p2'];
 
@@ -59,4 +62,18 @@ describe('HeatMap chart rendering', () => {
       expect(getById(container, /_HeatMap_empty/i)).toHaveLength(0);
     });
   });
+});
+
+describe('Heat Map Chart - axe-core', () => {
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    const axeResults = await axe(container);
+    expect(axeResults).toHaveNoViolations();
+  }, 10000);
 });
