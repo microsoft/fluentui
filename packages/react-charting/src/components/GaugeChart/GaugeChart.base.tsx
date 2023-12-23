@@ -136,7 +136,6 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <svg
             className={this._classNames.chart}
-            role="presentation"
             aria-label={`This is a gauge chart with ${this._segments.length} section represented.`}
             onMouseLeave={this._handleMouseOut}
           >

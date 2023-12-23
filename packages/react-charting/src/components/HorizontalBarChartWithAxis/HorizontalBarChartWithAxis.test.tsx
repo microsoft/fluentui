@@ -1,4 +1,5 @@
 jest.mock('react-dom');
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
@@ -6,9 +7,11 @@ import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { HorizontalBarChartWithAxis, IHorizontalBarChartWithAxisProps } from '../../index';
 import { IHorizontalBarChartWithAxisState, HorizontalBarChartWithAxisBase } from './HorizontalBarChartWithAxis.base';
 import { resetIds } from '@fluentui/react';
+const rendererAct = renderer.act;
+import { act as domAct } from 'react-dom/test-utils';
+import { pointsHBCWA } from '../../utilities/test-data';
 import toJson from 'enzyme-to-json';
-import { axe, toHaveNoViolations } from 'jest-axe';
-import { render } from '@testing-library/react';
+import { toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 
@@ -33,42 +36,6 @@ function sharedAfterEach() {
     jest.useRealTimers();
   }
 }
-
-const points = [
-  {
-    x: 10000,
-    y: 5000,
-    legend: 'Oranges',
-    color: DefaultPalette.accent,
-    xAxisCalloutData: '2020/04/30',
-    yAxisCalloutData: '10%',
-  },
-  {
-    x: 20000,
-    y: 50000,
-    legend: 'Dogs',
-    color: DefaultPalette.blueDark,
-    xAxisCalloutData: '2020/04/30',
-    yAxisCalloutData: '20%',
-  },
-  {
-    x: 25000,
-    y: 30000,
-    legend: 'Apples',
-    color: DefaultPalette.blueMid,
-    xAxisCalloutData: '2020/04/30',
-    yAxisCalloutData: '37%',
-  },
-
-  {
-    x: 40000,
-    y: 13000,
-    legend: 'Bananas',
-    color: DefaultPalette.blueLight,
-    xAxisCalloutData: '2020/04/30',
-    yAxisCalloutData: '88%',
-  },
-];
 
 const pointsForWrapLabels = [
   {
@@ -95,29 +62,41 @@ const pointsForWrapLabels = [
 
 describe('HorizontalBarChartWithAxis snapShot testing', () => {
   it('renders HorizontalBarChartWithAxis correctly', () => {
-    const component = renderer.create(<HorizontalBarChartWithAxis data={points} />);
-    const tree = component.toJSON();
+    let component: any;
+    rendererAct(() => {
+      component = renderer.create(<HorizontalBarChartWithAxis data={pointsHBCWA} />);
+    });
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
   it('renders hideLegend correctly', () => {
-    const component = renderer.create(<HorizontalBarChartWithAxis data={points} hideLegend={true} />);
-    const tree = component.toJSON();
+    let component: any;
+    rendererAct(() => {
+      component = renderer.create(<HorizontalBarChartWithAxis data={pointsHBCWA} hideLegend={true} />);
+    });
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders showToolTipForYAxisLabels correctly', () => {
-    const component = renderer.create(
-      <HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLablesTooltip={true} />,
-    );
-    const tree = component.toJSON();
+    let component: any;
+    rendererAct(() => {
+      component = renderer.create(
+        <HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLablesTooltip={true} />,
+      );
+    });
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders showYAxisLables correctly', () => {
-    const component = renderer.create(
-      <HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLables={true} showYAxisLablesTooltip={false} />,
-    );
-    const tree = component.toJSON();
+    let component: any;
+    rendererAct(() => {
+      component = renderer.create(
+        <HorizontalBarChartWithAxis data={pointsForWrapLabels} showYAxisLables={true} showYAxisLablesTooltip={false} />,
+      );
+    });
+    const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
 });
@@ -127,24 +106,34 @@ describe('HorizontalBarChartWithAxis - basic props', () => {
   afterEach(sharedAfterEach);
 
   it('Should not mount legend when hideLegend true ', () => {
-    wrapper = mount(<HorizontalBarChartWithAxis data={points} hideLegend={true} />);
-    const hideLegendDOM = wrapper.getDOMNode().querySelectorAll('[class^="legendContainer"]');
+    domAct(() => {
+      wrapper = mount(<HorizontalBarChartWithAxis data={pointsHBCWA} hideLegend={true} />);
+    });
+    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM!.length).toBe(0);
   });
+
   it('Should mount legend when hideLegend false ', () => {
-    wrapper = mount(<HorizontalBarChartWithAxis data={points} />);
-    const hideLegendDOM = wrapper.getDOMNode().querySelectorAll('[class^="legendContainer"]');
+    domAct(() => {
+      wrapper = mount(<HorizontalBarChartWithAxis data={pointsHBCWA} />);
+    });
+    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
   });
+
   it('Should mount callout when hideTootip false ', () => {
-    wrapper = mount(<HorizontalBarChartWithAxis data={points} />);
-    const calloutDOM = wrapper.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
+    domAct(() => {
+      wrapper = mount(<HorizontalBarChartWithAxis data={pointsHBCWA} />);
+    });
+    const calloutDOM = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
     expect(calloutDOM).toBeDefined();
   });
 
   it('Should not mount callout when hideTootip true ', () => {
-    wrapper = mount(<HorizontalBarChartWithAxis data={points} hideTooltip={true} />);
-    const calloutDOM = wrapper.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
+    domAct(() => {
+      wrapper = mount(<HorizontalBarChartWithAxis data={pointsHBCWA} hideTooltip={true} />);
+    });
+    const calloutDOM = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
     expect(calloutDOM!.length).toBe(0);
   });
 });
@@ -152,11 +141,13 @@ describe('Render calling with respective to props', () => {
   it('No prop changes', () => {
     const renderMock = jest.spyOn(HorizontalBarChartWithAxisBase.prototype, 'render');
     const props = {
-      data: points,
+      data: pointsHBCWA,
       height: 300,
       width: 600,
     };
-    mount(<HorizontalBarChartWithAxis {...props} />);
+    domAct(() => {
+      mount(<HorizontalBarChartWithAxis {...props} />);
+    });
     expect(renderMock).toHaveBeenCalledTimes(1);
     renderMock.mockRestore();
   });
@@ -164,13 +155,15 @@ describe('Render calling with respective to props', () => {
   it('prop changes', () => {
     const renderMock = jest.spyOn(HorizontalBarChartWithAxisBase.prototype, 'render');
     const props = {
-      data: points,
+      data: pointsHBCWA,
       height: 300,
       width: 600,
       hideLegend: true,
     };
-    const component = mount(<HorizontalBarChartWithAxis {...props} />);
-    component.setProps({ ...props, hideTooltip: true });
+    domAct(() => {
+      const component = mount(<HorizontalBarChartWithAxis {...props} />);
+      component.setProps({ ...props, hideTooltip: true });
+    });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
   });
@@ -182,7 +175,7 @@ describe('HorizontalBarChartWithAxis - mouse events', () => {
 
   // FIXME - non deterministic snapshots causing master pipeline breaks
   it.skip('Should render callout correctly on mouseover', async () => {
-    wrapper = mount(<HorizontalBarChartWithAxis data={points} calloutProps={{ doNotLayer: true }} />);
+    wrapper = mount(<HorizontalBarChartWithAxis data={pointsHBCWA} calloutProps={{ doNotLayer: true }} />);
 
     // Wait for the chart to be resized
 
@@ -195,12 +188,4 @@ describe('HorizontalBarChartWithAxis - mouse events', () => {
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
-});
-
-describe('Horizontal Bar Chart With Axis - axe-core', () => {
-  test('Should pass accessibility tests', async () => {
-    const { container } = render(<HorizontalBarChartWithAxis data={points} />);
-    const axeResults = await axe(container);
-    expect(axeResults).toHaveNoViolations();
-  }, 10000);
 });

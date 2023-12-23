@@ -10,7 +10,7 @@ import {
 } from '../../utilities/TestUtility.test';
 import { StackedBarChart } from './StackedBarChart';
 import { DefaultPalette, ThemeProvider } from '@fluentui/react';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { StackedBarChartBase } from './StackedBarChart.base';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { axe, toHaveNoViolations } from 'jest-axe';
@@ -390,7 +390,10 @@ test('Should reflect theme change', () => {
 describe('Stacked Bar Chart - axe-core', () => {
   test('Should pass accessibility tests', async () => {
     const { container } = render(<StackedBarChart data={data} />);
-    const axeResults = await axe(container);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
     expect(axeResults).toHaveNoViolations();
-  }, 10000);
+  });
 });
