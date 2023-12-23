@@ -348,7 +348,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
      * Now if the sumOfPercent is 120% -> This needs to be scaled down to 95%, not 100%
      * since that's only space available to the bars
      */
-    const scalingRatio = sumOfPercent !== 0 ? (sumOfPercent - totalMarginPercent) / 100 : 1;
+    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / (100 - totalMarginPercent) : 1;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
