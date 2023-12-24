@@ -69,6 +69,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _bars: JSX.Element[];
   private _xAxisLabels: string[];
   private _yMax: number;
+  private _yMin: number;
   private _isHavingLine: boolean;
   private _tooltipId: string;
   private _xAxisType: XAxisTypes;
@@ -111,6 +112,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)!,
       this.props.yMaxValue || 0,
     );
+    this._yMin = Math.min(d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.y)!);
     const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -144,6 +146,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       <CartesianChart
         {...this.props}
         points={this._points}
+        yMinValue={this._yMin}
         chartType={ChartTypes.VerticalBarChart}
         xAxisType={this._xAxisType}
         calloutProps={calloutProps}
@@ -508,7 +511,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           containerWidth - this.margins.right! - this._barWidth - this._domainMargin,
         ]);
       const yBarScale = d3ScaleLinear()
-        .domain([0, this._yMax])
+        .domain([this._yMin, this._yMax])
         .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
       return { xBarScale, yBarScale };
     } else {
@@ -522,7 +525,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         .paddingInner(2 / 3);
 
       const yBarScale = d3ScaleLinear()
-        .domain([0, this._yMax])
+        .domain([this._yMin, this._yMax])
         .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
       return { xBarScale, yBarScale };
     }
@@ -539,27 +542,30 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         legendColor: this.state.color,
         shouldHighlight,
       });
-      const barHeight: number = Math.max(yBarScale(point.y), 0);
-      let adjustedBarHeight = 0;
-      if (barHeight <= 0) {
-        return <React.Fragment key={point.x}> </React.Fragment>;
-      } else if (barHeight <= Math.ceil(yBarScale(this._yMax) / 100.0)) {
-        adjustedBarHeight = Math.ceil(yBarScale(this._yMax) / 100.0);
-      } else {
-        adjustedBarHeight = barHeight;
-      }
+      const barHeight: number = yBarScale(point.y) - yBarScale(0);
+      console.log(barHeight);
+      const adjustedBarHeight = barHeight;
+      // if (barHeight <= 0) {
+      //   return <React.Fragment key={point.x}> </React.Fragment>;
+      // } else if (Math.abs(barHeight) <= Math.ceil(yBarScale(this._yMax-this._yMin) / 100.0)) {
+      //   adjustedBarHeight = Math.ceil(yBarScale(this._yMax-this._yMin) / 100.0);
+      // } else {
+      //   adjustedBarHeight = barHeight;
+      // }
       const xPoint = xBarScale(point.x as number);
-      const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
+      const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight - yBarScale(0);
+      const negativePointBase = containerHeight - this.margins.bottom! - yBarScale(0);
       return (
         <g key={point.x}>
           <rect
             id={getId('_VBC_bar_')}
             x={xPoint}
             className={this._classNames.opacityChangeOnHover}
-            y={yPoint}
+            y={adjustedBarHeight > 0 ? yPoint : negativePointBase}
             width={this._barWidth}
             data-is-focusable={!this.props.hideTooltip}
-            height={adjustedBarHeight}
+            height={Math.abs(adjustedBarHeight)}
+            // transform={`translate(0,${-yBarScale(0)})`}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
             }}
@@ -572,7 +578,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onBlur={this._onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, adjustedBarHeight < 0)}
         </g>
       );
     });
@@ -608,8 +614,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       let adjustedBarHeight = 0;
       if (barHeight <= 0) {
         return <React.Fragment key={point.x}> </React.Fragment>;
-      } else if (barHeight <= Math.ceil(yBarScale(this._yMax) / 100.0)) {
-        adjustedBarHeight = Math.ceil(yBarScale(this._yMax) / 100.0);
+      } else if (barHeight <= Math.ceil(yBarScale(this._yMax - this._yMin) / 100.0)) {
+        adjustedBarHeight = Math.ceil(yBarScale(this._yMax - this._yMin) / 100.0);
       } else {
         adjustedBarHeight = barHeight;
       }
@@ -792,7 +798,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     );
   };
 
-  private _renderBarLabel(xPoint: number, yPoint: number, barValue: number, legend: string) {
+  private _renderBarLabel(xPoint: number, yPoint: number, barValue: number, legend: string, isNegativeBar: boolean) {
     if (
       this.props.hideLabels ||
       this._barWidth < 16 ||
@@ -804,7 +810,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     return (
       <text
         x={xPoint + this._barWidth / 2}
-        y={yPoint - 6}
+        y={isNegativeBar ? yPoint + 12 : yPoint - 6}
         textAnchor="middle"
         className={this._classNames.barLabel}
         aria-hidden={true}

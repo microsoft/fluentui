@@ -404,7 +404,7 @@ export function createYAxisForOtherCharts(
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
+  const finalYmin = yMinValue;
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset);
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, domainValues[domainValues.length - 1]])
