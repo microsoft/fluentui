@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentState, SlotPropsRecord, UnknownSlotProps } from './types';
+import type { ComponentState, SlotPropsRecord, UnknownSlotProps } from '../types';
 import { ObjectSlotProps, Slots } from './getSlots';
 
 /**
@@ -9,25 +9,36 @@ import { ObjectSlotProps, Slots } from './getSlots';
  * This is an internal temporary method, this method will cease to exist eventually!
  *
  * * ❗️❗️ **DO NOT USE IT EXTERNALLY** ❗️❗️
+ *
+ * @deprecated use slot.always or slot.optional combined with assertSlots instead
  */
 export function getSlotsNext<R extends SlotPropsRecord>(
   state: ComponentState<R>,
 ): {
+  // eslint-disable-next-line deprecation/deprecation
   slots: Slots<R>;
+  // eslint-disable-next-line deprecation/deprecation
   slotProps: ObjectSlotProps<R>;
 } {
+  // eslint-disable-next-line deprecation/deprecation
   const slots = {} as Slots<R>;
   const slotProps = {} as R;
 
   const slotNames: (keyof R)[] = Object.keys(state.components);
   for (const slotName of slotNames) {
+    // eslint-disable-next-line deprecation/deprecation
     const [slot, props] = getSlotNext(state, slotName);
+    // eslint-disable-next-line deprecation/deprecation
     slots[slotName] = slot as Slots<R>[typeof slotName];
     slotProps[slotName] = props;
   }
+  // eslint-disable-next-line deprecation/deprecation
   return { slots, slotProps: slotProps as unknown as ObjectSlotProps<R> };
 }
 
+/**
+ * @deprecated use slot.always or slot.optional combined with assertSlots instead
+ */
 function getSlotNext<R extends SlotPropsRecord, K extends keyof R>(
   state: ComponentState<R>,
   slotName: K,

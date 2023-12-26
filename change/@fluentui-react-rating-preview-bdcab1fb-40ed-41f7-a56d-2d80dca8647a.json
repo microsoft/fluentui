@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "'feat: release rating to preview",
+  "packageName": "@fluentui/react-rating-preview",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

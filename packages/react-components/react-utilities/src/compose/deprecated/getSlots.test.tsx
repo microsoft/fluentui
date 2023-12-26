@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getSlots } from './getSlots';
-import type { Slot } from './types';
+import type { Slot } from '../types';
 import { resolveShorthand } from './resolveShorthand';
 
 describe('getSlots', () => {
@@ -9,6 +9,7 @@ describe('getSlots', () => {
 
   it('returns provided component type for root if the as prop is not provided', () => {
     type Slots = { root: Slot<'div'> };
+    // eslint-disable-next-line deprecation/deprecation
     expect(getSlots<Slots>({ root: {}, components: { root: 'div' } })).toEqual({
       slots: { root: 'div' },
       slotProps: { root: {} },
@@ -17,6 +18,7 @@ describe('getSlots', () => {
 
   it('returns root slot as a span with no props', () => {
     type Slots = { root: Slot<'div', 'span'> };
+    // eslint-disable-next-line deprecation/deprecation
     expect(getSlots<Slots>({ root: { as: 'span' }, components: { root: 'div' } })).toEqual({
       slots: { root: 'span' },
       slotProps: { root: {} },
@@ -27,6 +29,7 @@ describe('getSlots', () => {
     type Slots = { root: Slot<'button'> };
     const invalidProp = { href: 'href' } as React.ButtonHTMLAttributes<HTMLButtonElement>;
     expect(
+      // eslint-disable-next-line deprecation/deprecation
       getSlots<Slots>({ root: { as: 'button', id: 'id', ...invalidProp }, components: { root: 'button' } }),
     ).toEqual({
       slots: { root: 'button' },
@@ -36,6 +39,7 @@ describe('getSlots', () => {
 
   it('returns root slot as an anchor, leaving the href intact', () => {
     type Slots = { root: Slot<'a'> };
+    // eslint-disable-next-line deprecation/deprecation
     expect(getSlots<Slots>({ root: { as: 'a', id: 'id', href: 'href' }, components: { root: 'a' } })).toEqual({
       slots: { root: 'a' },
       slotProps: { root: { id: 'id', href: 'href' } },
@@ -48,6 +52,7 @@ describe('getSlots', () => {
       icon: Slot<typeof Foo>;
     };
     expect(
+      // eslint-disable-next-line deprecation/deprecation
       getSlots<Slots>({
         icon: {},
         components: { root: 'div', icon: Foo },
@@ -65,6 +70,7 @@ describe('getSlots', () => {
       icon: Slot<'button'>;
     };
     expect(
+      // eslint-disable-next-line deprecation/deprecation
       getSlots<Slots>({
         components: { icon: 'button', root: 'div' },
         root: { as: 'span' },
@@ -82,6 +88,7 @@ describe('getSlots', () => {
       icon: Slot<'a'>;
     };
     expect(
+      // eslint-disable-next-line deprecation/deprecation
       getSlots<Slots>({
         root: { as: 'div' },
         components: { root: 'div', icon: 'a' },
@@ -99,6 +106,7 @@ describe('getSlots', () => {
       icon: Slot<'a'> | Slot<typeof Foo>;
     };
     expect(
+      // eslint-disable-next-line deprecation/deprecation
       getSlots<Slots>({
         components: { root: 'div', icon: Foo },
         root: { as: 'div' },
@@ -116,6 +124,7 @@ describe('getSlots', () => {
       icon: Slot<'a'>;
     };
     expect(
+      // eslint-disable-next-line deprecation/deprecation
       getSlots<Slots>({
         components: { root: 'div', icon: Foo },
         root: { as: 'div' },
@@ -134,9 +143,12 @@ describe('getSlots', () => {
     };
     const renderFunction = (C: React.ElementType, p: {}) => <C {...p} />;
     expect(
+      // eslint-disable-next-line deprecation/deprecation
       getSlots<Slots>({
         components: { root: 'div', icon: Foo },
+        // eslint-disable-next-line deprecation/deprecation
         root: resolveShorthand({ as: 'div' }, { required: true }),
+        // eslint-disable-next-line deprecation/deprecation
         icon: resolveShorthand({ id: 'bar', children: renderFunction }),
       }),
     ).toEqual({
@@ -152,6 +164,7 @@ describe('getSlots', () => {
       icon?: Slot<'a'>;
     };
     expect(
+      // eslint-disable-next-line deprecation/deprecation
       getSlots<Slots>({
         root: { as: 'div' },
         components: { root: 'div', input: 'input', icon: 'a' },

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-timepicker-compat-preview
 
-This log was last generated on Mon, 18 Dec 2023 17:48:16 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Dec 2023 17:00:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat-preview_v0.1.8)
+
+Thu, 21 Dec 2023 17:00:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-timepicker-compat-preview_v0.1.7..@fluentui/react-timepicker-compat-preview_v0.1.8)
+
+### Patches
+
+- fix: set default value of hourCycle to undefined ([PR #30108](https://github.com/microsoft/fluentui/pull/30108) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-combobox to v9.5.36 ([PR #30140](https://github.com/microsoft/fluentui/pull/30140) by beachball)
 
 ## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat-preview_v0.1.7)
 

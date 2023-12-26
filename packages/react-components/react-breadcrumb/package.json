@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-breadcrumb",
-  "version": "9.0.4",
+  "version": "9.0.5",
   "description": "Breadcrumb component for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
