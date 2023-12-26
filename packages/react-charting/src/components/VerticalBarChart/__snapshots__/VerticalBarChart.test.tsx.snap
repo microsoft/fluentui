@@ -16,12 +16,12 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_51"
+  id="chart_72"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_52"
+    id="defaultTabbableElement_73"
   />
   <div
     className=
@@ -32,7 +32,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone53"
+    data-focuszone-id="FocusZone77"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -72,7 +72,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_51"
+        id="xAxisGElementchart_72"
         transform="translate(0, -35)"
       />
       <g
@@ -100,13 +100,76 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_51"
+        id="yAxisGElementchart_72"
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
+        <g>
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#0078d4"
+            height={11}
+            id="_VBC_bar_74"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={48}
+            y={-35}
+          />
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#002050"
+            height={55}
+            id="_VBC_bar_75"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={12.615384615384617}
+            y={-35}
+          />
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#00188f"
+            height={33}
+            id="_VBC_bar_76"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={-40.46153846153846}
+            y={-35}
+          />
+        </g>
       </g>
     </svg>
   </div>
@@ -156,7 +219,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone54"
+              data-focuszone-id="FocusZone78"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -485,7 +548,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -557,9 +620,117 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
+        <g>
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#0078d4"
+            height={11}
+            id="_VBC_bar_5"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={48}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={56}
+            y={-12}
+          >
+            10.0k
+          </text>
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#002050"
+            height={55}
+            id="_VBC_bar_6"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={12.615384615384617}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={20.615384615384617}
+            y={32}
+          >
+            50.0k
+          </text>
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#00188f"
+            height={33}
+            id="_VBC_bar_7"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={-40.46153846153846}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={-32.46153846153846}
+            y={10}
+          >
+            30.0k
+          </text>
+        </g>
       </g>
     </svg>
   </div>
@@ -609,7 +780,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone9"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -922,12 +1093,12 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         overflow: hidden;
         width: 100%;
       }
-  id="chart_23"
+  id="chart_32"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_24"
+    id="defaultTabbableElement_33"
   />
   <div
     className=
@@ -938,7 +1109,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone25"
+    data-focuszone-id="FocusZone37"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -978,7 +1149,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             & path {
               display: none;
             }
-        id="xAxisGElementchart_23"
+        id="xAxisGElementchart_32"
         transform="translate(0, -35)"
       />
       <g
@@ -1006,13 +1177,121 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_23"
+        id="yAxisGElementchart_32"
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
+        <g>
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#0078d4"
+            height={11}
+            id="_VBC_bar_34"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={48}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={56}
+            y={-12}
+          >
+            10.0k
+          </text>
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#002050"
+            height={55}
+            id="_VBC_bar_35"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={12.615384615384617}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={20.615384615384617}
+            y={32}
+          >
+            50.0k
+          </text>
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#00188f"
+            height={33}
+            id="_VBC_bar_36"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={-40.46153846153846}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={-32.46153846153846}
+            y={10}
+          >
+            30.0k
+          </text>
+        </g>
       </g>
     </svg>
   </div>
@@ -1045,7 +1324,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone26"
+        data-focuszone-id="FocusZone38"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1355,125 +1634,12 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_10"
+  id="chart_13"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_11"
-  />
-  <div
-    className=
-        ms-FocusZone
-        &:focus {
-          outline: none;
-        }
-        {
-          overflow: auto;
-        }
-    data-focuszone-id="FocusZone12"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
-  >
-    <svg
-      height={0}
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
-    >
-      <g
-        className=
-
-            & text {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
-            }
-            & line {
-              opacity: 0.2;
-              stroke: #323130;
-              width: 1px;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
-            }
-            & path {
-              display: none;
-            }
-        id="xAxisGElementchart_10"
-        transform="translate(0, -35)"
-      />
-      <g
-        className=
-
-            & text {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-weight: 600;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-              fill: rgb(179, 179, 179);
-            }
-            & path {
-              display: none;
-            }
-            & line {
-              opacity: 0.2;
-              stroke: #323130;
-            }
-            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
-            }
-        id="yAxisGElementchart_10"
-        transform="translate(40, 0)"
-      />
-      <g>
-         
-         
-         
-      </g>
-    </svg>
-  </div>
-</div>
-`;
-
-exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
-<div
-  className=
-
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        display: flex;
-        flex-direction: column;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        height: 100%;
-        overflow: hidden;
-        width: 100%;
-      }
-  id="chart_16"
-  onMouseLeave={[Function]}
-  role="presentation"
->
-  <div
-    id="defaultTabbableElement_17"
+    id="defaultTabbableElement_14"
   />
   <div
     className=
@@ -1524,7 +1690,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_16"
+        id="xAxisGElementchart_13"
         transform="translate(0, -35)"
       />
       <g
@@ -1552,13 +1718,342 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_16"
+        id="yAxisGElementchart_13"
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
+        <g>
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#0078d4"
+            height={11}
+            id="_VBC_bar_15"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={48}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={56}
+            y={-12}
+          >
+            10.0k
+          </text>
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#002050"
+            height={55}
+            id="_VBC_bar_16"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={12.615384615384617}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={20.615384615384617}
+            y={32}
+          >
+            50.0k
+          </text>
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#00188f"
+            height={33}
+            id="_VBC_bar_17"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={-40.46153846153846}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={-32.46153846153846}
+            y={10}
+          >
+            30.0k
+          </text>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
+<div
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+      }
+  id="chart_22"
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    id="defaultTabbableElement_23"
+  />
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+        {
+          overflow: auto;
+        }
+    data-focuszone-id="FocusZone27"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <svg
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className=
+
+            & text {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 10px;
+              font-weight: 600;
+            }
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+              fill: rgb(179, 179, 179);
+            }
+            & line {
+              opacity: 0.2;
+              stroke: #323130;
+              width: 1px;
+            }
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              opacity: 0.1;
+              stroke: rgb(179, 179, 179);
+            }
+            & path {
+              display: none;
+            }
+        id="xAxisGElementchart_22"
+        transform="translate(0, -35)"
+      />
+      <g
+        className=
+
+            & text {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 10px;
+              font-weight: 600;
+            }
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+              fill: rgb(179, 179, 179);
+            }
+            & path {
+              display: none;
+            }
+            & line {
+              opacity: 0.2;
+              stroke: #323130;
+            }
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+              opacity: 0.1;
+              stroke: rgb(179, 179, 179);
+            }
+        id="yAxisGElementchart_22"
+        transform="translate(40, 0)"
+      />
+      <g>
+        <g>
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={false}
+            fill="#0078d4"
+            height={11}
+            id="_VBC_bar_24"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={48}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={56}
+            y={-12}
+          >
+            10.0k
+          </text>
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={false}
+            fill="#002050"
+            height={55}
+            id="_VBC_bar_25"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={12.615384615384617}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={20.615384615384617}
+            y={32}
+          >
+            50.0k
+          </text>
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={false}
+            fill="#00188f"
+            height={33}
+            id="_VBC_bar_26"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={-40.46153846153846}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={-32.46153846153846}
+            y={10}
+          >
+            30.0k
+          </text>
+        </g>
       </g>
     </svg>
   </div>
@@ -1608,7 +2103,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone19"
+              data-focuszone-id="FocusZone28"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1921,12 +2416,12 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         overflow: hidden;
         width: 100%;
       }
-  id="chart_30"
+  id="chart_42"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_31"
+    id="defaultTabbableElement_43"
   />
   <div
     className=
@@ -1937,7 +2432,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone32"
+    data-focuszone-id="FocusZone47"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1977,7 +2472,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             & path {
               display: none;
             }
-        id="xAxisGElementchart_30"
+        id="xAxisGElementchart_42"
         transform="translate(0, -35)"
       />
       <g
@@ -2005,13 +2500,121 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_30"
+        id="yAxisGElementchart_42"
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
+        <g>
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#0078d4"
+            height={11}
+            id="_VBC_bar_44"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={48}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={56}
+            y={-12}
+          >
+            10.0k
+          </text>
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#002050"
+            height={55}
+            id="_VBC_bar_45"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={12.615384615384617}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={20.615384615384617}
+            y={32}
+          >
+            50.0k
+          </text>
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#00188f"
+            height={33}
+            id="_VBC_bar_46"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={-40.46153846153846}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={-32.46153846153846}
+            y={10}
+          >
+            30.0k
+          </text>
+        </g>
       </g>
     </svg>
   </div>
@@ -2061,7 +2664,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone33"
+              data-focuszone-id="FocusZone48"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2374,12 +2977,12 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         overflow: hidden;
         width: 100%;
       }
-  id="chart_37"
+  id="chart_52"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_38"
+    id="defaultTabbableElement_53"
   />
   <div
     className=
@@ -2390,7 +2993,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone39"
+    data-focuszone-id="FocusZone57"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2430,7 +3033,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             & path {
               display: none;
             }
-        id="xAxisGElementchart_37"
+        id="xAxisGElementchart_52"
         transform="translate(0, -35)"
       />
       <g
@@ -2458,13 +3061,121 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_37"
+        id="yAxisGElementchart_52"
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
+        <g>
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#0078d4"
+            height={11}
+            id="_VBC_bar_54"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={48}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={56}
+            y={-12}
+          >
+            10.0k
+          </text>
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#002050"
+            height={55}
+            id="_VBC_bar_55"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={12.615384615384617}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={20.615384615384617}
+            y={32}
+          >
+            50.0k
+          </text>
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#00188f"
+            height={33}
+            id="_VBC_bar_56"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={-40.46153846153846}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={-32.46153846153846}
+            y={10}
+          >
+            30.0k
+          </text>
+        </g>
       </g>
     </svg>
   </div>
@@ -2514,7 +3225,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone40"
+              data-focuszone-id="FocusZone58"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2827,12 +3538,12 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         overflow: hidden;
         width: 100%;
       }
-  id="chart_44"
+  id="chart_62"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_45"
+    id="defaultTabbableElement_63"
   />
   <div
     className=
@@ -2843,7 +3554,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone46"
+    data-focuszone-id="FocusZone67"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2883,7 +3594,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             & path {
               display: none;
             }
-        id="xAxisGElementchart_44"
+        id="xAxisGElementchart_62"
         transform="translate(0, -35)"
       />
       <g
@@ -2911,13 +3622,121 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_44"
+        id="yAxisGElementchart_62"
         transform="translate(40, 0)"
       />
       <g>
-         
-         
-         
+        <g>
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#0078d4"
+            height={11}
+            id="_VBC_bar_64"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={48}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={56}
+            y={-12}
+          >
+            10.0k
+          </text>
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#002050"
+            height={55}
+            id="_VBC_bar_65"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={12.615384615384617}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={20.615384615384617}
+            y={32}
+          >
+            50.0k
+          </text>
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            className=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable={true}
+            fill="#00188f"
+            height={33}
+            id="_VBC_bar_66"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            width={16}
+            x={-40.46153846153846}
+            y={-35}
+          />
+          <text
+            aria-hidden={true}
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            textAnchor="middle"
+            x={-32.46153846153846}
+            y={10}
+          >
+            30.0k
+          </text>
+        </g>
       </g>
     </svg>
   </div>
@@ -2967,7 +3786,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone47"
+              data-focuszone-id="FocusZone68"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
