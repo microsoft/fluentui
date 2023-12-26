@@ -84,6 +84,7 @@ const useStyles = makeStyles({
     boxShadow: `${tokens.shadow16}`,
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     maxHeight: '80vh',
+    boxSizing: 'border-box',
   },
 
   listboxCollapsed: {

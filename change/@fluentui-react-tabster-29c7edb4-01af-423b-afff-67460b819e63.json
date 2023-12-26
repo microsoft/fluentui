@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Export KeyborgFocusInEvent and KEYBORG_FOCUSIN",
-  "packageName": "@fluentui/react-tabster",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

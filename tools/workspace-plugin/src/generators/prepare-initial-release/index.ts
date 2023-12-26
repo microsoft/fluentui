@@ -34,7 +34,7 @@ export default async function (tree: Tree, schema: ReleasePackageGeneratorSchema
 
   const tasks: Array<(tree: Tree) => void> = [];
 
-  if (options.phase === 'preview') {
+  if (options.phase === 'preview' || options.phase === 'compat') {
     tasks.push(initialRelease(tree, options));
   }
   if (options.phase === 'stable') {
@@ -61,6 +61,11 @@ function normalizeOptions(tree: Tree, options: ReleasePackageGeneratorSchema) {
 }
 
 function initialRelease(tree: Tree, options: NormalizedSchema) {
+  const phase = options.phase;
+  if (phase === 'stable') {
+    throw new Error('invalid logic for options.phase.');
+  }
+
   updateJson<PackageJson>(tree, options.paths.packageJson, json => {
     delete json.private;
     return json;
@@ -76,7 +81,11 @@ function initialRelease(tree: Tree, options: NormalizedSchema) {
   });
 
   return (_tree: Tree) => {
-    generateChangefileTask(tree, options.project, { message: 'feat: release preview package' });
+    const changeTypes = { preview: 'minor', compat: 'patch' } as const;
+    generateChangefileTask(tree, options.project, {
+      changeType: changeTypes[phase],
+      message: `feat: release ${options.phase} package`,
+    });
   };
 }
 
@@ -241,8 +250,11 @@ async function stableRelease(tree: Tree, options: NormalizedSchema) {
 
   return (_tree: Tree) => {
     installPackagesTask(tree, true);
-    generateChangefileTask(tree, newPackage.name, { message: 'feat: release stable' });
-    generateChangefileTask(tree, suitePackageName, { message: `feat: add ${newPackage.name} to suite` });
+    generateChangefileTask(tree, newPackage.name, { message: 'feat: release stable', changeType: 'minor' });
+    generateChangefileTask(tree, suitePackageName, {
+      message: `feat: add ${newPackage.name} to suite`,
+      changeType: 'minor',
+    });
     generateApiMarkdownTask(tree, suitePackageName);
   };
 }
@@ -283,8 +295,12 @@ async function getProjectThatNeedsToBeUpdated(tree: Tree, options: NormalizedSch
   }
 }
 
-function generateChangefileTask(tree: Tree, projectName: string, options: { message: string }) {
-  const cmd = `yarn change --message '${options.message}' --type minor --package ${projectName}`;
+function generateChangefileTask(
+  tree: Tree,
+  projectName: string,
+  options: { changeType: 'minor' | 'patch'; message: string },
+) {
+  const cmd = `yarn change --message '${options.message}' --type ${options.changeType} --package ${projectName}`;
   return execSync(cmd, { cwd: workspaceRoot, stdio: 'inherit' });
 }
 
@@ -298,21 +314,33 @@ function assertProject(tree: Tree, options: NormalizedSchema) {
 
   const isVnextPackage = options.projectConfig.tags?.includes('vNext');
   const isPreviewPackage = pkgJson.version.startsWith('0') && pkgJson.name.endsWith('-preview');
+  const isCompatPackage = isVnextPackage && options.projectConfig.tags?.includes('compat');
   const isPreparedForStableAlready = pkgJson.version === '9.0.0-alpha.0';
+  const isStableAlready = /^9\.\d+.\d+$/.test(pkgJson.version);
 
   if (!isVnextPackage) {
     throw new Error(`${options.project} is not a v9 package.`);
   }
 
-  if (isPreviewPackage) {
-    return;
+  if (isCompatPackage && options.phase !== 'compat') {
+    throw new Error(
+      `Invalid phase(${options.phase}) option provided. ${options.project} is a COMPAT package thus phase needs to be 'compat'.`,
+    );
+  }
+
+  if (isPreviewPackage && options.phase === 'compat') {
+    throw new Error(
+      `Invalid phase(${options.phase}) option provided. ${options.project} is a PREVIEW package thus phase needs to be one of 'preview'|'stable'.`,
+    );
   }
 
   if (isPreparedForStableAlready) {
     throw new Error(`${options.project} is already prepared for stable release. Please trigger RELEASE pipeline.`);
   }
 
-  throw new Error(`${options.project} is already released as stable.`);
+  if (isStableAlready) {
+    throw new Error(`${options.project} is already released as stable.`);
+  }
 }
 
 function createExportsInSuite(content: string, packageName: string) {

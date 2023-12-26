@@ -1,28 +1,24 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { TeachingPopoverActionsProps, TeachingPopoverActionsState } from './TeachingPopoverActions.types';
+import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
 
 /**
- * Create the state required to render TeachingPopoverActions.
- *
- * The returned state can be modified with hooks such as useTeachingPopoverActionsStyles_unstable,
- * before being passed to renderTeachingPopoverActions_unstable.
- *
- * @param props - props from this instance of TeachingPopoverActions
- * @param ref - reference to root HTMLDivElement of TeachingPopoverActions
+ * Returns the props and state required to render the component
+ * @param props - TeachingPopoverActions properties
+ * @param ref - reference to root HTMLElement of TeachingPopoverActions
  */
 export const useTeachingPopoverActions_unstable = (
   props: TeachingPopoverActionsProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverActionsState => {
+  const totalPages = useTeachingPopoverContext_unstable(context => context.totalPages);
+
   return {
-    // TODO add appropriate props/defaults
+    totalPages,
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,

@@ -1,18 +1,18 @@
-export { Nav, navClassNames, renderNav_unstable, useNavStyles_unstable, useNav_unstable } from './Nav';
+export { Nav, navClassNames, renderNav_unstable, useNav_unstable } from './Nav';
 export type { NavProps, NavSlots, NavState } from './Nav';
+// these should probably be explicity as they are above.
 export {
-  NavLink,
-  navLinkClassNames,
-  renderNavLink_unstable,
-  useNavLinkStyles_unstable,
-  useNavLink_unstable,
-} from './NavLink';
-export type { NavLinkProps, NavLinkSlots, NavLinkState } from './NavLink';
-export {
-  NavLinkGroup,
-  navLinkGroupClassNames,
-  renderNavLinkGroup_unstable,
-  useNavLinkGroupStyles_unstable,
-  useNavLinkGroup_unstable,
-} from './NavLinkGroup';
-export type { NavLinkGroupProps, NavLinkGroupSlots, NavLinkGroupState } from './NavLinkGroup';
+  NavGroup,
+  navGroupClassNames,
+  renderNavGroup_unstable,
+  useNavGroup_unstable,
+  useNavGroupStyles_unstable,
+} from './components/NavGroup/index';
+export type { NavGroupProps, NavGroupSlots, NavGroupValue, NavGroupState } from './components/NavGroup/index';
+export { NavProvider, useNavContext_unstable } from './components/NavContext';
+export type {
+  NavContextValue,
+  NavContextValues,
+  NavGroupRegisterData,
+  RegisterNavGroupEventHandler,
+} from './components/NavContext.types';

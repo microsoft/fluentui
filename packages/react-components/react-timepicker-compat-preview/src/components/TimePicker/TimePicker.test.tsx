@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Field } from '@fluentui/react-components';
 import { isConformant } from '../../testing/isConformant';
 import { TimePicker } from './TimePicker';
 import { TimePickerProps } from './TimePicker.types';
@@ -8,6 +9,19 @@ import { TimePickerProps } from './TimePicker.types';
 const dateAnchor = new Date('November 25, 2021 01:00:00');
 
 describe('TimePicker', () => {
+  // mock locale to make sure the test generates same result as browser, and not affected by the test runner's locale
+  const originalToLocaleTimeString = Date.prototype.toLocaleTimeString;
+  beforeAll(() => {
+    // eslint-disable-next-line no-extend-native
+    Date.prototype.toLocaleTimeString = function (locales?: string | string[], options?: Intl.DateTimeFormatOptions) {
+      return originalToLocaleTimeString.call(this, locales ?? 'en-US', options);
+    };
+  });
+  afterAll(() => {
+    // eslint-disable-next-line no-extend-native
+    Date.prototype.toLocaleTimeString = originalToLocaleTimeString;
+  });
+
   isConformant({
     Component: TimePicker,
     displayName: 'TimePicker',
@@ -32,8 +46,8 @@ describe('TimePicker', () => {
     userEvent.click(input);
     const options = getAllByRole('option');
     expect(options.length).toBe(2);
-    expect(options[0].textContent).toBe('08:00');
-    expect(options[1].textContent).toBe('08:30');
+    expect(options[0].textContent).toBe('8:00 AM');
+    expect(options[1].textContent).toBe('8:30 AM');
   });
 
   it('generates the formatted option using formatDateToTimeString', () => {
@@ -62,7 +76,18 @@ describe('TimePicker', () => {
     expect(getAllByRole('option')[1].getAttribute('aria-selected')).toBe('true'); // '1:00' is selected
 
     userEvent.click(getAllByRole('option')[10]);
-    expect(getByRole('combobox').getAttribute('value')).toBe('10:00');
+    expect(getByRole('combobox').getAttribute('value')).toBe('10:00 AM');
+  });
+
+  it('when wrapped in Field, sets default aria-labelledby on chevron icon', () => {
+    const { getByRole } = render(
+      <Field label="Coffee time">
+        <TimePicker />
+      </Field>,
+    );
+
+    const chevronIcon = getByRole('button');
+    expect(chevronIcon.getAttribute('aria-labelledby')).not.toBeNull();
   });
 
   describe('freeform', () => {
@@ -122,7 +147,7 @@ describe('TimePicker', () => {
       expect(handleTimeSelect).toHaveBeenCalledTimes(1);
       expect(handleTimeSelect).toHaveBeenCalledWith(
         expect.anything(),
-        expect.objectContaining({ selectedTimeText: '11:00', errorType: undefined }),
+        expect.objectContaining({ selectedTimeText: '11:00 AM', errorType: undefined }),
       );
     });
 
@@ -141,7 +166,7 @@ describe('TimePicker', () => {
       expect(handleTimeSelect).toHaveBeenCalledTimes(1);
       expect(handleTimeSelect).toHaveBeenCalledWith(
         expect.anything(),
-        expect.objectContaining({ selectedTimeText: '10:30' }),
+        expect.objectContaining({ selectedTimeText: '10:30 AM' }),
       );
       handleTimeSelect.mockClear();
 
@@ -154,7 +179,7 @@ describe('TimePicker', () => {
       expect(handleTimeSelect).toHaveBeenCalledTimes(1);
       expect(handleTimeSelect).toHaveBeenCalledWith(
         expect.anything(),
-        expect.objectContaining({ selectedTimeText: '10:30111', errorType: 'invalid-input' }),
+        expect.objectContaining({ selectedTimeText: '10:30 AM111', errorType: 'invalid-input' }),
       );
     });
 

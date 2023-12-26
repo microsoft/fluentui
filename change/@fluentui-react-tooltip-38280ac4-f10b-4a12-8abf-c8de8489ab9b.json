@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: Tooltips are no longer triggered by programmatic focus() moves.",
-  "packageName": "@fluentui/react-tooltip",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1881,6 +1881,11 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.2.0.tgz#ae7ae7923d41f3d84cb2fd88740a89436610bbec"
   integrity sha512-GHUXPEhMEmTpnpIfesFA2KAoMJPb1SPQw964tToQwt+BbGXdhqTCWT1rOb0VURGylsxsYxiGMnseJ3IlclVpVA==
 
+"@floating-ui/devtools@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@floating-ui/devtools/-/devtools-0.0.1.tgz#98b66755b0ef91fabfb35ec5a737c2c83d41d0a4"
+  integrity sha512-itUtNTkiHPfvRDOrAFKLCYEEZ3PrSIir44El6AoBBl7IbmciAx4CxXVfIWjSCIZdZnHFaeXg6vIfEukqC3Z6bw==
+
 "@floating-ui/dom@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@floating-ui/dom/-/dom-1.2.0.tgz#a60212069cc58961c478037c30eba4b191c75316"
@@ -5008,10 +5013,10 @@
   dependencies:
     "@types/d3-path" "^1"
 
-"@types/d3-time-format@^2.1.0":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@types/d3-time-format/-/d3-time-format-2.1.1.tgz#dd2c79ec4575f1355484ab6b10407824668eba42"
-  integrity sha512-tJSyXta8ZyJ52wDDHA96JEsvkbL6jl7wowGmuf45+fAkj5Y+SQOnz0N7/H68OWmPshPsAaWMQh+GAws44IzH3g==
+"@types/d3-time-format@^3.0.0":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@types/d3-time-format/-/d3-time-format-3.0.4.tgz#f972bdd7be1048184577cf235a44721a78c6bb4b"
+  integrity sha512-or9DiDnYI1h38J9hxKEsw513+KVuFbEVhl7qdxcaudoiqWWepapUen+2vAriFGexr6W5+P4l9+HJrB39GG+oRg==
 
 "@types/d3-time@*", "@types/d3-time@^2.1.1":
   version "2.1.3"
@@ -10214,19 +10219,26 @@ d3-shape@^1.1.0, d3-shape@^1.2.0:
   dependencies:
     d3-path "1"
 
-d3-time-format@2, "d3-time-format@2 - 4", d3-time-format@^2.1.3:
+d3-time-format@2:
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/d3-time-format/-/d3-time-format-2.1.3.tgz#ae06f8e0126a9d60d6364eac5b1533ae1bac826b"
   integrity sha512-6k0a2rZryzGm5Ihx+aFMuO1GgelgIz+7HhB4PH4OEndD5q2zGn1mDfRdNrulspOfR6JXkb2sThhDK41CSK85QA==
   dependencies:
     d3-time "1"
 
+"d3-time-format@2 - 4", d3-time-format@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/d3-time-format/-/d3-time-format-3.0.0.tgz#df8056c83659e01f20ac5da5fdeae7c08d5f1bb6"
+  integrity sha512-UXJh6EKsHBTjopVqZBhFysQcoXSv/5yLONZvkQ5Kk3qbwiUYkdX17Xa1PT6U1ZWXGGfB1ey5L8dKMlFq2DO0Ag==
+  dependencies:
+    d3-time "1 - 2"
+
 d3-time@1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/d3-time/-/d3-time-1.1.0.tgz#b1e19d307dae9c900b7e5b25ffc5dcc249a8a0f1"
   integrity sha512-Xh0isrZ5rPYYdqhAVk8VLnMEidhz5aP7htAADH6MfzgmmicPkTo8LhkLxci61/lCB7n7UmE3bN0leRt+qvkLxA==
 
-"d3-time@2.1.1 - 3", d3-time@^2.1.1:
+"d3-time@1 - 2", "d3-time@2.1.1 - 3", d3-time@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/d3-time/-/d3-time-2.1.1.tgz#e9d8a8a88691f4548e68ca085e5ff956724a6682"
   integrity sha512-/eIQe/eR4kCQwq7yxi7z4c6qEXf2IYGcjoWB5OOQy4Tq9Uv39/947qlDcN2TLkiTzQWzvnsuYPB9TrWaNfipKQ==
@@ -16861,10 +16873,10 @@ karma@6.4.0:
     ua-parser-js "^0.7.30"
     yargs "^16.1.1"
 
-keyborg@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-2.2.0.tgz#a59c431f3b949dcec3b0357d5b9c6b7a69d0c1e9"
-  integrity sha512-yQa1dz+FilQ+w3JM6GH2V/wnFeQhfbkK9stvs3UiraW3GOEO7zrOBBh0ZuHsrzeN1xx6v7P5EpA2JtOUUnfN/w==
+keyborg@^2.2.0, keyborg@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-2.3.0.tgz#7b6c491343df38ca97d35014ecae2a7585d79dab"
+  integrity sha512-TU7VDxohtY7Rf4rTuCwa8QrHjya4eqKiSThI3lHF/wcBpm29gAui/vy0wY8l3ahcFEJ9tZhV+iduXPo6EkNQXw==
 
 keygrip@~1.1.0:
   version "1.1.0"

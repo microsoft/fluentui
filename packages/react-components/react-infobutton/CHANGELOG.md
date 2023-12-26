@@ -1,8 +1,66 @@
 # Change Log - @fluentui/react-infobutton
 
-This log was last generated on Tue, 14 Nov 2023 17:51:27 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Dec 2023 17:48:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.81)
+
+Mon, 18 Dec 2023 17:48:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.80..@fluentui/react-infobutton_v9.0.0-beta.81)
+
+### Changes
+
+- Bump @fluentui/react-popover to v9.8.26 ([PR #30010](https://github.com/microsoft/fluentui/pull/30010) by beachball)
+
+## [9.0.0-beta.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.80)
+
+Mon, 18 Dec 2023 14:40:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.79..@fluentui/react-infobutton_v9.0.0-beta.80)
+
+### Changes
+
+- Bump @fluentui/react-label to v9.1.53 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-popover to v9.8.25 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-tabster to v9.16.0 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-utilities to v9.15.4 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.22 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+
+## [9.0.0-beta.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.79)
+
+Thu, 14 Dec 2023 09:58:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.78..@fluentui/react-infobutton_v9.0.0-beta.79)
+
+### Changes
+
+- Bump @fluentui/react-label to v9.1.52 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-popover to v9.8.24 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-tabster to v9.15.1 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-utilities to v9.15.3 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.21 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+
+## [9.0.0-beta.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.78)
+
+Thu, 30 Nov 2023 13:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.77..@fluentui/react-infobutton_v9.0.0-beta.78)
+
+### Changes
+
+- Bump @fluentui/react-label to v9.1.51 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+- Bump @fluentui/react-popover to v9.8.23 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+- Bump @fluentui/react-tabster to v9.15.0 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.20 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+
+## [9.0.0-beta.77](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.77)
+
+Mon, 20 Nov 2023 09:55:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.76..@fluentui/react-infobutton_v9.0.0-beta.77)
+
+### Changes
+
+- Bump @fluentui/react-label to v9.1.50 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+- Bump @fluentui/react-popover to v9.8.22 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+- Bump @fluentui/react-tabster to v9.14.6 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
 
 ## [9.0.0-beta.76](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.76)
 

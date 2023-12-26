@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Thu, 09 Nov 2023 17:29:50 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Dec 2023 14:40:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.6.0)
+
+Mon, 18 Dec 2023 14:40:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.5.0..@fluentui/react-aria_v9.6.0)
+
+### Minor changes
+
+- feat: deprecates useARIAButtonShorthand in favor of useARIAButtonProps ([PR #29735](https://github.com/microsoft/fluentui/pull/29735) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.13.2 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-utilities to v9.15.4 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.5.0)
+
+Thu, 14 Dec 2023 09:58:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.4.0..@fluentui/react-aria_v9.5.0)
+
+### Minor changes
+
+- feat(useActiveDescendant): Changing active descendant scrolls into view ([PR #29992](https://github.com/microsoft/fluentui/pull/29992) by lingfangao@hotmail.com)
+- Bump @fluentui/react-shared-contexts to v9.13.1 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-utilities to v9.15.3 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.4.0)
+
+Thu, 30 Nov 2023 13:42:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.44..@fluentui/react-aria_v9.4.0)
+
+### Minor changes
+
+- feat: Implement aria-activedescendant utility ([PR #29904](https://github.com/microsoft/fluentui/pull/29904) by lingfan.gao@microsoft.com)
 
 ## [9.3.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.44)
 

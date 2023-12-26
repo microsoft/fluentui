@@ -48,7 +48,7 @@ const useCardInteractive = ({ focusMode = 'off', ...props }: CardProps) => {
 
   return {
     interactive,
-    focusAttributes: focusMode === 'off' ? null : interactiveFocusAttributes,
+    focusAttributes: !interactive && focusMode === 'off' ? null : interactiveFocusAttributes,
   };
 };
 

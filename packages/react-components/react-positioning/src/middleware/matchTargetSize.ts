@@ -1,5 +1,7 @@
 import type { Middleware } from '@floating-ui/dom';
 
+export const matchTargetSizeCssVar = '--fui-match-target-size';
+
 export function matchTargetSize(): Middleware {
   return {
     name: 'matchTargetSize',
@@ -7,7 +9,7 @@ export function matchTargetSize(): Middleware {
       const {
         rects: { reference: referenceRect, floating: floatingRect },
         elements: { floating: floatingElement },
-        middlewareData: { matchTargetSizeAttempt = false },
+        middlewareData: { matchTargetSize: { matchTargetSizeAttempt = false } = {} },
       } = middlewareArguments;
 
       if (referenceRect.width === floatingRect.width || matchTargetSizeAttempt) {
@@ -15,8 +17,10 @@ export function matchTargetSize(): Middleware {
       }
 
       const { width } = referenceRect;
-      floatingElement.style.width = `${width}px`;
-      floatingElement.style.boxSizing = 'border-box';
+      floatingElement.style.setProperty(matchTargetSizeCssVar, `${width}px`);
+      if (!floatingElement.style.width) {
+        floatingElement.style.width = `var(${matchTargetSizeCssVar})`;
+      }
 
       return {
         data: { matchTargetSizeAttempt: true },

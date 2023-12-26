@@ -36,7 +36,7 @@ export const Appearance = () => {
           <Button>Default appearance Popover trigger</Button>
         </PopoverTrigger>
 
-        <PopoverSurface>
+        <PopoverSurface tabIndex={-1}>
           <ExampleContent />
         </PopoverSurface>
       </Popover>
@@ -46,7 +46,7 @@ export const Appearance = () => {
           <Button>Brand appearance Popover trigger</Button>
         </PopoverTrigger>
 
-        <PopoverSurface>
+        <PopoverSurface tabIndex={-1}>
           <ExampleContent />
         </PopoverSurface>
       </Popover>
@@ -56,7 +56,7 @@ export const Appearance = () => {
           <Button>Inverted appearance Popover trigger</Button>
         </PopoverTrigger>
 
-        <PopoverSurface>
+        <PopoverSurface tabIndex={-1}>
           <ExampleContent />
         </PopoverSurface>
       </Popover>

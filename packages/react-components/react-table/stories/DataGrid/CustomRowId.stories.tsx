@@ -177,7 +177,7 @@ export const CustomRowId = () => {
         getRowId={item => item.file.label}
       >
         <DataGridHeader>
-          <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
+          <DataGridRow selectionCell={{ checkboxIndicator: { 'aria-label': 'Select all rows' } }}>
             {({ renderHeaderCell }: TableColumnDefinition<Item>) => (
               <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
             )}
@@ -185,7 +185,7 @@ export const CustomRowId = () => {
         </DataGridHeader>
         <DataGridBody>
           {({ item, rowId }: TableRowData<Item>) => (
-            <DataGridRow key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
+            <DataGridRow key={rowId} selectionCell={{ checkboxIndicator: { 'aria-label': 'Select row' } }}>
               {({ renderCell }: TableColumnDefinition<Item>) => <DataGridCell>{renderCell(item)}</DataGridCell>}
             </DataGridRow>
           )}

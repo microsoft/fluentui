@@ -2,6 +2,98 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Mon, 18 Dec 2023 14:40:42 GMT",
+      "tag": "@fluentui/react-tabster_v9.16.0",
+      "version": "9.16.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "3e0b68baf6557730ee49eccdd54a32ba36419324",
+            "comment": "feat: focus-visible polyfill shadow DOM support"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.13.2",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.15.4",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "8d6ffef8ed0d4e6f500939dfbb90886632a29419",
+            "comment": "fix: focus outline should have `Highlight` colour in high contrast"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Dec 2023 09:58:46 GMT",
+      "tag": "@fluentui/react-tabster_v9.15.1",
+      "version": "9.15.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.13.1",
+            "commit": "73c8cb55e5957d6ce321ecabe35d177d791ff0b6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.15.3",
+            "commit": "73c8cb55e5957d6ce321ecabe35d177d791ff0b6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Nov 2023 13:42:07 GMT",
+      "tag": "@fluentui/react-tabster_v9.15.0",
+      "version": "9.15.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "499eb8b3c02e05e817ff907b740af703c4a19bf1",
+            "comment": "feat: implement useTabsterUncontrolled hook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Nov 2023 09:55:10 GMT",
+      "tag": "@fluentui/react-tabster_v9.14.6",
+      "version": "9.14.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "5103727605543cf631cd50f5348562b763f08ee0",
+            "comment": "chore: Export KeyborgFocusInEvent and KEYBORG_FOCUSIN"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.13.0",
+            "commit": "873b079e8c57fc139366d6ab57d9070abd81865a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 14 Nov 2023 17:51:27 GMT",
       "tag": "@fluentui/react-tabster_v9.14.5",
       "version": "9.14.5",
