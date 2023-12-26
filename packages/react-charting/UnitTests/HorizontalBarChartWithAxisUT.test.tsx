@@ -1,11 +1,14 @@
-import { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
+import { HorizontalBarChartWithAxis } from '../src/components/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis';
 import * as React from 'react';
-import { HorizontalBarChartWithAxisBase } from './HorizontalBarChartWithAxis.base';
-import { IAccessibilityProps, IHorizontalBarChartWithAxisDataPoint } from '../../HorizontalBarChart';
+import { HorizontalBarChartWithAxisBase } from '../src/components/HorizontalBarChartWithAxis/HorizontalBarChartWithAxis.base';
+import { IAccessibilityProps, IHorizontalBarChartWithAxisDataPoint } from '../src/HorizontalBarChart';
 import { DefaultPalette } from '@fluentui/react';
 import { render } from '@testing-library/react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import * as utils from '@fluentui/react/lib/Utilities';
+const env = require('../config/tests');
+
+const runTest = env === 'TEST' ? describe : describe.skip;
 
 const emptyData: IHorizontalBarChartWithAxisDataPoint[] = [];
 const chartPoints: IHorizontalBarChartWithAxisDataPoint[] = [
@@ -66,7 +69,7 @@ const margins = {
   bottom: 10,
 };
 
-describe('_renderContentForOnlyBars', () => {
+runTest('_renderContentForOnlyBars', () => {
   test('Should return proper bar data', () => {
     render(<HorizontalBarChartWithAxis data={chartPoints} />);
     const instance = new HorizontalBarChartWithAxisBase({
@@ -158,7 +161,7 @@ describe('_renderContentForOnlyBars', () => {
   });
 });
 
-describe('Get scales', () => {
+runTest('Get scales', () => {
   test('Should return scales for numeric axis', () => {
     const instance = new HorizontalBarChartWithAxisBase({
       data: chartPoints,
@@ -237,7 +240,7 @@ describe('Get scales', () => {
   });
 });
 
-describe('_createNumericBars', () => {
+runTest('_createNumericBars', () => {
   test('Should return proper bar data with numeric axis data', () => {
     const instance = new HorizontalBarChartWithAxisBase({
       data: chartPoints,
@@ -269,7 +272,7 @@ describe('_createNumericBars', () => {
   });
 });
 
-describe('_getCalloutContentForBar', () => {
+runTest('_getCalloutContentForBar', () => {
   test('Should return proper callout data for respective bar', () => {
     const instance = new HorizontalBarChartWithAxisBase({
       data: chartPoints,
@@ -287,7 +290,7 @@ describe('_getCalloutContentForBar', () => {
   });
 });
 
-describe('_getLegendData', () => {
+runTest('_getLegendData', () => {
   test('Should return empty legends data when there is no chart data', () => {
     const instance = new HorizontalBarChartWithAxisBase({
       data: emptyData,
@@ -331,7 +334,7 @@ describe('_getLegendData', () => {
   });
 });
 
-describe('_getAriaLabel', () => {
+runTest('_getAriaLabel', () => {
   test('Should return proper aria label', () => {
     const instance = new HorizontalBarChartWithAxisBase({
       data: emptyData,
