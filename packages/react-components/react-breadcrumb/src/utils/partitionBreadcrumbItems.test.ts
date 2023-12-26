@@ -1,6 +1,9 @@
 import { partitionBreadcrumbItems, PartitionBreadcrumbItemsOptions } from './partitionBreadcrumbItems';
+
+type TestData = [PartitionBreadcrumbItemsOptions<number>, ReturnType<typeof partitionBreadcrumbItems>][];
+
 const items = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const testData = [
+const testData: TestData = [
   [
     { items, overflowIndex: 2, maxDisplayedItems: 3 },
     { startDisplayedItems: [0, 1], overflowItems: [2, 3, 4, 5, 6, 7, 8, 9], endDisplayedItems: [10] },
@@ -25,9 +28,21 @@ const testData = [
     { items, maxDisplayedItems: 9, overflowIndex: 9 },
     { startDisplayedItems: [0, 1, 2, 3, 4, 5, 6, 7], overflowItems: [8, 9], endDisplayedItems: [10] },
   ],
+  [
+    { items, maxDisplayedItems: 999, overflowIndex: 999 },
+    { startDisplayedItems: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], overflowItems: undefined, endDisplayedItems: undefined },
+  ],
+  [
+    { items, maxDisplayedItems: 11, overflowIndex: 11 },
+    { startDisplayedItems: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], overflowItems: undefined, endDisplayedItems: undefined },
+  ],
 ];
 
-const maxDisplayedItemsData = [
+const maxDisplayedItemsData: TestData = [
+  [
+    { items, maxDisplayedItems: 999 },
+    { startDisplayedItems: [0], overflowItems: undefined, endDisplayedItems: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] },
+  ],
   [
     { items, maxDisplayedItems: 3 },
     { startDisplayedItems: [0], overflowItems: [1, 2, 3, 4, 5, 6, 7, 8], endDisplayedItems: [9, 10] },
@@ -37,7 +52,19 @@ const maxDisplayedItemsData = [
     { startDisplayedItems: [0], overflowItems: [1, 2, 3, 4, 5, 6, 7, 8, 9], endDisplayedItems: [10] },
   ],
 ];
-const overflowIndexData = [
+const overflowIndexData: TestData = [
+  [
+    { items, overflowIndex: 999 },
+    { startDisplayedItems: [0, 1, 2, 3, 4], overflowItems: [5, 6, 7, 8, 9], endDisplayedItems: [10] },
+  ],
+  [
+    { items, overflowIndex: 10 },
+    { startDisplayedItems: [0, 1, 2, 3, 4], overflowItems: [5, 6, 7, 8, 9], endDisplayedItems: [10] },
+  ],
+  [
+    { items, overflowIndex: 6 },
+    { startDisplayedItems: [0, 1, 2, 3, 4], overflowItems: [5, 6, 7, 8, 9], endDisplayedItems: [10] },
+  ],
   [
     { items, overflowIndex: 2 },
     { startDisplayedItems: [0, 1], overflowItems: [2, 3, 4, 5, 6], endDisplayedItems: [7, 8, 9, 10] },

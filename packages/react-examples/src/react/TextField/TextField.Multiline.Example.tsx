@@ -13,13 +13,16 @@ const columnProps: Partial<IStackProps> = {
 };
 
 export const TextFieldMultilineExample: React.FunctionComponent = () => {
+  const containerRef = React.useRef<HTMLDivElement>(null);
   const [multiline, { toggle: toggleMultiline }] = useBoolean(false);
-  const onChange = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newText: string): void => {
+
+  const onChange = (_: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newText: string): void => {
     const newMultiline = newText.length > 50;
     if (newMultiline !== multiline) {
       toggleMultiline();
     }
   };
+
   return (
     <Stack horizontal tokens={stackTokens} styles={stackStyles}>
       <Stack {...columnProps}>
@@ -29,7 +32,14 @@ export const TextFieldMultilineExample: React.FunctionComponent = () => {
       </Stack>
 
       <Stack {...columnProps}>
-        <TextField label="With auto adjusting height" multiline autoAdjustHeight />
+        {/*
+        When using autoAdjustHeight, if the TextField extends past the container's height and the container allows
+        scrolling, deleting a line scrolls the container to the top. To avoid this, use the scrollable container's ref
+        in scrollContainerRef to preserve the scrollTop property.
+        */}
+        <div ref={containerRef} style={{ maxHeight: '300px', overflowY: 'scroll' }}>
+          <TextField label="With auto adjusting height" multiline autoAdjustHeight scrollContainerRef={containerRef} />
+        </div>
         <TextField
           label="Switches from single to multiline if more than 50 characters are entered"
           multiline={multiline}

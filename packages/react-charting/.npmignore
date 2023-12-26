@@ -37,4 +37,4 @@ visualtests
 !lib-amd
 !dist
 docs
-UnitTests
+test-data.ts

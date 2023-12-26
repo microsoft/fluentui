@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: disallow `window` and `document` access",
-  "packageName": "@fluentui/global-context",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
