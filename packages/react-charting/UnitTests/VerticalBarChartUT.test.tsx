@@ -1,5 +1,5 @@
 import { DarkTheme } from '@fluentui/theme-samples';
-import { chartPointsVBC } from '../src/Utilities/test-data';
+import { chartPointsVBC } from '../src/utilities/test-data';
 import { testWithoutWait } from '../src/utilities/TestUtility.test';
 import * as utils from '@fluentui/react/lib/Utilities';
 import { DefaultPalette } from '@fluentui/react';
