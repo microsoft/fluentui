@@ -64,7 +64,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   private margins: IMargins;
   private _isRtl: boolean = getRTL();
   private _bars: JSX.Element[];
-  private _yAxisLabels: string[];
+  public _yAxisLabels: string[];
   private _xMax: number;
   private _tooltipId: string;
   private _xAxisType: XAxisTypes;
@@ -164,18 +164,18 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     );
   }
 
-  private _adjustProps(): void {
+  public _adjustProps(): void {
     this._points = this.props.data || [];
     this._barHeight = this.props.barHeight || 32;
     const { palette } = this.props.theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
   }
 
-  private _getMargins = (margins: IMargins) => {
+  public _getMargins = (margins: IMargins) => {
     this.margins = margins;
   };
 
-  private _renderContentForOnlyBars = (point: IHorizontalBarChartWithAxisDataPoint): JSX.Element => {
+  public _renderContentForOnlyBars = (point: IHorizontalBarChartWithAxisDataPoint): JSX.Element => {
     const { useSingleColor = false } = this.props;
     let selectedPointIndex = 0;
     this.props.data!.forEach((yDataPoint: IHorizontalBarChartWithAxisDataPoint, index: number) => {
@@ -253,7 +253,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     this._refArray.push({ index: legendTitle, refElement: element });
   };
 
-  private _getCalloutContentForBar = (
+  public _getCalloutContentForBar = (
     point: IHorizontalBarChartWithAxisDataPoint,
   ): { YValueHover: IYValueHover[]; hoverXValue: string | number | null } => {
     const YValueHover: IYValueHover[] = [];
@@ -367,7 +367,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     }
   };
 
-  private _getScales = (
+  public _getScales = (
     containerHeight: number,
     containerWidth: number,
     isNumericScale: boolean,
@@ -403,7 +403,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _createNumericBars(
+  public _createNumericBars(
     containerHeight: number,
     containerWidth: number,
     xElement: SVGElement,
@@ -506,7 +506,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _createStringBars(
+  public _createStringBars(
     containerHeight: number,
     containerWidth: number,
     xElement: SVGElement,
@@ -632,7 +632,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     }
   }
 
-  private _getLegendData = (data: IHorizontalBarChartWithAxisDataPoint[], palette: IPalette): JSX.Element => {
+  public _getLegendData = (data: IHorizontalBarChartWithAxisDataPoint[], palette: IPalette): JSX.Element => {
     const { useSingleColor } = this.props;
     const actions: ILegend[] = [];
     data.forEach((point: IHorizontalBarChartWithAxisDataPoint, _index: number) => {
@@ -678,7 +678,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       this._xMax = Math.max(domainValue[domainValue.length - 1], this.props.xMaxValue || 0);
     }
   };
-  private _getAriaLabel = (point: IHorizontalBarChartWithAxisDataPoint): string => {
+  public _getAriaLabel = (point: IHorizontalBarChartWithAxisDataPoint): string => {
     const xValue = point.xAxisCalloutData || point.x;
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ` + `${yValue}.`;
