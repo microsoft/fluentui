@@ -2,11 +2,11 @@ import { render } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { HorizontalBarChart } from './HorizontalBarChart';
-import { HorizontalBarChartBase } from './HorizontalBarChart.base';
-import { IAccessibilityProps, IChartDataPoint, IChartProps } from './index';
+import { HorizontalBarChart } from '../src/components/HorizontalBarChart/HorizontalBarChart';
+import { HorizontalBarChartBase } from '../src/components/HorizontalBarChart/HorizontalBarChart.base';
+import { IAccessibilityProps, IChartDataPoint, IChartProps } from '../src/components/HorizontalBarChart/index';
 
-const env = require('../../../config/tests');
+const env = require('../config/tests');
 const runTest = env === 'TEST' ? describe : describe.skip;
 
 const chartPoints: IChartProps[] = [
