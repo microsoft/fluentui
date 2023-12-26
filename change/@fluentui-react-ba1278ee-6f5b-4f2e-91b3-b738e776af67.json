@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat(TextField): Add scrollContainerRef to allow fixing unwanted scroll issue with multiline + autoAdjustHeight  and a container with scroll.",
-  "packageName": "@fluentui/react",
-  "email": "estebanmu@microsoft.com",
-  "dependentChangeType": "patch"
-}

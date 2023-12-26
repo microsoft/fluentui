@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "test: fix act errors in terminal",
+  "comment": "Adding Unit Tests for 4 charts",
   "packageName": "@fluentui/react-charting",
   "email": "srmukher@microsoft.com",
   "dependentChangeType": "none"

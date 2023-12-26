@@ -2,6 +2,47 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 25 Dec 2023 07:28:36 GMT",
+      "tag": "@fluentui/react-charting_v5.19.8",
+      "version": "5.19.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e959d219195a11c77cb78f4faf26effea63d3db7",
+            "comment": "presentation role attribute removed from svg element due to ARIA violations"
+          },
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "109463c2a40ca4e796de8ff16c82702c5678cb87",
+            "comment": "Added img aria role to <path/> in SparklineChart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.126",
+            "commit": "e959d219195a11c77cb78f4faf26effea63d3db7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.114.0",
+            "commit": "e959d219195a11c77cb78f4faf26effea63d3db7"
+          }
+        ],
+        "none": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "3483d23b958752f39ed6258d9ec8cbfddcb8ec3c",
+            "comment": "test: fix act errors in terminal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 20 Dec 2023 07:26:54 GMT",
       "tag": "@fluentui/react-charting_v5.19.7",
       "version": "5.19.7",

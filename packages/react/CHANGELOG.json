@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 25 Dec 2023 07:28:35 GMT",
+      "tag": "@fluentui/react_v8.114.0",
+      "version": "8.114.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "fabe4875a2c32d249010ad541efd6bdc5becbf76",
+            "comment": "feat(TextField): Add scrollContainerRef to allow fixing unwanted scroll issue with multiline + autoAdjustHeight  and a container with scroll."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Dec 2023 07:30:10 GMT",
       "tag": "@fluentui/react_v8.113.1",
       "version": "8.113.1",
