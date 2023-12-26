@@ -290,6 +290,41 @@ runTest('_getCalloutContentForBar', () => {
   });
 });
 
+runTest('create colors', () => {
+  test('should return the color scale - using single color', () => {
+    const instance = new HorizontalBarChartWithAxisBase({
+      data: chartPoints,
+      colors: [DefaultPalette.green],
+      theme: DarkTheme,
+      useSingleColor: true,
+    });
+    expect(instance).toBeDefined();
+    instance._adjustProps();
+    instance._getAxisData({ yAxisDomainValues: chartPoints.map(item => item.x) });
+    const result = instance._createColors();
+    expect(result).toBeDefined();
+    expect(result(chartPoints[0].x)).toBe(DefaultPalette.green);
+    expect(result(chartPoints[1].x)).toBe(DefaultPalette.green);
+    expect(result(chartPoints[2].x)).toBe(DefaultPalette.green);
+  });
+  test('should return the color scale - using multiple color', () => {
+    const instance = new HorizontalBarChartWithAxisBase({
+      data: chartPoints,
+      colors: [DefaultPalette.red, DefaultPalette.blue, DefaultPalette.green],
+      theme: DarkTheme,
+      useSingleColor: false,
+    });
+    expect(instance).toBeDefined();
+    instance._getAxisData({ yAxisDomainValues: chartPoints.map(item => item.x) });
+    instance._adjustProps();
+    const result = instance._createColors();
+    expect(result).toBeDefined();
+    expect(result(chartPoints[0].x)).toBe('rgb(180, 40, 74)');
+    expect(result(chartPoints[1].x)).toBe('rgb(129, 63, 114)');
+    expect(result(chartPoints[2].x)).toBe('rgb(103, 74, 133)');
+  });
+});
+
 runTest('_getLegendData', () => {
   test('Should return empty legends data when there is no chart data', () => {
     const instance = new HorizontalBarChartWithAxisBase({
