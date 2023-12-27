@@ -414,10 +414,8 @@ export function createYAxisForOtherCharts(
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
   const finalYmin = supportNegativeValuesForYAxis
-    ? yMinMaxValues.startValue < (yMinValue || 0)
-      ? yMinMaxValues.startValue
-      : yMinValue!
-    : Math.max(yMinMaxValues.startValue < (yMinValue || 0) ? yMinMaxValues.startValue : yMinValue!, 0);
+    ? Math.min(yMinMaxValues.startValue, yMinValue || 0)
+    : Math.max(Math.min(yMinMaxValues.startValue, yMinValue || 0), 0);
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset);
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, domainValues[domainValues.length - 1]])
