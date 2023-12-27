@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Adding Unit Tests for 4 charts",
+  "comment": "Adding Unit Tests for Vertical Stacked Bar Chart, Stacked Bar Chart Grouped vertical bar chart and Multi Stacked Bar Charts",
   "packageName": "@fluentui/react-charting",
   "email": "srmukher@microsoft.com",
   "dependentChangeType": "none"
