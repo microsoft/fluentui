@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 27 Dec 2023 07:26:32 GMT",
+      "tag": "@fluentui/react-charting_v5.19.8",
+      "version": "5.19.8",
+      "comments": {
+        "none": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8495bb4f55924c083e9ecd6f231856865d751049",
+            "comment": "Added unit tests for Area, Line and Vertical bar charts"
+          },
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ddd372e4b5cfcb4c4a7f2e87a34251ac9273dc3c",
+            "comment": "Adding Unit Tests for 4 charts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 25 Dec 2023 07:28:36 GMT",
       "tag": "@fluentui/react-charting_v5.19.8",
       "version": "5.19.8",
