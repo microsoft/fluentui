@@ -355,7 +355,10 @@ describe('Horizontal bar chart re-rendering', () => {
 describe('Horizontal Bar Chart - axe-core', () => {
   test('Should pass accessibility tests', async () => {
     const { container } = render(<HorizontalBarChart data={chartPoints} />);
-    const axeResults = await axe(container);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
     expect(axeResults).toHaveNoViolations();
-  }, 10000);
+  });
 });

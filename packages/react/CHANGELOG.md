@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 14 Dec 2023 07:30:10 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Dec 2023 07:28:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.114.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.114.0)
+
+Mon, 25 Dec 2023 07:28:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.113.1..@fluentui/react_v8.114.0)
+
+### Minor changes
+
+- feat(TextField): Add scrollContainerRef to allow fixing unwanted scroll issue with multiline + autoAdjustHeight  and a container with scroll. ([PR #30110](https://github.com/microsoft/fluentui/pull/30110) by estebanmu@microsoft.com)
 
 ## [8.113.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.113.1)
 
