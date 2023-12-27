@@ -138,7 +138,7 @@ runTest('_createBarsAndLegends', () => {
     expect(firstBar['children']['props']['height']).toEqual(barHeight);
   });
 
-  test('Should return bars area label correctly', () => {
+  test('Should return bars aria-label correctly', () => {
     const instance = new MultiStackedBarChartBase({
       data: data,
     });
