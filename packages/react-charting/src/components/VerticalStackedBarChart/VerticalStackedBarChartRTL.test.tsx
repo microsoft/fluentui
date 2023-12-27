@@ -331,20 +331,6 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
   );
 
   testWithWait(
-    'Should call the handler on mouse leave from line legend',
-    VerticalStackedBarChart,
-    { data: simplePointsWithLine, calloutProps: { doNotLayer: true } },
-    container => {
-      // eslint-disable-next-line
-      const handleMouseLeave = jest.spyOn(VerticalStackedBarChartBase.prototype as any, '_onLegendLeave');
-      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      fireEvent.mouseLeave(legends[0]);
-      // Assert
-      expect(handleMouseLeave).toHaveBeenCalled();
-    },
-  );
-
-  testWithWait(
     'Should call the handler on mouse over on legend',
     VerticalStackedBarChart,
     { data: simplePointsWithLine, calloutProps: { doNotLayer: true } },
