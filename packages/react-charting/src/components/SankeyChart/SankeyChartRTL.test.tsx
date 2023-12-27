@@ -6,6 +6,9 @@ import { resetIds } from '../../Utilities';
 import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 const chartPointsWithStringNodeId: IChartProps = {
   chartTitle: 'Sankey Chart',
@@ -50,9 +53,6 @@ const chartPointsWithStringNodeId: IChartProps = {
     ],
   },
 };
-import { axe, toHaveNoViolations } from 'jest-axe';
-
-expect.extend(toHaveNoViolations);
 
 const emptyChartPoints: IChartProps = {
   chartData: [],
