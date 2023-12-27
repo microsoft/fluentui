@@ -150,7 +150,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         {...this.props}
         points={this._points}
         yMinValue={this.props.supportNegativeYValues ? this._yMin : 0}
-        supportNegativeValuesForYAxis={false}
+        supportNegativeValuesForYAxis={this.props.supportNegativeYValues}
         chartType={ChartTypes.VerticalBarChart}
         xAxisType={this._xAxisType}
         calloutProps={calloutProps}
