@@ -99,7 +99,7 @@ runTest('_createBarsAndLegends', () => {
     expect(legends).toHaveLength(2);
   });
 
-  test('', () => {
+  test('Should return bars and legends data which includes only target data', () => {
     const instance = new StackedBarChartBase({
       data: {},
     });

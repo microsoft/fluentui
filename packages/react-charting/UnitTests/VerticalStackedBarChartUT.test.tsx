@@ -130,19 +130,8 @@ runTest('VerticalBarChart unit tests', () => {
       expect(points[0].getAttribute('r')).toEqual('8');
     },
   );
-
-  testWithoutWait(
-    'Should return circleRadius if activePoint matches the circle',
-    VerticalStackedBarChart,
-    { data: simplePointsWithLine },
-    container => {
-      const points = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'circle');
-      expect(points).toHaveLength(2);
-      fireEvent.focus(points[0]);
-      expect(points[0].getAttribute('r')).toEqual('8');
-    },
-  );
 });
+
 runTest('get area label', () => {
   testWithWait(
     'Should return the correct aria label for a stacked Bar',
@@ -405,6 +394,10 @@ runTest('Get Scales', () => {
 
     expect(scales.xBarScale).toBeDefined();
     expect(scales.yBarScale).toBeDefined();
+    expect(scales.yBarScale(-200)).toBeLessThan(0);
+    expect(scales.yBarScale(-500)).toBeLessThanOrEqual(containerHeight);
+    expect(scales.yBarScale(700)).toBeGreaterThan(containerHeight);
+    expect(Math.ceil(scales.yBarScale(41.6))).toEqual(containerHeight);
   });
 
   test('Should return scales for non-numeric axis', () => {
@@ -424,10 +417,14 @@ runTest('Get Scales', () => {
     instance._dataset = instance._createDataSetLayer();
     const containerHeight = 500;
     const containerWidth = 800;
-    const isNumericAxis = true;
+    const isNumericAxis = false;
     const scales = instance._getScales(containerHeight, containerWidth, isNumericAxis);
 
     expect(scales.xBarScale).toBeDefined();
     expect(scales.yBarScale).toBeDefined();
+    expect(scales.yBarScale(-300)).toBeLessThan(0);
+    expect(scales.yBarScale(-600)).toBeLessThanOrEqual(containerHeight);
+    expect(scales.yBarScale(800)).toBeGreaterThan(containerHeight);
+    expect(Math.ceil(scales.yBarScale(41.6))).toEqual(containerHeight);
   });
 });
