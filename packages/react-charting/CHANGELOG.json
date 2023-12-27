@@ -17,7 +17,7 @@
             "author": "srmukher@microsoft.com",
             "package": "@fluentui/react-charting",
             "commit": "ddd372e4b5cfcb4c4a7f2e87a34251ac9273dc3c",
-            "comment": "Adding Unit Tests for Vertical Stacked Bar Chart, Stacked Bar Chart Grouped vertical bar chart and Multi Stacked Bar ChartsAdding Unit Tests for 4 charts"
+            "comment": "Adding Unit Tests for Vertical Stacked Bar Chart, Stacked Bar Chart, Grouped vertical bar chart and Multi Stacked Bar Charts"
           }
         ]
       }
