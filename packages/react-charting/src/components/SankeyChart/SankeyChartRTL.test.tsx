@@ -6,6 +6,9 @@ import { resetIds } from '../../Utilities';
 import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 const chartPointsWithStringNodeId: IChartProps = {
   chartTitle: 'Sankey Chart',
@@ -141,4 +144,14 @@ describe('Sankey chart rendering', () => {
       expect(getById(container, /_SankeyChart_empty/i)).toHaveLength(0);
     });
   });
+});
+
+describe('Sankey Chart - axe-core', () => {
+  beforeEach(sharedBeforeEach);
+
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<SankeyChart data={chartPointsWithStringNodeId} />);
+    const axeResults = await axe(container);
+    expect(axeResults).toHaveNoViolations();
+  }, 10000);
 });
