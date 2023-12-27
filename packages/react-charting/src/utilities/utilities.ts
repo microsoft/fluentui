@@ -335,13 +335,21 @@ export function createYAxis(
   chartType: ChartTypes,
   barWidth: number,
   isIntegralDataset: boolean,
+  supportNegativeValuesForYAxis: boolean = false,
   useSecondaryYScale: boolean = false,
 ) {
   switch (chartType) {
     case ChartTypes.HorizontalBarChartWithAxis:
       return createYAxisForHorizontalBarChartWithAxis(yAxisParams, isRtl, axisData, barWidth!);
     default:
-      return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
+      return createYAxisForOtherCharts(
+        yAxisParams,
+        isRtl,
+        axisData,
+        isIntegralDataset,
+        supportNegativeValuesForYAxis,
+        useSecondaryYScale,
+      );
   }
 }
 
@@ -383,6 +391,7 @@ export function createYAxisForOtherCharts(
   isRtl: boolean,
   axisData: IAxisData,
   isIntegralDataset: boolean,
+  supportNegativeValuesForYAxis: boolean = false,
   useSecondaryYScale: boolean = false,
 ) {
   const {
@@ -404,7 +413,11 @@ export function createYAxisForOtherCharts(
   // maxOfYVal coming from only area chart and Grouped vertical bar chart(Calculation done at base file)
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
-  const finalYmin = yMinMaxValues.startValue < (yMinValue || 0) ? yMinMaxValues.startValue : yMinValue!;
+  const finalYmin = supportNegativeValuesForYAxis
+    ? yMinMaxValues.startValue < (yMinValue || 0)
+      ? yMinMaxValues.startValue
+      : yMinValue!
+    : Math.max(yMinMaxValues.startValue < (yMinValue || 0) ? yMinMaxValues.startValue : yMinValue!, 0);
   const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset);
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, domainValues[domainValues.length - 1]])
