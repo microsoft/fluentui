@@ -17,11 +17,11 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_640"
+    id="chart_490"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_641"
+      id="defaultTabbableElement_491"
     />
     <div
       class=
@@ -32,7 +32,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone645"
+      data-focuszone-id="FocusZone492"
     >
       <svg
         focusable="false"
@@ -66,7 +66,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_640"
+          id="xAxisGElementchart_490"
           transform="translate(0, -35)"
         />
         <g
@@ -94,112 +94,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_640"
+          id="yAxisGElementchart_490"
           transform="translate(40, 0)"
         />
         <g>
-          <g>
-            <rect
-              aria-label="2020/04/30. First, 10%."
-              class=
-
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="11"
-              id="_VBC_bar_642"
-              role="img"
-              tabindex="0"
-              width="16"
-              x="48"
-              y="-35"
-            />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              text-anchor="middle"
-              x="56"
-              y="-12"
-            >
-              10.0k
-            </text>
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Second, 20%."
-              class=
-
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#002050"
-              height="55"
-              id="_VBC_bar_643"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="12.615384615384617"
-              y="-35"
-            />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              text-anchor="middle"
-              x="20.615384615384617"
-              y="32"
-            >
-              50.0k
-            </text>
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Third, 37%."
-              class=
-
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#00188f"
-              height="33"
-              id="_VBC_bar_644"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="-40.46153846153846"
-              y="-35"
-            />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              text-anchor="middle"
-              x="-32.46153846153846"
-              y="10"
-            >
-              30.0k
-            </text>
-          </g>
+           
+           
+           
         </g>
       </svg>
     </div>
@@ -240,7 +141,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone646"
+                data-focuszone-id="FocusZone493"
                 role="listbox"
               >
                 <div
@@ -540,11 +441,11 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_650"
+    id="chart_497"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_651"
+      id="defaultTabbableElement_498"
     />
     <div
       class=
@@ -555,7 +456,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone655"
+      data-focuszone-id="FocusZone499"
     >
       <svg
         focusable="false"
@@ -589,7 +490,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_650"
+          id="xAxisGElementchart_497"
           transform="translate(0, -35)"
         />
         <g
@@ -617,112 +518,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_650"
+          id="yAxisGElementchart_497"
           transform="translate(40, 0)"
         />
         <g>
-          <g>
-            <rect
-              aria-label="2020/04/30. First, 10%."
-              class=
-
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="11"
-              id="_VBC_bar_652"
-              role="img"
-              tabindex="0"
-              width="16"
-              x="48"
-              y="-35"
-            />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              text-anchor="middle"
-              x="56"
-              y="-12"
-            >
-              10.0k
-            </text>
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Second, 20%."
-              class=
-
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#002050"
-              height="55"
-              id="_VBC_bar_653"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="12.615384615384617"
-              y="-35"
-            />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              text-anchor="middle"
-              x="20.615384615384617"
-              y="32"
-            >
-              50.0k
-            </text>
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Third, 37%."
-              class=
-
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#00188f"
-              height="33"
-              id="_VBC_bar_654"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="-40.46153846153846"
-              y="-35"
-            />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              text-anchor="middle"
-              x="-32.46153846153846"
-              y="10"
-            >
-              30.0k
-            </text>
-          </g>
+           
+           
+           
         </g>
       </svg>
     </div>
@@ -763,7 +565,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone656"
+                data-focuszone-id="FocusZone500"
                 role="listbox"
               >
                 <div
@@ -1076,11 +878,11 @@ exports[`Should reflect theme change 1`] = `
             overflow: hidden;
             width: 100%;
           }
-      id="chart_663"
+      id="chart_507"
       role="presentation"
     >
       <div
-        id="defaultTabbableElement_664"
+        id="defaultTabbableElement_508"
       />
       <div
         class=
@@ -1091,7 +893,7 @@ exports[`Should reflect theme change 1`] = `
             {
               overflow: auto;
             }
-        data-focuszone-id="FocusZone668"
+        data-focuszone-id="FocusZone509"
       >
         <svg
           focusable="false"
@@ -1125,7 +927,7 @@ exports[`Should reflect theme change 1`] = `
                 & path {
                   display: none;
                 }
-            id="xAxisGElementchart_663"
+            id="xAxisGElementchart_507"
             transform="translate(0, -35)"
           />
           <g
@@ -1153,112 +955,13 @@ exports[`Should reflect theme change 1`] = `
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
-            id="yAxisGElementchart_663"
+            id="yAxisGElementchart_507"
             transform="translate(40, 0)"
           />
           <g>
-            <g>
-              <rect
-                aria-label="2020/04/30. First, 10%."
-                class=
-
-                    {
-                      opacity: ;
-                    }
-                data-is-focusable="true"
-                fill="#0078d4"
-                height="11"
-                id="_VBC_bar_665"
-                role="img"
-                tabindex="0"
-                width="16"
-                x="48"
-                y="-35"
-              />
-              <text
-                aria-hidden="true"
-                class=
-
-                    {
-                      fill: #f3f2f1;
-                      font-size: 12px;
-                      font-weight: 600;
-                    }
-                text-anchor="middle"
-                x="56"
-                y="-12"
-              >
-                10.0k
-              </text>
-            </g>
-            <g>
-              <rect
-                aria-label="2020/04/30. Second, 20%."
-                class=
-
-                    {
-                      opacity: ;
-                    }
-                data-is-focusable="true"
-                fill="#002050"
-                height="55"
-                id="_VBC_bar_666"
-                role="img"
-                tabindex="-1"
-                width="16"
-                x="12.615384615384617"
-                y="-35"
-              />
-              <text
-                aria-hidden="true"
-                class=
-
-                    {
-                      fill: #f3f2f1;
-                      font-size: 12px;
-                      font-weight: 600;
-                    }
-                text-anchor="middle"
-                x="20.615384615384617"
-                y="32"
-              >
-                50.0k
-              </text>
-            </g>
-            <g>
-              <rect
-                aria-label="2020/04/30. Third, 37%."
-                class=
-
-                    {
-                      opacity: ;
-                    }
-                data-is-focusable="true"
-                fill="#00188f"
-                height="33"
-                id="_VBC_bar_667"
-                role="img"
-                tabindex="-1"
-                width="16"
-                x="-40.46153846153846"
-                y="-35"
-              />
-              <text
-                aria-hidden="true"
-                class=
-
-                    {
-                      fill: #f3f2f1;
-                      font-size: 12px;
-                      font-weight: 600;
-                    }
-                text-anchor="middle"
-                x="-32.46153846153846"
-                y="10"
-              >
-                30.0k
-              </text>
-            </g>
+             
+             
+             
           </g>
         </svg>
       </div>
@@ -1299,7 +1002,7 @@ exports[`Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone669"
+                  data-focuszone-id="FocusZone510"
                   role="listbox"
                 >
                   <div
@@ -1587,7 +1290,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_VBC_empty672"
+    id="_VBC_empty513"
     role="alert"
     style="opacity: 0;"
   />
@@ -1611,11 +1314,11 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           overflow: hidden;
           width: 100%;
         }
-    id="chart_673"
+    id="chart_514"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_674"
+      id="defaultTabbableElement_515"
     />
     <div
       class=
@@ -1626,7 +1329,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone678"
+      data-focuszone-id="FocusZone516"
     >
       <svg
         focusable="false"
@@ -1660,7 +1363,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_673"
+          id="xAxisGElementchart_514"
           transform="translate(0, -35)"
         />
         <g
@@ -1688,58 +1391,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_673"
+          id="yAxisGElementchart_514"
           transform="translate(40, 0)"
         />
         <g>
-          <g
-            transform="translate(10.857142857142858, 0)"
-          >
-            <rect
-              aria-label="2020/04/30. First, 10%."
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="11"
-              id="_VBC_bar_675"
-              role="img"
-              tabindex="0"
-              width="-10.857142857142858"
-              x="37.14285714285714"
-              y="-35"
-            />
-          </g>
-          <g
-            transform="translate(10.857142857142858, 0)"
-          >
-            <rect
-              aria-label="2020/04/30. Second, 20%."
-              data-is-focusable="true"
-              fill="#002050"
-              height="55"
-              id="_VBC_bar_676"
-              role="img"
-              tabindex="-1"
-              width="-10.857142857142858"
-              x="4.571428571428569"
-              y="-35"
-            />
-          </g>
-          <g
-            transform="translate(10.857142857142858, 0)"
-          >
-            <rect
-              aria-label="2020/04/30. Third, 37%."
-              data-is-focusable="true"
-              fill="#00188f"
-              height="33"
-              id="_VBC_bar_677"
-              role="img"
-              tabindex="-1"
-              width="-10.857142857142858"
-              x="-28"
-              y="-35"
-            />
-          </g>
+           
+           
+           
         </g>
       </svg>
     </div>
@@ -1780,7 +1438,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone679"
+                data-focuszone-id="FocusZone517"
                 role="listbox"
               >
                 <div
@@ -2095,7 +1753,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone8"
+      data-focuszone-id="FocusZone5"
     >
       <svg
         focusable="false"
@@ -2161,108 +1819,9 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           transform="translate(40, 0)"
         />
         <g>
-          <g>
-            <rect
-              aria-label="2020/04/30. First, 10%."
-              class=
-
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="11"
-              id="_VBC_bar_5"
-              role="img"
-              tabindex="0"
-              width="16"
-              x="48"
-              y="-35"
-            />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              text-anchor="middle"
-              x="56"
-              y="-12"
-            >
-              10.0k
-            </text>
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Second, 20%."
-              class=
-
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#002050"
-              height="55"
-              id="_VBC_bar_6"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="12.615384615384617"
-              y="-35"
-            />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              text-anchor="middle"
-              x="20.615384615384617"
-              y="32"
-            >
-              50.0k
-            </text>
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Third, 37%."
-              class=
-
-                  {
-                    opacity: ;
-                  }
-              data-is-focusable="true"
-              fill="#00188f"
-              height="33"
-              id="_VBC_bar_7"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="-40.46153846153846"
-              y="-35"
-            />
-            <text
-              aria-hidden="true"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              text-anchor="middle"
-              x="-32.46153846153846"
-              y="10"
-            >
-              30.0k
-            </text>
-          </g>
+           
+           
+           
         </g>
       </svg>
     </div>
@@ -2303,7 +1862,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone9"
+                data-focuszone-id="FocusZone6"
                 role="listbox"
               >
                 <div
@@ -2603,11 +2162,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_13"
+    id="chart_10"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_14"
+      id="defaultTabbableElement_11"
     />
     <div
       class=
@@ -2618,7 +2177,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone19"
+      data-focuszone-id="FocusZone12"
     >
       <svg
         focusable="false"
@@ -2652,7 +2211,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_13"
+          id="xAxisGElementchart_10"
           transform="translate(0, -35)"
         />
         <g
@@ -2680,74 +2239,14 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_13"
+          id="yAxisGElementchart_10"
           transform="translate(40, 0)"
         />
         <g>
-          <g
-            transform="translate(7.6000000000000005, 0)"
-          >
-            <rect
-              aria-label="This is a medium long label. . 3500."
-              data-is-focusable="true"
-              fill="#627CEF"
-              height="55"
-              id="_VBC_bar_15"
-              role="img"
-              tabindex="0"
-              width="-7.6"
-              x="40.400000000000006"
-              y="-35"
-            />
-          </g>
-          <g
-            transform="translate(7.6000000000000005, 0)"
-          >
-            <rect
-              aria-label="This is a long label This is a long label. 2500."
-              data-is-focusable="true"
-              fill="#C19C00"
-              height="39.285714285714285"
-              id="_VBC_bar_16"
-              role="img"
-              tabindex="-1"
-              width="-7.6"
-              x="17.6"
-              y="-35"
-            />
-          </g>
-          <g
-            transform="translate(7.6000000000000005, 0)"
-          >
-            <rect
-              aria-label="This label is as long as the previous one. 1900."
-              data-is-focusable="true"
-              fill="#E650AF"
-              height="29.857142857142854"
-              id="_VBC_bar_17"
-              role="img"
-              tabindex="-1"
-              width="-7.6"
-              x="-5.199999999999999"
-              y="-35"
-            />
-          </g>
-          <g
-            transform="translate(7.6000000000000005, 0)"
-          >
-            <rect
-              aria-label="A short label. 2800."
-              data-is-focusable="true"
-              fill="#0E7878"
-              height="44"
-              id="_VBC_bar_18"
-              role="img"
-              tabindex="-1"
-              width="-7.6"
-              x="-28"
-              y="-35"
-            />
-          </g>
+           
+           
+           
+           
         </g>
       </svg>
     </div>
@@ -2788,7 +2287,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone20"
+                data-focuszone-id="FocusZone13"
                 role="listbox"
               >
                 <div
@@ -3166,11 +2665,11 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           overflow: hidden;
           width: 100%;
         }
-    id="chart_686"
+    id="chart_524"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_687"
+      id="defaultTabbableElement_525"
     />
     <div
       class=
@@ -3181,11 +2680,11 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone691"
+      data-focuszone-id="FocusZone526"
     >
       <svg
         focusable="false"
-        height="0"
+        height="310"
         style="display: block;"
         width="0"
       >
@@ -3215,9 +2714,127 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_686"
-          transform="translate(0, -35)"
-        />
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_524"
+          text-anchor="middle"
+          transform="translate(0, 275)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H-35.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(38.80769230769231,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              5,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(21.11538461538462,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              10,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(3.423076923076927,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              15,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-14.269230769230774,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              20,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-31.96153846153846,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              25,000
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -3243,9 +2860,109 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_686"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_524"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,275.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,275.5)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,211.75)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              13k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,148)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              25k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,84.25)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              38k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              50k
+            </text>
+          </g>
+        </g>
         <g>
           <g>
             <rect
@@ -3257,13 +2974,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="11"
-              id="_VBC_bar_688"
+              height="51"
+              id="_VBC_bar_531"
               role="img"
               tabindex="0"
               width="16"
               x="48"
-              y="-35"
+              y="224"
             />
             <text
               aria-hidden="true"
@@ -3276,7 +2993,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   }
               text-anchor="middle"
               x="56"
-              y="-12"
+              y="218"
             >
               10.0k
             </text>
@@ -3291,13 +3008,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   }
               data-is-focusable="true"
               fill="#002050"
-              height="55"
-              id="_VBC_bar_689"
+              height="255"
+              id="_VBC_bar_532"
               role="img"
               tabindex="-1"
               width="16"
               x="12.615384615384617"
-              y="-35"
+              y="20"
             />
             <text
               aria-hidden="true"
@@ -3310,7 +3027,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   }
               text-anchor="middle"
               x="20.615384615384617"
-              y="32"
+              y="14"
             >
               50.0k
             </text>
@@ -3325,13 +3042,13 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   }
               data-is-focusable="true"
               fill="#00188f"
-              height="33"
-              id="_VBC_bar_690"
+              height="153"
+              id="_VBC_bar_533"
               role="img"
               tabindex="-1"
               width="16"
               x="-40.46153846153846"
-              y="-35"
+              y="122"
             />
             <text
               aria-hidden="true"
@@ -3344,7 +3061,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   }
               text-anchor="middle"
               x="-32.46153846153846"
-              y="10"
+              y="116"
             >
               30.0k
             </text>
@@ -3381,7 +3098,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone692"
+          data-focuszone-id="FocusZone527"
           role="listbox"
         >
           <div
@@ -3657,6 +3374,63 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         </div>
       </div>
     </div>
+    <div
+      class=
+          ms-Callout-container
+          {
+            position: relative;
+          }
+      style="display: none;"
+    >
+      <div
+        class=
+            ms-Callout
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              border-radius: 2px;
+              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+              box-sizing: border-box;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              outline: transparent;
+              position: absolute;
+              z-index: 1000000;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              border-color: WindowText;
+              border-style: solid;
+              border-width: 1px;
+            }
+            &::-moz-focus-inner {
+              border: 0px;
+            }
+        data-is-focusable="true"
+        id="toolTipcallout521"
+        style="opacity: 0; filter: opacity(0); pointer-events: none;"
+        tabindex="-1"
+      >
+        <div
+          class=
+              ms-Callout-main
+              {
+                background-color: #ffffff;
+                border-radius: 2px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                position: relative;
+                width: 100%;
+              }
+          role="text"
+          style="outline: none; max-height: 100%;"
+        />
+      </div>
+    </div>
+    <div>
+      Loading...
+    </div>
   </div>
 </div>
 `;
@@ -3678,11 +3452,11 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           overflow: hidden;
           width: 100%;
         }
-    id="chart_702"
+    id="chart_537"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_703"
+      id="defaultTabbableElement_538"
     />
     <div
       class=
@@ -3693,11 +3467,11 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone707"
+      data-focuszone-id="FocusZone539"
     >
       <svg
         focusable="false"
-        height="0"
+        height="310"
         style="display: block;"
         width="0"
       >
@@ -3727,9 +3501,127 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_702"
-          transform="translate(0, -35)"
-        />
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_537"
+          text-anchor="middle"
+          transform="translate(0, 275)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H-35.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(38.80769230769231,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              5,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(21.11538461538462,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              10,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(3.423076923076927,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              15,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-14.269230769230774,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              20,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-31.96153846153846,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              25,000
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -3755,9 +3647,109 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_702"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_537"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,275.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,275.5)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,211.75)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              13k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,148)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              25k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,84.25)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              38k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              50k
+            </text>
+          </g>
+        </g>
         <g>
           <g>
             <rect
@@ -3769,13 +3761,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   }
               data-is-focusable="true"
               fill="#0078d4"
-              height="11"
-              id="_VBC_bar_704"
+              height="51"
+              id="_VBC_bar_544"
               role="img"
               tabindex="0"
               width="16"
               x="48"
-              y="-35"
+              y="224"
             />
             <text
               aria-hidden="true"
@@ -3788,7 +3780,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   }
               text-anchor="middle"
               x="56"
-              y="-12"
+              y="218"
             >
               10.0k
             </text>
@@ -3803,13 +3795,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   }
               data-is-focusable="true"
               fill="#002050"
-              height="55"
-              id="_VBC_bar_705"
+              height="255"
+              id="_VBC_bar_545"
               role="img"
               tabindex="-1"
               width="16"
               x="12.615384615384617"
-              y="-35"
+              y="20"
             />
             <text
               aria-hidden="true"
@@ -3822,7 +3814,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   }
               text-anchor="middle"
               x="20.615384615384617"
-              y="32"
+              y="14"
             >
               50.0k
             </text>
@@ -3837,13 +3829,13 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   }
               data-is-focusable="true"
               fill="#00188f"
-              height="33"
-              id="_VBC_bar_706"
+              height="153"
+              id="_VBC_bar_546"
               role="img"
               tabindex="-1"
               width="16"
               x="-40.46153846153846"
-              y="-35"
+              y="122"
             />
             <text
               aria-hidden="true"
@@ -3856,7 +3848,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   }
               text-anchor="middle"
               x="-32.46153846153846"
-              y="10"
+              y="116"
             >
               30.0k
             </text>
@@ -3893,7 +3885,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone708"
+          data-focuszone-id="FocusZone540"
           role="listbox"
         >
           <div
@@ -4165,6 +4157,72 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 </div>
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class=
+          ms-Callout-container
+          {
+            position: relative;
+          }
+    >
+      <div
+        class=
+            ms-Callout
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              border-radius: 2px;
+              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+              box-sizing: border-box;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              outline: transparent;
+              position: absolute;
+              z-index: 1000000;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              border-color: WindowText;
+              border-style: solid;
+              border-width: 1px;
+            }
+            &::-moz-focus-inner {
+              border: 0px;
+            }
+        data-is-focusable="true"
+        id="toolTipcallout534"
+        style="opacity: 0; filter: opacity(0); pointer-events: none;"
+        tabindex="-1"
+      >
+        <div
+          class=
+              ms-Callout-main
+              {
+                background-color: #ffffff;
+                border-radius: 2px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                position: relative;
+                width: 100%;
+              }
+          role="text"
+          style="outline: none; max-height: 100%;"
+        >
+          <div>
+            <pre>
+              {
+  "x": 10000,
+  "y": 50000,
+  "legend": "Second",
+  "color": "#002050",
+  "xAxisCalloutData": "2020/04/30",
+  "yAxisCalloutData": "20%"
+}
+            </pre>
           </div>
         </div>
       </div>
