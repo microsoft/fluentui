@@ -311,6 +311,9 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           '::-ms-clear': {
             display: 'none',
           },
+          '::-ms-reveal': {
+            display: 'none',
+          },
           [HighContrastSelector]: {
             background: 'Window',
             color: disabled ? 'GrayText' : 'WindowText',

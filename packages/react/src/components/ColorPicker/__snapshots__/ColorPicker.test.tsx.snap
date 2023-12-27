@@ -443,6 +443,9 @@ exports[`ColorPicker renders correctly 1`] = `
                             &::-ms-clear {
                               display: none;
                             }
+                            &::-ms-reveal {
+                              display: none;
+                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               background: Window;
                               color: WindowText;
@@ -607,6 +610,9 @@ exports[`ColorPicker renders correctly 1`] = `
                               outline: 0px;
                             }
                             &::-ms-clear {
+                              display: none;
+                            }
+                            &::-ms-reveal {
                               display: none;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -775,6 +781,9 @@ exports[`ColorPicker renders correctly 1`] = `
                             &::-ms-clear {
                               display: none;
                             }
+                            &::-ms-reveal {
+                              display: none;
+                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               background: Window;
                               color: WindowText;
@@ -941,6 +950,9 @@ exports[`ColorPicker renders correctly 1`] = `
                             &::-ms-clear {
                               display: none;
                             }
+                            &::-ms-reveal {
+                              display: none;
+                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               background: Window;
                               color: WindowText;
@@ -1105,6 +1117,9 @@ exports[`ColorPicker renders correctly 1`] = `
                               outline: 0px;
                             }
                             &::-ms-clear {
+                              display: none;
+                            }
+                            &::-ms-reveal {
                               display: none;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -1622,6 +1637,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                             &::-ms-clear {
                               display: none;
                             }
+                            &::-ms-reveal {
+                              display: none;
+                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               background: Window;
                               color: WindowText;
@@ -1786,6 +1804,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                               outline: 0px;
                             }
                             &::-ms-clear {
+                              display: none;
+                            }
+                            &::-ms-reveal {
                               display: none;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -1954,6 +1975,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                             &::-ms-clear {
                               display: none;
                             }
+                            &::-ms-reveal {
+                              display: none;
+                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               background: Window;
                               color: WindowText;
@@ -2120,6 +2144,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                             &::-ms-clear {
                               display: none;
                             }
+                            &::-ms-reveal {
+                              display: none;
+                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               background: Window;
                               color: WindowText;
@@ -2284,6 +2311,9 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                               outline: 0px;
                             }
                             &::-ms-clear {
+                              display: none;
+                            }
+                            &::-ms-reveal {
                               display: none;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -2781,6 +2811,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                             &::-ms-clear {
                               display: none;
                             }
+                            &::-ms-reveal {
+                              display: none;
+                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               background: Window;
                               color: WindowText;
@@ -2945,6 +2978,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                               outline: 0px;
                             }
                             &::-ms-clear {
+                              display: none;
+                            }
+                            &::-ms-reveal {
                               display: none;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -3113,6 +3149,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                             &::-ms-clear {
                               display: none;
                             }
+                            &::-ms-reveal {
+                              display: none;
+                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               background: Window;
                               color: WindowText;
@@ -3279,6 +3318,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                             &::-ms-clear {
                               display: none;
                             }
+                            &::-ms-reveal {
+                              display: none;
+                            }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                               background: Window;
                               color: WindowText;
@@ -3443,6 +3485,9 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                               outline: 0px;
                             }
                             &::-ms-clear {
+                              display: none;
+                            }
+                            &::-ms-reveal {
                               display: none;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {

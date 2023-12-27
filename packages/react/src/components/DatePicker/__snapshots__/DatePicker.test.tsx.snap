@@ -132,6 +132,9 @@ exports[`DatePicker renders DatePicker allowing text input correctly 1`] = `
                 &::-ms-clear {
                   display: none;
                 }
+                &::-ms-reveal {
+                  display: none;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   background: Window;
                   color: WindowText;
@@ -363,6 +366,9 @@ exports[`DatePicker renders DatePicker with value correctly 1`] = `
                 &::-ms-clear {
                   display: none;
                 }
+                &::-ms-reveal {
+                  display: none;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   background: Window;
                   color: WindowText;
@@ -591,6 +597,9 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   outline: 0px;
                 }
                 &::-ms-clear {
+                  display: none;
+                }
+                &::-ms-reveal {
                   display: none;
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {

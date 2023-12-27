@@ -134,6 +134,9 @@ exports[`TextField snapshots renders correctly 1`] = `
               &::-ms-clear {
                 display: none;
               }
+              &::-ms-reveal {
+                display: none;
+              }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
@@ -348,6 +351,9 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
                 outline: 0px;
               }
               &::-ms-clear {
+                display: none;
+              }
+              &::-ms-reveal {
                 display: none;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -601,6 +607,9 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
               &::-ms-clear {
                 display: none;
               }
+              &::-ms-reveal {
+                display: none;
+              }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
@@ -811,6 +820,9 @@ exports[`TextField snapshots renders multiline non resizable correctly 1`] = `
               &::-ms-clear {
                 display: none;
               }
+              &::-ms-reveal {
+                display: none;
+              }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
@@ -980,6 +992,9 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
                 outline: 0px;
               }
               &::-ms-clear {
+                display: none;
+              }
+              &::-ms-reveal {
                 display: none;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -1153,6 +1168,9 @@ exports[`TextField snapshots renders multiline with placeholder correctly 1`] = 
               &::-ms-clear {
                 display: none;
               }
+              &::-ms-reveal {
+                display: none;
+              }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 background: Window;
                 color: WindowText;
@@ -1287,6 +1305,9 @@ exports[`TextField snapshots renders with reveal password button 1`] = `
                 outline: 0px;
               }
               &::-ms-clear {
+                display: none;
+              }
+              &::-ms-reveal {
                 display: none;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -1590,6 +1611,9 @@ exports[`TextField snapshots should respect user component and subcomponent styl
                 outline: 0px;
               }
               &::-ms-clear {
+                display: none;
+              }
+              &::-ms-reveal {
                 display: none;
               }
               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
