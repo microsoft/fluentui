@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Added unit tests for Area, Line and Vertical bar charts",
-  "packageName": "@fluentui/react-charting",
-  "email": "srmukher@microsoft.com",
-  "dependentChangeType": "none"
-}
