@@ -10,6 +10,11 @@ export { PresenceUnmountOnExit as unmountOnExit } from './PresenceUnmountOnExit.
 
 export { ImperativeRefPlayState as setPlayState } from './ImperativeRefPlayState.stories';
 
+export { CustomAtom } from './CustomAtom.stories';
+export { TokensUsage } from './TokensUsage.stories';
+
+export { MotionLibrary } from './MotionLibrary.stories';
+
 export default {
   title: 'Utilities/Motions (Preview)',
   component: null,

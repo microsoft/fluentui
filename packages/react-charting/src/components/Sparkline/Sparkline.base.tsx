@@ -100,6 +100,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
           opacity={1}
           fillOpacity={0.2}
           fill={this.props.data!.lineChartData![0].color!}
+          role="img"
           aria-label={`Sparkline with label ${this.props.data!.lineChartData![0].legend!}`}
         />
       </>

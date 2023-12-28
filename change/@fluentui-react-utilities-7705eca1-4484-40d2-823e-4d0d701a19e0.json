@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: deprecate old slot API methods and types",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

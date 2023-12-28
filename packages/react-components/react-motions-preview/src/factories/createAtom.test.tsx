@@ -6,9 +6,8 @@ import { createAtom } from './createAtom';
 
 const motion: AtomMotion = {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: {
-    duration: 500,
-  },
+
+  duration: 500,
 };
 
 function createElementMock() {
@@ -42,7 +41,7 @@ describe('createAtom', () => {
     );
 
     expect(animateMock).toHaveBeenCalledWith(motion.keyframes, {
-      ...motion.options,
+      duration: motion.duration,
       fill: 'forwards',
       iterations: 1,
     });

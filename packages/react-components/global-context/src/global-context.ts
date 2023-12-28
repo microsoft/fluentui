@@ -4,6 +4,7 @@ import { GlobalObject } from './types';
 import { getMajorVersion } from './utils';
 
 const isBrowser = canUseDOM();
+// eslint-disable-next-line no-restricted-globals
 const globalObject: GlobalObject = isBrowser ? window : global;
 
 // Identifier for the symbol, for easy idenfitifaction of symbols created by this util

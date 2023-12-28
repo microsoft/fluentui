@@ -1,7 +1,4 @@
-export type AtomMotion = {
-  keyframes: Keyframe[];
-  options: KeyframeEffectOptions;
-};
+export type AtomMotion = { keyframes: Keyframe[] } & KeyframeEffectOptions;
 
 export type PresenceMotion = {
   enter: AtomMotion;

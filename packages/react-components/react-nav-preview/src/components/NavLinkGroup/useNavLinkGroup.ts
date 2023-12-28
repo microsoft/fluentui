@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { NavLinkGroupProps, NavLinkGroupState } from './NavLinkGroup.types';
 
 /**
@@ -23,9 +23,12 @@ export const useNavLinkGroup_unstable = (
     },
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
-    root: getIntrinsicElementProps('div', {
-      ref,
-      ...props,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        ref,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
   };
 };
