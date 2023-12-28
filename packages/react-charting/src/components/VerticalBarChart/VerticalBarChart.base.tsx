@@ -785,6 +785,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     if (yAxisData && yAxisData.yAxisDomainValues.length) {
       const { yAxisDomainValues: domainValue } = yAxisData;
       this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
+      this._yMin = Math.min(domainValue[0], this.props.yMinValue || 0);
     }
   };
 
