@@ -376,8 +376,9 @@ export function createYAxisForHorizontalBarChartWithAxis(
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
   const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
+  const maxAbsoluteY = Math.max(Math.abs(finalYmin), Math.abs(finalYmax));
   const yAxisScale = d3ScaleLinear()
-    .domain([finalYmin, finalYmax])
+    .domain([finalYmin < 0 ? -maxAbsoluteY : finalYmin, finalYmax > 0 ? maxAbsoluteY : finalYmax])
     .range([containerHeight - margins.bottom!, margins.top!]);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
   const yAxis = axis.tickPadding(tickPadding).ticks(yAxisTickCount);
@@ -416,9 +417,15 @@ export function createYAxisForOtherCharts(
   const finalYmin = supportNegativeValuesForYAxis
     ? Math.min(yMinMaxValues.startValue, yMinValue || 0)
     : Math.max(Math.min(yMinMaxValues.startValue, yMinValue || 0), 0);
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset);
+  const maxAbsoluteY = Math.max(Math.abs(finalYmin), Math.abs(finalYmax));
+  const domainValues = prepareDatapoints(
+    finalYmax > 0 ? maxAbsoluteY : finalYmax,
+    finalYmin < 0 ? -maxAbsoluteY : finalYmin,
+    yAxisTickCount,
+    isIntegralDataset,
+  );
   const yAxisScale = d3ScaleLinear()
-    .domain([finalYmin, domainValues[domainValues.length - 1]])
+    .domain([finalYmin < 0 ? -maxAbsoluteY : finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis =
     (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
