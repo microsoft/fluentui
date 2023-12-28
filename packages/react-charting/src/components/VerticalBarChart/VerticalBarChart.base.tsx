@@ -116,6 +116,13 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.y)!,
       this.props.yMinValue || 0,
     );
+    let maxAbsoluteOfY = Math.max(Math.abs(this._yMin), Math.abs(this._yMax));
+    if (this._yMin < 0) {
+      this._yMin = -maxAbsoluteOfY;
+    }
+    if (this._yMax > 0) {
+      this._yMax = maxAbsoluteOfY;
+    }
     const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -149,6 +156,13 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       <CartesianChart
         {...this.props}
         points={this._points}
+        yAxisTickCount={
+          this.props.supportNegativeYValues
+            ? this.props.yAxisTickCount! % 2 === 1
+              ? this.props.yAxisTickCount! + 1
+              : this.props.yAxisTickCount!
+            : this.props.yAxisTickCount!
+        }
         yMinValue={this.props.supportNegativeYValues ? this._yMin : 0}
         supportNegativeValuesForYAxis={this.props.supportNegativeYValues}
         chartType={ChartTypes.VerticalBarChart}

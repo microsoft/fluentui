@@ -425,7 +425,7 @@ export function createYAxisForOtherCharts(
     isIntegralDataset,
   );
   const yAxisScale = d3ScaleLinear()
-    .domain([finalYmin < 0 ? -maxAbsoluteY : finalYmin, domainValues[domainValues.length - 1]])
+    .domain([domainValues[0], domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
   const axis =
     (!isRtl && useSecondaryYScale) || (isRtl && !useSecondaryYScale) ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
