@@ -21,6 +21,10 @@
         "type": "list",
         "items": [
           {
+            "value": "compat",
+            "label": "compat - prepare 1st release for compat package (shipping as <package-name>-compat)"
+          },
+          {
             "value": "preview",
             "label": "preview - prepare 1st release for preview phase (shipping as <package-name>-preview)"
           },

@@ -34,18 +34,18 @@ export function keyToDate(key: string): Date | null {
  *
  * @param date - The Date object to be formatted.
  * @param options - Formatting options. It has two properties:
- *      1. hourCycle (default: 'h23'): Determines if the time format should be 12-hour or 24-hour.
+ *      1. hourCycle (default: undefined): Determines if the time format should be 12-hour or 24-hour.
  *      2. showSeconds (default: false): Determines if the seconds should be included in the formatted string.
  * @returns Formatted time string based on the given options.
  *
  * @example
  * const date = new Date(2023, 9, 6, 23, 45, 12);
- * formatDateToTimeString(date);                         // Returns "23:45"
- * formatDateToTimeString(date, \{ showSeconds: true \});  // Returns "23:45:12"
- * formatDateToTimeString(date, \{ hourCycle: 'h12', showSeconds: true \}); // Returns "11:45:12 PM"
+ * formatDateToTimeString(date);                         // Returns "23:45" in CET
+ * formatDateToTimeString(date, \{ showSeconds: true \});  // Returns "23:45:12" in CET
+ * formatDateToTimeString(date, \{ hourCycle: 'h12', showSeconds: true \}); // Returns "11:45:12 PM" in CET
  */
 export function formatDateToTimeString(date: Date, { hourCycle, showSeconds }: TimeFormatOptions = {}): string {
-  return date.toLocaleTimeString([], {
+  return date.toLocaleTimeString(undefined, {
     hour: 'numeric',
     hourCycle,
     minute: '2-digit',

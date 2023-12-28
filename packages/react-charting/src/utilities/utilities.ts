@@ -717,7 +717,9 @@ export function createYAxisLabels(
   axisNode.selectAll('.tick text').each(function () {
     const text = d3Select(this);
     const totalWord = text.text();
-    const truncatedWord = `${text.text().slice(0, noOfCharsToTruncate)}...`;
+    const truncatedWord = isRtl
+      ? `...${text.text().slice(0, noOfCharsToTruncate)}`
+      : `${text.text().slice(0, noOfCharsToTruncate)}...`;
     const totalWordLength = text.text().length;
     const padding = truncateLabel ? 1.5 : 1; // ems
     const y = text.attr('y');
@@ -737,7 +739,7 @@ export function createYAxisLabels(
       text
         .append('tspan')
         .attr('id', 'showDots')
-        .attr('x', x)
+        .attr('x', isRtl ? 0 : x)
         .attr('y', y)
         .attr('dy', dy)
         .attr('dx', padding + dx + 'em')
@@ -747,7 +749,7 @@ export function createYAxisLabels(
         .attr('text-align', 'start')
         .append('tspan')
         .attr('id', 'LessLength')
-        .attr('x', isRtl ? xValue : x)
+        .attr('x', isRtl ? 0 : x)
         .attr('y', y)
         .attr('dx', padding + dx + 'em')
         .text(totalWord);

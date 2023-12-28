@@ -1,8 +1,28 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Tue, 12 Dec 2023 07:27:25 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Dec 2023 07:28:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.49](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.49)
+
+Mon, 25 Dec 2023 07:28:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.48..@fluentui/azure-themes_v8.6.49)
+
+### Patches
+
+- Bump @fluentui/react to v8.114.0 ([PR #30158](https://github.com/microsoft/fluentui/pull/30158) by beachball)
+
+## [8.6.48](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.48)
+
+Thu, 14 Dec 2023 07:30:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.47..@fluentui/azure-themes_v8.6.48)
+
+### Patches
+
+- link in detailslist a11y bug fix and choicegroup with icon/image bug fix ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by 30805892+Jacqueline-ms@users.noreply.github.com)
+- Bump @fluentui/react to v8.113.1 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/set-version to v8.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
 
 ## [8.6.47](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.47)
 
