@@ -1,8 +1,11 @@
 # @fluentui/react-swatch-picker-preview Spec
 
-## Background TODO - description from V8
+## Background
 
-A SwatchPicker displays color, image and pattern options as a grid. It can be shown by itself, with a header and dividers, or as a button that expands to show the SwatchPicker.
+A SwatchPicker is used in graphic and text editors.
+It displays color, image and pattern options as a row or a grid.
+
+The SwatchPicker can be integrated within a popover or used as a standalone feature.
 
 ## Prior Art
 
@@ -77,21 +80,25 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
 
 ```jsx
 <SwatchPicker
-  layout="grid"
   swatch={color}
   onChange={(\_, data) => setSwatch(data.value)}
-  aria-labelledby="colors"
-  name="color"
-  style={{ gridTemplateColumns: `repeat(4, 30px)` }} >
-    <ColorSwatch id={0} swatch="red" />
-    <ColorSwatch id={1} swatch="rgb(189, 255, 104)" />
-    <ColorSwatch id={2} swatch="#f09" />
-    <ColorSwatch id={3} swatch="#ad5" />
-    <ColorSwatch id={4} swatch="magenta" />
-    <ImageSwatch id={5} swatch="./path/image.png"/>
-    <ImageSwatch id={6} swatch="./path/image1.png"/>
-    <ImageSwatch id={7} swatch="./path/image2.png"/>
-    <ImageSwatch id={8} swatch="./path/image3.png"/>
+  aria-label="Font color"
+>
+  <SwatchPickerRow>
+    <ColorSwatch swatch="red" />
+    <ColorSwatch swatch="rgb(189, 255, 104)" />
+    <ColorSwatch swatch="#f09" />
+  </SwatchPickerRow>
+  <SwatchPickerRow>
+    <ColorSwatch swatch="#ad5" />
+    <ColorSwatch swatch="magenta" />
+    <ImageSwatch swatch="./path/image.png"/>
+  </SwatchPickerRow>
+  <SwatchPickerRow>
+    <ImageSwatch swatch="./path/image1.png"/>
+    <ImageSwatch swatch="./path/image2.png"/>
+    <ImageSwatch swatch="./path/image3.png"/>
+  </SwatchPickerRow>
 </SwatchPicker>
 ```
 
@@ -102,9 +109,10 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
 - Grid
 - Row
 
-Grid starts from 4 swatches.
-SwatchPiker is responsive by default.
-Grid spacing can be customized using CSS `grid-template` props.
+For the grid layout maximum recommended amount of swatches is 64 - 8x8 grid.
+For the row layout it's 8 swatches.
+
+To use grid layout it should be more than 4 swatches.
 
 ### Swatch Variants
 
@@ -130,17 +138,20 @@ Border radius for rounded shape can be customized via CSS.
 
 Custom size can be set by overriding `width` and `height` of the ColorSwatch or ImageSwatch.
 
-### Density/Gap
+### Density/Gap/Spacing
 
-Gap is 2px by default.
-Horizontal and vertical density can be changed via CSS.
+- `small`: 2px
+- `medium` (default): 4px
 
 ### States
 
+- `rest`
 - `hover`
 - `selected`
 - `focused`
 - `pressed`
+- `disabled`
+- `empty`
 
 ## API
 
@@ -158,12 +169,12 @@ Horizontal and vertical density can be changed via CSS.
 
 #### Anatomy
 
-![visual anatomy of the SwatchPicker component](./assets/todo.png)
+![visual anatomy of the SwatchPicker component](./assets/swatch-picker-base.jpg)
 
 #### DOM
 
 ```HTML
-<div role="radiogroup" aria-labelledby="colors">
+<div role="grid" aria-label="Color grid">
   {children}
 </div>
 ```
@@ -174,13 +185,13 @@ Horizontal and vertical density can be changed via CSS.
 
 #### API
 
-| Property | Values                                   | Default  | Purpose                         |
-| -------- | ---------------------------------------- | -------- | ------------------------------- |
-| shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                      |
-| size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell |
-| id       | number                                   |          | Sets swatch id                  |
-| layout   | `row`, `grid`                            | `grid`   | Sets layout of the SwatchPicker |
-| onChange |                                          |          |                                 |
+| Property | Values                                   | Default  | Purpose                             |
+| -------- | ---------------------------------------- | -------- | ----------------------------------- |
+| shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                          |
+| size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell     |
+| spacing  | `small`, `medium`                        | `medium` | Sets spacing between rows and cells |
+| layout   | `row`, `grid`                            | `grid`   | Sets layout of the SwatchPicker     |
+| onChange |                                          |          |                                     |
 
 ## ColorSwatch component
 
@@ -191,23 +202,23 @@ is used for picking colors:
 
 #### Anatomy
 
-![visual anatomy of the SwatchPicker component](./assets/todo.png)
+![visual anatomy of the ColorSwatch component](./assets/todo.png)
 
 #### DOM
 
 ```HTML
-<span name="color" value="{color-id}" style="background: red;">
-  <input type="radio" id="{color-id}" name="color" value="red">
-</span>
-<span name="color" value="{color-id}" style="background: rgb(189, 255, 104);">
-  <input type="radio" id="{color-id}" name="color" value="{color-id}">
-</span>
+<button role="gridcell" aria-selected="true" style="--fui-SwatchPicker--color: #ff0099;">
+  {icon}
+</button>
+<button role="gridcell" aria-selected="false">
+  {icon}
+</button>
 ```
 
 #### ColorSwatch structure
 
-- root `span` element
-- `input` element
+- root `button` element
+- icon slot
 
 #### API
 
@@ -215,11 +226,10 @@ is used for picking colors:
 | -------- | ---------------------------------------- | -------- | ------------------------------- |
 | shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                      |
 | size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell |
-| id       | number                                   |          | Sets swatch id                  |
-| name     |                                          |          | Sets color id                   |
 | swatch   |                                          |          | Sets color id                   |
 | disabled | boolean                                  |          |                                 |
 | selected | boolean                                  |          |                                 |
+| empty    | boolean                                  |          |                                 |
 
 ## ImageSwatch component
 
@@ -236,7 +246,7 @@ is used to pick images:
 #### DOM
 
 ```HTML
-<span name="swatch" value="{color-id}" style="background-image: url(path/image.png);">
+<span name="swatch" value="{color-id}">
   <input type="radio" id="{color-id}" name="swatch" value="{color-id}">
 </span>
 ```
@@ -256,7 +266,9 @@ is used to pick images:
 | name     |                                          |          |                                 |
 | disabled | boolean                                  |          |                                 |
 | selected | boolean                                  |          |                                 |
+
 =======
+
 ## Background
 
 _Description and use cases of this component_
