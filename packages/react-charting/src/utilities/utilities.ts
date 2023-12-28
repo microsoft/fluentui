@@ -315,7 +315,21 @@ export function prepareDatapoints(
     : (maxVal - minVal) / splitInto >= 1
     ? Math.ceil((maxVal - minVal) / splitInto)
     : (maxVal - minVal) / splitInto;
-  const dataPointsArray: number[] = [minVal, minVal + val];
+  /*
+    For cases where we have negative and positive values
+    The dataPointsArray is filled from 0 to minVal by val difference
+    Then the array is reversed and values from 0(excluding 0) to maxVal are appended
+    This ensures presence of 0 to act as an anchor reference in such graphs
+    For simple cases where the scale may not encounter such a need for 0,
+    We simply fill from minVal to maxVal
+  */
+  const dataPointsArray: number[] = [minVal < 0 && maxVal >= 0 ? 0 : minVal];
+  if (minVal < 0 && maxVal >= 0) {
+    while (dataPointsArray[dataPointsArray.length - 1] > minVal) {
+      dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] - val);
+    }
+    dataPointsArray.reverse();
+  }
   while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
     dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
   }
