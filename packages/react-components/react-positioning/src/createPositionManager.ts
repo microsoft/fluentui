@@ -43,14 +43,17 @@ interface PositionManagerOptions {
  * @returns manager that handles positioning out of the react lifecycle
  */
 export function createPositionManager(options: PositionManagerOptions): PositionManager {
-  const { container, target, arrow, strategy, middleware, placement, useTransform = true } = options;
   let isDestroyed = false;
+  const { container, target, arrow, strategy, middleware, placement, useTransform = true } = options;
   if (!target || !container) {
     return {
       updatePosition: () => undefined,
       dispose: () => undefined,
     };
   }
+
+  // When the dimensions of the target or the container change - trigger a position update
+  const resizeObserver = new ResizeObserver(() => updatePosition());
 
   let isFirstUpdate = true;
   const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();
@@ -76,6 +79,11 @@ export function createPositionManager(options: PositionManagerOptions): Position
       scrollParents.forEach(scrollParent => {
         scrollParent.addEventListener('scroll', updatePosition, { passive: true });
       });
+
+      resizeObserver.observe(container);
+      if (isHTMLElement(target)) {
+        resizeObserver.observe(target);
+      }
 
       isFirstUpdate = false;
     }
@@ -129,6 +137,8 @@ export function createPositionManager(options: PositionManagerOptions): Position
       scrollParent.removeEventListener('scroll', updatePosition);
     });
     scrollParents.clear();
+
+    resizeObserver.disconnect();
   };
 
   if (targetWindow) {
