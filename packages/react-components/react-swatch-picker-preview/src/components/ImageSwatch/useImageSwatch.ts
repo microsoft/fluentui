@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { ImageSwatchProps, ImageSwatchState } from './ImageSwatch.types';
+import { useColorSwatchState_unstable } from './useImageSwatchState';
+import { useFocusWithin } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render ImageSwatch.
@@ -11,21 +13,34 @@ import type { ImageSwatchProps, ImageSwatchState } from './ImageSwatch.types';
  * @param props - props from this instance of ImageSwatch
  * @param ref - reference to root HTMLDivElement of ImageSwatch
  */
-export const useImageSwatch_unstable = (props: ImageSwatchProps, ref: React.Ref<HTMLDivElement>): ImageSwatchState => {
-  return {
-    // TODO add appropriate props/defaults
+export const useImageSwatch_unstable = (
+  props: ImageSwatchProps,
+  ref: React.Ref<HTMLButtonElement>,
+): ImageSwatchState => {
+  const { selected = false, icon } = props;
+  const iconShorthand = slot.optional(icon, { elementType: 'span' });
+
+  const state: ImageSwatchState = {
     components: {
-      // TODO add each slot's element type or component
-      root: 'div',
+      root: 'button',
+      icon: 'span',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      getIntrinsicElementProps('button', {
         ref,
         ...props,
+        role: props.role ?? 'gridcell',
+        tabIndex: 0,
+        'aria-selected': selected,
       }),
-      { elementType: 'div' },
+      { elementType: 'button' },
     ),
+    icon: iconShorthand,
   };
+
+  state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLButtonElement>());
+  state.selected = props.selected;
+
+  useColorSwatchState_unstable(state, props);
+  return state;
 };

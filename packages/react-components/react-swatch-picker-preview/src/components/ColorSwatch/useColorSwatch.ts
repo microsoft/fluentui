@@ -17,7 +17,7 @@ export const useColorSwatch_unstable = (
   props: ColorSwatchProps,
   ref: React.Ref<HTMLButtonElement>,
 ): ColorSwatchState => {
-  const { selected = false, icon } = props;
+  const { selected = false, icon, value } = props;
   const iconShorthand = slot.optional(icon, { elementType: 'span' });
   const state: ColorSwatchState = {
     components: {
