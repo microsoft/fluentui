@@ -17,7 +17,9 @@ export const MatchTargetSize = () => {
         </Button>
       </PopoverTrigger>
 
-      <PopoverSurface>This popover has the same width as its target anchor</PopoverSurface>
+      <PopoverSurface style={{ boxSizing: 'border-box' }}>
+        This popover has the same width as its target anchor
+      </PopoverSurface>
     </Popover>
   );
 };
