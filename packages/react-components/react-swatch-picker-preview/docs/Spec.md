@@ -34,21 +34,21 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
 
   return (
     <>
-      <div id={`${baseId}-circle`}>Simple circle swatch color picker:</div>
+      <div id={`${baseId}-circle`}>Simple circle swatch color picker</div>
       <SwatchColorPicker
         columnCount={5}
         cellShape={'circle'}
         colorCells={colorCellsExample1}
         aria-labelledby={`${baseId}-circle`}
       />
-      <div id={`${baseId}-square`}>Simple square swatch color picker with default size of 20px:</div>
+      <div id={`${baseId}-square`}>Simple square swatch color picker</div>
       <SwatchColorPicker
         columnCount={5}
         cellShape={'square'}
         colorCells={colorCellsExample1}
         aria-labelledby={`${baseId}-square`}
       />
-      <div id={`${baseId}-custom-size`}>Simple square swatch color picker with custom size of 35px:</div>
+      <div id={`${baseId}-custom-size`}>Simple square swatch color picker</div>
       <SwatchColorPicker
         columnCount={5}
         cellHeight={35}
@@ -79,11 +79,7 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
 ## Sample Code
 
 ```jsx
-<SwatchPicker
-  swatch={color}
-  onChange={(\_, data) => setSwatch(data.value)}
-  aria-label="Font color"
->
+<SwatchPicker aria-label="Font color">
   <SwatchPickerRow>
     <ColorSwatch swatch="red" />
     <ColorSwatch swatch="rgb(189, 255, 104)" />
@@ -92,12 +88,12 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
   <SwatchPickerRow>
     <ColorSwatch swatch="#ad5" />
     <ColorSwatch swatch="magenta" />
-    <ImageSwatch swatch="./path/image.png"/>
+    <ImageSwatch swatch="./path/image.png" />
   </SwatchPickerRow>
   <SwatchPickerRow>
-    <ImageSwatch swatch="./path/image1.png"/>
-    <ImageSwatch swatch="./path/image2.png"/>
-    <ImageSwatch swatch="./path/image3.png"/>
+    <ImageSwatch swatch="./path/image1.png" />
+    <ImageSwatch swatch="./path/image2.png" />
+    <ImageSwatch swatch="./path/image3.png" />
   </SwatchPickerRow>
 </SwatchPicker>
 ```
@@ -187,11 +183,10 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 
 | Property | Values                                   | Default  | Purpose                             |
 | -------- | ---------------------------------------- | -------- | ----------------------------------- |
+| layout   | `row`, `grid`                            | `grid`   | Sets layout of the SwatchPicker     |
 | shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                          |
 | size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell     |
 | spacing  | `small`, `medium`                        | `medium` | Sets spacing between rows and cells |
-| layout   | `row`, `grid`                            | `grid`   | Sets layout of the SwatchPicker     |
-| onChange |                                          |          |                                     |
 
 ## ColorSwatch component
 
@@ -222,14 +217,14 @@ is used for picking colors:
 
 #### API
 
-| Property | Values                                   | Default  | Purpose                         |
-| -------- | ---------------------------------------- | -------- | ------------------------------- |
-| shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                      |
-| size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell |
-| swatch   |                                          |          | Sets color id                   |
-| disabled | boolean                                  |          |                                 |
-| selected | boolean                                  |          |                                 |
-| empty    | boolean                                  |          |                                 |
+| Property     | Values                                   | Default  | Purpose                         |
+| ------------ | ---------------------------------------- | -------- | ------------------------------- |
+| shape        | `square`, `circular`, `rounded`          | `square` | Sets shape                      |
+| size         | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell |
+| swatch/value |                                          |          | Sets color id                   |
+| disabled     | boolean                                  |          |                                 |
+| selected     | boolean                                  |          |                                 |
+| empty        | boolean                                  |          |                                 |
 
 ## ImageSwatch component
 
@@ -319,6 +314,7 @@ Selected color returns colorId. Keyboard avigation is done by arrow keys.
 
 ## Accessibility
 
+SwatchPicker should have an `aria-label` same as `ColorSwatch` element. All the swathces should have `aria-selected=false` except the selected swatch.
 Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
 
 - Decide whether to use **native element** or folow **ARIA** and provide reasons
