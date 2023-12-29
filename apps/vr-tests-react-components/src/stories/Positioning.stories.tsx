@@ -1159,6 +1159,29 @@ const MatchTargetSize = () => {
   );
 };
 
+const PositioningEndEvent = () => {
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
+  const [count, setCount] = React.useState(0);
+  const { targetRef, containerRef } = usePositioning({
+    onPositioningEnd: () => setCount(s => s + 1),
+    positioningRef,
+  });
+
+  return (
+    <>
+      <button id="target" ref={targetRef} onClick={() => positioningRef.current?.updatePosition()}>
+        Update position
+      </button>
+      <div
+        ref={containerRef}
+        style={{ border: '2px solid blue', padding: 20, backgroundColor: 'white', boxSizing: 'border-box' }}
+      >
+        positioning count: {count}
+      </div>
+    </>
+  );
+};
+
 storiesOf('Positioning', module)
   .addDecorator(story => (
     <div
@@ -1242,7 +1265,12 @@ storiesOf('Positioning', module)
       <MultiScrollParent />
     </StoryWright>
   ))
-  .addStory('Match target size', () => <MatchTargetSize />);
+  .addStory('Match target size', () => <MatchTargetSize />)
+  .addStory('Positioning end', () => (
+    <StoryWright steps={new Steps().click('#target').snapshot('updated 2 times').end}>
+      <PositioningEndEvent />
+    </StoryWright>
+  ));
 
 storiesOf('Positioning (no decorator)', module)
   .addStory('scroll jumps', () => (
