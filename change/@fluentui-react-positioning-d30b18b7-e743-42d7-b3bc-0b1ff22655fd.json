@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Implement onPositioningEnd callback",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
