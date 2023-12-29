@@ -82,5 +82,5 @@ export const shimCheckboxProps = (props: ICheckboxProps): CheckboxProps => {
     name,
     ...v9Props,
     ...getHTMLAttributes(props, CHECKBOX_PROPS_V8),
-  };
+  } as CheckboxProps;
 };
