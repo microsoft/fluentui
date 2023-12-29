@@ -1267,7 +1267,7 @@ storiesOf('Positioning', module)
   ))
   .addStory('Match target size', () => <MatchTargetSize />)
   .addStory('Positioning end', () => (
-    <StoryWright steps={new Steps().click('#target').snapshot('updated 2 times').end}>
+    <StoryWright steps={new Steps().click('#target').snapshot('updated 2 times').end()}>
       <PositioningEndEvent />
     </StoryWright>
   ));
