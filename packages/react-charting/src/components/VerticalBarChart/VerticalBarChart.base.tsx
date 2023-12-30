@@ -116,13 +116,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.y)!,
       this.props.yMinValue || 0,
     );
-    const maxAbsoluteOfY = Math.max(Math.abs(this._yMin), Math.abs(this._yMax));
-    if (this._yMin < 0) {
-      this._yMin = -maxAbsoluteOfY;
-    }
-    if (this._yMax > 0) {
-      this._yMax = maxAbsoluteOfY;
-    }
     const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
