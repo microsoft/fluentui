@@ -5,6 +5,10 @@ import { mount, ReactWrapper } from 'enzyme';
 import { ITreeChartDataPoint, ITreeProps, TreeChart } from './index';
 import { TreeChartBase } from './TreeChart.base';
 import { resetIds } from '@fluentui/react/lib/Utilities';
+import { render } from '@testing-library/react';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 const twoLayerChart: ITreeChartDataPoint = {
   name: 'Root Node',
@@ -193,4 +197,12 @@ describe('Render calling with respective to props', () => {
     expect(renderMock).toHaveBeenCalledTimes(3);
     renderMock.mockRestore();
   });
+});
+
+describe('Tree Chart - axe-core', () => {
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<TreeChart treeData={threeLayerChart} />);
+    const axeResults = await axe(container);
+    expect(axeResults).toHaveNoViolations();
+  }, 10000);
 });
