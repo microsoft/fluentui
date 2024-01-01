@@ -149,13 +149,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       <CartesianChart
         {...this.props}
         points={this._points}
-        yAxisTickCount={
-          this.props.supportNegativeYValues
-            ? this.props.yAxisTickCount! % 2 === 1
-              ? this.props.yAxisTickCount! + 1
-              : this.props.yAxisTickCount!
-            : this.props.yAxisTickCount!
-        }
         yMinValue={this.props.supportNegativeYValues ? this._yMin : 0}
         supportNegativeValuesForYAxis={this.props.supportNegativeYValues}
         chartType={ChartTypes.VerticalBarChart}
