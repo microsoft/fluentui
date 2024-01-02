@@ -1,6 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { NavItemValue } from '../NavContext.types';
 
-export type NavGroupSlots = {
+export type NavCategoryItemSlots = {
   /**
    * Root of the component.
    */
@@ -20,27 +21,22 @@ export type NavGroupSlots = {
 };
 
 /**
- * Any value that identifies a specific navGroup.
+ * navCategoryItem Props
  */
-export type NavGroupValue = unknown;
-
-/**
- * navGroup Props
- */
-export type NavGroupProps = ComponentProps<Partial<NavGroupSlots>> & {
+export type NavCategoryItemProps = ComponentProps<Partial<NavCategoryItemSlots>> & {
   /**
-   * The value that identifies this navGroup when selected.
+   * The value that identifies this navCategoryItem when selected.
    */
-  value: NavGroupValue;
+  value: NavItemValue;
 };
 
 /**
- * State used in rendering NavGroup
+ * State used in rendering NavCategoryItem
  */
-export type NavGroupState = ComponentState<NavGroupSlots> &
-  Pick<NavGroupProps, 'value'> & {
+export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> &
+  Pick<NavCategoryItemProps, 'value'> & {
     /**
-     * If this navGroup is selected
+     * If this navCategoryItem is selected
      */
     selected: boolean;
   };
