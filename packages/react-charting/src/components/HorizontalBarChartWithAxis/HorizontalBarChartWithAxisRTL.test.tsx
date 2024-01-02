@@ -4,102 +4,24 @@ import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartWithAxisBase } from './HorizontalBarChartWithAxis.base';
 import { IHorizontalBarChartWithAxisDataPoint } from '../../HorizontalBarChart';
 import { toHaveNoViolations } from 'jest-axe';
+import {
+  chartPointsWithAxisToolTipHBCWA,
+  chartPointsWithStringYAxisHBCWA,
+  chartPointsHBCWA,
+} from '../../utilities/test-data';
 
 expect.extend(toHaveNoViolations);
-
-const chartPoints: IHorizontalBarChartWithAxisDataPoint[] = [
-  {
-    x: 10000,
-    y: 5000,
-    legend: 'Oranges',
-    color: DefaultPalette.accent,
-    yAxisCalloutData: '2020/04/30',
-    xAxisCalloutData: '10%',
-  },
-  {
-    x: 20000,
-    y: 50000,
-    legend: 'Grapes',
-    color: DefaultPalette.blueDark,
-    yAxisCalloutData: '2020/04/30',
-    xAxisCalloutData: '20%',
-  },
-  {
-    x: 25000,
-    y: 30000,
-    legend: 'Apples',
-    color: DefaultPalette.blueMid,
-    yAxisCalloutData: '2020/04/30',
-    xAxisCalloutData: '37%',
-  },
-
-  {
-    x: 40000,
-    y: 13000,
-    legend: 'Bananas',
-    color: DefaultPalette.blueLight,
-    yAxisCalloutData: '2020/04/30',
-    xAxisCalloutData: '88%',
-  },
-];
-
-const chartPointsWithStringYAxis: IHorizontalBarChartWithAxisDataPoint[] = [
-  {
-    y: 'String One',
-    x: 1000,
-    color: DefaultPalette.accent,
-  },
-  {
-    y: 'String Two',
-    x: 5000,
-    color: DefaultPalette.blueDark,
-  },
-  {
-    y: 'String Three',
-    x: 3000,
-    color: DefaultPalette.blueMid,
-  },
-  {
-    y: 'String Four',
-    x: 2000,
-    color: DefaultPalette.blue,
-  },
-];
-
-const chartPointsWithAxisToolTip: IHorizontalBarChartWithAxisDataPoint[] = [
-  {
-    x: 1000,
-    y: 1000,
-    color: DefaultPalette.accent,
-  },
-  {
-    x: 2000,
-    y: 5000,
-    color: DefaultPalette.blueDark,
-  },
-  {
-    x: 3000,
-    y: 3000,
-    color: DefaultPalette.blueMid,
-  },
-  {
-    x: 4000,
-    y: 2000,
-    color: DefaultPalette.blue,
-  },
-];
 
 describe('Horizontal bar chart with axis rendering', () => {
   testWithoutWait(
     'Should render the Horizontal bar chart with axis with numaric yaxis data',
     HorizontalBarChartWithAxis,
-    { data: chartPoints },
+    { data: chartPointsHBCWA },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -109,7 +31,7 @@ describe('Horizontal bar chart with axis rendering', () => {
   testWithoutWait(
     'Should render the Horizontal bar chart with axis with string yaxis data',
     HorizontalBarChartWithAxis,
-    { data: chartPointsWithStringYAxis },
+    { data: chartPointsWithStringYAxisHBCWA },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -121,7 +43,7 @@ describe('Horizontal bar chart with axis - Subcomponent bar', () => {
   testWithWait(
     'Should render the bars with the specified colors',
     HorizontalBarChartWithAxis,
-    { data: chartPoints },
+    { data: chartPointsHBCWA },
     container => {
       // colors mentioned in the data points itself
       // Assert
@@ -137,7 +59,7 @@ describe('Horizontal bar chart with axis - Subcomponent bar', () => {
   testWithWait(
     'Should render the bars with the single color',
     HorizontalBarChartWithAxis,
-    { data: chartPoints, useSingleColor: true },
+    { data: chartPointsHBCWA, useSingleColor: true },
     container => {
       // colors mentioned in the data points itself
       // Assert
@@ -153,7 +75,7 @@ describe('Horizontal bar chart with axis - Subcomponent bar', () => {
   testWithWait(
     'Should render the bar with the given height',
     HorizontalBarChartWithAxis,
-    { data: chartPoints, barHeight: 50 },
+    { data: chartPointsHBCWA, barHeight: 50 },
     container => {
       // Assert
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
@@ -170,7 +92,7 @@ describe('Horizontal bar chart with axis- Subcomponent Legends', () => {
   testWithoutWait(
     'Should not show any rendered legends when hideLegend is true',
     HorizontalBarChartWithAxis,
-    { data: chartPoints, hideLegend: true },
+    { data: chartPointsHBCWA, hideLegend: true },
     container => {
       // Assert
       // Legends have 'rect' as a part of their classname
@@ -181,7 +103,7 @@ describe('Horizontal bar chart with axis- Subcomponent Legends', () => {
   testWithWait(
     'Should reduce the opacity of the other bars on mouse over a bar legend',
     HorizontalBarChartWithAxis,
-    { data: chartPoints },
+    { data: chartPointsHBCWA },
     async container => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       fireEvent.mouseOver(legends[0]);
@@ -199,7 +121,7 @@ describe('Horizontal bar chart with axis- Subcomponent Legends', () => {
   testWithWait(
     'Should reset the opacity of the bars on mouse leave a bar legend',
     HorizontalBarChartWithAxis,
-    { data: chartPoints },
+    { data: chartPointsHBCWA },
     async container => {
       // Arrange
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
@@ -219,7 +141,7 @@ describe('Horizontal bar chart with axis- Subcomponent Legends', () => {
   testWithWait(
     'Should select legend on single mouse click on legends',
     HorizontalBarChartWithAxis,
-    { data: chartPoints },
+    { data: chartPointsHBCWA },
     container => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       fireEvent.click(legends![1]);
@@ -237,7 +159,7 @@ describe('Horizontal bar chart with axis- Subcomponent Legends', () => {
   testWithWait(
     'Should deselect legend on double mouse click on legends',
     HorizontalBarChartWithAxis,
-    { data: chartPoints },
+    { data: chartPointsHBCWA },
     container => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       fireEvent.click(legends![1]);
@@ -258,7 +180,7 @@ describe('Horizontal bar chart with axis - Subcomponent callout', () => {
   testWithWait(
     'Should call the handler on mouse over bar and on mouse leave from bar',
     HorizontalBarChartWithAxis,
-    { data: chartPoints, calloutProps: { doNotLayer: true } },
+    { data: chartPointsHBCWA, calloutProps: { doNotLayer: true } },
     container => {
       // eslint-disable-next-line
       const handleMouseOver = jest.spyOn(HorizontalBarChartWithAxisBase.prototype as any, '_onBarHover');
@@ -273,7 +195,7 @@ describe('Horizontal bar chart with axis - Subcomponent callout', () => {
   testWithWait(
     'Should show the callout over the bar on mouse over',
     HorizontalBarChartWithAxis,
-    { data: chartPoints, calloutProps: { doNotLayer: true } },
+    { data: chartPointsHBCWA, calloutProps: { doNotLayer: true } },
     container => {
       // Arrange
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
@@ -289,7 +211,7 @@ describe('Horizontal bar chart with axis - Subcomponent callout', () => {
   testWithWait(
     'Should show the callout properly when mouse moves from one bar to another bar',
     HorizontalBarChartWithAxis,
-    { data: chartPointsWithStringYAxis, calloutProps: { doNotLayer: true } },
+    { data: chartPointsWithStringYAxisHBCWA, calloutProps: { doNotLayer: true } },
     container => {
       // Arrange
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
@@ -310,7 +232,7 @@ describe('Horizontal bar chart with axis - Subcomponent callout', () => {
     'Should show the custom callout over the bar on mouse over',
     HorizontalBarChartWithAxis,
     {
-      data: chartPoints,
+      data: chartPointsHBCWA,
       calloutProps: { doNotLayer: true },
       onRenderCalloutPerDataPoint: (props: IHorizontalBarChartWithAxisDataPoint) =>
         props ? (
@@ -331,7 +253,7 @@ describe('Horizontal bar chart with axis - Subcomponent callout', () => {
   testWithWait(
     'Should show the callout with axis tooltip data',
     HorizontalBarChartWithAxis,
-    { data: chartPointsWithAxisToolTip, calloutProps: { doNotLayer: true } },
+    { data: chartPointsWithAxisToolTipHBCWA, calloutProps: { doNotLayer: true } },
     async container => {
       // Arrange
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
@@ -352,7 +274,7 @@ describe('Horizontal bar chart with axis - Subcomponent callout', () => {
   testWithWait(
     'Should show the callout with string yaxis tooltip data',
     HorizontalBarChartWithAxis,
-    { data: chartPointsWithStringYAxis, calloutProps: { doNotLayer: true } },
+    { data: chartPointsWithStringYAxisHBCWA, calloutProps: { doNotLayer: true } },
     async container => {
       // Arrange
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
@@ -375,7 +297,7 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
   testWithWait(
     'Should render the bars with labels hidden',
     HorizontalBarChartWithAxis,
-    { data: chartPoints, hideLabels: true },
+    { data: chartPointsHBCWA, hideLabels: true },
     container => {
       // Assert
       expect(getByClass(container, /barLabel/i)).toHaveLength(0);
@@ -385,7 +307,7 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
   testWithWait(
     'Should show y axis label tooltip when showYAxisLablesTooltip is true',
     HorizontalBarChartWithAxis,
-    { data: chartPointsWithStringYAxis, showYAxisLablesTooltip: true },
+    { data: chartPointsWithStringYAxisHBCWA, showYAxisLablesTooltip: true },
     async container => {
       await new Promise(resolve => setTimeout(resolve));
       // Assert
@@ -397,7 +319,7 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
   testWithWait(
     'Should expand y axis label when showYAxisLables is true',
     HorizontalBarChartWithAxis,
-    { data: chartPointsWithStringYAxis, showYAxisLables: true },
+    { data: chartPointsWithStringYAxisHBCWA, showYAxisLables: true },
     async container => {
       await new Promise(resolve => setTimeout(resolve));
       // Assert
@@ -426,7 +348,7 @@ describe('Horizontal bar chart with axis - Screen resolution', () => {
   testWithWait(
     'Should remain unchanged on zoom in',
     HorizontalBarChartWithAxis,
-    { data: chartPoints, width: 300, height: 300 },
+    { data: chartPointsHBCWA, width: 300, height: 300 },
     container => {
       global.innerWidth = window.innerWidth / 2;
       global.innerHeight = window.innerHeight / 2;
@@ -441,7 +363,7 @@ describe('Horizontal bar chart with axis - Screen resolution', () => {
   testWithWait(
     'Should remain unchanged on zoom out',
     HorizontalBarChartWithAxis,
-    { data: chartPoints, width: 300, height: 300 },
+    { data: chartPointsHBCWA, width: 300, height: 300 },
     container => {
       global.innerWidth = window.innerWidth * 2;
       global.innerHeight = window.innerHeight * 2;
@@ -459,7 +381,7 @@ describe('Horizontal bar chart with axis - Theme', () => {
     // Arrange
     const { container } = render(
       <ThemeProvider theme={DarkTheme}>
-        <HorizontalBarChartWithAxis culture={window.navigator.language} data={chartPoints} />
+        <HorizontalBarChartWithAxis culture={window.navigator.language} data={chartPointsHBCWA} />
       </ThemeProvider>,
     );
     // Assert
