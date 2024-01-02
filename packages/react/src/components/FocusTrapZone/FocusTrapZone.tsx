@@ -211,7 +211,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     if (ev.target !== ev.currentTarget && !(ev.target === firstBumper.current || ev.target === lastBumper.current)) {
       // every time focus changes within the trap zone, remember the focused element so that
       // it can be restored if focus leaves the pane and returns via keystroke (i.e. via a call to this.focus(true))
-      internalState.previouslyFocusedElementInTrapZone = getEventTarget(ev) as HTMLElement;
+      internalState.previouslyFocusedElementInTrapZone = getEventTarget(ev.nativeEvent) as HTMLElement;
     }
   };
 

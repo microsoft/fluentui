@@ -9,7 +9,9 @@ import { elementContains } from '@fluentui/dom-utilities';
 import { elementContainsAttribute } from '@fluentui/dom-utilities';
 import type { ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
 import { findElementRecursive } from '@fluentui/dom-utilities';
+import { getActiveElement } from '@fluentui/dom-utilities';
 import { getChildren } from '@fluentui/dom-utilities';
+import { getEventTarget } from '@fluentui/dom-utilities';
 import { getParent } from '@fluentui/dom-utilities';
 import { getVirtualParent } from '@fluentui/dom-utilities';
 import type { IProcessedStyleSet } from '@fluentui/merge-styles';
@@ -321,6 +323,8 @@ export function format(s: string, ...values: any[]): string;
 // @public
 export const formProperties: Record<string, number>;
 
+export { getActiveElement }
+
 export { getChildren }
 
 // @public
@@ -331,6 +335,8 @@ export function getDocument(rootElement?: HTMLElement | null): Document | undefi
 
 // @public
 export function getElementIndexPath(fromElement: HTMLElement, toElement: HTMLElement): number[];
+
+export { getEventTarget }
 
 // @public
 export function getFirstFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;

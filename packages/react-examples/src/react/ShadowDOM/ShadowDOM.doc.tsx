@@ -23,9 +23,14 @@ import { ShadowDOMFloatingPeoplePickerExample } from './ShadowDOM.FloatingPeople
 import { ShadowDOMFocusTrapZoneBoxExample } from './ShadowDOM.FocusTrapZone.Box.Example';
 import { ShadowDOMFocusTrapZoneBoxClickExample } from './ShadowDOM.FocusTrapZone.BoxClick.Example';
 import { ShadowDOMFocusTrapZoneDialogInPanelExample } from './ShadowDOM.FocusTrapZone.DialogInPanel.Example';
-import { ShadowDOMFocusTrapZoneFocusOnCustomElementExample } from './ShadowDOM.FocusTrapZone.FocusOnCustomElement.Example';
+import { ShadowDOMFocusTrapZoneBoxCustomElementExample } from './ShadowDOM.FocusTrapZone.FocusOnCustomElement.Example';
 import { ShadowDOMFocusTrapZoneFocusZoneExample } from './ShadowDOM.FocusTrapZone.FocusZone.Example';
 import { ShadowDOMFocusTrapZoneNestedExample } from './ShadowDOM.FocusTrapZone.Nested.Example';
+import { ShadowDOMFocusZoneDisabledExample } from './ShadowDOM.FocusZone.Disabled.Example';
+import { ShadowDOMFocusZoneHorizontalMenuExample } from './ShadowDOM.FocusZone.HorizontalMenu.Example';
+import { ShadowDOMFocusZoneListExample } from './ShadowDOM.FocusZone.List.Example';
+import { ShadowDOMFocusZonePhotosExample } from './ShadowDOM.FocusZone.Photos.Example';
+import { ShadowDOMFocusZoneTabbableExample } from './ShadowDOM.FocusZone.Tabbable.Example';
 import { ShadowDOMGroupedListExample } from './ShadowDOM.GroupedList.Example';
 import { ShadowDOMHoverCardExample } from './ShadowDOM.HoverCard.Example';
 import { ShadowDOMIconExample } from './ShadowDOM.Icon.Example';
@@ -150,7 +155,7 @@ const ShadowDOMFocusTrapZoneBoxClickExampleCode =
 const ShadowDOMFocusTrapZoneDialogInPanelExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusTrapZone.DialogInPanel.Example.tsx') as string;
 
-const ShadowDOMFocusTrapZoneFocusOnCustomElementExampleCode =
+const ShadowDOMFocusTrapZoneBoxCustomElementExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusTrapZone.FocusOnCustomElement.Example.tsx') as string;
 
 const ShadowDOMFocusTrapZoneFocusZoneExampleCode =
@@ -158,6 +163,21 @@ const ShadowDOMFocusTrapZoneFocusZoneExampleCode =
 
 const ShadowDOMFocusTrapZoneNestedExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusTrapZone.Nested.Example.tsx') as string;
+
+const ShadowDOMFocusZoneDisabledExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusZone.Disabled.Example.tsx') as string;
+
+const ShadowDOMFocusZoneHorizontalMenuExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusZone.HorizontalMenu.Example.tsx') as string;
+
+const ShadowDOMFocusZoneListExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusZone.List.Example.tsx') as string;
+
+const ShadowDOMFocusZonePhotosExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusZone.Photos.Example.tsx') as string;
+
+const ShadowDOMFocusZoneTabbableExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusZone.Tabbable.Example.tsx') as string;
 
 const ShadowDOMGroupedListExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.GroupedList.Example.tsx') as string;
@@ -440,8 +460,8 @@ export const ShadowDOMPageProps = (): IDocPageProps => ({
     },
     {
       title: 'FocusTrapZoneFocusOnCustomElement',
-      code: ShadowDOMFocusTrapZoneFocusOnCustomElementExampleCode,
-      view: <ShadowDOMFocusTrapZoneFocusOnCustomElementExample />,
+      code: ShadowDOMFocusTrapZoneBoxCustomElementExampleCode,
+      view: <ShadowDOMFocusTrapZoneBoxCustomElementExample />,
     },
     {
       title: 'FocusTrapZoneFocusZone',
@@ -452,6 +472,31 @@ export const ShadowDOMPageProps = (): IDocPageProps => ({
       title: 'FocusTrapZoneNested',
       code: ShadowDOMFocusTrapZoneNestedExampleCode,
       view: <ShadowDOMFocusTrapZoneNestedExample />,
+    },
+    {
+      title: 'FocusZoneDisabled',
+      code: ShadowDOMFocusZoneDisabledExampleCode,
+      view: <ShadowDOMFocusZoneDisabledExample />,
+    },
+    {
+      title: 'FocusZoneHorizontalMenu',
+      code: ShadowDOMFocusZoneHorizontalMenuExampleCode,
+      view: <ShadowDOMFocusZoneHorizontalMenuExample />,
+    },
+    {
+      title: 'FocusZoneList',
+      code: ShadowDOMFocusZoneListExampleCode,
+      view: <ShadowDOMFocusZoneListExample />,
+    },
+    {
+      title: 'FocusZonePhotos',
+      code: ShadowDOMFocusZonePhotosExampleCode,
+      view: <ShadowDOMFocusZonePhotosExample />,
+    },
+    {
+      title: 'FocusZoneTabbable',
+      code: ShadowDOMFocusZoneTabbableExampleCode,
+      view: <ShadowDOMFocusZoneTabbableExample />,
     },
     {
       title: 'GroupedList',

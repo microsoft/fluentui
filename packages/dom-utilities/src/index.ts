@@ -9,7 +9,7 @@ export { getParent } from './getParent';
 export { getVirtualParent } from './getVirtualParent';
 export { isVirtualElement } from './isVirtualElement';
 export { portalContainsElement } from './portalContainsElement';
-export { setPortalAttribute } from './setPortalAttribute';
+export { DATA_PORTAL_ATTRIBUTE, setPortalAttribute } from './setPortalAttribute';
 export { setVirtualParent } from './setVirtualParent';
 
 import './version';
