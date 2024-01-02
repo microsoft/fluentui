@@ -67,7 +67,6 @@ The Fluent WC3 Dropdown is a form associated component that extends from the FAS
 | `disabled`     | disabled     |                                                                                                                                  |
 | `multiple`     | multiple     | [FASTListbox](https://github.com/microsoft/fast/blob/master/packages/web-components/fast-foundation/src/listbox/listbox.spec.md) |
 | `open`         | open         |                                                                                                                                  |
-| `size`         | size         |                                                                                                                                  |
 | `control-size` | control-size |                                                                                                                                  |
 
 <br />
