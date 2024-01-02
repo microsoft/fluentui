@@ -146,6 +146,7 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useTimePickerCompatStyles_unstable: CustomStyleHook;
     useColorSwatchStyles_unstable: CustomStyleHook;
     useImageSwatchStyles_unstable: CustomStyleHook;
+    useRadioPickerStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @public (undocumented)
@@ -273,6 +274,7 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useTimePickerCompatStyles_unstable: CustomStyleHook;
     useColorSwatchStyles_unstable: CustomStyleHook;
     useImageSwatchStyles_unstable: CustomStyleHook;
+    useRadioPickerStyles_unstable: CustomStyleHook;
 }>;
 
 // @internal (undocumented)
@@ -400,6 +402,7 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useTimePickerCompatStyles_unstable: CustomStyleHook;
     useColorSwatchStyles_unstable: CustomStyleHook;
     useImageSwatchStyles_unstable: CustomStyleHook;
+    useRadioPickerStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @internal (undocumented)

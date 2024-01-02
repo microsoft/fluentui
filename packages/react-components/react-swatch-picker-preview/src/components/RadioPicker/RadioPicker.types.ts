@@ -1,7 +1,8 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { RadioGroup } from '@fluentui/react-components';
 
 export type RadioPickerSlots = {
-  root: Slot<'div'>;
+  root: Slot<typeof RadioGroup>;
 };
 
 /**

@@ -10,6 +10,5 @@ import type { RadioPickerState, RadioPickerSlots } from './RadioPicker.types';
 export const renderRadioPicker_unstable = (state: RadioPickerState) => {
   assertSlots<RadioPickerSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return <state.root>{state.root.children}</state.root>;
 };

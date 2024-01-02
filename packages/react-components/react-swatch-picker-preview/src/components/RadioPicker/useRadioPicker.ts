@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { RadioPickerProps, RadioPickerState } from './RadioPicker.types';
+import { RadioGroup } from '@fluentui/react-radio';
 
 /**
  * Create the state required to render RadioPicker.
@@ -13,13 +14,9 @@ import type { RadioPickerProps, RadioPickerState } from './RadioPicker.types';
  */
 export const useRadioPicker_unstable = (props: RadioPickerProps, ref: React.Ref<HTMLDivElement>): RadioPickerState => {
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
-      root: 'div',
+      root: RadioGroup,
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,

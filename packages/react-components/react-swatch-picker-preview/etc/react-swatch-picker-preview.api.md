@@ -4,9 +4,13 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { Radio } from '@fluentui/react-radio';
+import type { RadioGroup } from '@fluentui/react-components';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -75,11 +79,28 @@ export type RadioPickerProps = ComponentProps<RadioPickerSlots> & {};
 
 // @public (undocumented)
 export type RadioPickerSlots = {
-    root: Slot<'div'>;
+    root: Slot<typeof RadioGroup>;
 };
 
 // @public
 export type RadioPickerState = ComponentState<RadioPickerSlots>;
+
+// @public
+export const RadioSwatch: ForwardRefComponent<RadioSwatchProps>;
+
+// @public (undocumented)
+export const radioSwatchClassNames: SlotClassNames<RadioSwatchSlots>;
+
+// @public
+export type RadioSwatchProps = ComponentProps<RadioSwatchSlots> & {};
+
+// @public (undocumented)
+export type RadioSwatchSlots = {
+    root: Slot<typeof Radio>;
+};
+
+// @public
+export type RadioSwatchState = ComponentState<RadioSwatchSlots>;
 
 // @public
 export const renderColorSwatch_unstable: (state: ColorSwatchState) => JSX.Element;
@@ -89,6 +110,9 @@ export const renderImageSwatch_unstable: (state: ImageSwatchState) => JSX.Elemen
 
 // @public
 export const renderRadioPicker_unstable: (state: RadioPickerState) => JSX.Element;
+
+// @public
+export const renderRadioSwatch_unstable: (state: RadioSwatchState) => JSX.Element;
 
 // @public
 export const renderSwatchPicker_unstable: (state: SwatchPickerState) => JSX.Element;
@@ -135,6 +159,12 @@ export const useRadioPicker_unstable: (props: RadioPickerProps, ref: React_2.Ref
 
 // @public
 export const useRadioPickerStyles_unstable: (state: RadioPickerState) => RadioPickerState;
+
+// @public
+export const useRadioSwatch_unstable: (props: RadioSwatchProps, ref: React_2.Ref<HTMLInputElement>) => RadioSwatchState;
+
+// @public
+export const useRadioSwatchStyles_unstable: (state: RadioSwatchState) => RadioSwatchState;
 
 // @public
 export const useSwatchPicker_unstable: (props: SwatchPickerProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerState;
