@@ -10,6 +10,5 @@ import type { RadioSwatchState, RadioSwatchSlots } from './RadioSwatch.types';
 export const renderRadioSwatch_unstable = (state: RadioSwatchState) => {
   assertSlots<RadioSwatchSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return <state.root />;
 };

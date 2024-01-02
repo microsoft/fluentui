@@ -4,19 +4,26 @@ import type { RadioPickerSlots, RadioPickerState } from './RadioPicker.types';
 
 export const radioPickerClassNames: SlotClassNames<RadioPickerSlots> = {
   root: 'fui-RadioPicker',
-  // TODO: add class names for all slots on RadioPickerSlots.
-  // Should be of the form `<slotName>: 'fui-RadioPicker__<slotName>`
 };
+
+export const radioPickerCSSVars = {
+  columnCountGrid: `--fui-SwatchPicker--columnCount`,
+};
+
+const { columnCountGrid } = radioPickerCSSVars;
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
+  root: {},
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: `repeat(var(${columnCountGrid}), 28px)`,
   },
-
-  // TODO add additional classes for different states and/or slots
+  row: {
+    flexDirection: 'row',
+  },
 });
 
 /**
@@ -24,10 +31,8 @@ const useStyles = makeStyles({
  */
 export const useRadioPickerStyles_unstable = (state: RadioPickerState): RadioPickerState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(radioPickerClassNames.root, styles.root, state.root.className);
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const layout = state.layout ?? 'grid';
+  state.root.className = mergeClasses(radioPickerClassNames.root, styles.root, styles[layout], state.root.className);
 
   return state;
 };

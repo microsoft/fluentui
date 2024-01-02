@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { RadioSwatchProps, RadioSwatchState } from './RadioSwatch.types';
 import { Radio } from '@fluentui/react-radio';
+import { useRadioSwatchState_unstable } from './useRadioSwatchState';
 
 /**
  * Create the state required to render RadioSwatch.
@@ -16,14 +17,13 @@ export const useRadioSwatch_unstable = (
   props: RadioSwatchProps,
   ref: React.Ref<HTMLInputElement>,
 ): RadioSwatchState => {
-  return {
-    // TODO add appropriate props/defaults
+  // const { icon } = props;
+  // const iconShorthand = slot.optional(icon, { elementType: 'span' });
+  const state = {
     components: {
-      // TODO add each slot's element type or component
       root: Radio,
+      icon: 'span',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getIntrinsicElementProps('input', {
         ref: ref as React.Ref<HTMLInputElement>,
@@ -31,5 +31,10 @@ export const useRadioSwatch_unstable = (
       }),
       { elementType: Radio },
     ),
+    // icon: iconShorthand,
   };
+
+  useRadioSwatchState_unstable(state, props);
+
+  return state;
 };
