@@ -144,21 +144,6 @@ runTest('_renderContentForOnlyBars', () => {
     expect(barData.XValue).toEqual('90000');
     expect(barData.YValue).toEqual(15000);
   });
-
-  test('Should return proper bar data without legend, xAxisCalloutData and yAxisCalloutData', () => {
-    const instance = new HorizontalBarChartWithAxisBase({
-      data: chartPoints,
-      theme: DarkTheme,
-    });
-    expect(instance).toBeDefined();
-    instance._adjustProps();
-    const result = instance._renderContentForOnlyBars(chartPoints[4]);
-    expect(result.props.children).not.toBeNull();
-    const barData = result.props.children.props;
-    expect(barData.Legend).toEqual(undefined);
-    expect(barData.XValue).toEqual('90000');
-    expect(barData.YValue).toEqual(15000);
-  });
 });
 
 runTest('Get scales', () => {
@@ -380,7 +365,7 @@ runTest('_getAriaLabel', () => {
     expect(ariaLabel).toEqual('10%. 2020/04/30.');
   });
 
-  test('Should return proper aria label without yAxisCalloutData', () => {
+  test('Should return proper aria label without xAxisCalloutData', () => {
     const instance = new HorizontalBarChartWithAxisBase({
       data: emptyData,
       theme: DarkTheme,
@@ -390,7 +375,7 @@ runTest('_getAriaLabel', () => {
     expect(ariaLabel).toEqual('20000. 2020/04/30.');
   });
 
-  test('Should return proper aria label without xAxisCalloutData', () => {
+  test('Should return proper aria label without yAxisCalloutData', () => {
     const instance = new HorizontalBarChartWithAxisBase({
       data: emptyData,
       theme: DarkTheme,
@@ -400,7 +385,7 @@ runTest('_getAriaLabel', () => {
     expect(ariaLabel).toEqual('37%. 30000.');
   });
 
-  test('Should return proper aria label without xAxisCalloutData', () => {
+  test('Should return proper aria label without xAxisCalloutData and yAxisCalloutData', () => {
     const instance = new HorizontalBarChartWithAxisBase({
       data: emptyData,
       theme: DarkTheme,
