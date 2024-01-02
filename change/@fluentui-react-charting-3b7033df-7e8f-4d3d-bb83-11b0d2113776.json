@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "Moved test cases input data to common utilities/test-data.ts file",
+  "comment": "Moved HorizontalBarChartWithAxis test cases input data to common utilities/test-data.ts file",
   "packageName": "@fluentui/react-charting",
   "email": "132879294+v-baambati@users.noreply.github.com",
   "dependentChangeType": "none"
