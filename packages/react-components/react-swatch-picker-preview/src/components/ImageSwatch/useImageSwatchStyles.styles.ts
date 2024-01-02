@@ -7,11 +7,11 @@ export const imageSwatchClassNames: SlotClassNames<ImageSwatchSlots> = {
   icon: 'fui-ImageSwatch__icon',
 };
 
-export const swatchCSSVars = {
+export const imageCSSVars = {
   swatchImage: `--fui-SwatchPicker--image`,
 };
 
-const { swatchImage } = swatchCSSVars;
+const { swatchImage } = imageCSSVars;
 /**
  * Styles for the root slot
  */

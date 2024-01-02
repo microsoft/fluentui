@@ -35,8 +35,60 @@ export type ColorSwatchSlots = {
 // @public
 export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwatchProps, 'disabled' | 'selected' | 'empty' | 'value'>;
 
+// @public (undocumented)
+export const imageCSSVars: {
+    swatchImage: string;
+};
+
+// @public
+export const ImageSwatch: ForwardRefComponent<ImageSwatchProps>;
+
+// @public (undocumented)
+export const imageSwatchClassNames: SlotClassNames<ImageSwatchSlots>;
+
+// @public
+export type ImageSwatchProps = ComponentProps<ImageSwatchSlots> & {
+    value?: string;
+    disabled?: boolean;
+    selected?: boolean;
+    defaultSelected?: boolean;
+    empty?: boolean;
+};
+
+// @public (undocumented)
+export type ImageSwatchSlots = {
+    root: Slot<'button'>;
+    icon?: Slot<'span'>;
+};
+
+// @public
+export type ImageSwatchState = ComponentState<ImageSwatchSlots> & Pick<ImageSwatchProps, 'disabled' | 'selected' | 'empty' | 'value'>;
+
+// @public
+export const RadioPicker: ForwardRefComponent<RadioPickerProps>;
+
+// @public (undocumented)
+export const radioPickerClassNames: SlotClassNames<RadioPickerSlots>;
+
+// @public
+export type RadioPickerProps = ComponentProps<RadioPickerSlots> & {};
+
+// @public (undocumented)
+export type RadioPickerSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type RadioPickerState = ComponentState<RadioPickerSlots>;
+
 // @public
 export const renderColorSwatch_unstable: (state: ColorSwatchState) => JSX.Element;
+
+// @public
+export const renderImageSwatch_unstable: (state: ImageSwatchState) => JSX.Element;
+
+// @public
+export const renderRadioPicker_unstable: (state: RadioPickerState) => JSX.Element;
 
 // @public
 export const renderSwatchPicker_unstable: (state: SwatchPickerState) => JSX.Element;
@@ -71,6 +123,18 @@ export const useColorSwatch_unstable: (props: ColorSwatchProps, ref: React_2.Ref
 
 // @public
 export const useColorSwatchStyles_unstable: (state: ColorSwatchState) => ColorSwatchState;
+
+// @public
+export const useImageSwatch_unstable: (props: ImageSwatchProps, ref: React_2.Ref<HTMLButtonElement>) => ImageSwatchState;
+
+// @public
+export const useImageSwatchStyles_unstable: (state: ImageSwatchState) => ImageSwatchState;
+
+// @public
+export const useRadioPicker_unstable: (props: RadioPickerProps, ref: React_2.Ref<HTMLDivElement>) => RadioPickerState;
+
+// @public
+export const useRadioPickerStyles_unstable: (state: RadioPickerState) => RadioPickerState;
 
 // @public
 export const useSwatchPicker_unstable: (props: SwatchPickerProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerState;

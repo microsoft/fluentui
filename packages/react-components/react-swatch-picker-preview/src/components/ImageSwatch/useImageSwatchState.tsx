@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useControllableState, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
 // import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { swatchCSSVars } from './useImageSwatchStyles.styles';
+import { imageCSSVars } from './useImageSwatchStyles.styles';
 import type { ImageSwatchProps, ImageSwatchState } from './ImageSwatch.types';
 
-const { swatchImage } = swatchCSSVars;
+const { swatchImage } = imageCSSVars;
 
 export const useColorSwatchState_unstable = (state: ImageSwatchState, props: ImageSwatchProps) => {
   const { value = 'transparent', selected, defaultSelected, disabled } = props;

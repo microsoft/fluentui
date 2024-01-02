@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ImageSwatch, ImageSwatchProps, SwatchPicker, ColorSwatch } from '@fluentui/react-swatch-picker-preview';
 
 export const Default = (props: Partial<ImageSwatchProps>) => {
-  const [selected, setSelected] = React.useState(false);
+  // const [selected, setSelected] = React.useState(false);
   const [hoveredColor, setHoveredColor] = React.useState('#222');
   const [color, setColor] = React.useState('');
 

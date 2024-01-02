@@ -132,6 +132,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useTimePickerCompatStyles_unstable: CustomStyleHook;
   useColorSwatchStyles_unstable: CustomStyleHook;
   useImageSwatchStyles_unstable: CustomStyleHook;
+  useRadioPickerStyles_unstable: CustomStyleHook;
 }>;
 
 /**
