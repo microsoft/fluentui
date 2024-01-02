@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Mon, 20 Nov 2023 09:55:09 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Dec 2023 14:40:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.13.2)
+
+Mon, 18 Dec 2023 14:40:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.13.1..@fluentui/react-shared-contexts_v9.13.2)
+
+### Patches
+
+- fix: add custom style hook for TimePicker compat. ([PR #30058](https://github.com/microsoft/fluentui/pull/30058) by yuanboxue@microsoft.com)
+
+## [9.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.13.1)
+
+Thu, 14 Dec 2023 09:58:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.13.0..@fluentui/react-shared-contexts_v9.13.1)
+
+### Patches
+
+- chore: disallow `window` and `document` access ([PR #29962](https://github.com/microsoft/fluentui/pull/29962) by seanmonahan@microsoft.com)
 
 ## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.13.0)
 

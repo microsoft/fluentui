@@ -7,6 +7,7 @@ describe('TeachingPopoverBody', () => {
   isConformant({
     Component: TeachingPopoverBody,
     displayName: 'TeachingPopoverBody',
+    requiredProps: { media: <img src={'./test'} /> },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

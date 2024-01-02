@@ -1010,7 +1010,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
     hoveredRowLink: BaseColors.BLUE_106EBE,
     hoveredLink: BaseColors.BLUE_106EBE,
     hoveredBackground: BaseColors.GRAY_F3F2F1,
-    selectedLink: BaseColors.BLUE_106EBE,
+    selectedLink: BaseColors.BLUE_005A9E,
     selectedHoveredLink: BaseColors.BLUE_005A9E,
   },
   radioButton: {
