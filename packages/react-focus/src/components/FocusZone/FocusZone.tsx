@@ -24,6 +24,7 @@ import {
   findScrollableParent,
   createMergedRef,
   isElementVisibleAndNotHidden,
+  MergeStylesShadowRootContext,
 } from '@fluentui/utilities';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { getTheme } from '@fluentui/style-utilities';
@@ -110,6 +111,8 @@ const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url'
 const ALLOW_VIRTUAL_ELEMENTS = false;
 
 export class FocusZone extends React.Component<IFocusZoneProps> implements IFocusZone {
+  public static contextType = MergeStylesShadowRootContext;
+
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
     direction: FocusZoneDirection.bidirectional,
@@ -147,6 +150,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   /** Provides granular control over `shouldRaiseClicks` and should be preferred over `props.shouldRaiseClicks`. */
   private _shouldRaiseClicksOnEnter: boolean;
   private _shouldRaiseClicksOnSpace: boolean;
+
+  private _inShadowRoot: boolean;
 
   /** Used for testing purposes only. */
   public static getOuterZones(): number {
@@ -197,6 +202,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   public componentDidMount(): void {
     const { current: root } = this._root;
 
+    this._inShadowRoot =
+      this.props.includeShadowRoots === undefined ? !!this.context.shadowRoot : this.props.includeShadowRoots;
+
     _allInstances[this._id] = this;
 
     if (root) {
@@ -238,6 +246,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   public componentDidUpdate(): void {
     const { current: root } = this._root;
     const doc = this._getDocument();
+    this._inShadowRoot =
+      this.props.includeShadowRoots === undefined ? !!this.context.shadowRoot : this.props.includeShadowRoots;
 
     // If either _activeElement or _defaultFocusElement are no longer contained by _root,
     // reset those variables (and update tab indexes) to avoid memory leaks
@@ -362,7 +372,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         !forceIntoFirstElement &&
         this._activeElement &&
         elementContains(this._root.current, this._activeElement) &&
-        isElementTabbable(this._activeElement) &&
+        isElementTabbable(this._activeElement, undefined, this._inShadowRoot) &&
         (!bypassHiddenElements || isElementVisibleAndNotHidden(this._activeElement))
       ) {
         this._activeElement.focus();
@@ -489,7 +499,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       let parentElement = ev.target as HTMLElement;
 
       while (parentElement && parentElement !== this._root.current) {
-        if (isElementTabbable(parentElement) && this._isImmediateDescendantOfZone(parentElement)) {
+        if (
+          isElementTabbable(parentElement, undefined, this._inShadowRoot) &&
+          this._isImmediateDescendantOfZone(parentElement)
+        ) {
           newActiveElement = parentElement;
           break;
         }
@@ -506,7 +519,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         defaultTabbableElement(this._root.current);
 
       // try to focus defaultTabbable element
-      if (maybeElementToFocus && isElementTabbable(maybeElementToFocus)) {
+      if (maybeElementToFocus && isElementTabbable(maybeElementToFocus, undefined, this._inShadowRoot)) {
         newActiveElement = maybeElementToFocus;
         maybeElementToFocus.focus();
       } else {
@@ -606,7 +619,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     while (path.length) {
       target = path.pop() as HTMLElement;
 
-      if (target && isElementTabbable(target)) {
+      if (target && isElementTabbable(target, undefined, this._inShadowRoot)) {
         this._setActiveElement(target, true);
       }
 
@@ -1330,7 +1343,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
     // If active element changes state to disabled, set it to null.
     // Otherwise, we lose keyboard accessibility to other elements in focus zone.
-    if (this._activeElement && !isElementTabbable(this._activeElement)) {
+    if (this._activeElement && !isElementTabbable(this._activeElement, undefined, this._inShadowRoot)) {
       this._activeElement = null;
     }
 
@@ -1345,7 +1358,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           child.setAttribute(TABINDEX, '-1');
         }
 
-        if (isElementTabbable(child)) {
+        if (isElementTabbable(child, undefined, this._inShadowRoot)) {
           if (this.props.disabled) {
             child.setAttribute(TABINDEX, '-1');
           } else if (

@@ -26,6 +26,8 @@ import { ShadowDOMFocusTrapZoneDialogInPanelExample } from './ShadowDOM.FocusTra
 import { ShadowDOMFocusTrapZoneBoxCustomElementExample } from './ShadowDOM.FocusTrapZone.FocusOnCustomElement.Example';
 import { ShadowDOMFocusTrapZoneFocusZoneExample } from './ShadowDOM.FocusTrapZone.FocusZone.Example';
 import { ShadowDOMFocusTrapZoneNestedExample } from './ShadowDOM.FocusTrapZone.Nested.Example';
+import { ShadowDOMFocusTrapZoneChildShadowDomExample } from './ShadowDOM.FocusTrapZone.ChildShadowDom.Example';
+import { ShadowDOMFocusTrapZoneNestedChildShadowDomExample } from './ShadowDOM.FocusTrapZone.NestedChildShadowDom.Example';
 import { ShadowDOMFocusZoneDisabledExample } from './ShadowDOM.FocusZone.Disabled.Example';
 import { ShadowDOMFocusZoneHorizontalMenuExample } from './ShadowDOM.FocusZone.HorizontalMenu.Example';
 import { ShadowDOMFocusZoneListExample } from './ShadowDOM.FocusZone.List.Example';
@@ -163,6 +165,12 @@ const ShadowDOMFocusTrapZoneFocusZoneExampleCode =
 
 const ShadowDOMFocusTrapZoneNestedExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusTrapZone.Nested.Example.tsx') as string;
+
+const ShadowDOMFocusTrapZoneChildShadowDomExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusTrapZone.ChildShadowDom.Example.tsx') as string;
+
+const ShadowDOMFocusTrapZoneNestedChildShadowDomExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusTrapZone.NestedChildShadowDom.Example.tsx') as string;
 
 const ShadowDOMFocusZoneDisabledExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.FocusZone.Disabled.Example.tsx') as string;
@@ -472,6 +480,16 @@ export const ShadowDOMPageProps = (): IDocPageProps => ({
       title: 'FocusTrapZoneNested',
       code: ShadowDOMFocusTrapZoneNestedExampleCode,
       view: <ShadowDOMFocusTrapZoneNestedExample />,
+    },
+    {
+      title: 'FocusTrapZoneChildShadowDom',
+      code: ShadowDOMFocusTrapZoneChildShadowDomExampleCode,
+      view: <ShadowDOMFocusTrapZoneChildShadowDomExample />,
+    },
+    {
+      title: 'FocusTrapZoneNestedChildShadowDom',
+      code: ShadowDOMFocusTrapZoneNestedChildShadowDomExampleCode,
+      view: <ShadowDOMFocusTrapZoneNestedChildShadowDomExample />,
     },
     {
       title: 'FocusZoneDisabled',

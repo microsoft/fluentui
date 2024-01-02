@@ -31,9 +31,4 @@ export function getParent(child: HTMLElement, allowVirtualParents: boolean = tru
   } else {
     return child.parentNode as HTMLElement;
   }
-
-  // return (
-  //   child &&
-  //   ((allowVirtualParents && getVirtualParent(child)) || (child.parentNode && (child.parentNode as HTMLElement)))
-  // );
 }

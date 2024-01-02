@@ -97,4 +97,13 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
    * In future versions of the library, this will be the default behavior.
    */
   enableAriaHiddenSiblings?: boolean;
+
+  /**
+   * Include shadow roots when looking for focusable elements.
+   * If used inside a MergeStylesShadowRootProvide this will default to true,
+   * otherwise it will be false. Explicitly setting the prop will override the default
+   * value regardless.
+   * @defaultvalue false
+   */
+  includeShadowRoots?: boolean;
 }

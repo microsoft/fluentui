@@ -239,6 +239,7 @@ import './version';
 export type { IStyleFunctionOrObject, Omit } from '@fluentui/merge-styles';
 
 export {
+  MergeStylesShadowRootContext,
   MergeStylesShadowRootProvider,
   useAdoptedStylesheet,
   useHasMergeStylesShadowRootContext,

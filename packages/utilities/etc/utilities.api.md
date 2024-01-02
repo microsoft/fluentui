@@ -298,7 +298,7 @@ export function focusAsync(element: HTMLElement | {
 } | undefined | null): void;
 
 // @public
-export function focusFirstChild(rootElement: HTMLElement, bypassHiddenElements?: boolean): boolean;
+export function focusFirstChild(rootElement: HTMLElement, bypassHiddenElements?: boolean, includeShadowRoots?: boolean): boolean;
 
 // @public
 export const FocusRects: React_2.FunctionComponent<{
@@ -339,10 +339,10 @@ export function getElementIndexPath(fromElement: HTMLElement, toElement: HTMLEle
 export { getEventTarget }
 
 // @public
-export function getFirstFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export function getFirstFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, includeShadowRoots?: boolean): HTMLElement | null;
 
 // @public
-export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
+export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean, includeShadowRoots?: boolean): HTMLElement | null;
 
 // @public
 export function getFirstVisibleElementFromSelector(selector: string): Element | undefined;
@@ -360,10 +360,10 @@ export function getInitials(displayName: string | undefined | null, isRtl: boole
 export function getLanguage(persistenceType?: 'localStorage' | 'sessionStorage' | 'none'): string | null;
 
 // @public
-export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, includeShadowRoots?: boolean): HTMLElement | null;
 
 // @public
-export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
+export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean, includeShadowRoots?: boolean): HTMLElement | null;
 
 // @public
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
@@ -372,12 +372,12 @@ export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
 
 // @public
-export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean, bypassHiddenElements?: boolean): HTMLElement | null;
+export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean, bypassHiddenElements?: boolean, includeShadowRoots?: boolean): HTMLElement | null;
 
 export { getParent }
 
 // @public
-export function getPreviousElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, traverseChildren?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
+export function getPreviousElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, traverseChildren?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean, includeShadowRoots?: boolean): HTMLElement | null;
 
 // @public
 export function getPropsWithDefaults<TProps extends {}>(defaultProps: Partial<TProps>, propsWithoutDefaults: TProps): TProps;
@@ -813,7 +813,7 @@ export function isElementFocusSubZone(element?: HTMLElement): boolean;
 export function isElementFocusZone(element?: HTMLElement): boolean;
 
 // @public
-export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean): boolean;
+export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean, checkShadowRoot?: boolean): boolean;
 
 // @public
 export function isElementVisible(element: HTMLElement | undefined | null): boolean;
@@ -1026,6 +1026,11 @@ export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings |
 //
 // @public
 export const MergeStylesRootProvider: React_2.FC<MergeStylesRootProviderProps>;
+
+// Warning: (ae-forgotten-export) The symbol "MergeStylesShadowRootContextValue" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const MergeStylesShadowRootContext: React_2.Context<MergeStylesShadowRootContextValue | undefined>;
 
 // Warning: (ae-forgotten-export) The symbol "MergeStylesShadowRootProviderProps" needs to be exported by the entry point index.d.ts
 //
@@ -1300,8 +1305,6 @@ export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 // @public
 export const useMergeStylesRootStylesheets: () => Map<string, ExtendedCSSStyleSheet>;
 
-// Warning: (ae-forgotten-export) The symbol "MergeStylesShadowRootContextValue" needs to be exported by the entry point index.d.ts
-//
 // @public
 export const useMergeStylesShadowRootContext: () => MergeStylesShadowRootContextValue | undefined;
 

@@ -12,6 +12,7 @@ import {
   getPropsWithDefaults,
   modalize,
   on,
+  useHasMergeStylesShadowRootContext,
 } from '../../Utilities';
 import { useId, useConst, useMergedRefs, useEventCallback, usePrevious, useUnmount } from '@fluentui/react-hooks';
 import { useDocument } from '../../WindowProvider';
@@ -64,10 +65,13 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
   const lastBumper = React.useRef<HTMLDivElement>(null);
   const mergedRootRef = useMergedRefs(root, ref) as React.Ref<HTMLDivElement>;
   const doc = useDocument();
+  const inShadowCtx = useHasMergeStylesShadowRootContext();
 
   const isFirstRender = usePrevious(false) ?? true;
 
   const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+
+  const inShadow = props.includeShadowRoots === undefined ? inShadowCtx : props.includeShadowRoots;
 
   const internalState = useConst<IFocusTrapZoneInternalState>({
     hasFocus: false,
@@ -149,6 +153,10 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
         false,
         false,
         true,
+        undefined,
+        undefined,
+        undefined,
+        inShadow,
       );
     }
 
@@ -165,8 +173,8 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
 
     const nextFocusable =
       isFirstBumper === internalState.hasFocus
-        ? getLastTabbable(root.current, lastBumper.current!, true, false)
-        : getFirstTabbable(root.current, firstBumper.current!, true, false);
+        ? getLastTabbable(root.current, lastBumper.current!, true, false, inShadow)
+        : getFirstTabbable(root.current, firstBumper.current!, true, false, inShadow);
 
     if (nextFocusable) {
       if (nextFocusable === firstBumper.current || nextFocusable === lastBumper.current) {
