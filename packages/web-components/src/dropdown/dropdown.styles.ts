@@ -63,7 +63,6 @@ export const styles = css`
     outline: none;
     vertical-align: middle;
     min-width: 250px;
-    --size: fit-content;
   }
   :host([disabled]) {
     color: ${colorNeutralForegroundDisabled};
@@ -116,6 +115,7 @@ export const styles = css`
     height: 24px;
     padding-inline: ${spacingHorizontalSNudge};
   }
+
   :host([control-size='large']) {
     height: 40px;
     font-size: ${fontSizeBase400};
@@ -129,7 +129,6 @@ export const styles = css`
   }
 
   .listbox {
-    --height: calc((var(--size) * 32px) + 12px);
     box-sizing: border-box;
     border: none;
     display: flex;

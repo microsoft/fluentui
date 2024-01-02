@@ -44,20 +44,4 @@ export class Dropdown extends FASTSelect {
   public get collapsible(): boolean {
     return true;
   }
-
-  /**
-   * Handles the change in size property.
-   * @param oldValue - The previous value of the size property.
-   * @param newValue - The new value of the size property.
-   */
-  public controlSizeChanged(oldValue: number, newValue: number): void {
-    if (oldValue !== newValue) {
-      this.styles = css/**css*/ `
-        :host {
-          --size: ${this.controlSize};
-        }
-      `;
-      this.$fastController.addStyles(this.styles);
-    }
-  }
 }
