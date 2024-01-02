@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
+import { Checkbox, ChoiceGroup, IChoiceGroupOption, Label, Stack, TextField } from '@fluentui/react';
 
 const options: IChoiceGroupOption[] = [
   { key: 'WrapTickValues', text: 'Wrap X Axis Ticks' },
@@ -10,6 +10,13 @@ const options: IChoiceGroupOption[] = [
 
 interface IVerticalBarState {
   selectedCallout: string;
+  barWidthEnabled: boolean;
+  xAxisInnerPaddingEnabled: boolean;
+  xAxisOuterPaddingEnabled: boolean;
+  barWidth: number;
+  maxBarWidth: number;
+  xAxisInnerPadding: number;
+  xAxisOuterPadding: number;
 }
 
 export class VerticalBarChartTooltipExample extends React.Component<{}, IVerticalBarState> {
@@ -17,6 +24,13 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
     super(props);
     this.state = {
       selectedCallout: 'showTooltip',
+      barWidthEnabled: false,
+      xAxisInnerPaddingEnabled: false,
+      xAxisOuterPaddingEnabled: false,
+      barWidth: 16,
+      maxBarWidth: 100,
+      xAxisInnerPadding: 0.67,
+      xAxisOuterPadding: 0,
     };
   }
   public render(): JSX.Element {
@@ -50,6 +64,68 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
     const rootStyle = { width: '650px', height: '350px' };
     return (
       <>
+        <Stack horizontal wrap tokens={{ childrenGap: 30 }}>
+          <Stack horizontal verticalAlign="center">
+            <Checkbox
+              label="barWidth:&nbsp;"
+              checked={this.state.barWidthEnabled}
+              onChange={(e, checked) => this.setState({ barWidthEnabled: checked })}
+            />
+            <TextField
+              type="number"
+              value={this.state.barWidth.toString()}
+              min={1}
+              max={300}
+              onChange={e => this.setState({ barWidth: parseInt(e.target.value, 10) })}
+              disabled={!this.state.barWidthEnabled}
+            />
+          </Stack>
+          <Stack horizontal verticalAlign="center">
+            <Label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>
+              maxBarWidth:&nbsp;
+            </Label>
+            <TextField
+              type="number"
+              value={this.state.maxBarWidth.toString()}
+              min={1}
+              max={300}
+              id="input-maxbarwidth"
+              onChange={e => this.setState({ maxBarWidth: parseInt(e.target.value, 10) })}
+            />
+          </Stack>
+          <Stack horizontal verticalAlign="center">
+            <Checkbox
+              label="xAxisInnerPadding:&nbsp;"
+              checked={this.state.xAxisInnerPaddingEnabled}
+              onChange={(e, checked) => this.setState({ xAxisInnerPaddingEnabled: checked })}
+            />
+            <TextField
+              type="number"
+              value={this.state.xAxisInnerPadding.toString()}
+              min={0}
+              max={1}
+              step={0.01}
+              onChange={e => this.setState({ xAxisInnerPadding: parseFloat(e.target.value) })}
+              disabled={!this.state.xAxisInnerPaddingEnabled}
+            />
+          </Stack>
+          <Stack horizontal verticalAlign="center">
+            <Checkbox
+              label="xAxisOuterPadding:&nbsp;"
+              checked={this.state.xAxisOuterPaddingEnabled}
+              onChange={(e, checked) => this.setState({ xAxisOuterPaddingEnabled: checked })}
+            />
+            <TextField
+              type="number"
+              value={this.state.xAxisOuterPadding.toString()}
+              min={0}
+              max={1}
+              step={0.01}
+              onChange={e => this.setState({ xAxisOuterPadding: parseFloat(e.target.value) })}
+              disabled={!this.state.xAxisOuterPaddingEnabled}
+            />
+          </Stack>
+        </Stack>
         <div>
           <ChoiceGroup
             options={options}
@@ -70,6 +146,10 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
             showXAxisLablesTooltip={this.state.selectedCallout === 'showTooltip' ? true : false}
             wrapXAxisLables={this.state.selectedCallout === 'WrapTickValues' ? true : false}
             enableReflow={true}
+            barWidth={this.state.barWidthEnabled ? this.state.barWidth : undefined}
+            maxBarWidth={this.state.maxBarWidth}
+            xAxisInnerPadding={this.state.xAxisInnerPaddingEnabled ? this.state.xAxisInnerPadding : undefined}
+            xAxisOuterPadding={this.state.xAxisOuterPaddingEnabled ? this.state.xAxisOuterPadding : undefined}
           />
         </div>
       </>
