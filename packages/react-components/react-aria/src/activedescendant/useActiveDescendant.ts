@@ -1,14 +1,49 @@
 import * as React from 'react';
 import { useOptionWalker } from './useOptionWalker';
-import type { ActiveDescendantOptions } from './types';
+import type { ActiveDescendantImperativeRef, ActiveDescendantOptions } from './types';
 import { ACTIVEDESCENDANT_ATTRIBUTE } from './constants';
+import { useMergedRefs } from '@fluentui/react-utilities';
 
 export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(
   options: ActiveDescendantOptions,
 ) {
-  const { imperativeRef, matchOption } = options;
+  const { imperativeRef: imperativeRefProp, matchOption } = options;
   const activeParentRef = React.useRef<TActiveParentElement>(null);
   const { listboxRef, optionWalker } = useOptionWalker<TListboxElement>({ matchOption });
+  const imperativeRef = React.useRef<ActiveDescendantImperativeRef>({
+    active() {
+      return undefined;
+    },
+
+    blur() {
+      return undefined;
+    },
+
+    first() {
+      return undefined;
+    },
+
+    last() {
+      return undefined;
+    },
+
+    focus(id) {
+      return undefined;
+    },
+
+    next() {
+      return undefined;
+    },
+
+    prev() {
+      return undefined;
+    },
+
+    find() {
+      return undefined;
+    },
+  });
+
   const getActiveDescendant = () => {
     return listboxRef.current?.querySelector<HTMLElement>(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`);
   };
@@ -54,7 +89,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
     }
   };
 
-  React.useImperativeHandle(imperativeRef, () => ({
+  React.useImperativeHandle(useMergedRefs(imperativeRef, imperativeRefProp), () => ({
     first: () => {
       if (!listboxRef.current || !activeParentRef.current) {
         return;
@@ -64,6 +99,17 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       const first = optionWalker.first();
       if (first) {
         setActiveDescendant(first);
+      }
+    },
+    last: () => {
+      if (!listboxRef.current || !activeParentRef.current) {
+        return;
+      }
+
+      optionWalker.setCurrent(listboxRef.current);
+      const last = optionWalker.last();
+      if (last) {
+        setActiveDescendant(last);
       }
     },
     next: () => {
@@ -132,7 +178,39 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
         setActiveDescendant(cur);
       }
     },
+
+    find(pred: (id: string) => boolean) {
+      if (!listboxRef.current) {
+        return;
+      }
+
+      const active = getActiveDescendant();
+      if (active) {
+        optionWalker.setCurrent(active);
+      }
+
+      let cur = active;
+      while (cur && !pred(cur.id)) {
+        cur = optionWalker.next();
+      }
+
+      if (cur) {
+        setActiveDescendant(cur);
+        return cur.id;
+      }
+
+      optionWalker.setCurrent(listboxRef.current);
+      cur = optionWalker.next();
+      while (cur && cur !== active && !pred(cur.id)) {
+        cur = optionWalker.next();
+      }
+
+      if (cur && cur !== active) {
+        setActiveDescendant(cur);
+        return cur.id;
+      }
+    },
   }));
 
-  return { listboxRef, activeParentRef };
+  return { listboxRef, activeParentRef, imperativeRef };
 }

@@ -4,6 +4,7 @@ import type { ComboboxContextValue } from '../contexts/ComboboxContext';
 import type { OptionValue, OptionCollectionState } from '../utils/OptionCollection.types';
 import { SelectionProps, SelectionState } from '../utils/Selection.types';
 import { PortalProps } from '@fluentui/react-portal';
+import { ActiveDescendantContextValue, ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 
 /**
  * ComboboxBase Props
@@ -102,6 +103,8 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
     setOpen(event: ComboboxBaseOpenEvents, newState: boolean): void;
 
     setValue(newValue: string | undefined): void;
+
+    activeDescendantImperativeRef: React.RefObject<ActiveDescendantImperativeRef>;
   };
 
 /**
@@ -119,4 +122,5 @@ export type ComboboxBaseOpenEvents =
 
 export type ComboboxBaseContextValues = {
   combobox: ComboboxContextValue;
+  activeDescendant: ActiveDescendantContextValue;
 };

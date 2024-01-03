@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ComboboxBaseContextValues, ComboboxBaseState } from '../utils/ComboboxBase.types';
 
 export function useComboboxContextValues(state: ComboboxBaseState): ComboboxBaseContextValues {
@@ -12,6 +13,7 @@ export function useComboboxContextValues(state: ComboboxBaseState): ComboboxBase
     setActiveOption,
     setOpen,
     size,
+    activeDescendantImperativeRef,
   } = state;
 
   const combobox = {
@@ -27,5 +29,12 @@ export function useComboboxContextValues(state: ComboboxBaseState): ComboboxBase
     size,
   };
 
-  return { combobox };
+  const activeDescendant = React.useMemo(
+    () => ({
+      imperativeRef: activeDescendantImperativeRef,
+    }),
+    [activeDescendantImperativeRef],
+  );
+
+  return { combobox, activeDescendant };
 }

@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { useTimeout, mergeCallbacks } from '@fluentui/react-utilities';
 import type { Slot, ExtractSlotProps, SlotComponentType } from '@fluentui/react-utilities';
+import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { useTriggerSlot, UseTriggerSlotState } from '../../utils/useTriggerSlot';
 import { OptionValue } from '../../utils/OptionCollection.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
-import { DropdownState } from './Dropdown.types';
 
-type UsedDropdownState = UseTriggerSlotState & Pick<DropdownState, 'getOptionsMatchingText'>;
+type UsedDropdownState = UseTriggerSlotState;
 type UseButtonTriggerSlotOptions = {
   state: UsedDropdownState;
   defaultProps: unknown;
+  activeDescendantImperativeRef: React.RefObject<ActiveDescendantImperativeRef>;
 };
 
 /*
@@ -23,8 +24,9 @@ export function useButtonTriggerSlot(
   options: UseButtonTriggerSlotOptions,
 ): SlotComponentType<ExtractSlotProps<Slot<'button'>>> {
   const {
-    state: { open, activeOption, setOpen, getOptionsMatchingText, getIndexOfId, setActiveOption, setFocusVisible },
+    state: { open, setOpen, setFocusVisible, getOptionById },
     defaultProps,
+    activeDescendantImperativeRef,
   } = options;
 
   // jump to matching option based on typing
@@ -34,37 +36,38 @@ export function useButtonTriggerSlot(
   const getNextMatchingOption = (): OptionValue | undefined => {
     // first check for matches for the full searchString
     let matcher = (optionText: string) => optionText.toLowerCase().indexOf(searchString.current) === 0;
-    let matches = getOptionsMatchingText(matcher);
-    let startIndex = activeOption ? getIndexOfId(activeOption.id) : 0;
+    const activeOptionId = activeDescendantImperativeRef.current?.active();
+    let match: string | undefined;
 
-    // if the dropdown is already open and the searchstring is a single character,
-    // then look after the current activeOption for letters
-    // this is so slowly typing the same letter will cycle through matches
-    if (open && searchString.current.length === 1) {
-      startIndex++;
-    }
+    // TODO slowly pressing same key
+    match = activeDescendantImperativeRef.current?.find(id => {
+      const option = getOptionById(id);
+      return !!option && matcher(option.text);
+    });
 
-    // if there are no direct matches, check if the search is all the same letter, e.g. "aaa"
-    if (!matches.length) {
+    if (!match) {
       const letters = searchString.current.split('');
       const allSameLetter = letters.length && letters.every(letter => letter === letters[0]);
 
-      // if the search is all the same letter, cycle through options starting with that letter
       if (allSameLetter) {
-        startIndex++;
         matcher = (optionText: string) => optionText.toLowerCase().indexOf(letters[0]) === 0;
-        matches = getOptionsMatchingText(matcher);
+        match = activeDescendantImperativeRef.current?.find(id => {
+          if (id === activeOptionId) {
+            return false;
+          }
+
+          const option = getOptionById(id);
+          return !!option && matcher(option.text);
+        });
       }
     }
 
-    // if there is an active option and multiple matches,
-    // return first matching option after the current active option, looping back to the top
-    if (matches.length > 1 && activeOption) {
-      const nextMatch = matches.find(option => getIndexOfId(option.id) >= startIndex);
-      return nextMatch ?? matches[0];
+    if (!match) {
+      activeDescendantImperativeRef.current?.blur();
+      return undefined;
     }
 
-    return matches[0] ?? undefined;
+    return getOptionById(match);
   };
 
   const onTriggerKeyDown = (ev: React.KeyboardEvent<HTMLButtonElement>) => {
@@ -83,12 +86,19 @@ export function useButtonTriggerSlot(
       !open && setOpen(ev, true);
 
       const nextOption = getNextMatchingOption();
-      setActiveOption(nextOption);
+      if (nextOption?.id) {
+        activeDescendantImperativeRef.current?.focus(nextOption.id);
+      }
       setFocusVisible(true);
     }
   };
 
-  const trigger = useTriggerSlot(triggerFromProps, ref, { state: options.state, defaultProps, elementType: 'button' });
+  const trigger = useTriggerSlot(triggerFromProps, ref, {
+    state: options.state,
+    defaultProps,
+    elementType: 'button',
+    activeDescendantImperativeRef,
+  });
   trigger.onKeyDown = mergeCallbacks(onTriggerKeyDown, trigger.onKeyDown);
 
   return trigger;

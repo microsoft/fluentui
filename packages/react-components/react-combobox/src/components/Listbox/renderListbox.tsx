@@ -4,6 +4,7 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { ListboxContextValues, ListboxState, ListboxSlots } from './Listbox.types';
 import { ListboxContext } from '../../contexts/ListboxContext';
+import { ActiveDescendantContextProvider } from '@fluentui/react-aria';
 
 /**
  * Render the final JSX of Listbox
@@ -12,8 +13,10 @@ export const renderListbox_unstable = (state: ListboxState, contextValues: Listb
   assertSlots<ListboxSlots>(state);
 
   return (
-    <ListboxContext.Provider value={contextValues.listbox}>
-      <state.root />
-    </ListboxContext.Provider>
+    <ActiveDescendantContextProvider value={contextValues.activeDescendant}>
+      <ListboxContext.Provider value={contextValues.listbox}>
+        <state.root />
+      </ListboxContext.Provider>
+    </ActiveDescendantContextProvider>
   );
 };

@@ -1,7 +1,9 @@
 import * as React from 'react';
 
 export interface ActiveDescendantImperativeRef {
+  find: (pred: (id: string) => boolean) => string | undefined;
   first: () => void;
+  last: () => void;
   next: () => void;
   prev: () => void;
   blur: () => void;

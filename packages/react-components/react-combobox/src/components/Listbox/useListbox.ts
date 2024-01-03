@@ -3,17 +3,17 @@ import {
   getIntrinsicElementProps,
   mergeCallbacks,
   useEventCallback,
-  useMergedRefs,
   slot,
+  useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
-import { getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
-import type { OptionValue } from '../../utils/OptionCollection.types';
+import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useOptionCollection } from '../../utils/useOptionCollection';
-import { useScrollOptionsIntoView } from '../../utils/useScrollOptionsIntoView';
 import { useSelection } from '../../utils/useSelection';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { ListboxProps, ListboxState } from './Listbox.types';
+import { useActiveDescendant, useActiveDescendantContext } from '@fluentui/react-aria';
+import { optionClassNames } from '../Option/useOptionStyles.styles';
 
 /**
  * Create the state required to render Listbox.
@@ -27,11 +27,20 @@ import type { ListboxProps, ListboxState } from './Listbox.types';
 export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
   const { multiselect } = props;
   const optionCollection = useOptionCollection();
-  const { getCount, getOptionAtIndex, getIndexOfId } = optionCollection;
+  const { getOptionById } = optionCollection;
 
+  const {
+    listboxRef: activeDescendantListboxRef,
+    activeParentRef,
+    imperativeRef,
+  } = useActiveDescendant<HTMLInputElement, HTMLDivElement>({
+    matchOption: el => el.classList.contains(optionClassNames.root),
+  });
+  const { imperativeRef: activeDescendantImperativeRefCtx } = useActiveDescendantContext();
+  const activeDescendantImperativeRef = activeDescendantImperativeRefCtx.current?.first
+    ? activeDescendantImperativeRefCtx
+    : imperativeRef;
   const { clearSelection, selectedOptions, selectOption } = useSelection(props);
-
-  const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
 
   // track whether keyboard focus outline should be shown
   // tabster/keyborg doesn't work here, since the actual keyboard focus target doesn't move
@@ -39,25 +48,39 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     const action = getDropdownActionFromKey(event, { open: true });
-    const maxIndex = getCount() - 1;
-    const activeIndex = activeOption ? getIndexOfId(activeOption.id) : -1;
-    let newIndex = activeIndex;
+    const activeOptionId = activeDescendantImperativeRef.current?.active();
+    const activeOption = activeOptionId ? getOptionById(activeOptionId) : null;
 
     switch (action) {
+      case 'Next':
+        if (activeOption) {
+          activeDescendantImperativeRef.current?.next();
+        } else {
+          activeDescendantImperativeRef.current?.first();
+        }
+        break;
+      case 'Previous':
+        if (activeOption) {
+          activeDescendantImperativeRef.current?.prev();
+        } else {
+          activeDescendantImperativeRef.current?.first();
+        }
+        break;
+      case 'PageUp':
+      case 'First':
+        activeDescendantImperativeRef.current?.first();
+        break;
+      case 'PageDown':
+      case 'Last':
+        activeDescendantImperativeRef.current?.last();
+        break;
       case 'Select':
       case 'CloseSelect':
         activeOption && selectOption(event, activeOption);
         break;
-      default:
-        newIndex = getIndexFromAction(action, activeIndex, maxIndex);
     }
 
-    if (newIndex !== activeIndex) {
-      // prevent default page scroll/keyboard action if the index changed
-      event.preventDefault();
-      setActiveOption(getOptionAtIndex(newIndex));
-      setFocusVisible(true);
-    }
+    setFocusVisible(true);
   };
 
   const onMouseOver = (event: React.MouseEvent<HTMLElement>) => {
@@ -66,27 +89,25 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
 
   // get state from parent combobox, if it exists
   const hasComboboxContext = useHasParentContext(ComboboxContext);
-  const comboboxActiveOption = useContextSelector(ComboboxContext, ctx => ctx.activeOption);
   const comboboxFocusVisible = useContextSelector(ComboboxContext, ctx => ctx.focusVisible);
   const comboboxSelectedOptions = useContextSelector(ComboboxContext, ctx => ctx.selectedOptions);
   const comboboxSelectOption = useContextSelector(ComboboxContext, ctx => ctx.selectOption);
-  const comboboxSetActiveOption = useContextSelector(ComboboxContext, ctx => ctx.setActiveOption);
 
   // without a parent combobox context, provide values directly from Listbox
   const optionContextValues = hasComboboxContext
     ? {
-        activeOption: comboboxActiveOption,
+        activeOption: undefined,
         focusVisible: comboboxFocusVisible,
         selectedOptions: comboboxSelectedOptions,
         selectOption: comboboxSelectOption,
-        setActiveOption: comboboxSetActiveOption,
+        setActiveOption: () => null,
       }
     : {
-        activeOption,
+        activeOption: undefined,
         focusVisible,
         selectedOptions,
         selectOption,
-        setActiveOption,
+        setActiveOption: () => null,
       };
 
   const state: ListboxState = {
@@ -98,9 +119,8 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
         // FIXME:
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: ref as React.Ref<HTMLDivElement>,
+        ref: useMergedRefs(ref as React.Ref<HTMLDivElement>, activeDescendantListboxRef, activeParentRef),
         role: multiselect ? 'menu' : 'listbox',
-        'aria-activedescendant': hasComboboxContext ? undefined : activeOption?.id,
         'aria-multiselectable': multiselect,
         tabIndex: 0,
         ...props,
@@ -111,10 +131,8 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     clearSelection,
     ...optionCollection,
     ...optionContextValues,
+    activeDescendantImperativeRef,
   };
-
-  const scrollContainerRef = useScrollOptionsIntoView(state);
-  state.root.ref = useMergedRefs(state.root.ref, scrollContainerRef);
 
   state.root.onKeyDown = useEventCallback(mergeCallbacks(state.root.onKeyDown, onKeyDown));
   state.root.onMouseOver = useEventCallback(mergeCallbacks(state.root.onMouseOver, onMouseOver));

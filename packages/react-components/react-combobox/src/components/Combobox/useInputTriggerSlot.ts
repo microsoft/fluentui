@@ -6,14 +6,16 @@ import { useTriggerSlot, UseTriggerSlotState } from '../../utils/useTriggerSlot'
 import { ComboboxProps, ComboboxState } from './Combobox.types';
 import { OptionValue } from '../../utils/OptionCollection.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
+import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 
 type UsedComboboxState = UseTriggerSlotState &
-  Pick<ComboboxState, 'value' | 'setValue' | 'selectedOptions' | 'clearSelection' | 'getOptionsMatchingText'>;
+  Pick<ComboboxState, 'value' | 'setValue' | 'selectedOptions' | 'clearSelection' | 'getOptionById'>;
 
 type UseInputTriggerSlotOptions = {
   state: UsedComboboxState;
   freeform: boolean | undefined;
   defaultProps: Partial<ComboboxProps>;
+  activeDescendantImperativeRef: React.RefObject<ActiveDescendantImperativeRef>;
 };
 
 /*
@@ -30,25 +32,25 @@ export function useInputTriggerSlot(
     state: {
       open,
       value,
-      activeOption,
       selectOption,
       setValue,
-      setActiveOption,
       setFocusVisible,
       multiselect,
       selectedOptions,
       clearSelection,
-      getOptionsMatchingText,
-      getIndexOfId,
+      getOptionById,
       setOpen,
     },
     freeform,
     defaultProps,
+    activeDescendantImperativeRef,
   } = options;
 
   const onBlur = (ev: React.FocusEvent<HTMLInputElement>) => {
     // handle selection and updating value if freeform is false
     if (!open && !freeform) {
+      const activeOptionId = activeDescendantImperativeRef.current?.active();
+      const activeOption = activeOptionId ? getOptionById(activeOptionId) : null;
       // select matching option, if the value fully matches
       if (value && activeOption && value.trim().toLowerCase() === activeOption?.text.toLowerCase()) {
         selectOption(ev, activeOption);
@@ -63,20 +65,22 @@ export function useInputTriggerSlot(
     const searchString = inputValue?.trim().toLowerCase();
 
     if (!searchString || searchString.length === 0) {
+      activeDescendantImperativeRef.current?.blur();
       return;
     }
 
     const matcher = (optionText: string) => optionText.toLowerCase().indexOf(searchString) === 0;
-    const matches = getOptionsMatchingText(matcher);
+    const match = activeDescendantImperativeRef.current?.find(id => {
+      const option = getOptionById(id);
+      return !!option && matcher(option.text);
+    });
 
-    // return first matching option after the current active option, looping back to the top
-    if (matches.length > 1 && activeOption) {
-      const startIndex = getIndexOfId(activeOption.id);
-      const nextMatch = matches.find(option => getIndexOfId(option.id) >= startIndex);
-      return nextMatch ?? matches[0];
+    if (!match) {
+      activeDescendantImperativeRef.current?.blur();
+      return undefined;
     }
 
-    return matches[0] ?? undefined;
+    return getOptionById(match);
   };
 
   // update value and active option based on input
@@ -87,8 +91,6 @@ export function useInputTriggerSlot(
 
     // handle updating active option based on input
     const matchingOption = getOptionFromInput(inputValue);
-    setActiveOption(matchingOption);
-
     setFocusVisible(true);
 
     // clear selection for single-select if the input value no longer matches the selection
@@ -101,6 +103,7 @@ export function useInputTriggerSlot(
     state: options.state,
     defaultProps,
     elementType: 'input',
+    activeDescendantImperativeRef,
   });
 
   trigger.onChange = mergeCallbacks(trigger.onChange, onChange);

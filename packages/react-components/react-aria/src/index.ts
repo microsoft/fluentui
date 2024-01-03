@@ -3,8 +3,17 @@ export {
   useARIAButtonShorthand,
   useARIAButtonProps,
 } from './button/index';
-export { useActiveDescendant } from './activedescendant';
-export type { ActiveDescendantImperativeRef, ActiveDescendantOptions } from './activedescendant';
+export {
+  useActiveDescendant,
+  ACTIVEDESCENDANT_ATTRIBUTE,
+  ActiveDescendantContextProvider,
+  useActiveDescendantContext,
+} from './activedescendant';
+export type {
+  ActiveDescendantImperativeRef,
+  ActiveDescendantOptions,
+  ActiveDescendantContextValue,
+} from './activedescendant';
 export type {
   ARIAButtonSlotProps,
   ARIAButtonProps,

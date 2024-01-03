@@ -8,6 +8,8 @@ import { Listbox } from '../Listbox/Listbox';
 import type { DropdownProps, DropdownState } from './Dropdown.types';
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useButtonTriggerSlot } from './useButtonTriggerSlot';
+import { useActiveDescendant } from '@fluentui/react-aria';
+import { optionClassNames } from '../Option/useOptionStyles.styles';
 
 /**
  * Create the state required to render Dropdown.
@@ -21,8 +23,15 @@ import { useButtonTriggerSlot } from './useButtonTriggerSlot';
 export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsSize: true });
+  const {
+    listboxRef: activeDescendantListboxRef,
+    activeParentRef,
+    imperativeRef,
+  } = useActiveDescendant<HTMLButtonElement, HTMLDivElement>({
+    matchOption: el => el.classList.contains(optionClassNames.root),
+  });
 
-  const baseState = useComboboxBaseState(props);
+  const baseState = useComboboxBaseState({ ...props, activeDescendantImperativeRef: imperativeRef });
   const { open, hasFocus } = baseState;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
@@ -34,7 +43,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
 
   const triggerRef = React.useRef<HTMLButtonElement>(null);
-  const listbox = useListboxSlot(props.listbox, comboboxPopupRef, {
+  const listbox = useListboxSlot(props.listbox, useMergedRefs(comboboxPopupRef, activeDescendantListboxRef), {
     state: baseState,
     triggerRef,
     defaultProps: {
@@ -42,8 +51,9 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     },
   });
 
-  const trigger = useButtonTriggerSlot(props.button ?? {}, useMergedRefs(triggerRef, ref), {
+  const trigger = useButtonTriggerSlot(props.button ?? {}, useMergedRefs(triggerRef, ref, activeParentRef), {
     state: baseState,
+    activeDescendantImperativeRef: imperativeRef,
     defaultProps: {
       type: 'button',
       tabIndex: 0,

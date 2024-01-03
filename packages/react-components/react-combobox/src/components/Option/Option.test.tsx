@@ -203,11 +203,11 @@ describe('Option', () => {
     expect(registerOption).toHaveBeenCalledTimes(2);
   });
 
-  it('calls selectOption and setActiveOption on click', () => {
+  // TODO test activeDescendantRef
+  it('calls selectOption on click', () => {
     const selectOption = jest.fn();
-    const setActiveOption = jest.fn();
     const { getByRole } = render(
-      <ListboxContext.Provider value={{ ...defaultContextValues, selectOption, setActiveOption }}>
+      <ListboxContext.Provider value={{ ...defaultContextValues, selectOption }}>
         <Option id="optionId" value="foo">
           Option 1
         </Option>
@@ -219,9 +219,6 @@ describe('Option', () => {
 
     expect(selectOption).toHaveBeenCalledTimes(1);
     expect(selectOption).toHaveBeenCalledWith(expect.anything(), optionData);
-
-    expect(setActiveOption).toHaveBeenCalledTimes(1);
-    expect(setActiveOption).toHaveBeenCalledWith(optionData);
   });
 
   describe('checkIcon slot', () => {

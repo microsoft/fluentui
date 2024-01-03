@@ -40,6 +40,13 @@ export function useOptionWalker<TListboxElement extends HTMLElement>(options: Us
 
         return treeWalkerRef.current.firstChild() as HTMLElement | null;
       },
+      last: () => {
+        if (!treeWalkerRef.current) {
+          return null;
+        }
+
+        return treeWalkerRef.current.lastChild() as HTMLElement | null;
+      },
       next: () => {
         if (!treeWalkerRef.current) {
           return null;

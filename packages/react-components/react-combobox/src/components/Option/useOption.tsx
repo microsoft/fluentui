@@ -6,6 +6,7 @@ import { ComboboxContext } from '../../contexts/ComboboxContext';
 import { ListboxContext } from '../../contexts/ListboxContext';
 import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { OptionProps, OptionState } from './Option.types';
+import { useActiveDescendantContext } from '@fluentui/react-aria';
 
 function getTextString(text: string | undefined, children: React.ReactNode) {
   if (text !== undefined) {
@@ -56,6 +57,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   );
 
   // context values
+  const { imperativeRef: activeDescendantImperativeRef } = useActiveDescendantContext();
   const focusVisible = useContextSelector(ListboxContext, ctx => ctx.focusVisible);
   const multiselect = useContextSelector(ListboxContext, ctx => ctx.multiselect);
   const registerOption = useContextSelector(ListboxContext, ctx => ctx.registerOption);
@@ -65,13 +67,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
     return !!optionValue && !!selectedOptions.find(o => o === optionValue);
   });
   const selectOption = useContextSelector(ListboxContext, ctx => ctx.selectOption);
-  const setActiveOption = useContextSelector(ListboxContext, ctx => ctx.setActiveOption);
   const setOpen = useContextSelector(ComboboxContext, ctx => ctx.setOpen);
-
-  // current active option?
-  const active = useContextSelector(ListboxContext, ctx => {
-    return ctx.activeOption?.id !== undefined && ctx.activeOption?.id === id;
-  });
 
   // check icon
   let CheckIcon: React.ReactNode = <CheckmarkFilled />;
@@ -85,9 +81,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       return;
     }
 
-    // clicked option should always become active option
-    setActiveOption(optionData);
-
+    activeDescendantImperativeRef.current?.focus(id);
     // close on option click for single-select options in a combobox
     if (!multiselect) {
       setOpen?.(event, false);
@@ -137,10 +131,10 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       },
       elementType: 'span',
     }),
-    active,
     disabled,
     focusVisible,
     multiselect,
     selected,
+    active: false,
   };
 };

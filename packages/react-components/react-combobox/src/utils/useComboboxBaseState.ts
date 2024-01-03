@@ -4,12 +4,17 @@ import { useOptionCollection } from '../utils/useOptionCollection';
 import { OptionValue } from '../utils/OptionCollection.types';
 import { useSelection } from '../utils/useSelection';
 import type { ComboboxBaseProps, ComboboxBaseOpenEvents, ComboboxBaseState } from './ComboboxBase.types';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 
 /**
  * State shared between Combobox and Dropdown components
  */
 export const useComboboxBaseState = (
-  props: ComboboxBaseProps & { children?: React.ReactNode; editable?: boolean },
+  props: ComboboxBaseProps & {
+    children?: React.ReactNode;
+    editable?: boolean;
+    activeDescendantImperativeRef: React.RefObject<ActiveDescendantImperativeRef>;
+  },
 ): ComboboxBaseState => {
   const {
     appearance = 'outline',
@@ -20,10 +25,11 @@ export const useComboboxBaseState = (
     multiselect,
     onOpenChange,
     size = 'medium',
+    activeDescendantImperativeRef,
   } = props;
 
   const optionCollection = useOptionCollection();
-  const { getOptionAtIndex, getOptionsMatchingValue } = optionCollection;
+  const { getOptionsMatchingValue } = optionCollection;
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
 
@@ -92,19 +98,20 @@ export const useComboboxBaseState = (
 
   // update active option based on change in open state or children
   React.useEffect(() => {
-    if (open && !activeOption) {
+    if (open) {
       // if it is single-select and there is a selected option, start at the selected option
       if (!multiselect && selectedOptions.length > 0) {
         const selectedOption = getOptionsMatchingValue(v => v === selectedOptions[0]).pop();
-        selectedOption && setActiveOption(selectedOption);
-      }
-      // default to starting at the first option
-      else {
-        setActiveOption(getOptionAtIndex(0));
+        if (selectedOption?.id) {
+          activeDescendantImperativeRef.current?.focus(selectedOption.id);
+        }
+      } else {
+        // default to starting at the first option
+        activeDescendantImperativeRef.current?.first();
       }
     } else if (!open) {
       // reset the active option when closing
-      setActiveOption(undefined);
+      activeDescendantImperativeRef.current?.blur();
     }
     // this should only be run in response to changes in the open state or children
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -129,5 +136,6 @@ export const useComboboxBaseState = (
     size,
     value,
     multiselect,
+    activeDescendantImperativeRef,
   };
 };
