@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "id": "prepare-initial-release",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Library name",
+      "x-prompt": "What project should be released",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      }
+    },
+    "phase": {
+      "type": "string",
+      "description": "Phase of npm release life cycle for fluent v9 core package",
+      "x-prompt": {
+        "message": "Which initial phase of release life cycle you wanna trigger?",
+        "type": "list",
+        "items": [
+          {
+            "value": "compat",
+            "label": "compat - prepare 1st release for compat package (shipping as <package-name>-compat)"
+          },
+          {
+            "value": "preview",
+            "label": "preview - prepare 1st release for preview phase (shipping as <package-name>-preview)"
+          },
+          {
+            "value": "stable",
+            "label": "stable - prepare 1st release for stable phase (shipping from react-components suite)"
+          }
+        ]
+      }
+    }
+  },
+  "required": ["project", "phase"]
+}

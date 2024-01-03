@@ -15,6 +15,6 @@ describe('useAccordionContextValues_unstable', () => {
     expect(result.current.accordionItem).toBeDefined();
     expect(result.current.accordionItem.disabled).toBe(false);
     expect(result.current.accordionItem.open).toBe(false);
-    expect(result.current.accordionItem.onHeaderClick).toBeInstanceOf(Function);
+    expect(result.current.accordionItem.value).toBe('foo');
   });
 });

@@ -1,6 +1,12 @@
 import * as React from 'react';
-import { TagGroup, Tag, TagProps } from '@fluentui/react-tags';
 import {
+  TagGroup,
+  Tag,
+  TagProps,
+  tagClassNames,
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagPrimaryProps,
   makeStyles,
   shorthands,
   Menu,
@@ -29,11 +35,13 @@ const names = [
   'Charlotte Waltson',
   'Elliot Woodward',
 ];
-const defaultItems: TagProps[] = names.map(name => ({
+type DefaultItem = InteractionTagPrimaryProps & { value: string };
+const defaultItems: DefaultItem[] = names.map(name => ({
   value: name.replace(' ', '_'),
   children: name,
   media: (
     <Avatar
+      aria-hidden="true" // use aria-hidden because InteractionTag contains information in the avatar
       name={name}
       badge={{
         status: 'available',
@@ -50,7 +58,14 @@ type OverflowMenuItemProps = {
 };
 
 const useMenuItemStyles = makeStyles({
-  menuItem: shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalXS),
+  menuItem: {
+    ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalXS),
+    ':hover': {
+      [`& .${tagClassNames.root}`]: {
+        color: tokens.colorNeutralForeground2Hover,
+      },
+    },
+  },
   tag: {
     backgroundColor: 'transparent',
     ...shorthands.borderColor('transparent'),
@@ -90,18 +105,23 @@ const OverflowMenu = () => {
   }
 
   return (
-    <Menu>
-      <MenuTrigger disableButtonEnhancement>
-        <Tag ref={ref} aria-label={`${overflowCount} more tags`}>{`+${overflowCount}`}</Tag>
-      </MenuTrigger>
-      <MenuPopover>
-        <MenuList>
-          {defaultItems.map(item => (
-            <OverflowMenuItem key={item.value} tag={item} />
-          ))}
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+    <InteractionTag>
+      <Menu>
+        <MenuTrigger disableButtonEnhancement>
+          <InteractionTagPrimary
+            ref={ref}
+            aria-label={`${overflowCount} more tags`}
+          >{`+${overflowCount}`}</InteractionTagPrimary>
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList>
+            {defaultItems.map(item => (
+              <OverflowMenuItem key={item.value} tag={item} />
+            ))}
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </InteractionTag>
   );
 };
 
@@ -116,6 +136,7 @@ const useStyles = makeStyles({
     minWidth: '150px',
     resize: 'horizontal',
     width: '100%',
+    boxSizing: 'border-box',
   },
   tagGroup: {
     display: 'flex', // TagGroup is inline-flex by default, but we want it to be same width as the container
@@ -127,11 +148,13 @@ export const WithOverflow = () => {
 
   return (
     <div className={styles.container}>
-      <Overflow minimumVisible={2} padding={30}>
-        <TagGroup className={styles.tagGroup}>
-          {defaultItems.map(item => (
-            <OverflowItem key={item.value} id={item.value!}>
-              <Tag key={item.value} {...item} />
+      <Overflow minimumVisible={2} padding={60}>
+        <TagGroup className={styles.tagGroup} aria-label="Overflow example">
+          {defaultItems.map(({ value, ...rest }) => (
+            <OverflowItem key={value} id={value!}>
+              <InteractionTag key={value}>
+                <InteractionTagPrimary {...rest} />
+              </InteractionTag>
             </OverflowItem>
           ))}
           <OverflowMenu />

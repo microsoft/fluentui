@@ -8,6 +8,10 @@ import {
   IGVBarChartSeriesPoint,
 } from '../../index';
 
+/**
+ * Grouped Vertical Bar Chart properties
+ * {@docCategory GroupedVerticalBarChart}
+ */
 export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
   /**
    * chart title for the chart
@@ -35,33 +39,33 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
 
   /**
    * color of the datapoint legend
-   * @deprecated
+   * @deprecated Dont use this property. colour will pick from given data
    */
   legendColor?: string;
 
   /**
    * This prop used to draw X axis grid line on tha chart. Default value will be false
-   * @deprecated
+   * @deprecated Dont use this property. Handling with default value.
    */
   showXAxisGridLines?: boolean;
 
   /**
    * This prop used to draw Y axis grid lines on the chart. Default value will be true
-   * @deprecated
+   * @deprecated Dont use this property. Lines are drawn by default
    */
   showYAxisGridLines?: boolean;
 
   /**
    * This prop takes the boolean value and used for to display x-axis path or transparent.
    * This is a optional prop and default value is false. It dont show X-Axis path as tranparent.
-   * @deprecated
+   * @deprecated Dont use this property. Axis line are removed by default
    */
   showXAxisPath?: boolean;
 
   /**
    * This prop takes the boolean value and used for to display y-axis path or transparent.
-   * This is a optional prop and default value is false. It dont show X-Axis path as tranparent.
-   * @deprecated
+   * This is a optional prop and default value is false. It dont show Y-Axis path as tranparent.
+   * @deprecated Dont use this property. No need to display Y axis path. Handling default
    */
   showYAxisPath?: boolean;
 
@@ -88,8 +92,16 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
   hideLabels?: boolean;
 }
 
+/**
+ * Grouped Vertical Bar Chart style properties
+ * {@docCategory GroupedVerticalBarChart}
+ */
 export interface IGroupedVerticalBarChartStyleProps extends ICartesianChartStyleProps {}
 
+/**
+ * Grouped Vertical Bar Chart styles
+ * {@docCategory GroupedVerticalBarChart}
+ */
 export interface IGroupedVerticalBarChartStyles extends ICartesianChartStyles {
   /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends

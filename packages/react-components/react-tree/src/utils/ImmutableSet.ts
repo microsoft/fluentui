@@ -22,22 +22,22 @@ export interface ImmutableSet<Value> {
   has(value: Value): boolean;
   /** Iterates over values in the ImmutableSet. */
   [Symbol.iterator](): IterableIterator<Value>;
+  /**
+   * @internal
+   * Exposes the internal set used to store values.
+   * This is an internal API and should not be used directly.
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  dangerouslyGetInternalSet_unstable(): Set<Value>;
 }
 
-export const emptyImmutableSet = createImmutableSet<never>();
+const emptyImmutableSet = createImmutableSet<never>();
 
-/**
- * properly creates an ImmutableSet instance from an iterable
- */
-export function createImmutableSet<Value>(iterable?: Iterable<Value>): ImmutableSet<Value> {
-  const internalSet = new Set(iterable);
-  return dangerouslyCreateImmutableSet(internalSet);
-}
 /**
  * Avoid using *dangerouslyCreateImmutableSet*, since this method will expose internally used set, use  createImmutableSet instead,
  * @param internalSet - a set that is used internally to store values.
  */
-export function dangerouslyCreateImmutableSet<Value>(internalSet: Set<Value>): ImmutableSet<Value> {
+function dangerouslyCreateImmutableSet<Value>(internalSet: Set<Value>): ImmutableSet<Value> {
   return {
     size: internalSet.size,
     add(value) {
@@ -59,5 +59,27 @@ export function dangerouslyCreateImmutableSet<Value>(internalSet: Set<Value>): I
     [Symbol.iterator]() {
       return internalSet[Symbol.iterator]();
     },
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    dangerouslyGetInternalSet_unstable: () => internalSet,
   };
 }
+
+function isImmutableSet<Value>(value: unknown): value is ImmutableSet<Value> {
+  return typeof value === 'object' && value !== null && 'dangerouslyGetInternalSet_unstable' in value;
+}
+
+/**
+ * properly creates an ImmutableSet instance from an iterable
+ */
+function createImmutableSet<Value>(iterable?: Iterable<Value>): ImmutableSet<Value> {
+  const internalSet = new Set(iterable);
+  return dangerouslyCreateImmutableSet(internalSet);
+}
+
+export const ImmutableSet = {
+  empty: emptyImmutableSet,
+  create: createImmutableSet,
+  isImmutableSet,
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  dangerouslyCreate_unstable: dangerouslyCreateImmutableSet,
+};

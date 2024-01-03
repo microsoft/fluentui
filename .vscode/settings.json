@@ -45,6 +45,7 @@
   },
   "editor.rulers": [120],
   "eslint.workingDirectories": [{ "mode": "auto" }], // infer working directory based on .eslintrc/package.json location
+  "eslint.validate": ["json"],
   "files.associations": {
     "**/package.json.hbs": "json",
     "**/*.json.hbs": "jsonc",

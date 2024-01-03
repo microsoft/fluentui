@@ -35,6 +35,9 @@ import { SpinButtonBasicExample } from '../components/SpinButton.stories';
 import { DatePickerBasicExample } from '../components/defaultDatePicker';
 import { ProgressIndicatorBasicExample } from '../components/ProgressIndicator.stories';
 import { CalendarInlineMultidayDayViewExample } from '../components/CalendarInlineMultidayDayView.stories';
+import { SpinnerBasicExample } from '../components/spinner.stories';
+import { DetailsListCustomColumnsExample } from '../components/DetailsListCustomColumnsExample.stories';
+import { ChoiceGroupImageExample } from '../components/choiceGroupWithImagesandIcons.stories';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
@@ -87,6 +90,7 @@ const Example = () => (
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label>DetailsList / Grid</Label>
       <DetailsListCompactExample />
+      <DetailsListCustomColumnsExample />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
@@ -140,6 +144,9 @@ const Example = () => (
       <Link>Hello I am a link, hover underline</Link>
     </Stack>
 
+    <Link>Loader / Spinner</Link>
+    <SpinnerBasicExample />
+
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label>ComboBox</Label>
       <ComboBoxBasicExample />
@@ -168,6 +175,7 @@ const Example = () => (
       <Label>Misc</Label>
       <ActivityItemBasicExample />
       <ChoiceGroupBasicExample />
+      <ChoiceGroupImageExample />
       <ToggleBasicExample />
       <ColorPickerBasicExample />
       <ContextualMenuDefaultExample />

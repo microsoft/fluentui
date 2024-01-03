@@ -8,18 +8,9 @@ export type BreadcrumbItemSlots = {
 /**
  * BreadcrumbItem Props
  */
-export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> &
-  Pick<BreadcrumbProps, 'size'> & {
-    /**
-     * Defines current sate of the BreadcrumbItem.
-     *
-     * @default false
-     */
-    current?: boolean;
-  };
+export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> & Pick<BreadcrumbProps, 'size'>;
 
 /**
  * State used in rendering BreadcrumbItem
  */
-export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> &
-  Required<Pick<BreadcrumbItemProps, 'size' | 'current'>>;
+export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> & Required<Pick<BreadcrumbItemProps, 'size'>>;

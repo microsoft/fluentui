@@ -1,9 +1,7 @@
-import * as fs from 'fs';
 import * as path from 'path';
 
 import { defineConfig } from 'cypress';
-import * as jju from 'jju';
-import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 import type { Configuration } from 'webpack';
 
 /**
@@ -25,27 +23,23 @@ export const baseWebpackConfig: Configuration = {
 };
 
 const cypressWebpackConfig = (): Configuration => {
-  // For v9, use tsconfig paths and esbuild-loader
-  const tsConfigBasePath = path.resolve(__dirname, '../../../tsconfig.base.json');
-
-  const tsConfigBase = jju.parse(fs.readFileSync(tsConfigBasePath).toString());
-  const tsPaths = new TsconfigPathsPlugin({
-    configFile: tsConfigBasePath,
-  });
-
-  if (baseWebpackConfig.resolve) {
-    baseWebpackConfig.resolve.plugins = [tsPaths];
-  }
   if (baseWebpackConfig.module) {
     baseWebpackConfig.module.rules?.push({
       test: /\.(ts|tsx)$/,
       loader: 'esbuild-loader',
       options: {
-        loader: 'tsx',
-        target: tsConfigBase.compilerOptions.target,
+        tsconfig: './tsconfig.cy.json',
       },
     });
   }
+
+  baseWebpackConfig.resolve ??= {};
+  baseWebpackConfig.resolve.plugins ??= [];
+  baseWebpackConfig.resolve.plugins.push(
+    new TsconfigPathsPlugin({
+      configFile: path.resolve(__dirname, '../../../tsconfig.base.json'),
+    }),
+  );
 
   return baseWebpackConfig;
 };

@@ -6,9 +6,10 @@ exports[`ToastContainer renders a default state 1`] = `
     aria-describedby="toast-body2"
     aria-labelledby="toast-title1"
     class="fui-ToastContainer"
-    role="group"
+    data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Tab\\":true,\\"Escape\\":true,\\"Enter\\":true}}}"
+    role="listitem"
     style="--fui-toast-height: 0px;"
-    tabindex="-1"
+    tabindex="0"
   >
     Default ToastContainer
   </div>

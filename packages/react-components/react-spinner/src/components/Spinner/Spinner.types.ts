@@ -46,7 +46,7 @@ export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
    * The size of the spinner.
    * @default 'medium'
    */
-  size?: 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
+  size?: 'extra-tiny' | 'tiny' | 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large' | 'huge';
 };
 
 /**

@@ -32,8 +32,8 @@ import {
   StringAxis,
   getTypeOfAxis,
   tooltipOfXAxislabels,
+  formatValueWithSIPrefix,
 } from '../../utilities/index';
-import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -53,7 +53,6 @@ export interface IVerticalBarChartState extends IBasestate {
   hoverXValue?: string | number | null;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
-  emptyChart?: boolean;
 }
 
 type ColorScale = (_p?: number) => string;
@@ -75,6 +74,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _xAxisType: XAxisTypes;
   private _calloutAnchorPoint: IVerticalBarChartDataPoint | null;
   private _domainMargin: number;
+  private _emptyChartId: string;
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);
@@ -91,7 +91,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       YValueHover: [],
       hoverXValue: '',
       calloutLegend: '',
-      emptyChart: false,
     };
     this._isHavingLine = this._checkForLine();
     this._calloutId = getId('callout');
@@ -102,16 +101,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
         : XAxisTypes.StringAxis;
     this._domainMargin = MIN_DOMAIN_MARGIN;
-  }
-
-  public componentDidMount(): void {
-    const isChartEmpty =
-      this.state.emptyChart ||
-      this._points.length === 0 ||
-      (d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !this._isHavingLine);
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
+    this._emptyChartId = getId('_VBC_empty');
   }
 
   public render(): JSX.Element {
@@ -150,7 +140,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       tickValues: this.props.tickValues,
       tickFormat: this.props.tickFormat,
     };
-    return !this.state.emptyChart ? (
+    return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
         points={this._points}
@@ -192,7 +182,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         }}
       />
     ) : (
-      <div id={getId('_VBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
@@ -239,6 +234,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     if (lineBorderWidth > 0) {
       line.push(
         <path
+          key={getId('_VBC_line_')}
+          id={getId('_VBC_line_')}
           opacity={shouldHighlight ? 1 : 0.1}
           d={linePath(lineData)!}
           fill="transparent"
@@ -250,6 +247,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     }
     line.push(
       <path
+        key={getId('_VBC_line_')}
+        id={getId('_VBC_line_')}
         opacity={shouldHighlight ? 1 : 0.1}
         d={linePath(lineData)!}
         fill="transparent"
@@ -273,6 +272,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         return (
           <circle
             key={index}
+            id={getId('_VBC_point_')}
             cx={!isNumericAxis ? xBarScale(item.x) + 0.5 * xBarScale.bandwidth() : xScale(item.x)}
             cy={item.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(item.y) : yScale(item.y)}
             onMouseOver={this._onBarHover.bind(this, item.point, colorScale(item.y))}
@@ -514,7 +514,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     } else {
       const xBarScale = d3ScaleBand()
         .domain(this._xAxisLabels)
-        .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin])
+        .range(
+          this._isRtl
+            ? [containerWidth - this.margins.right! - this._domainMargin, this.margins.left! + this._domainMargin]
+            : [this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin],
+        )
         .paddingInner(2 / 3);
 
       const yBarScale = d3ScaleLinear()
@@ -533,23 +537,29 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         legendColor: this.state.color,
-        shouldHighlight: shouldHighlight,
+        shouldHighlight,
       });
       const barHeight: number = Math.max(yBarScale(point.y), 0);
-      if (barHeight < 1) {
+      let adjustedBarHeight = 0;
+      if (barHeight <= 0) {
         return <React.Fragment key={point.x}> </React.Fragment>;
+      } else if (barHeight <= Math.ceil(yBarScale(this._yMax) / 100.0)) {
+        adjustedBarHeight = Math.ceil(yBarScale(this._yMax) / 100.0);
+      } else {
+        adjustedBarHeight = barHeight;
       }
       const xPoint = xBarScale(point.x as number);
-      const yPoint = containerHeight - this.margins.bottom! - yBarScale(point.y);
+      const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
       return (
         <g key={point.x}>
           <rect
+            id={getId('_VBC_bar_')}
             x={xPoint}
             className={this._classNames.opacityChangeOnHover}
             y={yPoint}
             width={this._barWidth}
             data-is-focusable={!this.props.hideTooltip}
-            height={barHeight}
+            height={adjustedBarHeight}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
             }}
@@ -562,7 +572,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onBlur={this._onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
       );
     });
@@ -595,18 +605,24 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const colorScale = this._createColors();
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
       const barHeight: number = Math.max(yBarScale(point.y), 0);
-      if (barHeight < 1) {
+      let adjustedBarHeight = 0;
+      if (barHeight <= 0) {
         return <React.Fragment key={point.x}> </React.Fragment>;
+      } else if (barHeight <= Math.ceil(yBarScale(this._yMax) / 100.0)) {
+        adjustedBarHeight = Math.ceil(yBarScale(this._yMax) / 100.0);
+      } else {
+        adjustedBarHeight = barHeight;
       }
       const xPoint = xBarScale(point.x);
-      const yPoint = containerHeight - this.margins.bottom! - yBarScale(point.y);
+      const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
       return (
         <g key={point.x} transform={`translate(${0.5 * (xBarScale.bandwidth() - this._barWidth)}, 0)`}>
           <rect
+            id={getId('_VBC_bar_')}
             x={xPoint}
             y={yPoint}
             width={this._barWidth}
-            height={barHeight}
+            height={adjustedBarHeight}
             aria-label={this._getAriaLabel(point)}
             role="img"
             ref={(e: SVGRectElement) => {
@@ -620,7 +636,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
             fill={point.color ? point.color : colorScale(point.y)}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
       );
     });
@@ -689,7 +705,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
-        color: color,
+        color,
         action: () => {
           this._onLegendClick(point.legend!);
         },
@@ -776,8 +792,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     );
   };
 
-  private _renderBarLabel(xPoint: number, yPoint: number, barValue: number) {
-    if (this.props.hideLabels || this._barWidth < 16) {
+  private _renderBarLabel(xPoint: number, yPoint: number, barValue: number, legend: string) {
+    if (
+      this.props.hideLabels ||
+      this._barWidth < 16 ||
+      !(this._legendHighlighted(legend) || this._noLegendHighlighted())
+    ) {
       return null;
     }
 
@@ -789,7 +809,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         className={this._classNames.barLabel}
         aria-hidden={true}
       >
-        {d3FormatPrefix(barValue < 1000 ? '.2~' : '.1', barValue)(barValue)}
+        {formatValueWithSIPrefix(barValue)}
       </text>
     );
   }
@@ -821,4 +841,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       right: this.margins.right! + this._domainMargin,
     };
   };
+
+  private _isChartEmpty(): boolean {
+    return (
+      this._points.length === 0 ||
+      (d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !this._isHavingLine)
+    );
+  }
 }

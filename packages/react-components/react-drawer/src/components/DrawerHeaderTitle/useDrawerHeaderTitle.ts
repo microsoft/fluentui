@@ -1,7 +1,26 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { useDialogContext_unstable } from '@fluentui/react-dialog';
+
 import type { DrawerHeaderTitleProps, DrawerHeaderTitleState } from './DrawerHeaderTitle.types';
-import { useDialogTitle_unstable } from '@fluentui/react-dialog';
+
+/**
+ * @internal
+ * Create the shorthand for the heading element.
+ * @param props - props from this instance of DrawerHeaderTitle
+ */
+const useHeadingProps = ({ children, heading }: DrawerHeaderTitleProps) => {
+  const id = useDialogContext_unstable(ctx => ctx.dialogTitleId);
+
+  return slot.optional(heading, {
+    defaultProps: {
+      id,
+      children,
+    },
+    renderByDefault: true,
+    elementType: 'h2',
+  });
+};
 
 /**
  * Create the state required to render DrawerHeaderTitle.
@@ -16,28 +35,25 @@ export const useDrawerHeaderTitle_unstable = (
   props: DrawerHeaderTitleProps,
   ref: React.Ref<HTMLDivElement>,
 ): DrawerHeaderTitleState => {
-  const { root: heading, action, components: titleComponents } = useDialogTitle_unstable(props, ref);
+  const headingProps = useHeadingProps(props);
 
   return {
     components: {
       root: 'div',
-      heading: titleComponents.root,
-      action: titleComponents.action,
+      heading: 'h2',
+      action: 'div',
     },
 
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
-    heading: resolveShorthand(props.heading, {
-      required: true,
-      defaultProps: {
-        ...heading,
-        className: undefined, // remove className from heading
-      },
-    }),
-    action: resolveShorthand(props.action, {
-      defaultProps: action,
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        ref,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
+    heading: headingProps,
+    action: slot.optional(props.action, {
+      elementType: 'div',
     }),
   };
 };

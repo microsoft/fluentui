@@ -17,6 +17,9 @@ import toJson from 'enzyme-to-json';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { ThemeProvider } from '@fluentui/react';
 import { DarkTheme } from '@fluentui/theme-samples';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 // Wrapper of the GaugeChart to be tested.
 let wrapper: ReactWrapper<IGaugeChartProps, IGaugeChartState, GaugeChartBase> | undefined;
@@ -416,4 +419,26 @@ describe('GaugeChart interaction and accessibility tests', () => {
       }
     }
   });
+});
+
+describe('Gauge Chart - axe-core', () => {
+  beforeEach(() => {
+    sharedBeforeEach();
+
+    originalGetComputedTextLength = SVGElement.prototype.getComputedTextLength;
+    SVGElement.prototype.getComputedTextLength = () => {
+      return 0;
+    };
+  });
+
+  afterEach(() => {
+    sharedAfterEach();
+
+    SVGElement.prototype.getComputedTextLength = originalGetComputedTextLength;
+  });
+  it('Should pass accessibility tests', async () => {
+    const { container } = render(<GaugeChart segments={segments} chartValue={25} />);
+    const axeResults = await axe(container);
+    expect(axeResults).toHaveNoViolations();
+  }, 10000);
 });

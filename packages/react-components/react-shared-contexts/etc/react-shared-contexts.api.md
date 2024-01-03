@@ -8,6 +8,14 @@ import * as React_2 from 'react';
 import type { Theme } from '@fluentui/react-theme';
 
 // @internal (undocumented)
+export type AnnounceContextValue_unstable = {
+    announce: (message: string, options?: AnnounceOptions) => void;
+};
+
+// @internal (undocumented)
+export const AnnounceProvider_unstable: React_2.Provider<AnnounceContextValue_unstable | undefined>;
+
+// @internal (undocumented)
 export type BackgroundAppearanceContextValue = 'inverted' | undefined;
 
 // @internal (undocumented)
@@ -39,6 +47,9 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useComboboxStyles_unstable: CustomStyleHook;
     useDropdownStyles_unstable: CustomStyleHook;
     useListboxStyles_unstable: CustomStyleHook;
+    useListStyles_unstable: CustomStyleHook;
+    useListItemStyles_unstable: CustomStyleHook;
+    useListItemButtonStyles_unstable: CustomStyleHook;
     useOptionStyles_unstable: CustomStyleHook;
     useOptionGroupStyles_unstable: CustomStyleHook;
     useDividerStyles_unstable: CustomStyleHook;
@@ -99,10 +110,40 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useDataGridHeaderCellStyles_unstable: CustomStyleHook;
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
     useDrawerStyles_unstable: CustomStyleHook;
-    useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerInlineStyles_unstable: CustomStyleHook;
+    useDrawerOverlayStyles_unstable: CustomStyleHook;
+    useInlineDrawerStyles_unstable: CustomStyleHook;
+    useOverlayDrawerStyles_unstable: CustomStyleHook;
     useDrawerHeaderStyles_unstable: CustomStyleHook;
-    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
     useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
+    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
+    useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerFooterStyles_unstable: CustomStyleHook;
+    useInteractionTagStyles_unstable: CustomStyleHook;
+    useInteractionTagPrimaryStyles_unstable: CustomStyleHook;
+    useInteractionTagSecondaryStyles_unstable: CustomStyleHook;
+    useTagStyles_unstable: CustomStyleHook;
+    useTagGroupStyles_unstable: CustomStyleHook;
+    useBreadcrumbStyles_unstable: CustomStyleHook;
+    useBreadcrumbButtonStyles_unstable: CustomStyleHook;
+    useBreadcrumbItemStyles_unstable: CustomStyleHook;
+    useBreadcrumbDividerStyles_unstable: CustomStyleHook;
+    useMessageBarStyles_unstable: CustomStyleHook;
+    useMessageBarBodyStyles_unstable: CustomStyleHook;
+    useMessageBarTitleStyles_unstable: CustomStyleHook;
+    useMessageBarActionsStyles_unstable: CustomStyleHook;
+    useMessageBarGroupStyles_unstable: CustomStyleHook;
+    useToasterStyles_unstable: CustomStyleHook;
+    useTeachingPopoverStyles_unstable: CustomStyleHook;
+    useTeachingPopoverActionsStyles_unstable: CustomStyleHook;
+    useTeachingPopoverBodyStyles_unstable: CustomStyleHook;
+    useTeachingPopoverButtonStyles_unstable: CustomStyleHook;
+    useTeachingPopoverCarouselStyles_unstable: CustomStyleHook;
+    useTeachingPopoverHeaderStyles_unstable: CustomStyleHook;
+    useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
+    useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
+    useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
+    useTimePickerCompatStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @public (undocumented)
@@ -131,6 +172,9 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useComboboxStyles_unstable: CustomStyleHook;
     useDropdownStyles_unstable: CustomStyleHook;
     useListboxStyles_unstable: CustomStyleHook;
+    useListStyles_unstable: CustomStyleHook;
+    useListItemStyles_unstable: CustomStyleHook;
+    useListItemButtonStyles_unstable: CustomStyleHook;
     useOptionStyles_unstable: CustomStyleHook;
     useOptionGroupStyles_unstable: CustomStyleHook;
     useDividerStyles_unstable: CustomStyleHook;
@@ -191,10 +235,40 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useDataGridHeaderCellStyles_unstable: CustomStyleHook;
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
     useDrawerStyles_unstable: CustomStyleHook;
-    useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerInlineStyles_unstable: CustomStyleHook;
+    useDrawerOverlayStyles_unstable: CustomStyleHook;
+    useInlineDrawerStyles_unstable: CustomStyleHook;
+    useOverlayDrawerStyles_unstable: CustomStyleHook;
     useDrawerHeaderStyles_unstable: CustomStyleHook;
-    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
     useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
+    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
+    useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerFooterStyles_unstable: CustomStyleHook;
+    useInteractionTagStyles_unstable: CustomStyleHook;
+    useInteractionTagPrimaryStyles_unstable: CustomStyleHook;
+    useInteractionTagSecondaryStyles_unstable: CustomStyleHook;
+    useTagStyles_unstable: CustomStyleHook;
+    useTagGroupStyles_unstable: CustomStyleHook;
+    useBreadcrumbStyles_unstable: CustomStyleHook;
+    useBreadcrumbButtonStyles_unstable: CustomStyleHook;
+    useBreadcrumbItemStyles_unstable: CustomStyleHook;
+    useBreadcrumbDividerStyles_unstable: CustomStyleHook;
+    useMessageBarStyles_unstable: CustomStyleHook;
+    useMessageBarBodyStyles_unstable: CustomStyleHook;
+    useMessageBarTitleStyles_unstable: CustomStyleHook;
+    useMessageBarActionsStyles_unstable: CustomStyleHook;
+    useMessageBarGroupStyles_unstable: CustomStyleHook;
+    useToasterStyles_unstable: CustomStyleHook;
+    useTeachingPopoverStyles_unstable: CustomStyleHook;
+    useTeachingPopoverActionsStyles_unstable: CustomStyleHook;
+    useTeachingPopoverBodyStyles_unstable: CustomStyleHook;
+    useTeachingPopoverButtonStyles_unstable: CustomStyleHook;
+    useTeachingPopoverCarouselStyles_unstable: CustomStyleHook;
+    useTeachingPopoverHeaderStyles_unstable: CustomStyleHook;
+    useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
+    useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
+    useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
+    useTimePickerCompatStyles_unstable: CustomStyleHook;
 }>;
 
 // @internal (undocumented)
@@ -223,6 +297,9 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useComboboxStyles_unstable: CustomStyleHook;
     useDropdownStyles_unstable: CustomStyleHook;
     useListboxStyles_unstable: CustomStyleHook;
+    useListStyles_unstable: CustomStyleHook;
+    useListItemStyles_unstable: CustomStyleHook;
+    useListItemButtonStyles_unstable: CustomStyleHook;
     useOptionStyles_unstable: CustomStyleHook;
     useOptionGroupStyles_unstable: CustomStyleHook;
     useDividerStyles_unstable: CustomStyleHook;
@@ -283,10 +360,40 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useDataGridHeaderCellStyles_unstable: CustomStyleHook;
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
     useDrawerStyles_unstable: CustomStyleHook;
-    useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerInlineStyles_unstable: CustomStyleHook;
+    useDrawerOverlayStyles_unstable: CustomStyleHook;
+    useInlineDrawerStyles_unstable: CustomStyleHook;
+    useOverlayDrawerStyles_unstable: CustomStyleHook;
     useDrawerHeaderStyles_unstable: CustomStyleHook;
-    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
     useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
+    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
+    useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerFooterStyles_unstable: CustomStyleHook;
+    useInteractionTagStyles_unstable: CustomStyleHook;
+    useInteractionTagPrimaryStyles_unstable: CustomStyleHook;
+    useInteractionTagSecondaryStyles_unstable: CustomStyleHook;
+    useTagStyles_unstable: CustomStyleHook;
+    useTagGroupStyles_unstable: CustomStyleHook;
+    useBreadcrumbStyles_unstable: CustomStyleHook;
+    useBreadcrumbButtonStyles_unstable: CustomStyleHook;
+    useBreadcrumbItemStyles_unstable: CustomStyleHook;
+    useBreadcrumbDividerStyles_unstable: CustomStyleHook;
+    useMessageBarStyles_unstable: CustomStyleHook;
+    useMessageBarBodyStyles_unstable: CustomStyleHook;
+    useMessageBarTitleStyles_unstable: CustomStyleHook;
+    useMessageBarActionsStyles_unstable: CustomStyleHook;
+    useMessageBarGroupStyles_unstable: CustomStyleHook;
+    useToasterStyles_unstable: CustomStyleHook;
+    useTeachingPopoverStyles_unstable: CustomStyleHook;
+    useTeachingPopoverActionsStyles_unstable: CustomStyleHook;
+    useTeachingPopoverBodyStyles_unstable: CustomStyleHook;
+    useTeachingPopoverButtonStyles_unstable: CustomStyleHook;
+    useTeachingPopoverCarouselStyles_unstable: CustomStyleHook;
+    useTeachingPopoverHeaderStyles_unstable: CustomStyleHook;
+    useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
+    useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
+    useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
+    useTimePickerCompatStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @internal (undocumented)
@@ -333,6 +440,11 @@ export type TooltipVisibilityContextValue_unstable = {
 
 // @internal (undocumented)
 export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibilityContextValue_unstable>;
+
+// Warning: (ae-incompatible-release-tags) The symbol "useAnnounce" is marked as @public, but its signature references "AnnounceContextValue_unstable" which is marked as @internal
+//
+// @public (undocumented)
+export function useAnnounce_unstable(): AnnounceContextValue_unstable;
 
 // Warning: (ae-incompatible-release-tags) The symbol "useBackgroundAppearance" is marked as @public, but its signature references "BackgroundAppearanceContextValue" which is marked as @internal
 //

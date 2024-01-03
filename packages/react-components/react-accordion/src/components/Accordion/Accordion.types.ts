@@ -1,25 +1,16 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { AccordionContextValue } from '../../contexts/accordion';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 
 export type AccordionIndex = number | number[];
 
 export type AccordionToggleEvent<E = HTMLElement> = React.MouseEvent<E> | React.KeyboardEvent<E>;
 
-export type AccordionToggleEventHandler = (event: AccordionToggleEvent, data: AccordionToggleData) => void;
-
-export type AccordionContextValue = Required<Pick<AccordionProps, 'collapsible'>> &
-  Pick<AccordionProps, 'navigation'> & {
-    /**
-     * The list of opened panels by index
-     */
-    openItems: AccordionItemValue[];
-    /**
-     * Callback used by AccordionItem to request a change on it's own opened state
-     * Should be used to toggle AccordionItem
-     */
-    requestToggle: (event: AccordionToggleEvent, data: AccordionToggleData) => void;
-  };
+export type AccordionToggleEventHandler<Value = AccordionItemValue> = (
+  event: AccordionToggleEvent,
+  data: AccordionToggleData<Value>,
+) => void;
 
 export type AccordionContextValues = {
   accordion: AccordionContextValue;
@@ -29,15 +20,16 @@ export type AccordionSlots = {
   root: NonNullable<Slot<'div'>>;
 };
 
-export type AccordionToggleData = {
-  value: AccordionItemValue;
+export type AccordionToggleData<Value = AccordionItemValue> = {
+  value: Value;
+  openItems: Value[];
 };
 
-export type AccordionProps = ComponentProps<AccordionSlots> & {
+export type AccordionProps<Value = AccordionItemValue> = ComponentProps<AccordionSlots> & {
   /**
    * Default value for the uncontrolled state of the panel.
    */
-  defaultOpenItems?: AccordionItemValue | AccordionItemValue[];
+  defaultOpenItems?: Value | Value[];
 
   /**
    * Indicates if Accordion support multiple Panels closed at the same time.
@@ -57,12 +49,12 @@ export type AccordionProps = ComponentProps<AccordionSlots> & {
   /**
    * Callback to be called when the opened items change.
    */
-  onToggle?: AccordionToggleEventHandler;
+  onToggle?: AccordionToggleEventHandler<Value>;
 
   /**
    * Controls the state of the panel.
    */
-  openItems?: AccordionItemValue | AccordionItemValue[];
+  openItems?: Value | Value[];
 };
 
-export type AccordionState = ComponentState<AccordionSlots> & AccordionContextValue;
+export type AccordionState<Value = AccordionItemValue> = ComponentState<AccordionSlots> & AccordionContextValue<Value>;

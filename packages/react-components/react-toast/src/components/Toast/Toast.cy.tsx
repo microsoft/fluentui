@@ -3,7 +3,8 @@ import { mount as mountBase } from '@cypress/react';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
-import { Toaster, ToastTitle, Toast, useToastController, toastClassNames, ToastTrigger } from '../..';
+import { Toaster, ToastTitle, Toast, useToastController, toastClassNames } from '../..';
+import { toastContainerClassNames } from '../ToastContainer/useToastContainerStyles.styles';
 
 const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
@@ -444,14 +445,14 @@ describe('Toast', () => {
       .get('body')
       .type('{ctrl+m}')
       .focused()
-      .type('{esc}')
+      .type('{del}')
       .get(`.${toastClassNames.root}`)
       .should('not.exist')
       .get('#make')
       .should('be.focused');
   });
 
-  it('should dismiss toast and revert focus with escape', () => {
+  it('should dismiss toast and revert focus with delete', () => {
     const Example = () => {
       const { dispatchToast } = useToastController();
       const makeToast = () => {
@@ -488,15 +489,16 @@ describe('Toast', () => {
       .should('be.focused');
   });
 
-  it('should revert focus and resume toasts on tab out', () => {
+  it('should navigate collections of toasts with arrow key', () => {
     const Example = () => {
+      let counter = 0;
       const { dispatchToast } = useToastController();
       const makeToast = () => {
         dispatchToast(
           <Toast>
-            <ToastTitle>This is a toast</ToastTitle>
+            <ToastTitle>Toast</ToastTitle>
           </Toast>,
-          { timeout: 200, root: { id: 'toast' } },
+          { root: { id: `toast-${counter++}` } },
         );
       };
 
@@ -505,10 +507,6 @@ describe('Toast', () => {
           <button id="make" onClick={makeToast}>
             Make toast
           </button>
-          <button>Foo</button>
-          <button>Foo</button>
-          <button>Foo</button>
-          <button>Foo</button>
           <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
         </>
       );
@@ -517,46 +515,45 @@ describe('Toast', () => {
     mount(<Example />);
     cy.get('#make')
       .click()
-      .get('#toast')
-      .should('exist')
+      .click()
+      .click()
+      .get(`.${toastContainerClassNames.root}`)
+      .should('have.length', 3)
       .get('body')
       .type('{ctrl+m}')
-      .get('#toast')
+      .get(`#toast-2`)
       .should('be.focused')
-      .realPress(['Shift', 'Tab']);
-
-    cy.get('#make').should('be.focused').get('#toast').should('not.exist');
+      .focused()
+      .type('{upArrow}')
+      .get(`#toast-1`)
+      .should('be.focused')
+      .type('{upArrow}')
+      .get(`#toast-0`)
+      .should('be.focused')
+      .type('{upArrow}')
+      .get(`#toast-2`)
+      .should('be.focused')
+      .type('{downArrow}')
+      .get(`#toast-0`)
+      .should('be.focused')
+      .type('{downArrow}')
+      .get(`#toast-1`)
+      .should('be.focused');
   });
 
-  it('should resume toasts after dismissing with action', () => {
+  it('should move focus into toast with tab and navigate out with arrow key', () => {
     const Example = () => {
+      let counter = 0;
       const { dispatchToast } = useToastController();
       const makeToast = () => {
+        const toastCount = counter++;
         dispatchToast(
           <Toast>
-            <ToastTitle
-              action={
-                <ToastTrigger>
-                  <button id="dismiss">dismiss</button>
-                </ToastTrigger>
-              }
-            >
-              This is a toast
+            <ToastTitle>
+              <button id={`toast-button-${toastCount}`}>toast {toastCount}</button>
             </ToastTitle>
           </Toast>,
-          { timeout: 200, root: { id: 'toast' } },
-        );
-        dispatchToast(
-          <Toast>
-            <ToastTitle>This is a toast</ToastTitle>
-          </Toast>,
-          { timeout: 200 },
-        );
-        dispatchToast(
-          <Toast>
-            <ToastTitle>This is a toast</ToastTitle>
-          </Toast>,
-          { timeout: 200 },
+          { root: { id: `toast-${toastCount}` } },
         );
       };
 
@@ -565,21 +562,205 @@ describe('Toast', () => {
           <button id="make" onClick={makeToast}>
             Make toast
           </button>
-          <Toaster />
+          <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
         </>
       );
     };
 
     mount(<Example />);
-
     cy.get('#make')
       .click()
-      .get('#dismiss')
-      .focus()
       .click()
-      .get(`.${toastClassNames.root}`)
+      .click()
+      .get(`.${toastContainerClassNames.root}`)
+      .should('have.length', 3)
+      .get('body')
+      .type('{ctrl+m}')
+      .get(`#toast-2`)
+      .should('be.focused')
+      .focused()
+      .realPress('ArrowUp');
+    cy.realPress('ArrowUp');
+    cy.realPress('Tab');
+    cy.get(`#toast-button-0`).should('be.focused').realPress('ArrowDown');
+    cy.get(`#toast-1`).should('be.focused').realPress('Tab');
+    cy.get(`#toast-button-1`).should('be.focused').realPress('ArrowUp');
+    cy.get(`#toast-0`).should('be.focused');
+  });
+
+  it('should trap focus in toast after tab', () => {
+    const Example = () => {
+      let counter = 0;
+      const { dispatchToast } = useToastController();
+      const makeToast = () => {
+        const toastCount = counter++;
+        dispatchToast(
+          <Toast>
+            <ToastTitle>
+              <button id={`toast-button-${toastCount}-1`}>toast {toastCount}</button>
+              <button id={`toast-button-${toastCount}-2`}>toast {toastCount}</button>
+            </ToastTitle>
+          </Toast>,
+          { root: { id: `toast-${toastCount}` } },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make')
+      .click()
+      .click()
+      .click()
+      .get(`.${toastContainerClassNames.root}`)
+      .should('have.length', 3)
+      .get('body')
+      .type('{ctrl+m}')
+      .get(`#toast-2`)
+      .should('be.focused')
+      .focused()
+      .realPress('ArrowUp');
+    cy.realPress('ArrowUp');
+    cy.realPress('Tab');
+    cy.get(`#toast-button-0-1`).should('be.focused').realPress('Tab');
+    cy.get(`#toast-button-0-2`).should('be.focused').realPress('Tab');
+    cy.get(`#toast-button-0-1`).should('be.focused').realPress(['Shift', 'Tab']);
+    cy.get(`#toast-0`).should('be.focused').realPress(['Shift', 'Tab']);
+    cy.get(`#toast-button-0-2`).should('be.focused').realPress('Tab');
+    cy.get(`#toast-button-0-1`).should('be.focused').realPress(['Shift', 'Tab']);
+  });
+
+  it('should dismiss all toasts with Escape and restore focus', () => {
+    const Example = () => {
+      let counter = 0;
+      const { dispatchToast } = useToastController();
+      const makeToast = () => {
+        const toastCount = counter++;
+        dispatchToast(
+          <Toast>
+            <ToastTitle>
+              <button id={`toast-button-${toastCount}`}>toast {toastCount}</button>
+            </ToastTitle>
+          </Toast>,
+          { root: { id: `toast-${toastCount}` } },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make')
+      .click()
+      .click()
+      .click()
+      .get(`.${toastContainerClassNames.root}`)
+      .should('have.length', 3)
+      .get('body')
+      .type('{ctrl+m}')
+      .get(`#toast-2`)
+      .should('be.focused')
+      .focused()
+      .realPress('Escape');
+    cy.get(`.${toastContainerClassNames.root}`).should('not.exist').get('#make').should('be.focused');
+  });
+
+  it('should dismiss toasts with Delete and restore focus to next visible toast', () => {
+    const Example = () => {
+      let counter = 0;
+      const { dispatchToast } = useToastController();
+      const makeToast = () => {
+        const toastCount = counter++;
+        dispatchToast(
+          <Toast>
+            <ToastTitle>
+              <button id={`toast-button-${toastCount}`}>toast {toastCount}</button>
+            </ToastTitle>
+          </Toast>,
+          { root: { id: `toast-${toastCount}` } },
+        );
+      };
+
+      return (
+        <>
+          <button id="make" onClick={makeToast}>
+            Make toast
+          </button>
+          <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('#make')
+      .click()
+      .click()
+      .click()
+      .get(`.${toastContainerClassNames.root}`)
+      .should('have.length', 3)
+      .get('body')
+      .type('{ctrl+m}')
+      .get(`#toast-2`)
+      .should('be.focused')
+      .focused()
+      .realPress('Delete');
+    cy.get(`.${toastContainerClassNames.root}`)
       .should('have.length', 2)
-      .get(`.${toastClassNames.root}`)
+      .get('#toast-1')
+      .should('be.focused')
+      .realPress('Delete');
+
+    cy.get(`.${toastContainerClassNames.root}`)
+      .should('have.length', 1)
+      .get('#toast-0')
+      .should('be.focused')
+      .realPress('Delete');
+
+    cy.get(`.${toastContainerClassNames.root}`).should('not.exist').get('#make').should('be.focused');
+  });
+
+  it('should render toasts in DOM order', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const onClick = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+          </Toast>,
+        );
+      };
+
+      return (
+        <>
+          <button onClick={onClick}>Make toast</button>
+          <div id="container">
+            <Toaster inline />
+          </div>
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('button')
+      .click()
+      .get(`#container .${toastClassNames.root}`)
+      .should('exist')
+      .get(`body .${toastClassNames.root}`)
       .should('not.exist');
   });
 });

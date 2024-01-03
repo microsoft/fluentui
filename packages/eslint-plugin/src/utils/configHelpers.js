@@ -7,23 +7,23 @@ const jju = require('jju');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { FsTree } = require('nx/src/generators/tree');
 // eslint-disable-next-line import/no-extraneous-dependencies
-const { readProjectConfiguration } = require('@nrwl/devkit');
+const { readProjectConfiguration } = require('@nx/devkit');
 
 /**
  *  @typedef {{root: string, name: string}} Options
  *  @typedef {{name: string, version: string, dependencies: {[key: string]: string}}} PackageJson
- *  @typedef {import("@nrwl/devkit").WorkspaceJsonConfiguration} WorkspaceJsonConfiguration
+ *  @typedef {import("@nx/devkit").WorkspaceJsonConfiguration} WorkspaceJsonConfiguration
  */
 
 // FIXME: this is not ok (to depend on nx packages within this plugin - redo)
 /**
  * Gets project metadata from monorepo source of truth which is `project.json` per project
  * @param {Options} options
- * @returns {import('@nrwl/devkit').ProjectConfiguration}
+ * @returns {import('@nx/devkit').ProjectConfiguration}
  */
 function getProjectMetadata(options) {
   /**
-   * @type {import('@nrwl/devkit').Tree}
+   * @type {import('@nx/devkit').Tree}
    */
   const tree = new FsTree(options.root, false);
 
@@ -31,7 +31,7 @@ function getProjectMetadata(options) {
 }
 
 const testFiles = [
-  '**/*{.,-}{test,spec,e2e}.{ts,tsx}',
+  '**/*{.,-}{test,spec,e2e,cy}.{ts,tsx}',
   '**/{test,tests}/**',
   '**/testUtilities.{ts,tsx}',
   '**/common/{isConformant,snapshotSerializers}.{ts,tsx}',

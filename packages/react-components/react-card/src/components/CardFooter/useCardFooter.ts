@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { CardFooterProps, CardFooterState } from './CardFooter.types';
 
 /**
@@ -20,10 +20,16 @@ export const useCardFooter_unstable = (props: CardFooterProps, ref: React.Ref<HT
       action: 'div',
     },
 
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
-    action: resolveShorthand(action),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
+    action: slot.optional(action, { elementType: 'div' }),
   };
 };

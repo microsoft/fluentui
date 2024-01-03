@@ -19,16 +19,6 @@ export type TargetElement = HTMLElement | PositioningVirtualElement;
 /**
  * @internal
  */
-export interface UsePositioningOptions extends PositioningProps {
-  /**
-   * If false, does not position anything
-   */
-  enabled?: boolean;
-}
-
-/**
- * @internal
- */
 export interface PositionManager {
   updatePosition: () => void;
   dispose: () => void;
@@ -59,6 +49,7 @@ export type Position = 'above' | 'below' | 'before' | 'after';
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 
 export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
+export type NormalizedAutoSize = { applyMaxWidth: boolean; applyMaxHeight: boolean };
 
 export type Boundary = HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
 
@@ -92,6 +83,9 @@ export type PositioningVirtualElement = {
 
 export type SetVirtualMouseTarget = (event: React.MouseEvent | MouseEvent | undefined | null) => void;
 
+/**
+ * Internal options for positioning
+ */
 export interface PositioningOptions {
   /** Alignment for the component. Only has an effect if used with the @see position option */
   align?: Alignment;
@@ -119,8 +113,15 @@ export interface PositioningOptions {
   /**
    * Enables the position element to be positioned with 'fixed' (default value is position: 'absolute')
    * @default false
+   * @deprecated use `strategy` instead
    */
   positionFixed?: boolean;
+
+  /**
+   * Specifies the type of CSS position property to use.
+   * @default absolute
+   */
+  strategy?: 'absolute' | 'fixed';
 
   /**
    * Lets you displace a positioned element from its reference element.
@@ -136,11 +137,11 @@ export interface PositioningOptions {
   arrowPadding?: number;
 
   /**
-   * Applies max-height and max-width on the positioned element to fit it within the available space in viewport.
-   * true enables this for both width and height when overflow happens.
-   * 'always' applies `max-height`/`max-width` regardless of overflow.
-   * 'height' applies `max-height` when overflow happens, and 'width' for `max-width`
-   * `height-always` applies `max-height` regardless of overflow, and 'width-always' for always applying `max-width`
+   * Applies styles on the positioned element to fit it within the available space in viewport.
+   * - true: set styles for max height/width.
+   * - 'height': set styles for max height.
+   * - 'width'': set styles for max width.
+   * Note that options 'always'/'height-always'/'width-always' are now obsolete, and equivalent to true/'height'/'width'.
    */
   autoSize?: AutoSize;
 
@@ -173,22 +174,37 @@ export interface PositioningOptions {
    * @default true
    */
   useTransform?: boolean;
+
+  /**
+   * If false, does not position anything
+   */
+  enabled?: boolean;
+
+  /**
+   * When set, the positioned element matches the chosen dimension(s) of the target element
+   */
+  matchTargetSize?: 'width';
 }
 
+/**
+ * Public api that allows components using react-positioning to specify positioning options
+ */
 export interface PositioningProps
   extends Pick<
     PositioningOptions,
     | 'align'
-    | 'flipBoundary'
-    | 'overflowBoundary'
-    | 'overflowBoundaryPadding'
-    | 'position'
-    | 'offset'
     | 'arrowPadding'
     | 'autoSize'
     | 'coverTarget'
+    | 'flipBoundary'
+    | 'offset'
+    | 'overflowBoundary'
+    | 'overflowBoundaryPadding'
     | 'pinned'
+    | 'position'
+    | 'strategy'
     | 'useTransform'
+    | 'matchTargetSize'
   > {
   /** An imperative handle to Popper methods. */
   positioningRef?: React.Ref<PositioningImperativeRef>;

@@ -1,9 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const { fullSourcePlugin: babelPlugin } = require('@fluentui/babel-preset-storybook-full-source');
-const { isConvergedPackage, getAllPackageInfo } = require('@fluentui/scripts-monorepo');
-const { stripIndents, offsetFromRoot, workspaceRoot, readProjectConfiguration } = require('@nrwl/devkit');
+const { getAllPackageInfo } = require('@fluentui/scripts-monorepo');
+const { stripIndents, offsetFromRoot, workspaceRoot, readProjectConfiguration } = require('@nx/devkit');
 const { FsTree } = require('nx/src/generators/tree');
 const semver = require('semver');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
@@ -24,14 +23,26 @@ const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
  *  }
  * ```
  *
+ * @template {Record<string,any>} AddonConfiguration
  * @param {string} addonName - package name of custom workspace addon
  * @param {Object} options
  * @param {string=} options.workspaceRoot
  * @param {string} options.tsConfigPath - absolute path to tsConfig that contains path aliases
+ * @param {AddonConfiguration=} options.options - addon preset configuration
  */
 function loadWorkspaceAddon(addonName, options) {
   /* eslint-disable no-shadow */
-  const { workspaceRoot, tsConfigPath } = { ...loadWorkspaceAddonDefaultOptions, ...options };
+  const { workspaceRoot, tsConfigPath, options: addonConfig } = { ...loadWorkspaceAddonDefaultOptions, ...options };
+
+  const inMemoryTsTranspilationTemplate = stripIndents`
+      function registerInMemoryTsTranspilation(){
+        const { registerTsProject } = require('nx/src/utils/register');
+        const { joinPathFragments } = require('@nx/devkit');
+        registerTsProject(joinPathFragments(__dirname, '..'), 'tsconfig.lib.json');
+      }
+
+      registerInMemoryTsTranspilation();
+    `;
 
   function getPaths() {
     const addonMetadata = getProjectMetadata(addonName, workspaceRoot);
@@ -92,8 +103,10 @@ function loadWorkspaceAddon(addonName, options) {
   const posixTsConfigPath = tsConfigPath.split(path.sep).join(path.posix.sep);
 
   const presetRelativePathToDistApiRegex = new RegExp(`\\./${packageDistPath}`, 'g');
+  const presetConfigRegex = /const\s+([a-z]+)\s+=\s+require\('([a-z/.]+)\/preset'\)/i;
   const presetApiRegex = /module\.exports\s+=\s+({).+}/;
   const presetApiPathRegex = /(\/manager|\/preview)/g;
+
   let modifiedPresetContent = presetContent
     .replace(presetRelativePathToDistApiRegex, relativePathToSource)
     .replace(presetApiPathRegex, '$1.ts')
@@ -102,7 +115,6 @@ function loadWorkspaceAddon(addonName, options) {
     });
 
   modifiedPresetContent = stripIndents`
-    // @ts-ignore
     const { registerTsPaths } = require('@fluentui/scripts-storybook');
 
     function managerWebpack(config, options) {
@@ -113,87 +125,84 @@ function loadWorkspaceAddon(addonName, options) {
     ${modifiedPresetContent}
   `;
 
+  if (presetConfigRegex.test(presetContent)) {
+    modifiedPresetContent = stripIndents`
+      ${inMemoryTsTranspilationTemplate}
+
+      ${modifiedPresetContent}
+    `;
+  }
+
+  modifiedPresetContent = stripIndents`
+  // @ts-nocheck
+
+  ${modifiedPresetContent}
+  `;
+
   if (!fs.existsSync(packageTempPath)) {
     fs.mkdirSync(packageTempPath, { recursive: true });
   }
 
   fs.writeFileSync(presetMockedSourcePath, modifiedPresetContent, { encoding: 'utf-8' });
 
+  if (addonConfig) {
+    return { name: presetMockedSourcePath, options: addonConfig };
+  }
+
   return presetMockedSourcePath;
   /* eslint-enable no-shadow */
 }
 
 /**
- * @private
  * @param {ReturnType<typeof getAllPackageInfo>} allPackageInfo
- * @returns {import("webpack").RuleSetRule}
+ * @returns {Record<string, {replace: string}>};
  */
-function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
-  const config = getCodesandboxBabelOptions();
-
-  return {
-    /**
-     * why the usage of 'post' ? - we need to run this loader after all storybook webpack rules/loaders have been executed.
-     * while we can use Array.prototype.unshift to "override" the indexes this approach is more declarative without additional hacks.
-     */
-    enforce: 'post',
-    test: /\.stories\.tsx$/,
-    include: /stories/,
-    exclude: /node_modules/,
-    use: {
-      loader: 'babel-loader',
-      options: _processBabelLoaderOptions({
-        plugins: [[babelPlugin, config]],
-      }),
-    },
-  };
-
+function getImportMappingsForExportToSandboxAddon(allPackageInfo = getAllPackageInfo()) {
   /**
-   * @returns {import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions}
+   * packages that are part of v9 but are not meant for platform:web
    */
-  function getCodesandboxBabelOptions() {
-    /**
-     * packages that are part of v9 but are not meant for platform:web
-     */
-    const excludePackages = [
-      '@fluentui/babel-preset-storybook-full-source',
-      '@fluentui/react-storybook-addon',
-      '@fluentui/react-storybook-addon-codesandbox',
-      '@fluentui/react-conformance-griffel',
-    ];
+  const excludePackages = [
+    '@fluentui/babel-preset-storybook-full-source',
+    '@fluentui/react-storybook-addon',
+    '@fluentui/react-storybook-addon-export-to-sandbox',
+    '@fluentui/react-conformance-griffel',
+  ];
 
-    // TODO: https://github.com/microsoft/fluentui/issues/26691
-    const packagesOutsideReactComponentsSuite = [
-      '@fluentui/react-data-grid-react-window',
-      '@fluentui/react-datepicker-compat',
-      '@fluentui/react-migration-v8-v9',
-      '@fluentui/react-migration-v0-v9',
-    ];
+  const importMappings = Object.values(allPackageInfo).reduce((acc, cur) => {
+    if (excludePackages.includes(cur.packageJson.name)) {
+      return acc;
+    }
 
-    const importMappings = Object.values(allPackageInfo).reduce((acc, cur) => {
-      if (excludePackages.includes(cur.packageJson.name)) {
-        return acc;
-      }
+    if (isPackagePartOfReactComponentsSuite(cur.packageJson.name)) {
+      // TODO: once all pre-release packages (deprecated approach) will be released as stable this logic will be removed
+      const isPrerelease = semver.prerelease(cur.packageJson.version) !== null;
 
-      if (packagesOutsideReactComponentsSuite.includes(cur.packageJson.name)) {
-        acc[cur.packageJson.name] = { replace: cur.packageJson.name };
-        return acc;
-      }
-
-      if (isConvergedPackage({ packagePathOrJson: cur.packageJson, projectType: 'library' })) {
-        const isPrerelease = semver.prerelease(cur.packageJson.version) !== null;
-
-        acc[cur.packageJson.name] = isPrerelease
-          ? { replace: '@fluentui/react-components/unstable' }
-          : { replace: '@fluentui/react-components' };
-
-        return acc;
-      }
+      acc[cur.packageJson.name] = isPrerelease
+        ? { replace: '@fluentui/react-components/unstable' }
+        : { replace: '@fluentui/react-components' };
 
       return acc;
-    }, /** @type import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions*/ ({}));
+    }
 
-    return importMappings;
+    return acc;
+  }, /** @type {Record<string, {replace: string}>} */ ({}));
+
+  return importMappings;
+
+  /**
+   *
+   * @param {string} projectName
+   */
+  function isPackagePartOfReactComponentsSuite(projectName) {
+    const suiteProject = allPackageInfo['@fluentui/react-components'];
+
+    // this is needed because react-northstar is a lerna sub-project thus `getAllPackageInfo` returns only projects within `packages/fluentui/` folder
+    if (suiteProject) {
+      const suiteDependencies = suiteProject.packageJson.dependencies ?? {};
+      return Boolean(suiteDependencies[projectName]);
+    }
+
+    return false;
   }
 }
 
@@ -214,9 +223,8 @@ function getPackageStoriesGlob(options) {
   );
 
   packageJson.dependencies = packageJson.dependencies ?? {};
-  const dependencies = Object.assign(packageJson.dependencies, {
-    [options.packageName]: '*',
-  });
+
+  const dependencies = { ...packageJson.dependencies };
   const rootOffset = offsetFromRoot(options.callerPath.replace(workspaceRoot, ''));
 
   return Object.keys(dependencies)
@@ -285,10 +293,9 @@ function registerRules(options) {
  * Why is this needed:
  *  - `options.babelrc` is ignored by `babel-loader` thus we need to use `customize` api to exclude specific babel presets/plugins
  *
- * @private
  * @param {BabelLoaderOptions} loaderConfig
  */
-function _processBabelLoaderOptions(loaderConfig) {
+function processBabelLoaderOptions(loaderConfig) {
   const customLoaderPath = path.join(__dirname, './loaders/custom-loader.js');
   const customOptions = { customize: customLoaderPath };
   Object.assign(loaderConfig, customOptions);
@@ -324,7 +331,7 @@ function overrideDefaultBabelLoader(options) {
 
   const loader = getBabelLoader(/** @type {import('webpack').RuleSetRule[]}*/ (config.module.rules));
 
-  _processBabelLoaderOptions(loader.options);
+  processBabelLoaderOptions(loader.options);
 
   function getBabelLoader(/** @type {import('webpack').RuleSetRule[]} */ rules) {
     // eslint-disable-next-line no-shadow
@@ -367,4 +374,5 @@ exports.loadWorkspaceAddon = loadWorkspaceAddon;
 exports.registerTsPaths = registerTsPaths;
 exports.registerRules = registerRules;
 exports.overrideDefaultBabelLoader = overrideDefaultBabelLoader;
-exports._createCodesandboxRule = _createCodesandboxRule;
+exports.processBabelLoaderOptions = processBabelLoaderOptions;
+exports.getImportMappingsForExportToSandboxAddon = getImportMappingsForExportToSandboxAddon;

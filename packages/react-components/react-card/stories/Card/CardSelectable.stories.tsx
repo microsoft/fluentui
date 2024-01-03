@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, shorthands, Button, Caption1, tokens, Text } from '@fluentui/react-components';
-import { MoreHorizontal20Filled } from '@fluentui/react-icons';
+import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview, CardProps } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
@@ -58,7 +58,7 @@ const CardExample = (props: CardProps) => {
       <CardHeader
         header={<Text weight="semibold">iOS App Prototype</Text>}
         description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More actions" />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More actions" />}
       />
     </Card>
   );

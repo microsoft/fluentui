@@ -20,6 +20,7 @@ const LINKED_FOLDER = 'linkedfolder';
 const FORM = 'form';
 const SWAY = 'sway';
 const PLAYLIST = 'playlist';
+const LOOP_WORKSPACE = 'loopworkspace';
 
 export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
@@ -142,6 +143,9 @@ export function getFileTypeIconNameFromExtensionOrType(
         break;
       case FileIconType.playlist:
         iconBaseName = PLAYLIST;
+        break;
+      case FileIconType.loopworkspace:
+        iconBaseName = LOOP_WORKSPACE;
         break;
     }
   }

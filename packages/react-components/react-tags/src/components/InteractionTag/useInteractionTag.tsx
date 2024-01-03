@@ -1,22 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useEventCallback, useId } from '@fluentui/react-utilities';
-import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
+import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import type { InteractionTagProps, InteractionTagState } from './InteractionTag.types';
-import { Delete, Backspace } from '@fluentui/keyboard-keys';
-import { useTagGroupContext_unstable } from '../../contexts/TagGroupContext';
-
-const interactionTagAvatarSizeMap = {
-  medium: 28,
-  small: 20,
-  'extra-small': 16,
-} as const;
-
-const interactionTagAvatarShapeMap = {
-  rounded: 'square',
-  circular: 'circular',
-} as const;
-
-const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
+import { useTagGroupContext_unstable } from '../../contexts/tagGroupContext';
 
 /**
  * Create the state required to render InteractionTag.
@@ -25,89 +10,40 @@ const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
  * before being passed to renderInteractionTag_unstable.
  *
  * @param props - props from this instance of InteractionTag
- * @param ref - reference to root HTMLElement of InteractionTag
+ * @param ref - reference to root HTMLDivElement of InteractionTag
  */
 export const useInteractionTag_unstable = (
   props: InteractionTagProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): InteractionTagState => {
-  const { dismissible: contextDismissible, handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
+  const { handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
 
-  const id = useId('fui-Tag', props.id);
+  const id = useId('fui-InteractionTag-', props.id);
 
-  const {
-    appearance = 'filled-lighter',
-    disabled = false,
-    dismissible = contextDismissible,
-    shape = 'rounded',
-    size = contextSize,
-    value = id,
-  } = props;
+  const interactionTagPrimaryId = useId('fui-InteractionTagPrimary-');
 
-  const onDismissButtonClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
-    props.onClick?.(ev);
-    if (!ev.defaultPrevented) {
-      handleTagDismiss?.(ev, value);
-    }
-  });
-
-  const onDismissButtonKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
-    props?.onKeyDown?.(ev);
-    if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
-      handleTagDismiss?.(ev, value);
-    }
-  });
-
-  const dismissButtonShorthand = resolveShorthand(props.dismissButton, {
-    required: dismissible,
-    defaultProps: {
-      disabled,
-      type: 'button',
-      children: <DismissIcon />,
-    },
-  });
+  const { appearance = 'filled', disabled = false, shape = 'rounded', size = contextSize, value = id } = props;
 
   return {
     appearance,
-    avatarShape: interactionTagAvatarShapeMap[shape],
-    avatarSize: interactionTagAvatarSizeMap[size],
     disabled,
-    dismissible,
+    handleTagDismiss,
+    interactionTagPrimaryId,
     shape,
     size,
+    value,
 
     components: {
       root: 'div',
-      content: 'button',
-      media: 'span',
-      icon: 'span',
-      primaryText: 'span',
-      secondaryText: 'span',
-      dismissButton: 'button',
     },
 
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-      id,
-    }),
-
-    content: resolveShorthand(props.content, {
-      required: true,
-      defaultProps: {
-        disabled,
-        type: 'button',
-      },
-    }),
-    media: resolveShorthand(props.media),
-    icon: resolveShorthand(props.icon),
-    primaryText: resolveShorthand(props.primaryText, { required: true }),
-    secondaryText: resolveShorthand(props.secondaryText),
-
-    dismissButton: {
-      ...dismissButtonShorthand,
-      onClick: onDismissButtonClick,
-      onKeyDown: onDismissButtonKeyDown,
-    },
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        ref,
+        ...props,
+        id,
+      }),
+      { elementType: 'div' },
+    ),
   };
 };

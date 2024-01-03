@@ -14,6 +14,7 @@ import {
   tooltipOfXAxislabels,
   XAxisTypes,
   getTypeOfAxis,
+  formatValueWithSIPrefix,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -29,7 +30,6 @@ import {
   IRefArrayData,
   Legends,
 } from '../../index';
-import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
@@ -56,7 +56,6 @@ export interface IGroupedVerticalBarChartState extends IBasestate {
   dataPointCalloutProps?: IGVBarChartSeriesPoint;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
-  emptyChart?: boolean;
 }
 
 export class GroupedVerticalBarChartBase extends React.Component<
@@ -84,6 +83,8 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _calloutAnchorPoint: IGVBarChartSeriesPoint | null;
   private _barWidth: number;
   private _domainMargin: number;
+  private _emptyChartId: string;
+  private _groupWidth: number;
 
   public constructor(props: IGroupedVerticalBarChartProps) {
     super(props);
@@ -100,7 +101,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
       hoverXValue: '',
       calloutLegend: '',
       activeLegend: '',
-      emptyChart: false,
     };
     warnDeprecations(COMPONENT_NAME, props, {
       showYAxisGridLines: 'Dont use this property. Lines are drawn by default',
@@ -113,17 +113,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._calloutId = getId('callout');
     this._tooltipId = getId('GVBCTooltipId_');
     this._domainMargin = MIN_DOMAIN_MARGIN;
-  }
-
-  public componentDidMount(): void {
-    const isChartEmpty = !(
-      this.props.data &&
-      this.props.data.length > 0 &&
-      this.props.data.filter((item: IGroupedVerticalBarChartData) => item.series.length).length > 0
-    );
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
+    this._emptyChartId = getId('_GVBC_empty');
   }
 
   public render(): React.ReactNode {
@@ -166,7 +156,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       tickFormat: this.props.tickFormat!,
     };
 
-    return !this.state.emptyChart ? (
+    return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
         points={this._datasetForBars}
@@ -196,7 +186,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
         }}
       />
     ) : (
-      <div id={getId('_GVBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
@@ -208,7 +203,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     xElement?: SVGElement | null,
   ) => {
     const xScale0 = this._createX0Scale(containerWidth);
-    const xScale1 = this._createX1Scale(xScale0);
+    const xScale1 = this._createX1Scale();
     const allGroupsBars: JSX.Element[] = [];
     this._datasetForBars.forEach((singleSet: IGVSingleDataPoint) => {
       allGroupsBars.push(this._buildGraph(singleSet, xScale0, xScale1, containerHeight, xElement!));
@@ -337,7 +332,9 @@ export class GroupedVerticalBarChartBase extends React.Component<
     tempDataSet.forEach((datasetKey: string, index: number) => {
       const refIndexNumber = singleSet.indexNum * tempDataSet.length + index;
       const pointData = singleSet[datasetKey];
-      const xPoint = xScale1(datasetKey)!;
+      // To align the centers of the generated bandwidth and the calculated one when they differ,
+      // use the following addend.
+      const xPoint = xScale1(datasetKey) + (xScale1.bandwidth() - this._barWidth) / 2;
       const yPoint = Math.max(containerHeight! - this.margins.bottom! - yBarScale(pointData.data), 0);
       // Not rendering data with 0.
       pointData.data &&
@@ -365,7 +362,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
             role="img"
           />,
         );
-      if (pointData.data && !this.props.hideLabels && this._barWidth >= 16) {
+      if (
+        pointData.data &&
+        !this.props.hideLabels &&
+        this._barWidth >= 16 &&
+        (this._legendHighlighted(pointData.legend) || this._noLegendHighlighted())
+      ) {
         barLabelsForGroup.push(
           <text
             x={xPoint + this._barWidth / 2}
@@ -374,7 +376,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
             className={this._classNames.barLabel}
             aria-hidden={true}
           >
-            {d3FormatPrefix(pointData.data < 1000 ? '.2~' : '.1', pointData.data)(pointData.data)}
+            {formatValueWithSIPrefix(pointData.data)}
           </text>,
         );
       }
@@ -394,7 +396,10 @@ export class GroupedVerticalBarChartBase extends React.Component<
       xAxisElement && tooltipOfXAxislabels(tooltipProps);
     }
     return (
-      <g key={singleSet.indexNum} transform={`translate(${xScale0(singleSet.xAxisPoint)}, 0)`}>
+      <g
+        key={singleSet.indexNum}
+        transform={`translate(${xScale0(singleSet.xAxisPoint) + (xScale0.bandwidth() - this._groupWidth) / 2}, 0)`}
+      >
         {singleGroup}
         {barLabelsForGroup}
       </g>
@@ -449,13 +454,16 @@ export class GroupedVerticalBarChartBase extends React.Component<
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _createX1Scale = (xScale0: any): any => {
-    const bandWidth = xScale0.bandwidth();
-
-    return d3ScaleBand()
-      .domain(this._keys)
-      .range(this._isRtl ? [bandWidth, 0] : [0, bandWidth])
-      .paddingInner(X1_INNER_PADDING);
+  private _createX1Scale = (): any => {
+    return (
+      d3ScaleBand()
+        .domain(this._keys)
+        // When there is only one group, xScale0 adds padding around it,
+        // causing the bandwidth to become smaller than the actual group width.
+        // So to render bars in the group correctly, use groupWidth instead of the generated scale bandwidth.
+        .range(this._isRtl ? [this._groupWidth, 0] : [0, this._groupWidth])
+        .paddingInner(X1_INNER_PADDING)
+    );
   };
 
   private _closeCallout = () => {
@@ -588,6 +596,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       barWidth = groupWidth / (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE);
     }
     this._barWidth = barWidth;
+    this._groupWidth = groupWidth;
 
     return {
       ...this.margins,
@@ -595,4 +604,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
       right: this.margins.right! + this._domainMargin,
     };
   };
+
+  private _isChartEmpty(): boolean {
+    return !(
+      this.props.data &&
+      this.props.data.length > 0 &&
+      this.props.data.filter((item: IGroupedVerticalBarChartData) => item.series.length).length > 0
+    );
+  }
 }

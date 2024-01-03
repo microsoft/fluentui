@@ -7,7 +7,7 @@ export type TreeItemPersonaLayoutContextValues = {
   avatar: AvatarContextValue;
 };
 
-export type TreeItemPersonaLayoutSlots = Pick<TreeItemLayoutSlots, 'actions' | 'aside' | 'expandIcon'> & {
+export type TreeItemPersonaLayoutSlots = Pick<TreeItemLayoutSlots, 'actions' | 'aside' | 'expandIcon' | 'selector'> & {
   root: NonNullable<Slot<'div'>>;
   /**
    * Avatar to display.
@@ -16,7 +16,7 @@ export type TreeItemPersonaLayoutSlots = Pick<TreeItemLayoutSlots, 'actions' | '
   /**
    * Content. Children of the root slot are automatically rendered here
    */
-  content: NonNullable<Slot<'div'>>;
+  main: NonNullable<Slot<'div'>>;
   /**
    * Secondary text that describes or complements the content
    */

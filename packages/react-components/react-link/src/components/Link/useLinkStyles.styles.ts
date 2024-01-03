@@ -17,6 +17,9 @@ const useStyles = makeStyles({
   }),
   // Common styles.
   root: {
+    ':focus-visible': {
+      outlineStyle: 'none',
+    },
     backgroundColor: 'transparent',
     boxSizing: 'border-box',
     color: tokens.colorBrandForegroundLink,

@@ -1,8 +1,72 @@
 # Change Log - @fluentui/tokens
 
-This log was last generated on Tue, 20 Jun 2023 12:39:07 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Nov 2023 17:29:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.13)
+
+Thu, 09 Nov 2023 17:29:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.12..@fluentui/tokens_v1.0.0-alpha.13)
+
+### Changes
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+
+## [1.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.12)
+
+Wed, 01 Nov 2023 12:55:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.11..@fluentui/tokens_v1.0.0-alpha.12)
+
+### Changes
+
+- fix(tokens): Fix motion curves to match design ([PR #29546](https://github.com/microsoft/fluentui/pull/29546) by robertpenner@microsoft.com)
+
+## [1.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.11)
+
+Tue, 26 Sep 2023 17:49:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.10..@fluentui/tokens_v1.0.0-alpha.11)
+
+### Changes
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
+
+## [1.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.10)
+
+Tue, 26 Sep 2023 15:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.9..@fluentui/tokens_v1.0.0-alpha.10)
+
+### Changes
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+
+## [1.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.9)
+
+Tue, 05 Sep 2023 13:29:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.8..@fluentui/tokens_v1.0.0-alpha.9)
+
+### Changes
+
+- bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+
+## [1.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.8)
+
+Wed, 09 Aug 2023 13:17:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.7..@fluentui/tokens_v1.0.0-alpha.8)
+
+### Changes
+
+- feat: add durationGentle ([PR #28770](https://github.com/microsoft/fluentui/pull/28770) by miroslav.stastny@microsoft.com)
+
+## [1.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.7)
+
+Fri, 04 Aug 2023 08:52:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.6..@fluentui/tokens_v1.0.0-alpha.7)
+
+### Changes
+
+- feat: add status color tokens ([PR #28006](https://github.com/microsoft/fluentui/pull/28006) by miroslav.stastny@microsoft.com)
+- Add colorBrandStroke2Contrast and colorNeutralStrokeAlpha2 ([PR #28638](https://github.com/microsoft/fluentui/pull/28638) by miroslav.stastny@microsoft.com)
 
 ## [1.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.6)
 

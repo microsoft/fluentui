@@ -4,13 +4,22 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import { ComponentProps } from '@fluentui/react-components';
+import type { ComponentProps as ComponentProps_2 } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { GriffelStyle } from '@fluentui/react-components';
 import { ObjectOf } from '@fluentui/react-northstar';
 import type { ObjectShorthandValue } from '@fluentui/react-northstar';
 import * as React_2 from 'react';
+import { SelectionHookParams } from '@fluentui/react-utilities';
+import { SelectionItemId } from '@fluentui/react-utilities';
+import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import { Slot } from '@fluentui/react-components';
 import { Slot as Slot_2 } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 import { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
@@ -86,10 +95,78 @@ export const ItemLayout: React_2.ForwardRefExoticComponent<Omit<ItemLayoutSlots,
 export const itemLayoutClassName = "fui-ItemLayout";
 
 // @public (undocumented)
+export const List: ForwardRefComponent<ListProps>;
+
+// @public (undocumented)
+export const listClassNames: SlotClassNames<ListSlots>;
+
+// @public (undocumented)
+export const ListItem: ForwardRefComponent<ListItemProps>;
+
+// @public (undocumented)
+export const listItemClassNames: SlotClassNames<ListItemSlots>;
+
+// @public
+export type ListItemProps = ComponentProps_2<ListItemSlots> & {
+    value?: string | number;
+    truncateHeader?: boolean;
+    truncateContent?: boolean;
+};
+
+// @public (undocumented)
+export type ListItemSlots = {
+    root: NonNullable<Slot_2<'li', 'div'>>;
+    media?: React_2.ComponentProps<typeof ItemLayout>['startMedia'];
+    header?: React_2.ComponentProps<typeof ItemLayout>['header'];
+    contentWrapper?: React_2.ComponentProps<typeof ItemLayout>['contentWrapper'];
+    headerMedia?: React_2.ComponentProps<typeof ItemLayout>['headerMedia'];
+    contentMedia?: React_2.ComponentProps<typeof ItemLayout>['contentMedia'];
+    endMedia?: React_2.ComponentProps<typeof ItemLayout>['endMedia'];
+};
+
+// @public
+export type ListItemState = ComponentState<ListItemSlots> & {
+    selectable?: boolean;
+    selected?: boolean;
+    navigable?: boolean;
+    truncateHeader?: boolean;
+    truncateContent?: boolean;
+};
+
+// @public
+export type ListProps = ComponentProps_2<ListSlots> & {
+    layout?: ListLayout;
+    navigable?: boolean;
+    selectable?: boolean;
+    selectionMode?: SelectionMode_2;
+    selectedItems?: SelectionItemId[];
+    defaultSelectedItems?: SelectionItemId[];
+    onSelectionChange?: (event: React_2.SyntheticEvent, data: {
+        selectedItems: SelectionItemId[];
+    }) => void;
+    truncateHeader?: boolean;
+    truncateContent?: boolean;
+};
+
+// @public (undocumented)
+export type ListSlots = {
+    root: NonNullable<Slot_2<'ul', 'div' | 'ol'>>;
+};
+
+// @public
+export type ListState = ComponentState<ListSlots> & Required<Pick<ListProps, 'layout'>> & ListContextValue;
+
+// @public (undocumented)
 export const Primitive: PrimitiveComponent;
 
 // @public (undocumented)
 export const primitiveClassName = "fui-Primitive";
+
+// @public
+export const renderList_unstable: (state: ListState, contextValues: ListContextValues) => JSX.Element;
+
+// @public
+export const renderListItem_unstable: (state: ListItemState) => JSX.Element;
 
 // @public (undocumented)
 export const Segment: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTMLElement> & React_2.RefAttributes<HTMLDivElement>>;
@@ -140,6 +217,21 @@ export const useGridStyles: () => Record<"grid" | "onlyRows" | "rows1" | "rows2"
 
 // @public (undocumented)
 export const useItemLayoutStyles: () => Record<"header" | "root" | "contentMedia" | "contentWrapper" | "headerMedia" | "startMedia" | "endMedia", string>;
+
+// @public
+export const useList_unstable: (props: ListProps, ref: React_2.Ref<HTMLDivElement | HTMLUListElement>) => ListState;
+
+// @public
+export const useListItem_unstable: (props: ListItemProps, ref: React_2.Ref<HTMLLIElement | HTMLDivElement>) => ListItemState;
+
+// @public
+export const useListItemStyles_unstable: (state: ListItemState) => ListItemState;
+
+// @public (undocumented)
+export function useListSelection(options?: SelectionHookParams): ListSelectionState;
+
+// @public
+export const useListStyles_unstable: (state: ListState) => ListState;
 
 // @public (undocumented)
 export const v0Icon: () => GriffelStyle;

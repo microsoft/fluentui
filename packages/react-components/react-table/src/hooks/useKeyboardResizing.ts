@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ArrowLeft, ArrowRight, Enter, Escape, Shift, Space } from '@fluentui/keyboard-keys';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { ColumnResizeState, EnableKeyboardModeOnChangeCallback, TableColumnId } from './types';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useFocusFinders, useTabsterAttributes } from '@fluentui/react-tabster';
 
 const STEP = 20;
 const PRECISION_MODIFIER = Shift;
@@ -11,16 +11,16 @@ const PRECISION_FACTOR = 1 / 4;
 export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
   const [columnId, setColumnId] = React.useState<TableColumnId>();
   const onChangeRef = React.useRef<EnableKeyboardModeOnChangeCallback>();
-  const addListenerTimeout = React.useRef<number>();
+  const { findPrevFocusable } = useFocusFinders();
 
   const columnResizeStateRef = React.useRef<ColumnResizeState>(columnResizeState);
   React.useEffect(() => {
     columnResizeStateRef.current = columnResizeState;
   }, [columnResizeState]);
 
-  const { targetDocument } = useFluent();
+  const [resizeHandleRefs] = React.useState(() => new Map<TableColumnId, React.RefObject<HTMLDivElement>>());
 
-  const keyboardHandler = useEventCallback((event: KeyboardEvent) => {
+  const keyboardHandler = useEventCallback((event: React.KeyboardEvent) => {
     if (!columnId) {
       return;
     }
@@ -36,7 +36,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
     switch (event.key) {
       case ArrowLeft:
         stopEvent();
-        columnResizeStateRef.current.setColumnWidth(event, {
+        columnResizeStateRef.current.setColumnWidth(event.nativeEvent, {
           columnId,
           width: width - (precisionModifier ? STEP * PRECISION_FACTOR : STEP),
         });
@@ -44,7 +44,7 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
 
       case ArrowRight:
         stopEvent();
-        columnResizeStateRef.current.setColumnWidth(event, {
+        columnResizeStateRef.current.setColumnWidth(event.nativeEvent, {
           columnId,
           width: width + (precisionModifier ? STEP * PRECISION_FACTOR : STEP),
         });
@@ -54,57 +54,88 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
       case Enter:
       case Escape:
         stopEvent();
-        disableInteractiveMode();
+        // Just blur here, the onBlur handler will take care of the rest (disableInteractiveMode).
+        resizeHandleRefs.get(columnId)?.current?.blur();
         break;
     }
   });
-
-  // On component unmout, cancel any timer for adding a listener (if it exists) and remove the listener
-  React.useEffect(
-    () => () => {
-      targetDocument?.defaultView?.clearTimeout(addListenerTimeout.current);
-      targetDocument?.defaultView?.removeEventListener('keydown', keyboardHandler);
-    },
-    [keyboardHandler, targetDocument?.defaultView],
-  );
 
   const enableInteractiveMode = React.useCallback(
     (colId: TableColumnId) => {
       setColumnId(colId);
       onChangeRef.current?.(colId, true);
-      // Create the listener in the next tick, because the event that triggered this is still propagating
-      // when Enter was pressed and would be caught in the keyboardHandler, disabling the keyboard mode immediately.
-      // No idea why this is happening, but this is a working workaround.
-      // Tracked here: https://github.com/microsoft/fluentui/issues/27177
-      addListenerTimeout.current = targetDocument?.defaultView?.setTimeout(() => {
-        targetDocument?.defaultView?.addEventListener('keydown', keyboardHandler);
-      }, 0);
+
+      const handle = resizeHandleRefs.get(colId)?.current;
+      if (handle) {
+        handle.setAttribute('tabindex', '-1');
+        handle.tabIndex = -1;
+        handle.focus();
+      }
     },
-    [keyboardHandler, targetDocument?.defaultView],
+    [resizeHandleRefs],
   );
 
   const disableInteractiveMode = React.useCallback(() => {
-    if (columnId) {
-      onChangeRef.current?.(columnId, false);
+    if (!columnId) {
+      return;
     }
+    // Notify the onChange listener that we are disabling interactive mode.
+    onChangeRef.current?.(columnId, false);
+    // Find the previous focusable element (table header button) and focus it.
+    const el = resizeHandleRefs.get(columnId)?.current;
+    if (el) {
+      findPrevFocusable(el)?.focus(); // Focus the previous focusable element (header button).
+      el.removeAttribute('tabindex');
+    }
+
     setColumnId(undefined);
-    targetDocument?.defaultView?.removeEventListener('keydown', keyboardHandler);
-  }, [columnId, keyboardHandler, targetDocument?.defaultView]);
+  }, [columnId, findPrevFocusable, resizeHandleRefs]);
 
   const toggleInteractiveMode = (colId: TableColumnId, onChange?: EnableKeyboardModeOnChangeCallback) => {
     onChangeRef.current = onChange;
     if (!columnId) {
       enableInteractiveMode(colId);
     } else if (colId && columnId !== colId) {
+      enableInteractiveMode(colId);
       setColumnId(colId);
-      onChange?.(columnId, true);
     } else {
       disableInteractiveMode();
     }
   };
 
+  const getKeyboardResizingRef = React.useCallback(
+    (colId: TableColumnId) => {
+      const ref = resizeHandleRefs.get(colId) || React.createRef<HTMLDivElement>();
+      resizeHandleRefs.set(colId, ref);
+      return ref;
+    },
+    [resizeHandleRefs],
+  );
+
+  // This makes sure the left and right arrow keys are ignored in tabster,
+  // so that they can be used for resizing.
+  const tabsterAttrs = useTabsterAttributes({
+    focusable: {
+      ignoreKeydown: {
+        ArrowLeft: true,
+        ArrowRight: true,
+      },
+    },
+  });
+
   return {
     toggleInteractiveMode,
     columnId,
+    getKeyboardResizingProps: (colId: TableColumnId, currentWidth: number) => ({
+      onKeyDown: keyboardHandler,
+      onBlur: disableInteractiveMode,
+      ref: getKeyboardResizingRef(colId),
+      role: 'separator',
+      'aria-label': 'Resize column',
+      'aria-valuetext': `${currentWidth} pixels`,
+      'aria-hidden': colId === columnId ? false : true,
+      tabIndex: colId === columnId ? 0 : undefined,
+      ...tabsterAttrs,
+    }),
   };
 }

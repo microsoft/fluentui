@@ -2,7 +2,18 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Spinner } from '@fluentui/react-spinner';
 import { tokens } from '@fluentui/react-theme';
-import { TestWrapperDecoratorNoAnimation } from '../utilities/TestWrapperDecorator';
+import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import { StoryWright, Steps } from 'storywright';
+import { makeStyles } from '@griffel/react';
+
+const useStyles = makeStyles({
+  paused: {
+    '& *': {
+      animationPlayState: 'paused !important',
+      animationDelay: '-1s !important',
+    },
+  },
+});
 
 // Inverted Spinners are meant to be used over a dark background
 // or photo. This wrapper ensures a dark background so the Spinners
@@ -12,82 +23,47 @@ const InvertedWrapper: React.FC = ({ children }) => {
 };
 
 storiesOf('Spinner converged', module)
-  .addDecorator(TestWrapperDecoratorNoAnimation)
-  .addStory('Primary', () => <Spinner className="test-class" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Label', () => <Spinner className="test-class" label="Loading" />, {
+  .addDecorator(TestWrapperDecoratorFixedWidth)
+  .addDecorator(story => (
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+  ))
+  .addStory('Primary', () => <Spinner className={useStyles().paused} />, {
     includeHighContrast: true,
     includeDarkMode: true,
   })
   .addStory(
-    'Primary with Label Before',
-    () => <Spinner className="test-class" labelPosition="before" label="Loading" />,
+    'Primary with Label',
+    () => (
+      <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+        <Spinner labelPosition="before" label="Before" />
+        <Spinner labelPosition="after" label="After" />
+        <Spinner labelPosition="above" label="Above" />
+        <Spinner labelPosition="below" label="Below" />
+      </div>
+    ),
     {
       includeHighContrast: true,
       includeDarkMode: true,
       includeRtl: true,
     },
   )
-  .addStory(
-    'Primary with Label After',
-    () => <Spinner className="test-class" labelPosition="after" label="Loading" />,
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-      includeRtl: true,
-    },
-  )
-  .addStory(
-    'Primary with Label Above',
-    () => <Spinner className="test-class" labelPosition="above" label="Loading" />,
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Primary with Label Below',
-    () => <Spinner className="test-class" labelPosition="below" label="Loading" />,
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory('Primary with Size Tiny', () => <Spinner className="test-class" size="tiny" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Size Extra Small', () => <Spinner className="test-class" size="extra-small" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Size Small', () => <Spinner className="test-class" size="small" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Size Medium', () => <Spinner className="test-class" size="medium" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Size Large', () => <Spinner className="test-class" size="large" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Size Extra Large', () => <Spinner className="test-class" size="extra-large" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Primary with Huge', () => <Spinner className="test-class" size="huge" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
+  .addStory('Primary + size', () => (
+    <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+      <Spinner size="extra-tiny" label="Extra Tiny" />
+      <Spinner size="tiny" label="Tiny" />
+      <Spinner size="extra-small" label="Extra Small" />
+      <Spinner size="small" label="Small" />
+      <Spinner size="medium" label="Medium" />
+      <Spinner size="large" label="Large" />
+      <Spinner size="extra-large" label="Extra Large" />
+      <Spinner size="huge" label="Huge" />
+    </div>
+  ))
   .addStory(
     'Inverted',
     () => (
       <InvertedWrapper>
-        <Spinner className="test-class" appearance="inverted" />
+        <Spinner className={useStyles().paused} appearance="inverted" />
       </InvertedWrapper>
     ),
     {
@@ -99,139 +75,12 @@ storiesOf('Spinner converged', module)
     'Inverted with Label',
     () => (
       <InvertedWrapper>
-        <Spinner className="test-class" appearance="inverted" label="Loading" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Label Before',
-    () => (
-      <InvertedWrapper>
-        <Spinner className="test-class" appearance="inverted" labelPosition="before" label="Loading" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Label After',
-    () => (
-      <InvertedWrapper>
-        <Spinner className="test-class" appearance="inverted" labelPosition="after" label="Loading" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Label Above',
-    () => (
-      <InvertedWrapper>
-        <Spinner className="test-class" appearance="inverted" labelPosition="above" label="Loading" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Label Below',
-    () => (
-      <InvertedWrapper>
-        <Spinner className="test-class" appearance="inverted" labelPosition="below" label="Loading" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Primary with Size Tiny',
-    () => (
-      <InvertedWrapper>
-        <Spinner className="test-class" appearance="inverted" size="tiny" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Size Extra Small',
-    () => (
-      <InvertedWrapper>
-        <Spinner className="test-class" appearance="inverted" size="extra-small" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Size Small',
-    () => (
-      <InvertedWrapper>
-        <Spinner className="test-class" appearance="inverted" size="small" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Size Medium',
-    () => (
-      <InvertedWrapper>
-        <Spinner className="test-class" appearance="inverted" size="medium" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Size Large',
-    () => (
-      <InvertedWrapper>
-        <Spinner className="test-class" appearance="inverted" size="large" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Size Extra Large',
-    () => (
-      <InvertedWrapper>
-        <Spinner className="test-class" appearance="inverted" size="extra-large" />
-      </InvertedWrapper>
-    ),
-    {
-      includeHighContrast: true,
-      includeDarkMode: true,
-    },
-  )
-  .addStory(
-    'Inverted with Huge',
-    () => (
-      <InvertedWrapper>
-        <Spinner className="test-class" appearance="inverted" size="huge" />
+        <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+          <Spinner appearance="inverted" labelPosition="before" label="Before" />
+          <Spinner appearance="inverted" labelPosition="after" label="After" />
+          <Spinner appearance="inverted" labelPosition="above" label="Above" />
+          <Spinner appearance="inverted" labelPosition="below" label="Below" />
+        </div>
       </InvertedWrapper>
     ),
     {

@@ -3,7 +3,7 @@ import { render, act, fireEvent } from '@testing-library/react';
 import { ToastContainer } from './ToastContainer';
 import { isConformant } from '../../testing/isConformant';
 import { ToastContainerProps } from './ToastContainer.types';
-import { toastClassNames } from './useToastContainerStyles.styles';
+import { toastContainerClassNames } from './useToastContainerStyles.styles';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 
 const defaultToastContainerProps: ToastContainerProps = {
@@ -107,7 +107,7 @@ describe('ToastContainer', () => {
     const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 1 };
     const { container } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
-    const toastElement = container.querySelector(`.${toastClassNames.root}`);
+    const toastElement = container.querySelector(`.${toastContainerClassNames.root}`);
     expect(toastElement).not.toBeNull();
     act(() => {
       if (toastElement) {
@@ -123,7 +123,7 @@ describe('ToastContainer', () => {
     const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 1, close };
     const { container } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
-    const toastElement = container.querySelector(`.${toastClassNames.root}`);
+    const toastElement = container.querySelector(`.${toastContainerClassNames.root}`);
     expect(toastElement).not.toBeNull();
     act(() => {
       if (toastElement) {
@@ -147,7 +147,7 @@ describe('ToastContainer', () => {
     const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 1, pauseOnHover: true };
     const { container } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
-    const toastElement = container.querySelector(`.${toastClassNames.root}`);
+    const toastElement = container.querySelector(`.${toastContainerClassNames.root}`);
     expect(toastElement).not.toBeNull();
     act(() => {
       if (toastElement) {
@@ -178,7 +178,7 @@ describe('ToastContainer', () => {
     const toastProps: ToastContainerProps = { ...defaultToastContainerProps, timeout: 1, pauseOnWindowBlur: true };
     const { container } = render(<ToastContainer {...toastProps}>ToastContainer</ToastContainer>);
 
-    const toastElement = container.querySelector(`.${toastClassNames.root}`);
+    const toastElement = container.querySelector(`.${toastContainerClassNames.root}`);
     expect(toastElement).not.toBeNull();
     act(() => {
       if (toastElement) {

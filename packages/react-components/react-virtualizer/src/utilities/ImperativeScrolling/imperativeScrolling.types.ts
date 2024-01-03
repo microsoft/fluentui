@@ -22,4 +22,6 @@ export type ScrollToItemDynamicParams = {
 
 export type ScrollToInterface = {
   scrollTo: (index: number, behavior?: ScrollBehavior, callback?: (index: number) => void) => void;
+  virtualizerLength: RefObject<number>;
+  currentIndex: RefObject<number> | undefined;
 };

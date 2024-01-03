@@ -12,6 +12,9 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     ...shorthands.gap('2px'),
   },
+  hasMenuContext: {
+    height: '100%',
+  },
 });
 
 /**
@@ -19,6 +22,11 @@ const useStyles = makeStyles({
  */
 export const useMenuListStyles_unstable = (state: MenuListState): MenuListState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(menuListClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(
+    menuListClassNames.root,
+    styles.root,
+    state.hasMenuContext && styles.hasMenuContext,
+    state.root.className,
+  );
   return state;
 };

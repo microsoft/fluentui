@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles, shorthands } from '@griffel/react';
+import { mergeClasses, makeStyles, makeResetStyles } from '@griffel/react';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
@@ -16,74 +16,106 @@ export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
   secondaryContent: 'fui-MenuItem__secondaryContent',
 };
 
-const useStyles = makeStyles({
-  focusIndicator: createFocusOutlineStyle(),
-  // TODO: this should be extracted to another package
-  root: {
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    position: 'relative',
-    color: tokens.colorNeutralForeground2,
-    backgroundColor: tokens.colorNeutralBackground1,
-    paddingRight: '10px',
-    paddingLeft: '10px',
-    height: '32px',
-    display: 'flex',
-    alignItems: 'center',
-    fontSize: tokens.fontSizeBase300,
-    cursor: 'pointer',
-    ...shorthands.gap('4px'),
+const useRootBaseStyles = makeResetStyles({
+  borderRadius: tokens.borderRadiusMedium,
+  position: 'relative',
+  color: tokens.colorNeutralForeground2,
+  backgroundColor: tokens.colorNeutralBackground1,
+  paddingRight: tokens.spacingVerticalSNudge, // 6px
+  paddingLeft: tokens.spacingVerticalSNudge,
+  paddingTop: tokens.spacingVerticalSNudge,
+  boxSizing: 'border-box',
+  maxWidth: '290px',
+  minHeight: '32px',
+  flexShrink: 0,
+  display: 'flex',
+  alignItems: 'start',
+  fontSize: tokens.fontSizeBase300,
+  cursor: 'pointer',
+  gap: '4px',
 
-    ':hover': {
-      backgroundColor: tokens.colorNeutralBackground1Hover,
-      color: tokens.colorNeutralForeground2Hover,
+  ':hover': {
+    backgroundColor: tokens.colorNeutralBackground1Hover,
+    color: tokens.colorNeutralForeground2Hover,
 
-      [`& .${iconFilledClassName}`]: {
-        display: 'inline',
-      },
-      [`& .${iconRegularClassName}`]: {
-        display: 'none',
-      },
-      [`& .${menuItemClassNames.icon}`]: {
-        color: tokens.colorNeutralForeground2BrandSelected,
-      },
+    [`& .${iconFilledClassName}`]: {
+      display: 'inline',
     },
-
-    userSelect: 'none',
+    [`& .${iconRegularClassName}`]: {
+      display: 'none',
+    },
+    [`& .${menuItemClassNames.icon}`]: {
+      color: tokens.colorNeutralForeground2BrandSelected,
+    },
   },
-  content: {
-    paddingLeft: '2px',
-    paddingRight: '2px',
-    backgroundColor: 'transparent',
+
+  ':hover:active': {
+    backgroundColor: tokens.colorNeutralBackground1Pressed,
+    color: tokens.colorNeutralForeground2Pressed,
+  },
+
+  userSelect: 'none',
+  ...createFocusOutlineStyle(),
+});
+
+const useContentBaseStyles = makeResetStyles({
+  paddingLeft: '2px',
+  paddingRight: '2px',
+  backgroundColor: 'transparent',
+  flexGrow: 1,
+});
+
+const useSecondaryContentBaseStyles = makeResetStyles({
+  paddingLeft: '2px',
+  paddingRight: '2px',
+  color: tokens.colorNeutralForeground3,
+  ':hover': {
+    color: tokens.colorNeutralForeground3Hover,
+  },
+  ':focus': {
+    color: tokens.colorNeutralForeground3Hover,
+  },
+});
+
+const useIconBaseStyles = makeResetStyles({
+  width: '20px',
+  height: '20px',
+  fontSize: '20px',
+  lineHeight: 0,
+  alignItems: 'center',
+  display: 'inline-flex',
+  justifyContent: 'center',
+});
+
+const useSubmenuIndicatorBaseStyles = makeResetStyles({
+  width: '20px',
+  height: '20px',
+  fontSize: '20px',
+  lineHeight: 0,
+  alignItems: 'center',
+  display: 'inline-flex',
+  justifyContent: 'center',
+});
+
+const useStyles = makeStyles({
+  checkmark: {
+    marginTop: '2px',
+  },
+
+  splitItemMain: {
     flexGrow: 1,
   },
-  secondaryContent: {
-    paddingLeft: '2px',
-    paddingRight: '2px',
-    color: tokens.colorNeutralForeground3,
-    ':hover': {
-      color: tokens.colorNeutralForeground3Hover,
+
+  splitItemTrigger: {
+    borderTopLeftRadius: 0,
+    borderBottomLeftRadius: 0,
+    paddingLeft: 0,
+    '::before': {
+      content: '""',
+      width: tokens.strokeWidthThin,
+      height: '24px',
+      backgroundColor: tokens.colorNeutralStroke1,
     },
-    ':focus': {
-      color: tokens.colorNeutralForeground3Hover,
-    },
-  },
-  icon: {
-    width: '20px',
-    height: '20px',
-    fontSize: '20px',
-    lineHeight: 0,
-    alignItems: 'center',
-    display: 'inline-flex',
-    justifyContent: 'center',
-  },
-  submenuIndicator: {
-    width: '20px',
-    height: '20px',
-    fontSize: '20px',
-    lineHeight: 0,
-    alignItems: 'center',
-    display: 'inline-flex',
-    justifyContent: 'center',
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
@@ -124,38 +156,42 @@ const useStyles = makeStyles({
 /** Applies style classnames to slots */
 export const useMenuItemStyles_unstable = (state: MenuItemState) => {
   const styles = useStyles();
+  const rootBaseStyles = useRootBaseStyles();
+  const contentBaseStyles = useContentBaseStyles();
+  const secondaryContentBaseStyles = useSecondaryContentBaseStyles();
+  const iconBaseStyles = useIconBaseStyles();
+  const submenuIndicatorBaseStyles = useSubmenuIndicatorBaseStyles();
   state.root.className = mergeClasses(
     menuItemClassNames.root,
-    styles.root,
-    styles.focusIndicator,
+    rootBaseStyles,
     state.disabled && styles.disabled,
     state.root.className,
   );
 
   if (state.content) {
-    state.content.className = mergeClasses(menuItemClassNames.content, styles.content, state.content.className);
+    state.content.className = mergeClasses(menuItemClassNames.content, contentBaseStyles, state.content.className);
   }
 
   if (state.checkmark) {
-    state.checkmark.className = mergeClasses(menuItemClassNames.checkmark, state.checkmark.className);
+    state.checkmark.className = mergeClasses(menuItemClassNames.checkmark, styles.checkmark, state.checkmark.className);
   }
 
   if (state.secondaryContent) {
     state.secondaryContent.className = mergeClasses(
       menuItemClassNames.secondaryContent,
-      !state.disabled && styles.secondaryContent,
+      !state.disabled && secondaryContentBaseStyles,
       state.secondaryContent.className,
     );
   }
 
   if (state.icon) {
-    state.icon.className = mergeClasses(menuItemClassNames.icon, styles.icon, state.icon.className);
+    state.icon.className = mergeClasses(menuItemClassNames.icon, iconBaseStyles, state.icon.className);
   }
 
   if (state.submenuIndicator) {
     state.submenuIndicator.className = mergeClasses(
       menuItemClassNames.submenuIndicator,
-      styles.submenuIndicator,
+      submenuIndicatorBaseStyles,
       state.submenuIndicator.className,
     );
   }

@@ -3,6 +3,7 @@ import descriptionMd from './VirtualizerScrollViewDescription.md';
 
 export { Default } from './Default.stories';
 export { ScrollTo } from './ScrollTo.stories';
+export { SnapToAlignment } from './SnapToAlignment.stories';
 
 export default {
   title: 'Preview Components/VirtualizerScrollView',

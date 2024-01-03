@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useBreadcrumbButton_unstable } from './useBreadcrumbButton';
 import { renderBreadcrumbButton_unstable } from './renderBreadcrumbButton';
 import { useBreadcrumbButtonStyles_unstable } from './useBreadcrumbButtonStyles.styles';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import type { BreadcrumbButtonProps } from './BreadcrumbButton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
@@ -12,6 +13,8 @@ export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps> = Reac
   const state = useBreadcrumbButton_unstable(props, ref);
 
   useBreadcrumbButtonStyles_unstable(state);
+  useCustomStyleHook_unstable('useBreadcrumbButtonStyles_unstable')(state);
+
   return renderBreadcrumbButton_unstable(state);
 });
 

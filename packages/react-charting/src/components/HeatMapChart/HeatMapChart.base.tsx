@@ -86,11 +86,6 @@ export interface IHeatMapChartState {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
-
-  /**
-   * Check for empty chart accessibility
-   */
-  emptyChart?: boolean;
 }
 const getClassNames = classNamesFunction<IHeatMapChartStyleProps, IHeatMapChartStyles>();
 export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatMapChartState> {
@@ -119,6 +114,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: FlattenData | null;
+  private _emptyChartId: string;
   public constructor(props: IHeatMapChartProps) {
     super(props);
     const { x, y } = this._getXandY();
@@ -151,15 +147,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       ratio: null,
       descriptionMessage: '',
       calloutId: '',
-      emptyChart: false,
     };
-  }
-
-  public componentDidMount(): void {
-    const isChartEmpty: boolean = !(this.props.data && this.props.data.length > 0);
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
+    this._emptyChartId = getId('_HeatMap_empty');
   }
 
   public render(): React.ReactNode {
@@ -199,7 +188,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       }),
       descriptionMessage: this.state.descriptionMessage,
     };
-    return !this.state.emptyChart ? (
+    return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
         points={data}
@@ -230,7 +219,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       />
     ) : (
       <div
-        id={getId('_HeatMap_')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}
@@ -323,7 +312,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
        * data point such as x, y , value, rectText property of the rectangle
        */
       this._dataSet[yAxisDataPoint].forEach((dataPointObject: FlattenData, index2: number) => {
-        const id = `${index1}${index2}`;
+        const id = `x${index1}y${index2}`;
         const rectElement: JSX.Element = (
           <g
             key={id}
@@ -705,4 +694,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       `${xValue}, ${yValue}. ${legend}, ${zValue}.` + (description ? ` ${description}.` : '')
     );
   };
+
+  private _isChartEmpty(): boolean {
+    return !(this.props.data && this.props.data.length > 0);
+  }
 }

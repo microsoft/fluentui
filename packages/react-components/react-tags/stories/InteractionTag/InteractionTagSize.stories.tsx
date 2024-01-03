@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { Avatar, makeStyles } from '@fluentui/react-components';
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+  Avatar,
+  makeStyles,
+} from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
-
-import { InteractionTag } from '@fluentui/react-tags';
 
 const useContainerStyles = makeStyles({
   innerWrapper: {
@@ -20,37 +24,57 @@ export const Size = () => {
   const styles = useContainerStyles();
   return (
     <div className={styles.outerWrapper}>
+      {/* medium */}
       <div className={styles.innerWrapper}>
-        <InteractionTag>Medium</InteractionTag>
-        <InteractionTag dismissible media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>
-          Medium dismissible
+        <InteractionTag>
+          <InteractionTagPrimary>Medium</InteractionTagPrimary>
         </InteractionTag>
-        <InteractionTag icon={<CalendarMonthRegular />} shape="circular">
-          Medium circular
+
+        <InteractionTag>
+          <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
+            Medium dismissible
+          </InteractionTagPrimary>
+          <InteractionTagSecondary aria-label="dismiss" />
+        </InteractionTag>
+
+        <InteractionTag shape="circular">
+          <InteractionTagPrimary icon={<CalendarMonthRegular />}>Medium circular</InteractionTagPrimary>
         </InteractionTag>
       </div>
-      <div className={styles.innerWrapper}>
-        <InteractionTag size="small">Small</InteractionTag>
 
-        <InteractionTag dismissible size="small" media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>
-          Small dismissible
+      {/* small */}
+      <div className={styles.innerWrapper}>
+        <InteractionTag size="small">
+          <InteractionTagPrimary>Small</InteractionTagPrimary>
         </InteractionTag>
-        <InteractionTag size="small" icon={<CalendarMonthRegular />} shape="circular">
-          Small circular
+
+        <InteractionTag size="small">
+          <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
+            Small dismissible
+          </InteractionTagPrimary>
+          <InteractionTagSecondary aria-label="dismiss" />
+        </InteractionTag>
+
+        <InteractionTag size="small" shape="circular">
+          <InteractionTagPrimary icon={<CalendarMonthRegular />}>Small circular</InteractionTagPrimary>
         </InteractionTag>
       </div>
-      <div className={styles.innerWrapper}>
-        <InteractionTag size="extra-small">Extra small</InteractionTag>
 
-        <InteractionTag
-          dismissible
-          size="extra-small"
-          media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}
-        >
-          Extra small dismissible
+      {/* extra-small */}
+      <div className={styles.innerWrapper}>
+        <InteractionTag size="extra-small">
+          <InteractionTagPrimary>Extra small</InteractionTagPrimary>
         </InteractionTag>
-        <InteractionTag size="extra-small" icon={<CalendarMonthRegular />} shape="circular">
-          Extra small circular
+
+        <InteractionTag size="extra-small">
+          <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
+            Extra small dismissible
+          </InteractionTagPrimary>
+          <InteractionTagSecondary aria-label="dismiss" />
+        </InteractionTag>
+
+        <InteractionTag size="extra-small" shape="circular">
+          <InteractionTagPrimary icon={<CalendarMonthRegular />}>Extra small circular</InteractionTagPrimary>
         </InteractionTag>
       </div>
     </div>
@@ -61,7 +85,7 @@ Size.storyName = 'Size';
 Size.parameters = {
   docs: {
     description: {
-      story: 'A InteractionTag supports `medium`, `small` and `extra-small` size. Default size is `medium`.',
+      story: 'An InteractionTag supports `medium`, `small` and `extra-small` size. Default size is `medium`.',
     },
   },
 };

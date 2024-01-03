@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { addMonths, addYears, DatePicker } from '@fluentui/react-datepicker-compat';
+import { addMonths, addYears } from '@fluentui/react-calendar-compat';
+import { DatePicker } from '@fluentui/react-datepicker-compat';
 import { Field, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -13,7 +14,7 @@ const minDate = addMonths(today, -1);
 const maxDate = addYears(today, 1);
 
 const onFormatDate = (date?: Date): string => {
-  return `${date?.getMonth()}/${date?.getDate()}/${date?.getFullYear()}`;
+  return !date ? '' : `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
 };
 
 export const DateBoundaries = () => {

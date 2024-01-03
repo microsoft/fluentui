@@ -1,4 +1,5 @@
 import { DATA_OVERFLOWING, DATA_OVERFLOW_GROUP } from './consts';
+import { observeResize } from './createResizeObserver';
 import { debounce } from './debounce';
 import { createPriorityQueue, PriorityQueue } from './priorityQueue';
 import type {
@@ -14,6 +15,9 @@ import type {
  * @returns overflow manager instance
  */
 export function createOverflowManager(): OverflowManager {
+  // calls to `offsetWidth or offsetHeight` can happen multiple times in an update
+  // Use a cache to avoid causing too many recalcs and avoid scripting time to meausure sizes
+  const sizeCache = new Map<HTMLElement, number>();
   let container: HTMLElement | undefined;
   let overflowMenu: HTMLElement | undefined;
   // Set as true when resize observer is observing
@@ -32,13 +36,7 @@ export function createOverflowManager(): OverflowManager {
 
   const overflowItems: Record<string, OverflowItemEntry> = {};
   const overflowDividers: Record<string, OverflowDividerEntry> = {};
-  const resizeObserver = new ResizeObserver(entries => {
-    if (!entries[0] || !container) {
-      return;
-    }
-
-    update();
-  });
+  let disposeResizeObserver: () => void = () => null;
 
   const getNextItem = (queueToDequeue: PriorityQueue<string>, queueToEnqueue: PriorityQueue<string>) => {
     const nextItem = queueToDequeue.dequeue();
@@ -46,106 +44,62 @@ export function createOverflowManager(): OverflowManager {
     return overflowItems[nextItem];
   };
 
-  const createGroupManager = () => {
-    const groupVisibility: Record<string, OverflowGroupState> = {};
-    const groups: Record<string, { visibleItemIds: Set<string>; invisibleItemIds: Set<string> }> = {};
-    function updateGroupVisibility(groupId: string) {
-      const group = groups[groupId];
-      if (group.invisibleItemIds.size && group.visibleItemIds.size) {
-        groupVisibility[groupId] = 'overflow';
-      } else if (group.visibleItemIds.size === 0) {
-        groupVisibility[groupId] = 'hidden';
-      } else {
-        groupVisibility[groupId] = 'visible';
-      }
-    }
-    function isGroupVisible(groupId: string) {
-      return groupVisibility[groupId] === 'visible' || groupVisibility[groupId] === 'overflow';
-    }
-    return {
-      groupVisibility: () => groupVisibility,
-      isSingleItemVisible(itemId: string, groupId: string) {
-        return (
-          isGroupVisible(groupId) &&
-          groups[groupId].visibleItemIds.has(itemId) &&
-          groups[groupId].visibleItemIds.size === 1
-        );
-      },
-      addItem(itemId: string, groupId: string) {
-        groups[groupId] ??= {
-          visibleItemIds: new Set<string>(),
-          invisibleItemIds: new Set<string>(),
-        };
-
-        groups[groupId].visibleItemIds.add(itemId);
-        updateGroupVisibility(groupId);
-      },
-      removeItem(itemId: string, groupId: string) {
-        groups[groupId].invisibleItemIds.delete(itemId);
-        groups[groupId].visibleItemIds.delete(itemId);
-        updateGroupVisibility(groupId);
-      },
-      showItem(itemId: string, groupId: string) {
-        groups[groupId].invisibleItemIds.delete(itemId);
-        groups[groupId].visibleItemIds.add(itemId);
-        updateGroupVisibility(groupId);
-      },
-      hideItem(itemId: string, groupId: string) {
-        groups[groupId].invisibleItemIds.add(itemId);
-        groups[groupId].visibleItemIds.delete(itemId);
-        updateGroupVisibility(groupId);
-      },
-    };
-  };
-
   const groupManager = createGroupManager();
 
-  const invisibleItemQueue = createPriorityQueue<string>((a, b) => {
-    const itemA = overflowItems[a];
-    const itemB = overflowItems[b];
-    // Higher priority at the top of the queue
-    const priority = itemB.priority - itemA.priority;
-    if (priority !== 0) {
-      return priority;
+  function compareItems(lt: string | null, rt: string | null): number {
+    if (!lt || !rt) {
+      return 0;
+    }
+
+    const lte = overflowItems[lt];
+    const rte = overflowItems[rt];
+
+    if (lte.priority !== rte.priority) {
+      return lte.priority > rte.priority ? 1 : -1;
     }
 
     const positionStatusBit =
       options.overflowDirection === 'end' ? Node.DOCUMENT_POSITION_FOLLOWING : Node.DOCUMENT_POSITION_PRECEDING;
 
-    // equal priority, use DOM order
     // eslint-disable-next-line no-bitwise
-    return itemA.element.compareDocumentPosition(itemB.element) & positionStatusBit ? -1 : 1;
-  });
+    return lte.element.compareDocumentPosition(rte.element) & positionStatusBit ? 1 : -1;
+  }
 
-  const visibleItemQueue = createPriorityQueue<string>((a, b) => {
-    const itemA = overflowItems[a];
-    const itemB = overflowItems[b];
-    // Lower priority at the top of the queue
-    const priority = itemA.priority - itemB.priority;
-
-    if (priority !== 0) {
-      return priority;
+  function getElementAxisSize(
+    horizontal: 'clientWidth' | 'offsetWidth',
+    vertical: 'clientHeight' | 'offsetHeight',
+    el: HTMLElement,
+  ): number {
+    if (!sizeCache.has(el)) {
+      sizeCache.set(el, options.overflowAxis === 'horizontal' ? el[horizontal] : el[vertical]);
     }
 
-    const positionStatusBit =
-      options.overflowDirection === 'end' ? Node.DOCUMENT_POSITION_PRECEDING : Node.DOCUMENT_POSITION_FOLLOWING;
+    return sizeCache.get(el)!;
+  }
 
-    // equal priority, use DOM order
-    // eslint-disable-next-line no-bitwise
-    return itemA.element.compareDocumentPosition(itemB.element) & positionStatusBit ? -1 : 1;
-  });
+  const getOffsetSize = getElementAxisSize.bind(null, 'offsetWidth', 'offsetHeight');
+  const getClientSize = getElementAxisSize.bind(null, 'clientWidth', 'clientHeight');
 
-  const getOffsetSize = (el: HTMLElement) => {
-    return options.overflowAxis === 'horizontal' ? el.offsetWidth : el.offsetHeight;
-  };
+  const invisibleItemQueue = createPriorityQueue<string>((a, b) => -1 * compareItems(a, b));
 
-  function computeSizeChange(entry: OverflowItemEntry) {
-    const dividerWidth =
-      entry.groupId && groupManager.isSingleItemVisible(entry.id, entry.groupId) && overflowDividers[entry.groupId]
-        ? getOffsetSize(overflowDividers[entry.groupId].element)
-        : 0;
+  const visibleItemQueue = createPriorityQueue<string>(compareItems);
 
-    return getOffsetSize(entry.element) + dividerWidth;
+  function occupiedSize(): number {
+    const totalItemSize = visibleItemQueue
+      .all()
+      .map(id => overflowItems[id].element)
+      .map(getOffsetSize)
+      .reduce((prev, current) => prev + current, 0);
+
+    const totalDividerSize = Object.entries(groupManager.groupVisibility()).reduce(
+      (acc, [id, state]) =>
+        acc + (state !== 'hidden' && overflowDividers[id] ? getOffsetSize(overflowDividers[id].element) : 0),
+      0,
+    );
+
+    const overflowMenuSize = invisibleItemQueue.size() > 0 && overflowMenu ? getOffsetSize(overflowMenu) : 0;
+
+    return totalItemSize + totalDividerSize + overflowMenuSize;
   }
 
   const showItem = () => {
@@ -159,13 +113,10 @@ export function createOverflowManager(): OverflowManager {
         overflowDividers[item.groupId]?.element.removeAttribute(DATA_OVERFLOWING);
       }
     }
-
-    return computeSizeChange(item);
   };
 
   const hideItem = () => {
     const item = getNextItem(visibleItemQueue, invisibleItemQueue);
-    const width = computeSizeChange(item);
     options.onUpdateItemVisibility({ item, visible: false });
 
     if (item.groupId) {
@@ -175,8 +126,6 @@ export function createOverflowManager(): OverflowManager {
 
       groupManager.hideItem(item.id, item.groupId);
     }
-
-    return width;
   };
 
   const dispatchOverflowUpdate = () => {
@@ -193,34 +142,33 @@ export function createOverflowManager(): OverflowManager {
     if (!container) {
       return false;
     }
-    const totalDividersWidth = Object.values(overflowDividers)
-      .map(dvdr => (dvdr.groupId ? getOffsetSize(dvdr.element) : 0))
-      .reduce((prev, current) => prev + current, 0);
+    sizeCache.clear();
 
-    function overflowMenuSize() {
-      return invisibleItemQueue.size() > 0 && overflowMenu ? getOffsetSize(overflowMenu) : 0;
-    }
-
-    const availableSize = getOffsetSize(container) - totalDividersWidth - options.padding;
+    const availableSize = getClientSize(container) - options.padding;
 
     // Snapshot of the visible/invisible state to compare for updates
     const visibleTop = visibleItemQueue.peek();
     const invisibleTop = invisibleItemQueue.peek();
 
-    let currentWidth = visibleItemQueue
-      .all()
-      .map(id => overflowItems[id].element)
-      .map(getOffsetSize)
-      .reduce((prev, current) => prev + current, 0);
-
-    // Add items until available width is filled - can result in overflow
-    while (currentWidth + overflowMenuSize() < availableSize && invisibleItemQueue.size() > 0) {
-      currentWidth += showItem();
+    while (compareItems(invisibleItemQueue.peek(), visibleItemQueue.peek()) > 0) {
+      hideItem(); // hide elements whose priority become smaller than the highest priority of the hidden one
     }
 
-    // Remove items until there's no more overflow
-    while (currentWidth + overflowMenuSize() > availableSize && visibleItemQueue.size() > options.minimumVisible) {
-      currentWidth -= hideItem();
+    // Run the show/hide step twice - the first step might not be correct if
+    // it was triggered by a new item being added - new items are always visible by default.
+    for (let i = 0; i < 2; i++) {
+      // Add items until available width is filled - can result in overflow
+      while (
+        (occupiedSize() < availableSize && invisibleItemQueue.size() > 0) ||
+        invisibleItemQueue.size() === 1 // attempt to show the last invisible item hoping it's size does not exceed overflow menu size
+      ) {
+        showItem();
+      }
+
+      // Remove items until there's no more overflow
+      while (occupiedSize() > availableSize && visibleItemQueue.size() > options.minimumVisible) {
+        hideItem();
+      }
     }
 
     // only update when the state of visible/invisible items has changed
@@ -242,12 +190,13 @@ export function createOverflowManager(): OverflowManager {
     Object.values(overflowItems).forEach(item => visibleItemQueue.enqueue(item.id));
 
     container = observedContainer;
-    resizeObserver.observe(container);
-  };
+    disposeResizeObserver = observeResize(container, entries => {
+      if (!entries[0] || !container) {
+        return;
+      }
 
-  const disconnect: OverflowManager['disconnect'] = () => {
-    observing = false;
-    resizeObserver.disconnect();
+      update();
+    });
   };
 
   const addItem: OverflowManager['addItem'] = item => {
@@ -316,8 +265,24 @@ export function createOverflowManager(): OverflowManager {
       item.element.removeAttribute(DATA_OVERFLOW_GROUP);
     }
 
+    sizeCache.delete(item.element);
     delete overflowItems[itemId];
     update();
+  };
+
+  const disconnect: OverflowManager['disconnect'] = () => {
+    disposeResizeObserver();
+
+    // reset flags
+    container = undefined;
+    observing = false;
+    forceDispatch = true;
+
+    // clear all entries
+    Object.keys(overflowItems).forEach(itemId => removeItem(itemId));
+    Object.keys(overflowDividers).forEach(dividerId => removeDivider(dividerId));
+    removeOverflowMenu();
+    sizeCache.clear();
   };
 
   return {
@@ -333,3 +298,55 @@ export function createOverflowManager(): OverflowManager {
     removeDivider,
   };
 }
+
+const createGroupManager = () => {
+  const groupVisibility: Record<string, OverflowGroupState> = {};
+  const groups: Record<string, { visibleItemIds: Set<string>; invisibleItemIds: Set<string> }> = {};
+  function updateGroupVisibility(groupId: string) {
+    const group = groups[groupId];
+    if (group.invisibleItemIds.size && group.visibleItemIds.size) {
+      groupVisibility[groupId] = 'overflow';
+    } else if (group.visibleItemIds.size === 0) {
+      groupVisibility[groupId] = 'hidden';
+    } else {
+      groupVisibility[groupId] = 'visible';
+    }
+  }
+  function isGroupVisible(groupId: string) {
+    return groupVisibility[groupId] === 'visible' || groupVisibility[groupId] === 'overflow';
+  }
+  return {
+    groupVisibility: () => groupVisibility,
+    isSingleItemVisible(itemId: string, groupId: string) {
+      return (
+        isGroupVisible(groupId) &&
+        groups[groupId].visibleItemIds.has(itemId) &&
+        groups[groupId].visibleItemIds.size === 1
+      );
+    },
+    addItem(itemId: string, groupId: string) {
+      groups[groupId] ??= {
+        visibleItemIds: new Set<string>(),
+        invisibleItemIds: new Set<string>(),
+      };
+
+      groups[groupId].visibleItemIds.add(itemId);
+      updateGroupVisibility(groupId);
+    },
+    removeItem(itemId: string, groupId: string) {
+      groups[groupId].invisibleItemIds.delete(itemId);
+      groups[groupId].visibleItemIds.delete(itemId);
+      updateGroupVisibility(groupId);
+    },
+    showItem(itemId: string, groupId: string) {
+      groups[groupId].invisibleItemIds.delete(itemId);
+      groups[groupId].visibleItemIds.add(itemId);
+      updateGroupVisibility(groupId);
+    },
+    hideItem(itemId: string, groupId: string) {
+      groups[groupId].invisibleItemIds.add(itemId);
+      groups[groupId].visibleItemIds.delete(itemId);
+      updateGroupVisibility(groupId);
+    },
+  };
+};

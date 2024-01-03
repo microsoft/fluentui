@@ -97,6 +97,31 @@ storiesOf('Menu Converged - secondary content', module)
     { includeRtl: true },
   );
 
+storiesOf('Menu Converged - long content', module)
+  .addDecorator(story => <StoryWright>{story()}</StoryWright>)
+  .addStory(
+    'default',
+    () => (
+      <Menu open>
+        <MenuTrigger>
+          <button>Toggle menu</button>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItem icon={<CutRegular />}>Cut</MenuItem>
+            <MenuDivider />
+            <MenuItem icon={<ClipboardPasteRegular />} secondaryContent="Ctrl+P">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua. Nisl pretium fusce id velit ut tortor.
+            </MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    ),
+    { includeRtl: true },
+  );
+
 storiesOf('Menu Converged - groups', module)
   .addDecorator(story => <StoryWright>{story()}</StoryWright>)
   .addStory(

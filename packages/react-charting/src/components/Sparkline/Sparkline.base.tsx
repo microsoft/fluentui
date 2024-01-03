@@ -4,7 +4,7 @@ import { area as d3Area, line as d3Line, curveLinear as d3curveLinear } from 'd3
 import { max as d3Max, extent as d3Extent } from 'd3-array';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILineChartDataPoint } from '../../types/IDataPoint';
-import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { ISparklineProps, ISparklineStyleProps, ISparklineStyles } from '../../index';
 
 const getClassNames = classNamesFunction<ISparklineStyleProps, ISparklineStyles>();
@@ -14,7 +14,6 @@ export interface ISparklineState {
   _width: number;
   _height: number;
   _valueTextWidth: number;
-  _emptyChart?: boolean;
 }
 
 export class SparklineBase extends React.Component<ISparklineProps, ISparklineState> {
@@ -32,6 +31,8 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
   private y: any;
   private area: any;
   private line: any;
+  private _emptyChartId: string;
+  private _isRTL: boolean = getRTL();
 
   constructor(props: ISparklineProps) {
     super(props);
@@ -40,20 +41,12 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
       _width: this.props.width! || 80,
       _height: this.props.height! || 20,
       _valueTextWidth: this.props.valueTextWidth! || 80,
-      _emptyChart: false,
     };
+    this._emptyChartId = getId('_SparklineChart_empty');
   }
 
   public componentDidMount() {
-    const isChartEmpty: boolean = !(
-      this.props.data &&
-      this.props.data.lineChartData &&
-      this.props.data.lineChartData.length > 0 &&
-      this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
-    );
-    if (this.state._emptyChart !== isChartEmpty) {
-      this.setState({ _emptyChart: isChartEmpty });
-    } else {
+    if (!this._isChartEmpty()) {
       const area = d3Area()
         /* eslint-disable @typescript-eslint/no-explicit-any */
         .x((d: any) => this.x(d.x))
@@ -107,6 +100,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
           opacity={1}
           fillOpacity={0.2}
           fill={this.props.data!.lineChartData![0].color!}
+          role="img"
           aria-label={`Sparkline with label ${this.props.data!.lineChartData![0].legend!}`}
         />
       </>
@@ -117,7 +111,7 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
     const classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
     });
-    return !this.state._emptyChart ? (
+    return !this._isChartEmpty() ? (
       <FocusZone
         direction={FocusZoneDirection.horizontal}
         isCircularNavigation={true}
@@ -133,7 +127,14 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
           )}
           {this.props.showLegend && this.props.data!.lineChartData![0].legend ? (
             <svg width={this.state._valueTextWidth} height={this.state._height} data-is-focusable={true}>
-              <text x="0%" dx={8} y="100%" dy={-5} className={classNames.valueText}>
+              <text
+                x="0%"
+                textAnchor={this._isRTL ? 'end' : 'start'}
+                dx={8}
+                y="100%"
+                dy={-5}
+                className={classNames.valueText}
+              >
                 {this.props.data!.lineChartData![0].legend!}
               </text>
             </svg>
@@ -144,11 +145,20 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
       </FocusZone>
     ) : (
       <div
-        id={getId('_SparklineChart_')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}
       />
+    );
+  }
+
+  private _isChartEmpty(): boolean {
+    return !(
+      this.props.data &&
+      this.props.data.lineChartData &&
+      this.props.data.lineChartData.length > 0 &&
+      this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
     );
   }
 }

@@ -5,7 +5,14 @@ const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
 export const ChicletPreviewExample: React.FunctionComponent<{}> = () => {
   const Preview: React.FunctionComponent<{}> = props => {
-    return <img src="http://via.placeholder.com/100x100" {...props} />;
+    return (
+      <img
+        src="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svg"
+        {...props}
+        height={100}
+        width={100}
+      />
+    );
   };
 
   return (

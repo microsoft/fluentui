@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { Avatar, makeStyles } from '@fluentui/react-components';
-import { Calendar3Day20Regular } from '@fluentui/react-icons';
-
-import { Tag } from '@fluentui/react-tags';
+import { Tag, Avatar, makeStyles } from '@fluentui/react-components';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 const useContainerStyles = makeStyles({
   root: {
@@ -22,10 +20,21 @@ export const Shape = () => {
         Circular
       </Tag>
 
-      <Tag dismissible icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
+      <Tag
+        dismissible
+        dismissIcon={{ 'aria-label': 'remove' }}
+        icon={<CalendarMonthRegular />}
+        secondaryText="Secondary text"
+      >
         Rounded
       </Tag>
-      <Tag shape="circular" dismissible icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
+      <Tag
+        shape="circular"
+        dismissible
+        dismissIcon={{ 'aria-label': 'remove' }}
+        icon={<CalendarMonthRegular />}
+        secondaryText="Secondary text"
+      >
         Circular
       </Tag>
     </div>

@@ -113,6 +113,7 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
       borderColor: focusBorder,
       outlineColor: white,
       highContrastStyle: rowHighContrastFocus,
+      pointerEvents: 'none',
     }),
     classNames.isSelected,
     {

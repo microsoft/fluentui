@@ -12,7 +12,11 @@ import type { Checkbox } from '@fluentui/react-checkbox';
 import type { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { ContextSelector } from '@fluentui/react-context-selector';
+import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import type { Radio } from '@fluentui/react-radio';
 import * as React_2 from 'react';
 import { ReactNode } from 'react';
@@ -25,11 +29,14 @@ import { TabsterDOMAttribute } from '@fluentui/react-tabster';
 // @public (undocumented)
 export type CellRenderFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>, dataGridContextValue: DataGridContextValue) => React_2.ReactNode;
 
+// @public (undocumented)
+export const ColumnIdContextProvider: React_2.Provider<TableColumnId | undefined>;
+
 // @public
 export function createTableColumn<TItem>(options: CreateTableColumnOptions<TItem>): {
     columnId: TableColumnId;
     renderCell: (item: TItem) => ReactNode;
-    renderHeaderCell: () => ReactNode;
+    renderHeaderCell: (data?: unknown) => ReactNode;
     compare: (a: TItem, b: TItem) => number;
 };
 
@@ -69,8 +76,11 @@ export const DataGridCell: ForwardRefComponent<DataGridCellProps>;
 export const dataGridCellClassNames: SlotClassNames<DataGridCellSlots>;
 
 // @public
+export type DataGridCellFocusMode = 'group' | 'none' | 'cell';
+
+// @public
 export type DataGridCellProps = TableCellProps & {
-    focusMode?: 'group';
+    focusMode?: DataGridCellFocusMode;
 };
 
 // @public (undocumented)
@@ -81,6 +91,9 @@ export type DataGridCellState = TableCellState;
 
 // @public (undocumented)
 export const dataGridClassNames: SlotClassNames<DataGridSlots>;
+
+// @public (undocumented)
+export const DataGridContextProvider: Provider<DataGridContextValue | undefined> & FC<ProviderProps<DataGridContextValue | undefined>>;
 
 // @public (undocumented)
 export type DataGridContextValue = TableFeaturesState<any> & {
@@ -110,7 +123,7 @@ export const DataGridHeaderCell: ForwardRefComponent<DataGridHeaderCellProps>;
 export const dataGridHeaderCellClassNames: SlotClassNames<DataGridHeaderCellSlots>;
 
 // @public
-export type DataGridHeaderCellProps = TableHeaderCellProps;
+export type DataGridHeaderCellProps = Omit<TableHeaderCellProps, 'sortable'>;
 
 // @public (undocumented)
 export type DataGridHeaderCellSlots = TableHeaderCellSlots;
@@ -352,7 +365,7 @@ export interface TableColumnDefinition<TItem> {
     // (undocumented)
     renderCell: (item: TItem) => React_2.ReactNode;
     // (undocumented)
-    renderHeaderCell: () => React_2.ReactNode;
+    renderHeaderCell: (data?: unknown) => React_2.ReactNode;
 }
 
 // @public (undocumented)
@@ -405,6 +418,7 @@ export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots>;
 
 // @public
 export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & {
+    sortable?: boolean;
     sortDirection?: SortDirection;
 };
 
@@ -417,13 +431,16 @@ export type TableHeaderCellSlots = {
 };
 
 // @public
-export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableContextValue, 'noNativeElements' | 'sortable'>;
+export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableContextValue, 'noNativeElements'> & Pick<TableHeaderCellProps, 'sortable'>;
 
 // @public (undocumented)
 export const tableHeaderClassName = "fui-TableHeader";
 
 // @public (undocumented)
 export const tableHeaderClassNames: SlotClassNames<TableHeaderSlots>;
+
+// @public (undocumented)
+export const TableHeaderContextProvider: React_2.Provider<string | undefined>;
 
 // @public
 export type TableHeaderProps = ComponentProps<TableHeaderSlots> & {};
@@ -548,6 +565,9 @@ export interface TableSortState<TItem> {
 // @public
 export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements'> & TableContextValue;
 
+// @public (undocumented)
+export const useColumnIdContext: () => TableColumnId;
+
 // @public
 export const useDataGrid_unstable: (props: DataGridProps, ref: React_2.Ref<HTMLElement>) => DataGridState;
 
@@ -562,6 +582,9 @@ export const useDataGridCell_unstable: (props: DataGridCellProps, ref: React_2.R
 
 // @public
 export const useDataGridCellStyles_unstable: (state: DataGridCellState) => DataGridCellState;
+
+// @public (undocumented)
+export const useDataGridContext_unstable: <T>(selector: ContextSelector<DataGridContextValue, T>) => T;
 
 // @public (undocumented)
 export function useDataGridContextValues_unstable(state: DataGridState): DataGridContextValues;
@@ -592,6 +615,9 @@ export const useDataGridSelectionCellStyles_unstable: (state: DataGridSelectionC
 
 // @public
 export const useDataGridStyles_unstable: (state: DataGridState) => DataGridState;
+
+// @public (undocumented)
+export const useIsInTableHeader: () => boolean;
 
 // @public
 export const useTable_unstable: (props: TableProps, ref: React_2.Ref<HTMLElement>) => TableState;

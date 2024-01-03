@@ -2,6 +2,21 @@
   "name": "@fluentui/common-styles",
   "entries": [
     {
+      "date": "Fri, 14 Jul 2023 07:36:52 GMT",
+      "tag": "@fluentui/common-styles_v1.2.32",
+      "version": "1.2.32",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/common-styles",
+            "commit": "8a9e1018f2abb2c7608c49d32acf44e93c43cba6",
+            "comment": "chore: update devDependencies to use * for inner workspace dependencies"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Jun 2023 07:37:32 GMT",
       "tag": "@fluentui/common-styles_v1.2.32",
       "version": "1.2.32",

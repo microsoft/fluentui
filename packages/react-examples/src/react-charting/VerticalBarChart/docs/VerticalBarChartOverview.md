@@ -1,0 +1,3 @@
+A vertical bar chart displays data as a series of vertical bars, with each bar representing a category and the height of the bar representing the value of that category. It is commonly used to show comparisons between categories of one or more data sets, usually over a period of time. Categories are shown on the horizontal axis, while the data values are shown along the vertical axis. They could present data over time or in relationship to a whole.
+
+Refer to this [Readme](https://github.com/microsoft/fluentui/blob/master/packages/react-charting/README.md) on how to start using the `@fluentui/react-charting` library.

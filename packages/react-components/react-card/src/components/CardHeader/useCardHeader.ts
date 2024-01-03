@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import type { CardHeaderProps, CardHeaderState } from './CardHeader.types';
 import { useCardContext_unstable } from '../Card/CardContext';
 import { cardHeaderClassNames } from './useCardHeaderStyles.styles';
@@ -9,7 +9,7 @@ import { cardHeaderClassNames } from './useCardHeaderStyles.styles';
  *
  * @param header - the header prop of CardHeader
  */
-function getChildWithId(header: CardHeaderProps['header']) {
+function getChildWithId(header: React.ReactNode) {
   function isReactElementWithIdProp(element: React.ReactNode): element is React.ReactElement {
     return React.isValidElement(element) && Boolean(element.props.id);
   }
@@ -62,37 +62,36 @@ export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HT
   const hasChildId = React.useRef(false);
   const generatedId = useId(cardHeaderClassNames.header, referenceId);
 
+  const headerSlot = slot.optional(header, {
+    renderByDefault: true,
+    defaultProps: {
+      ref: headerRef,
+      id: !hasChildId.current ? referenceId : undefined,
+    },
+    elementType: 'div',
+  });
   React.useEffect(() => {
     const headerId = !hasChildId.current ? headerRef.current?.id : undefined;
-    const childWithId = getChildWithId(header);
-
+    const childWithId = getChildWithId(headerSlot?.children);
     hasChildId.current = Boolean(childWithId);
-
     setReferenceId(getReferenceId(headerId, childWithId, generatedId));
-  }, [generatedId, header, setReferenceId]);
-
+  }, [generatedId, header, headerSlot, setReferenceId]);
   return {
-    components: {
-      root: 'div',
-      image: 'div',
-      header: 'div',
-      description: 'div',
-      action: 'div',
-    },
+    components: { root: 'div', image: 'div', header: 'div', description: 'div', action: 'div' },
 
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
-    image: resolveShorthand(image),
-    header: resolveShorthand(header, {
-      required: true,
-      defaultProps: {
-        ref: headerRef,
-        id: !hasChildId.current ? referenceId : undefined,
-      },
-    }),
-    description: resolveShorthand(description),
-    action: resolveShorthand(action),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
+    image: slot.optional(image, { elementType: 'div' }),
+    header: headerSlot,
+    description: slot.optional(description, { elementType: 'div' }),
+    action: slot.optional(action, { elementType: 'div' }),
   };
 };

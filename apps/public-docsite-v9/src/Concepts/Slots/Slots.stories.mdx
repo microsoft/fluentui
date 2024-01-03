@@ -89,7 +89,7 @@ For example, `Accordion` is a hierarchy of `AccordionItem` elements.
 
 ## Usage examples
 
-### Passing content
+### Passing a shorthand value
 
 You can pass a primitive value to slots.
 The `Input` component's `contentBefore` and `contentAfter` slots can be passed strings.
@@ -98,7 +98,8 @@ The `Input` component's `contentBefore` and `contentAfter` slots can be passed s
 <Input contentBefore="$" value="10" contentAfter=".00" />
 ```
 
-You can pass JSX elements to slots. For example, the `Button` component can be passed an `img` or an `CalendarRegular24` icon.
+You can pass JSX elements to slots.
+For example, the `Button` component can be passed an `img` or an `CalendarRegular24` icon.
 
 ```tsx
 <>
@@ -107,7 +108,20 @@ You can pass JSX elements to slots. For example, the `Button` component can be p
 </>
 ```
 
-### Passing props
+Any shorthand value provided to a slot is converted to that slot's children content. In the example above, when the `icon` slot is passed an `img` JSX element, the `img` element is rendered as the `icon` slot's children:
+
+```html
+<!-- button root element -->
+<button class="fui-Button">
+  <!-- icon slot -->
+  <span class="fui-Button__icon">
+    <!-- icon slot children -->
+    <img src="site-icon.png" alt="branded site icon" />
+  </span>
+</button>
+```
+
+### Passing slot properties object
 
 A slot can take in the props of the type it is rendering.
 When a slot renders an element, you can pass any native element props for that element type.
@@ -138,7 +152,18 @@ You can pass the `as` prop to change the element type of a slot.
 Note that you must choose from one of the available element types the slot supports.
 
 ```tsx
-<AccordionHeader as="h1">Accordion Header as h1</AccordionHeader>
+// here we render the AccordionHeader as h1, by default it is a div
+// and internally AccordionHeader has a button slot that is a button by default,
+// but in this case we are changing it to an anchor
+<AccordionHeader as="h1" button={{ as: 'a' }}>
+  Accordion Header as h1
+</AccordionHeader>
+```
+
+```html
+<h1 class="fui-AccordionHeader">
+  <a class="fui-AccordionHeader__button"> Accordion Header as h1 </a>
+</h1>
 ```
 
 ### Replacing the entire slot
@@ -297,7 +322,7 @@ export type InputSlots = {
 };
 ```
 
-### Styling and rendering components with slots
+### Styling components with slots
 
 You can think of each slot as a container for props and style that will be rendered as an element.
 
@@ -333,27 +358,52 @@ const useButtonStyles_unstable = (state: ButtonState)
 Hooks like `useButtonStyles` create classes and conditionally apply them based on the input state. Classes are typically created and applied with `makeStyles` and `mergeClasses`.
 For instance, if a component is disabled then disabled styles are added.
 
+### Declaring components slots in the state
+
+The `Button` component defines its slots `root` and `icon` in the state.
+
+```ts
+const useButton_unstable = (props: ButtonProps, ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>): ButtonState => {
+  return {
+    root: slot.always({ ...props, ref }, { elementType: 'button' }),
+    icon: slot.optional(props.icon, { elementType: 'span' }),
+  };
+};
+```
+
+- `slot.always` creates a slot that will always render, and as such the user may not provide `null` to opt-out of this slot (NonNullable slot).
+- `slot.optional` creates a slot that can be opted out of and is not rendered by default, it only renders if `props.icon` is different from `undefined` (Optional slot).
+
+Both `slot.always` and `slot.optional` methods will create a slot definition that can be consumed by the render method to properly render a slot, these methods ensure the local logic provided by the state hook will remain on the slots internals.
+
+### Rendering components with slots
+
 - `renderButton` takes in `ButtonState` and renders content.
 
 ```tsx
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+
+import { assertSlots } from '@fluentui/react-utilities';
+
 const renderButton_unstable = (state: ButtonState) => {
-  const { slots, slotProps } = getSlots<ButtonSlots>(state);
   const { iconOnly, iconPosition } = state;
 
+  assertSlots<ButtonSlots>(state);
+
   return (
-    <slots.root {...slotProps.root}>
-      {iconPosition !== 'after' && slots.icon && <slots.icon {...slotProps.icon} />}
+    <state.root>
+      {iconPosition !== 'after' && state.icon && <state.icon />}
       {!iconOnly && state.root.children}
-      {iconPosition === 'after' && slots.icon && <slots.icon {...slotProps.icon} />}
-    </slots.root>
+      {iconPosition === 'after' && state.icon && <state.icon />}
+    </state.root>
   );
 };
 ```
 
-The `getSlots` method splits up the state to return the slot elements to render and the props to apply to each slot.
-This makes writing render methods straightforward and mostly boilerplate as most of the work was done in the hooks.
-This also help separate behavior, element structure, and style concerns.
-The component's render method can conditionally render slots.
+The `assertSlots` method ensures the state has the expected slots. It also provides strong typings to ensure slots are renderable, meaning you can simply use `<state.slot />` and all properties provided to a `slot` creation will be already baked into it.
+
+The `createElement` method is a custom JSX pragma ([What is JSX pragma?](https://www.gatsbyjs.com/blog/2019-08-02-what-is-jsx-pragma/)) that allows us to create slots in a JSX environment. It ensures that all race conditions between logic provided in the state hook and the render method are properly handled, and is required for `slot.always`, `slot.optional` and `assertSlots` to work properly.
 
 ## Wrap up
 

@@ -57,6 +57,14 @@ export type VirtualizerConfigState = {
    * Minimum 1px.
    */
   bufferSize: number;
+  /**
+   * Ref for access to internal size knowledge, can be used to measure updates
+   */
+  childSizes: React.MutableRefObject<number[]>;
+  /**
+   * Ref for access to internal progressive size knowledge, can be used to measure updates
+   */
+  childProgressiveSizes: React.MutableRefObject<number[]>;
 };
 
 export type VirtualizerState = ComponentState<VirtualizerSlots> & VirtualizerConfigState;
@@ -69,6 +77,7 @@ export type VirtualizerDataRef = {
   progressiveSizes: RefObject<number[]>;
   nodeSizes: RefObject<number[]>;
   setFlaggedIndex: (index: number | null) => void;
+  currentIndex: RefObject<number>;
 };
 
 export type VirtualizerConfigProps = {

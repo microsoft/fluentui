@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SortDirection } from '../components/Table/Table.types';
+import { SortDirection, TableProps } from '../components/Table/Table.types';
 import { TableHeaderCellProps } from '../components/TableHeaderCell/TableHeaderCell.types';
 import { SelectionMode } from '@fluentui/react-utilities';
 
@@ -22,7 +22,7 @@ export interface CreateTableColumnOptions<TItem> extends Partial<TableColumnDefi
 export interface TableColumnDefinition<TItem> {
   columnId: TableColumnId;
   compare: (a: TItem, b: TItem) => number;
-  renderHeaderCell: () => React.ReactNode;
+  renderHeaderCell: (data?: unknown) => React.ReactNode;
   renderCell: (item: TItem) => React.ReactNode;
 }
 
@@ -120,6 +120,7 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
   getRows: <TRowState extends TableRowData<TItem> = TableRowData<TItem>>(
     rowEnhancer?: RowEnhancer<TItem, TRowState>,
   ) => TRowState[];
+
   /**
    * State and actions to manage row selection
    */
@@ -175,6 +176,7 @@ export interface ColumnWidthState {
   padding: number;
 }
 
+export type ColumnSizingTableProps = Partial<TableProps>;
 export type ColumnSizingTableHeaderCellProps = Pick<TableHeaderCellProps, 'style' | 'aside'>;
 export type ColumnSizingTableCellProps = Pick<TableHeaderCellProps, 'style'>;
 
@@ -184,6 +186,7 @@ export interface TableColumnSizingState {
   getOnMouseDown: (columnId: TableColumnId) => (e: React.MouseEvent | React.TouchEvent) => void;
   setColumnWidth: (columnId: TableColumnId, newSize: number) => void;
   getColumnWidths: () => ColumnWidthState[];
+  getTableProps: (props?: Partial<TableProps>) => ColumnSizingTableProps;
   getTableHeaderCellProps: (columnId: TableColumnId) => ColumnSizingTableHeaderCellProps;
   getTableCellProps: (columnId: TableColumnId) => ColumnSizingTableCellProps;
   enableKeyboardMode: (

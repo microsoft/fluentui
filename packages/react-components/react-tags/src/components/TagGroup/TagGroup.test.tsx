@@ -8,31 +8,36 @@ describe('TagGroup', () => {
   isConformant({
     Component: TagGroup,
     displayName: 'TagGroup',
+    testOptions: {
+      'consistent-callback-args': {
+        ignoreProps: ['onDismiss'], // onDismiss uses generics, this test does not support that
+      },
+    },
   });
 
   it('should invoke onDismiss when clicking on children Tag', () => {
     const onDismiss = jest.fn();
     const { getByRole } = render(
       <TagGroup onDismiss={onDismiss}>
-        <Tag value={'1'} />
+        <Tag value={'1'} dismissible />
       </TagGroup>,
     );
 
     fireEvent.click(getByRole('button'));
 
-    expect(onDismiss).toHaveBeenCalledWith(expect.anything(), { dismissedTagValue: '1' });
+    expect(onDismiss).toHaveBeenCalledWith(expect.anything(), { value: '1' });
   });
 
   it('should invoke onDismiss on children Tag delete keyDown', () => {
     const onDismiss = jest.fn();
     const { getByRole } = render(
       <TagGroup onDismiss={onDismiss}>
-        <Tag value={'1'} />
+        <Tag value={'1'} dismissible />
       </TagGroup>,
     );
 
     fireEvent.keyDown(getByRole('button'), { key: 'Delete' });
 
-    expect(onDismiss).toHaveBeenCalledWith(expect.anything(), { dismissedTagValue: '1' });
+    expect(onDismiss).toHaveBeenCalledWith(expect.anything(), { value: '1' });
   });
 });

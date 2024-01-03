@@ -88,6 +88,13 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
   openOnHover?: boolean;
 
   /**
+   * Flag to close the Popover when an iframe outside a PopoverSurface is focused
+   *
+   * @default true
+   */
+  closeOnIframeFocus?: boolean;
+
+  /**
    * Configures the position of the Popover
    */
   positioning?: PositioningShorthand;

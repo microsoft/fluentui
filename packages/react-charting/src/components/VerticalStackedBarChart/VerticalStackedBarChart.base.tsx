@@ -31,8 +31,8 @@ import {
   XAxisTypes,
   getTypeOfAxis,
   tooltipOfXAxislabels,
+  formatValueWithSIPrefix,
 } from '../../utilities/index';
-import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -62,13 +62,17 @@ enum CircleVisbility {
   hide = 'hidden',
 }
 
+type CalloutAnchorPointData = {
+  xAxisDataPoint: string;
+  chartDataPoint: IVSChartDataPoint;
+};
+
 export interface IVerticalStackedBarChartState extends IBasestate {
   dataPointCalloutProps?: IVSChartDataPoint;
   stackCalloutProps?: IVerticalStackedChartProps;
   activeXAxisDataPoint: number | string;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
-  emptyChart?: boolean;
 }
 export class VerticalStackedBarChartBase extends React.Component<
   IVerticalStackedBarChartProps,
@@ -88,9 +92,10 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _lineObject: LineObject;
   private _tooltipId: string;
   private _yMax: number;
-  private _calloutAnchorPoint: IVSChartDataPoint | null;
+  private _calloutAnchorPoint: CalloutAnchorPointData | null;
   private _domainMargin: number;
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
+  private _emptyChartId: string;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -107,11 +112,6 @@ export class VerticalStackedBarChartBase extends React.Component<
       yCalloutValue: '',
       activeXAxisDataPoint: '',
       calloutLegend: '',
-      emptyChart: !(
-        this.props.data &&
-        this.props.data.length > 0 &&
-        this.props.data.filter(item => item.chartData.length === 0).length === 0
-      ),
     };
     warnDeprecations(COMPONENT_NAME, props, {
       colors: 'IVSChartDataPoint.color',
@@ -120,18 +120,13 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._handleMouseOut = this._handleMouseOut.bind(this);
     this._calloutId = getId('callout');
     this._tooltipId = getId('VSBCTooltipId_');
-    if (
-      this.props.data &&
-      this.props.data.length &&
-      !this.props.data.filter((item: IVerticalStackedChartProps) => item.xAxisPoint === undefined).length
-    ) {
+    if (this._isChartEmpty()) {
       this._adjustProps();
       this._dataset = this._createDataSetLayer();
-    } else {
-      this.state = { ...this.state, emptyChart: true };
     }
     this._createLegendsForLine = memoizeFunction((data: IVerticalStackedChartProps[]) => this._getLineLegends(data));
     this._domainMargin = MIN_DOMAIN_MARGIN;
+    this._emptyChartId = getId('_VSBC_empty');
   }
 
   public componentDidUpdate(prevProps: IVerticalStackedBarChartProps): void {
@@ -146,7 +141,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   }
 
   public render(): React.ReactNode {
-    if (!this.state.emptyChart) {
+    if (!this._isChartEmpty()) {
       this._adjustProps();
       const _isHavingLines = this.props.data.some(
         (item: IVerticalStackedChartProps) => item.lineData && item.lineData.length > 0,
@@ -231,7 +226,12 @@ export class VerticalStackedBarChartBase extends React.Component<
       );
     }
     return (
-      <div id={getId('_VSBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
@@ -598,8 +598,11 @@ export class VerticalStackedBarChartBase extends React.Component<
     color: string,
     refSelected: React.MouseEvent<SVGElement> | SVGGElement,
   ): void {
-    if (this._calloutAnchorPoint !== point) {
-      this._calloutAnchorPoint = point;
+    if (this._calloutAnchorPoint?.chartDataPoint !== point || this._calloutAnchorPoint?.xAxisDataPoint !== xAxisPoint) {
+      this._calloutAnchorPoint = {
+        chartDataPoint: point,
+        xAxisDataPoint: xAxisPoint,
+      };
       this.setState({
         refSelected,
         /**
@@ -787,8 +790,8 @@ export class VerticalStackedBarChartBase extends React.Component<
         };
 
         let barHeight = heightValueScale * point.data;
-        if (barHeight < barMinimumHeight) {
-          barHeight = barMinimumHeight;
+        if (barHeight < Math.max(heightValueScale * Math.ceil(this._yMax / 100.0), barMinimumHeight)) {
+          barHeight = Math.max(heightValueScale * Math.ceil(this._yMax / 100.0), barMinimumHeight);
         }
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
         barTotalValue += point.data;
@@ -815,7 +818,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             />
           );
         }
-        if (barHeight < 1) {
+        if (barHeight < 0) {
           return <React.Fragment key={index + indexNumber}> </React.Fragment>;
         }
         return (
@@ -845,22 +848,37 @@ export class VerticalStackedBarChartBase extends React.Component<
         onClick: this._onClick.bind(this, singleChartData),
         role: 'img',
       };
+      let showLabel = false;
+      let barLabel = 0;
+      if (!this.props.hideLabels) {
+        if (this._noLegendHighlighted()) {
+          showLabel = true;
+          barLabel = barTotalValue;
+        } else {
+          barsToDisplay.forEach(point => {
+            if (this._legendHighlighted(point.legend)) {
+              showLabel = true;
+              barLabel += point.data;
+            }
+          });
+        }
+      }
       return (
         <g key={indexNumber + `${shouldFocusWholeStack}`}>
           <g id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
             {singleBar}
           </g>
-          {!this.props.hideLabels && this._barWidth >= 16 && (
+          {!this.props.hideLabels && this._barWidth >= 16 && showLabel && (
             <text
               x={xPoint + this._barWidth / 2}
               y={yPoint - 6}
               textAnchor="middle"
               className={this._classNames.barLabel}
-              aria-label={`Total: ${barTotalValue}`}
+              aria-label={`Total: ${barLabel}`}
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             >
-              {d3FormatPrefix(barTotalValue < 1000 ? '.2~' : '.1', barTotalValue)(barTotalValue)}
+              {formatValueWithSIPrefix(barLabel)}
             </text>
           )}
         </g>
@@ -1042,4 +1060,12 @@ export class VerticalStackedBarChartBase extends React.Component<
       right: this.margins.right! + this._domainMargin,
     };
   };
+
+  private _isChartEmpty(): boolean {
+    return !(
+      this.props.data &&
+      this.props.data.length > 0 &&
+      this.props.data.filter(item => item.chartData.length === 0).length === 0
+    );
+  }
 }

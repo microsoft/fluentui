@@ -9,7 +9,7 @@ import { ISparklineState, SparklineBase } from './Sparkline.base';
 // Wrapper of the SparklineChart to be tested.
 let wrapper: ReactWrapper<ISparklineProps, ISparklineState, SparklineBase> | undefined;
 
-const sparkline1Points: IChartProps = {
+export const sparkline1Points: IChartProps = {
   chartTitle: '10.21',
   lineChartData: [
     {
@@ -89,7 +89,7 @@ const sparkline2Points: IChartProps = {
   ],
 };
 
-const emptySparklinePoints: IChartProps = {
+export const emptySparklinePoints: IChartProps = {
   chartTitle: 'Empty sparkline chart',
   lineChartData: [
     {

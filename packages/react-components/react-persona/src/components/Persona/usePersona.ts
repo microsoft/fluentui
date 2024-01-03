@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Avatar } from '@fluentui/react-avatar';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { PresenceBadge } from '@fluentui/react-badge';
 import type { PersonaProps, PersonaState } from './Persona.types';
 
@@ -16,25 +16,23 @@ import type { PersonaProps, PersonaState } from './Persona.types';
 export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElement>): PersonaState => {
   const { name, presenceOnly = false, size = 'medium', textAlignment = 'start', textPosition = 'after' } = props;
 
-  const primaryText = resolveShorthand(props.primaryText, {
-    required: true,
+  const primaryText = slot.optional(props.primaryText, {
+    renderByDefault: true,
     defaultProps: {
       children: name,
     },
+    elementType: 'span',
   });
-  const secondaryText = resolveShorthand(props.secondaryText);
-  const tertiaryText = resolveShorthand(props.tertiaryText);
-  const quaternaryText = resolveShorthand(props.quaternaryText);
-
+  const secondaryText = slot.optional(props.secondaryText, { elementType: 'span' });
+  const tertiaryText = slot.optional(props.tertiaryText, { elementType: 'span' });
+  const quaternaryText = slot.optional(props.quaternaryText, { elementType: 'span' });
   const numTextLines = [primaryText, secondaryText, tertiaryText, quaternaryText].filter(Boolean).length;
-
   return {
     numTextLines,
     presenceOnly,
     size,
     textAlignment,
     textPosition,
-
     components: {
       root: 'div',
       avatar: Avatar,
@@ -45,29 +43,37 @@ export const usePersona_unstable = (props: PersonaProps, ref: React.Ref<HTMLElem
       quaternaryText: 'span',
     },
 
-    root: getNativeElementProps(
-      'div',
-      {
-        ...props,
-        ref,
-      },
-      /* excludedPropNames */ ['name'],
+    root: slot.always(
+      getIntrinsicElementProps(
+        'div',
+        {
+          ...props,
+          // FIXME:
+          // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+          // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+          ref: ref as React.Ref<HTMLDivElement>,
+        },
+        /* excludedPropNames */ ['name'],
+      ),
+      { elementType: 'div' },
     ),
     avatar: !presenceOnly
-      ? resolveShorthand(props.avatar, {
-          required: true,
+      ? slot.optional(props.avatar, {
+          renderByDefault: true,
           defaultProps: {
             name,
             badge: props.presence,
             size: avatarSizes[size],
           },
+          elementType: Avatar,
         })
       : undefined,
     presence: presenceOnly
-      ? resolveShorthand(props.presence, {
+      ? slot.optional(props.presence, {
           defaultProps: {
             size: presenceSizes[size],
           },
+          elementType: PresenceBadge,
         })
       : undefined,
     primaryText,

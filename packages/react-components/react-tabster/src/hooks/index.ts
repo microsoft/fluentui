@@ -9,3 +9,5 @@ export * from './useTabsterAttributes';
 export * from './useObservedElement';
 export * from './useMergeTabsterAttributes';
 export * from './useFocusObserved';
+export * from './useRestoreFocus';
+export * from './useUncontrolledFocus';

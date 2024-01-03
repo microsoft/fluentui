@@ -1851,6 +1851,7 @@ exports[`Pivot renders Pivot with overflow 1`] = `
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
+      role="tab"
       type="button"
     >
       <span

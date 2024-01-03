@@ -1,21 +1,19 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
-
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { LabelState, LabelSlots } from './Label.types';
 
 /**
  * Render the final JSX of Label
  */
 export const renderLabel_unstable = (state: LabelState) => {
-  const { slots, slotProps } = getSlotsNext<LabelSlots>(state);
+  assertSlots<LabelSlots>(state);
 
   return (
-    <slots.root {...slotProps.root}>
+    <state.root>
       {state.root.children}
-      {slots.required && <slots.required {...slotProps.required} />}
-    </slots.root>
+      {state.required && <state.required />}
+    </state.root>
   );
 };

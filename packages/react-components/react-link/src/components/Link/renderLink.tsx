@@ -1,16 +1,14 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
-
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { LinkSlots, LinkState } from './Link.types';
 
 /**
  * Renders a Link component by passing the state defined props to the appropriate slots.
  */
 export const renderLink_unstable = (state: LinkState) => {
-  const { slots, slotProps } = getSlotsNext<LinkSlots>(state);
+  assertSlots<LinkSlots>(state);
 
-  return <slots.root {...slotProps.root} />;
+  return <state.root />;
 };

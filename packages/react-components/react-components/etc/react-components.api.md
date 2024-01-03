@@ -44,6 +44,7 @@ import { AccordionToggleData } from '@fluentui/react-accordion';
 import { AccordionToggleEvent } from '@fluentui/react-accordion';
 import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
 import { arrowHeights } from '@fluentui/react-popover';
+import { assertSlots } from '@fluentui/react-utilities';
 import { Avatar } from '@fluentui/react-avatar';
 import { avatarClassNames } from '@fluentui/react-avatar';
 import { AvatarGroup } from '@fluentui/react-avatar';
@@ -85,6 +86,28 @@ import { Body2 } from '@fluentui/react-text';
 import { body2ClassNames } from '@fluentui/react-text';
 import { BorderRadiusTokens } from '@fluentui/react-theme';
 import { BrandVariants } from '@fluentui/react-theme';
+import { Breadcrumb } from '@fluentui/react-breadcrumb';
+import { BreadcrumbButton } from '@fluentui/react-breadcrumb';
+import { breadcrumbButtonClassNames } from '@fluentui/react-breadcrumb';
+import { BreadcrumbButtonProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbButtonSlots } from '@fluentui/react-breadcrumb';
+import { BreadcrumbButtonState } from '@fluentui/react-breadcrumb';
+import { breadcrumbClassNames } from '@fluentui/react-breadcrumb';
+import { BreadcrumbContextValues } from '@fluentui/react-breadcrumb';
+import { BreadcrumbDivider } from '@fluentui/react-breadcrumb';
+import { breadcrumbDividerClassNames } from '@fluentui/react-breadcrumb';
+import { BreadcrumbDividerProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbDividerSlots } from '@fluentui/react-breadcrumb';
+import { BreadcrumbDividerState } from '@fluentui/react-breadcrumb';
+import { BreadcrumbItem } from '@fluentui/react-breadcrumb';
+import { breadcrumbItemClassNames } from '@fluentui/react-breadcrumb';
+import { BreadcrumbItemProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbItemSlots } from '@fluentui/react-breadcrumb';
+import { BreadcrumbItemState } from '@fluentui/react-breadcrumb';
+import { BreadcrumbProps } from '@fluentui/react-breadcrumb';
+import { BreadcrumbProvider } from '@fluentui/react-breadcrumb';
+import { BreadcrumbSlots } from '@fluentui/react-breadcrumb';
+import { BreadcrumbState } from '@fluentui/react-breadcrumb';
 import { Button } from '@fluentui/react-button';
 import { buttonClassNames } from '@fluentui/react-button';
 import { ButtonProps } from '@fluentui/react-button';
@@ -130,6 +153,7 @@ import { CheckboxSlots } from '@fluentui/react-checkbox';
 import { CheckboxState } from '@fluentui/react-checkbox';
 import { ColorPaletteTokens } from '@fluentui/react-theme';
 import { ColorTokens } from '@fluentui/react-theme';
+import { ColumnIdContextProvider } from '@fluentui/react-table';
 import { Combobox } from '@fluentui/react-combobox';
 import { comboboxClassNames } from '@fluentui/react-combobox';
 import { ComboboxContextValue } from '@fluentui/react-combobox';
@@ -151,6 +175,7 @@ import { CounterBadge } from '@fluentui/react-badge';
 import { counterBadgeClassNames } from '@fluentui/react-badge';
 import { CounterBadgeProps } from '@fluentui/react-badge';
 import { CounterBadgeState } from '@fluentui/react-badge';
+import { createCSSRuleFromTheme } from '@fluentui/react-provider';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { CreateCustomFocusIndicatorStyleOptions } from '@fluentui/react-tabster';
 import { createDarkTheme } from '@fluentui/react-theme';
@@ -175,12 +200,15 @@ import { DataGridBodySlots } from '@fluentui/react-table';
 import { DataGridBodyState } from '@fluentui/react-table';
 import { DataGridCell } from '@fluentui/react-table';
 import { dataGridCellClassNames } from '@fluentui/react-table';
+import { DataGridCellFocusMode } from '@fluentui/react-table';
 import { DataGridCellProps } from '@fluentui/react-table';
 import { DataGridCellSlots } from '@fluentui/react-table';
 import { DataGridCellState } from '@fluentui/react-table';
 import { dataGridClassNames } from '@fluentui/react-table';
+import { DataGridContextProvider } from '@fluentui/react-table';
 import { DataGridContextValue } from '@fluentui/react-table';
 import { DataGridContextValues } from '@fluentui/react-table';
+import { DataGridFocusMode } from '@fluentui/react-table';
 import { DataGridHeader } from '@fluentui/react-table';
 import { DataGridHeaderCell } from '@fluentui/react-table';
 import { dataGridHeaderCellClassNames } from '@fluentui/react-table';
@@ -221,6 +249,7 @@ import { dialogContentClassNames } from '@fluentui/react-dialog';
 import { DialogContentProps } from '@fluentui/react-dialog';
 import { DialogContentSlots } from '@fluentui/react-dialog';
 import { DialogContentState } from '@fluentui/react-dialog';
+import { DialogContextValue } from '@fluentui/react-dialog';
 import { DialogOpenChangeData } from '@fluentui/react-dialog';
 import { DialogOpenChangeEvent } from '@fluentui/react-dialog';
 import { DialogProps } from '@fluentui/react-dialog';
@@ -228,6 +257,8 @@ import { DialogSlots } from '@fluentui/react-dialog';
 import { DialogState } from '@fluentui/react-dialog';
 import { DialogSurface } from '@fluentui/react-dialog';
 import { dialogSurfaceClassNames } from '@fluentui/react-dialog';
+import { DialogSurfaceContextValue } from '@fluentui/react-dialog';
+import { DialogSurfaceContextValues } from '@fluentui/react-dialog';
 import { DialogSurfaceProps } from '@fluentui/react-dialog';
 import { DialogSurfaceSlots } from '@fluentui/react-dialog';
 import { DialogSurfaceState } from '@fluentui/react-dialog';
@@ -248,6 +279,35 @@ import { dividerClassNames } from '@fluentui/react-divider';
 import { DividerProps } from '@fluentui/react-divider';
 import { DividerSlots } from '@fluentui/react-divider';
 import { DividerState } from '@fluentui/react-divider';
+import { Drawer } from '@fluentui/react-drawer';
+import { DrawerBody } from '@fluentui/react-drawer';
+import { drawerBodyClassNames } from '@fluentui/react-drawer';
+import { DrawerBodyProps } from '@fluentui/react-drawer';
+import { DrawerBodySlots } from '@fluentui/react-drawer';
+import { DrawerBodyState } from '@fluentui/react-drawer';
+import { DrawerFooter } from '@fluentui/react-drawer';
+import { drawerFooterClassNames } from '@fluentui/react-drawer';
+import { DrawerFooterProps } from '@fluentui/react-drawer';
+import { DrawerFooterSlots } from '@fluentui/react-drawer';
+import { DrawerFooterState } from '@fluentui/react-drawer';
+import { DrawerHeader } from '@fluentui/react-drawer';
+import { drawerHeaderClassNames } from '@fluentui/react-drawer';
+import { DrawerHeaderNavigation } from '@fluentui/react-drawer';
+import { drawerHeaderNavigationClassNames } from '@fluentui/react-drawer';
+import { DrawerHeaderNavigationProps } from '@fluentui/react-drawer';
+import { DrawerHeaderNavigationSlots } from '@fluentui/react-drawer';
+import { DrawerHeaderNavigationState } from '@fluentui/react-drawer';
+import { DrawerHeaderProps } from '@fluentui/react-drawer';
+import { DrawerHeaderSlots } from '@fluentui/react-drawer';
+import { DrawerHeaderState } from '@fluentui/react-drawer';
+import { DrawerHeaderTitle } from '@fluentui/react-drawer';
+import { drawerHeaderTitleClassNames } from '@fluentui/react-drawer';
+import { DrawerHeaderTitleProps } from '@fluentui/react-drawer';
+import { DrawerHeaderTitleSlots } from '@fluentui/react-drawer';
+import { DrawerHeaderTitleState } from '@fluentui/react-drawer';
+import { DrawerProps } from '@fluentui/react-drawer';
+import { DrawerSlots } from '@fluentui/react-drawer';
+import { DrawerState } from '@fluentui/react-drawer';
 import { Dropdown } from '@fluentui/react-combobox';
 import { dropdownClassNames } from '@fluentui/react-combobox';
 import { DropdownContextValues } from '@fluentui/react-combobox';
@@ -267,6 +327,15 @@ import { FieldControlPropsOptions } from '@fluentui/react-field';
 import { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import { FieldState } from '@fluentui/react-field';
+import { flattenTree_unstable } from '@fluentui/react-tree';
+import { FlattenTreeItem } from '@fluentui/react-tree';
+import { FlatTree } from '@fluentui/react-tree';
+import { flatTreeClassNames } from '@fluentui/react-tree';
+import { FlatTreeItem } from '@fluentui/react-tree';
+import { FlatTreeItemProps } from '@fluentui/react-tree';
+import { FlatTreeProps } from '@fluentui/react-tree';
+import { FlatTreeSlots } from '@fluentui/react-tree';
+import { FlatTreeState } from '@fluentui/react-tree';
 import { FluentProvider } from '@fluentui/react-provider';
 import { fluentProviderClassNames } from '@fluentui/react-provider';
 import { FluentProviderContextValues } from '@fluentui/react-provider';
@@ -278,12 +347,17 @@ import { FontFamilyTokens } from '@fluentui/react-theme';
 import { FontSizeTokens } from '@fluentui/react-theme';
 import { FontWeightTokens } from '@fluentui/react-theme';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps } from '@fluentui/react-utilities';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
 import { GriffelRenderer } from '@griffel/react';
 import { GriffelResetStyle } from '@griffel/react';
 import { GriffelStyle } from '@griffel/react';
+import { HeadlessFlatTree } from '@fluentui/react-tree';
+import { HeadlessFlatTreeItem } from '@fluentui/react-tree';
+import { HeadlessFlatTreeItemProps } from '@fluentui/react-tree';
+import { HeadlessFlatTreeOptions } from '@fluentui/react-tree';
 import { HorizontalSpacingTokens } from '@fluentui/react-theme';
 import { IdPrefixProvider } from '@fluentui/react-utilities';
 import { Image as Image_2 } from '@fluentui/react-image';
@@ -291,12 +365,39 @@ import { imageClassNames } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
+import { InfoLabel } from '@fluentui/react-infolabel';
+import { infoLabelClassNames } from '@fluentui/react-infolabel';
+import { InfoLabelProps } from '@fluentui/react-infolabel';
+import { InfoLabelSlots } from '@fluentui/react-infolabel';
+import { InfoLabelState } from '@fluentui/react-infolabel';
+import { InlineDrawer } from '@fluentui/react-drawer';
+import { inlineDrawerClassNames } from '@fluentui/react-drawer';
+import { InlineDrawerProps } from '@fluentui/react-drawer';
+import { InlineDrawerSlots } from '@fluentui/react-drawer';
+import { InlineDrawerState } from '@fluentui/react-drawer';
 import { Input } from '@fluentui/react-input';
 import { inputClassNames } from '@fluentui/react-input';
 import { InputOnChangeData } from '@fluentui/react-input';
 import { InputProps } from '@fluentui/react-input';
 import { InputSlots } from '@fluentui/react-input';
 import { InputState } from '@fluentui/react-input';
+import { InteractionTag } from '@fluentui/react-tags';
+import { interactionTagClassNames } from '@fluentui/react-tags';
+import { InteractionTagPrimary } from '@fluentui/react-tags';
+import { interactionTagPrimaryClassNames } from '@fluentui/react-tags';
+import { InteractionTagPrimaryContextValues } from '@fluentui/react-tags';
+import { InteractionTagPrimaryProps } from '@fluentui/react-tags';
+import { InteractionTagPrimarySlots } from '@fluentui/react-tags';
+import { InteractionTagPrimaryState } from '@fluentui/react-tags';
+import { InteractionTagProps } from '@fluentui/react-tags';
+import { InteractionTagSecondary } from '@fluentui/react-tags';
+import { interactionTagSecondaryClassNames } from '@fluentui/react-tags';
+import { InteractionTagSecondaryProps } from '@fluentui/react-tags';
+import { InteractionTagSecondarySlots } from '@fluentui/react-tags';
+import { InteractionTagSecondaryState } from '@fluentui/react-tags';
+import { InteractionTagSlots } from '@fluentui/react-tags';
+import { InteractionTagState } from '@fluentui/react-tags';
+import { isTruncatableBreadcrumbContent } from '@fluentui/react-breadcrumb';
 import { Label } from '@fluentui/react-label';
 import { labelClassNames } from '@fluentui/react-label';
 import { LabelProps } from '@fluentui/react-label';
@@ -399,8 +500,39 @@ import { MenuTriggerChildProps } from '@fluentui/react-menu';
 import { MenuTriggerContextProvider } from '@fluentui/react-menu';
 import { MenuTriggerProps } from '@fluentui/react-menu';
 import { MenuTriggerState } from '@fluentui/react-menu';
+import { mergeCallbacks } from '@fluentui/react-utilities';
 import { mergeClasses } from '@griffel/react';
+import { MessageBar } from '@fluentui/react-message-bar';
+import { MessageBarActions } from '@fluentui/react-message-bar';
+import { messageBarActionsClassNames } from '@fluentui/react-message-bar';
+import { MessageBarActionsProps } from '@fluentui/react-message-bar';
+import { MessageBarActionsSlots } from '@fluentui/react-message-bar';
+import { MessageBarActionsState } from '@fluentui/react-message-bar';
+import { MessageBarBody } from '@fluentui/react-message-bar';
+import { messageBarBodyClassNames } from '@fluentui/react-message-bar';
+import { MessageBarBodyProps } from '@fluentui/react-message-bar';
+import { MessageBarBodySlots } from '@fluentui/react-message-bar';
+import { MessageBarBodyState } from '@fluentui/react-message-bar';
+import { messageBarClassNames } from '@fluentui/react-message-bar';
+import { MessageBarContextProvider } from '@fluentui/react-message-bar';
+import { MessageBarContextValue } from '@fluentui/react-message-bar';
+import { MessageBarGroup } from '@fluentui/react-message-bar';
+import { messageBarGroupClassNames } from '@fluentui/react-message-bar';
+import { MessageBarGroupProps } from '@fluentui/react-message-bar';
+import { MessageBarGroupSlots } from '@fluentui/react-message-bar';
+import { MessageBarGroupState } from '@fluentui/react-message-bar';
+import { MessageBarIntent } from '@fluentui/react-message-bar';
+import { MessageBarProps } from '@fluentui/react-message-bar';
+import { MessageBarSlots } from '@fluentui/react-message-bar';
+import { MessageBarState } from '@fluentui/react-message-bar';
+import { MessageBarTitle } from '@fluentui/react-message-bar';
+import { messageBarTitleClassNames } from '@fluentui/react-message-bar';
+import { MessageBarTitleProps } from '@fluentui/react-message-bar';
+import { MessageBarTitleSlots } from '@fluentui/react-message-bar';
+import { MessageBarTitleState } from '@fluentui/react-message-bar';
 import { OnOpenChangeData } from '@fluentui/react-popover';
+import { OnSelectionChangeCallback } from '@fluentui/react-utilities';
+import { OnSelectionChangeData } from '@fluentui/react-utilities';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-popover';
 import { Option as Option_2 } from '@fluentui/react-combobox';
@@ -410,6 +542,7 @@ import { optionGroupClassNames } from '@fluentui/react-combobox';
 import { OptionGroupProps } from '@fluentui/react-combobox';
 import { OptionGroupSlots } from '@fluentui/react-combobox';
 import { OptionGroupState } from '@fluentui/react-combobox';
+import { OptionOnSelectData } from '@fluentui/react-combobox';
 import { OptionProps } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import { OptionState } from '@fluentui/react-combobox';
@@ -418,10 +551,18 @@ import { OverflowDivider } from '@fluentui/react-overflow';
 import { OverflowItem } from '@fluentui/react-overflow';
 import { OverflowItemProps } from '@fluentui/react-overflow';
 import { OverflowProps } from '@fluentui/react-overflow';
+import { OverlayDrawer } from '@fluentui/react-drawer';
+import { overlayDrawerClassNames } from '@fluentui/react-drawer';
+import { OverlayDrawerProps } from '@fluentui/react-drawer';
+import { OverlayDrawerSlots } from '@fluentui/react-drawer';
+import { OverlayDrawerState } from '@fluentui/react-drawer';
 import { PartialTheme } from '@fluentui/react-theme';
 import { PartitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { partitionAvatarGroupItems } from '@fluentui/react-avatar';
 import { PartitionAvatarGroupItemsOptions } from '@fluentui/react-avatar';
+import { PartitionBreadcrumbItems } from '@fluentui/react-breadcrumb';
+import { partitionBreadcrumbItems } from '@fluentui/react-breadcrumb';
+import { PartitionBreadcrumbItemsOptions } from '@fluentui/react-breadcrumb';
 import { Persona } from '@fluentui/react-persona';
 import { personaClassNames } from '@fluentui/react-persona';
 import { PersonaProps } from '@fluentui/react-persona';
@@ -451,11 +592,22 @@ import { PositioningProps } from '@fluentui/react-positioning';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
 import { PositioningVirtualElement } from '@fluentui/react-positioning';
+import { presenceAvailableFilled } from '@fluentui/react-badge';
+import { presenceAvailableRegular } from '@fluentui/react-badge';
+import { presenceAwayFilled } from '@fluentui/react-badge';
+import { presenceAwayRegular } from '@fluentui/react-badge';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { presenceBadgeClassNames } from '@fluentui/react-badge';
 import { PresenceBadgeProps } from '@fluentui/react-badge';
 import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
+import { presenceBlockedRegular } from '@fluentui/react-badge';
+import { presenceBusyFilled } from '@fluentui/react-badge';
+import { presenceDndFilled } from '@fluentui/react-badge';
+import { presenceDndRegular } from '@fluentui/react-badge';
+import { presenceOfflineRegular } from '@fluentui/react-badge';
+import { presenceOofRegular } from '@fluentui/react-badge';
+import { presenceUnknownRegular } from '@fluentui/react-badge';
 import { ProgressBar } from '@fluentui/react-progress';
 import { progressBarClassNames } from '@fluentui/react-progress';
 import { ProgressBarProps } from '@fluentui/react-progress';
@@ -486,6 +638,10 @@ import { renderAvatarGroup_unstable } from '@fluentui/react-avatar';
 import { renderAvatarGroupItem_unstable } from '@fluentui/react-avatar';
 import { renderAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
 import { renderBadge_unstable } from '@fluentui/react-badge';
+import { renderBreadcrumb_unstable } from '@fluentui/react-breadcrumb';
+import { renderBreadcrumbButton_unstable } from '@fluentui/react-breadcrumb';
+import { renderBreadcrumbDivider_unstable } from '@fluentui/react-breadcrumb';
+import { renderBreadcrumbItem_unstable } from '@fluentui/react-breadcrumb';
 import { renderButton_unstable } from '@fluentui/react-button';
 import { renderCard_unstable } from '@fluentui/react-card';
 import { renderCardFooter_unstable } from '@fluentui/react-card';
@@ -509,12 +665,24 @@ import { renderDialogSurface_unstable } from '@fluentui/react-dialog';
 import { renderDialogTitle_unstable } from '@fluentui/react-dialog';
 import { renderDialogTrigger_unstable } from '@fluentui/react-dialog';
 import { renderDivider_unstable } from '@fluentui/react-divider';
+import { renderDrawer_unstable } from '@fluentui/react-drawer';
+import { renderDrawerBody_unstable } from '@fluentui/react-drawer';
+import { renderDrawerFooter_unstable } from '@fluentui/react-drawer';
+import { renderDrawerHeader_unstable } from '@fluentui/react-drawer';
+import { renderDrawerHeaderNavigation_unstable } from '@fluentui/react-drawer';
+import { renderDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
 import { renderDropdown_unstable } from '@fluentui/react-combobox';
 import { RendererProvider } from '@griffel/react';
 import { renderField_unstable } from '@fluentui/react-field';
+import { renderFlatTree_unstable } from '@fluentui/react-tree';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
+import { renderInfoLabel_unstable } from '@fluentui/react-infolabel';
+import { renderInlineDrawer_unstable } from '@fluentui/react-drawer';
 import { renderInput_unstable } from '@fluentui/react-input';
+import { renderInteractionTag_unstable } from '@fluentui/react-tags';
+import { renderInteractionTagPrimary_unstable } from '@fluentui/react-tags';
+import { renderInteractionTagSecondary_unstable } from '@fluentui/react-tags';
 import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
 import { renderListbox_unstable } from '@fluentui/react-combobox';
@@ -531,8 +699,14 @@ import { renderMenuList_unstable } from '@fluentui/react-menu';
 import { renderMenuPopover_unstable } from '@fluentui/react-menu';
 import { renderMenuSplitGroup_unstable } from '@fluentui/react-menu';
 import { renderMenuTrigger_unstable } from '@fluentui/react-menu';
+import { renderMessageBar_unstable } from '@fluentui/react-message-bar';
+import { renderMessageBarActions_unstable } from '@fluentui/react-message-bar';
+import { renderMessageBarBody_unstable } from '@fluentui/react-message-bar';
+import { renderMessageBarGroup_unstable } from '@fluentui/react-message-bar';
+import { renderMessageBarTitle_unstable } from '@fluentui/react-message-bar';
 import { renderOption_unstable } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
+import { renderOverlayDrawer_unstable } from '@fluentui/react-drawer';
 import { renderPersona_unstable } from '@fluentui/react-persona';
 import { renderPopover_unstable } from '@fluentui/react-popover';
 import { renderPopoverSurface_unstable } from '@fluentui/react-popover';
@@ -561,6 +735,8 @@ import { renderTableResizeHandle_unstable } from '@fluentui/react-table';
 import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderTabList_unstable } from '@fluentui/react-tabs';
+import { renderTag_unstable } from '@fluentui/react-tags';
+import { renderTagGroup_unstable } from '@fluentui/react-tags';
 import { renderText_unstable } from '@fluentui/react-text';
 import { renderTextarea_unstable } from '@fluentui/react-textarea';
 import { renderToast_unstable } from '@fluentui/react-toast';
@@ -574,13 +750,23 @@ import { renderToolbar_unstable } from '@fluentui/react-toolbar';
 import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
 import { renderTooltip_unstable } from '@fluentui/react-tooltip';
 import { renderToStyleElements } from '@griffel/react';
+import { renderTree_unstable } from '@fluentui/react-tree';
+import { renderTreeItem_unstable } from '@fluentui/react-tree';
+import { renderTreeItemLayout_unstable } from '@fluentui/react-tree';
+import { renderTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import { ResolveShorthandOptions } from '@fluentui/react-utilities';
 import { Select } from '@fluentui/react-select';
 import { SelectableHandler } from '@fluentui/react-menu';
 import { selectClassNames } from '@fluentui/react-select';
+import { SelectionEvents } from '@fluentui/react-combobox';
+import { SelectionHookParams } from '@fluentui/react-utilities';
+import { SelectionItemId } from '@fluentui/react-utilities';
+import { SelectionMethods } from '@fluentui/react-utilities';
+import { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import { SelectOnChangeData } from '@fluentui/react-select';
 import { SelectProps } from '@fluentui/react-select';
 import { SelectSlots } from '@fluentui/react-select';
@@ -611,7 +797,10 @@ import { SliderProps } from '@fluentui/react-slider';
 import { SliderSlots } from '@fluentui/react-slider';
 import { SliderState } from '@fluentui/react-slider';
 import { Slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotComponentType } from '@fluentui/react-utilities';
+import { SlotOptions } from '@fluentui/react-utilities';
 import { SlotPropsRecord } from '@fluentui/react-utilities';
 import { SlotRenderFunction } from '@fluentui/react-utilities';
 import { SortDirection } from '@fluentui/react-table';
@@ -643,6 +832,7 @@ import { Subtitle2 } from '@fluentui/react-text';
 import { subtitle2ClassNames } from '@fluentui/react-text';
 import { Subtitle2Stronger } from '@fluentui/react-text';
 import { subtitle2StrongerClassNames } from '@fluentui/react-text';
+import { SubtreeContextValue } from '@fluentui/react-tree';
 import { Switch } from '@fluentui/react-switch';
 import { switchClassNames } from '@fluentui/react-switch';
 import { SwitchOnChangeData } from '@fluentui/react-switch';
@@ -693,6 +883,7 @@ import { TableHeaderCellSlots } from '@fluentui/react-table';
 import { TableHeaderCellState } from '@fluentui/react-table';
 import { tableHeaderClassName } from '@fluentui/react-table';
 import { tableHeaderClassNames } from '@fluentui/react-table';
+import { TableHeaderContextProvider } from '@fluentui/react-table';
 import { TableHeaderProps } from '@fluentui/react-table';
 import { TableHeaderSlots } from '@fluentui/react-table';
 import { TableHeaderState } from '@fluentui/react-table';
@@ -730,6 +921,23 @@ import { TabRegisterData } from '@fluentui/react-tabs';
 import { TabSlots } from '@fluentui/react-tabs';
 import { TabState } from '@fluentui/react-tabs';
 import { TabValue } from '@fluentui/react-tabs';
+import { Tag } from '@fluentui/react-tags';
+import { TagAppearance } from '@fluentui/react-tags';
+import { tagClassNames } from '@fluentui/react-tags';
+import { TagDismissData } from '@fluentui/react-tags';
+import { TagDismissEvent } from '@fluentui/react-tags';
+import { TagDismissHandler } from '@fluentui/react-tags';
+import { TagGroup } from '@fluentui/react-tags';
+import { tagGroupClassNames } from '@fluentui/react-tags';
+import { TagGroupProps } from '@fluentui/react-tags';
+import { TagGroupSlots } from '@fluentui/react-tags';
+import { TagGroupState } from '@fluentui/react-tags';
+import { TagProps } from '@fluentui/react-tags';
+import { TagShape } from '@fluentui/react-tags';
+import { TagSize } from '@fluentui/react-tags';
+import { TagSlots } from '@fluentui/react-tags';
+import { TagState } from '@fluentui/react-tags';
+import { TagValue } from '@fluentui/react-tags';
 import { teamsDarkTheme } from '@fluentui/react-theme';
 import { teamsHighContrastTheme } from '@fluentui/react-theme';
 import { teamsLightTheme } from '@fluentui/react-theme';
@@ -792,6 +1000,7 @@ import { toggleButtonClassNames } from '@fluentui/react-button';
 import { ToggleButtonProps } from '@fluentui/react-button';
 import { ToggleButtonState } from '@fluentui/react-button';
 import { tokens } from '@fluentui/react-theme';
+import { toMountNodeProps } from '@fluentui/react-portal';
 import { Toolbar } from '@fluentui/react-toolbar';
 import { ToolbarButton } from '@fluentui/react-toolbar';
 import { ToolbarButtonProps } from '@fluentui/react-toolbar';
@@ -824,6 +1033,44 @@ import { TooltipProps } from '@fluentui/react-tooltip';
 import { TooltipSlots } from '@fluentui/react-tooltip';
 import { TooltipState } from '@fluentui/react-tooltip';
 import { TooltipTriggerProps } from '@fluentui/react-tooltip';
+import { Tree } from '@fluentui/react-tree';
+import { TreeCheckedChangeData } from '@fluentui/react-tree';
+import { TreeCheckedChangeEvent } from '@fluentui/react-tree';
+import { treeClassNames } from '@fluentui/react-tree';
+import { TreeContextValue } from '@fluentui/react-tree';
+import { TreeContextValues } from '@fluentui/react-tree';
+import { TreeItem } from '@fluentui/react-tree';
+import { treeItemClassNames } from '@fluentui/react-tree';
+import { TreeItemContextValue } from '@fluentui/react-tree';
+import { TreeItemLayout } from '@fluentui/react-tree';
+import { treeItemLayoutClassNames } from '@fluentui/react-tree';
+import { TreeItemLayoutProps } from '@fluentui/react-tree';
+import { TreeItemLayoutSlots } from '@fluentui/react-tree';
+import { TreeItemLayoutState } from '@fluentui/react-tree';
+import { treeItemLevelToken } from '@fluentui/react-tree';
+import { TreeItemOpenChangeData } from '@fluentui/react-tree';
+import { TreeItemOpenChangeEvent } from '@fluentui/react-tree';
+import { TreeItemPersonaLayout } from '@fluentui/react-tree';
+import { treeItemPersonaLayoutClassNames } from '@fluentui/react-tree';
+import { TreeItemPersonaLayoutProps } from '@fluentui/react-tree';
+import { TreeItemPersonaLayoutSlots } from '@fluentui/react-tree';
+import { TreeItemPersonaLayoutState } from '@fluentui/react-tree';
+import { TreeItemProps } from '@fluentui/react-tree';
+import { TreeItemProvider } from '@fluentui/react-tree';
+import { TreeItemSlots } from '@fluentui/react-tree';
+import { TreeItemState } from '@fluentui/react-tree';
+import { TreeItemValue } from '@fluentui/react-tree';
+import { TreeNavigationData_unstable } from '@fluentui/react-tree';
+import { TreeNavigationEvent_unstable } from '@fluentui/react-tree';
+import { TreeOpenChangeData } from '@fluentui/react-tree';
+import { TreeOpenChangeEvent } from '@fluentui/react-tree';
+import { TreeProps } from '@fluentui/react-tree';
+import { TreeProvider } from '@fluentui/react-tree';
+import { TreeSelectionValue } from '@fluentui/react-tree';
+import { TreeSlots } from '@fluentui/react-tree';
+import { TreeState } from '@fluentui/react-tree';
+import { truncateBreadcrumbLongName } from '@fluentui/react-breadcrumb';
+import { truncateBreadcrumLongTooltip } from '@fluentui/react-breadcrumb';
 import { TypographyStyle } from '@fluentui/react-theme';
 import { TypographyStyles } from '@fluentui/react-theme';
 import { typographyStyles } from '@fluentui/react-theme';
@@ -850,11 +1097,21 @@ import { useAvatarGroupContextValues } from '@fluentui/react-avatar';
 import { useAvatarGroupItem_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupItemStyles_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupPopoverContextValues_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupPopoverStyles_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupStyles_unstable } from '@fluentui/react-avatar';
 import { useAvatarStyles_unstable } from '@fluentui/react-avatar';
 import { useBadge_unstable } from '@fluentui/react-badge';
 import { useBadgeStyles_unstable } from '@fluentui/react-badge';
+import { useBreadcrumb_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbButton_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbButtonStyles_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbContext_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbDivider_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbDividerStyles_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbItem_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbItemStyles_unstable } from '@fluentui/react-breadcrumb';
+import { useBreadcrumbStyles_unstable } from '@fluentui/react-breadcrumb';
 import { useButton_unstable } from '@fluentui/react-button';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
 import { useCard_unstable } from '@fluentui/react-card';
@@ -868,6 +1125,7 @@ import { useCardStyles_unstable } from '@fluentui/react-card';
 import { useCheckbox_unstable } from '@fluentui/react-checkbox';
 import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
+import { useColumnIdContext } from '@fluentui/react-table';
 import { useCombobox_unstable } from '@fluentui/react-combobox';
 import { useComboboxContextValues } from '@fluentui/react-combobox';
 import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
@@ -880,6 +1138,7 @@ import { useDataGridBody_unstable } from '@fluentui/react-table';
 import { useDataGridBodyStyles_unstable } from '@fluentui/react-table';
 import { useDataGridCell_unstable } from '@fluentui/react-table';
 import { useDataGridCellStyles_unstable } from '@fluentui/react-table';
+import { useDataGridContext_unstable } from '@fluentui/react-table';
 import { useDataGridContextValues_unstable } from '@fluentui/react-table';
 import { useDataGridHeader_unstable } from '@fluentui/react-table';
 import { useDataGridHeaderCell_unstable } from '@fluentui/react-table';
@@ -897,34 +1156,68 @@ import { useDialogBody_unstable } from '@fluentui/react-dialog';
 import { useDialogBodyStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogContent_unstable } from '@fluentui/react-dialog';
 import { useDialogContentStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogContext_unstable } from '@fluentui/react-dialog';
 import { useDialogSurface_unstable } from '@fluentui/react-dialog';
+import { useDialogSurfaceContext_unstable } from '@fluentui/react-dialog';
+import { useDialogSurfaceContextValues_unstable } from '@fluentui/react-dialog';
 import { useDialogSurfaceStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogTitle_unstable } from '@fluentui/react-dialog';
 import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogTrigger_unstable } from '@fluentui/react-dialog';
 import { useDivider_unstable } from '@fluentui/react-divider';
 import { useDividerStyles_unstable } from '@fluentui/react-divider';
+import { useDrawer_unstable } from '@fluentui/react-drawer';
+import { useDrawerBody_unstable } from '@fluentui/react-drawer';
+import { useDrawerBodyStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerFooter_unstable } from '@fluentui/react-drawer';
+import { useDrawerFooterStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeader_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeaderNavigation_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeaderNavigationStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeaderStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
+import { useDrawerHeaderTitleStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerStyles_unstable } from '@fluentui/react-drawer';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
+import { useEventCallback } from '@fluentui/react-utilities';
 import { useField_unstable } from '@fluentui/react-field';
 import { useFieldContext_unstable } from '@fluentui/react-field';
 import { useFieldContextValues_unstable } from '@fluentui/react-field';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
+import { useFlatTree_unstable } from '@fluentui/react-tree';
+import { useFlatTreeContextValues_unstable } from '@fluentui/react-tree';
+import { useFlatTreeStyles_unstable } from '@fluentui/react-tree';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFluentProvider_unstable } from '@fluentui/react-provider';
 import { useFluentProviderContextValues_unstable } from '@fluentui/react-provider';
 import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
+import { useFluentProviderThemeStyleTag } from '@fluentui/react-provider';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFocusObserved } from '@fluentui/react-tabster';
+import { useFocusVisible } from '@fluentui/react-tabster';
 import { useFocusWithin } from '@fluentui/react-tabster';
+import { useHeadlessFlatTree_unstable } from '@fluentui/react-tree';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
+import { useInfoLabel_unstable } from '@fluentui/react-infolabel';
+import { useInfoLabelStyles_unstable } from '@fluentui/react-infolabel';
+import { useInlineDrawer_unstable } from '@fluentui/react-drawer';
+import { useInlineDrawerStyles_unstable } from '@fluentui/react-drawer';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
+import { useInteractionTag_unstable } from '@fluentui/react-tags';
+import { useInteractionTagContextValues_unstable } from '@fluentui/react-tags';
+import { useInteractionTagPrimary_unstable } from '@fluentui/react-tags';
+import { useInteractionTagPrimaryStyles_unstable } from '@fluentui/react-tags';
+import { useInteractionTagSecondary_unstable } from '@fluentui/react-tags';
+import { useInteractionTagSecondaryStyles_unstable } from '@fluentui/react-tags';
+import { useInteractionTagStyles_unstable } from '@fluentui/react-tags';
+import { useIsInTableHeader } from '@fluentui/react-table';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
 import { useIsOverflowItemVisible } from '@fluentui/react-overflow';
@@ -970,6 +1263,17 @@ import { useMenuSplitGroupStyles_unstable } from '@fluentui/react-menu';
 import { useMenuTrigger_unstable } from '@fluentui/react-menu';
 import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
+import { useMessageBar_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarActions_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarActionsStyles_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarBody_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarBodyStyles_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarContext } from '@fluentui/react-message-bar';
+import { useMessageBarGroup_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarGroupStyles_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarStyles_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarTitle_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarTitleStyles_unstable } from '@fluentui/react-message-bar';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { UseModalAttributesOptions } from '@fluentui/react-tabster';
 import { useObservedElement } from '@fluentui/react-tabster';
@@ -979,6 +1283,9 @@ import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
 import { useOptionStyles_unstable } from '@fluentui/react-combobox';
 import { useOverflowCount } from '@fluentui/react-overflow';
 import { useOverflowMenu } from '@fluentui/react-overflow';
+import { useOverflowVisibility } from '@fluentui/react-overflow';
+import { useOverlayDrawer_unstable } from '@fluentui/react-drawer';
+import { useOverlayDrawerStyles_unstable } from '@fluentui/react-drawer';
 import { usePersona_unstable } from '@fluentui/react-persona';
 import { usePersonaStyles_unstable } from '@fluentui/react-persona';
 import { usePopover_unstable } from '@fluentui/react-popover';
@@ -999,8 +1306,11 @@ import { useRadioGroupContextValue_unstable } from '@fluentui/react-radio';
 import { useRadioGroupContextValues } from '@fluentui/react-radio';
 import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
 import { useRadioStyles_unstable } from '@fluentui/react-radio';
+import { useRestoreFocusSource } from '@fluentui/react-tabster';
+import { useRestoreFocusTarget } from '@fluentui/react-tabster';
 import { useScrollbarWidth } from '@fluentui/react-utilities';
 import { useSelect_unstable } from '@fluentui/react-select';
+import { useSelection } from '@fluentui/react-utilities';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
 import { useSkeleton_unstable } from '@fluentui/react-skeleton';
 import { useSkeletonContext } from '@fluentui/react-skeleton';
@@ -1016,6 +1326,7 @@ import { useSpinner_unstable } from '@fluentui/react-spinner';
 import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
+import { useSubtreeContext_unstable } from '@fluentui/react-tree';
 import { useSwitch_unstable } from '@fluentui/react-switch';
 import { useSwitchStyles_unstable } from '@fluentui/react-switch';
 import { useTab_unstable } from '@fluentui/react-tabs';
@@ -1052,6 +1363,12 @@ import { useTabListContext_unstable } from '@fluentui/react-tabs';
 import { useTabListContextValues_unstable } from '@fluentui/react-tabs';
 import { useTabListStyles_unstable } from '@fluentui/react-tabs';
 import { useTabStyles_unstable } from '@fluentui/react-tabs';
+import { useTag_unstable } from '@fluentui/react-tags';
+import { useTagAvatarContextValues_unstable } from '@fluentui/react-tags';
+import { useTagGroup_unstable } from '@fluentui/react-tags';
+import { useTagGroupContextValues_unstable } from '@fluentui/react-tags';
+import { useTagGroupStyles_unstable } from '@fluentui/react-tags';
+import { useTagStyles_unstable } from '@fluentui/react-tags';
 import { useText_unstable } from '@fluentui/react-text';
 import { useTextarea_unstable } from '@fluentui/react-textarea';
 import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
@@ -1087,6 +1404,19 @@ import { useToolbarToggleButtonStyles_unstable } from '@fluentui/react-toolbar';
 import { useTooltip_unstable } from '@fluentui/react-tooltip';
 import { useTooltipStyles_unstable } from '@fluentui/react-tooltip';
 import { useTooltipVisibility_unstable as useTooltipVisibility } from '@fluentui/react-shared-contexts';
+import { useTree_unstable } from '@fluentui/react-tree';
+import { useTreeContext_unstable } from '@fluentui/react-tree';
+import { useTreeContextValues_unstable } from '@fluentui/react-tree';
+import { useTreeItem_unstable } from '@fluentui/react-tree';
+import { useTreeItemContext_unstable } from '@fluentui/react-tree';
+import { useTreeItemContextValues_unstable } from '@fluentui/react-tree';
+import { useTreeItemLayout_unstable } from '@fluentui/react-tree';
+import { useTreeItemLayoutStyles_unstable } from '@fluentui/react-tree';
+import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
+import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
+import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
+import { useTreeStyles_unstable } from '@fluentui/react-tree';
+import { useUncontrolledFocus } from '@fluentui/react-tabster';
 import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
@@ -1171,6 +1501,8 @@ export { AccordionToggleEventHandler }
 
 export { arrowHeights }
 
+export { assertSlots }
+
 export { Avatar }
 
 export { avatarClassNames }
@@ -1252,6 +1584,50 @@ export { body2ClassNames }
 export { BorderRadiusTokens }
 
 export { BrandVariants }
+
+export { Breadcrumb }
+
+export { BreadcrumbButton }
+
+export { breadcrumbButtonClassNames }
+
+export { BreadcrumbButtonProps }
+
+export { BreadcrumbButtonSlots }
+
+export { BreadcrumbButtonState }
+
+export { breadcrumbClassNames }
+
+export { BreadcrumbContextValues }
+
+export { BreadcrumbDivider }
+
+export { breadcrumbDividerClassNames }
+
+export { BreadcrumbDividerProps }
+
+export { BreadcrumbDividerSlots }
+
+export { BreadcrumbDividerState }
+
+export { BreadcrumbItem }
+
+export { breadcrumbItemClassNames }
+
+export { BreadcrumbItemProps }
+
+export { BreadcrumbItemSlots }
+
+export { BreadcrumbItemState }
+
+export { BreadcrumbProps }
+
+export { BreadcrumbProvider }
+
+export { BreadcrumbSlots }
+
+export { BreadcrumbState }
 
 export { Button }
 
@@ -1343,6 +1719,8 @@ export { ColorPaletteTokens }
 
 export { ColorTokens }
 
+export { ColumnIdContextProvider }
+
 export { Combobox }
 
 export { comboboxClassNames }
@@ -1384,6 +1762,8 @@ export { counterBadgeClassNames }
 export { CounterBadgeProps }
 
 export { CounterBadgeState }
+
+export { createCSSRuleFromTheme }
 
 export { createCustomFocusIndicatorStyle }
 
@@ -1433,6 +1813,8 @@ export { DataGridCell }
 
 export { dataGridCellClassNames }
 
+export { DataGridCellFocusMode }
+
 export { DataGridCellProps }
 
 export { DataGridCellSlots }
@@ -1441,9 +1823,13 @@ export { DataGridCellState }
 
 export { dataGridClassNames }
 
+export { DataGridContextProvider }
+
 export { DataGridContextValue }
 
 export { DataGridContextValues }
+
+export { DataGridFocusMode }
 
 export { DataGridHeader }
 
@@ -1525,6 +1911,8 @@ export { DialogContentSlots }
 
 export { DialogContentState }
 
+export { DialogContextValue }
+
 export { DialogOpenChangeData }
 
 export { DialogOpenChangeEvent }
@@ -1538,6 +1926,10 @@ export { DialogState }
 export { DialogSurface }
 
 export { dialogSurfaceClassNames }
+
+export { DialogSurfaceContextValue }
+
+export { DialogSurfaceContextValues }
 
 export { DialogSurfaceProps }
 
@@ -1579,6 +1971,64 @@ export { DividerSlots }
 
 export { DividerState }
 
+export { Drawer }
+
+export { DrawerBody }
+
+export { drawerBodyClassNames }
+
+export { DrawerBodyProps }
+
+export { DrawerBodySlots }
+
+export { DrawerBodyState }
+
+export { DrawerFooter }
+
+export { drawerFooterClassNames }
+
+export { DrawerFooterProps }
+
+export { DrawerFooterSlots }
+
+export { DrawerFooterState }
+
+export { DrawerHeader }
+
+export { drawerHeaderClassNames }
+
+export { DrawerHeaderNavigation }
+
+export { drawerHeaderNavigationClassNames }
+
+export { DrawerHeaderNavigationProps }
+
+export { DrawerHeaderNavigationSlots }
+
+export { DrawerHeaderNavigationState }
+
+export { DrawerHeaderProps }
+
+export { DrawerHeaderSlots }
+
+export { DrawerHeaderState }
+
+export { DrawerHeaderTitle }
+
+export { drawerHeaderTitleClassNames }
+
+export { DrawerHeaderTitleProps }
+
+export { DrawerHeaderTitleSlots }
+
+export { DrawerHeaderTitleState }
+
+export { DrawerProps }
+
+export { DrawerSlots }
+
+export { DrawerState }
+
 export { Dropdown }
 
 export { dropdownClassNames }
@@ -1617,6 +2067,24 @@ export { FieldSlots }
 
 export { FieldState }
 
+export { flattenTree_unstable }
+
+export { FlattenTreeItem }
+
+export { FlatTree }
+
+export { flatTreeClassNames }
+
+export { FlatTreeItem }
+
+export { FlatTreeItemProps }
+
+export { FlatTreeProps }
+
+export { FlatTreeSlots }
+
+export { FlatTreeState }
+
 export { FluentProvider }
 
 export { fluentProviderClassNames }
@@ -1639,6 +2107,8 @@ export { FontWeightTokens }
 
 export { ForwardRefComponent }
 
+export { getIntrinsicElementProps }
+
 export { getNativeElementProps }
 
 export { getPartitionedNativeProps }
@@ -1650,6 +2120,14 @@ export { GriffelRenderer }
 export { GriffelResetStyle }
 
 export { GriffelStyle }
+
+export { HeadlessFlatTree }
+
+export { HeadlessFlatTreeItem }
+
+export { HeadlessFlatTreeItemProps }
+
+export { HeadlessFlatTreeOptions }
 
 export { HorizontalSpacingTokens }
 
@@ -1665,6 +2143,26 @@ export { ImageSlots }
 
 export { ImageState }
 
+export { InfoLabel }
+
+export { infoLabelClassNames }
+
+export { InfoLabelProps }
+
+export { InfoLabelSlots }
+
+export { InfoLabelState }
+
+export { InlineDrawer }
+
+export { inlineDrawerClassNames }
+
+export { InlineDrawerProps }
+
+export { InlineDrawerSlots }
+
+export { InlineDrawerState }
+
 export { Input }
 
 export { inputClassNames }
@@ -1676,6 +2174,40 @@ export { InputProps }
 export { InputSlots }
 
 export { InputState }
+
+export { InteractionTag }
+
+export { interactionTagClassNames }
+
+export { InteractionTagPrimary }
+
+export { interactionTagPrimaryClassNames }
+
+export { InteractionTagPrimaryContextValues }
+
+export { InteractionTagPrimaryProps }
+
+export { InteractionTagPrimarySlots }
+
+export { InteractionTagPrimaryState }
+
+export { InteractionTagProps }
+
+export { InteractionTagSecondary }
+
+export { interactionTagSecondaryClassNames }
+
+export { InteractionTagSecondaryProps }
+
+export { InteractionTagSecondarySlots }
+
+export { InteractionTagSecondaryState }
+
+export { InteractionTagSlots }
+
+export { InteractionTagState }
+
+export { isTruncatableBreadcrumbContent }
 
 export { Label }
 
@@ -1881,9 +2413,71 @@ export { MenuTriggerProps }
 
 export { MenuTriggerState }
 
+export { mergeCallbacks }
+
 export { mergeClasses }
 
+export { MessageBar }
+
+export { MessageBarActions }
+
+export { messageBarActionsClassNames }
+
+export { MessageBarActionsProps }
+
+export { MessageBarActionsSlots }
+
+export { MessageBarActionsState }
+
+export { MessageBarBody }
+
+export { messageBarBodyClassNames }
+
+export { MessageBarBodyProps }
+
+export { MessageBarBodySlots }
+
+export { MessageBarBodyState }
+
+export { messageBarClassNames }
+
+export { MessageBarContextProvider }
+
+export { MessageBarContextValue }
+
+export { MessageBarGroup }
+
+export { messageBarGroupClassNames }
+
+export { MessageBarGroupProps }
+
+export { MessageBarGroupSlots }
+
+export { MessageBarGroupState }
+
+export { MessageBarIntent }
+
+export { MessageBarProps }
+
+export { MessageBarSlots }
+
+export { MessageBarState }
+
+export { MessageBarTitle }
+
+export { messageBarTitleClassNames }
+
+export { MessageBarTitleProps }
+
+export { MessageBarTitleSlots }
+
+export { MessageBarTitleState }
+
 export { OnOpenChangeData }
+
+export { OnSelectionChangeCallback }
+
+export { OnSelectionChangeData }
 
 export { OnVisibleChangeData }
 
@@ -1903,6 +2497,8 @@ export { OptionGroupSlots }
 
 export { OptionGroupState }
 
+export { OptionOnSelectData }
+
 export { OptionProps }
 
 export { OptionSlots }
@@ -1919,6 +2515,16 @@ export { OverflowItemProps }
 
 export { OverflowProps }
 
+export { OverlayDrawer }
+
+export { overlayDrawerClassNames }
+
+export { OverlayDrawerProps }
+
+export { OverlayDrawerSlots }
+
+export { OverlayDrawerState }
+
 export { PartialTheme }
 
 export { PartitionAvatarGroupItems }
@@ -1926,6 +2532,12 @@ export { PartitionAvatarGroupItems }
 export { partitionAvatarGroupItems }
 
 export { PartitionAvatarGroupItemsOptions }
+
+export { PartitionBreadcrumbItems }
+
+export { partitionBreadcrumbItems }
+
+export { PartitionBreadcrumbItemsOptions }
 
 export { Persona }
 
@@ -1985,6 +2597,14 @@ export { PositioningShorthandValue }
 
 export { PositioningVirtualElement }
 
+export { presenceAvailableFilled }
+
+export { presenceAvailableRegular }
+
+export { presenceAwayFilled }
+
+export { presenceAwayRegular }
+
 export { PresenceBadge }
 
 export { presenceBadgeClassNames }
@@ -1994,6 +2614,20 @@ export { PresenceBadgeProps }
 export { PresenceBadgeState }
 
 export { PresenceBadgeStatus }
+
+export { presenceBlockedRegular }
+
+export { presenceBusyFilled }
+
+export { presenceDndFilled }
+
+export { presenceDndRegular }
+
+export { presenceOfflineRegular }
+
+export { presenceOofRegular }
+
+export { presenceUnknownRegular }
 
 export { ProgressBar }
 
@@ -2055,6 +2689,14 @@ export { renderAvatarGroupPopover_unstable }
 
 export { renderBadge_unstable }
 
+export { renderBreadcrumb_unstable }
+
+export { renderBreadcrumbButton_unstable }
+
+export { renderBreadcrumbDivider_unstable }
+
+export { renderBreadcrumbItem_unstable }
+
 export { renderButton_unstable }
 
 export { renderCard_unstable }
@@ -2101,17 +2743,41 @@ export { renderDialogTrigger_unstable }
 
 export { renderDivider_unstable }
 
+export { renderDrawer_unstable }
+
+export { renderDrawerBody_unstable }
+
+export { renderDrawerFooter_unstable }
+
+export { renderDrawerHeader_unstable }
+
+export { renderDrawerHeaderNavigation_unstable }
+
+export { renderDrawerHeaderTitle_unstable }
+
 export { renderDropdown_unstable }
 
 export { RendererProvider }
 
 export { renderField_unstable }
 
+export { renderFlatTree_unstable }
+
 export { renderFluentProvider_unstable }
 
 export { renderImage_unstable }
 
+export { renderInfoLabel_unstable }
+
+export { renderInlineDrawer_unstable }
+
 export { renderInput_unstable }
+
+export { renderInteractionTag_unstable }
+
+export { renderInteractionTagPrimary_unstable }
+
+export { renderInteractionTagSecondary_unstable }
 
 export { renderLabel_unstable }
 
@@ -2145,9 +2811,21 @@ export { renderMenuSplitGroup_unstable }
 
 export { renderMenuTrigger_unstable }
 
+export { renderMessageBar_unstable }
+
+export { renderMessageBarActions_unstable }
+
+export { renderMessageBarBody_unstable }
+
+export { renderMessageBarGroup_unstable }
+
+export { renderMessageBarTitle_unstable }
+
 export { renderOption_unstable }
 
 export { renderOptionGroup_unstable }
+
+export { renderOverlayDrawer_unstable }
 
 export { renderPersona_unstable }
 
@@ -2205,6 +2883,10 @@ export { renderTableSelectionCell_unstable }
 
 export { renderTabList_unstable }
 
+export { renderTag_unstable }
+
+export { renderTagGroup_unstable }
+
 export { renderText_unstable }
 
 export { renderTextarea_unstable }
@@ -2231,7 +2913,17 @@ export { renderTooltip_unstable }
 
 export { renderToStyleElements }
 
+export { renderTree_unstable }
+
+export { renderTreeItem_unstable }
+
+export { renderTreeItemLayout_unstable }
+
+export { renderTreeItemPersonaLayout_unstable }
+
 export { resetIdsForTests }
+
+export { resolvePositioningShorthand }
 
 export { resolveShorthand }
 
@@ -2244,6 +2936,16 @@ export { Select }
 export { SelectableHandler }
 
 export { selectClassNames }
+
+export { SelectionEvents }
+
+export { SelectionHookParams }
+
+export { SelectionItemId }
+
+export { SelectionMethods }
+
+export { SelectionMode_2 as SelectionMode }
 
 export { SelectOnChangeData }
 
@@ -2305,7 +3007,13 @@ export { SliderState }
 
 export { Slot }
 
+export { slot }
+
 export { SlotClassNames }
+
+export { SlotComponentType }
+
+export { SlotOptions }
 
 export { SlotPropsRecord }
 
@@ -2368,6 +3076,8 @@ export { subtitle2ClassNames }
 export { Subtitle2Stronger }
 
 export { subtitle2StrongerClassNames }
+
+export { SubtreeContextValue }
 
 export { Switch }
 
@@ -2469,6 +3179,8 @@ export { tableHeaderClassName }
 
 export { tableHeaderClassNames }
 
+export { TableHeaderContextProvider }
+
 export { TableHeaderProps }
 
 export { TableHeaderSlots }
@@ -2542,6 +3254,40 @@ export { TabSlots }
 export { TabState }
 
 export { TabValue }
+
+export { Tag }
+
+export { TagAppearance }
+
+export { tagClassNames }
+
+export { TagDismissData }
+
+export { TagDismissEvent }
+
+export { TagDismissHandler }
+
+export { TagGroup }
+
+export { tagGroupClassNames }
+
+export { TagGroupProps }
+
+export { TagGroupSlots }
+
+export { TagGroupState }
+
+export { TagProps }
+
+export { TagShape }
+
+export { TagSize }
+
+export { TagSlots }
+
+export { TagState }
+
+export { TagValue }
 
 export { teamsDarkTheme }
 
@@ -2667,6 +3413,8 @@ export { ToggleButtonState }
 
 export { tokens }
 
+export { toMountNodeProps }
+
 export { Toolbar }
 
 export { ToolbarButton }
@@ -2731,6 +3479,82 @@ export { TooltipState }
 
 export { TooltipTriggerProps }
 
+export { Tree }
+
+export { TreeCheckedChangeData }
+
+export { TreeCheckedChangeEvent }
+
+export { treeClassNames }
+
+export { TreeContextValue }
+
+export { TreeContextValues }
+
+export { TreeItem }
+
+export { treeItemClassNames }
+
+export { TreeItemContextValue }
+
+export { TreeItemLayout }
+
+export { treeItemLayoutClassNames }
+
+export { TreeItemLayoutProps }
+
+export { TreeItemLayoutSlots }
+
+export { TreeItemLayoutState }
+
+export { treeItemLevelToken }
+
+export { TreeItemOpenChangeData }
+
+export { TreeItemOpenChangeEvent }
+
+export { TreeItemPersonaLayout }
+
+export { treeItemPersonaLayoutClassNames }
+
+export { TreeItemPersonaLayoutProps }
+
+export { TreeItemPersonaLayoutSlots }
+
+export { TreeItemPersonaLayoutState }
+
+export { TreeItemProps }
+
+export { TreeItemProvider }
+
+export { TreeItemSlots }
+
+export { TreeItemState }
+
+export { TreeItemValue }
+
+export { TreeNavigationData_unstable }
+
+export { TreeNavigationEvent_unstable }
+
+export { TreeOpenChangeData }
+
+export { TreeOpenChangeEvent }
+
+export { TreeProps }
+
+export { TreeProvider }
+
+export { TreeSelectionValue }
+
+export { TreeSlots }
+
+export { TreeState }
+
+export { truncateBreadcrumbLongName }
+
+export { truncateBreadcrumLongTooltip }
+
 export { TypographyStyle }
 
 export { TypographyStyles }
@@ -2783,6 +3607,8 @@ export { useAvatarGroupItemStyles_unstable }
 
 export { useAvatarGroupPopover_unstable }
 
+export { useAvatarGroupPopoverContextValues_unstable }
+
 export { useAvatarGroupPopoverStyles_unstable }
 
 export { useAvatarGroupStyles_unstable }
@@ -2792,6 +3618,24 @@ export { useAvatarStyles_unstable }
 export { useBadge_unstable }
 
 export { useBadgeStyles_unstable }
+
+export { useBreadcrumb_unstable }
+
+export { useBreadcrumbButton_unstable }
+
+export { useBreadcrumbButtonStyles_unstable }
+
+export { useBreadcrumbContext_unstable }
+
+export { useBreadcrumbDivider_unstable }
+
+export { useBreadcrumbDividerStyles_unstable }
+
+export { useBreadcrumbItem_unstable }
+
+export { useBreadcrumbItemStyles_unstable }
+
+export { useBreadcrumbStyles_unstable }
 
 export { useButton_unstable }
 
@@ -2819,6 +3663,8 @@ export { useCheckboxStyles_unstable }
 
 export { useCheckmarkStyles_unstable }
 
+export { useColumnIdContext }
+
 export { useCombobox_unstable }
 
 export { useComboboxContextValues }
@@ -2842,6 +3688,8 @@ export { useDataGridBodyStyles_unstable }
 export { useDataGridCell_unstable }
 
 export { useDataGridCellStyles_unstable }
+
+export { useDataGridContext_unstable }
 
 export { useDataGridContextValues_unstable }
 
@@ -2877,7 +3725,13 @@ export { useDialogContent_unstable }
 
 export { useDialogContentStyles_unstable }
 
+export { useDialogContext_unstable }
+
 export { useDialogSurface_unstable }
+
+export { useDialogSurfaceContext_unstable }
+
+export { useDialogSurfaceContextValues_unstable }
 
 export { useDialogSurfaceStyles_unstable }
 
@@ -2891,9 +3745,35 @@ export { useDivider_unstable }
 
 export { useDividerStyles_unstable }
 
+export { useDrawer_unstable }
+
+export { useDrawerBody_unstable }
+
+export { useDrawerBodyStyles_unstable }
+
+export { useDrawerFooter_unstable }
+
+export { useDrawerFooterStyles_unstable }
+
+export { useDrawerHeader_unstable }
+
+export { useDrawerHeaderNavigation_unstable }
+
+export { useDrawerHeaderNavigationStyles_unstable }
+
+export { useDrawerHeaderStyles_unstable }
+
+export { useDrawerHeaderTitle_unstable }
+
+export { useDrawerHeaderTitleStyles_unstable }
+
+export { useDrawerStyles_unstable }
+
 export { useDropdown_unstable }
 
 export { useDropdownStyles_unstable }
+
+export { useEventCallback }
 
 export { useField_unstable }
 
@@ -2905,6 +3785,12 @@ export { useFieldControlProps_unstable }
 
 export { useFieldStyles_unstable }
 
+export { useFlatTree_unstable }
+
+export { useFlatTreeContextValues_unstable }
+
+export { useFlatTreeStyles_unstable }
+
 export { useFluent }
 
 export { useFluentProvider_unstable }
@@ -2912,6 +3798,8 @@ export { useFluentProvider_unstable }
 export { useFluentProviderContextValues_unstable }
 
 export { useFluentProviderStyles_unstable }
+
+export { useFluentProviderThemeStyleTag }
 
 export { useFocusableGroup }
 
@@ -2921,7 +3809,11 @@ export { useFocusFinders }
 
 export { useFocusObserved }
 
+export { useFocusVisible }
+
 export { useFocusWithin }
+
+export { useHeadlessFlatTree_unstable }
 
 export { useId }
 
@@ -2929,9 +3821,33 @@ export { useImage_unstable }
 
 export { useImageStyles_unstable }
 
+export { useInfoLabel_unstable }
+
+export { useInfoLabelStyles_unstable }
+
+export { useInlineDrawer_unstable }
+
+export { useInlineDrawerStyles_unstable }
+
 export { useInput_unstable }
 
 export { useInputStyles_unstable }
+
+export { useInteractionTag_unstable }
+
+export { useInteractionTagContextValues_unstable }
+
+export { useInteractionTagPrimary_unstable }
+
+export { useInteractionTagPrimaryStyles_unstable }
+
+export { useInteractionTagSecondary_unstable }
+
+export { useInteractionTagSecondaryStyles_unstable }
+
+export { useInteractionTagStyles_unstable }
+
+export { useIsInTableHeader }
 
 export { useIsomorphicLayoutEffect }
 
@@ -3023,6 +3939,28 @@ export { useMenuTriggerContext_unstable }
 
 export { useMergedRefs }
 
+export { useMessageBar_unstable }
+
+export { useMessageBarActions_unstable }
+
+export { useMessageBarActionsStyles_unstable }
+
+export { useMessageBarBody_unstable }
+
+export { useMessageBarBodyStyles_unstable }
+
+export { useMessageBarContext }
+
+export { useMessageBarGroup_unstable }
+
+export { useMessageBarGroupStyles_unstable }
+
+export { useMessageBarStyles_unstable }
+
+export { useMessageBarTitle_unstable }
+
+export { useMessageBarTitleStyles_unstable }
+
 export { useModalAttributes }
 
 export { UseModalAttributesOptions }
@@ -3040,6 +3978,12 @@ export { useOptionStyles_unstable }
 export { useOverflowCount }
 
 export { useOverflowMenu }
+
+export { useOverflowVisibility }
+
+export { useOverlayDrawer_unstable }
+
+export { useOverlayDrawerStyles_unstable }
 
 export { usePersona_unstable }
 
@@ -3081,9 +4025,15 @@ export { useRadioGroupStyles_unstable }
 
 export { useRadioStyles_unstable }
 
+export { useRestoreFocusSource }
+
+export { useRestoreFocusTarget }
+
 export { useScrollbarWidth }
 
 export { useSelect_unstable }
+
+export { useSelection }
 
 export { useSelectStyles_unstable }
 
@@ -3114,6 +4064,8 @@ export { useSpinnerStyles_unstable }
 export { useSplitButton_unstable }
 
 export { useSplitButtonStyles_unstable }
+
+export { useSubtreeContext_unstable }
 
 export { useSwitch_unstable }
 
@@ -3187,6 +4139,18 @@ export { useTabListStyles_unstable }
 
 export { useTabStyles_unstable }
 
+export { useTag_unstable }
+
+export { useTagAvatarContextValues_unstable }
+
+export { useTagGroup_unstable }
+
+export { useTagGroupContextValues_unstable }
+
+export { useTagGroupStyles_unstable }
+
+export { useTagStyles_unstable }
+
 export { useText_unstable }
 
 export { useTextarea_unstable }
@@ -3256,6 +4220,32 @@ export { useTooltip_unstable }
 export { useTooltipStyles_unstable }
 
 export { useTooltipVisibility }
+
+export { useTree_unstable }
+
+export { useTreeContext_unstable }
+
+export { useTreeContextValues_unstable }
+
+export { useTreeItem_unstable }
+
+export { useTreeItemContext_unstable }
+
+export { useTreeItemContextValues_unstable }
+
+export { useTreeItemLayout_unstable }
+
+export { useTreeItemLayoutStyles_unstable }
+
+export { useTreeItemPersonaLayout_unstable }
+
+export { useTreeItemPersonaLayoutStyles_unstable }
+
+export { useTreeItemStyles_unstable }
+
+export { useTreeStyles_unstable }
+
+export { useUncontrolledFocus }
 
 export { VerticalSpacingTokens }
 

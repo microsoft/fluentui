@@ -22,20 +22,76 @@ export const InteractionTag: ForwardRefComponent<InteractionTagProps>;
 export const interactionTagClassNames: SlotClassNames<InteractionTagSlots>;
 
 // @public
-export type InteractionTagProps = ComponentProps<Partial<InteractionTagSlots>> & Omit<TagProps, 'root' | 'dismissIcon'>;
+export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryProps>;
 
 // @public (undocumented)
-export type InteractionTagSlots = Omit<TagSlots, 'root' | 'dismissIcon'> & {
-    root: NonNullable<Slot<'div'>>;
-    dismissButton?: Slot<'button'>;
-    content: NonNullable<Slot<'button'>>;
+export const interactionTagPrimaryClassNames: SlotClassNames<InteractionTagPrimarySlots>;
+
+// @public (undocumented)
+export type InteractionTagPrimaryContextValues = TagAvatarContextValues;
+
+// @public
+export type InteractionTagPrimaryProps = ComponentProps<Partial<InteractionTagPrimarySlots>> & {
+    hasSecondaryAction?: boolean;
+};
+
+// @public (undocumented)
+export type InteractionTagPrimarySlots = {
+    root: NonNullable<Slot<'button'>>;
+    media?: Slot<'span'>;
+    icon?: Slot<'span'>;
+    primaryText: Slot<'span'>;
+    secondaryText?: Slot<'span'>;
 };
 
 // @public
-export type InteractionTagState = ComponentState<InteractionTagSlots> & Omit<TagState, 'components' | 'root' | 'dismissIcon'>;
+export type InteractionTagPrimaryState = ComponentState<InteractionTagPrimarySlots> & Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'shape' | 'size'> & Pick<InteractionTagPrimaryProps, 'hasSecondaryAction'>> & UseTagAvatarContextValuesOptions;
+
+// @public
+export type InteractionTagProps<Value = TagValue> = ComponentProps<Partial<InteractionTagSlots>> & {
+    appearance?: TagAppearance;
+    disabled?: boolean;
+    shape?: TagShape;
+    size?: TagSize;
+    value?: Value;
+};
+
+// @public
+export const InteractionTagSecondary: ForwardRefComponent<InteractionTagSecondaryProps>;
+
+// @public (undocumented)
+export const interactionTagSecondaryClassNames: SlotClassNames<InteractionTagSecondarySlots>;
+
+// @public
+export type InteractionTagSecondaryProps = ComponentProps<InteractionTagSecondarySlots>;
+
+// @public (undocumented)
+export type InteractionTagSecondarySlots = {
+    root: NonNullable<Slot<'button'>>;
+};
+
+// @public
+export type InteractionTagSecondaryState = ComponentState<InteractionTagSecondarySlots> & Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'shape' | 'size'>>;
+
+// @public (undocumented)
+export type InteractionTagSlots = {
+    root: NonNullable<Slot<'div'>>;
+};
+
+// @public
+export type InteractionTagState<Value = TagValue> = ComponentState<InteractionTagSlots> & Required<Pick<InteractionTagProps, 'appearance' | 'disabled' | 'shape' | 'size' | 'value'>> & {
+    handleTagDismiss: TagDismissHandler<Value>;
+    interactionTagPrimaryId: string;
+};
 
 // @public
 export const renderInteractionTag_unstable: (state: InteractionTagState, contextValues: InteractionTagContextValues) => JSX.Element;
+
+// @public
+export const renderInteractionTagPrimary_unstable: (state: InteractionTagPrimaryState, contextValues: InteractionTagPrimaryContextValues) => JSX.Element;
+
+// @public
+export const renderInteractionTagSecondary_unstable: (state: InteractionTagSecondaryState) => JSX.Element;
 
 // @public
 export const renderTag_unstable: (state: TagState, contextValues: TagContextValues) => JSX.Element;
@@ -47,7 +103,21 @@ export const renderTagGroup_unstable: (state: TagGroupState, contextValue: TagGr
 export const Tag: ForwardRefComponent<TagProps>;
 
 // @public (undocumented)
+export type TagAppearance = 'filled' | 'outline' | 'brand';
+
+// @public (undocumented)
 export const tagClassNames: SlotClassNames<TagSlots>;
+
+// @public (undocumented)
+export type TagDismissData<Value = TagValue> = {
+    value: Value;
+};
+
+// @public (undocumented)
+export type TagDismissEvent = React_2.MouseEvent | React_2.KeyboardEvent;
+
+// @public (undocumented)
+export type TagDismissHandler<Value = TagValue> = (e: TagDismissEvent, data: TagDismissData<Value>) => void;
 
 // @public
 export const TagGroup: ForwardRefComponent<TagGroupProps>;
@@ -56,8 +126,8 @@ export const TagGroup: ForwardRefComponent<TagGroupProps>;
 export const tagGroupClassNames: SlotClassNames<TagGroupSlots>;
 
 // @public
-export type TagGroupProps = ComponentProps<TagGroupSlots> & {
-    onDismiss?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: TagGroupDismissData) => void;
+export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
+    onDismiss?: TagDismissHandler<Value>;
     size?: TagSize;
 };
 
@@ -67,20 +137,25 @@ export type TagGroupSlots = {
 };
 
 // @public
-export type TagGroupState<Value = string> = ComponentState<TagGroupSlots> & Required<Pick<TagGroupProps, 'size'>> & {
-    dismissible: boolean;
-    handleTagDismiss: (e: React_2.MouseEvent | React_2.KeyboardEvent, value: Value) => void;
+export type TagGroupState<Value = TagValue> = ComponentState<TagGroupSlots> & Required<Pick<TagGroupProps, 'size'>> & {
+    handleTagDismiss: TagDismissHandler<Value>;
 };
 
 // @public
 export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
-    appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
+    appearance?: TagAppearance;
     disabled?: boolean;
     dismissible?: boolean;
-    shape?: 'rounded' | 'circular';
+    shape?: TagShape;
     size?: TagSize;
     value?: Value;
 };
+
+// @public (undocumented)
+export type TagShape = 'rounded' | 'circular';
+
+// @public (undocumented)
+export type TagSize = 'extra-small' | 'small' | 'medium';
 
 // @public (undocumented)
 export type TagSlots = {
@@ -93,22 +168,43 @@ export type TagSlots = {
 };
 
 // @public
-export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'> & {
-    avatarSize: AvatarSize | undefined;
-    avatarShape: AvatarShape | undefined;
-}>;
+export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'>> & UseTagAvatarContextValuesOptions;
+
+// @public (undocumented)
+export type TagValue = string;
 
 // @public
-export const useInteractionTag_unstable: (props: InteractionTagProps, ref: React_2.Ref<HTMLElement>) => InteractionTagState;
+export const useInteractionTag_unstable: (props: InteractionTagProps, ref: React_2.Ref<HTMLDivElement>) => InteractionTagState;
+
+// @public (undocumented)
+export function useInteractionTagContextValues_unstable(state: InteractionTagState): InteractionTagContextValues;
+
+// @public
+export const useInteractionTagPrimary_unstable: (props: InteractionTagPrimaryProps, ref: React_2.Ref<HTMLButtonElement>) => InteractionTagPrimaryState;
+
+// @public (undocumented)
+export const useInteractionTagPrimaryStyles_unstable: (state: InteractionTagPrimaryState) => InteractionTagPrimaryState;
+
+// @public
+export const useInteractionTagSecondary_unstable: (props: InteractionTagSecondaryProps, ref: React_2.Ref<HTMLButtonElement>) => InteractionTagSecondaryState;
+
+// @public (undocumented)
+export const useInteractionTagSecondaryStyles_unstable: (state: InteractionTagSecondaryState) => InteractionTagSecondaryState;
 
 // @public
 export const useInteractionTagStyles_unstable: (state: InteractionTagState) => InteractionTagState;
 
 // @public
-export const useTag_unstable: (props: TagProps, ref: React_2.Ref<HTMLElement>) => TagState;
+export const useTag_unstable: (props: TagProps, ref: React_2.Ref<HTMLSpanElement | HTMLButtonElement>) => TagState;
+
+// @public (undocumented)
+export function useTagAvatarContextValues_unstable(state: UseTagAvatarContextValuesOptions): TagAvatarContextValues;
 
 // @public
-export const useTagGroup_unstable: (props: TagGroupProps, ref: React_2.Ref<HTMLElement>) => TagGroupState;
+export const useTagGroup_unstable: (props: TagGroupProps, ref: React_2.Ref<HTMLDivElement>) => TagGroupState;
+
+// @public (undocumented)
+export function useTagGroupContextValues_unstable(state: TagGroupState): TagGroupContextValues;
 
 // @public
 export const useTagGroupStyles_unstable: (state: TagGroupState) => TagGroupState;

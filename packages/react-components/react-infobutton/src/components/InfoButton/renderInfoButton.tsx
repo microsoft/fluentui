@@ -1,25 +1,25 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/* eslint-disable deprecation/deprecation */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
-
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import { PopoverTrigger } from '@fluentui/react-popover';
-import type { PopoverProps } from '@fluentui/react-popover';
 import type { InfoButtonState, InfoButtonSlots } from './InfoButton.types';
 
 /**
  * Render the final JSX of InfoButton
+ *
+ * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
  */
 export const renderInfoButton_unstable = (state: InfoButtonState) => {
-  const { slots, slotProps } = getSlotsNext<InfoButtonSlots>(state);
+  assertSlots<InfoButtonSlots>(state);
 
   return (
-    <slots.popover {...(slotProps.popover as PopoverProps)}>
+    <state.popover>
       <PopoverTrigger>
-        <slots.root {...slotProps.root} />
+        <state.root />
       </PopoverTrigger>
-      <slots.info {...slotProps.info} />
-    </slots.popover>
+      <state.info />
+    </state.popover>
   );
 };

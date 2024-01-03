@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const { workspaceRoot } = require('@nrwl/devkit');
+const { workspaceRoot } = require('@nx/devkit');
 
 const cwd = process.cwd();
 const rootOffset = path.relative(cwd, workspaceRoot);

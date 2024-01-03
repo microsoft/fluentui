@@ -7,10 +7,10 @@ import { mergeClasses } from '@fluentui/react-components';
 import {
   ComponentProps,
   ComponentState,
-  getNativeElementProps,
-  getSlotsNext,
+  getIntrinsicElementProps,
   Slot,
-  resolveShorthand,
+  slot,
+  assertSlots,
 } from '@fluentui/react-utilities';
 
 import { useItemLayoutStyles } from './ItemLayout.styles';
@@ -45,15 +45,13 @@ export const ItemLayout = React.forwardRef<HTMLDivElement, ItemLayoutProps>((pro
       startMedia: 'div',
       endMedia: 'div',
     },
-    root: getNativeElementProps('div', { ...props, ref }),
-    contentMedia: resolveShorthand(props.contentMedia),
-    contentWrapper: resolveShorthand(props.contentWrapper, {
-      required: true,
-    }),
-    header: resolveShorthand(props.header),
-    headerMedia: resolveShorthand(props.headerMedia),
-    startMedia: resolveShorthand(props.startMedia),
-    endMedia: resolveShorthand(props.endMedia),
+    root: slot.always(getIntrinsicElementProps('div', { ...props, ref }), { elementType: 'div' }),
+    contentMedia: slot.optional(props.contentMedia, { elementType: 'div' }),
+    contentWrapper: slot.optional(props.contentWrapper, { renderByDefault: true, elementType: 'div' }),
+    header: slot.optional(props.header, { elementType: 'div' }),
+    headerMedia: slot.optional(props.headerMedia, { elementType: 'div' }),
+    startMedia: slot.optional(props.startMedia, { elementType: 'div' }),
+    endMedia: slot.optional(props.endMedia, { elementType: 'div' }),
   };
   const styles = useItemLayoutStyles();
 
@@ -82,21 +80,17 @@ export const ItemLayout = React.forwardRef<HTMLDivElement, ItemLayoutProps>((pro
     state.endMedia.className = mergeClasses(styles.endMedia, state.endMedia.className);
   }
 
-  const { slots, slotProps } = getSlotsNext<ItemLayoutSlots>(state);
+  assertSlots<ItemLayoutSlots>(state);
 
   return (
-    <slots.root {...slotProps.root}>
-      {slots.startMedia && <slots.startMedia {...slotProps.startMedia} />}
-
-      {slots.header && <slots.header {...slotProps.header} />}
-      {slots.headerMedia && <slots.headerMedia {...slotProps.headerMedia} />}
-      {slots.contentWrapper && (
-        <slots.contentWrapper {...slotProps.contentWrapper}>{state.root.children}</slots.contentWrapper>
-      )}
-      {slots.contentMedia && <slots.contentMedia {...slotProps.contentMedia} />}
-
-      {slots.endMedia && <slots.endMedia {...slotProps.endMedia} />}
-    </slots.root>
+    <state.root>
+      {state.startMedia && <state.startMedia />}
+      {state.header && <state.header />}
+      {state.headerMedia && <state.headerMedia />}
+      {state.contentWrapper && <state.contentWrapper>{state.root.children}</state.contentWrapper>}
+      {state.contentMedia && <state.contentMedia />}
+      {state.endMedia && <state.endMedia />}
+    </state.root>
   );
 });
 

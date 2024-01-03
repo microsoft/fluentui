@@ -70,7 +70,7 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
           ? onRenderProgress(
               {
                 ...(this.props as IProgressIndicatorProps),
-                percentComplete: percentComplete,
+                percentComplete,
               },
               this._onRenderProgress,
             )

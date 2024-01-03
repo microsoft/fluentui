@@ -1,0 +1,18 @@
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+
+export type <%= componentName %>Slots = {
+  root: Slot<'div'>;
+};
+
+/**
+ * <%= componentName %> Props
+ */
+export type <%= componentName %>Props = ComponentProps<<%= componentName %>Slots> & {};
+
+/**
+ * State used in rendering <%= componentName %>
+ */
+export type <%= componentName %>State = ComponentState<<%= componentName %>Slots>;
+// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from <%= componentName %>Props.
+// & Required<Pick<<%= componentName %>Props, 'propName'>>
+;
