@@ -21,3 +21,4 @@ export type {
   NavItemRegisterData,
   RegisterNavItemEventHandler,
 } from './components/NavContext.types';
+export * from './NavSubItem';
