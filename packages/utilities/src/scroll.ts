@@ -24,13 +24,15 @@ export const DATA_IS_SCROLLABLE_ATTRIBUTE = 'data-is-scrollable';
  * while preventing the user from scrolling the body
  */
 export const allowScrollOnElement = (element: HTMLElement | null, events: EventGroup): void => {
-  if (!element) {
+  const window = getWindow(element);
+
+  if (!element || !window) {
     return;
   }
 
   let _previousClientY = 0;
   let _element: Element | null = null;
-  let computedStyles: undefined | CSSStyleDeclaration = getComputedStyle(element);
+  let computedStyles: undefined | CSSStyleDeclaration = window.getComputedStyle(element);
 
   // remember the clientY for future calls of _preventOverscrolling
   const _saveClientY = (event: TouchEvent): void => {
@@ -60,7 +62,7 @@ export const allowScrollOnElement = (element: HTMLElement | null, events: EventG
     const scrollableParent = findScrollableParent(event.target as HTMLElement) as HTMLElement;
     if (scrollableParent && _element !== scrollableParent) {
       _element = scrollableParent;
-      computedStyles = getComputedStyle(_element);
+      computedStyles = window.getComputedStyle(_element);
     }
 
     const scrollTop = _element.scrollTop;
