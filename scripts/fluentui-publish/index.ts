@@ -2,14 +2,14 @@ import { spawnSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { type PackageJson, findGitRoot } from '@fluentui/scripts-monorepo';
+import { type PackageJson, workspaceRoot } from '@fluentui/scripts-monorepo';
 import * as yargs from 'yargs';
 
 main();
 
 function fluentuiLernaPublish(bumpType: 'patch' | 'minor' | 'canary', skipConfirm = false, npmTagForCanary = 'beta') {
-  const gitRoot = findGitRoot();
-  const fluentRoot = path.resolve(gitRoot, 'packages', 'fluentui');
+  const gitRoot = workspaceRoot;
+  const fluentRoot = path.resolve(workspaceRoot, 'packages', 'fluentui');
 
   let lernaPublishArgs: string[];
   switch (bumpType) {
@@ -94,7 +94,7 @@ const execCommandSync = (cwd: string, command: string, args: string[]) => {
 };
 
 function fluentuiPostPublishValidation() {
-  const gitRoot = findGitRoot();
+  const gitRoot = workspaceRoot;
 
   const branch = execCommandSync(gitRoot, 'git', ['branch', '--show-current']);
   execCommandSync(gitRoot, 'git', ['fetch', 'origin']);
@@ -115,8 +115,8 @@ function fluentuiPostPublishValidation() {
 
 // pack all public fluent ui packages, used by ci to store nightly built artifacts
 function packFluentTarballs() {
-  const gitRoot = findGitRoot();
-  const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
+  const gitRoot = workspaceRoot;
+  const fluentRoot = path.resolve(gitRoot, 'packages', 'fluentui');
 
   const TODAY = new Date().toISOString().split('T')[0]; // yyyy-mm-dd
 
