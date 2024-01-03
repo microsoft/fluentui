@@ -92,6 +92,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _lineObject: LineObject;
   private _tooltipId: string;
   private _yMax: number;
+  private _yMin: number;
   private _calloutAnchorPoint: CalloutAnchorPointData | null;
   private _domainMargin: number;
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
@@ -202,6 +203,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           customizedCallout={this._getCustomizedCallout()}
           onChartMouseLeave={this._handleChartMouseLeave}
           getDomainMargins={this._getDomainMargins}
+          supportNegativeValuesForYAxis={true}
           {...(this._xAxisType !== XAxisTypes.NumericAxis && { xAxisInnerPadding: 2 / 3, xAxisOuterPadding: 0 })}
           /* eslint-disable react/jsx-no-bind */
           // eslint-disable-next-line react/no-children-prop
@@ -755,7 +757,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       let barTotalValue = 0;
 
       // Removing datapoints with zero data
-      const barsToDisplay = singleChartData.chartData.filter(point => point.data > 0);
+      const barsToDisplay = singleChartData.chartData.filter(point => point.data !== 0);
 
       if (!barsToDisplay.length) {
         return undefined;
@@ -763,9 +765,9 @@ export class VerticalStackedBarChartBase extends React.Component<
 
       const { gapHeight, heightValueScale } = this._getBarGapAndScale(barsToDisplay, yBarScale);
 
-      if (heightValueScale < 0) {
-        return undefined;
-      }
+      // if (heightValueScale < 0) {
+      //   return undefined;
+      // }
 
       const singleBar = barsToDisplay.map((point: IVSChartDataPoint, index: number) => {
         const color = point.color ? point.color : this._colors[index];
@@ -790,11 +792,12 @@ export class VerticalStackedBarChartBase extends React.Component<
         };
 
         let barHeight = heightValueScale * point.data;
-        if (barHeight < Math.max(heightValueScale * Math.ceil(this._yMax / 100.0), barMinimumHeight)) {
-          barHeight = Math.max(heightValueScale * Math.ceil(this._yMax / 100.0), barMinimumHeight);
+        if (barHeight < Math.max(heightValueScale * Math.ceil(this._yMax - this._yMin / 100.0), barMinimumHeight)) {
+          barHeight = Math.max(heightValueScale * Math.ceil(this._yMax - this._yMin / 100.0), barMinimumHeight);
         }
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
         barTotalValue += point.data;
+        console.log(this._yMax, this._yMin, barHeight);
 
         // If set, apply the corner radius to the top of the final bar
         if (barCornerRadius && barHeight > barCornerRadius && index === barsToDisplay.length - 1) {
@@ -818,7 +821,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             />
           );
         }
-        if (barHeight < 0) {
+        if (barHeight === 0) {
           return <React.Fragment key={index + indexNumber}> </React.Fragment>;
         }
         return (
@@ -910,8 +913,9 @@ export class VerticalStackedBarChartBase extends React.Component<
 
   private _getScales = (containerHeight: number, containerWidth: number, isNumeric: boolean) => {
     const yMax = this._yMax;
+    const yMin = this._yMin;
     const yBarScale = d3ScaleLinear()
-      .domain([0, yMax])
+      .domain([yMin, yMax])
       .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
     if (isNumeric) {
       const xMax = d3Max(this._dataset, (point: IDataPoint) => point.x as number)!;
@@ -980,6 +984,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     if (yAxisData && yAxisData.yAxisDomainValues.length) {
       const { yAxisDomainValues: domainValue } = yAxisData;
       this._yMax = Math.max(domainValue[domainValue.length - 1], this.props.yMaxValue || 0);
+      this._yMin = Math.min(domainValue[0], this.props.yMinValue || 0);
     }
   };
 
