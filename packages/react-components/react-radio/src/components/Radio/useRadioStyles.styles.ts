@@ -44,11 +44,6 @@ const useInputBaseClassName = makeResetStyles({
     },
   },
 
-  // When unchecked, hide the circle icon (child of the indicator)
-  [`:not(:checked) ~ .${radioClassNames.indicator} > *`]: {
-    opacity: '0',
-  },
-
   // Colors for the unchecked state
   ':enabled:not(:checked)': {
     [`& ~ .${radioClassNames.label}`]: {
@@ -120,9 +115,24 @@ const useInputStyles = makeStyles({
     width: '100%',
     height: `calc(${indicatorSize} + 2 * ${tokens.spacingVerticalS})`,
   },
+
+  // If the indicator has no children, use the ::after pseudo-element for the checked state
+  defaultIndicator: {
+    [`:checked ~ .${radioClassNames.indicator}::after`]: {
+      content: '""',
+    },
+  },
+
+  // If the indicator has a child, hide it until the radio is checked
+  customIndicator: {
+    [`:not(:checked) ~ .${radioClassNames.indicator} > *`]: {
+      opacity: '0',
+    },
+  },
 });
 
 const useIndicatorBaseClassName = makeResetStyles({
+  position: 'relative',
   width: indicatorSize,
   height: indicatorSize,
   fontSize: '12px',
@@ -139,6 +149,17 @@ const useIndicatorBaseClassName = makeResetStyles({
   margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
   fill: 'currentColor',
   pointerEvents: 'none',
+
+  '::after': {
+    position: 'absolute',
+    width: indicatorSize,
+    height: indicatorSize,
+    // Use a transform to avoid pixel rounding errors at 125% DPI
+    // https://github.com/microsoft/fluentui/issues/30025
+    transform: 'scale(0.625)',
+    borderRadius: tokens.borderRadiusCircular,
+    backgroundColor: 'currentColor',
+  },
 });
 
 // Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
@@ -184,6 +205,7 @@ export const useRadioStyles_unstable = (state: RadioState) => {
     radioClassNames.input,
     inputBaseClassName,
     labelPosition === 'below' && inputStyles.below,
+    state.indicator.children ? inputStyles.customIndicator : inputStyles.defaultIndicator,
     state.input.className,
   );
 

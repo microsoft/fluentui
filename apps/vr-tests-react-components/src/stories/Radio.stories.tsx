@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
+import { AirplaneFilled } from '@fluentui/react-icons';
 import { Radio, RadioGroup } from '@fluentui/react-radio';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 
@@ -30,7 +31,8 @@ storiesOf('Radio Converged', module)
   .addStory('disabled', () => <Radio disabled label="Disabled" />, {
     includeDarkMode: true,
     includeHighContrast: true,
-  });
+  })
+  .addStory('indicator+checked', () => <Radio checked indicator={<AirplaneFilled />} />);
 
 storiesOf('Radio Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
@@ -41,6 +43,7 @@ storiesOf('Radio Converged', module)
     includeDarkMode: true,
     includeHighContrast: true,
   })
+  .addStory('indicator+unchecked', () => <Radio indicator={<AirplaneFilled />} />)
   .addStory('no-label', () => <Radio />, { includeRtl: true })
   .addStory('label-after', () => <Radio labelPosition="after" label="Label after" />, { includeRtl: true })
   .addStory('label-below', () => <Radio labelPosition="below" label="Label below" />, { includeRtl: true })
