@@ -21,3 +21,9 @@ export type {
   NavItemRegisterData,
   RegisterNavItemEventHandler,
 } from './components/NavContext.types';
+
+export { NavSubItem } from './components/NavSubItem/NavSubItem';
+export type { NavSubItemSlots, NavSubItemProps, NavSubItemState } from './components/NavSubItem/NavSubItem.types';
+export { renderNavSubItem_unstable } from './components/NavSubItem/renderNavSubItem';
+export { useNavSubItem_unstable } from './components/NavSubItem/useNavSubItem';
+export { useNavSubItemStyles_unstable, navSubItemClassNames } from './components/NavSubItem/useNavSubItemStyles.styles';
