@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Importing functions which are used instead of importing complete library",
+  "packageName": "@fluentui/react-charting",
+  "email": "ankityadav@microsoft.com",
+  "dependentChangeType": "patch"
+}
