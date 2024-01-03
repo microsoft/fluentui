@@ -201,7 +201,7 @@ extends:
                 inputs:
                   script: |
                     echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion) nightlyReleaseDate $(nightlyReleaseDate)
-                    NODE_ENV=production yarn build:fluentui:docs
+                    NODE_ENV=production yarn northstar:build:docs
 
               - task: AzureUpload@2
                 displayName: Upload to Azure

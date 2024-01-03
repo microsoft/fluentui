@@ -19,7 +19,7 @@ function fluentuiLernaPublish(bumpType: 'patch' | 'minor' | 'canary', skipConfir
         'lerna',
         'publish',
         bumpType,
-        "--tag-version-prefix='@fluentui/react-northstar_v'", // HEADS UP: also see yarn stats:save in azure-pipelines.perf-test.yml
+        "--tag-version-prefix='@fluentui/react-northstar_v'", // HEADS UP: also see yarn northstar:stats:save in azure-pipelines.perf-test.yml
         '--no-git-reset',
         '--force-publish',
         '--registry',
