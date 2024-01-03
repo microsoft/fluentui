@@ -54,7 +54,7 @@ export const Localized = (props: Partial<DatePickerProps>) => {
 Localized.parameters = {
   docs: {
     description: {
-      story: 'DatePicker a `strings` prop that allows custom localization.',
+      story: 'DatePicker accepts a `strings` prop that allows custom localization.',
     },
   },
 };
