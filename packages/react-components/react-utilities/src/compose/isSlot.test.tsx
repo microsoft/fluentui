@@ -34,4 +34,11 @@ describe('isSlot', () => {
   it('handles actual slot', () => {
     expect(isSlot(slot.optional({}, { elementType: 'div' }))).toEqual(true);
   });
+
+  it('handles slots created with a diffrent instance of react-utilities', async () => {
+    jest.isolateModules(() => {
+      const otherSlot = require('./slot') as typeof slot;
+      expect(isSlot(otherSlot.optional({}, { elementType: 'div' }))).toBeTruthy();
+    })
+  });
 });
