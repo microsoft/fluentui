@@ -39,6 +39,11 @@ describe('Menu', () => {
         </MenuPopover>,
       ],
     },
+    testOptions: {
+      'consistent-callback-type': {
+        ignoreProps: ['onCheckedValueChange', 'onOpenChange'],
+      },
+    },
   });
 
   beforeEach(() => {

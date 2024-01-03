@@ -37,6 +37,11 @@ describe('Drawer', () => {
     ],
     requiredProps: props,
     getTargetElement: result => result.getByTestId(testid),
+    testOptions: {
+      'consistent-callback-type': {
+        ignoreProps: ['onOpenChange'],
+      },
+    },
   });
 
   it('renders a default state', () => {

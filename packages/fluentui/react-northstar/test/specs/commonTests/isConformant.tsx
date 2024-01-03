@@ -87,6 +87,7 @@ export function isConformant(
     disabledTests: [
       'has-top-level-file',
       'consistent-callback-args-legacy',
+      'consistent-callback-type',
       'component-has-static-classname',
       'component-has-static-classnames-object',
       'component-has-static-classname-exported',

@@ -7,6 +7,11 @@ describe('Toolbar', () => {
   isConformant({
     Component: Toolbar,
     displayName: 'Toolbar',
+    testOptions: {
+      'consistent-callback-type': {
+        ignoreProps: ['onCheckedValueChange'],
+      },
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

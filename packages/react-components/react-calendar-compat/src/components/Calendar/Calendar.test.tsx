@@ -13,6 +13,7 @@ describe('Calendar', () => {
       // Calendar classnames are not exported since they are internal and are used differently compared to how v9
       // uses classnames
       'component-has-static-classnames-object',
+      'consistent-callback-type',
     ],
   });
 });

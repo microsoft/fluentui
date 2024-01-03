@@ -44,6 +44,11 @@ describe('ToastContainer', () => {
     requiredProps: defaultToastContainerProps,
     isInternal: true,
     disabledTests: ['consistent-callback-args-legacy'],
+    testOptions: {
+      'consistent-callback-type': {
+        ignoreProps: ['onStatusChange'],
+      },
+    },
   });
 
   it('renders a default state', () => {

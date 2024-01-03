@@ -12,6 +12,9 @@ describe('TagGroup', () => {
       'consistent-callback-args-legacy': {
         ignoreProps: ['onDismiss'], // onDismiss uses generics, this test does not support that
       },
+      'consistent-callback-type': {
+        ignoreProps: ['onDismiss'],
+      },
     },
   });
 

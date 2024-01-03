@@ -39,6 +39,11 @@ describe('Tooltip', () => {
       'component-has-root-ref',
       'component-handles-classname',
     ],
+    testOptions: {
+      'consistent-callback-type': {
+        ignoreProps: ['onVisibleChange'],
+      },
+    },
   });
 
   afterEach(() => {

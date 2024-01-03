@@ -8,6 +8,11 @@ describe('Listbox', () => {
   isConformant({
     Component: Listbox,
     displayName: 'Listbox',
+    testOptions: {
+      'consistent-callback-type': {
+        ignoreProps: ['onOptionSelect'],
+      },
+    },
   });
 
   it('renders a default state', () => {

@@ -19,6 +19,9 @@ describe('Radio', () => {
           },
         },
       ],
+      'consistent-callback-type': {
+        ignoreProps: ['onChange'],
+      },
     },
   });
 

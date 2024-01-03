@@ -22,6 +22,11 @@ describe('Textarea', () => {
     Component: Textarea,
     displayName: 'Textarea',
     primarySlot: 'textarea',
+    testOptions: {
+      'consistent-callback-type': {
+        ignoreProps: ['onChange'],
+      },
+    },
   });
 
   // TODO create visual regression tests in /apps/vr-tests

@@ -23,6 +23,11 @@ describe('Dialog', () => {
       // Dialog does not have own styles
       'make-styles-overrides-win',
     ],
+    testOptions: {
+      'consistent-callback-type': {
+        ignoreProps: ['onOpenChange'],
+      },
+    },
   });
 
   it('renders a default state', () => {

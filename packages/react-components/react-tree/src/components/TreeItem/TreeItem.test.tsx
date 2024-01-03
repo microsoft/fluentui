@@ -22,6 +22,9 @@ describe('TreeItem', () => {
           },
         },
       ],
+      'consistent-callback-type': {
+        ignoreProps: ['onOpenChange'],
+      },
     },
   });
 

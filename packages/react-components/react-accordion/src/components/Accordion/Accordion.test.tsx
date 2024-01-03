@@ -9,6 +9,11 @@ describe('Accordion', () => {
     displayName: 'Accordion',
     // Accordion does not have own styles
     disabledTests: ['make-styles-overrides-win', 'consistent-callback-args-legacy'],
+    testOptions: {
+      'consistent-callback-type': {
+        ignoreProps: ['onToggle'],
+      },
+    },
   });
 
   /**

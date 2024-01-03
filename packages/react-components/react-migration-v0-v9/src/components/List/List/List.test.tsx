@@ -17,6 +17,9 @@ describe('List', () => {
         // onSelectionChange has an eventArgument which is React.SyntheticEvent. This throws an error during testing
         ignoreProps: ['onSelectionChange'],
       },
+      'consistent-callback-type': {
+        ignoreProps: ['onSelectionChange'],
+      },
     },
   });
 

@@ -26,6 +26,9 @@ describe('Dropdown', () => {
           },
         },
       ],
+      'consistent-callback-type': {
+        ignoreProps: ['onOptionSelect', 'onOpenChange'],
+      },
     },
   });
 

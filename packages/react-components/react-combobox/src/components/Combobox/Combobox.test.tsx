@@ -26,6 +26,9 @@ describe('Combobox', () => {
           },
         },
       ],
+      'consistent-callback-type': {
+        ignoreProps: ['onOptionSelect', 'onOpenChange'],
+      },
     },
   });
 

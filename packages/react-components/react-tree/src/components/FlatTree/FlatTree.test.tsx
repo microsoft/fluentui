@@ -8,6 +8,11 @@ describe('FlatTree', () => {
     Component: FlatTree,
     displayName: 'FlatTree',
     disabledTests: ['consistent-callback-args-legacy'],
+    testOptions: {
+      'consistent-callback-type': {
+        ignoreProps: ['onOpenChange', 'onNavigation', 'onCheckedChange'],
+      },
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

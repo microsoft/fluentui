@@ -17,6 +17,7 @@ describe('TeachingPopover', () => {
       'make-styles-overrides-win',
       // Our callbacks are intended to be simplified
       'consistent-callback-args-legacy',
+      'consistent-callback-type',
     ],
   });
 

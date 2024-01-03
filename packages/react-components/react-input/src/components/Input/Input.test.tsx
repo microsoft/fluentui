@@ -31,6 +31,9 @@ describe('Input', () => {
           },
         },
       ],
+      'consistent-callback-type': {
+        ignoreProps: ['onChange'],
+      },
     },
   });
 

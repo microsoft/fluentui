@@ -30,6 +30,9 @@ describe('Card', () => {
           },
         },
       ],
+      'consistent-callback-type': {
+        ignoreProps: ['onSelectionChange'],
+      },
     },
     disabledTests: ['component-has-static-classname-exported'],
   });

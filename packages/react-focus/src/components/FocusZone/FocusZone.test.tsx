@@ -94,6 +94,9 @@ describe('FocusZone', () => {
       'consistent-callback-args-legacy': {
         ignoreProps: ['onActiveElementChanged', 'onBeforeFocus', 'onFocusNotification', 'onFocus'],
       },
+      'consistent-callback-type': {
+        ignoreProps: ['onActiveElementChanged', 'onBeforeFocus', 'onFocusNotification', 'onFocus'],
+      },
     },
   });
 

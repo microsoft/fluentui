@@ -32,6 +32,7 @@ describe('CalendarDayGrid', () => {
       'consistent-callback-args-legacy',
       // Some classnames are applied conditionally
       'component-has-static-classnames-object',
+      'consistent-callback-type',
     ],
   });
 });

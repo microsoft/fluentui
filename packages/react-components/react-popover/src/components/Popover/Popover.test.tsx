@@ -18,6 +18,11 @@ describe('Popover', () => {
       // Popover does not have own styles
       'make-styles-overrides-win',
     ],
+    testOptions: {
+      'consistent-callback-type': {
+        ignoreProps: ['onOpenChange'],
+      },
+    },
   });
 
   /**
