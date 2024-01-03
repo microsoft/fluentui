@@ -10,7 +10,7 @@ export { FreeformCustomParsing } from './TimePickerFreeformCustomParsing.stories
 export { TimePickerWithDatePicker } from './TimePickerWithDatePicker.stories';
 
 export default {
-  title: 'Preview Components/TimePicker',
+  title: 'Compat Components/TimePicker',
   component: TimePicker,
   parameters: {
     docs: {
