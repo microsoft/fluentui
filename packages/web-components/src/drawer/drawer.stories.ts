@@ -800,7 +800,7 @@ export const CustomSize = renderComponent(html`
 `);
 
 export const ContentOverflowSeparator = renderComponent(html<DrawerStoryArgs>`
-  <div class="flex justify--space-between full-height">
+  <div class="flex justify--center full-height">
 
     <fluent-drawer
       style="--drawer-overflow-border: ${colorNeutralStroke1}"
@@ -819,7 +819,7 @@ export const ContentOverflowSeparator = renderComponent(html<DrawerStoryArgs>`
           ${dismissed20Regular}
   </div>
         </fluent-button>
-        <div class="row-gap--16 column flex">
+        <div class="row-gap--16 column flex" style="padding-bottom: 12px;">
           <fluent-text font="base" size="300" weight="regular" as="p">
             <p>
             The --drawer-overflow-border CSS token allows you to define a border color for the top of the drawer's footer. This visual cue helps indicate the presence of overflowed content above, signaling to users that there's more content to be viewed or accessed.
