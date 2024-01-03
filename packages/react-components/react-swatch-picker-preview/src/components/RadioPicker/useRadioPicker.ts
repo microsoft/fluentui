@@ -34,7 +34,5 @@ export const useRadioPicker_unstable = (props: RadioPickerProps, ref: React.Ref<
     ),
   };
 
-  useRadioPickerState_unstable(state, props);
-
-  return state;
+  return useRadioPickerState_unstable(state, props);
 };

@@ -4,6 +4,8 @@ import descriptionMd from './RadioPickerDescription.md';
 import bestPracticesMd from './RadioPickerBestPractices.md';
 
 export { Default } from './RadioPickerDefault.stories';
+export { RadioPickerSize } from './RadioPickerSize.stories';
+export { RadioPickerShape } from './RadioPickerShape.stories';
 
 export default {
   title: 'Preview Components/RadioPicker',

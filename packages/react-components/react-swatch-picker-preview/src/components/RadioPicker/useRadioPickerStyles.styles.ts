@@ -8,9 +8,10 @@ export const radioPickerClassNames: SlotClassNames<RadioPickerSlots> = {
 
 export const radioPickerCSSVars = {
   columnCountGrid: `--fui-SwatchPicker--columnCount`,
+  cellSize: `--fui-SwatchPicker--cellSize`,
 };
 
-const { columnCountGrid } = radioPickerCSSVars;
+const { columnCountGrid, cellSize } = radioPickerCSSVars;
 
 /**
  * Styles for the root slot
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
   root: {},
   grid: {
     display: 'grid',
-    gridTemplateColumns: `repeat(var(${columnCountGrid}), 28px)`,
+    gridTemplateColumns: `repeat(var(${columnCountGrid}), var(${cellSize}))`,
   },
   row: {
     display: 'flex',

@@ -1,24 +1,11 @@
 import * as React from 'react';
 import { RadioPicker, RadioSwatch } from '@fluentui/react-swatch-picker-preview';
 
-export const Default = () => {
-  const [value, setValue] = React.useState('cyan');
-
+export const RadioPickerSize = () => {
   return (
     <>
-      <RadioPicker>
-        <RadioSwatch value="red" label="Red" />
-        <RadioSwatch value="green" label="Green" />
-        <RadioSwatch value="blue" label="Blue" />
-      </RadioPicker>
-      <h2>Grid</h2>
-      <RadioPicker
-        name="colors"
-        layout={'grid'}
-        columnCount={3}
-        value={value}
-        onChange={(_, data) => setValue(data.value)}
-      >
+      <h3>Extra small</h3>
+      <RadioPicker layout={'grid'} columnCount={3} size="extraSmall">
         <RadioSwatch value="red" label="Red" />
         <RadioSwatch value="green" label="Green" />
         <RadioSwatch value="blue" label="Blue" />
@@ -29,7 +16,7 @@ export const Default = () => {
         <RadioSwatch value="white" label="White" />
         <RadioSwatch value="#f09" label="#f09" />
       </RadioPicker>
-      <div style={{ backgroundColor: value, width: '200px', height: '200px' }} />
+      <h3>Small</h3>
       <RadioPicker layout={'grid'} columnCount={3} size="small">
         <RadioSwatch value="red" label="Red" />
         <RadioSwatch value="green" label="Green" />
@@ -41,7 +28,8 @@ export const Default = () => {
         <RadioSwatch value="white" label="White" />
         <RadioSwatch value="#f09" label="#f09" />
       </RadioPicker>
-      <RadioPicker layout={'grid'} columnCount={3} size="large" shape="circular">
+      <h3>Medium</h3>
+      <RadioPicker name="colors" layout={'grid'} columnCount={3}>
         <RadioSwatch value="red" label="Red" />
         <RadioSwatch value="green" label="Green" />
         <RadioSwatch value="blue" label="Blue" />
@@ -52,7 +40,8 @@ export const Default = () => {
         <RadioSwatch value="white" label="White" />
         <RadioSwatch value="#f09" label="#f09" />
       </RadioPicker>
-      <RadioPicker layout={'grid'} columnCount={3} size="extraSmall" shape="rounded">
+      <h3>Large</h3>
+      <RadioPicker layout={'grid'} columnCount={3} size="large">
         <RadioSwatch value="red" label="Red" />
         <RadioSwatch value="green" label="Green" />
         <RadioSwatch value="blue" label="Blue" />

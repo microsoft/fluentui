@@ -9,11 +9,14 @@ export type RadioSwatchSlots = {
 /**
  * RadioSwatch Props
  */
-export type RadioSwatchProps = ComponentProps<RadioSwatchSlots> & {};
+export type RadioSwatchProps = ComponentProps<RadioSwatchSlots> & {
+  size?: 'extraSmall' | 'small' | 'medium' | 'large';
+  shape?: 'rounded' | 'square' | 'circular';
+};
 
 /**
  * State used in rendering RadioSwatch
  */
-export type RadioSwatchState = ComponentState<RadioSwatchSlots> & Pick<RadioSwatchProps, 'value'>;
+export type RadioSwatchState = ComponentState<RadioSwatchSlots> & Pick<RadioSwatchProps, 'value' | 'size' | 'shape'>;
 // TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from RadioSwatchProps.
 // & Required<Pick<RadioSwatchProps, 'propName'>>
