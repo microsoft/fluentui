@@ -1,5 +1,5 @@
 import { attr, ElementStyles } from '@microsoft/fast-element';
-import { FASTSelect } from '@microsoft/fast-foundation/select.js';
+import { FASTSelect } from '../select/select.js';
 import { DropdownAppearance, DropdownControlSize } from './dropdown.options.js';
 
 /**
@@ -28,20 +28,4 @@ export class Dropdown extends FASTSelect {
    */
   @attr({ attribute: 'control-size' })
   public controlSize?: DropdownControlSize;
-
-  /**
-   * styles
-   * used in the class for storing the css variables
-   */
-  private styles: ElementStyles | undefined;
-
-  /**
-   * Overrides the default behavior of the Select class.
-   * The dropdown will always be collapsible.
-   *
-   * @returns {boolean} - Whether the dropdown is collapsible.
-   */
-  public get collapsible(): boolean {
-    return true;
-  }
 }

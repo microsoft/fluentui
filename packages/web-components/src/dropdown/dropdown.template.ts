@@ -1,5 +1,5 @@
 import { ElementViewTemplate, html } from '@microsoft/fast-element';
-import { selectTemplate } from '@microsoft/fast-foundation';
+import { selectTemplate } from '../select/select.template.js';
 import type { Dropdown } from './dropdown.js';
 
 const chevronDown20Regular = html.partial(`
