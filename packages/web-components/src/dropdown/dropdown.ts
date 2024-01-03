@@ -1,5 +1,5 @@
-import { ElementStyles, attr } from '@microsoft/fast-element';
-import { FASTSelect } from '@microsoft/fast-foundation';
+import { attr, ElementStyles } from '@microsoft/fast-element';
+import { FASTSelect } from '@microsoft/fast-foundation/select.js';
 import { DropdownAppearance, DropdownControlSize } from './dropdown.options.js';
 
 /**
