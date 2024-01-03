@@ -41,7 +41,7 @@
     "preinstall": "node ./scripts/package-manager/use-yarn-please.js",
     "publish:beachball": "beachball publish -b origin/master --access public -y",
     "rebuild": "node ./scripts/executors/invalidate-just-cache.js && yarn build --reset-cache",
-    "northstar:release": "node -r ./scripts/ts-node/register ./scripts/fluentui-publish",
+    "northstar:release": "node ./scripts/fluentui-publish",
     "rename-package": "node -r ./scripts/ts-node/register ./scripts/generators/rename-package.ts",
     "run:published": "node ./scripts/executors/runPublished.js",
     "scrub": "node ./scripts/executors/scrub.js",
