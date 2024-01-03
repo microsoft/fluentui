@@ -69,6 +69,7 @@ const AnimalDog16Filled = html`<svg
 const dropdownTemplate = html<DropdownStoryArgs>`
   <div>
     <fluent-dropdown
+      placeholder="${x => x.placeholder}"
       appearance="${x => x.appearance}"
       control-size="${x => x.controlSize}"
       ?disabled="${x => x.disabled}"
@@ -86,10 +87,15 @@ export default {
   args: {
     appearance: DropdownAppearance.outline,
     controlSize: DropdownControlSize.medium,
-    multiple: false,
     disabled: false,
+    placeholder: '',
   },
   argTypes: {
+    placeholder: {
+      control: {
+        type: 'text',
+      },
+    },
     appearance: {
       options: Object.values(DropdownAppearance),
       control: {
@@ -163,6 +169,17 @@ export const DropdownAppearances = renderComponent(html<DropdownStoryArgs>`
         <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
       </fluent-dropdown>
     </div>
+  </div>
+`);
+
+export const DropdownWithPlaceholder = renderComponent(html<DropdownStoryArgs>`
+  <div style="width: 128px; position: relative;">
+    <fluent-dropdown placeholder="Please select an option">
+      <fluent-option><span slot="icon">${FoodFish16Filled}</span>Fish</fluent-option>
+      <fluent-option><span slot="icon">${AnimalCat16Filled}</span>Cat</fluent-option>
+      <fluent-option><span slot="icon">${AnimalTurtle16Filled}</span>Turtle</fluent-option>
+      <fluent-option><span slot="icon">${AnimalDog16Filled}</span>Dog</fluent-option>
+    </fluent-dropdown>
   </div>
 `);
 
