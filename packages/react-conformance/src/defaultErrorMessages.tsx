@@ -472,6 +472,23 @@ export const defaultErrorMessages = {
     });
   },
 
+  'consistent-callback-type': (testInfo: IsConformantOptions, invalidProps: Record<string, Error>) => {
+    const { displayName } = testInfo;
+    const { testErrorInfo, resolveInfo } = errorMessageColors;
+
+    return getErrorMessage({
+      displayName,
+      overview: 'uses non-standard callback type.',
+      details: ['These callback(s) have issues:', testErrorInfo(formatErrors(invalidProps))],
+      suggestions: [
+        `Ensure that ${resolveInfo(displayName + `'s`)} callbacks are typed with EventHandler`,
+        `If a callback is intended to have a different signature, add the prop to isConformant ${resolveInfo(
+          "testOptions['consistent-callback-type'].ignoreProps",
+        )}.`,
+      ],
+    });
+  },
+
   'component-has-static-classname': (
     testInfo: IsConformantOptions,
     error: Error,

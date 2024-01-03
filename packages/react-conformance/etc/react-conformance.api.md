@@ -55,11 +55,15 @@ export interface TestOptions {
         prefix?: string;
     };
     // (undocumented)
-    'consistent-callback-args'?: {
+    'consistent-callback-args-legacy'?: {
         ignoreProps?: string[];
     };
     // (undocumented)
     'consistent-callback-names'?: {
+        ignoreProps?: string[];
+    };
+    // (undocumented)
+    'consistent-callback-type'?: {
         ignoreProps?: string[];
     };
     // (undocumented)

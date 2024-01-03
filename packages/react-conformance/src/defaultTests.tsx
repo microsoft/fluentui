@@ -6,7 +6,13 @@ import { render } from '@testing-library/react';
 import { IsConformantOptions, DefaultTestObject } from './types';
 import { defaultErrorMessages } from './defaultErrorMessages';
 import { ComponentDoc } from 'react-docgen-typescript';
-import { getPackagePath, getCallbackArguments, validateCallbackArguments } from './utils/index';
+import {
+  getPackagePath,
+  getCallbackArguments,
+  validateCallbackArguments,
+  getCallbackTypeNode,
+  validateCallbackType,
+} from './utils/index';
 import { act } from 'react-dom/test-utils';
 
 /**
@@ -454,32 +460,7 @@ export const defaultTests: DefaultTestObject = {
 
       const invalidProps = propNames.reduce<Record<string, Error>>((errors, propName) => {
         if (!ignoreProps.includes(propName) && CALLBACK_REGEX.test(propName)) {
-          const propInfo = componentInfo.props[propName];
-
-          if (!propInfo.declarations) {
-            throw new Error(
-              [
-                `Definition for "${propName}" does not have ".declarations" produced by "react-docgen-typescript".`,
-                'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
-                'where it happens and used interfaces.',
-              ].join(' '),
-            );
-          }
-
-          if (propInfo.declarations.length !== 1) {
-            throw new Error(
-              [
-                `Definition for "${propName}" has multiple elements in ".declarations" produced by `,
-                `"react-docgen-typescript".`,
-                'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
-                'where it happens and used interfaces.',
-              ].join(' '),
-            );
-          }
-
-          const rootFileName = propInfo.declarations[0].fileName;
-          const propsTypeName = propInfo.declarations[0].name;
-
+          const { fileName: rootFileName, name: propsTypeName } = getPropDeclaration(componentInfo, propName);
           try {
             validateCallbackArguments(getCallbackArguments(tsProgram, rootFileName, propsTypeName, propName));
           } catch (err: OptOutStrictCatchTypes) {
@@ -496,6 +477,37 @@ export const defaultTests: DefaultTestObject = {
         expect(invalidProps).toEqual({});
       } catch (e: OptOutStrictCatchTypes) {
         throw new Error(defaultErrorMessages['consistent-callback-args-legacy'](testInfo, invalidProps));
+      }
+    });
+  },
+
+  /** Ensures that components have consistent callback type EventHandler */
+  'consistent-callback-type': (testInfo, componentInfo, tsProgram) => {
+    it('has consistent callback type (consistent-callback-type)', () => {
+      const { testOptions = {} } = testInfo;
+
+      const propNames = Object.keys(componentInfo.props);
+      const ignoreProps = testOptions['consistent-callback-type']?.ignoreProps || [];
+
+      const invalidProps = propNames.reduce<Record<string, Error>>((errors, propName) => {
+        if (!ignoreProps.includes(propName) && CALLBACK_REGEX.test(propName)) {
+          const { fileName: rootFileName, name: propsTypeName } = getPropDeclaration(componentInfo, propName);
+          try {
+            validateCallbackType(getCallbackTypeNode(tsProgram, rootFileName, propsTypeName, propName));
+          } catch (err: OptOutStrictCatchTypes) {
+            console.log('err', err);
+
+            return { ...errors, [propName]: err };
+          }
+        }
+
+        return errors;
+      }, {});
+
+      try {
+        expect(invalidProps).toEqual({});
+      } catch (e: OptOutStrictCatchTypes) {
+        throw new Error(defaultErrorMessages['consistent-callback-type'](testInfo, invalidProps));
       }
     });
   },
@@ -578,4 +590,29 @@ function classListToStrings(classList: DOMTokenList): string[] {
     result.push(classList[i]);
   }
   return result;
+}
+
+function getPropDeclaration(componentInfo: ComponentDoc, propName: string) {
+  const propInfo = componentInfo.props[propName];
+  if (!propInfo.declarations) {
+    throw new Error(
+      [
+        `Definition for "${propName}" does not have ".declarations" produced by "react-docgen-typescript".`,
+        'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
+        'where it happens and used interfaces.',
+      ].join(' '),
+    );
+  }
+
+  if (propInfo.declarations.length !== 1) {
+    throw new Error(
+      [
+        `Definition for "${propName}" has multiple elements in ".declarations" produced by `,
+        `"react-docgen-typescript".`,
+        'Please report a bug in Fluent UI repo if this happens. Include in a bug report details about file',
+        'where it happens and used interfaces.',
+      ].join(' '),
+    );
+  }
+  return propInfo.declarations[0];
 }
