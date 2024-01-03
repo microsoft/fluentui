@@ -137,14 +137,14 @@ The Fluent WC3 Dropdown is a form associated component that extends from the FAS
 **`<fluent-dropdown>`**
 
 | Attributes              | value      | Description                                                                                                                                                                          |
-| ----------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --- |
+| ----------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `aria-activedescendant` |            | Indicates the currently active or focused child element within a composite component.                                                                                                |
 | `aria-controls`         |            | Identifies the element(s) whose contents or presence are controlled by the current element, establishing a relationship between a controlling element and the controlled element(s). |
 | `aria-expanded`         |            | Indicates the current state of a collapsible element.                                                                                                                                |
 | `aria-haspopup`         | `listbox`  | Indicates that the current element has a popup context menu or submenu.                                                                                                              |
 | `current-value`         |            | Stores the current value of an input element. [RFC](https://github.com/microsoft/fast/issues/5119)                                                                                   |
 | `role`                  | `combobox` | Specifies the purpose or type of an element in the context of user interface components.                                                                                             |
-| `tabindex`              | `0`        | Determines the order in which an element receives focus when navigated using the keyboard.                                                                                           |     |
+| `tabindex`              | `0`        | Determines the order in which an element receives focus when navigated using the keyboard.                                                                                           |
 
 <br />
 
