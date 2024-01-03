@@ -1,18 +1,21 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, mergeCallbacks, useEventCallback, slot } from '@fluentui/react-utilities';
 import { useNavContext_unstable } from '../NavContext';
-import { NavGroupProps, NavGroupState } from './NavGroup.types';
+import { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
 
 /**
- * Create the state required to render NavGroup.
+ * Create the state required to render NavCategoryItem.
  *
- * The returned state can be modified with hooks such as useNavGroupStyles,
- * before being passed to renderNavGroup.
+ * The returned state can be modified with hooks such as useNavCategoryItemStyles,
+ * before being passed to renderNavCategoryItem.
  *
- * @param props - props from this instance of NavGroup
- * @param ref - reference to root HTMLButtonElement of NavGroup
+ * @param props - props from this instance of NavCategoryItem
+ * @param ref - reference to root HTMLButtonElement of NavCategoryItem
  */
-export const useNavGroup_unstable = (props: NavGroupProps, ref: React.Ref<HTMLButtonElement>): NavGroupState => {
+export const useNavCategoryItem_unstable = (
+  props: NavCategoryItemProps,
+  ref: React.Ref<HTMLButtonElement>,
+): NavCategoryItemState => {
   const { content, onClick, value } = props;
 
   const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
@@ -20,7 +23,7 @@ export const useNavGroup_unstable = (props: NavGroupProps, ref: React.Ref<HTMLBu
   const selected = selectedValue === value;
 
   const innerRef = React.useRef<HTMLElement>(null);
-  const onNavGroupClick = useEventCallback(
+  const onNavCategoryItemClick = useEventCallback(
     mergeCallbacks(onClick, event => onSelect(event, { type: 'click', event, value })),
   );
 
@@ -48,7 +51,7 @@ export const useNavGroup_unstable = (props: NavGroupProps, ref: React.Ref<HTMLBu
         role: 'nav',
         type: 'navigation',
         ...props,
-        onClick: onNavGroupClick,
+        onClick: onNavCategoryItemClick,
       }),
       { elementType: 'button' },
     ),

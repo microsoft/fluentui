@@ -3,13 +3,13 @@
 
 import { createElement } from '@fluentui/react-jsx-runtime';
 import { assertSlots } from '@fluentui/react-utilities';
-import type { NavGroupState, NavGroupSlots } from './NavGroup.types';
+import type { NavCategoryItemState, NavCategoryItemSlots } from './NavCategoryItem.types';
 
 /**
- * Render the final JSX of navGroup
+ * Render the final JSX of NavCategoryItem
  */
-export const renderNavGroup_unstable = (state: NavGroupState) => {
-  assertSlots<NavGroupSlots>(state);
+export const renderNavCategoryItem_unstable = (state: NavCategoryItemState) => {
+  assertSlots<NavCategoryItemSlots>(state);
 
   return (
     <state.root>
