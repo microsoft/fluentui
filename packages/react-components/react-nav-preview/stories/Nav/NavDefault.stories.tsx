@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Nav, NavGroup } from '@fluentui/react-nav-preview';
+import { Nav, NavCategoryItem } from '@fluentui/react-nav-preview';
 
 export const Default = () => {
   return (
     <Nav>
-      <NavGroup value="1">First</NavGroup>
-      <NavGroup value="2">Second</NavGroup>
-      <NavGroup value="3">Third</NavGroup>
+      <NavCategoryItem value="1">First</NavCategoryItem>
+      <NavCategoryItem value="2">Second</NavCategoryItem>
+      <NavCategoryItem value="3">Third</NavCategoryItem>
     </Nav>
   );
 };
