@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { RadioPickerProps, RadioPickerState } from './RadioPicker.types';
-import { RadioGroup } from '@fluentui/react-radio';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useRadioPickerState_unstable } from './useRadioPickerState';
 /**
@@ -14,18 +13,16 @@ import { useRadioPickerState_unstable } from './useRadioPickerState';
  * @param ref - reference to root HTMLDivElement of RadioPicker
  */
 export const useRadioPicker_unstable = (props: RadioPickerProps, ref: React.Ref<HTMLDivElement>): RadioPickerState => {
-  const { layout = 'row', columnCount = 2 } = props;
+  const { layout = 'row' } = props;
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
     axis: layout === 'row' ? 'both' : 'grid-linear',
     memorizeCurrent: true,
   });
 
-  console.log(columnCount);
-
-  const state = {
+  const state: RadioPickerState = {
     components: {
-      root: RadioGroup,
+      root: 'div' as const,
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
@@ -35,8 +32,6 @@ export const useRadioPicker_unstable = (props: RadioPickerProps, ref: React.Ref<
       }),
       { elementType: 'div' },
     ),
-    layout,
-    columnCount,
   };
 
   useRadioPickerState_unstable(state, props);

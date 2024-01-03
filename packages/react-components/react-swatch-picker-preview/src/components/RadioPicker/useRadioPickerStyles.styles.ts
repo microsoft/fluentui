@@ -22,6 +22,7 @@ const useStyles = makeStyles({
     gridTemplateColumns: `repeat(var(${columnCountGrid}), 28px)`,
   },
   row: {
+    display: 'flex',
     flexDirection: 'row',
   },
 });

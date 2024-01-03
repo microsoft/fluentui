@@ -9,7 +9,7 @@ export const Default = () => (
       <RadioSwatch value="blue" label="Blue" />
     </RadioPicker>
     <h2>Grid</h2>
-    <RadioPicker layout={'grid'}>
+    <RadioPicker layout={'grid'} columnCount={3}>
       <RadioSwatch value="red" label="Red" />
       <RadioSwatch value="green" label="Green" />
       <RadioSwatch value="blue" label="Blue" />

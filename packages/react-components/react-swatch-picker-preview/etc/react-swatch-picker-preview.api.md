@@ -10,7 +10,8 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Radio } from '@fluentui/react-radio';
-import type { RadioGroup } from '@fluentui/react-components';
+import type { RadioGroupProps } from '@fluentui/react-components';
+import type { RadioGroupSlots } from '@fluentui/react-components';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -68,22 +69,41 @@ export type ImageSwatchSlots = {
 // @public
 export type ImageSwatchState = ComponentState<ImageSwatchSlots> & Pick<ImageSwatchProps, 'disabled' | 'selected' | 'empty' | 'value'>;
 
+// @public (undocumented)
+export const radioCSSVars: {
+    swatchColor: string;
+};
+
 // @public
 export const RadioPicker: ForwardRefComponent<RadioPickerProps>;
 
 // @public (undocumented)
 export const radioPickerClassNames: SlotClassNames<RadioPickerSlots>;
 
-// @public
-export type RadioPickerProps = ComponentProps<RadioPickerSlots> & {};
+// @public (undocumented)
+export type RadioPickerContextValue = Pick<RadioPickerProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required' | 'aria-describedby'>;
 
 // @public (undocumented)
-export type RadioPickerSlots = {
-    root: Slot<typeof RadioGroup>;
+export type RadioPickerContextValues = {
+    radioPicker: RadioPickerContextValue;
+};
+
+// @public (undocumented)
+export const radioPickerCSSVars: {
+    columnCountGrid: string;
 };
 
 // @public
-export type RadioPickerState = ComponentState<RadioPickerSlots>;
+export type RadioPickerProps = ComponentProps<RadioPickerSlots> & Omit<RadioGroupProps, 'layout'> & {
+    layout?: 'grid' | 'row';
+    columnCount?: number;
+};
+
+// @public (undocumented)
+export type RadioPickerSlots = RadioGroupSlots;
+
+// @public
+export type RadioPickerState = ComponentState<RadioPickerSlots> & Pick<RadioPickerProps, 'layout' | 'columnCount' | 'name' | 'value' | 'defaultValue' | 'disabled' | 'required'>;
 
 // @public
 export const RadioSwatch: ForwardRefComponent<RadioSwatchProps>;
@@ -100,7 +120,7 @@ export type RadioSwatchSlots = {
 };
 
 // @public
-export type RadioSwatchState = ComponentState<RadioSwatchSlots>;
+export type RadioSwatchState = ComponentState<RadioSwatchSlots> & Pick<RadioSwatchProps, 'value'>;
 
 // @public
 export const renderColorSwatch_unstable: (state: ColorSwatchState) => JSX.Element;
@@ -109,7 +129,7 @@ export const renderColorSwatch_unstable: (state: ColorSwatchState) => JSX.Elemen
 export const renderImageSwatch_unstable: (state: ImageSwatchState) => JSX.Element;
 
 // @public
-export const renderRadioPicker_unstable: (state: RadioPickerState) => JSX.Element;
+export const renderRadioPicker_unstable: (state: RadioPickerState, contextValues: RadioPickerContextValues) => JSX.Element;
 
 // @public
 export const renderRadioSwatch_unstable: (state: RadioSwatchState) => JSX.Element;

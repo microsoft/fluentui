@@ -6,9 +6,8 @@ const { columnCountGrid } = radioPickerCSSVars;
 export const useRadioPickerState_unstable = (state: RadioPickerState, props: RadioPickerProps) => {
   const { columnCount } = props;
 
-  console.log(columnCount);
   const rootVariables = {
-    [columnCountGrid]: 3, //columnCount,
+    [columnCountGrid]: columnCount,
   };
   // Root props
   state.root.style = {

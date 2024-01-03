@@ -5,18 +5,19 @@ import { useRadioPicker_unstable } from './useRadioPicker';
 import { renderRadioPicker_unstable } from './renderRadioPicker';
 import { useRadioPickerStyles_unstable } from './useRadioPickerStyles.styles';
 import type { RadioPickerProps } from './RadioPicker.types';
+import { useRadioPickerContextValues } from './useRadioPickerContextValues';
 
 /**
  * RadioPicker component - TODO: add more docs
  */
 export const RadioPicker: ForwardRefComponent<RadioPickerProps> = React.forwardRef((props, ref) => {
   const state = useRadioPicker_unstable(props, ref);
+  const contextValues = useRadioPickerContextValues(state);
 
   useRadioPickerStyles_unstable(state);
-  // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
-  // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
   useCustomStyleHook_unstable('useRadioPickerStyles_unstable')(state);
-  return renderRadioPicker_unstable(state);
+
+  return renderRadioPicker_unstable(state, contextValues);
 });
 
 RadioPicker.displayName = 'RadioPicker';
