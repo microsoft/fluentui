@@ -42,10 +42,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     : imperativeRef;
   const { clearSelection, selectedOptions, selectOption } = useSelection(props);
 
-  // track whether keyboard focus outline should be shown
-  // tabster/keyborg doesn't work here, since the actual keyboard focus target doesn't move
-  const [focusVisible, setFocusVisible] = React.useState(false);
-
   const onKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
     const action = getDropdownActionFromKey(event, { open: true });
     const activeOptionId = activeDescendantImperativeRef.current?.active();
@@ -79,17 +75,10 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
         activeOption && selectOption(event, activeOption);
         break;
     }
-
-    setFocusVisible(true);
-  };
-
-  const onMouseOver = (event: React.MouseEvent<HTMLElement>) => {
-    setFocusVisible(false);
   };
 
   // get state from parent combobox, if it exists
   const hasComboboxContext = useHasParentContext(ComboboxContext);
-  const comboboxFocusVisible = useContextSelector(ComboboxContext, ctx => ctx.focusVisible);
   const comboboxSelectedOptions = useContextSelector(ComboboxContext, ctx => ctx.selectedOptions);
   const comboboxSelectOption = useContextSelector(ComboboxContext, ctx => ctx.selectOption);
 
@@ -97,14 +86,14 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   const optionContextValues = hasComboboxContext
     ? {
         activeOption: undefined,
-        focusVisible: comboboxFocusVisible,
+        focusVisible: false,
         selectedOptions: comboboxSelectedOptions,
         selectOption: comboboxSelectOption,
         setActiveOption: () => null,
       }
     : {
         activeOption: undefined,
-        focusVisible,
+        focusVisible: false,
         selectedOptions,
         selectOption,
         setActiveOption: () => null,
@@ -135,7 +124,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   };
 
   state.root.onKeyDown = useEventCallback(mergeCallbacks(state.root.onKeyDown, onKeyDown));
-  state.root.onMouseOver = useEventCallback(mergeCallbacks(state.root.onMouseOver, onMouseOver));
 
   return state;
 };

@@ -7,7 +7,6 @@ export function useListboxContextValues(state: ListboxState): ListboxContextValu
   const hasComboboxContext = useHasParentContext(ComboboxContext);
   const {
     activeOption,
-    focusVisible,
     multiselect,
     registerOption,
     selectedOptions,
@@ -23,7 +22,7 @@ export function useListboxContextValues(state: ListboxState): ListboxContextValu
 
   const listbox = {
     activeOption,
-    focusVisible,
+    focusVisible: false,
     multiselect,
     registerOption: registerOptionValue,
     selectedOptions,

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { makeStyles, Option, shorthands, useId } from '@fluentui/react-components';
-import { Listbox } from '@fluentui/react-combobox';
+import { Combobox, makeStyles, Option, shorthands, useId } from '@fluentui/react-components';
 import type { ComboboxProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -20,14 +19,14 @@ export const Default = (props: Partial<ComboboxProps>) => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <label id={comboId}>FOOO</label>
-      <Listbox>
+      <label id={comboId}>Best pet</label>
+      <Combobox aria-labelledby={comboId} placeholder="Select an animal" {...props}>
         {options.map(option => (
           <Option key={option} disabled={option === 'Ferret'}>
             {option}
           </Option>
         ))}
-      </Listbox>
+      </Combobox>
     </div>
   );
 };

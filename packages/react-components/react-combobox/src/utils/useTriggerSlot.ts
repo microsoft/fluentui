@@ -7,15 +7,7 @@ import type { ComboboxBaseState } from './ComboboxBase.types';
 
 export type UseTriggerSlotState = Pick<
   ComboboxBaseState,
-  | 'activeOption'
-  | 'getOptionById'
-  | 'open'
-  | 'selectOption'
-  | 'setFocusVisible'
-  | 'setOpen'
-  | 'multiselect'
-  | 'value'
-  | 'setHasFocus'
+  'activeOption' | 'getOptionById' | 'open' | 'selectOption' | 'setOpen' | 'multiselect' | 'value' | 'setHasFocus'
 >;
 
 type UseTriggerSlotOptions = {
@@ -46,7 +38,7 @@ export function useTriggerSlot(
   options: UseTriggerSlotOptions & { elementType: 'input' | 'button' },
 ): SlotComponentType<ExtractSlotProps<Slot<'button'>>> | SlotComponentType<ExtractSlotProps<Slot<'input'>>> {
   const {
-    state: { open, selectOption, setFocusVisible, setOpen, multiselect, setHasFocus, getOptionById },
+    state: { open, selectOption, setOpen, multiselect, setHasFocus, getOptionById },
     defaultProps,
     elementType,
     activeDescendantImperativeRef,
@@ -109,7 +101,6 @@ export function useTriggerSlot(
           break;
         case 'Open':
           event.preventDefault();
-          setFocusVisible(true);
           setOpen(event, true);
           break;
         case 'Close':
@@ -129,17 +120,8 @@ export function useTriggerSlot(
           !multiselect && activeOption && selectOption(event, activeOption);
           break;
       }
-
-      setFocusVisible(true);
     },
     trigger.onKeyDown,
-  );
-
-  trigger.onMouseOver = mergeCallbacks(
-    (event: React.MouseEvent<HTMLButtonElement> & React.MouseEvent<HTMLInputElement>) => {
-      setFocusVisible(false);
-    },
-    trigger.onMouseOver,
   );
 
   return trigger as SlotComponentType<ExtractSlotProps<Slot<'input'>>>;

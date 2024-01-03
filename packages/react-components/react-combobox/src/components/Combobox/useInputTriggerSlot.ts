@@ -34,7 +34,6 @@ export function useInputTriggerSlot(
       value,
       selectOption,
       setValue,
-      setFocusVisible,
       multiselect,
       selectedOptions,
       clearSelection,
@@ -91,7 +90,6 @@ export function useInputTriggerSlot(
 
     // handle updating active option based on input
     const matchingOption = getOptionFromInput(inputValue);
-    setFocusVisible(true);
 
     // clear selection for single-select if the input value no longer matches the selection
     if (!multiselect && selectedOptions.length === 1 && (inputValue.length < 1 || !matchingOption)) {

@@ -57,7 +57,9 @@ export type OptionState = ComponentState<OptionSlots> &
      */
     active: boolean;
 
-    // Whether the keyboard focus outline style should be visible
+    /**
+     * @deprecated
+     */
     focusVisible: boolean;
 
     /* If true, the option is part of a multiselect combobox or listbox */

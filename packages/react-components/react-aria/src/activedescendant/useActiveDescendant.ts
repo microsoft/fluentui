@@ -1,14 +1,19 @@
 import * as React from 'react';
+import { useMergedRefs } from '@fluentui/react-utilities';
 import { useOptionWalker } from './useOptionWalker';
 import type { ActiveDescendantImperativeRef, ActiveDescendantOptions } from './types';
 import { ACTIVEDESCENDANT_ATTRIBUTE } from './constants';
-import { useMergedRefs } from '@fluentui/react-utilities';
+import { useOnKeyboardNavigationChange } from '@fluentui/react-tabster';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(
   options: ActiveDescendantOptions,
 ) {
+  const { targetDocument } = useFluent();
+  const focusVisibleRef = React.useRef(false);
   const { imperativeRef: imperativeRefProp, matchOption } = options;
   const activeParentRef = React.useRef<TActiveParentElement>(null);
+  const activeIdRef = React.useRef<string | null>(null);
   const { listboxRef, optionWalker } = useOptionWalker<TListboxElement>({ matchOption });
   const imperativeRef = React.useRef<ActiveDescendantImperativeRef>({
     active() {
@@ -45,8 +50,26 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   });
 
   const getActiveDescendant = () => {
-    return listboxRef.current?.querySelector<HTMLElement>(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`);
+    if (activeIdRef.current) {
+      return targetDocument?.getElementById(activeIdRef.current);
+    }
+
+    return null;
   };
+
+  useOnKeyboardNavigationChange(isNavigatingWithKeyboard => {
+    focusVisibleRef.current = isNavigatingWithKeyboard;
+    const active = getActiveDescendant();
+    if (!active) {
+      return;
+    }
+
+    if (isNavigatingWithKeyboard) {
+      active.setAttribute(ACTIVEDESCENDANT_ATTRIBUTE, '');
+    } else {
+      active.removeAttribute(ACTIVEDESCENDANT_ATTRIBUTE);
+    }
+  });
 
   const scrollActiveIntoView = (active: HTMLElement) => {
     if (!listboxRef.current) {
@@ -76,12 +99,17 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
 
   const setActiveDescendant = (nextActive: HTMLElement | undefined) => {
     const active = getActiveDescendant();
+    activeIdRef.current = null;
     if (active) {
       active.removeAttribute(ACTIVEDESCENDANT_ATTRIBUTE);
     }
 
     if (nextActive) {
-      nextActive.setAttribute(ACTIVEDESCENDANT_ATTRIBUTE, '');
+      if (focusVisibleRef.current) {
+        nextActive.setAttribute(ACTIVEDESCENDANT_ATTRIBUTE, '');
+      }
+
+      activeIdRef.current = nextActive.id;
       scrollActiveIntoView(nextActive);
       activeParentRef.current?.setAttribute('aria-activedescendant', nextActive.id);
     } else {

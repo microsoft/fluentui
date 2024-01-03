@@ -58,7 +58,6 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
 
   // context values
   const { imperativeRef: activeDescendantImperativeRef } = useActiveDescendantContext();
-  const focusVisible = useContextSelector(ListboxContext, ctx => ctx.focusVisible);
   const multiselect = useContextSelector(ListboxContext, ctx => ctx.multiselect);
   const registerOption = useContextSelector(ListboxContext, ctx => ctx.registerOption);
   const selected = useContextSelector(ListboxContext, ctx => {
@@ -132,7 +131,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       elementType: 'span',
     }),
     disabled,
-    focusVisible,
+    focusVisible: false,
     multiselect,
     selected,
     active: false,

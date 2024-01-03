@@ -80,7 +80,9 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
     /* Option data for the currently highlighted option (not the selected option) */
     activeOption?: OptionValue;
 
-    // Whether the keyboard focus outline style should be visible
+    /**
+     * @deprecated
+     */
     focusVisible: boolean;
 
     /**
@@ -96,6 +98,9 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
 
     setActiveOption: React.Dispatch<React.SetStateAction<OptionValue | undefined>>;
 
+    /**
+     * @deprecated
+     */
     setFocusVisible(focusVisible: boolean): void;
 
     setHasFocus(hasFocus: boolean): void;

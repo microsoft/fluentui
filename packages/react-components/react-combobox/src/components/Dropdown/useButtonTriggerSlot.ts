@@ -24,7 +24,7 @@ export function useButtonTriggerSlot(
   options: UseButtonTriggerSlotOptions,
 ): SlotComponentType<ExtractSlotProps<Slot<'button'>>> {
   const {
-    state: { open, setOpen, setFocusVisible, getOptionById },
+    state: { open, setOpen, getOptionById },
     defaultProps,
     activeDescendantImperativeRef,
   } = options;
@@ -89,7 +89,6 @@ export function useButtonTriggerSlot(
       if (nextOption?.id) {
         activeDescendantImperativeRef.current?.focus(nextOption.id);
       }
-      setFocusVisible(true);
     }
   };
 
