@@ -32,7 +32,7 @@ storiesOf('Radio Converged', module)
     includeDarkMode: true,
     includeHighContrast: true,
   })
-  .addStory('indicator+checked', () => <Radio checked indicator={<AirplaneFilled />} />);
+  .addStory('indicator+checked', () => <Radio checked indicator={<AirplaneFilled />} label="Custom indicator" />);
 
 storiesOf('Radio Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
@@ -43,7 +43,7 @@ storiesOf('Radio Converged', module)
     includeDarkMode: true,
     includeHighContrast: true,
   })
-  .addStory('indicator+unchecked', () => <Radio indicator={<AirplaneFilled />} />)
+  .addStory('indicator+unchecked', () => <Radio indicator={<AirplaneFilled />} label="Custom indicator" />)
   .addStory('no-label', () => <Radio />, { includeRtl: true })
   .addStory('label-after', () => <Radio labelPosition="after" label="Label after" />, { includeRtl: true })
   .addStory('label-below', () => <Radio labelPosition="below" label="Label below" />, { includeRtl: true })
