@@ -159,45 +159,29 @@ export const styles = css`
     grid-template-rows: min-content 1fr min-content;
     background: ${colorNeutralBackground1};
     width: inherit;
-    padding-top: ${spacingVerticalXL};
+    padding: ${spacingVerticalXL} ${spacingHorizontalXXL};
     position: absolute;
     width: inherit;
   }
 
   .header {
-    padding: 0 0 ${spacingVerticalS};
-    display: flex;
-    flex-direction: column;
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};
     font-weight: ${fontWeightSemibold};
-  }
-
-  .title {
-    padding: 0 ${spacingHorizontalL} 0 ${spacingHorizontalXXL};
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding-bottom: ${spacingVerticalS};
   }
 
   .content {
     flex-grow: 1;
     position: relative;
-    padding: 0 ${spacingHorizontalXXL} ${spacingVerticalXXL};
     overflow-y: auto;
-  }
-
-  ::slotted([slot='navigation']) {
-    column-gap: ${spacingHorizontalS};
-    padding: 0 ${spacingHorizontalL};
-    margin-bottom: ${spacingVerticalS};
   }
 
   ::slotted([slot='footer']) {
     display: flex;
     flex-direction: row;
     column-gap: ${spacingHorizontalS};
-    padding: ${spacingVerticalL} ${spacingHorizontalXXL} ${spacingVerticalXXL};
+    padding-top: ${spacingVerticalL};
     border-top: ${strokeWidthThin} solid var(--drawer-overflow-border, ${colorTransparentStroke});
   }
 

@@ -1,6 +1,5 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
-import { isTabbable } from 'tabbable';
-import { eventAnimationEnd, keyEscape, keyTab } from '@microsoft/fast-web-utilities';
+import { eventAnimationEnd, keyEscape } from '@microsoft/fast-web-utilities';
 import { DrawerModalType, DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
 
 export class Drawer extends FASTElement {
@@ -8,18 +7,14 @@ export class Drawer extends FASTElement {
 
   public connectedCallback(): void {
     super.connectedCallback();
-    document.addEventListener('keydown', this.handleDocumentKeydown);
 
     Updates.enqueue(() => {
-      this.updateTrapFocus();
       this.setComponent();
     });
   }
 
   public disconnectedCallback(): void {
     super.disconnectedCallback();
-    document.removeEventListener('keydown', this.handleDocumentKeydown);
-    this.updateTrapFocus(false);
   }
 
   /**
@@ -134,29 +129,10 @@ export class Drawer extends FASTElement {
   }
 
   /**
-   * @public
-   * Method called when the 'modalType' attribute changes
-   */
-  public modalTypeChanged(oldValue: DrawerModalType, newValue: DrawerModalType): void {
-    if (newValue !== oldValue) {
-      if (newValue == DrawerModalType.nonModal) {
-        this.trapFocus = false;
-      } else {
-        this.trapFocus = true;
-      }
-    }
-  }
-
-  /**
    * Sets the component state based on the `open` property.
    * @public
    */
   public setComponent(): void {
-    if (this.modalType == DrawerModalType.nonModal) {
-      this.trapFocus = false;
-    } else {
-      this.trapFocus = true;
-    }
     if (this.open) {
       this.show();
     }
@@ -233,18 +209,6 @@ export class Drawer extends FASTElement {
   };
 
   /**
-   * Indicates whether the drawer is currently trapping focus.
-   * @internal
-   */
-  private isTrappingFocus: boolean = false;
-
-  /**
-   * @private
-   * Indicates whether focus should be trapped within the dialog
-   */
-  private trapFocus: boolean = false;
-
-  /**
    * A function that calls the animation end handler.
    * @private
    */
@@ -276,176 +240,5 @@ export class Drawer extends FASTElement {
       this.open = false;
       this.closing = false;
     }
-  }
-
-  /**
-   * @private
-   * Handles keydown events on the document
-   * @param e - The keydown event
-   */
-  private handleDocumentKeydown = (e: KeyboardEvent): void => {
-    if (!e.defaultPrevented && this.dialog.open) {
-      switch (e.key) {
-        case keyTab:
-          this.handleTabKeyDown(e);
-          break;
-      }
-    }
-  };
-
-  /**
-   * @private
-   * Handles tab keydown events
-   * @param e - The keydown event
-   */
-  private handleTabKeyDown = (e: KeyboardEvent): void => {
-    if (!this.trapFocus || !this.dialog.open) {
-      return;
-    }
-
-    const bounds: (HTMLElement | SVGElement)[] = this.getTabQueueBounds();
-
-    if (bounds.length === 1) {
-      bounds[0].focus();
-      e.preventDefault();
-      return;
-    }
-
-    if (e.shiftKey && e.target === bounds[0]) {
-      bounds[bounds.length - 1].focus();
-      e.preventDefault();
-    } else if (!e.shiftKey && e.target === bounds[bounds.length - 1]) {
-      bounds[0].focus();
-      e.preventDefault();
-    }
-
-    return;
-  };
-
-  /**
-   * @private
-   * Gets the bounds of the tab queue
-   * @returns (HTMLElement | SVGElement)[]
-   */
-  private getTabQueueBounds = (): (HTMLElement | SVGElement)[] => {
-    const bounds: HTMLElement[] = [];
-
-    return Drawer.reduceTabbableItems(bounds, this);
-  };
-
-  /**
-   * @private
-   * Focuses the first element in the tab queue
-   */
-  private focusFirstElement = (): void => {
-    const bounds: (HTMLElement | SVGElement)[] = this.getTabQueueBounds();
-
-    if (bounds.length > 0) {
-      bounds[0].focus();
-    } else {
-      if (this.dialog instanceof HTMLElement) {
-        this.dialog.focus();
-      }
-    }
-  };
-
-  /**
-   * @private
-   * Determines if focus should be forced
-   * @param currentFocusElement - The currently focused element
-   * @returns boolean
-   */
-  private shouldForceFocus = (currentFocusElement: Element | null): boolean => {
-    return this.isTrappingFocus && !this.contains(currentFocusElement);
-  };
-
-  /**
-   * @private
-   * Determines if focus should be trapped
-   * @returns boolean
-   */
-  private shouldTrapFocus = (): boolean => {
-    return this.trapFocus && this.dialog.open;
-  };
-
-  /**
-   * @private
-   * Handles focus events on the document
-   * @param e - The focus event
-   */
-  private handleDocumentFocus = (e: Event): void => {
-    if (!e.defaultPrevented && this.shouldForceFocus(e.target as HTMLElement)) {
-      this.focusFirstElement();
-      e.preventDefault();
-    }
-  };
-
-  /**
-   * @private
-   * Updates the state of focus trapping
-   * @param shouldTrapFocusOverride - Optional override for whether focus should be trapped
-   */
-  private updateTrapFocus = (shouldTrapFocusOverride?: boolean): void => {
-    const shouldTrapFocus = shouldTrapFocusOverride === undefined ? this.shouldTrapFocus() : shouldTrapFocusOverride;
-
-    if (shouldTrapFocus && !this.isTrappingFocus) {
-      this.isTrappingFocus = true;
-      // Add an event listener for focusin events if we are trapping focus
-      document.addEventListener('focusin', this.handleDocumentFocus);
-      Updates.enqueue(() => {
-        if (this.shouldForceFocus(document.activeElement)) {
-          this.focusFirstElement();
-        }
-      });
-    } else if (!shouldTrapFocus && this.isTrappingFocus) {
-      this.isTrappingFocus = false;
-      // remove event listener if we are not trapping focus
-      document.removeEventListener('focusin', this.handleDocumentFocus);
-    }
-  };
-
-  /**
-   * @private
-   * Reduces the list of tabbable items
-   * @param elements - The current list of elements
-   * @param element - The element to consider adding to the list
-   * @returns HTMLElement[]
-   */
-  private static reduceTabbableItems(elements: HTMLElement[], element: FASTElement): HTMLElement[] {
-    if (element.getAttribute('tabindex') === '-1') {
-      return elements;
-    }
-
-    if (isTabbable(element) || (Drawer.isFocusableFastElement(element) && Drawer.hasTabbableShadow(element))) {
-      elements.push(element);
-      return elements;
-    }
-
-    return Array.from(element.children).reduce<HTMLElement[]>(
-      (elements, currentElement) => Drawer.reduceTabbableItems(elements, currentElement as FASTElement),
-      elements,
-    );
-  }
-
-  /**
-   * @private
-   * Determines if an element is a focusable FASTElement
-   * @param element - The element to check
-   * @returns boolean
-   */
-  private static isFocusableFastElement(element: FASTElement): boolean {
-    return !!element.$fastController?.definition.shadowOptions?.delegatesFocus;
-  }
-
-  /**
-   * @private
-   * Determines if an element has a tabbable shadow
-   * @param element - The element to check
-   * @returns boolean
-   */
-  private static hasTabbableShadow(element: FASTElement) {
-    return Array.from(element.shadowRoot?.querySelectorAll('*') ?? []).some(x => {
-      return isTabbable(x);
-    });
   }
 }

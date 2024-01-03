@@ -26,13 +26,7 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
     >
       <div class="drawer" part="drawer">
         <div class="header" part="header">
-          <nav class="navigation">
-            <slot name="navigation"></slot>
-          </nav>
-          <div class="title" part="title">
-            <slot name="title"></slot>
-            <slot name="action"></slot>
-          </div>
+          <slot name="header"></slot>
         </div>
         <div class="content" part="content">
           <slot></slot>

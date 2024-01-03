@@ -2,7 +2,7 @@ import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import { RadioGroup } from '../radio-group/radio-group.js';
-import { colorNeutralStroke1, colorNeutralStroke2 } from '../theme/design-tokens.js';
+import { colorNeutralStroke1 } from '../theme/design-tokens.js';
 import type { Drawer as FluentDrawer } from './drawer.js';
 import { DrawerModalType, DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
 import './define.js';
@@ -20,48 +20,6 @@ const dismissed20Regular = html`<svg
 >
   <path
     d="m4.09 4.22.06-.07a.5.5 0 0 1 .63-.06l.07.06L10 9.29l5.15-5.14a.5.5 0 0 1 .63-.06l.07.06c.18.17.2.44.06.63l-.06.07L10.71 10l5.14 5.15c.18.17.2.44.06.63l-.06.07a.5.5 0 0 1-.63.06l-.07-.06L10 10.71l-5.15 5.14a.5.5 0 0 1-.63.06l-.07-.06a.5.5 0 0 1-.06-.63l.06-.07L9.29 10 4.15 4.85a.5.5 0 0 1-.06-.63l.06-.07-.06.07Z"
-    fill="currentColor"
-  ></path>
-</svg>`;
-
-const arrowLeft20Regular = html`<svg
-  fill="currentColor"
-  aria-hidden="true"
-  width="20"
-  height="20"
-  viewBox="0 0 20 20"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    d="M9.16 16.87a.5.5 0 1 0 .67-.74L3.67 10.5H17.5a.5.5 0 0 0 0-1H3.67l6.16-5.63a.5.5 0 0 0-.67-.74L2.24 9.44a.75.75 0 0 0 0 1.11l6.92 6.32Z"
-    fill="currentColor"
-  ></path>
-</svg>`;
-
-const arrowClockwise20Regular = html`<svg
-  fill="currentColor"
-  aria-hidden="true"
-  width="20"
-  height="20"
-  viewBox="0 0 20 20"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    d="M3.07 9.05a7 7 0 0 1 12.55-3.22l.13.17H12.5a.5.5 0 1 0 0 1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 0-1 0v2.2a8 8 0 1 0 1.99 4.77.5.5 0 0 0-1 .08 7 7 0 1 1-13.92-.5Z"
-    fill="currentColor"
-  ></path>
-</svg>`;
-
-const settings20Regular = html`<svg
-  fill="currentColor"
-  aria-hidden="true"
-  width="20"
-  height="20"
-  viewBox="0 0 20 20"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    d="M1.91 7.38A8.5 8.5 0 0 1 3.7 4.3a.5.5 0 0 1 .54-.13l1.92.68a1 1 0 0 0 1.32-.76l.36-2a.5.5 0 0 1 .4-.4 8.53 8.53 0 0 1 3.55 0c.2.04.35.2.38.4l.37 2a1 1 0 0 0 1.32.76l1.92-.68a.5.5 0 0 1 .54.13 8.5 8.5 0 0 1 1.78 3.08c.06.2 0 .4-.15.54l-1.56 1.32a1 1 0 0 0 0 1.52l1.56 1.32a.5.5 0 0 1 .15.54 8.5 8.5 0 0 1-1.78 3.08.5.5 0 0 1-.54.13l-1.92-.68a1 1 0 0 0-1.32.76l-.37 2a.5.5 0 0 1-.38.4 8.53 8.53 0 0 1-3.56 0 .5.5 0 0 1-.39-.4l-.36-2a1 1 0 0 0-1.32-.76l-1.92.68a.5.5 0 0 1-.54-.13 8.5 8.5 0 0 1-1.78-3.08.5.5 0 0 1 .15-.54l1.56-1.32a1 1 0 0 0 0-1.52L2.06 7.92a.5.5 0 0 1-.15-.54Zm1.06 0 1.3 1.1a2 2 0 0 1 0 3.04l-1.3 1.1c.3.79.72 1.51 1.25 2.16l1.6-.58a2 2 0 0 1 2.63 1.53l.3 1.67a7.56 7.56 0 0 0 2.5 0l.3-1.67a2 2 0 0 1 2.64-1.53l1.6.58a7.5 7.5 0 0 0 1.24-2.16l-1.3-1.1a2 2 0 0 1 0-3.04l1.3-1.1a7.5 7.5 0 0 0-1.25-2.16l-1.6.58a2 2 0 0 1-2.63-1.53l-.3-1.67a7.55 7.55 0 0 0-2.5 0l-.3 1.67A2 2 0 0 1 5.81 5.8l-1.6-.58a7.5 7.5 0 0 0-1.24 2.16ZM7.5 10a2.5 2.5 0 1 1 5 0 2.5 2.5 0 0 1-5 0Zm1 0a1.5 1.5 0 1 0 3 0 1.5 1.5 0 0 0-3 0Z"
     fill="currentColor"
   ></path>
 </svg>`;
@@ -180,8 +138,9 @@ const storyTemplate = html<DrawerStoryArgs>`
           size="${x => x.size}"
           modal-type="${x => x.modalType}"
           type="${x => x.type}"
+          aria-labelledby="disaster"
         >
-          <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"
+          <fluent-text slot="header" font="base" size="500" weight="semibold" as="h1"
             ><h1>Drawer Header</h1></fluent-text
           >
           <div class="row-gap--16 column flex">
@@ -238,7 +197,7 @@ const storyTemplate = html<DrawerStoryArgs>`
           modal-type="${x => x.modalType}"
           type="${x => x.type}"
         >
-          <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"
+          <fluent-text slot="header" font="base" size="500" weight="semibold" as="h1"
             ><h1>Drawer Header</h1></fluent-text
           >
           <div class="row-gap--16 column flex">
@@ -336,17 +295,19 @@ export const Drawer = renderComponent(storyTemplate).bind({});
 export const Modal = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify--center full-height">
     <div>
-      <fluent-drawer id="drawer-modal">
-        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Modal</h1></fluent-text>
-        <fluent-button
-          slot="action"
-          appearance="transparent"
-          icon-only
-          aria-label="close"
-          @click="${() => hideDrawer('drawer-modal')}"
-        >
-          ${dismissed20Regular}
-        </fluent-button>
+      <fluent-drawer id="drawer-modal" aria-labelledby="disaster">
+        <div slot="header" class="flex justify--space-between">
+          <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Modal</h1></fluent-text>
+          <fluent-button
+            slot="action"
+            appearance="transparent"
+            icon-only
+            aria-label="close"
+            @click="${() => hideDrawer('drawer-modal')}"
+          >
+            ${dismissed20Regular}
+          </fluent-button>
+        </div>
         <div class="row-gap--16 column flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
             <p>
@@ -382,7 +343,7 @@ export const Alert = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify--center full-height">
     <div>
       <fluent-drawer id="drawer-alert" modal-type="alert">
-        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Alert</h1></fluent-text>
+        <fluent-text slot="header" font="base" size="500" weight="semibold" as="h1"><h1>Alert</h1></fluent-text>
         <div class="row-gap--16 column flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
             <p>
@@ -422,16 +383,18 @@ export const NonModal = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify--center full-height">
     <div>
       <fluent-drawer id="drawer-nonmodal" modal-type="non-modal">
-        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Non Modal</h1></fluent-text>
-        <fluent-button
-          slot="action"
-          appearance="transparent"
-          icon-only
-          aria-label="close"
-          @click="${() => hideDrawer('drawer-nonmodal')}"
-        >
-          ${dismissed20Regular}
-        </fluent-button>
+        <div slot="header" class="flex justify--space-between">
+          <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Non Modal</h1></fluent-text>
+          <fluent-button
+            slot="action"
+            appearance="transparent"
+            icon-only
+            aria-label="close"
+            @click="${() => hideDrawer('drawer-nonmodal')}"
+          >
+            ${dismissed20Regular}
+          </fluent-button>
+        </div>
         <div class="row-gap--16 column flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
             <p>
@@ -469,16 +432,18 @@ export const Overlay = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify--center full-height">
     <div>
       <fluent-drawer id="drawer-overlay" type="overlay">
-        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Overlay</h1></fluent-text>
-        <fluent-button
-          slot="action"
-          appearance="transparent"
-          icon-only
-          aria-label="close"
-          @click="${() => hideDrawer('drawer-overlay')}"
-        >
-          ${dismissed20Regular}
-        </fluent-button>
+        <div slot="header" class="flex justify--space-between">
+          <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Overlay</h1></fluent-text>
+          <fluent-button
+            slot="action"
+            appearance="transparent"
+            icon-only
+            aria-label="close"
+            @click="${() => hideDrawer('drawer-overlay')}"
+          >
+            ${dismissed20Regular}
+          </fluent-button>
+        </div>
         <div class="row-gap--16 column flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
             <p>
@@ -514,16 +479,18 @@ export const Overlay = renderComponent(html<DrawerStoryArgs>`
 export const Inline = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify--space-between full-height">
     <fluent-drawer position="start" size="small" id="drawer-inline-start" type="inline" modal-type="non-modal">
-      <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Inline</h1></fluent-text>
-      <fluent-button
-        slot="action"
-        appearance="transparent"
-        icon-only
-        aria-label="close"
-        @click="${() => hideDrawer('drawer-inline-start')}"
-      >
-        ${dismissed20Regular}
-      </fluent-button>
+      <div slot="header" class="flex justify--space-between">
+        <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Inline</h1></fluent-text>
+        <fluent-button
+          slot="action"
+          appearance="transparent"
+          icon-only
+          aria-label="close"
+          @click="${() => hideDrawer('drawer-inline-start')}"
+        >
+          ${dismissed20Regular}
+        </fluent-button>
+      </div>
       <div class="row-gap--16 column flex">
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>
@@ -559,16 +526,18 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
       >
     </div>
     <fluent-drawer position="end" size="small" id="drawer-inline-end" type="inline" modal-type="non-modal">
-      <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Inline</h1></fluent-text>
-      <fluent-button
-        slot="action"
-        appearance="transparent"
-        icon-only
-        aria-label="close"
-        @click="${() => hideDrawer('drawer-inline-end')}"
-      >
-        ${dismissed20Regular}
-      </fluent-button>
+      <div slot="header" class="flex justify--space-between">
+        <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Inline</h1></fluent-text>
+        <fluent-button
+          slot="action"
+          appearance="transparent"
+          icon-only
+          aria-label="close"
+          @click="${() => hideDrawer('drawer-inline-end')}"
+        >
+          ${dismissed20Regular}
+        </fluent-button>
+      </div>
       <div class="row-gap--16 column flex">
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>
@@ -589,18 +558,18 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify--space-between full-height">
     <div>
       <fluent-drawer type="inline" id="drawer-position-start" size="small">
-        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"
-          ><h1>Drawer Position Start</h1></fluent-text
-        >
-        <fluent-button
-          slot="action"
-          appearance="transparent"
-          icon-only
-          aria-label="close"
-          @click="${() => hideDrawer('drawer-position-start')}"
-        >
-          ${dismissed20Regular}
-        </fluent-button>
+        <div slot="header" class="flex justify--space-between">
+          <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Position Start</h1></fluent-text>
+          <fluent-button
+            slot="action"
+            appearance="transparent"
+            icon-only
+            aria-label="close"
+            @click="${() => hideDrawer('drawer-position-start')}"
+          >
+            ${dismissed20Regular}
+          </fluent-button>
+        </div>
         <div class="row-gap--16 column flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
             <p>
@@ -641,18 +610,18 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
     </div>
     <div>
       <fluent-drawer position="end" type="inline" id="drawer-position-end" size="small">
-        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"
-          ><h1>Drawer Position End</h1></fluent-text
-        >
-        <fluent-button
-          slot="action"
-          appearance="transparent"
-          icon-only
-          aria-label="close"
-          @click="${() => hideDrawer('drawer-position-end')}"
-        >
-          ${dismissed20Regular}
-        </fluent-button>
+        <div slot="header" class="flex justify--space-between">
+          <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Position End</h1></fluent-text>
+          <fluent-button
+            slot="action"
+            appearance="transparent"
+            icon-only
+            aria-label="close"
+            @click="${() => hideDrawer('drawer-position-end')}"
+          >
+            ${dismissed20Regular}
+          </fluent-button>
+        </div>
         <div class="row-gap--16 column flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
             <p>
@@ -698,16 +667,18 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
       >
     </div>
     <fluent-drawer size="small" id="drawer-size-small">
-      <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Small</h1></fluent-text>
-      <fluent-button
-        slot="action"
-        appearance="transparent"
-        icon-only
-        aria-label="close"
-        @click="${() => hideDrawer('drawer-size-small')}"
-      >
-        ${dismissed20Regular}
-      </fluent-button>
+      <div slot="header" class="flex justify--space-between">
+        <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Small</h1></fluent-text>
+        <fluent-button
+          slot="action"
+          appearance="transparent"
+          icon-only
+          aria-label="close"
+          @click="${() => hideDrawer('drawer-size-small')}"
+        >
+          ${dismissed20Regular}
+        </fluent-button>
+      </div>
       <div class="row-gap--16 column flex">
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>The size attribute controls the width of the drawer. The default is medium.</p>
@@ -718,16 +689,18 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
       </div>
     </fluent-drawer>
     <fluent-drawer size="medium" id="drawer-size-medium">
-      <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Medium</h1></fluent-text>
-      <fluent-button
-        slot="action"
-        appearance="transparent"
-        icon-only
-        aria-label="close"
-        @click="${() => hideDrawer('drawer-size-medium')}"
-      >
-        ${dismissed20Regular}
-      </fluent-button>
+      <div slot="header" class="flex justify--space-between">
+        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Medium</h1></fluent-text>
+        <fluent-button
+          slot="action"
+          appearance="transparent"
+          icon-only
+          aria-label="close"
+          @click="${() => hideDrawer('drawer-size-medium')}"
+        >
+          ${dismissed20Regular}
+        </fluent-button>
+      </div>
       <div class="row-gap--16 column flex">
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>The size attribute controls the width of the drawer. The default is medium.</p>
@@ -738,16 +711,18 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
       </div>
     </fluent-drawer>
     <fluent-drawer size="large" id="drawer-size-large">
-      <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Large</h1></fluent-text>
-      <fluent-button
-        slot="action"
-        appearance="transparent"
-        icon-only
-        aria-label="close"
-        @click="${() => hideDrawer('drawer-size-large')}"
-      >
-        ${dismissed20Regular}
-      </fluent-button>
+      <div slot="header" class="flex justify--space-between">
+        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Large</h1></fluent-text>
+        <fluent-button
+          slot="action"
+          appearance="transparent"
+          icon-only
+          aria-label="close"
+          @click="${() => hideDrawer('drawer-size-large')}"
+        >
+          ${dismissed20Regular}
+        </fluent-button>
+      </div>
       <div class="row-gap--16 column flex">
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>The size attribute controls the width of the drawer. The default is medium.</p>
@@ -758,16 +733,18 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
       </div>
     </fluent-drawer>
     <fluent-drawer size="full" id="drawer-size-full">
-      <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Full</h1></fluent-text>
-      <fluent-button
-        slot="action"
-        appearance="transparent"
-        icon-only
-        aria-label="close"
-        @click="${() => hideDrawer('drawer-size-full')}"
-      >
-        ${dismissed20Regular}
-      </fluent-button>
+      <div slot="header" class="flex justify--space-between">
+        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Full</h1></fluent-text>
+        <fluent-button
+          slot="action"
+          appearance="transparent"
+          icon-only
+          aria-label="close"
+          @click="${() => hideDrawer('drawer-size-full')}"
+        >
+          ${dismissed20Regular}
+        </fluent-button>
+      </div>
       <div class="row-gap--16 column flex">
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>The size attribute controls the width of the drawer. The default is medium.</p>
@@ -775,108 +752,6 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
         <fluent-text font="monospace" size="300" weight="regular">
           <code>size="full"</code>
         </fluent-text>
-      </div>
-    </fluent-drawer>
-  </div>
-`);
-
-export const WithTitleAndAction = renderComponent(html<DrawerStoryArgs>`
-  <style>
-    .margin-auto {
-      margin: auto;
-    }
-  </style>
-  <div class="flex full-height">
-    <div>
-      <fluent-drawer id="drawer-with-header" type="inline">
-        <fluent-text slot="title" weight="bold" size="400" as="h3"><h3>With Title and Action</h3></fluent-text>
-        <fluent-button
-          slot="action"
-          appearance="transparent"
-          icon-only
-          aria-label="close"
-          @click="${() => hideDrawer('drawer-with-header')}"
-        >
-          ${dismissed20Regular}
-        </fluent-button>
-      </fluent-drawer>
-    </div>
-    <div class="row-gap--16 column flex justify--center padding--16 width-400 margin-auto">
-      <fluent-text weight="bold" size="400" as="h3"><h3>Drawer with title and action</h3></fluent-text>
-
-      <fluent-text size="300" font="base">
-        The Drawer component provides a title and action slot to display a title and an action.
-      </fluent-text>
-      <fluent-text font="monospace" size="300" weight="regular">
-        <code>slot="title"</code>
-      </fluent-text>
-      <fluent-text font="monospace" size="300" weight="regular">
-        <code>slot="action"</code>
-      </fluent-text>
-      <div>
-        <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-with-header')}"
-          >Toggle Drawer</fluent-button
-        >
-      </div>
-    </div>
-  </div>
-`);
-
-export const WithNavigation = renderComponent(html`
-  <div class="flex justify--center full-height">
-    <div class="row-gap--16 column flex justify--center padding--16 width-400">
-      <fluent-text weight="bold" size="400" as="h3"><h3>With Navigation</h3></fluent-text>
-
-      <fluent-text size="300" font="base" as="p">
-        <p>
-          The drawer component features an optional top navigation slot named "navigation" providing users with the
-          flexibility to insert custom elements. Simply populate the "navigation" slot with your desired elements, and
-          they will appear in the top navigation area of the drawer.
-        </p>
-      </fluent-text>
-      <fluent-text font="monospace" size="300" weight="regular">
-        <code>slot="navigation"</code>
-      </fluent-text>
-      <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-top-navigation')}"
-        >Toggle Drawer</fluent-button
-      >
-    </div>
-    <fluent-drawer id="drawer-top-navigation">
-      <div slot="navigation" class="flex justify--space-between">
-        <div>
-          <fluent-button appearance="transparent" icon-only size="medium"> ${arrowLeft20Regular} </fluent-button>
-        </div>
-        <div class="flex col-gap--8">
-          <fluent-button appearance="transparent" icon-only size="medium"> ${arrowClockwise20Regular} </fluent-button>
-          <fluent-button appearance="transparent" icon-only size="medium"> ${settings20Regular} </fluent-button>
-          <fluent-button
-            @click=${() => hideDrawer('drawer-default-end')}
-            appearance="transparent"
-            icon-only
-            size="medium"
-            aria-label="close"
-          >
-            ${dismissed20Regular}
-          </fluent-button>
-        </div>
-      </div>
-      <fluent-text slot="title" weight="bold" size="400" as="h3"><h3>With Navigation</h3></fluent-text>
-
-      <div class="row-gap--16 column flex">
-        <fluent-text size="300" font="base" as="p">
-          <p>
-            The drawer component features an optional top navigation slot named "navigation" providing users with the
-            flexibility to insert custom elements. Simply populate the "navigation" slot with your desired elements, and
-            they will appear in the top navigation area of the drawer.
-          </p>
-        </fluent-text>
-        <fluent-text font="monospace" size="300" weight="regular">
-          <code>slot="navigation"</code>
-        </fluent-text>
-      </div>
-      <div slot="footer">
-        <fluent-button appearance="primary">Primary</fluent-button>
-        <fluent-button appearance="secondary">Secondary</fluent-button>
       </div>
     </fluent-drawer>
   </div>
@@ -900,16 +775,18 @@ export const CustomSize = renderComponent(html`
       >
     </div>
     <fluent-drawer id="drawer-width-custom">
-      <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Custom Size</h1></fluent-text>
-      <fluent-button
-        slot="action"
-        appearance="transparent"
-        icon-only
-        aria-label="close"
-        @click="${() => hideDrawer('drawer-width-custom')}"
-      >
-        ${dismissed20Regular}
-      </fluent-button>
+      <div slot="header" class="flex justify--space-between">
+        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Custom Size</h1></fluent-text>
+        <fluent-button
+          slot="action"
+          appearance="transparent"
+          icon-only
+          aria-label="close"
+          @click="${() => hideDrawer('drawer-width-custom')}"
+        >
+          ${dismissed20Regular}
+        </fluent-button>
+      </div>
       <div class="row-gap--16 column flex">
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>The Drawer can be sized to any custom width, by overriding the drawer-width CSS variable:</p>
@@ -922,67 +799,15 @@ export const CustomSize = renderComponent(html`
   </div>
 `);
 
-export const Separator = renderComponent(html<DrawerStoryArgs>`
-  <div class="grid full-height" style="grid-template-columns: auto auto;">
-    <fluent-drawer
-      style="--drawer-separator: ${colorNeutralStroke2};"
-      position="start"
-      size="small"
-      id="drawer-customstyles"
-      type="inline"
-      modal-type="non-modal"
-    >
-      <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Separator</h1></fluent-text>
-      <fluent-button
-        slot="action"
-        appearance="transparent"
-        icon-only
-        aria-label="close"
-        @click="${() => hideDrawer('drawer-customstyles')}"
-      >
-        ${dismissed20Regular}
-      </fluent-button>
-      <div class="row-gap--16 column flex">
-        <fluent-text font="base" size="300" weight="regular" as="p">
-          <p>
-            To apply a separator line within the drawer, you can customize its color by setting the --drawer-separator
-            CSS variable. This provides flexibility in visually delineating sections of the drawer based on your design
-            requirements.
-          </p>
-        </fluent-text>
-        <fluent-text font="monospace" size="300" weight="regular" as="p">
-          <code>var(--drawer-separator)</code>
-        </fluent-text>
-      </div>
-    </fluent-drawer>
-    <div class="row-gap--16 column flex justify--center padding--16 width-400">
-      <fluent-text weight="bold" size="400" as="h3"><h3>Separator</h3></fluent-text>
-      <fluent-text font="base" size="300" weight="regular" as="p">
-        <p>
-          To apply a separator line within the drawer, you can customize its color by setting the --drawer-separator CSS
-          variable. This provides flexibility in visually delineating sections of the drawer based on your design
-          requirements.
-        </p>
-      </fluent-text>
-      <fluent-text font="monospace" size="300" weight="regular" as="p">
-        <code>var(--drawer-separator)</code>
-      </fluent-text>
-      <div>
-        <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-customstyles')}"
-          >Toggle Start</fluent-button
-        >
-      </div>
-    </div>
-  </div>
-`);
-
 export const ContentOverflowSeparator = renderComponent(html<DrawerStoryArgs>`
-  <div class="flex full-height">
-    <div>
-    <fluent-drawer 
-      style="--drawer-overflow-border: ${colorNeutralStroke1}" 
-      id="drawer-overflow" 
+  <div class="flex justify--space-between full-height">
+
+    <fluent-drawer
+      style="--drawer-overflow-border: ${colorNeutralStroke1}"
+      id="drawer-overflow"
       type="inline">
+      <div slot="header" class="flex justify--space-between">
+
         <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Content Overflow Separator</h1></fluent-text>
         <fluent-button
           slot="action"
@@ -992,6 +817,7 @@ export const ContentOverflowSeparator = renderComponent(html<DrawerStoryArgs>`
           @click="${() => hideDrawer('drawer-overflow')}"
         >
           ${dismissed20Regular}
+  </div>
         </fluent-button>
         <div class="row-gap--16 column flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
@@ -1032,7 +858,6 @@ export const ContentOverflowSeparator = renderComponent(html<DrawerStoryArgs>`
           <fluent-button  appearance="secondary">Secondary</fluent-button>
         </div>
       </fluent-drawer>
-  </div>
   <div class="row-gap--16 column flex justify--center padding--16 width-400 margin-auto">
     <fluent-text weight="bold" size="400" as="h3"><h3>Content Overflow Separator</h3></fluent-text>
     <fluent-text font="base" size="300" weight="regular" as="p">

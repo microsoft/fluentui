@@ -33,22 +33,16 @@ The Fluent WC3 Drawer extends `FASTElement`
     >
       <div class="drawer" part="drawer">
         <div class="header" part="header">
-          <nav class="navigation">
-            <slot name="navigation"></slot>
-          </nav>
-          <div class="title" part="title">
-            <slot name="title"></slot>
-            <slot name="action"></slot>
-          </div>
+          <slot name="header"></slot>
         </div>
-        <div class="content" part="content" ${ref('content')}>
+        <div class="content" part="content">
           <slot></slot>
         </div>
         <div class="footer" part="footer">
           <slot name="footer"></slot>
         </div>
       </div>
-    </dialog>;
+    </dialog>
 ```
 
 ### **Variables**
@@ -91,18 +85,16 @@ The Fluent WC3 Drawer extends `FASTElement`
 
 | Name     | Description                           |
 | -------- | ------------------------------------- |
-| `title`  | The slot for title                    |
-| `action` | The slot for the action content       |
+| `header` | The slot for header                   |
 |          | The default slot for the main content |
 | `footer` | The slot for the footer               |
 
 ### **CSS Variables**
 
-| Name                       | Description                                             |
-| -------------------------- | ------------------------------------------------------- |
-| `--drawer-overflow-border` | Used to set the overflow border color                   |
-| `--drawer-width`           | Used to set the width of the drawer                     |
-| `--drawer-separator`       | Used to set the border color between drawer and content |
+| Name                       | Description                           |
+| -------------------------- | ------------------------------------- |
+| `--drawer-overflow-border` | Used to set the overflow border color |
+| `--drawer-width`           | Used to set the width of the drawer   |
 
 ## **Accessiblity**
 
@@ -127,10 +119,6 @@ The Fluent WC3 Drawer extends `FASTElement`
 - `aria-modal`
 
   - The `aria-modal` attribute should be set to indicate whether the drawer is modal or non-modal. When the drawer is modal, `aria-modal="true"`, and when it is non-modal, `aria-modal="false"`.
-
-- `aria-hidden`
-
-  - The `aria-hidden` attribute should be set to indicate whether the drawer is hidden or visible. When the drawer is hidden, `aria-hidden="true"`, and when visible, `aria-hidden="false"`.
 
 - `aria-label`
 
