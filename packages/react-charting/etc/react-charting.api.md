@@ -1317,9 +1317,15 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
     lineLegendColor?: string;
     lineLegendText?: string;
     lineOptions?: ILineChartLineOptions;
+    // (undocumented)
+    maxBarWidth?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
     styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
     useSingleColor?: boolean;
+    // (undocumented)
+    xAxisInnerPadding?: number;
+    // (undocumented)
+    xAxisOuterPadding?: number;
     xAxisPadding?: number;
 }
 
