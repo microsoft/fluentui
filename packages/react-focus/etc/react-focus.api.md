@@ -86,7 +86,6 @@ export interface IFocusZoneProps extends React_2.HTMLAttributes<HTMLElement> {
     // @deprecated
     elementType?: any;
     handleTabKey?: FocusZoneTabbableElements;
-    includeShadowRoots?: boolean;
     isCircularNavigation?: boolean;
     // @deprecated
     isInnerZoneKeystroke?: (ev: React_2.KeyboardEvent<HTMLElement>) => boolean;

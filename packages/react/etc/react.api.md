@@ -5944,7 +5944,6 @@ export interface IFocusTrapZoneProps extends React_2.HTMLAttributes<HTMLDivEleme
     forceFocusInsideTrap?: boolean;
     // @deprecated (undocumented)
     ignoreExternalFocusing?: boolean;
-    includeShadowRoots?: boolean;
     isClickableOutsideFocusTrap?: boolean;
 }
 

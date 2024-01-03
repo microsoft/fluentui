@@ -271,15 +271,6 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement> {
    * @defaultvalue false
    */
   preventFocusRestoration?: boolean;
-
-  /**
-   * Include shadow roots when looking for focusable elements.
-   * If used inside a MergeStylesShadowRootProvide this will default to true,
-   * otherwise it will be false. Explicitly setting the prop will override the default
-   * value regardless.
-   * @defaultvalue false
-   */
-  includeShadowRoots?: boolean;
 }
 /**
  * {@docCategory FocusZone}

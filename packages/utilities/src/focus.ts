@@ -456,7 +456,7 @@ export function isElementTabbable(
 
   let isFocusableAttribute = element.getAttribute ? element.getAttribute(IS_FOCUSABLE_ATTRIBUTE) : null;
   let isTabIndexSet = tabIndexAttributeValue !== null && tabIndex >= 0;
-  let delegatesFocus = checkShadowRoot && element.shadowRoot ? element.shadowRoot.delegatesFocus : false;
+  let delegatesFocus = checkShadowRoot && element.shadowRoot ? !!element.shadowRoot.delegatesFocus : false;
 
   const result =
     !!element &&

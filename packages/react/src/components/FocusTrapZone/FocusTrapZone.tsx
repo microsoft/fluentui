@@ -65,13 +65,11 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
   const lastBumper = React.useRef<HTMLDivElement>(null);
   const mergedRootRef = useMergedRefs(root, ref) as React.Ref<HTMLDivElement>;
   const doc = useDocument();
-  const inShadowCtx = useHasMergeStylesShadowRootContext();
+  const inShadow = useHasMergeStylesShadowRootContext();
 
   const isFirstRender = usePrevious(false) ?? true;
 
   const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
-
-  const inShadow = props.includeShadowRoots === undefined ? inShadowCtx : props.includeShadowRoots;
 
   const internalState = useConst<IFocusTrapZoneInternalState>({
     hasFocus: false,

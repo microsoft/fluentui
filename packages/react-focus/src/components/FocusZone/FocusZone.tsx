@@ -202,8 +202,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   public componentDidMount(): void {
     const { current: root } = this._root;
 
-    this._inShadowRoot =
-      this.props.includeShadowRoots === undefined ? !!this.context.shadowRoot : this.props.includeShadowRoots;
+    this._inShadowRoot = !!this.context.shadowRoot;
 
     _allInstances[this._id] = this;
 
@@ -246,8 +245,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   public componentDidUpdate(): void {
     const { current: root } = this._root;
     const doc = this._getDocument();
-    this._inShadowRoot =
-      this.props.includeShadowRoots === undefined ? !!this.context.shadowRoot : this.props.includeShadowRoots;
+    this._inShadowRoot = !!this.context.shadowRoot;
 
     // If either _activeElement or _defaultFocusElement are no longer contained by _root,
     // reset those variables (and update tab indexes) to avoid memory leaks
