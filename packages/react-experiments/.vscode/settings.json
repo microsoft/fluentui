@@ -33,5 +33,6 @@
   "eslint.workingDirectories": [{ "mode": "auto" }], // infer working directory based on .eslintrc/package.json location
   // Defines space handling after opening and before closing JSX expression braces. Requires TypeScript >= 2.0.6.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "typescript.tsdk": "../../node_modules/typescript/lib"
 }
