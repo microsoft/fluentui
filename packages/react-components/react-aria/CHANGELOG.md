@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Mon, 18 Dec 2023 14:40:44 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jan 2024 09:26:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.6.1)
+
+Wed, 03 Jan 2024 09:26:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.6.0..@fluentui/react-aria_v9.6.1)
+
+### Patches
+
+- chore: deprecate old slot API methods and types ([PR #29646](https://github.com/microsoft/fluentui/pull/29646) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.15.5 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
 
 ## [9.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.6.0)
 

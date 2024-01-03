@@ -1,10 +1,6 @@
-// FIXME: for some reason jsxImportSource is not working here,
-// using classic runtime instead
-/** @jsxRuntime classic */
-/** @jsx createElement */
-
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 import * as React from 'react';
-import { createElement } from '@fluentui/react-jsx-runtime';
 import {
   FlatTreeProps,
   FlatTreeItem,

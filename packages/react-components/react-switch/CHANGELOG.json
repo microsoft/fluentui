@@ -2,6 +2,45 @@
   "name": "@fluentui/react-switch",
   "entries": [
     {
+      "date": "Wed, 03 Jan 2024 09:26:44 GMT",
+      "tag": "@fluentui/react-switch_v9.1.61",
+      "version": "9.1.61",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-field to v9.1.46",
+            "commit": "9d99266dec5a450bcd44c0f777735b31dd98eccc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.23",
+            "commit": "9d99266dec5a450bcd44c0f777735b31dd98eccc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-label to v9.1.54",
+            "commit": "9d99266dec5a450bcd44c0f777735b31dd98eccc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-tabster to v9.16.1",
+            "commit": "9d99266dec5a450bcd44c0f777735b31dd98eccc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-utilities to v9.15.5",
+            "commit": "9d99266dec5a450bcd44c0f777735b31dd98eccc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Dec 2023 14:40:46 GMT",
       "tag": "@fluentui/react-switch_v9.1.60",
       "version": "9.1.60",

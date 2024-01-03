@@ -23,7 +23,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsSize: true });
 
   const baseState = useComboboxBaseState(props);
-  const { open } = baseState;
+  const { open, hasFocus } = baseState;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -66,7 +66,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     components: { root: 'div', button: 'button', expandIcon: 'span', listbox: Listbox },
     root: rootSlot,
     button: trigger,
-    listbox: open ? listbox : undefined,
+    listbox: open || hasFocus ? listbox : undefined,
     expandIcon: slot.optional(props.expandIcon, {
       renderByDefault: true,
       defaultProps: {

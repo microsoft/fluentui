@@ -2,17 +2,22 @@ export { Nav, navClassNames, renderNav_unstable, useNav_unstable } from './Nav';
 export type { NavProps, NavSlots, NavState } from './Nav';
 // these should probably be explicity as they are above.
 export {
-  NavGroup,
-  navGroupClassNames,
-  renderNavGroup_unstable,
-  useNavGroup_unstable,
-  useNavGroupStyles_unstable,
-} from './components/NavGroup/index';
-export type { NavGroupProps, NavGroupSlots, NavGroupValue, NavGroupState } from './components/NavGroup/index';
+  NavCategoryItem,
+  navCategoryItemClassNames,
+  renderNavCategoryItem_unstable,
+  useNavCategoryItem_unstable,
+  useNavCategoryItemStyles_unstable,
+} from './components/NavCategoryItem/index';
+export type {
+  NavCategoryItemProps,
+  NavCategoryItemSlots,
+  NavCategoryItemState,
+} from './components/NavCategoryItem/index';
 export { NavProvider, useNavContext_unstable } from './components/NavContext';
 export type {
+  NavItemValue,
   NavContextValue,
   NavContextValues,
-  NavGroupRegisterData,
-  RegisterNavGroupEventHandler,
+  NavItemRegisterData,
+  RegisterNavItemEventHandler,
 } from './components/NavContext.types';
