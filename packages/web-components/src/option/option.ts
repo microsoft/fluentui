@@ -1,4 +1,4 @@
-import { FASTListboxOption } from '@microsoft/fast-foundation';
+import { FASTListboxOption } from '../listbox-option/listbox-option.js';
 
 /**
  * @class ListboxOption component
