@@ -37,6 +37,28 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
     return <div>{this._basicExample()}</div>;
   }
 
+  private _onBarWidthCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+    this.setState({ barWidthEnabled: checked });
+  };
+  private _onBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
+    this.setState({ barWidth: parseInt(newValue, 10) });
+  };
+  private _onMaxBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
+    this.setState({ maxBarWidth: parseInt(newValue, 10) });
+  };
+  private _onInnerPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+    this.setState({ xAxisInnerPaddingEnabled: checked });
+  };
+  private _onInnerPaddingChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
+    this.setState({ xAxisInnerPadding: parseFloat(newValue) });
+  };
+  private _onOuterPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+    this.setState({ xAxisOuterPaddingEnabled: checked });
+  };
+  private _onOuterPaddingChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
+    this.setState({ xAxisOuterPadding: parseFloat(newValue) });
+  };
+
   private _basicExample(): JSX.Element {
     const points: IVerticalBarChartDataPoint[] = [
       {
@@ -69,14 +91,14 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
             <Checkbox
               label="barWidth:&nbsp;"
               checked={this.state.barWidthEnabled}
-              onChange={(e, checked) => this.setState({ barWidthEnabled: checked })}
+              onChange={this._onBarWidthCheckChange}
             />
             <TextField
               type="number"
               value={this.state.barWidth.toString()}
               min={1}
               max={300}
-              onChange={e => this.setState({ barWidth: parseInt(e.target.value, 10) })}
+              onChange={this._onBarWidthChange}
               disabled={!this.state.barWidthEnabled}
             />
           </Stack>
@@ -90,14 +112,14 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
               min={1}
               max={300}
               id="input-maxbarwidth"
-              onChange={e => this.setState({ maxBarWidth: parseInt(e.target.value, 10) })}
+              onChange={this._onMaxBarWidthChange}
             />
           </Stack>
           <Stack horizontal verticalAlign="center">
             <Checkbox
               label="xAxisInnerPadding:&nbsp;"
               checked={this.state.xAxisInnerPaddingEnabled}
-              onChange={(e, checked) => this.setState({ xAxisInnerPaddingEnabled: checked })}
+              onChange={this._onInnerPaddingCheckChange}
             />
             <TextField
               type="number"
@@ -105,7 +127,7 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
               min={0}
               max={1}
               step={0.01}
-              onChange={e => this.setState({ xAxisInnerPadding: parseFloat(e.target.value) })}
+              onChange={this._onInnerPaddingChange}
               disabled={!this.state.xAxisInnerPaddingEnabled}
             />
           </Stack>
@@ -113,7 +135,7 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
             <Checkbox
               label="xAxisOuterPadding:&nbsp;"
               checked={this.state.xAxisOuterPaddingEnabled}
-              onChange={(e, checked) => this.setState({ xAxisOuterPaddingEnabled: checked })}
+              onChange={this._onOuterPaddingCheckChange}
             />
             <TextField
               type="number"
@@ -121,7 +143,7 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
               min={0}
               max={1}
               step={0.01}
-              onChange={e => this.setState({ xAxisOuterPadding: parseFloat(e.target.value) })}
+              onChange={this._onOuterPaddingChange}
               disabled={!this.state.xAxisOuterPaddingEnabled}
             />
           </Stack>
