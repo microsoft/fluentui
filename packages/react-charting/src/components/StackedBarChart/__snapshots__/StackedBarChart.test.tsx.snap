@@ -131,6 +131,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
               display: block;
               height: 12px;
               margin-bottom: 10px;
+              overflow: visible;
               width: 100%;
             }
       >
@@ -142,8 +143,6 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;
@@ -176,8 +175,6 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;
@@ -503,6 +500,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
               display: block;
               height: 12px;
               margin-bottom: 10px;
+              overflow: visible;
               width: 100%;
             }
       >
@@ -514,8 +512,6 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;
@@ -548,8 +544,6 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;
@@ -792,6 +786,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
               display: block;
               height: 12px;
               margin-bottom: 10px;
+              overflow: visible;
               width: 100%;
             }
       >
@@ -803,8 +798,6 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;
@@ -835,8 +828,6 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;
@@ -1001,6 +992,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
               display: block;
               height: 12px;
               margin-bottom: 10px;
+              overflow: visible;
               width: 100%;
             }
       >
@@ -1012,8 +1004,6 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;
@@ -1044,8 +1034,6 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;
@@ -1200,6 +1188,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
               display: block;
               height: 12px;
               margin-bottom: 10px;
+              overflow: visible;
               width: 100%;
             }
       >
@@ -1211,8 +1200,6 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;
@@ -1243,8 +1230,6 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;
@@ -1409,6 +1394,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
               display: block;
               height: 12px;
               margin-bottom: 10px;
+              overflow: visible;
               width: 100%;
             }
       >
@@ -1420,8 +1406,6 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;
@@ -1452,8 +1436,6 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;
@@ -1592,6 +1574,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
               display: block;
               height: 12px;
               margin-bottom: 10px;
+              overflow: visible;
               width: 100%;
             }
       >
@@ -1603,8 +1586,6 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;
@@ -1635,8 +1616,6 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;
@@ -1801,6 +1780,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
               display: block;
               height: 12px;
               margin-bottom: 10px;
+              overflow: visible;
               width: 100%;
             }
       >
@@ -1812,8 +1792,6 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;
@@ -1844,8 +1822,6 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;
@@ -1984,6 +1960,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
               display: block;
               height: 12px;
               margin-bottom: 10px;
+              overflow: visible;
               width: 100%;
             }
       >
@@ -1995,8 +1972,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;
@@ -2027,8 +2002,6 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                 {
                   cursor: default;
                   opacity: ;
-                  stroke-width: 2px;
-                  stroke: #ffffff;
                 }
                 &:focus {
                   stroke-width: 2px;

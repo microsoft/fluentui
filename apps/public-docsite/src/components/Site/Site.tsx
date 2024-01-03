@@ -160,8 +160,8 @@ export class Site<TPlatforms extends string = string> extends React.Component<
 
     const SiteContent = () => (
       <div key="site" className={styles.siteRoot}>
-        {this._renderTopBanner()}
         {this._renderTopNav()}
+        {this._renderTopBanner()}
         {this._renderMessageBar()}
         <div className={css(styles.siteWrapper, isContentFullBleed && styles.fullWidth)}>
           {this._renderPageNav()}

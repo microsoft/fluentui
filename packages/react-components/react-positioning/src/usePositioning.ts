@@ -19,8 +19,11 @@ import {
   resetMaxSize as resetMaxSizeMiddleware,
   offset as offsetMiddleware,
   intersecting as intersectingMiddleware,
+  matchTargetSize as matchTargetSizeMiddleware,
 } from './middleware';
 import { createPositionManager } from './createPositionManager';
+import { devtools } from '@floating-ui/devtools';
+import { devtoolsCallback } from './utils/devtools';
 
 /**
  * @internal
@@ -122,7 +125,6 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
       }
       // We run this check once, no need to add deps here
       // TODO: Should be rework to handle options.enabled and contentRef updates
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
   }
 
@@ -169,9 +171,10 @@ function usePositioningOptions(options: PositioningOptions) {
     overflowBoundaryPadding,
     fallbackPositions,
     useTransform,
+    matchTargetSize,
   } = options;
 
-  const { dir } = useFluent();
+  const { dir, targetDocument } = useFluent();
   const isRtl = dir === 'rtl';
   const positionStrategy: Strategy = strategy ?? positionFixed ? 'fixed' : 'absolute';
   const autoSize = normalizeAutoSize(rawAutoSize);
@@ -182,6 +185,7 @@ function usePositioningOptions(options: PositioningOptions) {
 
       const middleware = [
         autoSize && resetMaxSizeMiddleware(autoSize),
+        matchTargetSize && matchTargetSizeMiddleware(),
         offset && offsetMiddleware(offset),
         coverTarget && coverTargetMiddleware(),
         !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement, isRtl, fallbackPositions }),
@@ -198,6 +202,7 @@ function usePositioningOptions(options: PositioningOptions) {
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
         hideMiddleware({ strategy: 'referenceHidden' }),
         hideMiddleware({ strategy: 'escaped' }),
+        process.env.NODE_ENV !== 'production' && targetDocument && devtools(targetDocument, devtoolsCallback(options)),
       ].filter(Boolean) as Middleware[];
 
       const placement = toFloatingUIPlacement(align, position, isRtl);
@@ -209,6 +214,8 @@ function usePositioningOptions(options: PositioningOptions) {
         useTransform,
       };
     },
+    // Options is missing here, but it's not required
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       align,
       arrowPadding,
@@ -225,6 +232,8 @@ function usePositioningOptions(options: PositioningOptions) {
       overflowBoundaryPadding,
       fallbackPositions,
       useTransform,
+      matchTargetSize,
+      targetDocument,
     ],
   );
 }

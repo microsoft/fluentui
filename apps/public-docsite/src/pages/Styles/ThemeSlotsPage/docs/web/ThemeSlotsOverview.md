@@ -1,4 +1,4 @@
-Fluent UI includes 9 theme colors, 14 neutral colors, and 24 accent colors. In Fluent UI React, these are all within the `theme.palette` object. In Fabric Core, each has helper classes for text, background, border, and hover states. When selecting colors, refer to the [color accessibility guidance (PDF)](https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/fabric-website/files/coloraccessibility_29sep2016.pdf) to ensure your text can be read by everyone. If you need to customize your theme, see the [Theme Designer](https://aka.ms/themedesigner).
+Fluent UI includes 9 theme colors, 14 neutral colors, and 24 accent colors. In Fluent UI React, these are all within the `theme.palette` object. In Fabric Core, each has helper classes for text, background, border, and hover states. When selecting colors, refer to the [color accessibility guidance (PDF)](https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/files/coloraccessibility_29sep2016.pdf) to ensure your text can be read by everyone. If you need to customize your theme, see the [Theme Designer](https://aka.ms/themedesigner).
 
 ### What is theming?
 

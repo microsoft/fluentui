@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 import { CounterBadge } from '@fluentui/react-components';
 import { FluentIconsProps, Important16Regular } from '@fluentui/react-icons';
 
@@ -15,7 +15,7 @@ const AsideContent = ({ isImportant, messageCount }: { isImportant?: boolean; me
 );
 
 export const Aside = () => (
-  <Tree aria-label="Tree">
+  <Tree aria-label="Aside">
     <TreeItem itemType="branch" aria-description="Important, 3 message">
       <TreeItemLayout aside={<AsideContent isImportant={true} messageCount={3} />}>level 1, item 1</TreeItemLayout>
       <Tree>
@@ -56,7 +56,8 @@ export const Aside = () => (
 Aside.parameters = {
   docs: {
     description: {
-      story: `Both tree item layouts supports \`aside\` content that is displayed on the right side of a tree item. It can be used to display additional information, such as a badge with notification count or an icon indicating importance.
+      story: `
+Both tree item layouts supports \`aside\` content that is displayed on the right side of a tree item. It can be used to display additional information, such as a badge with notification count or an icon indicating importance.
 
 > ⚠️ Aside content is \`aria-hidden\` by default
       `,

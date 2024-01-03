@@ -10,7 +10,7 @@ export class StackedBarChartBasicExample extends React.Component<{}, {}> {
         data: 3000000,
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '40%',
+        yAxisCalloutData: '99%',
       },
       { legend: 'second', data: 1, color: DefaultPalette.green },
     ];

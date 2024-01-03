@@ -23,7 +23,7 @@ export const OffsetValue = () => {
 
         <PopoverSurface style={{ minWidth: 100 }}>Container</PopoverSurface>
       </Popover>
-      <Popover positioning={{ position: 'after', offset: () => ({ crossAxis: crossAxis, mainAxis: mainAxis }) }}>
+      <Popover positioning={{ position: 'after', offset: () => ({ crossAxis, mainAxis }) }}>
         <PopoverTrigger disableButtonEnhancement>
           <Button appearance="primary">Click me</Button>
         </PopoverTrigger>

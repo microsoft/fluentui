@@ -72,6 +72,9 @@ const useStyles = makeStyles({
   buttonExpandIconEnd: {
     paddingRight: tokens.spacingHorizontalMNudge,
   },
+  buttonDisabled: {
+    cursor: 'not-allowed',
+  },
   expandIcon: {
     height: '100%',
     display: 'flex',
@@ -122,6 +125,7 @@ export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) =
     state.size === 'small' && styles.buttonSmall,
     state.size === 'large' && styles.buttonLarge,
     state.size === 'extra-large' && styles.buttonExtraLarge,
+    state.disabled && styles.buttonDisabled,
     state.button.className,
   );
 

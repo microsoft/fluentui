@@ -71,10 +71,12 @@ describe('createElement with getSlotsNext', () => {
         const state: TestComponentState = {
           components: { slot: 'div' },
 
+          // eslint-disable-next-line deprecation/deprecation
           slot: resolveShorthand(props.slot, {
             defaultProps: { children: 'Default Children', id: 'slot' },
           }),
         };
+        // eslint-disable-next-line deprecation/deprecation
         const { slots, slotProps } = getSlotsNext<TestComponentSlots>(state);
 
         return <slots.slot {...slotProps.slot} />;
@@ -112,9 +114,12 @@ describe('createElement with getSlotsNext', () => {
         const state: TestComponentState = {
           components: { inner: 'div', outer: 'div' },
 
+          // eslint-disable-next-line deprecation/deprecation
           inner: resolveShorthand(props.inner, { defaultProps: { id: 'inner' } }),
+          // eslint-disable-next-line deprecation/deprecation
           outer: resolveShorthand(props.outer, { defaultProps: { id: 'outer' } }),
         };
+        // eslint-disable-next-line deprecation/deprecation
         const { slots, slotProps } = getSlotsNext<TestComponentSlots>(state);
 
         return (
@@ -266,20 +271,29 @@ describe('createElement with assertSlots', () => {
     });
 
     it('keeps children from a render template in a render callback', () => {
-      type TestComponentSlots = { outer: NonNullable<Slot<'div'>>; inner: NonNullable<Slot<'div'>> };
+      const errorSpy = jest.spyOn(console, 'error').mockImplementation(() => {
+        /* noop */
+      });
+      type TestComponentSlots = {
+        outer: NonNullable<Slot<'div'>>;
+        inner1: NonNullable<Slot<'div'>>;
+        inner2: NonNullable<Slot<'div'>>;
+      };
       type TestComponentState = ComponentState<TestComponentSlots>;
       type TestComponentProps = ComponentProps<Partial<TestComponentSlots>>;
 
       const TestComponent = (props: TestComponentProps) => {
         const state: TestComponentState = {
-          components: { outer: 'div', inner: 'div' },
-          inner: slot.always(props.inner, { defaultProps: { id: 'inner' }, elementType: 'div' }),
+          components: { outer: 'div', inner1: 'div', inner2: 'div' },
+          inner1: slot.always(props.inner1, { defaultProps: { id: 'inner-1' }, elementType: 'div' }),
+          inner2: slot.always(props.inner2, { defaultProps: { id: 'inner-2' }, elementType: 'div' }),
           outer: slot.always(props.outer, { defaultProps: { id: 'outer' }, elementType: 'div' }),
         };
         assertSlots<TestComponentSlots>(state);
         return (
           <state.outer>
-            <state.inner />
+            <state.inner1 />
+            <state.inner2 />
           </state.outer>
         );
       };
@@ -289,17 +303,33 @@ describe('createElement with assertSlots', () => {
           <Component {...props} />
         </div>
       ));
-      const result = render(<TestComponent outer={{ children }} inner={{ children: 'Inner children' }} />);
+      const result = render(
+        <TestComponent
+          outer={{ children }}
+          inner1={{ children: 'Inner children 1' }}
+          inner2={{ children: 'Inner children 2' }}
+        />,
+      );
 
+      // your test code here
+      expect(errorSpy).not.toHaveBeenCalled();
+      errorSpy.mockRestore();
       expect(children).toHaveBeenCalledTimes(1);
       expect(children.mock.calls[0][0]).toBe('div');
       expect(children.mock.calls[0][1].id).toBe('outer');
       expect(children.mock.calls[0][1].children).toMatchInlineSnapshot(`
-        <div
-          id="inner"
-        >
-          Inner children
-        </div>
+        <React.Fragment>
+          <div
+            id="inner-1"
+          >
+            Inner children 1
+          </div>
+          <div
+            id="inner-2"
+          >
+            Inner children 2
+          </div>
+        </React.Fragment>
       `);
 
       expect(result.container.firstChild).toMatchInlineSnapshot(`
@@ -310,9 +340,14 @@ describe('createElement with assertSlots', () => {
             id="outer"
           >
             <div
-              id="inner"
+              id="inner-1"
             >
-              Inner children
+              Inner children 1
+            </div>
+            <div
+              id="inner-2"
+            >
+              Inner children 2
             </div>
           </div>
         </div>

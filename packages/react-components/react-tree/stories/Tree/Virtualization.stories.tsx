@@ -1,10 +1,12 @@
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 import * as React from 'react';
 import {
-  TreeProps,
-  TreeItem,
+  FlatTreeProps,
+  FlatTreeItem,
   TreeItemLayout,
   TreeProvider,
-  TreeSlots,
+  FlatTreeSlots,
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
   useFlatTree_unstable,
@@ -13,9 +15,9 @@ import {
   useFlatTreeContextValues_unstable,
   HeadlessFlatTreeItem,
   useHeadlessFlatTree_unstable,
-} from '@fluentui/react-tree';
+} from '@fluentui/react-components';
 import { FixedSizeList, FixedSizeListProps, ListChildComponentProps } from 'react-window';
-import { ForwardRefComponent, getSlots } from '@fluentui/react-components';
+import { ForwardRefComponent, assertSlots } from '@fluentui/react-components';
 
 type ItemProps = HeadlessFlatTreeItemProps & { content: string };
 
@@ -40,7 +42,7 @@ const defaultItems: ItemProps[] = [
   })),
 ];
 
-type FixedSizeTreeProps = Omit<TreeProps, 'children'> & {
+type FixedSizeTreeProps = Omit<FlatTreeProps, 'children'> & {
   listProps: FixedSizeListProps & { ref?: React.Ref<FixedSizeList> };
 };
 
@@ -51,12 +53,19 @@ const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef(
   const state = useFlatTree_unstable(props, ref);
   useFlatTreeStyles_unstable(state);
   const contextValues = useFlatTreeContextValues_unstable(state);
-  const { slots, slotProps } = getSlots<TreeSlots>(state);
+  assertSlots<FlatTreeSlots>(state);
+  const handleOuterRef = React.useCallback((instance: HTMLElement | null) => {
+    if (instance) {
+      // This element stays between the tree and treeitem
+      // Due to accessibility issues this element should have role="none"
+      instance.setAttribute('role', 'none');
+    }
+  }, []);
   return (
     <TreeProvider value={contextValues.tree}>
-      <slots.root {...slotProps.root}>
-        <FixedSizeList {...props.listProps} />
-      </slots.root>
+      <state.root>
+        <FixedSizeList outerRef={handleOuterRef} {...props.listProps} />
+      </state.root>
     </TreeProvider>
   );
 });
@@ -69,39 +78,38 @@ const FixedSizeTreeItem = (props: FixedSizeTreeItemProps) => {
   const flatTreeItem = props.data[props.index];
   const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
   return (
-    <TreeItem {...treeItemProps} style={props.style}>
+    <FlatTreeItem {...treeItemProps} style={props.style}>
       <TreeItemLayout>{content}</TreeItemLayout>
-    </TreeItem>
+    </FlatTreeItem>
   );
 };
 
 export const Virtualization = () => {
-  const virtualTree = useHeadlessFlatTree_unstable(defaultItems);
+  const headlessTree = useHeadlessFlatTree_unstable(defaultItems);
   const listRef = React.useRef<FixedSizeList>(null);
-  const items = React.useMemo(() => Array.from(virtualTree.items()), [virtualTree]);
+  const items = React.useMemo(() => Array.from(headlessTree.items()), [headlessTree]);
 
   /**
    * Since navigation is not possible due to the fact that not all items are rendered,
    * we need to scroll to the next item and then invoke navigation.
    */
   const handleNavigation = (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
-    event.preventDefault();
-    const nextItem = virtualTree.getNextNavigableItem(items, data);
+    const nextItem = headlessTree.getNextNavigableItem(items, data);
     if (!nextItem) {
       return;
     }
     // if the next item is not rendered, scroll to it and try to navigate again
-    if (!virtualTree.getElementFromItem(nextItem)) {
+    if (!headlessTree.getElementFromItem(nextItem)) {
+      event.preventDefault(); // preventing default disables internal navigation.
       listRef.current?.scrollToItem(nextItem.index);
-      return requestAnimationFrame(() => virtualTree.navigate(data));
+      // waiting for the next animation frame to allow the list to be scrolled
+      return requestAnimationFrame(() => headlessTree.navigate(data));
     }
-    // if the next item is rendered, navigate to it
-    virtualTree.navigate(data);
   };
 
   return (
     <FixedSizeTree
-      {...virtualTree.getTreeProps()}
+      {...headlessTree.getTreeProps()}
       listProps={{
         ref: listRef,
         height: 300,
@@ -111,8 +119,8 @@ export const Virtualization = () => {
         width: 300,
         children: FixedSizeTreeItem,
       }}
-      onNavigation_unstable={handleNavigation}
-      aria-label="Tree"
+      onNavigation={handleNavigation}
+      aria-label="Virtualization"
     />
   );
 };
@@ -120,12 +128,16 @@ export const Virtualization = () => {
 Virtualization.parameters = {
   docs: {
     description: {
-      story:
-        "A tree **does not** support virtualization by default. To enable it, you'll need to adopt a custom third-party virtualization library.\n\n" +
-        'By utilizing virtualization, the tree only renders the nodes that are currently visible on the screen. This significantly reduces the number of DOM nodes, leading to quicker interaction times for large trees.\n\n' +
-        'In this example of a flat tree with `react-window` for virtualization, two main adjustments are necessary:\n\n' +
-        '1. `Tree` component must be recomposed using composition API to use `FixedSizeList` to wrap root content.\n' +
-        "2. Navigation will break as some nodes will not be available on the DOM (since they'll be virtualized), to fix this we'll need to provide a custom navigation handler that will scroll to the correct node before calling the default handler.",
+      story: `
+A tree **does not** support virtualization by default. To enable it, you'll need to adopt a custom third-party virtualization library.
+
+By utilizing virtualization, the tree only renders the nodes that are currently visible on the screen. This significantly reduces the number of DOM nodes, leading to quicker interaction times for large trees.
+
+In this example of a flat tree with \`react-window\` for virtualization, two main adjustments are necessary:
+
+1. \`Tree\` component must be recomposed using composition API to use \`FixedSizeList\` to wrap root content.
+2. Navigation will break as some nodes will not be available on the DOM (since they'll be virtualized), to fix this we'll need to provide a custom navigation handler that will scroll to the correct node before calling the default handler.
+      `,
     },
   },
 };

@@ -30,8 +30,17 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
       height: height!,
       className,
     });
-    const radius = Math.min(width!, height!) / 2;
-    const outerRadius = radius - 10;
+
+    const TEXT_MAX_WIDTH = 40;
+    const TEXT_LINE_HEIGHT = 16;
+
+    /**
+     * The radius for the pie chart is computed based on the space available inside the svg
+     * after subtracting the max amount of space that can be used by the text in pie chart
+     */
+
+    const radius = Math.min(width! - 2 * TEXT_MAX_WIDTH, height! - 2 * TEXT_LINE_HEIGHT) / 2;
+    const outerRadius = radius;
 
     return !this._isChartEmpty() ? (
       <div className={this._classNames.root}>
@@ -41,10 +50,11 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
           width={width!}
           height={height!}
           outerRadius={outerRadius}
-          innerRadius={0}
+          innerRadius={1}
           data={data!}
           colors={colors!}
           chartTitle={chartTitle!}
+          theme={theme}
         />
       </div>
     ) : (

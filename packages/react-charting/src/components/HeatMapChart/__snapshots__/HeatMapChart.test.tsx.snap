@@ -21,6 +21,9 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_2"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -29,7 +32,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -105,7 +108,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
-        key="00"
+        key="x0y0"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
@@ -141,7 +144,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         aria-label="Mar/03, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
-        key="10"
+        key="x1y0"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
@@ -215,7 +218,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone3"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -378,7 +381,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
             }
         data-is-focusable={false}
         hidden={false}
-        id="10"
+        id="x1y0"
         style={
           Object {
             "left": 8,
@@ -586,6 +589,9 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_2"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -594,7 +600,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -670,7 +676,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
-        key="00"
+        key="x0y0"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
@@ -706,7 +712,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         aria-label="Mar/03, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
-        key="10"
+        key="x1y0"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
@@ -786,7 +792,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone3"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -925,6 +931,9 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_2"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -933,7 +942,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1009,7 +1018,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
       off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
-        key="00"
+        key="x0y0"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
@@ -1045,7 +1054,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         aria-label="p1, Mar/03. Nasty, 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
-        key="10"
+        key="x1y0"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
@@ -1125,7 +1134,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone3"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1355,6 +1364,9 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_2"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -1363,7 +1375,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1439,7 +1451,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
-        key="00"
+        key="x0y0"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
@@ -1475,7 +1487,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         aria-label="Mar/03, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
-        key="10"
+        key="x1y0"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
@@ -1533,6 +1545,9 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_2"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -1541,7 +1556,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1617,7 +1632,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
-        key="00"
+        key="x0y0"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
@@ -1653,7 +1668,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         aria-label="Mar/03, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
-        key="10"
+        key="x1y0"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
@@ -1733,7 +1748,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone3"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1872,6 +1887,9 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_2"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -1880,7 +1898,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1956,7 +1974,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
-        key="00"
+        key="x0y0"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
@@ -1992,7 +2010,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         aria-label="Mar/03, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
-        key="10"
+        key="x1y0"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
@@ -2072,7 +2090,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone3"
+              data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

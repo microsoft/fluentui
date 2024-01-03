@@ -905,7 +905,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
     disabled: BaseColors.GRAY_F3F2F1,
     hover: BaseColors.GRAY_605E5C,
     accent: BaseColors.BLUE_0078D4,
-    focus: BaseColors.BLUE_0078D4,
+    focus: BaseColors.GRAY_605E5C,
     error: BaseColors.RED_A4262C,
     dirty: BaseColors.PURPLE_8A2DA5,
   },
@@ -1010,7 +1010,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
     hoveredRowLink: BaseColors.BLUE_106EBE,
     hoveredLink: BaseColors.BLUE_106EBE,
     hoveredBackground: BaseColors.GRAY_F3F2F1,
-    selectedLink: BaseColors.BLUE_106EBE,
+    selectedLink: BaseColors.BLUE_005A9E,
     selectedHoveredLink: BaseColors.BLUE_005A9E,
   },
   radioButton: {

@@ -18,6 +18,7 @@ export { ToastLifecycle } from './ToastLifecycle.stories';
 export { MultipleToasters } from './MultipleToasters.stories';
 export { ToasterLimit } from './ToasterLimit.stories';
 export { FocusKeyboardShortcut } from './FocusKeyboardShortcut.stories';
+export { Inline } from './Inline.stories';
 
 import descriptionMd from './ToastDescription.md';
 

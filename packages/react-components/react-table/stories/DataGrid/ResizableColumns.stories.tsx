@@ -178,47 +178,49 @@ export const ResizableColumns = () => {
   const refMap = React.useRef<Record<string, HTMLElement | null>>({});
 
   return (
-    <DataGrid
-      items={items}
-      columns={columns}
-      sortable
-      getRowId={item => item.file.label}
-      selectionMode="multiselect"
-      resizableColumns
-      columnSizingOptions={columnSizingOptions}
-    >
-      <DataGridHeader>
-        <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
-          {({ renderHeaderCell, columnId }, dataGrid) =>
-            dataGrid.resizableColumns ? (
-              <Menu openOnContext>
-                <MenuTrigger>
-                  <DataGridHeaderCell ref={el => (refMap.current[columnId] = el)}>
-                    {renderHeaderCell()}
-                  </DataGridHeaderCell>
-                </MenuTrigger>
-                <MenuPopover>
-                  <MenuList>
-                    <MenuItem onClick={dataGrid.columnSizing_unstable.enableKeyboardMode(columnId)}>
-                      Keyboard Column Resizing
-                    </MenuItem>
-                  </MenuList>
-                </MenuPopover>
-              </Menu>
-            ) : (
-              <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
-            )
-          }
-        </DataGridRow>
-      </DataGridHeader>
-      <DataGridBody<Item>>
-        {({ item, rowId }) => (
-          <DataGridRow<Item> key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
-            {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+    <div style={{ overflowX: 'auto' }}>
+      <DataGrid
+        items={items}
+        columns={columns}
+        sortable
+        getRowId={item => item.file.label}
+        selectionMode="multiselect"
+        resizableColumns
+        columnSizingOptions={columnSizingOptions}
+      >
+        <DataGridHeader>
+          <DataGridRow selectionCell={{ checkboxIndicator: { 'aria-label': 'Select all rows' } }}>
+            {({ renderHeaderCell, columnId }, dataGrid) =>
+              dataGrid.resizableColumns ? (
+                <Menu openOnContext>
+                  <MenuTrigger>
+                    <DataGridHeaderCell ref={el => (refMap.current[columnId] = el)}>
+                      {renderHeaderCell()}
+                    </DataGridHeaderCell>
+                  </MenuTrigger>
+                  <MenuPopover>
+                    <MenuList>
+                      <MenuItem onClick={dataGrid.columnSizing_unstable.enableKeyboardMode(columnId)}>
+                        Keyboard Column Resizing
+                      </MenuItem>
+                    </MenuList>
+                  </MenuPopover>
+                </Menu>
+              ) : (
+                <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>
+              )
+            }
           </DataGridRow>
-        )}
-      </DataGridBody>
-    </DataGrid>
+        </DataGridHeader>
+        <DataGridBody<Item>>
+          {({ item, rowId }) => (
+            <DataGridRow<Item> key={rowId} selectionCell={{ checkboxIndicator: { 'aria-label': 'Select row' } }}>
+              {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
+            </DataGridRow>
+          )}
+        </DataGridBody>
+      </DataGrid>
+    </div>
   );
 };
 

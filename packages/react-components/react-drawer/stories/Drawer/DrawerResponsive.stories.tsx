@@ -1,6 +1,15 @@
 import * as React from 'react';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, Drawer, DrawerProps } from '@fluentui/react-drawer';
-import { Button, makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import {
+  DrawerBody,
+  DrawerHeader,
+  DrawerHeaderTitle,
+  Drawer,
+  DrawerProps,
+  Button,
+  makeStyles,
+  shorthands,
+  tokens,
+} from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -45,7 +54,7 @@ export const Responsive = () => {
 
   return (
     <div className={styles.root}>
-      <Drawer type={type} separator position="left" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <Drawer type={type} separator position="start" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={

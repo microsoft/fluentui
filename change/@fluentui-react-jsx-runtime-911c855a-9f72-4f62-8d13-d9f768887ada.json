@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: supports new automatic JSX runtime",
-  "packageName": "@fluentui/react-jsx-runtime",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

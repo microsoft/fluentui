@@ -74,8 +74,10 @@ const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbn
       {renderTileWithLayout(tile, {
         foreground: (
           <img
-            src={`//via.placeholder.com/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`}
+            src="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svg"
             className={css(TileExampleStyles.tileImage)}
+            height={Math.round(imageSize.height)}
+            width={Math.round(imageSize.width)}
           />
         ),
       })}
@@ -142,7 +144,7 @@ export class TileDocumentExample extends React.Component<{}, ITileDocumentExampl
             itemActivity={<SignalField before={<SharedSignal />}>{ITEMS[3].activity}</SignalField>}
             foreground={
               <img
-                src={`https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/assets/item-types/64/docx.svg`}
+                src={`https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/item-types/64/docx.svg`}
                 style={{
                   display: 'block',
                   width: '64px',

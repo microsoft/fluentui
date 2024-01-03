@@ -1,44 +1,34 @@
 import * as React from 'react';
-import { Label, makeStyles, Radio, RadioGroup, Text, tokens, useId } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  field: {
-    display: 'grid',
-    gridRowGap: tokens.spacingVerticalS,
-  },
-});
+import { Field, Radio, RadioGroup, Text } from '@fluentui/react-components';
 
-export const LabelSubtext = () => {
-  const styles = useStyles();
-  const labelId = useId('label');
-  return (
-    <div className={styles.field}>
-      <Label id={labelId}>Favorite Fruit</Label>
-      <RadioGroup aria-labelledby={labelId}>
-        <Radio
-          value="A"
-          label={
-            <>
-              Banana
-              <br />
-              <Text size={200}>This is an example subtext of the first option</Text>
-            </>
-          }
-        />
-        <Radio
-          value="B"
-          label={
-            <>
-              Pear
-              <br />
-              <Text size={200}>This is some more example subtext</Text>
-            </>
-          }
-        />
-      </RadioGroup>
-    </div>
-  );
-};
+export const LabelSubtext = () => (
+  <Field label="Favorite Fruit">
+    <RadioGroup>
+      <Radio
+        value="A"
+        label={
+          <>
+            Banana
+            <br />
+            <Text size={200}>This is an example subtext of the first option</Text>
+          </>
+        }
+      />
+      <Radio
+        value="B"
+        label={
+          <>
+            Pear
+            <br />
+            <Text size={200}>This is some more example subtext</Text>
+          </>
+        }
+      />
+    </RadioGroup>
+  </Field>
+);
+
 LabelSubtext.parameters = {
   docs: {
     description: {

@@ -4,6 +4,8 @@ import {
   useTooltipVisibility_unstable as useTooltipVisibility,
   useFluent_unstable as useFluent,
 } from '@fluentui/react-shared-contexts';
+import type { KeyborgFocusInEvent } from '@fluentui/react-tabster';
+import { KEYBORG_FOCUSIN } from '@fluentui/react-tabster';
 import {
   applyTriggerPropsToChildren,
   useControllableState,
@@ -17,7 +19,7 @@ import {
   useEventCallback,
   slot,
 } from '@fluentui/react-utilities';
-import type { TooltipProps, TooltipState, TooltipChildProps } from './Tooltip.types';
+import type { TooltipProps, TooltipState, TooltipChildProps, OnVisibleChangeData } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
 import { Escape } from '@fluentui/keyboard-keys';
 
@@ -50,13 +52,13 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
 
   const [visible, setVisibleInternal] = useControllableState({ state: props.visible, initialState: false });
   const setVisible = React.useCallback(
-    (newVisible: boolean, ev?: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
+    (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => {
       clearDelayTimeout();
       setVisibleInternal(oldVisible => {
-        if (newVisible !== oldVisible) {
-          onVisibleChange?.(ev, { visible: newVisible });
+        if (data.visible !== oldVisible) {
+          onVisibleChange?.(ev, data);
         }
-        return newVisible;
+        return data.visible;
       });
     },
     [clearDelayTimeout, setVisibleInternal, onVisibleChange],
@@ -117,17 +119,19 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   // Also add a listener on document to hide the tooltip if Escape is pressed
   useIsomorphicLayoutEffect(() => {
     if (visible) {
-      const thisTooltip = { hide: () => setVisible(false) };
+      const thisTooltip = {
+        hide: (ev?: KeyboardEvent) => setVisible(undefined, { visible: false, documentKeyboardEvent: ev }),
+      };
 
       context.visibleTooltip?.hide();
       context.visibleTooltip = thisTooltip;
 
       const onDocumentKeyDown = (ev: KeyboardEvent) => {
-        if (ev.key === Escape) {
-          thisTooltip.hide();
+        if (ev.key === Escape && !ev.defaultPrevented) {
+          thisTooltip.hide(ev);
           // stop propagation to avoid conflicting with other elements that listen for `Escape`
-          // e,g: Dialog, Popover, Menu
-          ev.stopPropagation();
+          // e,g: Dialog, Popover, Menu and Tooltip
+          ev.preventDefault();
         }
       };
 
@@ -147,11 +151,8 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     }
   }, [context, targetDocument, visible, setVisible]);
 
-  // The focused element gets a blur event when the document loses focus
-  // (e.g. switching tabs in the browser), but we don't want to show the
-  // tooltip again when the document gets focus back. Handle this case by
-  // checking if the blurred element is still the document's activeElement.
-  // See https://github.com/microsoft/fluentui/issues/13541
+  // Used to skip showing the tooltip  in certain situations when the trigger is focued.
+  // See comments where this is set for more info.
   const ignoreNextFocusEventRef = React.useRef(false);
 
   // Listener for onPointerEnter and onFocus on the trigger element
@@ -166,13 +167,36 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
       const delay = context.visibleTooltip ? 0 : state.showDelay;
 
       setDelayTimeout(() => {
-        setVisible(true, ev);
+        setVisible(ev, { visible: true });
       }, delay);
 
       ev.persist(); // Persist the event since the setVisible call will happen asynchronously
     },
     [setDelayTimeout, setVisible, state.showDelay, context],
   );
+
+  // Callback ref that attaches a keyborg:focusin event listener.
+  const [keyborgListenerCallbackRef] = React.useState(() => {
+    const onKeyborgFocusIn = ((ev: KeyborgFocusInEvent) => {
+      // Skip showing the tooltip if focus moved programmatically.
+      // For example, we don't want to show the tooltip when a dialog is closed
+      // and Tabster programmatically restores focus to the trigger button.
+      // See https://github.com/microsoft/fluentui/issues/27576
+      if (ev.detail?.isFocusedProgrammatically) {
+        ignoreNextFocusEventRef.current = true;
+      }
+    }) as EventListener;
+
+    // Save the current element to remove the listener when the ref changes
+    let current: Element | null = null;
+
+    // Callback ref that attaches the listener to the element
+    return (element: Element | null) => {
+      current?.removeEventListener(KEYBORG_FOCUSIN, onKeyborgFocusIn);
+      element?.addEventListener(KEYBORG_FOCUSIN, onKeyborgFocusIn);
+      current = element;
+    };
+  });
 
   // Listener for onPointerLeave and onBlur on the trigger element
   const onLeaveTrigger = React.useCallback(
@@ -183,11 +207,16 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
         // Hide immediately when losing focus
         delay = 0;
 
+        // The focused element gets a blur event when the document loses focus
+        // (e.g. switching tabs in the browser), but we don't want to show the
+        // tooltip again when the document gets focus back. Handle this case by
+        // checking if the blurred element is still the document's activeElement.
+        // See https://github.com/microsoft/fluentui/issues/13541
         ignoreNextFocusEventRef.current = targetDocument?.activeElement === ev.target;
       }
 
       setDelayTimeout(() => {
-        setVisible(false, ev);
+        setVisible(ev, { visible: false });
       }, delay);
 
       ev.persist(); // Persist the event since the setVisible call will happen asynchronously
@@ -226,14 +255,16 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     state.shouldRenderTooltip = false;
   }
 
-  const childTargetRef = useMergedRefs(child?.ref, targetRef);
-
   // Apply the trigger props to the child, either by calling the render function, or cloning with the new props
   state.children = applyTriggerPropsToChildren(children, {
     ...triggerAriaProps,
     ...child?.props,
-    // If the target prop is not provided, attach targetRef to the trigger element's ref prop
-    ref: positioningOptions.target === undefined ? childTargetRef : child?.ref,
+    ref: useMergedRefs(
+      child?.ref,
+      keyborgListenerCallbackRef,
+      // If the target prop is not provided, attach targetRef to the trigger element's ref prop
+      positioningOptions.target === undefined ? targetRef : undefined,
+    ),
     onPointerEnter: useEventCallback(mergeCallbacks(child?.props?.onPointerEnter, onEnterTrigger)),
     onPointerLeave: useEventCallback(mergeCallbacks(child?.props?.onPointerLeave, onLeaveTrigger)),
     onFocus: useEventCallback(mergeCallbacks(child?.props?.onFocus, onEnterTrigger)),

@@ -3,7 +3,12 @@ import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from 'd3-scale';
 import { select as d3Select, event as d3Event, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
-import * as d3TimeFormat from 'd3-time-format';
+import {
+  TimeLocaleObject as d3TimeLocaleObject,
+  timeFormat as d3TimeFormat,
+  timeFormatLocale as d3TimeFormatLocale,
+  TimeLocaleDefinition as d3TimeLocaleDefinition,
+} from 'd3-time-format';
 import {
   timeSecond as d3TimeSecond,
   timeMinute as d3TimeMinute,
@@ -171,8 +176,8 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, chartType: ChartTy
   return { xScale: xAxisScale, tickValues };
 }
 
-function multiFormat(date: Date, locale?: d3TimeFormat.TimeLocaleObject) {
-  const timeFormat = locale ? locale.format : d3TimeFormat.timeFormat;
+function multiFormat(date: Date, locale?: d3TimeLocaleObject) {
+  const timeFormat = locale ? locale.format : d3TimeFormat;
   const formatMillisecond = timeFormat('.%L');
   const formatSecond = timeFormat(':%S');
   const formatMinute = timeFormat('%I:%M');
@@ -212,7 +217,7 @@ export function createDateXAxis(
   tickParams: ITickParams,
   culture?: string,
   options?: Intl.DateTimeFormatOptions,
-  timeFormatLocale?: d3TimeFormat.TimeLocaleDefinition,
+  timeFormatLocale?: d3TimeLocaleDefinition,
   customDateTimeFormatter?: (dateTime: Date) => string,
 ) {
   const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount = 6 } = xAxisParams;
@@ -229,7 +234,7 @@ export function createDateXAxis(
       return domainValue.toLocaleString(culture, options);
     });
   } else if (timeFormatLocale) {
-    const locale: d3TimeFormat.TimeLocaleObject = d3TimeFormat.timeFormatLocale(timeFormatLocale!);
+    const locale: d3TimeLocaleObject = d3TimeFormatLocale(timeFormatLocale!);
 
     xAxis.tickFormat((domainValue: Date, _index: number) => {
       return multiFormat(domainValue, locale);
@@ -238,7 +243,7 @@ export function createDateXAxis(
 
   tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues) : '';
   if (culture === undefined) {
-    tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat.timeFormat(tickParams.tickFormat)) : '';
+    tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat(tickParams.tickFormat)) : '';
   }
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
@@ -301,10 +306,20 @@ export function createStringXAxis(
  * @param {number} maxVal
  * @param {number} minVal
  * @param {number} splitInto
+ * @param {boolean} isIntegralDataset
  * @returns {number[]}
  */
-export function prepareDatapoints(maxVal: number, minVal: number, splitInto: number): number[] {
-  const val = Math.ceil((maxVal - minVal) / splitInto);
+export function prepareDatapoints(
+  maxVal: number,
+  minVal: number,
+  splitInto: number,
+  isIntegralDataset: boolean,
+): number[] {
+  const val = isIntegralDataset
+    ? Math.ceil((maxVal - minVal) / splitInto)
+    : (maxVal - minVal) / splitInto >= 1
+    ? Math.ceil((maxVal - minVal) / splitInto)
+    : (maxVal - minVal) / splitInto;
   const dataPointsArray: number[] = [minVal, minVal + val];
   while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
     dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
@@ -324,13 +339,14 @@ export function createYAxis(
   axisData: IAxisData,
   chartType: ChartTypes,
   barWidth: number,
+  isIntegralDataset: boolean,
   useSecondaryYScale: boolean = false,
 ) {
   switch (chartType) {
     case ChartTypes.HorizontalBarChartWithAxis:
       return createYAxisForHorizontalBarChartWithAxis(yAxisParams, isRtl, axisData, barWidth!);
     default:
-      return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, useSecondaryYScale);
+      return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
   }
 }
 
@@ -371,6 +387,7 @@ export function createYAxisForOtherCharts(
   yAxisParams: IYAxisParams,
   isRtl: boolean,
   axisData: IAxisData,
+  isIntegralDataset: boolean,
   useSecondaryYScale: boolean = false,
 ) {
   const {
@@ -393,7 +410,7 @@ export function createYAxisForOtherCharts(
   const tempVal = maxOfYVal || yMinMaxValues.endValue;
   const finalYmax = tempVal > yMaxValue ? tempVal : yMaxValue!;
   const finalYmin = yMinMaxValues.startValue < yMinValue ? 0 : yMinValue!;
-  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount);
+  const domainValues = prepareDatapoints(finalYmax, finalYmin, yAxisTickCount, isIntegralDataset);
   const yAxisScale = d3ScaleLinear()
     .domain([finalYmin, domainValues[domainValues.length - 1]])
     .range([containerHeight - margins.bottom!, margins.top! + (eventAnnotationProps! ? eventLabelHeight! : 0)]);
@@ -501,6 +518,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
       legend: string;
       y: number;
       color: string;
+      xAxisCalloutData?: string;
       yAxisCalloutData?: string | { [id: string]: number };
       callOutAccessibilityData?: IAccessibilityProps;
       index?: number;
@@ -509,6 +527,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
       legend: string;
       y: number;
       color: string;
+      xAxisCalloutData?: string;
       yAxisCalloutData?: string | { [id: string]: number };
       callOutAccessibilityData?: IAccessibilityProps;
       index?: number;
@@ -521,6 +540,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
         legend: ele.legend,
         y: ele.y,
         color: ele.color!,
+        xAxisCalloutData: ele.xAxisCalloutData,
         yAxisCalloutData: ele.yAxisCalloutData,
         callOutAccessibilityData: ele.callOutAccessibilityData,
         index: ele.index,
@@ -531,6 +551,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
           legend: ele.legend,
           y: ele.y,
           color: ele.color!,
+          xAxisCalloutData: ele.xAxisCalloutData,
           yAxisCalloutData: ele.yAxisCalloutData,
           callOutAccessibilityData: ele.callOutAccessibilityData,
           index: ele.index,
@@ -701,7 +722,9 @@ export function createYAxisLabels(
   axisNode.selectAll('.tick text').each(function () {
     const text = d3Select(this);
     const totalWord = text.text();
-    const truncatedWord = `${text.text().slice(0, noOfCharsToTruncate)}...`;
+    const truncatedWord = isRtl
+      ? `...${text.text().slice(0, noOfCharsToTruncate)}`
+      : `${text.text().slice(0, noOfCharsToTruncate)}...`;
     const totalWordLength = text.text().length;
     const padding = truncateLabel ? 1.5 : 1; // ems
     const y = text.attr('y');
@@ -721,7 +744,7 @@ export function createYAxisLabels(
       text
         .append('tspan')
         .attr('id', 'showDots')
-        .attr('x', x)
+        .attr('x', isRtl ? 0 : x)
         .attr('y', y)
         .attr('dy', dy)
         .attr('dx', padding + dx + 'em')
@@ -731,7 +754,7 @@ export function createYAxisLabels(
         .attr('text-align', 'start')
         .append('tspan')
         .attr('id', 'LessLength')
-        .attr('x', isRtl ? xValue : x)
+        .attr('x', isRtl ? 0 : x)
         .attr('y', y)
         .attr('dx', padding + dx + 'em')
         .text(totalWord);
@@ -1128,8 +1151,28 @@ export function findVerticalNumericMinMaxOfY(points: IVerticalBarChartDataPoint[
   startValue: number;
   endValue: number;
 } {
-  const yMax = d3Max(points, (point: IVerticalBarChartDataPoint) => point.y)!;
-  const yMin = d3Min(points, (point: IVerticalBarChartDataPoint) => point.y)!;
+  const yMax = d3Max(points, (point: IVerticalBarChartDataPoint) => {
+    if (point.lineData !== undefined) {
+      if (point.y > point.lineData!.y) {
+        return point.y;
+      } else {
+        return point.lineData!.y;
+      }
+    } else {
+      return point.y;
+    }
+  })!;
+  const yMin = d3Min(points, (point: IVerticalBarChartDataPoint) => {
+    if (point.lineData !== undefined) {
+      if (point.y < point.lineData!.y) {
+        return point.y;
+      } else {
+        return point.lineData!.y;
+      }
+    } else {
+      return point.y;
+    }
+  })!;
 
   return { startValue: yMin, endValue: yMax };
 }

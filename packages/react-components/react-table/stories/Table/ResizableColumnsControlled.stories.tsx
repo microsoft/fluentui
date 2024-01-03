@@ -26,6 +26,7 @@ import {
   MenuTrigger,
 } from '@fluentui/react-components';
 import {
+  DismissRegular,
   DocumentRegular,
   EditRegular,
   FolderRegular,
@@ -37,10 +38,17 @@ import {
 import * as React from 'react';
 import { useState } from 'react';
 
+const columnNames: { [key: TableColumnId]: string } = {
+  file: 'File',
+  author: 'Author',
+  lastUpdated: 'Last updated',
+  lastUpdate: 'Last update',
+};
+
 const columnsDef: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
     columnId: 'file',
-    renderHeaderCell: () => <>File</>,
+    renderHeaderCell: () => <>{columnNames.file}</>,
     renderCell: (item: Item) => (
       <TableCellLayout truncate media={item.file.icon}>
         {item.file.label}
@@ -52,7 +60,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
   }),
   createTableColumn<Item>({
     columnId: 'author',
-    renderHeaderCell: () => <>Author</>,
+    renderHeaderCell: () => <>{columnNames.author}</>,
     renderCell: (item: Item) => (
       <TableCellLayout
         truncate
@@ -67,7 +75,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
   }),
   createTableColumn<Item>({
     columnId: 'lastUpdated',
-    renderHeaderCell: () => <>Last updated</>,
+    renderHeaderCell: () => <>{columnNames.lastUpdated}</>,
     renderCell: (item: Item) => <TableCellLayout truncate>{item.lastUpdated.label}</TableCellLayout>,
     compare: (a, b) => {
       return a.lastUpdated.timestamp - b.lastUpdated.timestamp;
@@ -75,7 +83,7 @@ const columnsDef: TableColumnDefinition<Item>[] = [
   }),
   createTableColumn<Item>({
     columnId: 'lastUpdate',
-    renderHeaderCell: () => <>Last update</>,
+    renderHeaderCell: () => <>{columnNames.lastUpdate}</>,
     renderCell: (item: Item) => (
       <TableCellLayout truncate media={item.lastUpdate.icon}>
         {item.lastUpdate.label}
@@ -163,6 +171,9 @@ export const ResizableColumnsControlled = () => {
     author: {
       minWidth: 170,
       defaultWidth: 250,
+    },
+    lastUpdated: {
+      minWidth: 120,
     },
     lastUpdate: {
       minWidth: 220,
@@ -272,46 +283,53 @@ export const ResizableColumnsControlled = () => {
           Add removed column
         </Button>
       </p>
-      <Table sortable aria-label="Table with sort" ref={tableRef}>
-        <TableHeader>
-          <TableRow>
-            {columns.map((column, index) => (
-              <Menu openOnContext key={column.columnId}>
-                <MenuTrigger>
-                  <TableHeaderCell
-                    key={column.columnId}
-                    {...columnSizing.getTableHeaderCellProps(column.columnId)}
-                    {...headerSortProps(column.columnId)}
-                  >
-                    {column.renderHeaderCell()}
-                    <span style={{ position: 'absolute', right: 0 }} onClick={() => removeColumn(index)}>
-                      x
-                    </span>
-                  </TableHeaderCell>
-                </MenuTrigger>
-                <MenuPopover>
-                  <MenuList>
-                    <MenuItem onClick={columnSizing.enableKeyboardMode(column.columnId)}>
-                      Keyboard Column Resizing
-                    </MenuItem>
-                  </MenuList>
-                </MenuPopover>
-              </Menu>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {rows.map(({ item }) => (
-            <TableRow key={item.file.label}>
-              {columns.map(column => (
-                <TableCell key={column.columnId} {...columnSizing.getTableCellProps(column.columnId)}>
-                  {column.renderCell(item)}
-                </TableCell>
+      <div style={{ overflowX: 'auto' }}>
+        <Table sortable aria-label="Table with sort" ref={tableRef} {...columnSizing.getTableProps()}>
+          <TableHeader>
+            <TableRow>
+              {columns.map((column, index) => (
+                <Menu openOnContext key={column.columnId}>
+                  <MenuTrigger>
+                    <TableHeaderCell
+                      key={column.columnId}
+                      {...columnSizing.getTableHeaderCellProps(column.columnId)}
+                      {...headerSortProps(column.columnId)}
+                    >
+                      {column.renderHeaderCell()}
+                      <Button
+                        appearance="transparent"
+                        aria-label={`Remove ${columnNames[column.columnId]} column`}
+                        size="small"
+                        icon={<DismissRegular />}
+                        style={{ position: 'absolute', right: 0 }}
+                        onClick={() => removeColumn(index)}
+                      />
+                    </TableHeaderCell>
+                  </MenuTrigger>
+                  <MenuPopover>
+                    <MenuList>
+                      <MenuItem onClick={columnSizing.enableKeyboardMode(column.columnId)}>
+                        Keyboard Column Resizing
+                      </MenuItem>
+                    </MenuList>
+                  </MenuPopover>
+                </Menu>
               ))}
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {rows.map(({ item }) => (
+              <TableRow key={item.file.label}>
+                {columns.map(column => (
+                  <TableCell key={column.columnId} {...columnSizing.getTableCellProps(column.columnId)}>
+                    {column.renderCell(item)}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </>
   );
 };

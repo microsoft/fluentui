@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Add TopBanner component and use it in the site template.",
-  "packageName": "@fluentui/react-docsite-components",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

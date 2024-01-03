@@ -76,9 +76,9 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
     messageBarType: messageBarType || MessageBarType.info,
     onDismiss: onDismiss !== undefined,
     actions: actions !== undefined,
-    truncated: truncated,
-    isMultiline: isMultiline,
-    expandSingleLine: expandSingleLine,
+    truncated,
+    isMultiline,
+    expandSingleLine,
     className,
   });
 

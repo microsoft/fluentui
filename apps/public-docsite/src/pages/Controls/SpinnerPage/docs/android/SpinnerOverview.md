@@ -7,6 +7,6 @@ Use a standalone spinner when you need a progress indicator on an existing surfa
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
 ### Spinner
 
-<img className="off" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/fabric-website/images/controls/android/updated/img_spinner_01_light.png?text=LightMode" />
-<img className="on" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/fabric-website/images/controls/android/updated/img_spinner_01_dark.png?text=DarkMode" />
+<img className="off" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/android/updated/img_spinner_01_light.png?text=LightMode" />
+<img className="on" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/android/updated/img_spinner_01_dark.png?text=DarkMode" />
 </DisplayToggle>

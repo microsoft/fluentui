@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Added CY tests for Breacrumb with Menu and Overflow",
-  "packageName": "@fluentui/react-breadcrumb-preview",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}

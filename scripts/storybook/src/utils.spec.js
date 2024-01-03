@@ -1,10 +1,18 @@
+/* eslint-disable no-shadow */
 const fs = require('fs');
 const path = require('path');
 
-const { stripIndents } = require('@nx/devkit');
+const { getAllPackageInfo } = require('@fluentui/scripts-monorepo');
+const { stripIndents, workspaceRoot } = require('@nx/devkit');
+const semver = require('semver');
 const tmp = require('tmp');
 
-const { loadWorkspaceAddon, getPackageStoriesGlob } = require('./utils');
+const {
+  loadWorkspaceAddon,
+  getPackageStoriesGlob,
+  getImportMappingsForExportToSandboxAddon,
+  processBabelLoaderOptions,
+} = require('./utils');
 
 tmp.setGracefulCleanup();
 
@@ -12,7 +20,7 @@ describe(`utils`, () => {
   describe(`#loadWorkspacePlugin`, () => {
     /**
      *
-     * @param {{packageName:string}} options
+     * @param {{packageName:string, presetContent?: string}} options
      */
     function setup(options) {
       const npmScope = '@proj';
@@ -61,8 +69,8 @@ describe(`utils`, () => {
         'utf-8',
       );
 
-      fs.writeFileSync(
-        paths.preset,
+      const presetTemplate =
+        options.presetContent ??
         stripIndents`
           function config(entry = []) {
             return [...entry, require.resolve('./lib/preset/preview')];
@@ -73,9 +81,9 @@ describe(`utils`, () => {
           }
 
           module.exports = { managerEntries, config };
-          `,
-        'utf-8',
-      );
+      `;
+
+      fs.writeFileSync(paths.preset, presetTemplate, 'utf-8');
 
       return {
         npmScope,
@@ -97,6 +105,22 @@ describe(`utils`, () => {
       expect(actual).toBe(expected);
     });
 
+    it(`should return path to in memory preset loader root with options if provided `, () => {
+      const { npmScope, workspaceRoot, tsConfigRoot } = setup({ packageName: 'storybook-custom-addon' });
+
+      const actual = loadWorkspaceAddon(`${npmScope}/storybook-custom-addon`, {
+        workspaceRoot,
+        tsConfigPath: tsConfigRoot,
+        options: { who: 'developers' },
+      });
+      const expected = {
+        name: `${workspaceRoot}/packages/storybook-custom-addon/temp/preset.ts`,
+        options: { who: 'developers' },
+      };
+
+      expect(actual).toEqual(expected);
+    });
+
     it(`should create mocked preset registration module with in memory TS compilation`, () => {
       const { tsConfigRoot, npmScope, packageRoot, workspaceRoot } = setup({ packageName: 'storybook-custom-addon' });
 
@@ -104,12 +128,13 @@ describe(`utils`, () => {
 
       const mockedPreset = fs.readFileSync(path.join(packageRoot, 'temp', 'preset.ts'), 'utf-8');
 
-      expect(mockedPreset).toMatchInlineSnapshot(`
-        "// @ts-ignore
+      expect(mockedPreset.replace(tsConfigRoot, 'Any<String>')).toMatchInlineSnapshot(`
+        "// @ts-nocheck
+
         const { registerTsPaths } = require('@fluentui/scripts-storybook');
 
         function managerWebpack(config, options) {
-        registerTsPaths({config, configFile: '${tsConfigRoot}'});
+        registerTsPaths({config, configFile: 'Any<String>'});
         return config;
         }
 
@@ -122,6 +147,61 @@ describe(`utils`, () => {
         }
 
         module.exports = { managerWebpack, managerEntries, config };"
+      `);
+    });
+
+    it(`should create mocked preset registration module with in memory TS compilation if webpack preset is part of api`, () => {
+      const { tsConfigRoot, npmScope, packageRoot, workspaceRoot } = setup({
+        packageName: 'storybook-custom-addon',
+
+        presetContent: stripIndents`
+          const preset = require('./lib/preset/preset');
+
+          function config(entry = []) {
+            return [...entry, require.resolve('./lib/preset/preview')];
+          }
+
+          function managerEntries(entry = []) {
+            return [...entry, require.resolve('./lib/preset/manager')];
+          }
+
+          module.exports = { managerEntries, config, ...preset };
+      `,
+      });
+
+      loadWorkspaceAddon(`${npmScope}/storybook-custom-addon`, { workspaceRoot, tsConfigPath: tsConfigRoot });
+
+      const mockedPreset = fs.readFileSync(path.join(packageRoot, 'temp', 'preset.ts'), 'utf-8');
+
+      expect(mockedPreset.replace(tsConfigRoot, 'Any<String>')).toMatchInlineSnapshot(`
+        "// @ts-nocheck
+
+        function registerInMemoryTsTranspilation(){
+        const { registerTsProject } = require('nx/src/utils/register');
+        const { joinPathFragments } = require('@nx/devkit');
+        registerTsProject(joinPathFragments(__dirname, '..'), 'tsconfig.lib.json');
+        }
+
+        registerInMemoryTsTranspilation();
+
+        const { registerTsPaths } = require('@fluentui/scripts-storybook');
+
+        function managerWebpack(config, options) {
+        registerTsPaths({config, configFile: 'Any<String>'});
+        return config;
+        }
+
+        const preset = require('../src/preset/preset');
+
+        function config(entry = []) {
+        return [...entry, require.resolve('../src/preset/preview.ts')];
+        }
+
+        function managerEntries(entry = []) {
+        return [...entry, require.resolve('../src/preset/manager.ts')];
+        }
+
+        module.exports = { managerWebpack, managerEntries, config, ...preset };"
       `);
     });
   });
@@ -144,6 +224,59 @@ describe(`utils`, () => {
       expect(first.startsWith('../../packages/react-')).toBeTruthy();
 
       expect(first.endsWith('**/@(index.stories.@(ts|tsx)|*.stories.mdx)')).toBeTruthy();
+    });
+  });
+
+  describe(`#processBabelLoaderOptions`, () => {
+    it(`should add customize property with loader`, () => {
+      const actual = processBabelLoaderOptions({ plugins: [['foo-babel-loader', { one: true }]] });
+
+      expect(actual).toEqual({
+        customize: `${workspaceRoot}/scripts/storybook/src/loaders/custom-loader.js`,
+        plugins: [
+          [
+            'foo-babel-loader',
+            {
+              one: true,
+            },
+          ],
+        ],
+      });
+    });
+  });
+
+  describe(`#getImportMappingsForExportToSandboxAddon`, () => {
+    it(`should get import mappings for storybook sources`, () => {
+      const allPackagesInfo = getAllPackageInfo();
+      const allPackagesInfoProjects = Object.values(allPackagesInfo);
+      const suitePackage = allPackagesInfo['@fluentui/react-components'];
+      const suitePackageDependencies = suitePackage.packageJson.dependencies ?? {};
+      const unstablePackage = allPackagesInfoProjects.find(metadata => {
+        return (
+          suitePackageDependencies[metadata.packageJson.name] &&
+          semver.prerelease(metadata.packageJson.version) !== null
+        );
+      });
+      const stableSuitePackages = allPackagesInfoProjects.reduce((acc, metadata) => {
+        if (
+          suitePackageDependencies[metadata.packageJson.name] &&
+          semver.prerelease(metadata.packageJson.version) === null
+        ) {
+          acc[metadata.packageJson.name] = { replace: '@fluentui/react-components' };
+        }
+        return acc;
+      }, /** @type {Record<string, { replace: string }>} */ ({}));
+
+      const actual = getImportMappingsForExportToSandboxAddon();
+
+      expect(actual).toEqual(
+        expect.objectContaining({
+          ...stableSuitePackages,
+          ...(unstablePackage
+            ? { [unstablePackage.packageJson.name]: { replace: '@fluentui/react-components/unstable' } }
+            : null),
+        }),
+      );
     });
   });
 });

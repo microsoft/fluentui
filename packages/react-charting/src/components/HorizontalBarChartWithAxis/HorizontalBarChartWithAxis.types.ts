@@ -7,6 +7,10 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
 } from '../../index';
 
+/**
+ * Horizontal Bar Chart with Axis properties
+ * {@docCategory HorizontalBarChartWithAxis}
+ */
 export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
@@ -68,6 +72,10 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
   showYAxisLables?: boolean;
 }
 
+/**
+ * Horizontal Bar Chart with Axis style properties
+ * {@docCategory HorizontalBarChartWithAxis}
+ */
 export interface IHorizontalBarChartWithAxisStyleProps extends ICartesianChartStyleProps {
   /**
    * color of the datapoint legend
@@ -75,6 +83,10 @@ export interface IHorizontalBarChartWithAxisStyleProps extends ICartesianChartSt
   legendColor?: string;
 }
 
+/**
+ * Horizontal Bar Chart with Axis styles
+ * {@docCategory HorizontalBarChartWithAxis}
+ */
 export interface IHorizontalBarChartWithAxisStyles extends ICartesianChartStyles {
   /**
    * Style for the chart label.

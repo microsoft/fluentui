@@ -1,7 +1,5 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
-
-import { createElement } from '@fluentui/react-jsx-runtime';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { DialogSurfaceState, DialogSurfaceSlots, DialogSurfaceContextValues } from './DialogSurface.types';
@@ -15,7 +13,7 @@ export const renderDialogSurface_unstable = (state: DialogSurfaceState, contextV
   assertSlots<DialogSurfaceSlots>(state);
 
   return (
-    <Portal>
+    <Portal mountNode={state.mountNode}>
       {state.backdrop && <state.backdrop />}
       <DialogSurfaceProvider value={contextValues.dialogSurface}>
         <state.root />

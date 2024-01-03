@@ -1,16 +1,26 @@
 import * as React from 'react';
-import { DrawerInline, DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerFooter } from '@fluentui/react-drawer';
-import { Button, makeStyles } from '@fluentui/react-components';
+import {
+  InlineDrawer,
+  DrawerBody,
+  DrawerHeader,
+  DrawerHeaderTitle,
+  DrawerFooter,
+  Button,
+  makeStyles,
+  tokens,
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    rowGap: '24px',
-    columnGap: '24px',
+    flexWrap: 'wrap',
+    rowGap: tokens.spacingHorizontalXXL,
+    columnGap: tokens.spacingHorizontalXXL,
   },
 
   drawer: {
     height: '400px',
+    minWidth: '320px',
   },
 });
 
@@ -51,25 +61,25 @@ export const WithScroll = () => {
 
   return (
     <div className={styles.root}>
-      <DrawerInline className={styles.drawer} open>
+      <InlineDrawer className={styles.drawer} open>
         <Body />
-      </DrawerInline>
+      </InlineDrawer>
 
-      <DrawerInline className={styles.drawer} open>
+      <InlineDrawer className={styles.drawer} open>
         <Header />
         <Body />
-      </DrawerInline>
+      </InlineDrawer>
 
-      <DrawerInline className={styles.drawer} open>
+      <InlineDrawer className={styles.drawer} open>
         <Body />
         <Footer />
-      </DrawerInline>
+      </InlineDrawer>
 
-      <DrawerInline className={styles.drawer} open>
+      <InlineDrawer className={styles.drawer} open>
         <Header />
         <Body />
         <Footer />
-      </DrawerInline>
+      </InlineDrawer>
     </div>
   );
 };

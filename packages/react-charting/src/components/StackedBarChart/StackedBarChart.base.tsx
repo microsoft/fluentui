@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
-import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { ILegend, Legends } from '../Legends/index';
 import { IAccessibilityProps, IChartDataPoint, IChartProps } from './index';
 import { IRefArrayData, IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from '../../index';
@@ -23,6 +23,7 @@ export interface IStackedBarChartState {
   dataPointCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
+  barSpacingInPercent: number;
 }
 
 export class StackedBarChartBase extends React.Component<IStackedBarChartProps, IStackedBarChartState> {
@@ -37,6 +38,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   private _refArray: IRefArrayData[];
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _emptyChartId: string;
+  private barChartSvgRef: React.RefObject<SVGSVGElement>;
+  private _isRTL = getRTL();
 
   public constructor(props: IStackedBarChartProps) {
     super(props);
@@ -50,6 +53,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       xCalloutValue: '',
       yCalloutValue: '',
       calloutLegend: '',
+      barSpacingInPercent: 0,
     };
     this._refArray = [];
     this._onLeave = this._onLeave.bind(this);
@@ -57,6 +61,16 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this._onBarLeave = this._onBarLeave.bind(this);
     this._calloutId = getId('callout');
     this._emptyChartId = getId('_SBC_empty');
+    this.barChartSvgRef = React.createRef<SVGSVGElement>();
+  }
+
+  public componentDidMount(): void {
+    const svgWidth = this.barChartSvgRef.current?.getBoundingClientRect().width || 0;
+    const MARGIN_WIDTH_IN_PX = 3;
+    if (svgWidth) {
+      const currentBarSpacing = (MARGIN_WIDTH_IN_PX / svgWidth) * 100;
+      this.setState({ barSpacingInPercent: currentBarSpacing });
+    }
   }
 
   public render(): JSX.Element {
@@ -145,7 +159,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           </FocusZone>
           <FocusZone direction={FocusZoneDirection.horizontal}>
             <div>
-              <svg className={this._classNames.chart} aria-label={data?.chartTitle}>
+              <svg ref={this.barChartSvgRef} className={this._classNames.chart} aria-label={data?.chartTitle}>
                 <g>{bars[0]}</g>
                 <Callout
                   gapSpace={15}
@@ -202,6 +216,13 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     });
   }
 
+  /**
+   * The Create bar functions returns an array of <rect> elements, which form the bars
+   * For each bar an x value, and a width needs to be specified
+   * The computations are done based on percentages
+   * Extra margin is also provided, in the x value to provide some spacing
+   */
+
   private _createBarsAndLegends(
     data: IChartProps,
     barHeight: number,
@@ -209,6 +230,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     benchmarkData?: IChartDataPoint,
     targetData?: IChartDataPoint,
   ): [JSX.Element[], JSX.Element] {
+    const noOfBars =
+      data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
+      1;
+    const totalMarginPercent = this.state.barSpacingInPercent * (noOfBars - 1);
+
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const legendDataItems: ILegend[] = [];
     // calculating starting point of each bar and it's range
@@ -234,7 +260,15 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       return sumOfPercent;
     });
 
-    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
+    /**
+     * The %age of the space occupied by the margin needs to subtracted
+     * while computing the scaling ratio, since the margins are not being
+     * scaled down, only the data is being scaled down from a higher percentage to lower percentage
+     * Eg: 95% of the space is taken by the bars, 5% by the margins
+     * Now if the sumOfPercent is 120% -> This needs to be scaled down to 95%, not 100%
+     * since that's only space available to the bars
+     */
+    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / (100 - totalMarginPercent) : 1;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
@@ -307,7 +341,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           <rect
             key={index}
             id={getId('_SBC_bar')}
-            x={startingPoint[index] + '%'}
+            x={`${
+              this._isRTL
+                ? 100 - startingPoint[index] - value - this.state.barSpacingInPercent * index
+                : startingPoint[index] + this.state.barSpacingInPercent * index
+            }%`}
             y={0}
             width={value + '%'}
             height={barHeight}

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "removed iconPosition prop from the Breadcrumb",
-  "packageName": "@fluentui/react-breadcrumb-preview",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -82,7 +82,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
    */
   const itemsWithIndex = React.useMemo(() => {
     return colorCells.map((item, index) => {
-      return { ...item, index: index };
+      return { ...item, index };
     });
   }, [colorCells]);
 

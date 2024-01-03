@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useBackgroundAppearance } from '@fluentui/react-shared-contexts';
 import { useLinkState_unstable } from './useLinkState';
 import type { LinkProps, LinkState } from './Link.types';
@@ -11,12 +11,20 @@ import type { LinkProps, LinkState } from './Link.types';
  */
 export const useLink_unstable = (
   props: LinkProps,
-  ref: React.Ref<HTMLAnchorElement | HTMLButtonElement>,
+  ref: React.Ref<HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>,
 ): LinkState => {
   const backgroundAppearance = useBackgroundAppearance();
   const { appearance = 'default', disabled = false, disabledFocusable = false, inline = false } = props;
-  const as = props.as || (props.href ? 'a' : 'button');
-  const type = as === 'button' ? 'button' : undefined;
+
+  const elementType = props.as || (props.href ? 'a' : 'button');
+
+  // Casting is required here as `as` prop would break the union between `a`, `button` and `span` types
+  const propsWithAssignedAs = {
+    role: elementType === 'span' ? 'button' : undefined,
+    type: elementType === 'button' ? 'button' : undefined,
+    ...props,
+    as: elementType,
+  } as LinkProps;
 
   const state: LinkState = {
     // Props passed at the top-level
@@ -27,17 +35,15 @@ export const useLink_unstable = (
 
     // Slots definition
     components: {
-      root: 'a',
+      root: elementType,
     },
 
     root: slot.always(
-      getNativeElementProps(as, {
+      getIntrinsicElementProps<LinkProps>(elementType, {
         ref,
-        type,
-        ...props,
-        as,
-      }),
-      { elementType: 'a' },
+        ...propsWithAssignedAs,
+      } as const),
+      { elementType },
     ),
     backgroundAppearance,
   };

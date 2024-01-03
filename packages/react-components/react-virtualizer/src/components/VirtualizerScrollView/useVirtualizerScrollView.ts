@@ -19,7 +19,7 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
   if (virtualizerLengthRef.current !== virtualizerLength) {
     virtualizerLengthRef.current = virtualizerLength;
   }
-  const scrollViewRef = useMergedRefs(React.useRef<HTMLDivElement>(null), scrollRef) as React.RefObject<HTMLDivElement>;
+  const scrollViewRef = useMergedRefs(props.scrollViewRef, scrollRef) as React.RefObject<HTMLDivElement>;
   const imperativeVirtualizerRef = React.useRef<VirtualizerDataRef | null>(null);
   const scrollCallbackRef = React.useRef<null | ((index: number) => void)>(null);
 

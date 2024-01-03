@@ -21,6 +21,9 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_7"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -29,7 +32,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -144,7 +147,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
             cx={40}
             cy={115.625}
             data-is-focusable={true}
-            fill="red"
+            fill="#ffffff"
             id="circle2_0"
             key="circle2_0"
             onBlur={[Function]}
@@ -152,7 +155,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            r={0}
+            r={8}
             role="img"
             stroke="red"
             strokeWidth={3}
@@ -162,7 +165,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
             cx={-20}
             cy={20}
             data-is-focusable={true}
-            fill="#ffffff"
+            fill="red"
             id="circle2_1"
             key="circle2_1"
             onBlur={[Function]}
@@ -170,7 +173,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            r={8}
+            r={0}
             role="img"
             stroke="red"
             strokeWidth={3}
@@ -184,8 +187,8 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           strokeDasharray={5.5}
           strokeWidth={1}
           visibility="visibility"
-          x1={-20}
-          x2={-20}
+          x1={40}
+          x2={40}
           y1={0}
           y2={310}
         />
@@ -232,7 +235,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone8"
+              data-focuszone-id="FocusZone9"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -466,7 +469,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                 data-is-focusable={false}
                 role="text"
               >
-                40
+                20
               </div>
             </div>
             <div
@@ -498,7 +501,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           forced-color-adjust: none;
                         }
-                    id="0_80"
+                    id="0_50"
                   >
                     <div>
                       <div
@@ -535,7 +538,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                               color: rgb(255, 255, 255);
                             }
                       >
-                        80
+                        50
                       </div>
                     </div>
                   </div>
@@ -571,6 +574,9 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_7"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -579,7 +585,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -694,7 +700,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
             cx={40}
             cy={115.625}
             data-is-focusable={true}
-            fill="red"
+            fill="#ffffff"
             id="circle2_0"
             key="circle2_0"
             onBlur={[Function]}
@@ -702,7 +708,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            r={0}
+            r={8}
             role="img"
             stroke="red"
             strokeWidth={3}
@@ -712,7 +718,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
             cx={-20}
             cy={20}
             data-is-focusable={true}
-            fill="#ffffff"
+            fill="red"
             id="circle2_1"
             key="circle2_1"
             onBlur={[Function]}
@@ -720,7 +726,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            r={8}
+            r={0}
             role="img"
             stroke="red"
             strokeWidth={3}
@@ -734,8 +740,8 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           strokeDasharray={5.5}
           strokeWidth={1}
           visibility="visibility"
-          x1={-20}
-          x2={-20}
+          x1={40}
+          x2={40}
           y1={0}
           y2={310}
         />
@@ -782,7 +788,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone8"
+              data-focuszone-id="FocusZone9"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -979,11 +985,11 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           <div>
             <pre>
               {
-  "x": 40,
+  "x": 20,
   "values": [
     {
       "legend": "metaData1",
-      "y": 80,
+      "y": 50,
       "color": "red"
     }
   ]
@@ -1018,6 +1024,9 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_7"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -1026,7 +1035,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1141,7 +1150,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
             cx={40}
             cy={115.625}
             data-is-focusable={true}
-            fill="red"
+            fill="#ffffff"
             id="circle2_0"
             key="circle2_0"
             onBlur={[Function]}
@@ -1149,7 +1158,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            r={0}
+            r={8}
             role="img"
             stroke="red"
             strokeWidth={3}
@@ -1159,7 +1168,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
             cx={-20}
             cy={20}
             data-is-focusable={true}
-            fill="#ffffff"
+            fill="red"
             id="circle2_1"
             key="circle2_1"
             onBlur={[Function]}
@@ -1167,7 +1176,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            r={8}
+            r={0}
             role="img"
             stroke="red"
             strokeWidth={3}
@@ -1181,8 +1190,8 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           strokeDasharray={5.5}
           strokeWidth={1}
           visibility="visibility"
-          x1={-20}
-          x2={-20}
+          x1={40}
+          x2={40}
           y1={0}
           y2={310}
         />
@@ -1229,7 +1238,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone8"
+              data-focuszone-id="FocusZone9"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1426,11 +1435,11 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           <div>
             <pre>
               {
-  "x": 40,
+  "x": 20,
   "values": [
     {
       "legend": "metaData1",
-      "y": 80,
+      "y": 50,
       "color": "red"
     }
   ]
@@ -1465,6 +1474,9 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_7"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -1473,7 +1485,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1642,7 +1654,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone8"
+              data-focuszone-id="FocusZone9"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1781,6 +1793,9 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_7"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -1789,7 +1804,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1998,7 +2013,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone8"
+              data-focuszone-id="FocusZone9"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2137,6 +2152,9 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_7"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -2145,7 +2163,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2354,7 +2372,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone8"
+              data-focuszone-id="FocusZone9"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2493,6 +2511,9 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_7"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -2501,7 +2522,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2696,7 +2717,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone8"
+              data-focuszone-id="FocusZone9"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2835,6 +2856,9 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_7"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -2843,7 +2867,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3035,7 +3059,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone8"
+        data-focuszone-id="FocusZone9"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3150,7 +3174,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
 </div>
 `;
 
-exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
+exports[`AreaChart snapShot testing renders hideLegend correctly 1`] = `
 <div
   className=
 
@@ -3171,6 +3195,9 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_7"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -3179,7 +3206,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3366,6 +3393,9 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_7"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -3374,7 +3404,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3583,7 +3613,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone8"
+              data-focuszone-id="FocusZone9"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3722,6 +3752,9 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_7"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -3730,7 +3763,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3939,7 +3972,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone8"
+              data-focuszone-id="FocusZone9"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4078,6 +4111,9 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_7"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -4086,7 +4122,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4295,7 +4331,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone8"
+              data-focuszone-id="FocusZone9"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4434,6 +4470,9 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_7"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -4442,7 +4481,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone7"
+    data-focuszone-id="FocusZone8"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4651,7 +4690,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone8"
+              data-focuszone-id="FocusZone9"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

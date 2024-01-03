@@ -125,6 +125,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
 
   const contextMenuProps = {
     id: triggerId,
+    ...restoreFocusTargetAttribute,
     ...child?.props,
     ref: useMergedRefs(triggerRef, child?.ref),
     onMouseEnter: useEventCallback(mergeCallbacks(child?.props.onMouseEnter, onMouseEnter)),
@@ -136,7 +137,6 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const triggerChildProps = {
     'aria-haspopup': 'menu',
     'aria-expanded': !open && !isSubmenu ? undefined : open,
-    ...restoreFocusTargetAttribute,
     ...contextMenuProps,
     onClick: useEventCallback(mergeCallbacks(child?.props.onClick, onClick)),
     onKeyDown: useEventCallback(mergeCallbacks(child?.props.onKeyDown, onKeyDown)),

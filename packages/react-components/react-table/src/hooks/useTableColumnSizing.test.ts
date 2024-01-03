@@ -62,6 +62,7 @@ describe('useTableColumnSizing', () => {
         "getOnMouseDown": [MockFunction],
         "getTableCellProps": [Function],
         "getTableHeaderCellProps": [Function],
+        "getTableProps": [Function],
         "setColumnWidth": [Function],
       }
     `);

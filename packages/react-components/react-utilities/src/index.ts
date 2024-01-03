@@ -1,11 +1,15 @@
 export {
   slot,
   isSlot,
+  // eslint-disable-next-line deprecation/deprecation
   getSlots,
+  // eslint-disable-next-line deprecation/deprecation
   getSlotsNext,
   assertSlots,
+  // eslint-disable-next-line deprecation/deprecation
   resolveShorthand,
   isResolvedShorthand,
+  getIntrinsicElementProps,
   SLOT_ELEMENT_TYPE_SYMBOL,
   SLOT_RENDER_FUNCTION_SYMBOL,
 } from './compose/index';
@@ -14,9 +18,12 @@ export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandFunction,
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandOptions,
   Slot,
+  // eslint-disable-next-line deprecation/deprecation
   Slots,
   SlotClassNames,
   SlotPropsRecord,
@@ -25,11 +32,13 @@ export type {
   UnknownSlotProps,
   SlotComponentType,
   SlotOptions,
+  InferredElementRefType,
 } from './compose/index';
 
 export {
   IdPrefixProvider,
   resetIdsForTests,
+  useAnimationFrame,
   useControllableState,
   useEventCallback,
   useFirstMount,
@@ -49,6 +58,7 @@ export { canUseDOM, useIsSSR, SSRProvider } from './ssr/index';
 
 export {
   clamp,
+  // eslint-disable-next-line deprecation/deprecation
   getNativeElementProps,
   getPartitionedNativeProps,
   getRTLSafeKey,
@@ -80,3 +90,5 @@ export type {
   SelectionMethods,
 } from './selection/index';
 export { useSelection } from './selection/index';
+
+export { elementContains, setVirtualParent, getParent } from './virtualParent/index';

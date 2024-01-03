@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 
 export const Appearance = () => {
   return (
     <>
-      <Tree aria-label="Default Tree">
+      <Tree aria-label="Default Appearance">
         <TreeItem itemType="branch">
           <TreeItemLayout>Default appearance</TreeItemLayout>
           <Tree>
@@ -17,8 +17,7 @@ export const Appearance = () => {
           </Tree>
         </TreeItem>
       </Tree>
-      <br />
-      <Tree aria-label="Subtle Alpha Tree" appearance="subtle-alpha">
+      <Tree aria-label="Subtle Alpha Appearance" appearance="subtle-alpha">
         <TreeItem itemType="branch">
           <TreeItemLayout>Subtle-alpha appearance</TreeItemLayout>
           <Tree>
@@ -31,8 +30,7 @@ export const Appearance = () => {
           </Tree>
         </TreeItem>
       </Tree>
-      <br />
-      <Tree aria-label="Transparent Tree" appearance="transparent">
+      <Tree aria-label="Transparent Appearance" appearance="transparent">
         <TreeItem itemType="branch">
           <TreeItemLayout>Transparent appearance</TreeItemLayout>
           <Tree>
@@ -52,11 +50,12 @@ export const Appearance = () => {
 Appearance.parameters = {
   docs: {
     description: {
-      story:
-        'A tree can have the following `appearance` variants:\n' +
-        '- `subtle`: the default appearance.\n' +
-        '- `subtle-alpha`: minimizes emphasis on hovered or focused states.\n' +
-        '- `transparent`: no background color.\n',
+      story: `
+A tree can have the following \`appearance\` variants:
+- \`subtle\`: the default appearance.
+- \`subtle-alpha\`: minimizes emphasis on hovered or focused states.
+- \`transparent\`: no background color.
+      `,
     },
   },
 };

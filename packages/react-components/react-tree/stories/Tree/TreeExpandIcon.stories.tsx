@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout, TreeItemValue } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout, TreeItemValue } from '@fluentui/react-components';
 import { AddSquare16Regular, SubtractSquare16Regular } from '@fluentui/react-icons';
 import { TreeOpenChangeData, TreeOpenChangeEvent } from './../../src/Tree';
 
@@ -9,7 +9,7 @@ export const ExpandIcon = () => {
     setOpenItems(curr => (data.open ? [...curr, data.value] : curr.filter(value => value !== data.value)));
   };
   return (
-    <Tree aria-label="Tree" openItems={openItems} onOpenChange={handleOpenChange}>
+    <Tree aria-label="Expand Icon" openItems={openItems} onOpenChange={handleOpenChange}>
       <TreeItem itemType="branch" value="tree-item-2">
         <TreeItemLayout
           expandIcon={openItems.includes('tree-item-2') ? <SubtractSquare16Regular /> : <AddSquare16Regular />}
@@ -53,7 +53,7 @@ export const ExpandIcon = () => {
 ExpandIcon.parameters = {
   docs: {
     description: {
-      story: 'Both tree item layouts can have a custom expand/collapse icon.',
+      story: `Both tree item layouts can have a custom expand/collapse icon.`,
     },
   },
 };

@@ -1,8 +1,57 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Wed, 09 Aug 2023 13:17:11 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Nov 2023 17:29:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.16)
+
+Thu, 09 Nov 2023 17:29:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.15..@fluentui/react-theme_v9.1.16)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- Bump @fluentui/tokens to v1.0.0-alpha.13 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+
+## [9.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.15)
+
+Wed, 01 Nov 2023 12:55:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.14..@fluentui/react-theme_v9.1.15)
+
+### Patches
+
+- Bump @fluentui/tokens to v1.0.0-alpha.12 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+
+## [9.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.14)
+
+Tue, 26 Sep 2023 17:49:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.13..@fluentui/react-theme_v9.1.14)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
+- Bump @fluentui/tokens to v1.0.0-alpha.11 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+
+## [9.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.13)
+
+Tue, 26 Sep 2023 15:31:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.12..@fluentui/react-theme_v9.1.13)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- Bump @fluentui/tokens to v1.0.0-alpha.10 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+
+## [9.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.12)
+
+Tue, 05 Sep 2023 13:29:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.11..@fluentui/react-theme_v9.1.12)
+
+### Patches
+
+- bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/tokens to v1.0.0-alpha.9 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
 
 ## [9.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.11)
 

@@ -6,7 +6,7 @@ exports[`SearchBox renders a default state 1`] = `
     class="fui-Input fui-SearchBox"
   >
     <span
-      class="fui-Input__contentBefore"
+      class="fui-Input__contentBefore fui-SearchBox__contentBefore"
     >
       <svg
         aria-hidden="true"
@@ -24,7 +24,7 @@ exports[`SearchBox renders a default state 1`] = `
       </svg>
     </span>
     <input
-      class="fui-Input__input"
+      class="fui-Input__input fui-SearchBox__input"
       type="search"
       value=""
     />

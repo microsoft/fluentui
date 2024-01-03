@@ -10,7 +10,7 @@ import {
   TreeOpenChangeData,
   TreeOpenChangeEvent,
   useHeadlessFlatTree_unstable,
-} from '@fluentui/react-tree-preview';
+} from '@fluentui/react-tree';
 import { tokens } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';

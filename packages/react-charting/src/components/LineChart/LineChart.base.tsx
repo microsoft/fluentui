@@ -4,7 +4,7 @@ import { select as d3Select, clientPoint } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { ILegend, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
-import { classNamesFunction, getId, find, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, find, memoizeFunction, getRTL } from '@fluentui/react/lib/Utilities';
 import {
   IAccessibilityProps,
   CartesianChart,
@@ -170,6 +170,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element;
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
+  private _isRTL: boolean = getRTL();
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -261,8 +262,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       ...this.props.calloutProps,
     };
     const tickParams = {
-      tickValues: tickValues,
-      tickFormat: tickFormat,
+      tickValues,
+      tickFormat,
     };
 
     return !this._isChartEmpty() ? (
@@ -409,7 +410,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
-        color: color,
+        color,
         action: () => {
           if (isLegendMultiSelectEnabled) {
             this._handleMultipleLineLegendSelectionAction(point);
@@ -778,6 +779,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           if (j + 1 === this._points[i].data.length) {
             // If this is last point of the line segment.
             const lastCircleId = `${circleId}${j}L`;
+            const hiddenHoverCircleId = `${circleId}${j}D`;
             const lastPointHidden = this._points[i].hideNonActiveDots && activePoint !== lastCircleId;
             path = this._getPath(
               this._xAxisScale(x2),
@@ -792,42 +794,76 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               xAxisCalloutAccessibilityData: lastCirlceXCalloutAccessibilityData,
             } = this._points[i].data[j];
             pointsForLine.push(
-              <path
-                id={lastCircleId}
-                key={lastCircleId}
-                d={path}
-                data-is-focusable={true}
-                onMouseOver={this._handleHover.bind(
-                  this,
-                  x2,
-                  y2,
-                  verticaLineHeight,
-                  lastCirlceXCallout,
-                  lastCircleId,
-                  lastCirlceXCalloutAccessibilityData,
-                )}
-                onMouseMove={this._handleHover.bind(
-                  this,
-                  x2,
-                  y2,
-                  verticaLineHeight,
-                  lastCirlceXCallout,
-                  lastCircleId,
-                  lastCirlceXCalloutAccessibilityData,
-                )}
-                onMouseOut={this._handleMouseOut}
-                onFocus={() =>
-                  this._handleFocus(lineId, x2, lastCirlceXCallout, lastCircleId, lastCirlceXCalloutAccessibilityData)
-                }
-                onBlur={this._handleMouseOut}
-                {...this._getClickHandler(this._points[i].data[j].onDataPointClick)}
-                opacity={isLegendSelected && !lastPointHidden ? 1 : 0.01}
-                fill={this._getPointFill(lineColor, lastCircleId, j, true)}
-                stroke={lineColor}
-                strokeWidth={strokeWidth}
-                role="img"
-                aria-label={this._getAriaLabel(i, j)}
-              />,
+              <React.Fragment key={`${lastCircleId}_container`}>
+                <path
+                  id={lastCircleId}
+                  key={lastCircleId}
+                  d={path}
+                  data-is-focusable={true}
+                  onMouseOver={this._handleHover.bind(
+                    this,
+                    x2,
+                    y2,
+                    verticaLineHeight,
+                    lastCirlceXCallout,
+                    lastCircleId,
+                    lastCirlceXCalloutAccessibilityData,
+                  )}
+                  onMouseMove={this._handleHover.bind(
+                    this,
+                    x2,
+                    y2,
+                    verticaLineHeight,
+                    lastCirlceXCallout,
+                    lastCircleId,
+                    lastCirlceXCalloutAccessibilityData,
+                  )}
+                  onMouseOut={this._handleMouseOut}
+                  onFocus={() =>
+                    this._handleFocus(lineId, x2, lastCirlceXCallout, lastCircleId, lastCirlceXCalloutAccessibilityData)
+                  }
+                  onBlur={this._handleMouseOut}
+                  {...this._getClickHandler(this._points[i].data[j].onDataPointClick)}
+                  opacity={isLegendSelected && !lastPointHidden ? 1 : 0.01}
+                  fill={this._getPointFill(lineColor, lastCircleId, j, true)}
+                  stroke={lineColor}
+                  strokeWidth={strokeWidth}
+                  role="img"
+                  aria-label={this._getAriaLabel(i, j)}
+                />
+                {/* Dummy circle acting as magnetic latch for last callout point */}
+                <circle
+                  id={hiddenHoverCircleId}
+                  key={hiddenHoverCircleId}
+                  r={8}
+                  cx={this._xAxisScale(x2)}
+                  cy={this._yAxisScale(y2)}
+                  opacity={0}
+                  width={0}
+                  onMouseOver={this._handleHover.bind(
+                    this,
+                    x2,
+                    y2,
+                    verticaLineHeight,
+                    lastCirlceXCallout,
+                    lastCircleId,
+                    lastCirlceXCalloutAccessibilityData,
+                  )}
+                  onMouseMove={this._handleHover.bind(
+                    this,
+                    x2,
+                    y2,
+                    verticaLineHeight,
+                    lastCirlceXCallout,
+                    lastCircleId,
+                    lastCirlceXCalloutAccessibilityData,
+                  )}
+                  onMouseOut={this._handleMouseOut}
+                  strokeWidth={0}
+                  focusable={false}
+                  onBlur={this._handleMouseOut}
+                />
+              </React.Fragment>,
             );
             /* eslint-enable react/jsx-no-bind */
           }
@@ -979,7 +1015,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           <rect
             fill={colorFillBar.applyPattern ? `url(#${this._colorFillBarPatternId}_${i})` : color}
             fillOpacity={opacity}
-            x={this._xAxisScale(startX)}
+            x={this._isRTL ? this._xAxisScale(endX) : this._xAxisScale(startX)}
             y={this._yAxisScale(yMinMaxValues.endValue) - FILL_Y_PADDING}
             width={Math.abs(this._xAxisScale(endX) - this._xAxisScale(startX))}
             height={

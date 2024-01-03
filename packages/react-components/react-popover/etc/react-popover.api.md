@@ -54,6 +54,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
     open?: boolean;
     openOnContext?: boolean;
     openOnHover?: boolean;
+    closeOnIframeFocus?: boolean;
     positioning?: PositioningShorthand;
     size?: PopoverSize;
     trapFocus?: boolean;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tag } from '@fluentui/react-tags-preview';
+import { Tag } from '@fluentui/react-tags';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { ComponentMeta } from '@storybook/react';
 import { getStoryVariant, withStoryWrightSteps, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
@@ -7,12 +7,12 @@ import { Steps } from 'storywright';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
-const tagId = 'tag-id';
+const dismissIconId = 'dismiss-icon-id';
 const steps = new Steps()
   .snapshot('default', { cropTo: '.testWrapper' })
-  .hover(`#${tagId}}`)
+  .hover(`#${dismissIconId}}`)
   .snapshot('hover', { cropTo: '.testWrapper' })
-  .mouseDown(`#${tagId}}`)
+  .mouseDown(`#${dismissIconId}}`)
   .snapshot('pressed', { cropTo: '.testWrapper' })
   .end();
 
@@ -23,7 +23,7 @@ export default {
 } as ComponentMeta<typeof Tag>;
 
 export const Filled = () => (
-  <Tag id={tagId} appearance="filled" dismissible icon={<CalendarMonth />}>
+  <Tag appearance="filled" dismissible icon={<CalendarMonth />} dismissIcon={{ id: dismissIconId }}>
     Primary Text
   </Tag>
 );
@@ -32,7 +32,7 @@ export const FilledHighContrast = getStoryVariant(Filled, HIGH_CONTRAST);
 export const FilledDarkMode = getStoryVariant(Filled, DARK_MODE);
 
 export const Outline = () => (
-  <Tag id={tagId} appearance="outline" dismissible icon={<CalendarMonth />}>
+  <Tag appearance="outline" dismissible icon={<CalendarMonth />} dismissIcon={{ id: dismissIconId }}>
     Primary Text
   </Tag>
 );
@@ -41,7 +41,7 @@ export const OutlineHighContrast = getStoryVariant(Outline, HIGH_CONTRAST);
 export const OutlineDarkMode = getStoryVariant(Outline, DARK_MODE);
 
 export const Brand = () => (
-  <Tag id={tagId} appearance="brand" dismissible icon={<CalendarMonth />}>
+  <Tag appearance="brand" dismissible icon={<CalendarMonth />} dismissIcon={{ id: dismissIconId }}>
     Primary Text
   </Tag>
 );

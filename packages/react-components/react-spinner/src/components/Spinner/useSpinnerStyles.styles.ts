@@ -258,7 +258,7 @@ const useTrackStyles = makeStyles({
       },
     },
     ['& > svg > circle.fui-Spinner__Track']: {
-      stroke: tokens.colorBrandStroke2,
+      stroke: tokens.colorBrandStroke2Contrast,
       '@media screen and (forced-colors: active)': {
         stroke: tokens.colorNeutralBackgroundInverted,
       },
