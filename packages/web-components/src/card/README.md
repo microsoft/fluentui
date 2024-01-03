@@ -50,12 +50,6 @@ Fluent WC3 Card has feature parity with the Fluent UI React 9 Card implementatio
 | `size`       | `small, medium, large`                        | `medium` | Define the minimum size of the card. Smaller sizes only apply to horizontal card |
 | `appearance` | `filled, filled-alternative, outline, subtle` | `filled` | Sets the appearance of the card                                                  |
 
-### **Methods**
-
-| Name                                      | Description                                                                                |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| `sizeChanged(prev: string, next: string)` | Triggered when the size of the card changes, updating the computed stylesheet accordingly. |
-
 ### **CSS Variables**
 
 | Name               | Description                         |
