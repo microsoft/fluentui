@@ -1,7 +1,7 @@
 **[Unit Test Plan -- Heat Map Chart]{.underline}**
 
 +--------------------------------+------------------------+------------+
-| **[Test steps]{.underline}** | **[Val | **[Tool |
+| \*| **[Test steps]{.underline}** | **[Val | **[Tool |
 | | idation]{.underline}** | used]{.un |
 | | | derline}** |
 +================================+========================+============+
@@ -204,4 +204,3 @@
 | - AxisType as numeric | Should return proper | RTL |
 | | data set for numeric | |
 | | axis type | |
-+--------------------------------+------------------------+------------+
