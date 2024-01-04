@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update version of @fluentui/react-icons to 2.0.224",
+  "packageName": "@fluentui/react-table",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
