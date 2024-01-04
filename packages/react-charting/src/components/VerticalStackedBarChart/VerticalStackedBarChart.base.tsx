@@ -746,7 +746,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     const shouldFocusWholeStack = this._toFocusWholeStack(_isHavingLines);
 
     const bars = this._points.map((singleChartData: IVerticalStackedChartProps, indexNumber: number) => {
-      let yPoint = containerHeight - this.margins.bottom!;
+      let yPoint = containerHeight - this.margins.bottom! - yBarScale(0);
       const xPoint = xBarScale(
         this._xAxisType === XAxisTypes.NumericAxis
           ? (singleChartData.xAxisPoint as number)
@@ -765,9 +765,9 @@ export class VerticalStackedBarChartBase extends React.Component<
 
       const { gapHeight, heightValueScale } = this._getBarGapAndScale(barsToDisplay, yBarScale);
 
-      // if (heightValueScale < 0) {
-      //   return undefined;
-      // }
+      if (!this.props.supportNegativeValues && heightValueScale < 0) {
+        return undefined;
+      }
 
       const singleBar = barsToDisplay.map((point: IVSChartDataPoint, index: number) => {
         const color = point.color ? point.color : this._colors[index];
@@ -792,12 +792,25 @@ export class VerticalStackedBarChartBase extends React.Component<
         };
 
         let barHeight = heightValueScale * point.data;
-        if (barHeight < Math.max(heightValueScale * Math.ceil((this._yMax - this._yMin) / 100.0), barMinimumHeight)) {
-          barHeight = Math.max(heightValueScale * Math.ceil((this._yMax - this._yMin) / 100.0), barMinimumHeight);
+        if (
+          Math.abs(barHeight) <
+          Math.max(Math.abs(heightValueScale) * Math.ceil((this._yMax - this._yMin) / 100.0), barMinimumHeight)
+        ) {
+          const adjustedBarHeight = Math.max(
+            Math.abs(heightValueScale) * Math.ceil((this._yMax - this._yMin) / 100.0),
+            barMinimumHeight,
+          );
+          barHeight = adjustedBarHeight;
+          if (barHeight < 0) {
+            barHeight = -adjustedBarHeight;
+          }
         }
-        yPoint = yPoint - barHeight - (index ? gapHeight : 0);
+        if (barHeight < 0) {
+          yPoint = yPoint + Math.abs(barHeight) + (index ? gapHeight : 0);
+        } else {
+          yPoint = yPoint - Math.abs(barHeight) - (index ? gapHeight : 0);
+        }
         barTotalValue += point.data;
-        console.log(this._yMax, this._yMin, barHeight);
 
         // If set, apply the corner radius to the top of the final bar
         if (barCornerRadius && barHeight > barCornerRadius && index === barsToDisplay.length - 1) {
@@ -831,7 +844,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             x={xPoint}
             y={yPoint}
             width={this._barWidth}
-            height={barHeight}
+            height={Math.abs(barHeight)}
             fill={color}
             ref={e => (ref.refElement = e)}
             {...rectFocusProps}
