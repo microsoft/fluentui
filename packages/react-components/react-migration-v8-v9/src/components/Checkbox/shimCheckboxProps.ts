@@ -60,20 +60,27 @@ export const useCheckboxProps = (props: ICheckboxProps): CheckboxProps => {
 
   const onChange = React.useCallback(
     (event: React.ChangeEvent<HTMLElement>, data: CheckboxOnChangeData): void => {
+      let val: boolean | undefined = checked !== undefined ? (data.checked as boolean) : undefined;
+      // Ensure the checkbox is controlled
       if (checked !== undefined) {
-        // Ensure the checkbox is controlled
-        setChecked(data.checked as boolean);
-        // Need to set mixed to false when uncontrolled
-        setMixed(!indeterminate ? false : mixed);
+        if (mixed) {
+          val = checkedV8 !== undefined ? checkedV8 : defaultChecked !== undefined ? defaultChecked : val;
+        }
       }
+
+      if (mixed) {
+        setMixed(mixed && !indeterminate ? false : mixed);
+      }
+
+      setChecked(val);
       onChangeV8?.(event, data.checked as boolean);
     },
-    [setChecked, checked, onChangeV8, mixed, indeterminate],
+    [setChecked, checked, onChangeV8, mixed, indeterminate, checkedV8, defaultChecked],
   );
 
   const v9Props: Partial<CheckboxProps> = {
     checked: mixed ? 'mixed' : checked,
-    defaultChecked: defaultIndeterminate ? 'mixed' : defaultChecked,
+    defaultChecked: mixed ? 'mixed' : defaultChecked,
     labelPosition: boxSide === 'end' ? 'before' : 'after',
     disabled,
     required,
