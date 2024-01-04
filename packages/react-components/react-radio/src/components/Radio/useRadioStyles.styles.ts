@@ -13,7 +13,6 @@ export const radioClassNames: SlotClassNames<RadioSlots> = {
 
 // The indicator size is used by the indicator and label styles
 const indicatorSize = '16px';
-const halfIndicatorSize = '8px';
 
 const useRootBaseClassName = makeResetStyles({
   display: 'inline-flex',
@@ -52,6 +51,9 @@ const useInputBaseClassName = makeResetStyles({
     },
     [`& ~ .${radioClassNames.indicator}`]: {
       borderColor: tokens.colorNeutralStrokeAccessible,
+      '@media (forced-colors: active)': {
+        borderColor: 'ButtonBorder',
+      },
     },
 
     ':hover': {
@@ -81,6 +83,13 @@ const useInputBaseClassName = makeResetStyles({
     [`& ~ .${radioClassNames.indicator}`]: {
       borderColor: tokens.colorCompoundBrandStroke,
       color: tokens.colorCompoundBrandForeground1,
+      '@media (forced-colors: active)': {
+        borderColor: 'Highlight',
+        color: 'Highlight',
+        '::after': {
+          backgroundColor: 'Highlight',
+        },
+      },
     },
 
     ':hover': {
@@ -113,6 +122,9 @@ const useInputBaseClassName = makeResetStyles({
       '@media (forced-colors: active)': {
         borderColor: 'GrayText',
         color: 'GrayText',
+        '::after': {
+          backgroundColor: 'GrayText',
+        },
       },
     },
   },
@@ -160,15 +172,13 @@ const useIndicatorBaseClassName = makeResetStyles({
 
   '::after': {
     position: 'absolute',
-    boxSizing: 'border-box',
     width: indicatorSize,
     height: indicatorSize,
+    borderRadius: tokens.borderRadiusCircular,
     // Use a transform to avoid pixel rounding errors at 125% DPI
     // https://github.com/microsoft/fluentui/issues/30025
     transform: 'scale(0.625)',
-    // Fill with a border instead of backgroundColor so it shows in forced-colors mode
-    border: halfIndicatorSize + ' solid currentColor',
-    borderRadius: tokens.borderRadiusCircular,
+    backgroundColor: 'currentColor',
   },
 });
 
