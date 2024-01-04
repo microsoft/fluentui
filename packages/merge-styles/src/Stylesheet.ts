@@ -4,7 +4,7 @@
 import { IStyle } from './IStyle';
 import { DEFAULT_SHADOW_CONFIG, GLOBAL_STYLESHEET_KEY, ShadowConfig } from './shadowConfig';
 import { EventHandler, EventMap } from './EventMap';
-import { cloneCSSStyleSheet } from './cloneCSSStyleSheet';
+import { cloneExtendedCSSStyleSheet } from './cloneCSSStyleSheet';
 
 export const InjectionMode = {
   /**
@@ -128,9 +128,9 @@ if (SUPPORTS_CONSTRUCTABLE_STYLESHEETS) {
   }
 }
 
-export type AdoptableStylesheet = {
-  fluentSheet: Stylesheet;
-  adoptedSheet: CSSStyleSheet;
+export type ExtendedCSSStyleSheet = CSSStyleSheet & {
+  bucketName: string;
+  metadata: Record<string, unknown>;
 };
 
 let _global: (Window | {}) & {
@@ -184,7 +184,8 @@ export class Stylesheet {
   private _onInsertRuleCallbacks: Function[] = [];
   private _onResetCallbacks: Function[] = [];
   private _classNameToArgs: { [key: string]: { args: any; rules: string[] } } = {};
-  private _adoptableSheets?: EventMap<string, CSSStyleSheet>;
+  private _adoptableSheets?: EventMap<string, ExtendedCSSStyleSheet>;
+  private _sheetCounter = 0;
 
   /**
    * Gets the singleton instance.
@@ -226,7 +227,7 @@ export class Stylesheet {
     if (inShadow || stylesheetKey === GLOBAL_STYLESHEET_KEY) {
       const sheetWindow = win ?? getWindow();
       if (sheetWindow) {
-        _stylesheet.addAdoptableStyleSheet(stylesheetKey, _stylesheet.makeCSSStyleSheet(sheetWindow));
+        _stylesheet.addAdoptableStyleSheet(stylesheetKey, _stylesheet.getAdoptableStyleSheet(stylesheetKey));
       }
     }
 
@@ -260,7 +261,7 @@ export class Stylesheet {
     this._rules = serializedStylesheet?.rules ?? this._rules;
   }
 
-  public addAdoptableStyleSheet(key: string, sheet: CSSStyleSheet): void {
+  public addAdoptableStyleSheet(key: string, sheet: ExtendedCSSStyleSheet): void {
     if (!this._adoptableSheets) {
       this._adoptableSheets = new EventMap();
       // window.__DEBUG_SHEETS__ = this._adoptableSheets;
@@ -274,7 +275,7 @@ export class Stylesheet {
     }
   }
 
-  public getAdoptableStyleSheet(key: string): CSSStyleSheet {
+  public getAdoptableStyleSheet(key: string): ExtendedCSSStyleSheet {
     if (!this._adoptableSheets) {
       this._adoptableSheets = new EventMap();
       // window.__DEBUG_SHEETS__ = this._adoptableSheets;
@@ -290,12 +291,12 @@ export class Stylesheet {
   }
 
   public forEachAdoptedStyleSheet(
-    callback: (value: CSSStyleSheet, key: string, map: Map<string, CSSStyleSheet>) => void,
+    callback: (value: ExtendedCSSStyleSheet, key: string, map: Map<string, ExtendedCSSStyleSheet>) => void,
   ): void {
     this._adoptableSheets?.forEach(callback);
   }
 
-  public onAddConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void {
+  public onAddConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void {
     if (!this._adoptableSheets) {
       this._adoptableSheets = new EventMap();
       // window.__DEBUG_SHEETS__ = this._adoptableSheets;
@@ -304,7 +305,7 @@ export class Stylesheet {
     this._adoptableSheets.on('add-sheet', callback);
   }
 
-  public offAddConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void {
+  public offAddConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void {
     if (!this._adoptableSheets) {
       this._adoptableSheets = new EventMap();
       // window.__DEBUG_SHEETS__ = this._adoptableSheets;
@@ -313,7 +314,7 @@ export class Stylesheet {
     this._adoptableSheets.off('add-sheet', callback);
   }
 
-  public onInsertRuleIntoConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void {
+  public onInsertRuleIntoConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void {
     if (!this._adoptableSheets) {
       this._adoptableSheets = new EventMap();
       // window.__DEBUG_SHEETS__ = this._adoptableSheets;
@@ -322,7 +323,7 @@ export class Stylesheet {
     this._adoptableSheets.on('insert-rule', callback);
   }
 
-  public offInsertRuleIntoConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void {
+  public offInsertRuleIntoConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void {
     if (!this._adoptableSheets) {
       this._adoptableSheets = new EventMap();
       // window.__DEBUG_SHEETS__ = this._adoptableSheets;
@@ -346,7 +347,7 @@ export class Stylesheet {
     (targetWindow as typeof _global)[STYLESHEET_SETTING] = targetStylesheet;
 
     this.forEachAdoptedStyleSheet((srcSheet, key) => {
-      const clonedSheet = cloneCSSStyleSheet(srcSheet, this.makeCSSStyleSheet(targetWindow));
+      const clonedSheet = cloneExtendedCSSStyleSheet(srcSheet, this.makeCSSStyleSheet(targetWindow));
       targetStylesheet.addAdoptableStyleSheet(key, clonedSheet);
     });
 
@@ -546,7 +547,7 @@ export class Stylesheet {
       if (inserted && sheet) {
         this._adoptableSheets?.raise('insert-rule', {
           key: stylesheetKey,
-          sheet: sheet as CSSStyleSheet,
+          sheet: sheet as ExtendedCSSStyleSheet,
           rule,
         });
       }
@@ -589,13 +590,23 @@ export class Stylesheet {
     this._keyToClassName = {};
   }
 
-  public makeCSSStyleSheet(win: Window): CSSStyleSheet {
+  public makeCSSStyleSheet(win: Window): ExtendedCSSStyleSheet {
+    let sheet: ExtendedCSSStyleSheet | undefined = undefined;
     if (!SUPPORTS_CONSTRUCTABLE_STYLESHEETS) {
       const style = this._createStyleElement(win);
-      return style.sheet as CSSStyleSheet;
+      sheet = style.sheet as ExtendedCSSStyleSheet;
+    } else {
+      sheet = new (win as Window & typeof globalThis).CSSStyleSheet() as ExtendedCSSStyleSheet;
     }
 
-    return new (win as Window & typeof globalThis).CSSStyleSheet();
+    if (sheet) {
+      sheet.bucketName = 'merge-styles';
+      sheet.metadata = {
+        sortOrder: this._sheetCounter++,
+      };
+    }
+
+    return sheet;
   }
 
   private _insertNode(element: HTMLStyleElement | undefined, rule: string): boolean {

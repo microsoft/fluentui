@@ -33,7 +33,7 @@ export { fontFace } from './fontFace';
 export { keyframes } from './keyframes';
 
 export { InjectionMode, Stylesheet } from './Stylesheet';
-export type { ICSPSettings, ISerializedStylesheet, IStyleSheetConfig } from './Stylesheet';
+export type { ICSPSettings, ISerializedStylesheet, IStyleSheetConfig, ExtendedCSSStyleSheet } from './Stylesheet';
 
 export { setRTL } from './StyleOptionsState';
 

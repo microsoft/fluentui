@@ -7,6 +7,7 @@
 import { DATA_PORTAL_ATTRIBUTE } from '@fluentui/dom-utilities';
 import { elementContains } from '@fluentui/dom-utilities';
 import { elementContainsAttribute } from '@fluentui/dom-utilities';
+import type { ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
 import { findElementRecursive } from '@fluentui/dom-utilities';
 import { getChildren } from '@fluentui/dom-utilities';
 import { getParent } from '@fluentui/dom-utilities';
@@ -1291,7 +1292,7 @@ export const useHasMergeStylesShadowRootContext: () => boolean;
 export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 
 // @public
-export const useMergeStylesRootStylesheets: () => Map<string, CSSStyleSheet>;
+export const useMergeStylesRootStylesheets: () => Map<string, ExtendedCSSStyleSheet>;
 
 // Warning: (ae-forgotten-export) The symbol "MergeStylesShadowRootContextValue" needs to be exported by the entry point index.d.ts
 //
