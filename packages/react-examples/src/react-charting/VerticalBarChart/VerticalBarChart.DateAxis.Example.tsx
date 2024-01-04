@@ -3,7 +3,7 @@ import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } 
 
 interface IVerticalBarState {}
 
-export class VerticalBarChartDateLabelExample extends React.Component<{}, IVerticalBarState> {
+export class VerticalBarChartDateAxisExample extends React.Component<{}, IVerticalBarState> {
   constructor(props: IVerticalBarChartProps) {
     super(props);
   }

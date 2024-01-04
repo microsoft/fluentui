@@ -14,7 +14,7 @@ import { VerticalBarChartDynamicExample } from './VerticalBarChart.Dynamic.Examp
 import { VerticalBarChartTooltipExample } from './VerticalBarChart.AxisTooltip.Example';
 import { VerticalBarChartCustomAccessibilityExample } from './VerticalBarChart.CustomAccessibility.Example';
 import { VerticalBarChartRotatedLabelExample } from './VerticalBarChart.RotateLabels.Example';
-import { VerticalBarChartDateLabelExample } from './VerticalBarChart.DateLabel.Example';
+import { VerticalBarChartDateAxisExample } from './VerticalBarChart.DateAxis.Example';
 
 const VerticalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.Basic.Example.tsx') as string;
@@ -52,7 +52,7 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
               <VerticalBarChartTooltipExample />
             </ExampleCard>
             <ExampleCard title="VerticalBarChart Date Axis" code={VerticalBarChartDateLabelExampleCode}>
-              <VerticalBarChartDateLabelExample />
+              <VerticalBarChartDateAxisExample />
             </ExampleCard>
             <ExampleCard
               title="VerticalBarChart Custom Accessibility"

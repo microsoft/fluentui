@@ -429,7 +429,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       data: selectedPoint[0].yAxisCalloutData,
       yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
     });
-    return { YValueHover, hoverXValue: point.xAxisCalloutData || point.x.toString() };
+    const hoverXValue = point.x instanceof Date ? point.x.toLocaleString() : point.x.toString();
+    return {
+      YValueHover,
+      hoverXValue: point.xAxisCalloutData || hoverXValue,
+    };
   };
 
   private _onBarHover(
@@ -450,7 +454,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         calloutLegend: point.legend!,
         color: point.color || color,
         // To display callout value, if no callout value given, taking given point.x value as a string.
-        xCalloutValue: point.xAxisCalloutData || point.x.toString(),
+        xCalloutValue:
+          point.xAxisCalloutData || (point.x instanceof Date ? point.x.toLocaleDateString() : point.x.toString()),
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,
         activeXdataPoint: point.x,
@@ -486,7 +491,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           calloutLegend: point.legend!,
           dataForHoverCard: point.y,
           color: point.color || color,
-          xCalloutValue: point.xAxisCalloutData || point.x.toString(),
+          xCalloutValue:
+            point.xAxisCalloutData || (point.x instanceof Date ? point.x.toLocaleDateString() : point.x.toString()),
           yCalloutValue: point.yAxisCalloutData!,
           dataPointCalloutProps: point,
           activeXdataPoint: point.x,
@@ -503,52 +509,43 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     containerWidth: number,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): { xBarScale: any; yBarScale: any } => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let xBarScale: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const yBarScale: any = d3ScaleLinear()
+      .domain([0, this._yMax])
+      .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
+
     if (this._xAxisType === XAxisTypes.NumericAxis) {
       const xMax = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
       const xMin = d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
-      const xBarScale = d3ScaleLinear()
+      xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
         .nice()
         .range([
           this.margins.left! + this._domainMargin,
           containerWidth - this.margins.right! - this._barWidth - this._domainMargin,
         ]);
-      const yBarScale = d3ScaleLinear()
-        .domain([0, this._yMax])
-        .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
-      return { xBarScale, yBarScale };
-    }
-    if (this._xAxisType === XAxisTypes.DateAxis) {
-      const sDate = d3Min(this._points, (point: IVerticalBarChartDataPoint) => {
-        return point.x as Date;
-      })!;
-      const lDate = d3Max(this._points, (point: IVerticalBarChartDataPoint) => {
-        return point.x as Date;
-      })!;
-      const xBarScale = d3ScaleTime()
+    } else if (this._xAxisType === XAxisTypes.DateAxis) {
+      const sDate = d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
+      const lDate = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
+      xBarScale = d3ScaleTime()
         .domain([sDate, lDate])
         .range([
           this.margins.left! + this._domainMargin + this._barWidth / 2,
           containerWidth - this.margins.right! - this._barWidth / 2 - this._domainMargin,
         ]);
-
-      const yBarScale = d3ScaleLinear()
-        .domain([0, this._yMax])
-        .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
-      return { xBarScale, yBarScale };
+    } else {
+      xBarScale = d3ScaleBand()
+        .domain(this._xAxisLabels)
+        .range(
+          this._isRtl
+            ? [containerWidth - this.margins.right! - this._domainMargin, this.margins.left! + this._domainMargin]
+            : [this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin],
+        )
+        .paddingInner(2 / 3);
     }
-    const xBarScale = d3ScaleBand()
-      .domain(this._xAxisLabels)
-      .range(
-        this._isRtl
-          ? [containerWidth - this.margins.right! - this._domainMargin, this.margins.left! + this._domainMargin]
-          : [this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin],
-      )
-      .paddingInner(2 / 3);
 
-    const yBarScale = d3ScaleLinear()
-      .domain([0, this._yMax])
-      .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
     return { xBarScale, yBarScale };
   };
 
@@ -566,7 +563,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       let adjustedBarHeight = 0;
       if (barHeight <= 0) {
-        return <React.Fragment key={point.x instanceof Date ? point.x.getTime() : point.x}> </React.Fragment>;
+        return <React.Fragment key={point.x as string}> </React.Fragment>;
       } else if (barHeight <= Math.ceil(yBarScale(this._yMax) / 100.0)) {
         adjustedBarHeight = Math.ceil(yBarScale(this._yMax) / 100.0);
       } else {
@@ -575,7 +572,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const xPoint = xBarScale(point.x as number);
       const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
       return (
-        <g key={point.x instanceof Date ? point.x.getTime() : point.x}>
+        <g key={point.x as string}>
           <rect
             id={getId('_VBC_bar_')}
             x={xPoint}
@@ -918,7 +915,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   }
 
   private _getDomainMargins = (containerWidth: number): IMargins => {
-    if (this._xAxisType !== XAxisTypes.NumericAxis && this._xAxisType !== XAxisTypes.DateAxis) {
+    if (this._xAxisType === XAxisTypes.StringAxis) {
       /*) {
       /** Total width available to render the bars */
       const totalWidth =

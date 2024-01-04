@@ -25,7 +25,7 @@ interface IVerticalStackedBarState {
   selectedCallout: string;
 }
 
-export class VerticalStackedBarChartDateLabelExample extends React.Component<{}, IVerticalStackedBarState> {
+export class VerticalStackedBarChartDateAxisExample extends React.Component<{}, IVerticalStackedBarState> {
   constructor(props: IVerticalStackedChartProps) {
     super(props);
     this.state = {

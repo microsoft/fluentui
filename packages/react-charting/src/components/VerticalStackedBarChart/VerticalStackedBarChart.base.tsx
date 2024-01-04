@@ -686,7 +686,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       YValueHover: isLinesPresent
         ? [...lineData!.sort((a, b) => (a.data! < b.data! ? 1 : -1)), ...stack.chartData.slice().reverse()]
         : stack.chartData.slice().reverse(),
-      hoverXValue: stack.xAxisPoint,
+      hoverXValue: stack.xAxisPoint instanceof Date ? stack.xAxisPoint.toLocaleDateString() : stack.xAxisPoint,
       stackCalloutProps: stack,
       activeXAxisDataPoint: stack.xAxisPoint,
       callOutAccessibilityData: stack.stackCallOutAccessibilityData,
