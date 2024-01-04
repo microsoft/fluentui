@@ -56,6 +56,13 @@ import { ShadowDOMSpinnerExample } from './ShadowDOM.Spinner.Example';
 import { ShadowDOMStackExample } from './ShadowDOM.Stack.Example';
 import { ShadowDOMSwatchColorPickerExample } from './ShadowDOM.SwatchColorPicker.Example';
 import { ShadowDOMTeachingBubbleExample } from './ShadowDOM.TeachingBubble.Example';
+import { ShadowDOMTeachingBubbleButtonOrderExample } from './ShadowDOM.TeachingBubble.ButtonOrder.Example';
+import { ShadowDOMTeachingBubbleCondensedExample } from './ShadowDOM.TeachingBubble.Condensed.Example';
+import { ShadowDOMTeachingBubbleIllustrationExample } from './ShadowDOM.TeachingBubble.Illustration.Example';
+import { ShadowDOMTeachingBubbleMultiStepExample } from './ShadowDOM.TeachingBubble.MultiStep.Example';
+import { ShadowDOMTeachingBubbleSmallHeadlineExample } from './ShadowDOM.TeachingBubble.SmallHeadline.Example';
+import { ShadowDOMTeachingBubbleWideExample } from './ShadowDOM.TeachingBubble.Wide.Example';
+import { ShadowDOMTeachingBubbleWideIllustrationExample } from './ShadowDOM.TeachingBubble.WideIllustration.Example';
 import { ShadowDOMTextExample } from './ShadowDOM.Text.Example';
 import { ShadowDOMTextFieldExample } from './ShadowDOM.TextField.Example';
 import { ShadowDOMTimePickerExample } from './ShadowDOM.TimePicker.Example';
@@ -235,6 +242,27 @@ const ShadowDOMSwatchColorPickerExampleCode =
 
 const ShadowDOMTeachingBubbleExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.TeachingBubble.Example.tsx') as string;
+
+const ShadowDOMTeachingBubbleButtonOrderExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.TeachingBubble.ButtonOrder.Example.tsx') as string;
+
+const ShadowDOMTeachingBubbleCondensedExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.TeachingBubble.Condensed.Example.tsx') as string;
+
+const ShadowDOMTeachingBubbleIllustrationExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.TeachingBubble.Illustration.Example.tsx') as string;
+
+const ShadowDOMTeachingBubbleMultiStepExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.TeachingBubble.MultiStep.Example.tsx') as string;
+
+const ShadowDOMTeachingBubbleSmallHeadlineExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.TeachingBubble.SmallHeadline.Example.tsx') as string;
+
+const ShadowDOMTeachingBubbleWideExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.TeachingBubble.Wide.Example.tsx') as string;
+
+const ShadowDOMTeachingBubbleWideIllustrationExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.TeachingBubble.WideIllustration.Example.tsx') as string;
 
 const ShadowDOMTextExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.Text.Example.tsx') as string;
@@ -550,6 +578,41 @@ export const ShadowDOMPageProps = (): IDocPageProps => ({
       title: 'TeachingBubble',
       code: ShadowDOMTeachingBubbleExampleCode,
       view: <ShadowDOMTeachingBubbleExample />,
+    },
+    {
+      title: 'TeachingBubbleButtonOrder',
+      code: ShadowDOMTeachingBubbleButtonOrderExampleCode,
+      view: <ShadowDOMTeachingBubbleButtonOrderExample />,
+    },
+    {
+      title: 'TeachingBubbleCondensed',
+      code: ShadowDOMTeachingBubbleCondensedExampleCode,
+      view: <ShadowDOMTeachingBubbleCondensedExample />,
+    },
+    {
+      title: 'TeachingBubbleIllustration',
+      code: ShadowDOMTeachingBubbleIllustrationExampleCode,
+      view: <ShadowDOMTeachingBubbleIllustrationExample />,
+    },
+    {
+      title: 'TeachingBubbleMultiStep',
+      code: ShadowDOMTeachingBubbleMultiStepExampleCode,
+      view: <ShadowDOMTeachingBubbleMultiStepExample />,
+    },
+    {
+      title: 'TeachingBubbleSmallHeadline',
+      code: ShadowDOMTeachingBubbleSmallHeadlineExampleCode,
+      view: <ShadowDOMTeachingBubbleSmallHeadlineExample />,
+    },
+    {
+      title: 'TeachingBubbleWide',
+      code: ShadowDOMTeachingBubbleWideExampleCode,
+      view: <ShadowDOMTeachingBubbleWideExample />,
+    },
+    {
+      title: 'TeachingBubbleWideIllustration',
+      code: ShadowDOMTeachingBubbleWideIllustrationExampleCode,
+      view: <ShadowDOMTeachingBubbleWideIllustrationExample />,
     },
     {
       title: 'Text',
