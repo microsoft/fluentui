@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { GLOBAL_STYLESHEET_KEY, Stylesheet, makeShadowConfig } from '@fluentui/merge-styles';
 import { getWindow } from '../dom';
+import type { ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -14,7 +15,7 @@ export type MergeStylesRootContextValue = {
   /**
    * Map of stylesheets available in the context.
    */
-  stylesheets: Map<string, CSSStyleSheet>;
+  stylesheets: Map<string, ExtendedCSSStyleSheet>;
 };
 
 const MergeStylesRootContext = React.createContext<MergeStylesRootContextValue>({
@@ -25,7 +26,7 @@ export type MergeStylesRootProviderProps = {
   /**
    * Map of stylesheets available in the context.
    */
-  stylesheets?: Map<string, CSSStyleSheet>;
+  stylesheets?: Map<string, ExtendedCSSStyleSheet>;
 
   /**
    * Optional `window` object to use for reading adopted stylesheets.
@@ -44,11 +45,13 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
   ...props
 }) => {
   const win = userWindow ?? getWindow();
-  const [stylesheets, setStylesheets] = React.useState<Map<string, CSSStyleSheet>>(() => userSheets ?? new Map());
+  const [stylesheets, setStylesheets] = React.useState<Map<string, ExtendedCSSStyleSheet>>(
+    () => userSheets ?? new Map(),
+  );
 
   const sheetHandler = React.useCallback(({ key, sheet }) => {
     setStylesheets(prev => {
-      const next = new Map<string, CSSStyleSheet>(prev);
+      const next = new Map<string, ExtendedCSSStyleSheet>(prev);
       next.set(key, sheet);
       return next;
     });
@@ -81,7 +84,7 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
     }
 
     let changed = false;
-    const next = new Map<string, CSSStyleSheet>(stylesheets);
+    const next = new Map<string, ExtendedCSSStyleSheet>(stylesheets);
     const sheet = Stylesheet.getInstance(makeShadowConfig(GLOBAL_STYLESHEET_KEY, false, win));
 
     sheet.forEachAdoptedStyleSheet((adoptedSheet, key) => {

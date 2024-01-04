@@ -8,6 +8,7 @@ import {
 } from '@fluentui/merge-styles';
 import { useMergeStylesRootStylesheets } from './MergeStylesRootContext';
 import { useDocument, useWindow } from '@fluentui/react-window-provider';
+import type { ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
 
 type PolyfileInsertListeners = Record<string, EventHandler<CSSStyleSheet>>;
 
@@ -126,7 +127,7 @@ const adoptSheet = (
   shadowCtx: MergeStylesShadowRootContextValue,
   doc: Document,
   stylesheetKey: string,
-  stylesheet: CSSStyleSheet,
+  stylesheet: ExtendedCSSStyleSheet,
   listenerRef: PolyfileInsertListeners,
 ) => {
   const shadowRoot = shadowCtx.shadowRoot!;
@@ -134,13 +135,32 @@ const adoptSheet = (
   shadowCtx.stylesheets.set(stylesheetKey, stylesheet);
   const sheet = Stylesheet.getInstance();
   if (sheet.supportsConstructableStylesheets()) {
-    // The current spec allows the `adoptedStyleSheets` array to be modified.
-    // Previous versions of the spec required a new array to be created.
-    // For more details see: https://github.com/microsoft/fast/pull/6703
+    // Maintain the sort order of Fluent style sheets
+    const prevSheets = shadowRoot.adoptedStyleSheets;
+    let i = prevSheets.length;
+    let found = i === 0;
+    while (i >= 0 && !found) {
+      i--;
+
+      const prevSheet = prevSheets[i] as ExtendedCSSStyleSheet;
+      const prevSortOrder = (prevSheet.metadata?.sortOrder as number) ?? 0;
+      const sheetSortOrder = (stylesheet.metadata?.sortOrder as number) ?? 0;
+      if (prevSheet.bucketName === 'merge-styles' && prevSortOrder < sheetSortOrder) {
+        found = true;
+      }
+    }
+
     if (sheet.supportsModifyingAdoptedStyleSheets()) {
-      shadowRoot.adoptedStyleSheets.push(stylesheet);
+      // The current spec allows the `adoptedStyleSheets` array to be modified.
+      // Previous versions of the spec required a new array to be created.
+      // For more details see: https://github.com/microsoft/fast/pull/6703
+      shadowRoot.adoptedStyleSheets.splice(i + 1, 0, stylesheet);
     } else {
-      shadowRoot.adoptedStyleSheets = [...shadowRoot.adoptedStyleSheets, stylesheet];
+      shadowRoot.adoptedStyleSheets = [
+        ...shadowRoot.adoptedStyleSheets.slice(0, i + 1),
+        stylesheet,
+        ...shadowRoot.adoptedStyleSheets.slice(i + 1),
+      ];
     }
   } else {
     const style = doc.createElement('style');
