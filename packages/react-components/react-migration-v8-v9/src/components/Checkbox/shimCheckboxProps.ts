@@ -1,5 +1,8 @@
+import * as React from 'react';
+
 import { ICheckboxProps } from '@fluentui/react';
-import { CheckboxProps } from '@fluentui/react-components';
+import { CheckboxProps, CheckboxOnChangeData } from '@fluentui/react-components';
+import { useControllableValue } from '@fluentui/react-hooks';
 import { getHTMLAttributes } from '../utils';
 
 // https://react.fluentui.dev/?path=/docs/concepts-migration-from-v8-components-checkbox-migration--page [Link of the fluent v9 migration guide]
@@ -40,21 +43,43 @@ export const useCheckboxProps = (props: ICheckboxProps): CheckboxProps => {
     ariaPositionInSet,
     ariaSetSize,
     boxSide,
-    checked,
+    checked: checkedV8,
+    indeterminate,
     defaultChecked,
     defaultIndeterminate,
     disabled,
-    indeterminate,
     inputProps,
     name,
     required,
     title,
+    onChange: onChangeV8,
   } = props;
 
+  const [checked, setChecked] = useControllableValue(checkedV8, defaultChecked);
+  const [mixed, setMixed] = React.useState(indeterminate || defaultIndeterminate);
+
+  const onChange = React.useCallback(
+    (event: React.ChangeEvent<HTMLElement>, data: CheckboxOnChangeData): void => {
+      if (checked !== undefined) {
+        // Ensure the checkbox is controlled
+        setChecked(data.checked as boolean);
+        // Need to set mixed to false when uncontrolled
+        setMixed(!indeterminate ? false : mixed);
+      }
+      onChangeV8?.(event, data.checked as boolean);
+    },
+    [setChecked, checked, onChangeV8, mixed, indeterminate],
+  );
+
   const v9Props: Partial<CheckboxProps> = {
-    checked: checked || indeterminate,
-    defaultChecked: defaultChecked || defaultIndeterminate,
+    checked: mixed ? 'mixed' : checked,
+    defaultChecked: defaultIndeterminate ? 'mixed' : defaultChecked,
     labelPosition: boxSide === 'end' ? 'before' : 'after',
+    disabled,
+    required,
+    title,
+    name,
+    onChange,
   };
 
   return {
@@ -64,10 +89,6 @@ export const useCheckboxProps = (props: ICheckboxProps): CheckboxProps => {
     'aria-labelledby': ariaLabelledBy,
     'aria-posinset': ariaPositionInSet,
     'aria-setsize': ariaSetSize,
-    disabled,
-    required,
-    title,
-    name,
     ...v9Props,
     ...getHTMLAttributes(props, CHECKBOX_PROPS_V8),
   } as CheckboxProps;

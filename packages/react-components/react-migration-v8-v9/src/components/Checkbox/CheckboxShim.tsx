@@ -1,8 +1,7 @@
 import * as React from 'react';
 
 import { classNamesFunction, ICheckboxProps, ICheckboxStyles, ICheckboxStyleProps } from '@fluentui/react';
-import { Checkbox, CheckboxOnChangeData, mergeClasses } from '@fluentui/react-components';
-import { useControllableValue } from '@fluentui/react-hooks';
+import { Checkbox, mergeClasses } from '@fluentui/react-components';
 import { useCheckboxProps } from './shimCheckboxProps';
 import { useCheckboxStyles } from './Checkbox.styles';
 
@@ -11,11 +10,10 @@ const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>({
 });
 
 export const CheckboxShim = React.forwardRef((props: ICheckboxProps, _ref: React.ForwardedRef<HTMLInputElement>) => {
-  const { className, styles: stylesV8, onRenderLabel, label, onChange: onChangeV8, componentRef } = props;
+  const { className, styles: stylesV8, onRenderLabel, label, componentRef } = props;
   const shimProps = useCheckboxProps(props);
   const styles = getClassNames(stylesV8);
   const stylesV9 = useCheckboxStyles();
-  const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked, props.onChange);
   const checkboxRef = (_ref as React.RefObject<HTMLInputElement>) || React.createRef<HTMLInputElement>();
 
   React.useImperativeHandle(componentRef, () => ({
@@ -23,21 +21,6 @@ export const CheckboxShim = React.forwardRef((props: ICheckboxProps, _ref: React
     indeterminate: checkboxRef.current?.indeterminate ?? false,
     focus: () => checkboxRef.current?.focus(),
   }));
-
-  const onChange = React.useCallback(
-    (event: React.ChangeEvent<HTMLElement>, data: CheckboxOnChangeData): void => {
-      const checked = data.checked === 'mixed' ? true : data.checked;
-      if (isChecked !== undefined) {
-        // Ensure the checkbox is controlled
-        setIsChecked(checked, event);
-      }
-      onChangeV8?.(event, checked);
-    },
-    [setIsChecked, isChecked, onChangeV8],
-  );
-
-  shimProps.checked = isChecked;
-  shimProps.onChange = onChange;
 
   const defaultLabelRenderer = (checkboxProps?: ICheckboxProps): JSX.Element | null => {
     if (!checkboxProps) {
