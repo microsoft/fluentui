@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: `useOnKeyboardNavigationChange` to subscribe to changes in keyboard navigation mode",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
