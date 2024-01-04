@@ -71,7 +71,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
   const handleToggleExpandSingleLine = () => {
     toggleExpandSingleLine();
     if (onExpandButtonToggled) {
-      onExpandButtonToggled();
+      onExpandButtonToggled(expandSingleLine);
     }
   };
 

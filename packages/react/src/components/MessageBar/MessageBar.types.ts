@@ -106,7 +106,7 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement>, Rea
    * Callback to execute when expand button is toggled
    * @returns
    */
-  onExpandButtonToggled?: () => void;
+  onExpandButtonToggled?: (expandSingleLine: boolean) => void;
 
   /**
    * Custom role to apply to the MessageBar.
