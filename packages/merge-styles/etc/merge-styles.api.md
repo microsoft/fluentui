@@ -580,15 +580,7 @@ export class Stylesheet {
     insertedRulesFromClassName(className: string): string[] | undefined;
     insertRule(rule: string, preserve?: boolean): void;
     // (undocumented)
-<<<<<<< HEAD
     makeCSSStyleSheet(win: Window): ExtendedCSSStyleSheet;
-=======
-    makeCSSStyleSheet(win: Window): CSSStyleSheet;
-    // (undocumented)
-    offAddConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void;
-    // (undocumented)
-    offInsertRuleIntoConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void;
->>>>>>> bef87a15ad (`merge-styles` `adoptedStylesheets` polyfill (#29985))
     // (undocumented)
     offAddConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void;
     // (undocumented)
@@ -597,11 +589,7 @@ export class Stylesheet {
     onAddConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void;
     onInsertRule(callback: Function): Function;
     // (undocumented)
-<<<<<<< HEAD
     onInsertRuleIntoConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void;
-=======
-    onInsertRuleIntoConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void;
->>>>>>> bef87a15ad (`merge-styles` `adoptedStylesheets` polyfill (#29985))
     onReset(callback: Function): Function;
     // (undocumented)
     projectStylesToWindow(targetWindow: Window): void;
