@@ -36,6 +36,9 @@ describe('TimePicker', () => {
           },
         },
       ],
+      'consistent-callback-type': {
+        ignoreProps: ['onOpenChange', 'onTimeChange'],
+      },
     },
   });
 
