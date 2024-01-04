@@ -9,7 +9,7 @@ const stringPoints: string[] = ['p1', 'p2', 'p3', 'p4'];
 const numericPoints: number[] = [10, 20, 30, 40];
 const datePoints: Date[] = [new Date('2020-03-01'), new Date('2020-03-02')];
 
-export const HeatMapData: IHeatMapChartProps['data'] = [
+export const HeatMapDateStringData: IHeatMapChartProps['data'] = [
   {
     value: 100,
     legend: 'Execllent (0-200)',
@@ -57,7 +57,7 @@ export const HeatMapData: IHeatMapChartProps['data'] = [
     ],
   },
 ];
-const HeatMapData2: IHeatMapChartProps['data'] = [
+const HeatMapStringData: IHeatMapChartProps['data'] = [
   {
     value: 100,
     legend: 'Excellent',
@@ -95,7 +95,7 @@ const HeatMapData2: IHeatMapChartProps['data'] = [
     ],
   },
 ];
-const HeatMapData3: IHeatMapChartProps['data'] = [
+const HeatMapNumberData: IHeatMapChartProps['data'] = [
   {
     value: 100,
     legend: 'Excellent',
@@ -151,7 +151,7 @@ describe('HeatMap chart rendering', () => {
     // Act
     rerender(
       <HeatMapChart
-        data={HeatMapData}
+        data={HeatMapDateStringData}
         domainValuesForColorScale={[0, 600]}
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
@@ -168,7 +168,7 @@ describe('Heat Map Chart - axe-core', () => {
   test('Should pass accessibility tests', async () => {
     const { container } = render(
       <HeatMapChart
-        data={HeatMapData}
+        data={HeatMapDateStringData}
         domainValuesForColorScale={[0, 600]}
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
@@ -183,13 +183,13 @@ describe('HeatMapChart interaction and accessibility tests', () => {
   unhighlight them when the mouse moves out of the legend`, () => {
     const { container } = render(
       <HeatMapChart
-        data={HeatMapData2}
+        data={HeatMapStringData}
         domainValuesForColorScale={[0, 600]}
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
 
-    const legend = screen.getByText(HeatMapData2[0].legend);
+    const legend = screen.getByText(HeatMapStringData[0].legend);
 
     fireEvent.mouseOver(legend);
     expect(container.querySelectorAll('g[role="img"][fill-opacity="1"]')).toHaveLength(2);
@@ -204,13 +204,13 @@ describe('HeatMapChart interaction and accessibility tests', () => {
   unhighlight them when the legend is clicked again`, () => {
     const { container } = render(
       <HeatMapChart
-        data={HeatMapData2}
+        data={HeatMapStringData}
         domainValuesForColorScale={[0, 600]}
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
 
-    const legend = screen.getByText(HeatMapData2[1].legend);
+    const legend = screen.getByText(HeatMapStringData[1].legend);
 
     fireEvent.click(legend);
     expect(container.querySelectorAll('g[role="img"][fill-opacity="1"]')).toHaveLength(2);
@@ -225,17 +225,17 @@ describe('HeatMapChart interaction and accessibility tests', () => {
   hide it when an unhighlighted rectangle is hovered/focused`, () => {
     const { container } = render(
       <HeatMapChart
-        data={HeatMapData2}
+        data={HeatMapStringData}
         domainValuesForColorScale={[0, 600]}
         rangeValuesForColorScale={['lightblue', 'darkblue']}
         calloutProps={{ doNotLayer: true }}
       />,
     );
 
-    fireEvent.click(screen.getByText(HeatMapData2[0].legend));
+    fireEvent.click(screen.getByText(HeatMapStringData[0].legend));
 
-    for (let i = 0; i < HeatMapData2[0].data.length; i++) {
-      const rect = screen.getByText(HeatMapData2[0].data[i].rectText!);
+    for (let i = 0; i < HeatMapStringData[0].data.length; i++) {
+      const rect = screen.getByText(HeatMapStringData[0].data[i].rectText!);
 
       fireEvent.mouseOver(rect);
       expect(container.querySelector('.ms-Callout')).not.toBeNull();
@@ -243,8 +243,8 @@ describe('HeatMapChart interaction and accessibility tests', () => {
       fireEvent.focus(rect);
       expect(container.querySelector('.ms-Callout')).not.toBeNull();
     }
-    for (let i = 0; i < HeatMapData2[1].data.length; i++) {
-      const rect = screen.getByText(HeatMapData2[1].data[i].rectText!);
+    for (let i = 0; i < HeatMapStringData[1].data.length; i++) {
+      const rect = screen.getByText(HeatMapStringData[1].data[i].rectText!);
 
       fireEvent.mouseOver(rect);
       expect(container.querySelector('.ms-Callout')).toBeNull();
@@ -259,7 +259,7 @@ describe('HeatMapChart snapshot tests', () => {
   it('should render HeatMapChart correctly with custom string formatter functions', () => {
     const { container } = render(
       <HeatMapChart
-        data={HeatMapData2}
+        data={HeatMapStringData}
         domainValuesForColorScale={[0, 600]}
         rangeValuesForColorScale={['lightblue', 'darkblue']}
         xAxisStringFormatter={value => `xPoint ${value}`}
@@ -273,7 +273,7 @@ describe('HeatMapChart snapshot tests', () => {
   it('should render HeatMapChart correctly with numeric datapoints', () => {
     const { container } = render(
       <HeatMapChart
-        data={HeatMapData3}
+        data={HeatMapNumberData}
         domainValuesForColorScale={[0, 600]}
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,

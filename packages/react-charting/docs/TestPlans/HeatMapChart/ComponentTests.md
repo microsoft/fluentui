@@ -6,11 +6,11 @@
 | ---------------------------------------------------------------------------- | ------------------------------------- | --------- |
 | With only data, domainValuesForColorScale and rangeValuesForColorScale props | Should render heatmap chart correctly | Enzyme    |
 | When data is not present for some group                                      | Should render heatmap chart correctly | Enzyme    |
-| When hideLegend prop is set to true                                          | Should render heatmap chart correctly | Enzyme    |
-| When yAxisTickFormat prop is set                                             | Should render heatmap chart correctly | Enzyme    |
+| When hideLegend prop is set to true                                          | Should not render legends             | Enzyme    |
+| When yAxisTickFormat prop is set                                             | Should render y axis labels correctly | Enzyme    |
 | When the layout direction is RTL                                             | Should render heatmap chart correctly | Enzyme    |
 | When the theme is dark                                                       | Should render heatmap chart correctly | Enzyme    |
-| When custom formatter functions are set for x and y axis strings             | Should render heatmap chart correctly | RTL       |
+| When custom formatter functions are set for x and y axis strings             | Should render axis labels correctly   | RTL       |
 | With numeric datapoints                                                      | Should render heatmap chart correctly | RTL       |
 
 ## Rendering and behavior tests

@@ -40,7 +40,7 @@ function sharedAfterEach() {
 const stringPoints: string[] = ['p1', 'p2'];
 const datePoints: Date[] = [new Date('2020-03-03'), new Date('2020-03-04')];
 
-const HeatMapData: IHeatMapChartProps['data'] = [
+const HeatMapDateStringData: IHeatMapChartProps['data'] = [
   {
     value: 100,
     legend: 'Execllent (0-200)',
@@ -66,7 +66,7 @@ const HeatMapData: IHeatMapChartProps['data'] = [
   },
 ];
 
-const HeatMapData2: IHeatMapChartProps['data'] = [
+const HeatMapStringDateData: IHeatMapChartProps['data'] = [
   {
     value: 100,
     legend: 'Execllent (0-200)',
@@ -119,7 +119,7 @@ describe.skip('HeatMapChart snapShot testing', () => {
     await act(async () => {
       wrapper = mount(
         <HeatMapChart
-          data={HeatMapData}
+          data={HeatMapDateStringData}
           domainValuesForColorScale={[0, 600]}
           rangeValuesForColorScale={['lightblue', 'darkblue']}
         />,
@@ -135,7 +135,7 @@ describe.skip('HeatMapChart snapShot testing', () => {
     await act(async () => {
       wrapper = mount(
         <HeatMapChart
-          data={HeatMapData2} // first group has no data in it
+          data={HeatMapStringDateData} // first group has no data in it
           domainValuesForColorScale={[0, 600]}
           rangeValuesForColorScale={['pink', 'yellow']}
         />,
@@ -151,7 +151,7 @@ describe.skip('HeatMapChart snapShot testing', () => {
     await act(async () => {
       wrapper = mount(
         <HeatMapChart
-          data={HeatMapData}
+          data={HeatMapDateStringData}
           hideLegend={true}
           domainValuesForColorScale={[0, 600]}
           rangeValuesForColorScale={['lightblue', 'darkblue']}
@@ -168,7 +168,7 @@ describe.skip('HeatMapChart snapShot testing', () => {
     await act(async () => {
       wrapper = mount(
         <HeatMapChart
-          data={HeatMapData}
+          data={HeatMapDateStringData}
           hideTooltip={true}
           domainValuesForColorScale={[0, 600]}
           rangeValuesForColorScale={['lightblue', 'darkblue']}
@@ -185,7 +185,7 @@ describe.skip('HeatMapChart snapShot testing', () => {
     await act(async () => {
       wrapper = mount(
         <HeatMapChart
-          data={HeatMapData}
+          data={HeatMapDateStringData}
           yAxisTickFormat={'/%d'}
           domainValuesForColorScale={[0, 600]}
           rangeValuesForColorScale={['lightblue', 'darkblue']}
@@ -203,7 +203,7 @@ describe.skip('HeatMapChart snapShot testing', () => {
 
     wrapper = mount(
       <HeatMapChart
-        data={HeatMapData}
+        data={HeatMapDateStringData}
         domainValuesForColorScale={[0, 600]}
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
@@ -218,7 +218,7 @@ describe.skip('HeatMapChart snapShot testing', () => {
     wrapper = mount(
       <ThemeProvider theme={DarkTheme}>
         <HeatMapChart
-          data={HeatMapData}
+          data={HeatMapDateStringData}
           domainValuesForColorScale={[0, 600]}
           rangeValuesForColorScale={['lightblue', 'darkblue']}
         />
@@ -237,7 +237,7 @@ describe('HeatMapChart - basic props', () => {
     act(() => {
       wrapper = mount(
         <HeatMapChart
-          data={HeatMapData}
+          data={HeatMapDateStringData}
           hideLegend={true}
           domainValuesForColorScale={[0, 600]}
           rangeValuesForColorScale={['lightblue', 'darkblue']}
@@ -252,7 +252,7 @@ describe('HeatMapChart - basic props', () => {
     act(() => {
       wrapper = mount(
         <HeatMapChart
-          data={HeatMapData}
+          data={HeatMapDateStringData}
           domainValuesForColorScale={[0, 600]}
           rangeValuesForColorScale={['lightblue', 'darkblue']}
         />,
@@ -266,7 +266,7 @@ describe('HeatMapChart - basic props', () => {
     act(() => {
       wrapper = mount(
         <HeatMapChart
-          data={HeatMapData}
+          data={HeatMapDateStringData}
           domainValuesForColorScale={[0, 600]}
           rangeValuesForColorScale={['lightblue', 'darkblue']}
         />,
@@ -280,7 +280,7 @@ describe('HeatMapChart - basic props', () => {
     act(() => {
       wrapper = mount(
         <HeatMapChart
-          data={HeatMapData}
+          data={HeatMapDateStringData}
           domainValuesForColorScale={[0, 600]}
           rangeValuesForColorScale={['lightblue', 'darkblue']}
           hideTooltip={true}
@@ -296,7 +296,7 @@ describe('Render calling with respective to props', () => {
   it('No prop changes', () => {
     const renderMock = jest.spyOn(HeatMapChartBase.prototype, 'render');
     const props = {
-      data: HeatMapData,
+      data: HeatMapDateStringData,
       domainValuesForColorScale: [0, 600],
       rangeValuesForColorScale: ['lightblue', 'darkblue'],
       width: 600,
@@ -310,7 +310,7 @@ describe('Render calling with respective to props', () => {
   it('prop changes', () => {
     const renderMock = jest.spyOn(HeatMapChartBase.prototype, 'render');
     const props = {
-      data: HeatMapData,
+      data: HeatMapDateStringData,
       height: 300,
       domainValuesForColorScale: [0, 600],
       rangeValuesForColorScale: ['lightblue', 'darkblue'],
@@ -330,7 +330,7 @@ describe('HeatMapChart - mouse events', () => {
     await act(async () => {
       wrapper = mount(
         <HeatMapChart
-          data={HeatMapData}
+          data={HeatMapDateStringData}
           domainValuesForColorScale={[0, 600]}
           rangeValuesForColorScale={['lightblue', 'darkblue']}
           calloutProps={{ doNotLayer: true }}
@@ -352,7 +352,7 @@ describe('Render empty chart aria label div when chart is empty', () => {
     act(() => {
       wrapper = mount(
         <HeatMapChart
-          data={HeatMapData}
+          data={HeatMapDateStringData}
           domainValuesForColorScale={[0, 600]}
           rangeValuesForColorScale={['lightblue', 'darkblue']}
         />,

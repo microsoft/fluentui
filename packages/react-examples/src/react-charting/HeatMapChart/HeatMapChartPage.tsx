@@ -9,11 +9,9 @@ import {
 } from '@fluentui/react-docsite-components';
 import { HeatMapChartBasicExample } from './HeatMapChartBasic.Example';
 import { HeatMapChartCustomAccessibilityExample } from './HeatMapChartBasic.CustomAccessibility.Example';
-import { HeatMapChartPiecewiseScaleExample } from './HeatMapChart.PiecewiseScale.Example';
 
 const HeatMapChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HeatMapChart/HeatMapChartBasic.Example.tsx');
 const HeatMapChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HeatMapChart/HeatMapChartBasic.CustomAccessibility.Example.tsx');
-const HeatMapChartPiecewiseScaleExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HeatMapChart/HeatMapChart.PiecewiseScale.Example.tsx');
 
 export class HeatMapChart extends React.Component<IComponentDemoPageProps, {}> {
   public render(): React.ReactNode {
@@ -28,9 +26,6 @@ export class HeatMapChart extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title="Heat Map Custom Accessibility" code={HeatMapChartCustomAccessibilityExampleCode}>
               <HeatMapChartCustomAccessibilityExample />
-            </ExampleCard>
-            <ExampleCard title="Heat Map Piecewise Scale" code={HeatMapChartPiecewiseScaleExampleCode}>
-              <HeatMapChartPiecewiseScaleExample />
             </ExampleCard>
           </div>
         }
