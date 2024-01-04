@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as shape from 'd3-shape';
+import { arc as d3Arc } from 'd3-shape';
 import { classNamesFunction, getRTL } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
 import { IChartDataPoint } from '../index';
@@ -13,7 +13,7 @@ export interface IArcState {
 
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
-    arc: shape.arc(),
+    arc: d3Arc(),
   };
 
   public state: {} = {};
