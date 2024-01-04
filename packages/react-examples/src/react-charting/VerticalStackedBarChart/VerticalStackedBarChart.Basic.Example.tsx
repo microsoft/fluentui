@@ -85,21 +85,21 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
     const firstChartPoints: IVSChartDataPoint[] = [
       {
         legend: 'Metadata1',
-        data: -40,
+        data: 40,
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '61%',
       },
       {
         legend: 'Metadata2',
-        data: -5,
+        data: 5,
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '8%',
       },
       {
         legend: 'Metadata3',
-        data: -20,
+        data: 20,
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '31%',
@@ -326,7 +326,6 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
               }}
               hideLabels={this.state.hideLabels}
               enableReflow={true}
-              supportNegativeValues={true}
             />
           </div>
         )}
