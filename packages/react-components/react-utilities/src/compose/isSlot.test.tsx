@@ -39,6 +39,6 @@ describe('isSlot', () => {
     jest.isolateModules(() => {
       const otherSlot = require('./slot') as typeof slot;
       expect(isSlot(otherSlot.optional({}, { elementType: 'div' }))).toBeTruthy();
-    })
+    });
   });
 });
