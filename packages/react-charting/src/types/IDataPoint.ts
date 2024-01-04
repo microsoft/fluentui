@@ -15,7 +15,7 @@ export interface IBasestate {
   refSelected?: any;
   YValueHover?: { legend?: string; y?: number; color?: string }[];
   hoverYValue?: string | number | null;
-  hoverXValue?: string | number | Date | null;
+  hoverXValue?: string | number | null;
   xCalloutValue?: string;
   yCalloutValue?: string;
   lineColor?: string;

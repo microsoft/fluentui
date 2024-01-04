@@ -177,7 +177,7 @@ export interface IBasestate {
     // (undocumented)
     hoveredLineColor?: string;
     // (undocumented)
-    hoverXValue?: string | number | Date | null;
+    hoverXValue?: string | number | null;
     // (undocumented)
     hoverYValue?: string | number | null;
     // (undocumented)
@@ -949,7 +949,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
         isCalloutVisible: boolean;
         id: string;
         YValueHover?: IYValueHover[];
-        hoverXValue?: string | number | Date | null;
+        hoverXValue?: string | number | null;
         legend?: string;
         color?: string;
         YValue?: string | number;

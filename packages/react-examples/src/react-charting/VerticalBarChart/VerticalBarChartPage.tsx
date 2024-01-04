@@ -28,8 +28,8 @@ const VerticalBarChartCustomAccessibilityExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.CustomAccessibility.Example.tsx') as string;
 const VerticalBarChartRotateLabelsExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.RotateLabels.Example.tsx') as string;
-const VerticalBarChartDateLabelExampleCode =
-  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.DateLabel.Example.tsx') as string;
+const VerticalBarChartDateAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.DateAxis.Example.tsx') as string;
 
 export class VerticalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -51,7 +51,7 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
             <ExampleCard title="VerticalBarChart dynamic" code={VerticalBarChartTooltipExampleCode}>
               <VerticalBarChartTooltipExample />
             </ExampleCard>
-            <ExampleCard title="VerticalBarChart Date Axis" code={VerticalBarChartDateLabelExampleCode}>
+            <ExampleCard title="VerticalBarChart Date Axis" code={VerticalBarChartDateAxisExampleCode}>
               <VerticalBarChartDateAxisExample />
             </ExampleCard>
             <ExampleCard
