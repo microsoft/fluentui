@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 25 Dec 2023 07:28:36 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Jan 2024 07:26:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.9)
+
+Thu, 04 Jan 2024 07:26:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.8..@fluentui/react-charting_v5.19.9)
+
+### Patches
+
+- Importing functions which are used instead of importing complete library ([PR #30185](https://github.com/microsoft/fluentui/pull/30185) by ankityadav@microsoft.com)
 
 ## [5.19.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.8)
 
