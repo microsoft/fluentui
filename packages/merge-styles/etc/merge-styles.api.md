@@ -41,6 +41,12 @@ export type DeepPartial<T> = {
 // @public (undocumented)
 export type EventHandler<T> = (args: EventArgs<T>) => void;
 
+// @public (undocumented)
+export type ExtendedCSSStyleSheet = CSSStyleSheet & {
+    bucketName: string;
+    metadata: Record<string, unknown>;
+};
+
 // @public
 export function fontFace(font: IFontFace): void;
 
@@ -557,14 +563,14 @@ export type ShadowConfig = {
 export class Stylesheet {
     constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet);
     // (undocumented)
-    addAdoptableStyleSheet(key: string, sheet: CSSStyleSheet): void;
+    addAdoptableStyleSheet(key: string, sheet: ExtendedCSSStyleSheet): void;
     argsFromClassName(className: string): IStyle[] | undefined;
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
     classNameFromKey(key: string): string | undefined;
     // (undocumented)
-    forEachAdoptedStyleSheet(callback: (value: CSSStyleSheet, key: string, map: Map<string, CSSStyleSheet>) => void): void;
+    forEachAdoptedStyleSheet(callback: (value: ExtendedCSSStyleSheet, key: string, map: Map<string, ExtendedCSSStyleSheet>) => void): void;
     // (undocumented)
-    getAdoptableStyleSheet(key: string): CSSStyleSheet;
+    getAdoptableStyleSheet(key: string): ExtendedCSSStyleSheet;
     getClassName(displayName?: string): string;
     getClassNameCache(): {
         [key: string]: string;
@@ -574,16 +580,16 @@ export class Stylesheet {
     insertedRulesFromClassName(className: string): string[] | undefined;
     insertRule(rule: string, preserve?: boolean): void;
     // (undocumented)
-    makeCSSStyleSheet(win: Window): CSSStyleSheet;
+    makeCSSStyleSheet(win: Window): ExtendedCSSStyleSheet;
     // (undocumented)
-    offAddConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void;
+    offAddConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void;
     // (undocumented)
-    offInsertRuleIntoConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void;
+    offInsertRuleIntoConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void;
     // (undocumented)
-    onAddConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void;
+    onAddConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void;
     onInsertRule(callback: Function): Function;
     // (undocumented)
-    onInsertRuleIntoConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void;
+    onInsertRuleIntoConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void;
     onReset(callback: Function): Function;
     // (undocumented)
     projectStylesToWindow(targetWindow: Window): void;
