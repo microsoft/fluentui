@@ -5,7 +5,7 @@ import { HeatMapChartBase } from '../src/components/HeatMapChart/HeatMapChart.ba
 import { IHeatMapChartData, IHeatMapChartDataPoint } from '../src/HorizontalBarChart';
 import { render } from '@testing-library/react';
 import { dataToBuffer } from 'memfs/lib/volume';
-import { YAxisType } from '../src/utilities/index';
+import { XAxisTypes, YAxisType } from '../src/utilities/index';
 
 const env = require('../config/tests');
 const runTest = env === 'TEST' ? describe : describe.skip;
@@ -16,8 +16,8 @@ const rangeValuesForColorScale = ['lightblue', 'darkblue'];
 const yPoint: string[] = ['p1', 'p2'];
 const xPoint: string[] = ['Test1', 'test2'];
 
-const yPoint1: number[] = [10];
-const xPoint1: number[] = [20];
+const yPoint1: number[] = [10000];
+const xPoint1: number[] = [20000];
 
 const yPoint2: Date[] = [new Date('2020-03-03')];
 const xPoint2: Date[] = [new Date('2020-04-03')];
@@ -41,8 +41,7 @@ const HeatMapData: IHeatMapChartProps['data'] = [
         value: 25,
         rectText: 25,
         ratio: [25, 2479],
-        descriptionMessage: `Due to unexpected heavy rain, all the pollutants are washed
-        off and people of alaska are hoping for more of this days`,
+        descriptionMessage: `Due to unexpected heavy rain`,
       },
     ],
   },
@@ -120,8 +119,8 @@ runTest('_getXandY', () => {
     expect(instance).toBeDefined();
     const result = instance._getXandY();
     expect(result).toBeDefined();
-    expect(result.x).toEqual(20);
-    expect(result.y).toEqual(10);
+    expect(result.x).toEqual(20000);
+    expect(result.y).toEqual(10000);
   });
 
   test('Should return proper X and Y values for date xPoint and yPoint', () => {
@@ -139,9 +138,9 @@ runTest('_getXandY', () => {
 });
 
 runTest('_getOpacity', () => {
-  test('Should return proper X and Y values for string xPoint and yPoint', () => {
+  test('Should return proper opacity for legends', () => {
     const instance = new HeatMapChartBase({
-      data: HeatMapData,
+      data: emptyData,
       domainValuesForColorScale: domainValuesForColorScale,
       rangeValuesForColorScale: rangeValuesForColorScale,
     });
@@ -156,7 +155,7 @@ runTest('_getOpacity', () => {
 });
 
 runTest('_createLegendBars', () => {
-  test('Should return proper X and Y values for string xPoint and yPoint', () => {
+  test('Should return proper legends data', () => {
     const instance = new HeatMapChartBase({
       data: HeatMapDataNumaricPoints,
       domainValuesForColorScale: domainValuesForColorScale,
@@ -174,7 +173,7 @@ runTest('_createLegendBars', () => {
 });
 
 runTest('_getColorScale', () => {
-  test('Should return proper X and Y values for string xPoint and yPoint', () => {
+  test('Should return proper color scale data', () => {
     const instance = new HeatMapChartBase({
       data: HeatMapDataNumaricPoints,
       domainValuesForColorScale: domainValuesForColorScale,
@@ -191,7 +190,7 @@ runTest('_getColorScale', () => {
 });
 
 runTest('_getXIndex', () => {
-  test('Should return proper xIndex for String xPoint', () => {
+  test('Should return proper xIndex for string xPoint', () => {
     const instance = new HeatMapChartBase({
       data: HeatMapDataNumaricPoints,
       domainValuesForColorScale: domainValuesForColorScale,
@@ -202,7 +201,7 @@ runTest('_getXIndex', () => {
     expect(xIndex).toEqual('Test1');
   });
 
-  test('Should return proper xIndex for number xPoint', () => {
+  test('Should return proper xIndex for numeric xPoint', () => {
     const instance = new HeatMapChartBase({
       data: HeatMapDataNumaricPoints,
       domainValuesForColorScale: domainValuesForColorScale,
@@ -210,7 +209,7 @@ runTest('_getXIndex', () => {
     });
     expect(instance).toBeDefined();
     const xIndex = instance._getXIndex(xPoint1[0]);
-    expect(xIndex).toEqual('20');
+    expect(xIndex).toEqual('20000');
   });
 
   test('Should return proper xIndex for date xPoint', () => {
@@ -226,7 +225,7 @@ runTest('_getXIndex', () => {
 });
 
 runTest('_getYIndex', () => {
-  test('Should return proper xIndex for String xPoint', () => {
+  test('Should return proper yIndex for string yPoint', () => {
     const instance = new HeatMapChartBase({
       data: HeatMapDataNumaricPoints,
       domainValuesForColorScale: domainValuesForColorScale,
@@ -237,7 +236,7 @@ runTest('_getYIndex', () => {
     expect(yIndex).toEqual('p1');
   });
 
-  test('Should return proper xIndex for number xPoint', () => {
+  test('Should return proper yIndex for numeric yPoint', () => {
     const instance = new HeatMapChartBase({
       data: HeatMapDataNumaricPoints,
       domainValuesForColorScale: domainValuesForColorScale,
@@ -245,7 +244,7 @@ runTest('_getYIndex', () => {
     });
     expect(instance).toBeDefined();
     const yIndex = instance._getYIndex(yPoint1[0]);
-    expect(yIndex).toEqual('10');
+    expect(yIndex).toEqual('10000');
   });
 
   test('Should return proper xIndex for date xPoint', () => {
@@ -261,7 +260,7 @@ runTest('_getYIndex', () => {
 });
 
 runTest('_getAriaLabel', () => {
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper aria-label for numeric xPoint and yPoint', () => {
     const p1 = {
       x: 10,
       y: 30,
@@ -278,7 +277,7 @@ runTest('_getAriaLabel', () => {
     expect(ariaLabel).toEqual('10, 30. legend1, 100.');
   });
 
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper aria-label for numeric xPoint and yPoint without legend value', () => {
     const p1 = {
       x: 10,
       y: 30,
@@ -295,7 +294,7 @@ runTest('_getAriaLabel', () => {
     expect(ariaLabel).toEqual('10, 30. , 100.');
   });
 
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper aria-label for string xPoint and yPoint', () => {
     const p1 = {
       x: 'x1',
       y: 'y1',
@@ -312,7 +311,7 @@ runTest('_getAriaLabel', () => {
     expect(ariaLabel).toEqual('x1, y1. legend1, 100.');
   });
 
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper aria-label for string xPoint and yPoint without legend', () => {
     const p1 = {
       x: 'x1',
       y: 'y1',
@@ -329,7 +328,7 @@ runTest('_getAriaLabel', () => {
     expect(ariaLabel).toEqual('x1, y1. , 100.');
   });
 
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper aria-label for date xPoint and yPoint', () => {
     const p1 = {
       x: new Date('2020-03-03'),
       y: new Date('2020-04-03'),
@@ -348,7 +347,7 @@ runTest('_getAriaLabel', () => {
     );
   });
 
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper aria-label for date xPoint and yPoint without legend', () => {
     const p1 = {
       x: new Date('2020-03-03'),
       y: new Date('2020-04-03'),
@@ -367,7 +366,7 @@ runTest('_getAriaLabel', () => {
     );
   });
 
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper aria-label for numeric xPoint and date yPoint', () => {
     const p1 = {
       x: 100,
       y: new Date('2020-04-03'),
@@ -386,31 +385,7 @@ runTest('_getAriaLabel', () => {
 });
 
 runTest('_getFormattedLabelForXAxisDataPoint', () => {
-  test('Should return proper aria-label for String xPoint', () => {
-    const instance = new HeatMapChartBase({
-      data: emptyData,
-      domainValuesForColorScale: [],
-      rangeValuesForColorScale: [],
-    });
-    expect(instance).toBeDefined();
-    const label = instance._getFormattedLabelForYAxisDataPoint(yPoint[0]);
-    expect(label).toEqual('p1');
-  });
-
-  test('Should return proper aria-label for String xPoint', () => {
-    const instance = new HeatMapChartBase({
-      data: emptyData,
-      domainValuesForColorScale: [],
-      rangeValuesForColorScale: [],
-    });
-    expect(instance).toBeDefined();
-    const label = instance._getFormattedLabelForYAxisDataPoint('');
-    expect(label).toEqual('');
-  });
-});
-
-runTest('_getFormattedLabelForXAxisDataPoint', () => {
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper xAxis label for non empty string', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
       domainValuesForColorScale: [],
@@ -421,7 +396,7 @@ runTest('_getFormattedLabelForXAxisDataPoint', () => {
     expect(label).toEqual('Test1');
   });
 
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper xAxis label for empty string', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
       domainValuesForColorScale: [],
@@ -433,8 +408,32 @@ runTest('_getFormattedLabelForXAxisDataPoint', () => {
   });
 });
 
+runTest('_getFormattedLabelForYAxisDataPoint', () => {
+  test('Should return proper yAxis label for non empty string', () => {
+    const instance = new HeatMapChartBase({
+      data: emptyData,
+      domainValuesForColorScale: [],
+      rangeValuesForColorScale: [],
+    });
+    expect(instance).toBeDefined();
+    const label = instance._getFormattedLabelForYAxisDataPoint(yPoint[0]);
+    expect(label).toEqual('p1');
+  });
+
+  test('Should return proper yAxis label for empty data', () => {
+    const instance = new HeatMapChartBase({
+      data: emptyData,
+      domainValuesForColorScale: [],
+      rangeValuesForColorScale: [],
+    });
+    expect(instance).toBeDefined();
+    const label = instance._getFormattedLabelForYAxisDataPoint('');
+    expect(label).toEqual('');
+  });
+});
+
 runTest('_getStringFormattedNumber', () => {
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper string formatted number for numeric value', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
       domainValuesForColorScale: [],
@@ -445,7 +444,7 @@ runTest('_getStringFormattedNumber', () => {
     expect(result).toEqual('1k');
   });
 
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper string formatted number with format string', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
       domainValuesForColorScale: [],
@@ -456,7 +455,7 @@ runTest('_getStringFormattedNumber', () => {
     expect(result).toEqual('10k');
   });
 
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper string formatted number for empty data', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
       domainValuesForColorScale: [],
@@ -467,7 +466,7 @@ runTest('_getStringFormattedNumber', () => {
     expect(result).toEqual('0');
   });
 
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper string formatted number for string value', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
       domainValuesForColorScale: [],
@@ -480,18 +479,18 @@ runTest('_getStringFormattedNumber', () => {
 });
 
 runTest('_getStringFormattedDate', () => {
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper string formatted date for date point', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
       domainValuesForColorScale: [],
       rangeValuesForColorScale: [],
     });
     expect(instance).toBeDefined();
-    const result = instance._getStringFormattedDate('10');
-    expect(result).toEqual('Jan/01');
+    const result = instance._getStringFormattedDate('100000000');
+    expect(result).toEqual('Jan/02');
   });
 
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper string formatted date for empty point', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
       domainValuesForColorScale: [],
@@ -502,20 +501,59 @@ runTest('_getStringFormattedDate', () => {
     expect(result).toEqual('Jan/01');
   });
 
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper string formatted date for date point', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
       domainValuesForColorScale: [],
       rangeValuesForColorScale: [],
     });
     expect(instance).toBeDefined();
-    const result = instance._getStringFormattedDate('10', '%b/%d/%Y');
-    expect(result).toEqual('Jan/01/1970');
+    const result = instance._getStringFormattedDate('100000000', '%b/%d/%Y');
+    expect(result).toEqual('Jan/02/1970');
+  });
+});
+
+runTest('_getXAxisDataPoints', () => {
+  test('Should return proper xAxis data points for string points', () => {
+    const instance = new HeatMapChartBase({
+      data: emptyData,
+      domainValuesForColorScale: [],
+      rangeValuesForColorScale: [],
+    });
+    expect(instance).toBeDefined();
+    const result = instance._getXAxisDataPoints({ B: '1', A: '1' });
+    expect(result[0]).toEqual('A');
+    expect(result[1]).toEqual('B');
+  });
+
+  test('Should return proper xAxis data points for numeric points', () => {
+    const instance = new HeatMapChartBase({
+      data: emptyData,
+      domainValuesForColorScale: [],
+      rangeValuesForColorScale: [],
+    });
+    expect(instance).toBeDefined();
+    instance._xAxisType = XAxisTypes.NumericAxis;
+    const result = instance._getXAxisDataPoints({ 100: '1', 30: '1' });
+    expect(result[0]).toEqual('30');
+    expect(result[1]).toEqual('100');
+  });
+
+  test('Should return proper xAxis data points for date points', () => {
+    const instance = new HeatMapChartBase({
+      data: emptyData,
+      domainValuesForColorScale: [],
+      rangeValuesForColorScale: [],
+    });
+    expect(instance).toBeDefined();
+    instance._xAxisType = XAxisTypes.DateAxis;
+    const result = instance._getXAxisDataPoints({ '30': '1', '10': '1' });
+    expect(result[0]).toEqual('Jan/01');
   });
 });
 
 runTest('_getYAxisDataPoints', () => {
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper yAxis data points for string points', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
       domainValuesForColorScale: [],
@@ -527,7 +565,7 @@ runTest('_getYAxisDataPoints', () => {
     expect(result[1]).toEqual('B');
   });
 
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper yAxis data points for numeric points', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
       domainValuesForColorScale: [],
@@ -535,13 +573,12 @@ runTest('_getYAxisDataPoints', () => {
     });
     expect(instance).toBeDefined();
     instance._yAxisType = YAxisType.NumericAxis;
-    const yPoint1: Date = new Date('2020-03-03');
     const result = instance._getYAxisDataPoints({ 100: '1', 30: '1' });
     expect(result[0]).toEqual('30');
     expect(result[1]).toEqual('100');
   });
 
-  test('Should return proper aria-label for String xPoint', () => {
+  test('Should return proper yAxis data points for date points', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
       domainValuesForColorScale: [],
@@ -549,8 +586,91 @@ runTest('_getYAxisDataPoints', () => {
     });
     expect(instance).toBeDefined();
     instance._yAxisType = YAxisType.DateAxis;
-    const result = instance._getYAxisDataPoints({ '30': '1', '10': '1' });
-    expect(result[0]).toEqual('Jan/01');
-    expect(result[1]).toEqual('Jan/01');
+    const result = instance._getYAxisDataPoints({ '300000000': '1', '100000000': '1' });
+    expect(result[0]).toEqual('Jan/02');
+  });
+});
+
+runTest('_createNewDataSet', () => {
+  test('Should return proper data set for default axis type', () => {
+    const instance = new HeatMapChartBase({
+      data: emptyData,
+      domainValuesForColorScale: [],
+      rangeValuesForColorScale: [],
+    });
+    expect(instance).toBeDefined();
+    const result = instance._createNewDataSet(HeatMapData, '%b/%d', '.2~s', '%b/%d', '.2~s');
+    expect(result.dataSet.p1[0].descriptionMessage).toEqual('a good day to start with in Texas with best air quality');
+    expect(result.dataSet.p1[0].x).toEqual('Test1');
+    expect(result.dataSet.p1[0].y).toEqual('p1');
+    expect(result.dataSet.p2[0].descriptionMessage).toEqual('Due to unexpected heavy rain');
+    expect(result.dataSet.p2[0].x).toEqual('test2');
+    expect(result.dataSet.p2[0].y).toEqual('p2');
+    expect(result.xAxisPoints[0]).toEqual('Test1');
+    expect(result.xAxisPoints[1]).toEqual('test2');
+    expect(result.yAxisPoints[0]).toEqual('p1');
+    expect(result.yAxisPoints[1]).toEqual('p2');
+  });
+
+  test('Should return proper data set for string axis type', () => {
+    const instance = new HeatMapChartBase({
+      data: emptyData,
+      domainValuesForColorScale: [],
+      rangeValuesForColorScale: [],
+    });
+    expect(instance).toBeDefined();
+    instance._xAxisType = XAxisTypes.StringAxis;
+    instance._yAxisType = YAxisType.StringAxis;
+    const result = instance._createNewDataSet(HeatMapData, undefined, undefined, undefined, undefined);
+    expect(result.dataSet.p1[0].descriptionMessage).toEqual('a good day to start with in Texas with best air quality');
+    expect(result.dataSet.p1[0].x).toEqual('Test1');
+    expect(result.dataSet.p1[0].y).toEqual('p1');
+    expect(result.dataSet.p2[0].descriptionMessage).toEqual('Due to unexpected heavy rain');
+    expect(result.dataSet.p2[0].x).toEqual('test2');
+    expect(result.dataSet.p2[0].y).toEqual('p2');
+    expect(result.xAxisPoints[0]).toEqual('Test1');
+    expect(result.xAxisPoints[1]).toEqual('test2');
+    expect(result.yAxisPoints[0]).toEqual('p1');
+    expect(result.yAxisPoints[1]).toEqual('p2');
+  });
+
+  test('Should return proper data set for date axis with default axis type', () => {
+    const instance = new HeatMapChartBase({
+      data: emptyData,
+      domainValuesForColorScale: [],
+      rangeValuesForColorScale: [],
+    });
+    expect(instance).toBeDefined();
+    const result = instance._createNewDataSet(HeatMapDataDatePoints, '%b/%d', '.2~s', '%b/%d', '.2~s');
+    expect(result.xAxisPoints[0]).toEqual('Fri Apr 03 2020 05:30:00 GMT+0530 (India Standard Time)');
+    expect(result.yAxisPoints[0]).toEqual('Tue Mar 03 2020 05:30:00 GMT+0530 (India Standard Time)');
+  });
+
+  test('Should return proper data set for date axis with date axis type', () => {
+    const instance = new HeatMapChartBase({
+      data: emptyData,
+      domainValuesForColorScale: [],
+      rangeValuesForColorScale: [],
+    });
+    instance._xAxisType = XAxisTypes.DateAxis;
+    instance._yAxisType = YAxisType.DateAxis;
+    expect(instance).toBeDefined();
+    const result = instance._createNewDataSet(HeatMapDataDatePoints, '%b/%d', undefined, '%b/%d', undefined);
+    expect(result.xAxisPoints[0]).toEqual('Apr/03');
+    expect(result.yAxisPoints[0]).toEqual('Mar/03');
+  });
+
+  test('Should return proper data set for numeric axis type', () => {
+    const instance = new HeatMapChartBase({
+      data: emptyData,
+      domainValuesForColorScale: [],
+      rangeValuesForColorScale: [],
+    });
+    instance._xAxisType = XAxisTypes.NumericAxis;
+    instance._yAxisType = YAxisType.NumericAxis;
+    expect(instance).toBeDefined();
+    const result = instance._createNewDataSet(HeatMapDataNumaricPoints, undefined, undefined, undefined, undefined);
+    expect(result.xAxisPoints[0]).toEqual('20k');
+    expect(result.yAxisPoints[0]).toEqual('10k');
   });
 });
