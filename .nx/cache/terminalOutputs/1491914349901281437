@@ -1,0 +1,8 @@
+
+> @fluentui/react-bindings@0.66.4 build:info
+> gulp build:component-info
+
+[[90m12:26:09[39m] Requiring external module @fluentui/scripts-babel/register
+[[90m12:26:36[39m] Using gulpfile C:\git1\office-ui-fabric-react\packages\fluentui\react-bindings\gulpfile.ts
+[[90m12:26:36[39m] Starting 'build:component-info'...
+[[90m12:26:36[39m] Finished 'build:component-info' after 619 ms

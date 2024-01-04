@@ -1,0 +1,43 @@
+{
+  "run": {
+    "command": "cli run build:info",
+    "startTime": "2024-01-04T20:23:26.790Z",
+    "endTime": "2024-01-04T20:28:19.706Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "@fluentui/react-component-ref:build:info",
+      "target": "build:info",
+      "projectName": "@fluentui/react-component-ref",
+      "hash": "6676604441482990855",
+      "startTime": "2024-01-04T20:23:26.820Z",
+      "endTime": "2024-01-04T20:25:56.329Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    },
+    {
+      "taskId": "@fluentui/react-bindings:build:info",
+      "target": "build:info",
+      "projectName": "@fluentui/react-bindings",
+      "hash": "1491914349901281437",
+      "startTime": "2024-01-04T20:25:56.330Z",
+      "endTime": "2024-01-04T20:26:37.923Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    },
+    {
+      "taskId": "@fluentui/react-northstar:build:info",
+      "target": "build:info",
+      "projectName": "@fluentui/react-northstar",
+      "hash": "12681223089485204946",
+      "startTime": "2024-01-04T20:26:37.923Z",
+      "endTime": "2024-01-04T20:28:19.706Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    }
+  ]
+}

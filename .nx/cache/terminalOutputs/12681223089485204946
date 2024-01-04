@@ -1,0 +1,8 @@
+
+> @fluentui/react-northstar@0.66.4 build:info
+> gulp build:component-info
+
+[[90m12:27:27[39m] Requiring external module @fluentui/scripts-babel/register
+[[90m12:28:15[39m] Using gulpfile C:\git1\office-ui-fabric-react\packages\fluentui\react-northstar\gulpfile.ts
+[[90m12:28:15[39m] Starting 'build:component-info'...
+[[90m12:28:19[39m] Finished 'build:component-info' after 4.3 s
