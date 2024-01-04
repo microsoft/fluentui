@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: release compat package",
-  "packageName": "@fluentui/react-timepicker-compat",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}
