@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useId, useEventCallback, isHTMLElement } from '@fluentui/react-utilities';
 import type { RadioPickerProps, RadioPickerState } from './RadioPicker.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useRadioPickerState_unstable } from './useRadioPickerState';
@@ -13,7 +13,20 @@ import { useRadioPickerState_unstable } from './useRadioPickerState';
  * @param ref - reference to root HTMLDivElement of RadioPicker
  */
 export const useRadioPicker_unstable = (props: RadioPickerProps, ref: React.Ref<HTMLDivElement>): RadioPickerState => {
-  const { layout = 'row' } = props;
+  const generatedName = useId('radiogroup-');
+  const {
+    name = generatedName,
+    value,
+    defaultValue,
+    disabled,
+    layout = 'row',
+    onChange,
+    required,
+    shape = 'square',
+    size = 'medium',
+    columnCount = 2,
+  } = props;
+
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
     axis: layout === 'row' ? 'both' : 'grid-linear',
@@ -21,18 +34,48 @@ export const useRadioPicker_unstable = (props: RadioPickerProps, ref: React.Ref<
   });
 
   const state: RadioPickerState = {
+    layout,
+    shape,
+    columnCount,
+    size,
+    name,
+    value,
+    defaultValue,
+    disabled,
+    required,
     components: {
       root: 'div' as const,
     },
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        ...focusAttributes,
-        ...props,
+    root: {
+      ref,
+      role: 'radiogroup',
+      ...slot.always(getIntrinsicElementProps('div', props, /*excludedPropNames:*/ ['onChange', 'name']), {
+        elementType: 'div',
       }),
-      { elementType: 'div' },
-    ),
+      // ...focusAttributes,
+      onChange: useEventCallback(ev => {
+        if (
+          onChange &&
+          isHTMLElement(ev.target, { constructorName: 'HTMLInputElement' }) &&
+          ev.target.type === 'radio'
+        ) {
+          onChange(ev, { value: ev.target.value });
+        }
+      }),
+    },
+    // root: slot.always(
+    //   getIntrinsicElementProps('div', {
+    //     ref,
+    //     ...focusAttributes,
+    //     ...props,
+    //   }),
+
+    //   { elementType: 'div' },
+    // ),
   };
 
-  return useRadioPickerState_unstable(state, props);
+  useRadioPickerState_unstable(state, props);
+
+  return state;
+  // return useRadioPickerState_unstable(state, props);
 };

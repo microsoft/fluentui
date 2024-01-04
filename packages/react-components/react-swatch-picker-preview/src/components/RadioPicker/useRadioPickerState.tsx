@@ -4,7 +4,7 @@ import type { RadioPickerProps, RadioPickerState } from './RadioPicker.types';
 const { columnCountGrid, cellSize } = radioPickerCSSVars;
 
 export const useRadioPickerState_unstable = (state: RadioPickerState, props: RadioPickerProps) => {
-  const { columnCount = 2, size = 'medium', layout = 'row', shape = 'square' } = props;
+  const { columnCount = 2, size = 'medium' } = props;
 
   const sizeMap = {
     extraSmall: '20px',
@@ -23,10 +23,5 @@ export const useRadioPickerState_unstable = (state: RadioPickerState, props: Rad
     ...state.root.style,
   };
 
-  return {
-    ...state,
-    layout,
-    size,
-    shape,
-  };
+  return state;
 };
