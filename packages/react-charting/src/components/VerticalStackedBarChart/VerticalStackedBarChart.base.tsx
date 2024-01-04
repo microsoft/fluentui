@@ -720,8 +720,8 @@ export class VerticalStackedBarChartBase extends React.Component<
 
     // When displaying gaps between the bars, the height of each bar is
     // adjusted so that the total of all bars is not changed by the gaps
-    const totalData = bars.reduce((iter, value) => iter + value.data, 0);
-    const totalHeight = defaultTotalHeight ?? yBarScale(totalData);
+    const totalData = Math.abs(bars.reduce((iter, value) => iter + value.data, 0));
+    const totalHeight = defaultTotalHeight ?? Math.abs(yBarScale(totalData) - yBarScale(0));
     const gaps = barGapMax && bars.length - 1;
     const gapHeight = gaps && Math.max(barGapMin, Math.min(barGapMax, (totalHeight * barGapMultiplier) / gaps));
     const heightValueScale = (totalHeight - gapHeight * gaps) / totalData;
@@ -768,7 +768,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       if (!this.props.supportNegativeValues && heightValueScale < 0) {
         return undefined;
       }
-
+      const zeroHeightPoint = containerHeight - this.margins.bottom! - yBarScale(0);
       const singleBar = barsToDisplay.map((point: IVSChartDataPoint, index: number) => {
         const color = point.color ? point.color : this._colors[index];
         const ref: IRefArrayData = {};
@@ -805,11 +805,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             barHeight = -adjustedBarHeight;
           }
         }
-        if (barHeight < 0) {
-          yPoint = yPoint + Math.abs(barHeight) + (index ? gapHeight : 0);
-        } else {
-          yPoint = yPoint - Math.abs(barHeight) - (index ? gapHeight : 0);
-        }
+        yPoint = yPoint - Math.abs(barHeight) - (index ? gapHeight : 0);
         barTotalValue += point.data;
 
         // If set, apply the corner radius to the top of the final bar
@@ -848,7 +844,13 @@ export class VerticalStackedBarChartBase extends React.Component<
             fill={color}
             ref={e => (ref.refElement = e)}
             {...rectFocusProps}
-            transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+            transform={
+              barHeight < 0
+                ? `translate(${xScaleBandwidthTranslate}, ${
+                    -Math.abs(barHeight) + 2 * Math.abs(yPoint - zeroHeightPoint)
+                  })`
+                : `translate(${xScaleBandwidthTranslate}, 0)`
+            }
           />
         );
       });
@@ -887,7 +889,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           {!this.props.hideLabels && this._barWidth >= 16 && showLabel && (
             <text
               x={xPoint + this._barWidth / 2}
-              y={yPoint - 6}
+              y={barTotalValue < 0 ? yPoint - 2 * (yPoint - zeroHeightPoint) + 12 : yPoint - 6}
               textAnchor="middle"
               className={this._classNames.barLabel}
               aria-label={`Total: ${barLabel}`}
