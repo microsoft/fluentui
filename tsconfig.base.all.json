@@ -163,6 +163,7 @@
       "@fluentui/react-textarea": ["packages/react-components/react-textarea/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-components/react-theme/src/index.ts"],
       "@fluentui/react-theme-sass": ["packages/react-components/react-theme-sass/src/index.ts"],
+      "@fluentui/react-timepicker-compat": ["packages/react-components/react-timepicker-compat/src/index.ts"],
       "@fluentui/react-timepicker-compat-preview": [
         "packages/react-components/react-timepicker-compat-preview/src/index.ts"
       ],
@@ -175,7 +176,7 @@
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-timepicker-compat": ["packages/react-components/react-timepicker-compat/src/index.ts"]
+      "@fluentui/react-icons-compat": ["packages/react-components/react-icons-compat/src/index.ts"]
     }
   }
 }
