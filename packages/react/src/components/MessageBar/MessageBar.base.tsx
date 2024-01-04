@@ -64,7 +64,16 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
     role,
     delayedRender = true,
     expandButtonProps,
+    onExpandButtonToggled = undefined,
   } = props;
+
+  // Wrap 'toggleExpandSingleLine' to execute the 'onExpandButtonToggled' callback whenever the expand button toggles
+  const handleToggleExpandSingleLine = () => {
+    toggleExpandSingleLine();
+    if (onExpandButtonToggled) {
+      onExpandButtonToggled();
+    }
+  };
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(props, htmlElementProperties, [
     'className',
@@ -131,7 +140,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
               <IconButton
                 disabled={false}
                 className={classNames.expand}
-                onClick={toggleExpandSingleLine}
+                onClick={handleToggleExpandSingleLine}
                 iconProps={expandIconProps}
                 ariaLabel={overflowButtonAriaLabel}
                 aria-expanded={expandSingleLine}
