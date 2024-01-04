@@ -32,7 +32,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
 
   const baseState = useComboboxBaseState({ ...props, editable: true });
-  const { open, selectOption, setOpen, setValue, value } = baseState;
+  const { open, selectOption, setOpen, setValue, value, hasFocus } = baseState;
   const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
   const { disabled, freeform, inlinePopup } = props;
   const comboId = useId('combobox-');
@@ -94,7 +94,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     components: { root: 'div', input: 'input', expandIcon: 'span', listbox: Listbox },
     root: rootSlot,
     input: triggerSlot,
-    listbox: open ? listbox : undefined,
+    listbox: open || hasFocus ? listbox : undefined,
     expandIcon: slot.optional(props.expandIcon, {
       renderByDefault: true,
       defaultProps: {

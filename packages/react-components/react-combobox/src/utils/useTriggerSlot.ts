@@ -17,6 +17,7 @@ export type UseTriggerSlotState = Pick<
   | 'setOpen'
   | 'multiselect'
   | 'value'
+  | 'setHasFocus'
 >;
 
 type UseTriggerSlotOptions = {
@@ -57,6 +58,7 @@ export function useTriggerSlot(
       setFocusVisible,
       setOpen,
       multiselect,
+      setHasFocus,
     },
     defaultProps,
     elementType,
@@ -80,8 +82,17 @@ export function useTriggerSlot(
   // the trigger should open/close the popup on click or blur
   trigger.onBlur = mergeCallbacks((event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => {
     setOpen(event, false);
+    setHasFocus(false);
   }, trigger.onBlur);
 
+  trigger.onFocus = mergeCallbacks(
+    (event: React.FocusEvent<HTMLButtonElement> & React.FocusEvent<HTMLInputElement>) => {
+      if (event.target === event.currentTarget) {
+        setHasFocus(true);
+      }
+    },
+    trigger.onFocus,
+  );
   trigger.onClick = mergeCallbacks(
     (event: React.MouseEvent<HTMLButtonElement> & React.MouseEvent<HTMLInputElement>) => {
       setOpen(event, !open);

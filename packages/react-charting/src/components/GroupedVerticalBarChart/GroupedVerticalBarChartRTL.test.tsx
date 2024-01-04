@@ -488,7 +488,10 @@ testWithWait(
 describe('Grouped Vertical Bar Chart - axe-core', () => {
   test('Should pass accessibility tests', async () => {
     const { container } = render(<GroupedVerticalBarChart data={accessibilityDataPoints} />);
-    const axeResults = await axe(container);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
     expect(axeResults).toHaveNoViolations();
-  }, 10000);
+  });
 });

@@ -31,7 +31,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
   >
     <div>
       <svg
-        aria-label="Stacked Bar chart example"
+        aria-label="Donut chart example"
         className=
 
             {
@@ -667,7 +667,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
   >
     <div>
       <svg
-        aria-label="Stacked Bar chart example"
+        aria-label="Donut chart example"
         className=
 
             {
@@ -1221,7 +1221,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
   >
     <div>
       <svg
-        aria-label="Stacked Bar chart example"
+        aria-label="Donut chart example"
         className=
 
             {
@@ -1743,7 +1743,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
   >
     <div>
       <svg
-        aria-label="Stacked Bar chart example"
+        aria-label="Donut chart example"
         className=
 
             {
@@ -2265,7 +2265,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
   >
     <div>
       <svg
-        aria-label="Stacked Bar chart example"
+        aria-label="Donut chart example"
         className=
 
             {
@@ -2739,7 +2739,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
   >
     <div>
       <svg
-        aria-label="Stacked Bar chart example"
+        aria-label="Donut chart example"
         className=
 
             {
@@ -3213,7 +3213,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
   >
     <div>
       <svg
-        aria-label="Stacked Bar chart example"
+        aria-label="Donut chart example"
         className=
 
             {
@@ -3687,7 +3687,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
   >
     <div>
       <svg
-        aria-label="Stacked Bar chart example"
+        aria-label="Donut chart example"
         className=
 
             {
@@ -3821,7 +3821,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
   >
     <div>
       <svg
-        aria-label="Stacked Bar chart example"
+        aria-label="Donut chart example"
         className=
 
             {
@@ -4295,7 +4295,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
   >
     <div>
       <svg
-        aria-label="Stacked Bar chart example"
+        aria-label="Donut chart example"
         className=
 
             {
