@@ -1,33 +1,73 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TeachingPopoverTitleSlots, TeachingPopoverTitleState } from './TeachingPopoverTitle.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 export const teachingPopoverTitleClassNames: SlotClassNames<TeachingPopoverTitleSlots> = {
   root: 'fui-TeachingPopoverTitle',
-  // TODO: add class names for all slots on TeachingPopoverTitleSlots.
-  // Should be of the form `<slotName>: 'fui-TeachingPopoverTitle__<slotName>`
+  dismissButton: 'fui-TeachingPopoverTitle__dismissButton',
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    fontSize: tokens.fontSizeBase400,
+    fontWeight: tokens.fontWeightSemibold,
+    color: tokens.colorNeutralForeground1,
+    lineHeight: tokens.lineHeightBase400,
+    paddingBottom: tokens.spacingVerticalS,
+    marginTop: tokens.spacingHorizontalNone,
+    marginBottom: tokens.spacingHorizontalNone,
   },
-
-  // TODO add additional classes for different states and/or slots
+  rootBrand: {
+    color: tokens.colorNeutralForegroundOnBrand,
+  },
+  dismissButton: {
+    position: 'relative',
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+    display: 'flex',
+    alignItems: 'center',
+    cursor: 'pointer',
+    ...typographyStyles.body1,
+    backgroundColor: tokens.colorTransparentBackground,
+    boxSizing: 'border-box',
+    borderTopRightRadius: tokens.borderRadiusNone,
+    borderBottomRightRadius: tokens.borderRadiusNone,
+    borderRightStyle: 'none',
+    ...createCustomFocusIndicatorStyle({
+      borderTopRightRadius: tokens.borderRadiusNone,
+      borderBottomRightRadius: tokens.borderRadiusNone,
+    }),
+    marginInlineStart: 'auto',
+  },
+  dismissBrand: {
+    color: tokens.colorNeutralForegroundOnBrand,
+  },
 });
 
-/**
- * Apply styling to the TeachingPopoverTitle slots based on the state
- */
-export const useTeachingPopoverTitleStyles_unstable = (state: TeachingPopoverTitleState): TeachingPopoverTitleState => {
+/** Applies style classnames to slots */
+export const useTeachingPopoverTitleStyles_unstable = (state: TeachingPopoverTitleState) => {
   const styles = useStyles();
-  state.root.className = mergeClasses(teachingPopoverTitleClassNames.root, styles.root, state.root.className);
+  const { appearance } = state;
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  state.root.className = mergeClasses(
+    teachingPopoverTitleClassNames.root,
+    styles.root,
+    appearance === 'brand' && styles.rootBrand,
+    state.root.className,
+  );
+
+  if (state.showDismiss && state.dismissButton) {
+    state.dismissButton.className = mergeClasses(
+      teachingPopoverTitleClassNames.dismissButton,
+      styles.dismissButton,
+      appearance === 'brand' ? styles.dismissBrand : undefined,
+      state.dismissButton.className,
+    );
+  }
 
   return state;
 };

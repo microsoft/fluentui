@@ -18,8 +18,7 @@ export { atom }
 // @public (undocumented)
 export type AtomMotion = {
     keyframes: Keyframe[];
-    options: KeyframeEffectOptions;
-};
+} & KeyframeEffectOptions;
 
 // @public
 export function createAtom(motion: AtomMotion): React_2.FC<AtomProps>;

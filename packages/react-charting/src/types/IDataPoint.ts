@@ -1,6 +1,7 @@
 import { SVGProps } from 'react';
 import { LegendShape } from '../components/Legends/Legends.types';
-import * as d3Sankey from 'd3-sankey';
+import { SankeyLink, SankeyNode } from 'd3-sankey';
+
 export interface IBasestate {
   _width?: number;
   _height?: number;
@@ -491,8 +492,8 @@ interface ISLinkExtra {
   unnormalizedValue?: number;
 }
 
-export type SNode = d3Sankey.SankeyNode<ISNodeExtra, ISLinkExtra>;
-export type SLink = d3Sankey.SankeyLink<ISNodeExtra, ISLinkExtra>;
+export type SNode = SankeyNode<ISNodeExtra, ISLinkExtra>;
+export type SLink = SankeyLink<ISNodeExtra, ISLinkExtra>;
 
 /**
  * {@docCategory IChartProps}

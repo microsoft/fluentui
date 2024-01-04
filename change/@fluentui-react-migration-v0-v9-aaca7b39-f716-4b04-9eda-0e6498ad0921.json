@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: List v0 migration shim",
-  "packageName": "@fluentui/react-migration-v0-v9",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}

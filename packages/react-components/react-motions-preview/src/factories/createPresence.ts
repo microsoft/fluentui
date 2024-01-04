@@ -46,10 +46,11 @@ export function createPresence(motion: PresenceMotion) {
       }
 
       if (elementRef.current) {
-        const animation = elementRef.current.animate(motion.exit.keyframes, {
+        const { keyframes, ...options } = motion.exit;
+        const animation = elementRef.current.animate(keyframes, {
           fill: 'forwards',
 
-          ...motion.exit.options,
+          ...options,
           ...(isReducedMotion() && { duration: 1 }),
         });
 
@@ -78,10 +79,11 @@ export function createPresence(motion: PresenceMotion) {
       const shouldEnter = isFirstMount.current ? appear && visible : mounted && visible;
 
       if (shouldEnter) {
-        const animation = elementRef.current.animate(motion.enter.keyframes, {
+        const { keyframes, ...options } = motion.enter;
+        const animation = elementRef.current.animate(keyframes, {
           fill: 'forwards',
 
-          ...motion.enter.options,
+          ...options,
           ...(isReducedMotion() && { duration: 1 }),
         });
 
