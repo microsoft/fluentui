@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
 import { Steps, StoryWright } from 'storywright';
-import { TimePicker } from '@fluentui/react-timepicker-compat-preview';
+import { TimePicker } from '@fluentui/react-timepicker-compat';
 
 export default {
   title: 'TimePicker compat',
