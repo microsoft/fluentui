@@ -83,8 +83,10 @@ export {
   elementContains,
   elementContainsAttribute,
   findElementRecursive,
+  getActiveElement,
   getChildren,
   getDocument,
+  getEventTarget,
   getFirstVisibleElementFromSelector,
   getParent,
   getRect,
@@ -237,6 +239,7 @@ import './version';
 export type { IStyleFunctionOrObject, Omit } from '@fluentui/merge-styles';
 
 export {
+  MergeStylesShadowRootContext,
   MergeStylesShadowRootProvider,
   useAdoptedStylesheet,
   useHasMergeStylesShadowRootContext,
