@@ -203,7 +203,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           customizedCallout={this._getCustomizedCallout()}
           onChartMouseLeave={this._handleChartMouseLeave}
           getDomainMargins={this._getDomainMargins}
-          supportNegativeValuesForYAxis={true}
+          supportNegativeValuesForYAxis={this.props.supportNegativeValues}
           {...(this._xAxisType !== XAxisTypes.NumericAxis && { xAxisInnerPadding: 2 / 3, xAxisOuterPadding: 0 })}
           /* eslint-disable react/jsx-no-bind */
           // eslint-disable-next-line react/no-children-prop
@@ -792,6 +792,9 @@ export class VerticalStackedBarChartBase extends React.Component<
         };
 
         let barHeight = heightValueScale * point.data;
+        if (!this.props.supportNegativeValues && barHeight < 0) {
+          return <React.Fragment key={index + indexNumber}> </React.Fragment>;
+        }
         if (
           Math.abs(barHeight) <
           Math.max(Math.abs(heightValueScale) * Math.ceil((this._yMax - this._yMin) / 100.0), barMinimumHeight)

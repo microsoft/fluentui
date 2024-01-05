@@ -1370,6 +1370,7 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     onRenderCalloutPerDataPoint?: IRenderFunction<IVSChartDataPoint>;
     onRenderCalloutPerStack?: IRenderFunction<IVerticalStackedChartProps>;
     styles?: IStyleFunctionOrObject<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>;
+    supportNegativeValues?: boolean;
     xAxisPadding?: number;
     yMinValue?: undefined;
 }
