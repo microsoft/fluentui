@@ -1,138 +1,124 @@
 import * as React from 'react';
+import { useEventCallback } from '@fluentui/react-utilities';
 import { useOptionWalker } from './useOptionWalker';
-import type { ActiveDescendantOptions } from './types';
+import type { ActiveDescendantImperativeRef, ActiveDescendantOptions, UseActiveDescendantReturn } from './types';
 import { ACTIVEDESCENDANT_ATTRIBUTE } from './constants';
+import { scrollIntoView } from './scrollIntoView';
 
 export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(
   options: ActiveDescendantOptions,
-) {
-  const { imperativeRef, matchOption } = options;
+): UseActiveDescendantReturn<TActiveParentElement, TListboxElement> {
+  const { imperativeRef, matchOption: matchOptionUnstable } = options;
   const activeParentRef = React.useRef<TActiveParentElement>(null);
+
+  const matchOption = useEventCallback(matchOptionUnstable);
   const { listboxRef, optionWalker } = useOptionWalker<TListboxElement>({ matchOption });
-  const getActiveDescendant = () => {
+  const getActiveDescendant = React.useCallback(() => {
     return listboxRef.current?.querySelector<HTMLElement>(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`);
-  };
+  }, [listboxRef]);
 
-  const scrollActiveIntoView = (active: HTMLElement) => {
-    if (!listboxRef.current) {
-      return;
-    }
-
-    if (listboxRef.current.offsetHeight >= listboxRef.current.scrollHeight) {
-      return;
-    }
-
-    const { offsetHeight, offsetTop } = active;
-    const { offsetHeight: parentOffsetHeight, scrollTop } = listboxRef.current;
-
-    const isAbove = offsetTop < scrollTop;
-    const isBelow = offsetTop + offsetHeight > scrollTop + parentOffsetHeight;
-
-    const buffer = 2;
-
-    if (isAbove) {
-      listboxRef.current.scrollTo(0, offsetTop - buffer);
-    }
-
-    if (isBelow) {
-      listboxRef.current.scrollTo(0, offsetTop - parentOffsetHeight + offsetHeight + buffer);
-    }
-  };
-
-  const setActiveDescendant = (nextActive: HTMLElement | undefined) => {
+  const blurActiveDescendant = React.useCallback(() => {
     const active = getActiveDescendant();
     if (active) {
       active.removeAttribute(ACTIVEDESCENDANT_ATTRIBUTE);
     }
 
-    if (nextActive) {
+    activeParentRef.current?.removeAttribute('aria-activedescendant');
+  }, [activeParentRef, getActiveDescendant]);
+
+  const focusActiveDescendant = React.useCallback(
+    (nextActive: HTMLElement | null) => {
+      if (!nextActive) {
+        return;
+      }
+
+      blurActiveDescendant();
+
       nextActive.setAttribute(ACTIVEDESCENDANT_ATTRIBUTE, '');
-      scrollActiveIntoView(nextActive);
+      scrollIntoView(nextActive, listboxRef.current);
       activeParentRef.current?.setAttribute('aria-activedescendant', nextActive.id);
-    } else {
-      activeParentRef.current?.removeAttribute('aria-activedescendant');
-    }
-  };
-
-  React.useImperativeHandle(imperativeRef, () => ({
-    first: () => {
-      if (!listboxRef.current || !activeParentRef.current) {
-        return;
-      }
-
-      optionWalker.setCurrent(listboxRef.current);
-      const first = optionWalker.first();
-      if (first) {
-        setActiveDescendant(first);
-      }
     },
-    next: () => {
-      if (!listboxRef.current || !activeParentRef.current) {
-        return;
-      }
+    [activeParentRef, listboxRef, blurActiveDescendant],
+  );
 
-      const active = getActiveDescendant();
-      if (!active) {
-        return;
-      }
+  const controller: ActiveDescendantImperativeRef = React.useMemo(
+    () => ({
+      first: ({ passive } = {}) => {
+        const first = optionWalker.first();
+        if (!passive) {
+          focusActiveDescendant(first);
+        }
 
-      optionWalker.setCurrent(active);
-      const next = optionWalker.next();
-      if (next) {
-        setActiveDescendant(next);
-      }
-    },
-    prev: () => {
-      if (!listboxRef.current || !activeParentRef.current) {
-        return;
-      }
+        return first?.id;
+      },
+      last: ({ passive } = {}) => {
+        const last = optionWalker.last();
+        if (!passive) {
+          focusActiveDescendant(last);
+        }
 
-      const active = getActiveDescendant();
-      if (!active) {
-        return;
-      }
+        return last?.id;
+      },
+      next: ({ passive } = {}) => {
+        const active = getActiveDescendant();
+        if (!active) {
+          return;
+        }
 
-      optionWalker.setCurrent(active);
-      if (!matchOption(active)) {
-        optionWalker.prev();
-      }
+        optionWalker.setCurrent(active);
+        const next = optionWalker.next();
+        if (!passive) {
+          focusActiveDescendant(next);
+        }
 
-      const next = optionWalker.prev();
+        return next?.id;
+      },
+      prev: ({ passive } = {}) => {
+        const active = getActiveDescendant();
+        if (!active) {
+          return;
+        }
 
-      if (next && next !== listboxRef.current) {
-        setActiveDescendant(next);
-      }
-    },
-    blur: () => {
-      if (!activeParentRef.current) {
-        return;
-      }
+        optionWalker.setCurrent(active);
+        const next = optionWalker.prev();
 
-      setActiveDescendant(undefined);
-    },
-    active: () => {
-      if (listboxRef.current) {
+        if (!passive) {
+          focusActiveDescendant(next);
+        }
+
+        return next?.id;
+      },
+      blur: () => {
+        blurActiveDescendant();
+      },
+      active: () => {
         return getActiveDescendant()?.id;
-      }
-    },
+      },
 
-    focus: (id: string) => {
-      if (!listboxRef.current) {
-        return;
-      }
+      focus: (id: string) => {
+        if (!listboxRef.current) {
+          return;
+        }
 
-      optionWalker.setCurrent(listboxRef.current);
-      let cur = optionWalker.next();
+        const target = listboxRef.current.querySelector<HTMLElement>(`#${id}`);
+        if (target) {
+          focusActiveDescendant(target);
+        }
+      },
 
-      while (cur && cur.id !== id) {
-        cur = optionWalker.next();
-      }
+      find(predicate, { passive } = {}) {
+        const target = optionWalker.find(predicate);
+        if (!passive) {
+          focusActiveDescendant(target);
+        }
 
-      if (cur) {
-        setActiveDescendant(cur);
-      }
-    },
-  }));
+        return target?.id;
+      },
+    }),
+    [optionWalker, listboxRef, focusActiveDescendant, blurActiveDescendant, getActiveDescendant],
+  );
 
-  return { listboxRef, activeParentRef };
+  React.useImperativeHandle(imperativeRef, () => controller);
+
+  return { listboxRef, activeParentRef, controller };
 }

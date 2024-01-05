@@ -25,11 +25,13 @@ describe('useActivedescendant', () => {
   };
 
   it('should focus first option', () => {
+    const expecetdOption = 'option-1';
     const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
     const { container } = render(<Test imperativeRef={imperativeRef} />);
 
-    imperativeRef.current?.first();
-    expect(container.querySelector('#option-1')?.hasAttribute(ACTIVEDESCENDANT_ATTRIBUTE)).toBe(true);
+    const res = imperativeRef.current?.first();
+    expect(res).toBe(expecetdOption);
+    expect(container.querySelector(`#${expecetdOption}`)?.hasAttribute(ACTIVEDESCENDANT_ATTRIBUTE)).toBe(true);
   });
 
   it('should focus next option', () => {
@@ -38,7 +40,21 @@ describe('useActivedescendant', () => {
     const { container, getByRole } = render(<Test imperativeRef={imperativeRef} />);
 
     imperativeRef.current?.first();
-    imperativeRef.current?.next();
+    const res = imperativeRef.current?.next();
+    expect(res).toBe(expectedOption);
+    expect(container.querySelectorAll(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`).length).toBe(1);
+    expect(container.querySelector(`#${expectedOption}`)?.hasAttribute(ACTIVEDESCENDANT_ATTRIBUTE)).toBe(true);
+    expect(getByRole('button').getAttribute('aria-activedescendant')).toBe(expectedOption);
+  });
+
+  it('should do nothing when there is no next option', () => {
+    const expectedOption = 'option-4';
+    const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+    const { container, getByRole } = render(<Test imperativeRef={imperativeRef} />);
+
+    imperativeRef.current?.focus(expectedOption);
+    const res = imperativeRef.current?.next();
+    expect(res).toBeUndefined();
     expect(container.querySelectorAll(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`).length).toBe(1);
     expect(container.querySelector(`#${expectedOption}`)?.hasAttribute(ACTIVEDESCENDANT_ATTRIBUTE)).toBe(true);
     expect(getByRole('button').getAttribute('aria-activedescendant')).toBe(expectedOption);
@@ -51,7 +67,21 @@ describe('useActivedescendant', () => {
 
     imperativeRef.current?.first();
     imperativeRef.current?.next();
-    imperativeRef.current?.prev();
+    const res = imperativeRef.current?.prev();
+    expect(res).toBe(expectedOption);
+    expect(container.querySelectorAll(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`).length).toBe(1);
+    expect(container.querySelector(`#${expectedOption}`)?.hasAttribute(ACTIVEDESCENDANT_ATTRIBUTE)).toBe(true);
+    expect(getByRole('button').getAttribute('aria-activedescendant')).toBe(expectedOption);
+  });
+
+  it('should do nothing if there is no previous option', () => {
+    const expectedOption = 'option-1';
+    const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+    const { container, getByRole } = render(<Test imperativeRef={imperativeRef} />);
+
+    imperativeRef.current?.focus(expectedOption);
+    const res = imperativeRef.current?.prev();
+    expect(res).toBeUndefined();
     expect(container.querySelectorAll(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`).length).toBe(1);
     expect(container.querySelector(`#${expectedOption}`)?.hasAttribute(ACTIVEDESCENDANT_ATTRIBUTE)).toBe(true);
     expect(getByRole('button').getAttribute('aria-activedescendant')).toBe(expectedOption);
@@ -87,5 +117,87 @@ describe('useActivedescendant', () => {
 
     imperativeRef.current?.focus(expecetdOption);
     expect(imperativeRef.current?.active()).toEqual(expecetdOption);
+  });
+
+  it('should focus last element', () => {
+    const expecetdOption = 'option-4';
+    const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+    const { container, getByRole } = render(<Test imperativeRef={imperativeRef} />);
+
+    const res = imperativeRef.current?.last();
+    expect(res).toBe(expecetdOption);
+    expect(container.querySelectorAll(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`).length).toBe(1);
+    expect(getByRole('button').getAttribute('aria-activedescendant')).toBe(expecetdOption);
+  });
+
+  it('should find element and focus it', () => {
+    const expectedOption = 'option-3';
+    const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+    const { container, getByRole } = render(<Test imperativeRef={imperativeRef} />);
+
+    const res = imperativeRef.current?.find(id => id === expectedOption);
+    expect(res).toBe(expectedOption);
+    expect(container.querySelectorAll(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`).length).toBe(1);
+    expect(container.querySelector(`#${expectedOption}`)?.hasAttribute(ACTIVEDESCENDANT_ATTRIBUTE)).toBe(true);
+    expect(getByRole('button').getAttribute('aria-activedescendant')).toBe(expectedOption);
+  });
+
+  describe('passive', () => {
+    it('should return first option', () => {
+      const expecetdOption = 'option-1';
+      const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+      const { container } = render(<Test imperativeRef={imperativeRef} />);
+
+      const res = imperativeRef.current?.first({ passive: true });
+      expect(res).toBe(expecetdOption);
+      expect(container.querySelector(`#${expecetdOption}`)?.hasAttribute(ACTIVEDESCENDANT_ATTRIBUTE)).toBe(false);
+    });
+
+    it('should return next option', () => {
+      const expectedOption = 'option-2';
+      const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+      const { container } = render(<Test imperativeRef={imperativeRef} />);
+
+      imperativeRef.current?.first();
+      const res = imperativeRef.current?.next({ passive: true });
+      expect(res).toBe(expectedOption);
+      expect(container.querySelectorAll(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`).length).toBe(1);
+      expect(container.querySelector(`#${expectedOption}`)?.hasAttribute(ACTIVEDESCENDANT_ATTRIBUTE)).toBe(false);
+    });
+
+    it('should return  previous option', () => {
+      const expectedOption = 'option-1';
+      const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+      const { container } = render(<Test imperativeRef={imperativeRef} />);
+
+      imperativeRef.current?.first();
+      imperativeRef.current?.next();
+      const res = imperativeRef.current?.prev({ passive: true });
+      expect(res).toBe(expectedOption);
+      expect(container.querySelectorAll(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`).length).toBe(1);
+      expect(container.querySelector(`#${expectedOption}`)?.hasAttribute(ACTIVEDESCENDANT_ATTRIBUTE)).toBe(false);
+    });
+
+    it('should get last element', () => {
+      const expecetdOption = 'option-4';
+      const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+      const { container } = render(<Test imperativeRef={imperativeRef} />);
+
+      const res = imperativeRef.current?.last({ passive: true });
+      expect(res).toBe(expecetdOption);
+      expect(container.querySelectorAll(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`).length).toBe(0);
+    });
+
+    it('should find element', () => {
+      const expectedOption = 'option-3';
+      const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+      const { container } = render(<Test imperativeRef={imperativeRef} />);
+
+      imperativeRef.current?.first();
+      const res = imperativeRef.current?.find(id => id === expectedOption, { passive: true });
+      expect(res).toBe(expectedOption);
+      expect(container.querySelectorAll(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`).length).toBe(1);
+      expect(container.querySelector(`#${expectedOption}`)?.hasAttribute(ACTIVEDESCENDANT_ATTRIBUTE)).toBe(false);
+    });
   });
 });
