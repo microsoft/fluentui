@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as shape from 'd3-shape';
+import { arc as d3Arc } from 'd3-shape';
 import { IArcProps, IArcState, IArcStyles } from './Arc.types';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
@@ -8,7 +8,7 @@ import { SVGTooltipText } from '../../../utilities/SVGTooltipText';
 
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
-    arc: shape.arc(),
+    arc: d3Arc(),
   };
 
   protected _arcId: string;
@@ -66,7 +66,7 @@ export class LabeledArc extends Arc {
     const { data, culture } = this.props;
     const gap = 4;
     // placing the labels on the outside arc
-    const [labelX, labelY] = shape.arc().centroid({
+    const [labelX, labelY] = d3Arc().centroid({
       endAngle: data?.endAngle || 0,
       startAngle: data?.startAngle || 0,
       padAngle: data?.padAngle,

@@ -3,7 +3,12 @@ import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from 'd3-scale';
 import { select as d3Select, event as d3Event, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
-import * as d3TimeFormat from 'd3-time-format';
+import {
+  TimeLocaleObject as d3TimeLocaleObject,
+  timeFormat as d3TimeFormat,
+  timeFormatLocale as d3TimeFormatLocale,
+  TimeLocaleDefinition as d3TimeLocaleDefinition,
+} from 'd3-time-format';
 import {
   timeSecond as d3TimeSecond,
   timeMinute as d3TimeMinute,
@@ -171,8 +176,8 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, chartType: ChartTy
   return { xScale: xAxisScale, tickValues };
 }
 
-function multiFormat(date: Date, locale?: d3TimeFormat.TimeLocaleObject) {
-  const timeFormat = locale ? locale.format : d3TimeFormat.timeFormat;
+function multiFormat(date: Date, locale?: d3TimeLocaleObject) {
+  const timeFormat = locale ? locale.format : d3TimeFormat;
   const formatMillisecond = timeFormat('.%L');
   const formatSecond = timeFormat(':%S');
   const formatMinute = timeFormat('%I:%M');
@@ -212,7 +217,7 @@ export function createDateXAxis(
   tickParams: ITickParams,
   culture?: string,
   options?: Intl.DateTimeFormatOptions,
-  timeFormatLocale?: d3TimeFormat.TimeLocaleDefinition,
+  timeFormatLocale?: d3TimeLocaleDefinition,
   customDateTimeFormatter?: (dateTime: Date) => string,
 ) {
   const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount = 6 } = xAxisParams;
@@ -229,7 +234,7 @@ export function createDateXAxis(
       return domainValue.toLocaleString(culture, options);
     });
   } else if (timeFormatLocale) {
-    const locale: d3TimeFormat.TimeLocaleObject = d3TimeFormat.timeFormatLocale(timeFormatLocale!);
+    const locale: d3TimeLocaleObject = d3TimeFormatLocale(timeFormatLocale!);
 
     xAxis.tickFormat((domainValue: Date, _index: number) => {
       return multiFormat(domainValue, locale);
@@ -238,7 +243,7 @@ export function createDateXAxis(
 
   tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues) : '';
   if (culture === undefined) {
-    tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat.timeFormat(tickParams.tickFormat)) : '';
+    tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat(tickParams.tickFormat)) : '';
   }
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');

@@ -7,7 +7,7 @@ import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps, IMargins } from '../../types/index';
 import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
-import * as d3TimeFormat from 'd3-time-format';
+import { TimeLocaleDefinition } from 'd3-time-format';
 
 /**
  * Cartesian Chart style properties
@@ -370,7 +370,7 @@ export interface ICartesianChartProps {
   /**
    * The prop used to define a custom locale for the date time format.
    */
-  timeFormatLocale?: d3TimeFormat.TimeLocaleDefinition;
+  timeFormatLocale?: TimeLocaleDefinition;
 
   /**
    * The prop used to define a custom datetime formatter for date axis.
