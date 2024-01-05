@@ -1,16 +1,21 @@
-import * as React from 'react';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+
 import { useARIAButtonProps } from './useARIAButtonProps';
 import { renderHook } from '@testing-library/react-hooks';
 import { fireEvent, render } from '@testing-library/react';
-import { getSlots, Slot, ComponentProps } from '@fluentui/react-utilities';
+import { Slot, ComponentProps, assertSlots, ComponentState, slot } from '@fluentui/react-utilities';
 import { ARIAButtonProps, ARIAButtonSlotProps } from './types';
 
-const TestButton = (props: ComponentProps<{ root: Slot<ARIAButtonSlotProps> }>) => {
-  const { slots, slotProps } = getSlots<{ root: Slot<ARIAButtonSlotProps> }>({
+type TestButtonSlots = { root: Slot<ARIAButtonSlotProps> };
+
+const TestButton = (props: ComponentProps<TestButtonSlots>) => {
+  const state: ComponentState<TestButtonSlots> = {
     components: { root: 'button' },
-    root: useARIAButtonProps(props.as, props),
-  });
-  return <slots.root {...slotProps.root} />;
+    root: slot.always(useARIAButtonProps(props.as, props), { elementType: 'button' }),
+  };
+  assertSlots<TestButtonSlots>(state);
+  return <state.root />;
 };
 
 describe('useARIAButton', () => {

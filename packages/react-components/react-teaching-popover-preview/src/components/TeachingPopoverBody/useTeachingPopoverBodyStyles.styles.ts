@@ -1,33 +1,72 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TeachingPopoverBodySlots, TeachingPopoverBodyState } from './TeachingPopoverBody.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const teachingPopoverBodyClassNames: SlotClassNames<TeachingPopoverBodySlots> = {
   root: 'fui-TeachingPopoverBody',
-  // TODO: add class names for all slots on TeachingPopoverBodySlots.
-  // Should be of the form `<slotName>: 'fui-TeachingPopoverBody__<slotName>`
+  media: 'fui-TeachingPopoverBody__media',
 };
 
-/**
- * Styles for the root slot
- */
-const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
+export const useMediaStyles = makeStyles({
+  base: {
+    ...shorthands.gridArea('media'),
+    ...shorthands.overflow('hidden'),
+    width: '288px',
+    marginBottom: '12px',
+    verticalAlign: 'middle',
+    justifyContent: 'center',
+    display: 'flex',
   },
-
-  // TODO add additional classes for different states and/or slots
+  short: {
+    '@supports not (aspect-ratio)': {
+      height: '117px',
+    },
+    '@supports (aspect-ratio)': {
+      aspectRatio: 288 / 117,
+    },
+  },
+  medium: {
+    '@supports not (aspect-ratio)': {
+      height: '176px',
+    },
+    '@supports (aspect-ratio)': {
+      aspectRatio: 288 / 176,
+    },
+  },
+  tall: {
+    '@supports not (aspect-ratio)': {
+      height: '288px',
+    },
+    '@supports (aspect-ratio)': {
+      aspectRatio: 288 / 288,
+    },
+  },
 });
 
-/**
- * Apply styling to the TeachingPopoverBody slots based on the state
- */
-export const useTeachingPopoverBodyStyles_unstable = (state: TeachingPopoverBodyState): TeachingPopoverBodyState => {
+const useStyles = makeStyles({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    paddingBottom: '12px',
+  },
+});
+
+/** Applies style classnames to slots */
+export const useTeachingPopoverBodyStyles_unstable = (state: TeachingPopoverBodyState) => {
+  const { mediaLength = 'medium' } = state;
   const styles = useStyles();
+  const mediaStyles = useMediaStyles();
+
   state.root.className = mergeClasses(teachingPopoverBodyClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  if (state.media) {
+    state.media.className = mergeClasses(
+      teachingPopoverBodyClassNames.media,
+      mediaStyles.base,
+      mediaStyles[mediaLength],
+      state.media.className,
+    );
+  }
 
   return state;
 };

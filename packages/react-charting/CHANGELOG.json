@@ -2,6 +2,112 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 04 Jan 2024 07:26:40 GMT",
+      "tag": "@fluentui/react-charting_v5.19.9",
+      "version": "5.19.9",
+      "comments": {
+        "none": [
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9d99266dec5a450bcd44c0f777735b31dd98eccc",
+            "comment": "Moved HorizontalBarChartWithAxis test cases input data to common utilities/test-data.ts file"
+          }
+        ],
+        "patch": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "f65de264d2d290f33a6ea6018e0dc341317a9e8b",
+            "comment": "Importing functions which are used instead of importing complete library"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Dec 2023 07:26:32 GMT",
+      "tag": "@fluentui/react-charting_v5.19.8",
+      "version": "5.19.8",
+      "comments": {
+        "none": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8495bb4f55924c083e9ecd6f231856865d751049",
+            "comment": "Added unit tests for Area, Line and Vertical bar charts"
+          },
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ddd372e4b5cfcb4c4a7f2e87a34251ac9273dc3c",
+            "comment": "Adding Unit Tests for 4 charts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Dec 2023 07:28:36 GMT",
+      "tag": "@fluentui/react-charting_v5.19.8",
+      "version": "5.19.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e959d219195a11c77cb78f4faf26effea63d3db7",
+            "comment": "presentation role attribute removed from svg element due to ARIA violations"
+          },
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "109463c2a40ca4e796de8ff16c82702c5678cb87",
+            "comment": "Added img aria role to <path/> in SparklineChart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.126",
+            "commit": "e959d219195a11c77cb78f4faf26effea63d3db7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.114.0",
+            "commit": "e959d219195a11c77cb78f4faf26effea63d3db7"
+          }
+        ],
+        "none": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "3483d23b958752f39ed6258d9ec8cbfddcb8ec3c",
+            "comment": "test: fix act errors in terminal"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Dec 2023 07:26:54 GMT",
+      "tag": "@fluentui/react-charting_v5.19.7",
+      "version": "5.19.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e8f375b7afe202dbf64f2b51466413d34794b5cb",
+            "comment": "Added accessibility tests for LineChart, VerticalBarChart and AreaChart"
+          },
+          {
+            "author": "gautam33776@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "197dfaaae117908e389e095592cb6ea6d0d736f3",
+            "comment": "fix:[HorChartWAxis][RTL] y axis same text and truncation fixed"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Dec 2023 07:30:10 GMT",
       "tag": "@fluentui/react-charting_v5.19.6",
       "version": "5.19.6",
