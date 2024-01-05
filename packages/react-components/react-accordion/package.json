@@ -35,7 +35,7 @@
   "dependencies": {
     "@fluentui/react-aria": "^9.6.1",
     "@fluentui/react-context-selector": "^9.1.45",
-    "@fluentui/react-icons": "^2.0.217",
+    "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-jsx-runtime": "^9.0.23",
     "@fluentui/react-shared-contexts": "^9.13.2",
     "@fluentui/react-tabster": "^9.16.1",

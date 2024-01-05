@@ -1,10 +1,11 @@
 // @ts-check
 
 const path = require('path');
+
+const { eslintConstants } = require('@fluentui/scripts-monorepo');
 const { ESLint } = require('eslint');
 const fs = require('fs-extra');
 const micromatch = require('micromatch');
-const { eslintConstants } = require('@fluentui/scripts-monorepo');
 
 /**
  * Run ESLint for certain files from a particular package.
@@ -57,19 +58,30 @@ async function run() {
 
   // Lint files then fix all auto-fixable issues
   const results = await eslint.lintFiles(filteredFiles);
+  const hasSeverityError = results.some(lintResult => lintResult.errorCount > 0);
 
   await ESLint.outputFixes(results);
 
   // Format results
   const formatter = await eslint.loadFormatter();
   const resultText = formatter.format(results);
-  if (resultText) {
-    throw new Error(resultText);
+
+  if (!resultText) {
+    return;
   }
+
+  if (!hasSeverityError) {
+    // print lint output warnings
+    // - logging is handled by ./eslint.js. you'll see this output only if you directly call this script
+    console.log(resultText);
+    return;
+  }
+
+  // this error throw will be processed by parent process (./eslint.js)
+  // print lint errors ( and warnings if present )
+  throw new Error(resultText);
 }
 
 run().catch(err => {
-  // logging is handled by ./eslint.js. If you wanna directly call this script and see errors uncomment following line ↓
-  // console.error(err);
   throw new Error(err);
 });
