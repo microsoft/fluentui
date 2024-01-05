@@ -97,150 +97,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           id="yAxisGElementchart_170"
           transform="translate(40, 0)"
         />
-        <g>
-          <g>
-            <g
-              aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
-              data-is-focusable="true"
-              id="0-singleBar"
-              role="img"
-              tabindex="0"
-            >
-              <rect
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                fill="#0078d4"
-                height="1.1"
-                transform="translate(10.857142857142858, 0)"
-                width="-10.857142857142858"
-                x="37.14285714285714"
-                y="-36.1"
-              />
-              <rect
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                fill="#00188f"
-                height="0.55"
-                transform="translate(10.857142857142858, 0)"
-                width="-10.857142857142858"
-                x="37.14285714285714"
-                y="-36.65"
-              />
-            </g>
-          </g>
-          <g>
-            <g
-              aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
-              data-is-focusable="true"
-              id="1-singleBar"
-              role="img"
-              tabindex="-1"
-            >
-              <rect
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                fill="#0078d4"
-                height="16.499999999999996"
-                transform="translate(10.857142857142858, 0)"
-                width="-10.857142857142858"
-                x="4.571428571428569"
-                y="-51.5"
-              />
-              <rect
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                fill="#00188f"
-                height="1.65"
-                transform="translate(10.857142857142858, 0)"
-                width="-10.857142857142858"
-                x="4.571428571428569"
-                y="-53.15"
-              />
-              <rect
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                fill="#00bcf2"
-                height="21.999999999999996"
-                transform="translate(10.857142857142858, 0)"
-                width="-10.857142857142858"
-                x="4.571428571428569"
-                y="-75.14999999999999"
-              />
-            </g>
-          </g>
-          <g>
-            <g
-              aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
-              data-is-focusable="true"
-              id="2-singleBar"
-              role="img"
-              tabindex="-1"
-            >
-              <rect
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                fill="#0078d4"
-                height="5.5"
-                transform="translate(10.857142857142858, 0)"
-                width="-10.857142857142858"
-                x="-28"
-                y="-40.5"
-              />
-              <rect
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                fill="#00188f"
-                height="33"
-                transform="translate(10.857142857142858, 0)"
-                width="-10.857142857142858"
-                x="-28"
-                y="-73.5"
-              />
-              <rect
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                fill="#00bcf2"
-                height="16.5"
-                transform="translate(10.857142857142858, 0)"
-                width="-10.857142857142858"
-                x="-28"
-                y="-90"
-              />
-            </g>
-          </g>
-        </g>
+        <g />
         <g>
           <line
             opacity="1"
@@ -800,150 +657,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           id="yAxisGElementchart_177"
           transform="translate(40, 0)"
         />
-        <g>
-          <g>
-            <g
-              aria-label="January. Metadata1, 2. Metadata2, 0.5. Metadata3, 0. Supported Builds, 42."
-              data-is-focusable="true"
-              id="0-singleBar"
-              role="img"
-              tabindex="0"
-            >
-              <rect
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                fill="#0078d4"
-                height="1.1"
-                transform="translate(10.857142857142858, 0)"
-                width="-10.857142857142858"
-                x="37.14285714285714"
-                y="-36.1"
-              />
-              <rect
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                fill="#00188f"
-                height="0.55"
-                transform="translate(10.857142857142858, 0)"
-                width="-10.857142857142858"
-                x="37.14285714285714"
-                y="-36.65"
-              />
-            </g>
-          </g>
-          <g>
-            <g
-              aria-label="February. Metadata1, 30. Metadata2, 3. Metadata3, 40. Supported Builds, 41."
-              data-is-focusable="true"
-              id="1-singleBar"
-              role="img"
-              tabindex="-1"
-            >
-              <rect
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                fill="#0078d4"
-                height="16.499999999999996"
-                transform="translate(10.857142857142858, 0)"
-                width="-10.857142857142858"
-                x="4.571428571428569"
-                y="-51.5"
-              />
-              <rect
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                fill="#00188f"
-                height="1.65"
-                transform="translate(10.857142857142858, 0)"
-                width="-10.857142857142858"
-                x="4.571428571428569"
-                y="-53.15"
-              />
-              <rect
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                fill="#00bcf2"
-                height="21.999999999999996"
-                transform="translate(10.857142857142858, 0)"
-                width="-10.857142857142858"
-                x="4.571428571428569"
-                y="-75.14999999999999"
-              />
-            </g>
-          </g>
-          <g>
-            <g
-              aria-label="March. Metadata1, 10. Metadata2, 60. Metadata3, 30. Supported Builds, 100."
-              data-is-focusable="true"
-              id="2-singleBar"
-              role="img"
-              tabindex="-1"
-            >
-              <rect
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                fill="#0078d4"
-                height="5.5"
-                transform="translate(10.857142857142858, 0)"
-                width="-10.857142857142858"
-                x="-28"
-                y="-40.5"
-              />
-              <rect
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                fill="#00188f"
-                height="33"
-                transform="translate(10.857142857142858, 0)"
-                width="-10.857142857142858"
-                x="-28"
-                y="-73.5"
-              />
-              <rect
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                fill="#00bcf2"
-                height="16.5"
-                transform="translate(10.857142857142858, 0)"
-                width="-10.857142857142858"
-                x="-28"
-                y="-90"
-              />
-            </g>
-          </g>
-        </g>
+        <g />
         <g>
           <line
             opacity="1"
@@ -1516,126 +1230,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             id="yAxisGElementchart_187"
             transform="translate(40, 0)"
           />
-          <g>
-            <g>
-              <g
-                id="0-singleBar"
-              >
-                <rect
-                  aria-label="2020/04/30. Metadata1, 40%."
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  data-is-focusable="true"
-                  fill="#0078d4"
-                  height="42.30769230769231"
-                  role="img"
-                  tabindex="0"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="48"
-                  y="-77.3076923076923"
-                />
-                <rect
-                  aria-label="2020/04/30. Metadata2, 5%."
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  data-is-focusable="true"
-                  fill="#00188f"
-                  height="5.288461538461538"
-                  role="img"
-                  tabindex="-1"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="48"
-                  y="-82.59615384615384"
-                />
-              </g>
-              <text
-                aria-label="Total: 45"
-                class=
-
-                    {
-                      fill: #f3f2f1;
-                      font-size: 12px;
-                      font-weight: 600;
-                    }
-                role="img"
-                text-anchor="middle"
-                transform="translate(0, 0)"
-                x="56"
-                y="-88.59615384615384"
-              >
-                45
-              </text>
-            </g>
-            <g>
-              <g
-                id="1-singleBar"
-              >
-                <rect
-                  aria-label="2020/04/30. Metadata1, 30%."
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  data-is-focusable="true"
-                  fill="#0078d4"
-                  height="31.73076923076923"
-                  role="img"
-                  tabindex="-1"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="-44"
-                  y="-66.73076923076923"
-                />
-                <rect
-                  aria-label="2020/04/30. Metadata2, 20%."
-                  class=
-
-                      {
-                        cursor: default;
-                        opacity: ;
-                      }
-                  data-is-focusable="true"
-                  fill="#00188f"
-                  height="21.153846153846153"
-                  role="img"
-                  tabindex="-1"
-                  transform="translate(0, 0)"
-                  width="16"
-                  x="-44"
-                  y="-87.88461538461539"
-                />
-              </g>
-              <text
-                aria-label="Total: 50"
-                class=
-
-                    {
-                      fill: #f3f2f1;
-                      font-size: 12px;
-                      font-weight: 600;
-                    }
-                role="img"
-                text-anchor="middle"
-                transform="translate(0, 0)"
-                x="-36"
-                y="-93.88461538461539"
-              >
-                50
-              </text>
-            </g>
-          </g>
+          <g />
           <g />
         </svg>
       </div>
@@ -1971,126 +1566,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
           id="yAxisGElementchart_3"
           transform="translate(40, 0)"
         />
-        <g>
-          <g>
-            <g
-              id="0-singleBar"
-            >
-              <rect
-                aria-label="2020/04/30. Metadata1, 40%."
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                data-is-focusable="true"
-                fill="#0078d4"
-                height="42.30769230769231"
-                role="img"
-                tabindex="0"
-                transform="translate(0, 0)"
-                width="16"
-                x="48"
-                y="-77.3076923076923"
-              />
-              <rect
-                aria-label="2020/04/30. Metadata2, 5%."
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                data-is-focusable="true"
-                fill="#00188f"
-                height="5.288461538461538"
-                role="img"
-                tabindex="-1"
-                transform="translate(0, 0)"
-                width="16"
-                x="48"
-                y="-82.59615384615384"
-              />
-            </g>
-            <text
-              aria-label="Total: 45"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              role="img"
-              text-anchor="middle"
-              transform="translate(0, 0)"
-              x="56"
-              y="-88.59615384615384"
-            >
-              45
-            </text>
-          </g>
-          <g>
-            <g
-              id="1-singleBar"
-            >
-              <rect
-                aria-label="2020/04/30. Metadata1, 30%."
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                data-is-focusable="true"
-                fill="#0078d4"
-                height="31.73076923076923"
-                role="img"
-                tabindex="-1"
-                transform="translate(0, 0)"
-                width="16"
-                x="-44"
-                y="-66.73076923076923"
-              />
-              <rect
-                aria-label="2020/04/30. Metadata2, 20%."
-                class=
-
-                    {
-                      cursor: default;
-                      opacity: ;
-                    }
-                data-is-focusable="true"
-                fill="#00188f"
-                height="21.153846153846153"
-                role="img"
-                tabindex="-1"
-                transform="translate(0, 0)"
-                width="16"
-                x="-44"
-                y="-87.88461538461539"
-              />
-            </g>
-            <text
-              aria-label="Total: 50"
-              class=
-
-                  {
-                    fill: #323130;
-                    font-size: 12px;
-                    font-weight: 600;
-                  }
-              role="img"
-              text-anchor="middle"
-              transform="translate(0, 0)"
-              x="-36"
-              y="-93.88461538461539"
-            >
-              50
-            </text>
-          </g>
-        </g>
+        <g />
         <g />
       </svg>
     </div>
@@ -2364,7 +1840,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
     >
       <svg
         focusable="false"
-        height="0"
+        height="310"
         style="display: block;"
         width="0"
       >
@@ -2394,9 +1870,109 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_194"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 275)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H-35.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(33.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              5
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(10.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              10
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-12.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              15
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-35.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              20
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -2422,9 +1998,109 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_194"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,275.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,275.5)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,211.75)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              13
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,148)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              26
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,84.25)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              39
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              52
+            </text>
+          </g>
+        </g>
         <g>
           <g>
             <g
@@ -2440,13 +2116,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="42.30769230769231"
+                height="196.15384615384616"
                 role="img"
                 tabindex="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="48"
-                y="-77.3076923076923"
+                y="78.84615384615384"
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 5%."
@@ -2458,13 +2134,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                     }
                 data-is-focusable="true"
                 fill="#00188f"
-                height="5.288461538461538"
+                height="24.51923076923077"
                 role="img"
                 tabindex="-1"
                 transform="translate(0, 0)"
                 width="16"
                 x="48"
-                y="-82.59615384615384"
+                y="54.326923076923066"
               />
             </g>
             <text
@@ -2480,7 +2156,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="56"
-              y="-88.59615384615384"
+              y="48.326923076923066"
             >
               45
             </text>
@@ -2499,13 +2175,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="31.73076923076923"
+                height="147.1153846153846"
                 role="img"
                 tabindex="-1"
                 transform="translate(0, 0)"
                 width="16"
                 x="-44"
-                y="-66.73076923076923"
+                y="127.88461538461539"
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 20%."
@@ -2517,13 +2193,13 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                     }
                 data-is-focusable="true"
                 fill="#00188f"
-                height="21.153846153846153"
+                height="98.07692307692308"
                 role="img"
                 tabindex="-1"
                 transform="translate(0, 0)"
                 width="16"
                 x="-44"
-                y="-87.88461538461539"
+                y="29.807692307692307"
               />
             </g>
             <text
@@ -2539,7 +2215,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               text-anchor="middle"
               transform="translate(0, 0)"
               x="-36"
-              y="-93.88461538461539"
+              y="23.807692307692307"
             >
               50
             </text>
@@ -2767,6 +2443,63 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
         </div>
       </div>
     </div>
+    <div
+      class=
+          ms-Callout-container
+          {
+            position: relative;
+          }
+      style="display: none;"
+    >
+      <div
+        class=
+            ms-Callout
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              border-radius: 2px;
+              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+              box-sizing: border-box;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              outline: transparent;
+              position: absolute;
+              z-index: 1000000;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              border-color: WindowText;
+              border-style: solid;
+              border-width: 1px;
+            }
+            &::-moz-focus-inner {
+              border: 0px;
+            }
+        data-is-focusable="true"
+        id="toolTipcallout191"
+        style="opacity: 0; filter: opacity(0); pointer-events: none;"
+        tabindex="-1"
+      >
+        <div
+          class=
+              ms-Callout-main
+              {
+                background-color: #ffffff;
+                border-radius: 2px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                position: relative;
+                width: 100%;
+              }
+          role="text"
+          style="outline: none; max-height: 100%;"
+        />
+      </div>
+    </div>
+    <div>
+      Loading...
+    </div>
   </div>
 </div>
 `;
@@ -2807,7 +2540,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     >
       <svg
         focusable="false"
-        height="0"
+        height="310"
         style="display: block;"
         width="0"
       >
@@ -2837,9 +2570,109 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_208"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 275)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H-35.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(33.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              5
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(10.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              10
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-12.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              15
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-35.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              20
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -2865,9 +2698,109 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_208"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,275.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,275.5)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,211.75)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              13
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,148)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              26
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,84.25)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              39
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              52
+            </text>
+          </g>
+        </g>
         <g>
           <g>
             <g
@@ -2883,13 +2816,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="42.30769230769231"
+                height="196.15384615384616"
                 role="img"
                 tabindex="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="48"
-                y="-77.3076923076923"
+                y="78.84615384615384"
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 5%."
@@ -2901,13 +2834,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 data-is-focusable="true"
                 fill="#00188f"
-                height="5.288461538461538"
+                height="24.51923076923077"
                 role="img"
                 tabindex="-1"
                 transform="translate(0, 0)"
                 width="16"
                 x="48"
-                y="-82.59615384615384"
+                y="54.326923076923066"
               />
             </g>
             <text
@@ -2923,7 +2856,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               text-anchor="middle"
               transform="translate(0, 0)"
               x="56"
-              y="-88.59615384615384"
+              y="48.326923076923066"
             >
               45
             </text>
@@ -2942,13 +2875,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 data-is-focusable="true"
                 fill="#0078d4"
-                height="31.73076923076923"
+                height="147.1153846153846"
                 role="img"
                 tabindex="-1"
                 transform="translate(0, 0)"
                 width="16"
                 x="-44"
-                y="-66.73076923076923"
+                y="127.88461538461539"
               />
               <rect
                 aria-label="2020/04/30. Metadata2, 20%."
@@ -2960,13 +2893,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 data-is-focusable="true"
                 fill="#00188f"
-                height="21.153846153846153"
+                height="98.07692307692308"
                 role="img"
                 tabindex="-1"
                 transform="translate(0, 0)"
                 width="16"
                 x="-44"
-                y="-87.88461538461539"
+                y="29.807692307692307"
               />
             </g>
             <text
@@ -2982,7 +2915,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               text-anchor="middle"
               transform="translate(0, 0)"
               x="-36"
-              y="-93.88461538461539"
+              y="23.807692307692307"
             >
               50
             </text>
@@ -3210,6 +3143,71 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         </div>
       </div>
     </div>
+    <div
+      class=
+          ms-Callout-container
+          {
+            position: relative;
+          }
+    >
+      <div
+        class=
+            ms-Callout
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              border-radius: 2px;
+              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+              box-sizing: border-box;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              outline: transparent;
+              position: absolute;
+              z-index: 1000000;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              border-color: WindowText;
+              border-style: solid;
+              border-width: 1px;
+            }
+            &::-moz-focus-inner {
+              border: 0px;
+            }
+        data-is-focusable="true"
+        id="toolTipcallout205"
+        style="opacity: 0; filter: opacity(0); pointer-events: none;"
+        tabindex="-1"
+      >
+        <div
+          class=
+              ms-Callout-main
+              {
+                background-color: #ffffff;
+                border-radius: 2px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                position: relative;
+                width: 100%;
+              }
+          role="text"
+          style="outline: none; max-height: 100%;"
+        >
+          <div>
+            <pre>
+              {
+  "legend": "Metadata1",
+  "data": 40,
+  "color": "#0078d4",
+  "xAxisCalloutData": "2020/04/30",
+  "yAxisCalloutData": "40%"
+}
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -3250,7 +3248,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
     >
       <svg
         focusable="false"
-        height="0"
+        height="310"
         style="display: block;"
         width="0"
       >
@@ -3280,9 +3278,109 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               & path {
                 display: none;
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_215"
-          transform="translate(0, -35)"
-        />
+          text-anchor="middle"
+          transform="translate(0, 275)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H-35.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(33.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              5
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(10.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              10
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-12.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              15
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-35.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              20
+            </text>
+          </g>
+        </g>
         <g
           class=
 
@@ -3308,9 +3406,109 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="yAxisGElementchart_215"
+          text-anchor="end"
           transform="translate(40, 0)"
-        />
+        >
+          <path
+            class="domain"
+            d="M-6,275.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,275.5)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,211.75)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              13
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,148)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              26
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,84.25)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              39
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="-60"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-70"
+            >
+              52
+            </text>
+          </g>
+        </g>
         <g>
           <g>
             <g
@@ -3328,11 +3526,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="42.30769230769231"
+                height="196.15384615384616"
                 transform="translate(0, 0)"
                 width="16"
                 x="48"
-                y="-77.3076923076923"
+                y="78.84615384615384"
               />
               <rect
                 class=
@@ -3342,11 +3540,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                       opacity: ;
                     }
                 fill="#00188f"
-                height="5.288461538461538"
+                height="24.51923076923077"
                 transform="translate(0, 0)"
                 width="16"
                 x="48"
-                y="-82.59615384615384"
+                y="54.326923076923066"
               />
             </g>
             <text
@@ -3362,7 +3560,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               text-anchor="middle"
               transform="translate(0, 0)"
               x="56"
-              y="-88.59615384615384"
+              y="48.326923076923066"
             >
               45
             </text>
@@ -3383,11 +3581,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                       opacity: ;
                     }
                 fill="#0078d4"
-                height="31.73076923076923"
+                height="147.1153846153846"
                 transform="translate(0, 0)"
                 width="16"
                 x="-44"
-                y="-66.73076923076923"
+                y="127.88461538461539"
               />
               <rect
                 class=
@@ -3397,11 +3595,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                       opacity: ;
                     }
                 fill="#00188f"
-                height="21.153846153846153"
+                height="98.07692307692308"
                 transform="translate(0, 0)"
                 width="16"
                 x="-44"
-                y="-87.88461538461539"
+                y="29.807692307692307"
               />
             </g>
             <text
@@ -3417,7 +3615,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               text-anchor="middle"
               transform="translate(0, 0)"
               x="-36"
-              y="-93.88461538461539"
+              y="23.807692307692307"
             >
               50
             </text>
@@ -3432,22 +3630,22 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             transform="translate(0, 0)"
             x1="56"
             x2="-36"
-            y1="-19.134615384615387"
-            y2="-3.2692307692307736"
+            y1="201.4423076923077"
+            y2="127.88461538461539"
           />
           <circle
             cx="56"
-            cy="-19.134615384615387"
+            cy="201.4423076923077"
             fill="#ffffff"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
             transform="translate(0, 0)"
-            visibility="hidden"
+            visibility="visibility"
           />
           <circle
             cx="-36"
-            cy="-3.2692307692307736"
+            cy="127.88461538461539"
             fill="#ffffff"
             r="8"
             stroke="#ffb900"
@@ -3759,6 +3957,92 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 </div>
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class=
+          ms-Callout-container
+          {
+            position: relative;
+          }
+    >
+      <div
+        class=
+            ms-Callout
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              border-radius: 2px;
+              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+              box-sizing: border-box;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              outline: transparent;
+              position: absolute;
+              z-index: 1000000;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              border-color: WindowText;
+              border-style: solid;
+              border-width: 1px;
+            }
+            &::-moz-focus-inner {
+              border: 0px;
+            }
+        data-is-focusable="true"
+        id="toolTipcallout212"
+        style="opacity: 0; filter: opacity(0); pointer-events: none;"
+        tabindex="-1"
+      >
+        <div
+          class=
+              ms-Callout-main
+              {
+                background-color: #ffffff;
+                border-radius: 2px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                position: relative;
+                width: 100%;
+              }
+          role="text"
+          style="outline: none; max-height: 100%;"
+        >
+          <div>
+            <pre>
+              {
+  "chartData": [
+    {
+      "legend": "Metadata1",
+      "data": 40,
+      "color": "#0078d4",
+      "xAxisCalloutData": "2020/04/30",
+      "yAxisCalloutData": "40%"
+    },
+    {
+      "legend": "Metadata2",
+      "data": 5,
+      "color": "#00188f",
+      "xAxisCalloutData": "2020/04/30",
+      "yAxisCalloutData": "5%"
+    }
+  ],
+  "xAxisPoint": 0,
+  "lineData": [
+    {
+      "y": 15,
+      "legend": "Line1",
+      "color": "#ffb900",
+      "data": 15,
+      "shouldDrawBorderBottom": true
+    }
+  ]
+}
+            </pre>
           </div>
         </div>
       </div>
