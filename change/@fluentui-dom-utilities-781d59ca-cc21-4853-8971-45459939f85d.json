@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add shadow DOM support for DOM APIs",
+  "packageName": "@fluentui/dom-utilities",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
