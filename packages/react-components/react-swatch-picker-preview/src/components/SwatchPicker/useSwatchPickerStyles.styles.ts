@@ -11,7 +11,7 @@ export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    display: 'flex',
   },
 
   // TODO add additional classes for different states and/or slots

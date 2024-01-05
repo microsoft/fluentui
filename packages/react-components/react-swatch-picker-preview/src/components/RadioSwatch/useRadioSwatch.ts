@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { RadioSwatchProps, RadioSwatchState } from './RadioSwatch.types';
-import { Radio } from '@fluentui/react-radio';
+import { useRadio_unstable } from '@fluentui/react-radio';
 import { useRadioSwatchState_unstable } from './useRadioSwatchState';
 import { useRadioPickerContextValue_unstable } from '../RadioPicker/RadioPickerContext';
 
@@ -18,25 +18,27 @@ export const useRadioSwatch_unstable = (
   props: RadioSwatchProps,
   ref: React.Ref<HTMLInputElement>,
 ): RadioSwatchState => {
-  // const { size } = props;
-  // const iconShorthand = slot.optional(icon, { elementType: 'span' });
+  const { icon } = props;
+  const iconShorthand = slot.optional(icon, { elementType: 'span' });
   const picker = useRadioPickerContextValue_unstable();
   const state = {
+    ...useRadio_unstable(props, ref),
     components: {
-      root: Radio,
+      root: 'span',
+      input: 'input',
       icon: 'span',
     },
-    root: slot.always(
-      getIntrinsicElementProps('input', {
-        ref: ref as React.Ref<HTMLInputElement>,
-        ...props,
-        size: picker.size,
-      }),
-      { elementType: Radio },
-    ),
+    // root: slot.always(
+    //   getIntrinsicElementProps('input', {
+    //     ref: ref as React.Ref<HTMLInputElement>,
+    //     ...props,
+    //     size: picker.size,
+    //   }),
+    //   { elementType: Radio },
+    // ),
     size: picker.size,
     shape: picker.shape,
-    // icon: iconShorthand,
+    icon: iconShorthand,
   };
 
   return useRadioSwatchState_unstable(state, props);

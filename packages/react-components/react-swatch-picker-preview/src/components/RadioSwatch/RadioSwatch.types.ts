@@ -1,18 +1,20 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { Radio, RadioProps } from '@fluentui/react-radio';
+import type { RadioProps, RadioSlots } from '@fluentui/react-radio';
 
-export type RadioSwatchSlots = {
-  root: Slot<typeof Radio>;
-  // icon?: Slot<'span'>;
+export type RadioSwatchSlots = Omit<RadioSlots, 'indicator' | 'label'> & {
+  // export type RadioSwatchSlots = RadioSlots & {
+  icon?: Slot<'span'>;
 };
 
 /**
  * RadioSwatch Props
  */
 export type RadioSwatchProps = ComponentProps<RadioSwatchSlots> &
+  Omit<ComponentProps<Partial<RadioSwatchSlots>, 'input'>, 'onChange' | 'size'> &
   Omit<RadioProps, 'labelPosition'> & {
     size?: 'extraSmall' | 'small' | 'medium' | 'large';
     shape?: 'rounded' | 'square' | 'circular';
+    label?: string;
   };
 
 /**

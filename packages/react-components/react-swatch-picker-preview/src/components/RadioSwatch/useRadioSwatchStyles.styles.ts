@@ -1,10 +1,12 @@
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RadioSwatchSlots, RadioSwatchState } from './RadioSwatch.types';
+import { useRadioStyles_unstable, RadioState } from '@fluentui/react-radio';
 
 export const radioSwatchClassNames: SlotClassNames<RadioSwatchSlots> = {
   root: 'fui-RadioSwatch',
-  // icon: 'fui-RadioSwatch__icon',
+  input: 'fui-RadioSwatch__input',
+  icon: 'fui-RadioSwatch__icon',
 };
 
 export const radioCSSVars = {
@@ -12,6 +14,91 @@ export const radioCSSVars = {
 };
 
 const { swatchColor } = radioCSSVars;
+
+const useInputBaseClassName = makeStyles({
+  input: {
+    width: '100%',
+    height: '100%',
+    opacity: 0,
+  },
+
+  // ':enabled': {
+  //   cursor: 'pointer',
+  //   [`& ~ .${radioClassNames.label}`]: {
+  //     cursor: 'pointer',
+  //   },
+  // },
+
+  // // When unchecked, hide the circle icon (child of the indicator)
+  // [`:not(:checked) ~ .${radioClassNames.indicator} > *`]: {
+  //   opacity: '0',
+  // },
+
+  // // Colors for the unchecked state
+  // ':enabled:not(:checked)': {
+  //   [`& ~ .${radioClassNames.label}`]: {
+  //     color: tokens.colorNeutralForeground3,
+  //   },
+  //   [`& ~ .${radioClassNames.indicator}`]: {
+  //     borderColor: tokens.colorNeutralStrokeAccessible,
+  //   },
+
+  //   ':hover': {
+  //     [`& ~ .${radioClassNames.label}`]: {
+  //       color: tokens.colorNeutralForeground2,
+  //     },
+  //     [`& ~ .${radioClassNames.indicator}`]: {
+  //       borderColor: tokens.colorNeutralStrokeAccessibleHover,
+  //     },
+  //   },
+
+  //   ':hover:active': {
+  //     [`& ~ .${radioClassNames.label}`]: {
+  //       color: tokens.colorNeutralForeground1,
+  //     },
+  //     [`& ~ .${radioClassNames.indicator}`]: {
+  //       borderColor: tokens.colorNeutralStrokeAccessiblePressed,
+  //     },
+  //   },
+  // },
+
+  // // Colors for the checked state
+  // ':enabled:checked': {
+  //   [`& ~ .${radioClassNames.label}`]: {
+  //     color: tokens.colorNeutralForeground1,
+  //   },
+  //   [`& ~ .${radioClassNames.indicator}`]: {
+  //     borderColor: tokens.colorCompoundBrandStroke,
+  //     color: tokens.colorCompoundBrandForeground1,
+  //   },
+
+  //   ':hover': {
+  //     [`& ~ .${radioClassNames.indicator}`]: {
+  //       borderColor: tokens.colorCompoundBrandStrokeHover,
+  //       color: tokens.colorCompoundBrandForeground1Hover,
+  //     },
+  //   },
+
+  //   ':hover:active': {
+  //     [`& ~ .${radioClassNames.indicator}`]: {
+  //       borderColor: tokens.colorCompoundBrandStrokePressed,
+  //       color: tokens.colorCompoundBrandForeground1Pressed,
+  //     },
+  //   },
+  // },
+
+  // // Colors for the disabled state
+  // ':disabled': {
+  //   [`& ~ .${radioClassNames.label}`]: {
+  //     color: tokens.colorNeutralForegroundDisabled,
+  //     cursor: 'default',
+  //   },
+  //   [`& ~ .${radioClassNames.indicator}`]: {
+  //     borderColor: tokens.colorNeutralStrokeDisabled,
+  //     color: tokens.colorNeutralForegroundDisabled,
+  //   },
+  // },
+});
 
 /**
  * Styles for the root slot
@@ -65,6 +152,7 @@ export const useRadioSwatchStyles_unstable = (state: RadioSwatchState): RadioSwa
   const styles = useBaseStyles();
   const sizeStyles = useSizeStyles();
   const shapeStyles = useShapeStyles();
+  const inputBaseClassName = useInputBaseClassName();
 
   // const iconStyles = useIconStyles();
   state.root.className = mergeClasses(
@@ -75,6 +163,11 @@ export const useRadioSwatchStyles_unstable = (state: RadioSwatchState): RadioSwa
     state.root.className,
   );
 
+  state.input.className = mergeClasses(
+    inputBaseClassName.input,
+    // inputBaseClassName,
+    state.input.className,
+  );
   // if (state.icon) {
   //   state.icon.className = mergeClasses(radioSwatchClassNames.icon, iconStyles, state.icon.className);
   // }

@@ -1,6 +1,7 @@
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ColorSwatchSlots, ColorSwatchState } from './ColorSwatch.types';
+import { S } from '../../../../keyboard-keys/src/keyCodes';
 
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
   root: 'fui-ColorSwatch',
@@ -17,6 +18,7 @@ const { swatchColor } = swatchCSSVars;
  * Styles for the root slot
  */
 const useStyles = makeResetStyles({
+  boxSizing: 'border-box',
   ...shorthands.border('none'),
   width: '28px',
   height: '28px',

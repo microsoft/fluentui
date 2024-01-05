@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { RadioPicker, RadioSwatch } from '@fluentui/react-swatch-picker-preview';
 import { Radio, RadioGroup } from '@fluentui/react-radio';
+import { Prohibited20Filled } from '@fluentui/react-icons';
 
 export const Default = () => {
   const [rowValue, setRowValue] = React.useState('cyan');
@@ -15,7 +16,7 @@ export const Default = () => {
       </RadioGroup>
 
       <RadioPicker name="row-picker" value={rowValue} onChange={(_, data) => setRowValue(data.value)}>
-        <RadioSwatch value="red" label="Red" />
+        <RadioSwatch icon={<Prohibited20Filled />} value="red" label="Red" />
         <RadioSwatch value="green" label="Green" />
         <RadioSwatch value="blue" label="Blue" />
       </RadioPicker>
