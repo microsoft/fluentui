@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTimePicker_unstable } from './useTimePicker';

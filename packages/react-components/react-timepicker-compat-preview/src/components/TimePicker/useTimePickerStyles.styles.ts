@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TimePickerSlots, TimePickerState } from './TimePicker.types';
