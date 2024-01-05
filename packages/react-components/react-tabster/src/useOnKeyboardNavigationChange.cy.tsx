@@ -28,6 +28,6 @@ describe('useOnKeyboardNavigationChange', () => {
       .get('#button')
       .click()
       .get('#result')
-      .should('contain.text', 'keyboard');
+      .should('contain.text', 'mouse');
   });
 });
