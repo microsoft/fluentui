@@ -206,7 +206,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                       opacity: 0.8;
                     }
               >
-
+                 
               </div>
             </div>
             <div

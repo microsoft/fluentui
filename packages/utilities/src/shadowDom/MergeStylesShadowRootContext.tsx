@@ -24,7 +24,9 @@ export type MergeStylesShadowRootContextValue = {
   shadowRoot?: ShadowRoot | null;
 };
 
-const MergeStylesShadowRootContext = React.createContext<MergeStylesShadowRootContextValue | undefined>(undefined);
+export const MergeStylesShadowRootContext = React.createContext<MergeStylesShadowRootContextValue | undefined>(
+  undefined,
+);
 
 export type MergeStylesShadowRootProviderProps = {
   /**

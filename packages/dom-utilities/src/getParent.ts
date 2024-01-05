@@ -7,8 +7,28 @@ import { getVirtualParent } from './getVirtualParent';
  * @public
  */
 export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement | null {
-  return (
-    child &&
-    ((allowVirtualParents && getVirtualParent(child)) || (child.parentNode && (child.parentNode as HTMLElement)))
-  );
+  if (!child) {
+    return null;
+  }
+
+  const parent = allowVirtualParents && getVirtualParent(child);
+
+  if (parent) {
+    return parent;
+  }
+
+  // Support looking for parents in shadow DOM
+  if (
+    typeof (child as HTMLSlotElement).assignedElements !== 'function' &&
+    (child as HTMLElement).assignedSlot?.parentNode
+  ) {
+    // Element is slotted
+    return (child as HTMLElement).assignedSlot as HTMLElement;
+  } else if (child.parentNode?.nodeType === 11) {
+    // nodeType 11 is DOCUMENT_FRAGMENT
+    // Element is in shadow root
+    return (child.parentNode as ShadowRoot).host as HTMLElement;
+  } else {
+    return child.parentNode as HTMLElement;
+  }
 }
