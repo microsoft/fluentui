@@ -10,6 +10,9 @@ const { rollup: lernaAliases } = require('lerna-alias');
 const { default: PQueue } = require('p-queue');
 const exec = promisify(child_process.exec);
 
+/**
+ * @see file://./eslint-for-package.js
+ */
 const eslintForPackageScript = path.join(__dirname, 'eslint-for-package.js');
 
 const files = process.argv.slice(2);
@@ -69,20 +72,26 @@ async function runEslintOnFilesGroupedPerPackage() {
   await queue.addAll(
     // eslint-disable-next-line no-shadow
     Object.entries(filesGroupedByPackage).map(([packagePath, files]) => async () => {
+      // This script handles running eslint on ONLY touched files for each package.
       const cmd = `node ${eslintForPackageScript} ${files.join(' ')}`;
 
-      // This script handles running eslint on ONLY the appropriate files for each package.
-      // See its comments for more details.
-      return exec(cmd, { cwd: packagePath }).catch((/** @type {{ stdout: string, stderr: string }} */ err) => {
-        // The subprocess should already have handled logging. Just mark that there was an error.
-        hasError = true;
-        throw new Error(err.stderr);
-      });
+      return (
+        exec(cmd, { cwd: packagePath })
+          // Log severity:error lint reports including severity:warn
+          // this will also result in killing the process
+          .catch((/** @type {{ stdout: string, stderr: string }} */ err) => {
+            hasError = true;
+            // child throws twice so to mitigate `Error: Error: ` output we remove the 1st one
+            const report = err.stderr.replace('Error: ', '');
+            console.error(report);
+          })
+      );
     }),
   );
 
   await queue
     .onEmpty()
+    // handle any internal exec errors
     .catch(error => {
       console.error(error);
       hasError = true;
@@ -94,7 +103,11 @@ async function runEslintOnFilesGroupedPerPackage() {
     });
 }
 
-runEslintOnFilesGroupedPerPackage().catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+function main() {
+  runEslintOnFilesGroupedPerPackage().catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
+}
+
+main();
