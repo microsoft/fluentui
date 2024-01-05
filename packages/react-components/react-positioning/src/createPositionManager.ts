@@ -4,6 +4,7 @@ import type { PositionManager, TargetElement } from './types';
 import { debounce, writeArrowUpdates, writeContainerUpdates } from './utils';
 import { isHTMLElement } from '@fluentui/react-utilities';
 import { listScrollParents } from './utils/listScrollParents';
+import { createResizeObserver } from './utils/createResizeObserver';
 
 interface PositionManagerOptions {
   /**
@@ -45,7 +46,8 @@ interface PositionManagerOptions {
 export function createPositionManager(options: PositionManagerOptions): PositionManager {
   let isDestroyed = false;
   const { container, target, arrow, strategy, middleware, placement, useTransform = true } = options;
-  if (!target || !container) {
+  const targetWindow = container.ownerDocument.defaultView;
+  if (!target || !container || !targetWindow) {
     return {
       updatePosition: () => undefined,
       dispose: () => undefined,
@@ -53,11 +55,10 @@ export function createPositionManager(options: PositionManagerOptions): Position
   }
 
   // When the dimensions of the target or the container change - trigger a position update
-  const resizeObserver = new ResizeObserver(() => updatePosition());
+  const resizeObserver = createResizeObserver(targetWindow, () => updatePosition());
 
   let isFirstUpdate = true;
   const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();
-  const targetWindow = container.ownerDocument.defaultView;
 
   // When the container is first resolved, set position `fixed` to avoid scroll jumps.
   // Without this scroll jumps can occur when the element is rendered initially and receives focus
