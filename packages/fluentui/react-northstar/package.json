@@ -41,7 +41,6 @@
     "csstype": "^3.0.2",
     "faker": "^4.1.0",
     "fela-tools": "^10.6.1",
-    "lerna-alias": "^3.0.3-0",
     "qs": "^6.8.0",
     "simulant": "^0.2.2"
   },
