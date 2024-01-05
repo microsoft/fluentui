@@ -812,7 +812,30 @@ export class VerticalStackedBarChartBase extends React.Component<
         barTotalValue += point.data;
 
         // If set, apply the corner radius to the top of the final bar
-        if (barCornerRadius && barHeight > barCornerRadius && index === barsToDisplay.length - 1) {
+        if (barCornerRadius && Math.abs(barHeight) > barCornerRadius && index === barsToDisplay.length - 1) {
+          if (barHeight < 0) {
+            return (
+              <path
+                key={index + indexNumber + `${shouldFocusWholeStack}`}
+                className={this._classNames.opacityChangeOnHover}
+                d={`
+                M ${xPoint} ${yPoint}
+                h ${this._barWidth}
+                v ${Math.abs(barHeight) - barCornerRadius}
+                a ${barCornerRadius} ${barCornerRadius} 0 0 1 ${-barCornerRadius} ${barCornerRadius}
+                h ${-this._barWidth + 2 * barCornerRadius}
+                a ${barCornerRadius} ${barCornerRadius} 0 0 1 ${-barCornerRadius} ${-barCornerRadius}
+                z
+              `}
+                fill={color}
+                ref={e => (ref.refElement = e)}
+                transform={`translate(${xScaleBandwidthTranslate}, ${
+                  -Math.abs(barHeight) + 2 * Math.abs(yPoint - zeroHeightPoint)
+                })`}
+                {...rectFocusProps}
+              />
+            );
+          }
           return (
             <path
               key={index + indexNumber + `${shouldFocusWholeStack}`}
@@ -822,7 +845,7 @@ export class VerticalStackedBarChartBase extends React.Component<
                 a ${barCornerRadius} ${barCornerRadius} 0 0 1 ${barCornerRadius} ${-barCornerRadius}
                 h ${this._barWidth - 2 * barCornerRadius}
                 a ${barCornerRadius} ${barCornerRadius} 0 0 1 ${barCornerRadius} ${barCornerRadius}
-                v ${barHeight - barCornerRadius}
+                v ${Math.abs(barHeight) - barCornerRadius}
                 h ${-this._barWidth}
                 z
               `}
