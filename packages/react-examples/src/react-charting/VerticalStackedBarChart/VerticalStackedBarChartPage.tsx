@@ -13,6 +13,7 @@ import { VerticalStackedBarChartStyledExample } from './VerticalStackedBarChart.
 import { VerticalStackedBarChartCalloutExample } from './VerticalStackedBarChart.Callout.Example';
 import { VerticalStackedBarChartTooltipExample } from './VerticalStackedBarChart.AxisTooltip.Example';
 import { VerticalStackedBarChartCustomAccessibilityExample } from './VerticalStackedBarChart.CustomAccessibility.Example';
+import { VerticalStackedBarChartNegativeValuesExample } from './VerticalStackedBarChart.NegativeValues.Example';
 
 const VerticalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Basic.Example.tsx') as string;
@@ -24,6 +25,8 @@ const VerticalBarChartTooltipExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.AxisTooltip.Example') as string;
 const VerticalBarChartCustomAccessibilityExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.CustomAccessibility.Example') as string;
+const VerticalStackedBarChartNegativeValuesExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.NegativeValues.Example') as string;
 
 export class VerticalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -42,7 +45,7 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
             <ExampleCard title="VerticalStackedBarChart Callout" code={VerticalBarChartCalloutExampleCode}>
               <VerticalStackedBarChartCalloutExample />
             </ExampleCard>
-            <ExampleCard title="VerticalStackedBarChart Callout" code={VerticalBarChartTooltipExampleCode}>
+            <ExampleCard title="VerticalStackedBarChart Tooltip" code={VerticalBarChartTooltipExampleCode}>
               <VerticalStackedBarChartTooltipExample />
             </ExampleCard>
             <ExampleCard
@@ -50,6 +53,12 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
               code={VerticalBarChartCustomAccessibilityExampleCode}
             >
               <VerticalStackedBarChartCustomAccessibilityExample />
+            </ExampleCard>
+            <ExampleCard
+              title="VerticalStackedBarChart Negative Values"
+              code={VerticalStackedBarChartNegativeValuesExampleCode}
+            >
+              <VerticalStackedBarChartNegativeValuesExample />
             </ExampleCard>
           </div>
         }
