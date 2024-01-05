@@ -51,6 +51,7 @@ export type TimePickerOption = {
 
 /**
  * Error types returned by the `onValidationResult` callback.
+ * @deprecated
  */
 export type TimePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';
 
@@ -59,9 +60,18 @@ export type TimeStringValidationResult = {
   errorType?: TimePickerErrorType;
 };
 
+/**
+ * @deprecated
+ */
 export type TimePickerSlots = ComboboxSlots;
 
+/**
+ * @deprecated
+ */
 export type TimeSelectionEvents = SelectionEvents | React.FocusEvent<HTMLElement>;
+/**
+ * @deprecated
+ */
 export type TimeSelectionData = {
   /**
    * The Date object associated with the selected option. For freeform TimePicker it can also be the Date object parsed from the user input.
@@ -94,6 +104,7 @@ export type TimeFormatOptions = {
 
 /**
  * TimePicker Props
+ * @deprecated
  */
 export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> &
   Pick<
@@ -160,6 +171,7 @@ export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input
 
 /**
  * State used in rendering TimePicker
+ * @deprecated
  */
 export type TimePickerState = ComboboxState &
   Required<Pick<TimePickerProps, 'freeform' | 'parseTimeStringToDate'>> & {

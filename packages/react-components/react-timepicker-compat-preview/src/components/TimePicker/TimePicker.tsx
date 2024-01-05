@@ -8,6 +8,7 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * TimePicker Compat component
+ * @deprecated
  */
 export const TimePicker: ForwardRefComponent<TimePickerProps> = React.forwardRef((props, ref) => {
   const state = useTimePicker_unstable(props, ref);

@@ -3,6 +3,9 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TimePickerSlots, TimePickerState } from './TimePicker.types';
 import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
 
+/**
+ * @deprecated
+ */
 export const timePickerClassNames: SlotClassNames<TimePickerSlots> = {
   root: 'fui-TimePicker',
   input: 'fui-TimePicker__input',
@@ -18,6 +21,7 @@ const useStyles = makeStyles({
 
 /**
  * Apply styling to the TimePicker slots based on the state
+ * @deprecated
  */
 export const useTimePickerStyles_unstable = (state: TimePickerState): TimePickerState => {
   const styles = useStyles();

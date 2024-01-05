@@ -13,19 +13,19 @@ import * as React_2 from 'react';
 import type { SelectionEvents } from '@fluentui/react-combobox';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-// @public
+// @public @deprecated
 export function formatDateToTimeString(date: Date, { hourCycle, showSeconds }?: TimeFormatOptions): string;
 
-// @public
+// @public @deprecated
 export const TimePicker: ForwardRefComponent<TimePickerProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const timePickerClassNames: SlotClassNames<TimePickerSlots>;
 
-// @public
+// @public @deprecated
 export type TimePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';
 
-// @public
+// @public @deprecated
 export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> & Pick<ComboboxProps, 'appearance' | 'defaultOpen' | 'defaultValue' | 'inlinePopup' | 'onOpenChange' | 'open' | 'placeholder' | 'positioning' | 'size' | 'value' | 'mountNode' | 'freeform'> & TimeFormatOptions & {
     startHour?: Hour;
     endHour?: Hour;
@@ -38,28 +38,28 @@ export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input
     parseTimeStringToDate?: (time: string | undefined) => TimeStringValidationResult;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type TimePickerSlots = ComboboxSlots;
 
-// @public
+// @public @deprecated
 export type TimePickerState = ComboboxState & Required<Pick<TimePickerProps, 'freeform' | 'parseTimeStringToDate'>> & {
     submittedText: string | undefined;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type TimeSelectionData = {
     selectedTime: Date | null;
     selectedTimeText: string | undefined;
     errorType: TimePickerErrorType | undefined;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type TimeSelectionEvents = SelectionEvents | React_2.FocusEvent<HTMLElement>;
 
-// @public
+// @public @deprecated
 export const useTimePicker_unstable: (props: TimePickerProps, ref: React_2.Ref<HTMLInputElement>) => TimePickerState;
 
-// @public
+// @public @deprecated
 export const useTimePickerStyles_unstable: (state: TimePickerState) => TimePickerState;
 
 // (No @packageDocumentation comment for this package)
