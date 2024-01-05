@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-calendar-compat
 
-This log was last generated on Wed, 03 Jan 2024 09:26:44 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Jan 2024 09:48:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.0.13)
+
+Thu, 04 Jan 2024 09:48:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.0.12..@fluentui/react-calendar-compat_v0.0.13)
+
+### Patches
+
+- fix: Make day labels non-actionable. ([PR #30160](https://github.com/microsoft/fluentui/pull/30160) by estebanmu@microsoft.com)
 
 ## [0.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.0.12)
 

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-datepicker-compat
 
-This log was last generated on Wed, 03 Jan 2024 09:26:43 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Jan 2024 09:48:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-datepicker-compat_v0.4.12)
+
+Thu, 04 Jan 2024 09:48:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-datepicker-compat_v0.4.11..@fluentui/react-datepicker-compat_v0.4.12)
+
+### Patches
+
+- fix: Add missing CalendarStrings export and guidance on localization. ([PR #30160](https://github.com/microsoft/fluentui/pull/30160) by estebanmu@microsoft.com)
+- Bump @fluentui/react-calendar-compat to v0.0.13 ([PR #30201](https://github.com/microsoft/fluentui/pull/30201) by beachball)
 
 ## [0.4.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-datepicker-compat_v0.4.11)
 

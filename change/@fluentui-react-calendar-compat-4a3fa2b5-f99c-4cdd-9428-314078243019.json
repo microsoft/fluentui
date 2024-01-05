@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "fix: Make day labels non-actionable.",
+  "comment": "Update version of @fluentui/react-icons to 2.0.224",
   "packageName": "@fluentui/react-calendar-compat",
-  "email": "estebanmu@microsoft.com",
+  "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch"
 }

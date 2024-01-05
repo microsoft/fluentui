@@ -2,6 +2,27 @@
   "name": "@fluentui/react-datepicker-compat",
   "entries": [
     {
+      "date": "Thu, 04 Jan 2024 09:48:06 GMT",
+      "tag": "@fluentui/react-datepicker-compat_v0.4.12",
+      "version": "0.4.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "3d70b7ee03a0862edcc7bdf9646d8a3f727f0487",
+            "comment": "fix: Add missing CalendarStrings export and guidance on localization."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-calendar-compat to v0.0.13",
+            "commit": "d55914c734edffd6fd3fc234ca5b171cff689d84"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Jan 2024 09:26:43 GMT",
       "tag": "@fluentui/react-datepicker-compat_v0.4.11",
       "version": "0.4.11",
