@@ -6,6 +6,7 @@
     "deprecation/deprecation": "off",
     "import/no-webpack-loader-syntax": "off", // ok in this project
     "prefer-const": "off",
-    "react/jsx-no-bind": "off"
+    "react/jsx-no-bind": "off",
+    "no-restricted-globals": "off"
   }
 }
