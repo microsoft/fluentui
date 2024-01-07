@@ -24,8 +24,7 @@
     "@fluentui/scripts-babel": "*",
     "@fluentui/scripts-gulp": "*",
     "@fluentui/scripts-jest": "*",
-    "@types/classnames": "^2.2.9",
-    "lerna-alias": "^3.0.3-0"
+    "@types/classnames": "^2.2.9"
   },
   "files": [
     "dist"

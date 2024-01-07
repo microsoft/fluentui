@@ -1,3 +1,5 @@
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 import * as React from 'react';
 import {
   FlatTreeProps,
@@ -15,7 +17,7 @@ import {
   useHeadlessFlatTree_unstable,
 } from '@fluentui/react-components';
 import { FixedSizeList, FixedSizeListProps, ListChildComponentProps } from 'react-window';
-import { ForwardRefComponent, getSlots } from '@fluentui/react-components';
+import { ForwardRefComponent, assertSlots } from '@fluentui/react-components';
 
 type ItemProps = HeadlessFlatTreeItemProps & { content: string };
 
@@ -51,7 +53,7 @@ const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef(
   const state = useFlatTree_unstable(props, ref);
   useFlatTreeStyles_unstable(state);
   const contextValues = useFlatTreeContextValues_unstable(state);
-  const { slots, slotProps } = getSlots<FlatTreeSlots>(state);
+  assertSlots<FlatTreeSlots>(state);
   const handleOuterRef = React.useCallback((instance: HTMLElement | null) => {
     if (instance) {
       // This element stays between the tree and treeitem
@@ -61,9 +63,9 @@ const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef(
   }, []);
   return (
     <TreeProvider value={contextValues.tree}>
-      <slots.root {...slotProps.root}>
+      <state.root>
         <FixedSizeList outerRef={handleOuterRef} {...props.listProps} />
-      </slots.root>
+      </state.root>
     </TreeProvider>
   );
 });

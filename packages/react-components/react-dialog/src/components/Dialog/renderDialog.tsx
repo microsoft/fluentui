@@ -16,16 +16,21 @@ export const renderDialog_unstable = (state: DialogState, contextValues: DialogC
     <DialogProvider value={contextValues.dialog}>
       <DialogSurfaceProvider value={contextValues.dialogSurface}>
         {trigger}
-        <Transition
-          mountOnEnter
-          unmountOnExit
-          in={state.open}
-          nodeRef={state.dialogRef}
-          // FIXME: this should not be hardcoded tokens.durationGentle
-          timeout={250}
-        >
-          {status => <DialogTransitionProvider value={status}>{content}</DialogTransitionProvider>}
-        </Transition>
+        {process.env.NODE_ENV === 'test' ? (
+          state.open && <DialogTransitionProvider value={undefined}>{content}</DialogTransitionProvider>
+        ) : (
+          <Transition
+            mountOnEnter
+            unmountOnExit
+            in={state.open}
+            nodeRef={state.dialogRef}
+            appear={true}
+            // FIXME: this should not be hardcoded tokens.durationGentle
+            timeout={250}
+          >
+            {status => <DialogTransitionProvider value={status}>{content}</DialogTransitionProvider>}
+          </Transition>
+        )}
       </DialogSurfaceProvider>
     </DialogProvider>
   );

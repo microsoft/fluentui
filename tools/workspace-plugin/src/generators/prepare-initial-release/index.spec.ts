@@ -8,7 +8,6 @@ import {
   stripIndents,
   readJson,
   updateJson,
-  workspaceRoot,
   installPackagesTask,
 } from '@nrwl/devkit';
 import childProcess from 'child_process';
@@ -63,29 +62,121 @@ describe('prepare-initial-release generator', () => {
     jest.resetAllMocks();
   });
 
-  it(`should throw error if executed on invalid project`, async () => {
-    createProject(tree, 'react-one-stable', {
-      root: 'packages/react-one-stable',
-      pkgJson: {
-        version: '9.0.0-alpha.0',
-      },
+  describe(`assertions`, () => {
+    it(`should throw error if executed on invalid project`, async () => {
+      createProject(tree, 'react-one-stable', {
+        root: 'packages/react-one-stable',
+        pkgJson: {
+          version: '9.0.0-alpha.0',
+        },
+      });
+
+      await expect(
+        generator(tree, { project: '@proj/react-one-stable', phase: 'stable' }),
+      ).rejects.toMatchInlineSnapshot(
+        `[Error: @proj/react-one-stable is already prepared for stable release. Please trigger RELEASE pipeline.]`,
+      );
+
+      updateJson<PackageJson>(tree, 'packages/react-one-stable/package.json', json => {
+        json.version = '9.0.0';
+        return json;
+      });
+
+      await expect(
+        generator(tree, { project: '@proj/react-one-stable', phase: 'stable' }),
+      ).rejects.toMatchInlineSnapshot(`[Error: @proj/react-one-stable is already released as stable.]`);
     });
 
-    await expect(generator(tree, { project: '@proj/react-one-stable', phase: 'stable' })).rejects.toMatchInlineSnapshot(
-      `[Error: @proj/react-one-stable is already prepared for stable release. Please trigger RELEASE pipeline.]`,
-    );
+    it(`should throw error if executed with invalid 'phase' option`, async () => {
+      createProject(tree, 'react-one-preview', {
+        root: 'packages/react-one-preview',
+        pkgJson: {
+          version: '0.1.0',
+        },
+      });
 
-    updateJson<PackageJson>(tree, 'packages/react-one-stable/package.json', json => {
-      json.version = '9.0.0';
-      return json;
+      await expect(
+        generator(tree, { project: '@proj/react-one-preview', phase: 'compat' }),
+      ).rejects.toMatchInlineSnapshot(
+        `[Error: Invalid phase(compat) option provided. @proj/react-one-preview is a PREVIEW package thus phase needs to be one of 'preview'|'stable'.]`,
+      );
+
+      createProject(tree, 'react-one-compat', {
+        root: 'packages/react-one-compat',
+        tags: ['compat'],
+        pkgJson: {
+          version: '0.0.1',
+        },
+      });
+
+      await expect(
+        generator(tree, { project: '@proj/react-one-compat', phase: 'preview' }),
+      ).rejects.toMatchInlineSnapshot(
+        `[Error: Invalid phase(preview) option provided. @proj/react-one-compat is a COMPAT package thus phase needs to be 'compat'.]`,
+      );
+      await expect(
+        generator(tree, { project: '@proj/react-one-compat', phase: 'stable' }),
+      ).rejects.toMatchInlineSnapshot(
+        `[Error: Invalid phase(stable) option provided. @proj/react-one-compat is a COMPAT package thus phase needs to be 'compat'.]`,
+      );
     });
-
-    await expect(generator(tree, { project: '@proj/react-one-stable', phase: 'stable' })).rejects.toMatchInlineSnapshot(
-      `[Error: @proj/react-one-stable is already released as stable.]`,
-    );
   });
 
   describe(`--phase`, () => {
+    describe(`compat`, () => {
+      it(`should prepare compat package for initial release`, async () => {
+        const utils = {
+          project: createProject(tree, 'react-one-compat', {
+            root: 'packages/react-one-compat',
+            pkgJson: {
+              version: '0.0.0',
+              private: true,
+            },
+            renameRoot: false,
+          }),
+          docsite: createProject(tree, 'public-docsite-v9', {
+            root: 'apps/public-docsite-v9',
+            pkgJson: { version: '9.0.123', private: true },
+            renameRoot: false,
+          }),
+        };
+
+        const sideEffects = await generator(tree, { project: '@proj/react-one-compat', phase: 'compat' });
+
+        expect(utils.project.pkgJson()).toMatchInlineSnapshot(`
+          Object {
+            "name": "@proj/react-one-compat",
+            "version": "0.0.0",
+          }
+        `);
+
+        expect(utils.docsite.pkgJson().dependencies).toEqual(
+          expect.objectContaining({
+            '@proj/react-one-compat': '*',
+          }),
+        );
+
+        sideEffects();
+
+        const execCalls = getExecSpyCalls(execSyncSpy);
+
+        expect(execCalls.length).toEqual(1);
+
+        expect(execCalls[0].cmd).toMatchInlineSnapshot(
+          `"yarn change --message 'feat: release compat package' --type patch --package @proj/react-one-compat"`,
+        );
+        expect(execCalls[0].args).toMatchInlineSnapshot(
+          { cwd: expect.any(String) },
+          `
+          Object {
+            "cwd": Any<String>,
+            "stdio": "inherit",
+          }
+        `,
+        );
+      });
+    });
+
     describe(`preview`, () => {
       it(`should prepare preview package for initial release`, async () => {
         const utils = {
@@ -121,15 +212,22 @@ describe('prepare-initial-release generator', () => {
 
         sideEffects();
 
-        expect(execSyncSpy.mock.calls.flat()).toMatchInlineSnapshot(`
-          Array [
-            "yarn change --message 'feat: release preview package' --type minor --package @proj/react-one-preview",
-            Object {
-              "cwd": "${workspaceRoot}",
-              "stdio": "inherit",
-            },
-          ]
-        `);
+        const execCalls = getExecSpyCalls(execSyncSpy);
+
+        expect(execCalls.length).toEqual(1);
+
+        expect(execCalls[0].cmd).toMatchInlineSnapshot(
+          `"yarn change --message 'feat: release preview package' --type minor --package @proj/react-one-preview"`,
+        );
+        expect(execCalls[0].args).toMatchInlineSnapshot(
+          { cwd: expect.any(String) },
+          `
+          Object {
+            "cwd": Any<String>,
+            "stdio": "inherit",
+          }
+        `,
+        );
       });
     });
 
@@ -160,7 +258,20 @@ describe('prepare-initial-release generator', () => {
               content: stripIndents`
             import { One } from '@proj/react-one-preview';
 
-            export const App = () => { return <One/> };
+            export const Default = () => <div><One/></div>
+          `,
+            },
+            {
+              filePath: 'packages/react-one-preview/stories/index.stories.tsx',
+              content: stripIndents`
+              import { One } from '@proj/react-one-preview';
+
+              const metadata: ComponentMeta<typeof One> = {
+                title: 'Preview Components/One',
+                component: One,
+              }
+
+              export default metadata;
           `,
             },
           ],
@@ -232,11 +343,24 @@ describe('prepare-initial-release generator', () => {
           "
         `);
         expect(tree.read('packages/react-one/stories/One.stories.tsx', 'utf-8')).toMatchInlineSnapshot(`
-          "import { One } from '@proj/react-one-preview';
+          "import { One } from '@proj/react-components';
 
-          export const App = () => {
-            return <One />;
+          export const Default = () => (
+            <div>
+              <One />
+            </div>
+          );
+          "
+        `);
+        expect(tree.read('packages/react-one/stories/index.stories.tsx', 'utf-8')).toMatchInlineSnapshot(`
+          "import { One } from '@proj/react-components';
+
+          const metadata: ComponentMeta<typeof One> = {
+            title: 'Components/One',
+            component: One,
           };
+
+          export default metadata;
           "
         `);
 
@@ -258,6 +382,7 @@ describe('prepare-initial-release generator', () => {
 
         // project updates
 
+        // v9 docsite
         expect(utils.docsite.pkgJson().dependencies).not.toEqual(
           expect.objectContaining({ '@proj/react-one-preview': '*' }),
         );
@@ -268,8 +393,9 @@ describe('prepare-initial-release generator', () => {
         `),
         );
 
+        // v9 vr-tests
         const vrTestDeps = utils.vrTest.pkgJson().dependencies ?? {};
-        expect(vrTestDeps).toEqual(expect.objectContaining({ '@proj/react-one': '*' }));
+        expect(vrTestDeps).toEqual(expect.objectContaining({ '@proj/react-one': '>=9.0.0-alpha' }));
         expect(vrTestDeps[projectName]).toEqual(undefined);
         expect(tree.read('apps/vr-tests-react-components/src/stories/One.stories.tsx', 'utf-8')).toEqual(
           expect.stringContaining(stripIndents`
@@ -278,6 +404,7 @@ describe('prepare-initial-release generator', () => {
         `),
         );
 
+        // react-components suite
         expect(utils.suite.pkgJson().dependencies).toEqual(
           expect.objectContaining({ '@proj/react-one': '9.0.0-alpha.0' }),
         );
@@ -290,25 +417,47 @@ describe('prepare-initial-release generator', () => {
 
         sideEffects();
 
-        expect(execSyncSpy.mock.calls.flat()).toMatchInlineSnapshot(`
-          Array [
-            "yarn change --message 'feat: release stable' --type minor --package @proj/react-one",
-            Object {
-              "cwd": "${workspaceRoot}",
-              "stdio": "inherit",
-            },
-            "yarn change --message 'feat: add @proj/react-one to suite' --type minor --package @proj/react-components",
-            Object {
-              "cwd": "${workspaceRoot}",
-              "stdio": "inherit",
-            },
-            "yarn lage generate-api --to @proj/react-components",
-            Object {
-              "cwd": "${workspaceRoot}",
-              "stdio": "inherit",
-            },
-          ]
-        `);
+        const execCalls = getExecSpyCalls(execSyncSpy);
+
+        expect(execCalls.length).toEqual(3);
+
+        expect(execCalls[0].cmd).toMatchInlineSnapshot(
+          `"yarn change --message 'feat: release stable' --type minor --package @proj/react-one"`,
+        );
+        expect(execCalls[0].args).toMatchInlineSnapshot(
+          { cwd: expect.any(String) },
+          `
+          Object {
+            "cwd": Any<String>,
+            "stdio": "inherit",
+          }
+        `,
+        );
+
+        expect(execCalls[1].cmd).toMatchInlineSnapshot(
+          `"yarn change --message 'feat: add @proj/react-one to suite' --type minor --package @proj/react-components"`,
+        );
+        expect(execCalls[1].args).toMatchInlineSnapshot(
+          { cwd: expect.any(String) },
+          `
+          Object {
+            "cwd": Any<String>,
+            "stdio": "inherit",
+          }
+        `,
+        );
+
+        expect(execCalls[2].cmd).toMatchInlineSnapshot(`"yarn lage generate-api --to @proj/react-components"`);
+        expect(execCalls[2].args).toMatchInlineSnapshot(
+          { cwd: expect.any(String) },
+          `
+          Object {
+            "cwd": Any<String>,
+            "stdio": "inherit",
+          }
+        `,
+        );
+
         expect(installPackagesTaskSpy).toHaveBeenCalled();
       });
 
@@ -356,6 +505,7 @@ function createProject(
     pkgJson: Partial<PackageJson>;
     files?: Array<{ filePath: string; content: string }>;
     renameRoot?: boolean;
+    tags?: string[];
   },
 ) {
   const projectType = options.root.startsWith('apps/') ? 'application' : 'library';
@@ -374,7 +524,7 @@ function createProject(
     name: npmName,
   });
 
-  addProjectConfiguration(tree, npmName, { root: options.root, sourceRoot, tags: ['vNext'] });
+  addProjectConfiguration(tree, npmName, { root: options.root, sourceRoot, tags: ['vNext', ...(options.tags ?? [])] });
 
   tree.write(
     indexFile,
@@ -431,7 +581,7 @@ These are not production-ready components and **should never be used in product*
   graphMock.nodes[npmName] = {
     name: npmName,
     type: projectType === 'library' ? 'lib' : 'app',
-    data: { name: npmName, root: npmName, files: [] },
+    data: { name: npmName, root: npmName },
   };
 
   if (options.files) {
@@ -462,4 +612,17 @@ These are not production-ready components and **should never be used in product*
       codeowners: () => tree.read(codeownersPath, 'utf-8'),
     },
   };
+}
+
+function getExecSpyCalls(spy: jest.SpyInstance) {
+  const execSyncCalls = spy.mock.calls;
+
+  const normalized = execSyncCalls.map(call => {
+    return {
+      cmd: call[0],
+      args: call[1],
+    };
+  });
+
+  return normalized;
 }

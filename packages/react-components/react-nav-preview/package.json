@@ -31,9 +31,12 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "^9.0.18",
-    "@fluentui/react-theme": "^9.1.14",
-    "@fluentui/react-utilities": "^9.15.1",
+    "@fluentui/react-context-selector": "^9.1.45",
+    "@fluentui/react-shared-contexts": "^9.13.2",
+    "@fluentui/react-tabster": "^9.16.1",
+    "@fluentui/react-jsx-runtime": "^9.0.23",
+    "@fluentui/react-theme": "^9.1.16",
+    "@fluentui/react-utilities": "^9.15.5",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
@@ -57,5 +60,11 @@
       "major",
       "prerelease"
     ]
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

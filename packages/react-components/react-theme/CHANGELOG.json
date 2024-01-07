@@ -2,6 +2,42 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Thu, 09 Nov 2023 17:29:45 GMT",
+      "tag": "@fluentui/react-theme_v9.1.16",
+      "version": "9.1.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme",
+            "comment": "Bump @fluentui/tokens to v1.0.0-alpha.13",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Nov 2023 12:55:59 GMT",
+      "tag": "@fluentui/react-theme_v9.1.15",
+      "version": "9.1.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme",
+            "comment": "Bump @fluentui/tokens to v1.0.0-alpha.12",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Sep 2023 17:49:13 GMT",
       "tag": "@fluentui/react-theme_v9.1.14",
       "version": "9.1.14",

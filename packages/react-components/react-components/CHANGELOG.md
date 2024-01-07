@@ -1,8 +1,575 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 23 Oct 2023 09:51:55 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Jan 2024 09:48:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.44.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.44.0)
+
+Thu, 04 Jan 2024 09:48:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.44.0..@fluentui/react-components_v9.44.0)
+
+### Patches
+
+- `@fluentui/react-calendar-compat`
+  - fix: Make day labels non-actionable. ([PR #30160](https://github.com/microsoft/fluentui/pull/30160) by estebanmu@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: Add missing CalendarStrings export and guidance on localization. ([PR #30160](https://github.com/microsoft/fluentui/pull/30160) by estebanmu@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - undefined ([PR #30199](https://github.com/microsoft/fluentui/pull/30199) by yuanboxue@microsoft.com)
+  - feat: release compat package ([PR #30201](https://github.com/microsoft/fluentui/pull/30201) by yuanboxue@microsoft.com)
+
+## [9.44.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.44.0)
+
+Wed, 03 Jan 2024 09:26:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.43.3..@fluentui/react-components_v9.44.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - chore: Export combobox selection types. ([PR #28245](https://github.com/microsoft/fluentui/pull/28245) by tfaller1@gmx.de)
+- `@fluentui/react-rating-preview`
+  - 'feat: release rating to preview ([PR #30153](https://github.com/microsoft/fluentui/pull/30153) by ololubek@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-aria`
+  - chore: deprecate old slot API methods and types ([PR #29646](https://github.com/microsoft/fluentui/pull/29646) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-combobox`
+  - fix: trigger focus should mount hidden listbox ([PR #30133](https://github.com/microsoft/fluentui/pull/30133) by lingfan.gao@microsoft.com)
+- `@fluentui/react-components`
+  - chore: deprecate old slot API methods and types ([PR #29646](https://github.com/microsoft/fluentui/pull/29646) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-portal-compat-context`
+  - fix: re-introduce ecma transpilation to ES5 to make it work with v8  in ES5 only browsers ([PR #30053](https://github.com/microsoft/fluentui/pull/30053) by wfwf1997@gmail.com)
+- `@fluentui/react-utilities`
+  - chore: deprecate old slot API methods and types ([PR #29646](https://github.com/microsoft/fluentui/pull/29646) by bernardo.sunderhus@gmail.com)
+
+## [9.43.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.43.3)
+
+Thu, 21 Dec 2023 17:00:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.43.2..@fluentui/react-components_v9.43.3)
+
+### Minor changes
+
+- `@fluentui/react-teaching-popover-preview`
+  - feat: Release react-teaching-popover-preview package ([PR #30140](https://github.com/microsoft/fluentui/pull/30140) by behowell@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-breadcrumb`
+  - fix(breadcrumb): BreadcrumbButton focus border has incorrent width and transition ([PR #30135](https://github.com/microsoft/fluentui/pull/30135) by vkozlova@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: make hover color in contrast theme accessible. ([PR #30101](https://github.com/microsoft/fluentui/pull/30101) by yuanboxue@microsoft.com)
+- `@fluentui/react-timepicker-compat-preview`
+  - fix: set default value of hourCycle to undefined ([PR #30108](https://github.com/microsoft/fluentui/pull/30108) by yuanboxue@microsoft.com)
+
+## [9.43.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.43.2)
+
+Mon, 18 Dec 2023 17:48:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.43.1..@fluentui/react-components_v9.43.2)
+
+### Patches
+
+- `@fluentui/react-combobox`
+  - refactor: Encapsulates listbox and trigger slot construction ([PR #30010](https://github.com/microsoft/fluentui/pull/30010) by lingfan.gao@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: move from floating-ui-devtools to @floating-ui/devtools ([PR #30107](https://github.com/microsoft/fluentui/pull/30107) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-timepicker-compat-preview`
+  - fix: provides a default aria-labelledby for the chevron icon if the TimePicker is wrapped in a Field. ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by yuanboxue@microsoft.com)
+
+## [9.43.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.43.1)
+
+Mon, 18 Dec 2023 14:40:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.43.0..@fluentui/react-components_v9.43.1)
+
+### Minor changes
+
+- `@fluentui/react-tabster`
+  - feat: focus-visible polyfill shadow DOM support ([PR #30098](https://github.com/microsoft/fluentui/pull/30098) by lingfangao@hotmail.com)
+- `@fluentui/react-aria`
+  - feat: deprecates useARIAButtonShorthand in favor of useARIAButtonProps ([PR #29735](https://github.com/microsoft/fluentui/pull/29735) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-tabster`
+  - fix: focus outline should have `Highlight` colour in high contrast ([PR #30099](https://github.com/microsoft/fluentui/pull/30099) by lingfan.gao@microsoft.com)
+- `@fluentui/react-timepicker-compat-preview`
+  - fix: use useEventCallback instead of useCallback ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by yuanboxue@microsoft.com)
+  - fix: letter key navigation in listbox should be case insensitive ([PR #30072](https://github.com/microsoft/fluentui/pull/30072) by yuanboxue@microsoft.com)
+  - fix: add custom style hook for TimePicker compat. ([PR #30058](https://github.com/microsoft/fluentui/pull/30058) by yuanboxue@microsoft.com)
+  - fix: set autoComeplete to off by default ([PR #30057](https://github.com/microsoft/fluentui/pull/30057) by yuanboxue@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: stop using deprecated keyborg property ([PR #30098](https://github.com/microsoft/fluentui/pull/30098) by lingfangao@hotmail.com)
+- `@fluentui/react-accordion`
+  - chore: adopts useARIAButtonProps instead of deprecated method useARIAButtonShorthand ([PR #29735](https://github.com/microsoft/fluentui/pull/29735) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-breadcrumb`
+  - partitionBreadcrumbItems miscalculated endDisplayedItems when endDisplayedItems is incorrect when numberOfItemsToHide <= 0 ([PR #30005](https://github.com/microsoft/fluentui/pull/30005) by GordonJSmith@gmail.com)
+- `@fluentui/react-button`
+  - chore: adopts useARIAButtonProps instead of deprecated method useARIAButtonShorthand ([PR #29735](https://github.com/microsoft/fluentui/pull/29735) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-card`
+  - fix: interactive cards not having the focus ring when focused ([PR #30067](https://github.com/microsoft/fluentui/pull/30067) by marcosvmmoura@gmail.com)
+- `@fluentui/react-components`
+  - chore: add "wyw-in-js" field for tag processor ([PR #30032](https://github.com/microsoft/fluentui/pull/30032) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: Add a namespace to CSS variables in react-positioning package to avoid potential collisions. ([PR #30068](https://github.com/microsoft/fluentui/pull/30068) by makotom@microsoft.com)
+- `@fluentui/react-provider`
+  - fix: add custom style hook for TimePicker compat. ([PR #30058](https://github.com/microsoft/fluentui/pull/30058) by yuanboxue@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - fix: add custom style hook for TimePicker compat. ([PR #30058](https://github.com/microsoft/fluentui/pull/30058) by yuanboxue@microsoft.com)
+- `@fluentui/react-table`
+  - chore: adopts useARIAButtonProps instead of deprecated method useARIAButtonShorthand ([PR #29735](https://github.com/microsoft/fluentui/pull/29735) by bernardo.sunderhus@gmail.com)
+
+## [9.43.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.43.0)
+
+Thu, 14 Dec 2023 09:58:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.42.0..@fluentui/react-components_v9.43.0)
+
+### Minor changes
+
+- `@fluentui/react-aria`
+  - feat(useActiveDescendant): Changing active descendant scrolls into view ([PR #29992](https://github.com/microsoft/fluentui/pull/29992) by lingfangao@hotmail.com)
+- `@fluentui/react-avatar`
+  - feat: Export useAvatarGroupPopovercontextValues hook. ([PR #29984](https://github.com/microsoft/fluentui/pull/29984) by esteban.230@hotmail.com)
+- `@fluentui/react-components`
+  - feat: Export useAvatarGroupPopovercontextValues hook. ([PR #29984](https://github.com/microsoft/fluentui/pull/29984) by esteban.230@hotmail.com)
+- `@fluentui/react-dialog`
+  - fix: Dialog now transitions in on first render ([PR #30044](https://github.com/microsoft/fluentui/pull/30044) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - feat: List v0 migration shim ([PR #29975](https://github.com/microsoft/fluentui/pull/29975) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-tabs`
+  - feat: added select tab on focus behavior ([PR #29854](https://github.com/microsoft/fluentui/pull/29854) by gcox@microsoft.com)
+
+### Patches
+
+- `@fluentui/priority-overflow`
+  - fix: updates should be synchronous in unit tests ([PR #30014](https://github.com/microsoft/fluentui/pull/30014) by lingfangao@hotmail.com)
+- `@fluentui/react-calendar-compat`
+  - chore: disallow `window` and `document` access ([PR #29962](https://github.com/microsoft/fluentui/pull/29962) by seanmonahan@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: Applies border-box sizing to listbox slot ([PR #30028](https://github.com/microsoft/fluentui/pull/30028) by lingfan.gao@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix: OverlayDrawer accepts mountNode in types ([PR #29871](https://github.com/microsoft/fluentui/pull/29871) by sarah.higley@microsoft.com)
+- `@fluentui/react-link`
+  - fix: User-provided props win over defined defaults in Link component. ([PR #30062](https://github.com/microsoft/fluentui/pull/30062) by makotom@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: Using correct colors when MenuItem is pressed. ([PR #29951](https://github.com/microsoft/fluentui/pull/29951) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-motion-preview`
+  - chore: disallow `window` and `document` access ([PR #29962](https://github.com/microsoft/fluentui/pull/29962) by seanmonahan@microsoft.com)
+- `@fluentui/react-portal`
+  - fix: Virtual parent cannot be the DOM child of mount node ([PR #29990](https://github.com/microsoft/fluentui/pull/29990) by lingfangao@hotmail.com)
+- `@fluentui/react-positioning`
+  - fix: Allows matchTargetSize middleware to be overidden with inline style ([PR #30028](https://github.com/microsoft/fluentui/pull/30028) by lingfan.gao@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - chore: disallow `window` and `document` access ([PR #29962](https://github.com/microsoft/fluentui/pull/29962) by seanmonahan@microsoft.com)
+- `@fluentui/react-timepicker-compat-preview`
+  - fix: add max-height to show 12 items in listbox ([PR #29989](https://github.com/microsoft/fluentui/pull/29989) by yuanboxue@microsoft.com)
+  - fix: use default time format instead of h23 hour cycle. ([PR #30035](https://github.com/microsoft/fluentui/pull/30035) by yuanboxue@microsoft.com)
+- `@fluentui/react-utilities`
+  - chore: disallow `window` and `document` access ([PR #29962](https://github.com/microsoft/fluentui/pull/29962) by seanmonahan@microsoft.com)
+
+### Changes
+
+- `@fluentui/global-context`
+  - chore: disallow `window` and `document` access ([PR #29962](https://github.com/microsoft/fluentui/pull/29962) by seanmonahan@microsoft.com)
+
+## [9.42.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.42.0)
+
+Thu, 30 Nov 2023 13:42:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.41.0..@fluentui/react-components_v9.42.0)
+
+### Minor changes
+
+- `@fluentui/react-aria`
+  - feat: Implement aria-activedescendant utility ([PR #29904](https://github.com/microsoft/fluentui/pull/29904) by lingfan.gao@microsoft.com)
+- `@fluentui/react-components`
+  - feat: export useUncontrolledFocus hook ([PR #29895](https://github.com/microsoft/fluentui/pull/29895) by lingfangao@hotmail.com)
+  - add useFocusVisible() to exports ([PR #29935](https://github.com/microsoft/fluentui/pull/29935) by seanmonahan@microsoft.com)
+- `@fluentui/react-link`
+  - feat: Adding span as an option for Link to render as. ([PR #29937](https://github.com/microsoft/fluentui/pull/29937) by humbertomakotomorimoto@gmail.com)
+- `@fluentui/react-tabster`
+  - feat: implement useTabsterUncontrolled hook ([PR #29895](https://github.com/microsoft/fluentui/pull/29895) by lingfangao@hotmail.com)
+- `@fluentui/react-text`
+  - feature: adds semantic elements (strong, b, em, i) to Text root signature ([PR #29884](https://github.com/microsoft/fluentui/pull/29884) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-combobox`
+  - fix: listbox closes on blur after scroll click ([PR #29877](https://github.com/microsoft/fluentui/pull/29877) by sarah.higley@microsoft.com)
+  - fix: Dropdown button gets focus in Safari when clicked ([PR #29855](https://github.com/microsoft/fluentui/pull/29855) by sarah.higley@microsoft.com)
+- `@fluentui/react-jsx-runtime`
+  - chore: move up NODE_ENV check in warnIfElementTypeIsInvalid ([PR #29886](https://github.com/microsoft/fluentui/pull/29886) by wfwf1997@gmail.com)
+- `@fluentui/react-positioning`
+  - feat: adds floating-ui-devtools support ([PR #29905](https://github.com/microsoft/fluentui/pull/29905) by bernardo.sunderhus@gmail.com)
+  - fix: Infinite reset loop in matchTargetSize middleware ([PR #29915](https://github.com/microsoft/fluentui/pull/29915) by lingfan.gao@microsoft.com)
+- `@fluentui/react-table`
+  - fix: Brand row appearance should be brandBackground2 in pressed state ([PR #29957](https://github.com/microsoft/fluentui/pull/29957) by lingfangao@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - feat: Add default auto-measuring on dynamic virtualizezr if no sizing function provided ([PR #29868](https://github.com/microsoft/fluentui/pull/29868) by mifraser@microsoft.com)
+
+## [9.41.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.41.0)
+
+Mon, 20 Nov 2023 09:55:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.40.0..@fluentui/react-components_v9.41.0)
+
+### Minor changes
+
+- `@fluentui/react-checkbox`
+  - fix: Replace child selectors with css vars in Checkbox styles ([PR #29796](https://github.com/microsoft/fluentui/pull/29796) by behowell@microsoft.com)
+- `@fluentui/react-components`
+  - chore: Re-export missing exports from @fluentui/react-drawer in @fluentui/react-components. ([PR #29873](https://github.com/microsoft/fluentui/pull/29873) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-provider`
+  - feat: Add TeachingPopover style hooks ([PR #29782](https://github.com/microsoft/fluentui/pull/29782) by mifraser@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - feat: TeachingPopover style hooks added ([PR #29782](https://github.com/microsoft/fluentui/pull/29782) by mifraser@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: Tooltips are no longer triggered by programmatic focus() moves. ([PR #29791](https://github.com/microsoft/fluentui/pull/29791) by behowell@microsoft.com)
+
+### Patches
+
+- `@fluentui/priority-overflow`
+  - fix: disconnect should dispose all state correctly ([PR #29375](https://github.com/microsoft/fluentui/pull/29375) by lingfan.gao@microsoft.com)
+- `@fluentui/react-dialog`
+  - Remove CSS containment from DialogSurface ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by jurokapsiar@gmail.com)
+- `@fluentui/react-overflow`
+  - fix: register should happen again once observe options change ([PR #29375](https://github.com/microsoft/fluentui/pull/29375) by lingfan.gao@microsoft.com)
+- `@fluentui/react-tabster`
+  - chore: Export KeyborgFocusInEvent and KEYBORG_FOCUSIN ([PR #29791](https://github.com/microsoft/fluentui/pull/29791) by behowell@microsoft.com)
+
+## [9.40.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.40.0)
+
+Tue, 14 Nov 2023 17:51:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.39.0..@fluentui/react-components_v9.40.0)
+
+### Minor changes
+
+- `@fluentui/react-breadcrumb`
+  - feat: release stable ([PR #29826](https://github.com/microsoft/fluentui/pull/29826) by marcosvmmoura@gmail.com)
+- `@fluentui/react-components`
+  - feat: add @fluentui/react-breadcrumb to suite ([PR #29826](https://github.com/microsoft/fluentui/pull/29826) by marcosvmmoura@gmail.com)
+
+### Patches
+
+- `@fluentui/react-breadcrumb`
+  - docs(breadcrumb): removed preview from all the links ([PR #29838](https://github.com/microsoft/fluentui/pull/29838) by vkozlova@microsoft.com)
+- `@fluentui/react-tabster`
+  - Improving how Tabster uncontrolled areas are handled for better interop with third party focus management tools like FocusZone. ([PR #29832](https://github.com/microsoft/fluentui/pull/29832) by marata@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: refactor tree navigation ([PR #29731](https://github.com/microsoft/fluentui/pull/29731) by bernardo.sunderhus@gmail.com)
+
+## [9.39.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.39.0)
+
+Fri, 10 Nov 2023 13:46:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.38.0..@fluentui/react-components_v9.39.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: export useOverflowVisibility hook ([PR #29809](https://github.com/microsoft/fluentui/pull/29809) by lingfangao@hotmail.com)
+- `@fluentui/react-overflow`
+  - feat: Implement useOverflowVisibility hook ([PR #29809](https://github.com/microsoft/fluentui/pull/29809) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-breadcrumb-preview`
+  - fix: use button when no href is defined ([PR #29803](https://github.com/microsoft/fluentui/pull/29803) by sarah.higley@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: MenuTrigger tabster attributes can be overriden by user ([PR #29810](https://github.com/microsoft/fluentui/pull/29810) by lingfangao@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - feat: Ensure IO handles RTL margin and mutations ([PR #29501](https://github.com/microsoft/fluentui/pull/29501) by mifraser@microsoft.com)
+
+## [9.38.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.38.0)
+
+Thu, 09 Nov 2023 17:29:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.37.4..@fluentui/react-components_v9.38.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: release Drawer as stable ([PR #29711](https://github.com/microsoft/fluentui/pull/29711) by marcosvmmoura@gmail.com)
+  - chore: Export missing useDrawerStyles_unstable from react-drawer. ([PR #29768](https://github.com/microsoft/fluentui/pull/29768) by Humberto.Morimoto@microsoft.com)
+  - feat: re-export toMountNodeProps() ([PR #29772](https://github.com/microsoft/fluentui/pull/29772) by jaguilarvega@microsoft.com)
+  - feat: Export selection utils ([PR #29801](https://github.com/microsoft/fluentui/pull/29801) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-drawer`
+  - chore: Export missing useDrawerStyles_unstable. ([PR #29768](https://github.com/microsoft/fluentui/pull/29768) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-portal`
+  - feat: export toMountNodeProps() ([PR #29772](https://github.com/microsoft/fluentui/pull/29772) by jaguilarvega@microsoft.com)
+- `@fluentui/react-positioning`
+  - feat: add `matchTargetSize` positioning option ([PR #29690](https://github.com/microsoft/fluentui/pull/29690) by lingfangao@hotmail.com)
+- `@fluentui/react-provider`
+  - feat: Add API for List ([PR #29771](https://github.com/microsoft/fluentui/pull/29771) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - feat: Add custom style hook types for List ([PR #29771](https://github.com/microsoft/fluentui/pull/29771) by jirivyhnalek@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-checkbox`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-combobox`
+  - refactor: Removes double render infavour of matchTargetSize ([PR #29690](https://github.com/microsoft/fluentui/pull/29690) by lingfangao@hotmail.com)
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-components`
+  - fix: mark react-tree apis as deprecated and add Deprecation heading to the /unstable module ([PR #29762](https://github.com/microsoft/fluentui/pull/29762) by martinhochel@microsoft.com)
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-conformance`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-context-selector`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+  - fix: Apply onClick callback to contentAfter's span to allow usage of custom icons. ([PR #29746](https://github.com/microsoft/fluentui/pull/29746) by stevenco@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-divider`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-drawer`
+  - feat: release stable 9.0.0 ([PR #29711](https://github.com/microsoft/fluentui/pull/29711) by marcosvmmoura@gmail.com)
+- `@fluentui/react-field`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-image`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-infolabel`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-input`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-jsx-runtime`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-label`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-link`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-menu`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-message-bar`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-motion-preview`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-overflow`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-persona`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-popover`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-portal`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-portal-compat-context`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-progress`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+  - fix: useFluentProvider now returns the same empty object every time, fixing unnecessary re-renders ([PR #29757](https://github.com/microsoft/fluentui/pull/29757) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-radio`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-search-preview`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-select`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-skeleton`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-slider`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-spinner`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-switch`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-table`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-tabs`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-tabster`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-tags`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-text`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-textarea`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-theme`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-timepicker-compat-preview`
+  - fix: rename `formatTimeStringToDate` to `parseTimeStringToDate`. ([PR #29707](https://github.com/microsoft/fluentui/pull/29707) by yuanboxue@microsoft.com)
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-toast`
+  - fix: Toast text content should wrap ([PR #29678](https://github.com/microsoft/fluentui/pull/29678) by lingfangao@hotmail.com)
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-toolbar`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-tooltip`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-utilities`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/keyboard-keys`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/priority-overflow`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-accordion`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-aria`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-avatar`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-badge`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-breadcrumb-preview`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-button`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-card`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-theme-sass`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/react-virtualizer`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/tokens`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/babel-preset-global-context`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- `@fluentui/global-context`
+  - chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+
+## [9.37.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.37.4)
+
+Mon, 06 Nov 2023 13:16:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.37.3..@fluentui/react-components_v9.37.4)
+
+### Patches
+
+- `@fluentui/react-calendar-compat`
+  - fix(Calendar): Calendar should memoize today's default value since it causes rerenders by creating a new object each time. ([PR #29747](https://github.com/microsoft/fluentui/pull/29747) by esteban.230@hotmail.com)
+- `@fluentui/react-dialog`
+  - chore: set default DialogTransitionProvider value to `undefined` to remove animation styles from test environment. ([PR #29755](https://github.com/microsoft/fluentui/pull/29755) by yuanboxue@microsoft.com)
+
+## [9.37.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.37.3)
+
+Thu, 02 Nov 2023 17:38:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.37.2..@fluentui/react-components_v9.37.3)
+
+### Patches
+
+- `@fluentui/react-tree`
+  - chore: throws if FlatTree is used as a subtree ([PR #29729](https://github.com/microsoft/fluentui/pull/29729) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-drawer`
+  - breaking: open prop now only accepts a boolean instead of MotionShorthand  ([PR #29736](https://github.com/microsoft/fluentui/pull/29736) by marcosvmmoura@gmail.com)
+
+## [9.37.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.37.2)
+
+Wed, 01 Nov 2023 19:15:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.37.1..@fluentui/react-components_v9.37.2)
+
+### Minor changes
+
+- `@fluentui/react-breadcrumb-preview`
+  - feat: made BreadcrumbButton semantically as a link ([PR #29679](https://github.com/microsoft/fluentui/pull/29679) by vkozlova@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-tree`
+  - chore: stop unnecessary re-rendering when no actions are available ([PR #29694](https://github.com/microsoft/fluentui/pull/29694) by bernardo.sunderhus@gmail.com)
+
+## [9.37.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.37.1)
+
+Wed, 01 Nov 2023 12:55:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.37.0..@fluentui/react-components_v9.37.1)
+
+### Minor changes
+
+- `@fluentui/react-motion-preview`
+  - fix: separate timeouts to better synchronize changes in between browser frames ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by marcosvmmoura@gmail.com)
+- `@fluentui/react-timepicker-compat-preview`
+  - feat: release preview package ([PR #29677](https://github.com/microsoft/fluentui/pull/29677) by yuanboxue@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-combobox`
+  - fix: Combobox now collapses when mousing up outside of listbox after having moused within it. ([PR #29682](https://github.com/microsoft/fluentui/pull/29682) by makotom@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: remove animation from test environments ([PR #29692](https://github.com/microsoft/fluentui/pull/29692) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/tokens`
+  - fix(tokens): Fix motion curves to match design ([PR #29546](https://github.com/microsoft/fluentui/pull/29546) by robertpenner@microsoft.com)
+
+## [9.37.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.37.0)
+
+Sat, 28 Oct 2023 23:35:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.36.0..@fluentui/react-components_v9.37.0)
+
+### Major changes
+
+- `@fluentui/react-breadcrumb-preview`
+  - BREAKING CHANGE: Removed non-interactive item and `slash` divider ([PR #29623](https://github.com/microsoft/fluentui/pull/29623) by vkozlova@microsoft.com)
+  - BREAKING CHANGE: remove `appearance` prop and set  `current` prop  for BreadcrumbButton last item ([PR #29554](https://github.com/microsoft/fluentui/pull/29554) by vkozlova@microsoft.com)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - refactor: rename DrawerOverlay/DrawerInline components ([PR #29523](https://github.com/microsoft/fluentui/pull/29523) by marcosvmmoura@gmail.com)
+- `@fluentui/react-motion-preview`
+  - feat: add support to provide static duration to useMotion hook ([PR #29655](https://github.com/microsoft/fluentui/pull/29655) by marcosvmmoura@gmail.com)
+- `@fluentui/react-provider`
+  - feat: add new drawer global style hooks that are needed by drawer public api changes ([PR #29523](https://github.com/microsoft/fluentui/pull/29523) by marcosvmmoura@gmail.com)
+- `@fluentui/react-shared-contexts`
+  - refactor: rename main DrawerOverlay/DrawerInline components ([PR #29523](https://github.com/microsoft/fluentui/pull/29523) by marcosvmmoura@gmail.com)
+
+### Patches
+
+- `@fluentui/react-combobox`
+  - fix: update `setActiveOption` type to be React Dispatch. ([PR #29643](https://github.com/microsoft/fluentui/pull/29643) by yuanboxue@microsoft.com)
+- `@fluentui/react-components`
+  - chore: Deprecate InfoLabel and InfoButton from react-infobutton in favor of react-infolabel. ([PR #29605](https://github.com/microsoft/fluentui/pull/29605) by esteban.230@hotmail.com)
+  - chore: Deprecating Alert components and utilities. ([PR #29615](https://github.com/microsoft/fluentui/pull/29615) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-motion-preview`
+  - fix: avoid breaking rule of hooks ([PR #29628](https://github.com/microsoft/fluentui/pull/29628) by marcosvmmoura@gmail.com)
+- `@fluentui/react-provider`
+  - fix: invoke useCustomStyleHook_unstable() ([PR #29632](https://github.com/microsoft/fluentui/pull/29632) by olfedias@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - fix: invoke useCustomStyleHook_unstable() ([PR #29632](https://github.com/microsoft/fluentui/pull/29632) by olfedias@microsoft.com)
+- `@fluentui/react-toast`
+  - fix: invoke useCustomStyleHook_unstable() ([PR #29632](https://github.com/microsoft/fluentui/pull/29632) by olfedias@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-alert`
+  - feat: deprecate component and utilities ([PR #29615](https://github.com/microsoft/fluentui/pull/29615) by lingfan.gao@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix: regression with mountNode prop not available after refactor ([PR #29524](https://github.com/microsoft/fluentui/pull/29524) by marcosvmmoura@gmail.com)
+  - feat: use useMotionClassNames to create drawer motion styles ([PR #29662](https://github.com/microsoft/fluentui/pull/29662) by marcosvmmoura@gmail.com)
+  - BREAKING CHANGE: rename main DrawerOverlay/DrawerInline components ([PR #29523](https://github.com/microsoft/fluentui/pull/29523) by marcosvmmoura@gmail.com)
+  - fix: improve high contrast mode ([PR #29627](https://github.com/microsoft/fluentui/pull/29627) by marcosvmmoura@gmail.com)
+  - docs: add example on how to implement multiple levels inside one drawer ([PR #29665](https://github.com/microsoft/fluentui/pull/29665) by marcosvmmoura@gmail.com)
+- `@fluentui/react-infobutton`
+  - chore: Deprecate InfoLabel and InfoButton from react-infobutton in favor of react-infolabel. ([PR #29605](https://github.com/microsoft/fluentui/pull/29605) by esteban.230@hotmail.com)
 
 ## [9.36.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.36.0)
 

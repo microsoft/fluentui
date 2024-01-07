@@ -7,6 +7,12 @@
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": false,
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -32,6 +38,7 @@
   },
   "dependencies": {
     "@fluentui/react-jsx-runtime": "",
+    "@fluentui/react-shared-contexts": "",
     "@fluentui/react-theme": "",
     "@fluentui/react-utilities": "",
     "@griffel/react": "",

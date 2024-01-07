@@ -52,6 +52,9 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useComboboxStyles_unstable: (state: unknown) => void;
         useDropdownStyles_unstable: (state: unknown) => void;
         useListboxStyles_unstable: (state: unknown) => void;
+        useListStyles_unstable: (state: unknown) => void;
+        useListItemStyles_unstable: (state: unknown) => void;
+        useListItemButtonStyles_unstable: (state: unknown) => void;
         useOptionStyles_unstable: (state: unknown) => void;
         useOptionGroupStyles_unstable: (state: unknown) => void;
         useDividerStyles_unstable: (state: unknown) => void;
@@ -114,6 +117,8 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useDrawerStyles_unstable: (state: unknown) => void;
         useDrawerInlineStyles_unstable: (state: unknown) => void;
         useDrawerOverlayStyles_unstable: (state: unknown) => void;
+        useInlineDrawerStyles_unstable: (state: unknown) => void;
+        useOverlayDrawerStyles_unstable: (state: unknown) => void;
         useDrawerHeaderStyles_unstable: (state: unknown) => void;
         useDrawerHeaderNavigationStyles_unstable: (state: unknown) => void;
         useDrawerHeaderTitleStyles_unstable: (state: unknown) => void;
@@ -133,6 +138,17 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useMessageBarTitleStyles_unstable: (state: unknown) => void;
         useMessageBarActionsStyles_unstable: (state: unknown) => void;
         useMessageBarGroupStyles_unstable: (state: unknown) => void;
+        useToasterStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverActionsStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverBodyStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverButtonStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverCarouselStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverHeaderStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverPageCountStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverSurfaceStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverTitleStyles_unstable: (state: unknown) => void;
+        useTimePickerCompatStyles_unstable: (state: unknown) => void;
     }> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;

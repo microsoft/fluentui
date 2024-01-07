@@ -8,6 +8,7 @@ import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { AlertProps, AlertState } from './Alert.types';
 
 /**
+ * @deprecated please use the Toast or MessageBar component
  * Create the state required to render Alert.
  *
  * The returned state can be modified with hooks such as useAlertStyles_unstable,
@@ -16,6 +17,7 @@ import type { AlertProps, AlertState } from './Alert.types';
  * @param props - props from this instance of Alert
  * @param ref - reference to root HTMLElement of Alert
  */
+// eslint-disable-next-line deprecation/deprecation
 export const useAlert_unstable = (props: AlertProps, ref: React.Ref<HTMLElement>): AlertState => {
   const { appearance = 'primary', intent } = props;
 

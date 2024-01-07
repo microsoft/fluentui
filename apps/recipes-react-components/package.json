@@ -17,11 +17,11 @@
   },
   "dependencies": {
     "@fluentui/react-components": "*",
-    "@fluentui/react-icons": "^2.0.217",
+    "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-theme": "*",
     "@fluentui/react-provider": "*",
     "@fluentui/react-storybook-addon": "*",
-    "@fluentui/react-storybook-addon-codesandbox": "*",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@griffel/react": "^1.5.14",
     "react": "17.0.2",
     "react-dom": "17.0.2",

@@ -2,10 +2,10 @@ import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
-  readWorkspaceConfiguration,
   serializeJson,
   addProjectConfiguration,
   readJson,
+  readNxJson,
 } from '@nx/devkit';
 
 import generator from './index';
@@ -24,7 +24,7 @@ describe('rc-caret generator', () => {
     jest.spyOn(console, 'warn').mockImplementation(noop);
 
     tree = createTreeWithEmptyWorkspace();
-    npmScope = readWorkspaceConfiguration(tree).npmScope ?? '@proj';
+    npmScope = assertAndReadNxJson(tree).npmScope ?? '@proj';
   });
 
   it('should work for dependencies', async () => {
@@ -131,7 +131,7 @@ function setupDummyPackage(
       projectConfiguration: Partial<ReturnType<typeof readProjectConfiguration>>;
     }>,
 ) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const workspaceConfig = assertAndReadNxJson(tree);
   const defaults = {
     name: `@${workspaceConfig.npmScope}/react-components`,
     version: '9.0.0-alpha.40',
@@ -170,4 +170,14 @@ function setupDummyPackage(
   });
 
   return tree;
+}
+
+function assertAndReadNxJson(tree: Tree) {
+  const nxJson = readNxJson(tree);
+
+  if (!nxJson) {
+    throw new Error('nx.json doesnt exist');
+  }
+
+  return nxJson;
 }

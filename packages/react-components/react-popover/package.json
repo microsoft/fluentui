@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-popover",
-  "version": "9.8.17",
+  "version": "9.8.27",
   "description": "Popover component for Fluent UI",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,16 +36,16 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/keyboard-keys": "^9.0.6",
-    "@fluentui/react-aria": "^9.3.43",
-    "@fluentui/react-context-selector": "^9.1.41",
-    "@fluentui/react-portal": "^9.3.25",
-    "@fluentui/react-positioning": "^9.9.21",
-    "@fluentui/react-shared-contexts": "^9.10.0",
-    "@fluentui/react-tabster": "^9.14.1",
-    "@fluentui/react-theme": "^9.1.14",
-    "@fluentui/react-utilities": "^9.15.1",
-    "@fluentui/react-jsx-runtime": "^9.0.18",
+    "@fluentui/keyboard-keys": "^9.0.7",
+    "@fluentui/react-aria": "^9.6.1",
+    "@fluentui/react-context-selector": "^9.1.45",
+    "@fluentui/react-portal": "^9.4.6",
+    "@fluentui/react-positioning": "^9.10.6",
+    "@fluentui/react-shared-contexts": "^9.13.2",
+    "@fluentui/react-tabster": "^9.16.1",
+    "@fluentui/react-theme": "^9.1.16",
+    "@fluentui/react-utilities": "^9.15.5",
+    "@fluentui/react-jsx-runtime": "^9.0.23",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
@@ -70,5 +70,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

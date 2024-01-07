@@ -514,7 +514,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     } else {
       const xBarScale = d3ScaleBand()
         .domain(this._xAxisLabels)
-        .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin])
+        .range(
+          this._isRtl
+            ? [containerWidth - this.margins.right! - this._domainMargin, this.margins.left! + this._domainMargin]
+            : [this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin],
+        )
         .paddingInner(2 / 3);
 
       const yBarScale = d3ScaleLinear()

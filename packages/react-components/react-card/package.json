@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-card",
-  "version": "9.0.50",
+  "version": "9.0.59",
   "private": false,
   "description": "Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
@@ -38,11 +38,11 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/keyboard-keys": "^9.0.6",
-    "@fluentui/react-tabster": "^9.14.1",
-    "@fluentui/react-theme": "^9.1.14",
-    "@fluentui/react-utilities": "^9.15.1",
-    "@fluentui/react-jsx-runtime": "^9.0.18",
+    "@fluentui/keyboard-keys": "^9.0.7",
+    "@fluentui/react-tabster": "^9.16.1",
+    "@fluentui/react-theme": "^9.1.16",
+    "@fluentui/react-utilities": "^9.15.5",
+    "@fluentui/react-jsx-runtime": "^9.0.23",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
@@ -65,5 +65,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

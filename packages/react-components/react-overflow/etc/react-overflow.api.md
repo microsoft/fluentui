@@ -81,6 +81,12 @@ export function useOverflowMenu<TElement extends HTMLElement>(id?: string): {
     isOverflowing: boolean;
 };
 
+// @public
+export function useOverflowVisibility(): {
+    itemVisibility: Record<string, boolean>;
+    groupVisibility: Record<string, OverflowGroupState>;
+};
+
 // (No @packageDocumentation comment for this package)
 
 ```

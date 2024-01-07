@@ -6,15 +6,19 @@ const renderAlerts = (appearance: 'primary' | 'inverted') => (
   <div style={{ flexGrow: 1 }}>
     <p>{appearance}</p>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+      {/* eslint-disable-next-line deprecation/deprecation */}
       <Alert appearance={appearance} intent="success" action="Undo">
         Success text
       </Alert>
+      {/* eslint-disable-next-line deprecation/deprecation */}
       <Alert appearance={appearance} intent="error" action="Retry">
         Error text
       </Alert>
+      {/* eslint-disable-next-line deprecation/deprecation */}
       <Alert appearance={appearance} intent="warning" action="Review">
         Warning text
       </Alert>
+      {/* eslint-disable-next-line deprecation/deprecation */}
       <Alert appearance={appearance} intent="info" action="Dismiss">
         Info text
       </Alert>

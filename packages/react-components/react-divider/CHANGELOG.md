@@ -1,8 +1,90 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Wed, 18 Oct 2023 17:54:03 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jan 2024 09:26:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.54)
+
+Wed, 03 Jan 2024 09:26:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.53..@fluentui/react-divider_v9.2.54)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.23 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+- Bump @fluentui/react-utilities to v9.15.5 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+
+## [9.2.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.53)
+
+Mon, 18 Dec 2023 14:40:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.52..@fluentui/react-divider_v9.2.53)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.22 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.13.2 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-utilities to v9.15.4 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+
+## [9.2.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.52)
+
+Thu, 14 Dec 2023 09:58:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.51..@fluentui/react-divider_v9.2.52)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.21 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.13.1 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-utilities to v9.15.3 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+
+## [9.2.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.51)
+
+Thu, 30 Nov 2023 13:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.50..@fluentui/react-divider_v9.2.51)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.20 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+
+## [9.2.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.50)
+
+Mon, 20 Nov 2023 09:55:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.49..@fluentui/react-divider_v9.2.50)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.13.0 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+
+## [9.2.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.49)
+
+Thu, 09 Nov 2023 17:29:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.48..@fluentui/react-divider_v9.2.49)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.19 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.12.0 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-theme to v9.1.16 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-utilities to v9.15.2 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+
+## [9.2.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.48)
+
+Wed, 01 Nov 2023 12:55:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.47..@fluentui/react-divider_v9.2.48)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.11.1 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-theme to v9.1.15 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+
+## [9.2.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.47)
+
+Sat, 28 Oct 2023 23:35:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.46..@fluentui/react-divider_v9.2.47)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
 
 ## [9.2.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.46)
 

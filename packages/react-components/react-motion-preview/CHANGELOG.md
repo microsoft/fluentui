@@ -1,8 +1,97 @@
 # Change Log - @fluentui/react-motion-preview
 
-This log was last generated on Wed, 18 Oct 2023 17:54:08 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jan 2024 09:26:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.5.6)
+
+Wed, 03 Jan 2024 09:26:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.5.5..@fluentui/react-motion-preview_v0.5.6)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.23 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+- Bump @fluentui/react-utilities to v9.15.5 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+
+## [0.5.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.5.5)
+
+Mon, 18 Dec 2023 14:40:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.5.4..@fluentui/react-motion-preview_v0.5.5)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.22 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.13.2 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-utilities to v9.15.4 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+
+## [0.5.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.5.4)
+
+Thu, 14 Dec 2023 09:58:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.5.3..@fluentui/react-motion-preview_v0.5.4)
+
+### Patches
+
+- chore: disallow `window` and `document` access ([PR #29962](https://github.com/microsoft/fluentui/pull/29962) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.21 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.13.1 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-utilities to v9.15.3 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+
+## [0.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.5.3)
+
+Thu, 30 Nov 2023 13:42:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.5.2..@fluentui/react-motion-preview_v0.5.3)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.20 ([PR #29929](https://github.com/microsoft/fluentui/pull/29929) by beachball)
+
+## [0.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.5.2)
+
+Mon, 20 Nov 2023 09:55:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.5.1..@fluentui/react-motion-preview_v0.5.2)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.13.0 ([PR #29878](https://github.com/microsoft/fluentui/pull/29878) by beachball)
+
+## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.5.1)
+
+Thu, 09 Nov 2023 17:29:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.5.0..@fluentui/react-motion-preview_v0.5.1)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.19 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.12.0 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-theme to v9.1.16 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-utilities to v9.15.2 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.5.0)
+
+Wed, 01 Nov 2023 12:55:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.4.0..@fluentui/react-motion-preview_v0.5.0)
+
+### Minor changes
+
+- fix: separate timeouts to better synchronize changes in between browser frames ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.11.1 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-theme to v9.1.15 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.4.0)
+
+Sat, 28 Oct 2023 23:35:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.3.4..@fluentui/react-motion-preview_v0.4.0)
+
+### Minor changes
+
+- feat: add support to provide static duration to useMotion hook ([PR #29655](https://github.com/microsoft/fluentui/pull/29655) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+
+### Patches
+
+- fix: avoid breaking rule of hooks ([PR #29628](https://github.com/microsoft/fluentui/pull/29628) by marcosvmmoura@gmail.com)
 
 ## [0.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.3.4)
 

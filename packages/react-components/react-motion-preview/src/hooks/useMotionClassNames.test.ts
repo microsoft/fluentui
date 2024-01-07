@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react-hooks';
 
-import { getDefaultMotionState, MotionState } from './useMotion';
 import { useMotionClassNames } from './useMotionClassNames';
 import * as reducedMotionStyles from '../styles/useReducedMotionStyles.styles';
+import { getDefaultMotionState, MotionState } from './useMotion';
 
 describe('useMotionClassNames', () => {
   let useReducedMotionStylesMock: jest.SpyInstance;

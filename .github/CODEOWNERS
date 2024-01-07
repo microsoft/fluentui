@@ -190,7 +190,7 @@ packages/react-components/react-badge @microsoft/cxe-red @behowell
 packages/react-components/react-button @microsoft/cxe-red @khmakoto
 packages/react-components/react-card @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-checkbox @microsoft/cxe-red @khmakoto
-packages/react-components/react-combobox @microsoft/cxe-red @smhigley
+packages/react-components/react-combobox @microsoft/cxe-red @microsoft/teams-prg @smhigley
 packages/react-components/react-components @microsoft/fluentui-react
 packages/react-components/react-dialog @microsoft/teams-prg
 packages/react-components/react-divider @microsoft/cxe-red
@@ -234,9 +234,9 @@ packages/react-components/react-tags @microsoft/cxe-red @microsoft/teams-prg
 packages/react-components/react-migration-v0-v9 @microsoft/teams-prg
 packages/react-components/react-datepicker-compat @microsoft/cxe-red @sopranopillow @khmakoto
 packages/react-components/react-migration-v8-v9 @microsoft/cxe-red @geoffcoxmsft
-packages/react-components/react-breadcrumb-preview @microsoft/cxe-prg
+packages/react-components/react-breadcrumb @microsoft/cxe-prg
 packages/react-components/react-drawer @microsoft/cxe-prg @marcosmoura
-packages/react-components/react-storybook-addon-codesandbox @microsoft/fluentui-react-build
+packages/react-components/react-storybook-addon-export-to-sandbox @microsoft/fluentui-react-build
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
 packages/react-components/react-jsx-runtime @microsoft/teams-prg
 packages/react-components/react-toast @microsoft/teams-prg
@@ -250,6 +250,11 @@ packages/react-components/react-rating-preview @microsoft/cxe-red @tomi-msft
 packages/react-components/react-swatch-picker-preview @microsoft/cxe-prg
 packages/react-components/react-calendar-compat @microsoft/cxe-red @sopranopillow
 packages/react-components/react-infolabel @microsoft/cxe-red @sopranopillow
+packages/react-components/react-list-preview @microsoft/teams-prg
+packages/react-components/react-motions-preview @microsoft/teams-prg
+packages/react-components/react-teaching-popover-preview @microsoft/xc-uxe @Mitch-At-Work
+packages/react-components/react-timepicker-compat @microsoft/teams-prg
+packages/react-components/react-icons-compat @microsoft/cxe-red @tomi-msft
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
