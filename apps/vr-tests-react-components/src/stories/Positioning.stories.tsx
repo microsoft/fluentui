@@ -48,10 +48,17 @@ const useStyles = makeStyles({
     ...shorthands.border('1px', 'solid', 'blue'),
     backgroundColor: 'white',
   },
+  boxBold: {
+    ...shorthands.borderWidth('3px'),
+  },
 
   arrow: {
-    ...createArrowStyles({ arrowHeight: 8 }),
-    backgroundColor: 'red',
+    ...createArrowStyles({
+      arrowHeight: 12,
+      borderStyle: 'solid',
+      borderColor: 'blue',
+      borderWidth: '3px',
+    }),
   },
 
   seeThrough: {
@@ -415,7 +422,7 @@ const Arrow: React.FC = () => {
   const positionedRefs = positions.reduce<ReturnType<typeof usePositioning>[]>((acc, cur) => {
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const positioningRefs = usePositioning({ position: cur[0], align: cur[1] });
+    const positioningRefs = usePositioning({ position: cur[0], align: cur[1], offset: 12, arrowPadding: 12 });
     acc.push(positioningRefs);
     return acc;
   }, []);
@@ -425,7 +432,7 @@ const Arrow: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       {positions.map(([position, align], i) => (
-        <Box key={`${position}-${align}`} ref={positionedRefs[i].containerRef}>
+        <Box className={styles.boxBold} key={`${position}-${align}`} ref={positionedRefs[i].containerRef}>
           <div className={styles.arrow} ref={positionedRefs[i].arrowRef} />
           {`${position}-${align}`}
         </Box>
