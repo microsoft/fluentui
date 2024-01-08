@@ -249,6 +249,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     let axisType: XAxisTypes | null = null;
     let pointToHighlight: string | Date | number | null = null;
     let index: null | number = null;
+    axisType = getTypeOfAxis(lineChartData![0].data[0].x, true) as XAxisTypes;
     if (d0 === undefined && d1 !== undefined) {
       pointToHighlight = d1.x;
       index = i;
@@ -256,7 +257,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       pointToHighlight = d0.x;
       index = i - 1;
     } else {
-      axisType = getTypeOfAxis(lineChartData![0].data[0].x, true) as XAxisTypes;
       let x0;
       let point0;
       let point1;
@@ -866,7 +866,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const found: any = this._calloutPoints.find((e: { x: string | number }) => e.x === modifiedXVal);
     // Show details in the callout for the focused point only
     found.values = found.values.filter((e: { y: number }) => e.y === y);
-
     this.setState({
       refSelected: `#${circleId}`,
       isCalloutVisible: true,
