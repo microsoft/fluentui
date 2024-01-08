@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix(useArrowNavigationGroup): should always memorize last focused element",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -15,6 +15,12 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 export const Nav: ForwardRefComponent<NavProps>;
 
 // @public
+export const NavCategory: ForwardRefComponent<NavCategoryProps>;
+
+// @public (undocumented)
+export const navCategoryClassNames: SlotClassNames<NavCategorySlots>;
+
+// @public
 export const NavCategoryItem: ForwardRefComponent<NavCategoryItemProps>;
 
 // @public (undocumented)
@@ -35,6 +41,17 @@ export type NavCategoryItemSlots = {
 export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> & Pick<NavCategoryItemProps, 'value'> & {
     selected: boolean;
 };
+
+// @public
+export type NavCategoryProps = ComponentProps<NavCategorySlots> & {};
+
+// @public (undocumented)
+export type NavCategorySlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type NavCategoryState = ComponentState<NavCategorySlots>;
 
 // @public (undocumented)
 export const navClassNames: SlotClassNames<NavSlots>;
@@ -91,6 +108,23 @@ export const NavSubItem: ForwardRefComponent<NavSubItemProps>;
 export const navSubItemClassNames: SlotClassNames<NavSubItemSlots>;
 
 // @public
+export const NavSubItemGroup: ForwardRefComponent<NavSubItemGroupProps>;
+
+// @public (undocumented)
+export const navSubItemGroupClassNames: SlotClassNames<NavSubItemGroupSlots>;
+
+// @public
+export type NavSubItemGroupProps = ComponentProps<NavSubItemGroupSlots> & {};
+
+// @public (undocumented)
+export type NavSubItemGroupSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type NavSubItemGroupState = ComponentState<NavSubItemGroupSlots>;
+
+// @public
 export type NavSubItemProps = ComponentProps<NavSubItemSlots> & {};
 
 // @public (undocumented)
@@ -108,13 +142,22 @@ export type RegisterNavItemEventHandler = (data: NavItemRegisterData) => void;
 export const renderNav_unstable: (state: NavState, contextValues: NavContextValues) => JSX.Element;
 
 // @public
+export const renderNavCategory_unstable: (state: NavCategoryState) => JSX.Element;
+
+// @public
 export const renderNavCategoryItem_unstable: (state: NavCategoryItemState) => JSX.Element;
 
 // @public
 export const renderNavSubItem_unstable: (state: NavSubItemState) => JSX.Element;
 
 // @public
+export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSX.Element;
+
+// @public
 export const useNav_unstable: (props: NavProps, ref: React_2.Ref<HTMLDivElement>) => NavState;
+
+// @public
+export const useNavCategory_unstable: (props: NavCategoryProps, ref: React_2.Ref<HTMLDivElement>) => NavCategoryState;
 
 // @public
 export const useNavCategoryItem_unstable: (props: NavCategoryItemProps, ref: React_2.Ref<HTMLButtonElement>) => NavCategoryItemState;
@@ -122,11 +165,23 @@ export const useNavCategoryItem_unstable: (props: NavCategoryItemProps, ref: Rea
 // @public
 export const useNavCategoryItemStyles_unstable: (state: NavCategoryItemState) => NavCategoryItemState;
 
+// @public
+export const useNavCategoryStyles_unstable: (state: NavCategoryState) => NavCategoryState;
+
 // @public (undocumented)
 export const useNavContext_unstable: () => NavContextValue;
 
 // @public
+export const useNavStyles_unstable: (state: NavState) => NavState;
+
+// @public
 export const useNavSubItem_unstable: (props: NavSubItemProps, ref: React_2.Ref<HTMLDivElement>) => NavSubItemState;
+
+// @public
+export const useNavSubItemGroup_unstable: (props: NavSubItemGroupProps, ref: React_2.Ref<HTMLDivElement>) => NavSubItemGroupState;
+
+// @public
+export const useNavSubItemGroupStyles_unstable: (state: NavSubItemGroupState) => NavSubItemGroupState;
 
 // @public
 export const useNavSubItemStyles_unstable: (state: NavSubItemState) => NavSubItemState;

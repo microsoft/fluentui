@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: update react-positioning to use latest floating ui dev tools to take latest fix",
-  "packageName": "@fluentui/react-positioning",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
