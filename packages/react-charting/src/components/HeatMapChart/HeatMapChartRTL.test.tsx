@@ -2,6 +2,9 @@ import * as React from 'react';
 import { queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import { HeatMapChart, IHeatMapChartProps } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import { screen, fireEvent, act } from '@testing-library/react';
+import { HeatMapChartBase } from './HeatMapChart.base';
 
 expect.extend(toHaveNoViolations);
 
@@ -76,4 +79,24 @@ describe('Heat Map Chart - axe-core', () => {
     const axeResults = await axe(container);
     expect(axeResults).toHaveNoViolations();
   }, 10000);
+});
+
+describe('Heat Map Chart - Subcomponent Legend', () => {
+  test('Should select legend on single mouse click on legends', async () => {
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    const legends = getByClass(container, /legend-/i);
+    expect(legends[0]).toHaveAttribute('aria-selected', 'false');
+    fireEvent.click(legends![0]);
+    const legendsAfterClickEvent = screen.getAllByText(
+      (content, element) => element!.tagName.toLowerCase() === 'button',
+    );
+    // Assert
+    expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'true');
+  });
 });
