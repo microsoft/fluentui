@@ -22,6 +22,22 @@ export const Mode = () => {
         <Label> Read Only </Label>
         <Rating mode="readonly" value={3.5} ratingLabel={3.5} ratingCountLabel="1,160" />
       </div>
+      <div>
+        <Label> Brand Compact </Label>
+        <Rating appearance="brand" mode="readonly-compact" ratingLabel={3} ratingCountLabel="1,160" />
+      </div>
+      <div>
+        <Label> Brand Read Only </Label>
+        <Rating appearance="brand" mode="readonly" value={3.5} ratingLabel={3.5} ratingCountLabel="1,160" />
+      </div>
+      <div>
+        <Label> Marigold Compact </Label>
+        <Rating appearance="marigold" mode="readonly-compact" ratingLabel={3} ratingCountLabel="1,160" />
+      </div>
+      <div>
+        <Label> Marigold Read Only </Label>
+        <Rating appearance="marigold" mode="readonly" value={3.5} ratingLabel={3.5} ratingCountLabel="1,160" />
+      </div>
     </div>
   );
 };

@@ -12,10 +12,10 @@ export type RatingSlots = {
  */
 export type RatingProps = ComponentProps<RatingSlots> & {
   /**
-   * Controls the appearance of unselected rating items.
-   * @default outline (filled if readOnly is set)
+   * Controls the appearance of the Rating.
+   * @default neutral
    */
-  appearance?: 'filled' | 'outline';
+  appearance?: 'brand' | 'marigold' | 'neutral';
   /**
    * Default value of the Rating
    */
@@ -56,7 +56,7 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    * Sets the size of the Rating items.
    * @default medium
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'xlarge';
   /**
    * The value of the rating
    */

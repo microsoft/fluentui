@@ -52,7 +52,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   let unselectedFilledIcon;
-  if (context && iconFillWidth < 1 && context.appearance === 'filled') {
+  if (context && context.mode !== 'interactive' && iconFillWidth < 1) {
     unselectedFilledIcon = slot.always(props.unselectedFilledIcon, {
       defaultProps: {
         children: context.iconFilled,
@@ -109,6 +109,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   const state: RatingItemState = {
+    appearance: context ? context.appearance : 'neutral',
     mode: context ? context.mode : 'interactive',
     precision: context ? context.precision : false,
     size: context ? context.size : 'medium',

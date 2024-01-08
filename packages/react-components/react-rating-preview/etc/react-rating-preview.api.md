@@ -20,7 +20,7 @@ export const Rating: ForwardRefComponent<RatingProps>;
 export const ratingClassNames: SlotClassNames<RatingSlots>;
 
 // @public (undocumented)
-export type RatingContextValue = Pick<RatingState, 'appearance' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'precision' | 'size' | 'value' | 'hoveredValue'>;
+export type RatingContextValue = Pick<RatingState, 'appearance' | 'bordered' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'precision' | 'size' | 'unselectedAppearance' | 'value' | 'hoveredValue'>;
 
 // @public (undocumented)
 export type RatingContextValues = {
@@ -49,7 +49,7 @@ export type RatingItemSlots = {
 };
 
 // @public
-export type RatingItemState = ComponentState<RatingItemSlots> & Required<Pick<RatingItemProps, 'value'>> & Pick<RatingState, 'mode' | 'precision' | 'size'> & {
+export type RatingItemState = ComponentState<RatingItemSlots> & Required<Pick<RatingItemProps, 'value'>> & Pick<RatingState, 'appearance' | 'bordered' | 'mode' | 'precision' | 'size'> & {
     iconFillWidth: number;
 };
 
@@ -60,7 +60,8 @@ export type RatingOnChangeData = {
 
 // @public
 export type RatingProps = ComponentProps<RatingSlots> & {
-    appearance?: 'filled' | 'outline';
+    appearance?: 'brand' | 'marigold' | 'neutral';
+    bordered?: boolean;
     defaultValue?: number;
     iconFilled?: React_2.ReactElement;
     iconOutline?: React_2.ReactElement;
@@ -70,6 +71,7 @@ export type RatingProps = ComponentProps<RatingSlots> & {
     onChange?: (ev: React_2.SyntheticEvent | Event, data: RatingOnChangeData) => void;
     precision?: boolean;
     size?: 'small' | 'medium' | 'large';
+    unselectedAppearance?: 'filled' | 'outline';
     value?: number;
 };
 
@@ -84,7 +86,7 @@ export type RatingSlots = {
 };
 
 // @public
-export type RatingState = ComponentState<RatingSlots> & Required<Pick<RatingProps, 'appearance' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'precision' | 'size' | 'value'>> & {
+export type RatingState = ComponentState<RatingSlots> & Required<Pick<RatingProps, 'appearance' | 'bordered' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'precision' | 'size' | 'unselectedAppearance' | 'value'>> & {
     hoveredValue?: number | undefined;
 };
 

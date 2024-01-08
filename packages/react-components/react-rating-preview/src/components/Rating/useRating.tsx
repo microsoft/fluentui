@@ -23,7 +23,7 @@ import { StarFilled, StarRegular } from '@fluentui/react-icons';
 export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivElement>): RatingState => {
   const generatedName = useId('rating-');
   const {
-    appearance = props.mode === 'readonly' ? 'filled' : 'outline',
+    appearance = 'neutral',
     iconFilled = <StarFilled />,
     iconOutline = <StarRegular />,
     max = 5,
