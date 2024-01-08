@@ -41,7 +41,7 @@ enum CircleVisbility {
 }
 const getClassNames = classNamesFunction<IVerticalBarChartStyleProps, IVerticalBarChartStyles>();
 
-const DEFAULT_DOMAIN_MARGIN = 8;
+const MIN_DOMAIN_MARGIN = 8;
 
 export interface IVerticalBarChartState extends IBasestate {
   dataPointCalloutProps?: IVerticalBarChartDataPoint; // define this in hover and focus
@@ -102,7 +102,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this.props.data! && this.props.data!.length > 0
         ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
         : XAxisTypes.StringAxis;
-    this._domainMargin = DEFAULT_DOMAIN_MARGIN;
     this._emptyChartId = getId('_VBC_empty');
   }
 
@@ -308,7 +307,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
 
   private _adjustProps(): void {
     this._points = this.props.data || [];
-    this._barWidth = this.props.barWidth || 16;
+    this._barWidth = typeof this.props.barWidth === 'number' ? this.props.barWidth : 16;
+    if (typeof this.props.maxBarWidth === 'number') {
+      this._barWidth = Math.min(this._barWidth, this.props.maxBarWidth);
+    }
+    this._barWidth = Math.max(this._barWidth, 1);
     const { palette } = this.props.theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
     this._isHavingLine = this._checkForLine();
@@ -323,7 +326,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     this._xAxisInnerPadding = Math.max(0, Math.min(this._xAxisInnerPadding, 1));
 
     this._xAxisOuterPadding =
-      typeof xAxisOuterPadding === 'number' ? xAxisOuterPadding : typeof xAxisPadding === 'number' ? xAxisPadding : 0;
+      typeof xAxisOuterPadding === 'number'
+        ? xAxisOuterPadding
+        : typeof xAxisPadding === 'number'
+        ? xAxisPadding
+        : 1 / 3;
     this._xAxisOuterPadding = Math.max(0, Math.min(this._xAxisOuterPadding, 1));
   }
 
@@ -591,7 +598,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onBlur={this._onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, this._barWidth)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
       );
     });
@@ -634,18 +641,20 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       }
       const xPoint = xBarScale(point.x);
       const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
-      let barWidth = typeof this.props.barWidth === 'number' ? this.props.barWidth : xBarScale.bandwidth();
-      barWidth = Math.max(barWidth, 1);
-      if (typeof this.props.maxBarWidth === 'number') {
-        barWidth = Math.min(barWidth, this.props.maxBarWidth);
+      if (typeof this.props.barWidth !== 'number') {
+        this._barWidth = xBarScale.bandwidth();
+        if (typeof this.props.maxBarWidth === 'number') {
+          this._barWidth = Math.min(this._barWidth, this.props.maxBarWidth);
+        }
+        this._barWidth = Math.max(this._barWidth, 1);
       }
       return (
-        <g key={point.x} transform={`translate(${0.5 * (xBarScale.bandwidth() - barWidth)}, 0)`}>
+        <g key={point.x} transform={`translate(${0.5 * (xBarScale.bandwidth() - this._barWidth)}, 0)`}>
           <rect
             id={getId('_VBC_bar_')}
             x={xPoint}
             y={yPoint}
-            width={barWidth}
+            width={this._barWidth}
             height={adjustedBarHeight}
             aria-label={this._getAriaLabel(point)}
             role="img"
@@ -660,7 +669,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
             fill={point.color ? point.color : colorScale(point.y)}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!, barWidth)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
       );
     });
@@ -816,14 +825,18 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     );
   };
 
-  private _renderBarLabel(xPoint: number, yPoint: number, barValue: number, legend: string, barWidth: number) {
-    if (this.props.hideLabels || barWidth < 16 || !(this._legendHighlighted(legend) || this._noLegendHighlighted())) {
+  private _renderBarLabel(xPoint: number, yPoint: number, barValue: number, legend: string) {
+    if (
+      this.props.hideLabels ||
+      this._barWidth < 16 ||
+      !(this._legendHighlighted(legend) || this._noLegendHighlighted())
+    ) {
       return null;
     }
 
     return (
       <text
-        x={xPoint + barWidth / 2}
+        x={xPoint + this._barWidth / 2}
         y={yPoint - 6}
         textAnchor="middle"
         className={this._classNames.barLabel}
@@ -835,10 +848,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   }
 
   private _getDomainMargins = (containerWidth: number): IMargins => {
-    if (this._xAxisType !== XAxisTypes.NumericAxis) {
-      const { xAxisOuterPadding, xAxisPadding } = this.props;
-      this._domainMargin =
-        typeof xAxisOuterPadding === 'number' || typeof xAxisPadding === 'number' ? 0 : DEFAULT_DOMAIN_MARGIN;
+    if (this._xAxisType === XAxisTypes.NumericAxis) {
+      this._domainMargin = MIN_DOMAIN_MARGIN;
+    } else {
+      this._domainMargin = 0;
     }
 
     return {

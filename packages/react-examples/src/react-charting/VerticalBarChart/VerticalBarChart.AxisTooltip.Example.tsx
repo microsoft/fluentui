@@ -30,7 +30,7 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
       barWidth: 16,
       maxBarWidth: 100,
       xAxisInnerPadding: 0.67,
-      xAxisOuterPadding: 0,
+      xAxisOuterPadding: 0.33,
     };
   }
   public render(): JSX.Element {
