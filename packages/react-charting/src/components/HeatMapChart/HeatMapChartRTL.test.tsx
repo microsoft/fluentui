@@ -2,9 +2,8 @@ import * as React from 'react';
 import { queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import { HeatMapChart, IHeatMapChartProps } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
-import { screen, fireEvent, act } from '@testing-library/react';
-import { HeatMapChartBase } from './HeatMapChart.base';
+import { getByClass } from '../../utilities/TestUtility.test';
+import { screen, fireEvent } from '@testing-library/react';
 
 expect.extend(toHaveNoViolations);
 
