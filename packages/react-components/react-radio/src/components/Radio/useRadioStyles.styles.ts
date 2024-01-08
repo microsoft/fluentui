@@ -14,9 +14,40 @@ export const radioClassNames: SlotClassNames<RadioSlots> = {
 // The indicator size is used by the indicator and label styles
 const indicatorSize = '16px';
 
+// CSS variables used internally in Radio's styles
+const vars = {
+  indicatorBorderColor: '--fui-Radio__indicatorBorderColor',
+  indicatorBorderColorChecked: '--fui-Radio__indicatorBorderColor--checked',
+  indicatorColor: '--fui-Radio__indicatorColor',
+  indicatorContent: '--fui-Radio__indicatorContent',
+  indicatorOpacity: '--fui-Radio__indicatorOpacity',
+  labelColor: '--fui-Radio__labelColor',
+} as const;
+
 const useRootBaseClassName = makeResetStyles({
   display: 'inline-flex',
   position: 'relative',
+  cursor: 'pointer',
+
+  ':hover': {
+    [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessibleHover,
+    [vars.indicatorBorderColorChecked]: tokens.colorCompoundBrandStrokeHover,
+    [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Hover,
+    [vars.labelColor]: tokens.colorNeutralForeground2,
+  },
+  ':active': {
+    [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessiblePressed,
+    [vars.indicatorBorderColorChecked]: tokens.colorCompoundBrandStrokePressed,
+    [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Pressed,
+    [vars.labelColor]: tokens.colorNeutralForeground1,
+  },
+
+  '@media (forced-colors: active)': {
+    ':hover, :active': {
+      [vars.indicatorColor]: 'Highlight',
+    },
+  },
+
   ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
 });
 
@@ -24,6 +55,10 @@ const useRootStyles = makeStyles({
   vertical: {
     flexDirection: 'column',
     alignItems: 'center',
+  },
+
+  disabled: {
+    cursor: 'default',
   },
 });
 
@@ -36,97 +71,18 @@ const useInputBaseClassName = makeResetStyles({
   boxSizing: 'border-box',
   margin: 0,
   opacity: 0,
+  cursor: 'inherit',
 
-  ':enabled': {
-    cursor: 'pointer',
-    [`& ~ .${radioClassNames.label}`]: {
-      cursor: 'pointer',
+  [`:checked ~ .${radioClassNames.indicator}`]: {
+    [vars.indicatorBorderColor]: `var(${vars.indicatorBorderColorChecked}, ${tokens.colorCompoundBrandStroke})`,
+    [vars.indicatorContent]: '""',
+    [vars.indicatorOpacity]: 1,
+    '@media (forced-colors: active)': {
+      [vars.indicatorColor]: 'Highlight',
     },
   },
-
-  // Colors for the unchecked state
-  ':enabled:not(:checked)': {
-    [`& ~ .${radioClassNames.label}`]: {
-      color: tokens.colorNeutralForeground3,
-    },
-    [`& ~ .${radioClassNames.indicator}`]: {
-      borderColor: tokens.colorNeutralStrokeAccessible,
-      '@media (forced-colors: active)': {
-        borderColor: 'ButtonBorder',
-      },
-    },
-
-    ':hover': {
-      [`& ~ .${radioClassNames.label}`]: {
-        color: tokens.colorNeutralForeground2,
-      },
-      [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorNeutralStrokeAccessibleHover,
-      },
-    },
-
-    ':hover:active': {
-      [`& ~ .${radioClassNames.label}`]: {
-        color: tokens.colorNeutralForeground1,
-      },
-      [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorNeutralStrokeAccessiblePressed,
-      },
-    },
-  },
-
-  // Colors for the checked state
-  ':enabled:checked': {
-    [`& ~ .${radioClassNames.label}`]: {
-      color: tokens.colorNeutralForeground1,
-    },
-    [`& ~ .${radioClassNames.indicator}`]: {
-      borderColor: tokens.colorCompoundBrandStroke,
-      color: tokens.colorCompoundBrandForeground1,
-      '@media (forced-colors: active)': {
-        borderColor: 'Highlight',
-        color: 'Highlight',
-        '::after': {
-          backgroundColor: 'Highlight',
-        },
-      },
-    },
-
-    ':hover': {
-      [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorCompoundBrandStrokeHover,
-        color: tokens.colorCompoundBrandForeground1Hover,
-      },
-    },
-
-    ':hover:active': {
-      [`& ~ .${radioClassNames.indicator}`]: {
-        borderColor: tokens.colorCompoundBrandStrokePressed,
-        color: tokens.colorCompoundBrandForeground1Pressed,
-      },
-    },
-  },
-
-  // Colors for the disabled state
-  ':disabled': {
-    [`& ~ .${radioClassNames.label}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
-      cursor: 'default',
-      '@media (forced-colors: active)': {
-        color: 'GrayText',
-      },
-    },
-    [`& ~ .${radioClassNames.indicator}`]: {
-      borderColor: tokens.colorNeutralStrokeDisabled,
-      color: tokens.colorNeutralForegroundDisabled,
-      '@media (forced-colors: active)': {
-        borderColor: 'GrayText',
-        color: 'GrayText',
-        '::after': {
-          backgroundColor: 'GrayText',
-        },
-      },
-    },
+  [`:checked ~ .${radioClassNames.label}`]: {
+    [vars.labelColor]: tokens.colorNeutralForeground1,
   },
 });
 
@@ -134,20 +90,6 @@ const useInputStyles = makeStyles({
   below: {
     width: '100%',
     height: `calc(${indicatorSize} + 2 * ${tokens.spacingVerticalS})`,
-  },
-
-  // If the indicator has no children, use the ::after pseudo-element for the checked state
-  defaultIndicator: {
-    [`:checked ~ .${radioClassNames.indicator}::after`]: {
-      content: '""',
-    },
-  },
-
-  // If the indicator has a child, hide it until the radio is checked
-  customIndicator: {
-    [`:not(:checked) ~ .${radioClassNames.indicator} > *`]: {
-      opacity: '0',
-    },
   },
 });
 
@@ -164,21 +106,49 @@ const useIndicatorBaseClassName = makeResetStyles({
   justifyContent: 'center',
   overflow: 'hidden',
 
-  border: tokens.strokeWidthThin + ' solid',
+  color: `var(${vars.indicatorColor}, ${tokens.colorCompoundBrandForeground1})`,
+  borderColor: `var(${vars.indicatorBorderColor}, ${tokens.colorNeutralStrokeAccessible})`,
+  borderStyle: 'solid',
+  borderWidth: tokens.strokeWidthThin,
   borderRadius: tokens.borderRadiusCircular,
   margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
-  fill: 'currentColor',
+  fill: 'currentcolor',
   pointerEvents: 'none',
 
   '::after': {
+    content: `var(${vars.indicatorContent})`,
     position: 'absolute',
-    width: indicatorSize,
-    height: indicatorSize,
-    borderRadius: tokens.borderRadiusCircular,
+    width: '100%',
+    height: '100%',
+    borderRadius: 'inherit',
     // Use a transform to avoid pixel rounding errors at 125% DPI
     // https://github.com/microsoft/fluentui/issues/30025
     transform: 'scale(0.625)',
-    backgroundColor: 'currentColor',
+    backgroundColor: 'currentcolor',
+    forcedColorAdjust: 'none', // currentcolor inherits the correct forced colors
+  },
+
+  '@media (forced-colors: active)': {
+    color: `var(${vars.indicatorColor}, ButtonText)`,
+  },
+});
+
+const useIndicatorStyles = makeStyles({
+  disabled: {
+    ...shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
+    color: tokens.colorNeutralForegroundDisabled,
+    '@media (forced-colors: active)': {
+      color: 'GrayText',
+    },
+  },
+
+  customIcon: {
+    '> *': {
+      opacity: `var(${vars.indicatorOpacity}, 0)`,
+    },
+    '::after': {
+      content: 'unset',
+    },
   },
 });
 
@@ -187,6 +157,11 @@ const useLabelStyles = makeStyles({
   base: {
     alignSelf: 'center',
     ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
+    cursor: 'inherit',
+  },
+
+  enabled: {
+    color: `var(${vars.labelColor}, ${tokens.colorNeutralForeground3})`,
   },
 
   after: {
@@ -215,6 +190,7 @@ export const useRadioStyles_unstable = (state: RadioState) => {
   state.root.className = mergeClasses(
     radioClassNames.root,
     rootBaseClassName,
+    state.input.disabled && rootStyles.disabled,
     labelPosition === 'below' && rootStyles.vertical,
     state.root.className,
   );
@@ -225,14 +201,16 @@ export const useRadioStyles_unstable = (state: RadioState) => {
     radioClassNames.input,
     inputBaseClassName,
     labelPosition === 'below' && inputStyles.below,
-    state.indicator.children ? inputStyles.customIndicator : inputStyles.defaultIndicator,
     state.input.className,
   );
 
   const indicatorBaseClassName = useIndicatorBaseClassName();
+  const indicatorStyles = useIndicatorStyles();
   state.indicator.className = mergeClasses(
     radioClassNames.indicator,
     indicatorBaseClassName,
+    state.input.disabled && indicatorStyles.disabled,
+    !!state.indicator.children && indicatorStyles.customIcon,
     state.indicator.className,
   );
 
@@ -241,6 +219,7 @@ export const useRadioStyles_unstable = (state: RadioState) => {
     state.label.className = mergeClasses(
       radioClassNames.label,
       labelStyles.base,
+      !state.input.disabled && labelStyles.enabled,
       labelStyles[labelPosition],
       state.label.className,
     );
