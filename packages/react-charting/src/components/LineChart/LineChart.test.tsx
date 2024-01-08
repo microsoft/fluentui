@@ -6,6 +6,7 @@ import { ILineChartPoints, ILineChartProps, LineChart } from './index';
 import { ILineChartState, LineChartBase } from './LineChart.base';
 import { ICustomizedCalloutData } from '../../index';
 import toJson from 'enzyme-to-json';
+import { act } from 'react-dom/test-utils';
 
 // Wrapper of the LineChart to be tested.
 let wrapper: ReactWrapper<ILineChartProps, ILineChartState, LineChartBase> | undefined;
@@ -75,45 +76,55 @@ describe('LineChart snapShot testing', () => {
   });
   // @FIXME: this tests is failing with jest 29.7.0
   it.skip('renders LineChart correctly', async () => {
-    wrapper = mount(<LineChart data={chartPoints} />);
-    await new Promise(resolve => setTimeout(resolve));
-    wrapper.update();
-    const tree = toJson(wrapper, { mode: 'deep' });
+    await act(async () => {
+      wrapper = mount(<LineChart data={chartPoints} />);
+      await new Promise(resolve => setTimeout(resolve));
+      wrapper.update();
+    });
+    const tree = toJson(wrapper!, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
   // @FIXME: this tests is failing with jest 29.7.0
   it.skip('renders hideLegend correctly', async () => {
-    wrapper = mount(<LineChart data={chartPoints} hideLegend={true} />);
-    await new Promise(resolve => setTimeout(resolve));
-    wrapper.update();
-    const tree = toJson(wrapper, { mode: 'deep' });
+    await act(async () => {
+      wrapper = mount(<LineChart data={chartPoints} hideLegend={true} />);
+      await new Promise(resolve => setTimeout(resolve));
+      wrapper.update();
+    });
+    const tree = toJson(wrapper!, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
   // @FIXME: this tests is failing with jest 29.7.0
   it.skip('renders hideTooltip correctly', async () => {
-    wrapper = mount(<LineChart data={chartPoints} hideTooltip={true} />);
-    await new Promise(resolve => setTimeout(resolve));
-    wrapper.update();
-    const tree = toJson(wrapper, { mode: 'deep' });
+    await act(async () => {
+      wrapper = mount(<LineChart data={chartPoints} hideTooltip={true} />);
+      await new Promise(resolve => setTimeout(resolve));
+      wrapper.update();
+    });
+    const tree = toJson(wrapper!, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
   // @FIXME: this tests is failing with jest 29.7.0
   it.skip('renders enabledLegendsWrapLines correctly', async () => {
-    wrapper = mount(<LineChart data={chartPoints} enabledLegendsWrapLines={true} />);
-    await new Promise(resolve => setTimeout(resolve));
-    wrapper.update();
-    const tree = toJson(wrapper, { mode: 'deep' });
+    await act(async () => {
+      wrapper = mount(<LineChart data={chartPoints} enabledLegendsWrapLines={true} />);
+      await new Promise(resolve => setTimeout(resolve));
+      wrapper.update();
+    });
+    const tree = toJson(wrapper!, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
   // @FIXME: this tests is failing with jest 29.7.0
   it.skip('renders showXAxisLablesTooltip correctly', async () => {
-    wrapper = mount(<LineChart data={chartPoints} showXAxisLablesTooltip={true} />);
-    await new Promise(resolve => setTimeout(resolve));
-    wrapper.update();
+    await act(async () => {
+      wrapper = mount(<LineChart data={chartPoints} showXAxisLablesTooltip={true} />);
+      await new Promise(resolve => setTimeout(resolve));
+      wrapper.update();
+    });
     if (wrapper) {
       const tree = toJson(wrapper, { mode: 'deep' });
       expect(tree).toMatchSnapshot();
@@ -132,19 +143,24 @@ describe('LineChart snapShot testing', () => {
         value: mockGetComputedTextLength,
       },
     );
-    wrapper = mount(<LineChart data={chartPoints} wrapXAxisLables={true} />);
-    await new Promise(resolve => setTimeout(resolve));
-    wrapper.update();
+
+    await act(async () => {
+      wrapper = mount(<LineChart data={chartPoints} wrapXAxisLables={true} />);
+      await new Promise(resolve => setTimeout(resolve));
+      wrapper!.update();
+    });
     const tree = toJson(wrapper!, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
   // @FIXME: this tests is failing with jest 29.7.0
   it.skip('renders yAxisTickFormat correctly', async () => {
-    wrapper = mount(<LineChart data={chartPoints} yAxisTickFormat={'/%d'} />);
-    await new Promise(resolve => setTimeout(resolve));
-    wrapper.update();
-    const tree = toJson(wrapper, { mode: 'deep' });
+    await act(async () => {
+      wrapper = mount(<LineChart data={chartPoints} yAxisTickFormat={'/%d'} />);
+      await new Promise(resolve => setTimeout(resolve));
+      wrapper.update();
+    });
+    const tree = toJson(wrapper!, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
@@ -152,11 +168,12 @@ describe('LineChart snapShot testing', () => {
   it.skip('Should render with default colors when line color is not provided', async () => {
     const lineColor = points[0].color;
     delete points[0].color;
-
-    wrapper = mount(<LineChart data={chartPoints} />);
-    await new Promise(resolve => setTimeout(resolve));
-    wrapper.update();
-    const tree = toJson(wrapper, { mode: 'deep' });
+    await act(async () => {
+      wrapper = mount(<LineChart data={chartPoints} />);
+      await new Promise(resolve => setTimeout(resolve));
+      wrapper.update();
+    });
+    const tree = toJson(wrapper!, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
 
     points[0].color = lineColor;
@@ -168,26 +185,37 @@ describe('LineChart - basic props', () => {
   afterEach(sharedAfterEach);
 
   it('Should not mount legend when hideLegend true ', () => {
-    wrapper = mount(<LineChart data={chartPoints} hideLegend={true} />);
-    const hideLegendDOM = wrapper.getDOMNode().querySelectorAll('[class^="legendContainer"]');
+    act(() => {
+      wrapper = mount(<LineChart data={chartPoints} hideLegend={true} />);
+      wrapper.update();
+    });
+    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM.length).toBe(0);
   });
 
   it('Should mount legend when hideLegend false ', () => {
-    wrapper = mount(<LineChart data={chartPoints} hideLegend={false} />);
-    const hideLegendDOM = wrapper.getDOMNode().querySelectorAll('[class^="legendContainer"]');
+    act(() => {
+      wrapper = mount(<LineChart data={chartPoints} hideLegend={false} />);
+      wrapper.update();
+    });
+    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="legendContainer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should mount callout when hideTootip false ', () => {
-    wrapper = mount(<LineChart data={chartPoints} />);
-    const hideLegendDOM = wrapper.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
+    act(() => {
+      wrapper = mount(<LineChart data={chartPoints} />);
+      wrapper.update();
+    });
+    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM).toBeDefined();
   });
 
   it('Should not mount callout when hideTootip true ', () => {
-    wrapper = mount(<LineChart data={chartPoints} hideTooltip={true} />);
-    const hideLegendDOM = wrapper.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
+    act(() => {
+      wrapper = mount(<LineChart data={chartPoints} hideTooltip={true} />);
+    });
+    const hideLegendDOM = wrapper!.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
     expect(hideLegendDOM.length).toBe(0);
   });
 });
@@ -200,8 +228,10 @@ describe('Render calling with respective to props', () => {
       height: 300,
       width: 600,
     };
-    const component = mount(<LineChart {...props} />);
-    component.setProps({ ...props });
+    act(() => {
+      const component = mount(<LineChart {...props} />);
+      component.setProps({ ...props });
+    });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
   });
@@ -214,8 +244,10 @@ describe('Render calling with respective to props', () => {
       width: 600,
       hideLegend: true,
     };
-    const component = mount(<LineChart {...props} />);
-    component.setProps({ ...props, hideTooltip: true });
+    act(() => {
+      const component = mount(<LineChart {...props} />);
+      component.setProps({ ...props, hideTooltip: true });
+    });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
   });
@@ -242,77 +274,89 @@ describe('LineChart - mouse events', () => {
 
   // @FIXME: this tests is failing with jest 29.7.0
   it.skip('Should render callout correctly on mouseover', () => {
-    // document.getElementbyId() returns null if component is not attached to DOM
-    wrapper = mount(<LineChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
-    wrapper.find('line[id^="lineID"]').at(0).simulate('mouseover');
+    act(() => {
+      // document.getElementbyId() returns null if component is not attached to DOM
+      wrapper = mount(<LineChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
+      wrapper.find('line[id^="lineID"]').at(0).simulate('mouseover');
+    });
     // Direct DOM changes like toggling visibility attr of verticalLine dont seem to update enzyme wrapper here
     // but these changes are visible in wrapper.html()
-    const tree = toJson(wrapper, { mode: 'deep' });
+    const tree = toJson(wrapper!, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
   it('Should render callout correctly on mousemove', () => {
-    wrapper = mount(<LineChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
-    wrapper.find('path[id^="circle"]').at(0).simulate('mousemove');
-    const html1 = wrapper.html();
-    wrapper.find('path[id^="circle"]').at(1).simulate('mousemove');
-    const html2 = wrapper.html();
-    expect(html1).not.toBe(html2);
+    act(() => {
+      wrapper = mount(<LineChart data={chartPoints} calloutProps={{ doNotLayer: true }} />, { attachTo: root });
+      wrapper.find('path[id^="circle"]').at(0).simulate('mousemove');
+      const html1 = wrapper.html();
+      wrapper.find('path[id^="circle"]').at(1).simulate('mousemove');
+      const html2 = wrapper.html();
+      expect(html1).not.toBe(html2);
+    });
   });
 
   // @FIXME: this tests is failing with jest 29.7.0
   it.skip('Should render customized callout on mouseover', () => {
-    wrapper = mount(
-      <LineChart
-        data={chartPoints}
-        calloutProps={{ doNotLayer: true }}
-        onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
-          props ? (
-            <div>
-              <pre>{JSON.stringify(props, null, 2)}</pre>
-            </div>
-          ) : null
-        }
-      />,
-      { attachTo: root },
-    );
-    wrapper.find('line[id^="lineID"]').at(0).simulate('mouseover');
-    const tree = toJson(wrapper, { mode: 'deep' });
+    act(() => {
+      wrapper = mount(
+        <LineChart
+          data={chartPoints}
+          calloutProps={{ doNotLayer: true }}
+          onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
+            props ? (
+              <div>
+                <pre>{JSON.stringify(props, null, 2)}</pre>
+              </div>
+            ) : null
+          }
+        />,
+        { attachTo: root },
+      );
+      wrapper.find('line[id^="lineID"]').at(0).simulate('mouseover');
+    });
+    const tree = toJson(wrapper!, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
   // @FIXME: this tests is failing with jest 29.7.0
   it.skip('Should render customized callout per stack on mouseover', () => {
-    wrapper = mount(
-      <LineChart
-        data={chartPoints}
-        calloutProps={{ doNotLayer: true }}
-        onRenderCalloutPerStack={(props: ICustomizedCalloutData) =>
-          props ? (
-            <div>
-              <pre>{JSON.stringify(props, null, 2)}</pre>
-            </div>
-          ) : null
-        }
-      />,
-      { attachTo: root },
-    );
-    wrapper.find('line[id^="lineID"]').at(0).simulate('mouseover');
-    const tree = toJson(wrapper, { mode: 'deep' });
+    act(() => {
+      wrapper = mount(
+        <LineChart
+          data={chartPoints}
+          calloutProps={{ doNotLayer: true }}
+          onRenderCalloutPerStack={(props: ICustomizedCalloutData) =>
+            props ? (
+              <div>
+                <pre>{JSON.stringify(props, null, 2)}</pre>
+              </div>
+            ) : null
+          }
+        />,
+        { attachTo: root },
+      );
+      wrapper.find('line[id^="lineID"]').at(0).simulate('mouseover');
+    });
+    const tree = toJson(wrapper!, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
   it('No empty chart aria label div rendered', () => {
-    wrapper = mount(<LineChart data={chartPoints} />);
-    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    act(() => {
+      wrapper = mount(<LineChart data={chartPoints} />);
+    });
+    const renderedDOM = wrapper!.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
     expect(renderedDOM!.length).toBe(0);
   });
 
   it('Empty chart aria label div rendered', () => {
-    wrapper = mount(<LineChart data={emptyChartPoints} />);
-    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    act(() => {
+      wrapper = mount(<LineChart data={emptyChartPoints} />);
+    });
+    const renderedDOM = wrapper!.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
     expect(renderedDOM!.length).toBe(1);
   });
 });

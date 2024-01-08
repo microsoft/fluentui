@@ -25,12 +25,16 @@ const useStyles = makeStyles({
     ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalS),
     position: 'relative',
 
-    '&:hover': {
+    ':hover': {
       backgroundColor: tokens.colorNeutralBackground1Hover,
+      color: tokens.colorNeutralForeground1Hover,
+      [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForeground1Hover),
     },
 
-    '&:active': {
+    ':active': {
       backgroundColor: tokens.colorNeutralBackground1Pressed,
+      color: tokens.colorNeutralForeground1Pressed,
+      [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForeground1Hover),
     },
   },
 
@@ -58,12 +62,16 @@ const useStyles = makeStyles({
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
 
-    '&:hover': {
+    ':hover': {
       backgroundColor: tokens.colorTransparentBackground,
+      color: tokens.colorNeutralForegroundDisabled,
+      [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
     },
 
-    '&:active': {
+    ':active': {
       backgroundColor: tokens.colorTransparentBackground,
+      color: tokens.colorNeutralForegroundDisabled,
+      [`& .${optionClassNames.checkIcon}`]: shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
     },
 
     '@media (forced-colors: active)': {
@@ -119,6 +127,7 @@ const useStyles = makeStyles({
       color: 'GrayText',
     },
   },
+  multiselectCheckDisabled: shorthands.borderColor(tokens.colorNeutralForegroundDisabled),
 });
 
 /**
@@ -144,6 +153,7 @@ export const useOptionStyles_unstable = (state: OptionState): OptionState => {
       selected && styles.selectedCheck,
       selected && multiselect && styles.selectedMultiselectCheck,
       disabled && styles.checkDisabled,
+      disabled && multiselect && styles.multiselectCheckDisabled,
       state.checkIcon.className,
     );
   }

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { NavContextValue } from '../NavContext.types';
-import type { NavGroupValue } from '../NavGroup/NavGroup.types';
+import type { NavContextValue, NavItemValue } from '../NavContext.types';
 
 export type NavSlots = {
   root: NonNullable<Slot<'div'>>;
@@ -13,37 +12,37 @@ export type NavSlots = {
 export type NavProps = ComponentProps<NavSlots> & {
   /**
    * Nav size may change between unselected and selected states.
-   * The default scenario is a selected NavGroup has bold text.
+   * The default scenario is a selected NavItem has bold text.
    *
-   * When true, this property requests navGroups be the same size whether unselected or selected.
+   * When true, this property requests navItems be the same size whether unselected or selected.
    * @default true
    */
-  reserveSelectedNavGroupSpace?: boolean;
+  reserveSelectedNavItemSpace?: boolean;
 
   /**
-   * The value of the navGroup to be selected by default.
+   * The value of the navItem to be selected by default.
    * Typically useful when the selectedValue is uncontrolled.
    *  Mutually exclusive with selectedValue.
    */
-  defaultSelectedValue?: NavGroupValue;
+  defaultSelectedValue?: NavItemValue;
 
   /**
-   * Raised when a navGroup is selected.
+   * Raised when a navItem is selected.
    */
-  onNavGroupSelect?: EventHandler<OnNavGroupSelectData>;
+  onNavItemSelect?: EventHandler<OnNavItemSelectData>;
 
   /**
-   * The value of the currently selected navGroup.
+   * The value of the currently selected navItem.
    * Mutually exclusive with defaultSelectedValue.
    */
-  selectedValue?: NavGroupValue;
+  selectedValue?: NavItemValue;
 };
 
-export type OnNavGroupSelectData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
+export type OnNavItemSelectData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
   /**
-   * The value of the selected navGroup.
+   * The value of the selected navItem.
    */
-  value: NavGroupValue;
+  value: NavItemValue;
 };
 
 /**

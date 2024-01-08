@@ -32,6 +32,7 @@ export const useComboboxBaseState = (
   const [focusVisible, setFocusVisible] = React.useState(false);
 
   // track focused state to conditionally render collapsed listbox
+  // when the trigger is focused - the listbox should but hidden until the open state is changed
   const [hasFocus, setHasFocus] = React.useState(false);
 
   const ignoreNextBlur = React.useRef(false);

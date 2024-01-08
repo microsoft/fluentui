@@ -16,7 +16,14 @@ const Default = ({ freeform }: Pick<TimePickerProps, 'freeform'>) => {
   };
   return (
     <div>
-      <TimePicker freeform={freeform} startHour={10} endHour={20} increment={60} onTimeChange={onTimeChange} />
+      <TimePicker
+        freeform={freeform}
+        startHour={10}
+        endHour={20}
+        increment={60}
+        onTimeChange={onTimeChange}
+        hourCycle="h23"
+      />
       {<div id="selected-time-text">{selectedTimeText}</div>}
     </div>
   );
@@ -43,6 +50,7 @@ const Controlled = ({ freeform }: Pick<TimePickerProps, 'freeform'>) => {
         startHour={10}
         endHour={20}
         increment={60}
+        hourCycle="h23"
         selectedTime={selectedTime}
         onTimeChange={onTimeChange}
         value={value}
@@ -179,6 +187,7 @@ describe('TimePicker with custom parsing', () => {
           startHour={9}
           endHour={14}
           increment={60}
+          hourCycle="h23"
           formatDateToTimeString={formatDateToTimeString}
           parseTimeStringToDate={parseTimeStringToDate}
           onTimeChange={onTimeChange}

@@ -7,7 +7,7 @@
 /// <reference types="react" />
 
 import type { CalendarProps } from '@fluentui/react-calendar-compat';
-import type { CalendarStrings } from '@fluentui/react-calendar-compat';
+import { CalendarStrings } from '@fluentui/react-calendar-compat';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { DateFormatting } from '@fluentui/react-calendar-compat';
@@ -20,6 +20,8 @@ import type { PositioningProps } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+
+export { CalendarStrings }
 
 // @public (undocumented)
 export const DatePicker: ForwardRefComponent<DatePickerProps>;

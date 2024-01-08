@@ -83,7 +83,6 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
     focusVisible: boolean;
 
     /**
-     * @deprecated - no longer used internally
      * whether the combobox/dropdown currently has focus
      */
     hasFocus: boolean;
@@ -98,9 +97,6 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
 
     setFocusVisible(focusVisible: boolean): void;
 
-    /**
-     * @deprecated - no longer used internally
-     */
     setHasFocus(hasFocus: boolean): void;
 
     setOpen(event: ComboboxBaseOpenEvents, newState: boolean): void;
