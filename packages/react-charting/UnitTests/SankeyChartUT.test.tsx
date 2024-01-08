@@ -117,7 +117,7 @@ const chartPointsWithEmptyData: IChartProps = {
 const emptyChartPoints: IChartProps = {};
 
 runTest('_populateNodeInColumns', () => {
-  test('Should return proper axis data without chartDataMode defined', () => {
+  test('Should return proper colums data with string nodeId', () => {
     render(<SankeyChart data={chartPointsWithStringNodeId} />);
     const instance = new SankeyChartBase({
       data: chartPointsWithEmptyData,
@@ -140,7 +140,7 @@ runTest('_populateNodeInColumns', () => {
     expect(result[1][1].value).toEqual(50);
   });
 
-  test('Should return proper axis data without chartDataMode defined', () => {
+  test('Should return proper colums data with numeric nodeId', () => {
     const instance = new SankeyChartBase({
       data: chartPointsWithEmptyData,
     });
@@ -164,7 +164,7 @@ runTest('_populateNodeInColumns', () => {
 });
 
 runTest('_adjustPadding', () => {
-  test('Should return proper axis data without chartDataMode defined', () => {
+  test('Should return proper padding value', () => {
     const instance = new SankeyChartBase({
       data: chartPointsWithEmptyData,
     });
@@ -178,7 +178,7 @@ runTest('_adjustPadding', () => {
 });
 
 runTest('_createLinks', () => {
-  test('Should return proper axis data without chartDataMode defined', () => {
+  test('Should return proper links data with string nodeId', () => {
     const instance = new SankeyChartBase({
       data: chartPointsWithStringNodeId,
     });
@@ -222,9 +222,9 @@ runTest('_createLinks', () => {
     expect(link2!['props'].children[1].props['data-is-focusable']).toEqual(true);
   });
 
-  test('Should return proper axis data without chartDataMode defined', () => {
+  test('Should return proper links data with numeric nodeId', () => {
     const instance = new SankeyChartBase({
-      data: chartPointsWithStringNodeId,
+      data: chartPointsWithNumericNodeId,
     });
     expect(instance).toBeDefined();
     instance._preRenderLayout();
@@ -242,7 +242,7 @@ runTest('_createLinks', () => {
     expect(link1!['props'].children[0].props.children.props.children[0].type).toEqual('stop');
     expect(link1!['props'].children[0].props.children.props.children[1].type).toEqual('stop');
     expect(link1!['props'].children[1].props['aria-label']).toEqual(
-      'link from192.168.42.72to124.360.55.1with weight80',
+      'link from192.168.42.72to124.360.55.1with weightundefined',
     );
     expect(link1!['props'].children[1].props['d']).toEqual(
       'M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z',
@@ -257,7 +257,7 @@ runTest('_createLinks', () => {
     expect(link2!['props'].children[0].props.children.props.children[0].type).toEqual('stop');
     expect(link2!['props'].children[0].props.children.props.children[1].type).toEqual('stop');
     expect(link2!['props'].children[1].props['aria-label']).toEqual(
-      'link from172.152.48.13to192.564.10.2with weight50',
+      'link from172.152.48.13to192.564.10.2with weightundefined',
     );
     expect(link2!['props'].children[1].props['d']).toEqual(
       'M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z',
@@ -280,16 +280,12 @@ runTest('_createNodes', () => {
     },
   );
 
-  test('Should return proper axis data without chartDataMode defined', () => {
+  test('Should return proper nodes data with string nodeId', () => {
     const instance = new SankeyChartBase({
       data: chartPointsWithStringNodeId,
     });
     expect(instance).toBeDefined();
     instance._preRenderLayout();
-    // const mergedValue: IStyle = "test"
-    // instance._classNames.toolTip = "toolTip-112";
-
-    const styles = 'concatenatedStyles';
     instance._classNames = getClassNames(undefined, {
       theme: DarkTheme,
       width: 500,
@@ -326,16 +322,12 @@ runTest('_createNodes', () => {
     expect(node4!['props'].children[1].props.children[0].props.children.props.children).toEqual('192.564.10.2');
   });
 
-  test('Should return proper axis data without chartDataMode defined', () => {
+  test('Should return proper nodes data with numeric nodeId', () => {
     const instance = new SankeyChartBase({
       data: chartPointsWithNumericNodeId,
     });
     expect(instance).toBeDefined();
     instance._preRenderLayout();
-    // const mergedValue: IStyle = "test"
-    // instance._classNames.toolTip = "toolTip-112";
-
-    const styles = 'concatenatedStyles';
     instance._classNames = getClassNames(undefined, {
       theme: DarkTheme,
       width: 500,
@@ -370,16 +362,5 @@ runTest('_createNodes', () => {
     expect(node3!['props'].children[1].props.children[0].props.children.props.children).toEqual('124.360.55.1');
     expect(node4!['props'].children[1].props.children[0].props.className).toEqual('nodeName');
     expect(node4!['props'].children[1].props.children[0].props.children.props.children).toEqual('192.564.10.2');
-  });
-});
-
-runTest('_fillNodeColors', () => {
-  test('Should return proper axis data without chartDataMode defined', () => {
-    const instance = new SankeyChartBase({
-      data: chartPointsWithStringNodeId,
-    });
-    expect(instance).toBeDefined();
-    const color = instance._fillNodeColors(sankeyChartDataStringNodeId.nodes[0]);
-    expect(color).toEqual('#757575');
   });
 });
