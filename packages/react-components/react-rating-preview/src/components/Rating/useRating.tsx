@@ -23,14 +23,14 @@ import { StarFilled, StarRegular } from '@fluentui/react-icons';
 export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivElement>): RatingState => {
   const generatedName = useId('rating-');
   const {
-    appearance = 'neutral',
+    color = 'neutral',
     iconFilled = <StarFilled />,
     iconOutline = <StarRegular />,
     max = 5,
     mode = 'interactive',
     name = generatedName,
     onChange,
-    precision = false,
+    step = 1,
     size = 'medium',
   } = props;
 
@@ -50,7 +50,7 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
 
   //Prevents unnecessary rerendering of children
   const rootChildren = React.useMemo(() => {
-    return mode === 'readonly-compact' ? (
+    return mode === 'read-only-compact' ? (
       <RatingItem value={1} key={1} />
     ) : (
       Array.from(Array(max), (_, i) => <RatingItem value={i + 1} key={i + 1} />)
@@ -58,12 +58,12 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
   }, [mode, max]);
 
   const state: RatingState = {
-    appearance,
+    color,
     iconFilled,
     iconOutline,
     mode,
     name,
-    precision,
+    step,
     size,
     value,
     hoveredValue,

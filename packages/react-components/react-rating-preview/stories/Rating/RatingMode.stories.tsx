@@ -16,27 +16,27 @@ export const Mode = () => {
     <div className={styles.root}>
       <div>
         <Label> Compact </Label>
-        <Rating mode="readonly-compact" ratingLabel={3} ratingCountLabel="1,160" />
+        <Rating mode="read-only-compact" ratingLabel={3} ratingCountLabel="1,160" />
       </div>
       <div>
         <Label> Read Only </Label>
-        <Rating mode="readonly" value={3.5} ratingLabel={3.5} ratingCountLabel="1,160" />
+        <Rating mode="read-only" value={3.5} ratingLabel={3.5} ratingCountLabel="1,160" />
       </div>
       <div>
         <Label> Brand Compact </Label>
-        <Rating appearance="brand" mode="readonly-compact" ratingLabel={3} ratingCountLabel="1,160" />
+        <Rating color="brand" mode="read-only-compact" ratingLabel={3} ratingCountLabel="1,160" />
       </div>
       <div>
         <Label> Brand Read Only </Label>
-        <Rating appearance="brand" mode="readonly" value={3.5} ratingLabel={3.5} ratingCountLabel="1,160" />
+        <Rating color="brand" mode="read-only" value={3.5} ratingLabel={3.5} ratingCountLabel="1,160" />
       </div>
       <div>
         <Label> Marigold Compact </Label>
-        <Rating appearance="marigold" mode="readonly-compact" ratingLabel={3} ratingCountLabel="1,160" />
+        <Rating color="marigold" mode="read-only-compact" ratingLabel={3} ratingCountLabel="1,160" />
       </div>
       <div>
         <Label> Marigold Read Only </Label>
-        <Rating appearance="marigold" mode="readonly" value={3.5} ratingLabel={3.5} ratingCountLabel="1,160" />
+        <Rating color="marigold" mode="read-only" value={3.5} ratingLabel={3.5} ratingCountLabel="1,160" />
       </div>
     </div>
   );

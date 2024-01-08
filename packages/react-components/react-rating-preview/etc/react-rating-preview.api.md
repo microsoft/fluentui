@@ -20,7 +20,7 @@ export const Rating: ForwardRefComponent<RatingProps>;
 export const ratingClassNames: SlotClassNames<RatingSlots>;
 
 // @public (undocumented)
-export type RatingContextValue = Pick<RatingState, 'appearance' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'precision' | 'size' | 'value' | 'hoveredValue'>;
+export type RatingContextValue = Pick<RatingState, 'color' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'step' | 'size' | 'value' | 'hoveredValue'>;
 
 // @public (undocumented)
 export type RatingContextValues = {
@@ -49,7 +49,7 @@ export type RatingItemSlots = {
 };
 
 // @public
-export type RatingItemState = ComponentState<RatingItemSlots> & Required<Pick<RatingItemProps, 'value'>> & Pick<RatingState, 'appearance' | 'mode' | 'precision' | 'size'> & {
+export type RatingItemState = ComponentState<RatingItemSlots> & Required<Pick<RatingItemProps, 'value'>> & Pick<RatingState, 'color' | 'mode' | 'step' | 'size'> & {
     iconFillWidth: number;
 };
 
@@ -60,16 +60,16 @@ export type RatingOnChangeData = {
 
 // @public
 export type RatingProps = ComponentProps<RatingSlots> & {
-    appearance?: 'brand' | 'marigold' | 'neutral';
+    color?: 'brand' | 'marigold' | 'neutral';
     defaultValue?: number;
     iconFilled?: React_2.ReactElement;
     iconOutline?: React_2.ReactElement;
     max?: number;
-    mode?: 'interactive' | 'readonly' | 'readonly-compact';
+    mode?: 'interactive' | 'read-only' | 'read-only-compact';
     name?: string;
     onChange?: (ev: React_2.SyntheticEvent | Event, data: RatingOnChangeData) => void;
-    precision?: boolean;
-    size?: 'small' | 'medium' | 'large' | 'xlarge';
+    step?: 0.5 | 1;
+    size?: 'small' | 'medium' | 'large' | 'extra-large';
     value?: number;
 };
 
@@ -84,7 +84,7 @@ export type RatingSlots = {
 };
 
 // @public
-export type RatingState = ComponentState<RatingSlots> & Required<Pick<RatingProps, 'appearance' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'precision' | 'size' | 'value'>> & {
+export type RatingState = ComponentState<RatingSlots> & Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'step' | 'size' | 'value'>> & {
     hoveredValue?: number | undefined;
 };
 

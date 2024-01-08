@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Rating } from '@fluentui/react-rating-preview';
 
 export const Max = () => {
-  return <Rating max={10} />;
+  return <Rating max={10} defaultValue={5} />;
 };
 
 Max.parameters = {

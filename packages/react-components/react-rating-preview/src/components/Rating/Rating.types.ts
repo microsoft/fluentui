@@ -15,7 +15,7 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    * Controls the appearance of the Rating.
    * @default neutral
    */
-  appearance?: 'brand' | 'marigold' | 'neutral';
+  color?: 'brand' | 'marigold' | 'neutral';
   /**
    * Default value of the Rating
    */
@@ -38,7 +38,7 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    * The mode of the rating.
    * @default 'interactive'
    */
-  mode?: 'interactive' | 'readonly' | 'readonly-compact';
+  mode?: 'interactive' | 'read-only' | 'read-only-compact';
   /**
    * Name for the Radio inputs. If not provided, one will be automatically generated
    */
@@ -49,14 +49,14 @@ export type RatingProps = ComponentProps<RatingSlots> & {
   onChange?: (ev: React.SyntheticEvent | Event, data: RatingOnChangeData) => void;
   /**
    * Sets the precision to allow half-filled shapes in Rating
-   * @default false
+   * @default 1
    */
-  precision?: boolean;
+  step?: 0.5 | 1;
   /**
    * Sets the size of the Rating items.
    * @default medium
    */
-  size?: 'small' | 'medium' | 'large' | 'xlarge';
+  size?: 'small' | 'medium' | 'large' | 'extra-large';
   /**
    * The value of the rating
    */
@@ -77,15 +77,13 @@ export type RatingOnChangeData = {
  * State used in rendering Rating
  */
 export type RatingState = ComponentState<RatingSlots> &
-  Required<
-    Pick<RatingProps, 'appearance' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'precision' | 'size' | 'value'>
-  > & {
+  Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'step' | 'size' | 'value'>> & {
     hoveredValue?: number | undefined;
   };
 
 export type RatingContextValue = Pick<
   RatingState,
-  'appearance' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'precision' | 'size' | 'value' | 'hoveredValue'
+  'color' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'step' | 'size' | 'value' | 'hoveredValue'
 >;
 
 export type RatingContextValues = {

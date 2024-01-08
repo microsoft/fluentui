@@ -17,7 +17,7 @@ export const Size = () => {
       <Rating defaultValue={3} size="small" />
       <Rating defaultValue={3} size="medium" />
       <Rating defaultValue={3} size="large" />
-      <Rating defaultValue={3} size="xlarge" />
+      <Rating defaultValue={3} size="extra-large" />
     </div>
   );
 };
