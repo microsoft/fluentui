@@ -1,13 +1,15 @@
 import { spawnSync } from 'child_process';
-import * as path from 'path';
 import * as fs from 'fs';
-import { argv } from 'yargs';
+import * as path from 'path';
 
-import { findGitRoot, PackageJson } from '@fluentui/scripts-monorepo';
+import { type PackageJson, workspaceRoot } from '@fluentui/scripts-monorepo';
+import * as yargs from 'yargs';
+
+main();
 
 function fluentuiLernaPublish(bumpType: 'patch' | 'minor' | 'canary', skipConfirm = false, npmTagForCanary = 'beta') {
-  const gitRoot = findGitRoot();
-  const fluentRoot = path.resolve(gitRoot, 'packages', 'fluentui');
+  const gitRoot = workspaceRoot;
+  const fluentRoot = path.resolve(workspaceRoot, 'packages', 'fluentui');
 
   let lernaPublishArgs: string[];
   switch (bumpType) {
@@ -16,13 +18,13 @@ function fluentuiLernaPublish(bumpType: 'patch' | 'minor' | 'canary', skipConfir
       lernaPublishArgs = [
         'lerna',
         'publish',
-        "--tag-version-prefix='@fluentui/react-northstar_v'", // HEADS UP: also see yarn stats:save in azure-pipelines.perf-test.yml
+        bumpType,
+        "--tag-version-prefix='@fluentui/react-northstar_v'", // HEADS UP: also see yarn northstar:stats:save in azure-pipelines.perf-test.yml
         '--no-git-reset',
         '--force-publish',
         '--registry',
         'https://registry.npmjs.org',
         '--no-verify-access', // Lerna doesn't work with NPM automation tokens (https://github.com/lerna/lerna/issues/2788)
-        bumpType,
       ];
       break;
     case 'canary':
@@ -92,7 +94,7 @@ const execCommandSync = (cwd: string, command: string, args: string[]) => {
 };
 
 function fluentuiPostPublishValidation() {
-  const gitRoot = findGitRoot();
+  const gitRoot = workspaceRoot;
 
   const branch = execCommandSync(gitRoot, 'git', ['branch', '--show-current']);
   execCommandSync(gitRoot, 'git', ['fetch', 'origin']);
@@ -113,8 +115,8 @@ function fluentuiPostPublishValidation() {
 
 // pack all public fluent ui packages, used by ci to store nightly built artifacts
 function packFluentTarballs() {
-  const gitRoot = findGitRoot();
-  const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
+  const gitRoot = workspaceRoot;
+  const fluentRoot = path.resolve(gitRoot, 'packages', 'fluentui');
 
   const TODAY = new Date().toISOString().split('T')[0]; // yyyy-mm-dd
 
@@ -164,33 +166,62 @@ function packFluentTarballs() {
 /**
  * publish CLI for @fluentui/react-northstar
  */
-function run() {
-  const task = argv._[0];
-  const skipConfirm = !!argv.yes;
-  const tag = argv['dist-tag'] as string;
+function main() {
+  const args = processArgs();
+  const command = args._[0];
 
-  switch (task) {
-    case 'pack-nightly':
-      packFluentTarballs();
-      break;
-    case 'publish-canary':
-      fluentuiLernaPublish('canary', skipConfirm, tag);
-      break;
-
-    case 'publish-patch':
-      fluentuiLernaPublish('patch', skipConfirm);
-      break;
-
-    case 'publish-minor':
-      fluentuiLernaPublish('minor', skipConfirm);
-      break;
-
-    case 'post-publish':
-      fluentuiPostPublishValidation();
-      break;
-
-    default:
-      throw new Error(`fluent ui publish script does not recognize task '${task}'`);
+  if (command === 'pack-nightly') {
+    packFluentTarballs();
+    return;
   }
+
+  if (command === 'bump') {
+    const { semverType, yes, distTag, postValidate } = args as unknown as {
+      semverType: 'patch' | 'minor' | 'canary';
+      distTag?: string;
+      yes: boolean;
+      postValidate: boolean;
+    };
+
+    fluentuiLernaPublish(semverType, yes, distTag);
+    postValidate && fluentuiPostPublishValidation();
+
+    return;
+  }
+
+  throw new Error(`Invalid command/arguments provided`);
 }
-run();
+
+function processArgs() {
+  const args = yargs
+    .scriptName('northstar-publish')
+    .command('bump <semver-type>', 'Publish packages', _yargs => {
+      _yargs
+        .positional('semver-type', {
+          description: 'Increment version(s) by semver keyword',
+          choices: ['patch', 'minor', 'canary'] as const,
+          demandOption: true,
+        })
+        .option('yes', {
+          type: 'boolean',
+          default: false,
+          description: 'skip lerna prompts',
+        })
+        .option('post-validate', {
+          type: 'boolean',
+          default: true,
+          description: 'execute validation steps after publish',
+        })
+        .option('dist-tag', {
+          type: 'string',
+          description: 'tag for canary release',
+        });
+    })
+    .command('pack-nightly', 'npm pack packages with nightly versioning')
+    .demandCommand(1)
+    .strict()
+    .version(false)
+    .help().argv;
+
+  return args;
+}
