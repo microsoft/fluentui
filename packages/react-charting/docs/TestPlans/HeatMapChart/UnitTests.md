@@ -1,206 +1,59 @@
-**[Unit Test Plan -- Heat Map Chart]{.underline}**
+**Unit Test Plan – Heat Map Chart**
 
-+--------------------------------+------------------------+------------+
-| \*| **[Test steps]{.underline}** | **[Val | **[Tool |
-| | idation]{.underline}** | used]{.un |
-| | | derline}** |
-+================================+========================+============+
-| Test 1: Get X and Y | | |
-+--------------------------------+------------------------+------------+
-| - With string xPoint and | Should return proper X | RTL |
-| yPoint | and Y values for | |
-| | string xPoint and | |
-| | yPoint | |
-+--------------------------------+------------------------+------------+
-| - With numeric xPoint and | Should return proper X | RTL |
-| yPoint | and Y values for | |
-| | numeric xPoint and | |
-| | yPoint | |
-+--------------------------------+------------------------+------------+
-| - With date xPoint and | Should return proper X | RTL |
-| yPoint | and Y values for date | |
-| | xPoint and yPoint | |
-+--------------------------------+------------------------+------------+
-| Test 2: Get Opacity | | |
-+--------------------------------+------------------------+------------+
-| - Non empty data | Should return proper | RTL |
-| | opacity for legends | |
-+--------------------------------+------------------------+------------+
-| Test 3: Create Legend Bars | | |
-+--------------------------------+------------------------+------------+
-| - Non empty data | Should return proper | RTL |
-| | legends data | |
-+--------------------------------+------------------------+------------+
-| Test 4: Get color scale | | |
-+--------------------------------+------------------------+------------+
-| - Non Empty Data | Should return proper | RTL |
-| | color scale data | |
-+--------------------------------+------------------------+------------+
-| Test 5: Get X index | | |
-+--------------------------------+------------------------+------------+
-| - With string xPoint | Should return proper | RTL |
-| | xIndex for string | |
-| | xPoint | |
-+--------------------------------+------------------------+------------+
-| - With numeric xPoint | Should return proper | RTL |
-| | xIndex for number | |
-| | xPoint | |
-+--------------------------------+------------------------+------------+
-| - With date xPoint | Should return proper | RTL |
-| | xIndex for date xPoint | |
-+--------------------------------+------------------------+------------+
-| Test 6: Get Y index | | |
-+--------------------------------+------------------------+------------+
-| - With string yPoint | Should return proper | RTL |
-| | yIndex for string | |
-| | yPoint | |
-+--------------------------------+------------------------+------------+
-| - With numeric yPoint | Should return proper | RTL |
-| | yIndex for numeric | |
-| | yPoint | |
-+--------------------------------+------------------------+------------+
-| - With date yPoint | Should return proper | RTL |
-| | yIndex for date yPoint | |
-+--------------------------------+------------------------+------------+
-| Test 7: Get Aria-Label | | |
-+--------------------------------+------------------------+------------+
-| - With numeric xPoint and | Should return proper | RTL |
-| yPoint | aria-label for numeric | |
-| | xPoint and yPoint | |
-+--------------------------------+------------------------+------------+
-| - With numeric xPoint and | Should return proper | RTL |
-| yPoint without legend | aria-label for numeric | |
-| value | xPoint and yPoint | |
-| | without legend value | |
-+--------------------------------+------------------------+------------+
-| - With string xPoint and | Should return proper | RTL |
-| yPoint | aria-label for String | |
-| | xPoint and yPoint | |
-+--------------------------------+------------------------+------------+
-| - With string xPoint and | Should return proper | RTL |
-| yPoint without legend | aria-label for string | |
-| | xPoint and yPoint | |
-| | without legend | |
-+--------------------------------+------------------------+------------+
-| - With date xPoint and | Should return proper | RTL |
-| yPoint | aria-label for date | |
-| | xPoint and yPoint | |
-+--------------------------------+------------------------+------------+
-| - With date xPoint and | Should return proper | RTL |
-| yPoint without legend | aria-label for date | |
-| | xPoint and yPoint | |
-| | without legend | |
-+--------------------------------+------------------------+------------+
-| - With numeric xPoint and | Should return proper | RTL |
-| date yPoint | aria-label for numeric | |
-| | xPoint and date yPoint | |
-+--------------------------------+------------------------+------------+
-| Test 8: Get formatted label | | |
-| for xAxis data point | | |
-+--------------------------------+------------------------+------------+
-| - Non-empty data | Should return proper | RTLs |
-| | xAxis label for | |
-| | non-empty string | |
-+--------------------------------+------------------------+------------+
-| - Empty data | Should return proper | RTL |
-| | xAxis label for empty | |
-| | string | |
-+--------------------------------+------------------------+------------+
-| Test 8: Get formatted label | | |
-| for yAxis data point | | |
-+--------------------------------+------------------------+------------+
-| - Non-empty data | Should return proper | RTL |
-| | yAxis label for non | |
-| | empty string | |
-+--------------------------------+------------------------+------------+
-| - Empty data | Should return proper | RTL |
-| | yAxis label for empty | |
-| | data | |
-+--------------------------------+------------------------+------------+
-| Test 9: Get string formatted | | |
-| number | | |
-+--------------------------------+------------------------+------------+
-| - With numeric value as a | Should return proper | RTL |
-| string | string formatted | |
-| | number for numeric | |
-| | value | |
-+--------------------------------+------------------------+------------+
-| - With format string | Should return proper | RTL |
-| | string formatted | |
-| | number with format | |
-| | string | |
-+--------------------------------+------------------------+------------+
-| - Empty string | Should return proper | RTL |
-| | string formatted | |
-| | number for empty data | |
-+--------------------------------+------------------------+------------+
-| - With string value | Should return proper | RTL |
-| | string formatted | |
-| | number for string | |
-| | value | |
-+--------------------------------+------------------------+------------+
-| Test 9: Get string formatted | | |
-| date | | |
-+--------------------------------+------------------------+------------+
-| - With numeric point | Should return proper | RTL |
-| | string formatted date | |
-| | for date point | |
-+--------------------------------+------------------------+------------+
-| - With empty value | Should return proper | RTL |
-| | string formatted date | |
-| | for empty point | |
-+--------------------------------+------------------------+------------+
-| - With numeric point and | Should return proper | RTL |
-| format string | string formatted date | |
-| | for date point with | |
-| | format string | |
-+--------------------------------+------------------------+------------+
-| Test 9: Get xAxis data points | | |
-+--------------------------------+------------------------+------------+
-| - With string points | Should return proper | RTL |
-| | xAxis data points for | |
-| | string points | |
-+--------------------------------+------------------------+------------+
-| - With numeric points | \'Should return proper | RTL |
-| | xAxis data points for | |
-| | numeric points | |
-+--------------------------------+------------------------+------------+
-| - With date points | \'Should return proper | RTL |
-| | xAxis data points for | |
-| | date points | |
-+--------------------------------+------------------------+------------+
-| Test 9: Get yAxis data points | | |
-+--------------------------------+------------------------+------------+
-| - With string points | Should return proper | RTL |
-| | yAxis data points for | |
-| | string points | |
-+--------------------------------+------------------------+------------+
-| - With numeric points | Should return proper | RTL |
-| | yAxis data points for | |
-| | numeric points | |
-+--------------------------------+------------------------+------------+
-| - With date points | Should return proper | RTL |
-| | yAxis data points for | |
-| | date points | |
-+--------------------------------+------------------------+------------+
-| Test 10: Create data set | | |
-+--------------------------------+------------------------+------------+
-| - With default axis type | Should return proper | RTL |
-| | data set for default | |
-| | axis type | |
-+--------------------------------+------------------------+------------+
-| - AxisType as string | Should return proper | RTL |
-| | data set for string | |
-| | axis type | |
-+--------------------------------+------------------------+------------+
-| - With date axis data and | Should return proper | RTL |
-| default axis type | data set for date axis | |
-| | with default axis type | |
-+--------------------------------+------------------------+------------+
-| - With date axis data and | Should return proper | RTL |
-| AxisType as date | data set for date axis | |
-| | with date axis type | |
-+--------------------------------+------------------------+------------+
-| - AxisType as numeric | Should return proper | RTL |
-| | data set for numeric | |
-| | axis type | |
+|                    **Test steps**                     |                                   **Validation**                                   | **Tool used** |
+| :---------------------------------------------------: | :--------------------------------------------------------------------------------: | :-----------: |
+|                  Test 1: Get X and Y                  |                                                                                    |               |
+|            - With string xPoint and yPoint            |          Should return proper X and Y values for string xPoint and yPoint          |      RTL      |
+|           - With numeric xPoint and yPoint            |         Should return proper X and Y values for numeric xPoint and yPoint          |      RTL      |
+|             - With date xPoint and yPoint             |           Should return proper X and Y values for date xPoint and yPoint           |      RTL      |
+|                  Test 2: Get Opacity                  |                                                                                    |               |
+|                   - Non empty data                    |                      Should return proper opacity for legends                      |      RTL      |
+|              Test 3: Create Legend Bars               |                                                                                    |               |
+|                   - Non empty data                    |                         Should return proper legends data                          |      RTL      |
+|                Test 4: Get color scale                |                                                                                    |               |
+|                   - Non Empty Data                    |                       Should return proper color scale data                        |      RTL      |
+|                  Test 5: Get X index                  |                                                                                    |               |
+|                 - With string xPoint                  |                   Should return proper xIndex for string xPoint                    |      RTL      |
+|                 - With numeric xPoint                 |                   Should return proper xIndex for number xPoint                    |      RTL      |
+|                  - With date xPoint                   |                    Should return proper xIndex for date xPoint                     |      RTL      |
+|                  Test 6: Get Y index                  |                                                                                    |               |
+|                 - With string yPoint                  |                   Should return proper yIndex for string yPoint                    |      RTL      |
+|                 - With numeric yPoint                 |                   Should return proper yIndex for numeric yPoint                   |      RTL      |
+|                  - With date yPoint                   |                    Should return proper yIndex for date yPoint                     |      RTL      |
+|                Test 7: Get Aria-Label                 |                                                                                    |               |
+|           - With numeric xPoint and yPoint            |           Should return proper aria-label for numeric xPoint and yPoint            |      RTL      |
+| - With numeric xPoint and yPoint without legend value | Should return proper aria-label for numeric xPoint and yPoint without legend value |      RTL      |
+|            - With string xPoint and yPoint            |            Should return proper aria-label for String xPoint and yPoint            |      RTL      |
+|    - With string xPoint and yPoint without legend     |    Should return proper aria-label for string xPoint and yPoint without legend     |      RTL      |
+|             - With date xPoint and yPoint             |             Should return proper aria-label for date xPoint and yPoint             |      RTL      |
+|     - With date xPoint and yPoint without legend      |     Should return proper aria-label for date xPoint and yPoint without legend      |      RTL      |
+|         - With numeric xPoint and date yPoint         |  <p>Should return proper aria-label for numeric xPoint and date yPoint</p><p></p>  |      RTL      |
+|   Test 8: Get formatted label for xAxis data point    |                                                                                    |               |
+|                   - Non-empty data                    |        <p>Should return proper xAxis label for non-empty string</p><p></p>         |     RTLs      |
+|                     - Empty data                      |          <p>Should return proper xAxis label for empty string</p><p></p>           |      RTL      |
+|   Test 8: Get formatted label for yAxis data point    |                                                                                    |               |
+|                   - Non-empty data                    |        <p>Should return proper yAxis label for non empty string</p><p></p>         |      RTL      |
+|                     - Empty data                      |           <p>Should return proper yAxis label for empty data</p><p></p>            |      RTL      |
+|          Test 9: Get string formatted number          |                                                                                    |               |
+|           - With numeric value as a string            |    <p>Should return proper string formatted number for numeric value</p><p></p>    |      RTL      |
+|                 - With format string                  |   <p>Should return proper string formatted number with format string</p><p></p>    |      RTL      |
+|                    - Empty string                     |     <p>Should return proper string formatted number for empty data</p><p></p>      |      RTL      |
+|                  - With string value                  |    <p>Should return proper string formatted number for string value</p><p></p>     |      RTL      |
+|           Test 9: Get string formatted date           |                                                                                    |               |
+|                 - With numeric point                  |      <p>Should return proper string formatted date for date point</p><p></p>       |      RTL      |
+|                  - With empty value                   |             Should return proper string formatted date for empty point             |      RTL      |
+|        - With numeric point and format string         |    Should return proper string formatted date for date point with format string    |      RTL      |
+|             Test 9: Get xAxis data points             |                                                                                    |               |
+|                 - With string points                  |       <p>Should return proper xAxis data points for string points</p><p></p>       |      RTL      |
+|                 - With numeric points                 |      <p>'Should return proper xAxis data points for numeric points</p><p></p>      |      RTL      |
+|                  - With date points                   |       <p>'Should return proper xAxis data points for date points</p><p></p>        |      RTL      |
+|             Test 9: Get yAxis data points             |                                                                                    |               |
+|                 - With string points                  |       <p>Should return proper yAxis data points for string points</p><p></p>       |      RTL      |
+|                 - With numeric points                 |      <p>Should return proper yAxis data points for numeric points</p><p></p>       |      RTL      |
+|                  - With date points                   |        <p>Should return proper yAxis data points for date points</p><p></p>        |      RTL      |
+|               Test 10: Create data set                |                                                                                    |               |
+|               - With default axis type                |         <p>Should return proper data set for default axis type</p><p></p>          |      RTL      |
+|                 - AxisType as string                  |          <p>Should return proper data set for string axis type</p><p></p>          |      RTL      |
+|      - With date axis data and default axis type      |  <p>Should return proper data set for date axis with default axis type</p><p></p>  |      RTL      |
+|      - With date axis data and AxisType as date       |   <p>Should return proper data set for date axis with date axis type</p><p></p>    |      RTL      |
+|                 - AxisType as numeric                 |         <p>Should return proper data set for numeric axis type</p><p></p>          |      RTL      |
