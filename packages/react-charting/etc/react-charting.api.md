@@ -4,8 +4,6 @@
 
 ```ts
 
-import * as d3Sankey from 'd3-sankey';
-import * as d3TimeFormat from 'd3-time-format';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutContentStyleProps } from '@fluentui/react/lib/Callout';
 import { ICalloutContentStyles } from '@fluentui/react/lib/Callout';
@@ -22,7 +20,10 @@ import { IStyleFunctionOrObject as IStyleFunctionOrObject_2 } from '@fluentui/re
 import { ITheme } from '@fluentui/react/lib/Styling';
 import { ITheme as ITheme_2 } from '@fluentui/react';
 import * as React_2 from 'react';
+import { SankeyLink } from 'd3-sankey';
+import { SankeyNode } from 'd3-sankey';
 import { SVGProps } from 'react';
+import { TimeLocaleDefinition } from 'd3-time-format';
 
 // @public
 export const AreaChart: React_2.FunctionComponent<IAreaChartProps>;
@@ -242,7 +243,7 @@ export interface ICartesianChartProps {
     tickFormat?: string;
     tickPadding?: number;
     tickValues?: number[] | Date[];
-    timeFormatLocale?: d3TimeFormat.TimeLocaleDefinition;
+    timeFormatLocale?: TimeLocaleDefinition;
     width?: number;
     wrapXAxisLables?: boolean;
     xAxisTickCount?: number;
@@ -1491,10 +1492,10 @@ export const Shape: React_2.FC<IShapeProps>;
 // Warning: (ae-forgotten-export) The symbol "ISLinkExtra" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export type SLink = d3Sankey.SankeyLink<ISNodeExtra, ISLinkExtra>;
+export type SLink = SankeyLink<ISNodeExtra, ISLinkExtra>;
 
 // @public (undocumented)
-export type SNode = d3Sankey.SankeyNode<ISNodeExtra, ISLinkExtra>;
+export type SNode = SankeyNode<ISNodeExtra, ISLinkExtra>;
 
 // @public
 export const Sparkline: React_2.FunctionComponent<ISparklineProps>;

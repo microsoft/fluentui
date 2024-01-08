@@ -19,8 +19,7 @@
     "@fluentui/scripts-babel": "*",
     "@fluentui/scripts-gulp": "*",
     "@fluentui/scripts-jest": "*",
-    "@types/stylis": "4.0.0",
-    "lerna-alias": "^3.0.3-0"
+    "@types/stylis": "4.0.0"
   },
   "files": [
     "dist"

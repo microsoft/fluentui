@@ -56,7 +56,6 @@ const config = {
         'fs-extra',
         'glob',
         'jju',
-        'lerna-alias',
         'loader-utils',
         'lodash',
         'schema-utils',

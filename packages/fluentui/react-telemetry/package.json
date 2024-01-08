@@ -15,8 +15,7 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-babel": "*",
     "@fluentui/scripts-gulp": "*",
-    "@types/react-table": "^7.0.19",
-    "lerna-alias": "^3.0.3-0"
+    "@types/react-table": "^7.0.19"
   },
   "files": [
     "dist"

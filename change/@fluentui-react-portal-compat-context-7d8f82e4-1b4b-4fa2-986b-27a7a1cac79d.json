@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: re-introduce ecma transpilation to ES5 to make it work with v8  in ES5 only browsers",
-  "packageName": "@fluentui/react-portal-compat-context",
-  "email": "wfwf1997@gmail.com",
-  "dependentChangeType": "patch"
-}

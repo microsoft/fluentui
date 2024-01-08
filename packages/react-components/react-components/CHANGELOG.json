@@ -2,6 +2,99 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 04 Jan 2024 09:48:05 GMT",
+      "tag": "@fluentui/react-components_v9.44.0",
+      "version": "9.44.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "3d70b7ee03a0862edcc7bdf9646d8a3f727f0487",
+            "comment": "fix: Make day labels non-actionable."
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "3d70b7ee03a0862edcc7bdf9646d8a3f727f0487",
+            "comment": "fix: Add missing CalendarStrings export and guidance on localization."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "6062ee77b6064d22941f4cc91e7f220527c7303c"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "d55914c734edffd6fd3fc234ca5b171cff689d84",
+            "comment": "feat: release compat package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Jan 2024 09:26:42 GMT",
+      "tag": "@fluentui/react-components_v9.44.0",
+      "version": "9.44.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "6cdd02277fa0bc6f3341171db194aa7724300808",
+            "comment": "chore: deprecate old slot API methods and types"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "ae3b77e7995d2ed37ae8d153308f82b4f3940e03",
+            "comment": "fix: trigger focus should mount hidden listbox"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "6cdd02277fa0bc6f3341171db194aa7724300808",
+            "comment": "chore: deprecate old slot API methods and types"
+          },
+          {
+            "author": "wfwf1997@gmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "8af30dee607c79fb0165ae72bb10b67304dc2005",
+            "comment": "fix: re-introduce ecma transpilation to ES5 to make it work with v8  in ES5 only browsers"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "6cdd02277fa0bc6f3341171db194aa7724300808",
+            "comment": "chore: deprecate old slot API methods and types"
+          }
+        ],
+        "minor": [
+          {
+            "author": "tfaller1@gmx.de",
+            "package": "@fluentui/react-components",
+            "commit": "41f5d49da76406a286c99db3d15c1d2f2577f4a4",
+            "comment": "chore: Export combobox selection types."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "254994bdc39bdbfffcd6228354f5a0a7bb3e3e3e",
+            "comment": "'feat: release rating to preview"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "2ca8d35248eded0e15e0a342c4ed8d7b75601c17",
+            "comment": "chore: add 'compat' tag to properly categorize v9 compat package"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Dec 2023 17:00:40 GMT",
       "tag": "@fluentui/react-components_v9.43.3",
       "version": "9.43.3",
