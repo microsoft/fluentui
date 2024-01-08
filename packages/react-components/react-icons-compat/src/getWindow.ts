@@ -1,15 +1,5 @@
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM } from '@fluentui/react-utilities';
-
-let _window: Window | undefined = undefined;
-
-// Note: Accessing "window" in IE11 is somewhat expensive, and calling "typeof window"
-// hits a memory leak, whereas aliasing it and calling "typeof _window" does not.
-// Caching the window value at the file scope lets us minimize the impact.
-try {
-  _window = window;
-} catch (e) {
-  /* no-op */
-}
 
 /**
  * Helper to get the window object. The helper will make sure to use a cached variable
@@ -19,7 +9,10 @@ try {
  *
  * @public
  */
-export function getWindow(rootElement?: Element | null): Window | undefined {
+export function getWindow(rootElement?: Element | null): Window | null | undefined {
+  const fluentProvider = useFluent();
+  const targetDocument = fluentProvider?.targetDocument;
+  const _window = targetDocument?.defaultView;
   if (!canUseDOM() || typeof _window === 'undefined') {
     return undefined;
   } else {
