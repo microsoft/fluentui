@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Thu, 14 Dec 2023 09:58:44 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jan 2024 09:26:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.12.39)
+
+Wed, 03 Jan 2024 09:26:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.12.38..@fluentui/react-menu_v9.12.39)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.6.1 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.45 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+- Bump @fluentui/react-portal to v9.4.6 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+- Bump @fluentui/react-positioning to v9.10.6 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+- Bump @fluentui/react-tabster to v9.16.1 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+- Bump @fluentui/react-utilities to v9.15.5 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.23 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+
+## [9.12.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.12.38)
+
+Mon, 18 Dec 2023 17:48:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.12.37..@fluentui/react-menu_v9.12.38)
+
+### Patches
+
+- Bump @fluentui/react-positioning to v9.10.5 ([PR #30010](https://github.com/microsoft/fluentui/pull/30010) by beachball)
+
+## [9.12.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.12.37)
+
+Mon, 18 Dec 2023 14:40:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.12.36..@fluentui/react-menu_v9.12.37)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.6.0 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.44 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-portal to v9.4.5 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-positioning to v9.10.4 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.13.2 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-tabster to v9.16.0 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-utilities to v9.15.4 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.22 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
 
 ## [9.12.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.12.36)
 

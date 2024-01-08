@@ -56,7 +56,7 @@ export const webpackConfig: webpack.Configuration = {
     },
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
-      ...config.lernaAliases({ type: 'webpack' }),
+      ...config.webpackAliases,
 
       // We are using React in production mode with tracing.
       // https://gist.github.com/bvaughn/25e6233aeb1b4f0cdb8d8366e54a3977

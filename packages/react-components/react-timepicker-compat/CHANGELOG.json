@@ -1,0 +1,25 @@
+{
+  "name": "@fluentui/react-timepicker-compat",
+  "entries": [
+    {
+      "date": "Thu, 04 Jan 2024 09:48:06 GMT",
+      "tag": "@fluentui/react-timepicker-compat_v0.0.1",
+      "version": "0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "6062ee77b6064d22941f4cc91e7f220527c7303c"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "d55914c734edffd6fd3fc234ca5b171cff689d84",
+            "comment": "feat: release compat package"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@fluentui/react-components": "*",
-    "@fluentui/react-icons": "^2.0.217",
+    "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-theme": "*",
     "@fluentui/react-provider": "*",
     "@fluentui/react-storybook-addon": "*",

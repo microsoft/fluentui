@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 14 Dec 2023 09:58:46 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jan 2024 09:26:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.60)
+
+Wed, 03 Jan 2024 09:26:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.59..@fluentui/react-button_v9.3.60)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.6.1 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.23 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+- Bump @fluentui/react-tabster to v9.16.1 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+- Bump @fluentui/react-utilities to v9.15.5 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+
+## [9.3.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.59)
+
+Mon, 18 Dec 2023 14:40:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.58..@fluentui/react-button_v9.3.59)
+
+### Patches
+
+- chore: adopts useARIAButtonProps instead of deprecated method useARIAButtonShorthand ([PR #29735](https://github.com/microsoft/fluentui/pull/29735) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-aria to v9.6.0 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.22 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.13.2 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-tabster to v9.16.0 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-utilities to v9.15.4 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
 
 ## [9.3.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.58)
 
