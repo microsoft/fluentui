@@ -1,5 +1,11 @@
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { IChartDataPoint, IChartProps, IVSChartDataPoint, IVerticalStackedChartProps } from '../index';
+import {
+  IChartDataPoint,
+  IChartProps,
+  IHorizontalBarChartWithAxisDataPoint,
+  IVSChartDataPoint,
+  IVerticalStackedChartProps,
+} from '../index';
 
 export const chartPointsVBC = [
   {
@@ -128,3 +134,85 @@ export const chartPointsDC: IChartProps = {
   chartTitle: 'Donut chart example',
   chartData: pointsDC,
 };
+
+export const chartPointsHBCWA: IHorizontalBarChartWithAxisDataPoint[] = [
+  {
+    x: 10000,
+    y: 5000,
+    legend: 'Oranges',
+    color: DefaultPalette.accent,
+    yAxisCalloutData: '2020/04/30',
+    xAxisCalloutData: '10%',
+  },
+  {
+    x: 20000,
+    y: 50000,
+    legend: 'Grapes',
+    color: DefaultPalette.blueDark,
+    yAxisCalloutData: '2020/04/30',
+    xAxisCalloutData: '20%',
+  },
+  {
+    x: 25000,
+    y: 30000,
+    legend: 'Apples',
+    color: DefaultPalette.blueMid,
+    yAxisCalloutData: '2020/04/30',
+    xAxisCalloutData: '37%',
+  },
+
+  {
+    x: 40000,
+    y: 13000,
+    legend: 'Bananas',
+    color: DefaultPalette.blueLight,
+    yAxisCalloutData: '2020/04/30',
+    xAxisCalloutData: '88%',
+  },
+];
+
+export const chartPointsWithStringYAxisHBCWA: IHorizontalBarChartWithAxisDataPoint[] = [
+  {
+    y: 'String One',
+    x: 1000,
+    color: DefaultPalette.accent,
+  },
+  {
+    y: 'String Two',
+    x: 5000,
+    color: DefaultPalette.blueDark,
+  },
+  {
+    y: 'String Three',
+    x: 3000,
+    color: DefaultPalette.blueMid,
+  },
+  {
+    y: 'String Four',
+    x: 2000,
+    color: DefaultPalette.blue,
+  },
+];
+
+export const chartPointsWithAxisToolTipHBCWA: IHorizontalBarChartWithAxisDataPoint[] = [
+  {
+    x: 1000,
+    y: 1000,
+    color: DefaultPalette.accent,
+  },
+  {
+    x: 2000,
+    y: 5000,
+    color: DefaultPalette.blueDark,
+  },
+  {
+    x: 3000,
+    y: 3000,
+    color: DefaultPalette.blueMid,
+  },
+  {
+    x: 4000,
+    y: 2000,
+    color: DefaultPalette.blue,
+  },
+];

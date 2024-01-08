@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(useArrowNavigationGroup): should always memorize last focused element",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

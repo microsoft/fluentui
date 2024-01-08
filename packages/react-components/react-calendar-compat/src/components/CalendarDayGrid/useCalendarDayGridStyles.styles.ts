@@ -162,6 +162,7 @@ const useWeekRowStyles = makeStyles({
 
 const useWeekDayLabelCellStyles = makeStyles({
   base: {
+    userSelect: 'none',
     animationDuration: DURATION_2,
     animationFillMode: 'both',
     animationName: FADE_IN,

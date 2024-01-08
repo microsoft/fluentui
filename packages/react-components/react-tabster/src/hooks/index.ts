@@ -4,6 +4,7 @@ export * from './useFocusFinders';
 export * from './useFocusVisible';
 export * from './useFocusWithin';
 export * from './useKeyboardNavAttribute';
+export * from './useOnKeyboardNavigationChange';
 export * from './useModalAttributes';
 export * from './useTabsterAttributes';
 export * from './useObservedElement';

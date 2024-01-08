@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Update position when target or container dimensions change",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

@@ -4,7 +4,7 @@ exports[`MenuList renders a default state 1`] = `
 <div
   aria-labelledby=""
   className="fui-MenuList"
-  data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Tab\\":false}}}"
+  data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":1,\\"memorizeCurrent\\":true},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Tab\\":false}}}"
   role="menu"
 >
   Default MenuList

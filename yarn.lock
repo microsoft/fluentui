@@ -1881,10 +1881,10 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.2.0.tgz#ae7ae7923d41f3d84cb2fd88740a89436610bbec"
   integrity sha512-GHUXPEhMEmTpnpIfesFA2KAoMJPb1SPQw964tToQwt+BbGXdhqTCWT1rOb0VURGylsxsYxiGMnseJ3IlclVpVA==
 
-"@floating-ui/devtools@0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@floating-ui/devtools/-/devtools-0.0.1.tgz#98b66755b0ef91fabfb35ec5a737c2c83d41d0a4"
-  integrity sha512-itUtNTkiHPfvRDOrAFKLCYEEZ3PrSIir44El6AoBBl7IbmciAx4CxXVfIWjSCIZdZnHFaeXg6vIfEukqC3Z6bw==
+"@floating-ui/devtools@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@floating-ui/devtools/-/devtools-0.0.4.tgz#48b6e2d5d1314964f5665a28bfc48ccdedad3a72"
+  integrity sha512-lSlvB45PgGS+YmGtOPseYBLwa+u+wPsZ+g/bT5kgzK2zLAKR5m9L5hS3b/OFZhrFWwehRf73RRSZ/WXg4r5WMw==
 
 "@floating-ui/dom@^1.2.0":
   version "1.2.0"
@@ -1901,10 +1901,10 @@
     "@uifabric/set-version" "^7.0.23"
     tslib "^1.10.0"
 
-"@fluentui/react-icons@^2.0.217":
-  version "2.0.217"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.217.tgz#a99540d6bb79630519f7e4fbb39ec66171fa8c4a"
-  integrity sha512-kTaocW+UuLTzEaTobzQTQZX5lamall7U8p4n9aibcGQYeNPtxhRvdNJK8SNkKoSGCukx46mB2hDfc0mKvky+wQ==
+"@fluentui/react-icons@^2.0.224":
+  version "2.0.224"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.224.tgz#fff0f4126b130f206f1efaa7c7e357e3bf29750a"
+  integrity sha512-ld03dlc1pG7xeTQsK1y5in19jkMtWHNaoktFv+e7NV2xmrgV/SgPyyjEXbMrQHb8Naea/XCoCpNHnUNCy68akw==
   dependencies:
     "@griffel/react" "^1.0.0"
     tslib "^2.1.0"
@@ -5355,11 +5355,6 @@
   integrity sha512-MPtoySlAZQ37VoLaPcTHCu1RWJ4llDkULYZIzOYxlhxBqYPB0RsRlmMU0R6tahtFe27mIdkHV+551ZWV4PLmVw==
   dependencies:
     "@types/node" "*"
-
-"@types/lerna-alias@3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@types/lerna-alias/-/lerna-alias-3.0.0.tgz#e4d70f75bad9f5a7b697f76b7d7b3fa97aa57844"
-  integrity sha512-EfwEzSWxAxrZgUJT5sECi4RPFCIgOm/K9e5EWXp2hR9H6wzV1QIBgjGtGEl/OpOCcglNWzmqrVRX/qjvNwli9Q==
 
 "@types/loader-utils@2.0.3":
   version "2.0.3"
@@ -13375,13 +13370,6 @@ get-intrinsic@^1.0.2, get-intrinsic@^1.1.0, get-intrinsic@^1.1.1:
     has "^1.0.3"
     has-symbols "^1.0.1"
 
-get-lerna-packages@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/get-lerna-packages/-/get-lerna-packages-0.1.1.tgz#37aaaac36fd14f00082f17b1096dd6c69290cef9"
-  integrity sha512-venxkvga57gOUZoTmXZlJ0zHc8cmvsx7Y0GTMcoEK/7OCEK3PLpG5gVTbUUMJaLxbzK13AWQdKPf1LSkuEfWqA==
-  dependencies:
-    glob "^7.1.2"
-
 get-own-enumerable-property-symbols@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/get-own-enumerable-property-symbols/-/get-own-enumerable-property-symbols-3.0.0.tgz#b877b49a5c16aefac3655f2ed2ea5b684df8d203"
@@ -17126,13 +17114,6 @@ lead@^1.0.0:
   integrity sha1-bxT5mje+Op3XhPVJVpDlkDRm7kI=
   dependencies:
     flush-write-stream "^1.0.2"
-
-lerna-alias@3.0.3-0, lerna-alias@^3.0.3-0:
-  version "3.0.3-0"
-  resolved "https://registry.yarnpkg.com/lerna-alias/-/lerna-alias-3.0.3-0.tgz#d681842deed66644ab9f38a7b365658cfe52dd43"
-  integrity sha512-IX0c2QH3v4rkgE+iG7Ro0FSEWKqqrMhvbGbB1txrnaJ8YbcrNbJ0IPpcJi+uiiPLV3olNX74EO08x9hGZ+J5ig==
-  dependencies:
-    get-lerna-packages "^0.1.1"
 
 lerna@7.1.3:
   version "7.1.3"

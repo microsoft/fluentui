@@ -2,6 +2,29 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 04 Jan 2024 07:26:40 GMT",
+      "tag": "@fluentui/react-charting_v5.19.9",
+      "version": "5.19.9",
+      "comments": {
+        "none": [
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9d99266dec5a450bcd44c0f777735b31dd98eccc",
+            "comment": "Moved HorizontalBarChartWithAxis test cases input data to common utilities/test-data.ts file"
+          }
+        ],
+        "patch": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "f65de264d2d290f33a6ea6018e0dc341317a9e8b",
+            "comment": "Importing functions which are used instead of importing complete library"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Dec 2023 07:26:32 GMT",
       "tag": "@fluentui/react-charting_v5.19.8",
       "version": "5.19.8",

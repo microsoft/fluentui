@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { queryAllByAttribute, render, waitFor, screen, fireEvent } from '@testing-library/react';
+import { queryAllByAttribute, render, waitFor, screen, fireEvent, act } from '@testing-library/react';
 import { IChartProps, SankeyChart } from './index';
 import { resetIds } from '../../Utilities';
 import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
@@ -151,7 +151,10 @@ describe('Sankey Chart - axe-core', () => {
 
   test('Should pass accessibility tests', async () => {
     const { container } = render(<SankeyChart data={chartPointsWithStringNodeId} />);
-    const axeResults = await axe(container);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
     expect(axeResults).toHaveNoViolations();
-  }, 10000);
+  });
 });
