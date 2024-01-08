@@ -18,8 +18,6 @@ import {
   writeJson,
   ProjectConfiguration,
   joinPathFragments,
-  readNxJson,
-  NxJsonConfiguration,
 } from '@nx/devkit';
 
 import { PackageJson, TsConfig } from '../../types';
@@ -27,7 +25,7 @@ import { disableChalk, formatMockedCalls, setupCodeowners } from '../../utils-te
 
 import generator from './index';
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
-import { workspacePaths } from '../../utils';
+import { getProjectNameWithoutScope, getWorkspaceConfig, workspacePaths } from '../../utils';
 
 interface AssertedSchema extends MigrateConvergedPkgGeneratorSchema {
   name: string;
@@ -387,8 +385,7 @@ describe('migrate-converged-pkg generator', () => {
     });
 
     it(`should not add 3rd party packages that use same scope as our repo `, async () => {
-      const workspaceConfig = assertAndReadNxJson(tree);
-      const normalizedPkgName = getNormalizedPkgName({ pkgName: options.name, workspaceConfig });
+      const normalizedPkgName = getProjectNameWithoutScope(options.name);
       const thirdPartyPackageName = '@proj/jango-fet';
 
       updateJson(tree, `./packages/${normalizedPkgName}/package.json`, (json: PackageJson) => {
@@ -502,7 +499,7 @@ describe('migrate-converged-pkg generator', () => {
 
   describe(`storybook updates`, () => {
     function setup(config: Partial<{ createDummyStories: boolean }> = {}) {
-      const workspaceConfig = assertAndReadNxJson(tree);
+      const workspaceConfig = getWorkspaceConfig(tree);
       const projectConfig = readProjectConfiguration(tree, options.name);
       const normalizedProjectName = options.name.replace(`@${workspaceConfig.npmScope}/`, '');
       const projectStorybookConfigPath = `${projectConfig.root}/.storybook`;
@@ -1539,7 +1536,7 @@ describe('migrate-converged-pkg generator', () => {
 // ==== helpers ====
 
 function getScopedPkgName(tree: Tree, pkgName: string) {
-  const workspaceConfig = assertAndReadNxJson(tree);
+  const workspaceConfig = getWorkspaceConfig(tree);
 
   return `@${workspaceConfig.npmScope}/${pkgName}`;
 }
@@ -1555,7 +1552,7 @@ function setupDummyPackage(
       projectConfiguration: Partial<ReadProjectConfiguration>;
     }>,
 ) {
-  const workspaceConfig = assertAndReadNxJson(tree);
+  const workspaceConfig = getWorkspaceConfig(tree);
   const defaults = {
     version: '9.0.0-alpha.40',
     dependencies: {
@@ -1576,7 +1573,7 @@ function setupDummyPackage(
 
   const normalizedOptions = { ...defaults, ...options };
   const pkgName = normalizedOptions.name;
-  const normalizedPkgName = getNormalizedPkgName({ pkgName, workspaceConfig });
+  const normalizedPkgName = getProjectNameWithoutScope(pkgName);
   const paths = {
     root: `packages/${normalizedPkgName}`,
   };
@@ -1692,10 +1689,6 @@ function append(tree: Tree, filePath: string, content: string) {
   return tree;
 }
 
-function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: NxJsonConfiguration }) {
-  return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
-}
-
 /**
  *
  * @param src  - relative path/file name within `__fixtures__` folder
@@ -1703,16 +1696,6 @@ function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: NxJso
  */
 function getFixture(src: string) {
   return fs.readFileSync(path.join(__dirname, '__fixtures__', src), 'utf-8');
-}
-
-function assertAndReadNxJson(tree: Tree) {
-  const nxJson = readNxJson(tree);
-
-  if (!nxJson) {
-    throw new Error('nx.json doesnt exist');
-  }
-
-  return nxJson;
 }
 
 function updatePackageJson(tree: Tree, config: { projectName: string; jsonUpdates?: Partial<PackageJson> }) {

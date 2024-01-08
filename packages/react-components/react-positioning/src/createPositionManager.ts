@@ -4,6 +4,7 @@ import type { PositionManager, TargetElement } from './types';
 import { debounce, writeArrowUpdates, writeContainerUpdates } from './utils';
 import { isHTMLElement } from '@fluentui/react-utilities';
 import { listScrollParents } from './utils/listScrollParents';
+import { createResizeObserver } from './utils/createResizeObserver';
 
 interface PositionManagerOptions {
   /**
@@ -43,18 +44,21 @@ interface PositionManagerOptions {
  * @returns manager that handles positioning out of the react lifecycle
  */
 export function createPositionManager(options: PositionManagerOptions): PositionManager {
-  const { container, target, arrow, strategy, middleware, placement, useTransform = true } = options;
   let isDestroyed = false;
-  if (!target || !container) {
+  const { container, target, arrow, strategy, middleware, placement, useTransform = true } = options;
+  const targetWindow = container.ownerDocument.defaultView;
+  if (!target || !container || !targetWindow) {
     return {
       updatePosition: () => undefined,
       dispose: () => undefined,
     };
   }
 
+  // When the dimensions of the target or the container change - trigger a position update
+  const resizeObserver = createResizeObserver(targetWindow, () => updatePosition());
+
   let isFirstUpdate = true;
   const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();
-  const targetWindow = container.ownerDocument.defaultView;
 
   // When the container is first resolved, set position `fixed` to avoid scroll jumps.
   // Without this scroll jumps can occur when the element is rendered initially and receives focus
@@ -76,6 +80,11 @@ export function createPositionManager(options: PositionManagerOptions): Position
       scrollParents.forEach(scrollParent => {
         scrollParent.addEventListener('scroll', updatePosition, { passive: true });
       });
+
+      resizeObserver.observe(container);
+      if (isHTMLElement(target)) {
+        resizeObserver.observe(target);
+      }
 
       isFirstUpdate = false;
     }
@@ -129,6 +138,8 @@ export function createPositionManager(options: PositionManagerOptions): Position
       scrollParent.removeEventListener('scroll', updatePosition);
     });
     scrollParents.clear();
+
+    resizeObserver.disconnect();
   };
 
   if (targetWindow) {

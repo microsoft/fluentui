@@ -103,7 +103,7 @@ extends:
                     today=`date +%Y-%m-%d`
                     echo date today $today
                     echo "##vso[task.setvariable variable=date]$today"
-                    yarn release:fluentui:pack-nightly
+                    yarn northstar:release pack-nightly
 
               - task: AzureUpload@2
                 displayName: '[Nightly] Upload tarballs'
@@ -132,9 +132,7 @@ extends:
                     echo "registry=https://registry.npmjs.org/" >> packages/fluentui/.npmrc
                     echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> packages/fluentui/.npmrc
 
-                    yarn release:fluentui:$(releaseVersion) --yes
-
-                    yarn release:fluentui:post-validation
+                    yarn northstar:release bump $(releaseVersion) --yes
 
               - template: .devops/templates/cleanup.yml@self
 
@@ -203,7 +201,7 @@ extends:
                 inputs:
                   script: |
                     echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion) nightlyReleaseDate $(nightlyReleaseDate)
-                    NODE_ENV=production yarn build:fluentui:docs
+                    NODE_ENV=production yarn northstar:build:docs
 
               - task: AzureUpload@2
                 displayName: Upload to Azure

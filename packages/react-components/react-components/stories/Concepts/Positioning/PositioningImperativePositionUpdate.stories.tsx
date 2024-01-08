@@ -1,39 +1,49 @@
 import * as React from 'react';
-import { Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
-import type { PopoverProps, PositioningImperativeRef } from '@fluentui/react-components';
+import { Button, Popover, PopoverSurface, PopoverTrigger, Slider, Field, makeStyles } from '@fluentui/react-components';
+import type { PositioningImperativeRef, SliderProps } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  container: {
+    position: 'relative',
+  },
+
+  button: {
+    position: 'absolute',
+  },
+
+  slider: {
+    marginBottom: '10px',
+  },
+});
 
 export const ImperativePositionUpdate = () => {
-  const [loading, setLoading] = React.useState(true);
+  const styles = useStyles();
   const positioningRef = React.useRef<PositioningImperativeRef>(null);
-  const timeoutRef = React.useRef(0);
+  const [value, setValue] = React.useState(0);
 
-  const onOpenChange = React.useCallback<NonNullable<PopoverProps['onOpenChange']>>((e, data) => {
-    if (!data.open) {
-      setLoading(true);
-    } else {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = window.setTimeout(() => setLoading(false), 1000);
-    }
+  const onChange: SliderProps['onChange'] = React.useCallback((e, data) => {
+    setValue(data.value);
   }, []);
 
   React.useEffect(() => {
-    if (!loading) {
-      positioningRef.current?.updatePosition();
-    }
-  }, [loading]);
-
-  React.useEffect(() => {
-    return () => clearTimeout(timeoutRef.current);
-  });
+    positioningRef.current?.updatePosition();
+  }, [value]);
 
   return (
-    <Popover positioning={{ position: 'below', positioningRef }} onOpenChange={onOpenChange}>
-      <PopoverTrigger disableButtonEnhancement>
-        <Button appearance="primary">Click me</Button>
-      </PopoverTrigger>
+    <div className={styles.container}>
+      <Field label="Move the button with the slider">
+        <Slider className={styles.slider} value={value} onChange={onChange} max={80} />
+      </Field>
+      <Popover positioning={{ position: 'below', positioningRef }} open>
+        <PopoverTrigger disableButtonEnhancement>
+          <Button style={{ left: `${value}%` }} className={styles.button} appearance="primary">
+            Popover
+          </Button>
+        </PopoverTrigger>
 
-      <PopoverSurface style={{ minWidth: 100 }}>{loading ? 'Loading 1 second...' : <Placeholder />}</PopoverSurface>
-    </Popover>
+        <PopoverSurface style={{ minWidth: 100 }}>Target</PopoverSurface>
+      </Popover>
+    </div>
   );
 };
 
@@ -43,18 +53,14 @@ ImperativePositionUpdate.parameters = {
     description: {
       story: [
         'The `positioningRef` positioning prop provides an [imperative handle](https://reactjs.org/docs/hooks-reference.html#useimperativehandle)',
-        'to reposition the positioned element. This can be useful for scenarios where content is dynamically loaded.',
+        'to reposition the positioned element.',
+        'In this example the `updatePosition` command is used to reposition the popover when its target button is',
+        'dynamically moved.',
         '',
-        'In this example, you can move your mouse in the red boundary and the tooltip will follow the mouse cursor',
+        '> ⚠️ In later versions of Fluent UI, position updates are triggered once the target or container dimensions',
+        'change. This was previously the main use case for imperative position updates. Please think carefully',
+        'if your scenario needs this pattern in the future.',
       ].join('\n'),
     },
   },
 };
-
-const Placeholder = () => (
-  <div>
-    <h4>Dynamic content</h4>
-
-    <img src="https://fabricweb.azureedge.net/fabric-website/placeholders/400x400.png" />
-  </div>
-);
