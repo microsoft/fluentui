@@ -1,6 +1,10 @@
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { canUseDOM } from '@fluentui/react-utilities';
 
+const fluentProvider = useFluent();
+const targetDocument = fluentProvider?.targetDocument;
+const _window = targetDocument?.defaultView;
+
 /**
  * Helper to get the window object. The helper will make sure to use a cached variable
  * of "window", to avoid overhead and memory leaks in IE11. Note that in popup scenarios the
@@ -10,9 +14,6 @@ import { canUseDOM } from '@fluentui/react-utilities';
  * @public
  */
 export function getWindow(rootElement?: Element | null): Window | null | undefined {
-  const fluentProvider = useFluent();
-  const targetDocument = fluentProvider?.targetDocument;
-  const _window = targetDocument?.defaultView;
   if (!canUseDOM() || typeof _window === 'undefined') {
     return undefined;
   } else {
