@@ -1881,10 +1881,10 @@
   resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.2.0.tgz#ae7ae7923d41f3d84cb2fd88740a89436610bbec"
   integrity sha512-GHUXPEhMEmTpnpIfesFA2KAoMJPb1SPQw964tToQwt+BbGXdhqTCWT1rOb0VURGylsxsYxiGMnseJ3IlclVpVA==
 
-"@floating-ui/devtools@0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@floating-ui/devtools/-/devtools-0.0.3.tgz#a03b5e2b34b90651864e6b9b9503636ff07a6ad9"
-  integrity sha512-9WjBZWYDo9G+XwBBbMnWTxZV2NyNxC6JIZEJinuTqUzQ8tJlc0xwWD7+J9Wi2smtQAvrBoQ1LDXxXzPxelhMEg==
+"@floating-ui/devtools@0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@floating-ui/devtools/-/devtools-0.0.4.tgz#48b6e2d5d1314964f5665a28bfc48ccdedad3a72"
+  integrity sha512-lSlvB45PgGS+YmGtOPseYBLwa+u+wPsZ+g/bT5kgzK2zLAKR5m9L5hS3b/OFZhrFWwehRf73RRSZ/WXg4r5WMw==
 
 "@floating-ui/dom@^1.2.0":
   version "1.2.0"
