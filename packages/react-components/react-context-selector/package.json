@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-context-selector",
-  "version": "9.1.45",
+  "version": "9.1.46",
   "description": "React useContextSelector hook in userland",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,7 +28,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "^9.15.5",
+    "@fluentui/react-utilities": "^9.15.6",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {

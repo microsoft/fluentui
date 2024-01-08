@@ -1,8 +1,94 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 04 Jan 2024 09:48:05 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Jan 2024 16:24:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.44.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.44.1)
+
+Mon, 08 Jan 2024 16:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.44.0..@fluentui/react-components_v9.44.1)
+
+### Minor changes
+
+- `@fluentui/react-positioning`
+  - feat: Update position when target or container dimensions change ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by lingfangao@hotmail.com)
+- `@fluentui/react-radio`
+  - chore: Update Radio indicator for perf and alignment at 125% DPI ([PR #30207](https://github.com/microsoft/fluentui/pull/30207) by behowell@microsoft.com)
+- `@fluentui/react-table`
+  - fix(useArrowNavigationGroup): should always memorize last focused element ([PR #30112](https://github.com/microsoft/fluentui/pull/30112) by lingfan.gao@microsoft.com)
+- `@fluentui/react-tabster`
+  - feat: `useOnKeyboardNavigationChange` to subscribe to changes in keyboard navigation mode ([PR #30219](https://github.com/microsoft/fluentui/pull/30219) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-accordion`
+  - update @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-avatar`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-badge`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-button`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-checkbox`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-combobox`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-dialog`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-field`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-infolabel`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-menu`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-message-bar`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: update react-positioning to use latest floating ui dev tools to take latest fix ([PR #30235](https://github.com/microsoft/fluentui/pull/30235) by mgodbolt@microsoft.com)
+- `@fluentui/react-provider`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-radio`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-search-preview`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-select`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-switch`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-table`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix(useArrowNavigationGroup): should always memorize last focused element ([PR #30112](https://github.com/microsoft/fluentui/pull/30112) by lingfangao@hotmail.com)
+- `@fluentui/react-tags`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-teaching-popover-preview`
+  - Update react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-toast`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-tree`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-utilities`
+  - Allow isSlot to work with multiple react-utilities instances ([PR #30209](https://github.com/microsoft/fluentui/pull/30209) by 36034483+daniel-hauser@users.noreply.github.com)
+
+### Changes
+
+- `@fluentui/react-alert`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- `@fluentui/react-infobutton`
+  - Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
 
 ## [9.44.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.44.0)
 

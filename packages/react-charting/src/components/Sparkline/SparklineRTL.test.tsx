@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { queryAllByAttribute, render, waitFor } from '@testing-library/react';
+import { act, queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import { emptySparklinePoints, sparkline1Points } from './Sparkline.test';
 import { Sparkline } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
@@ -27,7 +27,10 @@ describe('Sparkline chart rendering', () => {
 describe('Sparkline Chart - axe-core', () => {
   test('Should pass accessibility tests', async () => {
     const { container } = render(<Sparkline data={sparkline1Points} />);
-    const axeResults = await axe(container);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
     expect(axeResults).toHaveNoViolations();
-  }, 10000);
+  });
 });
