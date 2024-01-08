@@ -1,5 +1,5 @@
-import { createKeyborg } from 'keyborg';
-import { useEffect, useMemo } from 'react';
+import * as React from 'react';
+import { createKeyborg, disposeKeyborg } from 'keyborg';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { KeyborgCallback } from 'keyborg';
 import { useEventCallback } from '@fluentui/react-utilities';
@@ -12,9 +12,9 @@ import { useEventCallback } from '@fluentui/react-utilities';
  */
 export function useOnKeyboardNavigationChange(callback: (isNavigatingWithKeyboard: boolean) => void) {
   const { targetDocument } = useFluent();
-  const keyborg = useMemo(() => targetDocument && createKeyborg(targetDocument.defaultView!), [targetDocument]);
+  const keyborg = React.useMemo(() => targetDocument && createKeyborg(targetDocument.defaultView!), [targetDocument]);
   const eventCallback = useEventCallback(callback);
-  useEffect(() => {
+  React.useEffect(() => {
     if (keyborg) {
       const cb: KeyborgCallback = next => {
         eventCallback(next);
@@ -23,4 +23,8 @@ export function useOnKeyboardNavigationChange(callback: (isNavigatingWithKeyboar
       return () => keyborg.unsubscribe(cb);
     }
   }, [keyborg, eventCallback]);
+
+  React.useEffect(() => {
+    return () => keyborg && disposeKeyborg(keyborg);
+  }, [keyborg]);
 }
