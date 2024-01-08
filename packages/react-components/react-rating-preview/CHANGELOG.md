@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-rating-preview
 
-This log was last generated on Wed, 03 Jan 2024 09:26:43 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Jan 2024 16:24:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating-preview_v0.1.1)
+
+Mon, 08 Jan 2024 16:24:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating-preview_v0.1.0..@fluentui/react-rating-preview_v0.1.1)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.24 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-tabster to v9.17.0 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-utilities to v9.15.6 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
 
 ## [0.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating-preview_v0.1.0)
 

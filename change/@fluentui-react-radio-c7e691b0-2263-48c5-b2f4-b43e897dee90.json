@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "chore: Update Radio indicator for perf and alignment at 125% DPI",
-  "packageName": "@fluentui/react-radio",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Allow isSlot to work with multiple react-utilities instances",
-  "packageName": "@fluentui/react-utilities",
-  "email": "36034483+daniel-hauser@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
