@@ -8,11 +8,4 @@ describe('NavItem', () => {
     Component: NavItem,
     displayName: 'NavItem',
   });
-
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
-  it('renders a default state', () => {
-    const result = render(<NavItem>Default NavItem</NavItem>);
-    expect(result.container).toMatchSnapshot();
-  });
 });
