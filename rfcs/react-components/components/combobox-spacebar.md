@@ -90,8 +90,6 @@ Since options visually look like they have check marks and semantically use `ari
 
 #### Cons
 
-g
-
 - There is no way to opt into space-to-select on single-select combos, or space-to-type on multiselect combos
 
 ### 5. Provide a context that sets spacebar default behavior
