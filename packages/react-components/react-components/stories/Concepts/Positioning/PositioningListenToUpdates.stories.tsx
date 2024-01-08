@@ -97,7 +97,7 @@ export const ListenToUpdates = () => {
             const date = new Date(time);
             return (
               <div key={i}>
-                {date.toLocaleTimeString()} <Text weight="bold">Position updated</Text>
+                {date.toLocaleTimeString()} <Text weight="bold">Position updated [{i}]</Text>
               </div>
             );
           })}
