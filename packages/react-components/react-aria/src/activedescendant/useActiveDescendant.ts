@@ -1,29 +1,48 @@
 import * as React from 'react';
 import { useEventCallback } from '@fluentui/react-utilities';
+import { useOnKeyboardNavigationChange } from '@fluentui/react-tabster';
 import { useOptionWalker } from './useOptionWalker';
 import type { ActiveDescendantImperativeRef, ActiveDescendantOptions, UseActiveDescendantReturn } from './types';
-import { ACTIVEDESCENDANT_ATTRIBUTE } from './constants';
+import { ACTIVEDESCENDANT_ATTRIBUTE, ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE } from './constants';
 import { scrollIntoView } from './scrollIntoView';
 
 export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(
   options: ActiveDescendantOptions,
 ): UseActiveDescendantReturn<TActiveParentElement, TListboxElement> {
   const { imperativeRef, matchOption: matchOptionUnstable } = options;
+  const focusVisibleRef = React.useRef(false);
+  const activeIdRef = React.useRef<string | null>(null);
   const activeParentRef = React.useRef<TActiveParentElement>(null);
+
+  useOnKeyboardNavigationChange(isNavigatingWithKeyboard => {
+    focusVisibleRef.current = isNavigatingWithKeyboard;
+    const active = getActiveDescendant();
+    if (!active) {
+      return;
+    }
+
+    if (isNavigatingWithKeyboard) {
+      active.setAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
+    } else {
+      active.removeAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE);
+    }
+  });
 
   const matchOption = useEventCallback(matchOptionUnstable);
   const { listboxRef, optionWalker } = useOptionWalker<TListboxElement>({ matchOption });
   const getActiveDescendant = React.useCallback(() => {
-    return listboxRef.current?.querySelector<HTMLElement>(`[${ACTIVEDESCENDANT_ATTRIBUTE}]`);
+    return listboxRef.current?.querySelector<HTMLElement>(`#${activeIdRef.current}`);
   }, [listboxRef]);
 
   const blurActiveDescendant = React.useCallback(() => {
     const active = getActiveDescendant();
     if (active) {
       active.removeAttribute(ACTIVEDESCENDANT_ATTRIBUTE);
+      active.removeAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE);
     }
 
     activeParentRef.current?.removeAttribute('aria-activedescendant');
+    activeIdRef.current = null;
   }, [activeParentRef, getActiveDescendant]);
 
   const focusActiveDescendant = React.useCallback(
@@ -34,9 +53,14 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
 
       blurActiveDescendant();
 
-      nextActive.setAttribute(ACTIVEDESCENDANT_ATTRIBUTE, '');
       scrollIntoView(nextActive, listboxRef.current);
       activeParentRef.current?.setAttribute('aria-activedescendant', nextActive.id);
+      activeIdRef.current = nextActive.id;
+      nextActive.setAttribute(ACTIVEDESCENDANT_ATTRIBUTE, '');
+
+      if (focusVisibleRef.current) {
+        nextActive.setAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE, '');
+      }
     },
     [activeParentRef, listboxRef, blurActiveDescendant],
   );
