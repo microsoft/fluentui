@@ -866,6 +866,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const found: any = this._calloutPoints.find((e: { x: string | number }) => e.x === modifiedXVal);
     // Show details in the callout for the focused point only
     found.values = found.values.filter((e: { y: number }) => e.y === y);
+
     this.setState({
       refSelected: `#${circleId}`,
       isCalloutVisible: true,
