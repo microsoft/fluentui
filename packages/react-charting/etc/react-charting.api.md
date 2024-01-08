@@ -550,6 +550,8 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     isCalloutForStack?: boolean;
     // @deprecated
     legendColor?: string;
+    // (undocumented)
+    maxBarWidth?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IGVBarChartSeriesPoint>;
     // @deprecated
     showXAxisGridLines?: boolean;
@@ -560,6 +562,10 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     // @deprecated
     showYAxisPath?: boolean;
     styles?: IStyleFunctionOrObject<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>;
+    // (undocumented)
+    xAxisInnerPadding?: number;
+    // (undocumented)
+    xAxisOuterPadding?: number;
 }
 
 // @public

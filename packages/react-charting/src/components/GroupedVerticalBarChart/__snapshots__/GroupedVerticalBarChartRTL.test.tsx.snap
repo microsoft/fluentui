@@ -110,7 +110,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
         />
         <g>
           <g
-            transform="translate(48, 0)"
+            transform="translate(24.864864864864863, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -125,8 +125,8 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               opacity=""
               role="img"
               tabindex="0"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
+              width="4.864864864864865"
+              x="0"
               y="1.3000000000000043"
             />
             <rect
@@ -142,13 +142,13 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="4.864864864864865"
+              x="5.405405405405405"
               y="13.399999999999999"
             />
           </g>
           <g
-            transform="translate(17.763440860215052, 0)"
+            transform="translate(4.864864864864863, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -163,8 +163,8 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
+              width="4.864864864864865"
+              x="0"
               y="1.3000000000000043"
             />
             <rect
@@ -180,13 +180,13 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="4.864864864864865"
+              x="5.405405405405405"
               y="0"
             />
           </g>
           <g
-            transform="translate(-12.473118279569892, 0)"
+            transform="translate(-15.135135135135137, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -201,8 +201,8 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
+              width="4.864864864864865"
+              x="0"
               y="0"
             />
             <rect
@@ -218,8 +218,8 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="4.864864864864865"
+              x="5.405405405405405"
               y="20"
             />
           </g>
@@ -559,7 +559,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
         />
         <g>
           <g
-            transform="translate(48, 0)"
+            transform="translate(24.864864864864863, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -574,8 +574,8 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               opacity=""
               role="img"
               tabindex="0"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
+              width="4.864864864864865"
+              x="0"
               y="1.3000000000000043"
             />
             <rect
@@ -591,13 +591,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="4.864864864864865"
+              x="5.405405405405405"
               y="13.399999999999999"
             />
           </g>
           <g
-            transform="translate(17.763440860215052, 0)"
+            transform="translate(4.864864864864863, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -612,8 +612,8 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
+              width="4.864864864864865"
+              x="0"
               y="1.3000000000000043"
             />
             <rect
@@ -629,13 +629,13 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="4.864864864864865"
+              x="5.405405405405405"
               y="0"
             />
           </g>
           <g
-            transform="translate(-12.473118279569892, 0)"
+            transform="translate(-15.135135135135137, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -650,8 +650,8 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
+              width="4.864864864864865"
+              x="0"
               y="0"
             />
             <rect
@@ -667,8 +667,8 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="4.864864864864865"
+              x="5.405405405405405"
               y="20"
             />
           </g>
@@ -1008,7 +1008,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
         />
         <g>
           <g
-            transform="translate(48, 0)"
+            transform="translate(24.864864864864863, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -1023,8 +1023,8 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               opacity=""
               role="img"
               tabindex="0"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
+              width="4.864864864864865"
+              x="0"
               y="1.3000000000000043"
             />
             <rect
@@ -1040,13 +1040,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="4.864864864864865"
+              x="5.405405405405405"
               y="13.399999999999999"
             />
           </g>
           <g
-            transform="translate(17.763440860215052, 0)"
+            transform="translate(4.864864864864863, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -1061,8 +1061,8 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
+              width="4.864864864864865"
+              x="0"
               y="1.3000000000000043"
             />
             <rect
@@ -1078,13 +1078,13 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="4.864864864864865"
+              x="5.405405405405405"
               y="0"
             />
           </g>
           <g
-            transform="translate(-12.473118279569892, 0)"
+            transform="translate(-15.135135135135137, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -1099,8 +1099,8 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
+              width="4.864864864864865"
+              x="0"
               y="0"
             />
             <rect
@@ -1116,8 +1116,8 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="4.864864864864865"
+              x="5.405405405405405"
               y="20"
             />
           </g>
@@ -1457,7 +1457,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
         />
         <g>
           <g
-            transform="translate(48, 0)"
+            transform="translate(24.864864864864863, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -1472,8 +1472,8 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               opacity=""
               role="img"
               tabindex="0"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
+              width="4.864864864864865"
+              x="0"
               y="1.3000000000000043"
             />
             <rect
@@ -1489,13 +1489,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="4.864864864864865"
+              x="5.405405405405405"
               y="13.399999999999999"
             />
           </g>
           <g
-            transform="translate(17.763440860215052, 0)"
+            transform="translate(4.864864864864863, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -1510,8 +1510,8 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
+              width="4.864864864864865"
+              x="0"
               y="1.3000000000000043"
             />
             <rect
@@ -1527,13 +1527,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="4.864864864864865"
+              x="5.405405405405405"
               y="0"
             />
           </g>
           <g
-            transform="translate(-12.473118279569892, 0)"
+            transform="translate(-15.135135135135137, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -1548,8 +1548,8 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
+              width="4.864864864864865"
+              x="0"
               y="0"
             />
             <rect
@@ -1565,8 +1565,8 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="4.864864864864865"
+              x="5.405405405405405"
               y="20"
             />
           </g>
@@ -1906,7 +1906,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
         />
         <g>
           <g
-            transform="translate(48, 0)"
+            transform="translate(24.864864864864863, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -1921,8 +1921,8 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               opacity=""
               role="img"
               tabindex="0"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
+              width="4.864864864864865"
+              x="0"
               y="1.3000000000000043"
             />
             <rect
@@ -1938,13 +1938,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="4.864864864864865"
+              x="5.405405405405405"
               y="13.399999999999999"
             />
           </g>
           <g
-            transform="translate(17.763440860215052, 0)"
+            transform="translate(4.864864864864863, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -1959,8 +1959,8 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
+              width="4.864864864864865"
+              x="0"
               y="1.3000000000000043"
             />
             <rect
@@ -1976,13 +1976,13 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="4.864864864864865"
+              x="5.405405405405405"
               y="0"
             />
           </g>
           <g
-            transform="translate(-12.473118279569892, 0)"
+            transform="translate(-15.135135135135137, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -1997,8 +1997,8 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.881784197001252e-16"
+              width="4.864864864864865"
+              x="0"
               y="0"
             />
             <rect
@@ -2014,8 +2014,8 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               opacity=""
               role="img"
               tabindex="-1"
-              width="-7.354838709677419"
-              x="-8.172043010752688"
+              width="4.864864864864865"
+              x="5.405405405405405"
               y="20"
             />
           </g>
@@ -2362,7 +2362,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
       <g>
         <g
           key="0"
-          transform="translate(48, 0)"
+          transform="translate(15.744680851063826, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -2382,7 +2382,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            width={5.74468085106383}
             x={0}
             y={92.06521739130434}
           />
@@ -2404,8 +2404,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            width={5.74468085106383}
+            x={6.382978723404255}
             y={238.9673913043478}
           />
           <rect
@@ -2426,14 +2426,14 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            width={5.74468085106383}
+            x={12.76595744680851}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(1, 0)"
+          transform="translate(-14.255319148936174, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -2453,7 +2453,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            width={5.74468085106383}
             x={0}
             y={236.19565217391303}
           />
@@ -2475,8 +2475,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            width={5.74468085106383}
+            x={6.382978723404255}
             y={25.543478260869563}
           />
           <rect
@@ -2497,8 +2497,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            width={5.74468085106383}
+            x={12.76595744680851}
             y={183.5326086956522}
           />
         </g>
@@ -3125,7 +3125,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
       <g>
         <g
           key="0"
-          transform="translate(48, 0)"
+          transform="translate(15.744680851063826, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -3145,7 +3145,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            width={5.74468085106383}
             x={0}
             y={92.06521739130434}
           />
@@ -3167,8 +3167,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            width={5.74468085106383}
+            x={6.382978723404255}
             y={238.9673913043478}
           />
           <rect
@@ -3189,14 +3189,14 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            width={5.74468085106383}
+            x={12.76595744680851}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(1, 0)"
+          transform="translate(-14.255319148936174, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -3216,7 +3216,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            width={5.74468085106383}
             x={0}
             y={236.19565217391303}
           />
@@ -3238,8 +3238,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            width={5.74468085106383}
+            x={6.382978723404255}
             y={25.543478260869563}
           />
           <rect
@@ -3260,8 +3260,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            width={5.74468085106383}
+            x={12.76595744680851}
             y={183.5326086956522}
           />
         </g>
@@ -4403,7 +4403,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       <g>
         <g
           key="0"
-          transform="translate(48, 0)"
+          transform="translate(15.744680851063826, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -4423,7 +4423,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            width={5.74468085106383}
             x={0}
             y={92.06521739130434}
           />
@@ -4445,8 +4445,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            width={5.74468085106383}
+            x={6.382978723404255}
             y={238.9673913043478}
           />
           <rect
@@ -4467,14 +4467,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            width={5.74468085106383}
+            x={12.76595744680851}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(1, 0)"
+          transform="translate(-14.255319148936174, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -4494,7 +4494,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            width={5.74468085106383}
             x={0}
             y={236.19565217391303}
           />
@@ -4516,8 +4516,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            width={5.74468085106383}
+            x={6.382978723404255}
             y={25.543478260869563}
           />
           <rect
@@ -4538,8 +4538,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            width={5.74468085106383}
+            x={12.76595744680851}
             y={183.5326086956522}
           />
         </g>
@@ -4978,7 +4978,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
       <g>
         <g
           key="0"
-          transform="translate(48, 0)"
+          transform="translate(15.744680851063826, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -4998,7 +4998,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            width={5.74468085106383}
             x={0}
             y={103.36956521739131}
           />
@@ -5020,8 +5020,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            width={5.74468085106383}
+            x={6.382978723404255}
             y={273.3152173913044}
           />
           <rect
@@ -5042,14 +5042,14 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            width={5.74468085106383}
+            x={12.76595744680851}
             y={205.97826086956522}
           />
         </g>
         <g
           key="1"
-          transform="translate(1, 0)"
+          transform="translate(-14.255319148936174, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -5069,7 +5069,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
+            width={5.74468085106383}
             x={0}
             y={270.1086956521739}
           />
@@ -5091,8 +5091,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-10}
+            width={5.74468085106383}
+            x={6.382978723404255}
             y={26.413043478260875}
           />
           <rect
@@ -5113,8 +5113,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
-            width={-9}
-            x={-20}
+            width={5.74468085106383}
+            x={12.76595744680851}
             y={209.18478260869566}
           />
         </g>
@@ -7616,7 +7616,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
           />
           <g>
             <g
-              transform="translate(48, 0)"
+              transform="translate(24.864864864864863, 0)"
             >
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
@@ -7631,8 +7631,8 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 opacity=""
                 role="img"
                 tabindex="0"
-                width="-7.354838709677419"
-                x="-8.881784197001252e-16"
+                width="4.864864864864865"
+                x="0"
                 y="1.3000000000000043"
               />
               <rect
@@ -7648,13 +7648,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 opacity=""
                 role="img"
                 tabindex="-1"
-                width="-7.354838709677419"
-                x="-8.172043010752688"
+                width="4.864864864864865"
+                x="5.405405405405405"
                 y="13.399999999999999"
               />
             </g>
             <g
-              transform="translate(17.763440860215052, 0)"
+              transform="translate(4.864864864864863, 0)"
             >
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
@@ -7669,8 +7669,8 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 opacity=""
                 role="img"
                 tabindex="-1"
-                width="-7.354838709677419"
-                x="-8.881784197001252e-16"
+                width="4.864864864864865"
+                x="0"
                 y="1.3000000000000043"
               />
               <rect
@@ -7686,13 +7686,13 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 opacity=""
                 role="img"
                 tabindex="-1"
-                width="-7.354838709677419"
-                x="-8.172043010752688"
+                width="4.864864864864865"
+                x="5.405405405405405"
                 y="0"
               />
             </g>
             <g
-              transform="translate(-12.473118279569892, 0)"
+              transform="translate(-15.135135135135137, 0)"
             >
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
@@ -7707,8 +7707,8 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 opacity=""
                 role="img"
                 tabindex="-1"
-                width="-7.354838709677419"
-                x="-8.881784197001252e-16"
+                width="4.864864864864865"
+                x="0"
                 y="0"
               />
               <rect
@@ -7724,8 +7724,8 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 opacity=""
                 role="img"
                 tabindex="-1"
-                width="-7.354838709677419"
-                x="-8.172043010752688"
+                width="4.864864864864865"
+                x="5.405405405405405"
                 y="20"
               />
             </g>

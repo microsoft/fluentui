@@ -90,6 +90,12 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
    * @default false
    */
   hideLabels?: boolean;
+
+  maxBarWidth?: number;
+
+  xAxisInnerPadding?: number;
+
+  xAxisOuterPadding?: number;
 }
 
 /**
