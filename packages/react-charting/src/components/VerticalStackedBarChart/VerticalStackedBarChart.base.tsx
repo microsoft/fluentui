@@ -96,6 +96,8 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _domainMargin: number;
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
   private _emptyChartId: string;
+  private _xAxisInnerPadding: number;
+  private _xAxisOuterPadding: number;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -125,7 +127,6 @@ export class VerticalStackedBarChartBase extends React.Component<
       this._dataset = this._createDataSetLayer();
     }
     this._createLegendsForLine = memoizeFunction((data: IVerticalStackedChartProps[]) => this._getLineLegends(data));
-    this._domainMargin = MIN_DOMAIN_MARGIN;
     this._emptyChartId = getId('_VSBC_empty');
   }
 
@@ -202,7 +203,10 @@ export class VerticalStackedBarChartBase extends React.Component<
           customizedCallout={this._getCustomizedCallout()}
           onChartMouseLeave={this._handleChartMouseLeave}
           getDomainMargins={this._getDomainMargins}
-          {...(this._xAxisType !== XAxisTypes.NumericAxis && { xAxisInnerPadding: 2 / 3, xAxisOuterPadding: 0 })}
+          {...(this._xAxisType !== XAxisTypes.NumericAxis && {
+            xAxisInnerPadding: this._xAxisInnerPadding,
+            xAxisOuterPadding: this._xAxisOuterPadding,
+          })}
           /* eslint-disable react/jsx-no-bind */
           // eslint-disable-next-line react/no-children-prop
           children={(props: IChildProps) => {
@@ -433,13 +437,34 @@ export class VerticalStackedBarChartBase extends React.Component<
 
   private _adjustProps(): void {
     this._points = this.props.data || [];
-    this._barWidth = this.props.barWidth || 16;
+    this._barWidth = typeof this.props.barWidth === 'number' ? this.props.barWidth : 16;
+    if (typeof this.props.maxBarWidth === 'number') {
+      this._barWidth = Math.min(this._barWidth, this.props.maxBarWidth);
+    }
+    this._barWidth = Math.max(this._barWidth, 1);
     const { theme } = this.props;
     const { palette } = theme!;
     // eslint-disable-next-line deprecation/deprecation
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     this._xAxisType = getTypeOfAxis(this.props.data[0].xAxisPoint, true) as XAxisTypes;
     this._lineObject = this._getFormattedLineData(this.props.data);
+
+    const { xAxisInnerPadding, xAxisOuterPadding, xAxisPadding } = this.props;
+    this._xAxisInnerPadding =
+      typeof xAxisInnerPadding === 'number'
+        ? xAxisInnerPadding
+        : typeof xAxisPadding === 'number'
+        ? xAxisPadding
+        : 2 / 3;
+    this._xAxisInnerPadding = Math.max(0, Math.min(this._xAxisInnerPadding, 1));
+
+    this._xAxisOuterPadding =
+      typeof xAxisOuterPadding === 'number'
+        ? xAxisOuterPadding
+        : typeof xAxisPadding === 'number'
+        ? xAxisPadding
+        : 1 / 3;
+    this._xAxisOuterPadding = Math.max(0, Math.min(this._xAxisOuterPadding, 1));
   }
 
   private _createDataSetLayer(): IDataPoint[] {
@@ -743,6 +768,14 @@ export class VerticalStackedBarChartBase extends React.Component<
     );
     const shouldFocusWholeStack = this._toFocusWholeStack(_isHavingLines);
 
+    if (typeof this.props.barWidth !== 'number' && xBarScale.bandwidth) {
+      this._barWidth = xBarScale.bandwidth();
+      if (typeof this.props.maxBarWidth === 'number') {
+        this._barWidth = Math.min(this._barWidth, this.props.maxBarWidth);
+      }
+      this._barWidth = Math.max(this._barWidth, 1);
+    }
+
     const bars = this._points.map((singleChartData: IVerticalStackedChartProps, indexNumber: number) => {
       let yPoint = containerHeight - this.margins.bottom!;
       const xPoint = xBarScale(
@@ -930,7 +963,8 @@ export class VerticalStackedBarChartBase extends React.Component<
       const xBarScale = d3ScaleBand()
         .domain(this._xAxisLabels)
         .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin])
-        .paddingInner(2 / 3);
+        .paddingInner(this._xAxisInnerPadding)
+        .paddingOuter(this._xAxisOuterPadding);
 
       return { xBarScale, yBarScale };
     }
@@ -1034,24 +1068,10 @@ export class VerticalStackedBarChartBase extends React.Component<
   };
 
   private _getDomainMargins = (containerWidth: number): IMargins => {
-    if (this._xAxisType !== XAxisTypes.NumericAxis) {
-      /** Total width available to render the bars */
-      const totalWidth =
-        containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
-      let barWidth = Math.min(this.props.barWidth || 16, 24);
-      /** Total width required to render the bars. Directly proportional to bar width */
-      const reqWidth = (3 * this._xAxisLabels.length - 2) * barWidth;
-
+    if (this._xAxisType === XAxisTypes.NumericAxis) {
       this._domainMargin = MIN_DOMAIN_MARGIN;
-      if (totalWidth >= reqWidth) {
-        // Center align the chart by setting equal left and right margins for domain
-        this._domainMargin += (totalWidth - reqWidth) / 2;
-      } else {
-        /** Maximum possible bar width to maintain 2:1 spacing */
-        const maxBandwidth = totalWidth / (3 * this._xAxisLabels.length - 2);
-        barWidth = maxBandwidth;
-      }
-      this._barWidth = barWidth;
+    } else {
+      this._domainMargin = 0;
     }
 
     return {

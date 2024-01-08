@@ -1370,10 +1370,16 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     hideLabels?: boolean;
     isCalloutForStack?: boolean;
     lineOptions?: ILineChartLineOptions;
+    // (undocumented)
+    maxBarWidth?: number;
     onBarClick?: (event: React_2.MouseEvent<SVGElement>, data: IVerticalStackedChartProps | IVSChartDataPoint) => void;
     onRenderCalloutPerDataPoint?: IRenderFunction<IVSChartDataPoint>;
     onRenderCalloutPerStack?: IRenderFunction<IVerticalStackedChartProps>;
     styles?: IStyleFunctionOrObject<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>;
+    // (undocumented)
+    xAxisInnerPadding?: number;
+    // (undocumented)
+    xAxisOuterPadding?: number;
     xAxisPadding?: number;
     yMinValue?: undefined;
 }
