@@ -10,9 +10,9 @@ export const teachingPopoverSurfaceClassNames: SlotClassNames<TeachingPopoverSur
 
 const useStyles = makeStyles({
   root: {
-    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingVerticalL),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    maxWidth: '320px',
+    ...shorthands.padding(tokens.spacingVerticalL, tokens.spacingVerticalL),
+    ...shorthands.borderRadius(tokens.borderRadiusXLarge),
+    ...shorthands.borderWidth('0px'),
     width: '320px',
     boxSizing: 'border-box',
   },
@@ -25,6 +25,8 @@ export const useTeachingPopoverSurfaceStyles_unstable = (
   state: TeachingPopoverSurfaceState,
 ): TeachingPopoverSurfaceState => {
   const styles = useStyles();
+  // State will be mutated, keep a reference to root className
+  const oldRootClassName = state.root.className;
   const updatedState = usePopoverSurfaceStyles_unstable(state);
 
   // Make sure to merge teaching bubble surface on top of popover styles
@@ -32,7 +34,7 @@ export const useTeachingPopoverSurfaceStyles_unstable = (
     teachingPopoverSurfaceClassNames.root,
     updatedState.root.className,
     styles.root,
-    state.root.className,
+    oldRootClassName,
   );
 
   return updatedState;

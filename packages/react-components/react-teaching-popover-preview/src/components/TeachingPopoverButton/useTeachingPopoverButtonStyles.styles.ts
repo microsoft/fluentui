@@ -10,6 +10,9 @@ export const teachingPopoverButtonClassNames: SlotClassNames<TeachingPopoverButt
 };
 
 const useStyles = makeStyles({
+  root: {
+    minWidth: '96px',
+  },
   brandPrimary: {
     ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
   },
@@ -63,7 +66,7 @@ export const useTeachingPopoverButtonStyles_unstable = (
 
   const isCarousel = totalPages > 1;
   const styles = useStyles();
-  state.root.className = mergeClasses(teachingPopoverButtonClassNames.root, state.root.className);
+  state.root.className = mergeClasses(teachingPopoverButtonClassNames.root, state.root.className, styles.root);
   if (state.icon) {
     state.icon.className = mergeClasses(teachingPopoverButtonClassNames.icon, state.icon.className);
   }
