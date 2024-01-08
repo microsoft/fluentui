@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { queryAllByAttribute, render, waitFor, screen, fireEvent } from '@testing-library/react';
+import { act, queryAllByAttribute, render, waitFor, screen, fireEvent } from '@testing-library/react';
 import { HeatMapChart, IHeatMapChartProps } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
@@ -173,9 +173,12 @@ describe('Heat Map Chart - axe-core', () => {
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
-    const axeResults = await axe(container);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
     expect(axeResults).toHaveNoViolations();
-  }, 10000);
+  });
 });
 
 describe('HeatMapChart interaction and accessibility tests', () => {

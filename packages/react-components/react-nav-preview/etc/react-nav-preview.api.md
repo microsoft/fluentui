@@ -84,6 +84,23 @@ export type NavSlots = {
 // @public
 export type NavState = ComponentState<NavSlots> & NavContextValue;
 
+// @public
+export const NavSubItem: ForwardRefComponent<NavSubItemProps>;
+
+// @public (undocumented)
+export const navSubItemClassNames: SlotClassNames<NavSubItemSlots>;
+
+// @public
+export type NavSubItemProps = ComponentProps<NavSubItemSlots> & {};
+
+// @public (undocumented)
+export type NavSubItemSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type NavSubItemState = ComponentState<NavSubItemSlots>;
+
 // @public (undocumented)
 export type RegisterNavItemEventHandler = (data: NavItemRegisterData) => void;
 
@@ -92,6 +109,9 @@ export const renderNav_unstable: (state: NavState, contextValues: NavContextValu
 
 // @public
 export const renderNavCategoryItem_unstable: (state: NavCategoryItemState) => JSX.Element;
+
+// @public
+export const renderNavSubItem_unstable: (state: NavSubItemState) => JSX.Element;
 
 // @public
 export const useNav_unstable: (props: NavProps, ref: React_2.Ref<HTMLDivElement>) => NavState;
@@ -104,6 +124,12 @@ export const useNavCategoryItemStyles_unstable: (state: NavCategoryItemState) =>
 
 // @public (undocumented)
 export const useNavContext_unstable: () => NavContextValue;
+
+// @public
+export const useNavSubItem_unstable: (props: NavSubItemProps, ref: React_2.Ref<HTMLDivElement>) => NavSubItemState;
+
+// @public
+export const useNavSubItemStyles_unstable: (state: NavSubItemState) => NavSubItemState;
 
 // (No @packageDocumentation comment for this package)
 
