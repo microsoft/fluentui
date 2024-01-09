@@ -62,4 +62,3 @@ export type {
   NavSubItemGroupProps,
   NavSubItemGroupState,
 } from './components/NavSubItemGroup/index';
-export * from './NavItem';
