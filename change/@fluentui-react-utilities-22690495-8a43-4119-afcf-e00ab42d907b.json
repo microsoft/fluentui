@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add type helper for callback props",
+  "packageName": "@fluentui/react-utilities",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}

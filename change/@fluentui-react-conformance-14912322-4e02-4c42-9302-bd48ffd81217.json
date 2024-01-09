@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add 'consistent-callback-type' test, rename 'consistent-callback-args' to 'consistent-callback-args-legacy'",
+  "packageName": "@fluentui/react-conformance",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
