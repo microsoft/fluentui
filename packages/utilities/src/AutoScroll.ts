@@ -33,7 +33,7 @@ export class AutoScroll {
     this._scrollableParent = findScrollableParent(element) as HTMLElement;
 
     this._incrementScroll = this._incrementScroll.bind(this);
-    this._scrollRect = getRect(this._scrollableParent, win);
+    this._scrollRect = getRect(this._scrollableParent, theWin);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if (this._scrollableParent === (theWin as any)) {
