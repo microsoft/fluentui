@@ -25,17 +25,11 @@ export const useTeachingPopoverSurfaceStyles_unstable = (
   state: TeachingPopoverSurfaceState,
 ): TeachingPopoverSurfaceState => {
   const styles = useStyles();
-  // State will be mutated, keep a reference to root className
-  const oldRootClassName = state.root.className;
-  const updatedState = usePopoverSurfaceStyles_unstable(state);
 
-  // Make sure to merge teaching bubble surface on top of popover styles
-  updatedState.root.className = mergeClasses(
-    teachingPopoverSurfaceClassNames.root,
-    updatedState.root.className,
-    styles.root,
-    oldRootClassName,
-  );
+  // Make sure to merge teaching bubble surface prior to popover styles
+  state.root.className = mergeClasses(teachingPopoverSurfaceClassNames.root, styles.root, state.root.className);
+
+  const updatedState = usePopoverSurfaceStyles_unstable(state);
 
   return updatedState;
 };
