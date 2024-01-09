@@ -130,4 +130,19 @@ describe('Heat Map Chart - Subcomponent Legend', () => {
     fireEvent.mouseLeave(legends[0]);
     expect(handleMouseOver).toHaveBeenCalled();
   });
+
+  test('Should select legend on mouse click on legend', async () => {
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    const handleMouseClick = jest.spyOn(HeatMapChartBase.prototype as any, '_onLegendClick');
+    const legends = getByClass(container, /legend-/i);
+    // Assert
+    fireEvent.click(legends[0]);
+    expect(handleMouseClick).toHaveBeenCalled();
+  });
 });

@@ -377,7 +377,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * all the rectangles which fall under that category
    * and un highlight the rest of them
    */
-  private _onLegendClick = (legendTitle: string): void => {
+  private _onLegendClick(legendTitle: string): void {
     /**
      * check if the legend is already selceted,
      * if yes, un-select the legend, else
@@ -392,7 +392,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         selectedLegend: legendTitle,
       });
     }
-  };
+  }
   private _createLegendBars = (): JSX.Element => {
     const { data, legendProps } = this.props;
     const legends: ILegend[] = [];
