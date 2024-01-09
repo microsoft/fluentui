@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adding planner and todoitem filetype icon support.",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
