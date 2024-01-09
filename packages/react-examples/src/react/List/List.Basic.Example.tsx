@@ -77,7 +77,7 @@ const onRenderCell = (item: IExampleItem, index: number | undefined): JSX.Elemen
 };
 
 export const ListBasicExample: React.FunctionComponent = () => {
-  const originalItems = useConst(() => createListItems(5000));
+  const originalItems = useConst(() => createListItems(61));
   const [items, setItems] = React.useState(originalItems);
 
   const resultCountText =
