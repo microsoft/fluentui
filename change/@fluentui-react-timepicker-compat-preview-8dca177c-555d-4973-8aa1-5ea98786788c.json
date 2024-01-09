@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Deprecate preview package. Use @fluentui/react-timepicker-compat instead.",
-  "packageName": "@fluentui/react-timepicker-compat-preview",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

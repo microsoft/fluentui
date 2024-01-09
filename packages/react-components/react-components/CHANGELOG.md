@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 08 Jan 2024 16:24:19 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Jan 2024 10:21:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.44.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.44.2)
+
+Tue, 09 Jan 2024 10:21:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.44.1..@fluentui/react-components_v9.44.2)
+
+### Minor changes
+
+- `@fluentui/react-positioning`
+  - feat: Implement onPositioningEnd callback ([PR #30177](https://github.com/microsoft/fluentui/pull/30177) by lingfangao@hotmail.com)
+- `@fluentui/react-timepicker-compat`
+  - Stable release ([PR #30217](https://github.com/microsoft/fluentui/pull/30217) by yuanboxue@microsoft.com)
+- `@fluentui/react-timepicker-compat-preview`
+  - Deprecate preview package. Use @fluentui/react-timepicker-compat instead. ([PR #30217](https://github.com/microsoft/fluentui/pull/30217) by yuanboxue@microsoft.com)
 
 ## [9.44.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.44.1)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Tue, 09 Jan 2024 10:21:34 GMT",
+      "tag": "@fluentui/react-combobox_v9.5.39",
+      "version": "9.5.39",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.12.0",
+            "commit": "a5e34e3c996d322bb0735f4fca9537deafd07b59"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Jan 2024 16:24:21 GMT",
       "tag": "@fluentui/react-combobox_v9.5.38",
       "version": "9.5.38",

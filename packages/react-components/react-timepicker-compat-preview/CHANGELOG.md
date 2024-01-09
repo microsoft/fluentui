@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-timepicker-compat-preview
 
-This log was last generated on Mon, 08 Jan 2024 16:24:28 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Jan 2024 10:21:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat-preview_v0.2.0)
+
+Tue, 09 Jan 2024 10:21:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-timepicker-compat-preview_v0.1.10..@fluentui/react-timepicker-compat-preview_v0.2.0)
+
+### Minor changes
+
+- Deprecate preview package. Use @fluentui/react-timepicker-compat instead. ([PR #30217](https://github.com/microsoft/fluentui/pull/30217) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-combobox to v9.5.39 ([PR #30217](https://github.com/microsoft/fluentui/pull/30217) by beachball)
 
 ## [0.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat-preview_v0.1.10)
 
