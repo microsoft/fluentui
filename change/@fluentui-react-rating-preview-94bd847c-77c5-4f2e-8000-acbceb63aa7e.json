@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Updating doc stories and API.",
+  "packageName": "@fluentui/react-rating-preview",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -22,7 +22,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   const displayedRatingValue = context?.hoveredValue ?? ratingValue;
 
   let iconFillWidth;
-  if ((context && context.compact) || displayedRatingValue >= value) {
+  if ((context && context.mode === 'read-only-compact') || displayedRatingValue >= value) {
     iconFillWidth = 1;
   } else if (displayedRatingValue >= value - 0.5) {
     iconFillWidth = 0.5;
@@ -52,7 +52,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   let unselectedFilledIcon;
-  if (context && iconFillWidth < 1 && context.appearance === 'filled') {
+  if (context && context.mode !== 'interactive' && iconFillWidth < 1) {
     unselectedFilledIcon = slot.always(props.unselectedFilledIcon, {
       defaultProps: {
         children: context.iconFilled,
@@ -74,7 +74,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   let halfValueInput;
-  if (context && !context.readOnly && context.precision && !context.compact) {
+  if (context && context.mode === 'interactive' && context.step === 0.5) {
     halfValueInput = slot.always(props.halfValueInput, {
       defaultProps: {
         type: 'radio',
@@ -91,7 +91,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   let fullValueInput;
-  if (context && !context.readOnly && !context.compact) {
+  if (context && context.mode === 'interactive') {
     fullValueInput = slot.always(props.fullValueInput, {
       defaultProps: {
         type: 'radio',
@@ -109,8 +109,9 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   const state: RatingItemState = {
-    compact: context ? context.compact : false,
-    precision: context ? context.precision : false,
+    color: context ? context.color : 'neutral',
+    mode: context ? context.mode : 'interactive',
+    step: context ? (context.step === 1 ? 1 : 0.5) : 1,
     size: context ? context.size : 'medium',
     iconFillWidth,
     value,
