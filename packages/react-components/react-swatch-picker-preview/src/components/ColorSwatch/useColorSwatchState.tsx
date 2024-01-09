@@ -3,25 +3,18 @@ import { useControllableState, useEventCallback, mergeCallbacks } from '@fluentu
 // import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { swatchCSSVars } from './useColorSwatchStyles.styles';
 import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
-// import { calculateContrastRatio, calculateRelativeLuminance, hexToRgb } from '../../utils/calculateContrastRatio';
+import { calculateContrastRatioFromHex } from '../../utils/calculateContrastRatio';
 
-const { swatchColor } = swatchCSSVars;
-
-// TODO get theme color - needs background
-// function getContrastRatio(color1: string, color2: string) {
-//   const backgroundColor = hexToRgb(color1).replace('rgb(', '').replace(')', '').split(',');
-//   const swatchColor2 = hexToRgb(color2).replace('rgb(', '').replace(')', '').split(',');
-
-//   const l1 = calculateRelativeLuminance(Number(backgroundColor[0]), Number(backgroundColor[1]), Number(backgroundColor[2]));
-//   const l2 = calculateRelativeLuminance(Number(swatchColor2[0]), Number(swatchColor2[1]), Number(swatchColor2[2]));
-//   return calculateContrastRatio(l1, l2).toFixed(2);
-// }
+const { swatchColor, swatchBorderColor, swatchStateColor } = swatchCSSVars;
 
 export const useColorSwatchState_unstable = (state: ColorSwatchState, props: ColorSwatchProps) => {
   const { value = '#fff', selected, defaultSelected, disabled } = props;
   const { onClick } = state.root;
 
-  // const contrastRatio = getContrastRatio('#fafafa', value);
+  // TODO get theme color - needs background
+  const contrastRatio = calculateContrastRatioFromHex('#fafafa', value);
+  const contrastBorderColor = contrastRatio < 3 ? '#000' : 'transparent';
+  const contrastStateColor = contrastRatio < 3 ? '#000' : '#fff';
 
   const [selectedValue, setSelectedValue] = useControllableState({
     state: selected,
@@ -44,6 +37,8 @@ export const useColorSwatchState_unstable = (state: ColorSwatchState, props: Col
 
   const rootVariables = {
     [swatchColor]: value,
+    [swatchBorderColor]: contrastBorderColor,
+    [swatchStateColor]: contrastStateColor,
   };
   // Root props
   state.root.style = {

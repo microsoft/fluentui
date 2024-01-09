@@ -9,6 +9,7 @@ export const radioPickerClassNames: SlotClassNames<RadioPickerSlots> = {
 export const radioPickerCSSVars = {
   columnCountGrid: `--fui-SwatchPicker--columnCount`,
   cellSize: `--fui-SwatchPicker--cellSize`,
+  gridGap: `--fui-SwatchPicker--gridGap`,
 };
 
 const { columnCountGrid, cellSize } = radioPickerCSSVars;
@@ -21,6 +22,7 @@ const useStyles = makeStyles({
   grid: {
     display: 'grid',
     gridTemplateColumns: `repeat(var(${columnCountGrid}), var(${cellSize}))`,
+    gridGap: 'var(--fui-SwatchPicker--gridGap)',
   },
   row: {
     display: 'flex',

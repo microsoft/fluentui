@@ -9,9 +9,11 @@ export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
 
 export const swatchCSSVars = {
   swatchColor: `--fui-SwatchPicker--color`,
+  swatchBorderColor: `--fui-SwatchPicker--borderColor`,
+  swatchStateColor: `--fui-SwatchPicker--stateColor`,
 };
 
-const { swatchColor } = swatchCSSVars;
+const { swatchColor, swatchBorderColor, swatchStateColor } = swatchCSSVars;
 
 /**
  * Styles for the root slot
@@ -23,9 +25,10 @@ const useStyles = makeResetStyles({
   height: '28px',
   background: `var(${swatchColor})`,
   ...shorthands.transition('all', '0.1s', 'ease-in-out'),
+  border: `1px solid var(${swatchBorderColor})`,
   '&:hover': {
     cursor: 'pointer',
-    boxShadow: `inset 0 0 0 2px var(${swatchColor}), inset 0 0 0 4px #fff`,
+    boxShadow: `inset 0 0 0 2px var(${swatchColor}), inset 0 0 0 4px var(${swatchStateColor})`,
   },
 });
 
@@ -33,7 +36,7 @@ const useIconStyles = makeResetStyles({});
 
 const useStylesSelected = makeStyles({
   selected: {
-    boxShadow: `inset 0 0 0 4px var(${swatchColor}), inset 0 0 0 6px #fff`,
+    boxShadow: `inset 0 0 0 4px var(${swatchColor}), inset 0 0 0 6px var(${swatchStateColor})`,
   },
 });
 

@@ -1,7 +1,7 @@
 import { radioPickerCSSVars } from './useRadioPickerStyles.styles';
 import type { RadioPickerProps, RadioPickerState } from './RadioPicker.types';
 
-const { columnCountGrid, cellSize } = radioPickerCSSVars;
+const { columnCountGrid, cellSize, gridGap } = radioPickerCSSVars;
 
 export const useRadioPickerState_unstable = (state: RadioPickerState, props: RadioPickerProps) => {
   const { columnCount = 2, size = 'medium' } = props;
@@ -15,6 +15,7 @@ export const useRadioPickerState_unstable = (state: RadioPickerState, props: Rad
   const rootVariables = {
     [columnCountGrid]: columnCount,
     [cellSize]: sizeMap[size],
+    [gridGap]: '4px',
   };
 
   // Root props

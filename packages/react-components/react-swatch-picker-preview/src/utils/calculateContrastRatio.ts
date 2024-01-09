@@ -14,6 +14,30 @@ export function hexToRgb(hex: string): string {
   return `rgb(${r}, ${g}, ${b})`; // tuple shuold be
 }
 
+export function hexToRgb1(hex: string): object {
+  if (!hex && hex.indexOf('#') === -1) {
+    return {
+      r: 0,
+      g: 0,
+      b: 0,
+    };
+  }
+  // Remove the # symbol if present
+  hex = hex.replace('#', '');
+
+  // Convert the hex value to decimal
+  const r = parseInt(hex.substring(0, 2), 16);
+  const g = parseInt(hex.substring(2, 4), 16);
+  const b = parseInt(hex.substring(4, 6), 16);
+
+  // Return the RGB color value
+  return {
+    r,
+    g,
+    b,
+  }; // tuple shuold be
+}
+
 // https://www.w3.org/TR/WCAG20/#relativeluminancedef
 // See reference
 export function calculateRelativeLuminance(r: number, g: number, b: number): number {
@@ -31,6 +55,7 @@ export function calculateRelativeLuminance(r: number, g: number, b: number): num
 }
 
 // from yellow #ffff00 -> #909000 , in rgb 144
+
 // inside border 7575 -> to rgb 117
 
 // todo add link to formulas
@@ -46,19 +71,16 @@ export function calculateContrastRatio(l1: number, l2: number): number {
 
 // I need to cache contrast ratio
 
-// function calculateContrastRatioFromHex(hex1: string, hex2: string): number {
-//   const rgb1 = hexToRgb(hex1);
-//   const rgb2 = hexToRgb(hex2);
-//   const r1 = parseInt(rgb1.split(',')[0].split('(')[1]);
-//   const g1 = parseInt(rgb1.split(',')[1]);
-//   const b1 = parseInt(rgb1.split(',')[2].split(')')[0]);
+export function calculateContrastRatioFromHex(hex1: string, hex2: string): number {
+  const rgb1 = hexToRgb1(hex1);
+  const rgb2 = hexToRgb1(hex2);
 
-//   const r2 = parseInt(rgb2.split(',')[0].split('(')[1]);
-//   const g2 = parseInt(rgb2.split(',')[1]);
-//   const b2 = parseInt(rgb2.split(',')[2].split(')')[0]);
+  // const r2 = parseInt(rgb2.split(',')[0].split('(')[1]);
+  // const g2 = parseInt(rgb2.split(',')[1]);
+  // const b2 = parseInt(rgb2.split(',')[2].split(')')[0]);
 
-//   const l1 = calculateRelativeLuminance(r1, g1, b1);
-//   const l2 = calculateRelativeLuminance(r2, g2, b2);
+  const l1 = calculateRelativeLuminance(rgb1.r, rgb1.g, rgb1.b);
+  const l2 = calculateRelativeLuminance(rgb2.r, rgb2.g, rgb2.b);
 
-//   return calculateContrastRatio(l1, l2);
-// }
+  return calculateContrastRatio(l1, l2);
+}
