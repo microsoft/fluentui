@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/foundation-legacy",
-  "version": "8.2.48",
+  "version": "8.2.49",
   "description": "Legacy utilities for building Fluent UI React components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,7 +36,7 @@
   "dependencies": {
     "@fluentui/merge-styles": "^8.5.14",
     "@fluentui/set-version": "^8.2.13",
-    "@fluentui/style-utilities": "^8.9.21",
+    "@fluentui/style-utilities": "^8.10.0",
     "@fluentui/utilities": "^8.13.22",
     "tslib": "^2.1.0"
   },
