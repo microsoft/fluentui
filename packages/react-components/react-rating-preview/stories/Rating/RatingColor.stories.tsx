@@ -26,7 +26,7 @@ export const Color = () => {
 Color.parameters = {
   docs: {
     description: {
-      story: 'You can specify the appearance of the Rating component with the "appearance" prop.',
+      story: 'You can specify the appearance of the Rating component with the "color" prop.',
     },
   },
 };
