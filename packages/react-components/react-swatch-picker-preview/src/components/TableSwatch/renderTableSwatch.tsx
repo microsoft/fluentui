@@ -11,5 +11,5 @@ export const renderTableSwatch_unstable = (state: TableSwatchState) => {
   assertSlots<TableSwatchSlots>(state);
 
   // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return <state.root>{state.button && <state.button />}</state.root>;
 };

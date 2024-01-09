@@ -1,7 +1,8 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type TablePickerSlots = {
-  root: Slot<'div'>;
+  root: Slot<'table'>;
+  tbody: Slot<'tbody'>;
 };
 
 /**

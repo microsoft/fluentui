@@ -11,5 +11,9 @@ export const renderTablePicker_unstable = (state: TablePickerState) => {
   assertSlots<TablePickerSlots>(state);
 
   // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return (
+    <state.root>
+      <state.tbody>{state.root.children}</state.tbody>
+    </state.root>
+  );
 };

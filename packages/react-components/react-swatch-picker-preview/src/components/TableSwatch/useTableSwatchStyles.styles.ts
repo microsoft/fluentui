@@ -1,22 +1,40 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TableSwatchSlots, TableSwatchState } from './TableSwatch.types';
 
 export const tableSwatchClassNames: SlotClassNames<TableSwatchSlots> = {
   root: 'fui-TableSwatch',
-  // TODO: add class names for all slots on TableSwatchSlots.
-  // Should be of the form `<slotName>: 'fui-TableSwatch__<slotName>`
+  button: 'fui-TableSwatch__button',
 };
+
+export const tdCSSVars = {
+  cellColor: `--fui-SwatchPicker--color`,
+};
+
+const { cellColor } = tdCSSVars;
 
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
+const useStyles = makeResetStyles({
+  boxSizing: 'border-box',
+  ...shorthands.border('none'),
+  width: '28px',
+  height: '28px',
+  background: `var(${cellColor})`,
+  ...shorthands.transition('all', '0.1s', 'ease-in-out'),
+  '&:hover': {
+    cursor: 'pointer',
+    boxShadow: `inset 0 0 0 2px var(${cellColor}), inset 0 0 0 4px #fff`,
   },
+});
 
-  // TODO add additional classes for different states and/or slots
+const usebuttonStyles = makeResetStyles({});
+
+const useStylesSelected = makeStyles({
+  selected: {
+    boxShadow: `inset 0 0 0 4px var(${cellColor}), inset 0 0 0 6px #fff`,
+  },
 });
 
 /**
@@ -24,10 +42,19 @@ const useStyles = makeStyles({
  */
 export const useTableSwatchStyles_unstable = (state: TableSwatchState): TableSwatchState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(tableSwatchClassNames.root, styles.root, state.root.className);
+  const selectedStyles = useStylesSelected();
+  const buttonStyles = usebuttonStyles();
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  state.root.className = mergeClasses(tableSwatchClassNames.root, styles, state.root.className);
+
+  if (state.button) {
+    state.button.className = mergeClasses(tableSwatchClassNames.button, buttonStyles, state.button.className);
+  }
+
+  if (state.selected) {
+    state.root.className = mergeClasses(state.root.className, selectedStyles.selected);
+  }
+  return state;
 
   return state;
 };

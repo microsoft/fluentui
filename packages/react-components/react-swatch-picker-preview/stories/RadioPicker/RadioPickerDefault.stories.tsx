@@ -10,15 +10,15 @@ export const Default = () => {
   return (
     <>
       <RadioGroup name="row-picker" value={rowValue} onChange={(_, data) => setRowValue(data.value)}>
-        <RadioSwatch value="red" label="Red" />
-        <RadioSwatch value="green" label="Green" />
-        <RadioSwatch value="blue" label="Blue" />
+        <RadioSwatch value="red" aria-label="red" label="Red" />
+        <RadioSwatch value="green" aria-label="green" label="Green" />
+        <RadioSwatch value="blue" aria-label="Blue" label="Blue" />
       </RadioGroup>
 
       <RadioPicker name="row-picker" value={rowValue} onChange={(_, data) => setRowValue(data.value)}>
-        <RadioSwatch icon={<Prohibited20Filled />} value="red" label="Red" />
-        <RadioSwatch value="green" label="Green" />
-        <RadioSwatch value="blue" label="Blue" />
+        <RadioSwatch icon={<Prohibited20Filled />} value="red" label="Red" aria-label="Red" />
+        <RadioSwatch value="green" label="Green" aria-label="Green" />
+        <RadioSwatch value="blue" label="Blue" aria-label="Blue" />
       </RadioPicker>
       <div>{rowValue}</div>
       <div style={{ backgroundColor: rowValue, width: '200px', height: '200px' }} />
@@ -30,15 +30,15 @@ export const Default = () => {
         value={value}
         onChange={(_, data) => setValue(data.value)}
       >
-        <RadioSwatch value="red" label="Red" />
-        <RadioSwatch value="green" label="Green" />
-        <RadioSwatch value="blue" label="Blue" />
-        <RadioSwatch value="yellow" label="Yellow" />
-        <RadioSwatch value="orange" label="Orange" />
-        <RadioSwatch value="purple" label="Purple" />
-        <RadioSwatch value="black" label="Black" />
-        <RadioSwatch value="white" label="White" />
-        <RadioSwatch value="#f09" label="#f09" />
+        <RadioSwatch value="red" label="Red" aria-label="Red" />
+        <RadioSwatch value="green" label="Green" aria-label="Green" />
+        <RadioSwatch value="blue" label="Blue" aria-label="Blue" />
+        <RadioSwatch value="yellow" label="Yellow" aria-label="Yellow" />
+        <RadioSwatch value="orange" label="Orange" aria-label="Orange" />
+        <RadioSwatch value="purple" label="Purple" aria-label="Purple" />
+        <RadioSwatch value="black" label="Black" aria-label="Black" />
+        <RadioSwatch value="white" label="White" aria-label="White" />
+        <RadioSwatch value="#f09" label="#f09" aria-label="#f09" />
       </RadioPicker>
       <div style={{ backgroundColor: value, width: '200px', height: '200px' }} />
     </>

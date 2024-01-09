@@ -9,23 +9,30 @@ import type { TableSwatchProps, TableSwatchState } from './TableSwatch.types';
  * before being passed to renderTableSwatch_unstable.
  *
  * @param props - props from this instance of TableSwatch
- * @param ref - reference to root HTMLDivElement of TableSwatch
+ * @param ref - reference to root HTMLTableCellElement  of TableSwatch
  */
-export const useTableSwatch_unstable = (props: TableSwatchProps, ref: React.Ref<HTMLDivElement>): TableSwatchState => {
+export const useTableSwatch_unstable = (
+  props: TableSwatchProps,
+  ref: React.Ref<HTMLTableCellElement>,
+): TableSwatchState => {
   return {
     // TODO add appropriate props/defaults
     components: {
       // TODO add each slot's element type or component
-      root: 'div',
+      root: 'td',
+      button: 'button',
     },
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      getIntrinsicElementProps('td', {
         ref,
         ...props,
       }),
-      { elementType: 'div' },
+      { elementType: 'td' },
     ),
+    button: {},
+    selected: props.selected,
+    value: props.value,
   };
 };
