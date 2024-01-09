@@ -66,7 +66,7 @@ export const useTeachingPopoverButtonStyles_unstable = (
 
   const isCarousel = totalPages > 1;
   const styles = useStyles();
-  state.root.className = mergeClasses(teachingPopoverButtonClassNames.root, state.root.className, styles.root);
+  state.root.className = mergeClasses(teachingPopoverButtonClassNames.root, styles.root, state.root.className);
   if (state.icon) {
     state.icon.className = mergeClasses(teachingPopoverButtonClassNames.icon, state.icon.className);
   }
