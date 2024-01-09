@@ -69,14 +69,12 @@ const useSecondaryContentBaseStyles = makeResetStyles({
   paddingLeft: '2px',
   paddingRight: '2px',
   ...typographyStyles.caption1,
-  lineHeight: '20px',
+  lineHeight: tokens.lineHeightBase300,
   color: tokens.colorNeutralForeground3,
   ':hover': {
-    ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground3Hover,
   },
   ':focus': {
-    ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground3Hover,
   },
 });
