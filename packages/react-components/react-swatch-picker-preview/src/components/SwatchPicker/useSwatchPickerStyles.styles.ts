@@ -1,7 +1,7 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SwatchPickerSlots, SwatchPickerState } from './SwatchPicker.types';
-
+import { tokens } from '@fluentui/react-components';
 export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots> = {
   root: 'fui-SwatchPicker',
 };
@@ -12,6 +12,7 @@ export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots> = {
 const useStyles = makeStyles({
   root: {
     display: 'flex',
+    ...shorthands.padding(tokens.spacingVerticalMNudge),
   },
 
   // TODO add additional classes for different states and/or slots

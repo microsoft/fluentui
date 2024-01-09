@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import type { RadioSwatchProps, RadioSwatchState } from './RadioSwatch.types';
 import { useRadio_unstable } from '@fluentui/react-radio';
 import { useRadioSwatchState_unstable } from './useRadioSwatchState';

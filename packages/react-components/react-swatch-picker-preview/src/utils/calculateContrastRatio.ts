@@ -11,9 +11,11 @@ export function hexToRgb(hex: string): string {
   const b = parseInt(hex.substring(4, 6), 16);
 
   // Return the RGB color value
-  return `rgb(${r}, ${g}, ${b})`;
+  return `rgb(${r}, ${g}, ${b})`; // tuple shuold be
 }
 
+// https://www.w3.org/TR/WCAG20/#relativeluminancedef
+// See reference
 export function calculateRelativeLuminance(r: number, g: number, b: number): number {
   const sR = r / 255;
   const sG = g / 255;
@@ -28,12 +30,21 @@ export function calculateRelativeLuminance(r: number, g: number, b: number): num
   return relativeLuminance;
 }
 
+// from yellow #ffff00 -> #909000 , in rgb 144
+// inside border 7575 -> to rgb 117
+
+// todo add link to formulas
+// return value will be in the range [1, 21]
+// 1 is no contrast, 21 is max contrast
 export function calculateContrastRatio(l1: number, l2: number): number {
   const lighterColorL1 = Math.max(l1, l2);
   const darkerColorL2 = Math.min(l1, l2);
+  // name 0.5 luminanceThreshold
   const contrastRatio = (lighterColorL1 + 0.05) / (darkerColorL2 + 0.05);
   return contrastRatio;
 }
+
+// I need to cache contrast ratio
 
 // function calculateContrastRatioFromHex(hex1: string, hex2: string): number {
 //   const rgb1 = hexToRgb(hex1);

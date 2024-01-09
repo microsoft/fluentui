@@ -134,6 +134,8 @@ export type CustomStyleHooksContextValue = Partial<{
   useImageSwatchStyles_unstable: CustomStyleHook;
   useRadioPickerStyles_unstable: CustomStyleHook;
   useRadioSwatchStyles_unstable: CustomStyleHook;
+  useTablePickerStyles_unstable: CustomStyleHook;
+  useTableSwatchStyles_unstable: CustomStyleHook;
 }>;
 
 /**
