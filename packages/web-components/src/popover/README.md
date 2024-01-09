@@ -64,20 +64,20 @@ The popover web component uses floating-ui (a javascript npm package) to impleme
 
 Below is a maping of the floating ui Placement type to the FluentUI PositioningShorthand type. There are some differences in language, but the meanings in the ui are the same. For the sake of clarity the web component implementation precisely matches the language of the react implementation:
 
-| Floating-ui - Placement | FluentUI React - PositioningShorthand\* | FluentUI Design Guidelines | FluentUI Web Component - PositioningShorthand | notes |
-| ----------------------- | --------------------------------------- | -------------------------- | --------------------------------------------- | ----- |
-| top                     | above                                   | above                      | above-center                                  |       |
-| top-start               | above-start                             | above-start                | above-start                                   |       |
-| top-end                 | above-end                               | above-end                  | above-end                                     |       |
-| right                   | after                                   | after                      | end-middle                                    |       |
-| right-start             | after-top                               | after-top                  | end-top                                       |       |
-| right-end               | after-bottom                            | after-bottom               | end-bottom                                    |       |
-| bottom                  | below                                   | below                      | below-center                                  |       |
-| bottom-start            | below-start                             | below-start                | below-start                                   |       |
-| bottom-end              | below-end                               | below-end                  | below-end                                     |       |
-| left                    | before                                  | before                     | start-middle                                  |       |
-| left-start              | before-top                              | before-top                 | start-top                                     |       |
-| left-end                | before-bottom                           | before-bottom              | start-bottom                                  |       |
+| Floating-ui - Placement | FluentUI React - PositioningShorthand\* | FluentUI Web Component - follows React pattern | FluentUI Design Guidelines | notes |
+| ----------------------- | --------------------------------------- | ---------------------------------------------- | -------------------------- | ----- |
+| top                     | above                                   | above                                          | above-center               |       |
+| top-start               | above-start                             | above-start                                    | above-start                |       |
+| top-end                 | above-end                               | above-end                                      | above-end                  |       |
+| right                   | after                                   | after                                          | end-middle                 |       |
+| right-start             | after-top                               | after-top                                      | end-top                    |       |
+| right-end               | after-bottom                            | after-bottom                                   | end-bottom                 |       |
+| bottom                  | below                                   | below                                          | below-center               |       |
+| bottom-start            | below-start                             | below-start                                    | below-start                |       |
+| bottom-end              | below-end                               | below-end                                      | below-end                  |       |
+| left                    | before                                  | before                                         | start-middle               |       |
+| left-start              | before-top                              | before-top                                     | start-top                  |       |
+| left-end                | before-bottom                           | before-bottom                                  | start-bottom               |       |
 
 ### Prior work
 
