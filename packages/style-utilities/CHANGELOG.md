@@ -1,8 +1,17 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Thu, 14 Dec 2023 07:30:10 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Jan 2024 07:33:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.10.0)
+
+Tue, 09 Jan 2024 07:33:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.9.21..@fluentui/style-utilities_v8.10.0)
+
+### Minor changes
+
+- Adding planner and todoitem filetype icon support. ([PR #30079](https://github.com/microsoft/fluentui/pull/30079) by caperez@microsoft.com)
 
 ## [8.9.21](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.9.21)
 

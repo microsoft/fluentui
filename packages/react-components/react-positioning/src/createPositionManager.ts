@@ -1,9 +1,10 @@
 import { computePosition } from '@floating-ui/dom';
 import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
+import { isHTMLElement } from '@fluentui/react-utilities';
 import type { PositionManager, TargetElement } from './types';
 import { debounce, writeArrowUpdates, writeContainerUpdates } from './utils';
-import { isHTMLElement } from '@fluentui/react-utilities';
 import { listScrollParents } from './utils/listScrollParents';
+import { POSITIONING_END_EVENT } from './constants';
 import { createResizeObserver } from './utils/createResizeObserver';
 
 interface PositionManagerOptions {
@@ -108,6 +109,8 @@ export function createPositionManager(options: PositionManagerOptions): Position
           strategy,
           useTransform,
         });
+
+        container.dispatchEvent(new CustomEvent(POSITIONING_END_EVENT));
       })
       .catch(err => {
         // https://github.com/floating-ui/floating-ui/issues/1845

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 08 Jan 2024 16:24:23 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Jan 2024 10:21:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.12.0)
+
+Tue, 09 Jan 2024 10:21:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.11.0..@fluentui/react-positioning_v9.12.0)
+
+### Minor changes
+
+- feat: Implement onPositioningEnd callback ([PR #30177](https://github.com/microsoft/fluentui/pull/30177) by lingfangao@hotmail.com)
 
 ## [9.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.11.0)
 

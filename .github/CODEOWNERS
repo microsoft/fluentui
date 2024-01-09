@@ -245,7 +245,6 @@ packages/react-components/react-colorpicker-compat @microsoft/cxe-red @sopranopi
 packages/react-components/react-nav-preview @microsoft/cxe-red @mltejera
 packages/react-components/react-motion-preview @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-message-bar @microsoft/teams-prg
-packages/react-components/react-timepicker-compat-preview @microsoft/teams-prg
 packages/react-components/react-rating-preview @microsoft/cxe-red @tomi-msft
 packages/react-components/react-swatch-picker-preview @microsoft/cxe-prg
 packages/react-components/react-calendar-compat @microsoft/cxe-red @sopranopillow

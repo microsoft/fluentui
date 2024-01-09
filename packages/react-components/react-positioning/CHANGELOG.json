@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Tue, 09 Jan 2024 10:21:33 GMT",
+      "tag": "@fluentui/react-positioning_v9.12.0",
+      "version": "9.12.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "5f9ae1e7b414d73ffa56f588d8eec5e2b85df95d",
+            "comment": "feat: Implement onPositioningEnd callback"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Jan 2024 16:24:23 GMT",
       "tag": "@fluentui/react-positioning_v9.11.0",
       "version": "9.11.0",
