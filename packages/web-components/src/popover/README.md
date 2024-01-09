@@ -79,6 +79,10 @@ Below is a maping of the floating ui Placement type to the FluentUI PositioningS
 | left-start              | before-top                              | before-top                 | start-top                                     |       |
 | left-end                | before-bottom                           | before-bottom              | start-bottom                                  |       |
 
+### Prior work
+
+Component dev implementation work was initially began by Miro Stastny. With his permission, we are picking up where he left off. [His PR here](https://github.com/microsoft/fluentui/pull/26984/files#diff-696924c0eb6e18cb4283373ccf8c3cb8713a2cc1e5b32ccc2f907616803e2f63)
+
 ## Usage:
 
 ```html
