@@ -81,18 +81,18 @@ jobs:
           uniqueId: 'perfComment9424'
 
       - script: |
-          yarn stats:build
+          yarn northstar:stats:build
         condition: eq(variables.isPR, false)
         displayName: Bundle Statistics (master only)
 
       - script: |
-          yarn perf
+          yarn northstar:perf
         condition: eq(variables.isPR, false)
         displayName: Performance Tests (master only)
 
       # HEADS UP: also see tag-version-prefix in fluentui-publish.js
       - script: |
-          yarn stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
+          yarn northstar:stats:save --tag=`git tag --points-at HEAD | grep ^@fluentui/react-northstar_v | grep -o 'northstar_v.*'`
         condition: eq(variables.isPR, false)
         displayName: Save Statistics to DB (master only)
         env:

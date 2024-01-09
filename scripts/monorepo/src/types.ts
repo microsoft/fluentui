@@ -19,4 +19,9 @@ export interface PackageInfo {
   packageJson: PackageJson;
 }
 
-export type AllPackageInfo = { [packageName: string]: PackageInfo };
+/**
+ * packageName - valid npm package name including scope. Example: `@fluentui/foo-bar`
+ */
+export type AllPackageInfo = {
+  [packageName: string]: PackageInfo;
+};

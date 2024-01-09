@@ -154,13 +154,13 @@ export const MultipleSelect = () => {
   return (
     <DataGrid items={items} columns={columns} selectionMode="multiselect" defaultSelectedItems={defaultSelectedItems}>
       <DataGridHeader>
-        <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
+        <DataGridRow selectionCell={{ checkboxIndicator: { 'aria-label': 'Select all rows' } }}>
           {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
         </DataGridRow>
       </DataGridHeader>
       <DataGridBody<Item>>
         {({ item, rowId }) => (
-          <DataGridRow<Item> key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
+          <DataGridRow<Item> key={rowId} selectionCell={{ checkboxIndicator: { 'aria-label': 'Select row' } }}>
             {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
           </DataGridRow>
         )}

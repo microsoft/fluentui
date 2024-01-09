@@ -66,11 +66,11 @@ describe('TableSelectionCell', () => {
     expect(queryByRole('checkbox')).not.toBeNull();
   });
 
-  it('renders icon if type radio is set', () => {
-    const { queryByRole, container } = render(<TableSelectionCell type="radio">Table cell</TableSelectionCell>, {
+  it('renders radio if type radio is set', () => {
+    const { queryByRole } = render(<TableSelectionCell type="radio">Table cell</TableSelectionCell>, {
       container: tr,
     });
     expect(queryByRole('checkbox')).toBeNull();
-    expect(container.querySelector('svg')).not.toBeNull();
+    expect(queryByRole('radio')).not.toBeNull();
   });
 });

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Apply onClick callback to contentAfter's span to allow usage of custom icons.",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "stevenco@microsoft.com",
-  "dependentChangeType": "patch"
-}

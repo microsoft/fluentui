@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: re-export toMountNodeProps()",
-  "packageName": "@fluentui/react-components",
-  "email": "jaguilarvega@microsoft.com",
-  "dependentChangeType": "patch"
-}

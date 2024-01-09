@@ -30,9 +30,6 @@
     },
     {
       "path": "./find-free-port/tsconfig.json"
-    },
-    {
-      "path": "./lerna/tsconfig.json"
     }
   ]
 }

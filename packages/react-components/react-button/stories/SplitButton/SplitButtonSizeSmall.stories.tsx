@@ -68,11 +68,11 @@ export const SizeSmall = () => {
             <Tooltip
               content="Small with calendar icon only"
               positioning={{ target: primaryActionButtonRef }}
-              relationship="label"
+              relationship="inaccessible"
             >
               <SplitButton
                 menuButton={triggerProps}
-                primaryActionButton={{ ref: setPrimaryActionButtonRef }}
+                primaryActionButton={{ ref: setPrimaryActionButtonRef, 'aria-label': 'Small with calendar icon only' }}
                 icon={<CalendarMonthRegular />}
                 size="small"
               />

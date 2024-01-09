@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Toast text content should wrap",
-  "packageName": "@fluentui/react-toast",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

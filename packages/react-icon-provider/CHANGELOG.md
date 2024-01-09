@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-icon-provider
 
-This log was last generated on Thu, 09 Nov 2023 07:29:20 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Jan 2024 07:33:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.50)
+
+Tue, 09 Jan 2024 07:33:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.49..@fluentui/react-icon-provider_v1.3.50)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.10.0 ([PR #30003](https://github.com/microsoft/fluentui/pull/30003) by beachball)
+
+## [1.3.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.49)
+
+Thu, 14 Dec 2023 07:30:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icon-provider_v1.3.48..@fluentui/react-icon-provider_v1.3.49)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/style-utilities to v8.9.21 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
 
 ## [1.3.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-icon-provider_v1.3.48)
 

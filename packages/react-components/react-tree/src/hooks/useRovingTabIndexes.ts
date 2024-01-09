@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { HTMLElementFilter, HTMLElementWalker } from '../utils/createHTMLElementWalker';
+import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
 
 /**
  * https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex
  */
-export function useRovingTabIndex(filter?: HTMLElementFilter) {
+export function useRovingTabIndex() {
   const currentElementRef = React.useRef<HTMLElement>();
 
   const initialize = React.useCallback((walker: HTMLElementWalker) => {

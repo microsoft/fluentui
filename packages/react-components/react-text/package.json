@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-text",
-  "version": "9.3.45",
+  "version": "9.4.4",
   "description": "Text is a typography and styling abstraction component that can be used to ensure the consistency of all text across your application.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,10 +34,10 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-shared-contexts": "^9.11.1",
-    "@fluentui/react-theme": "^9.1.15",
-    "@fluentui/react-utilities": "^9.15.1",
-    "@fluentui/react-jsx-runtime": "^9.0.18",
+    "@fluentui/react-shared-contexts": "^9.13.2",
+    "@fluentui/react-theme": "^9.1.16",
+    "@fluentui/react-utilities": "^9.15.6",
+    "@fluentui/react-jsx-runtime": "^9.0.24",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
