@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import { TimePicker } from '@fluentui/react-timepicker-compat-preview';
 
 import descriptionMd from './TimePickerDescription.md';

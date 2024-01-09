@@ -43,6 +43,8 @@ export function keyToDate(key: string): Date | null {
  * formatDateToTimeString(date);                         // Returns "23:45" in CET
  * formatDateToTimeString(date, \{ showSeconds: true \});  // Returns "23:45:12" in CET
  * formatDateToTimeString(date, \{ hourCycle: 'h12', showSeconds: true \}); // Returns "11:45:12 PM" in CET
+ *
+ * @deprecated use \@fluentui/react-timepicker-compat
  */
 export function formatDateToTimeString(date: Date, { hourCycle, showSeconds }: TimeFormatOptions = {}): string {
   return date.toLocaleTimeString(undefined, {

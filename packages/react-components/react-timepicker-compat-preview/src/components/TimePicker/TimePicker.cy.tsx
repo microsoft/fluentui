@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 import { mount as mountBase } from '@cypress/react';
 

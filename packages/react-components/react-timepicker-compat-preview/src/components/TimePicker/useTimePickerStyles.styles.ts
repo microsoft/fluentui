@@ -1,8 +1,12 @@
+/* eslint-disable deprecation/deprecation */
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TimePickerSlots, TimePickerState } from './TimePicker.types';
 import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
 
+/**
+ * @deprecated use \@fluentui/react-timepicker-compat
+ */
 export const timePickerClassNames: SlotClassNames<TimePickerSlots> = {
   root: 'fui-TimePicker',
   input: 'fui-TimePicker__input',
@@ -18,6 +22,7 @@ const useStyles = makeStyles({
 
 /**
  * Apply styling to the TimePicker slots based on the state
+ * @deprecated use \@fluentui/react-timepicker-compat
  */
 export const useTimePickerStyles_unstable = (state: TimePickerState): TimePickerState => {
   const styles = useStyles();

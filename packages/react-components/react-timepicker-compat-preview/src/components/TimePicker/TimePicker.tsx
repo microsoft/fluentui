@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTimePicker_unstable } from './useTimePicker';
@@ -8,6 +9,7 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * TimePicker Compat component
+ * @deprecated use \@fluentui/react-timepicker-compat
  */
 export const TimePicker: ForwardRefComponent<TimePickerProps> = React.forwardRef((props, ref) => {
   const state = useTimePicker_unstable(props, ref);

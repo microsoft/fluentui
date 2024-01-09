@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 import {
   elementContains,
@@ -29,6 +30,8 @@ import {
  *
  * @param props - props from this instance of TimePicker
  * @param ref - reference to root HTMLElement of TimePicker
+ *
+ * @deprecated use \@fluentui/react-timepicker-compat
  */
 export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HTMLInputElement>): TimePickerState => {
   const {

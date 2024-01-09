@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 import { Field, FieldProps, makeStyles } from '@fluentui/react-components';
 import { TimePicker, TimePickerErrorType, TimePickerProps } from '@fluentui/react-timepicker-compat-preview';
