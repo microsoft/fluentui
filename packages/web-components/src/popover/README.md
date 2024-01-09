@@ -48,7 +48,7 @@ _differences in language_
 | overflowBoundary                    | Omitted - the boundary element is the trigger element                           |                                                                                                                                            |
 | overflowBoundaryPadding             | Omitted - not in design guidelines                                              | Applies a padding to the overflow boundary, so that overflow is detected earlier before the positioned surface hits the overflow boundary. |
 | pinned                              | Achieved through DOM Attribute                                                  | Disables automatic repositioning                                                                                                           |
-| position                            | Achieved through the positioning attribute or the popover-position attribute    |                                                                                                                                            |
+| position                            | Achieved through the positioning attribute or the popover-position attribute    | "above" \| "below" \| "before" \| "after"                                                                                                  |
 | strategy                            | Achieved through CSS                                                            | Specifies the type of CSS position property to use.                                                                                        |
 | useTransform                        | Omitted - not in design guidelines                                              | Modifies whether popover is positioned using transform.                                                                                    |
 | matchTargetSize                     | Omitted - not in design guidelines                                              | When set, the positioned element matches the chosen dimension(s) of the target element                                                     |
@@ -87,6 +87,7 @@ Component dev implementation work was initially began by Miro Stastny. With his 
 
 ```html
 <fluent-popover anchor="button-trigger" beak>
- <fluent-buttom id="button-trigger"></fluent-button>
-<fluent-popover>
+  <fluent-button id="button-trigger"></fluent-button>
+  <fluent-popover></fluent-popover
+></fluent-popover>
 ```
