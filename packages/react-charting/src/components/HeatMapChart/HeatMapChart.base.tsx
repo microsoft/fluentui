@@ -356,21 +356,21 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * and un-highlight the rest of them
    * @param legendTitle
    */
-  private _onLegendHover = (legendTitle: string): void => {
+  private _onLegendHover(legendTitle: string): void {
     this.setState({
       activeLegend: legendTitle,
     });
-  };
+  }
 
   /**
    * when the mouse is out from the legend , we need
    * to show the graph in initial mode.
    */
-  private _onLegendLeave = (): void => {
+  private _onLegendLeave(): void {
     this.setState({
       activeLegend: '',
     });
-  };
+  }
   /**
    * @param legendTitle
    * when the legend is clicked we need to highlight

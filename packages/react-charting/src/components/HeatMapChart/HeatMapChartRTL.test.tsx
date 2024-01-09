@@ -4,6 +4,7 @@ import { HeatMapChart, IHeatMapChartProps } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { getByClass } from '../../utilities/TestUtility.test';
 import { screen, fireEvent } from '@testing-library/react';
+import { HeatMapChartBase } from './HeatMapChart.base';
 
 expect.extend(toHaveNoViolations);
 
@@ -97,5 +98,36 @@ describe('Heat Map Chart - Subcomponent Legend', () => {
     );
     // Assert
     expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'true');
+  });
+
+  test('Should highlight legend on mouse over on legends', async () => {
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    const handleMouseOver = jest.spyOn(HeatMapChartBase.prototype as any, '_onLegendHover');
+    const legends = getByClass(container, /legend-/i);
+    // Assert
+    fireEvent.mouseOver(legends[0]);
+    expect(handleMouseOver).toHaveBeenCalled();
+  });
+
+  test('Should reset legend on mouse leave from legends', async () => {
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    const handleMouseOver = jest.spyOn(HeatMapChartBase.prototype as any, '_onLegendLeave');
+    const legends = getByClass(container, /legend-/i);
+    // Assert
+    fireEvent.mouseOver(legends[0]);
+    fireEvent.mouseLeave(legends[0]);
+    expect(handleMouseOver).toHaveBeenCalled();
   });
 });
