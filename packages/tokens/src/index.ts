@@ -5,6 +5,7 @@ export {
   webDarkTheme,
   webLightTheme,
   azureDarkTheme,
+  azureLightTheme,
 } from './themes/index';
 export {
   createDarkTheme,
@@ -12,6 +13,7 @@ export {
   createLightTheme,
   createTeamsDarkTheme,
   createAzureDarkTheme,
+  createAzureLightTheme,
 } from './utils/index';
 
 export { themeToTokensObject } from './themeToTokensObject';
