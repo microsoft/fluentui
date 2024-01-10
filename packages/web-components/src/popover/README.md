@@ -88,6 +88,5 @@ Component dev implementation work was initially began by Miro Stastny. With his 
 ```html
 <fluent-popover anchor="button-trigger" beak>
   <fluent-button id="button-trigger"></fluent-button>
-  <fluent-popover></fluent-popover
-></fluent-popover>
+</fluent-popover>
 ```
