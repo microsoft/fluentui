@@ -3,10 +3,11 @@ import * as React from 'react';
 import { queryAllByAttribute, render, waitFor, screen, fireEvent } from '@testing-library/react';
 import { IChartProps, SankeyChart } from './index';
 import { resetIds } from '../../Utilities';
-import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import { SankeyChartBase } from './SankeyChart.base';
 
 expect.extend(toHaveNoViolations);
 
@@ -123,6 +124,36 @@ describe('Sankey chart - Subcomponent Label', () => {
       const nodes = getByClass(container, /nodeName/i);
       expect(nodes).toHaveLength(4);
       expect(screen.queryByText('192.168.42.72')).not.toBeNull();
+    },
+  );
+});
+
+describe('Sankey chart - Mouse events', () => {
+  testWithoutWait(
+    'Should reset path on mouse leave from path',
+    SankeyChart,
+    { data: chartPointsWithStringNodeId },
+    async container => {
+      // eslint-disable-next-line
+      const handleMouseOver = jest.spyOn(SankeyChartBase.prototype as any, '_onStreamLeave');
+      const paths = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
+      fireEvent.mouseOver(paths[0]);
+      fireEvent.mouseOut(paths[0]);
+      expect(handleMouseOver).toHaveBeenCalled();
+    },
+  );
+
+  testWithoutWait(
+    'Should reset node on mouse leave from node',
+    SankeyChart,
+    { data: chartPointsWithStringNodeId },
+    async container => {
+      // eslint-disable-next-line
+      const handleMouseOver = jest.spyOn(SankeyChartBase.prototype as any, '_onLeave');
+      const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      fireEvent.mouseOver(nodes[0]);
+      fireEvent.mouseOut(nodes[0]);
+      expect(handleMouseOver).toHaveBeenCalled();
     },
   );
 });
