@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-utilities",
-  "version": "9.15.5",
+  "version": "9.15.6",
   "description": "A set of general React-specific utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

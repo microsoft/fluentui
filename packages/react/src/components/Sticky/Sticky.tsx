@@ -263,6 +263,8 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
       const distanceFromTop = this._getNonStickyDistanceFromTop(container);
       let isStickyTop = false;
       let isStickyBottom = false;
+      // eslint-disable-next-line no-restricted-globals
+      const doc = (this._getContext().window ?? window)?.document;
 
       if (this.canStickyTop) {
         const distanceToStickTop = distanceFromTop - this._getStickyDistanceFromTop();
@@ -279,11 +281,11 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
       }
 
       if (
-        document.activeElement &&
-        this.nonStickyContent.contains(document.activeElement) &&
+        doc?.activeElement &&
+        this.nonStickyContent.contains(doc?.activeElement) &&
         (this.state.isStickyTop !== isStickyTop || this.state.isStickyBottom !== isStickyBottom)
       ) {
-        this._activeElement = document.activeElement as HTMLElement;
+        this._activeElement = doc?.activeElement as HTMLElement;
       } else {
         this._activeElement = undefined;
       }
@@ -342,10 +344,12 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
     }
 
     let curr: HTMLElement = this.root;
+    // eslint-disable-next-line no-restricted-globals
+    const win = this._getContext().window ?? window;
 
     while (
-      window.getComputedStyle(curr).getPropertyValue('background-color') === 'rgba(0, 0, 0, 0)' ||
-      window.getComputedStyle(curr).getPropertyValue('background-color') === 'transparent'
+      win.getComputedStyle(curr).getPropertyValue('background-color') === 'rgba(0, 0, 0, 0)' ||
+      win.getComputedStyle(curr).getPropertyValue('background-color') === 'transparent'
     ) {
       if (curr.tagName === 'HTML') {
         // Fallback color if no element has a declared background-color attribute
@@ -355,7 +359,7 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
         curr = curr.parentElement;
       }
     }
-    return window.getComputedStyle(curr).getPropertyValue('background-color');
+    return win.getComputedStyle(curr).getPropertyValue('background-color');
   }
 }
 

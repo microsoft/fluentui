@@ -1,3 +1,4 @@
+import { getDocument } from '@fluentui/utilities';
 import { cssColor } from './cssColor';
 import { getColorFromRGBA } from './getColorFromRGBA';
 import type { IColor } from './interfaces';
@@ -10,8 +11,9 @@ import type { IColor } from './interfaces';
  * Alpha defaults to 100 if not specified in `inputColor`.
  * Returns undefined if the color string is invalid/not recognized.
  */
-export function getColorFromString(inputColor: string): IColor | undefined {
-  const color = cssColor(inputColor);
+export function getColorFromString(inputColor: string, doc?: Document): IColor | undefined {
+  const theDoc = doc ?? getDocument()!;
+  const color = cssColor(inputColor, theDoc);
 
   if (!color) {
     return;

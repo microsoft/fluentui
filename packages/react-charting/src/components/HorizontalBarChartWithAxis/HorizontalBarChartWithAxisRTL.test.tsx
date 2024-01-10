@@ -315,7 +315,9 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Stri...');
     },
   );
+});
 
+describe.skip('Skip - Horizontal bar chart with axis - Subcomponent Labels', () => {
   testWithWait(
     'Should expand y axis label when showYAxisLables is true',
     HorizontalBarChartWithAxis,

@@ -1,3 +1,6 @@
+/* eslint no-restricted-globals: 0 */
+// globals in stylesheets will be addressed as part of shadow DOM work.
+// See: https://github.com/microsoft/fluentui/issues/28058
 import { IStyle } from './IStyle';
 
 export const InjectionMode = {
