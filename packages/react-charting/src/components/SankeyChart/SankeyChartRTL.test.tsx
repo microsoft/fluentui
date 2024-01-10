@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { queryAllByAttribute, render, waitFor, screen, fireEvent } from '@testing-library/react';
+import { render, waitFor, screen, fireEvent, act } from '@testing-library/react';
 import { IChartProps, SankeyChart } from './index';
 import { resetIds } from '../../Utilities';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
