@@ -1,6 +1,10 @@
 import { GriffelStyle, shorthands } from '@fluentui/react-components';
-import { iconClassNames } from '@fluentui/react-northstar';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
+
+const iconClassNames = {
+  filled: 'ui-icon__filled',
+  outline: 'ui-icon__outline',
+};
 
 export const v9HoverClasses = (): GriffelStyle => ({
   [`& .${iconFilledClassName}`]: {

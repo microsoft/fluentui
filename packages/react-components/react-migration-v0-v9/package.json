@@ -27,6 +27,7 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
+    "@fluentui/react-northstar": "^0.66.4",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*",
     "@fluentui/scripts-storybook": "*"
@@ -37,7 +38,6 @@
     "@fluentui/react-context-selector": "^9.1.46",
     "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-jsx-runtime": "^9.0.24",
-    "@fluentui/react-northstar": "^0.66.4",
     "@fluentui/react-shared-contexts": "^9.13.2",
     "@fluentui/react-tabster": "^9.17.0",
     "@fluentui/react-theme": "^9.1.16",
