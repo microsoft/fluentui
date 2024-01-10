@@ -100,7 +100,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
       getIntrinsicElementProps('div', {
         ref: cardRef,
         role: 'group',
-        ...focusAttributes,
+        ...(!selectable ? focusAttributes : null),
         ...props,
         ...selectableCardProps,
       }),
