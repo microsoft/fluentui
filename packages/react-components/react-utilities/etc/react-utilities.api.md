@@ -41,6 +41,18 @@ export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): Prio
 export function elementContains(parent: Node | null, child: Node | null): boolean;
 
 // @public
+export type EventData<Type extends string, TEvent> = {
+    type: undefined;
+    event: React_2.SyntheticEvent | Event;
+} | {
+    type: Type;
+    event: TEvent;
+};
+
+// @public
+export type EventHandler<TData extends EventData<string, unknown>> = (ev: React_2.SyntheticEvent | Event, data: TData) => void;
+
+// @public
 export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
 
 // @internal
