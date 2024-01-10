@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: disallow document and window access",
-  "packageName": "@fluentui/react-file-type-icons",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

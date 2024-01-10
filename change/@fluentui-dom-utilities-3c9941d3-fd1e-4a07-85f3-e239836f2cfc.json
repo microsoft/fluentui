@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: disallow document and window access",
-  "packageName": "@fluentui/dom-utilities",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
