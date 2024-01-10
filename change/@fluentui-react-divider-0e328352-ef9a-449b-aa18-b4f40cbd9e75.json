@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "updated tokens for strong and subtle variants",
+  "comment": "fix: Updating tokens used in strong and subtle variants to match design spec.",
   "packageName": "@fluentui/react-divider",
   "email": "kakrookaran@gmail.com",
   "dependentChangeType": "patch"
