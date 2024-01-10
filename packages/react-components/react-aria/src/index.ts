@@ -3,7 +3,7 @@ export {
   useARIAButtonShorthand,
   useARIAButtonProps,
 } from './button/index';
-export { useActiveDescendant } from './activedescendant';
+export { useActiveDescendant, ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE } from './activedescendant';
 export type { ActiveDescendantImperativeRef, ActiveDescendantOptions } from './activedescendant';
 export type {
   ARIAButtonSlotProps,

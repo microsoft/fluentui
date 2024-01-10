@@ -15,6 +15,8 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
@@ -33,6 +35,7 @@
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.7",
     "@fluentui/react-shared-contexts": "^9.13.2",
+    "@fluentui/react-tabster": "^9.17.0",
     "@fluentui/react-utilities": "^9.15.6",
     "@swc/helpers": "^0.5.1"
   },
