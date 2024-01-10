@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { queryAllByAttribute, render, waitFor, screen, fireEvent, act } from '@testing-library/react';
+import { render, waitFor, screen, fireEvent, act } from '@testing-library/react';
 import { IChartProps, SankeyChart } from './index';
 import { resetIds } from '../../Utilities';
-import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import { SankeyChartBase } from './SankeyChart.base';
 
 expect.extend(toHaveNoViolations);
 
@@ -127,12 +128,41 @@ describe('Sankey chart - Subcomponent Label', () => {
   );
 });
 
+describe('Sankey chart - Mouse events', () => {
+  testWithoutWait(
+    'Should reset path on mouse leave from path',
+    SankeyChart,
+    { data: chartPointsWithStringNodeId },
+    async container => {
+      // eslint-disable-next-line
+      const handleMouseOver = jest.spyOn(SankeyChartBase.prototype as any, '_onStreamLeave');
+      const paths = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
+      fireEvent.mouseOver(paths[0]);
+      fireEvent.mouseOut(paths[0]);
+      expect(handleMouseOver).toHaveBeenCalled();
+    },
+  );
+
+  testWithoutWait(
+    'Should reset node on mouse leave from node',
+    SankeyChart,
+    { data: chartPointsWithStringNodeId },
+    async container => {
+      // eslint-disable-next-line
+      const handleMouseOver = jest.spyOn(SankeyChartBase.prototype as any, '_onLeave');
+      const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      fireEvent.mouseOver(nodes[0]);
+      fireEvent.mouseOut(nodes[0]);
+      expect(handleMouseOver).toHaveBeenCalled();
+    },
+  );
+});
+
 describe('Sankey chart rendering', () => {
   beforeEach(sharedBeforeEach);
   test('Should re-render the Sankey chart with data', async () => {
     // Arrange
     const { container, rerender } = render(<SankeyChart data={emptyChartPoints} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
     // Assert
     expect(container).toMatchSnapshot();
     expect(getById(container, /_SankeyChart_empty/i)).toHaveLength(1);
