@@ -1,12 +1,6 @@
-As a new developer to the Fluent repo, but long time Fluent consumer and fan, the supporting documentation has been a rough experience. This has forced me to randomize other members of the team which slows us both down. This RFC seeks to lay out a plan to modernize the Fluent dev docs.
+As a new developer to the Fluent repo, but long time consumer and fan, the supporting documentation has room for opportunity. To be productive, I've had to randomize other members of the core team which slows us both down.
 
-## Current issues:
-
-- Mixture of v6, 7, 8 and 9 specific docs.
-- Docs seemed to have stopped being updated in the early days of v9 development.
-- Mixture of process, set up, and reference docs.
-- RFC’s seem to be a large part of the Fluent process now, but there’s no clear way for an outsider to observe or contribute to them.
-- Use of Github’s wiki isn't the best technical solution.
+This RFC seeks to lay out a plan to update the Fluent dev docs. The ultimate goal is to streamline contributors path to success.
 
 ## Goals of the new system:
 
@@ -21,6 +15,14 @@ As a new developer to the Fluent repo, but long time Fluent consumer and fan, th
 - Provide documentation relevant to other disciplines outside engineering.
 - Provide documentation around consuming the library. These should live externally in the Storybook.
 - Provide documentation around filing bugs or how to engage with the team.
+
+## Current issues:
+
+- Mixture of v6, 7, 8 and 9 specific docs.
+- Docs seemed to have stopped being updated in the early days of v9 development.
+- Mixture of process, set up, and reference docs.
+- RFC’s seem to be a large part of the Fluent process now, but there’s no clear way for an outsider to observe or contribute to them.
+- Use of Github’s wiki isn't the best technical solution.
 
 ## Proposed changes
 
@@ -55,7 +57,6 @@ This would completely replace the wiki. There are two main advantages to this me
 - testing
   - // docs that explain current testing processes, minimum bars, and helpful tips and tricks to spin up.
 - browser-support-matrix.md
-- ownership.md
 - stable-packages.md // a doc describing our approach to breaking changes, what qualifies, and how we make them
 - preview-packages.md // a doc explaining what a preview package is and how to create them
 
