@@ -108,6 +108,7 @@ describe('Heat Map Chart - Subcomponent Legend', () => {
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
+    // eslint-disable-next-line
     const handleMouseOver = jest.spyOn(HeatMapChartBase.prototype as any, '_onLegendHover');
     const legends = getByClass(container, /legend-/i);
     // Assert
@@ -123,6 +124,7 @@ describe('Heat Map Chart - Subcomponent Legend', () => {
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
+    // eslint-disable-next-line
     const handleMouseOver = jest.spyOn(HeatMapChartBase.prototype as any, '_onLegendLeave');
     const legends = getByClass(container, /legend-/i);
     // Assert
@@ -139,6 +141,7 @@ describe('Heat Map Chart - Subcomponent Legend', () => {
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
+    // eslint-disable-next-line
     const handleMouseClick = jest.spyOn(HeatMapChartBase.prototype as any, '_onLegendClick');
     const legends = getByClass(container, /legend-/i);
     // Assert
