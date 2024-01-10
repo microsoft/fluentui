@@ -163,7 +163,6 @@ describe('Sankey chart rendering', () => {
   test('Should re-render the Sankey chart with data', async () => {
     // Arrange
     const { container, rerender } = render(<SankeyChart data={emptyChartPoints} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
     // Assert
     expect(container).toMatchSnapshot();
     expect(getById(container, /_SankeyChart_empty/i)).toHaveLength(1);
