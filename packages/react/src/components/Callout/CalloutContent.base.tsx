@@ -21,7 +21,7 @@ import type { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } 
 import type { Point, IRectangle } from '../../Utilities';
 import type { ICalloutPositionedInfo, IPositionProps, IPosition } from '../../Positioning';
 import type { Target } from '@fluentui/react-hooks';
-import { useWindow } from '@fluentui/react-window-provider';
+import { useWindowEx } from '../../utilities/dom';
 
 const COMPONENT_NAME = 'CalloutContentBase';
 
@@ -208,7 +208,7 @@ function usePositions(
     preferScrollResizePositioning,
   } = props;
 
-  const win = useWindow();
+  const win = useWindowEx();
   const localRef = React.useRef<HTMLDivElement | null>();
   let popupStyles: CSSStyleDeclaration | undefined;
   if (localRef.current !== popupRef.current) {
@@ -243,8 +243,16 @@ function usePositions(
           // If there is a finalHeight given then we assume that the user knows and will handle
           // additional positioning adjustments so we should call positionCard
           const newPositions: ICalloutPositionedInfo = finalHeight
-            ? positionCard(currentProps, hostElement.current, dupeCalloutElement, previousPositions)
-            : positionCallout(currentProps, hostElement.current, dupeCalloutElement, previousPositions, shouldScroll);
+            ? positionCard(currentProps, hostElement.current, dupeCalloutElement, previousPositions, win)
+            : positionCallout(
+                currentProps,
+                hostElement.current,
+                dupeCalloutElement,
+                previousPositions,
+                shouldScroll,
+                undefined,
+                win,
+              );
 
           // clean up duplicate calloutElement
           calloutElement.parentElement?.removeChild(dupeCalloutElement);
@@ -295,6 +303,7 @@ function usePositions(
     hideOverflow,
     preferScrollResizePositioning,
     popupOverflowY,
+    win,
   ]);
 
   return positions;

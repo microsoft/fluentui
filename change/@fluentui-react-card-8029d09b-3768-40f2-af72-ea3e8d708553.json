@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: remove slow CSS selector from card styles",
+  "packageName": "@fluentui/react-card",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}

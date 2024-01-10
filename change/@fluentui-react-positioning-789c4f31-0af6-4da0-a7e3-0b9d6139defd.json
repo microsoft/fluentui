@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: update styles to not flip in RTL",
+  "packageName": "@fluentui/react-positioning",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

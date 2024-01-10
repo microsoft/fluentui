@@ -2,6 +2,33 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Wed, 10 Jan 2024 07:28:49 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.11.1",
+      "version": "8.11.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "5858fe05255460fa9b13370e613c5243ae3b92d0",
+            "comment": "chore: disallow document and window access"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/set-version to v8.2.14",
+            "commit": "5858fe05255460fa9b13370e613c5243ae3b92d0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.10.1",
+            "commit": "5858fe05255460fa9b13370e613c5243ae3b92d0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jan 2024 07:33:08 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.11.0",
       "version": "8.11.0",
