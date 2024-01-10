@@ -1,27 +1,65 @@
-import { exec } from 'child_process';
-import { promisify } from 'util';
+import fs from 'fs';
+import path from 'path';
 
+import { transform } from '@swc/core';
 import type { Options as SwcOptions } from '@swc/core';
-import { logger } from 'just-scripts';
+import glob from 'glob';
+import * as match from 'micromatch';
 
-const execAsync = promisify(exec);
+type Options = SwcOptions & { module: { type: 'es6' | 'commonjs' | 'amd' }; outputPath: string };
 
-type Options = SwcOptions & { module: { type: 'es6' | 'commonjs' | 'amd' } };
-
-function swcCli(options: Options) {
+async function swcTransform(options: Options) {
   const { outputPath, module } = options;
-  const swcCliBin = 'npx swc';
-  const sourceDirMap = {
-    es6: 'src',
-    commonjs: 'lib',
-    amd: 'lib',
-  };
-  const sourceDir = sourceDirMap[options.module.type];
+  const packageRoot = process.cwd();
+  const sourceRootDirName = module.type === 'es6' ? 'src' : 'lib';
 
-  const cmd = `${swcCliBin} ${sourceDir} --out-dir ${outputPath} --config module.type=${module?.type}`;
-  logger.info(`Running swc CLI: ${cmd}`);
+  let sourceFiles: string[] = [];
 
-  return execAsync(cmd);
+  if (module.type === 'es6') {
+    sourceFiles = glob.sync(`${sourceRootDirName}/**/*.{ts,tsx}`);
+  }
+
+  if (module.type === 'commonjs' || module.type === 'amd') {
+    sourceFiles = glob.sync(`${sourceRootDirName}/**/*.js`);
+  }
+
+  const swcConfig = JSON.parse(fs.readFileSync(path.resolve(packageRoot, '.swcrc'), 'utf-8'));
+  const tsFileExtensionRegex = /\.(tsx|ts)$/;
+
+  for (const fileName of sourceFiles) {
+    const srcFilePath = path.resolve(packageRoot, fileName);
+    const isFileExcluded = match.isMatch(srcFilePath, swcConfig.exclude, { contains: true });
+
+    if (isFileExcluded) {
+      continue;
+    }
+
+    const sourceCode = fs.readFileSync(srcFilePath, 'utf-8');
+
+    const result = await transform(sourceCode, {
+      filename: fileName,
+      module: { type: module.type },
+      sourceFileName: path.basename(fileName),
+      outputPath,
+    });
+
+    // Strip @jsx comments, see https://github.com/microsoft/fluentui/issues/29126
+    const resultCode = result.code
+      .replace('/** @jsxRuntime automatic */', '')
+      .replace('/** @jsxImportSource @fluentui/react-jsx-runtime */', '');
+
+    const compiledFilePath = path.resolve(packageRoot, fileName.replace(`${sourceRootDirName}`, outputPath));
+
+    //Create directory folder for new compiled file(s) to live in.
+    await fs.promises.mkdir(compiledFilePath.replace(path.basename(compiledFilePath), ''), { recursive: true });
+
+    const compiledFilePathJS = `${compiledFilePath.replace(tsFileExtensionRegex, '.js')}`;
+
+    await fs.promises.writeFile(compiledFilePathJS, resultCode);
+    if (result.map) {
+      await fs.promises.writeFile(`${compiledFilePathJS}.map`, result.map);
+    }
+  }
 }
 
 export const swc = {
@@ -32,7 +70,7 @@ export const swc = {
       module: { type: 'commonjs' },
     };
 
-    return swcCli(options);
+    return swcTransform(options);
   },
   esm: () => {
     const options: Options = {
@@ -41,7 +79,7 @@ export const swc = {
       module: { type: 'es6' },
     };
 
-    return swcCli(options);
+    return swcTransform(options);
   },
   amd: () => {
     const options: Options = {
@@ -50,6 +88,6 @@ export const swc = {
       module: { type: 'amd' },
     };
 
-    return swcCli(options);
+    return swcTransform(options);
   },
 };

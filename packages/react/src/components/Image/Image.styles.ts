@@ -49,7 +49,11 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
 
   // Cut the mustard using msMaxTouchPoints to detect IE11 which does not support CSS object-fit
   const window: Window | undefined = getWindow();
-  const supportsObjectFit: boolean = window !== undefined && window.navigator.msMaxTouchPoints === undefined;
+  const supportsObjectFit: boolean =
+    window !== undefined &&
+    // eslint-disable-next-line @fluentui/max-len
+    // cast needed as vendor prefixed `msMaxTouchPoints` api is no longer part of TS lib declaration - introduced with TS 4.4
+    (window.navigator as { msMaxTouchPoints?: Window['navigator']['maxTouchPoints'] }).msMaxTouchPoints === undefined;
   const fallbackObjectFitStyles =
     (isContain && isLandscape) || (isCover && !isLandscape)
       ? { width: '100%', height: 'auto' }

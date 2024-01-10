@@ -1,38 +1,21 @@
 import * as React from 'react';
-import { SlotRenderFunction, UnknownSlotProps, SLOT_RENDER_FUNCTION_SYMBOL } from '@fluentui/react-utilities';
-
-type WithMetadata<Props extends {}> = Props & {
-  [SLOT_RENDER_FUNCTION_SYMBOL]: SlotRenderFunction<Props>;
-};
+import { isSlot } from '@fluentui/react-utilities';
+import { createElementFromSlotComponent } from './jsx/createElementFromSlotComponent';
+import { createCompatSlotComponent } from './utils/createCompatSlotComponent';
 
 export function createElement<P extends {}>(
   type: React.ElementType<P>,
   props?: P | null,
   ...children: React.ReactNode[]
-): React.ReactElement<P> | null {
-  return hasRenderFunction(props)
-    ? createElementFromRenderFunction(type, props, children)
-    : React.createElement(type, props, ...children);
-}
-
-function createElementFromRenderFunction<P extends UnknownSlotProps>(
-  type: React.ElementType<P>,
-  props: WithMetadata<P>,
-  overrideChildren: React.ReactNode[],
-): React.ReactElement<P> | null {
-  const { [SLOT_RENDER_FUNCTION_SYMBOL]: renderFunction, ...renderProps } = props;
-
-  if (overrideChildren.length > 0) {
-    renderProps.children = React.createElement(React.Fragment, {}, ...overrideChildren);
+): React.ReactElement<P> {
+  // TODO:
+  // this is for backwards compatibility with getSlotsNext
+  // it should be removed once getSlotsNext is obsolete
+  if (isSlot<P>(props)) {
+    return createElementFromSlotComponent(createCompatSlotComponent(type, props), children);
   }
-
-  return React.createElement(
-    React.Fragment,
-    {},
-    renderFunction(type, renderProps as UnknownSlotProps as P),
-  ) as React.ReactElement<P>;
-}
-
-export function hasRenderFunction<Props extends {}>(props?: Props | null): props is WithMetadata<Props> {
-  return Boolean(props?.hasOwnProperty(SLOT_RENDER_FUNCTION_SYMBOL));
+  if (isSlot<P>(type)) {
+    return createElementFromSlotComponent(type, children);
+  }
+  return React.createElement(type, props, ...children);
 }

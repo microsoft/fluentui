@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
-import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import type { FieldProps, FieldState } from './Field.types';
 
 const validationMessageIcons = {
@@ -33,38 +33,24 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
   const baseId = useId('field-');
   const generatedControlId = baseId + '__control';
 
-  const root = getNativeElementProps('div', { ...props, ref }, /*excludedPropNames:*/ ['children']);
-
-  const label = resolveShorthand(props.label, {
-    defaultProps: {
-      htmlFor: generatedControlId,
-      id: baseId + '__label',
-      required,
-      size,
-    },
+  const root = slot.always(getIntrinsicElementProps('div', { ...props, ref }, /*excludedPropNames:*/ ['children']), {
+    elementType: 'div',
   });
-
-  const validationMessage = resolveShorthand(props.validationMessage, {
-    defaultProps: {
-      id: baseId + '__validationMessage',
-      role: validationState === 'error' ? 'alert' : undefined,
-    },
+  const label = slot.optional(props.label, {
+    defaultProps: { htmlFor: generatedControlId, id: baseId + '__label', required, size },
+    elementType: Label,
   });
-
-  const hint = resolveShorthand(props.hint, {
-    defaultProps: {
-      id: baseId + '__hint',
-    },
+  const validationMessage = slot.optional(props.validationMessage, {
+    defaultProps: { id: baseId + '__validationMessage', role: validationState === 'error' ? 'alert' : undefined },
+    elementType: 'div',
   });
-
+  const hint = slot.optional(props.hint, { defaultProps: { id: baseId + '__hint' }, elementType: 'div' });
   const defaultIcon = validationMessageIcons[validationState];
-  const validationMessageIcon = resolveShorthand(props.validationMessageIcon, {
-    required: !!defaultIcon,
-    defaultProps: {
-      children: defaultIcon,
-    },
+  const validationMessageIcon = slot.optional(props.validationMessageIcon, {
+    renderByDefault: !!defaultIcon,
+    defaultProps: { children: defaultIcon },
+    elementType: 'span',
   });
-
   return {
     children,
     generatedControlId,
@@ -72,13 +58,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
     required,
     size,
     validationState,
-    components: {
-      root: 'div',
-      label: Label,
-      validationMessage: 'div',
-      validationMessageIcon: 'span',
-      hint: 'div',
-    },
+    components: { root: 'div', label: Label, validationMessage: 'div', validationMessageIcon: 'span', hint: 'div' },
     root,
     label,
     validationMessageIcon,

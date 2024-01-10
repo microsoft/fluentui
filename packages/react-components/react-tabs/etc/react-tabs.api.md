@@ -30,7 +30,7 @@ export type SelectTabData = {
 };
 
 // @public (undocumented)
-export type SelectTabEvent<E = HTMLElement> = React_2.MouseEvent<E> | React_2.KeyboardEvent<E>;
+export type SelectTabEvent<E = HTMLElement> = React_2.MouseEvent<E> | React_2.KeyboardEvent<E> | React_2.FocusEvent<E>;
 
 // @public (undocumented)
 export type SelectTabEventHandler = (event: SelectTabEvent, data: SelectTabData) => void;
@@ -48,7 +48,7 @@ export const TabList: ForwardRefComponent<TabListProps>;
 export const tabListClassNames: SlotClassNames<TabListSlots>;
 
 // @public (undocumented)
-export type TabListContextValue = Pick<TabListProps, 'onTabSelect' | 'selectedValue' | 'reserveSelectedTabSpace'> & Required<Pick<TabListProps, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
+export type TabListContextValue = Pick<TabListProps, 'onTabSelect' | 'selectTabOnFocus' | 'selectedValue' | 'reserveSelectedTabSpace'> & Required<Pick<TabListProps, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
     onRegister: RegisterTabEventHandler;
     onUnregister: RegisterTabEventHandler;
     onSelect: SelectTabEventHandler;
@@ -71,6 +71,7 @@ export type TabListProps = ComponentProps<TabListSlots> & {
     defaultSelectedValue?: TabValue;
     disabled?: boolean;
     onTabSelect?: SelectTabEventHandler;
+    selectTabOnFocus?: boolean;
     selectedValue?: TabValue;
     size?: 'small' | 'medium' | 'large';
     vertical?: boolean;
@@ -107,7 +108,7 @@ export type TabSlots = {
 };
 
 // @public
-export type TabState = ComponentState<TabSlots> & Pick<TabProps, 'value'> & Required<Pick<TabProps, 'disabled'>> & {
+export type TabState = ComponentState<TabInternalSlots> & Pick<TabProps, 'value'> & Required<Pick<TabProps, 'disabled'>> & {
     appearance?: 'transparent' | 'subtle';
     iconOnly: boolean;
     selected: boolean;

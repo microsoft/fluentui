@@ -1,8 +1,12 @@
+/* eslint-disable deprecation/deprecation */
 import { Label } from '@fluentui/react-label';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { InfoButton } from '../InfoButton';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { InfoButtonProps } from '../InfoButton';
 
+/**
+ * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
+ */
 export type InfoLabelSlots = {
   root: NonNullable<Slot<'span'>>;
 
@@ -27,6 +31,8 @@ export type InfoLabelSlots = {
 
 /**
  * InfoLabel Props
+ *
+ * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
  */
 export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'> & {
   /**
@@ -37,5 +43,7 @@ export type InfoLabelProps = ComponentProps<Partial<InfoLabelSlots>, 'label'> & 
 
 /**
  * State used in rendering InfoLabel
+ *
+ * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
  */
 export type InfoLabelState = ComponentState<InfoLabelSlots> & Pick<InfoLabelProps, 'size'>;

@@ -4,6 +4,7 @@
 
 ```ts
 
+import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -27,17 +28,19 @@ export type LinkProps = ComponentProps<LinkSlots> & {
 
 // @public (undocumented)
 export type LinkSlots = {
-    root: Slot<'a', 'button'>;
+    root: Slot<'a', 'button' | 'span'>;
 };
 
 // @public (undocumented)
-export type LinkState = ComponentState<LinkSlots> & Required<Pick<LinkProps, 'appearance' | 'disabled' | 'disabledFocusable' | 'inline'>>;
+export type LinkState = ComponentState<LinkSlots> & Required<Pick<LinkProps, 'appearance' | 'disabled' | 'disabledFocusable' | 'inline'>> & {
+    backgroundAppearance?: BackgroundAppearanceContextValue;
+};
 
 // @public
 export const renderLink_unstable: (state: LinkState) => JSX.Element;
 
 // @public
-export const useLink_unstable: (props: LinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement>) => LinkState;
+export const useLink_unstable: (props: LinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>) => LinkState;
 
 // @public
 export const useLinkState_unstable: (state: LinkState) => LinkState;

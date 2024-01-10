@@ -13,10 +13,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@fluentui/react": "^8.108.2",
+    "@fluentui/react": "*",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/mocha": "7.0.2",
-    "@fluentui/public-docsite-resources": "^8.1.41",
+    "@fluentui/public-docsite-resources": "*",
     "mocha": "7.2.0",
     "@fluentui/scripts-tasks": "*",
     "@fluentui/scripts-webpack": "*"

@@ -1,43 +1,14 @@
 import * as React from 'react';
-import { FluentProvider, makeStyles, shorthands, tokens, webLightTheme } from '@fluentui/react-components';
+import { FluentProvider, webLightTheme } from '@fluentui/react-components';
 import { libraryInfo } from './metadata';
 import { AreaCard } from './AreaCard';
 import { AreaInfo } from './types';
 import { Legend } from './Legend';
 import { OverviewCard } from './OverviewCard';
-
-const useStyles = makeStyles({
-  root: {
-    ...shorthands.padding('40px'),
-    ...shorthands.overflow('auto'),
-    width: 'fit-content',
-    backgroundColor: tokens.colorNeutralBackground1,
-    color: tokens.colorNeutralForeground1,
-  },
-  items: {
-    alignContent: 'flex-start',
-    alignItems: 'flex-start',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    justifyItems: 'flex-start',
-    width: 'unset', //Needed to prevent cascade of width:fit-content
-  },
-  row: {
-    alignContent: 'flex-start',
-    alignItems: 'flex-start',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    justifyItems: 'flex-start',
-  },
-  legend: {
-    ...shorthands.margin(0, '40px'),
-  },
-});
+import { usePosterStyles } from './Poster.styles';
 
 export const Poster: React.FunctionComponent = () => {
-  const styles = useStyles();
+  const styles = usePosterStyles();
 
   const rows: AreaInfo[][] = [];
   let currentRow: AreaInfo[] = [];

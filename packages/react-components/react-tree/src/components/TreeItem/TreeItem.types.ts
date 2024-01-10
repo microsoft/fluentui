@@ -1,55 +1,71 @@
-import type { ComponentProps, ComponentState, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
-import type { ButtonContextValue } from '@fluentui/react-button';
-import type { TreeItemContextValue } from '../../contexts';
-import { treeItemLevelToken } from '../../utils/tokens';
 import * as React from 'react';
+import type { ArrowLeft, ArrowRight, Enter } from '@fluentui/keyboard-keys';
+import type { ComponentProps, ComponentState, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
+import type { TreeItemContextValue } from '../../contexts';
+import type { treeItemLevelToken } from '../../utils/tokens';
 
 export type TreeItemCSSProperties = React.CSSProperties & { [treeItemLevelToken]?: string | number };
 
+export type TreeItemType = 'leaf' | 'branch';
+
 export type TreeItemSlots = {
   root: Slot<ExtractSlotProps<Slot<'div'> & { style?: TreeItemCSSProperties }>>;
-  content: NonNullable<Slot<'div'>>;
-  subtree?: Slot<'span'>;
-  /**
-   * Expand icon slot,
-   * by default renders a chevron icon to indicate opening and closing
-   */
-  expandIcon?: Slot<'span'>;
-  /**
-   * Actions slot that renders on the end of tree item
-   * when the item is hovered/focused
-   */
-  actions?: Slot<'span'>;
 };
+
+export type TreeItemValue = string | number;
 
 export type TreeItemContextValues = {
   treeItem: TreeItemContextValue;
-  button: ButtonContextValue;
 };
+
+export type TreeItemOpenChangeData = {
+  open: boolean;
+  value: TreeItemValue;
+  target: HTMLElement;
+} & (
+  | { event: React.MouseEvent<HTMLElement>; type: 'ExpandIconClick' }
+  | { event: React.MouseEvent<HTMLElement>; type: 'Click' }
+  | { event: React.KeyboardEvent<HTMLElement>; type: typeof Enter }
+  | { event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowRight }
+  | { event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowLeft }
+);
+
+export type TreeItemOpenChangeEvent = TreeItemOpenChangeData['event'];
 
 /**
  * TreeItem Props
  */
-export type TreeItemProps<Value = string> = ComponentProps<Partial<TreeItemSlots>> & {
-  value?: Value;
+export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & {
   /**
-   * If a TreeItem is a leaf, it'll not present the `expandIcon` slot by default.
-   * This attribute is used to force the decision if a TreeItem is a leaf or not. By not providing this property
-   * this will be inferred by the presence of a subtree as part of the TreeItem children.
+   * A tree item can be a leaf or a branch
    */
-  leaf?: boolean;
+  itemType: TreeItemType;
+  /**
+   * A tree item should have a well defined value, in case one is not provided by the user by this prop
+   * one will be inferred internally.
+   */
+  value?: TreeItemValue;
+  /**
+   * Whether the tree item is in an open state
+   *
+   * This overrides the open value provided by the root tree,
+   * and ensure control of the visibility of the tree item per tree item.
+   *
+   * NOTE: controlling the open state of a tree item will not affect the open state of its children
+   */
+  open?: boolean;
+  onOpenChange?: (e: TreeItemOpenChangeEvent, data: TreeItemOpenChangeData) => void;
+  /**
+   * This property is inferred through context on a nested tree, and required for a flat tree.
+   */
+  parentValue?: TreeItemValue;
 };
 
 /**
  * State used in rendering TreeItem
  */
-export type TreeItemState = ComponentState<TreeItemSlots> & {
-  open: boolean;
-  isLeaf: boolean;
-  level: number;
-  /**
-   * By design, a button included on the actions slot should be small
-   */
-  buttonSize: 'small';
-  isActionsVisible: boolean;
-};
+export type TreeItemState = ComponentState<TreeItemSlots> &
+  TreeItemContextValue & {
+    level: number;
+    itemType: TreeItemType;
+  };

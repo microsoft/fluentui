@@ -33,7 +33,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     initializeComponentRef(this);
     const items: T[] = basePickerProps.selectedItems || basePickerProps.defaultSelectedItems || [];
     this.state = {
-      items: items,
+      items,
     };
 
     // Create a new selection if one is not specified
@@ -126,7 +126,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
       // If the component is a controlled component then the controlling component will need to pass the new props
       this.onChange(items);
     } else {
-      this.setState({ items: items }, () => {
+      this.setState({ items }, () => {
         this._onSelectedItemsUpdated(items, focusIndex);
       });
     }
@@ -182,7 +182,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
         selected: this.selection.isIndexSelected(index),
         onRemoveItem: () => this.removeItem(item),
         onItemChange: this.onItemChange,
-        removeButtonAriaLabel: removeButtonAriaLabel,
+        removeButtonAriaLabel,
         onCopyItem: (itemToCopy: T) => this.copyItems([itemToCopy]),
       }),
     );
@@ -220,6 +220,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
         // Try to copy the text directly to the clipboard
         copyInput.value = copyText;
         copyInput.select();
+        // eslint-disable-next-line deprecation/deprecation
         if (!document.execCommand('copy')) {
           // The command failed. Fallback to the method below.
           throw new Error();

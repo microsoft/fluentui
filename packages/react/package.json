@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.108.2",
+  "version": "8.114.1",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -17,6 +17,7 @@
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
+    "bundle-size-auditor": "bundle-size-auditor --report-path='../../dist/bundle-size-auditor/react'",
     "build-storybook": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
@@ -33,13 +34,13 @@
     "mf": "just-scripts mf"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.2.22",
+    "@fluentui/common-styles": "*",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/example-data": "^8.4.7",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.24",
+    "@fluentui/example-data": "*",
+    "@fluentui/jest-serializer-merge-styles": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/test-utilities": "^8.3.1",
-    "@fluentui/webpack-utilities": "^8.1.12",
+    "@fluentui/test-utilities": "*",
+    "@fluentui/webpack-utilities": "*",
     "office-ui-fabric-core": "^11.0.0",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-jest": "*",
@@ -47,18 +48,18 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/date-time-utilities": "^8.5.7",
-    "@fluentui/foundation-legacy": "^8.2.33",
-    "@fluentui/font-icons-mdl2": "^8.5.13",
-    "@fluentui/merge-styles": "^8.5.7",
-    "@fluentui/react-focus": "^8.8.19",
-    "@fluentui/react-hooks": "^8.6.20",
-    "@fluentui/react-portal-compat-context": "^9.0.5",
-    "@fluentui/react-window-provider": "^2.2.9",
-    "@fluentui/set-version": "^8.2.6",
-    "@fluentui/style-utilities": "^8.9.6",
-    "@fluentui/theme": "^2.6.25",
-    "@fluentui/utilities": "^8.13.9",
+    "@fluentui/date-time-utilities": "^8.5.15",
+    "@fluentui/foundation-legacy": "^8.2.49",
+    "@fluentui/font-icons-mdl2": "^8.5.29",
+    "@fluentui/merge-styles": "^8.5.14",
+    "@fluentui/react-focus": "^8.8.36",
+    "@fluentui/react-hooks": "^8.6.34",
+    "@fluentui/react-portal-compat-context": "^9.0.11",
+    "@fluentui/react-window-provider": "^2.2.17",
+    "@fluentui/set-version": "^8.2.13",
+    "@fluentui/style-utilities": "^8.10.0",
+    "@fluentui/theme": "^2.6.39",
+    "@fluentui/utilities": "^8.13.22",
     "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^2.1.0"
   },
@@ -69,6 +70,7 @@
     "react-dom": ">=16.8.0 <19.0.0"
   },
   "exports": {
+    "./dist/css/*": "./dist/css/*",
     "./dist/sass/*": "./dist/sass/*",
     "./lib/ActivityItem": {
       "types": "./lib/ActivityItem.d.ts",
@@ -429,6 +431,11 @@
       "types": "./lib/DragDrop.d.ts",
       "import": "./lib/DragDrop.js",
       "require": "./lib-commonjs/DragDrop.js"
+    },
+    "./lib/DraggableZone": {
+      "types": "./lib/DraggableZone.d.ts",
+      "import": "./lib/DraggableZone.js",
+      "require": "./lib-commonjs/DraggableZone.js"
     },
     "./lib/Dropdown": {
       "types": "./lib/Dropdown.d.ts",
@@ -1150,6 +1157,10 @@
     "./lib-commonjs/DragDrop": {
       "types": "./lib-commonjs/DragDrop.d.ts",
       "require": "./lib-commonjs/DragDrop.js"
+    },
+    "./lib-commonjs/DraggableZone": {
+      "types": "./lib-commonjs/DraggableZone.d.ts",
+      "require": "./lib-commonjs/DraggableZone.js"
     },
     "./lib-commonjs/Dropdown": {
       "types": "./lib-commonjs/Dropdown.d.ts",

@@ -1,9 +1,23 @@
-import { Menu } from '@fluentui/react-components';
+import {
+  Menu,
+  MenuDivider,
+  MenuGroup,
+  MenuGroupHeader,
+  MenuItem,
+  MenuItemCheckbox,
+  MenuItemLink,
+  MenuItemRadio,
+  MenuList,
+  MenuPopover,
+  MenuSplitGroup,
+  MenuTrigger,
+} from '@fluentui/react-components';
 
 import descriptionMd from './MenuDescription.md';
 import bestPracticesMd from './MenuBestPractices.md';
 export { Default } from './MenuDefault.stories';
 export { Interaction } from './MenuInteraction.stories';
+export { MenuItemLinkNavigation } from './MenuItemLinkNavigation.stories';
 export { MenuItemsWithIcons } from './MenuMenuItemsWithIcons.stories';
 export { AligningWithIcons } from './MenuAligningWithIcons.stories';
 export { AligningWithSelectableItems } from './MenuAligningWithSelectableItems.stories';
@@ -29,6 +43,19 @@ export { MenuTriggerWithTooltip } from './MenuTriggerWithTooltip.stories';
 export default {
   title: 'Components/Menu/Menu',
   component: Menu,
+  subcomponents: {
+    MenuDivider,
+    MenuGroup,
+    MenuGroupHeader,
+    MenuItem,
+    MenuItemCheckbox,
+    MenuItemLink,
+    MenuItemRadio,
+    MenuList,
+    MenuPopover,
+    MenuSplitGroup,
+    MenuTrigger,
+  },
   parameters: {
     docs: {
       description: {

@@ -1,3 +1,0 @@
-The `Tree` component allows for an `aside` prop to be added to individual `TreeItemLayout` or `TreeItemPersonaLayout` layout components. This creates an area on the right side of the `TreeItem` where additional information can be displayed, such as a badge with notification count or an icon indicating importance. When actions are specified using the `actions` prop, they will overlay the `aside` area on hover.
-
-> ⚠️ Aside content is `aria-hidden` by default in both `TreeItemLayout` and `TreeItemPersonaLayout`

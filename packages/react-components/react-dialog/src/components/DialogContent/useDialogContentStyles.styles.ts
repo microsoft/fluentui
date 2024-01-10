@@ -1,7 +1,6 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogContentSlots, DialogContentState } from './DialogContent.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { CONTENT_GRID_AREA } from '../../contexts/constants';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 export const dialogContentClassNames: SlotClassNames<DialogContentSlots> = {
@@ -11,16 +10,17 @@ export const dialogContentClassNames: SlotClassNames<DialogContentSlots> = {
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
-  root: {
-    overflowY: 'auto',
-    minHeight: '32px',
-    boxSizing: 'border-box',
-    ...shorthands.padding(tokens.strokeWidthThick),
-    ...shorthands.margin(`calc(${tokens.strokeWidthThick} * -1)`),
-    ...shorthands.gridArea(CONTENT_GRID_AREA),
-    ...typographyStyles.body1,
-  },
+const useStyles = makeResetStyles({
+  ...shorthands.padding(tokens.strokeWidthThick),
+  ...shorthands.margin(`calc(${tokens.strokeWidthThick} * -1)`),
+  ...typographyStyles.body1,
+  overflowY: 'auto',
+  minHeight: '32px',
+  boxSizing: 'border-box',
+  gridRowStart: 2,
+  gridRowEnd: 2,
+  gridColumnStart: 1,
+  gridColumnEnd: 4,
 });
 
 /**
@@ -28,6 +28,6 @@ const useStyles = makeStyles({
  */
 export const useDialogContentStyles_unstable = (state: DialogContentState): DialogContentState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(dialogContentClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(dialogContentClassNames.root, styles, state.root.className);
   return state;
 };

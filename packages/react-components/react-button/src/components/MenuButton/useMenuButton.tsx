@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ChevronDownRegular } from '@fluentui/react-icons';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { useButton_unstable } from '../Button/index';
 import type { MenuButtonProps, MenuButtonState } from './MenuButton.types';
 
@@ -28,11 +28,12 @@ export const useMenuButton_unstable = (
       menuIcon: 'span',
     },
 
-    menuIcon: resolveShorthand(menuIcon, {
+    menuIcon: slot.optional(menuIcon, {
       defaultProps: {
         children: <ChevronDownRegular />,
       },
-      required: true,
+      renderByDefault: true,
+      elementType: 'span',
     }),
   };
 };

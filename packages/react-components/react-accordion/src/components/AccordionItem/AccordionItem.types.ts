@@ -1,20 +1,15 @@
-import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { AccordionItemContextValue } from '../../contexts/accordionItem';
 
-export type AccordionItemContextValue = Required<Pick<AccordionItemProps, 'disabled'>> & {
-  onHeaderClick(ev: React.MouseEvent | React.KeyboardEvent): void;
-  open: boolean;
-};
-
-export type AccordionItemContextValues = {
-  accordionItem: AccordionItemContextValue;
+export type AccordionItemContextValues<Value = AccordionItemValue> = {
+  accordionItem: AccordionItemContextValue<Value>;
 };
 
 export type AccordionItemSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
-export type AccordionItemProps = ComponentProps<AccordionItemSlots> & {
+export type AccordionItemProps<Value = AccordionItemValue> = ComponentProps<AccordionItemSlots> & {
   /**
    * Disables opening/closing of panel.
    */
@@ -22,9 +17,10 @@ export type AccordionItemProps = ComponentProps<AccordionItemSlots> & {
   /**
    * Required value that identifies this item inside an Accordion component.
    */
-  value: AccordionItemValue;
+  value: Value;
 };
 
 export type AccordionItemValue = unknown;
 
-export type AccordionItemState = ComponentState<AccordionItemSlots> & AccordionItemContextValue;
+export type AccordionItemState<Value = AccordionItemValue> = ComponentState<AccordionItemSlots> &
+  AccordionItemContextValue<Value>;

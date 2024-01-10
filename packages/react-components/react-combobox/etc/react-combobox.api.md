@@ -10,6 +10,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
@@ -144,6 +145,13 @@ export type OptionGroupSlots = {
 // @public
 export type OptionGroupState = ComponentState<OptionGroupSlots>;
 
+// @public (undocumented)
+export type OptionOnSelectData = {
+    optionValue: string | undefined;
+    optionText: string | undefined;
+    selectedOptions: string[];
+};
+
 // @public
 export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
     disabled?: boolean;
@@ -184,6 +192,9 @@ export const renderOption_unstable: (state: OptionState) => JSX.Element;
 
 // @public
 export const renderOptionGroup_unstable: (state: OptionGroupState) => JSX.Element;
+
+// @public (undocumented)
+export type SelectionEvents = React_2.ChangeEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement> | React_2.MouseEvent<HTMLElement>;
 
 // @public
 export const useCombobox_unstable: (props: ComboboxProps, ref: React_2.Ref<HTMLInputElement>) => ComboboxState;

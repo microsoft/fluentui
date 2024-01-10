@@ -10,6 +10,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { DialogProps } from '@fluentui/react-dialog';
 import type { DialogSurfaceProps } from '@fluentui/react-dialog';
+import type { DialogSurfaceSlots } from '@fluentui/react-dialog';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -18,43 +19,213 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const Drawer: ForwardRefComponent<DrawerProps>;
 
-// @public (undocumented)
-export const drawerClassNames: SlotClassNames<DrawerSlots>;
-
 // @public
-export const drawerCSSVars: {
-    size: string;
-};
-
-// @public
-export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
-    position?: 'left' | 'right';
-    type?: 'inline' | 'overlay';
-    size?: 'small' | 'medium' | 'large' | 'full';
-    modal?: boolean;
-    lightDismiss?: boolean;
-    separator?: boolean;
-} & Pick<DialogProps, 'open' | 'defaultOpen' | 'onOpenChange'>;
+export const DrawerBody: ForwardRefComponent<DrawerBodyProps>;
 
 // @public (undocumented)
-export type DrawerSlots = {
+export const drawerBodyClassNames: SlotClassNames<DrawerBodySlots>;
+
+// @public
+export type DrawerBodyProps = ComponentProps<DrawerBodySlots>;
+
+// @public (undocumented)
+export type DrawerBodySlots = {
     root: Slot<'div'>;
 };
 
 // @public
-export type DrawerState = ComponentState<DrawerSlots> & Required<Pick<DrawerProps, 'type' | 'position' | 'open' | 'size' | 'separator'>> & {
-    dialog: DialogProps;
-    dialogSurface: DialogSurfaceProps;
+export type DrawerBodyState = ComponentState<DrawerBodySlots>;
+
+// @public
+export const DrawerFooter: ForwardRefComponent<DrawerFooterProps>;
+
+// @public (undocumented)
+export const drawerFooterClassNames: SlotClassNames<DrawerFooterSlots>;
+
+// @public
+export type DrawerFooterProps = ComponentProps<DrawerFooterSlots>;
+
+// @public (undocumented)
+export type DrawerFooterSlots = {
+    root: Slot<'footer'>;
 };
 
 // @public
-export const renderDrawer_unstable: (state: DrawerState) => JSX.Element | null;
+export type DrawerFooterState = ComponentState<DrawerFooterSlots>;
+
+// @public
+export const DrawerHeader: ForwardRefComponent<DrawerHeaderProps>;
+
+// @public (undocumented)
+export const drawerHeaderClassNames: SlotClassNames<DrawerHeaderSlots>;
+
+// @public
+export const DrawerHeaderNavigation: ForwardRefComponent<DrawerHeaderNavigationProps>;
+
+// @public (undocumented)
+export const drawerHeaderNavigationClassNames: SlotClassNames<DrawerHeaderNavigationSlots>;
+
+// @public
+export type DrawerHeaderNavigationProps = ComponentProps<DrawerHeaderNavigationSlots>;
+
+// @public (undocumented)
+export type DrawerHeaderNavigationSlots = {
+    root: Slot<'nav'>;
+};
+
+// @public
+export type DrawerHeaderNavigationState = ComponentState<DrawerHeaderNavigationSlots>;
+
+// @public
+export type DrawerHeaderProps = ComponentProps<DrawerHeaderSlots>;
+
+// @public (undocumented)
+export type DrawerHeaderSlots = {
+    root: Slot<'header'>;
+};
+
+// @public
+export type DrawerHeaderState = ComponentState<DrawerHeaderSlots>;
+
+// @public
+export const DrawerHeaderTitle: ForwardRefComponent<DrawerHeaderTitleProps>;
+
+// @public (undocumented)
+export const drawerHeaderTitleClassNames: SlotClassNames<DrawerHeaderTitleSlots>;
+
+// @public
+export type DrawerHeaderTitleProps = ComponentProps<DrawerHeaderTitleSlots>;
+
+// @public (undocumented)
+export type DrawerHeaderTitleSlots = {
+    root: Slot<'div'>;
+    heading?: Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>;
+    action?: Slot<'div'>;
+};
+
+// @public
+export type DrawerHeaderTitleState = ComponentState<DrawerHeaderTitleSlots>;
+
+// @public
+export type DrawerProps = ComponentProps<DrawerSlots> & {
+    type?: 'inline' | 'overlay';
+};
+
+// @public (undocumented)
+export type DrawerSlots = {
+    root: Slot<OverlayDrawerProps | InlineDrawerProps>;
+};
+
+// @public
+export type DrawerState = ComponentState<DrawerSlots>;
+
+// @public
+export const InlineDrawer: ForwardRefComponent<InlineDrawerProps>;
+
+// @public (undocumented)
+export const inlineDrawerClassNames: SlotClassNames<InlineDrawerSlots>;
+
+// @public
+export type InlineDrawerProps = ComponentProps<InlineDrawerSlots> & DrawerBaseProps & {
+    separator?: boolean;
+};
+
+// @public (undocumented)
+export type InlineDrawerSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type InlineDrawerState = Required<ComponentState<InlineDrawerSlots> & DrawerBaseState & Pick<InlineDrawerProps, 'separator'>>;
+
+// @public
+export const OverlayDrawer: ForwardRefComponent<OverlayDrawerProps>;
+
+// @public (undocumented)
+export const overlayDrawerClassNames: SlotClassNames<OverlayDrawerSurfaceSlots>;
+
+// @public
+export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus' | 'defaultOpen'> & DrawerBaseProps;
+
+// @public
+export type OverlayDrawerSlots = {
+    root: Slot<OverlayDrawerSurfaceProps>;
+};
+
+// @public
+export type OverlayDrawerState = Omit<ComponentState<OverlayDrawerInternalSlots>, 'backdrop'> & Required<DrawerBaseState>;
+
+// @public
+export const renderDrawer_unstable: (state: DrawerState) => JSX.Element;
+
+// @public
+export const renderDrawerBody_unstable: (state: DrawerBodyState) => JSX.Element;
+
+// @public
+export const renderDrawerFooter_unstable: (state: DrawerFooterState) => JSX.Element;
+
+// @public
+export const renderDrawerHeader_unstable: (state: DrawerHeaderState) => JSX.Element;
+
+// @public
+export const renderDrawerHeaderNavigation_unstable: (state: DrawerHeaderNavigationState) => JSX.Element;
+
+// @public
+export const renderDrawerHeaderTitle_unstable: (state: DrawerHeaderTitleState) => JSX.Element;
+
+// @public
+export const renderInlineDrawer_unstable: (state: InlineDrawerState) => JSX.Element | null;
+
+// @public
+export const renderOverlayDrawer_unstable: (state: OverlayDrawerState) => JSX.Element | null;
 
 // @public
 export const useDrawer_unstable: (props: DrawerProps, ref: React_2.Ref<HTMLElement>) => DrawerState;
 
 // @public
+export const useDrawerBody_unstable: (props: DrawerBodyProps, ref: React_2.Ref<HTMLElement>) => DrawerBodyState;
+
+// @public
+export const useDrawerBodyStyles_unstable: (state: DrawerBodyState) => DrawerBodyState;
+
+// @public
+export const useDrawerFooter_unstable: (props: DrawerFooterProps, ref: React_2.Ref<HTMLElement>) => DrawerFooterState;
+
+// @public
+export const useDrawerFooterStyles_unstable: (state: DrawerFooterState) => DrawerFooterState;
+
+// @public
+export const useDrawerHeader_unstable: (props: DrawerHeaderProps, ref: React_2.Ref<HTMLElement>) => DrawerHeaderState;
+
+// @public
+export const useDrawerHeaderNavigation_unstable: (props: DrawerHeaderNavigationProps, ref: React_2.Ref<HTMLElement>) => DrawerHeaderNavigationState;
+
+// @public
+export const useDrawerHeaderNavigationStyles_unstable: (state: DrawerHeaderNavigationState) => DrawerHeaderNavigationState;
+
+// @public
+export const useDrawerHeaderStyles_unstable: (state: DrawerHeaderState) => DrawerHeaderState;
+
+// @public
+export const useDrawerHeaderTitle_unstable: (props: DrawerHeaderTitleProps, ref: React_2.Ref<HTMLDivElement>) => DrawerHeaderTitleState;
+
+// @public
+export const useDrawerHeaderTitleStyles_unstable: (state: DrawerHeaderTitleState) => DrawerHeaderTitleState;
+
+// @public
 export const useDrawerStyles_unstable: (state: DrawerState) => DrawerState;
+
+// @public
+export const useInlineDrawer_unstable: (props: InlineDrawerProps, ref: React_2.Ref<HTMLDivElement>) => InlineDrawerState;
+
+// @public
+export const useInlineDrawerStyles_unstable: (state: InlineDrawerState) => InlineDrawerState;
+
+// @public
+export const useOverlayDrawer_unstable: (props: OverlayDrawerProps, ref: React_2.Ref<HTMLDivElement>) => OverlayDrawerState;
+
+// @public
+export const useOverlayDrawerStyles_unstable: (state: OverlayDrawerState) => OverlayDrawerState;
 
 // (No @packageDocumentation comment for this package)
 

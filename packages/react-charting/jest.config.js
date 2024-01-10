@@ -10,16 +10,16 @@ function getEsmOnlyPackagesToCjsMapping() {
    */
   const cjsPathsToEsmOnlyPackages = {
     '^d3-scale$': prefix + 'node_modules/d3-scale/dist/d3-scale.js',
-    '^d3-array$': prefix + 'node_modules/d3-scale/node_modules/d3-array/dist/d3-array.js',
-    '^d3-time$': prefix + 'node_modules/d3-scale/node_modules/d3-time/dist/d3-time.js',
+    '^d3-shape$': prefix + 'node_modules/d3-shape/dist/d3-shape.js',
+    '^d3-path$': prefix + 'node_modules/d3-path/dist/d3-path.js',
   };
   return cjsPathsToEsmOnlyPackages;
 }
 
 const config = createConfig({
-  setupFiles: ['./config/tests.js'],
+  setupFiles: ['./config/tests.js', 'jest-canvas-mock'],
   snapshotSerializers: ['@fluentui/jest-serializer-merge-styles', 'enzyme-to-json/serializer'],
-
+  setupFilesAfterEnv: ['./config/setup-env.js'],
   moduleNameMapper: {
     ...getEsmOnlyPackagesToCjsMapping(),
   },

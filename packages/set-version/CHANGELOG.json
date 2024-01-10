@@ -2,6 +2,66 @@
   "name": "@fluentui/set-version",
   "entries": [
     {
+      "date": "Tue, 26 Sep 2023 07:44:56 GMT",
+      "tag": "@fluentui/set-version_v8.2.11",
+      "version": "8.2.11",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/set-version",
+            "commit": "ccc380cada5d9a6057bd8fca127700b700815fdc",
+            "comment": "chore: add ES2015.Iterable to tsconfig lib as jest types need it"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 07:37:29 GMT",
+      "tag": "@fluentui/set-version_v8.2.11",
+      "version": "8.2.11",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/set-version",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 May 2023 18:14:00 GMT",
+      "tag": "@fluentui/set-version_v8.2.9",
+      "version": "8.2.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/set-version",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2",
+            "comment": "fix: explicitly ship dist/ folder."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 May 2023 00:58:18 GMT",
+      "tag": "@fluentui/set-version_v8.2.8",
+      "version": "8.2.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/set-version",
+            "commit": "c2326dc86037b18a6673697885703b5953ffd0c2",
+            "comment": "fix: esm, cjs, and amd folders should all be published correctly."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Mar 2023 07:45:40 GMT",
       "tag": "@fluentui/set-version_v8.2.5",
       "version": "8.2.5",

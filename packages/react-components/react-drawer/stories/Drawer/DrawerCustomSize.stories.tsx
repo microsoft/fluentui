@@ -1,6 +1,17 @@
 import * as React from 'react';
-import { Drawer } from '@fluentui/react-drawer';
-import { Button, Label, useId, tokens, makeStyles, Input } from '@fluentui/react-components';
+import {
+  DrawerBody,
+  DrawerHeader,
+  DrawerHeaderTitle,
+  OverlayDrawer,
+  Button,
+  Label,
+  useId,
+  tokens,
+  makeStyles,
+  Input,
+} from '@fluentui/react-components';
+import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   main: {
@@ -21,29 +32,39 @@ export const CustomSize = () => {
   const inputId = useId('custom-size-label');
 
   const [open, setOpen] = React.useState(false);
-  const [customSize, setCustomSize] = React.useState(250);
+  const [customSize, setCustomSize] = React.useState(600);
 
   return (
     <div>
-      <Drawer
+      <OverlayDrawer
         open={open}
-        position="right"
+        position="end"
         onOpenChange={(_, state) => setOpen(state.open)}
         style={{ width: `${customSize}px` }}
       >
-        <Button appearance="outline" onClick={() => setOpen(false)}>
-          Close
-        </Button>
+        <DrawerHeader>
+          <DrawerHeaderTitle
+            action={
+              <Button
+                appearance="subtle"
+                aria-label="Close"
+                icon={<Dismiss24Regular />}
+                onClick={() => setOpen(false)}
+              />
+            }
+          >
+            Drawer with {customSize}px size
+          </DrawerHeaderTitle>
+        </DrawerHeader>
 
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Necessitatibus quod sint pariatur tempora assumenda
-          fugit, veniam harum architecto quisquam iure laboriosam, eum hic rem ea provident magnam error. Eum, eveniet.
-        </p>
-      </Drawer>
+        <DrawerBody>
+          <p>Drawer content</p>
+        </DrawerBody>
+      </OverlayDrawer>
 
       <div className={styles.main}>
         <Button appearance="primary" onClick={() => setOpen(true)}>
-          Toggle Drawer
+          Open Drawer
         </Button>
 
         <div className={styles.field}>
@@ -58,4 +79,12 @@ export const CustomSize = () => {
       </div>
     </div>
   );
+};
+
+CustomSize.parameters = {
+  docs: {
+    description: {
+      story: 'The Drawer can be sized to any custom width, by overriding the `width` style property.',
+    },
+  },
 };

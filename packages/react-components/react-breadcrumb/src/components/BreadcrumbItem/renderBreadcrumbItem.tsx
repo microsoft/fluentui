@@ -1,16 +1,14 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
-
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { BreadcrumbItemState, BreadcrumbItemSlots } from './BreadcrumbItem.types';
 
 /**
  * Render the final JSX of BreadcrumbItem
  */
 export const renderBreadcrumbItem_unstable = (state: BreadcrumbItemState) => {
-  const { slots, slotProps } = getSlotsNext<BreadcrumbItemSlots>(state);
+  assertSlots<BreadcrumbItemSlots>(state);
 
-  return <slots.root {...slotProps.root}>{slotProps.root.children}</slots.root>;
+  return <state.root>{state.root.children}</state.root>;
 };

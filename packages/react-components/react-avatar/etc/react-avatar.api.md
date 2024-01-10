@@ -33,6 +33,8 @@ export const AvatarContextProvider: React_2.Provider<AvatarContextValue | undefi
 // @internal (undocumented)
 export interface AvatarContextValue {
     // (undocumented)
+    shape?: AvatarShape;
+    // (undocumented)
     size?: AvatarSize;
 }
 
@@ -131,9 +133,12 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
     color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
     idForColor?: string | undefined;
     name?: string;
-    shape?: 'circular' | 'square';
+    shape?: AvatarShape;
     size?: AvatarSize;
 };
+
+// @public
+export type AvatarShape = 'circular' | 'square';
 
 // @public
 export type AvatarSize = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
@@ -213,6 +218,9 @@ export const useAvatarGroupItemStyles_unstable: (state: AvatarGroupItemState) =>
 
 // @public
 export const useAvatarGroupPopover_unstable: (props: AvatarGroupPopoverProps) => AvatarGroupPopoverState;
+
+// @public (undocumented)
+export const useAvatarGroupPopoverContextValues_unstable: (state: AvatarGroupPopoverState) => AvatarGroupContextValues;
 
 // @public
 export const useAvatarGroupPopoverStyles_unstable: (state: AvatarGroupPopoverState) => AvatarGroupPopoverState;

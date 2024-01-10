@@ -61,6 +61,7 @@ const constructorNames = [
   'HTMLDataElement',
   'HTMLDataListElement',
   'HTMLDetailsElement',
+  // @ts-expect-error - NOTE: dialog is not supported in safari 14, also it was removed from lib-dom starting typescript 4.4
   'HTMLDialogElement',
   'HTMLDivElement',
   'HTMLDListElement',

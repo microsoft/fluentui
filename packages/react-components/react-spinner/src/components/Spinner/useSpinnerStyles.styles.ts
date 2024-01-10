@@ -14,6 +14,7 @@ export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
  * Radii for the Spinner circles
  */
 const rValues = {
+  extraTiny: '7px',
   tiny: '9px',
   extraSmall: '11px',
   small: '13px',
@@ -28,6 +29,7 @@ const rValues = {
  * Sizes for the Spinner
  */
 const spinnnerSizes = {
+  extraTiny: '16px',
   tiny: '20px',
   extraSmall: '24px',
   small: '28px',
@@ -93,6 +95,17 @@ const useLoaderStyles = makeStyles({
       cx: '50%',
       cy: '50%',
       fill: 'none',
+    },
+  },
+
+  'extra-tiny': {
+    ['& > svg']: {
+      height: spinnnerSizes.extraTiny,
+      width: spinnnerSizes.extraTiny,
+    },
+    ['& > svg > circle']: {
+      strokeWidth: tokens.strokeWidthThick,
+      r: rValues.extraTiny,
     },
   },
 
@@ -245,7 +258,7 @@ const useTrackStyles = makeStyles({
       },
     },
     ['& > svg > circle.fui-Spinner__Track']: {
-      stroke: tokens.colorBrandStroke2,
+      stroke: tokens.colorBrandStroke2Contrast,
       '@media screen and (forced-colors: active)': {
         stroke: tokens.colorNeutralBackgroundInverted,
       },
@@ -260,6 +273,10 @@ const useLabelStyles = makeStyles({
   },
 
   primary: {}, // no change
+
+  'extra-tiny': {
+    ...typographyStyles.body1,
+  },
 
   tiny: {
     ...typographyStyles.body1,

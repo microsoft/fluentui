@@ -32,13 +32,14 @@ const useFlexLayoutStyles = makeStyles({
  */
 const useStyles = makeStyles({
   root: {
+    fontWeight: tokens.fontWeightRegular,
     ...shorthands.padding('0px', tokens.spacingHorizontalS),
     ...createCustomFocusIndicatorStyle(
       {
         ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
         ...shorthands.borderRadius(tokens.borderRadiusMedium),
       },
-      { selector: 'focus-within', enableOutline: true },
+      { selector: 'focus-within' },
     ),
     position: 'relative',
   },
@@ -63,7 +64,6 @@ const useStyles = makeStyles({
     ...shorthands.overflow('visible'),
     ...shorthands.padding(0),
     ...shorthands.borderStyle('none'),
-    WebkitAppearance: 'button',
     textAlign: 'unset',
   },
 
@@ -109,6 +109,7 @@ export const useTableHeaderCellStyles_unstable = (state: TableHeaderCellState): 
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
     state.root.className,
   );
+
   state.button.className = mergeClasses(
     tableHeaderCellClassNames.button,
     styles.resetButton,

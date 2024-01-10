@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-utilities",
-  "version": "9.8.0",
+  "version": "9.15.6",
   "description": "A set of general React-specific utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,14 +13,17 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle-size": "bundle-size measure",
+    "bundle-size": "monosize measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "just-scripts generate-api"
+    "generate-api": "just-scripts generate-api",
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -28,12 +31,13 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/keyboard-keys": "^9.0.2",
-    "@swc/helpers": "^0.4.14"
+    "@fluentui/keyboard-keys": "^9.0.7",
+    "@fluentui/react-shared-contexts": "^9.13.2",
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.14.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -49,5 +53,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

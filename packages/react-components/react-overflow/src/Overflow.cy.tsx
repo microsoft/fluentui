@@ -3,6 +3,7 @@ import { mount } from '@cypress/react';
 import {
   Overflow,
   OverflowItem,
+  OverflowDivider,
   OverflowItemProps,
   OverflowProps,
   useIsOverflowGroupVisible,
@@ -10,6 +11,7 @@ import {
   useOverflowContext,
 } from '@fluentui/react-overflow';
 import { Portal } from '@fluentui/react-portal';
+import { OverflowAxis } from '@fluentui/priority-overflow';
 
 const selectors = {
   container: 'data-test-container',
@@ -18,25 +20,33 @@ const selectors = {
   menu: 'data-test-menu',
 };
 
-const Container: React.FC<{ children?: React.ReactNode; width?: number } & Omit<OverflowProps, 'children'>> = ({
+const Container: React.FC<{ children?: React.ReactNode; size?: number } & Omit<OverflowProps, 'children'>> = ({
   children,
-  width,
-  ...overflowProps
+  size,
+  overflowAxis = 'horizontal' as const,
+  ...userProps
 }) => {
   const selector = {
     [selectors.container]: '',
   };
 
   return (
-    <Overflow padding={0} {...overflowProps}>
+    <Overflow padding={0} {...userProps} overflowAxis={overflowAxis}>
       <div
         {...selector}
         style={{
-          width: width ?? 500,
+          display: 'flex',
+          ...(overflowAxis === 'horizontal' && {
+            width: size,
+          }),
+          ...(overflowAxis === 'vertical' && {
+            height: size,
+            flexDirection: 'column',
+          }),
           border: '1px dashed red',
           whiteSpace: 'nowrap',
           overflow: 'hidden',
-          resize: 'horizontal',
+          resize: overflowAxis,
         }}
       >
         {children}
@@ -45,16 +55,24 @@ const Container: React.FC<{ children?: React.ReactNode; width?: number } & Omit<
   );
 };
 
-const setContainerSize = (size: number) => {
+const setContainerSize = (size: number, dimension: 'width' | 'height') => {
   cy.get(`[${selectors.container}]`)
     .then(container => {
-      container.css('width', `${size}px`);
+      container.css(dimension, `${size}px`);
     })
     .log(`Setting container size to ${size}px`)
     .wait(1);
 };
 
-const Item: React.FC<{ children?: React.ReactNode; width?: number } & Omit<OverflowItemProps, 'children'>> = ({
+const setContainerWidth = (size: number) => {
+  setContainerSize(size, 'width');
+};
+
+const setContainerHeight = (size: number) => {
+  setContainerSize(size, 'height');
+};
+
+const Item: React.FC<{ children?: React.ReactNode; width?: number | string } & Omit<OverflowItemProps, 'children'>> = ({
   children,
   width,
   ...overflowItemProps
@@ -65,7 +83,7 @@ const Item: React.FC<{ children?: React.ReactNode; width?: number } & Omit<Overf
 
   return (
     <OverflowItem {...overflowItemProps}>
-      <button {...selector} style={{ width: width ?? 50, height: 20 }}>
+      <button {...selector} style={{ width: width ?? 50, height: 50, flexShrink: 0 }}>
         {children}
       </button>
     </OverflowItem>
@@ -86,11 +104,21 @@ const Menu: React.FC<{ width?: number }> = ({ width }) => {
   // No need to actually render a menu, we're testing state
   return (
     <>
-      <button {...selector} ref={ref} style={{ width: width ?? 50, height: 20 }}>
+      <button {...selector} ref={ref} style={{ width: width ?? 50, height: 50 }}>
         +{overflowCount}
       </button>
       <Portal>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', width: 200 }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            width: 200,
+            position: 'fixed',
+            bottom: 0,
+            right: 0,
+            border: '2px dotted magenta',
+          }}
+        >
           {Object.entries(itemVisibility).map(([id, visible]) => (
             <>
               <div>{id}</div>
@@ -139,8 +167,39 @@ export const Divider: React.FC<{
   );
 };
 
+export const CustomDivider: React.FC<{
+  groupId: string;
+  children?: React.ReactNode;
+}> = ({ groupId, children }) => {
+  const isGroupVisible = useIsOverflowGroupVisible(groupId);
+
+  if (isGroupVisible === 'hidden') {
+    return null;
+  }
+
+  const selector = {
+    [selectors.divider]: groupId,
+  };
+
+  const style = {
+    display: 'inline-block',
+    width: '30px',
+    backgroundColor: 'red',
+    height: '20px',
+    flexShrink: 0,
+  };
+
+  return (
+    <OverflowDivider groupId={groupId}>
+      <div {...selector} style={style}>
+        {children}
+      </div>
+    </OverflowDivider>
+  );
+};
+
 describe('Overflow', () => {
-  before(() => {
+  beforeEach(() => {
     cy.viewport(700, 700);
   });
 
@@ -157,7 +216,7 @@ describe('Overflow', () => {
       </Container>,
     );
 
-    setContainerSize(500);
+    setContainerWidth(500);
     cy.get(`[${selectors.menu}]`).should('not.exist');
   });
 
@@ -186,7 +245,7 @@ describe('Overflow', () => {
     ];
 
     overflowCases.forEach(({ overflowCount, containerSize }) => {
-      setContainerSize(containerSize);
+      setContainerWidth(containerSize);
       cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
     });
   });
@@ -195,7 +254,7 @@ describe('Overflow', () => {
     const mapHelper = new Array(10).fill(0).map((_, i) => i);
     const overflowElementIndex = 6;
     mount(
-      <Container width={350}>
+      <Container size={350}>
         <div>
           {mapHelper.map(i => (
             <Item key={i} id={i.toString()}>
@@ -241,7 +300,7 @@ describe('Overflow', () => {
     ];
 
     overflowCases.forEach(({ containerSize, latestOverflowed }) => {
-      setContainerSize(containerSize);
+      setContainerWidth(containerSize);
       cy.get(`[${selectors.item}=${latestOverflowed}]`).should('not.be.visible');
     });
   });
@@ -272,7 +331,7 @@ describe('Overflow', () => {
     ];
 
     overflowCases.forEach(({ containerSize, latestOverflowed }) => {
-      setContainerSize(containerSize);
+      setContainerWidth(containerSize);
       cy.get(`[${selectors.item}=${latestOverflowed}]`).should('not.be.visible');
     });
   });
@@ -302,7 +361,7 @@ describe('Overflow', () => {
     ];
 
     overflowCases.forEach(({ overflowCount, containerSize }) => {
-      setContainerSize(containerSize);
+      setContainerWidth(containerSize);
       cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
     });
   });
@@ -331,7 +390,7 @@ describe('Overflow', () => {
     ];
 
     overflowCases.forEach(({ containerSize, latestOverflowed }) => {
-      setContainerSize(containerSize);
+      setContainerWidth(containerSize);
       cy.get(`[${selectors.item}=${latestOverflowed}]`).should('be.visible');
     });
   });
@@ -361,7 +420,7 @@ describe('Overflow', () => {
     ];
 
     overflowCases.forEach(({ containerSize, latestOverflowed }) => {
-      setContainerSize(containerSize);
+      setContainerWidth(containerSize);
       cy.get(`[${selectors.item}=${latestOverflowed}]`).should('be.visible');
     });
   });
@@ -394,7 +453,7 @@ describe('Overflow', () => {
     mount(<Example />);
 
     cy.get(`[${selectors.item}="3"]`).click();
-    setContainerSize(150);
+    setContainerWidth(150);
     cy.get(`[${selectors.item}="3"]`).should('be.visible');
     cy.get('#select-9').click();
     cy.get(`[${selectors.item}="9"]`).should('be.visible');
@@ -444,15 +503,164 @@ describe('Overflow', () => {
       </Container>,
     );
 
-    setContainerSize(350);
+    setContainerWidth(350);
     cy.get(`[${selectors.divider}="4"]`).should('not.exist');
     cy.get(`[${selectors.divider}]`).should('have.length', 3);
-    setContainerSize(250);
+    setContainerWidth(250);
     cy.get(`[${selectors.divider}="3"]`).should('not.exist');
     cy.get(`[${selectors.divider}]`).should('have.length', 2);
-    setContainerSize(200);
+    setContainerWidth(200);
     cy.get(`[${selectors.divider}="1"]`).should('not.exist');
     cy.get(`[${selectors.divider}]`).should('have.length', 1);
+  });
+
+  it('should collapse correctly with custom divider', () => {
+    mount(
+      <Container padding={8}>
+        <Item id={'1'} groupId={'1'}>
+          1
+        </Item>
+        <CustomDivider groupId={'1'} data-divider="2">
+          <span data-divider="2" />
+        </CustomDivider>
+        <Item id={'2'} groupId={'2'}>
+          2
+        </Item>
+        <CustomDivider groupId={'2'} data-divider="2">
+          <span data-divider="2" />
+        </CustomDivider>
+        <Item id={'3'} groupId={'3'}>
+          3
+        </Item>
+        <Item id={'4'} groupId={'3'}>
+          4
+        </Item>
+        <CustomDivider groupId={'3'} data-divider="3">
+          <span data-divider="3" />
+        </CustomDivider>
+        <Item id={'5'} groupId={'4'}>
+          5
+        </Item>
+        <Item id={'6'} groupId={'4'}>
+          6
+        </Item>
+        <Item id={'7'} groupId={'4'}>
+          7
+        </Item>
+        <CustomDivider groupId={'4'} data-divider="4">
+          <span data-divider="4" />
+        </CustomDivider>
+        <Item id={'8'} groupId={'5'}>
+          8
+        </Item>
+        <Menu />
+      </Container>,
+    );
+
+    setContainerWidth(500);
+    cy.get(`[${selectors.item}="8"]`).should('not.be.visible');
+    setContainerWidth(350);
+    cy.get(`[${selectors.divider}="4"]`).should('not.exist');
+    cy.get(`[${selectors.divider}]`).should('have.length', 3);
+    cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
+    setContainerWidth(250);
+    cy.get(`[${selectors.divider}="3"]`).should('not.exist');
+    cy.get(`[${selectors.divider}]`).should('have.length', 2);
+    cy.get(`[${selectors.item}="3"]`).should('not.be.visible');
+    setContainerWidth(200);
+    cy.get(`[${selectors.divider}="1"]`).should('exist');
+    cy.get(`[${selectors.divider}]`).should('have.length', 1);
+    cy.get(`[${selectors.item}="1"]`).should('be.visible');
+    cy.get(`[${selectors.item}="2"]`).should('not.be.visible');
+  });
+
+  it('should be no flickering', () => {
+    mount(
+      <Container>
+        <Item width="unset" id="0">
+          Item 0
+        </Item>
+        <Item width="unset" id="1">
+          Item 1
+        </Item>
+        <Item width="unset" id="2">
+          Super Long Item 2
+        </Item>
+        <Item width="unset" id="3">
+          3
+        </Item>
+        <Item id="4">Item 4</Item>
+        <Item id="5">Item 5</Item>
+        <Menu />
+      </Container>,
+    );
+
+    setContainerWidth(355);
+    cy.get(`[${selectors.item}="4"]`).should('be.visible');
+    setContainerWidth(354);
+    cy.get(`[${selectors.item}="3"]`).should('be.visible');
+    cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+    setContainerWidth(353);
+    cy.get(`[${selectors.item}="3"]`).should('be.visible');
+    cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+    setContainerWidth(352);
+    cy.get(`[${selectors.item}="3"]`).should('be.visible');
+    cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+  });
+
+  it('should be no flickering with larger divider', () => {
+    mount(
+      <Container>
+        <Item id={'1'} groupId={'1'}>
+          1
+        </Item>
+        <CustomDivider groupId={'1'} data-divider="1" />
+        <Item id={'2'} groupId={'2'}>
+          2
+        </Item>
+        <CustomDivider groupId={'2'} data-divider="2" />
+        <Item id={'3'} groupId={'3'}>
+          3
+        </Item>
+        <CustomDivider groupId={'3'} data-divider="3" />
+        <Item id={'4'} groupId={'4'}>
+          4
+        </Item>
+        <CustomDivider groupId={'4'} data-divider="4" />
+        <Item id={'5'} groupId={'5'}>
+          5
+        </Item>
+        <CustomDivider groupId={'5'} data-divider="5" />
+        <Item id={'6'} groupId={'6'}>
+          6
+        </Item>
+        <CustomDivider groupId={'6'} data-divider="6" />
+        <Item id={'7'} groupId={'7'}>
+          7
+        </Item>
+        <Menu />
+      </Container>,
+    );
+
+    setContainerWidth(470);
+    cy.get(`[${selectors.item}="5"]`).should('be.visible');
+    setContainerWidth(469);
+    cy.get(`[${selectors.divider}="5"]`).should('exist');
+    cy.get(`[${selectors.item}="6"]`).should('not.be.visible');
+    cy.get(`[${selectors.item}="5"]`).should('be.visible');
+    cy.get(`[${selectors.divider}]`).should('have.length', 5);
+    setContainerWidth(468);
+    cy.get(`[${selectors.item}="6"]`).should('not.be.visible');
+    cy.get(`[${selectors.item}="5"]`).should('be.visible');
+    setContainerWidth(467);
+    cy.get(`[${selectors.item}="6"]`).should('not.be.visible');
+    cy.get(`[${selectors.item}="5"]`).should('be.visible');
+    setContainerWidth(466);
+    cy.get(`[${selectors.item}="6"]`).should('not.be.visible');
+    cy.get(`[${selectors.item}="5"]`).should('be.visible');
+    setContainerWidth(449);
+    cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
+    cy.get(`[${selectors.item}="4"]`).should('be.visible');
   });
 
   it('should remove overflow menu if the last overflowed item can take its place', () => {
@@ -468,11 +676,67 @@ describe('Overflow', () => {
       </Container>,
     );
 
-    setContainerSize(497);
-    setContainerSize(498);
-    setContainerSize(499);
-    setContainerSize(500);
+    setContainerWidth(497);
+    setContainerWidth(498);
+    setContainerWidth(499);
+    setContainerWidth(500);
     cy.get(`[${selectors.menu}]`).should('not.exist');
+  });
+
+  it('should count accurately size of items', () => {
+    mount(
+      <Container>
+        <Item width="unset" id="0">
+          Item 0
+        </Item>
+        <Item width="unset" id="1">
+          Item 1
+        </Item>
+        <Item width="unset" id="2">
+          Super Long Item 2
+        </Item>
+        <Item width="unset" id="3">
+          3
+        </Item>
+        <Item id="4">Item 4</Item>
+        <Item id="5">Item 5</Item>
+        <Menu />
+      </Container>,
+    );
+
+    setContainerWidth(355);
+    cy.get(`[${selectors.menu}]`).should('not.exist');
+    setContainerWidth(354);
+    cy.get(`[${selectors.menu}]`).should('exist');
+    cy.get(`[${selectors.item}="3"]`).should('be.visible');
+    cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+    cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
+    setContainerWidth(355);
+    cy.get(`[${selectors.menu}]`).should('not.exist');
+    setContainerWidth(305);
+    cy.get(`[${selectors.item}="3"]`).should('be.visible');
+    cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+    cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
+    setContainerWidth(304);
+    cy.get(`[${selectors.item}="2"]`).should('be.visible');
+    cy.get(`[${selectors.item}="3"]`).should('not.be.visible');
+    setContainerWidth(305);
+    cy.get(`[${selectors.item}="3"]`).should('be.visible');
+    cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+    setContainerWidth(282);
+    cy.get(`[${selectors.item}="2"]`).should('be.visible');
+    cy.get(`[${selectors.item}="3"]`).should('not.be.visible');
+    setContainerWidth(281);
+    cy.get(`[${selectors.item}="1"]`).should('be.visible');
+    cy.get(`[${selectors.item}="2"]`).should('not.be.visible');
+    setContainerWidth(282);
+    cy.get(`[${selectors.item}="2"]`).should('be.visible');
+    cy.get(`[${selectors.item}="3"]`).should('not.be.visible');
+    setContainerWidth(104);
+    cy.get(`[${selectors.item}="0"]`).should('be.visible');
+    cy.get(`[${selectors.item}="1"]`).should('not.be.visible');
+    setContainerWidth(102);
+    cy.get(`[${selectors.item}="0"]`).should('not.be.visible');
   });
 
   it('should start overflowing once minimum visible items is reached', () => {
@@ -488,7 +752,7 @@ describe('Overflow', () => {
       </Container>,
     );
 
-    setContainerSize(195);
+    setContainerWidth(195);
     cy.get(`[${selectors.menu}]`).should('not.be.visible');
     cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
   });
@@ -536,7 +800,131 @@ describe('Overflow', () => {
     };
     mount(<Example />);
 
-    setContainerSize(500);
+    setContainerWidth(500);
     cy.contains('Update priority').click().get('#foo-visibility').should('have.text', 'visible');
+  });
+
+  it('Should switch priorities and use all available space', () => {
+    const Example = () => {
+      const [selected, setSelelected] = React.useState(0);
+      return (
+        <>
+          <Container>
+            {mapHelper.map(i => (
+              <Item key={i} id={i.toString()} priority={selected === i ? 1000 : 0} width={i === 9 ? 100 : undefined}>
+                <span onClick={() => setSelelected(i)} style={{ color: selected === i ? 'red' : 'black' }}>
+                  {i}
+                </span>
+              </Item>
+            ))}
+            <Menu />
+          </Container>
+          <div>
+            <button id="select-9" onClick={() => setSelelected(9)}>
+              Select 9
+            </button>
+            <button id="select-0" onClick={() => setSelelected(0)}>
+              Select 0
+            </button>
+          </div>
+        </>
+      );
+    };
+
+    const mapHelper = new Array(10).fill(0).map((_, i) => i);
+    mount(<Example />);
+
+    cy.get(`[${selectors.item}="3"]`).click();
+    setContainerWidth(250);
+    cy.get('#select-9').click();
+    cy.get(`[${selectors.item}="9"]`).should('be.visible');
+    cy.get(`[${selectors.item}="0"]`).should('be.visible');
+    cy.get(`[${selectors.item}="1"]`).should('be.visible');
+    cy.get(`[${selectors.item}="2"]`).should('not.be.visible');
+    cy.get(`[${selectors.item}="3"]`).should('not.be.visible');
+
+    cy.get('#select-0').click();
+    cy.get(`[${selectors.item}="9"]`).should('not.be.visible');
+    cy.get(`[${selectors.item}="0"]`).should('be.visible');
+    cy.get(`[${selectors.item}="1"]`).should('be.visible');
+    cy.get(`[${selectors.item}="2"]`).should('be.visible');
+    cy.get(`[${selectors.item}="3"]`).should('be.visible');
+  });
+
+  it('should overflow in the vertical axis', () => {
+    const mapHelper = new Array(10).fill(0).map((_, i) => i);
+    mount(
+      <Container overflowAxis="vertical">
+        {mapHelper.map(i => (
+          <Item key={i} id={i.toString()}>
+            {i}
+          </Item>
+        ))}
+        <Menu />
+      </Container>,
+    );
+
+    setContainerHeight(500);
+    const overflowCases = [
+      { containerSize: 450, overflowCount: 2 },
+      { containerSize: 400, overflowCount: 3 },
+      { containerSize: 350, overflowCount: 4 },
+      { containerSize: 300, overflowCount: 5 },
+      { containerSize: 250, overflowCount: 6 },
+      { containerSize: 200, overflowCount: 7 },
+      { containerSize: 150, overflowCount: 8 },
+      { containerSize: 100, overflowCount: 9 },
+      { containerSize: 50, overflowCount: 10 },
+    ];
+
+    overflowCases.forEach(({ overflowCount, containerSize }) => {
+      setContainerHeight(containerSize);
+      cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+    });
+  });
+
+  it('should toggle between vertical and horizontal axis', () => {
+    const mapHelper = new Array(10).fill(0).map((_, i) => i);
+    const TestComponent = () => {
+      const [axis, setAxis] = React.useState<OverflowAxis>('horizontal');
+      return (
+        <>
+          <button id="toggle" onClick={() => setAxis(s => (s === 'horizontal' ? 'vertical' : 'horizontal'))}>
+            toggle: {axis}
+          </button>
+          <Container overflowAxis={axis}>
+            {mapHelper.map(i => (
+              <Item key={i} id={i.toString()}>
+                {i}
+              </Item>
+            ))}
+            <Menu />
+          </Container>
+        </>
+      );
+    };
+
+    mount(<TestComponent />);
+
+    setContainerWidth(500);
+    const overflowCases = [
+      { containerSize: 450, overflowCount: 2 },
+      { containerSize: 400, overflowCount: 3 },
+      { containerSize: 350, overflowCount: 4 },
+      { containerSize: 300, overflowCount: 5 },
+      { containerSize: 250, overflowCount: 6 },
+      { containerSize: 200, overflowCount: 7 },
+      { containerSize: 150, overflowCount: 8 },
+    ];
+
+    for (let i = 0; i < 3; i++) {
+      const setSize = i % 2 === 0 ? setContainerWidth : setContainerHeight;
+      overflowCases.forEach(({ overflowCount, containerSize }) => {
+        setSize(containerSize);
+        cy.get(`[${selectors.menu}]`).should('have.text', `+${overflowCount}`);
+      });
+
+      cy.get('#toggle').click();
+    }
   });
 });

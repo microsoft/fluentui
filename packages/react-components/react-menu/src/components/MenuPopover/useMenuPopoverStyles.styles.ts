@@ -2,6 +2,7 @@ import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { MenuPopoverSlots, MenuPopoverState } from './MenuPopover.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { createSlideStyles } from '@fluentui/react-positioning';
 
 export const menuPopoverClassNames: SlotClassNames<MenuPopoverSlots> = {
   root: 'fui-MenuPopover',
@@ -12,13 +13,16 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
-    minWidth: '128px',
+    boxSizing: 'border-box',
+    minWidth: '138px',
     maxWidth: '300px',
+    overflowX: 'hidden',
     width: 'max-content',
     boxShadow: `${tokens.shadow16}`,
     ...shorthands.padding('4px'),
     ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
     ...typographyStyles.body1,
+    ...createSlideStyles(10),
   },
 });
 

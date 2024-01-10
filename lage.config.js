@@ -5,14 +5,18 @@ module.exports = {
     'build:info': [],
     bundle: ['build'],
     'bundle-size': ['build'],
+    'bundle-size-auditor': ['build'],
     // adding temporary back until import plugin rule is resolved https://github.com/microsoft/fluentui/issues/27727
     lint: ['build'],
     clean: [],
     test: ['build'],
+    'generate-api': ['^generate-api'],
+    'test-ssr': [],
     'type-check': ['build'],
     'code-style': [],
     'update-snapshots': ['^update-snapshots'],
     '@fluentui/docs#build': ['@fluentui/react-northstar#build:info'],
+    'verify-packaging': ['build'],
   },
 
   // Adds some ADO-specific logging commands for reporting failures
@@ -23,6 +27,7 @@ module.exports = {
     'change/**',
     'rfcs/**',
     'README.md',
+    '*.md',
     '.vscode/**',
     '.github/*.yml',
     '.github/*.json',
@@ -30,6 +35,8 @@ module.exports = {
     '.github/CODEOWNERS',
     '.github/MAINTAINERS',
     '.github/ISSUE_TEMPLATE/**',
+    '.github/policies/**',
+    '.devcontainer/**',
   ],
 
   // All of these options are sent to `backfill`: https://github.com/microsoft/backfill/blob/master/README.md

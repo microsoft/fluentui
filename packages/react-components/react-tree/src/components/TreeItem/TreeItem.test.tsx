@@ -12,15 +12,12 @@ describe('TreeItem', () => {
     getTargetElement(renderResult, attr) {
       return renderResult.container.querySelector(`.${treeItemClassNames.root}`) ?? renderResult.container;
     },
-    disabledTests: ['component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object', 'consistent-callback-args'],
     testOptions: {
       'has-static-classnames': [
         {
           props: {
             expandIcon: 'Test Expand Icon',
-            iconBefore: 'Test Icon Before',
-            iconAfter: 'Test Icon After',
-            actions: 'test Actions',
             aside: 'test Aside',
           },
         },
@@ -31,7 +28,7 @@ describe('TreeItem', () => {
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<TreeItem>Default TreeItem</TreeItem>);
+    const result = render(<TreeItem itemType="leaf">Default TreeItem</TreeItem>);
     expect(result.container).toMatchSnapshot();
   });
 });

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { IStyle, ITheme } from '../../Styling';
-import type { IStyleFunctionOrObject } from '../../Utilities';
+import type { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory SwatchColorPicker}
@@ -113,6 +113,11 @@ export interface IColorPickerGridCellProps {
   onWheel?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
 
   onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
+
+  /**
+   * Custom render function for rendering internal content of the color cell.
+   */
+  onRenderColorCellContent?: IRenderFunction<IColorCellProps>;
 }
 
 /**
@@ -138,6 +143,11 @@ export interface IColorCellProps {
    * Index for this option
    */
   index?: number;
+
+  /**
+   * Determines if this individual cell is disabled
+   */
+  disabled?: boolean;
 }
 
 /**

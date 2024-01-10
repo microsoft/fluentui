@@ -1,22 +1,26 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
-
-import { createElement } from '@fluentui/react-jsx-runtime';
-import { getSlotsNext } from '@fluentui/react-utilities';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+import { assertSlots } from '@fluentui/react-utilities';
 import type { TreeItemLayoutState, TreeItemLayoutSlots } from './TreeItemLayout.types';
+import { ButtonContextProvider } from '@fluentui/react-button';
 
 /**
  * Render the final JSX of TreeItemLayout
  */
 export const renderTreeItemLayout_unstable = (state: TreeItemLayoutState) => {
-  const { isActionsVisible } = state;
-  const { slots, slotProps } = getSlotsNext<TreeItemLayoutSlots>(state);
+  assertSlots<TreeItemLayoutSlots>(state);
+
   return (
-    <slots.root {...slotProps.root}>
-      {slots.iconBefore && <slots.iconBefore {...slotProps.iconBefore} />}
-      {slotProps.root.children}
-      {slots.iconAfter && <slots.iconAfter {...slotProps.iconAfter} />}
-      {!isActionsVisible && slots.aside && <slots.aside {...slotProps.aside} />}
-    </slots.root>
+    <state.root>
+      {state.expandIcon && <state.expandIcon />}
+      {state.selector && <state.selector />}
+      {state.iconBefore && <state.iconBefore />}
+      <state.main>{state.root.children}</state.main>
+      {state.iconAfter && <state.iconAfter />}
+      <ButtonContextProvider value={state.buttonContextValue}>
+        {state.actions && <state.actions />}
+        {state.aside && <state.aside />}
+      </ButtonContextProvider>
+    </state.root>
   );
 };

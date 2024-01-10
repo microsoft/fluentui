@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add react charting to support export to codepen",
-  "packageName": "@fluentui/react-monaco-editor",
-  "email": "atishay.jain@microsoft.com",
-  "dependentChangeType": "patch"
-}

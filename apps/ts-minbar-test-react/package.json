@@ -5,11 +5,11 @@
   "description": "Testing Fluent UI React compatibility with Typescript 3.9",
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react": "^8.108.2"
+    "@fluentui/react": "*"
   },
   "scripts": {
     "type-check": "tsc -p .",
-    "test": "ts-node --swc ./src/index.ts"
+    "test": "ts-node --transpileOnly ./src/index.ts"
   },
   "devDependencies": {
     "@fluentui/scripts-tasks": "*",

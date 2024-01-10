@@ -17,12 +17,12 @@ export { NonNativeElements } from './NonNativeElements.stories';
 export { CellActions } from './CellActions.stories';
 export { PrimaryCell } from './PrimaryCell.stories';
 export { CellNavigation } from './CellNavigation.stories';
-export { RowNavigation } from './RowNavigation.stories';
+export { FocusableElementsInCells } from './FocusableElements.Cells.stories';
+export { CompositeNavigation } from './CompositeNavigation.stories';
 
 export { Sort } from './Sort.stories';
 export { ResizableColumnsUncontrolled } from './ResizableColumnsUncontrolled.stories';
 export { ResizableColumnsControlled } from './ResizableColumnsControlled.stories';
-export { KeyboardColumnResizing } from './KeyboardColumnResizing.stories';
 
 export { SortControlled } from './SortControlled.stories';
 export { MultipleSelect } from './MultipleSelect.stories';

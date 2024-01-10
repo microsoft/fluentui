@@ -4,6 +4,10 @@ import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from
 import { getHeatMapChartStyles } from './HeatMapChart.styles';
 import { HeatMapChartBase } from './HeatMapChart.base';
 
+/**
+ * HeatMapchart component.
+ * {@docCategory HeatMapChart}
+ */
 export const HeatMapChart: React.FunctionComponent<IHeatMapChartProps> = styled<
   IHeatMapChartProps,
   IHeatMapChartStyleProps,

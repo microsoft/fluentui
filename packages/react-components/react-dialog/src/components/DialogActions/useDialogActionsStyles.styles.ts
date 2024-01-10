@@ -1,41 +1,54 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogActionsSlots, DialogActionsState } from './DialogActions.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import {
-  DIALOG_GAP,
-  ACTIONS_END_GRID_AREA,
-  ACTIONS_START_GRID_AREA,
-  MEDIA_QUERY_BREAKPOINT_SELECTOR,
-} from '../../contexts/constants';
+import { DIALOG_GAP, MEDIA_QUERY_BREAKPOINT_SELECTOR } from '../../contexts/constants';
 
 export const dialogActionsClassNames: SlotClassNames<DialogActionsSlots> = {
   root: 'fui-DialogActions',
 };
 
-const useStyles = makeStyles({
-  root: {
-    height: 'fit-content',
-    boxSizing: 'border-box',
-    display: 'flex',
-    ...shorthands.gap(DIALOG_GAP),
-    [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
-      flexDirection: 'column',
-      justifySelf: 'stretch',
-    },
+/**
+ * Styles for the root slot
+ */
+const useResetStyles = makeResetStyles({
+  ...shorthands.gap(DIALOG_GAP),
+  height: 'fit-content',
+  boxSizing: 'border-box',
+  display: 'flex',
+  gridRowStart: 3,
+  gridRowEnd: 3,
+  [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+    flexDirection: 'column',
+    justifySelf: 'stretch',
   },
+});
+
+const useStyles = makeStyles({
   gridPositionEnd: {
     justifySelf: 'end',
-    ...shorthands.gridArea(ACTIONS_END_GRID_AREA),
+    gridColumnStart: 2,
+    gridColumnEnd: 4,
+    [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+      gridColumnStart: 1,
+      gridRowStart: 4,
+      gridRowEnd: 'auto',
+    },
   },
   gridPositionStart: {
     justifySelf: 'start',
-    ...shorthands.gridArea(ACTIONS_START_GRID_AREA),
+    gridColumnStart: 1,
+    gridColumnEnd: 2,
+    [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
+      gridColumnEnd: 4,
+      gridRowStart: 3,
+      gridRowEnd: 'auto',
+    },
   },
   fluidStart: {
-    gridColumnEnd: ACTIONS_END_GRID_AREA,
+    gridColumnEnd: 4,
   },
   fluidEnd: {
-    gridColumnStart: ACTIONS_START_GRID_AREA,
+    gridColumnStart: 1,
   },
 });
 
@@ -43,10 +56,11 @@ const useStyles = makeStyles({
  * Apply styling to the DialogActions slots based on the state
  */
 export const useDialogActionsStyles_unstable = (state: DialogActionsState): DialogActionsState => {
+  const resetStyles = useResetStyles();
   const styles = useStyles();
   state.root.className = mergeClasses(
     dialogActionsClassNames.root,
-    styles.root,
+    resetStyles,
     state.position === 'start' && styles.gridPositionStart,
     state.position === 'end' && styles.gridPositionEnd,
     state.fluid && state.position === 'start' && styles.fluidStart,

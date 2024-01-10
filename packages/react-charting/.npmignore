@@ -32,3 +32,9 @@ tsd.json
 tslint.json
 typings
 visualtests
+!lib
+!lib-commonjs
+!lib-amd
+!dist
+docs
+test-data.ts

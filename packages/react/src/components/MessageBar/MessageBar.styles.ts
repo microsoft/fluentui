@@ -177,6 +177,15 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         display: 'flex',
         width: '100%',
         lineHeight: 'normal',
+        [SmallScreenSelector]: {
+          display: 'grid',
+          gridTemplateColumns: 'auto 1fr auto',
+          gridTemplateRows: '1fr auto',
+          gridTemplateAreas: `
+            "icon text close"
+            "action action action"
+          `,
+        },
       },
     ],
     iconContainer: [
@@ -188,6 +197,9 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         display: 'flex',
         flexShrink: 0,
         margin: '8px 0 8px 12px',
+        [SmallScreenSelector]: {
+          gridArea: 'icon',
+        },
       },
     ],
     icon: {
@@ -207,6 +219,9 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         flexGrow: 1,
         margin: 8,
         ...fonts.small,
+        [SmallScreenSelector]: {
+          gridArea: 'text',
+        },
         selectors: {
           [HighContrastSelector]: {
             ...getHighContrastNoAdjustStyle(),
@@ -252,7 +267,14 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         whiteSpace: 'pre-wrap',
       },
     ],
-    dismissSingleLine: classNames.dismissSingleLine,
+    dismissSingleLine: [
+      classNames.dismissSingleLine,
+      {
+        [SmallScreenSelector]: {
+          gridArea: 'close',
+        },
+      },
+    ],
     expandSingleLine: classNames.expandSingleLine,
     dismissal: [classNames.dismissal, dismissalAndExpandStyle],
     expand: [classNames.expand, dismissalAndExpandStyle],
@@ -269,9 +291,17 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         // reset forced colors to browser control for inner actions
         forcedColorAdjust: 'auto',
         MsHighContrastAdjust: 'auto',
+        [SmallScreenSelector]: {
+          gridArea: 'action',
+          marginRight: 8,
+          marginBottom: 8,
+        },
         selectors: {
           '& button:nth-child(n+2)': {
             marginLeft: 8,
+            [SmallScreenSelector]: {
+              marginBottom: 0,
+            },
           },
         },
       },

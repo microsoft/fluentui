@@ -17,7 +17,7 @@ export function hasBabel() {
 }
 
 export async function babel() {
-  const files = glob.sync('lib/**/*.js');
+  const files = glob.sync('lib/**/*.styles.js');
 
   for (const filename of files) {
     const filePath = path.resolve(process.cwd(), filename);

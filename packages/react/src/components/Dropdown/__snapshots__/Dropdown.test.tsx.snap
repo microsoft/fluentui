@@ -395,7 +395,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-Checkbox-checkbox {
                             background: Highlight;
-                            border-color: Highlight;
+                            border-color: HighlightText;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:focus .ms-Checkbox-checkbox {
                             background: Highlight;
@@ -440,6 +440,18 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           &.is-multi-select:hover {
                             background-color: #edebe9;
                           }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-multi-select:hover {
+                            background-color: Highlight;
+                            border-color: Highlight;
+                            color: HighlightText;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-multi-select:hover .ms-Checkbox-checkbox {
+                            border-color: HighlightText;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&.is-multi-select:hover {
+                            -ms-high-contrast-adjust: none;
+                            forced-color-adjust: none;
+                          }
                           &:active:hover {
                             background-color: #f3f2f1;
                             color: #201f1e;
@@ -448,6 +460,9 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                             background-color: Highlight;
                             border-color: Highlight;
                             color: HighlightText;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active:hover .ms-Checkbox-checkbox {
+                            border-color: HighlightText;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:active:hover {
                             -ms-high-contrast-adjust: none;
@@ -461,6 +476,9 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             inset: 2px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-Checkbox-checkbox {
+                            border-color: HighlightText;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
                             -ms-high-contrast-adjust: none;
@@ -612,7 +630,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                             background-color: #edebe9;
                             height: 1px;
                           }
-                      role="separator"
+                      role="presentation"
                     />
                   </div>
                   <div
@@ -646,7 +664,7 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           border-color: #323130;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-Checkbox-checkbox {
-                          border-color: Highlight;
+                          border-color: HighlightText;
                         }
                         &:focus .ms-Checkbox-checkbox {
                           border-color: #323130;
@@ -689,6 +707,18 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                         &.is-multi-select:hover {
                           background-color: transparent;
                         }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-multi-select:hover {
+                          background-color: Highlight;
+                          border-color: Highlight;
+                          color: HighlightText;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-multi-select:hover .ms-Checkbox-checkbox {
+                          border-color: HighlightText;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&.is-multi-select:hover {
+                          -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
+                        }
                         &:active:hover {
                           background-color: #edebe9;
                           color: #201f1e;
@@ -697,6 +727,9 @@ exports[`Dropdown multi-select Renders correctly when open 1`] = `
                           background-color: Highlight;
                           border-color: Highlight;
                           color: HighlightText;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active:hover .ms-Checkbox-checkbox {
+                          border-color: HighlightText;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:active:hover {
                           -ms-high-contrast-adjust: none;
@@ -1658,12 +1691,27 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           & .ms-Button-flexContainer {
                             width: 100%;
                           }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-Checkbox-checkbox {
+                            border-color: HighlightText;
+                          }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:hover {
                             -ms-high-contrast-adjust: none;
                             forced-color-adjust: none;
                           }
                           &.is-multi-select:hover {
                             background-color: #edebe9;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-multi-select:hover {
+                            background-color: Highlight;
+                            border-color: Highlight;
+                            color: HighlightText;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-multi-select:hover .ms-Checkbox-checkbox {
+                            border-color: HighlightText;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&.is-multi-select:hover {
+                            -ms-high-contrast-adjust: none;
+                            forced-color-adjust: none;
                           }
                           &:active:hover {
                             background-color: #f3f2f1;
@@ -1674,9 +1722,15 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                             border-color: Highlight;
                             color: HighlightText;
                           }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active:hover .ms-Checkbox-checkbox {
+                            border-color: HighlightText;
+                          }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:active:hover {
                             -ms-high-contrast-adjust: none;
                             forced-color-adjust: none;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-Checkbox-checkbox {
+                            border-color: HighlightText;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){& {
                             -ms-high-contrast-adjust: none;
@@ -1729,7 +1783,7 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                             background-color: #edebe9;
                             height: 1px;
                           }
-                      role="separator"
+                      role="presentation"
                     />
                   </div>
                   <button
@@ -1823,12 +1877,27 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                         & .ms-Button-flexContainer {
                           width: 100%;
                         }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-Checkbox-checkbox {
+                          border-color: HighlightText;
+                        }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:hover {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
                         &.is-multi-select:hover {
                           background-color: transparent;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-multi-select:hover {
+                          background-color: Highlight;
+                          border-color: Highlight;
+                          color: HighlightText;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-multi-select:hover .ms-Checkbox-checkbox {
+                          border-color: HighlightText;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&.is-multi-select:hover {
+                          -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
                         }
                         &:active:hover {
                           background-color: #edebe9;
@@ -1838,6 +1907,9 @@ exports[`Dropdown single-select Renders correctly when open 1`] = `
                           background-color: Highlight;
                           border-color: Highlight;
                           color: HighlightText;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active:hover .ms-Checkbox-checkbox {
+                          border-color: HighlightText;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active), screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light){&:active:hover {
                           -ms-high-contrast-adjust: none;

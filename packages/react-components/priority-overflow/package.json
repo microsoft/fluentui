@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/priority-overflow",
-  "version": "9.0.2",
+  "version": "9.1.11",
   "description": "Vanilla JS utilities to implement overflow menus",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,14 +13,15 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle-size": "bundle-size measure",
+    "bundle-size": "monosize measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "just-scripts generate-api"
+    "generate-api": "just-scripts generate-api",
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -28,7 +29,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@swc/helpers": "^0.4.14"
+    "@swc/helpers": "^0.5.1"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -44,5 +45,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

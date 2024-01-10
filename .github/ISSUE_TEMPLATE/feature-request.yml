@@ -53,3 +53,15 @@ body:
       options:
         - label: Check that there isn't already an issue that request the same feature to avoid creating a duplicate.
           required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: What is this feature's priority from your product's perspective
+      options:
+        - High
+        - Normal
+        - Low
+    validations:
+      required: false

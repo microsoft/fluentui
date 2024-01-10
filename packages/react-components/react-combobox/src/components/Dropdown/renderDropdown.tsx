@@ -1,11 +1,9 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { Portal } from '@fluentui/react-portal';
 
-import { createElement } from '@fluentui/react-jsx-runtime';
-
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { DropdownContextValues, DropdownState, DropdownSlots } from './Dropdown.types';
 
@@ -13,24 +11,24 @@ import type { DropdownContextValues, DropdownState, DropdownSlots } from './Drop
  * Render the final JSX of Dropdown
  */
 export const renderDropdown_unstable = (state: DropdownState, contextValues: DropdownContextValues) => {
-  const { slots, slotProps } = getSlotsNext<DropdownSlots>(state);
+  assertSlots<DropdownSlots>(state);
 
   return (
-    <slots.root {...slotProps.root}>
+    <state.root>
       <ComboboxContext.Provider value={contextValues.combobox}>
-        <slots.button {...slotProps.button}>
-          {slotProps.button.children}
-          {slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
-        </slots.button>
-        {slots.listbox &&
+        <state.button>
+          {state.button.children}
+          {state.expandIcon && <state.expandIcon />}
+        </state.button>
+        {state.listbox &&
           (state.inlinePopup ? (
-            <slots.listbox {...slotProps.listbox} />
+            <state.listbox />
           ) : (
-            <Portal>
-              <slots.listbox {...slotProps.listbox} />
+            <Portal mountNode={state.mountNode}>
+              <state.listbox />
             </Portal>
           ))}
       </ComboboxContext.Provider>
-    </slots.root>
+    </state.root>
   );
 };

@@ -1,5 +1,5 @@
 import type { BrandVariants, Theme } from '@fluentui/react-components';
-import { brandRamp } from '../components/ColorTokens/getOverridableTokenBrandColors';
+import { brandRamp } from './getOverridableTokenBrandColors';
 
 export const getBrandValues = (brand: BrandVariants, overrideList: Partial<Theme>, name: string, spacer: string) => {
   const hexToBrand: Record<string, string> = {};
@@ -22,20 +22,6 @@ export const objectToString = (input: Record<string, string>, spacer: string) =>
   return (
     Object.keys(input).map(key => {
       return '\n' + spacer + key + ': "' + input[key].toUpperCase() + '"';
-    }) + '\n'
-  );
-};
-
-export const themeToString = (theme: Theme, spacer: string) => {
-  const indexableTheme: Record<string, string | number> = theme;
-  return (
-    // don't put quotes around numbers
-    Object.keys(theme).map(key => {
-      if (!Number(indexableTheme[key])) {
-        return '\n' + spacer + key + ': "' + indexableTheme[key] + '"';
-      } else {
-        return '\n' + spacer + key + ': ' + indexableTheme[key];
-      }
     }) + '\n'
   );
 };

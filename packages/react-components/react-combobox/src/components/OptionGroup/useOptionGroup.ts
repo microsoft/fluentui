@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import type { OptionGroupProps, OptionGroupState } from './OptionGroup.types';
 
 /**
@@ -20,17 +20,24 @@ export const useOptionGroup_unstable = (props: OptionGroupProps, ref: React.Ref<
       root: 'div',
       label: 'span',
     },
-    root: getNativeElementProps('div', {
-      ref,
-      role: 'group',
-      'aria-labelledby': label ? labelId : undefined,
-      ...props,
-    }),
-    label: resolveShorthand(label, {
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
+        role: 'group',
+        'aria-labelledby': label ? labelId : undefined,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
+    label: slot.optional(label, {
       defaultProps: {
         id: labelId,
         role: 'presentation',
       },
+      elementType: 'span',
     }),
   };
 };

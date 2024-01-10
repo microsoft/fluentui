@@ -83,7 +83,7 @@ const InputBlock = () => (
 
 const Calendar = () => (
   <>
-    <CalendarContols />
+    <CalendarControl />
     <CalendarHeader />
     <CalendarBody />
     // Grid with current date interval layout
@@ -502,7 +502,7 @@ A focused `input` or `button` changes styling to communicate that the user has p
 
 ### Keyboard interactions
 
-[Follow the recomendations of WAI-ARIA](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/datepicker-dialog.html#kbd_label)
+[Follow the recommendations of WAI-ARIA](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/datepicker-dialog.html#kbd_label)
 
 #### Trigger button
 

@@ -43,7 +43,7 @@ exports[`Combobox renders an open listbox 1`] = `
     class="fui-Combobox"
   >
     <input
-      aria-activedescendant="fluent-option21"
+      aria-activedescendant="fluent-option3"
       aria-expanded="true"
       class="fui-Combobox__input"
       role="combobox"
@@ -73,14 +73,14 @@ exports[`Combobox renders an open listbox 1`] = `
     </span>
     <div
       class="fui-Listbox fui-Combobox__listbox"
-      id="fluent-listbox20"
+      id="fluent-listbox2"
       role="listbox"
-      style="position: fixed; left: 0px; top: 0px; margin: 0px; width: 0px;"
+      style="position: fixed; left: 0px; top: 0px; margin: 0px;"
     >
       <div
         aria-selected="false"
         class="fui-Option"
-        id="fluent-option21"
+        id="fluent-option3"
         role="option"
       >
         <span
@@ -107,7 +107,7 @@ exports[`Combobox renders an open listbox 1`] = `
       <div
         aria-selected="false"
         class="fui-Option"
-        id="fluent-option22"
+        id="fluent-option4"
         role="option"
       >
         <span
@@ -134,7 +134,7 @@ exports[`Combobox renders an open listbox 1`] = `
       <div
         aria-selected="false"
         class="fui-Option"
-        id="fluent-option23"
+        id="fluent-option5"
         role="option"
       >
         <span

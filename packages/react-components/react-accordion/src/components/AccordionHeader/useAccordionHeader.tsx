@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useEventCallback } from '@fluentui/react-utilities';
-import { useAccordionItemContext_unstable } from '../AccordionItem/index';
-import { useARIAButtonShorthand } from '@fluentui/react-aria';
+import { getIntrinsicElementProps, useEventCallback, slot, isResolvedShorthand } from '@fluentui/react-utilities';
+import { useARIAButtonProps } from '@fluentui/react-aria';
 import type { AccordionHeaderProps, AccordionHeaderState } from './AccordionHeader.types';
-import { useAccordionContext_unstable } from '../Accordion/AccordionContext';
+import { useAccordionContext_unstable } from '../../contexts/accordion';
 import { ChevronRightRegular } from '@fluentui/react-icons';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useAccordionItemContext_unstable } from '../../contexts/accordionItem';
 
 /**
  * Returns the props and state required to render the component
@@ -16,8 +16,9 @@ export const useAccordionHeader_unstable = (
   props: AccordionHeaderProps,
   ref: React.Ref<HTMLElement>,
 ): AccordionHeaderState => {
-  const { as, icon, button, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start' } = props;
-  const { onHeaderClick: onAccordionHeaderClick, disabled, open } = useAccordionItemContext_unstable();
+  const { icon, button, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start' } = props;
+  const { value, disabled, open } = useAccordionItemContext_unstable();
+  const requestToggle = useAccordionContext_unstable(ctx => ctx.requestToggle);
 
   /**
    * force disabled state on button if accordion isn't collapsible
@@ -37,14 +38,23 @@ export const useAccordionHeader_unstable = (
     expandIconRotation = open ? 90 : dir !== 'rtl' ? 0 : 180;
   }
 
-  const buttonShorthand = useARIAButtonShorthand(button, {
-    required: true,
+  const buttonSlot = slot.always(button, {
+    elementType: 'button',
     defaultProps: {
       disabled,
       disabledFocusable,
       'aria-expanded': open,
       type: 'button',
     },
+  });
+
+  buttonSlot.onClick = useEventCallback(event => {
+    if (isResolvedShorthand(button)) {
+      button.onClick?.(event);
+    }
+    if (!event.defaultPrevented) {
+      requestToggle({ value, event });
+    }
   });
 
   return {
@@ -59,28 +69,25 @@ export const useAccordionHeader_unstable = (
       expandIcon: 'span',
       icon: 'div',
     },
-    root: getNativeElementProps(as || 'div', {
-      ref,
-      ...props,
-    }),
-    icon: resolveShorthand(icon),
-    expandIcon: resolveShorthand(expandIcon, {
-      required: true,
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
+    icon: slot.optional(icon, { elementType: 'div' }),
+    expandIcon: slot.optional(expandIcon, {
+      renderByDefault: true,
       defaultProps: {
         children: <ChevronRightRegular style={{ transform: `rotate(${expandIconRotation}deg)` }} />,
         'aria-hidden': true,
       },
+      elementType: 'span',
     }),
-    button: {
-      ...buttonShorthand,
-      onClick: useEventCallback(
-        (ev: React.MouseEvent<HTMLButtonElement & HTMLDivElement & HTMLSpanElement & HTMLAnchorElement>) => {
-          buttonShorthand.onClick?.(ev);
-          if (!ev.defaultPrevented) {
-            onAccordionHeaderClick(ev);
-          }
-        },
-      ),
-    },
+    button: useARIAButtonProps(buttonSlot.as, buttonSlot),
   };
 };

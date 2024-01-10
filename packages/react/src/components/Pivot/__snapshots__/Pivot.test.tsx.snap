@@ -1851,6 +1851,7 @@ exports[`Pivot renders Pivot with overflow 1`] = `
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
+      role="tab"
       type="button"
     >
       <span
@@ -2421,11 +2422,11 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           }
           &:focus {
             color: #000000;
-            outline-offset: -1px;
+            outline-offset: -2px;
             outline: none;
           }
           &:active {
-            background-color: #005a9e;
+            background-color: #0078d4;
             color: #ffffff;
           }
           &:active .ms-Button-icon {
@@ -2479,12 +2480,19 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             background-color: #106ebe;
             color: #ffffff;
           }
+          &.is-selected:active {
+            background-color: #005a9e;
+            color: #ffffff;
+          }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-selected {
             -ms-high-contrast-adjust: none;
             background: Highlight;
             color: HighlightText;
             font-weight: 600;
             forced-color-adjust: none;
+          }
+          .ms-Fabric--isFocusVisible &.is-selected:focus {
+            outline-color: #ffffff;
           }
           &[data-is-overflowing='true'] {
             display: none;
@@ -2624,11 +2632,11 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
           }
           &:focus {
             color: #000000;
-            outline-offset: -1px;
+            outline-offset: -2px;
             outline: none;
           }
           &:active {
-            background-color: #005a9e;
+            background-color: #0078d4;
             color: #ffffff;
           }
           &:active .ms-Button-icon {
@@ -2682,12 +2690,19 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             background-color: #106ebe;
             color: #ffffff;
           }
+          &.is-selected:active {
+            background-color: #005a9e;
+            color: #ffffff;
+          }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-selected {
             -ms-high-contrast-adjust: none;
             background: Highlight;
             color: HighlightText;
             font-weight: 600;
             forced-color-adjust: none;
+          }
+          .ms-Fabric--isFocusVisible &.is-selected:focus {
+            outline-color: #ffffff;
           }
           &[data-is-overflowing='true'] {
             display: none;
@@ -3258,11 +3273,11 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           }
           &:focus {
             color: #000000;
-            outline-offset: -1px;
+            outline-offset: -2px;
             outline: none;
           }
           &:active {
-            background-color: #005a9e;
+            background-color: #0078d4;
             color: #ffffff;
           }
           &:active .ms-Button-icon {
@@ -3316,12 +3331,19 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             background-color: #106ebe;
             color: #ffffff;
           }
+          &.is-selected:active {
+            background-color: #005a9e;
+            color: #ffffff;
+          }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-selected {
             -ms-high-contrast-adjust: none;
             background: Highlight;
             color: HighlightText;
             font-weight: 600;
             forced-color-adjust: none;
+          }
+          .ms-Fabric--isFocusVisible &.is-selected:focus {
+            outline-color: #ffffff;
           }
           &[data-is-overflowing='true'] {
             display: none;
@@ -3461,11 +3483,11 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
           }
           &:focus {
             color: #000000;
-            outline-offset: -1px;
+            outline-offset: -2px;
             outline: none;
           }
           &:active {
-            background-color: #005a9e;
+            background-color: #0078d4;
             color: #ffffff;
           }
           &:active .ms-Button-icon {
@@ -3519,12 +3541,19 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             background-color: #106ebe;
             color: #ffffff;
           }
+          &.is-selected:active {
+            background-color: #005a9e;
+            color: #ffffff;
+          }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&.is-selected {
             -ms-high-contrast-adjust: none;
             background: Highlight;
             color: HighlightText;
             font-weight: 600;
             forced-color-adjust: none;
+          }
+          .ms-Fabric--isFocusVisible &.is-selected:focus {
+            outline-color: #ffffff;
           }
           &[data-is-overflowing='true'] {
             display: none;

@@ -34,7 +34,7 @@ export const Default = () => {
         description={<Caption1>5h ago · About us - Overview</Caption1>}
       />
 
-      <CardPreview logo={<img src={resolveAsset('word_logo.svg')} alt="Microsoft Word document" />}>
+      <CardPreview logo={<img src={resolveAsset('docx.png')} alt="Microsoft Word document" />}>
         <img src={resolveAsset('doc_template.png')} alt="Preview of a Word document: About Us - Overview" />
       </CardPreview>
 

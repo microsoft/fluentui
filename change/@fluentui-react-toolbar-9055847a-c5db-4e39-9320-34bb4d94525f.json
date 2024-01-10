@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update to use single hook selector",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "gcox@microsoft.com",
-  "dependentChangeType": "patch"
-}

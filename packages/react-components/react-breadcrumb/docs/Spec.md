@@ -68,32 +68,30 @@ const BreadcrumbExampleIconDivider = props => (
 
 ### Components
 
-| Purpose                                                                | Fabric     | Northstar         | Matching? |
-| ---------------------------------------------------------------------- | ---------- | ----------------- | --------- |
-| Breadcrumb is a component that indicates the path of the current page  | Breadcrumb | Breadcrumb        | ⚠️        |
-| BreadcrumbItem an actionable item within a Breadcrumb                  |            | BreadcrumbItem    | ❌        |
-| BreadcrumbDivider divides BreadcrumbItem components within Breadcrumb  |            | BreadcrumbDivider | ❌        |
-| An BreadcrumbLink represents a anchor to be used inside the Breadcrumb |            | BreadcrumbLink    | ❌        |
+| Purpose                                                               | Fabric     | Northstar         | Matching? |
+| --------------------------------------------------------------------- | ---------- | ----------------- | --------- |
+| Breadcrumb is a component that indicates the path of the current page | Breadcrumb | Breadcrumb        | ⚠️        |
+| BreadcrumbItem an actionable item within a Breadcrumb                 |            | BreadcrumbItem    | ❌        |
+| BreadcrumbDivider divides BreadcrumbItem components within Breadcrumb |            | BreadcrumbDivider | ❌        |
+| BreadcrumbLink represents a anchor to be used inside the Breadcrumb   |            | BreadcrumbLink    | ❌        |
 
 ## Sample Code
-
-By default BreadcrumbButton should be used.
 
 ```jsx
 const BreadcrumbV9Example = props => (
   <Breadcrumb aria-label="breadcrumb">
     <BreadcrumbItem>
-      <BreadcrumbButton onClick={() => {}}>
+      <BreadcrumbButton href="#">
         Home
       </BreadcrumbButton>
     </BreadcrumbItem>
     <BreadcrumbItem>
-      <BreadcrumbButton onClick={() => {}}>
+      <BreadcrumbButton href="#">
         Gallery
       </BreadcrumbButton>
     </BreadcrumbItem>
     <BreadcrumbItem current={true}>
-      <BreadcrumbButton onClick={() => {}}>
+      <BreadcrumbButton href="#">
         About
       </BreadcrumbButton>
     </BreadcrumbItem>
@@ -104,24 +102,14 @@ const BreadcrumbV9Example = props => (
 
 ## Variants
 
-### Appearance
+### Breadcrumb item variants
 
-Breadcrumb can be:
-
-- transparent (default)
-- subtle
-
-### BreadcrumbItem variants
-
-- Non-clickable element which is BreadcrumbItem component.
-- Button - BreadcrumbButton component.
-- Link - BreadcrumbLink component.
+- Link - `BreadcrumbButton` uses @fluentui/react-button component under the hood. It's semantically a Link but has appearance of subtle `Button`.
 - Dropdown menu - can be added by a partner using JSX composition.
 
 ### Icon
 
-Non-clickable items can't have icon.
-Only BreadcrumButton and BreadcrumbLink can have an icon with text or just icon.
+Breadcrumb items can have icons.
 
 ### Size
 
@@ -141,13 +129,12 @@ Dropdown contains collapsed items.
 
 ### Components
 
-| Component         | Purpose                                                                  |
-| ----------------- | ------------------------------------------------------------------------ |
-| Breadcrumb        | Wrapper for the Breadcrumb component. Contains `nav` and `ol` elements.  |
-| BreadcrumbDivider | Divider component                                                        |
-| BreadcrumbItem    | `li` element. Can contain BreadcrumbButton or BreadcrumbLink components. |
-| BreadcrumbLink    | Breadcrumb Link                                                          |
-| BreadcrumbButton  | Breadcrumb Button                                                        |
+| Component         | Purpose                                                                 |
+| ----------------- | ----------------------------------------------------------------------- |
+| Breadcrumb        | Wrapper for the Breadcrumb component. Contains `nav` and `ol` elements. |
+| BreadcrumbDivider | Divider component                                                       |
+| BreadcrumbItem    | `li` element. Can contain BreadcrumbButton component.                   |
+| BreadcrumbButton  | Breadcrumb Button                                                       |
 
 ### Breadcrumb
 
@@ -172,31 +159,16 @@ Dropdown contains collapsed items.
 
 #### API
 
-| Property     | Values                     | Default       | Purpose                          |
-| ------------ | -------------------------- | ------------- | -------------------------------- |
-| appearance   | `transparent`, `subtle`    | `transparent` | Sets appearance                  |
-| dividerType  | `chevron`, `slash`         | `chevron`     | Sets type of divider             |
-| iconPosition | `before`, `after`          | `before`      | Sets icon position for all items |
-| size         | `small`, `medium`, `large` | `medium`      | Defines size of the Breadcrumb   |
+| Property  | Values                     | Default  | Purpose                        |
+| --------- | -------------------------- | -------- | ------------------------------ |
+| focusMode | `tab`, `arrow`             | `tab`    | Sets focus mode                |
+| size      | `small`, `medium`, `large` | `medium` | Defines size of the Breadcrumb |
 
 ### BreadcrumbItem
 
-#### Anatomy
-
-![visual anatomy of the BreadcrumbItem component](./assets/breadcrumb-item-anatomy.png)
-
-BreadcrumbItem can be:
-
-- Button - BreadcrumbButton component is used inside BreadcrumbItem.
-- Link - BreadcrumbLink is used inside BreadcrumbItem.
-- Non-clickable content
-- Dropdown Menu
-
-It can contain a tooltip.
+BreadcrumbItem is a container for BreadcrumbButton.
 
 #### DOM
-
-Non-clickable element
 
 ```HTML
 <li>
@@ -214,7 +186,7 @@ Link
 </li>
 ```
 
-Button
+Button (used only as OverflowMenu)
 
 ```HTML
 <li>
@@ -228,34 +200,27 @@ Usage
 
 ```jsx
 <BreadcrumbItem>
-  Item 1
+  <BreadcrumbButton href="#">
+    Item 1
+  </BreadcrumbButton>
 </BreadcrumbItem>
 <BreadcrumbItem>
-  <BreadcrumbButton onClick={() => console.log('smth...')}>
+  <BreadcrumbButton href="#">
     Item 2
   </BreadcrumbButton>
 </BreadcrumbItem>
 <BreadcrumbItem>
-  <BreadcrumbLink href="#">
+  <BreadcrumbButton href="#">
     Item 3
-  <BreadcrumbLink>
+  </BreadcrumbButton>
 </BreadcrumbItem>
 ```
-
-#### API
-
-| Property | Values  | Default | Purpose                |
-| -------- | ------- | ------- | ---------------------- |
-| current  | boolean | false   | Indicates current page |
 
 #### Breadcrumb icon
 
 ```jsx
 <BreadcrumbItem>
-  <BreadcrumbButton icon={<IconComponent />} iconPosition="after">Item</BreadcrumbButton>
-</BreadcrumbItem>
-<BreadcrumbItem>
-  <BreadcrumbLink icon={<IconComponent />}>Item</BreadcrumbLink>
+  <BreadcrumbButton icon={<IconComponent />}>Item</BreadcrumbButton>
 </BreadcrumbItem>
 ```
 
@@ -278,18 +243,8 @@ Usage
   </li>
 ```
 
-Type of the divider is passed from the `Breadcrumb` component. In case if partner wants to have a custom divider it should be passed as `children` prop.
-Slash divider can be only for small Breadcrumb.
-
 ```jsx
-<Breadcrumb size="large" >
-  <BreadcrumbItem>Item</BreadcrumbItem>
-  <BreadcrumbDivider>
-    <ArrowRight16Filled />
-  </BreadcrumbDivider>
-  <BreadcrumbItem>Item</BreadcrumbItem>
-</Breadcrumb>
-<Breadcrumb size="small" dividerType="slash">
+<Breadcrumb>
   <BreadcrumbItem>Item</BreadcrumbItem>
   <BreadcrumbDivider />
   <BreadcrumbItem>Item</BreadcrumbItem>
@@ -299,133 +254,15 @@ Slash divider can be only for small Breadcrumb.
 ### BreadcrumbButton
 
 ```jsx
-<BreadcrumbButton onClick={() => console.log('smth...')}>Button Item</BreadcrumbButton>
-```
-
-Under the hood @fluentui/react-button component is used.
-
-### BreadcrumbLink
-
-```jsx
-<BreadcrumbLink href="#">
-  Link Item
-<BreadcrumbLink>
+<BreadcrumbButton href="#">Item</BreadcrumbButton>
 ```
 
 #### API
 
-| Property     | Values            | Default  | Purpose                |
-| ------------ | ----------------- | -------- | ---------------------- |
-| current      | boolean           | false    | Indicates current page |
-| icon         | _slot_            |          | Sets icon              |
-| iconPosition | `before`, `after` | `before` | Sets icon position     |
-
-For Link @fluentui/react-link component is used.
-
-## Migration
-
-### Fabric (v8) property mapping
-
-This should be moved to MIGRATION.md later.
-Here's how the API of v8's `Breadcrumb` compares to the one from v9's `Breadcrumb` component:
-
-#### New props
-
-- `appearance`
-
-#### Props no longer supported with an equivalent functionality in Breadcrumb V9:
-
-- `maxDisplayedItems`and `overflowIndex` - will be part of `partitionBreadcrumbItems` method
-- `className` => Slot system supports it by default. We don't need to provide it explicitly.
-- `items` => Use `children` prop instead.
-- `componentRef`
-- `dividerAs` => Divider is a separate component. Type of divider is passed to the Breadcrumb component.
-- `focusZoneProps` => use `focusMode` instead.
-- `overflowButtonAs` => Custom component for the overflow button. - use custom overflow button instead.
-- `styles`
-- `theme`
-- `overflowAriaLabel` => Aria label for the overflow button.
-
-#### Props no longer supported
-
-- `onRenderOverflowIcon` => Render a custom overflow icon in place of the default icon `...`.
-- `onGrowData` => Method that determines how to group the length of the breadcrumb. Return undefined to never increase breadcrumb length.
-- `onReduceData` => Method that determines how to reduce the length of the breadcrumb. Return undefined to never reduce breadcrumb length.
-
-As BreadcrumbItem part of `children` prop, a user decides how to render an item.
-The following props are not needed anymore.
-
-- `onRenderItem` => Custom render function to render each crumb. Default renders as a link.
-- `onRenderItemContent` => Custom render function to render the content within a crumb. Default renders the text.
-- `tooltipHostProps` => Extra props for the TooltipHost which wraps each breadcrumb item.
-
-Fabric Breadcrumb `items` prop as part of `IBreadcrumbData` interface contains the following props:
-BreadcrumbItem component contains similar props in V9.
-
-- `key` => not supported
-- `text` => use `children` prop of BreadcrumbItem component.
-- `as` => type('h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'a') - Optional prop to render the item as a heading of your choice. You can also use this to force items to render as links instead of buttons (by default, any item with a href renders as a link, and any item without a href renders as a button). This is not generally recommended because it may prevent activating the link using the keyboard. In V9 It's part of BreadcrumbItem prop.
-- `href` => URL to navigate to when this breadcrumb item is clicked. If provided, the breadcrumb will be rendered as a link.
-- `isCurrentItem` => Whether this is the breadcrumb item the user is currently navigated to. If true, aria-current="page" will be applied to this breadcrumb item.
-- `onClick` => Callback for when the breadcrumb item is selected.
-- `onRender` => A function to render the outer content of the crumb (the link).
-- `onRenderContent` => A function to render the inner content of the crumb (the text inside the link).
-- `role` => Optional role for the breadcrumb item (which renders as a button by default)
-
-#### Property Mapping
-
-| v8 `Breadcrumb`     | v9 `Breadcrumb` |
-| ------------------- | --------------- |
-| `ariaLabel`         |                 |
-| `className`         |                 |
-| `componentRef`      |                 |
-| `dividerAs`         |                 |
-| `focusZoneProps`    |                 |
-| `maxDisplayedItems` |                 |
-
-### Northstar property mapping
-
-#### Props which are repeating in each component
-
-These props are the same in all the components.
-`as` prop had different defaults in different components.
-BreadcrumbDivider has default `span`. BreadcrumbLink has `a` and Breadcrumb has `nav`.
-
-- `accessibility` => Accessibility behavior if overridden by the user.
-- `as` => type React.ElementType - An element type to render as (string or component).
-- `className`
-- `content` => Shorthand for primary content.
-- `design` => type ComponentDesignProp
-- `styles` =>
-- `variables` => Override for theme site variables to allow modifications of component styling via themes.
-
-#### Property Mapping
-
-| Northstar `Breadcrumb` | v9 `Breadcrumb` |
-| ---------------------- | --------------- |
-| `accessibility`        |                 |
-| `as`                   |                 |
-| `className`            |                 |
-| `content`              |                 |
-| `design`               |                 |
-| `styles`               |                 |
-| `variables`            |                 |
-
-#### Breadcrumb component:
-
-- `size` => use as it is.
-
-#### BreadcrumbItem component:
-
-- `active` => Indicates if the link is the active.
-- `disabled` => The Breadcrumb Item can be disabled.
-
-#### Property Mapping
-
-| Northstar `BreadcrumbItem` | v9 `BreadcrumbItem` |
-| -------------------------- | ------------------- |
-| `active`                   | `current`           |
-| `disabled`                 | `disabled`          |
+| Property | Values  | Default | Purpose                |
+| -------- | ------- | ------- | ---------------------- |
+| current  | boolean | false   | Indicates current page |
+| icon     | _slot_  |         | Sets icon              |
 
 ## Behaviors
 
@@ -511,27 +348,16 @@ Currently truncation of long names should be done by partners. It's recommended 
 
 ![Breadcrumb item as Button](./assets/button-beadcrumb.png)
 
-#### Breadcrumb item as Link
-
-![Breadcrumb item as Link](./assets/link-beadcrumb.png)
-
 Breadcrumb can have the folloing states:
 
 - Rest
 - Hover
 - Pressed
-- Selected
 - Focused
 - Disabled
-- Active
+- Current
 
 ![Breadcrumb states](./assets/beadcrumb-states.png)
-
-#### Non-interactive Breadcrumb Item
-
-Non-interactive style variation for places where the Breadcrumb is purely representational or informational. Usually this instance is mostly used to describe file path location, etc.
-
-![Non-interactive Breadcrumb](./assets/breadcrumb-not-interactive.png)
 
 #### Tooltip
 
@@ -539,15 +365,16 @@ Tooltip is shown `onHover` on collapsed menu or items with long names.
 ![Breadcrumb Tooltip](./assets/breadcrumb-tooltip.png)
 
 Tooltipls can be multiline. It is recommended to use content no longer than 80 symbols.
+Items have tooltips when their names are longer than 30 symbols.
 
 ### Keyboard
 
-When navigating via keyboard, focus will be place initially on the first breadcrumb item. Left and right arrow keys move through the breadcrumb items.
+When navigating via keyboard, focus will be place initially on the first breadcrumb item. Either `tab` key (default) or left and right arrow can be used to move through the breadcrumb items.
 
 ![Breadcrumb keyboard interaction](./assets/breadcrumb-keyboard-interaction.png)
 
 - Tab => Focus on breadcrumb trail or the first item only.
-- Arrow => Move focus to items in the string.
+- Arrow/Tab => Move focus to items in the string.
 - Enter or Space => Selects the item; opens the page; expand collapsed items.
 
 #### Collapsed items - Menu
@@ -559,13 +386,12 @@ If the overflow button is in focus, `Enter`, `Arrow down` or `Space` activate th
 
 ## Accessibility
 
-Use the `tab` key to navigate to the first item of the string and `arrow` keys to move through previous and next items.
+Use the `tab` key to navigate to the first item of the string and `Tab` or `arrow` keys to move through previous and next items.
 Each item is conisdered a ListItem with nested links.
-Tab stops don't apply for non-interactive Breadcrumbs.
 
 ![Breadcrumb Accessibility](./assets/a11y-breadcrumb.png)
 
-Use button roles for actions in the same space (overflow).
+Use button roles for Overflow menu.
 ![Breadcrumb Accessibility Overflow](./assets/a11y-breadcrumb-overflow.png)
 
 ### Truncated text

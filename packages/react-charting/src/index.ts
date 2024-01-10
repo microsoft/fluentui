@@ -15,6 +15,8 @@ export * from './HeatMapChart';
 export * from './SankeyChart';
 export * from './TreeChart';
 export * from './Sparkline';
+export * from './HorizontalBarChartWithAxis';
 export * from './utilities/colors';
+export * from './GaugeChart';
 
 import './version';

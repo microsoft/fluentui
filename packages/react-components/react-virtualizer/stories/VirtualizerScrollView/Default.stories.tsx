@@ -3,9 +3,6 @@ import { VirtualizerScrollView } from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
-  root: {
-    maxHeight: '100vh',
-  },
   child: {
     height: '100px',
     lineHeight: '100px',

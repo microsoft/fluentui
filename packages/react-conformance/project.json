@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/react-conformance",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-conformance/src",
+  "implicitDependencies": [],
+  "tags": ["vNext", "platform:node"]
+}

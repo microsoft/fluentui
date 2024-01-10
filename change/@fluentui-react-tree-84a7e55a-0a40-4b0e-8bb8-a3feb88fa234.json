@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: makes useFlatTree generic",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

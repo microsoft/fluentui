@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tabster",
-  "version": "9.6.5",
+  "version": "9.17.0",
   "description": "Utilities for focus management and facade for tabster",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -21,7 +21,8 @@
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "just-scripts generate-api"
+    "generate-api": "just-scripts generate-api",
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -30,19 +31,19 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@griffel/react": "^1.5.2",
-    "@fluentui/react-shared-contexts": "^9.3.3",
-    "@fluentui/react-theme": "^9.1.7",
-    "@fluentui/react-utilities": "^9.8.0",
-    "@swc/helpers": "^0.4.14",
-    "keyborg": "^2.0.0",
-    "tabster": "^4.1.1"
+    "@fluentui/react-shared-contexts": "^9.13.2",
+    "@fluentui/react-theme": "^9.1.16",
+    "@fluentui/react-utilities": "^9.15.6",
+    "@griffel/react": "^1.5.14",
+    "@swc/helpers": "^0.5.1",
+    "keyborg": "^2.3.0",
+    "tabster": "^5.0.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
@@ -58,5 +59,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

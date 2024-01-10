@@ -1,8 +1,20 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
-import { Dismiss16Filled } from '@fluentui/react-icons';
-import { Avatar } from '@fluentui/react-avatar';
+import { getIntrinsicElementProps, useEventCallback, useId, slot } from '@fluentui/react-utilities';
+import { DismissRegular } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
+import { Delete, Backspace } from '@fluentui/keyboard-keys';
+import { useTagGroupContext_unstable } from '../../contexts/tagGroupContext';
+
+const tagAvatarSizeMap = {
+  medium: 28,
+  small: 20,
+  'extra-small': 16,
+} as const;
+
+const tagAvatarShapeMap = {
+  rounded: 'square',
+  circular: 'circular',
+} as const;
 
 /**
  * Create the state required to render Tag.
@@ -11,50 +23,83 @@ import type { TagProps, TagState } from './Tag.types';
  * before being passed to renderTag_unstable.
  *
  * @param props - props from this instance of Tag
- * @param ref - reference to root HTMLElement of Tag
+ * @param ref - reference to root HTMLSpanElement or HTMLButtonElement of Tag
  */
-export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): TagState => {
+export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement | HTMLButtonElement>): TagState => {
+  const { handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
+
+  const id = useId('fui-Tag', props.id);
+
   const {
-    checked = false,
+    appearance = 'filled',
     disabled = false,
-    dismissable = false,
+    dismissible = false,
     shape = 'rounded',
-    size = 'medium',
-    appearance = 'filled-lighter',
+    size = contextSize,
+    value = id,
   } = props;
 
+  const dismissOnClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
+    props.onClick?.(ev);
+    if (!ev.defaultPrevented) {
+      handleTagDismiss?.(ev, { value });
+    }
+  });
+
+  const dismissOnKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
+    props?.onKeyDown?.(ev);
+    if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
+      handleTagDismiss?.(ev, { value });
+    }
+  });
+
+  const elementType = dismissible ? 'button' : 'span';
+
   return {
+    appearance,
+    avatarShape: tagAvatarShapeMap[shape],
+    avatarSize: tagAvatarSizeMap[size],
+    disabled,
+    dismissible,
+    shape,
+    size,
+
     components: {
-      root: 'div',
-      content: 'span',
-      avatar: Avatar,
+      root: elementType,
+      media: 'span',
       icon: 'span',
       primaryText: 'span',
       secondaryText: 'span',
-      dismissButton: 'button',
+      dismissIcon: 'span',
     },
-    checked,
-    disabled,
-    dismissable,
-    shape,
-    size,
-    appearance,
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
-    content: resolveShorthand(props.content, { required: true }),
-    avatar: resolveShorthand(props.avatar),
-    icon: resolveShorthand(props.icon),
-    primaryText: resolveShorthand(props.primaryText),
-    secondaryText: resolveShorthand(props.secondaryText),
-    dismissButton: resolveShorthand(props.dismissButton, {
-      required: true,
+
+    root: slot.always(
+      getIntrinsicElementProps(elementType, {
+        ref,
+        ...props,
+        id,
+        ...(dismissible && { onClick: dismissOnClick, onKeyDown: dismissOnKeyDown }),
+      }),
+      { elementType },
+    ),
+
+    media: slot.optional(props.media, { elementType: 'span' }),
+    icon: slot.optional(props.icon, { elementType: 'span' }),
+    primaryText: slot.optional(props.primaryText, {
+      renderByDefault: true,
       defaultProps: {
-        disabled,
-        type: 'button',
-        children: <Dismiss16Filled />,
+        children: props.children,
       },
+      elementType: 'span',
+    }),
+    secondaryText: slot.optional(props.secondaryText, { elementType: 'span' }),
+    dismissIcon: slot.optional(props.dismissIcon, {
+      renderByDefault: dismissible,
+      defaultProps: {
+        children: <DismissRegular />,
+        role: 'img',
+      },
+      elementType: 'span',
     }),
   };
 };

@@ -1,3 +1,4 @@
+import type { IconDirectionContextValue } from '@fluentui/react-icons';
 import type {
   OverridesContextValue_unstable as OverridesContextValue,
   ProviderContextValue_unstable as ProviderContextValue,
@@ -70,5 +71,6 @@ export type FluentProviderContextValues = Pick<
   provider: ProviderContextValue;
   themeClassName: ThemeClassNameContextValue;
   textDirection: 'ltr' | 'rtl';
+  iconDirection: IconDirectionContextValue;
   tooltip: TooltipVisibilityContextValue;
 };

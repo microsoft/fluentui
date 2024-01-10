@@ -6,15 +6,15 @@
 module.exports = {
   displayName: 'react-theme-sass',
   preset: '../../../jest.preset.js',
-  globals: {
-    'ts-jest': {
-      tsconfig: '<rootDir>/tsconfig.spec.json',
-      isolatedModules: true,
-    },
-  },
   testEnvironment: 'jest-environment-node-single-context',
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        tsconfig: '<rootDir>/tsconfig.spec.json',
+        isolatedModules: true,
+      },
+    ],
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/example-data
 
-This log was last generated on Tue, 20 Dec 2022 07:53:32 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Aug 2023 07:35:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.12](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.4.12)
+
+Fri, 18 Aug 2023 07:35:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.4.11..@fluentui/example-data_v8.4.12)
+
+### Patches
+
+- docs: Updating version of CDN used and replacing usage of via.placeholder.com with SVG from CDN. ([PR #28895](https://github.com/microsoft/fluentui/pull/28895) by Humberto.Morimoto@microsoft.com)
+
+## [8.4.9](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.4.9)
+
+Fri, 05 May 2023 18:14:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.4.5..@fluentui/example-data_v8.4.9)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
 
 ## [8.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.4.4)
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useAvatarGroupContext_unstable } from '../../contexts/AvatarGroupContext';
 import { defaultAvatarGroupSize } from '../AvatarGroup/useAvatarGroup';
-import { resolveShorthand, useControllableState } from '@fluentui/react-utilities';
+import { useControllableState, slot } from '@fluentui/react-utilities';
 import { MoreHorizontalRegular } from '@fluentui/react-icons';
 import { OnOpenChangeData, OpenPopoverEvents, Popover, PopoverSurface } from '@fluentui/react-popover';
 import type { AvatarGroupPopoverProps, AvatarGroupPopoverState } from './AvatarGroupPopover.types';
@@ -59,42 +59,45 @@ export const useAvatarGroupPopover_unstable = (props: AvatarGroupPopoverProps): 
       popoverSurface: PopoverSurface,
       tooltip: Tooltip,
     },
-    root: {
-      // Popover expects a child for its children. The children are added in the renderAvatarGroupPopover.
-      children: <></>,
-      size: 'small',
-      trapFocus: true,
-      ...restOfProps,
-      open: popoverOpen,
-      onOpenChange: handleOnPopoverChange,
-    },
-    triggerButton: resolveShorthand(props.triggerButton, {
-      required: true,
+    root: slot.always(
+      {
+        // Popover expects a child for its children. The children are added in the renderAvatarGroupPopover.
+        children: <></>,
+        size: 'small',
+        trapFocus: true,
+        ...restOfProps,
+        open: popoverOpen,
+        onOpenChange: handleOnPopoverChange,
+      },
+      { elementType: Popover },
+    ),
+    triggerButton: slot.always(props.triggerButton, {
       defaultProps: {
         children: triggerButtonChildren,
         type: 'button',
       },
+      elementType: 'button',
     }),
-    content: resolveShorthand(props.content, {
-      required: true,
+    content: slot.always(props.content, {
       defaultProps: {
         children,
         role: 'list',
       },
+      elementType: 'ul',
     }),
-    popoverSurface: resolveShorthand(props.popoverSurface, {
-      required: true,
+    popoverSurface: slot.always(props.popoverSurface, {
       defaultProps: {
         'aria-label': 'Overflow',
         tabIndex: 0,
       },
+      elementType: PopoverSurface,
     }),
-    tooltip: resolveShorthand(props.tooltip, {
-      required: true,
+    tooltip: slot.always(props.tooltip, {
       defaultProps: {
         content: 'View more people.',
         relationship: 'label',
       },
+      elementType: Tooltip,
     }),
   };
 };

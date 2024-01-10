@@ -1,8 +1,9 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { BreadcrumbButtonSlots, BreadcrumbButtonState } from './BreadcrumbButton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { useButtonStyles_unstable } from '@fluentui/react-button';
+import { useButtonStyles_unstable, buttonClassNames } from '@fluentui/react-button';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 
 /**
  * Static CSS class names used internally for the component slots.
@@ -15,38 +16,10 @@ export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots> =
 /**
  * CSS variable names used internally for styling in the Breadcrumb.
  */
-export const breadcrumbCSSVars = {
+const breadcrumbCSSVars = {
   breadcrumbIconSizeVar: '--fui-Breadcrumb--icon-size',
   breadcrumbIconLineHeightVar: '--fui-Breadcrumb--icon-line-height',
 };
-
-const useStyles = makeStyles({
-  root: {},
-  small: {
-    height: '24px',
-    ...shorthands.padding(tokens.spacingHorizontalSNudge),
-    ...typographyStyles.caption1,
-  },
-  medium: {
-    height: '32px',
-    ...shorthands.padding(tokens.spacingHorizontalSNudge),
-    ...typographyStyles.body1,
-  },
-  large: {
-    height: '40px',
-    ...shorthands.padding(tokens.spacingHorizontalS),
-    ...typographyStyles.body2,
-  },
-  currentSmall: {
-    ...typographyStyles.caption1Strong,
-  },
-  currentMedium: {
-    ...typographyStyles.body1Strong,
-  },
-  currentLarge: {
-    ...typographyStyles.subtitle2,
-  },
-});
 
 const useIconStyles = makeStyles({
   base: {
@@ -54,6 +27,7 @@ const useIconStyles = makeStyles({
     height: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
     lineHeight: `var(${breadcrumbCSSVars.breadcrumbIconLineHeightVar})`,
     width: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
+    marginRight: tokens.spacingHorizontalXS,
   },
   small: {
     [breadcrumbCSSVars.breadcrumbIconSizeVar]: '12px',
@@ -68,6 +42,68 @@ const useIconStyles = makeStyles({
     [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase600,
   },
 });
+
+const defaultButtonStyles = {
+  backgroundColor: tokens.colorTransparentBackground,
+  color: tokens.colorNeutralForeground2,
+  cursor: 'auto',
+};
+
+const currentIconStyles = {
+  ...defaultButtonStyles,
+  [`& .${buttonClassNames.icon}`]: {
+    color: 'unset',
+  },
+  [`& .${iconFilledClassName}`]: {
+    display: 'none',
+  },
+  [`& .${iconRegularClassName}`]: {
+    display: 'inline',
+  },
+};
+
+const useStyles = makeStyles({
+  root: {
+    minWidth: 'unset',
+    textWrap: 'nowrap',
+  },
+  small: {
+    height: '24px',
+    ...typographyStyles.caption1,
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
+  },
+  medium: {
+    height: '32px',
+    ...typographyStyles.body1,
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
+  },
+  large: {
+    height: '40px',
+    ...typographyStyles.body2,
+    ...shorthands.padding(tokens.spacingHorizontalS),
+  },
+  current: {
+    ':hover': {
+      ...currentIconStyles,
+    },
+    ':hover:active': {
+      ...currentIconStyles,
+    },
+    ':disabled': {
+      ...currentIconStyles,
+    },
+  },
+  currentSmall: {
+    ...typographyStyles.caption1Strong,
+  },
+  currentMedium: {
+    ...typographyStyles.body1Strong,
+  },
+  currentLarge: {
+    ...typographyStyles.subtitle2,
+  },
+});
+
 /**
  * Apply styling to the BreadcrumbButton slots based on the state
  */
@@ -85,6 +121,7 @@ export const useBreadcrumbButtonStyles_unstable = (state: BreadcrumbButtonState)
     styles[state.size],
     styles.root,
     state.current && currentSizeMap[state.size],
+    state.current && styles.current,
     state.root.className,
   );
 

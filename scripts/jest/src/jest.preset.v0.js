@@ -1,4 +1,4 @@
-const { getLernaAliases, workspaceRoot } = require('@fluentui/scripts-monorepo');
+const { getWorkspaceProjectsAliases } = require('@fluentui/scripts-monorepo');
 
 // northstar packages should pull these from npm, not the repo
 const excludedPackages = ['@fluentui/dom-utilities'];
@@ -20,12 +20,16 @@ const createConfig = (/** @type {import('@jest/types').Config.InitialOptions} */
   clearMocks: true,
   ...customConfig,
   moduleNameMapper: {
-    ...getLernaAliases({
+    ...getWorkspaceProjectsAliases({
       type: 'jest',
-      excludedPackages,
-      directory: workspaceRoot,
+      excludeProjects: excludedPackages,
     }),
     ...customConfig.moduleNameMapper,
+  },
+  // OLD format for migration to jest 29 - TODO: migrate to new format . https://jestjs.io/blog/2022/04/25/jest-28#future
+  snapshotFormat: {
+    escapeString: true,
+    printBasicPrototype: true,
   },
 });
 

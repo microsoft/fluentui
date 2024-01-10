@@ -1,30 +1,86 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Avatar } from '@fluentui/react-avatar';
+import { TagAppearance, TagShape, TagSize } from '../../utils/types';
+import { TagAvatarContextValues, UseTagAvatarContextValuesOptions } from '../../utils/useTagAvatarContextValues';
+
+export type TagContextValues = TagAvatarContextValues;
 
 export type TagSlots = {
-  root: NonNullable<Slot<'div'>>;
-  content?: Slot<'span'>;
-  avatar?: Slot<typeof Avatar>;
+  root: NonNullable<Slot<'button', 'span'>>;
+
+  /**
+   * Slot for a visual element, usually an avatar
+   */
+  media?: Slot<'span'>;
+
+  /**
+   * Slot for an icon
+   */
   icon?: Slot<'span'>;
-  primaryText?: Slot<'span'>;
+
+  /**
+   * Main text for the Tag. Children of the root slot are automatically rendered here
+   */
+  primaryText: Slot<'span'>;
+
+  /**
+   * Secondary text that describes or complements the main text
+   */
   secondaryText?: Slot<'span'>;
-  dismissButton?: NonNullable<Slot<'button'>>;
+
+  /**
+   * Slot for the dismiss icon
+   */
+  dismissIcon?: Slot<'span'>;
 };
 
 /**
  * Tag Props
  */
-export type TagProps = ComponentProps<TagSlots> & {
-  size?: 'extra-small' | 'small' | 'medium';
-  shape?: 'rounded' | 'circular';
-  appearance?: 'filled-darker' | 'filled-lighter' | 'tint' | 'outline';
+export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
+  /**
+   * A Tag can have filled, outlined or brand experience.
+   *
+   * @default 'filled'
+   */
+  appearance?: TagAppearance;
+
+  /**
+   * A Tag can show that it cannot be interacted with.
+   *
+   * @default false
+   */
   disabled?: boolean;
-  checked?: boolean;
-  dismissable?: boolean;
+
+  /**
+   * A Tag can be dismissible
+   *
+   * @default false
+   */
+  dismissible?: boolean;
+
+  /**
+   * A Tag can have rounded or circular shape.
+   *
+   * @default 'round'
+   */
+  shape?: TagShape;
+
+  /**
+   * A Tag has three sizes.
+   *
+   * @default 'medium'
+   */
+  size?: TagSize;
+
+  /**
+   * Unique value identifying the tag within a TagGroup
+   */
+  value?: Value;
 };
 
 /**
  * State used in rendering Tag
  */
 export type TagState = ComponentState<TagSlots> &
-  Required<Pick<TagProps, 'appearance' | 'checked' | 'disabled' | 'dismissable' | 'shape' | 'size'>>;
+  Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'>> &
+  UseTagAvatarContextValuesOptions;

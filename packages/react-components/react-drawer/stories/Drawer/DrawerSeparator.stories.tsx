@@ -1,6 +1,15 @@
 import * as React from 'react';
-import { Drawer } from '@fluentui/react-drawer';
-import { Button, makeStyles, shorthands } from '@fluentui/react-components';
+import {
+  DrawerBody,
+  DrawerHeader,
+  DrawerHeaderTitle,
+  InlineDrawer,
+  Button,
+  makeStyles,
+  shorthands,
+  tokens,
+} from '@fluentui/react-components';
+import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   root: {
@@ -17,6 +26,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',
+    columnGap: tokens.spacingHorizontalXS,
   },
 });
 
@@ -28,18 +38,26 @@ export const Separator = () => {
 
   return (
     <div className={styles.root}>
-      <Drawer
-        separator={false}
-        type="inline"
-        position="right"
-        open={leftOpen}
-        onOpenChange={(_, { open }) => setLeftOpen(open)}
-      >
-        <Button appearance="outline" onClick={() => setLeftOpen(false)}>
-          Close
-        </Button>
-        <p>This drawer has no separator</p>
-      </Drawer>
+      <InlineDrawer position="start" open={leftOpen}>
+        <DrawerHeader>
+          <DrawerHeaderTitle
+            action={
+              <Button
+                appearance="subtle"
+                aria-label="Close"
+                icon={<Dismiss24Regular />}
+                onClick={() => setLeftOpen(false)}
+              />
+            }
+          >
+            Drawer with no separator
+          </DrawerHeaderTitle>
+        </DrawerHeader>
+
+        <DrawerBody>
+          <p>Drawer content</p>
+        </DrawerBody>
+      </InlineDrawer>
 
       <div className={styles.content}>
         <Button appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
@@ -51,18 +69,37 @@ export const Separator = () => {
         </Button>
       </div>
 
-      <Drawer
-        separator
-        type="inline"
-        position="right"
-        open={rightOpen}
-        onOpenChange={(_, { open }) => setRightOpen(open)}
-      >
-        <Button appearance="outline" onClick={() => setRightOpen(false)}>
-          Close
-        </Button>
-        <p>This drawer has a separator</p>
-      </Drawer>
+      <InlineDrawer separator position="end" open={rightOpen}>
+        <DrawerHeader>
+          <DrawerHeaderTitle
+            action={
+              <Button
+                appearance="subtle"
+                aria-label="Close"
+                icon={<Dismiss24Regular />}
+                onClick={() => setRightOpen(false)}
+              />
+            }
+          >
+            Drawer with separator
+          </DrawerHeaderTitle>
+        </DrawerHeader>
+
+        <DrawerBody>
+          <p>Drawer content</p>
+        </DrawerBody>
+      </InlineDrawer>
     </div>
   );
+};
+
+Separator.parameters = {
+  docs: {
+    description: {
+      story: [
+        'The `separator` prop adds a line separator between the drawer and the content.',
+        'Its placement will be determined by the `position` prop',
+      ].join('\n'),
+    },
+  },
 };

@@ -2,10 +2,14 @@
 
 exports[`TreeItemLayout renders a default state 1`] = `
 <div>
-  <span
+  <div
     class="fui-TreeItemLayout"
   >
-    Default TreeItemLayout
-  </span>
+    <div
+      class="fui-TreeItemLayout__main"
+    >
+      Default TreeItemLayout
+    </div>
+  </div>
 </div>
 `;

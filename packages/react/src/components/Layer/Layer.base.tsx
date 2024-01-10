@@ -11,6 +11,8 @@ import {
   setPortalAttribute,
   setVirtualParent,
   FocusRectsProvider,
+  FocusRectsContext,
+  IsFocusVisibleClassName,
 } from '../../Utilities';
 import {
   registerLayer,
@@ -24,6 +26,14 @@ import type { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types'
 
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
+const getFocusVisibility = (providerRef?: React.RefObject<HTMLElement>) => {
+  if (providerRef?.current) {
+    return providerRef.current.classList.contains(IsFocusVisibleClassName);
+  }
+
+  return false;
+};
+
 export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<HTMLDivElement, ILayerProps>(
   (props, ref) => {
     const registerPortalEl = usePortalCompat();
@@ -32,10 +42,23 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
     const mergedRef = useMergedRefs(rootRef, ref);
     const layerRef = React.useRef<HTMLDivElement>();
     const fabricElementRef = React.useRef<HTMLDivElement>(null);
+    const focusContext = React.useContext(FocusRectsContext);
 
     // Tracks if the layer mount events need to be raised.
     // Required to allow the DOM to render after the layer element is added.
     const [needRaiseLayerMount, setNeedRaiseLayerMount] = React.useState(false);
+
+    // Sets the focus visible className when the FocusRectsProvider for the layer is rendered
+    // This allows the current focus visibility style to be carried over to the layer content
+    const focusRectsRef = React.useCallback(
+      el => {
+        const isFocusVisible = getFocusVisibility(focusContext?.providerRef);
+        if (el && isFocusVisible) {
+          el.classList.add(IsFocusVisibleClassName);
+        }
+      },
+      [focusContext],
+    );
 
     const {
       children,
@@ -52,7 +75,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
       theme,
     } = props;
 
-    const fabricRef = useMergedRefs(fabricElementRef, fabricProps?.ref);
+    const fabricRef = useMergedRefs(fabricElementRef, fabricProps?.ref, focusRectsRef);
 
     const classNames = getClassNames(styles!, {
       theme: theme!,

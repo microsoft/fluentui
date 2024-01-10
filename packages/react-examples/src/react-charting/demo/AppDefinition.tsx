@@ -75,6 +75,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/Donutchart',
         },
         {
+          component: require<any>('../GaugeChart/GaugeChartPage').GaugeChartPage,
+          key: 'GaugeChart',
+          name: 'Gauge Chart',
+          url: '#/examples/GaugeChart',
+        },
+        {
           component: require<any>('../HeatMapChart/HeatMapChartPage').HeatMapChart,
           key: 'HeatMapChart',
           name: 'Heat Map Chart',
@@ -97,6 +103,13 @@ export const AppDefinition: IAppDefinition = {
           key: 'SparklineChart',
           name: 'Sparkline Chart',
           url: '#/examples/sparkline',
+        },
+        {
+          component: require<any>('../HorizontalBarChartWithAxis/HorizontalBarChartWithAxisPage')
+            .HorizontalBarChartWithAxisPage,
+          key: 'HorizontalBarChartWithAxis',
+          name: 'Horizontal Bar Chart With Axis',
+          url: '#/examples/HorizontalBarChartWithAxis',
         },
       ],
     },

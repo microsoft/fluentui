@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext_unstable } from '../../popoverContext';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
@@ -44,13 +44,19 @@ export const usePopoverSurface_unstable = (
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, contentRef),
-      role: trapFocus ? 'dialog' : 'group',
-      'aria-modal': trapFocus ? true : undefined,
-      ...modalAttributes,
-      ...props,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `contentRef` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: useMergedRefs(ref, contentRef) as React.Ref<HTMLDivElement>,
+        role: trapFocus ? 'dialog' : 'group',
+        'aria-modal': trapFocus ? true : undefined,
+        ...modalAttributes,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
   };
 
   const {
@@ -78,6 +84,7 @@ export const usePopoverSurface_unstable = (
     // only close if the event happened inside the current popover
     // If using a stack of inline popovers, the user should call `stopPropagation` to avoid dismissing the entire stack
     if (e.key === 'Escape' && contentRef.current?.contains(e.target as HTMLDivElement)) {
+      e.preventDefault();
       setOpen(e, false);
     }
 

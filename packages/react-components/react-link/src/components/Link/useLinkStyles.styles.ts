@@ -13,9 +13,13 @@ const useStyles = makeStyles({
     textDecorationColor: tokens.colorStrokeFocus2,
     textDecorationLine: 'underline',
     textDecorationStyle: 'double',
+    outlineStyle: 'none',
   }),
   // Common styles.
   root: {
+    ':focus-visible': {
+      outlineStyle: 'none',
+    },
     backgroundColor: 'transparent',
     boxSizing: 'border-box',
     color: tokens.colorBrandForegroundLink,
@@ -85,11 +89,21 @@ const useStyles = makeStyles({
       color: tokens.colorNeutralForegroundDisabled,
     },
   },
+
+  inverted: {
+    color: tokens.colorBrandForegroundInverted,
+    ':hover': {
+      color: tokens.colorBrandForegroundInvertedHover,
+    },
+    ':active': {
+      color: tokens.colorBrandForegroundInvertedPressed,
+    },
+  },
 });
 
 export const useLinkStyles_unstable = (state: LinkState): LinkState => {
   const styles = useStyles();
-  const { appearance, disabled, inline, root } = state;
+  const { appearance, disabled, inline, root, backgroundAppearance } = state;
 
   state.root.className = mergeClasses(
     linkClassNames.root,
@@ -98,6 +112,7 @@ export const useLinkStyles_unstable = (state: LinkState): LinkState => {
     root.as === 'a' && root.href && styles.href,
     root.as === 'button' && styles.button,
     appearance === 'subtle' && styles.subtle,
+    backgroundAppearance === 'inverted' && styles.inverted,
     inline && styles.inline,
     disabled && styles.disabled,
     state.root.className,

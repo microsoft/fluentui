@@ -247,4 +247,10 @@ describe('Avatar', () => {
     expect(root.getAttribute('aria-label')).toBe('First Last');
     expect(root.getAttribute('aria-labelledby')).toBeFalsy();
   });
+
+  it('does not render an image when the src attribute is undefined', () => {
+    render(<Avatar image={{ src: undefined, alt: 'test-image' }} />);
+
+    expect(screen.queryByAltText('test-image')).toBeNull();
+  });
 });

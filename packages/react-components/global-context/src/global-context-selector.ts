@@ -5,6 +5,7 @@ import { getMajorVersion } from './utils';
 import { GlobalObject } from './types';
 
 const isBrowser = canUseDOM();
+// eslint-disable-next-line no-restricted-globals
 const globalObject: GlobalObject = isBrowser ? window : global;
 
 // Identifier for the symbol, for easy idenfitifaction of symbols created by this util
@@ -17,7 +18,6 @@ if (!isBrowser && process.env.NODE_ENV !== 'production') {
   const globalSymbols = Object.getOwnPropertySymbols(globalObject);
   globalSymbols.forEach(sym => {
     if (Symbol.keyFor(sym)?.startsWith(SYMBOL_NAMESPACE)) {
-      // @ts-expect-error - Indexing object with symbols not supported until TS 4.4
       delete globalObject[sym];
     }
   });
@@ -44,11 +44,9 @@ export const createContext = <T>(defaultValue: T, name: string, packageName: str
   // Object symbol properties can't be iterated with `for` or `Object.keys`
   const globalSymbols = Object.getOwnPropertySymbols(globalObject);
   if (!globalSymbols.includes(sym)) {
-    // @ts-expect-error - Indexing object with symbols not supported until TS 4.4
     // eslint-disable-next-line @fluentui/no-context-default-value
-    globalObject[sym] = baseCreateContext(defaultValue);
+    globalObject[sym] = baseCreateContext<unknown>(defaultValue);
   }
 
-  // @ts-expect-error - Indexing object with symbols not supported until TS 4.4
   return globalObject[sym] as React.Context<T>;
 };

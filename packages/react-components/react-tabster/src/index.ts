@@ -7,6 +7,13 @@ export {
   useKeyboardNavAttribute,
   useModalAttributes,
   useTabsterAttributes,
+  useObservedElement,
+  useFocusObserved,
+  useMergedTabsterAttributes_unstable,
+  useRestoreFocusSource,
+  useRestoreFocusTarget,
+  useUncontrolledFocus,
+  useOnKeyboardNavigationChange,
 } from './hooks/index';
 export type {
   UseArrowNavigationGroupOptions,
@@ -24,3 +31,9 @@ export type {
 } from './focus/index';
 
 export { applyFocusVisiblePolyfill } from './focus/index';
+import { Types as TabsterTypes } from 'tabster';
+
+export type TabsterDOMAttribute = TabsterTypes.TabsterDOMAttribute;
+
+export type { KeyborgFocusInEvent } from 'keyborg';
+export { KEYBORG_FOCUSIN } from 'keyborg';

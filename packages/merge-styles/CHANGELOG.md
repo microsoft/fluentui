@@ -1,8 +1,74 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Fri, 17 Mar 2023 08:15:56 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Dec 2023 07:30:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.14](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.5.14)
+
+Thu, 14 Dec 2023 07:30:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.5.13..@fluentui/merge-styles_v8.5.14)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+
+## [8.5.13](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.5.13)
+
+Sat, 28 Oct 2023 00:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.5.12..@fluentui/merge-styles_v8.5.13)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+
+## [8.5.12](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.5.12)
+
+Wed, 31 May 2023 07:38:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.5.11..@fluentui/merge-styles_v8.5.12)
+
+### Patches
+
+- fix: tweak type errors exposed in ts 4.5 ([PR #27936](https://github.com/microsoft/fluentui/pull/27936) by martinhochel@microsoft.com)
+- Bump @fluentui/set-version to v8.2.11 ([commit](https://github.com/microsoft/fluentui/commit/dd8c30d9b97f68eb332366fc0e69775a88775319) by beachball)
+
+## [8.5.11](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.5.11)
+
+Tue, 30 May 2023 07:36:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.5.10..@fluentui/merge-styles_v8.5.11)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.10 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+
+## [8.5.10](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.5.10)
+
+Fri, 05 May 2023 18:14:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.5.9..@fluentui/merge-styles_v8.5.10)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+- Bump @fluentui/set-version to v8.2.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+
+## [8.5.9](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.5.9)
+
+Tue, 02 May 2023 00:58:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.5.8..@fluentui/merge-styles_v8.5.9)
+
+### Patches
+
+- fix: esm, cjs, and amd folders should all be published correctly. ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by tristan.watanabe@gmail.com)
+- Bump @fluentui/set-version to v8.2.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+
+## [8.5.8](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.5.8)
+
+Mon, 01 May 2023 07:39:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.5.7..@fluentui/merge-styles_v8.5.8)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.7 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
 
 ## [8.5.7](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.5.7)
 

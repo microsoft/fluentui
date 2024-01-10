@@ -5,14 +5,12 @@ exports[`TableHeaderCell renders a default state 1`] = `
   <th
     class="fui-TableHeaderCell"
   >
-    <button
+    <div
       class="fui-TableHeaderCell__button"
       role="presentation"
-      tabindex="-1"
-      type="button"
     >
       Default TableHeaderCell
-    </button>
+    </div>
   </th>
 </tr>
 `;

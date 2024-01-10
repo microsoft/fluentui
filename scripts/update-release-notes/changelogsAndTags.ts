@@ -1,8 +1,10 @@
+import { ExecFileException, execSync } from 'child_process';
 import * as path from 'path';
-import * as fs from 'fs-extra';
-import { execSync } from 'child_process';
+
+import { getWorkspaceProjects } from '@fluentui/scripts-monorepo';
 import { ChangelogJson } from 'beachball';
-import { rollup as lernaAliases } from 'lerna-alias';
+import * as fs from 'fs-extra';
+
 import { IChangelogEntry } from './types';
 
 const MILLIS_PER_DAY = 1000 * 60 * 60 * 24;
@@ -17,12 +19,10 @@ export function getTagToChangelogMap(maxAgeDays?: number): Map<string, IChangelo
 
   const map = new Map<string, IChangelogEntry>();
 
-  // Get all package directories so we can check if they have a CHANGELOG.json
-  // (sourceDirectory: false means don't append src/index)
-  const packagePaths = Object.values(lernaAliases({ sourceDirectory: false }));
+  const workspaceProjects = getWorkspaceProjects();
 
-  for (const packagePath of packagePaths) {
-    const changelogPath = path.join(packagePath, 'CHANGELOG.json');
+  for (const [, projectConfig] of workspaceProjects) {
+    const changelogPath = path.join(projectConfig.root, 'CHANGELOG.json');
     if (fs.existsSync(changelogPath)) {
       const changelog: ChangelogJson = fs.readJSONSync(changelogPath);
       for (const entry of changelog.entries) {
@@ -49,28 +49,48 @@ export function getTagToChangelogMap(maxAgeDays?: number): Map<string, IChangelo
  * @returns List of tags
  */
 export function getTags(maxAgeDays?: number): string[] {
+  const ONE_MEGABYTE = 1024 * 1000;
+  const TEN_MEGABYTES = ONE_MEGABYTE * 10;
   console.log(`Getting tags${maxAgeDays ? ` up to ${maxAgeDays} days old` : ''}...`);
 
-  const cmd = 'git for-each-ref --sort=-creatordate --format="%(refname:short) -- %(creatordate)" refs/tags';
+  try {
+    const cmd = 'git for-each-ref --sort=-creatordate --format="%(refname:short) -- %(creatordate)" refs/tags';
+    const gitForEachRefBuffer = execSync(cmd, {
+      // execSync buffer is by default 1MB (node 16). Our git refs tog is much bigger than that, thus setting for 10MB
+      maxBuffer: TEN_MEGABYTES,
+    });
+    const currentBufferSize = (gitForEachRefBuffer.byteLength / ONE_MEGABYTE).toFixed(2);
 
-  let tagsAndDates = execSync(cmd, { cwd: process.cwd() })
-    .toString()
-    .split(/\r?\n/g)
-    .map(tag => tag.split(' -- '))
-    .filter(arr => arr.length === 2);
+    console.warn(`
+  📣 NOTE: "git for-each-ref" current buffer size is ${currentBufferSize}MB.
+  If this will be more than maxBuffer ${TEN_MEGABYTES}MB this command will fail and you'll have to increase maxBuffer!
+  `);
 
-  if (maxAgeDays) {
-    const endIndex = tagsAndDates.findIndex(([, date]) => !_isNewEnough(date, maxAgeDays));
-    if (endIndex !== -1) {
-      tagsAndDates = tagsAndDates.slice(0, endIndex);
+    let tagsAndDates = gitForEachRefBuffer
+      .toString()
+      .split(/\r?\n/g)
+      .map(tag => tag.split(' -- '))
+      .filter(arr => arr.length === 2);
+
+    if (maxAgeDays) {
+      const endIndex = tagsAndDates.findIndex(([, date]) => !_isNewEnough(date, maxAgeDays));
+      if (endIndex !== -1) {
+        tagsAndDates = tagsAndDates.slice(0, endIndex);
+      }
     }
+
+    const tags = tagsAndDates.map(([tag]) => tag);
+
+    console.log(`Found ${tags.length} tag(s).\n`);
+
+    return tags;
+  } catch (err) {
+    if (err instanceof Error && (err as ExecFileException).code === 'ENOBUFS') {
+      throw new Error(`maxBuffer ${TEN_MEGABYTES}MB was reached. Increase its size in the codebase`);
+    }
+
+    throw err;
   }
-
-  const tags = tagsAndDates.map(([tag]) => tag);
-
-  console.log(`Found ${tags.length} tag(s).\n`);
-
-  return tags;
 }
 
 /**

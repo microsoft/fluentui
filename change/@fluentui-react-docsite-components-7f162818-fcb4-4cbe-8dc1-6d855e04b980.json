@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Enable export to codepen for react charting",
-  "packageName": "@fluentui/react-docsite-components",
-  "email": "atishay.jain@microsoft.com",
-  "dependentChangeType": "patch"
-}

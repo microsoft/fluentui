@@ -12,5 +12,8 @@
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@fluentui/scripts-puppeteer": "*",
+    "@fluentui/scripts-ts-node": "*"
+  }
 }

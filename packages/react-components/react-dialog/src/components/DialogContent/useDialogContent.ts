@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { DialogContentProps, DialogContentState } from './DialogContent.types';
 
 /**
@@ -19,9 +19,15 @@ export const useDialogContent_unstable = (
     components: {
       root: 'div',
     },
-    root: getNativeElementProps(props.as ?? 'div', {
-      ref,
-      ...props,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps(props.as ?? 'div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
   };
 };

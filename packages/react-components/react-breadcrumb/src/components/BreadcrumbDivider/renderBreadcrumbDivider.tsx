@@ -1,16 +1,14 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
-
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { BreadcrumbDividerState, BreadcrumbDividerSlots } from './BreadcrumbDivider.types';
 
 /**
  * Render the final JSX of BreadcrumbDivider
  */
 export const renderBreadcrumbDivider_unstable = (state: BreadcrumbDividerState) => {
-  const { slots, slotProps } = getSlotsNext<BreadcrumbDividerSlots>(state);
+  assertSlots<BreadcrumbDividerSlots>(state);
 
-  return <slots.root {...slotProps.root} />;
+  return <state.root />;
 };

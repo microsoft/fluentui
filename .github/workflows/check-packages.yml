@@ -12,10 +12,10 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.18.1
+          node-version: 18.x
           cache: 'yarn'
 
-      - uses: tj-actions/changed-files@v34
+      - uses: tj-actions/changed-files@v41
         id: changed-files-specific
         with:
           files: |
@@ -26,11 +26,11 @@ jobs:
         run: |
           echo "yarn.lock changed! Verifying package deduplication ..."
 
-          npx yarn-deduplicate --strategy fewer --list --fail
+          yarn run dedupe --list --fail
 
           if [[ $? -ne 0 ]]; then
             echo "Your changes introduced package duplication 🚨"
-            echo "Run 'npx yarn-deduplicate --strategy fewer' to fix those."
+            echo "Run 'yarn run dedupe' to fix those."
           else
             echo "No duplicate packages introduced ✅"
           fi
@@ -44,7 +44,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.18.1
+          node-version: 18.x
 
       - uses: actions/github-script@v6
         with:
@@ -70,7 +70,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.18.1
+          node-version: 18.x
 
       - uses: actions/github-script@v6
         with:

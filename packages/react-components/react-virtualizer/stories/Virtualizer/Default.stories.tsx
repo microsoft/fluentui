@@ -6,11 +6,10 @@ const useStyles = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    overflowAnchor: 'none',
     overflowY: 'auto',
     width: '100%',
     height: '100%',
-    maxHeight: '60vh',
+    maxHeight: '750px',
   },
   child: {
     height: '100px',

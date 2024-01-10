@@ -90,6 +90,14 @@ export const getBorderFocusStyles = (args: BorderFocusStyles): Record<':focus' |
             ? `-${focusInnerBorderWidth}`
             : `calc(0px - ${borderPaddingRight} - ${focusInnerBorderWidth})`,
       },
+      '@media(forced-colors: active)': {
+        ':before': {
+          borderColor: 'Highlight',
+        },
+        ':after': {
+          borderColor: 'Highlight',
+        },
+      },
     },
   };
 };

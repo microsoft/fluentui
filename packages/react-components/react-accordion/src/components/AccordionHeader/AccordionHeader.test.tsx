@@ -36,6 +36,15 @@ describe('AccordionHeader', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  /**
+   * Note: see more visual regression tests for AccordionHeader in /apps/vr-tests.
+   */
+  it('renders when expandIcon is null', () => {
+    const component = renderer.create(<AccordionHeader expandIcon={null}>Default AccordionHeader</AccordionHeader>);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('should invoke click and toggle', () => {
     const mockClick = jest.fn();
     const component = renderer.create(

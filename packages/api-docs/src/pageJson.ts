@@ -1,5 +1,4 @@
-import { ApiItem, ApiDocumentedItem, ApiModel } from '@microsoft/api-extractor-model';
-import { ApiItemKind } from './const-enum-overrides';
+import { ApiItem, ApiDocumentedItem, ApiModel, ApiItemKind } from '@microsoft/api-extractor-model';
 import { findInlineTagByName } from './rendering';
 import { ICollectedData } from './types-private';
 import { ITableJson, IPageJson, PageGroups } from './types';

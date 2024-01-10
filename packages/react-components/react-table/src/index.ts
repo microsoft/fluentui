@@ -4,6 +4,7 @@ export {
   useTableSort,
   createTableColumn,
   useTableColumnSizing_unstable,
+  useTableCompositeNavigation,
 } from './hooks';
 
 export type {
@@ -18,7 +19,6 @@ export type {
   TableSortState,
   TableFeaturePlugin,
   TableColumnSizingOptions,
-  UseTableSelectionOptions,
 } from './hooks';
 
 export {
@@ -90,14 +90,17 @@ export {
 } from './TableResizeHandle';
 export type { TableResizeHandleProps, TableResizeHandleSlots, TableResizeHandleState } from './TableResizeHandle';
 
+export { ColumnIdContextProvider, useColumnIdContext } from './contexts/columnIdContext';
 export { TableContextProvider, useTableContext } from './contexts/tableContext';
 export { useTableRowIdContext, TableRowIdContextProvider } from './contexts/rowIdContext';
+export { TableHeaderContextProvider, useIsInTableHeader } from './contexts/tableHeaderContext';
 export {
   TableSelectionCell,
   useTableSelectionCellStyles_unstable,
   useTableSelectionCell_unstable,
   renderTableSelectionCell_unstable,
   tableSelectionCellClassNames,
+  CELL_WIDTH as TABLE_SELECTION_CELL_WIDTH,
 } from './TableSelectionCell';
 
 export type { TableSelectionCellProps, TableSelectionCellState, TableSelectionCellSlots } from './TableSelectionCell';
@@ -126,7 +129,7 @@ export {
   useDataGridCell_unstable,
   renderDataGridCell_unstable,
 } from './DataGridCell';
-export type { DataGridCellProps, DataGridCellState, DataGridCellSlots } from './DataGridCell';
+export type { DataGridCellProps, DataGridCellState, DataGridCellSlots, DataGridCellFocusMode } from './DataGridCell';
 
 export {
   DataGridRow,
@@ -162,6 +165,7 @@ export type {
   DataGridContextValue,
   DataGridFocusMode,
 } from './DataGrid';
+export { DataGridContextProvider, useDataGridContext_unstable } from './contexts/dataGridContext';
 
 export {
   DataGridHeader,

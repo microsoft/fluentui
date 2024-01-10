@@ -1,8 +1,73 @@
 # Change Log - @fluentui/dom-utilities
 
-This log was last generated on Fri, 17 Mar 2023 08:15:56 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Dec 2023 07:30:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.13](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.13)
+
+Thu, 14 Dec 2023 07:30:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.12..@fluentui/dom-utilities_v2.2.13)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+
+## [2.2.12](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.12)
+
+Sat, 28 Oct 2023 00:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.11..@fluentui/dom-utilities_v2.2.12)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+
+## [2.2.11](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.11)
+
+Wed, 31 May 2023 07:38:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.10..@fluentui/dom-utilities_v2.2.11)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.11 ([commit](https://github.com/microsoft/fluentui/commit/dd8c30d9b97f68eb332366fc0e69775a88775319) by beachball)
+
+## [2.2.10](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.10)
+
+Tue, 30 May 2023 07:36:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.9..@fluentui/dom-utilities_v2.2.10)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.10 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+
+## [2.2.9](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.9)
+
+Fri, 05 May 2023 18:14:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.8..@fluentui/dom-utilities_v2.2.9)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+- Bump @fluentui/set-version to v8.2.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+
+## [2.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.8)
+
+Tue, 02 May 2023 00:58:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.7..@fluentui/dom-utilities_v2.2.8)
+
+### Patches
+
+- fix: esm, cjs, and amd folders should all be published correctly. ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by tristan.watanabe@gmail.com)
+- Bump @fluentui/set-version to v8.2.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+
+## [2.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.7)
+
+Mon, 01 May 2023 07:39:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.6..@fluentui/dom-utilities_v2.2.7)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.7 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
 
 ## [2.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.6)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Wed, 12 Oct 2022 07:38:30 GMT and should not be manually modified.
+This log was last generated on Wed, 31 May 2023 07:38:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.12](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.12)
+
+Wed, 31 May 2023 07:38:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.4.8..@fluentui/codemods_v8.4.12)
+
+### Patches
+
+- fix: tweak type errors exposed in ts 4.5 ([PR #27936](https://github.com/microsoft/fluentui/pull/27936) by martinhochel@microsoft.com)
 
 ## [8.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.5)
 

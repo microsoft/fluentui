@@ -13,3 +13,4 @@ export * from './toggleScrollListener';
 export * from './hasAutoFocusFilter';
 export * from './writeArrowUpdates';
 export * from './writeContainerupdates';
+export * from './normalizeAutoSize';

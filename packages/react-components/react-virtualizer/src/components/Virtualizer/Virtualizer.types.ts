@@ -1,5 +1,7 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { VirtualizerContextProps } from '../../Utilities';
+import type { RefObject, MutableRefObject } from 'react';
 
 export type VirtualizerSlots = {
   /**
@@ -55,13 +57,28 @@ export type VirtualizerConfigState = {
    * Minimum 1px.
    */
   bufferSize: number;
+  /**
+   * Ref for access to internal size knowledge, can be used to measure updates
+   */
+  childSizes: React.MutableRefObject<number[]>;
+  /**
+   * Ref for access to internal progressive size knowledge, can be used to measure updates
+   */
+  childProgressiveSizes: React.MutableRefObject<number[]>;
 };
 
 export type VirtualizerState = ComponentState<VirtualizerSlots> & VirtualizerConfigState;
 
 // Virtualizer render function to procedurally generate children elements as rows or columns via index.
 // Q: Use generic typing and passing through object data or a simple index system?
-export type VirtualizerChildRenderFunction = (index: number) => React.ReactNode;
+export type VirtualizerChildRenderFunction = (index: number, isScrolling: boolean) => React.ReactNode;
+
+export type VirtualizerDataRef = {
+  progressiveSizes: RefObject<number[]>;
+  nodeSizes: RefObject<number[]>;
+  setFlaggedIndex: (index: number | null) => void;
+  currentIndex: RefObject<number>;
+};
 
 export type VirtualizerConfigProps = {
   /**
@@ -135,14 +152,24 @@ export type VirtualizerConfigProps = {
   getItemSize?: (index: number) => number;
 
   /**
-   * Notify users of index changes
+   * Virtualizer context can be passed as a prop for extended class use
    */
-  onUpdateIndex?: (index: number, prevIndex: number) => void;
+  virtualizerContext?: VirtualizerContextProps;
 
   /**
-   * Allow users to intervene in index calculation changes
+   * Callback for notifying when a flagged index has been rendered
    */
-  onCalculateIndex?: (newIndex: number) => number;
+  onRenderedFlaggedIndex?: (index: number) => void;
+
+  /*
+   * Callback for notifying when a flagged index has been rendered
+   */
+  flaggedIndex?: MutableRefObject<number | null>;
+
+  /**
+   * Imperative ref contains our scrollTo index functionality for user control.
+   */
+  imperativeVirtualizerRef?: RefObject<VirtualizerDataRef>;
 };
 
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;

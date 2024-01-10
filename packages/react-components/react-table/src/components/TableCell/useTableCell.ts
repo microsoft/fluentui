@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { TableCellProps, TableCellState } from './TableCell.types';
 import { useTableContext } from '../../contexts/tableContext';
 
@@ -21,11 +21,17 @@ export const useTableCell_unstable = (props: TableCellProps, ref: React.Ref<HTML
     components: {
       root: rootComponent,
     },
-    root: getNativeElementProps(rootComponent, {
-      ref,
-      role: rootComponent === 'div' ? 'cell' : undefined,
-      ...props,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps(rootComponent, {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
+        role: rootComponent === 'div' ? 'cell' : undefined,
+        ...props,
+      }),
+      { elementType: rootComponent },
+    ),
     noNativeElements,
     size,
   };

@@ -54,7 +54,6 @@ const useFlexLayoutStyles = makeStyles({
  */
 const useStyles = makeStyles({
   root: {
-    backgroundColor: 'inherit',
     position: 'relative',
     ...shorthands.padding('0px', tokens.spacingHorizontalS),
 
@@ -63,7 +62,7 @@ const useStyles = makeStyles({
         ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
         ...shorthands.borderRadius(tokens.borderRadiusMedium),
       },
-      { selector: 'focus', enableOutline: true },
+      { selector: 'focus' },
     ),
   },
 });

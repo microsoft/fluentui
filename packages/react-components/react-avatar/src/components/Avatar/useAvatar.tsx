@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, mergeCallbacks, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, mergeCallbacks, useId, slot } from '@fluentui/react-utilities';
 import { getInitials } from '../../utils/index';
 import type { AvatarNamedColor, AvatarProps, AvatarState } from './Avatar.types';
 import { PersonRegular } from '@fluentui/react-icons';
@@ -14,11 +14,11 @@ export const DEFAULT_STRINGS = {
 
 export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElement>): AvatarState => {
   const { dir } = useFluent();
-  const { size: contextSize } = useAvatarContext();
+  const { shape: contextShape, size: contextSize } = useAvatarContext();
   const {
     name,
     size = contextSize ?? (32 as const),
-    shape = 'circular',
+    shape = contextShape ?? 'circular',
     active = 'unset',
     activeAppearance = 'ring',
     idForColor,
@@ -32,84 +32,66 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
 
   const baseId = useId('avatar-');
 
-  const root: AvatarState['root'] = getNativeElementProps(
-    'span',
-    {
-      role: 'img',
-      id: baseId,
-      // aria-label and/or aria-labelledby are resolved below
-      ...props,
-      ref,
-    },
-    /* excludedPropNames: */ ['name'],
+  const root: AvatarState['root'] = slot.always(
+    getIntrinsicElementProps(
+      'span',
+      {
+        role: 'img',
+        id: baseId,
+        // aria-label and/or aria-labelledby are resolved below
+        ...props,
+        ref,
+      },
+      /* excludedPropNames: */ ['name'],
+    ),
+    { elementType: 'span' },
   );
-
   const [imageHidden, setImageHidden] = React.useState<true | undefined>(undefined);
-  const image: AvatarState['image'] = resolveShorthand(props.image, {
-    defaultProps: {
-      alt: '',
-      role: 'presentation',
-      'aria-hidden': true,
-      hidden: imageHidden,
-    },
-  });
-
-  // Hide the image if it fails to load and restore it on a successful load
+  let image: AvatarState['image'] = slot.optional(props.image, {
+    defaultProps: { alt: '', role: 'presentation', 'aria-hidden': true, hidden: imageHidden },
+    elementType: 'img',
+  }); // Image shouldn't be rendered if its src is not set
+  if (!image?.src) {
+    image = undefined;
+  } // Hide the image if it fails to load and restore it on a successful load
   if (image) {
     image.onError = mergeCallbacks(image.onError, () => setImageHidden(true));
     image.onLoad = mergeCallbacks(image.onLoad, () => setImageHidden(undefined));
-  }
-
-  // Resolve the initials slot, defaulted to getInitials.
-  let initials: AvatarState['initials'] = resolveShorthand(props.initials, {
-    required: true,
+  } // Resolve the initials slot, defaulted to getInitials.
+  let initials: AvatarState['initials'] = slot.optional(props.initials, {
+    renderByDefault: true,
     defaultProps: {
       children: getInitials(name, dir === 'rtl', { firstInitialOnly: size <= 16 }),
       id: baseId + '__initials',
     },
-  });
-
-  // Don't render the initials slot if it's empty
+    elementType: 'span',
+  }); // Don't render the initials slot if it's empty
   if (!initials?.children) {
     initials = undefined;
-  }
-
-  // Render the icon slot *only if* there aren't any initials or image to display
+  } // Render the icon slot *only if* there aren't any initials or image to display
   let icon: AvatarState['icon'] = undefined;
   if (!initials && (!image || imageHidden)) {
-    icon = resolveShorthand(props.icon, {
-      required: true,
-      defaultProps: {
-        children: <PersonRegular />,
-        'aria-hidden': true,
-      },
+    icon = slot.optional(props.icon, {
+      renderByDefault: true,
+      defaultProps: { children: <PersonRegular />, 'aria-hidden': true },
+      elementType: 'span',
     });
   }
-
-  const badge: AvatarState['badge'] = resolveShorthand(props.badge, {
-    defaultProps: {
-      size: getBadgeSize(size),
-      id: baseId + '__badge',
-    },
+  const badge: AvatarState['badge'] = slot.optional(props.badge, {
+    defaultProps: { size: getBadgeSize(size), id: baseId + '__badge' },
+    elementType: PresenceBadge,
   });
-
-  let activeAriaLabelElement: AvatarState['activeAriaLabelElement'];
-
-  // Resolve aria-label and/or aria-labelledby if not provided by the user
+  let activeAriaLabelElement: AvatarState['activeAriaLabelElement']; // Resolve aria-label and/or aria-labelledby if not provided by the user
   if (!root['aria-label'] && !root['aria-labelledby']) {
     if (name) {
-      root['aria-label'] = name;
-
-      // Include the badge in labelledby if it exists
+      root['aria-label'] = name; // Include the badge in labelledby if it exists
       if (badge) {
         root['aria-labelledby'] = root.id + ' ' + badge.id;
       }
     } else if (initials) {
       // root's aria-label should be the name, but fall back to being labelledby the initials if name is missing
       root['aria-labelledby'] = initials.id + (badge ? ' ' + badge.id : '');
-    }
-
-    // Add the active state to the aria label
+    } // Add the active state to the aria label
     if (active === 'active' || active === 'inactive') {
       const activeText = DEFAULT_STRINGS[active];
       if (root['aria-labelledby']) {
@@ -127,7 +109,6 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
       }
     }
   }
-
   return {
     size,
     shape,
@@ -135,15 +116,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     activeAppearance,
     activeAriaLabelElement,
     color,
-
-    components: {
-      root: 'span',
-      initials: 'span',
-      icon: 'span',
-      image: 'img',
-      badge: PresenceBadge,
-    },
-
+    components: { root: 'span', initials: 'span', icon: 'span', image: 'img', badge: PresenceBadge },
     root,
     initials,
     icon,
@@ -151,7 +124,6 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
     badge,
   };
 };
-
 const getBadgeSize = (size: AvatarState['size']) => {
   if (size >= 96) {
     return 'extra-large';

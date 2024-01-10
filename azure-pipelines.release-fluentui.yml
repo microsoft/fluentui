@@ -18,20 +18,21 @@ resources:
     - repository: self
       type: git
       ref: master
+    - repository: 1esPipelines
+      type: git
+      name: 1ESPipelineTemplates/1ESPipelineTemplates
+      ref: refs/tags/release
 
 variables:
   # below are variables that cannot be configured at queue time
   - group: 'Github and NPM secrets'
-  - template: .devops/templates/variables.yml
+  - template: .devops/templates/variables.yml@self
     parameters:
       deployBasePath: 0.0.0-nightly
   - name: docsiteVersion # used by docsite
     value: 0.0.0-nightly
   - name: officialRelease # used by docsite
     value: true
-  - name: nightlyReleaseDate # used by nightly built docsite to setup codesandbox correctly
-    value: empty
-  - group: InfoSec-SecurityResults
   - name: tags
     value: production,externalfacing
 
@@ -43,189 +44,147 @@ variables:
   # - name: releaseVersion # version to publish to npm; only make sense when publishOfficial=true
   #   value: canary # value can only be canary/patch/minor
 
-jobs:
-  - template: .devops/templates/compliance-job.yml
+extends:
+  template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
+  parameters:
+    pool:
+      name: Azure-Pipelines-1ESPT-ExDShared
+      image: windows-latest
+      os: windows # We need windows because compliance task only run on windows.
+    stages:
+      - stage: main
+        jobs:
+          - job: Job_build_publish
+            pool:
+              name: '1ES-Host-Ubuntu'
+              image: '1ES-PT-Ubuntu-20.04'
+              os: linux
+            workspace:
+              clean: all
+            displayName: Build and Release Fluent Packages
+            # skip this job if publishDocsiteOnly is true
+            condition: and(succeeded(), eq(variables.publishDocsiteOnly, false))
 
-  - job: Job_build_publish
-    dependsOn: Compliance
-    pool: '1ES-Host-Ubuntu'
-    workspace:
-      clean: all
-    displayName: Build and Release Fluent Packages
-    # skip this job if publishDocsiteOnly is true
-    condition: and(succeeded(), eq(variables.publishDocsiteOnly, false))
+            steps:
+              - template: .devops/templates/tools.yml@self
 
-    steps:
-      - template: .devops/templates/tools.yml
+              - script: |
+                  git config user.name "Fluent UI Build"
+                  git config user.email "fluentui-internal@service.microsoft.com"
+                  git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
+                displayName: Authenticate git for pushes
 
-      - script: |
-          git config user.name "Fluent UI Build"
-          git config user.email "fluentui-internal@service.microsoft.com"
-          git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
-        displayName: Authenticate git for pushes
+              - task: CmdLine@2
+                displayName: Checkout branch for version pushes
+                condition: and(succeeded(), eq(variables.publishOfficial, true))
+                inputs:
+                  script: |
+                    BRANCH_NAME=`echo $(Build.SourceBranch) | sed "s/refs\/heads\///"`
+                    git checkout $BRANCH_NAME
+                    git pull
 
-      - task: CmdLine@2
-        displayName: Checkout branch for version pushes
-        condition: and(succeeded(), eq(variables.publishOfficial, true))
-        inputs:
-          script: |
-            BRANCH_NAME=`echo $(Build.SourceBranch) | sed "s/refs\/heads\///"`
-            git checkout $BRANCH_NAME
-            git pull
+              - task: Bash@3
+                inputs:
+                  filePath: yarn-ci.sh
+                displayName: yarn
 
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
+              - task: CmdLine@2
+                displayName: yarn buildci
+                inputs:
+                  script: yarn buildci
 
-      - task: CmdLine@2
-        displayName: yarn buildci
-        inputs:
-          script: yarn buildci
+              - task: CmdLine@2
+                displayName: '[NPM] Publish to NPM'
+                condition: and(succeeded(), eq(variables.publishOfficial, true))
+                timeoutInMinutes: 2
+                inputs:
+                  script: |
+                    yarn logout
 
-      - task: CmdLine@2
-        displayName: '[Nightly] Pack fluentui packages to ArtifactStagingDirectory'
-        condition: and(succeeded(), eq(variables.publishOfficial, false))
-        inputs:
-          script: |
-            today=`date +%Y-%m-%d`
-            echo date today $today
-            echo "##vso[task.setvariable variable=date]$today"
-            yarn release:fluentui:pack-nightly
+                    NPM_TOKEN=$(npmToken)
 
-      - task: AzureUpload@2
-        displayName: '[Nightly] Upload tarballs'
-        condition: and(succeeded(), eq(variables.publishOfficial, false))
-        inputs:
-          SourcePath: $(Build.ArtifactStagingDirectory)
-          azureSubscription: 'UI Fabric (private)'
-          storage: fluentsite
-          ContainerName: nightly-builds
-          BlobPrefix: $(date) # upload tarballs to folder named by today's date
-          Gzip: true
+                    touch packages/fluentui/.npmrc
 
-      - task: CmdLine@2
-        displayName: '[NPM] Publish to NPM'
-        condition: and(succeeded(), eq(variables.publishOfficial, true))
-        timeoutInMinutes: 2
-        inputs:
-          script: |
-            yarn logout
+                    echo "@fluentui:registry=https://registry.npmjs.org/" > packages/fluentui/.npmrc
+                    echo "registry=https://registry.npmjs.org/" >> packages/fluentui/.npmrc
+                    echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> packages/fluentui/.npmrc
 
-            NPM_TOKEN=$(npmToken)
+                    yarn northstar:release bump $(releaseVersion) --yes
 
-            touch packages/fluentui/.npmrc
+              - template: .devops/templates/cleanup.yml@self
 
-            echo "@fluentui:registry=https://registry.npmjs.org/" > packages/fluentui/.npmrc
-            echo "registry=https://registry.npmjs.org/" >> packages/fluentui/.npmrc
-            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> packages/fluentui/.npmrc
+          - job: Job_build_publish_doc
+            workspace:
+              clean: all
+            displayName: Build and Publish Docsite
+            dependsOn: Job_build_publish
+            pool:
+              name: '1ES-Host-Ubuntu'
+              image: '1ES-PT-Ubuntu-20.04'
+              os: linux
+            # run this job when the previous job is succeeded or when publishDocsiteOnly is true
+            condition: or(succeeded(), eq(variables.publishDocsiteOnly, true))
 
-            yarn release:fluentui:$(releaseVersion) --yes
+            steps:
+              - template: .devops/templates/tools.yml@self
 
-            yarn release:fluentui:post-validation
+              - task: CmdLine@2
+                displayName: Checkout branch for pull
+                condition: and(succeeded(), eq(variables.publishOfficial, true))
+                inputs:
+                  script: |
+                    BRANCH_NAME=`echo $(Build.SourceBranch) | sed "s/refs\/heads\///"`
+                    git checkout $BRANCH_NAME
+                    git pull
 
-      - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
-        displayName: 📒 Generate Manifest
-        inputs:
-          BuildDropPath: $(System.DefaultWorkingDirectory)
+              - task: Bash@3
+                displayName: Yarn
+                inputs:
+                  filePath: yarn-ci.sh
 
-      - task: PublishPipelineArtifact@1
-        displayName: 📒 Publish Manifest
-        inputs:
-          artifactName: SBom-Build-$(System.JobAttempt)
-          targetPath: $(System.DefaultWorkingDirectory)/_manifest
+              - task: CmdLine@2
+                displayName: 'Set base path and version'
+                condition: and(succeeded(), eq(variables.publishOfficial, true), ne(variables.releaseVersion, 'canary'))
+                inputs:
+                  script: |
+                    ver=`node -p "require('./packages/fluentui/react-northstar/package.json').version"`
+                    echo "Docsite base path published for version $ver"
+                    echo "##vso[task.setvariable variable=deployBasePath]$ver"
+                    echo "##vso[task.setvariable variable=docsiteVersion]$ver"
 
-      - template: .devops/templates/cleanup.yml
+              - task: CmdLine@2
+                displayName: Build
+                inputs:
+                  script: |
+                    echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion)
+                    NODE_ENV=production yarn northstar:build:docs
 
-  - job: Job_build_publish_doc
-    workspace:
-      clean: all
-    displayName: Build and Publish Docsite
-    dependsOn: Job_build_publish
-    # run this job when the previous job is succeeded or when publishDocsiteOnly is true
-    condition: or(succeeded(), eq(variables.publishDocsiteOnly, true))
+              - task: AzureUpload@2
+                displayName: Upload to Azure
+                inputs:
+                  SourcePath: packages/fluentui/docs/dist
+                  azureSubscription: 'Azure - fluentsite storage'
+                  storage: fluentsite
+                  ContainerName: $web
+                  BlobPrefix: $(deployBasePath)
+                  Gzip: true
 
-    steps:
-      - template: .devops/templates/tools.yml
+              - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
+                displayName: 📒 Generate Manifest Docsite
+                inputs:
+                  BuildDropPath: $(System.DefaultWorkingDirectory)
 
-      - task: CmdLine@2
-        displayName: Checkout branch for pull
-        condition: and(succeeded(), eq(variables.publishOfficial, true))
-        inputs:
-          script: |
-            BRANCH_NAME=`echo $(Build.SourceBranch) | sed "s/refs\/heads\///"`
-            git checkout $BRANCH_NAME
-            git pull
+              # Publish the manifest to a separate artifact to avoid hosting the _manifest files on the website
+              - task: PublishPipelineArtifact@1
+                displayName: 📒 Publish Manifest DocSite
+                inputs:
+                  artifactName: SBom-DocSite-$(System.JobAttempt)
+                  targetPath: $(System.DefaultWorkingDirectory)/_manifest
 
-      - task: Bash@3
-        displayName: Yarn
-        inputs:
-          filePath: yarn-ci.sh
+              - task: PublishPipelineArtifact@1
+                displayName: Publish Docsite as Pipeline Artifact
+                inputs:
+                  path: packages/fluentui/docs/dist
+                  artifactName: docsite_v$(docsiteVersion)
 
-      - task: CmdLine@2
-        displayName: 'Set nightlyReleaseDate'
-        condition: and(succeeded(), eq(variables.publishOfficial, false))
-        inputs:
-          script: |
-            today=`date +%Y-%m-%d`
-            echo date today $today
-            echo "##vso[task.setvariable variable=nightlyReleaseDate]$today"
-
-      - task: CmdLine@2
-        displayName: 'Set base path and version'
-        condition: and(succeeded(), eq(variables.publishOfficial, true), ne(variables.releaseVersion, 'canary'))
-        inputs:
-          script: |
-            ver=`node -p "require('./packages/fluentui/react-northstar/package.json').version"`
-            echo "Docsite base path published for version $ver"
-            echo "##vso[task.setvariable variable=deployBasePath]$ver"
-            echo "##vso[task.setvariable variable=docsiteVersion]$ver"
-            echo "##vso[task.setvariable variable=nightlyReleaseDate]"
-
-      - task: CmdLine@2
-        displayName: 'Set base path and version for canary'
-        condition: and(succeeded(), eq(variables.publishOfficial, true), eq(variables.releaseVersion, 'canary'))
-        inputs:
-          script: |
-            ver=`node -p "require('./packages/fluentui/lerna.json').version"`
-            echo "Docsite base path published for version $ver"
-            echo "##vso[task.setvariable variable=deployBasePath]$ver"
-            echo "##vso[task.setvariable variable=docsiteVersion]$ver"
-            echo "##vso[task.setvariable variable=nightlyReleaseDate]"
-
-      - task: CmdLine@2
-        displayName: Build
-        inputs:
-          script: |
-            echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion) nightlyReleaseDate $(nightlyReleaseDate)
-            NODE_ENV=production yarn build:fluentui:docs
-
-      - task: AzureUpload@2
-        displayName: Upload to Azure
-        inputs:
-          SourcePath: packages/fluentui/docs/dist
-          azureSubscription: 'Azure - fluentsite storage'
-          storage: fluentsite
-          ContainerName: $web
-          BlobPrefix: $(deployBasePath)
-          Gzip: true
-
-      - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
-        displayName: 📒 Generate Manifest Docsite
-        inputs:
-          BuildDropPath: $(System.DefaultWorkingDirectory)
-
-      # Publish the manifest to a separate artifact to avoid hosting the _manifest files on the website
-      - task: PublishPipelineArtifact@1
-        displayName: 📒 Publish Manifest DocSite
-        inputs:
-          artifactName: SBom-DocSite-$(System.JobAttempt)
-          targetPath: $(System.DefaultWorkingDirectory)/_manifest
-
-      - task: PublishPipelineArtifact@1
-        displayName: Publish Docsite as Pipeline Artifact
-        inputs:
-          path: packages/fluentui/docs/dist
-          artifactName: docsite_v$(docsiteVersion)
-
-      - template: .devops/templates/cleanup.yml
+              - template: .devops/templates/cleanup.yml@self

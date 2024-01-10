@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/utilities",
-  "version": "8.13.9",
+  "version": "8.13.22",
   "description": "Fluent UI React utilities for building components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,6 +13,13 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-amd",
+    "lib-commonjs"
+  ],
   "scripts": {
     "build": "just-scripts build",
     "clean": "just-scripts clean",
@@ -21,20 +28,21 @@
     "lint": "just-scripts lint",
     "start-test": "just-scripts jest-watch",
     "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest -u"
+    "update-snapshots": "just-scripts jest -u",
+    "verify-packaging": "just-scripts verify-packaging"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.24",
-    "@fluentui/test-utilities": "^8.3.1",
+    "@fluentui/jest-serializer-merge-styles": "*",
+    "@fluentui/test-utilities": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-jest": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/dom-utilities": "^2.2.6",
-    "@fluentui/merge-styles": "^8.5.7",
-    "@fluentui/set-version": "^8.2.6",
+    "@fluentui/dom-utilities": "^2.2.13",
+    "@fluentui/merge-styles": "^8.5.14",
+    "@fluentui/set-version": "^8.2.13",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

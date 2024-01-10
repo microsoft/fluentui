@@ -7,8 +7,8 @@ import {
   ApiDeclaredItem,
   HeritageType,
   ApiItem,
+  ApiItemKind,
 } from '@microsoft/api-extractor-model';
-import { ApiItemKind } from './const-enum-overrides';
 import { ITableJson, ITableRowJson } from './types';
 import { renderDocNodeWithoutInlineTag, getTokenHyperlinks, renderNodes } from './rendering';
 import { ICollectedData } from './types-private';

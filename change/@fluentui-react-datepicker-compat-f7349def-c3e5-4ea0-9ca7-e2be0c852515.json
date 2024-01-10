@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: Make onValidationError onValidationResult so the error is updated when there's no longer an error.",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

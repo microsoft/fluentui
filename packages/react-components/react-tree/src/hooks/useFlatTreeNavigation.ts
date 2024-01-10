@@ -1,58 +1,91 @@
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { TreeNavigationData_unstable } from '../Tree';
-import { FlatTreeItems } from '../utils/createFlatTreeItems';
 import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
 import { treeDataTypes } from '../utils/tokens';
-import { treeItemFilter } from '../utils/treeItemFilter';
-import { HTMLElementWalker, useHTMLElementWalkerRef } from './useHTMLElementWalker';
 import { useRovingTabIndex } from './useRovingTabIndexes';
-import { FlatTreeItemProps } from './useFlatTree';
+import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
+import { TreeItemValue } from '../TreeItem';
+import { dataTreeItemValueAttrName } from '../utils/getTreeItemValueFromElement';
+import * as React from 'react';
+import { useHTMLElementWalkerRef } from './useHTMLElementWalkerRef';
 
-export function useFlatTreeNavigation<Props extends FlatTreeItemProps<unknown> = FlatTreeItemProps>(
-  flatTreeItems: FlatTreeItems<Props>,
-) {
-  const { targetDocument } = useFluent_unstable();
-  const [treeItemWalkerRef, treeItemWalkerRootRef] = useHTMLElementWalkerRef(treeItemFilter);
-  const [{ rove }, rovingRootRef] = useRovingTabIndex(treeItemFilter);
+export function useFlatTreeNavigation() {
+  const { walkerRef, rootRef: walkerRootRef } = useHTMLElementWalkerRef();
+  const { rove, initialize: initializeRovingTabIndex } = useRovingTabIndex();
 
-  function getNextElement(data: TreeNavigationData_unstable<Props['value']>) {
-    if (!targetDocument || !treeItemWalkerRef.current) {
+  const rootRefCallback: React.RefCallback<HTMLElement> = React.useCallback(
+    root => {
+      if (walkerRef.current && root) {
+        initializeRovingTabIndex(walkerRef.current);
+      }
+    },
+    [initializeRovingTabIndex, walkerRef],
+  );
+
+  function getNextElement(data: TreeNavigationData_unstable) {
+    if (!walkerRef.current) {
       return null;
     }
-    const treeItemWalker = treeItemWalkerRef.current;
     switch (data.type) {
-      case treeDataTypes.click:
+      case treeDataTypes.Click:
         return data.target;
-      case treeDataTypes.typeAhead:
-        treeItemWalker.currentElement = data.target;
-        return nextTypeAheadElement(treeItemWalker, data.event.key);
-      case treeDataTypes.arrowLeft:
-        return parentElement(flatTreeItems, data.value);
-      case treeDataTypes.arrowRight:
-        treeItemWalker.currentElement = data.target;
-        return firstChild(data.target, treeItemWalker);
-      case treeDataTypes.end:
-        treeItemWalker.currentElement = treeItemWalker.root;
-        return treeItemWalker.lastChild();
-      case treeDataTypes.home:
-        treeItemWalker.currentElement = treeItemWalker.root;
-        return treeItemWalker.firstChild();
-      case treeDataTypes.arrowDown:
-        treeItemWalker.currentElement = data.target;
-        return treeItemWalker.nextElement();
-      case treeDataTypes.arrowUp:
-        treeItemWalker.currentElement = data.target;
-        return treeItemWalker.previousElement();
+      case treeDataTypes.TypeAhead:
+        walkerRef.current.currentElement = data.target;
+        return nextTypeAheadElement(walkerRef.current, data.event.key);
+      case treeDataTypes.ArrowLeft: {
+        const nextElement = parentElement(data.parentValue, walkerRef.current);
+        if (!nextElement && process.env.NODE_ENV !== 'production') {
+          // eslint-disable-next-line no-console
+          console.warn(
+            /* #__DE-INDENT__ */ `
+            @fluentui/react-tree [useFlatTreeNavigation]:
+            \'ArrowLeft\' navigation was not possible.
+            No parent element found for the current element:
+          `,
+            data.target,
+          );
+        }
+        return nextElement;
+      }
+      case treeDataTypes.ArrowRight: {
+        walkerRef.current.currentElement = data.target;
+        const nextElement = firstChild(data.target, walkerRef.current);
+        if (!nextElement && process.env.NODE_ENV !== 'production') {
+          const ariaLevel = Number(data.target.getAttribute('aria-level'));
+          // eslint-disable-next-line no-console
+          console.warn(
+            /* #__DE-INDENT__ */ `
+            @fluentui/react-tree [useFlatTreeNavigation]:
+            \'ArrowRight\' navigation was not possible.
+            No element with "aria-posinset=1" and "aria-level=${ariaLevel + 1}"
+            was found after the current element!
+          `,
+            data.target,
+          );
+        }
+        return nextElement;
+      }
+      case treeDataTypes.End:
+        walkerRef.current.currentElement = walkerRef.current.root;
+        return walkerRef.current.lastChild();
+      case treeDataTypes.Home:
+        walkerRef.current.currentElement = walkerRef.current.root;
+        return walkerRef.current.firstChild();
+      case treeDataTypes.ArrowDown:
+        walkerRef.current.currentElement = data.target;
+        return walkerRef.current.nextElement();
+      case treeDataTypes.ArrowUp:
+        walkerRef.current.currentElement = data.target;
+        return walkerRef.current.previousElement();
     }
   }
-  const navigate = useEventCallback((data: TreeNavigationData_unstable<Props['value']>) => {
+  const navigate = useEventCallback((data: TreeNavigationData_unstable) => {
     const nextElement = getNextElement(data);
     if (nextElement) {
       rove(nextElement);
     }
   });
-  return [navigate, useMergedRefs(treeItemWalkerRootRef, rovingRootRef)] as const;
+  return { navigate, rootRef: useMergedRefs<HTMLDivElement>(walkerRootRef, rootRefCallback) } as const;
 }
 
 function firstChild(target: HTMLElement, treeWalker: HTMLElementWalker): HTMLElement | null {
@@ -69,11 +102,9 @@ function firstChild(target: HTMLElement, treeWalker: HTMLElementWalker): HTMLEle
   return null;
 }
 
-function parentElement(flatTreeItems: FlatTreeItems<FlatTreeItemProps<unknown>>, value: unknown) {
-  const flatTreeItem = flatTreeItems.get(value);
-  if (flatTreeItem?.parentValue) {
-    const parentItem = flatTreeItems.get(flatTreeItem.parentValue);
-    return parentItem?.ref.current ?? null;
+function parentElement(parentValue: TreeItemValue | undefined, treeWalker: HTMLElementWalker) {
+  if (parentValue === undefined) {
+    return null;
   }
-  return null;
+  return treeWalker.root.querySelector<HTMLElement>(`[${dataTreeItemValueAttrName}="${parentValue}"]`);
 }

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Adding Azure Theme Tag Button variant for primary and default buttons",
-  "packageName": "@fluentui/azure-themes",
-  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

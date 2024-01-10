@@ -1,6 +1,6 @@
 ### Persona in various sizes
 
-<img src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001-cdn-prod_20200511.001/fabric-website/images/controls/cross/Persona/Persona_ramp.PNG"/>
+<img src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002-cdn-prod_20200511.001/fabric-website/images/controls/cross/Persona/Persona_ramp.PNG"/>
 
 #### Example usage (from [PersonaCoinTest.tsx](https://github.com/microsoft/fluentui-react-native/tree/master/apps/fluent-tester/src/FluentTester/TestComponents/PersonaCoin))
 

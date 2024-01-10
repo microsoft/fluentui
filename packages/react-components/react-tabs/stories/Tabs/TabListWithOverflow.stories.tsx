@@ -17,7 +17,6 @@ import {
   Overflow,
   OverflowItem,
 } from '@fluentui/react-components';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import {
   Calendar3DayRegular,
   CalendarAgendaRegular,

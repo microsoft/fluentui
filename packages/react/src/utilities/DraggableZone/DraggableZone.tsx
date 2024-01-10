@@ -264,6 +264,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
     }
 
     const matchesSelectorFn: Function =
+      // eslint-disable-next-line deprecation/deprecation
       element.matches || element.webkitMatchesSelector || (element as any).msMatchesSelector; /* for IE */
 
     if (!matchesSelectorFn) {

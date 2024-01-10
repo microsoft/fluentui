@@ -37,7 +37,6 @@ storiesOf('Textarea Converged', module)
       <Textarea aria-invalid appearance="filled-lighter" placeholder="Placeholder" />
     </div>
   ))
-  .addStory('Disabled', () => <Textarea disabled />)
   .addStory('With value', () => <Textarea defaultValue="Value" />);
 
 // Non interactive
@@ -49,6 +48,11 @@ storiesOf('Textarea Converged', module)
   .addStory('Size: small', () => <Textarea size="small" placeholder="Placeholder" />)
   .addStory('Size: medium', () => <Textarea size="medium" placeholder="Placeholder" />)
   .addStory('Size: large', () => <Textarea size="large" placeholder="Placeholder" />)
+  .addStory('Disabled', () => <Textarea defaultValue="Example Textarea value" disabled />)
+  .addStory('Disabled + placeholder', () => <Textarea placeholder="Example Textarea placeholder" disabled />)
+  .addStory('Disabled + filled', () => (
+    <Textarea appearance="filled-darker" defaultValue="Example Textarea value" disabled />
+  ))
   .addStory('With appearance override', () => (
     <FluentProvider overrides_unstable={{ inputDefaultAppearance: 'filled-darker' }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>

@@ -1,4 +1,4 @@
-import { Skeleton } from '@fluentui/react-components/unstable';
+import { Skeleton } from '@fluentui/react-components';
 
 import descriptionMd from './SkeletonDescription.md';
 import bestPracticesMd from './SkeletonBestPractices.md';
@@ -9,7 +9,7 @@ export { Animation } from './SkeletonAnimation.stories';
 export { Row } from './SkeletonRow.stories';
 
 export default {
-  title: 'Preview Components/Skeleton',
+  title: 'Components/Skeleton',
   component: Skeleton,
   parameters: {
     docs: {

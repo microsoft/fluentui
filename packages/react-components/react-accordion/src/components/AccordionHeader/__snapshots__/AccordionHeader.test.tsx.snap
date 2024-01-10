@@ -39,3 +39,19 @@ exports[`AccordionHeader renders a default state 1`] = `
   </button>
 </div>
 `;
+
+exports[`AccordionHeader renders when expandIcon is null 1`] = `
+<div
+  className="fui-AccordionHeader"
+>
+  <button
+    aria-expanded={false}
+    className="fui-AccordionHeader__button"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    Default AccordionHeader
+  </button>
+</div>
+`;

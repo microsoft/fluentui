@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "Babel preset that adds the makes the full source code of stories available",
   "private": true,
-  "main": "./src/index.dev.js",
-  "typings": "./src/index.dev.d.ts",
+  "main": "./lib-commonjs/index.js",
+  "typings": "./dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -27,16 +27,26 @@
   },
   "dependencies": {
     "@babel/core": "^7.10.4",
-    "@swc/helpers": "^0.4.14",
-    "prettier": "2.8.4",
+    "@swc/helpers": "^0.5.1",
+    "prettier": "2.8.8",
     "pkg-up": "^3.1.0"
   },
   "exports": {
     ".": {
-      "types": "./src/index.dev.d.ts",
-      "node": "./src/index.dev.js",
-      "require": "./src/index.dev.js"
+      "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
+      "require": "./lib-commonjs/index.js"
+    },
+    "./__dev": {
+      "types": "./src/index.ts",
+      "node": "./src/index.ts",
+      "require": "./src/index.ts"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib-commonjs"
+  ]
 }

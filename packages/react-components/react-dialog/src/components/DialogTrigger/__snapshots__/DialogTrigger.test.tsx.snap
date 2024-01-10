@@ -2,7 +2,7 @@
 
 exports[`DialogTrigger renders a default state 1`] = `
 <button
-  data-tabster="{\\"deloser\\":{}}"
+  data-tabster="{\\"restorer\\":{\\"type\\":1}}"
   onClick={[Function]}
 >
   Dialog trigger

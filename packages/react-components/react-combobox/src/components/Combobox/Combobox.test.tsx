@@ -1,12 +1,17 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Field } from '@fluentui/react-field';
 import { Combobox } from './Combobox';
 import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 
 describe('Combobox', () => {
+  beforeEach(() => {
+    resetIdsForTests();
+  });
+
   isConformant({
     Component: Combobox,
     displayName: 'Combobox',
@@ -44,6 +49,24 @@ describe('Combobox', () => {
       </Combobox>,
     );
     expect(result.container).toMatchSnapshot();
+  });
+
+  it('renders a hidden listbox when trigger is focused', () => {
+    const result = render(
+      <Combobox inlinePopup>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    act(() => {
+      result.getByRole('combobox').focus();
+    });
+
+    const listbox = result.container.querySelector('[role="listbox"]');
+    expect(listbox).not.toBeNull();
+    expect(window.getComputedStyle(listbox!).display).toEqual('none');
   });
 
   it('renders the popup under document.body by default', () => {

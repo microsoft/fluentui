@@ -2,10 +2,16 @@ import * as React from 'react';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import type { DataGridProps, DataGridState } from './DataGrid.types';
 import { useTable_unstable } from '../Table/useTable';
-import { useTableFeatures, useTableSort, useTableSelection, useTableColumnSizing_unstable } from '../../hooks';
-import { CELL_WIDTH } from '../TableSelectionCell';
 import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { End, Home } from '@fluentui/keyboard-keys';
+import {
+  useTableFeatures,
+  useTableSort,
+  useTableSelection,
+  useTableColumnSizing_unstable,
+  useTableCompositeNavigation,
+} from '../../hooks';
+import { CELL_WIDTH } from '../TableSelectionCell';
 
 /**
  * Create the state required to render DataGrid.
@@ -34,12 +40,20 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
     resizableColumns,
     columnSizingOptions,
     onColumnResize,
+    containerWidthOffset,
   } = props;
 
-  const navigable = focusMode !== 'none';
-  const keyboardNavAttr = useArrowNavigationGroup({
+  const widthOffset = containerWidthOffset ?? (selectionMode ? -CELL_WIDTH : 0);
+
+  const gridTabsterAttribute = useArrowNavigationGroup({
     axis: 'grid',
   });
+
+  const {
+    onTableKeyDown: onCompositeKeyDown,
+    tableTabsterAttribute: compositeTabsterAttribute,
+    tableRowTabsterAttribute: compositeRowTabsterAttribute,
+  } = useTableCompositeNavigation();
 
   const tableState = useTableFeatures({ items, columns, getRowId }, [
     useTableSort({
@@ -58,7 +72,7 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
       columnSizingOptions,
       // The selection cell is not part of the columns, therefore its width needs to be subtracted
       // from the container to make sure the columns don't overflow the table.
-      containerWidthOffset: selectionMode ? -CELL_WIDTH : 0,
+      containerWidthOffset: widthOffset,
     }),
   ]);
 
@@ -66,6 +80,9 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
   const { findFirstFocusable, findLastFocusable } = useFocusFinders();
   const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLTableElement>) => {
     props.onKeyDown?.(e);
+    focusMode === 'composite' && onCompositeKeyDown(e);
+
+    // handle ctrl+home and ctrl+end
     if (!innerRef.current || !e.ctrlKey || e.defaultPrevented) {
       return;
     }
@@ -91,9 +108,11 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
       role: 'grid',
       as: 'div',
       noNativeElements: true,
-      ...(navigable && keyboardNavAttr),
+      ...(focusMode === 'cell' && gridTabsterAttribute),
+      ...(focusMode === 'composite' && compositeTabsterAttribute),
       ...props,
       onKeyDown,
+      ...(resizableColumns ? tableState.columnSizing_unstable.getTableProps(props) : {}),
     },
     useMergedRefs(ref, tableState.tableRef, innerRef),
   );
@@ -106,5 +125,6 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
     subtleSelection,
     selectionAppearance,
     resizableColumns,
+    compositeRowTabsterAttribute,
   };
 };

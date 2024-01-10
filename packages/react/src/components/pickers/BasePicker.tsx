@@ -111,6 +111,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
   private _styledSuggestions = getStyledSuggestions(this.SuggestionOfProperType);
   private _id: string;
   private _async: Async;
+  private _overrideScrollDismiss = false;
+  private _overrideScrollDimissTimeout: number;
 
   public static getDerivedStateFromProps(newProps: IBasePickerProps<any>) {
     if (newProps.selectedItems) {
@@ -174,6 +176,15 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
           this.resetFocus(this.state.items.length - 1);
         }
       }
+    }
+
+    // handle dismiss buffer after suggestions are opened
+    if (this.state.suggestionsVisible && !oldState.suggestionsVisible) {
+      this._overrideScrollDismiss = true;
+      this._async.clearTimeout(this._overrideScrollDimissTimeout);
+      this._overrideScrollDimissTimeout = this._async.setTimeout(() => {
+        this._overrideScrollDismiss = false;
+      }, 100);
     }
   }
 
@@ -356,6 +367,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         onDismiss={this.dismissSuggestions}
         directionalHint={DirectionalHint.bottomLeftEdge}
         directionalHintForRTL={DirectionalHint.bottomRightEdge}
+        // eslint-disable-next-line react/jsx-no-bind
+        preventDismissOnEvent={(ev: Event) => this._preventDismissOnScrollOrResize(ev)}
         {...this.props.pickerCalloutProps}
       >
         <StyledTypedSuggestions
@@ -951,6 +964,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         {removedItemText}
       </div>
     );
+  }
+
+  // do not dismiss if the window resizes or scrolls within 100ms of opening
+  // this prevents the Android issue where pickers immediately dismiss on open, because the keyboard appears
+  private _preventDismissOnScrollOrResize(ev: Event) {
+    if (this._overrideScrollDismiss && (ev.type === 'scroll' || ev.type === 'resize')) {
+      return true;
+    }
+
+    return false;
   }
 
   /** If suggestions are still loading after a predefined amount of time, set state to show user alert */

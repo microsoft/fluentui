@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { addMonths, addYears, DatePicker, defaultDatePickerErrorStrings } from '@fluentui/react-datepicker-compat';
+import { addMonths, addYears } from '@fluentui/react-calendar-compat';
+import { DatePicker, defaultDatePickerErrorStrings } from '@fluentui/react-datepicker-compat';
 import { Field, makeStyles } from '@fluentui/react-components';
 import type { DatePickerValidationResultData } from '@fluentui/react-datepicker-compat';
 
@@ -9,9 +10,13 @@ const useStyles = makeStyles({
   },
 });
 
-const today = new Date(Date.now());
+const today = new Date();
 const minDate = addMonths(today, -1);
 const maxDate = addYears(today, 1);
+
+const onFormatDate = (date?: Date): string => {
+  return !date ? '' : `${date?.getMonth() + 1}/${date?.getDate()}/${date?.getFullYear()}`;
+};
 
 export const ErrorHandling = () => {
   const styles = useStyles();
@@ -21,7 +26,7 @@ export const ErrorHandling = () => {
     <Field
       required
       label={
-        `Select a date out of bounds (minDate: ${minDate}, maxDate: ${maxDate}),` +
+        `Select a date out of bounds (minDate: ${minDate.toDateString()}, maxDate: ${maxDate.toDateString()}),` +
         ` type an invalid input, or leave the input empty and close the DatePicker.`
       }
       validationMessage={error && defaultDatePickerErrorStrings[error]}
@@ -29,6 +34,7 @@ export const ErrorHandling = () => {
       <DatePicker
         minDate={minDate}
         maxDate={maxDate}
+        formatDate={onFormatDate}
         placeholder="Select a date..."
         allowTextInput
         onValidationResult={data => setError(data.error)}

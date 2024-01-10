@@ -17,7 +17,6 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
     circle: [
       {
         fontSize: 0,
-        paddingTop: 1,
         paddingLeft: 1,
         borderRadius: StyleConstants.borderRadius,
         color: semanticColors.listBackground,
@@ -134,9 +133,6 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
                 },
               },
             },
-            ':after': {
-              border: `1px solid ${extendedSemanticColors.listItemBackgroundSelected} !important`,
-            },
             ':focus': {
               backgroundColor: extendedSemanticColors.rowFocus,
             },
@@ -159,13 +155,13 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
             '.ms-Check-check': {
               color: extendedSemanticColors.checkBoxCheck,
             },
-            '.ms-Link': {
+            '.ms-Link, .ms-DetailsRow-cell .ms-Link': {
               color: extendedSemanticColors.listLinkRowSelected,
             },
             ':hover': {
               background: extendedSemanticColors.listItemBackgroundSelectedHovered,
               selectors: {
-                '.ms-Link': {
+                '.ms-Link, .ms-DetailsRow-cell .ms-Link': {
                   color: extendedSemanticColors.listLinkRowSelectedHovered,
                 },
                 '.ms-Check-circle': {

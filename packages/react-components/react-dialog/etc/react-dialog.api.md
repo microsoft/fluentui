@@ -10,8 +10,11 @@ import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { ContextSelector } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
+import type { PortalProps } from '@fluentui/react-portal';
+import { Provider } from 'react';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -80,6 +83,17 @@ export type DialogContentSlots = {
 export type DialogContentState = ComponentState<DialogContentSlots>;
 
 // @public (undocumented)
+export type DialogContextValue = {
+    open: boolean;
+    inertTrapFocus: boolean;
+    dialogTitleId?: string;
+    isNestedDialog: boolean;
+    dialogRef: React_2.Ref<DialogSurfaceElement>;
+    modalType: DialogModalType;
+    requestOpenChange: (data: DialogOpenChangeData) => void;
+} & Partial<ReturnType<typeof useModalAttributes>>;
+
+// @public (undocumented)
 export type DialogOpenChangeData = {
     type: 'escapeKeyDown';
     open: boolean;
@@ -111,6 +125,9 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
 };
 
 // @public (undocumented)
+export const DialogProvider: React_2.Provider<DialogContextValue | undefined> & React_2.FC<React_2.ProviderProps<DialogContextValue | undefined>>;
+
+// @public (undocumented)
 export type DialogSlots = {};
 
 // @public (undocumented)
@@ -125,11 +142,22 @@ export const DialogSurface: ForwardRefComponent<DialogSurfaceProps>;
 // @public (undocumented)
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
 
+// @public (undocumented)
+export type DialogSurfaceContextValue = boolean;
+
+// @public (undocumented)
+export type DialogSurfaceContextValues = {
+    dialogSurface: DialogSurfaceContextValue;
+};
+
 // @public
 export type DialogSurfaceElement = HTMLElement;
 
 // @public
-export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
+export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots> & Pick<PortalProps, 'mountNode'>;
+
+// @public (undocumented)
+export const DialogSurfaceProvider: Provider<boolean | undefined>;
 
 // @public (undocumented)
 export type DialogSurfaceSlots = {
@@ -138,7 +166,9 @@ export type DialogSurfaceSlots = {
 };
 
 // @public
-export type DialogSurfaceState = ComponentState<DialogSurfaceSlots>;
+export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & Pick<DialogContextValue, 'isNestedDialog'> & Pick<PortalProps, 'mountNode'> & {
+    transitionStatus?: 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
+};
 
 // @public
 export const DialogTitle: ForwardRefComponent<DialogTitleProps>;
@@ -222,14 +252,23 @@ export const useDialogContent_unstable: (props: DialogContentProps, ref: React_2
 // @public
 export const useDialogContentStyles_unstable: (state: DialogContentState) => DialogContentState;
 
+// @public (undocumented)
+export const useDialogContext_unstable: <T>(selector: ContextSelector<DialogContextValue, T>) => T;
+
 // @public
 export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2.Ref<DialogSurfaceElement>) => DialogSurfaceState;
+
+// @public (undocumented)
+export const useDialogSurfaceContext_unstable: () => boolean;
+
+// @public (undocumented)
+export function useDialogSurfaceContextValues_unstable(state: DialogSurfaceState): DialogSurfaceContextValues;
 
 // @public
 export const useDialogSurfaceStyles_unstable: (state: DialogSurfaceState) => DialogSurfaceState;
 
 // @public
-export const useDialogTitle_unstable: (props: DialogTitleProps, ref: React_2.Ref<HTMLElement>) => DialogTitleState;
+export const useDialogTitle_unstable: (props: DialogTitleProps, ref: React_2.Ref<HTMLDivElement>) => DialogTitleState;
 
 // @public
 export const useDialogTitleStyles_unstable: (state: DialogTitleState) => DialogTitleState;

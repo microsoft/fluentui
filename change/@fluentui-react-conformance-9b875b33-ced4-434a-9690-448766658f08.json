@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add new TS config api to be able to specify configName and configDir",
-  "packageName": "@fluentui/react-conformance",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

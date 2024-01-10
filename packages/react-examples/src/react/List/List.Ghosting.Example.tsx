@@ -61,7 +61,11 @@ const onRenderCell = (item: IExampleItem, index: number, isScrolling: boolean): 
     <div className={classNames.itemCell} data-is-focusable={true}>
       <Image
         className={classNames.itemImage}
-        src={isScrolling ? undefined : item.thumbnail}
+        src={
+          isScrolling
+            ? undefined
+            : 'https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svg'
+        }
         width={50}
         height={50}
         imageFit={ImageFit.cover}

@@ -1,5 +1,5 @@
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Home } from '@fluentui/keyboard-keys';
-import { TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Home, Enter } from '@fluentui/keyboard-keys';
+import { TreeCheckedChangeData, TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
 
 export const treeItemLevelToken = '--fluent-TreeItem--level' as const;
 
@@ -9,16 +9,17 @@ export const treeAvatarSize = {
 } as const;
 
 export const treeDataTypes: {
-  readonly [K in Uncapitalize<TreeOpenChangeData['type'] | TreeNavigationData_unstable['type']>]: Capitalize<K>;
+  readonly [K in TreeOpenChangeData['type'] | TreeNavigationData_unstable['type'] | TreeCheckedChangeData['type']]: K;
 } = {
-  arrowLeft: ArrowLeft,
-  arrowRight: ArrowRight,
-  enter: 'Enter',
-  click: 'Click',
-  expandIconClick: 'ExpandIconClick',
-  end: End,
-  home: Home,
-  arrowUp: ArrowUp,
-  arrowDown: ArrowDown,
-  typeAhead: 'TypeAhead',
+  ArrowLeft,
+  ArrowRight,
+  Enter,
+  Click: 'Click',
+  ExpandIconClick: 'ExpandIconClick',
+  End,
+  Home,
+  ArrowUp,
+  ArrowDown,
+  TypeAhead: 'TypeAhead',
+  Change: 'Change',
 };

@@ -5,13 +5,16 @@ import { Alert } from '@fluentui/react-alert';
 
 export const Action = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    {/* eslint-disable-next-line deprecation/deprecation */}
     <Alert intent="success" action="Undo">
       Message sent
     </Alert>
+    {/* eslint-disable-next-line deprecation/deprecation */}
     <Alert
       intent="error"
       action={{
-        icon: <DismissCircleRegular aria-label="dismiss message" />,
+        icon: <DismissCircleRegular />,
+        'aria-label': 'dismiss message',
       }}
     >
       Save failed

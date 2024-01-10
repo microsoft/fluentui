@@ -2,6 +2,36 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Wed, 28 Jun 2023 07:37:31 GMT",
+      "tag": "@fluentui/codemods_v8.4.12",
+      "version": "8.4.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/codemods",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 May 2023 07:38:38 GMT",
+      "tag": "@fluentui/codemods_v8.4.12",
+      "version": "8.4.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/codemods",
+            "commit": "4b637ced41e430bf8d79c7fc67c103d5efdfd3a8",
+            "comment": "fix: tweak type errors exposed in ts 4.5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Mar 2023 07:47:18 GMT",
       "tag": "@fluentui/codemods_v8.4.8",
       "version": "8.4.8",

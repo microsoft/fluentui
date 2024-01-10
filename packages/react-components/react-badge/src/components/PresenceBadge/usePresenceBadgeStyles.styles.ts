@@ -18,17 +18,25 @@ const getIsBusy = (status: PresenceBadgeStatus): boolean => {
 };
 
 const useRootClassName = makeResetStyles({
-  padding: 0,
   display: 'inline-flex',
   boxSizing: 'border-box',
   alignItems: 'center',
   justifyContent: 'center',
 
-  '& span': {
-    display: 'flex',
-  },
   borderRadius: tokens.borderRadiusCircular,
   backgroundColor: tokens.colorNeutralBackground1,
+
+  // The background color bleeds around the edge of the icon due to antialiasing on the svg and element background.
+  // Since all presence icons have a border around the edge that is at least 1px wide*, we can inset the background
+  // using padding and backgroundClip. The icon has margin: -1px to account for the padding.
+  // (* except size="tiny", where backgroundClip is unset)
+  padding: '1px',
+  backgroundClip: 'content-box',
+});
+
+const useIconClassName = makeResetStyles({
+  display: 'flex',
+  margin: '-1px',
 });
 
 const useStyles = makeStyles({
@@ -69,6 +77,7 @@ const useStyles = makeStyles({
   tiny: {
     aspectRatio: '1',
     width: '6px',
+    backgroundClip: 'unset', // tiny icons have a border less than 1px wide, and can't use the backgroundClip fix
     '& svg': {
       width: '6px !important',
       height: '6px !important',
@@ -97,6 +106,7 @@ const useStyles = makeStyles({
  */
 export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): PresenceBadgeState => {
   const rootClassName = useRootClassName();
+  const iconClassName = useIconClassName();
   const styles = useStyles();
   const isBusy = getIsBusy(state.status);
   state.root.className = mergeClasses(
@@ -111,9 +121,9 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
     state.outOfOffice && styles.outOfOffice,
     state.outOfOffice && state.status === 'available' && styles.outOfOfficeAvailable,
     state.outOfOffice && isBusy && styles.outOfOfficeBusy,
-    state.outOfOffice && state.status === 'away' && styles.statusAway,
-    state.outOfOffice && state.status === 'offline' && styles.statusOffline,
-    state.outOfOffice && state.status === 'out-of-office' && styles.statusOutOfOffice,
+    state.outOfOffice &&
+      (state.status === 'out-of-office' || state.status === 'away' || state.status === 'offline') &&
+      styles.statusOutOfOffice,
     state.outOfOffice && state.status === 'unknown' && styles.outOfOfficeUnknown,
     state.size === 'tiny' && styles.tiny,
     state.size === 'large' && styles.large,
@@ -122,7 +132,7 @@ export const usePresenceBadgeStyles_unstable = (state: PresenceBadgeState): Pres
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(presenceBadgeClassNames.icon, state.icon.className);
+    state.icon.className = mergeClasses(presenceBadgeClassNames.icon, iconClassName, state.icon.className);
   }
 
   return state;

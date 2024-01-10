@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useSlider_unstable } from './useSlider';
 import { renderSlider_unstable } from './renderSlider';
-import { useSliderStyles_unstable } from './useSliderStyles';
+import { useSliderStyles_unstable } from './useSliderStyles.styles';
 import type { SliderProps } from './Slider.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';

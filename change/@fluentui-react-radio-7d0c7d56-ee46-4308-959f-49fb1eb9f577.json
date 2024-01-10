@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: move makeStyles() calls to .styles.ts files",
-  "packageName": "@fluentui/react-radio",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

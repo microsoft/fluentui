@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
-import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { ILegend, Legends } from '../Legends/index';
 import { IAccessibilityProps, IChartDataPoint, IChartProps } from './index';
 import { IRefArrayData, IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from '../../index';
@@ -23,6 +23,7 @@ export interface IStackedBarChartState {
   dataPointCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
+  barSpacingInPercent: number;
 }
 
 export class StackedBarChartBase extends React.Component<IStackedBarChartProps, IStackedBarChartState> {
@@ -36,6 +37,9 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   private _calloutId: string;
   private _refArray: IRefArrayData[];
   private _calloutAnchorPoint: IChartDataPoint | null;
+  private _emptyChartId: string;
+  private barChartSvgRef: React.RefObject<SVGSVGElement>;
+  private _isRTL = getRTL();
 
   public constructor(props: IStackedBarChartProps) {
     super(props);
@@ -49,133 +53,156 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       xCalloutValue: '',
       yCalloutValue: '',
       calloutLegend: '',
+      barSpacingInPercent: 0,
     };
     this._refArray = [];
     this._onLeave = this._onLeave.bind(this);
     this._refCallback = this._refCallback.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
     this._calloutId = getId('callout');
+    this._emptyChartId = getId('_SBC_empty');
+    this.barChartSvgRef = React.createRef<SVGSVGElement>();
+  }
+
+  public componentDidMount(): void {
+    const svgWidth = this.barChartSvgRef.current?.getBoundingClientRect().width || 0;
+    const MARGIN_WIDTH_IN_PX = 3;
+    if (svgWidth) {
+      const currentBarSpacing = (MARGIN_WIDTH_IN_PX / svgWidth) * 100;
+      this.setState({ barSpacingInPercent: currentBarSpacing });
+    }
   }
 
   public render(): JSX.Element {
-    this._adjustProps();
-    const { data, benchmarkData, targetData, hideNumberDisplay, ignoreFixStyle, culture } = this.props;
-    const { palette } = this.props.theme!;
-    const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 12;
+    if (!this._isChartEmpty()) {
+      this._adjustProps();
+      const { data, benchmarkData, targetData, hideNumberDisplay, ignoreFixStyle, culture } = this.props;
+      const { palette } = this.props.theme!;
+      const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 12;
 
-    if (benchmarkData) {
-      // benchmark color is used to render color for benchmark triangle and benchmark legend
-      benchmarkData.color = benchmarkData.color || palette.neutralTertiary;
-    }
+      if (benchmarkData) {
+        // benchmark color is used to render color for benchmark triangle and benchmark legend
+        benchmarkData.color = benchmarkData.color || palette.neutralTertiary;
+      }
 
-    if (targetData) {
-      // target color is used to render color for target triangle and target legend
-      targetData.color = targetData.color || palette.neutralSecondary;
-    }
+      if (targetData) {
+        // target color is used to render color for target triangle and target legend
+        targetData.color = targetData.color || palette.neutralSecondary;
+      }
 
-    const bars = this._createBarsAndLegends(data!, barHeight!, palette, benchmarkData, targetData);
+      const bars = this._createBarsAndLegends(data!, barHeight!, palette, benchmarkData, targetData);
 
-    const showRatio = hideNumberDisplay === false && !ignoreFixStyle && data!.chartData!.length === 2;
-    const showNumber = hideNumberDisplay === false && !ignoreFixStyle && data!.chartData!.length === 1;
-    const total = data!.chartData!.reduce(
-      (acc: number, value: IChartDataPoint) => acc + (value.data ? value.data : 0),
-      0,
-    );
+      const showRatio = hideNumberDisplay === false && !ignoreFixStyle && data!.chartData!.length === 2;
+      const showNumber = hideNumberDisplay === false && !ignoreFixStyle && data!.chartData!.length === 1;
+      const total = data!.chartData!.reduce(
+        (acc: number, value: IChartDataPoint) => acc + (value.data ? value.data : 0),
+        0,
+      );
 
-    let benchmarkRatio = 0;
-    if (benchmarkData && total) {
-      benchmarkRatio = (benchmarkData.data! / total) * 100;
-    }
-    let targetRatio = 0;
-    if (targetData && total) {
-      targetRatio = (targetData.data! / total) * 100;
-    }
+      let benchmarkRatio = 0;
+      if (benchmarkData && total) {
+        benchmarkRatio = (benchmarkData.data! / total) * 100;
+      }
+      let targetRatio = 0;
+      if (targetData && total) {
+        targetRatio = (targetData.data! / total) * 100;
+      }
 
-    const showLegend = this.props.hideLegend === false && (ignoreFixStyle || data!.chartData!.length > 2);
-    this._classNames = getClassNames(this.props.styles!, {
-      legendColor: this.state.color,
-      theme: this.props.theme!,
-      benchmarkColor: benchmarkData ? benchmarkData.color : '',
-      benchmarkRatio,
-      targetColor: targetData ? targetData.color : '',
-      targetRatio,
-      showTriangle: !!(benchmarkData || targetData),
-    });
-    const getChartData = () => convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
-    return (
-      <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
-        <FocusZone direction={FocusZoneDirection.horizontal}>
-          <div className={this._classNames.chartTitle}>
-            {data!.chartTitle && (
-              <FocusableTooltipText
-                className={this._classNames.chartTitleLeft}
-                content={data!.chartTitle}
-                accessibilityData={data!.chartTitleAccessibilityData}
-              />
-            )}
-            {showRatio && (
-              <div {...getAccessibleDataObject(data!.chartDataAccessibilityData, 'text', false)}>
-                <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
-                {!this.props.hideDenominator && (
-                  <span className={this._classNames.ratioDenominator}>
-                    {' / ' + convertToLocaleString(total, culture)}
-                  </span>
-                )}
-              </div>
-            )}
-            {showNumber && (
-              <div
-                className={this._classNames.ratioNumerator}
-                {...getAccessibleDataObject(data!.chartDataAccessibilityData, 'text', false)}
-              >
-                {getChartData()}
-              </div>
-            )}
-          </div>
-          {(benchmarkData || targetData) && (
-            <div className={this._classNames.benchmarkContainer}>
-              {benchmarkData && <div className={this._classNames.benchmark} role="text" />}
-              {targetData && <div className={this._classNames.target} role="text" />}
-            </div>
-          )}
-        </FocusZone>
-        <FocusZone direction={FocusZoneDirection.horizontal}>
-          <div>
-            <svg className={this._classNames.chart} aria-label={data?.chartTitle}>
-              <g>{bars[0]}</g>
-              <Callout
-                gapSpace={15}
-                isBeakVisible={false}
-                target={this.state.refSelected}
-                setInitialFocus={true}
-                hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
-                directionalHint={DirectionalHint.topAutoEdge}
-                id={this._calloutId}
-                onDismiss={this._closeCallout}
-                preventDismissOnLostFocus={true}
-                /** Keep the callout updated with details of focused/hovered bar */
-                shouldUpdateWhenHidden={true}
-                {...this.props.calloutProps}
-                {...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
-              >
-                <>
-                  {this.props.onRenderCalloutPerDataPoint ? (
-                    this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
-                  ) : (
-                    <ChartHoverCard
-                      Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.calloutLegend}
-                      YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
-                      color={this.state.color}
-                      culture={culture}
-                    />
+      const showLegend = this.props.hideLegend === false && (ignoreFixStyle || data!.chartData!.length > 2);
+      this._classNames = getClassNames(this.props.styles!, {
+        legendColor: this.state.color,
+        theme: this.props.theme!,
+        benchmarkColor: benchmarkData ? benchmarkData.color : '',
+        benchmarkRatio,
+        targetColor: targetData ? targetData.color : '',
+        targetRatio,
+        showTriangle: !!(benchmarkData || targetData),
+      });
+      const getChartData = () =>
+        convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
+      return (
+        <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
+          <FocusZone direction={FocusZoneDirection.horizontal}>
+            <div className={this._classNames.chartTitle}>
+              {data!.chartTitle && (
+                <FocusableTooltipText
+                  className={this._classNames.chartTitleLeft}
+                  content={data!.chartTitle}
+                  accessibilityData={data!.chartTitleAccessibilityData}
+                />
+              )}
+              {showRatio && (
+                <div {...getAccessibleDataObject(data!.chartDataAccessibilityData, 'text', false)}>
+                  <span className={this._classNames.ratioNumerator}>{getChartData()}</span>
+                  {!this.props.hideDenominator && (
+                    <span className={this._classNames.ratioDenominator}>
+                      {' / ' + convertToLocaleString(total, culture)}
+                    </span>
                   )}
-                </>
-              </Callout>
-            </svg>
-          </div>
-        </FocusZone>
-        {showLegend && <div className={this._classNames.legendContainer}>{bars[1]}</div>}
-      </div>
+                </div>
+              )}
+              {showNumber && (
+                <div
+                  className={this._classNames.ratioNumerator}
+                  {...getAccessibleDataObject(data!.chartDataAccessibilityData, 'text', false)}
+                >
+                  {getChartData()}
+                </div>
+              )}
+            </div>
+            {(benchmarkData || targetData) && (
+              <div className={this._classNames.benchmarkContainer}>
+                {benchmarkData && <div className={this._classNames.benchmark} role="text" />}
+                {targetData && <div className={this._classNames.target} role="text" />}
+              </div>
+            )}
+          </FocusZone>
+          <FocusZone direction={FocusZoneDirection.horizontal}>
+            <div>
+              <svg ref={this.barChartSvgRef} className={this._classNames.chart} aria-label={data?.chartTitle}>
+                <g>{bars[0]}</g>
+                <Callout
+                  gapSpace={15}
+                  isBeakVisible={false}
+                  target={this.state.refSelected}
+                  setInitialFocus={true}
+                  hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
+                  directionalHint={DirectionalHint.topAutoEdge}
+                  id={this._calloutId}
+                  onDismiss={this._closeCallout}
+                  preventDismissOnLostFocus={true}
+                  /** Keep the callout updated with details of focused/hovered bar */
+                  shouldUpdateWhenHidden={true}
+                  {...this.props.calloutProps}
+                  {...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
+                >
+                  <>
+                    {this.props.onRenderCalloutPerDataPoint ? (
+                      this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
+                    ) : (
+                      <ChartHoverCard
+                        Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.calloutLegend}
+                        YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard}
+                        color={this.state.color}
+                        culture={culture}
+                      />
+                    )}
+                  </>
+                </Callout>
+              </svg>
+            </div>
+          </FocusZone>
+          {showLegend && <div className={this._classNames.legendContainer}>{bars[1]}</div>}
+        </div>
+      );
+    }
+    return (
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
@@ -189,6 +216,13 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     });
   }
 
+  /**
+   * The Create bar functions returns an array of <rect> elements, which form the bars
+   * For each bar an x value, and a width needs to be specified
+   * The computations are done based on percentages
+   * Extra margin is also provided, in the x value to provide some spacing
+   */
+
   private _createBarsAndLegends(
     data: IChartProps,
     barHeight: number,
@@ -196,6 +230,11 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     benchmarkData?: IChartDataPoint,
     targetData?: IChartDataPoint,
   ): [JSX.Element[], JSX.Element] {
+    const noOfBars =
+      data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
+      1;
+    const totalMarginPercent = this.state.barSpacingInPercent * (noOfBars - 1);
+
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const legendDataItems: ILegend[] = [];
     // calculating starting point of each bar and it's range
@@ -221,7 +260,15 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       return sumOfPercent;
     });
 
-    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
+    /**
+     * The %age of the space occupied by the margin needs to subtracted
+     * while computing the scaling ratio, since the margins are not being
+     * scaled down, only the data is being scaled down from a higher percentage to lower percentage
+     * Eg: 95% of the space is taken by the bars, 5% by the margins
+     * Now if the sumOfPercent is 120% -> This needs to be scaled down to 95%, not 100%
+     * since that's only space available to the bars
+     */
+    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / (100 - totalMarginPercent) : 1;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
@@ -291,7 +338,19 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           pointerEvents="all"
           onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : point.onClick}
         >
-          <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={barHeight} fill={color} />
+          <rect
+            key={index}
+            id={getId('_SBC_bar')}
+            x={`${
+              this._isRTL
+                ? 100 - startingPoint[index] - value - this.state.barSpacingInPercent * index
+                : startingPoint[index] + this.state.barSpacingInPercent * index
+            }%`}
+            y={0}
+            width={value + '%'}
+            height={barHeight}
+            fill={color}
+          />
         </g>
       );
     });
@@ -355,7 +414,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   private _generateEmptyBar(barHeight: number, color: string): JSX.Element {
     return (
       <g key={0} className={this._classNames.opacityChangeOnHover}>
-        <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={color} />
+        <rect key={0} id={getId('_SBC_empty_bar_')} x={'0%'} y={0} width={'100%'} height={barHeight} fill={color} />
       </g>
     );
   }
@@ -458,4 +517,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     const yValue = point.yAxisCalloutData || point.data || 0;
     return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
   };
+
+  private _isChartEmpty(): boolean {
+    return !(this.props.data && this.props.data.chartData && this.props.data.chartData.length > 0);
+  }
 }

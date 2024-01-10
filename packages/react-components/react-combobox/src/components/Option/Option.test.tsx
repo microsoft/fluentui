@@ -5,7 +5,7 @@ import { ListboxContext } from '../../contexts/ListboxContext';
 import { Option } from './Option';
 import type { OptionProps } from './Option.types';
 import { isConformant } from '../../testing/isConformant';
-import { optionClassNames } from './useOptionStyles';
+import { optionClassNames } from './useOptionStyles.styles';
 
 describe('Option', () => {
   isConformant<OptionProps>({

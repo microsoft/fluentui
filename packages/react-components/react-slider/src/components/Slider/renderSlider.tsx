@@ -1,22 +1,20 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
-
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { SliderState, SliderSlots } from './Slider.types';
 
 /**
  * Render the final JSX of Slider
  */
 export const renderSlider_unstable = (state: SliderState) => {
-  const { slots, slotProps } = getSlotsNext<SliderSlots>(state);
+  assertSlots<SliderSlots>(state);
 
   return (
-    <slots.root {...slotProps.root}>
-      <slots.input {...slotProps.input} />
-      <slots.rail {...slotProps.rail} />
-      <slots.thumb {...slotProps.thumb} />
-    </slots.root>
+    <state.root>
+      <state.input />
+      <state.rail />
+      <state.thumb />
+    </state.root>
   );
 };

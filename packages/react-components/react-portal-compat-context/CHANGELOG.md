@@ -1,8 +1,63 @@
 # Change Log - @fluentui/react-portal-compat-context
 
-This log was last generated on Tue, 21 Mar 2023 21:23:45 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jan 2024 09:26:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.11)
+
+Wed, 03 Jan 2024 09:26:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.10..@fluentui/react-portal-compat-context_v9.0.11)
+
+### Patches
+
+- fix: re-introduce ecma transpilation to ES5 to make it work with v8  in ES5 only browsers ([PR #30053](https://github.com/microsoft/fluentui/pull/30053) by wfwf1997@gmail.com)
+
+## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.10)
+
+Thu, 09 Nov 2023 17:29:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.9..@fluentui/react-portal-compat-context_v9.0.10)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+
+## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.9)
+
+Tue, 26 Sep 2023 17:49:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.8..@fluentui/react-portal-compat-context_v9.0.9)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
+
+## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.8)
+
+Tue, 26 Sep 2023 15:31:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.7..@fluentui/react-portal-compat-context_v9.0.8)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.7)
+
+Tue, 05 Sep 2023 13:28:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.6..@fluentui/react-portal-compat-context_v9.0.7)
+
+### Patches
+
+- bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+
+## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.6)
+
+Fri, 12 May 2023 20:27:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.5..@fluentui/react-portal-compat-context_v9.0.6)
+
+### Patches
+
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
 
 ## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.5)
 

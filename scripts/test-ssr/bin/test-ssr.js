@@ -1,2 +1,10 @@
 #!/usr/bin/env node
-console.log('test-ssr: is not implemented yet');
+
+// @ts-check
+
+const { joinPathFragments } = require('@nx/devkit');
+const { registerTsProject } = require('@nx/js/src/internal');
+
+registerTsProject(joinPathFragments(__dirname, '..', 'tsconfig.lib.json'));
+
+require('../src/cli');

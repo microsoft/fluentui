@@ -1,29 +1,28 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
-
-import { getSlotsNext } from '@fluentui/react-utilities';
-import type { TagState, TagSlots } from './Tag.types';
+import { assertSlots } from '@fluentui/react-utilities';
+import type { TagState, TagSlots, TagContextValues } from './Tag.types';
+import { AvatarContextProvider } from '@fluentui/react-avatar';
 
 /**
  * Render the final JSX of Tag
  */
-export const renderTag_unstable = (state: TagState) => {
-  const { slots, slotProps } = getSlotsNext<TagSlots>(state);
+export const renderTag_unstable = (state: TagState, contextValues: TagContextValues) => {
+  assertSlots<TagSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return (
-    <slots.root {...slotProps.root}>
-      {slots.content && (
-        <slots.content {...slotProps.content}>
-          {slots.avatar && <slots.avatar {...slotProps.avatar} />}
-          {slots.icon && <slots.icon {...slotProps.icon} />}
-          {slots.primaryText && <slots.primaryText {...slotProps.primaryText} />}
-          {slots.secondaryText && <slots.secondaryText {...slotProps.secondaryText} />}
-        </slots.content>
+    <state.root>
+      {state.media && (
+        <AvatarContextProvider value={contextValues.avatar}>
+          <state.media />
+        </AvatarContextProvider>
       )}
-      {slots.dismissButton && state.dismissable && <slots.dismissButton {...slotProps.dismissButton} />}
-    </slots.root>
+
+      {state.icon && <state.icon />}
+      {state.primaryText && <state.primaryText />}
+      {state.secondaryText && <state.secondaryText />}
+      {state.dismissIcon && state.dismissible && <state.dismissIcon />}
+    </state.root>
   );
 };

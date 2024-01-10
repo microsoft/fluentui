@@ -195,6 +195,7 @@ export const Animation = React.forwardRef<HTMLDivElement, AnimationProps>((props
       className={!isChildrenFunction ? cx(animationClasses, className, (child as any)?.props?.className) : ''}
     >
       {isChildrenFunction ? (
+        // @ts-ignore - @types/react-transition-group doesn't actually include this API, nor is it documented
         ({ state }) => {
           const childWithClasses = (children as AnimationChildrenProp)({
             classes: cx(animationClasses, className, (child as any)?.props?.className),

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTabList_unstable } from './useTabList';
 import { renderTabList_unstable } from './renderTabList';
-import { useTabListStyles_unstable } from './useTabListStyles';
+import { useTabListStyles_unstable } from './useTabListStyles.styles';
 import type { TabListProps } from './TabList.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTabListContextValues_unstable } from './useTabListContextValues';

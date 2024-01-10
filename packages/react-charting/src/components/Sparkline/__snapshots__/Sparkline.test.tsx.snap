@@ -10,7 +10,7 @@ exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
       {
         display: inline;
       }
-  data-focuszone-id="FocusZone0"
+  data-focuszone-id="FocusZone1"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -29,7 +29,7 @@ exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
     >
       <path
         className="line"
-        d="M0,12.578096183855866L11.428571428571427,2L22.857142857142854,17.446446304440347L34.285714285714285,8.547311675414953L45.71428571428571,7.3599092069797125L57.142857142857146,18.30444034614839L68.57142857142857,16.00113491275358L80,18.6964108384168"
+        d="M0,12.578L11.429,2L22.857,17.446L34.286,8.547L45.714,7.36L57.143,18.304L68.571,16.001L80,18.696"
         fill="transparent"
         opacity={1}
         stroke="#00AA00"
@@ -38,10 +38,11 @@ exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
       <path
         aria-label="Sparkline with label 19.64"
         className="area"
-        d="M0,12.578096183855866L11.428571428571427,2L22.857142857142854,17.446446304440347L34.285714285714285,8.547311675414953L45.71428571428571,7.3599092069797125L57.142857142857146,18.30444034614839L68.57142857142857,16.00113491275358L80,18.6964108384168L80,20L68.57142857142857,20L57.142857142857146,20L45.71428571428571,20L34.285714285714285,20L22.857142857142854,20L11.428571428571427,20L0,20Z"
+        d="M0,12.578L11.429,2L22.857,17.446L34.286,8.547L45.714,7.36L57.143,18.304L68.571,16.001L80,18.696L80,20L68.571,20L57.143,20L45.714,20L34.286,20L22.857,20L11.429,20L0,20Z"
         fill="#00AA00"
         fillOpacity={0.2}
         opacity={1}
+        role="img"
       />
     </svg>
     <svg
@@ -62,6 +63,7 @@ exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
             }
         dx={8}
         dy={-5}
+        textAnchor="start"
         x="0%"
         y="100%"
       >
@@ -82,7 +84,7 @@ exports[`Sparkline snapShot testing renders Sparkline correctly with no legend 1
       {
         display: inline;
       }
-  data-focuszone-id="FocusZone1"
+  data-focuszone-id="FocusZone3"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -101,7 +103,7 @@ exports[`Sparkline snapShot testing renders Sparkline correctly with no legend 1
     >
       <path
         className="line"
-        d="M0,14.154515050167225L16,5.756521739130435L32,7.959866220735786L48,2L64,16.187290969899667L80,10.078929765886288"
+        d="M0,14.155L16,5.757L32,7.96L48,2L64,16.187L80,10.079"
         fill="transparent"
         opacity={1}
         stroke="#E60000"
@@ -110,10 +112,11 @@ exports[`Sparkline snapShot testing renders Sparkline correctly with no legend 1
       <path
         aria-label="Sparkline with label 131.33"
         className="area"
-        d="M0,14.154515050167225L16,5.756521739130435L32,7.959866220735786L48,2L64,16.187290969899667L80,10.078929765886288L80,20L64,20L48,20L32,20L16,20L0,20Z"
+        d="M0,14.155L16,5.757L32,7.96L48,2L64,16.187L80,10.079L80,20L64,20L48,20L32,20L16,20L0,20Z"
         fill="#E60000"
         fillOpacity={0.2}
         opacity={1}
+        role="img"
       />
     </svg>
   </div>

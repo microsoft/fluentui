@@ -3,15 +3,25 @@ import { DataGridContextValues, DataGridState } from './DataGrid.types';
 
 export function useDataGridContextValues_unstable(state: DataGridState): DataGridContextValues {
   const tableContextValues = useTableContextValues_unstable(state);
+  const {
+    tableState,
+    focusMode,
+    selectableRows,
+    subtleSelection,
+    selectionAppearance,
+    resizableColumns,
+    compositeRowTabsterAttribute,
+  } = state;
   return {
     ...tableContextValues,
     dataGrid: {
-      ...state.tableState,
-      focusMode: state.focusMode,
-      selectableRows: state.selectableRows,
-      subtleSelection: state.subtleSelection,
-      selectionAppearance: state.selectionAppearance,
-      resizableColumns: state.resizableColumns,
+      ...tableState,
+      focusMode,
+      selectableRows,
+      subtleSelection,
+      selectionAppearance,
+      resizableColumns,
+      compositeRowTabsterAttribute,
     },
   };
 }

@@ -1,10 +1,12 @@
-import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import {
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type {
   VirtualizerSlots,
   VirtualizerConfigProps,
   VirtualizerConfigState,
   VirtualizerChildRenderFunction,
 } from '../Virtualizer/Virtualizer.types';
+import type { ScrollToInterface } from '../../Utilities';
+import type { RefObject } from 'react';
 
 export type VirtualizerScrollViewSlots = VirtualizerSlots & {
   /**
@@ -14,7 +16,12 @@ export type VirtualizerScrollViewSlots = VirtualizerSlots & {
 };
 
 export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrollViewSlots>> &
-  Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children'>> & {
+  Partial<
+    Omit<
+      VirtualizerConfigProps,
+      'itemSize' | 'numItems' | 'getItemSize' | 'children' | 'flagIndex' | 'imperativeVirtualizerRef'
+    >
+  > & {
     /**
      * Virtualizer item size in pixels - static.
      * Axis: 'vertical' = Height
@@ -31,6 +38,10 @@ export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrol
      * Will act as a row or column indexer depending on Virtualizer settings.
      */
     children: VirtualizerChildRenderFunction;
+    /**
+     * Imperative ref contains our scrollTo index functionality for user control.
+     */
+    imperativeRef?: RefObject<ScrollToInterface>;
   };
 
 export type VirtualizerScrollViewState = ComponentState<VirtualizerScrollViewSlots> & VirtualizerConfigState;

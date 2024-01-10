@@ -106,7 +106,7 @@ export const SplitButton: ForwardRefComponent<SplitButtonProps>;
 export const splitButtonClassNames: SlotClassNames<SplitButtonSlots>;
 
 // @public (undocumented)
-export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonProps, 'root'> & Omit<MenuButtonProps, 'root'>;
+export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonProps, 'root' | 'as'> & Omit<MenuButtonProps, 'root' | 'as'>;
 
 // @public (undocumented)
 export type SplitButtonSlots = {

@@ -1,10 +1,15 @@
 jest.mock('react-dom');
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { Sparkline } from './index';
+import { ISparklineProps, Sparkline } from './index';
 import { IChartProps } from '../../index';
+import { mount, ReactWrapper } from 'enzyme';
+import { ISparklineState, SparklineBase } from './Sparkline.base';
 
-const sparkline1Points: IChartProps = {
+// Wrapper of the SparklineChart to be tested.
+let wrapper: ReactWrapper<ISparklineProps, ISparklineState, SparklineBase> | undefined;
+
+export const sparkline1Points: IChartProps = {
   chartTitle: '10.21',
   lineChartData: [
     {
@@ -84,6 +89,17 @@ const sparkline2Points: IChartProps = {
   ],
 };
 
+export const emptySparklinePoints: IChartProps = {
+  chartTitle: 'Empty sparkline chart',
+  lineChartData: [
+    {
+      legend: '19.64',
+      color: '#00AA00',
+      data: [],
+    },
+  ],
+};
+
 describe('Sparkline snapShot testing', () => {
   it('renders Sparkline correctly', () => {
     const component = renderer.create(<Sparkline data={sparkline1Points} showLegend={true} />);
@@ -95,5 +111,19 @@ describe('Sparkline snapShot testing', () => {
     const component = renderer.create(<Sparkline data={sparkline2Points} showLegend={false} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+});
+
+describe('Render empty chart aria label div when chart is empty', () => {
+  it('No empty chart aria label div rendered', () => {
+    wrapper = mount(<Sparkline data={sparkline1Points} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(0);
+  });
+
+  it('Empty chart aria label div rendered', () => {
+    wrapper = mount(<Sparkline data={emptySparklinePoints} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(1);
   });
 });

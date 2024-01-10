@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { Virtualizer } from '@fluentui/react-components/unstable';
+import {
+  Virtualizer,
+  useDynamicVirtualizerMeasure,
+  VirtualizerContextProvider,
+} from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
+import { useCallback, useRef } from 'react';
 
 const smallSize = 100;
 const largeSize = 200;
@@ -8,7 +13,6 @@ const useStyles = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    overflowAnchor: 'none',
     overflowY: 'auto',
     width: '100%',
     height: '100%',
@@ -29,52 +33,72 @@ const useStyles = makeStyles({
 });
 
 export const Dynamic = () => {
+  const [currentIndex, setCurrentIndex] = React.useState(-1);
   const [flag, toggleFlag] = React.useState(false);
   const styles = useStyles();
   const childLength = 1000;
+  const timeoutRef = useRef<NodeJS.Timeout>();
 
   React.useEffect(() => {
     updateTimeout();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const updateTimeout = () =>
-    setTimeout(() => {
+  const updateTimeout = () => {
+    clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => {
       toggleFlag(iFlag => !iFlag);
       updateTimeout();
     }, 2000);
-
-  const getSizeForIndex = (index: number): number => {
-    const sizeValue1 = flag ? largeSize : smallSize;
-    const sizeValue2 = flag ? smallSize : largeSize;
-
-    const sizeValue = index % 2 === 0 ? sizeValue1 : sizeValue2;
-    return sizeValue;
   };
 
+  const getSizeForIndex = useCallback(
+    (index: number): number => {
+      const sizeValue1 = flag ? largeSize : smallSize;
+      const sizeValue2 = flag ? smallSize : largeSize;
+
+      const sizeValue = index % 2 === 0 ? sizeValue1 : sizeValue2;
+      return sizeValue;
+    },
+    [flag],
+  );
+
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useDynamicVirtualizerMeasure({
+    defaultItemSize: 100,
+    getItemSize: getSizeForIndex,
+    numItems: childLength,
+    currentIndex,
+  });
+
   return (
-    <div aria-label="Dynamic Virtualizer Example" className={styles.container} role={'list'}>
-      <Virtualizer
-        getItemSize={index => getSizeForIndex(index)}
-        numItems={childLength}
-        bufferSize={50}
-        virtualizerLength={25}
-        itemSize={100}
-      >
-        {(index: number) => {
-          const sizeValue = getSizeForIndex(index);
-          const sizeClass = sizeValue === smallSize ? styles.child : styles.childLarge;
-          return (
-            <div
-              className={sizeClass}
-              role={'listItem'}
-              aria-posinset={index}
-              aria-setsize={childLength}
-              key={`child-node-${index}-${sizeValue}`}
-            >{`Node-${index}-size-${sizeValue}`}</div>
-          );
-        }}
-      </Virtualizer>
-    </div>
+    <VirtualizerContextProvider value={{ contextIndex: currentIndex, setContextIndex: setCurrentIndex }}>
+      <div aria-label="Dynamic Virtualizer Example" className={styles.container} role={'list'} ref={scrollRef}>
+        <Virtualizer
+          getItemSize={getSizeForIndex}
+          numItems={childLength}
+          bufferSize={bufferSize}
+          bufferItems={bufferItems}
+          virtualizerLength={virtualizerLength}
+          itemSize={100}
+        >
+          {useCallback(
+            (index: number) => {
+              const sizeValue = getSizeForIndex(index);
+              const sizeClass = sizeValue === smallSize ? styles.child : styles.childLarge;
+              return (
+                <div
+                  className={sizeClass}
+                  role={'listItem'}
+                  aria-posinset={index}
+                  aria-setsize={childLength}
+                  key={`child-node-${index}-${sizeValue}`}
+                >{`Node-${index}-size-${sizeValue}`}</div>
+              );
+            },
+            [getSizeForIndex, styles.child, styles.childLarge],
+          )}
+        </Virtualizer>
+      </div>
+    </VirtualizerContextProvider>
   );
 };

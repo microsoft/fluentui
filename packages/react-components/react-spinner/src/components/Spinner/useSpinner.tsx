@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, useTimeout, slot } from '@fluentui/react-utilities';
 import type { SpinnerProps, SpinnerState } from './Spinner.types';
 import { Label } from '@fluentui/react-label';
 import { DefaultSvg } from './DefaultSvg';
+import { useSpinnerContext } from '../../contexts/SpinnerContext';
 
 /**
  * Create the state required to render Spinner.
@@ -15,40 +16,62 @@ import { DefaultSvg } from './DefaultSvg';
  */
 export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElement>): SpinnerState => {
   // Props
-  const { appearance = 'primary', labelPosition = 'after', size = 'medium' } = props;
+  const { size: contextSize } = useSpinnerContext();
+  const { appearance = 'primary', labelPosition = 'after', size = contextSize ?? 'medium', delay = 0 } = props;
   const baseId = useId('spinner');
 
   const { role = 'progressbar', tabIndex, ...rest } = props;
-  const nativeRoot = getNativeElementProps('div', { ref, role, ...rest }, ['size']);
-
-  const labelShorthand = resolveShorthand(props.label, {
-    defaultProps: {
-      id: baseId,
+  const nativeRoot = slot.always(
+    getIntrinsicElementProps(
+      'div',
+      {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
+        role,
+        ...rest,
+      },
+      ['size'],
+    ),
+    {
+      elementType: 'div',
     },
-    required: false,
+  );
+  const [isVisible, setIsVisible] = React.useState(true);
+  const [setDelayTimeout, clearDelayTimeout] = useTimeout();
+  React.useEffect(() => {
+    if (delay <= 0) {
+      return;
+    }
+    setIsVisible(false);
+    setDelayTimeout(() => {
+      setIsVisible(true);
+    }, delay);
+    return () => {
+      clearDelayTimeout();
+    };
+  }, [setDelayTimeout, clearDelayTimeout, delay]);
+  const labelShorthand = slot.optional(props.label, {
+    defaultProps: { id: baseId },
+    renderByDefault: false,
+    elementType: Label,
   });
-
-  const spinnerShortHand = resolveShorthand(props.spinner, {
-    required: true,
-    defaultProps: {
-      children: <DefaultSvg />,
-      tabIndex,
-    },
+  const spinnerShortHand = slot.optional(props.spinner, {
+    renderByDefault: true,
+    defaultProps: { children: <DefaultSvg />, tabIndex },
+    elementType: 'span',
   });
-
   if (labelShorthand && nativeRoot && !nativeRoot['aria-labelledby']) {
     nativeRoot['aria-labelledby'] = labelShorthand.id;
   }
-
   const state: SpinnerState = {
     appearance,
+    delay,
     labelPosition,
     size,
-    components: {
-      root: 'div',
-      spinner: 'span',
-      label: Label,
-    },
+    shouldRenderSpinner: isVisible,
+    components: { root: 'div', spinner: 'span', label: Label },
     root: nativeRoot,
     spinner: spinnerShortHand,
     label: labelShorthand,

@@ -1,8 +1,150 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Fri, 17 Mar 2023 08:15:56 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Dec 2023 07:30:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.22](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.22)
+
+Thu, 14 Dec 2023 07:30:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.21..@fluentui/utilities_v8.13.22)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/merge-styles to v8.5.14 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/set-version to v8.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+
+## [8.13.21](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.21)
+
+Thu, 09 Nov 2023 07:29:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.20..@fluentui/utilities_v8.13.21)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore ([PR #29743](https://github.com/microsoft/fluentui/pull/29743) by martinhochel@microsoft.com)
+
+## [8.13.20](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.20)
+
+Sat, 28 Oct 2023 00:29:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.19..@fluentui/utilities_v8.13.20)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/merge-styles to v8.5.13 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/set-version to v8.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+
+## [8.13.19](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.19)
+
+Fri, 29 Sep 2023 07:45:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.18..@fluentui/utilities_v8.13.19)
+
+### Patches
+
+- fix: focusAsync still works even if past animationFrame fails to run ([PR #29322](https://github.com/microsoft/fluentui/pull/29322) by sarah.higley@microsoft.com)
+
+## [8.13.18](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.18)
+
+Wed, 28 Jun 2023 07:37:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.17..@fluentui/utilities_v8.13.18)
+
+### Patches
+
+- fix: Checking for the existence of addEventListener on element coming from context in useFocusRects. ([PR #28342](https://github.com/microsoft/fluentui/pull/28342) by Humberto.Morimoto@microsoft.com)
+
+## [8.13.17](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.17)
+
+Mon, 19 Jun 2023 07:36:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.16..@fluentui/utilities_v8.13.17)
+
+### Patches
+
+- fix: cast to String keys interpolated within string literals ([PR #28067](https://github.com/microsoft/fluentui/pull/28067) by martinhochel@microsoft.com)
+
+## [8.13.16](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.16)
+
+Thu, 01 Jun 2023 07:38:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.15..@fluentui/utilities_v8.13.16)
+
+### Patches
+
+- fix: Avoid inlining setCallbackMap with terser to prevent memory leaks. ([PR #28080](https://github.com/microsoft/fluentui/pull/28080) by andrew.stegmaier@microsoft.com)
+
+## [8.13.15](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.15)
+
+Wed, 31 May 2023 07:38:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.14..@fluentui/utilities_v8.13.15)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.11 ([commit](https://github.com/microsoft/fluentui/commit/dd8c30d9b97f68eb332366fc0e69775a88775319) by beachball)
+- Bump @fluentui/merge-styles to v8.5.12 ([commit](https://github.com/microsoft/fluentui/commit/dd8c30d9b97f68eb332366fc0e69775a88775319) by beachball)
+- Bump @fluentui/set-version to v8.2.11 ([commit](https://github.com/microsoft/fluentui/commit/dd8c30d9b97f68eb332366fc0e69775a88775319) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.29 ([commit](https://github.com/microsoft/fluentui/commit/dd8c30d9b97f68eb332366fc0e69775a88775319) by beachball)
+- Bump @fluentui/test-utilities to v8.3.6 ([commit](https://github.com/microsoft/fluentui/commit/dd8c30d9b97f68eb332366fc0e69775a88775319) by beachball)
+
+## [8.13.14](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.14)
+
+Tue, 30 May 2023 07:36:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.13..@fluentui/utilities_v8.13.14)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.10 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/merge-styles to v8.5.11 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/set-version to v8.2.10 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.28 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+- Bump @fluentui/test-utilities to v8.3.5 ([PR #27685](https://github.com/microsoft/fluentui/pull/27685) by beachball)
+
+## [8.13.13](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.13)
+
+Fri, 05 May 2023 18:14:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.12..@fluentui/utilities_v8.13.13)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+- Bump @fluentui/dom-utilities to v2.2.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/merge-styles to v8.5.10 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/set-version to v8.2.9 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.27 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+- Bump @fluentui/test-utilities to v8.3.4 ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by beachball)
+
+## [8.13.12](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.12)
+
+Tue, 02 May 2023 22:20:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.11..@fluentui/utilities_v8.13.12)
+
+### Patches
+
+- Bump @fluentui/test-utilities to v8.3.3 ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by beachball)
+
+## [8.13.11](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.11)
+
+Tue, 02 May 2023 00:58:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.10..@fluentui/utilities_v8.13.11)
+
+### Patches
+
+- fix: esm, cjs, and amd folders should all be published correctly. ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by tristan.watanabe@gmail.com)
+- Bump @fluentui/dom-utilities to v2.2.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/merge-styles to v8.5.9 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/set-version to v8.2.8 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.26 ([PR #27736](https://github.com/microsoft/fluentui/pull/27736) by beachball)
+
+## [8.13.10](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.10)
+
+Mon, 01 May 2023 07:39:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.9..@fluentui/utilities_v8.13.10)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.7 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/merge-styles to v8.5.8 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/set-version to v8.2.7 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.25 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
+- Bump @fluentui/test-utilities to v8.3.2 ([PR #27724](https://github.com/microsoft/fluentui/pull/27724) by beachball)
 
 ## [8.13.9](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.9)
 

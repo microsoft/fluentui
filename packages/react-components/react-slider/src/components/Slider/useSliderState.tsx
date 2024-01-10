@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { clamp, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { sliderCSSVars } from './useSliderStyles';
+import { sliderCSSVars } from './useSliderStyles.styles';
 import type { SliderState, SliderProps } from './Slider.types';
 
 const { sliderStepsPercentVar, sliderProgressVar, sliderDirectionVar } = sliderCSSVars;

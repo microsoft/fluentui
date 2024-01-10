@@ -2,7 +2,7 @@
 import { LAB_to_sRGB, LCH_to_Lab, Lab_to_LCH, sRGB_to_LCH, snap_into_gamut } from './csswg';
 import { getPointsOnCurvePath } from './geometry';
 import { CurvedHelixPath, Palette, Vec3 } from './types';
-
+import { hueToSnappingPointsMap, hexToHue } from './hueMap';
 // This file contains functions that combine geometry and color math to create
 // and work with palette curves.
 
@@ -14,12 +14,56 @@ import { CurvedHelixPath, Palette, Vec3 } from './types';
  */
 const defaultLinearity = 0.75;
 
-function getLinearSpace(min: number, max: number, n: number) {
-  const result = [];
-  const delta = (max - min) / n;
-  for (let i = 0; i < n; i++) {
-    result[i] = min + delta * i;
+const snappingPointsForKeyColor = (keyColor: string): number[] => {
+  const hue = hexToHue(keyColor);
+  const range = [
+    hueToSnappingPointsMap[hue][0] * 100,
+    hueToSnappingPointsMap[hue][1] * 100,
+    hueToSnappingPointsMap[hue][2] * 100,
+  ];
+  return range;
+};
+
+const pointsForKeyColor = (keyColor: string, range: number[], centerPoint: number): number[] => {
+  const hue = hexToHue(keyColor);
+  const center = hueToSnappingPointsMap[hue][1] * 100;
+  const linear = linearInterpolationThroughPoint(range[0], range[1], center, 16);
+  return linear;
+};
+
+function linearInterpolationThroughPoint(start: number, end: number, inBetween: number, numSamples: number) {
+  if (numSamples < 3) {
+    throw new Error('Number of samples must be at least 3.');
   }
+
+  // Find the ratio of the inBetween point
+  const inBetweenRatio = (inBetween - start) / (end - start);
+
+  // Calculate the index of the inBetween point in the resulting array
+  const inBetweenIndex = Math.floor((numSamples - 1) * inBetweenRatio);
+
+  // Initialize the output array
+  const result = new Array(numSamples);
+
+  // Set start, inBetween and end points in the result array
+  result[0] = start;
+  result[inBetweenIndex] = inBetween;
+  result[numSamples - 1] = end;
+
+  // Calculate the step size for each segment
+  const stepBefore = (inBetween - start) / inBetweenIndex;
+  const stepAfter = (end - inBetween) / (numSamples - 1 - inBetweenIndex);
+
+  // Fill the array with interpolated values before the inBetween point
+  for (let i = 1; i < inBetweenIndex; i++) {
+    result[i] = start + i * stepBefore;
+  }
+
+  // Fill the array with interpolated values after the inBetween point
+  for (let i = inBetweenIndex + 1; i < numSamples - 1; i++) {
+    result[i] = inBetween + (i - inBetweenIndex) * stepAfter;
+  }
+
   return result;
 }
 
@@ -39,21 +83,21 @@ const getLogSpace = (min: number, max: number, n: number) => {
 function paletteShadesFromCurvePoints(
   curvePoints: Vec3[],
   nShades: number,
-  range = [0, 100],
   linearity = defaultLinearity,
+  keyColor: string,
 ): Vec3[] {
   if (curvePoints.length <= 2) {
     return [];
   }
 
+  const snappingPoints = snappingPointsForKeyColor(keyColor);
   const paletteShades = [];
-
-  const logLightness = getLogSpace(Math.log10(range[0]), Math.log10(range[1]), nShades);
-
-  const linearLightness = getLinearSpace(range[0], range[1], nShades);
-
+  const range = [snappingPoints[0], snappingPoints[2]];
+  const logLightness = getLogSpace(Math.log10(0), Math.log10(100), nShades);
+  const linearLightness = pointsForKeyColor(keyColor, range, snappingPoints[1]);
   let c = 0;
 
+  // obtain 2d path thru color space to grab points from
   for (let i = 0; i < nShades; i++) {
     const l = Math.min(
       range[1],
@@ -76,20 +120,16 @@ function paletteShadesFromCurvePoints(
 }
 
 export function paletteShadesFromCurve(
+  keyColor: string,
   curve: CurvedHelixPath,
   nShades = 16,
-  range = [0, 100],
   linearity = defaultLinearity,
   curveDepth = 24,
 ): Vec3[] {
-  return paletteShadesFromCurvePoints(
-    getPointsOnCurvePath(curve, Math.ceil((curveDepth * (1 + Math.abs(curve.torsion || 1))) / 2)).map(
-      (curvePoint: Vec3) => getPointOnHelix(curvePoint, curve.torsion, curve.torsionT0),
-    ),
-    nShades,
-    range,
-    linearity,
+  const points = getPointsOnCurvePath(curve, Math.ceil((curveDepth * (1 + Math.abs(curve.torsion || 1))) / 2)).map(
+    (curvePoint: Vec3) => getPointOnHelix(curvePoint, curve.torsion, curve.torsionT0),
   );
+  return paletteShadesFromCurvePoints(points, nShades, linearity, keyColor);
 }
 
 export function sRGB_to_hex(rgb: Vec3): string {
@@ -152,25 +192,14 @@ export function curvePathFromPalette({ keyColor, darkCp, lightCp, hueTorsion }: 
   } as CurvedHelixPath;
 }
 
-export function cssGradientFromCurve(
-  curve: CurvedHelixPath,
-  nShades = 16,
-  range = [0, 100],
-  linearity = defaultLinearity,
-  curveDepth = 24,
-) {
-  const hexes = paletteShadesToHex(paletteShadesFromCurve(curve, nShades, range, linearity, curveDepth));
-  return `linear-gradient(to right, ${hexes.join(', ')})`;
-}
-
 export function hexColorsFromPalette(
+  keyColor: string,
   palette: Palette,
   nShades = 16,
-  range = [0, 100],
   linearity = defaultLinearity,
   curveDepth = 24,
 ): string[] {
-  return paletteShadesToHex(
-    paletteShadesFromCurve(curvePathFromPalette(palette), nShades, range, linearity, curveDepth),
-  );
+  const curve = curvePathFromPalette(palette);
+  const shades = paletteShadesFromCurve(keyColor, curve, nShades, linearity, curveDepth);
+  return paletteShadesToHex(shades);
 }

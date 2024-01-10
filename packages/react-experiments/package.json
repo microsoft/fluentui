@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-experiments",
-  "version": "8.14.74",
+  "version": "8.14.123",
   "description": "Experimental React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,29 +27,29 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.2.22",
+    "@fluentui/common-styles": "*",
     "@fluentui/eslint-plugin": "*",
     "@types/deep-assign": "^0.1.1",
     "@types/prop-types": "15.7.1",
     "@types/react-addons-test-utils": "0.14.18",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.24",
+    "@fluentui/jest-serializer-merge-styles": "*",
     "react-hooks-testing-library": "^0.5.0",
     "@fluentui/scripts-jest": "*",
     "@fluentui/scripts-tasks": "*",
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.108.2",
-    "@fluentui/theme": "^2.6.25",
+    "@fluentui/react": "^8.114.1",
+    "@fluentui/theme": "^2.6.39",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/example-data": "^8.4.7",
-    "@fluentui/foundation-legacy": "^8.2.33",
-    "@fluentui/font-icons-mdl2": "^8.5.13",
-    "@fluentui/merge-styles": "^8.5.7",
-    "@fluentui/react-hooks": "^8.6.20",
-    "@fluentui/set-version": "^8.2.6",
-    "@fluentui/style-utilities": "^8.9.6",
-    "@fluentui/utilities": "^8.13.9",
+    "@fluentui/example-data": "^8.4.14",
+    "@fluentui/foundation-legacy": "^8.2.49",
+    "@fluentui/font-icons-mdl2": "^8.5.29",
+    "@fluentui/merge-styles": "^8.5.14",
+    "@fluentui/react-hooks": "^8.6.34",
+    "@fluentui/set-version": "^8.2.13",
+    "@fluentui/style-utilities": "^8.10.0",
+    "@fluentui/utilities": "^8.13.22",
     "deep-assign": "^2.0.0",
     "prop-types": "^15.7.2",
     "tslib": "^2.1.0"
@@ -111,6 +111,11 @@
       "types": "./lib/FolderCover.d.ts",
       "import": "./lib/FolderCover.js",
       "require": "./lib-commonjs/FolderCover.js"
+    },
+    "./lib/components/FolderCover/FolderCover.scss": {
+      "types": "./lib/components/FolderCover/FolderCover.scss.d.ts",
+      "import": "./lib/components/FolderCover/FolderCover.scss.js",
+      "require": "./lib-commonjs/components/FolderCover/FolderCover.scss.js"
     },
     "./lib/Foundation": {
       "types": "./lib/Foundation.d.ts",

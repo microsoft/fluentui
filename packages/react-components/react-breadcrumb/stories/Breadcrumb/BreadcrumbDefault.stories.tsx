@@ -1,43 +1,32 @@
 import * as React from 'react';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbDivider, BreadcrumbProps } from '@fluentui/react-breadcrumb';
-type Item = {
-  key: number;
-  value: string;
-};
-const items: Item[] = [
-  {
-    key: 0,
-    value: 'Item 1',
-  },
-  {
-    key: 1,
-    value: 'Item 2',
-  },
-  {
-    key: 2,
-    value: 'Item 3',
-  },
-  {
-    key: 3,
-    value: 'Item 4',
-  },
-];
+import { Breadcrumb, BreadcrumbItem, BreadcrumbDivider, BreadcrumbButton } from '@fluentui/react-components';
+import { CalendarMonthFilled, CalendarMonthRegular, bundleIcon } from '@fluentui/react-icons';
 
-function renderItem(item: Item, size: BreadcrumbProps['size']) {
-  const isLastItem = items.length - 1 === item.key;
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+const path = 'https://www.bing.com/';
+
+export const Default = () => {
   return (
-    <React.Fragment key={`${size}-item-${item.key}`}>
-      <BreadcrumbItem current={isLastItem}>{item.value}</BreadcrumbItem>
-      {!isLastItem && <BreadcrumbDivider />}
-    </React.Fragment>
-  );
-}
-export const Default = () => (
-  <>
-    <Breadcrumb size="small" dividerType="slash">
-      {items.map(item => renderItem(item, 'small'))}
+    <Breadcrumb aria-label="Breadcrumb default example">
+      <BreadcrumbItem>
+        <BreadcrumbButton href={path}>Item 1</BreadcrumbButton>
+      </BreadcrumbItem>
+      <BreadcrumbDivider />
+      <BreadcrumbItem>
+        <BreadcrumbButton href={path} icon={<CalendarMonth />}>
+          Item 2
+        </BreadcrumbButton>
+      </BreadcrumbItem>
+      <BreadcrumbDivider />
+      <BreadcrumbItem>
+        <BreadcrumbButton href={path}>Item 3</BreadcrumbButton>
+      </BreadcrumbItem>
+      <BreadcrumbDivider />
+      <BreadcrumbItem>
+        <BreadcrumbButton href={path} current>
+          Item 4
+        </BreadcrumbButton>
+      </BreadcrumbItem>
     </Breadcrumb>
-    <Breadcrumb>{items.map(item => renderItem(item, 'medium'))}</Breadcrumb>
-    <Breadcrumb size="large">{items.map(item => renderItem(item, 'large'))}</Breadcrumb>
-  </>
-);
+  );
+};
