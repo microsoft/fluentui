@@ -108,7 +108,7 @@ describe('Heat Map Chart - Subcomponent Legend', () => {
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
-    const handleMouseOver = jest.spyOn(HeatMapChartBase.prototype, '_onLegendHover');
+    const handleMouseOver = jest.spyOn(HeatMapChartBase.prototype as any, '_onLegendHover');
     const legends = getByClass(container, /legend-/i);
     // Assert
     fireEvent.mouseOver(legends[0]);
@@ -123,7 +123,7 @@ describe('Heat Map Chart - Subcomponent Legend', () => {
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
-    const handleMouseOver = jest.spyOn(HeatMapChartBase.prototype, '_onLegendLeave');
+    const handleMouseOver = jest.spyOn(HeatMapChartBase.prototype as any, '_onLegendLeave');
     const legends = getByClass(container, /legend-/i);
     // Assert
     fireEvent.mouseOver(legends[0]);
@@ -139,7 +139,7 @@ describe('Heat Map Chart - Subcomponent Legend', () => {
         rangeValuesForColorScale={['lightblue', 'darkblue']}
       />,
     );
-    const handleMouseClick = jest.spyOn(HeatMapChartBase.prototype, '_onLegendClick');
+    const handleMouseClick = jest.spyOn(HeatMapChartBase.prototype as any, '_onLegendClick');
     const legends = getByClass(container, /legend-/i);
     // Assert
     fireEvent.click(legends[0]);
