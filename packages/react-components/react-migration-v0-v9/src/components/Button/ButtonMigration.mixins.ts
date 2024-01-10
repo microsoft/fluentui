@@ -1,6 +1,7 @@
 import { GriffelStyle, shorthands } from '@fluentui/react-components';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 
+// class names from v0 - not imported as we do not want to keep depending on v0.
 const iconClassNames = {
   filled: 'ui-icon__filled',
   outline: 'ui-icon__outline',
