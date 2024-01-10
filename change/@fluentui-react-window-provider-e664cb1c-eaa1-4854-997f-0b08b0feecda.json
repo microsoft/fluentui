@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: clean up exports",
+  "packageName": "@fluentui/react-window-provider",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

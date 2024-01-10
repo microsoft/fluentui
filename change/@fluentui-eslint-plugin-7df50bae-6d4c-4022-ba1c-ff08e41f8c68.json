@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: add restricted globals for @fluentui/react and related packages",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

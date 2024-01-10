@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: disallow document and window access",
+  "packageName": "@fluentui/merge-styles",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

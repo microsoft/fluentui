@@ -87,7 +87,7 @@ export const audioProperties: Record<string, number>;
 
 // @public
 export class AutoScroll {
-    constructor(element: HTMLElement);
+    constructor(element: HTMLElement, win?: Window);
     // (undocumented)
     dispose(): void;
 }
@@ -241,7 +241,7 @@ export class EventGroup {
     onAll(target: any, events: {
         [key: string]: (args?: any) => void;
     }, useCapture?: boolean): void;
-    static raise(target: any, eventName: string, eventArgs?: any, bubbleEvent?: boolean): boolean | undefined;
+    static raise(target: any, eventName: string, eventArgs?: any, bubbleEvent?: boolean, doc?: Document): boolean | undefined;
     raise(eventName: string, eventArgs?: any, bubbleEvent?: boolean): boolean | undefined;
     // (undocumented)
     static stopPropagation(event: any): void;
@@ -375,7 +375,7 @@ export function getPreviousElement(rootElement: HTMLElement, currentElement: HTM
 export function getPropsWithDefaults<TProps extends {}>(defaultProps: Partial<TProps>, propsWithoutDefaults: TProps): TProps;
 
 // @public
-export function getRect(element: HTMLElement | Window | null): IRectangle | undefined;
+export function getRect(element: HTMLElement | Window | null, win?: Window): IRectangle | undefined;
 
 // @public @deprecated (undocumented)
 export function getResourceUrl(url: string): string;
@@ -391,7 +391,7 @@ export function getRTLSafeKeyCode(key: number, theme?: {
 }): number;
 
 // @public
-export function getScrollbarWidth(): number;
+export function getScrollbarWidth(doc?: Document): number;
 
 export { getVirtualParent }
 
@@ -811,7 +811,7 @@ export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean)
 export function isElementVisible(element: HTMLElement | undefined | null): boolean;
 
 // @public
-export function isElementVisibleAndNotHidden(element: HTMLElement | undefined | null): boolean;
+export function isElementVisibleAndNotHidden(element: HTMLElement | undefined | null, win?: Window): boolean;
 
 // Warning: (ae-internal-missing-underscore) The name "ISerializableObject" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -1052,7 +1052,7 @@ export { portalContainsElement }
 export function precisionRound(value: number, precision: number, base?: number): number;
 
 // @public @deprecated
-export function raiseClick(target: Element): void;
+export function raiseClick(target: Element, doc?: Document): void;
 
 // @public
 export class Rectangle {
@@ -1228,7 +1228,7 @@ export function setWarningCallback(warningCallback?: (message: string) => void):
 export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): boolean;
 
 // @public
-export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;
+export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap', doc?: Document): boolean;
 
 // @public
 export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React_2.FunctionComponent<TComponentProps>;
