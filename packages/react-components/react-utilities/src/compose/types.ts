@@ -273,9 +273,9 @@ export type SlotComponentType<Props extends UnknownSlotProps> = Props & {
  *
  * Example usage:
  * type OnOpenChangeData = (
- *   | EventData<'click', React.MouseEvent<MyComponentElement>>
- *   | EventData<'keydown', React.KeyboardEvent<MyComponentElement>>
- * ) & { open: boolean; };
+ *   | EventData\<'click', React.MouseEvent\<MyComponentElement\>\>
+ *   | EventData\<'keydown', React.KeyboardEvent\<MyComponentElement\>\>
+ * ) & \{ open: boolean; \};
  */
 export type EventData<Type extends string, TEvent> =
   | { type: undefined; event: React.SyntheticEvent | Event }
@@ -286,8 +286,8 @@ export type EventData<Type extends string, TEvent> =
  * See RFC event-handlers-event-type.md for more details.
  *
  * Example usage:
- * type OnSomeEventData = EventData<'click', React.MouseEvent<MyComponentElement>> & { open: boolean; };
- * type SomeProps = { onSomeEvent?: EventHandler<OnSomeEventData>; };
+ * type OnSomeEventData = EventData\<'click', React.MouseEvent\<MyComponentElement\>\> & \{ open: boolean; \};
+ * type SomeProps = \{ onSomeEvent?: EventHandler\<OnSomeEventData\>; \};
  */
 export type EventHandler<TData extends EventData<string, unknown>> = (
   ev: React.SyntheticEvent | Event,
