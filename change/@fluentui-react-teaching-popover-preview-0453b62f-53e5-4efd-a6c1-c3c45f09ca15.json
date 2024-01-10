@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Small style updates, changing 16px icons to 12px, slight padding changes",
+  "packageName": "@fluentui/react-teaching-popover-preview",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}

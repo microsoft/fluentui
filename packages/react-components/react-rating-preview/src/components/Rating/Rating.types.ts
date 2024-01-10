@@ -12,15 +12,10 @@ export type RatingSlots = {
  */
 export type RatingProps = ComponentProps<RatingSlots> & {
   /**
-   * Controls the appearance of unselected rating items.
-   * @default outline (filled if readOnly is set)
+   * Controls the appearance of the Rating.
+   * @default neutral
    */
-  appearance?: 'filled' | 'outline';
-  /**
-   * Sets whether to render a full or compact Rating
-   * @default false
-   */
-  compact?: boolean;
+  color?: 'brand' | 'marigold' | 'neutral';
   /**
    * Default value of the Rating
    */
@@ -40,6 +35,11 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    */
   max?: number;
   /**
+   * The mode of the rating.
+   * @default 'interactive'
+   */
+  mode?: 'interactive' | 'read-only' | 'read-only-compact';
+  /**
    * Name for the Radio inputs. If not provided, one will be automatically generated
    */
   name?: string;
@@ -49,19 +49,14 @@ export type RatingProps = ComponentProps<RatingSlots> & {
   onChange?: (ev: React.SyntheticEvent | Event, data: RatingOnChangeData) => void;
   /**
    * Sets the precision to allow half-filled shapes in Rating
-   * @default false
+   * @default 1
    */
-  precision?: boolean;
-  /**
-   * Sets Rating to be read only
-   * @default false
-   */
-  readOnly?: boolean;
+  step?: 0.5 | 1;
   /**
    * Sets the size of the Rating items.
    * @default medium
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'extra-large';
   /**
    * The value of the rating
    */
@@ -82,27 +77,13 @@ export type RatingOnChangeData = {
  * State used in rendering Rating
  */
 export type RatingState = ComponentState<RatingSlots> &
-  Required<
-    Pick<
-      RatingProps,
-      'appearance' | 'compact' | 'iconFilled' | 'iconOutline' | 'name' | 'precision' | 'readOnly' | 'size' | 'value'
-    >
-  > & {
+  Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'step' | 'size' | 'value'>> & {
     hoveredValue?: number | undefined;
   };
 
 export type RatingContextValue = Pick<
   RatingState,
-  | 'appearance'
-  | 'compact'
-  | 'iconFilled'
-  | 'iconOutline'
-  | 'name'
-  | 'precision'
-  | 'readOnly'
-  | 'size'
-  | 'value'
-  | 'hoveredValue'
+  'color' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'step' | 'size' | 'value' | 'hoveredValue'
 >;
 
 export type RatingContextValues = {

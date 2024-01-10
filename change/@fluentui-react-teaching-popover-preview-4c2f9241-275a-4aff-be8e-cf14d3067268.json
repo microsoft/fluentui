@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update react-icons to 2.0.224",
-  "packageName": "@fluentui/react-teaching-popover-preview",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -63,7 +63,11 @@ function interceptConsoleLogs() {
 }
 
 export async function main(params: MainParams) {
-  const distDirectory = path.resolve(process.cwd(), 'node_modules', '.cache', 'ssr-tests');
+  /**
+   * dist directory cannot be under node_modules in order to make TS path aliases work.
+   * @see https://github.com/evanw/esbuild/blob/main/CHANGELOG.md#0180
+   */
+  const distDirectory = path.resolve(process.cwd(), 'dist', 'ssr-tests');
 
   if (!fs.existsSync(distDirectory)) {
     await fs.promises.mkdir(distDirectory, { recursive: true });
