@@ -216,6 +216,15 @@ const useIconStyles = makeStyles({
   hidden: {
     display: 'none',
   },
+  visuallyHidden: {
+    clip: 'rect(0px, 0px, 0px, 0px)',
+    height: '1px',
+    ...shorthands.margin('-1px'),
+    ...shorthands.overflow('hidden'),
+    ...shorthands.padding('0px'),
+    width: '1px',
+    position: 'absolute',
+  },
 
   // icon size variants
   small: {
@@ -282,7 +291,7 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
       iconStyles.icon,
       iconStyles[size],
       disabled && iconStyles.disabled,
-      showClearIcon && iconStyles.hidden,
+      showClearIcon && iconStyles.visuallyHidden,
       state.expandIcon.className,
     );
   }
