@@ -56,3 +56,25 @@ export const brandOffice: BrandVariants = {
   150: `#f4beaa`,
   160: `#f9dcd1`,
 };
+
+// Azure brand colors
+// https://www.figma.com/file/SicJs4UNaTg29YS8yqhqFv/Fluent-2-design-language?type=design&node-id=23909-154031&mode=design&t=02kHPLqoc3oebn8H-0, blue in shared colors
+// https://www.figma.com/file/Bwn8rmUOYtnPRwA3JoQTBn/Web-UI-Kit-%3A-Azure-Fluent-extension?type=design&node-id=1592-0&mode=design&t=Q6N2GqGr7q7WAkmR-0
+export const brandAzure: BrandVariants = {
+  10: `#092c47`,
+  20: `#004578`,
+  30: `#043862`,
+  40: `#005a9e`,
+  50: `#004c87`,
+  60: `#106ebe`,
+  70: `#0078d4`,
+  80: `#0078d4`,
+  90: `#0086f0`,
+  100: `#69afe5`,
+  110: `#1890f1`,
+  120: `#c7e0f4`,
+  130: `#3aa0f3`,
+  140: `#deecf9`,
+  150: `#6cb8f6`,
+  160: `#eff6fc`,
+};

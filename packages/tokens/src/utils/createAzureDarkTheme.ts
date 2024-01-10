@@ -1,5 +1,5 @@
 import { colorPaletteTokens, colorStatusTokens } from '../alias/darkColorPalette';
-import { generateColorTokens } from '../alias/teamsDarkColor';
+import { generateColorTokens } from '../alias/darkColor';
 
 import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths, fontWeights } from '../global/index';
 import { createShadowTokens } from './shadows';

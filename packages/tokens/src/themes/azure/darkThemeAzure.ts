@@ -1,5 +1,5 @@
 import { createAzureDarkTheme } from '../../utils/createAzureDarkTheme';
-import { brandTeams } from '../../global/brandColors';
+import { brandAzure } from '../../global/brandColors';
 import type { Theme } from '../../types';
 
-export const azureDarkTheme: Theme = createAzureDarkTheme(brandTeams);
+export const azureDarkTheme: Theme = createAzureDarkTheme(brandAzure);
