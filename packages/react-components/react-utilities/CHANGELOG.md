@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 03 Jan 2024 09:26:43 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Jan 2024 16:24:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.15.6)
+
+Mon, 08 Jan 2024 16:24:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.15.5..@fluentui/react-utilities_v9.15.6)
+
+### Patches
+
+- Allow isSlot to work with multiple react-utilities instances ([PR #30209](https://github.com/microsoft/fluentui/pull/30209) by 36034483+daniel-hauser@users.noreply.github.com)
 
 ## [9.15.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.15.5)
 

@@ -78,6 +78,13 @@ function setupTest(packages: Package[]) {
 }
 
 describe('epic-generator', () => {
+  beforeEach(() => {
+    jest.restoreAllMocks();
+
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    jest.spyOn(console, 'log').mockImplementation(() => {});
+  });
+
   describe('validation', () => {
     it('requires a non-empty title', () => {
       const tree = createTreeWithEmptyWorkspace();

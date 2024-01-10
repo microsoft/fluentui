@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { queryAllByAttribute, render, waitFor } from '@testing-library/react';
+import { act, queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import { PieChart } from './index';
 import { chartPoints, colors } from './PieChart.test';
 import * as utils from '../../utilities/utilities';
@@ -36,7 +36,10 @@ describe('Pie Chart - axe-core', () => {
     // getComputedTextLength() which will otherwise lead to a crash if mounted
     jest.spyOn(utils, 'wrapContent').mockImplementation(() => false);
     const { container } = render(<PieChart data={chartPoints} colors={colors} />);
-    const axeResults = await axe(container);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
     expect(axeResults).toHaveNoViolations();
-  }, 10000);
+  });
 });

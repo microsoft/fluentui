@@ -15,6 +15,7 @@ export interface UseArrowNavigationGroupOptions {
   /**
    * Last focused element in the group will be remembered and focused (if still
    * available) when tabbing from outside of the group
+   * @default true
    */
   memorizeCurrent?: boolean;
   /**
@@ -42,7 +43,7 @@ export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions 
   const {
     circular,
     axis,
-    memorizeCurrent,
+    memorizeCurrent = true,
     tabbable,
     ignoreDefaultKeydown,
     // eslint-disable-next-line @typescript-eslint/naming-convention

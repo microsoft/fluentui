@@ -2,6 +2,60 @@
   "name": "@fluentui/react-timepicker-compat",
   "entries": [
     {
+      "date": "Tue, 09 Jan 2024 10:21:33 GMT",
+      "tag": "@fluentui/react-timepicker-compat_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "a5e34e3c996d322bb0735f4fca9537deafd07b59",
+            "comment": "Stable release"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-timepicker-compat",
+            "comment": "Bump @fluentui/react-combobox to v9.5.39",
+            "commit": "a5e34e3c996d322bb0735f4fca9537deafd07b59"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Jan 2024 16:24:28 GMT",
+      "tag": "@fluentui/react-timepicker-compat_v0.0.2",
+      "version": "0.0.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-timepicker-compat",
+            "comment": "Bump @fluentui/react-combobox to v9.5.38",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-timepicker-compat",
+            "comment": "Bump @fluentui/react-field to v9.1.47",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-timepicker-compat",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.24",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-timepicker-compat",
+            "comment": "Bump @fluentui/react-utilities to v9.15.6",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 04 Jan 2024 09:48:06 GMT",
       "tag": "@fluentui/react-timepicker-compat_v0.0.1",
       "version": "0.0.1",
