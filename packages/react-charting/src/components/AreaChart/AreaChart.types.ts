@@ -64,6 +64,8 @@ export interface IAreaChartProps extends ICartesianChartProps {
    * Optimize area chart rendering for large data set.
    */
   optimizeLargeData?: boolean;
+
+  handleError?: () => void;
 }
 
 /**

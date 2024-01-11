@@ -183,14 +183,16 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         xAxisCalloutAccessibilityData: this.state.xAxisCalloutAccessibilityData,
         ...this.props.calloutProps,
       };
+      console.log('this.props.handleError = ', this.props.handleError);
       return (
-        <ErrorBoundary>
+        <ErrorBoundary handleError={this.props.handleError}>
           <CartesianChart
             {...this.props}
             chartTitle={chartTitle}
             points={points}
             chartType={ChartTypes.AreaChart}
             calloutProps={calloutProps}
+            handleError={this.props.handleError}
             legendBars={legends}
             isCalloutForStack
             xAxisType={XAxisTypes.StringAxis}
@@ -229,8 +231,18 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         </ErrorBoundary>
       );
     }
-    return <EmptyChartError />;
+    return (
+      <ErrorBoundary
+        hasEmptyState={true}
+        handleEmptyState={() => (
+          <div id={getId('_Chart_empty')} role={'alert'} aria-label={'Graph has no data to display'}>
+            <img src={'https://cdn.pixabay.com/photo/2015/09/16/08/55/online-942406_1280.jpg'} />
+          </div>
+        )}
+      />
+    );
   }
+
   private _handleError(error: any) {
     this.errorBoundaryRef.current!.handleError(new Error(error));
   }

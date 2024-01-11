@@ -499,6 +499,8 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    */
   getmargins?: (margins: IMargins) => void;
 
+  handleError?: () => void;
+
   /**
    * This is a call back method to the chart from cartesian chart.
    * params are xScale, yScale, containerHeight, containerWidth. These values were used to draw the graph.

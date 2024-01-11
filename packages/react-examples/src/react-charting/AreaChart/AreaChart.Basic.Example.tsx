@@ -52,7 +52,98 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
   };
 
   private _basicExample(): JSX.Element {
-    const chart1Points = [];
+    const chart1Points = [
+      {
+        x: 20,
+        y: 7000,
+        xAxisCalloutData: '2018/01/01',
+        yAxisCalloutData: '35%',
+      },
+      {
+        x: 25,
+        y: 9000,
+        xAxisCalloutData: '2018/01/15',
+        yAxisCalloutData: '45%',
+      },
+      {
+        x: 30,
+        y: 13000,
+        xAxisCalloutData: '2018/01/28',
+        yAxisCalloutData: '65%',
+      },
+      {
+        x: 35,
+        y: 15000,
+        xAxisCalloutData: '2018/02/01',
+        yAxisCalloutData: '75%',
+      },
+      {
+        x: 40,
+        y: 11000,
+        xAxisCalloutData: '2018/03/01',
+        yAxisCalloutData: '55%',
+      },
+      {
+        x: 45,
+        y: 8760,
+        xAxisCalloutData: '2018/03/15',
+        yAxisCalloutData: '43%',
+      },
+      {
+        x: 50,
+        y: 3500,
+        xAxisCalloutData: '2018/03/28',
+        yAxisCalloutData: '18%',
+      },
+      {
+        x: 55,
+        y: 20000,
+        xAxisCalloutData: '2018/04/04',
+        yAxisCalloutData: '100%',
+      },
+      {
+        x: 60,
+        y: 17000,
+        xAxisCalloutData: '2018/04/15',
+        yAxisCalloutData: '85%',
+      },
+      {
+        x: 65,
+        y: 1000,
+        xAxisCalloutData: '2018/05/05',
+        yAxisCalloutData: '5%',
+      },
+      {
+        x: 70,
+        y: 12000,
+        xAxisCalloutData: '2018/06/01',
+        yAxisCalloutData: '60%',
+      },
+      {
+        x: 75,
+        y: 6876,
+        xAxisCalloutData: '2018/01/15',
+        yAxisCalloutData: '34%',
+      },
+      {
+        x: 80,
+        y: 12000,
+        xAxisCalloutData: '2018/04/30',
+        yAxisCalloutData: '60%',
+      },
+      {
+        x: 85,
+        y: 7000,
+        xAxisCalloutData: '2018/05/04',
+        yAxisCalloutData: '35%',
+      },
+      {
+        x: 90,
+        y: 10000,
+        xAxisCalloutData: '2018/06/01',
+        yAxisCalloutData: '50%',
+      },
+    ];
 
     const chartPoints = [
       {
@@ -122,6 +213,15 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
               enableReflow={true}
               yAxisTitle={this.state.showAxisTitles ? 'Variation of stock market prices' : undefined}
               xAxisTitle={this.state.showAxisTitles ? 'Number of days' : undefined}
+              handleError={() => (
+                <div>
+                  <img
+                    src={
+                      'https://img.freepik.com/free-vector/404-error-with-tired-person-concept-illustration_114360-7899.jpg?w=996&t=st=1704980908~exp=1704981508~hmac=c9dcc38fa37803ef28cce8639cbe5cb6a66af1d41892b9f9a15326ac3d4cc8da'
+                    }
+                  />
+                </div>
+              )}
             />
           </div>
         )}
@@ -145,6 +245,15 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
                 ) : null
               }
               enableReflow={true}
+              handleError={() => (
+                <div>
+                  <img
+                    src={
+                      'https://www.freepik.com/free-vector/404-error-with-tired-person-concept-illustration_20602774.htm#query=no%20results&position=3&from_view=keyword&track=ais&uuid=58e325f3-9cbf-45ce-88b6-5a1cf9d8973e#position=3&query=no%20results'
+                    }
+                  />
+                </div>
+              )}
             />
           </div>
         )}

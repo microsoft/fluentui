@@ -498,9 +498,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
      *    But this is a hacky solution and not a proper fix and also elementRef is deprecated.
      * 2. Using the default tabbable element to fix the issue.
      */
-
+    console.log('this.props.handleError = ', this.props.handleError);
     return (
-      <ErrorBoundary>
+      <ErrorBoundary handleError={this.props.handleError}>
         <div
           id={this.idForGraph}
           className={this._classNames.root}
@@ -533,9 +533,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                   svgDimensions.height - this.margins.bottom! - this.state._removalValueForTextTuncate!
                 })`}
                 className={this._classNames.xAxis}
-                onErrorCapture={() => {
-                  this.setState(this.state.Error);
-                }}
+                // onErrorCapture={() => {
+                //   this.setState(this.state.Error);
+                // }}
               />
               {this.props.xAxisTitle !== undefined && this.props.xAxisTitle !== '' && (
                 <SVGTooltipText
