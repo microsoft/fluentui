@@ -259,7 +259,11 @@ describe('HeatMapChart interaction and accessibility tests', () => {
 });
 
 describe('HeatMapChart snapshot tests', () => {
-  it('should render HeatMapChart correctly with custom string formatter functions', () => {
+  // Date and numeric axes in heatmap chart accept d3 format strings for formatting their ticks.
+  // This format string is used to convert all data points into strings,
+  // after which a string axis is created with the converted values.
+  // This behavior is not as expected and is somewhat related to https://github.com/microsoft/fluentui/issues/30128.
+  it('should render axis labels correctly When custom formatter functions are set for x and y axis strings', () => {
     const { container } = render(
       <HeatMapChart
         data={HeatMapStringData}
