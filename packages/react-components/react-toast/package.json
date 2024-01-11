@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-toast",
-  "version": "9.3.23",
+  "version": "9.3.24",
   "description": "Toast component for Fluent UI",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -37,7 +37,7 @@
   "dependencies": {
     "react-transition-group": "^4.4.1",
     "@fluentui/keyboard-keys": "^9.0.7",
-    "@fluentui/react-aria": "^9.6.2",
+    "@fluentui/react-aria": "^9.7.0",
     "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-jsx-runtime": "^9.0.24",
     "@fluentui/react-portal": "^9.4.7",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Tue, 09 Jan 2024 10:21:33 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Jan 2024 09:04:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.12.1)
+
+Thu, 11 Jan 2024 09:04:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.12.0..@fluentui/react-positioning_v9.12.1)
+
+### Patches
+
+- fix: update styles to not flip in RTL ([PR #30252](https://github.com/microsoft/fluentui/pull/30252) by olfedias@microsoft.com)
 
 ## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.12.0)
 

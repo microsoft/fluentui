@@ -2,6 +2,33 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Thu, 11 Jan 2024 09:04:29 GMT",
+      "tag": "@fluentui/react-tree_v9.4.22",
+      "version": "9.4.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-aria to v9.7.0",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-avatar to v9.6.6",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-button to v9.3.62",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jan 2024 10:21:34 GMT",
       "tag": "@fluentui/react-tree_v9.4.21",
       "version": "9.4.21",

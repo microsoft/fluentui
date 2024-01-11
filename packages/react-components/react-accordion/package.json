@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-accordion",
-  "version": "9.3.34",
+  "version": "9.3.35",
   "description": "Fluent UI accordion component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,7 +33,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-aria": "^9.6.2",
+    "@fluentui/react-aria": "^9.7.0",
     "@fluentui/react-context-selector": "^9.1.46",
     "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-jsx-runtime": "^9.0.24",

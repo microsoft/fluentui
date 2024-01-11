@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Mon, 08 Jan 2024 16:24:28 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Jan 2024 09:04:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.61)
+
+Thu, 11 Jan 2024 09:04:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.60..@fluentui/react-card_v9.0.61)
+
+### Patches
+
+- fix: selectable card should not be focusable ([PR #30277](https://github.com/microsoft/fluentui/pull/30277) by marcosvmmoura@gmail.com)
+- fix: remove slow CSS selector from card styles ([PR #30278](https://github.com/microsoft/fluentui/pull/30278) by marcosvmmoura@gmail.com)
 
 ## [9.0.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.60)
 

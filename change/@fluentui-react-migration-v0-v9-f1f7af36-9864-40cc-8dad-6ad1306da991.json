@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove dependency on v0",
-  "packageName": "@fluentui/react-migration-v0-v9",
-  "email": "jurokapsiar@gmail.com",
-  "dependentChangeType": "patch"
-}

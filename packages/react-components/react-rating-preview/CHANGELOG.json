@@ -2,6 +2,21 @@
   "name": "@fluentui/react-rating-preview",
   "entries": [
     {
+      "date": "Thu, 11 Jan 2024 09:04:29 GMT",
+      "tag": "@fluentui/react-rating-preview_v0.1.2",
+      "version": "0.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "c43a582b1e7587da4abbe03b04b1fc84f0f15415",
+            "comment": "chore: Updating doc stories and API."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Jan 2024 16:24:24 GMT",
       "tag": "@fluentui/react-rating-preview_v0.1.1",
       "version": "0.1.1",

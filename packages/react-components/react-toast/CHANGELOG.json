@@ -2,6 +2,21 @@
   "name": "@fluentui/react-toast",
   "entries": [
     {
+      "date": "Thu, 11 Jan 2024 09:04:29 GMT",
+      "tag": "@fluentui/react-toast_v9.3.24",
+      "version": "9.3.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toast",
+            "comment": "Bump @fluentui/react-aria to v9.7.0",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Jan 2024 16:24:27 GMT",
       "tag": "@fluentui/react-toast_v9.3.23",
       "version": "9.3.23",
