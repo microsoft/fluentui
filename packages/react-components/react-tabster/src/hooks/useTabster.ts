@@ -15,7 +15,7 @@ interface WindowWithTabsterShadowDOMAPI extends Window {
  *
  * @returns Tabster ShadowDOM API
  */
-export const useTabsterShadowDOM_unstable = (): TabsterTypes.DOMAPI | undefined => {
+export const useShadowDOMSupport = (): TabsterTypes.DOMAPI | undefined => {
   const { targetDocument } = useFluent();
   const defaultView = targetDocument?.defaultView as WindowWithTabsterShadowDOMAPI | undefined;
 

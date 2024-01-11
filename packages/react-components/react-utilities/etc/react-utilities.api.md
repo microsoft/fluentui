@@ -66,6 +66,9 @@ export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes
 // @internal
 export function getParent(child: Node | null, options?: GetParentOptions): Node | null;
 
+// @public (undocumented)
+export function getParentInShadowDOM(child: Node | null, options?: GetParentOptions): Node | null;
+
 // @public
 export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className">, ExcludedPropKeys extends Extract<keyof Props, string> = never>({ primarySlotTagName, props, excludedPropNames, }: {
     primarySlotTagName: keyof JSX.IntrinsicElements;

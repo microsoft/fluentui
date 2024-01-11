@@ -1312,6 +1312,7 @@ import { useScrollbarWidth } from '@fluentui/react-utilities';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelection } from '@fluentui/react-utilities';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
+import { useShadowDOMSupport } from '@fluentui/react-tabster';
 import { useSkeleton_unstable } from '@fluentui/react-skeleton';
 import { useSkeletonContext } from '@fluentui/react-skeleton';
 import { useSkeletonItem_unstable } from '@fluentui/react-skeleton';
@@ -4036,6 +4037,8 @@ export { useSelect_unstable }
 export { useSelection }
 
 export { useSelectStyles_unstable }
+
+export { useShadowDOMSupport }
 
 export { useSkeleton_unstable }
 

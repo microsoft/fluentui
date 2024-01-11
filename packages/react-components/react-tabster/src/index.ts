@@ -14,6 +14,7 @@ export {
   useRestoreFocusTarget,
   useUncontrolledFocus,
   useOnKeyboardNavigationChange,
+  useShadowDOMSupport,
 } from './hooks/index';
 export type {
   UseArrowNavigationGroupOptions,

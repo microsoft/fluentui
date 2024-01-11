@@ -126,6 +126,9 @@ export function useRestoreFocusSource(): Types.TabsterDOMAttribute;
 // @public
 export function useRestoreFocusTarget(): Types.TabsterDOMAttribute;
 
+// @public
+export const useShadowDOMSupport: () => Types.DOMAPI | undefined;
+
 // @internal
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
 

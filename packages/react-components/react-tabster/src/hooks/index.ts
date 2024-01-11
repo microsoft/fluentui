@@ -12,4 +12,4 @@ export * from './useMergeTabsterAttributes';
 export * from './useFocusObserved';
 export * from './useRestoreFocus';
 export * from './useUncontrolledFocus';
-export { useTabsterShadowDOM_unstable } from './useTabster';
+export { useShadowDOMSupport } from './useTabster';

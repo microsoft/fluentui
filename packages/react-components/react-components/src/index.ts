@@ -46,6 +46,7 @@ export {
   useRestoreFocusTarget,
   useRestoreFocusSource,
   useUncontrolledFocus,
+  useShadowDOMSupport,
 } from '@fluentui/react-tabster';
 export type {
   CreateCustomFocusIndicatorStyleOptions,
