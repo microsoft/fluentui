@@ -1,4 +1,5 @@
 import * as path from 'path';
+import * as fs from 'node:fs/promises';
 import {
   prepareTempDirs,
   log,
@@ -11,6 +12,18 @@ import {
 
 const tsVersion = '3.9';
 const testName = 'ts-minbar-react-components';
+
+/**
+ *
+ * REMOVE after https://github.com/microsoft/keyborg/issues/69 is fixed
+ */
+async function pinKeyborgUntilDtsIsFixed(appRoot: string) {
+  const jsonPath = path.join(appRoot, 'package.json');
+  const jsonContent = await fs.readFile(jsonPath, 'utf-8');
+  const json = JSON.parse(jsonContent);
+  json.resolutions['keyborg'] = '2.3.0';
+  await fs.writeFile(jsonPath, JSON.stringify(json, null, 2));
+}
 
 async function performTest() {
   let tempPaths: TempPaths;
@@ -35,6 +48,8 @@ async function performTest() {
 
     const packedPackages = await packProjectPackages(logger, '@fluentui/react-components');
     await addResolutionPathsForProjectPackages(tempPaths.testApp);
+
+    await pinKeyborgUntilDtsIsFixed(tempPaths.testApp);
 
     await shEcho(`yarn add ${packedPackages['@fluentui/react-components']}`, tempPaths.testApp);
     logger(`✔️ Fluent UI packages were added to dependencies`);

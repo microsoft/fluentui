@@ -241,3 +241,53 @@ export const TitleOnlyInverted = () => {
 
 export const TitleOnlyInvertedDarkMode = getStoryVariant(TitleOnlyInverted, DARK_MODE);
 export const TitleOnlyInvertedHighContrastMode = getStoryVariant(TitleOnlyInverted, HIGH_CONTRAST);
+
+export const ToastTitleWordBreak = () => {
+  const { dispatchToast } = useToastController();
+  const { toastRef, onStatusChange } = useToastScreenshotData();
+  const dispatchToasts = () => {
+    dispatchToast(
+      <Toast ref={toastRef}>
+        <ToastTitle action={<Link>Action</Link>}>
+          This is a really long messagexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        </ToastTitle>
+      </Toast>,
+      {
+        onStatusChange,
+        timeout: -1,
+      },
+    );
+  };
+  return (
+    <>
+      <button id="dispatch" onClick={dispatchToasts}>
+        Dispatch toasts
+      </button>
+      <Toaster />
+    </>
+  );
+};
+
+export const ToastBodyWordBreak = () => {
+  const { dispatchToast } = useToastController();
+  const { toastRef, onStatusChange } = useToastScreenshotData();
+  const dispatchToasts = () => {
+    dispatchToast(
+      <Toast ref={toastRef}>
+        <ToastBody>This is a really long messagexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</ToastBody>
+      </Toast>,
+      {
+        onStatusChange,
+        timeout: -1,
+      },
+    );
+  };
+  return (
+    <>
+      <button id="dispatch" onClick={dispatchToasts}>
+        Dispatch toasts
+      </button>
+      <Toaster />
+    </>
+  );
+};

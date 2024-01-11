@@ -76,7 +76,7 @@ export const useDynamicVirtualizerMeasure: <TElement extends HTMLElement>(virtua
 // @public
 export const useIntersectionObserver: (callback: IntersectionObserverCallback, options?: IntersectionObserverInit) => {
     setObserverList: Dispatch<SetStateAction<Element[] | undefined>>;
-    setObserverInit: Dispatch<SetStateAction<IntersectionObserverInit | undefined>>;
+    setObserverInit: (newInit: IntersectionObserverInit | undefined) => void;
     observer: MutableRefObject<IntersectionObserver | undefined>;
 };
 
@@ -171,7 +171,7 @@ export const virtualizerScrollViewDynamicClassNames: SlotClassNames<VirtualizerS
 // @public (undocumented)
 export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<VirtualizerScrollViewDynamicSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children' | 'flagIndex'>> & {
     itemSize: number;
-    getItemSize: (index: number) => number;
+    getItemSize?: (index: number) => number;
     numItems: number;
     children: VirtualizerChildRenderFunction;
     imperativeRef?: RefObject<ScrollToInterface>;

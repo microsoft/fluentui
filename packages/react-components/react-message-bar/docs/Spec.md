@@ -2,62 +2,163 @@
 
 ## Background
 
-_Description and use cases of this component_
+MessageBar communicates important information about the state of the entire application or surface. For example, the status of a page, panel, dialog or card. The information shouldn't require someone to take immediate action, but should persist until the user performs one of the required actions.
 
 ## Prior Art
 
-_Include background research done for this component_
+- [Convergence epic](https://github.com/microsoft/fluentui/issues/22579)
 
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+### Northstar (v0)
+
+```tsx
+<Alert
+  warning
+  icon={<ExclamationTriangleIcon />}
+  content="This is an alert with a warning icon"
+  dismissAction={{ 'aria-label': 'close' }}
+  actions={[
+    {
+      content: 'Privacy policy',
+      key: 'privacy',
+      primary: true,
+    },
+    'Settings',
+  ]}
+/>
+```
+
+### Fabric (v8)
+
+```tsx
+<MessageBar
+  messageBarType={MessageBarType.warning}
+  isMultiline={false}
+  dismissButtonAriaLabel="Close"
+  actions={
+    <div>
+      <MessageBarButton>Action</MessageBarButton>
+    </div>
+  }
+>
+  Warning MessageBar content.
+  <Link href="www.bing.com" target="_blank" underline>
+    Visit our website.
+  </Link>
+</MessageBar>
+```
 
 ## Sample Code
 
-_Provide some representative example code that uses the proposed API for the component_
+```tsx
+<MessageBar>
+  <MessageBarBody>
+    <MessageBarTitle>Descriptive title</MessageBarTitle>
+    Message providing information to the user with actionable insights. <Link>Link</Link>
+  </MessageBarBody>
+  <MessageBarActions
+    containerAction={<Button aria-label="dismiss" appearance="transparent" icon={<DismissRegular />} />}
+  >
+    <Button>Action</Button>
+    <Button>Action</Button>
+  </MessageBarActions>
+</MessageBar>
+```
 
 ## Variants
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+### Single line
+
+### Multi line
 
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+### MessageBar
+
+[Link to types](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-message-bar/src/components/MessageBar/MessageBar.types.ts)
+
+### MessageBarTitle
+
+[Link to types](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-message-bar/src/components/MessageBarTitle/MessageBarTitle.types.ts)
+
+### MessageBarBody
+
+[Link to types](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-message-bar/src/components/MessageBarBody/MessageBarBody.types.ts)
+
+### MessageBarActions
+
+[Link to types](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-message-bar/src/components/MessageBarActions/MessageBarActions.types.ts)
 
 ## Structure
 
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
+```html
+<div role="group" aria-labelledby="fui-5" class="fui-MessageBar">
+  <div class="fui-MessageBar__icon"></div>
+  <div class="fui-MessageBarBody">
+    <span id="fui-5" class="fui-MessageBarTitle">Descriptive title</span>Message providing information to the user with
+    actionable insights.
+    <a>Link</a>
+  </div>
+  <div class="fui-MessageBarActions">
+    <button>Action</button>
+    <button>Action</button>
+  </div>
+  <div class="fui-MessageBarActions__containerAction" aria-label="Close">X</div>
+</div>
+```
 
 ## Migration
 
-_Describe what will need to be done to upgrade from the existing implementations:_
+### From v8
 
-- _Migration from v8_
-- _Migration from v0_
+| v8 prop                | v9 prop | Description                                                                              |
+| ---------------------- | ------- | ---------------------------------------------------------------------------------------- |
+| messageBarType         | intent  | String enums are used instead of Typesript enums                                         |
+| isMultiline            | layout  | A string enum is used to toggle layout instead of a boolean.                             |
+| onDismiss              | N/A     | No need to migrate, the dismiss button and state should be handled by the user           |
+| actions                | N/A     | Use the children the `MessageBarActions` component                                       |
+| messageBarIconProps    | icon    | Use the `icon` slot with any custom icon                                                 |
+| dismissButtonAriaLabel | N/A     | Use the `containerAction` slot of the `MessageBarActions` component to set an aria-label |
+
+### From v0
+
+| V0 prop       | v9 prop | Description                                                                                   |
+| ------------- | ------- | --------------------------------------------------------------------------------------------- |
+| attached      | N/A     | Use custom CSS overrides on the MessageBar component                                          |
+| body          | N/A     | Use the `MessageBarBody` component                                                            |
+| content       | N/A     | Use the children of the `MessageBarBody` component                                            |
+| danger        | intent  | Use `error` as the value for the `intent` prop                                                |
+| info          | intent  | Use `info` as the value for the `intent` prop                                                 |
+| warning       | intent  | Use `warning` as the value for the `intent` prop                                              |
+| success       | intent  | Use `success` as the value for the `intent` prop                                              |
+| visible       | N/A     | This can be done by mounting/unmounting the `MessageBar` component                            |
+| icon          | icon    | Migrate from v0 slot syntax to v9 slot syntax                                                 |
+| dismissible   | N/A     | The `containerAction` slot of the `MessageBarActions` component is up to the user to render   |
+| dismissAction | N/A     | The `containerAction` slot of the `MessageBarActions` component is up to the user to render   |
+| fitted        | N/A     | This is the default behaviour, otherwise use custom CSS overrides on the MessageBar component |
 
 ## Behaviors
 
-_Explain how the component will behave in use, including:_
+### Reflow
 
-- _Component States_
-- _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
-  - _Screen readers_
+Once the text content in the message bar wraps around to a second line, the layout of the entire component should change.
+The layout should more resemble a Dialog, where the additional actions are on the bottom right of the container and the
+single container action to dismiss the MessageBar is on the top right.
+
+In the single line layout, The additional actions should render inline but before the container action to dismiss the
+MessageBar.
 
 ## Accessibility
 
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
+The entire MessageBar should have the `role="group"` attribute set to let screen reader users know that the content
+within the component is part of one landmark.
 
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+The MessageBar content is narrated on mount. The narration is handled by an announcer that is consumed through
+React context. The narrated message should include both the MessaegBar content and its actions. The `intent` prop
+determines the politeness of the narration.
+
+| Intent  | Politeness |
+| ------- | ---------- |
+| info    | polite     |
+| warning | polite     |
+| success | polite     |
+| error   | assertive  |

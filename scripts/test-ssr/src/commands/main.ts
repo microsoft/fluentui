@@ -6,11 +6,12 @@ import chalk from 'chalk';
 import * as glob from 'glob';
 import * as match from 'micromatch';
 import type { Browser } from 'puppeteer';
+import * as React from 'react';
 
 import { buildAssets } from '../utils/buildAssets';
 import { CHROME_VERSION } from '../utils/constants';
 import { generateEntryPoints } from '../utils/generateEntryPoints';
-import { hrToSeconds } from '../utils/helpers';
+import { containsAriaDescriptionWarning, hrToSeconds } from '../utils/helpers';
 import { renderToHTML } from '../utils/renderToHTML';
 import { visitPage } from '../utils/visitPage';
 
@@ -27,8 +28,46 @@ type MainParams = {
   stories: string;
 };
 
+/**
+ * Intercept console.error() and console.warn() calls during rendering HTML (i.e. SSR) to ensure that no errors and
+ * warnings are thrown during rendering.
+ */
+function interceptConsoleLogs() {
+  const originalConsoleError = console.error;
+  const originalConsoleWarn = console.warn;
+
+  console.error = (...args: unknown[]) => {
+    // Ignoring 'aria-description' warning from React 17 as it's a valid prop
+    // https://github.com/facebook/react/issues/21035
+    if (containsAriaDescriptionWarning(args[0] + ' ' + args[1]) && React.version.startsWith('17')) {
+      return;
+    }
+
+    console.log(chalk.bgRed.whiteBright('❌  A console.error() was thrown during rendering HTML:'));
+    originalConsoleError(...args);
+
+    throw new Error('During rendering a console.error() was thrown');
+  };
+
+  console.warn = (...args: unknown[]) => {
+    console.log(chalk.bgRed.whiteBright('❌  A console.warn() was thrown:'));
+    originalConsoleWarn(...args);
+
+    throw new Error('During rendering a console.warn() was thrown during rendering HTML:');
+  };
+
+  return () => {
+    console.error = originalConsoleError;
+    console.warn = originalConsoleWarn;
+  };
+}
+
 export async function main(params: MainParams) {
-  const distDirectory = path.resolve(process.cwd(), 'node_modules', '.cache', 'ssr-tests');
+  /**
+   * dist directory cannot be under node_modules in order to make TS path aliases work.
+   * @see https://github.com/evanw/esbuild/blob/main/CHANGELOG.md#0180
+   */
+  const distDirectory = path.resolve(process.cwd(), 'dist', 'ssr-tests');
 
   if (!fs.existsSync(distDirectory)) {
     await fs.promises.mkdir(distDirectory, { recursive: true });
@@ -116,12 +155,17 @@ export async function main(params: MainParams) {
   // ---
 
   const renderStartTime = process.hrtime();
+  const restoreConsole = interceptConsoleLogs();
 
-  await renderToHTML({
-    cjsOutfile,
-    esmOutfile,
-    htmlOutfile,
-  });
+  try {
+    await renderToHTML({
+      cjsOutfile,
+      esmOutfile,
+      htmlOutfile,
+    });
+  } finally {
+    restoreConsole();
+  }
 
   console.log(chalk.bgGreenBright(`🔥 Render done in ${chalk.bold(hrToSeconds(process.hrtime(renderStartTime)))}`));
 

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/theme",
-  "version": "2.6.37",
+  "version": "2.6.40",
   "description": "Basic building blocks for Fluent UI React Component themes",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -30,9 +30,9 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/merge-styles": "^8.5.13",
-    "@fluentui/utilities": "^8.13.20",
-    "@fluentui/set-version": "^8.2.12",
+    "@fluentui/merge-styles": "^8.5.15",
+    "@fluentui/utilities": "^8.13.23",
+    "@fluentui/set-version": "^8.2.14",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

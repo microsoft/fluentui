@@ -82,10 +82,15 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
     // Whether the keyboard focus outline style should be visible
     focusVisible: boolean;
 
-    // whether the combobox/dropdown currently has focus
+    /**
+     * whether the combobox/dropdown currently has focus
+     */
     hasFocus: boolean;
 
-    /* Whether the next blur event should be ignored, and the combobox/dropdown will not close.*/
+    /**
+     * @deprecated - no longer used internally
+     * Whether the next blur event should be ignored, and the combobox/dropdown will not close.
+     */
     ignoreNextBlur: React.MutableRefObject<boolean>;
 
     setActiveOption: React.Dispatch<React.SetStateAction<OptionValue | undefined>>;
