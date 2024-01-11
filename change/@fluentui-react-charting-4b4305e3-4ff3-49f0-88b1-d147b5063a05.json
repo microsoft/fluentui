@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Set axisType for single data point",
+  "comment": "Set axisType for single data point in case of AreaChart",
   "packageName": "@fluentui/react-charting",
   "email": "shubhabrata08@gmail.com",
   "dependentChangeType": "patch"
