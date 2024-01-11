@@ -12,15 +12,11 @@ Popovers can have structured content and interactive components. If you need to 
 
 The design guidelines demonstrate a highly flexible and feature rich popover in the form of a styled DOM element. Creating elements like this which respond to changes in the screen size and the location of the anchoring element are complex and fairly labor intensive to develop.
 
-Presently, due to the maturity of web technologies, and because its such a well used pattern, there aren't many different approaches to implementation of a popover. One outshines all the competitors:
+Presently, due to the maturity of web technologies, and because its such a well used pattern, there aren't many different approaches to implementation of a popover. One outshines all the competitors: [Floating-UI](https://floating-ui.com/docs/getting-started).
 
-[Floating-UI](https://floating-ui.com/docs/getting-started) - A well proven extremely robust javascript framework for controlling floating elements like popovers.
+FluentUI React uses floating-ui to achieve many of the features illustrated in the Fluent UI design guidelines. At first glance, it seems like a natural choice for implmentation. It has a proven track record, uses vanilla javascript, can be easily utilized for web components, will work in any browser, and is relatively small (7kb). Given its popularity and robustness, why wouldn't we utilize the Floating-UI? In short, because there are newer options that provide longevity and performance.
 
-FluentUI React uses floating-ui to achieve many of the features illustrated in the Fluent UI design guidelines. At first glance, it seems like a natural choice for implmentation. It has a proven track record, uses vanilla javascript (so can be easily utilized for a web component), will work in any browser, and is relatively small (7kb).
-
-Given its popularity and robustness, why wouldn't we utilize the Floating-UI? In short, because there are newer options that provide longevity and performance.
-
-[Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) - Native browser popover with the caveat that it's not supported in Firefox yet. A polyfill is available.
+[Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) a Native browser popover, is the less obvious but more modern solution to building popovers. There is a caveat that it's not supported in Firefox yet, however a polyfill is available.
 
 The Popover API has one main advantage over Floating-UI - no javascript. It's the most lightweight solution possible for creating a popover. In addition to being lightweight there are other reasons to decouple from a third party library like floating ui:
 
@@ -30,10 +26,11 @@ The Popover API has one main advantage over Floating-UI - no javascript. It's th
 
 ## Engineering Strategy
 
-Popover will be built with the Popover API, Popover Polyfill API, CSS Anchor Positioning
+Popover is built with the Popover API, Popover Polyfill API, and CSS Anchor Positioning (which will also require our own polyfill)
 
 ## Referenced Technologies
 
+- [Floating-UI](https://floating-ui.com/docs/getting-started) - A well proven extremely robust javascript framework for controlling floating elements like popovers.
 - [Browser Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/) -
   > "The Popover API provides developers with a standard, consistent, flexible mechanism for displaying popover content on top of other page content. Popover content can be controlled either declaratively using HTML attributes, or via JavaScript. This article provides a detailed guide to using all of its features."
 - [oddbird/Popover API polyfill](https://github.com/oddbird/popover-polyfill) - for filling firefox users
