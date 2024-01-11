@@ -36,6 +36,7 @@ Popover is built with the Popover API, Popover Polyfill API, and CSS Anchor Posi
 - [oddbird/Popover API polyfill](https://github.com/oddbird/popover-polyfill) - for filling firefox users
 - [CSS Anchor Positioning](https://drafts.csswg.org/css-anchor-position/)
   > "a positioned element can size and position itself relative to one or more anchor elements elsewhere on the page."
+- [oddbird/CSS Anchor positioning polyfill](https://github.com/oddbird/css-anchor-positioning)
 - [CSS Anchor Positioning Comments Interop 2024](https://github.com/orgs/web-platform-tests/projects/3/views/1?pane=issue&itemId=39322729)
 
 ## DOM Attributes
