@@ -8,13 +8,44 @@ Popovers can have structured content and interactive components. If you need to 
 
 [Fluent Design Guidelines](https://www.figma.com/file/j3IVtJidhjbqUzKulEeA5o/Popover?type=design&node-id=1%3A90&mode=design&t=AqijKCsBtv7FoJ0k-1)
 
+## Background and Motivations
+
+The design guidelines demonstrate a highly flexible and feature rich popover in the form of a styled DOM element. Creating elements like this which respond to changes in the screen size and the location of the anchoring element are complex and fairly labor intensive to develop.
+
+Presently, due to the maturity of web technologies, and because its such a well used pattern, there aren't many different approaches to implementation of a popover. One outshines all the competitors:
+
+[Floating-UI](https://floating-ui.com/docs/getting-started) - A well proven extremely robust javascript framework for controlling floating elements like popovers.
+
+FluentUI React uses floating-ui to achieve many of the features illustrated in the Fluent UI design guidelines. At first glance, it seems like a natural choice for implmentation. It has a proven track record, uses vanilla javascript (so can be easily utilized for a web component), will work in any browser, and is relatively small (7kb).
+
+Given its popularity and robustness, why wouldn't we utilize the Floating-UI? In short, because there are newer options that provide longevity and performance.
+
+[Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) - Native browser popover with the caveat that it's not supported in Firefox yet. A polyfill is available.
+
+The Popover API has one main advantage over Floating-UI - no javascript. It's the most lightweight solution possible for creating a popover. In addition to being lightweight there are other reasons to decouple from a third party library like floating ui:
+
+1. It makes meeting the fluent design guidelines an exercise in styling. This also means that popover could be ported to other design systems.
+1. Upgrades us to the latest web standards - Neither Popover API and CSS Anchored Positioning are fully available yet, but we can subscribe to their language and api now.
+1. Handle positioning (the most complex part of the popover) without third party Javascript Apis - which may be more work, but will give us a foundation that doesn't rely on tools we did not develop ourselves (We are Microsoft and should not need to rely on third party Javascript packages to meet our requirements).
+
+## Engineering Strategy
+
+Popover will be built with the Popover API, Popover Polyfill API, CSS Anchor Positioning
+
+## Referenced Technologies
+
+- [Browser Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/) -
+  > "The Popover API provides developers with a standard, consistent, flexible mechanism for displaying popover content on top of other page content. Popover content can be controlled either declaratively using HTML attributes, or via JavaScript. This article provides a detailed guide to using all of its features."
+- [oddbird/Popover API polyfill](https://github.com/oddbird/popover-polyfill) - for filling firefox users
+- [CSS Anchor Positioning](https://drafts.csswg.org/css-anchor-position/)
+  > "a positioned element can size and position itself relative to one or more anchor elements elsewhere on the page."
+- [CSS Anchor Positioning Comments Interop 2024](https://github.com/orgs/web-platform-tests/projects/3/views/1?pane=issue&itemId=39322729)
+
 ## DOM Attributes
 
 | name             | description                                                                      | type                                      |
 | ---------------- | -------------------------------------------------------------------------------- | ----------------------------------------- |
 | open             | Controls the invocation / visibility of the popover                              | boolean                                   |
-| open-on-hover    | Enables the invocation of the popover on hover                                   | boolean                                   |
-| open-on-context  | Enables the invocation of the popover on context click                           | boolean                                   |
 | anchor           | The id of the element that spawns the popover                                    | string                                    |
 | appearance       | A popover can appear styled with brand or inverted. Defaults to brand.           | "brand" \| "inverted"                     |
 | beak             | Displays the arrow or "beak" that points to the anchor.                          | boolean                                   |
@@ -29,13 +60,15 @@ Popovers can have structured content and interactive components. If you need to 
 
 ## Prior Art
 
-_differences in language_
+_differences coming from Fluent UI React_
 
 | difference           | changed or omitted? | description                                                                                                                                                                                                                                                    |
 | -------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | beak vs withArrow    | changed             | the React implementation uses the terminology withArrow. This differs from the design guidelines which uses "beak" to describe the arrow. This implementation stays true to the design language                                                                |
 | bi-directionality    | omitted             | the FluentUI guidelines specifies that if a foreign language is used that reads from RTL or LTR the floating position of the component will automatically change. Localization has not been built into this component, therefore this feature has been omitted |
 | positioning language | changed             | The FluentUI guidelines has confusing language concerning the positioning of the popover. Fluent UI React has altered the language to simplify it. The web component will follow the React language for positioning. More on this below.                       |
+| open-on-hover        | omitted             | Enables the invocation of the popover on hover                                                                                                                                                                                                                 |
+| open-on-context      | omitted             | Enables the invocation of the popover on context click                                                                                                                                                                                                         |
 
 | FluentUI React - PositioningProps\* | FluentUI Web Component                                                          | notes                                                                                                                                      |
 | ----------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
