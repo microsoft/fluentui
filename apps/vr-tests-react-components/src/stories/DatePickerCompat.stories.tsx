@@ -87,4 +87,10 @@ storiesOf('DatePicker Compat', module)
     <Field label="Select a date">
       <DatePicker />
     </Field>
+  ))
+  .addStory('when rendering inline, it should not render behind relatively positioned elements', () => (
+    <Field label="Select a date">
+      <DatePicker open inlinePopup />
+      <input style={{ position: 'relative' }} />
+    </Field>
   ));
