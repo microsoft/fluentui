@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "useShadowDOMSupport() hook to support ShadowDOM in Tabster.",
+  "packageName": "@fluentui/react-components",
+  "email": "marata@microsoft.com",
+  "dependentChangeType": "patch"
+}
