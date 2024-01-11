@@ -16829,10 +16829,10 @@ karma@6.4.0:
     ua-parser-js "^0.7.30"
     yargs "^16.1.1"
 
-keyborg@^2.2.0, keyborg@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-2.3.0.tgz#7b6c491343df38ca97d35014ecae2a7585d79dab"
-  integrity sha512-TU7VDxohtY7Rf4rTuCwa8QrHjya4eqKiSThI3lHF/wcBpm29gAui/vy0wY8l3ahcFEJ9tZhV+iduXPo6EkNQXw==
+keyborg@2.5.0-canary.0:
+  version "2.5.0-canary.0"
+  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-2.5.0-canary.0.tgz#d96ccd7f2c30e92482e4f5c9f4db467e43aa0f6a"
+  integrity sha512-KtndX93tOMztMzP6jq1E5kDqj2O/LNYb5gjGD4WbjcOlTfcCpW2HkHZcvT18bJeey1dXJCMC9s40uuu2hrHGyw==
 
 keygrip@~1.1.0:
   version "1.1.0"
@@ -24060,12 +24060,12 @@ table@^6.0.4, table@^6.0.7:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-tabster@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-5.0.1.tgz#e6a1bd6f11db87826f11e36c207c29b7314b4c77"
-  integrity sha512-j5GGbN214MiPihGKemENq+fAHKoEpKZvVKakG/reUk3u+dPm/xvmlxYCQY8XayzxpvEu0i/6cMYjBMsEjcvdgA==
+tabster@6.0.0-canary.0:
+  version "6.0.0-canary.0"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-6.0.0-canary.0.tgz#c07a1dd556a36ed5e8072497acc53ada9aefbaa2"
+  integrity sha512-cH0pzmbzIDM9Lf+91GTSOf/+pUjw/a3P6CFJBG60pxTuOQaijrRI2DMF8eH6f1vaJeFCk++ajZxWtfw0ofeWjw==
   dependencies:
-    keyborg "^2.2.0"
+    keyborg "2.5.0-canary.0"
     tslib "^2.3.1"
 
 tachometer@0.7.0:
