@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: allow typeable space on all comboboxes, not only freeform",
+  "packageName": "@fluentui/react-combobox",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
