@@ -1,11 +1,8 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { NavItemValue } from '../NavContext.types';
 
-export type NavCategoryItemSlots = {
-  /**
-   * Root of the component.
-   */
-  root: Slot<'div'>;
+export type NavItemSlots = {
+  root: Slot<'button'>;
 
   // TODO - light this up when we get design spec
   // /**
@@ -21,9 +18,9 @@ export type NavCategoryItemSlots = {
 };
 
 /**
- * navCategoryItem Props
+ * NavItem Props
  */
-export type NavCategoryItemProps = ComponentProps<Partial<NavCategoryItemSlots>> & {
+export type NavItemProps = ComponentProps<Partial<NavItemSlots>> & {
   /**
    * The value that identifies this navCategoryItem when selected.
    */
@@ -31,6 +28,12 @@ export type NavCategoryItemProps = ComponentProps<Partial<NavCategoryItemSlots>>
 };
 
 /**
- * State used in rendering NavCategoryItem
+ * State used in rendering NavItem
  */
-export type NavCategoryItemState = ComponentState<NavCategoryItemSlots>;
+export type NavItemState = ComponentState<NavItemSlots> &
+  Pick<NavItemProps, 'value'> & {
+    /**
+     * If this navCategoryItem is selected
+     */
+    selected: boolean;
+  };
