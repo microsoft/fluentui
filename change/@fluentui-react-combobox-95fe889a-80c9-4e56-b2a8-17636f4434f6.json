@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(Combobox): do not select options on \"Space\"",
+  "packageName": "@fluentui/react-combobox",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

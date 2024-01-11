@@ -21,6 +21,7 @@ export type DropdownActions =
   | 'Type';
 
 export interface DropdownActionOptions {
+  elementType?: 'input' | 'button';
   open?: boolean;
   multiselect?: boolean;
 }
@@ -32,7 +33,7 @@ export function getDropdownActionFromKey(
   e: KeyboardEvent | React.KeyboardEvent,
   options: DropdownActionOptions = {},
 ): DropdownActions {
-  const { open = true, multiselect = false } = options;
+  const { elementType, open = true } = options;
   const code = e.key;
   const { altKey, ctrlKey, key, metaKey } = e;
 
@@ -52,11 +53,8 @@ export function getDropdownActionFromKey(
   }
 
   // select or close actions
-  if ((code === keys.ArrowUp && altKey) || code === keys.Enter || (!multiselect && code === keys.Space)) {
+  if ((code === keys.ArrowUp && altKey) || code === keys.Enter || (code === keys.Space && elementType === 'button')) {
     return 'CloseSelect';
-  }
-  if (multiselect && code === keys.Space) {
-    return 'Select';
   }
   if (code === keys.Escape) {
     return 'Close';

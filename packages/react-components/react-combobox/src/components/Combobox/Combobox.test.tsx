@@ -474,7 +474,7 @@ describe('Combobox', () => {
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Red');
   });
 
-  it('selects an option on enter and space', () => {
+  it('selects an option on enter', () => {
     const { getByTestId, getByRole } = render(
       <Combobox open data-testid="combobox">
         <Option>Red</Option>
@@ -486,13 +486,25 @@ describe('Combobox', () => {
     const combobox = getByTestId('combobox');
 
     userEvent.type(combobox, '{Enter}');
-
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Red');
+  });
 
-    // arrow down + space
-    userEvent.keyboard('{ArrowDown} ');
+  it('allows to input space', () => {
+    const { getByRole, getByText } = render(
+      <Combobox open>
+        <Option>Slice of pizza</Option>
+        <Option>Slice of cake</Option>
+        <Option>Slice of pie</Option>
+      </Combobox>,
+    );
 
-    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
+    const combobox = getByRole('combobox');
+
+    userEvent.type(combobox, 'Slice of pie');
+    userEvent.type(combobox, '{Enter}');
+
+    expect(getByText('Slice of pie').getAttribute('aria-selected')).toEqual('true');
+    expect((combobox as HTMLInputElement).value).toEqual('Slice of pie');
   });
 
   it('does not select a disabled option with the keyboard', () => {
@@ -702,23 +714,6 @@ describe('Combobox', () => {
 
     expect(onOptionSelect).not.toHaveBeenCalled();
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('re ');
-  });
-
-  it('uses space to select after arrowing through options in a freeform combobox', () => {
-    const onOptionSelect = jest.fn();
-
-    const { getByRole } = render(
-      <Combobox onOptionSelect={onOptionSelect} freeform>
-        <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
-      </Combobox>,
-    );
-
-    userEvent.type(getByRole('combobox'), 're{ArrowDown} ');
-
-    expect(onOptionSelect).toHaveBeenCalledTimes(1);
-    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
   });
 
   it('inserts space character in closed freeform combobox', () => {

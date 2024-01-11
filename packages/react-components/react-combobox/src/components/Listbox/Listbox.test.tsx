@@ -293,7 +293,7 @@ describe('Listbox', () => {
     expect(onOptionSelect).toHaveBeenCalled();
   });
 
-  it('should select option with the space key', () => {
+  it('should not select option with the space key', () => {
     const onOptionSelect = jest.fn();
 
     const { getByTestId } = render(
@@ -305,10 +305,10 @@ describe('Listbox', () => {
     );
 
     const listbox = getByTestId('listbox');
+
     fireEvent.keyDown(listbox, { key: 'ArrowDown' });
     fireEvent.keyDown(listbox, { key: ' ' });
 
-    expect(getByTestId('red').getAttribute('aria-selected')).toEqual('true');
-    expect(onOptionSelect).toHaveBeenCalled();
+    expect(onOptionSelect).not.toHaveBeenCalled();
   });
 });

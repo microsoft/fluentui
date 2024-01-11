@@ -103,7 +103,7 @@ export function useTriggerSlot(
   // handle combobox keyboard interaction
   trigger.onKeyDown = mergeCallbacks(
     (event: React.KeyboardEvent<HTMLButtonElement> & React.KeyboardEvent<HTMLInputElement>) => {
-      const action = getDropdownActionFromKey(event, { open, multiselect });
+      const action = getDropdownActionFromKey(event, { elementType, open, multiselect });
       const maxIndex = getCount() - 1;
       const activeIndex = activeOption ? getIndexOfId(activeOption.id) : -1;
       let newIndex = activeIndex;
