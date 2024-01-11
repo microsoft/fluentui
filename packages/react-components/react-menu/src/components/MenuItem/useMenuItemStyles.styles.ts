@@ -24,6 +24,7 @@ const useRootBaseStyles = makeResetStyles({
   paddingRight: tokens.spacingVerticalSNudge, // 6px
   paddingLeft: tokens.spacingVerticalSNudge,
   paddingTop: tokens.spacingVerticalSNudge,
+  paddingBottom: tokens.spacingVerticalSNudge,
   boxSizing: 'border-box',
   maxWidth: '290px',
   minHeight: '32px',
