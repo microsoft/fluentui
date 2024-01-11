@@ -573,7 +573,7 @@ runTest('_createNewDataSet', () => {
   });
 });
 
-describe.skip('Skip - timezone related test cases', () => {
+runTest('Skip - timezone related test cases', () => {
   test('Should return proper data set for date axis with default axis type', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
