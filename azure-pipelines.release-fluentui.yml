@@ -33,8 +33,6 @@ variables:
     value: 0.0.0-nightly
   - name: officialRelease # used by docsite
     value: true
-  - name: nightlyReleaseDate # used by nightly built docsite to setup codesandbox correctly
-    value: empty
   - name: tags
     value: production,externalfacing
 
@@ -96,27 +94,6 @@ extends:
                   script: yarn buildci
 
               - task: CmdLine@2
-                displayName: '[Nightly] Pack fluentui packages to ArtifactStagingDirectory'
-                condition: and(succeeded(), eq(variables.publishOfficial, false))
-                inputs:
-                  script: |
-                    today=`date +%Y-%m-%d`
-                    echo date today $today
-                    echo "##vso[task.setvariable variable=date]$today"
-                    yarn release:fluentui:pack-nightly
-
-              - task: AzureUpload@2
-                displayName: '[Nightly] Upload tarballs'
-                condition: and(succeeded(), eq(variables.publishOfficial, false))
-                inputs:
-                  SourcePath: $(Build.ArtifactStagingDirectory)
-                  azureSubscription: 'UI Fabric (private)'
-                  storage: fluentsite
-                  ContainerName: nightly-builds
-                  BlobPrefix: $(date) # upload tarballs to folder named by today's date
-                  Gzip: true
-
-              - task: CmdLine@2
                 displayName: '[NPM] Publish to NPM'
                 condition: and(succeeded(), eq(variables.publishOfficial, true))
                 timeoutInMinutes: 2
@@ -132,9 +109,7 @@ extends:
                     echo "registry=https://registry.npmjs.org/" >> packages/fluentui/.npmrc
                     echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> packages/fluentui/.npmrc
 
-                    yarn release:fluentui:$(releaseVersion) --yes
-
-                    yarn release:fluentui:post-validation
+                    yarn northstar:release bump $(releaseVersion) --yes
 
               - template: .devops/templates/cleanup.yml@self
 
@@ -168,15 +143,6 @@ extends:
                   filePath: yarn-ci.sh
 
               - task: CmdLine@2
-                displayName: 'Set nightlyReleaseDate'
-                condition: and(succeeded(), eq(variables.publishOfficial, false))
-                inputs:
-                  script: |
-                    today=`date +%Y-%m-%d`
-                    echo date today $today
-                    echo "##vso[task.setvariable variable=nightlyReleaseDate]$today"
-
-              - task: CmdLine@2
                 displayName: 'Set base path and version'
                 condition: and(succeeded(), eq(variables.publishOfficial, true), ne(variables.releaseVersion, 'canary'))
                 inputs:
@@ -185,25 +151,13 @@ extends:
                     echo "Docsite base path published for version $ver"
                     echo "##vso[task.setvariable variable=deployBasePath]$ver"
                     echo "##vso[task.setvariable variable=docsiteVersion]$ver"
-                    echo "##vso[task.setvariable variable=nightlyReleaseDate]"
-
-              - task: CmdLine@2
-                displayName: 'Set base path and version for canary'
-                condition: and(succeeded(), eq(variables.publishOfficial, true), eq(variables.releaseVersion, 'canary'))
-                inputs:
-                  script: |
-                    ver=`node -p "require('./packages/fluentui/lerna.json').version"`
-                    echo "Docsite base path published for version $ver"
-                    echo "##vso[task.setvariable variable=deployBasePath]$ver"
-                    echo "##vso[task.setvariable variable=docsiteVersion]$ver"
-                    echo "##vso[task.setvariable variable=nightlyReleaseDate]"
 
               - task: CmdLine@2
                 displayName: Build
                 inputs:
                   script: |
-                    echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion) nightlyReleaseDate $(nightlyReleaseDate)
-                    NODE_ENV=production yarn build:fluentui:docs
+                    echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion)
+                    NODE_ENV=production yarn northstar:build:docs
 
               - task: AzureUpload@2
                 displayName: Upload to Azure

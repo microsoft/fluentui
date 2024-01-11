@@ -7,8 +7,8 @@ import {
   readJson,
   writeJson,
   logger,
-  updateProjectConfiguration,
   readProjectConfiguration,
+  readNxJson,
 } from '@nx/devkit';
 import { moveGenerator } from '@nx/workspace/generators';
 import { getProjectConfig, getProjects, hasSchemaFlag, isPackageConverged, isV8Package } from '../../utils';
@@ -53,29 +53,48 @@ async function runBatchMove(
   }
 }
 
+/**
+ *
+ * Starting nx 17, projects that include scope  within their project name cannot be moved via `derived`
+ * until we refactor all projects to not use `@fluentui` scope as part of their name we need this extra logic
+ */
+function getDerivedRootPathPrefix(tree: Tree, projectName: string) {
+  const nxJsonMapping = { library: 'libsDir', application: 'appsDir' } as const;
+  const nxConfig = readNxJson(tree);
+  const projectConfig = readProjectConfiguration(tree, projectName);
+
+  if (!nxConfig) {
+    throw new Error('nx.json doesnt exist');
+  }
+
+  if (!projectConfig.projectType) {
+    throw new Error(`project ${projectName} has not specified projectType`);
+  }
+
+  const workspaceLayout = (nxConfig.workspaceLayout ?? {
+    libsDir: '',
+    appsDir: '',
+  }) as { libsDir: string; appsDir: string };
+
+  const root = workspaceLayout[nxJsonMapping[projectConfig.projectType]];
+
+  return root;
+}
+
 async function movePackage(tree: Tree, schema: AssertedSchema) {
   const { name, destination, updateImportPath = false } = schema;
 
+  const derivedRootPath = getDerivedRootPathPrefix(tree, name);
+  const derivedDestination = joinPathFragments(derivedRootPath, destination);
+
   await moveGenerator(tree, {
     projectName: name,
-    destination,
+    destination: derivedDestination,
     importPath: name,
     updateImportPath,
+    projectNameAndRootFormat: 'as-provided',
   });
 
-  const newProjectName = getNewProjectName(schema.destination);
-  const project = readProjectConfiguration(tree, newProjectName);
-  // moveGenerator automatically renames the package so this overwrites that change
-  // and sets it back to the original package name.
-  updateProjectConfiguration(tree, newProjectName, {
-    ...project,
-    name: schema.name,
-  });
-
-  // moveGenerator automatically updates the Readme file of the packages to replace
-  // the package name with a new name based on the "destination" flag. This check
-  // reverts the changes it makes.
-  updateReadMe(tree, schema);
   updateApiExtractor(tree, schema);
   updateStorybookTypeImport(tree, schema);
   updateBuildLocalScript(tree, schema);
@@ -100,28 +119,6 @@ function validateSchema(schema: MovePackagesGeneratorSchema) {
   if (!name && !allConverged && !allV8) {
     throw new Error(`must provide a specified --name or provide --allConverged or provide --allV8`);
   }
-}
-
-function getNewProjectName(destinationPath: string) {
-  return destinationPath.replace(/\//g, '-');
-}
-
-/**
- * The moveGenerator automatically renames the package and updates the README.md file to reflect that change.
- * This function restores the contents of the README.md file back to original state.
- */
-function updateReadMe(tree: Tree, schema: AssertedSchema) {
-  const project = getProjects(tree).get(schema.name) as ProjectConfiguration;
-  const readMePath = joinPathFragments(project.root, 'README.md');
-
-  if (!tree.exists(readMePath)) {
-    return;
-  }
-
-  const newName = new RegExp(`${getNewProjectName(schema.destination)}`, 'g');
-  const readMeFile = tree.read(readMePath, 'utf8') as string;
-  const updatedReadMeFile = readMeFile.replace(newName, schema.name);
-  tree.write(readMePath, updatedReadMeFile);
 }
 
 /**

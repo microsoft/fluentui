@@ -67,7 +67,7 @@ export class FabricPerformance {
     measurement.totalDuration += duration;
     measurement.count++;
     measurement.all.push({
-      duration: duration,
+      duration,
       timeStamp: end,
     });
     FabricPerformance.summary[name] = measurement;

@@ -239,6 +239,18 @@
 //   'onwheel',
 // ];
 
+const reactLegacy = [
+  'error',
+  {
+    name: 'window',
+    message: 'Get a reference to `window` via context.',
+  },
+  {
+    name: 'document',
+    message: 'Get a reference to `document` via context.',
+  },
+];
+
 const react = [
   'error',
   {
@@ -258,5 +270,6 @@ const react = [
 ];
 
 module.exports = {
+  reactLegacy,
   react,
 };

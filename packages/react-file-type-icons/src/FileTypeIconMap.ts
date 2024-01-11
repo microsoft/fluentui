@@ -401,6 +401,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   photo360: {},
   picturesfolder: {},
+  planner: {},
   potx: {
     extensions: ['pot', 'potm', 'potx'],
   },
@@ -465,6 +466,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'xll',
     ],
   },
+  todoitem: {},
   txt: {
     extensions: ['dif', 'diff', 'readme', 'out', 'plist', 'properties', 'text', 'txt'],
   },

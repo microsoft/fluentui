@@ -36,9 +36,9 @@ function loadWorkspaceAddon(addonName, options) {
 
   const inMemoryTsTranspilationTemplate = stripIndents`
       function registerInMemoryTsTranspilation(){
-        const { registerTsProject } = require('nx/src/utils/register');
+        const { registerTsProject } = require('@nx/js/src/internal');
         const { joinPathFragments } = require('@nx/devkit');
-        registerTsProject(joinPathFragments(__dirname, '..'), 'tsconfig.lib.json');
+        registerTsProject(joinPathFragments(__dirname, '..', 'tsconfig.lib.json'));
       }
 
       registerInMemoryTsTranspilation();

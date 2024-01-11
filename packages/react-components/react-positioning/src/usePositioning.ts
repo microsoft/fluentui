@@ -24,6 +24,7 @@ import {
 import { createPositionManager } from './createPositionManager';
 import { devtools } from '@floating-ui/devtools';
 import { devtoolsCallback } from './utils/devtools';
+import { POSITIONING_END_EVENT } from './constants';
 
 /**
  * @internal
@@ -135,8 +136,11 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
     }
   });
 
+  const onPositioningEnd = useEventCallback(() => options.onPositioningEnd?.());
   const setContainer = useCallbackRef<HTMLElement | null>(null, container => {
     if (containerRef.current !== container) {
+      containerRef.current?.removeEventListener(POSITIONING_END_EVENT, onPositioningEnd);
+      container?.addEventListener(POSITIONING_END_EVENT, onPositioningEnd);
       containerRef.current = container;
       updatePositionManager();
     }

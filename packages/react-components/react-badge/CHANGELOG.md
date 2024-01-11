@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Mon, 18 Dec 2023 14:40:46 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Jan 2024 16:24:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.19)
+
+Mon, 08 Jan 2024 16:24:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.18..@fluentui/react-badge_v9.2.19)
+
+### Patches
+
+- Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.24 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-utilities to v9.15.6 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+
+## [9.2.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.18)
+
+Wed, 03 Jan 2024 09:26:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.17..@fluentui/react-badge_v9.2.18)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.23 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+- Bump @fluentui/react-utilities to v9.15.5 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
 
 ## [9.2.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.17)
 

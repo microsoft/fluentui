@@ -24,7 +24,7 @@ import {
 } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
-import * as d3TimeFormat from 'd3-time-format';
+import { timeFormat as d3TimeFormat } from 'd3-time-format';
 
 type DataSet = {
   dataSet: RectanglesGraphData;
@@ -640,7 +640,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _getStringFormattedDate = (point: string, formatString?: string): string => {
     const date = new Date();
     date.setTime(+point);
-    return d3TimeFormat.timeFormat(formatString || '%b/%d')(date);
+    return d3TimeFormat(formatString || '%b/%d')(date);
   };
 
   private _getStringFormattedNumber = (point: string, formatString?: string): string => {

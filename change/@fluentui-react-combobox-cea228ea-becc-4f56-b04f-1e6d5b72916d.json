@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: trigger focus should mount hidden listbox",
-  "packageName": "@fluentui/react-combobox",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
