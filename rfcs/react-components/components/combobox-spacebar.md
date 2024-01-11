@@ -40,7 +40,25 @@ One of the risks is that the developers and designers may not be in a position t
 
 We cannot fully know whether the ideal spacebar behavior is to select or insert a character, since we don't know the full context of usage. Our choices mostly revolve around balancing providing more flexibility vs. more consistency, and choosing the best default if we do provide flexibility.
 
-## Options
+## Solution
+
+After the offline discussion (happened at 17th May 23) we went with the following solution.
+
+### 3. Always allow space to insert a character
+
+- `Dropdown` does select on space
+- `Combobox` does not select on space, always inserts a character in the input
+
+#### Pros
+
+- Authors don't need to try to figure out what the ideal space key behavior is on a case-by-case basis / less authoring overhead for an already complex component
+- Consistent behavior across all apps using Fluent
+
+#### Cons
+
+- There is no way to opt into space-to-select behavior
+
+## Rejected options
 
 ### 1. `allowSpaceCharacter` prop, default to `true`
 
@@ -64,19 +82,6 @@ We would likely include author guidance that all Comboboxes within their app use
 ### 2. `allowSpaceCharacter` prop, default to `false`
 
 This is the same as (1), but with a different default. The Pros/Cons list is essentially the same, but reversed.
-
-### 3. Always allow space to insert a character
-
-We would keep the behavior where if the user is actively interacting with the options in the dropdown listbox, space will select. Otherwise, space will insert a character in the input.
-
-#### Pros
-
-- Authors don't need to try to figure out what the ideal space key behavior is on a case-by-case basis / less authoring overhead for an already complex component
-- Consistent behavior across all apps using Fluent
-
-#### Cons
-
-- There is no way to opt into space-to-select behavior
 
 ### 4. Always allow space to insert a character on single-select Comboboxes, always select on multi-select comboboxes
 
