@@ -58,5 +58,11 @@ module.exports = {
         'react/jsx-no-bind': 'off',
       },
     },
+    {
+      files: ['**/components/**/*.types.ts'],
+      rules: {
+        '@fluentui/consistent-callback-type': 'error',
+      },
+    },
   ],
 };
