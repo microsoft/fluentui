@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: disable consistent-callback-type lint rule for existing callbacks",
+  "packageName": "@fluentui/react-utilities",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "none"
+}

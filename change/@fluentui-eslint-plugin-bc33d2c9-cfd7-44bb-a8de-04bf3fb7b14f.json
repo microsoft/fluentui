@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add new rule consistent-callback-type",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
