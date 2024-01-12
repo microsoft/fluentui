@@ -99,17 +99,16 @@ extends:
                 timeoutInMinutes: 2
                 inputs:
                   script: |
-                    yarn logout
+                    npm logout
 
                     NPM_TOKEN=$(npmToken)
 
-                    touch packages/fluentui/.npmrc
+                    echo "registry=https://registry.npmjs.org/" > .npmrc
+                    echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
 
-                    echo "@fluentui:registry=https://registry.npmjs.org/" > packages/fluentui/.npmrc
-                    echo "registry=https://registry.npmjs.org/" >> packages/fluentui/.npmrc
-                    echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> packages/fluentui/.npmrc
+                    npx northstar:release bump $(releaseVersion) --yes
 
-                    yarn northstar:release bump $(releaseVersion) --yes
+                    git checkout -- .npmrc
 
               - template: .devops/templates/cleanup.yml@self
 
