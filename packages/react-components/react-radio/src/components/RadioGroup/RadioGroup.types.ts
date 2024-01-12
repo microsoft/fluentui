@@ -33,6 +33,7 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
   /**
    * Callback when the selected Radio item changes.
    */
+  // eslint-disable-next-line @fluentui/consistent-callback-type
   onChange?: (ev: React.FormEvent<HTMLDivElement>, data: RadioGroupOnChangeData) => void;
 
   /**

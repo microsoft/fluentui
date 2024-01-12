@@ -54,6 +54,7 @@ export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & {
    * NOTE: controlling the open state of a tree item will not affect the open state of its children
    */
   open?: boolean;
+  // eslint-disable-next-line @fluentui/consistent-callback-type
   onOpenChange?: (e: TreeItemOpenChangeEvent, data: TreeItemOpenChangeData) => void;
   /**
    * This property is inferred through context on a nested tree, and required for a flat tree.

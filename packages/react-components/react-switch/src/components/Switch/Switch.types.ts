@@ -68,6 +68,7 @@ export type SwitchProps = Omit<
   /**
    * Callback to be called when the checked state value changes.
    */
+  // eslint-disable-next-line @fluentui/consistent-callback-type
   onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SwitchOnChangeData) => void;
 };
 

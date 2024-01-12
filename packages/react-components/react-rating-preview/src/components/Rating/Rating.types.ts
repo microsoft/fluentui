@@ -46,6 +46,7 @@ export type RatingProps = ComponentProps<RatingSlots> & {
   /**
    * Callback when the rating value is changed by the user.
    */
+  // eslint-disable-next-line @fluentui/consistent-callback-type
   onChange?: (ev: React.SyntheticEvent | Event, data: RatingOnChangeData) => void;
   /**
    * Sets the precision to allow half-filled shapes in Rating

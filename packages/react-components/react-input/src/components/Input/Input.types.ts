@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
 
 export type InputSlots = {
   /**
@@ -26,6 +26,8 @@ export type InputSlots = {
   /** Element after the input text, within the input border */
   contentAfter?: Slot<'span'>;
 };
+
+type OnOpenChangeData = EventData<'click', React.MouseEvent<HTMLInputElement>>;
 
 export type InputProps = Omit<
   ComponentProps<Partial<InputSlots>, 'input'>,
@@ -77,7 +79,10 @@ export type InputProps = Omit<
   /**
    * Called when the user changes the input's value.
    */
+  // eslint-disable-next-line @fluentui/consistent-callback-type
   onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => void;
+
+  onChange2?: EventHandler<OnOpenChangeData>;
 
   /**
    * An input can have different text-based [types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#input_types)

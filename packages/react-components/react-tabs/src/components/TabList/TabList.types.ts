@@ -71,6 +71,7 @@ export type TabListProps = ComponentProps<TabListSlots> & {
   /**
    * Raised when a tab is selected.
    */
+  // eslint-disable-next-line @fluentui/consistent-callback-type
   onTabSelect?: SelectTabEventHandler;
 
   /**

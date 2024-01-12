@@ -40,6 +40,7 @@ export type MenuProps = ComponentProps<MenuSlots> &
      * Call back when the component requests to change value
      * The `open` value is used as a hint when directly controlling the component
      */
+    // eslint-disable-next-line @fluentui/consistent-callback-type
     onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
 
     /**

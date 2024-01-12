@@ -64,6 +64,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
    * Call back when the component requests to change value
    * The `open` value is used as a hint when directly controlling the component
    */
+  // eslint-disable-next-line @fluentui/consistent-callback-type
   onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
 
   /**

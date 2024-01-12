@@ -81,6 +81,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * @param data - A data object with relevant information,
    * such as open value and type of interaction that created the event
    */
+  // eslint-disable-next-line @fluentui/consistent-callback-type
   onOpenChange?: DialogOpenChangeEventHandler;
   /**
    * Can contain two children including {@link DialogTrigger} and {@link DialogSurface}.

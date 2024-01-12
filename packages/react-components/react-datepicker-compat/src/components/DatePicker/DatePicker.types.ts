@@ -16,6 +16,7 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
     /**
      * Callback issued when a date is selected
      */
+    // eslint-disable-next-line @fluentui/consistent-callback-type
     onSelectDate?: (date: Date | null | undefined) => void;
 
     /**
@@ -84,11 +85,13 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
     /**
      * Callback to run when the DatePicker's open state changes
      */
+    // eslint-disable-next-line @fluentui/consistent-callback-type
     onOpenChange?: (open: boolean) => void;
 
     /**
      * Callback to run after the DatePicker's input has been validated
      */
+    // eslint-disable-next-line @fluentui/consistent-callback-type
     onValidationResult?: (data: DatePickerValidationResultData) => void;
 
     /**

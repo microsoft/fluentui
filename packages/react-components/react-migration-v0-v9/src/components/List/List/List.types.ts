@@ -53,6 +53,7 @@ export type ListProps = ComponentProps<ListSlots> & {
   /**
    * Callback for selection change events, used for both controlled and uncontrolled (as notification)
    */
+  // eslint-disable-next-line @fluentui/consistent-callback-type
   onSelectionChange?: (event: React.SyntheticEvent, data: { selectedItems: SelectionItemId[] }) => void;
 
   /**
