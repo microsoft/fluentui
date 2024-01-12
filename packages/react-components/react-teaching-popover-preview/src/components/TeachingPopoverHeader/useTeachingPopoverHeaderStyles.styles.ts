@@ -1,35 +1,103 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
+import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { TeachingPopoverHeaderSlots, TeachingPopoverHeaderState } from './TeachingPopoverHeader.types';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const teachingPopoverHeaderClassNames: SlotClassNames<TeachingPopoverHeaderSlots> = {
   root: 'fui-TeachingPopoverHeader',
-  // TODO: add class names for all slots on TeachingPopoverHeaderSlots.
-  // Should be of the form `<slotName>: 'fui-TeachingPopoverHeader__<slotName>`
+  dismissButton: 'fui-TeachingPopoverHeader__dismissButton',
+  icon: 'fui-TeachingPopoverHeader__icon',
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    display: 'flex',
+    flexDirection: 'row',
+    color: tokens.colorNeutralForeground3,
+    fontWeight: tokens.fontWeightSemibold,
+    fontSize: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+    paddingBottom: tokens.spacingVerticalXS,
+    alignItems: 'center',
+    marginTop: tokens.spacingHorizontalNone,
+    marginBottom: tokens.spacingHorizontalNone,
   },
-
-  // TODO add additional classes for different states and/or slots
+  rootBrand: {
+    color: tokens.colorNeutralForegroundOnBrand,
+  },
+  dismissButton: {
+    color: tokens.colorNeutralForeground2,
+    position: 'relative',
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+    display: 'flex',
+    alignItems: 'center',
+    cursor: 'pointer',
+    ...typographyStyles.body1,
+    backgroundColor: tokens.colorTransparentBackground,
+    boxSizing: 'border-box',
+    borderTopRightRadius: tokens.borderRadiusNone,
+    borderBottomRightRadius: tokens.borderRadiusNone,
+    borderRightStyle: 'none',
+    ...createCustomFocusIndicatorStyle({
+      borderTopRightRadius: tokens.borderRadiusNone,
+      borderBottomRightRadius: tokens.borderRadiusNone,
+    }),
+    marginInlineStart: 'auto',
+    ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
+  },
+  dismissBrand: {
+    color: tokens.colorNeutralForegroundOnBrand,
+  },
+  icon: {
+    height: tokens.fontSizeBase200,
+    width: tokens.fontSizeBase200,
+    lineHeight: tokens.lineHeightBase200,
+    fontSize: tokens.fontSizeBase200,
+    alignItems: 'center',
+    boxSizing: 'content-box',
+    display: 'inline-flex',
+    justifyContent: 'center',
+    textDecorationLine: 'none',
+    verticalAlign: 'middle',
+    position: 'relative',
+    backgroundColor: tokens.colorTransparentBackground,
+    color: tokens.colorNeutralForeground2,
+    marginRight: tokens.spacingHorizontalXS,
+  },
+  iconBrand: {
+    color: tokens.colorNeutralForegroundOnBrand,
+  },
 });
 
-/**
- * Apply styling to the TeachingPopoverHeader slots based on the state
- */
-export const useTeachingPopoverHeaderStyles_unstable = (
-  state: TeachingPopoverHeaderState,
-): TeachingPopoverHeaderState => {
+/** Applies style classnames to slots */
+export const useTeachingPopoverHeaderStyles_unstable = (state: TeachingPopoverHeaderState) => {
   const styles = useStyles();
-  state.root.className = mergeClasses(teachingPopoverHeaderClassNames.root, styles.root, state.root.className);
+  const { appearance } = state;
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  state.root.className = mergeClasses(
+    teachingPopoverHeaderClassNames.root,
+    styles.root,
+    appearance === 'brand' && styles.rootBrand,
+    state.root.className,
+  );
 
+  if (state.dismissButton) {
+    state.dismissButton.className = mergeClasses(
+      teachingPopoverHeaderClassNames.dismissButton,
+      styles.dismissButton,
+      appearance === 'brand' ? styles.dismissBrand : undefined,
+      state.dismissButton.className,
+    );
+  }
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(
+      teachingPopoverHeaderClassNames.icon,
+      styles.icon,
+      appearance === 'brand' ? styles.iconBrand : undefined,
+      state.icon.className,
+    );
+  }
   return state;
 };

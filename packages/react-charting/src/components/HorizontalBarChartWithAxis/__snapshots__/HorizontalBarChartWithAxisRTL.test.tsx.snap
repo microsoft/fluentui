@@ -17,6 +17,533 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           overflow: hidden;
           width: 100%;
         }
+    id="chart_110"
+    role="presentation"
+  >
+    <div
+      id="defaultTabbableElement_111"
+    />
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone112"
+    >
+      <svg
+        focusable="false"
+        height="0"
+        style="display: block;"
+        width="0"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          id="xAxisGElementchart_110"
+          transform="translate(0, -35)"
+        />
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          id="yAxisGElementchart_110"
+          transform="translate(40, 0)"
+        />
+        <g>
+          <rect
+            aria-label="20%. 2020/04/30."
+            aria-labelledby="toolTipcallout108"
+            class=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#002050"
+            height="32"
+            role="img"
+            tabindex="0"
+            width="-30"
+            x="40"
+            y="4"
+          />
+           
+           
+           
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone113"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Oranges"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #0078d4;
+                              border-color: #0078d4;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #0078d4, #0078d4);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Oranges
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Grapes"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #002050;
+                              border-color: #002050;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #002050, #002050);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Grapes
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Apples"
+                      aria-posinset="3"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #00188f;
+                              border-color: #00188f;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #00188f, #00188f);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Apples
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Bananas"
+                      aria-posinset="4"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #00bcf2;
+                              border-color: #00bcf2;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #00bcf2, #00bcf2);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Bananas
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Horizontal bar chart with axis - Screen resolution Should remain unchanged on zoom out 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
     id="chart_116"
     role="presentation"
   >
@@ -527,533 +1054,6 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
 </div>
 `;
 
-exports[`Horizontal bar chart with axis - Screen resolution Should remain unchanged on zoom out 1`] = `
-<div>
-  <div
-    class=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: flex;
-          flex-direction: column;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: 100%;
-          overflow: hidden;
-          width: 100%;
-        }
-    id="chart_122"
-    role="presentation"
-  >
-    <div
-      id="defaultTabbableElement_123"
-    />
-    <div
-      class=
-          ms-FocusZone
-          &:focus {
-            outline: none;
-          }
-          {
-            overflow: auto;
-          }
-      data-focuszone-id="FocusZone124"
-    >
-      <svg
-        focusable="false"
-        height="0"
-        style="display: block;"
-        width="0"
-      >
-        <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-                width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-          id="xAxisGElementchart_122"
-          transform="translate(0, -35)"
-        />
-        <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-          id="yAxisGElementchart_122"
-          transform="translate(40, 0)"
-        />
-        <g>
-          <rect
-            aria-label="20%. 2020/04/30."
-            aria-labelledby="toolTipcallout120"
-            class=
-
-                {
-                  opacity: ;
-                }
-            data-is-focusable="true"
-            fill="#002050"
-            height="32"
-            role="img"
-            tabindex="0"
-            width="-30"
-            x="40"
-            y="4"
-          />
-           
-           
-           
-        </g>
-      </svg>
-    </div>
-    <div
-      class=
-
-          {
-            margin-left: 20px;
-            margin-top: 8px;
-          }
-    >
-      <div
-        class=
-
-            {
-              align-items: center;
-              margin-bottom: 0;
-              margin-left: -8px;
-              margin-right: 0;
-              margin-top: -8px;
-              white-space: nowrap;
-              width: 100%;
-            }
-      >
-        <div>
-          <div
-            style="position: relative;"
-          >
-            <div
-              data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
-            >
-              <div
-                aria-label="Legends"
-                aria-multiselectable="false"
-                class=
-                    ms-FocusZone
-                    &:focus {
-                      outline: none;
-                    }
-                data-focuszone-id="FocusZone125"
-                role="listbox"
-              >
-                <div
-                  class=
-                      ms-OverflowSet
-                      {
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: unset;
-                        position: relative;
-                      }
-                  role="group"
-                >
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="Oranges"
-                      aria-posinset="1"
-                      aria-selected="false"
-                      aria-setsize="4"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="0"
-                    >
-                      <div
-                        class=
-
-                            {
-                              background-color: #0078d4;
-                              border-color: #0078d4;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #0078d4, #0078d4);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Oranges
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="Grapes"
-                      aria-posinset="2"
-                      aria-selected="false"
-                      aria-setsize="4"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class=
-
-                            {
-                              background-color: #002050;
-                              border-color: #002050;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #002050, #002050);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Grapes
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="Apples"
-                      aria-posinset="3"
-                      aria-selected="false"
-                      aria-setsize="4"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class=
-
-                            {
-                              background-color: #00188f;
-                              border-color: #00188f;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #00188f, #00188f);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Apples
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
-                    role="none"
-                  >
-                    <button
-                      aria-label="Bananas"
-                      aria-posinset="4"
-                      aria-selected="false"
-                      aria-setsize="4"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class=
-
-                            {
-                              background-color: #00bcf2;
-                              border-color: #00bcf2;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, #00bcf2, #00bcf2);
-                              opacity: ;
-                            }
-                      />
-                      <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
-                      >
-                        Bananas
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] = `
 <div>
   <div
@@ -1084,11 +1084,11 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
             overflow: hidden;
             width: 100%;
           }
-      id="chart_131"
+      id="chart_125"
       role="presentation"
     >
       <div
-        id="defaultTabbableElement_132"
+        id="defaultTabbableElement_126"
       />
       <div
         class=
@@ -1099,7 +1099,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
             {
               overflow: auto;
             }
-        data-focuszone-id="FocusZone133"
+        data-focuszone-id="FocusZone127"
       >
         <svg
           focusable="false"
@@ -1133,7 +1133,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                 & path {
                   display: none;
                 }
-            id="xAxisGElementchart_131"
+            id="xAxisGElementchart_125"
             transform="translate(0, -35)"
           />
           <g
@@ -1161,13 +1161,13 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
-            id="yAxisGElementchart_131"
+            id="yAxisGElementchart_125"
             transform="translate(40, 0)"
           />
           <g>
             <rect
               aria-label="20%. 2020/04/30."
-              aria-labelledby="toolTipcallout129"
+              aria-labelledby="toolTipcallout123"
               class=
 
                   {
@@ -1225,7 +1225,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone134"
+                  data-focuszone-id="FocusZone128"
                   role="listbox"
                 >
                   <div
@@ -2626,6 +2626,1096 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                       />
                     </button>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`HorizontalBarChartWithAxis - mouse events Should render callout correctly on mouseover 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_131"
+    role="presentation"
+  >
+    <div
+      id="defaultTabbableElement_132"
+    />
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone133"
+    >
+      <svg
+        focusable="false"
+        height="310"
+        style="display: block;"
+        width="0"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_131"
+          text-anchor="middle"
+          transform="translate(0, 275)"
+        >
+          <path
+            class="domain"
+            d="M40.5,6V0.5H-19.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(40.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="-290"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(33,0)"
+          >
+            <line
+              stroke="#000"
+              y2="-290"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="10"
+            >
+              5,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(25.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="-290"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="10"
+            >
+              10,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(18,0)"
+          >
+            <line
+              stroke="#000"
+              y2="-290"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="10"
+            >
+              15,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(10.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="-290"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="10"
+            >
+              20,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(3,0)"
+          >
+            <line
+              stroke="#000"
+              y2="-290"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="10"
+            >
+              25,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-4.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="-290"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="10"
+            >
+              30,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-12,0)"
+          >
+            <line
+              stroke="#000"
+              y2="-290"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="10"
+            >
+              35,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(-19.5,0)"
+          >
+            <line
+              stroke="#000"
+              y2="-290"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="10"
+            >
+              40,000
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_131"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,275.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,275.5)"
+          >
+            <line
+              stroke="#000"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              text-align="start"
+              x="-16"
+            >
+              <tspan
+                data-="0"
+                dy="0.32em"
+                id="BaseSpan"
+                x="-16"
+              />
+              <tspan
+                dx="1em"
+                id="LessLength"
+                x="-16"
+              >
+                0
+              </tspan>
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,224.5)"
+          >
+            <line
+              stroke="#000"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              text-align="start"
+              x="-16"
+            >
+              <tspan
+                data-="10k"
+                dy="0.32em"
+                id="BaseSpan"
+                x="-16"
+              />
+              <tspan
+                dx="1em"
+                id="LessLength"
+                x="-16"
+              >
+                10k
+              </tspan>
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,173.5)"
+          >
+            <line
+              stroke="#000"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              text-align="start"
+              x="-16"
+            >
+              <tspan
+                data-="20k"
+                dy="0.32em"
+                id="BaseSpan"
+                x="-16"
+              />
+              <tspan
+                dx="1em"
+                id="LessLength"
+                x="-16"
+              >
+                20k
+              </tspan>
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,122.5)"
+          >
+            <line
+              stroke="#000"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              text-align="start"
+              x="-16"
+            >
+              <tspan
+                data-="30k"
+                dy="0.32em"
+                id="BaseSpan"
+                x="-16"
+              />
+              <tspan
+                dx="1em"
+                id="LessLength"
+                x="-16"
+              >
+                30k
+              </tspan>
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,71.49999999999999)"
+          >
+            <line
+              stroke="#000"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              text-align="start"
+              x="-16"
+            >
+              <tspan
+                data-="40k"
+                dy="0.32em"
+                id="BaseSpan"
+                x="-16"
+              />
+              <tspan
+                dx="1em"
+                id="LessLength"
+                x="-16"
+              >
+                40k
+              </tspan>
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="-6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              text-align="start"
+              x="-16"
+            >
+              <tspan
+                data-="50k"
+                dy="0.32em"
+                id="BaseSpan"
+                x="-16"
+              />
+              <tspan
+                dx="1em"
+                id="LessLength"
+                x="-16"
+              >
+                50k
+              </tspan>
+            </text>
+          </g>
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. 20%."
+            aria-labelledby="toolTipcallout129"
+            class=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#002050"
+            height="32"
+            role="img"
+            tabindex="0"
+            width="-30"
+            x="40"
+            y="4"
+          />
+          <rect
+            aria-label="2020/04/30. 37%."
+            aria-labelledby="toolTipcallout129"
+            class=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#00188f"
+            height="32"
+            role="img"
+            tabindex="-1"
+            width="-37.5"
+            x="40"
+            y="106"
+          />
+          <rect
+            aria-label="2020/04/30. 88%."
+            aria-labelledby="toolTipcallout129"
+            class=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#00bcf2"
+            height="32"
+            role="img"
+            tabindex="-1"
+            width="-40"
+            x="40"
+            y="192.7"
+          />
+          <rect
+            aria-label="2020/04/30. 10%."
+            aria-labelledby="toolTipcallout129"
+            class=
+
+                {
+                  opacity: ;
+                }
+            data-is-focusable="true"
+            fill="#0078d4"
+            height="32"
+            role="img"
+            tabindex="-1"
+            width="-15"
+            x="40"
+            y="233.5"
+          />
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone134"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Oranges"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #0078d4;
+                              border-color: #0078d4;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #0078d4, #0078d4);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Oranges
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Dogs"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #002050;
+                              border-color: #002050;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #002050, #002050);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Dogs
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Apples"
+                      aria-posinset="3"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #00188f;
+                              border-color: #00188f;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #00188f, #00188f);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Apples
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Bananas"
+                      aria-posinset="4"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #00bcf2;
+                              border-color: #00bcf2;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #00bcf2, #00bcf2);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Bananas
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class=
+          ms-Callout-container
+          {
+            position: relative;
+          }
+    >
+      <div
+        class=
+            ms-Callout
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              border-radius: 2px;
+              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+              box-sizing: border-box;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              outline: transparent;
+              position: absolute;
+              z-index: 1000000;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              border-color: WindowText;
+              border-style: solid;
+              border-width: 1px;
+            }
+            &::-moz-focus-inner {
+              border: 0px;
+            }
+        data-is-focusable="true"
+        id="toolTipcallout129"
+        style="opacity: 0; filter: opacity(0); pointer-events: none;"
+        tabindex="-1"
+      >
+        <div
+          class=
+              ms-Callout-main
+              {
+                background-color: #ffffff;
+                border-radius: 2px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                position: relative;
+                width: 100%;
+              }
+          role="text"
+          style="outline: none; max-height: 100%;"
+        >
+          <div
+            class=
+
+                {
+                  background-blend-mode: normal, luminosity;
+                  background-color: #ffffff;
+                  display: grid;
+                  overflow: hidden;
+                  padding-bottom: 10px;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 11px;
+                }
+          >
+            <div
+              class=
+
+                  {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                  }
+            >
+              <div
+                class=
+
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 12px;
+                      font-weight: 400;
+                      line-height: 16px;
+                      opacity: 0.8;
+                    }
+              >
+                37%
+                 
+              </div>
+            </div>
+            <div
+              class=""
+            >
+              <div
+                class=
+
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      border-left: 4px solid #00188f;
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 28px;
+                      font-weight: 600;
+                      line-height: 22px;
+                      margin-top: 13px;
+                      padding-left: 8px;
+                    }
+              >
+                <div
+                  class=
+
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #323130;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 12px;
+                        font-weight: 400;
+                        line-height: 16px;
+                      }
+                >
+                  Apples
+                </div>
+                <div
+                  class=
+
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #00188f;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 28px;
+                        font-weight: bold;
+                        line-height: 36px;
+                      }
+                >
+                  2020/04/30
                 </div>
               </div>
             </div>

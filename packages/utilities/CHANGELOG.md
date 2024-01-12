@@ -1,8 +1,31 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Thu, 09 Nov 2023 07:29:19 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jan 2024 07:28:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.23](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.23)
+
+Wed, 10 Jan 2024 07:28:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.22..@fluentui/utilities_v8.13.23)
+
+### Patches
+
+- chore: disallow document and window access ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by seanmonahan@microsoft.com)
+- Bump @fluentui/dom-utilities to v2.2.14 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+- Bump @fluentui/merge-styles to v8.5.15 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+- Bump @fluentui/set-version to v8.2.14 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+
+## [8.13.22](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.22)
+
+Thu, 14 Dec 2023 07:30:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.21..@fluentui/utilities_v8.13.22)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/merge-styles to v8.5.14 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/set-version to v8.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
 
 ## [8.13.21](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.21)
 

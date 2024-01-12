@@ -2,6 +2,21 @@
   "name": "@fluentui/react-portal-compat-context",
   "entries": [
     {
+      "date": "Wed, 03 Jan 2024 09:26:43 GMT",
+      "tag": "@fluentui/react-portal-compat-context_v9.0.11",
+      "version": "9.0.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "wfwf1997@gmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "8af30dee607c79fb0165ae72bb10b67304dc2005",
+            "comment": "fix: re-introduce ecma transpilation to ES5 to make it work with v8  in ES5 only browsers"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 17:29:40 GMT",
       "tag": "@fluentui/react-portal-compat-context_v9.0.10",
       "version": "9.0.10",

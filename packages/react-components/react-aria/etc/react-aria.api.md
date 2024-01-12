@@ -10,6 +10,36 @@ import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 
 // @public
+export const ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE = "data-activedescendant-focusvisible";
+
+// @public (undocumented)
+export interface ActiveDescendantImperativeRef {
+    // (undocumented)
+    active: () => string | undefined;
+    // (undocumented)
+    blur: () => void;
+    // (undocumented)
+    find: (predicate: (id: string) => boolean, options?: IteratorOptions) => string | undefined;
+    // (undocumented)
+    first: (options?: IteratorOptions) => string | undefined;
+    // (undocumented)
+    focus: (id: string) => void;
+    // (undocumented)
+    last: (options?: IteratorOptions) => string | undefined;
+    // (undocumented)
+    next: (options?: IteratorOptions) => string | undefined;
+    // (undocumented)
+    prev: (options?: IteratorOptions) => string | undefined;
+}
+
+// @public (undocumented)
+export interface ActiveDescendantOptions {
+    imperativeRef?: React_2.RefObject<ActiveDescendantImperativeRef>;
+    // (undocumented)
+    matchOption: (el: HTMLElement) => boolean;
+}
+
+// @public
 export type ARIAButtonAlteredProps<Type extends ARIAButtonType> = (Type extends 'button' ? Pick<JSX.IntrinsicElements['button'], 'onClick' | 'onKeyDown' | 'onKeyUp' | 'disabled' | 'aria-disabled' | 'tabIndex'> : never) | (Type extends 'a' ? Pick<JSX.IntrinsicElements['a'], 'onClick' | 'onKeyDown' | 'onKeyUp' | 'aria-disabled' | 'tabIndex' | 'role' | 'href'> : never) | (Type extends 'div' ? Pick<JSX.IntrinsicElements['div'], 'onClick' | 'onKeyDown' | 'onKeyUp' | 'aria-disabled' | 'tabIndex' | 'role'> : never);
 
 // @public (undocumented)
@@ -33,10 +63,13 @@ export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> =
 // @public (undocumented)
 export type ARIAButtonType = 'button' | 'a' | 'div';
 
+// @public (undocumented)
+export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(options: ActiveDescendantOptions): UseActiveDescendantReturn<TActiveParentElement, TListboxElement>;
+
 // @internal
 export function useARIAButtonProps<Type extends ARIAButtonType, Props extends ARIAButtonProps<Type>>(type?: Type, props?: Props): ARIAButtonResultProps<Type, Props>;
 
-// @internal
+// @internal @deprecated (undocumented)
 export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps>;
 
 // (No @packageDocumentation comment for this package)

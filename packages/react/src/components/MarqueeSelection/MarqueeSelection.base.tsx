@@ -16,6 +16,8 @@ import type {
   IMarqueeSelectionStyleProps,
   IMarqueeSelectionStyles,
 } from './MarqueeSelection.types';
+import { WindowContext } from '@fluentui/react-window-provider';
+import { getDocumentEx, getWindowEx } from '../../utilities/dom';
 
 const getClassNames = classNamesFunction<IMarqueeSelectionStyleProps, IMarqueeSelectionStyles>();
 
@@ -40,6 +42,8 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
     rootProps: {},
     isEnabled: true,
   };
+
+  public static contextType = WindowContext;
 
   private _async: Async;
   private _events: EventGroup;
@@ -71,8 +75,11 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
   }
 
   public componentDidMount(): void {
+    const win = getWindowEx(this.context);
+    const doc = getDocumentEx(this.context);
+
     this._scrollableParent = findScrollableParent(this._root.current) as HTMLElement;
-    this._scrollableSurface = this._scrollableParent === (window as any) ? document.body : this._scrollableParent;
+    this._scrollableSurface = this._scrollableParent === (win as any) ? doc?.body : this._scrollableParent;
     // When scroll events come from window, we need to read scrollTop values from the body.
 
     const hitTarget = this.props.isDraggingConstrainedToRoot ? this._root.current : this._scrollableSurface;
@@ -163,13 +170,14 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
       (!onShouldStartSelection || onShouldStartSelection(ev))
     ) {
       if (this._scrollableSurface && ev.button === 0 && this._root.current) {
+        const win = getWindowEx(this.context);
         this._selectedIndicies = {};
         this._preservedIndicies = undefined;
-        this._events.on(window, 'mousemove', this._onAsyncMouseMove, true);
+        this._events.on(win, 'mousemove', this._onAsyncMouseMove, true);
         this._events.on(this._scrollableParent, 'scroll', this._onAsyncMouseMove);
-        this._events.on(window, 'click', this._onMouseUp, true);
+        this._events.on(win, 'click', this._onMouseUp, true);
 
-        this._autoScroll = new AutoScroll(this._root.current);
+        this._autoScroll = new AutoScroll(this._root.current, win);
         this._scrollTop = this._scrollableSurface.scrollTop;
         this._scrollLeft = this._scrollableSurface.scrollLeft;
         this._rootRect = this._root.current.getBoundingClientRect();
@@ -277,7 +285,8 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
   }
 
   private _onMouseUp(ev: MouseEvent): void {
-    this._events.off(window);
+    const win = getWindowEx(this.context);
+    this._events.off(win);
     this._events.off(this._scrollableParent, 'scroll');
 
     if (this._autoScroll) {

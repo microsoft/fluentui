@@ -37,6 +37,7 @@ export {
   useArrowNavigationGroup,
   useFocusableGroup,
   useFocusFinders,
+  useFocusVisible,
   useFocusWithin,
   useKeyboardNavAttribute,
   useModalAttributes,
@@ -44,6 +45,7 @@ export {
   useFocusObserved,
   useRestoreFocusTarget,
   useRestoreFocusSource,
+  useUncontrolledFocus,
 } from '@fluentui/react-tabster';
 export type {
   CreateCustomFocusIndicatorStyleOptions,
@@ -102,11 +104,15 @@ export {
   getNativeElementProps,
   getIntrinsicElementProps,
   getPartitionedNativeProps,
+  // getSlots is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   getSlots,
   slot,
   assertSlots,
   IdPrefixProvider,
   resetIdsForTests,
+  // resolveShorthand is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   resolveShorthand,
   SSRProvider,
   useId,
@@ -122,7 +128,11 @@ export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
+  // ResolveShorthandFunction is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandFunction,
+  // ResolveShorthandOptions is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandOptions,
   Slot,
   SlotOptions,
@@ -217,6 +227,7 @@ export {
   useAvatarGroupItem_unstable,
   renderAvatarGroupPopover_unstable,
   useAvatarGroupPopoverStyles_unstable,
+  useAvatarGroupPopoverContextValues_unstable,
   useAvatarGroupPopover_unstable,
   useAvatarGroupContext_unstable,
   partitionAvatarGroupItems,
@@ -382,12 +393,14 @@ export type {
   ListboxProps,
   ListboxSlots,
   ListboxState,
+  OptionOnSelectData,
   OptionProps,
   OptionSlots,
   OptionState,
   OptionGroupProps,
   OptionGroupSlots,
   OptionGroupState,
+  SelectionEvents,
 } from '@fluentui/react-combobox';
 export {
   Divider,
@@ -1484,12 +1497,16 @@ export type {
   InlineDrawerProps,
   InlineDrawerSlots,
   InlineDrawerState,
+  DrawerBodyProps,
   DrawerBodySlots,
   DrawerBodyState,
+  DrawerHeaderProps,
   DrawerHeaderSlots,
   DrawerHeaderState,
+  DrawerHeaderTitleProps,
   DrawerHeaderTitleSlots,
   DrawerHeaderTitleState,
+  DrawerFooterProps,
   DrawerFooterSlots,
   DrawerFooterState,
   DrawerHeaderNavigationProps,

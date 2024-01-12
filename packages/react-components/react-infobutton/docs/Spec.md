@@ -10,7 +10,7 @@ Because the Popover isn't always visible, it should not contain information that
 
 ### Anatomy
 
-![Anatomy](./etc/images/anatomy.png)
+![Anatomy](../etc/images/anatomy.png)
 
 ## Prior Art
 

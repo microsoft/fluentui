@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Field } from '@fluentui/react-field';
 import { Dropdown } from './Dropdown';
@@ -38,6 +38,24 @@ describe('Dropdown', () => {
       </Dropdown>,
     );
     expect(result.container).toMatchSnapshot();
+  });
+
+  it('renders a hidden listbox when trigger is focused', () => {
+    const result = render(
+      <Dropdown inlinePopup>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Dropdown>,
+    );
+
+    act(() => {
+      result.getByRole('combobox').focus();
+    });
+
+    const listbox = result.container.querySelector('[role="listbox"]');
+    expect(listbox).not.toBeNull();
+    expect(window.getComputedStyle(listbox!).display).toEqual('none');
   });
 
   it('renders an open listbox', () => {

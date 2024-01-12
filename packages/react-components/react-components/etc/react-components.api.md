@@ -282,10 +282,12 @@ import { DividerState } from '@fluentui/react-divider';
 import { Drawer } from '@fluentui/react-drawer';
 import { DrawerBody } from '@fluentui/react-drawer';
 import { drawerBodyClassNames } from '@fluentui/react-drawer';
+import { DrawerBodyProps } from '@fluentui/react-drawer';
 import { DrawerBodySlots } from '@fluentui/react-drawer';
 import { DrawerBodyState } from '@fluentui/react-drawer';
 import { DrawerFooter } from '@fluentui/react-drawer';
 import { drawerFooterClassNames } from '@fluentui/react-drawer';
+import { DrawerFooterProps } from '@fluentui/react-drawer';
 import { DrawerFooterSlots } from '@fluentui/react-drawer';
 import { DrawerFooterState } from '@fluentui/react-drawer';
 import { DrawerHeader } from '@fluentui/react-drawer';
@@ -295,10 +297,12 @@ import { drawerHeaderNavigationClassNames } from '@fluentui/react-drawer';
 import { DrawerHeaderNavigationProps } from '@fluentui/react-drawer';
 import { DrawerHeaderNavigationSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderNavigationState } from '@fluentui/react-drawer';
+import { DrawerHeaderProps } from '@fluentui/react-drawer';
 import { DrawerHeaderSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderState } from '@fluentui/react-drawer';
 import { DrawerHeaderTitle } from '@fluentui/react-drawer';
 import { drawerHeaderTitleClassNames } from '@fluentui/react-drawer';
+import { DrawerHeaderTitleProps } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleState } from '@fluentui/react-drawer';
 import { DrawerProps } from '@fluentui/react-drawer';
@@ -538,6 +542,7 @@ import { optionGroupClassNames } from '@fluentui/react-combobox';
 import { OptionGroupProps } from '@fluentui/react-combobox';
 import { OptionGroupSlots } from '@fluentui/react-combobox';
 import { OptionGroupState } from '@fluentui/react-combobox';
+import { OptionOnSelectData } from '@fluentui/react-combobox';
 import { OptionProps } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import { OptionState } from '@fluentui/react-combobox';
@@ -757,6 +762,7 @@ import { ResolveShorthandOptions } from '@fluentui/react-utilities';
 import { Select } from '@fluentui/react-select';
 import { SelectableHandler } from '@fluentui/react-menu';
 import { selectClassNames } from '@fluentui/react-select';
+import { SelectionEvents } from '@fluentui/react-combobox';
 import { SelectionHookParams } from '@fluentui/react-utilities';
 import { SelectionItemId } from '@fluentui/react-utilities';
 import { SelectionMethods } from '@fluentui/react-utilities';
@@ -1091,6 +1097,7 @@ import { useAvatarGroupContextValues } from '@fluentui/react-avatar';
 import { useAvatarGroupItem_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupItemStyles_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupPopover_unstable } from '@fluentui/react-avatar';
+import { useAvatarGroupPopoverContextValues_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupPopoverStyles_unstable } from '@fluentui/react-avatar';
 import { useAvatarGroupStyles_unstable } from '@fluentui/react-avatar';
 import { useAvatarStyles_unstable } from '@fluentui/react-avatar';
@@ -1191,6 +1198,7 @@ import { useFocusableGroup } from '@fluentui/react-tabster';
 import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFocusObserved } from '@fluentui/react-tabster';
+import { useFocusVisible } from '@fluentui/react-tabster';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { useHeadlessFlatTree_unstable } from '@fluentui/react-tree';
 import { useId } from '@fluentui/react-utilities';
@@ -1408,6 +1416,7 @@ import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
 import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
 import { useTreeStyles_unstable } from '@fluentui/react-tree';
+import { useUncontrolledFocus } from '@fluentui/react-tabster';
 import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
@@ -1968,6 +1977,8 @@ export { DrawerBody }
 
 export { drawerBodyClassNames }
 
+export { DrawerBodyProps }
+
 export { DrawerBodySlots }
 
 export { DrawerBodyState }
@@ -1975,6 +1986,8 @@ export { DrawerBodyState }
 export { DrawerFooter }
 
 export { drawerFooterClassNames }
+
+export { DrawerFooterProps }
 
 export { DrawerFooterSlots }
 
@@ -1994,6 +2007,8 @@ export { DrawerHeaderNavigationSlots }
 
 export { DrawerHeaderNavigationState }
 
+export { DrawerHeaderProps }
+
 export { DrawerHeaderSlots }
 
 export { DrawerHeaderState }
@@ -2001,6 +2016,8 @@ export { DrawerHeaderState }
 export { DrawerHeaderTitle }
 
 export { drawerHeaderTitleClassNames }
+
+export { DrawerHeaderTitleProps }
 
 export { DrawerHeaderTitleSlots }
 
@@ -2480,6 +2497,8 @@ export { OptionGroupSlots }
 
 export { OptionGroupState }
 
+export { OptionOnSelectData }
+
 export { OptionProps }
 
 export { OptionSlots }
@@ -2917,6 +2936,8 @@ export { Select }
 export { SelectableHandler }
 
 export { selectClassNames }
+
+export { SelectionEvents }
 
 export { SelectionHookParams }
 
@@ -3586,6 +3607,8 @@ export { useAvatarGroupItemStyles_unstable }
 
 export { useAvatarGroupPopover_unstable }
 
+export { useAvatarGroupPopoverContextValues_unstable }
+
 export { useAvatarGroupPopoverStyles_unstable }
 
 export { useAvatarGroupStyles_unstable }
@@ -3785,6 +3808,8 @@ export { UseFocusableGroupOptions }
 export { useFocusFinders }
 
 export { useFocusObserved }
+
+export { useFocusVisible }
 
 export { useFocusWithin }
 
@@ -4219,6 +4244,8 @@ export { useTreeItemPersonaLayoutStyles_unstable }
 export { useTreeItemStyles_unstable }
 
 export { useTreeStyles_unstable }
+
+export { useUncontrolledFocus }
 
 export { VerticalSpacingTokens }
 

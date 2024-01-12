@@ -2,13 +2,17 @@ import { useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilit
 import * as React from 'react';
 
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
-import type { MotionAtom } from '../types';
+import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
+import { getChildElement } from '../utils/getChildElement';
+import type { AtomMotion, MotionImperativeRef } from '../types';
 
 export type AtomProps = {
   children: React.ReactElement;
 
+  /** Provides imperative controls for the animation. */
+  imperativeRef?: React.Ref<MotionImperativeRef | undefined>;
+
   iterations?: number;
-  playState?: 'running' | 'paused';
 };
 
 /**
@@ -16,13 +20,13 @@ export type AtomProps = {
  *
  * @param motion - A motion definition.
  */
-export function createAtom(motion: MotionAtom) {
+export function createAtom(motion: AtomMotion) {
   const Atom: React.FC<AtomProps> = props => {
-    const { children, iterations = 1, playState = 'running' } = props;
+    const { children, iterations = 1, imperativeRef } = props;
 
-    const child = React.Children.only(children) as React.ReactElement & { ref: React.Ref<HTMLElement> };
+    const child = getChildElement(children);
 
-    const animationRef = React.useRef<Animation | undefined>();
+    const animationRef = useMotionImperativeRef(imperativeRef);
     const elementRef = React.useRef<HTMLElement>();
 
     const isReducedMotion = useIsReducedMotion();
@@ -31,10 +35,11 @@ export function createAtom(motion: MotionAtom) {
       const element = elementRef.current;
 
       if (element) {
-        const animation = element.animate(motion.keyframes, {
+        const { keyframes, ...options } = motion;
+        const animation = element.animate(keyframes, {
           fill: 'forwards',
 
-          ...motion.options,
+          ...options,
           iterations,
 
           ...(isReducedMotion() && { duration: 1 }),
@@ -46,22 +51,7 @@ export function createAtom(motion: MotionAtom) {
           animation.cancel();
         };
       }
-    }, [iterations, isReducedMotion]);
-
-    // TODO: Find a way to avoid this effect/refactor as currently it will call .play() on initial render
-    useIsomorphicLayoutEffect(() => {
-      const animation = animationRef.current;
-
-      if (animation) {
-        if (playState === 'running') {
-          animation.play();
-        }
-
-        if (playState === 'paused') {
-          animation.pause();
-        }
-      }
-    }, [playState]);
+    }, [animationRef, iterations, isReducedMotion]);
 
     return React.cloneElement(children, { ref: useMergedRefs(elementRef, child.ref) });
   };

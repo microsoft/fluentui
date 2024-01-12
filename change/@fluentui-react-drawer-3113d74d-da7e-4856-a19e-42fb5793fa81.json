@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: remove useHeadingProps() and React.useMemo()",
+  "packageName": "@fluentui/react-drawer",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

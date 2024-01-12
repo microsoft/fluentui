@@ -2,6 +2,36 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Wed, 10 Jan 2024 07:28:48 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.4",
+      "version": "1.17.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "5858fe05255460fa9b13370e613c5243ae3b92d0",
+            "comment": "chore: add restricted globals for @fluentui/react and related packages"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Dec 2023 07:30:10 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.3",
+      "version": "1.17.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "b6766ba321b57331266f3f391d7274c77730459d",
+            "comment": "chore: disallow `window` and `document` access for @fluentui/react-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 28 Oct 2023 00:29:15 GMT",
       "tag": "@fluentui/eslint-plugin_v1.17.2",
       "version": "1.17.2",
