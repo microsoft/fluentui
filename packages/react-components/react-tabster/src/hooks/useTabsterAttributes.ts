@@ -1,5 +1,6 @@
 import { getTabsterAttribute, Types as TabsterTypes } from 'tabster';
 import { useTabster } from './useTabster';
+import * as React from 'react';
 
 /**
  * @internal
@@ -10,5 +11,11 @@ export const useTabsterAttributes = (props: TabsterTypes.TabsterAttributeProps):
   // but calling the hook will ensure that a tabster instance exists internally and avoids consumers doing the same
   useTabster();
 
-  return getTabsterAttribute(props);
+  const strAttr = getTabsterAttribute(props, true);
+  return React.useMemo(
+    () => ({
+      'data-tabster': strAttr,
+    }),
+    [strAttr],
+  );
 };
