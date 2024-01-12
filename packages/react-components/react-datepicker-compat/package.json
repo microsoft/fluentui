@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-datepicker-compat",
-  "version": "0.4.14",
+  "version": "0.4.15",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -41,9 +41,9 @@
     "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-input": "^9.4.57",
     "@fluentui/react-jsx-runtime": "^9.0.24",
-    "@fluentui/react-popover": "^9.8.29",
+    "@fluentui/react-popover": "^9.8.30",
     "@fluentui/react-portal": "^9.4.7",
-    "@fluentui/react-positioning": "^9.12.0",
+    "@fluentui/react-positioning": "^9.12.1",
     "@fluentui/react-shared-contexts": "^9.13.2",
     "@fluentui/react-tabster": "^9.17.0",
     "@fluentui/react-theme": "^9.1.16",
@@ -53,7 +53,7 @@
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
-    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
     "react": ">=16.14.0 <19.0.0",
     "react-dom": ">=16.14.0 <19.0.0"
   },

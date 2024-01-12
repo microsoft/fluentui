@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore: Updating doc stories and API.",
+  "comment": "Scaffold RatingDisplay",
   "packageName": "@fluentui/react-rating-preview",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch"

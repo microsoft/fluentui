@@ -32,8 +32,8 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-alert": "9.0.0-beta.100",
-    "@fluentui/react-components": "^9.44.2",
+    "@fluentui/react-alert": "9.0.0-beta.101",
+    "@fluentui/react-components": "^9.44.3",
     "@fluentui/react-context-selector": "^9.1.46",
     "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-storybook-addon-export-to-sandbox": "^0.1.0",
@@ -46,7 +46,7 @@
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
-    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
     "react": ">=16.14.0 <19.0.0",
     "react-dom": ">=16.14.0 <19.0.0"
   },

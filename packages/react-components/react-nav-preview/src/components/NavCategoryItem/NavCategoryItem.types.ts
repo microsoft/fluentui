@@ -5,7 +5,7 @@ export type NavCategoryItemSlots = {
   /**
    * Root of the component.
    */
-  root: Slot<'button'>;
+  root: Slot<'div'>;
 
   // TODO - light this up when we get design spec
   // /**
@@ -33,10 +33,4 @@ export type NavCategoryItemProps = ComponentProps<Partial<NavCategoryItemSlots>>
 /**
  * State used in rendering NavCategoryItem
  */
-export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> &
-  Pick<NavCategoryItemProps, 'value'> & {
-    /**
-     * If this navCategoryItem is selected
-     */
-    selected: boolean;
-  };
+export type NavCategoryItemState = ComponentState<NavCategoryItemSlots>;
