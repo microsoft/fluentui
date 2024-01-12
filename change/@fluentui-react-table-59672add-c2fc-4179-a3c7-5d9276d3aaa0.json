@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: DataGrid selection performance improvement",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
