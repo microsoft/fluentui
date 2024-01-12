@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
+import { ActiveDescendantContextValue } from '@fluentui/react-aria';
 import type { ComboboxContextValue } from '../contexts/ComboboxContext';
 import type { OptionValue, OptionCollectionState } from '../utils/OptionCollection.types';
 import { SelectionProps, SelectionState } from '../utils/Selection.types';
@@ -86,7 +87,9 @@ export type ComboboxBaseState = Required<
     /* Option data for the currently highlighted option (not the selected option) */
     activeOption?: OptionValue;
 
-    // Whether the keyboard focus outline style should be visible
+    /**
+     * @deprecated
+     */
     focusVisible: boolean;
 
     /**
@@ -102,6 +105,9 @@ export type ComboboxBaseState = Required<
 
     setActiveOption: React.Dispatch<React.SetStateAction<OptionValue | undefined>>;
 
+    /**
+     * @deprecated
+     */
     setFocusVisible(focusVisible: boolean): void;
 
     setHasFocus(hasFocus: boolean): void;
@@ -126,4 +132,5 @@ export type ComboboxBaseOpenEvents =
 
 export type ComboboxBaseContextValues = {
   combobox: ComboboxContextValue;
+  activeDescendant: ActiveDescendantContextValue;
 };

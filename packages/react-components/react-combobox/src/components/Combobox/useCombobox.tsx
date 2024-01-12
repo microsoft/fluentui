@@ -9,6 +9,7 @@ import {
   useMergedRefs,
   slot,
 } from '@fluentui/react-utilities';
+import { useActiveDescendant } from '@fluentui/react-aria';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
 import { Listbox } from '../Listbox/Listbox';
@@ -17,6 +18,7 @@ import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { ComboboxProps, ComboboxState } from './Combobox.types';
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useInputTriggerSlot } from './useInputTriggerSlot';
+import { optionClassNames } from '../Option/useOptionStyles.styles';
 
 /**
  * Create the state required to render Combobox.
@@ -31,7 +33,14 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
 
-  const baseState = useComboboxBaseState({ ...props, editable: true });
+  const {
+    listboxRef: activeDescendantListboxRef,
+    activeParentRef,
+    controller: activeDescendantController,
+  } = useActiveDescendant<HTMLInputElement, HTMLDivElement>({
+    matchOption: el => el.classList.contains(optionClassNames.root),
+  });
+  const baseState = useComboboxBaseState({ ...props, editable: true, activeDescendantController });
   const {
     clearable,
     clearSelection,
@@ -74,7 +83,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
 
   const triggerRef = React.useRef<HTMLInputElement>(null);
 
-  const listbox = useListboxSlot(props.listbox, comboboxPopupRef, {
+  const listbox = useListboxSlot(props.listbox, useMergedRefs(comboboxPopupRef, activeDescendantListboxRef), {
     state: baseState,
     triggerRef,
     defaultProps: {
@@ -82,7 +91,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     },
   });
 
-  const triggerSlot = useInputTriggerSlot(props.input ?? {}, useMergedRefs(triggerRef, ref), {
+  const triggerSlot = useInputTriggerSlot(props.input ?? {}, useMergedRefs(triggerRef, activeParentRef, ref), {
     state: baseState,
     freeform,
     defaultProps: {
@@ -90,6 +99,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       value: value ?? '',
       ...triggerNativeProps,
     },
+    activeDescendantController,
   });
 
   const rootSlot = slot.always(props.root, {
@@ -125,6 +135,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       elementType: 'span',
     }),
     showClearIcon,
+    activeDescendantController,
     ...baseState,
   };
 

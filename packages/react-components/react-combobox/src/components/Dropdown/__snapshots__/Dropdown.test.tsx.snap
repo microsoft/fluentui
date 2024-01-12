@@ -116,6 +116,7 @@ exports[`Dropdown renders an open listbox 1`] = `
       <div
         aria-selected="false"
         class="fui-Option"
+        data-activedescendant=""
         id="fluent-option2"
         role="option"
       >

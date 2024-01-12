@@ -1,28 +1,19 @@
 import * as React from 'react';
+import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
-import { getDropdownActionFromKey, getIndexFromAction } from '../utils/dropdownKeyActions';
+import { getDropdownActionFromKey } from '../utils/dropdownKeyActions';
 import type { ComboboxBaseState } from './ComboboxBase.types';
 
 export type UseTriggerSlotState = Pick<
   ComboboxBaseState,
-  | 'activeOption'
-  | 'getCount'
-  | 'getIndexOfId'
-  | 'getOptionAtIndex'
-  | 'open'
-  | 'selectOption'
-  | 'setActiveOption'
-  | 'setFocusVisible'
-  | 'setOpen'
-  | 'multiselect'
-  | 'value'
-  | 'setHasFocus'
+  'open' | 'getOptionById' | 'selectOption' | 'setOpen' | 'multiselect' | 'setHasFocus'
 >;
 
 type UseTriggerSlotOptions = {
   state: UseTriggerSlotState;
   defaultProps: unknown;
+  activeDescendantController: ActiveDescendantImperativeRef;
 };
 
 export function useTriggerSlot(
@@ -47,28 +38,16 @@ export function useTriggerSlot(
   options: UseTriggerSlotOptions & { elementType: 'input' | 'button' },
 ): SlotComponentType<ExtractSlotProps<Slot<'button'>>> | SlotComponentType<ExtractSlotProps<Slot<'input'>>> {
   const {
-    state: {
-      activeOption,
-      getCount,
-      getIndexOfId,
-      getOptionAtIndex,
-      open,
-      selectOption,
-      setActiveOption,
-      setFocusVisible,
-      setOpen,
-      multiselect,
-      setHasFocus,
-    },
+    state: { open, selectOption, setOpen, multiselect, setHasFocus, getOptionById },
     defaultProps,
     elementType,
+    activeDescendantController,
   } = options;
 
   const trigger = slot.always(triggerSlotFromProp, {
     defaultProps: {
       type: 'text',
       'aria-expanded': open,
-      'aria-activedescendant': open ? activeOption?.id : undefined,
       role: 'combobox',
       ...(typeof defaultProps === 'object' && defaultProps),
     },
@@ -104,14 +83,24 @@ export function useTriggerSlot(
   trigger.onKeyDown = mergeCallbacks(
     (event: React.KeyboardEvent<HTMLButtonElement> & React.KeyboardEvent<HTMLInputElement>) => {
       const action = getDropdownActionFromKey(event, { open, multiselect });
-      const maxIndex = getCount() - 1;
-      const activeIndex = activeOption ? getIndexOfId(activeOption.id) : -1;
-      let newIndex = activeIndex;
+      const activeOptionId = activeDescendantController.active();
+      const activeOption = activeOptionId ? getOptionById(activeOptionId) : null;
 
       switch (action) {
+        case 'First':
+          activeDescendantController.first();
+          event.preventDefault();
+          break;
+        case 'Next':
+          activeDescendantController.next();
+          event.preventDefault();
+          break;
+        case 'Previous':
+          activeDescendantController.prev();
+          event.preventDefault();
+          break;
         case 'Open':
           event.preventDefault();
-          setFocusVisible(true);
           setOpen(event, true);
           break;
         case 'Close':
@@ -130,26 +119,10 @@ export function useTriggerSlot(
         case 'Tab':
           !multiselect && activeOption && selectOption(event, activeOption);
           break;
-        default:
-          newIndex = getIndexFromAction(action, activeIndex, maxIndex);
-      }
-      if (newIndex !== activeIndex) {
-        // prevent default page scroll/keyboard action if the index changed
-        event.preventDefault();
-        setActiveOption(getOptionAtIndex(newIndex));
-        setFocusVisible(true);
       }
     },
     trigger.onKeyDown,
   );
 
-  trigger.onMouseOver = mergeCallbacks(
-    (event: React.MouseEvent<HTMLButtonElement> & React.MouseEvent<HTMLInputElement>) => {
-      setFocusVisible(false);
-    },
-    trigger.onMouseOver,
-  );
-
-  // TODO fix cast
   return trigger as SlotComponentType<ExtractSlotProps<Slot<'input'>>>;
 }

@@ -1,10 +1,13 @@
+import * as React from 'react';
+import { ComboboxState } from '../Combobox';
 import { ComboboxBaseContextValues, ComboboxBaseState } from '../utils/ComboboxBase.types';
 
-export function useComboboxContextValues(state: ComboboxBaseState): ComboboxBaseContextValues {
+export function useComboboxContextValues(
+  state: ComboboxBaseState & Pick<ComboboxState, 'activeDescendantController'>,
+): ComboboxBaseContextValues {
   const {
     activeOption,
     appearance,
-    focusVisible,
     open,
     registerOption,
     selectedOptions,
@@ -12,12 +15,13 @@ export function useComboboxContextValues(state: ComboboxBaseState): ComboboxBase
     setActiveOption,
     setOpen,
     size,
+    activeDescendantController,
   } = state;
 
   const combobox = {
     activeOption,
     appearance,
-    focusVisible,
+    focusVisible: false,
     open,
     registerOption,
     selectedOptions,
@@ -27,5 +31,12 @@ export function useComboboxContextValues(state: ComboboxBaseState): ComboboxBase
     size,
   };
 
-  return { combobox };
+  const activeDescendant = React.useMemo(
+    () => ({
+      controller: activeDescendantController,
+    }),
+    [activeDescendantController],
+  );
+
+  return { combobox, activeDescendant };
 }

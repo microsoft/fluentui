@@ -16,16 +16,22 @@ export type OptionCollectionState = {
   /** The total number of options in the collection. */
   getCount: () => number;
 
-  /** Returns the index of an option by key. */
+  /**
+   * @deprecated
+   */
   getIndexOfId(id: string): number;
 
-  /** Returns the option data for the nth option. */
+  /**
+   * @deprecated
+   */
   getOptionAtIndex(index: number): OptionValue | undefined;
 
   /** Returns the option data by key. */
   getOptionById(id: string): OptionValue | undefined;
 
-  /** Returns an array of options filtered by a value matching function against the option's text string. */
+  /**
+   * @deprecated
+   */
   getOptionsMatchingText(matcher: (text: string) => boolean): OptionValue[];
 
   /** Returns an array of options filtered by a value matching function against the option's value string. */

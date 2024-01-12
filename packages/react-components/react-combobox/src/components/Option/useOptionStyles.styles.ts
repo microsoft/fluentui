@@ -1,5 +1,6 @@
 import { tokens } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
+import { ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE } from '@fluentui/react-aria';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { OptionSlots, OptionState } from './Option.types';
 
@@ -39,9 +40,9 @@ const useStyles = makeStyles({
   },
 
   active: {
-    // taken from @fluentui/react-tabster
-    // cannot use createFocusIndicatorStyle() directly, since we aren't using the :focus selector
-    '::after': {
+    [`[${ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE}]::after`]: {
+      // taken from @fluentui/react-tabster
+      // cannot use createFocusIndicatorStyle() directly, since we aren't using the :focus selector
       content: '""',
       position: 'absolute',
       pointerEvents: 'none',
@@ -134,12 +135,12 @@ const useStyles = makeStyles({
  * Apply styling to the Option slots based on the state
  */
 export const useOptionStyles_unstable = (state: OptionState): OptionState => {
-  const { active, disabled, focusVisible, multiselect, selected } = state;
+  const { disabled, multiselect, selected } = state;
   const styles = useStyles();
   state.root.className = mergeClasses(
     optionClassNames.root,
     styles.root,
-    active && focusVisible && styles.active,
+    styles.active,
     disabled && styles.disabled,
     selected && styles.selected,
     state.root.className,
