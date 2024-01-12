@@ -497,10 +497,47 @@ describe('Combobox', () => {
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Red');
 
-    // arrow down + space
+    // space should select after an arrow down
     userEvent.keyboard('{ArrowDown} ');
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
+  });
+
+  it('allows to input space', () => {
+    const { getByRole, getByText } = render(
+      <Combobox open>
+        <Option>Slice of pizza</Option>
+        <Option>Slice of cake</Option>
+        <Option>Slice of pie</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByRole('combobox');
+
+    userEvent.type(combobox, 'Slice of pie');
+    userEvent.type(combobox, '{Enter}');
+
+    expect(getByText('Slice of pie').getAttribute('aria-selected')).toEqual('true');
+    expect((combobox as HTMLInputElement).value).toEqual('Slice of pie');
+  });
+
+  it('does not select with space while typing', () => {
+    const onSelect = jest.fn();
+
+    const { getByTestId, getByRole } = render(
+      <Combobox open data-testid="combobox" onOptionSelect={onSelect}>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByTestId('combobox');
+
+    userEvent.type(combobox, 'abc def');
+
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('abc def');
+    expect(onSelect).not.toHaveBeenCalled();
   });
 
   it('does not select a disabled option with the keyboard', () => {
