@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add tests for heatmap chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}
