@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { render, act } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Field } from '@fluentui/react-field';
 import { Combobox } from './Combobox';
 import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { comboboxClassNames } from './useComboboxStyles.styles';
 
 describe('Combobox', () => {
   beforeEach(() => {
@@ -23,6 +24,13 @@ describe('Combobox', () => {
             open: true,
             // Portal messes with the classNames test, so rendering the listbox inline here
             inlinePopup: true,
+          },
+          // Classes are defined manually as there is no way to render "expandIcon" and "clearIcon" and the same time
+          expectedClassNames: {
+            root: comboboxClassNames.root,
+            expandIcon: comboboxClassNames.expandIcon,
+            listbox: comboboxClassNames.listbox,
+            input: comboboxClassNames.input,
           },
         },
       ],
@@ -944,5 +952,49 @@ describe('Combobox', () => {
     expect(combobox.getAttribute('aria-describedby')).toEqual(message.id);
     expect(combobox.getAttribute('aria-invalid')).toEqual('true');
     expect(combobox.required).toBe(true);
+  });
+
+  describe('clearable', () => {
+    it('clears the selection on a button click', () => {
+      const { getByText, getByRole } = render(
+        <Combobox
+          clearable
+          defaultSelectedOptions={['Red']}
+          defaultValue="Red"
+          clearIcon={{ children: 'CLEAR BUTTON' }}
+        >
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>,
+      );
+
+      const combobox = getByRole('combobox');
+      const clearButton = getByText('CLEAR BUTTON');
+
+      expect(clearButton).not.toHaveStyle({ display: 'none' });
+      expect(combobox).toHaveValue('Red');
+
+      act(() => {
+        fireEvent.click(clearButton);
+      });
+
+      expect(clearButton).toHaveStyle({ display: 'none' });
+      expect(combobox).toHaveValue('');
+    });
+
+    it('is not visible when there is no selection', () => {
+      const { getByText } = render(
+        <Combobox clearable clearIcon={{ children: 'CLEAR BUTTON' }}>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>,
+      );
+      const clearButton = getByText('CLEAR BUTTON');
+
+      expect(clearButton).toHaveStyle({ display: 'none' });
+      expect(clearButton).toHaveAttribute('aria-hidden', 'true');
+    });
   });
 });
