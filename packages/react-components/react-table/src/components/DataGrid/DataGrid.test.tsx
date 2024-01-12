@@ -95,7 +95,7 @@ describe('DataGrid', () => {
     );
 
     expect(result.getByRole('grid').getAttribute('data-tabster')).toMatchInlineSnapshot(
-      `"{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3}}"`,
+      `"{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"`,
     );
   });
 
@@ -147,7 +147,7 @@ describe('DataGrid', () => {
     );
 
     expect(result.getByRole('grid').getAttribute('data-tabster')).toMatchInlineSnapshot(
-      `"{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3}}"`,
+      `"{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"`,
     );
   });
 });

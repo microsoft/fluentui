@@ -96,13 +96,13 @@ describe(`#getDependencies`, () => {
     `);
   });
 
-  it(`should provide similar api like 'new Project(root).getPackages()'`, async () => {
-    const { projectGraph } = await getDependencies(packageName);
-    const packageInfo = projectGraph.nodes[packageName].package;
+  it(`should provide access to package.json`, async () => {
+    const { projectGraph, getProjectPackageJsonInfo } = await getDependencies(packageName);
+    const packageInfo = getProjectPackageJsonInfo(packageName, projectGraph);
 
-    expect(packageInfo?.location).toEqual(expect.stringContaining('packages/react-components/react-text'));
+    expect(packageInfo.absoluteRootPath).toEqual(expect.stringContaining('packages/react-components/react-text'));
     expect(packageInfo?.dependencies).toEqual(expect.any(Object));
-    expect(packageInfo?.get('main')).toEqual('lib-commonjs/index.js');
-    expect(packageInfo?.get('module')).toEqual('lib/index.js');
+    expect(packageInfo?.main).toEqual('lib-commonjs/index.js');
+    expect(packageInfo?.module).toEqual('lib/index.js');
   });
 });

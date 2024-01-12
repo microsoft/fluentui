@@ -1,5 +1,6 @@
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
-import { Tree, addProjectConfiguration, readNxJson, readJson, writeJson } from '@nx/devkit';
+import { Tree, addProjectConfiguration, readJson, writeJson } from '@nx/devkit';
+import { getWorkspaceConfig } from '../../utils';
 
 import generator from './index';
 import { PackageJson } from '../../types';
@@ -10,7 +11,7 @@ describe('dependency-mismatch generator', () => {
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
-    workspaceNpmScope = readNxJson(tree)?.npmScope as string;
+    workspaceNpmScope = getWorkspaceConfig(tree).npmScope;
   });
 
   it(`should ignore dependencies that use  * and >=9.0.0-alpha version range`, async () => {
@@ -314,9 +315,9 @@ function setupDummyPackage(
   },
   tags: string[] = [],
 ) {
-  const workspaceConfig = readNxJson(tree);
+  const workspaceConfig = getWorkspaceConfig(tree);
 
-  const normalizedPkgName = `@${workspaceConfig?.npmScope}/${packageJson.name}`;
+  const normalizedPkgName = `@${workspaceConfig.npmScope}/${packageJson.name}`;
   const paths = {
     root: `packages/${packageJson.name}`,
   };

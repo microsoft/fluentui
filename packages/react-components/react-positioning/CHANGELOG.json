@@ -2,6 +2,80 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Thu, 11 Jan 2024 09:04:29 GMT",
+      "tag": "@fluentui/react-positioning_v9.12.1",
+      "version": "9.12.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "97e7eac0e041d9e7a6caffadd64d20ee4ca7261e",
+            "comment": "fix: update styles to not flip in RTL"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Jan 2024 10:21:33 GMT",
+      "tag": "@fluentui/react-positioning_v9.12.0",
+      "version": "9.12.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "5f9ae1e7b414d73ffa56f588d8eec5e2b85df95d",
+            "comment": "feat: Implement onPositioningEnd callback"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Jan 2024 16:24:23 GMT",
+      "tag": "@fluentui/react-positioning_v9.11.0",
+      "version": "9.11.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "3fa7c91ce8622da73706feb6a0ca5e34f89957e6",
+            "comment": "chore: update react-positioning to use latest floating ui dev tools to take latest fix"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867",
+            "comment": "feat: Update position when target or container dimensions change"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.15.6",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Jan 2024 09:26:44 GMT",
+      "tag": "@fluentui/react-positioning_v9.10.6",
+      "version": "9.10.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.15.5",
+            "commit": "9d99266dec5a450bcd44c0f777735b31dd98eccc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 18 Dec 2023 17:48:16 GMT",
       "tag": "@fluentui/react-positioning_v9.10.5",
       "version": "9.10.5",

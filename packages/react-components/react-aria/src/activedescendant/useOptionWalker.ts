@@ -34,11 +34,19 @@ export function useOptionWalker<TListboxElement extends HTMLElement>(options: Us
   const optionWalker = React.useMemo(
     () => ({
       first: () => {
-        if (!treeWalkerRef.current) {
+        if (!treeWalkerRef.current || !listboxRef.current) {
           return null;
         }
 
+        treeWalkerRef.current.currentNode = listboxRef.current;
         return treeWalkerRef.current.firstChild() as HTMLElement | null;
+      },
+      last: () => {
+        if (!treeWalkerRef.current || !listboxRef.current) {
+          return null;
+        }
+
+        return treeWalkerRef.current.lastChild() as HTMLElement | null;
       },
       next: () => {
         if (!treeWalkerRef.current) {
@@ -53,6 +61,19 @@ export function useOptionWalker<TListboxElement extends HTMLElement>(options: Us
         }
 
         return treeWalkerRef.current.previousNode() as HTMLElement | null;
+      },
+      find: (predicate: (id: string) => boolean) => {
+        if (!treeWalkerRef.current || !listboxRef.current) {
+          return null;
+        }
+
+        treeWalkerRef.current.currentNode = listboxRef.current;
+        let cur: HTMLElement | null = treeWalkerRef.current.currentNode as HTMLElement;
+        while (cur && !predicate(cur.id)) {
+          cur = treeWalkerRef.current.nextNode() as HTMLElement | null;
+        }
+
+        return cur;
       },
       setCurrent: (el: HTMLElement) => {
         if (!treeWalkerRef.current) {

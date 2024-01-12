@@ -67,7 +67,6 @@ coverage
 dist
 dist-storybook
 screenshots
-.cache
 !tools/**/lib
 
 *.tar.gz
@@ -123,9 +122,6 @@ package-deps.json
 
 common/temp
 
-# Gulp cache
-gulp-cache
-
 # NPM debug logs
 npm-debug.log.*
 shrinkwrap.yaml
@@ -153,13 +149,13 @@ rush.json
 # Copied monaco-editor files
 /packages/monaco-editor/esm
 
-.eslintcache
-
-# Rollup cache
-.rollupcache
-
 # tsdoc
 tsdoc-metadata.json
 
-# swc cache
+# tools cache
+gulp-cache
+.cache
+.eslintcache
+.rollupcache
 .swc
+.nx/cache

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as shape from 'd3-shape';
+import { arc as d3Arc } from 'd3-shape';
 import { classNamesFunction, getRTL } from '@fluentui/react/lib/Utilities';
 import {
   IGaugeChartProps,
@@ -383,8 +383,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       total = maxValue;
     }
 
-    const arcGenerator = shape
-      .arc()
+    const arcGenerator = d3Arc()
       .padAngle(ARC_PADDING / this._outerRadius)
       .padRadius(this._outerRadius);
     const rtlSafeSegments = this._isRTL ? Array.from(segments).reverse() : segments;

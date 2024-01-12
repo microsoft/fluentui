@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: add 'compat' tag to properly categorize v9 compat package",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
