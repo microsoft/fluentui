@@ -9,6 +9,7 @@ export function isConformant<TProps = {}>(
     tsConfig: { configName: 'tsconfig.spec.json' },
     componentPath: require.main?.filename.replace('.test', ''),
     extraTests: griffelTests as TestObject<TProps>,
+    disabledTests: ['consistent-callback-args'],
   };
 
   baseIsConformant(defaultOptions, testInfo);

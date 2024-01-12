@@ -444,7 +444,10 @@ export const defaultTests: DefaultTestObject = {
     });
   },
 
-  /** Ensures that components have consistent callback arguments (ev, data) */
+  /**
+   * Ensures that components have consistent callback arguments (ev, data)
+   * @deprecated this test is for existing callbacks. The newly added callbacks' type will be guarded by eslint rule consistent-callback-type
+   */
   'consistent-callback-args': (testInfo, componentInfo, tsProgram) => {
     it('has consistent custom callback arguments (consistent-callback-args)', () => {
       const { testOptions = {} } = testInfo;
