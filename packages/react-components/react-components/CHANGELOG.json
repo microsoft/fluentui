@@ -2,6 +2,65 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 11 Jan 2024 09:04:28 GMT",
+      "tag": "@fluentui/react-components_v9.44.3",
+      "version": "9.44.3",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "c04dff957ab3e3912264665abd4cede8f78868aa",
+            "comment": "feat: active descedant improvements"
+          },
+          {
+            "author": "liminliu@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "300073896d3b7ab9a0556e5b1b886d46c99d2515",
+            "comment": "feat: implement CheckboxShim component for Checkbox migration"
+          }
+        ],
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "0cb371222fa09304577ca937a9c64a0ab062bf14",
+            "comment": "fix: selectable card should not be focusable"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "17c64820b48c13995a6f799f94bdefb40ced03e1",
+            "comment": "fix: remove slow CSS selector from card styles"
+          },
+          {
+            "author": "jurokapsiar@gmail.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "37f8222f1de7dbd898884a90e67c3c23f8826ee5",
+            "comment": "Remove dependency on v0"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "97e7eac0e041d9e7a6caffadd64d20ee4ca7261e",
+            "comment": "fix: update styles to not flip in RTL"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "c43a582b1e7587da4abbe03b04b1fc84f0f15415",
+            "comment": "chore: Updating doc stories and API."
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "commit": "45931fb1e4b39679040eff4608eb6e0be7c5a173",
+            "comment": "fix: Small style updates, changing 16px icons to 12px, slight padding changes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jan 2024 10:21:33 GMT",
       "tag": "@fluentui/react-components_v9.44.2",
       "version": "9.44.2",

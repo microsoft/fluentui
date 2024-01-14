@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 12 Jan 2024 07:26:35 GMT",
+      "tag": "@fluentui/react-charting_v5.19.12",
+      "version": "5.19.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8abecbc654a559eedbbbafa60f9ee0773df9612a",
+            "comment": "Add tests for heatmap chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Jan 2024 07:28:50 GMT",
       "tag": "@fluentui/react-charting_v5.19.11",
       "version": "5.19.11",

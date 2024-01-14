@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Mon, 08 Jan 2024 16:24:28 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Jan 2024 09:04:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.7.0)
+
+Thu, 11 Jan 2024 09:04:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.6.2..@fluentui/react-aria_v9.7.0)
+
+### Minor changes
+
+- feat: active descedant improvements ([PR #30253](https://github.com/microsoft/fluentui/pull/30253) by lingfan.gao@microsoft.com)
 
 ## [9.6.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.6.2)
 

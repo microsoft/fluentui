@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Thu, 11 Jan 2024 09:04:29 GMT",
+      "tag": "@fluentui/react-positioning_v9.12.1",
+      "version": "9.12.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "97e7eac0e041d9e7a6caffadd64d20ee4ca7261e",
+            "comment": "fix: update styles to not flip in RTL"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jan 2024 10:21:33 GMT",
       "tag": "@fluentui/react-positioning_v9.12.0",
       "version": "9.12.0",

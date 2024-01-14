@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Tue, 09 Jan 2024 10:21:34 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Jan 2024 09:04:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.5.0)
+
+Thu, 11 Jan 2024 09:04:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.4.44..@fluentui/react-migration-v8-v9_v9.5.0)
+
+### Minor changes
+
+- feat: implement CheckboxShim component for Checkbox migration ([PR #29968](https://github.com/microsoft/fluentui/pull/29968) by liminliu@microsoft.com)
+- Bump @fluentui/react-components to v9.44.3 ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by beachball)
 
 ## [9.4.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.4.44)
 

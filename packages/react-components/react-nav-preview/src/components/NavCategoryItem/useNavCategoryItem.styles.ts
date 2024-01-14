@@ -1,6 +1,6 @@
 import type { NavCategoryItemSlots, NavCategoryItemState } from './NavCategoryItem.types';
 
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, mergeClasses } from '@griffel/react';
 import { typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -20,20 +20,20 @@ const useStyles = makeResetStyles({
 /**
  * Styles for the content slot (children)
  */
-const useContentStyles = makeStyles({
-  selected: {
-    ...typographyStyles.body1Strong,
-  },
-});
+// const useContentStyles = makeStyles({
+//   selected: {
+//     ...typographyStyles.body1Strong,
+//   },
+// });
 
 /**
  * Apply styling to the NavCategoryItem slots based on the state
  */
 export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): NavCategoryItemState => {
   const rootStyles = useStyles();
-  const contentStyles = useContentStyles();
+  // const contentStyles = useContentStyles();
 
-  const { selected } = state;
+  // const { selected } = state;
 
   state.root.className = mergeClasses(
     navCategoryItemClassNames.root,
@@ -44,7 +44,7 @@ export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): 
 
   state.content.className = mergeClasses(
     navCategoryItemClassNames.content,
-    selected && contentStyles.selected,
+    // selected && contentStyles.selected,
     state.content.className,
   );
 

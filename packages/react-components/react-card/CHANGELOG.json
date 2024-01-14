@@ -2,6 +2,27 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Thu, 11 Jan 2024 09:04:28 GMT",
+      "tag": "@fluentui/react-card_v9.0.61",
+      "version": "9.0.61",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "0cb371222fa09304577ca937a9c64a0ab062bf14",
+            "comment": "fix: selectable card should not be focusable"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "17c64820b48c13995a6f799f94bdefb40ced03e1",
+            "comment": "fix: remove slow CSS selector from card styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Jan 2024 16:24:28 GMT",
       "tag": "@fluentui/react-card_v9.0.60",
       "version": "9.0.60",

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Thu, 11 Jan 2024 09:04:28 GMT",
+      "tag": "@fluentui/react-aria_v9.7.0",
+      "version": "9.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "c04dff957ab3e3912264665abd4cede8f78868aa",
+            "comment": "feat: active descedant improvements"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Jan 2024 16:24:28 GMT",
       "tag": "@fluentui/react-aria_v9.6.2",
       "version": "9.6.2",

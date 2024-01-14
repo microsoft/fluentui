@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -60,13 +59,8 @@ export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): Inline
   const rootStyles = useDrawerRootStyles();
   const motionClassNames = useMotionClassNames(state.motion, useDrawerMotionStyles());
 
-  const separatorClass = React.useMemo(() => {
-    if (!state.separator) {
-      return undefined;
-    }
-
-    return state.position === 'start' ? rootStyles.separatorStart : rootStyles.separatorEnd;
-  }, [state.position, state.separator, rootStyles.separatorEnd, rootStyles.separatorStart]);
+  const separatorClass =
+    state.separator && (state.position === 'start' ? rootStyles.separatorStart : rootStyles.separatorEnd);
 
   state.root.className = mergeClasses(
     inlineDrawerClassNames.root,

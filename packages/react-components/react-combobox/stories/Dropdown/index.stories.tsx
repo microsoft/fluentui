@@ -8,6 +8,7 @@ import accessibilityMd from './DropdownAccessibility.md';
 export { Default } from './DropdownDefault.stories';
 export { Appearance } from './DropdownAppearance.stories';
 export { Grouped } from './DropdownGrouped.stories';
+export { Clearable } from './DropdownClearable.stories';
 export { ComplexOptions } from './DropdownComplexOptions.stories';
 export { CustomOptions } from './DropdownCustomOptions.stories';
 export { Controlled } from './DropdownControlled.stories';

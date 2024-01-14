@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-toolbar",
-  "version": "9.1.62",
+  "version": "9.1.63",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -35,7 +35,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-button": "^9.3.61",
+    "@fluentui/react-button": "^9.3.62",
     "@fluentui/react-divider": "^9.2.55",
     "@fluentui/react-theme": "^9.1.16",
     "@fluentui/react-utilities": "^9.15.6",
@@ -49,7 +49,7 @@
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
-    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
     "react": ">=16.14.0 <19.0.0",
     "react-dom": ">=16.14.0 <19.0.0"
   },
