@@ -101,7 +101,7 @@
     "@nx/plugin": "17.2.8",
     "@nx/workspace": "17.2.8",
     "@octokit/rest": "18.12.0",
-    "@phenomnomnominal/tsquery": "6.1.2",
+    "@phenomnomnominal/tsquery": "6.1.3",
     "@storybook/addon-a11y": "6.5.15",
     "@storybook/addon-actions": "6.5.15",
     "@storybook/addon-docs": "6.5.15",
