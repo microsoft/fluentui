@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
-const path = require('path');
-const { registerTsProject } = require('nx/src/utils/register');
+// @ts-check
 
-registerTsProject(path.join(__dirname, '..'), 'tsconfig.lib.json');
+const { joinPathFragments } = require('@nx/devkit');
+const { registerTsProject } = require('@nx/js/src/internal');
+
+registerTsProject(joinPathFragments(__dirname, '..', 'tsconfig.lib.json'));
 
 const { cli } = require('../src/cli');
 cli().catch(err => {

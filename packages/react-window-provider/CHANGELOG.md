@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-window-provider
 
-This log was last generated on Sat, 28 Oct 2023 00:29:16 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jan 2024 07:28:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.18)
+
+Wed, 10 Jan 2024 07:28:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.17..@fluentui/react-window-provider_v2.2.18)
+
+### Patches
+
+- chore: clean up exports ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by seanmonahan@microsoft.com)
+- Bump @fluentui/set-version to v8.2.14 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+
+## [2.2.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.17)
+
+Thu, 14 Dec 2023 07:30:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.16..@fluentui/react-window-provider_v2.2.17)
+
+### Patches
+
+- chore: disallow `window` and `document` access ([PR #29962](https://github.com/microsoft/fluentui/pull/29962) by seanmonahan@microsoft.com)
+- Bump @fluentui/set-version to v8.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
 
 ## [2.2.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.16)
 

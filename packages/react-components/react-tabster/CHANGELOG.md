@@ -1,8 +1,56 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Thu, 30 Nov 2023 13:42:07 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Jan 2024 16:24:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.17.0)
+
+Mon, 08 Jan 2024 16:24:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.16.1..@fluentui/react-tabster_v9.17.0)
+
+### Minor changes
+
+- feat: `useOnKeyboardNavigationChange` to subscribe to changes in keyboard navigation mode ([PR #30219](https://github.com/microsoft/fluentui/pull/30219) by lingfangao@hotmail.com)
+- Bump @fluentui/react-utilities to v9.15.6 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+
+### Patches
+
+- fix(useArrowNavigationGroup): should always memorize last focused element ([PR #30112](https://github.com/microsoft/fluentui/pull/30112) by lingfangao@hotmail.com)
+
+## [9.16.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.16.1)
+
+Wed, 03 Jan 2024 09:26:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.16.0..@fluentui/react-tabster_v9.16.1)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.15.5 ([PR #30163](https://github.com/microsoft/fluentui/pull/30163) by beachball)
+
+## [9.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.16.0)
+
+Mon, 18 Dec 2023 14:40:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.15.1..@fluentui/react-tabster_v9.16.0)
+
+### Minor changes
+
+- feat: focus-visible polyfill shadow DOM support ([PR #30098](https://github.com/microsoft/fluentui/pull/30098) by lingfangao@hotmail.com)
+- Bump @fluentui/react-shared-contexts to v9.13.2 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+- Bump @fluentui/react-utilities to v9.15.4 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+
+### Patches
+
+- fix: focus outline should have `Highlight` colour in high contrast ([PR #30099](https://github.com/microsoft/fluentui/pull/30099) by lingfan.gao@microsoft.com)
+
+## [9.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.15.1)
+
+Thu, 14 Dec 2023 09:58:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.15.0..@fluentui/react-tabster_v9.15.1)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.13.1 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+- Bump @fluentui/react-utilities to v9.15.3 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
 
 ## [9.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.15.0)
 

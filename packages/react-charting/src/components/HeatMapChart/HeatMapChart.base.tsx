@@ -24,7 +24,7 @@ import {
 } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
-import * as d3TimeFormat from 'd3-time-format';
+import { timeFormat as d3TimeFormat } from 'd3-time-format';
 
 type DataSet = {
   dataSet: RectanglesGraphData;
@@ -117,9 +117,6 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _emptyChartId: string;
   public constructor(props: IHeatMapChartProps) {
     super(props);
-    const { x, y } = this._getXandY();
-    this._xAxisType = getTypeOfAxis(x, true) as XAxisTypes;
-    this._yAxisType = getTypeOfAxis(y, false) as YAxisType;
     /**
      * below funciton creates a new data set from the prop
      * @data and also finds all the unique x-axis datapoints
@@ -152,6 +149,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   }
 
   public render(): React.ReactNode {
+    const { x, y } = this._getXandY();
+    this._xAxisType = getTypeOfAxis(x, true) as XAxisTypes;
+    this._yAxisType = getTypeOfAxis(y, false) as YAxisType;
     const { data, xAxisDateFormatString, xAxisNumberFormatString, yAxisDateFormatString, yAxisNumberFormatString } =
       this.props;
     this._colorScale = this._getColorScale();
@@ -640,7 +640,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _getStringFormattedDate = (point: string, formatString?: string): string => {
     const date = new Date();
     date.setTime(+point);
-    return d3TimeFormat.timeFormat(formatString || '%b/%d')(date);
+    return d3TimeFormat(formatString || '%b/%d')(date);
   };
 
   private _getStringFormattedNumber = (point: string, formatString?: string): string => {

@@ -10,7 +10,6 @@
     "@fluentui/react-northstar": "*",
     "@fluentui/react-northstar-prototypes": "*",
     "@types/react-router-dom": "^5.1.5",
-    "lerna-alias": "^3.0.3-0",
     "lodash": "^4.17.15",
     "react-router-dom": "^5.2.0"
   },

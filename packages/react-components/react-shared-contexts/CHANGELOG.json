@@ -2,6 +2,51 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Wed, 20 Dec 2023 01:35:07 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.13.2",
+      "version": "9.13.2",
+      "comments": {
+        "none": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "9287dccfb14c7e7c06c1aaabdd3efef2d01149e2",
+            "comment": "Docs: Deprecate unused style hook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 Dec 2023 14:40:46 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.13.2",
+      "version": "9.13.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "af6a9cb92082860c218fe72c99a03d45d6d7d1e4",
+            "comment": "fix: add custom style hook for TimePicker compat."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Dec 2023 09:58:45 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.13.1",
+      "version": "9.13.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "b6766ba321b57331266f3f391d7274c77730459d",
+            "comment": "chore: disallow `window` and `document` access"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Nov 2023 09:55:09 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.13.0",
       "version": "9.13.0",

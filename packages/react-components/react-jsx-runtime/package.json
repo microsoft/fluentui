@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-jsx-runtime",
-  "version": "9.0.20",
+  "version": "9.0.24",
   "description": "Custom JSX runtime for @fluentui/react-components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -31,7 +31,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "^9.15.2",
+    "@fluentui/react-utilities": "^9.15.6",
     "react-is": "^17.0.2",
     "@swc/helpers": "^0.5.1"
   },

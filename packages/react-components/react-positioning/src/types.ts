@@ -184,6 +184,14 @@ export interface PositioningOptions {
    * When set, the positioned element matches the chosen dimension(s) of the target element
    */
   matchTargetSize?: 'width';
+
+  /**
+   * Called when a position update has finished. Multiple position updates can happen in a single render,
+   * since positioning happens outside of the React lifecycle.
+   *
+   * It's also possible to listen to the custom DOM event `fui-positioningend`
+   */
+  onPositioningEnd?: () => void;
 }
 
 /**
@@ -205,6 +213,7 @@ export interface PositioningProps
     | 'strategy'
     | 'useTransform'
     | 'matchTargetSize'
+    | 'onPositioningEnd'
   > {
   /** An imperative handle to Popper methods. */
   positioningRef?: React.Ref<PositioningImperativeRef>;

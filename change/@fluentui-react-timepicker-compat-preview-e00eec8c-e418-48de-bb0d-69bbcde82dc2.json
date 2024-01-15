@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use default time format instead of h23 hour cycle.",
-  "packageName": "@fluentui/react-timepicker-compat-preview",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

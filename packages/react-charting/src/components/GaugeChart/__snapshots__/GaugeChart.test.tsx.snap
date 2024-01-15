@@ -34,7 +34,6 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
               width: 0px;
             }
         focusable="false"
-        role="presentation"
       >
         <g
           transform="translate(0, -40)"
@@ -811,7 +810,6 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -40)"
@@ -1313,7 +1311,6 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -16)"
@@ -1505,7 +1502,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -40)"
@@ -2052,7 +2048,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
               width: 0px;
             }
         onMouseLeave={[Function]}
-        role="presentation"
       >
         <g
           transform="translate(0, -40)"
@@ -2587,7 +2582,6 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -40)"
@@ -3121,7 +3115,6 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -40)"
@@ -3545,7 +3538,6 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -40)"
@@ -3968,7 +3960,6 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -40)"
@@ -4515,7 +4506,6 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -40)"
@@ -5049,7 +5039,6 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
             width: 0px;
           }
       onMouseLeave={[Function]}
-      role="presentation"
     >
       <g
         transform="translate(0, -60)"

@@ -26,8 +26,7 @@
     "@fluentui/scripts-babel": "*",
     "@fluentui/scripts-gulp": "*",
     "@fluentui/scripts-jest": "*",
-    "@types/react-frame-component": "^4.1.1",
-    "lerna-alias": "^3.0.3-0"
+    "@types/react-frame-component": "^4.1.1"
   },
   "peerDependencies": {
     "@babel/standalone": "^7.8.3",

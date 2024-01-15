@@ -36,12 +36,16 @@ export const partitionBreadcrumbItems = <T>(
   const numberItemsToHide = itemsCount - maxDisplayedItems;
 
   if (numberItemsToHide > 0) {
-    overflowIndex = overflowIndex === maxDisplayedItems ? overflowIndex - 1 : overflowIndex;
+    overflowIndex = overflowIndex >= maxDisplayedItems ? maxDisplayedItems - 1 : overflowIndex;
     const menuLastItemIdx = overflowIndex + numberItemsToHide;
 
     startDisplayedItems = startDisplayedItems.slice(0, overflowIndex);
     overflowItems = items.slice(overflowIndex, menuLastItemIdx);
-    endDisplayedItems = items.slice(menuLastItemIdx, itemsCount);
+    if (menuLastItemIdx < itemsCount) {
+      endDisplayedItems = items.slice(menuLastItemIdx, itemsCount);
+    }
+  } else if (overflowIndex < itemsCount) {
+    endDisplayedItems = items.slice(overflowIndex, itemsCount);
   }
 
   return {
