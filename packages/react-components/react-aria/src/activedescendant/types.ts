@@ -25,9 +25,9 @@ export interface ActiveDescendantOptions {
 
 export interface FindOptions {
   /**
-   * Starts the search from the a specific option
+   * Starts the search from a specific id
    */
-  startId?: string;
+  startFrom?: string;
 }
 
 export interface UseActiveDescendantReturn<

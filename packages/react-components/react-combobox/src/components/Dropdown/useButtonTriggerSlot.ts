@@ -45,7 +45,7 @@ export function useButtonTriggerSlot(
         const option = getOptionById(id);
         return !!option && matcher(option.text);
       },
-      { startId: startFromNext ? activeDescendantController.next({ passive: true }) : activeOptionId },
+      { startFrom: startFromNext ? activeDescendantController.next({ passive: true }) : activeOptionId },
     );
 
     if (nextInOrder) {

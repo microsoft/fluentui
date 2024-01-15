@@ -66,12 +66,12 @@ export function useOptionWalker<TListboxElement extends HTMLElement>(options: Us
 
         return treeWalkerRef.current.previousNode() as HTMLElement | null;
       },
-      find: (predicate: (id: string) => boolean, startId?: string) => {
+      find: (predicate: (id: string) => boolean, startFrom?: string) => {
         if (!treeWalkerRef.current || !listboxRef.current) {
           return null;
         }
 
-        const start = startId ? targetDocument?.getElementById(startId) : null;
+        const start = startFrom ? targetDocument?.getElementById(startFrom) : null;
         treeWalkerRef.current.currentNode = start ?? listboxRef.current;
         let cur: HTMLElement | null = treeWalkerRef.current.currentNode as HTMLElement;
         while (cur && !predicate(cur.id)) {
