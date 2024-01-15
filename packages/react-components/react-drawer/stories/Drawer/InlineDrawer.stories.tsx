@@ -64,12 +64,15 @@ const setButtonText = (open: boolean, position: DrawerProps['position']) => {
   switch (position) {
     case 'start':
       buttonText = `${buttonText} left`;
+      break;
 
     case 'end':
       buttonText = `${buttonText} right`;
+      break;
 
     case 'bottom':
       buttonText = `${buttonText} bottom`;
+      break;
 
     default:
       buttonText = `${buttonText} drawer`;
