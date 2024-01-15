@@ -12,7 +12,7 @@
     "@fluentui/react-component-ref": "^0.66.4",
     "@fluentui/react-icons-northstar": "^0.66.4",
     "@fluentui/react-northstar": "^0.66.4",
-    "axe-core": "4.4.3",
+    "axe-core": "4.7.2",
     "immer": "^9.0.12",
     "lodash": "^4.17.15",
     "lz-string": "^1.4.4",
