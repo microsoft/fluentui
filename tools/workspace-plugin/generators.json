@@ -79,6 +79,11 @@
       "implementation": "./src/generators/workspace-generator/index.ts",
       "schema": "./src/generators/workspace-generator/schema.json",
       "description": "Generator workspace-generator"
+    },
+    "eslint-rule": {
+      "factory": "./src/generators/eslint-rule/generator",
+      "schema": "./src/generators/eslint-rule/schema.json",
+      "description": "eslint-rule generator"
     }
   }
 }
