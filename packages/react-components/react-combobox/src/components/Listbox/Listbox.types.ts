@@ -22,19 +22,19 @@ export type ListboxState = ComponentState<ListboxSlots> &
   Pick<SelectionProps, 'multiselect'> &
   SelectionState & {
     /**
-     * @deprecated
+     * @deprecated - no longer used internally
      */
     activeOption?: OptionValue;
 
     /**
-     * @deprecated
+     * @deprecated - no longer used internally
      */
     focusVisible: boolean;
 
     selectOption(event: SelectionEvents, option: OptionValue): void;
 
     /**
-     * @deprecated
+     * @deprecated - no longer used internally
      */
     setActiveOption(option?: OptionValue): void;
 

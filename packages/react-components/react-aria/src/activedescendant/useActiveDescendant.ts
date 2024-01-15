@@ -130,8 +130,8 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
         }
       },
 
-      find(predicate, { passive } = {}) {
-        const target = optionWalker.find(predicate);
+      find(predicate, { passive, startId } = {}) {
+        const target = optionWalker.find(predicate, startId);
         if (!passive) {
           focusActiveDescendant(target);
         }

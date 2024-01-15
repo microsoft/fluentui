@@ -13,13 +13,21 @@ import type { Slot } from '@fluentui/react-utilities';
 export const ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE = "data-activedescendant-focusvisible";
 
 // @public (undocumented)
+export const ActiveDescendantContextProvider: React_2.Provider<ActiveDescendantContextValue | undefined>;
+
+// @public (undocumented)
+export type ActiveDescendantContextValue = {
+    controller: ActiveDescendantImperativeRef;
+};
+
+// @public (undocumented)
 export interface ActiveDescendantImperativeRef {
     // (undocumented)
     active: () => string | undefined;
     // (undocumented)
     blur: () => void;
     // (undocumented)
-    find: (predicate: (id: string) => boolean, options?: IteratorOptions) => string | undefined;
+    find: (predicate: (id: string) => boolean, options?: IteratorOptions & FindOptions) => string | undefined;
     // (undocumented)
     first: (options?: IteratorOptions) => string | undefined;
     // (undocumented)
@@ -66,11 +74,17 @@ export type ARIAButtonType = 'button' | 'a' | 'div';
 // @public (undocumented)
 export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(options: ActiveDescendantOptions): UseActiveDescendantReturn<TActiveParentElement, TListboxElement>;
 
+// @public (undocumented)
+export const useActiveDescendantContext: () => ActiveDescendantContextValue;
+
 // @internal
 export function useARIAButtonProps<Type extends ARIAButtonType, Props extends ARIAButtonProps<Type>>(type?: Type, props?: Props): ARIAButtonResultProps<Type, Props>;
 
 // @internal @deprecated (undocumented)
 export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps>;
+
+// @public (undocumented)
+export const useHasParentActiveDescendantContext: () => boolean;
 
 // (No @packageDocumentation comment for this package)
 

@@ -17,12 +17,12 @@ export type OptionCollectionState = {
   getCount: () => number;
 
   /**
-   * @deprecated
+   * @deprecated - no longer used internally
    */
   getIndexOfId(id: string): number;
 
   /**
-   * @deprecated
+   * @deprecated - no longer used internally
    */
   getOptionAtIndex(index: number): OptionValue | undefined;
 
@@ -30,7 +30,7 @@ export type OptionCollectionState = {
   getOptionById(id: string): OptionValue | undefined;
 
   /**
-   * @deprecated
+   * @deprecated - no longer used internally
    */
   getOptionsMatchingText(matcher: (text: string) => boolean): OptionValue[];
 

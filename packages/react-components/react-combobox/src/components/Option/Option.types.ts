@@ -53,12 +53,12 @@ export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
 export type OptionState = ComponentState<OptionSlots> &
   Pick<OptionProps, 'disabled'> & {
     /**
-     * @deprecated
+     * @deprecated - no longer used internally
      */
     active: boolean;
 
     /**
-     * @deprecated
+     * @deprecated - no longer used internally
      */
     focusVisible: boolean;
 

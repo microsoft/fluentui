@@ -3,7 +3,6 @@ import { useTimeout, mergeCallbacks } from '@fluentui/react-utilities';
 import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type { Slot, ExtractSlotProps, SlotComponentType } from '@fluentui/react-utilities';
 import { useTriggerSlot, UseTriggerSlotState } from '../../utils/useTriggerSlot';
-import { OptionValue } from '../../utils/OptionCollection.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { DropdownState } from './Dropdown.types';
 
@@ -34,43 +33,62 @@ export function useButtonTriggerSlot(
   const searchString = React.useRef('');
   const [setKeyTimeout, clearKeyTimeout] = useTimeout();
 
-  const getNextMatchingOption = (): OptionValue | undefined => {
-    // first check for matches for the full searchString
-    let matcher = (optionText: string) => optionText.toLowerCase().indexOf(searchString.current) === 0;
+  const moveToNextMatchingOption = (
+    matcher: (optionText: string) => boolean,
+    opt: { startFromNext: boolean } = { startFromNext: false },
+  ) => {
+    const { startFromNext } = opt;
     const activeOptionId = activeDescendantController.active();
-    let match: string | undefined;
 
-    // TODO slowly pressing same key
-    match = activeDescendantController.find(id => {
+    const nextInOrder = activeDescendantController.find(
+      id => {
+        const option = getOptionById(id);
+        return !!option && matcher(option.text);
+      },
+      { startId: startFromNext ? activeDescendantController.next({ passive: true }) : activeOptionId },
+    );
+
+    if (nextInOrder) {
+      return nextInOrder;
+    }
+
+    // Cycle back to first match
+    return activeDescendantController.find(id => {
       const option = getOptionById(id);
       return !!option && matcher(option.text);
     });
+  };
+
+  const moveToNextMatchingOptionWithSameCharacterHandling = () => {
+    // first check for matches for the full searchString
+    let match: string | undefined;
+
+    match = moveToNextMatchingOption(
+      optionText => {
+        return optionText.toLocaleLowerCase().indexOf(searchString.current) === 0;
+      },
+      {
+        // Slowly pressing the same key will cycle through options
+        startFromNext: searchString.current.length === 1,
+      },
+    );
 
     // if there are no direct matches, check if the search is all the same letter, e.g. "aaa"
-    if (!match) {
-      const letters = searchString.current.split('');
-      const allSameLetter = letters.length && letters.every(letter => letter === letters[0]);
-
-      // if the search is all the same letter, cycle through options starting with that letter
-      if (allSameLetter) {
-        matcher = (optionText: string) => optionText.toLowerCase().indexOf(letters[0]) === 0;
-        match = activeDescendantController.find(id => {
-          if (id === activeOptionId) {
-            return false;
-          }
-
-          const option = getOptionById(id);
-          return !!option && matcher(option.text);
-        });
-      }
+    if (!match && allCharactersSame(searchString.current)) {
+      match = moveToNextMatchingOption(
+        optionText => {
+          return optionText.toLocaleLowerCase().indexOf(searchString.current[0]) === 0;
+        },
+        {
+          // if the search is all the same letter, cycle through options starting with that letter
+          startFromNext: true,
+        },
+      );
     }
 
     if (!match) {
       activeDescendantController.blur();
-      return undefined;
     }
-
-    return getOptionById(match);
   };
 
   const onTriggerKeyDown = (ev: React.KeyboardEvent<HTMLButtonElement>) => {
@@ -88,10 +106,7 @@ export function useButtonTriggerSlot(
       // update state
       !open && setOpen(ev, true);
 
-      const nextOption = getNextMatchingOption();
-      if (nextOption?.id) {
-        activeDescendantController.focus(nextOption.id);
-      }
+      moveToNextMatchingOptionWithSameCharacterHandling();
     }
   };
 
@@ -104,4 +119,17 @@ export function useButtonTriggerSlot(
   trigger.onKeyDown = mergeCallbacks(onTriggerKeyDown, trigger.onKeyDown);
 
   return trigger;
+}
+
+/**
+ * @returns - whether every character in the string is the same
+ */
+function allCharactersSame(str: string) {
+  for (let i = 1; i < str.length; i++) {
+    if (str[i] !== str[i - 1]) {
+      return false;
+    }
+  }
+
+  return true;
 }
