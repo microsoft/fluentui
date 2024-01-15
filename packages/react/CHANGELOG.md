@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 10 Jan 2024 07:28:49 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jan 2024 07:28:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.114.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.114.3)
+
+Mon, 15 Jan 2024 07:28:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.114.2..@fluentui/react_v8.114.3)
+
+### Patches
+
+- fix: positioning properly tests if point is at the zero location, instead of returning false ([PR #30296](https://github.com/microsoft/fluentui/pull/30296) by mgodbolt@microsoft.com)
 
 ## [8.114.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.114.2)
 
