@@ -1,24 +1,24 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from "@griffel/react"
-import type { SlotClassNames } from "@fluentui/react-utilities"
-import { tokens } from "@fluentui/react-theme"
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
 
-import type { InlineDrawerSlots, InlineDrawerState } from "./InlineDrawer.types"
-import { drawerCSSVars, drawerDefaultStyles, useDrawerBaseClassNames } from "../../shared/useDrawerBaseStyles.styles"
-import { useMotionClassNames } from "@fluentui/react-motion-preview"
+import type { InlineDrawerSlots, InlineDrawerState } from './InlineDrawer.types';
+import { drawerCSSVars, drawerDefaultStyles, useDrawerBaseClassNames } from '../../shared/useDrawerBaseStyles.styles';
+import { useMotionClassNames } from '@fluentui/react-motion-preview';
 
 export const inlineDrawerClassNames: SlotClassNames<InlineDrawerSlots> = {
-  root: "fui-InlineDrawer",
-}
+  root: 'fui-InlineDrawer',
+};
 
 const useDrawerResetStyles = makeResetStyles({
   ...drawerDefaultStyles,
-  position: "relative",
-})
+  position: 'relative',
+});
 
 /**
  * Styles for the root slot
  */
-const separatorValues = ["1px", "solid", tokens.colorNeutralBackground3] as const
+const separatorValues = ['1px', 'solid', tokens.colorNeutralBackground3] as const;
 const useDrawerRootStyles = makeStyles({
   /* Separator */
   separatorStart: {
@@ -40,41 +40,41 @@ const useDrawerRootStyles = makeStyles({
   },
   bottom: {
     transform: `translate3D(0, var(${drawerCSSVars.drawerSizeVar}), 0)`,
-    width: "100%",
+    width: '100%',
     height: `var(${drawerCSSVars.drawerSizeVar})`,
   },
-})
+});
 
 const useDrawerMotionStyles = makeStyles({
   default: {
     opacity: 0,
-    transitionProperty: "opacity, transform",
-    willChange: "opacity, transform",
+    transitionProperty: 'opacity, transform',
+    willChange: 'opacity, transform',
   },
 
   enter: {
     opacity: 1,
-    transform: "translate3D(0, 0, 0)",
+    transform: 'translate3D(0, 0, 0)',
   },
-})
+});
 
 function getSeparatorClass(state: InlineDrawerState, classNames: ReturnType<typeof useDrawerRootStyles>) {
   if (!state.separator) {
-    return undefined
+    return undefined;
   }
 
   switch (state.position) {
-    case "start":
-      return classNames.separatorStart
+    case 'start':
+      return classNames.separatorStart;
 
-    case "end":
-      return classNames.separatorEnd
+    case 'end':
+      return classNames.separatorEnd;
 
-    case "bottom":
-      return classNames.separatorBottom
+    case 'bottom':
+      return classNames.separatorBottom;
 
     default:
-      return undefined
+      return undefined;
   }
 }
 
@@ -82,10 +82,10 @@ function getSeparatorClass(state: InlineDrawerState, classNames: ReturnType<type
  * Apply styling to the InlineDrawer slots based on the state
  */
 export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): InlineDrawerState => {
-  const resetStyles = useDrawerResetStyles()
-  const baseClassNames = useDrawerBaseClassNames(state)
-  const rootStyles = useDrawerRootStyles()
-  const motionClassNames = useMotionClassNames(state.motion, useDrawerMotionStyles())
+  const resetStyles = useDrawerResetStyles();
+  const baseClassNames = useDrawerBaseClassNames(state);
+  const rootStyles = useDrawerRootStyles();
+  const motionClassNames = useMotionClassNames(state.motion, useDrawerMotionStyles());
 
   state.root.className = mergeClasses(
     inlineDrawerClassNames.root,
@@ -94,8 +94,8 @@ export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): Inline
     getSeparatorClass(state, rootStyles),
     rootStyles[state.position],
     motionClassNames,
-    state.root.className
-  )
+    state.root.className,
+  );
 
-  return state
-}
+  return state;
+};
