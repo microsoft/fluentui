@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: positioning properly tests if point is at the zero location, instead of returning false",
-  "packageName": "@fluentui/react",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}
