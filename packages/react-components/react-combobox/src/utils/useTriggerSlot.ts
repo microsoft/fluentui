@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
-import { mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { mergeCallbacks, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey } from '../utils/dropdownKeyActions';
 import type { ComboboxBaseState } from './ComboboxBase.types';
+import { OptionValue } from './OptionCollection.types';
 
 export type UseTriggerSlotState = Pick<
   ComboboxBaseState,
@@ -38,7 +39,7 @@ export function useTriggerSlot(
   options: UseTriggerSlotOptions & { elementType: 'input' | 'button' },
 ): SlotComponentType<ExtractSlotProps<Slot<'button'>>> | SlotComponentType<ExtractSlotProps<Slot<'input'>>> {
   const {
-    state: { open, selectOption, setOpen, multiselect, setHasFocus, getOptionById },
+    state: { open, setOpen, setHasFocus },
     defaultProps,
     elementType,
     activeDescendantController,
@@ -81,48 +82,108 @@ export function useTriggerSlot(
 
   // handle combobox keyboard interaction
   trigger.onKeyDown = mergeCallbacks(
-    (event: React.KeyboardEvent<HTMLButtonElement> & React.KeyboardEvent<HTMLInputElement>) => {
-      const action = getDropdownActionFromKey(event, { open, multiselect });
-      const activeOptionId = activeDescendantController.active();
-      const activeOption = activeOptionId ? getOptionById(activeOptionId) : null;
-
-      switch (action) {
-        case 'First':
-          activeDescendantController.first();
-          event.preventDefault();
-          break;
-        case 'Next':
-          activeDescendantController.next();
-          event.preventDefault();
-          break;
-        case 'Previous':
-          activeDescendantController.prev();
-          event.preventDefault();
-          break;
-        case 'Open':
-          event.preventDefault();
-          setOpen(event, true);
-          break;
-        case 'Close':
-          // stop propagation for escape key to avoid dismissing any parent popups
-          event.stopPropagation();
-          event.preventDefault();
-          setOpen(event, false);
-          break;
-        case 'CloseSelect':
-          !multiselect && !activeOption?.disabled && setOpen(event, false);
-        // fallthrough
-        case 'Select':
-          activeOption && selectOption(event, activeOption);
-          event.preventDefault();
-          break;
-        case 'Tab':
-          !multiselect && activeOption && selectOption(event, activeOption);
-          break;
-      }
-    },
+    useTriggerKeydown({ activeDescendantController, ...options.state }),
     trigger.onKeyDown,
   );
 
   return trigger as SlotComponentType<ExtractSlotProps<Slot<'input'>>>;
+}
+
+function useTriggerKeydown(
+  options: {
+    activeDescendantController: ActiveDescendantImperativeRef;
+  } & Pick<UseTriggerSlotState, 'setOpen' | 'selectOption' | 'getOptionById' | 'multiselect' | 'open'>,
+) {
+  const { activeDescendantController, getOptionById, setOpen, selectOption, multiselect, open } = options;
+
+  const getActiveOption = React.useCallback(() => {
+    const activeOptionId = activeDescendantController.active();
+    return activeOptionId ? getOptionById(activeOptionId) : undefined;
+  }, [activeDescendantController, getOptionById]);
+
+  const first = () => {
+    activeDescendantController.first();
+  };
+
+  const next = (activeOption: OptionValue | undefined) => {
+    if (activeOption) {
+      activeDescendantController.next();
+    } else {
+      activeDescendantController.first();
+    }
+  };
+
+  const previous = (activeOption: OptionValue | undefined) => {
+    if (activeOption) {
+      activeDescendantController.prev();
+    } else {
+      activeDescendantController.first();
+    }
+  };
+
+  const pageUp = () => {
+    for (let i = 0; i < 10; i++) {
+      activeDescendantController.prev();
+    }
+  };
+
+  const pageDown = () => {
+    for (let i = 0; i < 10; i++) {
+      activeDescendantController.next();
+    }
+  };
+
+  return useEventCallback((e: React.KeyboardEvent<HTMLInputElement> & React.KeyboardEvent<HTMLButtonElement>) => {
+    const action = getDropdownActionFromKey(e, { open, multiselect });
+    const activeOption = getActiveOption();
+
+    switch (action) {
+      case 'First':
+      case 'Next':
+      case 'Previous':
+      case 'PageDown':
+      case 'PageUp':
+      case 'Open':
+      case 'Close':
+      case 'CloseSelect':
+      case 'Select':
+        e.preventDefault();
+        break;
+    }
+
+    switch (action) {
+      case 'First':
+        first();
+        break;
+      case 'Next':
+        next(activeOption);
+        break;
+      case 'Previous':
+        previous(activeOption);
+        break;
+      case 'PageDown':
+        pageDown();
+        break;
+      case 'PageUp':
+        pageUp();
+        break;
+      case 'Open':
+        setOpen(e, true);
+        break;
+      case 'Close':
+        // stop propagation for escape key to avoid dismissing any parent popups
+        e.stopPropagation();
+        setOpen(e, false);
+        break;
+      case 'CloseSelect':
+        !multiselect && !activeOption?.disabled && setOpen(e, false);
+      // fallthrough
+      case 'Select':
+        activeOption && selectOption(e, activeOption);
+        break;
+      case 'Tab':
+        !multiselect && activeOption && selectOption(e, activeOption);
+        break;
+    }
+  });
 }
