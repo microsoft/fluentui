@@ -59,19 +59,23 @@ type DrawerInlineExampleProps = {
 };
 
 const setButtonText = (open: boolean, position: DrawerProps['position']) => {
+  let buttonText = open ? 'Close' : 'Open';
+
   switch (position) {
     case 'start':
-      return `${open ? 'Close' : 'Open'} left`;
+      buttonText = `${buttonText} left`;
 
     case 'end':
-      return `${open ? 'Close' : 'Open'} right`;
+      buttonText = `${buttonText} right`;
 
     case 'bottom':
-      return `${open ? 'Close' : 'Open'} bottom`;
+      buttonText = `${buttonText} bottom`;
 
     default:
-      return undefined;
+      buttonText = `${buttonText} drawer`;
   }
+
+  return buttonText
 };
 
 const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ open, setOpen, position }) => {
