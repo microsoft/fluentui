@@ -9,6 +9,7 @@ import { useEventCallback } from '@fluentui/react-utilities';
  * in the keyboard navigation mode.
  *
  * @param callback - called every time the keyboard navigation state changes
+ * @returns - function to update keyboard navigation mode manually
  */
 export function useOnKeyboardNavigationChange(callback: (isNavigatingWithKeyboard: boolean) => void) {
   const { targetDocument } = useFluent();
@@ -27,4 +28,6 @@ export function useOnKeyboardNavigationChange(callback: (isNavigatingWithKeyboar
   React.useEffect(() => {
     return () => keyborg && disposeKeyborg(keyborg);
   }, [keyborg]);
+
+  return React.useCallback((isNavigatingWithKeyboard: boolean) => keyborg?.setVal(isNavigatingWithKeyboard), [keyborg]);
 }

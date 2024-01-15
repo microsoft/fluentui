@@ -14,7 +14,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   const activeIdRef = React.useRef<string | null>(null);
   const activeParentRef = React.useRef<TActiveParentElement>(null);
 
-  useOnKeyboardNavigationChange(isNavigatingWithKeyboard => {
+  const setKeyboardNavigation = useOnKeyboardNavigationChange(isNavigatingWithKeyboard => {
     focusVisibleRef.current = isNavigatingWithKeyboard;
     const active = getActiveDescendant();
     if (!active) {
@@ -27,6 +27,18 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
       active.removeAttribute(ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE);
     }
   });
+
+  React.useEffect(() => {
+    if (activeParentRef.current) {
+      activeParentRef.current.addEventListener('keydown', e => {
+        switch (e.key) {
+          case 'ArrowUp':
+          case 'ArrowDown':
+            setKeyboardNavigation(true);
+        }
+      });
+    }
+  }, [setKeyboardNavigation]);
 
   const matchOption = useEventCallback(matchOptionUnstable);
   const { listboxRef, optionWalker, listboxCallbackRef } = useOptionWalker<TListboxElement>({ matchOption });
