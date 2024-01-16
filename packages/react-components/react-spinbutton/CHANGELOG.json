@@ -2,6 +2,33 @@
   "name": "@fluentui/react-spinbutton",
   "entries": [
     {
+      "date": "Tue, 16 Jan 2024 13:14:08 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.2.58",
+      "version": "9.2.58",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-field to v9.1.48",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-spinbutton",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.25",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Jan 2024 16:24:25 GMT",
       "tag": "@fluentui/react-spinbutton_v9.2.57",
       "version": "9.2.57",
