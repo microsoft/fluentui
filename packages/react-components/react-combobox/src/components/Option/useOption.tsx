@@ -66,7 +66,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
     return !!optionValue && !!selectedOptions.find(o => o === optionValue);
   });
   const selectOption = useContextSelector(ListboxContext, ctx => ctx.selectOption);
-  const setOpen = useContextSelector(ComboboxContext, ctx => ctx.setOpen);
+  const onOptionClick = useContextSelector(ListboxContext, ctx => ctx.onOptionClick);
 
   // check icon
   let CheckIcon: React.ReactNode = <CheckmarkFilled />;
@@ -82,14 +82,10 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
 
     activeDescendantController.focus(id);
 
-    // close on option click for single-select options in a combobox
-    if (!multiselect) {
-      setOpen?.(event, false);
-    }
-
     // handle selection change
     selectOption(event, optionData);
 
+    onOptionClick(event);
     props.onClick?.(event);
   };
 

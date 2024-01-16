@@ -15,9 +15,9 @@ import {
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useOptionCollection } from '../../utils/useOptionCollection';
 import { useSelection } from '../../utils/useSelection';
-import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { ListboxProps, ListboxState } from './Listbox.types';
 import { optionClassNames } from '../Option/useOptionStyles.styles';
+import { ListboxContext } from '../../contexts/ListboxContext';
 
 /**
  * Create the state required to render Listbox.
@@ -84,9 +84,9 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   };
 
   // get state from parent combobox, if it exists
-  const hasComboboxContext = useHasParentContext(ComboboxContext);
-  const comboboxSelectedOptions = useContextSelector(ComboboxContext, ctx => ctx.selectedOptions);
-  const comboboxSelectOption = useContextSelector(ComboboxContext, ctx => ctx.selectOption);
+  const hasComboboxContext = useHasParentContext(ListboxContext);
+  const comboboxSelectedOptions = useContextSelector(ListboxContext, ctx => ctx.selectedOptions);
+  const comboboxSelectOption = useContextSelector(ListboxContext, ctx => ctx.selectOption);
 
   // without a parent combobox context, provide values directly from Listbox
   const optionContextValues = hasComboboxContext

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useControllableState, useFirstMount } from '@fluentui/react-utilities';
+import { useControllableState, useEventCallback, useFirstMount } from '@fluentui/react-utilities';
 import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { useOptionCollection } from '../utils/useOptionCollection';
 import { OptionValue } from '../utils/OptionCollection.types';
@@ -139,5 +139,10 @@ export const useComboboxBaseState = (
     size,
     value,
     multiselect,
+    onOptionClick: useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+      if (!multiselect) {
+        setOpen(e, false);
+      }
+    }),
   };
 };

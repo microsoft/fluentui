@@ -5,6 +5,7 @@ import type { ComboboxContextValue } from '../contexts/ComboboxContext';
 import type { OptionValue, OptionCollectionState } from '../utils/OptionCollection.types';
 import { SelectionProps, SelectionState } from '../utils/Selection.types';
 import { PortalProps } from '@fluentui/react-portal';
+import { ListboxContextValue } from '../contexts/ListboxContext';
 
 /**
  * ComboboxBase Props
@@ -84,7 +85,9 @@ export type ComboboxBaseState = Required<
   Pick<ComboboxBaseProps, 'mountNode' | 'placeholder' | 'value' | 'multiselect'> &
   OptionCollectionState &
   SelectionState & {
-    /* Option data for the currently highlighted option (not the selected option) */
+    /**
+     * @deprecated - no longer used internally
+     */
     activeOption?: OptionValue;
 
     /**
@@ -103,6 +106,9 @@ export type ComboboxBaseState = Required<
      */
     ignoreNextBlur: React.MutableRefObject<boolean>;
 
+    /**
+     * @deprecated - no longer used internally
+     */
     setActiveOption: React.Dispatch<React.SetStateAction<OptionValue | undefined>>;
 
     /**
@@ -115,6 +121,8 @@ export type ComboboxBaseState = Required<
     setOpen(event: ComboboxBaseOpenEvents, newState: boolean): void;
 
     setValue(newValue: string | undefined): void;
+
+    onOptionClick: (e: React.MouseEvent<HTMLElement>) => void;
   };
 
 /**
@@ -133,4 +141,5 @@ export type ComboboxBaseOpenEvents =
 export type ComboboxBaseContextValues = {
   combobox: ComboboxContextValue;
   activeDescendant: ActiveDescendantContextValue;
+  listbox: ListboxContextValue;
 };
