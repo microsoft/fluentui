@@ -49,7 +49,7 @@ module.exports = createRule({
               if (
                 member.type === AST_NODE_TYPES.TSPropertySignature &&
                 member.key.type === AST_NODE_TYPES.Identifier &&
-                member.key.name.startsWith('on')
+                /^on[A-Z]/.test(member.key.name)
               ) {
                 const typeAnnotation = member.typeAnnotation?.typeAnnotation;
                 // Check if typeAnnotation is of type EventHandler
