@@ -25,7 +25,7 @@ Shape.parameters = {
   docs: {
     description: {
       story:
-        'You can pass in custom icons to the Rating component. You can specify the icons with the "iconFilled" and "iconOutline" props.',
+        'You can pass in custom icons to the Rating component. You can specify the icons with the `iconFilled` and `iconOutline` props.',
     },
   },
 };

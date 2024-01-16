@@ -3,8 +3,6 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type RatingSlots = {
   root: NonNullable<Slot<'div'>>;
-  ratingLabel?: NonNullable<Slot<'label'>>;
-  ratingCountLabel?: NonNullable<Slot<'label'>>;
 };
 
 /**
@@ -12,7 +10,7 @@ export type RatingSlots = {
  */
 export type RatingProps = ComponentProps<RatingSlots> & {
   /**
-   * Controls the appearance of the Rating.
+   * Controls the color of the Rating.
    * @default neutral
    */
   color?: 'brand' | 'marigold' | 'neutral';
@@ -34,11 +32,6 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    * @default 5
    */
   max?: number;
-  /**
-   * The mode of the rating.
-   * @default 'interactive'
-   */
-  mode?: 'interactive' | 'read-only' | 'read-only-compact';
   /**
    * Name for the Radio inputs. If not provided, one will be automatically generated
    */
@@ -77,13 +70,13 @@ export type RatingOnChangeData = {
  * State used in rendering Rating
  */
 export type RatingState = ComponentState<RatingSlots> &
-  Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'step' | 'size' | 'value'>> & {
+  Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'value'>> & {
     hoveredValue?: number | undefined;
   };
 
 export type RatingContextValue = Pick<
   RatingState,
-  'color' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'step' | 'size' | 'value' | 'hoveredValue'
+  'color' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'hoveredValue' | 'value'
 >;
 
 export type RatingContextValues = {

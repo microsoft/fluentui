@@ -44,6 +44,6 @@ export type RatingItemProps = ComponentProps<Partial<RatingItemSlots>> & {
  */
 export type RatingItemState = ComponentState<RatingItemSlots> &
   Required<Pick<RatingItemProps, 'value'>> &
-  Pick<RatingState, 'color' | 'mode' | 'step' | 'size'> & {
+  Pick<RatingState, 'color' | 'step' | 'size'> & {
     iconFillWidth: number;
   };

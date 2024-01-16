@@ -3,7 +3,7 @@ import * as React from 'react';
 import type { RatingContextValue } from '../Rating';
 
 /**
- * RadioGroupContext is provided by RadioGroup, and is consumed by Radio to determine default values of some props.
+ * RatingContext is provided by Rating, and is consumed by Rating to determine default values of some props.
  */
 export const RatingContext = React.createContext<RatingContextValue | undefined>(undefined);
 

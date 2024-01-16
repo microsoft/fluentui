@@ -12,13 +12,6 @@ export const ratingItemClassNames: SlotClassNames<RatingItemSlots> = {
   fullValueInput: 'fui-RatingItem__fullValueInput',
 };
 
-const indicatorSizes = {
-  small: '12px',
-  medium: '16px',
-  large: '20px',
-  'extra-large': '28px',
-};
-
 /**
  * Styles for the root slot
  */
@@ -27,27 +20,27 @@ const useStyles = makeStyles({
     position: 'relative',
   },
   small: {
-    fontSize: indicatorSizes.small,
-    width: indicatorSizes.small,
-    height: indicatorSizes.small,
+    fontSize: '12px',
+    width: '12px',
+    height: '12px',
   },
 
   medium: {
-    fontSize: indicatorSizes.medium,
-    width: indicatorSizes.medium,
-    height: indicatorSizes.medium,
+    fontSize: '16px',
+    width: '16px',
+    height: '16px',
   },
 
   large: {
-    fontSize: indicatorSizes.large,
-    width: indicatorSizes.large,
-    height: indicatorSizes.large,
+    fontSize: '20px',
+    width: '20px',
+    height: '20px',
   },
 
   'extra-large': {
-    fontSize: indicatorSizes['extra-large'],
-    width: indicatorSizes['extra-large'],
-    height: indicatorSizes['extra-large'],
+    fontSize: '28px',
+    width: '28px',
+    height: '28px',
   },
 });
 
@@ -94,13 +87,13 @@ const useIndicatorStyles = makeStyles({
     color: tokens.colorBrandBackground,
   },
   unselectedFilledBrand: {
-    color: tokens.colorBrandBackground2,
+    color: tokens.colorBrandBackground2Hover,
   },
   marigold: {
     color: tokens.colorPaletteMarigoldBackground3,
   },
   unselectedFilledMarigold: {
-    color: tokens.colorPaletteMarigoldBackground2,
+    color: tokens.colorPaletteMarigoldBorder1,
   },
   unselectedFilled: {
     color: tokens.colorNeutralBackground6,
@@ -176,6 +169,7 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
       indicatorBaseClassName,
       indicatorStyles.unselectedFilled,
       state.color === 'brand' && indicatorStyles.unselectedFilledBrand,
+      state.color === 'marigold' && indicatorStyles.unselectedFilledMarigold,
       iconFillWidth === 0.5 && indicatorStyles.upperHalf,
       state.unselectedFilledIcon.className,
     );
