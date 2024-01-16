@@ -37,8 +37,9 @@ ruleTester.run('consistent-callback-type', rule, {
     // Valid when prop has a function that is not callback, and not using EventHandler type
     {
       code: `
+        type SomeArgBag = { one: number };
         export type SomeProps = {
-          someFunction?: EventHandler<OnSomeEventData>,
+          someFunction?: (args: SomeArgBag) => void,
         };
       `,
       filename: 'src/components/SomeComponent/SomeComponent.type.ts',
