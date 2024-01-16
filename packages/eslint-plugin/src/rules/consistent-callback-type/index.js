@@ -23,7 +23,7 @@ module.exports = createRule({
       'TSTypeAliasDeclaration[id.name=/.*Props$/] TSTypeLiteral': function ( /** @type {import('@typescript-eslint/experimental-utils').TSESTree.TSTypeLiteral}*/ node) {
         node.members.forEach(member => {
           if (
-            member.type === 'TSPropertySignature' &&
+            member.type === AST_NODE_TYPES.TSPropertySignature &&
             member.key.type === AST_NODE_TYPES.Identifier &&
             member.key.name.startsWith('on')
           ) {
