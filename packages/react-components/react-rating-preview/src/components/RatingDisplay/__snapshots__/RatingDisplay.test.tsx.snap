@@ -6,6 +6,12 @@ exports[`RatingDisplay renders a default state 1`] = `
     class="fui-RatingDisplay"
   >
     Default RatingDisplay
+    <label
+      class="fui-RatingDisplay__ratingDisplayLabel"
+      id="ratingLabel2"
+    >
+      3
+    </label>
   </div>
 </div>
 `;
