@@ -77,7 +77,7 @@ This component is a combination of both `InlineDrawer` and `OverlayDrawer`
 | Property       | Values                             | Default   | Description                                                                            |
 | -------------- | ---------------------------------- | --------- | -------------------------------------------------------------------------------------- |
 | type           | `overlay`, `inline`                | `overlay` | Set the [type](#type) of Drawer                                                        |
-| position       | `start`, `end`                     | `start`   | Set the position of the Drawer                                                         |
+| position       | `start`, `end`, `bottom`           | `start`   | Set the position of the Drawer                                                         |
 | size           | `small`, `medium`, `large`, `full` | `small`   | The drawer width [size](#size)                                                         |
 | modalType      | boolean                            | `true`    | Set the visibility of the backdrop scrim. Only for `type="overlay"`                    |
 | inertTrapFocus | boolean                            | `true`    | Enables standard behavior according to the HTML dialog spec. Only for `type="overlay"` |
@@ -94,7 +94,7 @@ This component is a combination of both `InlineDrawer` and `OverlayDrawer`
 
 | Property       | Values                             | Default   | Description                                                 |
 | -------------- | ---------------------------------- | --------- | ----------------------------------------------------------- |
-| position       | `start`, `end`                     | `start`   | Set the position of the Drawer                              |
+| position       | `start`, `end`, `bottom`           | `start`   | Set the position of the Drawer                              |
 | size           | `small`, `medium`, `large`, `full` | `small`   | The drawer width [size](#size)                              |
 | modalType      | boolean                            | `true`    | Set the visibility of the backdrop scrim                    |
 | inertTrapFocus | boolean                            | `true`    | Enables standard behavior according to the HTML dialog spec |
@@ -110,7 +110,7 @@ This component is a combination of both `InlineDrawer` and `OverlayDrawer`
 
 | Property    | Values                             | Default | Description                                             |
 | ----------- | ---------------------------------- | ------- | ------------------------------------------------------- |
-| position    | `start`, `end`                     | `start` | Set the position of the Drawer                          |
+| position    | `start`, `end`, `bottom`           | `start` | Set the position of the Drawer                          |
 | size        | `small`, `medium`, `large`, `full` | `small` | The drawer width [size](#size)                          |
 | open        | boolean                            | `false` | Define the Drawer visibility                            |
 | defaultOpen | boolean                            | `false` | Define the Drawer visibility on first render            |
