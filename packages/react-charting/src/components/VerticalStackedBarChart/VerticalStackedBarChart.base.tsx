@@ -532,7 +532,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
         const legend: ILegend = {
           title: point.legend,
-          color,
+          color: color,
           action: () => {
             this._onLegendClick(point.legend);
           },
@@ -774,7 +774,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         const shouldHighlight = this._legendHighlighted(point.legend) || this._noLegendHighlighted() ? true : false;
         this._classNames = getClassNames(this.props.styles!, {
           theme: this.props.theme!,
-          shouldHighlight,
+          shouldHighlight: shouldHighlight,
           href: this.props.href,
         });
         const rectFocusProps = !shouldFocusWholeStack && {

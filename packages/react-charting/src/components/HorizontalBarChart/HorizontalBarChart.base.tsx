@@ -203,7 +203,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       this._calloutAnchorPoint = point;
       this.setState({
         isCalloutVisible: true,
-        hoverValue,
+        hoverValue: hoverValue,
         lineColor: point.color!,
         legend: point.legend!,
         refSelected: currentHoveredElement!.refElement,
