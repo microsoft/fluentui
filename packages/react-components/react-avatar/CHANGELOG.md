@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Thu, 11 Jan 2024 09:04:29 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jan 2024 13:14:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.6.7)
+
+Tue, 16 Jan 2024 13:14:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.6.6..@fluentui/react-avatar_v9.6.7)
+
+### Patches
+
+- fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-badge to v9.2.20 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.47 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-popover to v9.8.31 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-tabster to v9.17.1 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-tooltip to v9.4.9 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.25 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
 
 ## [9.6.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.6.6)
 

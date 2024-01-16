@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Thu, 11 Jan 2024 09:04:29 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jan 2024 13:14:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.1.64)
+
+Tue, 16 Jan 2024 13:14:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.1.63..@fluentui/react-toolbar_v9.1.64)
+
+### Patches
+
+- fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-button to v9.3.63 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-divider to v9.2.56 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.25 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.47 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-radio to v9.2.1 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-tabster to v9.17.1 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
 
 ## [9.1.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.1.63)
 

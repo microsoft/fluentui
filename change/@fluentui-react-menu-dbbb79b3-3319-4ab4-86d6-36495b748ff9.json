@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(MenuItem): bottom padding should be same as top padding",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
