@@ -24,9 +24,9 @@ export const useRadioSwatch_unstable = (
   const state = {
     ...useRadio_unstable(props, ref),
     components: {
-      root: 'span',
-      input: 'input',
-      icon: 'span',
+      root: 'span' as 'span',
+      input: 'input' as 'input',
+      icon: 'span' as 'span',
     },
     // root: slot.always(
     //   getIntrinsicElementProps('input', {

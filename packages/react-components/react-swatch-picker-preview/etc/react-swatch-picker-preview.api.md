@@ -9,9 +9,10 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { Radio } from '@fluentui/react-radio';
 import type { RadioGroupProps } from '@fluentui/react-components';
 import type { RadioGroupSlots } from '@fluentui/react-components';
+import type { RadioProps } from '@fluentui/react-radio';
+import type { RadioSlots } from '@fluentui/react-radio';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -81,7 +82,7 @@ export const RadioPicker: ForwardRefComponent<RadioPickerProps>;
 export const radioPickerClassNames: SlotClassNames<RadioPickerSlots>;
 
 // @public (undocumented)
-export type RadioPickerContextValue = Pick<RadioPickerProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required' | 'aria-describedby'>;
+export type RadioPickerContextValue = Pick<RadioPickerProps, 'layout' | 'columnCount' | 'name' | 'value' | 'defaultValue' | 'disabled' | 'required' | 'size' | 'shape' | 'shape'>;
 
 // @public (undocumented)
 export type RadioPickerContextValues = {
@@ -91,19 +92,29 @@ export type RadioPickerContextValues = {
 // @public (undocumented)
 export const radioPickerCSSVars: {
     columnCountGrid: string;
+    cellSize: string;
+    gridGap: string;
 };
 
 // @public
-export type RadioPickerProps = ComponentProps<RadioPickerSlots> & Omit<RadioGroupProps, 'layout'> & {
+export type RadioPickerOnChangeData = {
+    value: string;
+};
+
+// @public
+export type RadioPickerProps = ComponentProps<RadioPickerSlots> & Omit<ComponentProps<Partial<RadioGroupSlots>>, 'onChange'> & Omit<RadioGroupProps, 'layout'> & {
     layout?: 'grid' | 'row';
     columnCount?: number;
+    size?: 'extraSmall' | 'small' | 'medium' | 'large';
+    shape?: 'rounded' | 'square' | 'circular';
+    onChange?: (ev: React_2.FormEvent<HTMLDivElement>, data: RadioPickerOnChangeData) => void;
 };
 
 // @public (undocumented)
 export type RadioPickerSlots = RadioGroupSlots;
 
 // @public
-export type RadioPickerState = ComponentState<RadioPickerSlots> & Pick<RadioPickerProps, 'layout' | 'columnCount' | 'name' | 'value' | 'defaultValue' | 'disabled' | 'required'>;
+export type RadioPickerState = ComponentState<RadioPickerSlots> & Pick<RadioPickerProps, 'layout' | 'columnCount' | 'name' | 'value' | 'defaultValue' | 'disabled' | 'required' | 'size' | 'shape'>;
 
 // @public
 export const RadioSwatch: ForwardRefComponent<RadioSwatchProps>;
@@ -112,15 +123,19 @@ export const RadioSwatch: ForwardRefComponent<RadioSwatchProps>;
 export const radioSwatchClassNames: SlotClassNames<RadioSwatchSlots>;
 
 // @public
-export type RadioSwatchProps = ComponentProps<RadioSwatchSlots> & {};
+export type RadioSwatchProps = ComponentProps<RadioSwatchSlots> & Omit<ComponentProps<Partial<RadioSwatchSlots>, 'input'>, 'onChange' | 'size'> & Omit<RadioProps, 'labelPosition'> & {
+    size?: 'extraSmall' | 'small' | 'medium' | 'large';
+    shape?: 'rounded' | 'square' | 'circular';
+    label?: string;
+};
 
 // @public (undocumented)
-export type RadioSwatchSlots = {
-    root: Slot<typeof Radio>;
+export type RadioSwatchSlots = Omit<RadioSlots, 'indicator' | 'label'> & {
+    icon?: Slot<'span'>;
 };
 
 // @public
-export type RadioSwatchState = ComponentState<RadioSwatchSlots> & Pick<RadioSwatchProps, 'value'>;
+export type RadioSwatchState = ComponentState<RadioSwatchSlots> & Pick<RadioSwatchProps, 'value' | 'size' | 'shape'>;
 
 // @public
 export const renderColorSwatch_unstable: (state: ColorSwatchState) => JSX.Element;
@@ -137,9 +152,17 @@ export const renderRadioSwatch_unstable: (state: RadioSwatchState) => JSX.Elemen
 // @public
 export const renderSwatchPicker_unstable: (state: SwatchPickerState) => JSX.Element;
 
+// @public
+export const renderTablePicker_unstable: (state: TablePickerState) => JSX.Element;
+
+// @public
+export const renderTableSwatch_unstable: (state: TableSwatchState) => JSX.Element;
+
 // @public (undocumented)
 export const swatchCSSVars: {
     swatchColor: string;
+    swatchBorderColor: string;
+    swatchStateColor: string;
 };
 
 // @public
@@ -161,6 +184,50 @@ export type SwatchPickerSlots = {
 
 // @public
 export type SwatchPickerState = ComponentState<SwatchPickerSlots>;
+
+// @public
+export const TablePicker: ForwardRefComponent<TablePickerProps>;
+
+// @public (undocumented)
+export const tablePickerClassNames: SlotClassNames<TablePickerSlots>;
+
+// @public
+export type TablePickerProps = ComponentProps<TablePickerSlots> & {};
+
+// @public (undocumented)
+export type TablePickerSlots = {
+    root: Slot<'table'>;
+    tbody: Slot<'tbody'>;
+};
+
+// @public
+export type TablePickerState = ComponentState<TablePickerSlots>;
+
+// @public
+export const TableSwatch: ForwardRefComponent<TableSwatchProps>;
+
+// @public (undocumented)
+export const tableSwatchClassNames: SlotClassNames<TableSwatchSlots>;
+
+// @public
+export type TableSwatchProps = ComponentProps<TableSwatchSlots> & {
+    value?: string;
+    selected?: boolean;
+};
+
+// @public (undocumented)
+export type TableSwatchSlots = {
+    root: Slot<'td'>;
+    button?: Slot<'button'>;
+};
+
+// @public
+export type TableSwatchState = ComponentState<TableSwatchSlots> & Pick<TableSwatchProps, 'value' | 'selected'>;
+
+// @public (undocumented)
+export const tdCSSVars: {
+    cellColor: string;
+};
 
 // @public
 export const useColorSwatch_unstable: (props: ColorSwatchProps, ref: React_2.Ref<HTMLButtonElement>) => ColorSwatchState;
@@ -191,6 +258,18 @@ export const useSwatchPicker_unstable: (props: SwatchPickerProps, ref: React_2.R
 
 // @public
 export const useSwatchPickerStyles_unstable: (state: SwatchPickerState) => SwatchPickerState;
+
+// @public
+export const useTablePicker_unstable: (props: TablePickerProps, ref: React_2.Ref<HTMLTableElement>) => TablePickerState;
+
+// @public
+export const useTablePickerStyles_unstable: (state: TablePickerState) => TablePickerState;
+
+// @public
+export const useTableSwatch_unstable: (props: TableSwatchProps, ref: React_2.Ref<HTMLTableCellElement>) => TableSwatchState;
+
+// @public
+export const useTableSwatchStyles_unstable: (state: TableSwatchState) => TableSwatchState;
 
 // (No @packageDocumentation comment for this package)
 

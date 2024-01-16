@@ -4,6 +4,7 @@ import type { TablePickerSlots, TablePickerState } from './TablePicker.types';
 
 export const tablePickerClassNames: SlotClassNames<TablePickerSlots> = {
   root: 'fui-TablePicker',
+  tbody: 'fui-TablePicker__tbody',
   // TODO: add class names for all slots on TablePickerSlots.
   // Should be of the form `<slotName>: 'fui-TablePicker__<slotName>`
 };

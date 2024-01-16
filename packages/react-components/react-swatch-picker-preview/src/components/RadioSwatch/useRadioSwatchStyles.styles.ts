@@ -1,7 +1,6 @@
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RadioSwatchSlots, RadioSwatchState } from './RadioSwatch.types';
-import { useRadioStyles_unstable, RadioState } from '@fluentui/react-radio';
 
 export const radioSwatchClassNames: SlotClassNames<RadioSwatchSlots> = {
   root: 'fui-RadioSwatch',

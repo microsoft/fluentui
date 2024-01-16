@@ -81,9 +81,44 @@ export const Default = (props: Partial<SwatchPickerProps>) => {
 
   return (
     <>
+      <SwatchPicker aria-label="This is aria label for colors">
+        <ColorSwatch
+          selected={color === '#FF1921'}
+          onClick={() => {
+            setColor('#FF1921');
+            setSelected(selected);
+          }}
+          onMouseOver={() => {
+            setHoveredColor('#FF1921');
+          }}
+          value="#FF1921"
+          aria-label="red color"
+          role="cell"
+        />
+        <ColorSwatch
+          aria-label="yellow color"
+          selected={color === '#FEFF37'}
+          onClick={() => setColor('#FEFF37')}
+          value="#FEFF37"
+          role="cell"
+          onMouseOver={() => {
+            setHoveredColor('#FEFF37');
+          }}
+        />
+        <ColorSwatch
+          aria-label="green color"
+          selected={color === '#A7D08F'}
+          onClick={() => setColor('#A7D08F')}
+          onMouseOver={() => {
+            setHoveredColor('#A7D08F');
+          }}
+          value="#A7D08F"
+          role="cell"
+        />
+      </SwatchPicker>
       <div style={{ width: '100px', height: '100px', backgroundColor: 'rgb(255, 255, 0)' }}>{contrastRatio}</div>
       <h2 style={{ color: hoveredColor }}>Row picker</h2>
-      <SwatchPicker aria-label="This is aria label for colors">
+      {/* <SwatchPicker aria-label="This is aria label for colors">
         <ColorSwatch
           selected={color === 'red'}
           onClick={() => {
@@ -141,7 +176,7 @@ export const Default = (props: Partial<SwatchPickerProps>) => {
           );
         })}
         <ColorSwatch icon={<Heart24Filled />} />
-      </SwatchPicker>
+      </SwatchPicker> */}
     </>
   );
 };

@@ -3,7 +3,11 @@ import { useControllableState, useEventCallback, mergeCallbacks } from '@fluentu
 // import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { swatchCSSVars } from './useColorSwatchStyles.styles';
 import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
-import { calculateContrastRatioFromHex } from '../../utils/calculateContrastRatio';
+import {
+  calculateContrastRatioFromHex,
+  calculateRelativeLuminanceFromHex,
+  getContrastColor,
+} from '../../utils/calculateContrastRatio';
 
 const { swatchColor, swatchBorderColor, swatchStateColor } = swatchCSSVars;
 
@@ -15,6 +19,11 @@ export const useColorSwatchState_unstable = (state: ColorSwatchState, props: Col
   const contrastRatio = calculateContrastRatioFromHex('#fafafa', value);
   const contrastBorderColor = contrastRatio < 3 ? '#000' : 'transparent';
   const contrastStateColor = contrastRatio < 3 ? '#000' : '#fff';
+
+  const rL1 = calculateRelativeLuminanceFromHex('#fafafa');
+  const rL2 = calculateRelativeLuminanceFromHex(value);
+
+  console.log(getContrastColor(rL1, rL2));
 
   const [selectedValue, setSelectedValue] = useControllableState({
     state: selected,
