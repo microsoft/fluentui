@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: memoize tabster attributes",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

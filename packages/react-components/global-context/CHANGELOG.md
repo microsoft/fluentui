@@ -1,8 +1,18 @@
 # Change Log - @fluentui/global-context
 
-This log was last generated on Mon, 08 Jan 2024 16:24:28 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jan 2024 13:14:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.54)
+
+Tue, 16 Jan 2024 13:14:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.53..@fluentui/global-context_v9.0.0-beta.54)
+
+### Changes
+
+- fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.47 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
 
 ## [9.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.53)
 

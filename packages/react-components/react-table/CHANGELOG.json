@@ -2,6 +2,81 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Tue, 16 Jan 2024 13:14:09 GMT",
+      "tag": "@fluentui/react-table_v9.11.3",
+      "version": "9.11.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "50176a643b2d47f9e45d6694293a7bc6dfac3dd7",
+            "comment": "fix: DataGrid selection performance improvement"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "3ebb0a997356d1e645dff25b9142c36a22627839",
+            "comment": "bugfix: add system colors on hover"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "952426be5aaaefe9e3709550f202784bffd904a0",
+            "comment": "bugfix: Omit colliding content property from ComponentProps"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-aria to v9.7.1",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-avatar to v9.6.7",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-checkbox to v9.2.6",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.47",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-radio to v9.2.1",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-tabster to v9.17.1",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-table",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.25",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Jan 2024 09:04:29 GMT",
       "tag": "@fluentui/react-table_v9.11.2",
       "version": "9.11.2",
