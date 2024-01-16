@@ -32,7 +32,7 @@ module.exports = createRule({
             if (
               !(
                 typeAnnotation &&
-                typeAnnotation.type === 'TSTypeReference' &&
+                typeAnnotation.type === AST_NODE_TYPES.TSTypeReference &&
                 typeAnnotation.typeName.type === AST_NODE_TYPES.Identifier &&
                 typeAnnotation.typeName.name === 'EventHandler' &&
                 typeAnnotation.typeParameters
