@@ -1,4 +1,5 @@
 // @ts-check
+const { __internal } = require('../internal');
 const configHelpers = require('../utils/configHelpers');
 
 /** @type {import("eslint").Linter.Config} */
@@ -13,7 +14,16 @@ const config = {
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['import', '@fluentui', '@rnx-kit', '@typescript-eslint', 'deprecation', 'jest', 'jsdoc'],
+  plugins: [
+    'import',
+    '@fluentui',
+    '@rnx-kit',
+    '@typescript-eslint',
+    'deprecation',
+    'jest',
+    'jsdoc',
+    ...__internal.plugins,
+  ],
   settings: {
     'import/resolver': {
       // @see https://github.com/alexgorbatchev/eslint-import-resolver-typescript#configuration
