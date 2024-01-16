@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: Omit colliding content property from ComponentProps",
+  "packageName": "@fluentui/react-menu",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
