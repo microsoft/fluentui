@@ -71,7 +71,8 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
   const handleToggleExpandSingleLine = () => {
     toggleExpandSingleLine();
     if (onExpandButtonToggled) {
-      // We use the opposite of 'expandSingleLine' because at this point the useBoolean's useState hasn't been updated yet
+      // We use the opposite of 'expandSingleLine' here because at this point the useBoolean's
+      // useState hasn't been updated yet.
       onExpandButtonToggled(!expandSingleLine);
     }
   };
