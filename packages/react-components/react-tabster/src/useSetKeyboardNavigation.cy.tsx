@@ -7,7 +7,7 @@ describe('useOnKeyboardNavigationChange', () => {
     const Example = () => {
       const [isKeyboard, setIsKeyboard] = React.useState(false);
       useOnKeyboardNavigationChange(isNavigatingWithKeyboard => setIsKeyboard(isNavigatingWithKeyboard));
-      const { setKeyboardNavigation } = useSetKeyboardNavigation();
+      const setKeyboardNavigation = useSetKeyboardNavigation();
 
       return (
         <>
