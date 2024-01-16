@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+import { DistributiveOmit, ReplaceNullWithUndefined } from '../utils/types';
 
 export type SlotRenderFunction<Props> = (
   Component: React.ElementType<Props>,
@@ -135,9 +136,13 @@ export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends ne
 export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = { as?: As };
 
 /**
- * Converts a union type (`A | B | C`) to an intersection type (`A & B & C`)
+ * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
+ * IntrinsicSlotProps). This allows IntrinsicSlotProps to be used with React.forwardRef.
+ *
+ * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
+ * types, to prevent unions from being expanded.
  */
-export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
+export type PropsWithoutRef<P> = 'ref' extends keyof P ? DistributiveOmit<P, 'ref'> : P;
 
 /**
  * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
@@ -146,16 +151,7 @@ export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) e
  * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
  * types, to prevent unions from being expanded.
  */
-export type PropsWithoutRef<P> = 'ref' extends keyof P ? (P extends unknown ? Omit<P, 'ref'> : P) : P;
-
-/**
- * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
- * IntrinsicSlotProps). This allows IntrinsicSlotProps to be used with React.forwardRef.
- *
- * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
- * types, to prevent unions from being expanded.
- */
-export type PropsWithoutChildren<P> = 'children' extends keyof P ? (P extends unknown ? Omit<P, 'children'> : P) : P;
+export type PropsWithoutChildren<P> = 'children' extends keyof P ? DistributiveOmit<P, 'children'> : P;
 
 /**
  * Removes SlotShorthandValue and null from the slot type, extracting just the slot's Props object.
@@ -177,11 +173,6 @@ export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof 
 // * Otherwise, don't omit any props: include *both* the Primary and `root` props.
 //   We need both props to allow the user to specify native props for either slot because the `root` slot is
 //   special and always gets className and style props, per RFC https://github.com/microsoft/fluentui/pull/18983
-
-/**
- * If type T includes `null`, remove it and add `undefined` instead.
- */
-export type ReplaceNullWithUndefined<T> = T extends null ? Exclude<T, null> | undefined : T;
 
 /**
  * Defines the State object of a component given its slots.

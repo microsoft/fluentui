@@ -37,6 +37,9 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
 // @internal (undocumented)
 export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): PriorityQueue<T>;
 
+// @public
+export type DistributiveOmit<T, K extends keyof any> = T extends unknown ? Omit<T, K> : T;
+
 // @internal
 export function elementContains(parent: Node | null, child: Node | null): boolean;
 
@@ -58,7 +61,7 @@ export function getEventClientCoords(event: TouchOrMouseEvent): {
 };
 
 // @public
-export const getIntrinsicElementProps: <Props extends UnknownSlotProps, ExcludedPropKeys extends Extract<keyof Props, string> = never>(tagName: NonNullable<Props["as"]>, props: Props & React_2.RefAttributes<InferredElementRefType<Props>>, excludedPropNames?: ExcludedPropKeys[] | undefined) => OmitWithoutExpanding<Props, ExcludedPropKeys | Exclude<keyof Props, "as" | keyof HTMLAttributes>>;
+export const getIntrinsicElementProps: <Props extends UnknownSlotProps, ExcludedPropKeys extends Extract<keyof Props, string> = never>(tagName: NonNullable<Props["as"]>, props: Props & React_2.RefAttributes<InferredElementRefType<Props>>, excludedPropNames?: ExcludedPropKeys[] | undefined) => DistributiveOmit<Props, ExcludedPropKeys | Exclude<keyof Props, "as" | keyof HTMLAttributes>>;
 
 // @public @deprecated
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
@@ -303,6 +306,9 @@ export type TouchOrMouseEvent = NativeTouchOrMouseEvent | ReactTouchOrMouseEvent
 export type TriggerProps<TriggerChildProps = unknown> = {
     children?: React_2.ReactElement | ((props: TriggerChildProps) => React_2.ReactElement | null) | null;
 };
+
+// @public
+export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
 
 // @public
 export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
