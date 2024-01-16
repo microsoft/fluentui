@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Enter } from '@fluentui/keyboard-keys';
-import { ArrowDownRegular, ArrowUpRegular } from '@fluentui/react-icons';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { mergeClasses } from '@griffel/react';
@@ -81,6 +80,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
     maxDate,
     minDate,
     navigatedDate,
+    navigationIcons,
     onHeaderSelect: onUserHeaderSelect,
     onNavigateDate,
     selectedDate,
@@ -178,6 +178,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
           selectedDate ? selectedDate.getFullYear() : navigatedDate ? navigatedDate.getFullYear() : undefined
         }
         navigatedYear={navigatedDate.getFullYear()}
+        navigationIcons={navigationIcons}
         onRenderYear={onRenderYear}
         strings={yearStrings}
         componentRef={calendarYearRef}
@@ -197,6 +198,8 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
   const headerAriaLabel = strings.monthPickerHeaderAriaLabel
     ? strings.monthPickerHeaderAriaLabel.replace('{0}', yearString)
     : yearString;
+
+  const { upNavigation: upNavigationIcon, downNavigation: downNavigationIcon } = navigationIcons;
 
   return (
     <div className={classNames.root}>
@@ -227,7 +230,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
             }
             type="button"
           >
-            {dir === 'ltr' ? <ArrowUpRegular /> : <ArrowDownRegular />}
+            {dir === 'rtl' ? upNavigationIcon : downNavigationIcon}
           </button>
           <button
             className={mergeClasses(classNames.navigationButton, !isNextYearInBounds && classNames.disabled)}
@@ -242,7 +245,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
             }
             type="button"
           >
-            {dir === 'ltr' ? <ArrowDownRegular /> : <ArrowUpRegular />}
+            {dir === 'rtl' ? downNavigationIcon : upNavigationIcon}
           </button>
         </div>
       </div>

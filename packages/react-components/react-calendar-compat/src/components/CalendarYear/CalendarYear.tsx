@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
-import { ArrowDownRegular, ArrowUpRegular } from '@fluentui/react-icons';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { mergeClasses } from '@griffel/react';
@@ -208,6 +207,7 @@ const CalendarYearNavArrow: React.FunctionComponent<CalendarYearNavArrowProps> =
     toYear,
     maxYear,
     minYear,
+    navigationIcons,
   } = props;
 
   const classNames = useCalendarYearStyles_unstable({
@@ -249,7 +249,7 @@ const CalendarYearNavArrow: React.FunctionComponent<CalendarYearNavArrowProps> =
       title={ariaLabelString}
       disabled={disabled}
     >
-      {isLeftNavigation ? <ArrowUpRegular /> : <ArrowDownRegular />}
+      {isLeftNavigation ? navigationIcons.upNavigation : navigationIcons.downNavigation}
     </button>
   );
 };
