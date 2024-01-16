@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RatingItem renders a default state 1`] = `
+<div>
+  <span
+    class="fui-RatingItem"
+  >
+    <div
+      aria-hidden="true"
+      class="fui-RatingItem__selectedIcon"
+    />
+  </span>
+</div>
+`;

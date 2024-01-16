@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { CheckmarkCircle12Filled, ErrorCircle12Filled, Warning12Filled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
-import { getNativeElementProps, useId, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import type { FieldProps, FieldState } from './Field.types';
 
 const validationMessageIcons = {
@@ -33,7 +33,7 @@ export const useField_unstable = (props: FieldProps, ref: React.Ref<HTMLDivEleme
   const baseId = useId('field-');
   const generatedControlId = baseId + '__control';
 
-  const root = slot.always(getNativeElementProps('div', { ...props, ref }, /*excludedPropNames:*/ ['children']), {
+  const root = slot.always(getIntrinsicElementProps('div', { ...props, ref }, /*excludedPropNames:*/ ['children']), {
     elementType: 'div',
   });
   const label = slot.optional(props.label, {

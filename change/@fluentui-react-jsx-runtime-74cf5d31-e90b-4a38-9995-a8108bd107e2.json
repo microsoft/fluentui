@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: fix missing .d.ts types on build",
-  "packageName": "@fluentui/react-jsx-runtime",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

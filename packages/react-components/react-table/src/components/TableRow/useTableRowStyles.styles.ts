@@ -51,18 +51,6 @@ const useStyles = makeStyles({
     ),
   },
 
-  // When focus is within the row the background colour
-  // should be the same as hover, except when there is a brand
-  // or neutral appearance applied on the row
-  noAppearanceFocusWithin: {
-    ...createCustomFocusIndicatorStyle(
-      {
-        backgroundColor: tokens.colorSubtleBackgroundHover,
-      },
-      { selector: 'focus-within' },
-    ),
-  },
-
   rootInteractive: {
     ':active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
@@ -84,6 +72,13 @@ const useStyles = makeStyles({
         opacity: 1,
       },
     },
+    // High contrast styles
+    '@media (forced-colors: active)': {
+      ':hover': {
+        color: 'Highlight',
+        ...shorthands.borderColor('Highlight'),
+      },
+    },
   },
 
   medium: {
@@ -102,7 +97,8 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorBrandBackground2,
     ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     ':active': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
+      backgroundColor: tokens.colorBrandBackground2,
+      color: tokens.colorNeutralForeground1,
     },
 
     '@media(forced-colors: active)': {
@@ -155,7 +151,6 @@ export const useTableRowStyles_unstable = (state: TableRowState): TableRowState 
     styles[state.size],
     state.noNativeElements ? layoutStyles.flex.root : layoutStyles.table.root,
     styles[state.appearance],
-    state.appearance === 'none' && !state.isHeaderRow && styles.noAppearanceFocusWithin,
     state.root.className,
   );
 

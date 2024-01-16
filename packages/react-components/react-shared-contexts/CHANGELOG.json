@@ -2,6 +2,243 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Wed, 20 Dec 2023 01:35:07 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.13.2",
+      "version": "9.13.2",
+      "comments": {
+        "none": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "9287dccfb14c7e7c06c1aaabdd3efef2d01149e2",
+            "comment": "Docs: Deprecate unused style hook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 Dec 2023 14:40:46 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.13.2",
+      "version": "9.13.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "af6a9cb92082860c218fe72c99a03d45d6d7d1e4",
+            "comment": "fix: add custom style hook for TimePicker compat."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Dec 2023 09:58:45 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.13.1",
+      "version": "9.13.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "b6766ba321b57331266f3f391d7274c77730459d",
+            "comment": "chore: disallow `window` and `document` access"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Nov 2023 09:55:09 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.13.0",
+      "version": "9.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "88efc19c9513db18cb5b7c63fa0f47ba496755a2",
+            "comment": "feat: TeachingPopover style hooks added"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Nov 2023 17:29:42 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.12.0",
+      "version": "9.12.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          }
+        ],
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "9343f295b18084e44f6751081907aa7e9987b767",
+            "comment": "feat: Add custom style hook types for List"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.1.16",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Nov 2023 12:55:59 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.11.1",
+      "version": "9.11.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.1.15",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 28 Oct 2023 23:35:58 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.11.0",
+      "version": "9.11.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "5e65d8013cd09faf4b3777202f251d5c3d67c138",
+            "comment": "fix: invoke useCustomStyleHook_unstable()"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "8381d2c4c7d389b2199398212beccbe1a899d4ea",
+            "comment": "refactor: rename main DrawerOverlay/DrawerInline components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Oct 2023 20:45:43 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.10.0",
+      "version": "9.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "dbc18f02facdc420ec4baf7c125ddab22271facf",
+            "comment": "feat: Add MessageBar types to custom style hook context"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Oct 2023 08:56:04 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.9.2",
+      "version": "9.9.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "03466e42548781a9f80a3859c13eda0e8bd33a6b",
+            "comment": "feat: add custom styling hooks for Breadcrumb component and its sub-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 17:49:11 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.9.1",
+      "version": "9.9.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d",
+            "comment": "chore: trigger manual version bump after broken release"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.1.14",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 15:31:49 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "e61473fa10195f6ebf2308205c1e72e91b711831",
+            "comment": "fix: bump swc core to mitigate transpilation memory leaks"
+          }
+        ],
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "45ab251870368226b02c57882e8f7ca0deb86c8f",
+            "comment": "feat: add custom style hooks for tag components"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.1.13",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Sep 2023 17:47:42 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.8.1",
+      "version": "9.8.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "41d0ed0376ad79f1f5f5c4c7487515a1c6be35f0",
+            "comment": "chore: trigger manual version bump after broken release"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Sep 2023 14:59:52 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.8.0",
+      "version": "9.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "921694374c78c37ecf18d7bb99000bb0bb67551b",
+            "comment": "feat: add custom styling hooks for Drawer subcomponents"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Sep 2023 13:29:02 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.7.3",
       "version": "9.7.3",

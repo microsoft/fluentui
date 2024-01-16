@@ -5,6 +5,8 @@
 ```ts
 
 import type { GriffelStyle } from '@griffel/react';
+import { KEYBORG_FOCUSIN } from 'keyborg';
+import { KeyborgFocusInEvent } from 'keyborg';
 import { makeResetStyles } from '@griffel/react';
 import * as React_2 from 'react';
 import type { RefObject } from 'react';
@@ -14,17 +16,18 @@ import { Types } from 'tabster';
 export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Window): () => void;
 
 // @public
-export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(style: TStyle, { selector }?: CreateCustomFocusIndicatorStyleOptions): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle;
+export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(style: TStyle, { selector: selectorType, customizeSelector, }?: CreateCustomFocusIndicatorStyleOptions): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle;
 
 // @public (undocumented)
 export interface CreateCustomFocusIndicatorStyleOptions {
+    customizeSelector?: (selector: string) => string;
     // @deprecated
     enableOutline?: boolean;
     selector?: 'focus' | 'focus-within';
 }
 
 // @public
-export const createFocusOutlineStyle: ({ enableOutline, selector, style, }?: CreateFocusOutlineStyleOptions) => GriffelStyle;
+export const createFocusOutlineStyle: ({ enableOutline, selector, customizeSelector, style, }?: CreateFocusOutlineStyleOptions) => GriffelStyle;
 
 // @public (undocumented)
 export interface CreateFocusOutlineStyleOptions extends Omit<CreateCustomFocusIndicatorStyleOptions, 'enableOutline'> {
@@ -43,6 +46,10 @@ export type FocusOutlineStyleOptions = {
     outlineWidth: string;
     outlineOffset?: string | FocusOutlineOffset;
 };
+
+export { KEYBORG_FOCUSIN }
+
+export { KeyborgFocusInEvent }
 
 // @public (undocumented)
 export type TabsterDOMAttribute = Types.TabsterDOMAttribute;
@@ -111,6 +118,9 @@ export interface UseModalAttributesOptions {
 export function useObservedElement(name: string | string[]): Types.TabsterDOMAttribute;
 
 // @public
+export function useOnKeyboardNavigationChange(callback: (isNavigatingWithKeyboard: boolean) => void): void;
+
+// @public
 export function useRestoreFocusSource(): Types.TabsterDOMAttribute;
 
 // @public
@@ -118,6 +128,9 @@ export function useRestoreFocusTarget(): Types.TabsterDOMAttribute;
 
 // @internal
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
+
+// @public
+export function useUncontrolledFocus(): Types.TabsterDOMAttribute;
 
 // (No @packageDocumentation comment for this package)
 

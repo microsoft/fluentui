@@ -18,6 +18,12 @@ const buttonSpacingMedium = '5px';
 const buttonSpacingLarge = '8px';
 const buttonSpacingLargeWithIcon = '7px';
 
+/* Firefox has box shadow sizing issue at some zoom levels
+ * this will ensure the inset boxShadow is always uniform
+ * without affecting other browser platforms
+ */
+const boxShadowStrokeWidthThinMoz = `calc(${tokens.strokeWidthThin} + 0.25px)`;
+
 const useRootBaseClassName = makeResetStyles({
   alignItems: 'center',
   boxSizing: 'border-box',
@@ -95,15 +101,24 @@ const useRootBaseClassName = makeResetStyles({
   // Focus styles
 
   ...createCustomFocusIndicatorStyle({
-    borderColor: tokens.colorTransparentStroke,
+    borderColor: tokens.colorStrokeFocus2,
     borderRadius: tokens.borderRadiusMedium,
+    borderWidth: '1px',
     outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
-    boxShadow: `
-      ${tokens.shadow4},
-      0 0 0 2px ${tokens.colorStrokeFocus2}
+    boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2}
+      inset
     `,
     zIndex: 1,
   }),
+
+  // BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642)
+  '@supports (-moz-appearance:button)': {
+    ...createCustomFocusIndicatorStyle({
+      boxShadow: `0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2}
+      inset
+    `,
+    }),
+  },
 });
 
 const useIconBaseClassName = makeResetStyles({
@@ -253,13 +268,11 @@ const useRootStyles = makeStyles({
 
     '@media (forced-colors: active)': {
       ':hover': {
-        backgroundColor: tokens.colorTransparentBackgroundHover,
-        ...shorthands.borderColor('transparent'),
+        backgroundColor: tokens.colorTransparentBackground,
         color: 'Highlight',
       },
       ':hover:active': {
-        backgroundColor: tokens.colorTransparentBackgroundHover,
-        ...shorthands.borderColor('transparent'),
+        backgroundColor: tokens.colorTransparentBackground,
         color: 'Highlight',
       },
     },
@@ -318,6 +331,9 @@ const useRootDisabledStyles = makeStyles({
     color: tokens.colorNeutralForegroundDisabled,
 
     cursor: 'not-allowed',
+    [`& .${buttonClassNames.icon}`]: {
+      color: tokens.colorNeutralForegroundDisabled,
+    },
 
     ':hover': {
       backgroundColor: tokens.colorNeutralBackgroundDisabled,
@@ -331,6 +347,9 @@ const useRootDisabledStyles = makeStyles({
       },
       [`& .${iconRegularClassName}`]: {
         display: 'inline',
+      },
+      [`& .${buttonClassNames.icon}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
       },
     },
 
@@ -346,6 +365,9 @@ const useRootDisabledStyles = makeStyles({
       },
       [`& .${iconRegularClassName}`]: {
         display: 'inline',
+      },
+      [`& .${buttonClassNames.icon}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
       },
     },
   },
@@ -444,10 +466,26 @@ const useRootFocusStyles = makeStyles({
   }),
 
   // Primary styles
-  primary: createCustomFocusIndicatorStyle({
-    ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
-    boxShadow: `${tokens.shadow2}, 0 0 0 2px ${tokens.colorStrokeFocus2}`,
-  }),
+  primary: {
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderColor(tokens.colorStrokeFocus2),
+      boxShadow: `${tokens.shadow2}, 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset,  0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralForegroundOnBrand} inset`,
+      ':hover': {
+        boxShadow: `${tokens.shadow2}, 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset`,
+        ...shorthands.borderColor(tokens.colorStrokeFocus2),
+      },
+    }),
+
+    // BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642)
+    '@supports (-moz-appearance:button)': {
+      ...createCustomFocusIndicatorStyle({
+        boxShadow: `${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2} inset,  0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralForegroundOnBrand} inset`,
+        ':hover': {
+          boxShadow: `${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2} inset`,
+        },
+      }),
+    },
+  },
 
   // Size variations
   small: createCustomFocusIndicatorStyle({

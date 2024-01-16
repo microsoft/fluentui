@@ -125,7 +125,7 @@ export type TextProps = ComponentProps<TextSlots> & {
 
 // @public
 export type TextSlots = {
-    root: Slot<'span', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'pre'>;
+    root: Slot<'span', 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'pre' | 'strong' | 'b' | 'em' | 'i'>;
 };
 
 // @public

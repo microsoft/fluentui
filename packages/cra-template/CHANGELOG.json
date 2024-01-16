@@ -2,6 +2,36 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Thu, 14 Dec 2023 07:30:10 GMT",
+      "tag": "@fluentui/cra-template_v8.4.126",
+      "version": "8.4.126",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/cra-template",
+            "commit": "b6766ba321b57331266f3f391d7274c77730459d",
+            "comment": "chore: disallow `window` and `document` access"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Oct 2023 07:37:05 GMT",
+      "tag": "@fluentui/cra-template_v8.4.117",
+      "version": "8.4.117",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/cra-template",
+            "commit": "f6696754aa1d7f53f8d9da3db03eb3617abffb3a",
+            "comment": "chore: refactor test to use latest APIs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 14 Jul 2023 07:36:53 GMT",
       "tag": "@fluentui/cra-template_v8.4.102",
       "version": "8.4.102",

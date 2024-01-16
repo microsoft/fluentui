@@ -22,13 +22,7 @@
       "x-prompt": {
         "message": "Which team will own this library",
         "type": "list",
-        "items": [
-          "@microsoft/cxe-coastal",
-          "@microsoft/cxe-red",
-          "@microsoft/cxe-prg",
-          "@microsoft/fluentui-react-build",
-          "@microsoft/teams-prg"
-        ]
+        "items": ["@microsoft/cxe-red", "@microsoft/cxe-prg", "@microsoft/fluentui-react-build", "@microsoft/teams-prg"]
       }
     },
     "kind": {

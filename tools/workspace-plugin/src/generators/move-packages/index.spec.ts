@@ -2,11 +2,9 @@ import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
-  readWorkspaceConfiguration,
   stripIndents,
   addProjectConfiguration,
   serializeJson,
-  WorkspaceConfiguration,
   parseJson,
   getProjects,
   joinPathFragments,
@@ -19,6 +17,7 @@ import {
 import generator from './index';
 import { TsConfig } from '../../types';
 import { setupCodeowners } from '../../utils-testing';
+import { getProjectNameWithoutScope, getWorkspaceConfig } from '../../utils';
 
 type ReadProjectConfiguration = ReturnType<typeof readProjectConfiguration>;
 const noop = () => null;
@@ -273,7 +272,7 @@ function setupDummyPackage(
       projectConfiguration: Partial<ReadProjectConfiguration>;
     }>,
 ) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const workspaceConfig = getWorkspaceConfig(tree);
   const defaults = {
     version: '9.0.0-alpha.40',
     dependencies: {
@@ -294,7 +293,7 @@ function setupDummyPackage(
 
   const normalizedOptions = { ...defaults, ...options };
   const pkgName = normalizedOptions.name;
-  const normalizedPkgName = getNormalizedPkgName({ pkgName, workspaceConfig });
+  const normalizedPkgName = getProjectNameWithoutScope(pkgName);
   const paths = {
     root: `packages/${normalizedPkgName}`,
   };
@@ -386,6 +385,6 @@ function setupDummyPackage(
   return tree;
 }
 
-function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: WorkspaceConfiguration }) {
-  return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
-}
+// function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: NxJsonConfiguration }) {
+//   return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
+// }

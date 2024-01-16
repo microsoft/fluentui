@@ -13,8 +13,12 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
-import { formatPrefix as d3FormatPrefix } from 'd3-format';
+import {
+  ChartHoverCard,
+  convertToLocaleString,
+  formatValueWithSIPrefix,
+  getAccessibleDataObject,
+} from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
@@ -120,6 +124,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           this.props.hideRatio![index],
           this.props.hideDenominator![index],
           this.props.href,
+          index,
         );
         return (
           <div key={index} id={`_MSBC_bar-${index}`}>
@@ -182,6 +187,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     hideRatio: boolean,
     hideDenominator: boolean,
     href?: string,
+    barNo?: number,
   ): JSX.Element {
     const noOfBars =
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
@@ -267,8 +273,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
-        shouldHighlight: shouldHighlight,
-        href: href,
+        shouldHighlight,
+        href,
         variant: this.props.variant,
         hideLabels: this.props.hideLabels,
       });
@@ -291,7 +297,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         >
           <rect
             key={index}
-            id={`${this._barId}-${index}`}
+            id={`${this._barId}-${barNo}-${index}`}
             x={`${
               this._isRTL
                 ? 100 - startingPoint[index] - value - this.state.barSpacingInPercent * index
@@ -305,8 +311,21 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         </g>
       );
     });
-    if (this.props.variant === MultiStackedBarChartVariant.AbsoluteScale) {
-      if (!this.props.hideLabels) {
+    if (this.props.variant === MultiStackedBarChartVariant.AbsoluteScale && !this.props.hideLabels) {
+      let showLabel = false;
+      let barLabel = 0;
+      if (this._noLegendHighlighted()) {
+        showLabel = true;
+        barLabel = barTotalValue;
+      } else {
+        data.chartData?.forEach(point => {
+          if (this._legendHighlighted(point.legend!)) {
+            showLabel = true;
+            barLabel += point.data ? point.data : 0;
+          }
+        });
+      }
+      if (showLabel) {
         bars.push(
           <text
             key="text"
@@ -315,15 +334,15 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
                 ? 100 - (startingPoint[startingPoint.length - 1] || 0) - value - totalMarginPercent
                 : (startingPoint[startingPoint.length - 1] || 0) + value + totalMarginPercent
             }%`}
-            textAnchor={this._isRTL ? 'end' : 'start'}
+            textAnchor={'start'}
             y={barHeight / 2}
             dominantBaseline="central"
             transform={`translate(${this._isRTL ? -4 : 4})`}
             className={this._classNames.barLabel}
-            aria-label={`Total: ${barTotalValue}`}
+            aria-label={`Total: ${barLabel}`}
             role="img"
           >
-            {d3FormatPrefix(barTotalValue < 1000 ? '.2~' : '.1', barTotalValue)(barTotalValue)}
+            {formatValueWithSIPrefix(barLabel)}
           </text>,
         );
       }
@@ -420,7 +439,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
           calloutLegend: point.legend!,
           dataForHoverCard: pointData,
-          color: color,
+          color,
           xCalloutValue: point.xAxisCalloutData!,
           yCalloutValue: point.yAxisCalloutData!,
           dataPointCalloutProps: point,
@@ -439,9 +458,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this._classNames = getClassNames(styles!, {
       legendColor: this.state.color,
       theme: theme!,
-      width: width,
+      width,
       className,
-      barHeight: barHeight,
+      barHeight,
     });
   };
 
@@ -469,7 +488,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             }
             const legend: ILegend = {
               title: point.legend!,
-              color: color,
+              color,
               action: () => {
                 this._onClick(point.legend!);
               },
@@ -495,7 +514,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           }
           const legend: ILegend = {
             title: point.legend!,
-            color: color,
+            color,
             action: () => {
               this._onClick(point.legend!);
             },
@@ -556,7 +575,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
         calloutLegend: point.legend!,
         dataForHoverCard: pointData,
-        color: color,
+        color,
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,

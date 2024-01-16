@@ -1,15 +1,9 @@
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
-import {
-  Tree,
-  readProjectConfiguration,
-  readWorkspaceConfiguration,
-  serializeJson,
-  addProjectConfiguration,
-  readJson,
-} from '@nx/devkit';
+import { Tree, readProjectConfiguration, serializeJson, addProjectConfiguration, readJson } from '@nx/devkit';
 
 import generator from './index';
 import { VersionBumpGeneratorSchema } from './schema';
+import { getWorkspaceConfig } from '../../utils';
 
 const noop = () => null;
 
@@ -24,7 +18,7 @@ describe('rc-caret generator', () => {
     jest.spyOn(console, 'warn').mockImplementation(noop);
 
     tree = createTreeWithEmptyWorkspace();
-    npmScope = readWorkspaceConfiguration(tree).npmScope ?? '@proj';
+    npmScope = getWorkspaceConfig(tree).npmScope;
   });
 
   it('should work for dependencies', async () => {
@@ -131,7 +125,7 @@ function setupDummyPackage(
       projectConfiguration: Partial<ReturnType<typeof readProjectConfiguration>>;
     }>,
 ) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const workspaceConfig = getWorkspaceConfig(tree);
   const defaults = {
     name: `@${workspaceConfig.npmScope}/react-components`,
     version: '9.0.0-alpha.40',

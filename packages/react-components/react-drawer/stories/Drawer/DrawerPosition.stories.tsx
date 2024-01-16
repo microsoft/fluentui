@@ -1,6 +1,14 @@
 import * as React from 'react';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerOverlay, DrawerProps } from '@fluentui/react-drawer';
-import { Button, makeStyles, tokens } from '@fluentui/react-components';
+import {
+  DrawerBody,
+  DrawerHeader,
+  DrawerHeaderTitle,
+  OverlayDrawer,
+  DrawerProps,
+  Button,
+  makeStyles,
+  tokens,
+} from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -11,6 +19,22 @@ const useStyles = makeStyles({
     columnGap: tokens.spacingHorizontalXS,
   },
 });
+
+const setTitle = (position: DrawerProps['position']) => {
+  switch (position) {
+    case 'start':
+      return 'Left';
+
+    case 'end':
+      return 'Right';
+
+    case 'bottom':
+      return 'Bottom';
+
+    default:
+      return undefined;
+  }
+};
 
 export const Position = () => {
   const styles = useStyles();
@@ -28,9 +52,14 @@ export const Position = () => {
     setIsOpen(true);
   }, []);
 
+  const onClickBottomButton = React.useCallback(() => {
+    setPosition('bottom');
+    setIsOpen(true);
+  }, []);
+
   return (
     <div>
-      <DrawerOverlay position={position} open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <OverlayDrawer position={position} open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -42,14 +71,14 @@ export const Position = () => {
               />
             }
           >
-            {position === 'start' ? 'Left' : 'Right'} Drawer
+            {setTitle(position)} Drawer
           </DrawerHeaderTitle>
         </DrawerHeader>
 
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </DrawerOverlay>
+      </OverlayDrawer>
 
       <div className={styles.content}>
         <Button appearance="primary" onClick={onClickLeftButton}>
@@ -58,6 +87,10 @@ export const Position = () => {
 
         <Button appearance="primary" onClick={onClickRightButton}>
           Open right
+        </Button>
+
+        <Button appearance="primary" onClick={onClickBottomButton}>
+          Open Bottom
         </Button>
       </div>
     </div>
@@ -68,7 +101,7 @@ Position.parameters = {
   docs: {
     description: {
       story: [
-        'When a Drawer is invoked, it slides in from either the left or right side of the screen.',
+        'When a Drawer is invoked, it slides in from either the left or right side, or bottom of the screen.',
         'This can be specified by the `position` prop.',
       ].join('\n'),
     },

@@ -1,4 +1,4 @@
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { ToolbarGroupProps, ToolbarGroupState } from './ToolbarGroup.types';
 
@@ -16,7 +16,7 @@ export const useToolbarGroup_unstable = (
       root: 'div',
     },
     root: slot.always(
-      getNativeElementProps<React.HTMLAttributes<HTMLDivElement>>('div', {
+      getIntrinsicElementProps<React.HTMLAttributes<HTMLDivElement>>('div', {
         ref,
         role: 'presentation',
         ...props,

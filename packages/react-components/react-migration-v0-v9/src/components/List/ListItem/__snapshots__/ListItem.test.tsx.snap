@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem renders a default state 1`] = `
+<div>
+  <li
+    class="fui-ListItem"
+    id="listItem7"
+    role="listitem"
+  >
+    <div
+      class="fui-ItemLayout"
+    >
+      <div
+        class=""
+      >
+        Default ListItem
+      </div>
+    </div>
+  </li>
+</div>
+`;

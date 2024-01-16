@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
-import * as scale from 'd3-scale';
+import { ScaleOrdinal } from 'd3-scale';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/react-focus';
@@ -33,7 +33,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     innerRadius: 0,
     hideLabels: true,
   };
-  public _colors: scale.ScaleOrdinal<string, {}>;
+  public _colors: ScaleOrdinal<string, {}>;
   private _classNames: IProcessedStyleSet<IDonutChartStyles>;
   private _rootElem: HTMLElement | null;
   private _uniqText: string;
@@ -289,10 +289,10 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
   private _valueInsideDonut(valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) {
     const highlightedLegend = this._getHighlightedLegend();
-    if (valueInsideDonut !== undefined && highlightedLegend !== '' && !this.state.showHover) {
+    if (valueInsideDonut !== undefined && (highlightedLegend !== '' || this.state.showHover)) {
       let legendValue = valueInsideDonut;
       data!.map((point: IChartDataPoint, index: number) => {
-        if (point.legend === highlightedLegend) {
+        if (point.legend === highlightedLegend || (this.state.showHover && point.legend === this.state.legend)) {
           legendValue = point.yAxisCalloutData ? point.yAxisCalloutData : point.data!;
         }
         return;

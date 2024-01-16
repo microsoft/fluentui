@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as shape from 'd3-shape';
+import { pie as d3Pie } from 'd3-shape';
 import { IPieProps, IPieStyleProps, IPieStyles } from './index';
 import { Arc, IArcData } from '../Arc/index';
 import { IChartDataPoint } from '../index';
@@ -12,8 +12,7 @@ const TEXT_PADDING: number = 5;
 
 export class Pie extends React.Component<IPieProps, {}> {
   public static defaultProps: Partial<IPieProps> = {
-    pie: shape
-      .pie()
+    pie: d3Pie()
       .sort(null)
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .value((d: any) => d.data)
@@ -27,8 +26,7 @@ export class Pie extends React.Component<IPieProps, {}> {
   constructor(props: IPieProps) {
     super(props);
     this._hoverCallback = this._hoverCallback.bind(this);
-    this._pieForFocusRing = shape
-      .pie()
+    this._pieForFocusRing = d3Pie()
       .sort(null)
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .value((d: any) => d.data)

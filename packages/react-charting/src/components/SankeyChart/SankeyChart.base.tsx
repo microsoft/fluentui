@@ -2,7 +2,7 @@ import * as React from 'react';
 import { classNamesFunction, getId, getRTL, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { ISankeyChartData, ISankeyChartProps, ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import * as d3Sankey from 'd3-sankey';
+import { SankeyLayout, SankeyGraph, sankey as d3Sankey, sankeyRight, sankeyJustify } from 'd3-sankey';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
 import { sum as d3Sum } from 'd3-array';
 import { ChartHoverCard, IBasestate, IChartHoverCardProps, SLink, SNode } from '../../index';
@@ -61,7 +61,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private _calloutId: string;
   private _linkId: string;
   private _nodesInColumn: NodesInColumns;
-  private _sankey: d3Sankey.SankeyLayout<d3Sankey.SankeyGraph<{}, {}>, {}, {}>;
+  private _sankey: SankeyLayout<SankeyGraph<{}, {}>, {}, {}>;
   private _margins: IMargins;
   private _isRtl: boolean = getRTL();
   private _normalizeData: (data: ISankeyChartData) => void;
@@ -181,14 +181,13 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const height =
       this.state.containerHeight - this._margins.bottom! > 0 ? this.state.containerHeight - this._margins.bottom! : 0;
 
-    this._sankey = d3Sankey
-      .sankey()
+    this._sankey = d3Sankey()
       .nodeWidth(124)
       .extent([
         [this._margins.left!, this._margins.top!],
         [width - 1, height - 6],
       ])
-      .nodeAlign(this._isRtl ? d3Sankey.sankeyRight : d3Sankey.sankeyJustify);
+      .nodeAlign(this._isRtl ? sankeyRight : sankeyJustify);
 
     return { height, width };
   }
@@ -219,10 +218,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
    *
    * This is used to group nodes by column index.
    */
-  private _populateNodeInColumns(
-    graph: ISankeyChartData,
-    sankey: d3Sankey.SankeyLayout<d3Sankey.SankeyGraph<{}, {}>, {}, {}>,
-  ) {
+  private _populateNodeInColumns(graph: ISankeyChartData, sankey: SankeyLayout<SankeyGraph<{}, {}>, {}, {}>) {
     sankey(graph);
     const nodesInColumn: NodesInColumns = {};
     graph.nodes.forEach((node: SNode) => {

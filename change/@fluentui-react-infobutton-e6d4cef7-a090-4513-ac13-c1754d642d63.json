@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: Popover should close when tabbing out of the surface.",
-  "packageName": "@fluentui/react-infobutton",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -5,7 +5,7 @@ export type LinkSlots = {
   /**
    * Root of the component that renders as either an <a> or a <button> tag.
    */
-  root: Slot<'a', 'button'>;
+  root: Slot<'a', 'button' | 'span'>;
 };
 
 export type LinkProps = ComponentProps<LinkSlots> & {

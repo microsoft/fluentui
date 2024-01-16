@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-input",
-  "version": "9.4.35",
+  "version": "9.4.58",
   "description": "Fluent UI React Input component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,17 +34,17 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-field": "^9.1.25",
-    "@fluentui/react-jsx-runtime": "^9.0.6",
-    "@fluentui/react-shared-contexts": "^9.7.3",
-    "@fluentui/react-theme": "^9.1.12",
-    "@fluentui/react-utilities": "^9.13.3",
+    "@fluentui/react-field": "^9.1.48",
+    "@fluentui/react-jsx-runtime": "^9.0.25",
+    "@fluentui/react-shared-contexts": "^9.13.2",
+    "@fluentui/react-theme": "^9.1.16",
+    "@fluentui/react-utilities": "^9.15.6",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
-    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
     "react": ">=16.14.0 <19.0.0",
     "react-dom": ">=16.14.0 <19.0.0"
   },
@@ -62,5 +62,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

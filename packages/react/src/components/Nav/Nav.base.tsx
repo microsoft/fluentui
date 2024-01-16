@@ -15,6 +15,8 @@ import type {
   INavStyles,
   IRenderGroupHeaderProps,
 } from './Nav.types';
+import { WindowContext } from '@fluentui/react-window-provider';
+import { getDocumentEx } from '../../utilities/dom';
 
 // The number pixels per indentation level for Nav links.
 const _indentationSize = 14;
@@ -42,6 +44,8 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   public static defaultProps: INavProps = {
     groups: null,
   };
+
+  public static contextType = WindowContext;
 
   private _focusZone = React.createRef<IFocusZone>();
   constructor(props: INavProps) {
@@ -360,8 +364,9 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       // resolve is not supported for ssr
       return false;
     } else {
+      const doc = getDocumentEx(this.context)!; // there is an SSR check above so this is safe
       // If selectedKey is undefined in props and state, then check URL
-      _urlResolver = _urlResolver || document.createElement('a');
+      _urlResolver = _urlResolver || doc.createElement('a');
 
       _urlResolver.href = link.url || '';
       const target: string = _urlResolver.href;

@@ -219,6 +219,9 @@ export const useAvatarGroupItemStyles_unstable: (state: AvatarGroupItemState) =>
 // @public
 export const useAvatarGroupPopover_unstable: (props: AvatarGroupPopoverProps) => AvatarGroupPopoverState;
 
+// @public (undocumented)
+export const useAvatarGroupPopoverContextValues_unstable: (state: AvatarGroupPopoverState) => AvatarGroupContextValues;
+
 // @public
 export const useAvatarGroupPopoverStyles_unstable: (state: AvatarGroupPopoverState) => AvatarGroupPopoverState;
 
