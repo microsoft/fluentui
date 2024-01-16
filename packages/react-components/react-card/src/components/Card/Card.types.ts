@@ -125,7 +125,7 @@ export type CardProps = ComponentProps<CardSlots> & {
    * Callback to be called when the selected state value changes.
    */
   // eslint-disable-next-line @fluentui/consistent-callback-type
-  onSelectionChange?: (event: CardOnSelectionChangeEvent, data: CardOnSelectData) => void;
+  onSelectionChange?: (event: CardOnSelectionChangeEvent, data: CardOnSelectData) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
 };
 
 /**

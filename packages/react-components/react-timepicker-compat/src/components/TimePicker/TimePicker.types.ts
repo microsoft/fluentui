@@ -146,7 +146,7 @@ export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input
      * Callback for when a time selection is made.
      */
     // eslint-disable-next-line @fluentui/consistent-callback-type
-    onTimeChange?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
+    onTimeChange?: (event: TimeSelectionEvents, data: TimeSelectionData) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
 
     /**
      * Customizes the formatting of date strings displayed in dropdown options.

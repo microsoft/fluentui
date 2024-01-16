@@ -44,7 +44,7 @@ export type MenuListProps = ComponentProps<MenuListSlots> & {
    * @param data - A data object with relevant information
    */
   // eslint-disable-next-line @fluentui/consistent-callback-type
-  onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
+  onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
 };
 
 export type MenuListState = ComponentState<MenuListSlots> &

@@ -48,7 +48,7 @@ export type ToolbarProps = ComponentProps<ToolbarSlots> & {
    * @param data - A data object with relevant information
    */
   // eslint-disable-next-line @fluentui/consistent-callback-type
-  onCheckedValueChange?: (e: ToolbarCheckedValueChangeEvent, data: ToolbarCheckedValueChangeData) => void;
+  onCheckedValueChange?: (e: ToolbarCheckedValueChangeEvent, data: ToolbarCheckedValueChangeData) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
 };
 
 /**

@@ -78,7 +78,7 @@ export type InputProps = Omit<
    * Called when the user changes the input's value.
    */
   // eslint-disable-next-line @fluentui/consistent-callback-type
-  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => void;
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
 
   /**
    * An input can have different text-based [types](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input#input_types)

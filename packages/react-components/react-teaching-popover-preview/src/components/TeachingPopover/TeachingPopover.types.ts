@@ -14,10 +14,12 @@ export type TeachingPopoverProps = Omit<PopoverProps, 'appearance'> & {
    * Enables user to dictate current page number via props
    */
   currentPage?: number;
+
+  /* eslint-disable @fluentui/consistent-callback-type */
+  // callback should be typed with EventHandler, but we can't break existing callbacks
   /**
    * Callback to notify a page change (can be used to update 'currentPage' externally).
    */
-  // eslint-disable-next-line @fluentui/consistent-callback-type
   onPageChange?: (
     event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>,
     data: TeachingPopoverPageChangeData,
@@ -25,8 +27,9 @@ export type TeachingPopoverProps = Omit<PopoverProps, 'appearance'> & {
   /**
    * Callback to notify when the final button step of a carousel has been activated.
    */
-  // eslint-disable-next-line @fluentui/consistent-callback-type
   onFinish?: (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => void;
+  /* eslint-enable @fluentui/consistent-callback-type */
+
   /**
    * The appearance property (extended from popover, but removed 'inverted').
    */

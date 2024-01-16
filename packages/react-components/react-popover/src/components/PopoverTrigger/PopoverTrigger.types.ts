@@ -28,11 +28,11 @@ export type PopoverTriggerChildProps<Type extends ARIAButtonType = ARIAButtonTyp
   Props & {
     'aria-expanded'?: 'true' | 'false';
     ref: React.Ref<unknown>;
-    // eslint-disable-next-line @fluentui/consistent-callback-type
+    /* eslint-disable @fluentui/consistent-callback-type */
+    // callback should be typed with EventHandler, but we can't break existing callbacks
     onMouseEnter: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    // eslint-disable-next-line @fluentui/consistent-callback-type
     onMouseLeave: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
-    // eslint-disable-next-line @fluentui/consistent-callback-type
     onContextMenu: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
+    /* eslint-enable @fluentui/consistent-callback-type */
   }
 >;

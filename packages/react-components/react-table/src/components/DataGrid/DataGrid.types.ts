@@ -64,10 +64,12 @@ export type DataGridProps = TableProps &
   Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance' | 'resizableColumns'> &
   Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> &
   Pick<SelectionHookParams, 'defaultSelectedItems' | 'selectedItems'> & {
-    // eslint-disable-next-line @fluentui/consistent-callback-type
+    /* eslint-disable @fluentui/consistent-callback-type */
+    // callback should be typed with EventHandler, but we can't break existing callbacks
     onSortChange?: (e: React.MouseEvent, sortState: SortState) => void;
-    // eslint-disable-next-line @fluentui/consistent-callback-type
     onSelectionChange?: (e: React.MouseEvent | React.KeyboardEvent, data: OnSelectionChangeData) => void;
+    /* eslint-enable @fluentui/consistent-callback-type */
+
     /**
      * Enables row selection and sets the selection mode
      * @default false
@@ -84,7 +86,7 @@ export type DataGridProps = TableProps &
     onColumnResize?: (
       e: KeyboardEvent | TouchEvent | MouseEvent | undefined,
       data: { columnId: TableColumnId; width: number },
-    ) => void;
+    ) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
     /**
      * For column resizing. Allows for a container size to be adjusted by a number of pixels, to make
      * sure the columns don't overflow the table.

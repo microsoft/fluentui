@@ -61,7 +61,7 @@ export type RadioProps = Omit<ComponentProps<Partial<RadioSlots>, 'input'>, 'onC
    * Use RadioGroup's `onChange` event to determine when the selection in the group changes.
    */
   // eslint-disable-next-line @fluentui/consistent-callback-type
-  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: RadioOnChangeData) => void;
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: RadioOnChangeData) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
 };
 
 /**

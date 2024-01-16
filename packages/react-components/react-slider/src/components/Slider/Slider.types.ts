@@ -95,7 +95,7 @@ export type SliderProps = Omit<
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
   // eslint-disable-next-line @fluentui/consistent-callback-type
-  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
 };
 
 export type SliderOnChangeData = {

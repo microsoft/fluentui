@@ -67,7 +67,7 @@ export type TooltipProps = ComponentProps<TooltipSlots> &
     onVisibleChange?: (
       event: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined,
       data: OnVisibleChangeData,
-    ) => void;
+    ) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
 
     /**
      * Configure the positioning of the tooltip

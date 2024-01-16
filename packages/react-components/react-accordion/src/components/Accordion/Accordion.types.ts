@@ -50,7 +50,7 @@ export type AccordionProps<Value = AccordionItemValue> = ComponentProps<Accordio
    * Callback to be called when the opened items change.
    */
   // eslint-disable-next-line @fluentui/consistent-callback-type
-  onToggle?: AccordionToggleEventHandler<Value>;
+  onToggle?: AccordionToggleEventHandler<Value>; // callback should be typed with EventHandler, but we can't break existing callbacks
 
   /**
    * Controls the state of the panel.

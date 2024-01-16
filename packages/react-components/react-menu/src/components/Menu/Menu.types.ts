@@ -41,7 +41,7 @@ export type MenuProps = ComponentProps<MenuSlots> &
      * The `open` value is used as a hint when directly controlling the component
      */
     // eslint-disable-next-line @fluentui/consistent-callback-type
-    onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void;
+    onOpenChange?: (e: MenuOpenEvent, data: MenuOpenChangeData) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
 
     /**
      * Whether the popup is open
