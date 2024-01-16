@@ -11,15 +11,6 @@ import {
 } from '@fluentui/react-components';
 import type { AnnounceContextValue } from '@fluentui/react-components';
 
-const AnnounceMock: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const announce: AnnounceContextValue['announce'] = React.useCallback((message, options) => {
-    alert(`Announced {polite: ${String(options?.polite ?? false)}}: ${message}`);
-  }, []);
-  const value: AnnounceContextValue = React.useMemo(() => ({ announce }), [announce]);
-
-  return <AnnounceProvider value={value}>{children}</AnnounceProvider>;
-};
-
 const AnnouncePlayground: React.FC = () => {
   const { announce } = useAnnounce();
 
@@ -52,8 +43,13 @@ const AnnouncePlayground: React.FC = () => {
 };
 
 export const Default = () => {
+  const announce: AnnounceContextValue['announce'] = React.useCallback((message, options) => {
+    alert(`Announced {polite: ${String(options?.polite ?? false)}}: ${message}`);
+  }, []);
+  const value: AnnounceContextValue = React.useMemo(() => ({ announce }), [announce]);
+
   return (
-    <AnnounceMock>
+    <AnnounceProvider value={value}>
       <p>
         This example shows how to use the <code>useAnnounce()</code> hook, however it does not implement `aria-live`
         regions.
@@ -61,6 +57,6 @@ export const Default = () => {
 
       <Divider />
       <AnnouncePlayground />
-    </AnnounceMock>
+    </AnnounceProvider>
   );
 };
