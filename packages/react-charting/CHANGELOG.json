@@ -2,6 +2,42 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 15 Jan 2024 07:28:14 GMT",
+      "tag": "@fluentui/react-charting_v5.19.13",
+      "version": "5.19.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.129",
+            "commit": "ca4ebf96c29b0ecebd907b74e53e17fc74da60bd"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.114.3",
+            "commit": "ca4ebf96c29b0ecebd907b74e53e17fc74da60bd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Jan 2024 07:26:35 GMT",
+      "tag": "@fluentui/react-charting_v5.19.12",
+      "version": "5.19.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8abecbc654a559eedbbbafa60f9ee0773df9612a",
+            "comment": "Add tests for heatmap chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Jan 2024 07:28:50 GMT",
       "tag": "@fluentui/react-charting_v5.19.11",
       "version": "5.19.11",

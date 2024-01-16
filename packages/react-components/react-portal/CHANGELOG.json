@@ -2,6 +2,27 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Tue, 16 Jan 2024 13:14:22 GMT",
+      "tag": "@fluentui/react-portal_v9.4.8",
+      "version": "9.4.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-tabster to v9.17.1",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Jan 2024 16:24:28 GMT",
       "tag": "@fluentui/react-portal_v9.4.7",
       "version": "9.4.7",

@@ -16,7 +16,7 @@ export const useMergedTabsterAttributes_unstable: (
     .map(attribute => attribute[Types.TabsterAttributeName])
     .filter(Boolean) as string[];
 
-  const mergedStrigAttribute = React.useMemo(() => {
+  return React.useMemo(() => {
     let attribute = stringAttributes[0];
     attributes.shift();
 
@@ -24,11 +24,9 @@ export const useMergedTabsterAttributes_unstable: (
       attribute = mergeAttributes(attribute, attr);
     }
 
-    return attribute;
+    return { [Types.TabsterAttributeName]: attribute };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, stringAttributes);
-
-  return { [Types.TabsterAttributeName]: mergedStrigAttribute };
 };
 
 function mergeAttributes(a: string, b?: string): string {

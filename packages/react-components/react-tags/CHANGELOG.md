@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-tags
 
-This log was last generated on Tue, 09 Jan 2024 10:21:34 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jan 2024 13:14:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.0.20)
+
+Tue, 16 Jan 2024 13:14:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.0.19..@fluentui/react-tags_v9.0.20)
+
+### Patches
+
+- fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-aria to v9.7.1 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-avatar to v9.6.7 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.25 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-tabster to v9.17.1 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+
+## [9.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.0.19)
+
+Thu, 11 Jan 2024 09:04:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.0.18..@fluentui/react-tags_v9.0.19)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.7.0 ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by beachball)
+- Bump @fluentui/react-avatar to v9.6.6 ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by beachball)
 
 ## [9.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.0.18)
 

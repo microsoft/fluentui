@@ -7,11 +7,13 @@ import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 import type { DatePickerProps } from '@fluentui/react-datepicker-compat';
 
-const DatePicker = (props: DatePickerProps) => {
+const DatePicker = (props: DatePickerProps & { renderRelativeElement?: boolean }) => {
   const today = new Date('3/15/2023');
+  const { renderRelativeElement, ...restProps } = props;
   return (
     <div style={{ width: '500px', height: '330px', padding: '10px' }}>
-      <DatePickerBase value={today} today={today} {...props} />
+      <DatePickerBase value={today} today={today} {...restProps} />
+      {renderRelativeElement && <input style={{ position: 'relative', display: 'block', width: '100%' }} />}
     </div>
   );
 };
@@ -86,5 +88,10 @@ storiesOf('DatePicker Compat', module)
   .addStory('With label', () => (
     <Field label="Select a date">
       <DatePicker />
+    </Field>
+  ))
+  .addStory('when rendering inline, it should not render behind relatively positioned elements', () => (
+    <Field label="Select a date">
+      <DatePicker open inlinePopup renderRelativeElement />
     </Field>
   ));
