@@ -12,7 +12,7 @@ module.exports = createRule({
       recommended: 'error',
     },
     messages: {
-      invalidType: 'callback props should be typed with EventHandler<T>',
+      invalidType: 'callback props should be typed with @fluentui/react-utilities#EventHandler<T>',
     },
     schema: [],
   },
