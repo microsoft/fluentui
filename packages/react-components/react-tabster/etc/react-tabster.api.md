@@ -126,6 +126,11 @@ export function useRestoreFocusSource(): Types.TabsterDOMAttribute;
 // @public
 export function useRestoreFocusTarget(): Types.TabsterDOMAttribute;
 
+// @public (undocumented)
+export function useSetKeyboardNavigation(): {
+    setKeyboardNavigation: (isNavigatingWithKeyboard: boolean) => void;
+};
+
 // @internal
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
 
