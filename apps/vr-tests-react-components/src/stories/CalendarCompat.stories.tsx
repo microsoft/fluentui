@@ -2,7 +2,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 import { Steps, StoryWright } from 'storywright';
-import { Calendar as CalendarBase, CalendarProps } from '@fluentui/react-calendar-compat/src/Calendar';
+import { Calendar as CalendarBase, CalendarProps } from '@fluentui/react-calendar-compat';
 import { ArrowLeftRegular, ArrowRightRegular, DismissCircleRegular } from '@fluentui/react-icons';
 
 const Calendar = (props: CalendarProps) => {
