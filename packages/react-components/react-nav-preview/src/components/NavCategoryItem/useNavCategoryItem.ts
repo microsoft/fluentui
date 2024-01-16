@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, mergeCallbacks, useEventCallback, slot } from '@fluentui/react-utilities';
-import { useNavContext_unstable } from '../NavContext';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.types';
 
 /**
@@ -14,49 +13,26 @@ import { NavCategoryItemProps, NavCategoryItemState } from './NavCategoryItem.ty
  */
 export const useNavCategoryItem_unstable = (
   props: NavCategoryItemProps,
-  ref: React.Ref<HTMLButtonElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): NavCategoryItemState => {
-  const { content, onClick, value } = props;
-
-  const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
-
-  const selected = selectedValue === value;
-
-  const innerRef = React.useRef<HTMLElement>(null);
-  const onNavCategoryItemClick = useEventCallback(
-    mergeCallbacks(onClick, event => onSelect(event, { type: 'click', event, value })),
-  );
-
-  React.useEffect(() => {
-    onRegister({
-      value,
-      ref: innerRef,
-    });
-
-    return () => {
-      onUnregister({ value, ref: innerRef });
-    };
-  }, [onRegister, onUnregister, innerRef, value]);
-
-  const contentSlot = slot.always(content, {
-    defaultProps: { children: props.children },
-    elementType: 'span',
-  });
-
+  const { content } = props;
   return {
-    components: { root: 'button', content: 'span' },
+    // TODO add appropriate props/defaults
+    components: {
+      // TODO add each slot's element type or component
+      root: 'div',
+      content: 'span',
+    },
     root: slot.always(
-      getIntrinsicElementProps('button', {
+      getIntrinsicElementProps('div', {
         ref,
-        role: 'nav',
-        type: 'navigation',
         ...props,
-        onClick: onNavCategoryItemClick,
       }),
-      { elementType: 'button' },
+      { elementType: 'div' },
     ),
-    content: contentSlot,
-    selected,
-    value,
+    content: slot.always(content, {
+      defaultProps: { children: props.children },
+      elementType: 'span',
+    }),
   };
 };

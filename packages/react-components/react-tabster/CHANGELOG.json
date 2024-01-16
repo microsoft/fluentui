@@ -2,6 +2,27 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Tue, 16 Jan 2024 13:14:10 GMT",
+      "tag": "@fluentui/react-tabster_v9.17.1",
+      "version": "9.17.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "0a3d3dd089c66ed936fcbfe26c930db23668224b",
+            "comment": "fix: memoize tabster attributes"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Jan 2024 16:24:26 GMT",
       "tag": "@fluentui/react-tabster_v9.17.0",
       "version": "9.17.0",

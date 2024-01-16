@@ -91,7 +91,7 @@ export function createArrowStyles(options: CreateArrowStylesOptions): GriffelSty
       ),
       ...shorthands.borderBottom(borderWidth, borderStyle, borderColor),
       borderBottomRightRadius: tokens.borderRadiusSmall,
-      transform: 'rotate(var(--fui-positioning-angle)) translate(0, 50%) rotate(45deg)',
+      transform: 'rotate(var(--fui-positioning-angle)) translate(0, 50%) rotate(45deg) /* @noflip */',
     },
 
     // Popper sets data-popper-placement on the root element, which is used to align the arrow

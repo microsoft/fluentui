@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 15 Jan 2024 07:28:13 GMT",
+      "tag": "@fluentui/react_v8.114.3",
+      "version": "8.114.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ca4ebf96c29b0ecebd907b74e53e17fc74da60bd",
+            "comment": "fix: positioning properly tests if point is at the zero location, instead of returning false"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Jan 2024 07:28:49 GMT",
       "tag": "@fluentui/react_v8.114.2",
       "version": "8.114.2",

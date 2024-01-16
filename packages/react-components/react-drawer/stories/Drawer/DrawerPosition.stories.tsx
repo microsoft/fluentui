@@ -20,6 +20,22 @@ const useStyles = makeStyles({
   },
 });
 
+const setTitle = (position: DrawerProps['position']) => {
+  switch (position) {
+    case 'start':
+      return 'Left';
+
+    case 'end':
+      return 'Right';
+
+    case 'bottom':
+      return 'Bottom';
+
+    default:
+      return undefined;
+  }
+};
+
 export const Position = () => {
   const styles = useStyles();
 
@@ -33,6 +49,11 @@ export const Position = () => {
 
   const onClickRightButton = React.useCallback(() => {
     setPosition('end');
+    setIsOpen(true);
+  }, []);
+
+  const onClickBottomButton = React.useCallback(() => {
+    setPosition('bottom');
     setIsOpen(true);
   }, []);
 
@@ -50,7 +71,7 @@ export const Position = () => {
               />
             }
           >
-            {position === 'start' ? 'Left' : 'Right'} Drawer
+            {setTitle(position)} Drawer
           </DrawerHeaderTitle>
         </DrawerHeader>
 
@@ -67,6 +88,10 @@ export const Position = () => {
         <Button appearance="primary" onClick={onClickRightButton}>
           Open right
         </Button>
+
+        <Button appearance="primary" onClick={onClickBottomButton}>
+          Open Bottom
+        </Button>
       </div>
     </div>
   );
@@ -76,7 +101,7 @@ Position.parameters = {
   docs: {
     description: {
       story: [
-        'When a Drawer is invoked, it slides in from either the left or right side of the screen.',
+        'When a Drawer is invoked, it slides in from either the left or right side, or bottom of the screen.',
         'This can be specified by the `position` prop.',
       ].join('\n'),
     },

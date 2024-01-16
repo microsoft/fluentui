@@ -23,6 +23,15 @@ export type {
   NavCategoryItemState,
 } from './components/NavCategoryItem/index';
 
+export {
+  NavItem,
+  renderNavItem_unstable,
+  useNavItem_unstable,
+  useNavItemStyles_unstable,
+  navItemClassNames,
+} from './components/NavItem/index';
+export type { NavItemSlots, NavItemProps, NavItemState } from './components/NavItem/index';
+
 export { NavProvider, useNavContext_unstable } from './components/NavContext';
 export type {
   NavItemValue,
