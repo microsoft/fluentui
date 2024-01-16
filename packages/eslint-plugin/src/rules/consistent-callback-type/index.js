@@ -20,8 +20,7 @@ module.exports = createRule({
   create(context) {
     return {
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      'TSTypeAliasDeclaration[id.name=/.*Props$/] TSTypeLiteral': function (node) {
-        // @ts-ignore
+      'TSTypeAliasDeclaration[id.name=/.*Props$/] TSTypeLiteral': function ( /** @type {import('@typescript-eslint/experimental-utils').TSESTree.TSTypeLiteral}*/ node) {
         node.members.forEach(member => {
           if (
             member.type === 'TSPropertySignature' &&
