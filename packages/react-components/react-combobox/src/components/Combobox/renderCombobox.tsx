@@ -16,7 +16,8 @@ export const renderCombobox_unstable = (state: ComboboxState, contextValues: Com
     <state.root>
       <ComboboxContext.Provider value={contextValues.combobox}>
         <state.input />
-        {state.expandIcon && <state.expandIcon />}
+        {state.clearIcon && <state.clearIcon />}
+        <state.expandIcon />
         {state.listbox &&
           (state.inlinePopup ? (
             <state.listbox />

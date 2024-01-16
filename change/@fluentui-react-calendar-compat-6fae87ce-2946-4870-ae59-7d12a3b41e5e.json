@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Make day labels non-actionable.",
-  "packageName": "@fluentui/react-calendar-compat",
-  "email": "estebanmu@microsoft.com",
-  "dependentChangeType": "patch"
-}

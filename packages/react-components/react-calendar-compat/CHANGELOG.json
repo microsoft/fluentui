@@ -2,6 +2,75 @@
   "name": "@fluentui/react-calendar-compat",
   "entries": [
     {
+      "date": "Tue, 16 Jan 2024 13:14:24 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.0.15",
+      "version": "0.0.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.25",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.17.1",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Jan 2024 16:24:20 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.0.14",
+      "version": "0.0.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.24",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.17.0",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-utilities to v9.15.6",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Jan 2024 09:48:05 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.0.13",
+      "version": "0.0.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "3d70b7ee03a0862edcc7bdf9646d8a3f727f0487",
+            "comment": "fix: Make day labels non-actionable."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Jan 2024 09:26:44 GMT",
       "tag": "@fluentui/react-calendar-compat_v0.0.12",
       "version": "0.0.12",

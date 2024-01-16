@@ -2,6 +2,105 @@
   "name": "@fluentui/react-accordion",
   "entries": [
     {
+      "date": "Tue, 16 Jan 2024 13:14:13 GMT",
+      "tag": "@fluentui/react-accordion_v9.3.36",
+      "version": "9.3.36",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-aria to v9.7.1",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.47",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.25",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-tabster to v9.17.1",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Jan 2024 09:04:29 GMT",
+      "tag": "@fluentui/react-accordion_v9.3.35",
+      "version": "9.3.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-aria to v9.7.0",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Jan 2024 16:24:19 GMT",
+      "tag": "@fluentui/react-accordion_v9.3.34",
+      "version": "9.3.34",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "update @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-aria to v9.6.2",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.46",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.24",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-tabster to v9.17.0",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-accordion",
+            "comment": "Bump @fluentui/react-utilities to v9.15.6",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Jan 2024 09:26:44 GMT",
       "tag": "@fluentui/react-accordion_v9.3.33",
       "version": "9.3.33",

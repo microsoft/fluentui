@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-conformance-griffel",
-  "version": "9.0.7",
+  "version": "9.0.8",
   "description": "A set of conformance tests for Griffel CSS-in-JS",
   "main": "lib-commonjs/index.js",
   "typings": "./dist/index.d.ts",
@@ -27,7 +27,7 @@
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
-    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
     "typescript": "^4.3.0",
     "@fluentui/react-conformance": "^0.18.3"
   },

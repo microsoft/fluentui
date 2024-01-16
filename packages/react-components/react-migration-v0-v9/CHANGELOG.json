@@ -2,6 +2,144 @@
   "name": "@fluentui/react-migration-v0-v9",
   "entries": [
     {
+      "date": "Tue, 16 Jan 2024 13:14:20 GMT",
+      "tag": "@fluentui/react-migration-v0-v9_v9.1.8",
+      "version": "9.1.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-aria to v9.7.1",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-components to v9.44.4",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.47",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.25",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-tabster to v9.17.1",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Jan 2024 09:04:28 GMT",
+      "tag": "@fluentui/react-migration-v0-v9_v9.1.7",
+      "version": "9.1.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "jurokapsiar@gmail.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "37f8222f1de7dbd898884a90e67c3c23f8826ee5",
+            "comment": "Remove dependency on v0"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-aria to v9.7.0",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-components to v9.44.3",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Jan 2024 10:21:34 GMT",
+      "tag": "@fluentui/react-migration-v0-v9_v9.1.6",
+      "version": "9.1.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-components to v9.44.2",
+            "commit": "a5e34e3c996d322bb0735f4fca9537deafd07b59"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Jan 2024 16:24:23 GMT",
+      "tag": "@fluentui/react-migration-v0-v9_v9.1.5",
+      "version": "9.1.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-aria to v9.6.2",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-components to v9.44.1",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.46",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.24",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-tabster to v9.17.0",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-utilities to v9.15.6",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Jan 2024 09:26:44 GMT",
       "tag": "@fluentui/react-migration-v0-v9_v9.1.4",
       "version": "9.1.4",
