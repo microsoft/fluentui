@@ -59,7 +59,7 @@ module.exports = {
       },
     },
     {
-      files: ['**/components/**/*.types.ts'],
+      files: ['**/src/**/*.{ts,tsx}'],
       rules: {
         '@fluentui/consistent-callback-type': 'error',
       },
