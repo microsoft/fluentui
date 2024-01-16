@@ -39,7 +39,8 @@ ruleTester.run('consistent-callback-type', rule, {
       code: `
         type SomeArgBag = { one: number };
         export type SomeProps = {
-          someFunction?: (args: SomeArgBag) => void,
+          someFunction?: (args: SomeArgBag) => void;
+          someFunction2?: (args: { onSomething: string }) => void; // test nested TSTypeLiteral node that starts with 'on'
         };
       `,
       filename: 'src/components/SomeComponent/SomeComponent.type.ts',
