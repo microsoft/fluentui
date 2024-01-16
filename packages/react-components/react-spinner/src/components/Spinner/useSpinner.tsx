@@ -38,7 +38,7 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
       elementType: 'div',
     },
   );
-  const [isVisible, setIsVisible] = React.useState(false);
+  const [isVisible, setIsVisible] = React.useState(true);
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
   React.useEffect(() => {
     if (delay <= 0) {
