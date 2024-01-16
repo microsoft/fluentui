@@ -5,8 +5,8 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 export const ratingDisplayClassNames: SlotClassNames<RatingDisplaySlots> = {
   root: 'fui-RatingDisplay',
-  ratingDisplayLabel: 'fui-Rating__ratingDisplayLabel',
-  ratingDisplayCountLabel: 'fui-Rating__ratingDisplayCountLabel',
+  ratingDisplayLabel: 'fui-RatingDisplay__ratingDisplayLabel',
+  ratingDisplayCountLabel: 'fui-RatingDisplay__ratingDisplayCountLabel',
 };
 
 /**
