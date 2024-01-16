@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: Omit colliding content property from ComponentProps",
-  "packageName": "@fluentui/react-toast",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

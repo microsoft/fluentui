@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update types in styles to exclude \"clearIcon\" slot",
-  "packageName": "@fluentui/react-timepicker-compat",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

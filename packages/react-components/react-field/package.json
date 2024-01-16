@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-field",
-  "version": "9.1.47",
+  "version": "9.1.48",
   "description": "Fluent UI Field components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,10 +33,10 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-context-selector": "^9.1.46",
+    "@fluentui/react-context-selector": "^9.1.47",
     "@fluentui/react-icons": "^2.0.224",
-    "@fluentui/react-jsx-runtime": "^9.0.24",
-    "@fluentui/react-label": "^9.1.55",
+    "@fluentui/react-jsx-runtime": "^9.0.25",
+    "@fluentui/react-label": "^9.1.56",
     "@fluentui/react-theme": "^9.1.16",
     "@fluentui/react-utilities": "^9.15.6",
     "@griffel/react": "^1.5.14",

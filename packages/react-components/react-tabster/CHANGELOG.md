@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Mon, 08 Jan 2024 16:24:26 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jan 2024 13:14:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.17.1)
+
+Tue, 16 Jan 2024 13:14:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.17.0..@fluentui/react-tabster_v9.17.1)
+
+### Patches
+
+- fix: memoize tabster attributes ([PR #30289](https://github.com/microsoft/fluentui/pull/30289) by lingfangao@hotmail.com)
+- fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
 
 ## [9.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.17.0)
 
