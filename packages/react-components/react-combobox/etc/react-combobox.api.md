@@ -80,7 +80,7 @@ export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & C
 // @public (undocumented)
 export type DropdownSlots = {
     root: NonNullable<Slot<'div'>>;
-    expandIcon: Slot<'span'>;
+    expandIcon?: Slot<'span'>;
     clearButton?: Slot<'button'>;
     button: NonNullable<Slot<'button'>>;
     listbox?: Slot<typeof Listbox>;
