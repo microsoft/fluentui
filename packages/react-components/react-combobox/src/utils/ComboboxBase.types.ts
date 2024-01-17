@@ -41,7 +41,8 @@ export type ComboboxBaseProps = SelectionProps &
     /**
      * Callback when the open/closed state of the dropdown changes
      */
-    onOpenChange?: (e: ComboboxBaseOpenEvents, data: ComboboxBaseOpenChangeData) => void;
+    // eslint-disable-next-line @fluentui/consistent-callback-type
+    onOpenChange?: (e: ComboboxBaseOpenEvents, data: ComboboxBaseOpenChangeData) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
 
     /**
      * Sets the open/closed state of the dropdown.
