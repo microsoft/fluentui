@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: allow expandIcon to be null",
-  "packageName": "@fluentui/react-combobox",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}
