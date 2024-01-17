@@ -159,8 +159,8 @@ export type VirtualizerConfigProps = {
   /**
    * Callback for notifying when a flagged index has been rendered
    */
-  // eslint-disable-next-line @fluentui/consistent-callback-type
-  onRenderedFlaggedIndex?: (index: number) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
+  // eslint-disable-next-line @fluentui/consistent-callback-type -- callback should be typed with EventHandler, but we can't break existing callbacks
+  onRenderedFlaggedIndex?: (index: number) => void;
 
   /*
    * Callback for notifying when a flagged index has been rendered

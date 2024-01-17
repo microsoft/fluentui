@@ -43,8 +43,8 @@ export type MenuListProps = ComponentProps<MenuListSlots> & {
    * @param event - React's original SyntheticEvent
    * @param data - A data object with relevant information
    */
-  // eslint-disable-next-line @fluentui/consistent-callback-type
-  onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
+  // eslint-disable-next-line @fluentui/consistent-callback-type -- callback should be typed with EventHandler, but we can't break existing callbacks
+  onCheckedValueChange?: (e: MenuCheckedValueChangeEvent, data: MenuCheckedValueChangeData) => void;
 };
 
 export type MenuListState = ComponentState<MenuListSlots> &

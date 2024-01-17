@@ -80,8 +80,8 @@ export type SpinButtonProps = Omit<
    * - User *commits* edits to the input text by focusing away (blurring) or pressing enter.
    *   Note that this is NOT called for every key press while the user is editing.
    */
-  // eslint-disable-next-line @fluentui/consistent-callback-type
-  onChange?: (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
+  // eslint-disable-next-line @fluentui/consistent-callback-type -- callback should be typed with EventHandler, but we can't break existing callbacks
+  onChange?: (event: SpinButtonChangeEvent, data: SpinButtonOnChangeData) => void;
 
   /**
    * How many decimal places the value should be rounded to.

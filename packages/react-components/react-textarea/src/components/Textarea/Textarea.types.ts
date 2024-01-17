@@ -40,8 +40,8 @@ export type TextareaProps = Omit<
   /**
    * Callback for when the user changes the value.
    */
-  // eslint-disable-next-line @fluentui/consistent-callback-type
-  onChange?: (ev: React.ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
+  // eslint-disable-next-line @fluentui/consistent-callback-type -- callback should be typed with EventHandler, but we can't break existing callbacks
+  onChange?: (ev: React.ChangeEvent<HTMLTextAreaElement>, data: TextareaOnChangeData) => void;
 
   /**
    * Which direction the Textarea is allowed to be resized.

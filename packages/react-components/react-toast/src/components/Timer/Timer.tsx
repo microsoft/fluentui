@@ -4,7 +4,7 @@ import { useBaseAnimationStyles } from './useTimerStyles.styles';
 export type TimerProps = {
   running: boolean;
   timeout: number;
-  // eslint-disable-next-line @fluentui/consistent-callback-type
+  // eslint-disable-next-line @fluentui/consistent-callback-type -- callback should be typed with EventHandler, but we can't break existing callbacks
   onTimeout: () => void;
   as?: 'span';
 };

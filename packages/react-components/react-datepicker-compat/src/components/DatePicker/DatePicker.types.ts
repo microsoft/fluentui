@@ -16,8 +16,8 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
     /**
      * Callback issued when a date is selected
      */
-    // eslint-disable-next-line @fluentui/consistent-callback-type
-    onSelectDate?: (date: Date | null | undefined) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
+    // eslint-disable-next-line @fluentui/consistent-callback-type -- callback should be typed with EventHandler, but we can't break existing callbacks
+    onSelectDate?: (date: Date | null | undefined) => void;
 
     /**
      * Whether the DatePicker is a required field or not. When using `<Field>`, this prop is automatically set.
@@ -85,14 +85,14 @@ export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'de
     /**
      * Callback to run when the DatePicker's open state changes
      */
-    // eslint-disable-next-line @fluentui/consistent-callback-type
-    onOpenChange?: (open: boolean) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
+    // eslint-disable-next-line @fluentui/consistent-callback-type -- callback should be typed with EventHandler, but we can't break existing callbacks
+    onOpenChange?: (open: boolean) => void;
 
     /**
      * Callback to run after the DatePicker's input has been validated
      */
-    // eslint-disable-next-line @fluentui/consistent-callback-type
-    onValidationResult?: (data: DatePickerValidationResultData) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
+    // eslint-disable-next-line @fluentui/consistent-callback-type -- callback should be typed with EventHandler, but we can't break existing callbacks
+    onValidationResult?: (data: DatePickerValidationResultData) => void;
 
     /**
      * Whether the DatePicker should render the popup as inline or in a portal

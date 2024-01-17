@@ -64,8 +64,8 @@ export type CheckboxProps = Omit<
   /**
    * Callback to be called when the checked state value changes.
    */
-  // eslint-disable-next-line @fluentui/consistent-callback-type
-  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void; // callback should be typed with EventHandler, but we can't break existing callbacks
+  // eslint-disable-next-line @fluentui/consistent-callback-type -- callback should be typed with EventHandler, but we can't break existing callbacks
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => void;
 
   /**
    * The shape of the checkbox indicator.
