@@ -17,7 +17,6 @@ export const Collapse: React.FC<CollapseProps> = ({ visible, children, duration 
     }
 
     if (isFirstRender.current) {
-      //
       // Assign initial styles on the first render and skip the animation.
       Object.assign(nodeRef.current.style, {
         width: 'fit-content',
@@ -31,11 +30,10 @@ export const Collapse: React.FC<CollapseProps> = ({ visible, children, duration 
       return;
     }
 
-    //
     // Keyframes for the animation are same for both show and hide. Reverse them if making the element visible.
     const keyframes = [
-      { maxHeight: `${nodeRef.current.scrollHeight}px`, opacity: 1 },
-      { maxHeight: '0px', opacity: 0 },
+      { opacity: 1, maxHeight: `${nodeRef.current.scrollHeight}px` },
+      { opacity: 0, maxHeight: '0px' },
     ];
 
     if (visible) {
@@ -48,8 +46,7 @@ export const Collapse: React.FC<CollapseProps> = ({ visible, children, duration 
       fill: 'forwards',
     });
 
-    //
-    /// When the animation is finished, clear the maxHeight so the element can grow with its content.
+    // When the animation is finished, clear the maxHeight so the element can grow with its content.
     animation.onfinish = () => {
       if (nodeRef.current) {
         nodeRef.current.style.maxHeight = '';
@@ -61,7 +58,6 @@ export const Collapse: React.FC<CollapseProps> = ({ visible, children, duration 
     };
   }, [duration, visible]);
 
-  //
   // TODO: This can just clone the children and add the ref to the clone
   return <div ref={nodeRef}>{children}</div>;
 };
