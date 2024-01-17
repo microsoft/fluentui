@@ -4,6 +4,7 @@ import { useBaseAnimationStyles } from './useTimerStyles.styles';
 export type TimerProps = {
   running: boolean;
   timeout: number;
+  // eslint-disable-next-line @fluentui/consistent-callback-type
   onTimeout: () => void;
   as?: 'span';
 };
