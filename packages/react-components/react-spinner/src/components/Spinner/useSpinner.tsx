@@ -44,7 +44,6 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
     if (delay <= 0) {
       return;
     }
-    setIsShownAfterDelay(false);
     setDelayTimeout(() => {
       setIsShownAfterDelay(true);
     }, delay);
