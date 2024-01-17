@@ -16,6 +16,7 @@ const indicatorSizes = {
   small: '12px',
   medium: '16px',
   large: '20px',
+  'extra-large': '28px',
 };
 
 /**
@@ -41,6 +42,12 @@ const useStyles = makeStyles({
     fontSize: indicatorSizes.large,
     width: indicatorSizes.large,
     height: indicatorSizes.large,
+  },
+
+  'extra-large': {
+    fontSize: indicatorSizes['extra-large'],
+    width: indicatorSizes['extra-large'],
+    height: indicatorSizes['extra-large'],
   },
 });
 
@@ -83,6 +90,18 @@ const useIndicatorStyles = makeStyles({
     left: '50%',
     marginLeft: '-50%',
   },
+  brand: {
+    color: tokens.colorBrandBackground,
+  },
+  unselectedFilledBrand: {
+    color: tokens.colorBrandBackground2,
+  },
+  marigold: {
+    color: tokens.colorPaletteMarigoldBackground3,
+  },
+  unselectedFilledMarigold: {
+    color: tokens.colorPaletteMarigoldBackground2,
+  },
   unselectedFilled: {
     color: tokens.colorNeutralBackground6,
     '@media (forced-colors: active)': {
@@ -93,6 +112,12 @@ const useIndicatorStyles = makeStyles({
   },
   unselectedOutline: {
     color: tokens.colorNeutralForeground3,
+  },
+  unselectedOutlineBrand: {
+    color: tokens.colorBrandForeground1,
+  },
+  unselectedOutlineMarigold: {
+    color: tokens.colorPaletteMarigoldForeground3,
   },
   unselectedOutlineHighContrast: {
     // When the style is 'filled' for unselected icons, we still
@@ -138,6 +163,9 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
       indicatorBaseClassName,
       indicatorStyles.unselectedOutline,
       state.unselectedFilledIcon ? indicatorStyles.unselectedOutlineHighContrast : indicatorStyles.unselectedOutline,
+      state.color === 'neutral' && indicatorStyles.unselectedOutline,
+      state.color === 'brand' && indicatorStyles.unselectedOutlineBrand,
+      state.color === 'marigold' && indicatorStyles.unselectedOutlineMarigold,
       iconFillWidth === 0.5 && indicatorStyles.upperHalf,
       state.unselectedOutlineIcon.className,
     );
@@ -147,6 +175,7 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
       ratingItemClassNames.unselectedFilledIcon,
       indicatorBaseClassName,
       indicatorStyles.unselectedFilled,
+      state.color === 'brand' && indicatorStyles.unselectedFilledBrand,
       iconFillWidth === 0.5 && indicatorStyles.upperHalf,
       state.unselectedFilledIcon.className,
     );
@@ -155,6 +184,8 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
     state.selectedIcon.className = mergeClasses(
       ratingItemClassNames.selectedIcon,
       indicatorBaseClassName,
+      state.color === 'brand' && indicatorStyles.brand,
+      state.color === 'marigold' && indicatorStyles.marigold,
       iconFillWidth === 0.5 && indicatorStyles.lowerHalf,
       state.selectedIcon.className,
     );

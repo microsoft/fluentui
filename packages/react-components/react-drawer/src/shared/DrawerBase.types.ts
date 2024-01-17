@@ -37,9 +37,11 @@ export type DrawerBaseProps = {
   /**
    * Position of the drawer.
    *
+   * Note: 'bottom' does not supports size, but it supports customized height.
+   *
    * @default 'start'
    */
-  position?: 'start' | 'end';
+  position?: 'start' | 'end' | 'bottom';
 
   /**
    * Size of the drawer.

@@ -5,9 +5,12 @@ import { ARC_PADDING, GaugeChartBase, IGaugeChartState, BREAKPOINTS } from './Ga
 import { resetIds, setRTL } from '../../Utilities';
 import { DataVizPalette } from '../../utilities/colors';
 import toJson from 'enzyme-to-json';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import { ThemeProvider } from '@fluentui/react';
 import { DarkTheme } from '@fluentui/theme-samples';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 // Wrapper of the GaugeChart to be tested.
 let wrapper: ReactWrapper<IGaugeChartProps, IGaugeChartState, GaugeChartBase> | undefined;
@@ -306,5 +309,30 @@ describe('GaugeChart - event listeners testing', () => {
 
     fireEvent.mouseEnter(container.querySelector('[class^="segment"]')!);
     expect(container.querySelector('.ms-Callout')).toBeNull();
+  });
+});
+
+describe('Gauge Chart - axe-core', () => {
+  beforeEach(() => {
+    sharedBeforeEach();
+
+    originalGetComputedTextLength = SVGElement.prototype.getComputedTextLength;
+    SVGElement.prototype.getComputedTextLength = () => {
+      return 0;
+    };
+  });
+
+  afterEach(() => {
+    sharedAfterEach();
+
+    SVGElement.prototype.getComputedTextLength = originalGetComputedTextLength;
+  });
+  it('Should pass accessibility tests', async () => {
+    const { container } = render(<GaugeChart segments={segments} chartValue={25} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
   });
 });

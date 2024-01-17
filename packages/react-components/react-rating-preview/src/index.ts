@@ -22,3 +22,5 @@ export {
 } from './RatingItem';
 export type { RatingItemProps, RatingItemSlots, RatingItemState } from './RatingItem';
 export { RatingProvider, useRatingContextValue_unstable, useRatingContextValues } from './contexts/index';
+export { RatingDisplay, ratingDisplayClassNames, renderRatingDisplay_unstable, useRatingDisplayStyles_unstable, useRatingDisplay_unstable } from './RatingDisplay';
+export type { RatingDisplayProps, RatingDisplaySlots, RatingDisplayState } from './RatingDisplay';

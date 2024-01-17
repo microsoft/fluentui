@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-portal-compat-context
 
-This log was last generated on Thu, 09 Nov 2023 17:29:40 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jan 2024 09:26:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.11)
+
+Wed, 03 Jan 2024 09:26:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.10..@fluentui/react-portal-compat-context_v9.0.11)
+
+### Patches
+
+- fix: re-introduce ecma transpilation to ES5 to make it work with v8  in ES5 only browsers ([PR #30053](https://github.com/microsoft/fluentui/pull/30053) by wfwf1997@gmail.com)
 
 ## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.10)
 

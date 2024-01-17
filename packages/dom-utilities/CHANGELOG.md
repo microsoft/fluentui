@@ -1,8 +1,18 @@
 # Change Log - @fluentui/dom-utilities
 
-This log was last generated on Thu, 14 Dec 2023 07:30:10 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jan 2024 07:28:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.14](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.14)
+
+Wed, 10 Jan 2024 07:28:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/dom-utilities_v2.2.13..@fluentui/dom-utilities_v2.2.14)
+
+### Patches
+
+- chore: disallow document and window access ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by seanmonahan@microsoft.com)
+- Bump @fluentui/set-version to v8.2.14 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
 
 ## [2.2.13](https://github.com/microsoft/fluentui/tree/@fluentui/dom-utilities_v2.2.13)
 

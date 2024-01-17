@@ -15,7 +15,7 @@ export const Shape = () => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <Rating iconFilled={<CircleFilled />} iconOutline={<CircleRegular />} precision />
+      <Rating iconFilled={<CircleFilled />} iconOutline={<CircleRegular />} step={0.5} />
       <Rating iconFilled={<SquareFilled />} iconOutline={<SquareRegular />} />
     </div>
   );

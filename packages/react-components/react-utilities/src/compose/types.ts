@@ -262,3 +262,34 @@ export type SlotComponentType<Props extends UnknownSlotProps> = Props & {
     | React.ComponentType<Props>
     | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
 };
+
+/**
+ * Data type for event handlers. It makes data a discriminated union, where each object requires `event` and `type` property.
+ * - `event` is the specific event type
+ * - `type` is a string literal. It serves as a clear identifier of the event type that reflects the component's state when the event occurred.
+ *    For example, the Tree component's `onNavigation` event handler has different `type` for different key presses: `{ event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowRight } | { event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowLeft }`.
+ *    Developers can use the `type` property to identify and filter events of interest.
+ * See RFC event-handlers-event-type.md for more details.
+ *
+ * Example usage:
+ * type OnOpenChangeData = (
+ *   | EventData\<'click', React.MouseEvent\<MyComponentElement\>\>
+ *   | EventData\<'keydown', React.KeyboardEvent\<MyComponentElement\>\>
+ * ) & \{ open: boolean; \};
+ */
+export type EventData<Type extends string, TEvent> =
+  | { type: undefined; event: React.SyntheticEvent | Event }
+  | { type: Type; event: TEvent };
+
+/**
+ * Type for props that are event handlers.
+ * See RFC event-handlers-event-type.md for more details.
+ *
+ * Example usage:
+ * type OnSomeEventData = EventData\<'click', React.MouseEvent\<MyComponentElement\>\> & \{ open: boolean; \};
+ * type SomeProps = \{ onSomeEvent?: EventHandler\<OnSomeEventData\>; \};
+ */
+export type EventHandler<TData extends EventData<string, unknown>> = (
+  ev: React.SyntheticEvent | Event,
+  data: TData,
+) => void;

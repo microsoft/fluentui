@@ -13,6 +13,7 @@ export {
   useRestoreFocusSource,
   useRestoreFocusTarget,
   useUncontrolledFocus,
+  useOnKeyboardNavigationChange,
 } from './hooks/index';
 export type {
   UseArrowNavigationGroupOptions,

@@ -6,12 +6,11 @@ import {
   slot,
   getIntrinsicElementProps,
 } from '@fluentui/react-utilities';
-import type { EventHandler, NavProps, NavState, OnNavGroupSelectData } from './Nav.types';
+import type { EventHandler, NavProps, NavState, OnNavItemSelectData } from './Nav.types';
 
 // todo - light this up
-// import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import type { NavGroupRegisterData } from '../NavContext.types';
-import { NavGroupValue } from '../NavGroup/NavGroup.types';
+// import { useArrowNavigationItem } from '@fluentui/react-tabster';
+import type { NavItemRegisterData, NavItemValue } from '../NavContext.types';
 
 /**
  * Create the state required to render Nav.
@@ -23,7 +22,7 @@ import { NavGroupValue } from '../NavGroup/NavGroup.types';
  * @param ref - reference to root HTMLDivElement of Nav
  */
 export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>): NavState => {
-  const { onNavGroupSelect } = props;
+  const { onNavItemSelect } = props;
 
   const innerRef = React.useRef<HTMLElement>(null);
 
@@ -34,37 +33,37 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
   });
 
   // considered usePrevious, but it is sensitive to re-renders
-  // this could cause the previous to move to current in the case where the navGroup list re-renders.
-  // these refs avoid getRegisteredNavGroups changing when selectedValue changes and causing
-  // renders for navGroups that have not changed.
-  const currentSelectedValue = React.useRef<NavGroupValue | undefined>(undefined);
-  const previousSelectedValue = React.useRef<NavGroupValue | undefined>(undefined);
+  // this could cause the previous to move to current in the case where the navItem list re-renders.
+  // these refs avoid getRegisteredNavItems changing when selectedValue changes and causing
+  // renders for navItems that have not changed.
+  const currentSelectedValue = React.useRef<NavItemValue | undefined>(undefined);
+  const previousSelectedValue = React.useRef<NavItemValue | undefined>(undefined);
 
   React.useEffect(() => {
     previousSelectedValue.current = currentSelectedValue.current;
     currentSelectedValue.current = selectedValue;
   }, [selectedValue]);
 
-  const onSelect: EventHandler<OnNavGroupSelectData> = useEventCallback((event, data) => {
+  const onSelect: EventHandler<OnNavItemSelectData> = useEventCallback((event, data) => {
     setSelectedValue(data.value);
-    onNavGroupSelect?.(event, data);
+    onNavItemSelect?.(event, data);
   });
 
-  const registeredNavGroups = React.useRef<Record<string, NavGroupRegisterData>>({});
+  const registeredNavItems = React.useRef<Record<string, NavItemRegisterData>>({});
 
-  const onRegister = React.useCallback((data: NavGroupRegisterData) => {
-    registeredNavGroups.current[JSON.stringify(data.value)] = data;
+  const onRegister = React.useCallback((data: NavItemRegisterData) => {
+    registeredNavItems.current[JSON.stringify(data.value)] = data;
   }, []);
 
-  const onUnregister = React.useCallback((data: NavGroupRegisterData) => {
-    delete registeredNavGroups.current[JSON.stringify(data.value)];
+  const onUnregister = React.useCallback((data: NavItemRegisterData) => {
+    delete registeredNavItems.current[JSON.stringify(data.value)];
   }, []);
 
-  const getRegisteredNavGroups = React.useCallback(() => {
+  const getRegisteredNavItems = React.useCallback(() => {
     return {
       selectedValue: currentSelectedValue.current,
       previousSelectedValue: previousSelectedValue.current,
-      registeredNavGroups: registeredNavGroups.current,
+      registeredNavItems: registeredNavItems.current,
     };
   }, []);
 
@@ -83,6 +82,6 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     onRegister,
     onUnregister,
     onSelect,
-    getRegisteredNavGroups,
+    getRegisteredNavItems,
   };
 };

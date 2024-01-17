@@ -3,22 +3,21 @@ import * as React from 'react';
 import { RatingContextValue, RatingState, RatingContextValues } from '../Rating';
 
 export const useRatingContextValues = (state: RatingState): RatingContextValues => {
-  const { appearance, compact, hoveredValue, iconFilled, iconOutline, name, precision, readOnly, size, value } = state;
+  const { color, hoveredValue, iconFilled, iconOutline, mode, name, step, size, value } = state;
 
   const rating = React.useMemo<RatingContextValue>(
     () => ({
-      appearance,
-      compact,
+      color,
       hoveredValue,
       iconFilled,
       iconOutline,
+      mode,
       name,
-      precision,
-      readOnly,
+      step,
       size,
       value,
     }),
-    [appearance, compact, hoveredValue, iconFilled, iconOutline, name, precision, readOnly, size, value],
+    [color, hoveredValue, iconFilled, iconOutline, mode, name, step, size, value],
   );
 
   return { rating };

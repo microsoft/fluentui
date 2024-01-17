@@ -49,12 +49,15 @@ export const ComboboxProvider: Provider<ComboboxContextValue> & FC<ProviderProps
 export type ComboboxSlots = {
     root: NonNullable<Slot<'div'>>;
     expandIcon: Slot<'span'>;
+    clearIcon?: Slot<'span'>;
     input: NonNullable<Slot<'input'>>;
     listbox?: Slot<typeof Listbox>;
 };
 
 // @public
-export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState;
+export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState & {
+    showClearIcon?: boolean;
+};
 
 // @public
 export const Dropdown: ForwardRefComponent<DropdownProps>;
@@ -77,7 +80,8 @@ export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & C
 // @public (undocumented)
 export type DropdownSlots = {
     root: NonNullable<Slot<'div'>>;
-    expandIcon: Slot<'span'>;
+    expandIcon?: Slot<'span'>;
+    clearButton?: Slot<'button'>;
     button: NonNullable<Slot<'button'>>;
     listbox?: Slot<typeof Listbox>;
 };
@@ -85,6 +89,7 @@ export type DropdownSlots = {
 // @public
 export type DropdownState = ComponentState<DropdownSlots> & ComboboxBaseState & {
     placeholderVisible: boolean;
+    showClearButton?: boolean;
 };
 
 // @public
