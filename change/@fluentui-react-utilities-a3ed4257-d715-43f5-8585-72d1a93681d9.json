@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add new type EventHandler/EventData for callback props",
+  "packageName": "@fluentui/react-utilities",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
