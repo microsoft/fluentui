@@ -87,14 +87,19 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
   };
 };
 
-/**
- * Do not rely on context changes here to trigger re-renders
- * @returns - Entire DataGridContext as a stable value
- */
 function useStableDataGridContextValue() {
   const ref = React.useRef(dataGridContextDefaultValue);
+
+  // Heads up!
+  // We will not re-render when the context value changes, but we will have the latest value of the context when we do
+  // render for other reasons.
+  //
+  // This relies on a context selector that always returns the same value:
+  // - we will not re-render when the context value changes
+  // - we will store the context value in a ref
   useDataGridContext_unstable(ctx => {
     ref.current = ctx;
+    return null;
   });
 
   return ref.current!;

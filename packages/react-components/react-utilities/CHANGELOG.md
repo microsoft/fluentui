@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 08 Jan 2024 16:24:28 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jan 2024 16:18:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.16.0)
+
+Wed, 17 Jan 2024 16:18:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.15.6..@fluentui/react-utilities_v9.16.0)
+
+### Minor changes
+
+- Add new type EventHandler/EventData for callback props ([PR #30322](https://github.com/microsoft/fluentui/pull/30322) by yuanboxue@microsoft.com)
 
 ## [9.15.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.15.6)
 

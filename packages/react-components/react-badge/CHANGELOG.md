@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Mon, 08 Jan 2024 16:24:20 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jan 2024 16:18:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.21)
+
+Wed, 17 Jan 2024 16:18:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.20..@fluentui/react-badge_v9.2.21)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.26 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-utilities to v9.16.0 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+
+## [9.2.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.20)
+
+Tue, 16 Jan 2024 13:14:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.19..@fluentui/react-badge_v9.2.20)
+
+### Patches
+
+- fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.25 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
 
 ## [9.2.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.19)
 

@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-motion-preview
 
-This log was last generated on Mon, 08 Jan 2024 16:24:28 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jan 2024 16:18:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.5.9)
+
+Wed, 17 Jan 2024 16:18:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.5.8..@fluentui/react-motion-preview_v0.5.9)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.26 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-utilities to v9.16.0 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+
+## [0.5.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.5.8)
+
+Tue, 16 Jan 2024 13:14:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.5.7..@fluentui/react-motion-preview_v0.5.8)
+
+### Patches
+
+- fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.25 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
 
 ## [0.5.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.5.7)
 

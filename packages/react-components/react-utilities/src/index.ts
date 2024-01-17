@@ -33,6 +33,8 @@ export type {
   SlotComponentType,
   SlotOptions,
   InferredElementRefType,
+  EventData,
+  EventHandler,
 } from './compose/index';
 
 export {

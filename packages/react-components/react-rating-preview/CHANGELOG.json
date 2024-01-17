@@ -2,6 +2,60 @@
   "name": "@fluentui/react-rating-preview",
   "entries": [
     {
+      "date": "Wed, 17 Jan 2024 16:18:50 GMT",
+      "tag": "@fluentui/react-rating-preview_v0.1.4",
+      "version": "0.1.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.26",
+            "commit": "06421bb5960c4d8d01c0a2faee17aebd9c9fe0cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.17.2",
+            "commit": "06421bb5960c4d8d01c0a2faee17aebd9c9fe0cb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.16.0",
+            "commit": "06421bb5960c4d8d01c0a2faee17aebd9c9fe0cb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jan 2024 13:14:23 GMT",
+      "tag": "@fluentui/react-rating-preview_v0.1.3",
+      "version": "0.1.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "4664fb3fcfe0dfeaf19d3a591719c41af0ecfb54",
+            "comment": "Scaffold RatingDisplay"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.25",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.17.1",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Jan 2024 09:04:29 GMT",
       "tag": "@fluentui/react-rating-preview_v0.1.2",
       "version": "0.1.2",

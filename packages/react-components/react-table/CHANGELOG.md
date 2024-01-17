@@ -1,8 +1,43 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Thu, 11 Jan 2024 09:04:29 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jan 2024 16:18:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.11.4)
+
+Wed, 17 Jan 2024 16:18:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.11.3..@fluentui/react-table_v9.11.4)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.7.2 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-avatar to v9.6.8 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-checkbox to v9.2.7 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.48 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-radio to v9.2.2 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-tabster to v9.17.2 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-utilities to v9.16.0 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.26 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+
+## [9.11.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.11.3)
+
+Tue, 16 Jan 2024 13:14:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.11.2..@fluentui/react-table_v9.11.3)
+
+### Patches
+
+- fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- fix: DataGrid selection performance improvement ([PR #30288](https://github.com/microsoft/fluentui/pull/30288) by lingfangao@hotmail.com)
+- bugfix: add system colors on hover ([PR #30073](https://github.com/microsoft/fluentui/pull/30073) by bernardo.sunderhus@gmail.com)
+- bugfix: Omit colliding content property from ComponentProps ([PR #29865](https://github.com/microsoft/fluentui/pull/29865) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-aria to v9.7.1 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-avatar to v9.6.7 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-checkbox to v9.2.6 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.47 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-radio to v9.2.1 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-tabster to v9.17.1 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.25 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
 
 ## [9.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.11.2)
 

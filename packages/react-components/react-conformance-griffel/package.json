@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-conformance-griffel",
-  "version": "9.0.7",
+  "version": "9.0.8",
   "description": "A set of conformance tests for Griffel CSS-in-JS",
   "main": "lib-commonjs/index.js",
   "typings": "./dist/index.d.ts",

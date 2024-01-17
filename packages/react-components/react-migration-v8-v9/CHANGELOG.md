@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Thu, 11 Jan 2024 09:04:29 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jan 2024 16:18:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.5.2)
+
+Wed, 17 Jan 2024 16:18:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.5.1..@fluentui/react-migration-v8-v9_v9.5.2)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.44.5 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-utilities to v9.16.0 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+
+## [9.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.5.1)
+
+Tue, 16 Jan 2024 13:14:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.5.0..@fluentui/react-migration-v8-v9_v9.5.1)
+
+### Patches
+
+- fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-components to v9.44.4 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
 
 ## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.5.0)
 
