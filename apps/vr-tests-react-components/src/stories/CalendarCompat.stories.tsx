@@ -16,7 +16,7 @@ storiesOf('Calendar Compat', module)
   .addDecorator(story => (
     <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
-  .addStory('Default', () => <Calendar />)
+  .addStory('Default', () => <Calendar />, { includeRtl: true })
   .addStory('Custom icons', () => (
     <Calendar
       calendarDayProps={{
