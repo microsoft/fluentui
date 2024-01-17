@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { mergeClasses } from '@griffel/react';
 import { useCalendarYearStyles_unstable } from './useCalendarYearStyles.styles';
@@ -234,12 +233,6 @@ const CalendarYearNavArrow: React.FunctionComponent<CalendarYearNavArrowProps> =
     }
   };
 
-  const { dir } = useFluent_unstable();
-
-  // can be condensed, but leaving verbose for clarity due to regressions
-  const isLeftNavigation =
-    dir === 'rtl' ? direction === CalendarYearNavDirection.Next : direction === CalendarYearNavDirection.Previous;
-
   return (
     <button
       className={mergeClasses(classNames.navigationButton, disabled && classNames.disabled)}
@@ -249,7 +242,7 @@ const CalendarYearNavArrow: React.FunctionComponent<CalendarYearNavArrowProps> =
       title={ariaLabelString}
       disabled={disabled}
     >
-      {isLeftNavigation ? navigationIcons.upNavigation : navigationIcons.downNavigation}
+      {direction === CalendarYearNavDirection.Previous ? navigationIcons.upNavigation : navigationIcons.downNavigation}
     </button>
   );
 };

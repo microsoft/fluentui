@@ -15,7 +15,7 @@ export type CalendarNavigationIcons = {
   downNavigation?: JSX.Element;
 
   /**
-   * Icon to use for the dissmiss button. Default comes from \@fluentui\/react-icons
+   * Icon to use for the dismiss button. Default comes from \@fluentui\/react-icons
    * @default DismissRegular
    */
   dismiss?: JSX.Element;

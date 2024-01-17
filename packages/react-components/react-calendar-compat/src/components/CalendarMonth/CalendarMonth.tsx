@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Enter } from '@fluentui/keyboard-keys';
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { mergeClasses } from '@griffel/react';
 import {
@@ -159,7 +158,6 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
     animationDirection,
   });
 
-  const { dir } = useFluent_unstable();
   const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'both' });
 
   if (isYearPickerVisible) {
@@ -199,8 +197,6 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
     ? strings.monthPickerHeaderAriaLabel.replace('{0}', yearString)
     : yearString;
 
-  const { upNavigation: upNavigationIcon, downNavigation: downNavigationIcon } = navigationIcons;
-
   return (
     <div className={classNames.root}>
       <div className={classNames.headerContainer}>
@@ -230,7 +226,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
             }
             type="button"
           >
-            {dir === 'rtl' ? upNavigationIcon : downNavigationIcon}
+            {navigationIcons.upNavigation}
           </button>
           <button
             className={mergeClasses(classNames.navigationButton, !isNextYearInBounds && classNames.disabled)}
@@ -245,7 +241,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
             }
             type="button"
           >
-            {dir === 'rtl' ? downNavigationIcon : upNavigationIcon}
+            {navigationIcons.downNavigation}
           </button>
         </div>
       </div>
