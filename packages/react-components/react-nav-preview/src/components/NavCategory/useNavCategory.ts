@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { NavCategoryProps, NavCategoryState } from './NavCategory.types';
+import { useNavContext_unstable } from '../NavContext';
 
 /**
  * Create the state required to render NavCategory.
@@ -12,14 +13,18 @@ import type { NavCategoryProps, NavCategoryState } from './NavCategory.types';
  * @param ref - reference to root HTMLDivElement of NavCategory
  */
 export const useNavCategory_unstable = (props: NavCategoryProps, ref: React.Ref<HTMLDivElement>): NavCategoryState => {
+  const { value } = props;
+
+  const { openItems } = useNavContext_unstable();
+
+  const open: boolean = openItems?.includes(value);
+
   return {
-    // TODO add appropriate props/defaults
+    open,
+    value,
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,

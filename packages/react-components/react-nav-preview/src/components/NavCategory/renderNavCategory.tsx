@@ -3,13 +3,17 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { NavCategoryState, NavCategorySlots } from './NavCategory.types';
+import { NavCategoryContextValues, NavCategoryProvider } from '../NavCategoryContext';
 
 /**
  * Render the final JSX of NavCategory
  */
-export const renderNavCategory_unstable = (state: NavCategoryState) => {
+export const renderNavCategory_unstable = (state: NavCategoryState, contextValues: NavCategoryContextValues) => {
   assertSlots<NavCategorySlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return (
+    <state.root>
+      <NavCategoryProvider value={contextValues.categoryValue}>{state.root.children}</NavCategoryProvider>
+    </state.root>
+  );
 };

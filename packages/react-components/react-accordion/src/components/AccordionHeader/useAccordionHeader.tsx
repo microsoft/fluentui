@@ -18,6 +18,7 @@ export const useAccordionHeader_unstable = (
 ): AccordionHeaderState => {
   const { icon, button, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start' } = props;
   const { value, disabled, open } = useAccordionItemContext_unstable();
+
   const requestToggle = useAccordionContext_unstable(ctx => ctx.requestToggle);
 
   /**

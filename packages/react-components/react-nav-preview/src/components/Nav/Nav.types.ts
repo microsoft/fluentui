@@ -36,6 +36,11 @@ export type NavProps = ComponentProps<NavSlots> & {
    * Mutually exclusive with defaultSelectedValue.
    */
   selectedValue?: NavItemValue;
+
+  /**
+   * Callback used by NavCategoryItem to request a change on it's own opened state
+   */
+  onNavCategoryItemToggle?: EventHandler<OnNavItemSelectData>;
 };
 
 export type OnNavItemSelectData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {

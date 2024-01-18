@@ -1,17 +1,22 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { NavItemValue } from '../NavContext.types';
+import { NavCategoryContextValue } from '../NavCategoryContext';
 
 export type NavCategorySlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**
  * NavCategory Props
  */
-export type NavCategoryProps = ComponentProps<NavCategorySlots> & {};
+export type NavCategoryProps = ComponentProps<NavCategorySlots> & {
+  /**
+   * Required value that identifies this item inside an Accordion component.
+   */
+  value: NavItemValue;
+};
 
 /**
  * State used in rendering NavCategory
  */
-export type NavCategoryState = ComponentState<NavCategorySlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from NavCategoryProps.
-// & Required<Pick<NavCategoryProps, 'propName'>>
+export type NavCategoryState = ComponentState<NavCategorySlots> & NavCategoryContextValue;
