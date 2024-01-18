@@ -14,11 +14,11 @@ export const Color = () => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <RatingDisplay value={3.5} ratingDisplayLabel={3.5} ratingDisplayCountLabel={'1,160'} />
+      <RatingDisplay value={3} />
 
-      <RatingDisplay color="brand" value={3} ratingDisplayLabel={3} ratingDisplayCountLabel={'1,160'} />
+      <RatingDisplay color="brand" value={3} />
 
-      <RatingDisplay color="marigold" value={3.5} ratingDisplayLabel={3.5} ratingDisplayCountLabel={'1,160'} />
+      <RatingDisplay color="marigold" value={3} />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RatingDisplay } from '@fluentui/react-rating-preview';
 
-export const Compact = () => <RatingDisplay compact ratingDisplayLabel={3} ratingDisplayCountLabel={'1,160'} />;
+export const Compact = () => <RatingDisplay compact value={3} count={1160} />;
 
 Compact.parameters = {
   docs: {

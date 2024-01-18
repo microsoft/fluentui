@@ -17,15 +17,13 @@ export const useRatingDisplay_unstable = (
   props: RatingDisplayProps,
   ref: React.Ref<HTMLDivElement>,
 ): RatingDisplayState => {
-  const generatedName = useId('ratingDisplay-');
   const {
     color = 'neutral',
+    count,
     compact = false,
     iconFilled = <StarFilled />,
     iconOutline = <StarRegular />,
     max = 5,
-    name = generatedName,
-    step = 1,
     size = 'medium',
     value = 3,
   } = props;
@@ -33,7 +31,7 @@ export const useRatingDisplay_unstable = (
   const ratingId = useId('ratingLabel');
   const countId = useId('countLabel');
 
-  //Prevents unnecessary rerendering of children
+  // Generate the child RatingItems and memoize them to prevent unnecessary re-rendering
   const rootChildren = React.useMemo(() => {
     return compact ? (
       <RatingItem value={1} key={1} />
@@ -47,14 +45,13 @@ export const useRatingDisplay_unstable = (
     compact,
     iconFilled,
     iconOutline,
-    name,
-    step,
+    max,
     size,
     value,
     components: {
       root: 'div',
-      ratingDisplayLabel: 'label',
-      ratingDisplayCountLabel: 'label',
+      valueText: 'span',
+      countText: 'span',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
@@ -64,13 +61,15 @@ export const useRatingDisplay_unstable = (
       }),
       { elementType: 'div' },
     ),
-    ratingDisplayLabel: slot.always(props.ratingDisplayLabel, {
+    valueText: slot.optional(props.valueText, {
+      renderByDefault: true,
       defaultProps: { id: ratingId, children: value },
-      elementType: 'label',
+      elementType: 'span',
     }),
-    ratingDisplayCountLabel: slot.optional(props.ratingDisplayCountLabel, {
-      defaultProps: { id: countId },
-      elementType: 'label',
+    countText: slot.optional(props.countText, {
+      renderByDefault: count !== undefined,
+      defaultProps: { id: countId, children: count?.toLocaleString() },
+      elementType: 'span',
     }),
   };
   return state;

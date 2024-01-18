@@ -10,22 +10,23 @@ const useStyles = makeStyles({
   },
 });
 
-export const Size = () => {
+export const Value = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <RatingDisplay value={3} size="small" />
-      <RatingDisplay value={3} size="medium" />
-      <RatingDisplay value={3} size="large" />
-      <RatingDisplay value={3} size="extra-large" />
+      <RatingDisplay value={1} />
+      <RatingDisplay value={3.7} />
+      <RatingDisplay value={3.9} />
+      <RatingDisplay value={5} />
     </div>
   );
 };
 
-Size.parameters = {
+Value.parameters = {
   docs: {
     description: {
-      story: "A RatingDisplay's `size` can be `small`, `medium`, `large`, or `extra-large`.",
+      story:
+        'The `value` controls the number of filled stars, and is written out next to the RatingDisplay. The number of filled stars is rounded to the nearest half-star.',
     },
   },
 };

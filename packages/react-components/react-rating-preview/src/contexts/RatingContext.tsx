@@ -1,6 +1,5 @@
 import * as React from 'react';
-
-import type { RatingContextValue } from '../Rating';
+import { RatingContextValue } from './RatingContext.types';
 
 /**
  * RatingContext is provided by Rating, and is consumed by Rating to determine default values of some props.

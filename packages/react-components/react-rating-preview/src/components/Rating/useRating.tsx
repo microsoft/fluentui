@@ -44,7 +44,7 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
 
   const [hoveredValue, setHoveredValue] = React.useState<number | undefined>(undefined);
 
-  //Prevents unnecessary rerendering of children
+  // Generate the child RatingItems and memoize them to prevent unnecessary re-rendering
   const rootChildren = React.useMemo(() => {
     return Array.from(Array(max), (_, i) => <RatingItem value={i + 1} key={i + 1} />);
   }, [max]);

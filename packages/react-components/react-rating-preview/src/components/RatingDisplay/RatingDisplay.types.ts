@@ -3,8 +3,8 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type RatingDisplaySlots = {
   root: NonNullable<Slot<'div'>>;
-  ratingDisplayLabel?: NonNullable<Slot<'label'>>;
-  ratingDisplayCountLabel?: NonNullable<Slot<'label'>>;
+  valueText?: Slot<'span'>;
+  countText?: Slot<'span'>;
 };
 
 /**
@@ -17,16 +17,23 @@ export type RatingDisplayProps = ComponentProps<RatingDisplaySlots> & {
    */
   color?: 'brand' | 'marigold' | 'neutral';
   /**
-   * Whether the RatingDisplay renders as compact.
+   * Renders a single filled star, with the value written next to it.
    * @default false
    */
   compact?: boolean;
   /**
-   * The icon to display when the rating value is greater than or equal to the item's value.
+   * The number of ratings represented by the rating value.
+   * This will be formatted with a thousands separator (if applicable) and displayed next to the value.
+   */
+  count?: number;
+  /**
+   * The icon used for filled rating items.
+   * @default <StarFilled />
    */
   iconFilled?: React.ReactElement;
   /**
-   * The icon to display when the rating value is less than the item's value.
+   * The icon used for unfilled rating items.
+   * @default <StarRegular />
    */
   iconOutline?: React.ReactElement;
   /**
@@ -35,15 +42,6 @@ export type RatingDisplayProps = ComponentProps<RatingDisplaySlots> & {
    * @default 5
    */
   max?: number;
-  /**
-   * Name for the Radio inputs. If not provided, one will be automatically generated
-   */
-  name?: string;
-  /**
-   * Sets the precision to allow half-filled shapes in RatingDisplay
-   * @default 1
-   */
-  step?: 0.5 | 1;
   /**
    * Sets the size of the RatingDisplay items.
    * @default medium
@@ -59,15 +57,4 @@ export type RatingDisplayProps = ComponentProps<RatingDisplaySlots> & {
  * State used in rendering RatingDisplay
  */
 export type RatingDisplayState = ComponentState<RatingDisplaySlots> &
-  Required<
-    Pick<RatingDisplayProps, 'color' | 'compact' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'value'>
-  >;
-
-export type RatingDisplayContextValue = Pick<
-  RatingDisplayState,
-  'color' | 'compact' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'value'
->;
-
-export type RatingDisplayContextValues = {
-  ratingDisplay: RatingDisplayContextValue;
-};
+  Required<Pick<RatingDisplayProps, 'color' | 'compact' | 'iconFilled' | 'iconOutline' | 'max' | 'size' | 'value'>>;

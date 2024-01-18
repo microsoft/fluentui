@@ -14,11 +14,11 @@ export const Color = () => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <Rating defaultValue={3.5} />
+      <Rating defaultValue={3} />
 
       <Rating color="brand" defaultValue={3} />
 
-      <Rating color="marigold" defaultValue={3.5} />
+      <Rating color="marigold" defaultValue={3} />
     </div>
   );
 };

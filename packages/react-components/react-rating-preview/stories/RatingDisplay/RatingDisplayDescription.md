@@ -1,3 +1,1 @@
-A `RatingDisplay` can show a visual representation of a `Rating` as well as the average value and the aggregate number of ratings.
-
-`RatingDisplay` is not interactive and is used only for display purposes.
+`RatingDisplay` is used to communicate user sentiment. By default, it shows rating as filled stars out of 5, as well as a text displaying the average value and the aggregate number of ratings.

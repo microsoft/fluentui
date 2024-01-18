@@ -73,12 +73,3 @@ export type RatingState = ComponentState<RatingSlots> &
   Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'value'>> & {
     hoveredValue?: number | undefined;
   };
-
-export type RatingContextValue = Pick<
-  RatingState,
-  'color' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'hoveredValue' | 'value'
->;
-
-export type RatingContextValues = {
-  rating: RatingContextValue;
-};
