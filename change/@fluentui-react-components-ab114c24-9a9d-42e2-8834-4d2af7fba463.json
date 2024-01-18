@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: export AnnounceProvider & useAnnounce()",
-  "packageName": "@fluentui/react-components",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

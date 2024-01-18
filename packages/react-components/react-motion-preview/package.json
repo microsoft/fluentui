@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-motion-preview",
-  "version": "0.5.9",
+  "version": "0.5.10",
   "description": "New fluentui react package",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -30,10 +30,10 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "^9.0.26",
-    "@fluentui/react-shared-contexts": "^9.13.2",
+    "@fluentui/react-jsx-runtime": "^9.0.27",
+    "@fluentui/react-shared-contexts": "^9.14.0",
     "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.16.0",
+    "@fluentui/react-utilities": "^9.16.1",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },

@@ -2,6 +2,47 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 18 Jan 2024 14:25:01 GMT",
+      "tag": "@fluentui/react-components_v9.45.0",
+      "version": "9.45.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "42b8015b3d44861b4a9e26a9861c87b97ee5158d",
+            "comment": "feat: add `useComboboxFilter()` hook"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "5f352d5c09325db0acde03c1b9fb458eaa27dd6f",
+            "comment": "feat: export AnnounceProvider & useAnnounce()"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "42b8015b3d44861b4a9e26a9861c87b97ee5158d",
+            "comment": "feat: export `useComboboxFilter()` hook"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "5f352d5c09325db0acde03c1b9fb458eaa27dd6f",
+            "comment": "feat: export AnnounceProvider & useAnnounce()"
+          }
+        ],
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "1f067f912a754b8940c049bd798f6520108dfac5",
+            "comment": "fix: Update isVisible initial value to false to prevent Spinner flicker"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jan 2024 16:18:49 GMT",
       "tag": "@fluentui/react-components_v9.44.5",
       "version": "9.44.5",
