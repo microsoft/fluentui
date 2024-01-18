@@ -2,8 +2,9 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 import { Steps, StoryWright } from 'storywright';
-import { Calendar as CalendarBase, CalendarProps } from '@fluentui/react-calendar-compat';
+import { Calendar as CalendarBase } from '@fluentui/react-calendar-compat';
 import { ArrowLeftRegular, ArrowRightRegular, DismissCircleRegular } from '@fluentui/react-icons';
+import type { CalendarProps } from '@fluentui/react-calendar-compat';
 
 const Calendar = (props: CalendarProps) => {
   const today = new Date('3/15/2023');
