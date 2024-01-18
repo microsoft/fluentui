@@ -77,7 +77,7 @@ export type InputProps = Omit<
   /**
    * Called when the user changes the input's value.
    */
-  // eslint-disable-next-line @fluentui/consistent-callback-type -- callback should be typed with EventHandler, but we can't break existing callbacks
+  // eslint-disable-next-line @fluentui/consistent-callback-type -- can't change type of existing callback
   onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: InputOnChangeData) => void;
 
   /**

@@ -15,7 +15,7 @@ export type TeachingPopoverProps = Omit<PopoverProps, 'appearance'> & {
    */
   currentPage?: number;
 
-  /* eslint-disable @fluentui/consistent-callback-type -- callback should be typed with EventHandler, but we can't break existing callbacks */
+  /* eslint-disable @fluentui/consistent-callback-type -- can't change type of existing callback */
   /**
    * Callback to notify a page change (can be used to update 'currentPage' externally).
    */

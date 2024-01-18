@@ -17,7 +17,7 @@ export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
   /**
    * Callback for when a tag is dismissed
    */
-  // eslint-disable-next-line @fluentui/consistent-callback-type -- callback should be typed with EventHandler, but we can't break existing callbacks
+  // eslint-disable-next-line @fluentui/consistent-callback-type -- can't change type of existing callback
   onDismiss?: TagDismissHandler<Value>;
 
   size?: TagSize;

@@ -17,7 +17,7 @@ export type SelectionProps = {
   multiselect?: boolean;
 
   /* Callback when an option is selected */
-  // eslint-disable-next-line @fluentui/consistent-callback-type -- callback should be typed with EventHandler, but we can't break existing callbacks
+  // eslint-disable-next-line @fluentui/consistent-callback-type -- can't change type of existing callback
   onOptionSelect?: (event: SelectionEvents, data: OptionOnSelectData) => void;
 
   /**

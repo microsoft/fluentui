@@ -20,7 +20,7 @@ export type MenuTriggerChildProps<Type extends ARIAButtonType = ARIAButtonType, 
     'aria-expanded'?: boolean;
     id: string;
     ref: React.Ref<never>;
-    /* eslint-disable @fluentui/consistent-callback-type -- callback should be typed with EventHandler, but we can't break existing callbacks */
+    /* eslint-disable @fluentui/consistent-callback-type -- can't change type of existing callback */
     onMouseEnter: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseLeave: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;
     onMouseMove: React.MouseEventHandler<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>;

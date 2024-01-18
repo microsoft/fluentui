@@ -47,7 +47,7 @@ export type ToolbarProps = ComponentProps<ToolbarSlots> & {
    * @param event - React's original SyntheticEvent
    * @param data - A data object with relevant information
    */
-  // eslint-disable-next-line @fluentui/consistent-callback-type -- callback should be typed with EventHandler, but we can't break existing callbacks
+  // eslint-disable-next-line @fluentui/consistent-callback-type -- can't change type of existing callback
   onCheckedValueChange?: (e: ToolbarCheckedValueChangeEvent, data: ToolbarCheckedValueChangeData) => void;
 };
 

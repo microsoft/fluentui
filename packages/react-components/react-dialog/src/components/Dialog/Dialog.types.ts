@@ -81,7 +81,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * @param data - A data object with relevant information,
    * such as open value and type of interaction that created the event
    */
-  // eslint-disable-next-line @fluentui/consistent-callback-type -- callback should be typed with EventHandler, but we can't break existing callbacks
+  // eslint-disable-next-line @fluentui/consistent-callback-type -- can't change type of existing callback
   onOpenChange?: DialogOpenChangeEventHandler;
   /**
    * Can contain two children including {@link DialogTrigger} and {@link DialogSurface}.
