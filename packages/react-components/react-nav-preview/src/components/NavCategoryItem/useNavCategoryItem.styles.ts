@@ -6,7 +6,6 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 
 export const navCategoryItemClassNames: SlotClassNames<NavCategoryItemSlots> = {
   root: 'fui-NavCategoryItem',
-  expandIcon: 'fui-NavCategoryItem__expandIcon',
 };
 
 /**
@@ -18,22 +17,10 @@ const useStyles = makeResetStyles({
 });
 
 /**
- * Styles for the content slot (children)
- */
-// const useContentStyles = makeStyles({
-//   selected: {
-//     ...typographyStyles.body1Strong,
-//   },
-// });
-
-/**
  * Apply styling to the NavCategoryItem slots based on the state
  */
 export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): NavCategoryItemState => {
   const rootStyles = useStyles();
-  // const contentStyles = useContentStyles();
-
-  // const { selected } = state;
 
   state.root.className = mergeClasses(
     navCategoryItemClassNames.root,
@@ -41,12 +28,6 @@ export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): 
 
     state.root.className,
   );
-
-  // state.content.className = mergeClasses(
-  //   navCategoryItemClassNames.content,
-  //   // selected && contentStyles.selected,
-  //   state.content.className,
-  // );
 
   return state;
 };
