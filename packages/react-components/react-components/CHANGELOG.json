@@ -2,6 +2,55 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 17 Jan 2024 16:18:49 GMT",
+      "tag": "@fluentui/react-components_v9.44.5",
+      "version": "9.44.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "06421bb5960c4d8d01c0a2faee17aebd9c9fe0cb",
+            "comment": "fix: allow expandIcon to be null"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "78adee5b4060980b8f377ce31a9f967d0c6d58f1",
+            "comment": "fix: only apply transition css properties when animating"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "d98dd58264f2dbfaaf0c3cc1c7149acf0b8a6266",
+            "comment": "chore: use Types.TabsterAttributeName in useTabsterAttributes()"
+          }
+        ],
+        "minor": [
+          {
+            "author": "yiliu9@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "bf4596b027ad138c19fd8f443d8cde3f4886d4e1",
+            "comment": "Add bottom position"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b56e712bb5eb830c2b9e3150a399cd7bb4be972a",
+            "comment": "Add new type EventHandler/EventData for callback props"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "d98dd58264f2dbfaaf0c3cc1c7149acf0b8a6266",
+            "comment": "chore: add a comment for context usage"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Jan 2024 13:14:07 GMT",
       "tag": "@fluentui/react-components_v9.44.4",
       "version": "9.44.4",

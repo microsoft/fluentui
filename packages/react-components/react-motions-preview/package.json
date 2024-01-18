@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@fluentui/react-shared-contexts": "^9.13.2",
-    "@fluentui/react-utilities": "^9.15.6",
+    "@fluentui/react-utilities": "^9.16.0",
     "@swc/helpers": "^0.5.1",
     "react-is": "^17.0.2"
   },

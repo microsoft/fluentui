@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: only apply transition css properties when animating",
-  "packageName": "@fluentui/react-dialog",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}
