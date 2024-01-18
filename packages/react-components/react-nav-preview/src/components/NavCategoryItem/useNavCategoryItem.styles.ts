@@ -6,6 +6,7 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 
 export const navCategoryItemClassNames: SlotClassNames<NavCategoryItemSlots> = {
   root: 'fui-NavCategoryItem',
+  expandIcon: 'fui-NavCategoryItem__expandIcon',
 };
 
 /**
