@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: export `useComboboxFilter()` hook",
+  "packageName": "@fluentui/react-components",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
