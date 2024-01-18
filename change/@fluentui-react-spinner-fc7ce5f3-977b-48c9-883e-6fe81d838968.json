@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Update isVisible initial value to false to prevent Spinner flicker",
+  "packageName": "@fluentui/react-spinner",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
