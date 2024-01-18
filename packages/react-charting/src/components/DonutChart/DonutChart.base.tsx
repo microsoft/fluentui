@@ -138,7 +138,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 focusedArcId={this.state.focusedArcId || ''}
                 href={this.props.href!}
                 calloutId={this._calloutId}
-                valueInsideDonut={this._toLocaleString(valueInsideDonut?.toString())}
+                valueInsideDonut={this._toLocaleString(valueInsideDonut)}
                 theme={this.props.theme!}
                 showLabelsInPercent={this.props.showLabelsInPercent}
                 hideLabels={this.props.hideLabels}

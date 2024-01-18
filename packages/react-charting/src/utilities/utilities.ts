@@ -1351,7 +1351,7 @@ export const getAccessibleDataObject = (
 
 type LocaleStringDataProps = number | string | Date | undefined;
 export const convertToLocaleString = (data: LocaleStringDataProps, culture?: string): LocaleStringDataProps => {
-  if (!data) {
+  if (!data && data !== 0) {
     return data;
   }
   culture = culture || undefined;
