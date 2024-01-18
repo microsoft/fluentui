@@ -2,6 +2,66 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Wed, 17 Jan 2024 16:18:50 GMT",
+      "tag": "@fluentui/react-utilities_v9.16.0",
+      "version": "9.16.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b56e712bb5eb830c2b9e3150a399cd7bb4be972a",
+            "comment": "Add new type EventHandler/EventData for callback props"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Jan 2024 16:24:28 GMT",
+      "tag": "@fluentui/react-utilities_v9.15.6",
+      "version": "9.15.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "36034483+daniel-hauser@users.noreply.github.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "71d0a34b10a13dfe9ea19a167eef53b01ae4ea4f",
+            "comment": "Allow isSlot to work with multiple react-utilities instances"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Jan 2024 09:26:43 GMT",
+      "tag": "@fluentui/react-utilities_v9.15.5",
+      "version": "9.15.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "6cdd02277fa0bc6f3341171db194aa7724300808",
+            "comment": "chore: deprecate old slot API methods and types"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 Dec 2023 14:40:46 GMT",
+      "tag": "@fluentui/react-utilities_v9.15.4",
+      "version": "9.15.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.13.2",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Dec 2023 09:58:46 GMT",
       "tag": "@fluentui/react-utilities_v9.15.3",
       "version": "9.15.3",

@@ -4,7 +4,7 @@ exports[`DataGrid renders a default state 1`] = `
 <div>
   <div
     class="fui-DataGrid fui-Table"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
     role="grid"
   >
     <div

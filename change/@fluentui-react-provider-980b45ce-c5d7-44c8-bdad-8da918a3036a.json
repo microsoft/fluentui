@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add custom style hook for TimePicker compat.",
-  "packageName": "@fluentui/react-provider",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

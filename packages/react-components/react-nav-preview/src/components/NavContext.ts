@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NavContextValue } from './NavContext.types';
 
 const navContextDefaultValue: NavContextValue = {
-  reserveSelectedNavGroupSpace: true,
+  reserveSelectedNavItemSpace: true,
   selectedValue: undefined,
   onRegister: () => {
     /* noop */
@@ -13,9 +13,9 @@ const navContextDefaultValue: NavContextValue = {
   onSelect: () => {
     /* noop */
   },
-  getRegisteredNavGroups: () => {
+  getRegisteredNavItems: () => {
     return {
-      registeredNavGroups: {},
+      registeredNavItems: {},
     };
   },
 };

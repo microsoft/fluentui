@@ -118,6 +118,9 @@ export interface UseModalAttributesOptions {
 export function useObservedElement(name: string | string[]): Types.TabsterDOMAttribute;
 
 // @public
+export function useOnKeyboardNavigationChange(callback: (isNavigatingWithKeyboard: boolean) => void): void;
+
+// @public
 export function useRestoreFocusSource(): Types.TabsterDOMAttribute;
 
 // @public

@@ -320,7 +320,7 @@ export const TableCellLayout: ForwardRefComponent<TableCellLayoutProps>;
 export const tableCellLayoutClassNames: SlotClassNames<TableCellLayoutSlots>;
 
 // @public
-export type TableCellLayoutProps = ComponentProps<Partial<TableCellLayoutSlots>> & {
+export type TableCellLayoutProps = Omit<ComponentProps<Partial<TableCellLayoutSlots>>, 'content'> & Pick<Partial<TableCellLayoutSlots>, 'content'> & {
     appearance?: 'primary';
     truncate?: boolean;
 };
