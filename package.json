@@ -93,6 +93,8 @@
     "@microsoft/loader-load-themed-styles": "2.0.17",
     "@microsoft/tsdoc": "0.14.1",
     "@nx/devkit": "17.2.8",
+    "@nx/eslint": "17.2.8",
+    "@nx/eslint-plugin": "17.2.8",
     "@nx/jest": "17.2.8",
     "@nx/js": "17.2.8",
     "@nx/node": "17.2.8",
