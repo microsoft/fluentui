@@ -205,7 +205,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     yScaleSecondary?: any,
   ): React.ReactNode => {
-    const isStringAxis = this._xAxisType !== XAxisTypes.DateAxis && this._xAxisType !== XAxisTypes.NumericAxis;
+    const isStringAxis = this._xAxisType === XAxisTypes.StringAxis;
     const { xBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
     const { theme } = this.props;
@@ -916,7 +916,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
 
   private _getDomainMargins = (containerWidth: number): IMargins => {
     if (this._xAxisType === XAxisTypes.StringAxis) {
-      /*) {
       /** Total width available to render the bars */
       const totalWidth =
         containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);

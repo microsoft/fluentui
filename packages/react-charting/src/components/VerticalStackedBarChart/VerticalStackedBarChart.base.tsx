@@ -771,6 +771,8 @@ export class VerticalStackedBarChartBase extends React.Component<
           ? (singleChartData.xAxisPoint as Date)
           : (singleChartData.xAxisPoint as string),
       );
+      //Time Range is  +/-barwidth/2 , so we have to adjust
+      //that while making bars because the tick must come in center of bar
       const xScaleBandwidthTranslate =
         this._xAxisType === XAxisTypes.NumericAxis
           ? 0

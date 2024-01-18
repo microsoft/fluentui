@@ -1143,26 +1143,7 @@ export function getDomainNRangeValues(
     switch (chartType) {
       case ChartTypes.AreaChart:
       case ChartTypes.LineChart:
-        domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
-          points,
-          margins,
-          width,
-          isRTL,
-          tickValues! as Date[],
-          chartType,
-        );
-        break;
       case ChartTypes.VerticalBarChart:
-        domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
-          points,
-          margins,
-          width,
-          isRTL,
-          tickValues! as Date[],
-          chartType,
-          barWidth!,
-        );
-        break;
       case ChartTypes.VerticalStackedBarChart:
         domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
           points,
@@ -1171,7 +1152,7 @@ export function getDomainNRangeValues(
           isRTL,
           tickValues! as Date[],
           chartType,
-          barWidth!,
+          barWidth,
         );
         break;
       default:
