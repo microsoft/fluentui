@@ -15,19 +15,8 @@ export const PanelBasicExample: React.FunctionComponent = () => {
         onDismiss={dismissPanel}
         // You MUST provide this prop! Otherwise screen readers will just say "button" with no label.
         closeButtonAriaLabel="Close"
-        styles={{
-          scrollableContent: {
-            display: 'flex',
-            flexDirection: 'column-reverse',
-            gap: '20px',
-          },
-        }}
       >
-        {Array(100)
-          .fill(0)
-          .map((_, index) => (
-            <DefaultButton key={index}>{index}</DefaultButton>
-          ))}
+        <p>Content goes here.</p>
       </Panel>
     </div>
   );
