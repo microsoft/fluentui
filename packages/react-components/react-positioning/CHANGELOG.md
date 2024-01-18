@@ -1,8 +1,50 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Wed, 03 Jan 2024 09:26:44 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jan 2024 13:14:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.12.2)
+
+Tue, 16 Jan 2024 13:14:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.12.1..@fluentui/react-positioning_v9.12.2)
+
+### Patches
+
+- chore: bumps @floating-ui/devtools version to latest ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by bernardo.sunderhus@gmail.com)
+- fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+
+## [9.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.12.1)
+
+Thu, 11 Jan 2024 09:04:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.12.0..@fluentui/react-positioning_v9.12.1)
+
+### Patches
+
+- fix: update styles to not flip in RTL ([PR #30252](https://github.com/microsoft/fluentui/pull/30252) by olfedias@microsoft.com)
+
+## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.12.0)
+
+Tue, 09 Jan 2024 10:21:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.11.0..@fluentui/react-positioning_v9.12.0)
+
+### Minor changes
+
+- feat: Implement onPositioningEnd callback ([PR #30177](https://github.com/microsoft/fluentui/pull/30177) by lingfangao@hotmail.com)
+
+## [9.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.11.0)
+
+Mon, 08 Jan 2024 16:24:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.10.6..@fluentui/react-positioning_v9.11.0)
+
+### Minor changes
+
+- feat: Update position when target or container dimensions change ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by lingfangao@hotmail.com)
+- Bump @fluentui/react-utilities to v9.15.6 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+
+### Patches
+
+- chore: update react-positioning to use latest floating ui dev tools to take latest fix ([PR #30235](https://github.com/microsoft/fluentui/pull/30235) by mgodbolt@microsoft.com)
 
 ## [9.10.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.10.6)
 

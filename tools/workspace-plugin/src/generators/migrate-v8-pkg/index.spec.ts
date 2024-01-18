@@ -7,8 +7,6 @@ import {
   addProjectConfiguration,
   ProjectConfiguration,
   logger,
-  readNxJson,
-  NxJsonConfiguration,
   readJson,
 } from '@nx/devkit';
 import type { Linter } from 'eslint';
@@ -16,6 +14,7 @@ import type { Linter } from 'eslint';
 import type { PackageJson, TsConfig } from '../../types';
 import generator from './index';
 import { MigrateV8PkgGeneratorSchema } from './schema';
+import { getProjectNameWithoutScope, getWorkspaceConfig } from '../../utils';
 
 interface AssertedSchema extends MigrateV8PkgGeneratorSchema {
   name: string;
@@ -120,9 +119,6 @@ describe('migrate-v8-pkg generator', () => {
   });
 });
 
-function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: NxJsonConfiguration }) {
-  return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
-}
 function setupDummyPackage(
   tree: Tree,
   options: AssertedSchema &
@@ -134,7 +130,7 @@ function setupDummyPackage(
       projectConfiguration: Partial<ProjectConfiguration>;
     }>,
 ) {
-  const workspaceConfig = readNxJson(tree) ?? {};
+  const workspaceConfig = getWorkspaceConfig(tree);
   const defaults = {
     version: '8.0.0',
     dependencies: {
@@ -165,7 +161,7 @@ function setupDummyPackage(
   };
   const normalizedOptions = { ...defaults, ...options };
   const pkgName = normalizedOptions.name;
-  const normalizedPkgName = getNormalizedPkgName({ pkgName, workspaceConfig });
+  const normalizedPkgName = getProjectNameWithoutScope(pkgName);
   const paths = {
     root: `packages/${normalizedPkgName}`,
   };

@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Wed, 03 Jan 2024 09:26:44 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jan 2024 13:14:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.9)
+
+Tue, 16 Jan 2024 13:14:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.8..@fluentui/react-drawer_v9.0.9)
+
+### Patches
+
+- chore: remove useHeadingProps() and React.useMemo() ([PR #29360](https://github.com/microsoft/fluentui/pull/29360) by olfedias@microsoft.com)
+- fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-dialog to v9.9.5 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.25 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-motion-preview to v0.5.8 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-tabster to v9.17.1 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+
+## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.8)
+
+Thu, 11 Jan 2024 09:04:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.7..@fluentui/react-drawer_v9.0.8)
+
+### Patches
+
+- Bump @fluentui/react-dialog to v9.9.4 ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by beachball)
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.7)
+
+Mon, 08 Jan 2024 16:24:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.6..@fluentui/react-drawer_v9.0.7)
+
+### Patches
+
+- Bump @fluentui/react-dialog to v9.9.3 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.24 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-motion-preview to v0.5.7 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-tabster to v9.17.0 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-utilities to v9.15.6 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
 
 ## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.6)
 

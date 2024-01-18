@@ -10,8 +10,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-babel": "*",
-    "@fluentui/scripts-gulp": "*",
-    "lerna-alias": "^3.0.3-0"
+    "@fluentui/scripts-gulp": "*"
   },
   "files": [
     "dist"

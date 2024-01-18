@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: use Types.TabsterAttributeName in useTabsterAttributes()",
+  "packageName": "@fluentui/react-tabster",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

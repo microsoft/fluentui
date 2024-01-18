@@ -117,9 +117,6 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _emptyChartId: string;
   public constructor(props: IHeatMapChartProps) {
     super(props);
-    const { x, y } = this._getXandY();
-    this._xAxisType = getTypeOfAxis(x, true) as XAxisTypes;
-    this._yAxisType = getTypeOfAxis(y, false) as YAxisType;
     /**
      * below funciton creates a new data set from the prop
      * @data and also finds all the unique x-axis datapoints
@@ -152,6 +149,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   }
 
   public render(): React.ReactNode {
+    const { x, y } = this._getXandY();
+    this._xAxisType = getTypeOfAxis(x, true) as XAxisTypes;
+    this._yAxisType = getTypeOfAxis(y, false) as YAxisType;
     const { data, xAxisDateFormatString, xAxisNumberFormatString, yAxisDateFormatString, yAxisNumberFormatString } =
       this.props;
     this._colorScale = this._getColorScale();

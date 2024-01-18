@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-radio
 
-This log was last generated on Wed, 03 Jan 2024 09:26:44 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jan 2024 13:14:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.2.1)
+
+Tue, 16 Jan 2024 13:14:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.2.0..@fluentui/react-radio_v9.2.1)
+
+### Patches
+
+- fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- Bump @fluentui/react-field to v9.1.48 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.25 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-label to v9.1.56 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+- Bump @fluentui/react-tabster to v9.17.1 ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by beachball)
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.2.0)
+
+Mon, 08 Jan 2024 16:24:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-radio_v9.1.61..@fluentui/react-radio_v9.2.0)
+
+### Minor changes
+
+- chore: Update Radio indicator for perf and alignment at 125% DPI ([PR #30207](https://github.com/microsoft/fluentui/pull/30207) by behowell@microsoft.com)
+- Bump @fluentui/react-field to v9.1.47 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.24 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-label to v9.1.55 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-tabster to v9.17.0 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+- Bump @fluentui/react-utilities to v9.15.6 ([PR #30179](https://github.com/microsoft/fluentui/pull/30179) by beachball)
+
+### Patches
+
+- Update version of @fluentui/react-icons to 2.0.224 ([PR #30078](https://github.com/microsoft/fluentui/pull/30078) by ololubek@microsoft.com)
 
 ## [9.1.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-radio_v9.1.61)
 
