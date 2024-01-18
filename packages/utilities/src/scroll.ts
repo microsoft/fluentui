@@ -32,7 +32,7 @@ export const allowScrollOnElement = (element: HTMLElement | null, events: EventG
 
   let _previousClientY = 0;
   let _element: Element | null = null;
-  let computedStyles: undefined | CSSStyleDeclaration = window.getComputedStyle(element);
+  let computedStyles: CSSStyleDeclaration | undefined = window.getComputedStyle(element);
 
   // remember the clientY for future calls of _preventOverscrolling
   const _saveClientY = (event: TouchEvent): void => {
