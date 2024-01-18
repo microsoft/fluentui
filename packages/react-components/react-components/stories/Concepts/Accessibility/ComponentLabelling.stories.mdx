@@ -43,10 +43,6 @@ Explanation
     aria-labelledby attribute on the same button, we can refer to the "Remove" button itself.
   </li>
   <li>
-    In many cases , using the aria-labelledby attribute avoids the translation of the element accessibility name to the
-    desired UI language.
-  </li>
-  <li>
     {' '}
     The approach when a component refers to itself with the aria-labelledby attribute was taken from <Link
       href="https://www.w3.org/TR/accname-1.1/#terminology"
@@ -130,17 +126,14 @@ Explanation
   </li>
   <li>
     If the state of component is not narrated by the screen reader, verify the proper ARIA state attribute is used, such
-    as "aria-checked" or "aria-selected". See aria documentation for{' '}
-    <Link href="https://www.w3.org/TR/wai-aria-1.1/#aria-selected" inline>
-      aria-selected
-    </Link>{' '}
-    or{' '}
-    <Link href="https://www.w3.org/TR/wai-aria-1.1/#aria-checked" inline>
-      aria-checked
-    </Link>{' '}
-    attribute to find out which attribute should be used.
+    as `aria-checked`, `aria-selected`, `aria-pressed`, `aria-current`, ... See latest*
+    <Link href="https://www.w3.org/TR/wai-aria/" inline>
+      aria documentation
+    </Link> for these attributes.
   </li>
 </ul>
+
+\*In time
 
 ## Avoid position in accessibility name
 
@@ -159,8 +152,9 @@ Explanation
   </li>
   <li>
     The JAWS screen reader currently supports the "X of Y" information for the following roles: "listbox", "menu",
-    "tablist" and "tree". See the <a href="https://www.w3.org/TR/wai-aria-1.2/">ARIA specification</a> to learn which
-    required owned elements (such as "option", "menuitem", "tab" or "treeitem") should be used with these roles.
+    "tablist", "tree", "radiogroup", "grid", "treegrid", ... See the{' '}
+    <a href="https://www.w3.org/TR/wai-aria/">ARIA specification</a> to learn which required owned elements (such as
+    "option", "menuitem", "tab", "treeitem", etc.) should be used with these roles.
   </li>
 </ul>
 
@@ -198,7 +192,18 @@ Explanation
   </li>
   <li>
     {' '}
-    Recommendation would be to refer to the text element via the "aria-describedby" attribute, which ensures the text would
+    Refer to the text element via the "aria-describedby" attribute, which ensures the text would
     be read by the screen reader whenever the actionable element which has the "aria-describedby" attribute is focused.
   </li>
+  <li>
+    {' '}
+    Wrap the element with `<div>` element. This element get role="group" and label. After this the wrapping grouper element will be narrated.
+    Please see simple example code:
+    <code>
+      <div role="group" aria-label="Summary of your order">
+        <button> Buy </button>
+      </div>
+    </code>
+  </li>
+
 </ul>
