@@ -1,0 +1,2 @@
+- Don't use curved lines to represent data as it may show the data incorrectly.
+- While multiple lines on a line chart can provide some additional information and clarity, too many lines can make the chart difficult to read. Don't use for more than 9 data points. Too many lines make it hard to read.

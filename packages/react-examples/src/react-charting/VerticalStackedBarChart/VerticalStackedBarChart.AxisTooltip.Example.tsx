@@ -69,6 +69,7 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
             width={650}
             showXAxisLablesTooltip={this.state.selectedCallout === 'showTooltip' ? true : false}
             wrapXAxisLables={this.state.selectedCallout === 'WrapTickValues' ? true : false}
+            enableReflow={true}
           />
         </div>
       </>

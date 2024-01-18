@@ -15,12 +15,14 @@ export {
 } from '@griffel/react';
 export type { GriffelStyle, GriffelRenderer, GriffelResetStyle } from '@griffel/react';
 export {
+  createCSSRuleFromTheme,
   FluentProvider,
   fluentProviderClassNames,
   renderFluentProvider_unstable,
   useFluentProvider_unstable,
   useFluentProviderContextValues_unstable,
   useFluentProviderStyles_unstable,
+  useFluentProviderThemeStyleTag,
 } from '@fluentui/react-provider';
 export type {
   FluentProviderContextValues,
@@ -35,6 +37,7 @@ export {
   useArrowNavigationGroup,
   useFocusableGroup,
   useFocusFinders,
+  useFocusVisible,
   useFocusWithin,
   useKeyboardNavAttribute,
   useModalAttributes,
@@ -42,6 +45,7 @@ export {
   useFocusObserved,
   useRestoreFocusTarget,
   useRestoreFocusSource,
+  useUncontrolledFocus,
 } from '@fluentui/react-tabster';
 export type {
   CreateCustomFocusIndicatorStyleOptions,
@@ -88,20 +92,30 @@ export type {
   TypographyStyles,
 } from '@fluentui/react-theme';
 export {
+  AnnounceProvider,
+  PortalMountNodeProvider,
+  useAnnounce,
   useFluent_unstable as useFluent,
+  usePortalMountNode,
   useTooltipVisibility_unstable as useTooltipVisibility,
   useThemeClassName_unstable as useThemeClassName,
-  PortalMountNodeProvider,
-  usePortalMountNode,
 } from '@fluentui/react-shared-contexts';
+export type { AnnounceContextValue } from '@fluentui/react-shared-contexts';
 export {
+  // getNativeElementProps is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   getNativeElementProps,
+  getIntrinsicElementProps,
   getPartitionedNativeProps,
+  // getSlots is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   getSlots,
   slot,
   assertSlots,
   IdPrefixProvider,
   resetIdsForTests,
+  // resolveShorthand is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   resolveShorthand,
   SSRProvider,
   useId,
@@ -111,12 +125,17 @@ export {
   useIsSSR,
   useMergedRefs,
   useScrollbarWidth,
+  useSelection,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
+  // ResolveShorthandFunction is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandFunction,
+  // ResolveShorthandOptions is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandOptions,
   Slot,
   SlotOptions,
@@ -124,6 +143,12 @@ export type {
   SlotClassNames,
   SlotPropsRecord,
   SlotRenderFunction,
+  OnSelectionChangeCallback,
+  OnSelectionChangeData,
+  SelectionHookParams,
+  SelectionItemId,
+  SelectionMethods,
+  SelectionMode,
 } from '@fluentui/react-utilities';
 
 // Components
@@ -205,6 +230,7 @@ export {
   useAvatarGroupItem_unstable,
   renderAvatarGroupPopover_unstable,
   useAvatarGroupPopoverStyles_unstable,
+  useAvatarGroupPopoverContextValues_unstable,
   useAvatarGroupPopover_unstable,
   useAvatarGroupContext_unstable,
   partitionAvatarGroupItems,
@@ -246,6 +272,17 @@ export {
   useCounterBadgeStyles_unstable,
   usePresenceBadge_unstable,
   usePresenceBadgeStyles_unstable,
+  presenceAwayRegular,
+  presenceAwayFilled,
+  presenceAvailableRegular,
+  presenceAvailableFilled,
+  presenceBlockedRegular,
+  presenceBusyFilled,
+  presenceDndRegular,
+  presenceDndFilled,
+  presenceOofRegular,
+  presenceOfflineRegular,
+  presenceUnknownRegular,
 } from '@fluentui/react-badge';
 export type {
   BadgeProps,
@@ -339,6 +376,7 @@ export {
   useComboboxContextValues,
   ListboxProvider,
   useListboxContextValues,
+  useComboboxFilter,
 } from '@fluentui/react-combobox';
 export type {
   ComboboxProps,
@@ -359,12 +397,14 @@ export type {
   ListboxProps,
   ListboxSlots,
   ListboxState,
+  OptionOnSelectData,
   OptionProps,
   OptionSlots,
   OptionState,
   OptionGroupProps,
   OptionGroupSlots,
   OptionGroupState,
+  SelectionEvents,
 } from '@fluentui/react-combobox';
 export {
   Divider,
@@ -570,7 +610,7 @@ export type {
   PopoverTriggerProps,
   PopoverTriggerState,
 } from '@fluentui/react-popover';
-export { Portal, usePortal_unstable, renderPortal_unstable } from '@fluentui/react-portal';
+export { Portal, usePortal_unstable, renderPortal_unstable, toMountNodeProps } from '@fluentui/react-portal';
 export type { PortalProps, PortalState } from '@fluentui/react-portal';
 export {
   Radio,
@@ -811,6 +851,9 @@ export {
   useDialogContentStyles_unstable,
   useDialogContent_unstable,
   renderDialogContent_unstable,
+  useDialogContext_unstable,
+  useDialogSurfaceContext_unstable,
+  useDialogSurfaceContextValues_unstable,
 } from '@fluentui/react-dialog';
 
 export type {
@@ -839,6 +882,9 @@ export type {
   DialogContentProps,
   DialogContentSlots,
   DialogContentState,
+  DialogContextValue,
+  DialogSurfaceContextValue,
+  DialogSurfaceContextValues,
 } from '@fluentui/react-dialog';
 
 export {
@@ -862,6 +908,7 @@ export {
   DATA_OVERFLOW_MENU,
   DATA_OVERFLOW_ITEM,
   DATA_OVERFLOW_DIVIDER,
+  useOverflowVisibility,
 } from '@fluentui/react-overflow';
 
 export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';
@@ -1212,6 +1259,7 @@ export type {
 
 export {
   FlatTree,
+  FlatTreeItem,
   Tree,
   TreeItem,
   TreeItemLayout,
@@ -1236,6 +1284,7 @@ export {
   useHeadlessFlatTree_unstable,
   useTreeContextValues_unstable,
   useTreeContext_unstable,
+  useSubtreeContext_unstable,
   useTreeItemContextValues_unstable,
   useTreeItemContext_unstable,
   useTreeItemLayoutStyles_unstable,
@@ -1253,6 +1302,7 @@ export type {
   FlatTreeSlots,
   FlatTreeState,
   FlattenTreeItem,
+  FlatTreeItemProps,
   HeadlessFlatTree,
   HeadlessFlatTreeItem,
   HeadlessFlatTreeItemProps,
@@ -1260,6 +1310,7 @@ export type {
   TreeCheckedChangeData,
   TreeCheckedChangeEvent,
   TreeContextValue,
+  SubtreeContextValue,
   TreeContextValues,
   TreeItemContextValue,
   TreeItemLayoutProps,
@@ -1272,14 +1323,243 @@ export type {
   TreeItemSlots,
   TreeItemState,
   TreeItemValue,
-  TreeItemOpenChangeData,
-  TreeItemOpenChangeEvent,
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
+  TreeItemOpenChangeData,
+  TreeItemOpenChangeEvent,
   TreeProps,
   TreeSelectionValue,
   TreeSlots,
   TreeState,
 } from '@fluentui/react-tree';
+
+export {
+  Tag,
+  renderTag_unstable,
+  tagClassNames,
+  useTagStyles_unstable,
+  useTag_unstable,
+  InteractionTag,
+  renderInteractionTag_unstable,
+  interactionTagClassNames,
+  useInteractionTagStyles_unstable,
+  useInteractionTag_unstable,
+  useInteractionTagContextValues_unstable,
+  InteractionTagPrimary,
+  interactionTagPrimaryClassNames,
+  renderInteractionTagPrimary_unstable,
+  useInteractionTagPrimaryStyles_unstable,
+  useInteractionTagPrimary_unstable,
+  InteractionTagSecondary,
+  renderInteractionTagSecondary_unstable,
+  interactionTagSecondaryClassNames,
+  useInteractionTagSecondaryStyles_unstable,
+  useInteractionTagSecondary_unstable,
+  TagGroup,
+  renderTagGroup_unstable,
+  tagGroupClassNames,
+  useTagGroupStyles_unstable,
+  useTagGroup_unstable,
+  useTagGroupContextValues_unstable,
+  useTagAvatarContextValues_unstable,
+} from '@fluentui/react-tags';
+export type {
+  TagProps,
+  TagSlots,
+  TagState,
+  InteractionTagProps,
+  InteractionTagSlots,
+  InteractionTagState,
+  InteractionTagPrimaryContextValues,
+  InteractionTagPrimaryProps,
+  InteractionTagPrimarySlots,
+  InteractionTagPrimaryState,
+  InteractionTagSecondaryProps,
+  InteractionTagSecondarySlots,
+  InteractionTagSecondaryState,
+  TagGroupProps,
+  TagGroupSlots,
+  TagGroupState,
+  TagAppearance,
+  TagShape,
+  TagSize,
+  TagValue,
+  TagDismissData,
+  TagDismissEvent,
+  TagDismissHandler,
+} from '@fluentui/react-tags';
+
+export {
+  MessageBar,
+  useMessageBarStyles_unstable,
+  useMessageBar_unstable,
+  renderMessageBar_unstable,
+  messageBarClassNames,
+  MessageBarTitle,
+  useMessageBarTitleStyles_unstable,
+  useMessageBarTitle_unstable,
+  renderMessageBarTitle_unstable,
+  messageBarTitleClassNames,
+  MessageBarActions,
+  useMessageBarActionsStyles_unstable,
+  useMessageBarActions_unstable,
+  renderMessageBarActions_unstable,
+  messageBarActionsClassNames,
+  MessageBarBody,
+  useMessageBarBodyStyles_unstable,
+  useMessageBarBody_unstable,
+  renderMessageBarBody_unstable,
+  messageBarBodyClassNames,
+  MessageBarContextProvider,
+  useMessageBarContext,
+  MessageBarGroup,
+  useMessageBarGroupStyles_unstable,
+  useMessageBarGroup_unstable,
+  renderMessageBarGroup_unstable,
+  messageBarGroupClassNames,
+} from '@fluentui/react-message-bar';
+export type {
+  MessageBarProps,
+  MessageBarSlots,
+  MessageBarState,
+  MessageBarIntent,
+  MessageBarTitleProps,
+  MessageBarTitleSlots,
+  MessageBarTitleState,
+  MessageBarActionsProps,
+  MessageBarActionsSlots,
+  MessageBarActionsState,
+  MessageBarBodyProps,
+  MessageBarBodySlots,
+  MessageBarBodyState,
+  MessageBarContextValue,
+  MessageBarGroupProps,
+  MessageBarGroupSlots,
+  MessageBarGroupState,
+} from '@fluentui/react-message-bar';
+
+export {
+  InfoLabel,
+  infoLabelClassNames,
+  renderInfoLabel_unstable,
+  useInfoLabelStyles_unstable,
+  useInfoLabel_unstable,
+} from '@fluentui/react-infolabel';
+export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from '@fluentui/react-infolabel';
+
+export {
+  Drawer,
+  renderDrawer_unstable,
+  useDrawerStyles_unstable,
+  useDrawer_unstable,
+  OverlayDrawer,
+  overlayDrawerClassNames,
+  renderOverlayDrawer_unstable,
+  useOverlayDrawerStyles_unstable,
+  useOverlayDrawer_unstable,
+  InlineDrawer,
+  inlineDrawerClassNames,
+  renderInlineDrawer_unstable,
+  useInlineDrawerStyles_unstable,
+  useInlineDrawer_unstable,
+  DrawerBody,
+  drawerBodyClassNames,
+  renderDrawerBody_unstable,
+  useDrawerBodyStyles_unstable,
+  useDrawerBody_unstable,
+  DrawerHeader,
+  drawerHeaderClassNames,
+  renderDrawerHeader_unstable,
+  useDrawerHeaderStyles_unstable,
+  useDrawerHeader_unstable,
+  DrawerHeaderTitle,
+  drawerHeaderTitleClassNames,
+  renderDrawerHeaderTitle_unstable,
+  useDrawerHeaderTitleStyles_unstable,
+  useDrawerHeaderTitle_unstable,
+  DrawerHeaderNavigation,
+  drawerHeaderNavigationClassNames,
+  renderDrawerHeaderNavigation_unstable,
+  useDrawerHeaderNavigationStyles_unstable,
+  useDrawerHeaderNavigation_unstable,
+  DrawerFooter,
+  drawerFooterClassNames,
+  renderDrawerFooter_unstable,
+  useDrawerFooterStyles_unstable,
+  useDrawerFooter_unstable,
+} from '@fluentui/react-drawer';
+
+export type {
+  DrawerProps,
+  DrawerSlots,
+  DrawerState,
+  OverlayDrawerProps,
+  OverlayDrawerSlots,
+  OverlayDrawerState,
+  InlineDrawerProps,
+  InlineDrawerSlots,
+  InlineDrawerState,
+  DrawerBodyProps,
+  DrawerBodySlots,
+  DrawerBodyState,
+  DrawerHeaderProps,
+  DrawerHeaderSlots,
+  DrawerHeaderState,
+  DrawerHeaderTitleProps,
+  DrawerHeaderTitleSlots,
+  DrawerHeaderTitleState,
+  DrawerFooterProps,
+  DrawerFooterSlots,
+  DrawerFooterState,
+  DrawerHeaderNavigationProps,
+  DrawerHeaderNavigationSlots,
+  DrawerHeaderNavigationState,
+} from '@fluentui/react-drawer';
+
+export {
+  Breadcrumb,
+  renderBreadcrumb_unstable,
+  useBreadcrumb_unstable,
+  useBreadcrumbStyles_unstable,
+  breadcrumbClassNames,
+  BreadcrumbDivider,
+  breadcrumbDividerClassNames,
+  renderBreadcrumbDivider_unstable,
+  useBreadcrumbDividerStyles_unstable,
+  useBreadcrumbDivider_unstable,
+  BreadcrumbItem,
+  breadcrumbItemClassNames,
+  renderBreadcrumbItem_unstable,
+  useBreadcrumbItemStyles_unstable,
+  useBreadcrumbItem_unstable,
+  partitionBreadcrumbItems,
+  truncateBreadcrumbLongName,
+  truncateBreadcrumLongTooltip,
+  isTruncatableBreadcrumbContent,
+  BreadcrumbButton,
+  breadcrumbButtonClassNames,
+  renderBreadcrumbButton_unstable,
+  useBreadcrumbButtonStyles_unstable,
+  useBreadcrumbButton_unstable,
+  BreadcrumbProvider,
+  useBreadcrumbContext_unstable,
+} from '@fluentui/react-breadcrumb';
+export type {
+  BreadcrumbSlots,
+  BreadcrumbProps,
+  BreadcrumbState,
+  BreadcrumbDividerProps,
+  BreadcrumbDividerSlots,
+  BreadcrumbDividerState,
+  BreadcrumbItemProps,
+  BreadcrumbItemSlots,
+  BreadcrumbItemState,
+  PartitionBreadcrumbItemsOptions,
+  PartitionBreadcrumbItems,
+  BreadcrumbButtonProps,
+  BreadcrumbButtonSlots,
+  BreadcrumbButtonState,
+  BreadcrumbContextValues,
+} from '@fluentui/react-breadcrumb';

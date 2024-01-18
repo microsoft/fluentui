@@ -7,14 +7,14 @@ import {
   addProjectConfiguration,
   ProjectConfiguration,
   logger,
-  readNxJson,
-  NxJsonConfiguration,
+  readJson,
 } from '@nx/devkit';
 import type { Linter } from 'eslint';
 
-import type { TsConfig } from '../../types';
+import type { PackageJson, TsConfig } from '../../types';
 import generator from './index';
 import { MigrateV8PkgGeneratorSchema } from './schema';
+import { getProjectNameWithoutScope, getWorkspaceConfig } from '../../utils';
 
 interface AssertedSchema extends MigrateV8PkgGeneratorSchema {
   name: string;
@@ -65,50 +65,24 @@ describe('migrate-v8-pkg generator', () => {
   });
 
   describe(`--name`, () => {
-    it(`should setup .npmignore`, async () => {
-      await generator(tree, options);
+    describe(`npm publish setup`, () => {
+      it(`should replace .npmignore config with package.json#files`, async () => {
+        expect(tree.exists(`packages/eight/.npmignore`)).toBe(true);
 
-      expect(tree.read(`packages/eight/.npmignore`, 'utf-8')).toMatchInlineSnapshot(`
-        "*.api.json
-        *.config.js
-        *.log
-        *.nuspec
-        *.test.*
-        *.yml
-        .editorconfig
-        .eslintrc*
-        .eslintcache
-        .gitattributes
-        .gitignore
-        .vscode
-        coverage
-        dist/storybook
-        dist/*.stats.html
-        dist/*.stats.json
-        dist/demo
-        fabric-test*
-        gulpfile.js
-        images
-        index.html
-        jsconfig.json
-        node_modules
-        results
-        src/**/*
-        !src/**/*.types.ts
-        temp
-        tsconfig.json
-        tsd.json
-        tslint.json
-        typings
-        visualtests
-        project.json
+        await generator(tree, options);
 
-        # exclude gitignore patterns explicitly
-        !lib
-        !lib-commonjs
-        !lib-amd
-        !dist"
-      `);
+        expect(tree.exists(`packages/eight/.npmignore`)).toBe(false);
+
+        const pkgJson = readJson<PackageJson>(tree, `packages/eight/package.json`);
+        expect(pkgJson.files).toMatchInlineSnapshot(`
+          Array [
+            "lib",
+            "lib-commonjs",
+            "lib-amd",
+            "dist",
+          ]
+        `);
+      });
     });
   });
 
@@ -145,9 +119,6 @@ describe('migrate-v8-pkg generator', () => {
   });
 });
 
-function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: NxJsonConfiguration }) {
-  return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
-}
 function setupDummyPackage(
   tree: Tree,
   options: AssertedSchema &
@@ -159,7 +130,7 @@ function setupDummyPackage(
       projectConfiguration: Partial<ProjectConfiguration>;
     }>,
 ) {
-  const workspaceConfig = readNxJson(tree) ?? {};
+  const workspaceConfig = getWorkspaceConfig(tree);
   const defaults = {
     version: '8.0.0',
     dependencies: {
@@ -190,7 +161,7 @@ function setupDummyPackage(
   };
   const normalizedOptions = { ...defaults, ...options };
   const pkgName = normalizedOptions.name;
-  const normalizedPkgName = getNormalizedPkgName({ pkgName, workspaceConfig });
+  const normalizedPkgName = getProjectNameWithoutScope(pkgName);
   const paths = {
     root: `packages/${normalizedPkgName}`,
   };
@@ -244,40 +215,7 @@ function setupDummyPackage(
       // Configure enzyme.
       configure({ adapter: new Adapter() });
     `,
-    npmConfig: stripIndents`
-    *.api.json
-    *.config.js
-    *.log
-    *.nuspec
-    *.test.*
-    *.yml
-    .editorconfig
-    .eslintrc*
-    .eslintcache
-    .gitattributes
-    .gitignore
-    .vscode
-    coverage
-    dist/storybook
-    dist/*.stats.html
-    dist/*.stats.json
-    dist/demo
-    fabric-test*
-    gulpfile.js
-    images
-    index.html
-    jsconfig.json
-    node_modules
-    results
-    src/**/*
-    !src/**/*.types.ts
-    temp
-    tsconfig.json
-    tsd.json
-    tslint.json
-    typings
-    visualtests
-    `,
+    npmConfig: stripIndents``,
   };
 
   if (typeof normalizedOptions.eslintConfig === 'string') {

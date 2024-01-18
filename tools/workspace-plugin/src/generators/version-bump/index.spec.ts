@@ -1,16 +1,10 @@
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
-import {
-  Tree,
-  readProjectConfiguration,
-  readWorkspaceConfiguration,
-  serializeJson,
-  addProjectConfiguration,
-  readJson,
-} from '@nx/devkit';
+import { Tree, readProjectConfiguration, serializeJson, addProjectConfiguration, readJson } from '@nx/devkit';
 
 import generator from './index';
 import { VersionBumpGeneratorSchema } from './schema';
 import { PackageJsonWithBeachball } from '../../types';
+import { getWorkspaceConfig } from '../../utils';
 
 const noop = () => null;
 
@@ -308,7 +302,7 @@ function setupDummyPackage(
       beachball: PackageJsonWithBeachball['beachball'];
     }>,
 ) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const workspaceConfig = getWorkspaceConfig(tree);
   const defaults = {
     version: '9.0.0-alpha.40',
     dependencies: {

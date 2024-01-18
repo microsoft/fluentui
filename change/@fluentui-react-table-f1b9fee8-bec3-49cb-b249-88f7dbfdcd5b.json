@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: DataGrid Headers look weird on Safari",
-  "packageName": "@fluentui/react-table",
-  "email": "mehars.6925@gmail.com",
-  "dependentChangeType": "patch"
-}

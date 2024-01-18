@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useId, useTimeout, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, useTimeout, slot } from '@fluentui/react-utilities';
 import type { SpinnerProps, SpinnerState } from './Spinner.types';
 import { Label } from '@fluentui/react-label';
 import { DefaultSvg } from './DefaultSvg';
@@ -21,18 +21,31 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
   const baseId = useId('spinner');
 
   const { role = 'progressbar', tabIndex, ...rest } = props;
-  const nativeRoot = slot.always(getNativeElementProps('div', { ref, role, ...rest }, ['size']), {
-    elementType: 'div',
-  });
-  const [isVisible, setIsVisible] = React.useState(true);
+  const nativeRoot = slot.always(
+    getIntrinsicElementProps(
+      'div',
+      {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
+        role,
+        ...rest,
+      },
+      ['size'],
+    ),
+    {
+      elementType: 'div',
+    },
+  );
+  const [isShownAfterDelay, setIsShownAfterDelay] = React.useState(false);
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
   React.useEffect(() => {
     if (delay <= 0) {
       return;
     }
-    setIsVisible(false);
     setDelayTimeout(() => {
-      setIsVisible(true);
+      setIsShownAfterDelay(true);
     }, delay);
     return () => {
       clearDelayTimeout();
@@ -56,7 +69,7 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
     delay,
     labelPosition,
     size,
-    shouldRenderSpinner: isVisible,
+    shouldRenderSpinner: !delay || isShownAfterDelay,
     components: { root: 'div', spinner: 'span', label: Label },
     root: nativeRoot,
     spinner: spinnerShortHand,

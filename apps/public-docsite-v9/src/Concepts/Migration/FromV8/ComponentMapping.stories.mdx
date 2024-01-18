@@ -11,70 +11,80 @@ Here is the mapping of v8 components to their v9 component replacement or equiva
 
 Check out the latest schedule information on the [v9 Component Roadmap](https://github.com/microsoft/fluentui/wiki/Fluent-UI-React-v9-Component-Roadmap)
 
-| v8 component           | v9 component                              |
-| ---------------------- | ----------------------------------------- |
-|                        | Accordion                                 |
-|                        | Badge                                     |
-|                        | CounterBadge                              |
-|                        | PresenceBadge                             |
-| ActionButton           | Button                                    |
-| ActivityItem           |                                           |
-| BasicList              |                                           |
-| Breadcrumb             |                                           |
-| CommandBarButton       |                                           |
-| CommandButton          | MenuButton                                |
-| CompoundButton         | CompoundButton                            |
-| Calendar               |                                           |
-| Callout                | Popover                                   |
-| Checkbox               | Checkbox                                  |
-| ChoiceGroup            |                                           |
-| Coachmark              |                                           |
-| ColorPicker            |                                           |
-| ComboBox               | ~Dropdown                                 |
-| ContextualMenu         | Menu with Button as the MenuTrigger       |
-| DefaultButton          | Button                                    |
-| DefaultButton (anchor) | Button                                    |
-| DefaultButton (menu)   | MenuButton                                |
-| DatePicker             |                                           |
-| DetailsList            |                                           |
-| Dialog                 |                                           |
-| DocumentCard           | ~Card                                     |
-| Dropdown               | ~Dropdown                                 |
-| Facepile               | ~AvatarGroup                              |
-| GroupedList            |                                           |
-| Icon                   | (icons in react-icons)                    |
-| IconButton             | Button                                    |
-| Image                  | Image                                     |
-| Label                  | Label                                     |
-| Layer                  | Portal                                    |
-| Link                   | Link                                      |
-| MessageBar             |                                           |
-| Modal                  |                                           |
-| Nav                    |                                           |
-| OverflowSet            | priority-overflow                         |
-| Overlay                | Portal                                    |
-| Panel                  |                                           |
-| PrimaryButton          | Button                                    |
-| PeoplePicker           |                                           |
-| Persona                | Avatar                                    |
-| Pickers                |                                           |
-| Pivot, PivotItem       | TabList, Tab                              |
-| ProgressIndicator      |                                           |
-| Rating                 |                                           |
-| ResizeGroup            |                                           |
-| ScrollablePane         |                                           |
-| SearchBox              |                                           |
-| Separator              | Divider                                   |
-| Shimmer                |                                           |
-| Slider                 | Slider                                    |
-| SplitButton            | Menu with SplitButton as the Menu Trigger |
-| SpinButton             | ~SpinButton                               |
-| Spinner                | Spinner                                   |
-| Stack                  | (removed)                                 |
-| SwatchColorPicker      |                                           |
-| TagPicker              |                                           |
-| TeachingBubble         |                                           |
-| Text                   | Text                                      |
-| TextField              | Input                                     |
-| ThemeProvider          | FluentProvider                            |
-| ToggleButton           | ToggleButton                              |
+| v8 component           | v9 component                                                                                                                                 |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+|                        | [Accordion](/docs/components-accordion--default)                                                                                             |
+|                        | [Badge](/docs/components-badge-badge--default)                                                                                               |
+|                        | [CounterBadge](/docs/components-badge-counter-badge--default)                                                                                |
+|                        | [PresenceBadge](/docs/components-badge-presencebadge--default)                                                                               |
+| ActionButton           | [Button](/docs/components-button-button--default)                                                                                            |
+| ActivityItem           |                                                                                                                                              |
+| Announced              |                                                                                                                                              |
+| Breadcrumb             | [Breadcrumb](/docs/components-breadcrumb--default)                                                                                           |
+| CommandBar             | [Toolbar](/docs/components-toolbar--default)                                                                                                 |
+| CommandBarButton       | [ToolbarButton](/docs/components-toolbar--default)                                                                                           |
+| CommandButton          | [MenuButton](/docs/components-button-menubutton--default)                                                                                    |
+| CompoundButton         | [CompoundButton](/docs/components-button-compoundbutton--default)                                                                            |
+| Calendar               |                                                                                                                                              |
+| Callout                | [Popover](/docs/components-popover--default)                                                                                                 |
+| Checkbox               | [Checkbox](/docs/components-checkbox--default)                                                                                               |
+| ChoiceGroup            | [Radio](/docs/components-radio--default)                                                                                                     |
+| Coachmark              |                                                                                                                                              |
+| ColorPicker            |                                                                                                                                              |
+| ComboBox               | [ComboBox](/docs/components-combobox--default)                                                                                               |
+| ContextualMenu         | [Menu](/docs/components-menu-menu--default) with Button as the MenuTrigger                                                                   |
+| DefaultButton          | [Button](/docs/components-button-button--default)                                                                                            |
+| DefaultButton (anchor) | [Button](/docs/components-button-button--default)                                                                                            |
+| DefaultButton (menu)   | [MenuButton](/docs/components-button-menubutton--default)                                                                                    |
+| DatePicker             | [DatePickerCompat](/docs/compat-components-datepicker--default)                                                                              |
+| DetailsList            | [~DataGrid](/docs/components-datagrid--default)                                                                                              |
+| Dialog                 | [Dialog](/docs/components-dialog--default)                                                                                                   |
+| DocumentCard           | [~Card](/docs/components-card-card--default)                                                                                                 |
+| Dropdown               | [~Dropdown](/docs/components-dropdown--default)                                                                                              |
+| Facepile               | [~AvatarGroup](/docs/components-avatargroup--default)                                                                                        |
+| FocusZone              | [Tabster](https://tabster.io/)                                                                                                               |
+| FocusTrapZone          | [Tabster](https://tabster.io/)                                                                                                               |
+| GroupedList            | [~Tree](/docs/components-tree--default)                                                                                                      |
+| HoverCard              |                                                                                                                                              |
+| Icon                   | [@fluentui/react-icons package](/docs/concepts-developer-icons-icons--page)                                                                  |
+| IconButton             | [Button](/docs/components-button-button--default)                                                                                            |
+| Image                  | [Image](/docs/components-image--default)                                                                                                     |
+| Keytips                |                                                                                                                                              |
+| Label                  | [Label](/docs/components-label--default)                                                                                                     |
+| Layer                  | [Portal](/docs/components-portal--default)                                                                                                   |
+| Link                   | [Link](/docs/components-link--default)                                                                                                       |
+| List                   | _[In Progress](https://github.com/orgs/microsoft/projects/786/views/1?pane=issue&itemId=24404181)_                                           |
+| MessageBar             | _[In Progress](https://github.com/orgs/microsoft/projects/786/views/1?pane=issue&itemId=24402474)_                                           |
+| Modal                  | [Dialog](/docs/components-dialog--default)                                                                                                   |
+| Nav                    | _[In Progress](https://github.com/orgs/microsoft/projects/786/views/1?pane=issue&itemId=24403433)_                                           |
+| OverflowSet            | priority-overflow                                                                                                                            |
+| Overlay                | [Portal](/docs/components-portal--default)                                                                                                   |
+| Panel                  | _[In Progess](https://github.com/orgs/microsoft/projects/786/views/1?pane=issue&itemId=24402572)_                                            |
+| Popup                  | [Dialog](/docs/components-dialog--default)                                                                                                   |
+| PrimaryButton          | [Button](/docs/components-button-button--default)                                                                                            |
+| PeoplePicker           |                                                                                                                                              |
+| Persona                | [Avatar](/docs/components-avatar--default)                                                                                                   |
+| Pickers                |                                                                                                                                              |
+| Pivot, PivotItem       | [TabList, Tab](/docs/components-tablist--default)                                                                                            |
+| ProgressIndicator      | [ProgressBar](/docs/components-progressbar--default)                                                                                         |
+| Rating                 | _[In Progress](https://github.com/orgs/microsoft/projects/786/views/1?pane=issue&itemId=24403184)_                                           |
+| ResizeGroup            |                                                                                                                                              |
+| ScrollablePane         |                                                                                                                                              |
+| SearchBox              |                                                                                                                                              |
+| Separator              | [Divider](/docs/components-divider--default)                                                                                                 |
+| Shimmer                | [Skeleton](/docs/components-skeleton--default)                                                                                               |
+| Slider                 | [Slider](/docs/components-slider--default)                                                                                                   |
+| SplitButton            | [Menu with SplitButton as the Menu Trigger](/docs/components-button-splitbutton--default)                                                    |
+| SpinButton             | [~SpinButton](/docs/components-spinbutton--default)                                                                                          |
+| Spinner                | [Spinner](/docs/components-spinner--default)                                                                                                 |
+| Stack                  | [Migration Guide](/docs/concepts-migration-from-v8-components-flex-stack--page), [StackShim](/docs/migration-shims-v8-stackshim--playground) |
+| SwatchColorPicker      | _[In Progess](https://github.com/orgs/microsoft/projects/786/views/1?pane=issue&itemId=33879887)_                                            |
+| TagPicker              |                                                                                                                                              |
+| TeachingBubble         | _[In Progress](https://github.com/orgs/microsoft/projects/786/views/1?pane=issue&itemId=24403213)_                                           |
+| Text                   | [Text](/docs/components-text--default)                                                                                                       |
+| TextField              | [Input](/docs/components-input--default)                                                                                                     |
+| ThemeProvider          | [FluentProvider](/docs/components-fluentprovider--default)                                                                                   |
+| TimePicker             | _[In Progress](https://github.com/orgs/microsoft/projects/786/views/1?pane=issue&itemId=24403279)_                                           |
+| ToggleButton           | [ToggleButton](/docs/components-button-togglebutton--default)                                                                                |
+| Toggle                 | [Switch](/docs/components-switch--default)                                                                                                   |
+| Tooltip                | [Tooltip](/docs/components-tooltip--default)                                                                                                 |

@@ -1,8 +1,138 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 06 Sep 2023 13:31:31 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Jan 2024 14:25:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.16.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.16.1)
+
+Thu, 18 Jan 2024 14:25:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.16.0..@fluentui/react-utilities_v9.16.1)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.14.0 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+
+## [9.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.16.0)
+
+Wed, 17 Jan 2024 16:18:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.15.6..@fluentui/react-utilities_v9.16.0)
+
+### Minor changes
+
+- Add new type EventHandler/EventData for callback props ([PR #30322](https://github.com/microsoft/fluentui/pull/30322) by yuanboxue@microsoft.com)
+
+## [9.15.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.15.6)
+
+Mon, 08 Jan 2024 16:24:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.15.5..@fluentui/react-utilities_v9.15.6)
+
+### Patches
+
+- Allow isSlot to work with multiple react-utilities instances ([PR #30209](https://github.com/microsoft/fluentui/pull/30209) by 36034483+daniel-hauser@users.noreply.github.com)
+
+## [9.15.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.15.5)
+
+Wed, 03 Jan 2024 09:26:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.15.4..@fluentui/react-utilities_v9.15.5)
+
+### Patches
+
+- chore: deprecate old slot API methods and types ([PR #29646](https://github.com/microsoft/fluentui/pull/29646) by bernardo.sunderhus@gmail.com)
+
+## [9.15.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.15.4)
+
+Mon, 18 Dec 2023 14:40:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.15.3..@fluentui/react-utilities_v9.15.4)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.13.2 ([PR #30103](https://github.com/microsoft/fluentui/pull/30103) by beachball)
+
+## [9.15.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.15.3)
+
+Thu, 14 Dec 2023 09:58:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.15.2..@fluentui/react-utilities_v9.15.3)
+
+### Patches
+
+- chore: disallow `window` and `document` access ([PR #29962](https://github.com/microsoft/fluentui/pull/29962) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.13.1 ([PR #30056](https://github.com/microsoft/fluentui/pull/30056) by beachball)
+
+## [9.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.15.2)
+
+Thu, 09 Nov 2023 17:29:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.15.1..@fluentui/react-utilities_v9.15.2)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.7 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+
+## [9.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.15.1)
+
+Wed, 18 Oct 2023 17:54:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.15.0..@fluentui/react-utilities_v9.15.1)
+
+### Patches
+
+- chore: deprecate getNativeElementProps in favor of getIntrinsicElementProps ([PR #29535](https://github.com/microsoft/fluentui/pull/29535) by bernardo.sunderhus@gmail.com)
+
+## [9.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.15.0)
+
+Wed, 11 Oct 2023 13:54:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.14.2..@fluentui/react-utilities_v9.15.0)
+
+### Minor changes
+
+- feat: Add virtual parent utilties ([PR #29286](https://github.com/microsoft/fluentui/pull/29286) by lingfan.gao@microsoft.com)
+
+## [9.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.14.2)
+
+Mon, 09 Oct 2023 20:45:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.14.1..@fluentui/react-utilities_v9.14.2)
+
+### Patches
+
+- chore: add e2e test for useOnScrollOutside ([PR #29413](https://github.com/microsoft/fluentui/pull/29413) by yuanboxue@microsoft.com)
+
+## [9.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.14.1)
+
+Thu, 05 Oct 2023 15:25:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.14.0..@fluentui/react-utilities_v9.14.1)
+
+### Patches
+
+- Revert fix: useOnScrollOutside should invoke callback on dragging scrollbar ([PR #29412](https://github.com/microsoft/fluentui/pull/29412) by yuanboxue@microsoft.com)
+
+## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.14.0)
+
+Wed, 04 Oct 2023 08:45:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.13.5..@fluentui/react-utilities_v9.14.0)
+
+### Minor changes
+
+- feat: creates getIntrinsicElementProps to replace getNativeElementProps on slots creation ([PR #29310](https://github.com/microsoft/fluentui/pull/29310) by bernardo.sunderhus@gmail.com)
+
+## [9.13.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.13.5)
+
+Tue, 26 Sep 2023 17:49:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.13.4..@fluentui/react-utilities_v9.13.5)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.6 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+
+## [9.13.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.13.4)
+
+Tue, 26 Sep 2023 15:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.13.3..@fluentui/react-utilities_v9.13.4)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.5 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
 
 ## [9.13.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.13.3)
 

@@ -47,11 +47,11 @@ There is not prior implementation for this component in v0
 
 ### Type
 
-`DrawerOverlay`:
+`OverlayDrawer`:
 Opens on top of everything like a dialog and blocks all the page content. Can be dismissed.
 ![Example of Drawer as overlay](assets/overlay.png)
 
-`DrawerInline`:
+`InlineDrawer`:
 Push the siblings content when open and it is non-blocking. Can be hidden to bring focus to the main content of the page.
 ![Example of Drawer as inline content](assets/inline.png)
 
@@ -66,18 +66,18 @@ For any custom size, a style can be provided overriding the `width` of drawer. D
 
 ### Modal
 
-By default, the `DrawerOverlay` acts as a modal, rendering an overlay scrim behind the drawer surface. This can be toggled off.
+By default, the `OverlayDrawer` acts as a modal, rendering an overlay scrim behind the drawer surface. This can be toggled off.
 
 ## API
 
 ### Drawer
 
-This component is a combination of both `DrawerInline` and `DrawerOverlay`
+This component is a combination of both `InlineDrawer` and `OverlayDrawer`
 
 | Property       | Values                             | Default   | Description                                                                            |
 | -------------- | ---------------------------------- | --------- | -------------------------------------------------------------------------------------- |
 | type           | `overlay`, `inline`                | `overlay` | Set the [type](#type) of Drawer                                                        |
-| position       | `start`, `end`                     | `start`   | Set the position of the Drawer                                                         |
+| position       | `start`, `end`, `bottom`           | `start`   | Set the position of the Drawer                                                         |
 | size           | `small`, `medium`, `large`, `full` | `small`   | The drawer width [size](#size)                                                         |
 | modalType      | boolean                            | `true`    | Set the visibility of the backdrop scrim. Only for `type="overlay"`                    |
 | inertTrapFocus | boolean                            | `true`    | Enables standard behavior according to the HTML dialog spec. Only for `type="overlay"` |
@@ -90,11 +90,11 @@ This component is a combination of both `DrawerInline` and `DrawerOverlay`
 | ----- | ------ | ------- | ----------------------- |
 | root  | `div`  | `div`   | The root drawer element |
 
-### DrawerOverlay
+### OverlayDrawer
 
 | Property       | Values                             | Default   | Description                                                 |
 | -------------- | ---------------------------------- | --------- | ----------------------------------------------------------- |
-| position       | `start`, `end`                     | `start`   | Set the position of the Drawer                              |
+| position       | `start`, `end`, `bottom`           | `start`   | Set the position of the Drawer                              |
 | size           | `small`, `medium`, `large`, `full` | `small`   | The drawer width [size](#size)                              |
 | modalType      | boolean                            | `true`    | Set the visibility of the backdrop scrim                    |
 | inertTrapFocus | boolean                            | `true`    | Enables standard behavior according to the HTML dialog spec |
@@ -106,11 +106,11 @@ This component is a combination of both `DrawerInline` and `DrawerOverlay`
 | ----- | ------ | ------- | ------------------------------- |
 | root  | `div`  | `div`   | The root overlay drawer element |
 
-### DrawerInline
+### InlineDrawer
 
 | Property    | Values                             | Default | Description                                             |
 | ----------- | ---------------------------------- | ------- | ------------------------------------------------------- |
-| position    | `start`, `end`                     | `start` | Set the position of the Drawer                          |
+| position    | `start`, `end`, `bottom`           | `start` | Set the position of the Drawer                          |
 | size        | `small`, `medium`, `large`, `full` | `small` | The drawer width [size](#size)                          |
 | open        | boolean                            | `false` | Define the Drawer visibility                            |
 | defaultOpen | boolean                            | `false` | Define the Drawer visibility on first render            |
@@ -171,8 +171,8 @@ No props
 | Component              | Purpose                                                                                                                |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | Drawer                 | Renders a plain inline or overlay Drawer and render its children                                                       |
-| DrawerInline           | Renders a plain inline Drawer and render its children                                                                  |
-| DrawerOverlay          | Renders a plain overlay Drawer and render its children                                                                 |
+| InlineDrawer           | Renders a plain inline Drawer and render its children                                                                  |
+| OverlayDrawer          | Renders a plain overlay Drawer and render its children                                                                 |
 | DrawerHeader           | Renders a `header` in a structured way. Ideal to display title and actions                                             |
 | DrawerHeaderNavigation | Renders a `header` in a structured way. Ideal to display title and actions                                             |
 | DrawerHeaderTitle      | Renders a `header` in a structured way. Ideal to display title and actions                                             |
@@ -183,18 +183,18 @@ No props
 
 ![Drawer Anatomy](assets/drawer-anatomy.png)
 
-- DrawerOverlay or Drawer with `type="overlay"`:
+- OverlayDrawer or Drawer with `type="overlay"`:
 
 ```html
-<div class="fui-DrawerOverlay" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="the-title-element-id">
+<div class="fui-OverlayDrawer" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="the-title-element-id">
   <!-- Content rendered here -->
 </div>
 ```
 
-- DrawerInline or Drawer with `type="inline"`:
+- InlineDrawer or Drawer with `type="inline"`:
 
 ```html
-<div class="fui-DrawerInline" tabindex="-1" aria-labelledby="the-title-element-id">
+<div class="fui-InlineDrawer" tabindex="-1" aria-labelledby="the-title-element-id">
   <!-- Content rendered here -->
 </div>
 ```

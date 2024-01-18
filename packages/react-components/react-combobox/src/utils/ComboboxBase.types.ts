@@ -18,6 +18,11 @@ export type ComboboxBaseProps = SelectionProps &
     appearance?: 'filled-darker' | 'filled-lighter' | 'outline' | 'underline';
 
     /**
+     * If set, the combobox will show an icon to clear the current value.
+     */
+    clearable?: boolean;
+
+    /**
      * The default open state when open is uncontrolled
      */
     defaultOpen?: boolean;
@@ -72,7 +77,9 @@ export type ComboboxBaseProps = SelectionProps &
 /**
  * State used in rendering Combobox
  */
-export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 'open' | 'inlinePopup' | 'size'>> &
+export type ComboboxBaseState = Required<
+  Pick<ComboboxBaseProps, 'appearance' | 'open' | 'clearable' | 'inlinePopup' | 'size'>
+> &
   Pick<ComboboxBaseProps, 'mountNode' | 'placeholder' | 'value' | 'multiselect'> &
   OptionCollectionState &
   SelectionState & {
@@ -82,13 +89,18 @@ export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 
     // Whether the keyboard focus outline style should be visible
     focusVisible: boolean;
 
-    // whether the combobox/dropdown currently has focus
+    /**
+     * whether the combobox/dropdown currently has focus
+     */
     hasFocus: boolean;
 
-    /* Whether the next blur event should be ignored, and the combobox/dropdown will not close.*/
+    /**
+     * @deprecated - no longer used internally
+     * Whether the next blur event should be ignored, and the combobox/dropdown will not close.
+     */
     ignoreNextBlur: React.MutableRefObject<boolean>;
 
-    setActiveOption(option?: OptionValue): void;
+    setActiveOption: React.Dispatch<React.SetStateAction<OptionValue | undefined>>;
 
     setFocusVisible(focusVisible: boolean): void;
 

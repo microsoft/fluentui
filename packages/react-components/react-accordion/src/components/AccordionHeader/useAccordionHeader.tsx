@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { getNativeElementProps, isResolvedShorthand, useEventCallback, slot } from '@fluentui/react-utilities';
-import { ARIAButtonSlotProps, useARIAButtonShorthand } from '@fluentui/react-aria';
+import { getIntrinsicElementProps, useEventCallback, slot, isResolvedShorthand } from '@fluentui/react-utilities';
+import { useARIAButtonProps } from '@fluentui/react-aria';
 import type { AccordionHeaderProps, AccordionHeaderState } from './AccordionHeader.types';
 import { useAccordionContext_unstable } from '../../contexts/accordion';
 import { ChevronRightRegular } from '@fluentui/react-icons';
@@ -16,7 +16,7 @@ export const useAccordionHeader_unstable = (
   props: AccordionHeaderProps,
   ref: React.Ref<HTMLElement>,
 ): AccordionHeaderState => {
-  const { as, icon, button, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start' } = props;
+  const { icon, button, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start' } = props;
   const { value, disabled, open } = useAccordionItemContext_unstable();
   const requestToggle = useAccordionContext_unstable(ctx => ctx.requestToggle);
 
@@ -38,6 +38,25 @@ export const useAccordionHeader_unstable = (
     expandIconRotation = open ? 90 : dir !== 'rtl' ? 0 : 180;
   }
 
+  const buttonSlot = slot.always(button, {
+    elementType: 'button',
+    defaultProps: {
+      disabled,
+      disabledFocusable,
+      'aria-expanded': open,
+      type: 'button',
+    },
+  });
+
+  buttonSlot.onClick = useEventCallback(event => {
+    if (isResolvedShorthand(button)) {
+      button.onClick?.(event);
+    }
+    if (!event.defaultPrevented) {
+      requestToggle({ value, event });
+    }
+  });
+
   return {
     disabled,
     open,
@@ -51,8 +70,11 @@ export const useAccordionHeader_unstable = (
       icon: 'div',
     },
     root: slot.always(
-      getNativeElementProps(as || 'div', {
-        ref,
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
         ...props,
       }),
       { elementType: 'div' },
@@ -66,27 +88,6 @@ export const useAccordionHeader_unstable = (
       },
       elementType: 'span',
     }),
-    button: slot.always<ARIAButtonSlotProps<'a'>>(
-      {
-        ...useARIAButtonShorthand(button, {
-          required: true,
-          defaultProps: {
-            disabled,
-            disabledFocusable,
-            'aria-expanded': open,
-            type: 'button',
-          },
-        }),
-        onClick: useEventCallback(event => {
-          if (isResolvedShorthand(button)) {
-            button.onClick?.(event);
-          }
-          if (!event.defaultPrevented) {
-            requestToggle({ value, event });
-          }
-        }),
-      },
-      { elementType: 'button' },
-    ),
+    button: useARIAButtonProps(buttonSlot.as, buttonSlot),
   };
 };

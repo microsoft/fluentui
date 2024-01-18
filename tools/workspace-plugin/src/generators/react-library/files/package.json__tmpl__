@@ -7,6 +7,12 @@
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": false,
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -32,16 +38,17 @@
   },
   "dependencies": {
     "@fluentui/react-jsx-runtime": "",
+    "@fluentui/react-shared-contexts": "",
     "@fluentui/react-theme": "",
     "@fluentui/react-utilities": "",
     "@griffel/react": "",
     "@swc/helpers": ""
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0"
   },
   "exports": {
     ".": {

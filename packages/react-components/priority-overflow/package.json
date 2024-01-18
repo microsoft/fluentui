@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/priority-overflow",
-  "version": "9.1.5",
+  "version": "9.1.11",
   "description": "Vanilla JS utilities to implement overflow menus",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -45,5 +45,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

@@ -9,7 +9,6 @@ import {
   readJson,
   stripIndents,
   addProjectConfiguration,
-  readWorkspaceConfiguration,
   updateJson,
   logger,
   updateProjectConfiguration,
@@ -17,7 +16,6 @@ import {
   names,
   visitNotIgnoredFiles,
   writeJson,
-  WorkspaceConfiguration,
   ProjectConfiguration,
   joinPathFragments,
 } from '@nx/devkit';
@@ -27,7 +25,7 @@ import { disableChalk, formatMockedCalls, setupCodeowners } from '../../utils-te
 
 import generator from './index';
 import { MigrateConvergedPkgGeneratorSchema } from './schema';
-import { workspacePaths } from '../../utils';
+import { getProjectNameWithoutScope, getWorkspaceConfig, workspacePaths } from '../../utils';
 
 interface AssertedSchema extends MigrateConvergedPkgGeneratorSchema {
   name: string;
@@ -243,7 +241,7 @@ describe('migrate-converged-pkg generator', () => {
       const tsConfigTest = getTsConfig.test();
 
       expect(tsConfigMain).toEqual({
-        extends: '../../../../../tsconfig.base.json',
+        extends: '../../tsconfig.base.json',
         compilerOptions: {
           importHelpers: true,
           isolatedModules: true,
@@ -387,8 +385,7 @@ describe('migrate-converged-pkg generator', () => {
     });
 
     it(`should not add 3rd party packages that use same scope as our repo `, async () => {
-      const workspaceConfig = readWorkspaceConfiguration(tree);
-      const normalizedPkgName = getNormalizedPkgName({ pkgName: options.name, workspaceConfig });
+      const normalizedPkgName = getProjectNameWithoutScope(options.name);
       const thirdPartyPackageName = '@proj/jango-fet';
 
       updateJson(tree, `./packages/${normalizedPkgName}/package.json`, (json: PackageJson) => {
@@ -439,7 +436,7 @@ describe('migrate-converged-pkg generator', () => {
          */
         module.exports = {
           displayName: 'react-dummy',
-          preset: '../../../../../jest.preset.js',
+          preset: '../../jest.preset.js',
           transform: {
             '^.+\\\\\\\\.tsx?$': [
               'ts-jest',
@@ -502,7 +499,7 @@ describe('migrate-converged-pkg generator', () => {
 
   describe(`storybook updates`, () => {
     function setup(config: Partial<{ createDummyStories: boolean }> = {}) {
-      const workspaceConfig = readWorkspaceConfiguration(tree);
+      const workspaceConfig = getWorkspaceConfig(tree);
       const projectConfig = readProjectConfiguration(tree, options.name);
       const normalizedProjectName = options.name.replace(`@${workspaceConfig.npmScope}/`, '');
       const projectStorybookConfigPath = `${projectConfig.root}/.storybook`;
@@ -585,10 +582,10 @@ describe('migrate-converged-pkg generator', () => {
       );
 
       expect(tree.read(`${projectStorybookConfigPath}/main.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
-        "const rootMain = require('../../../../../../.storybook/main');
+        "const rootMain = require('../../../.storybook/main');
 
         module.exports =
-          /** @type {Omit<import('../../../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+          /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
             ...rootMain,
             stories: [
               ...rootMain.stories,
@@ -608,7 +605,7 @@ describe('migrate-converged-pkg generator', () => {
       `);
 
       expect(tree.read(`${projectStorybookConfigPath}/preview.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
-        "import * as rootPreview from '../../../../../../.storybook/preview';
+        "import * as rootPreview from '../../../.storybook/preview';
 
         /** @type {typeof rootPreview.decorators} */
         export const decorators = [...rootPreview.decorators];
@@ -863,6 +860,7 @@ describe('migrate-converged-pkg generator', () => {
 
     it(`should update package npm scripts`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
+
       const pkgJsonPath = `${projectConfig.root}/package.json`;
       updateJson(tree, pkgJsonPath, json => {
         json.scripts.docs = 'api-extractor run --config=config/api-extractor.local.json --local';
@@ -901,31 +899,30 @@ describe('migrate-converged-pkg generator', () => {
         just: 'just-scripts',
         lint: 'just-scripts lint',
         test: 'jest --passWithNoTests',
-        'test-ssr': 'test-ssr "./stories/**/*.stories.tsx"',
         'type-check': 'tsc -b tsconfig.json',
       });
+
+      // verify test-ssr addition
+      updateProjectConfiguration(tree, options.name, { ...projectConfig, tags: ['platform:web'] });
+      tree.write(joinPathFragments(projectConfig.root, 'stories/Foo/Foo.stories.tsx'), 'export {}');
+
+      await generator(tree, options);
+
+      pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson.scripts).toEqual(
+        expect.objectContaining({
+          'test-ssr': 'test-ssr "./stories/**/*.stories.tsx"',
+        }),
+      );
     });
 
     describe(`export-maps`, () => {
-      function setup(config: { name: string; addModuleField?: boolean }) {
-        const addModuleField = config.addModuleField ?? true;
-        const projectConfig = readProjectConfiguration(tree, config.name);
-        const pkgJsonPath = `${projectConfig.root}/package.json`;
-
-        if (addModuleField) {
-          updateJson(tree, pkgJsonPath, json => {
-            json.module = './lib/index.js';
-            return json;
-          });
-        }
-
-        const getPackageJson = () => readJson(tree, pkgJsonPath);
-
-        return { getPackageJson };
-      }
-
       it(`should update exports map`, async () => {
-        const { getPackageJson } = setup({ name: options.name });
+        const { getPackageJson } = updatePackageJson(tree, {
+          projectName: options.name,
+          jsonUpdates: { module: './lib/index.js', style: './css/index.css' },
+        });
 
         let pkgJson = getPackageJson();
 
@@ -936,25 +933,28 @@ describe('migrate-converged-pkg generator', () => {
         pkgJson = getPackageJson();
 
         expect(pkgJson.exports).toMatchInlineSnapshot(`
-                  Object {
-                    ".": Object {
-                      "import": "./lib/index.js",
-                      "node": "./lib-commonjs/index.js",
-                      "require": "./lib-commonjs/index.js",
-                      "types": "./dist/index.d.ts",
-                    },
-                    "./package.json": "./package.json",
-                  }
-              `);
+          Object {
+            ".": Object {
+              "import": "./lib/index.js",
+              "node": "./lib-commonjs/index.js",
+              "require": "./lib-commonjs/index.js",
+              "style": "./css/index.css",
+              "types": "./dist/index.d.ts",
+            },
+            "./package.json": "./package.json",
+          }
+        `);
       });
 
       it(`should update exports map based on main,module fields`, async () => {
-        const { getPackageJson } = setup({ name: options.name, addModuleField: false });
+        const { getPackageJson } = updatePackageJson(tree, {
+          projectName: options.name,
+        });
 
         await generator(tree, options);
 
         const pkgJson = getPackageJson();
-        expect(pkgJson.exports['.'].module).toBe(undefined);
+        expect((pkgJson.exports?.['.'] as { import?: string }).import).toBe(undefined);
       });
     });
 
@@ -977,95 +977,76 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
-  describe(`npm config setup`, () => {
-    it(`should update .npmignore config`, async () => {
-      function getNpmIgnoreConfig(projectConfig: ReadProjectConfiguration) {
-        return tree.read(`${projectConfig.root}/.npmignore`)?.toString('utf-8');
-      }
-      const projectConfig = readProjectConfiguration(tree, options.name);
-      let npmIgnoreConfig = getNpmIgnoreConfig(projectConfig);
+  describe(`npm publish setup`, () => {
+    it(`should replace .npmignore config with package.json#files`, async () => {
+      const getNpmIgnoreConfigPath = (projectConfig: ReadProjectConfiguration) => `${projectConfig.root}/.npmignore`;
 
-      expect(npmIgnoreConfig).toMatchInlineSnapshot(`
-        "*.api.json
-        *.config.js
-        *.log
-        *.nuspec
-        *.test.*
-        *.yml
-        .editorconfig
-        .eslintrc*
-        .eslintcache
-        .gitattributes
-        .gitignore
-        .vscode
-        coverage
-        dist/storybook
-        dist/*.stats.html
-        dist/*.stats.json
-        dist/demo
-        fabric-test*
-        gulpfile.js
-        images
-        index.html
-        jsconfig.json
-        node_modules
-        results
-        src/**/*
-        !src/**/examples/*.tsx
-        !src/**/docs/**/*.md
-        !src/**/*.types.ts
-        temp
-        tsconfig.json
-        tsd.json
-        tslint.json
-        typings
-        visualtests"
-      `);
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      const npmIgnoreConfigPath = getNpmIgnoreConfigPath(projectConfig);
+
+      expect(tree.exists(npmIgnoreConfigPath)).toBe(true);
 
       await generator(tree, options);
 
-      npmIgnoreConfig = getNpmIgnoreConfig(projectConfig);
+      expect(tree.exists(npmIgnoreConfigPath)).toBe(false);
+      const pkgJson = readJson<PackageJson>(tree, `${projectConfig.root}/package.json`);
 
-      expect(npmIgnoreConfig).toMatchInlineSnapshot(`
-        ".storybook/
-        .vscode/
-        bundle-size/
-        config/
-        coverage/
-        docs/
-        etc/
-        node_modules/
-        src/
-        stories/
-        dist/types/
-        temp/
-        __fixtures__
-        __mocks__
-        __tests__
+      expect(pkgJson.files).toMatchInlineSnapshot(`
+        Array [
+          "*.md",
+          "dist/*.d.ts",
+          "lib-commonjs",
+        ]
+      `);
+    });
 
-        *.api.json
-        *.log
-        *.spec.*
-        *.cy.*
-        *.test.*
-        *.yml
+    it(`should set package.json#files bases on project setup`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      updateProjectConfiguration(tree, projectConfig.name!, { ...projectConfig, tags: ['ships-amd'] });
+      let getPackageJson = updatePackageJson(tree, {
+        projectName: options.name,
+        jsonUpdates: { module: './lib/index.js', style: './sass/index.scss', bin: './bin/cli.js', storybook: {} },
+      }).getPackageJson;
 
-        # config files
-        *config.*
-        *rc.*
-        .editorconfig
-        .eslint*
-        .git*
-        .prettierignore
-        .swcrc
-        project.json
+      await generator(tree, options);
 
-        # exclude gitignore patterns explicitly
-        !lib
-        !lib-commonjs
-        !lib-amd
-        !dist/*.d.ts
-        "
+      expect(getPackageJson().files).toMatchInlineSnapshot(`
+        Array [
+          "*.md",
+          "bin",
+          "dist/*.d.ts",
+          "lib",
+          "lib-amd",
+          "lib-commonjs",
+          "preset.js",
+          "sass",
+        ]
+      `);
+
+      getPackageJson = updatePackageJson(tree, {
+        projectName: options.name,
+        jsonUpdates: {
+          module: './lib/index.js',
+          types: 'one/two/index.d.ts',
+          bin: { one: './bin/one.js', two: './bin-two/one.js' },
+        },
+      }).getPackageJson;
+
+      await generator(tree, options);
+
+      expect(getPackageJson().files).toMatchInlineSnapshot(`
+        Array [
+          "*.md",
+          "bin",
+          "bin-two",
+          "dist/*.d.ts",
+          "lib",
+          "lib-amd",
+          "lib-commonjs",
+          "one/two/*.d.ts",
+          "preset.js",
+          "sass",
+        ]
       `);
     });
   });
@@ -1323,6 +1304,27 @@ describe('migrate-converged-pkg generator', () => {
         }
         "
       `);
+
+      // make sure it is added only once
+
+      await generator(tree, options);
+
+      expect(stripIndents`${tree.read(conformanceSetupPath, 'utf-8')}`).toEqual(
+        expect.stringContaining(stripIndents`
+          const defaultOptions: Partial<IsConformantOptions<TProps>> = {
+            tsConfig: { configName: 'tsconfig.spec.json' },
+            componentPath: require.main?.filename.replace('.test', ''),
+            extraTests: griffelTests as TestObject<TProps>,
+            testOptions: {
+              'make-styles-overrides-win': {
+                callCount: 2,
+              },
+              // TODO: https://github.com/microsoft/fluentui/issues/19618
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            } as any,
+          };
+      `),
+      );
     });
   });
 
@@ -1534,7 +1536,7 @@ describe('migrate-converged-pkg generator', () => {
 // ==== helpers ====
 
 function getScopedPkgName(tree: Tree, pkgName: string) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const workspaceConfig = getWorkspaceConfig(tree);
 
   return `@${workspaceConfig.npmScope}/${pkgName}`;
 }
@@ -1550,7 +1552,7 @@ function setupDummyPackage(
       projectConfiguration: Partial<ReadProjectConfiguration>;
     }>,
 ) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const workspaceConfig = getWorkspaceConfig(tree);
   const defaults = {
     version: '9.0.0-alpha.40',
     dependencies: {
@@ -1571,7 +1573,7 @@ function setupDummyPackage(
 
   const normalizedOptions = { ...defaults, ...options };
   const pkgName = normalizedOptions.name;
-  const normalizedPkgName = getNormalizedPkgName({ pkgName, workspaceConfig });
+  const normalizedPkgName = getProjectNameWithoutScope(pkgName);
   const paths = {
     root: `packages/${normalizedPkgName}`,
   };
@@ -1606,42 +1608,7 @@ function setupDummyPackage(
     jestSetupFile: stripIndents`
      /** Jest test setup file. */
     `,
-    npmConfig: stripIndents`
-      *.api.json
-      *.config.js
-      *.log
-      *.nuspec
-      *.test.*
-      *.yml
-      .editorconfig
-      .eslintrc*
-      .eslintcache
-      .gitattributes
-      .gitignore
-      .vscode
-      coverage
-      dist/storybook
-      dist/*.stats.html
-      dist/*.stats.json
-      dist/demo
-      fabric-test*
-      gulpfile.js
-      images
-      index.html
-      jsconfig.json
-      node_modules
-      results
-      src/**/*
-      !src/**/examples/*.tsx
-      !src/**/docs/**/*.md
-      !src/**/*.types.ts
-      temp
-      tsconfig.json
-      tsd.json
-      tslint.json
-      typings
-      visualtests
-    `,
+    npmConfig: stripIndents``,
     babelConfig: {
       ...normalizedOptions.babelConfig,
     },
@@ -1722,10 +1689,6 @@ function append(tree: Tree, filePath: string, content: string) {
   return tree;
 }
 
-function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: WorkspaceConfiguration }) {
-  return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
-}
-
 /**
  *
  * @param src  - relative path/file name within `__fixtures__` folder
@@ -1733,4 +1696,18 @@ function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: Works
  */
 function getFixture(src: string) {
   return fs.readFileSync(path.join(__dirname, '__fixtures__', src), 'utf-8');
+}
+
+function updatePackageJson(tree: Tree, config: { projectName: string; jsonUpdates?: Partial<PackageJson> }) {
+  const projectConfig = readProjectConfiguration(tree, config.projectName);
+  const pkgJsonPath = `${projectConfig.root}/package.json`;
+
+  updateJson(tree, pkgJsonPath, json => {
+    Object.assign(json, config.jsonUpdates);
+    return json;
+  });
+
+  const getPackageJson = () => readJson<PackageJson>(tree, pkgJsonPath);
+
+  return { getPackageJson };
 }

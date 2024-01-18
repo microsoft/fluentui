@@ -36,7 +36,7 @@ export const ColumnIdContextProvider: React_2.Provider<TableColumnId | undefined
 export function createTableColumn<TItem>(options: CreateTableColumnOptions<TItem>): {
     columnId: TableColumnId;
     renderCell: (item: TItem) => ReactNode;
-    renderHeaderCell: () => ReactNode;
+    renderHeaderCell: (data?: unknown) => ReactNode;
     compare: (a: TItem, b: TItem) => number;
 };
 
@@ -123,7 +123,7 @@ export const DataGridHeaderCell: ForwardRefComponent<DataGridHeaderCellProps>;
 export const dataGridHeaderCellClassNames: SlotClassNames<DataGridHeaderCellSlots>;
 
 // @public
-export type DataGridHeaderCellProps = TableHeaderCellProps;
+export type DataGridHeaderCellProps = Omit<TableHeaderCellProps, 'sortable'>;
 
 // @public (undocumented)
 export type DataGridHeaderCellSlots = TableHeaderCellSlots;
@@ -320,7 +320,7 @@ export const TableCellLayout: ForwardRefComponent<TableCellLayoutProps>;
 export const tableCellLayoutClassNames: SlotClassNames<TableCellLayoutSlots>;
 
 // @public
-export type TableCellLayoutProps = ComponentProps<Partial<TableCellLayoutSlots>> & {
+export type TableCellLayoutProps = Omit<ComponentProps<Partial<TableCellLayoutSlots>>, 'content'> & Pick<Partial<TableCellLayoutSlots>, 'content'> & {
     appearance?: 'primary';
     truncate?: boolean;
 };
@@ -365,7 +365,7 @@ export interface TableColumnDefinition<TItem> {
     // (undocumented)
     renderCell: (item: TItem) => React_2.ReactNode;
     // (undocumented)
-    renderHeaderCell: () => React_2.ReactNode;
+    renderHeaderCell: (data?: unknown) => React_2.ReactNode;
 }
 
 // @public (undocumented)
@@ -418,6 +418,7 @@ export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots>;
 
 // @public
 export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & {
+    sortable?: boolean;
     sortDirection?: SortDirection;
 };
 
@@ -430,7 +431,7 @@ export type TableHeaderCellSlots = {
 };
 
 // @public
-export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableContextValue, 'noNativeElements' | 'sortable'>;
+export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableContextValue, 'noNativeElements'> & Pick<TableHeaderCellProps, 'sortable'>;
 
 // @public (undocumented)
 export const tableHeaderClassName = "fui-TableHeader";

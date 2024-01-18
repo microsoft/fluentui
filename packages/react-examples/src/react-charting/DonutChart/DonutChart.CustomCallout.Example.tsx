@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { ChartHoverCard, DonutChart, IDonutChartProps, IChartProps, IChartDataPoint } from '@fluentui/react-charting';
+import {
+  ChartHoverCard,
+  DonutChart,
+  IDonutChartProps,
+  IChartProps,
+  IChartDataPoint,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 
 export class DonutChartCustomCalloutExample extends React.Component<IDonutChartProps, {}> {
   constructor(props: IDonutChartProps) {
@@ -8,8 +16,13 @@ export class DonutChartCustomCalloutExample extends React.Component<IDonutChartP
 
   public render(): JSX.Element {
     const points: IChartDataPoint[] = [
-      { legend: 'first', data: 20000, color: '#DADADA', xAxisCalloutData: '2020/04/30' },
-      { legend: 'second', data: 39000, color: '#0078D4', xAxisCalloutData: '2020/04/20' },
+      { legend: 'first', data: 20000, color: getColorFromToken(DataVizPalette.color9), xAxisCalloutData: '2020/04/30' },
+      {
+        legend: 'second',
+        data: 39000,
+        color: getColorFromToken(DataVizPalette.color10),
+        xAxisCalloutData: '2020/04/20',
+      },
     ];
 
     const data: IChartProps = {
@@ -33,7 +46,7 @@ export class DonutChartCustomCalloutExample extends React.Component<IDonutChartP
               XValue={'Custom XVal'}
               Legend={'Custom Legend'}
               YValue={`${props.yAxisCalloutData || props.data} h`}
-              color={'red'}
+              color={getColorFromToken(DataVizPalette.warning)}
             />
           ) : null
         }

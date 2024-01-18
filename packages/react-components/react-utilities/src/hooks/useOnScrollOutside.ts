@@ -9,7 +9,7 @@ import type { UseOnClickOrScrollOutsideOptions } from './useOnClickOutside';
 export const useOnScrollOutside = (options: UseOnClickOrScrollOutsideOptions) => {
   const { refs, callback, element, disabled, contains: containsProp } = options;
 
-  const listener = useEventCallback((ev: Event) => {
+  const listener = useEventCallback((ev: MouseEvent | TouchEvent) => {
     const contains: UseOnClickOrScrollOutsideOptions['contains'] =
       containsProp || ((parent, child) => !!parent?.contains(child));
 
@@ -17,7 +17,7 @@ export const useOnScrollOutside = (options: UseOnClickOrScrollOutsideOptions) =>
     const isOutside = refs.every(ref => !contains(ref.current || null, target));
 
     if (isOutside && !disabled) {
-      callback(ev as MouseEvent | TouchEvent);
+      callback(ev);
     }
   });
 
@@ -28,13 +28,10 @@ export const useOnScrollOutside = (options: UseOnClickOrScrollOutsideOptions) =>
 
     element?.addEventListener('wheel', listener);
     element?.addEventListener('touchmove', listener);
-    // use capture phase because scroll does not bubble
-    element?.addEventListener('scroll', listener, true);
 
     return () => {
       element?.removeEventListener('wheel', listener);
       element?.removeEventListener('touchmove', listener);
-      element?.removeEventListener('scroll', listener, true);
     };
   }, [listener, element, disabled]);
 };

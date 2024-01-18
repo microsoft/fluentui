@@ -9,9 +9,46 @@ import {
   ProjectConfiguration,
   readJson,
   readNxJson,
+  NxJsonConfiguration,
 } from '@nx/devkit';
 import { PackageJson, PackageJsonWithBeachball } from './types';
 import semver from 'semver';
+
+const NPM_SCOPE_REGEX = /^@([a-z]+)\/([a-z-]+)/;
+/**
+ *
+ * A tiny abstraction on {@link @nx/devkit#readNxJson} which returns npmScope and asserts that nx.json exists
+ */
+export function getWorkspaceConfig(tree: Tree): NxJsonConfiguration & { npmScope: string } {
+  const nxConfig = readNxJson(tree);
+  if (!nxConfig) {
+    throw new Error('nx.json doesnt exist at root of monorepo');
+  }
+
+  const packageJSON = readJson<PackageJson>(tree, '/package.json');
+  const matchedName = NPM_SCOPE_REGEX.exec(packageJSON.name);
+
+  if (!matchedName) {
+    throw new Error('root package.json doesnt provide valid monorepo name');
+  }
+
+  const [, npmScope] = matchedName;
+  return {
+    npmScope,
+    ...nxConfig,
+  };
+}
+
+export function getProjectNameWithoutScope(projectName: string) {
+  const match = NPM_SCOPE_REGEX.exec(projectName);
+  const projectNameIsAlreadyWithoutScope = !match;
+
+  if (projectNameIsAlreadyWithoutScope) {
+    return projectName;
+  }
+
+  return match[2];
+}
 
 /**
  * CLI prompts abstraction to trigger dynamic prompts within a generator
@@ -80,11 +117,11 @@ export function parseArgs<T extends Record<string, any>>(args: string[]) {
   return parsedArguments;
 }
 
-export { updateJestConfig } from '@nx/jest/src/generators/jest-project/lib/update-jestconfig';
+export { updateJestConfig } from '@nx/jest/src/generators/configuration/lib/update-jestconfig';
 
 export function getProjectConfig(tree: Tree, options: { packageName: string }) {
   const projectConfig = readProjectConfiguration(tree, options.packageName);
-  const workspaceConfig = readNxJson(tree) ?? {};
+  const workspaceConfig = getWorkspaceConfig(tree);
   const paths = getProjectPaths(projectConfig);
 
   return {

@@ -1,8 +1,60 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Wed, 28 Jun 2023 07:37:30 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jan 2024 07:28:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.23](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.23)
+
+Wed, 10 Jan 2024 07:28:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.22..@fluentui/utilities_v8.13.23)
+
+### Patches
+
+- chore: disallow document and window access ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by seanmonahan@microsoft.com)
+- Bump @fluentui/dom-utilities to v2.2.14 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+- Bump @fluentui/merge-styles to v8.5.15 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+- Bump @fluentui/set-version to v8.2.14 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+
+## [8.13.22](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.22)
+
+Thu, 14 Dec 2023 07:30:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.21..@fluentui/utilities_v8.13.22)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/merge-styles to v8.5.14 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/set-version to v8.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+
+## [8.13.21](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.21)
+
+Thu, 09 Nov 2023 07:29:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.20..@fluentui/utilities_v8.13.21)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore ([PR #29743](https://github.com/microsoft/fluentui/pull/29743) by martinhochel@microsoft.com)
+
+## [8.13.20](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.20)
+
+Sat, 28 Oct 2023 00:29:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.19..@fluentui/utilities_v8.13.20)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/merge-styles to v8.5.13 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/set-version to v8.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+
+## [8.13.19](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.19)
+
+Fri, 29 Sep 2023 07:45:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.18..@fluentui/utilities_v8.13.19)
+
+### Patches
+
+- fix: focusAsync still works even if past animationFrame fails to run ([PR #29322](https://github.com/microsoft/fluentui/pull/29322) by sarah.higley@microsoft.com)
 
 ## [8.13.18](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.18)
 

@@ -15,7 +15,6 @@ const useStyles = makeStyles({
 
 export const Icon = (props: Partial<TooltipProps>) => {
   const styles = useStyles();
-  const iconId = useId('icon');
   const contentId = useId('content');
   const [visible, setVisible] = React.useState(false);
 
@@ -33,12 +32,7 @@ export const Icon = (props: Partial<TooltipProps>) => {
         onVisibleChange={(e, data) => setVisible(data.visible)}
         {...props}
       >
-        <Info16Regular
-          tabIndex={0}
-          id={iconId}
-          aria-labelledby={`${iconId} ${contentId}`}
-          className={mergeClasses(visible && styles.visible)}
-        />
+        <Info16Regular tabIndex={0} className={mergeClasses(visible && styles.visible)} />
       </Tooltip>
     </div>
   );

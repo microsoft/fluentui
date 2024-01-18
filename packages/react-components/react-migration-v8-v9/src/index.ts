@@ -14,6 +14,8 @@ export { MenuItemShim, shimMenuProps } from './components/Menu/index';
 
 export { StackItemShim, StackShim } from './components/Stack/index';
 
+export { CheckboxShim } from './components/Checkbox/index';
+
 export {
   black,
   blackAlpha,

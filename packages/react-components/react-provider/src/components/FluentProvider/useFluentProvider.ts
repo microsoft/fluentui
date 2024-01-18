@@ -10,11 +10,14 @@ import type {
   CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue,
   ThemeContextValue_unstable as ThemeContextValue,
 } from '@fluentui/react-shared-contexts';
-import { getNativeElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
+
+// Fixes a bug where returning a new object each time would cause unnecessary rerenders.
+const EMPTY_OBJECT = {};
 
 /**
  * Create the state required to render FluentProvider.
@@ -32,7 +35,8 @@ export const useFluentProvider_unstable = (
   const parentContext = useFluent();
   const parentTheme = useTheme();
   const parentOverrides = useOverrides();
-  const parentCustomStyleHooks: CustomStyleHooksContextValue = React.useContext(CustomStyleHooksContext) || {};
+  const parentCustomStyleHooks: CustomStyleHooksContextValue =
+    React.useContext(CustomStyleHooksContext) || EMPTY_OBJECT;
 
   /**
    * TODO: add merge functions to "dir" merge,
@@ -96,10 +100,13 @@ export const useFluentProvider_unstable = (
     },
 
     root: slot.always(
-      getNativeElementProps('div', {
+      getIntrinsicElementProps('div', {
         ...props,
         dir,
-        ref: useMergedRefs(ref, useFocusVisible<HTMLDivElement>({ targetDocument })),
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: useMergedRefs(ref, useFocusVisible<HTMLDivElement>({ targetDocument })) as React.Ref<HTMLDivElement>,
       }),
       { elementType: 'div' },
     ),

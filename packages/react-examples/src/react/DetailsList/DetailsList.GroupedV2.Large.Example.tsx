@@ -40,7 +40,7 @@ const onRenderDetailsHeader = (props: IDetailsHeaderProps) => {
   return <DetailsHeader {...props} ariaLabelForToggleAllGroupsButton={'Expand collapse groups'} />;
 };
 
-export const DetailsListGroupedV2LargeExmaple: React.FC = () => {
+export const DetailsListGroupedV2LargeExample: React.FC = () => {
   const [items] = React.useState<IDetailsListGroupedLargeExampleItem[]>(() => getInitialItems());
   const [groups] = React.useState<IGroup[]>(() => getInitialGroups());
   const [columns] = React.useState<IColumn[]>([
@@ -66,4 +66,4 @@ export const DetailsListGroupedV2LargeExmaple: React.FC = () => {
 };
 
 // @ts-expect-error Storybook
-DetailsListGroupedV2LargeExmaple.storyName = 'V2 Grouped Large';
+DetailsListGroupedV2LargeExample.storyName = 'V2 Grouped Large';

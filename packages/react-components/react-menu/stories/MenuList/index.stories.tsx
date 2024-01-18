@@ -1,4 +1,14 @@
-import { MenuList } from '@fluentui/react-components';
+import {
+  MenuDivider,
+  MenuGroup,
+  MenuGroupHeader,
+  MenuItem,
+  MenuItemCheckbox,
+  MenuItemLink,
+  MenuItemRadio,
+  MenuList,
+  MenuSplitGroup,
+} from '@fluentui/react-components';
 import descriptionMd from './MenuListDescription.md';
 
 export { Default } from './MenuListDefault.stories';
@@ -11,6 +21,16 @@ export { ControlledRadioItems } from './MenuListControlledRadioItems.stories';
 export default {
   title: 'Components/Menu/MenuList',
   component: MenuList,
+  subcomponents: {
+    MenuDivider,
+    MenuGroup,
+    MenuGroupHeader,
+    MenuItem,
+    MenuItemCheckbox,
+    MenuItemLink,
+    MenuItemRadio,
+    MenuSplitGroup,
+  },
   parameters: {
     docs: {
       description: {
