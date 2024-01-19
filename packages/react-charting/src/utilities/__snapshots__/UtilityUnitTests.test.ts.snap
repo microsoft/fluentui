@@ -2920,111 +2920,6 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for sec
   fill="none"
   font-family="sans-serif"
   font-size="10"
-  text-anchor="start"
->
-  <path
-    class="domain"
-    d="M6,100.5H0.5V0.5H6"
-    stroke="#000"
-  />
-  <g
-    class="tick"
-    opacity="1"
-    transform="translate(0,100.5)"
-  >
-    <line
-      stroke="#000"
-      x2="-100"
-    />
-    <text
-      aria-hidden="true"
-      dy="0.32em"
-      fill="#000"
-      x="12"
-    >
-      0
-    </text>
-  </g>
-  <g
-    class="tick"
-    opacity="1"
-    transform="translate(0,75.5)"
-  >
-    <line
-      stroke="#000"
-      x2="-100"
-    />
-    <text
-      aria-hidden="true"
-      dy="0.32em"
-      fill="#000"
-      x="12"
-    >
-      25
-    </text>
-  </g>
-  <g
-    class="tick"
-    opacity="1"
-    transform="translate(0,50.5)"
-  >
-    <line
-      stroke="#000"
-      x2="-100"
-    />
-    <text
-      aria-hidden="true"
-      dy="0.32em"
-      fill="#000"
-      x="12"
-    >
-      50
-    </text>
-  </g>
-  <g
-    class="tick"
-    opacity="1"
-    transform="translate(0,25.5)"
-  >
-    <line
-      stroke="#000"
-      x2="-100"
-    />
-    <text
-      aria-hidden="true"
-      dy="0.32em"
-      fill="#000"
-      x="12"
-    >
-      75
-    </text>
-  </g>
-  <g
-    class="tick"
-    opacity="1"
-    transform="translate(0,0.5)"
-  >
-    <line
-      stroke="#000"
-      x2="-100"
-    />
-    <text
-      aria-hidden="true"
-      dy="0.32em"
-      fill="#000"
-      x="12"
-    >
-      100
-    </text>
-  </g>
-</g>
-`;
-
-exports[`createYAxisForOtherCharts should render y-axis labels correctly for secondary scale when layout direction is RTL 1`] = `
-<g
-  fill="none"
-  font-family="sans-serif"
-  font-size="10"
   text-anchor="end"
 >
   <path
@@ -3118,6 +3013,111 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly for sec
       dy="0.32em"
       fill="#000"
       x="-12"
+    >
+      100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisForOtherCharts should render y-axis labels correctly for secondary scale when layout direction is RTL 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="start"
+>
+  <path
+    class="domain"
+    d="M6,100.5H0.5V0.5H6"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,100.5)"
+  >
+    <line
+      stroke="#000"
+      x2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="#000"
+      x="12"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,75.5)"
+  >
+    <line
+      stroke="#000"
+      x2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="#000"
+      x="12"
+    >
+      25
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50.5)"
+  >
+    <line
+      stroke="#000"
+      x2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="#000"
+      x="12"
+    >
+      50
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,25.5)"
+  >
+    <line
+      stroke="#000"
+      x2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="#000"
+      x="12"
+    >
+      75
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,0.5)"
+  >
+    <line
+      stroke="#000"
+      x2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="#000"
+      x="12"
     >
       100
     </text>

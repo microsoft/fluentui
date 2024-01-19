@@ -83,6 +83,12 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
    * @default false
    */
   hideLabels?: boolean;
+
+  /**
+   * Prop to enable support for negative values
+   * @default false
+   */
+  supportNegativeYValues?: boolean;
 }
 
 /**
