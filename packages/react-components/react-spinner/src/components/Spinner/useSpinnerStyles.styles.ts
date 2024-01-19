@@ -47,66 +47,49 @@ const useRootStyles = makeStyles({
 const useSpinnerBaseClassName = makeResetStyles({
   position: 'relative',
   borderRadius: tokens.borderRadiusCircular,
+
+  color: tokens.colorBrandStroke1,
+  backgroundColor: tokens.colorBrandStroke2Contrast,
+
   maskImage:
     `radial-gradient(closest-side, ` +
     `transparent calc(100% - var(${vars.strokeWidth}) - 1px), ` +
     `white       calc(100% - var(${vars.strokeWidth})))`,
 
-  color: tokens.colorBrandStroke1,
-  backgroundColor: tokens.colorBrandStroke2Contrast,
+  backgroundImage:
+    `conic-gradient(` +
+    `transparent var(${vars.angle1}), ` +
+    `currentcolor var(${vars.angle1}) var(${vars.angle2}), ` +
+    `transparent var(${vars.angle2}))`,
 
-  // Provide fallback static values for browsers that don't support animating CSS vars
-  [vars.angle1]: '0deg',
-  [vars.angle2]: '90deg',
-
-  animationDuration: '1.5s',
-  animationIterationCount: 'infinite',
-  animationTimingFunction: tokens.curveEasyEase,
-  animationName: {
-    '0%': {
-      [vars.angle1]: '0deg',
-      [vars.angle2]: '0deg',
-    },
-    '50%': {
-      [vars.angle1]: '100deg',
-      [vars.angle2]: '400deg',
-    },
-    '100%': {
-      [vars.angle1]: '400deg',
-      [vars.angle2]: '400deg',
-    },
-  },
-  '@media screen and (prefers-reduced-motion: reduce)': {
-    animationDuration: '0.01ms',
-    animationIterationCount: '1',
-  },
-
-  '::before': {
-    content: '""',
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    borderRadius: 'inherit',
-
+  '@media screen and (forced-colors: active)': {
+    forcedColorAdjust: 'none',
     backgroundImage:
       `conic-gradient(` +
-      `transparent var(${vars.angle1}), ` +
-      `currentcolor var(${vars.angle1}) var(${vars.angle2}), ` +
-      `transparent var(${vars.angle2}))`,
+      `HighlightText var(${vars.angle1}), ` +
+      `Highlight var(${vars.angle1}) var(${vars.angle2}), ` +
+      `HighlightText var(${vars.angle2}))`,
+  },
 
-    '@media screen and (forced-colors: active)': {
-      forcedColorAdjust: 'none',
-      backgroundImage:
-        `conic-gradient(` +
-        `HighlightText var(${vars.angle1}), ` +
-        `Highlight var(${vars.angle1}) var(${vars.angle2}), ` +
-        `HighlightText var(${vars.angle2}))`,
+  animationDuration: '1.5s, 3s',
+  animationIterationCount: 'infinite',
+  animationTimingFunction: `${tokens.curveEasyEase}, linear`,
+  animationName: [
+    {
+      '0%': {
+        [vars.angle1]: '0deg',
+        [vars.angle2]: '0deg',
+      },
+      '50%': {
+        [vars.angle1]: '100deg',
+        [vars.angle2]: '400deg',
+      },
+      '100%': {
+        [vars.angle1]: '400deg',
+        [vars.angle2]: '400deg',
+      },
     },
-
-    animationDuration: '3s',
-    animationIterationCount: 'infinite',
-    animationTimingFunction: 'linear',
-    animationName: {
+    {
       '0%': {
         transform: 'rotate(0deg)',
       },
@@ -114,11 +97,16 @@ const useSpinnerBaseClassName = makeResetStyles({
         transform: 'rotate(360deg)',
       },
     },
+  ],
 
-    '@media screen and (prefers-reduced-motion: reduce)': {
-      animationIterationCount: '1',
-      animationDuration: '0.01s',
-    },
+  // Provide static fallback values for browsers that don't support animating CSS vars
+  // The rotation transform animation will still play, so a static quarter-circle line will rotate
+  [vars.angle1]: '0deg',
+  [vars.angle2]: '90deg',
+
+  '@media screen and (prefers-reduced-motion: reduce)': {
+    animationDuration: '0.01ms',
+    animationIterationCount: '1',
   },
 });
 
