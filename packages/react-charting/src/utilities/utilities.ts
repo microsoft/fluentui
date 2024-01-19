@@ -864,49 +864,6 @@ export function getXAxisType(points: ILineChartPoints[]): boolean {
 }
 
 /**
- * Calculates Domain and range values for Date X axis.
- * This method calculates Area chart and line chart.
- * @export
- * @param {ILineChartPoints[]} points
- * @param {IMargins} margins
- * @param {number} width
- * @param {boolean} isRTL
- * @param {Date[] | number[]} tickValues
- * @returns {IDomainNRange}
- */
-export function domainRangeOfDateForAreaChart(
-  points: ILineChartPoints[],
-  margins: IMargins,
-  width: number,
-  isRTL: boolean,
-  tickValues: Date[] = [],
-): IDomainNRange {
-  const sDate = d3Min(points, (point: ILineChartPoints) => {
-    return d3Min(point.data, (item: ILineChartDataPoint) => {
-      return item.x as Date;
-    });
-  })!;
-  const lDate = d3Max(points, (point: ILineChartPoints) => {
-    return d3Max(point.data, (item: ILineChartDataPoint) => {
-      return item.x as Date;
-    });
-  })!;
-
-  // Need to draw graph with given small and large date (Which Involves customization of date axis tick values)
-  // That may be Either from given graph data or from prop 'tickValues' date values.
-  // So, Finding smallest and largest dates
-  const smallestDate = d3Min([...tickValues, sDate])!;
-  const largestDate = d3Max([...tickValues, lDate])!;
-
-  const rStartValue = margins.left!;
-  const rEndValue = width - margins.right!;
-
-  return isRTL
-    ? { dStartValue: largestDate, dEndValue: smallestDate, rStartValue, rEndValue }
-    : { dStartValue: smallestDate, dEndValue: largestDate, rStartValue, rEndValue };
-}
-
-/**
  * Calculates Domain and range values for Numeric X axis.
  * This method calculates Area cart and line chart.
  * @export
