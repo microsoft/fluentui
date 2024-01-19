@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { RatingItemContextValue } from '../RatingItem/RatingItem.types';
 
 export type RatingSlots = {
   root: NonNullable<Slot<'div'>>;
@@ -73,3 +74,7 @@ export type RatingState = ComponentState<RatingSlots> &
   Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'value'>> & {
     hoveredValue?: number | undefined;
   };
+
+export type RatingContextValues = {
+  ratingItem: RatingItemContextValue;
+};

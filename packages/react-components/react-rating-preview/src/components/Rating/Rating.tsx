@@ -4,16 +4,14 @@ import { useRating_unstable } from './useRating';
 import { renderRating_unstable } from './renderRating';
 import { useRatingStyles_unstable } from './useRatingStyles.styles';
 import type { RatingProps } from './Rating.types';
-import { useRatingContextValues } from '../../contexts/useRatingContextValues';
-import { useRatingDisplay_unstable } from '../RatingDisplay/useRatingDisplay';
+import { useRatingContextValues } from './useRatingContextValues';
 
 /**
  * Rating component - TODO: add more docs
  */
 export const Rating: ForwardRefComponent<RatingProps> = React.forwardRef((props, ref) => {
   const state = useRating_unstable(props, ref);
-  const displayState = useRatingDisplay_unstable(props, ref);
-  const contextValues = useRatingContextValues(state, displayState);
+  const contextValues = useRatingContextValues(state);
 
   useRatingStyles_unstable(state);
   return renderRating_unstable(state, contextValues);

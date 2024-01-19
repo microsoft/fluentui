@@ -4,8 +4,9 @@ export {
   renderRating_unstable,
   useRatingStyles_unstable,
   useRating_unstable,
+  useRatingContextValues,
 } from './Rating';
-export type { RatingProps, RatingSlots, RatingState, RatingOnChangeData } from './Rating';
+export type { RatingProps, RatingSlots, RatingState, RatingOnChangeData, RatingContextValues } from './Rating';
 export {
   RatingItem,
   ratingItemClassNames,
@@ -14,13 +15,18 @@ export {
   useRatingItem_unstable,
 } from './RatingItem';
 export type { RatingItemProps, RatingItemSlots, RatingItemState } from './RatingItem';
-export { RatingProvider, useRatingContextValue_unstable, useRatingContextValues } from './contexts/index';
-export type { RatingContextValue, RatingContextValues } from './contexts/index';
+export { RatingItemContext, RatingItemProvider, useRatingItemContextValue_unstable } from './contexts/index';
 export {
   RatingDisplay,
   ratingDisplayClassNames,
   renderRatingDisplay_unstable,
   useRatingDisplayStyles_unstable,
   useRatingDisplay_unstable,
+  useRatingDisplayContextValues,
 } from './RatingDisplay';
-export type { RatingDisplayProps, RatingDisplaySlots, RatingDisplayState } from './RatingDisplay';
+export type {
+  RatingDisplayProps,
+  RatingDisplaySlots,
+  RatingDisplayState,
+  RatingDisplayContextValues,
+} from './RatingDisplay';

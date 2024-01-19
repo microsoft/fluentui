@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { RatingItemContextValue } from '../RatingItem/RatingItem.types';
 
 export type RatingDisplaySlots = {
   root: NonNullable<Slot<'div'>>;
@@ -58,3 +59,5 @@ export type RatingDisplayProps = ComponentProps<RatingDisplaySlots> & {
  */
 export type RatingDisplayState = ComponentState<RatingDisplaySlots> &
   Required<Pick<RatingDisplayProps, 'color' | 'compact' | 'iconFilled' | 'iconOutline' | 'max' | 'size' | 'value'>>;
+
+export type RatingDisplayContextValues = { ratingItem: RatingItemContextValue };
