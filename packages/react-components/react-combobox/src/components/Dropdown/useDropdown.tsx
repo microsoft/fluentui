@@ -54,6 +54,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
       type: 'button',
       tabIndex: 0,
       children: baseState.value || props.placeholder,
+      'aria-controls': open ? listbox?.id : undefined,
       ...triggerNativeProps,
     },
   });

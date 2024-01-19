@@ -62,6 +62,7 @@ exports[`Dropdown renders an open listbox 1`] = `
   >
     <button
       aria-activedescendant="fluent-option2"
+      aria-controls="fluent-listbox1"
       aria-expanded="true"
       class="fui-Dropdown__button"
       role="combobox"
