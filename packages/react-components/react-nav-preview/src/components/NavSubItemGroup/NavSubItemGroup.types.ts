@@ -7,7 +7,7 @@ export type NavSubItemGroupSlots = {
 /**
  * NavSubItemGroup Props
  */
-export type NavSubItemGroupProps = ComponentProps<NavSubItemGroupSlots> & {};
+export type NavSubItemGroupProps = ComponentProps<NavSubItemGroupSlots>;
 
 /**
  * State used in rendering NavSubItemGroup

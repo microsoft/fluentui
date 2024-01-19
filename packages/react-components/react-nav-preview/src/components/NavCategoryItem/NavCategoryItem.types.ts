@@ -7,10 +7,8 @@ export type NavCategoryItemContextValues = {
 
 export type NavCategoryItemSlots = {
   /**
-   * The element wrapping the button. By default this is a div, but can be a heading.
+   * The root element
    */
-
-  // this likely needs to be updated to some sort of a heading type
   root: Slot<'button'>;
 
   /**
