@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: Replace Spinner's SVG animation with rotation animations so it can run on the compositor thread.",
+  "packageName": "@fluentui/react-spinner",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

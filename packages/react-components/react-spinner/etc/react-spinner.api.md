@@ -39,11 +39,12 @@ export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
 export type SpinnerSlots = {
     root: NonNullable<Slot<'div'>>;
     spinner?: Slot<'span'>;
+    spinnerTail?: NonNullable<Slot<'span'>>;
     label?: Slot<typeof Label>;
 };
 
 // @public
-export type SpinnerState = ComponentState<SpinnerSlots> & Required<Pick<SpinnerProps, 'appearance' | 'delay' | 'labelPosition' | 'size'>> & {
+export type SpinnerState = ComponentState<Required<SpinnerSlots>> & Required<Pick<SpinnerProps, 'appearance' | 'delay' | 'labelPosition' | 'size'>> & {
     shouldRenderSpinner: boolean;
 };
 

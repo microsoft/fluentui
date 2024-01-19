@@ -7,15 +7,19 @@ export type SpinnerSlots = {
    * The root slot receives the `className` and `style` specified directly on the `<Spinner>`.
    */
   root: NonNullable<Slot<'div'>>;
+
   /**
-   * The slot for the animated svg.
-   * The spinner slot receives the `className` and `style` that handles the spinning animation.
-   * An svg is also rendered as a child of this slot
+   * The animated spinning circle element.
    */
   spinner?: Slot<'span'>;
+
   /**
-   * The label of the Slider.
-   * The label slot receives the styling related to the text associated with the Spinner.
+   * The fill the spinner animation.
+   */
+  spinnerTail?: NonNullable<Slot<'span'>>;
+
+  /**
+   * An optional label for the Spinner.
    */
   label?: Slot<typeof Label>;
 };
@@ -52,7 +56,7 @@ export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
 /**
  * State used in rendering Spinner
  */
-export type SpinnerState = ComponentState<SpinnerSlots> &
+export type SpinnerState = ComponentState<Required<SpinnerSlots>> &
   Required<Pick<SpinnerProps, 'appearance' | 'delay' | 'labelPosition' | 'size'>> & {
     /**
      * Should the spinner be rendered in the DOM
