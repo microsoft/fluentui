@@ -21,7 +21,7 @@ export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue'
   };
   /**
    * Callback used by NavCategoryItem to request a change on it's own opened state
-   * Should be used to toggle AccordionItem
+   * Should be used to toggle NavCategoryItem's open state
    */
   onRequestNavCategoryItemToggle: EventHandler<OnNavItemSelectData>;
 

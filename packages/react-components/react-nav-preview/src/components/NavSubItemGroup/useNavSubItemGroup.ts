@@ -18,6 +18,7 @@ export const useNavSubItemGroup_unstable = (
 ): NavSubItemGroupState => {
   const { open } = useNavCategoryContext_unstable();
 
+  // copied over from accordion. todo - figure out how to handle.
   // const focusableProps = useTabsterAttributes({ focusable: { excludeFromMover: true } });
   // const navigation = useAccordionContext_unstable(ctx => ctx.navigation);
 

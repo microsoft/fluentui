@@ -11,7 +11,7 @@ export type NavCategorySlots = {
  */
 export type NavCategoryProps = ComponentProps<NavCategorySlots> & {
   /**
-   * Required value that identifies this item inside an Accordion component.
+   * Required value that identifies this item inside an Nav component.
    */
   value: NavItemValue;
 };

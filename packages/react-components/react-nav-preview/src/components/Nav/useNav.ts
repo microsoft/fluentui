@@ -129,8 +129,8 @@ function normalizeValues(index?: NavItemValue | NavItemValue[]): NavItemValue[] 
  * Updates the list of open indexes based on an index that changes
  * @param value - the index that will change
  * @param previousOpenItems - list of current open indexes
- * @param multiple - if Accordion support multiple Panels opened at the same time
- * @param collapsible - if Accordion support multiple Panels closed at the same time
+ * @param multiple - if Nav support multiple SubItemGroups opened at the same time
+ * @param collapsible - if Nav support multiple SubItemGroups closed at the same time
  */
 function updateOpenItems(
   value: NavItemValue,
