@@ -399,6 +399,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             chartType,
             this.props.barwidth!,
             this.isIntegralDataset,
+            this.props.supportNegativeValuesForYAxis!,
             true,
           );
         }
@@ -409,6 +410,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           chartType,
           this.props.barwidth!,
           this.isIntegralDataset,
+          this.props.supportNegativeValuesForYAxis!,
         );
       }
 

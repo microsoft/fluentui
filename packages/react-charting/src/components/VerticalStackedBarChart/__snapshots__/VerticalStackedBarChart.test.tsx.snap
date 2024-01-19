@@ -103,7 +103,112 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         id="yAxisGElementchart_58"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-82.59615384615384}
+            />
+          </g>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-87.88461538461539}
+            />
+          </g>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
@@ -463,7 +568,146 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-82.59615384615384}
+            />
+          </g>
+          <text
+            aria-label="Total: 45"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="middle"
+            transform="translate(0, 0)"
+            x={56}
+            y={-88.59615384615384}
+          >
+            45
+          </text>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-87.88461538461539}
+            />
+          </g>
+          <text
+            aria-label="Total: 50"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="middle"
+            transform="translate(0, 0)"
+            x={-36}
+            y={-93.88461538461539}
+          >
+            50
+          </text>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
@@ -823,7 +1067,146 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         id="yAxisGElementchart_23"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-82.59615384615384}
+            />
+          </g>
+          <text
+            aria-label="Total: 45"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="middle"
+            transform="translate(0, 0)"
+            x={56}
+            y={-88.59615384615384}
+          >
+            45
+          </text>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-87.88461538461539}
+            />
+          </g>
+          <text
+            aria-label="Total: 50"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="middle"
+            transform="translate(0, 0)"
+            x={-36}
+            y={-93.88461538461539}
+          >
+            50
+          </text>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
@@ -1163,7 +1546,146 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         id="yAxisGElementchart_10"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-82.59615384615384}
+            />
+          </g>
+          <text
+            aria-label="Total: 45"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="middle"
+            transform="translate(0, 0)"
+            x={56}
+            y={-88.59615384615384}
+          >
+            45
+          </text>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-87.88461538461539}
+            />
+          </g>
+          <text
+            aria-label="Total: 50"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="middle"
+            transform="translate(0, 0)"
+            x={-36}
+            y={-93.88461538461539}
+          >
+            50
+          </text>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
@@ -1273,7 +1795,146 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         id="yAxisGElementchart_16"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={false}
+              fill="#0078d4"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={false}
+              fill="#00188f"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-82.59615384615384}
+            />
+          </g>
+          <text
+            aria-label="Total: 45"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="middle"
+            transform="translate(0, 0)"
+            x={56}
+            y={-88.59615384615384}
+          >
+            45
+          </text>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={false}
+              fill="#0078d4"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={false}
+              fill="#00188f"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-87.88461538461539}
+            />
+          </g>
+          <text
+            aria-label="Total: 50"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="middle"
+            transform="translate(0, 0)"
+            x={-36}
+            y={-93.88461538461539}
+          >
+            50
+          </text>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
@@ -1633,7 +2294,128 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         id="yAxisGElementchart_44"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            aria-label="0. Metadata1, 40%. Metadata2, 5%."
+            data-is-focusable={true}
+            id="0-singleBar"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          >
+            <rect
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              fill="#0078d4"
+              height={42.30769230769231}
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-77.3076923076923}
+            />
+            <rect
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              fill="#00188f"
+              height={5.288461538461538}
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-82.59615384615384}
+            />
+          </g>
+          <text
+            aria-label="Total: 45"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="middle"
+            transform="translate(0, 0)"
+            x={56}
+            y={-88.59615384615384}
+          >
+            45
+          </text>
+        </g>
+        <g>
+          <g
+            aria-label="20. Metadata1, 30%. Metadata2, 20%."
+            data-is-focusable={true}
+            id="1-singleBar"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+          >
+            <rect
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              fill="#0078d4"
+              height={31.73076923076923}
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-66.73076923076923}
+            />
+            <rect
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              fill="#00188f"
+              height={21.153846153846153}
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-87.88461538461539}
+            />
+          </g>
+          <text
+            aria-label="Total: 50"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="middle"
+            transform="translate(0, 0)"
+            x={-36}
+            y={-93.88461538461539}
+          >
+            50
+          </text>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
@@ -1993,7 +2775,146 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         id="yAxisGElementchart_30"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-82.59615384615384}
+            />
+          </g>
+          <text
+            aria-label="Total: 45"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="middle"
+            transform="translate(0, 0)"
+            x={56}
+            y={-88.59615384615384}
+          >
+            45
+          </text>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-87.88461538461539}
+            />
+          </g>
+          <text
+            aria-label="Total: 50"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="middle"
+            transform="translate(0, 0)"
+            x={-36}
+            y={-93.88461538461539}
+          >
+            50
+          </text>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
@@ -2353,7 +3274,146 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         id="yAxisGElementchart_37"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-82.59615384615384}
+            />
+          </g>
+          <text
+            aria-label="Total: 45"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="middle"
+            transform="translate(0, 0)"
+            x={56}
+            y={-88.59615384615384}
+          >
+            45
+          </text>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-87.88461538461539}
+            />
+          </g>
+          <text
+            aria-label="Total: 50"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="middle"
+            transform="translate(0, 0)"
+            x={-36}
+            y={-93.88461538461539}
+          >
+            50
+          </text>
+        </g>
+      </g>
       <g />
     </svg>
   </div>
@@ -2713,7 +3773,146 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         id="yAxisGElementchart_51"
         transform="translate(40, 0)"
       />
-      <g />
+      <g>
+        <g>
+          <g
+            id="0-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 40%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={42.30769230769231}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-77.3076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 5%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={5.288461538461538}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={48}
+              y={-82.59615384615384}
+            />
+          </g>
+          <text
+            aria-label="Total: 45"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="middle"
+            transform="translate(0, 0)"
+            x={56}
+            y={-88.59615384615384}
+          >
+            45
+          </text>
+        </g>
+        <g>
+          <g
+            id="1-singleBar"
+          >
+            <rect
+              aria-label="2020/04/30. Metadata1, 30%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#0078d4"
+              height={31.73076923076923}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-66.73076923076923}
+            />
+            <rect
+              aria-label="2020/04/30. Metadata2, 20%."
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+              data-is-focusable={true}
+              fill="#00188f"
+              height={21.153846153846153}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              transform="translate(0, 0)"
+              width={16}
+              x={-44}
+              y={-87.88461538461539}
+            />
+          </g>
+          <text
+            aria-label="Total: 50"
+            className=
+
+                {
+                  fill: #323130;
+                  font-size: 12px;
+                  font-weight: 600;
+                }
+            role="img"
+            textAnchor="middle"
+            transform="translate(0, 0)"
+            x={-36}
+            y={-93.88461538461539}
+          >
+            50
+          </text>
+        </g>
+      </g>
       <g />
     </svg>
   </div>

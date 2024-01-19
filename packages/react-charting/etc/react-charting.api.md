@@ -979,6 +979,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];
+    supportNegativeValuesForYAxis?: boolean;
     svgFocusZoneProps?: IFocusZoneProps;
     tickParams?: {
         tickValues?: number[] | Date[];
@@ -1320,6 +1321,7 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
     lineOptions?: ILineChartLineOptions;
     onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
     styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
+    supportNegativeYValues?: boolean;
     useSingleColor?: boolean;
     xAxisPadding?: number;
 }
@@ -1369,6 +1371,7 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     onRenderCalloutPerDataPoint?: IRenderFunction<IVSChartDataPoint>;
     onRenderCalloutPerStack?: IRenderFunction<IVerticalStackedChartProps>;
     styles?: IStyleFunctionOrObject<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>;
+    supportNegativeValues?: boolean;
     xAxisPadding?: number;
     yMinValue?: undefined;
 }

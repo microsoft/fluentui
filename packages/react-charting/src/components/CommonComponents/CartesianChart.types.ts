@@ -614,4 +614,10 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Used to control the first render cycle Performance optimization code.
    */
   enableFirstRenderOptimization?: boolean;
+
+  /**
+   * @default false
+   * Used for enabling negative values in Y axis.
+   */
+  supportNegativeValuesForYAxis?: boolean;
 }
