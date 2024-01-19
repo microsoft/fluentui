@@ -80,7 +80,7 @@ export type DropdownProps = ComponentProps<Partial<DropdownSlots>, 'button'> & C
 // @public (undocumented)
 export type DropdownSlots = {
     root: NonNullable<Slot<'div'>>;
-    expandIcon: Slot<'span'>;
+    expandIcon?: Slot<'span'>;
     clearButton?: Slot<'button'>;
     button: NonNullable<Slot<'button'>>;
     listbox?: Slot<typeof Listbox>;
@@ -206,6 +206,12 @@ export const useCombobox_unstable: (props: ComboboxProps, ref: React_2.Ref<HTMLI
 
 // @public (undocumented)
 export function useComboboxContextValues(state: ComboboxBaseState): ComboboxBaseContextValues;
+
+// @public (undocumented)
+export function useComboboxFilter<T extends {
+    children: React_2.ReactNode;
+    value: string;
+} | string>(query: string, options: T[], config: UseComboboxFilterConfig<T>): JSX.Element[];
 
 // @public
 export const useComboboxStyles_unstable: (state: ComboboxState) => ComboboxState;

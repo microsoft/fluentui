@@ -8,6 +8,7 @@ import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
+import type { UnionToIntersection } from '@fluentui/react-utilities';
 
 // @public
 export const ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE = "data-activedescendant-focusvisible";

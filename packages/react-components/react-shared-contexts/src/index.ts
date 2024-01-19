@@ -34,5 +34,17 @@ export type { BackgroundAppearanceContextValue } from './BackgroundAppearanceCon
 
 export { PortalMountNodeProvider, usePortalMountNode } from './PortalMountNodeContext';
 
-export { AnnounceProvider as AnnounceProvider_unstable, useAnnounce as useAnnounce_unstable } from './AnnounceContext';
-export type { AnnounceContextValue as AnnounceContextValue_unstable } from './AnnounceContext';
+export {
+  AnnounceProvider,
+  /** @deprecated Use AnnounceProvider instead. */
+  AnnounceProvider as AnnounceProvider_unstable,
+  useAnnounce,
+  /** @deprecated Use useAnnounce instead. */
+  useAnnounce as useAnnounce_unstable,
+} from './AnnounceContext';
+export type {
+  AnnounceContextValue,
+  /** @deprecated Use AnnounceContextValue instead. */
+  AnnounceContextValue as AnnounceContextValue_unstable,
+  AnnounceOptions,
+} from './AnnounceContext';
