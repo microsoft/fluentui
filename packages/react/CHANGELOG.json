@@ -2,6 +2,57 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 19 Jan 2024 07:29:32 GMT",
+      "tag": "@fluentui/react_v8.114.4",
+      "version": "8.114.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.51",
+            "commit": "ccde960028c8a2dfe7de9df7bc5e8aef27ba57c5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.31",
+            "commit": "ccde960028c8a2dfe7de9df7bc5e8aef27ba57c5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.38",
+            "commit": "ccde960028c8a2dfe7de9df7bc5e8aef27ba57c5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.36",
+            "commit": "ccde960028c8a2dfe7de9df7bc5e8aef27ba57c5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.10.2",
+            "commit": "ccde960028c8a2dfe7de9df7bc5e8aef27ba57c5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.41",
+            "commit": "ccde960028c8a2dfe7de9df7bc5e8aef27ba57c5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.13.24",
+            "commit": "ccde960028c8a2dfe7de9df7bc5e8aef27ba57c5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Jan 2024 07:28:13 GMT",
       "tag": "@fluentui/react_v8.114.3",
       "version": "8.114.3",

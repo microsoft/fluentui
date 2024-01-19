@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(eslint-plugin): register @nx plugin internally in order to be able to consume our custom @nx/workspace-* lint rules",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
