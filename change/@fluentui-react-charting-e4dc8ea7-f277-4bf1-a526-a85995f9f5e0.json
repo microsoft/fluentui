@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Support for Error handling",
+  "packageName": "@fluentui/react-charting",
+  "email": "srmukher@microsoft.com",
+  "dependentChangeType": "patch"
+}

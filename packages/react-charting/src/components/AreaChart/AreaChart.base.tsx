@@ -512,11 +512,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     containerWidth: number,
     xElement: SVGElement | null,
   ) => {
-    try {
-      this._chart = this._drawGraph(containerHeight, xAxis, yAxis, xElement!);
-    } catch (error) {
-      console.log('Error occured');
-    }
+    this._chart = this._drawGraph(containerHeight, xAxis, yAxis, xElement!);
   };
 
   private _onLegendClick(legend: string): void {

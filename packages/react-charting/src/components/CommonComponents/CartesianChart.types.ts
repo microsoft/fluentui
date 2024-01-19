@@ -499,8 +499,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    */
   getmargins?: (margins: IMargins) => void;
 
-  handleError?: () => void;
-
   /**
    * This is a call back method to the chart from cartesian chart.
    * params are xScale, yScale, containerHeight, containerWidth. These values were used to draw the graph.
@@ -616,4 +614,14 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Used to control the first render cycle Performance optimization code.
    */
   enableFirstRenderOptimization?: boolean;
+
+  /*
+   * Callback to handle error while chart is rendering.
+   */
+  handleError?: () => void;
+
+  /*
+   * Callback to handle empty state while chart is rendering.
+   */
+  handleEmptyState?: () => void;
 }

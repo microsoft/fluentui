@@ -65,7 +65,15 @@ export interface IAreaChartProps extends ICartesianChartProps {
    */
   optimizeLargeData?: boolean;
 
+  /*
+   * Callback to handle error while chart is rendering.
+   */
   handleError?: () => void;
+
+  /*
+   * Callback to handle empty state while chart is rendering.
+   */
+  handleEmptyState?: () => void;
 }
 
 /**

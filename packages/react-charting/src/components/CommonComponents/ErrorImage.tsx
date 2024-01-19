@@ -1,8 +1,6 @@
 import { ITheme } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 interface IErrorImageProps {
-  height?: number;
-  width?: number;
   theme?: ITheme;
 }
 class ErrorImage extends React.Component<IErrorImageProps, {}> {

@@ -213,15 +213,6 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
               enableReflow={true}
               yAxisTitle={this.state.showAxisTitles ? 'Variation of stock market prices' : undefined}
               xAxisTitle={this.state.showAxisTitles ? 'Number of days' : undefined}
-              handleError={() => (
-                <div>
-                  <img
-                    src={
-                      'https://img.freepik.com/free-vector/404-error-with-tired-person-concept-illustration_114360-7899.jpg?w=996&t=st=1704980908~exp=1704981508~hmac=c9dcc38fa37803ef28cce8639cbe5cb6a66af1d41892b9f9a15326ac3d4cc8da'
-                    }
-                  />
-                </div>
-              )}
             />
           </div>
         )}
@@ -245,15 +236,6 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
                 ) : null
               }
               enableReflow={true}
-              handleError={() => (
-                <div>
-                  <img
-                    src={
-                      'https://www.freepik.com/free-vector/404-error-with-tired-person-concept-illustration_20602774.htm#query=no%20results&position=3&from_view=keyword&track=ais&uuid=58e325f3-9cbf-45ce-88b6-5a1cf9d8973e#position=3&query=no%20results'
-                    }
-                  />
-                </div>
-              )}
             />
           </div>
         )}

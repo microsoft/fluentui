@@ -18,8 +18,6 @@ export interface IErrorBoundaryProps {
 
 interface IErrorBoundaryState {
   hasError: boolean;
-  error: Error | null;
-  errorInfo: any;
 }
 
 class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryState> {
@@ -27,21 +25,17 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
     super(props);
     this.state = {
       hasError: false,
-      error: null,
-      errorInfo: null,
     };
   }
 
-  componentDidCatch(error: any, errorInfo: any) {
+  componentDidCatch(_error: any, _errorInfo: any) {
     this.setState({
       hasError: true,
-      error: error,
-      errorInfo: errorInfo,
     });
   }
 
-  static getDerivedStateFromError(error: Error) {
-    return { hasError: true, error: error };
+  static getDerivedStateFromError(_error: Error) {
+    return { hasError: true };
   }
 
   render() {
