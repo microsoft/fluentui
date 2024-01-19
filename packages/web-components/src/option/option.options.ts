@@ -1,4 +1,4 @@
-import { ValuesOf } from '@microsoft/fast-foundation';
+import { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
 
 /**
  * OptionAppearance - option color defined by a design token alias.

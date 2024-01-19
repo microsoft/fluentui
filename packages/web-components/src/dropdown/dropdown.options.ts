@@ -1,5 +1,4 @@
-import { ValuesOf } from '@microsoft/fast-foundation';
-
+import { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
 /**
  * DropdownAppearance - dropdown appearance defined by css.
  * @public
