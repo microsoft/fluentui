@@ -8,6 +8,8 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -87,8 +89,8 @@ export type RatingItemState = ComponentState<RatingItemSlots> & Required<Pick<Ra
 };
 
 // @public
-export type RatingOnChangeData = {
-    value?: number;
+export type RatingOnChangeEventData = EventData<'change', React_2.FormEvent<HTMLDivElement>> & {
+    value: number;
 };
 
 // @public
@@ -99,7 +101,7 @@ export type RatingProps = ComponentProps<RatingSlots> & {
     iconOutline?: React_2.ReactElement;
     max?: number;
     name?: string;
-    onChange?: (ev: React_2.SyntheticEvent | Event, data: RatingOnChangeData) => void;
+    onChange?: EventHandler<RatingOnChangeEventData>;
     step?: 0.5 | 1;
     size?: 'small' | 'medium' | 'large' | 'extra-large';
     value?: number;

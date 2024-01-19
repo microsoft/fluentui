@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
 import { RatingItemContextValue } from '../RatingItem/RatingItem.types';
 
 export type RatingSlots = {
@@ -40,7 +40,7 @@ export type RatingProps = ComponentProps<RatingSlots> & {
   /**
    * Callback when the rating value is changed by the user.
    */
-  onChange?: (ev: React.SyntheticEvent | Event, data: RatingOnChangeData) => void;
+  onChange?: EventHandler<RatingOnChangeEventData>;
   /**
    * Sets the precision to allow half-filled shapes in Rating
    * @default 1
@@ -60,11 +60,11 @@ export type RatingProps = ComponentProps<RatingSlots> & {
 /**
  * Data for the onChange event for Rating.
  */
-export type RatingOnChangeData = {
+export type RatingOnChangeEventData = EventData<'change', React.FormEvent<HTMLDivElement>> & {
   /**
    * The new value of the rating.
    */
-  value?: number;
+  value: number;
 };
 
 /**

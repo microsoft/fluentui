@@ -76,7 +76,7 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
       const newValue = parseFloat(ev.target.value);
       if (!isNaN(newValue)) {
         setValue(newValue);
-        onChange?.(ev, { value: newValue });
+        onChange?.(ev, { type: 'change', event: ev, value: newValue });
       }
     }
   };

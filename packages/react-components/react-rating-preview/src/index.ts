@@ -6,7 +6,7 @@ export {
   useRating_unstable,
   useRatingContextValues,
 } from './Rating';
-export type { RatingProps, RatingSlots, RatingState, RatingOnChangeData, RatingContextValues } from './Rating';
+export type { RatingProps, RatingSlots, RatingState, RatingOnChangeEventData, RatingContextValues } from './Rating';
 export {
   RatingItem,
   ratingItemClassNames,
