@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: Replace Spinner's SVG animation with an animated conic-gradient background",
+  "packageName": "@fluentui/react-spinner",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
