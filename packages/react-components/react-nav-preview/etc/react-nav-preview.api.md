@@ -139,7 +139,7 @@ export const NavSubItemGroup: ForwardRefComponent<NavSubItemGroupProps>;
 export const navSubItemGroupClassNames: SlotClassNames<NavSubItemGroupSlots>;
 
 // @public
-export type NavSubItemGroupProps = ComponentProps<NavSubItemGroupSlots> & {};
+export type NavSubItemGroupProps = ComponentProps<NavSubItemGroupSlots>;
 
 // @public (undocumented)
 export type NavSubItemGroupSlots = {
