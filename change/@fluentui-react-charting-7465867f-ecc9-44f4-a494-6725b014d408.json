@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Negative value support for VerticalBarChart",
+  "packageName": "@fluentui/react-charting",
+  "email": "shubhabrata08@gmail.com",
+  "dependentChangeType": "patch"
+}
