@@ -133,7 +133,7 @@ export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButton
     );
   }
 
-  useButtonStyles_unstable({ ...state, iconPosition: 'before' });
+  useButtonStyles_unstable({ ...state, iconPosition: 'before', actionState: 'none' });
 
   return state;
 };

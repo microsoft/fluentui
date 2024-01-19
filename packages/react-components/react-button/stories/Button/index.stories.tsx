@@ -10,6 +10,7 @@ export { Icon } from './ButtonIcon.stories';
 export { Size } from './ButtonSize.stories';
 export { Disabled } from './ButtonDisabled.stories';
 export { WithLongText } from './ButtonWithLongText.stories';
+export { ActionState } from './ButtonActionState.stories';
 
 export default {
   title: 'Components/Button/Button',

@@ -17,4 +17,4 @@ export type CompoundButtonProps = ComponentProps<Partial<CompoundButtonSlots>> &
   Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>;
 
 export type CompoundButtonState = ComponentState<CompoundButtonSlots> &
-  Omit<ButtonState, keyof ButtonSlots | 'components'>;
+  Omit<ButtonState, keyof ButtonSlots | 'components' | 'stateIcon'>;

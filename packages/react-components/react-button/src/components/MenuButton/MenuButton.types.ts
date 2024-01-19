@@ -12,4 +12,4 @@ export type MenuButtonProps = ComponentProps<MenuButtonSlots> &
   Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'shape' | 'size'>;
 
 export type MenuButtonState = ComponentState<MenuButtonSlots> &
-  Omit<ButtonState, keyof ButtonSlots | 'components' | 'iconPosition'>;
+  Omit<ButtonState, keyof ButtonSlots | 'components' | 'iconPosition' | 'actionState'>;

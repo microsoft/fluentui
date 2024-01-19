@@ -18,6 +18,11 @@ export type ButtonSlots = {
  */
 export type ButtonSize = 'small' | 'medium' | 'large';
 
+/**
+ * A button supports different action states.
+ */
+export type ButtonActionState = 'none' | 'inprogress' | 'complete';
+
 export type ButtonProps = ComponentProps<ButtonSlots> & {
   /**
    * A button can have its content and borders styled for greater emphasis or to be subtle.
@@ -67,10 +72,22 @@ export type ButtonProps = ComponentProps<ButtonSlots> & {
    * @default 'medium'
    */
   size?: ButtonSize;
+
+  /**
+   * A button supports different action states.
+   *
+   * @default 'none'
+   */
+  actionState?: ButtonActionState;
 };
 
 export type ButtonState = ComponentState<ButtonSlots> &
-  Required<Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>> & {
+  Required<
+    Pick<
+      ButtonProps,
+      'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size' | 'actionState'
+    >
+  > & {
     /**
      * A button can contain only an icon.
      *

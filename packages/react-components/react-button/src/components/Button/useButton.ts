@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
 import { useButtonContext } from '../../contexts/ButtonContext';
 import type { ButtonProps, ButtonState } from './Button.types';
 
@@ -23,8 +23,21 @@ export const useButton_unstable = (
     iconPosition = 'before',
     shape = 'rounded',
     size = contextSize ?? 'medium',
+    actionState = 'none',
+    onClick,
   } = props;
   const iconShorthand = slot.optional(icon, { elementType: 'span' });
+
+  const _props = { ...props };
+
+  _props.onClick = useEventCallback(
+    (ev: React.MouseEvent<HTMLButtonElement, MouseEvent> & React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+      if (actionState === 'none') {
+        onClick && onClick(ev);
+      }
+    },
+  );
+
   return {
     // Props passed at the top-level
     appearance,
@@ -33,9 +46,10 @@ export const useButton_unstable = (
     iconPosition,
     shape,
     size, // State calculated from a set of props
+    actionState,
     iconOnly: Boolean(iconShorthand?.children && !props.children), // Slots definition
     components: { root: 'button', icon: 'span' },
-    root: slot.always<ARIAButtonSlotProps<'a'>>(getIntrinsicElementProps(as, useARIAButtonProps(props.as, props)), {
+    root: slot.always<ARIAButtonSlotProps<'a'>>(getIntrinsicElementProps(as, useARIAButtonProps(props.as, _props)), {
       elementType: 'button',
       defaultProps: {
         ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,

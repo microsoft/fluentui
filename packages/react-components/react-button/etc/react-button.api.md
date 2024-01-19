@@ -37,6 +37,7 @@ export type ButtonProps = ComponentProps<ButtonSlots> & {
     iconPosition?: 'before' | 'after';
     shape?: 'rounded' | 'circular' | 'square';
     size?: ButtonSize;
+    actionState?: ButtonActionState;
 };
 
 // @public (undocumented)
@@ -46,7 +47,7 @@ export type ButtonSlots = {
 };
 
 // @public (undocumented)
-export type ButtonState = ComponentState<ButtonSlots> & Required<Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>> & {
+export type ButtonState = ComponentState<ButtonSlots> & Required<Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size' | 'actionState'>> & {
     iconOnly: boolean;
 };
 
@@ -66,7 +67,7 @@ export type CompoundButtonSlots = ButtonSlots & {
 };
 
 // @public (undocumented)
-export type CompoundButtonState = ComponentState<CompoundButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components'>;
+export type CompoundButtonState = ComponentState<CompoundButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components' | 'stateIcon'>;
 
 // @public
 export const MenuButton: ForwardRefComponent<MenuButtonProps>;
@@ -83,7 +84,7 @@ export type MenuButtonSlots = ButtonSlots & {
 };
 
 // @public (undocumented)
-export type MenuButtonState = ComponentState<MenuButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components' | 'iconPosition'>;
+export type MenuButtonState = ComponentState<MenuButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components' | 'iconPosition' | 'actionState'>;
 
 // @public
 const renderButton_unstable: (state: ButtonState) => JSX.Element;
@@ -116,7 +117,7 @@ export type SplitButtonSlots = {
 };
 
 // @public (undocumented)
-export type SplitButtonState = ComponentState<SplitButtonSlots> & Omit<ButtonState, 'components' | 'iconOnly' | 'root'> & Omit<MenuButtonState, 'components' | 'iconOnly' | 'root'>;
+export type SplitButtonState = ComponentState<SplitButtonSlots> & Omit<ButtonState, 'components' | 'iconOnly' | 'root' | 'actionState'> & Omit<MenuButtonState, 'components' | 'iconOnly' | 'root'>;
 
 // @public
 export const ToggleButton: ForwardRefComponent<ToggleButtonProps>;
