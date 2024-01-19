@@ -67,15 +67,16 @@ function useTableColumnSizingState<TItem>(
     [toggleInteractiveMode],
   );
 
+  const { getColumnById, setColumnWidth, getColumns } = columnResizeState;
+  const { getOnMouseDown } = mouseHandler;
   return {
     ...tableState,
     tableRef: measureElementRef,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     columnSizing_unstable: {
-      getOnMouseDown: mouseHandler.getOnMouseDown,
-      setColumnWidth: (columnId: TableColumnId, w: number) =>
-        columnResizeState.setColumnWidth(undefined, { columnId, width: w }),
-      getColumnWidths: columnResizeState.getColumns,
+      getOnMouseDown,
+      setColumnWidth: (columnId: TableColumnId, w: number) => setColumnWidth(undefined, { columnId, width: w }),
+      getColumnWidths: getColumns,
       getTableProps: (props = {}) => {
         return {
           ...props,
@@ -85,29 +86,35 @@ function useTableColumnSizingState<TItem>(
           },
         };
       },
-      getTableHeaderCellProps: (columnId: TableColumnId) => {
-        const col = columnResizeState.getColumnById(columnId);
-        const isLastColumn = columns[columns.length - 1]?.columnId === columnId;
+      getTableHeaderCellProps: React.useCallback(
+        (columnId: TableColumnId) => {
+          const col = getColumnById(columnId);
+          const isLastColumn = columns[columns.length - 1]?.columnId === columnId;
 
-        const aside = isLastColumn ? null : (
-          <TableResizeHandle
-            onMouseDown={mouseHandler.getOnMouseDown(columnId)}
-            onTouchStart={mouseHandler.getOnMouseDown(columnId)}
-            {...getKeyboardResizingProps(columnId, col?.width || 0)}
-          />
-        );
+          const aside = isLastColumn ? null : (
+            <TableResizeHandle
+              onMouseDown={getOnMouseDown(columnId)}
+              onTouchStart={getOnMouseDown(columnId)}
+              {...getKeyboardResizingProps(columnId, col?.width || 0)}
+            />
+          );
 
-        return col
-          ? {
-              style: getColumnStyles(col),
-              aside,
-            }
-          : {};
-      },
-      getTableCellProps: (columnId: TableColumnId) => {
-        const col = columnResizeState.getColumnById(columnId);
-        return col ? { style: getColumnStyles(col) } : {};
-      },
+          return col
+            ? {
+                style: getColumnStyles(col),
+                aside,
+              }
+            : {};
+        },
+        [getColumnById, columns, getKeyboardResizingProps, getOnMouseDown],
+      ),
+      getTableCellProps: React.useCallback(
+        (columnId: TableColumnId) => {
+          const col = getColumnById(columnId);
+          return col ? { style: getColumnStyles(col) } : {};
+        },
+        [getColumnById],
+      ),
       enableKeyboardMode,
     },
   };
