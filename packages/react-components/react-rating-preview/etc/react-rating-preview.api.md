@@ -64,9 +64,6 @@ export const RatingItem: ForwardRefComponent<RatingItemProps>;
 export const ratingItemClassNames: SlotClassNames<RatingItemSlots>;
 
 // @public
-export const RatingItemContext: React_2.Context<RatingItemContextValue | undefined>;
-
-// @public
 export type RatingItemProps = ComponentProps<Partial<RatingItemSlots>> & {
     value?: number;
 };
