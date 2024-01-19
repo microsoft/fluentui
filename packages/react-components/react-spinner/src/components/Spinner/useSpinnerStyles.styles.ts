@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStaticStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SpinnerState, SpinnerSlots } from './Spinner.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -9,270 +9,178 @@ export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
   label: 'fui-Spinner__label',
 };
 
-/*
- * TODO: Update with proper tokens when added
- * Radii for the Spinner circles
- */
-const rValues = {
-  extraTiny: '7px',
-  tiny: '9px',
-  extraSmall: '11px',
-  small: '13px',
-  medium: '14.5px',
-  large: '16.5px',
-  extraLarge: '18.5px',
-  huge: '20px',
+const vars = {
+  angle1: '--fui-Spinner--angle1',
+  angle2: '--fui-Spinner--angle2',
+  strokeWidth: '--fui-Spinner--strokeWidth',
 };
 
-/*
- * TODO: Update with proper tokens when added
- * Sizes for the Spinner
- */
-const spinnnerSizes = {
-  extraTiny: '16px',
-  tiny: '20px',
-  extraSmall: '24px',
-  small: '28px',
-  medium: '32px',
-  large: '36px',
-  extraLarge: '40px',
-  huge: '44px',
-};
-
-/*
- * TODO: Update with proper tokens when added
- * Animation for Spinner
- */
-const spinnerAnimation = {
-  container: {
-    animationDuration: '3s',
-    animationIterationCount: 'infinite',
-    animationTimingFunction: 'linear',
-    backgroundColor: 'transparent',
+// Register the angle CSS variables so they can be used in animations.
+// This isn't supported in all browsers, but the animations are designed to fall back gracefully when not supported.
+const useStaticStyles = makeStaticStyles({
+  [`@property ${vars.angle1}`]: {
+    syntax: '"<angle>"',
+    inherits: 'true',
+    initialValue: '0deg',
   },
-};
+  [`@property ${vars.angle2}`]: {
+    syntax: '"<angle>"',
+    inherits: 'true',
+    initialValue: '0deg',
+  },
+});
 
-/**
- * Styles for the root slot
- */
+const useRootBaseClassName = makeResetStyles({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  lineHeight: '0',
+  gap: '8px',
+});
+
 const useRootStyles = makeStyles({
-  root: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    lineHeight: '0',
-    ...shorthands.gap('8px'),
-  },
-
-  horizontal: {
-    flexDirection: 'row',
-  },
-
   vertical: {
     flexDirection: 'column',
   },
 });
 
-const useLoaderStyles = makeStyles({
-  // global SVG class
-  spinnerSVG: {
-    ':focus': {
-      ...shorthands.outline('3px', 'solid', 'transparent'),
+const useSpinnerBaseClassName = makeResetStyles({
+  position: 'relative',
+  borderRadius: tokens.borderRadiusCircular,
+  maskImage:
+    `radial-gradient(closest-side, ` +
+    `transparent calc(100% - var(${vars.strokeWidth}) - 1px), ` +
+    `white       calc(100% - var(${vars.strokeWidth})))`,
+
+  color: tokens.colorBrandStroke1,
+  backgroundColor: tokens.colorBrandStroke2Contrast,
+
+  // Provide fallback static values for browsers that don't support animating CSS vars
+  [vars.angle1]: '0deg',
+  [vars.angle2]: '90deg',
+
+  animationDuration: '1.5s',
+  animationIterationCount: 'infinite',
+  animationTimingFunction: tokens.curveEasyEase,
+  animationName: {
+    '0%': {
+      [vars.angle1]: '0deg',
+      [vars.angle2]: '0deg',
     },
-    ['& > svg']: {
-      animationName: {
-        '0%': { transform: 'rotate(0deg)' },
-        '100%': { transform: 'rotate(360deg)' },
+    '50%': {
+      [vars.angle1]: '100deg',
+      [vars.angle2]: '400deg',
+    },
+    '100%': {
+      [vars.angle1]: '400deg',
+      [vars.angle2]: '400deg',
+    },
+  },
+  '@media screen and (prefers-reduced-motion: reduce)': {
+    animationDuration: '0.01ms',
+    animationIterationCount: '1',
+  },
+
+  '::before': {
+    content: '""',
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    borderRadius: 'inherit',
+
+    backgroundImage:
+      `conic-gradient(` +
+      `transparent var(${vars.angle1}), ` +
+      `currentcolor var(${vars.angle1}) var(${vars.angle2}), ` +
+      `transparent var(${vars.angle2}))`,
+
+    '@media screen and (forced-colors: active)': {
+      forcedColorAdjust: 'none',
+      backgroundImage:
+        `conic-gradient(` +
+        `HighlightText var(${vars.angle1}), ` +
+        `Highlight var(${vars.angle1}) var(${vars.angle2}), ` +
+        `HighlightText var(${vars.angle2}))`,
+    },
+
+    animationDuration: '3s',
+    animationIterationCount: 'infinite',
+    animationTimingFunction: 'linear',
+    animationName: {
+      '0%': {
+        transform: 'rotate(0deg)',
       },
-      ...spinnerAnimation.container,
-
-      '@media screen and (prefers-reduced-motion: reduce)': {
-        animationDuration: '0.01ms',
-        animationIterationCount: '1',
+      '100%': {
+        transform: 'rotate(360deg)',
       },
     },
-    ['& > svg > circle']: {
-      cx: '50%',
-      cy: '50%',
-      fill: 'none',
-    },
-  },
 
-  'extra-tiny': {
-    ['& > svg']: {
-      height: spinnnerSizes.extraTiny,
-      width: spinnnerSizes.extraTiny,
-    },
-    ['& > svg > circle']: {
-      strokeWidth: tokens.strokeWidthThick,
-      r: rValues.extraTiny,
-    },
-  },
-
-  tiny: {
-    ['& > svg']: {
-      height: spinnnerSizes.tiny,
-      width: spinnnerSizes.tiny,
-    },
-    ['& > svg > circle']: {
-      strokeWidth: tokens.strokeWidthThick,
-      r: rValues.tiny,
-    },
-  },
-
-  'extra-small': {
-    ['& > svg']: {
-      height: spinnnerSizes.extraSmall,
-      width: spinnnerSizes.extraSmall,
-    },
-    ['& > svg > circle']: {
-      strokeWidth: tokens.strokeWidthThick,
-      r: rValues.extraSmall,
-    },
-  },
-
-  small: {
-    ['& > svg']: {
-      height: spinnnerSizes.small,
-      width: spinnnerSizes.small,
-    },
-    ['& > svg > circle']: {
-      strokeWidth: tokens.strokeWidthThick,
-      r: rValues.small,
-    },
-  },
-
-  medium: {
-    ['& > svg']: {
-      height: spinnnerSizes.medium,
-      width: spinnnerSizes.medium,
-    },
-    ['& > svg > circle']: {
-      strokeWidth: tokens.strokeWidthThicker,
-      r: rValues.medium,
-    },
-  },
-
-  large: {
-    ['& > svg']: {
-      height: spinnnerSizes.large,
-      width: spinnnerSizes.large,
-    },
-    ['& > svg > circle']: {
-      strokeWidth: tokens.strokeWidthThicker,
-      r: rValues.large,
-    },
-  },
-
-  'extra-large': {
-    ['& > svg']: {
-      height: spinnnerSizes.extraLarge,
-      width: spinnnerSizes.extraLarge,
-    },
-    ['& > svg > circle']: {
-      strokeWidth: tokens.strokeWidthThicker,
-      r: rValues.extraLarge,
-    },
-  },
-
-  huge: {
-    ['& > svg']: {
-      height: spinnnerSizes.huge,
-      width: spinnnerSizes.huge,
-    },
-    ['& > svg > circle']: {
-      strokeWidth: tokens.strokeWidthThickest,
-      r: rValues.huge,
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      animationIterationCount: '1',
+      animationDuration: '0.01s',
     },
   },
 });
 
-const useTrackStyles = makeStyles({
+const useSpinnerStyles = makeStyles({
   inverted: {
-    ['& > svg > circle.fui-Spinner__Tail']: {
-      stroke: tokens.colorNeutralStrokeOnBrand2,
-      animationName: {
-        '0%': {
-          strokeDasharray: '1,150',
-          strokeDashoffset: '0',
-        },
-
-        '50%': {
-          strokeDasharray: '90,150',
-          strokeDashoffset: '-35',
-        },
-
-        '100%': {
-          strokeDasharray: '90,150',
-          strokeDashoffset: '-124',
-        },
-      },
-      animationDuration: '1.5s',
-      animationIterationCount: 'infinite',
-      animationTimingFunction: tokens.curveEasyEase,
-      strokeLinecap: 'round',
-      transform: 'rotate(-90deg)',
-      transformOrigin: '50% 50%',
-
-      '@media screen and (prefers-reduced-motion: reduce)': {
-        animationDuration: '0.01ms',
-        animationIterationCount: '1',
-      },
-    },
-
-    ['& > svg > circle.fui-Spinner__Track']: {
-      stroke: 'rgba(255, 255, 255, 0.2)', // this is whiteAlpha[20] but that token is not exported
-    },
+    color: tokens.colorNeutralStrokeOnBrand2,
+    backgroundColor: tokens.colorNeutralStrokeAlpha2,
   },
-  primary: {
-    ['& > svg > circle.fui-Spinner__Tail']: {
-      stroke: tokens.colorBrandStroke1,
-      '@media screen and (forced-colors: active)': {
-        stroke: tokens.colorNeutralStrokeOnBrand2,
-      },
-      animationName: {
-        '0%': {
-          strokeDasharray: '1,150',
-          strokeDashoffset: '0',
-        },
 
-        '50%': {
-          strokeDasharray: '90,150',
-          strokeDashoffset: '-35',
-        },
+  'extra-tiny': {
+    width: '16px',
+    height: '16px',
+    [vars.strokeWidth]: tokens.strokeWidthThick,
+  },
 
-        '100%': {
-          strokeDasharray: '90,150',
-          strokeDashoffset: '-124',
-        },
-      },
-      animationDuration: '1.5s',
-      animationIterationCount: 'infinite',
-      animationTimingFunction: tokens.curveEasyEase,
-      strokeLinecap: 'round',
-      transform: 'rotate(-90deg)',
-      transformOrigin: '50% 50%',
-      '@media screen and (prefers-reduced-motion: reduce)': {
-        animationDuration: '0.01ms',
-        animationIterationCount: '1',
-      },
-    },
-    ['& > svg > circle.fui-Spinner__Track']: {
-      stroke: tokens.colorBrandStroke2Contrast,
-      '@media screen and (forced-colors: active)': {
-        stroke: tokens.colorNeutralBackgroundInverted,
-      },
-    },
+  tiny: {
+    width: '20px',
+    height: '20px',
+    [vars.strokeWidth]: tokens.strokeWidthThick,
+  },
+
+  'extra-small': {
+    width: '24px',
+    height: '24px',
+    [vars.strokeWidth]: tokens.strokeWidthThick,
+  },
+
+  small: {
+    width: '28px',
+    height: '28px',
+    [vars.strokeWidth]: tokens.strokeWidthThick,
+  },
+
+  medium: {
+    width: '32px',
+    height: '32px',
+    [vars.strokeWidth]: tokens.strokeWidthThicker,
+  },
+
+  large: {
+    width: '36px',
+    height: '36px',
+    [vars.strokeWidth]: tokens.strokeWidthThicker,
+  },
+
+  'extra-large': {
+    width: '40px',
+    height: '40px',
+    [vars.strokeWidth]: tokens.strokeWidthThicker,
+  },
+
+  huge: {
+    width: '44px',
+    height: '44px',
+    [vars.strokeWidth]: tokens.strokeWidthThickest,
   },
 });
 
 const useLabelStyles = makeStyles({
-  // style for label
   inverted: {
-    color: 'rgba(255, 255, 255, 1)', // This is white alpha but the token is not exported
+    color: tokens.colorNeutralForegroundStaticInverted,
   },
-
-  primary: {}, // no change
 
   'extra-tiny': {
     ...typographyStyles.body1,
@@ -311,25 +219,27 @@ const useLabelStyles = makeStyles({
  * Apply styling to the Spinner slots based on the state
  */
 export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => {
-  const { labelPosition, size, appearance = 'primary' } = state;
+  const { labelPosition, size, appearance } = state;
+
+  useStaticStyles();
+  const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
-  const spinnerStyles = useLoaderStyles();
+  const spinnerBaseClassName = useSpinnerBaseClassName();
+  const spinnerStyles = useSpinnerStyles();
   const labelStyles = useLabelStyles();
-  const trackStyles = useTrackStyles();
 
   state.root.className = mergeClasses(
     spinnerClassNames.root,
-    rootStyles.root,
+    rootBaseClassName,
     (labelPosition === 'above' || labelPosition === 'below') && rootStyles.vertical,
-    (labelPosition === 'before' || labelPosition === 'after') && rootStyles.horizontal,
     state.root.className,
   );
   if (state.spinner) {
     state.spinner.className = mergeClasses(
       spinnerClassNames.spinner,
-      spinnerStyles.spinnerSVG,
+      spinnerBaseClassName,
       spinnerStyles[size],
-      trackStyles[appearance],
+      appearance === 'inverted' && spinnerStyles.inverted,
       state.spinner.className,
     );
   }
@@ -337,7 +247,7 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
     state.label.className = mergeClasses(
       spinnerClassNames.label,
       labelStyles[size],
-      labelStyles[appearance],
+      appearance === 'inverted' && labelStyles.inverted,
       state.label.className,
     );
   }
