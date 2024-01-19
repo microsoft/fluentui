@@ -15,7 +15,7 @@ export {
   useRatingItem_unstable,
 } from './RatingItem';
 export type { RatingItemProps, RatingItemSlots, RatingItemState } from './RatingItem';
-export { RatingItemContext, RatingItemProvider, useRatingItemContextValue_unstable } from './contexts/index';
+export { RatingItemContext, RatingItemProvider, useRatingItemContextValue_unstable } from './contexts';
 export {
   RatingDisplay,
   ratingDisplayClassNames,
