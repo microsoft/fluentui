@@ -17,7 +17,12 @@ describe('Unit test to convert data to localized string', () => {
   test('Should return undefined when data provided is undefined', () => {
     expect(utils.convertToLocaleString(undefined)).toBeUndefined();
   });
-
+  test('Should return NaN when data is NaN', () => {
+    expect(utils.convertToLocaleString(NaN)).toBeNaN();
+  });
+  test('Should return localized 0 when data is numeric 0', () => {
+    expect(utils.convertToLocaleString(0)).toBe('0');
+  });
   test('Should return the localised data in the given culture when input data is a string', () => {
     expect(utils.convertToLocaleString('text', 'en-GB')).toBe('text');
     expect(utils.convertToLocaleString('text', 'ar-SY')).toBe('text');
