@@ -9,21 +9,6 @@ export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
   label: 'fui-Spinner__label',
 };
 
-/*
- * TODO: Update with proper tokens when added
- * Sizes for the Spinner
- */
-const spinnnerSizes = {
-  extraTiny: '16px',
-  tiny: '20px',
-  extraSmall: '24px',
-  small: '28px',
-  medium: '32px',
-  large: '36px',
-  extraLarge: '40px',
-  huge: '44px',
-};
-
 // CSS variables used internally by Spinner
 const vars = {
   tailStart: '--fui-Spinner--tailStart',
@@ -61,8 +46,8 @@ const useRootStyles = makeStyles({
 });
 
 const useSpinnerBaseClassName = makeResetStyles({
-  height: spinnnerSizes.medium,
-  width: spinnnerSizes.medium,
+  height: '32px',
+  width: '32px',
   [vars.strokeWidth]: tokens.strokeWidthThicker,
 
   backgroundColor: tokens.colorBrandStroke2Contrast,
@@ -136,26 +121,26 @@ const useSpinnerStyles = makeStyles({
   },
 
   'extra-tiny': {
-    height: spinnnerSizes.extraTiny,
-    width: spinnnerSizes.extraTiny,
+    height: '16px',
+    width: '16px',
     [vars.strokeWidth]: tokens.strokeWidthThick,
   },
 
   tiny: {
-    height: spinnnerSizes.tiny,
-    width: spinnnerSizes.tiny,
+    height: '20px',
+    width: '20px',
     [vars.strokeWidth]: tokens.strokeWidthThick,
   },
 
   'extra-small': {
-    height: spinnnerSizes.extraSmall,
-    width: spinnnerSizes.extraSmall,
+    height: '24px',
+    width: '24px',
     [vars.strokeWidth]: tokens.strokeWidthThick,
   },
 
   small: {
-    height: spinnnerSizes.small,
-    width: spinnnerSizes.small,
+    height: '28px',
+    width: '28px',
     [vars.strokeWidth]: tokens.strokeWidthThick,
   },
 
@@ -164,20 +149,20 @@ const useSpinnerStyles = makeStyles({
   },
 
   large: {
-    height: spinnnerSizes.large,
-    width: spinnnerSizes.large,
+    height: '36px',
+    width: '36px',
     // strokeWidth set in useSpinnerBaseClassName
   },
 
   'extra-large': {
-    height: spinnnerSizes.extraLarge,
-    width: spinnnerSizes.extraLarge,
+    height: '40px',
+    width: '40px',
     // strokeWidth set in useSpinnerBaseClassName
   },
 
   huge: {
-    height: spinnnerSizes.huge,
-    width: spinnnerSizes.huge,
+    height: '44px',
+    width: '44px',
     [vars.strokeWidth]: tokens.strokeWidthThickest,
   },
 });
