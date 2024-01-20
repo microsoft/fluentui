@@ -9,21 +9,37 @@ export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
   label: 'fui-Spinner__label',
 };
 
+/*
+ * TODO: Update with proper tokens when added
+ * Sizes for the Spinner
+ */
+const spinnnerSizes = {
+  extraTiny: '16px',
+  tiny: '20px',
+  extraSmall: '24px',
+  small: '28px',
+  medium: '32px',
+  large: '36px',
+  extraLarge: '40px',
+  huge: '44px',
+};
+
+// CSS variables used internally by Spinner
 const vars = {
-  angle1: '--fui-Spinner--angle1',
-  angle2: '--fui-Spinner--angle2',
+  tailStart: '--fui-Spinner--tailStart',
+  tailEnd: '--fui-Spinner--tailEnd',
   strokeWidth: '--fui-Spinner--strokeWidth',
 };
 
 // Register the angle CSS variables so they can be used in animations.
 // This isn't supported in all browsers, but the animations are designed to fall back gracefully when not supported.
 const useStaticStyles = makeStaticStyles({
-  [`@property ${vars.angle1}`]: {
+  [`@property ${vars.tailStart}`]: {
     syntax: '"<angle>"',
     inherits: 'true',
     initialValue: '0deg',
   },
-  [`@property ${vars.angle2}`]: {
+  [`@property ${vars.tailEnd}`]: {
     syntax: '"<angle>"',
     inherits: 'true',
     initialValue: '0deg',
@@ -45,50 +61,50 @@ const useRootStyles = makeStyles({
 });
 
 const useSpinnerBaseClassName = makeResetStyles({
-  position: 'relative',
-  borderRadius: tokens.borderRadiusCircular,
+  height: spinnnerSizes.medium,
+  width: spinnnerSizes.medium,
+  [vars.strokeWidth]: tokens.strokeWidthThicker,
 
-  color: tokens.colorBrandStroke1,
   backgroundColor: tokens.colorBrandStroke2Contrast,
+  color: tokens.colorBrandStroke1,
 
+  '@media screen and (forced-colors: active)': {
+    backgroundColor: 'HighlightText',
+    color: 'Highlight',
+    forcedColorAdjust: 'none',
+  },
+
+  // The spinner is a donut shape: make it circular with borderRadius and cut out the center with maskImage
+  borderRadius: tokens.borderRadiusCircular,
   maskImage:
     `radial-gradient(closest-side, ` +
     `transparent calc(100% - var(${vars.strokeWidth}) - 1px), ` +
     `white       calc(100% - var(${vars.strokeWidth})))`,
 
+  // This conic-gradient draws the spinner tail as a section between the tailStart and tailEnd angles
   backgroundImage:
     `conic-gradient(` +
-    `transparent var(${vars.angle1}), ` +
-    `currentcolor var(${vars.angle1}) var(${vars.angle2}), ` +
-    `transparent var(${vars.angle2}))`,
+    `transparent  var(${vars.tailStart}), ` +
+    `currentcolor var(${vars.tailStart}) var(${vars.tailEnd}), ` +
+    `transparent  var(${vars.tailEnd}))`,
 
-  '@media screen and (forced-colors: active)': {
-    forcedColorAdjust: 'none',
-    backgroundImage:
-      `conic-gradient(` +
-      `HighlightText var(${vars.angle1}), ` +
-      `Highlight var(${vars.angle1}) var(${vars.angle2}), ` +
-      `HighlightText var(${vars.angle2}))`,
-  },
-
-  animationDuration: '1.5s, 3s',
-  animationIterationCount: 'infinite',
-  animationTimingFunction: `${tokens.curveEasyEase}, linear`,
   animationName: [
+    // Animate the length of the spinner tail with a 1.5s easyEase animation
     {
       '0%': {
-        [vars.angle1]: '0deg',
-        [vars.angle2]: '0deg',
+        [vars.tailStart]: '0deg',
+        [vars.tailEnd]: '0deg',
       },
       '50%': {
-        [vars.angle1]: '100deg',
-        [vars.angle2]: '400deg',
+        [vars.tailStart]: '100deg',
+        [vars.tailEnd]: '400deg',
       },
       '100%': {
-        [vars.angle1]: '400deg',
-        [vars.angle2]: '400deg',
+        [vars.tailStart]: '400deg',
+        [vars.tailEnd]: '400deg',
       },
     },
+    // Animate the rotation of the entire spinner with a 3s linear animation
     {
       '0%': {
         transform: 'rotate(0deg)',
@@ -98,16 +114,19 @@ const useSpinnerBaseClassName = makeResetStyles({
       },
     },
   ],
-
-  // Provide static fallback values for browsers that don't support animating CSS vars
-  // The rotation transform animation will still play, so a static quarter-circle line will rotate
-  [vars.angle1]: '0deg',
-  [vars.angle2]: '90deg',
+  animationDuration: '1.5s, 3s',
+  animationTimingFunction: `${tokens.curveEasyEase}, linear`,
+  animationIterationCount: 'infinite',
 
   '@media screen and (prefers-reduced-motion: reduce)': {
     animationDuration: '0.01ms',
     animationIterationCount: '1',
   },
+
+  // Provide static fallback values for browsers that don't support animating CSS vars
+  // The rotation transform animation will still play, so a static quarter-circle line will rotate
+  [vars.tailStart]: '0deg',
+  [vars.tailEnd]: '90deg',
 });
 
 const useSpinnerStyles = makeStyles({
@@ -117,50 +136,48 @@ const useSpinnerStyles = makeStyles({
   },
 
   'extra-tiny': {
-    width: '16px',
-    height: '16px',
+    height: spinnnerSizes.extraTiny,
+    width: spinnnerSizes.extraTiny,
     [vars.strokeWidth]: tokens.strokeWidthThick,
   },
 
   tiny: {
-    width: '20px',
-    height: '20px',
+    height: spinnnerSizes.tiny,
+    width: spinnnerSizes.tiny,
     [vars.strokeWidth]: tokens.strokeWidthThick,
   },
 
   'extra-small': {
-    width: '24px',
-    height: '24px',
+    height: spinnnerSizes.extraSmall,
+    width: spinnnerSizes.extraSmall,
     [vars.strokeWidth]: tokens.strokeWidthThick,
   },
 
   small: {
-    width: '28px',
-    height: '28px',
+    height: spinnnerSizes.small,
+    width: spinnnerSizes.small,
     [vars.strokeWidth]: tokens.strokeWidthThick,
   },
 
   medium: {
-    width: '32px',
-    height: '32px',
-    [vars.strokeWidth]: tokens.strokeWidthThicker,
+    // size and strokeWidth set in useSpinnerBaseClassName
   },
 
   large: {
-    width: '36px',
-    height: '36px',
-    [vars.strokeWidth]: tokens.strokeWidthThicker,
+    height: spinnnerSizes.large,
+    width: spinnnerSizes.large,
+    // strokeWidth set in useSpinnerBaseClassName
   },
 
   'extra-large': {
-    width: '40px',
-    height: '40px',
-    [vars.strokeWidth]: tokens.strokeWidthThicker,
+    height: spinnnerSizes.extraLarge,
+    width: spinnnerSizes.extraLarge,
+    // strokeWidth set in useSpinnerBaseClassName
   },
 
   huge: {
-    width: '44px',
-    height: '44px',
+    height: spinnnerSizes.huge,
+    width: spinnnerSizes.huge,
     [vars.strokeWidth]: tokens.strokeWidthThickest,
   },
 });
@@ -170,31 +187,7 @@ const useLabelStyles = makeStyles({
     color: tokens.colorNeutralForegroundStaticInverted,
   },
 
-  'extra-tiny': {
-    ...typographyStyles.body1,
-  },
-
-  tiny: {
-    ...typographyStyles.body1,
-  },
-
-  'extra-small': {
-    ...typographyStyles.body1,
-  },
-
-  small: {
-    ...typographyStyles.body1,
-  },
-
-  medium: {
-    ...typographyStyles.subtitle2,
-  },
-
-  large: {
-    ...typographyStyles.subtitle2,
-  },
-
-  'extra-large': {
+  mediumToExtraLarge: {
     ...typographyStyles.subtitle2,
   },
 
@@ -234,7 +227,8 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
   if (state.label) {
     state.label.className = mergeClasses(
       spinnerClassNames.label,
-      labelStyles[size],
+      (size === 'medium' || size === 'large' || size === 'extra-large') && labelStyles.mediumToExtraLarge,
+      size === 'huge' && labelStyles.huge,
       appearance === 'inverted' && labelStyles.inverted,
       state.label.className,
     );
