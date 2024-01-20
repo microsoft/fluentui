@@ -1,23 +1,11 @@
 import * as React from 'react';
 import { SearchBox } from '@fluentui/react-search-preview';
-import { Field, makeStyles, mergeClasses, shorthands, tokens } from '@fluentui/react-components';
+import { Field, makeStyles, shorthands, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   base: {
     display: 'flex',
     flexDirection: 'column',
-  },
-  filledLighter: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-  },
-  filledLighterLabel: {
-    color: tokens.colorNeutralForegroundInverted2,
-  },
-  filledDarker: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-  },
-  filledDarkerLabel: {
-    color: tokens.colorNeutralForegroundInverted2,
   },
   fieldWrapper: {
     ...shorthands.padding(tokens.spacingVerticalMNudge, tokens.spacingHorizontalMNudge),
@@ -36,17 +24,11 @@ export const Appearance = () => {
         <SearchBox appearance="underline" />
       </Field>
 
-      <Field
-        className={mergeClasses(styles.fieldWrapper, styles.filledLighter)}
-        label={{ children: 'Filled lighter appearance', className: styles.filledLighterLabel }}
-      >
+      <Field className={styles.fieldWrapper} label="Filled lighter appearance">
         <SearchBox appearance="filled-lighter" />
       </Field>
 
-      <Field
-        className={mergeClasses(styles.fieldWrapper, styles.filledDarker)}
-        label={{ children: 'Filled darker appearance', className: styles.filledDarkerLabel }}
-      >
+      <Field className={styles.fieldWrapper} label="Filled darker appearance">
         <SearchBox appearance="filled-darker" />
       </Field>
     </div>
