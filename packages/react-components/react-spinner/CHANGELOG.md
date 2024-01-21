@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-spinner
 
-This log was last generated on Tue, 16 Jan 2024 13:14:08 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Jan 2024 14:25:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.3.38)
+
+Thu, 18 Jan 2024 14:25:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.3.37..@fluentui/react-spinner_v9.3.38)
+
+### Patches
+
+- fix: Update isVisible initial value to false to prevent Spinner flicker ([PR #30330](https://github.com/microsoft/fluentui/pull/30330) by ololubek@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.27 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-label to v9.1.58 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.14.0 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-utilities to v9.16.1 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+
+## [9.3.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.3.37)
+
+Wed, 17 Jan 2024 16:18:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.3.36..@fluentui/react-spinner_v9.3.37)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.26 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-label to v9.1.57 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
+- Bump @fluentui/react-utilities to v9.16.0 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
 
 ## [9.3.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.3.36)
 

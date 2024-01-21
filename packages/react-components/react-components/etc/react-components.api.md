@@ -43,6 +43,8 @@ import { AccordionState } from '@fluentui/react-accordion';
 import { AccordionToggleData } from '@fluentui/react-accordion';
 import { AccordionToggleEvent } from '@fluentui/react-accordion';
 import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
+import { AnnounceContextValue } from '@fluentui/react-shared-contexts';
+import { AnnounceProvider } from '@fluentui/react-shared-contexts';
 import { arrowHeights } from '@fluentui/react-popover';
 import { assertSlots } from '@fluentui/react-utilities';
 import { Avatar } from '@fluentui/react-avatar';
@@ -1088,6 +1090,7 @@ import { useAccordionItemStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanelStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
+import { useAnnounce } from '@fluentui/react-shared-contexts';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { UseArrowNavigationGroupOptions } from '@fluentui/react-tabster';
 import { useAvatar_unstable } from '@fluentui/react-avatar';
@@ -1128,6 +1131,7 @@ import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
 import { useColumnIdContext } from '@fluentui/react-table';
 import { useCombobox_unstable } from '@fluentui/react-combobox';
 import { useComboboxContextValues } from '@fluentui/react-combobox';
+import { useComboboxFilter } from '@fluentui/react-combobox';
 import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
 import { useCompoundButton_unstable } from '@fluentui/react-button';
 import { useCompoundButtonStyles_unstable } from '@fluentui/react-button';
@@ -1498,6 +1502,10 @@ export { AccordionToggleData }
 export { AccordionToggleEvent }
 
 export { AccordionToggleEventHandler }
+
+export { AnnounceContextValue }
+
+export { AnnounceProvider }
 
 export { arrowHeights }
 
@@ -3589,6 +3597,8 @@ export { useAccordionPanelStyles_unstable }
 
 export { useAccordionStyles_unstable }
 
+export { useAnnounce }
+
 export { useArrowNavigationGroup }
 
 export { UseArrowNavigationGroupOptions }
@@ -3668,6 +3678,8 @@ export { useColumnIdContext }
 export { useCombobox_unstable }
 
 export { useComboboxContextValues }
+
+export { useComboboxFilter }
 
 export { useComboboxStyles_unstable }
 

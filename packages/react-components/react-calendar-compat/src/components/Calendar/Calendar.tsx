@@ -14,6 +14,7 @@ import {
 } from '../../utils';
 import { CalendarDay } from '../CalendarDay/CalendarDay';
 import { CalendarMonth } from '../CalendarMonth/CalendarMonth';
+import { defaultNavigationIcons } from './calendarNavigationIcons';
 import { useCalendarStyles_unstable } from './useCalendarStyles.styles';
 import type { ICalendarDay } from '../CalendarDay/CalendarDay.types';
 import type { ICalendarMonth } from '../CalendarMonth/CalendarMonth.types';
@@ -372,6 +373,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
             showSixWeeksByDefault={showSixWeeksByDefault}
             minDate={minDate}
             maxDate={maxDate}
+            navigationIcons={defaultNavigationIcons}
             restrictedDates={restrictedDates}
             workWeekDays={workWeekDays}
             componentRef={dayPicker}
@@ -398,6 +400,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
               minDate={minDate}
               maxDate={maxDate}
               componentRef={monthPicker}
+              navigationIcons={defaultNavigationIcons}
               {...calendarMonthProps} // at end of list so consumer's custom functions take precedence
             />
             {renderGoToTodayButton()}

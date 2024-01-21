@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-toast",
-  "version": "9.3.25",
+  "version": "9.3.27",
   "description": "Toast component for Fluent UI",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -37,14 +37,14 @@
   "dependencies": {
     "react-transition-group": "^4.4.1",
     "@fluentui/keyboard-keys": "^9.0.7",
-    "@fluentui/react-aria": "^9.7.1",
+    "@fluentui/react-aria": "^9.7.3",
     "@fluentui/react-icons": "^2.0.224",
-    "@fluentui/react-jsx-runtime": "^9.0.25",
-    "@fluentui/react-portal": "^9.4.8",
-    "@fluentui/react-shared-contexts": "^9.13.2",
-    "@fluentui/react-tabster": "^9.17.1",
+    "@fluentui/react-jsx-runtime": "^9.0.27",
+    "@fluentui/react-portal": "^9.4.10",
+    "@fluentui/react-shared-contexts": "^9.14.0",
+    "@fluentui/react-tabster": "^9.17.3",
     "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.15.6",
+    "@fluentui/react-utilities": "^9.16.1",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
