@@ -94,7 +94,7 @@ export type RatingOnChangeEventData = EventData<'change', React_2.FormEvent<HTML
 };
 
 // @public
-export type RatingProps = ComponentProps<RatingSlots> & {
+export type RatingProps = Omit<ComponentProps<Partial<RatingSlots>>, 'onChange'> & {
     color?: 'brand' | 'marigold' | 'neutral';
     defaultValue?: number;
     iconFilled?: React_2.ReactElement;

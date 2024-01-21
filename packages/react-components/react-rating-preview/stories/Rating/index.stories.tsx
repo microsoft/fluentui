@@ -4,6 +4,7 @@ import descriptionMd from './RatingDescription.md';
 import bestPracticesMd from './RatingBestPractices.md';
 
 export { Default } from './RatingDefault.stories';
+export { ControlledValue } from './RatingControlledValue.stories';
 export { Step } from './RatingStep.stories';
 export { Max } from './RatingMax.stories';
 export { Size } from './RatingSize.stories';

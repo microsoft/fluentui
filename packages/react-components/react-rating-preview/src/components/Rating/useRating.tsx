@@ -62,11 +62,15 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
       root: 'div',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        children: rootChildren,
-        ...props,
-      }),
+      getIntrinsicElementProps(
+        'div',
+        {
+          ref,
+          children: rootChildren,
+          ...props,
+        },
+        ['onChange'],
+      ),
       { elementType: 'div' },
     ),
   };

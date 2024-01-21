@@ -9,7 +9,7 @@ export type RatingSlots = {
 /**
  * Rating Props
  */
-export type RatingProps = ComponentProps<RatingSlots> & {
+export type RatingProps = Omit<ComponentProps<Partial<RatingSlots>>, 'onChange'> & {
   /**
    * Controls the color of the Rating.
    * @default neutral

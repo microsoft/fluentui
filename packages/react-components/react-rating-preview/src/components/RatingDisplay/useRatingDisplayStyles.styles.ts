@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RatingDisplaySlots, RatingDisplayState } from './RatingDisplay.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -29,6 +29,7 @@ const useLabelStyles = makeStyles({
   small: {
     fontSize: tokens.fontSizeBase100,
     lineHeight: tokens.lineHeightBase100,
+    ...shorthands.margin('5px', '0px', '0px', '2px'),
   },
   medium: {
     fontSize: tokens.fontSizeBase200,
