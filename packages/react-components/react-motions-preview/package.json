@@ -1,8 +1,7 @@
 {
   "name": "@fluentui/react-motions-preview",
   "version": "0.0.0",
-  "private": true,
-  "description": "New fluentui react package",
+  "description": "A package with utilities & motion definitions using Web Animations API",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
