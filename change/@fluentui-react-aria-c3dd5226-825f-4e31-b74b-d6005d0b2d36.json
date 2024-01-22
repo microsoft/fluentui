@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add AriaLiveAnnouncer component",
+  "packageName": "@fluentui/react-aria",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
