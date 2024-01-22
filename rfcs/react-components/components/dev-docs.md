@@ -32,6 +32,7 @@ This would completely replace the wiki. There are two main advantages to this me
 
 - Developers won’t have to context switch to access the documents.
 - Searching capabilities in VSCode tend to by wildly superior to those in Github.
+- Allows for all dev document changes to go through proper review via PR review process.
 
 ### Establish a new folder and docs structure:
 
