@@ -12,8 +12,8 @@ export const renderNavCategory_unstable = (state: NavCategoryState, contextValue
   assertSlots<NavCategorySlots>(state);
 
   return (
-    <state.root>
-      <NavCategoryProvider value={contextValues.categoryValue}>{state.root.children}</NavCategoryProvider>
-    </state.root>
+    <NavCategoryProvider value={contextValues.categoryValue}>
+      <state.root />
+    </NavCategoryProvider>
   );
 };
