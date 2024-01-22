@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: import DistributiveOmit from react-utilities instead of redeclaring it locally",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
