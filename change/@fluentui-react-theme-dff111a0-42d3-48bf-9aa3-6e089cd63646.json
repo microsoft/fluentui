@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "added Azure Dark theme and Azure Light theme to v9",
+  "packageName": "@fluentui/react-theme",
+  "email": "123518484+adr1-jpg@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
