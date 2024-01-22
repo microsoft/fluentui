@@ -23,15 +23,14 @@ import { StarFilled, StarRegular } from '@fluentui/react-icons';
 export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivElement>): RatingState => {
   const generatedName = useId('rating-');
   const {
-    appearance = props.readOnly ? 'filled' : 'outline',
-    compact = false,
+    color = 'neutral',
     iconFilled = <StarFilled />,
     iconOutline = <StarRegular />,
     max = 5,
+    mode = 'interactive',
     name = generatedName,
     onChange,
-    precision = false,
-    readOnly = false,
+    step = 1,
     size = 'medium',
   } = props;
 
@@ -51,21 +50,20 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
 
   //Prevents unnecessary rerendering of children
   const rootChildren = React.useMemo(() => {
-    return !compact ? (
-      Array.from(Array(max), (_, i) => <RatingItem value={i + 1} key={i + 1} />)
-    ) : (
+    return mode === 'read-only-compact' ? (
       <RatingItem value={1} key={1} />
+    ) : (
+      Array.from(Array(max), (_, i) => <RatingItem value={i + 1} key={i + 1} />)
     );
-  }, [compact, max]);
+  }, [mode, max]);
 
   const state: RatingState = {
-    appearance,
-    compact,
+    color,
     iconFilled,
     iconOutline,
+    mode,
     name,
-    precision,
-    readOnly,
+    step,
     size,
     value,
     hoveredValue,
@@ -92,7 +90,7 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
     }),
   };
 
-  if (!readOnly) {
+  if (mode === 'interactive') {
     state.root.onChange = ev => {
       if (isRatingRadioItem(ev.target)) {
         const newValue = parseFloat(ev.target.value);

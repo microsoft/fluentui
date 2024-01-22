@@ -1,6 +1,6 @@
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
 import { TreeItemType, TreeItemValue } from '../TreeItem';
-import { SelectionMode } from '@fluentui/react-utilities';
+import type { SelectionMode, DistributiveOmit } from '@fluentui/react-utilities';
 import { ImmutableSet } from '../utils/ImmutableSet';
 import { ImmutableMap } from '../utils/ImmutableMap';
 import { TreeCheckedChangeData, TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
@@ -21,16 +21,10 @@ export type TreeContextValue = {
 };
 
 export type TreeItemRequest = { itemType: TreeItemType } & (
-  | (OmitWithoutExpanding<TreeOpenChangeData, 'open' | 'openItems'> & { requestType: 'open' })
+  | (DistributiveOmit<TreeOpenChangeData, 'open' | 'openItems'> & { requestType: 'open' })
   | (TreeNavigationData_unstable & { requestType: 'navigate' })
-  | (OmitWithoutExpanding<TreeCheckedChangeData, 'selectionMode' | 'checkedItems'> & { requestType: 'selection' })
+  | (DistributiveOmit<TreeCheckedChangeData, 'selectionMode' | 'checkedItems'> & { requestType: 'selection' })
 );
-
-/**
- * helper type that avoids the expansion of unions while inferring it,
- * should work exactly the same as Omit
- */
-type OmitWithoutExpanding<P, K extends string | number | symbol> = P extends unknown ? Omit<P, K> : P;
 
 /**
  * @internal

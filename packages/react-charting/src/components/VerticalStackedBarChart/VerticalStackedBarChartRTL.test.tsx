@@ -7,9 +7,9 @@ import { IVSChartDataPoint, IVerticalStackedChartProps } from '../../index';
 import { VerticalStackedBarChart } from './VerticalStackedBarChart';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
+import * as utils from '@fluentui/react/lib/Utilities';
 import { chartPoints2VSBC, chartPointsVSBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
-
 expect.extend(toHaveNoViolations);
 
 const firstChartPoints: IVSChartDataPoint[] = [
@@ -34,6 +34,7 @@ const simplePoints = [
   {
     chartData: firstChartPoints,
     xAxisPoint: 'January',
+    activeLegend: 'Supported Builds',
     lineData: [{ y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
   },
   {
@@ -48,11 +49,33 @@ const simplePoints = [
   },
 ];
 
+const datePoints = [
+  {
+    chartData: firstChartPoints,
+    xAxisPoint: new Date('2019/05/01'),
+    lineData: [{ y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+  },
+  {
+    chartData: secondChartPoints,
+    xAxisPoint: new Date('2019/09/01'),
+    lineData: [{ y: 41, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+  },
+  {
+    chartData: thirdChartPoints,
+    xAxisPoint: new Date('2020/03/01'),
+    lineData: [{ y: 100, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+  },
+];
 const simplePointsWithLine = [
   {
     chartData: firstChartPoints,
-    xAxisPoint: 20,
+    xAxisPoint: 0,
     lineData: [{ y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+  },
+  {
+    chartData: secondChartPoints,
+    xAxisPoint: 20,
+    lineData: [{ y: 33, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
   },
 ];
 
@@ -80,6 +103,58 @@ describe('Vertical stacked bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
+
+  testWithoutWait(
+    'Should render the vertical stacked bar chart with Date x-axis data',
+    VerticalStackedBarChart,
+    {
+      data: datePoints,
+      timeFormat: '%m/%d',
+      tickValues: [new Date('2019/05/01'), new Date('2019/09/01'), new Date('2020/03/01')],
+    },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the vertical stacked bar chart with Date x-axis data and no tick values',
+    VerticalStackedBarChart,
+    {
+      data: datePoints,
+      timeFormat: '%m/%d',
+    },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the vertical stacked bar chart with Date x-axis data and no tick format',
+    VerticalStackedBarChart,
+    {
+      data: datePoints,
+      tickValues: [new Date('2019/05/01'), new Date('2019/09/01'), new Date('2020/03/01')],
+    },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the vertical stacked bar chart with Date x-axis data and no tick format and tick values',
+    VerticalStackedBarChart,
+    {
+      data: datePoints,
+    },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
 });
 
 describe('Vertical stacked bar chart - Subcomponent Line', () => {
@@ -91,6 +166,19 @@ describe('Vertical stacked bar chart - Subcomponent Line', () => {
       // Assert
       const lines = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
       expect(lines).toBeDefined();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the vertical stacked bar chart with numeric x-axis data - RTL',
+    VerticalStackedBarChart,
+    { data: simplePoints },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    () => {
+      jest.spyOn(utils, 'getRTL').mockImplementation(() => true);
     },
   );
 });
@@ -115,7 +203,7 @@ describe('Vertical stacked bar chart - Subcomponent bar', () => {
     container => {
       // Assert
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-      expect(bars).toHaveLength(2);
+      expect(bars).toHaveLength(5);
       expect(bars[0].getAttribute('width')).toEqual('100');
       expect(bars[1].getAttribute('width')).toEqual('100');
     },
@@ -294,6 +382,48 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
       expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'false');
       expect(legendsAfterClickEvent[2]).toHaveAttribute('aria-selected', 'false');
       expect(legendsAfterClickEvent[3]).toHaveAttribute('aria-selected', 'false');
+    },
+  );
+
+  testWithWait(
+    'Should call the handler on mouse leave from bar legend',
+    VerticalStackedBarChart,
+    { data: simplePoints, calloutProps: { doNotLayer: true } },
+    container => {
+      // eslint-disable-next-line
+      const handleMouseLeave = jest.spyOn(VerticalStackedBarChartBase.prototype as any, '_onLegendLeave');
+      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      fireEvent.mouseLeave(legends[0]);
+      // Assert
+      expect(handleMouseLeave).toHaveBeenCalled();
+    },
+  );
+
+  testWithWait(
+    'Should call the handler on mouse over on legend',
+    VerticalStackedBarChart,
+    { data: simplePointsWithLine, calloutProps: { doNotLayer: true } },
+    container => {
+      // eslint-disable-next-line
+      const handleMouseOver = jest.spyOn(VerticalStackedBarChartBase.prototype as any, '_onLegendHover');
+      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      fireEvent.mouseOver(legends[0]);
+      // Assert
+      expect(handleMouseOver).toHaveBeenCalled();
+    },
+  );
+
+  testWithWait(
+    'Should call the handler on mouse click on legend',
+    VerticalStackedBarChart,
+    { data: simplePointsWithLine, calloutProps: { doNotLayer: true } },
+    container => {
+      // eslint-disable-next-line
+      const handleMouseClick = jest.spyOn(VerticalStackedBarChartBase.prototype as any, '_onLegendClick');
+      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      fireEvent.click(legends[0]);
+      // Assert
+      expect(handleMouseClick).toHaveBeenCalled();
     },
   );
 });

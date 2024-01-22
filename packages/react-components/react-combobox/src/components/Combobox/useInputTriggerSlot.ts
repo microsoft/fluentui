@@ -150,7 +150,7 @@ export function useInputTriggerSlot(
     }
 
     // allow space to insert a character if freeform & the last action was typing, or if the popup is closed
-    if (freeform && (isTyping.current || !open) && ev.key === ' ') {
+    if ((isTyping.current || !open) && ev.key === ' ') {
       triggerFromProps?.onKeyDown?.(ev);
       return;
     }

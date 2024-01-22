@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Adding Date Axis support for Vertical Bar and Vertical Stacked Bar chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "ankityadav@microsoft.com",
+  "dependentChangeType": "patch"
+}
