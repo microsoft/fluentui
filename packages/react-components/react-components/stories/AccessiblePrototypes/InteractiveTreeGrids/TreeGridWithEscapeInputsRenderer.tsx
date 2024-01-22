@@ -82,7 +82,9 @@ export const TreeGridWithEscapeInputsRenderer: React.FC<TreeGridWithEscapeInputs
       const isModifierDown = event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
       if (!isModifierDown) {
         const target = event.target as HTMLElement;
-        if ((target.tagName === 'INPUT' && target.getAttribute('type') === 'text') || target.role === 'textbox') {
+        const isTextbox =
+          (target.tagName === 'INPUT' && target.getAttribute('type') === 'text') || target.role === 'textbox';
+        if (isTextbox) {
           const row = getNearestRowAncestor(target);
           if (isNavigationMode) {
             if (event.key === 'ArrowRight') {
