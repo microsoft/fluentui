@@ -4,6 +4,7 @@
 
 ```ts
 
+import type { AnnounceContextValue } from '@fluentui/react-shared-contexts';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
@@ -64,6 +65,23 @@ export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> =
 // @public (undocumented)
 export type ARIAButtonType = 'button' | 'a' | 'div';
 
+// @public
+export const AriaLiveAnnouncer: React_2.FC<AriaLiveAnnouncerProps>;
+
+// @public (undocumented)
+export type AriaLiveAnnouncerProps = {
+    children?: React_2.ReactNode;
+};
+
+// @public (undocumented)
+export type AriaLiveAnnouncerState = {
+    announce: AriaLiveAnnounceFn;
+    children?: React_2.ReactNode;
+};
+
+// @public (undocumented)
+export const renderAriaLiveAnnouncer_unstable: (state: AriaLiveAnnouncerState, contextValues: AriaLiveAnnouncerContextValues) => JSX.Element;
+
 // @public (undocumented)
 export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(options: ActiveDescendantOptions): UseActiveDescendantReturn<TActiveParentElement, TListboxElement>;
 
@@ -72,6 +90,12 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props extends AR
 
 // @internal @deprecated (undocumented)
 export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps>;
+
+// @public (undocumented)
+export const useAriaLiveAnnouncer_unstable: (props: AriaLiveAnnouncerProps) => AriaLiveAnnouncerState;
+
+// @public (undocumented)
+export function useAriaLiveAnnouncerContextValues_unstable(state: AriaLiveAnnouncerState): AriaLiveAnnouncerContextValues;
 
 // (No @packageDocumentation comment for this package)
 

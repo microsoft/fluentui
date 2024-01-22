@@ -45,6 +45,9 @@ import { AccordionToggleEvent } from '@fluentui/react-accordion';
 import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
 import { AnnounceContextValue } from '@fluentui/react-shared-contexts';
 import { AnnounceProvider } from '@fluentui/react-shared-contexts';
+import { AriaLiveAnnouncer } from '@fluentui/react-aria';
+import { AriaLiveAnnouncerProps } from '@fluentui/react-aria';
+import { AriaLiveAnnouncerState } from '@fluentui/react-aria';
 import { arrowHeights } from '@fluentui/react-popover';
 import { assertSlots } from '@fluentui/react-utilities';
 import { Avatar } from '@fluentui/react-avatar';
@@ -635,6 +638,7 @@ import { renderAccordion_unstable } from '@fluentui/react-accordion';
 import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
 import { renderAccordionItem_unstable } from '@fluentui/react-accordion';
 import { renderAccordionPanel_unstable } from '@fluentui/react-accordion';
+import { renderAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
 import { renderAvatar_unstable } from '@fluentui/react-avatar';
 import { renderAvatarGroup_unstable } from '@fluentui/react-avatar';
 import { renderAvatarGroupItem_unstable } from '@fluentui/react-avatar';
@@ -1091,6 +1095,8 @@ import { useAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanelStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
 import { useAnnounce } from '@fluentui/react-shared-contexts';
+import { useAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
+import { useAriaLiveAnnouncerContextValues_unstable } from '@fluentui/react-aria';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { UseArrowNavigationGroupOptions } from '@fluentui/react-tabster';
 import { useAvatar_unstable } from '@fluentui/react-avatar';
@@ -1506,6 +1512,12 @@ export { AccordionToggleEventHandler }
 export { AnnounceContextValue }
 
 export { AnnounceProvider }
+
+export { AriaLiveAnnouncer }
+
+export { AriaLiveAnnouncerProps }
+
+export { AriaLiveAnnouncerState }
 
 export { arrowHeights }
 
@@ -2687,6 +2699,8 @@ export { renderAccordionItem_unstable }
 
 export { renderAccordionPanel_unstable }
 
+export { renderAriaLiveAnnouncer_unstable }
+
 export { renderAvatar_unstable }
 
 export { renderAvatarGroup_unstable }
@@ -3598,6 +3612,10 @@ export { useAccordionPanelStyles_unstable }
 export { useAccordionStyles_unstable }
 
 export { useAnnounce }
+
+export { useAriaLiveAnnouncer_unstable }
+
+export { useAriaLiveAnnouncerContextValues_unstable }
 
 export { useArrowNavigationGroup }
 
