@@ -8,6 +8,7 @@ import { VerticalBarChartDynamicExample } from './VerticalBarChart.Dynamic.Examp
 import { VerticalBarChartTooltipExample } from './VerticalBarChart.AxisTooltip.Example';
 import { VerticalBarChartCustomAccessibilityExample } from './VerticalBarChart.CustomAccessibility.Example';
 import { VerticalBarChartRotatedLabelExample } from './VerticalBarChart.RotateLabels.Example';
+import { VerticalBarChartDateAxisExample } from './VerticalBarChart.DateAxis.Example';
 
 const VerticalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.Basic.Example.tsx') as string;
@@ -21,6 +22,8 @@ const VerticalBarChartCustomAccessibilityExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.CustomAccessibility.Example.tsx') as string;
 const VerticalBarChartRotateLabelsExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.RotateLabels.Example.tsx') as string;
+const VerticalBarChartDateAxisExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.DateAxis.Example.tsx') as string;
 
 export const VerticalBarChartPageProps: IDocPageProps = {
   title: 'VerticalBarChart',
@@ -57,6 +60,11 @@ export const VerticalBarChartPageProps: IDocPageProps = {
       title: 'VerticalBarChart rotated labels',
       code: VerticalBarChartRotateLabelsExampleCode,
       view: <VerticalBarChartRotatedLabelExample />,
+    },
+    {
+      title: 'VerticalBarChart Date Axis',
+      code: VerticalBarChartDateAxisExampleCode,
+      view: <VerticalBarChartDateAxisExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/docs/VerticalBarChartOverview.md'),

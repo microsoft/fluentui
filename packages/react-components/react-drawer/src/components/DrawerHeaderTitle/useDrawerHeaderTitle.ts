@@ -5,24 +5,6 @@ import { useDialogContext_unstable } from '@fluentui/react-dialog';
 import type { DrawerHeaderTitleProps, DrawerHeaderTitleState } from './DrawerHeaderTitle.types';
 
 /**
- * @internal
- * Create the shorthand for the heading element.
- * @param props - props from this instance of DrawerHeaderTitle
- */
-const useHeadingProps = ({ children, heading }: DrawerHeaderTitleProps) => {
-  const id = useDialogContext_unstable(ctx => ctx.dialogTitleId);
-
-  return slot.optional(heading, {
-    defaultProps: {
-      id,
-      children,
-    },
-    renderByDefault: true,
-    elementType: 'h2',
-  });
-};
-
-/**
  * Create the state required to render DrawerHeaderTitle.
  *
  * The returned state can be modified with hooks such as useDrawerHeaderTitleStyles_unstable,
@@ -35,7 +17,8 @@ export const useDrawerHeaderTitle_unstable = (
   props: DrawerHeaderTitleProps,
   ref: React.Ref<HTMLDivElement>,
 ): DrawerHeaderTitleState => {
-  const headingProps = useHeadingProps(props);
+  const { children, heading } = props;
+  const headingId = useDialogContext_unstable(ctx => ctx.dialogTitleId);
 
   return {
     components: {
@@ -51,7 +34,14 @@ export const useDrawerHeaderTitle_unstable = (
       }),
       { elementType: 'div' },
     ),
-    heading: headingProps,
+    heading: slot.optional(heading, {
+      defaultProps: {
+        id: headingId,
+        children,
+      },
+      renderByDefault: true,
+      elementType: 'h2',
+    }),
     action: slot.optional(props.action, {
       elementType: 'div',
     }),

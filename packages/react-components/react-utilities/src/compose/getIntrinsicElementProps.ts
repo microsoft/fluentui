@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps } from '../utils/getNativeElementProps';
 import type { InferredElementRefType, UnknownSlotProps } from './types';
+import type { DistributiveOmit } from '../utils/types';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type HTMLAttributes = React.HTMLAttributes<any>;
@@ -24,12 +25,6 @@ export const getIntrinsicElementProps = <
 ) => {
   // eslint-disable-next-line deprecation/deprecation
   return getNativeElementProps<
-    OmitWithoutExpanding<Props, Exclude<keyof Props, keyof HTMLAttributes | keyof UnknownSlotProps> | ExcludedPropKeys>
+    DistributiveOmit<Props, Exclude<keyof Props, keyof HTMLAttributes | keyof UnknownSlotProps> | ExcludedPropKeys>
   >(props.as ?? tagName, props, excludedPropNames);
 };
-
-/**
- * helper type that avoids the expansion of unions while inferring it,
- * should work exactly the same as Omit
- */
-type OmitWithoutExpanding<P, K extends string | number | symbol> = P extends unknown ? Omit<P, K> : P;

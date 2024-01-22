@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { CalendarStrings, DateFormatting } from '../../utils';
 import type { CalendarDayGridProps, CalendarDayGridStyleProps } from '../CalendarDayGrid/CalendarDayGrid.types';
+import type { CalendarNavigationIcons } from '../Calendar/calendarNavigationIcons';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface ICalendarDay {
@@ -89,6 +90,11 @@ export interface CalendarDayProps extends CalendarDayGridProps {
    * @default false
    */
   allFocusable?: boolean;
+
+  /**
+   * Custom navigation icons.
+   */
+  navigationIcons: CalendarNavigationIcons;
 }
 
 /**

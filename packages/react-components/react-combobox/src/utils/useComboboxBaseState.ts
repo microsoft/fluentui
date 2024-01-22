@@ -14,6 +14,7 @@ export const useComboboxBaseState = (
   const {
     appearance = 'outline',
     children,
+    clearable = false,
     editable = false,
     inlinePopup = false,
     mountNode = undefined,
@@ -115,6 +116,7 @@ export const useComboboxBaseState = (
     ...selectionState,
     activeOption,
     appearance,
+    clearable,
     focusVisible,
     hasFocus,
     ignoreNextBlur,

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: implement CheckboxShim component for Checkbox migration",
-  "packageName": "@fluentui/react-migration-v8-v9",
-  "email": "liminliu@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-infobutton",
-  "version": "9.0.0-beta.84",
+  "version": "9.0.0-beta.88",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,18 +36,18 @@
   },
   "dependencies": {
     "@fluentui/react-icons": "^2.0.224",
-    "@fluentui/react-label": "^9.1.55",
-    "@fluentui/react-popover": "^9.8.29",
-    "@fluentui/react-tabster": "^9.17.0",
+    "@fluentui/react-label": "^9.1.58",
+    "@fluentui/react-popover": "^9.8.33",
+    "@fluentui/react-tabster": "^9.17.3",
     "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.15.6",
-    "@fluentui/react-jsx-runtime": "^9.0.24",
+    "@fluentui/react-utilities": "^9.16.1",
+    "@fluentui/react-jsx-runtime": "^9.0.27",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
-    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
     "react": ">=16.14.0 <19.0.0",
     "react-dom": ">=16.14.0 <19.0.0"
   },

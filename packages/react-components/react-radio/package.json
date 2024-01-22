@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-radio",
-  "version": "9.2.0",
+  "version": "9.2.3",
   "description": "Fluent UI Radio component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,19 +33,19 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-field": "^9.1.47",
-    "@fluentui/react-jsx-runtime": "^9.0.24",
-    "@fluentui/react-label": "^9.1.55",
-    "@fluentui/react-shared-contexts": "^9.13.2",
-    "@fluentui/react-tabster": "^9.17.0",
+    "@fluentui/react-field": "^9.1.50",
+    "@fluentui/react-jsx-runtime": "^9.0.27",
+    "@fluentui/react-label": "^9.1.58",
+    "@fluentui/react-shared-contexts": "^9.14.0",
+    "@fluentui/react-tabster": "^9.17.3",
     "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.15.6",
+    "@fluentui/react-utilities": "^9.16.1",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
-    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
     "react": ">=16.14.0 <19.0.0",
     "react-dom": ">=16.14.0 <19.0.0",
     "scheduler": "^0.19.0 || ^0.20.0"
