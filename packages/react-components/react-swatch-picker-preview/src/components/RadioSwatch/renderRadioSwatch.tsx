@@ -12,8 +12,9 @@ export const renderRadioSwatch_unstable = (state: RadioSwatchState) => {
 
   return (
     <state.root>
-      {state.icon && <state.icon />}
       <state.input />
+      {state.icon && <state.icon />}
+      {state.swatch && <state.swatch />}
     </state.root>
   );
 };

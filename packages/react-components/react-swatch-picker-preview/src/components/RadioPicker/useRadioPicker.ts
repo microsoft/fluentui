@@ -2,6 +2,8 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot, useId, useEventCallback, isHTMLElement } from '@fluentui/react-utilities';
 import type { RadioPickerProps, RadioPickerState } from './RadioPicker.types';
 import { useRadioPickerState_unstable } from './useRadioPickerState';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+
 /**
  * Create the state required to render RadioPicker.
  *
@@ -26,6 +28,17 @@ export const useRadioPicker_unstable = (props: RadioPickerProps, ref: React.Ref<
     columnCount = 2,
   } = props;
 
+  const focusAttributes = useArrowNavigationGroup({
+    circular: true,
+    axis: 'grid-linear',
+    memorizeCurrent: true,
+  });
+
+  const newProps = {
+    ...props,
+    ...(layout === 'grid' ? focusAttributes : {}),
+  };
+
   const state: RadioPickerState = {
     layout,
     shape,
@@ -42,7 +55,7 @@ export const useRadioPicker_unstable = (props: RadioPickerProps, ref: React.Ref<
     root: {
       ref,
       role: 'radiogroup',
-      ...slot.always(getIntrinsicElementProps('div', props, /*excludedPropNames:*/ ['onChange', 'name']), {
+      ...slot.always(getIntrinsicElementProps('div', newProps, /*excludedPropNames:*/ ['onChange', 'name']), {
         elementType: 'div',
       }),
       onChange: useEventCallback(ev => {
@@ -55,15 +68,6 @@ export const useRadioPicker_unstable = (props: RadioPickerProps, ref: React.Ref<
         }
       }),
     },
-    // root: slot.always(
-    //   getIntrinsicElementProps('div', {
-    //     ref,
-    //     ...focusAttributes,
-    //     ...props,
-    //   }),
-
-    //   { elementType: 'div' },
-    // ),
   };
 
   useRadioPickerState_unstable(state, props);

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { RadioPicker, RadioSwatch } from '@fluentui/react-swatch-picker-preview';
-import { Radio, RadioGroup } from '@fluentui/react-radio';
+import { RadioGroup } from '@fluentui/react-radio';
 import { Prohibited20Filled } from '@fluentui/react-icons';
 
 export const Default = () => {

@@ -2,8 +2,8 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import type { RadioProps, RadioSlots } from '@fluentui/react-radio';
 
 export type RadioSwatchSlots = Omit<RadioSlots, 'indicator' | 'label'> & {
-  // export type RadioSwatchSlots = RadioSlots & {
   icon?: Slot<'span'>;
+  swatch?: NonNullable<Slot<'span'>>;
 };
 
 /**

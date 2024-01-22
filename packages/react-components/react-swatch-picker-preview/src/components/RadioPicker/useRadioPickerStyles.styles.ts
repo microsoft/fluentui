@@ -27,6 +27,7 @@ const useStyles = makeStyles({
   row: {
     display: 'flex',
     flexDirection: 'row',
+    columnGap: 'var(--fui-SwatchPicker--gridGap)',
   },
 });
 

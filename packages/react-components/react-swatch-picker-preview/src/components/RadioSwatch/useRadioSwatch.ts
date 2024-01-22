@@ -18,24 +18,30 @@ export const useRadioSwatch_unstable = (
   props: RadioSwatchProps,
   ref: React.Ref<HTMLInputElement>,
 ): RadioSwatchState => {
-  const { icon } = props;
+  const { icon, ...rest } = props;
   const iconShorthand = slot.optional(icon, { elementType: 'span' });
   const picker = useRadioPickerContextValue_unstable();
+
+  const swatch = slot.always(props.swatch, {
+    defaultProps: { 'aria-hidden': true },
+    elementType: 'span',
+  });
+
+  const newProps = {
+    ...rest,
+    role: 'radio',
+    name: picker.name,
+  };
+
   const state = {
-    ...useRadio_unstable(props, ref),
+    ...useRadio_unstable(newProps, ref),
     components: {
       root: 'span' as 'span',
       input: 'input' as 'input',
       icon: 'span' as 'span',
+      swatch: 'span' as 'span',
     },
-    // root: slot.always(
-    //   getIntrinsicElementProps('input', {
-    //     ref: ref as React.Ref<HTMLInputElement>,
-    //     ...props,
-    //     size: picker.size,
-    //   }),
-    //   { elementType: Radio },
-    // ),
+    swatch,
     size: picker.size,
     shape: picker.shape,
     icon: iconShorthand,
