@@ -192,18 +192,18 @@ Explanation
   </li>
   <li>
     {' '}
-    Refer to the text element via the "aria-describedby" attribute, which ensures the text would
-    be read by the screen reader whenever the actionable element which has the "aria-describedby" attribute is focused.
+    Refer to the text element via the "aria-describedby" attribute, which ensures the text would be read by the screen reader
+    whenever the actionable element which has the "aria-describedby" attribute is focused.
   </li>
   <li>
-    {' '}
-    Wrap the element with <code><div></code> element. This element should has role="group" and label.
-    After this the wrapping grouper element will be narrated.
-      Please see simple example code:
-      <code>
-      <div role="group" aria-label="Summary of your order">
-        <button> Buy </button>
-      </div>
-    </code>
+    Wrap the element with <code>div</code> element. This element should has role="group" and label. After this the
+    wrapping grouper element will be narrated. Please see simple code example:
+
+```html
+<div role="group" aria-label="Summary of your order">
+  <button>Buy</button>
+</div>
+```
+
   </li>
 </ul>
