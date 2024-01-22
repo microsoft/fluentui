@@ -60,6 +60,7 @@ This would completely replace the wiki. There are two main advantages to this me
 - browser-support-matrix.md
 - stable-packages.md // a doc describing our approach to breaking changes, what qualifies, and how we make them
 - preview-packages.md // a doc explaining what a preview package is and how to create them
+- compat-packages.md // a doc explaining what a compat package is, how to create them, and the differences in maintenance when compared to stable packages
 
 web-components
 // Chat with Chris Holt here
