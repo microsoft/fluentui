@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { Spinner } from '@fluentui/react-spinner';
 import { ButtonState } from '../Button/Button.types';
-import { Spinner } from '../../../../react-spinner';
 
 export const InProgress = (props: { state: ButtonState }) => {
   const appearance = props.state.appearance !== 'primary' ? 'primary' : 'inverted';

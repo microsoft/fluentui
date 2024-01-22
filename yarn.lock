@@ -1914,6 +1914,17 @@
     "@griffel/react" "^1.0.0"
     tslib "^2.1.0"
 
+"@fluentui/react-spinner@^9.7.3":
+  version "9.3.38"
+  dependencies:
+    "@fluentui/react-jsx-runtime" "^9.0.27"
+    "@fluentui/react-label" "^9.1.58"
+    "@fluentui/react-shared-contexts" "^9.14.0"
+    "@fluentui/react-theme" "^9.1.16"
+    "@fluentui/react-utilities" "^9.16.1"
+    "@griffel/react" "^1.5.14"
+    "@swc/helpers" "^0.5.1"
+
 "@griffel/babel-preset@1.4.20", "@griffel/babel-preset@^1.4.20":
   version "1.4.20"
   resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.4.20.tgz#047eb62f104e7bea781820816263e7407fafe543"

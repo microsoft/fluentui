@@ -67,7 +67,7 @@ export type CompoundButtonSlots = ButtonSlots & {
 };
 
 // @public (undocumented)
-export type CompoundButtonState = ComponentState<CompoundButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components' | 'stateIcon'>;
+export type CompoundButtonState = ComponentState<CompoundButtonSlots> & Omit<ButtonState, keyof ButtonSlots | 'components'>;
 
 // @public
 export const MenuButton: ForwardRefComponent<MenuButtonProps>;

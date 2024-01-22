@@ -28,10 +28,7 @@ export const ActionState = () => {
 
   return (
     <div className={styles.wrapper}>
-      <Button actionState={buttonState} onClick={changeState} appearance="primary">
-        {buttonState === 'none' ? 'Save' : null}
-      </Button>
-      <Button actionState={buttonState} onClick={changeState} shape="circular">
+      <Button actionState={buttonState} onClick={changeState} appearance="primary" shape="circular">
         {buttonState === 'none' ? 'Save' : null}
       </Button>
       <Button
