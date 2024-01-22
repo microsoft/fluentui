@@ -11,17 +11,17 @@ export function mockNavCategoryContextValue(partialValue?: Partial<NavCategoryCo
   };
 }
 
-describe('NavSubItemGroup', () => {
-  const Wrapper: React.FC = props => (
-    <NavCategoryProvider
-      value={mockNavCategoryContextValue({
-        open: true,
-      })}
-    >
-      {props.children}
-    </NavCategoryProvider>
-  );
+const Wrapper: React.FC = props => (
+  <NavCategoryProvider
+    value={mockNavCategoryContextValue({
+      open: true,
+    })}
+  >
+    {props.children}
+  </NavCategoryProvider>
+);
 
+describe('NavSubItemGroup', () => {
   isConformant({
     Component: NavSubItemGroup,
     displayName: 'NavSubItemGroup',
