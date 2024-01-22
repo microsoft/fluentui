@@ -1090,6 +1090,10 @@ import { useAccordionItemStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanelStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
+import { useAdamTableCombinedNavigation } from '@fluentui/react-table';
+import { useAdamTableCompositeNavigation } from '@fluentui/react-table';
+import { useAdamTableInteractive2Navigation } from '@fluentui/react-table';
+import { useAdamTableInteractiveNavigation } from '@fluentui/react-table';
 import { useAnnounce } from '@fluentui/react-shared-contexts';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { UseArrowNavigationGroupOptions } from '@fluentui/react-tabster';
@@ -3596,6 +3600,14 @@ export { useAccordionPanel_unstable }
 export { useAccordionPanelStyles_unstable }
 
 export { useAccordionStyles_unstable }
+
+export { useAdamTableCombinedNavigation }
+
+export { useAdamTableCompositeNavigation }
+
+export { useAdamTableInteractive2Navigation }
+
+export { useAdamTableInteractiveNavigation }
 
 export { useAnnounce }
 

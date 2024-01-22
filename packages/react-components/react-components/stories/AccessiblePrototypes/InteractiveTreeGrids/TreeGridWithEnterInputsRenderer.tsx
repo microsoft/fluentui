@@ -1,11 +1,8 @@
 import * as React from 'react';
 import { RecentCategory, RecentMeetings } from './TreeGridBase';
-import {
-  getNearestGridCellAncestorOrSelf,
-  getNearestRowAncestor,
-  getFirstCellChild,
-  focusNextOrPrevRow,
-} from './../TreeGridUtils';
+import { getNearestGridCellAncestorOrSelf, getNearestRowAncestor, getFirstCellChild } from './../TreeGridUtils';
+
+import { TabsterMoveFocusEvent } from '@fluentui/react-tabster';
 
 import {
   Table,
@@ -77,19 +74,12 @@ export const TreeGridWithEnterInputsRenderer: React.FC<TreeGridWithEnterInputsRe
           const isFirstCellChild = gridCell === getFirstCellChild(row);
           if (event.key === 'ArrowLeft' && isFirstCellChild) {
             row.focus();
-          } else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-            callTabsterKeyboardHandler = false;
-            if ((target.tagName !== 'INPUT' || target.getAttribute('type') !== 'text') && target.role !== 'textbox') {
-              focusNextOrPrevRow(row, event);
-            }
           }
         } else if (target.role === 'row') {
           const selectedRowId = target.id;
           const category = getCategoryById(selectedRowId);
           const level = target.getAttribute('aria-level');
-          if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
-            focusNextOrPrevRow(target, event);
-          } else if (event.key === 'ArrowRight' && level === '1' && category && !category.expanded) {
+          if (event.key === 'ArrowRight' && level === '1' && category && !category.expanded) {
             changeRecentCategoryExpandedState(category, true);
             callTabsterKeyboardHandler = false;
           } else if (event.key === 'ArrowLeft' && level === '1') {
@@ -121,8 +111,31 @@ export const TreeGridWithEnterInputsRenderer: React.FC<TreeGridWithEnterInputsRe
     ],
   );
 
+  const handleTreeGridMoveFocus = React.useCallback(
+    (event: TabsterMoveFocusEvent) => {
+      const key = event.details.relatedEvent.key;
+      if (key === 'Enter' && targetDocument?.activeElement?.role === 'row') {
+        event.preventDefault();
+      }
+    },
+    [targetDocument],
+  );
+
+  React.useEffect(() => {
+    const treeGrid = targetDocument?.getElementById('recentMeetings');
+
+    // eslint-disable-next-line
+    treeGrid?.addEventListener('tabster:movefocus' as any, handleTreeGridMoveFocus);
+
+    return () => {
+      // eslint-disable-next-line
+      treeGrid?.removeEventListener('tabster:movefocus' as any, handleTreeGridMoveFocus);
+    };
+  }, [handleTreeGridMoveFocus, targetDocument]);
+
   return (
     <div
+      id="recentMeetings"
       role="treegrid"
       aria-label="All meetings"
       aria-describedby="lastMeetings-hint"

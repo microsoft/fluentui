@@ -19,7 +19,6 @@ export function useAdamTableInteractive2Navigation(): {
   const gridAttr = useArrowNavigationGroup({ axis: 'grid', memorizeCurrent: true });
   const groupperAttr = useFocusableGroup({
     tabBehavior: 'limited-trap-focus',
-    ignoreDefaultKeydown: { ArrowDown: true, ArrowUp: true },
   });
   const { findFirstFocusable } = useFocusFinders();
   const { targetDocument } = useFluent();
@@ -61,12 +60,18 @@ export function useAdamTableInteractive2Navigation(): {
         return false;
       })();
 
-      // Escape groupper focus trap before arrow down
-      if ((e.key === ArrowDown || e.key === ArrowUp) && isInCell) {
+      const ignoreUpAndDown =
+        (activeElement.tagName === 'INPUT' && activeElement.getAttribute('type') === 'text') ||
+        activeElement.role === 'textbox';
+
+      if (!ignoreUpAndDown && (e.key === ArrowDown || e.key === ArrowUp) && isInCell) {
+        // Escape groupper focus trap before arrow down
         activeElement.dispatchEvent(new KeyboardEvent('keydown', { key: Escape, keyCode: keyCodes.Escape }));
-        // Tabster uses keycodes
-        // eslint-disable-next-line deprecation/deprecation
-        activeElement.dispatchEvent(new KeyboardEvent('keydown', { key: e.key, keyCode: e.keyCode }));
+        setTimeout(() => {
+          // Tabster uses keycodes
+          // eslint-disable-next-line deprecation/deprecation
+          activeElement.dispatchEvent(new KeyboardEvent('keydown', { key: e.key, keyCode: e.keyCode }));
+        }, 0);
       }
     },
     [targetDocument, findFirstFocusable],
