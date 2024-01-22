@@ -17,6 +17,7 @@
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
+    "bundle-size": "monosize measure",
     "bundle-size-auditor": "bundle-size-auditor --report-path='../../dist/bundle-size-auditor/react'",
     "build-storybook": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
     "clean": "just-scripts clean",

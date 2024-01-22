@@ -12,6 +12,7 @@
   },
   "license": "MIT",
   "scripts": {
+    "bundle-size": "monosize measure",
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
