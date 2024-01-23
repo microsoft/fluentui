@@ -6204,6 +6204,16 @@
     regenerator-runtime "^0.13.7"
     resolve-from "^5.0.0"
 
+"@stylexjs/stylex@0.2.0-beta.26":
+  version "0.2.0-beta.26"
+  resolved "https://registry.yarnpkg.com/@stylexjs/stylex/-/stylex-0.2.0-beta.26.tgz#0a70b7001dc18c56e064c2e8d0f42d0984f06c0b"
+  integrity sha512-jl2Kqpmqt/eiWbZiaxFKostLhxP5kp8VgypitrLz9+O5q+4PnfUeF7dPuwPXUzhU1qEtUF8SSJ5eGsJeyvcSVw==
+  dependencies:
+    css-mediaquery "^0.1.2"
+    invariant "^2.2.4"
+    styleq "0.1.3"
+    utility-types "^3.10.0"
+
 "@swc/cli@0.1.62":
   version "0.1.62"
   resolved "https://registry.yarnpkg.com/@swc/cli/-/cli-0.1.62.tgz#6442fde2fcf75175a300fb4fcf30f8c60bbb3ab3"
@@ -11996,6 +12006,11 @@ css-loader@^3.6.0:
     postcss-value-parser "^4.1.0"
     schema-utils "^2.7.0"
     semver "^6.3.0"
+
+css-mediaquery@0.1.2, css-mediaquery@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/css-mediaquery/-/css-mediaquery-0.1.2.tgz#6a2c37344928618631c54bd33cedd301da18bea0"
+  integrity sha512-COtn4EROW5dBGlE/4PiKnh6rZpAPxDeFLaEEwt4i10jpDMFt2EhQGS79QmmrO+iKCHv0PU/HrOWEhijFd1x99Q==
 
 css-select@^4.1.3:
   version "4.1.3"
@@ -24818,6 +24833,12 @@ react-source-render@4.0.0-1:
     react-fast-compare "^2.0.4"
     react-is "^16.6.3"
 
+"react-strict-dom@file:../react-strict-dom/packages/react-strict-dom":
+  version "0.0.0"
+  dependencies:
+    "@stylexjs/stylex" "0.2.0-beta.26"
+    css-mediaquery "0.1.2"
+
 react-syntax-highlighter@^10.1.3:
   version "10.3.5"
   resolved "https://registry.yarnpkg.com/react-syntax-highlighter/-/react-syntax-highlighter-10.3.5.tgz#3b3e2d1eba92fb7988c3b50d22d2c74ae0263fdd"
@@ -27516,6 +27537,11 @@ styled-components@^5.1.1:
     shallowequal "^1.1.0"
     supports-color "^5.5.0"
 
+styleq@0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/styleq/-/styleq-0.1.3.tgz#8efb2892debd51ce7b31dc09c227ad920decab71"
+  integrity sha512-3ZUifmCDCQanjeej1f6kyl/BeP/Vae5EYkQ9iJfUm/QwZvlgnZzyflqAsAWYURdtea8Vkvswu2GrC57h3qffcA==
+
 stylis-plugin-rtl@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/stylis-plugin-rtl/-/stylis-plugin-rtl-2.1.0.tgz#e20ad640949b0e62fa214dabc839d2d7c83a2182"
@@ -29192,6 +29218,11 @@ utila@~0.4:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/utila/-/utila-0.4.0.tgz#8a16a05d445657a3aea5eecc5b12a4fa5379772c"
   integrity sha1-ihagXURWV6Oupe7MWxKk+lN5dyw=
+
+utility-types@^3.10.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.10.0.tgz#ea4148f9a741015f05ed74fd615e1d20e6bed82b"
+  integrity sha512-O11mqxmi7wMKCo6HKFt5AhO4BwY3VV68YU07tgxfz8zJTIxr4BpsezN49Ffwy9j3ZpwwJp4fkRwjRzq3uWE6Rg==
 
 utils-merge@1.0.1:
   version "1.0.1"
