@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: import UnionToIntersection from react-utilities instead of redeclaring it locally",
-  "packageName": "@fluentui/react-aria",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

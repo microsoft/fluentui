@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(Dropdown): add `type=button` to `clearButton`",
-  "packageName": "@fluentui/react-combobox",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
