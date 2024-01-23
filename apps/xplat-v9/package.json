@@ -29,6 +29,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@babel/plugin-transform-logical-assignment-operators": "^7.20.0",
+    "@babel/plugin-transform-nullish-coalescing-operator": "^7.20.0",
     "@babel/preset-env": "^7.20.0",
     "@babel/runtime": "^7.20.0",
     "@react-native/eslint-config": "^0.72.2",
