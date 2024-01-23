@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Adding data-tabster=uncontrolled to FocusZone and FocusTrapZone for proper interop with FluentUI V9.",
+  "packageName": "@fluentui/react",
+  "email": "marata@microsoft.com",
+  "dependentChangeType": "patch"
+}

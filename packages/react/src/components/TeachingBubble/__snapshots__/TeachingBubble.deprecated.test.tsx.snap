@@ -22,6 +22,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
   tabIndex={-1}
 >
   <div
+    data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
     onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >
