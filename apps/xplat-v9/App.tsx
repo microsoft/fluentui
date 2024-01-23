@@ -16,6 +16,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import { StrictDomDemo } from './StrictDomDemo';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -70,6 +71,7 @@ function App(): JSX.Element {
           }}
         >
           <Section title="Step One">
+            <StrictDomDemo />
             Edit <Text style={styles.highlight}>App.tsx</Text> to change this screen and then come back to see your
             edits.
           </Section>
