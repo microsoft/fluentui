@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/scheme-utilities",
-  "version": "8.3.41",
+  "version": "8.3.42",
   "description": "Fluent UI React subtheme generator.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,7 +28,7 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/theme": "^2.6.40",
+    "@fluentui/theme": "^2.6.41",
     "@fluentui/set-version": "^8.2.14",
     "tslib": "^2.1.0"
   },

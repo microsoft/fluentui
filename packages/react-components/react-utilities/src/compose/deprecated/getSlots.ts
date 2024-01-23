@@ -6,11 +6,11 @@ import type {
   ExtractSlotProps,
   SlotPropsRecord,
   SlotRenderFunction,
-  UnionToIntersection,
   UnknownSlotProps,
 } from '../types';
 import { isSlot } from '../isSlot';
 import { SLOT_RENDER_FUNCTION_SYMBOL } from '../constants';
+import { UnionToIntersection } from '../../utils/types';
 
 /**
  * @deprecated - use slot.always or slot.optional combined with assertSlots instead

@@ -4129,8 +4129,8 @@ exports[`getDomainNRangeValues should return domain and range values correctly f
 Object {
   "dEndValue": 2021-01-03T00:00:00.000Z,
   "dStartValue": 2021-01-02T00:00:00.000Z,
-  "rEndValue": 90,
-  "rStartValue": 5,
+  "rEndValue": 82,
+  "rStartValue": 13,
 }
 `;
 

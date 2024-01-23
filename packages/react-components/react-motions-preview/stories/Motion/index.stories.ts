@@ -12,6 +12,7 @@ export { ImperativeRefPlayState as setPlayState } from './ImperativeRefPlayState
 
 export { CustomAtom } from './CustomAtom.stories';
 export { TokensUsage } from './TokensUsage.stories';
+export { MotionFunctions } from './MotionFunctions.stories';
 
 export { MotionLibrary } from './MotionLibrary.stories';
 
