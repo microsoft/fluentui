@@ -6204,10 +6204,10 @@
     regenerator-runtime "^0.13.7"
     resolve-from "^5.0.0"
 
-"@stylexjs/stylex@0.2.0-beta.26":
-  version "0.2.0-beta.26"
-  resolved "https://registry.yarnpkg.com/@stylexjs/stylex/-/stylex-0.2.0-beta.26.tgz#0a70b7001dc18c56e064c2e8d0f42d0984f06c0b"
-  integrity sha512-jl2Kqpmqt/eiWbZiaxFKostLhxP5kp8VgypitrLz9+O5q+4PnfUeF7dPuwPXUzhU1qEtUF8SSJ5eGsJeyvcSVw==
+"@stylexjs/stylex@0.5.0-alpha.4":
+  version "0.5.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/@stylexjs/stylex/-/stylex-0.5.0-alpha.4.tgz#cdc27e11410ff2f719c809ed973f83c7efdf5da4"
+  integrity sha512-yDyAo0PJi/jJ9rcKJsW5lhsn1CaU6M6jnAcKg8/kLv+fP/tr6azTu9cLIW8w40MvZ4Y+2kCLrar3KSYEzeuF6w==
   dependencies:
     css-mediaquery "^0.1.2"
     invariant "^2.2.4"
@@ -24833,10 +24833,11 @@ react-source-render@4.0.0-1:
     react-fast-compare "^2.0.4"
     react-is "^16.6.3"
 
-"react-strict-dom@file:../react-strict-dom/packages/react-strict-dom":
+"react-strict-dom@file:./apps/xplat-v9/vendor/react-strict-dom-0.0.0-44bfd09f9f.tgz":
   version "0.0.0"
+  resolved "file:./apps/xplat-v9/vendor/react-strict-dom-0.0.0-44bfd09f9f.tgz#f466201f49ea1c1d3c5d2f5777a2805e546ff4f1"
   dependencies:
-    "@stylexjs/stylex" "0.2.0-beta.26"
+    "@stylexjs/stylex" "0.5.0-alpha.4"
     css-mediaquery "0.1.2"
 
 react-syntax-highlighter@^10.1.3:

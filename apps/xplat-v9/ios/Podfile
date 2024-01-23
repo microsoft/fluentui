@@ -1,6 +1,6 @@
 require_relative '../node_modules/react-native-test-app/test_app'
 
-use_flipper! false if ENV['USE_FLIPPER'] == '0'
+use_flipper! false
 
 workspace 'xplat-v9.xcworkspace'
 
