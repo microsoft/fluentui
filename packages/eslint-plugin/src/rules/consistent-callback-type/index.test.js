@@ -65,5 +65,14 @@ ruleTester.run('consistent-callback-type', rule, {
       `,
       errors: [{ messageId: 'invalidType' }],
     },
+    // Invalid when callback in props is not using EventHandler, and the prop is two intersected TypeLiteral
+    {
+      code: `
+      export type SomeProps = SomeType & { onClick?: (ev: React.ClickEvent<HTMLInputElement>) => void } & {
+        onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: {}) => void,
+      };
+    `,
+      errors: [{ messageId: 'invalidType' }, { messageId: 'invalidType' }],
+    },
   ],
 });

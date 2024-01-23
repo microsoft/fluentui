@@ -18,64 +18,54 @@ module.exports = createRule({
   },
   defaultOptions: [],
   create(context) {
-    /**
-     * @type {{
-     *   node: import('@typescript-eslint/experimental-utils').TSESTree.TSTypeAliasDeclaration,
-     *   hasInnerTypeLiteral: boolean
-     * }[]}
-     */
-    const typeAliasStack = []; // use a stack to match the first TSTypeLiteral node within TSTypeAliasDeclaration node
+    let isTypeLiteralDirectChild = false; // captures `*.Props` TSTypeAliasDeclaration node and tracks direct child TSTypeLiteral node within
 
     return {
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      'TSTypeAliasDeclaration[id.name=/.*Props$/]': function (node) {
-        typeAliasStack.push({ node, hasInnerTypeLiteral: false });
+      'TSTypeAliasDeclaration[id.name=/.*Props$/] TSTypeLiteral': () => {
+        isTypeLiteralDirectChild = true;
       },
 
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      TSTypeLiteral: (/** @type {import('@typescript-eslint/experimental-utils').TSESTree.TSTypeLiteral}*/ node) => {
-        if (typeAliasStack.length > 0) {
-          const top = typeAliasStack[typeAliasStack.length - 1];
-          if (!top.hasInnerTypeLiteral) {
-            /**
-             * This is the first TSTypeLiteral node within the current TSTypeAliasDeclaration
-             * For this example:
-             * `type SomeProps3 = SomeArgBag & { someFunction?: (args: SomeArgBag) => void; };`
-             * it matches                     `{ someFunction?: (args: SomeArgBag) => void; }`
-             */
-            top.hasInnerTypeLiteral = true;
-
-            node.members.forEach(member => {
+      'TSTypeAliasDeclaration[id.name=/.*Props$/] TSTypeLiteral:exit': (
+        /** @type {import('@typescript-eslint/experimental-utils').TSESTree.TSTypeLiteral}*/ node,
+      ) => {
+        if (isTypeLiteralDirectChild) {
+          node.members.forEach(member => {
+            if (
+              member.type === AST_NODE_TYPES.TSPropertySignature &&
+              member.key.type === AST_NODE_TYPES.Identifier &&
+              /^on[A-Z]/.test(member.key.name)
+            ) {
+              const typeAnnotation = member.typeAnnotation?.typeAnnotation;
+              // Check if typeAnnotation is of type EventHandler
               if (
-                member.type === AST_NODE_TYPES.TSPropertySignature &&
-                member.key.type === AST_NODE_TYPES.Identifier &&
-                /^on[A-Z]/.test(member.key.name)
+                !(
+                  typeAnnotation &&
+                  typeAnnotation.type === AST_NODE_TYPES.TSTypeReference &&
+                  typeAnnotation.typeName.type === AST_NODE_TYPES.Identifier &&
+                  typeAnnotation.typeName.name === 'EventHandler' &&
+                  typeAnnotation.typeParameters
+                )
               ) {
-                const typeAnnotation = member.typeAnnotation?.typeAnnotation;
-                // Check if typeAnnotation is of type EventHandler
-                if (
-                  !(
-                    typeAnnotation &&
-                    typeAnnotation.type === AST_NODE_TYPES.TSTypeReference &&
-                    typeAnnotation.typeName.type === AST_NODE_TYPES.Identifier &&
-                    typeAnnotation.typeName.name === 'EventHandler' &&
-                    typeAnnotation.typeParameters
-                  )
-                ) {
-                  context.report({
-                    node: member,
-                    messageId: 'invalidType',
-                  });
-                }
+                context.report({
+                  node: member,
+                  messageId: 'invalidType',
+                });
               }
-            });
-          }
+            }
+          });
         }
       },
 
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      'TSTypeAliasDeclaration:exit': function () {
-        typeAliasStack.pop();
+      'TSTypeAliasDeclaration[id.name=/.*Props$/] TSTypeLiteral TSTypeLiteral': () => {
+        isTypeLiteralDirectChild = false;
+      },
+
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      'TSTypeAliasDeclaration[id.name=/.*Props$/] TSTypeLiteral TSTypeLiteral:exit': () => {
+        isTypeLiteralDirectChild = true;
       },
     };
   },
