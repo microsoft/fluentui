@@ -1,9 +1,10 @@
-// @ts-check
-const { AST_NODE_TYPES } = require('@typescript-eslint/experimental-utils');
-const createRule = require('../../utils/createRule');
+import { ESLintUtils, AST_NODE_TYPES, TSESTree } from '@typescript-eslint/experimental-utils';
 
-module.exports = createRule({
-  name: 'consistent-callback-type',
+// NOTE: The rule will be available in ESLint configs as "@nx/workspace-consistent-callback-type"
+export const RULE_NAME = 'consistent-callback-type';
+
+export const rule = ESLintUtils.RuleCreator(() => __filename)({
+  name: RULE_NAME,
   meta: {
     type: 'problem',
     docs: {
@@ -21,15 +22,11 @@ module.exports = createRule({
     let isTypeLiteralDirectChild = false; // captures `*.Props` TSTypeAliasDeclaration node and tracks direct child TSTypeLiteral node within
 
     return {
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       'TSTypeAliasDeclaration[id.name=/.*Props$/] TSTypeLiteral': () => {
         isTypeLiteralDirectChild = true;
       },
 
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      'TSTypeAliasDeclaration[id.name=/.*Props$/] TSTypeLiteral:exit': (
-        /** @type {import('@typescript-eslint/experimental-utils').TSESTree.TSTypeLiteral}*/ node,
-      ) => {
+      'TSTypeAliasDeclaration[id.name=/.*Props$/] TSTypeLiteral:exit': (node: TSESTree.TSTypeLiteral) => {
         if (isTypeLiteralDirectChild) {
           node.members.forEach(member => {
             if (
@@ -58,12 +55,10 @@ module.exports = createRule({
         }
       },
 
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       'TSTypeAliasDeclaration[id.name=/.*Props$/] TSTypeLiteral TSTypeLiteral': () => {
         isTypeLiteralDirectChild = false;
       },
 
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       'TSTypeAliasDeclaration[id.name=/.*Props$/] TSTypeLiteral TSTypeLiteral:exit': () => {
         isTypeLiteralDirectChild = true;
       },
