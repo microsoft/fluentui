@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { PopoverState, PopoverProps } from '@fluentui/react-popover';
+import type { PopoverState, PopoverProps, PopoverContextValue } from '@fluentui/react-popover';
 import { TeachingPopoverContextValue } from '../../TeachingPopoverContext';
 
 export type TeachingPopoverPageChangeData = { currentPage: number };
@@ -37,6 +37,7 @@ export type TeachingPopoverProps = Omit<PopoverProps, 'appearance'> & {
 
 export type TeachingPopoverContextValues = {
   teachingPopover: TeachingPopoverContextValue;
+  popover: PopoverContextValue;
 };
 
 /**

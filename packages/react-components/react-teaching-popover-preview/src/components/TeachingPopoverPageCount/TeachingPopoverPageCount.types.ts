@@ -37,6 +37,7 @@ export type TeachingPopoverPageCountState = ComponentState<TeachingPopoverPageCo
   setCurrentPage: (index: number) => void;
   /**
    * The style in which the page count is rendered.
+   * Defaults to 'icon'
    */
   countStyle: TeachingPopoverPageCountStyle;
   /**

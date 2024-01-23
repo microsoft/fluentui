@@ -19,7 +19,8 @@ export const useTeachingPopoverPageCount_unstable = (
   props: TeachingPopoverPageCountProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverPageCountState => {
-  const { carouselIcon, carouselSelectedIcon } = props;
+  const { carouselIcon, carouselSelectedIcon, countStyle = 'icon' } = props;
+
   const focusableGroupAttr = useFocusableGroup({ tabBehavior: 'limited' });
 
   const totalPages = useTeachingPopoverContext_unstable(context => context.totalPages);
@@ -59,7 +60,7 @@ export const useTeachingPopoverPageCount_unstable = (
   const carouselSelectedIconShorthand = useARIAButtonProps(_carouselSelectedIcon?.as, { ..._carouselSelectedIcon });
 
   const tabsterMod =
-    props.countStyle === 'icon'
+    countStyle === 'icon'
       ? {
           role: 'list',
           tabIndex: 0,
@@ -68,7 +69,7 @@ export const useTeachingPopoverPageCount_unstable = (
       : {};
 
   let renderChildMod = {};
-  if (props.countStyle === 'text') {
+  if (countStyle === 'text') {
     if (typeof props.children === 'function') {
       const renderFunc = props.children as TeachingPopoverPageCountChildRenderFunction;
       renderChildMod = { children: renderFunc(currentPage, totalPages) };
@@ -82,7 +83,7 @@ export const useTeachingPopoverPageCount_unstable = (
     totalPages,
     currentPage,
     setCurrentPage,
-    countStyle: props.countStyle ?? 'text',
+    countStyle,
     components: {
       root: 'div',
       carouselIcon: 'button',
