@@ -367,6 +367,7 @@
     ]
   },
   "resolutions": {
+    "@react-native/normalize-colors": "^0.72.0",
     "@typescript-eslint/eslint-plugin": "4.22.0",
     "@typescript-eslint/experimental-utils": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
