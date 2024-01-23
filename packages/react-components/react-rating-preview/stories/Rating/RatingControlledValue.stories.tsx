@@ -7,7 +7,7 @@ export const ControlledValue = () => {
   return (
     <>
       <Rating value={value} onChange={(_, data) => setValue(data.value)} />
-      <Button onClick={() => setValue(0)}>Click to set Rating to zero</Button>
+      <Button onClick={() => setValue(0)}>Clear Rating</Button>
     </>
   );
 };

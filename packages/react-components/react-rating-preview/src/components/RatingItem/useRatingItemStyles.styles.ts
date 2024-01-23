@@ -87,13 +87,13 @@ const useIndicatorStyles = makeStyles({
     color: tokens.colorBrandBackground,
   },
   unselectedFilledBrand: {
-    color: tokens.colorBrandBackground2Hover,
+    color: tokens.colorBrandBackground2,
   },
   marigold: {
     color: tokens.colorPaletteMarigoldBackground3,
   },
   unselectedFilledMarigold: {
-    color: tokens.colorPaletteMarigoldBorder1,
+    color: tokens.colorPaletteMarigoldBackground2,
   },
   unselectedFilled: {
     color: tokens.colorNeutralBackground6,

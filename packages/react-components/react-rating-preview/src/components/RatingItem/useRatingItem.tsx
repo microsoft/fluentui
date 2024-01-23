@@ -17,7 +17,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   const context = useRatingItemContextValue_unstable();
   const { value = 0 } = props;
 
-  const ratingValue = context.value || 0;
+  const ratingValue = Math.round((context.value || 0) * 2) / 2; // round to the nearest 0.5
 
   const displayedRatingValue = context.hoveredValue ?? ratingValue;
 
@@ -41,7 +41,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   let unselectedOutlineIcon;
   // The unselectedOutlineIcon always needs to be rendered when unselected,
   // even for 'filled' appearance, since high contrast always shows an outline.
-  if (iconFillWidth < 1 && context.interactive) {
+  if (iconFillWidth < 1) {
     unselectedOutlineIcon = slot.always(props.unselectedOutlineIcon, {
       defaultProps: {
         children: context.iconOutline,

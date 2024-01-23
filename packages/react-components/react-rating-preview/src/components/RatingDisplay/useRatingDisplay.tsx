@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useId } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { RatingDisplayProps, RatingDisplayState } from './RatingDisplay.types';
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
 import { RatingItem } from '../RatingItem/RatingItem';
@@ -25,11 +25,8 @@ export const useRatingDisplay_unstable = (
     iconOutline = <StarRegular />,
     max = 5,
     size = 'medium',
-    value = 3,
+    value,
   } = props;
-
-  const ratingId = useId('ratingLabel');
-  const countId = useId('countLabel');
 
   // Generate the child RatingItems and memoize them to prevent unnecessary re-rendering
   const rootChildren = React.useMemo(() => {
@@ -62,13 +59,13 @@ export const useRatingDisplay_unstable = (
       { elementType: 'div' },
     ),
     valueText: slot.optional(props.valueText, {
-      renderByDefault: true,
-      defaultProps: { id: ratingId, children: value },
+      renderByDefault: value !== undefined,
+      defaultProps: { children: value },
       elementType: 'span',
     }),
     countText: slot.optional(props.countText, {
       renderByDefault: count !== undefined,
-      defaultProps: { id: countId, children: count?.toLocaleString() },
+      defaultProps: { children: count?.toLocaleString() },
       elementType: 'span',
     }),
   };

@@ -57,7 +57,7 @@ export type RatingDisplaySlots = {
 };
 
 // @public
-export type RatingDisplayState = ComponentState<RatingDisplaySlots> & Required<Pick<RatingDisplayProps, 'color' | 'compact' | 'iconFilled' | 'iconOutline' | 'max' | 'size' | 'value'>>;
+export type RatingDisplayState = ComponentState<RatingDisplaySlots> & Required<Pick<RatingDisplayProps, 'color' | 'compact' | 'iconFilled' | 'iconOutline' | 'max' | 'size'>> & Pick<RatingDisplayProps, 'value'>;
 
 // @public
 export const RatingItem: ForwardRefComponent<RatingItemProps>;

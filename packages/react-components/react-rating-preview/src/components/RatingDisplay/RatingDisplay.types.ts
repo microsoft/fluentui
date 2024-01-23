@@ -13,7 +13,7 @@ export type RatingDisplaySlots = {
  */
 export type RatingDisplayProps = ComponentProps<RatingDisplaySlots> & {
   /**
-   * Controls the appearance of the RatingDisplay.
+   * Color of the rating items(stars).
    * @default neutral
    */
   color?: 'brand' | 'marigold' | 'neutral';
@@ -58,6 +58,7 @@ export type RatingDisplayProps = ComponentProps<RatingDisplaySlots> & {
  * State used in rendering RatingDisplay
  */
 export type RatingDisplayState = ComponentState<RatingDisplaySlots> &
-  Required<Pick<RatingDisplayProps, 'color' | 'compact' | 'iconFilled' | 'iconOutline' | 'max' | 'size' | 'value'>>;
+  Required<Pick<RatingDisplayProps, 'color' | 'compact' | 'iconFilled' | 'iconOutline' | 'max' | 'size'>> &
+  Pick<RatingDisplayProps, 'value'>;
 
 export type RatingDisplayContextValues = { ratingItem: RatingItemContextValue };

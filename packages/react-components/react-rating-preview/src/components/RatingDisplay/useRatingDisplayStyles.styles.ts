@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RatingDisplaySlots, RatingDisplayState } from './RatingDisplay.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -20,28 +20,18 @@ const useRootClassName = makeResetStyles({
 
 const useLabelClassName = makeResetStyles({
   color: tokens.colorNeutralForeground1,
-  margin: '0 2px',
+  marginLeft: tokens.spacingHorizontalXXS,
   ...typographyStyles.caption1,
-  lineHeight: '1',
 });
 
 const useLabelStyles = makeStyles({
-  small: {
-    fontSize: tokens.fontSizeBase100,
-    lineHeight: tokens.lineHeightBase100,
-    ...shorthands.margin('5px', '0px', '0px', '2px'),
-  },
-  medium: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
-  },
   large: {
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
   },
-  'extra-large': {
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
+  extraLarge: {
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
   },
   strong: {
     fontWeight: tokens.fontWeightSemibold,
@@ -58,26 +48,28 @@ const useLabelStyles = makeStyles({
  */
 export const useRatingDisplayStyles_unstable = (state: RatingDisplayState): RatingDisplayState => {
   const { size } = state;
-  const styles = useRootClassName();
-  state.root.className = mergeClasses(ratingDisplayClassNames.root, styles, state.root.className);
-  const labelBaseStyles = useLabelClassName();
+  const rootClassName = useRootClassName();
+  state.root.className = mergeClasses(ratingDisplayClassNames.root, rootClassName, state.root.className);
+  const labelClassName = useLabelClassName();
   const labelStyles = useLabelStyles();
 
   if (state.valueText) {
     state.valueText.className = mergeClasses(
       ratingDisplayClassNames.valueText,
-      labelBaseStyles,
+      labelClassName,
       labelStyles.strong,
-      state.size && labelStyles[size],
+      size === 'large' && labelStyles.large,
+      size === 'extra-large' && labelStyles.extraLarge,
       state.valueText.className,
     );
   }
   if (state.countText) {
     state.countText.className = mergeClasses(
       ratingDisplayClassNames.countText,
-      labelBaseStyles,
-      state.size === 'large' && labelStyles.large,
-      state.countText && labelStyles.divider,
+      labelClassName,
+      size === 'large' && labelStyles.large,
+      size === 'extra-large' && labelStyles.extraLarge,
+      state.valueText && labelStyles.divider,
       state.countText.className,
     );
   }
