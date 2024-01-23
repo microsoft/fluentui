@@ -59,12 +59,6 @@ module.exports = {
         'react/jsx-no-bind': 'off',
       },
     },
-    {
-      files: ['**/src/**/*.{ts,tsx}'],
-      rules: {
-        '@nx/workspace-consistent-callback-type': 'error',
-      },
-    },
     __internal.overrides.react,
   ].filter(Boolean),
 };
