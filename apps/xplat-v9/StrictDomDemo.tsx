@@ -1,6 +1,6 @@
 import React from 'react';
 import { html } from 'react-strict-dom';
-import { stylex } from '@stylexjs/stylex';
+import stylex from '@stylexjs/stylex';
 
 const styles = stylex.create({
   root: {

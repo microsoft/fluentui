@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@fluentui/react-button": "^9.3.61",
+    "@stylexjs/babel-plugin": "0.5.0-alpha.4",
     "@stylexjs/stylex": "0.5.0-alpha.4",
     "react": "18.2.0",
     "react-native": "^0.72.6",

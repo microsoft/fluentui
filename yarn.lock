@@ -311,7 +311,7 @@
     semver "^5.4.1"
     source-map "^0.5.0"
 
-"@babel/core@7.23.2", "@babel/core@^7.1.0", "@babel/core@^7.10.4", "@babel/core@^7.11.6", "@babel/core@^7.12.10", "@babel/core@^7.12.13", "@babel/core@^7.12.3", "@babel/core@^7.13.16", "@babel/core@^7.18.2", "@babel/core@^7.20.0", "@babel/core@^7.20.2", "@babel/core@^7.22.9", "@babel/core@^7.7.5":
+"@babel/core@7.23.2":
   version "7.23.2"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.23.2.tgz#ed10df0d580fff67c5f3ee70fd22e2e4c90a9f94"
   integrity sha512-n7s51eWdaWZ3vGT2tD4T7J6eJs3QoBXydv7vkUM06Bf1cbVD2Kc2UrkzhiQwobfV7NwOnQXYL7UBJ5VPU+RGoQ==
@@ -326,6 +326,27 @@
     "@babel/template" "^7.22.15"
     "@babel/traverse" "^7.23.2"
     "@babel/types" "^7.23.0"
+    convert-source-map "^2.0.0"
+    debug "^4.1.0"
+    gensync "^1.0.0-beta.2"
+    json5 "^2.2.3"
+    semver "^6.3.1"
+
+"@babel/core@^7.1.0", "@babel/core@^7.10.4", "@babel/core@^7.11.6", "@babel/core@^7.12.10", "@babel/core@^7.12.13", "@babel/core@^7.12.3", "@babel/core@^7.13.16", "@babel/core@^7.18.2", "@babel/core@^7.20.0", "@babel/core@^7.20.2", "@babel/core@^7.22.9", "@babel/core@^7.23.6", "@babel/core@^7.7.5":
+  version "7.23.7"
+  resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.23.7.tgz#4d8016e06a14b5f92530a13ed0561730b5c6483f"
+  integrity sha512-+UpDgowcmqe36d4NwqvKsyPMlOLNGMsfMmQ5WGCu+siCe3t3dfe9njrzGfdN4qq+bcNUt0+Vw6haRxBOycs4dw==
+  dependencies:
+    "@ampproject/remapping" "^2.2.0"
+    "@babel/code-frame" "^7.23.5"
+    "@babel/generator" "^7.23.6"
+    "@babel/helper-compilation-targets" "^7.23.6"
+    "@babel/helper-module-transforms" "^7.23.3"
+    "@babel/helpers" "^7.23.7"
+    "@babel/parser" "^7.23.6"
+    "@babel/template" "^7.22.15"
+    "@babel/traverse" "^7.23.7"
+    "@babel/types" "^7.23.6"
     convert-source-map "^2.0.0"
     debug "^4.1.0"
     gensync "^1.0.0-beta.2"
@@ -618,14 +639,14 @@
     "@babel/template" "^7.22.15"
     "@babel/types" "^7.22.19"
 
-"@babel/helpers@^7.12.5", "@babel/helpers@^7.23.2":
-  version "7.23.2"
-  resolved "https://registry.yarnpkg.com/@babel/helpers/-/helpers-7.23.2.tgz#2832549a6e37d484286e15ba36a5330483cac767"
-  integrity sha512-lzchcp8SjTSVe/fPmLwtWVBFC7+Tbn8LGHDVfDp9JGxpAY5opSaEFgt8UQvrnECWOTdji2mOWMz1rOhkHscmGQ==
+"@babel/helpers@^7.12.5", "@babel/helpers@^7.23.2", "@babel/helpers@^7.23.7":
+  version "7.23.8"
+  resolved "https://registry.yarnpkg.com/@babel/helpers/-/helpers-7.23.8.tgz#fc6b2d65b16847fd50adddbd4232c76378959e34"
+  integrity sha512-KDqYz4PiOWvDFrdHLPhKtCThtIcKVy6avWD2oG4GEvyQ+XDZwHD4YQd+H2vNMnq2rkdxsDkU82T+Vk8U/WXHRQ==
   dependencies:
     "@babel/template" "^7.22.15"
-    "@babel/traverse" "^7.23.2"
-    "@babel/types" "^7.23.0"
+    "@babel/traverse" "^7.23.7"
+    "@babel/types" "^7.23.6"
 
 "@babel/highlight@^7.10.4", "@babel/highlight@^7.22.13":
   version "7.22.20"
@@ -2256,7 +2277,7 @@
     debug "^4.1.0"
     globals "^11.1.0"
 
-"@babel/traverse@^7.20.0":
+"@babel/traverse@^7.20.0", "@babel/traverse@^7.23.6", "@babel/traverse@^7.23.7":
   version "7.23.7"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.23.7.tgz#9a7bf285c928cb99b5ead19c3b1ce5b310c9c305"
   integrity sha512-tY3mM8rH9jM0YHFGyfC0/xf+SB5eKUu7HPj7/k3fpi9dAlsMc5YbQvDi0Sh2QTPXqMhyaAtzAr807TIyfQrmyg==
@@ -6193,6 +6214,25 @@
     qs "^6.10.0"
     regenerator-runtime "^0.13.7"
     resolve-from "^5.0.0"
+
+"@stylexjs/babel-plugin@0.5.0-alpha.4":
+  version "0.5.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/@stylexjs/babel-plugin/-/babel-plugin-0.5.0-alpha.4.tgz#2a1ff5d2e4ad234250678a8da36dcbaf3f147dca"
+  integrity sha512-sbWF/xJMhPZ6l8bJ+FQCxa7Y0gG2K8un1Y0B0fI03QN7JcDZTUB5hePtqLgMl92KunMvscB4MnfATw9cgME1VQ==
+  dependencies:
+    "@babel/core" "^7.23.6"
+    "@babel/helper-module-imports" "^7.22.15"
+    "@babel/traverse" "^7.23.6"
+    "@babel/types" "^7.23.6"
+    "@stylexjs/shared" "0.5.0-alpha.4"
+    "@stylexjs/stylex" "0.5.0-alpha.4"
+
+"@stylexjs/shared@0.5.0-alpha.4":
+  version "0.5.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/@stylexjs/shared/-/shared-0.5.0-alpha.4.tgz#ec3813436eff7ac020e2bd9c9d4603433449a044"
+  integrity sha512-Clr6Iap5jkW2UmhFAOmv3rUBmGf1a15VJymkKThE2G+tXP9uQTnij387EdMHmJz27moGSOstVt1i3c8AIDdsHw==
+  dependencies:
+    postcss-value-parser "^4.1.0"
 
 "@stylexjs/stylex@0.5.0-alpha.4":
   version "0.5.0-alpha.4"
