@@ -30,7 +30,7 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
     name = generatedName,
     onChange,
     step = 1,
-    size = 'medium',
+    size = 'extra-large',
   } = props;
 
   const [value, setValue] = useControllableState({

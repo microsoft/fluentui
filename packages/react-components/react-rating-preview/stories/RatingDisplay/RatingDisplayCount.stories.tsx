@@ -9,7 +9,7 @@ Count.parameters = {
   docs: {
     description: {
       story:
-        'You can specify the total number of ratings being displayed with the `count`. The number you enter will be automatically formatted to be more readable.',
+        "You can specify the total number of ratings being displayed with the `count`. The number will be formatted with a thousands separator according to the user's locale.",
     },
   },
 };

@@ -48,7 +48,7 @@ export type RatingProps = Omit<ComponentProps<Partial<RatingSlots>>, 'onChange'>
   step?: 0.5 | 1;
   /**
    * Sets the size of the Rating items.
-   * @default medium
+   * @default extra-large
    */
   size?: 'small' | 'medium' | 'large' | 'extra-large';
   /**

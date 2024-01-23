@@ -13,7 +13,7 @@ export type RatingDisplaySlots = {
  */
 export type RatingDisplayProps = ComponentProps<RatingDisplaySlots> & {
   /**
-   * Color of the rating items(stars).
+   * Color of the rating items (stars).
    * @default neutral
    */
   color?: 'brand' | 'marigold' | 'neutral';
