@@ -450,10 +450,10 @@ export const defaultTests: DefaultTestObject = {
       const { testOptions = {} } = testInfo;
 
       const propNames = Object.keys(componentInfo.props);
-      const ignoreProps = testOptions['consistent-callback-args']?.ignoreProps || [];
+      const legacyCallbacks = testOptions['consistent-callback-args']?.legacyCallbacks || [];
 
       const invalidProps = propNames.reduce<Record<string, Error>>((errors, propName) => {
-        if (!ignoreProps.includes(propName) && CALLBACK_REGEX.test(propName)) {
+        if (legacyCallbacks.includes(propName) && CALLBACK_REGEX.test(propName)) {
           const propInfo = componentInfo.props[propName];
 
           if (!propInfo.declarations) {

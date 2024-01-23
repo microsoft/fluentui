@@ -12,7 +12,7 @@ export interface TestOptions {
     ignoreProps?: string[];
   };
   'consistent-callback-args'?: {
-    ignoreProps?: string[];
+    legacyCallbacks?: string[];
   };
   'has-static-classnames'?: {
     props: {
