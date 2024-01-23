@@ -1,13 +1,13 @@
-import * as React from 'react';
-import { act, queryAllByAttribute, render, waitFor, screen, fireEvent } from '@testing-library/react';
-import { HeatMapChart, IHeatMapChartProps } from './index';
+import { act, fireEvent, queryAllByAttribute, render, screen, waitFor } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import * as React from 'react';
+import { HeatMapChart, IHeatMapChartProps } from './index';
 
 expect.extend(toHaveNoViolations);
 
 const stringPoints: string[] = ['p1', 'p2', 'p3', 'p4'];
 const numericPoints: number[] = [10, 20, 30, 40];
-const datePoints: Date[] = [new Date('2020-03-01'), new Date('2020-03-02')];
+const datePoints: Date[] = [new Date(Date.UTC(2020, 2, 1, 0, 1)), new Date(Date.UTC(2020, 2, 2, 0, 1))];
 
 export const HeatMapDateStringData: IHeatMapChartProps['data'] = [
   {
