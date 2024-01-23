@@ -27,7 +27,7 @@ export type SelectProps = Omit<ComponentProps<Partial<SelectSlots>, 'select'>, '
   /**
    * Called when the user changes the select element's value by selecting an option.
    */
-  // eslint-disable-next-line @fluentui/consistent-callback-type -- can't change type of existing callback
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onChange?: (ev: React.ChangeEvent<HTMLSelectElement>, data: SelectOnChangeData) => void;
 
   /**

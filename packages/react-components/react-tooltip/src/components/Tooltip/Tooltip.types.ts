@@ -63,7 +63,7 @@ export type TooltipProps = ComponentProps<TooltipSlots> &
      * **Note**: for backwards compatibility, `event` will be undefined if this was triggered by a keyboard event on
      * the document element. Use `data.documentKeyboardEvent` if the keyboard event object is needed.
      */
-    // eslint-disable-next-line @fluentui/consistent-callback-type -- can't change type of existing callback
+    // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
     onVisibleChange?: (
       event: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined,
       data: OnVisibleChangeData,
