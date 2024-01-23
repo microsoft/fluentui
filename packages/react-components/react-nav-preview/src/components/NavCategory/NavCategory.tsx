@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useNavCategory_unstable } from './useNavCategory';
 import { renderNavCategory_unstable } from './renderNavCategory';
-import { useNavCategoryStyles_unstable } from './useNavCategoryStyles.styles';
 import { useNavCategoryContextValues_unstable } from '../useNavCategoryContextValues_unstable';
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -13,11 +12,6 @@ import type { NavCategoryProps } from './NavCategory.types';
 export const NavCategory: ForwardRefComponent<NavCategoryProps> = React.forwardRef((props, ref) => {
   const state = useNavCategory_unstable(props, ref);
   const contextValues = useNavCategoryContextValues_unstable(state);
-
-  useNavCategoryStyles_unstable(state);
-  // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
-  // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
-  // useCustomStyleHook_unstable('useNavCategoryStyles_unstable')(state);
 
   return renderNavCategory_unstable(state, contextValues);
 });

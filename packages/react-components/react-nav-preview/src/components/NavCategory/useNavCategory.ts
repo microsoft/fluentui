@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { NavCategoryProps, NavCategoryState } from './NavCategory.types';
 import { useNavContext_unstable } from '../NavContext';
 
@@ -13,7 +12,7 @@ import { useNavContext_unstable } from '../NavContext';
  * @param ref - reference to root HTMLDivElement of NavCategory
  */
 export const useNavCategory_unstable = (props: NavCategoryProps, ref: React.Ref<HTMLDivElement>): NavCategoryState => {
-  const { value } = props;
+  const { value, children } = props;
 
   const { openItems } = useNavContext_unstable();
 
@@ -22,15 +21,6 @@ export const useNavCategory_unstable = (props: NavCategoryProps, ref: React.Ref<
   return {
     open,
     value,
-    components: {
-      root: 'div',
-    },
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        ...props,
-      }),
-      { elementType: 'div' },
-    ),
+    children,
   };
 };
