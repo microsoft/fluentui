@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 19 Jan 2024 07:29:32 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jan 2024 07:26:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.115.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.115.0)
+
+Tue, 23 Jan 2024 07:26:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.114.4..@fluentui/react_v8.115.0)
+
+### Minor changes
+
+- Added expand callback to the MessageBar component ([PR #30221](https://github.com/microsoft/fluentui/pull/30221) by anvasser@microsoft.com)
 
 ## [8.114.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.114.4)
 
