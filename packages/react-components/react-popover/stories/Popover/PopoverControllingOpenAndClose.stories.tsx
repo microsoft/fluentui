@@ -1,10 +1,24 @@
 import * as React from 'react';
-import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger, Checkbox } from '@fluentui/react-components';
+import {
+  makeStyles,
+  Button,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+  Checkbox,
+  shorthands,
+} from '@fluentui/react-components';
 import type { PopoverProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   contentHeader: {
     marginTop: '0',
+  },
+  label: {
+    display: 'flex',
+    ...shorthands.gap('10px'),
+    alignItems: 'center',
+    marginTop: '10px',
   },
 });
 
@@ -20,6 +34,7 @@ const ExampleContent = () => {
 };
 
 export const ControllingOpenAndClose = () => {
+  const styles = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpenChange: PopoverProps['onOpenChange'] = (e, data) => setOpen(data.open || false);
 
@@ -37,12 +52,7 @@ export const ControllingOpenAndClose = () => {
           <ExampleContent />
         </PopoverSurface>
       </Popover>
-
-      <label style={{ display: 'flex', gap: '10px', alignItems: 'center', marginTop: '10px' }}>
-        open
-        {/* <input type="checkbox" name="state" value="open" checked={open} onChange={onChange} /> */}
-        <Checkbox value="open" name="state" checked={open} onChange={onChange} />
-      </label>
+      <Checkbox value="open" name="state" label="open" checked={open} onChange={onChange} className={styles.label} />
     </div>
   );
 };
