@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
+import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger, Checkbox } from '@fluentui/react-components';
 import type { PopoverProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -40,7 +40,8 @@ export const ControllingOpenAndClose = () => {
 
       <label style={{ display: 'flex', gap: '10px', alignItems: 'center', marginTop: '10px' }}>
         open
-        <input type="checkbox" name="state" value="open" checked={open} onChange={onChange} />
+        {/* <input type="checkbox" name="state" value="open" checked={open} onChange={onChange} /> */}
+        <Checkbox value="open" name="state" checked={open} onChange={onChange} />
       </label>
     </div>
   );
