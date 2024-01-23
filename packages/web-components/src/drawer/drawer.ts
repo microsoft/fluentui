@@ -3,16 +3,25 @@ import { eventAnimationEnd, keyEscape } from '@microsoft/fast-web-utilities';
 import { DrawerModalType, DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
 
 export class Drawer extends FASTElement {
-  private closing: boolean = false;
-
+  /**
+   * This method is called when the custom element is connected to the document's DOM.
+   * It overrides the connectedCallback method from the base class.
+   *
+   * @remarks
+   * The connectedCallback method is necessary to ensure that the component is properly initialized and rendered when it is connected to the DOM.
+   * Although the `open` property is initialized to `false` and `openChanged` already calls `show()`, there may be cases where the initial `openChanged` event occurs before the dialog reference (`dialogRef`) is set.
+   * By using the `connectedCallback` method, we can ensure that the component is fully set up before any further actions are taken.
+   */
   public connectedCallback(): void {
     super.connectedCallback();
-
     Updates.enqueue(() => {
       this.setComponent();
     });
   }
 
+  /**
+   * This method is called when the custom element is disconnected from the document's DOM.
+   */
   public disconnectedCallback(): void {
     super.disconnectedCallback();
   }
@@ -94,6 +103,11 @@ export class Drawer extends FASTElement {
   public open: boolean = false;
 
   /**
+   * Indicates whether the drawer is currently closing.
+   */
+  private closing: boolean = false;
+
+  /**
    * Emits a 'cancel' event.
    * @internal
    */
@@ -106,10 +120,10 @@ export class Drawer extends FASTElement {
    * @public
    */
   public openChanged(oldValue: boolean, newValue: boolean): void {
-    if (newValue !== oldValue) {
-      if (newValue && !oldValue) {
+    if (this.$fastController.isConnected) {
+      if (newValue) {
         this.show();
-      } else if (!newValue && oldValue) {
+      } else {
         this.hide();
       }
     }
