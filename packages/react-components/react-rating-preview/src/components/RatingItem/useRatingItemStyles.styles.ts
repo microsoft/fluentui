@@ -68,6 +68,7 @@ const useInputStyles = makeStyles({
 const useIndicatorBaseClassName = makeResetStyles({
   display: 'inline-block',
   overflow: 'hidden',
+  color: tokens.colorNeutralForeground1,
   fill: 'currentColor',
   pointerEvents: 'none',
   position: 'absolute',
@@ -84,38 +85,26 @@ const useIndicatorStyles = makeStyles({
     marginLeft: '-50%',
   },
   brand: {
-    color: tokens.colorBrandBackground,
-  },
-  unselectedFilledBrand: {
-    color: tokens.colorBrandBackground2,
+    color: tokens.colorBrandForeground1,
   },
   marigold: {
-    color: tokens.colorPaletteMarigoldBackground3,
+    color: tokens.colorPaletteMarigoldBorderActive,
   },
-  unselectedFilledMarigold: {
-    color: tokens.colorPaletteMarigoldBackground2,
+  highContrastOnly: {
+    color: tokens.colorTransparentStroke,
   },
-  unselectedFilled: {
-    color: tokens.colorNeutralBackground6,
+  filled: {
+    color: tokens.colorNeutralBackground2,
     '@media (forced-colors: active)': {
-      // In high contrast, the 'outline' icon is always visible,
-      // so we need to hide the 'filled' icon.
+      // In high contrast the 'outline' icon is always visible, so we need to hide the 'filled' icon.
       display: 'none',
     },
   },
-  unselectedOutline: {
-    color: tokens.colorNeutralForeground3,
+  brandFilled: {
+    color: tokens.colorBrandBackground2,
   },
-  unselectedOutlineBrand: {
-    color: tokens.colorBrandForeground1,
-  },
-  unselectedOutlineMarigold: {
-    color: tokens.colorPaletteMarigoldForeground3,
-  },
-  unselectedOutlineHighContrast: {
-    // When the style is 'filled' for unselected icons, we still
-    // need to show the outline version for high contrast.
-    color: tokens.colorTransparentStroke,
+  marigoldFilled: {
+    color: tokens.colorPaletteMarigoldBackground2,
   },
 });
 
@@ -123,7 +112,7 @@ const useIndicatorStyles = makeStyles({
  * Apply styling to the RatingItem slots based on the state
  */
 export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItemState => {
-  const { size, iconFillWidth } = state;
+  const { color, size, iconFillWidth } = state;
   const styles = useStyles();
   const inputBaseClassName = useInputBaseClassName();
   const inputStyles = useInputStyles();
@@ -154,11 +143,10 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
     state.unselectedOutlineIcon.className = mergeClasses(
       ratingItemClassNames.unselectedOutlineIcon,
       indicatorBaseClassName,
-      indicatorStyles.unselectedOutline,
-      state.unselectedFilledIcon ? indicatorStyles.unselectedOutlineHighContrast : indicatorStyles.unselectedOutline,
-      state.color === 'neutral' && indicatorStyles.unselectedOutline,
-      state.color === 'brand' && indicatorStyles.unselectedOutlineBrand,
-      state.color === 'marigold' && indicatorStyles.unselectedOutlineMarigold,
+      color === 'brand' && indicatorStyles.brand,
+      color === 'marigold' && indicatorStyles.marigold,
+      // If there is also a filled icon, the outline icon is only visible in high contrast
+      state.unselectedFilledIcon && indicatorStyles.highContrastOnly,
       iconFillWidth === 0.5 && indicatorStyles.upperHalf,
       state.unselectedOutlineIcon.className,
     );
@@ -167,9 +155,9 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
     state.unselectedFilledIcon.className = mergeClasses(
       ratingItemClassNames.unselectedFilledIcon,
       indicatorBaseClassName,
-      indicatorStyles.unselectedFilled,
-      state.color === 'brand' && indicatorStyles.unselectedFilledBrand,
-      state.color === 'marigold' && indicatorStyles.unselectedFilledMarigold,
+      indicatorStyles.filled,
+      color === 'brand' && indicatorStyles.brandFilled,
+      color === 'marigold' && indicatorStyles.marigoldFilled,
       iconFillWidth === 0.5 && indicatorStyles.upperHalf,
       state.unselectedFilledIcon.className,
     );
@@ -178,8 +166,8 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
     state.selectedIcon.className = mergeClasses(
       ratingItemClassNames.selectedIcon,
       indicatorBaseClassName,
-      state.color === 'brand' && indicatorStyles.brand,
-      state.color === 'marigold' && indicatorStyles.marigold,
+      color === 'brand' && indicatorStyles.brand,
+      color === 'marigold' && indicatorStyles.marigold,
       iconFillWidth === 0.5 && indicatorStyles.lowerHalf,
       state.selectedIcon.className,
     );
