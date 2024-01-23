@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(Utilities): Account for column reversed scrollable elements in allowScrollOnElement.",
-  "packageName": "@fluentui/utilities",
-  "email": "estebanmu@microsoft.com",
-  "dependentChangeType": "patch"
-}

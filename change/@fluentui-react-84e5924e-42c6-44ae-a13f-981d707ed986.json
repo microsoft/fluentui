@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added expand callback to the MessageBar component",
+  "packageName": "@fluentui/react",
+  "email": "anvasser@microsoft.com",
+  "dependentChangeType": "patch"
+}

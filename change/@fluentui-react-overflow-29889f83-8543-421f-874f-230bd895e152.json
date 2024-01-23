@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: cleanup overflow manager on every unmount",
+  "packageName": "@fluentui/react-overflow",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { getChildElement } from '../utils/getChildElement';
-import type { AtomMotion, MotionImperativeRef } from '../types';
+import type { AtomMotion, AtomMotionFn, MotionImperativeRef } from '../types';
 
 export type AtomProps = {
   children: React.ReactElement;
@@ -20,7 +20,7 @@ export type AtomProps = {
  *
  * @param motion - A motion definition.
  */
-export function createAtom(motion: AtomMotion) {
+export function createAtom(motion: AtomMotion | AtomMotionFn) {
   const Atom: React.FC<AtomProps> = props => {
     const { children, iterations = 1, imperativeRef } = props;
 
@@ -35,7 +35,9 @@ export function createAtom(motion: AtomMotion) {
       const element = elementRef.current;
 
       if (element) {
-        const { keyframes, ...options } = motion;
+        const definition = typeof motion === 'function' ? motion(element) : motion;
+        const { keyframes, ...options } = definition;
+
         const animation = element.animate(keyframes, {
           fill: 'forwards',
 
