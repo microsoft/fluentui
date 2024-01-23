@@ -2144,7 +2144,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-width="3"
             transform="translate(0, 0)"
             x1="42.57142857142857"
-            x2="16.304290982886805"
+            x2="16.300702576112414"
             y1="-11.900000000000004"
             y2="-12.450000000000003"
           />
@@ -2154,7 +2154,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
-            x1="16.304290982886805"
+            x1="16.300702576112414"
             x2="-22.57142857142857"
             y1="-12.450000000000003"
             y2="20"
@@ -2170,7 +2170,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             visibility="hidden"
           />
           <circle
-            cx="16.304290982886805"
+            cx="16.300702576112414"
             cy="-12.450000000000003"
             fill="#ffffff"
             r="8"
@@ -2706,7 +2706,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-width="3"
             transform="translate(0, 0)"
             x1="42.57142857142857"
-            x2="16.304290982886805"
+            x2="16.300702576112414"
             y1="-11.900000000000004"
             y2="-12.450000000000003"
           />
@@ -2716,7 +2716,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
-            x1="16.304290982886805"
+            x1="16.300702576112414"
             x2="-22.57142857142857"
             y1="-12.450000000000003"
             y2="20"
@@ -2732,7 +2732,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             visibility="hidden"
           />
           <circle
-            cx="16.304290982886805"
+            cx="16.300702576112414"
             cy="-12.450000000000003"
             fill="#ffffff"
             r="8"
@@ -3268,7 +3268,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-width="3"
             transform="translate(0, 0)"
             x1="42.57142857142857"
-            x2="16.304290982886805"
+            x2="16.300702576112414"
             y1="-11.900000000000004"
             y2="-12.450000000000003"
           />
@@ -3278,7 +3278,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
-            x1="16.304290982886805"
+            x1="16.300702576112414"
             x2="-22.57142857142857"
             y1="-12.450000000000003"
             y2="20"
@@ -3294,7 +3294,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             visibility="hidden"
           />
           <circle
-            cx="16.304290982886805"
+            cx="16.300702576112414"
             cy="-12.450000000000003"
             fill="#ffffff"
             r="8"
@@ -3830,7 +3830,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-width="3"
             transform="translate(0, 0)"
             x1="42.57142857142857"
-            x2="16.304290982886805"
+            x2="16.300702576112414"
             y1="-11.900000000000004"
             y2="-12.450000000000003"
           />
@@ -3840,7 +3840,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             stroke-linecap="round"
             stroke-width="3"
             transform="translate(0, 0)"
-            x1="16.304290982886805"
+            x1="16.300702576112414"
             x2="-22.57142857142857"
             y1="-12.450000000000003"
             y2="20"
@@ -3856,7 +3856,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
             visibility="hidden"
           />
           <circle
-            cx="16.304290982886805"
+            cx="16.300702576112414"
             cy="-12.450000000000003"
             fill="#ffffff"
             r="8"
