@@ -94,7 +94,7 @@ const useIndicatorStyles = makeStyles({
     color: tokens.colorTransparentStroke,
   },
   filled: {
-    color: tokens.colorNeutralBackground2,
+    color: tokens.colorNeutralBackground6,
     '@media (forced-colors: active)': {
       // In high contrast the 'outline' icon is always visible, so we need to hide the 'filled' icon.
       display: 'none',
