@@ -1,12 +1,9 @@
-// @ts-nocheck
-const { ESLintUtils } = require('@typescript-eslint/experimental-utils');
-const rule = require('./index');
-
-const ruleTester = new ESLintUtils.RuleTester({
-  parser: '@typescript-eslint/parser',
+import { TSESLint } from '@typescript-eslint/experimental-utils';
+import { rule, RULE_NAME } from './consistent-callback-type';
+const ruleTester = new TSESLint.RuleTester({
+  parser: require.resolve('@typescript-eslint/parser'),
 });
-
-ruleTester.run('consistent-callback-type', rule, {
+ruleTester.run(RULE_NAME, rule, {
   valid: [
     // Valid when prop is TSTypeAliasDeclaration and the callback uses EventHandler
     {

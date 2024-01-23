@@ -61,7 +61,7 @@ module.exports = {
     {
       files: ['**/src/**/*.{ts,tsx}'],
       rules: {
-        '@fluentui/consistent-callback-type': 'error',
+        '@nx/workspace-consistent-callback-type': 'error',
       },
     },
   ],

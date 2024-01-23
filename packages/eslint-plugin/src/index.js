@@ -19,7 +19,6 @@ module.exports = {
     'no-visibility-modifiers': require('./rules/no-visibility-modifiers'),
     'no-restricted-imports': require('./rules/no-restricted-imports'),
     'no-context-default-value': require('./rules/no-context-default-value'),
-    'consistent-callback-type': require('./rules/consistent-callback-type'),
   },
 
   // Not a standard eslint thing, just exported for convenience
