@@ -12,11 +12,13 @@ Popovers can have structured content and interactive components. If you need to 
 
 The design guidelines demonstrate a highly flexible and feature rich popover in the form of a styled DOM element. Creating elements like this which respond to changes in the screen size and the location of the anchoring element are complex and fairly labor intensive to develop.
 
-Presently, due to the maturity of web technologies, and because its such a well used pattern, there aren't many different approaches to implementation of a popover. One outshines all the competitors: [Floating-UI](https://floating-ui.com/docs/getting-started).
+Presently, due to the maturity of web technologies, and because its such a well used pattern, there aren't many different "off the shelf" tools for implementing a popover like this. One outshines all the competitors: [Floating-UI](https://floating-ui.com/docs/getting-started).
 
-FluentUI React uses floating-ui to achieve many of the features illustrated in the Fluent UI design guidelines. At first glance, it seems like a natural choice for implmentation. It has a proven track record, uses vanilla javascript, can be easily utilized for web components, will work in any browser, and is relatively small (7kb). Given its popularity and robustness, why wouldn't we utilize the Floating-UI? In short, because there are newer options that provide longevity and performance.
+Fluent UI React uses Floating-UI to achieve many of the features illustrated in the Fluent UI design guidelines. It seems like a natural choice for implmentation of the web component version of the popover as well. It has a proven track record, uses vanilla javascript, can be easily utilized for web components, will work in any browser, and is relatively small (7kb). Given its popularity and robustness, why wouldn't we utilize the Floating-UI? In short, because there are newer options that provide longevity and performance. In the future tools like Floating UI will not be needed (and browser technology is almost there).
 
-[Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) a Native browser popover, is the less obvious but more modern solution to building popovers. There is a caveat that it's not supported in Firefox yet, however a polyfill is available.
+### Popover API - A partial alternative to Floating-UI
+
+[Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) a Native browser popover, is the less obvious but more modern solution to building popovers. There is a caveat that it's not supported in Firefox yet, however [a polyfill is available from the oddbird group](https://github.com/oddbird/popover-polyfill).
 
 The Popover API has one main advantage over Floating-UI - no javascript. It's the most lightweight solution possible for creating a popover. In addition to being lightweight there are other reasons to decouple from a third party library like floating ui:
 
@@ -24,9 +26,20 @@ The Popover API has one main advantage over Floating-UI - no javascript. It's th
 1. Upgrades us to the latest web standards - Neither Popover API and CSS Anchored Positioning are fully available yet, but we can subscribe to their language and api now.
 1. Handle positioning (the most complex part of the popover) without third party Javascript Apis - which may be more work, but will give us a foundation that doesn't rely on tools we did not develop ourselves (We are Microsoft and should not need to rely on third party Javascript packages to meet our requirements).
 
+### CSS Anchor Positioning - the remainder of the alternative to Floating UI
+
+As mentioned above popover api is only a partial alternative to floating UI. Floating UI handles two things:
+
+- invoking a floating DOM element
+- providing an API for positioning that element
+
+With CSS anchor positioning the second can be achieved. The big caveat being that CSS Anchor Positioning is an experimental feature and not available without allowing experimental features in the browser (Chrome, Edge or Firefox). Fortunately, [oddbird group provides a polyfill for this as well](https://github.com/oddbird/css-anchor-positioning)
+
 ## Engineering Strategy
 
-Popover is built with the Popover API, Popover Polyfill API, and CSS Anchor Positioning (which will also require our own polyfill)
+Popover is built with the Popover API, Popover Polyfill API, and CSS Anchor Positioning (using the anchor positioning polyfill).
+
+[Here is an example of how the anchor positioning would work to handle collision detection](https://stackblitz.com/edit/typescript-pdndqh?file=index.ts)
 
 ## Referenced Technologies
 
@@ -65,8 +78,8 @@ _differences coming from Fluent UI React_
 | beak vs withArrow    | changed             | the React implementation uses the terminology withArrow. This differs from the design guidelines which uses "beak" to describe the arrow. This implementation stays true to the design language                                                                |
 | bi-directionality    | omitted             | the FluentUI guidelines specifies that if a foreign language is used that reads from RTL or LTR the floating position of the component will automatically change. Localization has not been built into this component, therefore this feature has been omitted |
 | positioning language | changed             | The FluentUI guidelines has confusing language concerning the positioning of the popover. Fluent UI React has altered the language to simplify it. The web component will follow the React language for positioning. More on this below.                       |
-| open-on-hover        | omitted             | Enables the invocation of the popover on hover                                                                                                                                                                                                                 |
-| open-on-context      | omitted             | Enables the invocation of the popover on context click                                                                                                                                                                                                         |
+| open-on-hover        | omitted             | Enables the invocation of the popover on hover. This will be omitted since the dev can easily add an event handler for this.                                                                                                                                   |
+| open-on-context      | omitted             | Enables the invocation of the popover on context click. This will also be omitted due to event handling. The dev can choose to invoke the popover however is needed.                                                                                           |
 
 | FluentUI React - PositioningProps\* | FluentUI Web Component                                                          | notes                                                                                                                                      |
 | ----------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -86,38 +99,39 @@ _differences coming from Fluent UI React_
 
 \*[Positioning Shorthand](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--default#shorthand-positions)
 
-### type Placement (floating-ui) vs PositionShorthand (FluentUI)
+### type PositionShorthand (FluentUI)
 
-The popover web component uses floating-ui (a javascript npm package) to implement the design guidelines. FluentUI Design guidelines have two concepts in regard to positioning:
+The popover web component uses CSS Anchor Positioning to control its position. FluentUI Design guidelines have two concepts in regard to positioning:
 
 1. Position - "above" | "below" | "before" | "after"
 2. Alignment - "start" | "end" | "center"
 
-Below is a maping of the floating ui Placement type to the FluentUI PositioningShorthand type. There are some differences in language, but the meanings in the ui are the same. For the sake of clarity the web component implementation precisely matches the language of the react implementation:
+Fluent UI react has created a PositioningShorthand type. There are some differences in language from the Fluent Design Guidelines, but the meanings in the ui are the same. For the sake of clarity the web component implementation matches the language of the React implementation:
 
-| Floating-ui - Placement | FluentUI React - PositioningShorthand\* | FluentUI Web Component - follows React pattern | FluentUI Design Guidelines | notes |
-| ----------------------- | --------------------------------------- | ---------------------------------------------- | -------------------------- | ----- |
-| top                     | above                                   | above                                          | above-center               |       |
-| top-start               | above-start                             | above-start                                    | above-start                |       |
-| top-end                 | above-end                               | above-end                                      | above-end                  |       |
-| right                   | after                                   | after                                          | end-middle                 |       |
-| right-start             | after-top                               | after-top                                      | end-top                    |       |
-| right-end               | after-bottom                            | after-bottom                                   | end-bottom                 |       |
-| bottom                  | below                                   | below                                          | below-center               |       |
-| bottom-start            | below-start                             | below-start                                    | below-start                |       |
-| bottom-end              | below-end                               | below-end                                      | below-end                  |       |
-| left                    | before                                  | before                                         | start-middle               |       |
-| left-start              | before-top                              | before-top                                     | start-top                  |       |
-| left-end                | before-bottom                           | before-bottom                                  | start-bottom               |       |
+| FluentUI React - PositioningShorthand\* | FluentUI Design Guidelines | notes |
+| --------------------------------------- | -------------------------- | ----- |
+| above                                   | above-center               |       |
+| above-start                             | above-start                |       |
+| above-end                               | above-end                  |       |
+| after                                   | end-middle                 |       |
+| after-top                               | end-top                    |       |
+| after-bottom                            | end-bottom                 |       |
+| below                                   | below-center               |       |
+| below-start                             | below-start                |       |
+| below-end                               | below-end                  |       |
+| before                                  | start-middle               |       |
+| before-top                              | start-top                  |       |
+| before-bottom                           | start-bottom               |       |
 
 ### Prior work
 
-Component dev implementation work was initially began by Miro Stastny. With his permission, we are picking up where he left off. [His PR here](https://github.com/microsoft/fluentui/pull/26984/files#diff-696924c0eb6e18cb4283373ccf8c3cb8713a2cc1e5b32ccc2f907616803e2f63)
+Component dev implementation work was initially began by Miro Stastny. We are picking up where he left off. [His PR here](https://github.com/microsoft/fluentui/pull/26984/files#diff-696924c0eb6e18cb4283373ccf8c3cb8713a2cc1e5b32ccc2f907616803e2f63)
 
 ## Usage:
 
 ```html
-<fluent-popover anchor="button-trigger" beak>
-  <fluent-button id="button-trigger"></fluent-button>
+<fluent-button target="${targetId}" id="${anchorId}">Popover Trigger</fluent-button>
+<fluent-popover anchor="${anchorId}" id="${targetId}" beak>
+  <div>Popover Content</div>
 </fluent-popover>
 ```
