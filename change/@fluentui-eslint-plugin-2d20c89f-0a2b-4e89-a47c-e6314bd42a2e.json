@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: add internal consistent-callback-type lint rule to v9 config",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "none"
+}
