@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: initial release",
+  "packageName": "@fluentui/react-motions-preview",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

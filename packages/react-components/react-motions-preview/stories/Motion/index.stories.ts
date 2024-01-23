@@ -17,7 +17,7 @@ export { MotionFunctions } from './MotionFunctions.stories';
 export { MotionLibrary } from './MotionLibrary.stories';
 
 export default {
-  title: 'Utilities/Motions (Preview)',
+  title: 'Utilities/Web Motions (Preview)',
   component: null,
   parameters: {
     docs: {
