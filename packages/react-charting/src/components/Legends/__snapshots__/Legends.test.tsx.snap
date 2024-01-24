@@ -40,6 +40,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
                 outline: none;
               }
           data-focuszone-id="FocusZone0"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -1634,6 +1635,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
                 outline: none;
               }
           data-focuszone-id="FocusZone1"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -3228,6 +3230,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
                 outline: none;
               }
           data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -4822,6 +4825,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
                 outline: none;
               }
           data-focuszone-id="FocusZone3"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
