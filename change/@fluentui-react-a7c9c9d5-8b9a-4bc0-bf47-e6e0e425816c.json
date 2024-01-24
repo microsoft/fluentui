@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: DetailsList inner FocusZone receives focus even if the header is not tabbable",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
