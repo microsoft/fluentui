@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Rating } from '@fluentui/react-rating-preview';
+import { RatingDisplay } from '@fluentui/react-rating-preview';
 import { CircleFilled, CircleRegular, SquareFilled, SquareRegular } from '@fluentui/react-icons';
 import { makeStyles, shorthands } from '@fluentui/react-components';
 
@@ -15,8 +15,8 @@ export const Shape = () => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <Rating iconFilled={<CircleFilled />} iconOutline={<CircleRegular />} step={0.5} />
-      <Rating iconFilled={<SquareFilled />} iconOutline={<SquareRegular />} step={0.5} />
+      <RatingDisplay iconFilled={<CircleFilled />} iconOutline={<CircleRegular />} value={3.5} />
+      <RatingDisplay iconFilled={<SquareFilled />} iconOutline={<SquareRegular />} value={3.5} />
     </div>
   );
 };
