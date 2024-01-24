@@ -12,7 +12,7 @@ import {
   MenuPopover,
   Avatar,
   Text,
-  Checkbox,
+  Divider,
   makeStyles,
 } from '@fluentui/react-components';
 import { Send24Regular, Mic24Regular, PeopleRegular, PersonDelete24Regular } from '@fluentui/react-icons';
@@ -25,32 +25,31 @@ const useStyles = makeStyles({
     width: '180px',
     justifyContent: 'space-between',
   },
-  checkboxIndicator: {
-    '> .fui-Checkbox__indicator': {
-      marginTop: 'auto !important',
-    },
+  divider: {
+    marginTop: '10px',
+    marginBottom: '10px',
   },
 });
 
 export const ActionAvoidBad = () => (
   <FluentWapper>
-    <Button aria-label="Click here to send message " size="small" icon={<Send24Regular />}></Button>
+    <Button aria-label="Click here to send message " size="small" icon={<Send24Regular />} />
   </FluentWapper>
 );
 export const ActionAvoidGood = () => (
   <FluentWapper>
-    <Button aria-label="Send message" size="small" icon={<Send24Regular />}></Button>
+    <Button aria-label="Send message" size="small" icon={<Send24Regular />} />
   </FluentWapper>
 );
 
 export const ComponentTypeAvoidBad = () => (
   <FluentWapper>
-    <Button aria-label="Mute microphone button" size="small" icon={<Mic24Regular />}></Button>
+    <Button aria-label="Mute microphone button" size="small" icon={<Mic24Regular />} />
   </FluentWapper>
 );
 export const ComponentTypeAvoidGood = () => (
   <FluentWapper>
-    <Button aria-label="Mute microphone" size="small" icon={<Mic24Regular />}></Button>
+    <Button aria-label="Mute microphone" size="small" icon={<Mic24Regular />} />
   </FluentWapper>
 );
 
@@ -126,7 +125,7 @@ export const TextRepeatAvoidBad = () => (
   <FluentWapper>
     <Menu>
       <MenuTrigger>
-        <Button aria-label="Participants" icon={<PeopleRegular />}></Button>
+        <Button aria-label="Participants" icon={<PeopleRegular />} />
       </MenuTrigger>
 
       <MenuPopover>
@@ -150,7 +149,7 @@ export const TextRepeatAvoidGood = () => (
   <FluentWapper>
     <Menu>
       <MenuTrigger>
-        <Button aria-label="Participants" icon={<PeopleRegular />}></Button>
+        <Button aria-label="Participants" icon={<PeopleRegular />} />
       </MenuTrigger>
 
       <MenuPopover>
@@ -171,13 +170,12 @@ export const TextRepeatAvoidGood = () => (
 );
 
 export const FocusTextAvoidBad = () => {
-  const styles = useStyles();
   return (
     <FluentWapper>
       <Text tabIndex={0} block>
         With this option, notifications won't be displayed anymore . You can miss information about latest news.{' '}
       </Text>
-      <Checkbox className={styles.checkboxIndicator} label="Display notification" />
+      <Button>Submit </Button>
     </FluentWapper>
   );
 };
@@ -187,9 +185,14 @@ export const FocusTextAvoidGood = () => {
   return (
     <FluentWapper>
       <Text id="notificationText" block>
-        With this option, notifications won't be displayed anymore. You can miss information about latest news.
+        With this option, notifications won't be displayed anymore . You can miss information about latest news.{' '}
       </Text>
-      <Checkbox className={styles.checkboxIndicator} label="Display notification" aria-describedby="notificationText" />
+      <Button aria-describedby="notificationText">Submit </Button>
+      <Divider className={styles.divider} />
+      <div id="testTitle">Summary of your order</div>
+      <div role="group" aria-labelledby="testTitle">
+        <Button>Buy</Button>
+      </div>
     </FluentWapper>
   );
 };
@@ -206,8 +209,6 @@ export const ReuseVisibleTextBad = () => {
       </div>
     </FluentWapper>
   );
-  {
-  }
 };
 
 export const ReuseVisibleTextGood = () => {

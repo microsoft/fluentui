@@ -178,10 +178,10 @@ Explanation
 
 ## Avoid making text focusable
 
-| Type of example | Code                                                                                                                                                                                                                                                                         | Screen reader narration                                                                                                                                                                                                                                   | Example                |
-| --------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| Bad             | <code>tabindex="0"</code> applied on the text element. When the user presses the TAB key, the text receives focus.                                                                                                                                                           | <ul><li>the text is focused: "With this option, notifications won’t be displayed anymore. You can miss information about latest news." </li> <li>the checkbox is focused: "Display notification check box not checked To check press Spacebar."</li></ul> | <FocusTextAvoidBad/>   |
-| Good            | <ul> <li>The text is not focusable anymore, because the "tabindex" attribute does not exist on the text element.</li> <li>The text element has a unique id, like "notificationText".</li> <li>The checkbox has the aria-describedby="notificationText" attribute.</li> </ul> | "Display notification check box not checked <br />With this option, notifications won’t be displayed anymore. You can miss information about latest news.<br />To check press Spacebar"                                                                   | <FocusTextAvoidGood /> |
+| Type of example | Code                                                                                                                                                                                                                                                                                                                                                                                                                     | Screen reader narration                                                                                                                                                                                                                                                                         | Example                |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| Bad             | <code>tabindex="0"</code> applied on the text element. When the user presses the TAB key, the text receives focus.                                                                                                                                                                                                                                                                                                       | <ul><li>the text is focused: "With this option, notifications won’t be displayed anymore. You can miss information about latest news." </li> <li>the button is focused: "Submit Button To activate press Enter. "</li></ul>                                                                     | <FocusTextAvoidBad/>   |
+| Good            | <ul> <li>The text is not focusable anymore, because the "tabindex" attribute does not exist on the text element.</li> <strong>Example 1:</strong> <li>The text element has a unique id, like "notificationText".</li> <li>The `button` has the aria-describedby="notificationText" attribute.</li> <strong>Example 2:</strong> <li>`Button` is wrapped with the `div` element. It has role="group" and label.</li> </ul> | <ul><li> Example No. 1: "Submit Button <br /> Display notification check box not checked <br />With this option, notifications won’t be displayed anymore. You can miss information about latest news."<br /></li> <li>Example No. 2: "Summary of your order group <br /> Buy Button"</li></ul> | <FocusTextAvoidGood /> |
 
 Explanation
 
@@ -195,15 +195,5 @@ Explanation
     Refer to the text element via the "aria-describedby" attribute, which ensures the text would be read by the screen reader
     whenever the actionable element which has the "aria-describedby" attribute is focused.
   </li>
-  <li>
-    Wrap the element with <code>div</code> element. This element should has role="group" and label. After this the
-    wrapping grouper element will be narrated. Please see simple code example:
-
-```html
-<div role="group" aria-label="Summary of your order">
-  <button>Buy</button>
-</div>
-```
-
-  </li>
+  <li> Wrap the focused element with the element which has role="group", then wrapping element will be narrated.</li>
 </ul>
