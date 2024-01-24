@@ -14,8 +14,20 @@ import { ISankeyChartData, ISankeyChartProps, ISankeyChartStyleProps, ISankeyCha
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
 const PADDING_PERCENTAGE = 0.3;
 
+type NodeValues = { [key: number]: number };
+type LinkValues = { [key: number]: NodeValues };
+
 type NodesInColumns = { [key: number]: SNode[] };
+type NormalizedData = {
+  width: number;
+  height: number;
+  data: ISankeyChartData;
+};
+
+type NormalizeFunction = (data: ISankeyChartData, containerWidth: number, containerHeight: number) => NormalizedData;
+
 type NodeColors = { fillColor: string; borderColor: string };
+type SankeyLayoutGenerator = SankeyLayout<SankeyGraph<{}, {}>, {}, {}>;
 
 export interface ISankeyChartState extends IBasestate, IChartHoverCardProps {
   containerWidth: number;
@@ -149,8 +161,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): { selectedLinks: Set
 /**
  * This is used to group nodes by column index.
  */
-function populateNodeInColumns(graph: ISankeyChartData, sankey: SankeyLayout<SankeyGraph<{}, {}>, {}, {}>) {
-  sankey(graph);
+function groupNodesByColumn(graph: ISankeyChartData) {
   const nodesInColumn: NodesInColumns = {};
   graph.nodes.forEach((node: SNode) => {
     const columnId = node.layer!;
@@ -166,18 +177,25 @@ function populateNodeInColumns(graph: ISankeyChartData, sankey: SankeyLayout<San
 /**
  * This is used to normalize the nodes value whose value is less than 1% of the total column value.
  */
-function adjustOnePercentHeightNodes(nodesInColumn: NodesInColumns) {
+function adjustOnePercentHeightNodes(
+  nodesInColumn: NodesInColumns,
+  computedNodes: NodeValues,
+  originalLinks: LinkValues,
+): void {
   const totalColumnValue = Object.values(nodesInColumn).map((column: SNode[]) => {
     return d3Sum(column, (node: SNode) => node.value);
   });
   totalColumnValue.forEach((columnValue: number, index: number) => {
     let totalPercentage = 0;
-    nodesInColumn[index].forEach((node: SNode) => {
-      const nodePercentage = (node.value! / columnValue) * 100;
-      node.actualValue = node.value;
+    const onePercent = 0.01 * columnValue;
+    const columnNodes = nodesInColumn[index];
+    columnNodes.forEach((node: SNode) => {
+      const value = computedNodes[node.nodeId as number];
+      const nodePercentage = (value / columnValue) * 100;
+      node.actualValue = value;
       //if the value is less than 1% then we are making it as 1% of total .
       if (nodePercentage < 1) {
-        node.value = 0.01 * columnValue;
+        node.value = onePercent;
         totalPercentage = totalPercentage + 1;
       } else {
         totalPercentage = totalPercentage + nodePercentage;
@@ -186,45 +204,154 @@ function adjustOnePercentHeightNodes(nodesInColumn: NodesInColumns) {
     //since we have adjusted the value to be 1% but we need to keep the sum of the percentage value under 100.
     const scalingRatio = totalPercentage !== 0 ? totalPercentage / 100 : 1;
     if (scalingRatio > 1) {
-      nodesInColumn[index].forEach((node: SNode) => {
-        node.value = node.value! / scalingRatio;
-        changeColumnValue(node, node.actualValue!, node.value);
+      // Loop through each node in that column and scale that node--and its incoming and outgoing links--by the
+      // scaling ratio. We need the sankey diagram to re-layout the nodes and links after we do this.
+      columnNodes.forEach((node: SNode) => {
+        const normalized = (node.value = node.value! / scalingRatio);
+        // Which Original Value? and Which Normalized Value is needed, here? The Node? The Link? Both?
+        changeColumnValue(node, computedNodes[node.nodeId as number], normalized, originalLinks);
       });
     }
   });
 }
 
 /**
- * This is used for normalizing each links value for reflecting the normalized node value.
+ * This is used for normalizing each link's value to reflect the normalized node value.
  */
-function changeColumnValue(node: SNode, originalValue: number, normalizedValue: number) {
-  node.sourceLinks!.forEach((link: SLink) => {
-    link.unnormalizedValue = link.value;
-    const linkRatio = link.value / originalValue;
-    link.value = normalizedValue * linkRatio;
-  });
-  node.targetLinks!.forEach((link: SLink) => {
-    link.unnormalizedValue = link.value;
-    const linkRatio = link.value / originalValue;
-    link.value = normalizedValue * linkRatio;
-  });
+function changeColumnValue(
+  node: SNode,
+  originalNodeValue: number,
+  normalizedNodeValue: number,
+  linkValues: LinkValues,
+) {
+  // For each link in the source and target, compute the proportion that this link contributes to the total
+  // then adjust the link's value to reflect its proportion of the normalized node value.
+  const updateLinkValue = (link: SLink) => {
+    const value = linkValue(linkValues, link);
+    link.unnormalizedValue = value;
+    const linkRatio = value / originalNodeValue;
+    link.value = Math.max(normalizedNodeValue * linkRatio, link.value);
+  };
+  node.sourceLinks!.forEach(updateLinkValue);
+  node.targetLinks!.forEach(updateLinkValue);
 }
 
 /**
  * This is used for calculating the node non normalized value based on link non normalized value.
+ * The links have the original weights. Computed nodes have the total weight of all incoming and outgoing links.
  */
-function populateNodeActualValue(data: ISankeyChartData) {
+function populateNodeActualValue(data: ISankeyChartData, computedNodes: NodeValues, originalLinks: LinkValues) {
   data.links.forEach((link: SLink) => {
     if (!link.unnormalizedValue) {
-      link.unnormalizedValue = link.value;
+      link.unnormalizedValue = linkValue(originalLinks, link);
     }
   });
   data.nodes.forEach((node: SNode) => {
-    node.actualValue = Math.max(
-      d3Sum(node.sourceLinks!, (link: SLink) => link.unnormalizedValue),
-      d3Sum(node.targetLinks!, (link: SLink) => link.unnormalizedValue),
-    );
+    node.actualValue = computedNodes[node.nodeId as number];
   });
+}
+
+/**
+ * This is used to introduce dynamic padding for cases where the number of nodes in a column is huge
+ * so that we maintain a node to space ratio for such columns as if we fail to do so the
+ * chart is devoid of nodes and only shows links.
+ */
+function adjustPadding(sankey: SankeyLayoutGenerator, height: number, nodesInColumn: NodesInColumns): void {
+  let padding = sankey.nodePadding();
+  const minPadding = PADDING_PERCENTAGE * height;
+  Object.values(nodesInColumn).forEach((column: SNode[]) => {
+    const totalPaddingInColumn = height - d3Sum(column, (node: SNode) => node.y1! - node.y0!);
+    if (minPadding < totalPaddingInColumn) {
+      // Here we are calculating the min of default and calculated padding, we will not increase the padding
+      // in any scenario.
+      padding = Math.min(padding, minPadding / (column.length - 1));
+    }
+  });
+  sankey.nodePadding(padding);
+}
+
+function idFromNumberOrSNode(node: SNode | number): number {
+  if (typeof node === 'number') {
+    return node;
+  }
+  return node.nodeId as number;
+}
+
+function idFromSNode(node: unknown): number {
+  return (node as SNode).nodeId as number;
+}
+
+/**
+ * Duplicates the supplied chart data so that we do not alter the original.
+ * @param data The data to duplicate.
+ * @returns The duplicated data.
+ */
+function duplicateData(data: ISankeyChartData): ISankeyChartData {
+  return {
+    nodes: data.nodes.map(
+      // NOTE: We are not duplicating using `...node` because we want to omit the `sourceLinks` and `targetLinks`
+      (node: SNode): SNode => ({
+        nodeId: node.nodeId,
+        name: node.name,
+        color: node.color,
+        borderColor: node.borderColor,
+      }),
+    ),
+    links: data.links.map(
+      (link: SLink): SLink => ({
+        source: idFromNumberOrSNode(link.source),
+        target: idFromNumberOrSNode(link.target),
+        value: link.value,
+      }),
+    ),
+  };
+}
+
+function valuesOfNodes(nodes: SNode[]): NodeValues {
+  const result: NodeValues = {};
+  nodes.forEach((node: SNode) => {
+    result[node.nodeId as number] = node.value!;
+  });
+  return result;
+}
+
+function valuesOfLinks(links: SLink[]): LinkValues {
+  const result: LinkValues = {};
+  links.forEach((link: SLink) => {
+    const sourceId = idFromNumberOrSNode(link.source);
+    let sourceToTarget = result[sourceId];
+    if (!sourceToTarget) {
+      sourceToTarget = {};
+      result[sourceId] = sourceToTarget;
+    }
+    sourceToTarget[idFromNumberOrSNode(link.target)] = link.value;
+  });
+  return result;
+}
+
+function linkValue(originalLinks: LinkValues, link: SLink) {
+  return originalLinks[idFromSNode(link.source)][idFromSNode(link.target)];
+}
+
+function preRenderLayout(
+  margins: IMargins,
+  containerWidth: number,
+  containerHeight: number,
+  isRtl: boolean,
+): { sankey: SankeyLayoutGenerator; height: number; width: number } {
+  const { left, right, top, bottom } = margins;
+  const width = containerWidth - right!;
+  const height = containerHeight - bottom! > 0 ? containerHeight - bottom! : 0;
+
+  const sankey = d3Sankey()
+    .nodeWidth(124)
+    .extent([
+      [left!, top!],
+      [width - 1, height - 6],
+    ])
+    .nodeAlign(isRtl ? sankeyRight : sankeyJustify);
+
+  return { sankey, height, width };
 }
 
 export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyChartState> {
@@ -232,11 +359,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private _reqID: number;
   private _calloutId: string;
   private _linkId: string;
-  private _nodesInColumn: NodesInColumns;
-  private _sankey: SankeyLayout<SankeyGraph<{}, {}>, {}, {}>;
   private _margins: IMargins;
   private _isRtl: boolean = getRTL();
-  private _normalizeData: (data: ISankeyChartData) => void;
+  private _normalizeData: NormalizeFunction;
   private _emptyChartId: string;
 
   constructor(props: ISankeyChartProps) {
@@ -253,8 +378,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     this._calloutId = getId('callout');
     this._linkId = getId('link');
     this._margins = { top: 36, right: 48, bottom: 32, left: 48 };
-    this._preRenderLayout();
-    this._normalizeData = memoizeFunction((data: ISankeyChartData) => this._normalizeSankeyData(data));
+    this._normalizeData = memoizeFunction((data: ISankeyChartData, containerWidth: number, containerHeight: number) =>
+      this._normalizeSankeyData(data, containerWidth, containerHeight),
+    );
     this._emptyChartId = getId('_SankeyChart_empty');
   }
 
@@ -273,6 +399,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   }
 
   public render(): React.ReactNode {
+    // NOTE: each call to `setState` appears to trigger a re-render.
     if (!this._isChartEmpty()) {
       const { theme, className, styles, pathColor } = this.props;
       const state = this.state;
@@ -283,19 +410,19 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         pathColor,
         className,
       });
-      // We are using the this._margins.left and this._margins.top in sankey extent while constructing the layout
-      const { height, width } = this._preRenderLayout();
-      const sankeyChartData = this.props.data.SankeyChartData!;
-      this._normalizeData(sankeyChartData);
-      let nodePadding = 8;
-      nodePadding = this._adjustPadding(this._sankey, height - 6, this._nodesInColumn);
 
-      this._sankey.nodePadding(nodePadding);
-      this._sankey(sankeyChartData);
-      populateNodeActualValue(sankeyChartData);
-      this._assignNodeColors();
-      const nodeData = this._createNodes(classNames);
-      const linkData = this._createLinks();
+      const {
+        data: sankeyChartData,
+        width,
+        height,
+      } = this._normalizeData(this.props.data.SankeyChartData!, state.containerWidth, state.containerHeight);
+      // NEXT: Move the following into _normalizeSankeyData to see if we can cache computation of
+      // colors, nodes, and links.
+      const dataNodes = sankeyChartData.nodes;
+      this._assignNodeColors(dataNodes); // This can probably safely move.
+      const nodeData = this._createNodes(classNames, dataNodes);
+      const linkData = this._createLinks(sankeyChartData.links);
+
       const calloutProps = {
         isCalloutVisible: state.isCalloutVisible,
         directionalHint: DirectionalHint.topAutoEdge,
@@ -348,60 +475,45 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
-        aria-label={'Graph has no data to display'}
+        aria-label={'Graph has no data to display'} // TODO: Localize this string
       />
     );
   }
 
-  private _preRenderLayout(): { height: number; width: number } {
-    const { containerHeight, containerWidth } = this.state;
-    const { left, right, top, bottom } = this._margins;
-    const width = containerWidth - right!;
-    const height = containerHeight - bottom! > 0 ? containerHeight - bottom! : 0;
-
-    this._sankey = d3Sankey()
-      .nodeWidth(124)
-      .extent([
-        [left!, top!],
-        [width - 1, height - 6],
-      ])
-      .nodeAlign(this._isRtl ? sankeyRight : sankeyJustify);
-
-    return { height, width };
+  private _normalizeSankeyData(
+    data: ISankeyChartData,
+    containerWidth: number,
+    containerHeight: number,
+  ): NormalizedData {
+    const { sankey, height, width } = preRenderLayout(this._margins, containerWidth, containerHeight, this._isRtl);
+    // Clone the data before mutating it (via the SankeyLayoutGenerator) so that we don't mutate the original data.
+    const transformed: ISankeyChartData = duplicateData(data);
+    sankey(transformed);
+    const nodesInColumn = groupNodesByColumn(transformed);
+    // Keep track of the original values of the links and their acccumulated values in the nodes
+    // Setting these in external objects so they cannot be mutated by other code.
+    const nodeValues = valuesOfNodes(transformed.nodes);
+    const linkValues = valuesOfLinks(data.links);
+    adjustOnePercentHeightNodes(nodesInColumn, nodeValues, linkValues);
+    adjustPadding(sankey, height - 6, nodesInColumn);
+    // `sankey` is called a second time, probably to re-layout the nodes with the one-percent adjusted weights.
+    // NOTE: The second call to `sankey` currently allows for links to be hoverable.
+    // Without the second call, the links are not hoverable.
+    sankey(transformed);
+    populateNodeActualValue(transformed, nodeValues, linkValues);
+    return {
+      width,
+      height,
+      data: transformed,
+    };
   }
 
-  private _normalizeSankeyData(data: ISankeyChartData): void {
-    const nodesInColumn = (this._nodesInColumn = populateNodeInColumns(data, this._sankey));
-    adjustOnePercentHeightNodes(nodesInColumn);
-  }
-
-  /**
-   * This is used to introduce dynamic padding for cases where the number of nodes in a column is huge
-   * so that we maintain a node to space ratio for such columns as if we fail to do so the
-   * chart is devoid of nodes and only shows links.
-   */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _adjustPadding(sankey: any, height: number, nodesInColumn: NodesInColumns) {
-    let padding = this._sankey.nodePadding();
-    Object.values(nodesInColumn).forEach((column: SNode[]) => {
-      const minPadding = PADDING_PERCENTAGE * height;
-      const toatlPaddingInColumn = height - d3Sum(column, (node: SNode) => node.y1! - node.y0!);
-      if (minPadding < toatlPaddingInColumn) {
-        //Here we are calculating the min of default and calculated padding, we will not increase the padding
-        //in any scenario.
-        padding = Math.min(padding, minPadding / (column.length - 1));
-      }
-    });
-    return padding;
-  }
-
-  private _createLinks(): React.ReactNode[] | undefined {
+  private _createLinks(dataLinks: SLink[]): React.ReactNode[] | undefined {
     const links: React.ReactNode[] = [];
 
-    const sankeyChartData = this.props.data.SankeyChartData;
-    if (sankeyChartData) {
+    if (dataLinks) {
       const linkId = this._linkId;
-      sankeyChartData.links.forEach((singleLink: SLink, index: number) => {
+      dataLinks.forEach((singleLink: SLink, index: number) => {
         const onMouseOut = () => {
           this._onStreamLeave(singleLink);
         };
@@ -444,14 +556,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               onBlur={this._onBlur}
               fillOpacity={this._getOpacityStream(singleLink)}
               data-is-focusable={true}
-              aria-label={
-                'link from' +
-                (singleLink.source as SNode).name +
-                'to' +
-                (singleLink.target as SNode).name +
-                'with weight' +
-                singleLink!.unnormalizedValue
-              }
+              aria-label={`link from ${(singleLink.source as SNode).name} to ${
+                (singleLink.target as SNode).name
+              } with weight ${singleLink!.unnormalizedValue}`}
               role="img"
             />
           </g>
@@ -462,13 +569,15 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     return links;
   }
 
-  private _createNodes(classNames: IProcessedStyleSet<ISankeyChartStyles>): React.ReactNode[] | undefined {
+  private _createNodes(
+    classNames: IProcessedStyleSet<ISankeyChartStyles>,
+    dataNodes: SNode[],
+  ): React.ReactNode[] | undefined {
     const nodes: React.ReactNode[] = [];
 
-    const sankeyChartData = this.props.data.SankeyChartData;
-    if (sankeyChartData) {
+    if (dataNodes) {
       const state = this.state;
-      sankeyChartData.nodes.forEach((singleNode: SNode, index: number) => {
+      dataNodes.forEach((singleNode: SNode, index: number) => {
         const onMouseOut = () => {
           this._onLeave(singleNode);
         };
@@ -513,7 +622,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               strokeWidth="2"
               opacity="1"
               data-is-focusable={true}
-              aria-label={'node' + `${singleNode.name}` + 'with weight' + `${singleNode.actualValue}`}
+              aria-label={`node ${singleNode.name} with weight ${singleNode.actualValue}`}
               role="img"
             />
             {singleNode.y1! - singleNode.y0! > MIN_HEIGHT_FOR_TYPE && (
@@ -684,7 +793,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
    * This is used to assign node fillcolors and borderColor cyclically when the user doesnt
    * provide color to  individual node.
    */
-  private _assignNodeColors() {
+  private _assignNodeColors(nodes: SNode[]) {
     let colors: string[];
     let borders: string[];
     const { colorsForNodes, borderColorsForNodes } = this.props;
@@ -696,7 +805,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       borders = DEFAULT_NODE_COLORS.map(color => color.borderColor);
     }
     let currentIndex = 0;
-    this.props.data.SankeyChartData!.nodes.forEach((node: SNode) => {
+    nodes.forEach((node: SNode) => {
       if (!node.color && !node.borderColor) {
         node.color = colors[currentIndex];
         node.borderColor = borders[currentIndex];
@@ -766,6 +875,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private _fitParentContainer(): void {
     const { containerWidth, containerHeight } = this.state;
     this._reqID = requestAnimationFrame(() => {
+      // NOTE: Calls to this method trigger a re-render.
       const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
       const currentContainerWidth = container && container.getBoundingClientRect().width;
       const currentContainerHeight = container && container.getBoundingClientRect().height;
