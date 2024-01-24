@@ -4,6 +4,8 @@
 
 ```ts
 
+import { azureDarkTheme } from '@fluentui/tokens';
+import { azureLightTheme } from '@fluentui/tokens';
 import { BorderRadiusTokens } from '@fluentui/tokens';
 import { Brands } from '@fluentui/tokens';
 import { BrandVariants } from '@fluentui/tokens';
@@ -44,6 +46,8 @@ import { ColorPaletteTeal } from '@fluentui/tokens';
 import { ColorPaletteTokens } from '@fluentui/tokens';
 import { ColorPaletteYellow } from '@fluentui/tokens';
 import { ColorTokens } from '@fluentui/tokens';
+import { createAzureDarkTheme } from '@fluentui/tokens';
+import { createAzureLightTheme } from '@fluentui/tokens';
 import { createDarkTheme } from '@fluentui/tokens';
 import { createHighContrastTheme } from '@fluentui/tokens';
 import { createLightTheme } from '@fluentui/tokens';
@@ -72,6 +76,10 @@ import { typographyStyles } from '@fluentui/tokens';
 import { VerticalSpacingTokens } from '@fluentui/tokens';
 import { webDarkTheme } from '@fluentui/tokens';
 import { webLightTheme } from '@fluentui/tokens';
+
+export { azureDarkTheme }
+
+export { azureLightTheme }
 
 export { BorderRadiusTokens }
 
@@ -152,6 +160,10 @@ export { ColorPaletteTokens }
 export { ColorPaletteYellow }
 
 export { ColorTokens }
+
+export { createAzureDarkTheme }
+
+export { createAzureLightTheme }
 
 export { createDarkTheme }
 
