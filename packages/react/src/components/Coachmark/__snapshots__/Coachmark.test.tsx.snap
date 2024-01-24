@@ -187,7 +187,9 @@ exports[`Coachmark renders Coachmark (color properties) 1`] = `
                     role="dialog"
                     tabindex="-1"
                   >
-                    <div>
+                    <div
+                      data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
+                    >
                       <div
                         aria-hidden="true"
                         data-is-focus-trap-zone-bumper="true"
@@ -420,7 +422,9 @@ exports[`Coachmark renders Coachmark (correctly) 1`] = `
                     role="dialog"
                     tabindex="-1"
                   >
-                    <div>
+                    <div
+                      data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
+                    >
                       <div
                         aria-hidden="true"
                         data-is-focus-trap-zone-bumper="true"
@@ -598,7 +602,9 @@ exports[`Coachmark renders Coachmark (isCollapsed) 1`] = `
                     role="dialog"
                     tabindex="-1"
                   >
-                    <div>
+                    <div
+                      data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
+                    >
                       <div
                         aria-hidden="true"
                         data-is-focus-trap-zone-bumper="true"

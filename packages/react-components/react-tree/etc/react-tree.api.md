@@ -18,6 +18,7 @@ import { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
+import type { DistributiveOmit } from '@fluentui/react-utilities';
 import type { End } from '@fluentui/keyboard-keys';
 import type { Enter } from '@fluentui/keyboard-keys';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
@@ -28,7 +29,7 @@ import { Radio } from '@fluentui/react-radio';
 import { RadioProps } from '@fluentui/react-radio';
 import * as React_2 from 'react';
 import { ReactNode } from 'react';
-import { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
+import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 

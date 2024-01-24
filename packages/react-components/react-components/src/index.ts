@@ -376,6 +376,7 @@ export {
   useComboboxContextValues,
   ListboxProvider,
   useListboxContextValues,
+  useComboboxFilter,
 } from '@fluentui/react-combobox';
 export type {
   ComboboxProps,
@@ -1562,3 +1563,11 @@ export type {
   BreadcrumbButtonState,
   BreadcrumbContextValues,
 } from '@fluentui/react-breadcrumb';
+
+export {
+  AriaLiveAnnouncer,
+  renderAriaLiveAnnouncer_unstable,
+  useAriaLiveAnnouncer_unstable,
+  useAriaLiveAnnouncerContextValues_unstable,
+} from '@fluentui/react-aria';
+export type { AriaLiveAnnouncerProps, AriaLiveAnnouncerState } from '@fluentui/react-aria';
