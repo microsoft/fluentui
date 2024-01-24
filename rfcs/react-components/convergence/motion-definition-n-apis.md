@@ -350,8 +350,6 @@ However, as we need to expose factories anyway, the proposal is to expose them a
 
 Another API approach might be to compose existing components with motion factories, for example:
 
-Or we can use a factory function to create a React component like with Web Animations API:
-
 ```tsx
 // ⚠️ This is not proposed API, it's just an example
 
@@ -527,7 +525,7 @@ The `TransitionGroup` component from the `react-transition-group` package resolv
 
 </details>
 
-[POC](https://stackblitz.com/edit/ladle-nytnud)
+[PoC](https://stackblitz.com/edit/ladle-nytnud)
 
 ### Motion overrides
 
@@ -928,7 +926,7 @@ function App() {
 
 It's hard to say if it's a pro or con, but the Web Animations API has higher priority in applying styles of CSS properties. This means that users cannot apply CSS to elements that are animated with the Web Animations API and replace motion.
 
-However, they could be combined using [`compiste` property](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/composite).
+However, they could be combined using [`composite` property](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect/composite).
 
 [An example on Stackblitz](https://stackblitz.com/edit/stackblitz-starters-qgseij)
 
@@ -944,8 +942,8 @@ The question is: should we split motion definitions & APIs into separate package
 
 It's partially covered in the RFC before, but what should be exported as the main API from `@fluentui/react-components`?
 
-- Option 1: `createAtom()`, `createPresence()`, `PresenceGroup`, `atom` & `presense` (factories & definitions)
-- Option 2: `FadeEnter`, `FadePresense`, `PresenceGroup`, etc. (pre-defined components)
+- Option 1: `createAtom()`, `createPresence()`, `PresenceGroup`, `atom` & `presence` (factories & definitions)
+- Option 2: `FadeEnter`, `FadePresence`, `PresenceGroup`, etc. (pre-defined components)
 
 ### Mouse over / focus / active states
 
@@ -998,4 +996,4 @@ gantt
 
 This is outside the scope of this RFC, but it could be considered in the future. The Web Animations API makes it easier to implement, and it can be seamlessly integrated into existing factories since changing animations no longer requires modifying CSS classes.
 
-[POC](https://stackblitz.com/edit/stackblitz-starters-ifjobr)
+[PoC](https://stackblitz.com/edit/stackblitz-starters-ifjobr)
