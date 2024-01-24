@@ -25,10 +25,10 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/test-utilities": "^8.2.6",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-jest": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/test-utilities": "^8.2.6"
   },
   "dependencies": {
     "@fluentui/set-version": "^8.2.5",

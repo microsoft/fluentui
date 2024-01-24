@@ -32,17 +32,17 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-theme": "^9.1.5",
-    "@fluentui/react-utilities": "^9.5.2",
     "@fluentui/keyboard-keys": "^9.0.1",
-    "@fluentui/utilities": "^8.13.6",
     "@fluentui/react-field": "9.0.0-alpha.19",
     "@fluentui/react-icons": "^2.0.175",
+    "@fluentui/react-input": "^9.3.2",
+    "@fluentui/react-popover": "^9.4.7",
     "@fluentui/react-shared-contexts": "^9.2.0",
     "@fluentui/react-tabster": "^9.5.1",
-    "@fluentui/react-popover": "^9.4.7",
-    "@fluentui/react-input": "^9.3.2",
+    "@fluentui/react-theme": "^9.1.5",
+    "@fluentui/react-utilities": "^9.5.2",
     "@fluentui/style-utilities": "^8.9.1",
+    "@fluentui/utilities": "^8.13.6",
     "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"
   },

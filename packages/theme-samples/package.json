@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "@fluentui/react": "^8.105.6",
-    "@fluentui/set-version": "^8.2.5",
     "@fluentui/scheme-utilities": "^8.3.23",
+    "@fluentui/set-version": "^8.2.5",
     "tslib": "^2.1.0"
   },
   "exports": {

@@ -28,8 +28,8 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/theme": "^2.6.22",
     "@fluentui/set-version": "^8.2.5",
+    "@fluentui/theme": "^2.6.22",
     "tslib": "^2.1.0"
   },
   "exports": {

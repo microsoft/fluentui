@@ -30,12 +30,12 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-components": "^9.15.0",
+    "@fluentui/react-northstar": "^0.66.1",
     "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-utilities": "^9.5.2",
     "@griffel/react": "^1.5.2",
-    "tslib": "^2.1.0",
-    "@fluentui/react-components": "^9.15.0",
-    "@fluentui/react-northstar": "^0.66.1"
+    "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",

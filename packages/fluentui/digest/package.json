@@ -5,9 +5,7 @@
   "main": "lib/digest.js",
   "module": "lib/digest.js",
   "license": "MIT",
-  "bin": {
-    "digest": "./bin/digest.js"
-  },
+  "bin": "./bin/digest.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/digest"

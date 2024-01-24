@@ -24,8 +24,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-puppeteer": "*",
     "@fluentui/scripts-storybook": "*",
-    "@fluentui/scripts-puppeteer": "*"
+    "@fluentui/scripts-tasks": "*"
   }
 }

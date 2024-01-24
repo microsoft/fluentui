@@ -12,8 +12,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "parallel-webpack": "^2.6.0",
     "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "@fluentui/scripts-webpack": "*",
+    "parallel-webpack": "^2.6.0"
   }
 }

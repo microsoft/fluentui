@@ -32,8 +32,8 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-label": "^9.0.20",
+    "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-utilities": "^9.5.2",
     "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"

@@ -18,9 +18,9 @@
   "dependencies": {
     "@fluentui/react-components": "^9.15.0",
     "@fluentui/react-icons": "^2.0.175",
-    "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-provider": "^9.3.3",
     "@fluentui/react-storybook-addon": "9.0.0-rc.1",
+    "@fluentui/react-theme": "^9.1.5",
     "@griffel/react": "^1.5.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
