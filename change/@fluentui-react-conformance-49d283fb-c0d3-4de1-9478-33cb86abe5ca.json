@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "BREAKING CHANGE: change `consistent-callback-args` test option",
+  "packageName": "@fluentui/react-conformance",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
