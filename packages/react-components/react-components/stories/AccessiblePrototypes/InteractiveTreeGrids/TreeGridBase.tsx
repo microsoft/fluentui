@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { TreeGridWithEscapeInputsRenderer } from './TreeGridWithEscapeInputsRenderer';
 import { TreeGridWithEnterInputsRenderer } from './TreeGridWithEnterInputsRenderer';
+import { TreeGridWithWrappedComponentsRenderer } from './TreeGridWithWrappedComponentsRenderer';
 
 import { Button } from '@fluentui/react-components';
 
-type PrototypeVariant = 'escapeInputs' | 'enterInputs';
+type PrototypeVariant = 'wrappedComponents' | 'escapeInputs' | 'enterInputs';
 
 export const categoriesTitles: Record<string, string> = {
   today: 'Today',
@@ -245,6 +246,7 @@ export const TreeGridBase: React.FC<TreeGridBaseProps> = ({ variant }) => {
 
       {variant === 'escapeInputs' && <h1>Variant A: TreeGrid with Escape Inputs</h1>}
       {variant === 'enterInputs' && <h1>Variant B: TreeGrid with Enter Inputs</h1>}
+      {variant === 'wrappedComponents' && <h1>Variant C: TreeGrid with Wrapped Components</h1>}
 
       {variant === 'escapeInputs' && (
         <TreeGridWithEscapeInputsRenderer
@@ -255,6 +257,13 @@ export const TreeGridBase: React.FC<TreeGridBaseProps> = ({ variant }) => {
 
       {variant === 'enterInputs' && (
         <TreeGridWithEnterInputsRenderer
+          recentCategories={recentCategoriesRef.current}
+          recentMeetings={recentMeetings}
+        />
+      )}
+
+      {variant === 'wrappedComponents' && (
+        <TreeGridWithWrappedComponentsRenderer
           recentCategories={recentCategoriesRef.current}
           recentMeetings={recentMeetings}
         />
