@@ -142,6 +142,8 @@ Component dev implementation work was initially began by Miro Stastny. We are pi
 
 One major blocker with this approach is that setting user defined fallback bounds for collission are not possible using the polyfill. This prevents the popover api from working effectively with CSS anchor positioning. [An issue was filed with oddbird here](https://github.com/oddbird/css-anchor-positioning/issues/147).
 
-Until this issue is resolved - writing a popover that responds to the edges of a bounding box inside of the window instead of the window itself impossible.
+Until this issue is resolved - writing a popover that responds to the edges of a bounding box inside of the window instead of the window itself impossible with the polyfill.
 
 The problems with CSS Anchor Positioning and the popover api are [shown in this stackblitz example](https://stackblitz.com/edit/typescript-c4idvv?file=index.ts) where the popover works as expected when setting the browser Web Platform experimental flags, but not as expected with the polyfill.
+
+The right approach will be a hybrid approach using popover api and another means (other than anchor positioning) for controlling positioning.
