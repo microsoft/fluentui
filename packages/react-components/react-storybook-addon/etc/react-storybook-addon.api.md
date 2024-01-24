@@ -79,6 +79,14 @@ export const themes: readonly [{
     readonly id: "teams-high-contrast";
     readonly label: "Teams High Contrast";
     readonly theme: Theme;
+}, {
+    readonly id: "azure-dark";
+    readonly label: "Azure Dark";
+    readonly theme: Theme;
+}, {
+    readonly id: "azure-light";
+    readonly label: "Azure Light";
+    readonly theme: Theme;
 }];
 
 // (No @packageDocumentation comment for this package)
