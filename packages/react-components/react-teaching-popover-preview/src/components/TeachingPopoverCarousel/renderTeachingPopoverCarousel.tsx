@@ -10,12 +10,15 @@ import { assertSlots } from '@fluentui/react-utilities';
 export const renderTeachingPopoverCarousel_unstable = (state: TeachingPopoverCarouselState) => {
   assertSlots<TeachingPopoverCarouselSlots>(state);
 
+  const { carouselLayout } = state;
+
   return (
     <state.root>
       {state.root.children}
       <state.footer>
-        {state.previous && <state.previous />}
+        {carouselLayout === 'centered' && state.previous && <state.previous />}
         <state.pageCount />
+        {carouselLayout === 'offset' && state.previous && <state.previous />}
         <state.next />
       </state.footer>
     </state.root>

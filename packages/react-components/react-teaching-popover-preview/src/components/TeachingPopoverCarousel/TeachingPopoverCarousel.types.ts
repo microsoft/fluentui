@@ -2,35 +2,36 @@ import * as React from 'react';
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { TeachingPopoverPageCountProps, TeachingPopoverPageCountStyle } from '../TeachingPopoverPageCount';
 import { Button } from '@fluentui/react-button';
+import { PopoverContextValue } from '@fluentui/react-popover';
 
 export type TeachingPopoverCarouselSlots = {
   /**
    * The element wrapping carousel pages and navigation.
    */
-  root?: NonNullable<Slot<'div'>>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
    * The element wrapping the navigation of the carousel.
    */
-  footer?: NonNullable<Slot<'div'>>;
+  footer: NonNullable<Slot<'div'>>;
 
   /**
    * The previous button slot.
    */
-  previous?: Slot<typeof Button>;
+  previous: Slot<typeof Button>;
 
   /**
    * The next button slot.
    */
-  next?: NonNullable<Slot<typeof Button>>;
+  next: NonNullable<Slot<typeof Button>>;
 
   /**
    * The page count slot.
    */
-  pageCount?: NonNullable<Slot<TeachingPopoverPageCountProps>>;
+  pageCount: NonNullable<Slot<TeachingPopoverPageCountProps>>;
 };
 
-export type TeachingPopoverCarouselLayout = 'right' | 'centered';
+export type TeachingPopoverCarouselLayout = 'offset' | 'centered';
 
 export type TeachingPopoverStrings = {
   previous: string;
@@ -46,7 +47,7 @@ export type TeachingPopoverPageChangeData = {
 /**
  * TeachingPopoverCarousel Props
  */
-export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouselSlots> & {
+export type TeachingPopoverCarouselProps = Partial<ComponentProps<TeachingPopoverCarouselSlots>> & {
   /**
    * Controls whether buttons will be centered (balanced) or right aligned
    * Defaults to 'centered'.
