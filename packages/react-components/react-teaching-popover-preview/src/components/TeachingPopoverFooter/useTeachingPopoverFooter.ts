@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { TeachingPopoverFooterProps, TeachingPopoverFooterState } from './TeachingPopoverFooter.types';
 import { Button } from '@fluentui/react-button';
-import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
+import { usePopoverContext_unstable } from '@fluentui/react-popover';
 
 /**
  * Returns the props and state required to render the component
@@ -13,7 +13,7 @@ export const useTeachingPopoverFooter_unstable = (
   props: TeachingPopoverFooterProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverFooterState => {
-  const appearance = useTeachingPopoverContext_unstable(context => context.appearance);
+  const appearance = usePopoverContext_unstable(context => context.appearance);
 
   const secondary = slot.optional(props.secondary, {
     defaultProps: {

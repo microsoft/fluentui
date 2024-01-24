@@ -8,6 +8,7 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * TeachingPopoverButtons override style and functionality based on carousel/popover state.
+ * @deprecated and replaced with TeachingPopoverCarousel internal functionality and TeachingPopoverFooter
  */
 export const TeachingPopoverButton: ForwardRefComponent<TeachingPopoverButtonProps> = React.forwardRef((props, ref) => {
   const state = useTeachingPopoverButton_unstable(props, ref);

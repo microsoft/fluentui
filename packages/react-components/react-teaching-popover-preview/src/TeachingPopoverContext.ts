@@ -20,6 +20,7 @@ export const TeachingPopoverProvider = TeachingPopoverContext.Provider;
 
 /**
  * Context shared between TeachingPopover and its children components
+ * @deprecated and replaced with TeachingPopoverCarousel internal functionality and reuse of PopoverContext
  */
 export type TeachingPopoverContextValue = Pick<
   TeachingPopoverState,

@@ -31,7 +31,14 @@ export const CarouselText = (props: TeachingPopoverProps) => (
     </TeachingPopoverTrigger>
     <TeachingPopoverSurface>
       <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
-      <TeachingPopoverCarousel>
+      <TeachingPopoverCarousel
+        strings={{
+          next: 'Next',
+          previous: 'Previous',
+          initialStepText: 'Close',
+          finalStepText: 'Finish',
+        }}
+      >
         {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
         <TeachingPopoverBody media={<Image fit={'cover'} src={SwapImage} />}>
           <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>

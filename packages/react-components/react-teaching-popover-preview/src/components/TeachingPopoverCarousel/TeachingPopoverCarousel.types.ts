@@ -1,33 +1,33 @@
+import * as React from 'react';
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TeachingPopoverContextValue } from '../../TeachingPopoverContext';
-import { TeachingPopoverPageCount, TeachingPopoverPageCountStyle } from '../TeachingPopoverPageCount';
+import { TeachingPopoverPageCountProps, TeachingPopoverPageCountStyle } from '../TeachingPopoverPageCount';
 import { Button } from '@fluentui/react-button';
 
 export type TeachingPopoverCarouselSlots = {
   /**
-   * The element wrapping the text and close button. By default this is a div, but can be a heading.
+   * The element wrapping carousel pages and navigation.
    */
-  root: NonNullable<Slot<'div'>>;
+  root?: NonNullable<Slot<'div'>>;
 
   /**
    * The element wrapping the navigation of the carousel.
    */
-  footer: NonNullable<Slot<'div'>>;
+  footer?: NonNullable<Slot<'div'>>;
 
   /**
    * The previous button slot.
    */
-  previous: Slot<typeof Button>;
+  previous?: Slot<typeof Button>;
 
   /**
    * The next button slot.
    */
-  next: NonNullable<Slot<typeof Button>>;
+  next?: NonNullable<Slot<typeof Button>>;
 
   /**
    * The page count slot.
    */
-  pageCount: NonNullable<Slot<typeof TeachingPopoverPageCount>>;
+  pageCount?: NonNullable<Slot<TeachingPopoverPageCountProps>>;
 };
 
 export type TeachingPopoverCarouselLayout = 'right' | 'centered';
@@ -40,6 +40,9 @@ export type TeachingPopoverStrings = {
   separatorText?: string;
 };
 
+export type TeachingPopoverPageChangeData = {
+  currentPage: number;
+};
 /**
  * TeachingPopoverCarousel Props
  */
@@ -60,12 +63,45 @@ export type TeachingPopoverCarouselProps = ComponentProps<TeachingPopoverCarouse
    * Strings used to localize carousel functionality
    */
   strings: TeachingPopoverStrings;
+
+  /**
+   * Callback to notify a page change (can be used to update 'currentPage' externally).
+   */
+  onPageChange?: (
+    event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>,
+    data: TeachingPopoverPageChangeData,
+  ) => void;
+
+  /**
+   * Callback to notify next page was clicked
+   */
+  onClickNext?: (
+    event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>,
+    data: TeachingPopoverPageChangeData,
+  ) => void;
+
+  /**
+   * Callback to notify next page was clicked
+   */
+  onClickPrevious?: (
+    event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>,
+    data: TeachingPopoverPageChangeData,
+  ) => void;
+  /**
+   * Callback to notify when the final button step of a carousel has been activated.
+   */
+  onFinish?: (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => void;
+
+  /**
+   * Controllable page state
+   */
+  currentPage?: number;
 };
 
 /**
  * TeachingPopoverCarousel State and Context Hooks
  */
-export type TeachingPopoverCarouselState = ComponentState<TeachingPopoverCarouselSlots> &
-  Required<Pick<TeachingPopoverContextValue, 'currentPage' | 'setCurrentPage' | 'totalPages' | 'setTotalPages'>> &
-  Partial<Pick<TeachingPopoverContextValue, 'appearance'>> &
-  Partial<Pick<TeachingPopoverCarouselProps, 'carouselLayout'>>;
+export type TeachingPopoverCarouselState = ComponentState<TeachingPopoverCarouselSlots> & {
+  totalPages: number;
+} & Partial<Pick<PopoverContextValue, 'appearance'>> &
+  Required<Pick<TeachingPopoverCarouselProps, 'carouselLayout' | 'currentPage'>>;

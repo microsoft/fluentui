@@ -1,6 +1,6 @@
 import { Button } from '@fluentui/react-button';
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TeachingPopoverContextValue } from '../../TeachingPopoverContext';
+import { PopoverContextValue } from '@fluentui/react-popover';
 
 export type TeachingPopoverFooterSlots = {
   /**
@@ -25,7 +25,7 @@ export type TeachingPopoverFooterStrings = {
 };
 
 export type TeachingPopoverFooterState = ComponentState<TeachingPopoverFooterSlots> &
-  Pick<TeachingPopoverContextValue, 'appearance'>;
+  Pick<PopoverContextValue, 'appearance'>;
 
 export type TeachingPopoverFooterProps = ComponentProps<Partial<TeachingPopoverFooterSlots>> & {
   strings: TeachingPopoverFooterStrings;

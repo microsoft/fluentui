@@ -7,8 +7,6 @@ export type TeachingPopoverActionsSlots = {
   root: NonNullable<Slot<'div'>>;
 };
 
-export type TeachingPopoverActionsState = ComponentState<TeachingPopoverActionsSlots> & {
-  totalPages: number;
-};
+export type TeachingPopoverActionsState = ComponentState<TeachingPopoverActionsSlots> & {};
 
 export type TeachingPopoverActionsProps = ComponentProps<Partial<TeachingPopoverActionsSlots>>;

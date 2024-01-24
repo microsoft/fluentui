@@ -45,3 +45,43 @@ export type PopoverContextValue = Pick<
 
 export const usePopoverContext_unstable = <T>(selector: ContextSelector<PopoverContextValue, T>): T =>
   useContextSelector(PopoverContext, (ctx = popoverContextDefaultValue) => selector(ctx));
+
+export function usePopoverContextValues_unstable(state: PopoverState): PopoverContextValue {
+  const {
+    appearance,
+    open,
+    toggleOpen,
+    setOpen,
+    triggerRef,
+    contentRef,
+    openOnHover,
+    openOnContext,
+    mountNode,
+    withArrow,
+    arrowRef,
+    size,
+    trapFocus,
+    inertTrapFocus,
+    inline,
+  } = state;
+
+  const popover = {
+    open,
+    toggleOpen,
+    setOpen,
+    triggerRef,
+    contentRef,
+    openOnHover,
+    openOnContext,
+    mountNode,
+    withArrow,
+    arrowRef,
+    size,
+    trapFocus,
+    inertTrapFocus,
+    inline,
+    appearance,
+  };
+
+  return popover;
+}

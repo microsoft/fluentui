@@ -29,7 +29,17 @@ describe('TeachingPopoverPageCount', () => {
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<TeachingPopoverPageCount>Default TeachingPopoverPageCount</TeachingPopoverPageCount>);
+    const result = render(
+      <TeachingPopoverPageCount
+        currentPage={0}
+        totalPages={3}
+        setCurrentPage={() => {
+          return;
+        }}
+      >
+        Default TeachingPopoverPageCount
+      </TeachingPopoverPageCount>,
+    );
     expect(result.container).toMatchSnapshot();
   });
 });

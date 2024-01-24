@@ -9,6 +9,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 /**
  * Define a styled TeachingPopoverActions, using the `useTeachingPopoverActions_unstable` and `useTeachingPopoverActionsStyles_unstable`
  * hooks.
+ * @deprecated and replaced with TeachingPopoverCarousel internal functionality and TeachingPopoverFooter
  */
 export const TeachingPopoverActions: ForwardRefComponent<TeachingPopoverActionsProps> = React.forwardRef(
   (props, ref) => {

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { TeachingPopoverAppearance } from '../TeachingPopover/TeachingPopover.types';
+import { PopoverState } from '@fluentui/react-popover';
 
 export type TeachingPopoverPageCountSlots = {
   /**
@@ -40,17 +41,14 @@ export type TeachingPopoverPageCountState = ComponentState<TeachingPopoverPageCo
    * Defaults to 'icon'
    */
   countStyle: TeachingPopoverPageCountStyle;
-  /**
-   * Enables branded appearance state.
-   */
-  appearance: TeachingPopoverAppearance;
-};
+} & Pick<PopoverState, 'appearance'>;
 
 // For localization or customization, users may want to modify this for their own purposes
 export type TeachingPopoverPageCountChildRenderFunction = (currentPage: number, totalPages: number) => React.ReactNode;
 export type TeachingPopoverPageCountRenderType = TeachingPopoverPageCountChildRenderFunction | React.ReactNode;
 
 export type TeachingPopoverPageCountProps = ComponentProps<Partial<TeachingPopoverPageCountSlots>> &
+  Required<Pick<TeachingPopoverPageCountState, 'currentPage' | 'totalPages' | 'setCurrentPage'>> &
   Partial<Pick<TeachingPopoverPageCountState, 'countStyle'>> & {
     children?: TeachingPopoverPageCountRenderType;
   };

@@ -6,9 +6,9 @@ import type {
   TeachingPopoverPageCountState,
 } from './TeachingPopoverPageCount.types';
 
-import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
 import { useARIAButtonProps } from '@fluentui/react-aria';
 import { useFocusableGroup } from '@fluentui/react-tabster';
+import { usePopoverContext_unstable } from '@fluentui/react-popover';
 
 /**
  * Returns the props and state required to render the component
@@ -19,14 +19,11 @@ export const useTeachingPopoverPageCount_unstable = (
   props: TeachingPopoverPageCountProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverPageCountState => {
-  const { carouselIcon, carouselSelectedIcon, countStyle = 'icon' } = props;
+  const { carouselIcon, carouselSelectedIcon, countStyle = 'icon', totalPages, currentPage, setCurrentPage } = props;
 
   const focusableGroupAttr = useFocusableGroup({ tabBehavior: 'limited' });
 
-  const totalPages = useTeachingPopoverContext_unstable(context => context.totalPages);
-  const currentPage = useTeachingPopoverContext_unstable(context => context.currentPage);
-  const setCurrentPage = useTeachingPopoverContext_unstable(context => context.setCurrentPage);
-  const appearance = useTeachingPopoverContext_unstable(context => context.appearance);
+  const appearance = usePopoverContext_unstable(context => context.appearance);
 
   const _carouselIcon = slot.always(carouselIcon, {
     elementType: 'button',

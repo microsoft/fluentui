@@ -13,11 +13,6 @@ const useStyles = makeStyles({
     ...shorthands.borderRadius('4px'),
     ...shorthands.gap('8px'),
     paddingTop: '12px',
-  },
-  rootCarousel: {
-    justifyContent: 'space-between',
-  },
-  rootPage: {
     justifyContent: 'flex-end',
   },
 });
@@ -26,14 +21,7 @@ const useStyles = makeStyles({
 export const useTeachingPopoverActionsStyles_unstable = (state: TeachingPopoverActionsState) => {
   const styles = useStyles();
 
-  const actionButtonStyles = state.totalPages > 1 ? styles.rootCarousel : styles.rootPage;
-
-  state.root.className = mergeClasses(
-    teachingPopoverActionsClassNames.root,
-    styles.root,
-    actionButtonStyles,
-    state.root.className,
-  );
+  state.root.className = mergeClasses(teachingPopoverActionsClassNames.root, styles.root, state.root.className);
 
   return state;
 };

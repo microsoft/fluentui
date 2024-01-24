@@ -9,6 +9,7 @@ import { useEventCallback } from '@fluentui/react-utilities';
  * Given user props, defines default props for the TeachingPopoverButton, calls useButtonState, and returns processed state.
  * @param props - User provided props to the TeachingPopoverButton component.
  * @param ref - User provided ref to be passed to the TeachingPopoverButton component.
+ * @deprecated and replaced with TeachingPopoverCarousel internal functionality and TeachingPopoverFooter
  */
 export const useTeachingPopoverButton_unstable = (
   props: TeachingPopoverButtonProps,
@@ -17,13 +18,23 @@ export const useTeachingPopoverButton_unstable = (
   const { buttonType, altStepText } = props;
   const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
+  const appearance = usePopoverContext_unstable(context => context.appearance);
 
-  const totalPages = useTeachingPopoverContext_unstable(context => context.totalPages);
-  const currentPage = useTeachingPopoverContext_unstable(context => context.currentPage);
-  const setCurrentPage = useTeachingPopoverContext_unstable(context => context.setCurrentPage);
-  const appearance = useTeachingPopoverContext_unstable(context => context.appearance);
-  const onFinish = useTeachingPopoverContext_unstable(context => context.onFinish);
-  const onPageChange = useTeachingPopoverContext_unstable(context => context.onPageChange);
+  // Context has been deprecated
+  const totalPages = 1;
+  const currentPage = 0;
+  const setCurrentPage = (page: number) => {
+    return;
+  };
+  const onFinish = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement, MouseEvent>) => {
+    return;
+  };
+  const onPageChange = (
+    event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement, MouseEvent>,
+    page: any,
+  ) => {
+    return;
+  };
 
   const isCarousel = totalPages > 1;
   let buttonAppearanceMod = {};
