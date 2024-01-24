@@ -146,6 +146,73 @@ function getSelectedLinksforStreamHover(singleLink: SLink): { selectedLinks: Set
   };
 }
 
+/**
+ *
+ * This is used to group nodes by column index.
+ */
+function populateNodeInColumns(graph: ISankeyChartData, sankey: SankeyLayout<SankeyGraph<{}, {}>, {}, {}>) {
+  sankey(graph);
+  const nodesInColumn: NodesInColumns = {};
+  graph.nodes.forEach((node: SNode) => {
+    const columnId = node.layer!;
+    if (nodesInColumn[columnId]) {
+      nodesInColumn[columnId].push(node);
+    } else {
+      nodesInColumn[columnId] = [node];
+    }
+  });
+  return nodesInColumn;
+}
+
+/**
+ * This is used to normalize the nodes value whose value is less than 1% of the total column value.
+ *
+ */
+function adjustOnePercentHeightNodes(nodesInColumn: NodesInColumns) {
+  const totalColumnValue = Object.values(nodesInColumn).map((column: SNode[]) => {
+    return d3Sum(column, (node: SNode) => node.value);
+  });
+  totalColumnValue.forEach((columnValue: number, index: number) => {
+    let totalPercentage = 0;
+    nodesInColumn[index].forEach((node: SNode) => {
+      const nodePercentage = (node.value! / columnValue) * 100;
+      node.actualValue = node.value;
+      //if the value is less than 1% then we are making it as 1% of total .
+      if (nodePercentage < 1) {
+        node.value = 0.01 * columnValue;
+        totalPercentage = totalPercentage + 1;
+      } else {
+        totalPercentage = totalPercentage + nodePercentage;
+      }
+    });
+    //since we have adjusted the value to be 1% but we need to keep the sum of the percentage value under 100.
+    const scalingRatio = totalPercentage !== 0 ? totalPercentage / 100 : 1;
+    if (scalingRatio > 1) {
+      nodesInColumn[index].forEach((node: SNode) => {
+        node.value = node.value! / scalingRatio;
+        changeColumnValue(node, node.actualValue!, node.value);
+      });
+    }
+  });
+}
+
+/**
+ *
+ * This is used for normalizing each links value for reflecting the normalized node value.
+ */
+function changeColumnValue(node: SNode, originalValue: number, normalizedValue: number) {
+  node.sourceLinks!.forEach((link: SLink) => {
+    link.unnormalizedValue = link.value;
+    const linkRatio = link.value / originalValue;
+    link.value = normalizedValue * linkRatio;
+  });
+  node.targetLinks!.forEach((link: SLink) => {
+    link.unnormalizedValue = link.value;
+    const linkRatio = link.value / originalValue;
+    link.value = normalizedValue * linkRatio;
+  });
+}
+
 export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyChartState> {
   private chartContainer: HTMLDivElement;
   private _reqID: number;
@@ -305,74 +372,8 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   }
 
   private _normalizeSankeyData(data: ISankeyChartData): void {
-    const nodesInColumn = (this._nodesInColumn = this._populateNodeInColumns(data, this._sankey));
-    this._adjustOnePercentHeightNodes(nodesInColumn);
-  }
-  /**
-   *
-   * This is used to group nodes by column index.
-   */
-  private _populateNodeInColumns(graph: ISankeyChartData, sankey: SankeyLayout<SankeyGraph<{}, {}>, {}, {}>) {
-    sankey(graph);
-    const nodesInColumn: NodesInColumns = {};
-    graph.nodes.forEach((node: SNode) => {
-      const columnId = node.layer!;
-      if (nodesInColumn[columnId]) {
-        nodesInColumn[columnId].push(node);
-      } else {
-        nodesInColumn[columnId] = [node];
-      }
-    });
-    return nodesInColumn;
-  }
-
-  /**
-   * This is used to normalize the nodes value whose value is less than 1% of the total column value.
-   *
-   */
-  private _adjustOnePercentHeightNodes(nodesInColumn: NodesInColumns) {
-    const totalColumnValue = Object.values(nodesInColumn).map((column: SNode[]) => {
-      return d3Sum(column, (node: SNode) => node.value);
-    });
-    totalColumnValue.forEach((columnValue: number, index: number) => {
-      let totalPercentage = 0;
-      nodesInColumn[index].forEach((node: SNode) => {
-        const nodePercentage = (node.value! / columnValue) * 100;
-        node.actualValue = node.value;
-        //if the value is less than 1% then we are making it as 1% of total .
-        if (nodePercentage < 1) {
-          node.value = 0.01 * columnValue;
-          totalPercentage = totalPercentage + 1;
-        } else {
-          totalPercentage = totalPercentage + nodePercentage;
-        }
-      });
-      //since we have adjusted the value to be 1% but we need to keep the sum of the percentage value under 100.
-      const scalingRatio = totalPercentage !== 0 ? totalPercentage / 100 : 1;
-      if (scalingRatio > 1) {
-        nodesInColumn[index].forEach((node: SNode) => {
-          node.value = node.value! / scalingRatio;
-          this._changeColumnValue(node, node.actualValue!, node.value);
-        });
-      }
-    });
-  }
-
-  /**
-   *
-   * This is used for normalizing each links value for reflecting the normalized node value.
-   */
-  private _changeColumnValue(node: SNode, originalValue: number, normalizedValue: number) {
-    node.sourceLinks!.forEach((link: SLink) => {
-      link.unnormalizedValue = link.value;
-      const linkRatio = link.value / originalValue;
-      link.value = normalizedValue * linkRatio;
-    });
-    node.targetLinks!.forEach((link: SLink) => {
-      link.unnormalizedValue = link.value;
-      const linkRatio = link.value / originalValue;
-      link.value = normalizedValue * linkRatio;
-    });
+    const nodesInColumn = (this._nodesInColumn = populateNodeInColumns(data, this._sankey));
+    adjustOnePercentHeightNodes(nodesInColumn);
   }
 
   /**
