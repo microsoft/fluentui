@@ -18,15 +18,16 @@ import {
 } from '@fluentui/react-components';
 
 interface ComponentWrapperProps {
+  label: string;
   children: React.ReactNode;
 }
-const ComponentWrapper: React.FC<ComponentWrapperProps> = ({ children }) => {
+const ComponentWrapper: React.FC<ComponentWrapperProps> = ({ label, children }) => {
   const focusableGroupAttribute = useFocusableGroup({
     tabBehavior: 'limited-trap-focus',
   });
 
   return (
-    <div tabIndex={0} {...focusableGroupAttribute} role="group" aria-label="Type something">
+    <div tabIndex={0} role="group" aria-label={label} {...focusableGroupAttribute}>
       {children}
     </div>
   );
@@ -186,7 +187,7 @@ export const TreeGridWithWrappedComponentsRenderer: React.FC<TreeGridWithWrapped
                     <Button>Chat with participants</Button>
                   </TableCell>
                   <TableCell role="gridcell">
-                    <ComponentWrapper>
+                    <ComponentWrapper label="Type here">
                       <Field label="Type here">
                         <Input />
                       </Field>
