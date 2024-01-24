@@ -111,7 +111,6 @@ export type {
 } from './TeachingPopoverTrigger';
 export {
   TeachingPopover,
-  countCarouselChildren,
   renderTeachingPopover_unstable,
   useTeachingPopover_unstable,
   useTeachingPopoverContextValues_unstable,
@@ -122,3 +121,11 @@ export type {
   TeachingPopoverContextValues,
   TeachingPopoverPageChangeData,
 } from './TeachingPopover';
+
+export {
+  TeachingPopoverFooter,
+  renderTeachingPopoverFooter_unstable,
+  useTeachingPopoverFooter_unstable,
+} from './TeachingPopoverFooter';
+
+export type { TeachingPopoverFooterProps, TeachingPopoverFooterState } from './TeachingPopoverFooter';

@@ -25,9 +25,6 @@ import { ReactElement } from 'react';
 import { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
-// @public (undocumented)
-export function countCarouselChildren(children: React_2.ReactElement | React_2.ReactElement[]): number;
-
 // @public
 export const renderTeachingPopover_unstable: (state: TeachingPopoverState, contextValues: TeachingPopoverContextValues) => JSX.Element;
 
