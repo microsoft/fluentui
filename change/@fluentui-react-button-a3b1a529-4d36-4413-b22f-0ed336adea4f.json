@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added state to button.",
+  "packageName": "@fluentui/react-button",
+  "email": "santoshsrisai36@gmail.com",
+  "dependentChangeType": "patch"
+}
