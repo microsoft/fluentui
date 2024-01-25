@@ -38,6 +38,10 @@ interface PositionManagerOptions {
    * @default true
    */
   useTransform?: boolean;
+  /**
+   * Disables the resize observer that updates position on target or dimension change
+   */
+  disableUpdateOnResize?: boolean;
 }
 
 /**
@@ -46,7 +50,16 @@ interface PositionManagerOptions {
  */
 export function createPositionManager(options: PositionManagerOptions): PositionManager {
   let isDestroyed = false;
-  const { container, target, arrow, strategy, middleware, placement, useTransform = true } = options;
+  const {
+    container,
+    target,
+    arrow,
+    strategy,
+    middleware,
+    placement,
+    useTransform = true,
+    disableUpdateOnResize = false,
+  } = options;
   const targetWindow = container.ownerDocument.defaultView;
   if (!target || !container || !targetWindow) {
     return {
@@ -56,7 +69,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
   }
 
   // When the dimensions of the target or the container change - trigger a position update
-  const resizeObserver = createResizeObserver(targetWindow, () => updatePosition());
+  const resizeObserver = disableUpdateOnResize ? null : createResizeObserver(targetWindow, () => updatePosition());
 
   let isFirstUpdate = true;
   const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();
@@ -82,9 +95,9 @@ export function createPositionManager(options: PositionManagerOptions): Position
         scrollParent.addEventListener('scroll', updatePosition, { passive: true });
       });
 
-      resizeObserver.observe(container);
+      resizeObserver?.observe(container);
       if (isHTMLElement(target)) {
-        resizeObserver.observe(target);
+        resizeObserver?.observe(target);
       }
 
       isFirstUpdate = false;
@@ -142,7 +155,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
     });
     scrollParents.clear();
 
-    resizeObserver.disconnect();
+    resizeObserver?.disconnect();
   };
 
   if (targetWindow) {
