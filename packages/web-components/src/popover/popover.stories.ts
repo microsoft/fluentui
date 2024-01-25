@@ -10,7 +10,7 @@ const template = html`
       background: yellow;
     }
 
-    .container {
+    .popover-container {
       width: 600px;
       height: 600px;
       overflow: auto;
@@ -18,17 +18,21 @@ const template = html`
     }
 
     .cropped-area-container {
-      width: 1600px;
-      height: 1600px;
+      width: 900px;
+      height: 900px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
   </style>
 
-  <div class="container">
+  <div class="popover-container">
     <div class="cropped-area-container">
-      <fluent-popover anchor-id="${x => x.anchorId}">
+      <fluent-popover
+        anchor-id="${x => x.anchorId}"
+        anchor-container-selector=".popover-container"
+        placement="${x => x.placement}"
+      >
         <div slot="popover-content">${x => x.content}</div>
         <fluent-button slot="trigger" id="${x => x.anchorId}">Toggle Popover</fluent-button>
       </fluent-popover>
@@ -53,12 +57,10 @@ const placementOptions = [
 ];
 
 function scrollContainerCenter() {
-  const container = document.querySelector('.cropped-area-container');
-  console.log(container);
+  const container = document.querySelector('.popover-container');
   if (container) {
     container.scrollTop = (container.scrollHeight - container.clientHeight) / 2;
     container.scrollLeft = (container.scrollWidth - container.clientWidth) / 2;
-    console.log('scrolling container center');
   }
 }
 
@@ -71,8 +73,15 @@ export default {
     show: false,
     anchorId: 'popover-anchor',
     targetId: 'popover-target',
-    scripts: scrollContainerCenter,
+    placement: 'top-start',
   },
+  decorators: [
+    (storyFn: any) => {
+      const story = storyFn();
+      setTimeout(scrollContainerCenter, 0);
+      return story;
+    },
+  ],
   argTypes: {
     size: {
       description: 'Popover size',

@@ -1,10 +1,4 @@
-import {
-  borderRadiusMedium,
-  colorNeutralBackground1,
-  colorTransparentStrokeInteractive,
-  fontFamilyBase,
-  shadow8,
-} from '@fluentui/web-components';
+import { colorNeutralBackground1, fontFamilyBase } from '@fluentui/web-components';
 import { css } from '@microsoft/fast-element';
 
 export const popoverStyles = css`
@@ -24,40 +18,6 @@ export const popoverStyles = css`
   :host([size='large']) {
     padding: 20px;
     max-width: 317px;
-  }
-
-  .popover-content-container {
-    position: absolute;
-
-    width: max-content;
-    height: fit-content;
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    background-color: ${colorNeutralBackground1};
-    border-radius: ${borderRadiusMedium};
-    border: 1px solid ${colorTransparentStrokeInteractive};
-    box-shadow: ${shadow8};
-    max-width: 260px;
-    padding: 12px;
-  }
-
-  .popover-content-container[hidden] {
-    visibility: hidden;
-  }
-
-  .popover-content-container[visible] {
-    transition: visibility 150ms ease, opacity 150ms ease, transform 150ms ease;
-    transform: translateY(2px);
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .popover-content-container:not([visible])) {
-    transition-delay: 600ms;
-    opacity: 0;
-    visibility: hidden;
   }
 
   /* :host([beak][visible]) {
