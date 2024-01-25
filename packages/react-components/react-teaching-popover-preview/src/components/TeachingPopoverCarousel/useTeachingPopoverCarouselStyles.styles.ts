@@ -66,6 +66,7 @@ const useStyles = makeStyles({
     },
   },
   nav: {},
+  pageCount: { color: tokens.colorNeutralForeground3 },
 });
 
 /** Applies style classnames to slots */
@@ -92,7 +93,16 @@ export const useTeachingPopoverCarouselStyles_unstable = (state: TeachingPopover
     appearance === 'brand' ? styles.brandNext : styles.next,
     state.next.className,
   );
-  state.nav.className = mergeClasses(teachingPopoverCarouselClassNames.nav, styles.nav, state.nav.className);
+  if (state.nav) {
+    state.nav.className = mergeClasses(teachingPopoverCarouselClassNames.nav, styles.nav, state.nav.className);
+  }
+  if (state.pageCount) {
+    state.pageCount.className = mergeClasses(
+      teachingPopoverCarouselClassNames.pageCount,
+      styles.pageCount,
+      state.pageCount.className,
+    );
+  }
 
   return state;
 };

@@ -26,19 +26,30 @@ export type TeachingPopoverCarouselSlots = {
   next: NonNullable<Slot<typeof Button>>;
 
   /**
-   * The page count slot.
+   * The page nav slot when using icon navigation.
    */
-  nav: NonNullable<Slot<TeachingPopoverCarouselNavProps>>;
+  nav: Slot<TeachingPopoverCarouselNavProps>;
+
+  /**
+   * The page count text slot for paginationType text
+   */
+  pageCount: Slot<'div'>;
 };
 
 export type TeachingPopoverCarouselLayout = 'offset' | 'centered';
 
+// For localization or customization, users may want to modify this for their own purposes
+export type TeachingPopoverPageCountChildRenderFunction = (currentPage: number, totalPages: number) => React.ReactNode;
+export type TeachingPopoverPageCountRenderType = TeachingPopoverPageCountChildRenderFunction | string;
 export type TeachingPopoverStrings = {
   previous: string;
   initialStepText: string;
   next: string;
   finalStepText: string;
-  separatorText?: string;
+  /**
+   * Localize the separator between numbers, or use a function to fully override
+   */
+  pageCountText?: TeachingPopoverPageCountRenderType;
 };
 
 export type TeachingPopoverPageChangeData = {
@@ -58,7 +69,7 @@ export type TeachingPopoverCarouselProps = Partial<ComponentProps<TeachingPopove
    * Dictates whether pagination uses text or icons
    * Defaults to icons
    */
-  carouselType?: 'text' | 'icon';
+  paginationType?: 'text' | 'icon';
 
   /**
    * Strings used to localize carousel functionality

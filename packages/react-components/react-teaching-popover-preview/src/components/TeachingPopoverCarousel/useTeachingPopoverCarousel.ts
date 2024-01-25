@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useControllableState, useEventCallback } from '@fluentui/react-utilities';
-import type { TeachingPopoverCarouselProps, TeachingPopoverCarouselState } from './TeachingPopoverCarousel.types';
+import type {
+  TeachingPopoverCarouselProps,
+  TeachingPopoverCarouselState,
+  TeachingPopoverPageCountChildRenderFunction,
+} from './TeachingPopoverCarousel.types';
 import { Button } from '@fluentui/react-button';
 import { useState } from 'react';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
@@ -10,7 +14,7 @@ export const useTeachingPopoverCarousel_unstable = (
   props: TeachingPopoverCarouselProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselState => {
-  const { carouselLayout = 'centered', carouselType = 'icon', strings, onPageChange, onFinish } = props;
+  const { carouselLayout = 'centered', paginationType = 'icon', strings, onPageChange, onFinish } = props;
 
   const appearance = usePopoverContext_unstable(context => context.appearance);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
@@ -98,12 +102,26 @@ export const useTeachingPopoverCarousel_unstable = (
     elementType: Button,
   });
 
-  const nav = slot.always(props.nav, {
+  const nav = slot.optional(props.nav, {
     defaultProps: {},
+    renderByDefault: paginationType === 'icon',
     elementType: TeachingPopoverCarouselNav,
   });
 
   const footer = slot.always(props.footer, { elementType: 'div' });
+
+  let pageCountTextChildren;
+  if (typeof props.strings.pageCountText === 'function') {
+    const renderFunc = props.children as TeachingPopoverPageCountChildRenderFunction;
+    pageCountTextChildren = { children: renderFunc(currentPage, totalPages) };
+  } else {
+    pageCountTextChildren = { children: `${currentPage + 1} ${props.strings.pageCountText ?? '/'} ${totalPages}` };
+  }
+  const pageCount = slot.optional(props.nav, {
+    defaultProps: { ...pageCountTextChildren },
+    renderByDefault: paginationType === 'text',
+    elementType: TeachingPopoverCarouselNav,
+  });
 
   return {
     appearance,
@@ -118,6 +136,7 @@ export const useTeachingPopoverCarousel_unstable = (
       next: Button,
       previous: Button,
       nav: TeachingPopoverCarouselNav,
+      pageCount: 'div',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
@@ -131,5 +150,6 @@ export const useTeachingPopoverCarousel_unstable = (
     next,
     nav,
     footer,
+    pageCount,
   };
 };
