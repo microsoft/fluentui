@@ -147,7 +147,6 @@ function getSelectedLinksforStreamHover(singleLink: SLink): { selectedLinks: Set
 }
 
 /**
- *
  * This is used to group nodes by column index.
  */
 function populateNodeInColumns(graph: ISankeyChartData, sankey: SankeyLayout<SankeyGraph<{}, {}>, {}, {}>) {
@@ -166,7 +165,6 @@ function populateNodeInColumns(graph: ISankeyChartData, sankey: SankeyLayout<San
 
 /**
  * This is used to normalize the nodes value whose value is less than 1% of the total column value.
- *
  */
 function adjustOnePercentHeightNodes(nodesInColumn: NodesInColumns) {
   const totalColumnValue = Object.values(nodesInColumn).map((column: SNode[]) => {
@@ -197,7 +195,6 @@ function adjustOnePercentHeightNodes(nodesInColumn: NodesInColumns) {
 }
 
 /**
- *
  * This is used for normalizing each links value for reflecting the normalized node value.
  */
 function changeColumnValue(node: SNode, originalValue: number, normalizedValue: number) {
@@ -210,6 +207,23 @@ function changeColumnValue(node: SNode, originalValue: number, normalizedValue: 
     link.unnormalizedValue = link.value;
     const linkRatio = link.value / originalValue;
     link.value = normalizedValue * linkRatio;
+  });
+}
+
+/**
+ * This is used for calculating the node non normalized value based on link non normalized value.
+ */
+function populateNodeActualValue(data: ISankeyChartData) {
+  data.links.forEach((link: SLink) => {
+    if (!link.unnormalizedValue) {
+      link.unnormalizedValue = link.value;
+    }
+  });
+  data.nodes.forEach((node: SNode) => {
+    node.actualValue = Math.max(
+      d3Sum(node.sourceLinks!, (link: SLink) => link.unnormalizedValue),
+      d3Sum(node.targetLinks!, (link: SLink) => link.unnormalizedValue),
+    );
   });
 }
 
@@ -243,6 +257,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     this._normalizeData = memoizeFunction((data: ISankeyChartData) => this._normalizeSankeyData(data));
     this._emptyChartId = getId('_SankeyChart_empty');
   }
+
   public componentDidMount(): void {
     this._fitParentContainer();
   }
@@ -252,9 +267,11 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       this._fitParentContainer();
     }
   }
+
   public componentWillUnmount(): void {
     cancelAnimationFrame(this._reqID);
   }
+
   public render(): React.ReactNode {
     if (!this._isChartEmpty()) {
       const { theme, className, styles, pathColor } = this.props;
@@ -275,7 +292,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
 
       this._sankey.nodePadding(nodePadding);
       this._sankey(sankeyChartData);
-      this._populateNodeActualValue(sankeyChartData);
+      populateNodeActualValue(sankeyChartData);
       this._assignNodeColors();
       const nodeData = this._createNodes(classNames);
       const linkData = this._createLinks();
@@ -353,31 +370,12 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     return { height, width };
   }
 
-  /**
-   * This is used for calculating the node non normalized value based on link non normalized value.
-   *
-   */
-  private _populateNodeActualValue(data: ISankeyChartData) {
-    data.links.forEach((link: SLink) => {
-      if (!link.unnormalizedValue) {
-        link.unnormalizedValue = link.value;
-      }
-    });
-    data.nodes.forEach((node: SNode) => {
-      node.actualValue = Math.max(
-        d3Sum(node.sourceLinks!, (link: SLink) => link.unnormalizedValue),
-        d3Sum(node.targetLinks!, (link: SLink) => link.unnormalizedValue),
-      );
-    });
-  }
-
   private _normalizeSankeyData(data: ISankeyChartData): void {
     const nodesInColumn = (this._nodesInColumn = populateNodeInColumns(data, this._sankey));
     adjustOnePercentHeightNodes(nodesInColumn);
   }
 
   /**
-   *
    * This is used to introduce dynamic padding for cases where the number of nodes in a column is huge
    * so that we maintain a node to space ratio for such columns as if we fail to do so the
    * chart is devoid of nodes and only shows links.
@@ -780,8 +778,8 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       }
     });
   }
+
   /**
-   *
    * @param text is the text which we are trying to truncate
    * @param rectangleWidth is the width of the rectangle which will contain the text
    * @param padding is the space we need to leave between the rect lines and other text
