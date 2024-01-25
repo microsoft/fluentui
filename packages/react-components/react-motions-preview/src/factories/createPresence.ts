@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { getChildElement } from '../utils/getChildElement';
-import type { PresenceMotion, MotionImperativeRef } from '../types';
+import type { PresenceMotion, MotionImperativeRef, PresenceMotionFn } from '../types';
 
 type PresenceProps = {
   children: React.ReactElement;
@@ -18,7 +18,7 @@ type PresenceProps = {
   unmountOnExit?: boolean;
 };
 
-export function createPresence(motion: PresenceMotion) {
+export function createPresence(motion: PresenceMotion | PresenceMotionFn) {
   const Presence: React.FC<PresenceProps> = props => {
     const { appear, children, imperativeRef, visible, unmountOnExit } = props;
 
@@ -46,7 +46,9 @@ export function createPresence(motion: PresenceMotion) {
       }
 
       if (elementRef.current) {
-        const { keyframes, ...options } = motion.exit;
+        const definition = typeof motion === 'function' ? motion(elementRef.current) : motion;
+        const { keyframes, ...options } = definition.exit;
+
         const animation = elementRef.current.animate(keyframes, {
           fill: 'forwards',
 
@@ -79,7 +81,9 @@ export function createPresence(motion: PresenceMotion) {
       const shouldEnter = isFirstMount.current ? appear && visible : mounted && visible;
 
       if (shouldEnter) {
-        const { keyframes, ...options } = motion.enter;
+        const definition = typeof motion === 'function' ? motion(elementRef.current) : motion;
+        const { keyframes, ...options } = definition.enter;
+
         const animation = elementRef.current.animate(keyframes, {
           fill: 'forwards',
 

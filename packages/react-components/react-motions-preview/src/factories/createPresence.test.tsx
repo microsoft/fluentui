@@ -22,6 +22,7 @@ const motion: PresenceMotion = {
 function createElementMock() {
   const animateMock = jest.fn().mockImplementation(() => ({
     cancel: jest.fn(),
+    finish: jest.fn(),
     set onfinish(callback: Function) {
       callback();
       return;
@@ -42,6 +43,34 @@ function createElementMock() {
 }
 
 describe('createPresence', () => {
+  describe('definitions', () => {
+    it('supports functions as motion definitions', () => {
+      const { keyframes, ...options } = motion.exit;
+
+      const fnMotion = jest.fn().mockImplementation(() => motion);
+      const TestAtom = createPresence(fnMotion);
+      const { animateMock, ElementMock } = createElementMock();
+
+      const { rerender } = render(
+        <TestAtom visible>
+          <ElementMock />
+        </TestAtom>,
+      );
+      expect(animateMock).not.toHaveBeenCalled();
+
+      rerender(
+        <TestAtom visible={false}>
+          <ElementMock />
+        </TestAtom>,
+      );
+
+      expect(fnMotion).toHaveBeenCalledTimes(1);
+      expect(fnMotion).toHaveBeenCalledWith({ animate: animateMock } /* mock of html element */);
+
+      expect(animateMock).toHaveBeenCalledWith(keyframes, options);
+    });
+  });
+
   describe('appear', () => {
     it('does not animate by default', () => {
       const TestAtom = createPresence(motion);

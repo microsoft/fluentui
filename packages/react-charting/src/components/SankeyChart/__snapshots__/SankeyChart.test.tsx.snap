@@ -26,6 +26,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone52"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1186,6 +1187,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           outline: none;
         }
     data-focuszone-id="FocusZone105"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2343,6 +2345,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           outline: none;
         }
     data-focuszone-id="FocusZone87"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2927,6 +2930,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           outline: none;
         }
     data-focuszone-id="FocusZone52"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4119,6 +4123,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           outline: none;
         }
     data-focuszone-id="FocusZone52"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -5321,6 +5326,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           outline: none;
         }
     data-focuszone-id="FocusZone52"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -6516,6 +6522,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           outline: none;
         }
     data-focuszone-id="FocusZone52"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
