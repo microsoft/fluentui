@@ -2,7 +2,7 @@ import * as React from 'react';
 import { mount } from '@cypress/react';
 import { useSetKeyboardNavigation, useOnKeyboardNavigationChange } from './hooks';
 
-describe('useOnKeyboardNavigationChange', () => {
+describe('useSetKeyboardNavigation', () => {
   it('Should invoke callback when navigation mode changes', () => {
     const Example = () => {
       const [isKeyboard, setIsKeyboard] = React.useState(false);
