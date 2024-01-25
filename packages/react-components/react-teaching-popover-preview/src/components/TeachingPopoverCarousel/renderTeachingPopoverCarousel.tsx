@@ -3,24 +3,30 @@
 import type { TeachingPopoverCarouselState } from './TeachingPopoverCarousel.types';
 import { TeachingPopoverCarouselSlots } from './TeachingPopoverCarousel.types';
 import { assertSlots } from '@fluentui/react-utilities';
+import { TeachingPopoverCarouselContextValue, TeachingPopoverCarouselProvider } from './TeachingPopoverCarouselContext';
 
 /**
  * Render the final JSX of TeachingPopoverCarousel
  */
-export const renderTeachingPopoverCarousel_unstable = (state: TeachingPopoverCarouselState) => {
+export const renderTeachingPopoverCarousel_unstable = (
+  state: TeachingPopoverCarouselState,
+  contextValues: TeachingPopoverCarouselContextValue,
+) => {
   assertSlots<TeachingPopoverCarouselSlots>(state);
 
   const { carouselLayout } = state;
 
   return (
-    <state.root>
-      {state.root.children}
-      <state.footer>
-        {carouselLayout === 'centered' && state.previous && <state.previous />}
-        <state.pageCount />
-        {carouselLayout === 'offset' && state.previous && <state.previous />}
-        <state.next />
-      </state.footer>
-    </state.root>
+    <TeachingPopoverCarouselProvider value={contextValues}>
+      <state.root>
+        {state.root.children}
+        <state.footer>
+          {carouselLayout === 'centered' && state.previous && <state.previous />}
+          <state.nav />
+          {carouselLayout === 'offset' && state.previous && <state.previous />}
+          <state.next />
+        </state.footer>
+      </state.root>
+    </TeachingPopoverCarouselProvider>
   );
 };

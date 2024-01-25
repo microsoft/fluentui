@@ -2,9 +2,9 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import type { TeachingPopoverCarouselProps, TeachingPopoverCarouselState } from './TeachingPopoverCarousel.types';
 import { Button } from '@fluentui/react-button';
-import { TeachingPopoverPageCount } from '../TeachingPopoverPageCount/TeachingPopoverPageCount';
 import { useState } from 'react';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
+import { TeachingPopoverCarouselNav } from '../TeachingPopoverCarouselNav/TeachingPopoverCarouselNav';
 
 export const useTeachingPopoverCarousel_unstable = (
   props: TeachingPopoverCarouselProps,
@@ -98,15 +98,9 @@ export const useTeachingPopoverCarousel_unstable = (
     elementType: Button,
   });
 
-  const pageCount = slot.always(props.pageCount, {
-    defaultProps: {
-      countStyle: carouselType,
-      children: carouselType === 'text' ? ` ${strings.separatorText} ` : undefined,
-      totalPages,
-      currentPage,
-      setCurrentPage,
-    },
-    elementType: TeachingPopoverPageCount,
+  const nav = slot.always(props.nav, {
+    defaultProps: {},
+    elementType: TeachingPopoverCarouselNav,
   });
 
   const footer = slot.always(props.footer, { elementType: 'div' });
@@ -114,6 +108,8 @@ export const useTeachingPopoverCarousel_unstable = (
   return {
     appearance,
     currentPage,
+    setCurrentPage,
+    onPageChange,
     totalPages,
     carouselLayout,
     components: {
@@ -121,7 +117,7 @@ export const useTeachingPopoverCarousel_unstable = (
       footer: 'div',
       next: Button,
       previous: Button,
-      pageCount: TeachingPopoverPageCount,
+      nav: TeachingPopoverCarouselNav,
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
@@ -133,7 +129,7 @@ export const useTeachingPopoverCarousel_unstable = (
     ),
     previous,
     next,
-    pageCount,
+    nav,
     footer,
   };
 };

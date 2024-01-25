@@ -31,7 +31,7 @@ export const useTeachingPopoverButton_unstable = (
   };
   const onPageChange = (
     event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement, MouseEvent>,
-    page: any,
+    page: number,
   ) => {
     return;
   };

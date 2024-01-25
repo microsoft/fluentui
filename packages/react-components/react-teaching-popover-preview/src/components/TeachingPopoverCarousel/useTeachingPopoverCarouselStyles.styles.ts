@@ -8,7 +8,7 @@ export const teachingPopoverCarouselClassNames: SlotClassNames<TeachingPopoverCa
   footer: 'fui-TeachingPopoverCarousel__footer',
   previous: 'fui-TeachingPopoverCarousel__previous',
   next: 'fui-TeachingPopoverCarousel__next',
-  pageCount: 'fui-TeachingPopoverCarousel__pageCount',
+  nav: 'fui-TeachingPopoverCarousel__nav',
 };
 
 // Todo: Page change animation & styles
@@ -65,7 +65,7 @@ const useStyles = makeStyles({
       backgroundColor: tokens.colorBrandBackgroundPressed,
     },
   },
-  pageCount: {},
+  nav: {},
 });
 
 /** Applies style classnames to slots */
@@ -92,11 +92,7 @@ export const useTeachingPopoverCarouselStyles_unstable = (state: TeachingPopover
     appearance === 'brand' ? styles.brandNext : styles.next,
     state.next.className,
   );
-  state.pageCount.className = mergeClasses(
-    teachingPopoverCarouselClassNames.pageCount,
-    styles.pageCount,
-    state.pageCount.className,
-  );
+  state.nav.className = mergeClasses(teachingPopoverCarouselClassNames.nav, styles.nav, state.nav.className);
 
   return state;
 };

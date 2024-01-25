@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TeachingPopoverPageCountProps, TeachingPopoverPageCountStyle } from '../TeachingPopoverPageCount';
 import { Button } from '@fluentui/react-button';
 import { PopoverContextValue } from '@fluentui/react-popover';
+import { TeachingPopoverCarouselNavProps } from '../TeachingPopoverCarouselNav/index';
 
 export type TeachingPopoverCarouselSlots = {
   /**
@@ -28,7 +28,7 @@ export type TeachingPopoverCarouselSlots = {
   /**
    * The page count slot.
    */
-  pageCount: NonNullable<Slot<TeachingPopoverPageCountProps>>;
+  nav: NonNullable<Slot<TeachingPopoverCarouselNavProps>>;
 };
 
 export type TeachingPopoverCarouselLayout = 'offset' | 'centered';
@@ -58,7 +58,7 @@ export type TeachingPopoverCarouselProps = Partial<ComponentProps<TeachingPopove
    * Dictates whether pagination uses text or icons
    * Defaults to icons
    */
-  carouselType?: TeachingPopoverPageCountStyle;
+  carouselType?: 'text' | 'icon';
 
   /**
    * Strings used to localize carousel functionality
@@ -104,5 +104,7 @@ export type TeachingPopoverCarouselProps = Partial<ComponentProps<TeachingPopove
  */
 export type TeachingPopoverCarouselState = ComponentState<TeachingPopoverCarouselSlots> & {
   totalPages: number;
+  setCurrentPage: (page: number) => void;
 } & Partial<Pick<PopoverContextValue, 'appearance'>> &
-  Required<Pick<TeachingPopoverCarouselProps, 'carouselLayout' | 'currentPage'>>;
+  Pick<TeachingPopoverCarouselProps, 'carouselLayout' | 'onPageChange'> &
+  Required<Pick<TeachingPopoverCarouselProps, 'currentPage'>>;
