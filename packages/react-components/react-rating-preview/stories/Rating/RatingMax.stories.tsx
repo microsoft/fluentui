@@ -8,7 +8,7 @@ export const Max = () => {
 Max.parameters = {
   docs: {
     description: {
-      story: 'You can specify the number of elements in the Rating with the "max" prop.',
+      story: 'You can specify the number of elements in the Rating with the `max` prop.',
     },
   },
 };
