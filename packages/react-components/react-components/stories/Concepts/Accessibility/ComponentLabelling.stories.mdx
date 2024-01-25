@@ -195,5 +195,9 @@ Explanation
     Refer to the text element via the "aria-describedby" attribute, which ensures the text would be read by the screen reader
     whenever the actionable element which has the "aria-describedby" attribute is focused.
   </li>
-  <li> Wrap the focused element with the element which has role="group", then wrapping element will be narrated.</li>
+  <li>
+    {' '}
+    Wrap the component with an element which has role="group" and use aria-label or aria-labelledby to set or reference the
+    text you want to narrate. Then the element label will be narrated when the component is focused using the Tab key.
+  </li>
 </ul>
