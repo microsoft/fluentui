@@ -1,33 +1,78 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RatingDisplaySlots, RatingDisplayState } from './RatingDisplay.types';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 export const ratingDisplayClassNames: SlotClassNames<RatingDisplaySlots> = {
   root: 'fui-RatingDisplay',
-  // TODO: add class names for all slots on RatingDisplaySlots.
-  // Should be of the form `<slotName>: 'fui-RatingDisplay__<slotName>`
+  valueText: 'fui-RatingDisplay__valueText',
+  countText: 'fui-RatingDisplay__countText',
 };
 
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
-  },
 
-  // TODO add additional classes for different states and/or slots
+const useRootClassName = makeResetStyles({
+  display: 'flex',
+  alignItems: 'center',
+});
+
+const useLabelClassName = makeResetStyles({
+  color: tokens.colorNeutralForeground1,
+  marginLeft: tokens.spacingHorizontalXXS,
+  ...typographyStyles.caption1,
+});
+
+const useLabelStyles = makeStyles({
+  large: {
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
+  },
+  extraLarge: {
+    fontSize: tokens.fontSizeBase400,
+    lineHeight: tokens.lineHeightBase400,
+  },
+  strong: {
+    fontWeight: tokens.fontWeightSemibold,
+  },
+  divider: {
+    '::before': {
+      content: '"· "',
+    },
+  },
 });
 
 /**
  * Apply styling to the RatingDisplay slots based on the state
  */
 export const useRatingDisplayStyles_unstable = (state: RatingDisplayState): RatingDisplayState => {
-  const styles = useStyles();
-  state.root.className = mergeClasses(ratingDisplayClassNames.root, styles.root, state.root.className);
+  const { size } = state;
+  const rootClassName = useRootClassName();
+  state.root.className = mergeClasses(ratingDisplayClassNames.root, rootClassName, state.root.className);
+  const labelClassName = useLabelClassName();
+  const labelStyles = useLabelStyles();
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  if (state.valueText) {
+    state.valueText.className = mergeClasses(
+      ratingDisplayClassNames.valueText,
+      labelClassName,
+      labelStyles.strong,
+      size === 'large' && labelStyles.large,
+      size === 'extra-large' && labelStyles.extraLarge,
+      state.valueText.className,
+    );
+  }
+  if (state.countText) {
+    state.countText.className = mergeClasses(
+      ratingDisplayClassNames.countText,
+      labelClassName,
+      size === 'large' && labelStyles.large,
+      size === 'extra-large' && labelStyles.extraLarge,
+      state.valueText && labelStyles.divider,
+      state.countText.className,
+    );
+  }
 
   return state;
 };

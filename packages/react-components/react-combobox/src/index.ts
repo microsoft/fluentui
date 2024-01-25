@@ -59,3 +59,5 @@ export {
 } from './OptionGroup';
 export type { OptionGroupProps, OptionGroupSlots, OptionGroupState } from './OptionGroup';
 export type { OptionOnSelectData, SelectionEvents } from './Selection';
+
+export { useComboboxFilter } from './hooks/useComboboxFilter';

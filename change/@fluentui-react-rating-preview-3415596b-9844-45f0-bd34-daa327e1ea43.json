@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add RatingDisplay component",
+  "packageName": "@fluentui/react-rating-preview",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

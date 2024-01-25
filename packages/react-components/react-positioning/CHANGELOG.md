@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Tue, 16 Jan 2024 13:14:22 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jan 2024 15:11:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.12.5)
+
+Tue, 23 Jan 2024 15:11:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.12.4..@fluentui/react-positioning_v9.12.5)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.17.0 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+
+## [9.12.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.12.4)
+
+Thu, 18 Jan 2024 14:25:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.12.3..@fluentui/react-positioning_v9.12.4)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.14.0 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-utilities to v9.16.1 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+
+## [9.12.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.12.3)
+
+Wed, 17 Jan 2024 16:18:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.12.2..@fluentui/react-positioning_v9.12.3)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.16.0 ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by beachball)
 
 ## [9.12.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.12.2)
 

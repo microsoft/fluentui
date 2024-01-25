@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add bottom position",
-  "packageName": "@fluentui/react-drawer",
-  "email": "yiliu9@microsoft.com",
-  "dependentChangeType": "patch"
-}
