@@ -80,6 +80,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
         children: <DismissIcon />,
         // Safari doesn't allow to focus an element with this
         tabIndex: 0,
+        type: 'button',
       },
       elementType: 'button',
       renderByDefault: true,

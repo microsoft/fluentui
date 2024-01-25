@@ -23,6 +23,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             outline: none;
           }
       data-focuszone-id="FocusZone217"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <div
         class=
@@ -74,6 +75,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             outline: none;
           }
       data-focuszone-id="FocusZone219"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <div>
         <svg
@@ -241,6 +243,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       outline: none;
                     }
                 data-focuszone-id="FocusZone220"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -632,6 +635,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             outline: none;
           }
       data-focuszone-id="FocusZone227"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <div
         class=
@@ -683,6 +687,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             outline: none;
           }
       data-focuszone-id="FocusZone229"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <div>
         <svg
@@ -850,6 +855,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       outline: none;
                     }
                 data-focuszone-id="FocusZone230"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -1254,6 +1260,7 @@ exports[`Should reflect theme change 1`] = `
               outline: none;
             }
         data-focuszone-id="FocusZone240"
+        data-tabster="{\\"uncontrolled\\": {}}"
       >
         <div
           class=
@@ -1305,6 +1312,7 @@ exports[`Should reflect theme change 1`] = `
               outline: none;
             }
         data-focuszone-id="FocusZone242"
+        data-tabster="{\\"uncontrolled\\": {}}"
       >
         <div>
           <svg
@@ -1472,6 +1480,7 @@ exports[`Should reflect theme change 1`] = `
                         outline: none;
                       }
                   data-focuszone-id="FocusZone243"
+                  data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
                   <div
@@ -1864,6 +1873,7 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with em
             outline: none;
           }
       data-focuszone-id="FocusZone17"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <div
         class=
@@ -1915,6 +1925,7 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with em
             outline: none;
           }
       data-focuszone-id="FocusZone19"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <div>
         <svg
@@ -1999,6 +2010,7 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with em
                       outline: none;
                     }
                 data-focuszone-id="FocusZone20"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -2390,6 +2402,7 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
             outline: none;
           }
       data-focuszone-id="FocusZone6"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <div
         class=
@@ -2441,6 +2454,7 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
             outline: none;
           }
       data-focuszone-id="FocusZone8"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <div>
         <svg
@@ -2608,6 +2622,7 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
                       outline: none;
                     }
                 data-focuszone-id="FocusZone9"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
