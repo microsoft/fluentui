@@ -5,6 +5,7 @@ import bestPracticesMd from './RadioPickerBestPractices.md';
 
 export { Default } from './RadioPickerDefault.stories';
 export { RadioNavigation } from './RadioNavigation.stories';
+export { RadioInPopover } from './RadioInPopover.stories';
 export { RadioPickerSize } from './RadioPickerSize.stories';
 export { RadioPickerShape } from './RadioPickerShape.stories';
 

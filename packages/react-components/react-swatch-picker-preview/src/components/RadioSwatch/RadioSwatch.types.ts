@@ -15,6 +15,8 @@ export type RadioSwatchProps = ComponentProps<RadioSwatchSlots> &
     size?: 'extraSmall' | 'small' | 'medium' | 'large';
     shape?: 'rounded' | 'square' | 'circular';
     label?: string;
+    contrastBorderColor?: string;
+    contrastStateColor?: string;
   };
 
 /**
