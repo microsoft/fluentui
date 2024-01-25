@@ -62,7 +62,7 @@ export function useAdamTableInteractive2Navigation(): {
 
       const ignoreUpAndDown =
         (activeElement.tagName === 'INPUT' && activeElement.getAttribute('type') === 'text') ||
-        activeElement.role === 'textbox';
+        activeElement.getAttribute('role') === 'textbox';
 
       if (!ignoreUpAndDown && (e.key === ArrowDown || e.key === ArrowUp) && isInCell) {
         // Escape groupper focus trap before arrow down
