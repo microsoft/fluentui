@@ -1,6 +1,12 @@
 import { computePosition, Placement } from '@floating-ui/dom';
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 
+interface HTMLPopoverElement extends HTMLElement {
+  showPopover: () => void;
+  hidePopover: () => void;
+  togglePopover: () => void;
+}
+
 export class Popover extends FASTElement {
   @attr({ mode: 'boolean' })
   open: boolean = false;
@@ -8,60 +14,71 @@ export class Popover extends FASTElement {
   @attr
   placement: Placement = 'bottom';
 
-  @attr
-  anchor: string | undefined;
+  @observable
+  anchorReferences: HTMLElement[] | undefined;
+  anchorReferencesChanged(oldValue: HTMLElement | undefined, newValue: HTMLElement | undefined) {
+    this.initializeTargetId();
+    console.log('anchorReferencesChanged', oldValue, newValue);
+    this.addAnchorAttributes();
+    this.addAnchorEventListeners();
+  }
 
   @observable
-  anchorReference: HTMLElement | undefined;
+  popoverReference: HTMLPopoverElement | undefined;
 
   @attr({ attribute: 'target-id' })
   targetId: string | undefined;
 
-  updatePosition = () => {
-    if (this.anchorReference) {
-      const popoverContainer = this.shadowRoot?.querySelector('.popover-content-container') as HTMLElement;
+  @attr({ attribute: 'anchor-id' })
+  anchorId: string | undefined;
 
-      if (this.anchorReference && popoverContainer) {
-        computePosition(this.anchorReference, popoverContainer, {
+  applyPopoverPolyfill() {
+    if (!HTMLElement.prototype.hasOwnProperty('popover')) {
+      console.log('setting popover polyfill');
+      import('@oddbird/popover-polyfill');
+    }
+  }
+
+  addAnchorAttributes() {
+    if (this.anchorReferences && this.anchorReferences.length > 0 && this.targetId) {
+      this.anchorReferences[0].setAttribute('popovertarget', this.targetId);
+    }
+  }
+
+  togglePopover = () => {
+    this.popoverReference?.togglePopover();
+  };
+
+  addAnchorEventListeners() {
+    if (this.anchorReferences && this.anchorReferences.length) {
+      this.anchorReferences[0].addEventListener('click', this.togglePopover);
+    }
+  }
+
+  initializeTargetId() {
+    if (!this.targetId) {
+      this.targetId = 'popover-target';
+    }
+  }
+
+  connectedCallback(): void {
+    super.connectedCallback();
+  }
+
+  updatePosition = () => {
+    if (this.anchorReferences && this.anchorReferences.length > 0) {
+      if (this.anchorReferences[0] && this.popoverReference) {
+        computePosition(this.anchorReferences[0], this.popoverReference, {
           placement: this.placement,
         }).then(({ x, y }) => {
-          Object.assign(popoverContainer.style, {
-            left: `${x}px`,
-            top: `${y}px`,
-          });
+          if (this.popoverReference) {
+            Object.assign(this.popoverReference.style, {
+              left: `${x}px`,
+              top: `${y}px`,
+            });
+          }
         });
       }
     }
   };
-
-  setAnchorReference() {
-    const anchor = this.querySelector(`#${this.anchor}`) as HTMLElement;
-    if (anchor) {
-      this.anchorReference = anchor;
-    }
-  }
-
-  handleMouseEnter = () => {
-    this.open = true;
-    this.updatePosition();
-  };
-
-  handleMouseLeave = () => {
-    this.open = false;
-    this.updatePosition();
-  };
-
-  setAnchorEventListeners = () => {
-    if (this.anchorReference) {
-      this.anchorReference.addEventListener('mouseenter', this.handleMouseEnter);
-      this.anchorReference.addEventListener('mouseleave', this.handleMouseLeave);
-    }
-  };
-
-  connectedCallback(): void {
-    super.connectedCallback();
-
-    this.setAnchorReference();
-    this.setAnchorEventListeners();
-  }
 }

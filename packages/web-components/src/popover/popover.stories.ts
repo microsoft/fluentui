@@ -7,9 +7,7 @@ const template = html`
     .content {
       width: 200px;
       height: 150px;
-    }
-    .popover-button:hover {
-      cursor: pointer;
+      background: yellow;
     }
     .container {
       width: 100%;
@@ -21,20 +19,17 @@ const template = html`
   </style>
 
   <div class="container">
-    <fluent-popover
-      size="${x => x.size}"
-      ?beak="${x => x.disabled}"
-      ?open="${x => x.show}"
-      anchor="${x => x.anchor}"
-      placement="${x => x.placement}"
-    >
-      <button id="${x => x.anchor}" tabindex="0" class="popover-button" aria-describedby="popover">
-        Popover button
-      </button>
-      ${x => x.content}
+    <fluent-popover anchor-id="${x => x.anchorId}">
+      <div slot="popover-content">${x => x.content}</div>
+      <fluent-button slot="trigger" id="${x => x.anchorId}">Toggle Popover</fluent-button>
     </fluent-popover>
   </div>
 `;
+
+// size="${x => x.size}"
+// ?beak="${x => x.beak}"
+// ?open="${x => x.show}"
+// placement="${x => x.placement}"
 
 const placementOptions = [
   'top-start',
@@ -48,13 +43,14 @@ const placementOptions = [
 ];
 
 export default {
-  title: 'Horizon Web Components/Popover',
+  title: 'Components/Popover',
   tags: ['autodocs'],
   args: {
     size: 'medium',
     beak: true,
     show: false,
-    anchor: 'popover-anchor',
+    anchorId: 'popover-anchor',
+    targetId: 'popover-target',
   },
   argTypes: {
     size: {
@@ -84,5 +80,5 @@ export default {
 
 export const Popover = renderComponent(template).bind({}) as any;
 Popover.args = {
-  content: html` <div class="content" slot="popover-content">Popover content</div> `,
+  content: html` <div class="content">Popover content</div> `,
 };

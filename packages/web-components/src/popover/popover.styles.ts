@@ -77,4 +77,31 @@ export const popoverStyles = css`
     border-bottom: 5px solid ${colorNeutralBackground1};
     z-index: 1;
   } */
+
+  /************
+----------------------------------
+styles for edge and chrome browsers
+-----------------------------------
+*************/
+
+  [popover]:popover-open {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+
+  [popover] {
+    transition: opacity 0.3s, transform 0.3s, overlay 0.3s allow-discrete, display 0.3s allow-discrete;
+
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  @starting-style {
+    [popover]:popover-open {
+      opacity: 0;
+      transform: scaleY(0);
+    }
+  }
+
+  /************ end chrome edge styling *************/
 `;

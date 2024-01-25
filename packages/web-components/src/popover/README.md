@@ -130,7 +130,7 @@ Component dev implementation work was initially began by Miro Stastny. We are pi
 ## Usage:
 
 ```html
-<fluent-popover anchor-id="${anchorId}" id="${targetId}" beak>
+<fluent-popover anchor-id="${anchorId}" beak>
   <div slot="popover">Popover Content</div>
   <fluent-button slot="trigger" id="${anchorId}">Popover Trigger</fluent-button>
 </fluent-popover>

@@ -188,7 +188,7 @@
     "format:check": "yarn format -c",
     "code-style": "yarn format:check && yarn lint",
     "start": "yarn start-storybook -p 6006 --docs --no-manager-cache",
-    "start-storybook": "node node_modules/@storybook/html/bin/index",
+    "start-storybook": "node ../../node_modules/@storybook/html/bin/index",
     "build-storybook": "node node_modules/@storybook/html/bin/build -o ./dist/storybook --docs",
     "pretest": "yarn build-storybook --quiet",
     "test": "npx playwright test",
@@ -204,6 +204,7 @@
     "@microsoft/fast-element": "2.0.0-beta.26",
     "@microsoft/fast-foundation": "3.0.0-alpha.31",
     "@microsoft/fast-web-utilities": "^6.0.0",
+    "@oddbird/popover-polyfill": "0.3.8",
     "tslib": "^2.1.0"
   },
   "beachball": {
