@@ -453,7 +453,7 @@ export const defaultTests: DefaultTestObject = {
       const legacyCallbacks = testOptions['consistent-callback-args']?.legacyCallbacks || [];
 
       const invalidProps = propNames.reduce<Record<string, Error>>((errors, propName) => {
-        if (legacyCallbacks.includes(propName) && CALLBACK_REGEX.test(propName)) {
+        if (legacyCallbacks.includes(propName)) {
           const propInfo = componentInfo.props[propName];
 
           if (!propInfo.declarations) {
