@@ -27,7 +27,14 @@ const ComponentWrapper: React.FC<ComponentWrapperProps> = ({ label, children }) 
   });
 
   return (
-    <div tabIndex={0} role="group" aria-label={label} {...focusableGroupAttribute}>
+    <div
+      tabIndex={0}
+      role="group"
+      aria-roledescription="textbox"
+      aria-description="Interact with Enter, then leave with Escape"
+      aria-label={label}
+      {...focusableGroupAttribute}
+    >
       {children}
     </div>
   );
