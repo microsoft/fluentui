@@ -18,7 +18,6 @@ export class Popover extends FASTElement {
   anchorReferences: HTMLElement[] | undefined;
   anchorReferencesChanged(oldValue: HTMLElement | undefined, newValue: HTMLElement | undefined) {
     this.initializeTargetId();
-    console.log('anchorReferencesChanged', oldValue, newValue);
     this.addAnchorAttributes();
     this.addAnchorEventListeners();
   }
@@ -47,6 +46,7 @@ export class Popover extends FASTElement {
 
   togglePopover = () => {
     this.popoverReference?.togglePopover();
+    this.updatePosition();
   };
 
   addAnchorEventListeners() {
@@ -68,6 +68,7 @@ export class Popover extends FASTElement {
   updatePosition = () => {
     if (this.anchorReferences && this.anchorReferences.length > 0) {
       if (this.anchorReferences[0] && this.popoverReference) {
+        console.log('computing position');
         computePosition(this.anchorReferences[0], this.popoverReference, {
           placement: this.placement,
         }).then(({ x, y }) => {

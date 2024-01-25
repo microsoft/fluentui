@@ -9,9 +9,17 @@ const template = html`
       height: 150px;
       background: yellow;
     }
+
     .container {
-      width: 100%;
-      height: 100%;
+      width: 600px;
+      height: 600px;
+      overflow: auto;
+      border: 1px solid black;
+    }
+
+    .cropped-area-container {
+      width: 1600px;
+      height: 1600px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -19,10 +27,12 @@ const template = html`
   </style>
 
   <div class="container">
-    <fluent-popover anchor-id="${x => x.anchorId}">
-      <div slot="popover-content">${x => x.content}</div>
-      <fluent-button slot="trigger" id="${x => x.anchorId}">Toggle Popover</fluent-button>
-    </fluent-popover>
+    <div class="cropped-area-container">
+      <fluent-popover anchor-id="${x => x.anchorId}">
+        <div slot="popover-content">${x => x.content}</div>
+        <fluent-button slot="trigger" id="${x => x.anchorId}">Toggle Popover</fluent-button>
+      </fluent-popover>
+    </div>
   </div>
 `;
 
@@ -42,6 +52,16 @@ const placementOptions = [
   'left-end',
 ];
 
+function scrollContainerCenter() {
+  const container = document.querySelector('.cropped-area-container');
+  console.log(container);
+  if (container) {
+    container.scrollTop = (container.scrollHeight - container.clientHeight) / 2;
+    container.scrollLeft = (container.scrollWidth - container.clientWidth) / 2;
+    console.log('scrolling container center');
+  }
+}
+
 export default {
   title: 'Components/Popover',
   tags: ['autodocs'],
@@ -51,6 +71,7 @@ export default {
     show: false,
     anchorId: 'popover-anchor',
     targetId: 'popover-target',
+    scripts: scrollContainerCenter,
   },
   argTypes: {
     size: {

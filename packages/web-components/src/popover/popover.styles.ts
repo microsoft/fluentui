@@ -90,6 +90,7 @@ styles for edge and chrome browsers
   }
 
   [popover] {
+    position: absolute;
     transition: opacity 0.3s, transform 0.3s, overlay 0.3s allow-discrete, display 0.3s allow-discrete;
 
     opacity: 0;
