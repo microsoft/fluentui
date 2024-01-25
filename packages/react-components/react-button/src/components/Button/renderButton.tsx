@@ -15,7 +15,7 @@ export const renderButton_unstable = (state: ButtonState) => {
   return (
     <state.root>
       {actionState === 'inprogress' && (iconOnly || !state.icon) && <InProgress state={state} />}
-      {actionState === 'complete' && (iconOnly || !state.icon) && <Success state={state} />}
+      {actionState === 'completed' && (iconOnly || !state.icon) && <Success state={state} />}
       {actionState === 'none' && iconOnly && state.icon && <state.icon />}
       {!iconOnly && iconPosition !== 'after' && state.icon && <state.icon />}
       {!iconOnly && state.root.children}

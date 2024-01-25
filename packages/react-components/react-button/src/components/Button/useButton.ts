@@ -30,13 +30,11 @@ export const useButton_unstable = (
 
   const _props = { ...props };
 
-  _props.onClick = useEventCallback(
-    (ev: React.MouseEvent<HTMLButtonElement, MouseEvent> & React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-      if (actionState === 'none') {
-        onClick && onClick(ev);
-      }
-    },
-  );
+  _props.onClick = useEventCallback(ev => {
+    if (actionState === 'none') {
+      onClick && onClick(ev);
+    }
+  });
 
   return {
     // Props passed at the top-level

@@ -21,7 +21,7 @@ export type ButtonSize = 'small' | 'medium' | 'large';
 /**
  * A button supports different action states.
  */
-export type ButtonActionState = 'none' | 'inprogress' | 'complete';
+export type ButtonActionState = 'none' | 'inprogress' | 'completed';
 
 export type ButtonProps = ComponentProps<ButtonSlots> & {
   /**
