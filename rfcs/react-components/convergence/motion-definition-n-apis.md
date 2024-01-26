@@ -231,10 +231,7 @@ To execute animations, we need a motion definition to create an animation. With 
 
 function MyComponent() {
   const motionRef = useAtomMotion({
-    keyframes: {
-      from: { opacity: 0 },
-      to: { opacity: 1 },
-    },
+    keyframes: [{ opacity: 0 }, { opacity: 1 }],
     duration: 2000,
   });
 
@@ -291,18 +288,73 @@ As the Web Animations API is framework-agnostic, we don't need to use Griffel to
 
 ```tsx
 const fadeEnterSlow: MotionAtom = {
-  keyframes: {
-    from: { opacity: 0 },
-    to: { opacity: 1 },
-  },
-  fill: 'forwards',
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
 
+  duration: 500,
+};
+```
+
+<details>
+<summary>What about CSS variables & tokens?</summary>
+
+The proposal suggests using JavaScript-based tokens instead of CSS variables, for example:
+
+```tsx
+const fadeEnterSlow: MotionAtom = {
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+
+  duration: motionTokens.durationSlow,
+};
+```
+
+In the same time, CSS variables can be used inside `keyframes` directly:
+
+```tsx
+import { tokens } from '@fluentui/react-components';
+
+const flash: MotionAtom = {
+  keyframes: [
+    { backgroundColor: 'white' },
+    // 💡`tokens.colorBrandBackground` is a CSS variable i.e. `var(--colorBrandBackground)`
+    { backgroundColor: tokens.colorBrandBackground },
+    { backgroundColor: 'white' },
+  ],
+
+  duration: 500,
+};
+```
+
+However, challenges arise with options like `duration` and `easing` since they should be plain values, not CSS variables, as shown below:
+
+```tsx
+const atom: MotionAtom = {
   // Heads up! `duration` is in milliseconds and `easing` is a string
   // ⚠️ We can't use CSS variables there
   duration: motionTokens.durationSlow,
   easing: motionTokens.accelerateMax,
 };
 ```
+
+Does this mean that CSS variables can't be used for them at all? **No**, as motions can also be defined as factories that accept an animated element as an argument:
+
+```tsx
+// ⚠️ This is not proposed API, it's just an example
+
+const motion: MotionAtomFn = element => {
+  const computedStyle = getComputedStyle(element);
+
+  return {
+    duration: Number(computedStyle.getPropertyValue('--durationUltraSlow').replace('ms', '')),
+    easing: computedStyle.getPropertyValue('--curveAccelerateMax'),
+  };
+};
+```
+
+While this approach should not be commonly used, it's worth noting that it's possible.
+
+[An example on StackBlitz](https://stackblitz.com/edit/stackblitz-starters-eqp8gv)
+
+</details>
 
 ### Using atom motions
 
