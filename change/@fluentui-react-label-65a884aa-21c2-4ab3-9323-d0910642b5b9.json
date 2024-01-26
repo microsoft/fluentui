@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Disabled Label should use GrayText in forced-colors mode",
+  "packageName": "@fluentui/react-label",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
