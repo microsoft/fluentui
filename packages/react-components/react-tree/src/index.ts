@@ -98,4 +98,4 @@ export type {
 export { flattenTree_unstable } from './utils/flattenTree';
 export type { FlattenTreeItem } from './utils/flattenTree';
 
-export { Collapse } from './Collapse';
+export { Collapse } from './Collapse-atoms';
