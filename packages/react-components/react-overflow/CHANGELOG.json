@@ -2,6 +2,33 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Tue, 23 Jan 2024 15:10:59 GMT",
+      "tag": "@fluentui/react-overflow_v9.1.9",
+      "version": "9.1.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "a95d5034819f1ca06dfb8a112cff878abe57e478",
+            "comment": "fix: cleanup overflow manager on every unmount"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.50",
+            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.17.0",
+            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Jan 2024 14:25:03 GMT",
       "tag": "@fluentui/react-overflow_v9.1.8",
       "version": "9.1.8",
