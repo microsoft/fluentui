@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 26 Jan 2024 07:26:11 GMT",
+      "tag": "@fluentui/react-charting_v5.19.18",
+      "version": "5.19.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "rarthur@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b16e80cd2c155f478c6a14b8f211a83eeb26f62a",
+            "comment": "Refactoring SankeyChart to improve minification"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jan 2024 07:26:58 GMT",
       "tag": "@fluentui/react-charting_v5.19.17",
       "version": "5.19.17",

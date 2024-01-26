@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 24 Jan 2024 07:26:58 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Jan 2024 07:26:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.18)
+
+Fri, 26 Jan 2024 07:26:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.17..@fluentui/react-charting_v5.19.18)
+
+### Patches
+
+- Refactoring SankeyChart to improve minification ([PR #30366](https://github.com/microsoft/fluentui/pull/30366) by rarthur@microsoft.com)
 
 ## [5.19.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.17)
 
