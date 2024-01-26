@@ -410,17 +410,20 @@ Compared to the CSS option, we don't need to apply classes to the element, so fa
 > The Web Animations API has its own state machine [by design](https://developer.mozilla.org/en-US/docs/Web/API/Animation/playState), so we can subscribe, for example, to the onfinish event to handle unmount.
 
 <details>
-<summary>Handling unmount using callbacks</summary>
+<summary>Handling unmount using animation events</summary>
 
-The simple example is below:
+`createPresence()` does this internally, this example is just for illustration purposes on how animation events can be used with React lifecycle.
 
 ```tsx
+// ⚠️ Not proposed API, just an example of Web Animations API usage
+
 function MyComponent(props) {
   const { visible, motion } = props;
 
   const [mounted, setMounted] = useState(visible);
   const elementRef = React.useRef();
 
+  // Triggers an animation when `visible` prop becomes `false` and unmounts the component on finish
   React.useEffect(() => {
     if (!visible) {
       const animation = elementRef.current.animate(motion.keyframes, {
@@ -432,6 +435,8 @@ function MyComponent(props) {
       };
     }
   }, [visible, motion]);
+
+  return mounted ? props.current : null;
 }
 ```
 
