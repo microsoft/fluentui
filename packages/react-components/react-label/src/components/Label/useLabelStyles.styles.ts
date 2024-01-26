@@ -26,7 +26,7 @@ const useStyles = makeStyles({
 
   required: {
     color: tokens.colorPaletteRedForeground3,
-    paddingLeft: '4px', // TODO: Once spacing tokens are added, change this to Horizontal XS
+    paddingLeft: tokens.spacingHorizontalXS,
   },
 
   small: {
