@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "chore: Reduce complex selector usage in Radio styles",
+  "comment": "chore: Reduce complex selectors in Radio styles",
   "packageName": "@fluentui/react-radio",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"
