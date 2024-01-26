@@ -445,8 +445,31 @@ import { createPresence, presence } from '@fluentui/react-motions-preview';
 const FadeSlow = createPresence(presence.fade.slow());
 
 function MyComponent() {
+  const [visible, setVisible] = useState(false);
+
   return (
-    <FadeSlow>
+    <FadeSlow visible={visible}>
+      <div>Hello world!</div>
+    </FadeSlow>
+  );
+}
+```
+
+Unlike `createAtom()`, a created component has additional props:
+
+- `appear` - whether the animation should play on mount
+- `unmountOnExit` - whether the child element should be unmounted on exit
+
+```tsx
+import { createPresence, presence } from '@fluentui/react-motions-preview';
+
+const FadeSlow = createPresence(presence.fade.slow());
+
+function MyComponent() {
+  const [visible, setVisible] = useState(false);
+
+  return (
+    <FadeSlow appear visible={visible} unmountOnExit>
       <div>Hello world!</div>
     </FadeSlow>
   );
