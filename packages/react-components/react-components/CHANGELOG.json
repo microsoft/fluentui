@@ -2,6 +2,27 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 26 Jan 2024 10:40:21 GMT",
+      "tag": "@fluentui/react-components_v9.46.1",
+      "version": "9.46.1",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "b04151ab510b2908a858272e08a0d6f2c33f6d77",
+            "comment": "feat: Add `disableUpdateOnResize` positioning option"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "aa038189b6f700f5a43e933466e7ca72163423d6",
+            "comment": "feat: Add RatingDisplay component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jan 2024 15:10:57 GMT",
       "tag": "@fluentui/react-components_v9.46.0",
       "version": "9.46.0",

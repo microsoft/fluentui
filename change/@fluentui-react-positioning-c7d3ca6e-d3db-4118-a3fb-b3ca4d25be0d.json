@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Add `disableUpdateOnResize` positioning option",
-  "packageName": "@fluentui/react-positioning",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

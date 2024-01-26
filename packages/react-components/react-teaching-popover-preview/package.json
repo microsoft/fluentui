@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-teaching-popover-preview",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "New fluentui react package",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -42,7 +42,7 @@
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1",
     "@fluentui/react-shared-contexts": "^9.14.0",
-    "@fluentui/react-popover": "^9.8.34",
+    "@fluentui/react-popover": "^9.8.35",
     "@fluentui/react-button": "^9.3.66",
     "@fluentui/react-tabster": "^9.17.4",
     "@fluentui/react-icons": "^2.0.224",
