@@ -88,6 +88,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     defaultProps: {
       type: 'text',
       value: value ?? '',
+      'aria-controls': open ? listbox?.id : undefined,
       ...triggerNativeProps,
     },
   });
