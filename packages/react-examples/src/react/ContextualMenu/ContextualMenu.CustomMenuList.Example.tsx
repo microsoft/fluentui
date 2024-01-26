@@ -89,7 +89,7 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
       <p>
         <Text>
           Warning: adding an input to a menu is not technically allowed, and will trigger errors in Accessibility
-          Insights and axe-core. Accessibility issues in practice are minimal, however.
+          Insights and axe-core. However, real world accessibility issues are minimal and not blocking.
         </Text>
       </p>
       <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />
