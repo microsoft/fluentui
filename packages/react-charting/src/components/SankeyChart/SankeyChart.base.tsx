@@ -556,9 +556,14 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               onBlur={this._onBlur}
               fillOpacity={this._getOpacityStream(singleLink)}
               data-is-focusable={true}
-              aria-label={`link from ${(singleLink.source as SNode).name} to ${
-                (singleLink.target as SNode).name
-              } with weight ${singleLink!.unnormalizedValue}`}
+              aria-label={
+                'link from' +
+                (singleLink.source as SNode).name +
+                'to' +
+                (singleLink.target as SNode).name +
+                'with weight' +
+                singleLink!.unnormalizedValue
+              }
               role="img"
             />
           </g>
@@ -622,7 +627,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               strokeWidth="2"
               opacity="1"
               data-is-focusable={true}
-              aria-label={`node ${singleNode.name} with weight ${singleNode.actualValue}`}
+              aria-label={'node' + `${singleNode.name}` + 'with weight' + `${singleNode.actualValue}`}
               role="img"
             />
             {singleNode.y1! - singleNode.y0! > MIN_HEIGHT_FOR_TYPE && (
