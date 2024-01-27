@@ -3,6 +3,7 @@ import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-u
 import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
 import { useColorSwatchState_unstable } from './useColorSwatchState';
 import { useFocusWithin } from '@fluentui/react-tabster';
+import { Color, ColorPickerContext } from '../../contexts/picker';
 
 /**
  * Create the state required to render ColorSwatch.
@@ -13,8 +14,9 @@ import { useFocusWithin } from '@fluentui/react-tabster';
  * @param props - props from this instance of ColorSwatch
  * @param ref - reference to root HTMLDivElement of ColorSwatch
  */
-export const useColorSwatch_unstable = (
-  props: ColorSwatchProps,
+export const useColorSwatch_unstable = <T extends Color>(
+  props: ColorSwatchProps<T>,
+  pickerCtx: ColorPickerContext<T>,
   ref: React.Ref<HTMLButtonElement>,
 ): ColorSwatchState => {
   const { selected = false, icon } = props;
@@ -31,6 +33,15 @@ export const useColorSwatch_unstable = (
         role: props.role ?? 'gridcell',
         tabIndex: 0,
         'aria-selected': selected,
+        onClick: () => {
+          pickerCtx.notifySelected(props);
+        },
+        onMouseOver: () => {
+          pickerCtx.notifyPreview(props, true);
+        },
+        onMouseOut: () => {
+          pickerCtx.notifyPreview(props, false);
+        },
       }),
       { elementType: 'button' },
     ),

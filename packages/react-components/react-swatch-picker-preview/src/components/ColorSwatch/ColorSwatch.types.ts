@@ -1,4 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { Color, DefaultColor } from '../../contexts/picker';
 
 export type ColorSwatchSlots = {
   root: Slot<'button'>;
@@ -11,26 +12,27 @@ export type ColorSwatchSlots = {
 /**
  * ColorSwatch Props
  */
-export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & {
-  value?: string;
-  /**
-   *  Disabled swatch.
-   *
-   * @default `false` (renders enabled)
-   */
-  disabled?: boolean;
+export type ColorSwatchProps<T extends Color> = ComponentProps<ColorSwatchSlots> &
+  T & {
+    // color: T;
+    /**
+     *  Disabled swatch.
+     *
+     * @default `false` (renders enabled)
+     */
+    disabled?: boolean;
 
-  selected?: boolean;
+    selected?: boolean;
 
-  defaultSelected?: boolean;
+    defaultSelected?: boolean;
 
-  empty?: boolean;
-};
+    empty?: boolean;
+  };
 
 /**
  * State used in rendering ColorSwatch
  */
-export type ColorSwatchState = ComponentState<ColorSwatchSlots> &
-  Pick<ColorSwatchProps, 'disabled' | 'selected' | 'empty' | 'value'>;
+export type ColorSwatchState<T extends Color = DefaultColor> = ComponentState<ColorSwatchSlots> &
+  Pick<ColorSwatchProps<T>, 'disabled' | 'selected' | 'empty' | 'value'>;
 // TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from ColorSwatchProps.
 // & Required<Pick<ColorSwatchProps, 'propName'>>
