@@ -399,7 +399,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   }
 
   public render(): React.ReactNode {
-    // NOTE: each call to `setState` appears to trigger a re-render.
     if (!this._isChartEmpty()) {
       const { theme, className, styles, pathColor } = this.props;
       const state = this.state;
