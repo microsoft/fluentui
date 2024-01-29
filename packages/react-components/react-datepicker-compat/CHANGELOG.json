@@ -2,6 +2,60 @@
   "name": "@fluentui/react-datepicker-compat",
   "entries": [
     {
+      "date": "Mon, 29 Jan 2024 13:56:06 GMT",
+      "tag": "@fluentui/react-datepicker-compat_v0.4.21",
+      "version": "0.4.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-field to v9.1.52",
+            "commit": "3a6233a99addd66fdc17d7e6be859d08dd6dafc6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-input to v9.4.62",
+            "commit": "3a6233a99addd66fdc17d7e6be859d08dd6dafc6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-popover to v9.8.36",
+            "commit": "3a6233a99addd66fdc17d7e6be859d08dd6dafc6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-positioning to v9.13.1",
+            "commit": "3a6233a99addd66fdc17d7e6be859d08dd6dafc6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jan 2024 10:40:22 GMT",
+      "tag": "@fluentui/react-datepicker-compat_v0.4.20",
+      "version": "0.4.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-popover to v9.8.35",
+            "commit": "b04151ab510b2908a858272e08a0d6f2c33f6d77"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-datepicker-compat",
+            "comment": "Bump @fluentui/react-positioning to v9.13.0",
+            "commit": "b04151ab510b2908a858272e08a0d6f2c33f6d77"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jan 2024 15:11:00 GMT",
       "tag": "@fluentui/react-datepicker-compat_v0.4.19",
       "version": "0.4.19",

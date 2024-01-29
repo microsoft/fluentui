@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 23 Jan 2024 15:10:57 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jan 2024 13:56:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.46.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.2)
+
+Mon, 29 Jan 2024 13:56:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.46.1..@fluentui/react-components_v9.46.2)
+
+### Patches
+
+- `@fluentui/react-combobox`
+  - fix: add aria-controls to combobox and dropdown ([PR #30352](https://github.com/microsoft/fluentui/pull/30352) by sarah.higley@microsoft.com)
+- `@fluentui/react-label`
+  - fix: Update Label to use a token for its padding, instead of a hardcoded value ([PR #30254](https://github.com/microsoft/fluentui/pull/30254) by behowell@microsoft.com)
+  - fix: Disabled Label should use GrayText in forced-colors mode ([PR #30245](https://github.com/microsoft/fluentui/pull/30245) by behowell@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: disabled menuitem has no pressed style ([PR #30340](https://github.com/microsoft/fluentui/pull/30340) by sarah.higley@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: Avoid infinite loop when comparing different documents ([PR #30415](https://github.com/microsoft/fluentui/pull/30415) by lingfangao@hotmail.com)
+
+## [9.46.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.1)
+
+Fri, 26 Jan 2024 10:40:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.46.0..@fluentui/react-components_v9.46.1)
+
+### Minor changes
+
+- `@fluentui/react-positioning`
+  - feat: Add `disableUpdateOnResize` positioning option ([PR #30391](https://github.com/microsoft/fluentui/pull/30391) by lingfangao@hotmail.com)
+- `@fluentui/react-rating-preview`
+  - feat: Add RatingDisplay component ([PR #30323](https://github.com/microsoft/fluentui/pull/30323) by ololubek@microsoft.com)
 
 ## [9.46.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.0)
 
