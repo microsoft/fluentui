@@ -36,8 +36,8 @@
     "@fluentui/react-utilities": "^9.17.0",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1",
-    "keyborg": "^2.3.0",
-    "tabster": "^5.0.1"
+    "keyborg": "^2.4.1",
+    "tabster": "^5.3.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
