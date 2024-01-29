@@ -127,6 +127,8 @@ const mapAliasColors = (palette: IPalette, inverted: boolean): ColorTokens => {
     colorBrandBackground2: palette.themeLighterAlt,
     colorBrandBackground2Hover: palette.themeLighterAlt,
     colorBrandBackground2Pressed: palette.themeLighterAlt,
+    colorBrandBackground3Static: palette.themeDark,
+    colorBrandBackground4Static: palette.themeDarker,
     colorBrandBackgroundInverted: palette.white,
     colorBrandBackgroundInvertedHover: palette.themeLighterAlt,
     colorBrandBackgroundInvertedPressed: palette.themeLight,

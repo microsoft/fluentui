@@ -31,6 +31,8 @@ statusColorPaletteTokens.colorPaletteDarkOrangeForeground3 = statusSharedColors.
 statusColorPaletteTokens.colorPaletteDarkOrangeBorder2 = statusSharedColors.darkOrange.tint30;
 
 statusColorPaletteTokens.colorPaletteRedForegroundInverted = statusSharedColors.red.primary;
+statusColorPaletteTokens.colorPaletteRedBackground3Hover = statusSharedColors.red.shade10;
+statusColorPaletteTokens.colorPaletteRedBackground3Pressed = statusSharedColors.red.shade20;
 statusColorPaletteTokens.colorPaletteGreenForegroundInverted = statusSharedColors.green.primary;
 statusColorPaletteTokens.colorPaletteYellowForegroundInverted = statusSharedColors.yellow.shade30;
 
@@ -75,6 +77,7 @@ export const colorStatusTokens: ColorStatusTokens = Object.entries(statusColorMa
 );
 
 // one-off overrides for colorStatus tokens
+colorStatusTokens.colorStatusDangerForeground1 = mappedStatusColors[statusColorMapping.danger].tint40;
 colorStatusTokens.colorStatusDangerForeground3 = mappedStatusColors[statusColorMapping.danger].tint30;
 colorStatusTokens.colorStatusDangerBorder2 = mappedStatusColors[statusColorMapping.danger].tint30;
 colorStatusTokens.colorStatusSuccessForeground3 = mappedStatusColors[statusColorMapping.success].tint40;

@@ -123,6 +123,8 @@ export type ColorTokens = {
   colorBrandBackground2: string;
   colorBrandBackground2Hover: string;
   colorBrandBackground2Pressed: string;
+  colorBrandBackground3Static: string;
+  colorBrandBackground4Static: string;
   colorBrandBackgroundInverted: string;
   colorBrandBackgroundInvertedHover: string;
   colorBrandBackgroundInvertedPressed: string;
@@ -210,6 +212,8 @@ export type ColorPaletteRed =
   | 'colorPaletteRedBackground1'
   | 'colorPaletteRedBackground2'
   | 'colorPaletteRedBackground3'
+  | 'colorPaletteRedBackground3Hover'
+  | 'colorPaletteRedBackground3Pressed'
   | 'colorPaletteRedForeground1'
   | 'colorPaletteRedForeground2'
   | 'colorPaletteRedForeground3'

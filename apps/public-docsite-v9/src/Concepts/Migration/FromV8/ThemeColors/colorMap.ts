@@ -208,6 +208,8 @@ export const alias = {
   colorBrandBackground2: 'brand[160]',
   colorBrandBackground2Hover: 'brand[150]',
   colorBrandBackground2Pressed: 'brand[130]',
+  colorBrandBackground3Static: 'brand[60]',
+  colorBrandBackground4Static: 'brand[40]',
   colorBrandBackgroundInverted: 'white',
   colorBrandBackgroundInvertedHover: 'brand[160]',
   colorBrandBackgroundInvertedPressed: 'brand[140]',

@@ -22,6 +22,8 @@ const statusColorPaletteTokens = statusSharedColorNames.reduce((acc, sharedColor
 
 // one-off patches
 statusColorPaletteTokens.colorPaletteRedForegroundInverted = hcCanvasText;
+statusColorPaletteTokens.colorPaletteRedBackground3Hover = hcHighlight;
+statusColorPaletteTokens.colorPaletteRedBackground3Pressed = hcHighlight;
 statusColorPaletteTokens.colorPaletteGreenForegroundInverted = hcCanvasText;
 statusColorPaletteTokens.colorPaletteYellowForegroundInverted = hcCanvasText;
 
