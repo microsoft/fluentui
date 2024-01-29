@@ -323,6 +323,7 @@
     "style-loader": "2.0.0",
     "swc-loader": "0.2.3",
     "swc-plugin-de-indent-template-literal": "1.0.0",
+    "@bsunderhus/swc-plugin-react-slot": "0.0.1",
     "syncpack": "10.6.1",
     "tachometer": "0.7.0",
     "terser": "5.17.4",

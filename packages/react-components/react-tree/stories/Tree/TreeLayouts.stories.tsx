@@ -24,20 +24,28 @@ export const Layouts = () => {
 
       <Tree aria-label="Persona Layout">
         <TreeItem itemType="branch">
-          <TreeItemPersonaLayout media={<Avatar image={{ alt: 'avatar' }} />}>
+          <TreeItemPersonaLayout>
+            <slot name="media">
+              <Avatar image={{ alt: 'avatar' }} />
+            </slot>
             Tree using TreeItemPersonaLayout
           </TreeItemPersonaLayout>
           <Tree>
             <TreeItem itemType="leaf">
-              <TreeItemPersonaLayout media={<Avatar image={{ alt: 'avatar' }} />} description="with description">
+              <TreeItemPersonaLayout>
+                <slot name="media">
+                  <Avatar image={{ alt: 'avatar' }} />
+                </slot>
+                <slot name="description">with description</slot>
                 level 2, item 1
               </TreeItemPersonaLayout>
             </TreeItem>
             <TreeItem itemType="leaf">
-              <TreeItemPersonaLayout
-                media={<Avatar image={{ alt: 'avatar' }} shape="square" />}
-                description="square shape media"
-              >
+              <TreeItemPersonaLayout>
+                <slot name="media">
+                  <Avatar image={{ alt: 'avatar' }} shape="square" />
+                </slot>
+                <slot name="description">square shape media</slot>
                 level 2, item 2
               </TreeItemPersonaLayout>
             </TreeItem>

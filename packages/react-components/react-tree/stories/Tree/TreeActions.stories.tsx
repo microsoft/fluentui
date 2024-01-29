@@ -31,21 +31,18 @@ const CustomTreeItem = ({ children, ...props }: CustomTreeItemProps) => {
     <Menu positioning="below-end" openOnContext>
       <MenuTrigger disableButtonEnhancement>
         <TreeItem aria-description="has actions" {...focusTargetAttribute} {...props}>
-          <TreeItemLayout
-            actions={
-              <>
-                <Button aria-label="Edit" appearance="subtle" icon={<Edit20Regular />} />
-                <Menu>
-                  <MenuTrigger disableButtonEnhancement>
-                    <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontal20Regular />} />
-                  </MenuTrigger>
-                  <MenuPopover>
-                    <MenuList>{commonMenuItems}</MenuList>
-                  </MenuPopover>
-                </Menu>
-              </>
-            }
-          >
+          <TreeItemLayout>
+            <slot name="actions">
+              <Button aria-label="Edit" appearance="subtle" icon={<Edit20Regular />} />
+              <Menu>
+                <MenuTrigger disableButtonEnhancement>
+                  <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontal20Regular />} />
+                </MenuTrigger>
+                <MenuPopover>
+                  <MenuList>{commonMenuItems}</MenuList>
+                </MenuPopover>
+              </Menu>
+            </slot>
             {layoutChildren}
           </TreeItemLayout>
           {subtree}

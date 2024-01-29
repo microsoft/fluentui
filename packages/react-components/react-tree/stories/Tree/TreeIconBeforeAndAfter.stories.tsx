@@ -6,25 +6,52 @@ export const IconBeforeAndAfter = () => {
   return (
     <Tree aria-label="Icon Before & After">
       <TreeItem itemType="branch">
-        <TreeItemLayout iconBefore={<Image20Regular />} iconAfter={<LockClosed20Regular />}>
+        <TreeItemLayout>
+          <slot name="iconBefore">
+            <Image20Regular />
+          </slot>
           level 1, item 1
+          <slot name="iconAfter">
+            <LockClosed20Regular />
+          </slot>
         </TreeItemLayout>
         <Tree>
           <TreeItem itemType="leaf">
-            <TreeItemLayout iconBefore={<Person20Regular />}>icon before</TreeItemLayout>
+            <TreeItemLayout>
+              <slot name="iconBefore">
+                <Person20Regular />
+              </slot>
+              icon before
+            </TreeItemLayout>
           </TreeItem>
           <TreeItem itemType="leaf">
-            <TreeItemLayout iconBefore={<Person20Regular />}>icon before</TreeItemLayout>
+            <TreeItemLayout>
+              <slot name="iconBefore">
+                <Person20Regular />
+              </slot>
+              icon before
+            </TreeItemLayout>
           </TreeItem>
         </Tree>
       </TreeItem>
       <TreeItem itemType="branch">
-        <TreeItemLayout iconBefore={<Image20Regular />} iconAfter={<LockClosed20Regular />}>
+        <TreeItemLayout>
+          <slot name="iconBefore">
+            <Image20Regular />
+          </slot>
+          <slot name="iconAfter">
+            <LockClosed20Regular />
+          </slot>
           level 1, item 2
         </TreeItemLayout>
         <Tree>
           <TreeItem itemType="leaf">
-            <TreeItemLayout iconAfter={<Warning20Regular />}>icon after</TreeItemLayout>
+            <TreeItemLayout>
+              <slot name="iconAfter">
+                <Warning20Regular />
+              </slot>
+              icon after
+            </TreeItemLayout>
           </TreeItem>
         </Tree>
       </TreeItem>

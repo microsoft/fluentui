@@ -11,16 +11,18 @@ export const ExpandIcon = () => {
   return (
     <Tree aria-label="Expand Icon" openItems={openItems} onOpenChange={handleOpenChange}>
       <TreeItem itemType="branch" value="tree-item-2">
-        <TreeItemLayout
-          expandIcon={openItems.includes('tree-item-2') ? <SubtractSquare16Regular /> : <AddSquare16Regular />}
-        >
+        <TreeItemLayout>
+          <slot name="expandIcon">
+            {openItems.includes('tree-item-2') ? <SubtractSquare16Regular /> : <AddSquare16Regular />}
+          </slot>
           level 1, item 1
         </TreeItemLayout>
         <Tree>
           <TreeItem itemType="branch" value="tree-item-3">
-            <TreeItemLayout
-              expandIcon={openItems.includes('tree-item-3') ? <SubtractSquare16Regular /> : <AddSquare16Regular />}
-            >
+            <TreeItemLayout>
+              <slot name="expandIcon">
+                {openItems.includes('tree-item-3') ? <SubtractSquare16Regular /> : <AddSquare16Regular />}
+              </slot>
               level 2, item 1
             </TreeItemLayout>
             <Tree>
@@ -32,9 +34,10 @@ export const ExpandIcon = () => {
         </Tree>
       </TreeItem>
       <TreeItem itemType="branch" value="tree-item-1">
-        <TreeItemLayout
-          expandIcon={openItems.includes('tree-item-1') ? <SubtractSquare16Regular /> : <AddSquare16Regular />}
-        >
+        <TreeItemLayout>
+          <slot name="expandIcon">
+            {openItems.includes('tree-item-1') ? <SubtractSquare16Regular /> : <AddSquare16Regular />}
+          </slot>
           level 1, item 2
         </TreeItemLayout>
         <Tree>

@@ -1450,6 +1450,11 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@bsunderhus/swc-plugin-react-slot@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@bsunderhus/swc-plugin-react-slot/-/swc-plugin-react-slot-0.0.1.tgz#017c6a6db2f47a34236d899f90099e16ef654982"
+  integrity sha512-Fyop3JzJi1QpnQiGpd+2AK8bZvvBHCFQRmdkGTHMsbx0H3v2tOyH4fFFTvD2X8C9T26phB/IeDefN76QerzOGg==
+
 "@cactuslab/usepubsub@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@cactuslab/usepubsub/-/usepubsub-1.0.2.tgz#08877905242d2e1b6053ffc6d0efbb097dd5a32b"
