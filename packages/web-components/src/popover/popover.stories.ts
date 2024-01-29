@@ -18,8 +18,8 @@ const template = html`
     }
 
     .cropped-area-container {
-      width: 900px;
-      height: 900px;
+      width: 1900px;
+      height: 1900px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -30,7 +30,7 @@ const template = html`
     <div class="cropped-area-container">
       <fluent-popover
         anchor-id="${x => x.anchorId}"
-        anchor-container-selector=".popover-container"
+        anchor-bounds-selector=".popover-container"
         placement="${x => x.placement}"
       >
         <div slot="popover-content">${x => x.content}</div>

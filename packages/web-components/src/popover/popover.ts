@@ -1,4 +1,13 @@
-import { autoUpdate, computePosition, flip, Placement, shift } from '@floating-ui/dom';
+import {
+  autoUpdate,
+  computePosition,
+  detectOverflow,
+  flip,
+  Middleware,
+  MiddlewareArguments,
+  Placement,
+  shift,
+} from '@floating-ui/dom';
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 
 interface HTMLPopoverElement extends HTMLElement {
@@ -41,12 +50,12 @@ export class Popover extends FASTElement {
   anchorId: string | undefined;
 
   /**
-   * anchorContainerSelector
+   * anchorBoundsSelector
    *
    * @remarks defines the container that the anchor element in the case of a scrollable container
    */
-  @attr({ attribute: 'anchor-container-selector' })
-  anchorContainerSelector: string | undefined;
+  @attr({ attribute: 'anchor-bounds-selector' })
+  anchorBoundsSelector: string | undefined;
 
   applyPopoverPolyfill() {
     if (!HTMLElement.prototype.hasOwnProperty('popover')) {
@@ -73,13 +82,6 @@ export class Popover extends FASTElement {
     }
   }
 
-  // addAnchorContainerEventListeners() {
-  //   if (this.anchorContainerSelector) {
-  //     const anchorContainer = document.querySelector(this.anchorContainerSelector);
-  //     anchorContainer?.addEventListener('scroll', this.updatePosition);
-  //   }
-  // }
-
   togglePopover = () => {
     this.popoverReference?.togglePopover();
     this.open = !this.open;
@@ -93,17 +95,53 @@ export class Popover extends FASTElement {
     }
   };
 
+  createOverflowHandler = (): false | Middleware | null | undefined => {
+    if (this.anchorBoundsSelector) {
+      return {
+        name: 'overflowHandler',
+        fn: async (state: MiddlewareArguments): Promise<{ reset: boolean | { placement: Placement } } | any> => {
+          const boundaryEl = document.querySelector(this.anchorBoundsSelector || '') || undefined;
+          const overflow = await detectOverflow(state, { boundary: boundaryEl });
+
+          // // if(overflow.left > 0|| overflow.right > 0 || overflow.top > 0 || overflow.bottom > 0) {
+          // // }
+          // // return { x: 0, y: 0 };
+          // if (overflow.left > 0) {
+          //   this.placement = 'bottom-start';
+          // }
+          // if (overflow.bottom > 0) {
+          //   this.placement = 'right-start';
+          // }
+          // if (overflow.right > 0) {
+          //   this.placement = 'top-start';
+          // }
+
+          // top overflows
+          if (overflow.top > 0) {
+            return {
+              reset: {
+                placement: 'left',
+              },
+            };
+          }
+
+          return {};
+        },
+      };
+    }
+  };
+
   updatePosition = () => {
     if (this.anchorReferences && this.anchorReferences.length > 0) {
       if (this.anchorReferences[0] && this.popoverReference) {
         computePosition(this.anchorReferences[0], this.popoverReference, {
           placement: this.placement,
-          middleware: [flip(), shift()],
-        }).then(({ x, y }) => {
+          middleware: [flip(), shift(), this.createOverflowHandler()],
+        }).then(state => {
           if (this.popoverReference) {
             Object.assign(this.popoverReference.style, {
-              left: `${x}px`,
-              top: `${y}px`,
+              left: `${state.x}px`,
+              top: `${state.y}px`,
             });
           }
         });
