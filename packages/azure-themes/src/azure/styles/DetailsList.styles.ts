@@ -158,6 +158,9 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
             '.ms-Link': {
               color: extendedSemanticColors.listLinkRowSelected,
             },
+            '.ms-DetailsRow-cell .ms-Link': {
+              color: extendedSemanticColors.listLinkRowSelected,
+            },
             ':hover': {
               background: extendedSemanticColors.listItemBackgroundSelectedHovered,
               selectors: {

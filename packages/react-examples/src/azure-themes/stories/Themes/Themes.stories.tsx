@@ -36,6 +36,7 @@ import { DatePickerBasicExample } from '../components/defaultDatePicker';
 import { ProgressIndicatorBasicExample } from '../components/ProgressIndicator.stories';
 import { CalendarInlineMultidayDayViewExample } from '../components/CalendarInlineMultidayDayView.stories';
 import { SpinnerBasicExample } from '../components/spinner.stories';
+import { DetailsListCustomColumnsExample } from '../components/DetailsListCustomColumnsExample.stories';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
@@ -88,6 +89,7 @@ const Example = () => (
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label>DetailsList / Grid</Label>
       <DetailsListCompactExample />
+      <DetailsListCustomColumnsExample />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
