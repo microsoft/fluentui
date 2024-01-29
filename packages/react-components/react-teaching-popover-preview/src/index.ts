@@ -11,18 +11,6 @@ export type {
   TeachingPopoverHeaderState,
 } from './TeachingPopoverHeader';
 export {
-  TeachingPopoverActions,
-  teachingPopoverActionsClassNames,
-  renderTeachingPopoverActions_unstable,
-  useTeachingPopoverActionsStyles_unstable,
-  useTeachingPopoverActions_unstable,
-} from './TeachingPopoverActions';
-export type {
-  TeachingPopoverActionsProps,
-  TeachingPopoverActionsSlots,
-  TeachingPopoverActionsState,
-} from './TeachingPopoverActions';
-export {
   TeachingPopoverBody,
   teachingPopoverBodyClassNames,
   renderTeachingPopoverBody_unstable,
@@ -36,19 +24,6 @@ export type {
   TeachingPopoverBodyState,
 } from './TeachingPopoverBody';
 export {
-  TeachingPopoverButton,
-  renderTeachingPopoverButton_unstable,
-  useTeachingPopoverButtonStyles_unstable,
-  useTeachingPopoverButton_unstable,
-  teachingPopoverButtonClassNames,
-} from './TeachingPopoverButton';
-export type {
-  TeachingPopoverButtonProps,
-  TeachingPopoverButtonSlots,
-  TeachingPopoverButtonState,
-  TeachingPopoverButtonType,
-} from './TeachingPopoverButton';
-export {
   TeachingPopoverCarousel,
   teachingPopoverCarouselClassNames,
   renderTeachingPopoverCarousel_unstable,
@@ -61,20 +36,29 @@ export type {
   TeachingPopoverCarouselState,
 } from './TeachingPopoverCarousel';
 export {
-  TeachingPopoverPageCount,
-  teachingPopoverPageCountClassNames,
-  renderTeachingPopoverPageCount_unstable,
-  useTeachingPopoverPageCountStyles_unstable,
-  useTeachingPopoverPageCount_unstable,
-} from './TeachingPopoverPageCount';
+  TeachingPopoverCarouselNav,
+  teachingPopoverCarouselNavClassNames,
+  renderTeachingPopoverCarouselNav_unstable,
+  useTeachingPopoverCarouselNavStyles_unstable,
+  useTeachingPopoverCarouselNav_unstable,
+} from './TeachingPopoverCarouselNav';
 export type {
-  TeachingPopoverPageCountProps,
-  TeachingPopoverPageCountSlots,
-  TeachingPopoverPageCountState,
-  TeachingPopoverPageCountStyle,
-  TeachingPopoverPageCountChildRenderFunction,
-  TeachingPopoverPageCountRenderType,
-} from './TeachingPopoverPageCount';
+  TeachingPopoverCarouselNavProps,
+  TeachingPopoverCarouselNavSlots,
+  TeachingPopoverCarouselNavState,
+} from './TeachingPopoverCarouselNav';
+export {
+  TeachingPopoverCarouselNavIcon,
+  teachingPopoverCarouselNavIconClassNames,
+  renderTeachingPopoverCarouselNavIcon_unstable,
+  useTeachingPopoverCarouselNavIconStyles_unstable,
+  useTeachingPopoverCarouselNavIcon_unstable,
+} from './TeachingPopoverCarouselNavIcon';
+export type {
+  TeachingPopoverCarouselNavIconProps,
+  TeachingPopoverCarouselNavIconSlots,
+  TeachingPopoverCarouselNavIconState,
+} from './TeachingPopoverCarouselNavIcon';
 export {
   TeachingPopoverSurface,
   renderTeachingPopoverSurface_unstable,
@@ -109,23 +93,11 @@ export type {
   TeachingPopoverTriggerProps,
   TeachingPopoverTriggerState,
 } from './TeachingPopoverTrigger';
-export {
-  TeachingPopover,
-  renderTeachingPopover_unstable,
-  useTeachingPopover_unstable,
-  useTeachingPopoverContextValues_unstable,
-} from './TeachingPopover';
-export type {
-  TeachingPopoverProps,
-  TeachingPopoverState,
-  TeachingPopoverContextValues,
-  TeachingPopoverPageChangeData,
-} from './TeachingPopover';
-
+export { TeachingPopover, renderTeachingPopover_unstable, useTeachingPopover_unstable } from './TeachingPopover';
+export type { TeachingPopoverProps, TeachingPopoverState } from './TeachingPopover';
 export {
   TeachingPopoverFooter,
   renderTeachingPopoverFooter_unstable,
   useTeachingPopoverFooter_unstable,
 } from './TeachingPopoverFooter';
-
 export type { TeachingPopoverFooterProps, TeachingPopoverFooterState } from './TeachingPopoverFooter';

@@ -139,6 +139,9 @@ export const usePopover_unstable: (props: PopoverProps) => PopoverState;
 // @public (undocumented)
 export const usePopoverContext_unstable: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
 
+// @public (undocumented)
+export function usePopoverContextValues_unstable(state: PopoverState): PopoverContextValue;
+
 // @public
 export const usePopoverSurface_unstable: (props: PopoverSurfaceProps, ref: React_2.Ref<HTMLDivElement>) => PopoverSurfaceState;
 

@@ -127,7 +127,10 @@ export type CustomStyleHooksContextValue = Partial<{
   /** @deprecated Replaced by TeachingPopoverFooter / TeachingPopoverCarousel styling hooks */
   useTeachingPopoverButtonStyles_unstable: CustomStyleHook;
   useTeachingPopoverCarouselStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselNavStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselNavIconStyles_unstable: CustomStyleHook;
   useTeachingPopoverHeaderStyles_unstable: CustomStyleHook;
+  /** @deprecated Replaced by TeachingPopoverCarouselNav styling hooks */
   useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
   useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
   useTeachingPopoverTitleStyles_unstable: CustomStyleHook;

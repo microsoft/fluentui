@@ -9,6 +9,7 @@ export const teachingPopoverCarouselClassNames: SlotClassNames<TeachingPopoverCa
   previous: 'fui-TeachingPopoverCarousel__previous',
   next: 'fui-TeachingPopoverCarousel__next',
   nav: 'fui-TeachingPopoverCarousel__nav',
+  pageCount: 'fui-TeachingPopoverCarousel__pageCount',
 };
 
 // Todo: Page change animation & styles

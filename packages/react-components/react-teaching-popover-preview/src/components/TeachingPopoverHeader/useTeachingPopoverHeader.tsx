@@ -45,7 +45,7 @@ export const useTeachingPopoverHeader_unstable = (
       { elementType: 'h3' },
     ),
     icon: slot.optional(icon, {
-      renderByDefault: props.icon !== null, // Users may want to null out icon
+      renderByDefault: true,
       defaultProps: {
         children: <Lightbulb16Regular />,
         'aria-hidden': true,

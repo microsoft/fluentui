@@ -27,7 +27,7 @@ export const useTeachingPopoverCarousel_unstable = (
   // ToDo: Imperative setCurrentPage hook
   const [currentPage, setCurrentPage] = useControllableState({
     initialState: 0,
-    defaultState: props.currentPage,
+    defaultState: props.defaultCurrentPage,
     state: props.currentPage,
   });
 

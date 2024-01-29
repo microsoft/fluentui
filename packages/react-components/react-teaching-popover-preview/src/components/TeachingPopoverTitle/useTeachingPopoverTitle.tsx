@@ -14,7 +14,7 @@ export const useTeachingPopoverTitle_unstable = (
   props: TeachingPopoverTitleProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverTitleState => {
-  const { dismissButton, showDismiss } = props;
+  const { dismissButton } = props;
 
   const setOpen = usePopoverContext_unstable(context => context.setOpen);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
@@ -32,7 +32,6 @@ export const useTeachingPopoverTitle_unstable = (
 
   return {
     appearance,
-    showDismiss,
     components: {
       root: 'h2',
       dismissButton: 'button',
@@ -45,7 +44,7 @@ export const useTeachingPopoverTitle_unstable = (
       { elementType: 'h2' },
     ),
     dismissButton: slot.optional(dismissButton, {
-      renderByDefault: showDismiss, // Users may want to null out icon
+      renderByDefault: false,
       defaultProps: {
         children: <DismissIcon />,
         onClick: onDismissButtonClick,

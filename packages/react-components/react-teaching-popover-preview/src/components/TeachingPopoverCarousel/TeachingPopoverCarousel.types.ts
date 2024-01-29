@@ -77,6 +77,11 @@ export type TeachingPopoverCarouselProps = Partial<ComponentProps<TeachingPopove
   strings: TeachingPopoverStrings;
 
   /**
+   * Page at which carousel should be initialized to
+   */
+  defaultCurrentPage: number;
+
+  /**
    * Callback to notify a page change (can be used to update 'currentPage' externally).
    */
   onPageChange?: (
