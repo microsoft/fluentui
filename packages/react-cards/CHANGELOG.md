@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Mon, 15 Jan 2024 07:28:14 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jan 2024 07:27:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.205.133](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.133)
+
+Mon, 29 Jan 2024 07:27:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.205.132..@fluentui/react-cards_v0.205.133)
+
+### Patches
+
+- Bump @fluentui/react to v8.115.2 ([PR #30254](https://github.com/microsoft/fluentui/pull/30254) by beachball)
+
+## [0.205.132](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.132)
+
+Wed, 24 Jan 2024 07:26:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.205.131..@fluentui/react-cards_v0.205.132)
+
+### Patches
+
+- Bump @fluentui/react to v8.115.1 ([PR #30323](https://github.com/microsoft/fluentui/pull/30323) by beachball)
+
+## [0.205.131](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.131)
+
+Tue, 23 Jan 2024 07:26:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.205.130..@fluentui/react-cards_v0.205.131)
+
+### Patches
+
+- Bump @fluentui/react to v8.115.0 ([PR #30221](https://github.com/microsoft/fluentui/pull/30221) by beachball)
+
+## [0.205.130](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.130)
+
+Fri, 19 Jan 2024 07:29:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.205.129..@fluentui/react-cards_v0.205.130)
+
+### Patches
+
+- Bump @fluentui/react to v8.114.4 ([PR #30225](https://github.com/microsoft/fluentui/pull/30225) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.51 ([PR #30225](https://github.com/microsoft/fluentui/pull/30225) by beachball)
 
 ## [0.205.129](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.129)
 

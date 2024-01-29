@@ -1,8 +1,53 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Wed, 17 Jan 2024 16:18:50 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jan 2024 13:56:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.4.14)
+
+Mon, 29 Jan 2024 13:56:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.4.13..@fluentui/react-tooltip_v9.4.14)
+
+### Patches
+
+- Bump @fluentui/react-positioning to v9.13.1 ([PR #30383](https://github.com/microsoft/fluentui/pull/30383) by beachball)
+
+## [9.4.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.4.13)
+
+Fri, 26 Jan 2024 10:40:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.4.12..@fluentui/react-tooltip_v9.4.13)
+
+### Patches
+
+- Bump @fluentui/react-positioning to v9.13.0 ([PR #30391](https://github.com/microsoft/fluentui/pull/30391) by beachball)
+
+## [9.4.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.4.12)
+
+Tue, 23 Jan 2024 15:11:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.4.11..@fluentui/react-tooltip_v9.4.12)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.28 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+- Bump @fluentui/react-portal to v9.4.11 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+- Bump @fluentui/react-positioning to v9.12.5 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+- Bump @fluentui/react-tabster to v9.17.4 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+- Bump @fluentui/react-utilities to v9.17.0 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+
+## [9.4.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.4.11)
+
+Thu, 18 Jan 2024 14:25:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.4.10..@fluentui/react-tooltip_v9.4.11)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.27 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-portal to v9.4.10 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-positioning to v9.12.4 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.14.0 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-tabster to v9.17.3 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-utilities to v9.16.1 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
 
 ## [9.4.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.4.10)
 

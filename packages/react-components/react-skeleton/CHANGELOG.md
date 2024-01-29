@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-skeleton
 
-This log was last generated on Wed, 17 Jan 2024 16:18:50 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jan 2024 13:56:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.0.50)
+
+Mon, 29 Jan 2024 13:56:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-skeleton_v9.0.49..@fluentui/react-skeleton_v9.0.50)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.52 ([PR #30383](https://github.com/microsoft/fluentui/pull/30383) by beachball)
+
+## [9.0.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.0.49)
+
+Tue, 23 Jan 2024 15:11:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-skeleton_v9.0.48..@fluentui/react-skeleton_v9.0.49)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.51 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.28 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+- Bump @fluentui/react-utilities to v9.17.0 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+
+## [9.0.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.0.48)
+
+Thu, 18 Jan 2024 14:25:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-skeleton_v9.0.47..@fluentui/react-skeleton_v9.0.48)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.50 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.27 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.14.0 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-utilities to v9.16.1 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
 
 ## [9.0.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.0.47)
 

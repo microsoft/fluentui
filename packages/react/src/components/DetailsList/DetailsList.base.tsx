@@ -494,9 +494,9 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
 
       const rowRole = role === defaultRole ? undefined : 'presentation';
 
-      // add tabindex="0" to first row if no header exists, to ensure the focuszone is in the tab order
-      const rowFocusZoneProps =
-        isHeaderVisible || index > 0 ? rowFocusZoneNoTabIndexProps : rowFocusZoneAddTabIndexProps;
+      // add tabindex="0" to first row so if the header isn't rendered or isn't focusable,
+      // the focuszone still has content in the tab order.
+      const rowFocusZoneProps = index > 0 ? rowFocusZoneNoTabIndexProps : rowFocusZoneAddTabIndexProps;
 
       const rowProps: IDetailsRowProps = {
         item,

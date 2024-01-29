@@ -34,6 +34,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                 padding-top: 0;
               }
           data-focuszone-id="FocusZone0"
+          data-tabster="{\\"uncontrolled\\": {}}"
           role="menubar"
         >
           <div
@@ -365,6 +366,7 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                 padding-top: 0;
               }
           data-focuszone-id="FocusZone0"
+          data-tabster="{\\"uncontrolled\\": {}}"
           role="menubar"
         >
           <div

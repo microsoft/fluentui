@@ -2,6 +2,178 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 29 Jan 2024 13:56:05 GMT",
+      "tag": "@fluentui/react-components_v9.46.2",
+      "version": "9.46.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "3717b9e1d0a669bf73b2969508fb1e946aa9e87d",
+            "comment": "fix: add aria-controls to combobox and dropdown"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "2c3fdb3e90f95f7476d02a4b3b253c5f04bc85cf",
+            "comment": "fix: Update Label to use a token for its padding, instead of a hardcoded value"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "a23df09281e8115f7f28950e977419c74ecd81de",
+            "comment": "fix: Disabled Label should use GrayText in forced-colors mode"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "fe09d4f89bc988edba7e4ee9f07fb1ad2a75fd4b",
+            "comment": "fix: disabled menuitem has no pressed style"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "491d0cb952b14057711ff36348da50db92eaf78d",
+            "comment": "fix: Avoid infinite loop when comparing different documents"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jan 2024 10:40:21 GMT",
+      "tag": "@fluentui/react-components_v9.46.1",
+      "version": "9.46.1",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "b04151ab510b2908a858272e08a0d6f2c33f6d77",
+            "comment": "feat: Add `disableUpdateOnResize` positioning option"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "aa038189b6f700f5a43e933466e7ca72163423d6",
+            "comment": "feat: Add RatingDisplay component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jan 2024 15:10:57 GMT",
+      "tag": "@fluentui/react-components_v9.46.0",
+      "version": "9.46.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "ae31ae01c299e43ff98c561bf937da1ed465ef8a",
+            "comment": "chore: import UnionToIntersection from react-utilities instead of redeclaring it locally"
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "400c92a2a2d4c2ca898291cc49790102cf3880f0",
+            "comment": "feat: Add navigationIcons prop to allow customization of Calendar's navigation icons."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "ccde960028c8a2dfe7de9df7bc5e8aef27ba57c5",
+            "comment": "fix: aria-multiselectable is unnecessary with menu roles"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "4739bab0130805cfef58f4c3da1f8e1b438fa5d5",
+            "comment": "fix(Dropdown): add `type=button` to `clearButton`"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "a95d5034819f1ca06dfb8a112cff878abe57e478",
+            "comment": "fix: cleanup overflow manager on every unmount"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "ae31ae01c299e43ff98c561bf937da1ed465ef8a",
+            "comment": "chore: import DistributiveOmit from react-utilities instead of redeclaring it locally"
+          }
+        ],
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "6220c3d5d2e41a549e831b563eaa2ef3605047fc",
+            "comment": "feat: add AriaLiveAnnouncer component"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "6220c3d5d2e41a549e831b563eaa2ef3605047fc",
+            "comment": "feat: add AriaLiveAnnouncer component"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motions-preview",
+            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f",
+            "comment": "chore: initial release"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "ae31ae01c299e43ff98c561bf937da1ed465ef8a",
+            "comment": "feat: helper type DistributiveOmit"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Jan 2024 14:25:01 GMT",
+      "tag": "@fluentui/react-components_v9.45.0",
+      "version": "9.45.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "42b8015b3d44861b4a9e26a9861c87b97ee5158d",
+            "comment": "feat: add `useComboboxFilter()` hook"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "5f352d5c09325db0acde03c1b9fb458eaa27dd6f",
+            "comment": "feat: export AnnounceProvider & useAnnounce()"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "42b8015b3d44861b4a9e26a9861c87b97ee5158d",
+            "comment": "feat: export `useComboboxFilter()` hook"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "5f352d5c09325db0acde03c1b9fb458eaa27dd6f",
+            "comment": "feat: export AnnounceProvider & useAnnounce()"
+          }
+        ],
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "1f067f912a754b8940c049bd798f6520108dfac5",
+            "comment": "fix: Update isVisible initial value to false to prevent Spinner flicker"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jan 2024 16:18:49 GMT",
       "tag": "@fluentui/react-components_v9.44.5",
       "version": "9.44.5",

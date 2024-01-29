@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Wed, 17 Jan 2024 16:18:50 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jan 2024 15:11:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.1.56)
+
+Tue, 23 Jan 2024 15:11:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.1.55..@fluentui/react-image_v9.1.56)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.17.0 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.28 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+
+## [9.1.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.1.55)
+
+Thu, 18 Jan 2024 14:25:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.1.54..@fluentui/react-image_v9.1.55)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.14.0 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-utilities to v9.16.1 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.27 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
 
 ## [9.1.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.1.54)
 

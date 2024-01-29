@@ -2,6 +2,108 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 29 Jan 2024 07:27:14 GMT",
+      "tag": "@fluentui/react_v8.115.2",
+      "version": "8.115.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "c0981cfdeadb03f99ad016068d80d307665d765d",
+            "comment": "fix: DetailsList inner FocusZone receives focus even if the header is not tabbable"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Jan 2024 07:26:57 GMT",
+      "tag": "@fluentui/react_v8.115.1",
+      "version": "8.115.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e2a567a3dae210006636ffe7034aef90182e54d8",
+            "comment": "chore: Adding data-tabster=uncontrolled to FocusZone and FocusTrapZone for proper interop with FluentUI V9."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.39",
+            "commit": "aa038189b6f700f5a43e933466e7ca72163423d6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jan 2024 07:26:42 GMT",
+      "tag": "@fluentui/react_v8.115.0",
+      "version": "8.115.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "anvasser@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "2314a84349b2e58b54ebe70d4408ef5fc060f43f",
+            "comment": "Added expand callback to the MessageBar component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Jan 2024 07:29:32 GMT",
+      "tag": "@fluentui/react_v8.114.4",
+      "version": "8.114.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.51",
+            "commit": "ccde960028c8a2dfe7de9df7bc5e8aef27ba57c5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.31",
+            "commit": "ccde960028c8a2dfe7de9df7bc5e8aef27ba57c5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.38",
+            "commit": "ccde960028c8a2dfe7de9df7bc5e8aef27ba57c5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.36",
+            "commit": "ccde960028c8a2dfe7de9df7bc5e8aef27ba57c5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.10.2",
+            "commit": "ccde960028c8a2dfe7de9df7bc5e8aef27ba57c5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.41",
+            "commit": "ccde960028c8a2dfe7de9df7bc5e8aef27ba57c5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.13.24",
+            "commit": "ccde960028c8a2dfe7de9df7bc5e8aef27ba57c5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Jan 2024 07:28:13 GMT",
       "tag": "@fluentui/react_v8.114.3",
       "version": "8.114.3",

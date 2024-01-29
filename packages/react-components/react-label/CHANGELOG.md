@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-label
 
-This log was last generated on Wed, 17 Jan 2024 16:18:50 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jan 2024 13:56:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.1.60)
+
+Mon, 29 Jan 2024 13:56:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.1.59..@fluentui/react-label_v9.1.60)
+
+### Patches
+
+- fix: Update Label to use a token for its padding, instead of a hardcoded value ([PR #30254](https://github.com/microsoft/fluentui/pull/30254) by behowell@microsoft.com)
+- fix: Disabled Label should use GrayText in forced-colors mode ([PR #30245](https://github.com/microsoft/fluentui/pull/30245) by behowell@microsoft.com)
+
+## [9.1.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.1.59)
+
+Tue, 23 Jan 2024 15:11:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.1.58..@fluentui/react-label_v9.1.59)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.17.0 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.28 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
+
+## [9.1.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.1.58)
+
+Thu, 18 Jan 2024 14:25:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-label_v9.1.57..@fluentui/react-label_v9.1.58)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.14.0 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-utilities to v9.16.1 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.27 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
 
 ## [9.1.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-label_v9.1.57)
 
