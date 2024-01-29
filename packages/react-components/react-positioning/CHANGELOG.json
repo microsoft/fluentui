@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Fri, 26 Jan 2024 10:40:21 GMT",
+      "tag": "@fluentui/react-positioning_v9.13.0",
+      "version": "9.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "b04151ab510b2908a858272e08a0d6f2c33f6d77",
+            "comment": "feat: Add `disableUpdateOnResize` positioning option"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jan 2024 15:11:00 GMT",
       "tag": "@fluentui/react-positioning_v9.12.5",
       "version": "9.12.5",

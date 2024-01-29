@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 23 Jan 2024 15:10:57 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Jan 2024 10:40:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.46.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.1)
+
+Fri, 26 Jan 2024 10:40:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.46.0..@fluentui/react-components_v9.46.1)
+
+### Minor changes
+
+- `@fluentui/react-positioning`
+  - feat: Add `disableUpdateOnResize` positioning option ([PR #30391](https://github.com/microsoft/fluentui/pull/30391) by lingfangao@hotmail.com)
+- `@fluentui/react-rating-preview`
+  - feat: Add RatingDisplay component ([PR #30323](https://github.com/microsoft/fluentui/pull/30323) by ololubek@microsoft.com)
 
 ## [9.46.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.0)
 

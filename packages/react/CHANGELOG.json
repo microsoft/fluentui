@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 29 Jan 2024 07:27:14 GMT",
+      "tag": "@fluentui/react_v8.115.2",
+      "version": "8.115.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "c0981cfdeadb03f99ad016068d80d307665d765d",
+            "comment": "fix: DetailsList inner FocusZone receives focus even if the header is not tabbable"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jan 2024 07:26:57 GMT",
       "tag": "@fluentui/react_v8.115.1",
       "version": "8.115.1",

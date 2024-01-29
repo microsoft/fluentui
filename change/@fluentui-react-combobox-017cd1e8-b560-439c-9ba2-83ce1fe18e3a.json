@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: add aria-controls to combobox and dropdown",
+  "packageName": "@fluentui/react-combobox",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

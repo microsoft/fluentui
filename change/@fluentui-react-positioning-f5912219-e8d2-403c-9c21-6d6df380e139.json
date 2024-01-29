@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Avoid infinite loop when comparing different documents",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Tue, 23 Jan 2024 15:11:00 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Jan 2024 10:40:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.12.47)
+
+Fri, 26 Jan 2024 10:40:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.12.46..@fluentui/react-menu_v9.12.47)
+
+### Patches
+
+- Bump @fluentui/react-positioning to v9.13.0 ([PR #30391](https://github.com/microsoft/fluentui/pull/30391) by beachball)
 
 ## [9.12.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.12.46)
 
