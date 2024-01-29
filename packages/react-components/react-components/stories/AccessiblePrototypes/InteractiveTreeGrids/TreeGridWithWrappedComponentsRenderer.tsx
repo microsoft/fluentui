@@ -48,6 +48,7 @@ const ComponentWrapper: React.FC<ComponentWrapperProps> = ({ type, label, childr
       aria-roledescription={roleDescriptionMapping[type]}
       aria-description="Interact with Enter, then leave with Escape"
       aria-label={label}
+      data-componentWrapper="true"
       {...focusableGroupAttribute}
     >
       {children}

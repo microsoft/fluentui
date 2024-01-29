@@ -53,18 +53,24 @@ export function useAdamTableInteractive2Navigation(): {
           if (curRole === 'cell' || curRole === 'gridcell') {
             return true;
           }
-
           cur = cur.parentElement;
         }
-
         return false;
       })();
 
-      const ignoreUpAndDown =
-        (activeElement.tagName === 'INPUT' && activeElement.getAttribute('type') === 'text') ||
-        activeElement.getAttribute('role') === 'textbox';
+      const isWrapped = (() => {
+        let cur = isHTMLElement(activeElement.parentElement) ? activeElement.parentElement : null;
+        while (cur) {
+          const hasWrapperAttr = cur.getAttribute('data-componentWrapper');
+          if (hasWrapperAttr === 'true') {
+            return true;
+          }
+          cur = cur.parentElement;
+        }
+        return false;
+      })();
 
-      if (!ignoreUpAndDown && (e.key === ArrowDown || e.key === ArrowUp) && isInCell) {
+      if (!isWrapped && (e.key === ArrowDown || e.key === ArrowUp) && isInCell) {
         // Escape groupper focus trap before arrow down
         activeElement.dispatchEvent(new KeyboardEvent('keydown', { key: Escape, keyCode: keyCodes.Escape }));
         setTimeout(() => {
