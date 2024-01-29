@@ -154,76 +154,78 @@ export const TreeGridWithWrappedComponentsRenderer: React.FC<TreeGridWithWrapped
   }, [handleTreeGridMoveFocus, targetDocument]);
 
   return (
-    <div
-      id="recentMeetings"
-      role="treegrid"
-      aria-label="All meetings"
-      aria-describedby="lastMeetings-hint"
-      onKeyDown={handleTreeGridKeyDown}
-      {...tableTabsterAttribute}
-    >
-      {recentCategories.map(category => (
-        <Table key={category.id} role="presentation" noNativeElements>
-          <TableBody role="presentation">
-            <TableRow
-              role="row"
-              id={category.id}
-              tabIndex={0}
-              onClick={handleRowClick}
-              aria-level={1}
-              aria-expanded={category.expanded}
-              {...tableRowTabsterAttribute}
-            >
-              <TableCell role="rowheader">{category.title}</TableCell>
-              <TableCell role="gridcell" aria-colspan={category.columns.length + 3}>
-                <Button>Header action</Button>
-              </TableCell>
-            </TableRow>
-            {category.expanded &&
-              recentMeetings[category.id].map(meeting => (
-                <TableRow
-                  key={meeting.id}
-                  role="row"
-                  id={meeting.id}
-                  tabIndex={0}
-                  aria-level={2}
-                  {...tableRowTabsterAttribute}
-                >
-                  <TableCell role="rowheader">{meeting.titleWithTime}</TableCell>
-                  <TableCell role="gridcell">
-                    <Button>Chat with participants</Button>
-                  </TableCell>
-                  <TableCell role="gridcell">
-                    <ComponentWrapper label="Type here">
-                      <Field label="Type here">
-                        <Input />
-                      </Field>
-                    </ComponentWrapper>
-                  </TableCell>
-                  <TableCell role="gridcell">
-                    <Button>View recap</Button>
-                    <Button>Another</Button>
-                  </TableCell>
-                  {category.columns.includes('includingContent') && (
+    <div role="application">
+      <div
+        id="recentMeetings"
+        role="treegrid"
+        aria-label="All meetings"
+        aria-describedby="lastMeetings-hint"
+        onKeyDown={handleTreeGridKeyDown}
+        {...tableTabsterAttribute}
+      >
+        {recentCategories.map(category => (
+          <Table key={category.id} role="presentation" noNativeElements>
+            <TableBody role="presentation">
+              <TableRow
+                role="row"
+                id={category.id}
+                tabIndex={0}
+                onClick={handleRowClick}
+                aria-level={1}
+                aria-expanded={category.expanded}
+                {...tableRowTabsterAttribute}
+              >
+                <TableCell role="rowheader">{category.title}</TableCell>
+                <TableCell role="gridcell" aria-colspan={category.columns.length + 3}>
+                  <Button>Header action</Button>
+                </TableCell>
+              </TableRow>
+              {category.expanded &&
+                recentMeetings[category.id].map(meeting => (
+                  <TableRow
+                    key={meeting.id}
+                    role="row"
+                    id={meeting.id}
+                    tabIndex={0}
+                    aria-level={2}
+                    {...tableRowTabsterAttribute}
+                  >
+                    <TableCell role="rowheader">{meeting.titleWithTime}</TableCell>
                     <TableCell role="gridcell">
-                      {meeting.properties?.includes('includingContent') && <Button>Agenda and notes</Button>}
+                      <Button>Chat with participants</Button>
                     </TableCell>
-                  )}
-                  {category.columns.includes('tasks') && (
                     <TableCell role="gridcell">
-                      {meeting.tasksCount && <Button>{`${meeting.tasksCount} tasks`}</Button>}
+                      <ComponentWrapper label="Type here">
+                        <Field label="Type here">
+                          <Input />
+                        </Field>
+                      </ComponentWrapper>
                     </TableCell>
-                  )}
-                  {category.columns.includes('transcript') && (
                     <TableCell role="gridcell">
-                      {meeting.properties?.includes('transcript') && <Button>Transcript</Button>}
+                      <Button>View recap</Button>
+                      <Button>Another</Button>
                     </TableCell>
-                  )}
-                </TableRow>
-              ))}
-          </TableBody>
-        </Table>
-      ))}
+                    {category.columns.includes('includingContent') && (
+                      <TableCell role="gridcell">
+                        {meeting.properties?.includes('includingContent') && <Button>Agenda and notes</Button>}
+                      </TableCell>
+                    )}
+                    {category.columns.includes('tasks') && (
+                      <TableCell role="gridcell">
+                        {meeting.tasksCount && <Button>{`${meeting.tasksCount} tasks`}</Button>}
+                      </TableCell>
+                    )}
+                    {category.columns.includes('transcript') && (
+                      <TableCell role="gridcell">
+                        {meeting.properties?.includes('transcript') && <Button>Transcript</Button>}
+                      </TableCell>
+                    )}
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
+        ))}
+      </div>
     </div>
   );
 };
