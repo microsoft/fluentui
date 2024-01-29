@@ -67,7 +67,7 @@ const useStyles = makeStyles({
     },
   },
   nav: {},
-  pageCount: { color: tokens.colorNeutralForeground3 },
+  pageCount: { display: 'flex', color: tokens.colorNeutralForeground3, justifyContent: 'center', alignItems: 'center' },
 });
 
 /** Applies style classnames to slots */

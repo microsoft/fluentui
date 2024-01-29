@@ -32,11 +32,13 @@ export const CarouselText = (props: TeachingPopoverProps) => (
     <TeachingPopoverSurface>
       <TeachingPopoverHeader>{'Tips'}</TeachingPopoverHeader>
       <TeachingPopoverCarousel
+        paginationType={'text'}
         strings={{
           next: 'Next',
           previous: 'Previous',
           initialStepText: 'Close',
           finalStepText: 'Finish',
+          pageCountText: 'of',
         }}
       >
         {/* Multiple TeachingPopoverBody will be wrapped by a 'TeachingPopoverCarousel'*/}
@@ -57,24 +59,6 @@ export const CarouselText = (props: TeachingPopoverProps) => (
           {ExampleContent(3)}
         </TeachingPopoverBody>
       </TeachingPopoverCarousel>
-      <TeachingPopoverActions>
-        {/* TeachingPopoverActions ensure that carousel & popover functionality work in sync */}
-        <TeachingPopoverButton buttonType="secondary" altStepText="Close">
-          {'Back'}
-        </TeachingPopoverButton>
-        {/* Shorthand version
-        <TeachingPopoverPageCount countStyle="text">{'of'}</TeachingPopoverPageCount>
-        */}
-        {/*Function use*/}
-        <TeachingPopoverPageCount countStyle="text">
-          {(currentPage: number, totalPages: number) => {
-            return `${currentPage + 1} of ${totalPages}`;
-          }}
-        </TeachingPopoverPageCount>
-        <TeachingPopoverButton buttonType="primary" altStepText="Finish">
-          {'Next'}
-        </TeachingPopoverButton>
-      </TeachingPopoverActions>
     </TeachingPopoverSurface>
   </TeachingPopover>
 );
