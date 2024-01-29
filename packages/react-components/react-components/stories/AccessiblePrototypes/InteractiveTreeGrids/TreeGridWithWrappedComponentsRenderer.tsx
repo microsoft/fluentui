@@ -12,25 +12,40 @@ import {
   useFocusableGroup,
   useAdamTableInteractive2Navigation,
   Button,
-  Input,
   Field,
+  Input,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  Label,
+  Slider,
   useFluent,
 } from '@fluentui/react-components';
+import { TimePicker } from '@fluentui/react-timepicker-compat';
 
 interface ComponentWrapperProps {
+  type: 'textbox' | 'slider' | 'time';
   label: string;
   children: React.ReactNode;
 }
-const ComponentWrapper: React.FC<ComponentWrapperProps> = ({ label, children }) => {
+const ComponentWrapper: React.FC<ComponentWrapperProps> = ({ type, label, children }) => {
   const focusableGroupAttribute = useFocusableGroup({
     tabBehavior: 'limited-trap-focus',
   });
+  const roleDescriptionMapping = {
+    textbox: 'TextBox',
+    slider: 'Slider',
+    time: 'Time',
+  };
 
   return (
     <div
       tabIndex={0}
       role="group"
-      aria-roledescription="textbox"
+      aria-roledescription={roleDescriptionMapping[type]}
       aria-description="Interact with Enter, then leave with Escape"
       aria-label={label}
       {...focusableGroupAttribute}
@@ -176,7 +191,7 @@ export const TreeGridWithWrappedComponentsRenderer: React.FC<TreeGridWithWrapped
                 {...tableRowTabsterAttribute}
               >
                 <TableCell role="rowheader">{category.title}</TableCell>
-                <TableCell role="gridcell" aria-colspan={category.columns.length + 3}>
+                <TableCell role="gridcell" aria-colspan={category.columns.length + 4}>
                   <Button>Header action</Button>
                 </TableCell>
               </TableRow>
@@ -195,11 +210,35 @@ export const TreeGridWithWrappedComponentsRenderer: React.FC<TreeGridWithWrapped
                       <Button>Chat with participants</Button>
                     </TableCell>
                     <TableCell role="gridcell">
-                      <ComponentWrapper label="Type here">
+                      <ComponentWrapper type="textbox" label="Type here">
                         <Field label="Type here">
                           <Input />
                         </Field>
                       </ComponentWrapper>
+                      <Menu>
+                        <MenuTrigger disableButtonEnhancement>
+                          <MenuButton>More options</MenuButton>
+                        </MenuTrigger>
+                        <MenuPopover>
+                          <MenuList>
+                            <MenuItem>Meeting details</MenuItem>
+                            <MenuItem>Show in calendar</MenuItem>
+                            <MenuItem>Change attendance</MenuItem>
+                          </MenuList>
+                        </MenuPopover>
+                      </Menu>
+                      <ComponentWrapper type="slider" label="Priority">
+                        <Label htmlFor={`${meeting.id}-slider`}>Basic Example</Label>
+                        <Slider max={5} min={1} defaultValue={3} id={`${meeting.id}-slider`} />
+                      </ComponentWrapper>
+                    </TableCell>
+                    <TableCell role="gridcell">
+                      <ComponentWrapper type="time" label="Reminder">
+                        <Field label="Minutes to be reminded before">
+                          <TimePicker value="0:15" />
+                        </Field>
+                      </ComponentWrapper>
+                      <Button>Add another reminder</Button>
                     </TableCell>
                     <TableCell role="gridcell">
                       <Button>View recap</Button>
