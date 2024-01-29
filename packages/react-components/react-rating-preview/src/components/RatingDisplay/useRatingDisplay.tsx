@@ -54,6 +54,8 @@ export const useRatingDisplay_unstable = (
       getIntrinsicElementProps('div', {
         ref,
         children: rootChildren,
+        role: 'img',
+        'aria-label': `${value} out of ${max} stars`,
         ...props,
       }),
       { elementType: 'div' },
