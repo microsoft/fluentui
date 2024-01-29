@@ -60,10 +60,10 @@ export { KeyborgFocusInEvent }
 // @public (undocumented)
 export type TabsterDOMAttribute = TabsterTypes.TabsterDOMAttribute;
 
-export { TabsterTypes }
-
 // @public (undocumented)
-export type TabsterMoveFocusEvent = Types.TabsterMoveFocusEvent;
+export type TabsterMoveFocusEvent = TabsterTypes.TabsterMoveFocusEvent;
+
+export { TabsterTypes }
 
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions) => TabsterTypes.TabsterDOMAttribute;
