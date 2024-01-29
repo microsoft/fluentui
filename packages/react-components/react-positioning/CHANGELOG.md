@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Fri, 26 Jan 2024 10:40:21 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jan 2024 13:56:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.13.1)
+
+Mon, 29 Jan 2024 13:56:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.13.0..@fluentui/react-positioning_v9.13.1)
+
+### Patches
+
+- fix: Avoid infinite loop when comparing different documents ([PR #30415](https://github.com/microsoft/fluentui/pull/30415) by lingfangao@hotmail.com)
 
 ## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.13.0)
 
