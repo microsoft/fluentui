@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { NavItemValue } from '../NavContext.types';
 import { NavCategoryContextValue } from '../NavCategoryContext';
 
