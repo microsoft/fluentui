@@ -12,22 +12,31 @@ export const navCategoryItemClassNames: SlotClassNames<NavCategoryItemSlots> = {
 /**
  * Styles for the root slot
  */
-const useStyles = makeResetStyles({
-  display: 'flex',
-  ...typographyStyles.body1,
+const useRootStyles = makeResetStyles({
+  root: {
+    display: 'flex',
+    ...typographyStyles.body1,
+  },
+});
+
+const useExpandIconStyles = makeResetStyles({
+  //todo: add styles for expand icon
+  expandIcon: {},
 });
 
 /**
  * Apply styling to the NavCategoryItem slots based on the state
  */
 export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): NavCategoryItemState => {
-  const rootStyles = useStyles();
+  const defaultRootStyles = useRootStyles();
+  const defaultExpandIconStyles = useExpandIconStyles();
 
-  state.root.className = mergeClasses(
-    navCategoryItemClassNames.root,
-    rootStyles,
+  state.root.className = mergeClasses(navCategoryItemClassNames.root, defaultRootStyles, state.root.className);
 
-    state.root.className,
+  state.expandIcon.className = mergeClasses(
+    navCategoryItemClassNames.expandIcon,
+    defaultExpandIconStyles,
+    state.expandIcon.className,
   );
 
   return state;
