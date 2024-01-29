@@ -34,7 +34,7 @@ export const getScrollParent = (node: Document | HTMLElement | null): HTMLElemen
   // Return body, `getScroll` will take care to get the correct `scrollTop` from it
   const parentNode = node && getParentNode(node as HTMLElement);
   // eslint-disable-next-line
-  if (!parentNode) return document.body;
+  if (!parentNode) return node?.ownerDocument?.body ?? document.body;
 
   switch (parentNode.nodeName) {
     case 'HTML':
