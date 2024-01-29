@@ -19,9 +19,6 @@ export const Nav: ForwardRefComponent<NavProps>;
 // @public
 export const NavCategory: ForwardRefComponent<NavCategoryProps>;
 
-// @public (undocumented)
-export const navCategoryClassNames: SlotClassNames<NavCategorySlots>;
-
 // @public
 export const NavCategoryItem: ForwardRefComponent<NavCategoryItemProps>;
 
@@ -41,17 +38,13 @@ export type NavCategoryItemSlots = {
 export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> & NavCategoryItemContextValue;
 
 // @public
-export type NavCategoryProps = ComponentProps<NavCategorySlots> & {
+export type NavCategoryProps = {
     value: NavItemValue;
-};
-
-// @public (undocumented)
-export type NavCategorySlots = {
-    root: NonNullable<Slot<'div'>>;
+    children?: React.ReactNode;
 };
 
 // @public
-export type NavCategoryState = ComponentState<NavCategorySlots> & NavCategoryContextValue;
+export type NavCategoryState = NavCategoryContextValue & NavCategoryProps;
 
 // @public (undocumented)
 export const navClassNames: SlotClassNames<NavSlots>;
@@ -194,9 +187,6 @@ export const useNavCategoryItem_unstable: (props: NavCategoryItemProps, ref: Rea
 
 // @public
 export const useNavCategoryItemStyles_unstable: (state: NavCategoryItemState) => NavCategoryItemState;
-
-// @public
-export const useNavCategoryStyles_unstable: (state: NavCategoryState) => NavCategoryState;
 
 // @public (undocumented)
 export const useNavContext_unstable: () => NavContextValue;
