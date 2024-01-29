@@ -13,8 +13,10 @@ export const testWithoutWait = (
   testFunction: (container: HTMLElement) => void,
   testFunctionAfterRender?: () => void,
   beforeAllFunction?: () => void,
+  skip?: boolean,
 ) => {
-  test(description, () => {
+  const runTest = skip ? test.skip : test;
+  runTest(description, () => {
     beforeAllFunction !== undefined && beforeAllFunction();
     const { container } = render(React.createElement(component, (props = { ...props })));
     testFunctionAfterRender !== undefined && testFunctionAfterRender();

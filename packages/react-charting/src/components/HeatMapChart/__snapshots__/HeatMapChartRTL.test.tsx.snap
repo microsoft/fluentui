@@ -493,11 +493,11 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           overflow: hidden;
           width: 100%;
         }
-    id="chart_31"
+    id="chart_26"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_32"
+      id="defaultTabbableElement_27"
     />
     <div
       class=
@@ -508,7 +508,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone33"
+      data-focuszone-id="FocusZone28"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -543,7 +543,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_31"
+          id="xAxisGElementchart_26"
           transform="translate(0, -35)"
         />
         <g
@@ -571,7 +571,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_31"
+          id="yAxisGElementchart_26"
           transform="translate(40, 0)"
         />
         <g
@@ -733,7 +733,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone34"
+                data-focuszone-id="FocusZone29"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -948,11 +948,11 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           overflow: hidden;
           width: 100%;
         }
-    id="chart_26"
+    id="chart_21"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_27"
+      id="defaultTabbableElement_22"
     />
     <div
       class=
@@ -963,7 +963,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone28"
+      data-focuszone-id="FocusZone23"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -998,7 +998,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_26"
+          id="xAxisGElementchart_21"
           transform="translate(0, -35)"
         />
         <g
@@ -1026,7 +1026,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_26"
+          id="yAxisGElementchart_21"
           transform="translate(40, 0)"
         />
         <g
@@ -1196,7 +1196,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone29"
+                data-focuszone-id="FocusZone24"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >

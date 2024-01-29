@@ -10,6 +10,9 @@ import {
 } from '../types/IDataPoint';
 import { ScaleBand } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
+const env = require('../../config/tests');
+
+const runTestSuite = env === 'TEST' ? describe : describe.skip;
 
 // Reference to the test plan: packages\react-charting\docs\TestPlans\Utilities\UnitTests.md
 
@@ -180,7 +183,7 @@ describe('createNumericXAxis', () => {
 });
 
 // FIXME - non deterministic snapshots causing master pipeline breaks
-describe.skip('createDateXAxis', () => {
+runTestSuite('createDateXAxis', () => {
   const domainNRangeValues: ICreateXAxisParams['domainNRangeValues'] = {
     dStartValue: new Date(2021, 6, 1),
     dEndValue: new Date(2022, 5, 30),

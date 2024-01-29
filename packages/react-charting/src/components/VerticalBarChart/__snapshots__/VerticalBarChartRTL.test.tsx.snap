@@ -17,11 +17,11 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_777"
+    id="chart_635"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_778"
+      id="defaultTabbableElement_636"
     />
     <div
       class=
@@ -32,7 +32,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone779"
+      data-focuszone-id="FocusZone637"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -70,7 +70,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_777"
+          id="xAxisGElementchart_635"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -216,7 +216,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_777"
+          id="yAxisGElementchart_635"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -328,7 +328,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_781"
+              id="_VBC_bar_639"
               role="img"
               tabindex="0"
               width="16"
@@ -362,7 +362,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_782"
+              id="_VBC_bar_640"
               role="img"
               tabindex="-1"
               width="16"
@@ -396,7 +396,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_783"
+              id="_VBC_bar_641"
               role="img"
               tabindex="-1"
               width="16"
@@ -459,7 +459,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone780"
+                data-focuszone-id="FocusZone638"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -760,11 +760,11 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_788"
+    id="chart_646"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_789"
+      id="defaultTabbableElement_647"
     />
     <div
       class=
@@ -775,7 +775,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone790"
+      data-focuszone-id="FocusZone648"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -813,7 +813,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_788"
+          id="xAxisGElementchart_646"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -959,7 +959,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_788"
+          id="yAxisGElementchart_646"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -1071,7 +1071,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_792"
+              id="_VBC_bar_650"
               role="img"
               tabindex="0"
               width="16"
@@ -1105,7 +1105,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_793"
+              id="_VBC_bar_651"
               role="img"
               tabindex="-1"
               width="16"
@@ -1139,7 +1139,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_794"
+              id="_VBC_bar_652"
               role="img"
               tabindex="-1"
               width="16"
@@ -1202,7 +1202,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone791"
+                data-focuszone-id="FocusZone649"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1516,11 +1516,11 @@ exports[`Theme Change Should reflect theme change 1`] = `
             overflow: hidden;
             width: 100%;
           }
-      id="chart_802"
+      id="chart_660"
       role="presentation"
     >
       <div
-        id="defaultTabbableElement_803"
+        id="defaultTabbableElement_661"
       />
       <div
         class=
@@ -1531,7 +1531,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             {
               overflow: auto;
             }
-        data-focuszone-id="FocusZone804"
+        data-focuszone-id="FocusZone662"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
@@ -1569,7 +1569,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="xAxisGElementchart_802"
+            id="xAxisGElementchart_660"
             text-anchor="middle"
             transform="translate(0, 257)"
           >
@@ -1715,7 +1715,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementchart_802"
+            id="yAxisGElementchart_660"
             text-anchor="end"
             transform="translate(40, 0)"
           >
@@ -1827,7 +1827,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 data-is-focusable="true"
                 fill="#0078d4"
                 height="47.400000000000006"
-                id="_VBC_bar_806"
+                id="_VBC_bar_664"
                 role="img"
                 tabindex="0"
                 width="16"
@@ -1861,7 +1861,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 data-is-focusable="true"
                 fill="#002050"
                 height="237"
-                id="_VBC_bar_807"
+                id="_VBC_bar_665"
                 role="img"
                 tabindex="-1"
                 width="16"
@@ -1895,7 +1895,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 data-is-focusable="true"
                 fill="#00188f"
                 height="142.2"
-                id="_VBC_bar_808"
+                id="_VBC_bar_666"
                 role="img"
                 tabindex="-1"
                 width="16"
@@ -1958,7 +1958,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone805"
+                  data-focuszone-id="FocusZone663"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
@@ -2247,7 +2247,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_VBC_empty811"
+    id="_VBC_empty669"
     role="alert"
     style="opacity: 0;"
   />
@@ -2271,11 +2271,11 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           overflow: hidden;
           width: 100%;
         }
-    id="chart_812"
+    id="chart_670"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_813"
+      id="defaultTabbableElement_671"
     />
     <div
       class=
@@ -2286,7 +2286,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone814"
+      data-focuszone-id="FocusZone672"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -2324,7 +2324,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_812"
+          id="xAxisGElementchart_670"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -2416,7 +2416,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_812"
+          id="yAxisGElementchart_670"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -2525,7 +2525,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_816"
+              id="_VBC_bar_674"
               role="img"
               tabindex="0"
               width="16"
@@ -2556,7 +2556,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_817"
+              id="_VBC_bar_675"
               role="img"
               tabindex="-1"
               width="16"
@@ -2587,7 +2587,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_818"
+              id="_VBC_bar_676"
               role="img"
               tabindex="-1"
               width="16"
@@ -2650,7 +2650,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone815"
+                data-focuszone-id="FocusZone673"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -10844,11 +10844,11 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           overflow: hidden;
           width: 100%;
         }
-    id="chart_822"
+    id="chart_680"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_823"
+      id="defaultTabbableElement_681"
     />
     <div
       class=
@@ -10859,7 +10859,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone824"
+      data-focuszone-id="FocusZone682"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -10897,7 +10897,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_822"
+          id="xAxisGElementchart_680"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -11043,7 +11043,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_822"
+          id="yAxisGElementchart_680"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -11155,7 +11155,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_829"
+              id="_VBC_bar_687"
               role="img"
               tabindex="0"
               width="16"
@@ -11189,7 +11189,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_830"
+              id="_VBC_bar_688"
               role="img"
               tabindex="-1"
               width="16"
@@ -11223,7 +11223,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_831"
+              id="_VBC_bar_689"
               role="img"
               tabindex="-1"
               width="16"
@@ -11278,7 +11278,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone825"
+          data-focuszone-id="FocusZone683"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
@@ -11589,7 +11589,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               border: 0px;
             }
         data-is-focusable="true"
-        id="toolTipcallout819"
+        id="toolTipcallout677"
         style="opacity: 0; filter: opacity(0); pointer-events: none;"
         tabindex="-1"
       >
@@ -11633,11 +11633,11 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           overflow: hidden;
           width: 100%;
         }
-    id="chart_835"
+    id="chart_693"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_836"
+      id="defaultTabbableElement_694"
     />
     <div
       class=
@@ -11648,7 +11648,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone837"
+      data-focuszone-id="FocusZone695"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -11686,7 +11686,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_835"
+          id="xAxisGElementchart_693"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -11832,7 +11832,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_835"
+          id="yAxisGElementchart_693"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -11944,7 +11944,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_842"
+              id="_VBC_bar_700"
               role="img"
               tabindex="0"
               width="16"
@@ -11978,7 +11978,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_843"
+              id="_VBC_bar_701"
               role="img"
               tabindex="-1"
               width="16"
@@ -12012,7 +12012,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_844"
+              id="_VBC_bar_702"
               role="img"
               tabindex="-1"
               width="16"
@@ -12067,7 +12067,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone838"
+          data-focuszone-id="FocusZone696"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
@@ -12377,7 +12377,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               border: 0px;
             }
         data-is-focusable="true"
-        id="toolTipcallout832"
+        id="toolTipcallout690"
         style="opacity: 0; filter: opacity(0); pointer-events: none;"
         tabindex="-1"
       >

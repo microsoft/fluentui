@@ -17,6 +17,7 @@ import { IVerticalBarChartProps } from './VerticalBarChart.types';
 import { IVerticalBarChartDataPoint } from '../../index';
 import { chartPointsVBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
+const env = require('../../../config/tests');
 
 expect.extend(toHaveNoViolations);
 
@@ -305,6 +306,7 @@ describe('Vertical bar chart rendering', () => {
     },
     undefined,
     beforeAll,
+    env !== 'TEST',
   );
 
   testWithoutWait(
@@ -321,6 +323,7 @@ describe('Vertical bar chart rendering', () => {
     },
     undefined,
     beforeAll,
+    env !== 'TEST',
   );
 
   testWithoutWait(
@@ -336,6 +339,7 @@ describe('Vertical bar chart rendering', () => {
     },
     undefined,
     beforeAll,
+    env !== 'TEST',
   );
 
   testWithoutWait(
@@ -351,6 +355,7 @@ describe('Vertical bar chart rendering', () => {
     },
     undefined,
     beforeAll,
+    env !== 'TEST',
   );
 
   testWithoutWait(
@@ -365,6 +370,7 @@ describe('Vertical bar chart rendering', () => {
     },
     undefined,
     beforeAll,
+    env !== 'TEST',
   );
 });
 

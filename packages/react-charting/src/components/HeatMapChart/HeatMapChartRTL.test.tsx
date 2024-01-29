@@ -4,6 +4,9 @@ import { HeatMapChart, IHeatMapChartProps } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { getByClass } from '../../utilities/TestUtility.test';
 import { HeatMapChartBase } from './HeatMapChart.base';
+const env = require('../../../config/tests');
+
+const runTestSuite = env === 'TEST' ? describe : describe.skip;
 
 expect.extend(toHaveNoViolations);
 
@@ -136,7 +139,7 @@ const HeatMapNumberData: IHeatMapChartProps['data'] = [
   },
 ];
 
-describe('HeatMap chart rendering', () => {
+runTestSuite('HeatMap chart rendering', () => {
   test('Should re-render the HeatMap chart with data', async () => {
     // Arrange
     const { container, rerender } = render(

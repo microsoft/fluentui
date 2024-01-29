@@ -17,11 +17,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_226"
+    id="chart_198"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_227"
+      id="defaultTabbableElement_199"
     />
     <div
       class=
@@ -32,7 +32,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone228"
+      data-focuszone-id="FocusZone200"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -67,7 +67,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_226"
+          id="xAxisGElementchart_198"
           transform="translate(0, -35)"
         />
         <g
@@ -95,7 +95,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_226"
+          id="yAxisGElementchart_198"
           transform="translate(40, 0)"
         />
         <g />
@@ -192,7 +192,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone229"
+                data-focuszone-id="FocusZone201"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -579,11 +579,11 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_233"
+    id="chart_205"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_234"
+      id="defaultTabbableElement_206"
     />
     <div
       class=
@@ -594,7 +594,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone235"
+      data-focuszone-id="FocusZone207"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -629,7 +629,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_233"
+          id="xAxisGElementchart_205"
           transform="translate(0, -35)"
         />
         <g
@@ -657,7 +657,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_233"
+          id="yAxisGElementchart_205"
           transform="translate(40, 0)"
         />
         <g />
@@ -754,7 +754,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone236"
+                data-focuszone-id="FocusZone208"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1141,11 +1141,11 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           overflow: hidden;
           width: 100%;
         }
-    id="chart_45"
+    id="chart_17"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_46"
+      id="defaultTabbableElement_18"
     />
     <div
       class=
@@ -1156,7 +1156,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone47"
+      data-focuszone-id="FocusZone19"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -1191,7 +1191,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_45"
+          id="xAxisGElementchart_17"
           transform="translate(0, -35)"
         />
         <g
@@ -1219,7 +1219,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_45"
+          id="yAxisGElementchart_17"
           transform="translate(40, 0)"
         />
         <g />
@@ -1316,7 +1316,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone48"
+                data-focuszone-id="FocusZone20"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1716,11 +1716,11 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             overflow: hidden;
             width: 100%;
           }
-      id="chart_243"
+      id="chart_215"
       role="presentation"
     >
       <div
-        id="defaultTabbableElement_244"
+        id="defaultTabbableElement_216"
       />
       <div
         class=
@@ -1731,7 +1731,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             {
               overflow: auto;
             }
-        data-focuszone-id="FocusZone245"
+        data-focuszone-id="FocusZone217"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
@@ -1766,7 +1766,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 & path {
                   display: none;
                 }
-            id="xAxisGElementchart_243"
+            id="xAxisGElementchart_215"
             transform="translate(0, -35)"
           />
           <g
@@ -1794,7 +1794,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
-            id="yAxisGElementchart_243"
+            id="yAxisGElementchart_215"
             transform="translate(40, 0)"
           />
           <g />
@@ -1838,7 +1838,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone246"
+                  data-focuszone-id="FocusZone218"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
@@ -4639,11 +4639,11 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_250"
+    id="chart_222"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_251"
+      id="defaultTabbableElement_223"
     />
     <div
       class=
@@ -4654,7 +4654,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone252"
+      data-focuszone-id="FocusZone224"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -4692,7 +4692,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_250"
+          id="xAxisGElementchart_222"
           text-anchor="middle"
           transform="translate(0, 275)"
         >
@@ -4820,7 +4820,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_250"
+          id="yAxisGElementchart_222"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -5072,7 +5072,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone253"
+          data-focuszone-id="FocusZone225"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
@@ -5297,7 +5297,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               border: 0px;
             }
         data-is-focusable="true"
-        id="toolTipcallout247"
+        id="toolTipcallout219"
         style="opacity: 0; filter: opacity(0); pointer-events: none;"
         tabindex="-1"
       >
@@ -5341,11 +5341,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           overflow: hidden;
           width: 100%;
         }
-    id="chart_264"
+    id="chart_236"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_265"
+      id="defaultTabbableElement_237"
     />
     <div
       class=
@@ -5356,7 +5356,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone266"
+      data-focuszone-id="FocusZone238"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -5394,7 +5394,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_264"
+          id="xAxisGElementchart_236"
           text-anchor="middle"
           transform="translate(0, 275)"
         >
@@ -5522,7 +5522,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_264"
+          id="yAxisGElementchart_236"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -5774,7 +5774,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone267"
+          data-focuszone-id="FocusZone239"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
@@ -5998,7 +5998,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               border: 0px;
             }
         data-is-focusable="true"
-        id="toolTipcallout261"
+        id="toolTipcallout233"
         style="opacity: 0; filter: opacity(0); pointer-events: none;"
         tabindex="-1"
       >
@@ -6051,11 +6051,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           overflow: hidden;
           width: 100%;
         }
-    id="chart_271"
+    id="chart_243"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_272"
+      id="defaultTabbableElement_244"
     />
     <div
       class=
@@ -6066,7 +6066,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone273"
+      data-focuszone-id="FocusZone245"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -6104,7 +6104,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_271"
+          id="xAxisGElementchart_243"
           text-anchor="middle"
           transform="translate(0, 275)"
         >
@@ -6232,7 +6232,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_271"
+          id="yAxisGElementchart_243"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -6508,7 +6508,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone274"
+          data-focuszone-id="FocusZone246"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
@@ -6818,7 +6818,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               border: 0px;
             }
         data-is-focusable="true"
-        id="toolTipcallout268"
+        id="toolTipcallout240"
         style="opacity: 0; filter: opacity(0); pointer-events: none;"
         tabindex="-1"
       >

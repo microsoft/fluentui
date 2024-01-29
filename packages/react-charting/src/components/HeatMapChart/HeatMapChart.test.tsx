@@ -9,6 +9,9 @@ import { IHeatMapChartState, HeatMapChartBase } from './HeatMapChart.base';
 import { ThemeProvider } from '@fluentui/react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { act } from 'react-dom/test-utils';
+const env = require('../../../config/tests');
+
+const runTestSuite = env === 'TEST' ? describe : describe.skip;
 
 // Wrapper of the HeatMapChart to be tested.
 let wrapper: ReactWrapper<IHeatMapChartProps, IHeatMapChartState, HeatMapChartBase> | undefined;
@@ -98,7 +101,7 @@ const HeatMapStringDateData: IHeatMapChartProps['data'] = [
 ];
 
 // FIXME - non deterministic snapshots causing master pipeline breaks
-describe.skip('HeatMapChart snapShot testing', () => {
+runTestSuite('HeatMapChart snapShot testing', () => {
   beforeEach(() => {
     resetIds();
   });
@@ -322,7 +325,7 @@ describe('Render calling with respective to props', () => {
   });
 });
 
-describe('HeatMapChart - mouse events', () => {
+runTestSuite('HeatMapChart - mouse events', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
