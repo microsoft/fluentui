@@ -367,7 +367,15 @@
     ]
   },
   "resolutions": {
-    "@react-native/normalize-colors": "^0.72.0",
+    "@react-native-community/cli": "^12.3.0",
+    "@react-native-community/cli-platform-android": "^12.3.0",
+    "@react-native-community/cli-platform-ios": "^12.3.0",
+    "@react-native-community/cli-server-api": "^12.3.0",
+    "@react-native-community/cli-tools": "^12.3.0",
+    "@react-native/babel-plugin-codegen": "^0.73.0",
+    "@react-native/babel-preset": "^0.73.0",
+    "@react-native/codegen": "^0.73.0",
+    "@react-native/community-cli-plugin": "^0.73.0",
     "@typescript-eslint/eslint-plugin": "4.22.0",
     "@typescript-eslint/experimental-utils": "4.22.0",
     "@typescript-eslint/parser": "4.22.0",
