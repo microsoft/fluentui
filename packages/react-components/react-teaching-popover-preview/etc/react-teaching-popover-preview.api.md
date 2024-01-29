@@ -133,7 +133,7 @@ export type TeachingPopoverCarouselProps = Partial<ComponentProps<TeachingPopove
     carouselLayout?: TeachingPopoverCarouselLayout;
     paginationType?: 'text' | 'icon';
     strings: TeachingPopoverStrings;
-    defaultCurrentPage: number;
+    defaultCurrentPage?: number;
     onPageChange?: (event: React_2.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>, data: TeachingPopoverPageChangeData) => void;
     onClickNext?: (event: React_2.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>, data: TeachingPopoverPageChangeData) => void;
     onClickPrevious?: (event: React_2.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>, data: TeachingPopoverPageChangeData) => void;
