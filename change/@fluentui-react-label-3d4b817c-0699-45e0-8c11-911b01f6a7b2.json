@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Update Label to use a token for its padding, instead of a hardcoded value",
+  "packageName": "@fluentui/react-label",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

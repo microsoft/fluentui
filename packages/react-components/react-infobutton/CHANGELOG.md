@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-infobutton
 
-This log was last generated on Tue, 23 Jan 2024 15:11:00 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Jan 2024 10:40:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.90)
+
+Fri, 26 Jan 2024 10:40:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.89..@fluentui/react-infobutton_v9.0.0-beta.90)
+
+### Changes
+
+- Bump @fluentui/react-popover to v9.8.35 ([PR #30391](https://github.com/microsoft/fluentui/pull/30391) by beachball)
 
 ## [9.0.0-beta.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.89)
 
