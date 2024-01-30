@@ -1,7 +1,13 @@
 import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/react-focus';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
-import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { classNamesFunction, getId, getRTL, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import { IProcessedStyleSet, ITheme } from '@fluentui/react/lib/Styling';
+import {
+  IStyleFunctionOrObject,
+  classNamesFunction,
+  getId,
+  getRTL,
+  memoizeFunction,
+} from '@fluentui/react/lib/Utilities';
 import { sum as d3Sum } from 'd3-array';
 import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRight } from 'd3-sankey';
 import { select, selectAll } from 'd3-selection';
@@ -17,17 +23,23 @@ const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartSty
 const PADDING_PERCENTAGE = 0.3;
 
 type NodeId = number | string;
-type NodeValues = { [key: NodeId]: number };
+type ItemValues<T> = { [key: NodeId]: T };
+type NodeValues = ItemValues<number>;
 type LinkValues = { [key: NodeId]: NodeValues };
 
 type NodesInColumns = { [key: number]: SNode[] };
-type NormalizedData = {
+type NormalizedData = ISankeyChartData & {
   width: number;
   height: number;
-  data: ISankeyChartData;
 };
 
-type NormalizeFunction = (data: ISankeyChartData, containerWidth: number, containerHeight: number) => NormalizedData;
+type NormalizeDiagramFunction = (
+  data: ISankeyChartData,
+  containerWidth: number,
+  containerHeight: number,
+  colorsForNodes: string[] | undefined,
+  borderColorsForNodes: string[] | undefined,
+) => NormalizedData;
 
 type NodeColors = { fillColor: string; borderColor: string };
 type SankeyLayoutGenerator = SankeyLayout<SankeyGraph<{}, {}>, {}, {}>;
@@ -350,15 +362,163 @@ export function preRenderLayout(
   return { sankey, height, width };
 }
 
+/**
+ * This is used to assign node fillcolors and borderColor cyclically when the user doesnt
+ * provide color to  individual node.
+ */
+function assignNodeColors(
+  nodes: SNode[],
+  colorsForNodes: string[] | undefined,
+  borderColorsForNodes: string[] | undefined,
+) {
+  let colors: string[];
+  let borders: string[];
+  if (colorsForNodes && borderColorsForNodes) {
+    colors = colorsForNodes;
+    borders = borderColorsForNodes;
+  } else {
+    colors = DEFAULT_NODE_COLORS.map(color => color.fillColor);
+    borders = DEFAULT_NODE_COLORS.map(color => color.borderColor);
+  }
+  let currentIndex = 0;
+  nodes.forEach((node: SNode) => {
+    if (!node.color && !node.borderColor) {
+      node.color = colors[currentIndex];
+      node.borderColor = borders[currentIndex];
+    } else if (node.color && !node.borderColor) {
+      node.borderColor = '#757575';
+    } else if (node.borderColor && !node.color) {
+      node.color = '#F5F5F5';
+    }
+    currentIndex = (currentIndex + 1) % colors.length;
+  });
+}
+
+/**
+ * @param text is the text which we are trying to truncate
+ * @param rectangleWidth is the width of the rectangle which will contain the text
+ * @param padding is the space we need to leave between the rect lines and other text
+ * @param nodeWeight is the text if present needs to be accomodate in the same line as text.
+ * @returns the truncated text , if truncated given the above parameters.
+ */
+function truncateText(text: string, rectangleWidth: number, padding: number) {
+  // NOTE: This method is the most-expensive in terms of rerendering components.
+  const textLengthForNodeName = rectangleWidth - padding; // This can likely be computed once and passed in.
+  let elipsisLength = 0;
+  // The following `select` statement injects a `tempText` element into the DOM. This injection
+  // (and subsequent removal) is causing a layout recalculation. This is a performance issue.
+  // Note that this code will always inject a `tempText` element, but doesn't always remove it. This is a bug.
+  const tspan = select('.nodeName')
+    .append('text')
+    .attr('class', 'tempText')
+    .attr('font-size', '10')
+    .append('tspan')
+    .text(null);
+  tspan.text(text);
+  if (tspan.node() !== null && tspan.node()!.getComputedTextLength() <= textLengthForNodeName) {
+    return text;
+  }
+  tspan.text(null);
+  // Computing the size of elipsis is performed with each node. This should be computed once and used everywhere.
+  // TODO: Compute the size of the elipsis once and use it everywhere.
+  tspan.text('...');
+  if (tspan.node() !== null) {
+    elipsisLength = tspan.node()!.getComputedTextLength();
+  }
+  tspan.text(null);
+  let line: string = '';
+  // Calculate how much of the original text to show.
+  for (let i = 0; i < text.length; i++) {
+    line += text[i];
+    tspan.text(line);
+    if (tspan.node() !== null) {
+      const w = tspan.node()!.getComputedTextLength();
+      if (w >= textLengthForNodeName - elipsisLength) {
+        line = line.slice(0, -1);
+        line += '...';
+        break;
+      }
+    }
+  }
+  tspan.text(null);
+  return line;
+}
+
+interface IRenderedNodeAttributes {
+  readonly name: string;
+  readonly trimmed: boolean;
+  readonly height: number;
+  readonly weightOffset: number;
+}
+
+function computeNodeAttributes(nodes: SNode[]): ItemValues<IRenderedNodeAttributes> {
+  const result: ItemValues<IRenderedNodeAttributes> = {};
+  const tspan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
+  nodes.forEach((singleNode: SNode) => {
+    const height = singleNode.y1! - singleNode.y0! > 0 ? singleNode.y1! - singleNode.y0! : 0;
+    let padding = 8;
+    let textLengthForNodeWeight = 0;
+
+    // If the nodeWeight is in the same line as node description an extra padding
+    // of 6 px is required between node description and node weight.
+    if (height < MIN_HEIGHT_FOR_DOUBLINE_TYPE) {
+      padding = padding + 6;
+      // The following `select` statement injects a `tempText` element into the DOM. This injection
+      // (and subsequent removal) is causing a layout recalculation. This is a performance issue.
+      tspan.text(singleNode.actualValue!);
+      if (tspan.node() !== null) {
+        textLengthForNodeWeight = tspan.node()!.getComputedTextLength();
+        padding = padding + textLengthForNodeWeight;
+      }
+      tspan.text(null);
+    }
+    // Since the total width of the node is 124 and we are giving margin of 8px from the left .
+    // So the actual value on which it will be truncated is 124-8=116.
+    const truncatedname: string = truncateText(singleNode.name, 116, padding);
+    const isTruncated: boolean = truncatedname.slice(-3) === '...';
+    result[singleNode.nodeId as number] = {
+      name: truncatedname,
+      trimmed: isTruncated,
+      height,
+      weightOffset: textLengthForNodeWeight,
+    };
+  });
+  selectAll('.tempText').remove();
+  return result;
+}
+
+// NOTE: To start employing React.useMemo properly, we need to convert this code from a React.Component
+// to a function component. This will require a significant refactor of the code in this file.
+// https://stackoverflow.com/questions/60223362/fast-way-to-convert-react-class-component-to-functional-component
+// I am concerned that doing so would break this contract, making it difficult for consuming code.
 export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyChartState> {
   private chartContainer: HTMLDivElement;
   private _reqID: number;
-  private _calloutId: string;
-  private _linkId: string;
-  private _margins: IMargins;
-  private _isRtl: boolean = getRTL();
-  private _normalizeData: NormalizeFunction;
-  private _emptyChartId: string;
+  private readonly _calloutId: string;
+  private readonly _linkId: string;
+  private readonly _emptyChartId: string;
+  private readonly _margins: IMargins;
+  private readonly _isRtl: boolean = getRTL();
+
+  private readonly _computeClassNamesProps: (
+    theme: ITheme,
+    pathColor: string,
+    className: string,
+    containerWidth: number,
+    containerHeight: number,
+  ) => ISankeyChartStyleProps;
+  private readonly _computeClassNames: (
+    styles: IStyleFunctionOrObject<ISankeyChartStyleProps, ISankeyChartStyles>,
+    classNamesProps: ISankeyChartStyleProps,
+  ) => IProcessedStyleSet<ISankeyChartStyles>;
+  private readonly _normalizeData: NormalizeDiagramFunction;
+  private readonly _nodeAttributes: (nodes: SNode[]) => ItemValues<IRenderedNodeAttributes>;
+  private readonly _fetchNodes: (
+    classNames: IProcessedStyleSet<ISankeyChartStyles>,
+    nodes: SNode[],
+    nodeAttributes: ItemValues<IRenderedNodeAttributes>,
+  ) => React.ReactNode[] | undefined;
+  private readonly _fetchLinks: (links: SLink[]) => React.ReactNode[] | undefined;
 
   constructor(props: ISankeyChartProps) {
     super(props);
@@ -373,11 +533,57 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     };
     this._calloutId = getId('callout');
     this._linkId = getId('link');
-    this._margins = { top: 36, right: 48, bottom: 32, left: 48 };
-    this._normalizeData = memoizeFunction((data: ISankeyChartData, containerWidth: number, containerHeight: number) =>
-      this._normalizeSankeyData(data, containerWidth, containerHeight),
-    );
     this._emptyChartId = getId('_SankeyChart_empty');
+    this._margins = { top: 36, right: 48, bottom: 32, left: 48 };
+    // We memo-ize creation so that we only create a new object when any of the fields change.
+    this._computeClassNamesProps = memoizeFunction(
+      (
+        theme: ITheme,
+        pathColor: string,
+        className: string,
+        containerWidth: number,
+        containerHeight: number,
+      ): ISankeyChartStyleProps => ({
+        theme: theme!,
+        width: containerWidth,
+        height: containerHeight,
+        pathColor,
+        className,
+      }),
+    );
+    // `getClassNames` is memoized underneath, so it only recomputes when the `styles` or `classNamesProps` change.
+    // We memoize `classNamesProps` so that we only create new class names when absolutely necessary,
+    // and so that we can memoize the `_createNodes` method.
+    this._computeClassNames = memoizeFunction(
+      (
+        styles: IStyleFunctionOrObject<ISankeyChartStyleProps, ISankeyChartStyles>,
+        classNamesProps: ISankeyChartStyleProps,
+      ) => getClassNames(styles, classNamesProps),
+    );
+    this._normalizeData = memoizeFunction(
+      (
+        data: ISankeyChartData,
+        containerWidth: number,
+        containerHeight: number,
+        colorsForNodes: string[] | undefined,
+        borderColorsForNodes: string[] | undefined,
+      ) => this._normalizeSankeyData(data, containerWidth, containerHeight, colorsForNodes, borderColorsForNodes),
+    );
+    // NOTE: Memoizing the `_createNodes` and `_createLinks` methods breaks the hoverability of the chart
+    // because the nodes are currently created differently based on the layout information.
+    this._nodeAttributes = memoizeFunction((nodes: SNode[]) => computeNodeAttributes(nodes));
+    this._fetchNodes = (
+      classNames: IProcessedStyleSet<ISankeyChartStyles>,
+      nodes: SNode[],
+      nodeAttributes: ItemValues<IRenderedNodeAttributes>,
+    ) => this._createNodes(classNames, nodes, nodeAttributes);
+    this._fetchLinks = (links: SLink[]) => this._createLinks(links);
+    // Our shorter path to performance is to pre-compute the truncated labels of each node because
+    // that should not change based on the position of the mouse. This is a shorter path becase the code which
+    // computes the truncated labels creates and destroys a `tempText` element in the DOM. This is causing a
+    // reflow and repaint of the entire chart. This is a performance issue, and so computing the truncated labels
+    // once will help to mitigate this issue.
+    // TODO: Write a unit test which detects this slow-down so that future changes do not reintroduce this issue.
   }
 
   public componentDidMount(): void {
@@ -396,27 +602,30 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
 
   public render(): React.ReactNode {
     if (!this._isChartEmpty()) {
-      const { theme, className, styles, pathColor } = this.props;
+      const { theme, className, styles, pathColor, colorsForNodes, borderColorsForNodes } = this.props;
       const state = this.state;
-      const classNames: IProcessedStyleSet<ISankeyChartStyles> = getClassNames(styles!, {
-        theme: theme!,
-        width: state.containerWidth,
-        height: state.containerHeight,
-        pathColor,
-        className,
-      });
+      const classNamesProps = this._computeClassNamesProps(
+        theme!,
+        pathColor!,
+        className!,
+        state.containerWidth,
+        state.containerHeight,
+      );
+      const classNames: IProcessedStyleSet<ISankeyChartStyles> = this._computeClassNames(styles!, classNamesProps);
 
-      const {
-        data: sankeyChartData,
-        width,
-        height,
-      } = this._normalizeData(this.props.data.SankeyChartData!, state.containerWidth, state.containerHeight);
-      // NEXT: Move the following into _normalizeSankeyData to see if we can cache computation of
-      // colors, nodes, and links.
-      const dataNodes = sankeyChartData.nodes;
-      this._assignNodeColors(dataNodes); // This can probably safely move.
-      const nodeData = this._createNodes(classNames, dataNodes);
-      const linkData = this._createLinks(sankeyChartData.links);
+      // Compute the position of each node and link
+      const { nodes, links, width, height } = this._normalizeData(
+        this.props.data.SankeyChartData!,
+        state.containerWidth,
+        state.containerHeight,
+        colorsForNodes,
+        borderColorsForNodes,
+      );
+      // Pre-compute some important attributes about nodes, specifically text
+      const nodeAttributes = this._nodeAttributes(nodes);
+      // Build the nodes and links as rendered in the UX.
+      const nodeData = this._fetchNodes(classNames, nodes, nodeAttributes);
+      const linkData = this._fetchLinks(links);
 
       const calloutProps = {
         isCalloutVisible: state.isCalloutVisible,
@@ -479,11 +688,21 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     data: ISankeyChartData,
     containerWidth: number,
     containerHeight: number,
+    colorsForNodes: string[] | undefined,
+    borderColorsForNodes: string[] | undefined,
   ): NormalizedData {
     const { sankey, height, width } = preRenderLayout(this._margins, containerWidth, containerHeight, this._isRtl);
     // Clone the data before mutating it (via the SankeyLayoutGenerator) so that we don't mutate the original data.
     const transformed: ISankeyChartData = duplicateData(data);
     sankey(transformed);
+    // NOTE: After the prior line, `transformed` is now a more-complex object than the incoming `ISankeyChartData`.
+    // `transformed` should be cast to a more-specific type. This is a breaking change because we would be eliminating
+    // fields from `ISankeyChartData` and putting those fields on a now-local type. But doing so makes it clearer what
+    // the caller needs to supply and why. For example, the `actualValue` and `layer` fields of `ISNodeExtra` should
+    // both be moved. Similarly for `unnormalizedValue` in `ISLinkExtra`.
+    // `SankeyNodeMinimal` and `SankeyLinkMinimal` are both the types after `sankey(transformed)`, but have almost no
+    // bearing on the data before `sankey(transformed)` (which is basically nodes with ids and names along with links
+    // with source index, target index, and value).
     const nodesInColumn = groupNodesByColumn(transformed);
     // Keep track of the original values of the links and their acccumulated values in the nodes
     // Setting these in external objects so they cannot be mutated by other code.
@@ -500,10 +719,12 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     // Without the second call, the links are not hoverable.
     sankey(transformed);
     populateNodeActualValue(transformed, nodeValues, linkValues);
+    assignNodeColors(transformed.nodes, colorsForNodes, borderColorsForNodes);
     return {
       width,
       height,
-      data: transformed,
+      nodes: transformed.nodes,
+      links: transformed.links,
     };
   }
 
@@ -571,6 +792,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private _createNodes(
     classNames: IProcessedStyleSet<ISankeyChartStyles>,
     dataNodes: SNode[],
+    nodeAttributes: ItemValues<IRenderedNodeAttributes>,
   ): React.ReactNode[] | undefined {
     const nodes: React.ReactNode[] = [];
 
@@ -580,27 +802,14 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         const onMouseOut = () => {
           this._onLeave(singleNode);
         };
-        const height = singleNode.y1! - singleNode.y0! > 0 ? singleNode.y1! - singleNode.y0! : 0;
-        let padding = 8;
-        let textLengthForNodeWeight = 0;
-
-        // If the nodeWeight is in the same line as node description an extra padding
-        // of 6 px is required between node description and node weight.
-        if (height < MIN_HEIGHT_FOR_DOUBLINE_TYPE) {
-          padding = padding + 6;
-          const tspan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
-          tspan.text(singleNode.actualValue!);
-          if (tspan.node() !== null) {
-            textLengthForNodeWeight = tspan.node()!.getComputedTextLength();
-            padding = padding + textLengthForNodeWeight;
-          }
-          tspan.text(null);
-          selectAll('.tempText').remove();
-        }
-        // Since the total width of the node is 124 and we are giving margin of 8px from the left .
-        //So the actual value on which it will be truncated is 124-8=116.
-        const truncatedname: string = this._truncateText(singleNode.name, 116, padding);
-        const isTruncated: boolean = truncatedname.slice(-3) === '...';
+        const {
+          height,
+          trimmed: isTruncated,
+          name: truncatedname,
+          weightOffset: textLengthForNodeWeight,
+        } = nodeAttributes[singleNode.nodeId as number];
+        // NOTE: By calling `getId` here, we are creating a new ID for each node on each render. If we could memoize
+        // the nodes or IDs (especially if the node is unchanged), we could speed up the rendering even more
         const id = getId('tooltip');
         const div = select('body').append('div').attr('id', id).attr('class', classNames.toolTip!).style('opacity', 0);
         const nodeId = getId('nodeBar');
@@ -787,35 +996,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     }
   };
 
-  /**
-   * This is used to assign node fillcolors and borderColor cyclically when the user doesnt
-   * provide color to  individual node.
-   */
-  private _assignNodeColors(nodes: SNode[]) {
-    let colors: string[];
-    let borders: string[];
-    const { colorsForNodes, borderColorsForNodes } = this.props;
-    if (colorsForNodes && borderColorsForNodes) {
-      colors = colorsForNodes;
-      borders = borderColorsForNodes;
-    } else {
-      colors = DEFAULT_NODE_COLORS.map(color => color.fillColor);
-      borders = DEFAULT_NODE_COLORS.map(color => color.borderColor);
-    }
-    let currentIndex = 0;
-    nodes.forEach((node: SNode) => {
-      if (!node.color && !node.borderColor) {
-        node.color = colors[currentIndex];
-        node.borderColor = borders[currentIndex];
-      } else if (node.color && !node.borderColor) {
-        node.borderColor = '#757575';
-      } else if (node.borderColor && !node.color) {
-        node.color = '#F5F5F5';
-      }
-      currentIndex = (currentIndex + 1) % colors.length;
-    });
-  }
-
   private _fillStreamColors(singleLink: SLink, gradientUrl: string): string | undefined {
     const state = this.state;
     if (state.selectedState && state.selectedLinks.has(singleLink.index!) && state.selectedNode) {
@@ -885,50 +1065,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         });
       }
     });
-  }
-
-  /**
-   * @param text is the text which we are trying to truncate
-   * @param rectangleWidth is the width of the rectangle which will contain the text
-   * @param padding is the space we need to leave between the rect lines and other text
-   * @param nodeWeight is the text if present needs to be accomodate in the same line as text.
-   * @returns the truncated text , if truncated given the above parameters.
-   */
-  private _truncateText(text: string, rectangleWidth: number, padding: number) {
-    const textLengthForNodeName = rectangleWidth - padding;
-    let elipsisLength = 0;
-    const tspan = select('.nodeName')
-      .append('text')
-      .attr('class', 'tempText')
-      .attr('font-size', '10')
-      .append('tspan')
-      .text(null);
-    tspan.text(text);
-    if (tspan.node() !== null && tspan.node()!.getComputedTextLength() <= textLengthForNodeName) {
-      return text;
-    }
-    tspan.text(null);
-    tspan.text('...');
-    if (tspan.node() !== null) {
-      elipsisLength = tspan.node()!.getComputedTextLength();
-    }
-    tspan.text(null);
-    let line: string = '';
-    for (let i = 0; i < text.length; i++) {
-      line += text[i];
-      tspan.text(line);
-      if (tspan.node() !== null) {
-        const w = tspan.node()!.getComputedTextLength();
-        if (w >= textLengthForNodeName - elipsisLength) {
-          line = line.slice(0, -1);
-          line += '...';
-          break;
-        }
-      }
-    }
-    tspan.text(null);
-    selectAll('.tempText').remove();
-    return line;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
