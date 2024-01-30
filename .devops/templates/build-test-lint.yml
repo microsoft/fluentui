@@ -1,0 +1,22 @@
+steps:
+  - template: tools.yml
+
+  - task: Bash@3
+      inputs:
+        filePath: yarn-ci.sh
+      displayName: yarn
+
+  - script: |
+      yarn checkchange
+    displayName: check change
+
+  ## Manually call prelint since lage calls lint per package, not per repo
+  - script: |
+      yarn prelint
+    displayName: prelint (satisfied, syncpack, lint-files)
+
+  - script: |
+      yarn buildci --no-cache $(sinceArg)
+    displayName: build, test, lint
+
+  - template: .devops/templates/cleanup.yml
