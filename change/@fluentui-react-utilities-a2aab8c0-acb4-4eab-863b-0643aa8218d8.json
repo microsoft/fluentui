@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "getParent() version with ShadowDOM support.",
+  "packageName": "@fluentui/react-utilities",
+  "email": "marata@microsoft.com",
+  "dependentChangeType": "patch"
+}
