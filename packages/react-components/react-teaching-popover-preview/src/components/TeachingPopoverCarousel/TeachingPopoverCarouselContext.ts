@@ -2,7 +2,7 @@ import { createContext, useContextSelector } from '@fluentui/react-context-selec
 import type { ContextSelector, Context } from '@fluentui/react-context-selector';
 import { TeachingPopoverCarouselState } from './TeachingPopoverCarousel.types';
 
-export const TeachingPopoverCarouselContext: Context<TeachingPopoverCarouselContextValue> = createContext<
+const TeachingPopoverCarouselContext: Context<TeachingPopoverCarouselContextValue> = createContext<
   TeachingPopoverCarouselContextValue | undefined
 >(undefined) as Context<TeachingPopoverCarouselContextValue>;
 

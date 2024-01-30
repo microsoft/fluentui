@@ -29,7 +29,6 @@ export {
   renderTeachingPopoverCarousel_unstable,
   useTeachingPopoverCarouselStyles_unstable,
   useTeachingPopoverCarousel_unstable,
-  TeachingPopoverCarouselContext,
   TeachingPopoverCarouselProvider,
   useTeachingPopoverCarouselContext_unstable,
   useTeachingPopoverCarouselContextValues_unstable,
