@@ -95,4 +95,4 @@ export type {
 } from './selection/index';
 export { useSelection } from './selection/index';
 
-export { elementContains, setVirtualParent, getParent } from './virtualParent/index';
+export { elementContains, setVirtualParent, getParent, getParentInShadowDOM } from './virtualParent/index';

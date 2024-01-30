@@ -36,3 +36,23 @@ export function getParent(child: Node | null, options: GetParentOptions = {}): N
 
   return child?.parentNode || null;
 }
+
+export function getParentInShadowDOM(child: Node | null, options: GetParentOptions = {}): Node | null {
+  if (!child) {
+    return null;
+  }
+
+  if (!options.skipVirtual) {
+    const virtualParent = getVirtualParent(child);
+
+    if (virtualParent) {
+      return virtualParent;
+    }
+  }
+
+  if (child.nodeType === Node.DOCUMENT_FRAGMENT_NODE && (child as ShadowRoot).host) {
+    return (child as ShadowRoot).host;
+  }
+
+  return child?.parentNode || null;
+}

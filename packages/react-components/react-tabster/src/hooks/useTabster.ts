@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { createTabster, disposeTabster, Types as TabsterTypes } from 'tabster';
-import { useIsomorphicLayoutEffect, getParent } from '@fluentui/react-utilities';
+import { useIsomorphicLayoutEffect, getParent, getParentInShadowDOM } from '@fluentui/react-utilities';
+
+interface WindowWithTabsterShadowDOMAPI extends Window {
+  __tabsterShadowDOMAPI?: TabsterTypes.DOMAPI;
+}
 
 /**
  * Tries to get a tabster instance on the current window or creates a new one
@@ -14,6 +18,9 @@ export const useTabster = (): TabsterTypes.TabsterCore | null => {
   const { targetDocument } = useFluent();
 
   const defaultView = targetDocument?.defaultView || undefined;
+
+  const shadowDOMAPI = (defaultView as WindowWithTabsterShadowDOMAPI | undefined)?.__tabsterShadowDOMAPI;
+
   const tabster = React.useMemo(() => {
     if (!defaultView) {
       return null;
@@ -22,11 +29,12 @@ export const useTabster = (): TabsterTypes.TabsterCore | null => {
     return createTabster(defaultView, {
       autoRoot: {},
       controlTab: false,
-      getParent,
+      getParent: shadowDOMAPI ? getParentInShadowDOM : getParent,
       checkUncontrolledTrappingFocus: element =>
         !!element.firstElementChild?.hasAttribute('data-is-focus-trap-zone-bumper'),
+      DOMAPI: shadowDOMAPI,
     });
-  }, [defaultView]);
+  }, [defaultView, shadowDOMAPI]);
 
   useIsomorphicLayoutEffect(() => {
     return () => {
