@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Making api-extractor happy.",
+  "packageName": "@fluentui/react-charting",
+  "email": "marata@microsoft.com",
+  "dependentChangeType": "patch"
+}
