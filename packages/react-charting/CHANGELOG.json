@@ -2,6 +2,35 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 29 Jan 2024 07:27:14 GMT",
+      "tag": "@fluentui/react-charting_v5.19.19",
+      "version": "5.19.19",
+      "comments": {
+        "none": [
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ba494495dc4e54c7d95e820514f20289e92d1137",
+            "comment": "Added unit test cases for Heat map chart"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.133",
+            "commit": "2c3fdb3e90f95f7476d02a4b3b253c5f04bc85cf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.115.2",
+            "commit": "2c3fdb3e90f95f7476d02a4b3b253c5f04bc85cf"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Jan 2024 07:26:11 GMT",
       "tag": "@fluentui/react-charting_v5.19.18",
       "version": "5.19.18",
