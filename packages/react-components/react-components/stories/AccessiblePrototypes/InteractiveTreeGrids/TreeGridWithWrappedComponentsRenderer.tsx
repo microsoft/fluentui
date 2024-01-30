@@ -120,7 +120,7 @@ export const TreeGridWithWrappedComponentsRenderer: React.FC<TreeGridWithWrapped
             callTabsterKeyboardHandler = false;
           } else if (event.key === 'ArrowLeft' && level === '1') {
             changeRecentCategoryExpandedState(category, false);
-          } else if ((event.key === 'Enter' || event.key === ' ') && level === '1') {
+          } else if (event.key === 'Enter' && level === '1') {
             changeRecentCategoryExpandedState(category, !category?.expanded);
           } else if (event.key === 'ArrowLeft' && level === '2') {
             const categoryToFocus = recentCategories.find(testedCategory => {
