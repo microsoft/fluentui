@@ -2,6 +2,33 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Tue, 30 Jan 2024 23:16:54 GMT",
+      "tag": "@fluentui/react-card_v9.0.66",
+      "version": "9.0.66",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-tabster to v9.18.0",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-utilities to v9.18.0",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-card",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.29",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jan 2024 15:11:00 GMT",
       "tag": "@fluentui/react-card_v9.0.65",
       "version": "9.0.65",
