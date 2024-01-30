@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Optional ShadowDOM support.",
+  "packageName": "@fluentui/react-tabster",
+  "email": "marata@microsoft.com",
+  "dependentChangeType": "patch"
+}
