@@ -12,6 +12,8 @@ import {
   useFocusableGroup,
   useAdamTableInteractive2Navigation,
   Button,
+  Toolbar,
+  ToolbarButton,
   Field,
   Input,
   Menu,
@@ -27,7 +29,7 @@ import {
 import { TimePicker } from '@fluentui/react-timepicker-compat';
 
 interface ComponentWrapperProps {
-  type: 'textbox' | 'slider' | 'time';
+  type: 'textbox' | 'toolbar' | 'slider' | 'time';
   label: string;
   children: React.ReactNode;
 }
@@ -37,6 +39,7 @@ const ComponentWrapper: React.FC<ComponentWrapperProps> = ({ type, label, childr
   });
   const roleDescriptionMapping = {
     textbox: 'TextBox',
+    toolbar: 'Toolbar',
     slider: 'Slider',
     time: 'Time',
   };
@@ -192,7 +195,7 @@ export const TreeGridWithWrappedComponentsRenderer: React.FC<TreeGridWithWrapped
                 {...tableRowTabsterAttribute}
               >
                 <TableCell role="rowheader">{category.title}</TableCell>
-                <TableCell role="gridcell" aria-colspan={category.columns.length + 4}>
+                <TableCell role="gridcell" aria-colspan={category.columns.length + 5}>
                   <Button>Header action</Button>
                 </TableCell>
               </TableRow>
@@ -235,8 +238,8 @@ export const TreeGridWithWrappedComponentsRenderer: React.FC<TreeGridWithWrapped
                     </TableCell>
                     <TableCell role="gridcell">
                       <ComponentWrapper type="time" label="Reminder">
-                        <Field label="Minutes to be reminded before">
-                          <TimePicker value="0:15" />
+                        <Field label="Time to be reminded at">
+                          <TimePicker value="14:30" />
                         </Field>
                       </ComponentWrapper>
                       <Button>Add another reminder</Button>
@@ -250,6 +253,15 @@ export const TreeGridWithWrappedComponentsRenderer: React.FC<TreeGridWithWrapped
                         {meeting.properties?.includes('includingContent') && <Button>Agenda and notes</Button>}
                       </TableCell>
                     )}
+                    <TableCell role="gridcell">
+                      <ComponentWrapper type="toolbar" label="Other actions">
+                        <Toolbar aria-label="Other actions">
+                          <ToolbarButton>First</ToolbarButton>
+                          <ToolbarButton>Second</ToolbarButton>
+                          <ToolbarButton>Third</ToolbarButton>
+                        </Toolbar>
+                      </ComponentWrapper>
+                    </TableCell>
                     {category.columns.includes('tasks') && (
                       <TableCell role="gridcell">
                         {meeting.tasksCount && <Button>{`${meeting.tasksCount} tasks`}</Button>}
