@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Adding .mcworld and .mctemplate filetype icons and updated FabricCDN url",
+  "packageName": "@fluentui/style-utilities",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
