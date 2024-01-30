@@ -19,4 +19,4 @@ steps:
       yarn buildci --no-cache $(sinceArg)
     displayName: build, test, lint
 
-  - template: .devops/templates/cleanup.yml
+  - template: cleanup.yml

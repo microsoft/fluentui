@@ -34,4 +34,4 @@ steps:
       # This MUST have a trailing slash, or the links to PR deploy site assets won't work
       githubTargetLink: $(deployUrl)/
 
-  - template: .devops/templates/cleanup.yml
+  - template: cleanup.yml
