@@ -10,14 +10,7 @@ export function PopoverTemplate<T extends Popover>(options: any = {}): ElementVi
   return html<T>`
     ${startSlotTemplate(options)}
     <slot name="trigger" ${slotted('anchorReferences')}></slot>
-
-    <div
-      class="popover-container"
-      id="${x => x.targetId}"
-      anchor="${x => x.anchorId}"
-      popover="manual"
-      ${ref('popoverReference')}
-    >
+    <div class="popover-container" id="${x => x.targetId}" popover="manual" ${ref('popoverReference')}>
       <slot name="popover-content"></slot>
     </div>
     ${endSlotTemplate(options)}

@@ -17,6 +17,7 @@ const template = html`
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
   </style>
 
@@ -24,7 +25,7 @@ const template = html`
     <div class="cropped-area-container">
       <fluent-popover
         anchor-id="${x => x.anchorId}"
-        anchor-bounds-selector=".popover-container"
+        overflow-boundary-selector=".popover-story-container"
         placement="${x => x.placement}"
         size="large"
       >
@@ -34,11 +35,6 @@ const template = html`
     </div>
   </div>
 `;
-
-// size="${x => x.size}"
-// ?beak="${x => x.beak}"
-// ?open="${x => x.show}"
-// placement="${x => x.placement}"
 
 const placementOptions = [
   'top-start',

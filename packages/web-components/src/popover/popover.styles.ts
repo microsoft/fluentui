@@ -8,21 +8,6 @@ import {
 import { css } from '@microsoft/fast-element';
 
 export const popoverStyles = css`
-  [popover] {
-    /* font-family: ${fontFamilyBase}; */
-    /* position: absolute; */
-    /* height: fit-content;
-    width: fit-content; */
-    /* visibility: hidden; */
-    background-color: ${colorNeutralBackground1};
-    border-radius: ${borderRadiusMedium};
-    border: 1px solid ${colorTransparentStrokeInteractive};
-    box-shadow: ${shadow8};
-    /* max-width: 260px;
-    padding: 12px; */
-    /* transform: translateY(-10px); */
-  }
-
   :host([size='small']) ::slotted([slot='popover-content']) {
     padding: 12px;
     max-width: 214px;
@@ -38,23 +23,26 @@ export const popoverStyles = css`
   }
 
   [popover]:popover-open {
-    /* opacity: 1; */
-    /* transform: scaleY(1); */
     transform: translateY(2px);
     opacity: 1;
+
+    position: absolute;
+    inset: 0;
+    top: 0;
+    left: 0;
   }
 
   [popover] {
     transition: visibility 150ms ease, opacity 150ms ease, transform 150ms ease;
-    position: absolute;
     transform: translateY(0);
-    /* transition-delay: 600ms; */
     opacity: 0;
-
+    font-family: ${fontFamilyBase};
     background-color: ${colorNeutralBackground1};
     border-radius: ${borderRadiusMedium};
     border: 1px solid ${colorTransparentStrokeInteractive};
     box-shadow: ${shadow8};
+    max-width: 260px;
+    padding: 12px;
   }
 
   @starting-style {

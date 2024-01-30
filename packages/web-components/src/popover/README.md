@@ -65,7 +65,7 @@ Because of the above, there are only two choices for building a positioning syst
 | size             | Determines popover padding and arrow size                                                                               | "small" \| "medium" \| "large"            |
 | popover-align    | Alignment for the component. Only has an effect if used with the popover-position attribute.                            | "start" \| "end" \| "top" \| "bottom      |
 | popover-position | Position for the component. Position has higher priority than popover-align.                                            | "above" \| "below" \| "before" \| "after" |
-| positioning      | Configures the position of the Popover in relation to the anchor element. Supercedes popover-align and popover-position | PositioningShorthand                      |
+| position         | Configures the position of the Popover in relation to the anchor element. Supercedes popover-align and popover-position | PositioningShorthand                      |
 | cover-target     | Covers the target when invoking popover                                                                                 | boolean                                   |
 | offset-x         | x-axis offset modifier for popover location                                                                             | number                                    |
 | offset-y         | y-axis offset modifier for popover location                                                                             | number                                    |
