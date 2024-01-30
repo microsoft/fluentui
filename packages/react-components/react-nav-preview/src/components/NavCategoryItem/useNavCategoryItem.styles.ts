@@ -21,7 +21,9 @@ const useRootStyles = makeResetStyles({
 
 const useExpandIconStyles = makeResetStyles({
   //todo: add styles for expand icon
-  expandIcon: {},
+  expandIcon: {
+    display: 'flex',
+  },
 });
 
 /**
