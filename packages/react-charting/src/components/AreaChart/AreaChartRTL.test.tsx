@@ -9,9 +9,6 @@ import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { AreaChartBase } from './AreaChart.base';
 import { axe, toHaveNoViolations } from 'jest-axe';
-const env = require('../../../config/tests');
-
-const runTestSuite = env === 'TEST' ? describe : describe.skip;
 
 expect.extend(toHaveNoViolations);
 const beforeAll = () => {
@@ -265,7 +262,7 @@ describe('Area chart rendering', () => {
     },
     undefined,
     beforeAll,
-    env !== 'TEST',
+    true,
   );
 });
 
@@ -414,7 +411,7 @@ describe('Area chart - Subcomponent callout', () => {
   );
 });
 
-runTestSuite('Area chart - Subcomponent xAxis Labels', () => {
+describe('Area chart - Subcomponent xAxis Labels', () => {
   testWithWait(
     'Should show the x-axis labels tooltip when hovered',
     AreaChart,
@@ -439,6 +436,7 @@ runTestSuite('Area chart - Subcomponent xAxis Labels', () => {
     },
     undefined,
     beforeAll,
+    true,
   );
 });
 

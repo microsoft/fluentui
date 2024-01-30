@@ -2,11 +2,8 @@ import * as React from 'react';
 import { act, queryAllByAttribute, render, waitFor, screen, fireEvent } from '@testing-library/react';
 import { HeatMapChart, IHeatMapChartProps } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { getByClass } from '../../utilities/TestUtility.test';
+import { getByClass, runTestSuiteInTestEnv } from '../../utilities/TestUtility.test';
 import { HeatMapChartBase } from './HeatMapChart.base';
-const env = require('../../../config/tests');
-
-const runTestSuite = env === 'TEST' ? describe : describe.skip;
 
 expect.extend(toHaveNoViolations);
 
@@ -139,7 +136,7 @@ const HeatMapNumberData: IHeatMapChartProps['data'] = [
   },
 ];
 
-runTestSuite('HeatMap chart rendering', () => {
+runTestSuiteInTestEnv('HeatMap chart rendering', () => {
   test('Should re-render the HeatMap chart with data', async () => {
     // Arrange
     const { container, rerender } = render(

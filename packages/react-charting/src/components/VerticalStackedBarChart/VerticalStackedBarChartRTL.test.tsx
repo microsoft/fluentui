@@ -10,7 +10,6 @@ import { VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
 import * as utils from '@fluentui/react/lib/Utilities';
 import { chartPoints2VSBC, chartPointsVSBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
-const env = require('../../../config/tests');
 
 expect.extend(toHaveNoViolations);
 
@@ -120,7 +119,7 @@ describe('Vertical stacked bar chart rendering', () => {
     },
     undefined,
     undefined,
-    env !== 'TEST',
+    true,
   );
 
   testWithoutWait(
@@ -136,7 +135,7 @@ describe('Vertical stacked bar chart rendering', () => {
     },
     undefined,
     undefined,
-    env !== 'TEST',
+    true,
   );
 
   testWithoutWait(
@@ -152,7 +151,7 @@ describe('Vertical stacked bar chart rendering', () => {
     },
     undefined,
     undefined,
-    env !== 'TEST',
+    true,
   );
 
   testWithoutWait(
@@ -167,7 +166,7 @@ describe('Vertical stacked bar chart rendering', () => {
     },
     undefined,
     undefined,
-    env !== 'TEST',
+    true,
   );
 });
 

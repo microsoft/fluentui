@@ -1,9 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { act, queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import * as React from 'react';
+const ENV = require('../../config/tests');
 
 export const getById = queryAllByAttribute.bind(null, 'id');
 export const getByClass = queryAllByAttribute.bind(null, 'class');
+export const runTestSuiteInTestEnv = ENV === 'TEST' ? describe : describe.skip;
+export const runTestInTestEnv = ENV === 'TEST' ? test : test.skip;
 
 // Test function that does not wait for any async calls to finish
 export const testWithoutWait = (
@@ -13,9 +16,9 @@ export const testWithoutWait = (
   testFunction: (container: HTMLElement) => void,
   testFunctionAfterRender?: () => void,
   beforeAllFunction?: () => void,
-  skip?: boolean,
+  shouldRunInTestEnvOnly?: boolean,
 ) => {
-  const runTest = skip ? test.skip : test;
+  const runTest = shouldRunInTestEnvOnly ? runTestInTestEnv : test;
   runTest(description, () => {
     beforeAllFunction !== undefined && beforeAllFunction();
     const { container } = render(React.createElement(component, (props = { ...props })));
@@ -32,8 +35,10 @@ export const testWithWait = (
   testFunction: (container: HTMLElement) => void,
   testFunctionAfterRender?: () => void,
   beforeAllFunction?: () => void,
+  shouldRunInTestEnvOnly?: boolean,
 ) => {
-  test(description, async () => {
+  const runTest = shouldRunInTestEnvOnly ? runTestInTestEnv : test;
+  runTest(description, async () => {
     beforeAllFunction !== undefined && beforeAllFunction();
     const { container } = render(React.createElement(component, (props = { ...props })));
     testFunctionAfterRender !== undefined && testFunctionAfterRender();
