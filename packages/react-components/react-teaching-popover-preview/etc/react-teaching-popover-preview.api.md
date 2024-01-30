@@ -9,7 +9,6 @@
 import { Button } from '@fluentui/react-button';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
-import type { Context } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -90,9 +89,6 @@ export const TeachingPopoverCarousel: ForwardRefComponent<TeachingPopoverCarouse
 
 // @public (undocumented)
 export const teachingPopoverCarouselClassNames: SlotClassNames<TeachingPopoverCarouselSlots>;
-
-// @public (undocumented)
-export const TeachingPopoverCarouselContext: Context<TeachingPopoverCarouselContextValue>;
 
 // @public
 export type TeachingPopoverCarouselContextValue = Pick<TeachingPopoverCarouselState, 'currentPage' | 'setCurrentPage' | 'totalPages' | 'onPageChange'>;
