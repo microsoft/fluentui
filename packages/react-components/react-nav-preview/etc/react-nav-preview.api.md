@@ -40,7 +40,7 @@ export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> & NavCat
 // @public
 export type NavCategoryProps = {
     value: NavItemValue;
-    children?: React.ReactNode;
+    children?: React_2.ReactNode;
 };
 
 // @public
