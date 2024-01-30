@@ -115,21 +115,21 @@ const useIndicatorBaseClassName = makeResetStyles({
   fill: 'currentcolor',
   pointerEvents: 'none',
 
+  '@media (forced-colors: active)': {
+    color: `var(${vars.indicatorColor}, ButtonText)`,
+  },
+
   '::after': {
     content: `var(${vars.indicatorContent})`,
     position: 'absolute',
-    width: '100%',
-    height: '100%',
+    width: indicatorSize,
+    height: indicatorSize,
     borderRadius: 'inherit',
     // Use a transform to avoid pixel rounding errors at 125% DPI
     // https://github.com/microsoft/fluentui/issues/30025
     transform: 'scale(0.625)',
     backgroundColor: 'currentcolor',
     forcedColorAdjust: 'none', // currentcolor inherits the correct forced colors
-  },
-
-  '@media (forced-colors: active)': {
-    color: `var(${vars.indicatorColor}, ButtonText)`,
   },
 });
 
