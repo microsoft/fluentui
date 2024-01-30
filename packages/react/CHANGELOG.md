@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 24 Jan 2024 07:26:57 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jan 2024 07:27:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.115.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.115.2)
+
+Mon, 29 Jan 2024 07:27:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.115.1..@fluentui/react_v8.115.2)
+
+### Patches
+
+- fix: DetailsList inner FocusZone receives focus even if the header is not tabbable ([PR #30386](https://github.com/microsoft/fluentui/pull/30386) by sarah.higley@microsoft.com)
 
 ## [8.115.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.115.1)
 
