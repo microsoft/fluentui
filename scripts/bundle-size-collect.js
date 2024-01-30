@@ -24,6 +24,10 @@ items.forEach(item => {
 
 fs.writeFileSync(path.join(distRoot, outputFilename), JSON.stringify({ sizes }));
 
+console.log('Bundle size Collect:');
+console.log('====================');
+console.log(sizes);
+
 function getFilesizeInBytes(fileName) {
   return fs.statSync(fileName).size;
 }
