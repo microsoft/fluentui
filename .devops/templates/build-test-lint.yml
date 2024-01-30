@@ -2,9 +2,9 @@ steps:
   - template: tools.yml
 
   - task: Bash@3
-      inputs:
-        filePath: yarn-ci.sh
-      displayName: yarn
+    inputs:
+      filePath: yarn-ci.sh
+    displayName: yarn
 
   - script: |
       yarn checkchange
