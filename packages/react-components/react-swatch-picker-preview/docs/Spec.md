@@ -79,22 +79,16 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
 ## Sample Code
 
 ```jsx
-<SwatchPicker aria-label="Font color">
-  <SwatchPickerRow>
-    <ColorSwatch swatch="red" />
-    <ColorSwatch swatch="rgb(189, 255, 104)" />
-    <ColorSwatch swatch="#f09" />
-  </SwatchPickerRow>
-  <SwatchPickerRow>
-    <ColorSwatch swatch="#ad5" />
-    <ColorSwatch swatch="magenta" />
-    <ImageSwatch swatch="./path/image.png" />
-  </SwatchPickerRow>
-  <SwatchPickerRow>
-    <ImageSwatch swatch="./path/image1.png" />
-    <ImageSwatch swatch="./path/image2.png" />
-    <ImageSwatch swatch="./path/image3.png" />
-  </SwatchPickerRow>
+<SwatchPicker aria-label="Font color" layout="grid" columnCount={3}>
+  <ColorSwatch swatch="#FF1921" aria-label="Red" />
+  <ColorSwatch swatch="#FFC12E" aria-label="Orange" />
+  <ColorSwatch swatch="#FEFF37" aria-label="Yellow" />
+  <ColorSwatch swatch="#00B053" aria-label="Green" />
+  <ColorSwatch swatch="#00AFED" aria-label="Light Blue" />
+  <ColorSwatch swatch="#006EBD" aria-label="Blue" />
+  <ColorSwatch swatch="#712F9E" aria-label="Purple" />
+  <ImageSwatch swatch="./path/image1.png" aria-label="Space craft" />
+  <ImageSwatch swatch="./path/image2.png" aria-label="Planets" />
 </SwatchPicker>
 ```
 
@@ -134,7 +128,7 @@ Border radius for rounded shape can be customized via CSS.
 
 Custom size can be set by overriding `width` and `height` of the ColorSwatch or ImageSwatch.
 
-### Density/Gap/Spacing
+### Spacing
 
 - `small`: 2px
 - `medium` (default): 4px
@@ -143,43 +137,17 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 
 - `rest`
 - `hover`
-- `selected`
-- `focused`
 - `pressed`
-- `disabled`
+- `selected`
+- `selected pressed`
+- `selected hover`
+- `focused`
+- `disabled` - should be used with caution. In case if there are too many disabled swatches it's better to hide them.
 - `empty`
 
 ## API
 
-## Structure
-
-### Components
-
-| Component    | Purpose                                                |
-| ------------ | ------------------------------------------------------ |
-| SwatchPicker | Group which can represent swatches as a row or a grid. |
-| ColorSwatch  | Swatch for a color                                     |
-| ImageSwatch  | Swatch for an image, texture or a pattern              |
-
-## SwatchPicker component
-
-#### Anatomy
-
-![visual anatomy of the SwatchPicker component](./assets/swatch-picker-base.jpg)
-
-#### DOM
-
-```HTML
-<div role="grid" aria-label="Color grid">
-  {children}
-</div>
-```
-
-#### ColorPicker structure
-
-- root `div` element
-
-#### API
+### SwatchPicker
 
 | Property | Values                                   | Default  | Purpose                             |
 | -------- | ---------------------------------------- | -------- | ----------------------------------- |
@@ -188,7 +156,67 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 | size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell     |
 | spacing  | `small`, `medium`                        | `medium` | Sets spacing between rows and cells |
 
-## ColorSwatch component
+| Slots | Values | Default | Description                  |
+| ----- | ------ | ------- | ---------------------------- |
+| root  | `div`  | `div`   | The root of the SwatchPicker |
+
+### ColorSwatch
+
+| Property | Values                                   | Default  | Purpose                         |
+| -------- | ---------------------------------------- | -------- | ------------------------------- |
+| shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                      |
+| size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell |
+| value    |                                          |          | Color in hex or RGB             |
+| disabled | boolean                                  |          |                                 |
+| selected | boolean                                  |          |                                 |
+| empty    | boolean                                  |          |                                 |
+
+| Slots | Values   | Default  | Description                                                 |
+| ----- | -------- | -------- | ----------------------------------------------------------- |
+| root  | `button` | `button` | The root of the ColorSwatch element                         |
+| icon  | `span`   | `span`   | Icon which can be `disabled` icon or custom one as a swatch |
+
+### ImageSwatch
+
+| Property | Values                                   | Default  | Purpose                                             |
+| -------- | ---------------------------------------- | -------- | --------------------------------------------------- |
+| id       | `number`, `string`                       |          | Sets ID of the swatch to map it to the larger image |
+| shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                                          |
+| size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell                     |
+| disabled | boolean                                  |          |                                                     |
+| selected | boolean                                  |          |                                                     |
+| empty    | boolean                                  |          |                                                     |
+
+| Slots | Values   | Default  | Description                                                 |
+| ----- | -------- | -------- | ----------------------------------------------------------- |
+| root  | `button` | `button` | The root of the ColorSwatch element                         |
+| icon  | `span`   | `span`   | Icon which can be `disabled` icon or custom one as a swatch |
+
+## Structure
+
+### Components
+
+| Component    | Purpose                                                               |
+| ------------ | --------------------------------------------------------------------- |
+| SwatchPicker | Renders SwatchPicker which can represent swatches as a row or a grid. |
+| ColorSwatch  | Swatch for a color or icon                                            |
+| ImageSwatch  | Swatch for an image, texture or a pattern                             |
+
+### SwatchPicker component
+
+#### Anatomy
+
+![visual anatomy of the SwatchPicker component](./assets/swatch-picker-base.jpg)
+
+#### DOM
+
+```HTML
+<div role="radiogroup" aria-label="Color grid">
+  <!-- Content rendered here -->
+</div>
+```
+
+### ColorSwatch component
 
 is used for picking colors:
 
@@ -202,29 +230,9 @@ is used for picking colors:
 #### DOM
 
 ```HTML
-<button role="gridcell" aria-selected="true" style="--fui-SwatchPicker--color: #ff0099;">
-  {icon}
-</button>
-<button role="gridcell" aria-selected="false">
-  {icon}
-</button>
+<button role="radio" aria-selected="true" style="--fui-SwatchPicker--color: #ff0099" aria-label="Pink"></button>
+<button role="radio" aria-selected="false" style="--fui-SwatchPicker--color: #ff0000" aria-label="Yellow"></button>
 ```
-
-#### ColorSwatch structure
-
-- root `button` element
-- icon slot
-
-#### API
-
-| Property     | Values                                   | Default  | Purpose                         |
-| ------------ | ---------------------------------------- | -------- | ------------------------------- |
-| shape        | `square`, `circular`, `rounded`          | `square` | Sets shape                      |
-| size         | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell |
-| swatch/value |                                          |          | Sets color id                   |
-| disabled     | boolean                                  |          |                                 |
-| selected     | boolean                                  |          |                                 |
-| empty        | boolean                                  |          |                                 |
 
 ## ImageSwatch component
 
@@ -241,58 +249,8 @@ is used to pick images:
 #### DOM
 
 ```HTML
-<span name="swatch" value="{color-id}">
-  <input type="radio" id="{color-id}" name="swatch" value="{color-id}">
-</span>
+<button role="radio" aria-selected="false" style="--fui-SwatchPicker--image: {url}" aria-label="Space"></button>
 ```
-
-#### ColorSwatch structure:
-
-- root `span` element
-- `input` element
-
-#### API
-
-| Property | Values                                   | Default  | Purpose                         |
-| -------- | ---------------------------------------- | -------- | ------------------------------- |
-| shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                      |
-| size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell |
-| id       | number                                   |          | Sets swatch id                  |
-| name     |                                          |          |                                 |
-| disabled | boolean                                  |          |                                 |
-| selected | boolean                                  |          |                                 |
-
-=======
-
-## Background
-
-_Description and use cases of this component_
-
-## Prior Art
-
-_Include background research done for this component_
-
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
-
-## Sample Code
-
-_Provide some representative example code that uses the proposed API for the component_
-
-## Variants
-
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
-
-## API
-
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
-
-## Structure
-
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
 
 ## Migration
 
