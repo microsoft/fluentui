@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: setup monosize for measuring bundle size which will replace-size auditor bot",
-  "packageName": "@fluentui/react",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

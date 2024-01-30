@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 30 Jan 2024 07:26:36 GMT",
+      "tag": "@fluentui/react_v8.115.2",
+      "version": "8.115.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "41c129b1db39c32ba410be8e614750a079fb2ab8",
+            "comment": "chore: setup monosize for measuring bundle size which will replace-size auditor bot"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jan 2024 07:27:14 GMT",
       "tag": "@fluentui/react_v8.115.2",
       "version": "8.115.2",
