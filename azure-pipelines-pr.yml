@@ -1,0 +1,29 @@
+pr:
+  - 7.0
+
+trigger: none
+
+variables:
+  - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
+      - name: sinceArg
+        value: --since $(targetBranch)
+
+  - group: fabric-variables
+
+  - template: .devops/templates/variables.yml
+
+pool: '1ES-Host-Ubuntu'
+
+jobs:
+  - job: BuildTestLint
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/build-test-lint.yml
+
+  - job: Deploy
+    displayName: Deploy
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/deploy.yml
