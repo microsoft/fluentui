@@ -2,6 +2,21 @@
   "name": "@fluentui/react-rating-preview",
   "entries": [
     {
+      "date": "Fri, 26 Jan 2024 10:40:21 GMT",
+      "tag": "@fluentui/react-rating-preview_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "aa038189b6f700f5a43e933466e7ca72163423d6",
+            "comment": "feat: Add RatingDisplay component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jan 2024 15:11:00 GMT",
       "tag": "@fluentui/react-rating-preview_v0.1.6",
       "version": "0.1.6",

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.115.1",
+  "version": "8.115.2",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -17,7 +17,7 @@
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
-    "bundle-size-auditor": "bundle-size-auditor --report-path='../../dist/bundle-size-auditor/react'",
+    "bundle-size": "monosize measure",
     "build-storybook": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",

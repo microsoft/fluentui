@@ -176,6 +176,7 @@ function usePositioningOptions(options: PositioningOptions) {
     fallbackPositions,
     useTransform,
     matchTargetSize,
+    disableUpdateOnResize = false,
   } = options;
 
   const { dir, targetDocument } = useFluent();
@@ -216,6 +217,7 @@ function usePositioningOptions(options: PositioningOptions) {
         middleware,
         strategy: positionStrategy,
         useTransform,
+        disableUpdateOnResize,
       };
     },
     // Options is missing here, but it's not required
@@ -238,6 +240,7 @@ function usePositioningOptions(options: PositioningOptions) {
       useTransform,
       matchTargetSize,
       targetDocument,
+      disableUpdateOnResize,
     ],
   );
 }

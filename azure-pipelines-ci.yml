@@ -60,5 +60,5 @@ extends:
 
               # False positive AV. Wi'l follow up with AV owners. For now to get compliant deleting file before.
               - script: |
-                  rm apps/pr-deploy-site/dist/public-docsite-v9/storybook/407.13419a99614bf685f100.manager.bundle.js
+                  rm apps/pr-deploy-site/dist/public-docsite-v9/storybook/407.*.manager.bundle.js
                 displayName: 'Remove false positive file'

@@ -2,6 +2,48 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Mon, 29 Jan 2024 13:56:05 GMT",
+      "tag": "@fluentui/react-combobox_v9.7.3",
+      "version": "9.7.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "3717b9e1d0a669bf73b2969508fb1e946aa9e87d",
+            "comment": "fix: add aria-controls to combobox and dropdown"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.1.52",
+            "commit": "3a6233a99addd66fdc17d7e6be859d08dd6dafc6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.13.1",
+            "commit": "3a6233a99addd66fdc17d7e6be859d08dd6dafc6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jan 2024 10:40:22 GMT",
+      "tag": "@fluentui/react-combobox_v9.7.2",
+      "version": "9.7.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.13.0",
+            "commit": "b04151ab510b2908a858272e08a0d6f2c33f6d77"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jan 2024 15:10:58 GMT",
       "tag": "@fluentui/react-combobox_v9.7.1",
       "version": "9.7.1",
