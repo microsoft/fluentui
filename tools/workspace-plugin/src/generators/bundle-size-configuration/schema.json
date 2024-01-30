@@ -6,12 +6,19 @@
   "properties": {
     "name": {
       "type": "string",
-      "description": "",
+      "description": "Project for which to generate bundle-size configuration.",
       "$default": {
         "$source": "argv",
         "index": 0
       },
-      "x-prompt": "What name would you like to use?"
+      "x-prompt": "For which project do you want to generate bundle-size configuration?",
+      "x-dropdown": "projects"
+    },
+    "overrideBaseConfig": {
+      "type": "boolean",
+      "description": "generate monosize config within project in order to add custom bundling overrides",
+      "x-prompt": "Would you like to override monosize bundling config for measurements?",
+      "default": false
     }
   },
   "required": ["name"]
