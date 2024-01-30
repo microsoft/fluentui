@@ -32,7 +32,7 @@ export const useColorSwatch_unstable = <T extends Color>(
         ...props,
         role: props.role ?? 'gridcell',
         tabIndex: 0,
-        'aria-selected': selected,
+        // 'aria-selected': selected,
         onClick: () => {
           pickerCtx.notifySelected(props);
         },

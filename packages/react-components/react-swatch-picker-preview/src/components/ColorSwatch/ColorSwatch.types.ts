@@ -27,6 +27,9 @@ export type ColorSwatchProps<T extends Color> = ComponentProps<ColorSwatchSlots>
     defaultSelected?: boolean;
 
     empty?: boolean;
+
+    contrastBorderColor?: string;
+    contrastStateColor?: string;
   };
 
 /**

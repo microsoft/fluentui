@@ -9,36 +9,19 @@ import { Color } from '../../contexts/picker';
 const { swatchColor, swatchBorderColor, swatchStateColor } = swatchCSSVars;
 
 export const useColorSwatchState_unstable = <T extends Color>(state: ColorSwatchState, props: ColorSwatchProps<T>) => {
-  const { hex, selected, defaultSelected } = props;
+  const { hex, selected } = props;
+  const contrastRatio = calculateContrastRatioFromHex('#fafafa', hex);
 
-  // TODO get theme color - needs background
-  // const contrastRatio = calculateContrastRatioFromHex('#fafafa', color.hex);
-  // const contrastBorderColor = contrastRatio < 3 ? '#000' : 'transparent';
-  // const contrastStateColor = contrastRatio < 3 ? '#000' : '#fff';
+  const _stateColor = props.contrastStateColor ?? '#000';
+  const _borderColor = props.contrastBorderColor ?? '#000';
 
-  const [selectedValue, setSelectedValue] = useControllableState({
-    state: selected,
-    defaultState: defaultSelected,
-    initialState: false,
-  });
-
-  // const onSelectClick = React.useCallback(
-  //   ev => {
-  //     if (!disabled) {
-  //       // && !disabledFocusable
-  //       if (ev.defaultPrevented) {
-  //         return;
-  //       }
-  //       setSelectedValue(selectedValue);
-  //     }
-  //   },
-  //   [selectedValue, disabled, setSelectedValue], //disabledFocusable,
-  // );
+  const contrastBorderColor = contrastRatio < 3 ? _borderColor : 'transparent';
+  const contrastStateColor = contrastRatio < 3 ? _stateColor : '#fff';
 
   const rootVariables = {
     [swatchColor]: hex || '#000',
-    [swatchBorderColor]: '#fff', //contrastBorderColor,
-    [swatchStateColor]: '#fff', //contrastStateColor,
+    [swatchBorderColor]: contrastBorderColor,
+    [swatchStateColor]: contrastStateColor,
   };
   // Root props
   state.root.style = {
@@ -52,7 +35,7 @@ export const useColorSwatchState_unstable = <T extends Color>(state: ColorSwatch
 
     root: {
       ...state.root,
-      // 'aria-selected': selectedValue,
+      'aria-selected': selected,
       // onClick: useEventCallback(
       //   mergeCallbacks(onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>, onSelectClick),
       // ),
