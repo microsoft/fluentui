@@ -13,17 +13,12 @@ export const navCategoryItemClassNames: SlotClassNames<NavCategoryItemSlots> = {
  * Styles for the root slot
  */
 const useRootStyles = makeResetStyles({
-  root: {
-    display: 'flex',
-    ...typographyStyles.body1,
-  },
+  display: 'flex',
+  ...typographyStyles.body1,
 });
 
 const useExpandIconStyles = makeResetStyles({
-  //todo: add styles for expand icon
-  expandIcon: {
-    display: 'flex',
-  },
+  display: 'flex',
 });
 
 /**
