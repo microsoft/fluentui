@@ -4,6 +4,9 @@ exports[`TeachingPopoverCarouselNav renders a default state 1`] = `
 <div>
   <div
     class="fui-TeachingPopoverCarouselNav"
+    data-tabster="{\\"groupper\\":{\\"tabbability\\":1},\\"focusable\\":{}}"
+    role="list"
+    tabindex="0"
   >
     Default TeachingPopoverCarouselNav
   </div>

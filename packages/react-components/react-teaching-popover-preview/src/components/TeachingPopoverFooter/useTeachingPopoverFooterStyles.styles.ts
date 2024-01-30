@@ -5,8 +5,8 @@ import { tokens } from '@fluentui/react-theme';
 
 export const teachingPopoverFooterClassNames: SlotClassNames<TeachingPopoverFooterSlots> = {
   root: 'fui-TeachingPopoverFooter',
-  primary: 'fui-TeachingPopoverFooter_primary',
-  secondary: 'fui-TeachingPopoverFooter_secondary',
+  primary: 'fui-TeachingPopoverFooter__primary',
+  secondary: 'fui-TeachingPopoverFooter__secondary',
 };
 
 const useStyles = makeStyles({

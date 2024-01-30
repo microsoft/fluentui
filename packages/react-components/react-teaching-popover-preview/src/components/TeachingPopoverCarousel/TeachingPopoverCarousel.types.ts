@@ -107,7 +107,10 @@ export type TeachingPopoverCarouselProps = Partial<ComponentProps<TeachingPopove
   /**
    * Callback to notify when the final button step of a carousel has been activated.
    */
-  onFinish?: (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => void;
+  onFinish?: (
+    event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>,
+    data: TeachingPopoverPageChangeData,
+  ) => void;
 
   /**
    * Controllable page state

@@ -29,11 +29,16 @@ export {
   renderTeachingPopoverCarousel_unstable,
   useTeachingPopoverCarouselStyles_unstable,
   useTeachingPopoverCarousel_unstable,
+  TeachingPopoverCarouselContext,
+  TeachingPopoverCarouselProvider,
+  useTeachingPopoverCarouselContext_unstable,
+  useTeachingPopoverCarouselContextValues_unstable,
 } from './TeachingPopoverCarousel';
 export type {
   TeachingPopoverCarouselProps,
   TeachingPopoverCarouselSlots,
   TeachingPopoverCarouselState,
+  TeachingPopoverCarouselContextValue,
 } from './TeachingPopoverCarousel';
 export {
   TeachingPopoverCarouselNav,
@@ -97,6 +102,7 @@ export { TeachingPopover, renderTeachingPopover_unstable, useTeachingPopover_uns
 export type { TeachingPopoverProps, TeachingPopoverState } from './TeachingPopover';
 export {
   TeachingPopoverFooter,
+  teachingPopoverFooterClassNames,
   renderTeachingPopoverFooter_unstable,
   useTeachingPopoverFooter_unstable,
 } from './TeachingPopoverFooter';

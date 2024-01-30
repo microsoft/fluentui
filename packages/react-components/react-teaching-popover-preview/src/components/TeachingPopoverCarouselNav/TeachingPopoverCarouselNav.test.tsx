@@ -2,44 +2,26 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { TeachingPopoverCarouselNav } from './TeachingPopoverCarouselNav';
-import { TeachingPopoverBody } from '../TeachingPopoverBody/TeachingPopoverBody';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-import { mockTeachingPopoverContext } from '../../testing/mockTeachingPopoverContext';
+import { mockTeachingPopoverCarouselContext } from '../../testing/mockTeachingPopoverCarouselContext';
 
-jest.mock('../../TeachingPopoverContext');
+jest.mock('../TeachingPopoverCarousel/TeachingPopoverCarouselContext');
 
 describe('TeachingPopoverCarouselNav', () => {
   isConformant({
     Component: TeachingPopoverCarouselNav,
     displayName: 'TeachingPopoverCarouselNav',
-    requiredProps: {
-      countStyle: 'icon',
-      children: [
-        <TeachingPopoverBody key="test-1">{'test-1'}</TeachingPopoverBody>,
-        <TeachingPopoverBody key="test-2">{'test-2'}</TeachingPopoverBody>,
-      ],
-    },
   });
 
   beforeEach(() => {
     resetIdsForTests();
-    mockTeachingPopoverContext({ totalPages: 2, currentPage: 0 });
+    mockTeachingPopoverCarouselContext({ totalPages: 2, currentPage: 0 });
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(
-      <TeachingPopoverCarouselNav
-        currentPage={0}
-        totalPages={3}
-        setCurrentPage={() => {
-          return;
-        }}
-      >
-        Default TeachingPopoverCarouselNav
-      </TeachingPopoverCarouselNav>,
-    );
+    const result = render(<TeachingPopoverCarouselNav>Default TeachingPopoverCarouselNav</TeachingPopoverCarouselNav>);
     expect(result.container).toMatchSnapshot();
   });
 });

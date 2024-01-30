@@ -24,7 +24,9 @@ export const useTeachingPopoverCarouselNav_unstable = (
 
   // Generate the child RatingItems and memoize them to prevent unnecessary re-rendering
   const rootChildren = React.useMemo(() => {
-    return Array.from(Array(totalPages), (_, i) => <TeachingPopoverCarouselNavIcon index={i} />);
+    return Array.from(Array(totalPages), (_, i) => (
+      <TeachingPopoverCarouselNavIcon key={'TeachingPopoverCarouselNavIcon-' + i} index={i} />
+    ));
   }, [totalPages]);
 
   return {

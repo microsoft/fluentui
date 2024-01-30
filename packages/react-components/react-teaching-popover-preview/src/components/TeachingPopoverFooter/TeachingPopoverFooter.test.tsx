@@ -7,12 +7,28 @@ describe('TeachingPopoverFooter', () => {
   isConformant({
     Component: TeachingPopoverFooter,
     displayName: 'TeachingPopoverFooter',
+
+    requiredProps: {
+      strings: {
+        primary: 'Primary',
+        secondary: 'Secondary',
+      },
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<TeachingPopoverFooter>Default TeachingPopoverFooter</TeachingPopoverFooter>);
+    const result = render(
+      <TeachingPopoverFooter
+        strings={{
+          primary: 'Primary',
+          secondary: 'Secondary',
+        }}
+      >
+        Default TeachingPopoverFooter
+      </TeachingPopoverFooter>,
+    );
     expect(result.container).toMatchSnapshot();
   });
 });

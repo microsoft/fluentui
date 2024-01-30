@@ -51,7 +51,7 @@ export const useTeachingPopoverCarousel_unstable = (
       }
 
       if (nextPage >= totalPages) {
-        onFinish?.(event);
+        onFinish?.(event, { currentPage });
         if (triggerRef.current) {
           triggerRef.current.focus();
         }

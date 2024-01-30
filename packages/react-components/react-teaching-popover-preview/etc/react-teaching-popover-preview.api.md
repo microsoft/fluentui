@@ -9,6 +9,9 @@
 import { Button } from '@fluentui/react-button';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
+import type { Context } from '@fluentui/react-context-selector';
+import type { ContextSelector } from '@fluentui/react-context-selector';
+import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
 import { PopoverContextValue } from '@fluentui/react-popover';
@@ -19,6 +22,8 @@ import { PopoverSurfaceState } from '@fluentui/react-popover';
 import { PopoverTriggerChildProps } from '@fluentui/react-popover';
 import { PopoverTriggerProps } from '@fluentui/react-popover';
 import { PopoverTriggerState } from '@fluentui/react-popover';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import { Slot } from '@fluentui/react-utilities';
@@ -86,6 +91,12 @@ export const TeachingPopoverCarousel: ForwardRefComponent<TeachingPopoverCarouse
 // @public (undocumented)
 export const teachingPopoverCarouselClassNames: SlotClassNames<TeachingPopoverCarouselSlots>;
 
+// @public (undocumented)
+export const TeachingPopoverCarouselContext: Context<TeachingPopoverCarouselContextValue>;
+
+// @public
+export type TeachingPopoverCarouselContextValue = Pick<TeachingPopoverCarouselState, 'currentPage' | 'setCurrentPage' | 'totalPages' | 'onPageChange'>;
+
 // @public
 export const TeachingPopoverCarouselNav: ForwardRefComponent<TeachingPopoverCarouselNavProps>;
 
@@ -137,9 +148,12 @@ export type TeachingPopoverCarouselProps = Partial<ComponentProps<TeachingPopove
     onPageChange?: (event: React_2.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>, data: TeachingPopoverPageChangeData) => void;
     onClickNext?: (event: React_2.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>, data: TeachingPopoverPageChangeData) => void;
     onClickPrevious?: (event: React_2.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>, data: TeachingPopoverPageChangeData) => void;
-    onFinish?: (event: React_2.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => void;
+    onFinish?: (event: React_2.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>, data: TeachingPopoverPageChangeData) => void;
     currentPage?: number;
 };
+
+// @public (undocumented)
+export const TeachingPopoverCarouselProvider: Provider<TeachingPopoverCarouselContextValue> & FC<ProviderProps<TeachingPopoverCarouselContextValue>>;
 
 // @public (undocumented)
 export type TeachingPopoverCarouselSlots = {
@@ -159,6 +173,9 @@ export type TeachingPopoverCarouselState = ComponentState<TeachingPopoverCarouse
 
 // @public
 export const TeachingPopoverFooter: ForwardRefComponent<TeachingPopoverFooterProps>;
+
+// @public (undocumented)
+export const teachingPopoverFooterClassNames: SlotClassNames<TeachingPopoverFooterSlots>;
 
 // @public (undocumented)
 export type TeachingPopoverFooterProps = ComponentProps<Partial<TeachingPopoverFooterSlots>> & {
@@ -249,6 +266,12 @@ export const useTeachingPopoverBodyStyles_unstable: (state: TeachingPopoverBodyS
 
 // @public (undocumented)
 export const useTeachingPopoverCarousel_unstable: (props: TeachingPopoverCarouselProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselState;
+
+// @public (undocumented)
+export const useTeachingPopoverCarouselContext_unstable: <T>(selector: ContextSelector<TeachingPopoverCarouselContextValue, T>) => T;
+
+// @public (undocumented)
+export function useTeachingPopoverCarouselContextValues_unstable(state: TeachingPopoverCarouselState): TeachingPopoverCarouselContextValue;
 
 // @public
 export const useTeachingPopoverCarouselNav_unstable: (props: TeachingPopoverCarouselNavProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselNavState;

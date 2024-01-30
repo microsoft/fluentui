@@ -3,15 +3,12 @@ import { Button, Image } from '@fluentui/react-components';
 
 import {
   TeachingPopover,
-  TeachingPopoverActions,
   TeachingPopoverBody,
-  TeachingPopoverButton,
   TeachingPopoverCarousel,
   TeachingPopoverHeader,
   TeachingPopoverTitle,
   TeachingPopoverSurface,
   TeachingPopoverTrigger,
-  TeachingPopoverPageCount,
 } from '@fluentui/react-teaching-popover-preview';
 import type { TeachingPopoverProps } from '@fluentui/react-teaching-popover-preview';
 import SwapImage from '../../etc/images/swapImage.png';
