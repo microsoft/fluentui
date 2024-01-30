@@ -4,13 +4,7 @@ import { renderComponent } from '../helpers.stories.js';
 
 const template = html`
   <style>
-    .content {
-      width: 200px;
-      height: 150px;
-      background: yellow;
-    }
-
-    .popover-container {
+    .popover-story-container {
       width: 600px;
       height: 600px;
       overflow: auto;
@@ -26,12 +20,13 @@ const template = html`
     }
   </style>
 
-  <div class="popover-container">
+  <div class="popover-story-container">
     <div class="cropped-area-container">
       <fluent-popover
         anchor-id="${x => x.anchorId}"
         anchor-bounds-selector=".popover-container"
         placement="${x => x.placement}"
+        size="large"
       >
         <div slot="popover-content">${x => x.content}</div>
         <fluent-button slot="trigger" id="${x => x.anchorId}">Toggle Popover</fluent-button>
@@ -57,7 +52,7 @@ const placementOptions = [
 ];
 
 function scrollContainerCenter() {
-  const container = document.querySelector('.popover-container');
+  const container = document.querySelector('.popover-story-container');
   if (container) {
     container.scrollTop = (container.scrollHeight - container.clientHeight) / 2;
     container.scrollLeft = (container.scrollWidth - container.clientWidth) / 2;

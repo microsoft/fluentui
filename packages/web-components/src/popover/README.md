@@ -6,40 +6,33 @@ Popovers can have structured content and interactive components. If you need to 
 
 ## Design Guidelines
 
+The design guidelines demonstrate a highly flexible and feature rich Popover. Popover renders to screen to an anchoring "trigger" element and responds to any shifts in the screen layout, scroll position or size by moving to the best location to present its content. Creating elements like this which respond to changes in the screen size and the location of the anchoring element are complex and fairly labor intensive to develop.
+
 [Fluent Design Guidelines](https://www.figma.com/file/j3IVtJidhjbqUzKulEeA5o/Popover?type=design&node-id=1%3A90&mode=design&t=AqijKCsBtv7FoJ0k-1)
 
 ## Background and Motivations
 
-The design guidelines demonstrate a highly flexible and feature rich popover in the form of a styled DOM element. Creating elements like this which respond to changes in the screen size and the location of the anchoring element are complex and fairly labor intensive to develop.
+Given the above design guidelines, there are two main aspects to building a Popover:
 
-Presently, due to the maturity of web technologies, and because its such a well used pattern, there aren't many different "off the shelf" tools for implementing a popover like this. One outshines all the competitors: [Floating-UI](https://floating-ui.com/docs/getting-started).
+- invoking a "floating" DOM element which performs accessibly
+- positioning the floating DOM element that responds to ui changes
 
-Fluent UI React uses Floating-UI to achieve many of the features illustrated in the Fluent UI design guidelines. It seems like a natural choice for implmentation of the web component version of the popover as well. It has a proven track record, uses vanilla javascript, can be easily utilized for web components, will work in any browser, and is relatively small (7kb). Given its popularity and robustness, why wouldn't we utilize the Floating-UI? In short, because there are newer options that provide longevity and performance. In the future tools like Floating UI will not be needed (and browser technology is almost there).
+Fluent UI React uses [Floating-UI](https://floating-ui.com/docs/getting-started) to achieve the above and conform to the features illustrated in the Fluent UI design guidelines.
 
-### Popover API - A partial alternative to Floating-UI
-
-[Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) a Native browser popover, is the less obvious but more modern solution to building popovers. There is a caveat that it's not supported in Firefox yet, however [a polyfill is available from the oddbird group](https://github.com/oddbird/popover-polyfill).
-
-The Popover API has one main advantage over Floating-UI - no javascript. It's the most lightweight solution possible for creating a popover. In addition to being lightweight there are other reasons to decouple from a third party library like floating ui:
-
-1. It makes meeting the fluent design guidelines an exercise in styling. This also means that popover could be ported to other design systems.
-1. Upgrades us to the latest web standards - Neither Popover API and CSS Anchored Positioning are fully available yet, but we can subscribe to their language and api now.
-1. Handle positioning (the most complex part of the popover) without third party Javascript Apis - which may be more work, but will give us a foundation that doesn't rely on tools we did not develop ourselves (We are Microsoft and should not need to rely on third party Javascript packages to meet our requirements).
-
-### CSS Anchor Positioning - the remainder of the alternative to Floating UI
-
-As mentioned above popover api is only a partial alternative to floating UI. Floating UI handles two things:
-
-- invoking a floating DOM element
-- providing an API for positioning that element
-
-With CSS anchor positioning the second can be achieved. The big caveat being that CSS Anchor Positioning is an experimental feature and not available without allowing experimental features in the browser (Chrome, Edge or Firefox). Fortunately, [oddbird group provides a polyfill for this as well](https://github.com/oddbird/css-anchor-positioning)
+There are newer options that could provide longevity and performance like the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API/) and [CSS Anchor Positioning](https://drafts.csswg.org/css-anchor-position/). The web component implementation of this control may best serve its users by deviating from Floating-UI or at least partially deviating. Although a lightweight custom approach to positioning is tempting for size and performance reasons, ultimately recommend a hybrid approach that leverages Floating-UI and the Popover API.
 
 ## Engineering Strategy
 
-Popover is built with the Popover API, Popover Polyfill API, and CSS Anchor Positioning (using the anchor positioning polyfill).
+Presently, there aren't many different "off the shelf" tools that cover all the requirements for implementing a Popover that responds to changes to the UI (scroll, location, window resize, bounding decendant box, ect). One outshines all the competitors: [Floating-UI](https://floating-ui.com/docs/getting-started).
 
-[Here is an example of how the anchor positioning would work to handle collision detection](https://stackblitz.com/edit/typescript-pdndqh?file=index.ts)
+Fluent UI React uses Floating-UI to achieve many of the features illustrated in the Fluent UI design guidelines. It looks like a natural choice for implmentation of the web component version of the popover as well. It has a proven track record, uses vanilla javascript, can be easily utilized for web components, will work in any browser, and is relatively small (147kb). Given its popularity and robustness, why wouldn't we utilize the Floating-UI? There are newer options that provide longevity and performance like CSS Anchor Positioning. In an ideal world this component should be written with just CSS Anchor Positioning and Popover API, and in the future tools like Floating UI will not be needed. However, browser standards for CSS Anchor Positioning are still changing and have not been widely agreed upon. The most widely used polyfill for Anchor Positioning @oddbird/css-anchor-positioning is at a standstill due to support and bandwidth [see related issue here](https://github.com/oddbird/css-anchor-positioning/issues/147).
+
+A Popover built with the Popover API and CSS Anchor Positioning (using the anchor positioning polyfill) is not fully possible due to limitations in the CSS Anchor positioning polyfill (not able to pierce the shadow dom, not able to define a bounding element other than the window bounds). But, it's certainly exciting. It would no doubt be the most lightweight and simple implementation possible: [Here is an example of how the anchor positioning would work to handle collision detection (no javascript, just CSS and html)](https://stackblitz.com/edit/typescript-pdndqh?file=index.ts)
+
+Because of the above, there are only two choices for building a positioning system for the popover:
+
+1. Floating UI
+2. A custom javascript solution. Given these factors this component we've chosen to retain Floating UI.
 
 ## Referenced Technologies
 
@@ -52,22 +45,31 @@ Popover is built with the Popover API, Popover Polyfill API, and CSS Anchor Posi
 - [oddbird/CSS Anchor positioning polyfill](https://github.com/oddbird/css-anchor-positioning)
 - [CSS Anchor Positioning Comments Interop 2024](https://github.com/orgs/web-platform-tests/projects/3/views/1?pane=issue&itemId=39322729)
 
+## Proposed Usage:
+
+```html
+<fluent-popover anchor-id="${anchorId}" id="${targetId}" beak>
+  <div slot="popover">Popover Content</div>
+  <fluent-button slot="trigger" id="${anchorId}">Popover Trigger</fluent-button>
+</fluent-popover>
+```
+
 ## DOM Attributes
 
-| name             | description                                                                      | type                                      |
-| ---------------- | -------------------------------------------------------------------------------- | ----------------------------------------- |
-| open             | Controls the invocation / visibility of the popover                              | boolean                                   |
-| anchor           | The id of the element that spawns the popover                                    | string                                    |
-| appearance       | A popover can appear styled with brand or inverted. Defaults to brand.           | "brand" \| "inverted"                     |
-| beak             | Displays the arrow or "beak" that points to the anchor.                          | boolean                                   |
-| size             | Determines popover padding and arrow size                                        | "small" \| "medium" \| "large"            |
-| popover-align    | Alignment for the component. Only has an effect if used with the position option | "start" \| "end" \| "top" \| "bottom      |
-| popover-position | Position for the component. Position has higher priority than popoverAlign.      | "above" \| "below" \| "before" \| "after" |
-| positioning      | Configures the position of the Popover in relation to the anchor element         | PositioningShorthand                      |
-| cover-target     | Covers the target when invoking popover                                          | boolean                                   |
-| offset-x         | x-axis offset modifier for popover location                                      | number                                    |
-| offset-y         | y-axis offset modifier for popover location                                      | number                                    |
-| pinned           | Disabled automatic repositioning                                                 | boolean                                   |
+| name             | description                                                                                                             | type                                      |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| open             | Controls the invocation / visibility of the popover                                                                     | boolean                                   |
+| anchor           | The id of the element that spawns the popover                                                                           | string                                    |
+| appearance       | A popover can appear styled with brand or inverted. Defaults to brand.                                                  | "brand" \| "inverted"                     |
+| beak             | Displays the arrow or "beak" that points to the anchor.                                                                 | boolean                                   |
+| size             | Determines popover padding and arrow size                                                                               | "small" \| "medium" \| "large"            |
+| popover-align    | Alignment for the component. Only has an effect if used with the popover-position attribute.                            | "start" \| "end" \| "top" \| "bottom      |
+| popover-position | Position for the component. Position has higher priority than popover-align.                                            | "above" \| "below" \| "before" \| "after" |
+| positioning      | Configures the position of the Popover in relation to the anchor element. Supercedes popover-align and popover-position | PositioningShorthand                      |
+| cover-target     | Covers the target when invoking popover                                                                                 | boolean                                   |
+| offset-x         | x-axis offset modifier for popover location                                                                             | number                                    |
+| offset-y         | y-axis offset modifier for popover location                                                                             | number                                    |
+| pinned           | Disabled automatic repositioning                                                                                        | boolean                                   |
 
 ## Prior Art
 
@@ -127,20 +129,11 @@ Fluent UI react has created a PositioningShorthand type. There are some differen
 
 Component dev implementation work was initially began by Miro Stastny. We are picking up where he left off. [His PR here](https://github.com/microsoft/fluentui/pull/26984/files#diff-696924c0eb6e18cb4283373ccf8c3cb8713a2cc1e5b32ccc2f907616803e2f63)
 
-## Usage:
-
-```html
-<fluent-popover anchor-id="${anchorId}" beak>
-  <div slot="popover">Popover Content</div>
-  <fluent-button slot="trigger" id="${anchorId}">Popover Trigger</fluent-button>
-</fluent-popover>
-```
-
 ## Updates and blockers:
 
 ### **Blocker: CSS Anchor Positioning**
 
-One major blocker with this approach is that setting user defined fallback bounds for collission are not possible using the polyfill. This prevents the popover api from working effectively with CSS anchor positioning. [An issue was filed with oddbird here](https://github.com/oddbird/css-anchor-positioning/issues/147).
+- 1/2024 One major blocker with this approach is that setting user defined fallback bounds for collission are not possible using the polyfill. This prevents the popover api from working effectively with CSS anchor positioning. [An issue was filed with oddbird here](https://github.com/oddbird/css-anchor-positioning/issues/147).
 
 Until this issue is resolved - writing a popover that responds to the edges of a bounding box inside of the window instead of the window itself impossible with the polyfill.
 

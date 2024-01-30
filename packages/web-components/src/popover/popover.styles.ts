@@ -1,68 +1,66 @@
-import { colorNeutralBackground1, fontFamilyBase } from '@fluentui/web-components';
+import {
+  borderRadiusMedium,
+  colorNeutralBackground1,
+  colorTransparentStrokeInteractive,
+  fontFamilyBase,
+  shadow8,
+} from '@fluentui/web-components';
 import { css } from '@microsoft/fast-element';
 
 export const popoverStyles = css`
-  :host {
-    font-family: ${fontFamilyBase};
+  [popover] {
+    /* font-family: ${fontFamilyBase}; */
+    /* position: absolute; */
+    /* height: fit-content;
+    width: fit-content; */
+    /* visibility: hidden; */
+    background-color: ${colorNeutralBackground1};
+    border-radius: ${borderRadiusMedium};
+    border: 1px solid ${colorTransparentStrokeInteractive};
+    box-shadow: ${shadow8};
+    /* max-width: 260px;
+    padding: 12px; */
+    /* transform: translateY(-10px); */
   }
 
-  :host([size='small']) {
+  :host([size='small']) ::slotted([slot='popover-content']) {
     padding: 12px;
     max-width: 214px;
   }
-  :host([size='small']):before {
+  :host([size='small']):before ::slotted([slot='popover-content']) {
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
   }
 
-  :host([size='large']) {
+  :host([size='large']) ::slotted([slot='popover-content']) {
     padding: 20px;
     max-width: 317px;
   }
 
-  /* :host([beak][visible]) {
-    transform: translateY(6px);
-  } */
-
-  /* :host([beak])::before {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 5px solid ${colorNeutralBackground1};
-    z-index: 1;
-  } */
-
-  /************
-----------------------------------
-styles for edge and chrome browsers
------------------------------------
-*************/
-
   [popover]:popover-open {
+    /* opacity: 1; */
+    /* transform: scaleY(1); */
+    transform: translateY(2px);
     opacity: 1;
-    transform: scaleY(1);
   }
 
   [popover] {
+    transition: visibility 150ms ease, opacity 150ms ease, transform 150ms ease;
     position: absolute;
-    transition: opacity 0.3s, transform 0.3s, overlay 0.3s allow-discrete, display 0.3s allow-discrete;
-
+    transform: translateY(0);
+    /* transition-delay: 600ms; */
     opacity: 0;
-    transform: scaleY(0);
+
+    background-color: ${colorNeutralBackground1};
+    border-radius: ${borderRadiusMedium};
+    border: 1px solid ${colorTransparentStrokeInteractive};
+    box-shadow: ${shadow8};
   }
 
   @starting-style {
     [popover]:popover-open {
       opacity: 0;
-      transform: scaleY(0);
+      transform: translateY(0);
     }
   }
-
-  /************ end chrome edge styling *************/
 `;
