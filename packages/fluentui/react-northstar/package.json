@@ -67,7 +67,6 @@
     "build": "gulp bundle:package:no-umd && yarn build:info",
     "build:info": "gulp build:component-info",
     "bundle-size": "monosize measure",
-    "bundle-size-auditor": "bundle-size-auditor --report-path='../../../dist/bundle-size-auditor/react-northstar'",
     "clean": "gulp clean:component-info bundle:package:clean",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
