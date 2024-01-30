@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Fri, 19 Jan 2024 07:29:32 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.4",
+      "version": "1.17.4",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "28dc7702fd80cb04c6b0cf7617d55ba5213616e3",
+            "comment": "chore(eslint-plugin): register @nx plugin internally in order to be able to consume our custom @nx/workspace-* lint rules"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Jan 2024 07:28:48 GMT",
       "tag": "@fluentui/eslint-plugin_v1.17.4",
       "version": "1.17.4",

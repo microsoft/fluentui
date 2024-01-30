@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "DataGrid to use dedicated custom events instead of simulated keypresses.",
+  "packageName": "@fluentui/react-table",
+  "email": "marata@microsoft.com",
+  "dependentChangeType": "patch"
+}
