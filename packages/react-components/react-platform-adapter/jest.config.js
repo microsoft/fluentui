@@ -4,7 +4,7 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-strict-dom-adapter',
+  displayName: 'react-platform-adapter',
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': [

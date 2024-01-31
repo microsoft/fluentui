@@ -1,8 +1,8 @@
 {
-  "name": "@fluentui/react-strict-dom-adapter",
+  "name": "@fluentui/react-platform-adapter",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "packages/react-components/react-strict-dom-adapter/src",
+  "sourceRoot": "packages/react-components/react-platform-adapter/src",
   "tags": ["platform:web", "vNext"],
   "implicitDependencies": []
 }

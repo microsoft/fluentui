@@ -131,6 +131,7 @@
       "@fluentui/react-nav-preview": ["packages/react-components/react-nav-preview/src/index.ts"],
       "@fluentui/react-overflow": ["packages/react-components/react-overflow/src/index.ts"],
       "@fluentui/react-persona": ["packages/react-components/react-persona/src/index.ts"],
+      "@fluentui/react-platform-adapter": ["packages/react-components/react-platform-adapter/src/index.ts"],
       "@fluentui/react-popover": ["packages/react-components/react-popover/src/index.ts"],
       "@fluentui/react-portal": ["packages/react-components/react-portal/src/index.ts"],
       "@fluentui/react-portal-compat": ["packages/react-components/react-portal-compat/src/index.ts"],
@@ -150,7 +151,6 @@
       "@fluentui/react-storybook-addon-export-to-sandbox": [
         "packages/react-components/react-storybook-addon-export-to-sandbox/src/index.ts"
       ],
-      "@fluentui/react-strict-dom-adapter": ["packages/react-components/react-strict-dom-adapter/src/index.ts"],
       "@fluentui/react-swatch-picker-preview": ["packages/react-components/react-swatch-picker-preview/src/index.ts"],
       "@fluentui/react-switch": ["packages/react-components/react-switch/src/index.ts"],
       "@fluentui/react-table": ["packages/react-components/react-table/src/index.ts"],

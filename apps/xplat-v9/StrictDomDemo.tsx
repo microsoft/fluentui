@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { helloWorld } from '@fluentui/react-strict-dom-adapter';
+import { helloWorld } from '@fluentui/react-platform-adapter';
 import { html } from 'react-strict-dom';
 import stylex from '@stylexjs/stylex';
 

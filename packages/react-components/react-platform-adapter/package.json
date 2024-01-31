@@ -1,8 +1,8 @@
 {
-  "name": "@fluentui/react-strict-dom-adapter",
+  "name": "@fluentui/react-platform-adapter",
   "version": "0.0.0",
   "private": true,
-  "description": "Cross-platform adapters for use with react-strict-dom",
+  "description": "Cross-platform adapters for implementations that differ between web and native",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
