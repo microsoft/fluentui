@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, mergeCallbacks, slot, useEventCallback } from '@fluentui/react-utilities';
 import type { TeachingPopoverFooterProps, TeachingPopoverFooterState } from './TeachingPopoverFooter.types';
 import { Button } from '@fluentui/react-button';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
@@ -14,6 +14,21 @@ export const useTeachingPopoverFooter_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverFooterState => {
   const appearance = usePopoverContext_unstable(context => context.appearance);
+  const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
+  const toggleOpen = usePopoverContext_unstable(context => context.toggleOpen);
+
+  const handleButtonClick = useEventCallback(
+    (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
+      if (event.isDefaultPrevented()) {
+        return;
+      }
+
+      if (triggerRef.current) {
+        triggerRef.current.focus();
+      }
+      toggleOpen(event);
+    },
+  );
 
   const secondary = slot.optional(props.secondary, {
     defaultProps: {
@@ -23,6 +38,12 @@ export const useTeachingPopoverFooter_unstable = (
     renderByDefault: true,
     elementType: Button,
   });
+
+  // Merge any provided callback with close trigger
+  const secondaryButtonClick = mergeCallbacks(handleButtonClick, secondary?.onClick);
+  if (secondary) {
+    secondary.onClick = secondaryButtonClick;
+  }
 
   const primary = slot.always(props.primary, {
     defaultProps: {
