@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useId } from '@fluentui/react-utilities';
 import type { RatingDisplayProps, RatingDisplayState } from './RatingDisplay.types';
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
 import { RatingItem } from '../RatingItem/RatingItem';
@@ -28,6 +28,9 @@ export const useRatingDisplay_unstable = (
     value,
   } = props;
 
+  const valueTextId = useId('rating-value-');
+  const countTextId = useId('rating-count-');
+
   // Generate the child RatingItems and memoize them to prevent unnecessary re-rendering
   const rootChildren = React.useMemo(() => {
     return compact ? (
@@ -55,19 +58,19 @@ export const useRatingDisplay_unstable = (
         ref,
         children: rootChildren,
         role: 'img',
-        'aria-label': `${value} out of ${max} stars`,
+        'aria-labelledby': `${valueTextId} ${countTextId}`,
         ...props,
       }),
       { elementType: 'div' },
     ),
     valueText: slot.optional(props.valueText, {
       renderByDefault: value !== undefined,
-      defaultProps: { children: value },
+      defaultProps: { children: value, id: valueTextId, 'aria-hidden': true },
       elementType: 'span',
     }),
     countText: slot.optional(props.countText, {
       renderByDefault: count !== undefined,
-      defaultProps: { children: count?.toLocaleString() },
+      defaultProps: { children: count?.toLocaleString(), id: countTextId, 'aria-hidden': true },
       elementType: 'span',
     }),
   };

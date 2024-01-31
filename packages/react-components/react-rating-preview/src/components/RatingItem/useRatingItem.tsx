@@ -33,6 +33,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   const root = slot.always(
     getIntrinsicElementProps('span', {
       ref: useMergedRefs(useFocusWithin<HTMLSpanElement>(), ref),
+      'aria-label': `${value} star${value === 1 ? '' : 's'}`,
       ...props,
     }),
     { elementType: 'span' },
