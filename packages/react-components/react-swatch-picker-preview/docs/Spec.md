@@ -320,15 +320,16 @@ Colors within color sets are mutually exclusive, meaning that only one color can
 
 ## Accessibility
 
-SwatchPicker should have an `aria-label` same as `ColorSwatch` element. All the swathces should have `aria-selected=false` except the selected swatch.
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
+Use `tab` key to navigate to the first item in the SwatchPicker or to navigate between color sets.
+Use arrows to move between the swatches.
 
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+For the set of colors `aria-label` or `aria-labelby` should be provided.
+
+`aria-label` is set for each swatch with the color description. For selected item `aria-selected=true` should be set. All other swathces should have `aria-selected=false`.
+
+SwatchPicker component has role `radiogroup`.
+ColorSwatch and ImageSwatch have role `radio`.
+
+![SwatchPicker Accessibility - navigation](./assets/swatch-picker-a11y-nav.jpg)
+
+![SwatchPicker Accessibility - selection](./assets/swatch-picker-a11y-selection.jpg)
