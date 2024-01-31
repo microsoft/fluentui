@@ -17,9 +17,9 @@ import {
 } from '../../utils';
 import { AnimationDirection } from '../Calendar/Calendar.types';
 import { weekCornersClassNames } from './useWeekCornerStyles.styles';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarDayGridStyles, CalendarDayGridStyleProps } from './CalendarDayGrid.types';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 /**
  * @internal

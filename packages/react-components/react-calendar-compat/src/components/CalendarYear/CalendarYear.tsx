@@ -81,8 +81,6 @@ const CalendarYearGridCell: React.FunctionComponent<CalendarYearGridCellProps> =
     highlightSelected: highlightSelectedYear,
   });
 
-  // const gridCellTabsterAttributes = ;
-
   return (
     <button
       className={mergeClasses(classNames.itemButton, selected && classNames.selected, disabled && classNames.disabled)}
