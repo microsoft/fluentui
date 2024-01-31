@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: remove bundle-size-auditor package,its usage and replace it with monosize on ci",
-  "packageName": "@fluentui/react",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
