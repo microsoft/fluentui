@@ -28,6 +28,11 @@ export type RatingProps = Omit<ComponentProps<Partial<RatingSlots>>, 'onChange'>
    */
   iconOutline?: React.ReactElement;
   /**
+   * Prop to generate the aria-label for the ratng inputs.
+   * @default (rating) =\> `${rating}`
+   */
+  itemLabel?: (rating: number) => string;
+  /**
    * The max value of the rating. This controls the number of rating items displayed.
    * Must be a whole number greater than 1.
    * @default 5
@@ -71,7 +76,8 @@ export type RatingOnChangeEventData = EventData<'change', React.FormEvent<HTMLDi
  * State used in rendering Rating
  */
 export type RatingState = ComponentState<RatingSlots> &
-  Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'value'>> & {
+  Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'value'>> &
+  Pick<RatingProps, 'itemLabel'> & {
     hoveredValue?: number | undefined;
   };
 

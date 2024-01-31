@@ -50,7 +50,7 @@ export type RatingItemState = ComponentState<RatingItemSlots> &
   };
 
 export type RatingItemContextValue = Partial<Pick<RatingState, 'name' | 'hoveredValue' | 'value'>> &
-  Pick<RatingState, 'color' | 'iconFilled' | 'iconOutline' | 'step' | 'size'> &
+  Pick<RatingState, 'color' | 'iconFilled' | 'iconOutline' | 'itemLabel' | 'step' | 'size'> &
   Partial<Pick<RatingDisplayState, 'compact'>> & {
     interactive?: boolean;
   };
