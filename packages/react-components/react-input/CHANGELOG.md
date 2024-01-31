@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Mon, 29 Jan 2024 13:56:06 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jan 2024 23:16:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.63)
+
+Tue, 30 Jan 2024 23:16:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.4.62..@fluentui/react-input_v9.4.63)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.53 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.29 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+- Bump @fluentui/react-utilities to v9.18.0 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
 
 ## [9.4.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.62)
 

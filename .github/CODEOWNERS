@@ -323,3 +323,7 @@ packages/react-experiments/src/components/TileList @ThomasMichon
 **/api-extractor.json @microsoft/fluentui-react-build
 **/api-extractor.unstable.json @microsoft/fluentui-react-build
 **/.swcrc @microsoft/fluentui-react-build
+
+## Docs
+rfcs/ @microsoft/cxe-red @microsoft/cxe-prg @microsoft/teams-prg
+rfcs/shared/build-system/ @microsoft/fluentui-react-build
