@@ -49,6 +49,23 @@ const simplePoints = [
   },
 ];
 
+const datePoints = [
+  {
+    chartData: firstChartPoints,
+    xAxisPoint: new Date('2019/05/01'),
+    lineData: [{ y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+  },
+  {
+    chartData: secondChartPoints,
+    xAxisPoint: new Date('2019/09/01'),
+    lineData: [{ y: 41, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+  },
+  {
+    chartData: thirdChartPoints,
+    xAxisPoint: new Date('2020/03/01'),
+    lineData: [{ y: 100, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+  },
+];
 const simplePointsWithLine = [
   {
     chartData: firstChartPoints,
@@ -81,6 +98,58 @@ describe('Vertical stacked bar chart rendering', () => {
     'Should render the vertical stacked bar chart with numeric x-axis data',
     VerticalStackedBarChart,
     { data: chartPointsVSBC },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the vertical stacked bar chart with Date x-axis data',
+    VerticalStackedBarChart,
+    {
+      data: datePoints,
+      timeFormat: '%m/%d',
+      tickValues: [new Date('2019/05/01'), new Date('2019/09/01'), new Date('2020/03/01')],
+    },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the vertical stacked bar chart with Date x-axis data and no tick values',
+    VerticalStackedBarChart,
+    {
+      data: datePoints,
+      timeFormat: '%m/%d',
+    },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the vertical stacked bar chart with Date x-axis data and no tick format',
+    VerticalStackedBarChart,
+    {
+      data: datePoints,
+      tickValues: [new Date('2019/05/01'), new Date('2019/09/01'), new Date('2020/03/01')],
+    },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the vertical stacked bar chart with Date x-axis data and no tick format and tick values',
+    VerticalStackedBarChart,
+    {
+      data: datePoints,
+    },
     container => {
       // Assert
       expect(container).toMatchSnapshot();

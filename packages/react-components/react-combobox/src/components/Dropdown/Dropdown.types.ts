@@ -14,7 +14,7 @@ export type DropdownSlots = {
   root: NonNullable<Slot<'div'>>;
 
   /* The dropdown arrow icon */
-  expandIcon: Slot<'span'>;
+  expandIcon?: Slot<'span'>;
 
   /* The dropdown clear icon */
   clearButton?: Slot<'button'>;

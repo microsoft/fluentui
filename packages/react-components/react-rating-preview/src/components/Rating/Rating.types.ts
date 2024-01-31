@@ -1,18 +1,17 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
+import { RatingItemContextValue } from '../RatingItem/RatingItem.types';
 
 export type RatingSlots = {
   root: NonNullable<Slot<'div'>>;
-  ratingLabel?: NonNullable<Slot<'label'>>;
-  ratingCountLabel?: NonNullable<Slot<'label'>>;
 };
 
 /**
  * Rating Props
  */
-export type RatingProps = ComponentProps<RatingSlots> & {
+export type RatingProps = Omit<ComponentProps<Partial<RatingSlots>>, 'onChange'> & {
   /**
-   * Controls the appearance of the Rating.
+   * Controls the color of the Rating.
    * @default neutral
    */
   color?: 'brand' | 'marigold' | 'neutral';
@@ -35,18 +34,13 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    */
   max?: number;
   /**
-   * The mode of the rating.
-   * @default 'interactive'
-   */
-  mode?: 'interactive' | 'read-only' | 'read-only-compact';
-  /**
    * Name for the Radio inputs. If not provided, one will be automatically generated
    */
   name?: string;
   /**
    * Callback when the rating value is changed by the user.
    */
-  onChange?: (ev: React.SyntheticEvent | Event, data: RatingOnChangeData) => void;
+  onChange?: EventHandler<RatingOnChangeEventData>;
   /**
    * Sets the precision to allow half-filled shapes in Rating
    * @default 1
@@ -54,7 +48,7 @@ export type RatingProps = ComponentProps<RatingSlots> & {
   step?: 0.5 | 1;
   /**
    * Sets the size of the Rating items.
-   * @default medium
+   * @default extra-large
    */
   size?: 'small' | 'medium' | 'large' | 'extra-large';
   /**
@@ -66,26 +60,21 @@ export type RatingProps = ComponentProps<RatingSlots> & {
 /**
  * Data for the onChange event for Rating.
  */
-export type RatingOnChangeData = {
+export type RatingOnChangeEventData = EventData<'change', React.FormEvent<HTMLDivElement>> & {
   /**
    * The new value of the rating.
    */
-  value?: number;
+  value: number;
 };
 
 /**
  * State used in rendering Rating
  */
 export type RatingState = ComponentState<RatingSlots> &
-  Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'step' | 'size' | 'value'>> & {
+  Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'value'>> & {
     hoveredValue?: number | undefined;
   };
 
-export type RatingContextValue = Pick<
-  RatingState,
-  'color' | 'iconFilled' | 'iconOutline' | 'mode' | 'name' | 'step' | 'size' | 'value' | 'hoveredValue'
->;
-
 export type RatingContextValues = {
-  rating: RatingContextValue;
+  ratingItem: RatingItemContextValue;
 };

@@ -20,11 +20,14 @@ export type AtomMotion = {
     keyframes: Keyframe[];
 } & KeyframeEffectOptions;
 
+// @public (undocumented)
+export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
+
 // @public
-export function createAtom(motion: AtomMotion): React_2.FC<AtomProps>;
+export function createAtom(motion: AtomMotion | AtomMotionFn): React_2.FC<AtomProps>;
 
 // @public (undocumented)
-export function createPresence(motion: PresenceMotion): React_2.FC<PresenceProps>;
+export function createPresence(motion: PresenceMotion | PresenceMotionFn): React_2.FC<PresenceProps>;
 
 // @public (undocumented)
 const downEnterFast: ({ fromValue }?: SlideParams) => AtomMotion;
@@ -311,6 +314,9 @@ export type PresenceMotion = {
     enter: AtomMotion;
     exit: AtomMotion;
 };
+
+// @public (undocumented)
+export type PresenceMotionFn = (element: HTMLElement) => PresenceMotion;
 
 // @public (undocumented)
 const rightEnterFast: ({ fromValue }?: SlideParams) => AtomMotion;

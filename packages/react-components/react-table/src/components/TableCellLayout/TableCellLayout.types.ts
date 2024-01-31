@@ -35,18 +35,19 @@ export type TableCellLayoutSlots = {
 /**
  * TableCellLayout Props
  */
-export type TableCellLayoutProps = ComponentProps<Partial<TableCellLayoutSlots>> & {
-  /**
-   * Renders design variants of the table cell
-   * @default undefined
-   */
-  appearance?: 'primary';
+export type TableCellLayoutProps = Omit<ComponentProps<Partial<TableCellLayoutSlots>>, 'content'> &
+  Pick<Partial<TableCellLayoutSlots>, 'content'> & {
+    /**
+     * Renders design variants of the table cell
+     * @default undefined
+     */
+    appearance?: 'primary';
 
-  /**
-   * Renders content with overflow: hidden and text-overflow: ellipsis
-   */
-  truncate?: boolean;
-};
+    /**
+     * Renders content with overflow: hidden and text-overflow: ellipsis
+     */
+    truncate?: boolean;
+  };
 
 /**
  * State used in rendering TableCellLayout

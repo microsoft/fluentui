@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: set popup's z-index: 1 when rendering DatePickerCompat inline.",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

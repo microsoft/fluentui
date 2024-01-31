@@ -116,7 +116,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: useMergedRefs(ref as React.Ref<HTMLDivElement>, activeParentRef, activeDescendantListboxRef),
         role: multiselect ? 'menu' : 'listbox',
-        'aria-multiselectable': multiselect,
         tabIndex: 0,
         ...props,
       }),

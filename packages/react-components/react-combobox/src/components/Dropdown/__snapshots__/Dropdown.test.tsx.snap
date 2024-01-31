@@ -35,6 +35,7 @@ exports[`Dropdown renders a default state 1`] = `
       aria-label="Clear selection"
       class="fui-Dropdown__clearButton"
       tabindex="0"
+      type="button"
     >
       <svg
         aria-hidden="true"
@@ -62,6 +63,7 @@ exports[`Dropdown renders an open listbox 1`] = `
   >
     <button
       aria-activedescendant="fluent-option2"
+      aria-controls="fluent-listbox1"
       aria-expanded="true"
       class="fui-Dropdown__button"
       role="combobox"
@@ -91,6 +93,7 @@ exports[`Dropdown renders an open listbox 1`] = `
       aria-label="Clear selection"
       class="fui-Dropdown__clearButton"
       tabindex="0"
+      type="button"
     >
       <svg
         aria-hidden="true"

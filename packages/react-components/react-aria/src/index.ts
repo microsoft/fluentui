@@ -24,3 +24,11 @@ export type {
   ARIAButtonElementIntersection,
   ARIAButtonAlteredProps,
 } from './button/index';
+
+export {
+  AriaLiveAnnouncer,
+  renderAriaLiveAnnouncer_unstable,
+  useAriaLiveAnnouncer_unstable,
+  useAriaLiveAnnouncerContextValues_unstable,
+} from './AriaLiveAnnouncer/index';
+export type { AriaLiveAnnouncerProps, AriaLiveAnnouncerState } from './AriaLiveAnnouncer/index';

@@ -775,7 +775,6 @@ function _positionBeak(beakWidth: number, elementPosition: IElementPositionInfo)
   } else if (!_isEdgeInBounds(beakPosition, elementBounds, negativeEdge)) {
     beakPosition = _alignEdges(beakPosition, elementBounds, negativeEdge);
   }
-
   return beakPosition;
 }
 
@@ -995,11 +994,11 @@ function _getRectangleFromTarget(target: Element | MouseEvent | Point | Rectangl
   let targetRect: Rectangle;
 
   // eslint-disable-next-line deprecation/deprecation
-  const left = rectOrPointTarget.left || rectOrPointTarget.x;
+  const left = rectOrPointTarget.left ?? rectOrPointTarget.x;
   // eslint-disable-next-line deprecation/deprecation
-  const top = rectOrPointTarget.top || rectOrPointTarget.y;
-  const right = rectOrPointTarget.right || left;
-  const bottom = rectOrPointTarget.bottom || top;
+  const top = rectOrPointTarget.top ?? rectOrPointTarget.y;
+  const right = rectOrPointTarget.right ?? left;
+  const bottom = rectOrPointTarget.bottom ?? top;
 
   // eslint-disable-next-line no-extra-boolean-cast -- may not actually be a MouseEvent
   if (!!mouseTarget.stopPropagation) {

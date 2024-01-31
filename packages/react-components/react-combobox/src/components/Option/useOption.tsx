@@ -3,7 +3,6 @@ import { getIntrinsicElementProps, useId, useMergedRefs, slot } from '@fluentui/
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
 import { CheckmarkFilled, Checkmark12Filled } from '@fluentui/react-icons';
-import { ComboboxContext } from '../../contexts/ComboboxContext';
 import { ListboxContext } from '../../contexts/ListboxContext';
 import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { OptionProps, OptionState } from './Option.types';

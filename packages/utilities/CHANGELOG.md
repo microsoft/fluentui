@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Wed, 10 Jan 2024 07:28:50 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Jan 2024 07:29:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.24](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.24)
+
+Fri, 19 Jan 2024 07:29:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.23..@fluentui/utilities_v8.13.24)
+
+### Patches
+
+- fix(Utilities): Account for column reversed scrollable elements in allowScrollOnElement. ([PR #30175](https://github.com/microsoft/fluentui/pull/30175) by estebanmu@microsoft.com)
 
 ## [8.13.23](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.23)
 
