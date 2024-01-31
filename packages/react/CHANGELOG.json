@@ -2,6 +2,68 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 31 Jan 2024 07:27:56 GMT",
+      "tag": "@fluentui/react_v8.115.3",
+      "version": "8.115.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "77bc3fe457ee3bb4a7808cc6dd92b3427a393bb1",
+            "comment": "chore: remove bundle-size-auditor package,its usage and replace it with monosize on ci"
+          }
+        ],
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38",
+            "comment": "fix: CommandBar menu icon is not disabled in high contrast mode"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.52",
+            "commit": "eeb2656f81977a5821c36ca854fe2781d9dcfd1b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.32",
+            "commit": "eeb2656f81977a5821c36ca854fe2781d9dcfd1b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.40",
+            "commit": "eeb2656f81977a5821c36ca854fe2781d9dcfd1b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.10.3",
+            "commit": "eeb2656f81977a5821c36ca854fe2781d9dcfd1b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jan 2024 07:26:36 GMT",
+      "tag": "@fluentui/react_v8.115.2",
+      "version": "8.115.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "41c129b1db39c32ba410be8e614750a079fb2ab8",
+            "comment": "chore: setup monosize for measuring bundle size which will replace-size auditor bot"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jan 2024 07:27:14 GMT",
       "tag": "@fluentui/react_v8.115.2",
       "version": "8.115.2",
