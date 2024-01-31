@@ -2168,6 +2168,7 @@ export interface IActivityItemProps extends React_2.AllHTMLAttributes<HTMLElemen
     onRenderIcon?: IRenderFunction<IActivityItemProps>;
     onRenderTimeStamp?: IRenderFunction<IActivityItemProps>;
     styles?: IActivityItemStyles;
+    theme?: ITheme;
     timeStamp?: string | React_2.ReactNode[] | React_2.ReactNode;
 }
 
