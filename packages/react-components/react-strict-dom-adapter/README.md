@@ -1,5 +1,3 @@
 # @fluentui/react-strict-dom-adapter
 
-**React Strict Dom Adapter components for [Fluent UI React](https://react.fluentui.dev/)**
-
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+Contains implementations of functions that need to differ between the react web and react native implementations.
