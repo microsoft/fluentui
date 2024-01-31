@@ -5,6 +5,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import {
   addMonths,
   addYears,
+  compareDates,
   DateRangeType,
   DayOfWeek,
   DEFAULT_CALENDAR_STRINGS,
@@ -173,10 +174,22 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
       showSixWeeksByDefault = false,
       showWeekNumbers = false,
       strings = DEFAULT_CALENDAR_STRINGS,
-      today = new Date(),
+      today: providedToday,
       value,
       workWeekDays = defaultWorkWeekDays,
     } = props;
+
+    const [today, setToday] = React.useState<Date>(providedToday ?? new Date());
+    const syncToday = () => {
+      if (providedToday && !compareDates(providedToday, today)) {
+        setToday(providedToday);
+      }
+
+      const newToday = new Date();
+      if (!compareDates(today, newToday)) {
+        setToday(newToday);
+      }
+    };
 
     const [selectedDate, navigatedDay, navigatedMonth, onDateSelected, navigateDay, navigateMonth] = useDateState({
       onSelectDate,
@@ -258,6 +271,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
       : undefined;
 
     const onGotoToday = (): void => {
+      syncToday();
       navigateDay(today!);
       focusOnNextUpdate();
     };

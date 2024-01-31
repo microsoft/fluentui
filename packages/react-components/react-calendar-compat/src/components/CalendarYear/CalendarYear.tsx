@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { useArrowNavigationGroup, useFocusableGroup } from '@fluentui/react-tabster';
 import { mergeClasses } from '@griffel/react';
 import { useCalendarYearStyles_unstable } from './useCalendarYearStyles.styles';
 import type {
@@ -80,6 +80,8 @@ const CalendarYearGridCell: React.FunctionComponent<CalendarYearGridCellProps> =
     highlightCurrent: highlightCurrentYear,
     highlightSelected: highlightSelectedYear,
   });
+
+  // const gridCellTabsterAttributes = ;
 
   return (
     <button
@@ -168,19 +170,17 @@ const CalendarYearGrid: React.FunctionComponent<CalendarYearGridProps> = props =
     }
   }
 
-  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'both' });
+  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <div {...arrowNavigationAttributes}>
-      <div className={classNames.gridContainer} role="grid" aria-label={gridAriaLabel}>
-        {cells.map((cellRow: React.ReactNode[], index: number) => {
-          return (
-            <div key={'yearPickerRow_' + index + '_' + fromYear} role="row" className={classNames.buttonRow}>
-              {cellRow}
-            </div>
-          );
-        })}
-      </div>
+    <div {...arrowNavigationAttributes} className={classNames.gridContainer} role="grid" aria-label={gridAriaLabel}>
+      {cells.map((cellRow: React.ReactNode[], index: number) => {
+        return (
+          <div key={'yearPickerRow_' + index + '_' + fromYear} role="row" className={classNames.buttonRow}>
+            {cellRow}
+          </div>
+        );
+      })}
     </div>
   );
 };

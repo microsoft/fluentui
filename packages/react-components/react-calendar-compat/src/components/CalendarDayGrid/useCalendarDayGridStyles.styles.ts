@@ -19,6 +19,7 @@ import { AnimationDirection } from '../Calendar/Calendar.types';
 import { weekCornersClassNames } from './useWeekCornerStyles.styles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CalendarDayGridStyles, CalendarDayGridStyleProps } from './CalendarDayGrid.types';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 /**
  * @internal
@@ -109,6 +110,12 @@ const useDayCellStyles = makeStyles({
       },
     },
   },
+  focusIndicator: createFocusOutlineStyle({
+    style: {
+      outlineWidth: tokens.strokeWidthThin,
+      ...shorthands.borderWidth(tokens.strokeWidthThin),
+    },
+  }),
 });
 
 const useDaySelectedStyles = makeStyles({
@@ -356,7 +363,12 @@ export const useCalendarDayGridStyles_unstable = (props: CalendarDayGridStylePro
       tableStyles.base,
       showWeekNumbers && tableStyles.showWeekNumbers,
     ),
-    dayCell: mergeClasses(calendarDayGridClassNames.dayCell, dayCellStyles.base, cornerBorderAndRadiusStyles.corners),
+    dayCell: mergeClasses(
+      calendarDayGridClassNames.dayCell,
+      dayCellStyles.base,
+      dayCellStyles.focusIndicator,
+      cornerBorderAndRadiusStyles.corners,
+    ),
     daySelected: mergeClasses(calendarDayGridClassNames.daySelected, daySelectedStyles.base),
     weekRow: mergeClasses(
       calendarDayGridClassNames.weekRow,
