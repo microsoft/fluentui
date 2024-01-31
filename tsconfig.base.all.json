@@ -174,9 +174,7 @@
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-strict-dom-adapter-preview": [
-        "packages/react-components/react-strict-dom-adapter-preview/src/index.ts"
-      ]
+      "@fluentui/react-strict-dom-adapter": ["packages/react-components/react-strict-dom-adapter/src/index.ts"]
     }
   }
 }

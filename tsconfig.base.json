@@ -86,9 +86,7 @@
       "@fluentui/react-storybook-addon-export-to-sandbox": [
         "packages/react-components/react-storybook-addon-export-to-sandbox/src/index.ts"
       ],
-      "@fluentui/react-strict-dom-adapter-preview": [
-        "packages/react-components/react-strict-dom-adapter-preview/src/index.ts"
-      ],
+      "@fluentui/react-strict-dom-adapter": ["packages/react-components/react-strict-dom-adapter/src/index.ts"],
       "@fluentui/react-swatch-picker-preview": ["packages/react-components/react-swatch-picker-preview/src/index.ts"],
       "@fluentui/react-switch": ["packages/react-components/react-switch/src/index.ts"],
       "@fluentui/react-table": ["packages/react-components/react-table/src/index.ts"],

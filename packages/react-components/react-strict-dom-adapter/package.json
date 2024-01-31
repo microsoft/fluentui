@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-strict-dom-adapter-preview",
+  "name": "@fluentui/react-strict-dom-adapter",
   "version": "0.0.0",
   "private": true,
   "description": "Cross-platform adapters for use with react-strict-dom",

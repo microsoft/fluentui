@@ -1,4 +1,4 @@
-# @fluentui/react-strict-dom-adapter-preview
+# @fluentui/react-strict-dom-adapter
 
 **React Strict Dom Adapter components for [Fluent UI React](https://react.fluentui.dev/)**
 
