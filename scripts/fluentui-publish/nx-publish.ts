@@ -17,17 +17,17 @@ import {
   workspaceRoot,
   writeJson,
 } from '@nx/devkit';
-import { releasePublish, releaseVersion } from 'nx/src/command-line/release';
+import { releasePublish, releaseVersion } from 'nx/release';
 import { getLatestGitTagForPattern, gitPush, gitTag } from 'nx/src/command-line/release/utils/git';
 import { interpolate } from 'nx/src/tasks-runner/utils';
 import * as yargs from 'yargs';
 
 type NxReleaseVersionResult = Awaited<ReturnType<typeof releaseVersion>>;
-type NxReleaseVersionArgs = Parameters<typeof releaseVersion>[number];
-type NxReleasePublishArgs = Parameters<typeof releasePublish>[number];
+type NxReleaseVersionArgs = Parameters<typeof releaseVersion>[0];
+type NxReleasePublishArgs = Parameters<typeof releasePublish>[0];
 
 async function main() {
-  const { options, command } = processArgs();
+  const { options, command, specifier } = processArgs();
 
   const graph = readCachedProjectGraph();
   const nxConfig = readNxJson(tree);
@@ -38,7 +38,7 @@ async function main() {
   }
 
   if (command === 'version') {
-    await version({ args: options as VersionArgs, graph, group: northstarGroup });
+    await version({ args: { specifier, ...options } as VersionArgs, graph, group: northstarGroup });
     process.exit(0);
   }
 
@@ -57,7 +57,7 @@ function processArgs() {
     .scriptName('northstar-release')
     .command('version', 'bump version', _yargs => {
       yargs
-        .option('specifier', {
+        .positional('specifier', {
           description: 'Explicit version specifier to use, if overriding conventional commits',
           type: 'string',
           demandOption: true,
@@ -93,9 +93,9 @@ function processArgs() {
     .help().argv;
 
   const { _, $0, ...options } = args;
-  const command = _[0];
+  const [command, specifier] = _;
 
-  return { command, options };
+  return { command, options, specifier };
 }
 
 type PublishArgs = Required<Pick<NxReleasePublishArgs, 'dryRun' | 'verbose'>>;
@@ -151,7 +151,7 @@ async function version(config: {
   graph: ProjectGraph;
   group: ReturnType<typeof getNorthstarGroup>;
 }) {
-  const { args, graph, group } = config;
+  const { args, group } = config;
 
   const { workspaceVersion, projectsVersionData } = await releaseVersion({
     specifier: args.specifier,
@@ -165,7 +165,6 @@ async function version(config: {
     throw new Error(`workspaceVersion is empty. Something is wrong with nx release config or implementation changed`);
   }
 
-  fixVersionRanges(tree, { graph, projectsVersionData });
   updateCrossReleaseGroupDependency(tree, { projectsVersionData, group });
 
   if (!args.dryRun) {
@@ -190,25 +189,80 @@ function updateCrossReleaseGroupDependency(
     group: ReturnType<typeof getNorthstarGroup>;
   },
 ) {
-  const updateProjects: string[] = [];
+  const updateProjects: {
+    [k: string]: {
+      dependencies: [before: string, after: string][];
+      peerDependencies: [before: string, after: string][];
+    };
+  } = {};
 
   for (const projectConfig of Object.values(options.group.crossBoundaryProjects)) {
     const projectRoot = projectConfig.data.root;
+    const projectPackageJsonPath = joinPathFragments(projectRoot, 'package.json');
 
-    updateJson(tree, joinPathFragments(projectRoot, 'package.json'), json => {
-      updateDeps(json);
+    updateJson(tree, projectPackageJsonPath, json => {
+      const result = updateDeps(json);
+      updateProjects[projectConfig.name] = {
+        dependencies: result.dependencies,
+        peerDependencies: result.peerDependencies,
+      };
+
       return json;
     });
-    updateProjects.push(`- ${projectConfig.name}`);
+
+    printChanges(updateProjects);
   }
 
-  output.log({ title: `Updating package dependencies outside release group:`, bodyLines: updateProjects });
+  function updateDeps(json: { dependencies?: Record<string, string>; peerDependencies?: Record<string, string> }) {
+    const update = {
+      dependencies: [] as [string, string][],
+      peerDependencies: [] as [string, string][],
+    };
+    const getDependencyUpdateChange = (packageName: string, currentVersion: string, newVersion: string) => {
+      return [`"${packageName}": "${currentVersion}"`, `"${packageName}": "^${newVersion}"`] as [string, string];
+    };
 
-  function updateDeps(json: { dependencies: Record<string, string> }) {
     for (const [groupProjectName, data] of Object.entries(options.projectsVersionData)) {
-      if (json.dependencies[groupProjectName]) {
+      if (json.dependencies && json.dependencies[groupProjectName]) {
+        update.dependencies.push(
+          getDependencyUpdateChange(groupProjectName, json.dependencies[groupProjectName], `^${data.newVersion}`),
+        );
         json.dependencies[groupProjectName] = `^${data.newVersion}`;
       }
+
+      if (json.peerDependencies && json.peerDependencies[groupProjectName]) {
+        update.peerDependencies.push(
+          getDependencyUpdateChange(groupProjectName, json.peerDependencies[groupProjectName], `^${data.newVersion}`),
+        );
+        json.peerDependencies[groupProjectName] = `^${data.newVersion}`;
+      }
+    }
+    return update;
+  }
+
+  function printChanges(updates: typeof updateProjects) {
+    output.logSingleLine(`Updating package dependencies outside release group`);
+
+    const entries = Object.entries(updates);
+
+    for (const [projectName, changes] of entries) {
+      if (changes.dependencies.length || changes.peerDependencies.length) {
+        console.log(`UPDATE ${projectName}`);
+        console.log('');
+      }
+
+      printDiff('dependencies', changes);
+      printDiff('peerDependencies', changes);
+    }
+
+    function printDiff(type: 'dependencies' | 'peerDependencies', change: (typeof entries)[number][1]) {
+      if (change[type].length) {
+        console.log(output.dim(`"${type}": {`));
+      }
+      change[type].forEach(([before, after]) => {
+        console.log(output.colors.red('-  ' + before));
+        console.log(output.colors.green('+  ' + after));
+      });
     }
   }
 }
