@@ -34,9 +34,9 @@ export const useRatingDisplay_unstable = (
   // Generate the child RatingItems and memoize them to prevent unnecessary re-rendering
   const rootChildren = React.useMemo(() => {
     return compact ? (
-      <RatingItem value={1} key={1} />
+      <RatingItem value={1} key={1} aria-hidden={true} />
     ) : (
-      Array.from(Array(max), (_, i) => <RatingItem value={i + 1} key={i + 1} />)
+      Array.from(Array(max), (_, i) => <RatingItem value={i + 1} key={i + 1} aria-hidden={true} />)
     );
   }, [compact, max]);
 
@@ -58,7 +58,6 @@ export const useRatingDisplay_unstable = (
         ref,
         children: rootChildren,
         role: 'img',
-        'aria-labelledby': `${valueTextId} ${countTextId}`,
         ...props,
       }),
       { elementType: 'div' },
@@ -74,5 +73,8 @@ export const useRatingDisplay_unstable = (
       elementType: 'span',
     }),
   };
+  if (!state.root['aria-label'] && !state.root['aria-labelledby']) {
+    state.root['aria-labelledby'] = [state.valueText?.id, state.countText?.id].filter(Boolean).join(' ');
+  }
   return state;
 };

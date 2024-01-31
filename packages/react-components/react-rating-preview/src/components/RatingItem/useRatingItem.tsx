@@ -16,6 +16,7 @@ import { useRatingItemContextValue_unstable } from '../../contexts/RatingItemCon
 export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HTMLSpanElement>): RatingItemState => {
   const context = useRatingItemContextValue_unstable();
   const { value = 0 } = props;
+  const { itemLabel = num => num + '' } = context;
 
   const ratingValue = Math.round((context.value || 0) * 2) / 2; // round to the nearest 0.5
 
@@ -81,7 +82,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
         name: context.name,
         value: value - 0.5,
         checked: ratingValue === value - 0.5,
-        'aria-label': context.itemLabel ? context.itemLabel(value - 0.5) : `${value - 0.5}`,
+        'aria-label': itemLabel(value - 0.5),
         onChange: () => {
           // This empty onChange handler silences an incorrect React warning about not using onChange for a controlled input.
           // The parent Rating component has the real onChange handler to listen to change events from this input.
@@ -99,7 +100,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
         name: context.name,
         value,
         checked: ratingValue === value,
-        'aria-label': context.itemLabel ? context.itemLabel(value) : `${value}`,
+        'aria-label': itemLabel(value),
         onChange: () => {
           // This empty onChange handler silences an incorrect React warning about not using onChange for a controlled input.
           // The parent Rating component has the real onChange handler to listen to change events from this input.
