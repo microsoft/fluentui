@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { SwatchPicker, SwatchPickerProps, ColorSwatch } from '@fluentui/react-swatch-picker-preview';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { Heart28Filled } from '@fluentui/react-icons';
 
 export const Default = (props: Partial<SwatchPickerProps>) => {
   const [selected, setSelected] = React.useState('#f09');
@@ -29,7 +30,7 @@ export const Default = (props: Partial<SwatchPickerProps>) => {
         onColorSelect={model => setSelected(model.selected?.hex || '')}
         {...rowFocusAttributes}
       >
-        <ColorSwatch hex="#C11016" aria-label="dark red" role="radio" />
+        <ColorSwatch hex="#C11016" aria-label="dark red" role="radio" icon={<Heart28Filled color="#fff" />} />
         <ColorSwatch hex="#FF1921" aria-label="red" role="radio" />
         <ColorSwatch hex="#FFC12E" aria-label="orange" role="radio" />
         <ColorSwatch hex="#FEFF37" aria-label="yellow" role="radio" />

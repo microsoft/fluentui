@@ -4,6 +4,7 @@ import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
 import { useColorSwatchState_unstable } from './useColorSwatchState';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { Color, ColorPickerContext } from '../../contexts/picker';
+import { Prohibited20Filled } from '@fluentui/react-icons';
 
 /**
  * Create the state required to render ColorSwatch.
@@ -19,12 +20,20 @@ export const useColorSwatch_unstable = <T extends Color>(
   pickerCtx: ColorPickerContext<T>,
   ref: React.Ref<HTMLButtonElement>,
 ): ColorSwatchState => {
-  const { selected = false, icon } = props;
+  const { selected = false, icon, disabled } = props;
   const iconShorthand = slot.optional(icon, { elementType: 'span' });
+  const disabledIcon = slot.optional(props.disabledIcon, {
+    renderByDefault: true,
+    defaultProps: {
+      // children: <Prohibited20Filled />,
+    },
+    elementType: 'span',
+  });
   const state: ColorSwatchState = {
     components: {
       root: 'button',
       icon: 'span',
+      disabledIcon: 'span',
     },
     root: slot.always(
       getIntrinsicElementProps('button', {
@@ -46,6 +55,8 @@ export const useColorSwatch_unstable = <T extends Color>(
       { elementType: 'button' },
     ),
     icon: iconShorthand,
+    disabledIcon,
+    disabled,
   };
 
   state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLButtonElement>());

@@ -7,6 +7,7 @@ export type ColorSwatchSlots = {
    * Icon that renders either before or after the `children` as specified by the `iconPosition` prop.
    */
   icon?: Slot<'span'>;
+  disabledIcon?: Slot<'span'>;
 };
 
 /**

@@ -21,6 +21,7 @@ const { swatchColor, swatchBorderColor, swatchStateColor } = swatchCSSVars;
 const useStyles = makeResetStyles({
   boxSizing: 'border-box',
   ...shorthands.border('none'),
+  ...shorthands.padding(0),
   width: '28px',
   height: '28px',
   background: `var(${swatchColor})`,
