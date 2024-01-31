@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Resize heuristic should account for zero dimensions",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
