@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: onOpenChange inconsistent between Tree and TreeItem",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -20,7 +20,7 @@ export const CalendarSixWeeks = () => {
 CalendarSixWeeks.parameters = {
   docs: {
     description: {
-      story: 'A Calendar Compat allows you to set a six day week.',
+      story: 'A Calendar Compat allows you to set a six week month.',
     },
   },
 };

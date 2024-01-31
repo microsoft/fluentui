@@ -18687,10 +18687,10 @@ monaco-editor@0.33.0:
   resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.33.0.tgz#842e244f3750a2482f8a29c676b5684e75ff34af"
   integrity sha512-VcRWPSLIUEgQJQIE0pVT8FcGBIgFoxz7jtqctE+IiCxWugD0DwgyQBcZBhdSrdMC84eumoqMZsGl2GTreOzwqw==
 
-monosize-storage-azure@0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/monosize-storage-azure/-/monosize-storage-azure-0.0.5.tgz#1e22304fda8164c1eed779bbcb8a57a0fb365fc5"
-  integrity sha512-D/0HP7iIoBG8AHQsKYdwB9OQaZMziPOxW2EfHJTwNsuhJ6cFFiSi7Xmy8nHrqBr2KubOOU2K05g1zGPcGZKGRw==
+monosize-storage-azure@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/monosize-storage-azure/-/monosize-storage-azure-0.0.6.tgz#7434698a9426028214488ec702227f1004b364a5"
+  integrity sha512-JcNV6jMY/batfJIyO+vLPdqMYlcRsbN19ZS/ZBvHppUXUuqkT5tXNyHFlB+5+8WEEL2SL0mORJoZqKx789kBJg==
   dependencies:
     "@azure/data-tables" "^13.0.0"
     monosize "^0.2.1"
