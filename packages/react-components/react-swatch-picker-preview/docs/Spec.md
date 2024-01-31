@@ -80,15 +80,15 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
 
 ```jsx
 <SwatchPicker aria-label="Font color" layout="grid" columnCount={3}>
-  <ColorSwatch swatch="#FF1921" aria-label="Red" />
-  <ColorSwatch swatch="#FFC12E" aria-label="Orange" />
-  <ColorSwatch swatch="#FEFF37" aria-label="Yellow" />
-  <ColorSwatch swatch="#00B053" aria-label="Green" />
-  <ColorSwatch swatch="#00AFED" aria-label="Light Blue" />
-  <ColorSwatch swatch="#006EBD" aria-label="Blue" />
-  <ColorSwatch swatch="#712F9E" aria-label="Purple" />
-  <ImageSwatch swatch="./path/image1.png" aria-label="Space craft" />
-  <ImageSwatch swatch="./path/image2.png" aria-label="Planets" />
+  <ColorSwatch value="#FF1921" aria-label="Red" />
+  <ColorSwatch value="#FFC12E" aria-label="Orange" />
+  <ColorSwatch value="#FEFF37" aria-label="Yellow" />
+  <ColorSwatch value="#00B053" aria-label="Green" />
+  <ColorSwatch value="#00AFED" aria-label="Light Blue" />
+  <ColorSwatch value="#006EBD" aria-label="Blue" />
+  <ColorSwatch value="#712F9E" aria-label="Purple" icon={<SomeIcon />} />
+  <ImageSwatch value="./path/image1.png" disabled aria-label="Space craft" />
+  <ImageSwatch value="./path/image2.png" aria-label="Planets" />
 </SwatchPicker>
 ```
 
@@ -149,12 +149,18 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 
 ### SwatchPicker
 
-| Property | Values                                   | Default  | Purpose                             |
-| -------- | ---------------------------------------- | -------- | ----------------------------------- |
-| layout   | `row`, `grid`                            | `grid`   | Sets layout of the SwatchPicker     |
-| shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                          |
-| size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell     |
-| spacing  | `small`, `medium`                        | `medium` | Sets spacing between rows and cells |
+| Property          | Values                                   | Default   | Purpose                                                      |
+| ----------------- | ---------------------------------------- | --------- | ------------------------------------------------------------ |
+| disabled          | boolean                                  | false     | Whether SwatchPicker is disabled                             |
+| layout            | `row`, `grid`                            | `grid`    | Sets layout of the SwatchPicker                              |
+| onColorPreview    | function                                 | undefined | Callback called when color is previewed (on hover or focus). |
+| onColorSelect     | function                                 | undefined | Callback called when color is selected                       |
+| previewId         | `number`, `string`                       |           | Id of previewColor                                           |
+| selectedId        | `number`, `string`                       |           | Id of selected color                                         |
+| shape             | `square`, `circular`, `rounded`          | `square`  | Sets shape                                                   |
+| size              | `extraSmall`, `small`, `medium`, `large` | `medium`  | Defines size of the Swatch cell                              |
+| spacing           | `small`, `medium`                        | `medium`  | Sets spacing between rows and cells                          |
+| defaultSelectedId | `number`, `string`                       |           | Default selected swatch                                      |
 
 | Slots | Values | Default | Description                  |
 | ----- | ------ | ------- | ---------------------------- |
@@ -164,6 +170,7 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 
 | Property | Values                                   | Default  | Purpose                         |
 | -------- | ---------------------------------------- | -------- | ------------------------------- |
+| id       | `number`, `string`                       |          | Sets ID of the swatch           |
 | shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                      |
 | size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell |
 | value    |                                          |          | Color in hex or RGB             |
@@ -274,10 +281,52 @@ is used to pick images:
 
 ## Migration
 
-_Describe what will need to be done to upgrade from the existing implementations:_
+### Fabric (v8) property mapping
 
-- _Migration from v8_
-- _Migration from v0_
+#### Props no longer supported with an equivalent functionality in SwatchPicker V9:
+
+- `colorCells ` => Use `children` prop instead.
+- `cellBorderWidth` - customizable via CSS.
+- `cellHeight`, `cellWidth` and `width` - use `size` prop instead. For custom size use CSS.
+- `cellMargin` - use `spacing` instead.
+- `cellShape` - use `shape` instead.
+- `className` => Slot system supports it by default. We don't need to provide it explicitly.
+- `styles` => Use style customization through `className` instead.
+- `theme`
+
+#### Props no longer supported
+
+- `ariaPosInSet`
+- `ariaSetSize`
+- `doNotContainWithinFocusZone`
+- `focusOnHover`
+- `getColorGridCellStyles`
+- `mouseLeaveParentSelector`
+- `onCellFocused`
+- `onCellHovered`
+- `onRenderColorCell` => Custom render function for the color cell. This can replace the entire button element, including the default focus and hover states.
+- `onRenderColorCellContent` => Custom render function for inner content of the color cell. This will retain the cell's default button behavior and overrides just the inner content.
+- `shouldFocusCircularNavigate`
+
+#### Props supported
+
+- `columnCount`
+- `defaultSelectedId`
+- `disabled`
+- `id`
+- `onChange`
+- `selectedId`
+
+#### Property Mapping
+
+| v8 `SwatchColorPicker` | v9 `SwatchPicker` |
+| ---------------------- | ----------------- |
+| `className`            |                   |
+| `columnCount `         | `columnCount `    |
+| `ariaPosInSet`         |                   |
+| `ariaSetSize`          |                   |
+| `cellBorderWidth`      |                   |
+|                        | `size`            |
 
 ## Behaviors
 
