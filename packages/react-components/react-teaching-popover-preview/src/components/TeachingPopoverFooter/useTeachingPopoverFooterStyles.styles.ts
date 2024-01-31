@@ -12,14 +12,23 @@ export const teachingPopoverFooterClassNames: SlotClassNames<TeachingPopoverFoot
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    flexDirection: 'row',
-    ...shorthands.borderRadius('4px'),
     ...shorthands.gap('8px'),
     paddingTop: '12px',
+  },
+  rootVertical: {
+    flexDirection: 'column',
+  },
+  rootHorizontal: {
+    flexDirection: 'row',
     justifyContent: 'flex-end',
   },
-  buttonRoot: {
+  buttonRootVertical: {
+    width: 'auto',
+    ...shorthands.borderRadius('4px'),
+  },
+  buttonRootHorizontal: {
     minWidth: '96px',
+    ...shorthands.borderRadius('4px'),
   },
   brandSecondary: {
     ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
@@ -41,20 +50,25 @@ const useStyles = makeStyles({
 /** Applies style classnames to slots */
 export const useTeachingPopoverFooterStyles_unstable = (state: TeachingPopoverFooterState) => {
   const styles = useStyles();
-  const { appearance } = state;
+  const { appearance, footerLayout } = state;
 
-  state.root.className = mergeClasses(teachingPopoverFooterClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(
+    teachingPopoverFooterClassNames.root,
+    styles.root,
+    footerLayout === 'horizontal' ? styles.rootHorizontal : styles.rootVertical,
+    state.root.className,
+  );
   if (state.secondary) {
     state.secondary.className = mergeClasses(
       teachingPopoverFooterClassNames.secondary,
-      styles.buttonRoot,
+      footerLayout === 'horizontal' ? styles.buttonRootHorizontal : styles.buttonRootVertical,
       appearance === 'brand' ? styles.brandSecondary : undefined,
       state.secondary.className,
     );
   }
   state.primary.className = mergeClasses(
     teachingPopoverFooterClassNames.primary,
-    styles.buttonRoot,
+    footerLayout === 'horizontal' ? styles.buttonRootHorizontal : styles.buttonRootVertical,
     appearance === 'brand' ? styles.brandPrimary : undefined,
     state.primary.className,
   );

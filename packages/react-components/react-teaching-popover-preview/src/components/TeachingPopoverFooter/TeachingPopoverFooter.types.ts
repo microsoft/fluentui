@@ -25,8 +25,14 @@ export type TeachingPopoverFooterStrings = {
 };
 
 export type TeachingPopoverFooterState = ComponentState<TeachingPopoverFooterSlots> &
-  Pick<PopoverContextValue, 'appearance'>;
+  Pick<PopoverContextValue, 'appearance'> & {
+    /**
+     * Enables stylization to a horizontal or vertical stack of button layouts.
+     * Defaults to horizontal
+     */
+    footerLayout?: 'horizontal' | 'vertical';
+  };
 
 export type TeachingPopoverFooterProps = ComponentProps<Partial<TeachingPopoverFooterSlots>> & {
   strings: TeachingPopoverFooterStrings;
-};
+} & Pick<TeachingPopoverFooterState, 'footerLayout'>;

@@ -33,6 +33,7 @@ export const useTeachingPopoverFooter_unstable = (
   });
 
   return {
+    footerLayout: props.footerLayout ?? 'horizontal',
     appearance,
     components: {
       root: 'div',
