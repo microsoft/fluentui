@@ -2,7 +2,7 @@
   "name": "@fluentui/react-strict-dom-adapter-preview",
   "version": "0.0.0",
   "private": true,
-  "description": "New fluentui react package",
+  "description": "Cross-platform adapters for use with react-strict-dom",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
@@ -31,8 +31,6 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
   },

@@ -4,6 +4,9 @@
 
 ```ts
 
+// @public (undocumented)
+export const helloWorld: () => string;
+
 // (No @packageDocumentation comment for this package)
 
 ```
