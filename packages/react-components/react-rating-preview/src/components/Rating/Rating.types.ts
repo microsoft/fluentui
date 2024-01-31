@@ -1,26 +1,20 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
+import { RatingItemContextValue } from '../RatingItem/RatingItem.types';
 
 export type RatingSlots = {
   root: NonNullable<Slot<'div'>>;
-  ratingLabel?: NonNullable<Slot<'label'>>;
-  ratingCountLabel?: NonNullable<Slot<'label'>>;
 };
 
 /**
  * Rating Props
  */
-export type RatingProps = ComponentProps<RatingSlots> & {
+export type RatingProps = Omit<ComponentProps<Partial<RatingSlots>>, 'onChange'> & {
   /**
-   * Controls the appearance of unselected rating items.
-   * @default outline (filled if readOnly is set)
+   * Controls the color of the Rating.
+   * @default neutral
    */
-  appearance?: 'filled' | 'outline';
-  /**
-   * Sets whether to render a full or compact Rating
-   * @default false
-   */
-  compact?: boolean;
+  color?: 'brand' | 'marigold' | 'neutral';
   /**
    * Default value of the Rating
    */
@@ -46,22 +40,17 @@ export type RatingProps = ComponentProps<RatingSlots> & {
   /**
    * Callback when the rating value is changed by the user.
    */
-  onChange?: (ev: React.SyntheticEvent | Event, data: RatingOnChangeData) => void;
+  onChange?: EventHandler<RatingOnChangeEventData>;
   /**
    * Sets the precision to allow half-filled shapes in Rating
-   * @default false
+   * @default 1
    */
-  precision?: boolean;
-  /**
-   * Sets Rating to be read only
-   * @default false
-   */
-  readOnly?: boolean;
+  step?: 0.5 | 1;
   /**
    * Sets the size of the Rating items.
-   * @default medium
+   * @default extra-large
    */
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'extra-large';
   /**
    * The value of the rating
    */
@@ -71,40 +60,21 @@ export type RatingProps = ComponentProps<RatingSlots> & {
 /**
  * Data for the onChange event for Rating.
  */
-export type RatingOnChangeData = {
+export type RatingOnChangeEventData = EventData<'change', React.FormEvent<HTMLDivElement>> & {
   /**
    * The new value of the rating.
    */
-  value?: number;
+  value: number;
 };
 
 /**
  * State used in rendering Rating
  */
 export type RatingState = ComponentState<RatingSlots> &
-  Required<
-    Pick<
-      RatingProps,
-      'appearance' | 'compact' | 'iconFilled' | 'iconOutline' | 'name' | 'precision' | 'readOnly' | 'size' | 'value'
-    >
-  > & {
+  Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'value'>> & {
     hoveredValue?: number | undefined;
   };
 
-export type RatingContextValue = Pick<
-  RatingState,
-  | 'appearance'
-  | 'compact'
-  | 'iconFilled'
-  | 'iconOutline'
-  | 'name'
-  | 'precision'
-  | 'readOnly'
-  | 'size'
-  | 'value'
-  | 'hoveredValue'
->;
-
 export type RatingContextValues = {
-  rating: RatingContextValue;
+  ratingItem: RatingItemContextValue;
 };

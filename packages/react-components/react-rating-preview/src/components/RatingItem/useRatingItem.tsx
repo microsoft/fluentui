@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import type { RatingItemProps, RatingItemState } from './RatingItem.types';
-import { useRatingContextValue_unstable } from '../../contexts/RatingContext';
+import { useRatingItemContextValue_unstable } from '../../contexts/RatingItemContext';
 
 /**
  * Create the state required to render RatingItem.
@@ -14,15 +14,15 @@ import { useRatingContextValue_unstable } from '../../contexts/RatingContext';
  * @param ref - reference to root HTMLElement of RatingItem
  */
 export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HTMLSpanElement>): RatingItemState => {
-  const context = useRatingContextValue_unstable();
+  const context = useRatingItemContextValue_unstable();
   const { value = 0 } = props;
 
-  const ratingValue = context?.value || 0;
+  const ratingValue = Math.round((context.value || 0) * 2) / 2; // round to the nearest 0.5
 
-  const displayedRatingValue = context?.hoveredValue ?? ratingValue;
+  const displayedRatingValue = context.hoveredValue ?? ratingValue;
 
   let iconFillWidth;
-  if ((context && context.compact) || displayedRatingValue >= value) {
+  if (context.compact || displayedRatingValue >= value) {
     iconFillWidth = 1;
   } else if (displayedRatingValue >= value - 0.5) {
     iconFillWidth = 0.5;
@@ -44,7 +44,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   if (iconFillWidth < 1) {
     unselectedOutlineIcon = slot.always(props.unselectedOutlineIcon, {
       defaultProps: {
-        children: context?.iconOutline,
+        children: context.iconOutline,
         'aria-hidden': true,
       },
       elementType: 'div',
@@ -52,7 +52,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   let unselectedFilledIcon;
-  if (context && iconFillWidth < 1 && context.appearance === 'filled') {
+  if (iconFillWidth < 1 && !context.interactive) {
     unselectedFilledIcon = slot.always(props.unselectedFilledIcon, {
       defaultProps: {
         children: context.iconFilled,
@@ -66,7 +66,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   if (iconFillWidth > 0) {
     selectedIcon = slot.always(props.selectedIcon, {
       defaultProps: {
-        children: context?.iconFilled,
+        children: context.iconFilled,
         'aria-hidden': true,
       },
       elementType: 'div',
@@ -74,7 +74,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   let halfValueInput;
-  if (context && !context.readOnly && context.precision && !context.compact) {
+  if (context.interactive && context.step === 0.5) {
     halfValueInput = slot.always(props.halfValueInput, {
       defaultProps: {
         type: 'radio',
@@ -91,7 +91,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   let fullValueInput;
-  if (context && !context.readOnly && !context.compact) {
+  if (context.interactive) {
     fullValueInput = slot.always(props.fullValueInput, {
       defaultProps: {
         type: 'radio',
@@ -109,9 +109,9 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   const state: RatingItemState = {
-    compact: context ? context.compact : false,
-    precision: context ? context.precision : false,
-    size: context ? context.size : 'medium',
+    color: context.color,
+    step: context.step,
+    size: context.size,
     iconFillWidth,
     value,
     components: {

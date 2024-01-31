@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Field } from '@fluentui/react-field';
 import { Combobox } from './Combobox';
 import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { comboboxClassNames } from './useComboboxStyles.styles';
 
 describe('Combobox', () => {
   beforeEach(() => {
@@ -23,6 +24,13 @@ describe('Combobox', () => {
             open: true,
             // Portal messes with the classNames test, so rendering the listbox inline here
             inlinePopup: true,
+          },
+          // Classes are defined manually as there is no way to render "expandIcon" and "clearIcon" and the same time
+          expectedClassNames: {
+            root: comboboxClassNames.root,
+            expandIcon: comboboxClassNames.expandIcon,
+            listbox: comboboxClassNames.listbox,
+            input: comboboxClassNames.input,
           },
         },
       ],
@@ -49,6 +57,24 @@ describe('Combobox', () => {
       </Combobox>,
     );
     expect(result.container).toMatchSnapshot();
+  });
+
+  it('renders a hidden listbox when trigger is focused', () => {
+    const result = render(
+      <Combobox inlinePopup>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    act(() => {
+      result.getByRole('combobox').focus();
+    });
+
+    const listbox = result.container.querySelector('[role="listbox"]');
+    expect(listbox).not.toBeNull();
+    expect(window.getComputedStyle(listbox!).display).toEqual('none');
   });
 
   it('renders the popup under document.body by default', () => {
@@ -142,7 +168,7 @@ describe('Combobox', () => {
     expect(chevronButton?.getAttribute('aria-labelledby')).toEqual('testId');
   });
 
-  it('adds aria-owns pointing to the popup', () => {
+  it('adds aria-owns and aria-controls pointing to the popup', () => {
     const { getByRole, container } = render(
       <Combobox open className="root">
         <Option>Red</Option>
@@ -152,6 +178,7 @@ describe('Combobox', () => {
     );
     const listboxId = getByRole('listbox').id;
     expect(container.querySelector('.root')?.getAttribute('aria-owns')).toEqual(listboxId);
+    expect(container.querySelector('input')?.getAttribute('aria-controls')).toEqual(listboxId);
   });
 
   /* open/close tests */
@@ -471,10 +498,47 @@ describe('Combobox', () => {
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Red');
 
-    // arrow down + space
+    // space should select after an arrow down
     userEvent.keyboard('{ArrowDown} ');
 
     expect((getByRole('combobox') as HTMLInputElement).value).toEqual('Green');
+  });
+
+  it('allows to input space', () => {
+    const { getByRole, getByText } = render(
+      <Combobox open>
+        <Option>Slice of pizza</Option>
+        <Option>Slice of cake</Option>
+        <Option>Slice of pie</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByRole('combobox');
+
+    userEvent.type(combobox, 'Slice of pie');
+    userEvent.type(combobox, '{Enter}');
+
+    expect(getByText('Slice of pie').getAttribute('aria-selected')).toEqual('true');
+    expect((combobox as HTMLInputElement).value).toEqual('Slice of pie');
+  });
+
+  it('does not select with space while typing', () => {
+    const onSelect = jest.fn();
+
+    const { getByTestId, getByRole } = render(
+      <Combobox open data-testid="combobox" onOptionSelect={onSelect}>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>,
+    );
+
+    const combobox = getByTestId('combobox');
+
+    userEvent.type(combobox, 'abc def');
+
+    expect((getByRole('combobox') as HTMLInputElement).value).toEqual('abc def');
+    expect(onSelect).not.toHaveBeenCalled();
   });
 
   it('does not select a disabled option with the keyboard', () => {
@@ -926,5 +990,49 @@ describe('Combobox', () => {
     expect(combobox.getAttribute('aria-describedby')).toEqual(message.id);
     expect(combobox.getAttribute('aria-invalid')).toEqual('true');
     expect(combobox.required).toBe(true);
+  });
+
+  describe('clearable', () => {
+    it('clears the selection on a button click', () => {
+      const { getByText, getByRole } = render(
+        <Combobox
+          clearable
+          defaultSelectedOptions={['Red']}
+          defaultValue="Red"
+          clearIcon={{ children: 'CLEAR BUTTON' }}
+        >
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>,
+      );
+
+      const combobox = getByRole('combobox');
+      const clearButton = getByText('CLEAR BUTTON');
+
+      expect(clearButton).not.toHaveStyle({ display: 'none' });
+      expect(combobox).toHaveValue('Red');
+
+      act(() => {
+        fireEvent.click(clearButton);
+      });
+
+      expect(clearButton).toHaveStyle({ display: 'none' });
+      expect(combobox).toHaveValue('');
+    });
+
+    it('is not visible when there is no selection', () => {
+      const { getByText } = render(
+        <Combobox clearable clearIcon={{ children: 'CLEAR BUTTON' }}>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Combobox>,
+      );
+      const clearButton = getByText('CLEAR BUTTON');
+
+      expect(clearButton).toHaveStyle({ display: 'none' });
+      expect(clearButton).toHaveAttribute('aria-hidden', 'true');
+    });
   });
 });

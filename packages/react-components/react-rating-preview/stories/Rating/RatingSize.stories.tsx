@@ -14,9 +14,10 @@ export const Size = () => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-      <Rating size="small" />
-      <Rating size="medium" />
-      <Rating size="large" />
+      <Rating defaultValue={3} size="small" />
+      <Rating defaultValue={3} size="medium" />
+      <Rating defaultValue={3} size="large" />
+      <Rating defaultValue={3} size="extra-large" />
     </div>
   );
 };
@@ -24,7 +25,7 @@ export const Size = () => {
 Size.parameters = {
   docs: {
     description: {
-      story: 'A Rating can be small, medium, or large. You can specify the size with the "size" prop.',
+      story: "A Rating's `size` can be `small`, `medium`, `large`, or `extra-large`.",
     },
   },
 };

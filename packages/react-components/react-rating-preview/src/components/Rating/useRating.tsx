@@ -23,20 +23,15 @@ import { StarFilled, StarRegular } from '@fluentui/react-icons';
 export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivElement>): RatingState => {
   const generatedName = useId('rating-');
   const {
-    appearance = props.readOnly ? 'filled' : 'outline',
-    compact = false,
+    color = 'neutral',
     iconFilled = <StarFilled />,
     iconOutline = <StarRegular />,
     max = 5,
     name = generatedName,
     onChange,
-    precision = false,
-    readOnly = false,
-    size = 'medium',
+    step = 1,
+    size = 'extra-large',
   } = props;
-
-  const ratingId = useId('ratingLabel');
-  const countId = useId('countLabel');
 
   const [value, setValue] = useControllableState({
     state: props.value,
@@ -49,71 +44,57 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
 
   const [hoveredValue, setHoveredValue] = React.useState<number | undefined>(undefined);
 
-  //Prevents unnecessary rerendering of children
+  // Generate the child RatingItems and memoize them to prevent unnecessary re-rendering
   const rootChildren = React.useMemo(() => {
-    return !compact ? (
-      Array.from(Array(max), (_, i) => <RatingItem value={i + 1} key={i + 1} />)
-    ) : (
-      <RatingItem value={1} key={1} />
-    );
-  }, [compact, max]);
+    return Array.from(Array(max), (_, i) => <RatingItem value={i + 1} key={i + 1} />);
+  }, [max]);
 
   const state: RatingState = {
-    appearance,
-    compact,
+    color,
     iconFilled,
     iconOutline,
     name,
-    precision,
-    readOnly,
+    step,
     size,
     value,
     hoveredValue,
     components: {
       root: 'div',
-      ratingLabel: 'label',
-      ratingCountLabel: 'label',
     },
     root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        children: rootChildren,
-        ...props,
-      }),
+      getIntrinsicElementProps(
+        'div',
+        {
+          ref,
+          children: rootChildren,
+          ...props,
+        },
+        ['onChange'],
+      ),
       { elementType: 'div' },
     ),
-    ratingLabel: slot.optional(props.ratingLabel, {
-      defaultProps: { id: ratingId },
-      elementType: 'label',
-    }),
-    ratingCountLabel: slot.optional(props.ratingCountLabel, {
-      defaultProps: { id: countId },
-      elementType: 'label',
-    }),
   };
 
-  if (!readOnly) {
-    state.root.onChange = ev => {
-      if (isRatingRadioItem(ev.target)) {
-        const newValue = parseFloat(ev.target.value);
-        if (!isNaN(newValue)) {
-          setValue(newValue);
-          onChange?.(ev, { value: newValue });
-        }
+  state.root.onChange = ev => {
+    if (isRatingRadioItem(ev.target)) {
+      const newValue = parseFloat(ev.target.value);
+      if (!isNaN(newValue)) {
+        setValue(newValue);
+        onChange?.(ev, { type: 'change', event: ev, value: newValue });
       }
-    };
-    state.root.onMouseOver = mergeCallbacks(props.onMouseOver, ev => {
-      if (isRatingRadioItem(ev.target)) {
-        const newValue = parseFloat(ev.target.value);
-        if (!isNaN(newValue)) {
-          setHoveredValue(newValue);
-        }
+    }
+  };
+  state.root.onMouseOver = mergeCallbacks(props.onMouseOver, ev => {
+    if (isRatingRadioItem(ev.target)) {
+      const newValue = parseFloat(ev.target.value);
+      if (!isNaN(newValue)) {
+        setHoveredValue(newValue);
       }
-    });
-    state.root.onMouseLeave = mergeCallbacks(props.onMouseLeave, ev => {
-      setHoveredValue(undefined);
-    });
-  }
+    }
+  });
+  state.root.onMouseLeave = mergeCallbacks(props.onMouseLeave, ev => {
+    setHoveredValue(undefined);
+  });
 
   return state;
 };

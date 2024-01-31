@@ -126,16 +126,19 @@ export function useKeyboardResizing(columnResizeState: ColumnResizeState) {
   return {
     toggleInteractiveMode,
     columnId,
-    getKeyboardResizingProps: (colId: TableColumnId, currentWidth: number) => ({
-      onKeyDown: keyboardHandler,
-      onBlur: disableInteractiveMode,
-      ref: getKeyboardResizingRef(colId),
-      role: 'separator',
-      'aria-label': 'Resize column',
-      'aria-valuetext': `${currentWidth} pixels`,
-      'aria-hidden': colId === columnId ? false : true,
-      tabIndex: colId === columnId ? 0 : undefined,
-      ...tabsterAttrs,
-    }),
+    getKeyboardResizingProps: React.useCallback(
+      (colId: TableColumnId, currentWidth: number) => ({
+        onKeyDown: keyboardHandler,
+        onBlur: disableInteractiveMode,
+        ref: getKeyboardResizingRef(colId),
+        role: 'separator',
+        'aria-label': 'Resize column',
+        'aria-valuetext': `${currentWidth} pixels`,
+        'aria-hidden': colId === columnId ? false : true,
+        tabIndex: colId === columnId ? 0 : undefined,
+        ...tabsterAttrs,
+      }),
+      [columnId, disableInteractiveMode, getKeyboardResizingRef, keyboardHandler, tabsterAttrs],
+    ),
   };
 }

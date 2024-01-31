@@ -59,12 +59,14 @@ function raiseClickFromKeyboardEvent(target: Element, ev?: React.KeyboardEvent<H
       cancelable: ev?.cancelable,
     });
   } else {
+    // eslint-disable-next-line no-restricted-globals
     event = document.createEvent('MouseEvents');
     // eslint-disable-next-line deprecation/deprecation
     event.initMouseEvent(
       'click',
       ev ? ev.bubbles : false,
       ev ? ev.cancelable : false,
+      // eslint-disable-next-line no-restricted-globals
       window, // not using getWindow() since this can only be run client side
       0, // detail
       0, // screen x
@@ -109,12 +111,18 @@ const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url'
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
 
+interface IFocusZonePropsWithTabster extends IFocusZoneProps {
+  'data-tabster': string;
+}
+
 export class FocusZone extends React.Component<IFocusZoneProps> implements IFocusZone {
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
     direction: FocusZoneDirection.bidirectional,
     shouldRaiseClicks: true,
-  };
+    // Hardcoding uncontrolled flag for proper interop with FluentUI V9.
+    'data-tabster': '{"uncontrolled": {}}',
+  } as IFocusZonePropsWithTabster;
 
   private _root: React.RefObject<HTMLElement> = React.createRef();
   private _mergedRef = createMergedRef<HTMLElement>();

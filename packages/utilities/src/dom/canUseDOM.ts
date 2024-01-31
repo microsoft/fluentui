@@ -3,11 +3,11 @@
  */
 export function canUseDOM(): boolean {
   return (
+    // eslint-disable-next-line no-restricted-globals
     typeof window !== 'undefined' &&
     !!(
-      window.document &&
-      // eslint-disable-next-line deprecation/deprecation
-      window.document.createElement
+      // eslint-disable-next-line no-restricted-globals, deprecation/deprecation
+      (window.document && window.document.createElement)
     )
   );
 }
