@@ -1,4 +1,6 @@
-import React from 'react';
+import * as React from 'react';
+
+import { helloWorld } from '@fluentui/react-strict-dom-adapter-preview';
 import { html } from 'react-strict-dom';
 import stylex from '@stylexjs/stylex';
 
@@ -17,5 +19,5 @@ const styles = stylex.create({
 
 export const StrictDomDemo = (props: { cond?: boolean }) => {
   const { cond } = props;
-  return <html.div style={[styles.root, cond && styles.cond]}>hello world</html.div>;
+  return <html.div style={[styles.root, cond && styles.cond]}>{helloWorld()}</html.div>;
 };
