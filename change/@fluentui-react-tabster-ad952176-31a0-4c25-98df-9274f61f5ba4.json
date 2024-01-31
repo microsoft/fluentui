@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Tabster 5.3.0 and Keyborg 2.4.1.",
-  "packageName": "@fluentui/react-tabster",
-  "email": "marata@microsoft.com",
-  "dependentChangeType": "patch"
-}

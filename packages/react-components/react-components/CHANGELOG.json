@@ -2,6 +2,41 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 30 Jan 2024 23:16:53 GMT",
+      "tag": "@fluentui/react-components_v9.46.3",
+      "version": "9.46.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "4ea2ac442b26360c3e0e86a0225ac4570c89f636",
+            "comment": "DataGrid to use dedicated custom events instead of simulated keypresses."
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "4ea2ac442b26360c3e0e86a0225ac4570c89f636",
+            "comment": "Tabster 5.3.0 and Keyborg 2.4.1."
+          }
+        ],
+        "minor": [
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "a56a5d3223c192a2a815ed84346825326541280a",
+            "comment": "Optional ShadowDOM support."
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "a56a5d3223c192a2a815ed84346825326541280a",
+            "comment": "getParent() version with ShadowDOM support."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jan 2024 13:56:05 GMT",
       "tag": "@fluentui/react-components_v9.46.2",
       "version": "9.46.2",

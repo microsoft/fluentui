@@ -1,1 +1,0 @@
-export { greet } from './hello';
