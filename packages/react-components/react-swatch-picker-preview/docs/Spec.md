@@ -3,7 +3,7 @@
 ## Background
 
 A SwatchPicker is used in graphic and text editors.
-It displays color, image and pattern options as a row or a grid.
+It allows user to choose a needed color, image or pattern.
 
 The SwatchPicker can be integrated within a popover or used as a standalone feature.
 
@@ -171,10 +171,11 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 | selected | boolean                                  |          |                                 |
 | empty    | boolean                                  |          |                                 |
 
-| Slots | Values   | Default  | Description                                                 |
-| ----- | -------- | -------- | ----------------------------------------------------------- |
-| root  | `button` | `button` | The root of the ColorSwatch element                         |
-| icon  | `span`   | `span`   | Icon which can be `disabled` icon or custom one as a swatch |
+| Slots        | Values   | Default  | Description                         |
+| ------------ | -------- | -------- | ----------------------------------- |
+| root         | `button` | `button` | The root of the ColorSwatch element |
+| icon         | `span`   | `span`   | Swatch with icon                    |
+| disabledIcon | `span`   | `span`   | Disabled icon                       |
 
 ### ImageSwatch
 
@@ -187,10 +188,11 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 | selected | boolean                                  |          |                                                     |
 | empty    | boolean                                  |          |                                                     |
 
-| Slots | Values   | Default  | Description                                                 |
-| ----- | -------- | -------- | ----------------------------------------------------------- |
-| root  | `button` | `button` | The root of the ColorSwatch element                         |
-| icon  | `span`   | `span`   | Icon which can be `disabled` icon or custom one as a swatch |
+| Slots        | Values   | Default  | Description                         |
+| ------------ | -------- | -------- | ----------------------------------- |
+| root         | `button` | `button` | The root of the ColorSwatch element |
+| icon         | `span`   | `span`   | Swatch with icon                    |
+| disabledIcon | `span`   | `span`   | Disabled icon                       |
 
 ## Structure
 
@@ -199,14 +201,12 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 | Component    | Purpose                                                               |
 | ------------ | --------------------------------------------------------------------- |
 | SwatchPicker | Renders SwatchPicker which can represent swatches as a row or a grid. |
-| ColorSwatch  | Swatch for a color or icon                                            |
-| ImageSwatch  | Swatch for an image, texture or a pattern                             |
+| ColorSwatch  | Renders a color or an icon                                            |
+| ImageSwatch  | Renders an image, texture or a pattern                                |
 
-### SwatchPicker component
+#### SwatchPicker component
 
-#### Anatomy
-
-![visual anatomy of the SwatchPicker component](./assets/swatch-picker-base.jpg)
+![SwatchPicker Anatomy](./assets/swatch-picker-base.jpg)
 
 #### DOM
 
@@ -216,16 +216,14 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 </div>
 ```
 
-### ColorSwatch component
+#### ColorSwatch component
 
 is used for picking colors:
 
 - solid color
 - gradient
 
-#### Anatomy
-
-![visual anatomy of the ColorSwatch component](./assets/todo.png)
+![ColorSwatch Anatomy](./assets/swatch-picker-base.jpg)
 
 #### DOM
 
@@ -234,7 +232,7 @@ is used for picking colors:
 <button role="radio" aria-selected="false" style="--fui-SwatchPicker--color: #ff0000" aria-label="Yellow"></button>
 ```
 
-## ImageSwatch component
+#### ImageSwatch component
 
 is used to pick images:
 
@@ -242,9 +240,7 @@ is used to pick images:
 - texture
 - pattern
 
-#### Anatomy
-
-![visual anatomy of the SwatchPicker component](./assets/todo.png)
+![ImageSwatch Anatomy](./assets/swatch-picker-base.jpg)
 
 #### DOM
 
@@ -261,14 +257,66 @@ _Describe what will need to be done to upgrade from the existing implementations
 
 ## Behaviors
 
-Selected color returns colorId. Keyboard avigation is done by arrow keys.
+### Mouse
 
-- _Component States_
-- _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
-  - _Screen readers_
+Swatch is highlighted on `hover` and tooltip with color label is shown.
+
+When SwatchPicker is within a popup, it's possible to have a preview of the color on `hover` for a target's object.
+
+![Visual interaction of the SwatchPicker using the mouse](./assets/swatch-picker-behaviors-mouse.jpg)
+
+Swatch is selected on `click`.
+
+States:
+
+1. Rest
+2. OnHover
+
+   Tooltip with color label is shown.
+   It's possible to have preview of a color without selecting it.
+
+3. OnClick
+
+   Color is selected.
+
+### Keyboard
+
+#### Navigation
+
+In a `row` layout top/right arrows move to the right, bottom/left arrows move to the left.
+
+**Row layout**
+![Visual interaction of the SwatchPicker using the keyboard](./assets/swatch-picker-behaviors-keyboard-nav-row.jpg)
+
+**Grid layout**
+![Visual interaction of the SwatchPicker using the keyboard](./assets/swatch-picker-behaviors-keyboard-nav-grid.jpg)
+
+When navigating between swatches in a popup, it's possible to preview colors. A target object's color changes but it is not selected. If a user clicks `Esc`, the target object changes back to its original color and the popup is closed.
+
+#### Select a swatch
+
+![Visual interaction of the SwatchPicker using the keyboard](./assets/swatch-picker-behaviors-keyboard-select.jpg)
+
+| Key              | Result                                                |
+| ---------------- | ----------------------------------------------------- |
+| `Space`, `Enter` | A swatch is selected                                  |
+| Arrows           | A swatch is focused/active but color is not selected. |
+| `Esc`            | Removes focus/ closes popup                           |
+| `Home/PgUp`      | Focus on a first swatch                               |
+| `End/PgDn`       | Focus on a last swatch                                |
+
+The SwatchPicker can be used within a popup or a context menu. When a color is selected, the popup or context menu should be closed.
+
+#### Navigation between color sets
+
+Colors within color sets are mutually exclusive, meaning that only one color can be selected across all sets.
+
+![Visual interaction of the SwatchPicker using the keyboard](./assets/swatch-picker-behaviors-keyboard-nav-color-sets.jpg)
+
+| Key    | Result                                              |
+| ------ | --------------------------------------------------- |
+| `Tab`  | Navigation between color sets                       |
+| Arrows | A user can navigate between swatches and color sets |
 
 ## Accessibility
 
