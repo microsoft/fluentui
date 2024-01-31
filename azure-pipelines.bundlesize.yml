@@ -27,26 +27,4 @@ jobs:
       - script: yarn bundlesizecollect
         displayName: 'Collate Bundle Size Information'
 
-      - task: PublishBuildArtifacts@1
-        displayName: 'Publish Bundle Size information to Azure Dev Ops Artifacts'
-        inputs:
-          PathtoPublish: 'apps/test-bundles/dist/bundlesizes.json'
-
-      - task: PublishBuildArtifacts@1
-        displayName: 'Publish Artifact dist folder upon build for debug'
-        inputs:
-          PathtoPublish: 'apps/test-bundles/dist'
-          ArtifactName: distdrop
-
       - template: .devops/templates/cleanup.yml
-
-  - job: lightrail
-    pool: server
-    dependsOn: build
-    steps:
-      - task: odefun.odsp-lightrail-tasks-partner.odsp-lightrail-tasks-SizeAuditorWorker.SizeAuditorWorker@0
-        displayName: 'Size Auditor Check on LightRail'
-        inputs:
-          connectedServiceName: lowimpact
-          sourceVersionMessage: '$(Build.SourceVersionMessage)'
-          sourceRepositoryUrl: 'https://github.com/microsoft/fluentui'
