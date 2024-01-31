@@ -211,7 +211,7 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 #### DOM
 
 ```HTML
-<div role="radiogroup" aria-label="Color grid">
+<div role="radiogroup" aria-label="Color grid" class="fui-SwatchPicker">
   <!-- Content rendered here -->
 </div>
 ```
@@ -223,13 +223,30 @@ is used for picking colors:
 - solid color
 - gradient
 
-![ColorSwatch Anatomy](./assets/swatch-picker-base.jpg)
+![ColorSwatch Anatomy](./assets/color-swatch.jpg)
 
 #### DOM
 
 ```HTML
-<button role="radio" aria-selected="true" style="--fui-SwatchPicker--color: #ff0099" aria-label="Pink"></button>
-<button role="radio" aria-selected="false" style="--fui-SwatchPicker--color: #ff0000" aria-label="Yellow"></button>
+<button
+  role="radio"
+  aria-selected="true"
+  style="--fui-SwatchPicker--color: #ff0099"
+  aria-label="Pink"
+  class="fui-ColorSwatch"
+>
+</button>
+<button
+  role="radio"
+  aria-selected="false"
+  style="--fui-SwatchPicker--color: #ff0000"
+  aria-label="Yellow with icon"
+  class="fui-ColorSwatch"
+>
+  <span class="fui-ColorSwatch__icon r0">
+    <!-- Icon rendered here -->
+  </span>
+</button>
 ```
 
 #### ImageSwatch component
@@ -240,12 +257,19 @@ is used to pick images:
 - texture
 - pattern
 
-![ImageSwatch Anatomy](./assets/swatch-picker-base.jpg)
+![ImageSwatch Anatomy](./assets/image-swatch.jpg)
 
 #### DOM
 
 ```HTML
-<button role="radio" aria-selected="false" style="--fui-SwatchPicker--image: {url}" aria-label="Space"></button>
+<button
+  role="radio"
+  aria-selected="true"
+  style="--fui-SwatchPicker--image: {url}"
+  aria-label="Image name"
+  class="fui-ColorSwatch"
+>
+</button>
 ```
 
 ## Migration
@@ -286,16 +310,16 @@ States:
 In a `row` layout top/right arrows move to the right, bottom/left arrows move to the left.
 
 **Row layout**
-![Visual interaction of the SwatchPicker using the keyboard](./assets/swatch-picker-behaviors-keyboard-nav-row.jpg)
+![SwatchPicker keyboard navigation - row layout](./assets/swatch-picker-behaviors-keyboard-nav-row.jpg)
 
 **Grid layout**
-![Visual interaction of the SwatchPicker using the keyboard](./assets/swatch-picker-behaviors-keyboard-nav-grid.jpg)
+![SwatchPicker keyboard navigation - grid layout](./assets/swatch-picker-behaviors-keyboard-nav-grid.jpg)
 
 When navigating between swatches in a popup, it's possible to preview colors. A target object's color changes but it is not selected. If a user clicks `Esc`, the target object changes back to its original color and the popup is closed.
 
 #### Select a swatch
 
-![Visual interaction of the SwatchPicker using the keyboard](./assets/swatch-picker-behaviors-keyboard-select.jpg)
+![Selection of a swatch using the keyboard](./assets/swatch-picker-behaviors-keyboard-select.jpg)
 
 | Key              | Result                                                |
 | ---------------- | ----------------------------------------------------- |
@@ -311,7 +335,7 @@ The SwatchPicker can be used within a popup or a context menu. When a color is s
 
 Colors within color sets are mutually exclusive, meaning that only one color can be selected across all sets.
 
-![Visual interaction of the SwatchPicker using the keyboard](./assets/swatch-picker-behaviors-keyboard-nav-color-sets.jpg)
+![Navigation between color sets using the keyboard](./assets/swatch-picker-behaviors-keyboard-nav-color-sets.jpg)
 
 | Key    | Result                                              |
 | ------ | --------------------------------------------------- |
