@@ -3,7 +3,7 @@
 exports[`RatingDisplay renders a default state 1`] = `
 <div>
   <div
-    aria-label="undefined out of 5 stars"
+    aria-labelledby="rating-value-1 rating-count-2"
     class="fui-RatingDisplay"
     role="img"
   >
