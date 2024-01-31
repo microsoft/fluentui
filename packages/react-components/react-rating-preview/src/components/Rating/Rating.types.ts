@@ -29,7 +29,7 @@ export type RatingProps = Omit<ComponentProps<Partial<RatingSlots>>, 'onChange'>
   iconOutline?: React.ReactElement;
   /**
    * Prop to generate the aria-label for the ratng inputs.
-   * @default (rating) => `${rating}`
+   * @default (rating) =\> `${rating}`
    */
   itemLabel?: (rating: number) => string;
   /**
