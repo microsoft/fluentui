@@ -1,0 +1,13 @@
+// @ts-check
+
+import baseConfig from '<%= rootOffset %>monosize.config.mjs';
+
+/** @type {import('monosize').MonoSizeConfig} */
+const monosizeConfig = {
+  ...baseConfig,
+  webpack: config => {
+    return config;
+  },
+};
+
+export default monosizeConfig;

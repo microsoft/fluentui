@@ -156,7 +156,6 @@ export const Default = () => {
       sortable
       selectionMode="multiselect"
       getRowId={item => item.file.label}
-      onSelectionChange={(e, data) => console.log(data)}
       focusMode="composite"
     >
       <DataGridHeader>

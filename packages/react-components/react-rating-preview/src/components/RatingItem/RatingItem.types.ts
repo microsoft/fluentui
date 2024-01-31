@@ -1,5 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { RatingState } from '../Rating/Rating.types';
+import { RatingDisplayState } from '../RatingDisplay/RatingDisplay.types';
 
 export type RatingItemSlots = {
   /**
@@ -44,6 +45,12 @@ export type RatingItemProps = ComponentProps<Partial<RatingItemSlots>> & {
  */
 export type RatingItemState = ComponentState<RatingItemSlots> &
   Required<Pick<RatingItemProps, 'value'>> &
-  Pick<RatingState, 'color' | 'mode' | 'step' | 'size'> & {
+  Pick<RatingState, 'color' | 'step' | 'size'> & {
     iconFillWidth: number;
+  };
+
+export type RatingItemContextValue = Partial<Pick<RatingState, 'name' | 'hoveredValue' | 'value'>> &
+  Pick<RatingState, 'color' | 'iconFilled' | 'iconOutline' | 'itemLabel' | 'step' | 'size'> &
+  Partial<Pick<RatingDisplayState, 'compact'>> & {
+    interactive?: boolean;
   };

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import type { RatingItemProps, RatingItemState } from './RatingItem.types';
-import { useRatingContextValue_unstable } from '../../contexts/RatingContext';
+import { useRatingItemContextValue_unstable } from '../../contexts/RatingItemContext';
 
 /**
  * Create the state required to render RatingItem.
@@ -14,15 +14,16 @@ import { useRatingContextValue_unstable } from '../../contexts/RatingContext';
  * @param ref - reference to root HTMLElement of RatingItem
  */
 export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HTMLSpanElement>): RatingItemState => {
-  const context = useRatingContextValue_unstable();
+  const context = useRatingItemContextValue_unstable();
   const { value = 0 } = props;
+  const { itemLabel = num => num + '' } = context;
 
-  const ratingValue = context?.value || 0;
+  const ratingValue = Math.round((context.value || 0) * 2) / 2; // round to the nearest 0.5
 
-  const displayedRatingValue = context?.hoveredValue ?? ratingValue;
+  const displayedRatingValue = context.hoveredValue ?? ratingValue;
 
   let iconFillWidth;
-  if ((context && context.mode === 'read-only-compact') || displayedRatingValue >= value) {
+  if (context.compact || displayedRatingValue >= value) {
     iconFillWidth = 1;
   } else if (displayedRatingValue >= value - 0.5) {
     iconFillWidth = 0.5;
@@ -44,7 +45,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   if (iconFillWidth < 1) {
     unselectedOutlineIcon = slot.always(props.unselectedOutlineIcon, {
       defaultProps: {
-        children: context?.iconOutline,
+        children: context.iconOutline,
         'aria-hidden': true,
       },
       elementType: 'div',
@@ -52,7 +53,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   let unselectedFilledIcon;
-  if (context && context.mode !== 'interactive' && iconFillWidth < 1) {
+  if (iconFillWidth < 1 && !context.interactive) {
     unselectedFilledIcon = slot.always(props.unselectedFilledIcon, {
       defaultProps: {
         children: context.iconFilled,
@@ -66,7 +67,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   if (iconFillWidth > 0) {
     selectedIcon = slot.always(props.selectedIcon, {
       defaultProps: {
-        children: context?.iconFilled,
+        children: context.iconFilled,
         'aria-hidden': true,
       },
       elementType: 'div',
@@ -74,13 +75,14 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   let halfValueInput;
-  if (context && context.mode === 'interactive' && context.step === 0.5) {
+  if (context.interactive && context.step === 0.5) {
     halfValueInput = slot.always(props.halfValueInput, {
       defaultProps: {
         type: 'radio',
         name: context.name,
         value: value - 0.5,
         checked: ratingValue === value - 0.5,
+        'aria-label': itemLabel(value - 0.5),
         onChange: () => {
           // This empty onChange handler silences an incorrect React warning about not using onChange for a controlled input.
           // The parent Rating component has the real onChange handler to listen to change events from this input.
@@ -91,13 +93,14 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   let fullValueInput;
-  if (context && context.mode === 'interactive') {
+  if (context.interactive) {
     fullValueInput = slot.always(props.fullValueInput, {
       defaultProps: {
         type: 'radio',
         name: context.name,
         value,
         checked: ratingValue === value,
+        'aria-label': itemLabel(value),
         onChange: () => {
           // This empty onChange handler silences an incorrect React warning about not using onChange for a controlled input.
           // The parent Rating component has the real onChange handler to listen to change events from this input.
@@ -109,10 +112,9 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   const state: RatingItemState = {
-    color: context ? context.color : 'neutral',
-    mode: context ? context.mode : 'interactive',
-    step: context ? (context.step === 1 ? 1 : 0.5) : 1,
-    size: context ? context.size : 'medium',
+    color: context.color,
+    step: context.step,
+    size: context.size,
     iconFillWidth,
     value,
     components: {
