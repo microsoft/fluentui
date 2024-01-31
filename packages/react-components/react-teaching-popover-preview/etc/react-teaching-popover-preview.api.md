@@ -176,10 +176,12 @@ export const teachingPopoverFooterClassNames: SlotClassNames<TeachingPopoverFoot
 // @public (undocumented)
 export type TeachingPopoverFooterProps = ComponentProps<Partial<TeachingPopoverFooterSlots>> & {
     strings: TeachingPopoverFooterStrings;
-};
+} & Pick<TeachingPopoverFooterState, 'footerLayout'>;
 
 // @public (undocumented)
-export type TeachingPopoverFooterState = ComponentState<TeachingPopoverFooterSlots> & Pick<PopoverContextValue, 'appearance'>;
+export type TeachingPopoverFooterState = ComponentState<TeachingPopoverFooterSlots> & Pick<PopoverContextValue, 'appearance'> & {
+    footerLayout?: 'horizontal' | 'vertical';
+};
 
 // @public
 export const TeachingPopoverHeader: ForwardRefComponent<TeachingPopoverHeaderProps>;
