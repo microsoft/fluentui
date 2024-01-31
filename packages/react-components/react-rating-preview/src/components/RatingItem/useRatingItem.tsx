@@ -33,7 +33,6 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   const root = slot.always(
     getIntrinsicElementProps('span', {
       ref: useMergedRefs(useFocusWithin<HTMLSpanElement>(), ref),
-      'aria-label': `${value} star${value === 1 ? '' : 's'}`,
       ...props,
     }),
     { elementType: 'span' },
@@ -82,6 +81,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
         name: context.name,
         value: value - 0.5,
         checked: ratingValue === value - 0.5,
+        'aria-label': context.itemLabel ? context.itemLabel(value - 0.5) : `${value - 0.5}`,
         onChange: () => {
           // This empty onChange handler silences an incorrect React warning about not using onChange for a controlled input.
           // The parent Rating component has the real onChange handler to listen to change events from this input.
@@ -99,6 +99,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
         name: context.name,
         value,
         checked: ratingValue === value,
+        'aria-label': context.itemLabel ? context.itemLabel(value) : `${value}`,
         onChange: () => {
           // This empty onChange handler silences an incorrect React warning about not using onChange for a controlled input.
           // The parent Rating component has the real onChange handler to listen to change events from this input.
