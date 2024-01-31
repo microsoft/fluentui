@@ -15,6 +15,7 @@ import { useId, useConst, useMergedRefs, useEventCallback, usePrevious, useUnmou
 import { useDocument } from '../../WindowProvider';
 import type { IRefObject } from '../../Utilities';
 import type { IFocusTrapZoneProps, IFocusTrapZone } from './FocusTrapZone.types';
+import { useWindowEx } from '../../utilities/dom';
 
 interface IFocusTrapZoneInternalState {
   previouslyFocusedElementInTrapZone?: HTMLElement;
@@ -30,6 +31,8 @@ const DEFAULT_PROPS = {
   disableFirstFocus: false,
   forceFocusInsideTrap: true,
   isClickableOutsideFocusTrap: false,
+  // Hardcoding completely uncontrolled flag for proper interop with FluentUI V9.
+  'data-tabster': '{"uncontrolled": {"completely": true}}',
 };
 
 const useComponentRef = (
@@ -62,6 +65,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
   const lastBumper = React.useRef<HTMLDivElement>(null);
   const mergedRootRef = useMergedRefs(root, ref) as React.Ref<HTMLDivElement>;
   const doc = useDocument();
+  const win = useWindowEx()!;
 
   const isFirstRender = usePrevious(false) ?? true;
 
@@ -263,17 +267,17 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     const disposables: Array<() => void> = [];
 
     if (forceFocusInsideTrap) {
-      disposables.push(on(window, 'focus', forceFocusOrClickInTrap, true));
+      disposables.push(on(win, 'focus', forceFocusOrClickInTrap, true));
     }
     if (!isClickableOutsideFocusTrap) {
-      disposables.push(on(window, 'click', forceFocusOrClickInTrap, true));
+      disposables.push(on(win, 'click', forceFocusOrClickInTrap, true));
     }
 
     return () => {
       disposables.forEach(dispose => dispose());
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run when these two props change
-  }, [forceFocusInsideTrap, isClickableOutsideFocusTrap]);
+  }, [forceFocusInsideTrap, isClickableOutsideFocusTrap, win]);
 
   // On prop change or first render, focus the FTZ and update focusStack if appropriate
   React.useEffect(() => {

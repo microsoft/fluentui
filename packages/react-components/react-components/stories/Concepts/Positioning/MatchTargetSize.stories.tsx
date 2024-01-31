@@ -17,7 +17,9 @@ export const MatchTargetSize = () => {
         </Button>
       </PopoverTrigger>
 
-      <PopoverSurface>This popover has the same width as its target anchor</PopoverSurface>
+      <PopoverSurface style={{ boxSizing: 'border-box' }}>
+        This popover has the same width as its target anchor
+      </PopoverSurface>
     </Popover>
   );
 };
@@ -29,6 +31,8 @@ MatchTargetSize.parameters = {
         'The `matchTargetSize` option will automatically style the positioned element so that the chosen dimension',
         'matches that of the target element. This can be useful for autocomplete or combobox input fields where the',
         'popover should match the width of the text input field.',
+        '',
+        '> ⚠️ Make sure that the positioned element use `box-sizing: border-box`',
       ].join('\n'),
     },
   },

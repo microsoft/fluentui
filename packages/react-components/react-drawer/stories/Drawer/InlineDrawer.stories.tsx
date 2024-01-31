@@ -8,6 +8,8 @@ import {
   makeStyles,
   shorthands,
   tokens,
+  DrawerProps,
+  mergeClasses,
 } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -29,6 +31,10 @@ const useStyles = makeStyles({
     position: 'relative',
   },
 
+  flexColumn: {
+    flexDirection: 'column',
+  },
+
   buttons: {
     ...shorthands.flex(1),
     ...shorthands.padding('16px'),
@@ -46,75 +52,95 @@ const useStyles = makeStyles({
   },
 });
 
+type DrawerInlineExampleProps = {
+  open: boolean;
+  setOpen: (open: boolean) => void;
+  position: DrawerProps['position'];
+};
+
+const setButtonText = (open: boolean, position: DrawerProps['position']) => {
+  let buttonText = open ? 'Close' : 'Open';
+
+  switch (position) {
+    case 'start':
+      buttonText = `${buttonText} left`;
+      break;
+
+    case 'end':
+      buttonText = `${buttonText} right`;
+      break;
+
+    case 'bottom':
+      buttonText = `${buttonText} bottom`;
+      break;
+
+    default:
+      buttonText = `${buttonText} drawer`;
+  }
+
+  return buttonText;
+};
+
+const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ open, setOpen, position }) => {
+  return (
+    <InlineDrawer open={open} position={position}>
+      <DrawerHeader>
+        <DrawerHeaderTitle
+          action={
+            <Button appearance="subtle" aria-label="Close" icon={<Dismiss24Regular />} onClick={() => setOpen(false)} />
+          }
+        >
+          {position} Inline Drawer
+        </DrawerHeaderTitle>
+      </DrawerHeader>
+
+      <DrawerBody>
+        <p>Drawer content</p>
+      </DrawerBody>
+    </InlineDrawer>
+  );
+};
+
 export const Inline = () => {
   const styles = useStyles();
 
   const [leftOpen, setLeftOpen] = React.useState(false);
   const [rightOpen, setRightOpen] = React.useState(false);
+  const [bottomOpen, setBottomOpen] = React.useState(false);
 
   return (
-    <div className={styles.root}>
-      <InlineDrawer open={leftOpen}>
-        <DrawerHeader>
-          <DrawerHeaderTitle
-            action={
-              <Button
-                appearance="subtle"
-                aria-label="Close"
-                icon={<Dismiss24Regular />}
-                onClick={() => setLeftOpen(false)}
-              />
-            }
-          >
-            Left Inline Drawer
-          </DrawerHeaderTitle>
-        </DrawerHeader>
+    <div className={mergeClasses(styles.root, styles.flexColumn)}>
+      <div className={styles.root}>
+        <DrawerInlineExample open={leftOpen} setOpen={setLeftOpen} position="start" />
 
-        <DrawerBody>
-          <p>Drawer content</p>
-        </DrawerBody>
-      </InlineDrawer>
+        <div className={styles.content}>
+          <div className={styles.buttons}>
+            <Button appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
+              {setButtonText(leftOpen, 'start')}
+            </Button>
 
-      <div className={styles.content}>
-        <div className={styles.buttons}>
-          <Button appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
-            {leftOpen ? 'Close' : 'Open'} left
-          </Button>
+            <Button appearance="primary" onClick={() => setRightOpen(!rightOpen)}>
+              {setButtonText(rightOpen, 'end')}
+            </Button>
 
-          <Button appearance="primary" onClick={() => setRightOpen(!rightOpen)}>
-            {rightOpen ? 'Close' : 'Open'} right
-          </Button>
+            <Button appearance="primary" onClick={() => setBottomOpen(!bottomOpen)}>
+              {setButtonText(bottomOpen, 'bottom')}
+            </Button>
+          </div>
+
+          {Array.from({ length: 100 }, (_, i) => (
+            <p key={i}>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore voluptatem similique reiciendis, ipsa
+              accusamus distinctio dolorum quisquam, tenetur minima animi autem nobis. Molestias totam natus, deleniti
+              nam itaque placeat quisquam!
+            </p>
+          ))}
         </div>
 
-        {Array.from({ length: 100 }, (_, i) => (
-          <p key={i}>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore voluptatem similique reiciendis, ipsa
-            accusamus distinctio dolorum quisquam, tenetur minima animi autem nobis. Molestias totam natus, deleniti nam
-            itaque placeat quisquam!
-          </p>
-        ))}
+        <DrawerInlineExample open={rightOpen} setOpen={setRightOpen} position="end" />
       </div>
 
-      <InlineDrawer position="end" open={rightOpen}>
-        <DrawerHeader>
-          <DrawerHeaderTitle
-            action={
-              <Button
-                appearance="subtle"
-                aria-label="Close"
-                icon={<Dismiss24Regular />}
-                onClick={() => setRightOpen(false)}
-              />
-            }
-          >
-            Right Inline Drawer
-          </DrawerHeaderTitle>
-        </DrawerHeader>
-
-        <DrawerBody>
-          <p>Drawer content</p>
-        </DrawerBody>
-      </InlineDrawer>
+      <DrawerInlineExample open={bottomOpen} setOpen={setBottomOpen} position="bottom" />
     </div>
   );
 };

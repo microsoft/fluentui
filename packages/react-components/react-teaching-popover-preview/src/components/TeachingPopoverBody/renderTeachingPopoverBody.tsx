@@ -1,8 +1,8 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
-
+import type { TeachingPopoverBodyState } from './TeachingPopoverBody.types';
+import { TeachingPopoverBodySlots } from './TeachingPopoverBody.types';
 import { assertSlots } from '@fluentui/react-utilities';
-import type { TeachingPopoverBodyState, TeachingPopoverBodySlots } from './TeachingPopoverBody.types';
 
 /**
  * Render the final JSX of TeachingPopoverBody
@@ -10,6 +10,10 @@ import type { TeachingPopoverBodyState, TeachingPopoverBodySlots } from './Teach
 export const renderTeachingPopoverBody_unstable = (state: TeachingPopoverBodyState) => {
   assertSlots<TeachingPopoverBodySlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return (
+    <state.root>
+      {state.media && <state.media />}
+      {state.root.children}
+    </state.root>
+  );
 };

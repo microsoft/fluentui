@@ -8,7 +8,9 @@ import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { AreaChartBase } from './AreaChart.base';
+import { axe, toHaveNoViolations } from 'jest-axe';
 
+expect.extend(toHaveNoViolations);
 const beforeAll = () => {
   jest.spyOn(AreaChartBase.prototype as any, '_getAriaLabel').mockReturnValue('08/25/2023');
 };
@@ -489,4 +491,13 @@ test('Should reflect theme change', () => {
   );
   // Assert
   expect(container).toMatchSnapshot();
+});
+
+test('Should pass accessibility tests', async () => {
+  const { container } = render(<AreaChart data={chartData} />);
+  let axeResults;
+  await act(async () => {
+    axeResults = await axe(container);
+  });
+  expect(axeResults).toHaveNoViolations();
 });

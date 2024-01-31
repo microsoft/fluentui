@@ -1,15 +1,19 @@
 import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
-import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
-import { getPartitionedNativeProps, mergeCallbacks, useMergedRefs, useTimeout, slot } from '@fluentui/react-utilities';
-import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
+import { ChevronDownRegular as ChevronDownIcon, DismissRegular as DismissIcon } from '@fluentui/react-icons';
+import {
+  getPartitionedNativeProps,
+  mergeCallbacks,
+  useMergedRefs,
+  slot,
+  useEventCallback,
+} from '@fluentui/react-utilities';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
-import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { Listbox } from '../Listbox/Listbox';
-import type { Slot } from '@fluentui/react-utilities';
-import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { DropdownProps, DropdownState } from './Dropdown.types';
+import { useListboxSlot } from '../../utils/useListboxSlot';
+import { useButtonTriggerSlot } from './useButtonTriggerSlot';
 
 /**
  * Create the state required to render Dropdown.
@@ -25,8 +29,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsSize: true });
 
   const baseState = useComboboxBaseState(props);
-  const { activeOption, getIndexOfId, getOptionsMatchingText, open, setActiveOption, setFocusVisible, setOpen } =
-    baseState;
+  const { clearable, clearSelection, hasFocus, multiselect, open, selectedOptions } = baseState;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -36,98 +39,29 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
 
   const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
 
-  // jump to matching option based on typing
-  const searchString = React.useRef('');
-  const [setKeyTimeout, clearKeyTimeout] = useTimeout();
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
+  const listbox = useListboxSlot(props.listbox, comboboxPopupRef, {
+    state: baseState,
+    triggerRef,
+    defaultProps: {
+      children: props.children,
+    },
+  });
 
-  const getNextMatchingOption = (): OptionValue | undefined => {
-    // first check for matches for the full searchString
-    let matcher = (optionText: string) => optionText.toLowerCase().indexOf(searchString.current) === 0;
-    let matches = getOptionsMatchingText(matcher);
-    let startIndex = activeOption ? getIndexOfId(activeOption.id) : 0;
-
-    // if the dropdown is already open and the searchstring is a single character,
-    // then look after the current activeOption for letters
-    // this is so slowly typing the same letter will cycle through matches
-    if (open && searchString.current.length === 1) {
-      startIndex++;
-    }
-
-    // if there are no direct matches, check if the search is all the same letter, e.g. "aaa"
-    if (!matches.length) {
-      const letters = searchString.current.split('');
-      const allSameLetter = letters.length && letters.every(letter => letter === letters[0]);
-
-      // if the search is all the same letter, cycle through options starting with that letter
-      if (allSameLetter) {
-        startIndex++;
-        matcher = (optionText: string) => optionText.toLowerCase().indexOf(letters[0]) === 0;
-        matches = getOptionsMatchingText(matcher);
-      }
-    }
-
-    // if there is an active option and multiple matches,
-    // return first matching option after the current active option, looping back to the top
-    if (matches.length > 1 && activeOption) {
-      const nextMatch = matches.find(option => getIndexOfId(option.id) >= startIndex);
-      return nextMatch ?? matches[0];
-    }
-
-    return matches[0] ?? undefined;
-  };
-
-  const onTriggerKeyDown = (ev: React.KeyboardEvent<HTMLButtonElement>) => {
-    // clear timeout, if it exists
-    clearKeyTimeout();
-
-    // if the key was a char key, update search string
-    if (getDropdownActionFromKey(ev) === 'Type') {
-      // update search string
-      searchString.current += ev.key.toLowerCase();
-      setKeyTimeout(() => {
-        searchString.current = '';
-      }, 500);
-
-      // update state
-      !open && setOpen(ev, true);
-
-      const nextOption = getNextMatchingOption();
-      setActiveOption(nextOption);
-      setFocusVisible(true);
-    }
-  };
-
-  // resolve button and listbox slot props
-  let triggerSlot: Slot<'button'>;
-  let listboxSlot: Slot<typeof Listbox> | undefined;
-
-  triggerSlot = slot.always(props.button, {
+  const trigger = useButtonTriggerSlot(props.button ?? {}, useMergedRefs(triggerRef, ref), {
+    state: baseState,
     defaultProps: {
       type: 'button',
-      tabIndex: 0, // Safari doesn't focus the button on click without this
+      tabIndex: 0,
       children: baseState.value || props.placeholder,
+      'aria-controls': open ? listbox?.id : undefined,
       ...triggerNativeProps,
     },
-    elementType: 'button',
   });
-  triggerSlot.onKeyDown = mergeCallbacks(onTriggerKeyDown, triggerSlot.onKeyDown);
-  listboxSlot =
-    baseState.open || baseState.hasFocus
-      ? slot.optional(props.listbox, {
-          renderByDefault: true,
-          defaultProps: { children: props.children },
-          elementType: Listbox,
-        })
-      : undefined;
-  [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
-  const listboxRef = useMergedRefs(listboxSlot?.ref, comboboxPopupRef);
-  if (listboxSlot) {
-    listboxSlot.ref = listboxRef;
-  }
 
   const rootSlot = slot.always(props.root, {
     defaultProps: {
-      'aria-owns': !props.inlinePopup ? listboxSlot?.id : undefined,
+      'aria-owns': !props.inlinePopup && open ? listbox?.id : undefined,
       children: props.children,
       ...rootNativeProps,
     },
@@ -135,11 +69,23 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   });
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
 
+  const showClearButton = selectedOptions.length > 0 && clearable && !multiselect;
   const state: DropdownState = {
-    components: { root: 'div', button: 'button', expandIcon: 'span', listbox: Listbox },
+    components: { root: 'div', button: 'button', clearButton: 'button', expandIcon: 'span', listbox: Listbox },
     root: rootSlot,
-    button: triggerSlot,
-    listbox: listboxSlot,
+    button: trigger,
+    listbox: open || hasFocus ? listbox : undefined,
+    clearButton: slot.optional(props.clearButton, {
+      defaultProps: {
+        'aria-label': 'Clear selection',
+        children: <DismissIcon />,
+        // Safari doesn't allow to focus an element with this
+        tabIndex: 0,
+        type: 'button',
+      },
+      elementType: 'button',
+      renderByDefault: true,
+    }),
     expandIcon: slot.optional(props.expandIcon, {
       renderByDefault: true,
       defaultProps: {
@@ -148,8 +94,35 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
       elementType: 'span',
     }),
     placeholderVisible: !baseState.value && !!props.placeholder,
+    showClearButton,
     ...baseState,
   };
+
+  const onClearButtonClick = useEventCallback(
+    mergeCallbacks(state.clearButton?.onClick, (ev: React.MouseEvent<HTMLButtonElement>) => {
+      clearSelection(ev);
+      triggerRef.current?.focus();
+    }),
+  );
+
+  if (state.clearButton) {
+    state.clearButton.onClick = onClearButtonClick;
+  }
+
+  // Heads up! We don't support "clearable" in multiselect mode, so we should never display a slot
+  if (multiselect) {
+    state.clearButton = undefined;
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- "process.env" does not change in runtime
+    React.useEffect(() => {
+      if (clearable && multiselect) {
+        // eslint-disable-next-line no-console
+        console.error(`[@fluentui/react-combobox] "clearable" prop is not supported in multiselect mode.`);
+      }
+    }, [clearable, multiselect]);
+  }
 
   return state;
 };

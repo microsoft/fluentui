@@ -57,31 +57,31 @@ It uses the option's `value` property as the input value and holds the currently
 
 Inline positioning of the inputs and labels.
 
-![Horizontal group](./etc/images/horizontal-group.png)
+![Horizontal group](../etc/images/horizontal-group.png)
 
 #### Horizonal stacked
 
 Positioning the label at the bottom of the radio inputs.
 
-![Horizontal group - stacked](./etc/images/horizontal-group-stacked.png)
+![Horizontal group - stacked](../etc/images/horizontal-group-stacked.png)
 
 #### Vertical
 
 Default vertical positioning of Radio items.
 
-![Vertical group](./etc/images/vertical-group.png)
+![Vertical group](../etc/images/vertical-group.png)
 
 #### Vertical with input
 
 Default positioning of Radio items with an input as its last Radio item.
 
-![Vertical group with input](./etc/images/vertical-group-with-input.png)
+![Vertical group with input](../etc/images/vertical-group-with-input.png)
 
 ### Vertical with dropdown
 
 Default positioning of Radio items with a dropdown as its last Radio item.
 
-![Vertical group with dropdown](./etc/images/vertical-group-with-dropdown.png)
+![Vertical group with dropdown](../etc/images/vertical-group-with-dropdown.png)
 
 ## API
 

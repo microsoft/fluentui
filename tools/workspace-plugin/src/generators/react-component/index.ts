@@ -54,10 +54,33 @@ function normalizeOptions(tree: Tree, options: ReactComponentGeneratorSchema) {
   };
 }
 
+function createStoriesTitle(options: NormalizedSchema) {
+  const isCompat = options.projectConfig.tags?.includes('compat');
+  const isPreview = options.projectConfig.name?.endsWith('-preview');
+  const isStable = !isCompat && !isPreview;
+
+  let storiesTitlePrefix;
+  if (isStable) {
+    storiesTitlePrefix = '';
+  }
+  if (isPreview) {
+    storiesTitlePrefix = 'Preview ';
+  }
+  if (isCompat) {
+    storiesTitlePrefix = 'Compat ';
+  }
+
+  const storiesTitle = `${storiesTitlePrefix}Components/${options.componentName}`;
+
+  return storiesTitle;
+}
+
 function addFiles(tree: Tree, options: NormalizedSchema) {
   const sourceRoot = options.projectConfig.sourceRoot as string;
+
   const templateOptions = {
     ...options,
+    storiesTitle: createStoriesTitle(options),
     tmpl: '',
   };
 

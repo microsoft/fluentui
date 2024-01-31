@@ -89,7 +89,7 @@ export type TabListSlots = {
 export type TabListState = ComponentState<Required<TabListSlots>> & TabListContextValue;
 
 // @public
-export type TabProps = ComponentProps<Partial<TabSlots>> & {
+export type TabProps = Omit<ComponentProps<Partial<TabSlots>>, 'content'> & Pick<Partial<TabSlots>, 'content'> & {
     disabled?: boolean;
     value: TabValue;
 };

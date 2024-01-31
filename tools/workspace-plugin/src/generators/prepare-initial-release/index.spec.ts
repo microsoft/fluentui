@@ -62,29 +62,121 @@ describe('prepare-initial-release generator', () => {
     jest.resetAllMocks();
   });
 
-  it(`should throw error if executed on invalid project`, async () => {
-    createProject(tree, 'react-one-stable', {
-      root: 'packages/react-one-stable',
-      pkgJson: {
-        version: '9.0.0-alpha.0',
-      },
+  describe(`assertions`, () => {
+    it(`should throw error if executed on invalid project`, async () => {
+      createProject(tree, 'react-one-stable', {
+        root: 'packages/react-one-stable',
+        pkgJson: {
+          version: '9.0.0-alpha.0',
+        },
+      });
+
+      await expect(
+        generator(tree, { project: '@proj/react-one-stable', phase: 'stable' }),
+      ).rejects.toMatchInlineSnapshot(
+        `[Error: @proj/react-one-stable is already prepared for stable release. Please trigger RELEASE pipeline.]`,
+      );
+
+      updateJson<PackageJson>(tree, 'packages/react-one-stable/package.json', json => {
+        json.version = '9.0.0';
+        return json;
+      });
+
+      await expect(
+        generator(tree, { project: '@proj/react-one-stable', phase: 'stable' }),
+      ).rejects.toMatchInlineSnapshot(`[Error: @proj/react-one-stable is already released as stable.]`);
     });
 
-    await expect(generator(tree, { project: '@proj/react-one-stable', phase: 'stable' })).rejects.toMatchInlineSnapshot(
-      `[Error: @proj/react-one-stable is already prepared for stable release. Please trigger RELEASE pipeline.]`,
-    );
+    it(`should throw error if executed with invalid 'phase' option`, async () => {
+      createProject(tree, 'react-one-preview', {
+        root: 'packages/react-one-preview',
+        pkgJson: {
+          version: '0.1.0',
+        },
+      });
 
-    updateJson<PackageJson>(tree, 'packages/react-one-stable/package.json', json => {
-      json.version = '9.0.0';
-      return json;
+      await expect(
+        generator(tree, { project: '@proj/react-one-preview', phase: 'compat' }),
+      ).rejects.toMatchInlineSnapshot(
+        `[Error: Invalid phase(compat) option provided. @proj/react-one-preview is a PREVIEW package thus phase needs to be one of 'preview'|'stable'.]`,
+      );
+
+      createProject(tree, 'react-one-compat', {
+        root: 'packages/react-one-compat',
+        tags: ['compat'],
+        pkgJson: {
+          version: '0.0.1',
+        },
+      });
+
+      await expect(
+        generator(tree, { project: '@proj/react-one-compat', phase: 'preview' }),
+      ).rejects.toMatchInlineSnapshot(
+        `[Error: Invalid phase(preview) option provided. @proj/react-one-compat is a COMPAT package thus phase needs to be 'compat'.]`,
+      );
+      await expect(
+        generator(tree, { project: '@proj/react-one-compat', phase: 'stable' }),
+      ).rejects.toMatchInlineSnapshot(
+        `[Error: Invalid phase(stable) option provided. @proj/react-one-compat is a COMPAT package thus phase needs to be 'compat'.]`,
+      );
     });
-
-    await expect(generator(tree, { project: '@proj/react-one-stable', phase: 'stable' })).rejects.toMatchInlineSnapshot(
-      `[Error: @proj/react-one-stable is already released as stable.]`,
-    );
   });
 
   describe(`--phase`, () => {
+    describe(`compat`, () => {
+      it(`should prepare compat package for initial release`, async () => {
+        const utils = {
+          project: createProject(tree, 'react-one-compat', {
+            root: 'packages/react-one-compat',
+            pkgJson: {
+              version: '0.0.0',
+              private: true,
+            },
+            renameRoot: false,
+          }),
+          docsite: createProject(tree, 'public-docsite-v9', {
+            root: 'apps/public-docsite-v9',
+            pkgJson: { version: '9.0.123', private: true },
+            renameRoot: false,
+          }),
+        };
+
+        const sideEffects = await generator(tree, { project: '@proj/react-one-compat', phase: 'compat' });
+
+        expect(utils.project.pkgJson()).toMatchInlineSnapshot(`
+          Object {
+            "name": "@proj/react-one-compat",
+            "version": "0.0.0",
+          }
+        `);
+
+        expect(utils.docsite.pkgJson().dependencies).toEqual(
+          expect.objectContaining({
+            '@proj/react-one-compat': '*',
+          }),
+        );
+
+        sideEffects();
+
+        const execCalls = getExecSpyCalls(execSyncSpy);
+
+        expect(execCalls.length).toEqual(1);
+
+        expect(execCalls[0].cmd).toMatchInlineSnapshot(
+          `"yarn change --message 'feat: release compat package' --type patch --package @proj/react-one-compat"`,
+        );
+        expect(execCalls[0].args).toMatchInlineSnapshot(
+          { cwd: expect.any(String) },
+          `
+          Object {
+            "cwd": Any<String>,
+            "stdio": "inherit",
+          }
+        `,
+        );
+      });
+    });
+
     describe(`preview`, () => {
       it(`should prepare preview package for initial release`, async () => {
         const utils = {
@@ -413,6 +505,7 @@ function createProject(
     pkgJson: Partial<PackageJson>;
     files?: Array<{ filePath: string; content: string }>;
     renameRoot?: boolean;
+    tags?: string[];
   },
 ) {
   const projectType = options.root.startsWith('apps/') ? 'application' : 'library';
@@ -431,7 +524,7 @@ function createProject(
     name: npmName,
   });
 
-  addProjectConfiguration(tree, npmName, { root: options.root, sourceRoot, tags: ['vNext'] });
+  addProjectConfiguration(tree, npmName, { root: options.root, sourceRoot, tags: ['vNext', ...(options.tags ?? [])] });
 
   tree.write(
     indexFile,

@@ -1,8 +1,8 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
-
+import type { TeachingPopoverTitleState } from './TeachingPopoverTitle.types';
 import { assertSlots } from '@fluentui/react-utilities';
-import type { TeachingPopoverTitleState, TeachingPopoverTitleSlots } from './TeachingPopoverTitle.types';
+import { TeachingPopoverTitleSlots } from './TeachingPopoverTitle.types';
 
 /**
  * Render the final JSX of TeachingPopoverTitle
@@ -10,6 +10,10 @@ import type { TeachingPopoverTitleState, TeachingPopoverTitleSlots } from './Tea
 export const renderTeachingPopoverTitle_unstable = (state: TeachingPopoverTitleState) => {
   assertSlots<TeachingPopoverTitleSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return (
+    <state.root>
+      {state.root.children}
+      {state.dismissButton && <state.dismissButton />}
+    </state.root>
+  );
 };

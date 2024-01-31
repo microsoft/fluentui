@@ -22,8 +22,9 @@ import {
   matchTargetSize as matchTargetSizeMiddleware,
 } from './middleware';
 import { createPositionManager } from './createPositionManager';
-import { middleware as devtoolsMiddleware } from 'floating-ui-devtools';
+import { devtools } from '@floating-ui/devtools';
 import { devtoolsCallback } from './utils/devtools';
+import { POSITIONING_END_EVENT } from './constants';
 
 /**
  * @internal
@@ -135,8 +136,11 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
     }
   });
 
+  const onPositioningEnd = useEventCallback(() => options.onPositioningEnd?.());
   const setContainer = useCallbackRef<HTMLElement | null>(null, container => {
     if (containerRef.current !== container) {
+      containerRef.current?.removeEventListener(POSITIONING_END_EVENT, onPositioningEnd);
+      container?.addEventListener(POSITIONING_END_EVENT, onPositioningEnd);
       containerRef.current = container;
       updatePositionManager();
     }
@@ -172,6 +176,7 @@ function usePositioningOptions(options: PositioningOptions) {
     fallbackPositions,
     useTransform,
     matchTargetSize,
+    disableUpdateOnResize = false,
   } = options;
 
   const { dir, targetDocument } = useFluent();
@@ -202,9 +207,7 @@ function usePositioningOptions(options: PositioningOptions) {
         arrow && arrowMiddleware({ element: arrow, padding: arrowPadding }),
         hideMiddleware({ strategy: 'referenceHidden' }),
         hideMiddleware({ strategy: 'escaped' }),
-        process.env.NODE_ENV !== 'production' &&
-          targetDocument &&
-          devtoolsMiddleware(targetDocument, devtoolsCallback(options)),
+        process.env.NODE_ENV !== 'production' && targetDocument && devtools(targetDocument, devtoolsCallback(options)),
       ].filter(Boolean) as Middleware[];
 
       const placement = toFloatingUIPlacement(align, position, isRtl);
@@ -214,6 +217,7 @@ function usePositioningOptions(options: PositioningOptions) {
         middleware,
         strategy: positionStrategy,
         useTransform,
+        disableUpdateOnResize,
       };
     },
     // Options is missing here, but it's not required
@@ -236,6 +240,7 @@ function usePositioningOptions(options: PositioningOptions) {
       useTransform,
       matchTargetSize,
       targetDocument,
+      disableUpdateOnResize,
     ],
   );
 }

@@ -7,6 +7,8 @@ import type {
   ISelectedItemProps,
 } from './BaseSelectedItemsList.types';
 import type { IObjectWithKey } from '../../Utilities';
+import { WindowContext } from '@fluentui/react-window-provider';
+import { getDocumentEx } from '../../utilities/dom';
 
 export interface IBaseSelectedItemsListState<T> {
   items: T[];
@@ -16,6 +18,8 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
   extends React.Component<P, IBaseSelectedItemsListState<T>>
   implements IBaseSelectedItemsList<T>
 {
+  public static contextType = WindowContext;
+
   protected root: HTMLElement;
   private _defaultSelection: Selection;
 
@@ -213,22 +217,23 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     if (this.props.onCopyItems) {
       const copyText = (this.props.onCopyItems as any)(items);
 
-      const copyInput = document.createElement('input') as HTMLInputElement;
-      document.body.appendChild(copyInput);
+      const doc = getDocumentEx(this.context)!; // equivalent to previous behavior of directly using `document`
+      const copyInput = doc.createElement('input') as HTMLInputElement;
+      doc.body.appendChild(copyInput);
 
       try {
         // Try to copy the text directly to the clipboard
         copyInput.value = copyText;
         copyInput.select();
         // eslint-disable-next-line deprecation/deprecation
-        if (!document.execCommand('copy')) {
+        if (!doc.execCommand('copy')) {
           // The command failed. Fallback to the method below.
           throw new Error();
         }
       } catch (err) {
         // no op
       } finally {
-        document.body.removeChild(copyInput);
+        doc.body.removeChild(copyInput);
       }
     }
   }

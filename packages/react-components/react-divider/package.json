@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-divider",
-  "version": "9.2.51",
+  "version": "9.2.60",
   "description": "Fluent UI component to visually separate content.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,16 +33,16 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "^9.0.20",
-    "@fluentui/react-shared-contexts": "^9.13.0",
+    "@fluentui/react-jsx-runtime": "^9.0.29",
+    "@fluentui/react-shared-contexts": "^9.14.0",
     "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.15.2",
+    "@fluentui/react-utilities": "^9.18.0",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
-    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
     "react": ">=16.14.0 <19.0.0",
     "react-dom": ">=16.14.0 <19.0.0"
   },

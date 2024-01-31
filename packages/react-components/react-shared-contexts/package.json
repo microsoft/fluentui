@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-shared-contexts",
-  "version": "9.13.0",
+  "version": "9.14.0",
   "description": "Fluent UI React Contexts shared by multiple components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -20,7 +20,9 @@
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
     "generate-api": "just-scripts generate-api",
-    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
+    "storybook": "start-storybook",
+    "start": "yarn storybook"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
