@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Enter, Space } from '@fluentui/keyboard-keys';
-import { useArrowNavigationGroup, useFocusableGroup } from '@fluentui/react-tabster';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { mergeClasses } from '@griffel/react';
 import { useCalendarYearStyles_unstable } from './useCalendarYearStyles.styles';
 import type {
