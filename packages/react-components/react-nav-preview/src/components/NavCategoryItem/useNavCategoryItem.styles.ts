@@ -6,46 +6,34 @@ import { SlotClassNames } from '@fluentui/react-utilities';
 
 export const navCategoryItemClassNames: SlotClassNames<NavCategoryItemSlots> = {
   root: 'fui-NavCategoryItem',
-  content: 'fui-NavCategoryItem__content',
+  expandIcon: 'fui-NavCategoryItem__expandIcon',
 };
 
 /**
  * Styles for the root slot
  */
-const useStyles = makeResetStyles({
+const useRootStyles = makeResetStyles({
   display: 'flex',
   ...typographyStyles.body1,
 });
 
-/**
- * Styles for the content slot (children)
- */
-// const useContentStyles = makeStyles({
-//   selected: {
-//     ...typographyStyles.body1Strong,
-//   },
-// });
+const useExpandIconStyles = makeResetStyles({
+  display: 'flex',
+});
 
 /**
  * Apply styling to the NavCategoryItem slots based on the state
  */
 export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): NavCategoryItemState => {
-  const rootStyles = useStyles();
-  // const contentStyles = useContentStyles();
+  const defaultRootStyles = useRootStyles();
+  const defaultExpandIconStyles = useExpandIconStyles();
 
-  // const { selected } = state;
+  state.root.className = mergeClasses(navCategoryItemClassNames.root, defaultRootStyles, state.root.className);
 
-  state.root.className = mergeClasses(
-    navCategoryItemClassNames.root,
-    rootStyles,
-
-    state.root.className,
-  );
-
-  state.content.className = mergeClasses(
-    navCategoryItemClassNames.content,
-    // selected && contentStyles.selected,
-    state.content.className,
+  state.expandIcon.className = mergeClasses(
+    navCategoryItemClassNames.expandIcon,
+    defaultExpandIconStyles,
+    state.expandIcon.className,
   );
 
   return state;

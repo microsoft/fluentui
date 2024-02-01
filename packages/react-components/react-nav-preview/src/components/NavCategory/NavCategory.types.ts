@@ -1,17 +1,23 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-
-export type NavCategorySlots = {
-  root: Slot<'div'>;
-};
+import * as React from 'react';
+import { NavItemValue } from '../NavContext.types';
+import { NavCategoryContextValue } from '../NavCategoryContext';
 
 /**
  * NavCategory Props
  */
-export type NavCategoryProps = ComponentProps<NavCategorySlots> & {};
+export type NavCategoryProps = {
+  /**
+   * Required value that identifies this item inside an Nav component.
+   */
+  value: NavItemValue;
+
+  /**
+   * Children of the NavCategory
+   */
+  children?: React.ReactNode;
+};
 
 /**
  * State used in rendering NavCategory
  */
-export type NavCategoryState = ComponentState<NavCategorySlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from NavCategoryProps.
-// & Required<Pick<NavCategoryProps, 'propName'>>
+export type NavCategoryState = NavCategoryContextValue & NavCategoryProps;
