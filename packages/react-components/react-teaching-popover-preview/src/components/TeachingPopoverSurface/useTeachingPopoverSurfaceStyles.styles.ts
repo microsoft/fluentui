@@ -1,22 +1,21 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { TeachingPopoverSurfaceSlots, TeachingPopoverSurfaceState } from './TeachingPopoverSurface.types';
+import { TeachingPopoverSurfaceSlots, TeachingPopoverSurfaceState } from './TeachingPopoverSurface.types';
+import { usePopoverSurfaceStyles_unstable } from '@fluentui/react-popover';
+import { tokens } from '@fluentui/react-theme';
 
 export const teachingPopoverSurfaceClassNames: SlotClassNames<TeachingPopoverSurfaceSlots> = {
   root: 'fui-TeachingPopoverSurface',
-  // TODO: add class names for all slots on TeachingPopoverSurfaceSlots.
-  // Should be of the form `<slotName>: 'fui-TeachingPopoverSurface__<slotName>`
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    ...shorthands.padding(tokens.spacingVerticalL, tokens.spacingVerticalL),
+    ...shorthands.borderRadius(tokens.borderRadiusXLarge),
+    ...shorthands.borderWidth('0px'),
+    width: '320px',
+    boxSizing: 'border-box',
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
@@ -26,10 +25,11 @@ export const useTeachingPopoverSurfaceStyles_unstable = (
   state: TeachingPopoverSurfaceState,
 ): TeachingPopoverSurfaceState => {
   const styles = useStyles();
+
+  // Make sure to merge teaching bubble surface prior to popover styles
   state.root.className = mergeClasses(teachingPopoverSurfaceClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const updatedState = usePopoverSurfaceStyles_unstable(state);
 
-  return state;
+  return updatedState;
 };

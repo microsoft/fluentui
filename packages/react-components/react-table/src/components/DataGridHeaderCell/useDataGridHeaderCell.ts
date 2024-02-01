@@ -38,7 +38,9 @@ export const useDataGridHeaderCell_unstable = (
     sortable ? ctx.sort.getSortDirection(columnId) : undefined,
   );
   const resizableColumns = useDataGridContext_unstable(ctx => ctx.resizableColumns);
-  const columnSizing = useDataGridContext_unstable(ctx => ctx.columnSizing_unstable);
+  const getTableHeaderCellProps = useDataGridContext_unstable(ctx => {
+    return ctx.columnSizing_unstable.getTableHeaderCellProps;
+  });
 
   // eslint-disable-next-line deprecation/deprecation -- prefer HTMLTableCellElement
   const onClick = useEventCallback((e: React.MouseEvent<HTMLTableHeaderCellElement>) => {
@@ -54,7 +56,7 @@ export const useDataGridHeaderCell_unstable = (
       sortDirection,
       as: 'div',
       tabIndex: sortable ? undefined : 0,
-      ...(resizableColumns ? columnSizing.getTableHeaderCellProps(columnId) : {}),
+      ...(resizableColumns ? getTableHeaderCellProps(columnId) : {}),
       ...props,
       onClick,
     },

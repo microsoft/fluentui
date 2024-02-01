@@ -5,7 +5,7 @@ import descriptionMd from './PortalDescription.md';
 export { Default } from './PortalDefault.stories';
 
 export default {
-  title: 'Components/Portal',
+  title: 'Components/Portal/Portal',
   component: Portal,
   parameters: {
     docs: {

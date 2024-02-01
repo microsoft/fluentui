@@ -57,6 +57,8 @@ import type { IFocusZone, IFocusZoneProps } from '../../FocusZone';
 import type { IObjectWithKey, ISelection } from '../../Selection';
 import type { IGroupedList, IGroupDividerProps, IGroupRenderProps, IGroup } from '../../GroupedList';
 import type { IListProps } from '../../List';
+import { WindowContext } from '@fluentui/react-window-provider';
+import { getDocumentEx } from '../../utilities/dom';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 const COMPONENT_NAME = 'DetailsList';
@@ -492,9 +494,9 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
 
       const rowRole = role === defaultRole ? undefined : 'presentation';
 
-      // add tabindex="0" to first row if no header exists, to ensure the focuszone is in the tab order
-      const rowFocusZoneProps =
-        isHeaderVisible || index > 0 ? rowFocusZoneNoTabIndexProps : rowFocusZoneAddTabIndexProps;
+      // add tabindex="0" to first row so if the header isn't rendered or isn't focusable,
+      // the focuszone still has content in the tab order.
+      const rowFocusZoneProps = index > 0 ? rowFocusZoneNoTabIndexProps : rowFocusZoneAddTabIndexProps;
 
       const rowProps: IDetailsRowProps = {
         item,
@@ -779,6 +781,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     useFastIcons: true,
   };
 
+  public static contextType = WindowContext;
+
   // References
   private _async: Async;
   private _root = React.createRef<HTMLDivElement>();
@@ -934,6 +938,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   public componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState) {
     this._notifyColumnsResized();
 
+    const doc = getDocumentEx(this.context);
+
     if (this._initialFocusedIndex !== undefined) {
       const item = this.props.items[this._initialFocusedIndex];
       if (item) {
@@ -949,7 +955,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       this.props.items !== prevProps.items &&
       this.props.items.length > 0 &&
       this.state.focusedItemIndex !== -1 &&
-      !elementContains(this._root.current, document.activeElement as HTMLElement, false)
+      !elementContains(this._root.current, doc?.activeElement as HTMLElement, false)
     ) {
       // Item set has changed and previously-focused item is gone.
       // Set focus to item at index of previously-focused item if it is in range,

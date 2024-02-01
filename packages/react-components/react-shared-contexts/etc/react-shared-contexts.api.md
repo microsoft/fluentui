@@ -7,13 +7,25 @@
 import * as React_2 from 'react';
 import type { Theme } from '@fluentui/react-theme';
 
-// @internal (undocumented)
-export type AnnounceContextValue_unstable = {
+// @public (undocumented)
+type AnnounceContextValue = {
     announce: (message: string, options?: AnnounceOptions) => void;
 };
+export { AnnounceContextValue }
+export { AnnounceContextValue as AnnounceContextValue_unstable }
 
-// @internal (undocumented)
-export const AnnounceProvider_unstable: React_2.Provider<AnnounceContextValue_unstable | undefined>;
+// @public
+export type AnnounceOptions = {
+    alert?: boolean;
+    batchId?: string;
+    polite?: boolean;
+    priority?: number;
+};
+
+// @public (undocumented)
+const AnnounceProvider: React_2.Provider<AnnounceContextValue | undefined>;
+export { AnnounceProvider }
+export { AnnounceProvider as AnnounceProvider_unstable }
 
 // @internal (undocumented)
 export type BackgroundAppearanceContextValue = 'inverted' | undefined;
@@ -143,6 +155,7 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
     useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
     useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
+    useTimePickerCompatStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @public (undocumented)
@@ -267,6 +280,7 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
     useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
     useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
+    useTimePickerCompatStyles_unstable: CustomStyleHook;
 }>;
 
 // @internal (undocumented)
@@ -391,6 +405,7 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
     useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
     useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
+    useTimePickerCompatStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @internal (undocumented)
@@ -438,10 +453,10 @@ export type TooltipVisibilityContextValue_unstable = {
 // @internal (undocumented)
 export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibilityContextValue_unstable>;
 
-// Warning: (ae-incompatible-release-tags) The symbol "useAnnounce" is marked as @public, but its signature references "AnnounceContextValue_unstable" which is marked as @internal
-//
-// @public (undocumented)
-export function useAnnounce_unstable(): AnnounceContextValue_unstable;
+// @public
+function useAnnounce(): AnnounceContextValue;
+export { useAnnounce }
+export { useAnnounce as useAnnounce_unstable }
 
 // Warning: (ae-incompatible-release-tags) The symbol "useBackgroundAppearance" is marked as @public, but its signature references "BackgroundAppearanceContextValue" which is marked as @internal
 //

@@ -437,9 +437,9 @@ overriding the default interaction behaviour of the `DataGrid` component is too 
 Table header cells are only focusable when they are sortable. Focus when tabbing into the Table control should
 focus on the first sortable header, if any.
 
-<img src="./etc/images/table-interactions/Slide2.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide3.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide4.PNG" width="700" />
+<img src="../etc/images/table-interactions/Slide2.PNG" width="700" />
+<img src="../etc/images/table-interactions/Slide3.PNG" width="700" />
+<img src="../etc/images/table-interactions/Slide4.PNG" width="700" />
 
 ### Navigation modes
 
@@ -456,11 +456,11 @@ This is the most accessible and screenreader friendly navigation mode. This is w
 [WAI APG examples](https://www.w3.org/WAI/ARIA/apg/example-index/grid/dataGrids). Navigation happsn only
 on the level of the cell in both directions.
 
-<img src="./etc/images/table-interactions/Slide6.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide7.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide8.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide9.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide10.PNG" width="700" />
+<img src="../etc/images/table-interactions/Slide6.PNG" width="700" />
+<img src="../etc/images/table-interactions/Slide7.PNG" width="700" />
+<img src="../etc/images/table-interactions/Slide8.PNG" width="700" />
+<img src="../etc/images/table-interactions/Slide9.PNG" width="700" />
+<img src="../etc/images/table-interactions/Slide10.PNG" width="700" />
 
 #### row
 
@@ -468,9 +468,9 @@ This navigation mode can cause screen reader issues since tables are not intende
 This mode only navigates the table by row and can be useful when row selection is the only interactive feature of
 the component
 
-<img src="./etc/images/table-interactions/Slide12.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide13.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide14.PNG" width="700" />
+<img src="../etc/images/table-interactions/Slide12.PNG" width="700" />
+<img src="../etc/images/table-interactions/Slide13.PNG" width="700" />
+<img src="../etc/images/table-interactions/Slide14.PNG" width="700" />
 
 ### Nested focusables in cells
 
@@ -480,18 +480,18 @@ When there is a single focusable element inside a cell, users are recommended to
 In this scenario, cells will be focused on navigation, but the focusable
 element inside the cell should be focused if it exists.
 
-<img src="./etc/images/table-interactions/Slide24.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide25.PNG" width="700" />
+<img src="../etc/images/table-interactions/Slide24.PNG" width="700" />
+<img src="../etc/images/table-interactions/Slide25.PNG" width="700" />
 
 #### Nested focusable
 
 When there are multile focusable elemnts inside a cell, we implement a pattern similar to the [WAI grid pattern](https://www.w3.org/WAI/ARIA/apg/patterns/grid/).
 Pressing `Enter` on a cell will move focus and trap focus inside until the user presses `Escape` to revert back to grid navigation.
 
-<img src="./etc/images/table-interactions/Slide27.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide28.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide29.PNG" width="700" />
-<img src="./etc/images/table-interactions/Slide30.PNG" width="700" />
+<img src="../etc/images/table-interactions/Slide27.PNG" width="700" />
+<img src="../etc/images/table-interactions/Slide28.PNG" width="700" />
+<img src="../etc/images/table-interactions/Slide29.PNG" width="700" />
+<img src="../etc/images/table-interactions/Slide30.PNG" width="700" />
 ## Accessibility
 
 The spec aims to use the accessibility section as little as possible and building an accessible component by default.

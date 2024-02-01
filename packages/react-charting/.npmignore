@@ -36,3 +36,5 @@ visualtests
 !lib-commonjs
 !lib-amd
 !dist
+docs
+test-data.ts

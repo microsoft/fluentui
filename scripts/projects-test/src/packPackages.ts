@@ -32,7 +32,7 @@ export async function packProjectPackages(logger: Function, project: string): Pr
 
   packedPackages = {};
 
-  const { dependencies: projectDependencies, projectGraph } = await getDependencies(project);
+  const { dependencies: projectDependencies, projectGraph, getProjectPackageJsonInfo } = await getDependencies(project);
   // add provided package to be packaged
   projectDependencies.unshift({
     name: project,
@@ -51,13 +51,13 @@ export async function packProjectPackages(logger: Function, project: string): Pr
   await Promise.all(
     projectDependencies.map(async projectConfig => {
       const packageName = projectConfig.name;
-      const packageInfo = projectGraph.nodes[packageName].package;
+      const packageInfo = getProjectPackageJsonInfo(packageName, projectGraph);
       if (!packageInfo) {
         throw new Error(`Package ${packageName} doesn't exist`);
       }
 
-      const packagePath = packageInfo.location;
-      const packageMain = packageInfo.get('main') as string | undefined;
+      const packagePath = packageInfo.absoluteRootPath;
+      const packageMain = packageInfo.main;
       const entryPointPath = packageMain ? path.join(packagePath, packageMain) : '';
       if (!fs.existsSync(entryPointPath)) {
         throw new Error(

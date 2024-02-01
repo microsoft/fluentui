@@ -1,8 +1,27 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Sat, 28 Oct 2023 00:29:16 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Jan 2024 07:28:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.5.15](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.5.15)
+
+Wed, 10 Jan 2024 07:28:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.5.14..@fluentui/merge-styles_v8.5.15)
+
+### Patches
+
+- chore: disallow document and window access ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by seanmonahan@microsoft.com)
+- Bump @fluentui/set-version to v8.2.14 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+
+## [8.5.14](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.5.14)
+
+Thu, 14 Dec 2023 07:30:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.5.13..@fluentui/merge-styles_v8.5.14)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
 
 ## [8.5.13](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.5.13)
 

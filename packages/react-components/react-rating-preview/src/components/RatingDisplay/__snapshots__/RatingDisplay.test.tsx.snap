@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RatingDisplay renders a default state 1`] = `
+<div>
+  <div
+    aria-labelledby=""
+    class="fui-RatingDisplay"
+    role="img"
+  >
+    Default RatingDisplay
+  </div>
+</div>
+`;

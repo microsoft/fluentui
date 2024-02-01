@@ -4,8 +4,9 @@ exports[`Rating renders a default state 1`] = `
 <div>
   <div
     class="fui-Rating"
+    role="radiogroup"
   >
-    Default Rating
+    Default RatingItem
   </div>
 </div>
 `;

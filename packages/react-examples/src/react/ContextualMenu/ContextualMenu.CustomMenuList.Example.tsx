@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { ISearchBoxStyles, SearchBox } from '@fluentui/react/lib/SearchBox';
+import { Text } from '@fluentui/react/lib/Text';
 import { Icon } from '@fluentui/react/lib/Icon';
 import { IContextualMenuListProps, IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
@@ -83,7 +84,17 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
     [items, renderMenuList, onDismiss],
   );
 
-  return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
+  return (
+    <>
+      <p>
+        <Text>
+          Warning: adding an input to a menu is not technically allowed, and will trigger errors in Accessibility
+          Insights and axe-core. However, real world accessibility issues are minimal and not blocking.
+        </Text>
+      </p>
+      <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />
+    </>
+  );
 };
 
 const filteredItemsStyle: React.CSSProperties = {

@@ -19,6 +19,7 @@ describe('resolveShorthand with assertSlots', () => {
       const TestComponent = (props: TestComponentProps) => {
         const state: TestComponentState = {
           components: { someSlot: 'div' },
+          // eslint-disable-next-line deprecation/deprecation
           someSlot: resolveShorthand(props.someSlot, {
             required: true,
             defaultProps: { children: 'Default Children', id: 'slot' },
@@ -63,7 +64,9 @@ describe('resolveShorthand with assertSlots', () => {
       const TestComponent = (props: TestComponentProps) => {
         const state: TestComponentState = {
           components: { outer: 'div', inner: 'div' },
+          // eslint-disable-next-line deprecation/deprecation
           inner: resolveShorthand(props.inner, { defaultProps: { id: 'inner' }, required: true }),
+          // eslint-disable-next-line deprecation/deprecation
           outer: resolveShorthand(props.outer, { defaultProps: { id: 'outer' }, required: true }),
         };
         assertSlots<TestComponentSlots>(state);
@@ -122,6 +125,7 @@ describe('resolveShorthand with assertSlots', () => {
       const TestComponent = (props: TestComponentProps) => {
         const state: TestComponentState = {
           components: { slot: 'div' },
+          // eslint-disable-next-line deprecation/deprecation
           slot: resolveShorthand(props.slot, { required: true }),
         };
         assertSlots<TestComponentSlots>(state);

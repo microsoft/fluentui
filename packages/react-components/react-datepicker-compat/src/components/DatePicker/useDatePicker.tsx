@@ -371,6 +371,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   const contentAfter = slot.always(props.contentAfter || {}, {
     defaultProps: {
       children: <CalendarMonthRegular />,
+      'aria-hidden': true,
     },
     elementType: 'span',
   });

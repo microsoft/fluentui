@@ -12,12 +12,12 @@ import {
   readJson,
   updateJson,
   NxJsonConfiguration,
-  readNxJson,
 } from '@nx/devkit';
 
 import generator from './index';
 import { TsConfig } from '../../types';
 import { setupCodeowners } from '../../utils-testing';
+import { getProjectNameWithoutScope, getWorkspaceConfig } from '../../utils';
 
 type ReadProjectConfiguration = ReturnType<typeof readProjectConfiguration>;
 const noop = () => null;
@@ -272,7 +272,7 @@ function setupDummyPackage(
       projectConfiguration: Partial<ReadProjectConfiguration>;
     }>,
 ) {
-  const workspaceConfig = assertAndReadNxJson(tree);
+  const workspaceConfig = getWorkspaceConfig(tree);
   const defaults = {
     version: '9.0.0-alpha.40',
     dependencies: {
@@ -293,7 +293,7 @@ function setupDummyPackage(
 
   const normalizedOptions = { ...defaults, ...options };
   const pkgName = normalizedOptions.name;
-  const normalizedPkgName = getNormalizedPkgName({ pkgName, workspaceConfig });
+  const normalizedPkgName = getProjectNameWithoutScope(pkgName);
   const paths = {
     root: `packages/${normalizedPkgName}`,
   };
@@ -385,16 +385,6 @@ function setupDummyPackage(
   return tree;
 }
 
-function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: NxJsonConfiguration }) {
-  return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
-}
-
-function assertAndReadNxJson(tree: Tree) {
-  const nxJson = readNxJson(tree);
-
-  if (!nxJson) {
-    throw new Error('nx.json doesnt exist');
-  }
-
-  return nxJson;
-}
+// function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: NxJsonConfiguration }) {
+//   return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
+// }

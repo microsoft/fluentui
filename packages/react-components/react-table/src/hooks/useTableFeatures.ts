@@ -31,9 +31,12 @@ export function useTableFeatures<TItem>(
 ): TableFeaturesState<TItem> {
   const { items, getRowId, columns } = options;
 
-  const getRows = <TRowState extends TableRowData<TItem>>(
-    rowEnhancer = defaultRowEnhancer as RowEnhancer<TItem, TRowState>,
-  ) => items.map((item, i) => rowEnhancer({ item, rowId: getRowId?.(item) ?? i }));
+  const getRows = React.useCallback(
+    <TRowState extends TableRowData<TItem>>(rowEnhancer = defaultRowEnhancer as RowEnhancer<TItem, TRowState>) => {
+      return items.map((item, i) => rowEnhancer({ item, rowId: getRowId?.(item) ?? i }));
+    },
+    [items, getRowId],
+  );
 
   const initialState: TableFeaturesState<TItem> = {
     getRowId,

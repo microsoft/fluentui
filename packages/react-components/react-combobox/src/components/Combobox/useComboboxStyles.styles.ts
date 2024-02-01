@@ -8,6 +8,7 @@ export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
   root: 'fui-Combobox',
   input: 'fui-Combobox__input',
   expandIcon: 'fui-Combobox__expandIcon',
+  clearIcon: 'fui-Combobox__clearIcon',
   listbox: 'fui-Combobox__listbox',
 };
 
@@ -84,6 +85,7 @@ const useStyles = makeStyles({
     boxShadow: `${tokens.shadow16}`,
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     maxHeight: '80vh',
+    boxSizing: 'border-box',
   },
 
   listboxCollapsed: {
@@ -211,6 +213,18 @@ const useIconStyles = makeStyles({
       display: 'block',
     },
   },
+  hidden: {
+    display: 'none',
+  },
+  visuallyHidden: {
+    clip: 'rect(0px, 0px, 0px, 0px)',
+    height: '1px',
+    ...shorthands.margin('-1px'),
+    ...shorthands.overflow('hidden'),
+    ...shorthands.padding('0px'),
+    width: '1px',
+    position: 'absolute',
+  },
 
   // icon size variants
   small: {
@@ -235,7 +249,7 @@ const useIconStyles = makeStyles({
  * Apply styling to the Combobox slots based on the state
  */
 export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState => {
-  const { appearance, open, size } = state;
+  const { appearance, open, size, showClearIcon } = state;
   const invalid = `${state.input['aria-invalid']}` === 'true';
   const disabled = state.input.disabled;
   const styles = useStyles();
@@ -277,7 +291,19 @@ export const useComboboxStyles_unstable = (state: ComboboxState): ComboboxState 
       iconStyles.icon,
       iconStyles[size],
       disabled && iconStyles.disabled,
+      showClearIcon && iconStyles.visuallyHidden,
       state.expandIcon.className,
+    );
+  }
+
+  if (state.clearIcon) {
+    state.clearIcon.className = mergeClasses(
+      comboboxClassNames.clearIcon,
+      iconStyles.icon,
+      iconStyles[size],
+      disabled && iconStyles.disabled,
+      !showClearIcon && iconStyles.hidden,
+      state.clearIcon.className,
     );
   }
 
