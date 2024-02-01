@@ -1,18 +1,21 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 
-export type PositioningShorthand =
-  | 'above'
-  | 'above-start'
-  | 'above-end'
-  | 'below'
-  | 'below-start'
-  | 'below-end'
-  | 'before'
-  | 'before-top'
-  | 'before-bottom'
-  | 'after'
-  | 'after-top'
-  | 'after-bottom';
+export const PositioningShorthand = {
+  aboveStart: 'above-start',
+  aboveCenter: 'above-center',
+  aboveEnd: 'above-end',
+  endTop: 'end-top',
+  endMiddle: 'end-middle',
+  endBottom: 'end-bottom',
+  belowStart: 'below-start',
+  belowCenter: 'below-center',
+  belowEnd: 'below-end',
+  startTop: 'start-top',
+  startMiddle: 'start-middle',
+  startBottom: 'start-bottom',
+} as const;
+
+type PositioningShorthand = typeof PositioningShorthand[keyof typeof PositioningShorthand];
 
 interface HTMLPopoverElement extends HTMLElement {
   showPopover: () => void;
@@ -33,18 +36,19 @@ export class Popover extends FASTElement {
   openChanged() {
     if (this.open) {
       this.popoverReference?.showPopover();
-      this.registerOverflowBoundary();
-      this.updatePopoverPosition();
     } else {
       this.popoverReference?.hidePopover();
     }
   }
 
+  @attr
+  mode: 'manual' | 'auto' = 'auto';
+
   /**
    * position
    */
   @attr
-  position: PositioningShorthand = 'below';
+  position: PositioningShorthand = PositioningShorthand.belowCenter;
 
   /**
    * anchorReferences
@@ -55,6 +59,14 @@ export class Popover extends FASTElement {
     this.initializeTargetId();
     this.addAnchorAttributes();
     this.addAnchorEventListeners();
+
+    // anchor loads last
+    if (this.open) {
+      console.log('showing popover');
+      this.popoverReference?.showPopover();
+    } else {
+      this.popoverReference?.hidePopover();
+    }
   }
 
   /**
@@ -62,6 +74,11 @@ export class Popover extends FASTElement {
    */
   @observable
   popoverReference: HTMLPopoverElement | undefined;
+  popoverReferenceChanged() {
+    if (this.popoverReference) {
+      this.addPopoverEventListeners();
+    }
+  }
 
   /**
    * targetId
@@ -146,8 +163,17 @@ export class Popover extends FASTElement {
    */
   togglePopover = () => {
     this.popoverReference?.togglePopover();
-    this.open = !this.open;
   };
+
+  addPopoverEventListeners() {
+    if (this.popoverReference) {
+      this.popoverReference.addEventListener('toggle', () => {
+        this.registerOverflowBoundary();
+        this.updatePopoverPosition();
+        // this.open = !this.open;
+      });
+    }
+  }
 
   /**
    * intersectionObserver
@@ -186,25 +212,81 @@ export class Popover extends FASTElement {
    * updates the position of the popover based on popover collisions
    */
   updatePopoverPosition = () => {
-    console.log('updating position');
-    this.applyPopoverCssPositioning(this.getAnchorCoordinates());
+    this.applyPopoverCssPositioning();
   };
 
-  getAnchorCoordinates() {
-    if (this.anchorReferences && this.anchorReferences.length > 0) {
-      const anchor = this.anchorReferences[0];
-      console.log(anchor.getBoundingClientRect());
-      const anchorRect = anchor.getBoundingClientRect();
-      return { x: anchorRect.x, y: anchorRect.y };
+  calculateModifiedPopoverPosition() {
+    if (this.anchorReferences && this.popoverReference) {
+      const anchorRect = this.anchorReferences[0].getBoundingClientRect();
+      let modifiedPositionX = anchorRect?.x;
+      let modifiedPositionY = anchorRect?.y;
+
+      // console.log('anchorRect', anchorRect);
+
+      switch (this.position) {
+        case PositioningShorthand.aboveStart:
+          modifiedPositionY = modifiedPositionY - anchorRect.height;
+          break;
+        case PositioningShorthand.aboveCenter:
+          modifiedPositionY = modifiedPositionY - anchorRect.height;
+          modifiedPositionX = modifiedPositionX - (this.popoverReference.scrollWidth - anchorRect.width) / 2;
+          break;
+        case PositioningShorthand.aboveEnd:
+          modifiedPositionY = modifiedPositionY - anchorRect.height;
+          modifiedPositionX = modifiedPositionX - (this.popoverReference.scrollWidth - anchorRect.width);
+          break;
+        case PositioningShorthand.endTop:
+          modifiedPositionX = modifiedPositionX + anchorRect.width;
+          modifiedPositionY = modifiedPositionY + this.popoverReference.scrollHeight - anchorRect.height;
+          break;
+        case PositioningShorthand.endMiddle:
+          modifiedPositionX = modifiedPositionX + anchorRect.width;
+          modifiedPositionY = modifiedPositionY + (this.popoverReference.scrollHeight - anchorRect.height) / 2;
+          break;
+        case PositioningShorthand.endBottom:
+          modifiedPositionX = modifiedPositionX + anchorRect.width;
+          break;
+        case PositioningShorthand.belowStart:
+          modifiedPositionY = modifiedPositionY + this.popoverReference.scrollHeight;
+          break;
+        case PositioningShorthand.belowCenter:
+          modifiedPositionY = modifiedPositionY + this.popoverReference.scrollHeight;
+          modifiedPositionX = modifiedPositionX - (this.popoverReference.scrollWidth - anchorRect.width) / 2;
+          break;
+        case PositioningShorthand.belowEnd:
+          modifiedPositionY = modifiedPositionY + this.popoverReference.scrollHeight;
+          modifiedPositionX = modifiedPositionX - (this.popoverReference.scrollWidth - anchorRect.width);
+          break;
+        case PositioningShorthand.startTop:
+          modifiedPositionX = modifiedPositionX - this.popoverReference.scrollWidth;
+          modifiedPositionY = modifiedPositionY + this.popoverReference.scrollHeight - anchorRect.height;
+          break;
+        case PositioningShorthand.startMiddle:
+          modifiedPositionX = modifiedPositionX - this.popoverReference.scrollWidth;
+          modifiedPositionY = modifiedPositionY + (this.popoverReference.scrollHeight - anchorRect.height) / 2;
+          break;
+        case PositioningShorthand.startBottom:
+          modifiedPositionX = modifiedPositionX - this.popoverReference.scrollWidth;
+          modifiedPositionX = modifiedPositionX + anchorRect.width;
+          break;
+        default:
+          break;
+      }
+      return { x: modifiedPositionX, y: modifiedPositionY };
     }
+
     return { x: 0, y: 0 };
   }
 
-  applyPopoverCssPositioning(coordinates: { x: number; y: number }) {
-    console.log('applying css positioning', coordinates);
+  applyPopoverCssPositioning() {
     if (this.popoverReference) {
-      // this.popoverReference.style.top = `${coordinates.y}px`;
-      // this.popoverReference.style.left = `${coordinates.x}px`;
+      const anchorRect = this.anchorReferences?.[0].getBoundingClientRect();
+
+      if (anchorRect) {
+        const { x, y } = this.calculateModifiedPopoverPosition();
+        this.popoverReference.style.left = `${x}px`;
+        this.popoverReference.style.top = `${y}px`;
+      }
     }
   }
 

@@ -22,16 +22,6 @@ export const popoverStyles = css`
     max-width: 317px;
   }
 
-  [popover]:popover-open {
-    transform: translateY(2px);
-    opacity: 1;
-
-    position: absolute;
-    inset: 0;
-    top: 0;
-    left: 0;
-  }
-
   [popover] {
     transition: visibility 150ms ease, opacity 150ms ease, transform 150ms ease;
     transform: translateY(0);
@@ -43,6 +33,17 @@ export const popoverStyles = css`
     box-shadow: ${shadow8};
     max-width: 260px;
     padding: 12px;
+  }
+
+  [popover]:popover-open {
+    transform: translateY(2px);
+    opacity: 1;
+
+    position: absolute;
+    inset: 0;
+    top: 0;
+    left: 0;
+    margin: 0;
   }
 
   @starting-style {
