@@ -7,9 +7,6 @@ import {
   getIntrinsicElementProps,
 } from '@fluentui/react-utilities';
 import type { EventHandler, NavProps, NavState, OnNavItemSelectData } from './Nav.types';
-
-// todo - light this up
-// import { useArrowNavigationItem } from '@fluentui/react-tabster';
 import type { NavItemRegisterData, NavItemValue } from '../NavContext.types';
 
 /**
@@ -22,16 +19,28 @@ import type { NavItemRegisterData, NavItemValue } from '../NavContext.types';
  * @param ref - reference to root HTMLDivElement of Nav
  */
 export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>): NavState => {
-  const { onNavItemSelect } = props;
+  const { onNavItemSelect, onNavCategoryItemToggle } = props;
 
   const innerRef = React.useRef<HTMLElement>(null);
+
+  const [openItems, setOpenItems] = useControllableState({
+    // normalizeValues(controlledOpenItems), [controlledOpenItems])
+    state: React.useMemo(() => normalizeValues(), []),
+    defaultState: () => [], // initializeUncontrolledOpenItems({ defaultOpenItems }),
+    initialState: [],
+  });
+
+  const onRequestNavCategoryItemToggle: EventHandler<OnNavItemSelectData> = useEventCallback((event, data) => {
+    const nextOpenItems = updateOpenItems(data.value, openItems, false, false);
+    onNavCategoryItemToggle?.(event, data);
+    setOpenItems(nextOpenItems);
+  });
 
   const [selectedValue, setSelectedValue] = useControllableState({
     state: props.selectedValue,
     defaultState: props.defaultSelectedValue,
     initialState: undefined,
   });
-
   // considered usePrevious, but it is sensitive to re-renders
   // this could cause the previous to move to current in the case where the navItem list re-renders.
   // these refs avoid getRegisteredNavItems changing when selectedValue changes and causing
@@ -83,5 +92,62 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     onUnregister,
     onSelect,
     getRegisteredNavItems,
+    onRequestNavCategoryItemToggle,
+    openItems,
   };
 };
+
+// /**
+//  * Initial value for the uncontrolled case of the list of open indexes
+//  */
+// function initializeUncontrolledOpenItems({ defaultOpenItems }: Pick<NavProps, 'defaultOpenItems'>): NavItemValue[] {
+//   if (defaultOpenItems !== undefined) {
+//     if (Array.isArray(defaultOpenItems)) {
+//       return [defaultOpenItems[0]];
+//     }
+//     return [defaultOpenItems];
+//   }
+//   return [];
+// }
+
+// /**
+//  * Normalizes Accordion index into an array of indexes
+//  */
+// function normalizeValues(index?: NavItemValue | NavItemValue[]): NavItemValue[] | undefined {
+//   if (index === undefined) {
+//     return undefined;
+//   }
+//   return Array.isArray(index) ? index : [index];
+// }
+
+// temp implementation of the above function.
+function normalizeValues(index?: NavItemValue | NavItemValue[]): NavItemValue[] | undefined {
+  return undefined;
+}
+
+/**
+ * Updates the list of open indexes based on an index that changes
+ * @param value - the index that will change
+ * @param previousOpenItems - list of current open indexes
+ * @param multiple - if Nav support multiple SubItemGroups opened at the same time
+ * @param collapsible - if Nav support multiple SubItemGroups closed at the same time
+ */
+function updateOpenItems(
+  value: NavItemValue,
+  previousOpenItems: NavItemValue[],
+  multiple: boolean,
+  collapsible: boolean,
+) {
+  if (multiple) {
+    if (previousOpenItems.includes(value)) {
+      if (previousOpenItems.length > 1 || collapsible) {
+        return previousOpenItems.filter(i => i !== value);
+      }
+    } else {
+      return [...previousOpenItems, value].sort();
+    }
+  } else {
+    return previousOpenItems[0] === value && collapsible ? [] : [value];
+  }
+  return previousOpenItems;
+}
