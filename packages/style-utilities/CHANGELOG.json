@@ -2,6 +2,21 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Wed, 31 Jan 2024 07:27:57 GMT",
+      "tag": "@fluentui/style-utilities_v8.10.3",
+      "version": "8.10.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "7f29fb6016f0a33fd7b8974370f09179ed4cc992",
+            "comment": "Adding .mcworld and .mctemplate filetype icons and updated FabricCDN url"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Jan 2024 07:29:32 GMT",
       "tag": "@fluentui/style-utilities_v8.10.2",
       "version": "8.10.2",

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Tue, 23 Jan 2024 15:11:00 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jan 2024 23:16:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.24)
+
+Tue, 30 Jan 2024 23:16:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.23..@fluentui/react-badge_v9.2.24)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.29 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+- Bump @fluentui/react-utilities to v9.18.0 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
 
 ## [9.2.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.23)
 

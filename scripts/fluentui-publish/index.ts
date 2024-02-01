@@ -6,7 +6,7 @@ import * as yargs from 'yargs';
 
 main();
 
-function fluentuiLernaPublish(bumpType: 'patch' | 'minor', skipConfirm = false, npmTagForCanary = 'beta') {
+function fluentuiLernaPublish(bumpType: 'patch' | 'minor', skipConfirm = false) {
   const fluentRoot = path.resolve(workspaceRoot, 'packages', 'fluentui');
 
   let lernaPublishArgs: string[];
@@ -87,14 +87,14 @@ function main() {
   const command = args._[0];
 
   if (command === 'bump') {
-    const { semverType, yes, distTag, postValidate } = args as unknown as {
+    const { semverType, yes, postValidate } = args as unknown as {
       semverType: 'patch' | 'minor';
       distTag?: string;
       yes: boolean;
       postValidate: boolean;
     };
 
-    fluentuiLernaPublish(semverType, yes, distTag);
+    fluentuiLernaPublish(semverType, yes);
     postValidate && fluentuiPostPublishValidation();
 
     return;
@@ -122,10 +122,6 @@ function processArgs() {
           type: 'boolean',
           default: true,
           description: 'execute validation steps after publish',
-        })
-        .option('dist-tag', {
-          type: 'string',
-          description: 'tag for canary release',
         });
     })
     .demandCommand(1)

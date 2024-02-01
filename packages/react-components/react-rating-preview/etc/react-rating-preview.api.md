@@ -99,6 +99,7 @@ export type RatingProps = Omit<ComponentProps<Partial<RatingSlots>>, 'onChange'>
     defaultValue?: number;
     iconFilled?: React_2.ReactElement;
     iconOutline?: React_2.ReactElement;
+    itemLabel?: (rating: number) => string;
     max?: number;
     name?: string;
     onChange?: EventHandler<RatingOnChangeEventData>;
@@ -113,7 +114,7 @@ export type RatingSlots = {
 };
 
 // @public
-export type RatingState = ComponentState<RatingSlots> & Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'value'>> & {
+export type RatingState = ComponentState<RatingSlots> & Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'value'>> & Pick<RatingProps, 'itemLabel'> & {
     hoveredValue?: number | undefined;
 };
 
