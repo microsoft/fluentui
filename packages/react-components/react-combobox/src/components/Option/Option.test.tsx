@@ -31,6 +31,9 @@ describe('Option', () => {
     setActiveOption() {
       // noop
     },
+    onOptionClick() {
+      // noop
+    },
   };
 
   it('renders a default single-select state', () => {

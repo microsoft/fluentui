@@ -85,16 +85,16 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
 
   // get state from parent combobox, if it exists
   const hasComboboxContext = useHasParentContext(ListboxContext);
-  const comboboxSelectedOptions = useContextSelector(ListboxContext, ctx => ctx.selectedOptions);
-  const comboboxSelectOption = useContextSelector(ListboxContext, ctx => ctx.selectOption);
+  const contextSelectedOptions = useContextSelector(ListboxContext, ctx => ctx.selectedOptions);
+  const contextSelectOption = useContextSelector(ListboxContext, ctx => ctx.selectOption);
 
   // without a parent combobox context, provide values directly from Listbox
   const optionContextValues = hasComboboxContext
     ? {
         activeOption: undefined,
         focusVisible: false,
-        selectedOptions: comboboxSelectedOptions,
-        selectOption: comboboxSelectOption,
+        selectedOptions: contextSelectedOptions,
+        selectOption: contextSelectOption,
         setActiveOption: () => null,
       }
     : {
