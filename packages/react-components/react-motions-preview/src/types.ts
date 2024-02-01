@@ -7,8 +7,15 @@ export type PresenceMotion = {
   [transition in PresenceTransitionName]: AtomMotion;
 };
 
+type DurationMS = number;
+type EasingString = string;
+
 /** Standard parameters for all presence transitions. */
-export type PresenceParams = { duration: number; easing: string };
+export type PresenceParams = { duration: DurationMS; easing: EasingString };
+
+export type PresenceTransitionProps<CustomProps = {}> = {
+  [transition in PresenceTransitionName]?: Partial<PresenceParams & CustomProps>;
+};
 
 /**
  * Override properties for presence transitions.
@@ -32,9 +39,10 @@ export type PresenceOverride<CustomProps = {}> = {
 };
 
 export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
+
 /** A factory function to create a presence motion, which has enter and exit transitions. */
 export type PresenceMotionFn<CustomProps = {}> = (
-  params: { element: HTMLElement } & { override?: PresenceOverride<CustomProps> },
+  params: { element: HTMLElement } & PresenceTransitionProps<CustomProps>,
 ) => PresenceMotion;
 
 export type MotionImperativeRef = {

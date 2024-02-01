@@ -4,7 +4,7 @@ import * as React from 'react';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { getChildElement } from '../utils/getChildElement';
-import type { PresenceMotion, MotionImperativeRef, PresenceMotionFn, PresenceOverride } from '../types';
+import type { PresenceMotion, MotionImperativeRef, PresenceMotionFn, PresenceParams, PresenceOverride } from '../types';
 
 type PresenceProps<CustomProps = {}> = {
   children: React.ReactElement;
@@ -22,8 +22,8 @@ type PresenceProps<CustomProps = {}> = {
 
 export function createPresence<CustomProps = {}>(motion: PresenceMotion | PresenceMotionFn<CustomProps>) {
   const Presence: React.FC<PresenceProps<CustomProps>> = props => {
-    const { appear, children, imperativeRef, visible, unmountOnExit, override } = props;
-
+    const { appear, children, imperativeRef, visible, unmountOnExit, override = {} } = props;
+    const { enter: enterProp, exit: exitProp, all } = override;
     const child = getChildElement(children);
 
     const animationRef = useMotionImperativeRef(imperativeRef);
@@ -48,7 +48,10 @@ export function createPresence<CustomProps = {}>(motion: PresenceMotion | Presen
       }
 
       if (elementRef.current) {
-        const definition = typeof motion === 'function' ? motion({ element: elementRef.current, override }) : motion;
+        const enter = { ...all, ...enterProp } as Partial<PresenceParams & CustomProps>;
+        const exit = { ...all, ...exitProp } as Partial<PresenceParams & CustomProps>;
+
+        const definition = typeof motion === 'function' ? motion({ element: elementRef.current, enter, exit }) : motion;
         const { keyframes, ...options } = definition.exit;
 
         const animation = elementRef.current.animate(keyframes, {
@@ -73,7 +76,7 @@ export function createPresence<CustomProps = {}>(motion: PresenceMotion | Presen
           animation.cancel();
         };
       }
-    }, [animationRef, isReducedMotion, onExitFinish, visible, override]);
+    }, [animationRef, isReducedMotion, onExitFinish, visible, enterProp, exitProp, all]);
 
     useIsomorphicLayoutEffect(() => {
       if (!elementRef.current) {
@@ -83,7 +86,10 @@ export function createPresence<CustomProps = {}>(motion: PresenceMotion | Presen
       const shouldEnter = isFirstMount.current ? appear && visible : mounted && visible;
 
       if (shouldEnter) {
-        const definition = typeof motion === 'function' ? motion({ element: elementRef.current, override }) : motion;
+        const enter = { ...all, ...enterProp } as Partial<PresenceParams & CustomProps>;
+        const exit = { ...all, ...exitProp } as Partial<PresenceParams & CustomProps>;
+
+        const definition = typeof motion === 'function' ? motion({ element: elementRef.current, enter, exit }) : motion;
         const { keyframes, ...options } = definition.enter;
 
         const animation = elementRef.current.animate(keyframes, {
@@ -99,7 +105,7 @@ export function createPresence<CustomProps = {}>(motion: PresenceMotion | Presen
           animation.cancel();
         };
       }
-    }, [animationRef, isReducedMotion, mounted, visible, appear, override]);
+    }, [animationRef, isReducedMotion, mounted, visible, appear, enterProp, exitProp, all]);
 
     useIsomorphicLayoutEffect(() => {
       isFirstMount.current = false;
