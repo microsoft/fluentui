@@ -8,10 +8,15 @@ import {
 import { css } from '@microsoft/fast-element';
 
 export const popoverStyles = css`
+  ::slotted([slot='popover-content']) {
+    padding: 12px;
+  }
+
   :host([size='small']) ::slotted([slot='popover-content']) {
     padding: 12px;
     max-width: 214px;
   }
+
   :host([size='small']):before ::slotted([slot='popover-content']) {
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
@@ -32,7 +37,6 @@ export const popoverStyles = css`
     border: 1px solid ${colorTransparentStrokeInteractive};
     box-shadow: ${shadow8};
     max-width: 260px;
-    padding: 12px;
   }
 
   [popover]:popover-open {
