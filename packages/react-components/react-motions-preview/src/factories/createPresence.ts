@@ -18,9 +18,9 @@ type PresenceProps = {
   unmountOnExit?: boolean;
 };
 
-export function createPresence(motion: PresenceMotion | PresenceMotionFn) {
-  const Presence: React.FC<PresenceProps> = props => {
-    const { appear, children, imperativeRef, visible, unmountOnExit } = props;
+export function createPresence<CustomProps = {}>(motion: PresenceMotion | PresenceMotionFn<CustomProps>) {
+  const Presence: React.FC<PresenceProps & CustomProps> = props => {
+    const { appear, children, imperativeRef, visible, unmountOnExit, ...customProps } = props;
 
     const child = getChildElement(children);
 
@@ -46,7 +46,8 @@ export function createPresence(motion: PresenceMotion | PresenceMotionFn) {
       }
 
       if (elementRef.current) {
-        const definition = typeof motion === 'function' ? motion(elementRef.current) : motion;
+        const definition =
+          typeof motion === 'function' ? motion({ element: elementRef.current, ...customProps }) : motion;
         const { keyframes, ...options } = definition.exit;
 
         const animation = elementRef.current.animate(keyframes, {
@@ -71,7 +72,7 @@ export function createPresence(motion: PresenceMotion | PresenceMotionFn) {
           animation.cancel();
         };
       }
-    }, [animationRef, isReducedMotion, onExitFinish, visible]);
+    }, [animationRef, isReducedMotion, onExitFinish, visible, customProps]);
 
     useIsomorphicLayoutEffect(() => {
       if (!elementRef.current) {
@@ -81,7 +82,8 @@ export function createPresence(motion: PresenceMotion | PresenceMotionFn) {
       const shouldEnter = isFirstMount.current ? appear && visible : mounted && visible;
 
       if (shouldEnter) {
-        const definition = typeof motion === 'function' ? motion(elementRef.current) : motion;
+        const definition =
+          typeof motion === 'function' ? motion({ element: elementRef.current, ...customProps }) : motion;
         const { keyframes, ...options } = definition.enter;
 
         const animation = elementRef.current.animate(keyframes, {
@@ -97,7 +99,7 @@ export function createPresence(motion: PresenceMotion | PresenceMotionFn) {
           animation.cancel();
         };
       }
-    }, [animationRef, isReducedMotion, mounted, visible, appear]);
+    }, [animationRef, isReducedMotion, mounted, visible, appear, customProps]);
 
     useIsomorphicLayoutEffect(() => {
       isFirstMount.current = false;

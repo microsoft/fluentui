@@ -6,7 +6,8 @@ export type PresenceMotion = {
 };
 
 export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
-export type PresenceMotionFn = (element: HTMLElement) => PresenceMotion;
+/** A factory function to create a presence motion, which has enter and exit transitions. */
+export type PresenceMotionFn<CustomProps = {}> = (params: { element: HTMLElement } & CustomProps) => PresenceMotion;
 
 export type MotionImperativeRef = {
   /** Sets the playback rate of the animation, where 1 is normal speed. */
