@@ -6,3 +6,5 @@ export { createPresence } from './factories/createPresence';
 
 export { atom, presence };
 export type { AtomMotion, AtomMotionFn, PresenceMotion, PresenceMotionFn, MotionImperativeRef } from './types';
+
+export { Collapse } from './motions/presence/components/Collapse';
