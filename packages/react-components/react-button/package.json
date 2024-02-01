@@ -39,7 +39,7 @@
     "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-jsx-runtime": "^9.0.29",
     "@fluentui/react-shared-contexts": "^9.14.0",
-    "@fluentui/react-spinner": "^9.3.39",
+    "@fluentui/react-spinner": "^9.3.41",
     "@fluentui/react-tabster": "^9.18.0",
     "@fluentui/react-theme": "^9.1.16",
     "@fluentui/react-utilities": "^9.18.0",
