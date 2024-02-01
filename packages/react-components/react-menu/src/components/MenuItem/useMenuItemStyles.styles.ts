@@ -137,6 +137,11 @@ const useStyles = makeStyles({
       },
     },
 
+    ':hover:active': {
+      color: tokens.colorNeutralForegroundDisabled,
+      backgroundColor: tokens.colorNeutralBackground1,
+    },
+
     ':focus': {
       color: tokens.colorNeutralForegroundDisabled,
     },
