@@ -277,10 +277,6 @@ function idFromNumberOrSNode(node: SNode | number): number {
   return node.nodeId as number;
 }
 
-function idFromSNode(node: unknown): number {
-  return (node as SNode).nodeId as number;
-}
-
 /**
  * Duplicates the supplied chart data so that we do not alter the original.
  * @param data The data to duplicate.
@@ -329,8 +325,8 @@ function valuesOfLinks(links: SLink[]): LinkValues {
   return result;
 }
 
-function linkValue(originalLinks: LinkValues, link: SLink) {
-  return originalLinks[idFromSNode(link.source)][idFromSNode(link.target)];
+function linkValue(originalLinks: LinkValues, link: SLink): number {
+  return originalLinks[idFromNumberOrSNode(link.source)][idFromNumberOrSNode(link.target)];
 }
 
 function preRenderLayout(
