@@ -158,7 +158,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
     animationDirection,
   });
 
-  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'both' });
+  const arrowNavigationAttributes = useArrowNavigationGroup({ axis: 'grid' });
 
   if (isYearPickerVisible) {
     const [onRenderYear, yearStrings] = getYearStrings({ dateTimeFormatter, navigatedDate, strings });

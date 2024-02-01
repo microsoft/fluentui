@@ -306,9 +306,6 @@ exports[`Button renders CommandBarButton correctly 1`] = `
               margin-top: 0;
               text-align: center;
             }
-            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-              color: GrayText;
-            }
         data-icon-name="ChevronDown"
         style="font-family: \\"FabricMDL2Icons\\";"
       >
