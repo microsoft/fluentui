@@ -3,17 +3,24 @@ import { PresenceMotionFn, createPresence } from '@fluentui/react-motions-previe
 import { easingDecelerateMid } from '../../../motions/atom/tokens';
 
 type DurationMS = number;
+type EasingString = string;
 
 type CollapseParams = {
   duration?: DurationMS;
+  easing?: EasingString;
 };
 
-const defaults: CollapseParams = {
+const defaults: Required<CollapseParams> = {
   duration: 200,
+  easing: easingDecelerateMid,
 } as const;
 
 // Define a presence motion (enter/exit transitions) for collapse/expand
-const collapseMotion: PresenceMotionFn<CollapseParams> = ({ element, duration = defaults.duration }) => {
+const collapseMotion: PresenceMotionFn<CollapseParams> = ({
+  element,
+  duration = defaults.duration,
+  easing = defaults.easing,
+}) => {
   const enterKeyframes = [
     { opacity: 0, maxHeight: 0, overflow: 'hidden' },
     // Transition to the height of the content, at 99.99% of the duration.
@@ -29,8 +36,8 @@ const collapseMotion: PresenceMotionFn<CollapseParams> = ({ element, duration = 
   ];
 
   return {
-    enter: { duration, keyframes: enterKeyframes, easing: easingDecelerateMid },
-    exit: { duration, keyframes: exitKeyframes, easing: easingDecelerateMid },
+    enter: { duration, easing, keyframes: enterKeyframes },
+    exit: { duration, easing, keyframes: exitKeyframes },
   };
 };
 
