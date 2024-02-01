@@ -5,7 +5,7 @@ import { CircleRegular, CircleFilled, SquareRegular, SquareFilled } from '@fluen
 import { Rating } from '@fluentui/react-rating-preview';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 
-storiesOf('Rating Converged', module)
+storiesOf('Rating Converged Color', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <StoryWright
@@ -13,201 +13,42 @@ storiesOf('Rating Converged', module)
         .snapshot('rest', { cropTo: '.testWrapper' })
         .hover('input')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('input')
+        .hover('input'[4])
         .snapshot('active', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
     </StoryWright>
   ))
-  .addStory('Neutral Rating size small no value', () => <Rating size="small" />, {
+  .addStory('Neutral Rating with half star', () => <Rating defaultValue={3.5} />, {
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('Neutral Rating size small with value', () => <Rating size="small" defaultValue={3} />, {
+  .addStory('Brand Rating with half star', () => <Rating color="brand" defaultValue={3.5} />, {
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('Neutral Rating size small filled', () => <Rating size="small" defaultValue={5} />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Neutral Rating size medium no value', () => <Rating size="medium" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Neutral Rating size medium with value', () => <Rating size="medium" defaultValue={3} />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Neutral Rating size medium filled', () => <Rating size="medium" defaultValue={5} />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Neutral Rating size large no value', () => <Rating size="large" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Neutral Rating size large with value', () => <Rating size="large" defaultValue={3} />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Neutral Rating size large filled', () => <Rating size="large" defaultValue={5} />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Neutral Rating size extra large no value', () => <Rating size="extra-large" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Neutral Rating size extra large with value', () => <Rating size="extra-large" defaultValue={3} />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Neutral Rating size extra large filled', () => <Rating size="extra-large" defaultValue={5} />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory(
-    'Neutral Rating with custom circle icons',
-    () => <Rating iconFilled={<CircleFilled />} iconOutline={<CircleRegular />} defaultValue={3} />,
-    { includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory(
-    'Neutral Rating with custom square icons',
-    () => <Rating iconFilled={<SquareFilled />} iconOutline={<SquareRegular />} defaultValue={3} />,
-    { includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory('Neutral Rating with half value', () => <Rating defaultValue={2.5} step={0.5} />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Brand Rating size small no value', () => <Rating size="small" color="brand" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Brand Rating size small with value', () => <Rating size="small" defaultValue={3} color="brand" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Brand Rating size small filled', () => <Rating size="small" defaultValue={5} color="brand" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Brand Rating size medium no value', () => <Rating size="medium" color="brand" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Brand Rating size medium with value', () => <Rating size="medium" defaultValue={3} color="brand" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Brand Rating size medium filled', () => <Rating size="medium" defaultValue={5} color="brand" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Brand Rating size large no value', () => <Rating size="large" color="brand" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Brand Rating size large with value', () => <Rating size="large" defaultValue={3} color="brand" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Brand Rating size large filled', () => <Rating size="large" defaultValue={5} color="brand" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Brand Rating size extra large no value', () => <Rating size="extra-large" color="brand" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory(
-    'Brand Rating size extra large with value',
-    () => <Rating size="extra-large" defaultValue={3} color="brand" />,
-    { includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory(
-    'Brand Rating size extra large filled',
-    () => <Rating size="extra-large" defaultValue={5} color="brand" />,
-    { includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory(
-    'Brand Rating with custom circle icons',
-    () => <Rating iconFilled={<CircleFilled />} iconOutline={<CircleRegular />} color="brand" defaultValue={3} />,
-    { includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory(
-    'Brand Rating with custom square icons',
-    () => <Rating iconFilled={<SquareFilled />} iconOutline={<SquareRegular />} color="brand" defaultValue={3} />,
-    { includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory('Brand Rating with half value', () => <Rating defaultValue={2.5} step={0.5} color="brand" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Marigold Rating size small no value', () => <Rating size="small" color="marigold" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Marigold Rating size small with value', () => <Rating size="small" defaultValue={3} color="marigold" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Marigold Rating size small filled', () => <Rating size="small" defaultValue={5} color="marigold" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Marigold Rating size medium no value', () => <Rating size="medium" color="marigold" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory(
-    'Marigold Rating size medium with value',
-    () => <Rating size="medium" defaultValue={3} color="marigold" />,
-    { includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory('Marigold Rating size medium filled', () => <Rating size="medium" defaultValue={5} color="marigold" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Marigold Rating size large no value', () => <Rating size="large" color="marigold" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Marigold Rating size large with value', () => <Rating size="large" defaultValue={3} color="marigold" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Marigold Rating size large filled', () => <Rating size="large" defaultValue={5} color="marigold" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('Marigold Rating size extra large no value', () => <Rating size="extra-large" color="marigold" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory(
-    'Marigold Rating size extra large with value',
-    () => <Rating size="extra-large" defaultValue={3} color="marigold" />,
-    { includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory(
-    'Marigold Rating size extra large filled',
-    () => <Rating size="extra-large" defaultValue={5} color="marigold" />,
-    { includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory(
-    'Marigold Rating with custom circle icons',
-    () => <Rating iconFilled={<CircleFilled />} iconOutline={<CircleRegular />} color="marigold" defaultValue={3} />,
-    { includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory(
-    'Marigold Rating with custom square icons',
-    () => <Rating iconFilled={<SquareFilled />} iconOutline={<SquareRegular />} color="marigold" defaultValue={3} />,
-    { includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory('Marigold Rating with half value', () => <Rating defaultValue={2.5} step={0.5} color="marigold" />, {
+  .addStory('Marigold Rating with half star', () => <Rating color="marigold" defaultValue={3.5} />, {
     includeHighContrast: true,
     includeDarkMode: true,
   });
+
+storiesOf('Rating Converged Size', module)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
+  .addStory('Rating size small', () => <Rating size="small" />, {})
+  .addStory('Rating size medium', () => <Rating size="medium" />, {})
+  .addStory('Rating size large', () => <Rating size="large" />, {})
+  .addStory('Rating size extra-large', () => <Rating size="extra-large" />, {});
+
+storiesOf('Rating Converged Custom Icons', module)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
+  .addStory(
+    'Rating with custom circle icons',
+    () => <Rating iconFilled={<CircleFilled />} iconOutline={<CircleRegular />} defaultValue={3.5} />,
+    {},
+  )
+  .addStory(
+    'Rating with custom square icons',
+    () => <Rating iconFilled={<SquareFilled />} iconOutline={<SquareRegular />} defaultValue={3.5} />,
+    {},
+  );
