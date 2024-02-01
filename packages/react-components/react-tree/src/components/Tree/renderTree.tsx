@@ -3,7 +3,7 @@
 import { assertSlots } from '@fluentui/react-utilities';
 import type { TreeContextValues, TreeSlots, TreeState } from '../Tree/Tree.types';
 import { TreeProvider } from '../TreeProvider';
-import { Collapse } from '../../Collapse-atoms';
+import { Collapse } from '@fluentui/react-motions-preview';
 
 export const renderTree_unstable = (state: TreeState, contextValues: TreeContextValues) => {
   assertSlots<TreeSlots>(state);
@@ -15,6 +15,8 @@ export const renderTree_unstable = (state: TreeState, contextValues: TreeContext
 
       {/* Wrap child content in a Collapse transition which manages show/hide */}
       <Collapse visible={state.open}>
+        {/* TODO: fix re-render bug when using override */}
+        {/* <Collapse visible={state.open} override={{ all: { duration: 2000 } }}> */}
         <state.root>{state.root.children}</state.root>
       </Collapse>
     </TreeProvider>
