@@ -44,7 +44,8 @@ const useClasses = makeStyles({
   },
 });
 
-const collapseMotion: PresenceMotionFn = element => {
+const collapseMotion: PresenceMotionFn = ({ element }) => {
+  console.log('### collapseMotion - element:', element);
   const duration = 500;
   const keyframes = [
     { opacity: 0, maxHeight: '0px', overflow: 'hidden' },
