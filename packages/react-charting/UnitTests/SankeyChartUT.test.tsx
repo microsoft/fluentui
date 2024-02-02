@@ -130,8 +130,10 @@ runTest('_createLinks', () => {
       data: chartPointsWithStringNodeId,
     });
     expect(instance).toBeDefined();
-    instance._preRenderLayout();
-    const result = instance._createLinks();
+    const preRenderData = preRenderLayout(standardMargins, 912, 468, false);
+    const transformed: ISankeyChartData = sankeyChartDataNumericNodeId();
+    preRenderData.sankey(transformed);
+    const result = (instance as any)._createLinks(transformed.links);
     expect(result).toBeDefined();
     expect(result).toHaveLength(2);
     const link1 = result![0];
@@ -174,8 +176,10 @@ runTest('_createLinks', () => {
       data: chartPointsWithNumericNodeId,
     });
     expect(instance).toBeDefined();
-    instance._preRenderLayout();
-    const result = instance._createLinks();
+    const preRenderData = preRenderLayout(standardMargins, 912, 468, false);
+    const transformed: ISankeyChartData = sankeyChartDataNumericNodeId();
+    preRenderData.sankey(transformed);
+    const result = (instance as any)._createLinks(transformed.links);
     expect(result).toBeDefined();
     expect(result).toHaveLength(2);
     const link1 = result![0];
@@ -232,15 +236,18 @@ runTest('_createNodes', () => {
       data: chartPointsWithStringNodeId,
     });
     expect(instance).toBeDefined();
-    instance._preRenderLayout();
-    instance._classNames = getClassNames(undefined, {
+
+    const preRenderData = preRenderLayout(standardMargins, 912, 468, false);
+    const transformed: ISankeyChartData = sankeyChartDataNumericNodeId();
+    preRenderData.sankey(transformed);
+    const _classNames = getClassNames(undefined, {
       theme: DarkTheme,
       width: 500,
       height: 400,
       pathColor: '#4B3867',
       className: 'UT',
     });
-    const result = instance._createNodes(500);
+    const result = (instance as any)._createNodes(_classNames, transformed.nodes);
     expect(result).toBeDefined();
     expect(result).toHaveLength(4);
     const node1 = result![0];
@@ -274,15 +281,18 @@ runTest('_createNodes', () => {
       data: chartPointsWithNumericNodeId,
     });
     expect(instance).toBeDefined();
-    instance._preRenderLayout();
-    instance._classNames = getClassNames(undefined, {
+    const preRenderData = preRenderLayout(standardMargins, 912, 468, false);
+    const transformed: ISankeyChartData = sankeyChartDataNumericNodeId();
+    preRenderData.sankey(transformed);
+
+    const _classNames = getClassNames(undefined, {
       theme: DarkTheme,
       width: 500,
       height: 400,
       pathColor: '#4B3867',
       className: 'UT',
     });
-    const result = instance._createNodes(500);
+    const result = (instance as any)._createNodes(_classNames, transformed.nodes);
     expect(result).toBeDefined();
     expect(result).toHaveLength(4);
     const node1 = result![0];

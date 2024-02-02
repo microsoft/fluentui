@@ -163,7 +163,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): { selectedLinks: Set
  * This is used to group nodes by column index.
  */
 // This is exported for unit tests.
-function groupNodesByColumn(graph: ISankeyChartData) {
+export function groupNodesByColumn(graph: ISankeyChartData) {
   const nodesInColumn: NodesInColumns = {};
   graph.nodes.forEach((node: SNode) => {
     const columnId = node.layer!;
@@ -259,7 +259,7 @@ function populateNodeActualValue(data: ISankeyChartData, computedNodes: NodeValu
  * chart is devoid of nodes and only shows links.
  */
 // This is exported for unit tests
-function adjustPadding(sankey: SankeyLayoutGenerator, height: number, nodesInColumn: NodesInColumns): void {
+export function adjustPadding(sankey: SankeyLayoutGenerator, height: number, nodesInColumn: NodesInColumns): void {
   let padding = sankey.nodePadding();
   const minPadding = PADDING_PERCENTAGE * height;
   Object.values(nodesInColumn).forEach((column: SNode[]) => {
@@ -333,7 +333,7 @@ function linkValue(originalLinks: LinkValues, link: SLink): number {
 }
 
 // This is exported for unit tests.
-function preRenderLayout(
+export function preRenderLayout(
   margins: IMargins,
   containerWidth: number,
   containerHeight: number,
