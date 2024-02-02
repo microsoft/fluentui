@@ -5,7 +5,7 @@ jobs:
   bundle-xplat:
     strategy:
       matrix:
-        platform: [macos-14, windows-2022]
+        platform: [macos-13, windows-2022]
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
