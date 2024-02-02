@@ -14,6 +14,7 @@ jobs:
         uses: actions/setup-node@v4.0.1
         with:
           node-version: '18'
+          cache: yarn
       - name: Install npm dependencies
         run: yarn --frozen-lockfile --ignore-platform
       - name: Bundle for Android
