@@ -14,7 +14,8 @@ const useStyles = makeStyles({
   listbox: {
     maxHeight: '200px',
   },
-  valueText: {
+  // these styles wrap the value text within the dropdown button and cause it to truncate
+  truncatedText: {
     overflowX: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
@@ -39,7 +40,10 @@ export const TruncatedValue = (props: Partial<DropdownProps>) => {
   const styles = useStyles();
 
   const placeholder = 'Select an animal';
-  const [value, setValue] = React.useState(placeholder);
+
+  // show truncated option by default
+  const defaultValue = options[10];
+  const [value, setValue] = React.useState(defaultValue);
 
   return (
     <div className={styles.root}>
@@ -47,8 +51,10 @@ export const TruncatedValue = (props: Partial<DropdownProps>) => {
       <Dropdown
         aria-labelledby={dropdownId}
         listbox={{ className: styles.listbox }}
-        button={<span className={styles.valueText}>{value}</span>}
+        button={<span className={styles.truncatedText}>{value}</span>}
         onOptionSelect={(e, data) => setValue(data.optionText ?? placeholder)}
+        defaultSelectedOptions={[defaultValue]}
+        defaultValue={defaultValue}
         {...props}
       >
         {options.map(option => (
