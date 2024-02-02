@@ -29,6 +29,7 @@ export const Default = (props: Partial<SwatchPickerProps>) => {
         }}
         onColorSelect={model => setSelected(model.selected?.hex || '')}
         {...rowFocusAttributes}
+        style={{ display: 'flex', gap: '4px' }}
       >
         <ColorSwatch hex="#C11016" aria-label="dark red" role="radio" icon={<Heart28Filled color="#fff" />} />
         <ColorSwatch hex="#FF1921" aria-label="red" role="radio" />
@@ -50,9 +51,9 @@ export const Default = (props: Partial<SwatchPickerProps>) => {
           setPreviewColor(model.preview?.hex || '');
         }}
         onColorSelect={model => setSelected(model.selected?.hex || '')}
-        style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 28px)' }}
+        style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 28px)', gap: '4px' }}
       >
-        <ColorSwatch hex="#C11016" aria-label="dark red" role="radio" />
+        {/* <ColorSwatch hex="#C11016" aria-label="dark red" role="radio" /> */}
         <ColorSwatch hex="#FF1921" aria-label="red" role="radio" />
         <ColorSwatch hex="#FFC12E" aria-label="orange" role="radio" />
         <ColorSwatch hex="#FEFF37" aria-label="yellow" role="radio" />
