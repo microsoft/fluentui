@@ -3,7 +3,10 @@ on:
   pull_request:
 jobs:
   bundle-xplat:
-    runs-on: [macos-14, windows-2022]
+    strategy:
+      matrix:
+        platform: [macos-14, windows-2022]
+    runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
