@@ -43,6 +43,9 @@ storiesOf('Rating Converged', module)
 
 storiesOf('Rating Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
+  .addDecorator(story => (
+    <StoryWright steps={new Steps().snapshot('rest', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+  ))
   .addStory(
     'Rating with custom circle icons',
     () => <Rating iconFilled={<CircleFilled />} iconOutline={<CircleRegular />} defaultValue={3.5} />,

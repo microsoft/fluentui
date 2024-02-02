@@ -10,7 +10,6 @@ storiesOf('RatingDisplay Converged', module)
   .addDecorator(story => (
     <StoryWright steps={new Steps().snapshot('rest', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
-  .addDecorator(story => <StoryWright>{story()}</StoryWright>)
   .addStory('no value', () => <RatingDisplay />)
   .addStory('size small with value and count', () => <RatingDisplay size="small" value={5} count={1160} />)
   .addStory('size medium with value and count', () => <RatingDisplay size="medium" value={5} count={1160} />)
