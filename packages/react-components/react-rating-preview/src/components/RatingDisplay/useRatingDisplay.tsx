@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useId } from '@fluentui/react-utilities';
 import type { RatingDisplayProps, RatingDisplayState } from './RatingDisplay.types';
-import { StarFilled, StarRegular } from '@fluentui/react-icons';
+import { StarFilled } from '@fluentui/react-icons';
 import { RatingItem } from '../RatingItem/RatingItem';
 
 /**
@@ -17,16 +17,7 @@ export const useRatingDisplay_unstable = (
   props: RatingDisplayProps,
   ref: React.Ref<HTMLDivElement>,
 ): RatingDisplayState => {
-  const {
-    color = 'neutral',
-    count,
-    compact = false,
-    iconFilled = <StarFilled />,
-    iconOutline = <StarRegular />,
-    max = 5,
-    size = 'medium',
-    value,
-  } = props;
+  const { color = 'neutral', count, compact = false, icon = <StarFilled />, max = 5, size = 'medium', value } = props;
 
   const valueTextId = useId('rating-value-');
   const countTextId = useId('rating-count-');
@@ -43,8 +34,7 @@ export const useRatingDisplay_unstable = (
   const state: RatingDisplayState = {
     color,
     compact,
-    iconFilled,
-    iconOutline,
+    icon,
     max,
     size,
     value,

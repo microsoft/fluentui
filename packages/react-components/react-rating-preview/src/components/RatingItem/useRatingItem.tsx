@@ -22,6 +22,8 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
 
   const displayedRatingValue = context.hoveredValue ?? ratingValue;
 
+  const appearance = context.interactive ? 'outline' : 'filled';
+
   let iconFillWidth;
   if (context.compact || displayedRatingValue >= value) {
     iconFillWidth = 1;
@@ -39,24 +41,11 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
     { elementType: 'span' },
   );
 
-  let unselectedOutlineIcon;
-  // The unselectedOutlineIcon always needs to be rendered when unselected,
-  // even for 'filled' appearance, since high contrast always shows an outline.
+  let unselectedIcon;
   if (iconFillWidth < 1) {
-    unselectedOutlineIcon = slot.always(props.unselectedOutlineIcon, {
+    unselectedIcon = slot.always(props.unselectedIcon, {
       defaultProps: {
-        children: context.iconOutline,
-        'aria-hidden': true,
-      },
-      elementType: 'div',
-    });
-  }
-
-  let unselectedFilledIcon;
-  if (iconFillWidth < 1 && !context.interactive) {
-    unselectedFilledIcon = slot.always(props.unselectedFilledIcon, {
-      defaultProps: {
-        children: context.iconFilled,
+        children: appearance === 'filled' ? context.iconFilled : context.iconOutline,
         'aria-hidden': true,
       },
       elementType: 'div',
@@ -112,6 +101,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   const state: RatingItemState = {
+    appearance,
     color: context.color,
     step: context.step,
     size: context.size,
@@ -120,15 +110,13 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
     components: {
       root: 'span',
       selectedIcon: 'div',
-      unselectedFilledIcon: 'div',
-      unselectedOutlineIcon: 'div',
+      unselectedIcon: 'div',
       halfValueInput: 'input',
       fullValueInput: 'input',
     },
     root,
     selectedIcon,
-    unselectedFilledIcon,
-    unselectedOutlineIcon,
+    unselectedIcon,
     halfValueInput,
     fullValueInput,
   };

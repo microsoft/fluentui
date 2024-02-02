@@ -1,33 +1,31 @@
 import * as React from 'react';
 import { mount } from '@cypress/react';
-import { useOnKeyboardNavigationChange } from './hooks';
+import { useSetKeyboardNavigation, useOnKeyboardNavigationChange } from './hooks';
 
-describe('useOnKeyboardNavigationChange', () => {
+describe('useSetKeyboardNavigation', () => {
   it('Should invoke callback when navigation mode changes', () => {
     const Example = () => {
       const [isKeyboard, setIsKeyboard] = React.useState(false);
       useOnKeyboardNavigationChange(isNavigatingWithKeyboard => setIsKeyboard(isNavigatingWithKeyboard));
+      const setKeyboardNavigation = useSetKeyboardNavigation();
 
       return (
         <>
-          <button id="button">button</button>
+          {/** By default keyborg does not register any keydown events in input as keyboard navigation */}
+          <input type="text" id="input" onKeyDown={() => setKeyboardNavigation(true)} />
           <span id="result">Navigation mode: {isKeyboard ? 'keyboard' : 'mouse'}</span>
         </>
       );
     };
 
     mount(<Example />);
-    cy.get('#button')
-      .click()
+    cy.get('#input')
+      .focus()
       .get('#result')
       .should('contain.text', 'mouse')
-      .get('#button')
-      .type('{enter}')
+      .get('#input')
+      .type('{upArrow}')
       .get('#result')
-      .should('contain.text', 'keyboard')
-      .get('#button')
-      .click()
-      .get('#result')
-      .should('contain.text', 'mouse');
+      .should('contain.text', 'keyboard');
   });
 });

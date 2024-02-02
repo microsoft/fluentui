@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { RatingDisplay } from '@fluentui/react-rating-preview';
-import { CircleFilled, CircleRegular, SquareFilled, SquareRegular } from '@fluentui/react-icons';
+import { CircleFilled, SquareFilled } from '@fluentui/react-icons';
 import { makeStyles, shorthands } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -15,8 +15,8 @@ export const Shape = () => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <RatingDisplay iconFilled={<CircleFilled />} iconOutline={<CircleRegular />} value={3.5} />
-      <RatingDisplay iconFilled={<SquareFilled />} iconOutline={<SquareRegular />} value={3.5} />
+      <RatingDisplay icon={<CircleFilled />} value={3.5} />
+      <RatingDisplay icon={<SquareFilled />} value={3.5} />
     </div>
   );
 };
@@ -24,8 +24,7 @@ export const Shape = () => {
 Shape.parameters = {
   docs: {
     description: {
-      story:
-        'You can pass in custom icons to the Rating component. You can specify the icons with the `iconFilled` and `iconOutline` props.',
+      story: 'You can pass in a custom icon to the RatingDisplay component using the `icon` prop.',
     },
   },
 };
