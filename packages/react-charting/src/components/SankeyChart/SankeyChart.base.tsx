@@ -14,7 +14,8 @@ import { ISankeyChartData, ISankeyChartProps, ISankeyChartStyleProps, ISankeyCha
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
 const PADDING_PERCENTAGE = 0.3;
 
-type NodeValues = { [key: number]: number };
+type NodeId = number | string;
+type NodeValues = { [key: NodeId]: number };
 type LinkValues = { [key: number]: NodeValues };
 
 type NodesInColumns = { [key: number]: SNode[] };
@@ -161,6 +162,7 @@ function getSelectedLinksforStreamHover(singleLink: SLink): { selectedLinks: Set
 /**
  * This is used to group nodes by column index.
  */
+// This is exported for unit tests.
 function groupNodesByColumn(graph: ISankeyChartData) {
   const nodesInColumn: NodesInColumns = {};
   graph.nodes.forEach((node: SNode) => {
@@ -247,7 +249,7 @@ function populateNodeActualValue(data: ISankeyChartData, computedNodes: NodeValu
     }
   });
   data.nodes.forEach((node: SNode) => {
-    node.actualValue = computedNodes[node.nodeId as number];
+    node.actualValue = computedNodes[node.nodeId as NodeId];
   });
 }
 
@@ -256,6 +258,7 @@ function populateNodeActualValue(data: ISankeyChartData, computedNodes: NodeValu
  * so that we maintain a node to space ratio for such columns as if we fail to do so the
  * chart is devoid of nodes and only shows links.
  */
+// This is exported for unit tests
 function adjustPadding(sankey: SankeyLayoutGenerator, height: number, nodesInColumn: NodesInColumns): void {
   let padding = sankey.nodePadding();
   const minPadding = PADDING_PERCENTAGE * height;
@@ -306,7 +309,7 @@ function duplicateData(data: ISankeyChartData): ISankeyChartData {
 function valuesOfNodes(nodes: SNode[]): NodeValues {
   const result: NodeValues = {};
   nodes.forEach((node: SNode) => {
-    result[node.nodeId as number] = node.value!;
+    result[node.nodeId as NodeId] = node.value!;
   });
   return result;
 }
@@ -329,6 +332,7 @@ function linkValue(originalLinks: LinkValues, link: SLink): number {
   return originalLinks[idFromNumberOrSNode(link.source)][idFromNumberOrSNode(link.target)];
 }
 
+// This is exported for unit tests.
 function preRenderLayout(
   margins: IMargins,
   containerWidth: number,

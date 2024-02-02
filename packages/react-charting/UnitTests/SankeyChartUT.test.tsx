@@ -1,99 +1,51 @@
-import { render } from '@testing-library/react';
-import * as React from 'react';
+import { classNamesFunction } from '@fluentui/react';
 import { DarkTheme } from '@fluentui/theme-samples';
-import { SankeyChart } from '../src/components/SankeyChart/SankeyChart';
+import {
+  SankeyChartBase,
+  adjustPadding,
+  groupNodesByColumn,
+  preRenderLayout,
+} from '../src/components/SankeyChart/SankeyChart.base';
 import {
   IChartProps,
   ISankeyChartData,
   ISankeyChartStyleProps,
   ISankeyChartStyles,
 } from '../src/components/SankeyChart/index';
-import { SankeyChartBase } from '../src/components/SankeyChart/SankeyChart.base';
-import { classNamesFunction } from '@fluentui/react';
+import { IMargins } from '../src/utilities/index';
 
 const env = require('../config/tests');
-const runTest = env === 'TEST' ? describe : describe.skip;
-const sankeyChartDataStringNodeId = {
-  nodes: [
-    {
-      nodeId: 'zero',
-      name: '192.168.42.72',
-      color: '#757575',
-      borderColor: '#4B3867',
-    },
-    {
-      nodeId: 'one',
-      name: '172.152.48.13',
-      color: '#8764B8',
-      borderColor: '#4B3867',
-    },
-    {
-      nodeId: 'two',
-      name: '124.360.55.1',
-      color: '#757575',
-      borderColor: '#4B3867',
-    },
-    {
-      nodeId: 'three',
-      name: '192.564.10.2',
-      color: '#8764B8',
-      borderColor: '#4B3867',
-    },
-  ],
-  links: [
-    {
-      source: 0,
-      target: 2,
-      value: 80,
-    },
-    {
-      source: 1,
-      target: 3,
-      value: 50,
-    },
-  ],
-};
+const runTest = env === 'TEST' ? describe : describe;
 
-const sankeyChartDataNumericNodeId = {
-  nodes: [
-    {
-      nodeId: 0,
-      name: '192.168.42.72',
-      color: '#757575',
-      borderColor: '#4B3867',
-    },
-    {
-      nodeId: 1,
-      name: '172.152.48.13',
-      color: '#8764B8',
-      borderColor: '#4B3867',
-    },
-    {
-      nodeId: 2,
-      name: '124.360.55.1',
-      color: '#757575',
-      borderColor: '#4B3867',
-    },
-    {
-      nodeId: 3,
-      name: '192.564.10.2',
-      color: '#8764B8',
-      borderColor: '#4B3867',
-    },
-  ],
-  links: [
-    {
-      source: 0,
-      target: 2,
-      value: 80,
-    },
-    {
-      source: 1,
-      target: 3,
-      value: 50,
-    },
-  ],
-};
+function sankeyChartDataStringNodeId(): ISankeyChartData {
+  return {
+    nodes: [
+      { nodeId: 'zero', name: '192.168.42.72', color: '#757575', borderColor: '#4B3867' },
+      { nodeId: 'one', name: '172.152.48.13', color: '#8764B8', borderColor: '#4B3867' },
+      { nodeId: 'two', name: '124.360.55.1', color: '#757575', borderColor: '#4B3867' },
+      { nodeId: 'three', name: '192.564.10.2', color: '#8764B8', borderColor: '#4B3867' },
+    ],
+    links: [
+      { source: 0, target: 2, value: 80 },
+      { source: 1, target: 3, value: 50 },
+    ],
+  };
+}
+
+function sankeyChartDataNumericNodeId(): ISankeyChartData {
+  return {
+    nodes: [
+      { nodeId: 0, name: '192.168.42.72', color: '#757575', borderColor: '#4B3867' },
+      { nodeId: 1, name: '172.152.48.13', color: '#8764B8', borderColor: '#4B3867' },
+      { nodeId: 2, name: '124.360.55.1', color: '#757575', borderColor: '#4B3867' },
+      { nodeId: 3, name: '192.564.10.2', color: '#8764B8', borderColor: '#4B3867' },
+    ],
+    links: [
+      { source: 0, target: 2, value: 80 },
+      { source: 1, target: 3, value: 50 },
+    ],
+  };
+}
 
 const emptySankeyChatPoints: ISankeyChartData = {
   nodes: [],
@@ -102,12 +54,12 @@ const emptySankeyChatPoints: ISankeyChartData = {
 
 const chartPointsWithStringNodeId: IChartProps = {
   chartTitle: 'Sankey Chart',
-  SankeyChartData: sankeyChartDataStringNodeId,
+  SankeyChartData: sankeyChartDataStringNodeId(),
 };
 
 const chartPointsWithNumericNodeId: IChartProps = {
   chartTitle: 'Sankey Chart',
-  SankeyChartData: sankeyChartDataNumericNodeId,
+  SankeyChartData: sankeyChartDataNumericNodeId(),
 };
 
 const chartPointsWithEmptyData: IChartProps = {
@@ -116,15 +68,14 @@ const chartPointsWithEmptyData: IChartProps = {
 };
 const emptyChartPoints: IChartProps = {};
 
+const standardMargins: IMargins = { top: 36, right: 48, bottom: 32, left: 48 };
+
 runTest('_populateNodeInColumns', () => {
   test('Should return proper colums data with string nodeId', () => {
-    render(<SankeyChart data={chartPointsWithStringNodeId} />);
-    const instance = new SankeyChartBase({
-      data: chartPointsWithEmptyData,
-    });
-    expect(instance).toBeDefined();
-    instance._preRenderLayout();
-    const result = instance._populateNodeInColumns(sankeyChartDataStringNodeId, instance._sankey);
+    const preRenderData = preRenderLayout(standardMargins, 912, 468, false);
+    const transformed: ISankeyChartData = sankeyChartDataNumericNodeId();
+    preRenderData.sankey(transformed);
+    const result = groupNodesByColumn(transformed);
     expect(result).toBeDefined();
     expect(result[0][0].nodeId).toEqual('zero');
     expect(result[0][0].name).toEqual('192.168.42.72');
@@ -141,12 +92,10 @@ runTest('_populateNodeInColumns', () => {
   });
 
   test('Should return proper colums data with numeric nodeId', () => {
-    const instance = new SankeyChartBase({
-      data: chartPointsWithEmptyData,
-    });
-    expect(instance).toBeDefined();
-    instance._preRenderLayout();
-    const result = instance._populateNodeInColumns(sankeyChartDataNumericNodeId, instance._sankey);
+    const preRenderData = preRenderLayout(standardMargins, 912, 468, false);
+    const transformed: ISankeyChartData = sankeyChartDataNumericNodeId();
+    preRenderData.sankey(transformed);
+    const result = groupNodesByColumn(transformed);
     expect(result).toBeDefined();
     expect(result[0][0].nodeId).toEqual(0);
     expect(result[0][0].name).toEqual('192.168.42.72');
@@ -165,13 +114,11 @@ runTest('_populateNodeInColumns', () => {
 
 runTest('_adjustPadding', () => {
   test('Should return proper padding value', () => {
-    const instance = new SankeyChartBase({
-      data: chartPointsWithEmptyData,
-    });
-    expect(instance).toBeDefined();
-    instance._preRenderLayout();
-    const nodesInColumn = instance._populateNodeInColumns(sankeyChartDataNumericNodeId, instance._sankey);
-    const result = instance._adjustPadding(instance._sankey, 500, nodesInColumn);
+    const preRenderData = preRenderLayout(standardMargins, 912, 468, false);
+    const transformed: ISankeyChartData = sankeyChartDataNumericNodeId();
+    preRenderData.sankey(transformed);
+    const nodesInColumn = groupNodesByColumn(transformed);
+    const result = adjustPadding(preRenderData.sankey, 500, nodesInColumn);
     expect(result).toBeDefined();
     expect(result).toEqual(8);
   });
