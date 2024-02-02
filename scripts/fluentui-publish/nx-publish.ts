@@ -12,11 +12,13 @@ import {
   readCachedProjectGraph,
   readJsonFile,
   readNxJson,
+  readProjectsConfigurationFromProjectGraph,
   updateJson,
   workspaceRoot,
 } from '@nx/devkit';
 import { releasePublish, releaseVersion } from 'nx/release';
-import { getLatestGitTagForPattern, gitPush, gitTag } from 'nx/src/command-line/release/utils/git';
+import { getGeneratorInformation } from 'nx/src/command-line/generate/generator-utils';
+import { getLatestGitTagForPattern, gitAdd, gitPush, gitTag } from 'nx/src/command-line/release/utils/git';
 import { printAndFlushChanges } from 'nx/src/command-line/release/utils/print-changes';
 import { interpolate } from 'nx/src/tasks-runner/utils';
 import * as yargs from 'yargs';
@@ -159,7 +161,7 @@ export async function version(config: {
   graph: ProjectGraph;
   group: ReturnType<typeof getNorthstarGroup>;
 }) {
-  const { args, group } = config;
+  const { args, group, graph } = config;
 
   const { workspaceVersion, projectsVersionData } = await releaseVersion({
     specifier: args.specifier,
@@ -175,13 +177,13 @@ export async function version(config: {
 
   updateCrossReleaseGroupDependency(tree, { args, projectsVersionData, group });
 
+  await runWorkspaceGenerators(tree, graph, args);
+
   printAndFlushChanges(tree, args.dryRun);
 
-  normalizeDependencies(args);
+  await stageChanges(tree, args);
 
-  stageChanges(tree, args);
-
-  runChange(args);
+  runChangeTask(args);
 }
 
 // ========
@@ -218,18 +220,27 @@ function updateCrossReleaseGroupDependency(
   }
 }
 
-function normalizeDependencies(config: { dryRun: boolean }) {
+async function runWorkspaceGenerators(tree: Tree, graph: ProjectGraph, config: { dryRun: boolean }) {
+  const collectionName = '@fluentui/workspace-plugin';
+  const generators = ['normalize-package-dependencies'];
   output.logSingleLine(`running workspace generator to normalize dependency versions:`);
 
-  const generators = ['dependency-mismatch', 'normalize-package-dependencies'];
-  generators.forEach(generator => {
-    const dryRun = config.dryRun ? '-d' : '';
-    const cmd = `yarn nx g @fluentui/workspace-plugin:${generator} ${dryRun}`.trim();
-    execSync(cmd, { stdio: 'inherit' });
+  const projects = readProjectsConfigurationFromProjectGraph(graph);
+
+  const generatorPromises = generators.map(async generatorName => {
+    console.log(`-  ${collectionName}:${generatorName}`);
+
+    const generatorData = getGeneratorInformation(collectionName, generatorName, workspaceRoot, projects.projects);
+
+    const generatorFactory = generatorData.implementationFactory();
+
+    await generatorFactory(tree, {});
   });
+
+  await Promise.all(generatorPromises);
 }
 
-function runChange(config: { dryRun: boolean }) {
+function runChangeTask(config: { dryRun: boolean }) {
   const { dryRun } = config;
   const message = dryRun
     ? `Would generate change-files (for packages outside release group) but --dry-run was set:`
@@ -278,33 +289,13 @@ export function getNorthstarGroup(graph: ProjectGraph) {
   return northstarProjects;
 }
 
-function stageChanges(tree: Tree, args: { dryRun: boolean; verbose: boolean }) {
-  const changedFiles = tree.listChanges().map(f => f.path);
+async function stageChanges(tree: Tree, args: { dryRun: boolean; verbose: boolean }) {
   output.logSingleLine(`Staging changed files with git because --stage-changes was set`);
 
-  gitAdd({
-    changedFiles,
+  await gitAdd({
+    changedFiles: tree.listChanges().map(f => f.path),
     dryRun: args.dryRun,
     verbose: args.verbose,
+    logFn: console.log,
   });
-
-  // =====
-  function gitAdd(options: { changedFiles: string[]; dryRun: boolean; verbose: boolean }) {
-    const logFn = console.log;
-    const { changedFiles, dryRun, verbose } = options;
-    const commandArgs = ['add', ...changedFiles];
-    const cmd = `git ${commandArgs.join(' ')}`;
-    const message = dryRun
-      ? `Would stage files in git with the following command, but --dry-run was set:`
-      : `Staging files in git with the following command:`;
-    if (verbose) {
-      logFn(message);
-      logFn(`git ${commandArgs.join(' ')}`);
-    }
-    if (dryRun) {
-      return;
-    }
-
-    return execSync(cmd, { stdio: 'inherit' });
-  }
 }
