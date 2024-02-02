@@ -39,7 +39,7 @@ storiesOf('Rating Converged', module)
   .addStory('Rating size large', () => <Rating size="large" />, {})
   .addStory('Rating size extra-large', () => <Rating size="extra-large" />, {});
 
-storiesOf('Rating Converged Custom Icons', module)
+storiesOf('Rating Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addStory(
     'Rating with custom circle icons',
