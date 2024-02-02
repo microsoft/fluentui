@@ -14,10 +14,12 @@ describe('Rating', () => {
     const { getAllByRole } = render(<Rating defaultValue={3} />);
     const checkedItems = getAllByRole('radio').filter(item => (item as HTMLInputElement).checked);
     expect(checkedItems[0].getAttribute('value')).toBe('3');
+    expect(checkedItems.length).toEqual(1);
   });
   it('only sets the selected rating item to checked', () => {
     const { getAllByRole } = render(<Rating value={3} />);
     const checkedItems = getAllByRole('radio').filter(item => (item as HTMLInputElement).checked);
+    expect(checkedItems[0].getAttribute('value')).toBe('3');
     expect(checkedItems.length).toEqual(1);
   });
   it('renders the correct number of items', () => {

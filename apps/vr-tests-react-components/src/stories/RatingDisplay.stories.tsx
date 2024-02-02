@@ -3,57 +3,34 @@ import { storiesOf } from '@storybook/react';
 import { CircleRegular, CircleFilled, SquareRegular, SquareFilled } from '@fluentui/react-icons';
 import { RatingDisplay } from '@fluentui/react-rating-preview';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import { StoryWright } from 'storywright';
 
-storiesOf('RatingDisplay Converged Size', module)
+storiesOf('RatingDisplay Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
-  .addStory('RatingDisplay size small', () => <RatingDisplay size="small" value={3.5} />, {})
-  .addStory(
-    'RatingDisplay size small with value and count',
-    () => <RatingDisplay size="small" value={5} count={1160} />,
-    {},
-  )
-  .addStory('RatingDisplay size medium with value', () => <RatingDisplay size="medium" value={3} />, {})
-  .addStory(
-    'RatingDisplay size medium with value and count',
-    () => <RatingDisplay size="medium" value={5} count={1160} />,
-    {},
-  )
-  .addStory('RatingDisplay size large with value', () => <RatingDisplay size="large" value={3} />, {})
-  .addStory(
-    'RatingDisplay size large with value and count',
-    () => <RatingDisplay size="large" value={5} count={1160} />,
-    {},
-  )
-  .addStory('RatingDisplay size extra large with value', () => <RatingDisplay size="extra-large" value={3} />, {})
-  .addStory(
-    'RatingDisplay size extra large with value and count',
-    () => <RatingDisplay size="extra-large" value={5} count={1160} />,
-    {},
-  );
-
-storiesOf('RatingDisplay Converged Custom Icons', module)
-  .addStory(
-    'RatingDisplay with custom circle icons',
-    () => <RatingDisplay iconFilled={<CircleFilled />} iconOutline={<CircleRegular />} value={3} />,
-    {},
-  )
-  .addStory(
-    'RatingDisplay with custom square icons',
-    () => <RatingDisplay iconFilled={<SquareFilled />} iconOutline={<SquareRegular />} value={3} />,
-    {},
-  );
-
-storiesOf('RatingDisplay Converged Color', module)
-  .addStory('Neutral RatingDisplay with half value', () => <RatingDisplay value={2.5} />, {
+  .addDecorator(story => <StoryWright>{story()}</StoryWright>)
+  .addStory('no value', () => <RatingDisplay />)
+  .addStory('size small with value and count', () => <RatingDisplay size="small" value={5} count={1160} />)
+  .addStory('size medium with value and count', () => <RatingDisplay size="medium" value={5} count={1160} />)
+  .addStory('size large with value and count', () => <RatingDisplay size="large" value={5} count={1160} />)
+  .addStory('size extra-large with value and count', () => <RatingDisplay size="extra-large" value={5} count={1160} />)
+  .addStory('custom circle icons', () => (
+    <RatingDisplay iconFilled={<CircleFilled />} iconOutline={<CircleRegular />} value={3} />
+  ))
+  .addStory('custom square icons', () => (
+    <RatingDisplay iconFilled={<SquareFilled />} iconOutline={<SquareRegular />} value={3} />
+  ))
+  .addStory('rounded up', () => <RatingDisplay value={3.8} />)
+  .addStory('rounded down', () => <RatingDisplay value={3.7} />)
+  .addStory('Neutral with half value', () => <RatingDisplay value={2.5} />, {
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('Brand RatingDisplay with half value', () => <RatingDisplay value={2.5} color="brand" />, {
+  .addStory('Brand with half value', () => <RatingDisplay value={2.5} color="brand" />, {
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('Marigold RatingDisplay with half value', () => <RatingDisplay value={2.5} color="marigold" />, {
+  .addStory('Marigold with half value', () => <RatingDisplay value={2.5} color="marigold" />, {
     includeHighContrast: true,
     includeDarkMode: true,
   })
-  .addStory('Compact RatingDisplay', () => <RatingDisplay compact value={3} />, {});
+  .addStory('Compact', () => <RatingDisplay compact value={3} />, {});

@@ -5,7 +5,7 @@ import { CircleRegular, CircleFilled, SquareRegular, SquareFilled } from '@fluen
 import { Rating } from '@fluentui/react-rating-preview';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 
-storiesOf('Rating Converged Color', module)
+storiesOf('Rating Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <StoryWright
@@ -13,8 +13,6 @@ storiesOf('Rating Converged Color', module)
         .snapshot('rest', { cropTo: '.testWrapper' })
         .hover('input')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .hover('input'[4])
-        .snapshot('active', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
@@ -33,8 +31,9 @@ storiesOf('Rating Converged Color', module)
     includeDarkMode: true,
   });
 
-storiesOf('Rating Converged Size', module)
+storiesOf('Rating Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
+  .addDecorator(story => <StoryWright>{story()}</StoryWright>)
   .addStory('Rating size small', () => <Rating size="small" />, {})
   .addStory('Rating size medium', () => <Rating size="medium" />, {})
   .addStory('Rating size large', () => <Rating size="large" />, {})
