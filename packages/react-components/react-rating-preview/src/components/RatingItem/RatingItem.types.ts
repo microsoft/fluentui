@@ -13,13 +13,9 @@ export type RatingItemSlots = {
    */
   selectedIcon?: NonNullable<Slot<'div'>>;
   /**
-   * Icon displayed when the rating value is less than the item's value, when using 'filled' style.
+   * Icon displayed when the rating value is less than the item's value.
    */
-  unselectedFilledIcon?: NonNullable<Slot<'div'>>;
-  /**
-   * Icon displayed when the rating value is less than the item's value, when using 'outline' style or high contrast.
-   */
-  unselectedOutlineIcon?: NonNullable<Slot<'div'>>;
+  unselectedIcon?: NonNullable<Slot<'div'>>;
   /**
    * Radio input slot used for half star precision
    */
@@ -47,6 +43,7 @@ export type RatingItemState = ComponentState<RatingItemSlots> &
   Required<Pick<RatingItemProps, 'value'>> &
   Pick<RatingState, 'color' | 'step' | 'size'> & {
     iconFillWidth: number;
+    appearance: 'outline' | 'filled';
   };
 
 export type RatingItemContextValue = Partial<Pick<RatingState, 'name' | 'hoveredValue' | 'value'>> &
