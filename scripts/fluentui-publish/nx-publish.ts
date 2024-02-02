@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 import { execSync } from 'node:child_process';
 
-import { flushTreeChanges, tree } from '@fluentui/scripts-monorepo';
+import { tree } from '@fluentui/scripts-monorepo';
 import {
   NxJsonConfiguration,
   type ProjectGraph,
@@ -10,15 +10,14 @@ import {
   joinPathFragments,
   output,
   readCachedProjectGraph,
-  readJson,
   readJsonFile,
   readNxJson,
   updateJson,
   workspaceRoot,
-  writeJson,
 } from '@nx/devkit';
 import { releasePublish, releaseVersion } from 'nx/release';
 import { getLatestGitTagForPattern, gitPush, gitTag } from 'nx/src/command-line/release/utils/git';
+import { printAndFlushChanges } from 'nx/src/command-line/release/utils/print-changes';
 import { interpolate } from 'nx/src/tasks-runner/utils';
 import * as yargs from 'yargs';
 
@@ -26,7 +25,7 @@ type NxReleaseVersionResult = Awaited<ReturnType<typeof releaseVersion>>;
 type NxReleaseVersionArgs = Parameters<typeof releaseVersion>[0];
 type NxReleasePublishArgs = Parameters<typeof releasePublish>[0];
 
-async function main() {
+export async function main() {
   const { options, command, specifier } = processArgs();
 
   const graph = readCachedProjectGraph();
@@ -47,7 +46,6 @@ async function main() {
     process.exit(0);
   }
 
-  // await releasePublish({});
   throw new Error('unknown command specified');
 }
 
@@ -99,7 +97,7 @@ function processArgs() {
 }
 
 type PublishArgs = Required<Pick<NxReleasePublishArgs, 'dryRun' | 'verbose'>>;
-async function publish(config: {
+export async function publish(config: {
   args: PublishArgs;
   group: ReturnType<typeof getNorthstarGroup>;
   nxConfig: NxJsonConfiguration;
@@ -146,7 +144,7 @@ async function publish(config: {
 
 type VersionArgs = Required<Pick<NxReleaseVersionArgs, 'dryRun' | 'verbose' | 'specifier'>>;
 
-async function version(config: {
+export async function version(config: {
   args: VersionArgs;
   graph: ProjectGraph;
   group: ReturnType<typeof getNorthstarGroup>;
@@ -165,11 +163,9 @@ async function version(config: {
     throw new Error(`workspaceVersion is empty. Something is wrong with nx release config or implementation changed`);
   }
 
-  updateCrossReleaseGroupDependency(tree, { projectsVersionData, group });
+  updateCrossReleaseGroupDependency(tree, { args, projectsVersionData, group });
 
-  if (!args.dryRun) {
-    flushTreeChanges();
-  }
+  printAndFlushChanges(tree, args.dryRun);
 
   normalizeDependencies(args);
 
@@ -185,84 +181,31 @@ async function version(config: {
 function updateCrossReleaseGroupDependency(
   tree: Tree,
   options: {
+    args: VersionArgs;
     projectsVersionData: NxReleaseVersionResult['projectsVersionData'];
     group: ReturnType<typeof getNorthstarGroup>;
   },
 ) {
-  const updateProjects: {
-    [k: string]: {
-      dependencies: [before: string, after: string][];
-      peerDependencies: [before: string, after: string][];
-    };
-  } = {};
-
   for (const projectConfig of Object.values(options.group.crossBoundaryProjects)) {
     const projectRoot = projectConfig.data.root;
     const projectPackageJsonPath = joinPathFragments(projectRoot, 'package.json');
 
     updateJson(tree, projectPackageJsonPath, json => {
-      const result = updateDeps(json);
-      updateProjects[projectConfig.name] = {
-        dependencies: result.dependencies,
-        peerDependencies: result.peerDependencies,
-      };
+      updateDeps(json);
 
       return json;
     });
-
-    printChanges(updateProjects);
   }
 
   function updateDeps(json: { dependencies?: Record<string, string>; peerDependencies?: Record<string, string> }) {
-    const update = {
-      dependencies: [] as [string, string][],
-      peerDependencies: [] as [string, string][],
-    };
-    const getDependencyUpdateChange = (packageName: string, currentVersion: string, newVersion: string) => {
-      return [`"${packageName}": "${currentVersion}"`, `"${packageName}": "^${newVersion}"`] as [string, string];
-    };
-
     for (const [groupProjectName, data] of Object.entries(options.projectsVersionData)) {
       if (json.dependencies && json.dependencies[groupProjectName]) {
-        update.dependencies.push(
-          getDependencyUpdateChange(groupProjectName, json.dependencies[groupProjectName], `^${data.newVersion}`),
-        );
         json.dependencies[groupProjectName] = `^${data.newVersion}`;
       }
 
       if (json.peerDependencies && json.peerDependencies[groupProjectName]) {
-        update.peerDependencies.push(
-          getDependencyUpdateChange(groupProjectName, json.peerDependencies[groupProjectName], `^${data.newVersion}`),
-        );
         json.peerDependencies[groupProjectName] = `^${data.newVersion}`;
       }
-    }
-    return update;
-  }
-
-  function printChanges(updates: typeof updateProjects) {
-    output.logSingleLine(`Updating package dependencies outside release group`);
-
-    const entries = Object.entries(updates);
-
-    for (const [projectName, changes] of entries) {
-      if (changes.dependencies.length || changes.peerDependencies.length) {
-        console.log(`UPDATE ${projectName}`);
-        console.log('');
-      }
-
-      printDiff('dependencies', changes);
-      printDiff('peerDependencies', changes);
-    }
-
-    function printDiff(type: 'dependencies' | 'peerDependencies', change: (typeof entries)[number][1]) {
-      if (change[type].length) {
-        console.log(output.dim(`"${type}": {`));
-      }
-      change[type].forEach(([before, after]) => {
-        console.log(output.colors.red('-  ' + before));
-        console.log(output.colors.green('+  ' + after));
-      });
     }
   }
 }
@@ -285,45 +228,6 @@ function runChange() {
   execSync(cmd, { stdio: 'inherit' });
 }
 
-/**
- *
- * @see https://github.com/nrwl/nx/issues/21044
- */
-function fixVersionRanges(
-  tree: Tree,
-  options: {
-    graph: ProjectGraph;
-    projectsVersionData: NxReleaseVersionResult['projectsVersionData'];
-  },
-) {
-  const { projectsVersionData, graph } = options;
-  const projectsToUpdate: { [projectName: string]: { depNameToFix: Set<string>; pkgJsonPath: string } } = {};
-
-  for (const [versionedProjectName, versionedProjectData] of Object.entries(projectsVersionData)) {
-    versionedProjectData.dependentProjects.forEach(dependentProject => {
-      if (!projectsToUpdate[dependentProject.source]) {
-        projectsToUpdate[dependentProject.source] = { pkgJsonPath: '', depNameToFix: new Set() };
-      }
-
-      projectsToUpdate[dependentProject.source].pkgJsonPath = projectsToUpdate[dependentProject.source].pkgJsonPath
-        ? projectsToUpdate[dependentProject.source].pkgJsonPath
-        : joinPathFragments(graph.nodes[dependentProject.source].data.root, 'package.json');
-
-      projectsToUpdate[dependentProject.source].depNameToFix.add(versionedProjectName);
-    });
-  }
-
-  for (const val of Object.values(projectsToUpdate)) {
-    const json = readJson(tree, val.pkgJsonPath);
-    for (const [depName, depVersion] of Object.entries(json.dependencies)) {
-      if (val.depNameToFix.has(depName)) {
-        json.dependencies[depName] = `^${depVersion}`;
-      }
-    }
-    writeJson(tree, val.pkgJsonPath, json);
-  }
-}
-
 function getNewFixedVersion(projects: { [projectName: string]: ProjectGraphProjectNode }) {
   const updatedLibProjectName = Object.keys(projects)[0];
   const updatedLibProject = projects[updatedLibProjectName];
@@ -333,7 +237,7 @@ function getNewFixedVersion(projects: { [projectName: string]: ProjectGraphProje
   return json.version;
 }
 
-function getNorthstarGroup(graph: ProjectGraph) {
+export function getNorthstarGroup(graph: ProjectGraph) {
   const projectEntries = Object.entries(graph.nodes);
   const northstarProjects = projectEntries.reduce(
     (acc, [projectName, projectConfig]) => {
@@ -365,11 +269,6 @@ function getNorthstarGroup(graph: ProjectGraph) {
 
   return northstarProjects;
 }
-
-main().catch(reason => {
-  console.error(reason);
-  throw new Error(reason);
-});
 
 async function stageChanges(tree: Tree, args: { dryRun: boolean; verbose: boolean }) {
   const changedFiles = tree.listChanges().map(f => f.path);
