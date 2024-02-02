@@ -106,7 +106,7 @@ export async function publish(config: {
 }) {
   const { args, group, nxConfig } = config;
 
-  await tagRelease();
+  await tagRelease(args);
 
   await releasePublish({
     dryRun: args.dryRun,
@@ -119,7 +119,7 @@ export async function publish(config: {
 
   // ======= utils ========
 
-  async function tagRelease() {
+  async function tagRelease(config: PublishArgs) {
     const TAG_PATTERN = nxConfig.release?.groups?.northstar.releaseTagPattern;
 
     if (!TAG_PATTERN) {
@@ -136,9 +136,9 @@ export async function publish(config: {
 
     const tag = interpolate(TAG_PATTERN, { version: ' ', projectName: ' ' }).trim() + newWorkspaceVersion;
 
-    await gitTag({ tag, dryRun: args.dryRun });
+    await gitTag({ tag, dryRun: config.dryRun });
 
-    if (!args.dryRun) {
+    if (!config.dryRun) {
       await gitPush();
     } else {
       output.logSingleLine(`Would push tag:${tag} to remote origin`);
