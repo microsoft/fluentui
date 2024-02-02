@@ -26,7 +26,7 @@ const useLabelClassName = makeResetStyles({
 
 const useLabelStyles = makeStyles({
   small: {
-    ...shorthands.margin(tokens.spacingVerticalSNudge, '0', '0', tokens.spacingVerticalSNudge),
+    ...shorthands.margin(tokens.spacingVerticalSNudge, '0', '0', tokens.spacingHorizontalXXS),
   },
   large: {
     fontSize: tokens.fontSizeBase300,
