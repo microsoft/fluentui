@@ -33,7 +33,9 @@ storiesOf('Rating Converged', module)
 
 storiesOf('Rating Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
-  .addDecorator(story => <StoryWright>{story()}</StoryWright>)
+  .addDecorator(story => (
+    <StoryWright steps={new Steps().snapshot('rest', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+  ))
   .addStory('Rating size small', () => <Rating size="small" />, {})
   .addStory('Rating size medium', () => <Rating size="medium" />, {})
   .addStory('Rating size large', () => <Rating size="large" />, {})

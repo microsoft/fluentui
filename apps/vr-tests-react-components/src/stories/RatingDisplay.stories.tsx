@@ -3,10 +3,13 @@ import { storiesOf } from '@storybook/react';
 import { CircleFilled, SquareFilled } from '@fluentui/react-icons';
 import { RatingDisplay } from '@fluentui/react-rating-preview';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
-import { StoryWright } from 'storywright';
+import { Steps, StoryWright } from 'storywright';
 
 storiesOf('RatingDisplay Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
+  .addDecorator(story => (
+    <StoryWright steps={new Steps().snapshot('rest', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+  ))
   .addDecorator(story => <StoryWright>{story()}</StoryWright>)
   .addStory('no value', () => <RatingDisplay />)
   .addStory('size small with value and count', () => <RatingDisplay size="small" value={5} count={1160} />)
