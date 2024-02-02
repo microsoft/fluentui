@@ -5,7 +5,7 @@ jobs:
   bundle-xplat:
     strategy:
       matrix:
-        platform: [macos-13, windows-2022]
+        platform: [macos-14, windows-2022]
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '20'
       - name: Install npm dependencies
-        run: yarn
+        run: yarn --frozen-lockfile --ignore-platform
       - name: Bundle for Android
         run: yarn build:android
         working-directory: apps/xplat-v9
