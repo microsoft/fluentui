@@ -54,15 +54,6 @@ export const Carousel = (props: TeachingPopoverProps) => (
           {ExampleContent(3)}
         </TeachingPopoverBody>
       </TeachingPopoverCarousel>
-      {/* <TeachingPopoverActions>
-        <TeachingPopoverButton buttonType="secondary" altStepText="Close">
-          {'Back'}
-        </TeachingPopoverButton>
-        <TeachingPopoverPageCount countStyle="icon" />
-        <TeachingPopoverButton buttonType="primary" altStepText="Finish">
-          {'Next'}
-        </TeachingPopoverButton>
-      </TeachingPopoverActions> */}
     </TeachingPopoverSurface>
   </TeachingPopover>
 );
