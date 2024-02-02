@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { useControllableState, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
-// import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { swatchCSSVars } from './useColorSwatchStyles.styles';
 import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
 import { calculateContrastRatioFromHex } from '../../utils/calculateContrastRatio';
-import { Color } from '../../contexts/picker';
+import { Color } from '../../contexts/swatchPicker';
 
 const { swatchColor, swatchBorderColor, swatchStateColor } = swatchCSSVars;
 
@@ -29,16 +27,12 @@ export const useColorSwatchState_unstable = <T extends Color>(state: ColorSwatch
     ...state.root.style,
   };
 
-  return {
-    ...state,
-    // selected: selectedValue,
+  // return {
+  //   ...state,
 
-    root: {
-      ...state.root,
-      'aria-selected': selected,
-      // onClick: useEventCallback(
-      //   mergeCallbacks(onClick as React.MouseEventHandler<HTMLButtonElement | HTMLAnchorElement>, onSelectClick),
-      // ),
-    },
-  };
+  //   root: {
+  //     ...state.root,
+  //     'aria-selected': selected,
+  //   },
+  // };
 };

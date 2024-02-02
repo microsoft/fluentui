@@ -2,7 +2,8 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { SwatchPickerProps, SwatchPickerState, SwatchPickerModel } from './SwatchPicker.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { ColorPickerContext } from '../../contexts/picker';
+import { SwatchPickerContextValue } from '../../contexts/swatchPicker';
+import { useSwatchPickerState_unstable } from './useSwatchPickerState';
 
 /**
  * Create the state required to render SwatchPicker.
@@ -19,7 +20,7 @@ export const useSwatchPicker_unstable = <T>(
 ): SwatchPickerState<T> => {
   const [model, setModel] = React.useState<SwatchPickerModel<T>>({});
 
-  const { layout = 'grid' } = props;
+  const { layout, shape, size } = props;
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
     axis: layout === 'row' ? 'both' : 'grid-linear',
@@ -28,7 +29,9 @@ export const useSwatchPicker_unstable = <T>(
 
   const role = layout === 'row' ? 'row' : 'grid';
 
-  return {
+  const pickerContext = makePickerContext(props, model, setModel);
+
+  const state: SwatchPickerState = {
     components: {
       root: 'div',
     },
@@ -41,15 +44,21 @@ export const useSwatchPicker_unstable = <T>(
       }),
       { elementType: 'div' },
     ),
-    ...makePickerContext(props, model, setModel),
+    ...pickerContext,
+    // ...makePickerContext(props, model, setModel),
   };
+
+  useSwatchPickerState_unstable(state, props);
+
+  return state;
 };
 
 function makePickerContext<T>(
   props: SwatchPickerProps<T>,
   model: SwatchPickerModel<T>,
   setModel: React.Dispatch<React.SetStateAction<SwatchPickerModel<T>>>,
-): ColorPickerContext<T> {
+): SwatchPickerContextValue<T> {
+  const { layout = 'row', shape = 'square', size = 'medium', columnCount = 2 } = props;
   function notifyPreview(color: T, state: boolean) {
     const upd = { ...model, preview: state ? color : undefined };
 
@@ -68,5 +77,5 @@ function makePickerContext<T>(
     }
   }
 
-  return { notifyPreview, notifySelected };
+  return { notifyPreview, notifySelected, layout, shape, size, columnCount };
 }

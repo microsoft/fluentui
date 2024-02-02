@@ -31,6 +31,9 @@ const useStyles = makeResetStyles({
     cursor: 'pointer',
     boxShadow: `inset 0 0 0 2px var(${swatchColor}), inset 0 0 0 4px var(${swatchStateColor})`,
   },
+  ':hover:active': {
+    boxShadow: `inset 0 0 0 3px var(${swatchColor}), inset 0 0 0 6px var(${swatchStateColor})`,
+  },
 });
 
 const useIconStyles = makeResetStyles({});
@@ -38,6 +41,43 @@ const useIconStyles = makeResetStyles({});
 const useStylesSelected = makeStyles({
   selected: {
     boxShadow: `inset 0 0 0 4px var(${swatchColor}), inset 0 0 0 6px var(${swatchStateColor})`,
+    ':hover': {
+      boxShadow: `inset 0 0 0 5px var(${swatchColor}), inset 0 0 0 7px var(${swatchStateColor})`,
+    },
+    ':hover:active': {
+      boxShadow: `inset 0 0 0 6px var(${swatchColor}), inset 0 0 0 8px var(${swatchStateColor})`,
+    },
+  },
+});
+
+const useSizeStyles = makeStyles({
+  extraSmall: {
+    width: '20px',
+    height: '20px',
+  },
+  small: {
+    width: '24px',
+    height: '24px',
+  },
+  medium: {
+    width: '28px',
+    height: '28px',
+  },
+  large: {
+    width: '32px',
+    height: '32px',
+  },
+});
+
+const useShapeStyles = makeStyles({
+  rounded: {
+    ...shorthands.borderRadius('4px'),
+  },
+  circular: {
+    ...shorthands.borderRadius('50%'),
+  },
+  square: {
+    ...shorthands.borderRadius('0'),
   },
 });
 
@@ -48,7 +88,16 @@ export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwa
   const styles = useStyles();
   const iconStyles = useIconStyles();
   const selectedStyles = useStylesSelected();
-  state.root.className = mergeClasses(colorSwatchClassNames.root, styles, state.root.className);
+  const sizeStyles = useSizeStyles();
+  const shapeStyles = useShapeStyles();
+
+  state.root.className = mergeClasses(
+    colorSwatchClassNames.root,
+    styles,
+    sizeStyles[state.size ?? 'medium'],
+    shapeStyles[state.shape ?? 'square'],
+    state.root.className,
+  );
 
   if (state.icon) {
     state.icon.className = mergeClasses(colorSwatchClassNames.icon, iconStyles, state.icon.className);

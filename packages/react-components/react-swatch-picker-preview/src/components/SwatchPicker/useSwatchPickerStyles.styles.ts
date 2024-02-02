@@ -6,6 +6,14 @@ export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots> = {
   root: 'fui-SwatchPicker',
 };
 
+export const swatchPickerCSSVars = {
+  columnCountGrid: `--fui-SwatchPicker--columnCount`,
+  cellSize: `--fui-SwatchPicker--cellSize`,
+  gridGap: `--fui-SwatchPicker--gridGap`,
+};
+
+const { columnCountGrid, cellSize } = swatchPickerCSSVars;
+
 /**
  * Styles for the root slot
  */
@@ -14,8 +22,16 @@ const useStyles = makeStyles({
     display: 'flex',
     ...shorthands.padding(tokens.spacingVerticalMNudge),
   },
-
-  // TODO add additional classes for different states and/or slots
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: `repeat(var(${columnCountGrid}), var(${cellSize}))`,
+    gridGap: 'var(--fui-SwatchPicker--gridGap)',
+  },
+  row: {
+    display: 'flex',
+    flexDirection: 'row',
+    columnGap: 'var(--fui-SwatchPicker--gridGap)',
+  },
 });
 
 /**
@@ -23,7 +39,8 @@ const useStyles = makeStyles({
  */
 export const useSwatchPickerStyles_unstable = (state: SwatchPickerState): SwatchPickerState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(swatchPickerClassNames.root, styles.root, state.root.className);
+  const layout = state.layout ?? 'row';
+  state.root.className = mergeClasses(swatchPickerClassNames.root, styles.root, styles[layout], state.root.className);
 
   return state;
 };

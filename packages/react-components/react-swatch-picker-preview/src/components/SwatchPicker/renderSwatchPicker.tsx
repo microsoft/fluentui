@@ -2,18 +2,18 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
-import { ColorPickerContext, PickerContext } from '../../contexts/picker';
+import { SwatchPickerContextValue, SwatchPickerProvider } from '../../contexts/swatchPicker';
 import type { SwatchPickerState, SwatchPickerSlots } from './SwatchPicker.types';
 
 /**
  * Render the final JSX of SwatchPicker
  */
-export const renderSwatchPicker_unstable = (state: SwatchPickerState, contextValue: ColorPickerContext) => {
+export const renderSwatchPicker_unstable = (state: SwatchPickerState, contextValues: SwatchPickerContextValue) => {
   assertSlots<SwatchPickerSlots>(state);
 
   return (
-    <state.root>
-      <PickerContext.Provider value={contextValue}>{state.root.children}</PickerContext.Provider>
-    </state.root>
+    <SwatchPickerProvider value={contextValues}>
+      <state.root>{state.root.children}</state.root>
+    </SwatchPickerProvider>
   );
 };

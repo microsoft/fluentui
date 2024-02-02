@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Color, DefaultColor } from '../../contexts/picker';
+import { Color, DefaultColor } from '../../contexts/swatchPicker';
 
 export type ColorSwatchSlots = {
   root: Slot<'button'>;
@@ -31,12 +31,15 @@ export type ColorSwatchProps<T extends Color> = ComponentProps<ColorSwatchSlots>
 
     contrastBorderColor?: string;
     contrastStateColor?: string;
+
+    size?: 'extraSmall' | 'small' | 'medium' | 'large';
+    shape?: 'rounded' | 'square' | 'circular';
   };
 
 /**
  * State used in rendering ColorSwatch
  */
 export type ColorSwatchState<T extends Color = DefaultColor> = ComponentState<ColorSwatchSlots> &
-  Pick<ColorSwatchProps<T>, 'disabled' | 'selected' | 'empty' | 'value'>;
+  Pick<ColorSwatchProps<T>, 'disabled' | 'selected' | 'empty' | 'value' | 'shape' | 'size'>;
 // TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from ColorSwatchProps.
 // & Required<Pick<ColorSwatchProps, 'propName'>>

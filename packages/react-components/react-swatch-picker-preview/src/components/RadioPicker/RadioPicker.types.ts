@@ -42,7 +42,7 @@ export type RadioPickerState = ComponentState<RadioPickerSlots> &
 
 export type RadioPickerContextValue = Pick<
   RadioPickerProps,
-  'layout' | 'columnCount' | 'name' | 'value' | 'defaultValue' | 'disabled' | 'required' | 'size' | 'shape' | 'shape'
+  'layout' | 'columnCount' | 'name' | 'value' | 'defaultValue' | 'disabled' | 'required' | 'size' | 'shape'
 >;
 
 export type RadioPickerContextValues = {

@@ -170,7 +170,7 @@ export const useRadioSwatchStyles_unstable = (state: RadioSwatchState): RadioSwa
   const swatchBaseClassName = useSwatchBaseClassName();
 
   const iconStyles = useIconStyles();
-  // TODO think about better handling of size
+
   state.root.className = mergeClasses(
     radioSwatchClassNames.root,
     baseStyles,
