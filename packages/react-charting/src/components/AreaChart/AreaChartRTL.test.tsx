@@ -2,18 +2,27 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
-import { ThemeProvider } from '@fluentui/react';
+import { ThemeProvider, resetIds } from '@fluentui/react';
 import { AreaChart, IAreaChartProps } from './index';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
-import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
-import { AreaChartBase } from './AreaChart.base';
+import {
+  forEachTimezone,
+  getByClass,
+  getById,
+  isTimezone,
+  testWithWait,
+  testWithoutWait,
+} from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
 const beforeAll = () => {
-  jest.spyOn(AreaChartBase.prototype as any, '_getAriaLabel').mockReturnValue('08/25/2023');
+  // jest.spyOn(AreaChartBase.prototype as any, '_getAriaLabel').mockReturnValue('08/25/2023');
 };
+beforeEach(() => {
+  resetIds();
+});
 
 const chart1Points = [
   {
@@ -253,17 +262,19 @@ describe('Area chart rendering', () => {
     },
   );
 
-  testWithoutWait(
-    'Should render the area chart with date x-axis data',
-    AreaChart,
-    { data: chartDataWithDates },
-    container => {
-      expect(container).toMatchSnapshot();
-    },
-    undefined,
-    beforeAll,
-    true,
-  );
+  forEachTimezone((tzName, tzIdentifier) => {
+    testWithoutWait(
+      `Should render the area chart with date x-axis data in ${tzName} timezone`,
+      AreaChart,
+      { data: chartDataWithDates },
+      container => {
+        expect(container).toMatchSnapshot();
+      },
+      undefined,
+      beforeAll,
+      !isTimezone(tzIdentifier),
+    );
+  });
 });
 
 describe('Area chart - Subcomponent Area', () => {

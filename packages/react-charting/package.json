@@ -25,7 +25,8 @@
     "start": "just-scripts dev:storybook",
     "start:legacy": "just-scripts dev",
     "start-test": "just-scripts jest-watch",
-    "update-snapshots": "just-scripts jest -u"
+    "update-snapshots": "just-scripts jest -u",
+    "test:tz": "node ./run-tests-in-timezone.js"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
