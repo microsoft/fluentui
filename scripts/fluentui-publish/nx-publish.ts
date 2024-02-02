@@ -115,6 +115,8 @@ export async function publish(config: {
 
   process.exit(0);
 
+  // ======= utils ========
+
   async function tagRelease() {
     const TAG_PATTERN = nxConfig.release?.groups?.northstar.releaseTagPattern;
 
@@ -139,6 +141,14 @@ export async function publish(config: {
     } else {
       output.logSingleLine(`Would push tag:${tag} to remote origin`);
     }
+  }
+  function getNewFixedVersion(projects: { [projectName: string]: ProjectGraphProjectNode }) {
+    const updatedLibProjectName = Object.keys(projects)[0];
+    const updatedLibProject = projects[updatedLibProjectName];
+    const pkgJsonPath = joinPathFragments(workspaceRoot, updatedLibProject.data.root, 'package.json');
+    const json = readJsonFile(pkgJsonPath);
+
+    return json.version;
   }
 }
 
@@ -171,9 +181,7 @@ export async function version(config: {
 
   stageChanges(tree, args);
 
-  if (!args.dryRun) {
-    runChange();
-  }
+  runChange(args);
 }
 
 // ========
@@ -221,20 +229,20 @@ function normalizeDependencies(config: { dryRun: boolean }) {
   });
 }
 
-function runChange() {
-  output.logSingleLine(`generating change-files (for packages outside release group):`);
+function runChange(config: { dryRun: boolean }) {
+  const { dryRun } = config;
+  const message = dryRun
+    ? `Would generate change-files (for packages outside release group) but --dry-run was set:`
+    : `Generating change-files (for packages outside release group)`;
   const cmd = `yarn change --message 'chore: bump northstar version' --type patch`;
 
+  output.logSingleLine(message);
+
+  if (dryRun) {
+    return;
+  }
+
   execSync(cmd, { stdio: 'inherit' });
-}
-
-function getNewFixedVersion(projects: { [projectName: string]: ProjectGraphProjectNode }) {
-  const updatedLibProjectName = Object.keys(projects)[0];
-  const updatedLibProject = projects[updatedLibProjectName];
-  const pkgJsonPath = joinPathFragments(workspaceRoot, updatedLibProject.data.root, 'package.json');
-  const json = readJsonFile(pkgJsonPath);
-
-  return json.version;
 }
 
 export function getNorthstarGroup(graph: ProjectGraph) {
@@ -270,31 +278,33 @@ export function getNorthstarGroup(graph: ProjectGraph) {
   return northstarProjects;
 }
 
-async function stageChanges(tree: Tree, args: { dryRun: boolean; verbose: boolean }) {
+function stageChanges(tree: Tree, args: { dryRun: boolean; verbose: boolean }) {
   const changedFiles = tree.listChanges().map(f => f.path);
   output.logSingleLine(`Staging changed files with git because --stage-changes was set`);
+
   gitAdd({
     changedFiles,
     dryRun: args.dryRun,
     verbose: args.verbose,
   });
-}
 
-function gitAdd(options: { changedFiles: string[]; dryRun: boolean; verbose: boolean }) {
-  const logFn = console.log;
-  const { changedFiles, dryRun, verbose } = options;
-  const commandArgs = ['add', ...changedFiles];
-  const cmd = `git ${commandArgs.join(' ')}`;
-  const message = dryRun
-    ? `Would stage files in git with the following command, but --dry-run was set:`
-    : `Staging files in git with the following command:`;
-  if (verbose) {
-    logFn(message);
-    logFn(`git ${commandArgs.join(' ')}`);
-  }
-  if (dryRun) {
-    return;
-  }
+  // =====
+  function gitAdd(options: { changedFiles: string[]; dryRun: boolean; verbose: boolean }) {
+    const logFn = console.log;
+    const { changedFiles, dryRun, verbose } = options;
+    const commandArgs = ['add', ...changedFiles];
+    const cmd = `git ${commandArgs.join(' ')}`;
+    const message = dryRun
+      ? `Would stage files in git with the following command, but --dry-run was set:`
+      : `Staging files in git with the following command:`;
+    if (verbose) {
+      logFn(message);
+      logFn(`git ${commandArgs.join(' ')}`);
+    }
+    if (dryRun) {
+      return;
+    }
 
-  return execSync(cmd, { stdio: 'inherit' });
+    return execSync(cmd, { stdio: 'inherit' });
+  }
 }
