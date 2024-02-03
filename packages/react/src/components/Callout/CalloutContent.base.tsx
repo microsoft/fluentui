@@ -495,6 +495,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       backgroundColor,
       calloutMaxHeight,
       onScroll,
+      // eslint-disable-next-line deprecation/deprecation
       shouldRestoreFocus = true,
       target,
       hidden,
