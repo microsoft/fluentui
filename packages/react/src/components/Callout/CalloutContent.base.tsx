@@ -126,6 +126,7 @@ function useMaxHeight(
     gapSpace,
     beakWidth,
     isBeakVisible,
+    coverTarget,
   }: ICalloutProps,
   getBounds: () => IRectangle | undefined,
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
@@ -141,9 +142,9 @@ function useMaxHeight(
     let { bottom: bottomBounds } = bounds;
     let calculatedHeight: number | undefined;
 
-    // If aligned to top edge of target, update bottom bounds to the top of the target
-    // (accounting for gap space and beak)
-    if (positions?.targetEdge === RectangleEdge.top && targetRect?.top) {
+    // If aligned to top edge of target and not covering target, update bottom bounds to the
+    // top of the target (accounting for gap space and beak)
+    if (positions?.targetEdge === RectangleEdge.top && targetRect?.top && !coverTarget) {
       bottomBounds = targetRect.top - calculateGapSpace(isBeakVisible, beakWidth, gapSpace);
     }
 
@@ -177,6 +178,7 @@ function useMaxHeight(
     beakWidth,
     isBeakVisible,
     targetRect,
+    coverTarget,
   ]);
 
   return maxHeight;
@@ -493,7 +495,6 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       backgroundColor,
       calloutMaxHeight,
       onScroll,
-      // eslint-disable-next-line deprecation/deprecation
       shouldRestoreFocus = true,
       target,
       hidden,
