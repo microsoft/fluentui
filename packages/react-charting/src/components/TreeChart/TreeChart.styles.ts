@@ -17,24 +17,24 @@ export const getStyles = (props: ITreeStyleProps): ITreeStyles => {
     },
     rectNode: {
       strokeWidth: '2px',
-      fill: 'white',
+      fill: props.theme!.semanticColors.bodyBackground,
       padding: '10px',
       rx: '2px',
     },
     rectText: {
-      fill: 'black',
+      fill: props.theme!.semanticColors.messageText,
       ...props.theme!.fonts.large,
     },
     rectSubText: {
-      fill: '#484644',
+      fill: props.theme!.semanticColors.bodySubtext,
       ...props.theme!.fonts.medium,
     },
     rectBodyText: {
-      fill: '#808080',
+      fill: props.theme!.palette.neutralTertiary,
       ...props.theme!.fonts.xSmall,
     },
     rectMetricText: {
-      fill: '#000000',
+      fill: props.theme!.palette.neutralSecondary,
       ...props.theme!.fonts.xLarge,
     },
   };
