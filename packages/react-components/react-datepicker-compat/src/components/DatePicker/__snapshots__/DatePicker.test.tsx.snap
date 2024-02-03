@@ -18,6 +18,7 @@ Object {
           value=""
         />
         <span
+          aria-hidden="true"
           class="fui-Input__contentAfter"
         >
           <svg
@@ -52,6 +53,7 @@ Object {
         value=""
       />
       <span
+        aria-hidden="true"
         class="fui-Input__contentAfter"
       >
         <svg

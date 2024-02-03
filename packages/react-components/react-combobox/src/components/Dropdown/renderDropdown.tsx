@@ -20,6 +20,7 @@ export const renderDropdown_unstable = (state: DropdownState, contextValues: Dro
           {state.button.children}
           {state.expandIcon && <state.expandIcon />}
         </state.button>
+        {state.clearButton && <state.clearButton />}
         {state.listbox &&
           (state.inlinePopup ? (
             <state.listbox />

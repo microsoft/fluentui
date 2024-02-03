@@ -1,0 +1,7 @@
+import * as package from '<%= packageName %>'
+
+console.log(package);
+
+export default {
+  name: '<%= packageName %> - package',
+};

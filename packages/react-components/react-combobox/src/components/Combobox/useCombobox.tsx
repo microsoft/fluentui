@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
-import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
+import { ChevronDownRegular as ChevronDownIcon, DismissRegular as DismissIcon } from '@fluentui/react-icons';
 import {
   getPartitionedNativeProps,
   mergeCallbacks,
@@ -32,7 +32,18 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
 
   const baseState = useComboboxBaseState({ ...props, editable: true });
-  const { open, selectOption, setOpen, setValue, value } = baseState;
+  const {
+    clearable,
+    clearSelection,
+    multiselect,
+    open,
+    selectedOptions,
+    selectOption,
+    setOpen,
+    setValue,
+    value,
+    hasFocus,
+  } = baseState;
   const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
   const { disabled, freeform, inlinePopup } = props;
   const comboId = useId('combobox-');
@@ -77,6 +88,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     defaultProps: {
       type: 'text',
       value: value ?? '',
+      'aria-controls': open ? listbox?.id : undefined,
       ...triggerNativeProps,
     },
   });
@@ -90,11 +102,20 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   });
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
 
+  const showClearIcon = selectedOptions.length > 0 && clearable && !multiselect;
   const state: ComboboxState = {
-    components: { root: 'div', input: 'input', expandIcon: 'span', listbox: Listbox },
+    components: { root: 'div', input: 'input', expandIcon: 'span', listbox: Listbox, clearIcon: 'span' },
     root: rootSlot,
     input: triggerSlot,
-    listbox: open ? listbox : undefined,
+    listbox: open || hasFocus ? listbox : undefined,
+    clearIcon: slot.optional(props.clearIcon, {
+      defaultProps: {
+        'aria-hidden': 'true',
+        children: <DismissIcon />,
+      },
+      elementType: 'span',
+      renderByDefault: true,
+    }),
     expandIcon: slot.optional(props.expandIcon, {
       renderByDefault: true,
       defaultProps: {
@@ -104,6 +125,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       },
       elementType: 'span',
     }),
+    showClearIcon,
     ...baseState,
   };
 
@@ -143,6 +165,37 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
         state.expandIcon['aria-label'] = defaultOpenString;
       }
     }
+  }
+
+  const onClearIconMouseDown = useEventCallback(
+    mergeCallbacks(state.clearIcon?.onMouseDown, (ev: React.MouseEvent<HTMLSpanElement>) => {
+      ev.preventDefault();
+    }),
+  );
+  const onClearIconClick = useEventCallback(
+    mergeCallbacks(state.clearIcon?.onClick, (ev: React.MouseEvent<HTMLSpanElement>) => {
+      clearSelection(ev);
+    }),
+  );
+
+  if (state.clearIcon) {
+    state.clearIcon.onMouseDown = onClearIconMouseDown;
+    state.clearIcon.onClick = onClearIconClick;
+  }
+
+  // Heads up! We don't support "clearable" in multiselect mode, so we should never display a slot
+  if (multiselect) {
+    state.clearIcon = undefined;
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks -- "process.env" does not change in runtime
+    React.useEffect(() => {
+      if (clearable && multiselect) {
+        // eslint-disable-next-line no-console
+        console.error(`[@fluentui/react-combobox] "clearable" prop is not supported in multiselect mode.`);
+      }
+    }, [clearable, multiselect]);
   }
 
   return state;

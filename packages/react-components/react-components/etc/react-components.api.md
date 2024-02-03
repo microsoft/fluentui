@@ -43,6 +43,11 @@ import { AccordionState } from '@fluentui/react-accordion';
 import { AccordionToggleData } from '@fluentui/react-accordion';
 import { AccordionToggleEvent } from '@fluentui/react-accordion';
 import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
+import { AnnounceContextValue } from '@fluentui/react-shared-contexts';
+import { AnnounceProvider } from '@fluentui/react-shared-contexts';
+import { AriaLiveAnnouncer } from '@fluentui/react-aria';
+import { AriaLiveAnnouncerProps } from '@fluentui/react-aria';
+import { AriaLiveAnnouncerState } from '@fluentui/react-aria';
 import { arrowHeights } from '@fluentui/react-popover';
 import { assertSlots } from '@fluentui/react-utilities';
 import { Avatar } from '@fluentui/react-avatar';
@@ -542,6 +547,7 @@ import { optionGroupClassNames } from '@fluentui/react-combobox';
 import { OptionGroupProps } from '@fluentui/react-combobox';
 import { OptionGroupSlots } from '@fluentui/react-combobox';
 import { OptionGroupState } from '@fluentui/react-combobox';
+import { OptionOnSelectData } from '@fluentui/react-combobox';
 import { OptionProps } from '@fluentui/react-combobox';
 import { OptionSlots } from '@fluentui/react-combobox';
 import { OptionState } from '@fluentui/react-combobox';
@@ -632,6 +638,7 @@ import { renderAccordion_unstable } from '@fluentui/react-accordion';
 import { renderAccordionHeader_unstable } from '@fluentui/react-accordion';
 import { renderAccordionItem_unstable } from '@fluentui/react-accordion';
 import { renderAccordionPanel_unstable } from '@fluentui/react-accordion';
+import { renderAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
 import { renderAvatar_unstable } from '@fluentui/react-avatar';
 import { renderAvatarGroup_unstable } from '@fluentui/react-avatar';
 import { renderAvatarGroupItem_unstable } from '@fluentui/react-avatar';
@@ -761,6 +768,7 @@ import { ResolveShorthandOptions } from '@fluentui/react-utilities';
 import { Select } from '@fluentui/react-select';
 import { SelectableHandler } from '@fluentui/react-menu';
 import { selectClassNames } from '@fluentui/react-select';
+import { SelectionEvents } from '@fluentui/react-combobox';
 import { SelectionHookParams } from '@fluentui/react-utilities';
 import { SelectionItemId } from '@fluentui/react-utilities';
 import { SelectionMethods } from '@fluentui/react-utilities';
@@ -1086,6 +1094,9 @@ import { useAccordionItemStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanelStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
+import { useAnnounce } from '@fluentui/react-shared-contexts';
+import { useAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
+import { useAriaLiveAnnouncerContextValues_unstable } from '@fluentui/react-aria';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { UseArrowNavigationGroupOptions } from '@fluentui/react-tabster';
 import { useAvatar_unstable } from '@fluentui/react-avatar';
@@ -1126,6 +1137,7 @@ import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
 import { useColumnIdContext } from '@fluentui/react-table';
 import { useCombobox_unstable } from '@fluentui/react-combobox';
 import { useComboboxContextValues } from '@fluentui/react-combobox';
+import { useComboboxFilter } from '@fluentui/react-combobox';
 import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
 import { useCompoundButton_unstable } from '@fluentui/react-button';
 import { useCompoundButtonStyles_unstable } from '@fluentui/react-button';
@@ -1496,6 +1508,16 @@ export { AccordionToggleData }
 export { AccordionToggleEvent }
 
 export { AccordionToggleEventHandler }
+
+export { AnnounceContextValue }
+
+export { AnnounceProvider }
+
+export { AriaLiveAnnouncer }
+
+export { AriaLiveAnnouncerProps }
+
+export { AriaLiveAnnouncerState }
 
 export { arrowHeights }
 
@@ -2495,6 +2517,8 @@ export { OptionGroupSlots }
 
 export { OptionGroupState }
 
+export { OptionOnSelectData }
+
 export { OptionProps }
 
 export { OptionSlots }
@@ -2674,6 +2698,8 @@ export { renderAccordionHeader_unstable }
 export { renderAccordionItem_unstable }
 
 export { renderAccordionPanel_unstable }
+
+export { renderAriaLiveAnnouncer_unstable }
 
 export { renderAvatar_unstable }
 
@@ -2932,6 +2958,8 @@ export { Select }
 export { SelectableHandler }
 
 export { selectClassNames }
+
+export { SelectionEvents }
 
 export { SelectionHookParams }
 
@@ -3583,6 +3611,12 @@ export { useAccordionPanelStyles_unstable }
 
 export { useAccordionStyles_unstable }
 
+export { useAnnounce }
+
+export { useAriaLiveAnnouncer_unstable }
+
+export { useAriaLiveAnnouncerContextValues_unstable }
+
 export { useArrowNavigationGroup }
 
 export { UseArrowNavigationGroupOptions }
@@ -3662,6 +3696,8 @@ export { useColumnIdContext }
 export { useCombobox_unstable }
 
 export { useComboboxContextValues }
+
+export { useComboboxFilter }
 
 export { useComboboxStyles_unstable }
 

@@ -1,6 +1,7 @@
 import { SVGProps } from 'react';
 import { LegendShape } from '../components/Legends/Legends.types';
-import * as d3Sankey from 'd3-sankey';
+import { SankeyLink, SankeyNode } from 'd3-sankey';
+
 export interface IBasestate {
   _width?: number;
   _height?: number;
@@ -72,6 +73,19 @@ export interface IDataPoint {
    * onClick action for each datapoint in the chart
    */
   onClick?: VoidFunction;
+}
+
+/**
+ * {@docCategory IChartData}
+ */
+export interface IVerticalStackedBarDataPoint extends Omit<IDataPoint, 'x'> {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
+   * If x is a string, then the data is evenly spaced along the x-axis.
+   * If data type on x is Date, then the data is spaced evenly by d3-scale.
+   */
+  x: number | string | Date;
 }
 
 /**
@@ -152,7 +166,7 @@ export interface IVerticalBarChartDataPoint {
    * If x is a number, then each y-coordinate is plotted at its x-coordinate.
    * If x is a string, then the data is evenly spaced along the x-axis.
    */
-  x: number | string;
+  x: number | string | Date;
 
   /**
    * Dependent value of the data point, rendered along the y-axis.
@@ -491,8 +505,8 @@ interface ISLinkExtra {
   unnormalizedValue?: number;
 }
 
-export type SNode = d3Sankey.SankeyNode<ISNodeExtra, ISLinkExtra>;
-export type SLink = d3Sankey.SankeyLink<ISNodeExtra, ISLinkExtra>;
+export type SNode = SankeyNode<ISNodeExtra, ISLinkExtra>;
+export type SLink = SankeyLink<ISNodeExtra, ISLinkExtra>;
 
 /**
  * {@docCategory IChartProps}
@@ -563,7 +577,7 @@ export interface IVerticalStackedChartProps {
   /**
    * Data for x axis label for multistacked Vertical bar chart
    */
-  xAxisPoint: number | string;
+  xAxisPoint: number | string | Date;
 
   /**
    * Callout data for x axis

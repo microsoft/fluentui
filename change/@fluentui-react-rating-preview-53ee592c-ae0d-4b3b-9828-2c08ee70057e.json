@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: add accesibility props to Rating and RatingDisplay",
+  "packageName": "@fluentui/react-rating-preview",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -25,7 +25,6 @@
     "@fluentui/scripts-babel": "*",
     "@fluentui/scripts-gulp": "*",
     "@fluentui/scripts-jest": "*",
-    "lerna-alias": "^3.0.3-0",
     "react-fela": "^10.6.1"
   },
   "files": [

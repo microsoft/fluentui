@@ -5,6 +5,8 @@ import { useFocusFinders } from '@fluentui/react-tabster';
 
 import type { CardContextValue, CardOnSelectionChangeEvent, CardProps, CardSlots } from './Card.types';
 
+type SelectableA11yProps = Pick<CardContextValue['selectableA11yProps'], 'referenceId' | 'referenceLabel'>;
+
 /**
  * @internal
  *
@@ -15,11 +17,11 @@ import type { CardContextValue, CardOnSelectionChangeEvent, CardProps, CardSlots
  *
  * @param props - props from this instance of Card
  * @param a11yProps - accessibility props shared between elements of the card
- * @param ref - reference to the root element of Card
+ * @param cardRef - reference to the root element of Card
  */
 export const useCardSelectable = (
   props: CardProps,
-  { referenceLabel, referenceId }: Pick<CardContextValue['selectableA11yProps'], 'referenceId' | 'referenceLabel'>,
+  { referenceLabel, referenceId }: SelectableA11yProps,
   cardRef: React.RefObject<HTMLDivElement>,
 ) => {
   const { checkbox = {}, onSelectionChange, floatingAction, onClick, onKeyDown } = props;

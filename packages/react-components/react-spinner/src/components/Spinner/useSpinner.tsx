@@ -38,15 +38,14 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
       elementType: 'div',
     },
   );
-  const [isVisible, setIsVisible] = React.useState(true);
+  const [isShownAfterDelay, setIsShownAfterDelay] = React.useState(false);
   const [setDelayTimeout, clearDelayTimeout] = useTimeout();
   React.useEffect(() => {
     if (delay <= 0) {
       return;
     }
-    setIsVisible(false);
     setDelayTimeout(() => {
-      setIsVisible(true);
+      setIsShownAfterDelay(true);
     }, delay);
     return () => {
       clearDelayTimeout();
@@ -70,7 +69,7 @@ export const useSpinner_unstable = (props: SpinnerProps, ref: React.Ref<HTMLElem
     delay,
     labelPosition,
     size,
-    shouldRenderSpinner: isVisible,
+    shouldRenderSpinner: !delay || isShownAfterDelay,
     components: { root: 'div', spinner: 'span', label: Label },
     root: nativeRoot,
     spinner: spinnerShortHand,

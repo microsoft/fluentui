@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Thu, 14 Dec 2023 07:30:10 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Jan 2024 07:27:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.11.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.11.3)
+
+Wed, 31 Jan 2024 07:27:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.11.2..@fluentui/react-file-type-icons_v8.11.3)
+
+### Patches
+
+- Adding .mcworld and .mctemplate filetype icons and updated FabricCDN url ([PR #30422](https://github.com/microsoft/fluentui/pull/30422) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.10.3 ([commit](https://github.com/microsoft/fluentui/commit/eeb2656f81977a5821c36ca854fe2781d9dcfd1b) by beachball)
+
+## [8.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.11.2)
+
+Fri, 19 Jan 2024 07:29:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.11.1..@fluentui/react-file-type-icons_v8.11.2)
+
+### Patches
+
+- Bump @fluentui/style-utilities to v8.10.2 ([PR #30225](https://github.com/microsoft/fluentui/pull/30225) by beachball)
+
+## [8.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.11.1)
+
+Wed, 10 Jan 2024 07:28:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.11.0..@fluentui/react-file-type-icons_v8.11.1)
+
+### Patches
+
+- chore: disallow document and window access ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by seanmonahan@microsoft.com)
+- Bump @fluentui/set-version to v8.2.14 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+- Bump @fluentui/style-utilities to v8.10.1 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+
+## [8.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.11.0)
+
+Tue, 09 Jan 2024 07:33:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.10.5..@fluentui/react-file-type-icons_v8.11.0)
+
+### Minor changes
+
+- Adding planner and todoitem filetype icon support. ([PR #30079](https://github.com/microsoft/fluentui/pull/30079) by caperez@microsoft.com)
+- Bump @fluentui/style-utilities to v8.10.0 ([PR #30003](https://github.com/microsoft/fluentui/pull/30003) by beachball)
 
 ## [8.10.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.10.5)
 
