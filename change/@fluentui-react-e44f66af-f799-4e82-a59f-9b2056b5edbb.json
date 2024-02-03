@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Correctly calculating height of Callout aligning to the top and covering target.",
+  "packageName": "@fluentui/react",
+  "email": "makotom@microsoft.com",
+  "dependentChangeType": "patch"
+}
