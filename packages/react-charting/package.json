@@ -17,7 +17,7 @@
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
     "lint": "just-scripts lint",
-    "test": "just-scripts test",
+    "test": "cross-env TZ=UTC just-scripts test",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "codepen": "node ../../scripts/executors/local-codepen.js",
@@ -25,7 +25,7 @@
     "start": "just-scripts dev:storybook",
     "start:legacy": "just-scripts dev",
     "start-test": "just-scripts jest-watch",
-    "update-snapshots": "just-scripts jest -u",
+    "update-snapshots": "cross-env TZ=UTC just-scripts jest -u",
     "test:tz": "node ./run-tests-in-timezone.js"
   },
   "devDependencies": {

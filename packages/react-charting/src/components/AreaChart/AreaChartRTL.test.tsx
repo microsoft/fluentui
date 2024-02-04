@@ -15,11 +15,10 @@ import {
   testWithoutWait,
 } from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
+const { Timezone } = require('../../../config/constants');
 
 expect.extend(toHaveNoViolations);
-const beforeAll = () => {
-  // jest.spyOn(AreaChartBase.prototype as any, '_getAriaLabel').mockReturnValue('08/25/2023');
-};
+
 beforeEach(() => {
   resetIds();
 });
@@ -271,7 +270,7 @@ describe('Area chart rendering', () => {
         expect(container).toMatchSnapshot();
       },
       undefined,
-      beforeAll,
+      undefined,
       !isTimezone(tzIdentifier),
     );
   });
@@ -434,7 +433,7 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Jan ...');
     },
     undefined,
-    beforeAll,
+    undefined,
   );
 
   testWithWait(
@@ -442,12 +441,14 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
     AreaChart,
     { data: chartDataWithDates, rotateXAxisLables: true },
     container => {
+      // FIXME - Bad check. Not the best way to check result from a third party utility.
+      // If there are any changes, the value must be manually adjusted to ensure the test passes.
       // Assert
       expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(39.03658536585366,0)');
     },
     undefined,
-    beforeAll,
-    true,
+    undefined,
+    !isTimezone(Timezone.UTC),
   );
 });
 

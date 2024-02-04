@@ -1,12 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { act, queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import * as React from 'react';
-const ENV = require('../../config/tests');
 const { Timezone } = require('../../config/constants');
 
 export const getById = queryAllByAttribute.bind(null, 'id');
 export const getByClass = queryAllByAttribute.bind(null, 'class');
-export const runTestSuiteInTestEnv = ENV === 'TEST' ? describe : describe.skip;
 
 // Test function that does not wait for any async calls to finish
 export const testWithoutWait = (
@@ -18,8 +16,7 @@ export const testWithoutWait = (
   beforeAllFunction?: () => void,
   skip?: boolean,
 ) => {
-  const runTest = skip ? test.skip : test;
-  runTest(description, () => {
+  conditionalTest(!skip)(description, () => {
     beforeAllFunction !== undefined && beforeAllFunction();
     const { container } = render(React.createElement(component, (props = { ...props })));
     testFunctionAfterRender !== undefined && testFunctionAfterRender();
@@ -37,8 +34,7 @@ export const testWithWait = (
   beforeAllFunction?: () => void,
   skip?: boolean,
 ) => {
-  const runTest = skip ? test.skip : test;
-  runTest(description, async () => {
+  conditionalTest(!skip)(description, async () => {
     beforeAllFunction !== undefined && beforeAllFunction();
     const { container } = render(React.createElement(component, (props = { ...props })));
     testFunctionAfterRender !== undefined && testFunctionAfterRender();
@@ -90,4 +86,11 @@ export const forEachTimezone = (callback: (tzName: string, tzIdentifier: string)
 };
 export const isTimezone = (timezone: string) => {
   return timezone === process.env.TZ;
+};
+
+export const conditionalDescribe = (condition: boolean) => {
+  return condition ? describe : describe.skip;
+};
+export const conditionalTest = (condition: boolean) => {
+  return condition ? test : test.skip;
 };

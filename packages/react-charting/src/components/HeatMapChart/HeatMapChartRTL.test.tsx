@@ -2,10 +2,16 @@ import * as React from 'react';
 import { act, queryAllByAttribute, render, waitFor, screen, fireEvent } from '@testing-library/react';
 import { HeatMapChart, IHeatMapChartProps } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { getByClass, runTestSuiteInTestEnv } from '../../utilities/TestUtility.test';
+import { conditionalTest, getByClass, isTimezone } from '../../utilities/TestUtility.test';
 import { HeatMapChartBase } from './HeatMapChart.base';
+import { resetIds } from '@fluentui/react';
+const { Timezone } = require('../../../config/constants');
 
 expect.extend(toHaveNoViolations);
+
+beforeEach(() => {
+  resetIds();
+});
 
 const stringPoints: string[] = ['p1', 'p2', 'p3', 'p4'];
 const numericPoints: number[] = [10, 20, 30, 40];
@@ -136,8 +142,8 @@ const HeatMapNumberData: IHeatMapChartProps['data'] = [
   },
 ];
 
-runTestSuiteInTestEnv('HeatMap chart rendering', () => {
-  test('Should re-render the HeatMap chart with data', async () => {
+describe('HeatMap chart rendering', () => {
+  conditionalTest(isTimezone(Timezone.UTC))('Should re-render the HeatMap chart with data', async () => {
     // Arrange
     const { container, rerender } = render(
       <HeatMapChart

@@ -9,7 +9,8 @@ import { IHeatMapChartState, HeatMapChartBase } from './HeatMapChart.base';
 import { ThemeProvider } from '@fluentui/react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { act } from 'react-dom/test-utils';
-import { runTestSuiteInTestEnv } from '../../utilities/TestUtility.test';
+import { conditionalDescribe, conditionalTest, isTimezone } from '../../utilities/TestUtility.test';
+const { Timezone } = require('../../../config/constants');
 
 // Wrapper of the HeatMapChart to be tested.
 let wrapper: ReactWrapper<IHeatMapChartProps, IHeatMapChartState, HeatMapChartBase> | undefined;
@@ -98,8 +99,7 @@ const HeatMapStringDateData: IHeatMapChartProps['data'] = [
   },
 ];
 
-// FIXME - non deterministic snapshots causing master pipeline breaks
-runTestSuiteInTestEnv('HeatMapChart snapShot testing', () => {
+conditionalDescribe(isTimezone(Timezone.UTC))('HeatMapChart snapShot testing', () => {
   beforeEach(() => {
     resetIds();
   });
@@ -323,11 +323,11 @@ describe('Render calling with respective to props', () => {
   });
 });
 
-runTestSuiteInTestEnv('HeatMapChart - mouse events', () => {
+describe('HeatMapChart - mouse events', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  it('Should render callout correctly on mouseover', async () => {
+  conditionalTest(isTimezone(Timezone.UTC))('Should render callout correctly on mouseover', async () => {
     await act(async () => {
       wrapper = mount(
         <HeatMapChart

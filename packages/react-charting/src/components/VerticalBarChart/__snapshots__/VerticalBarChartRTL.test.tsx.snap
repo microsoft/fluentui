@@ -17,11 +17,11 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_635"
+    id="chart_3"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_636"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -32,7 +32,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone637"
+      data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -70,7 +70,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_635"
+          id="xAxisGElementchart_3"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -216,7 +216,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_635"
+          id="yAxisGElementchart_3"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -328,7 +328,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_639"
+              id="_VBC_bar_7"
               role="img"
               tabindex="0"
               width="16"
@@ -362,7 +362,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_640"
+              id="_VBC_bar_8"
               role="img"
               tabindex="-1"
               width="16"
@@ -396,7 +396,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_641"
+              id="_VBC_bar_9"
               role="img"
               tabindex="-1"
               width="16"
@@ -459,7 +459,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone638"
+                data-focuszone-id="FocusZone6"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -760,11 +760,11 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_646"
+    id="chart_3"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_647"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -775,7 +775,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone648"
+      data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -813,7 +813,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_646"
+          id="xAxisGElementchart_3"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -959,7 +959,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_646"
+          id="yAxisGElementchart_3"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -1071,7 +1071,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_650"
+              id="_VBC_bar_7"
               role="img"
               tabindex="0"
               width="16"
@@ -1105,7 +1105,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_651"
+              id="_VBC_bar_8"
               role="img"
               tabindex="-1"
               width="16"
@@ -1139,7 +1139,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_652"
+              id="_VBC_bar_9"
               role="img"
               tabindex="-1"
               width="16"
@@ -1202,7 +1202,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone649"
+                data-focuszone-id="FocusZone6"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1516,11 +1516,11 @@ exports[`Theme Change Should reflect theme change 1`] = `
             overflow: hidden;
             width: 100%;
           }
-      id="chart_660"
+      id="chart_6"
       role="presentation"
     >
       <div
-        id="defaultTabbableElement_661"
+        id="defaultTabbableElement_7"
       />
       <div
         class=
@@ -1531,7 +1531,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             {
               overflow: auto;
             }
-        data-focuszone-id="FocusZone662"
+        data-focuszone-id="FocusZone8"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
@@ -1569,7 +1569,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="xAxisGElementchart_660"
+            id="xAxisGElementchart_6"
             text-anchor="middle"
             transform="translate(0, 257)"
           >
@@ -1715,7 +1715,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
             fill="none"
             font-family="sans-serif"
             font-size="10"
-            id="yAxisGElementchart_660"
+            id="yAxisGElementchart_6"
             text-anchor="end"
             transform="translate(40, 0)"
           >
@@ -1827,7 +1827,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 data-is-focusable="true"
                 fill="#0078d4"
                 height="47.400000000000006"
-                id="_VBC_bar_664"
+                id="_VBC_bar_10"
                 role="img"
                 tabindex="0"
                 width="16"
@@ -1861,7 +1861,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 data-is-focusable="true"
                 fill="#002050"
                 height="237"
-                id="_VBC_bar_665"
+                id="_VBC_bar_11"
                 role="img"
                 tabindex="-1"
                 width="16"
@@ -1895,7 +1895,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                 data-is-focusable="true"
                 fill="#00188f"
                 height="142.2"
-                id="_VBC_bar_666"
+                id="_VBC_bar_12"
                 role="img"
                 tabindex="-1"
                 width="16"
@@ -1958,7 +1958,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone663"
+                  data-focuszone-id="FocusZone9"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
@@ -2247,7 +2247,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_VBC_empty669"
+    id="_VBC_empty2"
     role="alert"
     style="opacity: 0;"
   />
@@ -2271,11 +2271,11 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           overflow: hidden;
           width: 100%;
         }
-    id="chart_670"
+    id="chart_3"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_671"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -2286,7 +2286,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone672"
+      data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -2324,7 +2324,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_670"
+          id="xAxisGElementchart_3"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -2416,7 +2416,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_670"
+          id="yAxisGElementchart_3"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -2525,7 +2525,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_674"
+              id="_VBC_bar_7"
               role="img"
               tabindex="0"
               width="16"
@@ -2556,7 +2556,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_675"
+              id="_VBC_bar_8"
               role="img"
               tabindex="-1"
               width="16"
@@ -2587,7 +2587,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_676"
+              id="_VBC_bar_9"
               role="img"
               tabindex="-1"
               width="16"
@@ -2650,7 +2650,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone673"
+                data-focuszone-id="FocusZone6"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2934,7 +2934,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
 </div>
 `;
 
-exports[`Vertical bar chart rendering Should render the vertical bar chart with Date x-axis data 1`] = `
+exports[`Vertical bar chart rendering Should render the vertical bar chart with Date x-axis data in IST timezone 1`] = `
 <div>
   <div
     class=
@@ -2951,11 +2951,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_24"
+    id="chart_3"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_25"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -2966,7 +2966,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone26"
+      data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -3004,7 +3004,1481 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_24"
+          id="xAxisGElementchart_3"
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(57.20649171270718,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              February
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(143.52693370165747,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              March
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(239.09599447513816,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              April
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(331.582182320442,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              May
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(427.15124309392263,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              June
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(519.6374309392265,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              July
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_3"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              880
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              1.8k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              2.6k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              3.5k
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <rect
+              aria-label="2/1/2019, 12:00:00 AM. 3500."
+              class=
+
+                  {
+                    opacity: ;
+                  }
+              data-is-focusable="true"
+              fill="#627CEF"
+              height="237"
+              id="_VBC_bar_7"
+              role="img"
+              tabindex="0"
+              width="16"
+              x="48"
+              y="20"
+            />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="56"
+              y="14"
+            >
+              3.5k
+            </text>
+          </g>
+          <g>
+            <rect
+              aria-label="5/1/2019, 12:00:00 AM. 2500."
+              class=
+
+                  {
+                    opacity: ;
+                  }
+              data-is-focusable="true"
+              fill="#C19C00"
+              height="169.28571428571428"
+              id="_VBC_bar_8"
+              role="img"
+              tabindex="-1"
+              width="16"
+              x="322.37569060773484"
+              y="87.71428571428572"
+            />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="330.37569060773484"
+              y="81.71428571428572"
+            >
+              2.5k
+            </text>
+          </g>
+          <g>
+            <rect
+              aria-label="8/1/2019, 12:00:00 AM. 1900."
+              class=
+
+                  {
+                    opacity: ;
+                  }
+              data-is-focusable="true"
+              fill="#E650AF"
+              height="128.65714285714284"
+              id="_VBC_bar_9"
+              role="img"
+              tabindex="-1"
+              width="16"
+              x="606"
+              y="128.34285714285716"
+            />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="614"
+              y="122.34285714285716"
+            >
+              1.9k
+            </text>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style=""
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone6"
+                data-tabster="{\\"uncontrolled\\": {}}"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="undefined"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #627CEF;
+                              border-color: #627CEF;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #627CEF, #627CEF);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      />
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="undefined"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #C19C00;
+                              border-color: #C19C00;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #C19C00, #C19C00);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      />
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="undefined"
+                      aria-posinset="3"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #E650AF;
+                              border-color: #E650AF;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #E650AF, #E650AF);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Vertical bar chart rendering Should render the vertical bar chart with Date x-axis data in Pacific timezone 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_3"
+    role="presentation"
+  >
+    <div
+      id="defaultTabbableElement_4"
+    />
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone5"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <svg
+        focusable="false"
+        height="292"
+        style="display: block;"
+        width="650"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_3"
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(141.81245682707805,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              March
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(237.40352291043058,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              April
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(329.9110062169007,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              May
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(425.5020723002533,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              June
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(518.0095556067234,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              July
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(613.600621690076,0)"
+          >
+            <line
+              stroke="#000"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="#000"
+              y="16"
+            >
+              August
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_3"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="#000"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              880
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              1.8k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              2.6k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="#000"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="#000"
+              x="-10"
+            >
+              3.5k
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <rect
+              aria-label="2/1/2019, 12:00:00 AM. 3500."
+              class=
+
+                  {
+                    opacity: ;
+                  }
+              data-is-focusable="true"
+              fill="#627CEF"
+              height="237"
+              id="_VBC_bar_7"
+              role="img"
+              tabindex="0"
+              width="16"
+              x="48"
+              y="20"
+            />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="56"
+              y="14"
+            >
+              3.5k
+            </text>
+          </g>
+          <g>
+            <rect
+              aria-label="5/1/2019, 12:00:00 AM. 2500."
+              class=
+
+                  {
+                    opacity: ;
+                  }
+              data-is-focusable="true"
+              fill="#C19C00"
+              height="169.28571428571428"
+              id="_VBC_bar_8"
+              role="img"
+              tabindex="-1"
+              width="16"
+              x="322.3103845268248"
+              y="87.71428571428572"
+            />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="330.3103845268248"
+              y="81.71428571428572"
+            >
+              2.5k
+            </text>
+          </g>
+          <g>
+            <rect
+              aria-label="8/1/2019, 12:00:00 AM. 1900."
+              class=
+
+                  {
+                    opacity: ;
+                  }
+              data-is-focusable="true"
+              fill="#E650AF"
+              height="128.65714285714284"
+              id="_VBC_bar_9"
+              role="img"
+              tabindex="-1"
+              width="16"
+              x="606"
+              y="128.34285714285716"
+            />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="614"
+              y="122.34285714285716"
+            >
+              1.9k
+            </text>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style=""
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone6"
+                data-tabster="{\\"uncontrolled\\": {}}"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="undefined"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #627CEF;
+                              border-color: #627CEF;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #627CEF, #627CEF);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      />
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="undefined"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #C19C00;
+                              border-color: #C19C00;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #C19C00, #C19C00);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      />
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="undefined"
+                      aria-posinset="3"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #E650AF;
+                              border-color: #E650AF;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #E650AF, #E650AF);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Vertical bar chart rendering Should render the vertical bar chart with Date x-axis data in UTC timezone 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_3"
+    role="presentation"
+  >
+    <div
+      id="defaultTabbableElement_4"
+    />
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone5"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <svg
+        focusable="false"
+        height="292"
+        style="display: block;"
+        width="650"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_3"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -3168,7 +4642,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_24"
+          id="yAxisGElementchart_3"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -3271,7 +4745,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
         <g>
           <g>
             <rect
-              aria-label="08/25/2023. 3500."
+              aria-label="2/1/2019, 12:00:00 AM. 3500."
               class=
 
                   {
@@ -3280,7 +4754,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#627CEF"
               height="237"
-              id="_VBC_bar_28"
+              id="_VBC_bar_7"
               role="img"
               tabindex="0"
               width="16"
@@ -3305,7 +4779,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           </g>
           <g>
             <rect
-              aria-label="08/25/2023. 2500."
+              aria-label="5/1/2019, 12:00:00 AM. 2500."
               class=
 
                   {
@@ -3314,7 +4788,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#C19C00"
               height="169.28571428571428"
-              id="_VBC_bar_29"
+              id="_VBC_bar_8"
               role="img"
               tabindex="-1"
               width="16"
@@ -3339,7 +4813,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           </g>
           <g>
             <rect
-              aria-label="08/25/2023. 1900."
+              aria-label="8/1/2019, 12:00:00 AM. 1900."
               class=
 
                   {
@@ -3348,7 +4822,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#E650AF"
               height="128.65714285714284"
-              id="_VBC_bar_30"
+              id="_VBC_bar_9"
               role="img"
               tabindex="-1"
               width="16"
@@ -3411,7 +4885,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone27"
+                data-focuszone-id="FocusZone6"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -3706,11 +5180,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_67"
+    id="chart_3"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_68"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -3721,7 +5195,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone78"
+      data-focuszone-id="FocusZone14"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -3759,7 +5233,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_67"
+          id="xAxisGElementchart_3"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -3905,7 +5379,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_67"
+          id="yAxisGElementchart_3"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -4017,7 +5491,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_80"
+              id="_VBC_bar_16"
               role="img"
               tabindex="0"
               width="16"
@@ -4051,7 +5525,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_81"
+              id="_VBC_bar_17"
               role="img"
               tabindex="-1"
               width="16"
@@ -4085,7 +5559,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_82"
+              id="_VBC_bar_18"
               role="img"
               tabindex="-1"
               width="16"
@@ -4119,7 +5593,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#00bcf2"
               height="61.620000000000005"
-              id="_VBC_bar_83"
+              id="_VBC_bar_19"
               role="img"
               tabindex="-1"
               width="16"
@@ -4153,7 +5627,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0078d4"
               height="203.82"
-              id="_VBC_bar_84"
+              id="_VBC_bar_20"
               role="img"
               tabindex="-1"
               width="16"
@@ -4187,7 +5661,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#002050"
               height="142.2"
-              id="_VBC_bar_85"
+              id="_VBC_bar_21"
               role="img"
               tabindex="-1"
               width="16"
@@ -4221,7 +5695,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0078d4"
               height="94.80000000000001"
-              id="_VBC_bar_86"
+              id="_VBC_bar_22"
               role="img"
               tabindex="-1"
               width="16"
@@ -4255,7 +5729,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#00bcf2"
               height="213.3"
-              id="_VBC_bar_87"
+              id="_VBC_bar_23"
               role="img"
               tabindex="-1"
               width="16"
@@ -4283,7 +5757,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <path
             d="M56,223.82L128.356,114.8L203.165,242.78L354.009,114.8L428.818,233.3L541.644,181.16L614,67.4"
             fill="transparent"
-            id="_VBC_line_89"
+            id="_VBC_line_25"
             opacity="1"
             stroke="#ffb900"
             stroke-linecap="square"
@@ -4293,7 +5767,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="56"
             cy="223.82000000000002"
             fill="#ffffff"
-            id="_VBC_point_90"
+            id="_VBC_point_26"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -4303,7 +5777,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="128.35604395604395"
             cy="114.80000000000001"
             fill="#ffffff"
-            id="_VBC_point_91"
+            id="_VBC_point_27"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -4313,7 +5787,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="203.16483516483515"
             cy="242.77999999999997"
             fill="#ffffff"
-            id="_VBC_point_92"
+            id="_VBC_point_28"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -4323,7 +5797,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="354.00879120879125"
             cy="114.80000000000001"
             fill="#ffffff"
-            id="_VBC_point_93"
+            id="_VBC_point_29"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -4333,7 +5807,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="428.8175824175824"
             cy="233.3"
             fill="#ffffff"
-            id="_VBC_point_94"
+            id="_VBC_point_30"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -4343,7 +5817,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="541.643956043956"
             cy="181.16"
             fill="#ffffff"
-            id="_VBC_point_95"
+            id="_VBC_point_31"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -4353,7 +5827,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="614"
             cy="67.39999999999999"
             fill="#ffffff"
-            id="_VBC_point_96"
+            id="_VBC_point_32"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -4399,7 +5873,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone79"
+                data-focuszone-id="FocusZone15"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -5130,11 +6604,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_100"
+    id="chart_3"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_101"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -5145,7 +6619,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone111"
+      data-focuszone-id="FocusZone14"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -5183,7 +6657,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_100"
+          id="xAxisGElementchart_3"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -5275,7 +6749,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_100"
+          id="yAxisGElementchart_3"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -5387,7 +6861,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_113"
+              id="_VBC_bar_16"
               role="img"
               tabindex="0"
               width="16"
@@ -5421,7 +6895,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_114"
+              id="_VBC_bar_17"
               role="img"
               tabindex="-1"
               width="16"
@@ -5455,7 +6929,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_115"
+              id="_VBC_bar_18"
               role="img"
               tabindex="-1"
               width="16"
@@ -5489,7 +6963,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#00bcf2"
               height="61.620000000000005"
-              id="_VBC_bar_116"
+              id="_VBC_bar_19"
               role="img"
               tabindex="-1"
               width="16"
@@ -5523,7 +6997,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0078d4"
               height="203.82"
-              id="_VBC_bar_117"
+              id="_VBC_bar_20"
               role="img"
               tabindex="-1"
               width="16"
@@ -5557,7 +7031,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#002050"
               height="142.2"
-              id="_VBC_bar_118"
+              id="_VBC_bar_21"
               role="img"
               tabindex="-1"
               width="16"
@@ -5591,7 +7065,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0078d4"
               height="94.80000000000001"
-              id="_VBC_bar_119"
+              id="_VBC_bar_22"
               role="img"
               tabindex="-1"
               width="16"
@@ -5625,7 +7099,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#00bcf2"
               height="213.3"
-              id="_VBC_bar_120"
+              id="_VBC_bar_23"
               role="img"
               tabindex="-1"
               width="16"
@@ -5653,7 +7127,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <path
             d="M56,223.82L128.356,114.8L203.165,242.78L354.009,114.8L428.818,233.3L541.644,181.16L614,67.4"
             fill="transparent"
-            id="_VBC_line_122"
+            id="_VBC_line_25"
             opacity="1"
             stroke="#ffb900"
             stroke-linecap="square"
@@ -5663,7 +7137,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="56"
             cy="223.82000000000002"
             fill="#ffffff"
-            id="_VBC_point_123"
+            id="_VBC_point_26"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -5673,7 +7147,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="128.35604395604395"
             cy="114.80000000000001"
             fill="#ffffff"
-            id="_VBC_point_124"
+            id="_VBC_point_27"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -5683,7 +7157,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="203.16483516483515"
             cy="242.77999999999997"
             fill="#ffffff"
-            id="_VBC_point_125"
+            id="_VBC_point_28"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -5693,7 +7167,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="354.00879120879125"
             cy="114.80000000000001"
             fill="#ffffff"
-            id="_VBC_point_126"
+            id="_VBC_point_29"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -5703,7 +7177,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="428.8175824175824"
             cy="233.3"
             fill="#ffffff"
-            id="_VBC_point_127"
+            id="_VBC_point_30"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -5713,7 +7187,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="541.643956043956"
             cy="181.16"
             fill="#ffffff"
-            id="_VBC_point_128"
+            id="_VBC_point_31"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -5723,7 +7197,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="614"
             cy="67.39999999999999"
             fill="#ffffff"
-            id="_VBC_point_129"
+            id="_VBC_point_32"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -5769,7 +7243,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone112"
+                data-focuszone-id="FocusZone15"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -6500,11 +7974,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_133"
+    id="chart_3"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_134"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -6515,7 +7989,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone144"
+      data-focuszone-id="FocusZone14"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -6553,7 +8027,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_133"
+          id="xAxisGElementchart_3"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -6699,7 +8173,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_133"
+          id="yAxisGElementchart_3"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -6811,7 +8285,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_146"
+              id="_VBC_bar_16"
               role="img"
               tabindex="0"
               width="16"
@@ -6845,7 +8319,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_147"
+              id="_VBC_bar_17"
               role="img"
               tabindex="-1"
               width="16"
@@ -6879,7 +8353,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_148"
+              id="_VBC_bar_18"
               role="img"
               tabindex="-1"
               width="16"
@@ -6913,7 +8387,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#00bcf2"
               height="61.620000000000005"
-              id="_VBC_bar_149"
+              id="_VBC_bar_19"
               role="img"
               tabindex="-1"
               width="16"
@@ -6947,7 +8421,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0078d4"
               height="203.82"
-              id="_VBC_bar_150"
+              id="_VBC_bar_20"
               role="img"
               tabindex="-1"
               width="16"
@@ -6981,7 +8455,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#002050"
               height="142.2"
-              id="_VBC_bar_151"
+              id="_VBC_bar_21"
               role="img"
               tabindex="-1"
               width="16"
@@ -7015,7 +8489,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0078d4"
               height="94.80000000000001"
-              id="_VBC_bar_152"
+              id="_VBC_bar_22"
               role="img"
               tabindex="-1"
               width="16"
@@ -7049,7 +8523,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#00bcf2"
               height="213.3"
-              id="_VBC_bar_153"
+              id="_VBC_bar_23"
               role="img"
               tabindex="-1"
               width="16"
@@ -7077,7 +8551,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <path
             d="M56,223.82L128.356,114.8L203.165,242.78L354.009,114.8L428.818,233.3L541.644,181.16L614,67.4"
             fill="transparent"
-            id="_VBC_line_155"
+            id="_VBC_line_25"
             opacity="1"
             stroke="#ffb900"
             stroke-linecap="square"
@@ -7087,7 +8561,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="56"
             cy="223.82000000000002"
             fill="#ffffff"
-            id="_VBC_point_156"
+            id="_VBC_point_26"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -7097,7 +8571,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="128.35604395604395"
             cy="114.80000000000001"
             fill="#ffffff"
-            id="_VBC_point_157"
+            id="_VBC_point_27"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -7107,7 +8581,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="203.16483516483515"
             cy="242.77999999999997"
             fill="#ffffff"
-            id="_VBC_point_158"
+            id="_VBC_point_28"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -7117,7 +8591,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="354.00879120879125"
             cy="114.80000000000001"
             fill="#ffffff"
-            id="_VBC_point_159"
+            id="_VBC_point_29"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -7127,7 +8601,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="428.8175824175824"
             cy="233.3"
             fill="#ffffff"
-            id="_VBC_point_160"
+            id="_VBC_point_30"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -7137,7 +8611,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="541.643956043956"
             cy="181.16"
             fill="#ffffff"
-            id="_VBC_point_161"
+            id="_VBC_point_31"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -7147,7 +8621,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="614"
             cy="67.39999999999999"
             fill="#ffffff"
-            id="_VBC_point_162"
+            id="_VBC_point_32"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -7193,7 +8667,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone145"
+                data-focuszone-id="FocusZone15"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -7924,11 +9398,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_34"
+    id="chart_3"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_35"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -7939,7 +9413,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone45"
+      data-focuszone-id="FocusZone14"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -7977,7 +9451,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_34"
+          id="xAxisGElementchart_3"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -8069,7 +9543,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_34"
+          id="yAxisGElementchart_3"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -8181,7 +9655,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_47"
+              id="_VBC_bar_16"
               role="img"
               tabindex="0"
               width="16"
@@ -8215,7 +9689,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_48"
+              id="_VBC_bar_17"
               role="img"
               tabindex="-1"
               width="16"
@@ -8249,7 +9723,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_49"
+              id="_VBC_bar_18"
               role="img"
               tabindex="-1"
               width="16"
@@ -8283,7 +9757,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#00bcf2"
               height="61.620000000000005"
-              id="_VBC_bar_50"
+              id="_VBC_bar_19"
               role="img"
               tabindex="-1"
               width="16"
@@ -8317,7 +9791,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0078d4"
               height="203.82"
-              id="_VBC_bar_51"
+              id="_VBC_bar_20"
               role="img"
               tabindex="-1"
               width="16"
@@ -8351,7 +9825,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#002050"
               height="142.2"
-              id="_VBC_bar_52"
+              id="_VBC_bar_21"
               role="img"
               tabindex="-1"
               width="16"
@@ -8385,7 +9859,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0078d4"
               height="94.80000000000001"
-              id="_VBC_bar_53"
+              id="_VBC_bar_22"
               role="img"
               tabindex="-1"
               width="16"
@@ -8419,7 +9893,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#00bcf2"
               height="213.3"
-              id="_VBC_bar_54"
+              id="_VBC_bar_23"
               role="img"
               tabindex="-1"
               width="16"
@@ -8447,7 +9921,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <path
             d="M56,223.82L128.356,114.8L203.165,242.78L354.009,114.8L428.818,233.3L541.644,181.16L614,67.4"
             fill="transparent"
-            id="_VBC_line_56"
+            id="_VBC_line_25"
             opacity="1"
             stroke="#ffb900"
             stroke-linecap="square"
@@ -8457,7 +9931,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="56"
             cy="223.82000000000002"
             fill="#ffffff"
-            id="_VBC_point_57"
+            id="_VBC_point_26"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -8467,7 +9941,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="128.35604395604395"
             cy="114.80000000000001"
             fill="#ffffff"
-            id="_VBC_point_58"
+            id="_VBC_point_27"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -8477,7 +9951,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="203.16483516483515"
             cy="242.77999999999997"
             fill="#ffffff"
-            id="_VBC_point_59"
+            id="_VBC_point_28"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -8487,7 +9961,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="354.00879120879125"
             cy="114.80000000000001"
             fill="#ffffff"
-            id="_VBC_point_60"
+            id="_VBC_point_29"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -8497,7 +9971,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="428.8175824175824"
             cy="233.3"
             fill="#ffffff"
-            id="_VBC_point_61"
+            id="_VBC_point_30"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -8507,7 +9981,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="541.643956043956"
             cy="181.16"
             fill="#ffffff"
-            id="_VBC_point_62"
+            id="_VBC_point_31"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -8517,7 +9991,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             cx="614"
             cy="67.39999999999999"
             fill="#ffffff"
-            id="_VBC_point_63"
+            id="_VBC_point_32"
             r="8"
             stroke="#ffb900"
             stroke-width="3"
@@ -8563,7 +10037,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone46"
+                data-focuszone-id="FocusZone15"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -10037,11 +11511,11 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_13"
+    id="chart_3"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_14"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -10052,7 +11526,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone15"
+      data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -10090,7 +11564,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_13"
+          id="xAxisGElementchart_3"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -10200,7 +11674,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_13"
+          id="yAxisGElementchart_3"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -10309,7 +11783,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#627CEF"
               height="237"
-              id="_VBC_bar_17"
+              id="_VBC_bar_7"
               role="img"
               tabindex="0"
               width="16"
@@ -10340,7 +11814,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#C19C00"
               height="169.28571428571428"
-              id="_VBC_bar_18"
+              id="_VBC_bar_8"
               role="img"
               tabindex="-1"
               width="16"
@@ -10371,7 +11845,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#E650AF"
               height="128.65714285714284"
-              id="_VBC_bar_19"
+              id="_VBC_bar_9"
               role="img"
               tabindex="-1"
               width="16"
@@ -10402,7 +11876,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               data-is-focusable="true"
               fill="#0E7878"
               height="189.60000000000002"
-              id="_VBC_bar_20"
+              id="_VBC_bar_10"
               role="img"
               tabindex="-1"
               width="16"
@@ -10465,7 +11939,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone16"
+                data-focuszone-id="FocusZone6"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -10844,11 +12318,11 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           overflow: hidden;
           width: 100%;
         }
-    id="chart_680"
+    id="chart_3"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_681"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -10859,7 +12333,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone682"
+      data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -10897,7 +12371,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_680"
+          id="xAxisGElementchart_3"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -11043,7 +12517,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_680"
+          id="yAxisGElementchart_3"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -11155,7 +12629,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_687"
+              id="_VBC_bar_10"
               role="img"
               tabindex="0"
               width="16"
@@ -11189,7 +12663,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_688"
+              id="_VBC_bar_11"
               role="img"
               tabindex="-1"
               width="16"
@@ -11223,7 +12697,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_689"
+              id="_VBC_bar_12"
               role="img"
               tabindex="-1"
               width="16"
@@ -11278,7 +12752,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone683"
+          data-focuszone-id="FocusZone6"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
@@ -11589,7 +13063,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               border: 0px;
             }
         data-is-focusable="true"
-        id="toolTipcallout677"
+        id="toolTipcallout0"
         style="opacity: 0; filter: opacity(0); pointer-events: none;"
         tabindex="-1"
       >
@@ -11633,11 +13107,11 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           overflow: hidden;
           width: 100%;
         }
-    id="chart_693"
+    id="chart_3"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_694"
+      id="defaultTabbableElement_4"
     />
     <div
       class=
@@ -11648,7 +13122,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone695"
+      data-focuszone-id="FocusZone5"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -11686,7 +13160,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_693"
+          id="xAxisGElementchart_3"
           text-anchor="middle"
           transform="translate(0, 257)"
         >
@@ -11832,7 +13306,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_693"
+          id="yAxisGElementchart_3"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -11944,7 +13418,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               data-is-focusable="true"
               fill="#0078d4"
               height="47.400000000000006"
-              id="_VBC_bar_700"
+              id="_VBC_bar_10"
               role="img"
               tabindex="0"
               width="16"
@@ -11978,7 +13452,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               data-is-focusable="true"
               fill="#002050"
               height="237"
-              id="_VBC_bar_701"
+              id="_VBC_bar_11"
               role="img"
               tabindex="-1"
               width="16"
@@ -12012,7 +13486,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               data-is-focusable="true"
               fill="#00188f"
               height="142.2"
-              id="_VBC_bar_702"
+              id="_VBC_bar_12"
               role="img"
               tabindex="-1"
               width="16"
@@ -12067,7 +13541,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone696"
+          data-focuszone-id="FocusZone6"
           data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
@@ -12377,7 +13851,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               border: 0px;
             }
         data-is-focusable="true"
-        id="toolTipcallout690"
+        id="toolTipcallout0"
         style="opacity: 0; filter: opacity(0); pointer-events: none;"
         tabindex="-1"
       >

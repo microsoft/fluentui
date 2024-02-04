@@ -10,7 +10,8 @@ import {
 } from '../types/IDataPoint';
 import { ScaleBand } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
-import { runTestSuiteInTestEnv } from './TestUtility.test';
+import { conditionalDescribe, isTimezone } from './TestUtility.test';
+const { Timezone } = require('../../config/constants');
 
 // Reference to the test plan: packages\react-charting\docs\TestPlans\Utilities\UnitTests.md
 
@@ -180,8 +181,7 @@ describe('createNumericXAxis', () => {
   });
 });
 
-// FIXME - non deterministic snapshots causing master pipeline breaks
-runTestSuiteInTestEnv('createDateXAxis', () => {
+conditionalDescribe(isTimezone(Timezone.UTC))('createDateXAxis', () => {
   const domainNRangeValues: ICreateXAxisParams['domainNRangeValues'] = {
     dStartValue: new Date(2021, 6, 1),
     dEndValue: new Date(2022, 5, 30),

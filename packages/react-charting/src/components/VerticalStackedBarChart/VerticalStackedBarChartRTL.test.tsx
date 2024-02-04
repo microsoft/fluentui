@@ -1,17 +1,29 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
-import { ThemeProvider } from '@fluentui/react';
+import { ThemeProvider, resetIds } from '@fluentui/react';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IVSChartDataPoint, IVerticalStackedChartProps } from '../../index';
 import { VerticalStackedBarChart } from './VerticalStackedBarChart';
-import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import {
+  forEachTimezone,
+  getByClass,
+  getById,
+  isTimezone,
+  testWithWait,
+  testWithoutWait,
+} from '../../utilities/TestUtility.test';
 import { VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
 import * as utils from '@fluentui/react/lib/Utilities';
 import { chartPoints2VSBC, chartPointsVSBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
+const { Timezone } = require('../../../config/constants');
 
 expect.extend(toHaveNoViolations);
+
+beforeEach(() => {
+  resetIds();
+});
 
 const firstChartPoints: IVSChartDataPoint[] = [
   { legend: 'Metadata1', data: 2, color: DefaultPalette.blue },
@@ -119,7 +131,7 @@ describe('Vertical stacked bar chart rendering', () => {
     },
     undefined,
     undefined,
-    true,
+    !isTimezone(Timezone.UTC),
   );
 
   testWithoutWait(
@@ -135,7 +147,7 @@ describe('Vertical stacked bar chart rendering', () => {
     },
     undefined,
     undefined,
-    true,
+    !isTimezone(Timezone.UTC),
   );
 
   testWithoutWait(
@@ -151,23 +163,25 @@ describe('Vertical stacked bar chart rendering', () => {
     },
     undefined,
     undefined,
-    true,
+    !isTimezone(Timezone.UTC),
   );
 
-  testWithoutWait(
-    'Should render the vertical stacked bar chart with Date x-axis data and no tick format and tick values',
-    VerticalStackedBarChart,
-    {
-      data: datePoints,
-    },
-    container => {
-      // Assert
-      expect(container).toMatchSnapshot();
-    },
-    undefined,
-    undefined,
-    true,
-  );
+  forEachTimezone((tzName, tzIdentifier) => {
+    testWithoutWait(
+      `Should render the vertical stacked bar chart with Date x-axis data in ${tzName} timezone`,
+      VerticalStackedBarChart,
+      {
+        data: datePoints,
+      },
+      container => {
+        // Assert
+        expect(container).toMatchSnapshot();
+      },
+      undefined,
+      undefined,
+      !isTimezone(tzIdentifier),
+    );
+  });
 });
 
 describe('Vertical stacked bar chart - Subcomponent Line', () => {
