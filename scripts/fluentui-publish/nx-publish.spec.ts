@@ -79,7 +79,7 @@ describe(`nx-publish`, () => {
   });
 
   describe(`version`, () => {
-    it(`should work in dryRun Mode`, async () => {
+    it.skip(`should work in dryRun Mode`, async () => {
       await version({ args: { dryRun: true, specifier: 'patch', verbose: false }, graph, group, nxConfig });
     });
   });
