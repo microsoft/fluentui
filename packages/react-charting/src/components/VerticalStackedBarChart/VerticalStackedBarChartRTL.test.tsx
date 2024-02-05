@@ -22,6 +22,9 @@ const { Timezone } = require('../../../config/constants');
 expect.extend(toHaveNoViolations);
 
 beforeEach(() => {
+  // When adding a new snapshot test, it's observed that other snapshots may fail due to
+  // components sharing a common global counter for IDs. To prevent this from happening,
+  // we should reset the IDs before each test execution.
   resetIds();
 });
 
