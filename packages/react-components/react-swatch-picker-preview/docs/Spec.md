@@ -16,7 +16,7 @@ The SwatchPicker can be integrated within a popover or used as a standalone feat
 ```jsx
 import { IColorCellProps, SwatchColorPicker } from '@fluentui/react/lib/SwatchColorPicker';
 
-const colorCellsExample1 = [
+const colorCellsExample = [
   { id: 'a', label: 'orange', color: '#ca5010' },
   { id: 'b', label: 'cyan', color: '#038387' },
   { id: 'c', label: 'blueMagenta', color: '#8764b8' },
@@ -34,27 +34,14 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
 
   return (
     <>
-      <div id={`${baseId}-circle`}>Simple circle swatch color picker</div>
-      <SwatchColorPicker
-        columnCount={5}
-        cellShape={'circle'}
-        colorCells={colorCellsExample1}
-        aria-labelledby={`${baseId}-circle`}
-      />
-      <div id={`${baseId}-square`}>Simple square swatch color picker</div>
-      <SwatchColorPicker
-        columnCount={5}
-        cellShape={'square'}
-        colorCells={colorCellsExample1}
-        aria-labelledby={`${baseId}-square`}
-      />
       <div id={`${baseId}-custom-size`}>Simple square swatch color picker</div>
       <SwatchColorPicker
         columnCount={5}
         cellHeight={35}
         cellWidth={35}
         cellShape={'square'}
-        colorCells={colorCellsExample1}
+        colorCells={colorCellsExample}
+        onCellHovered={swatchColorPickerOnCellHovered}
         aria-labelledby={`${baseId}-custom-size`}
       />
     </>
@@ -152,7 +139,7 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 | Property          | Values                                   | Default   | Purpose                                                      |
 | ----------------- | ---------------------------------------- | --------- | ------------------------------------------------------------ |
 | disabled          | boolean                                  | false     | Whether SwatchPicker is disabled                             |
-| layout            | `row`, `grid`                            | `grid`    | Sets layout of the SwatchPicker                              |
+| layout            | `row`, `grid`                            | `row`     | Sets layout of the SwatchPicker                              |
 | onColorPreview    | function                                 | undefined | Callback called when color is previewed (on hover or focus). |
 | onColorSelect     | function                                 | undefined | Callback called when color is selected                       |
 | previewId         | `number`, `string`                       |           | Id of previewColor                                           |
@@ -168,15 +155,15 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 
 ### ColorSwatch
 
-| Property | Values                                   | Default  | Purpose                         |
-| -------- | ---------------------------------------- | -------- | ------------------------------- |
-| id       | `number`, `string`                       |          | Sets ID of the swatch           |
-| shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                      |
-| size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell |
-| value    |                                          |          | Color in hex or RGB             |
-| disabled | boolean                                  |          |                                 |
-| selected | boolean                                  |          |                                 |
-| empty    | boolean                                  |          |                                 |
+| Property | Values                                   | Default  | Purpose                          |
+| -------- | ---------------------------------------- | -------- | -------------------------------- |
+| id       | `number`, `string`                       |          | Sets ID of the swatch            |
+| shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                       |
+| size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell  |
+| value    |                                          |          | Color in hex, RGB or named color |
+| disabled | boolean                                  |          |                                  |
+| selected | boolean                                  |          |                                  |
+| empty    | boolean                                  |          |                                  |
 
 | Slots        | Values   | Default  | Description                         |
 | ------------ | -------- | -------- | ----------------------------------- |
@@ -191,6 +178,7 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 | id       | `number`, `string`                       |          | Sets ID of the swatch to map it to the larger image |
 | shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                                          |
 | size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell                     |
+| value    |                                          |          | URL of an image                                     |
 | disabled | boolean                                  |          |                                                     |
 | selected | boolean                                  |          |                                                     |
 | empty    | boolean                                  |          |                                                     |
@@ -205,11 +193,11 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 
 ### Components
 
-| Component    | Purpose                                                               |
-| ------------ | --------------------------------------------------------------------- |
-| SwatchPicker | Renders SwatchPicker which can represent swatches as a row or a grid. |
-| ColorSwatch  | Renders a color or an icon                                            |
-| ImageSwatch  | Renders an image, texture or a pattern                                |
+| Component    | Purpose                                                              |
+| ------------ | -------------------------------------------------------------------- |
+| SwatchPicker | Renders SwatchPicker which can represent swatches as a row or a grid |
+| ColorSwatch  | Renders a color or an icon                                           |
+| ImageSwatch  | Renders an image, texture or a pattern                               |
 
 #### SwatchPicker component
 
