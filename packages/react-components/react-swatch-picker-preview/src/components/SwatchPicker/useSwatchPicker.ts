@@ -20,14 +20,12 @@ export const useSwatchPicker_unstable = <T>(
 ): SwatchPickerState<T> => {
   const [model, setModel] = React.useState<SwatchPickerModel<T>>({});
 
-  const { layout, shape, size } = props;
+  const { layout } = props;
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
     axis: layout === 'row' ? 'both' : 'grid-linear',
     memorizeCurrent: true,
   });
-
-  const role = layout === 'row' ? 'row' : 'grid';
 
   const pickerContext = makePickerContext(props, model, setModel);
 
@@ -38,14 +36,13 @@ export const useSwatchPicker_unstable = <T>(
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
-        ...focusAttributes,
         ...props,
-        role,
+        ...focusAttributes,
+        role: props.role ?? 'radiogroup',
       }),
       { elementType: 'div' },
     ),
     ...pickerContext,
-    // ...makePickerContext(props, model, setModel),
   };
 
   useSwatchPickerState_unstable(state, props);

@@ -12,7 +12,7 @@ export const swatchPickerCSSVars = {
   gridGap: `--fui-SwatchPicker--gridGap`,
 };
 
-const { columnCountGrid, cellSize } = swatchPickerCSSVars;
+const { columnCountGrid, cellSize, gridGap } = swatchPickerCSSVars;
 
 /**
  * Styles for the root slot
@@ -25,12 +25,12 @@ const useStyles = makeStyles({
   grid: {
     display: 'grid',
     gridTemplateColumns: `repeat(var(${columnCountGrid}), var(${cellSize}))`,
-    gridGap: 'var(--fui-SwatchPicker--gridGap)',
+    gridGap: `var(${gridGap})`,
   },
   row: {
     display: 'flex',
     flexDirection: 'row',
-    columnGap: 'var(--fui-SwatchPicker--gridGap)',
+    columnGap: `var(${gridGap})`,
   },
 });
 

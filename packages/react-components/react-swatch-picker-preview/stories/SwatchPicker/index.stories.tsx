@@ -4,6 +4,7 @@ import descriptionMd from './SwatchPickerDescription.md';
 import bestPracticesMd from './SwatchPickerBestPractices.md';
 
 export { Default } from './SwatchPickerDefault.stories';
+export { SwatchPickerInPopover } from './SwatchPickerPopover.stories';
 export { SwatchPickerShape } from './SwatchPickerShape.stories';
 export { SwatchPickerSize } from './SwatchPickerSize.stories';
 

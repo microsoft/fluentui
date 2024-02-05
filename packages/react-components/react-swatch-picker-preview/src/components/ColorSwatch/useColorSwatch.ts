@@ -45,9 +45,9 @@ export const useColorSwatch_unstable = <T extends Color>(
       getIntrinsicElementProps('button', {
         ref,
         ...props,
-        role: props.role ?? 'gridcell',
+        role: props.role ?? 'radio',
         tabIndex: 0,
-        // 'aria-selected': selected,
+        'aria-selected': selected,
         onClick: () => {
           setSelected(!selected);
           pickerContext.notifySelected(props);
@@ -70,8 +70,6 @@ export const useColorSwatch_unstable = <T extends Color>(
 
   state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLButtonElement>());
   state.selected = selected;
-
-  if (selected) console.log('selected', selected, ' ', props.hex);
 
   useColorSwatchState_unstable(state, props);
   return state;

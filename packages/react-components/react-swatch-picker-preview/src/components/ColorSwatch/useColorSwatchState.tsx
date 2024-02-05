@@ -7,7 +7,7 @@ import { Color } from '../../contexts/swatchPicker';
 const { swatchColor, swatchBorderColor, swatchStateColor } = swatchCSSVars;
 
 export const useColorSwatchState_unstable = <T extends Color>(state: ColorSwatchState, props: ColorSwatchProps<T>) => {
-  const { hex, selected } = props;
+  const { hex } = props;
   const contrastRatio = calculateContrastRatioFromHex('#fafafa', hex);
 
   const _stateColor = props.contrastStateColor ?? '#000';
@@ -26,13 +26,4 @@ export const useColorSwatchState_unstable = <T extends Color>(state: ColorSwatch
     ...rootVariables,
     ...state.root.style,
   };
-
-  // return {
-  //   ...state,
-
-  //   root: {
-  //     ...state.root,
-  //     'aria-selected': selected,
-  //   },
-  // };
 };
