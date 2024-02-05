@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RatingDisplaySlots, RatingDisplayState } from './RatingDisplay.types';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -25,9 +25,6 @@ const useLabelClassName = makeResetStyles({
 });
 
 const useLabelStyles = makeStyles({
-  small: {
-    ...shorthands.margin(tokens.spacingVerticalSNudge, '0', '0', tokens.spacingHorizontalXXS),
-  },
   large: {
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
@@ -61,7 +58,6 @@ export const useRatingDisplayStyles_unstable = (state: RatingDisplayState): Rati
       ratingDisplayClassNames.valueText,
       labelClassName,
       labelStyles.strong,
-      size === 'small' && labelStyles.small,
       size === 'large' && labelStyles.large,
       size === 'extra-large' && labelStyles.extraLarge,
       state.valueText.className,
