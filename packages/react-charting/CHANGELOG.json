@@ -2,6 +2,33 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 05 Feb 2024 07:27:39 GMT",
+      "tag": "@fluentui/react-charting_v5.19.21",
+      "version": "5.19.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "rarthur@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ad5da7b666f33ecfb5b296ea9bb9824dc9f01662",
+            "comment": "Sankey Diagram: Improving how the aria-labels are generated so that they can be read by the text-to-speech engine"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.135",
+            "commit": "5aefa438776a47278b09f5073149bb94fb14c044"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.115.4",
+            "commit": "5aefa438776a47278b09f5073149bb94fb14c044"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 Jan 2024 07:27:57 GMT",
       "tag": "@fluentui/react-charting_v5.19.20",
       "version": "5.19.20",
