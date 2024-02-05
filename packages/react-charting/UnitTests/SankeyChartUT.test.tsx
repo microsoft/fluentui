@@ -1,5 +1,7 @@
 import { classNamesFunction } from '@fluentui/react';
+import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { DarkTheme } from '@fluentui/theme-samples';
+import * as React from 'react';
 import {
   SankeyChartBase,
   adjustPadding,
@@ -12,6 +14,7 @@ import {
   ISankeyChartStyleProps,
   ISankeyChartStyles,
 } from '../src/components/SankeyChart/index';
+import { SLink, SNode } from '../src/types/IDataPoint';
 import { IMargins } from '../src/utilities/index';
 
 const env = require('../config/tests');
@@ -52,30 +55,30 @@ const emptySankeyChatPoints: ISankeyChartData = {
   links: [],
 };
 
-const chartPointsWithStringNodeId: IChartProps = {
+const chartPointsWithStringNodeId = (): IChartProps => ({
   chartTitle: 'Sankey Chart',
   SankeyChartData: sankeyChartDataStringNodeId(),
-};
+});
 
-const chartPointsWithNumericNodeId: IChartProps = {
+const chartPointsWithNumericNodeId = (): IChartProps => ({
   chartTitle: 'Sankey Chart',
   SankeyChartData: sankeyChartDataNumericNodeId(),
-};
+});
 
-const chartPointsWithEmptyData: IChartProps = {
+const chartPointsWithEmptyData = (): IChartProps => ({
   chartTitle: 'Sankey Chart',
   SankeyChartData: emptySankeyChatPoints,
-};
-const emptyChartPoints: IChartProps = {};
+});
+const emptyChartPoints = (): IChartProps => ({});
 
 const standardMargins: IMargins = { top: 36, right: 48, bottom: 32, left: 48 };
 
 runTest('_populateNodeInColumns', () => {
   test('Should return proper colums data with string nodeId', () => {
     const preRenderData = preRenderLayout(standardMargins, 912, 468, false);
-    const transformed: ISankeyChartData = sankeyChartDataNumericNodeId();
-    preRenderData.sankey(transformed);
-    const result = groupNodesByColumn(transformed);
+    const input: ISankeyChartData = sankeyChartDataStringNodeId();
+    preRenderData.sankey(input);
+    const result = groupNodesByColumn(input);
     expect(result).toBeDefined();
     expect(result[0][0].nodeId).toEqual('zero');
     expect(result[0][0].name).toEqual('192.168.42.72');
@@ -93,9 +96,9 @@ runTest('_populateNodeInColumns', () => {
 
   test('Should return proper colums data with numeric nodeId', () => {
     const preRenderData = preRenderLayout(standardMargins, 912, 468, false);
-    const transformed: ISankeyChartData = sankeyChartDataNumericNodeId();
-    preRenderData.sankey(transformed);
-    const result = groupNodesByColumn(transformed);
+    const input: ISankeyChartData = sankeyChartDataNumericNodeId();
+    preRenderData.sankey(input);
+    const result = groupNodesByColumn(input);
     expect(result).toBeDefined();
     expect(result[0][0].nodeId).toEqual(0);
     expect(result[0][0].name).toEqual('192.168.42.72');
@@ -115,25 +118,38 @@ runTest('_populateNodeInColumns', () => {
 runTest('_adjustPadding', () => {
   test('Should return proper padding value', () => {
     const preRenderData = preRenderLayout(standardMargins, 912, 468, false);
-    const transformed: ISankeyChartData = sankeyChartDataNumericNodeId();
-    preRenderData.sankey(transformed);
-    const nodesInColumn = groupNodesByColumn(transformed);
-    const result = adjustPadding(preRenderData.sankey, 500, nodesInColumn);
-    expect(result).toBeDefined();
-    expect(result).toEqual(8);
+    const input: ISankeyChartData = sankeyChartDataNumericNodeId();
+    preRenderData.sankey(input);
+    const nodesInColumn = groupNodesByColumn(input);
+    adjustPadding(preRenderData.sankey, 500, nodesInColumn);
+    expect(preRenderData.sankey.nodePadding()).toBe(8);
   });
 });
 
+interface IPrivateMethodsOnClass {
+  // We're by-passing _normalizeData so that we do not use memoized results.
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  _normalizeSankeyData(
+    data: ISankeyChartData,
+    containerWidth: number,
+    containerHeight: number,
+  ): { width: number; height: number; data: ISankeyChartData };
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  _createLinks(dataLinks: SLink[]): React.ReactNode[] | undefined;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  _createNodes(classNames: IProcessedStyleSet<ISankeyChartStyles>, dataNodes: SNode[]): React.ReactNode[] | undefined;
+}
+
 runTest('_createLinks', () => {
   test('Should return proper links data with string nodeId', () => {
+    const data = chartPointsWithStringNodeId();
     const instance = new SankeyChartBase({
-      data: chartPointsWithStringNodeId,
+      data,
     });
     expect(instance).toBeDefined();
-    const preRenderData = preRenderLayout(standardMargins, 912, 468, false);
-    const transformed: ISankeyChartData = sankeyChartDataNumericNodeId();
-    preRenderData.sankey(transformed);
-    const result = (instance as any)._createLinks(transformed.links);
+    const privateInstance = instance as unknown as IPrivateMethodsOnClass;
+    const normalizedData = privateInstance._normalizeSankeyData(data.SankeyChartData!, 912, 468);
+    const result = privateInstance._createLinks(normalizedData.data.links);
     expect(result).toBeDefined();
     expect(result).toHaveLength(2);
     const link1 = result![0];
@@ -147,7 +163,7 @@ runTest('_createLinks', () => {
     expect(link1!['props'].children[0].props.children.props.children[0].type).toEqual('stop');
     expect(link1!['props'].children[0].props.children.props.children[1].type).toEqual('stop');
     expect(link1!['props'].children[1].props['aria-label']).toEqual(
-      'link from192.168.42.72to124.360.55.1with weight80',
+      'link from 192.168.42.72 to 124.360.55.1 with weight 80',
     );
     expect(link1!['props'].children[1].props['d']).toEqual(
       'M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z',
@@ -162,7 +178,7 @@ runTest('_createLinks', () => {
     expect(link2!['props'].children[0].props.children.props.children[0].type).toEqual('stop');
     expect(link2!['props'].children[0].props.children.props.children[1].type).toEqual('stop');
     expect(link2!['props'].children[1].props['aria-label']).toEqual(
-      'link from172.152.48.13to192.564.10.2with weight50',
+      'link from 172.152.48.13 to 192.564.10.2 with weight 50',
     );
     expect(link2!['props'].children[1].props['d']).toEqual(
       'M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z',
@@ -172,14 +188,14 @@ runTest('_createLinks', () => {
   });
 
   test('Should return proper links data with numeric nodeId', () => {
+    const data = chartPointsWithNumericNodeId();
     const instance = new SankeyChartBase({
-      data: chartPointsWithNumericNodeId,
+      data,
     });
     expect(instance).toBeDefined();
-    const preRenderData = preRenderLayout(standardMargins, 912, 468, false);
-    const transformed: ISankeyChartData = sankeyChartDataNumericNodeId();
-    preRenderData.sankey(transformed);
-    const result = (instance as any)._createLinks(transformed.links);
+    const privateInstance = instance as unknown as IPrivateMethodsOnClass;
+    const normalizedData = privateInstance._normalizeSankeyData(data.SankeyChartData!, 912, 468);
+    const result = privateInstance._createLinks(normalizedData.data.links);
     expect(result).toBeDefined();
     expect(result).toHaveLength(2);
     const link1 = result![0];
@@ -193,7 +209,7 @@ runTest('_createLinks', () => {
     expect(link1!['props'].children[0].props.children.props.children[0].type).toEqual('stop');
     expect(link1!['props'].children[0].props.children.props.children[1].type).toEqual('stop');
     expect(link1!['props'].children[1].props['aria-label']).toEqual(
-      'link from192.168.42.72to124.360.55.1with weightundefined',
+      'link from 192.168.42.72 to 124.360.55.1 with weight 80',
     );
     expect(link1!['props'].children[1].props['d']).toEqual(
       'M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z',
@@ -208,7 +224,7 @@ runTest('_createLinks', () => {
     expect(link2!['props'].children[0].props.children.props.children[0].type).toEqual('stop');
     expect(link2!['props'].children[0].props.children.props.children[1].type).toEqual('stop');
     expect(link2!['props'].children[1].props['aria-label']).toEqual(
-      'link from172.152.48.13to192.564.10.2with weightundefined',
+      'link from 172.152.48.13 to 192.564.10.2 with weight 50',
     );
     expect(link2!['props'].children[1].props['d']).toEqual(
       'M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z',
@@ -232,14 +248,13 @@ runTest('_createNodes', () => {
   );
 
   test('Should return proper nodes data with string nodeId', () => {
+    const data = chartPointsWithStringNodeId();
     const instance = new SankeyChartBase({
-      data: chartPointsWithStringNodeId,
+      data,
     });
     expect(instance).toBeDefined();
-
-    const preRenderData = preRenderLayout(standardMargins, 912, 468, false);
-    const transformed: ISankeyChartData = sankeyChartDataNumericNodeId();
-    preRenderData.sankey(transformed);
+    const privateInstance = instance as unknown as IPrivateMethodsOnClass;
+    const normalizedData = privateInstance._normalizeSankeyData(data.SankeyChartData!, 912, 468);
     const _classNames = getClassNames(undefined, {
       theme: DarkTheme,
       width: 500,
@@ -247,7 +262,7 @@ runTest('_createNodes', () => {
       pathColor: '#4B3867',
       className: 'UT',
     });
-    const result = (instance as any)._createNodes(_classNames, transformed.nodes);
+    const result = privateInstance._createNodes(_classNames, normalizedData.data.nodes);
     expect(result).toBeDefined();
     expect(result).toHaveLength(4);
     const node1 = result![0];
@@ -262,10 +277,10 @@ runTest('_createNodes', () => {
     expect(node2!['props'].children[0].type).toEqual('rect');
     expect(node3!['props'].children[0].type).toEqual('rect');
     expect(node4!['props'].children[0].type).toEqual('rect');
-    expect(node1!['props'].children[0].props['aria-label']).toEqual('node192.168.42.72with weight80');
-    expect(node2!['props'].children[0].props['aria-label']).toEqual('node172.152.48.13with weight50');
-    expect(node3!['props'].children[0].props['aria-label']).toEqual('node124.360.55.1with weight80');
-    expect(node4!['props'].children[0].props['aria-label']).toEqual('node192.564.10.2with weight50');
+    expect(node1!['props'].children[0].props['aria-label']).toEqual('node 192.168.42.72 with weight 80');
+    expect(node2!['props'].children[0].props['aria-label']).toEqual('node 172.152.48.13 with weight 50');
+    expect(node3!['props'].children[0].props['aria-label']).toEqual('node 124.360.55.1 with weight 80');
+    expect(node4!['props'].children[0].props['aria-label']).toEqual('node 192.564.10.2 with weight 50');
     expect(node1!['props'].children[1].props.children[0].props.className).toEqual('nodeName');
     expect(node1!['props'].children[1].props.children[0].props.children.props.children).toEqual('192.168.42.72');
     expect(node2!['props'].children[1].props.children[0].props.className).toEqual('nodeName');
@@ -277,14 +292,13 @@ runTest('_createNodes', () => {
   });
 
   test('Should return proper nodes data with numeric nodeId', () => {
+    const data = chartPointsWithNumericNodeId();
     const instance = new SankeyChartBase({
-      data: chartPointsWithNumericNodeId,
+      data,
     });
     expect(instance).toBeDefined();
-    const preRenderData = preRenderLayout(standardMargins, 912, 468, false);
-    const transformed: ISankeyChartData = sankeyChartDataNumericNodeId();
-    preRenderData.sankey(transformed);
-
+    const privateInstance = instance as unknown as IPrivateMethodsOnClass;
+    const normalizedData = privateInstance._normalizeSankeyData(data.SankeyChartData!, 912, 468);
     const _classNames = getClassNames(undefined, {
       theme: DarkTheme,
       width: 500,
@@ -292,7 +306,7 @@ runTest('_createNodes', () => {
       pathColor: '#4B3867',
       className: 'UT',
     });
-    const result = (instance as any)._createNodes(_classNames, transformed.nodes);
+    const result = privateInstance._createNodes(_classNames, normalizedData.data.nodes);
     expect(result).toBeDefined();
     expect(result).toHaveLength(4);
     const node1 = result![0];
@@ -307,10 +321,10 @@ runTest('_createNodes', () => {
     expect(node2!['props'].children[0].type).toEqual('rect');
     expect(node3!['props'].children[0].type).toEqual('rect');
     expect(node4!['props'].children[0].type).toEqual('rect');
-    expect(node1!['props'].children[0].props['aria-label']).toEqual('node192.168.42.72with weightundefined');
-    expect(node2!['props'].children[0].props['aria-label']).toEqual('node172.152.48.13with weightundefined');
-    expect(node3!['props'].children[0].props['aria-label']).toEqual('node124.360.55.1with weightundefined');
-    expect(node4!['props'].children[0].props['aria-label']).toEqual('node192.564.10.2with weightundefined');
+    expect(node1!['props'].children[0].props['aria-label']).toEqual('node 192.168.42.72 with weight 80');
+    expect(node2!['props'].children[0].props['aria-label']).toEqual('node 172.152.48.13 with weight 50');
+    expect(node3!['props'].children[0].props['aria-label']).toEqual('node 124.360.55.1 with weight 80');
+    expect(node4!['props'].children[0].props['aria-label']).toEqual('node 192.564.10.2 with weight 50');
     expect(node1!['props'].children[1].props.children[0].props.className).toEqual('nodeName');
     expect(node1!['props'].children[1].props.children[0].props.children.props.children).toEqual('192.168.42.72');
     expect(node2!['props'].children[1].props.children[0].props.className).toEqual('nodeName');

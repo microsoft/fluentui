@@ -7,7 +7,8 @@ import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRig
 import { select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
 import * as React from 'react';
-import { ChartHoverCard, IBasestate, IChartHoverCardProps, SLink, SNode } from '../../index';
+import { IBasestate, SLink, SNode } from '../../types/IDataPoint';
+import { ChartHoverCard, IChartHoverCardProps } from '../../utilities/ChartHoverCard';
 import { IMargins } from '../../utilities/utilities';
 import { ISankeyChartData, ISankeyChartProps, ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
 
@@ -16,7 +17,7 @@ const PADDING_PERCENTAGE = 0.3;
 
 type NodeId = number | string;
 type NodeValues = { [key: NodeId]: number };
-type LinkValues = { [key: number]: NodeValues };
+type LinkValues = { [key: NodeId]: NodeValues };
 
 type NodesInColumns = { [key: number]: SNode[] };
 type NormalizedData = {
@@ -273,7 +274,7 @@ export function adjustPadding(sankey: SankeyLayoutGenerator, height: number, nod
   sankey.nodePadding(padding);
 }
 
-function idFromNumberOrSNode(node: SNode | number): number {
+function idFromNumberOrSNode(node: SNode | number): NodeId {
   if (typeof node === 'number') {
     return node;
   }
@@ -288,19 +289,13 @@ function idFromNumberOrSNode(node: SNode | number): number {
 function duplicateData(data: ISankeyChartData): ISankeyChartData {
   return {
     nodes: data.nodes.map(
-      // NOTE: We are not duplicating using `...node` because we want to omit the `sourceLinks` and `targetLinks`
       (node: SNode): SNode => ({
-        nodeId: node.nodeId,
-        name: node.name,
-        color: node.color,
-        borderColor: node.borderColor,
+        ...node,
       }),
     ),
     links: data.links.map(
       (link: SLink): SLink => ({
-        source: idFromNumberOrSNode(link.source),
-        target: idFromNumberOrSNode(link.target),
-        value: link.value,
+        ...link,
       }),
     ),
   };
@@ -491,12 +486,16 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const nodesInColumn = groupNodesByColumn(transformed);
     // Keep track of the original values of the links and their acccumulated values in the nodes
     // Setting these in external objects so they cannot be mutated by other code.
+    // The IDs of nodes can be numbers or strings. But, the IDs of links are always the index into the "nodes" array.
+    // After the sankey layout is computed, the each link's `source` and `target` will have the ID of the node in the
+    // type originally specified in the Nodes array. Consequently, we get the values of those links after the sankey
+    // transformation.
     const nodeValues = valuesOfNodes(transformed.nodes);
-    const linkValues = valuesOfLinks(data.links);
+    const linkValues = valuesOfLinks(transformed.links);
     adjustOnePercentHeightNodes(nodesInColumn, nodeValues, linkValues);
     adjustPadding(sankey, height - 6, nodesInColumn);
     // `sankey` is called a second time, probably to re-layout the nodes with the one-percent adjusted weights.
-    // NOTE: The second call to `sankey` currently allows for links to be hoverable.
+    // NOTE: The second call to `sankey` is required to allow links to be hoverable.
     // Without the second call, the links are not hoverable.
     sankey(transformed);
     populateNodeActualValue(transformed, nodeValues, linkValues);
