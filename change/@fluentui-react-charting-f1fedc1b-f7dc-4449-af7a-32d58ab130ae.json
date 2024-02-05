@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Sankey Diagram: Improving how the aria-labels are generated so that they can be read by the text-to-speech engine",
-  "packageName": "@fluentui/react-charting",
-  "email": "rarthur@microsoft.com",
-  "dependentChangeType": "patch"
-}

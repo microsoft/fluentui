@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 05 Feb 2024 07:27:39 GMT",
+      "tag": "@fluentui/react_v8.115.4",
+      "version": "8.115.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "5aefa438776a47278b09f5073149bb94fb14c044",
+            "comment": "fix: Correctly calculating height of Callout aligning to the top and covering target."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 Jan 2024 07:27:56 GMT",
       "tag": "@fluentui/react_v8.115.3",
       "version": "8.115.3",

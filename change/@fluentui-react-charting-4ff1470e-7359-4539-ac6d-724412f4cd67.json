@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix: Fix color tokens to enable charts to render correctly for v9 theme",
+  "packageName": "@fluentui/react-charting",
+  "email": "atisjai@microsoft.com",
+  "dependentChangeType": "patch"
+}
