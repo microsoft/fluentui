@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: MessageBar with no actions should have correct spacing",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
