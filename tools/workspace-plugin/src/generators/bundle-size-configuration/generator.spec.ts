@@ -33,9 +33,9 @@ describe('bundle-size-configuration generator', () => {
     expect(packageJson.scripts['bundle-size']).toEqual('monosize measure');
 
     expect(tree.read(joinPathFragments(config.root, 'bundle-size/index.fixture.js'), 'utf-8')).toMatchInlineSnapshot(`
-      "import * as package from '@proj/react-continental';
+      "import * as p from '@proj/react-continental';
 
-      console.log(package);
+      console.log(p);
 
       export default {
         name: '@proj/react-continental - package',
