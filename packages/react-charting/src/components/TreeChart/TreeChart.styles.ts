@@ -22,19 +22,19 @@ export const getStyles = (props: ITreeStyleProps): ITreeStyles => {
       rx: '2px',
     },
     rectText: {
-      fill: props.theme!.semanticColors.messageText,
+      fill: props.theme!.palette.neutralDark,
       ...props.theme!.fonts.large,
     },
     rectSubText: {
-      fill: props.theme!.semanticColors.bodySubtext,
+      fill: props.theme!.palette.neutralPrimary,
       ...props.theme!.fonts.medium,
     },
     rectBodyText: {
-      fill: props.theme!.palette.neutralTertiary,
+      fill: props.theme!.palette.neutralPrimaryAlt,
       ...props.theme!.fonts.xSmall,
     },
     rectMetricText: {
-      fill: props.theme!.palette.neutralSecondary,
+      fill: props.theme!.palette.neutralDark,
       ...props.theme!.fonts.xLarge,
     },
   };
