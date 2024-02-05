@@ -54,7 +54,6 @@
 /jest.preset.ts @microsoft/fluentui-react-build
 /jest.config.js @microsoft/fluentui-react-build
 /jest.config.ts @microsoft/fluentui-react-build
-/lerna.json @microsoft/fluentui-react-build
 /package.json @microsoft/fluentui-react-build
 /tsconfig.json @microsoft/fluentui-react-build
 /tsconfig.*.json @microsoft/fluentui-react-build
