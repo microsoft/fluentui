@@ -91,13 +91,7 @@
       "northstar": {
         "releaseTagPattern": "@fluentui/react-northstar_v{version}",
         "projectsRelationship": "fixed",
-        "projects": ["packages/fluentui/*"],
-        "version": {
-          "generatorOptions": {
-            "versionPrefix": "auto",
-            "skipLockFileUpdate": true
-          }
-        }
+        "projects": ["packages/fluentui/*"]
       }
     }
   },
