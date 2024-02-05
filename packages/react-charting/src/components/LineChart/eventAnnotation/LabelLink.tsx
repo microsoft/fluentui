@@ -61,7 +61,7 @@ export const LabelLink: React.FunctionComponent<ILabelLinkProps> = props => {
   let text: string;
   const fill: string | undefined = props.textColor
     ? getColorFromToken(props.textColor, props.theme?.isInverted)
-    : props.theme?.palette.black;
+    : props.theme?.semanticColors.messageText;
 
   if (props.labelDef.aggregatedIdx.length === 1) {
     text = props.lineDefs[props.labelDef.aggregatedIdx[0]].event;
