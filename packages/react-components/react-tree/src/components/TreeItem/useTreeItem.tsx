@@ -40,10 +40,6 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const {
     onClick,
     onKeyDown,
-    onMouseOver,
-    onFocus,
-    onMouseOut,
-    onBlur,
     onChange,
     as = 'div',
     itemType = 'leaf',

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 31 Jan 2024 07:27:56 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Feb 2024 07:27:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.115.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.115.4)
+
+Mon, 05 Feb 2024 07:27:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.115.3..@fluentui/react_v8.115.4)
+
+### Patches
+
+- fix: Correctly calculating height of Callout aligning to the top and covering target. ([PR #30467](https://github.com/microsoft/fluentui/pull/30467) by makotom@microsoft.com)
 
 ## [8.115.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.115.3)
 

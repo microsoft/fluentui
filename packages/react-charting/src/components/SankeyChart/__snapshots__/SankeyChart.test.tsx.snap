@@ -69,7 +69,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.168.42.72toinboxwith weight80"
+            aria-label="link from 192.168.42.72 to inbox with weight 80"
             d="M172,36C282.75,36,282.75,37.686,393.5,37.686L393.5,167.002C282.75,167.002,282.75,165.315,172,165.315Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -104,7 +104,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.152.48.13toinboxwith weight50"
+            aria-label="link from 172.152.48.13 to inbox with weight 50"
             d="M172,173.315C282.75,173.315,282.75,167.002,393.5,167.002L393.5,247.823C282.75,247.823,282.75,254.137,172,254.137Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -139,7 +139,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.152.48.13toJunk Folderwith weight28"
+            aria-label="link from 172.152.48.13 to Junk Folder with weight 28"
             d="M172,254.137C282.75,254.137,282.75,270.853,393.5,270.853L393.5,316.114C282.75,316.114,282.75,299.397,172,299.397Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -174,7 +174,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-label="link from124.360.55.1toJunk Folderwith weight14"
+            aria-label="link from 124.360.55.1 to Junk Folder with weight 14"
             d="M172,307.397C282.75,307.397,282.75,316.114,393.5,316.114L393.5,338.744C282.75,338.744,282.75,330.027,172,330.027Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -209,7 +209,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.564.10.2toJunk Folderwith weight7"
+            aria-label="link from 192.564.10.2 to Junk Folder with weight 7"
             d="M172,362.192C282.75,362.192,282.75,354.908,393.5,354.908L393.5,366.223C282.75,366.223,282.75,373.507,172,373.507Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -244,7 +244,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.564.10.2toDeleted Folderwith weight20"
+            aria-label="link from 192.564.10.2 to Deleted Folder with weight 20"
             d="M172,373.507C282.75,373.507,282.75,390.388,393.5,390.388L393.5,422.716C282.75,422.716,282.75,405.836,172,405.836Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -279,7 +279,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-label="link from124.124.50.1toJunk Folderwith weight10"
+            aria-label="link from 124.124.50.1 to Junk Folder with weight 10"
             d="M172,338.027C282.75,338.027,282.75,338.744,393.5,338.744L393.5,354.908C282.75,354.908,282.75,354.192,172,354.192Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -314,7 +314,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.630.89.4toJunk Folderwith weight10"
+            aria-label="link from 172.630.89.4 to Junk Folder with weight 10"
             d="M172,413.836C282.75,413.836,282.75,366.223,393.5,366.223L393.5,382.388C282.75,382.388,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -349,7 +349,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-label="link frominboxtoClickedwith weight30"
+            aria-label="link from inbox to Clicked with weight 30"
             d="M517.5,37.686C628.25,37.686,628.25,36,739,36L739,84.493C628.25,84.493,628.25,86.18,517.5,86.18Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -384,7 +384,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-label="link frominboxtoOpenedwith weight55"
+            aria-label="link from inbox to Opened with weight 55"
             d="M517.5,86.18C628.25,86.18,628.25,92.493,739,92.493L739,181.397C628.25,181.397,628.25,175.084,517.5,175.084Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -419,7 +419,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromJunk Folderto No further action  requiredwith weight60"
+            aria-label="link from Junk Folder to  No further action  required with weight 60"
             d="M517.5,270.853C628.25,270.853,628.25,271.543,739,271.543L739,368.529C628.25,368.529,628.25,367.84,517.5,367.84Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -454,7 +454,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromDeleted Folderto No further action  requiredwith weight2"
+            aria-label="link from Deleted Folder to  No further action  required with weight 2"
             d="M517.5,390.388C628.25,390.388,628.25,368.529,739,368.529L739,371.762C628.25,371.762,628.25,393.621,517.5,393.621Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -484,7 +484,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement5"
         >
           <rect
-            aria-label="node192.168.42.72with weight80"
+            aria-label="node 192.168.42.72 with weight 80"
             data-is-focusable={true}
             fill="#8764B8"
             height={129.31506849315068}
@@ -552,7 +552,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement8"
         >
           <rect
-            aria-label="node172.152.48.13with weight78"
+            aria-label="node 172.152.48.13 with weight 78"
             data-is-focusable={true}
             fill="#8764B8"
             height={126.08219178082172}
@@ -620,7 +620,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement11"
         >
           <rect
-            aria-label="node124.360.55.1with weight14"
+            aria-label="node 124.360.55.1 with weight 14"
             data-is-focusable={true}
             fill="#8764B8"
             height={22.630136986301352}
@@ -641,7 +641,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement14"
         >
           <rect
-            aria-label="node192.564.10.2with weight27"
+            aria-label="node 192.564.10.2 with weight 27"
             data-is-focusable={true}
             fill="#8764B8"
             height={43.643835616438366}
@@ -709,7 +709,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement17"
         >
           <rect
-            aria-label="node124.124.50.1with weight10"
+            aria-label="node 124.124.50.1 with weight 10"
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
@@ -730,7 +730,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement20"
         >
           <rect
-            aria-label="node172.630.89.4with weight10"
+            aria-label="node 172.630.89.4 with weight 10"
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
@@ -751,7 +751,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement23"
         >
           <rect
-            aria-label="nodeinboxwith weight130"
+            aria-label="node inbox with weight 130"
             data-is-focusable={true}
             fill="#0E7878"
             height={210.13698630136994}
@@ -819,7 +819,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement26"
         >
           <rect
-            aria-label="nodeJunk Folderwith weight69"
+            aria-label="node Junk Folder with weight 69"
             data-is-focusable={true}
             fill="#0E7878"
             height={111.53424657534248}
@@ -887,7 +887,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement29"
         >
           <rect
-            aria-label="nodeDeleted Folderwith weight20"
+            aria-label="node Deleted Folder with weight 20"
             data-is-focusable={true}
             fill="#0E7878"
             height={32.32876712328766}
@@ -955,7 +955,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement32"
         >
           <rect
-            aria-label="nodeClickedwith weight30"
+            aria-label="node Clicked with weight 30"
             data-is-focusable={true}
             fill="#4F6BED"
             height={48.49315068493148}
@@ -1023,7 +1023,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement35"
         >
           <rect
-            aria-label="nodeOpenedwith weight55"
+            aria-label="node Opened with weight 55"
             data-is-focusable={true}
             fill="#4F6BED"
             height={88.90410958904114}
@@ -1091,7 +1091,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
           id="nodeGElement38"
         >
           <rect
-            aria-label="node No further action  requiredwith weight62"
+            aria-label="node  No further action  required with weight 62"
             data-is-focusable={true}
             fill="#4F6BED"
             height={100.21917808219177}
@@ -1230,7 +1230,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.168.42.72toinboxwith weight80"
+            aria-label="link from 192.168.42.72 to inbox with weight 80"
             d="M172,36C282.75,36,282.75,37.686,393.5,37.686L393.5,167.002C282.75,167.002,282.75,165.315,172,165.315Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1265,7 +1265,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.152.48.13toinboxwith weight50"
+            aria-label="link from 172.152.48.13 to inbox with weight 50"
             d="M172,173.315C282.75,173.315,282.75,167.002,393.5,167.002L393.5,247.823C282.75,247.823,282.75,254.137,172,254.137Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1300,7 +1300,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.152.48.13toJunk Folderwith weight28"
+            aria-label="link from 172.152.48.13 to Junk Folder with weight 28"
             d="M172,254.137C282.75,254.137,282.75,270.853,393.5,270.853L393.5,316.114C282.75,316.114,282.75,299.397,172,299.397Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1335,7 +1335,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-label="link from124.360.55.1toJunk Folderwith weight14"
+            aria-label="link from 124.360.55.1 to Junk Folder with weight 14"
             d="M172,307.397C282.75,307.397,282.75,316.114,393.5,316.114L393.5,338.744C282.75,338.744,282.75,330.027,172,330.027Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1370,7 +1370,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.564.10.2toJunk Folderwith weight7"
+            aria-label="link from 192.564.10.2 to Junk Folder with weight 7"
             d="M172,362.192C282.75,362.192,282.75,354.908,393.5,354.908L393.5,366.223C282.75,366.223,282.75,373.507,172,373.507Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1405,7 +1405,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.564.10.2toDeleted Folderwith weight20"
+            aria-label="link from 192.564.10.2 to Deleted Folder with weight 20"
             d="M172,373.507C282.75,373.507,282.75,390.388,393.5,390.388L393.5,422.716C282.75,422.716,282.75,405.836,172,405.836Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1440,7 +1440,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-label="link from124.124.50.1toJunk Folderwith weight10"
+            aria-label="link from 124.124.50.1 to Junk Folder with weight 10"
             d="M172,338.027C282.75,338.027,282.75,338.744,393.5,338.744L393.5,354.908C282.75,354.908,282.75,354.192,172,354.192Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1475,7 +1475,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.630.89.4toJunk Folderwith weight10"
+            aria-label="link from 172.630.89.4 to Junk Folder with weight 10"
             d="M172,413.836C282.75,413.836,282.75,366.223,393.5,366.223L393.5,382.388C282.75,382.388,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1510,7 +1510,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-label="link frominboxtoClickedwith weight30"
+            aria-label="link from inbox to Clicked with weight 30"
             d="M517.5,37.686C628.25,37.686,628.25,36,739,36L739,84.493C628.25,84.493,628.25,86.18,517.5,86.18Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1545,7 +1545,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-label="link frominboxtoOpenedwith weight55"
+            aria-label="link from inbox to Opened with weight 55"
             d="M517.5,86.18C628.25,86.18,628.25,92.493,739,92.493L739,181.397C628.25,181.397,628.25,175.084,517.5,175.084Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1580,7 +1580,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromJunk Folderto No further action  requiredwith weight60"
+            aria-label="link from Junk Folder to  No further action  required with weight 60"
             d="M517.5,270.853C628.25,270.853,628.25,271.543,739,271.543L739,368.529C628.25,368.529,628.25,367.84,517.5,367.84Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1615,7 +1615,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromDeleted Folderto No further action  requiredwith weight2"
+            aria-label="link from Deleted Folder to  No further action  required with weight 2"
             d="M517.5,390.388C628.25,390.388,628.25,368.529,739,368.529L739,371.762C628.25,371.762,628.25,393.621,517.5,393.621Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -1645,7 +1645,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement58"
         >
           <rect
-            aria-label="node192.168.42.72with weight80"
+            aria-label="node 192.168.42.72 with weight 80"
             data-is-focusable={true}
             fill="#E3008C"
             height={129.31506849315068}
@@ -1713,7 +1713,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement61"
         >
           <rect
-            aria-label="node172.152.48.13with weight78"
+            aria-label="node 172.152.48.13 with weight 78"
             data-is-focusable={true}
             fill="#00A2AD"
             height={126.08219178082172}
@@ -1781,7 +1781,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement64"
         >
           <rect
-            aria-label="node124.360.55.1with weight14"
+            aria-label="node 124.360.55.1 with weight 14"
             data-is-focusable={true}
             fill="#022F22"
             height={22.630136986301352}
@@ -1802,7 +1802,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement67"
         >
           <rect
-            aria-label="node192.564.10.2with weight27"
+            aria-label="node 192.564.10.2 with weight 27"
             data-is-focusable={true}
             fill="#00188F"
             height={43.643835616438366}
@@ -1869,7 +1869,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement70"
         >
           <rect
-            aria-label="node124.124.50.1with weight10"
+            aria-label="node 124.124.50.1 with weight 10"
             data-is-focusable={true}
             fill="#E3008C"
             height={16.16438356164383}
@@ -1890,7 +1890,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement73"
         >
           <rect
-            aria-label="node172.630.89.4with weight10"
+            aria-label="node 172.630.89.4 with weight 10"
             data-is-focusable={true}
             fill="#00A2AD"
             height={16.16438356164383}
@@ -1911,7 +1911,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement76"
         >
           <rect
-            aria-label="nodeinboxwith weight130"
+            aria-label="node inbox with weight 130"
             data-is-focusable={true}
             fill="#022F22"
             height={210.13698630136994}
@@ -1979,7 +1979,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement79"
         >
           <rect
-            aria-label="nodeJunk Folderwith weight69"
+            aria-label="node Junk Folder with weight 69"
             data-is-focusable={true}
             fill="#00188F"
             height={111.53424657534248}
@@ -2046,7 +2046,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement82"
         >
           <rect
-            aria-label="nodeDeleted Folderwith weight20"
+            aria-label="node Deleted Folder with weight 20"
             data-is-focusable={true}
             fill="#E3008C"
             height={32.32876712328766}
@@ -2114,7 +2114,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement85"
         >
           <rect
-            aria-label="nodeClickedwith weight30"
+            aria-label="node Clicked with weight 30"
             data-is-focusable={true}
             fill="#00A2AD"
             height={48.49315068493148}
@@ -2182,7 +2182,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement88"
         >
           <rect
-            aria-label="nodeOpenedwith weight55"
+            aria-label="node Opened with weight 55"
             data-is-focusable={true}
             fill="#022F22"
             height={88.90410958904114}
@@ -2250,7 +2250,7 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
           id="nodeGElement91"
         >
           <rect
-            aria-label="node No further action  requiredwith weight62"
+            aria-label="node  No further action  required with weight 62"
             data-is-focusable={true}
             fill="#00188F"
             height={100.21917808219177}
@@ -2388,7 +2388,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromnode0tonode6with weight5"
+            aria-label="link from node0 to node6 with weight 5"
             d="M172,36C455.5,36,455.5,47.952,739,47.952L739,51.422C455.5,51.422,455.5,39.471,172,39.471Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -2423,7 +2423,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromnode1tonode6with weight5"
+            aria-label="link from node1 to node6 with weight 5"
             d="M172,47.471C455.5,47.471,455.5,51.422,739,51.422L739,54.893C455.5,54.893,455.5,50.941,172,50.941Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -2458,7 +2458,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromnode2tonode6with weight5"
+            aria-label="link from node2 to node6 with weight 5"
             d="M172,58.941C455.5,58.941,455.5,54.893,739,54.893L739,58.363C455.5,58.363,455.5,62.412,172,62.412Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -2493,7 +2493,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromnode3tonode6with weight5"
+            aria-label="link from node3 to node6 with weight 5"
             d="M172,70.412C455.5,70.412,455.5,58.363,739,58.363L739,61.834C455.5,61.834,455.5,73.882,172,73.882Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -2528,7 +2528,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromnode4tonode7with weight900"
+            aria-label="link from node4 to node7 with weight 900"
             d="M172,81.882C455.5,81.882,455.5,82.445,739,82.445L739,394.798C455.5,394.798,455.5,394.235,172,394.235Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -2563,7 +2563,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromnode5tonode7with weight80"
+            aria-label="link from node5 to node7 with weight 80"
             d="M172,402.235C455.5,402.235,455.5,394.798,739,394.798L739,422.562C455.5,422.562,455.5,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -2593,7 +2593,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           id="nodeGElement58"
         >
           <rect
-            aria-label="nodenode0with weight5"
+            aria-label="node node0 with weight 5"
             data-is-focusable={true}
             fill="#0078D4"
             height={3.470588235294116}
@@ -2614,7 +2614,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           id="nodeGElement61"
         >
           <rect
-            aria-label="nodenode1with weight5"
+            aria-label="node node1 with weight 5"
             data-is-focusable={true}
             fill="#0078D4"
             height={3.470588235294116}
@@ -2635,7 +2635,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           id="nodeGElement64"
         >
           <rect
-            aria-label="nodenode2with weight5"
+            aria-label="node node2 with weight 5"
             data-is-focusable={true}
             fill="#0078D4"
             height={3.470588235294116}
@@ -2656,7 +2656,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           id="nodeGElement67"
         >
           <rect
-            aria-label="nodenode3with weight5"
+            aria-label="node node3 with weight 5"
             data-is-focusable={true}
             fill="#0078D4"
             height={3.470588235294116}
@@ -2677,7 +2677,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           id="nodeGElement70"
         >
           <rect
-            aria-label="nodenode4with weight900"
+            aria-label="node node4 with weight 900"
             data-is-focusable={true}
             fill="#0078D4"
             height={312.3529411764705}
@@ -2745,7 +2745,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           id="nodeGElement73"
         >
           <rect
-            aria-label="nodenode5with weight80"
+            aria-label="node node5 with weight 80"
             data-is-focusable={true}
             fill="#0078D4"
             height={27.764705882352928}
@@ -2813,7 +2813,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           id="nodeGElement76"
         >
           <rect
-            aria-label="nodenode6with weight20"
+            aria-label="node node6 with weight 20"
             data-is-focusable={true}
             fill="#E3008C"
             height={13.882352941176471}
@@ -2834,7 +2834,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           id="nodeGElement79"
         >
           <rect
-            aria-label="nodenode7with weight980"
+            aria-label="node node7 with weight 980"
             data-is-focusable={true}
             fill="#E3008C"
             height={340.1176470588236}
@@ -2975,7 +2975,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.168.42.72toinboxwith weight80"
+            aria-label="link from 192.168.42.72 to inbox with weight 80"
             d="M172,36C282.75,36,282.75,37.686,393.5,37.686L393.5,167.002C282.75,167.002,282.75,165.315,172,165.315Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3012,7 +3012,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.152.48.13toinboxwith weight50"
+            aria-label="link from 172.152.48.13 to inbox with weight 50"
             d="M172,173.315C282.75,173.315,282.75,167.002,393.5,167.002L393.5,247.823C282.75,247.823,282.75,254.137,172,254.137Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3049,7 +3049,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.152.48.13toJunk Folderwith weight28"
+            aria-label="link from 172.152.48.13 to Junk Folder with weight 28"
             d="M172,254.137C282.75,254.137,282.75,270.853,393.5,270.853L393.5,316.114C282.75,316.114,282.75,299.397,172,299.397Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3086,7 +3086,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link from124.360.55.1toJunk Folderwith weight14"
+            aria-label="link from 124.360.55.1 to Junk Folder with weight 14"
             d="M172,307.397C282.75,307.397,282.75,316.114,393.5,316.114L393.5,338.744C282.75,338.744,282.75,330.027,172,330.027Z"
             data-is-focusable={true}
             fill="#8764B8"
@@ -3124,7 +3124,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.564.10.2toJunk Folderwith weight7"
+            aria-label="link from 192.564.10.2 to Junk Folder with weight 7"
             d="M172,362.192C282.75,362.192,282.75,354.908,393.5,354.908L393.5,366.223C282.75,366.223,282.75,373.507,172,373.507Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3161,7 +3161,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.564.10.2toDeleted Folderwith weight20"
+            aria-label="link from 192.564.10.2 to Deleted Folder with weight 20"
             d="M172,373.507C282.75,373.507,282.75,390.388,393.5,390.388L393.5,422.716C282.75,422.716,282.75,405.836,172,405.836Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3198,7 +3198,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link from124.124.50.1toJunk Folderwith weight10"
+            aria-label="link from 124.124.50.1 to Junk Folder with weight 10"
             d="M172,338.027C282.75,338.027,282.75,338.744,393.5,338.744L393.5,354.908C282.75,354.908,282.75,354.192,172,354.192Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3235,7 +3235,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.630.89.4toJunk Folderwith weight10"
+            aria-label="link from 172.630.89.4 to Junk Folder with weight 10"
             d="M172,413.836C282.75,413.836,282.75,366.223,393.5,366.223L393.5,382.388C282.75,382.388,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3272,7 +3272,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link frominboxtoClickedwith weight30"
+            aria-label="link from inbox to Clicked with weight 30"
             d="M517.5,37.686C628.25,37.686,628.25,36,739,36L739,84.493C628.25,84.493,628.25,86.18,517.5,86.18Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3309,7 +3309,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link frominboxtoOpenedwith weight55"
+            aria-label="link from inbox to Opened with weight 55"
             d="M517.5,86.18C628.25,86.18,628.25,92.493,739,92.493L739,181.397C628.25,181.397,628.25,175.084,517.5,175.084Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3346,7 +3346,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromJunk Folderto No further action  requiredwith weight60"
+            aria-label="link from Junk Folder to  No further action  required with weight 60"
             d="M517.5,270.853C628.25,270.853,628.25,271.543,739,271.543L739,368.529C628.25,368.529,628.25,367.84,517.5,367.84Z"
             data-is-focusable={true}
             fill="#8764B8"
@@ -3384,7 +3384,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromDeleted Folderto No further action  requiredwith weight2"
+            aria-label="link from Deleted Folder to  No further action  required with weight 2"
             d="M517.5,390.388C628.25,390.388,628.25,368.529,739,368.529L739,371.762C628.25,371.762,628.25,393.621,517.5,393.621Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3415,7 +3415,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="0"
         >
           <rect
-            aria-label="node192.168.42.72with weight80"
+            aria-label="node 192.168.42.72 with weight 80"
             data-is-focusable={true}
             height={129.31506849315068}
             id="nodeBar54"
@@ -3483,7 +3483,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="1"
         >
           <rect
-            aria-label="node172.152.48.13with weight78"
+            aria-label="node 172.152.48.13 with weight 78"
             data-is-focusable={true}
             height={126.08219178082172}
             id="nodeBar57"
@@ -3551,7 +3551,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="2"
         >
           <rect
-            aria-label="node124.360.55.1with weight14"
+            aria-label="node 124.360.55.1 with weight 14"
             data-is-focusable={true}
             fill="#8764B8"
             height={22.630136986301352}
@@ -3573,7 +3573,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="3"
         >
           <rect
-            aria-label="node192.564.10.2with weight27"
+            aria-label="node 192.564.10.2 with weight 27"
             data-is-focusable={true}
             height={43.643835616438366}
             id="nodeBar63"
@@ -3641,7 +3641,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="4"
         >
           <rect
-            aria-label="node124.124.50.1with weight10"
+            aria-label="node 124.124.50.1 with weight 10"
             data-is-focusable={true}
             height={16.16438356164383}
             id="nodeBar66"
@@ -3662,7 +3662,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="5"
         >
           <rect
-            aria-label="node172.630.89.4with weight10"
+            aria-label="node 172.630.89.4 with weight 10"
             data-is-focusable={true}
             height={16.16438356164383}
             id="nodeBar69"
@@ -3683,7 +3683,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="6"
         >
           <rect
-            aria-label="nodeinboxwith weight130"
+            aria-label="node inbox with weight 130"
             data-is-focusable={true}
             height={210.13698630136994}
             id="nodeBar72"
@@ -3751,7 +3751,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="7"
         >
           <rect
-            aria-label="nodeJunk Folderwith weight69"
+            aria-label="node Junk Folder with weight 69"
             data-is-focusable={true}
             fill="#8764B8"
             height={111.53424657534248}
@@ -3820,7 +3820,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="8"
         >
           <rect
-            aria-label="nodeDeleted Folderwith weight20"
+            aria-label="node Deleted Folder with weight 20"
             data-is-focusable={true}
             height={32.32876712328766}
             id="nodeBar78"
@@ -3888,7 +3888,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="9"
         >
           <rect
-            aria-label="nodeClickedwith weight30"
+            aria-label="node Clicked with weight 30"
             data-is-focusable={true}
             height={48.49315068493148}
             id="nodeBar81"
@@ -3956,7 +3956,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="10"
         >
           <rect
-            aria-label="nodeOpenedwith weight55"
+            aria-label="node Opened with weight 55"
             data-is-focusable={true}
             height={88.90410958904114}
             id="nodeBar84"
@@ -4024,7 +4024,7 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
           key="11"
         >
           <rect
-            aria-label="node No further action  requiredwith weight62"
+            aria-label="node  No further action  required with weight 62"
             data-is-focusable={true}
             fill="#8764B8"
             height={100.21917808219177}
@@ -4168,7 +4168,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.168.42.72toinboxwith weight80"
+            aria-label="link from 192.168.42.72 to inbox with weight 80"
             d="M172,36C282.75,36,282.75,37.686,393.5,37.686L393.5,167.002C282.75,167.002,282.75,165.315,172,165.315Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4205,7 +4205,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.152.48.13toinboxwith weight50"
+            aria-label="link from 172.152.48.13 to inbox with weight 50"
             d="M172,173.315C282.75,173.315,282.75,167.002,393.5,167.002L393.5,247.823C282.75,247.823,282.75,254.137,172,254.137Z"
             data-is-focusable={true}
             fill="url(#gradient-link1-1)"
@@ -4243,7 +4243,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.152.48.13toJunk Folderwith weight28"
+            aria-label="link from 172.152.48.13 to Junk Folder with weight 28"
             d="M172,254.137C282.75,254.137,282.75,270.853,393.5,270.853L393.5,316.114C282.75,316.114,282.75,299.397,172,299.397Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4280,7 +4280,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link from124.360.55.1toJunk Folderwith weight14"
+            aria-label="link from 124.360.55.1 to Junk Folder with weight 14"
             d="M172,307.397C282.75,307.397,282.75,316.114,393.5,316.114L393.5,338.744C282.75,338.744,282.75,330.027,172,330.027Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4317,7 +4317,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.564.10.2toJunk Folderwith weight7"
+            aria-label="link from 192.564.10.2 to Junk Folder with weight 7"
             d="M172,362.192C282.75,362.192,282.75,354.908,393.5,354.908L393.5,366.223C282.75,366.223,282.75,373.507,172,373.507Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4354,7 +4354,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.564.10.2toDeleted Folderwith weight20"
+            aria-label="link from 192.564.10.2 to Deleted Folder with weight 20"
             d="M172,373.507C282.75,373.507,282.75,390.388,393.5,390.388L393.5,422.716C282.75,422.716,282.75,405.836,172,405.836Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4391,7 +4391,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link from124.124.50.1toJunk Folderwith weight10"
+            aria-label="link from 124.124.50.1 to Junk Folder with weight 10"
             d="M172,338.027C282.75,338.027,282.75,338.744,393.5,338.744L393.5,354.908C282.75,354.908,282.75,354.192,172,354.192Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4428,7 +4428,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.630.89.4toJunk Folderwith weight10"
+            aria-label="link from 172.630.89.4 to Junk Folder with weight 10"
             d="M172,413.836C282.75,413.836,282.75,366.223,393.5,366.223L393.5,382.388C282.75,382.388,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4465,7 +4465,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link frominboxtoClickedwith weight30"
+            aria-label="link from inbox to Clicked with weight 30"
             d="M517.5,37.686C628.25,37.686,628.25,36,739,36L739,84.493C628.25,84.493,628.25,86.18,517.5,86.18Z"
             data-is-focusable={true}
             fill="url(#gradient-link1-8)"
@@ -4503,7 +4503,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link frominboxtoOpenedwith weight55"
+            aria-label="link from inbox to Opened with weight 55"
             d="M517.5,86.18C628.25,86.18,628.25,92.493,739,92.493L739,181.397C628.25,181.397,628.25,175.084,517.5,175.084Z"
             data-is-focusable={true}
             fill="url(#gradient-link1-9)"
@@ -4541,7 +4541,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromJunk Folderto No further action  requiredwith weight60"
+            aria-label="link from Junk Folder to  No further action  required with weight 60"
             d="M517.5,270.853C628.25,270.853,628.25,271.543,739,271.543L739,368.529C628.25,368.529,628.25,367.84,517.5,367.84Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4578,7 +4578,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromDeleted Folderto No further action  requiredwith weight2"
+            aria-label="link from Deleted Folder to  No further action  required with weight 2"
             d="M517.5,390.388C628.25,390.388,628.25,368.529,739,368.529L739,371.762C628.25,371.762,628.25,393.621,517.5,393.621Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -4609,7 +4609,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="0"
         >
           <rect
-            aria-label="node192.168.42.72with weight80"
+            aria-label="node 192.168.42.72 with weight 80"
             data-is-focusable={true}
             fill="#8764B8"
             height={129.31506849315068}
@@ -4678,7 +4678,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="1"
         >
           <rect
-            aria-label="node172.152.48.13with weight78"
+            aria-label="node 172.152.48.13 with weight 78"
             data-is-focusable={true}
             fill="#8764B8"
             height={126.08219178082172}
@@ -4747,7 +4747,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="2"
         >
           <rect
-            aria-label="node124.360.55.1with weight14"
+            aria-label="node 124.360.55.1 with weight 14"
             data-is-focusable={true}
             fill="#8764B8"
             height={22.630136986301352}
@@ -4769,7 +4769,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="3"
         >
           <rect
-            aria-label="node192.564.10.2with weight27"
+            aria-label="node 192.564.10.2 with weight 27"
             data-is-focusable={true}
             fill="#8764B8"
             height={43.643835616438366}
@@ -4838,7 +4838,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="4"
         >
           <rect
-            aria-label="node124.124.50.1with weight10"
+            aria-label="node 124.124.50.1 with weight 10"
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
@@ -4860,7 +4860,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="5"
         >
           <rect
-            aria-label="node172.630.89.4with weight10"
+            aria-label="node 172.630.89.4 with weight 10"
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
@@ -4882,7 +4882,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="6"
         >
           <rect
-            aria-label="nodeinboxwith weight130"
+            aria-label="node inbox with weight 130"
             data-is-focusable={true}
             fill="#0E7878"
             height={210.13698630136994}
@@ -4951,7 +4951,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="7"
         >
           <rect
-            aria-label="nodeJunk Folderwith weight69"
+            aria-label="node Junk Folder with weight 69"
             data-is-focusable={true}
             fill="#0E7878"
             height={111.53424657534248}
@@ -5020,7 +5020,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="8"
         >
           <rect
-            aria-label="nodeDeleted Folderwith weight20"
+            aria-label="node Deleted Folder with weight 20"
             data-is-focusable={true}
             fill="#0E7878"
             height={32.32876712328766}
@@ -5089,7 +5089,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="9"
         >
           <rect
-            aria-label="nodeClickedwith weight30"
+            aria-label="node Clicked with weight 30"
             data-is-focusable={true}
             fill="#4F6BED"
             height={48.49315068493148}
@@ -5158,7 +5158,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="10"
         >
           <rect
-            aria-label="nodeOpenedwith weight55"
+            aria-label="node Opened with weight 55"
             data-is-focusable={true}
             fill="#4F6BED"
             height={88.90410958904114}
@@ -5227,7 +5227,7 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
           key="11"
         >
           <rect
-            aria-label="node No further action  requiredwith weight62"
+            aria-label="node  No further action  required with weight 62"
             data-is-focusable={true}
             fill="#4F6BED"
             height={100.21917808219177}
@@ -5371,7 +5371,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.168.42.72toinboxwith weight80"
+            aria-label="link from 192.168.42.72 to inbox with weight 80"
             d="M172,36C282.75,36,282.75,37.686,393.5,37.686L393.5,167.002C282.75,167.002,282.75,165.315,172,165.315Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -5408,7 +5408,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.152.48.13toinboxwith weight50"
+            aria-label="link from 172.152.48.13 to inbox with weight 50"
             d="M172,173.315C282.75,173.315,282.75,167.002,393.5,167.002L393.5,247.823C282.75,247.823,282.75,254.137,172,254.137Z"
             data-is-focusable={true}
             fill="#8764B8"
@@ -5446,7 +5446,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.152.48.13toJunk Folderwith weight28"
+            aria-label="link from 172.152.48.13 to Junk Folder with weight 28"
             d="M172,254.137C282.75,254.137,282.75,270.853,393.5,270.853L393.5,316.114C282.75,316.114,282.75,299.397,172,299.397Z"
             data-is-focusable={true}
             fill="#8764B8"
@@ -5484,7 +5484,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link from124.360.55.1toJunk Folderwith weight14"
+            aria-label="link from 124.360.55.1 to Junk Folder with weight 14"
             d="M172,307.397C282.75,307.397,282.75,316.114,393.5,316.114L393.5,338.744C282.75,338.744,282.75,330.027,172,330.027Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -5521,7 +5521,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.564.10.2toJunk Folderwith weight7"
+            aria-label="link from 192.564.10.2 to Junk Folder with weight 7"
             d="M172,362.192C282.75,362.192,282.75,354.908,393.5,354.908L393.5,366.223C282.75,366.223,282.75,373.507,172,373.507Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -5558,7 +5558,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.564.10.2toDeleted Folderwith weight20"
+            aria-label="link from 192.564.10.2 to Deleted Folder with weight 20"
             d="M172,373.507C282.75,373.507,282.75,390.388,393.5,390.388L393.5,422.716C282.75,422.716,282.75,405.836,172,405.836Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -5595,7 +5595,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link from124.124.50.1toJunk Folderwith weight10"
+            aria-label="link from 124.124.50.1 to Junk Folder with weight 10"
             d="M172,338.027C282.75,338.027,282.75,338.744,393.5,338.744L393.5,354.908C282.75,354.908,282.75,354.192,172,354.192Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -5632,7 +5632,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.630.89.4toJunk Folderwith weight10"
+            aria-label="link from 172.630.89.4 to Junk Folder with weight 10"
             d="M172,413.836C282.75,413.836,282.75,366.223,393.5,366.223L393.5,382.388C282.75,382.388,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -5669,7 +5669,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link frominboxtoClickedwith weight30"
+            aria-label="link from inbox to Clicked with weight 30"
             d="M517.5,37.686C628.25,37.686,628.25,36,739,36L739,84.493C628.25,84.493,628.25,86.18,517.5,86.18Z"
             data-is-focusable={true}
             fill="#8764B8"
@@ -5707,7 +5707,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link frominboxtoOpenedwith weight55"
+            aria-label="link from inbox to Opened with weight 55"
             d="M517.5,86.18C628.25,86.18,628.25,92.493,739,92.493L739,181.397C628.25,181.397,628.25,175.084,517.5,175.084Z"
             data-is-focusable={true}
             fill="#8764B8"
@@ -5745,7 +5745,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromJunk Folderto No further action  requiredwith weight60"
+            aria-label="link from Junk Folder to  No further action  required with weight 60"
             d="M517.5,270.853C628.25,270.853,628.25,271.543,739,271.543L739,368.529C628.25,368.529,628.25,367.84,517.5,367.84Z"
             data-is-focusable={true}
             fill="#8764B8"
@@ -5783,7 +5783,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromDeleted Folderto No further action  requiredwith weight2"
+            aria-label="link from Deleted Folder to  No further action  required with weight 2"
             d="M517.5,390.388C628.25,390.388,628.25,368.529,739,368.529L739,371.762C628.25,371.762,628.25,393.621,517.5,393.621Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -5814,7 +5814,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="0"
         >
           <rect
-            aria-label="node192.168.42.72with weight80"
+            aria-label="node 192.168.42.72 with weight 80"
             data-is-focusable={true}
             height={129.31506849315068}
             id="nodeBar54"
@@ -5882,7 +5882,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="1"
         >
           <rect
-            aria-label="node172.152.48.13with weight78"
+            aria-label="node 172.152.48.13 with weight 78"
             data-is-focusable={true}
             fill="#8764B8"
             height={126.08219178082172}
@@ -5951,7 +5951,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="2"
         >
           <rect
-            aria-label="node124.360.55.1with weight14"
+            aria-label="node 124.360.55.1 with weight 14"
             data-is-focusable={true}
             height={22.630136986301352}
             id="nodeBar60"
@@ -5972,7 +5972,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="3"
         >
           <rect
-            aria-label="node192.564.10.2with weight27"
+            aria-label="node 192.564.10.2 with weight 27"
             data-is-focusable={true}
             height={43.643835616438366}
             id="nodeBar63"
@@ -6040,7 +6040,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="4"
         >
           <rect
-            aria-label="node124.124.50.1with weight10"
+            aria-label="node 124.124.50.1 with weight 10"
             data-is-focusable={true}
             height={16.16438356164383}
             id="nodeBar66"
@@ -6061,7 +6061,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="5"
         >
           <rect
-            aria-label="node172.630.89.4with weight10"
+            aria-label="node 172.630.89.4 with weight 10"
             data-is-focusable={true}
             height={16.16438356164383}
             id="nodeBar69"
@@ -6082,7 +6082,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="6"
         >
           <rect
-            aria-label="nodeinboxwith weight130"
+            aria-label="node inbox with weight 130"
             data-is-focusable={true}
             fill="#8764B8"
             height={210.13698630136994}
@@ -6151,7 +6151,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="7"
         >
           <rect
-            aria-label="nodeJunk Folderwith weight69"
+            aria-label="node Junk Folder with weight 69"
             data-is-focusable={true}
             fill="#8764B8"
             height={111.53424657534248}
@@ -6220,7 +6220,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="8"
         >
           <rect
-            aria-label="nodeDeleted Folderwith weight20"
+            aria-label="node Deleted Folder with weight 20"
             data-is-focusable={true}
             height={32.32876712328766}
             id="nodeBar78"
@@ -6288,7 +6288,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="9"
         >
           <rect
-            aria-label="nodeClickedwith weight30"
+            aria-label="node Clicked with weight 30"
             data-is-focusable={true}
             fill="#8764B8"
             height={48.49315068493148}
@@ -6357,7 +6357,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="10"
         >
           <rect
-            aria-label="nodeOpenedwith weight55"
+            aria-label="node Opened with weight 55"
             data-is-focusable={true}
             fill="#8764B8"
             height={88.90410958904114}
@@ -6426,7 +6426,7 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
           key="11"
         >
           <rect
-            aria-label="node No further action  requiredwith weight62"
+            aria-label="node  No further action  required with weight 62"
             data-is-focusable={true}
             fill="#8764B8"
             height={100.21917808219177}
@@ -6567,7 +6567,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.168.42.72toinboxwith weight80"
+            aria-label="link from 192.168.42.72 to inbox with weight 80"
             d="M172,36C282.75,36,282.75,37.686,393.5,37.686L393.5,167.002C282.75,167.002,282.75,165.315,172,165.315Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6604,7 +6604,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.152.48.13toinboxwith weight50"
+            aria-label="link from 172.152.48.13 to inbox with weight 50"
             d="M172,173.315C282.75,173.315,282.75,167.002,393.5,167.002L393.5,247.823C282.75,247.823,282.75,254.137,172,254.137Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6641,7 +6641,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.152.48.13toJunk Folderwith weight28"
+            aria-label="link from 172.152.48.13 to Junk Folder with weight 28"
             d="M172,254.137C282.75,254.137,282.75,270.853,393.5,270.853L393.5,316.114C282.75,316.114,282.75,299.397,172,299.397Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6678,7 +6678,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link from124.360.55.1toJunk Folderwith weight14"
+            aria-label="link from 124.360.55.1 to Junk Folder with weight 14"
             d="M172,307.397C282.75,307.397,282.75,316.114,393.5,316.114L393.5,338.744C282.75,338.744,282.75,330.027,172,330.027Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6715,7 +6715,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.564.10.2toJunk Folderwith weight7"
+            aria-label="link from 192.564.10.2 to Junk Folder with weight 7"
             d="M172,362.192C282.75,362.192,282.75,354.908,393.5,354.908L393.5,366.223C282.75,366.223,282.75,373.507,172,373.507Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6752,7 +6752,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link from192.564.10.2toDeleted Folderwith weight20"
+            aria-label="link from 192.564.10.2 to Deleted Folder with weight 20"
             d="M172,373.507C282.75,373.507,282.75,390.388,393.5,390.388L393.5,422.716C282.75,422.716,282.75,405.836,172,405.836Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6789,7 +6789,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link from124.124.50.1toJunk Folderwith weight10"
+            aria-label="link from 124.124.50.1 to Junk Folder with weight 10"
             d="M172,338.027C282.75,338.027,282.75,338.744,393.5,338.744L393.5,354.908C282.75,354.908,282.75,354.192,172,354.192Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6826,7 +6826,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link from172.630.89.4toJunk Folderwith weight10"
+            aria-label="link from 172.630.89.4 to Junk Folder with weight 10"
             d="M172,413.836C282.75,413.836,282.75,366.223,393.5,366.223L393.5,382.388C282.75,382.388,282.75,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6863,7 +6863,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link frominboxtoClickedwith weight30"
+            aria-label="link from inbox to Clicked with weight 30"
             d="M517.5,37.686C628.25,37.686,628.25,36,739,36L739,84.493C628.25,84.493,628.25,86.18,517.5,86.18Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6900,7 +6900,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link frominboxtoOpenedwith weight55"
+            aria-label="link from inbox to Opened with weight 55"
             d="M517.5,86.18C628.25,86.18,628.25,92.493,739,92.493L739,181.397C628.25,181.397,628.25,175.084,517.5,175.084Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6937,7 +6937,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromJunk Folderto No further action  requiredwith weight60"
+            aria-label="link from Junk Folder to  No further action  required with weight 60"
             d="M517.5,270.853C628.25,270.853,628.25,271.543,739,271.543L739,368.529C628.25,368.529,628.25,367.84,517.5,367.84Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -6974,7 +6974,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromDeleted Folderto No further action  requiredwith weight2"
+            aria-label="link from Deleted Folder to  No further action  required with weight 2"
             d="M517.5,390.388C628.25,390.388,628.25,368.529,739,368.529L739,371.762C628.25,371.762,628.25,393.621,517.5,393.621Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -7005,7 +7005,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="0"
         >
           <rect
-            aria-label="node192.168.42.72with weight80"
+            aria-label="node 192.168.42.72 with weight 80"
             data-is-focusable={true}
             fill="#8764B8"
             height={129.31506849315068}
@@ -7074,7 +7074,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="1"
         >
           <rect
-            aria-label="node172.152.48.13with weight78"
+            aria-label="node 172.152.48.13 with weight 78"
             data-is-focusable={true}
             fill="#8764B8"
             height={126.08219178082172}
@@ -7143,7 +7143,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="2"
         >
           <rect
-            aria-label="node124.360.55.1with weight14"
+            aria-label="node 124.360.55.1 with weight 14"
             data-is-focusable={true}
             fill="#8764B8"
             height={22.630136986301352}
@@ -7165,7 +7165,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="3"
         >
           <rect
-            aria-label="node192.564.10.2with weight27"
+            aria-label="node 192.564.10.2 with weight 27"
             data-is-focusable={true}
             fill="#8764B8"
             height={43.643835616438366}
@@ -7234,7 +7234,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="4"
         >
           <rect
-            aria-label="node124.124.50.1with weight10"
+            aria-label="node 124.124.50.1 with weight 10"
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
@@ -7256,7 +7256,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="5"
         >
           <rect
-            aria-label="node172.630.89.4with weight10"
+            aria-label="node 172.630.89.4 with weight 10"
             data-is-focusable={true}
             fill="#8764B8"
             height={16.16438356164383}
@@ -7278,7 +7278,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="6"
         >
           <rect
-            aria-label="nodeinboxwith weight130"
+            aria-label="node inbox with weight 130"
             data-is-focusable={true}
             fill="#0E7878"
             height={210.13698630136994}
@@ -7347,7 +7347,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="7"
         >
           <rect
-            aria-label="nodeJunk Folderwith weight69"
+            aria-label="node Junk Folder with weight 69"
             data-is-focusable={true}
             fill="#0E7878"
             height={111.53424657534248}
@@ -7416,7 +7416,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="8"
         >
           <rect
-            aria-label="nodeDeleted Folderwith weight20"
+            aria-label="node Deleted Folder with weight 20"
             data-is-focusable={true}
             fill="#0E7878"
             height={32.32876712328766}
@@ -7485,7 +7485,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="9"
         >
           <rect
-            aria-label="nodeClickedwith weight30"
+            aria-label="node Clicked with weight 30"
             data-is-focusable={true}
             fill="#4F6BED"
             height={48.49315068493148}
@@ -7554,7 +7554,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="10"
         >
           <rect
-            aria-label="nodeOpenedwith weight55"
+            aria-label="node Opened with weight 55"
             data-is-focusable={true}
             fill="#4F6BED"
             height={88.90410958904114}
@@ -7623,7 +7623,7 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
           key="11"
         >
           <rect
-            aria-label="node No further action  requiredwith weight62"
+            aria-label="node  No further action  required with weight 62"
             data-is-focusable={true}
             fill="#4F6BED"
             height={100.21917808219177}
