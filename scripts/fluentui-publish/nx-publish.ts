@@ -3,16 +3,20 @@ import { execSync } from 'node:child_process';
 
 import { tree } from '@fluentui/scripts-monorepo';
 import {
+  ChangeType,
   NxJsonConfiguration,
   type ProjectGraph,
   type ProjectGraphProjectNode,
+  StringChange,
   Tree,
+  applyChangesToString,
   joinPathFragments,
   output,
   readCachedProjectGraph,
   readJsonFile,
   readNxJson,
   readProjectsConfigurationFromProjectGraph,
+  stripIndents,
   updateJson,
   workspaceRoot,
 } from '@nx/devkit';
@@ -39,7 +43,7 @@ export async function main() {
   }
 
   if (command === 'version') {
-    await version({ args: { specifier, ...options } as VersionArgs, graph, group: northstarGroup });
+    await version({ args: { specifier, ...options } as VersionArgs, graph, group: northstarGroup, nxConfig });
     process.exit(0);
   }
 
@@ -120,13 +124,9 @@ export async function publish(config: {
   // ======= utils ========
 
   async function tagRelease(config: PublishArgs) {
-    const TAG_PATTERN = nxConfig.release?.groups?.northstar.releaseTagPattern;
+    const tagPattern = getTagPattern(nxConfig);
+    const latestTag = await getLatestTag(tagPattern);
 
-    if (!TAG_PATTERN) {
-      throw new Error('northstar group definition is missing "releaseTagPattern"');
-    }
-
-    const latestTag = await getLatestGitTagForPattern(TAG_PATTERN);
     const newWorkspaceVersion = getNewFixedVersion(group.lib);
 
     if (latestTag?.extractedVersion === newWorkspaceVersion) {
@@ -134,7 +134,7 @@ export async function publish(config: {
       return;
     }
 
-    const tag = interpolate(TAG_PATTERN, { version: ' ', projectName: ' ' }).trim() + newWorkspaceVersion;
+    const tag = interpolate(tagPattern, { version: ' ', projectName: ' ' }).trim() + newWorkspaceVersion;
 
     await gitTag({ tag, dryRun: config.dryRun });
 
@@ -154,14 +154,76 @@ export async function publish(config: {
   }
 }
 
+/**
+ *
+ * This updates Changelog with standard template with new version and github compare diff link
+ * NOTE: any kind of actual changes are done by hand
+ */
+export async function changelog(
+  tree: Tree,
+  config: {
+    group: ReturnType<typeof getNorthstarGroup>;
+    versionData: Pick<Awaited<ReturnType<typeof releaseVersion>>, 'workspaceVersion'>;
+    nxConfig: NxJsonConfiguration;
+  },
+) {
+  const { group, versionData, nxConfig } = config;
+
+  const tagPattern = getTagPattern(nxConfig);
+  const latestTag = await getLatestTag(tagPattern);
+  const previousReleasedVersion = latestTag?.extractedVersion;
+
+  if (!previousReleasedVersion) {
+    throw new Error(`No previous release(git tag) for ${tagPattern} was found`);
+  }
+
+  const releaseDate = new Date()
+    .toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })
+    .replace(/\//g, '-');
+
+  const template = stripIndents`
+<!--------------------------------[ v${versionData.workspaceVersion} ]------------------------------- -->
+## [v${versionData.workspaceVersion}](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v${versionData.workspaceVersion}) (${releaseDate})
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v${previousReleasedVersion}..@fluentui/react-northstar_v${versionData.workspaceVersion})
+  `;
+
+  const northstarLib = group.lib['@fluentui/react-northstar'];
+  const changelogPath = joinPathFragments(northstarLib.data.root, '../CHANGELOG.md');
+
+  if (!tree.exists(changelogPath)) {
+    throw new Error(`${changelogPath} doesn't exists`);
+  }
+
+  const changelog = tree.read(changelogPath, 'utf-8') as string;
+  const placeholder = '## [Unreleased]';
+  const placeholderPosition = changelog?.indexOf(placeholder);
+
+  if (placeholderPosition === -1) {
+    throw new Error(`Changelog is missing '${placeholder}'`);
+  }
+
+  const changes: StringChange[] = [
+    {
+      index: placeholderPosition + placeholder.length,
+      type: ChangeType.Insert,
+      text: `\n\n${template}\n`,
+    },
+  ];
+
+  const newContents = applyChangesToString(changelog, changes);
+
+  tree.write(changelogPath, newContents);
+}
+
 type VersionArgs = Required<Pick<NxReleaseVersionArgs, 'dryRun' | 'verbose' | 'specifier'>>;
 
 export async function version(config: {
   args: VersionArgs;
   graph: ProjectGraph;
   group: ReturnType<typeof getNorthstarGroup>;
+  nxConfig: NxJsonConfiguration;
 }) {
-  const { args, group, graph } = config;
+  const { args, group, graph, nxConfig } = config;
 
   const { workspaceVersion, projectsVersionData } = await releaseVersion({
     specifier: args.specifier,
@@ -179,6 +241,8 @@ export async function version(config: {
 
   await runWorkspaceGenerators(tree, graph, args);
 
+  await changelog(tree, { group, nxConfig, versionData: { workspaceVersion } });
+
   printAndFlushChanges(tree, args.dryRun);
 
   await stageChanges(tree, args);
@@ -187,6 +251,21 @@ export async function version(config: {
 }
 
 // ========
+
+async function getLatestTag(tagPattern: string) {
+  const latestTag = await getLatestGitTagForPattern(tagPattern);
+  return latestTag;
+}
+
+function getTagPattern(nxConfig: NxJsonConfiguration) {
+  const TAG_PATTERN = nxConfig.release?.groups?.northstar.releaseTagPattern;
+
+  if (!TAG_PATTERN) {
+    throw new Error('northstar group definition is missing "releaseTagPattern"');
+  }
+
+  return TAG_PATTERN;
+}
 
 function updateCrossReleaseGroupDependency(
   tree: Tree,
