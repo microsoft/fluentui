@@ -6193,13 +6193,6 @@
   dependencies:
     tslib "^1.10.0"
 
-"@upstash/redis@^1.18.0":
-  version "1.28.3"
-  resolved "https://registry.yarnpkg.com/@upstash/redis/-/redis-1.28.3.tgz#a93f661a3ee0d51f249df2fed312d7c0256f0708"
-  integrity sha512-IduU0zrxVKO0z4D+usJUP/VZRYkbbbSoAdj4WYwgijjhc1nxhRZEtktZ8ueTyXT4dAatJ+gDKIIbVSVIiB1xBw==
-  dependencies:
-    crypto-js "^4.2.0"
-
 "@webassemblyjs/ast@1.11.6", "@webassemblyjs/ast@^1.11.5":
   version "1.11.6"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.11.6.tgz#db046555d3c413f8966ca50a95176a0e2c642e24"
@@ -10000,11 +9993,6 @@ crypto-browserify@^3.11.0, crypto-browserify@^3.12.0:
     public-encrypt "^4.0.0"
     randombytes "^2.0.0"
     randomfill "^1.0.3"
-
-crypto-js@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/crypto-js/-/crypto-js-4.2.0.tgz#4d931639ecdfd12ff80e8186dba6af2c2e856631"
-  integrity sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==
 
 crypto-random-string@^1.0.0:
   version "1.0.0"
@@ -18708,15 +18696,6 @@ monosize-storage-azure@0.0.6:
     monosize "^0.2.1"
     node-fetch "^3.3.0"
     picocolors "^1.0.0"
-    tslib "^2.4.1"
-
-monosize-storage-upstash@0.0.12:
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/monosize-storage-upstash/-/monosize-storage-upstash-0.0.12.tgz#cbdf9ae3c203b74e4775ea2db0aa1e00a104a6dc"
-  integrity sha512-3zy5i5ygxtB6Km/gVZltQMmSVhy7RQgSKS4Fou2n00YzBUaej3GpNaMI1KN7/c0eiM3L97R5rW0AGnHCJ0TfBQ==
-  dependencies:
-    "@upstash/redis" "^1.18.0"
-    monosize "^0.2.1"
     tslib "^2.4.1"
 
 monosize@0.2.1, monosize@^0.2.1:

@@ -1,5 +1,5 @@
 // monosize.config.mjs
-import storageAdapter from 'monosize-storage-upstash';
+import storageAdapter from 'monosize-storage-azure';
 
 export default {
   repository: 'https://github.com/microsoft/fluentui',
