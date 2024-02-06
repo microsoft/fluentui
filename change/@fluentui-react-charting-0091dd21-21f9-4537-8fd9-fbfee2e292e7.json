@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Integrate microsoft/monosize into react-charting",
+  "packageName": "@fluentui/react-charting",
+  "email": "shubhabrata08@gmail.com",
+  "dependentChangeType": "patch"
+}
