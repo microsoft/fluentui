@@ -9,8 +9,8 @@ import { IHeatMapChartState, HeatMapChartBase } from './HeatMapChart.base';
 import { ThemeProvider } from '@fluentui/react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { act } from 'react-dom/test-utils';
-import { conditionalDescribe, conditionalTest, isTimezone } from '../../utilities/TestUtility.test';
-const { Timezone } = require('../../../config/constants');
+import { conditionalDescribe, conditionalTest, isTimezoneSet } from '../../utilities/TestUtility.test';
+const { Timezone } = require('../../../scripts/constants');
 
 // Wrapper of the HeatMapChart to be tested.
 let wrapper: ReactWrapper<IHeatMapChartProps, IHeatMapChartState, HeatMapChartBase> | undefined;
@@ -99,7 +99,7 @@ const HeatMapStringDateData: IHeatMapChartProps['data'] = [
   },
 ];
 
-conditionalDescribe(isTimezone(Timezone.UTC))('HeatMapChart snapShot testing', () => {
+conditionalDescribe(isTimezoneSet(Timezone.UTC))('HeatMapChart snapShot testing', () => {
   beforeEach(() => {
     resetIds();
   });
@@ -327,7 +327,7 @@ describe('HeatMapChart - mouse events', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  conditionalTest(isTimezone(Timezone.UTC))('Should render callout correctly on mouseover', async () => {
+  conditionalTest(isTimezoneSet(Timezone.UTC))('Should render callout correctly on mouseover', async () => {
     await act(async () => {
       wrapper = mount(
         <HeatMapChart

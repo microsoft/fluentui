@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { act, queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import * as React from 'react';
-const { Timezone } = require('../../config/constants');
+const { Timezone } = require('../../scripts/constants');
 
 export const getById = queryAllByAttribute.bind(null, 'id');
 export const getByClass = queryAllByAttribute.bind(null, 'class');
@@ -84,13 +84,13 @@ export const forEachTimezone = (callback: (tzName: string, tzIdentifier: string)
     callback(tzName, tzIdentifier);
   });
 };
-export const isTimezone = (timezone: string) => {
+export const isTimezoneSet = (timezone: string) => {
   return timezone === process.env.TZ;
 };
 
-export const conditionalDescribe = (condition: boolean) => {
-  return condition ? describe : describe.skip;
+export const conditionalDescribe = (shouldExecute: boolean) => {
+  return shouldExecute ? describe : describe.skip;
 };
-export const conditionalTest = (condition: boolean) => {
-  return condition ? test : test.skip;
+export const conditionalTest = (shouldExecute: boolean) => {
+  return shouldExecute ? test : test.skip;
 };

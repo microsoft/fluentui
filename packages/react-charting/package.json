@@ -26,7 +26,7 @@
     "start:legacy": "just-scripts dev",
     "start-test": "just-scripts jest-watch",
     "update-snapshots": "cross-env TZ=UTC just-scripts jest -u",
-    "test:tz": "node ./run-tests-in-timezone.js"
+    "test:tz": "node ./scripts/run-tests-in-timezone.js"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

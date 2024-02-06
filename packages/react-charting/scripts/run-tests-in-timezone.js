@@ -1,5 +1,5 @@
 const { execSync } = require('child_process');
-const { Timezone } = require('./config/constants');
+const { Timezone } = require('./constants');
 
 Object.entries(Timezone).forEach(([tzName, tzIdentifier]) => {
   console.log(`**********Running tests in ${tzName} timezone**********`);

@@ -10,12 +10,12 @@ import {
   forEachTimezone,
   getByClass,
   getById,
-  isTimezone,
+  isTimezoneSet,
   testWithWait,
   testWithoutWait,
 } from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
-const { Timezone } = require('../../../config/constants');
+const { Timezone } = require('../../../scripts/constants');
 
 expect.extend(toHaveNoViolations);
 
@@ -274,7 +274,7 @@ describe('Area chart rendering', () => {
       },
       undefined,
       undefined,
-      !isTimezone(tzIdentifier),
+      !isTimezoneSet(tzIdentifier),
     );
   });
 });
@@ -451,7 +451,7 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
     },
     undefined,
     undefined,
-    !isTimezone(Timezone.UTC),
+    !isTimezoneSet(Timezone.UTC),
   );
 });
 

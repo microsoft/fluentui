@@ -9,7 +9,7 @@ import {
   forEachTimezone,
   getByClass,
   getById,
-  isTimezone,
+  isTimezoneSet,
   testWithWait,
   testWithoutWait,
 } from '../../utilities/TestUtility.test';
@@ -17,7 +17,7 @@ import { VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
 import * as utils from '@fluentui/react/lib/Utilities';
 import { chartPoints2VSBC, chartPointsVSBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
-const { Timezone } = require('../../../config/constants');
+const { Timezone } = require('../../../scripts/constants');
 
 expect.extend(toHaveNoViolations);
 
@@ -134,7 +134,7 @@ describe('Vertical stacked bar chart rendering', () => {
     },
     undefined,
     undefined,
-    !isTimezone(Timezone.UTC),
+    !isTimezoneSet(Timezone.UTC),
   );
 
   testWithoutWait(
@@ -150,7 +150,7 @@ describe('Vertical stacked bar chart rendering', () => {
     },
     undefined,
     undefined,
-    !isTimezone(Timezone.UTC),
+    !isTimezoneSet(Timezone.UTC),
   );
 
   testWithoutWait(
@@ -166,7 +166,7 @@ describe('Vertical stacked bar chart rendering', () => {
     },
     undefined,
     undefined,
-    !isTimezone(Timezone.UTC),
+    !isTimezoneSet(Timezone.UTC),
   );
 
   forEachTimezone((tzName, tzIdentifier) => {
@@ -182,7 +182,7 @@ describe('Vertical stacked bar chart rendering', () => {
       },
       undefined,
       undefined,
-      !isTimezone(tzIdentifier),
+      !isTimezoneSet(tzIdentifier),
     );
   });
 });

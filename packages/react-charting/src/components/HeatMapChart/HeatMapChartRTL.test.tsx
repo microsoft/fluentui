@@ -2,10 +2,10 @@ import * as React from 'react';
 import { act, queryAllByAttribute, render, waitFor, screen, fireEvent } from '@testing-library/react';
 import { HeatMapChart, IHeatMapChartProps } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { conditionalTest, getByClass, isTimezone } from '../../utilities/TestUtility.test';
+import { conditionalTest, getByClass, isTimezoneSet } from '../../utilities/TestUtility.test';
 import { HeatMapChartBase } from './HeatMapChart.base';
 import { resetIds } from '@fluentui/react';
-const { Timezone } = require('../../../config/constants');
+const { Timezone } = require('../../../scripts/constants');
 
 expect.extend(toHaveNoViolations);
 
@@ -146,7 +146,7 @@ const HeatMapNumberData: IHeatMapChartProps['data'] = [
 ];
 
 describe('HeatMap chart rendering', () => {
-  conditionalTest(isTimezone(Timezone.UTC))('Should re-render the HeatMap chart with data', async () => {
+  conditionalTest(isTimezoneSet(Timezone.UTC))('Should re-render the HeatMap chart with data', async () => {
     // Arrange
     const { container, rerender } = render(
       <HeatMapChart

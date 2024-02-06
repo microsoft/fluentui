@@ -10,8 +10,8 @@ import {
 } from '../types/IDataPoint';
 import { ScaleBand } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
-import { conditionalDescribe, isTimezone } from './TestUtility.test';
-const { Timezone } = require('../../config/constants');
+import { conditionalDescribe, isTimezoneSet } from './TestUtility.test';
+const { Timezone } = require('../../scripts/constants');
 
 // Reference to the test plan: packages\react-charting\docs\TestPlans\Utilities\UnitTests.md
 
@@ -181,7 +181,7 @@ describe('createNumericXAxis', () => {
   });
 });
 
-conditionalDescribe(isTimezone(Timezone.UTC))('createDateXAxis', () => {
+conditionalDescribe(isTimezoneSet(Timezone.UTC))('createDateXAxis', () => {
   const domainNRangeValues: ICreateXAxisParams['domainNRangeValues'] = {
     dStartValue: new Date(2021, 6, 1),
     dEndValue: new Date(2022, 5, 30),
