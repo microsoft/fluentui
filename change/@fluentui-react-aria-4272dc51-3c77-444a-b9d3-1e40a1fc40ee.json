@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: adds @fluentui/react-jsx-runtime as dependency",
+  "packageName": "@fluentui/react-aria",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
