@@ -2,6 +2,45 @@
   "name": "@fluentui/react-migration-v0-v9",
   "entries": [
     {
+      "date": "Tue, 06 Feb 2024 17:55:19 GMT",
+      "tag": "@fluentui/react-migration-v0-v9_v9.1.15",
+      "version": "9.1.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "4a4c0c8f45a78ed984d326106c0832ebe536466b",
+            "comment": "fix(react-migration-v0-v9): add northstar to dependencies"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "7b89afa6ca231f610fcb26f5d816e0b86faec3d9",
+            "comment": "chore: bump northstar version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-aria to v9.8.2",
+            "commit": "d89076308f8f3cfe80756f873bc12447a474e12c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-components to v9.46.4",
+            "commit": "d89076308f8f3cfe80756f873bc12447a474e12c"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v0-v9",
+            "comment": "Bump @fluentui/react-tabster to v9.19.0",
+            "commit": "d89076308f8f3cfe80756f873bc12447a474e12c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jan 2024 23:16:54 GMT",
       "tag": "@fluentui/react-migration-v0-v9_v9.1.14",
       "version": "9.1.14",

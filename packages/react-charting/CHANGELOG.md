@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 05 Feb 2024 07:27:39 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Feb 2024 07:27:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.22)
+
+Tue, 06 Feb 2024 07:27:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.21..@fluentui/react-charting_v5.19.22)
+
+### Patches
+
+- Fix: Fix color tokens to enable charts to render correctly for v9 theme ([PR #30469](https://github.com/microsoft/fluentui/pull/30469) by atisjai@microsoft.com)
 
 ## [5.19.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.21)
 

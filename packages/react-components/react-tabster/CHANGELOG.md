@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Tue, 30 Jan 2024 23:16:53 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Feb 2024 17:55:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.19.0)
+
+Tue, 06 Feb 2024 17:55:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.18.0..@fluentui/react-tabster_v9.19.0)
+
+### Minor changes
+
+- feat: useSetKeyboardNavigation hook ([PR #30316](https://github.com/microsoft/fluentui/pull/30316) by lingfangao@hotmail.com)
 
 ## [9.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.18.0)
 

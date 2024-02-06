@@ -4,6 +4,15 @@ import type { MessageBarContextValue } from '../../contexts/messageBarContext';
 export type MessageBarSlots = {
   root: Slot<'div'>;
   icon?: Slot<'div'>;
+  /**
+   * Rendered when the component is in multiline layout to guarantee correct spacing even
+   * if no actions are rendered. When actions are rendered, the default actions grid area will render
+   * over this element
+   *
+   * NOTE: If you are using this slot, this probably means that you are using the MessageBar without
+   * actions, this is not recommended from an accesibility point of view
+   */
+  bottomReflowSpacer?: Slot<'div'>;
 };
 
 export type MessageBarContextValues = {
