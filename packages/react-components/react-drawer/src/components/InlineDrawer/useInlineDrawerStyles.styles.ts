@@ -27,6 +27,9 @@ const useDrawerRootStyles = makeStyles({
   separatorEnd: {
     ...shorthands.borderLeft(...separatorValues),
   },
+  separatorBottom: {
+    ...shorthands.borderTop(...separatorValues),
+  },
 
   /* Positioning */
   start: {
@@ -34,6 +37,11 @@ const useDrawerRootStyles = makeStyles({
   },
   end: {
     transform: `translate3D(var(${drawerCSSVars.drawerSizeVar}), 0, 0)`,
+  },
+  bottom: {
+    transform: `translate3D(0, var(${drawerCSSVars.drawerSizeVar}), 0)`,
+    width: '100%',
+    height: `var(${drawerCSSVars.drawerSizeVar})`,
   },
 });
 
@@ -50,6 +58,26 @@ const useDrawerMotionStyles = makeStyles({
   },
 });
 
+function getSeparatorClass(state: InlineDrawerState, classNames: ReturnType<typeof useDrawerRootStyles>) {
+  if (!state.separator) {
+    return undefined;
+  }
+
+  switch (state.position) {
+    case 'start':
+      return classNames.separatorStart;
+
+    case 'end':
+      return classNames.separatorEnd;
+
+    case 'bottom':
+      return classNames.separatorBottom;
+
+    default:
+      return undefined;
+  }
+}
+
 /**
  * Apply styling to the InlineDrawer slots based on the state
  */
@@ -59,14 +87,11 @@ export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): Inline
   const rootStyles = useDrawerRootStyles();
   const motionClassNames = useMotionClassNames(state.motion, useDrawerMotionStyles());
 
-  const separatorClass =
-    state.separator && (state.position === 'start' ? rootStyles.separatorStart : rootStyles.separatorEnd);
-
   state.root.className = mergeClasses(
     inlineDrawerClassNames.root,
     resetStyles,
     baseClassNames,
-    separatorClass,
+    getSeparatorClass(state, rootStyles),
     rootStyles[state.position],
     motionClassNames,
     state.root.className,

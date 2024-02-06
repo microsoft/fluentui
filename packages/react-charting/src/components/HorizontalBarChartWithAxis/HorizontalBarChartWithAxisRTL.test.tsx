@@ -14,6 +14,9 @@ import {
   chartPointsWithStringYAxisHBCWA,
   chartPointsHBCWA,
 } from '../../utilities/test-data';
+const env = require('../../../config/tests');
+
+const runTest = env === 'TEST' ? describe : describe.skip;
 
 expect.extend(toHaveNoViolations);
 
@@ -97,44 +100,6 @@ describe('Horizontal bar chart with axis- Subcomponent Legends', () => {
       // Assert
       // Legends have 'rect' as a part of their classname
       expect(getByClass(container, /legend/i)).toHaveLength(0);
-    },
-  );
-
-  testWithWait(
-    'Should reduce the opacity of the other bars on mouse over a bar legend',
-    HorizontalBarChartWithAxis,
-    { data: chartPointsHBCWA },
-    async container => {
-      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      fireEvent.mouseOver(legends[0]);
-      await new Promise(resolve => setTimeout(resolve));
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-      // Assert
-      expect(bars).toHaveLength(4);
-      expect(bars[0]).toHaveStyle('opacity: 0.1');
-      expect(bars[1]).toHaveStyle('opacity: 0.1');
-      expect(bars[2]).toHaveStyle('opacity: 0.1');
-      expect(bars[3]).not.toHaveAttribute('opacity');
-    },
-  );
-
-  testWithWait(
-    'Should reset the opacity of the bars on mouse leave a bar legend',
-    HorizontalBarChartWithAxis,
-    { data: chartPointsHBCWA },
-    async container => {
-      // Arrange
-      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      fireEvent.mouseOver(legends![0]);
-      await new Promise(resolve => setTimeout(resolve));
-      fireEvent.mouseLeave(legends![0]);
-      await new Promise(resolve => setTimeout(resolve));
-      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-      // Assert
-      expect(bars[0]).not.toHaveAttribute('opacity');
-      expect(bars[1]).not.toHaveAttribute('opacity');
-      expect(bars[2]).not.toHaveAttribute('opacity');
-      expect(bars[3]).not.toHaveAttribute('opacity');
     },
   );
 
@@ -249,6 +214,70 @@ describe('Horizontal bar chart with axis - Subcomponent callout', () => {
       expect(screen.queryByText('Custom Callout Content')).not.toBeNull();
     },
   );
+});
+
+describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
+  testWithWait(
+    'Should render the bars with labels hidden',
+    HorizontalBarChartWithAxis,
+    { data: chartPointsHBCWA, hideLabels: true },
+    container => {
+      // Assert
+      expect(getByClass(container, /barLabel/i)).toHaveLength(0);
+    },
+  );
+});
+
+runTest('Skip - Horizontal bar chart with axis - Subcomponent Labels', () => {
+  testWithWait(
+    'Should expand y axis label when showYAxisLables is true',
+    HorizontalBarChartWithAxis,
+    { data: chartPointsWithStringYAxisHBCWA, showYAxisLables: true },
+    async container => {
+      await new Promise(resolve => setTimeout(resolve));
+      // Assert
+      expect(screen.queryByText('String One')).not.toBeNull();
+      expect(screen.queryByText('String Two')).not.toBeNull();
+    },
+  );
+
+  testWithWait(
+    'Should reduce the opacity of the other bars on mouse over a bar legend',
+    HorizontalBarChartWithAxis,
+    { data: chartPointsHBCWA },
+    async container => {
+      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      fireEvent.mouseOver(legends[0]);
+      await new Promise(resolve => setTimeout(resolve));
+      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      // Assert
+      expect(bars).toHaveLength(4);
+      expect(bars[0]).toHaveStyle('opacity: 0.1');
+      expect(bars[1]).toHaveStyle('opacity: 0.1');
+      expect(bars[2]).toHaveStyle('opacity: 0.1');
+      expect(bars[3]).not.toHaveAttribute('opacity');
+    },
+  );
+
+  testWithWait(
+    'Should reset the opacity of the bars on mouse leave a bar legend',
+    HorizontalBarChartWithAxis,
+    { data: chartPointsHBCWA },
+    async container => {
+      // Arrange
+      const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+      fireEvent.mouseOver(legends![0]);
+      await new Promise(resolve => setTimeout(resolve));
+      fireEvent.mouseLeave(legends![0]);
+      await new Promise(resolve => setTimeout(resolve));
+      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      // Assert
+      expect(bars[0]).not.toHaveAttribute('opacity');
+      expect(bars[1]).not.toHaveAttribute('opacity');
+      expect(bars[2]).not.toHaveAttribute('opacity');
+      expect(bars[3]).not.toHaveAttribute('opacity');
+    },
+  );
 
   testWithWait(
     'Should show the callout with axis tooltip data',
@@ -291,18 +320,6 @@ describe('Horizontal bar chart with axis - Subcomponent callout', () => {
       expect(yAxisCallOutData[0].textContent).toEqual('1,000');
     },
   );
-});
-
-describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
-  testWithWait(
-    'Should render the bars with labels hidden',
-    HorizontalBarChartWithAxis,
-    { data: chartPointsHBCWA, hideLabels: true },
-    container => {
-      // Assert
-      expect(getByClass(container, /barLabel/i)).toHaveLength(0);
-    },
-  );
 
   testWithWait(
     'Should show y axis label tooltip when showYAxisLablesTooltip is true',
@@ -313,20 +330,6 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
       // Assert
       expect(getById(container, /showDots/i)).toHaveLength(4);
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Stri...');
-    },
-  );
-});
-
-describe.skip('Skip - Horizontal bar chart with axis - Subcomponent Labels', () => {
-  testWithWait(
-    'Should expand y axis label when showYAxisLables is true',
-    HorizontalBarChartWithAxis,
-    { data: chartPointsWithStringYAxisHBCWA, showYAxisLables: true },
-    async container => {
-      await new Promise(resolve => setTimeout(resolve));
-      // Assert
-      expect(screen.queryByText('String One')).not.toBeNull();
-      expect(screen.queryByText('String Two')).not.toBeNull();
     },
   );
 });

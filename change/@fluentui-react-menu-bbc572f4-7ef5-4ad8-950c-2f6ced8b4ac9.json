@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: MenuItem shortcut text should be caption",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

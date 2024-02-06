@@ -1,7 +1,5 @@
-import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
+import type { ExtractSlotProps, Slot, UnionToIntersection } from '@fluentui/react-utilities';
 import * as React from 'react';
-
-type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
 
 export type ARIAButtonType = 'button' | 'a' | 'div';
 

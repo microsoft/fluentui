@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x",
-  "packageName": "@fluentui/react-persona",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

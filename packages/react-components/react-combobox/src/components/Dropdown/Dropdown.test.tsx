@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { fireEvent, render, act } from '@testing-library/react';
+import { act, fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { Field } from '@fluentui/react-field';
 import { Dropdown } from './Dropdown';
 import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { dropdownClassNames } from './useDropdownStyles.styles';
 
 describe('Dropdown', () => {
   beforeEach(() => {
@@ -23,6 +24,13 @@ describe('Dropdown', () => {
             open: true,
             // Portal messes with the classNames test, so rendering the listbox inline here
             inlinePopup: true,
+          },
+          // Classes are defined manually as there is no way to render "expandIcon" and "clearIcon" and the same time
+          expectedClassNames: {
+            root: dropdownClassNames.root,
+            button: dropdownClassNames.button,
+            expandIcon: dropdownClassNames.expandIcon,
+            listbox: dropdownClassNames.listbox,
           },
         },
       ],
@@ -92,7 +100,7 @@ describe('Dropdown', () => {
     expect(container.querySelector('[role=listbox]')).not.toBeNull();
   });
 
-  it('adds aria-owns pointing to the popup', () => {
+  it('adds aria-owns and aria-controls pointing to the popup', () => {
     const { getByRole, container } = render(
       <Dropdown open className="root">
         <Option>Red</Option>
@@ -103,6 +111,7 @@ describe('Dropdown', () => {
 
     const listboxId = getByRole('listbox').id;
     expect(container.querySelector('.root')?.getAttribute('aria-owns')).toEqual(listboxId);
+    expect(container.querySelector('button')?.getAttribute('aria-controls')).toEqual(listboxId);
   });
 
   /* open/close tests */
@@ -696,5 +705,43 @@ describe('Dropdown', () => {
     expect(combobox.getAttribute('aria-describedby')).toEqual(message.id);
     expect(combobox.getAttribute('aria-invalid')).toEqual('true');
     expect(combobox.getAttribute('aria-required')).toEqual('true');
+  });
+
+  describe('clearable', () => {
+    it('clears the selection on a button click', () => {
+      const { getByLabelText, getByRole } = render(
+        <Dropdown clearable defaultSelectedOptions={['Red']} defaultValue="Red">
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Dropdown>,
+      );
+
+      const dropdown = getByRole('combobox');
+      const clearButton = getByLabelText('Clear selection');
+
+      expect(clearButton).not.toHaveStyle({ display: 'none' });
+      expect(dropdown).toHaveTextContent('Red');
+
+      act(() => {
+        fireEvent.click(clearButton);
+      });
+
+      expect(clearButton).toHaveStyle({ display: 'none' });
+      expect(dropdown).toHaveTextContent('');
+    });
+
+    it('is not visible when there is no selection', () => {
+      const { getByLabelText } = render(
+        <Dropdown clearable>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Dropdown>,
+      );
+      const clearButton = getByLabelText('Clear selection');
+
+      expect(clearButton).toHaveStyle({ display: 'none' });
+    });
   });
 });

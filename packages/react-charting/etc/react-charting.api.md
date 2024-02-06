@@ -1310,7 +1310,7 @@ export interface IVerticalBarChartDataPoint {
     legend?: string;
     lineData?: ILineDataInVerticalBarChart;
     onClick?: VoidFunction;
-    x: number | string;
+    x: number | string | Date;
     xAxisCalloutData?: string;
     y: number;
     yAxisCalloutData?: string;
@@ -1407,12 +1407,17 @@ export interface IVerticalStackedBarChartStyles extends ICartesianChartStyles {
 }
 
 // @public (undocumented)
+export interface IVerticalStackedBarDataPoint extends Omit<IDataPoint, 'x'> {
+    x: number | string | Date;
+}
+
+// @public (undocumented)
 export interface IVerticalStackedChartProps {
     chartData: IVSChartDataPoint[];
     lineData?: ILineDataInVerticalStackedBarChart[];
     stackCallOutAccessibilityData?: IAccessibilityProps;
     xAxisCalloutData?: string;
-    xAxisPoint: number | string;
+    xAxisPoint: number | string | Date;
 }
 
 // @public (undocumented)

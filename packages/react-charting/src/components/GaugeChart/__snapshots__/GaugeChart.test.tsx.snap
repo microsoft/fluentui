@@ -23,6 +23,7 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
             outline: none;
           }
       data-focuszone-id="FocusZone0"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         aria-label="This is a gauge chart with 3 section represented."
@@ -202,6 +203,7 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                       outline: none;
                     }
                 data-focuszone-id="FocusZone2"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -796,6 +798,7 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
           outline: none;
         }
     data-focuszone-id="FocusZone0"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -977,6 +980,7 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
                     outline: none;
                   }
               data-focuszone-id="FocusZone2"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1297,6 +1301,7 @@ exports[`GaugeChart snapshot tests should not render the legends when the hideLe
           outline: none;
         }
     data-focuszone-id="FocusZone0"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1488,6 +1493,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone0"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1701,6 +1707,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
                     outline: none;
                   }
               data-focuszone-id="FocusZone2"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2034,6 +2041,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
             outline: none;
           }
       data-focuszone-id="FocusZone3"
+      data-tabster="{\\"uncontrolled\\": {}}"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
@@ -2247,6 +2255,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
                       outline: none;
                     }
                 data-focuszone-id="FocusZone5"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseDownCapture={[Function]}
@@ -2568,6 +2577,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
           outline: none;
         }
     data-focuszone-id="FocusZone0"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2781,6 +2791,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
                     outline: none;
                   }
               data-focuszone-id="FocusZone2"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3101,6 +3112,7 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
           outline: none;
         }
     data-focuszone-id="FocusZone0"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3294,6 +3306,7 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
                     outline: none;
                   }
               data-focuszone-id="FocusZone2"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3524,6 +3537,7 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
           outline: none;
         }
     data-focuszone-id="FocusZone0"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3717,6 +3731,7 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
                     outline: none;
                   }
               data-focuszone-id="FocusZone2"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3946,6 +3961,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
           outline: none;
         }
     data-focuszone-id="FocusZone0"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4172,6 +4188,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                     outline: none;
                   }
               data-focuszone-id="FocusZone2"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4492,6 +4509,7 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
           outline: none;
         }
     data-focuszone-id="FocusZone0"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4705,6 +4723,7 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
                     outline: none;
                   }
               data-focuszone-id="FocusZone2"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -5025,6 +5044,7 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone0"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -5262,6 +5282,7 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
                     outline: none;
                   }
               data-focuszone-id="FocusZone3"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

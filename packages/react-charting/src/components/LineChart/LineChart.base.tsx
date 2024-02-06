@@ -525,20 +525,20 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     if (allowMultipleShapesForPoints) {
       if (pointIndex === 1 || isLastPoint) {
         if (activePoint === pointId) {
-          return theme!.palette.white;
+          return theme!.semanticColors.bodyBackground;
         } else {
           return lineColor;
         }
       } else {
         if (activePoint === pointId) {
-          return theme!.palette.white;
+          return theme!.semanticColors.bodyBackground;
         } else {
           return lineColor;
         }
       }
     } else {
       if (activePoint === pointId) {
-        return theme!.palette.white;
+        return theme!.semanticColors.bodyBackground;
       } else {
         return lineColor;
       }
@@ -571,7 +571,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             r={activePoint === circleId ? 5.5 : 3.5}
             cx={this._xAxisScale(x1)}
             cy={this._yAxisScale(y1)}
-            fill={activePoint === circleId ? theme!.palette.white : lineColor}
+            fill={activePoint === circleId ? theme!.semanticColors.bodyBackground : lineColor}
             onMouseOver={this._handleHover.bind(
               this,
               x1,
@@ -649,7 +649,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 fill="transparent"
                 strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
                 strokeWidth={Number.parseFloat(strokeWidth.toString()) + lineBorderWidth}
-                stroke={this._points[i].lineOptions?.lineBorderColor || theme!.palette.white}
+                stroke={this._points[i].lineOptions?.lineBorderColor || theme!.semanticColors.bodyBackground}
                 opacity={1}
               />,
             );
@@ -705,7 +705,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             r={5.5}
             cx={0}
             cy={0}
-            fill={theme!.palette.white}
+            fill={theme!.semanticColors.bodyBackground}
             strokeWidth={DEFAULT_LINE_STROKE_SIZE}
             stroke={lineColor}
             visibility={isPointHighlighted ? 'visibility' : 'hidden'}
@@ -885,7 +885,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     y2={this._yAxisScale(y2)}
                     strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
                     strokeWidth={Number.parseFloat(strokeWidth.toString()) + lineBorderWidth}
-                    stroke={this._points[i].lineOptions?.lineBorderColor || theme!.palette.white}
+                    stroke={this._points[i].lineOptions?.lineBorderColor || theme!.semanticColors.bodyBackground}
                     opacity={1}
                   />,
                 );

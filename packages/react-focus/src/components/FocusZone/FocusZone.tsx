@@ -111,12 +111,18 @@ const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url'
 
 const ALLOW_VIRTUAL_ELEMENTS = false;
 
+interface IFocusZonePropsWithTabster extends IFocusZoneProps {
+  'data-tabster': string;
+}
+
 export class FocusZone extends React.Component<IFocusZoneProps> implements IFocusZone {
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
     direction: FocusZoneDirection.bidirectional,
     shouldRaiseClicks: true,
-  };
+    // Hardcoding uncontrolled flag for proper interop with FluentUI V9.
+    'data-tabster': '{"uncontrolled": {}}',
+  } as IFocusZonePropsWithTabster;
 
   private _root: React.RefObject<HTMLElement> = React.createRef();
   private _mergedRef = createMergedRef<HTMLElement>();
