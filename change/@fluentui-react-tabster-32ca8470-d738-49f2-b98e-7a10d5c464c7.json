@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: useSetKeyboardNavigation hook",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

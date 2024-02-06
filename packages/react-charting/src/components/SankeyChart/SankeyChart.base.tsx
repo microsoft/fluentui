@@ -348,7 +348,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
-        aria-label={'Graph has no data to display'}
+        aria-label={'Graph has no data to display'} // TODO: Localize this string
       />
     );
   }
@@ -444,14 +444,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               onBlur={this._onBlur}
               fillOpacity={this._getOpacityStream(singleLink)}
               data-is-focusable={true}
-              aria-label={
-                'link from' +
-                (singleLink.source as SNode).name +
-                'to' +
-                (singleLink.target as SNode).name +
-                'with weight' +
-                singleLink!.unnormalizedValue
-              }
+              aria-label={`link from ${(singleLink.source as SNode).name} to ${
+                (singleLink.target as SNode).name
+              } with weight ${singleLink!.unnormalizedValue}`} // TODO: localize this string
               role="img"
             />
           </g>
@@ -496,7 +491,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         const id = getId('tooltip');
         const div = select('body').append('div').attr('id', id).attr('class', classNames.toolTip!).style('opacity', 0);
         const nodeId = getId('nodeBar');
-        // TODO: Should the `aria-label` be localized?
         const node = (
           <g key={index} id={getId('nodeGElement')}>
             <rect
@@ -513,7 +507,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               strokeWidth="2"
               opacity="1"
               data-is-focusable={true}
-              aria-label={'node' + `${singleNode.name}` + 'with weight' + `${singleNode.actualValue}`}
+              aria-label={`node ${singleNode.name} with weight ${singleNode.actualValue}`} // TODO: localize this string
               role="img"
             />
             {singleNode.y1! - singleNode.y0! > MIN_HEIGHT_FOR_TYPE && (

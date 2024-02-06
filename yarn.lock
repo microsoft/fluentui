@@ -16929,10 +16929,10 @@ karma@6.4.0:
     ua-parser-js "^0.7.30"
     yargs "^16.1.1"
 
-keyborg@^2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-2.4.1.tgz#57afdef9d04ee242bc4e694642f9216140f2c242"
-  integrity sha512-B9EZwDd36WKlIq6JmimaTsTDx5E0aUqZcxtgTfK66ut1FbRXYhBmiB7Al2qKzB7CCX9C49sTBiiyVzsXCA6J4Q==
+keyborg@2.5.0, keyborg@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-2.5.0.tgz#0690136ecfa75e2f245b67f65bdb2be296f5735a"
+  integrity sha512-nb4Ji1suqWqj6VXb61Jrs4ab/UWgtGph4wDch2NIZDfLBUObmLcZE0aiDjZY49ghtu03fvwxDNvS9ZB0XMz6/g==
 
 keygrip@~1.1.0:
   version "1.1.0"
@@ -18687,10 +18687,10 @@ monaco-editor@0.33.0:
   resolved "https://registry.yarnpkg.com/monaco-editor/-/monaco-editor-0.33.0.tgz#842e244f3750a2482f8a29c676b5684e75ff34af"
   integrity sha512-VcRWPSLIUEgQJQIE0pVT8FcGBIgFoxz7jtqctE+IiCxWugD0DwgyQBcZBhdSrdMC84eumoqMZsGl2GTreOzwqw==
 
-monosize-storage-azure@0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/monosize-storage-azure/-/monosize-storage-azure-0.0.5.tgz#1e22304fda8164c1eed779bbcb8a57a0fb365fc5"
-  integrity sha512-D/0HP7iIoBG8AHQsKYdwB9OQaZMziPOxW2EfHJTwNsuhJ6cFFiSi7Xmy8nHrqBr2KubOOU2K05g1zGPcGZKGRw==
+monosize-storage-azure@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/monosize-storage-azure/-/monosize-storage-azure-0.0.6.tgz#7434698a9426028214488ec702227f1004b364a5"
+  integrity sha512-JcNV6jMY/batfJIyO+vLPdqMYlcRsbN19ZS/ZBvHppUXUuqkT5tXNyHFlB+5+8WEEL2SL0mORJoZqKx789kBJg==
   dependencies:
     "@azure/data-tables" "^13.0.0"
     monosize "^0.2.1"
@@ -24160,12 +24160,12 @@ table@^6.0.4, table@^6.0.7:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-tabster@^5.3.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-5.3.0.tgz#66d600a882b70a9939543a61d87f3efc3766dd6c"
-  integrity sha512-3oqZ0gkWXrPSnc7LBbJ9FQmcZL9DFO+ToK8gGGshSvI5hCgp9AnCtq6CIqce3zpg2/aZZci51MUTgNQFbTUiUg==
+tabster@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-6.0.0.tgz#7fbea44c1e59f636cd3837c63491fdcb60974a2c"
+  integrity sha512-Dvrzv4wG+Qjw9wmC7bKOTVXDn24h8XZLNPmc+XfuEv4pGiTxg+EZ5fp265ccqu00E2om8Wznp9jFftWVu624aQ==
   dependencies:
-    keyborg "^2.4.1"
+    keyborg "2.5.0"
     tslib "^2.3.1"
 
 tachometer@0.7.0:

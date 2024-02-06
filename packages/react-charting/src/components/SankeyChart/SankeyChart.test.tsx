@@ -1,12 +1,12 @@
 jest.mock('react-dom');
-import * as React from 'react';
-import { resetIds } from '../../Utilities';
-import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
-import { ISankeyChartProps, SankeyChart } from './index';
-import { SankeyChartBase, ISankeyChartState } from './SankeyChart.base';
-import { IChartProps } from '../../index';
 import toJson from 'enzyme-to-json';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
+import { IChartProps } from '../../index';
+import { resetIds } from '../../Utilities';
+import { ISankeyChartProps, SankeyChart } from './index';
+import { ISankeyChartState, SankeyChartBase } from './SankeyChart.base';
 
 // Wrapper of the SankeyChart to be tested.
 let wrapper: ReactWrapper<ISankeyChartProps, ISankeyChartState, SankeyChartBase> | undefined;
@@ -362,7 +362,7 @@ describe('SankeyChart - mouse events', () => {
   });
   it('Should render callout correctly on mouseover when height of node is less than 24px', () => {
     wrapper = mount(<SankeyChart data={data} height={500} width={800} />);
-    wrapper.find('rect[aria-label="node124.360.55.1with weight14"]').at(0).simulate('mouseover');
+    wrapper.find('rect[aria-label="node 124.360.55.1 with weight 14"]').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });

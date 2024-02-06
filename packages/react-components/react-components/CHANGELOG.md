@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 29 Jan 2024 13:56:05 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jan 2024 23:16:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.46.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.3)
+
+Tue, 30 Jan 2024 23:16:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.46.2..@fluentui/react-components_v9.46.3)
+
+### Minor changes
+
+- `@fluentui/react-tabster`
+  - Optional ShadowDOM support. ([PR #30429](https://github.com/microsoft/fluentui/pull/30429) by marata@microsoft.com)
+- `@fluentui/react-utilities`
+  - getParent() version with ShadowDOM support. ([PR #30429](https://github.com/microsoft/fluentui/pull/30429) by marata@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-table`
+  - DataGrid to use dedicated custom events instead of simulated keypresses. ([PR #30387](https://github.com/microsoft/fluentui/pull/30387) by marata@microsoft.com)
+- `@fluentui/react-tabster`
+  - Tabster 5.3.0 and Keyborg 2.4.1. ([PR #30387](https://github.com/microsoft/fluentui/pull/30387) by marata@microsoft.com)
 
 ## [9.46.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.2)
 

@@ -360,7 +360,7 @@ export class VerticalStackedBarChartBase extends React.Component<
               strokeWidth={3 + lineBorderWidth * 2}
               fill="transparent"
               strokeLinecap="round"
-              stroke={theme!.palette.white}
+              stroke={theme!.semanticColors.bodyBackground}
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             />,
           );
@@ -412,7 +412,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             })}
             r={this._getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).radius}
             stroke={circlePoint.color}
-            fill={this.props.theme!.palette.white}
+            fill={this.props.theme!.semanticColors.bodyBackground}
             strokeWidth={3}
             visibility={this._getCircleVisibilityAndRadius(circlePoint.xItem.xAxisPoint, circlePoint.legend).visibility}
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
