@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-provider": "^9.13.8",
+    "@fluentui/react-provider": "^9.13.10",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {

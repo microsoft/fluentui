@@ -2,6 +2,146 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 06 Feb 2024 07:27:41 GMT",
+      "tag": "@fluentui/react-charting_v5.19.22",
+      "version": "5.19.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "atisjai@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "2aa917e1fdf8990fd4869a7c5dc43880695ec3fb",
+            "comment": "Fix: Fix color tokens to enable charts to render correctly for v9 theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Feb 2024 07:27:39 GMT",
+      "tag": "@fluentui/react-charting_v5.19.21",
+      "version": "5.19.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "rarthur@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ad5da7b666f33ecfb5b296ea9bb9824dc9f01662",
+            "comment": "Sankey Diagram: Improving how the aria-labels are generated so that they can be read by the text-to-speech engine"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.135",
+            "commit": "5aefa438776a47278b09f5073149bb94fb14c044"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.115.4",
+            "commit": "5aefa438776a47278b09f5073149bb94fb14c044"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Jan 2024 07:27:57 GMT",
+      "tag": "@fluentui/react-charting_v5.19.20",
+      "version": "5.19.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.40",
+            "commit": "eeb2656f81977a5821c36ca854fe2781d9dcfd1b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.134",
+            "commit": "eeb2656f81977a5821c36ca854fe2781d9dcfd1b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.115.3",
+            "commit": "eeb2656f81977a5821c36ca854fe2781d9dcfd1b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jan 2024 07:27:14 GMT",
+      "tag": "@fluentui/react-charting_v5.19.19",
+      "version": "5.19.19",
+      "comments": {
+        "none": [
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ba494495dc4e54c7d95e820514f20289e92d1137",
+            "comment": "Added unit test cases for Heat map chart"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.133",
+            "commit": "2c3fdb3e90f95f7476d02a4b3b253c5f04bc85cf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.115.2",
+            "commit": "2c3fdb3e90f95f7476d02a4b3b253c5f04bc85cf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jan 2024 07:26:11 GMT",
+      "tag": "@fluentui/react-charting_v5.19.18",
+      "version": "5.19.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "rarthur@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b16e80cd2c155f478c6a14b8f211a83eeb26f62a",
+            "comment": "Refactoring SankeyChart to improve minification"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Jan 2024 07:26:58 GMT",
+      "tag": "@fluentui/react-charting_v5.19.17",
+      "version": "5.19.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.39",
+            "commit": "aa038189b6f700f5a43e933466e7ca72163423d6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.132",
+            "commit": "aa038189b6f700f5a43e933466e7ca72163423d6"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.115.1",
+            "commit": "aa038189b6f700f5a43e933466e7ca72163423d6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jan 2024 07:26:42 GMT",
       "tag": "@fluentui/react-charting_v5.19.16",
       "version": "5.19.16",

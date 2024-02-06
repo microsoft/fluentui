@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Thu, 18 Jan 2024 14:25:03 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jan 2024 23:16:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.18.0)
+
+Tue, 30 Jan 2024 23:16:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.17.4..@fluentui/react-tabster_v9.18.0)
+
+### Minor changes
+
+- Optional ShadowDOM support. ([PR #30429](https://github.com/microsoft/fluentui/pull/30429) by marata@microsoft.com)
+- Bump @fluentui/react-utilities to v9.18.0 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+
+### Patches
+
+- Tabster 5.3.0 and Keyborg 2.4.1. ([PR #30387](https://github.com/microsoft/fluentui/pull/30387) by marata@microsoft.com)
+
+## [9.17.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.17.4)
+
+Tue, 23 Jan 2024 15:11:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.17.3..@fluentui/react-tabster_v9.17.4)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.17.0 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
 
 ## [9.17.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.17.3)
 

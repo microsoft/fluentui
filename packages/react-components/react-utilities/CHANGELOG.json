@@ -2,6 +2,36 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Tue, 30 Jan 2024 23:16:54 GMT",
+      "tag": "@fluentui/react-utilities_v9.18.0",
+      "version": "9.18.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "a56a5d3223c192a2a815ed84346825326541280a",
+            "comment": "getParent() version with ShadowDOM support."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jan 2024 15:11:00 GMT",
+      "tag": "@fluentui/react-utilities_v9.17.0",
+      "version": "9.17.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "ae31ae01c299e43ff98c561bf937da1ed465ef8a",
+            "comment": "feat: helper type DistributiveOmit"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Jan 2024 14:25:03 GMT",
       "tag": "@fluentui/react-utilities_v9.16.1",
       "version": "9.16.1",

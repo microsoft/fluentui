@@ -133,6 +133,7 @@ exports[`Dialog deprecated props renders Dialog with className 1`] = `
                 position: relative;
                 text-align: left;
               }
+          data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
           id="ModalFocusTrapZone1"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -446,6 +447,7 @@ exports[`Dialog deprecated props renders Dialog with containerClassName 1`] = `
                 position: relative;
                 text-align: left;
               }
+          data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
           id="ModalFocusTrapZone1"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -759,6 +761,7 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                 position: relative;
                 text-align: left;
               }
+          data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
           id="ModalFocusTrapZone1"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
@@ -1202,6 +1205,7 @@ exports[`Dialog deprecated props renders Dialog with isDarkOverlay set to true 1
                 position: relative;
                 text-align: left;
               }
+          data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
           id="ModalFocusTrapZone1"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}

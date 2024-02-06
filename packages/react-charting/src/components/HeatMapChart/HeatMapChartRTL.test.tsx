@@ -2,6 +2,8 @@ import * as React from 'react';
 import { act, queryAllByAttribute, render, waitFor, screen, fireEvent } from '@testing-library/react';
 import { HeatMapChart, IHeatMapChartProps } from './index';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import { getByClass } from '../../utilities/TestUtility.test';
+import { HeatMapChartBase } from './HeatMapChart.base';
 
 expect.extend(toHaveNoViolations);
 
@@ -287,5 +289,74 @@ describe('HeatMapChart snapshot tests', () => {
     );
 
     expect(container).toMatchSnapshot();
+  });
+});
+
+describe('Heat Map Chart - Subcomponent Legend', () => {
+  test('Should select legend on single mouse click on legends', async () => {
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapStringData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    const legends = getByClass(container, /legend-/i);
+    expect(legends[0]).toHaveAttribute('aria-selected', 'false');
+    fireEvent.click(legends![0]);
+    const legendsAfterClickEvent = screen.getAllByText(
+      (content, element) => element!.tagName.toLowerCase() === 'button',
+    );
+    // Assert
+    expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'true');
+  });
+
+  test('Should highlight legend on mouse over on legends', async () => {
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapStringData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    // eslint-disable-next-line
+    const handleMouseOver = jest.spyOn(HeatMapChartBase.prototype as any, '_onLegendHover');
+    const legends = getByClass(container, /legend-/i);
+    // Assert
+    fireEvent.mouseOver(legends[0]);
+    expect(handleMouseOver).toHaveBeenCalled();
+  });
+
+  test('Should reset legend on mouse leave from legends', async () => {
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapStringData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    // eslint-disable-next-line
+    const handleMouseOver = jest.spyOn(HeatMapChartBase.prototype as any, '_onLegendLeave');
+    const legends = getByClass(container, /legend-/i);
+    // Assert
+    fireEvent.mouseOver(legends[0]);
+    fireEvent.mouseLeave(legends[0]);
+    expect(handleMouseOver).toHaveBeenCalled();
+  });
+
+  test('Should select legend on mouse click on legend', async () => {
+    const { container } = render(
+      <HeatMapChart
+        data={HeatMapStringData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    // eslint-disable-next-line
+    const handleMouseClick = jest.spyOn(HeatMapChartBase.prototype as any, '_onLegendClick');
+    const legends = getByClass(container, /legend-/i);
+    // Assert
+    fireEvent.click(legends[0]);
+    expect(handleMouseClick).toHaveBeenCalled();
   });
 });

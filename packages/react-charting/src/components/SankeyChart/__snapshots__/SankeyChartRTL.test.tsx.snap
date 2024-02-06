@@ -26,6 +26,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
             outline: none;
           }
       data-focuszone-id="FocusZone18"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -66,7 +67,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               </lineargradient>
             </defs>
             <path
-              aria-label="link from192.168.42.72to124.360.55.1with weight80"
+              aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
               d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
               data-is-focusable="true"
               fill-opacity="1"
@@ -98,7 +99,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               </lineargradient>
             </defs>
             <path
-              aria-label="link from172.152.48.13to192.564.10.2with weight50"
+              aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
               d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
               data-is-focusable="true"
               fill-opacity="1"
@@ -125,7 +126,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
             id="nodeGElement5"
           >
             <rect
-              aria-label="node192.168.42.72with weight80"
+              aria-label="node 192.168.42.72 with weight 80"
               data-is-focusable="true"
               fill="#757575"
               height="237.53846153846155"
@@ -189,7 +190,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
             id="nodeGElement8"
           >
             <rect
-              aria-label="node172.152.48.13with weight50"
+              aria-label="node 172.152.48.13 with weight 50"
               data-is-focusable="true"
               fill="#8764B8"
               height="148.46153846153845"
@@ -253,7 +254,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
             id="nodeGElement11"
           >
             <rect
-              aria-label="node124.360.55.1with weight80"
+              aria-label="node 124.360.55.1 with weight 80"
               data-is-focusable="true"
               fill="#757575"
               height="237.53846153846155"
@@ -317,7 +318,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
             id="nodeGElement14"
           >
             <rect
-              aria-label="node192.564.10.2with weight50"
+              aria-label="node 192.564.10.2 with weight 50"
               data-is-focusable="true"
               fill="#8764B8"
               height="148.46153846153845"
@@ -423,6 +424,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
               outline: none;
             }
         data-focuszone-id="FocusZone40"
+        data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
           focusable="false"
@@ -463,7 +465,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 </lineargradient>
               </defs>
               <path
-                aria-label="link from192.168.42.72to124.360.55.1with weight80"
+                aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
                 d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
                 data-is-focusable="true"
                 fill-opacity="1"
@@ -495,7 +497,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 </lineargradient>
               </defs>
               <path
-                aria-label="link from172.152.48.13to192.564.10.2with weight50"
+                aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
                 d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
                 data-is-focusable="true"
                 fill-opacity="1"
@@ -522,7 +524,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
               id="nodeGElement27"
             >
               <rect
-                aria-label="node192.168.42.72with weight80"
+                aria-label="node 192.168.42.72 with weight 80"
                 data-is-focusable="true"
                 fill="#757575"
                 height="237.53846153846155"
@@ -586,7 +588,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
               id="nodeGElement30"
             >
               <rect
-                aria-label="node172.152.48.13with weight50"
+                aria-label="node 172.152.48.13 with weight 50"
                 data-is-focusable="true"
                 fill="#8764B8"
                 height="148.46153846153845"
@@ -650,7 +652,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
               id="nodeGElement33"
             >
               <rect
-                aria-label="node124.360.55.1with weight80"
+                aria-label="node 124.360.55.1 with weight 80"
                 data-is-focusable="true"
                 fill="#757575"
                 height="237.53846153846155"
@@ -714,7 +716,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
               id="nodeGElement36"
             >
               <rect
-                aria-label="node192.564.10.2with weight50"
+                aria-label="node 192.564.10.2 with weight 50"
                 data-is-focusable="true"
                 fill="#8764B8"
                 height="148.46153846153845"
@@ -820,6 +822,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             outline: none;
           }
       data-focuszone-id="FocusZone18"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -860,7 +863,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               </lineargradient>
             </defs>
             <path
-              aria-label="link from192.168.42.72to124.360.55.1with weight80"
+              aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
               d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
               data-is-focusable="true"
               fill-opacity="1"
@@ -892,7 +895,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               </lineargradient>
             </defs>
             <path
-              aria-label="link from172.152.48.13to192.564.10.2with weight50"
+              aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
               d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
               data-is-focusable="true"
               fill-opacity="1"
@@ -919,7 +922,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             id="nodeGElement5"
           >
             <rect
-              aria-label="node192.168.42.72with weight80"
+              aria-label="node 192.168.42.72 with weight 80"
               data-is-focusable="true"
               fill="#757575"
               height="237.53846153846155"
@@ -983,7 +986,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             id="nodeGElement8"
           >
             <rect
-              aria-label="node172.152.48.13with weight50"
+              aria-label="node 172.152.48.13 with weight 50"
               data-is-focusable="true"
               fill="#8764B8"
               height="148.46153846153845"
@@ -1047,7 +1050,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             id="nodeGElement11"
           >
             <rect
-              aria-label="node124.360.55.1with weight80"
+              aria-label="node 124.360.55.1 with weight 80"
               data-is-focusable="true"
               fill="#757575"
               height="237.53846153846155"
@@ -1111,7 +1114,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             id="nodeGElement14"
           >
             <rect
-              aria-label="node192.564.10.2with weight50"
+              aria-label="node 192.564.10.2 with weight 50"
               data-is-focusable="true"
               fill="#8764B8"
               height="148.46153846153845"
