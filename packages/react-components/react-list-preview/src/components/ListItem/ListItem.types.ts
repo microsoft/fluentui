@@ -1,8 +1,9 @@
+import { Checkbox } from '@fluentui/react-checkbox';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type ListItemSlots = {
   root: NonNullable<Slot<'li', 'div'>>;
-  checkmark?: Slot<'div'>;
+  checkmark?: Slot<typeof Checkbox>;
 };
 
 /**
@@ -15,4 +16,4 @@ export type ListItemProps = ComponentProps<ListItemSlots> & {
 /**
  * State used in rendering ListItem
  */
-export type ListItemState = ComponentState<ListItemSlots> & { selectable?: boolean };
+export type ListItemState = ComponentState<ListItemSlots> & { selectable?: boolean; hasCustomOnClick?: boolean };

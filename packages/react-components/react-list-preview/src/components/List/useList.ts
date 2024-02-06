@@ -6,7 +6,7 @@ import {
   useControllableState,
   useEventCallback,
 } from '@fluentui/react-utilities';
-import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { useArrowNavigationGroup, useFocusableGroup } from '@fluentui/react-tabster';
 import { ListProps, ListState } from './List.types';
 import { useListSelection } from '../../hooks/useListSelection';
 
@@ -34,9 +34,10 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
   } = props;
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
-    axis: layout === 'grid' ? 'grid-linear' : 'both',
+    axis: focusableItems ? 'vertical' : layout === 'grid' ? 'grid-linear' : 'both',
     memorizeCurrent: true,
   });
+  // const focusableGroupAttrs = useFocusableGroup();
 
   const [selectionState, setSelectionState] = useControllableState({
     state: selectedItems,
@@ -68,6 +69,7 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
           role: 'listbox',
           'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
         }),
+        // ...focusableGroupAttrs,
         ...arrowNavigationAttributes,
         ...props,
       }),

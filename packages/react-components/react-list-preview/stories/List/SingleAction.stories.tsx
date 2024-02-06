@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ListWithAction = () => {
+export const SingleAction = () => {
   const classes = useStyles();
   return (
     <div className={classes.wrapper}>
@@ -55,7 +55,7 @@ export const ListWithAction = () => {
     </div>
   );
 };
-ListWithAction.parameters = {
+SingleAction.parameters = {
   docs: {
     description: {
       story: [

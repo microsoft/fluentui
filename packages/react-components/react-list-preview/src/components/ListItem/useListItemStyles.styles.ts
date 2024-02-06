@@ -25,9 +25,9 @@ const useRootBaseStyles = makeResetStyles({
 
 const useCheckmarkBaseStyles = makeResetStyles({
   alignSelf: 'center',
-  marginRight: tokens.spacingHorizontalS,
-  width: tokens.spacingHorizontalL,
-  height: tokens.spacingVerticalL,
+  // marginRight: tokens.spacingHorizontalS,
+  // width: tokens.spacingHorizontalL,
+  // height: tokens.spacingVerticalL,
 });
 
 /**
@@ -51,7 +51,9 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
   state.root.className = mergeClasses(
     listItemClassNames.root,
     rootBaseStyles,
-    state.selectable && styles.rootClickable,
+    // add the clickable root only if we know the items are selectable and there is no custom onClick
+    // because the custom onClick could be overriding the selection behavior.
+    state.selectable && !state.hasCustomOnClick && styles.rootClickable,
     state.root.className,
   );
 

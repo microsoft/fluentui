@@ -65,7 +65,7 @@ const MyListItem = React.memo(({ name, avatar }: { name: string; avatar: string 
   );
 });
 
-export const ListSelectionUncontrolled = () => {
+export const SingleActionSelection = () => {
   const classes = useStyles();
   const [currentIndex, setCurrentIndex] = React.useState(4);
 
@@ -97,7 +97,7 @@ export const ListSelectionUncontrolled = () => {
   );
 };
 
-ListSelectionUncontrolled.parameters = {
+SingleActionSelection.parameters = {
   docs: {
     description: {
       story: [
@@ -107,6 +107,8 @@ ListSelectionUncontrolled.parameters = {
         '',
         "You can see that the default selection contains an object, which is not yet rendered in the list. Try adding a new item and see that it's selected by default. This is to demonstrate that you can decouple your selection state from ",
         'your list items and even store and retrieve them separately.',
+        '',
+        'Also this example only has one action in the list item, and its for toggling the selection. The roles for this one are listbox and option, and the options themselves are focusable.',
       ].join('\n'),
     },
   },
