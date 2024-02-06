@@ -1,6 +1,8 @@
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ColorSwatchSlots, ColorSwatchState } from './ColorSwatch.types';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
+import { tokens } from '@fluentui/react-components';
 
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
   root: 'fui-ColorSwatch',
@@ -34,6 +36,43 @@ const useStyles = makeResetStyles({
   ':hover:active': {
     boxShadow: `inset 0 0 0 3px var(${swatchColor}), inset 0 0 0 6px var(${swatchStateColor})`,
   },
+  // ':focus': {
+  //   border: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
+  //   boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorNeutralForegroundInverted}
+  //     inset
+  //   `,
+  // },
+  // High contrast styles
+
+  '@media (forced-colors: active)': {
+    ':focus': {
+      borderColor: 'ButtonText',
+    },
+
+    ':hover': {
+      backgroundColor: 'HighlightText',
+      borderColor: 'Highlight',
+      color: 'Highlight',
+      forcedColorAdjust: 'none',
+    },
+
+    ':hover:active': {
+      backgroundColor: 'HighlightText',
+      borderColor: 'Highlight',
+      color: 'Highlight',
+      forcedColorAdjust: 'none',
+    },
+  },
+
+  // Focus styles
+
+  ...createCustomFocusIndicatorStyle({
+    border: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
+    boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${swatchStateColor}
+      inset
+    `,
+    borderRadius: tokens.borderRadiusNone,
+  }),
 });
 
 const useIconStyles = makeResetStyles({});

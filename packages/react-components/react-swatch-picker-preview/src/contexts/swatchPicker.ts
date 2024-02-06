@@ -26,10 +26,12 @@ export type SwatchPickerContextValue<ColorT = DefaultColor> = Pick<
    * Notify the picker about color selection.
    */
   notifySelected: (color: ColorT) => void;
+
+  selectedColor?: string;
 };
 
 export const useSwatchPickerContextValues = (state: SwatchPickerState): SwatchPickerContextValues => {
-  const { layout, size, shape, columnCount, notifyPreview, notifySelected } = state;
+  const { layout, size, shape, columnCount, notifyPreview, notifySelected, selectedColor } = state;
 
   const swatchPicker = React.useMemo<SwatchPickerContextValue>(
     () => ({
@@ -37,10 +39,11 @@ export const useSwatchPickerContextValues = (state: SwatchPickerState): SwatchPi
       size,
       shape,
       columnCount,
+      selectedColor,
       notifyPreview,
       notifySelected,
     }),
-    [layout, size, shape, columnCount, notifyPreview, notifySelected],
+    [layout, size, shape, columnCount, selectedColor, notifyPreview, notifySelected],
   );
 
   return { swatchPicker };
@@ -57,6 +60,7 @@ export const swatchPickerContextDefaultValue: SwatchPickerContextValue = {
   columnCount: 2,
   size: 'medium',
   shape: 'square',
+  selectedColor: undefined,
 };
 
 export type SwatchPickerContextValues = {

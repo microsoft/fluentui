@@ -16,7 +16,6 @@ import { Color, useSwatchPickerContextValue_unstable } from '../../contexts/swat
  */
 export const useColorSwatch_unstable = <T extends Color>(
   props: ColorSwatchProps<T>,
-  // pickerContext: SwatchPickerContextValue, //SwatchPickerContextValue<T>
   ref: React.Ref<HTMLButtonElement>,
 ): ColorSwatchState => {
   const { icon, disabled } = props;
@@ -34,6 +33,7 @@ export const useColorSwatch_unstable = <T extends Color>(
     elementType: 'span',
   });
   const pickerContext = useSwatchPickerContextValue_unstable();
+  const selectedColor = pickerContext.selectedColor;
 
   const state: ColorSwatchState = {
     components: {
@@ -49,8 +49,8 @@ export const useColorSwatch_unstable = <T extends Color>(
         tabIndex: 0,
         'aria-selected': selected,
         onClick: () => {
-          setSelected(!selected);
           pickerContext.notifySelected(props);
+          !selected && setSelected(true);
         },
         onMouseOver: () => {
           pickerContext.notifyPreview(props, true);
@@ -70,6 +70,10 @@ export const useColorSwatch_unstable = <T extends Color>(
 
   state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLButtonElement>());
   state.selected = selected;
+
+  if (selected && selectedColor !== props.hex) {
+    setSelected(false);
+  }
 
   useColorSwatchState_unstable(state, props);
   return state;

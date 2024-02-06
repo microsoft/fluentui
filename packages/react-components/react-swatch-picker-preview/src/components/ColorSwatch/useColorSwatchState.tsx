@@ -3,12 +3,13 @@ import { swatchCSSVars } from './useColorSwatchStyles.styles';
 import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
 import { calculateContrastRatioFromHex } from '../../utils/calculateContrastRatio';
 import { Color } from '../../contexts/swatchPicker';
+// import { tokens } from '@fluentui/react-components';
 
 const { swatchColor, swatchBorderColor, swatchStateColor } = swatchCSSVars;
 
 export const useColorSwatchState_unstable = <T extends Color>(state: ColorSwatchState, props: ColorSwatchProps<T>) => {
   const { hex } = props;
-  const contrastRatio = calculateContrastRatioFromHex('#fafafa', hex);
+  const contrastRatio = calculateContrastRatioFromHex('#fafafa', hex); // tokens.colorNeutralForeground1 - for focus white border
 
   const _stateColor = props.contrastStateColor ?? '#000';
   const _borderColor = props.contrastBorderColor ?? '#000';
