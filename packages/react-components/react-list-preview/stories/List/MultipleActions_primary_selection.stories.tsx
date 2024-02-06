@@ -1,9 +1,6 @@
 import {
   Button,
   Caption1,
-  Card,
-  CardHeader,
-  CardPreview,
   CardProps,
   makeResetStyles,
   makeStyles,
@@ -84,13 +81,7 @@ const CardExample = (props: CardProps & { value: string; selected?: boolean }) =
       className={mergeClasses(listItemStyles, styles.listItem)}
       checkmark={{ className: styles.checkmark }}
       role="row"
-      tabIndex={0}
-      // aria-checked={props.selected ? 'true' : 'false'}
       aria-label={value}
-      //aria-checked?
-      aria-posinset={1}
-
-      // aria-owns={owns}
     >
       <div role="gridcell" style={{ gridArea: 'preview', overflow: 'hidden' }}>
         <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />
@@ -172,7 +163,6 @@ export const MultipleActionsPrimarySelection = (props: Partial<ListProps>) => {
 
   return (
     <List
-      layout="grid"
       className={classes.list}
       focusableItems
       selectable
@@ -180,7 +170,6 @@ export const MultipleActionsPrimarySelection = (props: Partial<ListProps>) => {
       aria-orientation="vertical"
       onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
       selectionMode="multiselect"
-      aria-setsize={9}
     >
       <CardExample value="card-1" selected={selectedItems.includes('card-1')} />
       <CardExample value="card-2" selected={selectedItems.includes('card-2')} />

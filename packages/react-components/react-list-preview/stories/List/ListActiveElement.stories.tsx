@@ -8,7 +8,8 @@ import {
   tokens,
   SelectionItemId,
 } from '@fluentui/react-components';
-import { List, ListItem, useListSelection } from '@fluentui/react-list-preview';
+import { Mic16Regular, SpeakerMuteRegular } from '@fluentui/react-icons';
+import { List, ListItem } from '@fluentui/react-list-preview';
 
 import * as React from 'react';
 const names = [
@@ -43,15 +44,16 @@ const items: Item[] = names.map(name => ({
 const useStyles = makeStyles({
   wrapper: {
     display: 'grid',
-    gridTemplateColumns: '200px 1fr',
+    gridTemplateColumns: '240px 1fr',
     columnGap: '16px',
   },
   button: {
-    ...shorthands.padding(0),
+    alignSelf: 'center',
   },
   item: {
     cursor: 'pointer',
     ...shorthands.padding('2px', '6px'),
+    justifyContent: 'space-between',
   },
   itemSelected: {
     backgroundColor: tokens.colorSubtleBackgroundSelected,
@@ -60,6 +62,7 @@ const useStyles = makeStyles({
 
 // Memoizing the ListItem like this allows the unaffected ListItem not to be re-rendered when the selection changes.
 const MyListItem = React.memo(({ name, avatar, ...rest }: { name: string; avatar: string; className?: string }) => {
+  const styles = useStyles();
   return (
     <ListItem key={name} value={name} aria-label={name} {...rest} checkmark={null}>
       <Persona
@@ -70,6 +73,16 @@ const MyListItem = React.memo(({ name, avatar, ...rest }: { name: string; avatar
           image: {
             src: avatar,
           },
+        }}
+      />
+      <Button
+        aria-label={`Mute ${name}`}
+        size="small"
+        icon={<Mic16Regular />}
+        className={styles.button}
+        onClick={e => {
+          e.stopPropagation();
+          alert(`Muting ${name}`);
         }}
       />
     </ListItem>
@@ -85,10 +98,14 @@ export const ListActiveElement = () => {
     <div className={classes.wrapper}>
       <List
         selectable
+        focusableItems
         selectedItems={selectedItems}
         onSelectionChange={(e, data) => {
           console.log(e);
-          setSelectedItems(data.selectedItems.slice(-1));
+          const selectedItem = data.selectedItems.slice(-1);
+          if (selectedItem.length) {
+            setSelectedItems(selectedItem);
+          }
         }}
       >
         {items.map(({ name, avatar }) => (
@@ -116,12 +133,7 @@ ListActiveElement.parameters = {
   docs: {
     description: {
       story: [
-        'Any List can be selectable. You have an option to control the selection state yourself or let the List manage it for you.',
-        '',
-        'You can pass `selectable` prop inside of the List component to get support for selection. The List notifies the parent about changes in selection via the `onSelectionChange` props. In the example we are also using the `defaultSelectedItems` prop to set the initial selection state. While we are saving the results of `onSelectionChange`, it is purely for keeping track of the selection state and is not used to control the selection.',
-        '',
-        "You can see that the default selection contains an object, which is not yet rendered in the list. Try adding a new item and see that it's selected by default. This is to demonstrate that you can decouple your selection state from ",
-        'your list items and even store and retrieve them separately.',
+        'You can use selection and custom styles to show the active element in a different way. This is useful for scenarios where you want to show the details of the selected item, for example.',
       ].join('\n'),
     },
   },

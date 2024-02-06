@@ -72,7 +72,7 @@ export const useListItem_unstable = (
 
   validateNavigableWhenOnClickPresent(focusableItems, onClick);
 
-  const { findFirstFocusable, findPrevFocusable } = useFocusFinders();
+  const { findFirstFocusable, findPrevFocusable, findNextFocusable } = useFocusFinders();
 
   const baseIndicatorStyles = useIndicatorStyle();
 
@@ -88,6 +88,15 @@ export const useListItem_unstable = (
     toggleItem?.(e, value);
   });
 
+  const pressEscape = useEventCallback((target: HTMLElement) => {
+    target.dispatchEvent(
+      new KeyboardEvent('keydown', {
+        key: Escape,
+        keyCode: keyCodes.Escape,
+      }),
+    );
+  });
+
   const handleKeyDown: React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement> = useEventCallback(e => {
     onKeyDown?.(e);
 
@@ -101,15 +110,28 @@ export const useListItem_unstable = (
       // If it's one of the Arrows defined, jump out of the list item to focus on the ListItem itself
       // The ArrowLeft will only trigger if the target element is the leftmost, otherwise the
       // arrowNavigationAttributes handles it and prevents it from bubbling here.
-      if (['ArrowLeft', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
+
+      if (e.key === 'ArrowLeft') {
+        pressEscape(e.target as HTMLElement);
+      }
+
+      if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
         // Prevents scrolling for ArrowUp/ArowDown
         e.preventDefault();
-        e.target.dispatchEvent(
-          new KeyboardEvent('keydown', {
-            key: Escape,
-            keyCode: keyCodes.Escape,
-          }),
-        );
+
+        const prevItem = findPrevFocusable(e.currentTarget as HTMLElement);
+        const nextItem = findNextFocusable(e.currentTarget as HTMLElement);
+
+        if (e.key === 'ArrowUp') {
+          prevItem && (e.currentTarget as HTMLElement).previousSibling === prevItem
+            ? prevItem.focus()
+            : pressEscape(e.target as HTMLElement);
+        }
+        if (e.key === 'ArrowDown' && nextItem) {
+          nextItem && (e.currentTarget as HTMLElement).nextSibling === nextItem
+            ? nextItem.focus()
+            : pressEscape(e.target as HTMLElement);
+        }
       }
     }
 
@@ -207,6 +229,7 @@ export const useListItem_unstable = (
     root,
     checkmark,
     selectable: isSelectionEnabled,
+    hasCustomOnClick: typeof props.onClick === 'function',
   };
 
   return state;

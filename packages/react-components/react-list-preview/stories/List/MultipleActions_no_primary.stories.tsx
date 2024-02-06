@@ -80,9 +80,7 @@ const CardExample = (props: CardProps & { value: string; selected?: boolean }) =
       value={props.value}
       className={mergeClasses(listItemStyles, styles.listItem)}
       checkmark={{ className: styles.checkmark }}
-      tabIndex={0}
       aria-label={value}
-      aria-posinset={1}
       role="listitem"
       onClick={e => {
         e.preventDefault();
@@ -168,7 +166,6 @@ export const MultipleActionsNoPrimary = (props: Partial<ListProps>) => {
 
   return (
     <List
-      layout="grid"
       className={classes.list}
       focusableItems
       role="list"

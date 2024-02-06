@@ -1,9 +1,6 @@
 import {
   Button,
   Caption1,
-  Card,
-  CardHeader,
-  CardPreview,
   CardProps,
   makeResetStyles,
   makeStyles,
@@ -84,7 +81,6 @@ const CardExample = (props: CardProps & { value: string; selected?: boolean }) =
       className={mergeClasses(listItemStyles, styles.listItem)}
       checkmark={{ className: styles.checkmark }}
       role="listitem"
-      tabIndex={0}
       aria-label={value}
       onClick={e => {
         // Prevent the default behavior - toggling the selection
@@ -172,7 +168,6 @@ export const MultipleActionsDifferentPrimary = (props: Partial<ListProps>) => {
 
   return (
     <List
-      layout="grid"
       className={classes.list}
       focusableItems
       selectable

@@ -1,9 +1,6 @@
 import {
   Button,
   Caption1,
-  Card,
-  CardHeader,
-  CardPreview,
   CardProps,
   makeResetStyles,
   makeStyles,
@@ -79,12 +76,7 @@ const CardExample = (props: CardProps & { value: string }) => {
   const { value } = props;
 
   return (
-    <ListItem
-      value={props.value}
-      className={mergeClasses(listItemStyles, styles.listItem)}
-      tabIndex={0}
-      aria-label={value}
-    >
+    <ListItem value={props.value} className={mergeClasses(listItemStyles, styles.listItem)} aria-label={value}>
       <div style={{ gridArea: 'preview', overflow: 'hidden' }}>
         <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />
       </div>
