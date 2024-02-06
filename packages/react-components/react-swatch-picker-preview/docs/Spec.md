@@ -136,18 +136,16 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 
 ### SwatchPicker
 
-| Property          | Values                                   | Default   | Purpose                                                      |
-| ----------------- | ---------------------------------------- | --------- | ------------------------------------------------------------ |
-| disabled          | boolean                                  | false     | Whether SwatchPicker is disabled                             |
-| layout            | `row`, `grid`                            | `row`     | Sets layout of the SwatchPicker                              |
-| onColorPreview    | function                                 | undefined | Callback called when color is previewed (on hover or focus). |
-| onColorSelect     | function                                 | undefined | Callback called when color is selected                       |
-| previewId         | `number`, `string`                       |           | Id of previewColor                                           |
-| selectedId        | `number`, `string`                       |           | Id of selected color                                         |
-| shape             | `square`, `circular`, `rounded`          | `square`  | Sets shape                                                   |
-| size              | `extraSmall`, `small`, `medium`, `large` | `medium`  | Defines size of the Swatch cell                              |
-| spacing           | `small`, `medium`                        | `medium`  | Sets spacing between rows and cells                          |
-| defaultSelectedId | `number`, `string`                       |           | Default selected swatch                                      |
+| Property        | Values                                   | Default   | Purpose                                                      |
+| --------------- | ---------------------------------------- | --------- | ------------------------------------------------------------ |
+| disabled        | boolean                                  | false     | Whether SwatchPicker is disabled                             |
+| layout          | `row`, `grid`                            | `row`     | Sets layout of the SwatchPicker                              |
+| onColorPreview  | function                                 | undefined | Callback called when color is previewed (on hover or focus). |
+| onColorSelect   | function                                 | undefined | Callback called when color is selected                       |
+| shape           | `square`, `circular`, `rounded`          | `square`  | Sets shape                                                   |
+| size            | `extraSmall`, `small`, `medium`, `large` | `medium`  | Defines size of the Swatch cell                              |
+| spacing         | `small`, `medium`                        | `medium`  | Sets spacing between rows and cells                          |
+| defaultSelected | `number`, `string`                       |           | Default selected swatch                                      |
 
 | Slots | Values | Default | Description                  |
 | ----- | ------ | ------- | ---------------------------- |
@@ -157,7 +155,6 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 
 | Property | Values                                   | Default  | Purpose                          |
 | -------- | ---------------------------------------- | -------- | -------------------------------- |
-| id       | `number`, `string`                       |          | Sets ID of the swatch            |
 | shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                       |
 | size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell  |
 | value    |                                          |          | Color in hex, RGB or named color |
