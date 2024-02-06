@@ -34,6 +34,12 @@ export class Popover extends FASTElement {
   open: boolean = false;
 
   /**
+   * size
+   */
+  @attr
+  size: 'small' | 'medium' | 'large' = 'medium';
+
+  /**
    * openChanged
    *
    * opens the popover. It's used to control the popover from the outside. However, it's not recommended to use this property to control the popover before load. To control the popover correctly, wait until the window has fully loaded before opening the popover.
@@ -93,6 +99,11 @@ export class Popover extends FASTElement {
   @attr({ attribute: 'anchor-id' })
   anchorId: string | undefined;
 
+  /**
+   * overflowBoundary
+   *
+   * The boundary container of the popover for use in repositioning the floating popover in the event that the popover needs to respond to a positiioning boundary other than the window or document body
+   */
   @observable
   overflowBoundary: Element | null | undefined;
   overflowBoundaryChanged() {
@@ -106,9 +117,6 @@ export class Popover extends FASTElement {
    */
   @attr({ attribute: 'overflow-boundary-selector' })
   overflowBoundarySelector: string | undefined;
-
-  @attr
-  size: 'small' | 'medium' | 'large' = 'medium';
 
   /**
    * registerOverflowBoundary
@@ -237,6 +245,9 @@ export class Popover extends FASTElement {
         if (collisionEdge) {
           this.repositionPopover(collisionEdge);
           this.applyPopoverCssPositioning();
+        } else if (this.originalPopoverPosition && this.position !== this.originalPopoverPosition) {
+          this.position = this.originalPopoverPosition;
+          this.applyPopoverCssPositioning();
         }
       }
     });
@@ -275,12 +286,16 @@ export class Popover extends FASTElement {
     }
   }
 
+  private originalPopoverPosition: PositioningShorthand | undefined;
   /**
    * repositionPopover
    *
    * updates the position of the popover based on popover collisions
    */
   repositionPopover = (collisionEdge: CollisionEdge) => {
+    if (!this.originalPopoverPosition) {
+      this.originalPopoverPosition = this.position;
+    }
     switch (collisionEdge) {
       case 'top':
         this.position = PositioningShorthand.belowStart;
@@ -303,7 +318,6 @@ export class Popover extends FASTElement {
    * calculateModifiedPopoverPosition
    */
   calculateModifiedPopoverPosition() {
-    console.log('running repositioning');
     if (this.anchorReferences && this.popoverReference) {
       const anchorRect = this.anchorReferences[0].getBoundingClientRect();
       let modifiedPositionX = anchorRect?.x + window.scrollX;
