@@ -2973,7 +2973,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromLarge SourcetoLarge Targetwith weight10000"
+            aria-label="link from Large Source to Large Target with weight 10000"
             d="M172,36C455.5,36,455.5,36,739,36L739,416.348C455.5,416.348,455.5,416.348,172,416.348Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3008,7 +3008,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromTiny SourcetoLarge Targetwith weight1"
+            aria-label="link from Tiny Source to Large Target with weight 1"
             d="M172,426.232C455.5,426.232,455.5,416.348,739,416.348L739,418.232C455.5,418.232,455.5,428.116,172,428.116Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3043,7 +3043,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromLarge SourcetoTiny Targetwith weight1"
+            aria-label="link from Large Source to Tiny Target with weight 1"
             d="M172,416.348C455.5,416.348,455.5,426.232,739,426.232L739,428.116C455.5,428.116,455.5,418.232,172,418.232Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3078,7 +3078,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             </linearGradient>
           </defs>
           <path
-            aria-label="link fromTiny SourcetoTiny Targetwith weight1"
+            aria-label="link from Tiny Source to Tiny Target with weight 1"
             d="M172,428.116C455.5,428.116,455.5,428.116,739,428.116L739,430C455.5,430,455.5,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
@@ -3108,7 +3108,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           id="nodeGElement93"
         >
           <rect
-            aria-label="nodeLarge Sourcewith weight10001"
+            aria-label="node Large Source with weight 10001"
             data-is-focusable={true}
             fill="#00758F"
             height={382.2322981856484}
@@ -3176,7 +3176,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           id="nodeGElement96"
         >
           <rect
-            aria-label="nodeTiny Sourcewith weight2"
+            aria-label="node Tiny Source with weight 2"
             data-is-focusable={true}
             fill="#77004D"
             height={3.7677018143515397}
@@ -3197,7 +3197,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           id="nodeGElement99"
         >
           <rect
-            aria-label="nodeLarge Targetwith weight10001"
+            aria-label="node Large Target with weight 10001"
             data-is-focusable={true}
             fill="#4F6BED"
             height={382.23229818564846}
@@ -3265,7 +3265,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           id="nodeGElement102"
         >
           <rect
-            aria-label="nodeTiny Targetwith weight2"
+            aria-label="node Tiny Target with weight 2"
             data-is-focusable={true}
             fill="#937600"
             height={3.7677018143516534}
