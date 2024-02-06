@@ -121,7 +121,7 @@ Performance is measured and has been improved for the following scenarios.
 <tr>
     <td>7.</td>
     <td>1 Areachart with 30,000 datapoints</td>
-    <td>49</td>
+    <td>70</td>
 </tr>
 <tr>
     <td>8.</td>

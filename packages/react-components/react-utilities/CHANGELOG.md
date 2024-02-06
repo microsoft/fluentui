@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 08 Jan 2024 16:24:28 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jan 2024 23:16:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.0)
+
+Tue, 30 Jan 2024 23:16:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.17.0..@fluentui/react-utilities_v9.18.0)
+
+### Minor changes
+
+- getParent() version with ShadowDOM support. ([PR #30429](https://github.com/microsoft/fluentui/pull/30429) by marata@microsoft.com)
+
+## [9.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.17.0)
+
+Tue, 23 Jan 2024 15:11:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.16.1..@fluentui/react-utilities_v9.17.0)
+
+### Minor changes
+
+- feat: helper type DistributiveOmit ([PR #30317](https://github.com/microsoft/fluentui/pull/30317) by bernardo.sunderhus@gmail.com)
+
+## [9.16.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.16.1)
+
+Thu, 18 Jan 2024 14:25:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.16.0..@fluentui/react-utilities_v9.16.1)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.14.0 ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by beachball)
+
+## [9.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.16.0)
+
+Wed, 17 Jan 2024 16:18:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.15.6..@fluentui/react-utilities_v9.16.0)
+
+### Minor changes
+
+- Add new type EventHandler/EventData for callback props ([PR #30322](https://github.com/microsoft/fluentui/pull/30322) by yuanboxue@microsoft.com)
 
 ## [9.15.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.15.6)
 

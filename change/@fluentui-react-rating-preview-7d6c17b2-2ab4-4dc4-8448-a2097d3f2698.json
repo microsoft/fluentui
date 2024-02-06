@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: Simplify high contrast visuals for RatingItem, and remove iconOutline from RatingDisplay",
+  "packageName": "@fluentui/react-rating-preview",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -46,4 +46,22 @@ describe('createAtom', () => {
       iterations: 1,
     });
   });
+
+  it('supports functions as motion definitions', () => {
+    const fnMotion = jest.fn().mockImplementation(() => motion);
+    const TestAtom = createAtom(fnMotion);
+
+    const { animateMock, ElementMock } = createElementMock();
+
+    render(
+      <TestAtom>
+        <ElementMock />
+      </TestAtom>,
+    );
+
+    expect(fnMotion).toHaveBeenCalledTimes(1);
+    expect(fnMotion).toHaveBeenCalledWith({ animate: animateMock } /* mock of html element */);
+
+    expect(animateMock).toHaveBeenCalledTimes(1);
+  });
 });

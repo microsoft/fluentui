@@ -18,7 +18,7 @@ export const renderDropdown_unstable = (state: DropdownState, contextValues: Dro
       <ComboboxContext.Provider value={contextValues.combobox}>
         <state.button>
           {state.button.children}
-          <state.expandIcon />
+          {state.expandIcon && <state.expandIcon />}
         </state.button>
         {state.clearButton && <state.clearButton />}
         {state.listbox &&
