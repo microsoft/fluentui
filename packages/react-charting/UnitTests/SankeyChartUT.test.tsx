@@ -17,7 +17,8 @@ import {
 import { SLink, SNode } from '../src/types/IDataPoint';
 import { IMargins } from '../src/utilities/index';
 
-const runTest = describe;
+const env = require('../config/tests');
+const runTest = env === 'TEST' ? describe : describe.skip;
 
 function sankeyChartDataStringNodeId(): ISankeyChartData {
   return {

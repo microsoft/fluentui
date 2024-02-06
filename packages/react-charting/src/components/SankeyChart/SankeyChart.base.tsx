@@ -8,7 +8,8 @@ import { select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
 import * as React from 'react';
 import { IBasestate, SLink, SNode } from '../../types/IDataPoint';
-import { ChartHoverCard, IChartHoverCardProps } from '../../utilities/ChartHoverCard';
+import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
+import { IChartHoverCardProps } from '../../utilities/ChartHoverCard/ChartHoverCard.types';
 import { IMargins } from '../../utilities/utilities';
 import { ISankeyChartData, ISankeyChartProps, ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
 
