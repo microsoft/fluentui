@@ -8,8 +8,10 @@ import {
 import { css } from '@microsoft/fast-element';
 
 export const popoverStyles = css`
-  ::slotted([slot='popover-content']) {
+  .popover-container {
     padding: 12px;
+    min-width: 200px;
+    min-height: 68px;
   }
 
   :host([size='small']) ::slotted([slot='popover-content']) {

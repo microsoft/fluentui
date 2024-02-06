@@ -35,7 +35,7 @@ const template = html`
     <fluent-popover
       id="${x => x.id}"
       anchor-id="${x => x.anchorId}"
-      overflow-boundary-selector=".popover-story-container"
+      overflow-boundary-selector="#storybook-preview-iframe"
       position="${x => x.position}"
       mode="${x => x.mode}"
       size="${x => x.size}"
@@ -122,122 +122,122 @@ Popover.args = {
   content: html` <div class="content">Popover content</div> `,
 };
 
-export const PopoverAboveStart = renderComponent(template).bind({}) as any;
-PopoverAboveStart.args = {
-  id: 'popover-element-above-start',
-  content: html` <div class="content">Popover content</div> `,
-  position: PositioningShorthand.aboveStart,
-  mode: 'manual',
-  open: true,
-  anchorId: 'popover-anchor-above-start',
-};
+// export const PopoverAboveStart = renderComponent(template).bind({}) as any;
+// PopoverAboveStart.args = {
+//   id: 'popover-element-above-start',
+//   content: html` <div class="content">Popover content</div> `,
+//   position: PositioningShorthand.aboveStart,
+//   mode: 'manual',
+//   open: true,
+//   anchorId: 'popover-anchor-above-start',
+// };
 
-export const PopoverAboveCenter = renderComponent(template).bind({}) as any;
-PopoverAboveCenter.args = {
-  id: 'popover-element-above-center',
-  content: html` <div class="content">Popover content</div> `,
-  position: PositioningShorthand.aboveCenter,
-  mode: 'manual',
-  open: true,
-  anchorId: 'popover-anchor-above-center',
-};
+// export const PopoverAboveCenter = renderComponent(template).bind({}) as any;
+// PopoverAboveCenter.args = {
+//   id: 'popover-element-above-center',
+//   content: html` <div class="content">Popover content</div> `,
+//   position: PositioningShorthand.aboveCenter,
+//   mode: 'manual',
+//   open: true,
+//   anchorId: 'popover-anchor-above-center',
+// };
 
-export const PopoverAboveEnd = renderComponent(template).bind({}) as any;
-PopoverAboveEnd.args = {
-  id: 'popover-element-above-end',
-  content: html` <div class="content">Popover content</div> `,
-  position: PositioningShorthand.aboveEnd,
-  mode: 'manual',
-  open: true,
-  anchorId: 'popover-anchor-above-end',
-};
+// export const PopoverAboveEnd = renderComponent(template).bind({}) as any;
+// PopoverAboveEnd.args = {
+//   id: 'popover-element-above-end',
+//   content: html` <div class="content">Popover content</div> `,
+//   position: PositioningShorthand.aboveEnd,
+//   mode: 'manual',
+//   open: true,
+//   anchorId: 'popover-anchor-above-end',
+// };
 
-export const PopoverBelowStart = renderComponent(template).bind({}) as any;
-PopoverBelowStart.args = {
-  id: 'popover-element-below-start',
-  content: html` <div class="content">Popover content</div> `,
-  position: PositioningShorthand.belowStart,
-  mode: 'manual',
-  open: true,
-  anchorId: 'popover-anchor-below-start',
-};
+// export const PopoverBelowStart = renderComponent(template).bind({}) as any;
+// PopoverBelowStart.args = {
+//   id: 'popover-element-below-start',
+//   content: html` <div class="content">Popover content</div> `,
+//   position: PositioningShorthand.belowStart,
+//   mode: 'manual',
+//   open: true,
+//   anchorId: 'popover-anchor-below-start',
+// };
 
-export const PopoverBelowCenter = renderComponent(template).bind({}) as any;
-PopoverBelowCenter.args = {
-  id: 'popover-element-below-center',
-  content: html` <div class="content">Popover content</div> `,
-  position: PositioningShorthand.belowCenter,
-  mode: 'manual',
-  open: true,
-  anchorId: 'popover-anchor-below-center',
-};
+// export const PopoverBelowCenter = renderComponent(template).bind({}) as any;
+// PopoverBelowCenter.args = {
+//   id: 'popover-element-below-center',
+//   content: html` <div class="content">Popover content</div> `,
+//   position: PositioningShorthand.belowCenter,
+//   mode: 'manual',
+//   open: true,
+//   anchorId: 'popover-anchor-below-center',
+// };
 
-export const PopoverBelowEnd = renderComponent(template).bind({}) as any;
-PopoverBelowEnd.args = {
-  id: 'popover-element-below-end',
-  content: html` <div class="content">Popover content</div> `,
-  position: PositioningShorthand.belowEnd,
-  mode: 'manual',
-  open: true,
-  anchorId: 'popover-anchor-below-end',
-};
+// export const PopoverBelowEnd = renderComponent(template).bind({}) as any;
+// PopoverBelowEnd.args = {
+//   id: 'popover-element-below-end',
+//   content: html` <div class="content">Popover content</div> `,
+//   position: PositioningShorthand.belowEnd,
+//   mode: 'manual',
+//   open: true,
+//   anchorId: 'popover-anchor-below-end',
+// };
 
-export const PopoverStartTop = renderComponent(template).bind({}) as any;
-PopoverStartTop.args = {
-  id: 'popover-element-start-top',
-  content: html` <div class="content">Popover content</div> `,
-  position: PositioningShorthand.startTop,
-  mode: 'manual',
-  open: true,
-  anchorId: 'popover-anchor-start-top',
-};
+// export const PopoverStartTop = renderComponent(template).bind({}) as any;
+// PopoverStartTop.args = {
+//   id: 'popover-element-start-top',
+//   content: html` <div class="content">Popover content</div> `,
+//   position: PositioningShorthand.startTop,
+//   mode: 'manual',
+//   open: true,
+//   anchorId: 'popover-anchor-start-top',
+// };
 
-export const PopoverStartMiddle = renderComponent(template).bind({}) as any;
-PopoverStartMiddle.args = {
-  id: 'popover-element-start-middle',
-  content: html` <div class="content">Popover content</div> `,
-  position: PositioningShorthand.startMiddle,
-  mode: 'manual',
-  open: true,
-  anchorId: 'popover-anchor-start-middle',
-};
+// export const PopoverStartMiddle = renderComponent(template).bind({}) as any;
+// PopoverStartMiddle.args = {
+//   id: 'popover-element-start-middle',
+//   content: html` <div class="content">Popover content</div> `,
+//   position: PositioningShorthand.startMiddle,
+//   mode: 'manual',
+//   open: true,
+//   anchorId: 'popover-anchor-start-middle',
+// };
 
-export const PopoverStartBottom = renderComponent(template).bind({}) as any;
-PopoverStartBottom.args = {
-  id: 'popover-element-start-bottom',
-  content: html` <div class="content">Popover content</div> `,
-  position: PositioningShorthand.startBottom,
-  mode: 'manual',
-  open: true,
-  anchorId: 'popover-anchor-start-bottom',
-};
+// export const PopoverStartBottom = renderComponent(template).bind({}) as any;
+// PopoverStartBottom.args = {
+//   id: 'popover-element-start-bottom',
+//   content: html` <div class="content">Popover content</div> `,
+//   position: PositioningShorthand.startBottom,
+//   mode: 'manual',
+//   open: true,
+//   anchorId: 'popover-anchor-start-bottom',
+// };
 
-export const PopoverEndTop = renderComponent(template).bind({}) as any;
-PopoverEndTop.args = {
-  id: 'popover-element-end-top',
-  content: html` <div class="content">Popover content</div> `,
-  position: PositioningShorthand.endTop,
-  mode: 'manual',
-  open: true,
-  anchorId: 'popover-anchor-end-top',
-};
+// export const PopoverEndTop = renderComponent(template).bind({}) as any;
+// PopoverEndTop.args = {
+//   id: 'popover-element-end-top',
+//   content: html` <div class="content">Popover content</div> `,
+//   position: PositioningShorthand.endTop,
+//   mode: 'manual',
+//   open: true,
+//   anchorId: 'popover-anchor-end-top',
+// };
 
-export const PopoverEndMiddle = renderComponent(template).bind({}) as any;
-PopoverEndMiddle.args = {
-  id: 'popover-element-end-middle',
-  content: html` <div class="content">Popover content</div> `,
-  position: PositioningShorthand.endMiddle,
-  mode: 'manual',
-  open: true,
-  anchorId: 'popover-anchor-end-middle',
-};
+// export const PopoverEndMiddle = renderComponent(template).bind({}) as any;
+// PopoverEndMiddle.args = {
+//   id: 'popover-element-end-middle',
+//   content: html` <div class="content">Popover content</div> `,
+//   position: PositioningShorthand.endMiddle,
+//   mode: 'manual',
+//   open: true,
+//   anchorId: 'popover-anchor-end-middle',
+// };
 
-export const PopoverEndBottom = renderComponent(template).bind({}) as any;
-PopoverEndBottom.args = {
-  id: 'popover-element-end-bottom',
-  content: html` <div class="content">Popover content</div> `,
-  position: PositioningShorthand.endBottom,
-  mode: 'manual',
-  open: true,
-  anchorId: 'popover-anchor-end-bottom',
-};
+// export const PopoverEndBottom = renderComponent(template).bind({}) as any;
+// PopoverEndBottom.args = {
+//   id: 'popover-element-end-bottom',
+//   content: html` <div class="content">Popover content</div> `,
+//   position: PositioningShorthand.endBottom,
+//   mode: 'manual',
+//   open: true,
+//   anchorId: 'popover-anchor-end-bottom',
+// };

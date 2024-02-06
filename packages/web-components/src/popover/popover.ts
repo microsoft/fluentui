@@ -1,6 +1,8 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
 
+type CollisionEdge = 'top' | 'right' | 'bottom' | 'left';
+
 export const PositioningShorthand = {
   aboveStart: 'above-start',
   aboveCenter: 'above-center',
@@ -111,11 +113,11 @@ export class Popover extends FASTElement {
   /**
    * registerOverflowBoundary
    */
-  registerOverflowBoundary() {
+  registerOverflowBoundary = () => {
     if (this.overflowBoundarySelector) {
       this.overflowBoundary = document.querySelector(this.overflowBoundarySelector);
     }
-  }
+  };
 
   /**
    * applyPopoverPolyfill
@@ -155,15 +157,26 @@ export class Popover extends FASTElement {
     }
   }
 
+  /**
+   * addOverflowBoundaryEventListeners
+   *
+   * adds event listeners to the overflowBoundary if it exists. This is used to reposition the popover when the overflowBoundary is scrolled, like in the case of an overflowed scrollable container that has a popover as a child.
+   */
   addOverflowBoundaryEventListeners() {
     if (this.overflowBoundary) {
-      this.overflowBoundary.addEventListener('scroll', this.updatePopoverPosition);
+      this.overflowBoundary.addEventListener('scroll', this.applyPopoverCssPositioning);
     }
   }
 
+  /**
+   * addWindowEventListeners
+   */
   addWindowEventListeners() {
-    window.addEventListener('resize', this.updatePopoverPosition);
-    window.addEventListener('scroll', this.updatePopoverPosition);
+    window.addEventListener('resize', () => {
+      this.observePopoverOverflow();
+      this.applyPopoverCssPositioning();
+    });
+    window.addEventListener('scroll', this.applyPopoverCssPositioning);
   }
 
   /**
@@ -171,14 +184,23 @@ export class Popover extends FASTElement {
    */
   togglePopover = () => {
     this.popoverReference?.togglePopover();
-    // this.open = !this.open;
   };
 
   addPopoverEventListeners() {
     if (this.popoverReference) {
       this.popoverReference.addEventListener('toggle', (event: any) => {
         this.registerOverflowBoundary();
-        this.updatePopoverPosition();
+        this.applyPopoverCssPositioning();
+
+        this.createOverflowHandler();
+        this.addWindowEventListeners();
+
+        if (event.newState === 'open') {
+          this.observePopoverOverflow();
+          this.open = true;
+        } else {
+          this.open = false;
+        }
       });
     }
   }
@@ -188,7 +210,7 @@ export class Popover extends FASTElement {
    *
    * used for tracking the overflow of the popover on ui changes
    */
-  intersectionObserver: IntersectionObserver | undefined;
+  private intersectionObserver: IntersectionObserver | undefined;
 
   /**
    * createOverflowHandler
@@ -196,56 +218,110 @@ export class Popover extends FASTElement {
    * handles the overflow of the popover based on the overflowBoundarySelector
    */
   createOverflowHandler = () => {
-    const options: IntersectionObserverInit = {};
+    // defaulting root to document. In the case where the overflowBoundary is not set, and the component is nested in an iframe the document will refer to the iframe document.
+    const options: IntersectionObserverInit = { root: document };
     if (this.overflowBoundary) {
       options.root = this.overflowBoundary;
+      options.rootMargin = '15px';
     }
-    this.intersectionObserver = new IntersectionObserver(this.updatePopoverPosition, options);
+    this.intersectionObserver = new IntersectionObserver(this.handleOverflow, options);
   };
 
   /**
    * handleOverflow
    */
-  handleOverflow(entries: IntersectionObserverEntry[]) {
+  handleOverflow = (entries: IntersectionObserverEntry[]) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        this.updatePopoverPosition();
+      if (entry.intersectionRatio < 1) {
+        const collisionEdge = this.findIntersectingEdge(entry);
+        if (collisionEdge) {
+          this.repositionPopover(collisionEdge);
+          this.applyPopoverCssPositioning();
+        }
       }
     });
+  };
+
+  /**
+   * findIntersectingEdge
+   */
+  findIntersectingEdge = (entry: IntersectionObserverEntry): undefined | CollisionEdge => {
+    const targetRect = entry.boundingClientRect;
+    const rootRect = entry.rootBounds;
+
+    if (rootRect) {
+      if (targetRect.bottom > rootRect.bottom) {
+        return 'bottom';
+      }
+      if (targetRect.top < rootRect.top) {
+        return 'top';
+      }
+      if (targetRect.left < rootRect.left) {
+        return 'left';
+      }
+      if (targetRect.right > rootRect.right) {
+        return 'right';
+      }
+    }
+  };
+
+  /**
+   * observePopoverOverflow
+   */
+  observePopoverOverflow() {
+    this.intersectionObserver?.disconnect();
+    if (this.popoverReference) {
+      this.intersectionObserver?.observe(this.popoverReference);
+    }
   }
 
   /**
-   * updatePosition
+   * repositionPopover
    *
    * updates the position of the popover based on popover collisions
    */
-  updatePopoverPosition = () => {
-    this.applyPopoverCssPositioning();
+  repositionPopover = (collisionEdge: CollisionEdge) => {
+    switch (collisionEdge) {
+      case 'top':
+        this.position = PositioningShorthand.belowStart;
+        break;
+      case 'right':
+        this.position = PositioningShorthand.startTop;
+        break;
+      case 'bottom':
+        this.position = PositioningShorthand.aboveStart;
+        break;
+      case 'left':
+        this.position = PositioningShorthand.endTop;
+        break;
+      default:
+        break;
+    }
   };
 
+  /**
+   * calculateModifiedPopoverPosition
+   */
   calculateModifiedPopoverPosition() {
+    console.log('running repositioning');
     if (this.anchorReferences && this.popoverReference) {
       const anchorRect = this.anchorReferences[0].getBoundingClientRect();
       let modifiedPositionX = anchorRect?.x + window.scrollX;
       let modifiedPositionY = anchorRect?.y + window.scrollY;
 
-      const offsetAboveBelow = 8;
+      const offsetAboveBelow = 4;
       const offsetStartEnd = 4;
-      let padding = 12;
-      if (this.size === 'large') {
-        padding = 20;
-      }
 
       switch (this.position) {
         case PositioningShorthand.aboveStart:
-          modifiedPositionY = modifiedPositionY + padding - offsetAboveBelow - anchorRect.height * 2;
+          modifiedPositionY = modifiedPositionY - this.popoverReference.scrollHeight - offsetAboveBelow;
           break;
         case PositioningShorthand.aboveCenter:
-          modifiedPositionY = modifiedPositionY + padding - offsetAboveBelow - anchorRect.height * 2;
+          modifiedPositionY = modifiedPositionY - this.popoverReference.scrollHeight - offsetAboveBelow;
           modifiedPositionX = modifiedPositionX - (this.popoverReference.scrollWidth - anchorRect.width) / 2;
           break;
         case PositioningShorthand.aboveEnd:
-          modifiedPositionY = modifiedPositionY + padding - offsetAboveBelow - anchorRect.height * 2;
+          modifiedPositionY = modifiedPositionY - this.popoverReference.scrollHeight - offsetAboveBelow;
           modifiedPositionX = modifiedPositionX - (this.popoverReference.scrollWidth - anchorRect.width);
           break;
         case PositioningShorthand.belowStart:
@@ -293,6 +369,9 @@ export class Popover extends FASTElement {
     return { x: 0, y: 0 };
   }
 
+  /**
+   * applyPopoverCssPositioning
+   */
   applyPopoverCssPositioning() {
     if (this.popoverReference) {
       const anchorRect = this.anchorReferences?.[0].getBoundingClientRect();
