@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 06 Feb 2024 07:27:41 GMT",
+      "tag": "@fluentui/react-charting_v5.19.22",
+      "version": "5.19.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "atisjai@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "2aa917e1fdf8990fd4869a7c5dc43880695ec3fb",
+            "comment": "Fix: Fix color tokens to enable charts to render correctly for v9 theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Feb 2024 07:27:39 GMT",
       "tag": "@fluentui/react-charting_v5.19.21",
       "version": "5.19.21",
