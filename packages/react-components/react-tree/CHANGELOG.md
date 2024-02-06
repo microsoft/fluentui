@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Tue, 30 Jan 2024 23:16:54 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Feb 2024 17:55:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.4.30)
+
+Tue, 06 Feb 2024 17:55:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.4.29..@fluentui/react-tree_v9.4.30)
+
+### Patches
+
+- bugfix: regression fix for focus and blur events on TreeItem ([PR #30436](https://github.com/microsoft/fluentui/pull/30436) by bernardo.sunderhus@gmail.com)
+- bugfix: onOpenChange inconsistent between Tree and TreeItem ([PR #30050](https://github.com/microsoft/fluentui/pull/30050) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-aria to v9.8.2 ([PR #30392](https://github.com/microsoft/fluentui/pull/30392) by beachball)
+- Bump @fluentui/react-avatar to v9.6.14 ([PR #30392](https://github.com/microsoft/fluentui/pull/30392) by beachball)
+- Bump @fluentui/react-button to v9.3.68 ([PR #30392](https://github.com/microsoft/fluentui/pull/30392) by beachball)
+- Bump @fluentui/react-checkbox to v9.2.12 ([PR #30392](https://github.com/microsoft/fluentui/pull/30392) by beachball)
+- Bump @fluentui/react-radio to v9.2.7 ([PR #30392](https://github.com/microsoft/fluentui/pull/30392) by beachball)
+- Bump @fluentui/react-tabster to v9.19.0 ([PR #30392](https://github.com/microsoft/fluentui/pull/30392) by beachball)
 
 ## [9.4.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.4.29)
 

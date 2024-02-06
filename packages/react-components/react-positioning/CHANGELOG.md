@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Tue, 30 Jan 2024 23:16:54 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Feb 2024 17:55:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.13.3)
+
+Tue, 06 Feb 2024 17:55:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.13.2..@fluentui/react-positioning_v9.13.3)
+
+### Patches
+
+- fix: Resize heuristic should account for zero dimensions ([PR #30439](https://github.com/microsoft/fluentui/pull/30439) by lingfangao@hotmail.com)
 
 ## [9.13.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.13.2)
 

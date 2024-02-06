@@ -2,6 +2,21 @@
   "name": "@fluentui/react-search-preview",
   "entries": [
     {
+      "date": "Tue, 06 Feb 2024 17:55:20 GMT",
+      "tag": "@fluentui/react-search-preview_v0.1.44",
+      "version": "0.1.44",
+      "comments": {
+        "patch": [
+          {
+            "author": "syphe@outlook.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "af94003107288eaa92a600c73ce266459d52b610",
+            "comment": "Adds custom onChange callback on SearchBox preview so consumers can handle clear event."
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jan 2024 23:16:54 GMT",
       "tag": "@fluentui/react-search-preview_v0.1.43",
       "version": "0.1.43",

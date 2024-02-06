@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Tue, 30 Jan 2024 23:16:54 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Feb 2024 17:55:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.8.2)
+
+Tue, 06 Feb 2024 17:55:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.8.1..@fluentui/react-aria_v9.8.2)
+
+### Patches
+
+- chore: adds @fluentui/react-jsx-runtime as dependency ([PR #30485](https://github.com/microsoft/fluentui/pull/30485) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-tabster to v9.19.0 ([PR #30392](https://github.com/microsoft/fluentui/pull/30392) by beachball)
 
 ## [9.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.8.1)
 

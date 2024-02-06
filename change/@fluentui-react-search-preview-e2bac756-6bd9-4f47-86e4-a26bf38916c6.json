@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adds custom onChange callback on SearchBox preview so consumers can handle clear event.",
-  "packageName": "@fluentui/react-search-preview",
-  "email": "syphe@outlook.com",
-  "dependentChangeType": "patch"
-}
