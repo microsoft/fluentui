@@ -476,7 +476,7 @@ function computeNodeAttributes(nodes: SNode[]): ItemValues<IRenderedNodeAttribut
     // So the actual value on which it will be truncated is 124-8=116.
     const truncatedname: string = truncateText(singleNode.name, 116, padding);
     const isTruncated: boolean = truncatedname.slice(-3) === '...';
-    result[singleNode.nodeId as number] = {
+    result[singleNode.nodeId] = {
       name: truncatedname,
       trimmed: isTruncated,
       height,
@@ -486,6 +486,42 @@ function computeNodeAttributes(nodes: SNode[]): ItemValues<IRenderedNodeAttribut
   selectAll('.tempText').remove();
   return result;
 }
+
+type ItemPositions = {
+  readonly x0: number;
+  readonly y0: number;
+  readonly x1: number;
+  readonly y1: number;
+};
+
+type SankeyLinkWithPositions = ItemPositions & {
+  readonly source: ItemPositions;
+  readonly target: ItemPositions;
+  readonly width: number;
+};
+
+type AreaDataPoint = {
+  readonly x: number;
+  readonly y0: number;
+  readonly y1: number;
+};
+
+const linkToDataPoints = (d: SankeyLinkWithPositions): [AreaDataPoint, AreaDataPoint] => {
+  const halfWidth = d.width * 0.5;
+  return [
+    { x: d.source.x1, y0: d.y0 + halfWidth, y1: d.y0 - halfWidth },
+    { x: d.target.x0, y0: d.y1 + halfWidth, y1: d.y1 - halfWidth },
+  ];
+};
+
+const linkArea = d3Area()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  .x((p: any) => p.x)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  .y0((p: any) => p.y0)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  .y1((p: any) => p.y1)
+  .curve(d3CurveBasis);
 
 // NOTE: To start employing React.useMemo properly, we need to convert this code from a React.Component
 // to a function component. This will require a significant refactor of the code in this file.
@@ -738,22 +774,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           this._onStreamLeave(singleLink);
         };
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const data = (d: any) => {
-          return [
-            { x: d.source.x1, y0: d.y0 + d.width / 2, y1: d.y0 - d.width / 2 },
-            { x: d.target.x0, y0: d.y1 + d.width / 2, y1: d.y1 - d.width / 2 },
-          ];
-        };
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const dataPoints: Array<any> = data(singleLink);
-        const linkArea = d3Area()
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .x((p: any) => p.x)
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .y0((p: any) => p.y0)
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .y1((p: any) => p.y1)
-          .curve(d3CurveBasis);
+        const dataPoints: Array<any> = linkToDataPoints(singleLink as unknown as SankeyLinkWithPositions);
         const gradientUrl = `url(#gradient-${linkId}-${index})`;
         const link = (
           <g key={`${linkId}-${index}`}>
@@ -807,11 +828,13 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           trimmed: isTruncated,
           name: truncatedname,
           weightOffset: textLengthForNodeWeight,
-        } = nodeAttributes[singleNode.nodeId as number];
+        } = nodeAttributes[singleNode.nodeId];
         // NOTE: By calling `getId` here, we are creating a new ID for each node on each render. If we could memoize
         // the nodes or IDs (especially if the node is unchanged), we could speed up the rendering even more
         const id = getId('tooltip');
+        // Each time we render the screen, we create a new tool tip. This is likely a performance issue.
         const div = select('body').append('div').attr('id', id).attr('class', classNames.toolTip!).style('opacity', 0);
+        // We also generate new ids for each node on each render. This is likely a performance issue.
         const nodeId = getId('nodeBar');
         const node = (
           <g key={index} id={getId('nodeGElement')}>
@@ -1069,6 +1092,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _showTooltip(text: string, checkTrcuncated: boolean, div: any, evt: any) {
+    // Because the `text` is passed in, here, maybe we should only create one tooltip and then update its text.
     if (checkTrcuncated) {
       //Fixing tooltip position by attaching it to the element rather than page
       div.style('opacity', 0.9);
