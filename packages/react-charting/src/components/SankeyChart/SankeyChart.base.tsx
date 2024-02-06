@@ -194,7 +194,7 @@ function adjustOnePercentHeightNodes(
     const onePercent = 0.01 * columnValue;
     const columnNodes = nodesInColumn[index];
     columnNodes.forEach((node: SNode) => {
-      const value = computedNodes[node.nodeId as number];
+      const value = computedNodes[node.nodeId];
       const nodePercentage = (value / columnValue) * 100;
       node.actualValue = value;
       //if the value is less than 1% then we are making it as 1% of total .
@@ -213,7 +213,7 @@ function adjustOnePercentHeightNodes(
       columnNodes.forEach((node: SNode) => {
         const normalized = (node.value = node.value! / scalingRatio);
         // Which Original Value? and Which Normalized Value is needed, here? The Node? The Link? Both?
-        changeColumnValue(node, computedNodes[node.nodeId as number], normalized, originalLinks);
+        changeColumnValue(node, computedNodes[node.nodeId], normalized, originalLinks);
       });
     }
   });
@@ -279,7 +279,7 @@ function idFromNumberOrSNode(node: SNode | number): NodeId {
   if (typeof node === 'number') {
     return node;
   }
-  return node.nodeId as number;
+  return node.nodeId as NodeId;
 }
 
 /**
