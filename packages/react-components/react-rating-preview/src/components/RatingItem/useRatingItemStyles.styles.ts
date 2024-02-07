@@ -22,24 +22,28 @@ const useStyles = makeStyles({
     fontSize: '12px',
     width: '12px',
     height: '12px',
+    lineHeight: '12px',
   },
 
   medium: {
     fontSize: '16px',
     width: '16px',
     height: '16px',
+    lineHeight: '16px',
   },
 
   large: {
     fontSize: '20px',
     width: '20px',
     height: '20px',
+    lineHeight: '20px',
   },
 
   'extra-large': {
     fontSize: '28px',
     width: '28px',
     height: '28px',
+    lineHeight: '28px',
   },
 });
 
@@ -73,6 +77,8 @@ const useIndicatorBaseClassName = makeResetStyles({
   position: 'absolute',
   left: 0,
   right: 0,
+  top: 0,
+  bottom: 0,
 });
 
 const useIndicatorStyles = makeStyles({
