@@ -41,6 +41,7 @@ export type ComboboxBaseProps = SelectionProps &
     /**
      * Callback when the open/closed state of the dropdown changes
      */
+    // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
     onOpenChange?: (e: ComboboxBaseOpenEvents, data: ComboboxBaseOpenChangeData) => void;
 
     /**

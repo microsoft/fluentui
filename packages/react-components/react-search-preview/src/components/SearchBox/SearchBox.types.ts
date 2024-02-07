@@ -22,6 +22,7 @@ export type SearchBoxProps = Omit<
      * When the dismiss button is clicked, this will be called with an event of type React.MouseEvent<HTMLSpanElement>
      * and an empty string as the `value` property of the data parameter
      */
+    // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
     onChange?: (event: SearchBoxChangeEvent, data: InputOnChangeData) => void;
   };
 

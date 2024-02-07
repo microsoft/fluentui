@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: add internal lint rule, no change to public behavior/api.",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "none"
+}
