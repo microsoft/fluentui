@@ -2,6 +2,54 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 07 Feb 2024 07:26:19 GMT",
+      "tag": "@fluentui/react-charting_v5.19.23",
+      "version": "5.19.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "36a4c3b734b77fefaa3f137a88a12d4a5ebeae7a",
+            "comment": "Fix bugs in gauge chart"
+          },
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "d89076308f8f3cfe80756f873bc12447a474e12c",
+            "comment": "Adding terser plugin options to reduce charting bundle size"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.136",
+            "commit": "cd1e26c488d7290d6ffa11eebdda50bbbe19d3aa"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.115.5",
+            "commit": "cd1e26c488d7290d6ffa11eebdda50bbbe19d3aa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Feb 2024 07:27:41 GMT",
+      "tag": "@fluentui/react-charting_v5.19.22",
+      "version": "5.19.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "atisjai@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "2aa917e1fdf8990fd4869a7c5dc43880695ec3fb",
+            "comment": "Fix: Fix color tokens to enable charts to render correctly for v9 theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Feb 2024 07:27:39 GMT",
       "tag": "@fluentui/react-charting_v5.19.21",
       "version": "5.19.21",

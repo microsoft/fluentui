@@ -30,6 +30,9 @@ describe('Card', () => {
           },
         },
       ],
+      'consistent-callback-args': {
+        legacyCallbacks: ['onSelectionChange'],
+      },
     },
     disabledTests: ['component-has-static-classname-exported'],
   });

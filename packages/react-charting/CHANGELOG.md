@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 05 Feb 2024 07:27:39 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Feb 2024 07:26:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.23)
+
+Wed, 07 Feb 2024 07:26:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.22..@fluentui/react-charting_v5.19.23)
+
+### Patches
+
+- Fix bugs in gauge chart ([PR #26681](https://github.com/microsoft/fluentui/pull/26681) by kumarkshitij@microsoft.com)
+- Adding terser plugin options to reduce charting bundle size ([PR #30392](https://github.com/microsoft/fluentui/pull/30392) by srmukher@microsoft.com)
+- Bump @fluentui/theme-samples to v8.7.136 ([PR #30492](https://github.com/microsoft/fluentui/pull/30492) by beachball)
+- Bump @fluentui/react to v8.115.5 ([PR #30492](https://github.com/microsoft/fluentui/pull/30492) by beachball)
+
+## [5.19.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.22)
+
+Tue, 06 Feb 2024 07:27:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.21..@fluentui/react-charting_v5.19.22)
+
+### Patches
+
+- Fix: Fix color tokens to enable charts to render correctly for v9 theme ([PR #30469](https://github.com/microsoft/fluentui/pull/30469) by atisjai@microsoft.com)
 
 ## [5.19.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.21)
 
