@@ -47,10 +47,21 @@ Because of the above, there are only two choices for building a positioning syst
 
 ## Proposed Usage:
 
+_with user defined anchor id_
+
 ```html
 <fluent-popover anchor-id="${anchorId}" id="${targetId}" beak>
-  <div slot="popover">Popover Content</div>
-  <fluent-button slot="trigger" id="${anchorId}">Popover Trigger</fluent-button>
+  <div slot="popover-content">Popover Content</div>
+  <fluent-button slot="popover-trigger" id="${anchorId}">Popover Trigger</fluent-button>
+</fluent-popover>
+```
+
+_without user defined anchor id. Popover defines the ids_
+
+```html
+<fluent-popover>
+  <div slot="popover-content">Popover Content</div>
+  <fluent-button slot="popover-trigger">Popover Trigger</fluent-button>
 </fluent-popover>
 ```
 
@@ -59,7 +70,7 @@ Because of the above, there are only two choices for building a positioning syst
 | name             | description                                                                                                             | type                                      |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
 | open             | Controls the invocation / visibility of the popover                                                                     | boolean                                   |
-| anchor           | The id of the element that spawns the popover                                                                           | string                                    |
+| anchor-id        | The id of the element that spawns the popover on interaction                                                            | string                                    |
 | appearance       | A popover can appear styled with brand or inverted. Defaults to brand.                                                  | "brand" \| "inverted"                     |
 | beak             | Displays the arrow or "beak" that points to the anchor.                                                                 | boolean                                   |
 | size             | Determines popover padding and arrow size                                                                               | "small" \| "medium" \| "large"            |
@@ -70,6 +81,15 @@ Because of the above, there are only two choices for building a positioning syst
 | offset-x         | x-axis offset modifier for popover location                                                                             | number                                    |
 | offset-y         | y-axis offset modifier for popover location                                                                             | number                                    |
 | pinned           | Disabled automatic repositioning                                                                                        | boolean                                   |
+
+## Slots
+
+| name            | description |
+| --------------- | ----------- |
+| popover-content |             |
+| popover-trigger |             |
+| start           |             |
+| end             |             |
 
 ## Prior Art
 

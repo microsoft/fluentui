@@ -1,7 +1,7 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
 import { CollisionEdge, PositioningShorthand } from './popover.options.js';
-import type { HTMLPopoverElement } from './popover.options.js';
+import type { HTMLPopoverElement, PopoverMode, PopoverSize } from './popover.options.js';
 
 export class Popover extends FASTElement {
   /**
@@ -13,7 +13,7 @@ export class Popover extends FASTElement {
   /**
    * openChanged
    *
-   * opens the popover. It's used to control the popover from the outside. However, it's not recommended to use this property to control the popover before load. To control the popover correctly, wait until the window has fully loaded before opening the popover.
+   * Opens and closes the popover. It's used to control the popover from the outside. However, it's not recommended to use this property to control the popover before load. To control the popover correctly, wait until the window has fully loaded before opening the popover.
    */
   openChanged() {
     if (this.popoverReference) {
@@ -29,14 +29,14 @@ export class Popover extends FASTElement {
    * size
    */
   @attr
-  size: 'small' | 'medium' | 'large' = 'medium';
+  size: PopoverSize = 'medium';
 
   /**
    * mode
-   * Sets the popover in auto mode which closes the popover when the user clicks outside of the popover. In manual mode, the popover will not close when the user clicks outside of the popover.
+   * Sets the popover mode. In auto mode the popover closes when the user clicks outside of the popover. In manual mode, the popover will not close when the user clicks outside of the popover.
    */
   @attr
-  mode: 'manual' | 'auto' = 'auto';
+  mode: PopoverMode = 'manual';
 
   /**
    * position
@@ -145,7 +145,9 @@ export class Popover extends FASTElement {
    * togglePopover
    */
   togglePopover = () => {
-    this.popoverReference?.togglePopover();
+    if ((this.mode == 'auto' && !this.open) || this.mode == 'manual') {
+      this.popoverReference?.togglePopover();
+    }
   };
 
   /**

@@ -9,8 +9,8 @@ import type { Popover } from './popover.js';
 export function PopoverTemplate<T extends Popover>(options: any = {}): ElementViewTemplate<T> {
   return html<T>`
     ${startSlotTemplate(options)}
-    <slot name="trigger" ${slotted('anchorReferences')}></slot>
-    <div class="popover-container" id="${x => x.targetId}" popover="manual" ${ref('popoverReference')}>
+    <slot name="popover-trigger" ${slotted('anchorReferences')}></slot>
+    <div class="popover-container" id="${x => x.targetId}" popover="${x => x.mode}" ${ref('popoverReference')}>
       <slot name="popover-content"></slot>
     </div>
     ${endSlotTemplate(options)}

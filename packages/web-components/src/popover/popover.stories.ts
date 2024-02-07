@@ -40,7 +40,7 @@ const template = html`
       size="${x => x.size}"
     >
       <div slot="popover-content">${x => x.content}</div>
-      <fluent-button slot="trigger">Toggle Popover</fluent-button>
+      <fluent-button slot="popover-trigger">Toggle Popover</fluent-button>
     </fluent-popover>
     <!-- </div> -->
   </div>

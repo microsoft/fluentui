@@ -22,6 +22,10 @@ export const PositioningShorthand = {
   startBottom: 'start-bottom',
 } as const;
 
+export type PopoverSize = 'small' | 'medium' | 'large';
+
+export type PopoverMode = 'manual' | 'auto';
+
 export type PositioningShorthand = typeof PositioningShorthand[keyof typeof PositioningShorthand];
 
 export interface HTMLPopoverElement extends HTMLElement {
