@@ -189,11 +189,6 @@ describe('SankeyChart - mouse events', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  // Moving inside a "link" element and then back out, we should have the same number of objects in the diagram.
-  // Moving inside a "node" element and then back out, we should have the same number of objects in the diagram.
-  // Moving inside a "link" element and then back out, we should have the same Ids for nodes/elements.
-  // Moving inside a "node" element and then back out, we should have the same Ids for nodes/elements.
-
   it('Should not add elements to the diagram when moving inside a "link" element and then back out', () => {
     // ARRANGE
     wrapper = mount(<SankeyChart data={data()} height={500} width={800} />);
