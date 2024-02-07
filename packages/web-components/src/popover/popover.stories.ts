@@ -34,15 +34,13 @@ const template = html`
   <div class="popover-story-container">
     <!-- <div class="cropped-area-container"> -->
     <fluent-popover
-      id="${x => x.id}"
-      anchor-id="${x => x.anchorId}"
       overflow-boundary-selector="#storybook-preview-iframe"
       position="${x => x.position}"
       mode="${x => x.mode}"
       size="${x => x.size}"
     >
       <div slot="popover-content">${x => x.content}</div>
-      <fluent-button slot="trigger" id="${x => x.anchorId}">Toggle Popover</fluent-button>
+      <fluent-button slot="trigger">Toggle Popover</fluent-button>
     </fluent-popover>
     <!-- </div> -->
   </div>

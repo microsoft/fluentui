@@ -16,10 +16,12 @@ export class Popover extends FASTElement {
    * opens the popover. It's used to control the popover from the outside. However, it's not recommended to use this property to control the popover before load. To control the popover correctly, wait until the window has fully loaded before opening the popover.
    */
   openChanged() {
-    if (this.open) {
-      this.popoverReference?.showPopover();
-    } else {
-      this.popoverReference?.hidePopover();
+    if (this.popoverReference) {
+      if (this.open) {
+        this.popoverReference.showPopover();
+      } else {
+        this.popoverReference.hidePopover();
+      }
     }
   }
 
@@ -83,10 +85,16 @@ export class Popover extends FASTElement {
   targetId: string | undefined;
 
   /**
-   * anchorId
+   * initializeTargetId
+   *
+   * initializes the targetId with a random id if it's not set by the user
    */
-  @attr({ attribute: 'anchor-id' })
-  anchorId: string | undefined;
+  initializeTargetId() {
+    if (!this.targetId) {
+      const popoverId = uniqueId('popover-target-');
+      this.targetId = popoverId;
+    }
+  }
 
   /**
    * overflowBoundary
@@ -121,18 +129,6 @@ export class Popover extends FASTElement {
       this.overflowBoundaryRef = document.querySelector(this.overflowBoundarySelector);
     }
   };
-
-  /**
-   * initializeTargetId
-   *
-   * initializes the targetId if it's not set
-   */
-  initializeTargetId() {
-    if (!this.targetId) {
-      const popoverId = uniqueId('popover-target-');
-      this.targetId = popoverId;
-    }
-  }
 
   /**
    * addAnchorPopoverAttributes
