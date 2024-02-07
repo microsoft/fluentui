@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 07 Feb 2024 07:26:18 GMT",
+      "tag": "@fluentui/react_v8.115.5",
+      "version": "8.115.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "cd1e26c488d7290d6ffa11eebdda50bbbe19d3aa",
+            "comment": "Fix: Enable click events on coachmark for mobile & additional entry points on desktop (currently requires mouse movement only)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Feb 2024 07:27:39 GMT",
       "tag": "@fluentui/react_v8.115.4",
       "version": "8.115.4",
