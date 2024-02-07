@@ -1094,19 +1094,21 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const state = this.state;
     if (!state.selectedState) {
       return singleNode.color;
-    } else if (state.selectedState && state.selectedNodes.has(singleNode.index!) && state.selectedNode) {
-      return state.selectedNode.color;
-    } else if (state.selectedState && !state.selectedNode) {
-      return singleNode.color;
+    } else {
+      const selectedNode = state.selectedNode;
+      if (selectedNode && state.selectedNodes.has(singleNode.index!)) {
+        return selectedNode.color;
+      } else if (!selectedNode) {
+        return singleNode.color;
+      }
     }
   };
 
   private _fillStreamColors(singleLink: SLink, gradientUrl: string): string | undefined {
     const state = this.state;
-    if (state.selectedState && state.selectedLinks.has(singleLink.index!) && state.selectedNode) {
-      return state.selectedNode.color;
-    } else if (state.selectedState && state.selectedLinks.has(singleLink.index!)) {
-      return gradientUrl;
+    if (state.selectedState && state.selectedLinks.has(singleLink.index!)) {
+      const selectedNode = state.selectedNode;
+      return selectedNode ? selectedNode.color : gradientUrl;
     }
   }
 
@@ -1114,24 +1116,26 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const state = this.state;
     if (!state.selectedState) {
       return NON_SELECTED_NODE_AND_STREAM_COLOR;
-    } else if (state.selectedState && state.selectedLinks.has(singleLink.index!) && state.selectedNode) {
-      return state.selectedNode.borderColor!;
-    } else if (state.selectedState && state.selectedLinks.has(singleLink.index!)) {
-      return gradientUrl;
+    } else {
+      if (state.selectedLinks.has(singleLink.index!)) {
+        const selectedNode = state.selectedNode;
+        return selectedNode ? selectedNode.borderColor! : gradientUrl;
+      }
+      return NON_SELECTED_NODE_AND_STREAM_COLOR;
     }
-    return NON_SELECTED_NODE_AND_STREAM_COLOR;
   }
 
   private _fillNodeBorder = (singleNode: SNode): string => {
     const state = this.state;
     if (!state.selectedState) {
       return singleNode.borderColor!;
-    } else if (state.selectedState && state.selectedNodes.has(singleNode.index!) && state.selectedNode) {
-      return state.selectedNode.borderColor!;
-    } else if (state.selectedState && state.selectedNodes.has(singleNode.index!)) {
+    } else {
+      if (state.selectedNodes.has(singleNode.index!)) {
+        const selectedNode = state.selectedNode;
+        return selectedNode ? selectedNode.borderColor! : singleNode.borderColor!;
+      }
       return singleNode.borderColor!;
     }
-    return singleNode.borderColor!;
   };
 
   private _getOpacityStream(singleLink: SLink): number {
@@ -1139,7 +1143,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     if (state.selectedState) {
       if (!state.selectedLinks.has(singleLink.index!)) {
         return NON_SELECTED_OPACITY;
-      } else if (state.selectedLinks.has(singleLink.index!) && !state.selectedNode) {
+      } else if (!state.selectedNode) {
         return SELECTED_STREAM_OPACITY;
       }
     }
