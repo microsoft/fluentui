@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-message-bar
 
-This log was last generated on Tue, 30 Jan 2024 23:16:54 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Feb 2024 17:55:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.0.19)
+
+Tue, 06 Feb 2024 17:55:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.0.18..@fluentui/react-message-bar_v9.0.19)
+
+### Patches
+
+- fix: MessageBar with no actions should have correct spacing ([PR #30481](https://github.com/microsoft/fluentui/pull/30481) by lingfangao@hotmail.com)
+- Bump @fluentui/react-button to v9.3.68 ([PR #30392](https://github.com/microsoft/fluentui/pull/30392) by beachball)
 
 ## [9.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.0.18)
 

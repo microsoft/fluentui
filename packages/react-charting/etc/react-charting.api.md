@@ -95,6 +95,14 @@ export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
 export const GaugeChart: React_2.FunctionComponent<IGaugeChartProps>;
 
 // @public (undocumented)
+export enum GaugeChartVariant {
+    // (undocumented)
+    MultipleSegments = "multiple-segments",
+    // (undocumented)
+    SingleSegment = "single-segment"
+}
+
+// @public (undocumented)
 export enum GaugeValueFormat {
     // (undocumented)
     Fraction = "fraction",
@@ -474,7 +482,7 @@ export interface IGaugeChartProps {
     calloutProps?: Partial<ICalloutProps>;
     chartTitle?: string;
     chartValue: number;
-    chartValueFormat?: GaugeValueFormat | ((sweepFraction: number[]) => string);
+    chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
     className?: string;
     culture?: string;
     height?: number;
@@ -489,6 +497,7 @@ export interface IGaugeChartProps {
     styles?: IStyleFunctionOrObject<IGaugeChartStyleProps, IGaugeChartStyles>;
     sublabel?: string;
     theme?: ITheme;
+    variant?: GaugeChartVariant;
     width?: number;
 }
 

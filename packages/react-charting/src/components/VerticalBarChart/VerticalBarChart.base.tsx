@@ -245,7 +245,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           fill="transparent"
           strokeLinecap="square"
           strokeWidth={3 + lineBorderWidth * 2}
-          stroke={theme!.palette.white}
+          stroke={theme!.semanticColors.bodyBackground}
         />,
       );
     }
@@ -283,7 +283,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onMouseOut={this._onBarLeave}
             r={8}
             stroke={lineLegendColor}
-            fill={this.props.theme!.palette.white}
+            fill={this.props.theme!.semanticColors.bodyBackground}
             strokeWidth={3}
             visibility={this.state.activeXdataPoint === item.x ? CircleVisbility.show : CircleVisbility.hide}
             onClick={item.point.lineData?.onClick}

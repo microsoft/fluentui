@@ -41,7 +41,7 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
 
     needle: {
       fill: theme.palette.black,
-      stroke: theme.palette.white,
+      stroke: theme.semanticColors.bodyBackground,
     },
 
     chartTitle: {
