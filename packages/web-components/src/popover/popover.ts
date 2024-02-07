@@ -1,7 +1,7 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
-import { PositioningShorthand } from './popover.options.js';
-import type { CollisionEdge, HTMLPopoverElement } from './popover.options.js';
+import { CollisionEdge, PositioningShorthand } from './popover.options.js';
+import type { HTMLPopoverElement } from './popover.options.js';
 
 export class Popover extends FASTElement {
   /**
@@ -55,7 +55,7 @@ export class Popover extends FASTElement {
    */
   anchorReferencesChanged() {
     this.initializeTargetId();
-    this.addAnchorAttributes();
+    this.addAnchorPopoverAttributes();
     this.addAnchorEventListeners();
   }
 
@@ -135,15 +135,47 @@ export class Popover extends FASTElement {
   }
 
   /**
-   * addAnchorAttributes
+   * addAnchorPopoverAttributes
    *
    * adds popovertarget attribute and targetId to the slotted anchor element
    */
-  addAnchorAttributes() {
+  addAnchorPopoverAttributes() {
     if (this.anchorReferences && this.anchorReferences.length > 0 && this.targetId) {
       this.anchorReferences[0].setAttribute('popovertarget', this.targetId);
     }
   }
+
+  /**
+   * togglePopover
+   */
+  togglePopover = () => {
+    this.popoverReference?.togglePopover();
+  };
+
+  /**
+   * handleWindowChanges
+   */
+  updatePopoverPosition = () => {
+    console.log('updatePopoverPosition');
+    this.observePopoverOverflow();
+    this.applyPopoverCssPositioning();
+  };
+
+  /**
+   * timeoutId
+   * used for debouncing the window change events event
+   */
+  private timeoutId: number | undefined;
+
+  /**
+   * handleWindowChanges
+   */
+  handleWindowChanges = () => {
+    clearTimeout(this.timeoutId);
+    this.timeoutId = setTimeout(() => {
+      this.updatePopoverPosition();
+    }, 100);
+  };
 
   /**
    * addAnchorEventListeners
@@ -161,17 +193,9 @@ export class Popover extends FASTElement {
    */
   addOverflowBoundaryEventListeners() {
     if (this.overflowBoundaryRef) {
-      this.overflowBoundaryRef.addEventListener('scroll', this.applyPopoverCssPositioning);
+      this.overflowBoundaryRef.addEventListener('scroll', this.handleWindowChanges);
     }
   }
-
-  /**
-   * handleWindowChanges
-   */
-  handleWindowChanges = () => {
-    this.observePopoverOverflow();
-    this.applyPopoverCssPositioning();
-  };
 
   /**
    * addWindowEventListeners
@@ -180,13 +204,6 @@ export class Popover extends FASTElement {
     window.addEventListener('resize', this.handleWindowChanges);
     window.addEventListener('scroll', this.handleWindowChanges);
   }
-
-  /**
-   * togglePopover
-   */
-  togglePopover = () => {
-    this.popoverReference?.togglePopover();
-  };
 
   /**
    * addPopoverEventListeners
@@ -201,9 +218,6 @@ export class Popover extends FASTElement {
 
           this.addWindowEventListeners();
 
-          // does nothing here
-          // this.observePopoverOverflow();
-
           this.open = true;
         } else {
           this.open = false;
@@ -215,7 +229,7 @@ export class Popover extends FASTElement {
   /**
    * intersectionObserver
    *
-   * used for tracking the overflow of the popover on ui changes
+   * used for tracking the overflow / collision of the popover to adjacent edges on ui changes
    */
   private intersectionObserver: IntersectionObserver | undefined;
 
@@ -236,11 +250,14 @@ export class Popover extends FASTElement {
 
   /**
    * handleOverflow
+   *
+   * Repositions the popover when it collides with its container or user defined overflowed boundary. Called by the intersectionObserver in createOverflowHandler.
    */
   handleOverflow = (entries: IntersectionObserverEntry[]) => {
     entries.forEach(entry => {
       if (entry.intersectionRatio < 1) {
         const collisionEdge = this.findIntersectingEdge(entry);
+
         if (collisionEdge) {
           this.repositionPopover(collisionEdge);
           this.applyPopoverCssPositioning();
@@ -261,16 +278,16 @@ export class Popover extends FASTElement {
 
     if (rootRect) {
       if (targetRect.bottom > rootRect.bottom) {
-        return 'bottom';
+        return CollisionEdge.bottom;
       }
       if (targetRect.top < rootRect.top) {
-        return 'top';
+        return CollisionEdge.top;
       }
       if (targetRect.left < rootRect.left) {
-        return 'left';
+        return CollisionEdge.left;
       }
       if (targetRect.right > rootRect.right) {
-        return 'right';
+        return CollisionEdge.right;
       }
     }
   };
@@ -303,17 +320,19 @@ export class Popover extends FASTElement {
     if (!this.originalPopoverPosition) {
       this.originalPopoverPosition = this.position;
     }
+
+    // TODO: Update this to cover all cases of repositioning the popover
     switch (collisionEdge) {
-      case 'top':
+      case CollisionEdge.top:
         this.position = PositioningShorthand.belowStart;
         break;
-      case 'right':
+      case CollisionEdge.right:
         this.position = PositioningShorthand.startTop;
         break;
-      case 'bottom':
+      case CollisionEdge.bottom:
         this.position = PositioningShorthand.aboveStart;
         break;
-      case 'left':
+      case CollisionEdge.left:
         this.position = PositioningShorthand.endTop;
         break;
       default:

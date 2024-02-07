@@ -1,3 +1,10 @@
+export const CollisionEdge = {
+  top: 'top',
+  right: 'right',
+  bottom: 'bottom',
+  left: 'left',
+} as const;
+
 export type CollisionEdge = 'top' | 'right' | 'bottom' | 'left';
 
 export const PositioningShorthand = {
