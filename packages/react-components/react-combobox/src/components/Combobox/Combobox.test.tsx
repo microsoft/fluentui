@@ -34,6 +34,9 @@ describe('Combobox', () => {
           },
         },
       ],
+      'consistent-callback-args': {
+        legacyCallbacks: ['onOpenChange', 'onOptionSelect'],
+      },
     },
   });
 
