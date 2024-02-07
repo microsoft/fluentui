@@ -137,6 +137,9 @@ export interface DefaultTestObject<TProps = {}> {
   'has-top-level-file': BaseConformanceTest<TProps>;
   'kebab-aria-attributes': ConformanceTest<TProps>;
   'consistent-callback-names': ConformanceTest<TProps>;
+  /**
+   * @deprecated this test is for existing callbacks. The newly added callbacks' type will be guarded by eslint rule consistent-callback-type
+   */
   'consistent-callback-args': ConformanceTest<TProps>;
   'primary-slot-gets-native-props': BaseConformanceTest<TProps>;
 }
