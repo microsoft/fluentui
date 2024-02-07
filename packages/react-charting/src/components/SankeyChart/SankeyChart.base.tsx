@@ -1171,7 +1171,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _showTooltip(text: string, checkTrcuncated: boolean, div: any, evt: any) {
-    // Because the `text` is passed in, here, maybe we should only create one tooltip and then update its text.
     if (checkTrcuncated) {
       //Fixing tooltip position by attaching it to the element rather than page
       div.style('opacity', 0.9);
