@@ -136,16 +136,16 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 
 ### SwatchPicker
 
-| Property        | Values                                   | Default   | Purpose                                                      |
-| --------------- | ---------------------------------------- | --------- | ------------------------------------------------------------ |
-| disabled        | `boolean`                                | `false`   | Whether SwatchPicker is disabled                             |
-| layout          | `row`, `grid`                            | `row`     | Sets layout of the SwatchPicker                              |
-| onColorPreview  | `function`                               | undefined | Callback called when color is previewed (on hover or focus). |
-| onColorSelect   | `function`                               | undefined | Callback called when color is selected                       |
-| shape           | `square`, `circular`, `rounded`          | `square`  | Sets shape                                                   |
-| size            | `extraSmall`, `small`, `medium`, `large` | `medium`  | Defines size of the Swatch cell                              |
-| spacing         | `small`, `medium`                        | `medium`  | Sets spacing between rows and cells                          |
-| defaultSelected | `number`, `string`                       |           | Default selected swatch                                      |
+| Property             | Values                                   | Default   | Purpose                                |
+| -------------------- | ---------------------------------------- | --------- | -------------------------------------- |
+| disabled             | `boolean`                                | `false`   | Whether SwatchPicker is disabled       |
+| layout               | `row`, `grid`                            | `row`     | Sets layout of the SwatchPicker        |
+| onChange             | `function`                               | undefined | Callback called when color is selected |
+| shape                | `square`, `circular`, `rounded`          | `square`  | Sets shape                             |
+| size                 | `extraSmall`, `small`, `medium`, `large` | `medium`  | Defines size of the Swatch cell        |
+| spacing              | `small`, `medium`                        | `medium`  | Sets spacing between rows and cells    |
+| selectedValue        | `string`                                 |           | Selected swatch                        |
+| defaultSelectedValue | `string`                                 |           | Default selected swatch                |
 
 | Slots | Values | Default | Description                  |
 | ----- | ------ | ------- | ---------------------------- |
@@ -155,11 +155,10 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 
 | Property | Values                                   | Default  | Purpose                          |
 | -------- | ---------------------------------------- | -------- | -------------------------------- |
+| color    | `string`                                 |          | Color in hex, RGB or named color |
 | shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                       |
 | size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell  |
-| value    |                                          |          | Color in hex, RGB or named color |
 | disabled | `boolean`                                |          |                                  |
-| selected | `boolean`                                |          |                                  |
 | empty    | `boolean`                                |          |                                  |
 
 | Slots        | Values   | Default  | Description                         |
@@ -170,15 +169,13 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 
 ### ImageSwatch
 
-| Property | Values                                   | Default  | Purpose                                             |
-| -------- | ---------------------------------------- | -------- | --------------------------------------------------- |
-| id       | `number`, `string`                       |          | Sets ID of the swatch to map it to the larger image |
-| shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                                          |
-| size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell                     |
-| value    |                                          |          | URL of an image                                     |
-| disabled | `boolean`                                |          |                                                     |
-| selected | `boolean`                                |          |                                                     |
-| empty    | `boolean`                                |          |                                                     |
+| Property | Values                                   | Default  | Purpose                         |
+| -------- | ---------------------------------------- | -------- | ------------------------------- |
+| shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                      |
+| size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell |
+| src      | `string`                                 |          | URL of an image                 |
+| disabled | `boolean`                                |          |                                 |
+| empty    | `boolean`                                |          |                                 |
 
 | Slots        | Values   | Default  | Description                         |
 | ------------ | -------- | -------- | ----------------------------------- |
@@ -278,6 +275,8 @@ is used to pick images:
 - `className` => Slot system supports it by default. We don't need to provide it explicitly.
 - `styles` => Use style customization through `className` instead.
 - `theme`
+- `defaultSelectedId` => use `defaultSelectedValue` instead
+- `selectedId` => use `selectedValue` instead
 
 #### Props no longer supported
 
@@ -296,11 +295,8 @@ is used to pick images:
 #### Props supported
 
 - `columnCount`
-- `defaultSelectedId`
 - `disabled`
-- `id`
 - `onChange`
-- `selectedId`
 
 #### Property Mapping
 
