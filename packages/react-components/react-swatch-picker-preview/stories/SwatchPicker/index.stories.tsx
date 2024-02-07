@@ -4,10 +4,10 @@ import descriptionMd from './SwatchPickerDescription.md';
 import bestPracticesMd from './SwatchPickerBestPractices.md';
 
 export { Default } from './SwatchPickerDefault.stories';
-export { SwatchPickerDesignVariants } from './SwatchPickerDesignVariants.stories';
 export { SwatchPickerInPopover } from './SwatchPickerPopover.stories';
 export { SwatchPickerShape } from './SwatchPickerShape.stories';
 export { SwatchPickerSize } from './SwatchPickerSize.stories';
+export { SwatchPickerLayout } from './SwatchPickerLayout.stories';
 
 export default {
   title: 'Preview Components/SwatchPicker',

@@ -1,37 +1,26 @@
 import * as React from 'react';
-import { SwatchPickerProps, SwatchPickerState } from '../components/SwatchPicker/SwatchPicker.types';
-
-export interface Color {
-  hex: string;
-}
-
-export type DefaultColor = {
-  hex: string;
-  id?: string;
-};
+import {
+  SwatchPickerProps,
+  SwatchPickerState,
+  SwatchPickerSelectData,
+} from '../components/SwatchPicker/SwatchPicker.types';
 
 /**
  * The context through which individual color controls communicate with the picker.
  */
-export type SwatchPickerContextValue<ColorT = DefaultColor> = Pick<
+export type SwatchPickerContextValue = Pick<
   SwatchPickerProps,
-  'layout' | 'columnCount' | 'size' | 'shape'
+  'layout' | 'columnCount' | 'size' | 'shape' | 'selected' | 'defaultSelected'
 > & {
-  /**
-   * Notify the picker about color preview change.
-   */
-  notifyPreview: (color: ColorT, status: boolean) => void;
-
   /**
    * Notify the picker about color selection.
    */
-  notifySelected: (color: ColorT) => void;
-
-  selectedColor?: string;
+  // notifySelected: (color: string) => void;
+  notifySelected: (data: SwatchPickerSelectData) => void;
 };
 
 export const useSwatchPickerContextValues = (state: SwatchPickerState): SwatchPickerContextValues => {
-  const { layout, size, shape, columnCount, notifyPreview, notifySelected, selectedColor } = state;
+  const { layout, size, shape, columnCount, notifySelected, selected, defaultSelected } = state;
 
   const swatchPicker = React.useMemo<SwatchPickerContextValue>(
     () => ({
@@ -39,20 +28,17 @@ export const useSwatchPickerContextValues = (state: SwatchPickerState): SwatchPi
       size,
       shape,
       columnCount,
-      selectedColor,
-      notifyPreview,
+      selected,
+      defaultSelected,
       notifySelected,
     }),
-    [layout, size, shape, columnCount, selectedColor, notifyPreview, notifySelected],
+    [layout, size, shape, columnCount, selected, defaultSelected, notifySelected],
   );
 
   return { swatchPicker };
 };
 
 export const swatchPickerContextDefaultValue: SwatchPickerContextValue = {
-  notifyPreview: () => {
-    /*noop*/
-  },
   notifySelected: () => {
     /*noop*/
   },
@@ -60,7 +46,8 @@ export const swatchPickerContextDefaultValue: SwatchPickerContextValue = {
   columnCount: 2,
   size: 'medium',
   shape: 'square',
-  selectedColor: undefined,
+  selected: undefined,
+  defaultSelected: undefined,
 };
 
 export type SwatchPickerContextValues = {

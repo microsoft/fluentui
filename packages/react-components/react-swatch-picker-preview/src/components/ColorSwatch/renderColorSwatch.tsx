@@ -3,17 +3,20 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { ColorSwatchState, ColorSwatchSlots } from './ColorSwatch.types';
+import { SwatchContextValues, SwatchProvider } from '../../contexts/swatch';
 
 /**
  * Render the final JSX of ColorSwatch
  */
-export const renderColorSwatch_unstable = (state: ColorSwatchState) => {
+export const renderColorSwatch_unstable = (state: ColorSwatchState, contextValues: SwatchContextValues) => {
   assertSlots<ColorSwatchSlots>(state);
 
   return (
-    <state.root>
-      {state.icon && <state.icon />}
-      {state.disabled && state.disabledIcon && <state.disabledIcon />}
-    </state.root>
+    <SwatchProvider value={contextValues.swatch}>
+      <state.root>
+        {state.icon && <state.icon />}
+        {state.disabled && state.disabledIcon && <state.disabledIcon />}
+      </state.root>
+    </SwatchProvider>
   );
 };

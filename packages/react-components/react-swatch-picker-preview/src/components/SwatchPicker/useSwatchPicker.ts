@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { SwatchPickerProps, SwatchPickerState, SwatchPickerModel } from './SwatchPicker.types';
+import { getIntrinsicElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
+import type {
+  SwatchPickerProps,
+  SwatchPickerState,
+  SwatchPickerModel,
+  SwatchPickerSelectData,
+} from './SwatchPicker.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { SwatchPickerContextValue } from '../../contexts/swatchPicker';
 import { useSwatchPickerState_unstable } from './useSwatchPickerState';
@@ -15,19 +20,28 @@ import { useSwatchPickerState_unstable } from './useSwatchPickerState';
  * @param ref - reference to root HTMLElement of SwatchPicker
  */
 export const useSwatchPicker_unstable = <T>(
-  props: SwatchPickerProps<T>,
+  props: SwatchPickerProps,
   ref: React.Ref<HTMLDivElement>,
-): SwatchPickerState<T> => {
-  const [model, setModel] = React.useState<SwatchPickerModel<T>>({});
+): SwatchPickerState => {
+  const { layout, role, onColorChange, selected, defaultSelected, ...rest } = props;
 
-  const { layout, role, ...rest } = props;
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
     axis: layout === 'grid' ? 'grid-linear' : 'both',
     memorizeCurrent: true,
   });
 
-  const pickerContext = makePickerContext(rest, model, setModel);
+  const [selectedSwatch, setSelectedSwatch] = useControllableState({
+    state: selected,
+    defaultState: defaultSelected,
+    initialState: '',
+  });
+
+  const notifySelected = useEventCallback((data: SwatchPickerSelectData) => {
+    // const selectedUpd = updateOpenItems(data.value, openItems, multiple, collapsible);
+    onColorChange?.(data.selectedValue, { selectedValue: data.selectedValue });
+    // setSelected(nextOpenItems);
+  });
 
   const state: SwatchPickerState = {
     components: {
@@ -42,45 +56,10 @@ export const useSwatchPicker_unstable = <T>(
       }),
       { elementType: 'div' },
     ),
-    ...pickerContext,
+    notifySelected,
   };
 
   useSwatchPickerState_unstable(state, props);
 
   return state;
 };
-
-function makePickerContext<T>(
-  props: SwatchPickerProps<T>,
-  model: SwatchPickerModel<T>,
-  setModel: React.Dispatch<React.SetStateAction<SwatchPickerModel<T>>>,
-): SwatchPickerContextValue<T> {
-  const { layout = 'row', shape = 'square', size = 'medium', columnCount = 2 } = props;
-  function notifyPreview(color: T, state: boolean) {
-    const upd = { ...model, preview: state ? color : undefined };
-
-    if (model !== upd) {
-      setModel(upd);
-      props.onColorPreview && props.onColorPreview(upd);
-    }
-  }
-
-  function notifySelected(color: T) {
-    const upd = { ...model, selected: color };
-
-    if (model !== upd) {
-      setModel(upd);
-      props.onColorSelect && props.onColorSelect(upd);
-    }
-  }
-
-  return {
-    notifyPreview,
-    notifySelected,
-    layout,
-    shape,
-    size,
-    columnCount,
-    selectedColor: model.selected && model.selected.hex,
-  };
-}

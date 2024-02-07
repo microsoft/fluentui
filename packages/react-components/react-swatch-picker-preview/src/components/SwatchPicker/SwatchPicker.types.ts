@@ -1,41 +1,44 @@
+import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { SwatchPickerContextValue, DefaultColor } from '../../contexts/swatchPicker';
+import { SwatchPickerContextValue } from '../../contexts/swatchPicker';
 
 export type SwatchPickerSlots = {
   root: Slot<'div'>;
 };
 
-export type SwatchPickerModel<ColorT> = {
-  selected?: ColorT;
-  preview?: ColorT;
+export type SwatchPickerSelectEvent = React.MouseEvent | React.KeyboardEvent | React.ChangeEvent;
+
+export type SwatchPickerSelectData = {
+  selectedValue: string;
 };
+
+export type SwatchPickerSelectEventHandler = (event: SwatchPickerSelectEvent, data: SwatchPickerSelectData) => void;
 
 /**
  * SwatchPicker Props
  */
-export type SwatchPickerProps<ColorT = DefaultColor> = ComponentProps<SwatchPickerSlots> & {
-  layout?: 'grid' | 'row';
-  size?: 'extraSmall' | 'small' | 'medium' | 'large';
-
+export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
   columnCount?: number;
-  shape?: 'rounded' | 'square' | 'circular';
 
-  /**
-   * Event rised when user previews a color
-   */
-  onColorPreview?: (model: SwatchPickerModel<ColorT>) => void;
+  defaultSelected?: string;
+
+  layout?: 'grid' | 'row';
 
   /**
    * Event rised when user selects a color
    */
-  onColorSelect?: (model: SwatchPickerModel<ColorT>) => void;
+  onColorChange?: (event: SwatchPickerSelectEvent, data: SwatchPickerSelectData) => void;
+
+  size?: 'extraSmall' | 'small' | 'medium' | 'large';
+
+  shape?: 'rounded' | 'square' | 'circular';
+
+  selected?: string;
 };
 
 /**
  * State used in rendering SwatchPicker
  */
-export type SwatchPickerState<T = DefaultColor> = ComponentState<SwatchPickerSlots> &
-  SwatchPickerContextValue<T> &
+export type SwatchPickerState = ComponentState<SwatchPickerSlots> &
+  SwatchPickerContextValue &
   Pick<SwatchPickerProps, 'layout' | 'columnCount' | 'size' | 'shape'>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from SwatchPickerProps.
-// & Required<Pick<SwatchPickerProps, 'propName'>>
