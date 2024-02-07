@@ -114,14 +114,14 @@ This implies that components must be re-rendered to apply classes when the state
 - 💤Idle state
 - ⚡️Render 1 (`{ visible: false, animationState: 'idle' }` => `{ visible: true, animationState: 'entering' }`)
 - ⏳Animation starts & finished
-- ⚡️Render 2 (`{ visible: true, animationState: 'entering' }` => `{ visible: false, animationState: 'idle' }`)
+- ⚡️Render 2 (`{ visible: true, animationState: 'entering' }` => `{ visible: true, animationState: 'idle' }`)
 
 #### State lifecycle for Web Animations API
 
 On the other hand, the Web Animations API doesn't need to be within the React lifecycle as animations have their own lifecycle & apply styles directly to elements. The typical scenario for "in" transition is:
 
 - 💤Idle state
-- ⚡️Render 1 (`{ visible: false, animationState: 'idle' }` => `{ visible: false, animationState: 'entering' }`)
+- ⚡️Render 1 (`{ visible: false }` => `{ visible: true }`)
 - ⏳Animation starts & finished
 
 > Note: compared to CSS option that we don't need to re-render the component to apply classes
