@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix: Enable click events on coachmark for mobile & additional entry points on desktop (currently requires mouse movement only)",
-  "packageName": "@fluentui/react",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}
