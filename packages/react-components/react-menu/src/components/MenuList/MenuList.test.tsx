@@ -14,6 +14,11 @@ describe('MenuList', () => {
       // MenuTrigger does not have own styles
       'make-styles-overrides-win',
     ],
+    testOptions: {
+      'consistent-callback-args': {
+        legacyCallbacks: ['onCheckedValueChange'],
+      },
+    },
   });
 
   /**

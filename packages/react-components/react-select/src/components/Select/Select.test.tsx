@@ -9,6 +9,11 @@ describe('Select', () => {
     Component: Select,
     displayName: 'Select',
     primarySlot: 'select',
+    testOptions: {
+      'consistent-callback-args': {
+        legacyCallbacks: ['onChange'],
+      },
+    },
   });
 
   // Note for Select tests: avoid using getByRole;

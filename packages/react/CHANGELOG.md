@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 05 Feb 2024 07:27:39 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Feb 2024 07:26:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.115.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.115.5)
+
+Wed, 07 Feb 2024 07:26:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.115.4..@fluentui/react_v8.115.5)
+
+### Patches
+
+- Fix: Enable click events on coachmark for mobile & additional entry points on desktop (currently requires mouse movement only) ([PR #30492](https://github.com/microsoft/fluentui/pull/30492) by mifraser@microsoft.com)
 
 ## [8.115.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.115.4)
 
