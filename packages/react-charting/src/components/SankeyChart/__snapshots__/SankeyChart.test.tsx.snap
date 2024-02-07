@@ -2389,7 +2389,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           </defs>
           <path
             aria-label="link from node0 to node6 with weight 5"
-            d="M172,36C455.5,36,455.5,47.952,739,47.952L739,51.422C455.5,51.422,455.5,39.471,172,39.471Z"
+            d="M172,36C455.5,36,455.5,47.952,739,47.952L739,51.357C455.5,51.357,455.5,39.405,172,39.405Z"
             data-is-focusable={true}
             fillOpacity={1}
             id="link80"
@@ -2424,7 +2424,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           </defs>
           <path
             aria-label="link from node1 to node6 with weight 5"
-            d="M172,47.471C455.5,47.471,455.5,51.422,739,51.422L739,54.893C455.5,54.893,455.5,50.941,172,50.941Z"
+            d="M172,47.405C455.5,47.405,455.5,51.357,739,51.357L739,54.762C455.5,54.762,455.5,50.81,172,50.81Z"
             data-is-focusable={true}
             fillOpacity={1}
             id="link81"
@@ -2459,7 +2459,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           </defs>
           <path
             aria-label="link from node2 to node6 with weight 5"
-            d="M172,58.941C455.5,58.941,455.5,54.893,739,54.893L739,58.363C455.5,58.363,455.5,62.412,172,62.412Z"
+            d="M172,58.81C455.5,58.81,455.5,54.762,739,54.762L739,58.167C455.5,58.167,455.5,62.215,172,62.215Z"
             data-is-focusable={true}
             fillOpacity={1}
             id="link82"
@@ -2494,7 +2494,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           </defs>
           <path
             aria-label="link from node3 to node6 with weight 5"
-            d="M172,70.412C455.5,70.412,455.5,58.363,739,58.363L739,61.834C455.5,61.834,455.5,73.882,172,73.882Z"
+            d="M172,70.215C455.5,70.215,455.5,58.167,739,58.167L739,61.572C455.5,61.572,455.5,73.621,172,73.621Z"
             data-is-focusable={true}
             fillOpacity={1}
             id="link83"
@@ -2529,7 +2529,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           </defs>
           <path
             aria-label="link from node4 to node7 with weight 900"
-            d="M172,81.882C455.5,81.882,455.5,82.445,739,82.445L739,394.798C455.5,394.798,455.5,394.235,172,394.235Z"
+            d="M172,81.621C455.5,81.621,455.5,82.183,739,82.183L739,394.776C455.5,394.776,455.5,394.214,172,394.214Z"
             data-is-focusable={true}
             fillOpacity={1}
             id="link84"
@@ -2564,7 +2564,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
           </defs>
           <path
             aria-label="link from node5 to node7 with weight 80"
-            d="M172,402.235C455.5,402.235,455.5,394.798,739,394.798L739,422.562C455.5,422.562,455.5,430,172,430Z"
+            d="M172,402.214C455.5,402.214,455.5,394.776,739,394.776L739,422.562C455.5,422.562,455.5,430,172,430Z"
             data-is-focusable={true}
             fillOpacity={1}
             id="link85"
@@ -2596,7 +2596,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             aria-label="node node0 with weight 5"
             data-is-focusable={true}
             fill="#0078D4"
-            height={3.470588235294116}
+            height={3.4051558291650537}
             id="nodeBar57"
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -2617,7 +2617,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             aria-label="node node1 with weight 5"
             data-is-focusable={true}
             fill="#0078D4"
-            height={3.470588235294116}
+            height={3.4051558291650537}
             id="nodeBar60"
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -2628,7 +2628,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             strokeWidth="2"
             width={124}
             x={48}
-            y={47.470588235294116}
+            y={47.405155829165054}
           />
         </g>
         <g
@@ -2638,7 +2638,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             aria-label="node node2 with weight 5"
             data-is-focusable={true}
             fill="#0078D4"
-            height={3.470588235294116}
+            height={3.405155829165068}
             id="nodeBar63"
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -2649,7 +2649,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             strokeWidth="2"
             width={124}
             x={48}
-            y={58.94117647058823}
+            y={58.81031165833011}
           />
         </g>
         <g
@@ -2659,7 +2659,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             aria-label="node node3 with weight 5"
             data-is-focusable={true}
             fill="#0078D4"
-            height={3.470588235294116}
+            height={3.405155829165068}
             id="nodeBar66"
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -2670,7 +2670,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             strokeWidth="2"
             width={124}
             x={48}
-            y={70.41176470588235}
+            y={70.21546748749518}
           />
         </g>
         <g
@@ -2680,7 +2680,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             aria-label="node node4 with weight 900"
             data-is-focusable={true}
             fill="#0078D4"
-            height={312.3529411764705}
+            height={312.5933051173529}
             id="nodeBar69"
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -2691,7 +2691,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             strokeWidth="2"
             width={124}
             x={48}
-            y={81.88235294117646}
+            y={81.62062331666024}
           />
           <g
             className=
@@ -2721,7 +2721,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                 onMouseOver={[Function]}
                 textAnchor="start"
                 x={48}
-                y={81.88235294117646}
+                y={81.62062331666024}
               >
                 node4
               </text>
@@ -2735,7 +2735,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               fontWeight="bold"
               textAnchor="start"
               x={48}
-              y={81.88235294117646}
+              y={81.62062331666024}
             >
               900
             </text>
@@ -2748,7 +2748,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             aria-label="node node5 with weight 80"
             data-is-focusable={true}
             fill="#0078D4"
-            height={27.764705882352928}
+            height={27.78607156598696}
             id="nodeBar72"
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -2759,7 +2759,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             strokeWidth="2"
             width={124}
             x={48}
-            y={402.23529411764696}
+            y={402.21392843401316}
           />
           <g
             className=
@@ -2789,7 +2789,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                 onMouseOver={[Function]}
                 textAnchor="start"
                 x={48}
-                y={402.23529411764696}
+                y={402.21392843401316}
               >
                 node5
               </text>
@@ -2803,7 +2803,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               fontWeight="bold"
               textAnchor="start"
               x={164}
-              y={402.23529411764696}
+              y={402.21392843401316}
             >
               80
             </text>
@@ -2816,7 +2816,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             aria-label="node node6 with weight 20"
             data-is-focusable={true}
             fill="#E3008C"
-            height={13.882352941176471}
+            height={13.620623316660257}
             id="nodeBar75"
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -2827,7 +2827,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             strokeWidth="2"
             width={124}
             x={739}
-            y={47.951536403029024}
+            y={47.95153640302901}
           />
         </g>
         <g
@@ -2837,7 +2837,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             aria-label="node node7 with weight 980"
             data-is-focusable={true}
             fill="#E3008C"
-            height={340.1176470588236}
+            height={340.37937668333973}
             id="nodeBar78"
             onFocus={[Function]}
             onMouseOut={[Function]}
@@ -2848,7 +2848,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
             strokeWidth="2"
             width={124}
             x={739}
-            y={82.44476169854653}
+            y={82.18303207403032}
           />
           <g
             className=
@@ -2878,7 +2878,7 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
                 onMouseOver={[Function]}
                 textAnchor="start"
                 x={739}
-                y={82.44476169854653}
+                y={82.18303207403032}
               >
                 node7
               </text>
@@ -2892,11 +2892,395 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
               fontWeight="bold"
               textAnchor="start"
               x={739}
-              y={82.44476169854653}
+              y={82.18303207403032}
             >
               980
             </text>
           </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on providing height less than onepercent of total height for two columns 1`] = `
+<div
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone108"
+    data-tabster="{\\"uncontrolled\\": {}}"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <svg
+      height={436}
+      id="sankeyChart107"
+      width={864}
+    >
+      <g
+        className=
+
+            {
+              fill: #ffffff;
+              stroke-width: 3px;
+              stroke: #000000;
+            }
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+              fill: #000000;
+            }
+        strokeOpacity={1}
+      >
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link89-0"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#00758F"
+              />
+              <stop
+                offset="100%"
+                stopColor="#4F6BED"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="link from Large Source to Large Target with weight 10000"
+            d="M172,36C455.5,36,455.5,36,739,36L739,416.348C455.5,416.348,455.5,416.348,172,416.348Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link103"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link89-1"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#77004D"
+              />
+              <stop
+                offset="100%"
+                stopColor="#4F6BED"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="link from Tiny Source to Large Target with weight 1"
+            d="M172,426.232C455.5,426.232,455.5,416.348,739,416.348L739,418.232C455.5,418.232,455.5,428.116,172,428.116Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link104"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link89-2"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#00758F"
+              />
+              <stop
+                offset="100%"
+                stopColor="#937600"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="link from Large Source to Tiny Target with weight 1"
+            d="M172,416.348C455.5,416.348,455.5,426.232,739,426.232L739,428.116C455.5,428.116,455.5,418.232,172,418.232Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link105"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link89-3"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#77004D"
+              />
+              <stop
+                offset="100%"
+                stopColor="#937600"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="link from Tiny Source to Tiny Target with weight 1"
+            d="M172,428.116C455.5,428.116,455.5,428.116,739,428.116L739,430C455.5,430,455.5,430,172,430Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link106"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+      </g>
+      <g
+        className=
+
+            {
+              fill: #F5F5F5;
+            }
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+              fill: #000000;
+            }
+      >
+        <g
+          id="nodeGElement93"
+        >
+          <rect
+            aria-label="node Large Source with weight 10001"
+            data-is-focusable={true}
+            fill="#00758F"
+            height={382.2322981856484}
+            id="nodeBar92"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#002E39"
+            strokeWidth="2"
+            width={124}
+            x={48}
+            y={36}
+          />
+          <g
+            className=
+
+                {
+                  margin-bottom: 4px;
+                  margin-left: 8px;
+                  margin-right: 8px;
+                  margin-top: 4px;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                  fill: rgb(179, 179, 179);
+                }
+          >
+            <g
+              className="nodeName"
+            >
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="1.2em"
+                fill="#FFFFFF"
+                fontSize={10}
+                fontWeight="regular"
+                id="nodeBar92-name"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="start"
+                x={48}
+                y={36}
+              >
+                Large Source
+              </text>
+            </g>
+            <text
+              aria-hidden="true"
+              dx="0.4em"
+              dy="2em"
+              fill="#FFFFFF"
+              fontSize={14}
+              fontWeight="bold"
+              textAnchor="start"
+              x={48}
+              y={36}
+            >
+              10001
+            </text>
+          </g>
+        </g>
+        <g
+          id="nodeGElement96"
+        >
+          <rect
+            aria-label="node Tiny Source with weight 2"
+            data-is-focusable={true}
+            fill="#77004D"
+            height={3.7677018143515397}
+            id="nodeBar95"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#43002C"
+            strokeWidth="2"
+            width={124}
+            x={48}
+            y={426.2322981856484}
+          />
+        </g>
+        <g
+          id="nodeGElement99"
+        >
+          <rect
+            aria-label="node Large Target with weight 10001"
+            data-is-focusable={true}
+            fill="#4F6BED"
+            height={382.23229818564846}
+            id="nodeBar98"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#3B52B4"
+            strokeWidth="2"
+            width={124}
+            x={739}
+            y={36}
+          />
+          <g
+            className=
+
+                {
+                  margin-bottom: 4px;
+                  margin-left: 8px;
+                  margin-right: 8px;
+                  margin-top: 4px;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                  fill: rgb(179, 179, 179);
+                }
+          >
+            <g
+              className="nodeName"
+            >
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="1.2em"
+                fill="#FFFFFF"
+                fontSize={10}
+                fontWeight="regular"
+                id="nodeBar98-name"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="start"
+                x={739}
+                y={36}
+              >
+                Large Target
+              </text>
+            </g>
+            <text
+              aria-hidden="true"
+              dx="0.4em"
+              dy="2em"
+              fill="#FFFFFF"
+              fontSize={14}
+              fontWeight="bold"
+              textAnchor="start"
+              x={739}
+              y={36}
+            >
+              10001
+            </text>
+          </g>
+        </g>
+        <g
+          id="nodeGElement102"
+        >
+          <rect
+            aria-label="node Tiny Target with weight 2"
+            data-is-focusable={true}
+            fill="#937600"
+            height={3.7677018143516534}
+            id="nodeBar101"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#6D5700"
+            strokeWidth="2"
+            width={124}
+            x={739}
+            y={426.23229818564846}
+          />
         </g>
       </g>
     </svg>
