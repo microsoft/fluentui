@@ -1,30 +1,7 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
-
-type CollisionEdge = 'top' | 'right' | 'bottom' | 'left';
-
-export const PositioningShorthand = {
-  aboveStart: 'above-start',
-  aboveCenter: 'above-center',
-  aboveEnd: 'above-end',
-  endTop: 'end-top',
-  endMiddle: 'end-middle',
-  endBottom: 'end-bottom',
-  belowStart: 'below-start',
-  belowCenter: 'below-center',
-  belowEnd: 'below-end',
-  startTop: 'start-top',
-  startMiddle: 'start-middle',
-  startBottom: 'start-bottom',
-} as const;
-
-type PositioningShorthand = typeof PositioningShorthand[keyof typeof PositioningShorthand];
-
-interface HTMLPopoverElement extends HTMLElement {
-  showPopover: () => void;
-  hidePopover: () => void;
-  togglePopover: () => void;
-}
+import { PositioningShorthand } from './popover.options.js';
+import type { CollisionEdge, HTMLPopoverElement } from './popover.options.js';
 
 export class Popover extends FASTElement {
   /**
@@ -32,12 +9,6 @@ export class Popover extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   open: boolean = false;
-
-  /**
-   * size
-   */
-  @attr
-  size: 'small' | 'medium' | 'large' = 'medium';
 
   /**
    * openChanged
@@ -51,6 +22,12 @@ export class Popover extends FASTElement {
       this.popoverReference?.hidePopover();
     }
   }
+
+  /**
+   * size
+   */
+  @attr
+  size: 'small' | 'medium' | 'large' = 'medium';
 
   /**
    * mode
@@ -70,6 +47,12 @@ export class Popover extends FASTElement {
    */
   @observable
   anchorReferences: HTMLElement[] | undefined;
+
+  /**
+   * anchorReferencesChanged
+   *
+   * Adds anchor attributes and event listeners when the anchor is added to the DOM.
+   */
   anchorReferencesChanged() {
     this.initializeTargetId();
     this.addAnchorAttributes();
@@ -81,6 +64,12 @@ export class Popover extends FASTElement {
    */
   @observable
   popoverReference: HTMLPopoverElement | undefined;
+
+  /**
+   * popoverReferenceChanged
+   *
+   * Adds event listeners to the popoverReference when it's added to the DOM
+   */
   popoverReferenceChanged() {
     if (this.popoverReference) {
       this.addPopoverEventListeners();
@@ -105,7 +94,11 @@ export class Popover extends FASTElement {
    * The boundary container of the popover for use in repositioning the floating popover in the event that the popover needs to respond to a positiioning boundary other than the window or document body
    */
   @observable
-  overflowBoundary: Element | null | undefined;
+  overflowBoundaryRef: Element | null | undefined;
+
+  /**
+   * overflowBoundaryChanged
+   */
   overflowBoundaryChanged() {
     this.addOverflowBoundaryEventListeners();
   }
@@ -113,32 +106,26 @@ export class Popover extends FASTElement {
   /**
    * overflowBoundarySelector
    *
-   * @remarks the selector defines the boundary container of the popover for use in repositioning the floating popover
+   * This selector is used to define the boundary container of the popover - for use in repositioning the floating popover
    */
   @attr({ attribute: 'overflow-boundary-selector' })
   overflowBoundarySelector: string | undefined;
 
   /**
    * registerOverflowBoundary
+   *
+   * Saves a reference to the containing element of the popover if the overflowBoundarySelector is set
    */
   registerOverflowBoundary = () => {
     if (this.overflowBoundarySelector) {
-      this.overflowBoundary = document.querySelector(this.overflowBoundarySelector);
+      this.overflowBoundaryRef = document.querySelector(this.overflowBoundarySelector);
     }
   };
 
   /**
-   * applyPopoverPolyfill
-   */
-  applyPopoverPolyfill() {
-    if (!HTMLElement.prototype.hasOwnProperty('popover')) {
-      console.log('setting popover polyfill');
-      import('@oddbird/popover-polyfill');
-    }
-  }
-
-  /**
    * initializeTargetId
+   *
+   * initializes the targetId if it's not set
    */
   initializeTargetId() {
     if (!this.targetId) {
@@ -149,6 +136,8 @@ export class Popover extends FASTElement {
 
   /**
    * addAnchorAttributes
+   *
+   * adds popovertarget attribute and targetId to the slotted anchor element
    */
   addAnchorAttributes() {
     if (this.anchorReferences && this.anchorReferences.length > 0 && this.targetId) {
@@ -171,20 +160,25 @@ export class Popover extends FASTElement {
    * adds event listeners to the overflowBoundary if it exists. This is used to reposition the popover when the overflowBoundary is scrolled, like in the case of an overflowed scrollable container that has a popover as a child.
    */
   addOverflowBoundaryEventListeners() {
-    if (this.overflowBoundary) {
-      this.overflowBoundary.addEventListener('scroll', this.applyPopoverCssPositioning);
+    if (this.overflowBoundaryRef) {
+      this.overflowBoundaryRef.addEventListener('scroll', this.applyPopoverCssPositioning);
     }
   }
+
+  /**
+   * handleWindowChanges
+   */
+  handleWindowChanges = () => {
+    this.observePopoverOverflow();
+    this.applyPopoverCssPositioning();
+  };
 
   /**
    * addWindowEventListeners
    */
   addWindowEventListeners() {
-    window.addEventListener('resize', () => {
-      this.observePopoverOverflow();
-      this.applyPopoverCssPositioning();
-    });
-    window.addEventListener('scroll', this.applyPopoverCssPositioning);
+    window.addEventListener('resize', this.handleWindowChanges);
+    window.addEventListener('scroll', this.handleWindowChanges);
   }
 
   /**
@@ -194,17 +188,22 @@ export class Popover extends FASTElement {
     this.popoverReference?.togglePopover();
   };
 
+  /**
+   * addPopoverEventListeners
+   */
   addPopoverEventListeners() {
     if (this.popoverReference) {
       this.popoverReference.addEventListener('toggle', (event: any) => {
-        this.registerOverflowBoundary();
-        this.applyPopoverCssPositioning();
-
-        this.createOverflowHandler();
-        this.addWindowEventListeners();
-
         if (event.newState === 'open') {
-          this.observePopoverOverflow();
+          this.registerOverflowBoundary();
+          this.applyPopoverCssPositioning();
+          this.createOverflowHandler();
+
+          this.addWindowEventListeners();
+
+          // does nothing here
+          // this.observePopoverOverflow();
+
           this.open = true;
         } else {
           this.open = false;
@@ -228,8 +227,8 @@ export class Popover extends FASTElement {
   createOverflowHandler = () => {
     // defaulting root to document. In the case where the overflowBoundary is not set, and the component is nested in an iframe the document will refer to the iframe document.
     const options: IntersectionObserverInit = { root: document };
-    if (this.overflowBoundary) {
-      options.root = this.overflowBoundary;
+    if (this.overflowBoundaryRef) {
+      options.root = this.overflowBoundaryRef;
       options.rootMargin = '15px';
     }
     this.intersectionObserver = new IntersectionObserver(this.handleOverflow, options);
@@ -278,6 +277,8 @@ export class Popover extends FASTElement {
 
   /**
    * observePopoverOverflow
+   *
+   * Disconnects and re-observes the popoverReference for overflow. This is used to reposition the popover in the event that it collides with its container or user defined overflowed boundary. Disconnecting is required to reset the baseline for the intersection observer. This method will be called repeatedly on ui changes like resizing the window or scrolling the overflowBoundary.
    */
   observePopoverOverflow() {
     this.intersectionObserver?.disconnect();
@@ -286,11 +287,17 @@ export class Popover extends FASTElement {
     }
   }
 
+  /**
+   * originalPopoverPosition
+   *
+   * Tracks the original position of the popover before it was repositioned so that it can be reset when the popover is no longer overflowing
+   */
   private originalPopoverPosition: PositioningShorthand | undefined;
+
   /**
    * repositionPopover
    *
-   * updates the position of the popover based on popover collisions
+   * Updates the position of the popover based on popover collisions
    */
   repositionPopover = (collisionEdge: CollisionEdge) => {
     if (!this.originalPopoverPosition) {
@@ -316,6 +323,8 @@ export class Popover extends FASTElement {
 
   /**
    * calculateModifiedPopoverPosition
+   *
+   * Calculates the modified position of the popover based on the position property.
    */
   calculateModifiedPopoverPosition() {
     if (this.anchorReferences && this.popoverReference) {
@@ -395,6 +404,16 @@ export class Popover extends FASTElement {
         this.popoverReference.style.left = `${x}px`;
         this.popoverReference.style.top = `${y}px`;
       }
+    }
+  }
+
+  /**
+   * applyPopoverPolyfill
+   */
+  applyPopoverPolyfill() {
+    if (!HTMLElement.prototype.hasOwnProperty('popover')) {
+      console.log('setting popover polyfill');
+      import('@oddbird/popover-polyfill');
     }
   }
 

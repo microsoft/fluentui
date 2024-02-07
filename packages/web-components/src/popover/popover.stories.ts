@@ -1,7 +1,8 @@
 import { html } from '@microsoft/fast-element';
 import './define';
 import { renderComponent } from '../helpers.stories.js';
-import { Popover as FluentPopover, PositioningShorthand } from './popover.js';
+import { Popover as FluentPopover } from './popover.js';
+import { PositioningShorthand } from './popover.options.js';
 
 const template = html`
   <style>
