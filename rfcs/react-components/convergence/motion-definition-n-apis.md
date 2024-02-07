@@ -43,6 +43,7 @@
   - [Mouse over / focus / active states](#mouse-over--focus--active-states)
   - [Migration plan](#migration-plan)
 - [Out of scope](#out-of-scope)
+  - [Advanced reduced motion support](#advanced-reduced-motion-support)
   - [Motion sequencing & grouping](#motion-sequencing--grouping)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -1055,6 +1056,44 @@ What is the migration plan for these packages?
 
 ## Out of scope
 
+### Advanced reduced motion support
+
+Both the CSS and Web Animations API options offer basic support for reduced motion:
+
+- In the CSS option (`useMotion()`), [animations are skipped](https://github.com/microsoft/fluentui/blob/b3c2fa6881e1cee2f326ba80811400596c99112c/packages/react-components/react-motion-preview/src/hooks/useMotion.ts#L108) if `@media (prefers-reduced-motion: reduce)` is true.
+  > Note: this approach is not ideal as animation events won't be fired.
+- In the Web Animations API option (`createAtom()`, `createPresence()`) animations are [forced to a duration of 1ms](https://github.com/microsoft/fluentui/blob/b3c2fa6881e1cee2f326ba80811400596c99112c/packages/react-components/react-motions-preview/src/factories/createPresence.ts#L91) if `@media (prefers-reduced-motion: reduce)` is true
+
+It's essential to understand that reduced motion doesn't necessarily imply a reduction in the duration of the animation. For example, in an animation where an element's size and color change, reducing motion might involve retaining the color change while minimizing movement.
+
+For the Web Animations API, it might be feasible to enhance the motion definition with a `reducedMotion` option, as shown in the example below:
+
+```tsx
+// ⚠️ This is not proposed API, it's just an example
+
+const fade: MotionAtom = {
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  duration: 500,
+
+  reducedMotion: {
+    duration: 100,
+  },
+};
+const grow: MotionAtom = {
+  keyframes: [
+    { height: 0, opacity: 0 },
+    { height: 100, opacity: 1 },
+  ],
+  duration: 500,
+
+  reducedMotion: {
+    keyframes: [{ height: 0 }, { height: 100 }],
+  },
+};
+```
+
+Factories (`createAtom()`, `createPresence()`) could utilize this prop to apply different keyframes and options based on the media query.
+
 ### Motion sequencing & grouping
 
 Motions can be combined into groups or sequences, for example:
@@ -1077,3 +1116,5 @@ gantt
 This is outside the scope of this RFC, but it could be considered in the future. The Web Animations API makes it easier to implement, and it can be seamlessly integrated into existing factories since changing animations no longer requires modifying CSS classes.
 
 [PoC](https://stackblitz.com/edit/stackblitz-starters-ifjobr)
+
+> **Note:** the draft of [Web Animations Level 2](https://drafts.csswg.org/web-animations-2) contains both [`GroupEffect`](https://drafts.csswg.org/web-animations-2/#group-effect) and [`SequenceEffect`](https://drafts.csswg.org/web-animations-2/#the-sequenceeffect-interface) interfaces to provide this functionality.
