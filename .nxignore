@@ -7,5 +7,6 @@ packages/fluentui/setup-local-development.md
 packages/fluentui/CHANGELOG.md
 packages/fluentui/CONTRIBUTING.md
 packages/fluentui/README.md
+packages/fluentui/.browserslistrc
 
 **/dist/**
