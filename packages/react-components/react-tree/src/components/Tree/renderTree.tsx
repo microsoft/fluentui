@@ -15,8 +15,6 @@ export const renderTree_unstable = (state: TreeState, contextValues: TreeContext
 
       {/* Wrap child content in a Collapse transition which manages show/hide */}
       <Collapse visible={state.open}>
-        {/* TODO: fix re-render bug when using override */}
-        {/* <Collapse visible={state.open} override={{ all: { duration: 2000 } }}> */}
         <state.root>{state.root.children}</state.root>
       </Collapse>
     </TreeProvider>

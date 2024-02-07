@@ -23,11 +23,11 @@ type PresenceProps<CustomProps = {}> = {
 export function createPresence<CustomProps = {}>(motion: PresenceMotion | PresenceMotionFn<CustomProps>) {
   const Presence: React.FC<PresenceProps<CustomProps>> = props => {
     const { appear, children, imperativeRef, visible, unmountOnExit, override = {} } = props;
-    const { enter: enterProp, exit: exitProp, all } = override;
     const child = getChildElement(children);
 
     const animationRef = useMotionImperativeRef(imperativeRef);
     const elementRef = React.useRef<HTMLElement>();
+    const overrideRef = React.useRef(override);
     const ref = useMergedRefs(elementRef, child.ref);
 
     const [mounted, setMounted] = React.useState(() => (unmountOnExit ? visible : true));
@@ -48,6 +48,7 @@ export function createPresence<CustomProps = {}>(motion: PresenceMotion | Presen
       }
 
       if (elementRef.current) {
+        const { enter: enterProp, exit: exitProp, all } = overrideRef.current;
         const enter = { ...all, ...enterProp } as Partial<PresenceParams & CustomProps>;
         const exit = { ...all, ...exitProp } as Partial<PresenceParams & CustomProps>;
 
@@ -76,7 +77,7 @@ export function createPresence<CustomProps = {}>(motion: PresenceMotion | Presen
           animation.cancel();
         };
       }
-    }, [animationRef, isReducedMotion, onExitFinish, visible, enterProp, exitProp, all]);
+    }, [animationRef, isReducedMotion, onExitFinish, visible]);
 
     useIsomorphicLayoutEffect(() => {
       if (!elementRef.current) {
@@ -86,6 +87,7 @@ export function createPresence<CustomProps = {}>(motion: PresenceMotion | Presen
       const shouldEnter = isFirstMount.current ? appear && visible : mounted && visible;
 
       if (shouldEnter) {
+        const { enter: enterProp, exit: exitProp, all } = overrideRef.current;
         const enter = { ...all, ...enterProp } as Partial<PresenceParams & CustomProps>;
         const exit = { ...all, ...exitProp } as Partial<PresenceParams & CustomProps>;
 
@@ -105,11 +107,15 @@ export function createPresence<CustomProps = {}>(motion: PresenceMotion | Presen
           animation.cancel();
         };
       }
-    }, [animationRef, isReducedMotion, mounted, visible, appear, enterProp, exitProp, all]);
+    }, [animationRef, isReducedMotion, mounted, visible, appear]);
 
     useIsomorphicLayoutEffect(() => {
       isFirstMount.current = false;
     }, []);
+
+    React.useEffect(() => {
+      overrideRef.current = override;
+    }, [override]);
 
     if (mounted) {
       return React.cloneElement(child, { ref });
