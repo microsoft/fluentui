@@ -481,6 +481,10 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
 
   const finalHeight: number | undefined = isCollapsed ? COACHMARK_HEIGHT : entityInnerHostRect.height;
 
+  const onClickCallout = React.useCallback(() => {
+    openCoachmark();
+  }, [openCoachmark]);
+
   return (
     <PositioningContainer
       target={target}
@@ -510,6 +514,7 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
                 role="dialog"
                 aria-labelledby={ariaLabelledBy}
                 aria-describedby={ariaDescribedBy}
+                onClick={onClickCallout}
               >
                 {isCollapsed && [
                   ariaLabelledBy && (

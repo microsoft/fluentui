@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-aria",
-  "version": "9.8.1",
+  "version": "9.8.2",
   "description": "React helper to ensure ARIA",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -35,7 +35,8 @@
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.7",
     "@fluentui/react-shared-contexts": "^9.14.0",
-    "@fluentui/react-tabster": "^9.18.0",
+    "@fluentui/react-jsx-runtime": "^9.0.29",
+    "@fluentui/react-tabster": "^9.19.0",
     "@fluentui/react-utilities": "^9.18.0",
     "@swc/helpers": "^0.5.1"
   },
