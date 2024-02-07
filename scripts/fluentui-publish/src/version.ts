@@ -71,7 +71,7 @@ export async function changelog(
     throw new Error(`No previous release(git tag) for ${tagPattern} was found`);
   }
 
-  const releaseDate = new Date()
+  const releaseDate = new Date(Date.now())
     .toLocaleDateString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' })
     .replace(/\//g, '-');
 

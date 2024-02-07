@@ -12,6 +12,8 @@ describe(`changelog`, () => {
   const nxConfig = readJsonFile(joinPathFragments(workspaceRoot, 'nx.json'));
 
   beforeEach(() => {
+    Date.now = jest.fn(() => 1_707_327_855_635);
+
     tree = createTreeWithEmptyWorkspace();
     tree.write(
       'packages/fluentui/CHANGELOG.md',
@@ -49,24 +51,24 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
     const updatedChangelog = tree.read('packages/fluentui/CHANGELOG.md', 'utf-8');
 
     expect(updatedChangelog).toMatchInlineSnapshot(`
-        "# Changelog
-        This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+      "# Changelog
+      This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-        ## [Unreleased]
+      ## [Unreleased]
 
-        <!--------------------------------[ v0.70.2 ]------------------------------- -->
-        ## [v0.70.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.70.2) (05-02-2024)
-        [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.5..@fluentui/react-northstar_v0.70.2)
+      <!--------------------------------[ v0.70.2 ]------------------------------- -->
+      ## [v0.70.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.70.2) (07-02-2024)
+      [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.5..@fluentui/react-northstar_v0.70.2)
 
-        ### Fixes
-        - Do not use defaultProps  @user ([#28725](https://github.com/microsoft/fluentui/pull/28725))
+      ### Fixes
+      - Do not use defaultProps  @user ([#28725](https://github.com/microsoft/fluentui/pull/28725))
 
-        <!--------------------------------[ v0.66.4 ]------------------------------- -->
-        ## [v0.66.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.4) (2023-03-10)
-        [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.3..@fluentui/react-northstar_v0.66.4)
+      <!--------------------------------[ v0.66.4 ]------------------------------- -->
+      ## [v0.66.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.4) (2023-03-10)
+      [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.3..@fluentui/react-northstar_v0.66.4)
 
-        ### Fixes
-        - Datepicker: indicators should be visible in high contrast mode. @ling1726 ([#27107](https://github.com/microsoft/fluentui/pull/27107))"
-      `);
+      ### Fixes
+      - Datepicker: indicators should be visible in high contrast mode. @ling1726 ([#27107](https://github.com/microsoft/fluentui/pull/27107))"
+    `);
   });
 });
