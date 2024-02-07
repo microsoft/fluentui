@@ -172,6 +172,8 @@ exports[`DatePicker renders DatePicker allowing text input correctly 1`] = `
             value=""
           />
           <i
+            aria-expanded={false}
+            aria-haspopup="dialog"
             aria-hidden={true}
             className=
                 ms-DatePicker-event--without-label
@@ -198,6 +200,7 @@ exports[`DatePicker renders DatePicker allowing text input correctly 1`] = `
                 }
             data-icon-name="Calendar"
             onClick={[Function]}
+            role="button"
           >
             
           </i>
