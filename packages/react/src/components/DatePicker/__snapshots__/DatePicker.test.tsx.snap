@@ -173,7 +173,6 @@ exports[`DatePicker renders DatePicker allowing text input correctly 1`] = `
           />
           <i
             aria-expanded={false}
-            aria-haspopup="dialog"
             aria-hidden={true}
             className=
                 ms-DatePicker-event--without-label
