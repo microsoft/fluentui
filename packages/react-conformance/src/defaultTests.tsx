@@ -453,10 +453,21 @@ export const defaultTests: DefaultTestObject = {
       const { testOptions = {} } = testInfo;
 
       const propNames = Object.keys(componentInfo.props);
-      const ignoreProps = testOptions['consistent-callback-args']?.ignoreProps || [];
+      const legacyCallbacks = testOptions['consistent-callback-args']?.legacyCallbacks || [];
+
+      // verify that legacyCallbacks option contains real props:
+      const legacyCallbacksNotInProp = legacyCallbacks.filter(legacyCallback => !propNames.includes(legacyCallback));
+      if (legacyCallbacksNotInProp.length) {
+        throw new Error(
+          [
+            `Option "consistent-callback-args.legacyCallbacks" contains "${legacyCallbacksNotInProp.join(', ')}" prop,`,
+            'which is not present in component props.',
+          ].join(' '),
+        );
+      }
 
       const invalidProps = propNames.reduce<Record<string, Error>>((errors, propName) => {
-        if (!ignoreProps.includes(propName) && CALLBACK_REGEX.test(propName)) {
+        if (legacyCallbacks.includes(propName)) {
           const propInfo = componentInfo.props[propName];
 
           if (!propInfo.declarations) {
