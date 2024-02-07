@@ -534,6 +534,26 @@ function MyComponent() {
 }
 ```
 
+It's important to understand that `createPresence()` relies on `PresenceMotion` definitions, which are a combination of `enter` and `exit` motions:
+
+```ts
+type PresenceMotion = {
+  enter: AtomMotion;
+  exit: AtomMotion;
+};
+```
+
+For example, when using `fade.slow()`, it yields a `PresenceMotion` object containing `enter` and `exit` motions:
+
+```ts
+const fadeSlow: PresenceMotion = {
+  enter: atom.fade.enterSlow,
+  exit: atom.fade.exitSlow,
+};
+```
+
+This structure enables the definition of distinct keyframes and options, such as durations and easing, for entering and exiting transitions.
+
 ### Using group motions
 
 _At present, this feature is not implemented in either the `@fluentui/react-motion-preview` or `@fluentui/react-motions-preview` packages, but it may be implemented in the future._
