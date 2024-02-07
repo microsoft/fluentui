@@ -568,6 +568,16 @@ const linkArea = d3Area()
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type TooltipDiv = D3Selection<BaseType, unknown, HTMLElement, any>;
 
+function nodeTextColor(state: Readonly<ISankeyChartState>, singleNode: SNode): string {
+  return !(
+    !state.selectedState ||
+    (state.selectedState && state.selectedNodes.has(singleNode.index!) && state.selectedNode) ||
+    (state.selectedState && !state.selectedNode)
+  )
+    ? DEFAULT_TEXT_COLOR
+    : NON_SELECTED_TEXT_COLOR;
+}
+
 // NOTE: To start employing React.useMemo properly, we need to convert this code from a React.Component
 // to a function component. This will require a significant refactor of the code in this file.
 // https://stackoverflow.com/questions/60223362/fast-way-to-convert-react-class-component-to-functional-component
@@ -680,7 +690,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     // computes the truncated labels creates and destroys a `tempText` element in the DOM. This is causing a
     // reflow and repaint of the entire chart. This is a performance issue, and so computing the truncated labels
     // once will help to mitigate this issue.
-    // TODO: Write a unit test which detects this slow-down so that future changes do not reintroduce this issue.
   }
 
   public componentDidMount(): void {
@@ -949,15 +958,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
                     textAnchor={this._isRtl ? 'end' : 'start'}
                     fontWeight="regular"
                     aria-hidden="true"
-                    fill={
-                      !(
-                        !state.selectedState ||
-                        (state.selectedState && state.selectedNodes.has(singleNode.index!) && state.selectedNode) ||
-                        (state.selectedState && !state.selectedNode)
-                      )
-                        ? DEFAULT_TEXT_COLOR
-                        : NON_SELECTED_TEXT_COLOR
-                    }
+                    fill={nodeTextColor(state, singleNode)}
                     fontSize={10}
                     onMouseOver={this._showTooltip.bind(this, singleNode.name, isTruncated, tooltipDiv)}
                     onMouseOut={this._hideTooltip.bind(this, tooltipDiv)}
@@ -976,15 +977,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
                   textAnchor={this._isRtl ? 'end' : 'start'}
                   fontWeight="bold"
                   aria-hidden="true"
-                  fill={
-                    !(
-                      !state.selectedState ||
-                      (state.selectedState && state.selectedNodes.has(singleNode.index!) && state.selectedNode) ||
-                      (state.selectedState && !state.selectedNode)
-                    )
-                      ? DEFAULT_TEXT_COLOR
-                      : NON_SELECTED_TEXT_COLOR
-                  }
+                  fill={nodeTextColor(state, singleNode)}
                   fontSize={14}
                 >
                   {singleNode.actualValue}
