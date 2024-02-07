@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
 import type { MenuItemLinkProps, MenuItemLinkState } from './MenuItemLink.types';
 import { useMenuItem_unstable } from '../MenuItem/useMenuItem';
 import { MenuItemProps } from '../MenuItem/MenuItem.types';
+import { useMenuContext_unstable } from '../../index';
 
 /**
  * Create the state required to render MenuItemLink.
@@ -19,6 +20,17 @@ export const useMenuItemLink_unstable = (
 ): MenuItemLinkState => {
   // casting because the root slot changes from div to a
   const baseState = useMenuItem_unstable(props as MenuItemProps, null);
+  const setOpen = useMenuContext_unstable(context => context.setOpen);
+  const open = useMenuContext_unstable(context => context.open);
+
+  const _props = { ...props };
+  _props.onClick = useEventCallback(event => {
+    if (open) {
+      setOpen(event, { open: false, type: 'menuItemClick', event });
+    }
+    props.onClick?.(event);
+  });
+
   return {
     ...baseState,
     components: {
@@ -29,7 +41,7 @@ export const useMenuItemLink_unstable = (
       getIntrinsicElementProps('a', {
         ref,
         role: 'menuitem',
-        ...props,
+        ..._props,
       }),
       { elementType: 'a' },
     ),
