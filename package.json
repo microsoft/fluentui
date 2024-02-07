@@ -38,7 +38,7 @@
     "preinstall": "node ./scripts/package-manager/use-yarn-please.js",
     "publish:beachball": "beachball publish -b origin/master --access public -y",
     "rebuild": "node ./scripts/executors/invalidate-just-cache.js && yarn build --reset-cache",
-    "northstar:release": "node ./scripts/fluentui-publish",
+    "northstar:release": "northstar-release",
     "northstar:build:docs": "yarn workspace @fluentui/docs build",
     "northstar:start": "yarn workspace @fluentui/docs start",
     "northstar:perf": "yarn workspace @fluentui/perf perf:test",
