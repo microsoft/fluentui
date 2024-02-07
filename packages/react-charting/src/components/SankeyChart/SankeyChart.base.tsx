@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react/lib/Utilities';
 import { sum as d3Sum } from 'd3-array';
 import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRight } from 'd3-sankey';
-import { select, selectAll } from 'd3-selection';
+import { BaseType, Selection as D3Selection, select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
 import * as React from 'react';
 import { IBasestate, SLink, SNode } from '../../types/IDataPoint';
@@ -25,7 +25,8 @@ const PADDING_PERCENTAGE = 0.3;
 type NodeId = number | string;
 type ItemValues<T> = { [key: NodeId]: T };
 type NodeValues = ItemValues<number>;
-type LinkValues = { [key: NodeId]: NodeValues };
+type LinkItemValues<T> = { [key: NodeId]: ItemValues<T> };
+type LinkValues = LinkItemValues<number>;
 
 type NodesInColumns = { [key: number]: SNode[] };
 type NormalizedData = ISankeyChartData & {
@@ -336,7 +337,7 @@ function valuesOfLinks(links: SLink[]): LinkValues {
   return result;
 }
 
-function linkValue(originalLinks: LinkValues, link: SLink): number {
+function linkValue<T>(originalLinks: LinkItemValues<T>, link: SLink): T {
   return originalLinks[idFromNumberOrSNode(link.source)][idFromNumberOrSNode(link.target)];
 }
 
@@ -404,7 +405,6 @@ function assignNodeColors(
 function truncateText(text: string, rectangleWidth: number, padding: number) {
   // NOTE: This method is the most-expensive in terms of rerendering components.
   const textLengthForNodeName = rectangleWidth - padding; // This can likely be computed once and passed in.
-  let elipsisLength = 0;
   // The following `select` statement injects a `tempText` element into the DOM. This injection
   // (and subsequent removal) is causing a layout recalculation. This is a performance issue.
   // Note that this code will always inject a `tempText` element, but doesn't always remove it. This is a bug.
@@ -414,25 +414,21 @@ function truncateText(text: string, rectangleWidth: number, padding: number) {
     .attr('font-size', '10')
     .append('tspan')
     .text(null);
-  tspan.text(text);
-  if (tspan.node() !== null && tspan.node()!.getComputedTextLength() <= textLengthForNodeName) {
+  if (fitsWithinNode(tspan, text, textLengthForNodeName)) {
     return text;
   }
-  tspan.text(null);
   // Computing the size of elipsis is performed with each node. This should be computed once and used everywhere.
   // TODO: Compute the size of the elipsis once and use it everywhere.
-  tspan.text('...');
-  if (tspan.node() !== null) {
-    elipsisLength = tspan.node()!.getComputedTextLength();
-  }
-  tspan.text(null);
+  const elipsisLength = computeElipsisLength(tspan);
   let line: string = '';
   // Calculate how much of the original text to show.
+  // TODO: The folllowing is O(n). We could use a binary search to make this faster: O(log(n)).
   for (let i = 0; i < text.length; i++) {
     line += text[i];
     tspan.text(line);
-    if (tspan.node() !== null) {
-      const w = tspan.node()!.getComputedTextLength();
+    const currentNode = tspan.node();
+    if (currentNode !== null) {
+      const w = currentNode!.getComputedTextLength();
       if (w >= textLengthForNodeName - elipsisLength) {
         line = line.slice(0, -1);
         line += '...';
@@ -444,15 +440,45 @@ function truncateText(text: string, rectangleWidth: number, padding: number) {
   return line;
 }
 
-interface IRenderedNodeAttributes {
+type RenderedNodeAttributes = {
+  readonly reactId: string;
+  readonly gElementId: string;
   readonly name: string;
   readonly trimmed: boolean;
   readonly height: number;
   readonly weightOffset: number;
+};
+
+type RenderedLinkAttributes = {
+  readonly reactId: string;
+};
+
+type TSpanForTextMeasuring = D3Selection<SVGTSpanElement, unknown, HTMLElement, unknown>;
+
+function fitsWithinNode(tspan: TSpanForTextMeasuring, text: string, textLengthForNodeName: number): boolean {
+  const measurement = measureText(tspan, text);
+  if (measurement === undefined) {
+    return false;
+  }
+  return measurement <= textLengthForNodeName;
 }
 
-function computeNodeAttributes(nodes: SNode[]): ItemValues<IRenderedNodeAttributes> {
-  const result: ItemValues<IRenderedNodeAttributes> = {};
+function measureText(tspan: TSpanForTextMeasuring, text: string | number): number | undefined {
+  try {
+    tspan.text(text);
+    return tspan.node()?.getComputedTextLength();
+  } finally {
+    tspan.text(null);
+  }
+}
+
+function computeElipsisLength(tspan: TSpanForTextMeasuring): number {
+  const measurement = measureText(tspan, '...');
+  return measurement === undefined ? 0 : measurement;
+}
+
+function computeNodeAttributes(nodes: SNode[]): ItemValues<RenderedNodeAttributes> {
+  const result: ItemValues<RenderedNodeAttributes> = {};
   const tspan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
   nodes.forEach((singleNode: SNode) => {
     const height = singleNode.y1! - singleNode.y0! > 0 ? singleNode.y1! - singleNode.y0! : 0;
@@ -465,18 +491,19 @@ function computeNodeAttributes(nodes: SNode[]): ItemValues<IRenderedNodeAttribut
       padding = padding + 6;
       // The following `select` statement injects a `tempText` element into the DOM. This injection
       // (and subsequent removal) is causing a layout recalculation. This is a performance issue.
-      tspan.text(singleNode.actualValue!);
-      if (tspan.node() !== null) {
-        textLengthForNodeWeight = tspan.node()!.getComputedTextLength();
+      const measurement = measureText(tspan, singleNode.actualValue!);
+      if (measurement !== undefined) {
+        textLengthForNodeWeight = measurement;
         padding = padding + textLengthForNodeWeight;
       }
-      tspan.text(null);
     }
     // Since the total width of the node is 124 and we are giving margin of 8px from the left .
     // So the actual value on which it will be truncated is 124-8=116.
     const truncatedname: string = truncateText(singleNode.name, 116, padding);
     const isTruncated: boolean = truncatedname.slice(-3) === '...';
     result[singleNode.nodeId] = {
+      reactId: getId('nodeBar'),
+      gElementId: getId('nodeGElement'),
       name: truncatedname,
       trimmed: isTruncated,
       height,
@@ -484,6 +511,21 @@ function computeNodeAttributes(nodes: SNode[]): ItemValues<IRenderedNodeAttribut
     };
   });
   selectAll('.tempText').remove();
+  return result;
+}
+
+function computeLinkAttributes(links: SLink[]): LinkItemValues<RenderedLinkAttributes> {
+  const result: LinkItemValues<RenderedLinkAttributes> = {};
+  links.forEach((link: SLink) => {
+    const sourceId = idFromNumberOrSNode(link.source);
+    let sourceToTarget = result[sourceId];
+    if (!sourceToTarget) {
+      sourceToTarget = {};
+      result[sourceId] = sourceToTarget;
+    }
+    sourceToTarget[idFromNumberOrSNode(link.target)] = { reactId: getId('link') };
+  });
+
   return result;
 }
 
@@ -523,6 +565,9 @@ const linkArea = d3Area()
   .y1((p: any) => p.y1)
   .curve(d3CurveBasis);
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type TooltipDiv = D3Selection<BaseType, unknown, HTMLElement, any>;
+
 // NOTE: To start employing React.useMemo properly, we need to convert this code from a React.Component
 // to a function component. This will require a significant refactor of the code in this file.
 // https://stackoverflow.com/questions/60223362/fast-way-to-convert-react-class-component-to-functional-component
@@ -532,7 +577,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private _reqID: number;
   private readonly _calloutId: string;
   private readonly _linkId: string;
+  private readonly _chartId: string;
   private readonly _emptyChartId: string;
+  private readonly _labelTooltipId: string;
   private readonly _margins: IMargins;
   private readonly _isRtl: boolean = getRTL();
 
@@ -548,13 +595,19 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     classNamesProps: ISankeyChartStyleProps,
   ) => IProcessedStyleSet<ISankeyChartStyles>;
   private readonly _normalizeData: NormalizeDiagramFunction;
-  private readonly _nodeAttributes: (nodes: SNode[]) => ItemValues<IRenderedNodeAttributes>;
+  private readonly _fetchTooltip: (classNames: IProcessedStyleSet<ISankeyChartStyles>) => TooltipDiv;
+  private readonly _nodeAttributes: (nodes: SNode[]) => ItemValues<RenderedNodeAttributes>;
+  private readonly _linkAttributes: (links: SLink[]) => LinkItemValues<RenderedLinkAttributes>;
   private readonly _fetchNodes: (
     classNames: IProcessedStyleSet<ISankeyChartStyles>,
     nodes: SNode[],
-    nodeAttributes: ItemValues<IRenderedNodeAttributes>,
+    nodeAttributes: ItemValues<RenderedNodeAttributes>,
+    tooltipDiv: TooltipDiv,
   ) => React.ReactNode[] | undefined;
-  private readonly _fetchLinks: (links: SLink[]) => React.ReactNode[] | undefined;
+  private readonly _fetchLinks: (
+    links: SLink[],
+    linkAttributes: LinkItemValues<RenderedLinkAttributes>,
+  ) => React.ReactNode[] | undefined;
 
   constructor(props: ISankeyChartProps) {
     super(props);
@@ -569,7 +622,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     };
     this._calloutId = getId('callout');
     this._linkId = getId('link');
+    this._chartId = getId('sankeyChart');
     this._emptyChartId = getId('_SankeyChart_empty');
+    this._labelTooltipId = getId('tooltip');
     this._margins = { top: 36, right: 48, bottom: 32, left: 48 };
     // We memo-ize creation so that we only create a new object when any of the fields change.
     this._computeClassNamesProps = memoizeFunction(
@@ -605,15 +660,21 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         borderColorsForNodes: string[] | undefined,
       ) => this._normalizeSankeyData(data, containerWidth, containerHeight, colorsForNodes, borderColorsForNodes),
     );
+    this._fetchTooltip = memoizeFunction((classNames: IProcessedStyleSet<ISankeyChartStyles>) =>
+      this._labelTooltipDiv(classNames),
+    );
     // NOTE: Memoizing the `_createNodes` and `_createLinks` methods breaks the hoverability of the chart
     // because the nodes are currently created differently based on the layout information.
     this._nodeAttributes = memoizeFunction((nodes: SNode[]) => computeNodeAttributes(nodes));
     this._fetchNodes = (
       classNames: IProcessedStyleSet<ISankeyChartStyles>,
       nodes: SNode[],
-      nodeAttributes: ItemValues<IRenderedNodeAttributes>,
-    ) => this._createNodes(classNames, nodes, nodeAttributes);
-    this._fetchLinks = (links: SLink[]) => this._createLinks(links);
+      nodeAttributes: ItemValues<RenderedNodeAttributes>,
+      tooltipDiv: TooltipDiv,
+    ) => this._createNodes(classNames, nodes, nodeAttributes, tooltipDiv);
+    this._linkAttributes = memoizeFunction((links: SLink[]) => computeLinkAttributes(links));
+    this._fetchLinks = (links: SLink[], linkAttributes: LinkItemValues<RenderedLinkAttributes>) =>
+      this._createLinks(links, linkAttributes);
     // Our shorter path to performance is to pre-compute the truncated labels of each node because
     // that should not change based on the position of the mouse. This is a shorter path becase the code which
     // computes the truncated labels creates and destroys a `tempText` element in the DOM. This is causing a
@@ -657,11 +718,17 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         colorsForNodes,
         borderColorsForNodes,
       );
+
+      // NOTE: I don't love this approach to caching the "select" result. Is it still valid from render-to-render?
+      // although local testing seems to indicate so, I do not trust that React will always support that instance.
+      // It might be better to perform this `fetch` within the `_showTooltip` and `_hideTooltip` methods.
+      const tooltipDiv = this._fetchTooltip(classNames);
       // Pre-compute some important attributes about nodes, specifically text
       const nodeAttributes = this._nodeAttributes(nodes);
       // Build the nodes and links as rendered in the UX.
-      const nodeData = this._fetchNodes(classNames, nodes, nodeAttributes);
-      const linkData = this._fetchLinks(links);
+      const nodeData = this._fetchNodes(classNames, nodes, nodeAttributes, tooltipDiv);
+      const linkAttributes = this._linkAttributes(links);
+      const linkData = this._fetchLinks(links, linkAttributes);
 
       const calloutProps = {
         isCalloutVisible: state.isCalloutVisible,
@@ -690,7 +757,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
             isCircularNavigation={true}
             handleTabKey={FocusZoneTabbableElements.all}
           >
-            <svg width={width} height={height} id={getId('sankeyChart')}>
+            <svg width={width} height={height} id={this._chartId}>
               <g className={classNames.links} strokeOpacity={1}>
                 {linkData}
               </g>
@@ -764,7 +831,25 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     };
   }
 
-  private _createLinks(dataLinks: SLink[]): React.ReactNode[] | undefined {
+  private _labelTooltipDiv(classNames: IProcessedStyleSet<ISankeyChartStyles>): TooltipDiv {
+    // find the tooltip div. If it doesn't exist, then create it.
+    let tooltipDiv = select(`#${this._labelTooltipId}`);
+    if (tooltipDiv.empty()) {
+      tooltipDiv = select('body')
+        .append('div')
+        .attr('id', this._labelTooltipId)
+        .attr('class', classNames.toolTip!)
+        .style('opacity', 0);
+    }
+    // If the div exists, then `classNames` has changed; update the `class` on the `div`.
+    tooltipDiv.attr('class', classNames.toolTip!);
+    return tooltipDiv;
+  }
+
+  private _createLinks(
+    dataLinks: SLink[],
+    linkAttributes: LinkItemValues<RenderedLinkAttributes>,
+  ): React.ReactNode[] | undefined {
     const links: React.ReactNode[] = [];
 
     if (dataLinks) {
@@ -773,6 +858,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         const onMouseOut = () => {
           this._onStreamLeave(singleLink);
         };
+        const { reactId } = linkValue(linkAttributes, singleLink);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const dataPoints: Array<any> = linkToDataPoints(singleLink as unknown as SankeyLinkWithPositions);
         const gradientUrl = `url(#gradient-${linkId}-${index})`;
@@ -786,7 +872,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
             </defs>
             <path
               d={linkArea(dataPoints)!}
-              id={getId('link')}
+              id={reactId}
               fill={this._fillStreamColors(singleLink, gradientUrl)}
               stroke={this._fillStreamBorder(singleLink, gradientUrl)}
               strokeWidth="2"
@@ -813,7 +899,8 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private _createNodes(
     classNames: IProcessedStyleSet<ISankeyChartStyles>,
     dataNodes: SNode[],
-    nodeAttributes: ItemValues<IRenderedNodeAttributes>,
+    nodeAttributes: ItemValues<RenderedNodeAttributes>,
+    tooltipDiv: TooltipDiv,
   ): React.ReactNode[] | undefined {
     const nodes: React.ReactNode[] = [];
 
@@ -824,20 +911,15 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           this._onLeave(singleNode);
         };
         const {
+          reactId: nodeId,
+          gElementId,
           height,
           trimmed: isTruncated,
           name: truncatedname,
           weightOffset: textLengthForNodeWeight,
         } = nodeAttributes[singleNode.nodeId];
-        // NOTE: By calling `getId` here, we are creating a new ID for each node on each render. If we could memoize
-        // the nodes or IDs (especially if the node is unchanged), we could speed up the rendering even more
-        const id = getId('tooltip');
-        // Each time we render the screen, we create a new tool tip. This is likely a performance issue.
-        const div = select('body').append('div').attr('id', id).attr('class', classNames.toolTip!).style('opacity', 0);
-        // We also generate new ids for each node on each render. This is likely a performance issue.
-        const nodeId = getId('nodeBar');
         const node = (
-          <g key={index} id={getId('nodeGElement')}>
+          <g key={index} id={gElementId}>
             <rect
               x={singleNode.x0}
               y={singleNode.y0}
@@ -877,8 +959,8 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
                         : NON_SELECTED_TEXT_COLOR
                     }
                     fontSize={10}
-                    onMouseOver={this._showTooltip.bind(this, singleNode.name, isTruncated, div)}
-                    onMouseOut={this._hideTooltip.bind(this, div)}
+                    onMouseOver={this._showTooltip.bind(this, singleNode.name, isTruncated, tooltipDiv)}
+                    onMouseOut={this._hideTooltip.bind(this, tooltipDiv)}
                   >
                     {truncatedname}
                   </text>
