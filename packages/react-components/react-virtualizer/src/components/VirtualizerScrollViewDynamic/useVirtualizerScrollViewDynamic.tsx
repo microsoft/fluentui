@@ -11,12 +11,13 @@ import type { VirtualizerDataRef } from '../Virtualizer/Virtualizer.types';
 import { useImperativeHandle } from 'react';
 import { useMeasureList } from '../../hooks/useMeasureList';
 import type { IndexedResizeCallbackElement } from '../../hooks/useMeasureList';
+import { useDynamicVirtualizerPagination } from '../../hooks/useDynamicPagination';
 
 export function useVirtualizerScrollViewDynamic_unstable(
   props: VirtualizerScrollViewDynamicProps,
 ): VirtualizerScrollViewDynamicState {
   const contextState = useVirtualizerContextState_unstable(props.virtualizerContext);
-  const { imperativeRef, axis = 'vertical', reversed, imperativeVirtualizerRef } = props;
+  const { imperativeRef, axis = 'vertical', reversed, imperativeVirtualizerRef, enablePagination = false } = props;
 
   let sizeTrackingArray = React.useRef<number[]>(new Array(props.numItems).fill(props.itemSize));
 
@@ -42,15 +43,25 @@ export function useVirtualizerScrollViewDynamic_unstable(
     numItems: props.numItems,
   });
 
+  const _imperativeVirtualizerRef = useMergedRefs(React.useRef<VirtualizerDataRef>(null), imperativeVirtualizerRef);
+
+  const paginationRef = useDynamicVirtualizerPagination(
+    {
+      axis,
+      progressiveItemSizes: _imperativeVirtualizerRef.current?.progressiveSizes.current ?? [],
+      virtualizerLength,
+      currentIndex: contextState?.contextIndex ?? 0,
+    },
+    enablePagination,
+  );
+
   // Store the virtualizer length as a ref for imperative ref access
   const virtualizerLengthRef = React.useRef<number>(virtualizerLength);
   if (virtualizerLengthRef.current !== virtualizerLength) {
     virtualizerLengthRef.current = virtualizerLength;
   }
-  const scrollViewRef = useMergedRefs(props.scrollViewRef, scrollRef) as React.RefObject<HTMLDivElement>;
+  const scrollViewRef = useMergedRefs(props.scrollViewRef, scrollRef, paginationRef) as React.RefObject<HTMLDivElement>;
   const scrollCallbackRef = React.useRef<null | ((index: number) => void)>(null);
-
-  const _imperativeVirtualizerRef = useMergedRefs(React.useRef<VirtualizerDataRef>(null), imperativeVirtualizerRef);
 
   useImperativeHandle(
     imperativeRef,
