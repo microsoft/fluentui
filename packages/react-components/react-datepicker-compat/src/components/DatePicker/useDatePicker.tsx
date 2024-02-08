@@ -144,6 +144,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   const [open, setOpenState] = usePopupVisibility(props);
   const fieldContext = useFieldContext();
   const required = fieldContext?.required ?? props.required;
+  const defaultId = useId('datePicker-input');
   const popupSurfaceId = useId('datePicker-popupSurface');
 
   const validateTextInput = React.useCallback(
@@ -368,10 +369,21 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   });
   input.ref = useMergedRefs(input.ref, ref, rootRef);
 
+  const inputLabelledBy = props['aria-labelledby'];
+  const inputId = props.id ?? defaultId;
+  const iconA11yProps = React.useMemo(
+    () => ({
+      role: 'button',
+      'aria-expanded': open,
+      'aria-labelledby': inputLabelledBy ?? inputId,
+    }),
+    [open, inputLabelledBy, inputId],
+  );
+
   const contentAfter = slot.always(props.contentAfter || {}, {
     defaultProps: {
       children: <CalendarMonthRegular />,
-      'aria-hidden': true,
+      ...iconA11yProps,
     },
     elementType: 'span',
   });
@@ -385,6 +397,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
       'aria-haspopup': 'dialog',
       readOnly: !allowTextInput,
       role: 'combobox',
+      id: inputId,
     },
     elementType: Input,
   });
