@@ -74,7 +74,7 @@
     "@babel/types": "7.23.6",
     "@cactuslab/usepubsub": "^1.0.2",
     "@ctrl/tinycolor": "3.3.4",
-    "@cypress/react": "5.12.4",
+    "@cypress/react": "8.0.0",
     "@cypress/webpack-dev-server": "1.8.3",
     "@fluentui/react-icons": "^2.0.224",
     "@griffel/babel-preset": "1.4.20",
