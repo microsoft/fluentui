@@ -1,13 +1,35 @@
-import { ProjectGraph, createProjectGraphAsync, readCachedProjectGraph } from '@nx/devkit';
+import {
+  ProjectGraph,
+  createProjectGraphAsync,
+  joinPathFragments,
+  readCachedProjectGraph,
+  readJsonFile,
+  workspaceRoot,
+} from '@nx/devkit';
 
-import { getNorthstarGroup } from './utils';
+import { getLatestTag, getNorthstarGroup, getTagPattern } from './utils';
 
 describe(`utils`, () => {
   let graph: ProjectGraph;
+  const nxConfig = readJsonFile(joinPathFragments(workspaceRoot, 'nx.json'));
 
   beforeEach(async () => {
     graph = await getGraph();
   });
+
+  describe(`tags`, () => {
+    it(`should get tag latest publish tag for N* release group`, async () => {
+      const pattern = getTagPattern(nxConfig);
+      expect(pattern).toEqual('@fluentui/react-northstar_v{version}');
+
+      const latestTag = await getLatestTag(pattern);
+      expect(latestTag).toEqual({
+        extractedVersion: expect.any(String),
+        tag: expect.stringContaining('@fluentui/react-northstar_v'),
+      });
+    });
+  });
+
   describe(`#getNorthstarGroup`, () => {
     it(`should return northstar project only`, () => {
       const actual = getNorthstarGroup(graph);
