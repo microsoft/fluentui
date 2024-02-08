@@ -18,7 +18,7 @@ export const defaults: Required<PresenceTransitionProps<PresenceParams>> = {
 } as const;
 
 // Define a presence motion (enter/exit transitions) for collapse/expand
-const collapseMotion: PresenceMotionFn<CollapseParams> = ({ element, enter, exit }) => {
+const collapseMotion: PresenceMotionFn<CollapseParams> = ({ element, enter: enterOverride, exit: exitOverride }) => {
   const enterKeyframes = [
     { opacity: 0, maxHeight: 0, overflow: 'hidden' },
     // Transition to the height of the content, at 99.99% of the duration.
@@ -34,8 +34,8 @@ const collapseMotion: PresenceMotionFn<CollapseParams> = ({ element, enter, exit
   ];
 
   return {
-    enter: { ...defaults.enter, ...enter, keyframes: enterKeyframes },
-    exit: { ...defaults.exit, ...exit, keyframes: exitKeyframes },
+    enter: { ...defaults.enter, ...enterOverride, keyframes: enterKeyframes },
+    exit: { ...defaults.exit, ...exitOverride, keyframes: exitKeyframes },
   };
 };
 

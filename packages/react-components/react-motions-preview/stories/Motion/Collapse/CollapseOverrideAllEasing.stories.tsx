@@ -3,7 +3,7 @@ import { Checkbox } from '@fluentui/react-checkbox';
 import { Collapse } from '@fluentui/react-motions-preview';
 import description from './CollapseOverrideAllEasing.stories.md';
 
-import { loremIpsum } from './loremIpsum';
+import { loremIpsum } from '../loremIpsum';
 import { easingEasyEaseMax } from '../../../src/motions/atom/tokens';
 
 export const OverrideAllEasing = () => {
@@ -11,7 +11,7 @@ export const OverrideAllEasing = () => {
 
   return (
     <div>
-      <Checkbox label="Visible?" checked={visible} onChange={() => setVisible(v => !v)} />
+      <Checkbox label="visible" checked={visible} onChange={() => setVisible(v => !v)} />
       <Collapse visible={visible} override={{ all: { easing: easingEasyEaseMax, duration: 700 } }}>
         <div>{loremIpsum(10)}</div>
       </Collapse>
