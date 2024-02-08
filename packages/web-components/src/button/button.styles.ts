@@ -62,7 +62,7 @@ export const styles = css`
   ${display('inline-flex')}
 
   :host {
-    --icon-spacing: ${spacingHorizontalSNudge};
+    --icon-spacing: var(${spacingHorizontalSNudge});
     contain: layout style;
     vertical-align: middle;
   }
@@ -76,19 +76,19 @@ export const styles = css`
     margin: 0;
     min-height: 32px;
     outline-style: none;
-    background-color: ${colorNeutralBackground1};
-    color: ${colorNeutralForeground1};
-    border: ${strokeWidthThin} solid ${colorNeutralStroke1};
-    padding: 0 ${spacingHorizontalM};
+    background-color: var(${colorNeutralBackground1});
+    color: var(${colorNeutralForeground1});
+    border: var(${strokeWidthThin}) solid var(${colorNeutralStroke1});
+    padding: 0 var(${spacingHorizontalM});
     min-width: 96px;
-    border-radius: ${borderRadiusMedium};
-    font-size: ${fontSizeBase300};
-    font-family: ${fontFamilyBase};
-    font-weight: ${fontWeightSemibold};
-    line-height: ${lineHeightBase300};
-    transition-duration: ${durationFaster};
+    border-radius: var(${borderRadiusMedium});
+    font-size: var(${fontSizeBase300});
+    font-family: var(${fontFamilyBase});
+    font-weight: var(${fontWeightSemibold});
+    line-height: var(${lineHeightBase300});
+    transition-duration: var(${durationFaster});
     transition-property: background, border, color;
-    transition-timing-function: ${curveEasyEase};
+    transition-timing-function: var(${curveEasyEase});
     cursor: pointer;
   }
 
@@ -97,22 +97,22 @@ export const styles = css`
   }
 
   :host(:hover) .control {
-    background-color: ${colorNeutralBackground1Hover};
-    color: ${colorNeutralForeground1Hover};
-    border-color: ${colorNeutralStroke1Hover};
+    background-color: var(${colorNeutralBackground1Hover});
+    color: var(${colorNeutralForeground1Hover});
+    border-color: var(${colorNeutralStroke1Hover});
   }
 
   :host(:hover:active) .control {
-    background-color: ${colorNeutralBackground1Pressed};
-    border-color: ${colorNeutralStroke1Pressed};
-    color: ${colorNeutralForeground1Pressed};
+    background-color: var(${colorNeutralBackground1Pressed});
+    border-color: var(${colorNeutralStroke1Pressed});
+    color: var(${colorNeutralForeground1Pressed});
     outline-style: none;
   }
 
   :host .control:focus-visible {
-    border-color: ${colorTransparentStroke};
-    outline: ${strokeWidthThick} solid ${colorTransparentStroke};
-    box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
+    border-color: var(${colorTransparentStroke});
+    outline: var(${strokeWidthThick}) solid var(${colorTransparentStroke});
+    box-shadow: var(${shadow4}), 0 0 0 2px var(${colorStrokeFocus2});
   }
 
   @media screen and (prefers-reduced-motion: reduce) {
@@ -142,17 +142,17 @@ export const styles = css`
   }
 
   :host([size='small']) {
-    --icon-spacing: ${spacingHorizontalXS};
+    --icon-spacing: var(${spacingHorizontalXS});
   }
 
   :host([size='small']) .control {
     min-height: 24px;
     min-width: 64px;
-    padding: 0 ${spacingHorizontalS};
-    border-radius: ${borderRadiusSmall};
-    font-size: ${fontSizeBase200};
-    line-height: ${lineHeightBase200};
-    font-weight: ${fontWeightRegular};
+    padding: 0 var(${spacingHorizontalS});
+    border-radius: var(${borderRadiusSmall});
+    font-size: var(${fontSizeBase200});
+    line-height: var(${lineHeightBase200});
+    font-weight: var(${fontWeightRegular});
   }
 
   :host([size='small'][icon-only]) .control {
@@ -162,10 +162,10 @@ export const styles = css`
 
   :host([size='large']) .control {
     min-height: 40px;
-    border-radius: ${borderRadiusLarge};
-    padding: 0 ${spacingHorizontalL};
-    font-size: ${fontSizeBase400};
-    line-height: ${lineHeightBase400};
+    border-radius: var(${borderRadiusLarge});
+    padding: 0 var(${spacingHorizontalL});
+    font-size: var(${fontSizeBase400});
+    line-height: var(${lineHeightBase400});
   }
 
   :host([size='large'][icon-only]) .control {
@@ -181,37 +181,37 @@ export const styles = css`
 
   :host([shape='circular']) .control,
   :host([shape='circular']) .control:focus-visible {
-    border-radius: ${borderRadiusCircular};
+    border-radius: var(${borderRadiusCircular});
   }
 
   :host([shape='square']) .control,
   :host([shape='square']) .control:focus-visible {
-    border-radius: ${borderRadiusNone};
+    border-radius: var(${borderRadiusNone});
   }
 
   :host([appearance='primary']) .control {
-    background-color: ${colorBrandBackground};
-    color: ${colorNeutralForegroundOnBrand};
+    background-color: var(${colorBrandBackground});
+    color: var(${colorNeutralForegroundOnBrand});
     border-color: transparent;
   }
 
   :host([appearance='primary']:hover) .control {
-    background-color: ${colorBrandBackgroundHover};
+    background-color: var(${colorBrandBackgroundHover});
   }
 
   :host([appearance='primary']:hover) .control,
   :host([appearance='primary']:hover:active) .control {
     border-color: transparent;
-    color: ${colorNeutralForegroundOnBrand};
+    color: var(${colorNeutralForegroundOnBrand});
   }
 
   :host([appearance='primary']:hover:active) .control {
-    background-color: ${colorBrandBackgroundPressed};
+    background-color: var(${colorBrandBackgroundPressed});
   }
 
   :host([appearance='primary']) .control:focus-visible {
-    border-color: ${colorNeutralForegroundOnBrand};
-    box-shadow: ${shadow2}, 0 0 0 2px ${colorStrokeFocus2};
+    border-color: var(${colorNeutralForegroundOnBrand});
+    box-shadow: var(${shadow2}), 0 0 0 2px var(${colorStrokeFocus2});
   }
 
   :host(is:([disabled][appearance='primary'], [disabled-focusabale][appearance="primary"])) .control,
@@ -221,69 +221,69 @@ export const styles = css`
   }
 
   :host([appearance='outline']) .control {
-    background-color: ${colorTransparentBackground};
+    background-color: var(${colorTransparentBackground});
   }
 
   :host([appearance='outline']:hover) .control {
-    background-color: ${colorTransparentBackgroundHover};
+    background-color: var(${colorTransparentBackgroundHover});
   }
 
   :host([appearance='outline']:hover:active) .control {
-    background-color: ${colorTransparentBackgroundPressed};
+    background-color: var(${colorTransparentBackgroundPressed});
   }
 
   :host(is:([disabled][appearance='outline'], [disabled-focusabale][appearance="outline"])) .control,
   :host(is:([disabled][appearance='outline'], [disabled-focusabale][appearance="outline"]):hover) .control,
   :host(is:([disabled][appearance='outline'], [disabled-focusabale][appearance="outline"]):hover:active) .control {
-    background-color: ${colorTransparentBackground};
+    background-color: var(${colorTransparentBackground});
   }
 
   :host([appearance='subtle']) .control {
-    background-color: ${colorSubtleBackground};
-    color: ${colorNeutralForeground2};
+    background-color: var(${colorSubtleBackground});
+    color: var(${colorNeutralForeground2});
     border-color: transparent;
   }
 
   :host([appearance='subtle']:hover) .control {
-    background-color: ${colorSubtleBackgroundHover};
-    color: ${colorNeutralForeground2Hover};
+    background-color: var(${colorSubtleBackgroundHover});
+    color: var(${colorNeutralForeground2Hover});
     border-color: transparent;
   }
 
   :host([appearance='subtle']:hover:active) .control {
-    background-color: ${colorSubtleBackgroundPressed};
-    color: ${colorNeutralForeground2Pressed};
+    background-color: var(${colorSubtleBackgroundPressed});
+    color: var(${colorNeutralForeground2Pressed});
     border-color: transparent;
   }
 
   :host(is:([disabled][appearance='subtle'], [disabled-focusabale][appearance="subtle"])) .control,
   :host(is:([disabled][appearance='subtle'], [disabled-focusabale][appearance="subtle"]):hover) .control,
   :host(is:([disabled][appearance='subtle'], [disabled-focusabale][appearance="subtle"]):hover:active) .control {
-    background-color: ${colorTransparentBackground};
+    background-color: var(${colorTransparentBackground});
     border-color: transparent;
   }
 
   :host([appearance='subtle']:hover) ::slotted(svg) {
-    fill: ${colorNeutralForeground2BrandHover};
+    fill: var(${colorNeutralForeground2BrandHover});
   }
 
   :host([appearance='subtle']:hover:active) ::slotted(svg) {
-    fill: ${colorNeutralForeground2BrandPressed};
+    fill: var(${colorNeutralForeground2BrandPressed});
   }
 
   :host([appearance='transparent']) .control {
-    background-color: ${colorTransparentBackground};
-    color: ${colorNeutralForeground2};
+    background-color: var(${colorTransparentBackground});
+    color: var(${colorNeutralForeground2});
   }
 
   :host([appearance='transparent']:hover) .control {
-    background-color: ${colorTransparentBackgroundHover};
-    color: ${colorNeutralForeground2BrandHover};
+    background-color: var(${colorTransparentBackgroundHover});
+    color: var(${colorNeutralForeground2BrandHover});
   }
 
   :host([appearance='transparent']:hover:active) .control {
-    background-color: ${colorTransparentBackgroundPressed};
-    color: ${colorNeutralForeground2BrandPressed};
+    background-color: var(${colorTransparentBackgroundPressed});
+    color: var(${colorNeutralForeground2BrandPressed});
   }
 
   :host([appearance='transparent']) .control,
@@ -296,16 +296,16 @@ export const styles = css`
   :host(is:([disabled][appearance='transparent'], [disabled-focusabale][appearance="transparent"]):hover) .control,
   :host(is:([disabled][appearance='transparent'], [disabled-focusabale][appearance="transparent"]):hover:active) .control {
     border-color: transparent;
-    background-color: ${colorTransparentBackground};
+    background-color: var(${colorTransparentBackground});
   }
 
   :host(:is([disabled], [disabled-focusable], [appearance][disabled], [appearance][disabled-focusable])) .control,
   :host(:is([disabled], [disabled-focusable], [appearance][disabled], [appearance][disabled-focusable]):hover) .control,
   :host(:is([disabled], [disabled-focusable], [appearance][disabled], [appearance][disabled-focusable]):hover:active)
     .control {
-    background-color: ${colorNeutralBackgroundDisabled};
-    border-color: ${colorNeutralStrokeDisabled};
-    color: ${colorNeutralForegroundDisabled};
+    background-color: var(${colorNeutralBackgroundDisabled});
+    border-color: var(${colorNeutralStrokeDisabled});
+    color: var(${colorNeutralForegroundDisabled});
     cursor: not-allowed;
   }
 `.withBehaviors(
