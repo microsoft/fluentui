@@ -19,10 +19,10 @@ export const styles = css`
     max-width: 300px;
     min-width: 160px;
     width: auto;
-    background-color: ${colorNeutralBackground1};
-    border: 1px solid ${colorTransparentStroke};
-    border-radius: ${borderRadiusMedium};
-    box-shadow: ${shadow16};
+    background-color: var(${colorNeutralBackground1});
+    border: 1px solid var(${colorTransparentStroke});
+    border-radius: var(${borderRadiusMedium});
+    box-shadow: var(${shadow16});
     padding: 4px;
     row-gap: 2px;
   }

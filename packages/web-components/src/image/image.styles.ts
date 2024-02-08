@@ -27,7 +27,7 @@ export const styles = css`
     height: auto;
   }
   :host([bordered]) ::slotted(img) {
-    border: ${strokeWidthThin} solid ${colorNeutralStroke2};
+    border: var(${strokeWidthThin}) solid var(${colorNeutralStroke2});
   }
   :host([fit='none']) ::slotted(img) {
     object-fit: none;
@@ -54,12 +54,12 @@ export const styles = css`
     width: 100%;
   }
   :host([shadow]) ::slotted(img) {
-    box-shadow: ${shadow4};
+    box-shadow: var(${shadow4});
   }
   :host([shape='circular']) ::slotted(img) {
-    border-radius: ${borderRadiusCircular};
+    border-radius: var(${borderRadiusCircular});
   }
   :host([shape='rounded']) ::slotted(img) {
-    border-radius: ${borderRadiusMedium};
+    border-radius: var(${borderRadiusMedium});
   }
 `;

@@ -1,5 +1,4 @@
 import type { Theme } from '@fluentui/tokens';
-import { FASTElement } from '@microsoft/fast-element';
 import * as tokens from './design-tokens.js';
 
 const tokenNames = Object.keys(tokens) as (keyof Theme)[];
@@ -10,12 +9,12 @@ const tokenNames = Object.keys(tokens) as (keyof Theme)[];
  */
 export const setTheme = (theme: Theme) => {
   for (const t of tokenNames) {
-    tokens[t].withDefault(theme[t] as string);
+    document.body.style.setProperty(tokens[t] as string, theme[t] as string);
   }
 };
 
-export const setThemeFor = (element: FASTElement, theme: Theme) => {
+export const setThemeFor = (element: HTMLElement, theme: Theme) => {
   for (const t of tokenNames) {
-    tokens[t].setValueFor(element, theme[t] as string);
+    element.style.setProperty(tokens[t] as string, theme[t] as string);
   }
 };
