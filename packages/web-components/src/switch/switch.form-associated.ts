@@ -2,7 +2,7 @@ import { FASTElement } from '@microsoft/fast-element';
 import { CheckableFormAssociated } from '../form-associated/form-associated.js';
 
 class _Switch extends FASTElement {}
-type _Switch = CheckableFormAssociated
+type _Switch = CheckableFormAssociated;
 
 /**
  * @beta

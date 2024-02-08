@@ -298,7 +298,7 @@ export class DelegatesARIAButton {
  * TODO: https://github.com/microsoft/fast/issues/3317
  * @internal
  */
-export type DelegatesARIAButton = ARIAGlobalStatesAndProperties
+export type DelegatesARIAButton = ARIAGlobalStatesAndProperties;
 applyMixins(DelegatesARIAButton, ARIAGlobalStatesAndProperties);
 
 /**

@@ -2,7 +2,7 @@ import { FASTElement } from '@microsoft/fast-element';
 import { FormAssociated } from '../form-associated/form-associated.js';
 
 class _Slider extends FASTElement {}
-type _Slider = FormAssociated
+type _Slider = FormAssociated;
 
 /**
  * @beta

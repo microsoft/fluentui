@@ -259,7 +259,7 @@ export class TextInput extends FormAssociatedTextField {
  */
 export class DelegatesARIATextbox {}
 
-export type DelegatesARIATextbox = ARIAGlobalStatesAndProperties
+export type DelegatesARIATextbox = ARIAGlobalStatesAndProperties;
 applyMixins(DelegatesARIATextbox, ARIAGlobalStatesAndProperties);
 
 export interface TextInput extends StartEnd, DelegatesARIATextbox {}

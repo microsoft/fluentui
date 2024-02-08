@@ -647,7 +647,7 @@ export function FormAssociated<T extends ConstructableFormAssociated>(BaseCtor: 
  * @beta
  */
 export function CheckableFormAssociated<T extends ConstructableFormAssociated>(BaseCtor: T): T {
-  type C = FormAssociatedElement
+  type C = FormAssociatedElement;
   class C extends FormAssociated(BaseCtor) {}
   class D extends C {
     /**

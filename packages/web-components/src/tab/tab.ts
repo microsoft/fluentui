@@ -40,5 +40,5 @@ export class Tab extends FASTElement {
   }
 }
 
-export type Tab = StartEnd
+export type Tab = StartEnd;
 applyMixins(Tab, StartEnd);

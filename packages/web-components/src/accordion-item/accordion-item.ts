@@ -134,5 +134,5 @@ export class AccordionItem extends FASTElement {
  * TODO: https://github.com/microsoft/fast/issues/3317
  * @internal
  */
-export type AccordionItem = StartEnd
+export type AccordionItem = StartEnd;
 applyMixins(AccordionItem, StartEnd);

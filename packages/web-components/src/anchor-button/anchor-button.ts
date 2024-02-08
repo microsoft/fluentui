@@ -239,7 +239,7 @@ export class DelegatesARIALink {
  * TODO: https://github.com/microsoft/fast/issues/3317
  * @internal
  */
-export type DelegatesARIALink = ARIAGlobalStatesAndProperties
+export type DelegatesARIALink = ARIAGlobalStatesAndProperties;
 applyMixins(DelegatesARIALink, ARIAGlobalStatesAndProperties);
 
 /**
