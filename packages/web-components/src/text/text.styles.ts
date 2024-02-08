@@ -41,10 +41,10 @@ export const styles = css`
   }
 
   ::slotted(*) {
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase300};
-    line-height: ${lineHeightBase300};
-    font-weight: ${fontWeightRegular};
+    font-family: var(${fontFamilyBase});
+    font-size: var(${fontSizeBase300});
+    line-height: var(${lineHeightBase300});
+    font-weight: var(${fontWeightRegular});
     text-align: start;
     white-space: normal;
     overflow: visible;
@@ -77,55 +77,55 @@ export const styles = css`
     text-decoration-line: line-through underline;
   }
   :host([size='100']) ::slotted(*) {
-    font-size: ${fontSizeBase100};
-    line-height: ${lineHeightBase100};
+    font-size: var(${fontSizeBase100});
+    line-height: var(${lineHeightBase100});
   }
   :host([size='200']) ::slotted(*) {
-    font-size: ${fontSizeBase200};
-    line-height: ${lineHeightBase200};
+    font-size: var(${fontSizeBase200});
+    line-height: var(${lineHeightBase200});
   }
   :host([size='400']) ::slotted(*) {
-    font-size: ${fontSizeBase400};
-    line-height: ${lineHeightBase400};
+    font-size: var(${fontSizeBase400});
+    line-height: var(${lineHeightBase400});
   }
   :host([size='500']) ::slotted(*) {
-    font-size: ${fontSizeBase500};
-    line-height: ${lineHeightBase500};
+    font-size: var(${fontSizeBase500});
+    line-height: var(${lineHeightBase500});
   }
   :host([size='600']) ::slotted(*) {
-    font-size: ${fontSizeBase600};
-    line-height: ${lineHeightBase600};
+    font-size: var(${fontSizeBase600});
+    line-height: var(${lineHeightBase600});
   }
   :host([size='700']) ::slotted(*) {
-    font-size: ${fontSizeHero700};
-    line-height: ${lineHeightHero700};
+    font-size: var(${fontSizeHero700});
+    line-height: var(${lineHeightHero700});
   }
   :host([size='800']) ::slotted(*) {
-    font-size: ${fontSizeHero800};
-    line-height: ${lineHeightHero800};
+    font-size: var(${fontSizeHero800});
+    line-height: var(${lineHeightHero800});
   }
   :host([size='900']) ::slotted(*) {
-    font-size: ${fontSizeHero900};
-    line-height: ${lineHeightHero900};
+    font-size: var(${fontSizeHero900});
+    line-height: var(${lineHeightHero900});
   }
   :host([size='1000']) ::slotted(*) {
-    font-size: ${fontSizeHero1000};
-    line-height: ${lineHeightHero1000};
+    font-size: var(${fontSizeHero1000});
+    line-height: var(${lineHeightHero1000});
   }
   :host([font='monospace']) ::slotted(*) {
-    font-family: ${fontFamilyMonospace};
+    font-family: var(${fontFamilyMonospace});
   }
   :host([font='numeric']) ::slotted(*) {
-    font-family: ${fontFamilyNumeric};
+    font-family: var(${fontFamilyNumeric});
   }
   :host([weight='medium']) ::slotted(*) {
-    font-weight: ${fontWeightMedium};
+    font-weight: var(${fontWeightMedium});
   }
   :host([weight='semibold']) ::slotted(*) {
-    font-weight: ${fontWeightSemibold};
+    font-weight: var(${fontWeightSemibold});
   }
   :host([weight='bold']) ::slotted(*) {
-    font-weight: ${fontWeightBold};
+    font-weight: var(${fontWeightBold});
   }
   :host([align='center']) ::slotted(*) {
     text-align: center;
