@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 07 Feb 2024 07:26:19 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Feb 2024 07:37:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.24)
+
+Thu, 08 Feb 2024 07:37:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.23..@fluentui/react-charting_v5.19.24)
+
+### Patches
+
+- Sankey Diagram: Persisting node values when adjusting multiple small node heights ([PR #30410](https://github.com/microsoft/fluentui/pull/30410) by rarthur@microsoft.com)
 
 ## [5.19.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.23)
 

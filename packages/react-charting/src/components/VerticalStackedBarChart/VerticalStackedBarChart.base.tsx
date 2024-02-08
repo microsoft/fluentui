@@ -6,7 +6,7 @@ import {
   scaleLinear as d3ScaleLinear,
   ScaleLinear as D3ScaleLinear,
   scaleBand as d3ScaleBand,
-  scaleTime as d3ScaleTime,
+  scaleUtc as d3ScaleUtc,
 } from 'd3-scale';
 import { classNamesFunction, getId, getRTL, warnDeprecations, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { IPalette, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
@@ -962,7 +962,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       const lDate = d3Max(this._dataset, (point: IVerticalStackedBarDataPoint) => {
         return point.x as Date;
       })!;
-      const xBarScale = d3ScaleTime()
+      const xBarScale = d3ScaleUtc()
         .domain([sDate, lDate])
         .range([
           this.margins.left! + this._domainMargin + this._barWidth / 2,
