@@ -2,7 +2,8 @@ import { FASTElement } from '@microsoft/fast-element';
 import { CheckableFormAssociated } from '../form-associated/form-associated.js';
 
 class _Checkbox extends FASTElement {}
-type _Checkbox = CheckableFormAssociated;
+/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
+interface _Checkbox extends CheckableFormAssociated {}
 
 /**
  * @beta

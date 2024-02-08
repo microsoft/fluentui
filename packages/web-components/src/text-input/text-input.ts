@@ -259,8 +259,10 @@ export class TextInput extends FormAssociatedTextField {
  */
 export class DelegatesARIATextbox {}
 
-export type DelegatesARIATextbox = ARIAGlobalStatesAndProperties;
+/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
+export interface DelegatesARIATextbox extends ARIAGlobalStatesAndProperties {}
 applyMixins(DelegatesARIATextbox, ARIAGlobalStatesAndProperties);
 
+/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
 export interface TextInput extends StartEnd, DelegatesARIATextbox {}
 applyMixins(TextInput, StartEnd, DelegatesARIATextbox);

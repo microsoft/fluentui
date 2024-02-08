@@ -134,5 +134,6 @@ export class AccordionItem extends FASTElement {
  * TODO: https://github.com/microsoft/fast/issues/3317
  * @internal
  */
-export type AccordionItem = StartEnd;
+/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
+export interface AccordionItem extends StartEnd {}
 applyMixins(AccordionItem, StartEnd);

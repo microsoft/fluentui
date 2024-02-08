@@ -40,5 +40,6 @@ export class Tab extends FASTElement {
   }
 }
 
-export type Tab = StartEnd;
+/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
+export interface Tab extends StartEnd {}
 applyMixins(Tab, StartEnd);

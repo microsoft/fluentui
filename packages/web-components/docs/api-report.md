@@ -5,7 +5,6 @@
 ```ts
 
 import type { Constructable } from '@microsoft/fast-element';
-import { CSSDesignToken } from '@microsoft/fast-foundation/design-token.js';
 import { Direction } from '@microsoft/fast-web-utilities';
 import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
@@ -471,7 +470,7 @@ export class Button extends FormAssociatedButton {
     formnovalidate: boolean;
     // (undocumented)
     protected formnovalidateChanged(): void;
-    formtarget: "_self" | "_blank" | "_parent" | "_top";
+    formtarget: '_self' | '_blank' | '_parent' | '_top';
     // (undocumented)
     protected formtargetChanged(): void;
     iconOnly: boolean;
@@ -1653,45 +1652,12 @@ export const curveEasyEaseMax = "--curveEasyEaseMax";
 // @public (undocumented)
 export const curveLinear = "--curveLinear";
 
-// @public
-export class Dialog extends FASTElement {
-    ariaDescribedby?: string;
-    ariaLabelledby?: string;
-    connectedCallback(): void;
-    defaultTitleAction?: Button;
-    dialog: HTMLDialogElement;
-    disconnectedCallback(): void;
-    dismiss(): void;
-    handleClick(event: Event): boolean;
-    handleKeydown: (e: KeyboardEvent) => boolean | void;
-    hide(dismissed?: boolean): void;
-    // Warning: (ae-forgotten-export) The symbol "DialogModalType" needs to be exported by the entry point index.d.ts
-    modalType: DialogModalType;
-    modalTypeChanged(oldValue: DialogModalType, newValue: DialogModalType): void;
-    noTitleAction: boolean;
-    onOpenChangeEvent: (dismissed?: boolean) => void;
-    open: boolean;
-    openChanged(oldValue: boolean, newValue: boolean): void;
-    setComponent(): void;
-    show(): void;
-    titleAction: HTMLElement[];
-}
-
-// @public
-export const DialogDefinition: FASTElementDefinition<typeof Dialog>;
-
-// @public
-export const DialogStyles: ElementStyles;
-
-// @public
-export const DialogTemplate: ElementViewTemplate<Dialog>;
-
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "DelegatesARIAButton" because one of its declarations is marked as @internal
 //
 // @public
 export class DelegatesARIAButton {
-    ariaExpanded: "true" | "false" | string | null;
-    ariaPressed: "true" | "false" | "mixed" | string | null;
+    ariaExpanded: 'true' | 'false' | string | null;
+    ariaPressed: 'true' | 'false' | 'mixed' | string | null;
 }
 
 // Warning: (ae-forgotten-export) The symbol "ARIAGlobalStatesAndProperties" needs to be exported by the entry point index.d.ts
@@ -1704,7 +1670,7 @@ export interface DelegatesARIAButton extends ARIAGlobalStatesAndProperties {
 //
 // @public
 export class DelegatesARIALink {
-    ariaExpanded: "true" | "false" | string | null;
+    ariaExpanded: 'true' | 'false' | string | null;
 }
 
 // @internal
@@ -1787,7 +1753,10 @@ export const DividerDefinition: FASTElementDefinition<typeof Divider>;
 
 // @public
 export const DividerOrientation: {
-    readonly horizontal: "horizontal";
+    readonly horizontal: "horizontal"; /**
+    * Divider roles
+    * @public
+    */
     readonly vertical: "vertical";
 };
 
@@ -1977,37 +1946,6 @@ export const lineHeightHero800 = "--lineHeightHero800";
 
 // @public (undocumented)
 export const lineHeightHero900 = "--lineHeightHero900";
-
-// @public
-export class Menu extends FASTElement {
-    cleanup?: () => void;
-    closeMenu: () => void;
-    closeOnScroll?: boolean;
-    closeOnScrollChanged(oldValue: boolean, newValue: boolean): void;
-    connectedCallback(): void;
-    disconnectedCallback(): void;
-    focusMenuList(): void;
-    focusTrigger(): void;
-    handleMenuKeydown(e: KeyboardEvent): boolean | void;
-    handleTriggerKeydown: (e: KeyboardEvent) => boolean | void;
-    open: boolean;
-    openChanged(oldValue: boolean, newValue: boolean): void;
-    openMenu: (e?: Event) => void;
-    openOnContext?: boolean;
-    openOnContextChanged(oldValue: boolean, newValue: boolean): void;
-    openOnHover?: boolean;
-    openOnHoverChanged(oldValue: boolean, newValue: boolean): void;
-    persistOnItemClick?: boolean;
-    persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void;
-    // @internal
-    positioningContainer?: HTMLElement;
-    setComponent(): void;
-    protected setPositioning(): void;
-    protected setPositioningTask: () => void;
-    slottedMenuList: MenuList[];
-    slottedTriggers: HTMLElement[];
-    toggleMenu: () => void;
-}
 
 // @public
 export class Menu extends FASTElement {
@@ -2271,7 +2209,7 @@ export class Radio extends FormAssociatedRadio implements RadioControl {
 }
 
 // @public (undocumented)
-export type RadioControl = Pick<HTMLInputElement, "checked" | "disabled" | "focus" | "setAttribute" | "getAttribute">;
+export type RadioControl = Pick<HTMLInputElement, 'checked' | 'disabled' | 'focus' | 'setAttribute' | 'getAttribute'>;
 
 // @public
 export const RadioDefinition: FASTElementDefinition<typeof Radio>;
@@ -2285,8 +2223,6 @@ export class RadioGroup extends FASTElement {
     // @internal (undocumented)
     connectedCallback(): void;
     disabled: boolean;
-    // (undocumented)
-    protected disabledChanged(): void;
     // (undocumented)
     disconnectedCallback(): void;
     // @internal (undocumented)
@@ -2335,7 +2271,7 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 //
 // @internal (undocumented)
 export const roleForMenuItem: {
-    [value in keyof typeof MenuItemRole]: (typeof MenuItemRole)[value];
+    [value in keyof typeof MenuItemRole]: typeof MenuItemRole[value];
 };
 
 // @public

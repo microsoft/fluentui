@@ -298,7 +298,8 @@ export class DelegatesARIAButton {
  * TODO: https://github.com/microsoft/fast/issues/3317
  * @internal
  */
-export type DelegatesARIAButton = ARIAGlobalStatesAndProperties;
+/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
+export interface DelegatesARIAButton extends ARIAGlobalStatesAndProperties {}
 applyMixins(DelegatesARIAButton, ARIAGlobalStatesAndProperties);
 
 /**
@@ -307,5 +308,6 @@ applyMixins(DelegatesARIAButton, ARIAGlobalStatesAndProperties);
  * TODO: https://github.com/microsoft/fast/issues/3317
  * @internal
  */
+/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
 export interface Button extends StartEnd, DelegatesARIAButton {}
 applyMixins(Button, StartEnd, DelegatesARIAButton);

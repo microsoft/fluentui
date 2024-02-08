@@ -239,7 +239,8 @@ export class DelegatesARIALink {
  * TODO: https://github.com/microsoft/fast/issues/3317
  * @internal
  */
-export type DelegatesARIALink = ARIAGlobalStatesAndProperties;
+/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
+export interface DelegatesARIALink extends ARIAGlobalStatesAndProperties {}
 applyMixins(DelegatesARIALink, ARIAGlobalStatesAndProperties);
 
 /**
@@ -248,5 +249,6 @@ applyMixins(DelegatesARIALink, ARIAGlobalStatesAndProperties);
  * TODO: https://github.com/microsoft/fast/issues/3317
  * @internal
  */
+/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
 export interface AnchorButton extends StartEnd, DelegatesARIALink {}
 applyMixins(AnchorButton, StartEnd, DelegatesARIALink);
