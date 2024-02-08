@@ -379,5 +379,8 @@
     "swc-loader": "^0.2.3",
     "prettier": "2.8.8",
     "puppeteer": "19.6.0"
+  },
+  "nx": {
+    "includedScripts": []
   }
 }
