@@ -85,6 +85,5 @@
       "!{projectRoot}/src/test-setup.[jt]s"
     ]
   },
-  "useDaemonProcess": false,
-  "parallel": 1
+  "parallel": 3
 }
