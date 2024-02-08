@@ -13,6 +13,11 @@ export type VirtualizerMeasureDynamicProps = {
   direction?: 'vertical' | 'horizontal';
 };
 
+export type VirtualizerStaticPaginationProps = {
+  itemSize: number;
+  axis?: 'vertical' | 'horizontal';
+};
+
 /**
  * Additional direct Ref prevents reading old resize entry data
  * Backwards compatible with ResizeObserverCallback if preferred

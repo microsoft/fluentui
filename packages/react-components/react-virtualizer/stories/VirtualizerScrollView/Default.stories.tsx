@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 
 export const Default = () => {
   const styles = useStyles();
-  const childLength = 1000;
+  const childLength = 100;
 
   return (
     <VirtualizerScrollView

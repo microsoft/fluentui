@@ -1,4 +1,4 @@
-import { Button, makeStyles, shorthands, useArrowNavigationGroup } from '@fluentui/react-components';
+import { Button, makeStyles } from '@fluentui/react-components';
 import * as React from 'react';
 import { VirtualizerScrollView } from '@fluentui/react-components/unstable';
 
@@ -9,8 +9,6 @@ const useStyles = makeStyles({
     maxWidth: '100%',
     scrollSnapType: 'x mandatory',
     scrollBehavior: 'auto',
-    ...shorthands.padding('10px', '2px'),
-    ...shorthands.gap('10px'),
   },
   child: {
     scrollSnapAlign: 'start',
@@ -27,17 +25,14 @@ const useStyles = makeStyles({
 export const SnapToAlignment = () => {
   const styles = useStyles();
   const childLength = 1000;
-  const attributes = useArrowNavigationGroup({
-    axis: 'horizontal',
-    memorizeCurrent: true,
-  });
 
   return (
     <VirtualizerScrollView
       numItems={childLength}
       itemSize={100}
       axis="horizontal"
-      container={{ role: 'list', className: styles.container, ...attributes }}
+      container={{ role: 'list', className: styles.container }}
+      enablePagination
     >
       {(index: number) => {
         return (
