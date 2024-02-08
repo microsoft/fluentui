@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { SwatchPicker, ColorSwatch, SwatchPickerSelectEventHandler } from '@fluentui/react-swatch-picker-preview';
-import { Heart28Filled } from '@fluentui/react-icons';
 
 export const Default = () => {
   const [selectedColor, setSelectedColor] = React.useState('#fff');
@@ -11,7 +10,7 @@ export const Default = () => {
   return (
     <>
       <SwatchPicker selectedValue={selectedColor} aria-label="SwatchPicker no layout" onColorChange={handleSelect}>
-        <ColorSwatch color="#C11016" aria-label="dark red" role="radio" icon={<Heart28Filled color="#fff" />} />
+        <ColorSwatch color="#C11016" aria-label="dark red" role="radio" />
         <ColorSwatch color="#FF1921" aria-label="red" role="radio" />
         <ColorSwatch color="#FFC12E" aria-label="orange" role="radio" />
         <ColorSwatch color="#FEFF37" aria-label="yellow" role="radio" />

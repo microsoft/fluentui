@@ -25,8 +25,6 @@ const useStyles = makeResetStyles({
   boxSizing: 'border-box',
   ...shorthands.border('none'),
   ...shorthands.padding(0),
-  width: '28px',
-  height: '28px',
   background: `var(${swatchColor})`,
   ...shorthands.transition('all', '0.1s', 'ease-in-out'),
   border: `1px solid var(${swatchBorderColor})`,
