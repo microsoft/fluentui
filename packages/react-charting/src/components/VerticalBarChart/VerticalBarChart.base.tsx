@@ -6,7 +6,7 @@ import {
   scaleLinear as d3ScaleLinear,
   ScaleLinear as D3ScaleLinear,
   scaleBand as d3ScaleBand,
-  scaleTime as d3ScaleTime,
+  scaleUtc as d3ScaleUtc,
 } from 'd3-scale';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
@@ -529,7 +529,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     } else if (this._xAxisType === XAxisTypes.DateAxis) {
       const sDate = d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
       const lDate = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
-      xBarScale = d3ScaleTime()
+      xBarScale = d3ScaleUtc()
         .domain([sDate, lDate])
         .range([
           this.margins.left! + this._domainMargin + this._barWidth / 2,
