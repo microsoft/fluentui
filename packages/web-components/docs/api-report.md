@@ -6,7 +6,6 @@
 
 import type { AnchorOptions as AnchorButtonOptions } from '@microsoft/fast-foundation/anchor.js';
 import type { ButtonOptions } from '@microsoft/fast-foundation/button.js';
-import { CSSDesignToken } from '@microsoft/fast-foundation/design-token.js';
 import { DividerOrientation } from '@microsoft/fast-foundation/divider.js';
 import { DividerRole } from '@microsoft/fast-foundation/divider.js';
 import { ElementStyles } from '@microsoft/fast-element';
@@ -390,22 +389,22 @@ export const BadgeStyles: ElementStyles;
 export const BadgeTemplate: ElementViewTemplate<Badge>;
 
 // @public (undocumented)
-export const borderRadiusCircular: CSSDesignToken<string>;
+export const borderRadiusCircular = "--borderRadiusCircular";
 
 // @public (undocumented)
-export const borderRadiusLarge: CSSDesignToken<string>;
+export const borderRadiusLarge = "--borderRadiusLarge";
 
 // @public (undocumented)
-export const borderRadiusMedium: CSSDesignToken<string>;
+export const borderRadiusMedium = "--borderRadiusMedium";
 
 // @public (undocumented)
-export const borderRadiusNone: CSSDesignToken<string>;
+export const borderRadiusNone = "--borderRadiusNone";
 
 // @public (undocumented)
-export const borderRadiusSmall: CSSDesignToken<string>;
+export const borderRadiusSmall = "--borderRadiusSmall";
 
 // @public (undocumented)
-export const borderRadiusXLarge: CSSDesignToken<string>;
+export const borderRadiusXLarge = "--borderRadiusXLarge";
 
 // @public
 export class Button extends FASTButton {
@@ -509,895 +508,895 @@ export const CheckboxStyles: ElementStyles;
 export const CheckboxTemplate: ElementViewTemplate<Checkbox>;
 
 // @public (undocumented)
-export const colorBackgroundOverlay: CSSDesignToken<string>;
+export const colorBackgroundOverlay = "--colorBackgroundOverlay";
 
 // @public (undocumented)
-export const colorBrandBackground: CSSDesignToken<string>;
+export const colorBrandBackground = "--colorBrandBackground";
 
 // @public (undocumented)
-export const colorBrandBackground2: CSSDesignToken<string>;
+export const colorBrandBackground2 = "--colorBrandBackground2";
 
 // @public (undocumented)
-export const colorBrandBackgroundHover: CSSDesignToken<string>;
+export const colorBrandBackgroundHover = "--colorBrandBackgroundHover";
 
 // @public (undocumented)
-export const colorBrandBackgroundInverted: CSSDesignToken<string>;
+export const colorBrandBackgroundInverted = "--colorBrandBackgroundInverted";
 
 // @public (undocumented)
-export const colorBrandBackgroundInvertedHover: CSSDesignToken<string>;
+export const colorBrandBackgroundInvertedHover = "--colorBrandBackgroundInvertedHover";
 
 // @public (undocumented)
-export const colorBrandBackgroundInvertedPressed: CSSDesignToken<string>;
+export const colorBrandBackgroundInvertedPressed = "--colorBrandBackgroundInvertedPressed";
 
 // @public (undocumented)
-export const colorBrandBackgroundInvertedSelected: CSSDesignToken<string>;
+export const colorBrandBackgroundInvertedSelected = "--colorBrandBackgroundInvertedSelected";
 
 // @public (undocumented)
-export const colorBrandBackgroundPressed: CSSDesignToken<string>;
+export const colorBrandBackgroundPressed = "--colorBrandBackgroundPressed";
 
 // @public (undocumented)
-export const colorBrandBackgroundSelected: CSSDesignToken<string>;
+export const colorBrandBackgroundSelected = "--colorBrandBackgroundSelected";
 
 // @public (undocumented)
-export const colorBrandBackgroundStatic: CSSDesignToken<string>;
+export const colorBrandBackgroundStatic = "--colorBrandBackgroundStatic";
 
 // @public (undocumented)
-export const colorBrandForeground1: CSSDesignToken<string>;
+export const colorBrandForeground1 = "--colorBrandForeground1";
 
 // @public (undocumented)
-export const colorBrandForeground2: CSSDesignToken<string>;
+export const colorBrandForeground2 = "--colorBrandForeground2";
 
 // @public (undocumented)
-export const colorBrandForegroundInverted: CSSDesignToken<string>;
+export const colorBrandForegroundInverted = "--colorBrandForegroundInverted";
 
 // @public (undocumented)
-export const colorBrandForegroundInvertedHover: CSSDesignToken<string>;
+export const colorBrandForegroundInvertedHover = "--colorBrandForegroundInvertedHover";
 
 // @public (undocumented)
-export const colorBrandForegroundInvertedPressed: CSSDesignToken<string>;
+export const colorBrandForegroundInvertedPressed = "--colorBrandForegroundInvertedPressed";
 
 // @public (undocumented)
-export const colorBrandForegroundLink: CSSDesignToken<string>;
+export const colorBrandForegroundLink = "--colorBrandForegroundLink";
 
 // @public (undocumented)
-export const colorBrandForegroundLinkHover: CSSDesignToken<string>;
+export const colorBrandForegroundLinkHover = "--colorBrandForegroundLinkHover";
 
 // @public (undocumented)
-export const colorBrandForegroundLinkPressed: CSSDesignToken<string>;
+export const colorBrandForegroundLinkPressed = "--colorBrandForegroundLinkPressed";
 
 // @public (undocumented)
-export const colorBrandForegroundLinkSelected: CSSDesignToken<string>;
+export const colorBrandForegroundLinkSelected = "--colorBrandForegroundLinkSelected";
 
 // @public (undocumented)
-export const colorBrandForegroundOnLight: CSSDesignToken<string>;
+export const colorBrandForegroundOnLight = "--colorBrandForegroundOnLight";
 
 // @public (undocumented)
-export const colorBrandForegroundOnLightHover: CSSDesignToken<string>;
+export const colorBrandForegroundOnLightHover = "--colorBrandForegroundOnLightHover";
 
 // @public (undocumented)
-export const colorBrandForegroundOnLightPressed: CSSDesignToken<string>;
+export const colorBrandForegroundOnLightPressed = "--colorBrandForegroundOnLightPressed";
 
 // @public (undocumented)
-export const colorBrandForegroundOnLightSelected: CSSDesignToken<string>;
+export const colorBrandForegroundOnLightSelected = "--colorBrandForegroundOnLightSelected";
 
 // @public (undocumented)
-export const colorBrandShadowAmbient: CSSDesignToken<string>;
+export const colorBrandShadowAmbient = "--colorBrandShadowAmbient";
 
 // @public (undocumented)
-export const colorBrandShadowKey: CSSDesignToken<string>;
+export const colorBrandShadowKey = "--colorBrandShadowKey";
 
 // @public (undocumented)
-export const colorBrandStroke1: CSSDesignToken<string>;
+export const colorBrandStroke1 = "--colorBrandStroke1";
 
 // @public (undocumented)
-export const colorBrandStroke2: CSSDesignToken<string>;
+export const colorBrandStroke2 = "--colorBrandStroke2";
 
 // @public (undocumented)
-export const colorCompoundBrandBackground: CSSDesignToken<string>;
+export const colorCompoundBrandBackground = "--colorCompoundBrandBackground";
 
 // @public (undocumented)
-export const colorCompoundBrandBackgroundHover: CSSDesignToken<string>;
+export const colorCompoundBrandBackgroundHover = "--colorCompoundBrandBackgroundHover";
 
 // @public (undocumented)
-export const colorCompoundBrandBackgroundPressed: CSSDesignToken<string>;
+export const colorCompoundBrandBackgroundPressed = "--colorCompoundBrandBackgroundPressed";
 
 // @public (undocumented)
-export const colorCompoundBrandForeground1: CSSDesignToken<string>;
+export const colorCompoundBrandForeground1 = "--colorCompoundBrandForeground1";
 
 // @public (undocumented)
-export const colorCompoundBrandForeground1Hover: CSSDesignToken<string>;
+export const colorCompoundBrandForeground1Hover = "--colorCompoundBrandForeground1Hover";
 
 // @public (undocumented)
-export const colorCompoundBrandForeground1Pressed: CSSDesignToken<string>;
+export const colorCompoundBrandForeground1Pressed = "--colorCompoundBrandForeground1Pressed";
 
 // @public (undocumented)
-export const colorCompoundBrandStroke: CSSDesignToken<string>;
+export const colorCompoundBrandStroke = "--colorCompoundBrandStroke";
 
 // @public (undocumented)
-export const colorCompoundBrandStrokeHover: CSSDesignToken<string>;
+export const colorCompoundBrandStrokeHover = "--colorCompoundBrandStrokeHover";
 
 // @public (undocumented)
-export const colorCompoundBrandStrokePressed: CSSDesignToken<string>;
+export const colorCompoundBrandStrokePressed = "--colorCompoundBrandStrokePressed";
 
 // @public (undocumented)
-export const colorNeutralBackground1: CSSDesignToken<string>;
+export const colorNeutralBackground1 = "--colorNeutralBackground1";
 
 // @public (undocumented)
-export const colorNeutralBackground1Hover: CSSDesignToken<string>;
+export const colorNeutralBackground1Hover = "--colorNeutralBackground1Hover";
 
 // @public (undocumented)
-export const colorNeutralBackground1Pressed: CSSDesignToken<string>;
+export const colorNeutralBackground1Pressed = "--colorNeutralBackground1Pressed";
 
 // @public (undocumented)
-export const colorNeutralBackground1Selected: CSSDesignToken<string>;
+export const colorNeutralBackground1Selected = "--colorNeutralBackground1Selected";
 
 // @public (undocumented)
-export const colorNeutralBackground2: CSSDesignToken<string>;
+export const colorNeutralBackground2 = "--colorNeutralBackground2";
 
 // @public (undocumented)
-export const colorNeutralBackground2Hover: CSSDesignToken<string>;
+export const colorNeutralBackground2Hover = "--colorNeutralBackground2Hover";
 
 // @public (undocumented)
-export const colorNeutralBackground2Pressed: CSSDesignToken<string>;
+export const colorNeutralBackground2Pressed = "--colorNeutralBackground2Pressed";
 
 // @public (undocumented)
-export const colorNeutralBackground2Selected: CSSDesignToken<string>;
+export const colorNeutralBackground2Selected = "--colorNeutralBackground2Selected";
 
 // @public (undocumented)
-export const colorNeutralBackground3: CSSDesignToken<string>;
+export const colorNeutralBackground3 = "--colorNeutralBackground3";
 
 // @public (undocumented)
-export const colorNeutralBackground3Hover: CSSDesignToken<string>;
+export const colorNeutralBackground3Hover = "--colorNeutralBackground3Hover";
 
 // @public (undocumented)
-export const colorNeutralBackground3Pressed: CSSDesignToken<string>;
+export const colorNeutralBackground3Pressed = "--colorNeutralBackground3Pressed";
 
 // @public (undocumented)
-export const colorNeutralBackground3Selected: CSSDesignToken<string>;
+export const colorNeutralBackground3Selected = "--colorNeutralBackground3Selected";
 
 // @public (undocumented)
-export const colorNeutralBackground4: CSSDesignToken<string>;
+export const colorNeutralBackground4 = "--colorNeutralBackground4";
 
 // @public (undocumented)
-export const colorNeutralBackground4Hover: CSSDesignToken<string>;
+export const colorNeutralBackground4Hover = "--colorNeutralBackground4Hover";
 
 // @public (undocumented)
-export const colorNeutralBackground4Pressed: CSSDesignToken<string>;
+export const colorNeutralBackground4Pressed = "--colorNeutralBackground4Pressed";
 
 // @public (undocumented)
-export const colorNeutralBackground4Selected: CSSDesignToken<string>;
+export const colorNeutralBackground4Selected = "--colorNeutralBackground4Selected";
 
 // @public (undocumented)
-export const colorNeutralBackground5: CSSDesignToken<string>;
+export const colorNeutralBackground5 = "--colorNeutralBackground5";
 
 // @public (undocumented)
-export const colorNeutralBackground5Hover: CSSDesignToken<string>;
+export const colorNeutralBackground5Hover = "--colorNeutralBackground5Hover";
 
 // @public (undocumented)
-export const colorNeutralBackground5Pressed: CSSDesignToken<string>;
+export const colorNeutralBackground5Pressed = "--colorNeutralBackground5Pressed";
 
 // @public (undocumented)
-export const colorNeutralBackground5Selected: CSSDesignToken<string>;
+export const colorNeutralBackground5Selected = "--colorNeutralBackground5Selected";
 
 // @public (undocumented)
-export const colorNeutralBackground6: CSSDesignToken<string>;
+export const colorNeutralBackground6 = "--colorNeutralBackground6";
 
 // @public (undocumented)
-export const colorNeutralBackgroundDisabled: CSSDesignToken<string>;
+export const colorNeutralBackgroundDisabled = "--colorNeutralBackgroundDisabled";
 
 // @public (undocumented)
-export const colorNeutralBackgroundInverted: CSSDesignToken<string>;
+export const colorNeutralBackgroundInverted = "--colorNeutralBackgroundInverted";
 
 // @public (undocumented)
-export const colorNeutralBackgroundInvertedDisabled: CSSDesignToken<string>;
+export const colorNeutralBackgroundInvertedDisabled = "--colorNeutralBackgroundInvertedDisabled";
 
 // @public (undocumented)
-export const colorNeutralBackgroundStatic: CSSDesignToken<string>;
+export const colorNeutralBackgroundStatic = "--colorNeutralBackgroundStatic";
 
 // @public (undocumented)
-export const colorNeutralForeground1: CSSDesignToken<string>;
+export const colorNeutralForeground1 = "--colorNeutralForeground1";
 
 // @public (undocumented)
-export const colorNeutralForeground1Hover: CSSDesignToken<string>;
+export const colorNeutralForeground1Hover = "--colorNeutralForeground1Hover";
 
 // @public (undocumented)
-export const colorNeutralForeground1Pressed: CSSDesignToken<string>;
+export const colorNeutralForeground1Pressed = "--colorNeutralForeground1Pressed";
 
 // @public (undocumented)
-export const colorNeutralForeground1Selected: CSSDesignToken<string>;
+export const colorNeutralForeground1Selected = "--colorNeutralForeground1Selected";
 
 // @public (undocumented)
-export const colorNeutralForeground1Static: CSSDesignToken<string>;
+export const colorNeutralForeground1Static = "--colorNeutralForeground1Static";
 
 // @public (undocumented)
-export const colorNeutralForeground2: CSSDesignToken<string>;
+export const colorNeutralForeground2 = "--colorNeutralForeground2";
 
 // @public (undocumented)
-export const colorNeutralForeground2BrandHover: CSSDesignToken<string>;
+export const colorNeutralForeground2BrandHover = "--colorNeutralForeground2BrandHover";
 
 // @public (undocumented)
-export const colorNeutralForeground2BrandPressed: CSSDesignToken<string>;
+export const colorNeutralForeground2BrandPressed = "--colorNeutralForeground2BrandPressed";
 
 // @public (undocumented)
-export const colorNeutralForeground2BrandSelected: CSSDesignToken<string>;
+export const colorNeutralForeground2BrandSelected = "--colorNeutralForeground2BrandSelected";
 
 // @public (undocumented)
-export const colorNeutralForeground2Hover: CSSDesignToken<string>;
+export const colorNeutralForeground2Hover = "--colorNeutralForeground2Hover";
 
 // @public (undocumented)
-export const colorNeutralForeground2Link: CSSDesignToken<string>;
+export const colorNeutralForeground2Link = "--colorNeutralForeground2Link";
 
 // @public (undocumented)
-export const colorNeutralForeground2LinkHover: CSSDesignToken<string>;
+export const colorNeutralForeground2LinkHover = "--colorNeutralForeground2LinkHover";
 
 // @public (undocumented)
-export const colorNeutralForeground2LinkPressed: CSSDesignToken<string>;
+export const colorNeutralForeground2LinkPressed = "--colorNeutralForeground2LinkPressed";
 
 // @public (undocumented)
-export const colorNeutralForeground2LinkSelected: CSSDesignToken<string>;
+export const colorNeutralForeground2LinkSelected = "--colorNeutralForeground2LinkSelected";
 
 // @public (undocumented)
-export const colorNeutralForeground2Pressed: CSSDesignToken<string>;
+export const colorNeutralForeground2Pressed = "--colorNeutralForeground2Pressed";
 
 // @public (undocumented)
-export const colorNeutralForeground2Selected: CSSDesignToken<string>;
+export const colorNeutralForeground2Selected = "--colorNeutralForeground2Selected";
 
 // @public (undocumented)
-export const colorNeutralForeground3: CSSDesignToken<string>;
+export const colorNeutralForeground3 = "--colorNeutralForeground3";
 
 // @public (undocumented)
-export const colorNeutralForeground3BrandHover: CSSDesignToken<string>;
+export const colorNeutralForeground3BrandHover = "--colorNeutralForeground3BrandHover";
 
 // @public (undocumented)
-export const colorNeutralForeground3BrandPressed: CSSDesignToken<string>;
+export const colorNeutralForeground3BrandPressed = "--colorNeutralForeground3BrandPressed";
 
 // @public (undocumented)
-export const colorNeutralForeground3BrandSelected: CSSDesignToken<string>;
+export const colorNeutralForeground3BrandSelected = "--colorNeutralForeground3BrandSelected";
 
 // @public (undocumented)
-export const colorNeutralForeground3Hover: CSSDesignToken<string>;
+export const colorNeutralForeground3Hover = "--colorNeutralForeground3Hover";
 
 // @public (undocumented)
-export const colorNeutralForeground3Pressed: CSSDesignToken<string>;
+export const colorNeutralForeground3Pressed = "--colorNeutralForeground3Pressed";
 
 // @public (undocumented)
-export const colorNeutralForeground3Selected: CSSDesignToken<string>;
+export const colorNeutralForeground3Selected = "--colorNeutralForeground3Selected";
 
 // @public (undocumented)
-export const colorNeutralForeground4: CSSDesignToken<string>;
+export const colorNeutralForeground4 = "--colorNeutralForeground4";
 
 // @public (undocumented)
-export const colorNeutralForegroundDisabled: CSSDesignToken<string>;
+export const colorNeutralForegroundDisabled = "--colorNeutralForegroundDisabled";
 
 // @public (undocumented)
-export const colorNeutralForegroundInverted: CSSDesignToken<string>;
+export const colorNeutralForegroundInverted = "--colorNeutralForegroundInverted";
 
 // @public (undocumented)
-export const colorNeutralForegroundInverted2: CSSDesignToken<string>;
+export const colorNeutralForegroundInverted2 = "--colorNeutralForegroundInverted2";
 
 // @public (undocumented)
-export const colorNeutralForegroundInvertedDisabled: CSSDesignToken<string>;
+export const colorNeutralForegroundInvertedDisabled = "--colorNeutralForegroundInvertedDisabled";
 
 // @public (undocumented)
-export const colorNeutralForegroundInvertedHover: CSSDesignToken<string>;
+export const colorNeutralForegroundInvertedHover = "--colorNeutralForegroundInvertedHover";
 
 // @public (undocumented)
-export const colorNeutralForegroundInvertedLink: CSSDesignToken<string>;
+export const colorNeutralForegroundInvertedLink = "--colorNeutralForegroundInvertedLink";
 
 // @public (undocumented)
-export const colorNeutralForegroundInvertedLinkHover: CSSDesignToken<string>;
+export const colorNeutralForegroundInvertedLinkHover = "--colorNeutralForegroundInvertedLinkHover";
 
 // @public (undocumented)
-export const colorNeutralForegroundInvertedLinkPressed: CSSDesignToken<string>;
+export const colorNeutralForegroundInvertedLinkPressed = "--colorNeutralForegroundInvertedLinkPressed";
 
 // @public (undocumented)
-export const colorNeutralForegroundInvertedLinkSelected: CSSDesignToken<string>;
+export const colorNeutralForegroundInvertedLinkSelected = "--colorNeutralForegroundInvertedLinkSelected";
 
 // @public (undocumented)
-export const colorNeutralForegroundInvertedPressed: CSSDesignToken<string>;
+export const colorNeutralForegroundInvertedPressed = "--colorNeutralForegroundInvertedPressed";
 
 // @public (undocumented)
-export const colorNeutralForegroundInvertedSelected: CSSDesignToken<string>;
+export const colorNeutralForegroundInvertedSelected = "--colorNeutralForegroundInvertedSelected";
 
 // @public (undocumented)
-export const colorNeutralForegroundOnBrand: CSSDesignToken<string>;
+export const colorNeutralForegroundOnBrand = "--colorNeutralForegroundOnBrand";
 
 // @public (undocumented)
-export const colorNeutralForegroundStaticInverted: CSSDesignToken<string>;
+export const colorNeutralForegroundStaticInverted = "--colorNeutralForegroundStaticInverted";
 
 // @public (undocumented)
-export const colorNeutralShadowAmbient: CSSDesignToken<string>;
+export const colorNeutralShadowAmbient = "--colorNeutralShadowAmbient";
 
 // @public (undocumented)
-export const colorNeutralShadowAmbientDarker: CSSDesignToken<string>;
+export const colorNeutralShadowAmbientDarker = "--colorNeutralShadowAmbientDarker";
 
 // @public (undocumented)
-export const colorNeutralShadowAmbientLighter: CSSDesignToken<string>;
+export const colorNeutralShadowAmbientLighter = "--colorNeutralShadowAmbientLighter";
 
 // @public (undocumented)
-export const colorNeutralShadowKey: CSSDesignToken<string>;
+export const colorNeutralShadowKey = "--colorNeutralShadowKey";
 
 // @public (undocumented)
-export const colorNeutralShadowKeyDarker: CSSDesignToken<string>;
+export const colorNeutralShadowKeyDarker = "--colorNeutralShadowKeyDarker";
 
 // @public (undocumented)
-export const colorNeutralShadowKeyLighter: CSSDesignToken<string>;
+export const colorNeutralShadowKeyLighter = "--colorNeutralShadowKeyLighter";
 
 // @public (undocumented)
-export const colorNeutralStencil1: CSSDesignToken<string>;
+export const colorNeutralStencil1 = "--colorNeutralStencil1";
 
 // @public (undocumented)
-export const colorNeutralStencil1Alpha: CSSDesignToken<string>;
+export const colorNeutralStencil1Alpha = "--colorNeutralStencil1Alpha";
 
 // @public (undocumented)
-export const colorNeutralStencil2: CSSDesignToken<string>;
+export const colorNeutralStencil2 = "--colorNeutralStencil2";
 
 // @public (undocumented)
-export const colorNeutralStencil2Alpha: CSSDesignToken<string>;
+export const colorNeutralStencil2Alpha = "--colorNeutralStencil2Alpha";
 
 // @public (undocumented)
-export const colorNeutralStroke1: CSSDesignToken<string>;
+export const colorNeutralStroke1 = "--colorNeutralStroke1";
 
 // @public (undocumented)
-export const colorNeutralStroke1Hover: CSSDesignToken<string>;
+export const colorNeutralStroke1Hover = "--colorNeutralStroke1Hover";
 
 // @public (undocumented)
-export const colorNeutralStroke1Pressed: CSSDesignToken<string>;
+export const colorNeutralStroke1Pressed = "--colorNeutralStroke1Pressed";
 
 // @public (undocumented)
-export const colorNeutralStroke1Selected: CSSDesignToken<string>;
+export const colorNeutralStroke1Selected = "--colorNeutralStroke1Selected";
 
 // @public (undocumented)
-export const colorNeutralStroke2: CSSDesignToken<string>;
+export const colorNeutralStroke2 = "--colorNeutralStroke2";
 
 // @public (undocumented)
-export const colorNeutralStroke3: CSSDesignToken<string>;
+export const colorNeutralStroke3 = "--colorNeutralStroke3";
 
 // @public (undocumented)
-export const colorNeutralStrokeAccessible: CSSDesignToken<string>;
+export const colorNeutralStrokeAccessible = "--colorNeutralStrokeAccessible";
 
 // @public (undocumented)
-export const colorNeutralStrokeAccessibleHover: CSSDesignToken<string>;
+export const colorNeutralStrokeAccessibleHover = "--colorNeutralStrokeAccessibleHover";
 
 // @public (undocumented)
-export const colorNeutralStrokeAccessiblePressed: CSSDesignToken<string>;
+export const colorNeutralStrokeAccessiblePressed = "--colorNeutralStrokeAccessiblePressed";
 
 // @public (undocumented)
-export const colorNeutralStrokeAccessibleSelected: CSSDesignToken<string>;
+export const colorNeutralStrokeAccessibleSelected = "--colorNeutralStrokeAccessibleSelected";
 
 // @public (undocumented)
-export const colorNeutralStrokeDisabled: CSSDesignToken<string>;
+export const colorNeutralStrokeDisabled = "--colorNeutralStrokeDisabled";
 
 // @public (undocumented)
-export const colorNeutralStrokeInvertedDisabled: CSSDesignToken<string>;
+export const colorNeutralStrokeInvertedDisabled = "--colorNeutralStrokeInvertedDisabled";
 
 // @public (undocumented)
-export const colorNeutralStrokeOnBrand: CSSDesignToken<string>;
+export const colorNeutralStrokeOnBrand = "--colorNeutralStrokeOnBrand";
 
 // @public (undocumented)
-export const colorNeutralStrokeOnBrand2: CSSDesignToken<string>;
+export const colorNeutralStrokeOnBrand2 = "--colorNeutralStrokeOnBrand2";
 
 // @public (undocumented)
-export const colorNeutralStrokeOnBrand2Hover: CSSDesignToken<string>;
+export const colorNeutralStrokeOnBrand2Hover = "--colorNeutralStrokeOnBrand2Hover";
 
 // @public (undocumented)
-export const colorNeutralStrokeOnBrand2Pressed: CSSDesignToken<string>;
+export const colorNeutralStrokeOnBrand2Pressed = "--colorNeutralStrokeOnBrand2Pressed";
 
 // @public (undocumented)
-export const colorNeutralStrokeOnBrand2Selected: CSSDesignToken<string>;
+export const colorNeutralStrokeOnBrand2Selected = "--colorNeutralStrokeOnBrand2Selected";
 
 // @public (undocumented)
-export const colorPaletteAnchorBackground2: CSSDesignToken<string>;
+export const colorPaletteAnchorBackground2 = "--colorPaletteAnchorBackground2";
 
 // @public (undocumented)
-export const colorPaletteAnchorBorderActive: CSSDesignToken<string>;
+export const colorPaletteAnchorBorderActive = "--colorPaletteAnchorBorderActive";
 
 // @public (undocumented)
-export const colorPaletteAnchorForeground2: CSSDesignToken<string>;
+export const colorPaletteAnchorForeground2 = "--colorPaletteAnchorForeground2";
 
 // @public (undocumented)
-export const colorPaletteBeigeBackground2: CSSDesignToken<string>;
+export const colorPaletteBeigeBackground2 = "--colorPaletteBeigeBackground2";
 
 // @public (undocumented)
-export const colorPaletteBeigeBorderActive: CSSDesignToken<string>;
+export const colorPaletteBeigeBorderActive = "--colorPaletteBeigeBorderActive";
 
 // @public (undocumented)
-export const colorPaletteBeigeForeground2: CSSDesignToken<string>;
+export const colorPaletteBeigeForeground2 = "--colorPaletteBeigeForeground2";
 
 // @public (undocumented)
-export const colorPaletteBerryBackground1: CSSDesignToken<string>;
+export const colorPaletteBerryBackground1 = "--colorPaletteBerryBackground1";
 
 // @public (undocumented)
-export const colorPaletteBerryBackground2: CSSDesignToken<string>;
+export const colorPaletteBerryBackground2 = "--colorPaletteBerryBackground2";
 
 // @public (undocumented)
-export const colorPaletteBerryBackground3: CSSDesignToken<string>;
+export const colorPaletteBerryBackground3 = "--colorPaletteBerryBackground3";
 
 // @public (undocumented)
-export const colorPaletteBerryBorder1: CSSDesignToken<string>;
+export const colorPaletteBerryBorder1 = "--colorPaletteBerryBorder1";
 
 // @public (undocumented)
-export const colorPaletteBerryBorder2: CSSDesignToken<string>;
+export const colorPaletteBerryBorder2 = "--colorPaletteBerryBorder2";
 
 // @public (undocumented)
-export const colorPaletteBerryBorderActive: CSSDesignToken<string>;
+export const colorPaletteBerryBorderActive = "--colorPaletteBerryBorderActive";
 
 // @public (undocumented)
-export const colorPaletteBerryForeground1: CSSDesignToken<string>;
+export const colorPaletteBerryForeground1 = "--colorPaletteBerryForeground1";
 
 // @public (undocumented)
-export const colorPaletteBerryForeground2: CSSDesignToken<string>;
+export const colorPaletteBerryForeground2 = "--colorPaletteBerryForeground2";
 
 // @public (undocumented)
-export const colorPaletteBerryForeground3: CSSDesignToken<string>;
+export const colorPaletteBerryForeground3 = "--colorPaletteBerryForeground3";
 
 // @public (undocumented)
-export const colorPaletteBlueBackground2: CSSDesignToken<string>;
+export const colorPaletteBlueBackground2 = "--colorPaletteBlueBackground2";
 
 // @public (undocumented)
-export const colorPaletteBlueBorderActive: CSSDesignToken<string>;
+export const colorPaletteBlueBorderActive = "--colorPaletteBlueBorderActive";
 
 // @public (undocumented)
-export const colorPaletteBlueForeground2: CSSDesignToken<string>;
+export const colorPaletteBlueForeground2 = "--colorPaletteBlueForeground2";
 
 // @public (undocumented)
-export const colorPaletteBrassBackground2: CSSDesignToken<string>;
+export const colorPaletteBrassBackground2 = "--colorPaletteBrassBackground2";
 
 // @public (undocumented)
-export const colorPaletteBrassBorderActive: CSSDesignToken<string>;
+export const colorPaletteBrassBorderActive = "--colorPaletteBrassBorderActive";
 
 // @public (undocumented)
-export const colorPaletteBrassForeground2: CSSDesignToken<string>;
+export const colorPaletteBrassForeground2 = "--colorPaletteBrassForeground2";
 
 // @public (undocumented)
-export const colorPaletteBrownBackground2: CSSDesignToken<string>;
+export const colorPaletteBrownBackground2 = "--colorPaletteBrownBackground2";
 
 // @public (undocumented)
-export const colorPaletteBrownBorderActive: CSSDesignToken<string>;
+export const colorPaletteBrownBorderActive = "--colorPaletteBrownBorderActive";
 
 // @public (undocumented)
-export const colorPaletteBrownForeground2: CSSDesignToken<string>;
+export const colorPaletteBrownForeground2 = "--colorPaletteBrownForeground2";
 
 // @public (undocumented)
-export const colorPaletteCornflowerBackground2: CSSDesignToken<string>;
+export const colorPaletteCornflowerBackground2 = "--colorPaletteCornflowerBackground2";
 
 // @public (undocumented)
-export const colorPaletteCornflowerBorderActive: CSSDesignToken<string>;
+export const colorPaletteCornflowerBorderActive = "--colorPaletteCornflowerBorderActive";
 
 // @public (undocumented)
-export const colorPaletteCornflowerForeground2: CSSDesignToken<string>;
+export const colorPaletteCornflowerForeground2 = "--colorPaletteCornflowerForeground2";
 
 // @public (undocumented)
-export const colorPaletteCranberryBackground2: CSSDesignToken<string>;
+export const colorPaletteCranberryBackground2 = "--colorPaletteCranberryBackground2";
 
 // @public (undocumented)
-export const colorPaletteCranberryBorderActive: CSSDesignToken<string>;
+export const colorPaletteCranberryBorderActive = "--colorPaletteCranberryBorderActive";
 
 // @public (undocumented)
-export const colorPaletteCranberryForeground2: CSSDesignToken<string>;
+export const colorPaletteCranberryForeground2 = "--colorPaletteCranberryForeground2";
 
 // @public (undocumented)
-export const colorPaletteDarkGreenBackground2: CSSDesignToken<string>;
+export const colorPaletteDarkGreenBackground2 = "--colorPaletteDarkGreenBackground2";
 
 // @public (undocumented)
-export const colorPaletteDarkGreenBorderActive: CSSDesignToken<string>;
+export const colorPaletteDarkGreenBorderActive = "--colorPaletteDarkGreenBorderActive";
 
 // @public (undocumented)
-export const colorPaletteDarkGreenForeground2: CSSDesignToken<string>;
+export const colorPaletteDarkGreenForeground2 = "--colorPaletteDarkGreenForeground2";
 
 // @public (undocumented)
-export const colorPaletteDarkOrangeBackground1: CSSDesignToken<string>;
+export const colorPaletteDarkOrangeBackground1 = "--colorPaletteDarkOrangeBackground1";
 
 // @public (undocumented)
-export const colorPaletteDarkOrangeBackground2: CSSDesignToken<string>;
+export const colorPaletteDarkOrangeBackground2 = "--colorPaletteDarkOrangeBackground2";
 
 // @public (undocumented)
-export const colorPaletteDarkOrangeBackground3: CSSDesignToken<string>;
+export const colorPaletteDarkOrangeBackground3 = "--colorPaletteDarkOrangeBackground3";
 
 // @public (undocumented)
-export const colorPaletteDarkOrangeBorder1: CSSDesignToken<string>;
+export const colorPaletteDarkOrangeBorder1 = "--colorPaletteDarkOrangeBorder1";
 
 // @public (undocumented)
-export const colorPaletteDarkOrangeBorder2: CSSDesignToken<string>;
+export const colorPaletteDarkOrangeBorder2 = "--colorPaletteDarkOrangeBorder2";
 
 // @public (undocumented)
-export const colorPaletteDarkOrangeBorderActive: CSSDesignToken<string>;
+export const colorPaletteDarkOrangeBorderActive = "--colorPaletteDarkOrangeBorderActive";
 
 // @public (undocumented)
-export const colorPaletteDarkOrangeForeground1: CSSDesignToken<string>;
+export const colorPaletteDarkOrangeForeground1 = "--colorPaletteDarkOrangeForeground1";
 
 // @public (undocumented)
-export const colorPaletteDarkOrangeForeground2: CSSDesignToken<string>;
+export const colorPaletteDarkOrangeForeground2 = "--colorPaletteDarkOrangeForeground2";
 
 // @public (undocumented)
-export const colorPaletteDarkOrangeForeground3: CSSDesignToken<string>;
+export const colorPaletteDarkOrangeForeground3 = "--colorPaletteDarkOrangeForeground3";
 
 // @public (undocumented)
-export const colorPaletteDarkRedBackground2: CSSDesignToken<string>;
+export const colorPaletteDarkRedBackground2 = "--colorPaletteDarkRedBackground2";
 
 // @public (undocumented)
-export const colorPaletteDarkRedBorderActive: CSSDesignToken<string>;
+export const colorPaletteDarkRedBorderActive = "--colorPaletteDarkRedBorderActive";
 
 // @public (undocumented)
-export const colorPaletteDarkRedForeground2: CSSDesignToken<string>;
+export const colorPaletteDarkRedForeground2 = "--colorPaletteDarkRedForeground2";
 
 // @public (undocumented)
-export const colorPaletteForestBackground2: CSSDesignToken<string>;
+export const colorPaletteForestBackground2 = "--colorPaletteForestBackground2";
 
 // @public (undocumented)
-export const colorPaletteForestBorderActive: CSSDesignToken<string>;
+export const colorPaletteForestBorderActive = "--colorPaletteForestBorderActive";
 
 // @public (undocumented)
-export const colorPaletteForestForeground2: CSSDesignToken<string>;
+export const colorPaletteForestForeground2 = "--colorPaletteForestForeground2";
 
 // @public (undocumented)
-export const colorPaletteGoldBackground2: CSSDesignToken<string>;
+export const colorPaletteGoldBackground2 = "--colorPaletteGoldBackground2";
 
 // @public (undocumented)
-export const colorPaletteGoldBorderActive: CSSDesignToken<string>;
+export const colorPaletteGoldBorderActive = "--colorPaletteGoldBorderActive";
 
 // @public (undocumented)
-export const colorPaletteGoldForeground2: CSSDesignToken<string>;
+export const colorPaletteGoldForeground2 = "--colorPaletteGoldForeground2";
 
 // @public (undocumented)
-export const colorPaletteGrapeBackground2: CSSDesignToken<string>;
+export const colorPaletteGrapeBackground2 = "--colorPaletteGrapeBackground2";
 
 // @public (undocumented)
-export const colorPaletteGrapeBorderActive: CSSDesignToken<string>;
+export const colorPaletteGrapeBorderActive = "--colorPaletteGrapeBorderActive";
 
 // @public (undocumented)
-export const colorPaletteGrapeForeground2: CSSDesignToken<string>;
+export const colorPaletteGrapeForeground2 = "--colorPaletteGrapeForeground2";
 
 // @public (undocumented)
-export const colorPaletteGreenBackground1: CSSDesignToken<string>;
+export const colorPaletteGreenBackground1 = "--colorPaletteGreenBackground1";
 
 // @public (undocumented)
-export const colorPaletteGreenBackground2: CSSDesignToken<string>;
+export const colorPaletteGreenBackground2 = "--colorPaletteGreenBackground2";
 
 // @public (undocumented)
-export const colorPaletteGreenBackground3: CSSDesignToken<string>;
+export const colorPaletteGreenBackground3 = "--colorPaletteGreenBackground3";
 
 // @public (undocumented)
-export const colorPaletteGreenBorder1: CSSDesignToken<string>;
+export const colorPaletteGreenBorder1 = "--colorPaletteGreenBorder1";
 
 // @public (undocumented)
-export const colorPaletteGreenBorder2: CSSDesignToken<string>;
+export const colorPaletteGreenBorder2 = "--colorPaletteGreenBorder2";
 
 // @public (undocumented)
-export const colorPaletteGreenBorderActive: CSSDesignToken<string>;
+export const colorPaletteGreenBorderActive = "--colorPaletteGreenBorderActive";
 
 // @public (undocumented)
-export const colorPaletteGreenForeground1: CSSDesignToken<string>;
+export const colorPaletteGreenForeground1 = "--colorPaletteGreenForeground1";
 
 // @public (undocumented)
-export const colorPaletteGreenForeground2: CSSDesignToken<string>;
+export const colorPaletteGreenForeground2 = "--colorPaletteGreenForeground2";
 
 // @public (undocumented)
-export const colorPaletteGreenForeground3: CSSDesignToken<string>;
+export const colorPaletteGreenForeground3 = "--colorPaletteGreenForeground3";
 
 // @public (undocumented)
-export const colorPaletteGreenForegroundInverted: CSSDesignToken<string>;
+export const colorPaletteGreenForegroundInverted = "--colorPaletteGreenForegroundInverted";
 
 // @public (undocumented)
-export const colorPaletteLavenderBackground2: CSSDesignToken<string>;
+export const colorPaletteLavenderBackground2 = "--colorPaletteLavenderBackground2";
 
 // @public (undocumented)
-export const colorPaletteLavenderBorderActive: CSSDesignToken<string>;
+export const colorPaletteLavenderBorderActive = "--colorPaletteLavenderBorderActive";
 
 // @public (undocumented)
-export const colorPaletteLavenderForeground2: CSSDesignToken<string>;
+export const colorPaletteLavenderForeground2 = "--colorPaletteLavenderForeground2";
 
 // @public (undocumented)
-export const colorPaletteLightGreenBackground1: CSSDesignToken<string>;
+export const colorPaletteLightGreenBackground1 = "--colorPaletteLightGreenBackground1";
 
 // @public (undocumented)
-export const colorPaletteLightGreenBackground2: CSSDesignToken<string>;
+export const colorPaletteLightGreenBackground2 = "--colorPaletteLightGreenBackground2";
 
 // @public (undocumented)
-export const colorPaletteLightGreenBackground3: CSSDesignToken<string>;
+export const colorPaletteLightGreenBackground3 = "--colorPaletteLightGreenBackground3";
 
 // @public (undocumented)
-export const colorPaletteLightGreenBorder1: CSSDesignToken<string>;
+export const colorPaletteLightGreenBorder1 = "--colorPaletteLightGreenBorder1";
 
 // @public (undocumented)
-export const colorPaletteLightGreenBorder2: CSSDesignToken<string>;
+export const colorPaletteLightGreenBorder2 = "--colorPaletteLightGreenBorder2";
 
 // @public (undocumented)
-export const colorPaletteLightGreenBorderActive: CSSDesignToken<string>;
+export const colorPaletteLightGreenBorderActive = "--colorPaletteLightGreenBorderActive";
 
 // @public (undocumented)
-export const colorPaletteLightGreenForeground1: CSSDesignToken<string>;
+export const colorPaletteLightGreenForeground1 = "--colorPaletteLightGreenForeground1";
 
 // @public (undocumented)
-export const colorPaletteLightGreenForeground2: CSSDesignToken<string>;
+export const colorPaletteLightGreenForeground2 = "--colorPaletteLightGreenForeground2";
 
 // @public (undocumented)
-export const colorPaletteLightGreenForeground3: CSSDesignToken<string>;
+export const colorPaletteLightGreenForeground3 = "--colorPaletteLightGreenForeground3";
 
 // @public (undocumented)
-export const colorPaletteLightTealBackground2: CSSDesignToken<string>;
+export const colorPaletteLightTealBackground2 = "--colorPaletteLightTealBackground2";
 
 // @public (undocumented)
-export const colorPaletteLightTealBorderActive: CSSDesignToken<string>;
+export const colorPaletteLightTealBorderActive = "--colorPaletteLightTealBorderActive";
 
 // @public (undocumented)
-export const colorPaletteLightTealForeground2: CSSDesignToken<string>;
+export const colorPaletteLightTealForeground2 = "--colorPaletteLightTealForeground2";
 
 // @public (undocumented)
-export const colorPaletteLilacBackground2: CSSDesignToken<string>;
+export const colorPaletteLilacBackground2 = "--colorPaletteLilacBackground2";
 
 // @public (undocumented)
-export const colorPaletteLilacBorderActive: CSSDesignToken<string>;
+export const colorPaletteLilacBorderActive = "--colorPaletteLilacBorderActive";
 
 // @public (undocumented)
-export const colorPaletteLilacForeground2: CSSDesignToken<string>;
+export const colorPaletteLilacForeground2 = "--colorPaletteLilacForeground2";
 
 // @public (undocumented)
-export const colorPaletteMagentaBackground2: CSSDesignToken<string>;
+export const colorPaletteMagentaBackground2 = "--colorPaletteMagentaBackground2";
 
 // @public (undocumented)
-export const colorPaletteMagentaBorderActive: CSSDesignToken<string>;
+export const colorPaletteMagentaBorderActive = "--colorPaletteMagentaBorderActive";
 
 // @public (undocumented)
-export const colorPaletteMagentaForeground2: CSSDesignToken<string>;
+export const colorPaletteMagentaForeground2 = "--colorPaletteMagentaForeground2";
 
 // @public (undocumented)
-export const colorPaletteMarigoldBackground1: CSSDesignToken<string>;
+export const colorPaletteMarigoldBackground1 = "--colorPaletteMarigoldBackground1";
 
 // @public (undocumented)
-export const colorPaletteMarigoldBackground2: CSSDesignToken<string>;
+export const colorPaletteMarigoldBackground2 = "--colorPaletteMarigoldBackground2";
 
 // @public (undocumented)
-export const colorPaletteMarigoldBackground3: CSSDesignToken<string>;
+export const colorPaletteMarigoldBackground3 = "--colorPaletteMarigoldBackground3";
 
 // @public (undocumented)
-export const colorPaletteMarigoldBorder1: CSSDesignToken<string>;
+export const colorPaletteMarigoldBorder1 = "--colorPaletteMarigoldBorder1";
 
 // @public (undocumented)
-export const colorPaletteMarigoldBorder2: CSSDesignToken<string>;
+export const colorPaletteMarigoldBorder2 = "--colorPaletteMarigoldBorder2";
 
 // @public (undocumented)
-export const colorPaletteMarigoldBorderActive: CSSDesignToken<string>;
+export const colorPaletteMarigoldBorderActive = "--colorPaletteMarigoldBorderActive";
 
 // @public (undocumented)
-export const colorPaletteMarigoldForeground1: CSSDesignToken<string>;
+export const colorPaletteMarigoldForeground1 = "--colorPaletteMarigoldForeground1";
 
 // @public (undocumented)
-export const colorPaletteMarigoldForeground2: CSSDesignToken<string>;
+export const colorPaletteMarigoldForeground2 = "--colorPaletteMarigoldForeground2";
 
 // @public (undocumented)
-export const colorPaletteMarigoldForeground3: CSSDesignToken<string>;
+export const colorPaletteMarigoldForeground3 = "--colorPaletteMarigoldForeground3";
 
 // @public (undocumented)
-export const colorPaletteMinkBackground2: CSSDesignToken<string>;
+export const colorPaletteMinkBackground2 = "--colorPaletteMinkBackground2";
 
 // @public (undocumented)
-export const colorPaletteMinkBorderActive: CSSDesignToken<string>;
+export const colorPaletteMinkBorderActive = "--colorPaletteMinkBorderActive";
 
 // @public (undocumented)
-export const colorPaletteMinkForeground2: CSSDesignToken<string>;
+export const colorPaletteMinkForeground2 = "--colorPaletteMinkForeground2";
 
 // @public (undocumented)
-export const colorPaletteNavyBackground2: CSSDesignToken<string>;
+export const colorPaletteNavyBackground2 = "--colorPaletteNavyBackground2";
 
 // @public (undocumented)
-export const colorPaletteNavyBorderActive: CSSDesignToken<string>;
+export const colorPaletteNavyBorderActive = "--colorPaletteNavyBorderActive";
 
 // @public (undocumented)
-export const colorPaletteNavyForeground2: CSSDesignToken<string>;
+export const colorPaletteNavyForeground2 = "--colorPaletteNavyForeground2";
 
 // @public (undocumented)
-export const colorPalettePeachBackground2: CSSDesignToken<string>;
+export const colorPalettePeachBackground2 = "--colorPalettePeachBackground2";
 
 // @public (undocumented)
-export const colorPalettePeachBorderActive: CSSDesignToken<string>;
+export const colorPalettePeachBorderActive = "--colorPalettePeachBorderActive";
 
 // @public (undocumented)
-export const colorPalettePeachForeground2: CSSDesignToken<string>;
+export const colorPalettePeachForeground2 = "--colorPalettePeachForeground2";
 
 // @public (undocumented)
-export const colorPalettePinkBackground2: CSSDesignToken<string>;
+export const colorPalettePinkBackground2 = "--colorPalettePinkBackground2";
 
 // @public (undocumented)
-export const colorPalettePinkBorderActive: CSSDesignToken<string>;
+export const colorPalettePinkBorderActive = "--colorPalettePinkBorderActive";
 
 // @public (undocumented)
-export const colorPalettePinkForeground2: CSSDesignToken<string>;
+export const colorPalettePinkForeground2 = "--colorPalettePinkForeground2";
 
 // @public (undocumented)
-export const colorPalettePlatinumBackground2: CSSDesignToken<string>;
+export const colorPalettePlatinumBackground2 = "--colorPalettePlatinumBackground2";
 
 // @public (undocumented)
-export const colorPalettePlatinumBorderActive: CSSDesignToken<string>;
+export const colorPalettePlatinumBorderActive = "--colorPalettePlatinumBorderActive";
 
 // @public (undocumented)
-export const colorPalettePlatinumForeground2: CSSDesignToken<string>;
+export const colorPalettePlatinumForeground2 = "--colorPalettePlatinumForeground2";
 
 // @public (undocumented)
-export const colorPalettePlumBackground2: CSSDesignToken<string>;
+export const colorPalettePlumBackground2 = "--colorPalettePlumBackground2";
 
 // @public (undocumented)
-export const colorPalettePlumBorderActive: CSSDesignToken<string>;
+export const colorPalettePlumBorderActive = "--colorPalettePlumBorderActive";
 
 // @public (undocumented)
-export const colorPalettePlumForeground2: CSSDesignToken<string>;
+export const colorPalettePlumForeground2 = "--colorPalettePlumForeground2";
 
 // @public (undocumented)
-export const colorPalettePumpkinBackground2: CSSDesignToken<string>;
+export const colorPalettePumpkinBackground2 = "--colorPalettePumpkinBackground2";
 
 // @public (undocumented)
-export const colorPalettePumpkinBorderActive: CSSDesignToken<string>;
+export const colorPalettePumpkinBorderActive = "--colorPalettePumpkinBorderActive";
 
 // @public (undocumented)
-export const colorPalettePumpkinForeground2: CSSDesignToken<string>;
+export const colorPalettePumpkinForeground2 = "--colorPalettePumpkinForeground2";
 
 // @public (undocumented)
-export const colorPalettePurpleBackground2: CSSDesignToken<string>;
+export const colorPalettePurpleBackground2 = "--colorPalettePurpleBackground2";
 
 // @public (undocumented)
-export const colorPalettePurpleBorderActive: CSSDesignToken<string>;
+export const colorPalettePurpleBorderActive = "--colorPalettePurpleBorderActive";
 
 // @public (undocumented)
-export const colorPalettePurpleForeground2: CSSDesignToken<string>;
+export const colorPalettePurpleForeground2 = "--colorPalettePurpleForeground2";
 
 // @public (undocumented)
-export const colorPaletteRedBackground1: CSSDesignToken<string>;
+export const colorPaletteRedBackground1 = "--colorPaletteRedBackground1";
 
 // @public (undocumented)
-export const colorPaletteRedBackground2: CSSDesignToken<string>;
+export const colorPaletteRedBackground2 = "--colorPaletteRedBackground2";
 
 // @public (undocumented)
-export const colorPaletteRedBackground3: CSSDesignToken<string>;
+export const colorPaletteRedBackground3 = "--colorPaletteRedBackground3";
 
 // @public (undocumented)
-export const colorPaletteRedBorder1: CSSDesignToken<string>;
+export const colorPaletteRedBorder1 = "--colorPaletteRedBorder1";
 
 // @public (undocumented)
-export const colorPaletteRedBorder2: CSSDesignToken<string>;
+export const colorPaletteRedBorder2 = "--colorPaletteRedBorder2";
 
 // @public (undocumented)
-export const colorPaletteRedBorderActive: CSSDesignToken<string>;
+export const colorPaletteRedBorderActive = "--colorPaletteRedBorderActive";
 
 // @public (undocumented)
-export const colorPaletteRedForeground1: CSSDesignToken<string>;
+export const colorPaletteRedForeground1 = "--colorPaletteRedForeground1";
 
 // @public (undocumented)
-export const colorPaletteRedForeground2: CSSDesignToken<string>;
+export const colorPaletteRedForeground2 = "--colorPaletteRedForeground2";
 
 // @public (undocumented)
-export const colorPaletteRedForeground3: CSSDesignToken<string>;
+export const colorPaletteRedForeground3 = "--colorPaletteRedForeground3";
 
 // @public (undocumented)
-export const colorPaletteRedForegroundInverted: CSSDesignToken<string>;
+export const colorPaletteRedForegroundInverted = "--colorPaletteRedForegroundInverted";
 
 // @public (undocumented)
-export const colorPaletteRoyalBlueBackground2: CSSDesignToken<string>;
+export const colorPaletteRoyalBlueBackground2 = "--colorPaletteRoyalBlueBackground2";
 
 // @public (undocumented)
-export const colorPaletteRoyalBlueBorderActive: CSSDesignToken<string>;
+export const colorPaletteRoyalBlueBorderActive = "--colorPaletteRoyalBlueBorderActive";
 
 // @public (undocumented)
-export const colorPaletteRoyalBlueForeground2: CSSDesignToken<string>;
+export const colorPaletteRoyalBlueForeground2 = "--colorPaletteRoyalBlueForeground2";
 
 // @public (undocumented)
-export const colorPaletteSeafoamBackground2: CSSDesignToken<string>;
+export const colorPaletteSeafoamBackground2 = "--colorPaletteSeafoamBackground2";
 
 // @public (undocumented)
-export const colorPaletteSeafoamBorderActive: CSSDesignToken<string>;
+export const colorPaletteSeafoamBorderActive = "--colorPaletteSeafoamBorderActive";
 
 // @public (undocumented)
-export const colorPaletteSeafoamForeground2: CSSDesignToken<string>;
+export const colorPaletteSeafoamForeground2 = "--colorPaletteSeafoamForeground2";
 
 // @public (undocumented)
-export const colorPaletteSteelBackground2: CSSDesignToken<string>;
+export const colorPaletteSteelBackground2 = "--colorPaletteSteelBackground2";
 
 // @public (undocumented)
-export const colorPaletteSteelBorderActive: CSSDesignToken<string>;
+export const colorPaletteSteelBorderActive = "--colorPaletteSteelBorderActive";
 
 // @public (undocumented)
-export const colorPaletteSteelForeground2: CSSDesignToken<string>;
+export const colorPaletteSteelForeground2 = "--colorPaletteSteelForeground2";
 
 // @public (undocumented)
-export const colorPaletteTealBackground2: CSSDesignToken<string>;
+export const colorPaletteTealBackground2 = "--colorPaletteTealBackground2";
 
 // @public (undocumented)
-export const colorPaletteTealBorderActive: CSSDesignToken<string>;
+export const colorPaletteTealBorderActive = "--colorPaletteTealBorderActive";
 
 // @public (undocumented)
-export const colorPaletteTealForeground2: CSSDesignToken<string>;
+export const colorPaletteTealForeground2 = "--colorPaletteTealForeground2";
 
 // @public (undocumented)
-export const colorPaletteYellowBackground1: CSSDesignToken<string>;
+export const colorPaletteYellowBackground1 = "--colorPaletteYellowBackground1";
 
 // @public (undocumented)
-export const colorPaletteYellowBackground2: CSSDesignToken<string>;
+export const colorPaletteYellowBackground2 = "--colorPaletteYellowBackground2";
 
 // @public (undocumented)
-export const colorPaletteYellowBackground3: CSSDesignToken<string>;
+export const colorPaletteYellowBackground3 = "--colorPaletteYellowBackground3";
 
 // @public (undocumented)
-export const colorPaletteYellowBorder1: CSSDesignToken<string>;
+export const colorPaletteYellowBorder1 = "--colorPaletteYellowBorder1";
 
 // @public (undocumented)
-export const colorPaletteYellowBorder2: CSSDesignToken<string>;
+export const colorPaletteYellowBorder2 = "--colorPaletteYellowBorder2";
 
 // @public (undocumented)
-export const colorPaletteYellowBorderActive: CSSDesignToken<string>;
+export const colorPaletteYellowBorderActive = "--colorPaletteYellowBorderActive";
 
 // @public (undocumented)
-export const colorPaletteYellowForeground1: CSSDesignToken<string>;
+export const colorPaletteYellowForeground1 = "--colorPaletteYellowForeground1";
 
 // @public (undocumented)
-export const colorPaletteYellowForeground2: CSSDesignToken<string>;
+export const colorPaletteYellowForeground2 = "--colorPaletteYellowForeground2";
 
 // @public (undocumented)
-export const colorPaletteYellowForeground3: CSSDesignToken<string>;
+export const colorPaletteYellowForeground3 = "--colorPaletteYellowForeground3";
 
 // @public (undocumented)
-export const colorPaletteYellowForegroundInverted: CSSDesignToken<string>;
+export const colorPaletteYellowForegroundInverted = "--colorPaletteYellowForegroundInverted";
 
 // @public (undocumented)
-export const colorScrollbarOverlay: CSSDesignToken<string>;
+export const colorScrollbarOverlay = "--colorScrollbarOverlay";
 
 // @public (undocumented)
-export const colorStrokeFocus1: CSSDesignToken<string>;
+export const colorStrokeFocus1 = "--colorStrokeFocus1";
 
 // @public (undocumented)
-export const colorStrokeFocus2: CSSDesignToken<string>;
+export const colorStrokeFocus2 = "--colorStrokeFocus2";
 
 // @public (undocumented)
-export const colorSubtleBackground: CSSDesignToken<string>;
+export const colorSubtleBackground = "--colorSubtleBackground";
 
 // @public (undocumented)
-export const colorSubtleBackgroundHover: CSSDesignToken<string>;
+export const colorSubtleBackgroundHover = "--colorSubtleBackgroundHover";
 
 // @public (undocumented)
-export const colorSubtleBackgroundInverted: CSSDesignToken<string>;
+export const colorSubtleBackgroundInverted = "--colorSubtleBackgroundInverted";
 
 // @public (undocumented)
-export const colorSubtleBackgroundInvertedHover: CSSDesignToken<string>;
+export const colorSubtleBackgroundInvertedHover = "--colorSubtleBackgroundInvertedHover";
 
 // @public (undocumented)
-export const colorSubtleBackgroundInvertedPressed: CSSDesignToken<string>;
+export const colorSubtleBackgroundInvertedPressed = "--colorSubtleBackgroundInvertedPressed";
 
 // @public (undocumented)
-export const colorSubtleBackgroundInvertedSelected: CSSDesignToken<string>;
+export const colorSubtleBackgroundInvertedSelected = "--colorSubtleBackgroundInvertedSelected";
 
 // @public (undocumented)
-export const colorSubtleBackgroundLightAlphaHover: CSSDesignToken<string>;
+export const colorSubtleBackgroundLightAlphaHover = "--colorSubtleBackgroundLightAlphaHover";
 
 // @public (undocumented)
-export const colorSubtleBackgroundLightAlphaPressed: CSSDesignToken<string>;
+export const colorSubtleBackgroundLightAlphaPressed = "--colorSubtleBackgroundLightAlphaPressed";
 
 // @public (undocumented)
-export const colorSubtleBackgroundLightAlphaSelected: CSSDesignToken<string>;
+export const colorSubtleBackgroundLightAlphaSelected = "--colorSubtleBackgroundLightAlphaSelected";
 
 // @public (undocumented)
-export const colorSubtleBackgroundPressed: CSSDesignToken<string>;
+export const colorSubtleBackgroundPressed = "--colorSubtleBackgroundPressed";
 
 // @public (undocumented)
-export const colorSubtleBackgroundSelected: CSSDesignToken<string>;
+export const colorSubtleBackgroundSelected = "--colorSubtleBackgroundSelected";
 
 // @public (undocumented)
-export const colorTransparentBackground: CSSDesignToken<string>;
+export const colorTransparentBackground = "--colorTransparentBackground";
 
 // @public (undocumented)
-export const colorTransparentBackgroundHover: CSSDesignToken<string>;
+export const colorTransparentBackgroundHover = "--colorTransparentBackgroundHover";
 
 // @public (undocumented)
-export const colorTransparentBackgroundPressed: CSSDesignToken<string>;
+export const colorTransparentBackgroundPressed = "--colorTransparentBackgroundPressed";
 
 // @public (undocumented)
-export const colorTransparentBackgroundSelected: CSSDesignToken<string>;
+export const colorTransparentBackgroundSelected = "--colorTransparentBackgroundSelected";
 
 // @public (undocumented)
-export const colorTransparentStroke: CSSDesignToken<string>;
+export const colorTransparentStroke = "--colorTransparentStroke";
 
 // @public (undocumented)
-export const colorTransparentStrokeDisabled: CSSDesignToken<string>;
+export const colorTransparentStrokeDisabled = "--colorTransparentStrokeDisabled";
 
 // @public (undocumented)
-export const colorTransparentStrokeInteractive: CSSDesignToken<string>;
+export const colorTransparentStrokeInteractive = "--colorTransparentStrokeInteractive";
 
 // @public
 export class CompoundButton extends Button {
@@ -1529,31 +1528,64 @@ export const CounterBadgeStyles: ElementStyles;
 export const CounterBadgeTemplate: ElementViewTemplate<CounterBadge>;
 
 // @public (undocumented)
-export const curveAccelerateMax: CSSDesignToken<string>;
+export const curveAccelerateMax = "--curveAccelerateMax";
 
 // @public (undocumented)
-export const curveAccelerateMid: CSSDesignToken<string>;
+export const curveAccelerateMid = "--curveAccelerateMid";
 
 // @public (undocumented)
-export const curveAccelerateMin: CSSDesignToken<string>;
+export const curveAccelerateMin = "--curveAccelerateMin";
 
 // @public (undocumented)
-export const curveDecelerateMax: CSSDesignToken<string>;
+export const curveDecelerateMax = "--curveDecelerateMax";
 
 // @public (undocumented)
-export const curveDecelerateMid: CSSDesignToken<string>;
+export const curveDecelerateMid = "--curveDecelerateMid";
 
 // @public (undocumented)
-export const curveDecelerateMin: CSSDesignToken<string>;
+export const curveDecelerateMin = "--curveDecelerateMin";
 
 // @public (undocumented)
-export const curveEasyEase: CSSDesignToken<string>;
+export const curveEasyEase = "--curveEasyEase";
 
 // @public (undocumented)
-export const curveEasyEaseMax: CSSDesignToken<string>;
+export const curveEasyEaseMax = "--curveEasyEaseMax";
 
 // @public (undocumented)
-export const curveLinear: CSSDesignToken<string>;
+export const curveLinear = "--curveLinear";
+
+// @public
+export class Dialog extends FASTElement {
+    ariaDescribedby?: string;
+    ariaLabelledby?: string;
+    connectedCallback(): void;
+    defaultTitleAction?: Button;
+    dialog: HTMLDialogElement;
+    disconnectedCallback(): void;
+    dismiss(): void;
+    handleClick(event: Event): boolean;
+    handleKeydown: (e: KeyboardEvent) => boolean | void;
+    hide(dismissed?: boolean): void;
+    // Warning: (ae-forgotten-export) The symbol "DialogModalType" needs to be exported by the entry point index.d.ts
+    modalType: DialogModalType;
+    modalTypeChanged(oldValue: DialogModalType, newValue: DialogModalType): void;
+    noTitleAction: boolean;
+    onOpenChangeEvent: (dismissed?: boolean) => void;
+    open: boolean;
+    openChanged(oldValue: boolean, newValue: boolean): void;
+    setComponent(): void;
+    show(): void;
+    titleAction: HTMLElement[];
+}
+
+// @public
+export const DialogDefinition: FASTElementDefinition<typeof Dialog>;
+
+// @public
+export const DialogStyles: ElementStyles;
+
+// @public
+export const DialogTemplate: ElementViewTemplate<Dialog>;
 
 // @public
 export class Divider extends FASTDivider {
@@ -1597,25 +1629,25 @@ export const DividerStyles: ElementStyles;
 export const DividerTemplate: ElementViewTemplate<Divider>;
 
 // @public (undocumented)
-export const durationFast: CSSDesignToken<string>;
+export const durationFast = "--durationFast";
 
 // @public (undocumented)
-export const durationFaster: CSSDesignToken<string>;
+export const durationFaster = "--durationFaster";
 
 // @public (undocumented)
-export const durationNormal: CSSDesignToken<string>;
+export const durationNormal = "--durationNormal";
 
 // @public (undocumented)
-export const durationSlow: CSSDesignToken<string>;
+export const durationSlow = "--durationSlow";
 
 // @public (undocumented)
-export const durationSlower: CSSDesignToken<string>;
+export const durationSlower = "--durationSlower";
 
 // @public (undocumented)
-export const durationUltraFast: CSSDesignToken<string>;
+export const durationUltraFast = "--durationUltraFast";
 
 // @public (undocumented)
-export const durationUltraSlow: CSSDesignToken<string>;
+export const durationUltraSlow = "--durationUltraSlow";
 
 // @public (undocumented)
 export const FluentDesignSystem: Readonly<{
@@ -1625,55 +1657,55 @@ export const FluentDesignSystem: Readonly<{
 }>;
 
 // @public (undocumented)
-export const fontFamilyBase: CSSDesignToken<string>;
+export const fontFamilyBase = "--fontFamilyBase";
 
 // @public (undocumented)
-export const fontFamilyMonospace: CSSDesignToken<string>;
+export const fontFamilyMonospace = "--fontFamilyMonospace";
 
 // @public (undocumented)
-export const fontFamilyNumeric: CSSDesignToken<string>;
+export const fontFamilyNumeric = "--fontFamilyNumeric";
 
 // @public (undocumented)
-export const fontSizeBase100: CSSDesignToken<string>;
+export const fontSizeBase100 = "--fontSizeBase100";
 
 // @public (undocumented)
-export const fontSizeBase200: CSSDesignToken<string>;
+export const fontSizeBase200 = "--fontSizeBase200";
 
 // @public (undocumented)
-export const fontSizeBase300: CSSDesignToken<string>;
+export const fontSizeBase300 = "--fontSizeBase300";
 
 // @public (undocumented)
-export const fontSizeBase400: CSSDesignToken<string>;
+export const fontSizeBase400 = "--fontSizeBase400";
 
 // @public (undocumented)
-export const fontSizeBase500: CSSDesignToken<string>;
+export const fontSizeBase500 = "--fontSizeBase500";
 
 // @public (undocumented)
-export const fontSizeBase600: CSSDesignToken<string>;
+export const fontSizeBase600 = "--fontSizeBase600";
 
 // @public (undocumented)
-export const fontSizeHero1000: CSSDesignToken<string>;
+export const fontSizeHero1000 = "--fontSizeHero1000";
 
 // @public (undocumented)
-export const fontSizeHero700: CSSDesignToken<string>;
+export const fontSizeHero700 = "--fontSizeHero700";
 
 // @public (undocumented)
-export const fontSizeHero800: CSSDesignToken<string>;
+export const fontSizeHero800 = "--fontSizeHero800";
 
 // @public (undocumented)
-export const fontSizeHero900: CSSDesignToken<string>;
+export const fontSizeHero900 = "--fontSizeHero900";
 
 // @public (undocumented)
-export const fontWeightBold: CSSDesignToken<string>;
+export const fontWeightBold = "--fontWeightBold";
 
 // @public (undocumented)
-export const fontWeightMedium: CSSDesignToken<string>;
+export const fontWeightMedium = "--fontWeightMedium";
 
 // @public (undocumented)
-export const fontWeightRegular: CSSDesignToken<string>;
+export const fontWeightRegular = "--fontWeightRegular";
 
 // @public (undocumented)
-export const fontWeightSemibold: CSSDesignToken<string>;
+export const fontWeightSemibold = "--fontWeightSemibold";
 
 // @public
 class Image_2 extends FASTElement {
@@ -1736,34 +1768,65 @@ export const LabelStyles: ElementStyles;
 export const LabelTemplate: ElementViewTemplate<Label>;
 
 // @public (undocumented)
-export const lineHeightBase100: CSSDesignToken<string>;
+export const lineHeightBase100 = "--lineHeightBase100";
 
 // @public (undocumented)
-export const lineHeightBase200: CSSDesignToken<string>;
+export const lineHeightBase200 = "--lineHeightBase200";
 
 // @public (undocumented)
-export const lineHeightBase300: CSSDesignToken<string>;
+export const lineHeightBase300 = "--lineHeightBase300";
 
 // @public (undocumented)
-export const lineHeightBase400: CSSDesignToken<string>;
+export const lineHeightBase400 = "--lineHeightBase400";
 
 // @public (undocumented)
-export const lineHeightBase500: CSSDesignToken<string>;
+export const lineHeightBase500 = "--lineHeightBase500";
 
 // @public (undocumented)
-export const lineHeightBase600: CSSDesignToken<string>;
+export const lineHeightBase600 = "--lineHeightBase600";
 
 // @public (undocumented)
-export const lineHeightHero1000: CSSDesignToken<string>;
+export const lineHeightHero1000 = "--lineHeightHero1000";
 
 // @public (undocumented)
-export const lineHeightHero700: CSSDesignToken<string>;
+export const lineHeightHero700 = "--lineHeightHero700";
 
 // @public (undocumented)
-export const lineHeightHero800: CSSDesignToken<string>;
+export const lineHeightHero800 = "--lineHeightHero800";
 
 // @public (undocumented)
-export const lineHeightHero900: CSSDesignToken<string>;
+export const lineHeightHero900 = "--lineHeightHero900";
+
+// @public
+export class Menu extends FASTElement {
+    cleanup?: () => void;
+    closeMenu: () => void;
+    closeOnScroll?: boolean;
+    closeOnScrollChanged(oldValue: boolean, newValue: boolean): void;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    focusMenuList(): void;
+    focusTrigger(): void;
+    handleMenuKeydown(e: KeyboardEvent): boolean | void;
+    handleTriggerKeydown: (e: KeyboardEvent) => boolean | void;
+    open: boolean;
+    openChanged(oldValue: boolean, newValue: boolean): void;
+    openMenu: (e?: Event) => void;
+    openOnContext?: boolean;
+    openOnContextChanged(oldValue: boolean, newValue: boolean): void;
+    openOnHover?: boolean;
+    openOnHoverChanged(oldValue: boolean, newValue: boolean): void;
+    persistOnItemClick?: boolean;
+    persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void;
+    // @internal
+    positioningContainer?: HTMLElement;
+    setComponent(): void;
+    protected setPositioning(): void;
+    protected setPositioningTask: () => void;
+    slottedMenuList: MenuList[];
+    slottedTriggers: HTMLElement[];
+    toggleMenu: () => void;
+}
 
 // @public
 export class MenuButton extends Button {
@@ -1808,6 +1871,9 @@ export type MenuButtonSize = ValuesOf<typeof MenuButtonSize>;
 export const MenuButtonTemplate: ElementViewTemplate<MenuButton>;
 
 // @public
+export const MenuDefinition: FASTElementDefinition<typeof Menu>;
+
+// @public
 export class MenuItem extends FASTMenuItem {
 }
 
@@ -1839,6 +1905,12 @@ export const MenuListStyles: ElementStyles;
 
 // @public (undocumented)
 export const MenuListTemplate: ElementViewTemplate<MenuList>;
+
+// @public
+export const MenuStyles: ElementStyles;
+
+// @public (undocumented)
+export const MenuTemplate: ElementViewTemplate<Menu>;
 
 // @public
 class ProgressBar_2 extends FASTProgress {
@@ -1918,43 +1990,43 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 export const setTheme: (theme: Theme) => void;
 
 // @public (undocumented)
-export const setThemeFor: (element: FASTElement, theme: Theme) => void;
+export const setThemeFor: (element: HTMLElement, theme: Theme) => void;
 
 // @public (undocumented)
-export const shadow16: CSSDesignToken<string>;
+export const shadow16 = "--shadow16";
 
 // @public (undocumented)
-export const shadow16Brand: CSSDesignToken<string>;
+export const shadow16Brand = "--shadow16Brand";
 
 // @public (undocumented)
-export const shadow2: CSSDesignToken<string>;
+export const shadow2 = "--shadow2";
 
 // @public (undocumented)
-export const shadow28: CSSDesignToken<string>;
+export const shadow28 = "--shadow28";
 
 // @public (undocumented)
-export const shadow28Brand: CSSDesignToken<string>;
+export const shadow28Brand = "--shadow28Brand";
 
 // @public (undocumented)
-export const shadow2Brand: CSSDesignToken<string>;
+export const shadow2Brand = "--shadow2Brand";
 
 // @public (undocumented)
-export const shadow4: CSSDesignToken<string>;
+export const shadow4 = "--shadow4";
 
 // @public (undocumented)
-export const shadow4Brand: CSSDesignToken<string>;
+export const shadow4Brand = "--shadow4Brand";
 
 // @public (undocumented)
-export const shadow64: CSSDesignToken<string>;
+export const shadow64 = "--shadow64";
 
 // @public (undocumented)
-export const shadow64Brand: CSSDesignToken<string>;
+export const shadow64Brand = "--shadow64Brand";
 
 // @public (undocumented)
-export const shadow8: CSSDesignToken<string>;
+export const shadow8 = "--shadow8";
 
 // @public (undocumented)
-export const shadow8Brand: CSSDesignToken<string>;
+export const shadow8Brand = "--shadow8Brand";
 
 // @public
 export class Slider extends FASTSlider {
@@ -1988,70 +2060,70 @@ export const SliderStyles: ElementStyles;
 export const SliderTemplate: ElementViewTemplate<FASTSlider>;
 
 // @public (undocumented)
-export const spacingHorizontalL: CSSDesignToken<string>;
+export const spacingHorizontalL = "--spacingHorizontalL";
 
 // @public (undocumented)
-export const spacingHorizontalM: CSSDesignToken<string>;
+export const spacingHorizontalM = "--spacingHorizontalM";
 
 // @public (undocumented)
-export const spacingHorizontalMNudge: CSSDesignToken<string>;
+export const spacingHorizontalMNudge = "--spacingHorizontalMNudge";
 
 // @public (undocumented)
-export const spacingHorizontalNone: CSSDesignToken<string>;
+export const spacingHorizontalNone = "--spacingHorizontalNone";
 
 // @public (undocumented)
-export const spacingHorizontalS: CSSDesignToken<string>;
+export const spacingHorizontalS = "--spacingHorizontalS";
 
 // @public (undocumented)
-export const spacingHorizontalSNudge: CSSDesignToken<string>;
+export const spacingHorizontalSNudge = "--spacingHorizontalSNudge";
 
 // @public (undocumented)
-export const spacingHorizontalXL: CSSDesignToken<string>;
+export const spacingHorizontalXL = "--spacingHorizontalXL";
 
 // @public (undocumented)
-export const spacingHorizontalXS: CSSDesignToken<string>;
+export const spacingHorizontalXS = "--spacingHorizontalXS";
 
 // @public (undocumented)
-export const spacingHorizontalXXL: CSSDesignToken<string>;
+export const spacingHorizontalXXL = "--spacingHorizontalXXL";
 
 // @public (undocumented)
-export const spacingHorizontalXXS: CSSDesignToken<string>;
+export const spacingHorizontalXXS = "--spacingHorizontalXXS";
 
 // @public (undocumented)
-export const spacingHorizontalXXXL: CSSDesignToken<string>;
+export const spacingHorizontalXXXL = "--spacingHorizontalXXXL";
 
 // @public (undocumented)
-export const spacingVerticalL: CSSDesignToken<string>;
+export const spacingVerticalL = "--spacingVerticalL";
 
 // @public (undocumented)
-export const spacingVerticalM: CSSDesignToken<string>;
+export const spacingVerticalM = "--spacingVerticalM";
 
 // @public (undocumented)
-export const spacingVerticalMNudge: CSSDesignToken<string>;
+export const spacingVerticalMNudge = "--spacingVerticalMNudge";
 
 // @public (undocumented)
-export const spacingVerticalNone: CSSDesignToken<string>;
+export const spacingVerticalNone = "--spacingVerticalNone";
 
 // @public (undocumented)
-export const spacingVerticalS: CSSDesignToken<string>;
+export const spacingVerticalS = "--spacingVerticalS";
 
 // @public (undocumented)
-export const spacingVerticalSNudge: CSSDesignToken<string>;
+export const spacingVerticalSNudge = "--spacingVerticalSNudge";
 
 // @public (undocumented)
-export const spacingVerticalXL: CSSDesignToken<string>;
+export const spacingVerticalXL = "--spacingVerticalXL";
 
 // @public (undocumented)
-export const spacingVerticalXS: CSSDesignToken<string>;
+export const spacingVerticalXS = "--spacingVerticalXS";
 
 // @public (undocumented)
-export const spacingVerticalXXL: CSSDesignToken<string>;
+export const spacingVerticalXXL = "--spacingVerticalXXL";
 
 // @public (undocumented)
-export const spacingVerticalXXS: CSSDesignToken<string>;
+export const spacingVerticalXXS = "--spacingVerticalXXS";
 
 // @public (undocumented)
-export const spacingVerticalXXXL: CSSDesignToken<string>;
+export const spacingVerticalXXXL = "--spacingVerticalXXXL";
 
 // @public
 export class Spinner extends FASTProgressRing {
@@ -2092,16 +2164,16 @@ export const SpinnerStyles: ElementStyles;
 export const SpinnerTemplate: ElementViewTemplate<Spinner>;
 
 // @public (undocumented)
-export const strokeWidthThick: CSSDesignToken<string>;
+export const strokeWidthThick = "--strokeWidthThick";
 
 // @public (undocumented)
-export const strokeWidthThicker: CSSDesignToken<string>;
+export const strokeWidthThicker = "--strokeWidthThicker";
 
 // @public (undocumented)
-export const strokeWidthThickest: CSSDesignToken<string>;
+export const strokeWidthThickest = "--strokeWidthThickest";
 
 // @public (undocumented)
-export const strokeWidthThin: CSSDesignToken<string>;
+export const strokeWidthThin = "--strokeWidthThin";
 
 // @public (undocumented)
 const styles: ElementStyles;

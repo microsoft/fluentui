@@ -14,17 +14,17 @@ import { borderRadiusMedium, borderRadiusNone, borderRadiusSmall } from '../them
  */
 export const styles = css`
   :host([shape='square']) {
-    border-radius: ${borderRadiusNone};
+    border-radius: var(${borderRadiusNone});
   }
 
   :host([shape='rounded']) {
-    border-radius: ${borderRadiusMedium};
+    border-radius: var(${borderRadiusMedium});
   }
 
   :host([shape='rounded'][size='tiny']),
   :host([shape='rounded'][size='extra-small']),
   :host([shape='rounded'][size='small']) {
-    border-radius: ${borderRadiusSmall};
+    border-radius: var(${borderRadiusSmall});
   }
 
   ${badgeSizeStyles}

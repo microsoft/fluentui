@@ -46,10 +46,10 @@ export const styles = css`
     user-select: none;
     vertical-align: middle;
     cursor: pointer;
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase300};
-    line-height: ${lineHeightBase300};
-    color: ${colorNeutralForeground3};
+    font-family: var(${fontFamilyBase});
+    font-size: var(${fontSizeBase300});
+    line-height: var(${lineHeightBase300});
+    color: var(${colorNeutralForeground3});
     position: relative;
   }
 
@@ -58,10 +58,10 @@ export const styles = css`
     position: absolute;
     inset: 0px;
     cursor: pointer;
-    border-radius: ${borderRadiusMedium};
+    border-radius: var(${borderRadiusMedium});
     outline: none;
-    border: 2px solid ${colorStrokeFocus1};
-    box-shadow: inset 0 0 0 1px ${colorStrokeFocus2};
+    border: 2px solid var(${colorStrokeFocus1});
+    box-shadow: inset 0 0 0 1px var(${colorStrokeFocus2});
   }
 
   .control {
@@ -72,20 +72,20 @@ export const styles = css`
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    margin: ${spacingVerticalS} ${spacingHorizontalS};
+    margin: var(${spacingVerticalS}) var(${spacingHorizontalS});
     fill: currentcolor;
     height: 16px;
     width: 16px;
-    border: ${strokeWidthThin} solid ${colorNeutralStrokeAccessible};
-    border-radius: ${borderRadiusSmall};
+    border: var(${strokeWidthThin}) solid var(${colorNeutralStrokeAccessible});
+    border-radius: var(${borderRadiusSmall});
     outline: none;
   }
   .label {
     align-self: center;
     cursor: inherit;
-    padding-inline: ${spacingHorizontalS};
-    padding-bottom: ${spacingVerticalS};
-    padding-top: ${spacingVerticalS};
+    padding-inline: var(${spacingHorizontalS});
+    padding-bottom: var(${spacingVerticalS});
+    padding-top: var(${spacingVerticalS});
   }
   .label__hidden {
     display: none;
@@ -95,7 +95,7 @@ export const styles = css`
     display: flex;
     align-items: center;
     justify-content: center;
-    color: ${colorNeutralForegroundInverted};
+    color: var(${colorNeutralForegroundInverted});
     font-size: 12px;
     margin: auto;
     opacity: 0;
@@ -104,42 +104,42 @@ export const styles = css`
     position: absolute;
     width: 8px;
     height: 8px;
-    border-radius: ${borderRadiusSmall};
-    background-color: ${colorCompoundBrandForeground1};
+    border-radius: var(${borderRadiusSmall});
+    background-color: var(${colorCompoundBrandForeground1});
     opacity: 0;
   }
   :host(:hover) {
-    color: ${colorNeutralForeground2};
+    color: var(${colorNeutralForeground2});
   }
   :host(:hover) .control {
-    border-color: ${colorNeutralStrokeAccessibleHover};
+    border-color: var(${colorNeutralStrokeAccessibleHover});
   }
   :host(:hover) .indeterminate-indicator {
-    background-color: ${colorCompoundBrandForeground1Hover};
+    background-color: var(${colorCompoundBrandForeground1Hover});
   }
   :host(:active) .control {
-    border-color: ${colorNeutralStrokeAccessiblePressed};
+    border-color: var(${colorNeutralStrokeAccessiblePressed});
   }
   :host(:active) .indeterminate-indicator {
-    background-color: ${colorCompoundBrandForeground1Pressed};
+    background-color: var(${colorCompoundBrandForeground1Pressed});
   }
   :host([aria-checked='true']),
   :host([aria-checked='mixed']),
   :host(:active) {
-    color: ${colorNeutralForeground1};
+    color: var(${colorNeutralForeground1});
   }
   :host([aria-checked='true']) .control {
-    background-color: ${colorCompoundBrandBackground};
+    background-color: var(${colorCompoundBrandBackground});
   }
   :host([aria-checked='true']:hover) .control {
-    border-color: ${colorCompoundBrandStrokeHover};
-    background-color: ${colorCompoundBrandBackgroundHover};
+    border-color: var(${colorCompoundBrandStrokeHover});
+    background-color: var(${colorCompoundBrandBackgroundHover});
   }
   :host([aria-checked='true']:active) .control {
-    background-color: ${colorCompoundBrandBackgroundPressed};
+    background-color: var(${colorCompoundBrandBackgroundPressed});
   }
   :host([aria-checked='mixed']:hover) .control {
-    border-color: ${colorCompoundBrandStrokeHover};
+    border-color: var(${colorCompoundBrandStrokeHover});
   }
   :host([aria-checked='true']) .checked-indicator,
   :host([aria-checked='mixed']) .indeterminate-indicator {
@@ -147,19 +147,19 @@ export const styles = css`
   }
   :host([aria-checked='true']) .control,
   :host([aria-checked='mixed']) .control {
-    border-color: ${colorCompoundBrandStroke};
+    border-color: var(${colorCompoundBrandStroke});
   }
   :host([aria-checked='mixed']:active) .control,
   :host([aria-checked='true']:active) .control {
-    border-color: ${colorCompoundBrandStrokePressed};
+    border-color: var(${colorCompoundBrandStrokePressed});
   }
   :host([label-position='before']) {
     flex-direction: row-reverse;
   }
   :host([label-position='before']) .label {
-    padding-inline: ${spacingHorizontalS} ${spacingHorizontalXS};
-    padding-top: ${spacingVerticalS};
-    padding-bottom: ${spacingVerticalS};
+    padding-inline: var(${spacingHorizontalS}) var(${spacingHorizontalXS});
+    padding-top: var(${spacingVerticalS});
+    padding-bottom: var(${spacingVerticalS});
   }
   :host([size='large']) .control {
     width: 20px;
@@ -175,22 +175,22 @@ export const styles = css`
   }
   :host([shape='circular']) .control,
   :host([shape='circular']) .indeterminate-indicator {
-    border-radius: ${borderRadiusCircular};
+    border-radius: var(${borderRadiusCircular});
   }
   :host([disabled]) .control,
   :host([aria-checked='mixed'][disabled]) .control,
   :host([aria-checked='true'][disabled]) .control {
-    background-color: ${colorTransparentBackgroundHover};
-    border-color: ${colorNeutralStrokeDisabled};
+    background-color: var(${colorTransparentBackgroundHover});
+    border-color: var(${colorNeutralStrokeDisabled});
   }
   :host([aria-checked='true'][disabled]) .checked-indicator,
   :host([disabled]) ::slotted([slot='start']),
   :host([disabled]) .label,
   :host([aria-checked='mixed'][disabled]) .label,
   :host([aria-checked='true'][disabled]) .label {
-    color: ${colorNeutralForegroundDisabled};
+    color: var(${colorNeutralForegroundDisabled});
   }
   :host([disabled]) .indeterminate-indicator {
-    background-color: ${colorNeutralForegroundDisabled};
+    background-color: var(${colorNeutralForegroundDisabled});
   }
 `;
