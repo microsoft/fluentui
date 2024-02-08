@@ -33,6 +33,8 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
 
   shape?: 'rounded' | 'square' | 'circular';
 
+  spacing?: 'small' | 'medium';
+
   selectedValue?: string;
 };
 
@@ -41,4 +43,4 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
  */
 export type SwatchPickerState = ComponentState<SwatchPickerSlots> &
   SwatchPickerContextValue &
-  Pick<SwatchPickerProps, 'layout' | 'columnCount' | 'size' | 'shape'>;
+  Pick<SwatchPickerProps, 'layout' | 'columnCount' | 'size' | 'shape' | 'spacing'>;

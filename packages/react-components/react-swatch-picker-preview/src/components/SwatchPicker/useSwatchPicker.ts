@@ -1,14 +1,9 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
-import type {
-  SwatchPickerProps,
-  SwatchPickerState,
-  SwatchPickerModel,
-  SwatchPickerSelectData,
-} from './SwatchPicker.types';
+import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { SwatchPickerContextValue } from '../../contexts/swatchPicker';
 import { useSwatchPickerState_unstable } from './useSwatchPickerState';
+import { SwatchPickerNotifySelectedData } from '../../contexts/swatchPicker';
 
 /**
  * Create the state required to render SwatchPicker.
@@ -23,7 +18,7 @@ export const useSwatchPicker_unstable = <T>(
   props: SwatchPickerProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
-  const { layout, role, onColorChange, selectedValue, defaultSelectedValue, ...rest } = props;
+  const { layout, role, onColorChange, selectedValue, defaultSelectedValue, size, shape, spacing, ...rest } = props;
 
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
@@ -37,8 +32,8 @@ export const useSwatchPicker_unstable = <T>(
     initialState: '',
   });
 
-  const notifySelected = useEventCallback((data: SwatchPickerSelectData) => {
-    onColorChange?.(data.selectedValue, { selectedValue: data.selectedValue });
+  const notifySelected = useEventCallback((data: SwatchPickerNotifySelectedData) => {
+    onColorChange?.(data.event, { selectedValue: data.selectedValue });
     setSelectedSwatch(data.selectedValue);
   });
 
@@ -57,6 +52,10 @@ export const useSwatchPicker_unstable = <T>(
     ),
     notifySelected,
     selectedValue: selectedSwatch,
+    layout,
+    size,
+    shape,
+    spacing,
   };
 
   useSwatchPickerState_unstable(state, props);

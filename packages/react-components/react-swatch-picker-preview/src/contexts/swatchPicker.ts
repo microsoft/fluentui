@@ -3,6 +3,7 @@ import {
   SwatchPickerProps,
   SwatchPickerState,
   SwatchPickerSelectData,
+  SwatchPickerSelectEvent,
 } from '../components/SwatchPicker/SwatchPicker.types';
 
 /**
@@ -15,8 +16,10 @@ export type SwatchPickerContextValue = Pick<
   /**
    * Notify the picker about color selection.
    */
-  notifySelected: (data: SwatchPickerSelectData) => void;
+  notifySelected: (data: SwatchPickerNotifySelectedData) => void;
 };
+
+export type SwatchPickerNotifySelectedData = { event: SwatchPickerSelectEvent } & SwatchPickerSelectData;
 
 export const useSwatchPickerContextValues = (state: SwatchPickerState): SwatchPickerContextValues => {
   const { layout, size, shape, columnCount, notifySelected, selectedValue, defaultSelectedValue } = state;

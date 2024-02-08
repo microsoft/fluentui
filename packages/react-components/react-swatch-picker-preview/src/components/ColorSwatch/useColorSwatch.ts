@@ -25,7 +25,7 @@ export const useColorSwatch_unstable = (
   const context = useSwatchPickerContextValue_unstable();
   const notifySelected = context.notifySelected;
   const selected = context.selectedValue === color;
-  const onClick = useEventCallback((event: SwatchPickerSelectEvent) => notifySelected({ selectedValue: color }));
+  const onClick = useEventCallback((event: SwatchPickerSelectEvent) => notifySelected({ event, selectedValue: color }));
 
   const disabledIcon = slot.optional(props.disabledIcon, {
     renderByDefault: true,
@@ -58,6 +58,7 @@ export const useColorSwatch_unstable = (
     size: context.size,
     shape: context.shape,
     selected,
+    color,
   };
 
   state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLButtonElement>());

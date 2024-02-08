@@ -1,7 +1,7 @@
 type Rgb = [number, number, number];
 export function hexToRgb(hex: string): Rgb {
   if (!hex && hex.indexOf('#') === -1) {
-    return hex;
+    return [0, 0, 0]; // TODO fix it
   }
   // Remove the # symbol if present
   hex = hex.replace('#', '');
@@ -30,10 +30,6 @@ export function calculateRelativeLuminance(rgb: Rgb): number {
 
   return relativeLuminance;
 }
-
-// from yellow #ffff00 -> #909000 , in rgb 144
-
-// inside border 7575 -> to rgb 117
 
 // todo add link to formulas
 // return value will be in the range [1, 21]

@@ -1,8 +1,8 @@
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RadioSwatchSlots, RadioSwatchState } from './RadioSwatch.types';
-import { createFocusOutlineStyle, createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+// import { tokens } from '@fluentui/react-theme';
 
 export const radioSwatchClassNames: SlotClassNames<RadioSwatchSlots> = {
   root: 'fui-RadioSwatch',
@@ -72,23 +72,7 @@ const useInputBaseClassName = makeResetStyles({
       boxShadow: `inset 0 0 0 2px #fff`,
     },
   },
-  ':disabled': {
-    // [`& ~ .${radioClassNames.indicator}`]: {
-    //   borderColor: tokens.colorNeutralStrokeDisabled,
-    //   color: tokens.colorNeutralForegroundDisabled,
-    // },
-  },
-  // TODO add focus color
-  // ...createCustomFocusIndicatorStyle({
-  //   borderColor: tokens.colorStrokeFocus2,
-  //   borderRadius: tokens.borderRadiusMedium,
-  //   borderWidth: '1px',
-  //   outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
-  //   boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2}
-  //     inset
-  //   `,
-  //   zIndex: 1,
-  // }),
+  ':disabled': {},
 });
 
 const useSwatchBaseClassName = makeResetStyles({

@@ -3,8 +3,8 @@ import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types'
 
 const { columnCountGrid, cellSize, gridGap } = swatchPickerCSSVars;
 
-export const useSwatchPickerState_unstable = (state: SwatchPickerState, props: SwatchPickerProps<T>) => {
-  const { columnCount = 2, size = 'medium' } = props;
+export const useSwatchPickerState_unstable = (state: SwatchPickerState, props: SwatchPickerProps) => {
+  const { columnCount = 2, size = 'medium', spacing = 'medium' } = props;
 
   const sizeMap = {
     extraSmall: '20px',
@@ -12,10 +12,15 @@ export const useSwatchPickerState_unstable = (state: SwatchPickerState, props: S
     medium: '28px',
     large: '32px',
   };
+
+  const spacingMap = {
+    small: '2px',
+    medium: '4px',
+  };
   const rootVariables = {
     [columnCountGrid]: columnCount,
     [cellSize]: sizeMap[size],
-    [gridGap]: '4px',
+    [gridGap]: spacingMap[spacing],
   };
 
   // Root props

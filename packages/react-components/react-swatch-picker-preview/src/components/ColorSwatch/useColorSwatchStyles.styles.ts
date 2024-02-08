@@ -7,6 +7,7 @@ import { tokens } from '@fluentui/react-components';
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
   root: 'fui-ColorSwatch',
   icon: 'fui-ColorSwatch__icon',
+  disabledIcon: 'fui-ColorSwatch__icon--disabled',
 };
 
 export const swatchCSSVars = {

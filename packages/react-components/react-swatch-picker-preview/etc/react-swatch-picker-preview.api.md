@@ -25,21 +25,23 @@ export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots>;
 
 // @public
 export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & {
-    value?: string;
     disabled?: boolean;
-    selected?: boolean;
-    defaultSelected?: boolean;
-    empty?: boolean;
+    color: string;
+    contrastBorderColor?: string;
+    contrastStateColor?: string;
+    size?: 'extraSmall' | 'small' | 'medium' | 'large';
+    shape?: 'rounded' | 'square' | 'circular';
 };
 
 // @public (undocumented)
 export type ColorSwatchSlots = {
     root: Slot<'button'>;
     icon?: Slot<'span'>;
+    disabledIcon?: Slot<'span'>;
 };
 
 // @public
-export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwatchProps, 'disabled' | 'selected' | 'empty' | 'value'>;
+export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwatchProps, 'disabled' | 'color' | 'shape' | 'size'> & SwatchContextValue;
 
 // @public (undocumented)
 export const imageCSSVars: {
@@ -73,6 +75,8 @@ export type ImageSwatchState = ComponentState<ImageSwatchSlots> & Pick<ImageSwat
 // @public (undocumented)
 export const radioCSSVars: {
     swatchColor: string;
+    stateColor: string;
+    borderColor: string;
 };
 
 // @public
@@ -82,7 +86,7 @@ export const RadioPicker: ForwardRefComponent<RadioPickerProps>;
 export const radioPickerClassNames: SlotClassNames<RadioPickerSlots>;
 
 // @public (undocumented)
-export type RadioPickerContextValue = Pick<RadioPickerProps, 'layout' | 'columnCount' | 'name' | 'value' | 'defaultValue' | 'disabled' | 'required' | 'size' | 'shape' | 'shape'>;
+export type RadioPickerContextValue = Pick<RadioPickerProps, 'layout' | 'columnCount' | 'name' | 'value' | 'defaultValue' | 'disabled' | 'required' | 'size' | 'shape'>;
 
 // @public (undocumented)
 export type RadioPickerContextValues = {
@@ -127,18 +131,21 @@ export type RadioSwatchProps = ComponentProps<RadioSwatchSlots> & Omit<Component
     size?: 'extraSmall' | 'small' | 'medium' | 'large';
     shape?: 'rounded' | 'square' | 'circular';
     label?: string;
+    contrastBorderColor?: string;
+    contrastStateColor?: string;
 };
 
 // @public (undocumented)
 export type RadioSwatchSlots = Omit<RadioSlots, 'indicator' | 'label'> & {
     icon?: Slot<'span'>;
+    swatch?: NonNullable<Slot<'span'>>;
 };
 
 // @public
 export type RadioSwatchState = ComponentState<RadioSwatchSlots> & Pick<RadioSwatchProps, 'value' | 'size' | 'shape'>;
 
 // @public
-export const renderColorSwatch_unstable: (state: ColorSwatchState) => JSX.Element;
+export const renderColorSwatch_unstable: (state: ColorSwatchState, contextValues: SwatchContextValues) => JSX.Element;
 
 // @public
 export const renderImageSwatch_unstable: (state: ImageSwatchState) => JSX.Element;
@@ -150,7 +157,7 @@ export const renderRadioPicker_unstable: (state: RadioPickerState, contextValues
 export const renderRadioSwatch_unstable: (state: RadioSwatchState) => JSX.Element;
 
 // @public
-export const renderSwatchPicker_unstable: (state: SwatchPickerState) => JSX.Element;
+export const renderSwatchPicker_unstable: (state: SwatchPickerState, contextValues: SwatchPickerContextValue) => JSX.Element;
 
 // @public
 export const renderTablePicker_unstable: (state: TablePickerState) => JSX.Element;
@@ -171,11 +178,35 @@ export const SwatchPicker: ForwardRefComponent<SwatchPickerProps>;
 // @public (undocumented)
 export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots>;
 
+// @public (undocumented)
+export const swatchPickerCSSVars: {
+    columnCountGrid: string;
+    cellSize: string;
+    gridGap: string;
+};
+
 // @public
 export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
+    columnCount?: number;
+    defaultSelectedValue?: string;
     layout?: 'grid' | 'row';
+    onColorChange?: (event: SwatchPickerSelectEvent, data: SwatchPickerSelectData) => void;
     size?: 'extraSmall' | 'small' | 'medium' | 'large';
+    shape?: 'rounded' | 'square' | 'circular';
+    spacing?: 'small' | 'medium';
+    selectedValue?: string;
 };
+
+// @public (undocumented)
+export type SwatchPickerSelectData = {
+    selectedValue: string;
+};
+
+// @public (undocumented)
+export type SwatchPickerSelectEvent = React_2.MouseEvent | React_2.KeyboardEvent | React_2.ChangeEvent;
+
+// @public (undocumented)
+export type SwatchPickerSelectEventHandler = (event: SwatchPickerSelectEvent, data: SwatchPickerSelectData) => void;
 
 // @public (undocumented)
 export type SwatchPickerSlots = {
@@ -183,7 +214,7 @@ export type SwatchPickerSlots = {
 };
 
 // @public
-export type SwatchPickerState = ComponentState<SwatchPickerSlots>;
+export type SwatchPickerState = ComponentState<SwatchPickerSlots> & SwatchPickerContextValue & Pick<SwatchPickerProps, 'layout' | 'columnCount' | 'size' | 'shape' | 'spacing'>;
 
 // @public
 export const TablePicker: ForwardRefComponent<TablePickerProps>;
@@ -254,7 +285,7 @@ export const useRadioSwatch_unstable: (props: RadioSwatchProps, ref: React_2.Ref
 export const useRadioSwatchStyles_unstable: (state: RadioSwatchState) => RadioSwatchState;
 
 // @public
-export const useSwatchPicker_unstable: (props: SwatchPickerProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerState;
+export const useSwatchPicker_unstable: <T>(props: SwatchPickerProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerState;
 
 // @public
 export const useSwatchPickerStyles_unstable: (state: SwatchPickerState) => SwatchPickerState;

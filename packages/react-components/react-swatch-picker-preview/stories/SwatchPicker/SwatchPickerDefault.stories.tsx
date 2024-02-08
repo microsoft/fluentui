@@ -3,14 +3,14 @@ import { SwatchPicker, ColorSwatch, SwatchPickerSelectEventHandler } from '@flue
 import { Heart28Filled } from '@fluentui/react-icons';
 
 export const Default = () => {
-  const [selected, setSelected] = React.useState('#fff');
-  const handleSelect: SwatchPickerSelectEventHandler = (event, data) => {
-    setSelected(data.selectedValue);
+  const [selectedColor, setSelectedColor] = React.useState('#fff');
+  const handleSelect: SwatchPickerSelectEventHandler = (_, data) => {
+    setSelectedColor(data.selectedValue);
   };
 
   return (
     <>
-      <SwatchPicker selected={selected} aria-label="SwatchPicker no layout" onColorChange={handleSelect}>
+      <SwatchPicker selectedValue={selectedColor} aria-label="SwatchPicker no layout" onColorChange={handleSelect}>
         <ColorSwatch color="#C11016" aria-label="dark red" role="radio" icon={<Heart28Filled color="#fff" />} />
         <ColorSwatch color="#FF1921" aria-label="red" role="radio" />
         <ColorSwatch color="#FFC12E" aria-label="orange" role="radio" />
@@ -22,7 +22,7 @@ export const Default = () => {
         <ColorSwatch color="#011F5E" aria-label="dark blue" role="radio" />
         <ColorSwatch color="#712F9E" aria-label="purple" role="radio" />
       </SwatchPicker>
-      <div style={{ width: '100px', height: '100px', backgroundColor: selected, border: '1px solid #ccc' }} />
+      <div style={{ width: '100px', height: '100px', backgroundColor: selectedColor, border: '1px solid #ccc' }} />
     </>
   );
 };
