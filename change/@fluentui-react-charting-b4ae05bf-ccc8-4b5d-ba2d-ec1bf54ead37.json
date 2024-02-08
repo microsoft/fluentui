@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Sankey Diagram: Persisting node values when adjusting multiple small node heights",
-  "packageName": "@fluentui/react-charting",
-  "email": "rarthur@microsoft.com",
-  "dependentChangeType": "patch"
-}

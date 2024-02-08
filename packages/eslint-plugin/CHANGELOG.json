@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Thu, 08 Feb 2024 07:37:49 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.4",
+      "version": "1.17.4",
+      "comments": {
+        "none": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "4cfa006aa5f50a397b67ccd29ff0212bf86464b9",
+            "comment": "chore: add internal lint rule, no change to public behavior/api."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Jan 2024 07:29:32 GMT",
       "tag": "@fluentui/eslint-plugin_v1.17.4",
       "version": "1.17.4",
