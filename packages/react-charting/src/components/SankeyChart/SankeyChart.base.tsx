@@ -363,6 +363,8 @@ export function preRenderLayout(
   return { sankey, height, width };
 }
 
+const elipsis = '...';
+
 /**
  * This is used to assign node fillcolors and borderColor cyclically when the user doesnt
  * provide color to  individual node.
@@ -396,24 +398,19 @@ function assignNodeColors(
 }
 
 /**
- * @param text is the text which we are trying to truncate
+ * Takes in the display name for the node and potentially returns a trimmed version of the name.
+ * @param tspan the `tspan` element to use for text visual length measurement
+ * @param text is the text which we will potentially truncate
  * @param rectangleWidth is the width of the rectangle which will contain the text
  * @param padding is the space we need to leave between the rect lines and other text
- * @param nodeWeight is the text if present needs to be accomodate in the same line as text.
- * @returns the truncated text , if truncated given the above parameters.
+ * @returns the name to show on the node which might be the truncated `text` if the `text` is too long
  */
-function truncateText(text: string, rectangleWidth: number, padding: number) {
+function truncateText(tspan: TSpanForTextMeasuring, text: string, rectangleWidth: number, padding: number) {
   // NOTE: This method is the most-expensive in terms of rerendering components.
   const textLengthForNodeName = rectangleWidth - padding; // This can likely be computed once and passed in.
   // The following `select` statement injects a `tempText` element into the DOM. This injection
   // (and subsequent removal) is causing a layout recalculation. This is a performance issue.
   // Note that this code will always inject a `tempText` element, but doesn't always remove it. This is a bug.
-  const tspan = select('.nodeName')
-    .append('text')
-    .attr('class', 'tempText')
-    .attr('font-size', '10')
-    .append('tspan')
-    .text(null);
   if (fitsWithinNode(tspan, text, textLengthForNodeName)) {
     return text;
   }
@@ -431,7 +428,7 @@ function truncateText(text: string, rectangleWidth: number, padding: number) {
       const w = currentNode!.getComputedTextLength();
       if (w >= textLengthForNodeName - elipsisLength) {
         line = line.slice(0, -1);
-        line += '...';
+        line += elipsis;
         break;
       }
     }
@@ -473,15 +470,21 @@ function measureText(tspan: TSpanForTextMeasuring, text: string | number): numbe
 }
 
 function computeElipsisLength(tspan: TSpanForTextMeasuring): number {
-  const measurement = measureText(tspan, '...');
+  const measurement = measureText(tspan, elipsis);
   return measurement === undefined ? 0 : measurement;
 }
 
 function computeNodeAttributes(nodes: SNode[]): ItemValues<RenderedNodeAttributes> {
   const result: ItemValues<RenderedNodeAttributes> = {};
-  const tspan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
+  const weightSpan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
+  const nameSpan = select('.nodeName')
+    .append('text')
+    .attr('class', 'tempText')
+    .attr('font-size', '10')
+    .append('tspan')
+    .text(null);
   nodes.forEach((singleNode: SNode) => {
-    const height = singleNode.y1! - singleNode.y0! > 0 ? singleNode.y1! - singleNode.y0! : 0;
+    const height = Math.max(singleNode.y1! - singleNode.y0!, 0);
     let padding = 8;
     let textLengthForNodeWeight = 0;
 
@@ -491,7 +494,7 @@ function computeNodeAttributes(nodes: SNode[]): ItemValues<RenderedNodeAttribute
       padding = padding + 6;
       // The following `select` statement injects a `tempText` element into the DOM. This injection
       // (and subsequent removal) is causing a layout recalculation. This is a performance issue.
-      const measurement = measureText(tspan, singleNode.actualValue!);
+      const measurement = measureText(weightSpan, singleNode.actualValue!);
       if (measurement !== undefined) {
         textLengthForNodeWeight = measurement;
         padding = padding + textLengthForNodeWeight;
@@ -499,8 +502,8 @@ function computeNodeAttributes(nodes: SNode[]): ItemValues<RenderedNodeAttribute
     }
     // Since the total width of the node is 124 and we are giving margin of 8px from the left .
     // So the actual value on which it will be truncated is 124-8=116.
-    const truncatedname: string = truncateText(singleNode.name, 116, padding);
-    const isTruncated: boolean = truncatedname.slice(-3) === '...';
+    const truncatedname: string = truncateText(nameSpan, singleNode.name, 116, padding);
+    const isTruncated: boolean = truncatedname.slice(-3) === elipsis;
     result[singleNode.nodeId] = {
       reactId: getId('nodeBar'),
       gElementId: getId('nodeGElement'),
@@ -550,19 +553,18 @@ type AreaDataPoint = {
 
 const linkToDataPoints = (d: SankeyLinkWithPositions): [AreaDataPoint, AreaDataPoint] => {
   const halfWidth = d.width * 0.5;
+  const y0 = d.y0;
+  const y1 = d.y1;
   return [
-    { x: d.source.x1, y0: d.y0 + halfWidth, y1: d.y0 - halfWidth },
-    { x: d.target.x0, y0: d.y1 + halfWidth, y1: d.y1 - halfWidth },
+    { x: d.source.x1, y0: y0 + halfWidth, y1: y0 - halfWidth },
+    { x: d.target.x0, y0: y1 + halfWidth, y1: y1 - halfWidth },
   ];
 };
 
-const linkArea = d3Area()
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  .x((p: any) => p.x)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  .y0((p: any) => p.y0)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  .y1((p: any) => p.y1)
+const linkArea = d3Area<AreaDataPoint>()
+  .x((p: AreaDataPoint) => p.x)
+  .y0((p: AreaDataPoint) => p.y0)
+  .y1((p: AreaDataPoint) => p.y1)
   .curve(d3CurveBasis);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -571,8 +573,8 @@ type TooltipDiv = D3Selection<BaseType, unknown, HTMLElement, any>;
 function nodeTextColor(state: Readonly<ISankeyChartState>, singleNode: SNode): string {
   return !(
     !state.selectedState ||
-    (state.selectedState && state.selectedNodes.has(singleNode.index!) && state.selectedNode) ||
-    (state.selectedState && !state.selectedNode)
+    (state.selectedNodes.has(singleNode.index!) && state.selectedNode) ||
+    !state.selectedNode
   )
     ? DEFAULT_TEXT_COLOR
     : NON_SELECTED_TEXT_COLOR;
@@ -859,24 +861,27 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     dataLinks: SLink[],
     linkAttributes: LinkItemValues<RenderedLinkAttributes>,
   ): React.ReactNode[] | undefined {
-    const links: React.ReactNode[] = [];
-
     if (dataLinks) {
       const linkId = this._linkId;
-      dataLinks.forEach((singleLink: SLink, index: number) => {
+      return dataLinks.map((singleLink: SLink, index: number): React.ReactNode => {
         const onMouseOut = () => {
           this._onStreamLeave(singleLink);
         };
         const { reactId } = linkValue(linkAttributes, singleLink);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const dataPoints: Array<any> = linkToDataPoints(singleLink as unknown as SankeyLinkWithPositions);
-        const gradientUrl = `url(#gradient-${linkId}-${index})`;
-        const link = (
-          <g key={`${linkId}-${index}`}>
+        const key = `${linkId}-${index}`;
+        const gradientId = `gradient-${key}`;
+        const gradientUrl = `url(#${gradientId})`;
+        const source = singleLink.source as SNode;
+        const target = singleLink.target as SNode;
+        // TODO: localize the aria-label string
+        return (
+          <g key={key}>
             <defs>
-              <linearGradient id={`gradient-${linkId}-${index}`} x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0" stopColor={(singleLink.source as SNode).color} />
-                <stop offset="100%" stopColor={(singleLink.target as SNode).color} />
+              <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0" stopColor={source.color} />
+                <stop offset="100%" stopColor={target.color} />
               </linearGradient>
             </defs>
             <path
@@ -892,17 +897,14 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               onBlur={this._onBlur}
               fillOpacity={this._getOpacityStream(singleLink)}
               data-is-focusable={true}
-              aria-label={`link from ${(singleLink.source as SNode).name} to ${
-                (singleLink.target as SNode).name
-              } with weight ${singleLink!.unnormalizedValue}`} // TODO: localize this string
+              aria-label={`link from ${source.name} to ${target.name} with weight ${singleLink.unnormalizedValue}`}
               role="img"
             />
           </g>
         );
-        links.push(link);
       });
     }
-    return links;
+    return [];
   }
 
   private _createNodes(
@@ -911,11 +913,10 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     nodeAttributes: ItemValues<RenderedNodeAttributes>,
     tooltipDiv: TooltipDiv,
   ): React.ReactNode[] | undefined {
-    const nodes: React.ReactNode[] = [];
-
     if (dataNodes) {
       const state = this.state;
-      dataNodes.forEach((singleNode: SNode, index: number) => {
+      const textAnchor = this._isRtl ? 'end' : 'start';
+      return dataNodes.map((singleNode: SNode, index: number): React.ReactNode => {
         const onMouseOut = () => {
           this._onLeave(singleNode);
         };
@@ -924,16 +925,19 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           gElementId,
           height,
           trimmed: isTruncated,
-          name: truncatedname,
+          name: truncatedName,
           weightOffset: textLengthForNodeWeight,
         } = nodeAttributes[singleNode.nodeId];
-        const node = (
+        const tooTall = height > MIN_HEIGHT_FOR_DOUBLINE_TYPE;
+        const { name, actualValue, x0, x1, y0 } = singleNode;
+        const textColor = nodeTextColor(state, singleNode);
+        return (
           <g key={index} id={gElementId}>
             <rect
-              x={singleNode.x0}
-              y={singleNode.y0}
+              x={x0}
+              y={y0}
               height={height}
-              width={singleNode.x1! - singleNode.x0!}
+              width={x1! - x0!}
               fill={this._fillNodeColors(singleNode)}
               id={nodeId}
               onMouseOver={this._onHover.bind(this, singleNode)}
@@ -943,52 +947,48 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               strokeWidth="2"
               opacity="1"
               data-is-focusable={true}
-              aria-label={`node ${singleNode.name} with weight ${singleNode.actualValue}`} // TODO: localize this string
+              aria-label={`node ${name} with weight ${actualValue}`} // TODO: localize this string
               role="img"
             />
-            {singleNode.y1! - singleNode.y0! > MIN_HEIGHT_FOR_TYPE && (
+            {height > MIN_HEIGHT_FOR_TYPE && (
               <g className={classNames.nodeTextContainer}>
                 <g className="nodeName">
                   <text
                     id={`${nodeId}-name`}
-                    x={singleNode.x0}
-                    y={singleNode.y0}
+                    x={x0}
+                    y={y0}
                     dy={'1.2em'}
                     dx={'0.4em'}
-                    textAnchor={this._isRtl ? 'end' : 'start'}
+                    textAnchor={textAnchor}
                     fontWeight="regular"
                     aria-hidden="true"
-                    fill={nodeTextColor(state, singleNode)}
+                    fill={textColor}
                     fontSize={10}
-                    onMouseOver={this._showTooltip.bind(this, singleNode.name, isTruncated, tooltipDiv)}
+                    onMouseOver={this._showTooltip.bind(this, name, isTruncated, tooltipDiv)}
                     onMouseOut={this._hideTooltip.bind(this, tooltipDiv)}
                   >
-                    {truncatedname}
+                    {truncatedName}
                   </text>
                 </g>
 
                 <text
-                  x={
-                    height > MIN_HEIGHT_FOR_DOUBLINE_TYPE ? singleNode.x0 : singleNode.x1! - textLengthForNodeWeight - 8
-                  }
-                  y={singleNode.y0}
-                  dy={height > MIN_HEIGHT_FOR_DOUBLINE_TYPE ? '2em' : '1em'}
-                  dx={height > MIN_HEIGHT_FOR_DOUBLINE_TYPE ? '0.4em' : '0em'}
-                  textAnchor={this._isRtl ? 'end' : 'start'}
+                  x={tooTall ? x0 : x1! - textLengthForNodeWeight - 8}
+                  y={y0}
+                  dy={tooTall ? '2em' : '1em'}
+                  dx={tooTall ? '0.4em' : '0em'}
+                  textAnchor={textAnchor}
                   fontWeight="bold"
                   aria-hidden="true"
-                  fill={nodeTextColor(state, singleNode)}
+                  fill={textColor}
                   fontSize={14}
                 >
-                  {singleNode.actualValue}
+                  {actualValue}
                 </text>
               </g>
             )}
           </g>
         );
-        nodes.push(node);
       });
-      return nodes;
     }
   }
 
