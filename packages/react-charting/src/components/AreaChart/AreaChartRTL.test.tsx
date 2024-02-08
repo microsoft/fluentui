@@ -2,18 +2,29 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
-import { ThemeProvider } from '@fluentui/react';
+import { ThemeProvider, resetIds } from '@fluentui/react';
 import { AreaChart, IAreaChartProps } from './index';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
-import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
-import { AreaChartBase } from './AreaChart.base';
+import {
+  forEachTimezone,
+  getByClass,
+  getById,
+  isTimezoneSet,
+  testWithWait,
+  testWithoutWait,
+} from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
+const { Timezone } = require('../../../scripts/constants');
 
 expect.extend(toHaveNoViolations);
-const beforeAll = () => {
-  jest.spyOn(AreaChartBase.prototype as any, '_getAriaLabel').mockReturnValue('08/25/2023');
-};
+
+beforeEach(() => {
+  // When adding a new snapshot test, it's observed that other snapshots may fail due to
+  // components sharing a common global counter for IDs. To prevent this from happening,
+  // we should reset the IDs before each test execution.
+  resetIds();
+});
 
 const chart1Points = [
   {
@@ -253,16 +264,19 @@ describe('Area chart rendering', () => {
     },
   );
 
-  testWithoutWait(
-    'Should render the area chart with date x-axis data',
-    AreaChart,
-    { data: chartDataWithDates },
-    container => {
-      expect(container).toMatchSnapshot();
-    },
-    undefined,
-    beforeAll,
-  );
+  forEachTimezone((tzName, tzIdentifier) => {
+    testWithoutWait(
+      `Should render the area chart with date x-axis data in ${tzName} timezone`,
+      AreaChart,
+      { data: chartDataWithDates },
+      container => {
+        expect(container).toMatchSnapshot();
+      },
+      undefined,
+      undefined,
+      !isTimezoneSet(tzIdentifier),
+    );
+  });
 });
 
 describe('Area chart - Subcomponent Area', () => {
@@ -422,7 +436,7 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Jan ...');
     },
     undefined,
-    beforeAll,
+    undefined,
   );
 
   testWithWait(
@@ -430,11 +444,14 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
     AreaChart,
     { data: chartDataWithDates, rotateXAxisLables: true },
     container => {
+      // FIXME - Bad check. Not the best way to check result from a third party utility.
+      // If there are any changes, the value must be manually adjusted to ensure the test passes.
       // Assert
       expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(39.03658536585366,0)');
     },
     undefined,
-    beforeAll,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
   );
 });
 
@@ -495,6 +512,9 @@ test('Should reflect theme change', () => {
 
 test('Should pass accessibility tests', async () => {
   const { container } = render(<AreaChart data={chartData} />);
-  const axeResults = await axe(container);
+  let axeResults;
+  await act(async () => {
+    axeResults = await axe(container);
+  });
   expect(axeResults).toHaveNoViolations();
-}, 10000);
+});

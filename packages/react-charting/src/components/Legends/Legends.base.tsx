@@ -407,7 +407,6 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
 
   private _getColor(title: string, color: string): string {
     const { theme } = this.props;
-    const { palette } = theme!;
     let legendColor = color;
     // if one or more legends are selected
     if (this._isLegendSelected) {
@@ -417,7 +416,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       }
       // if the given legend is unselected
       else {
-        legendColor = palette.white;
+        legendColor = theme!.semanticColors.buttonBackground;
       }
     }
     // if no legend is selected
@@ -429,7 +428,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       }
       // if there is a hovered legend but the given legend is not the one
       else {
-        legendColor = palette.white;
+        legendColor = theme!.semanticColors.buttonBackground;
       }
     }
     return legendColor;

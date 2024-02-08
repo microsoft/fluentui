@@ -36,7 +36,7 @@
     "@fluentui/react-radio": "^9.1.60",
     "@fluentui/react-tabster": "9.16.0",
     "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.15.4",
+    "@fluentui/react-utilities": "^9.18.0",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },

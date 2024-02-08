@@ -10,6 +10,7 @@ export { WeekNumbers } from './DatePickerWeekNumbers.stories';
 export { DateRange } from './DatePickerDateRange.stories';
 export { DateBoundaries } from './DatePickerDateBoundaries.stories';
 export { CustomDateFormatting } from './DatePickerCustomDateFormatting.stories';
+export { Localized } from './DatePickerLocalized.stories';
 export { ErrorHandling } from './DatePickerErrorHandling.stories';
 export { Controlled } from './DatePickerControlled.stories';
 export { Required } from './DatePickerRequired.stories';

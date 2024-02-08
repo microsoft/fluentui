@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Combobox, makeStyles, Option, shorthands, useId } from '@fluentui/react-components';
-import type { ComboboxProps } from '@fluentui/react-components';
+import { Combobox, makeStyles, shorthands, useComboboxFilter, useId } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -13,50 +12,40 @@ const useStyles = makeStyles({
   },
 });
 
-export const Filtering = (props: Partial<ComboboxProps>) => {
-  const comboId = useId('combo-default');
-  const options = [
-    'Cat',
-    'Caterpillar',
-    'Catfish',
-    'Cheetah',
-    'Chicken',
-    'Cockatiel',
-    'Cow',
-    'Dog',
-    'Dolphin',
-    'Ferret',
-    'Firefly',
-    'Fish',
-    'Fox',
-    'Fox Terrier',
-    'Frog',
-    'Hamster',
-    'Snake',
-  ];
-  const [matchingOptions, setMatchingOptions] = React.useState([...options]);
+const options = [
+  { children: 'Alligator', value: 'Alligator' },
+  { children: 'Bee', value: 'Bee' },
+  { children: 'Bird', value: 'Bird' },
+  { children: 'Cheetah', disabled: true, value: 'Cheetah' },
+  { children: 'Dog', value: 'Dog' },
+  { children: 'Dolphin', value: 'Dolphin' },
+  { children: 'Ferret', value: 'Ferret' },
+  { children: 'Firefly', value: 'Firefly' },
+  { children: 'Fish', value: 'Fish' },
+  { children: 'Goat', value: 'Goat' },
+  { children: 'Horse', value: 'Horse' },
+  { children: 'Lion', value: 'Lion' },
+];
+
+export const Filtering = () => {
+  const comboId = useId();
   const styles = useStyles();
 
-  const onChange: ComboboxProps['onChange'] = event => {
-    const value = event.target.value.trim();
-    const matches = options.filter(option => option.toLowerCase().indexOf(value.toLowerCase()) === 0);
-    setMatchingOptions(matches);
-  };
+  const [query, setQuery] = React.useState<string>('');
+  const children = useComboboxFilter(query, options, {
+    noOptionsMessage: 'No animals match your search.',
+  });
 
   return (
     <div className={styles.root}>
       <label id={comboId}>Best pet</label>
-      <Combobox aria-labelledby={comboId} placeholder="Select an animal" onChange={onChange} {...props}>
-        {matchingOptions.map(option => (
-          <Option key={option} disabled={option === 'Ferret'}>
-            {option}
-          </Option>
-        ))}
-        {matchingOptions.length === 0 ? (
-          <Option key="no-results" text="">
-            No results found
-          </Option>
-        ) : null}
+      <Combobox
+        aria-labelledby={comboId}
+        placeholder="Select an animal"
+        onChange={ev => setQuery(ev.target.value)}
+        value={query}
+      >
+        {children}
       </Combobox>
     </div>
   );
@@ -65,9 +54,11 @@ export const Filtering = (props: Partial<ComboboxProps>) => {
 Filtering.parameters = {
   docs: {
     description: {
-      story:
-        'Filtering based on the user-typed string can be achieved by modifying the child Options directly.' +
-        'We recommend implementing filtering when creating a freeform Combobox.',
+      story: `
+We provide "useComboboxFilter()" hook to filter the options based on the user-typed string. It can be configured for a custom filter function, custom message, and custom render function.           
+
+We recommend using filtering when creating a freeform Combobox.      
+      `.trim(),
     },
   },
 };

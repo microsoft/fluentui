@@ -101,7 +101,6 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
         ref: ref as React.Ref<HTMLDivElement>,
         role: multiselect ? 'menu' : 'listbox',
         'aria-activedescendant': hasComboboxContext ? undefined : activeOption?.id,
-        'aria-multiselectable': multiselect,
         tabIndex: 0,
         ...props,
       }),
