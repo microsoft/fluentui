@@ -23,7 +23,7 @@ export const useSwatchPicker_unstable = <T>(
   props: SwatchPickerProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
-  const { layout, role, onColorChange, selected, defaultSelected, ...rest } = props;
+  const { layout, role, onColorChange, selectedValue, defaultSelectedValue, ...rest } = props;
 
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
@@ -32,15 +32,14 @@ export const useSwatchPicker_unstable = <T>(
   });
 
   const [selectedSwatch, setSelectedSwatch] = useControllableState({
-    state: selected,
-    defaultState: defaultSelected,
+    state: selectedValue,
+    defaultState: defaultSelectedValue,
     initialState: '',
   });
 
   const notifySelected = useEventCallback((data: SwatchPickerSelectData) => {
-    // const selectedUpd = updateOpenItems(data.value, openItems, multiple, collapsible);
     onColorChange?.(data.selectedValue, { selectedValue: data.selectedValue });
-    // setSelected(nextOpenItems);
+    setSelectedSwatch(data.selectedValue);
   });
 
   const state: SwatchPickerState = {
@@ -57,6 +56,7 @@ export const useSwatchPicker_unstable = <T>(
       { elementType: 'div' },
     ),
     notifySelected,
+    selectedValue: selectedSwatch,
   };
 
   useSwatchPickerState_unstable(state, props);

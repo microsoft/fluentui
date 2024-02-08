@@ -20,7 +20,7 @@ export type SwatchPickerSelectEventHandler = (event: SwatchPickerSelectEvent, da
 export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
   columnCount?: number;
 
-  defaultSelected?: string;
+  defaultSelectedValue?: string;
 
   layout?: 'grid' | 'row';
 
@@ -33,7 +33,7 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
 
   shape?: 'rounded' | 'square' | 'circular';
 
-  selected?: string;
+  selectedValue?: string;
 };
 
 /**

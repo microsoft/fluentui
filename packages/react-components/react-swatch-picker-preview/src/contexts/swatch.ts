@@ -27,7 +27,6 @@ export const useSwatchContext_unstable = () => {
 };
 
 export function useSwatchContextValues_unstable(state: ColorSwatchState): SwatchContextValues {
-  // eslint-disable-next-line deprecation/deprecation
   const { selected = false } = state;
   const swatch = React.useMemo<SwatchContextValue>(() => ({ selected }), [selected]);
 

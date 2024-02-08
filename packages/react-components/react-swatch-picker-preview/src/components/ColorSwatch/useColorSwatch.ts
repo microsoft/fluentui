@@ -24,7 +24,7 @@ export const useColorSwatch_unstable = (
 
   const context = useSwatchPickerContextValue_unstable();
   const notifySelected = context.notifySelected;
-  const selected = context.selected === color;
+  const selected = context.selectedValue === color;
   const onClick = useEventCallback((event: SwatchPickerSelectEvent) => notifySelected({ selectedValue: color }));
 
   const disabledIcon = slot.optional(props.disabledIcon, {
