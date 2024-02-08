@@ -369,6 +369,8 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   });
   input.ref = useMergedRefs(input.ref, ref, rootRef);
 
+  // Props to create a semantic but non-focusable button on the element with the click-to-open handler
+  // Used for voice control and touch screen reader accessibility
   const inputLabelledBy = props['aria-labelledby'];
   const inputId = props.id ?? defaultId;
   const iconA11yProps = React.useMemo(
