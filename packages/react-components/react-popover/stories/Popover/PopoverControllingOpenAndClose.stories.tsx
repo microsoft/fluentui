@@ -1,10 +1,14 @@
 import * as React from 'react';
-import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
-import type { PopoverProps } from '@fluentui/react-components';
+import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger, Checkbox } from '@fluentui/react-components';
+import type { CheckboxProps, PopoverProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   contentHeader: {
     marginTop: '0',
+  },
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
   },
 });
 
@@ -20,28 +24,25 @@ const ExampleContent = () => {
 };
 
 export const ControllingOpenAndClose = () => {
+  const styles = useStyles();
   const [open, setOpen] = React.useState(false);
   const handleOpenChange: PopoverProps['onOpenChange'] = (e, data) => setOpen(data.open || false);
 
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setOpen(e.target.checked);
+  const onChange: CheckboxProps['onChange'] = (e, { checked }) => {
+    setOpen(checked as boolean);
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <Popover open={open} onOpenChange={handleOpenChange}>
         <PopoverTrigger disableButtonEnhancement>
           <Button>Controlled trigger</Button>
         </PopoverTrigger>
-        <PopoverSurface>
+        <PopoverSurface tabIndex={-1}>
           <ExampleContent />
         </PopoverSurface>
       </Popover>
-
-      <label style={{ display: 'flex', gap: '10px', alignItems: 'center', marginTop: '10px' }}>
-        open
-        <input type="checkbox" name="state" value="open" checked={open} onChange={onChange} />
-      </label>
+      <Checkbox value="open" name="state" label="open" checked={open} onChange={onChange} />
     </div>
   );
 };

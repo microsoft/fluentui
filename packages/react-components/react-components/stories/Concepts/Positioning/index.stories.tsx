@@ -15,6 +15,7 @@ export { OverflowBoundaryPadding } from './OverflowBoundaryPadding.stories';
 export { FlipBoundary } from './PositioningFlipBoundary.stories';
 export { MatchTargetSize } from './MatchTargetSize.stories';
 export { DisableTransform } from './PositioningDisableTransform.stories';
+export { ListenToUpdates } from './PositioningListenToUpdates.stories';
 
 export default {
   title: 'Concepts/Developer/Positioning Components',

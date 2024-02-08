@@ -138,9 +138,15 @@ export function useTableColumnResizeState<T>(
   );
 
   return {
-    getColumnById: (colId: TableColumnId) => getColumnById(state.columnWidthState, colId),
-    getColumns: () => state.columnWidthState,
-    getColumnWidth: (colId: TableColumnId) => getColumnWidth(state.columnWidthState, colId),
+    getColumnById: React.useCallback(
+      (colId: TableColumnId) => getColumnById(state.columnWidthState, colId),
+      [state.columnWidthState],
+    ),
+    getColumns: React.useCallback(() => state.columnWidthState, [state.columnWidthState]),
+    getColumnWidth: React.useCallback(
+      (colId: TableColumnId) => getColumnWidth(state.columnWidthState, colId),
+      [state.columnWidthState],
+    ),
     setColumnWidth,
   };
 }

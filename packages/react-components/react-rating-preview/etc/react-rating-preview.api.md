@@ -4,8 +4,12 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -17,22 +21,134 @@ export const Rating: ForwardRefComponent<RatingProps>;
 // @public (undocumented)
 export const ratingClassNames: SlotClassNames<RatingSlots>;
 
-// @public
-export type RatingProps = ComponentProps<RatingSlots> & {};
-
 // @public (undocumented)
-export type RatingSlots = {
-    root: Slot<'div'>;
+export type RatingContextValues = {
+    ratingItem: RatingItemContextValue;
 };
 
 // @public
-export type RatingState = ComponentState<RatingSlots>;
+export const RatingDisplay: ForwardRefComponent<RatingDisplayProps>;
+
+// @public (undocumented)
+export const ratingDisplayClassNames: SlotClassNames<RatingDisplaySlots>;
+
+// @public (undocumented)
+export type RatingDisplayContextValues = {
+    ratingItem: RatingItemContextValue;
+};
 
 // @public
-export const renderRating_unstable: (state: RatingState) => JSX.Element;
+export type RatingDisplayProps = ComponentProps<RatingDisplaySlots> & {
+    color?: 'brand' | 'marigold' | 'neutral';
+    compact?: boolean;
+    count?: number;
+    icon?: React_2.ReactElement;
+    max?: number;
+    size?: 'small' | 'medium' | 'large' | 'extra-large';
+    value?: number;
+};
+
+// @public (undocumented)
+export type RatingDisplaySlots = {
+    root: NonNullable<Slot<'div'>>;
+    valueText?: Slot<'span'>;
+    countText?: Slot<'span'>;
+};
+
+// @public
+export type RatingDisplayState = ComponentState<RatingDisplaySlots> & Required<Pick<RatingDisplayProps, 'color' | 'compact' | 'icon' | 'max' | 'size'>> & Pick<RatingDisplayProps, 'value'>;
+
+// @public
+export const RatingItem: ForwardRefComponent<RatingItemProps>;
+
+// @public (undocumented)
+export const ratingItemClassNames: SlotClassNames<RatingItemSlots>;
+
+// @public
+export type RatingItemProps = ComponentProps<Partial<RatingItemSlots>> & {
+    value?: number;
+};
+
+// @public (undocumented)
+export const RatingItemProvider: React_2.Provider<RatingItemContextValue | undefined>;
+
+// @public (undocumented)
+export type RatingItemSlots = {
+    root: NonNullable<Slot<'span'>>;
+    selectedIcon?: NonNullable<Slot<'div'>>;
+    unselectedIcon?: NonNullable<Slot<'div'>>;
+    halfValueInput?: NonNullable<Slot<'input'>>;
+    fullValueInput?: NonNullable<Slot<'input'>>;
+};
+
+// @public
+export type RatingItemState = ComponentState<RatingItemSlots> & Required<Pick<RatingItemProps, 'value'>> & Pick<RatingState, 'color' | 'step' | 'size'> & {
+    iconFillWidth: number;
+    appearance: 'outline' | 'filled';
+};
+
+// @public
+export type RatingOnChangeEventData = EventData<'change', React_2.FormEvent<HTMLDivElement>> & {
+    value: number;
+};
+
+// @public
+export type RatingProps = Omit<ComponentProps<Partial<RatingSlots>>, 'onChange'> & {
+    color?: 'brand' | 'marigold' | 'neutral';
+    defaultValue?: number;
+    iconFilled?: React_2.ReactElement;
+    iconOutline?: React_2.ReactElement;
+    itemLabel?: (rating: number) => string;
+    max?: number;
+    name?: string;
+    onChange?: EventHandler<RatingOnChangeEventData>;
+    step?: 0.5 | 1;
+    size?: 'small' | 'medium' | 'large' | 'extra-large';
+    value?: number;
+};
+
+// @public (undocumented)
+export type RatingSlots = {
+    root: NonNullable<Slot<'div'>>;
+};
+
+// @public
+export type RatingState = ComponentState<RatingSlots> & Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'value'>> & Pick<RatingProps, 'itemLabel'> & {
+    hoveredValue?: number | undefined;
+};
+
+// @public
+export const renderRating_unstable: (state: RatingState, contextValues: RatingContextValues) => JSX.Element;
+
+// @public
+export const renderRatingDisplay_unstable: (state: RatingDisplayState, contextValues: RatingDisplayContextValues) => JSX.Element;
+
+// @public
+export const renderRatingItem_unstable: (state: RatingItemState) => JSX.Element;
 
 // @public
 export const useRating_unstable: (props: RatingProps, ref: React_2.Ref<HTMLDivElement>) => RatingState;
+
+// @public (undocumented)
+export const useRatingContextValues: (ratingState: RatingState) => RatingContextValues;
+
+// @public
+export const useRatingDisplay_unstable: (props: RatingDisplayProps, ref: React_2.Ref<HTMLDivElement>) => RatingDisplayState;
+
+// @public (undocumented)
+export const useRatingDisplayContextValues: (state: RatingDisplayState) => RatingDisplayContextValues;
+
+// @public
+export const useRatingDisplayStyles_unstable: (state: RatingDisplayState) => RatingDisplayState;
+
+// @public
+export const useRatingItem_unstable: (props: RatingItemProps, ref: React_2.Ref<HTMLSpanElement>) => RatingItemState;
+
+// @public
+export const useRatingItemContextValue_unstable: () => RatingItemContextValue;
+
+// @public
+export const useRatingItemStyles_unstable: (state: RatingItemState) => RatingItemState;
 
 // @public
 export const useRatingStyles_unstable: (state: RatingState) => RatingState;

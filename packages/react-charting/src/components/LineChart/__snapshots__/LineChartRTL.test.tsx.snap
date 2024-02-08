@@ -33,6 +33,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
             overflow: auto;
           }
       data-focuszone-id="FocusZone24"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         aria-label="LineChart"
@@ -317,14 +318,12 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
               tabindex="-1"
             />
             <circle
-              aria-label="08/25/2023. First, 50."
               cx="-20"
               cy="17.884615384615383"
               focusable="false"
               id="circle13_0_55D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -370,6 +369,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
                       outline: none;
                     }
                 data-focuszone-id="FocusZone25"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -513,6 +513,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             overflow: auto;
           }
       data-focuszone-id="FocusZone11"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         aria-label="LineChart"
@@ -634,14 +635,12 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               tabindex="-1"
             />
             <circle
-              aria-label="40. metaData3, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
               id="circle0_2_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -689,14 +688,12 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               tabindex="-1"
             />
             <circle
-              aria-label="50. metaData2, 90."
               cx="4"
               cy="18.804347826086957"
               focusable="false"
               id="circle0_1_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -744,14 +741,12 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               tabindex="-1"
             />
             <circle
-              aria-label="40. metaData1, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
               id="circle0_0_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -797,6 +792,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                       outline: none;
                     }
                 data-focuszone-id="FocusZone12"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -1112,6 +1108,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             overflow: auto;
           }
       data-focuszone-id="FocusZone37"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         aria-label="LineChart"
@@ -1229,14 +1226,12 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               tabindex="-1"
             />
             <circle
-              aria-label="40. metaData3, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
               id="circle26_2_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -1284,14 +1279,12 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               tabindex="-1"
             />
             <circle
-              aria-label="50. metaData2, 90."
               cx="4"
               cy="18.804347826086957"
               focusable="false"
               id="circle26_1_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -1339,14 +1332,12 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               tabindex="-1"
             />
             <circle
-              aria-label="40. metaData1, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
               id="circle26_0_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -1392,6 +1383,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                       outline: none;
                     }
                 data-focuszone-id="FocusZone38"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -1697,11 +1689,11 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_236"
+    id="chart_223"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_237"
+      id="defaultTabbableElement_224"
     />
     <div
       class=
@@ -1712,7 +1704,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone238"
+      data-focuszone-id="FocusZone225"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         aria-label="LineChart"
@@ -1747,7 +1740,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_236"
+          id="xAxisGElementchart_223"
           transform="translate(0, -35)"
         />
         <g
@@ -1775,12 +1768,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_236"
+          id="yAxisGElementchart_223"
           transform="translate(40, 0)"
         />
         <g>
           <line
-            id="verticalLine230"
+            id="verticalLine217"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -1791,7 +1784,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           />
           <g>
             <line
-              id="lineID228_2_1"
+              id="lineID215_2_1"
               opacity="1"
               stroke="yellow"
               stroke-linecap="round"
@@ -1810,7 +1803,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle227_2_1"
+              id="circle214_2_1"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -1826,7 +1819,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle227_2_11L"
+              id="circle214_2_11L"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -1834,19 +1827,17 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="-1"
             />
             <circle
-              aria-label="40. metaData3, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
-              id="circle227_2_11D"
+              id="circle214_2_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
             <line
-              id="lineID228_1_1"
+              id="lineID215_1_1"
               opacity="1"
               stroke="green"
               stroke-linecap="round"
@@ -1865,7 +1856,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle227_1_1"
+              id="circle214_1_1"
               opacity="1"
               role="img"
               stroke="green"
@@ -1881,7 +1872,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle227_1_11L"
+              id="circle214_1_11L"
               opacity="1"
               role="img"
               stroke="green"
@@ -1889,19 +1880,17 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="-1"
             />
             <circle
-              aria-label="50. metaData2, 90."
               cx="4"
               cy="18.804347826086957"
               focusable="false"
-              id="circle227_1_11D"
+              id="circle214_1_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
             <line
-              id="lineID228_0_1"
+              id="lineID215_0_1"
               opacity="1"
               stroke="red"
               stroke-linecap="round"
@@ -1920,7 +1909,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle227_0_1"
+              id="circle214_0_1"
               opacity="1"
               role="img"
               stroke="red"
@@ -1936,7 +1925,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle227_0_11L"
+              id="circle214_0_11L"
               opacity="1"
               role="img"
               stroke="red"
@@ -1944,14 +1933,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="-1"
             />
             <circle
-              aria-label="40. metaData1, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
-              id="circle227_0_11D"
+              id="circle214_0_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -1996,7 +1983,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone239"
+                data-focuszone-id="FocusZone226"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -2296,11 +2284,11 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_249"
+    id="chart_236"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_250"
+      id="defaultTabbableElement_237"
     />
     <div
       class=
@@ -2311,7 +2299,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone251"
+      data-focuszone-id="FocusZone238"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         aria-label="LineChart"
@@ -2346,7 +2335,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_249"
+          id="xAxisGElementchart_236"
           transform="translate(0, -35)"
         />
         <g
@@ -2374,12 +2363,12 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_249"
+          id="yAxisGElementchart_236"
           transform="translate(40, 0)"
         />
         <g>
           <line
-            id="verticalLine243"
+            id="verticalLine230"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -2390,7 +2379,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           />
           <g>
             <line
-              id="lineID241_2_1"
+              id="lineID228_2_1"
               opacity="1"
               stroke="yellow"
               stroke-linecap="round"
@@ -2409,7 +2398,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle240_2_1"
+              id="circle227_2_1"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -2425,7 +2414,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle240_2_11L"
+              id="circle227_2_11L"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -2433,19 +2422,17 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="-1"
             />
             <circle
-              aria-label="40. metaData3, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
-              id="circle240_2_11D"
+              id="circle227_2_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
             <line
-              id="lineID241_1_1"
+              id="lineID228_1_1"
               opacity="1"
               stroke="green"
               stroke-linecap="round"
@@ -2464,7 +2451,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle240_1_1"
+              id="circle227_1_1"
               opacity="1"
               role="img"
               stroke="green"
@@ -2480,7 +2467,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle240_1_11L"
+              id="circle227_1_11L"
               opacity="1"
               role="img"
               stroke="green"
@@ -2488,19 +2475,17 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="-1"
             />
             <circle
-              aria-label="50. metaData2, 90."
               cx="4"
               cy="18.804347826086957"
               focusable="false"
-              id="circle240_1_11D"
+              id="circle227_1_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
             <line
-              id="lineID241_0_1"
+              id="lineID228_0_1"
               opacity="1"
               stroke="red"
               stroke-linecap="round"
@@ -2519,7 +2504,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle240_0_1"
+              id="circle227_0_1"
               opacity="1"
               role="img"
               stroke="red"
@@ -2535,7 +2520,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle240_0_11L"
+              id="circle227_0_11L"
               opacity="1"
               role="img"
               stroke="red"
@@ -2543,14 +2528,12 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="-1"
             />
             <circle
-              aria-label="40. metaData1, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
-              id="circle240_0_11D"
+              id="circle227_0_11D"
               opacity="0"
               r="8"
-              role="none"
               stroke-width="0"
               width="0"
             />
@@ -2595,7 +2578,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone252"
+                data-focuszone-id="FocusZone239"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -2908,11 +2892,11 @@ exports[`Should reflect theme change 1`] = `
             overflow: hidden;
             width: 100%;
           }
-      id="chart_265"
+      id="chart_252"
       role="presentation"
     >
       <div
-        id="defaultTabbableElement_266"
+        id="defaultTabbableElement_253"
       />
       <div
         class=
@@ -2923,7 +2907,8 @@ exports[`Should reflect theme change 1`] = `
             {
               overflow: auto;
             }
-        data-focuszone-id="FocusZone267"
+        data-focuszone-id="FocusZone254"
+        data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
           aria-label="LineChart"
@@ -2958,7 +2943,7 @@ exports[`Should reflect theme change 1`] = `
                 & path {
                   display: none;
                 }
-            id="xAxisGElementchart_265"
+            id="xAxisGElementchart_252"
             transform="translate(0, -35)"
           />
           <g
@@ -2986,12 +2971,12 @@ exports[`Should reflect theme change 1`] = `
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
-            id="yAxisGElementchart_265"
+            id="yAxisGElementchart_252"
             transform="translate(40, 0)"
           />
           <g>
             <line
-              id="verticalLine259"
+              id="verticalLine246"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -3002,7 +2987,7 @@ exports[`Should reflect theme change 1`] = `
             />
             <g>
               <line
-                id="lineID257_2_1"
+                id="lineID244_2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -3021,7 +3006,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle256_2_1"
+                id="circle243_2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -3037,7 +3022,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle256_2_11L"
+                id="circle243_2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -3045,19 +3030,17 @@ exports[`Should reflect theme change 1`] = `
                 tabindex="-1"
               />
               <circle
-                aria-label="40. metaData3, 80."
                 cx="16"
                 cy="12.826086956521738"
                 focusable="false"
-                id="circle256_2_11D"
+                id="circle243_2_11D"
                 opacity="0"
                 r="8"
-                role="none"
                 stroke-width="0"
                 width="0"
               />
               <line
-                id="lineID257_1_1"
+                id="lineID244_1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -3076,7 +3059,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle256_1_1"
+                id="circle243_1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -3092,7 +3075,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle256_1_11L"
+                id="circle243_1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -3100,19 +3083,17 @@ exports[`Should reflect theme change 1`] = `
                 tabindex="-1"
               />
               <circle
-                aria-label="50. metaData2, 90."
                 cx="4"
                 cy="18.804347826086957"
                 focusable="false"
-                id="circle256_1_11D"
+                id="circle243_1_11D"
                 opacity="0"
                 r="8"
-                role="none"
                 stroke-width="0"
                 width="0"
               />
               <line
-                id="lineID257_0_1"
+                id="lineID244_0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -3131,7 +3112,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle256_0_1"
+                id="circle243_0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -3147,7 +3128,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle256_0_11L"
+                id="circle243_0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -3155,14 +3136,12 @@ exports[`Should reflect theme change 1`] = `
                 tabindex="-1"
               />
               <circle
-                aria-label="40. metaData1, 80."
                 cx="16"
                 cy="12.826086956521738"
                 focusable="false"
-                id="circle256_0_11D"
+                id="circle243_0_11D"
                 opacity="0"
                 r="8"
-                role="none"
                 stroke-width="0"
                 width="0"
               />
@@ -3207,7 +3186,8 @@ exports[`Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone268"
+                  data-focuszone-id="FocusZone255"
+                  data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
                   <div

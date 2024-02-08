@@ -28,7 +28,7 @@ export type LinkProps = ComponentProps<LinkSlots> & {
 
 // @public (undocumented)
 export type LinkSlots = {
-    root: Slot<'a', 'button'>;
+    root: Slot<'a', 'button' | 'span'>;
 };
 
 // @public (undocumented)
@@ -40,7 +40,7 @@ export type LinkState = ComponentState<LinkSlots> & Required<Pick<LinkProps, 'ap
 export const renderLink_unstable: (state: LinkState) => JSX.Element;
 
 // @public
-export const useLink_unstable: (props: LinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement>) => LinkState;
+export const useLink_unstable: (props: LinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>) => LinkState;
 
 // @public
 export const useLinkState_unstable: (state: LinkState) => LinkState;

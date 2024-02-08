@@ -37,6 +37,7 @@ export {
   useArrowNavigationGroup,
   useFocusableGroup,
   useFocusFinders,
+  useFocusVisible,
   useFocusWithin,
   useKeyboardNavAttribute,
   useModalAttributes,
@@ -44,6 +45,7 @@ export {
   useFocusObserved,
   useRestoreFocusTarget,
   useRestoreFocusSource,
+  useUncontrolledFocus,
 } from '@fluentui/react-tabster';
 export type {
   CreateCustomFocusIndicatorStyleOptions,
@@ -90,23 +92,30 @@ export type {
   TypographyStyles,
 } from '@fluentui/react-theme';
 export {
+  AnnounceProvider,
+  PortalMountNodeProvider,
+  useAnnounce,
   useFluent_unstable as useFluent,
+  usePortalMountNode,
   useTooltipVisibility_unstable as useTooltipVisibility,
   useThemeClassName_unstable as useThemeClassName,
-  PortalMountNodeProvider,
-  usePortalMountNode,
 } from '@fluentui/react-shared-contexts';
+export type { AnnounceContextValue } from '@fluentui/react-shared-contexts';
 export {
   // getNativeElementProps is deprecated but removing it would be a breaking change
   // eslint-disable-next-line deprecation/deprecation
   getNativeElementProps,
   getIntrinsicElementProps,
   getPartitionedNativeProps,
+  // getSlots is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   getSlots,
   slot,
   assertSlots,
   IdPrefixProvider,
   resetIdsForTests,
+  // resolveShorthand is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   resolveShorthand,
   SSRProvider,
   useId,
@@ -122,7 +131,11 @@ export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
+  // ResolveShorthandFunction is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandFunction,
+  // ResolveShorthandOptions is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandOptions,
   Slot,
   SlotOptions,
@@ -217,6 +230,7 @@ export {
   useAvatarGroupItem_unstable,
   renderAvatarGroupPopover_unstable,
   useAvatarGroupPopoverStyles_unstable,
+  useAvatarGroupPopoverContextValues_unstable,
   useAvatarGroupPopover_unstable,
   useAvatarGroupContext_unstable,
   partitionAvatarGroupItems,
@@ -362,6 +376,7 @@ export {
   useComboboxContextValues,
   ListboxProvider,
   useListboxContextValues,
+  useComboboxFilter,
 } from '@fluentui/react-combobox';
 export type {
   ComboboxProps,
@@ -382,12 +397,14 @@ export type {
   ListboxProps,
   ListboxSlots,
   ListboxState,
+  OptionOnSelectData,
   OptionProps,
   OptionSlots,
   OptionState,
   OptionGroupProps,
   OptionGroupSlots,
   OptionGroupState,
+  SelectionEvents,
 } from '@fluentui/react-combobox';
 export {
   Divider,
@@ -891,6 +908,7 @@ export {
   DATA_OVERFLOW_MENU,
   DATA_OVERFLOW_ITEM,
   DATA_OVERFLOW_DIVIDER,
+  useOverflowVisibility,
 } from '@fluentui/react-overflow';
 
 export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';
@@ -1483,15 +1501,73 @@ export type {
   InlineDrawerProps,
   InlineDrawerSlots,
   InlineDrawerState,
+  DrawerBodyProps,
   DrawerBodySlots,
   DrawerBodyState,
+  DrawerHeaderProps,
   DrawerHeaderSlots,
   DrawerHeaderState,
+  DrawerHeaderTitleProps,
   DrawerHeaderTitleSlots,
   DrawerHeaderTitleState,
+  DrawerFooterProps,
   DrawerFooterSlots,
   DrawerFooterState,
   DrawerHeaderNavigationProps,
   DrawerHeaderNavigationSlots,
   DrawerHeaderNavigationState,
 } from '@fluentui/react-drawer';
+
+export {
+  Breadcrumb,
+  renderBreadcrumb_unstable,
+  useBreadcrumb_unstable,
+  useBreadcrumbStyles_unstable,
+  breadcrumbClassNames,
+  BreadcrumbDivider,
+  breadcrumbDividerClassNames,
+  renderBreadcrumbDivider_unstable,
+  useBreadcrumbDividerStyles_unstable,
+  useBreadcrumbDivider_unstable,
+  BreadcrumbItem,
+  breadcrumbItemClassNames,
+  renderBreadcrumbItem_unstable,
+  useBreadcrumbItemStyles_unstable,
+  useBreadcrumbItem_unstable,
+  partitionBreadcrumbItems,
+  truncateBreadcrumbLongName,
+  truncateBreadcrumLongTooltip,
+  isTruncatableBreadcrumbContent,
+  BreadcrumbButton,
+  breadcrumbButtonClassNames,
+  renderBreadcrumbButton_unstable,
+  useBreadcrumbButtonStyles_unstable,
+  useBreadcrumbButton_unstable,
+  BreadcrumbProvider,
+  useBreadcrumbContext_unstable,
+} from '@fluentui/react-breadcrumb';
+export type {
+  BreadcrumbSlots,
+  BreadcrumbProps,
+  BreadcrumbState,
+  BreadcrumbDividerProps,
+  BreadcrumbDividerSlots,
+  BreadcrumbDividerState,
+  BreadcrumbItemProps,
+  BreadcrumbItemSlots,
+  BreadcrumbItemState,
+  PartitionBreadcrumbItemsOptions,
+  PartitionBreadcrumbItems,
+  BreadcrumbButtonProps,
+  BreadcrumbButtonSlots,
+  BreadcrumbButtonState,
+  BreadcrumbContextValues,
+} from '@fluentui/react-breadcrumb';
+
+export {
+  AriaLiveAnnouncer,
+  renderAriaLiveAnnouncer_unstable,
+  useAriaLiveAnnouncer_unstable,
+  useAriaLiveAnnouncerContextValues_unstable,
+} from '@fluentui/react-aria';
+export type { AriaLiveAnnouncerProps, AriaLiveAnnouncerState } from '@fluentui/react-aria';

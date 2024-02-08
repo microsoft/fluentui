@@ -4,7 +4,7 @@ import { select as d3Select, clientPoint } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { ILegend, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
-import { classNamesFunction, getId, find, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, find, memoizeFunction, getRTL } from '@fluentui/react/lib/Utilities';
 import {
   IAccessibilityProps,
   CartesianChart,
@@ -170,6 +170,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element;
   private _firstRenderOptimization: boolean;
   private _emptyChartId: string;
+  private _isRTL: boolean = getRTL();
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -261,8 +262,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       ...this.props.calloutProps,
     };
     const tickParams = {
-      tickValues: tickValues,
-      tickFormat: tickFormat,
+      tickValues,
+      tickFormat,
     };
 
     return !this._isChartEmpty() ? (
@@ -409,7 +410,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
-        color: color,
+        color,
         action: () => {
           if (isLegendMultiSelectEnabled) {
             this._handleMultipleLineLegendSelectionAction(point);
@@ -524,20 +525,20 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     if (allowMultipleShapesForPoints) {
       if (pointIndex === 1 || isLastPoint) {
         if (activePoint === pointId) {
-          return theme!.palette.white;
+          return theme!.semanticColors.bodyBackground;
         } else {
           return lineColor;
         }
       } else {
         if (activePoint === pointId) {
-          return theme!.palette.white;
+          return theme!.semanticColors.bodyBackground;
         } else {
           return lineColor;
         }
       }
     } else {
       if (activePoint === pointId) {
-        return theme!.palette.white;
+        return theme!.semanticColors.bodyBackground;
       } else {
         return lineColor;
       }
@@ -570,7 +571,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             r={activePoint === circleId ? 5.5 : 3.5}
             cx={this._xAxisScale(x1)}
             cy={this._yAxisScale(y1)}
-            fill={activePoint === circleId ? theme!.palette.white : lineColor}
+            fill={activePoint === circleId ? theme!.semanticColors.bodyBackground : lineColor}
             onMouseOver={this._handleHover.bind(
               this,
               x1,
@@ -648,7 +649,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 fill="transparent"
                 strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
                 strokeWidth={Number.parseFloat(strokeWidth.toString()) + lineBorderWidth}
-                stroke={this._points[i].lineOptions?.lineBorderColor || theme!.palette.white}
+                stroke={this._points[i].lineOptions?.lineBorderColor || theme!.semanticColors.bodyBackground}
                 opacity={1}
               />,
             );
@@ -704,7 +705,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             r={5.5}
             cx={0}
             cy={0}
-            fill={theme!.palette.white}
+            fill={theme!.semanticColors.bodyBackground}
             strokeWidth={DEFAULT_LINE_STROKE_SIZE}
             stroke={lineColor}
             visibility={isPointHighlighted ? 'visibility' : 'hidden'}
@@ -859,10 +860,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   )}
                   onMouseOut={this._handleMouseOut}
                   strokeWidth={0}
-                  role="none"
                   focusable={false}
                   onBlur={this._handleMouseOut}
-                  aria-label={this._getAriaLabel(i, j)}
                 />
               </React.Fragment>,
             );
@@ -886,7 +885,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     y2={this._yAxisScale(y2)}
                     strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
                     strokeWidth={Number.parseFloat(strokeWidth.toString()) + lineBorderWidth}
-                    stroke={this._points[i].lineOptions?.lineBorderColor || theme!.palette.white}
+                    stroke={this._points[i].lineOptions?.lineBorderColor || theme!.semanticColors.bodyBackground}
                     opacity={1}
                   />,
                 );
@@ -1016,7 +1015,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           <rect
             fill={colorFillBar.applyPattern ? `url(#${this._colorFillBarPatternId}_${i})` : color}
             fillOpacity={opacity}
-            x={this._xAxisScale(startX)}
+            x={this._isRTL ? this._xAxisScale(endX) : this._xAxisScale(startX)}
             y={this._yAxisScale(yMinMaxValues.endValue) - FILL_Y_PADDING}
             width={Math.abs(this._xAxisScale(endX) - this._xAxisScale(startX))}
             height={

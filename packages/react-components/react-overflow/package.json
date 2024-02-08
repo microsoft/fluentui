@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-overflow",
-  "version": "9.0.43",
+  "version": "9.1.10",
   "description": "React bindings for @fluentui/priority-overflow",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,16 +34,16 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/priority-overflow": "^9.1.9",
-    "@fluentui/react-context-selector": "^9.1.42",
+    "@fluentui/priority-overflow": "^9.1.11",
+    "@fluentui/react-context-selector": "^9.1.51",
     "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.15.2",
+    "@fluentui/react-utilities": "^9.18.0",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
-    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
     "react": ">=16.14.0 <19.0.0",
     "react-dom": ">=16.14.0 <19.0.0",
     "scheduler": "^0.19.0 || ^0.20.0"

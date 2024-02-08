@@ -119,6 +119,17 @@ export type CustomStyleHooksContextValue = Partial<{
   useMessageBarActionsStyles_unstable: CustomStyleHook;
   useMessageBarGroupStyles_unstable: CustomStyleHook;
   useToasterStyles_unstable: CustomStyleHook;
+  /** @deprecated TeachingPopover wrapper has no styles (non-UI hooks only). */
+  useTeachingPopoverStyles_unstable: CustomStyleHook;
+  useTeachingPopoverActionsStyles_unstable: CustomStyleHook;
+  useTeachingPopoverBodyStyles_unstable: CustomStyleHook;
+  useTeachingPopoverButtonStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselStyles_unstable: CustomStyleHook;
+  useTeachingPopoverHeaderStyles_unstable: CustomStyleHook;
+  useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
+  useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
+  useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
+  useTimePickerCompatStyles_unstable: CustomStyleHook;
 }>;
 
 /**

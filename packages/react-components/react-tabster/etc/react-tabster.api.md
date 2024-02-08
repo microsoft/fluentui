@@ -4,11 +4,15 @@
 
 ```ts
 
+import { dispatchGroupperMoveFocusEvent } from 'tabster';
+import { dispatchMoverMoveFocusEvent } from 'tabster';
 import type { GriffelStyle } from '@griffel/react';
+import { KEYBORG_FOCUSIN } from 'keyborg';
+import { KeyborgFocusInEvent } from 'keyborg';
 import { makeResetStyles } from '@griffel/react';
 import * as React_2 from 'react';
 import type { RefObject } from 'react';
-import { Types } from 'tabster';
+import { Types as TabsterTypes } from 'tabster';
 
 // @internal (undocumented)
 export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Window): () => void;
@@ -34,6 +38,10 @@ export interface CreateFocusOutlineStyleOptions extends Omit<CreateCustomFocusIn
     style?: Partial<FocusOutlineStyleOptions>;
 }
 
+export { dispatchGroupperMoveFocusEvent }
+
+export { dispatchMoverMoveFocusEvent }
+
 // @public (undocumented)
 export type FocusOutlineOffset = Record<'top' | 'bottom' | 'left' | 'right', string>;
 
@@ -45,28 +53,34 @@ export type FocusOutlineStyleOptions = {
     outlineOffset?: string | FocusOutlineOffset;
 };
 
+export { KEYBORG_FOCUSIN }
+
+export { KeyborgFocusInEvent }
+
 // @public (undocumented)
-export type TabsterDOMAttribute = Types.TabsterDOMAttribute;
+export type TabsterDOMAttribute = TabsterTypes.TabsterDOMAttribute;
+
+export { TabsterTypes }
 
 // @public
-export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions) => Types.TabsterDOMAttribute;
+export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions) => TabsterTypes.TabsterDOMAttribute;
 
 // @public (undocumented)
 export interface UseArrowNavigationGroupOptions {
     axis?: 'vertical' | 'horizontal' | 'grid' | 'grid-linear' | 'both';
     circular?: boolean;
-    ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
+    ignoreDefaultKeydown?: TabsterTypes.FocusableProps['ignoreKeydown'];
     memorizeCurrent?: boolean;
     tabbable?: boolean;
     unstable_hasDefault?: boolean;
 }
 
 // @public
-export const useFocusableGroup: (options?: UseFocusableGroupOptions) => Types.TabsterDOMAttribute;
+export const useFocusableGroup: (options?: UseFocusableGroupOptions) => TabsterTypes.TabsterDOMAttribute;
 
 // @public (undocumented)
 export interface UseFocusableGroupOptions {
-    ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
+    ignoreDefaultKeydown?: TabsterTypes.FocusableProps['ignoreKeydown'];
     tabBehavior?: 'unlimited' | 'limited' | 'limited-trap-focus';
 }
 
@@ -75,12 +89,12 @@ export const useFocusFinders: () => {
     findAllFocusable: (container: HTMLElement, acceptCondition?: ((el: HTMLElement) => boolean) | undefined) => HTMLElement[];
     findFirstFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
     findLastFocusable: (container: HTMLElement) => HTMLElement | null | undefined;
-    findNextFocusable: (currentElement: HTMLElement, options?: Pick<Partial<Types.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
-    findPrevFocusable: (currentElement: HTMLElement, options?: Pick<Partial<Types.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
+    findNextFocusable: (currentElement: HTMLElement, options?: Pick<Partial<TabsterTypes.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
+    findPrevFocusable: (currentElement: HTMLElement, options?: Pick<Partial<TabsterTypes.FindNextProps>, 'container'>) => HTMLElement | null | undefined;
 };
 
 // @public (undocumented)
-export function useFocusObserved(name: string, options?: UseFocusObservedOptions): () => Types.ObservedElementAsyncRequest<boolean>;
+export function useFocusObserved(name: string, options?: UseFocusObservedOptions): () => TabsterTypes.ObservedElementAsyncRequest<boolean>;
 
 // @public (undocumented)
 export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(options?: UseFocusVisibleOptions): React_2.RefObject<TElement>;
@@ -92,12 +106,12 @@ export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): Re
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
 
 // @internal
-export const useMergedTabsterAttributes_unstable: (...attributes: Types.TabsterDOMAttribute[]) => Types.TabsterDOMAttribute;
+export const useMergedTabsterAttributes_unstable: (...attributes: TabsterTypes.TabsterDOMAttribute[]) => TabsterTypes.TabsterDOMAttribute;
 
 // @public
 export const useModalAttributes: (options?: UseModalAttributesOptions) => {
-    modalAttributes: Types.TabsterDOMAttribute;
-    triggerAttributes: Types.TabsterDOMAttribute;
+    modalAttributes: TabsterTypes.TabsterDOMAttribute;
+    triggerAttributes: TabsterTypes.TabsterDOMAttribute;
 };
 
 // @public (undocumented)
@@ -109,16 +123,25 @@ export interface UseModalAttributesOptions {
 }
 
 // @public (undocumented)
-export function useObservedElement(name: string | string[]): Types.TabsterDOMAttribute;
+export function useObservedElement(name: string | string[]): TabsterTypes.TabsterDOMAttribute;
 
 // @public
-export function useRestoreFocusSource(): Types.TabsterDOMAttribute;
+export function useOnKeyboardNavigationChange(callback: (isNavigatingWithKeyboard: boolean) => void): void;
 
 // @public
-export function useRestoreFocusTarget(): Types.TabsterDOMAttribute;
+export function useRestoreFocusSource(): TabsterTypes.TabsterDOMAttribute;
+
+// @public
+export function useRestoreFocusTarget(): TabsterTypes.TabsterDOMAttribute;
+
+// @public (undocumented)
+export function useSetKeyboardNavigation(): (isNavigatingWithKeyboard: boolean) => void;
 
 // @internal
-export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;
+export const useTabsterAttributes: (props: TabsterTypes.TabsterAttributeProps) => TabsterTypes.TabsterDOMAttribute;
+
+// @public
+export function useUncontrolledFocus(): TabsterTypes.TabsterDOMAttribute;
 
 // (No @packageDocumentation comment for this package)
 

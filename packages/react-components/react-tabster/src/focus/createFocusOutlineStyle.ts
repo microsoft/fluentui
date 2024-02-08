@@ -59,6 +59,11 @@ const getFocusOutlineStyles = (options: FocusOutlineStyleOptions): GriffelStyle 
 
   return {
     ...shorthands.borderColor('transparent'),
+    '@media (forced-colors: active)': {
+      '::after': {
+        ...shorthands.borderColor('Highlight'),
+      },
+    },
     '::after': {
       content: '""',
       position: 'absolute',

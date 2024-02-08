@@ -1,15 +1,32 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import * as path from 'path';
-import * as _ from 'lodash';
-import * as webpack from 'webpack';
 import { URL } from 'url';
 
-import { getLernaAliases } from '@fluentui/scripts-monorepo';
+import { getWorkspaceProjects, getWorkspaceProjectsAliases } from '@fluentui/scripts-monorepo';
+import * as _ from 'lodash';
+import * as webpack from 'webpack';
 
-// northstar packages should pull these from npm, not the repo
-const excludedPackages = ['@fluentui/dom-utilities'];
-const lernaAliases = (options: Omit<Parameters<typeof getLernaAliases>[number], 'excludedPackages'>) =>
-  getLernaAliases({ excludedPackages, ...options });
+const excludedPackages = [
+  // northstar packages should pull these from npm, not the repo
+  '@fluentui/dom-utilities',
+  // we need to apply aliases only for v0 projects - otherwise webpack will explode. This will(can) be mitigated by implementing no-build needed for v0 e2e (https://github.com/microsoft/fluentui/pull/26928/commits/6dbc149b54c251ba74b3ebb70057846389ed3f88#diff-f1ffee4111d5db5b78ed08c5318068a3b5e313d6dbc72b60231cc65e4bd5eb2a)
+  ...getProjectsExceptV0(),
+];
+
+const webpackAliases = getWorkspaceProjectsAliases({ excludeProjects: excludedPackages, type: 'webpack' });
+
+function getProjectsExceptV0() {
+  const projectConfigs = getWorkspaceProjects().values();
+  const projects: string[] = [];
+  for (const projectConfig of projectConfigs) {
+    const tags = projectConfig.tags ?? [];
+    if (!tags.includes('react-northstar')) {
+      projects.push(projectConfig.name!);
+    }
+  }
+
+  return projects;
+}
 
 // ------------------------------------
 // Environment vars
@@ -182,7 +199,7 @@ const config = {
   isRoot,
   /** Package name the task is running against: default to react if running at root, or cwd otherwise */
   package: packageName,
-  lernaAliases,
+  webpackAliases,
 };
 
 export default config;

@@ -4,8 +4,6 @@
 
 ```ts
 
-import * as d3Sankey from 'd3-sankey';
-import * as d3TimeFormat from 'd3-time-format';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutContentStyleProps } from '@fluentui/react/lib/Callout';
 import { ICalloutContentStyles } from '@fluentui/react/lib/Callout';
@@ -22,7 +20,10 @@ import { IStyleFunctionOrObject as IStyleFunctionOrObject_2 } from '@fluentui/re
 import { ITheme } from '@fluentui/react/lib/Styling';
 import { ITheme as ITheme_2 } from '@fluentui/react';
 import * as React_2 from 'react';
+import { SankeyLink } from 'd3-sankey';
+import { SankeyNode } from 'd3-sankey';
 import { SVGProps } from 'react';
+import { TimeLocaleDefinition } from 'd3-time-format';
 
 // @public
 export const AreaChart: React_2.FunctionComponent<IAreaChartProps>;
@@ -92,6 +93,14 @@ export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
 
 // @public
 export const GaugeChart: React_2.FunctionComponent<IGaugeChartProps>;
+
+// @public (undocumented)
+export enum GaugeChartVariant {
+    // (undocumented)
+    MultipleSegments = "multiple-segments",
+    // (undocumented)
+    SingleSegment = "single-segment"
+}
 
 // @public (undocumented)
 export enum GaugeValueFormat {
@@ -242,7 +251,7 @@ export interface ICartesianChartProps {
     tickFormat?: string;
     tickPadding?: number;
     tickValues?: number[] | Date[];
-    timeFormatLocale?: d3TimeFormat.TimeLocaleDefinition;
+    timeFormatLocale?: TimeLocaleDefinition;
     width?: number;
     wrapXAxisLables?: boolean;
     xAxisTickCount?: number;
@@ -473,7 +482,7 @@ export interface IGaugeChartProps {
     calloutProps?: Partial<ICalloutProps>;
     chartTitle?: string;
     chartValue: number;
-    chartValueFormat?: GaugeValueFormat | ((sweepFraction: number[]) => string);
+    chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
     className?: string;
     culture?: string;
     height?: number;
@@ -488,6 +497,7 @@ export interface IGaugeChartProps {
     styles?: IStyleFunctionOrObject<IGaugeChartStyleProps, IGaugeChartStyles>;
     sublabel?: string;
     theme?: ITheme;
+    variant?: GaugeChartVariant;
     width?: number;
 }
 
@@ -787,13 +797,15 @@ export interface ILegendsProps {
     canSelectMultipleLegends?: boolean;
     centerLegends?: boolean;
     className?: string;
+    defaultSelectedLegend?: string;
+    defaultSelectedLegends?: string[];
     enabledWrapLines?: boolean;
     focusZonePropsInHoverCard?: IFocusZoneProps;
     legends: ILegend[];
+    onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: ILegend) => void;
     onLegendHoverCardLeave?: VoidFunction;
     overflowProps?: Partial<IOverflowSetProps>;
     overflowText?: string;
-    selectedLegend?: string;
     styles?: IStyleFunctionOrObject<ILegendStyleProps, ILegendsStyles>;
     theme?: ITheme;
 }
@@ -1298,7 +1310,7 @@ export interface IVerticalBarChartDataPoint {
     legend?: string;
     lineData?: ILineDataInVerticalBarChart;
     onClick?: VoidFunction;
-    x: number | string;
+    x: number | string | Date;
     xAxisCalloutData?: string;
     y: number;
     yAxisCalloutData?: string;
@@ -1395,12 +1407,17 @@ export interface IVerticalStackedBarChartStyles extends ICartesianChartStyles {
 }
 
 // @public (undocumented)
+export interface IVerticalStackedBarDataPoint extends Omit<IDataPoint, 'x'> {
+    x: number | string | Date;
+}
+
+// @public (undocumented)
 export interface IVerticalStackedChartProps {
     chartData: IVSChartDataPoint[];
     lineData?: ILineDataInVerticalStackedBarChart[];
     stackCallOutAccessibilityData?: IAccessibilityProps;
     xAxisCalloutData?: string;
-    xAxisPoint: number | string;
+    xAxisPoint: number | string | Date;
 }
 
 // @public (undocumented)
@@ -1477,10 +1494,10 @@ export const Shape: React_2.FC<IShapeProps>;
 // Warning: (ae-forgotten-export) The symbol "ISLinkExtra" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
-export type SLink = d3Sankey.SankeyLink<ISNodeExtra, ISLinkExtra>;
+export type SLink = SankeyLink<ISNodeExtra, ISLinkExtra>;
 
 // @public (undocumented)
-export type SNode = d3Sankey.SankeyNode<ISNodeExtra, ISLinkExtra>;
+export type SNode = SankeyNode<ISNodeExtra, ISLinkExtra>;
 
 // @public
 export const Sparkline: React_2.FunctionComponent<ISparklineProps>;

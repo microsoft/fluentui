@@ -1,9 +1,12 @@
 export {
   slot,
   isSlot,
+  // eslint-disable-next-line deprecation/deprecation
   getSlots,
+  // eslint-disable-next-line deprecation/deprecation
   getSlotsNext,
   assertSlots,
+  // eslint-disable-next-line deprecation/deprecation
   resolveShorthand,
   isResolvedShorthand,
   getIntrinsicElementProps,
@@ -15,9 +18,12 @@ export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandFunction,
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandOptions,
   Slot,
+  // eslint-disable-next-line deprecation/deprecation
   Slots,
   SlotClassNames,
   SlotPropsRecord,
@@ -27,6 +33,8 @@ export type {
   SlotComponentType,
   SlotOptions,
   InferredElementRefType,
+  EventData,
+  EventHandler,
 } from './compose/index';
 
 export {
@@ -62,6 +70,8 @@ export {
   omit,
   createPriorityQueue,
 } from './utils/index';
+
+export type { DistributiveOmit, UnionToIntersection } from './utils/types';
 
 export type { PriorityQueue } from './utils/priorityQueue';
 
