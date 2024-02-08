@@ -196,16 +196,19 @@
   },
   "devDependencies": {
     "@microsoft/api-extractor": "7.31.2",
+    "@microsoft/fast-element": "2.0.0-beta.26",
     "@storybook/html": "6.5.15",
     "rimraf": "^3.0.2",
     "typescript": "4.7.4"
   },
   "dependencies": {
-    "@microsoft/fast-element": "2.0.0-beta.26",
     "@microsoft/fast-foundation": "3.0.0-alpha.31",
     "@microsoft/fast-web-utilities": "^6.0.0",
     "@fluentui/tokens": "1.0.0-alpha.2",
     "tslib": "^2.1.0"
+  },
+  "peerDependencies": {
+    "@microsoft/fast-element": ">2.0.0-beta"
   },
   "beachball": {
     "disallowedChangeTypes": [
