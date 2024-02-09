@@ -58,6 +58,7 @@ const useLabelStyles = makeStyles({
 
   horizontal: {
     marginRight: tokens.spacingHorizontalM,
+    lineHeight: tokens.lineHeightBase500,
     gridRowStart: '1',
     gridRowEnd: '-1',
   },
