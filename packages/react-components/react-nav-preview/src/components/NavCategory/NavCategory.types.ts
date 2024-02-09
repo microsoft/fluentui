@@ -20,4 +20,4 @@ export type NavCategoryProps = {
 /**
  * State used in rendering NavCategory
  */
-export type NavCategoryState = NavCategoryContextValue & NavCategoryProps;
+export type NavCategoryState = NavCategoryContextValue & Required<NavCategoryProps>;

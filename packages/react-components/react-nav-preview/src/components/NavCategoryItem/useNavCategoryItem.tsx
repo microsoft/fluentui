@@ -28,8 +28,6 @@ export const useNavCategoryItem_unstable = (
     mergeCallbacks(onClick, event => onRequestNavCategoryItemToggle(event, { type: 'click', event, value })),
   );
 
-  const expandIconRotation = open ? -90 : 90;
-
   // TODO - these are copied from AccordionHeader.
   // We need to figure out if they are applicable to this
   // scenario and adapt them accordingly.
@@ -77,7 +75,7 @@ export const useNavCategoryItem_unstable = (
     ),
     expandIcon: slot.always(expandIcon, {
       defaultProps: {
-        children: <ChevronRightRegular style={{ transform: `rotate(${expandIconRotation}deg)` }} />,
+        children: <ChevronRightRegular />,
         'aria-hidden': true,
       },
       elementType: 'span',
