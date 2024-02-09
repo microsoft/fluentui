@@ -24,14 +24,22 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
   const generatedName = useId('rating-');
   const {
     color = 'neutral',
-    iconFilled = <StarFilled />,
-    iconOutline = <StarRegular />,
+    iconFilled: iconFilledProp,
+    iconOutline: iconOutlineProp,
     max = 5,
     name = generatedName,
     onChange,
     step = 1,
     size = 'extra-large',
   } = props;
+
+  const iconFilled = React.useMemo(() => {
+    return iconFilledProp ?? <StarFilled />;
+  }, [iconFilledProp]);
+
+  const iconOutline = React.useMemo(() => {
+    return iconOutlineProp ?? <StarRegular />;
+  }, [iconOutlineProp]);
 
   const [value, setValue] = useControllableState({
     state: props.value,

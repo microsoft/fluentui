@@ -17,7 +17,11 @@ export const useRatingDisplay_unstable = (
   props: RatingDisplayProps,
   ref: React.Ref<HTMLDivElement>,
 ): RatingDisplayState => {
-  const { color = 'neutral', count, compact = false, icon = <StarFilled />, max = 5, size = 'medium', value } = props;
+  const { color = 'neutral', count, compact = false, icon: iconProp, max = 5, size = 'medium', value } = props;
+
+  const icon = React.useMemo(() => {
+    return iconProp ?? <StarFilled />;
+  }, [iconProp]);
 
   const valueTextId = useId('rating-value-');
   const countTextId = useId('rating-count-');
