@@ -1,7 +1,7 @@
 import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/react-focus';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { classNamesFunction, getId, getRTL, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, format, getId, getRTL, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { sum as d3Sum } from 'd3-array';
 import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRight } from 'd3-sankey';
 import { select, selectAll } from 'd3-selection';
@@ -470,7 +470,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
-        aria-label={'Graph has no data to display'} // TODO: Localize this string
+        aria-label={this.props.strings.emptyAriaLabel}
       />
     );
   }
@@ -511,6 +511,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const links: React.ReactNode[] = [];
 
     if (dataLinks) {
+      const ariaLabelUnformatted = this.props.strings.linkAriaLabel;
       const linkId = this._linkId;
       dataLinks.forEach((singleLink: SLink, index: number) => {
         const onMouseOut = () => {
@@ -555,9 +556,12 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               onBlur={this._onBlur}
               fillOpacity={this._getOpacityStream(singleLink)}
               data-is-focusable={true}
-              aria-label={`link from ${(singleLink.source as SNode).name} to ${
-                (singleLink.target as SNode).name
-              } with weight ${singleLink!.unnormalizedValue}`} // TODO: localize this string
+              aria-label={format(
+                ariaLabelUnformatted,
+                (singleLink.source as SNode).name,
+                (singleLink.target as SNode).name,
+                singleLink.unnormalizedValue,
+              )}
               role="img"
             />
           </g>
@@ -576,6 +580,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
 
     if (dataNodes) {
       const state = this.state;
+      const nodeAriaLabelUnformatted = this.props.strings.nodeAriaLabel;
       dataNodes.forEach((singleNode: SNode, index: number) => {
         const onMouseOut = () => {
           this._onLeave(singleNode);
@@ -620,7 +625,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               strokeWidth="2"
               opacity="1"
               data-is-focusable={true}
-              aria-label={`node ${singleNode.name} with weight ${singleNode.actualValue}`} // TODO: localize this string
+              aria-label={format(nodeAriaLabelUnformatted, singleNode.name, singleNode.actualValue)}
               role="img"
             />
             {singleNode.y1! - singleNode.y0! > MIN_HEIGHT_FOR_TYPE && (
@@ -733,7 +738,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         color: (singleLink.source as SNode).color,
         xCalloutValue: (singleLink.target as SNode).name,
         yCalloutValue: singleLink.unnormalizedValue!.toString(),
-        descriptionMessage: 'from ' + (singleLink.source as SNode).name, // TODO: Does this need to be localized?
+        descriptionMessage: format(this.props.strings.linkFrom, (singleLink.source as SNode).name),
       });
     }
   }
@@ -760,7 +765,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       xCalloutValue: (singleLink.target as SNode).name,
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       yCalloutValue: (singleLink.source as SNode).actualValue! as any as string,
-      descriptionMessage: 'from ' + (singleLink.source as SNode).name, // TODO: Does this need to be localized?
+      descriptionMessage: format(this.props.strings.linkFrom, (singleLink.source as SNode).name),
     });
   }
 

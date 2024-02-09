@@ -11,6 +11,7 @@ import {
 import {
   IChartProps,
   ISankeyChartData,
+  ISankeyChartStrings,
   ISankeyChartStyleProps,
   ISankeyChartStyles,
 } from '../src/components/SankeyChart/index';
@@ -70,6 +71,13 @@ const chartPointsWithEmptyData = (): IChartProps => ({
   SankeyChartData: emptySankeyChatPoints,
 });
 const emptyChartPoints = (): IChartProps => ({});
+
+const defaultStrings: () => ISankeyChartStrings = () => ({
+  emptyAriaLabel: 'Graph has no data to display',
+  nodeAriaLabel: 'node {0} with weight {1}',
+  linkFrom: 'from {0}',
+  linkAriaLabel: 'link from {0} to {1} with weight {2}',
+});
 
 const standardMargins: IMargins = { top: 36, right: 48, bottom: 32, left: 48 };
 
@@ -145,6 +153,7 @@ runTest('_createLinks', () => {
     const data = chartPointsWithStringNodeId();
     const instance = new SankeyChartBase({
       data,
+      strings: defaultStrings(),
     });
     expect(instance).toBeDefined();
     const privateInstance = instance as unknown as IPrivateMethodsOnClass;
@@ -152,45 +161,46 @@ runTest('_createLinks', () => {
     const result = privateInstance._createLinks(normalizedData.data.links);
     expect(result).toBeDefined();
     expect(result).toHaveLength(2);
-    const link1 = result![0];
-    const link2 = result![1];
-    expect(link1!['props'].children).toBeDefined();
-    expect(link1!['props'].children[0].props.children.type).toEqual('linearGradient');
-    expect(link1!['props'].children[0].props.children.props.x1).toEqual('0%');
-    expect(link1!['props'].children[0].props.children.props.x2).toEqual('100%');
-    expect(link1!['props'].children[0].props.children.props.y1).toEqual('0%');
-    expect(link1!['props'].children[0].props.children.props.y2).toEqual('0%');
-    expect(link1!['props'].children[0].props.children.props.children[0].type).toEqual('stop');
-    expect(link1!['props'].children[0].props.children.props.children[1].type).toEqual('stop');
-    expect(link1!['props'].children[1].props['aria-label']).toEqual(
+    const link1 = result![0]! as React.ReactElement;
+    const link2 = result![1]! as React.ReactElement;
+    expect(link1.props.children).toBeDefined();
+    expect(link1!.props.children[0].props.children.type).toEqual('linearGradient');
+    expect(link1!.props.children[0].props.children.props.x1).toEqual('0%');
+    expect(link1!.props.children[0].props.children.props.x2).toEqual('100%');
+    expect(link1!.props.children[0].props.children.props.y1).toEqual('0%');
+    expect(link1!.props.children[0].props.children.props.y2).toEqual('0%');
+    expect(link1!.props.children[0].props.children.props.children[0].type).toEqual('stop');
+    expect(link1!.props.children[0].props.children.props.children[1].type).toEqual('stop');
+    expect(link1!.props.children[1].props['aria-label']).toEqual(
       'link from 192.168.42.72 to 124.360.55.1 with weight 80',
     );
-    expect(link1!['props'].children[1].props['d']).toEqual(
+    expect(link1!.props.children[1].props.d).toEqual(
       'M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z',
     );
-    expect(link1!['props'].children[1].props['strokeWidth']).toEqual('2');
-    expect(link1!['props'].children[1].props['data-is-focusable']).toEqual(true);
-    expect(link2!['props'].children[0].props.children.type).toEqual('linearGradient');
-    expect(link2!['props'].children[0].props.children.props.x1).toEqual('0%');
-    expect(link2!['props'].children[0].props.children.props.x2).toEqual('100%');
-    expect(link2!['props'].children[0].props.children.props.y1).toEqual('0%');
-    expect(link2!['props'].children[0].props.children.props.y2).toEqual('0%');
-    expect(link2!['props'].children[0].props.children.props.children[0].type).toEqual('stop');
-    expect(link2!['props'].children[0].props.children.props.children[1].type).toEqual('stop');
-    expect(link2!['props'].children[1].props['aria-label']).toEqual(
+    expect(link1!.props.children[1].props.strokeWidth).toEqual('2');
+    expect(link1!.props.children[1].props['data-is-focusable']).toEqual(true);
+    expect(link2!.props.children[0].props.children.type).toEqual('linearGradient');
+    expect(link2!.props.children[0].props.children.props.x1).toEqual('0%');
+    expect(link2!.props.children[0].props.children.props.x2).toEqual('100%');
+    expect(link2!.props.children[0].props.children.props.y1).toEqual('0%');
+    expect(link2!.props.children[0].props.children.props.y2).toEqual('0%');
+    expect(link2!.props.children[0].props.children.props.children[0].type).toEqual('stop');
+    expect(link2!.props.children[0].props.children.props.children[1].type).toEqual('stop');
+    expect(link2!.props.children[1].props['aria-label']).toEqual(
       'link from 172.152.48.13 to 192.564.10.2 with weight 50',
     );
-    expect(link2!['props'].children[1].props['d']).toEqual(
+    expect(link2!.props.children[1].props.d).toEqual(
       'M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z',
     );
-    expect(link2!['props'].children[1].props['strokeWidth']).toEqual('2');
-    expect(link2!['props'].children[1].props['data-is-focusable']).toEqual(true);
+    expect(link2!.props.children[1].props.strokeWidth).toEqual('2');
+    expect(link2!.props.children[1].props['data-is-focusable']).toEqual(true);
   });
 
   test('Should return proper links data with numeric nodeId', () => {
     const data = chartPointsWithNumericNodeId();
     const instance = new SankeyChartBase({
       data,
+      strings: defaultStrings(),
     });
     expect(instance).toBeDefined();
     const privateInstance = instance as unknown as IPrivateMethodsOnClass;
@@ -198,39 +208,39 @@ runTest('_createLinks', () => {
     const result = privateInstance._createLinks(normalizedData.data.links);
     expect(result).toBeDefined();
     expect(result).toHaveLength(2);
-    const link1 = result![0];
-    const link2 = result![1];
-    expect(link1!['props'].children).toBeDefined();
-    expect(link1!['props'].children[0].props.children.type).toEqual('linearGradient');
-    expect(link1!['props'].children[0].props.children.props.x1).toEqual('0%');
-    expect(link1!['props'].children[0].props.children.props.x2).toEqual('100%');
-    expect(link1!['props'].children[0].props.children.props.y1).toEqual('0%');
-    expect(link1!['props'].children[0].props.children.props.y2).toEqual('0%');
-    expect(link1!['props'].children[0].props.children.props.children[0].type).toEqual('stop');
-    expect(link1!['props'].children[0].props.children.props.children[1].type).toEqual('stop');
-    expect(link1!['props'].children[1].props['aria-label']).toEqual(
+    const link1 = result![0]! as React.ReactElement;
+    const link2 = result![1]! as React.ReactElement;
+    expect(link1!.props.children).toBeDefined();
+    expect(link1!.props.children[0].props.children.type).toEqual('linearGradient');
+    expect(link1!.props.children[0].props.children.props.x1).toEqual('0%');
+    expect(link1!.props.children[0].props.children.props.x2).toEqual('100%');
+    expect(link1!.props.children[0].props.children.props.y1).toEqual('0%');
+    expect(link1!.props.children[0].props.children.props.y2).toEqual('0%');
+    expect(link1!.props.children[0].props.children.props.children[0].type).toEqual('stop');
+    expect(link1!.props.children[0].props.children.props.children[1].type).toEqual('stop');
+    expect(link1!.props.children[1].props['aria-label']).toEqual(
       'link from 192.168.42.72 to 124.360.55.1 with weight 80',
     );
-    expect(link1!['props'].children[1].props['d']).toEqual(
+    expect(link1!.props.children[1].props.d).toEqual(
       'M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z',
     );
-    expect(link1!['props'].children[1].props['strokeWidth']).toEqual('2');
-    expect(link1!['props'].children[1].props['data-is-focusable']).toEqual(true);
-    expect(link2!['props'].children[0].props.children.type).toEqual('linearGradient');
-    expect(link2!['props'].children[0].props.children.props.x1).toEqual('0%');
-    expect(link2!['props'].children[0].props.children.props.x2).toEqual('100%');
-    expect(link2!['props'].children[0].props.children.props.y1).toEqual('0%');
-    expect(link2!['props'].children[0].props.children.props.y2).toEqual('0%');
-    expect(link2!['props'].children[0].props.children.props.children[0].type).toEqual('stop');
-    expect(link2!['props'].children[0].props.children.props.children[1].type).toEqual('stop');
-    expect(link2!['props'].children[1].props['aria-label']).toEqual(
+    expect(link1!.props.children[1].props.strokeWidth).toEqual('2');
+    expect(link1!.props.children[1].props['data-is-focusable']).toEqual(true);
+    expect(link2!.props.children[0].props.children.type).toEqual('linearGradient');
+    expect(link2!.props.children[0].props.children.props.x1).toEqual('0%');
+    expect(link2!.props.children[0].props.children.props.x2).toEqual('100%');
+    expect(link2!.props.children[0].props.children.props.y1).toEqual('0%');
+    expect(link2!.props.children[0].props.children.props.y2).toEqual('0%');
+    expect(link2!.props.children[0].props.children.props.children[0].type).toEqual('stop');
+    expect(link2!.props.children[0].props.children.props.children[1].type).toEqual('stop');
+    expect(link2!.props.children[1].props['aria-label']).toEqual(
       'link from 172.152.48.13 to 192.564.10.2 with weight 50',
     );
-    expect(link2!['props'].children[1].props['d']).toEqual(
+    expect(link2!.props.children[1].props.d).toEqual(
       'M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z',
     );
-    expect(link2!['props'].children[1].props['strokeWidth']).toEqual('2');
-    expect(link2!['props'].children[1].props['data-is-focusable']).toEqual(true);
+    expect(link2!.props.children[1].props.strokeWidth).toEqual('2');
+    expect(link2!.props.children[1].props['data-is-focusable']).toEqual(true);
   });
 });
 
@@ -251,6 +261,7 @@ runTest('_createNodes', () => {
     const data = chartPointsWithStringNodeId();
     const instance = new SankeyChartBase({
       data,
+      strings: defaultStrings(),
     });
     expect(instance).toBeDefined();
     const privateInstance = instance as unknown as IPrivateMethodsOnClass;
@@ -265,36 +276,37 @@ runTest('_createNodes', () => {
     const result = privateInstance._createNodes(_classNames, normalizedData.data.nodes);
     expect(result).toBeDefined();
     expect(result).toHaveLength(4);
-    const node1 = result![0];
-    const node2 = result![1];
-    const node3 = result![2];
-    const node4 = result![3];
-    expect(node1!['key']).toEqual('0');
-    expect(node2!['key']).toEqual('1');
-    expect(node3!['key']).toEqual('2');
-    expect(node4!['key']).toEqual('3');
-    expect(node1!['props'].children[0].type).toEqual('rect');
-    expect(node2!['props'].children[0].type).toEqual('rect');
-    expect(node3!['props'].children[0].type).toEqual('rect');
-    expect(node4!['props'].children[0].type).toEqual('rect');
-    expect(node1!['props'].children[0].props['aria-label']).toEqual('node 192.168.42.72 with weight 80');
-    expect(node2!['props'].children[0].props['aria-label']).toEqual('node 172.152.48.13 with weight 50');
-    expect(node3!['props'].children[0].props['aria-label']).toEqual('node 124.360.55.1 with weight 80');
-    expect(node4!['props'].children[0].props['aria-label']).toEqual('node 192.564.10.2 with weight 50');
-    expect(node1!['props'].children[1].props.children[0].props.className).toEqual('nodeName');
-    expect(node1!['props'].children[1].props.children[0].props.children.props.children).toEqual('192.168.42.72');
-    expect(node2!['props'].children[1].props.children[0].props.className).toEqual('nodeName');
-    expect(node2!['props'].children[1].props.children[0].props.children.props.children).toEqual('172.152.48.13');
-    expect(node3!['props'].children[1].props.children[0].props.className).toEqual('nodeName');
-    expect(node3!['props'].children[1].props.children[0].props.children.props.children).toEqual('124.360.55.1');
-    expect(node4!['props'].children[1].props.children[0].props.className).toEqual('nodeName');
-    expect(node4!['props'].children[1].props.children[0].props.children.props.children).toEqual('192.564.10.2');
+    const node1 = result![0]! as React.ReactElement;
+    const node2 = result![1]! as React.ReactElement;
+    const node3 = result![2]! as React.ReactElement;
+    const node4 = result![3]! as React.ReactElement;
+    expect(node1!.key).toEqual('0');
+    expect(node2!.key).toEqual('1');
+    expect(node3!.key).toEqual('2');
+    expect(node4!.key).toEqual('3');
+    expect(node1!.props.children[0].type).toEqual('rect');
+    expect(node2!.props.children[0].type).toEqual('rect');
+    expect(node3!.props.children[0].type).toEqual('rect');
+    expect(node4!.props.children[0].type).toEqual('rect');
+    expect(node1!.props.children[0].props['aria-label']).toEqual('node 192.168.42.72 with weight 80');
+    expect(node2!.props.children[0].props['aria-label']).toEqual('node 172.152.48.13 with weight 50');
+    expect(node3!.props.children[0].props['aria-label']).toEqual('node 124.360.55.1 with weight 80');
+    expect(node4!.props.children[0].props['aria-label']).toEqual('node 192.564.10.2 with weight 50');
+    expect(node1!.props.children[1].props.children[0].props.className).toEqual('nodeName');
+    expect(node1!.props.children[1].props.children[0].props.children.props.children).toEqual('192.168.42.72');
+    expect(node2!.props.children[1].props.children[0].props.className).toEqual('nodeName');
+    expect(node2!.props.children[1].props.children[0].props.children.props.children).toEqual('172.152.48.13');
+    expect(node3!.props.children[1].props.children[0].props.className).toEqual('nodeName');
+    expect(node3!.props.children[1].props.children[0].props.children.props.children).toEqual('124.360.55.1');
+    expect(node4!.props.children[1].props.children[0].props.className).toEqual('nodeName');
+    expect(node4!.props.children[1].props.children[0].props.children.props.children).toEqual('192.564.10.2');
   });
 
   test('Should return proper nodes data with numeric nodeId', () => {
     const data = chartPointsWithNumericNodeId();
     const instance = new SankeyChartBase({
       data,
+      strings: defaultStrings(),
     });
     expect(instance).toBeDefined();
     const privateInstance = instance as unknown as IPrivateMethodsOnClass;
@@ -309,29 +321,29 @@ runTest('_createNodes', () => {
     const result = privateInstance._createNodes(_classNames, normalizedData.data.nodes);
     expect(result).toBeDefined();
     expect(result).toHaveLength(4);
-    const node1 = result![0];
-    const node2 = result![1];
-    const node3 = result![2];
-    const node4 = result![3];
-    expect(node1!['key']).toEqual('0');
-    expect(node2!['key']).toEqual('1');
-    expect(node3!['key']).toEqual('2');
-    expect(node4!['key']).toEqual('3');
-    expect(node1!['props'].children[0].type).toEqual('rect');
-    expect(node2!['props'].children[0].type).toEqual('rect');
-    expect(node3!['props'].children[0].type).toEqual('rect');
-    expect(node4!['props'].children[0].type).toEqual('rect');
-    expect(node1!['props'].children[0].props['aria-label']).toEqual('node 192.168.42.72 with weight 80');
-    expect(node2!['props'].children[0].props['aria-label']).toEqual('node 172.152.48.13 with weight 50');
-    expect(node3!['props'].children[0].props['aria-label']).toEqual('node 124.360.55.1 with weight 80');
-    expect(node4!['props'].children[0].props['aria-label']).toEqual('node 192.564.10.2 with weight 50');
-    expect(node1!['props'].children[1].props.children[0].props.className).toEqual('nodeName');
-    expect(node1!['props'].children[1].props.children[0].props.children.props.children).toEqual('192.168.42.72');
-    expect(node2!['props'].children[1].props.children[0].props.className).toEqual('nodeName');
-    expect(node2!['props'].children[1].props.children[0].props.children.props.children).toEqual('172.152.48.13');
-    expect(node3!['props'].children[1].props.children[0].props.className).toEqual('nodeName');
-    expect(node3!['props'].children[1].props.children[0].props.children.props.children).toEqual('124.360.55.1');
-    expect(node4!['props'].children[1].props.children[0].props.className).toEqual('nodeName');
-    expect(node4!['props'].children[1].props.children[0].props.children.props.children).toEqual('192.564.10.2');
+    const node1 = result![0]! as React.ReactElement;
+    const node2 = result![1]! as React.ReactElement;
+    const node3 = result![2]! as React.ReactElement;
+    const node4 = result![3]! as React.ReactElement;
+    expect(node1!.key).toEqual('0');
+    expect(node2!.key).toEqual('1');
+    expect(node3!.key).toEqual('2');
+    expect(node4!.key).toEqual('3');
+    expect(node1!.props.children[0].type).toEqual('rect');
+    expect(node2!.props.children[0].type).toEqual('rect');
+    expect(node3!.props.children[0].type).toEqual('rect');
+    expect(node4!.props.children[0].type).toEqual('rect');
+    expect(node1!.props.children[0].props['aria-label']).toEqual('node 192.168.42.72 with weight 80');
+    expect(node2!.props.children[0].props['aria-label']).toEqual('node 172.152.48.13 with weight 50');
+    expect(node3!.props.children[0].props['aria-label']).toEqual('node 124.360.55.1 with weight 80');
+    expect(node4!.props.children[0].props['aria-label']).toEqual('node 192.564.10.2 with weight 50');
+    expect(node1!.props.children[1].props.children[0].props.className).toEqual('nodeName');
+    expect(node1!.props.children[1].props.children[0].props.children.props.children).toEqual('192.168.42.72');
+    expect(node2!.props.children[1].props.children[0].props.className).toEqual('nodeName');
+    expect(node2!.props.children[1].props.children[0].props.children.props.children).toEqual('172.152.48.13');
+    expect(node3!.props.children[1].props.children[0].props.className).toEqual('nodeName');
+    expect(node3!.props.children[1].props.children[0].props.children.props.children).toEqual('124.360.55.1');
+    expect(node4!.props.children[1].props.children[0].props.className).toEqual('nodeName');
+    expect(node4!.props.children[1].props.children[0].props.children.props.children).toEqual('192.564.10.2');
   });
 });

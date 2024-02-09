@@ -1,4 +1,4 @@
-import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
+import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IChartProps } from '../../types/IDataPoint';
 
@@ -63,6 +63,11 @@ export interface ISankeyChartProps {
    * Colors for nodes border
    */
   borderColorsForNodes?: string[];
+
+  /**
+   * Localized strings to show in the UX.
+   */
+  strings: ISankeyChartStrings;
 }
 
 /**
@@ -112,4 +117,30 @@ export interface ISankeyChartStyles {
    */
 
   calloutContentRoot?: IStyle;
+}
+
+/**
+ * Set of strings which are used when renering the chart.
+ */
+export interface ISankeyChartStrings {
+  /**
+   * Aria label for when the chart is empty.
+   */
+  emptyAriaLabel: string;
+  /**
+   * A value similar to "node {0} with weight {1}".
+   * {0} is the name of the node.
+   * {1} is the weight of the node (as computed by the sankey layout engine via the links to or from this node).
+   */
+  nodeAriaLabel: string;
+  /**
+   * A value similar to "from {0}" where {0} is the name of the source node for a link.
+   * This is shown in the `ChartHoverCard` when the user hovers the mouse over a link.
+   */
+  linkFrom: string;
+  /**
+   * A value similar to "link from {0} to ${1} with weight ${2}".
+   * {0} is the source node, {1} is the target node, and {2} is the weight of the link.
+   */
+  linkAriaLabel: string;
 }

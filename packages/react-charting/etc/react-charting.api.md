@@ -1112,9 +1112,18 @@ export interface ISankeyChartProps {
     parentRef?: HTMLElement | null;
     pathColor?: string;
     shouldResize?: number;
+    strings: ISankeyChartStrings;
     styles?: IStyleFunctionOrObject<ISankeyChartStyleProps, ISankeyChartStyles>;
     theme?: ITheme;
     width?: number;
+}
+
+// @public
+export interface ISankeyChartStrings {
+    emptyAriaLabel: string;
+    linkAriaLabel: string;
+    linkFrom: string;
+    nodeAriaLabel: string;
 }
 
 // @public

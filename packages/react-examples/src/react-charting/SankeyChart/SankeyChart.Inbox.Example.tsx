@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { IChartProps, ISankeyChartProps, SankeyChart } from '@fluentui/react-charting';
+import * as React from 'react';
 //import { IPalette } from '@fluentui/react/lib/Styling';
 
 interface ISankeyChartBasicState {
@@ -185,6 +185,12 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
             height={this.state.height}
             width={this.state.width}
             shouldResize={this.state.width + this.state.height}
+            strings={{
+              emptyAriaLabel: 'Graph has no data to display',
+              nodeAriaLabel: 'Category {0} with email count {1}',
+              linkFrom: 'from category {0}',
+              linkAriaLabel: '{2} items moved from category {0} to {1}',
+            }}
           />
         </div>
       </>

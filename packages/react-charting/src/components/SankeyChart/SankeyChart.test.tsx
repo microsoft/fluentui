@@ -5,7 +5,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { IChartProps } from '../../index';
 import { resetIds } from '../../Utilities';
-import { ISankeyChartProps, SankeyChart } from './index';
+import { ISankeyChartProps, ISankeyChartStrings, SankeyChart } from './index';
 import { ISankeyChartState, SankeyChartBase } from './SankeyChart.base';
 
 // Wrapper of the SankeyChart to be tested.
@@ -99,9 +99,18 @@ const dataWithoutColors: () => IChartProps = () => ({
   },
 });
 
+const defaultStrings: () => ISankeyChartStrings = () => ({
+  emptyAriaLabel: 'Graph has no data to display',
+  nodeAriaLabel: 'node {0} with weight {1}',
+  linkFrom: 'from {0}',
+  linkAriaLabel: 'link from {0} to {1} with weight {2}',
+});
+
 describe('Sankey Chart snapShot testing', () => {
   it('renders Sankey correctly', () => {
-    const component = renderer.create(<SankeyChart data={data()} height={500} width={800} />);
+    const component = renderer.create(
+      <SankeyChart data={data()} height={500} width={800} strings={defaultStrings()} />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -117,6 +126,7 @@ describe('Sankey Chart snapShot testing', () => {
         width={800}
         colorsForNodes={nodeColors}
         borderColorsForNodes={borderColors}
+        strings={defaultStrings()}
       />,
     );
     const tree = component.toJSON();
@@ -127,10 +137,11 @@ describe('Sankey Chart snapShot testing', () => {
 describe('Render calling with respective to props', () => {
   it('No prop changes', () => {
     const renderMock = jest.spyOn(SankeyChartBase.prototype, 'render');
-    const props = {
+    const props: ISankeyChartProps = {
       data: data(),
       height: 500,
       width: 800,
+      strings: defaultStrings(),
     };
     mount(<SankeyChart {...props} />);
     expect(renderMock).toHaveBeenCalledTimes(1);
@@ -143,6 +154,7 @@ describe('Render calling with respective to props', () => {
       data: data(),
       height: 700,
       width: 1100,
+      strings: defaultStrings(),
     };
     const component = mount(<SankeyChart {...props} />);
     component.setProps({ ...props, height: 1000 });
@@ -156,28 +168,28 @@ describe('SankeyChart - mouse events', () => {
   afterEach(sharedAfterEach);
 
   it('Should render correctly on node mouseover', () => {
-    wrapper = mount(<SankeyChart data={data()} height={500} width={800} />);
+    wrapper = mount(<SankeyChart data={data()} height={500} width={800} strings={defaultStrings()} />);
     wrapper.find('rect').at(1).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
   it('Should render correctly on link mouseover', () => {
-    wrapper = mount(<SankeyChart data={data()} height={500} width={800} />);
+    wrapper = mount(<SankeyChart data={data()} height={500} width={800} strings={defaultStrings()} />);
     wrapper.find('path').at(1).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
   it('Should render callout correctly on mouseover when height of node is less than 24px', () => {
-    wrapper = mount(<SankeyChart data={data()} height={500} width={800} />);
+    wrapper = mount(<SankeyChart data={data()} height={500} width={800} strings={defaultStrings()} />);
     wrapper.find('rect[aria-label="node 124.360.55.1 with weight 14"]').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
 
   it('Should render tooltip correctly on mouseover when node description is large', () => {
-    wrapper = mount(<SankeyChart data={data()} height={500} width={800} />);
+    wrapper = mount(<SankeyChart data={data()} height={500} width={800} strings={defaultStrings()} />);
     wrapper.find('text[x=739]').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
@@ -209,7 +221,9 @@ describe('SankeyChart - Min Height of Node Test', () => {
         ],
       },
     };
-    const component = renderer.create(<SankeyChart data={onepercentheightdata} height={400} width={912} />);
+    const component = renderer.create(
+      <SankeyChart data={onepercentheightdata} height={400} width={912} strings={defaultStrings()} />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -240,7 +254,9 @@ describe('SankeyChart - Min Height of Node Test', () => {
       },
     };
     // ACT
-    const component = renderer.create(<SankeyChart data={onepercentheightdata} height={400} width={912} />);
+    const component = renderer.create(
+      <SankeyChart data={onepercentheightdata} height={400} width={912} strings={defaultStrings()} />,
+    );
     const tree = component.toJSON();
     // ASSERT
     expect(tree).toMatchSnapshot();
