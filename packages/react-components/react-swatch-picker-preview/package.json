@@ -32,9 +32,9 @@
   },
   "dependencies": {
     "@fluentui/react-jsx-runtime": "^9.0.29",
-    "@fluentui/react-shared-contexts": "^9.13.2",
-    "@fluentui/react-radio": "^9.1.60",
-    "@fluentui/react-tabster": "9.16.0",
+    "@fluentui/react-shared-contexts": "^9.14.2",
+    "@fluentui/react-radio": "^9.2.7",
+    "@fluentui/react-tabster": "^9.19.0",
     "@fluentui/react-theme": "^9.1.16",
     "@fluentui/react-utilities": "^9.18.0",
     "@griffel/react": "^1.5.14",
