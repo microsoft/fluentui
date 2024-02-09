@@ -159,12 +159,6 @@ export const renderRadioSwatch_unstable: (state: RadioSwatchState) => JSX.Elemen
 // @public
 export const renderSwatchPicker_unstable: (state: SwatchPickerState, contextValues: SwatchPickerContextValue) => JSX.Element;
 
-// @public
-export const renderTablePicker_unstable: (state: TablePickerState) => JSX.Element;
-
-// @public
-export const renderTableSwatch_unstable: (state: TableSwatchState) => JSX.Element;
-
 // @public (undocumented)
 export const swatchCSSVars: {
     swatchColor: string;
@@ -217,50 +211,6 @@ export type SwatchPickerSlots = {
 export type SwatchPickerState = ComponentState<SwatchPickerSlots> & SwatchPickerContextValue & Pick<SwatchPickerProps, 'layout' | 'columnCount' | 'size' | 'shape' | 'spacing'>;
 
 // @public
-export const TablePicker: ForwardRefComponent<TablePickerProps>;
-
-// @public (undocumented)
-export const tablePickerClassNames: SlotClassNames<TablePickerSlots>;
-
-// @public
-export type TablePickerProps = ComponentProps<TablePickerSlots> & {};
-
-// @public (undocumented)
-export type TablePickerSlots = {
-    root: Slot<'table'>;
-    tbody: Slot<'tbody'>;
-};
-
-// @public
-export type TablePickerState = ComponentState<TablePickerSlots>;
-
-// @public
-export const TableSwatch: ForwardRefComponent<TableSwatchProps>;
-
-// @public (undocumented)
-export const tableSwatchClassNames: SlotClassNames<TableSwatchSlots>;
-
-// @public
-export type TableSwatchProps = ComponentProps<TableSwatchSlots> & {
-    value?: string;
-    selected?: boolean;
-};
-
-// @public (undocumented)
-export type TableSwatchSlots = {
-    root: Slot<'td'>;
-    button?: Slot<'button'>;
-};
-
-// @public
-export type TableSwatchState = ComponentState<TableSwatchSlots> & Pick<TableSwatchProps, 'value' | 'selected'>;
-
-// @public (undocumented)
-export const tdCSSVars: {
-    cellColor: string;
-};
-
-// @public
 export const useColorSwatch_unstable: (props: ColorSwatchProps, ref: React_2.Ref<HTMLButtonElement>) => ColorSwatchState;
 
 // @public
@@ -289,18 +239,6 @@ export const useSwatchPicker_unstable: <T>(props: SwatchPickerProps, ref: React_
 
 // @public
 export const useSwatchPickerStyles_unstable: (state: SwatchPickerState) => SwatchPickerState;
-
-// @public
-export const useTablePicker_unstable: (props: TablePickerProps, ref: React_2.Ref<HTMLTableElement>) => TablePickerState;
-
-// @public
-export const useTablePickerStyles_unstable: (state: TablePickerState) => TablePickerState;
-
-// @public
-export const useTableSwatch_unstable: (props: TableSwatchProps, ref: React_2.Ref<HTMLTableCellElement>) => TableSwatchState;
-
-// @public
-export const useTableSwatchStyles_unstable: (state: TableSwatchState) => TableSwatchState;
 
 // (No @packageDocumentation comment for this package)
 
