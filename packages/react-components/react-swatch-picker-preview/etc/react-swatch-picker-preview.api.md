@@ -9,10 +9,6 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { RadioGroupProps } from '@fluentui/react-components';
-import type { RadioGroupSlots } from '@fluentui/react-components';
-import type { RadioProps } from '@fluentui/react-radio';
-import type { RadioSlots } from '@fluentui/react-radio';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -72,89 +68,11 @@ export type ImageSwatchSlots = {
 // @public
 export type ImageSwatchState = ComponentState<ImageSwatchSlots> & Pick<ImageSwatchProps, 'disabled' | 'selected' | 'empty' | 'value'>;
 
-// @public (undocumented)
-export const radioCSSVars: {
-    swatchColor: string;
-    stateColor: string;
-    borderColor: string;
-};
-
-// @public
-export const RadioPicker: ForwardRefComponent<RadioPickerProps>;
-
-// @public (undocumented)
-export const radioPickerClassNames: SlotClassNames<RadioPickerSlots>;
-
-// @public (undocumented)
-export type RadioPickerContextValue = Pick<RadioPickerProps, 'layout' | 'columnCount' | 'name' | 'value' | 'defaultValue' | 'disabled' | 'required' | 'size' | 'shape'>;
-
-// @public (undocumented)
-export type RadioPickerContextValues = {
-    radioPicker: RadioPickerContextValue;
-};
-
-// @public (undocumented)
-export const radioPickerCSSVars: {
-    columnCountGrid: string;
-    cellSize: string;
-    gridGap: string;
-};
-
-// @public
-export type RadioPickerOnChangeData = {
-    value: string;
-};
-
-// @public
-export type RadioPickerProps = ComponentProps<RadioPickerSlots> & Omit<ComponentProps<Partial<RadioGroupSlots>>, 'onChange'> & Omit<RadioGroupProps, 'layout'> & {
-    layout?: 'grid' | 'row';
-    columnCount?: number;
-    size?: 'extraSmall' | 'small' | 'medium' | 'large';
-    shape?: 'rounded' | 'square' | 'circular';
-    onChange?: (ev: React_2.FormEvent<HTMLDivElement>, data: RadioPickerOnChangeData) => void;
-};
-
-// @public (undocumented)
-export type RadioPickerSlots = RadioGroupSlots;
-
-// @public
-export type RadioPickerState = ComponentState<RadioPickerSlots> & Pick<RadioPickerProps, 'layout' | 'columnCount' | 'name' | 'value' | 'defaultValue' | 'disabled' | 'required' | 'size' | 'shape'>;
-
-// @public
-export const RadioSwatch: ForwardRefComponent<RadioSwatchProps>;
-
-// @public (undocumented)
-export const radioSwatchClassNames: SlotClassNames<RadioSwatchSlots>;
-
-// @public
-export type RadioSwatchProps = ComponentProps<RadioSwatchSlots> & Omit<ComponentProps<Partial<RadioSwatchSlots>, 'input'>, 'onChange' | 'size'> & Omit<RadioProps, 'labelPosition'> & {
-    size?: 'extraSmall' | 'small' | 'medium' | 'large';
-    shape?: 'rounded' | 'square' | 'circular';
-    label?: string;
-    contrastBorderColor?: string;
-    contrastStateColor?: string;
-};
-
-// @public (undocumented)
-export type RadioSwatchSlots = Omit<RadioSlots, 'indicator' | 'label'> & {
-    icon?: Slot<'span'>;
-    swatch?: NonNullable<Slot<'span'>>;
-};
-
-// @public
-export type RadioSwatchState = ComponentState<RadioSwatchSlots> & Pick<RadioSwatchProps, 'value' | 'size' | 'shape'>;
-
 // @public
 export const renderColorSwatch_unstable: (state: ColorSwatchState, contextValues: SwatchContextValues) => JSX.Element;
 
 // @public
 export const renderImageSwatch_unstable: (state: ImageSwatchState) => JSX.Element;
-
-// @public
-export const renderRadioPicker_unstable: (state: RadioPickerState, contextValues: RadioPickerContextValues) => JSX.Element;
-
-// @public
-export const renderRadioSwatch_unstable: (state: RadioSwatchState) => JSX.Element;
 
 // @public
 export const renderSwatchPicker_unstable: (state: SwatchPickerState, contextValues: SwatchPickerContextValue) => JSX.Element;
@@ -184,6 +102,7 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
     columnCount?: number;
     defaultSelectedValue?: string;
     layout?: 'grid' | 'row';
+    responsive?: boolean;
     onColorChange?: (event: SwatchPickerSelectEvent, data: SwatchPickerSelectData) => void;
     size?: 'extraSmall' | 'small' | 'medium' | 'large';
     shape?: 'rounded' | 'square' | 'circular';
@@ -208,7 +127,7 @@ export type SwatchPickerSlots = {
 };
 
 // @public
-export type SwatchPickerState = ComponentState<SwatchPickerSlots> & SwatchPickerContextValue & Pick<SwatchPickerProps, 'layout' | 'columnCount' | 'size' | 'shape' | 'spacing'>;
+export type SwatchPickerState = ComponentState<SwatchPickerSlots> & SwatchPickerContextValue & Pick<SwatchPickerProps, 'layout' | 'columnCount' | 'size' | 'shape' | 'spacing' | 'responsive'>;
 
 // @public
 export const useColorSwatch_unstable: (props: ColorSwatchProps, ref: React_2.Ref<HTMLButtonElement>) => ColorSwatchState;
@@ -221,18 +140,6 @@ export const useImageSwatch_unstable: (props: ImageSwatchProps, ref: React_2.Ref
 
 // @public
 export const useImageSwatchStyles_unstable: (state: ImageSwatchState) => ImageSwatchState;
-
-// @public
-export const useRadioPicker_unstable: (props: RadioPickerProps, ref: React_2.Ref<HTMLDivElement>) => RadioPickerState;
-
-// @public
-export const useRadioPickerStyles_unstable: (state: RadioPickerState) => RadioPickerState;
-
-// @public
-export const useRadioSwatch_unstable: (props: RadioSwatchProps, ref: React_2.Ref<HTMLInputElement>) => RadioSwatchState;
-
-// @public
-export const useRadioSwatchStyles_unstable: (state: RadioSwatchState) => RadioSwatchState;
 
 // @public
 export const useSwatchPicker_unstable: <T>(props: SwatchPickerProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerState;

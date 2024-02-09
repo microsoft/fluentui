@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageSwatch renders a default state 1`] = `
+<div>
+  <button
+    aria-selected="false"
+    class="fui-ImageSwatch"
+    role="gridcell"
+    style="--fui-SwatchPicker--image: transparent;"
+    tabindex="0"
+  >
+    Default ImageSwatch
+  </button>
+</div>
+`;
