@@ -47,7 +47,7 @@ export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputEle
     size,
     appearance,
     components: {
-      root: 'label',
+      root: 'span',
       input: 'input',
       contentBefore: 'span',
       contentAfter: 'span',
@@ -64,7 +64,7 @@ export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputEle
     contentBefore: slot.optional(props.contentBefore, { elementType: 'span' }),
     root: slot.always(props.root, {
       defaultProps: nativeProps.root,
-      elementType: 'label',
+      elementType: 'span',
     }),
   };
 

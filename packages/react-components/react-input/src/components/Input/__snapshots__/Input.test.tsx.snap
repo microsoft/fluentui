@@ -2,7 +2,7 @@
 
 exports[`Input renders a default state 1`] = `
 <div>
-  <label
+  <span
     class="fui-Input"
   >
     <input
@@ -10,6 +10,6 @@ exports[`Input renders a default state 1`] = `
       type="text"
       value=""
     />
-  </label>
+  </span>
 </div>
 `;

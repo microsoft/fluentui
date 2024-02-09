@@ -28,7 +28,7 @@ const useRootClassName = makeResetStyles({
 
   // size: medium (default)
   minHeight: fieldHeights.medium,
-  padding: `0 ${tokens.spacingHorizontalMNudge}`,
+  padding: 0,
   ...typographyStyles.body1,
 
   // appearance: outline (default)
@@ -203,7 +203,7 @@ const useInputClassName = makeResetStyles({
   flexGrow: 1,
   minWidth: 0, // required to make the input shrink to fit the wrapper
   borderStyle: 'none', // input itself never has a border (this is handled by inputWrapper)
-  padding: `0 ${tokens.spacingHorizontalXXS}`,
+  padding: `0 ${tokens.spacingHorizontalMNudge}`,
   color: tokens.colorNeutralForeground1,
   // Use literal "transparent" (not from the theme) to always let the color from the root show through
   backgroundColor: 'transparent',
