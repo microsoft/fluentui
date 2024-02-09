@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add \"clearable\" prop",
+  "packageName": "@fluentui/react-timepicker-compat",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
