@@ -8,6 +8,8 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { EventData } from '@fluentui/react-utilities';
+import { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -40,11 +42,11 @@ export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> & NavCat
 // @public
 export type NavCategoryProps = {
     value: NavItemValue;
-    children?: React_2.ReactNode;
+    children?: React_2.ReactNode | null;
 };
 
 // @public
-export type NavCategoryState = NavCategoryContextValue & NavCategoryProps;
+export type NavCategoryState = NavCategoryContextValue & Required<NavCategoryProps>;
 
 // @public (undocumented)
 export const navClassNames: SlotClassNames<NavSlots>;
