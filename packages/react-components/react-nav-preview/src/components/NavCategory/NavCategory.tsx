@@ -13,6 +13,9 @@ export const NavCategory: ForwardRefComponent<NavCategoryProps> = React.forwardR
   const state = useNavCategory_unstable(props, ref);
   const contextValues = useNavCategoryContextValues_unstable(state);
 
+  // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
+  // useNavCategoryStyles_unstable(state);
+
   return renderNavCategory_unstable(state, contextValues);
 });
 

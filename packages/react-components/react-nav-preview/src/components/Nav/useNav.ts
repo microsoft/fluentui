@@ -5,9 +5,49 @@ import {
   useMergedRefs,
   slot,
   getIntrinsicElementProps,
+  EventHandler,
 } from '@fluentui/react-utilities';
-import type { EventHandler, NavProps, NavState, OnNavItemSelectData } from './Nav.types';
+
+import type { NavProps, NavState, OnNavItemSelectData } from './Nav.types';
 import type { NavItemRegisterData, NavItemValue } from '../NavContext.types';
+
+// /**
+//  * Initial value for the uncontrolled case of the list of open indexes
+//  */
+// function initializeUncontrolledOpenItems({ defaultOpenItems }: Pick<NavProps, 'defaultOpenItems'>): NavItemValue[] {
+//   if (defaultOpenItems !== undefined) {
+//     if (Array.isArray(defaultOpenItems)) {
+//       return [defaultOpenItems[0]];
+//     }
+//     return [defaultOpenItems];
+//   }
+//   return [];
+// }
+
+// /**
+//  * Normalizes Accordion index into an array of indexes
+//  */
+// function normalizeValues(index?: NavItemValue | NavItemValue[]): NavItemValue[] | undefined {
+//   if (index === undefined) {
+//     return undefined;
+//   }
+//   return Array.isArray(index) ? index : [index];
+// }
+
+// temp implementation of the above function.
+const normalizeValues = (index?: NavItemValue | NavItemValue[]): NavItemValue[] | undefined => {
+  return undefined;
+};
+
+/**
+ * Updates the list of open indexes based on an index that changes
+ * @param value - the index that will change
+ * @param previousOpenItems - list of current open indexes
+ * @param collapsible - if Nav support multiple SubItemGroups closed at the same time
+ */
+const updateOpenItems = (value: NavItemValue, previousOpenItems: NavItemValue[], collapsible: boolean) => {
+  return previousOpenItems[0] === value && collapsible ? [] : [value];
+};
 
 /**
  * Create the state required to render Nav.
@@ -31,7 +71,7 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
   });
 
   const onRequestNavCategoryItemToggle: EventHandler<OnNavItemSelectData> = useEventCallback((event, data) => {
-    const nextOpenItems = updateOpenItems(data.value, openItems, false, false);
+    const nextOpenItems = updateOpenItems(data.value, openItems, false);
     onNavCategoryItemToggle?.(event, data);
     setOpenItems(nextOpenItems);
   });
@@ -96,58 +136,3 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     openItems,
   };
 };
-
-// /**
-//  * Initial value for the uncontrolled case of the list of open indexes
-//  */
-// function initializeUncontrolledOpenItems({ defaultOpenItems }: Pick<NavProps, 'defaultOpenItems'>): NavItemValue[] {
-//   if (defaultOpenItems !== undefined) {
-//     if (Array.isArray(defaultOpenItems)) {
-//       return [defaultOpenItems[0]];
-//     }
-//     return [defaultOpenItems];
-//   }
-//   return [];
-// }
-
-// /**
-//  * Normalizes Accordion index into an array of indexes
-//  */
-// function normalizeValues(index?: NavItemValue | NavItemValue[]): NavItemValue[] | undefined {
-//   if (index === undefined) {
-//     return undefined;
-//   }
-//   return Array.isArray(index) ? index : [index];
-// }
-
-// temp implementation of the above function.
-function normalizeValues(index?: NavItemValue | NavItemValue[]): NavItemValue[] | undefined {
-  return undefined;
-}
-
-/**
- * Updates the list of open indexes based on an index that changes
- * @param value - the index that will change
- * @param previousOpenItems - list of current open indexes
- * @param multiple - if Nav support multiple SubItemGroups opened at the same time
- * @param collapsible - if Nav support multiple SubItemGroups closed at the same time
- */
-function updateOpenItems(
-  value: NavItemValue,
-  previousOpenItems: NavItemValue[],
-  multiple: boolean,
-  collapsible: boolean,
-) {
-  if (multiple) {
-    if (previousOpenItems.includes(value)) {
-      if (previousOpenItems.length > 1 || collapsible) {
-        return previousOpenItems.filter(i => i !== value);
-      }
-    } else {
-      return [...previousOpenItems, value].sort();
-    }
-  } else {
-    return previousOpenItems[0] === value && collapsible ? [] : [value];
-  }
-  return previousOpenItems;
-}
