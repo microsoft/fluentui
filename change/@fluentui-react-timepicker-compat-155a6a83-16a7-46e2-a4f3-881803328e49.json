@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: add \"clearable\" prop",
   "packageName": "@fluentui/react-timepicker-compat",
   "email": "olfedias@microsoft.com",
