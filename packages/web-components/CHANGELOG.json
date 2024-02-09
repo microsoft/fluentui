@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 09 Feb 2024 04:08:43 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.7",
+      "version": "3.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "4909fe2c8e9fb9029b5e7fa4d5aa73d299cf089f",
+            "comment": "feat: remove JS design token implementation in favor of platform css variables"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 01 Dec 2023 04:08:50 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.6",
       "version": "3.0.0-beta.6",
