@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix : Input control has dead-zones where clicking does not bring focus to the control #30491",
+  "packageName": "@fluentui/react-input",
+  "email": "48352653+vicheanath@users.noreply.github.com",
+  "dependentChangeType": "none"
+}
