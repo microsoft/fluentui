@@ -16,7 +16,6 @@ const useStyles = makeStyles({
 });
 
 const colorSet = [
-  { color: '#C11016', label: 'dark red' },
   { color: '#FF1921', label: 'red' },
   { color: '#FFC12E', label: 'orange' },
   { color: '#FEFF37', label: 'yellow' },

@@ -18,7 +18,18 @@ export const useSwatchPicker_unstable = <T>(
   props: SwatchPickerProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
-  const { layout, role, onColorChange, selectedValue, defaultSelectedValue, size, shape, spacing, ...rest } = props;
+  const {
+    layout,
+    role,
+    onColorChange,
+    selectedValue,
+    defaultSelectedValue,
+    size,
+    shape,
+    spacing,
+    responsive,
+    ...rest
+  } = props;
   const itemsAmount = React.Children.count(props.children);
   const _layout = itemsAmount <= 3 ? 'row' : layout;
   const focusAttributes = useArrowNavigationGroup({
@@ -59,6 +70,7 @@ export const useSwatchPicker_unstable = <T>(
     size,
     shape,
     spacing,
+    responsive,
   };
 
   useSwatchPickerState_unstable(state, props);

@@ -21,7 +21,15 @@ export const Default = () => {
         <ColorSwatch color="#011F5E" aria-label="dark blue" role="radio" />
         <ColorSwatch color="#712F9E" aria-label="purple" role="radio" />
       </SwatchPicker>
-      <div style={{ width: '100px', height: '100px', backgroundColor: selectedColor, border: '1px solid #ccc' }} />
+      <div
+        style={{
+          width: '100px',
+          height: '100px',
+          backgroundColor: selectedColor,
+          border: '1px solid #ccc',
+          marginTop: 20,
+        }}
+      />
     </>
   );
 };
