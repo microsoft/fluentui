@@ -1,5 +1,6 @@
 import * as React from 'react';
-import type { EventHandler, NavProps, OnNavItemSelectData } from './Nav/Nav.types';
+import type { NavProps, OnNavItemSelectData } from './Nav/Nav.types';
+import { EventHandler } from '@fluentui/react-utilities';
 
 export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue' | 'reserveSelectedNavItemSpace'> & {
   /** A callback to allow a navItem to register itself with the navItem list. */
