@@ -27,6 +27,8 @@ export const useColorSwatch_unstable = (
   const selected = context.selectedValue === color;
   const onClick = useEventCallback((event: SwatchPickerSelectEvent) => notifySelected({ event, selectedValue: color }));
 
+  const _role = context.layout === 'grid' ? 'gridcell' : 'radio';
+
   const disabledIcon = slot.optional(props.disabledIcon, {
     renderByDefault: true,
     defaultProps: {
@@ -45,7 +47,7 @@ export const useColorSwatch_unstable = (
       getIntrinsicElementProps('button', {
         ref,
         ...props,
-        role: props.role ?? 'radio',
+        role: props.role ?? _role,
         tabIndex: 0,
         'aria-selected': selected,
         onClick,

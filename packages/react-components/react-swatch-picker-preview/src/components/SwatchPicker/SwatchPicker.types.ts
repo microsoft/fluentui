@@ -24,6 +24,8 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
 
   layout?: 'grid' | 'row';
 
+  responsive?: boolean;
+
   /**
    * Event rised when user selects a color
    */
@@ -43,4 +45,4 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
  */
 export type SwatchPickerState = ComponentState<SwatchPickerSlots> &
   SwatchPickerContextValue &
-  Pick<SwatchPickerProps, 'layout' | 'columnCount' | 'size' | 'shape' | 'spacing'>;
+  Pick<SwatchPickerProps, 'layout' | 'columnCount' | 'size' | 'shape' | 'spacing' | 'responsive'>;

@@ -19,8 +19,7 @@ const { columnCountGrid, cellSize, gridGap } = swatchPickerCSSVars;
  */
 const useStyles = makeStyles({
   root: {
-    display: 'flex',
-    ...shorthands.padding(tokens.spacingVerticalMNudge),
+    ...shorthands.padding(tokens.spacingHorizontalNone, tokens.spacingVerticalNone),
   },
   grid: {
     display: 'grid',
@@ -32,6 +31,10 @@ const useStyles = makeStyles({
     flexDirection: 'row',
     columnGap: `var(${gridGap})`,
   },
+  responsive: {
+    flexWrap: 'wrap',
+    rowGap: `var(${gridGap})`,
+  },
 });
 
 /**
@@ -40,7 +43,14 @@ const useStyles = makeStyles({
 export const useSwatchPickerStyles_unstable = (state: SwatchPickerState): SwatchPickerState => {
   const styles = useStyles();
   const layout = state.layout ?? 'row';
-  state.root.className = mergeClasses(swatchPickerClassNames.root, styles.root, styles[layout], state.root.className);
+  const responsive = state.responsive ? styles.responsive : '';
+  state.root.className = mergeClasses(
+    swatchPickerClassNames.root,
+    styles.root,
+    styles[layout],
+    responsive,
+    state.root.className,
+  );
 
   return state;
 };

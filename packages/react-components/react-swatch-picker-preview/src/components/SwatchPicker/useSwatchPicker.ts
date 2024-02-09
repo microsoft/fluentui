@@ -19,10 +19,11 @@ export const useSwatchPicker_unstable = <T>(
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
   const { layout, role, onColorChange, selectedValue, defaultSelectedValue, size, shape, spacing, ...rest } = props;
-
+  const itemsAmount = React.Children.count(props.children);
+  const _layout = itemsAmount <= 3 ? 'row' : layout;
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
-    axis: layout === 'grid' ? 'grid-linear' : 'both',
+    axis: _layout === 'grid' ? 'grid-linear' : 'both',
     memorizeCurrent: true,
   });
 
@@ -37,6 +38,8 @@ export const useSwatchPicker_unstable = <T>(
     setSelectedSwatch(data.selectedValue);
   });
 
+  const _role = _layout === 'grid' ? 'grid' : 'radiogroup';
+
   const state: SwatchPickerState = {
     components: {
       root: 'div',
@@ -45,14 +48,14 @@ export const useSwatchPicker_unstable = <T>(
       getIntrinsicElementProps('div', {
         ref,
         ...rest,
-        role: role ?? 'radiogroup',
+        role: role ?? _role,
         ...focusAttributes,
       }),
       { elementType: 'div' },
     ),
     notifySelected,
     selectedValue: selectedSwatch,
-    layout,
+    layout: _layout,
     size,
     shape,
     spacing,
