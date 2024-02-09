@@ -19,6 +19,16 @@ export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue'
     previousSelectedValue?: NavItemValue;
     registeredNavItems: Record<string, NavItemRegisterData>;
   };
+  /**
+   * Callback used by NavCategoryItem to request a change on it's own opened state
+   * Should be used to toggle NavCategoryItem's open state
+   */
+  onRequestNavCategoryItemToggle: EventHandler<OnNavItemSelectData>;
+
+  /**
+   * The list of opened panels by index
+   */
+  openItems: NavItemValue[];
 };
 
 /**
