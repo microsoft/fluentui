@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 26 Oct 2023 04:16:51 GMT and should not be manually modified.
+This log was last generated on Fri, 09 Feb 2024 04:08:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.7)
+
+Fri, 09 Feb 2024 04:08:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.6..@fluentui/web-components_v3.0.0-beta.7)
+
+### Changes
+
+- feat: remove JS design token implementation in favor of platform css variables ([PR #30002](https://github.com/microsoft/fluentui/pull/30002) by chhol@microsoft.com)
 
 ## [3.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.6)
 
