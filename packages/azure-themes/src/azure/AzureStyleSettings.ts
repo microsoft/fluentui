@@ -3,7 +3,7 @@ import { ActionButtonStyles } from './styles/ActionButton.styles';
 import { BreadcrumbStyles } from './styles/Breadcrumb.styles';
 import { CalloutContentStyles } from './styles/Callout.styles';
 import { CheckboxStyles } from './styles/Checkbox.styles';
-import { CheckStyles, DetailsRowStyles, DetailsListStyles } from './styles/DetailsList.styles';
+import { CheckStyles, DetailsRowStyles, DetailsListStyles, DetailsHeaderStyles } from './styles/DetailsList.styles';
 import { ChoiceGroupOptionStyles } from './styles/ChoiceGroupOptions.styles';
 import { ColorPickerGridCellStyles } from './styles/ColorPickerGridCell.styles';
 import { ColorPickerStyles, ColorRectangleStyles, ColorSliderStyles } from './styles/ColorPicker.styles';
@@ -125,6 +125,9 @@ export const AzureStyleSettings = (theme: ITheme): any => {
     },
     DetailsRow: {
       styles: DetailsRowStyles,
+    },
+    DetailsHeader: {
+      styles: DetailsHeaderStyles,
     },
     DialogContent: {
       styles: DialogContentStyles,

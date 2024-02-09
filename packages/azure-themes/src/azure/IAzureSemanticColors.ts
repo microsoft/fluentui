@@ -128,6 +128,12 @@ export interface IAzureSemanticColors {
       border: string;
       background: string;
     };
+    indeterminate: {
+      circle: {
+        background: string;
+        hoverBackground: string;
+      };
+    };
   };
   controlOutlines: {
     rest: string;
