@@ -1,14 +1,11 @@
 import * as React from 'react';
 import { NavItemValue } from '../NavContext.types';
 import { NavCategoryContextValue } from '../NavCategoryContext';
-import { ComponentProps } from '@fluentui/react-utilities';
-
-export type NavCategorySlots = {};
 
 /**
  * NavCategory Props
  */
-export type NavCategoryProps = ComponentProps<NavCategorySlots> & {
+export type NavCategoryProps = {
   /**
    * Required value that identifies this item inside an Nav component.
    */
@@ -17,7 +14,7 @@ export type NavCategoryProps = ComponentProps<NavCategorySlots> & {
   /**
    * Children of the NavCategory
    */
-  children?: React.ReactNode;
+  children?: React.ReactNode | null;
 };
 
 /**
