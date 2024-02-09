@@ -25,8 +25,6 @@ export async function publish(config: { args: PublishArgs; group: NorthstarGroup
     groups: ['northstar'],
   });
 
-  process.exit(0);
-
   // ======= utils ========
 
   async function tagRelease(options: PublishArgs) {

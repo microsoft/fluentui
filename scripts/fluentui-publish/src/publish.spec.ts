@@ -31,10 +31,6 @@ describe(`publish`, () => {
   const nxConfig = readJsonFile(joinPathFragments(workspaceRoot, 'nx.json'));
 
   beforeEach(() => {
-    jest.spyOn(process, 'exit').mockImplementation(
-      // @ts-expect-error - no need to mock exact implementation
-      noop,
-    );
     jest.spyOn(output, 'logSingleLine').mockImplementation(noop);
   });
 
@@ -65,7 +61,6 @@ describe(`publish`, () => {
       registry: 'https://registry.npmjs.org',
       verbose: false,
     });
-    expect(process.exit).toHaveBeenCalledWith(0);
   });
 
   it(`should create and push tag and invoke nx releasePublish`, async () => {
@@ -101,6 +96,5 @@ describe(`publish`, () => {
       registry: 'https://registry.npmjs.org',
       verbose: false,
     });
-    expect(process.exit).toHaveBeenCalledWith(0);
   });
 });

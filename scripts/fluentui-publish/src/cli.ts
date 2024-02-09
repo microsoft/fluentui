@@ -34,11 +34,12 @@ function processArgs() {
   const args = yargs
     .version(false) // don't use the default meaning of version in yargs
     .scriptName('northstar-release')
-    .command('version', 'bump version', _yargs => {
+    .command('version <specifier>', 'bump version', _yargs => {
       yargs
         .positional('specifier', {
           description: 'Explicit version specifier to use, if overriding conventional commits',
           type: 'string',
+          choices: ['patch', 'minor'],
           demandOption: true,
         })
         .option('dryRun', {

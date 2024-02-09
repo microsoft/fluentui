@@ -20,6 +20,8 @@ export async function version(config: {
 }) {
   const { args, group, graph, nxConfig } = config;
 
+  assertSpecifier(args.specifier);
+
   const { workspaceVersion, projectsVersionData } = await releaseVersion({
     specifier: args.specifier,
     stageChanges: true,
@@ -177,3 +179,12 @@ function runChangeTask(config: { dryRun: boolean }) {
 
   execSync(cmd, { stdio: 'inherit' });
 }
+
+function assertSpecifier(specifier: string): asserts specifier is 'patch' | 'minor' {
+  const allowedSpecifiers = ['patch', 'minor'];
+
+  if(!allowedSpecifiers.includes(specifier)){
+    throw new Error(`your provided specifier: "${specifier}" is not allowed. Please choose one of "${allowedSpecifiers}"`)
+  }
+}
+
