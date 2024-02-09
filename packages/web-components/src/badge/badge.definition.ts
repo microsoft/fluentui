@@ -4,9 +4,6 @@ import { styles } from './badge.styles.js';
 import { template } from './badge.template.js';
 
 /**
- * The Fluent Badge Element. Implements {@link @microsoft/fast-foundation#Badge },
- * {@link @microsoft/fast-foundation#badgeTemplate}
- *
  *
  * @public
  * @remarks

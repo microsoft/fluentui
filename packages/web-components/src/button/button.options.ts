@@ -1,5 +1,6 @@
-import type { ButtonOptions } from '@microsoft/fast-foundation/button.js';
-import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
+import { StartEndOptions } from '../patterns/index.js';
+import type { ValuesOf } from '../utils/index.js';
+import type { Button } from './button.js';
 
 /**
  * ButtonAppearance constants
@@ -51,4 +52,26 @@ export const ButtonSize = {
  */
 export type ButtonSize = ValuesOf<typeof ButtonSize>;
 
-export { ButtonOptions };
+/**
+ * Button type values.
+ *
+ * @public
+ */
+export const ButtonType = {
+  submit: 'submit',
+  reset: 'reset',
+  button: 'button',
+} as const;
+
+/**
+ * Type for button type values.
+ *
+ * @public
+ */
+export type ButtonType = ValuesOf<typeof ButtonType>;
+
+/**
+ * Button configuration options
+ * @public
+ */
+export type ButtonOptions = StartEndOptions<Button>;

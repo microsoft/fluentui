@@ -1,5 +1,5 @@
 import { ElementViewTemplate, html, ref, slotted } from '@microsoft/fast-element';
-import { endSlotTemplate, startSlotTemplate } from '@microsoft/fast-foundation/patterns.js';
+import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
 import type { CompoundButton } from './compound-button.js';
 import type { CompoundButtonOptions } from './compound-button.options.js';
 
