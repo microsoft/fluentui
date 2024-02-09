@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix alignment of date axis ticks with data points",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}
