@@ -113,7 +113,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     formatDate = defaultFormatDate,
     highlightCurrentMonth = false,
     highlightSelectedMonth = false,
-    initialPickerDate = new Date(),
+    initialPickerDate: initialPickerDateProp,
     inlinePopup = false,
     isMonthPickerVisible = true,
     maxDate,
@@ -134,6 +134,9 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     value,
     ...restOfProps
   } = props;
+
+  const initialPickerDate = React.useMemo(() => initialPickerDateProp ?? new Date(), [initialPickerDateProp]);
+
   const calendar = React.useRef<ICalendar>(null);
   const [focus, rootRef, preventFocusOpeningPicker, preventNextFocusOpeningPicker] = useFocusLogic();
   const [selectedDate, formattedDate, setSelectedDate, setFormattedDate] = useSelectedDate({
