@@ -4,10 +4,6 @@ import { styles } from './menu-item.styles.js';
 import { template } from './menu-item.template.js';
 
 /**
- * The Fluent Menu Item Element. Implements {@link @microsoft/fast-foundation#MenuItem },
- * {@link @microsoft/fast-foundation#menuItemTemplate}
- *
- *
  * @public
  * @remarks
  * HTML Element: <fluent-menu-item>

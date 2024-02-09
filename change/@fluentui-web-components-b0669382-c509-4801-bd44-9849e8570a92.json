@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Removes dependancy on fast-foundation classes and templates",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}

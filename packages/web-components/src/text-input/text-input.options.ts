@@ -1,4 +1,4 @@
-import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
+import type { ValuesOf } from '../utils/index.js';
 
 /**
  * TextInput size constants
@@ -32,3 +32,40 @@ export const TextInputAppearance = {
  * @public
  */
 export type TextInputAppearance = ValuesOf<typeof TextInputAppearance>;
+
+/**
+ * Text field sub-types
+ * @public
+ */
+export const TextFieldType = {
+  /**
+   * An email TextField
+   */
+  email: 'email',
+
+  /**
+   * A password TextField
+   */
+  password: 'password',
+
+  /**
+   * A telephone TextField
+   */
+  tel: 'tel',
+
+  /**
+   * A text TextField
+   */
+  text: 'text',
+
+  /**
+   * A URL TextField
+   */
+  url: 'url',
+} as const;
+
+/**
+ * Types for the text field sub-types
+ * @public
+ */
+export type TextFieldType = ValuesOf<typeof TextFieldType>;

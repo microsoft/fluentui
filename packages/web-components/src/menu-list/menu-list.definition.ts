@@ -4,10 +4,6 @@ import { styles } from './menu-list.styles.js';
 import { template } from './menu-list.template.js';
 
 /**
- * The Fluent MenuList Element. Implements {@link @microsoft/fast-foundation#Menu },
- * {@link @microsoft/fast-foundation#menuTemplate}
- *
- *
  * @public
  * @remarks
  * HTML Element: <fluent-menu-list>
