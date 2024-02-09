@@ -1,5 +1,5 @@
-import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
 import { BadgeOptions } from '../badge/badge.options.js';
+import type { ValuesOf } from '../utils/index.js';
 
 /**
  * CounterBadge options
