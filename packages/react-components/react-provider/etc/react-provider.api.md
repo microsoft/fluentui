@@ -149,6 +149,11 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useTeachingPopoverSurfaceStyles_unstable: (state: unknown) => void;
         useTeachingPopoverTitleStyles_unstable: (state: unknown) => void;
         useTimePickerCompatStyles_unstable: (state: unknown) => void;
+        useSwatchPickerStyles_unstable: (state: unknown) => void;
+        useColorSwatchStyles_unstable: (state: unknown) => void;
+        useImageSwatchStyles_unstable: (state: unknown) => void;
+        useRadioPickerStyles_unstable: (state: unknown) => void;
+        useRadioSwatchStyles_unstable: (state: unknown) => void;
     }> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;
