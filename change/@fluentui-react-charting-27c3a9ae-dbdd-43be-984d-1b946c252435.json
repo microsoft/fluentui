@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Improves SankeyChart mouse performance by reducing the DOM size and memoizing computations.",
+  "packageName": "@fluentui/react-charting",
+  "email": "rarthur@microsoft.com",
+  "dependentChangeType": "patch"
+}
