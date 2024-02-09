@@ -91,6 +91,10 @@ const useRootClassName = makeResetStyles({
   ':focus-within': {
     outline: '2px solid transparent',
   },
+  ':hover': {
+    // This is for hover it show as text cursor like input
+    cursor: 'text',
+  },
 });
 
 const useRootStyles = makeStyles({

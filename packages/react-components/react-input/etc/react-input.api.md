@@ -37,7 +37,7 @@ export type InputProps = Omit<ComponentProps<Partial<InputSlots>, 'input'>, 'chi
 
 // @public (undocumented)
 export type InputSlots = {
-    root: NonNullable<Slot<'span'>>;
+    root: NonNullable<Slot<'label'>>;
     input: NonNullable<Slot<'input'>>;
     contentBefore?: Slot<'span'>;
     contentAfter?: Slot<'span'>;

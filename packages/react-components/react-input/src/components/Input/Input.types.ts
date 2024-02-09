@@ -9,7 +9,7 @@ export type InputSlots = {
    * The root slot receives the `className` and `style` specified directly on the `<Input>`.
    * All other top-level native props will be applied to the primary slot, `input`.
    */
-  root: NonNullable<Slot<'span'>>;
+  root: NonNullable<Slot<'label'>>;
 
   /**
    * The actual `<input>` element. `type="text"` will be automatically applied unless overridden.
