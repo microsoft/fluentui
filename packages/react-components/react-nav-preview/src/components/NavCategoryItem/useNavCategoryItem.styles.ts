@@ -1,6 +1,6 @@
 import type { NavCategoryItemSlots, NavCategoryItemState } from './NavCategoryItem.types';
 
-import { makeResetStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, mergeClasses, makeStyles } from '@griffel/react';
 import { typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -17,8 +17,16 @@ const useRootStyles = makeResetStyles({
   ...typographyStyles.body1,
 });
 
-const useExpandIconStyles = makeResetStyles({
-  display: 'flex',
+const useExpandIconStyles = makeStyles({
+  icon: {
+    display: 'flex',
+  },
+  open: {
+    transform: 'rotate(-90deg)',
+  },
+  closed: {
+    transform: 'rotate(90deg)',
+  },
 });
 
 /**
@@ -26,13 +34,14 @@ const useExpandIconStyles = makeResetStyles({
  */
 export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): NavCategoryItemState => {
   const defaultRootStyles = useRootStyles();
-  const defaultExpandIconStyles = useExpandIconStyles();
+  const expandIconStyles = useExpandIconStyles();
 
   state.root.className = mergeClasses(navCategoryItemClassNames.root, defaultRootStyles, state.root.className);
 
   state.expandIcon.className = mergeClasses(
     navCategoryItemClassNames.expandIcon,
-    defaultExpandIconStyles,
+    expandIconStyles.icon,
+    state.open ? expandIconStyles.open : expandIconStyles.closed,
     state.expandIcon.className,
   );
 
