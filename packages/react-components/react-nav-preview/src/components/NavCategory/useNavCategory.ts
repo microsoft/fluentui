@@ -21,6 +21,6 @@ export const useNavCategory_unstable = (props: NavCategoryProps, ref: React.Ref<
   return {
     open,
     value,
-    children,
+    children: children ?? null,
   };
 };
