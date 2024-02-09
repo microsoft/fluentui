@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 09 Feb 2024 07:25:49 GMT",
+      "tag": "@fluentui/react-charting_v5.19.25",
+      "version": "5.19.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ec061506fb9421292b5187d96ac367d458dc7d4d",
+            "comment": "Fix alignment of date axis ticks with data points"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Feb 2024 07:37:50 GMT",
       "tag": "@fluentui/react-charting_v5.19.24",
       "version": "5.19.24",
