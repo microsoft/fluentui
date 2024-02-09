@@ -4,8 +4,6 @@ import { styles } from './toggle-button.styles.js';
 import { template } from './toggle-button.template.js';
 
 /**
- * The Fluent Toggle Button Element. Implements {@link @microsoft/fast-foundation#Button },
- * {@link @microsoft/fast-foundation#buttonTemplate}
  *
  * @public
  * @remarks

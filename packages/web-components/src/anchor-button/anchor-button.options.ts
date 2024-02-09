@@ -1,6 +1,6 @@
-import type { AnchorOptions } from '@microsoft/fast-foundation/anchor.js';
-import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
 import { ButtonAppearance, ButtonShape, ButtonSize } from '../button/button.options.js';
+import type { ValuesOf } from '../utils/index.js';
+import type { AnchorOptions } from './anchor-button.js';
 
 /**
  * Anchor Button Appearance constants
@@ -39,3 +39,22 @@ export const AnchorButtonSize = ButtonSize;
 export type AnchorButtonSize = ValuesOf<typeof AnchorButtonSize>;
 
 export { AnchorOptions as AnchorButtonOptions };
+
+/**
+ * Anchor target values.
+ *
+ * @public
+ */
+export const AnchorTarget = {
+  _self: '_self',
+  _blank: '_blank',
+  _parent: '_parent',
+  _top: '_top',
+} as const;
+
+/**
+ * Type for anchor target values.
+ *
+ * @public
+ */
+export type AnchorTarget = ValuesOf<typeof AnchorTarget>;

@@ -1,12 +1,11 @@
 import { html } from '@microsoft/fast-element';
-import { TabsOrientation } from '@microsoft/fast-foundation/tabs.js';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { Tabs as FluentTabs } from './tabs.js';
 import './define.js';
 import '../tab/define.js';
 import '../tab-panel/define.js';
-import { TabsAppearance as TabsAppearanceValues, TabsSize } from './tabs.options.js';
+import { TabsAppearance as TabsAppearanceValues, TabsOrientation, TabsSize } from './tabs.options.js';
 
 type TabsStoryArgs = Args & FluentTabs;
 type TabsStoryMeta = Meta<TabsStoryArgs>;
