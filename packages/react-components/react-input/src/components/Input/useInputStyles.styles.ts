@@ -219,6 +219,7 @@ const useInputElementStyles = makeStyles({
     paddingLeft: tokens.spacingHorizontalSNudge,
     paddingRight: tokens.spacingHorizontalSNudge,
   },
+  medium: {},
   large: {
     paddingLeft: tokens.spacingHorizontalL,
     paddingRight: tokens.spacingHorizontalL,
@@ -344,7 +345,7 @@ export const useInputStyles_unstable = (state: InputState): InputState => {
   state.input.className = mergeClasses(
     inputClassNames.input,
     useInputClassName(),
-    (size === 'large' && inputStyles.large) || (size === 'small' && inputStyles.small),
+    inputStyles[size],
     disabled && inputStyles.disabled,
     state.input.className,
   );
