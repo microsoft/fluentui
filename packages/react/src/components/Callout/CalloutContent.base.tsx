@@ -21,7 +21,7 @@ import type { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } 
 import type { Point, IRectangle } from '../../Utilities';
 import type { ICalloutPositionedInfo, IPositionProps, IPosition } from '../../Positioning';
 import type { Target } from '@fluentui/react-hooks';
-import { useWindow } from '@fluentui/react-window-provider';
+import { useWindowEx } from '../../utilities/dom';
 
 const COMPONENT_NAME = 'CalloutContentBase';
 
@@ -126,6 +126,7 @@ function useMaxHeight(
     gapSpace,
     beakWidth,
     isBeakVisible,
+    coverTarget,
   }: ICalloutProps,
   getBounds: () => IRectangle | undefined,
   targetRef: React.RefObject<Element | MouseEvent | Point | null>,
@@ -141,9 +142,9 @@ function useMaxHeight(
     let { bottom: bottomBounds } = bounds;
     let calculatedHeight: number | undefined;
 
-    // If aligned to top edge of target, update bottom bounds to the top of the target
-    // (accounting for gap space and beak)
-    if (positions?.targetEdge === RectangleEdge.top && targetRect?.top) {
+    // If aligned to top edge of target and not covering target, update bottom bounds to the
+    // top of the target (accounting for gap space and beak)
+    if (positions?.targetEdge === RectangleEdge.top && targetRect?.top && !coverTarget) {
       bottomBounds = targetRect.top - calculateGapSpace(isBeakVisible, beakWidth, gapSpace);
     }
 
@@ -177,6 +178,7 @@ function useMaxHeight(
     beakWidth,
     isBeakVisible,
     targetRect,
+    coverTarget,
   ]);
 
   return maxHeight;
@@ -208,7 +210,7 @@ function usePositions(
     preferScrollResizePositioning,
   } = props;
 
-  const win = useWindow();
+  const win = useWindowEx();
   const localRef = React.useRef<HTMLDivElement | null>();
   let popupStyles: CSSStyleDeclaration | undefined;
   if (localRef.current !== popupRef.current) {
@@ -243,8 +245,16 @@ function usePositions(
           // If there is a finalHeight given then we assume that the user knows and will handle
           // additional positioning adjustments so we should call positionCard
           const newPositions: ICalloutPositionedInfo = finalHeight
-            ? positionCard(currentProps, hostElement.current, dupeCalloutElement, previousPositions)
-            : positionCallout(currentProps, hostElement.current, dupeCalloutElement, previousPositions, shouldScroll);
+            ? positionCard(currentProps, hostElement.current, dupeCalloutElement, previousPositions, win)
+            : positionCallout(
+                currentProps,
+                hostElement.current,
+                dupeCalloutElement,
+                previousPositions,
+                shouldScroll,
+                undefined,
+                win,
+              );
 
           // clean up duplicate calloutElement
           calloutElement.parentElement?.removeChild(dupeCalloutElement);
@@ -295,6 +305,7 @@ function usePositions(
     hideOverflow,
     preferScrollResizePositioning,
     popupOverflowY,
+    win,
   ]);
 
   return positions;

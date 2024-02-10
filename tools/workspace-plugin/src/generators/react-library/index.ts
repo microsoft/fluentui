@@ -7,13 +7,12 @@ import {
   generateFiles,
   offsetFromRoot,
   addProjectConfiguration,
-  readNxJson,
   joinPathFragments,
   updateJson,
   readJson,
 } from '@nx/devkit';
 
-import { getProjectConfig } from '../../utils';
+import { getProjectConfig, getWorkspaceConfig } from '../../utils';
 
 import { ReactLibraryGeneratorSchema } from './schema';
 import { PackageJson, TsConfig } from '../../types';
@@ -45,7 +44,7 @@ export default async function (tree: Tree, schema: ReactLibraryGeneratorSchema) 
 }
 
 function normalizeOptions(tree: Tree, options: ReactLibraryGeneratorSchema) {
-  const npmScope = readNxJson(tree)?.npmScope as string;
+  const npmScope = getWorkspaceConfig(tree).npmScope;
   const projectNameSuffix = options.kind === 'compat' ? '-compat' : '-preview';
   const projectName = '@' + npmScope + '/' + options.name + projectNameSuffix;
   const projectDirectory = options.name + projectNameSuffix;

@@ -288,6 +288,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                         min-width: 180px;
                       }
                   data-focuszone-id="FocusZone3"
+                  data-tabster="{\\"uncontrolled\\": {}}"
                   onFocus={[Function]}
                   onKeyDown={[Function]}
                   onMouseDownCapture={[Function]}

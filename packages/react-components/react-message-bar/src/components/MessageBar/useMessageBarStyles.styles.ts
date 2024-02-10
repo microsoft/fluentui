@@ -6,6 +6,7 @@ import type { MessageBarSlots, MessageBarState } from './MessageBar.types';
 export const messageBarClassNames: SlotClassNames<MessageBarSlots> = {
   root: 'fui-MessageBar',
   icon: 'fui-MessageBar__icon',
+  bottomReflowSpacer: 'fui-MessageBar__bottomReflowSpacer',
 };
 
 const useRootBaseStyles = makeResetStyles({
@@ -30,6 +31,11 @@ const useIconBaseStyles = makeResetStyles({
   color: tokens.colorNeutralForeground3,
   display: 'flex',
   alignItems: 'center',
+});
+
+const useReflowSpacerBaseStyles = makeResetStyles({
+  marginBottom: tokens.spacingVerticalS,
+  gridArea: 'secondaryActions',
 });
 
 const useStyles = makeStyles({
@@ -97,6 +103,7 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
   const iconBaseStyles = useIconBaseStyles();
   const iconIntentStyles = useIconIntentStyles();
   const rootIntentStyles = useRootIntentStyles();
+  const reflowSpacerStyles = useReflowSpacerBaseStyles();
   const styles = useStyles();
 
   state.root.className = mergeClasses(
@@ -116,6 +123,10 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
       iconIntentStyles[state.intent],
       state.icon.className,
     );
+  }
+
+  if (state.bottomReflowSpacer) {
+    state.bottomReflowSpacer.className = mergeClasses(messageBarClassNames.bottomReflowSpacer, reflowSpacerStyles);
   }
 
   return state;

@@ -5,6 +5,9 @@ export type PresenceMotion = {
   exit: AtomMotion;
 };
 
+export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
+export type PresenceMotionFn = (element: HTMLElement) => PresenceMotion;
+
 export type MotionImperativeRef = {
   /** Sets the playback rate of the animation, where 1 is normal speed. */
   setPlaybackRate: (rate: number) => void;

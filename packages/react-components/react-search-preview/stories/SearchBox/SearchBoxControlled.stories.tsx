@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { SearchBox } from '@fluentui/react-search-preview';
-import { Field } from '@fluentui/react-components';
-import type { SearchBoxProps } from '@fluentui/react-search-preview';
+import { Field, InputOnChangeData } from '@fluentui/react-components';
+import { SearchBoxChangeEvent } from '../../src/SearchBox';
 
 export const Controlled = () => {
   const [value, setValue] = React.useState('initial value');
   const [valid, setValid] = React.useState(true);
 
-  const onChange: SearchBoxProps['onChange'] = (ev, data) => {
+  const onChange: (ev: SearchBoxChangeEvent, data: InputOnChangeData) => void = (_, data) => {
     if (data.value.length <= 20) {
       setValue(data.value);
       setValid(true);

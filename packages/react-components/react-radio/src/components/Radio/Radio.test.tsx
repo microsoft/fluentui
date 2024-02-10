@@ -19,6 +19,9 @@ describe('Radio', () => {
           },
         },
       ],
+      'consistent-callback-args': {
+        legacyCallbacks: ['onChange'],
+      },
     },
   });
 

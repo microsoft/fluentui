@@ -272,6 +272,9 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
         width: entityHostWidth,
         height: entityHostHeight,
       },
+      isCollapsed && {
+        cursor: 'pointer',
+      },
     ],
     entityInnerHost: [
       {

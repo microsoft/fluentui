@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-toolbar",
-  "version": "9.1.61",
+  "version": "9.1.70",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -35,21 +35,21 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-button": "^9.3.60",
-    "@fluentui/react-divider": "^9.2.54",
+    "@fluentui/react-button": "^9.3.68",
+    "@fluentui/react-divider": "^9.2.60",
     "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.15.5",
-    "@fluentui/react-jsx-runtime": "^9.0.23",
-    "@fluentui/react-context-selector": "^9.1.45",
-    "@fluentui/react-radio": "^9.1.61",
-    "@fluentui/react-shared-contexts": "^9.13.2",
-    "@fluentui/react-tabster": "^9.16.1",
+    "@fluentui/react-utilities": "^9.18.0",
+    "@fluentui/react-jsx-runtime": "^9.0.29",
+    "@fluentui/react-context-selector": "^9.1.51",
+    "@fluentui/react-radio": "^9.2.7",
+    "@fluentui/react-shared-contexts": "^9.14.0",
+    "@fluentui/react-tabster": "^9.19.0",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
-    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
     "react": ">=16.14.0 <19.0.0",
     "react-dom": ">=16.14.0 <19.0.0"
   },

@@ -13,7 +13,10 @@ export type DropdownSlots = {
   root: NonNullable<Slot<'div'>>;
 
   /* The dropdown arrow icon */
-  expandIcon: Slot<'span'>;
+  expandIcon?: Slot<'span'>;
+
+  /* The dropdown clear icon */
+  clearButton?: Slot<'button'>;
 
   /* The primary slot, the element with role="combobox" */
   button: NonNullable<Slot<'button'>>;
@@ -34,6 +37,8 @@ export type DropdownState = ComponentState<DropdownSlots> &
   ComboboxBaseState & {
     /* Whether the placeholder is currently displayed */
     placeholderVisible: boolean;
+
+    showClearButton?: boolean;
   };
 
 /* Export types defined in ComboboxBase */

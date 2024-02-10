@@ -59,7 +59,7 @@ export type TimeStringValidationResult = {
   errorType?: TimePickerErrorType;
 };
 
-export type TimePickerSlots = ComboboxSlots;
+export type TimePickerSlots = Omit<ComboboxSlots, 'clearIcon'>;
 
 export type TimeSelectionEvents = SelectionEvents | React.FocusEvent<HTMLElement>;
 export type TimeSelectionData = {
@@ -145,6 +145,7 @@ export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input
     /**
      * Callback for when a time selection is made.
      */
+    // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
     onTimeChange?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
 
     /**

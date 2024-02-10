@@ -31,6 +31,9 @@ describe('Input', () => {
           },
         },
       ],
+      'consistent-callback-args': {
+        legacyCallbacks: ['onChange'],
+      },
     },
   });
 

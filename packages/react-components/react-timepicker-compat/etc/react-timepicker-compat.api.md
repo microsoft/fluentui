@@ -39,7 +39,7 @@ export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input
 };
 
 // @public (undocumented)
-export type TimePickerSlots = ComboboxSlots;
+export type TimePickerSlots = Omit<ComboboxSlots, 'clearIcon'>;
 
 // @public
 export type TimePickerState = ComboboxState & Required<Pick<TimePickerProps, 'freeform' | 'parseTimeStringToDate'>> & {

@@ -92,12 +92,15 @@ export type {
   TypographyStyles,
 } from '@fluentui/react-theme';
 export {
+  AnnounceProvider,
+  PortalMountNodeProvider,
+  useAnnounce,
   useFluent_unstable as useFluent,
+  usePortalMountNode,
   useTooltipVisibility_unstable as useTooltipVisibility,
   useThemeClassName_unstable as useThemeClassName,
-  PortalMountNodeProvider,
-  usePortalMountNode,
 } from '@fluentui/react-shared-contexts';
+export type { AnnounceContextValue } from '@fluentui/react-shared-contexts';
 export {
   // getNativeElementProps is deprecated but removing it would be a breaking change
   // eslint-disable-next-line deprecation/deprecation
@@ -373,6 +376,7 @@ export {
   useComboboxContextValues,
   ListboxProvider,
   useListboxContextValues,
+  useComboboxFilter,
 } from '@fluentui/react-combobox';
 export type {
   ComboboxProps,
@@ -1559,3 +1563,11 @@ export type {
   BreadcrumbButtonState,
   BreadcrumbContextValues,
 } from '@fluentui/react-breadcrumb';
+
+export {
+  AriaLiveAnnouncer,
+  renderAriaLiveAnnouncer_unstable,
+  useAriaLiveAnnouncer_unstable,
+  useAriaLiveAnnouncerContextValues_unstable,
+} from '@fluentui/react-aria';
+export type { AriaLiveAnnouncerProps, AriaLiveAnnouncerState } from '@fluentui/react-aria';

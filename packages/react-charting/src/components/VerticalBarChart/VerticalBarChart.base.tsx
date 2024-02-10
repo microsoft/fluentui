@@ -2,7 +2,12 @@ import * as React from 'react';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { line as d3Line } from 'd3-shape';
 import { select as d3Select } from 'd3-selection';
-import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
+import {
+  scaleLinear as d3ScaleLinear,
+  ScaleLinear as D3ScaleLinear,
+  scaleBand as d3ScaleBand,
+  scaleUtc as d3ScaleUtc,
+} from 'd3-scale';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -29,7 +34,6 @@ import {
   getAccessibleDataObject,
   XAxisTypes,
   NumericAxis,
-  StringAxis,
   getTypeOfAxis,
   tooltipOfXAxislabels,
   formatValueWithSIPrefix,
@@ -48,7 +52,7 @@ export interface IVerticalBarChartState extends IBasestate {
   /**
    * data point of x, where rectangle is hovered or focused
    */
-  activeXdataPoint: number | string | null;
+  activeXdataPoint: number | string | Date | null;
   YValueHover: IYValueHover[];
   hoverXValue?: string | number | null;
   callOutAccessibilityData?: IAccessibilityProps;
@@ -205,8 +209,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     yScaleSecondary?: any,
   ): React.ReactNode => {
-    const isNumericAxis = this._xAxisType === XAxisTypes.NumericAxis;
-    const { xBarScale } = this._getScales(containerHeight, containerWidth, isNumericAxis);
+    const isStringAxis = this._xAxisType === XAxisTypes.StringAxis;
+    const { xBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
     const { theme } = this.props;
     const { data, lineLegendColor = theme!.palette.yellow, lineLegendText } = this.props;
@@ -227,7 +231,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       });
     const linePath = d3Line()
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .x((d: any) => (!isNumericAxis ? xBarScale(d.x) + 0.5 * xBarScale.bandwidth() : xScale(d.x)))
+      .x((d: any) => (isStringAxis ? xBarScale(d.x) + 0.5 * xBarScale.bandwidth() : xScale(d.x)))
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .y((d: any) => (d.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(d.y) : yScale(d.y)));
     const shouldHighlight = this._legendHighlighted(lineLegendText!) || this._noLegendHighlighted() ? true : false;
@@ -245,7 +249,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           fill="transparent"
           strokeLinecap="square"
           strokeWidth={3 + lineBorderWidth * 2}
-          stroke={theme!.palette.white}
+          stroke={theme!.semanticColors.bodyBackground}
         />,
       );
     }
@@ -277,13 +281,13 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           <circle
             key={index}
             id={getId('_VBC_point_')}
-            cx={!isNumericAxis ? xBarScale(item.x) + 0.5 * xBarScale.bandwidth() : xScale(item.x)}
+            cx={isStringAxis ? xBarScale(item.x) + 0.5 * xBarScale.bandwidth() : xScale(item.x)}
             cy={item.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(item.y) : yScale(item.y)}
             onMouseOver={this._onBarHover.bind(this, item.point, colorScale(item.y))}
             onMouseOut={this._onBarLeave}
             r={8}
             stroke={lineLegendColor}
-            fill={this.props.theme!.palette.white}
+            fill={this.props.theme!.semanticColors.bodyBackground}
             strokeWidth={3}
             visibility={this.state.activeXdataPoint === item.x ? CircleVisbility.show : CircleVisbility.hide}
             onClick={item.point.lineData?.onClick}
@@ -384,7 +388,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   };
 
   private _getGraphData = (
-    xScale: StringAxis,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    xScale: any,
     yScale: NumericAxis,
     containerHeight: number,
     containerWidth: number,
@@ -393,6 +398,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     return (this._bars =
       this._xAxisType === XAxisTypes.NumericAxis
         ? this._createNumericBars(containerHeight, containerWidth, xElement!)
+        : this._xAxisType === XAxisTypes.DateAxis
+        ? this._createDateBars(containerHeight, containerWidth, xElement!)
         : this._createStringBars(containerHeight, containerWidth, xElement!));
   };
 
@@ -447,7 +454,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       data: selectedPoint[0].yAxisCalloutData,
       yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
     });
-    return { YValueHover, hoverXValue: point.xAxisCalloutData || point.x.toString() };
+    const hoverXValue = point.x instanceof Date ? point.x.toLocaleString() : point.x.toString();
+    return {
+      YValueHover,
+      hoverXValue: point.xAxisCalloutData || hoverXValue,
+    };
   };
 
   private _onBarHover(
@@ -468,7 +479,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         calloutLegend: point.legend!,
         color: point.color || color,
         // To display callout value, if no callout value given, taking given point.x value as a string.
-        xCalloutValue: point.xAxisCalloutData || point.x.toString(),
+        xCalloutValue:
+          point.xAxisCalloutData || (point.x instanceof Date ? point.x.toLocaleDateString() : point.x.toString()),
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,
         activeXdataPoint: point.x,
@@ -504,7 +516,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           calloutLegend: point.legend!,
           dataForHoverCard: point.y,
           color: point.color || color,
-          xCalloutValue: point.xAxisCalloutData || point.x.toString(),
+          xCalloutValue:
+            point.xAxisCalloutData || (point.x instanceof Date ? point.x.toLocaleDateString() : point.x.toString()),
           yCalloutValue: point.yAxisCalloutData!,
           dataPointCalloutProps: point,
           activeXdataPoint: point.x,
@@ -519,25 +532,36 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _getScales = (
     containerHeight: number,
     containerWidth: number,
-    isNumericScale: boolean,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): { xBarScale: any; yBarScale: any } => {
-    if (isNumericScale) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let xBarScale: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const yBarScale: any = d3ScaleLinear()
+      .domain([0, this._yMax])
+      .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
+
+    if (this._xAxisType === XAxisTypes.NumericAxis) {
       const xMax = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
       const xMin = d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.x as number)!;
-      const xBarScale = d3ScaleLinear()
+      xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
         .nice()
         .range([
           this.margins.left! + this._domainMargin,
           containerWidth - this.margins.right! - this._barWidth - this._domainMargin,
         ]);
-      const yBarScale = d3ScaleLinear()
-        .domain([0, this._yMax])
-        .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
-      return { xBarScale, yBarScale };
+    } else if (this._xAxisType === XAxisTypes.DateAxis) {
+      const sDate = d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
+      const lDate = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
+      xBarScale = d3ScaleUtc()
+        .domain([sDate, lDate])
+        .range([
+          this.margins.left! + this._domainMargin + this._barWidth / 2,
+          containerWidth - this.margins.right! - this._barWidth / 2 - this._domainMargin,
+        ]);
     } else {
-      const xBarScale = d3ScaleBand()
+      xBarScale = d3ScaleBand()
         .domain(this._xAxisLabels)
         .range(
           this._isRtl
@@ -546,17 +570,14 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         )
         .paddingInner(this._xAxisInnerPadding)
         .paddingOuter(this._xAxisOuterPadding);
-
-      const yBarScale = d3ScaleLinear()
-        .domain([0, this._yMax])
-        .range([0, containerHeight - this.margins.bottom! - this.margins.top!]);
-      return { xBarScale, yBarScale };
     }
+
+    return { xBarScale, yBarScale };
   };
 
   private _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
     const { useSingleColor = false } = this.props;
-    const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, true);
+    const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
       const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
@@ -568,7 +589,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       let adjustedBarHeight = 0;
       if (barHeight <= 0) {
-        return <React.Fragment key={point.x}> </React.Fragment>;
+        return <React.Fragment key={point.x as string}> </React.Fragment>;
       } else if (barHeight <= Math.ceil(yBarScale(this._yMax) / 100.0)) {
         adjustedBarHeight = Math.ceil(yBarScale(this._yMax) / 100.0);
       } else {
@@ -577,7 +598,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const xPoint = xBarScale(point.x as number);
       const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
       return (
-        <g key={point.x}>
+        <g key={point.x as string}>
           <rect
             id={getId('_VBC_bar_')}
             x={xPoint}
@@ -627,13 +648,13 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   }
 
   private _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
-    const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth, false);
+    const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       let adjustedBarHeight = 0;
       if (barHeight <= 0) {
-        return <React.Fragment key={point.x}> </React.Fragment>;
+        return <React.Fragment key={point.x instanceof Date ? point.x.getTime() : point.x}> </React.Fragment>;
       } else if (barHeight <= Math.ceil(yBarScale(this._yMax) / 100.0)) {
         adjustedBarHeight = Math.ceil(yBarScale(this._yMax) / 100.0);
       } else {
@@ -649,7 +670,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         this._barWidth = Math.max(this._barWidth, 1);
       }
       return (
-        <g key={point.x} transform={`translate(${0.5 * (xBarScale.bandwidth() - this._barWidth)}, 0)`}>
+        <g
+          key={point.x instanceof Date ? point.x.getTime() : point.x}
+          transform={`translate(${0.5 * (xBarScale.bandwidth() - this._barWidth)}, 0)`}
+        >
           <rect
             id={getId('_VBC_bar_')}
             x={xPoint}
@@ -693,6 +717,78 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         id: this._tooltipId,
         xAxis: xAxisElement,
         showTooltip: this.props.showXAxisLablesTooltip,
+      };
+      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+    }
+    return bars;
+  }
+
+  private _createDateBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+    const { useSingleColor = false } = this.props;
+    const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
+    const colorScale = this._createColors();
+    const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
+      const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
+      this._classNames = getClassNames(this.props.styles!, {
+        theme: this.props.theme!,
+        legendColor: this.state.color,
+        shouldHighlight: shouldHighlight,
+      });
+      const barHeight: number = Math.max(yBarScale(point.y), 0);
+      let adjustedBarHeight = 0;
+      if (barHeight <= 0) {
+        return <React.Fragment key={point.x instanceof Date ? point.x.getTime() : point.x}> </React.Fragment>;
+      } else if (barHeight <= Math.ceil(yBarScale(this._yMax) / 100.0)) {
+        adjustedBarHeight = Math.ceil(yBarScale(this._yMax) / 100.0);
+      } else {
+        adjustedBarHeight = barHeight;
+      }
+      const xPoint = xBarScale(point.x as number) - this._barWidth / 2;
+      const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
+      return (
+        <g key={point.x instanceof Date ? point.x.getTime() : point.x}>
+          <rect
+            id={getId('_VBC_bar_')}
+            x={xPoint}
+            className={this._classNames.opacityChangeOnHover}
+            y={yPoint}
+            width={this._barWidth}
+            data-is-focusable={!this.props.hideTooltip}
+            height={adjustedBarHeight}
+            ref={(e: SVGRectElement) => {
+              this._refCallback(e, point.legend!);
+            }}
+            onClick={point.onClick}
+            onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
+            aria-label={this._getAriaLabel(point)}
+            role="img"
+            onMouseLeave={this._onBarLeave}
+            onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
+            onBlur={this._onBarLeave}
+            fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
+          />
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
+        </g>
+      );
+    });
+    // Removing un wanted tooltip div from DOM, when prop not provided.
+    if (!this.props.showXAxisLablesTooltip) {
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+    }
+    // Used to display tooltip at x axis labels.
+    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
+      const xAxisElement = d3Select(xElement).call(xBarScale);
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+      const tooltipProps = {
+        tooltipCls: this._classNames.tooltip!,
+        id: this._tooltipId,
+        xAxis: xAxisElement,
       };
       xAxisElement && tooltipOfXAxislabels(tooltipProps);
     }
@@ -811,7 +907,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   };
 
   private _getAriaLabel = (point: IVerticalBarChartDataPoint): string => {
-    const xValue = point.xAxisCalloutData || point.x;
+    const xValue = point.xAxisCalloutData
+      ? point.xAxisCalloutData
+      : point.x instanceof Date
+      ? point.x.toLocaleString()
+      : point.x;
     const legend = point.legend;
     const yValue = point.yAxisCalloutData || point.y;
     const lineLegend = this.props.lineLegendText || 'Line';
@@ -848,10 +948,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   }
 
   private _getDomainMargins = (containerWidth: number): IMargins => {
-    if (this._xAxisType === XAxisTypes.NumericAxis) {
-      this._domainMargin = MIN_DOMAIN_MARGIN;
-    } else {
+    if (this._xAxisType === XAxisTypes.StringAxis) {
       this._domainMargin = 0;
+    } else {
+      this._domainMargin = MIN_DOMAIN_MARGIN;
     }
 
     return {

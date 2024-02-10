@@ -12,11 +12,12 @@ export { ImperativeRefPlayState as setPlayState } from './ImperativeRefPlayState
 
 export { CustomAtom } from './CustomAtom.stories';
 export { TokensUsage } from './TokensUsage.stories';
+export { MotionFunctions } from './MotionFunctions.stories';
 
 export { MotionLibrary } from './MotionLibrary.stories';
 
 export default {
-  title: 'Utilities/Motions (Preview)',
+  title: 'Utilities/Web Motions (Preview)',
   component: null,
   parameters: {
     docs: {

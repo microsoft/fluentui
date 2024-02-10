@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update version of @fluentui/react-icons to 2.0.224",
-  "packageName": "@fluentui/react-alert",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

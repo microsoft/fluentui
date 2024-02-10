@@ -602,10 +602,10 @@ export class GroupedVerticalBarChartBase extends React.Component<
   };
 
   private _getDomainMargins = (containerWidth: number): IMargins => {
-    if (this._xAxisType === XAxisTypes.NumericAxis) {
-      this._domainMargin = MIN_DOMAIN_MARGIN;
-    } else {
+    if (this._xAxisType === XAxisTypes.StringAxis) {
       this._domainMargin = 0;
+    } else {
+      this._domainMargin = MIN_DOMAIN_MARGIN;
     }
 
     return {

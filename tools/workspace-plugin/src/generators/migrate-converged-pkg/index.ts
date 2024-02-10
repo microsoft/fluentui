@@ -14,7 +14,6 @@ import {
   offsetFromRoot,
   applyChangesToString,
   ChangeType,
-  readNxJson,
 } from '@nx/devkit';
 import path from 'path';
 import ts from 'typescript';
@@ -26,6 +25,7 @@ import {
   arePromptsEnabled,
   getProjectConfig,
   getProjects,
+  getWorkspaceConfig,
   isPackageConverged,
   printUserLogs,
   prompt,
@@ -1101,7 +1101,7 @@ function updateTsGlobalTypes(tree: Tree, options: NormalizedSchema) {
 }
 
 function updatedBaseTsConfig(tree: Tree, options: NormalizedSchema) {
-  const workspaceConfig = readNxJson(tree);
+  const workspaceConfig = getWorkspaceConfig(tree);
   const publishedNpmScope = `@${workspaceConfig?.npmScope}`;
   const allProjects = getProjects(tree);
 
