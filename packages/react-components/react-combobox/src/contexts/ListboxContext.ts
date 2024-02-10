@@ -37,7 +37,6 @@ const listboxContextDefaultValue = {
   },
 };
 
-// eslint-disable-next-line @fluentui/no-context-default-value
 export const ListboxContext = createContext<ListboxContextValue | undefined>(undefined);
 
 export const useListboxContext_unstable = <T>(selector: ContextSelector<ListboxContextValue, T>) =>

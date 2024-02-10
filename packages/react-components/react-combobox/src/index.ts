@@ -61,3 +61,9 @@ export type { OptionGroupProps, OptionGroupSlots, OptionGroupState } from './Opt
 export type { OptionOnSelectData, SelectionEvents } from './Selection';
 
 export { useComboboxFilter } from './hooks/useComboboxFilter';
+
+export { useComboboxBaseState } from './utils/useComboboxBaseState';
+export type { ComboboxBaseState } from './utils/ComboboxBase.types';
+export { useListboxSlot } from './utils/useListboxSlot';
+export { useInputTriggerSlot } from './components/Combobox/useInputTriggerSlot';
+export { useButtonTriggerSlot } from './components/Dropdown/useButtonTriggerSlot';
