@@ -1,7 +1,7 @@
 {
-  "type": "none",
-  "comment": "style : fix style input root on clickable",
+  "type": "patch",
+  "comment": "fix: update Input styles to improve clickability",
   "packageName": "@fluentui/react-input",
   "email": "nathvichea1@gmail.com",
-  "dependentChangeType": "none"
+  "dependentChangeType": "path"
 }
