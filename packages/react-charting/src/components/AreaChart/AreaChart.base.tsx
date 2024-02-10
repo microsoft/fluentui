@@ -615,7 +615,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     if (this.state.nearestCircleToHighlight === xDataPoint || this.state.activePoint === circleId) {
       this._highlightedCircleId = circleId;
       if (!this.state.isCircleClicked) {
-        fillColor = this.props.theme!.palette.white;
+        fillColor = this.props.theme!.semanticColors.bodyBackground;
       }
     }
 

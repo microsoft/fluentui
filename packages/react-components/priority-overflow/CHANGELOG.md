@@ -1,8 +1,17 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Mon, 20 Nov 2023 09:55:08 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Dec 2023 09:58:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.11)
+
+Thu, 14 Dec 2023 09:58:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.10..@fluentui/priority-overflow_v9.1.11)
+
+### Patches
+
+- fix: updates should be synchronous in unit tests ([PR #30014](https://github.com/microsoft/fluentui/pull/30014) by lingfangao@hotmail.com)
 
 ## [9.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.10)
 

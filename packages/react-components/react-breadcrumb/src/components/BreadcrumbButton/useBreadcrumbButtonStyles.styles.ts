@@ -66,7 +66,6 @@ const useStyles = makeStyles({
   root: {
     minWidth: 'unset',
     textWrap: 'nowrap',
-    ...shorthands.border('none'),
   },
   small: {
     height: '24px',

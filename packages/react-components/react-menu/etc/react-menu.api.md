@@ -157,7 +157,7 @@ export type MenuItemLinkSlots = {
 export type MenuItemLinkState = ComponentState<MenuItemLinkSlots>;
 
 // @public (undocumented)
-export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
+export type MenuItemProps = Omit<ComponentProps<Partial<MenuItemSlots>>, 'content'> & Pick<Partial<MenuItemSlots>, 'content'> & {
     hasSubmenu?: boolean;
     persistOnClick?: boolean;
     disabled?: boolean;

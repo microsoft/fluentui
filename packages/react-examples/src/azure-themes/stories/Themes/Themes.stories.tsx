@@ -37,6 +37,7 @@ import { ProgressIndicatorBasicExample } from '../components/ProgressIndicator.s
 import { CalendarInlineMultidayDayViewExample } from '../components/CalendarInlineMultidayDayView.stories';
 import { SpinnerBasicExample } from '../components/spinner.stories';
 import { DetailsListCustomColumnsExample } from '../components/DetailsListCustomColumnsExample.stories';
+import { ChoiceGroupImageExample } from '../components/choiceGroupWithImagesandIcons.stories';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
@@ -174,6 +175,7 @@ const Example = () => (
       <Label>Misc</Label>
       <ActivityItemBasicExample />
       <ChoiceGroupBasicExample />
+      <ChoiceGroupImageExample />
       <ToggleBasicExample />
       <ColorPickerBasicExample />
       <ContextualMenuDefaultExample />

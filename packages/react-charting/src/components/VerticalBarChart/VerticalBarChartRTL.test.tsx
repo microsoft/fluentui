@@ -1,20 +1,57 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { chartPoints } from './VerticalBarChart.test';
-import { DefaultPalette } from '@fluentui/react';
+import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { DefaultPalette, resetIds } from '@fluentui/react';
 import { VerticalBarChart } from './VerticalBarChart';
 import { VerticalBarChartBase } from './VerticalBarChart.base';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import {
+  forEachTimezone,
   getByClass,
   getById,
+  isTimezoneSet,
   testScreenResolutionChanges,
   testWithWait,
   testWithoutWait,
 } from '../../utilities/TestUtility.test';
 import { IVerticalBarChartProps } from './VerticalBarChart.types';
+import { IVerticalBarChartDataPoint } from '../../index';
+import { chartPointsVBC } from '../../utilities/test-data';
+import { axe, toHaveNoViolations } from 'jest-axe';
+const { Timezone } = require('../../../scripts/constants');
+
+expect.extend(toHaveNoViolations);
+
+beforeEach(() => {
+  // When adding a new snapshot test, it's observed that other snapshots may fail due to
+  // components sharing a common global counter for IDs. To prevent this from happening,
+  // we should reset the IDs before each test execution.
+  resetIds();
+});
+
+const originalRAF = window.requestAnimationFrame;
+
+function sharedBeforeEach() {
+  jest.useFakeTimers();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
+  window.HTMLElement.prototype.getBoundingClientRect = () =>
+    ({
+      bottom: 44,
+      height: 50,
+      left: 10,
+      right: 35.67,
+      top: 20,
+      width: 650,
+    } as DOMRect);
+}
+function sharedAfterEach() {
+  jest.useRealTimers();
+  window.requestAnimationFrame = originalRAF;
+}
 
 const pointsWithLine = [
   {
@@ -107,6 +144,97 @@ const pointsWithLine = [
   },
 ];
 
+const datePointsWithLine = [
+  {
+    x: new Date('2018/01/01'),
+    y: 10000,
+    legend: 'Oranges',
+    color: DefaultPalette.accent,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '10%',
+    lineData: {
+      y: 7000,
+      yAxisCalloutData: '34%',
+    },
+  },
+  {
+    x: new Date('2018/03/01'),
+    y: 50000,
+    legend: 'Dogs',
+    color: DefaultPalette.blueDark,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '20%',
+    lineData: {
+      y: 30000,
+    },
+  },
+  {
+    x: new Date('2018/05/01'),
+    y: 30000,
+    legend: 'Apples',
+    color: DefaultPalette.blueMid,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '37%',
+    lineData: {
+      y: 3000,
+      yAxisCalloutData: '43%',
+    },
+  },
+  {
+    x: new Date('2018/07/01'),
+    y: 13000,
+    legend: 'Bananas',
+    color: DefaultPalette.blueLight,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '88%',
+  },
+  {
+    x: new Date('2018/09/01'),
+    y: 43000,
+    legend: 'Giraffes',
+    color: DefaultPalette.blue,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '71%',
+    lineData: {
+      y: 30000,
+    },
+  },
+  {
+    x: new Date('2018/11/01'),
+    y: 30000,
+    legend: 'Cats',
+    color: DefaultPalette.blueDark,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '40%',
+    lineData: {
+      y: 5000,
+    },
+  },
+  {
+    x: new Date('2019/02/01'),
+    y: 20000,
+    legend: 'Elephants',
+    color: DefaultPalette.blue,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '87%',
+    lineData: {
+      y: 16000,
+    },
+  },
+  {
+    x: new Date('2019/04/01'),
+    y: 45000,
+    legend: 'Monkeys',
+    color: DefaultPalette.blueLight,
+    xAxisCalloutData: '2020/04/30',
+    yAxisCalloutData: '33%',
+    lineData: {
+      y: 40000,
+      yAxisCalloutData: '45%',
+    },
+  },
+];
+
 const simplePoints = [
   {
     x: 'This is a medium long label. ',
@@ -130,11 +258,32 @@ const simplePoints = [
   },
 ];
 
+const simpleDatePoints = [
+  {
+    x: new Date('2019/02/01'),
+    y: 3500,
+    color: '#627CEF',
+  },
+  {
+    x: new Date('2019/05/01'),
+    y: 2500,
+    color: '#C19C00',
+  },
+  {
+    x: new Date('2019/08/01'),
+    y: 1900,
+    color: '#E650AF',
+  },
+];
+
 describe('Vertical bar chart rendering', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
   testWithoutWait(
     'Should render the vertical bar chart with numeric x-axis data',
     VerticalBarChart,
-    { data: chartPoints },
+    { data: chartPointsVBC },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -150,13 +299,95 @@ describe('Vertical bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
+
+  forEachTimezone((tzName, tzIdentifier) => {
+    testWithoutWait(
+      `Should render the vertical bar chart with Date x-axis data in ${tzName} timezone`,
+      VerticalBarChart,
+      { data: simpleDatePoints },
+      container => {
+        // Assert
+        expect(container).toMatchSnapshot();
+      },
+      undefined,
+      undefined,
+      !isTimezoneSet(tzIdentifier),
+    );
+  });
+
+  testWithoutWait(
+    'Should render the vertical bar chart with formatted Date x-axis data',
+    VerticalBarChart,
+    {
+      data: datePointsWithLine,
+      tickFormat: '%m/%d',
+      tickValues: [new Date('01-01-2018'), new Date('01-03-2018'), new Date('01-05-2018')],
+    },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
+  );
+
+  testWithoutWait(
+    'Should render the vertical bar chart with Date x-axis data when tick Values not given',
+    VerticalBarChart,
+    {
+      data: datePointsWithLine,
+      tickFormat: '%m/%d',
+    },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
+  );
+
+  testWithoutWait(
+    'Should render the vertical bar chart with Date x-axis data when tick format not given',
+    VerticalBarChart,
+    {
+      data: datePointsWithLine,
+      tickValues: [new Date('01-01-2018'), new Date('01-03-2018'), new Date('01-05-2018')],
+    },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
+  );
+
+  testWithoutWait(
+    'Should render the vertical bar chart with Date x-axis data when tick values and tick format not given',
+    VerticalBarChart,
+    {
+      data: datePointsWithLine,
+    },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
+  );
 });
 
 describe('Vertical bar chart - Subcomponent bar', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
   testWithWait(
     'Should render the bar with the given width',
     VerticalBarChart,
-    { data: chartPoints, barWidth: 100 },
+    { data: chartPointsVBC, barWidth: 100 },
     container => {
       // Assert
       const bars = getById(container, /_VBC_bar/i);
@@ -168,9 +399,26 @@ describe('Vertical bar chart - Subcomponent bar', () => {
   );
 
   testWithWait(
+    'Should render the bar with the given width with Date X-Axis',
+    VerticalBarChart,
+    {
+      data: simpleDatePoints,
+      barWidth: 10,
+    },
+    async container => {
+      // Assert
+      const bars = getById(container, /_VBC_bar/i);
+      expect(bars).toHaveLength(3);
+      expect(bars[0].getAttribute('width')).toEqual('10');
+      expect(bars[1].getAttribute('width')).toEqual('10');
+      expect(bars[2].getAttribute('width')).toEqual('10');
+    },
+  );
+
+  testWithWait(
     'Should render the bars with the specified colors',
     VerticalBarChart,
-    { data: chartPoints },
+    { data: chartPointsVBC },
     container => {
       // colors mentioned in the data points itself
       // Assert
@@ -184,7 +432,7 @@ describe('Vertical bar chart - Subcomponent bar', () => {
   testWithWait(
     'Should render the bars with the a single color',
     VerticalBarChart,
-    { data: chartPoints, useSingleColor: true },
+    { data: chartPointsVBC, useSingleColor: true },
     container => {
       // Assert
       const bars = getById(container, /_VBC_bar/i);
@@ -197,7 +445,7 @@ describe('Vertical bar chart - Subcomponent bar', () => {
   testWithWait(
     'Should render the bars with labels hidden',
     VerticalBarChart,
-    { data: chartPoints, hideLabels: true },
+    { data: chartPointsVBC, hideLabels: true },
     container => {
       // Assert
       expect(getByClass(container, /barLabel/i)).toHaveLength(0);
@@ -206,6 +454,9 @@ describe('Vertical bar chart - Subcomponent bar', () => {
 });
 
 describe('Vertical bar chart - Subcomponent line', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
   testWithoutWait('Should render line along with bars', VerticalBarChart, { data: pointsWithLine }, container => {
     const line = getById(container, /_VBC_line/i);
     const points = getById(container, /_VBC_point/i);
@@ -217,6 +468,32 @@ describe('Vertical bar chart - Subcomponent line', () => {
     'Should highlight the data points and not render the corresponding callout',
     VerticalBarChart,
     { data: pointsWithLine },
+    container => {
+      const firstPointonLine = getById(container, /_VBC_point/i)[0];
+      expect(firstPointonLine).toBeDefined();
+      fireEvent.mouseOver(firstPointonLine);
+      // Assert
+      expect(firstPointonLine.getAttribute('visibility')).toEqual('visibility');
+      expect(getById(container, /toolTipcallout/i)).toHaveLength(0);
+    },
+  );
+
+  testWithoutWait(
+    'Should render line along with bars using Date X-Axis',
+    VerticalBarChart,
+    { data: datePointsWithLine },
+    container => {
+      const line = getById(container, /_VBC_line/i);
+      const points = getById(container, /_VBC_point/i);
+      // Assert
+      expect(line).toHaveLength(1);
+      expect(points).toHaveLength(7);
+    },
+  );
+  testWithoutWait(
+    'Should highlight the data points and not render the corresponding callout using Date X-Axis',
+    VerticalBarChart,
+    { data: datePointsWithLine },
     container => {
       const firstPointonLine = getById(container, /_VBC_point/i)[0];
       expect(firstPointonLine).toBeDefined();
@@ -405,6 +682,9 @@ describe('Vertical bar chart - Subcomponent callout', () => {
 });
 
 describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
   testWithWait(
     'Should show the x-axis labels tooltip when hovered',
     VerticalBarChart,
@@ -431,25 +711,35 @@ describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
 });
 
 describe('Screen resolution', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
   testScreenResolutionChanges(() => {
-    const { container } = render(<VerticalBarChart data={chartPoints} width={300} height={300} />);
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} width={300} height={300} />);
     // Assert
     expect(container).toMatchSnapshot();
   });
 });
 
-test('Should reflect theme change', () => {
-  // Arrange
-  const { container } = render(
-    <ThemeProvider theme={DarkTheme}>
-      <VerticalBarChart culture={window.navigator.language} data={chartPoints} />
-    </ThemeProvider>,
-  );
-  // Assert
-  expect(container).toMatchSnapshot();
+describe('Theme Change', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+  test('Should reflect theme change', () => {
+    // Arrange
+    const { container } = render(
+      <ThemeProvider theme={DarkTheme}>
+        <VerticalBarChart culture={window.navigator.language} data={chartPointsVBC} />
+      </ThemeProvider>,
+    );
+    // Assert
+    expect(container).toMatchSnapshot();
+  });
 });
 
 describe('Vertical bar chart re-rendering', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
   test('Should re-render the vertical bar chart with data', async () => {
     // Arrange
     const { container, rerender } = render(<VerticalBarChart data={[]} />);
@@ -457,11 +747,56 @@ describe('Vertical bar chart re-rendering', () => {
     expect(container).toMatchSnapshot();
     expect(getById(container, /_VBC_empty/i)).toHaveLength(1);
     // Act
-    rerender(<VerticalBarChart data={chartPoints} />);
+    rerender(<VerticalBarChart data={chartPointsVBC} />);
     await waitFor(() => {
       // Assert
       expect(container).toMatchSnapshot();
       expect(getById(container, /_VBC_empty/i)).toHaveLength(0);
     });
   });
+});
+
+describe('VerticalBarChart - mouse events', () => {
+  testWithWait(
+    'Should render callout correctly on mouseover',
+    VerticalBarChart,
+    { data: chartPointsVBC, calloutProps: { doNotLayer: true }, enabledLegendsWrapLines: true },
+    container => {
+      const bars = getById(container, /_VBC_bar/i);
+      expect(bars).toHaveLength(3);
+      fireEvent.mouseOver(bars[1]);
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithWait(
+    'Should render customized callout on mouseover',
+    VerticalBarChart,
+    {
+      data: chartPointsVBC,
+      calloutProps: { doNotLayer: true },
+      enabledLegendsWrapLines: true,
+      onRenderCalloutPerDataPoint: (props: IVerticalBarChartDataPoint) =>
+        props ? (
+          <div>
+            <pre>{JSON.stringify(props, null, 2)}</pre>
+          </div>
+        ) : null,
+    },
+    container => {
+      const bars = getById(container, /_VBC_bar/i);
+      expect(bars).toHaveLength(3);
+      fireEvent.mouseOver(bars[1]);
+      expect(container).toMatchSnapshot();
+    },
+  );
+});
+
+test('Should pass accessibility tests', async () => {
+  const { container } = render(<VerticalBarChart data={chartPointsVBC} />);
+  let axeResults;
+  await act(async () => {
+    axeResults = await axe(container);
+  });
+  expect(axeResults).toHaveNoViolations();
 });

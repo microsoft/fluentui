@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-label",
-  "version": "9.1.51",
+  "version": "9.1.61",
   "description": "Fluent UI React Label component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,16 +33,16 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-shared-contexts": "^9.13.0",
+    "@fluentui/react-shared-contexts": "^9.14.0",
     "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.15.2",
-    "@fluentui/react-jsx-runtime": "^9.0.20",
+    "@fluentui/react-utilities": "^9.18.0",
+    "@fluentui/react-jsx-runtime": "^9.0.29",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
-    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
     "react": ">=16.14.0 <19.0.0",
     "react-dom": ">=16.14.0 <19.0.0"
   },

@@ -4,10 +4,15 @@
 
 ```ts
 
+import type { AnnounceContextValue } from '@fluentui/react-shared-contexts';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
+import type { UnionToIntersection } from '@fluentui/react-utilities';
+
+// @public
+export const ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE = "data-activedescendant-focusvisible";
 
 // @public (undocumented)
 export interface ActiveDescendantImperativeRef {
@@ -16,18 +21,21 @@ export interface ActiveDescendantImperativeRef {
     // (undocumented)
     blur: () => void;
     // (undocumented)
-    first: () => void;
+    find: (predicate: (id: string) => boolean, options?: IteratorOptions) => string | undefined;
+    // (undocumented)
+    first: (options?: IteratorOptions) => string | undefined;
     // (undocumented)
     focus: (id: string) => void;
     // (undocumented)
-    next: () => void;
+    last: (options?: IteratorOptions) => string | undefined;
     // (undocumented)
-    prev: () => void;
+    next: (options?: IteratorOptions) => string | undefined;
+    // (undocumented)
+    prev: (options?: IteratorOptions) => string | undefined;
 }
 
 // @public (undocumented)
 export interface ActiveDescendantOptions {
-    // (undocumented)
     imperativeRef?: React_2.RefObject<ActiveDescendantImperativeRef>;
     // (undocumented)
     matchOption: (el: HTMLElement) => boolean;
@@ -57,17 +65,37 @@ export type ARIAButtonSlotProps<AlternateAs extends 'a' | 'div' = 'a' | 'div'> =
 // @public (undocumented)
 export type ARIAButtonType = 'button' | 'a' | 'div';
 
+// @public
+export const AriaLiveAnnouncer: React_2.FC<AriaLiveAnnouncerProps>;
+
 // @public (undocumented)
-export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(options: ActiveDescendantOptions): {
-    listboxRef: React_2.MutableRefObject<TListboxElement | null>;
-    activeParentRef: React_2.RefObject<TActiveParentElement>;
+export type AriaLiveAnnouncerProps = {
+    children?: React_2.ReactNode;
 };
+
+// @public (undocumented)
+export type AriaLiveAnnouncerState = {
+    announce: AriaLiveAnnounceFn;
+    children?: React_2.ReactNode;
+};
+
+// @public (undocumented)
+export const renderAriaLiveAnnouncer_unstable: (state: AriaLiveAnnouncerState, contextValues: AriaLiveAnnouncerContextValues) => JSX.Element;
+
+// @public (undocumented)
+export function useActiveDescendant<TActiveParentElement extends HTMLElement, TListboxElement extends HTMLElement>(options: ActiveDescendantOptions): UseActiveDescendantReturn<TActiveParentElement, TListboxElement>;
 
 // @internal
 export function useARIAButtonProps<Type extends ARIAButtonType, Props extends ARIAButtonProps<Type>>(type?: Type, props?: Props): ARIAButtonResultProps<Type, Props>;
 
-// @internal
+// @internal @deprecated (undocumented)
 export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps>;
+
+// @public (undocumented)
+export const useAriaLiveAnnouncer_unstable: (props: AriaLiveAnnouncerProps) => AriaLiveAnnouncerState;
+
+// @public (undocumented)
+export function useAriaLiveAnnouncerContextValues_unstable(state: AriaLiveAnnouncerState): AriaLiveAnnouncerContextValues;
 
 // (No @packageDocumentation comment for this package)
 

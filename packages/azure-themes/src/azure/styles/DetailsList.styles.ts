@@ -178,7 +178,7 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
             '.ms-Check-check': {
               color: extendedSemanticColors.checkBoxCheck,
             },
-            '.ms-Link': {
+            '.ms-Link, .ms-DetailsRow-cell .ms-Link': {
               color: extendedSemanticColors.listLinkRowSelected,
             },
             '.ms-DetailsRow-cell .ms-Link': {
@@ -187,7 +187,7 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
             ':hover': {
               background: extendedSemanticColors.listItemBackgroundSelectedHovered,
               selectors: {
-                '.ms-Link': {
+                '.ms-Link, .ms-DetailsRow-cell .ms-Link': {
                   color: extendedSemanticColors.listLinkRowSelectedHovered,
                 },
                 '.ms-Check-circle': {

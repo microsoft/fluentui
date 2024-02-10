@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/merge-styles",
-  "version": "8.5.13",
+  "version": "8.5.15",
   "description": "Style loading utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -31,7 +31,7 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.2.12",
+    "@fluentui/set-version": "^8.2.14",
     "tslib": "^2.1.0"
   },
   "exports": {

@@ -43,3 +43,5 @@ packages/web-components/src/default-palette.ts
 *.hbs
 
 CODEOWNERS
+
+/.nx/cache

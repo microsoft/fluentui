@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Enter } from '@fluentui/keyboard-keys';
-import { ArrowDownRegular, ArrowUpRegular, DismissRegular } from '@fluentui/react-icons';
 import { useId } from '@fluentui/react-utilities';
 import { mergeClasses } from '@griffel/react';
 import { addMonths, compareDatePart, getMonthEnd, getMonthStart } from '../../utils';
@@ -102,6 +101,7 @@ const CalendarDayNavigationButtons = (props: CalendarDayNavigationButtonsProps):
     minDate,
     maxDate,
     navigatedDate,
+    navigationIcons,
     allFocusable,
     strings,
     showCloseButton,
@@ -139,7 +139,7 @@ const CalendarDayNavigationButtons = (props: CalendarDayNavigationButtonsProps):
         }
         type="button"
       >
-        <ArrowUpRegular />
+        {navigationIcons.upNavigation}
       </button>
       <button
         className={mergeClasses(classNames.headerIconButton, !nextMonthInBounds && classNames.disabledStyle)}
@@ -154,7 +154,7 @@ const CalendarDayNavigationButtons = (props: CalendarDayNavigationButtonsProps):
         }
         type="button"
       >
-        <ArrowDownRegular />
+        {navigationIcons.downNavigation}
       </button>
       {showCloseButton && (
         <button
@@ -164,7 +164,7 @@ const CalendarDayNavigationButtons = (props: CalendarDayNavigationButtonsProps):
           title={strings.closeButtonAriaLabel}
           type="button"
         >
-          <DismissRegular />
+          {navigationIcons.dismiss}
         </button>
       )}
     </div>

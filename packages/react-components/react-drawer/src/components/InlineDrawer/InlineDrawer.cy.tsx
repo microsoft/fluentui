@@ -25,5 +25,13 @@ describe('InlineDrawer', () => {
 
       cy.get('#drawer').should('not.have.css', `border-left-color`, 'transparent');
     });
+
+    it('should render correct border when when position is `bottom`', () => {
+      mountFluent(<InlineDrawer id="drawer" position="bottom" separator open />);
+
+      cy.get('#drawer').should('not.have.css', `border-left-width`, '1px');
+      cy.get('#drawer').should('not.have.css', `border-right-width`, '1px');
+      cy.get('#drawer').should('have.css', `border-top-width`, '1px');
+    });
   });
 });
