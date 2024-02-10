@@ -20,7 +20,7 @@ export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLButt
   const selected = selectedValue === value;
 
   const innerRef = React.useRef<HTMLElement>(null);
-  const onNavCategoryItemClick = useEventCallback(
+  const onNavItemClick = useEventCallback(
     mergeCallbacks(onClick, event => onSelect(event, { type: 'click', event, value })),
   );
 
@@ -48,7 +48,7 @@ export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLButt
         role: 'nav',
         type: 'navigation',
         ...props,
-        onClick: onNavCategoryItemClick,
+        onClick: onNavItemClick,
       }),
       { elementType: 'button' },
     ),
