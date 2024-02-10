@@ -2330,13 +2330,13 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
         >
           <path
             class="domain"
-            d="M279.5,6V0.5H391.5V6"
+            d="M40.5,6V0.5H630.5V6"
             stroke="#000"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(287,0)"
+            transform="translate(138.33333333333331,0)"
           >
             <line
               stroke="#000"
@@ -2354,7 +2354,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(335,0)"
+            transform="translate(334.99999999999994,0)"
           >
             <line
               stroke="#000"
@@ -2372,7 +2372,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           <g
             class="tick"
             opacity="1"
-            transform="translate(383,0)"
+            transform="translate(531.6666666666666,0)"
           >
             <line
               stroke="#000"
@@ -2528,8 +2528,8 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               id="_VBC_bar_7"
               role="img"
               tabindex="0"
-              width="16"
-              x="279"
+              width="65.55555555555556"
+              x="105.55555555555554"
               y="209.6"
             />
             <text
@@ -2542,7 +2542,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     font-weight: 600;
                   }
               text-anchor="middle"
-              x="287"
+              x="138.33333333333331"
               y="203.6"
             >
               10.0k
@@ -2559,8 +2559,8 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               id="_VBC_bar_8"
               role="img"
               tabindex="-1"
-              width="16"
-              x="327"
+              width="65.55555555555556"
+              x="302.2222222222222"
               y="20"
             />
             <text
@@ -2573,7 +2573,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     font-weight: 600;
                   }
               text-anchor="middle"
-              x="335"
+              x="334.99999999999994"
               y="14"
             >
               50.0k
@@ -2590,8 +2590,8 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
               id="_VBC_bar_9"
               role="img"
               tabindex="-1"
-              width="16"
-              x="375"
+              width="65.55555555555556"
+              x="498.88888888888886"
               y="114.80000000000001"
             />
             <text
@@ -2604,7 +2604,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                     font-weight: 600;
                   }
               text-anchor="middle"
-              x="383"
+              x="531.6666666666666"
               y="108.80000000000001"
             >
               30.0k
@@ -11570,13 +11570,13 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
         >
           <path
             class="domain"
-            d="M255.5,6V0.5H415.5V6"
+            d="M40.5,6V0.5H630.5V6"
             stroke="#000"
           />
           <g
             class="tick"
             opacity="1"
-            transform="translate(263,0)"
+            transform="translate(113.75,0)"
           >
             <line
               stroke="#000"
@@ -11594,7 +11594,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(311,0)"
+            transform="translate(261.25,0)"
           >
             <line
               stroke="#000"
@@ -11612,7 +11612,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(359,0)"
+            transform="translate(408.74999999999994,0)"
           >
             <line
               stroke="#000"
@@ -11630,7 +11630,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           <g
             class="tick"
             opacity="1"
-            transform="translate(407,0)"
+            transform="translate(556.25,0)"
           >
             <line
               stroke="#000"
@@ -11786,8 +11786,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               id="_VBC_bar_7"
               role="img"
               tabindex="0"
-              width="16"
-              x="255"
+              width="49.16666666666667"
+              x="89.16666666666666"
               y="20"
             />
             <text
@@ -11800,7 +11800,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-weight: 600;
                   }
               text-anchor="middle"
-              x="263"
+              x="113.75"
               y="14"
             >
               3.5k
@@ -11817,8 +11817,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               id="_VBC_bar_8"
               role="img"
               tabindex="-1"
-              width="16"
-              x="303"
+              width="49.16666666666667"
+              x="236.66666666666666"
               y="87.71428571428572"
             />
             <text
@@ -11831,7 +11831,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-weight: 600;
                   }
               text-anchor="middle"
-              x="311"
+              x="261.25"
               y="81.71428571428572"
             >
               2.5k
@@ -11848,8 +11848,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               id="_VBC_bar_9"
               role="img"
               tabindex="-1"
-              width="16"
-              x="351"
+              width="49.16666666666667"
+              x="384.16666666666663"
               y="128.34285714285716"
             />
             <text
@@ -11862,7 +11862,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-weight: 600;
                   }
               text-anchor="middle"
-              x="359"
+              x="408.74999999999994"
               y="122.34285714285716"
             >
               1.9k
@@ -11879,8 +11879,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               id="_VBC_bar_10"
               role="img"
               tabindex="-1"
-              width="16"
-              x="399"
+              width="49.16666666666667"
+              x="531.6666666666666"
               y="67.39999999999998"
             />
             <text
@@ -11893,7 +11893,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                     font-weight: 600;
                   }
               text-anchor="middle"
-              x="407"
+              x="556.25"
               y="61.39999999999998"
             >
               2.8k
