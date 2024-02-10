@@ -4,11 +4,9 @@ import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type { Slot, ExtractSlotProps, SlotComponentType } from '@fluentui/react-utilities';
 import { useTriggerSlot, UseTriggerSlotState } from '../../utils/useTriggerSlot';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
-import { DropdownState } from './Dropdown.types';
 
-type UsedDropdownState = UseTriggerSlotState & Pick<DropdownState, 'getOptionsMatchingText'>;
 type UseButtonTriggerSlotOptions = {
-  state: UsedDropdownState;
+  state: UseTriggerSlotState;
   defaultProps: unknown;
   activeDescendantController: ActiveDescendantImperativeRef;
 };
