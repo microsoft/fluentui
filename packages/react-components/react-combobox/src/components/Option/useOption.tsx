@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
-import { useContextSelector } from '@fluentui/react-context-selector';
 import { useActiveDescendantContext } from '@fluentui/react-aria';
 import { CheckmarkFilled, Checkmark12Filled } from '@fluentui/react-icons';
-import { ListboxContext } from '../../contexts/ListboxContext';
+import { useListboxContext_unstable } from '../../contexts/ListboxContext';
 import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { OptionProps, OptionState } from './Option.types';
 
@@ -57,15 +56,15 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
 
   // context values
   const { controller: activeDescendantController } = useActiveDescendantContext();
-  const multiselect = useContextSelector(ListboxContext, ctx => ctx.multiselect);
-  const registerOption = useContextSelector(ListboxContext, ctx => ctx.registerOption);
-  const selected = useContextSelector(ListboxContext, ctx => {
+  const multiselect = useListboxContext_unstable(ctx => ctx.multiselect);
+  const registerOption = useListboxContext_unstable(ctx => ctx.registerOption);
+  const selected = useListboxContext_unstable(ctx => {
     const selectedOptions = ctx.selectedOptions;
 
     return !!optionValue && !!selectedOptions.find(o => o === optionValue);
   });
-  const selectOption = useContextSelector(ListboxContext, ctx => ctx.selectOption);
-  const onOptionClick = useContextSelector(ListboxContext, ctx => ctx.onOptionClick);
+  const selectOption = useListboxContext_unstable(ctx => ctx.selectOption);
+  const onOptionClick = useListboxContext_unstable(ctx => ctx.onOptionClick);
 
   // check icon
   let CheckIcon: React.ReactNode = <CheckmarkFilled />;

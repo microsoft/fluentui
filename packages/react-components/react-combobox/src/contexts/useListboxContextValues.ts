@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
+import { useHasParentContext } from '@fluentui/react-context-selector';
 import { ListboxContextValues, ListboxState } from '../components/Listbox/Listbox.types';
-import { ListboxContext } from './ListboxContext';
+import { ListboxContext, useListboxContext_unstable } from './ListboxContext';
 
 export function useListboxContextValues(state: ListboxState): ListboxContextValues {
   const hasListboxContext = useHasParentContext(ListboxContext);
   const { multiselect, registerOption, selectedOptions, selectOption, activeDescendantController } = state;
 
   // get register/unregister functions from parent combobox context
-  const parentRegisterOption = useContextSelector(ListboxContext, ctx => ctx.registerOption);
-  const onOptionClick = useContextSelector(ListboxContext, ctx => ctx.onOptionClick);
+  const parentRegisterOption = useListboxContext_unstable(ctx => ctx.registerOption);
+  const onOptionClick = useListboxContext_unstable(ctx => ctx.onOptionClick);
 
   const registerOptionValue = hasListboxContext ? parentRegisterOption : registerOption;
 

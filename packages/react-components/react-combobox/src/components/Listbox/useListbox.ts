@@ -6,7 +6,7 @@ import {
   slot,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
+import { useHasParentContext } from '@fluentui/react-context-selector';
 import {
   useActiveDescendant,
   useActiveDescendantContext,
@@ -17,7 +17,7 @@ import { useOptionCollection } from '../../utils/useOptionCollection';
 import { useSelection } from '../../utils/useSelection';
 import type { ListboxProps, ListboxState } from './Listbox.types';
 import { optionClassNames } from '../Option/useOptionStyles.styles';
-import { ListboxContext } from '../../contexts/ListboxContext';
+import { ListboxContext, useListboxContext_unstable } from '../../contexts/ListboxContext';
 
 /**
  * Create the state required to render Listbox.
@@ -85,8 +85,8 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
 
   // get state from parent combobox, if it exists
   const hasComboboxContext = useHasParentContext(ListboxContext);
-  const contextSelectedOptions = useContextSelector(ListboxContext, ctx => ctx.selectedOptions);
-  const contextSelectOption = useContextSelector(ListboxContext, ctx => ctx.selectOption);
+  const contextSelectedOptions = useListboxContext_unstable(ctx => ctx.selectedOptions);
+  const contextSelectOption = useListboxContext_unstable(ctx => ctx.selectOption);
 
   // without a parent combobox context, provide values directly from Listbox
   const optionContextValues = hasComboboxContext
