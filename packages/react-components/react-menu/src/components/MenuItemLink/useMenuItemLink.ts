@@ -41,7 +41,10 @@ export const useMenuItemLink_unstable = (
       getIntrinsicElementProps('a', {
         ref,
         role: 'menuitem',
-        ..._props,
+       // FIXME: casting because the root slot changes from div to a,
+        // ideal solution would be to extract common logic from useMenuItem_unstable root
+        // and use it in both without assuming element type
+        ...(baseState.root as ExtractSlotProps<Slot<'a'>>),
       }),
       { elementType: 'a' },
     ),
