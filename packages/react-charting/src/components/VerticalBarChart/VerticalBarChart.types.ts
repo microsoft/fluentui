@@ -84,10 +84,25 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
    */
   hideLabels?: boolean;
 
+  /**
+   * Maximum width of a bar, in pixels.
+   */
   maxBarWidth?: number;
 
+  /**
+   * Padding between bars as a fraction of the `step`, which is the interval between
+   * the start of a bar and the start of the next bar. Takes a number in the range [0, 1].
+   * Only applicable to string x-axis.
+   * @default 2/3
+   */
   xAxisInnerPadding?: number;
 
+  /**
+   * Padding before the first bar and after the last bar as a fraction of the `step`, which is the interval between
+   * the start of a bar and the start of the next bar. Takes a number in the range [0, 1].
+   * Only applicable to string x-axis.
+   * @default 1/3
+   */
   xAxisOuterPadding?: number;
 }
 

@@ -91,10 +91,27 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
    */
   hideLabels?: boolean;
 
+  /**
+   * Maximum width of a bar, in pixels.
+   */
   maxBarWidth?: number;
 
+  /**
+   * Padding between groups as a fraction of the `step`, which is the interval between
+   * the start of a group and the start of the next group. Takes a number in the range [0, 1].
+   * Only applicable to string x-axis. Note: groupWidthInTermsOfBarWidth is calculated at runtime based on
+   * the number of bars in a group and the gap between the bars.
+   * @default 2 / (2 + groupWidthInTermsOfBarWidth)
+   */
   xAxisInnerPadding?: number;
 
+  /**
+   * Padding before the first group and after the last group as a fraction of the `step`, which is the interval between
+   * the start of a group and the start of the next group. Takes a number in the range [0, 1].
+   * Only applicable to string x-axis. Note: groupWidthInTermsOfBarWidth is calculated at runtime based on
+   * the number of bars in a group and the gap between the bars.
+   * @default 1 / (2 + groupWidthInTermsOfBarWidth)
+   */
   xAxisOuterPadding?: number;
 }
 

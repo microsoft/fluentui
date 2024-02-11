@@ -559,7 +559,6 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     isCalloutForStack?: boolean;
     // @deprecated
     legendColor?: string;
-    // (undocumented)
     maxBarWidth?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IGVBarChartSeriesPoint>;
     // @deprecated
@@ -571,9 +570,7 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     // @deprecated
     showYAxisPath?: boolean;
     styles?: IStyleFunctionOrObject<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>;
-    // (undocumented)
     xAxisInnerPadding?: number;
-    // (undocumented)
     xAxisOuterPadding?: number;
 }
 
@@ -1333,14 +1330,11 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
     lineLegendColor?: string;
     lineLegendText?: string;
     lineOptions?: ILineChartLineOptions;
-    // (undocumented)
     maxBarWidth?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
     styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
     useSingleColor?: boolean;
-    // (undocumented)
     xAxisInnerPadding?: number;
-    // (undocumented)
     xAxisOuterPadding?: number;
     xAxisPadding?: number;
 }
@@ -1386,15 +1380,12 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     hideLabels?: boolean;
     isCalloutForStack?: boolean;
     lineOptions?: ILineChartLineOptions;
-    // (undocumented)
     maxBarWidth?: number;
     onBarClick?: (event: React_2.MouseEvent<SVGElement>, data: IVerticalStackedChartProps | IVSChartDataPoint) => void;
     onRenderCalloutPerDataPoint?: IRenderFunction<IVSChartDataPoint>;
     onRenderCalloutPerStack?: IRenderFunction<IVerticalStackedChartProps>;
     styles?: IStyleFunctionOrObject<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>;
-    // (undocumented)
     xAxisInnerPadding?: number;
-    // (undocumented)
     xAxisOuterPadding?: number;
     xAxisPadding?: number;
     yMinValue?: undefined;
