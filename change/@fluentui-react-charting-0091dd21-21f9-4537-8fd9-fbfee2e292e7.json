@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Integrate microsoft/monosize into react-charting for AreaChart and VerticalBarChart",
-  "packageName": "@fluentui/react-charting",
-  "email": "shubhabrata08@gmail.com",
-  "dependentChangeType": "none"
-}

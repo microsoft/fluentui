@@ -18,6 +18,13 @@ const navContextDefaultValue: NavContextValue = {
       registeredNavItems: {},
     };
   },
+  onRequestNavCategoryItemToggle() {
+    /* noop */
+  },
+  /**
+   * The list of opened panels by index
+   */
+  openItems: [],
 };
 
 const NavContext = React.createContext<NavContextValue | undefined>(undefined);
