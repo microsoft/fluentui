@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { isHTMLElement, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { isHTMLElement } from '@fluentui/react-utilities';
 
 interface UseOptionWalkerOptions {
   matchOption: (el: HTMLElement) => boolean;
@@ -23,13 +23,17 @@ export function useOptionWalker<TListboxElement extends HTMLElement>(options: Us
     [matchOption],
   );
 
-  useIsomorphicLayoutEffect(() => {
-    if (!targetDocument || !listboxRef.current) {
-      return;
-    }
-
-    treeWalkerRef.current = targetDocument.createTreeWalker(listboxRef.current, NodeFilter.SHOW_ELEMENT, optionFilter);
-  }, [targetDocument, optionFilter]);
+  const setListbox = React.useCallback(
+    (el: TListboxElement) => {
+      if (el && targetDocument) {
+        listboxRef.current = el;
+        treeWalkerRef.current = targetDocument.createTreeWalker(el, NodeFilter.SHOW_ELEMENT, optionFilter);
+      } else {
+        listboxRef.current = null;
+      }
+    },
+    [targetDocument, optionFilter],
+  );
 
   const optionWalker = React.useMemo(
     () => ({
@@ -88,6 +92,7 @@ export function useOptionWalker<TListboxElement extends HTMLElement>(options: Us
 
   return {
     optionWalker,
+    listboxCallbackRef: setListbox,
     listboxRef,
   };
 }
