@@ -368,8 +368,8 @@ The proposal is to expose factories as they provide more flexibility and can be 
 ```tsx
 import { type AtomMotion, createAtomMotion, motionTokens } from '@fluentui/react-motions-preview';
 
-// ⚠️ Consumers will have the option to use either predefined motions as objects or as components.
-//    They won't need to define custom motions unless they specifically want to.
+// 💡Consumers will have the option to use either predefined motions as objects or as components.
+//   They won't need to define custom motions unless they specifically want to.
 const fade: AtomMotion = {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
   duration: motionTokens.durationUltraFast,
@@ -519,8 +519,8 @@ As with `createAtomMotion()`, the factory returns a React component that clones 
 ```tsx
 import { createPresenceMotion, type PresenceMotion } from '@fluentui/react-motions-preview';
 
-// ⚠️ Consumers will have the option to use either predefined motions as objects or as components.
-//    They won't need to define custom motions unless they specifically want to.
+// 💡 Consumers will have the option to use either predefined motions as objects or as components.
+//   They won't need to define custom motions unless they specifically want to.
 const fadePrensence: PresenceMotion = {
   /* --- */
 };
@@ -545,8 +545,8 @@ Unlike `createAtomMotion()`, a created component has additional props:
 ```tsx
 import { createPresenceMotion, type PresenceMotion } from '@fluentui/react-motions-preview';
 
-// ⚠️ Consumers will have the option to use either predefined motions as objects or as components.
-//    They won't need to define custom motions unless they specifically want to.
+// 💡 Consumers will have the option to use either predefined motions as objects or as components.
+//   They won't need to define custom motions unless they specifically want to.
 const fadePrensence: PresenceMotion = {
   /* --- */
 };
@@ -599,8 +599,8 @@ The suggested approach is to adopt APIs from the `react-transition-group package
 ```tsx
 import { createPresenceMotion, type PresenceMotion, PresenceGroup } from '@fluentui/react-motions-preview';
 
-// ⚠️ Consumers will have the option to use either predefined motions as objects or as components.
-//    They won't need to define custom motions unless they specifically want to.
+// 💡 Consumers will have the option to use either predefined motions as objects or as components.
+//   They won't need to define custom motions unless they specifically want to.
 const fadePrensence: PresenceMotion = {
   /* --- */
 };
@@ -678,8 +678,8 @@ The proposed solution suggests introducing a `motion` prop to override the motio
 import { Dialog, DialogSurface } from '@fluentui/react-components';
 import { createPresenceMotion } from '@fluentui/react-motions-preview';
 
-// ⚠️ Consumers will have the option to use either predefined motions as objects or as components.
-//    They won't need to define custom motions unless they specifically want to.
+// 💡 Consumers will have the option to use either predefined motions as objects or as components.
+//   They won't need to define custom motions unless they specifically want to.
 const FadeSlow = createPresenceMotion(/* --- */);
 
 function MyComponent() {
