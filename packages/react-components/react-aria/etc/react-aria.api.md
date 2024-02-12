@@ -29,7 +29,7 @@ export interface ActiveDescendantImperativeRef {
     // (undocumented)
     blur: () => void;
     // (undocumented)
-    find: (predicate: (id: string) => boolean, options?: IteratorOptions & FindOptions) => string | undefined;
+    find: (predicate: (id: string) => boolean, options?: IteratorOptions) => string | undefined;
     // (undocumented)
     first: (options?: IteratorOptions) => string | undefined;
     // (undocumented)

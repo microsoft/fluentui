@@ -93,6 +93,5 @@ export function useOptionWalker<TListboxElement extends HTMLElement>(options: Us
   return {
     optionWalker,
     listboxCallbackRef: setListbox,
-    listboxRef,
   };
 }
