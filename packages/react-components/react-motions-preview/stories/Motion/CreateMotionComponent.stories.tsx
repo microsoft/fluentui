@@ -86,14 +86,14 @@ export const CreateMotionComponent = () => {
             <div className={classes.item} />
           </FadeEnter>
 
-          <code className={classes.description}>fadeEnterUltraSlow</code>
+          <code className={classes.description}>fadeEnter</code>
         </div>
         <div className={classes.card}>
           <FadeExit iterations={Infinity} imperativeRef={motionExitRef}>
             <div className={classes.item} />
           </FadeExit>
 
-          <div className={classes.description}>fadeExitUltraSlow</div>
+          <div className={classes.description}>fadeExit</div>
         </div>
       </div>
 

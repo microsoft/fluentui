@@ -4,6 +4,8 @@
 
 ```ts
 
+import type { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 
 // @public (undocumented)
@@ -15,10 +17,10 @@ export type AtomMotion = {
 export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
 
 // @public
-export function createMotionComponent(motion: AtomMotion | AtomMotionFn): React_2.FC<AtomProps>;
+export function createMotionComponent(motion: AtomMotion | AtomMotionFn): React_2.FC<MotionComponentProps>;
 
 // @public (undocumented)
-export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn): React_2.FC<PresenceProps>;
+export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn): React_2.FC<PresenceComponentProps>;
 
 // @public (undocumented)
 const durationFast = 150;
