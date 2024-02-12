@@ -9,9 +9,9 @@ import {
 import { getIntrinsicElementProps, slot, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
 import type { ListItemProps, ListItemState } from './ListItem.types';
 import { useListContext_unstable } from '../List/listContext';
-import { makeResetStyles } from '@griffel/react';
 import { Enter, Escape, keyCodes, Space } from '@fluentui/keyboard-keys';
 import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-checkbox';
+import { useIndicatorStyle } from './useListItemStyles.styles';
 
 const DEFAULT_ROOT_EL_TYPE = 'li';
 
@@ -37,10 +37,6 @@ function validateNavigableWhenOnClickPresent(navigable: boolean, onClick?: React
     throw new Error('ListItem must be navigable when onClick is present. Set focusableItems={true} on the List.');
   }
 }
-
-const useIndicatorStyle = makeResetStyles({
-  margin: 0,
-});
 
 /**
  * Create the state required to render ListItem.
@@ -210,12 +206,10 @@ export const useListItem_unstable = (
 
   const checkmark = slot.optional(props.checkmark, {
     defaultProps: {
-      // 'aria-hidden': true,
       checked: isSelected,
       onChange: onCheckboxChange,
       onClick: onCheckboxClick,
-      // tabIndex: -1,
-      indicator: { className: baseIndicatorStyles },
+      indicator: { className: baseIndicatorStyles.root },
     },
     renderByDefault: isSelectionEnabled,
     elementType: Checkbox,

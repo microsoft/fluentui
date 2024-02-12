@@ -23,13 +23,11 @@ const useRootBaseStyles = makeResetStyles({
   ),
 });
 
-const useCheckmarkBaseStyles = makeResetStyles({
-  alignSelf: 'center',
-  // marginRight: tokens.spacingHorizontalS,
-  // width: tokens.spacingHorizontalL,
-  // height: tokens.spacingVerticalL,
+const useCheckmarkBaseStyles = makeStyles({
+  root: {
+    alignSelf: 'center',
+  },
 });
-
 /**
  * Styles for the root slot
  */
@@ -60,10 +58,16 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
   if (state.checkmark) {
     state.checkmark.className = mergeClasses(
       listItemClassNames.checkmark,
-      checkmarkBaseStyles,
+      checkmarkBaseStyles.root,
       state.checkmark?.className,
     );
   }
 
   return state;
 };
+
+export const useIndicatorStyle = makeStyles({
+  root: {
+    ...shorthands.margin('4px'),
+  },
+});

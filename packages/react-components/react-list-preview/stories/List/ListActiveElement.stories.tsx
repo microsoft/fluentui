@@ -109,14 +109,12 @@ export const ListActiveElement = () => {
         }}
       >
         {items.map(({ name, avatar }) => (
-          <>
-            <MyListItem
-              key={name}
-              name={name}
-              avatar={avatar}
-              className={mergeClasses(classes.item, selectedItems.includes(name) && classes.itemSelected)}
-            />
-          </>
+          <MyListItem
+            key={name}
+            name={name}
+            avatar={avatar}
+            className={mergeClasses(classes.item, selectedItems.includes(name) && classes.itemSelected)}
+          />
         ))}
       </List>
       <div>
