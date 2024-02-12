@@ -514,6 +514,33 @@ function MyComponent(props) {
 
 </details>
 
+It's important to understand that `createPresenceMotion()` relies on `PresenceMotion` definitions, which are a combination of `enter` and `exit` motions:
+
+```ts
+type PresenceMotion = {
+  enter: AtomMotion;
+  exit: AtomMotion;
+};
+```
+
+For example, when using `fadePresence`, it yields a `PresenceMotion` object containing `enter` and `exit` motions:
+
+```ts
+const fadeEnter: AtomMotion = {
+  /* --- */
+};
+const fadeExit: AtomMotion = {
+  /* --- */
+};
+
+const fadePresence: PresenceMotion = {
+  enter: fadeEnter,
+  exit: fadeExit,
+};
+```
+
+This structure enables the definition of distinct keyframes and options, such as durations and easing, for entering and exiting transitions.
+
 As with `createAtomMotion()`, the factory returns a React component that clones the child element and applies the provided animation to it:
 
 ```tsx
@@ -541,6 +568,7 @@ Unlike `createAtomMotion()`, a created component has additional props:
 
 - `appear` - whether the animation should play on mount
 - `unmountOnExit` - whether the child element should be unmounted on exit
+- `onMotionFinish` - a callback which is called when a motion is finished
 
 ```tsx
 import { createPresenceMotion, type PresenceMotion } from '@fluentui/react-motions-preview';
@@ -556,39 +584,43 @@ function MyComponent() {
   const [visible, setVisible] = useState(false);
 
   return (
-    <Fade appear visible={visible} unmountOnExit>
+    <Fade
+      appear
+      onMotionFinish={(ev, data) => console.log(`A motion was finished (direction: ${data.direction})`)}
+      visible={visible}
+      unmountOnExit
+    >
       <div>Hello world!</div>
     </Fade>
   );
 }
 ```
 
-It's important to understand that `createPresenceMotion()` relies on `PresenceMotion` definitions, which are a combination of `enter` and `exit` motions:
+<details>
+<summary>Why not animation events i.e. `onAnimationFinish()`?</summary>
 
-```ts
-type PresenceMotion = {
-  enter: AtomMotion;
-  exit: AtomMotion;
-};
+We will support more complex motions later, such as [grouped and sequential](#motion-sequencing--grouping) animations. Since matching interfaces are not implemented in the platform, we may fallback to either a polyfill or implement a custom approach. In any case, we will need to schedule multiple animations to satisfy this use case. Consequently, the [`finish` event](https://developer.mozilla.org/en-US/docs/Web/API/Animation/finish_event) will be called multiple times. For example:
+
+```tsx
+<DialogSurface
+  onAnimationFinish={() => console.log('onAnimationFinish()')}
+  motion={{
+    element: ComplexMotion,
+    onMotionFinish: () => console.log('onMotionFinish()'),
+  }}
+/>
+
+// 🖥️ Console output
+//    onAnimationFinish()
+//    onAnimationFinish()
+//    onAnimationFinish()
+//    onMotionFinish()
 ```
 
-For example, when using `fade.slow()`, it yields a `PresenceMotion` object containing `enter` and `exit` motions:
+- `onAnimationFinish()` is called for every animation upon finishing.
+- `onMotionFinish()` is called when all animations defined by `ComplexMotion` have finished.
 
-```ts
-const fadeEnter: AtomMotion = {
-  /* --- */
-};
-const fadeExit: AtomMotion = {
-  /* --- */
-};
-
-const fadePresence: PresenceMotion = {
-  enter: fadeEnter,
-  exit: fadeExit,
-};
-```
-
-This structure enables the definition of distinct keyframes and options, such as durations and easing, for entering and exiting transitions.
+</details>
 
 ### Using group motions
 
@@ -778,32 +810,6 @@ To disable motion `null` can be passed similarly to Slots API:
   }}
 />
 ```
-
-<details>
-<summary>Why not animation events i.e. `onAnimationFinish()`?</summary>
-
-We will support more complex motions later, such as [grouped and sequential](#motion-sequencing--grouping) animations. Since matching interfaces are not implemented in the platform, we may fallback to either a polyfill or implement a custom approach. In any case, we will need to schedule multiple animations to satisfy this use case. Consequently, the [`finish` event](https://developer.mozilla.org/en-US/docs/Web/API/Animation/finish_event) will be called multiple times. For example:
-
-```tsx
-<DialogSurface
-  onAnimationFinish={() => console.log('onAnimationFinish()')}
-  motion={{
-    element: ComplexMotion,
-    onMotionFinish: () => console.log('onMotionFinish()'),
-  }}
-/>
-
-// 🖥️ Console output
-//    onAnimationFinish()
-//    onAnimationFinish()
-//    onAnimationFinish()
-//    onMotionFinish()
-```
-
-- `onAnimationFinish()` is called for every animation upon finishing.
-- `onMotionFinish()` is called when all animations defined by `ComplexMotion` have finished.
-
-</details>
 
 To allow the integration of Fluent UI React components with third-party motion systems, the `motion` prop will also support a render callback, similar to the Slots API:
 
