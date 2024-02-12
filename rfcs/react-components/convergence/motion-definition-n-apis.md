@@ -292,7 +292,7 @@ function createAtomMotion(motion) {
 As the Web Animations API is framework-agnostic, we don't need to use Griffel to generate CSS keyframes. Instead, we can define them in JS:
 
 ```tsx
-const fadeEnterSlow: MotionAtom = {
+const fadeEnterSlow: AtomMotion = {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
 
   duration: 500,
@@ -305,7 +305,7 @@ const fadeEnterSlow: MotionAtom = {
 The proposal suggests using JavaScript-based tokens instead of CSS variables, for example:
 
 ```tsx
-const fadeEnterSlow: MotionAtom = {
+const fadeEnterSlow: AtomMotion = {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
 
   duration: motionTokens.durationSlow,
@@ -317,7 +317,7 @@ In the same time, CSS variables can be used inside `keyframes` directly:
 ```tsx
 import { tokens } from '@fluentui/react-components';
 
-const flash: MotionAtom = {
+const flash: AtomMotion = {
   keyframes: [
     { backgroundColor: 'white' },
     // 💡`tokens.colorBrandBackground` is a CSS variable i.e. `var(--colorBrandBackground)`
@@ -332,7 +332,7 @@ const flash: MotionAtom = {
 However, challenges arise with options like `duration` and `easing` since they should be plain values, not CSS variables, as shown below:
 
 ```tsx
-const atom: MotionAtom = {
+const atom: AtomMotion = {
   // Heads up! `duration` is in milliseconds and `easing` is a string
   // ⚠️ We can't use CSS variables there
   duration: motionTokens.durationSlow,
@@ -345,7 +345,7 @@ Does this mean that CSS variables can't be used for them at all? **No**, as moti
 ```tsx
 // ⚠️ This is not proposed API, it's just an example
 
-const motion: MotionAtomFn = element => {
+const motion: AtomMotionFn = element => {
   const computedStyle = getComputedStyle(element);
 
   return {
@@ -1211,7 +1211,7 @@ For the Web Animations API, it might be feasible to enhance the motion definitio
 ```tsx
 // ⚠️ This is not proposed API, it's just an example
 
-const fade: MotionAtom = {
+const fade: AtomMotion = {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
   duration: 500,
 
@@ -1219,7 +1219,7 @@ const fade: MotionAtom = {
     duration: 100,
   },
 };
-const grow: MotionAtom = {
+const grow: AtomMotion = {
   keyframes: [
     { height: 0, opacity: 0 },
     { height: 100, opacity: 1 },
