@@ -1,14 +1,13 @@
 import { render } from '@testing-library/react';
 import * as React from 'react';
 
-import type { MotionAtom } from '../types';
+import type { AtomMotion } from '../types';
 import { createAtom } from './createAtom';
 
-const motion: MotionAtom = {
+const motion: AtomMotion = {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: {
-    duration: 500,
-  },
+
+  duration: 500,
 };
 
 function createElementMock() {
@@ -42,9 +41,27 @@ describe('createAtom', () => {
     );
 
     expect(animateMock).toHaveBeenCalledWith(motion.keyframes, {
-      ...motion.options,
+      duration: motion.duration,
       fill: 'forwards',
       iterations: 1,
     });
+  });
+
+  it('supports functions as motion definitions', () => {
+    const fnMotion = jest.fn().mockImplementation(() => motion);
+    const TestAtom = createAtom(fnMotion);
+
+    const { animateMock, ElementMock } = createElementMock();
+
+    render(
+      <TestAtom>
+        <ElementMock />
+      </TestAtom>,
+    );
+
+    expect(fnMotion).toHaveBeenCalledTimes(1);
+    expect(fnMotion).toHaveBeenCalledWith({ animate: animateMock } /* mock of html element */);
+
+    expect(animateMock).toHaveBeenCalledTimes(1);
   });
 });

@@ -23,7 +23,7 @@ export type SelectTabData = {
   value: TabValue;
 };
 
-export type SelectTabEvent<E = HTMLElement> = React.MouseEvent<E> | React.KeyboardEvent<E>;
+export type SelectTabEvent<E = HTMLElement> = React.MouseEvent<E> | React.KeyboardEvent<E> | React.FocusEvent<E>;
 
 export type SelectTabEventHandler = (event: SelectTabEvent, data: SelectTabData) => void;
 
@@ -61,6 +61,7 @@ export type TabListProps = ComponentProps<TabListSlots> & {
    * Typically useful when the selectedValue is uncontrolled.
    */
   defaultSelectedValue?: TabValue;
+
   /**
    * A tab list can be set to disable interaction.
    * @default false
@@ -70,7 +71,14 @@ export type TabListProps = ComponentProps<TabListSlots> & {
   /**
    * Raised when a tab is selected.
    */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onTabSelect?: SelectTabEventHandler;
+
+  /**
+   * When true, focusing a tab will select it.
+   * @default false
+   */
+  selectTabOnFocus?: boolean;
 
   /**
    * The value of the currently selected tab.
@@ -91,7 +99,10 @@ export type TabListProps = ComponentProps<TabListSlots> & {
   vertical?: boolean;
 };
 
-export type TabListContextValue = Pick<TabListProps, 'onTabSelect' | 'selectedValue' | 'reserveSelectedTabSpace'> &
+export type TabListContextValue = Pick<
+  TabListProps,
+  'onTabSelect' | 'selectTabOnFocus' | 'selectedValue' | 'reserveSelectedTabSpace'
+> &
   Required<Pick<TabListProps, 'appearance' | 'disabled' | 'size' | 'vertical'>> & {
     /** A callback to allow a tab to register itself with the tab list. */
     onRegister: RegisterTabEventHandler;

@@ -2,6 +2,1636 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 06 Feb 2024 17:55:17 GMT",
+      "tag": "@fluentui/react-components_v9.46.4",
+      "version": "9.46.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "f48102457c4fd9ac295e02b8fa70946c6e80e6d7",
+            "comment": "chore: adds @fluentui/react-jsx-runtime as dependency"
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "c54b3ce6d7f3b6a032471dc67e1ec3cf464b6503",
+            "comment": "fix: Update year and month pickers to use the correct keyboard navigation type and apply requested focus indicator width from design for day picker."
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "c54b3ce6d7f3b6a032471dc67e1ec3cf464b6503",
+            "comment": "fix: Apply aria-disabled to DatePicker's contentAfter slot to avoid confusion when using screen readers."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "1b8ade8a67f75ec4007f54a52a94f61879f6b215",
+            "comment": "fix: MessageBar with no actions should have correct spacing"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "4a4c0c8f45a78ed984d326106c0832ebe536466b",
+            "comment": "fix(react-migration-v0-v9): add northstar to dependencies"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "7b89afa6ca231f610fcb26f5d816e0b86faec3d9",
+            "comment": "chore: bump northstar version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "0a9926b27316b3e29009638e58458bedf49091ba",
+            "comment": "fix: Resize heuristic should account for zero dimensions"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "e45b0408501c19f59f41205e13e4ed956a71e23e",
+            "comment": "chore: add accesibility props to Rating and RatingDisplay"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "27ca189bc2fde6aade956712c1f87845296981bd",
+            "comment": "chore: add accessibility props to Rating and RatingDisplay"
+          },
+          {
+            "author": "syphe@outlook.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "af94003107288eaa92a600c73ce266459d52b610",
+            "comment": "Adds custom onChange callback on SearchBox preview so consumers can handle clear event."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "449162dbd973fa84b14569f98e32876665eb8fc2",
+            "comment": "bugfix: regression fix for focus and blur events on TreeItem"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "3bdeb1785dbfc74aeb5c60a50c1d14fdc2078e45",
+            "comment": "bugfix: onOpenChange inconsistent between Tree and TreeItem"
+          }
+        ],
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "585e79b5bd8c95a75d947b5d98784a1d95139f61",
+            "comment": "chore: Simplify high contrast visuals for RatingItem, and remove iconOutline from RatingDisplay"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "1ee49f94524fc6b74e157bff43582318adbbbcfd",
+            "comment": "feat: useSetKeyboardNavigation hook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jan 2024 23:16:53 GMT",
+      "tag": "@fluentui/react-components_v9.46.3",
+      "version": "9.46.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "4ea2ac442b26360c3e0e86a0225ac4570c89f636",
+            "comment": "DataGrid to use dedicated custom events instead of simulated keypresses."
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "4ea2ac442b26360c3e0e86a0225ac4570c89f636",
+            "comment": "Tabster 5.3.0 and Keyborg 2.4.1."
+          }
+        ],
+        "minor": [
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "a56a5d3223c192a2a815ed84346825326541280a",
+            "comment": "Optional ShadowDOM support."
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "a56a5d3223c192a2a815ed84346825326541280a",
+            "comment": "getParent() version with ShadowDOM support."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jan 2024 13:56:05 GMT",
+      "tag": "@fluentui/react-components_v9.46.2",
+      "version": "9.46.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "3717b9e1d0a669bf73b2969508fb1e946aa9e87d",
+            "comment": "fix: add aria-controls to combobox and dropdown"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "2c3fdb3e90f95f7476d02a4b3b253c5f04bc85cf",
+            "comment": "fix: Update Label to use a token for its padding, instead of a hardcoded value"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "a23df09281e8115f7f28950e977419c74ecd81de",
+            "comment": "fix: Disabled Label should use GrayText in forced-colors mode"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "fe09d4f89bc988edba7e4ee9f07fb1ad2a75fd4b",
+            "comment": "fix: disabled menuitem has no pressed style"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "491d0cb952b14057711ff36348da50db92eaf78d",
+            "comment": "fix: Avoid infinite loop when comparing different documents"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jan 2024 10:40:21 GMT",
+      "tag": "@fluentui/react-components_v9.46.1",
+      "version": "9.46.1",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "b04151ab510b2908a858272e08a0d6f2c33f6d77",
+            "comment": "feat: Add `disableUpdateOnResize` positioning option"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "aa038189b6f700f5a43e933466e7ca72163423d6",
+            "comment": "feat: Add RatingDisplay component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jan 2024 15:10:57 GMT",
+      "tag": "@fluentui/react-components_v9.46.0",
+      "version": "9.46.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "ae31ae01c299e43ff98c561bf937da1ed465ef8a",
+            "comment": "chore: import UnionToIntersection from react-utilities instead of redeclaring it locally"
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "400c92a2a2d4c2ca898291cc49790102cf3880f0",
+            "comment": "feat: Add navigationIcons prop to allow customization of Calendar's navigation icons."
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "ccde960028c8a2dfe7de9df7bc5e8aef27ba57c5",
+            "comment": "fix: aria-multiselectable is unnecessary with menu roles"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "4739bab0130805cfef58f4c3da1f8e1b438fa5d5",
+            "comment": "fix(Dropdown): add `type=button` to `clearButton`"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "a95d5034819f1ca06dfb8a112cff878abe57e478",
+            "comment": "fix: cleanup overflow manager on every unmount"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "ae31ae01c299e43ff98c561bf937da1ed465ef8a",
+            "comment": "chore: import DistributiveOmit from react-utilities instead of redeclaring it locally"
+          }
+        ],
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "6220c3d5d2e41a549e831b563eaa2ef3605047fc",
+            "comment": "feat: add AriaLiveAnnouncer component"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "6220c3d5d2e41a549e831b563eaa2ef3605047fc",
+            "comment": "feat: add AriaLiveAnnouncer component"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motions-preview",
+            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f",
+            "comment": "chore: initial release"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "ae31ae01c299e43ff98c561bf937da1ed465ef8a",
+            "comment": "feat: helper type DistributiveOmit"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Jan 2024 14:25:01 GMT",
+      "tag": "@fluentui/react-components_v9.45.0",
+      "version": "9.45.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "42b8015b3d44861b4a9e26a9861c87b97ee5158d",
+            "comment": "feat: add `useComboboxFilter()` hook"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "5f352d5c09325db0acde03c1b9fb458eaa27dd6f",
+            "comment": "feat: export AnnounceProvider & useAnnounce()"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "42b8015b3d44861b4a9e26a9861c87b97ee5158d",
+            "comment": "feat: export `useComboboxFilter()` hook"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "5f352d5c09325db0acde03c1b9fb458eaa27dd6f",
+            "comment": "feat: export AnnounceProvider & useAnnounce()"
+          }
+        ],
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "1f067f912a754b8940c049bd798f6520108dfac5",
+            "comment": "fix: Update isVisible initial value to false to prevent Spinner flicker"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jan 2024 16:18:49 GMT",
+      "tag": "@fluentui/react-components_v9.44.5",
+      "version": "9.44.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "06421bb5960c4d8d01c0a2faee17aebd9c9fe0cb",
+            "comment": "fix: allow expandIcon to be null"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "78adee5b4060980b8f377ce31a9f967d0c6d58f1",
+            "comment": "fix: only apply transition css properties when animating"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "d98dd58264f2dbfaaf0c3cc1c7149acf0b8a6266",
+            "comment": "chore: use Types.TabsterAttributeName in useTabsterAttributes()"
+          }
+        ],
+        "minor": [
+          {
+            "author": "yiliu9@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "bf4596b027ad138c19fd8f443d8cde3f4886d4e1",
+            "comment": "Add bottom position"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b56e712bb5eb830c2b9e3150a399cd7bb4be972a",
+            "comment": "Add new type EventHandler/EventData for callback props"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "d98dd58264f2dbfaaf0c3cc1c7149acf0b8a6266",
+            "comment": "chore: add a comment for context usage"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jan 2024 13:14:07 GMT",
+      "tag": "@fluentui/react-components_v9.44.4",
+      "version": "9.44.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "50176a643b2d47f9e45d6694293a7bc6dfac3dd7",
+            "comment": "fix: DataGrid selection performance improvement"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "3ebb0a997356d1e645dff25b9142c36a22627839",
+            "comment": "bugfix: add system colors on hover"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "952426be5aaaefe9e3709550f202784bffd904a0",
+            "comment": "bugfix: Omit colliding content property from ComponentProps"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "952426be5aaaefe9e3709550f202784bffd904a0",
+            "comment": "bugfix: Omit colliding content property from ComponentProps"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "0a3d3dd089c66ed936fcbfe26c930db23668224b",
+            "comment": "fix: memoize tabster attributes"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "f2a9a6992c1967554dd0b18f830be60ea0d61771",
+            "comment": "fix: update types in styles to exclude \"clearIcon\" slot"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-toast",
+            "commit": "952426be5aaaefe9e3709550f202784bffd904a0",
+            "comment": "bugfix: Omit colliding content property from ComponentProps"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "70f01172ee585dc736be01458c6658d388b06a0e",
+            "comment": "fix: set popup's z-index: 1 when rendering DatePickerCompat inline."
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "86455f77ea6d207d642d2a501cf7642694ce58ca",
+            "comment": "chore: remove useHeadingProps() and React.useMemo()"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "952426be5aaaefe9e3709550f202784bffd904a0",
+            "comment": "bugfix: Omit colliding content property from ComponentProps"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "9208fa3336b524d9a62220e7d32b48aae2fa9a50",
+            "comment": "fix: MenuItem shortcut text should be caption"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "a522e6e68f670b14f466795b06d0f2183756418e",
+            "comment": "fix(MenuItem): bottom padding should be same as top padding"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-motion-preview",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "0c422edc87177d3d707c71fa3cad3fa2b872bdf8",
+            "comment": "chore: bumps @floating-ui/devtools version to latest"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "4664fb3fcfe0dfeaf19d3a591719c41af0ecfb54",
+            "comment": "Scaffold RatingDisplay"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "f2e37e16ab2ee873cfc3f0a4a2cba3098277f2fc",
+            "comment": "fix: correct version of @types/react-dom peer dep that matches for 16.x"
+          }
+        ],
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "f2a9a6992c1967554dd0b18f830be60ea0d61771",
+            "comment": "feat: add \"clearable\" prop to Combobox & Dropdown"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "38b6a76ef54c02106cf10d989922fbcc9d2cfb31",
+            "comment": "feat: allow typeable space on all comboboxes, not only freeform"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Jan 2024 09:04:28 GMT",
+      "tag": "@fluentui/react-components_v9.44.3",
+      "version": "9.44.3",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "c04dff957ab3e3912264665abd4cede8f78868aa",
+            "comment": "feat: active descedant improvements"
+          },
+          {
+            "author": "liminliu@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "300073896d3b7ab9a0556e5b1b886d46c99d2515",
+            "comment": "feat: implement CheckboxShim component for Checkbox migration"
+          }
+        ],
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "0cb371222fa09304577ca937a9c64a0ab062bf14",
+            "comment": "fix: selectable card should not be focusable"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "17c64820b48c13995a6f799f94bdefb40ced03e1",
+            "comment": "fix: remove slow CSS selector from card styles"
+          },
+          {
+            "author": "jurokapsiar@gmail.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "37f8222f1de7dbd898884a90e67c3c23f8826ee5",
+            "comment": "Remove dependency on v0"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "97e7eac0e041d9e7a6caffadd64d20ee4ca7261e",
+            "comment": "fix: update styles to not flip in RTL"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "c43a582b1e7587da4abbe03b04b1fc84f0f15415",
+            "comment": "chore: Updating doc stories and API."
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "commit": "45931fb1e4b39679040eff4608eb6e0be7c5a173",
+            "comment": "fix: Small style updates, changing 16px icons to 12px, slight padding changes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Jan 2024 10:21:33 GMT",
+      "tag": "@fluentui/react-components_v9.44.2",
+      "version": "9.44.2",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "5f9ae1e7b414d73ffa56f588d8eec5e2b85df95d",
+            "comment": "feat: Implement onPositioningEnd callback"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "a5e34e3c996d322bb0735f4fca9537deafd07b59",
+            "comment": "Stable release"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "a5e34e3c996d322bb0735f4fca9537deafd07b59",
+            "comment": "Deprecate preview package. Use @fluentui/react-timepicker-compat instead."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Jan 2024 16:24:19 GMT",
+      "tag": "@fluentui/react-components_v9.44.1",
+      "version": "9.44.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "update @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "3fa7c91ce8622da73706feb6a0ca5e34f89957e6",
+            "comment": "chore: update react-positioning to use latest floating ui dev tools to take latest fix"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "3b10c5e8637ad42b0943ab8e1f0a47804483d3b5",
+            "comment": "fix(useArrowNavigationGroup): should always memorize last focused element"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "36034483+daniel-hauser@users.noreply.github.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "71d0a34b10a13dfe9ea19a167eef53b01ae4ea4f",
+            "comment": "Allow isSlot to work with multiple react-utilities instances"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "Update version of @fluentui/react-icons to 2.0.224"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "0893aaa977c642d01c3c39032f929bc50a04d867",
+            "comment": "feat: Update position when target or container dimensions change"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "9ae4e5d426eb1a88f56388f620a4265b1302c664",
+            "comment": "chore: Update Radio indicator for perf and alignment at 125% DPI"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "3b10c5e8637ad42b0943ab8e1f0a47804483d3b5",
+            "comment": "fix(useArrowNavigationGroup): should always memorize last focused element"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "52bf3e727dcfd0b9a022bc3c96d4b34a8e6759b6",
+            "comment": "feat: `useOnKeyboardNavigationChange` to subscribe to changes in keyboard navigation mode"
+          }
+        ],
+        "none": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "5328bbd9d25e2846a4b649c0fd86be600d4bdc32",
+            "comment": "update react-icons to 2.0.224"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Jan 2024 09:48:05 GMT",
+      "tag": "@fluentui/react-components_v9.44.0",
+      "version": "9.44.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "3d70b7ee03a0862edcc7bdf9646d8a3f727f0487",
+            "comment": "fix: Make day labels non-actionable."
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "3d70b7ee03a0862edcc7bdf9646d8a3f727f0487",
+            "comment": "fix: Add missing CalendarStrings export and guidance on localization."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "6062ee77b6064d22941f4cc91e7f220527c7303c"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "d55914c734edffd6fd3fc234ca5b171cff689d84",
+            "comment": "feat: release compat package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Jan 2024 09:26:42 GMT",
+      "tag": "@fluentui/react-components_v9.44.0",
+      "version": "9.44.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "6cdd02277fa0bc6f3341171db194aa7724300808",
+            "comment": "chore: deprecate old slot API methods and types"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "ae3b77e7995d2ed37ae8d153308f82b4f3940e03",
+            "comment": "fix: trigger focus should mount hidden listbox"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "6cdd02277fa0bc6f3341171db194aa7724300808",
+            "comment": "chore: deprecate old slot API methods and types"
+          },
+          {
+            "author": "wfwf1997@gmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "8af30dee607c79fb0165ae72bb10b67304dc2005",
+            "comment": "fix: re-introduce ecma transpilation to ES5 to make it work with v8  in ES5 only browsers"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "6cdd02277fa0bc6f3341171db194aa7724300808",
+            "comment": "chore: deprecate old slot API methods and types"
+          }
+        ],
+        "minor": [
+          {
+            "author": "tfaller1@gmx.de",
+            "package": "@fluentui/react-components",
+            "commit": "41f5d49da76406a286c99db3d15c1d2f2577f4a4",
+            "comment": "chore: Export combobox selection types."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "254994bdc39bdbfffcd6228354f5a0a7bb3e3e3e",
+            "comment": "'feat: release rating to preview"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "2ca8d35248eded0e15e0a342c4ed8d7b75601c17",
+            "comment": "chore: add 'compat' tag to properly categorize v9 compat package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Dec 2023 17:00:40 GMT",
+      "tag": "@fluentui/react-components_v9.43.3",
+      "version": "9.43.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "b4844e599d85c9c135b8a0ea48d77c6d550b6b8f",
+            "comment": "fix(breadcrumb): BreadcrumbButton focus border has incorrent width and transition"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "4d269ba336f4a4cd9d1b5ab06949baacc9dc104d",
+            "comment": "fix: make hover color in contrast theme accessible."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "430e58ba1d1a6f0b2bcad8577070f01af099770c",
+            "comment": "fix: set default value of hourCycle to undefined"
+          }
+        ],
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "commit": "fe0792a703aec2388daee8d6c0b727f1736147f1",
+            "comment": "feat: Release react-teaching-popover-preview package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Dec 2023 01:35:07 GMT",
+      "tag": "@fluentui/react-components_v9.43.2",
+      "version": "9.43.2",
+      "comments": {
+        "none": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "9287dccfb14c7e7c06c1aaabdd3efef2d01149e2",
+            "comment": "Docs: Deprecate unused style hook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 Dec 2023 17:48:15 GMT",
+      "tag": "@fluentui/react-components_v9.43.2",
+      "version": "9.43.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "2034818a2dd109f3e9f7bb5cdf4caae47a9116d4",
+            "comment": "refactor: Encapsulates listbox and trigger slot construction"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "91029810542e996b201ed9b5919691b24dfbcdd3",
+            "comment": "chore: move from floating-ui-devtools to @floating-ui/devtools"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "c1b96dae4218975ea6366c714880e174cf9955e4",
+            "comment": "fix: provides a default aria-labelledby for the chevron icon if the TimePicker is wrapped in a Field."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 Dec 2023 14:40:42 GMT",
+      "tag": "@fluentui/react-components_v9.43.1",
+      "version": "9.43.1",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "3e0b68baf6557730ee49eccdd54a32ba36419324",
+            "comment": "feat: focus-visible polyfill shadow DOM support"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "4dad5d72ae2008003da76a6e0979de7cd4585b3d",
+            "comment": "feat: deprecates useARIAButtonShorthand in favor of useARIAButtonProps"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "8d6ffef8ed0d4e6f500939dfbb90886632a29419",
+            "comment": "fix: focus outline should have `Highlight` colour in high contrast"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "73c8cb55e5957d6ce321ecabe35d177d791ff0b6",
+            "comment": "fix: use useEventCallback instead of useCallback"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "a657b210377643bdab23b145b47f715e1d7effa9",
+            "comment": "fix: letter key navigation in listbox should be case insensitive"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "af6a9cb92082860c218fe72c99a03d45d6d7d1e4",
+            "comment": "fix: add custom style hook for TimePicker compat."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "8012cdf639e843847ee633040994c2d4e135185b",
+            "comment": "fix: set autoComeplete to off by default"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "3e0b68baf6557730ee49eccdd54a32ba36419324",
+            "comment": "fix: stop using deprecated keyborg property"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "4dad5d72ae2008003da76a6e0979de7cd4585b3d",
+            "comment": "chore: adopts useARIAButtonProps instead of deprecated method useARIAButtonShorthand"
+          },
+          {
+            "author": "GordonJSmith@gmail.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "bf0099d4ecd4c241c90832b2430f3c1a5b76d93a",
+            "comment": "partitionBreadcrumbItems miscalculated endDisplayedItems when endDisplayedItems is incorrect when numberOfItemsToHide <= 0"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "4dad5d72ae2008003da76a6e0979de7cd4585b3d",
+            "comment": "chore: adopts useARIAButtonProps instead of deprecated method useARIAButtonShorthand"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "1d3f0fd8ca328be619edbd03081f8fe8ea8ef640",
+            "comment": "fix: interactive cards not having the focus ring when focused"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "843f7681c7720d2a62622befd0034e0838745baf",
+            "comment": "chore: add \"wyw-in-js\" field for tag processor"
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "22942e7472cb7bf8650acf65e405b8abb7585acf",
+            "comment": "fix: Add a namespace to CSS variables in react-positioning package to avoid potential collisions."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "af6a9cb92082860c218fe72c99a03d45d6d7d1e4",
+            "comment": "fix: add custom style hook for TimePicker compat."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "af6a9cb92082860c218fe72c99a03d45d6d7d1e4",
+            "comment": "fix: add custom style hook for TimePicker compat."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "4dad5d72ae2008003da76a6e0979de7cd4585b3d",
+            "comment": "chore: adopts useARIAButtonProps instead of deprecated method useARIAButtonShorthand"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Dec 2023 09:58:41 GMT",
+      "tag": "@fluentui/react-components_v9.43.0",
+      "version": "9.43.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "b6766ba321b57331266f3f391d7274c77730459d",
+            "comment": "chore: disallow `window` and `document` access"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "841ad6af34ceb7266d0c4c71fa5828f581e0e5cc",
+            "comment": "fix: updates should be synchronous in unit tests"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "b6766ba321b57331266f3f391d7274c77730459d",
+            "comment": "chore: disallow `window` and `document` access"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "8a6a4559b2b24325cd5303fb3b9cc4f6d450a47a",
+            "comment": "fix: Applies border-box sizing to listbox slot"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "21548962723950b640bcd75c5befa58120f00b15",
+            "comment": "fix: OverlayDrawer accepts mountNode in types"
+          },
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "6fbf7dc04a3bd6594a3f510da4aa9f2946aa8909",
+            "comment": "fix: User-provided props win over defined defaults in Link component."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "62312d15851d9ec28b2e84216e2ba2aa19b14d70",
+            "comment": "fix: Using correct colors when MenuItem is pressed."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-motion-preview",
+            "commit": "b6766ba321b57331266f3f391d7274c77730459d",
+            "comment": "chore: disallow `window` and `document` access"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-portal",
+            "commit": "95c9391107523207d8a14c154179326314be9322",
+            "comment": "fix: Virtual parent cannot be the DOM child of mount node"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "8a6a4559b2b24325cd5303fb3b9cc4f6d450a47a",
+            "comment": "fix: Allows matchTargetSize middleware to be overidden with inline style"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "b6766ba321b57331266f3f391d7274c77730459d",
+            "comment": "chore: disallow `window` and `document` access"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "07bc7ffdd9a6abb244e1ac339677998729dee7eb",
+            "comment": "fix: add max-height to show 12 items in listbox"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "0d1d32a39687023d0d09632cbfc6e40fb04fa888",
+            "comment": "fix: use default time format instead of h23 hour cycle."
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "b6766ba321b57331266f3f391d7274c77730459d",
+            "comment": "chore: disallow `window` and `document` access"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "8a9fadf20b39eb154fdfda8084b38baeb1d8dce8",
+            "comment": "feat(useActiveDescendant): Changing active descendant scrolls into view"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "a434b543fb6724cf9925aabbcd69f5605220382a",
+            "comment": "feat: Export useAvatarGroupPopovercontextValues hook."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "a434b543fb6724cf9925aabbcd69f5605220382a",
+            "comment": "feat: Export useAvatarGroupPopovercontextValues hook."
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "3337f63dc7307d8bbc99499d6af70ebf2cb9b466",
+            "comment": "fix: Dialog now transitions in on first render"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "eb8a750dfd750779fbe38b0541decddaef2103ef",
+            "comment": "feat: List v0 migration shim"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "6244dc6778c65b6e8a29dd2baad7cc59a9b8ce80",
+            "comment": "feat: added select tab on focus behavior"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "7c8171182c0ba192ded028d1cb5c40626838397d",
+            "comment": "chore: add a explainer a check"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Nov 2023 13:42:05 GMT",
+      "tag": "@fluentui/react-components_v9.42.0",
+      "version": "9.42.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "29bddb19fbcf2f63711e9b5153b02066172dce9d",
+            "comment": "feat: Implement aria-activedescendant utility"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "499eb8b3c02e05e817ff907b740af703c4a19bf1",
+            "comment": "feat: export useUncontrolledFocus hook"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "6438f49dcad090446fdec9b189a027751e8dca11",
+            "comment": "add useFocusVisible() to exports"
+          },
+          {
+            "author": "humbertomakotomorimoto@gmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "3d31f25ab5321f10c1df4c5d113e7d78d89ca7b4",
+            "comment": "feat: Adding span as an option for Link to render as."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "499eb8b3c02e05e817ff907b740af703c4a19bf1",
+            "comment": "feat: implement useTabsterUncontrolled hook"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "d82568581b73996acbfdf78966e55572e0f869f6",
+            "comment": "feature: adds semantic elements (strong, b, em, i) to Text root signature"
+          }
+        ],
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "f72acbfc210a6477265b88d794fba38639666e5c",
+            "comment": "fix: listbox closes on blur after scroll click"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "81bc562773bf52c5806054de35a206a250cfd28e",
+            "comment": "fix: Dropdown button gets focus in Safari when clicked"
+          },
+          {
+            "author": "wfwf1997@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "ff672d6094b3fa211b96677ebe8c05f602f1ed01",
+            "comment": "chore: move up NODE_ENV check in warnIfElementTypeIsInvalid"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "7bb7f3dfe62dcbc678cc631c3683b11df942960e",
+            "comment": "feat: adds floating-ui-devtools support"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "faf18b048818bc55bb1ae1dc917b81aff898d00c",
+            "comment": "fix: Infinite reset loop in matchTargetSize middleware"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "75b0af0922b6d5e71bead8b378bf98ba659f70f2",
+            "comment": "fix: Brand row appearance should be brandBackground2 in pressed state"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "5219f3b7f8e802d4c95370bc97acb6b25a469839",
+            "comment": "docs: add docs for mountNodeProps"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "4dddcd651b848e2f4d5b90a28e64e13118da31b6",
+            "comment": "feat: Add default auto-measuring on dynamic virtualizezr if no sizing function provided"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 20 Nov 2023 09:55:08 GMT",
       "tag": "@fluentui/react-components_v9.41.0",
       "version": "9.41.0",

@@ -1,5 +1,5 @@
 import { makeStyles, shorthands, tokens, Label, Slider, useId, Checkbox } from '@fluentui/react-components';
-import { atoms, createAtom } from '@fluentui/react-motions-preview';
+import { atom, createAtom } from '@fluentui/react-motions-preview';
 import type { MotionImperativeRef } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
@@ -43,7 +43,7 @@ const useClasses = makeStyles({
   },
 });
 
-const FadeEnter = createAtom(atoms.fade.enterUltraSlow());
+const FadeEnter = createAtom(atom.fade.enterUltraSlow());
 
 export const ImperativeRefPlayState = () => {
   const classes = useClasses();

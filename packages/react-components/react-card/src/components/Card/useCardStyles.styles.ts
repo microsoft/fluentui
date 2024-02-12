@@ -63,10 +63,6 @@ const useStyles = makeStyles({
     [`> .${cardHeaderClassNames.root}, > .${cardFooterClassNames.root}`]: {
       flexShrink: 0,
     },
-    // Allows non-card components to grow to fill the available space.
-    [`> :not(.${cardPreviewClassNames.root}):not(.${cardHeaderClassNames.root}):not(.${cardFooterClassNames.root})`]: {
-      flexGrow: 1,
-    },
   },
 
   focused: {

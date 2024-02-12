@@ -53,7 +53,7 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
     rootBaseStyles,
     // add the clickable root only if we know the items are selectable and there is no custom onClick
     // because the custom onClick could be overriding the selection behavior.
-    state.selectable && !state.hasCustomOnClick && styles.rootClickable,
+    (state.selectable || state.hasCustomOnClick) && styles.rootClickable,
     state.root.className,
   );
 

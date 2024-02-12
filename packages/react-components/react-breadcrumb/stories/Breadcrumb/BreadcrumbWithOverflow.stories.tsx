@@ -11,6 +11,7 @@ import {
   tokens,
   Button,
   Menu,
+  MenuItemLink,
   MenuList,
   MenuPopover,
   MenuTrigger,
@@ -18,8 +19,8 @@ import {
   useOverflowMenu,
   Overflow,
   OverflowItem,
-  MenuItemLink,
   OverflowDivider,
+  Tooltip,
 } from '@fluentui/react-components';
 import {
   CalendarMonthFilled,
@@ -118,6 +119,14 @@ const useExampleStyles = makeStyles({
   },
 });
 
+const useTooltipStyles = makeStyles({
+  tooltip: {
+    whiteSpace: 'nowrap',
+    ...shorthands.overflow('hidden'),
+    textOverflow: 'ellipsis',
+  },
+});
+
 const MenuItem: React.FC<{ id: string; item: Item }> = props => {
   const { item, id } = props;
   const isVisible = useIsOverflowItemVisible(id);
@@ -159,27 +168,54 @@ const renderBreadcrumbItem = (el: Item, isLastItem: boolean = false) => {
   );
 };
 
+const getTooltipContent = (breadcrumbItems: readonly Item[] | undefined) => {
+  if (!breadcrumbItems) {
+    return '';
+  }
+  return breadcrumbItems.reduce((acc, initialValue, idx, arr) => {
+    return (
+      <>
+        {acc}
+        {arr[0].item !== initialValue.item && ' > '}
+        {initialValue.item}
+      </>
+    );
+  }, <React.Fragment />);
+};
+
 const OverflowMenu = (props: PartitionBreadcrumbItems<Item>) => {
   const { overflowItems, startDisplayedItems, endDisplayedItems } = props;
   const { ref, isOverflowing, overflowCount } = useOverflowMenu<HTMLButtonElement>();
+
+  const tooltipStyles = useTooltipStyles();
 
   if (!isOverflowing && overflowItems && overflowItems.length === 0) {
     return null;
   }
 
   const overflowItemsCount = overflowItems ? overflowItems.length + overflowCount : overflowCount;
+  const tooltipContent =
+    overflowItemsCount > 3
+      ? `${overflowItemsCount} items`
+      : {
+          children: getTooltipContent(overflowItems),
+          className: tooltipStyles.tooltip,
+        };
 
   return (
     <BreadcrumbItem>
       <Menu hasIcons>
         <MenuTrigger disableButtonEnhancement>
-          <Button
-            appearance="subtle"
-            ref={ref}
-            icon={<MoreHorizontal />}
-            aria-label={`${overflowItemsCount} more items`}
-            role="button"
-          />
+          <Tooltip withArrow content={tooltipContent} relationship="label">
+            <Button
+              id="menu"
+              appearance="subtle"
+              ref={ref}
+              icon={<MoreHorizontal />}
+              aria-label={`${overflowItemsCount} more items`}
+              role="button"
+            />
+          </Tooltip>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>
@@ -202,7 +238,7 @@ const BreadcrumbOverflowExample = () => {
   const { startDisplayedItems, overflowItems, endDisplayedItems }: PartitionBreadcrumbItems<Item> =
     partitionBreadcrumbItems({
       items,
-      maxDisplayedItems: 4,
+      maxDisplayedItems: 5,
     });
 
   return (

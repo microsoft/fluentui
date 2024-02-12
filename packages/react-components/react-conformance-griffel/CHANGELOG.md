@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance-griffel
 
-This log was last generated on Thu, 09 Nov 2023 17:29:33 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Jan 2024 13:14:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.8)
+
+Tue, 16 Jan 2024 13:14:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.7..@fluentui/react-conformance-griffel_v9.0.8)
+
+### Patches
+
+- fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
 
 ## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.7)
 

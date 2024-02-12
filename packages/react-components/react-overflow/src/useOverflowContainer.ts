@@ -74,11 +74,15 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     const newOverflowManager = createOverflowManager();
     newOverflowManager.observe(containerRef.current, overflowOptions);
     setOverflowManager(newOverflowManager);
-
-    return () => {
-      newOverflowManager.disconnect();
-    };
   }, [overflowOptions, firstMount]);
+
+  /* Clean up overflow manager on unmount */
+  React.useEffect(
+    () => () => {
+      overflowManager?.disconnect();
+    },
+    [overflowManager],
+  );
 
   const registerItem = React.useCallback(
     (item: OverflowItemEntry) => {

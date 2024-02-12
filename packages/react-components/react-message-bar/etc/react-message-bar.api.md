@@ -104,6 +104,7 @@ export type MessageBarProps = ComponentProps<MessageBarSlots> & Pick<Partial<Mes
 export type MessageBarSlots = {
     root: Slot<'div'>;
     icon?: Slot<'div'>;
+    bottomReflowSpacer?: Slot<'div'>;
 };
 
 // @public

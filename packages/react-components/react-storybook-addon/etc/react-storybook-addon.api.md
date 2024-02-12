@@ -10,8 +10,13 @@ import { Parameters as Parameters_2 } from '@storybook/addons';
 import { StoryContext } from '@storybook/addons';
 import type { Theme } from '@fluentui/react-theme';
 
+// @public (undocumented)
+export const DIR_ID: "storybook_fluentui-react-addon_dir";
+
 // @public
 export interface FluentGlobals extends Args {
+    // (undocumented)
+    [DIR_ID]?: 'ltr' | 'rtl';
     // (undocumented)
     [STRICT_MODE_ID]?: boolean;
     // (undocumented)

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Active modal checks if an element outside of it is a virtual child of a modal before setting aria-hidden.'",
+  "packageName": "@fluentui/react-tabster",
+  "email": "marata@microsoft.com",
+  "dependentChangeType": "patch"
+}

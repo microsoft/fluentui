@@ -72,6 +72,13 @@ const useStyles = makeStyles({
         opacity: 1,
       },
     },
+    // High contrast styles
+    '@media (forced-colors: active)': {
+      ':hover': {
+        color: 'Highlight',
+        ...shorthands.borderColor('Highlight'),
+      },
+    },
   },
 
   medium: {
@@ -90,7 +97,8 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorBrandBackground2,
     ...shorthands.borderColor(tokens.colorTransparentStrokeInteractive),
     ':active': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
+      backgroundColor: tokens.colorBrandBackground2,
+      color: tokens.colorNeutralForeground1,
     },
 
     '@media(forced-colors: active)': {

@@ -2,6 +2,21 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Thu, 14 Dec 2023 07:30:10 GMT",
+      "tag": "@fluentui/cra-template_v8.4.126",
+      "version": "8.4.126",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/cra-template",
+            "commit": "b6766ba321b57331266f3f391d7274c77730459d",
+            "comment": "chore: disallow `window` and `document` access"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Oct 2023 07:37:05 GMT",
       "tag": "@fluentui/cra-template_v8.4.117",
       "version": "8.4.117",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Infinite reset loop in matchTargetSize middleware",
-  "packageName": "@fluentui/react-positioning",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

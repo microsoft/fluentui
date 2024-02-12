@@ -43,6 +43,9 @@ describe('DataGrid', () => {
       'make-styles-overrides-win': {
         callCount: 2,
       },
+      'consistent-callback-args': {
+        legacyCallbacks: ['onSortChange', 'onSelectionChange', 'onColumnResize'],
+      },
     },
     // TODO: https://github.com/microsoft/fluentui/issues/19618
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -95,7 +98,7 @@ describe('DataGrid', () => {
     );
 
     expect(result.getByRole('grid').getAttribute('data-tabster')).toMatchInlineSnapshot(
-      `"{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3}}"`,
+      `"{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"`,
     );
   });
 
@@ -147,7 +150,7 @@ describe('DataGrid', () => {
     );
 
     expect(result.getByRole('grid').getAttribute('data-tabster')).toMatchInlineSnapshot(
-      `"{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3}}"`,
+      `"{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"`,
     );
   });
 });

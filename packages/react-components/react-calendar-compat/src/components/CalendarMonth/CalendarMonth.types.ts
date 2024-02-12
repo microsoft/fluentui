@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { AnimationDirection } from '../Calendar/Calendar.types';
+import type { CalendarNavigationIcons } from '../Calendar/calendarNavigationIcons';
 import type { CalendarStrings, DateFormatting } from '../../utils';
 import type { CalendarPickerStyleProps, CalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
@@ -103,6 +104,11 @@ export interface CalendarMonthProps {
    * The cardinal directions for animation to occur during transitions, either horizontal or veritcal
    */
   animationDirection?: AnimationDirection;
+
+  /**
+   * Custom navigation icons.
+   */
+  navigationIcons: CalendarNavigationIcons;
 }
 
 /**

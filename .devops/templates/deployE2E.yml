@@ -6,6 +6,10 @@ steps:
       filePath: yarn-ci.sh
     displayName: yarn
 
+  - script: |
+      yarn cypress verify
+    displayName: verify cypress install
+
   # this also builds FUI N* docs if appropriate
   - script: |
       yarn bundle  $(sinceArg)

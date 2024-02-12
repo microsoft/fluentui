@@ -80,7 +80,7 @@ const CardExample = (props: CardProps & { value: string; selected?: boolean }) =
       value={props.value}
       className={mergeClasses(listItemStyles, styles.listItem)}
       checkmark={{ className: styles.checkmark }}
-      role="row"
+      role="option"
       aria-label={value}
     >
       <div role="gridcell" style={{ gridArea: 'preview', overflow: 'hidden' }}>
@@ -166,7 +166,7 @@ export const MultipleActionsPrimarySelection = (props: Partial<ListProps>) => {
       className={classes.list}
       focusableItems
       selectable
-      role="grid"
+      role="listbox"
       aria-orientation="vertical"
       onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
       selectionMode="multiselect"

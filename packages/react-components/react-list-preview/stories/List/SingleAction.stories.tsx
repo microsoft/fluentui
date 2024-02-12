@@ -34,21 +34,28 @@ export const SingleAction = () => {
   const classes = useStyles();
   return (
     <div className={classes.wrapper}>
-      <List>
+      <List focusableItems>
         {names.map(name => (
-          <ListItem id={`id_${name}`} key={name}>
-            <ListItemButton aria-label={name} onClick={() => alert(name)}>
-              <Persona
-                name={name}
-                secondaryText="Available"
-                presence={{ status: 'available' }}
-                avatar={{
-                  image: {
-                    src: 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-male.png',
-                  },
-                }}
-              />
-            </ListItemButton>
+          <ListItem
+            id={`id_${name}`}
+            key={name}
+            role="listitem"
+            aria-label={name}
+            aria-roledescription="button" //needs to be translated string!
+            onClick={() => alert(name)}
+          >
+            {/* <ListItemButton aria-label={name}id={name}> */}
+            <Persona
+              name={name}
+              secondaryText="Available"
+              presence={{ status: 'available' }}
+              avatar={{
+                image: {
+                  src: 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-male.png',
+                },
+              }}
+            />
+            {/* </ListItemButton> */}
           </ListItem>
         ))}
       </List>

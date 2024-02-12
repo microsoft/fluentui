@@ -37,6 +37,7 @@ export {
   useArrowNavigationGroup,
   useFocusableGroup,
   useFocusFinders,
+  useFocusVisible,
   useFocusWithin,
   useKeyboardNavAttribute,
   useModalAttributes,
@@ -91,23 +92,30 @@ export type {
   TypographyStyles,
 } from '@fluentui/react-theme';
 export {
+  AnnounceProvider,
+  PortalMountNodeProvider,
+  useAnnounce,
   useFluent_unstable as useFluent,
+  usePortalMountNode,
   useTooltipVisibility_unstable as useTooltipVisibility,
   useThemeClassName_unstable as useThemeClassName,
-  PortalMountNodeProvider,
-  usePortalMountNode,
 } from '@fluentui/react-shared-contexts';
+export type { AnnounceContextValue } from '@fluentui/react-shared-contexts';
 export {
   // getNativeElementProps is deprecated but removing it would be a breaking change
   // eslint-disable-next-line deprecation/deprecation
   getNativeElementProps,
   getIntrinsicElementProps,
   getPartitionedNativeProps,
+  // getSlots is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   getSlots,
   slot,
   assertSlots,
   IdPrefixProvider,
   resetIdsForTests,
+  // resolveShorthand is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   resolveShorthand,
   SSRProvider,
   useId,
@@ -123,7 +131,11 @@ export type {
   ComponentProps,
   ComponentState,
   ForwardRefComponent,
+  // ResolveShorthandFunction is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandFunction,
+  // ResolveShorthandOptions is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandOptions,
   Slot,
   SlotOptions,
@@ -218,6 +230,7 @@ export {
   useAvatarGroupItem_unstable,
   renderAvatarGroupPopover_unstable,
   useAvatarGroupPopoverStyles_unstable,
+  useAvatarGroupPopoverContextValues_unstable,
   useAvatarGroupPopover_unstable,
   useAvatarGroupContext_unstable,
   partitionAvatarGroupItems,
@@ -363,6 +376,7 @@ export {
   useComboboxContextValues,
   ListboxProvider,
   useListboxContextValues,
+  useComboboxFilter,
 } from '@fluentui/react-combobox';
 export type {
   ComboboxProps,
@@ -383,12 +397,14 @@ export type {
   ListboxProps,
   ListboxSlots,
   ListboxState,
+  OptionOnSelectData,
   OptionProps,
   OptionSlots,
   OptionState,
   OptionGroupProps,
   OptionGroupSlots,
   OptionGroupState,
+  SelectionEvents,
 } from '@fluentui/react-combobox';
 export {
   Divider,
@@ -1547,3 +1563,11 @@ export type {
   BreadcrumbButtonState,
   BreadcrumbContextValues,
 } from '@fluentui/react-breadcrumb';
+
+export {
+  AriaLiveAnnouncer,
+  renderAriaLiveAnnouncer_unstable,
+  useAriaLiveAnnouncer_unstable,
+  useAriaLiveAnnouncerContextValues_unstable,
+} from '@fluentui/react-aria';
+export type { AriaLiveAnnouncerProps, AriaLiveAnnouncerState } from '@fluentui/react-aria';

@@ -34,7 +34,7 @@ function validateNavigableWhenOnClickPresent(navigable: boolean, onClick?: React
   }
 
   if (onClick && !navigable) {
-    throw new Error('ListItem must be navigable when onClick is present. Set navigable={true} on the List.');
+    throw new Error('ListItem must be navigable when onClick is present. Set focusableItems={true} on the List.');
   }
 }
 

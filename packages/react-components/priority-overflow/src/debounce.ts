@@ -6,6 +6,13 @@
  */
 export function debounce(fn: Function) {
   let pending: boolean;
+
+  // React testing platforms will often output errors when state updates happen outside `act`
+  // Since there is nothing obvious to wait for we just avoid debouncing in unit test environments
+  if (process.env.NODE_ENV === 'test') {
+    return fn as () => void;
+  }
+
   return () => {
     if (!pending) {
       pending = true;

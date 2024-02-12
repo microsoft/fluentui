@@ -23,6 +23,11 @@ const useStyles = makeStyles({
       cursor: 'default',
     },
   },
+  inline: {
+    // When rendering inline, the popupSurface will be rendered under relatively positioned elements such as Input.
+    // This is due to the surface being positioned as absolute, therefore zIndex: 1 ensures that won't happen.
+    zIndex: 1,
+  },
 });
 
 const usePopupSurfaceClassName = makeResetStyles({
@@ -43,7 +48,7 @@ const usePopupSurfaceClassName = makeResetStyles({
 export const useDatePickerStyles_unstable = (state: DatePickerState): DatePickerState => {
   const styles = useStyles();
   const popupSurfaceClassName = usePopupSurfaceClassName();
-  const { disabled } = state;
+  const { disabled, inlinePopup } = state;
 
   state.root.className = mergeClasses(
     datePickerClassNames.root,
@@ -57,6 +62,7 @@ export const useDatePickerStyles_unstable = (state: DatePickerState): DatePicker
       datePickerClassNames.popupSurface,
       popupSurfaceClassName,
       state.popupSurface.className,
+      inlinePopup && styles.inline,
     );
   }
 

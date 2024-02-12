@@ -11,6 +11,7 @@ exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
         display: inline;
       }
   data-focuszone-id="FocusZone1"
+  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -42,6 +43,7 @@ exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
         fill="#00AA00"
         fillOpacity={0.2}
         opacity={1}
+        role="img"
       />
     </svg>
     <svg
@@ -55,7 +57,7 @@ exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              fill: #000000;
+              fill: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
@@ -84,6 +86,7 @@ exports[`Sparkline snapShot testing renders Sparkline correctly with no legend 1
         display: inline;
       }
   data-focuszone-id="FocusZone3"
+  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -115,6 +118,7 @@ exports[`Sparkline snapShot testing renders Sparkline correctly with no legend 1
         fill="#E60000"
         fillOpacity={0.2}
         opacity={1}
+        role="img"
       />
     </svg>
   </div>

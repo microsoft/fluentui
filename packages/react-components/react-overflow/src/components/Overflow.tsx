@@ -68,7 +68,7 @@ export const Overflow = React.forwardRef((props: OverflowProps, ref) => {
 
   const clonedChild = applyTriggerPropsToChildren(children, {
     ref: useMergedRefs(containerRef, ref),
-    className: mergeClasses(styles.overflowMenu, styles.overflowingItems, children.props.className),
+    className: mergeClasses('fui-Overflow', styles.overflowMenu, styles.overflowingItems, children.props.className),
   });
 
   return (
