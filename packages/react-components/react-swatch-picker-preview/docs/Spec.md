@@ -62,6 +62,7 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
 | Component responsible for rendering swatches as row and grid | SwatchColorPicker   | SwatchPicker | ⚠️        |
 | Color cell                                                   | ColorPickerGridCell | ColorSwatch  | ⚠️        |
 | Image cell                                                   |                     | ImageSwatch  | ❌        |
+| Empty cell                                                   |                     | EmptySwatch  | ❌        |
 
 ## Sample Code
 
@@ -97,6 +98,7 @@ To use grid layout it should be more than 4 swatches.
 - Gradient
 - Image
 - Pattern / texture
+- Empty
 
 ### Shapes
 
@@ -136,16 +138,17 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 
 ### SwatchPicker
 
-| Property             | Values                                   | Default   | Purpose                                |
-| -------------------- | ---------------------------------------- | --------- | -------------------------------------- |
-| disabled             | `boolean`                                | `false`   | Whether SwatchPicker is disabled       |
-| layout               | `row`, `grid`                            | `row`     | Sets layout of the SwatchPicker        |
-| onChange             | `function`                               | undefined | Callback called when color is selected |
-| shape                | `square`, `circular`, `rounded`          | `square`  | Sets shape                             |
-| size                 | `extraSmall`, `small`, `medium`, `large` | `medium`  | Defines size of the Swatch cell        |
-| spacing              | `small`, `medium`                        | `medium`  | Sets spacing between rows and cells    |
-| selectedValue        | `string`                                 |           | Selected swatch                        |
-| defaultSelectedValue | `string`                                 |           | Default selected swatch                |
+| Property             | Values                                            | Default   | Purpose                                |
+| -------------------- | ------------------------------------------------- | --------- | -------------------------------------- |
+| disabled             | `boolean`                                         | `false`   | Whether SwatchPicker is disabled       |
+| grid                 | `type SwatchPickerGrid = { columnCount: number }` | undefined | Grid layout with a prop `columnCount`  |
+| onChange             | `function`                                        | undefined | Callback called when color is selected |
+| row                  | `type SwatchPickerRow = { responsive: boolean }`  | undefined | Row layout with a prop `responsive`    |
+| shape                | `square`, `circular`, `rounded`                   | `square`  | Sets shape                             |
+| size                 | `extraSmall`, `small`, `medium`, `large`          | `medium`  | Defines size of the Swatch cell        |
+| spacing              | `small`, `medium`                                 | `medium`  | Sets spacing between rows and cells    |
+| selectedValue        | `string`                                          |           | Selected swatch                        |
+| defaultSelectedValue | `string`                                          |           | Default selected swatch                |
 
 | Slots | Values | Default | Description                  |
 | ----- | ------ | ------- | ---------------------------- |
@@ -159,7 +162,6 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 | shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                       |
 | size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell  |
 | disabled | `boolean`                                |          |                                  |
-| empty    | `boolean`                                |          |                                  |
 
 | Slots        | Values   | Default  | Description                         |
 | ------------ | -------- | -------- | ----------------------------------- |
@@ -175,13 +177,23 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 | size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell |
 | src      | `string`                                 |          | URL of an image                 |
 | disabled | `boolean`                                |          |                                 |
-| empty    | `boolean`                                |          |                                 |
 
 | Slots        | Values   | Default  | Description                         |
 | ------------ | -------- | -------- | ----------------------------------- |
 | root         | `button` | `button` | The root of the ColorSwatch element |
 | icon         | `span`   | `span`   | Swatch with icon                    |
 | disabledIcon | `span`   | `span`   | Disabled icon                       |
+
+### EmptySwatch
+
+| Property | Values                                   | Default  | Purpose                         |
+| -------- | ---------------------------------------- | -------- | ------------------------------- |
+| shape    | `square`, `circular`, `rounded`          | `square` | Sets shape                      |
+| size     | `extraSmall`, `small`, `medium`, `large` | `medium` | Defines size of the Swatch cell |
+
+| Slots | Values   | Default  | Description                         |
+| ----- | -------- | -------- | ----------------------------------- |
+| root  | `button` | `button` | The root of the ColorSwatch element |
 
 ## Structure
 
@@ -192,6 +204,7 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 | SwatchPicker | Renders SwatchPicker which can represent swatches as a row or a grid |
 | ColorSwatch  | Renders a color or an icon                                           |
 | ImageSwatch  | Renders an image, texture or a pattern                               |
+| EmptySwatch  | Renders empty swatch                                                 |
 
 #### SwatchPicker component
 
