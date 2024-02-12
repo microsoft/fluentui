@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 09 Feb 2024 04:08:43 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Feb 2024 04:08:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.8)
+
+Mon, 12 Feb 2024 04:08:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.7..@fluentui/web-components_v3.0.0-beta.8)
+
+### Changes
+
+- Removes dependancy on fast-foundation classes and templates ([PR #30090](https://github.com/microsoft/fluentui/pull/30090) by jes@microsoft.com)
 
 ## [3.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.7)
 
