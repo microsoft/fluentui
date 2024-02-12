@@ -2,6 +2,33 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 12 Feb 2024 07:25:24 GMT",
+      "tag": "@fluentui/react-charting_v5.19.26",
+      "version": "5.19.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "rarthur@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9bf578810837f77704679eb73a5ab7b7a7594cc6",
+            "comment": "Improves SankeyChart mouse performance by reducing the DOM size and memoizing computations."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.137",
+            "commit": "4909da1c2da23917a1274f0b19b9d43b57588328"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.115.6",
+            "commit": "4909da1c2da23917a1274f0b19b9d43b57588328"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Feb 2024 07:25:49 GMT",
       "tag": "@fluentui/react-charting_v5.19.25",
       "version": "5.19.25",
