@@ -19,21 +19,10 @@ export const useMenuItemLink_unstable = (
 ): MenuItemLinkState => {
   // casting because the root slot changes from div to a
   const baseState = useMenuItem_unstable(props as MenuItemProps, null);
-
   // FIXME: casting because the root slot changes from div to a,
   // ideal solution would be to extract common logic from useMenuItem_unstable root
   // and use it in both without assuming element type
-  const _props = { ...props };
-  _props.onClick = useEventCallback(event => {
-    (baseState.root as ExtractSlotProps<Slot<'a'>>).onClick?.(event);
-  });
-  _props.onKeyDown = useEventCallback(event => {
-    (baseState.root as ExtractSlotProps<Slot<'a'>>).onKeyDown?.(event);
-  });
-  _props.onMouseEnter = useEventCallback(event => {
-    (baseState.root as ExtractSlotProps<Slot<'a'>>).onMouseEnter?.(event);
-  });
-
+  const _props = { ...props, ...(baseState as ExtractSlotProps<Slot<'a'>>) };
   return {
     ...baseState,
     components: {
