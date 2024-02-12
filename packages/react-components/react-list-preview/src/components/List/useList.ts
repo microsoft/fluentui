@@ -6,7 +6,7 @@ import {
   useControllableState,
   useEventCallback,
 } from '@fluentui/react-utilities';
-import { useArrowNavigationGroup, useFocusableGroup } from '@fluentui/react-tabster';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ListProps, ListState } from './List.types';
 import { useListSelection } from '../../hooks/useListSelection';
 

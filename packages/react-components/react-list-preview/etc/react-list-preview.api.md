@@ -8,6 +8,7 @@
 
 import { ButtonProps } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
+import { Checkbox } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -41,12 +42,13 @@ export type ListItemProps = ComponentProps<ListItemSlots> & {
 // @public (undocumented)
 export type ListItemSlots = {
     root: NonNullable<Slot<'li', 'div'>>;
-    checkmark?: Slot<'div'>;
+    checkmark?: Slot<typeof Checkbox>;
 };
 
 // @public
 export type ListItemState = ComponentState<ListItemSlots> & {
     selectable?: boolean;
+    hasCustomOnClick?: boolean;
 };
 
 // @public
