@@ -2,6 +2,81 @@
   "name": "@fluentui/theme-samples",
   "entries": [
     {
+      "date": "Mon, 12 Feb 2024 07:25:24 GMT",
+      "tag": "@fluentui/theme-samples_v8.7.137",
+      "version": "8.7.137",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/react to v8.115.6",
+            "commit": "4909da1c2da23917a1274f0b19b9d43b57588328"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Feb 2024 07:26:19 GMT",
+      "tag": "@fluentui/theme-samples_v8.7.136",
+      "version": "8.7.136",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/react to v8.115.5",
+            "commit": "cd1e26c488d7290d6ffa11eebdda50bbbe19d3aa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Feb 2024 07:27:40 GMT",
+      "tag": "@fluentui/theme-samples_v8.7.135",
+      "version": "8.7.135",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/react to v8.115.4",
+            "commit": "5aefa438776a47278b09f5073149bb94fb14c044"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Jan 2024 07:27:57 GMT",
+      "tag": "@fluentui/theme-samples_v8.7.134",
+      "version": "8.7.134",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/react to v8.115.3",
+            "commit": "eeb2656f81977a5821c36ca854fe2781d9dcfd1b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jan 2024 07:27:14 GMT",
+      "tag": "@fluentui/theme-samples_v8.7.133",
+      "version": "8.7.133",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme-samples",
+            "comment": "Bump @fluentui/react to v8.115.2",
+            "commit": "2c3fdb3e90f95f7476d02a4b3b253c5f04bc85cf"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jan 2024 07:26:58 GMT",
       "tag": "@fluentui/theme-samples_v8.7.132",
       "version": "8.7.132",

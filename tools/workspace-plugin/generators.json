@@ -84,6 +84,11 @@
       "factory": "./src/generators/eslint-rule/generator",
       "schema": "./src/generators/eslint-rule/schema.json",
       "description": "eslint-rule generator"
+    },
+    "bundle-size-configuration": {
+      "factory": "./src/generators/bundle-size-configuration/generator",
+      "schema": "./src/generators/bundle-size-configuration/schema.json",
+      "description": "bundle-size-configuration generator"
     }
   }
 }

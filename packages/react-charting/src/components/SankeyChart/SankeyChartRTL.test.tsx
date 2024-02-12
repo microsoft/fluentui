@@ -1,59 +1,33 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { ThemeProvider } from '@fluentui/react';
+import { DarkTheme } from '@fluentui/theme-samples';
+import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { axe, toHaveNoViolations } from 'jest-axe';
 import * as React from 'react';
-import { render, waitFor, screen, fireEvent, act } from '@testing-library/react';
-import { IChartProps, SankeyChart } from './index';
 import { resetIds } from '../../Utilities';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
-import { DarkTheme } from '@fluentui/theme-samples';
-import { ThemeProvider } from '@fluentui/react';
-import { axe, toHaveNoViolations } from 'jest-axe';
 import { SankeyChartBase } from './SankeyChart.base';
+import { IChartProps, SankeyChart } from './index';
 
 expect.extend(toHaveNoViolations);
 
-const chartPointsWithStringNodeId: IChartProps = {
-  chartTitle: 'Sankey Chart',
-  SankeyChartData: {
-    nodes: [
-      {
-        nodeId: 'zero',
-        name: '192.168.42.72',
-        color: '#757575',
-        borderColor: '#4B3867',
-      },
-      {
-        nodeId: 'one',
-        name: '172.152.48.13',
-        color: '#8764B8',
-        borderColor: '#4B3867',
-      },
-      {
-        nodeId: 'two',
-        name: '124.360.55.1',
-        color: '#757575',
-        borderColor: '#4B3867',
-      },
-      {
-        nodeId: 'three',
-        name: '192.564.10.2',
-        color: '#8764B8',
-        borderColor: '#4B3867',
-      },
-    ],
-    links: [
-      {
-        source: 0,
-        target: 2,
-        value: 80,
-      },
-      {
-        source: 1,
-        target: 3,
-        value: 50,
-      },
-    ],
-  },
-};
+function chartPointsWithStringNodeId(): IChartProps {
+  return {
+    chartTitle: 'Sankey Chart',
+    SankeyChartData: {
+      nodes: [
+        { nodeId: 'zero', name: '192.168.42.72', color: '#757575', borderColor: '#4B3867' },
+        { nodeId: 'one', name: '172.152.48.13', color: '#8764B8', borderColor: '#4B3867' },
+        { nodeId: 'two', name: '124.360.55.1', color: '#757575', borderColor: '#4B3867' },
+        { nodeId: 'three', name: '192.564.10.2', color: '#8764B8', borderColor: '#4B3867' },
+      ],
+      links: [
+        { source: 0, target: 2, value: 80 },
+        { source: 1, target: 3, value: 50 },
+      ],
+    },
+  };
+}
 
 const emptyChartPoints: IChartProps = {
   chartData: [],
@@ -67,7 +41,7 @@ describe('Sankey bar chart rendering', () => {
   testWithoutWait(
     'Should render the Sankey chart with string node data',
     SankeyChart,
-    { data: chartPointsWithStringNodeId },
+    { data: chartPointsWithStringNodeId() },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -80,7 +54,7 @@ describe('Sankey chart - Theme', () => {
     // Arrange
     const { container } = render(
       <ThemeProvider theme={DarkTheme}>
-        <SankeyChart data={chartPointsWithStringNodeId} />
+        <SankeyChart data={chartPointsWithStringNodeId()} />
       </ThemeProvider>,
     );
     // Assert
@@ -101,7 +75,7 @@ describe('Sankey chart - Subcomponent Node', () => {
   testWithWait(
     'Should update path color same as node color when we clck on node',
     SankeyChart,
-    { data: chartPointsWithStringNodeId },
+    { data: chartPointsWithStringNodeId() },
     async container => {
       const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       fireEvent.click(nodes[0]);
@@ -119,7 +93,7 @@ describe('Sankey chart - Subcomponent Label', () => {
   testWithoutWait(
     'Should render sankey chart with node labels',
     SankeyChart,
-    { data: chartPointsWithStringNodeId },
+    { data: chartPointsWithStringNodeId() },
     async container => {
       const nodes = getByClass(container, /nodeName/i);
       expect(nodes).toHaveLength(4);
@@ -132,9 +106,8 @@ describe('Sankey chart - Mouse events', () => {
   testWithoutWait(
     'Should reset path on mouse leave from path',
     SankeyChart,
-    { data: chartPointsWithStringNodeId },
+    { data: chartPointsWithStringNodeId() },
     async container => {
-      // eslint-disable-next-line
       const handleMouseOver = jest.spyOn(SankeyChartBase.prototype as any, '_onStreamLeave');
       const paths = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
       fireEvent.mouseOver(paths[0]);
@@ -146,9 +119,8 @@ describe('Sankey chart - Mouse events', () => {
   testWithoutWait(
     'Should reset node on mouse leave from node',
     SankeyChart,
-    { data: chartPointsWithStringNodeId },
+    { data: chartPointsWithStringNodeId() },
     async container => {
-      // eslint-disable-next-line
       const handleMouseOver = jest.spyOn(SankeyChartBase.prototype as any, '_onLeave');
       const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       fireEvent.mouseOver(nodes[0]);
@@ -167,7 +139,7 @@ describe('Sankey chart rendering', () => {
     expect(container).toMatchSnapshot();
     expect(getById(container, /_SankeyChart_empty/i)).toHaveLength(1);
     // Act
-    rerender(<SankeyChart data={chartPointsWithStringNodeId} />);
+    rerender(<SankeyChart data={chartPointsWithStringNodeId()} />);
     await waitFor(() => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -180,7 +152,7 @@ describe('Sankey Chart - axe-core', () => {
   beforeEach(sharedBeforeEach);
 
   test('Should pass accessibility tests', async () => {
-    const { container } = render(<SankeyChart data={chartPointsWithStringNodeId} />);
+    const { container } = render(<SankeyChart data={chartPointsWithStringNodeId()} />);
     let axeResults;
     await act(async () => {
       axeResults = await axe(container);

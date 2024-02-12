@@ -36,6 +36,9 @@ describe('TimePicker', () => {
           },
         },
       ],
+      'consistent-callback-args': {
+        legacyCallbacks: ['onOpenChange', 'onTimeChange'],
+      },
     },
   });
 
