@@ -9,12 +9,12 @@ export type ComboboxContextValue = Pick<
   'activeOption' | 'appearance' | 'focusVisible' | 'open' | 'registerOption' | 'setActiveOption' | 'setOpen' | 'size'
 > & {
   /**
-   * @deprecated
+   * @deprecated - no longer used
    */
   selectedOptions: ComboboxState['selectedOptions'];
 
   /**
-   * @deprecated
+   * @deprecated - no longer used
    */
   selectOption: ComboboxState['selectOption'];
 };

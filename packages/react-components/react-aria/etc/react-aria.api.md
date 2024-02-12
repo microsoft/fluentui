@@ -103,14 +103,13 @@ export function useARIAButtonProps<Type extends ARIAButtonType, Props extends AR
 export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps>;
 
 // @public (undocumented)
-<<<<<<< HEAD
-export const useHasParentActiveDescendantContext: () => boolean;
-=======
 export const useAriaLiveAnnouncer_unstable: (props: AriaLiveAnnouncerProps) => AriaLiveAnnouncerState;
 
 // @public (undocumented)
 export function useAriaLiveAnnouncerContextValues_unstable(state: AriaLiveAnnouncerState): AriaLiveAnnouncerContextValues;
->>>>>>> master
+
+// @public (undocumented)
+export const useHasParentActiveDescendantContext: () => boolean;
 
 // (No @packageDocumentation comment for this package)
 
