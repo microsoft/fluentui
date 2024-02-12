@@ -1,0 +1,84 @@
+import * as React from 'react';
+import { useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
+import type { PickerProps, PickerState } from './Picker.types';
+import { useComboboxBaseState, optionClassNames } from '@fluentui/react-combobox';
+import { PositioningShorthandValue, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
+import { useActiveDescendant } from '@fluentui/react-aria';
+
+/**
+ * Create the state required to render Picker.
+ *
+ * The returned state can be modified with hooks such as usePickerStyles_unstable,
+ * before being passed to renderPicker_unstable.
+ *
+ * @param props - props from this instance of Picker
+ * @param ref - reference to root HTMLDivElement of Picker
+ */
+export const usePicker_unstable = (props: PickerProps, ref: React.Ref<HTMLDivElement>): PickerState => {
+  const popoverId = useId('picker-listbox');
+  const triggerInnerRef = React.useRef<HTMLInputElement>(null);
+  const { positioning } = props;
+
+  // Set a default set of fallback positions to try if the dropdown does not fit on screen
+  const fallbackPositions: PositioningShorthandValue[] = ['above', 'after', 'after-top', 'before', 'before-top'];
+
+  const { targetRef, containerRef } = usePositioning({
+    position: 'below' as const,
+    align: 'start' as const,
+    offset: { crossAxis: 0, mainAxis: 2 },
+    fallbackPositions,
+    matchTargetSize: 'width' as const,
+    ...resolvePositioningShorthand(positioning),
+  });
+
+  const {
+    controller: activeDescendantController,
+    activeParentRef,
+    listboxRef,
+  } = useActiveDescendant<HTMLInputElement, HTMLDivElement>({
+    matchOption(el) {
+      return el.classList.contains(optionClassNames.root);
+    },
+  });
+  const state = useComboboxBaseState({ ...props, activeDescendantController, editable: true, multiselect: true });
+  const onOptionClickBase = state.onOptionClick;
+  state.onOptionClick = useEventCallback(e => {
+    onOptionClickBase(e);
+    state.setOpen(e, false);
+  });
+
+  const children = React.Children.toArray(props.children) as React.ReactElement[];
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (children.length === 0) {
+      // eslint-disable-next-line no-console
+      console.warn('Picker must contain at least one child');
+    }
+
+    if (children.length > 2) {
+      // eslint-disable-next-line no-console
+      console.warn('Picker must contain at most two children');
+    }
+  }
+
+  let trigger: React.ReactElement | undefined = undefined;
+  let popover: React.ReactElement | undefined = undefined;
+  if (children.length === 2) {
+    trigger = children[0];
+    popover = children[1];
+  } else if (children.length === 1) {
+    popover = children[0];
+  }
+
+  return {
+    activeDescendantController,
+    components: {},
+    trigger,
+    popover,
+    popoverId,
+    triggerRef: useMergedRefs(triggerInnerRef, activeParentRef),
+    popoverRef: useMergedRefs(listboxRef, containerRef),
+    targetRef,
+    ...state,
+  };
+};
