@@ -222,6 +222,10 @@ The issue is that there is no way to enforce it in the API contract.
 
 The proposed solution relies on the [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API) and proposes to use the factories pattern to create React components for animating elements.
 
+> Note: The proposal primarily concentrates on low-level APIs for motion. However, following additional discussions with design teams, we might lean towards exporting prebuilt components with predefined motions, such as `Collapse`, `Fade`, `Scale`, etc.
+>
+> In any case, the proposed APIs will be exported to enable the creation of custom motions.
+
 <details>
 <summary>Why factories over hooks?</summary>
 
@@ -394,7 +398,7 @@ function MyComponent() {
 }
 ```
 
-However, as we need to expose factories anyway, the proposal is to expose them as the primary API.
+Since we need to expose factories regardless for creating custom motions, the proposal suggests exposing them as the API.
 
 </details>
 
