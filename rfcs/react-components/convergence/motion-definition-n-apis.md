@@ -366,9 +366,16 @@ While this approach should not be commonly used, it's worth noting that it's pos
 The proposal is to expose factories as they provide more flexibility and can be used with custom motion definitions.
 
 ```tsx
-import { createAtom, atoms } from '@fluentui/react-motions-preview';
+import { type AtomMotion, createAtom, motionTokens } from '@fluentui/react-motions-preview';
 
-const FadeEnterSlow = createAtom(atoms.fade.enterSlow);
+// ⚠️ Consumers will have the option to use either predefined motions as objects or as components.
+//    They won't need to define custom motions unless they specifically want to.
+const fade: AtomMotion = {
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  duration: motionTokens.durationUltraFast,
+};
+
+const FadeEnterSlow = createAtom(fade);
 
 function MyComponent() {
   return (
@@ -411,10 +418,14 @@ Another API approach might be to compose existing components with motion factori
 // ⚠️ This is not proposed API, it's just an example
 
 import { Button } from '@fluentui/react-components';
-import { createAtomElement, atom } from '@fluentui/react-motions-preview';
+import { type AtomMotion, createAtomElement } from '@fluentui/react-motions-preview';
 
-const FadeEnterDiv = createAtomElement('div', atom.fade.enterSlow);
-const FadeEnterButton = createAtomElement(Button, atom.fade.enterSlow);
+const fade: AtomMotion = {
+  /* --- */
+};
+
+const FadeEnterDiv = createAtomElement('div', fade);
+const FadeEnterButton = createAtomElement(Button, fade);
 
 function MyComponent() {
   return (
@@ -434,10 +445,14 @@ This approach does not have obvious pros or cons, but it's worth noting that eve
 import { Button, Image } from '@fluentui/react-components';
 import { createAtom, createAtomElement, atom } from '@fluentui/react-motions-preview';
 
-const FadeEnter = createAtom(atom.fade.enterSlow);
+const fade: AtomMotion = {
+  /* --- */
+};
 
-const FadeEnterButton = createAtomElement(Button, atom.fade.enterSlow);
-const FadeEnterImage = createAtomElement(Image, atom.fade.enterSlow);
+const FadeEnter = createAtom(fade);
+
+const FadeEnterButton = createAtomElement(Button, fade);
+const FadeEnterImage = createAtomElement(Image, fade);
 
 function MyComponent() {
   return (
@@ -502,17 +517,22 @@ function MyComponent(props) {
 As with `createAtom()`, the factory returns a React component that clones the child element and applies the provided animation to it:
 
 ```tsx
-import { createPresence, presence } from '@fluentui/react-motions-preview';
+import { createPresence, type PresenceMotion } from '@fluentui/react-motions-preview';
 
-const FadeSlow = createPresence(presence.fade.slow());
+// ⚠️ Consumers will have the option to use either predefined motions as objects or as components.
+//    They won't need to define custom motions unless they specifically want to.
+const fadePrensence: PresenceMotion = {
+  /* --- */
+};
+const Fade = createPresence(fadePrensence);
 
 function MyComponent() {
   const [visible, setVisible] = useState(false);
 
   return (
-    <FadeSlow visible={visible}>
+    <Fade visible={visible}>
       <div>Hello world!</div>
-    </FadeSlow>
+    </Fade>
   );
 }
 ```
@@ -523,17 +543,22 @@ Unlike `createAtom()`, a created component has additional props:
 - `unmountOnExit` - whether the child element should be unmounted on exit
 
 ```tsx
-import { createPresence, presence } from '@fluentui/react-motions-preview';
+import { createPresence, type PresenceMotion } from '@fluentui/react-motions-preview';
 
-const FadeSlow = createPresence(presence.fade.slow());
+// ⚠️ Consumers will have the option to use either predefined motions as objects or as components.
+//    They won't need to define custom motions unless they specifically want to.
+const fadePrensence: PresenceMotion = {
+  /* --- */
+};
+const Fade = createPresence(fadePrensence);
 
 function MyComponent() {
   const [visible, setVisible] = useState(false);
 
   return (
-    <FadeSlow appear visible={visible} unmountOnExit>
+    <Fade appear visible={visible} unmountOnExit>
       <div>Hello world!</div>
-    </FadeSlow>
+    </Fade>
   );
 }
 ```
@@ -550,9 +575,16 @@ type PresenceMotion = {
 For example, when using `fade.slow()`, it yields a `PresenceMotion` object containing `enter` and `exit` motions:
 
 ```ts
-const fadeSlow: PresenceMotion = {
-  enter: atom.fade.enterSlow,
-  exit: atom.fade.exitSlow,
+const fadeEnter: AtomMotion = {
+  /* --- */
+};
+const fadeExit: AtomMotion = {
+  /* --- */
+};
+
+const fadePresence: PresenceMotion = {
+  enter: fadeEnter,
+  exit: fadeExit,
 };
 ```
 
@@ -565,9 +597,15 @@ _At present, this feature is not implemented in either the `@fluentui/react-moti
 The suggested approach is to adopt APIs from the `react-transition-group package`, for example:
 
 ```tsx
-import { createPresence, presence, PresenceGroup } from '@fluentui/react-motions-preview';
+import { createPresence, type PresenceMotion, PresenceGroup } from '@fluentui/react-motions-preview';
 
-const FadeSlow = createPresence(presence.fade.slow());
+// ⚠️ Consumers will have the option to use either predefined motions as objects or as components.
+//    They won't need to define custom motions unless they specifically want to.
+const fadePrensence: PresenceMotion = {
+  /* --- */
+};
+
+const FadeSlow = createPresence(fadePrensence);
 
 function MyComponent() {
   return (
@@ -638,9 +676,11 @@ The proposed solution suggests introducing a `motion` prop to override the motio
 
 ```tsx
 import { Dialog, DialogSurface } from '@fluentui/react-components';
-import { createPresence, presence } from '@fluentui/react-motions-preview';
+import { createPresence } from '@fluentui/react-motions-preview';
 
-const FadeSlow = createPresence(presence.fade.slow());
+// ⚠️ Consumers will have the option to use either predefined motions as objects or as components.
+//    They won't need to define custom motions unless they specifically want to.
+const FadeSlow = createPresence(/* --- */);
 
 function MyComponent() {
   const [open, setOpen] = useState(false);
@@ -666,8 +706,9 @@ It seems reasonable to consider composing components, as illustrated in the foll
 // ⚠️ This is not proposed API, it's just an example
 
 import { Dialog, DialogSurface } from '@fluentui/react-components';
+import { createPresence } from '@fluentui/react-motions-preview';
 
-const FadeSlow = createPresence(presence.fade.slow());
+const FadeSlow = createPresence(/* --- */);
 
 function MyComponent() {
   const [open, setOpen] = useState(false);
@@ -698,8 +739,9 @@ However, this approach comes with a few drawbacks:
 // ⚠️ This is not proposed API, it's just an example
 
 import { Dialog, DialogSurfaceWithoutMotion } from '@fluentui/react-components';
+import { createPresence } from '@fluentui/react-motions-preview';
 
-const FadeSlow = createPresence(presence.fade.slow());
+const FadeSlow = createPresence(/* --- */);
 
 function MyComponent() {
   const [open, setOpen] = useState(false);
@@ -817,7 +859,7 @@ This approach relies on CSS keyframes and utilizes Griffel to generate them. To 
 Given our use of CSS-in-JS, specifically Griffel, we can define CSS keyframes in JS. For example, we can create a `fadeEnter` animation as follows:
 
 ```tsx
-import type { GriffelStyle } from '@griffel/react';
+import { type GriffelStyle } from '@griffel/react';
 
 const fadeEnterSlow: GriffelStyle = {
   animationName: {
@@ -838,7 +880,7 @@ const fadeEnterSlow: GriffelStyle = {
 Alternatively, we could use a different type for animation definition. For example, `MotionStyle` to restrict the usage of CSS properties:
 
 ```ts
-import type { GriffelStyle } from '@griffel/react';
+import { type GriffelStyle } from '@griffel/react';
 
 type MotionStyle = Pick<
   GriffelStyle,
@@ -854,7 +896,7 @@ Also, implementing this method would involve creating a helper function to conve
 
 ```tsx
 import { makeStyles, tokens } from '@fluentui/react-components';
-import type { CSSMotionAtom, toGriffelStyle } from 'some-pkg';
+import { type CSSMotionAtom, toGriffelStyle } from 'some-pkg';
 
 const fadeEnterSlow: CSSMotionAtom = {
   keyframes: {
@@ -877,7 +919,7 @@ While this approach introduces additional complexity, it doesn't offer any signi
 
 ```tsx
 import styled, { keyframes } from 'styled-components';
-import type { fadeEnterSlow, toStyledComponents } from 'some-pkg';
+import { type fadeEnterSlow, toStyledComponents } from 'some-pkg';
 
 const [keyframesCSS, css] = toStyledComponents(fadeEnterSlow);
 const fadeIn = keyframes`${keyframesCSS}`;
