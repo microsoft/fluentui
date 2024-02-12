@@ -14,8 +14,6 @@ export { CustomAtom } from './CustomAtom.stories';
 export { TokensUsage } from './TokensUsage.stories';
 export { MotionFunctions } from './MotionFunctions.stories';
 
-export { MotionLibrary } from './MotionLibrary.stories';
-
 export default {
   title: 'Utilities/Web Motions (Preview)',
   component: null,

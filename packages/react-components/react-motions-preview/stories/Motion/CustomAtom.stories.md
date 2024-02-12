@@ -1,5 +1,4 @@
-While Fluent UI provides a set of predefined atom and presence animations, you can also create your motions to customize the animations.
-This is applicable to both `createAtom()` and `createPresence()` factories.
+You can create completely custom motions, this is applicable to both `createAtom()` and `createPresence()` factories.
 
 Atoms are defined by `AtomMotion` interface and presence animations are defined by `PresenceMotion` interface.
 `AtomMotion` contains definitions for `keyframes` and its options that are used internally to create [`KeyframeEffect`](https://developer.mozilla.org/en-US/docs/Web/API/KeyframeEffect) for an animation.

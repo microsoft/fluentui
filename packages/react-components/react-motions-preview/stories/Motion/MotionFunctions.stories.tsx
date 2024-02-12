@@ -1,5 +1,6 @@
 import { Checkbox, Label, makeStyles, shorthands, Slider, tokens, useId } from '@fluentui/react-components';
-import { createPresence, MotionImperativeRef, PresenceMotionFn } from '@fluentui/react-motions-preview';
+import { createPresence } from '@fluentui/react-motions-preview';
+import type { MotionImperativeRef, PresenceMotionFn } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
 import description from './MotionFunctions.stories.md';
@@ -68,6 +69,8 @@ export const MotionFunctions = () => {
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [visible, setVisible] = React.useState<boolean>(true);
 
+  // Heads up!
+  // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
   React.useEffect(() => {
     motionInRef.current?.setPlaybackRate(playbackRate / 100);
     motionOutRef.current?.setPlaybackRate(playbackRate / 100);

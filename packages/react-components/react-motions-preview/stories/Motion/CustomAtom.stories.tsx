@@ -1,6 +1,5 @@
 import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
 import { createAtom } from '@fluentui/react-motions-preview';
-import type { AtomMotion } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
 import description from './CustomAtom.stories.md';
@@ -32,15 +31,13 @@ const useClasses = makeStyles({
   },
 });
 
-const dropInMotion: AtomMotion = {
+const DropIn = createAtom({
   keyframes: [
     { transform: 'rotate(-30deg) translateY(-100%)', opacity: 0 },
     { transform: 'rotate(0deg) translateY(0%)', opacity: 1 },
   ],
   duration: 4000,
-};
-
-const DropIn = createAtom(dropInMotion);
+});
 
 export const CustomAtom = () => {
   const classes = useClasses();
