@@ -58,7 +58,7 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
           ':hover': {
             backgroundColor: extendedSemanticColors.buttonBackgroundCheckedHovered,
             border: StyleConstants.borderNone,
-            color: semanticColors.bodyText,
+            color: semanticColors.buttonTextHovered,
             transition: 'background-color .2s ease-out',
           },
           ':active': {
