@@ -19,7 +19,7 @@ export const useColorSwatch_unstable = (
   props: ColorSwatchProps,
   ref: React.Ref<HTMLButtonElement>,
 ): ColorSwatchState => {
-  const { icon, disabled, color } = props;
+  const { icon, disabled, color, value } = props;
   const iconShorthand = slot.optional(icon, { elementType: 'span' });
 
   const context = useSwatchPickerContextValue_unstable();
@@ -61,6 +61,7 @@ export const useColorSwatch_unstable = (
     shape: context.shape,
     selected,
     color,
+    value,
   };
 
   state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLButtonElement>());

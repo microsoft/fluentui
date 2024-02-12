@@ -30,11 +30,13 @@ export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & {
   size?: 'extraSmall' | 'small' | 'medium' | 'large';
 
   shape?: 'rounded' | 'square' | 'circular';
+
+  value: string;
 };
 
 /**
  * State used in rendering ColorSwatch
  */
 export type ColorSwatchState = ComponentState<ColorSwatchSlots> &
-  Pick<ColorSwatchProps, 'disabled' | 'color' | 'shape' | 'size'> &
+  Pick<ColorSwatchProps, 'disabled' | 'color' | 'shape' | 'size' | 'value'> &
   SwatchContextValue;

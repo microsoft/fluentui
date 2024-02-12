@@ -29,7 +29,8 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
   /**
    * Event rised when user selects a color
    */
-  onColorChange?: (event: SwatchPickerSelectEvent, data: SwatchPickerSelectData) => void;
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
+  onColorChange?: SwatchPickerSelectEventHandler;
 
   size?: 'extraSmall' | 'small' | 'medium' | 'large';
 
