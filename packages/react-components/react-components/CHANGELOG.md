@@ -1,8 +1,92 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 23 Jan 2024 15:10:57 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Feb 2024 17:55:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.46.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.4)
+
+Tue, 06 Feb 2024 17:55:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.46.3..@fluentui/react-components_v9.46.4)
+
+### Minor changes
+
+- `@fluentui/react-rating-preview`
+  - chore: Simplify high contrast visuals for RatingItem, and remove iconOutline from RatingDisplay ([PR #30457](https://github.com/microsoft/fluentui/pull/30457) by behowell@microsoft.com)
+- `@fluentui/react-tabster`
+  - feat: useSetKeyboardNavigation hook ([PR #30316](https://github.com/microsoft/fluentui/pull/30316) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-aria`
+  - chore: adds @fluentui/react-jsx-runtime as dependency ([PR #30485](https://github.com/microsoft/fluentui/pull/30485) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-calendar-compat`
+  - fix: Update year and month pickers to use the correct keyboard navigation type and apply requested focus indicator width from design for day picker. ([PR #30435](https://github.com/microsoft/fluentui/pull/30435) by estebanmu@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: Apply aria-disabled to DatePicker's contentAfter slot to avoid confusion when using screen readers. ([PR #30435](https://github.com/microsoft/fluentui/pull/30435) by estebanmu@microsoft.com)
+- `@fluentui/react-message-bar`
+  - fix: MessageBar with no actions should have correct spacing ([PR #30481](https://github.com/microsoft/fluentui/pull/30481) by lingfangao@hotmail.com)
+- `@fluentui/react-migration-v0-v9`
+  - fix(react-migration-v0-v9): add northstar to dependencies ([PR #30303](https://github.com/microsoft/fluentui/pull/30303) by martinhochel@microsoft.com)
+  - chore: bump northstar version ([PR #30478](https://github.com/microsoft/fluentui/pull/30478) by martinhochel@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: Resize heuristic should account for zero dimensions ([PR #30439](https://github.com/microsoft/fluentui/pull/30439) by lingfangao@hotmail.com)
+- `@fluentui/react-rating-preview`
+  - chore: add accesibility props to Rating and RatingDisplay ([PR #30414](https://github.com/microsoft/fluentui/pull/30414) by ololubek@microsoft.com)
+  - chore: add accessibility props to Rating and RatingDisplay ([PR #30421](https://github.com/microsoft/fluentui/pull/30421) by ololubek@microsoft.com)
+- `@fluentui/react-search-preview`
+  - Adds custom onChange callback on SearchBox preview so consumers can handle clear event. ([PR #29038](https://github.com/microsoft/fluentui/pull/29038) by syphe@outlook.com)
+- `@fluentui/react-tree`
+  - bugfix: regression fix for focus and blur events on TreeItem ([PR #30436](https://github.com/microsoft/fluentui/pull/30436) by bernardo.sunderhus@gmail.com)
+  - bugfix: onOpenChange inconsistent between Tree and TreeItem ([PR #30050](https://github.com/microsoft/fluentui/pull/30050) by bernardo.sunderhus@gmail.com)
+
+## [9.46.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.3)
+
+Tue, 30 Jan 2024 23:16:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.46.2..@fluentui/react-components_v9.46.3)
+
+### Minor changes
+
+- `@fluentui/react-tabster`
+  - Optional ShadowDOM support. ([PR #30429](https://github.com/microsoft/fluentui/pull/30429) by marata@microsoft.com)
+- `@fluentui/react-utilities`
+  - getParent() version with ShadowDOM support. ([PR #30429](https://github.com/microsoft/fluentui/pull/30429) by marata@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-table`
+  - DataGrid to use dedicated custom events instead of simulated keypresses. ([PR #30387](https://github.com/microsoft/fluentui/pull/30387) by marata@microsoft.com)
+- `@fluentui/react-tabster`
+  - Tabster 5.3.0 and Keyborg 2.4.1. ([PR #30387](https://github.com/microsoft/fluentui/pull/30387) by marata@microsoft.com)
+
+## [9.46.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.2)
+
+Mon, 29 Jan 2024 13:56:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.46.1..@fluentui/react-components_v9.46.2)
+
+### Patches
+
+- `@fluentui/react-combobox`
+  - fix: add aria-controls to combobox and dropdown ([PR #30352](https://github.com/microsoft/fluentui/pull/30352) by sarah.higley@microsoft.com)
+- `@fluentui/react-label`
+  - fix: Update Label to use a token for its padding, instead of a hardcoded value ([PR #30254](https://github.com/microsoft/fluentui/pull/30254) by behowell@microsoft.com)
+  - fix: Disabled Label should use GrayText in forced-colors mode ([PR #30245](https://github.com/microsoft/fluentui/pull/30245) by behowell@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: disabled menuitem has no pressed style ([PR #30340](https://github.com/microsoft/fluentui/pull/30340) by sarah.higley@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: Avoid infinite loop when comparing different documents ([PR #30415](https://github.com/microsoft/fluentui/pull/30415) by lingfangao@hotmail.com)
+
+## [9.46.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.1)
+
+Fri, 26 Jan 2024 10:40:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.46.0..@fluentui/react-components_v9.46.1)
+
+### Minor changes
+
+- `@fluentui/react-positioning`
+  - feat: Add `disableUpdateOnResize` positioning option ([PR #30391](https://github.com/microsoft/fluentui/pull/30391) by lingfangao@hotmail.com)
+- `@fluentui/react-rating-preview`
+  - feat: Add RatingDisplay component ([PR #30323](https://github.com/microsoft/fluentui/pull/30323) by ololubek@microsoft.com)
 
 ## [9.46.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.0)
 

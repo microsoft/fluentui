@@ -28,15 +28,10 @@ export type RatingDisplayProps = ComponentProps<RatingDisplaySlots> & {
    */
   count?: number;
   /**
-   * The icon used for filled rating items.
+   * The icon used for rating items.
    * @default <StarFilled />
    */
-  iconFilled?: React.ReactElement;
-  /**
-   * The icon used for unfilled rating items.
-   * @default <StarRegular />
-   */
-  iconOutline?: React.ReactElement;
+  icon?: React.ReactElement;
   /**
    * The max value of the rating. This controls the number of rating items displayed.
    * Must be a whole number greater than 1.
@@ -58,7 +53,7 @@ export type RatingDisplayProps = ComponentProps<RatingDisplaySlots> & {
  * State used in rendering RatingDisplay
  */
 export type RatingDisplayState = ComponentState<RatingDisplaySlots> &
-  Required<Pick<RatingDisplayProps, 'color' | 'compact' | 'iconFilled' | 'iconOutline' | 'max' | 'size'>> &
+  Required<Pick<RatingDisplayProps, 'color' | 'compact' | 'icon' | 'max' | 'size'>> &
   Pick<RatingDisplayProps, 'value'>;
 
 export type RatingDisplayContextValues = { ratingItem: RatingItemContextValue };

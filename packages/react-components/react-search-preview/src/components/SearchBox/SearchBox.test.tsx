@@ -43,6 +43,9 @@ describe('SearchBox', () => {
           },
         },
       ],
+      'consistent-callback-args': {
+        legacyCallbacks: ['onChange'],
+      },
     },
   });
 
@@ -117,5 +120,14 @@ describe('SearchBox', () => {
     userEvent.click(renderedComponent.getByRole('button'));
     expect(getSearchBox().value).toBe('');
     expect(onClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('invokes `onChange` when the dismiss button is clicked', () => {
+    const onChange = jest.fn();
+    renderedComponent = render(<SearchBox defaultValue="hello" onChange={onChange} />);
+
+    userEvent.click(renderedComponent.getByRole('button'));
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ value: '' }));
   });
 });

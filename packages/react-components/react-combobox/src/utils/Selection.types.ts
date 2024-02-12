@@ -17,6 +17,7 @@ export type SelectionProps = {
   multiselect?: boolean;
 
   /* Callback when an option is selected */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onOptionSelect?: (event: SelectionEvents, data: OptionOnSelectData) => void;
 
   /**

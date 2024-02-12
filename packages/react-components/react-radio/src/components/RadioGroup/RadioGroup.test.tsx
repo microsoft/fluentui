@@ -10,6 +10,11 @@ describe('RadioGroup', () => {
   isConformant({
     Component: RadioGroup,
     displayName: 'RadioGroup',
+    testOptions: {
+      'consistent-callback-args': {
+        legacyCallbacks: ['onChange'],
+      },
+    },
   });
 
   it('renders a default state', () => {

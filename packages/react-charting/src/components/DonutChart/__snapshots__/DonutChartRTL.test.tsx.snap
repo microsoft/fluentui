@@ -653,7 +653,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                         cursor: default;
                         fill: #E5E5E5;
                         outline: transparent;
-                        stroke: #ffffff;
+                        stroke: #1b1a19;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -675,7 +675,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                         cursor: default;
                         fill: #0078D4;
                         outline: transparent;
-                        stroke: #ffffff;
+                        stroke: #1b1a19;
                       }
                       &::-moz-focus-inner {
                         border: 0;
@@ -697,7 +697,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                         cursor: default;
                         fill: #DADADA;
                         outline: transparent;
-                        stroke: #ffffff;
+                        stroke: #1b1a19;
                       }
                       &::-moz-focus-inner {
                         border: 0;
