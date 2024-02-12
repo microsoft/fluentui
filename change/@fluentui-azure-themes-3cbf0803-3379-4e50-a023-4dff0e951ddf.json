@@ -2,6 +2,6 @@
   "type": "patch",
   "comment": "updated icon color of status bar to meet accessibility requirements",
   "packageName": "@fluentui/azure-themes",
-  "email": "orantesadri1@gmail.com",
+  "email": "aorantes@microsoft.com",
   "dependentChangeType": "patch"
 }
