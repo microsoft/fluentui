@@ -634,7 +634,7 @@ The `TransitionGroup` component from the `react-transition-group` package resolv
 
 ### Motion overrides
 
-To override motion used in a component, we can utilize the `motion` prop that accepts a React component. For example:
+The proposed solution suggests introducing a `motion` prop to override the motion used in a component, functioning similarly to the existing Slots API. For example:
 
 ```tsx
 import { Dialog, DialogSurface } from '@fluentui/react-components';
@@ -655,21 +655,7 @@ function MyComponent() {
 }
 ```
 
-To disable motion `null` can be passed:
-
-```tsx
-function MyComponent() {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <Dialog open={open}>
-      <DialogSurface motion={null}>
-        <div>Hello world!</div>
-      </DialogSurface>
-    </Dialog>
-  );
-}
-```
+> In this case, `FadeSlow` should be created with `createPresence()` or adhere to a specific API contract i.e. accept specific props.
 
 <details>
 <summary>Why not composition?</summary>
@@ -733,6 +719,94 @@ function MyComponent() {
 ```
 
 </details>
+
+To disable motion `null` can be passed similarly to Slots API:
+
+```tsx
+<DialogSurface motion={null}>
+```
+
+`motion` also will have a longhand form to support motion callbacks:
+
+```tsx
+<DialogSurface
+  motion={{
+    element: FadeSlow,
+    onMotionFinish: () => console.log('Motion ended!'),
+  }}
+/>
+```
+
+<details>
+<summary>Why not animation events i.e. `onAnimationFinish()`?</summary>
+
+We will support more complex motions later, such as [grouped and sequential](#motion-sequencing--grouping) animations. Since matching interfaces are not implemented in the platform, we may fallback to either a polyfill or implement a custom approach. In any case, we will need to schedule multiple animations to satisfy this use case. Consequently, the [`finish` event](https://developer.mozilla.org/en-US/docs/Web/API/Animation/finish_event) will be called multiple times. For example:
+
+```tsx
+<DialogSurface
+  onAnimationFinish={() => console.log('onAnimationFinish()')}
+  motion={{
+    element: ComplexMotion,
+    onMotionFinish: () => console.log('onMotionFinish()'),
+  }}
+/>
+
+// 🖥️ Console output
+//    onAnimationFinish()
+//    onAnimationFinish()
+//    onAnimationFinish()
+//    onMotionFinish()
+```
+
+- `onAnimationFinish()` is called for every animation upon finishing.
+- `onMotionFinish()` is called when all animations defined by `ComplexMotion` have finished.
+
+</details>
+
+To allow the integration of Fluent UI React components with third-party motion systems, the `motion` prop will also support a render callback, similar to the Slots API:
+
+```tsx
+<DialogSurface
+  motion={{
+    children: (
+      Element /* 1️⃣ default element defined in a component */,
+      props /*   2️⃣ props required to control motion */,
+    ) => {
+      return (
+        // 💡CSSTransition comes from "react-transition-group"
+        <CSSTransition classNames="my-css-fade" nodeRef={props.ref} timeout={500} in={props.visible}>
+          {props.children}
+        </CSSTransition>
+      );
+    },
+  }}
+/>
+```
+
+To maintain consistency between components, the implementation of the motion prop will be provided as a function:
+
+```tsx
+import { motionSlot, Collapse } from '@fluentui/react-motions-preview';
+import { mergeCallbacks } from '@fluentui/react-utilities';
+import * as React from 'react';
+
+function useComponentState(props, ref) {
+  const { motion } = props;
+  const [open, setOpen] = React.useState(false);
+
+  const state = {
+    motion: motionSlot(motion, {
+      element: Collapse,
+      visible: open,
+    }),
+  };
+
+  // Heads up! Like other events callbacks on slots, we should merge them
+  state.motion.onMotionFinish = mergeCallbacks(state.motion.onMotionFinish, () => {
+    /* do something */
+  });
+}
+```
 
 ## Discarded solution (CSS option)
 
