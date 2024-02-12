@@ -6,6 +6,7 @@ exports[`MenuItemLink renders a default state 1`] = `
     class="fui-MenuItemLink fui-MenuItem"
     href="#"
     role="menuitem"
+    tabindex="0"
   >
     <span
       class="fui-MenuItemLink__content fui-MenuItem__content"

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ExtractSlotProps, Slot, getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
+import { ExtractSlotProps, Slot, getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { MenuItemLinkProps, MenuItemLinkState } from './MenuItemLink.types';
 import { useMenuItem_unstable } from '../MenuItem/useMenuItem';
 import { MenuItemProps } from '../MenuItem/MenuItem.types';
@@ -22,7 +22,9 @@ export const useMenuItemLink_unstable = (
   // FIXME: casting because the root slot changes from div to a,
   // ideal solution would be to extract common logic from useMenuItem_unstable root
   // and use it in both without assuming element type
-  const _props = { ...props, ...(baseState as ExtractSlotProps<Slot<'a'>>) };
+  const _props = { ...props, ...(baseState.root as ExtractSlotProps<Slot<'a'>>) };
+  _props.ref = ref;
+
   return {
     ...baseState,
     components: {
