@@ -7,6 +7,9 @@ export { CreateMotionComponent as createMotionComponent } from './CreateMotionCo
 export { ImperativeRefPlayState as imperativeRef } from './ImperativeRefPlayState.stories';
 export { TokensUsage as tokens } from './TokensUsage.stories';
 
+export { MotionArrays as arrays } from './MotionArrays.stories';
+export { MotionFunctions as functions } from './MotionFunctions.stories';
+
 export default {
   title: 'Utilities/Web Motions (Preview)/createMotionComponent',
   component: null,
