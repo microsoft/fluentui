@@ -2,6 +2,7 @@ export { motionTokens, durations, curves } from './motions/motionTokens';
 
 export { createMotionComponent } from './factories/createMotionComponent';
 export { createPresenceComponent } from './factories/createPresenceComponent';
+export { createSequenceAtom } from './factories/createSequenceAtom';
 
 export { PresenceGroup } from './components/PresenceGroup';
 

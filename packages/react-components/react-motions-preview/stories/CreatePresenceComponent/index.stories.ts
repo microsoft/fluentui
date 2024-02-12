@@ -11,6 +11,8 @@ export { PresenceOnMotionFinish as onMotionFinish } from './PresenceOnMotionFini
 export { PresenceMotionArrays as arrays } from './PresenceMotionArrays.stories';
 export { PresenceMotionFunctions as functions } from './PresenceMotionFunctions.stories';
 
+export { Choreography } from './Choreography.stories';
+
 export default {
   title: 'Utilities/Web Motions (Preview)/createPresenceComponent',
   component: null,
