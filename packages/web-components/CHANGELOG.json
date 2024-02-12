@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 12 Feb 2024 04:08:06 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.8",
+      "version": "3.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8fd063a5c1c6b7c0b77cf2c51436d564b5b1c1f0",
+            "comment": "Removes dependancy on fast-foundation classes and templates"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Feb 2024 04:08:43 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.7",
       "version": "3.0.0-beta.7",
