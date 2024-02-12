@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 12 Feb 2024 07:25:24 GMT",
+      "tag": "@fluentui/react_v8.115.6",
+      "version": "8.115.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ce796ee773711e0170623d56388b78ed4893a038",
+            "comment": "fix: Datepicker with input renders semantic button for voice control"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Feb 2024 07:26:18 GMT",
       "tag": "@fluentui/react_v8.115.5",
       "version": "8.115.5",
