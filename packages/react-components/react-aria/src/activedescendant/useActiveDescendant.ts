@@ -29,7 +29,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   });
 
   const matchOption = useEventCallback(matchOptionUnstable);
-  const listboxRef = React.useRef<TListboxElement | null>(null);
+  const listboxRef = React.useRef<TListboxElement>(null);
   const { optionWalker, listboxCallbackRef } = useOptionWalker<TListboxElement>({ matchOption });
   const getActiveDescendant = React.useCallback(() => {
     return listboxRef.current?.querySelector<HTMLElement>(`#${activeIdRef.current}`);
@@ -131,8 +131,8 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
         }
       },
 
-      find(predicate, { passive } = {}) {
-        const target = optionWalker.find(predicate);
+      find(predicate, { passive, startFrom } = {}) {
+        const target = optionWalker.find(predicate, startFrom);
         if (!passive) {
           focusActiveDescendant(target);
         }
