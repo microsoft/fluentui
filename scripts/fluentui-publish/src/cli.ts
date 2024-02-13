@@ -1,5 +1,5 @@
 import { tree } from '@fluentui/scripts-monorepo';
-import { readCachedProjectGraph, readNxJson } from '@nx/devkit';
+import { createProjectGraphAsync, readNxJson } from '@nx/devkit';
 import * as yargs from 'yargs';
 
 import { PublishArgs, publish } from './publish';
@@ -9,7 +9,7 @@ import { VersionArgs, version } from './version';
 export async function main() {
   const { options, command, specifier } = processArgs();
 
-  const graph = readCachedProjectGraph();
+  const graph = await createProjectGraphAsync();
   const nxConfig = readNxJson(tree);
   const northstarGroup = getNorthstarGroup(graph);
 

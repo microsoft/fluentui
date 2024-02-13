@@ -1,11 +1,4 @@
-import {
-  ProjectGraph,
-  createProjectGraphAsync,
-  joinPathFragments,
-  readCachedProjectGraph,
-  readJsonFile,
-  workspaceRoot,
-} from '@nx/devkit';
+import { ProjectGraph, createProjectGraphAsync, joinPathFragments, readJsonFile, workspaceRoot } from '@nx/devkit';
 
 import { getLatestTag, getNorthstarGroup, getTagPattern } from './utils';
 
@@ -14,7 +7,7 @@ describe(`utils`, () => {
   const nxConfig = readJsonFile(joinPathFragments(workspaceRoot, 'nx.json'));
 
   beforeEach(async () => {
-    graph = await getGraph();
+    graph = await createProjectGraphAsync();
   });
 
   describe(`tags`, () => {
@@ -75,12 +68,3 @@ describe(`utils`, () => {
     });
   });
 });
-
-async function getGraph() {
-  try {
-    return readCachedProjectGraph();
-  } catch {
-    const graph = await createProjectGraphAsync();
-    return graph;
-  }
-}
