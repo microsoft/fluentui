@@ -26,20 +26,6 @@ const dismissed20Regular = html`
   </svg>
 `;
 
-const dismissCircle20Regular = html`<svg
-  fill="currentColor"
-  aria-hidden="true"
-  width="20"
-  height="20"
-  viewBox="0 0 20 20"
-  xmlns="http://www.w3.org/2000/svg"
->
-  <path
-    d="M10 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm0 1a7 7 0 1 0 0 14 7 7 0 0 0 0-14ZM7.8 7.11l.08.06L10 9.3l2.12-2.12a.5.5 0 0 1 .64-.06l.07.06c.17.18.2.44.06.64l-.06.07L10.7 10l2.12 2.12c.17.17.2.44.06.64l-.06.07a.5.5 0 0 1-.64.06l-.07-.06L10 10.7l-2.12 2.12a.5.5 0 0 1-.64.06l-.07-.06a.5.5 0 0 1-.06-.64l.06-.07L9.3 10 7.17 7.88a.5.5 0 0 1-.06-.64l.06-.07a.5.5 0 0 1 .64-.06Z"
-    fill="currentColor"
-  ></path>
-</svg>`;
-
 const closeDialog = (e: Event, id: string, dismissed: boolean = false) => {
   const dialog = document.getElementById(id) as FluentDialog;
   dialog.hide(dismissed);
@@ -68,7 +54,7 @@ const dialogTemplate = html<DialogStoryArgs>`
   </style>
   <div>
     <fluent-button @click=${(e: Event, c) => openDialog(e, 'dialog-default')}>Open Dialog</fluent-button>
-    <fluent-dialog id="dialog-default" modal-type="${x => x.modalType}" ?no-title-action="${x => x.noTitleAction}">
+    <fluent-dialog id="dialog-default" modal-type="${x => x.modalType}">
       <fluent-text slot="title">Dialog</fluent-text>
       <fluent-text as="p" weight="regular" block>
         <p>
@@ -108,17 +94,6 @@ export default {
       },
       defaultValue: DialogModalType.modal,
     },
-    noTitleAction: {
-      description:
-        'Used to opt out of rendering the default title action that is rendered when the dialog <code>type</code>is set to <code>non-modal</code>',
-      table: {
-        defaultValue: { summary: false },
-      },
-      control: {
-        type: 'boolean',
-      },
-      defaultValue: false,
-    },
     open: {
       description: 'Controls the open state of the dialog',
       table: {
@@ -139,7 +114,6 @@ export const NonModal = renderComponent(html<DialogStoryArgs>`
     <fluent-text block>
       <span>
         A non-modal dialog by default presents no backdrop, allowing elements outside of the dialog to be interacted with.
-        A non-modal dialog will present by default a close button.
       </span>
     </fluent-text>
     <br />
@@ -154,8 +128,6 @@ export const NonModal = renderComponent(html<DialogStoryArgs>`
       </fluent-text as="p" block>
         <p>
           A non-modal dialog by default presents no backdrop, allowing elements outside of the dialog to be interacted with.
-
-          A non-moda dialog will present by default a closeButton.
         </p>
       </fluent-text>
       </fluent-text as="p" block><p><fluent-text weight="bold" as="span"><span>Note:<span></fluent-text> if an element outside of the dialog is focused then it will not be possible to close the dialog with the Escape key.</p></fluent-text>
@@ -289,88 +261,38 @@ export const Actions = renderComponent(html<DialogStoryArgs>`
   </div>
 `);
 
-export const TitleCustomAction = renderComponent(html<DialogStoryArgs>`
+export const TitleAction = renderComponent(html<DialogStoryArgs>`
   <div>
-    <fluent-text block>
-      <span>By default a non-modal dialog renders a dismiss button with a close icon. </span>
-    </fluent-text>
-    <br />
-    <fluent-text block>
-      <span>
-        This slot can be customized to add a different kind of action, that it'll be available in any kind of dialog,
-        ignoring the modalType property, here's an example replacing the simple close icon with a fluent button using a
-        different icon.
-      </span>
+    <fluent-text as="p" block>
+      <p>
+        You can use the title-action to provide an action in the title such as a close button, that will be available in
+        any kind of Dialog.
+      </p>
     </fluent-text>
     <br />
     <fluent-text block><code>slot="title-action"</code></fluent-text>
     <br />
-    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-titlecustomaction')}>Open Dialog</fluent-button>
-    <fluent-dialog id="dialog-titlecustomaction">
-      <div slot="title">Title Custom Action</div>
+    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-titleaction')}>Open Dialog</fluent-button>
+    <fluent-dialog id="dialog-titleaction">
+      <div slot="title">Title Action Slot</div>
       <fluent-button
         appearance="transparent"
         icon-only
-        @click="${(e: Event, c) => closeDialog(e, 'dialog-titlecustomaction')}"
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-titleaction')}"
         slot="title-action"
       >
-        ${dismissCircle20Regular}
+        ${dismissed20Regular}
       </fluent-button>
       <div>
-        <fluent-text block>
-          <span>By default a non-modal dialog renders a dismiss button with a close icon. </span>
-        </fluent-text>
-        <br />
-        <fluent-text block>
-          <span>
-            This slot can be customized to add a different kind of action, that it'll be available in any kind of
-            dialog, ignoring the modalType property, here's an example replacing the simple close icon with a fluent
-            button using a different icon.
-          </span>
+        <fluent-text as="p" block>
+          <p>
+            You can use the title-action to provide an action in the title such as a close button, that will be
+            available in any kind of Dialog.
+          </p>
         </fluent-text>
         <br />
         <fluent-text block><code>slot="title-action"</code></fluent-text>
       </div>
-      <br />
-
-      <fluent-button
-        slot="action"
-        appearance="primary"
-        @click="${(e: Event, c) => closeDialog(e, 'dialog-titlecustomaction')}"
-        >Close Dialog</fluent-button
-      >
-      <fluent-button slot="action">Do Something</fluent-button>
-    </fluent-dialog>
-  </div>
-`);
-
-export const NoTitleAction = renderComponent(html<DialogStoryArgs>`
-  <div>
-    <fluent-text as="p" block
-      ><p>The no-title-action attribute can be provided to opt out of rendering any title action.</p></fluent-text
-    >
-    <br />
-    <fluent-text block><code>no-title-action</code></fluent-text>
-    <br />
-    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-notitleaction')}>Open Dialog</fluent-button>
-    <fluent-dialog id="dialog-notitleaction" modal-type="${DialogModalType.nonModal}" no-title-action>
-      <div slot="title">No Title Action</div>
-      <div>
-        <fluent-text as="p" block>
-          <p>The no-title-action attribute can be provided to opt out of rendering any title action.</p></fluent-text
-        >
-        <br />
-        <fluent-text block><code>no-title-action</code></fluent-text>
-      </div>
-      <br />
-
-      <fluent-button
-        slot="action"
-        appearance="primary"
-        @click="${(e: Event, c) => closeDialog(e, 'dialog-notitleaction')}"
-        >Close Dialog</fluent-button
-      >
-      <fluent-button slot="action">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
