@@ -130,6 +130,8 @@ export type CustomStyleHooksContextValue = Partial<{
   useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
   useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
   useTimePickerCompatStyles_unstable: CustomStyleHook;
+  useSwatchPickerStyles_unstable: CustomStyleHook;
+  useColorSwatchStyles_unstable: CustomStyleHook;
 }>;
 
 /**
