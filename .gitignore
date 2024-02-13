@@ -160,3 +160,6 @@ rush.json
 
 # tsdoc
 tsdoc-metadata.json
+
+# benchmarking
+.tensile/
