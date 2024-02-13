@@ -762,8 +762,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         nodeAriaLabel: (node: SNode, weight: number) => format(nodeString, node.name, weight),
       };
     })(props.accessibility);
-    // NOTE: Memoizing the `_createNodes` and `_createLinks` methods breaks the hoverability of the chart
-    // because the nodes are currently created differently based on the layout information.
+    // NOTE: Memoizing the `_createNodes` and `_createLinks` methods would break the hoverability of the chart
+    // because the nodes are currently created differently based on the layout information. Hence why we do not
+    // memoize these methods (but have stubs for memoizing as the `_fetchNodes` and `_fetchLinks` methods).
     this._nodeAttributes = memoizeFunction((nodes: SNode[], nodeAriaLabel: (node: SNode, weight: number) => string) =>
       computeNodeAttributes(nodes, nodeAriaLabel),
     );
