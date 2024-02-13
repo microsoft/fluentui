@@ -16,6 +16,9 @@
       "path": "./tsconfig.spec.json"
     },
     {
+      "path": "./tsconfig.bench.json"
+    },
+    {
       "path": "./.storybook/tsconfig.json"
     }
   ]

@@ -11,5 +11,5 @@
     "types": []
   },
   "include": ["src"],
-  "exclude": ["**/*.stories.*", "**/*.test.*", "**/*.spec.*"]
+  "exclude": ["**/*.stories.*", "**/*.test.*", "**/*.spec.*", "**/*.bench.*", "src/utils/benchmark-wrapper.ts"]
 }
