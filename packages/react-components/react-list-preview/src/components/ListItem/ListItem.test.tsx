@@ -12,7 +12,7 @@ describe('ListItem', () => {
       'has-static-classnames': [
         {
           props: {
-            checkmark: 'test checkmark',
+            checkmark: { renderByDefault: true },
           },
         },
       ],
