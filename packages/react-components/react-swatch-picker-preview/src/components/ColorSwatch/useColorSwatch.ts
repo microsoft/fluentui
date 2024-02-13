@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
 import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
+import { SwatchPickerSelectEvent } from '../SwatchPicker/SwatchPicker.types';
+import { useColorSwatchState_unstable } from './useColorSwatchState';
+import { useFocusWithin } from '@fluentui/react-tabster';
+import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
 
 /**
  * Create the state required to render ColorSwatch.
@@ -11,21 +15,43 @@ import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
  * @param props - props from this instance of ColorSwatch
  * @param ref - reference to root HTMLDivElement of ColorSwatch
  */
-export const useColorSwatch_unstable = (props: ColorSwatchProps, ref: React.Ref<HTMLDivElement>): ColorSwatchState => {
-  return {
-    // TODO add appropriate props/defaults
+export const useColorSwatch_unstable = (
+  props: ColorSwatchProps,
+  ref: React.Ref<HTMLButtonElement>,
+): ColorSwatchState => {
+  const { color, value } = props;
+
+  const context = useSwatchPickerContextValue_unstable();
+  const notifySelected = context.notifySelected;
+  const selected = context.selectedValue === color;
+  const onClick = useEventCallback((event: SwatchPickerSelectEvent) => notifySelected({ event, selectedValue: color }));
+
+  const _role = 'radio'; //context.layout === 'grid' ? 'gridcell' : 'radio';
+
+  const state: ColorSwatchState = {
     components: {
-      // TODO add each slot's element type or component
-      root: 'div',
+      root: 'button',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      getIntrinsicElementProps('button', {
         ref,
         ...props,
+        role: props.role ?? _role,
+        tabIndex: 0,
+        'aria-selected': selected,
+        onClick,
       }),
-      { elementType: 'div' },
+      { elementType: 'button' },
     ),
+    size: context.size,
+    shape: context.shape,
+    selected,
+    color,
+    value,
   };
+
+  state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLButtonElement>());
+
+  useColorSwatchState_unstable(state, props);
+  return state;
 };

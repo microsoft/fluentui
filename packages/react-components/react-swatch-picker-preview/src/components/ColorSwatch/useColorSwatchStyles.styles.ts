@@ -1,22 +1,81 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ColorSwatchSlots, ColorSwatchState } from './ColorSwatch.types';
+import { tokens } from '@fluentui/react-theme';
 
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
   root: 'fui-ColorSwatch',
-  // TODO: add class names for all slots on ColorSwatchSlots.
-  // Should be of the form `<slotName>: 'fui-ColorSwatch__<slotName>`
 };
+
+export const swatchCSSVars = {
+  swatchColor: `--fui-SwatchPicker--color`,
+};
+
+const { swatchColor } = swatchCSSVars;
 
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
+const useStyles = makeResetStyles({
+  boxSizing: 'border-box',
+  ...shorthands.border('none'),
+  ...shorthands.padding(0),
+  background: `var(${swatchColor})`,
+  '&:hover': {
+    cursor: 'pointer',
+    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorBrandStroke1),
+    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandBackgroundInverted),
   },
+  ':hover:active': {
+    ...shorthands.outline(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
+    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorBrandBackgroundInverted),
+  },
+});
 
-  // TODO add additional classes for different states and/or slots
+const useStylesSelected = makeStyles({
+  selected: {
+    ...shorthands.outline(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
+    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandBackgroundInverted),
+    ':hover': {
+      ...shorthands.outline(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
+      ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandBackgroundInverted),
+    },
+    ':hover:active': {
+      ...shorthands.outline(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
+      ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandBackgroundInverted),
+    },
+  },
+});
+
+const useSizeStyles = makeStyles({
+  extraSmall: {
+    width: '20px',
+    height: '20px',
+  },
+  small: {
+    width: '24px',
+    height: '24px',
+  },
+  medium: {
+    width: '28px',
+    height: '28px',
+  },
+  large: {
+    width: '32px',
+    height: '32px',
+  },
+});
+
+const useShapeStyles = makeStyles({
+  rounded: {
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  },
+  circular: {
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+  },
+  square: {
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
+  },
 });
 
 /**
@@ -24,10 +83,20 @@ const useStyles = makeStyles({
  */
 export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwatchState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(colorSwatchClassNames.root, styles.root, state.root.className);
+  const selectedStyles = useStylesSelected();
+  const sizeStyles = useSizeStyles();
+  const shapeStyles = useShapeStyles();
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  state.root.className = mergeClasses(
+    colorSwatchClassNames.root,
+    styles,
+    sizeStyles[state.size ?? 'medium'],
+    shapeStyles[state.shape ?? 'square'],
+    state.root.className,
+  );
 
+  if (state.selected) {
+    state.root.className = mergeClasses(state.root.className, selectedStyles.selected);
+  }
   return state;
 };

@@ -4,7 +4,12 @@ export {
   useSwatchPickerStyles_unstable,
   useSwatchPicker_unstable,
 } from './SwatchPicker';
-export type { SwatchPickerProps, SwatchPickerSlots, SwatchPickerState } from './SwatchPicker';
+export type {
+  SwatchPickerProps,
+  SwatchPickerSlots,
+  SwatchPickerState,
+  SwatchPickerSelectEventHandler,
+} from './SwatchPicker';
 export {
   ColorSwatch,
   renderColorSwatch_unstable,
