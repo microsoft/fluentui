@@ -3668,6 +3668,11 @@
   dependencies:
     "@octokit/openapi-types" "^13.11.0"
 
+"@oddbird/popover-polyfill@0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@oddbird/popover-polyfill/-/popover-polyfill-0.3.8.tgz#2f679fdf01caeb4b79bfd738abeeff1d38804995"
+  integrity sha512-+aK7EHL3VggfsWGVqUwvtli2+kP5OWyseAsrefhzR2XWoi2oALUCeoDn63i5WS3ZOmLiXHRNBwHPeta8w+aM1g==
+
 "@opencensus/web-types@0.0.7":
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/@opencensus/web-types/-/web-types-0.0.7.tgz#4426de1fe5aa8f624db395d2152b902874f0570a"
