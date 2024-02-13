@@ -92,7 +92,7 @@ extends:
                 displayName: build,test,lint northstar packages
                 inputs:
                   script: |
-                    yarn nx run-many --targets=build,test,lint,type-check,test-ssr,verify-packaging --projects='packages/fluentui/*' --parallel 4 --nxBail --verbose
+                    yarn nx run-many --targets=build,test,lint,type-check,test-ssr,verify-packaging --projects='packages/fluentui/*' --parallel $(getconf _NPROCESSORS_ONLN) --nxBail --verbose
 
               - task: CmdLine@2
                 displayName: '[NPM] Publish to NPM'
