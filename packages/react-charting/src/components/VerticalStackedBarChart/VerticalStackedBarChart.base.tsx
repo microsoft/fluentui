@@ -37,6 +37,8 @@ import {
   getTypeOfAxis,
   tooltipOfXAxislabels,
   formatValueWithSIPrefix,
+  getBarWidth,
+  getScalePadding,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
@@ -208,7 +210,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           customizedCallout={this._getCustomizedCallout()}
           onChartMouseLeave={this._handleChartMouseLeave}
           getDomainMargins={this._getDomainMargins}
-          {...(this._xAxisType !== XAxisTypes.NumericAxis && {
+          {...(this._xAxisType === XAxisTypes.StringAxis && {
             xAxisInnerPadding: this._xAxisInnerPadding,
             xAxisOuterPadding: this._xAxisOuterPadding,
           })}
@@ -456,34 +458,15 @@ export class VerticalStackedBarChartBase extends React.Component<
 
   private _adjustProps(): void {
     this._points = this.props.data || [];
-    this._barWidth = typeof this.props.barWidth === 'number' ? this.props.barWidth : 16;
-    if (typeof this.props.maxBarWidth === 'number') {
-      this._barWidth = Math.min(this._barWidth, this.props.maxBarWidth);
-    }
-    this._barWidth = Math.max(this._barWidth, 1);
+    this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
     const { theme } = this.props;
     const { palette } = theme!;
     // eslint-disable-next-line deprecation/deprecation
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     this._xAxisType = getTypeOfAxis(this.props.data[0].xAxisPoint, true) as XAxisTypes;
     this._lineObject = this._getFormattedLineData(this.props.data);
-
-    const { xAxisInnerPadding, xAxisOuterPadding, xAxisPadding } = this.props;
-    this._xAxisInnerPadding =
-      typeof xAxisInnerPadding === 'number'
-        ? xAxisInnerPadding
-        : typeof xAxisPadding === 'number'
-        ? xAxisPadding
-        : 2 / 3;
-    this._xAxisInnerPadding = Math.max(0, Math.min(this._xAxisInnerPadding, 1));
-
-    this._xAxisOuterPadding =
-      typeof xAxisOuterPadding === 'number'
-        ? xAxisOuterPadding
-        : typeof xAxisPadding === 'number'
-        ? xAxisPadding
-        : 1 / 3;
-    this._xAxisOuterPadding = Math.max(0, Math.min(this._xAxisOuterPadding, 1));
+    this._xAxisInnerPadding = getScalePadding(this.props.xAxisInnerPadding, this.props.xAxisPadding, 2 / 3);
+    this._xAxisOuterPadding = getScalePadding(this.props.xAxisOuterPadding, this.props.xAxisPadding, 1 / 3);
   }
 
   private _createDataSetLayer(): IVerticalStackedBarDataPoint[] {
@@ -787,12 +770,10 @@ export class VerticalStackedBarChartBase extends React.Component<
     );
     const shouldFocusWholeStack = this._toFocusWholeStack(_isHavingLines);
 
-    if (typeof this.props.barWidth !== 'number' && xBarScale.bandwidth) {
-      this._barWidth = xBarScale.bandwidth();
-      if (typeof this.props.maxBarWidth === 'number') {
-        this._barWidth = Math.min(this._barWidth, this.props.maxBarWidth);
-      }
-      this._barWidth = Math.max(this._barWidth, 1);
+    if (this._xAxisType === XAxisTypes.StringAxis) {
+      // Setting the bar width here is safe because there are no dependencies earlier in the code
+      // that rely on the width of bars in vertical bar charts with string x-axis.
+      this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, xBarScale.bandwidth());
     }
 
     const bars = this._points.map((singleChartData: IVerticalStackedChartProps, indexNumber: number) => {
@@ -1090,6 +1071,8 @@ export class VerticalStackedBarChartBase extends React.Component<
 
   private _getDomainMargins = (containerWidth: number): IMargins => {
     if (this._xAxisType === XAxisTypes.StringAxis) {
+      // Setting the domain margin for string x-axis to 0 because the xAxisOuterPadding prop is now available
+      // to adjust the space before the first bar and after the last bar, which by default is non-zero.
       this._domainMargin = 0;
     } else {
       this._domainMargin = MIN_DOMAIN_MARGIN;

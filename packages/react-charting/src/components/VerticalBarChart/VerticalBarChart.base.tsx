@@ -37,6 +37,8 @@ import {
   getTypeOfAxis,
   tooltipOfXAxislabels,
   formatValueWithSIPrefix,
+  getBarWidth,
+  getScalePadding,
 } from '../../utilities/index';
 
 enum CircleVisbility {
@@ -164,7 +166,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         getAxisData={this._getAxisData}
         onChartMouseLeave={this._handleChartMouseLeave}
         getDomainMargins={this._getDomainMargins}
-        {...(this._xAxisType !== XAxisTypes.NumericAxis && {
+        {...(this._xAxisType === XAxisTypes.StringAxis && {
           xAxisInnerPadding: this._xAxisInnerPadding,
           xAxisOuterPadding: this._xAxisOuterPadding,
         })}
@@ -311,31 +313,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
 
   private _adjustProps(): void {
     this._points = this.props.data || [];
-    this._barWidth = typeof this.props.barWidth === 'number' ? this.props.barWidth : 16;
-    if (typeof this.props.maxBarWidth === 'number') {
-      this._barWidth = Math.min(this._barWidth, this.props.maxBarWidth);
-    }
-    this._barWidth = Math.max(this._barWidth, 1);
+    this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth);
     const { palette } = this.props.theme!;
     this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.blueDark];
     this._isHavingLine = this._checkForLine();
-
-    const { xAxisInnerPadding, xAxisOuterPadding, xAxisPadding } = this.props;
-    this._xAxisInnerPadding =
-      typeof xAxisInnerPadding === 'number'
-        ? xAxisInnerPadding
-        : typeof xAxisPadding === 'number'
-        ? xAxisPadding
-        : 2 / 3;
-    this._xAxisInnerPadding = Math.max(0, Math.min(this._xAxisInnerPadding, 1));
-
-    this._xAxisOuterPadding =
-      typeof xAxisOuterPadding === 'number'
-        ? xAxisOuterPadding
-        : typeof xAxisPadding === 'number'
-        ? xAxisPadding
-        : 1 / 3;
-    this._xAxisOuterPadding = Math.max(0, Math.min(this._xAxisOuterPadding, 1));
+    this._xAxisInnerPadding = getScalePadding(this.props.xAxisInnerPadding, this.props.xAxisPadding, 2 / 3);
+    this._xAxisOuterPadding = getScalePadding(this.props.xAxisOuterPadding, this.props.xAxisPadding, 1 / 3);
   }
 
   private _getMargins = (margins: IMargins) => {
@@ -662,13 +645,9 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       }
       const xPoint = xBarScale(point.x);
       const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
-      if (typeof this.props.barWidth !== 'number') {
-        this._barWidth = xBarScale.bandwidth();
-        if (typeof this.props.maxBarWidth === 'number') {
-          this._barWidth = Math.min(this._barWidth, this.props.maxBarWidth);
-        }
-        this._barWidth = Math.max(this._barWidth, 1);
-      }
+      // Setting the bar width here is safe because there are no dependencies earlier in the code
+      // that rely on the width of bars in vertical bar charts with string x-axis.
+      this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, xBarScale.bandwidth());
       return (
         <g
           key={point.x instanceof Date ? point.x.getTime() : point.x}
@@ -949,6 +928,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
 
   private _getDomainMargins = (containerWidth: number): IMargins => {
     if (this._xAxisType === XAxisTypes.StringAxis) {
+      // Setting the domain margin for string x-axis to 0 because the xAxisOuterPadding prop is now available
+      // to adjust the space before the first bar and after the last bar, which by default is non-zero.
       this._domainMargin = 0;
     } else {
       this._domainMargin = MIN_DOMAIN_MARGIN;
