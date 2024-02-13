@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "List: unmark private",
+  "packageName": "@fluentui/react-list-preview",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "patch"
+}
