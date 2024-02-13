@@ -186,9 +186,11 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
             width={this.state.width}
             shouldResize={this.state.width + this.state.height}
             strings={{
+              linkFrom: 'from category {0}',
+            }}
+            accessibility={{
               emptyAriaLabel: 'Graph has no data to display',
               nodeAriaLabel: 'Category {0} with email count {1}',
-              linkFrom: 'from category {0}',
               linkAriaLabel: '{2} items moved from category {0} to {1}',
             }}
           />

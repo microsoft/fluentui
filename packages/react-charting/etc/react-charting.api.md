@@ -1094,6 +1094,13 @@ export interface IRefArrayData {
     refElement?: SVGGElement;
 }
 
+// @public
+export interface ISankeyChartAccessibilityProps {
+    emptyAriaLabel?: string;
+    linkAriaLabel?: string;
+    nodeAriaLabel?: string;
+}
+
 // @public (undocumented)
 export interface ISankeyChartData {
     // (undocumented)
@@ -1104,6 +1111,7 @@ export interface ISankeyChartData {
 
 // @public
 export interface ISankeyChartProps {
+    accessibility?: ISankeyChartAccessibilityProps;
     borderColorsForNodes?: string[];
     className?: string;
     colorsForNodes?: string[];
@@ -1112,7 +1120,7 @@ export interface ISankeyChartProps {
     parentRef?: HTMLElement | null;
     pathColor?: string;
     shouldResize?: number;
-    strings: ISankeyChartStrings;
+    strings?: ISankeyChartStrings;
     styles?: IStyleFunctionOrObject<ISankeyChartStyleProps, ISankeyChartStyles>;
     theme?: ITheme;
     width?: number;
@@ -1120,10 +1128,7 @@ export interface ISankeyChartProps {
 
 // @public
 export interface ISankeyChartStrings {
-    emptyAriaLabel: string;
-    linkAriaLabel: string;
-    linkFrom: string;
-    nodeAriaLabel: string;
+    linkFrom?: string;
 }
 
 // @public

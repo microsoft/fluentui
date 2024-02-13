@@ -143,12 +143,6 @@ export class SankeyChartBasicExample extends React.Component<{}, ISankeyChartBas
             height={this.state.height}
             width={this.state.width}
             shouldResize={this.state.width + this.state.height}
-            strings={{
-              emptyAriaLabel: 'Graph has no data to display',
-              nodeAriaLabel: 'node {0} with weight {1}',
-              linkFrom: 'from {0}',
-              linkAriaLabel: 'link from {0} to {1} with weight {2}',
-            }}
           />
         </div>
       </>

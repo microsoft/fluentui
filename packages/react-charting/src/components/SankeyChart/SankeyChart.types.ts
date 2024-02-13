@@ -67,7 +67,12 @@ export interface ISankeyChartProps {
   /**
    * Localized strings to show in the UX.
    */
-  strings: ISankeyChartStrings;
+  strings?: ISankeyChartStrings;
+
+  /**
+   * Localized strings to use for the chart's accessibility features.
+   */
+  accessibility?: ISankeyChartAccessibilityProps;
 }
 
 /**
@@ -120,27 +125,33 @@ export interface ISankeyChartStyles {
 }
 
 /**
- * Set of strings which are used when renering the chart.
+ * Set of strings which are used when rendering the chart.
  */
 export interface ISankeyChartStrings {
   /**
+   * A value similar to "from {0}" where {0} is the name of the source node for a link.
+   * This is shown in the `ChartHoverCard` when the user hovers the mouse over a link.
+   */
+  linkFrom?: string;
+}
+
+/**
+ * Set of strings which are used when rendering accessibility information within the chart.
+ */
+export interface ISankeyChartAccessibilityProps {
+  /**
    * Aria label for when the chart is empty.
    */
-  emptyAriaLabel: string;
+  emptyAriaLabel?: string;
   /**
    * A value similar to "node {0} with weight {1}".
    * {0} is the name of the node.
    * {1} is the weight of the node (as computed by the sankey layout engine via the links to or from this node).
    */
-  nodeAriaLabel: string;
-  /**
-   * A value similar to "from {0}" where {0} is the name of the source node for a link.
-   * This is shown in the `ChartHoverCard` when the user hovers the mouse over a link.
-   */
-  linkFrom: string;
+  nodeAriaLabel?: string;
   /**
    * A value similar to "link from {0} to ${1} with weight ${2}".
    * {0} is the source node, {1} is the target node, and {2} is the weight of the link.
    */
-  linkAriaLabel: string;
+  linkAriaLabel?: string;
 }

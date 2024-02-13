@@ -377,9 +377,11 @@ export class SankeyChartRebalanceExample extends React.Component<{}, ISankeyChar
             width={this.state.width}
             shouldResize={this.state.width + this.state.height}
             strings={{
+              linkFrom: 'from {0}',
+            }}
+            accessibility={{
               emptyAriaLabel: 'Graph has no data to display',
               nodeAriaLabel: '{0} with {1} sign-ins',
-              linkFrom: 'from {0}',
               linkAriaLabel: '{2} sign-ins from {0} and {1}',
             }}
           />

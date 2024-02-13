@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "Sankey Diagram: Supporting Localized Strings",
   "packageName": "@fluentui/react-charting",
   "email": "rarthur@microsoft.com",

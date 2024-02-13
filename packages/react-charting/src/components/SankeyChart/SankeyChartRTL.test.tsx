@@ -7,7 +7,7 @@ import * as React from 'react';
 import { resetIds } from '../../Utilities';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { SankeyChartBase } from './SankeyChart.base';
-import { IChartProps, ISankeyChartStrings, SankeyChart } from './index';
+import { IChartProps, SankeyChart } from './index';
 
 expect.extend(toHaveNoViolations);
 
@@ -33,13 +33,6 @@ const emptyChartPoints: IChartProps = {
   chartData: [],
 };
 
-const defaultStrings: () => ISankeyChartStrings = () => ({
-  emptyAriaLabel: 'Graph has no data to display',
-  nodeAriaLabel: 'node {0} with weight {1}',
-  linkFrom: 'from {0}',
-  linkAriaLabel: 'link from {0} to {1} with weight {2}',
-});
-
 function sharedBeforeEach() {
   resetIds();
 }
@@ -48,7 +41,7 @@ describe('Sankey bar chart rendering', () => {
   testWithoutWait(
     'Should render the Sankey chart with string node data',
     SankeyChart,
-    { data: chartPointsWithStringNodeId(), strings: defaultStrings() },
+    { data: chartPointsWithStringNodeId() },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -61,7 +54,7 @@ describe('Sankey chart - Theme', () => {
     // Arrange
     const { container } = render(
       <ThemeProvider theme={DarkTheme}>
-        <SankeyChart data={chartPointsWithStringNodeId()} strings={defaultStrings()} />
+        <SankeyChart data={chartPointsWithStringNodeId()} />
       </ThemeProvider>,
     );
     // Assert
@@ -82,7 +75,7 @@ describe('Sankey chart - Subcomponent Node', () => {
   testWithWait(
     'Should update path color same as node color when we clck on node',
     SankeyChart,
-    { data: chartPointsWithStringNodeId(), strings: defaultStrings() },
+    { data: chartPointsWithStringNodeId() },
     async container => {
       const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       fireEvent.click(nodes[0]);
@@ -100,7 +93,7 @@ describe('Sankey chart - Subcomponent Label', () => {
   testWithoutWait(
     'Should render sankey chart with node labels',
     SankeyChart,
-    { data: chartPointsWithStringNodeId(), strings: defaultStrings() },
+    { data: chartPointsWithStringNodeId() },
     async container => {
       const nodes = getByClass(container, /nodeName/i);
       expect(nodes).toHaveLength(4);
@@ -113,7 +106,7 @@ describe('Sankey chart - Mouse events', () => {
   testWithoutWait(
     'Should reset path on mouse leave from path',
     SankeyChart,
-    { data: chartPointsWithStringNodeId(), strings: defaultStrings() },
+    { data: chartPointsWithStringNodeId() },
     async container => {
       const handleMouseOver = jest.spyOn(SankeyChartBase.prototype as any, '_onStreamLeave');
       const paths = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'path');
@@ -126,7 +119,7 @@ describe('Sankey chart - Mouse events', () => {
   testWithoutWait(
     'Should reset node on mouse leave from node',
     SankeyChart,
-    { data: chartPointsWithStringNodeId(), strings: defaultStrings() },
+    { data: chartPointsWithStringNodeId() },
     async _container => {
       const handleMouseOver = jest.spyOn(SankeyChartBase.prototype as any, '_onLeave');
       const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
@@ -141,12 +134,12 @@ describe('Sankey chart rendering', () => {
   beforeEach(sharedBeforeEach);
   test('Should re-render the Sankey chart with data', async () => {
     // Arrange
-    const { container, rerender } = render(<SankeyChart data={emptyChartPoints} strings={defaultStrings()} />);
+    const { container, rerender } = render(<SankeyChart data={emptyChartPoints} />);
     // Assert
     expect(container).toMatchSnapshot();
     expect(getById(container, /_SankeyChart_empty/i)).toHaveLength(1);
     // Act
-    rerender(<SankeyChart data={chartPointsWithStringNodeId()} strings={defaultStrings()} />);
+    rerender(<SankeyChart data={chartPointsWithStringNodeId()} />);
     await waitFor(() => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -159,7 +152,7 @@ describe('Sankey Chart - axe-core', () => {
   beforeEach(sharedBeforeEach);
 
   test('Should pass accessibility tests', async () => {
-    const { container } = render(<SankeyChart data={chartPointsWithStringNodeId()} strings={defaultStrings()} />);
+    const { container } = render(<SankeyChart data={chartPointsWithStringNodeId()} />);
     let axeResults;
     await act(async () => {
       axeResults = await axe(container);
