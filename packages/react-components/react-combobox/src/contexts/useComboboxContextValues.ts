@@ -1,31 +1,32 @@
+import * as React from 'react';
+import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { ComboboxBaseContextValues, ComboboxBaseState } from '../utils/ComboboxBase.types';
 
-export function useComboboxContextValues(state: ComboboxBaseState): ComboboxBaseContextValues {
-  const {
-    activeOption,
-    appearance,
-    focusVisible,
-    open,
-    registerOption,
-    selectedOptions,
-    selectOption,
-    setActiveOption,
-    setOpen,
-    size,
-  } = state;
+export function useComboboxContextValues(
+  state: ComboboxBaseState & { activeDescendantController: ActiveDescendantImperativeRef },
+): ComboboxBaseContextValues {
+  const { appearance, open, registerOption, selectedOptions, selectOption, setOpen, size, activeDescendantController } =
+    state;
 
   const combobox = {
-    activeOption,
+    activeOption: undefined,
     appearance,
-    focusVisible,
+    focusVisible: false,
     open,
     registerOption,
     selectedOptions,
     selectOption,
-    setActiveOption,
+    setActiveOption: () => null,
     setOpen,
     size,
   };
 
-  return { combobox };
+  const activeDescendant = React.useMemo(
+    () => ({
+      controller: activeDescendantController,
+    }),
+    [activeDescendantController],
+  );
+
+  return { combobox, activeDescendant };
 }

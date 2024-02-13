@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useControllableState, useFirstMount } from '@fluentui/react-utilities';
+import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { useOptionCollection } from '../utils/useOptionCollection';
 import { OptionValue } from '../utils/OptionCollection.types';
 import { useSelection } from '../utils/useSelection';
@@ -9,7 +10,11 @@ import type { ComboboxBaseProps, ComboboxBaseOpenEvents, ComboboxBaseState } fro
  * State shared between Combobox and Dropdown components
  */
 export const useComboboxBaseState = (
-  props: ComboboxBaseProps & { children?: React.ReactNode; editable?: boolean },
+  props: ComboboxBaseProps & {
+    children?: React.ReactNode;
+    editable?: boolean;
+    activeDescendantController: ActiveDescendantImperativeRef;
+  },
 ): ComboboxBaseState => {
   const {
     appearance = 'outline',
@@ -21,10 +26,11 @@ export const useComboboxBaseState = (
     multiselect,
     onOpenChange,
     size = 'medium',
+    activeDescendantController,
   } = props;
 
   const optionCollection = useOptionCollection();
-  const { getOptionAtIndex, getOptionsMatchingValue } = optionCollection;
+  const { getOptionsMatchingValue } = optionCollection;
 
   const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
 
@@ -93,23 +99,25 @@ export const useComboboxBaseState = (
 
   // update active option based on change in open state or children
   React.useEffect(() => {
-    if (open && !activeOption) {
+    if (open) {
       // if it is single-select and there is a selected option, start at the selected option
       if (!multiselect && selectedOptions.length > 0) {
         const selectedOption = getOptionsMatchingValue(v => v === selectedOptions[0]).pop();
-        selectedOption && setActiveOption(selectedOption);
+        if (selectedOption?.id) {
+          activeDescendantController.focus(selectedOption.id);
+        }
       }
       // default to starting at the first option
       else {
-        setActiveOption(getOptionAtIndex(0));
+        activeDescendantController.first();
       }
     } else if (!open) {
       // reset the active option when closing
-      setActiveOption(undefined);
+      activeDescendantController.blur();
     }
     // this should only be run in response to changes in the open state or children
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [open, children]);
+  }, [open, children, activeDescendantController]);
 
   return {
     ...optionCollection,

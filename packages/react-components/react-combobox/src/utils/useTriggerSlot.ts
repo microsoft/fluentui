@@ -1,28 +1,21 @@
 import * as React from 'react';
-import { mergeCallbacks, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { useSetKeyboardNavigation } from '@fluentui/react-tabster';
+import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import { mergeCallbacks, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
-import { getDropdownActionFromKey, getIndexFromAction } from '../utils/dropdownKeyActions';
+import { getDropdownActionFromKey } from '../utils/dropdownKeyActions';
 import type { ComboboxBaseState } from './ComboboxBase.types';
+import { OptionValue } from './OptionCollection.types';
 
 export type UseTriggerSlotState = Pick<
   ComboboxBaseState,
-  | 'activeOption'
-  | 'getCount'
-  | 'getIndexOfId'
-  | 'getOptionAtIndex'
-  | 'open'
-  | 'selectOption'
-  | 'setActiveOption'
-  | 'setFocusVisible'
-  | 'setOpen'
-  | 'multiselect'
-  | 'value'
-  | 'setHasFocus'
+  'open' | 'getOptionById' | 'selectOption' | 'setOpen' | 'multiselect' | 'setHasFocus'
 >;
 
 type UseTriggerSlotOptions = {
   state: UseTriggerSlotState;
   defaultProps: unknown;
+  activeDescendantController: ActiveDescendantImperativeRef;
 };
 
 export function useTriggerSlot(
@@ -47,28 +40,16 @@ export function useTriggerSlot(
   options: UseTriggerSlotOptions & { elementType: 'input' | 'button' },
 ): SlotComponentType<ExtractSlotProps<Slot<'button'>>> | SlotComponentType<ExtractSlotProps<Slot<'input'>>> {
   const {
-    state: {
-      activeOption,
-      getCount,
-      getIndexOfId,
-      getOptionAtIndex,
-      open,
-      selectOption,
-      setActiveOption,
-      setFocusVisible,
-      setOpen,
-      multiselect,
-      setHasFocus,
-    },
+    state: { open, setOpen, setHasFocus },
     defaultProps,
     elementType,
+    activeDescendantController,
   } = options;
 
   const trigger = slot.always(triggerSlotFromProp, {
     defaultProps: {
       type: 'text',
       'aria-expanded': open,
-      'aria-activedescendant': open ? activeOption?.id : undefined,
       role: 'combobox',
       ...(typeof defaultProps === 'object' && defaultProps),
     },
@@ -102,54 +83,111 @@ export function useTriggerSlot(
 
   // handle combobox keyboard interaction
   trigger.onKeyDown = mergeCallbacks(
-    (event: React.KeyboardEvent<HTMLButtonElement> & React.KeyboardEvent<HTMLInputElement>) => {
-      const action = getDropdownActionFromKey(event, { open, multiselect });
-      const maxIndex = getCount() - 1;
-      const activeIndex = activeOption ? getIndexOfId(activeOption.id) : -1;
-      let newIndex = activeIndex;
-
-      switch (action) {
-        case 'Open':
-          event.preventDefault();
-          setFocusVisible(true);
-          setOpen(event, true);
-          break;
-        case 'Close':
-          // stop propagation for escape key to avoid dismissing any parent popups
-          event.stopPropagation();
-          event.preventDefault();
-          setOpen(event, false);
-          break;
-        case 'CloseSelect':
-          !multiselect && !activeOption?.disabled && setOpen(event, false);
-        // fallthrough
-        case 'Select':
-          activeOption && selectOption(event, activeOption);
-          event.preventDefault();
-          break;
-        case 'Tab':
-          !multiselect && activeOption && selectOption(event, activeOption);
-          break;
-        default:
-          newIndex = getIndexFromAction(action, activeIndex, maxIndex);
-      }
-      if (newIndex !== activeIndex) {
-        // prevent default page scroll/keyboard action if the index changed
-        event.preventDefault();
-        setActiveOption(getOptionAtIndex(newIndex));
-        setFocusVisible(true);
-      }
-    },
+    useTriggerKeydown({ activeDescendantController, ...options.state }),
     trigger.onKeyDown,
   );
 
-  trigger.onMouseOver = mergeCallbacks(
-    (event: React.MouseEvent<HTMLButtonElement> & React.MouseEvent<HTMLInputElement>) => {
-      setFocusVisible(false);
-    },
-    trigger.onMouseOver,
-  );
-
-  // TODO fix cast
   return trigger as SlotComponentType<ExtractSlotProps<Slot<'input'>>>;
+}
+
+function useTriggerKeydown(
+  options: {
+    activeDescendantController: ActiveDescendantImperativeRef;
+  } & Pick<UseTriggerSlotState, 'setOpen' | 'selectOption' | 'getOptionById' | 'multiselect' | 'open'>,
+) {
+  const { activeDescendantController, getOptionById, setOpen, selectOption, multiselect, open } = options;
+
+  const getActiveOption = React.useCallback(() => {
+    const activeOptionId = activeDescendantController.active();
+    return activeOptionId ? getOptionById(activeOptionId) : undefined;
+  }, [activeDescendantController, getOptionById]);
+
+  const first = () => {
+    activeDescendantController.first();
+  };
+
+  const next = (activeOption: OptionValue | undefined) => {
+    if (activeOption) {
+      activeDescendantController.next();
+    } else {
+      activeDescendantController.first();
+    }
+  };
+
+  const previous = (activeOption: OptionValue | undefined) => {
+    if (activeOption) {
+      activeDescendantController.prev();
+    } else {
+      activeDescendantController.first();
+    }
+  };
+
+  const pageUp = () => {
+    for (let i = 0; i < 10; i++) {
+      activeDescendantController.prev();
+    }
+  };
+
+  const pageDown = () => {
+    for (let i = 0; i < 10; i++) {
+      activeDescendantController.next();
+    }
+  };
+
+  const setKeyboardNavigation = useSetKeyboardNavigation();
+  return useEventCallback((e: React.KeyboardEvent<HTMLInputElement> & React.KeyboardEvent<HTMLButtonElement>) => {
+    const action = getDropdownActionFromKey(e, { open, multiselect });
+    const activeOption = getActiveOption();
+
+    switch (action) {
+      case 'First':
+      case 'Next':
+      case 'Previous':
+      case 'PageDown':
+      case 'PageUp':
+      case 'Open':
+      case 'Close':
+      case 'CloseSelect':
+      case 'Select':
+        e.preventDefault();
+        break;
+    }
+
+    setKeyboardNavigation(true);
+
+    switch (action) {
+      case 'First':
+        first();
+        break;
+      case 'Next':
+        next(activeOption);
+        break;
+      case 'Previous':
+        previous(activeOption);
+        break;
+      case 'PageDown':
+        pageDown();
+        break;
+      case 'PageUp':
+        pageUp();
+        break;
+      case 'Open':
+        setOpen(e, true);
+        break;
+      case 'Close':
+        // stop propagation for escape key to avoid dismissing any parent popups
+        e.stopPropagation();
+        setOpen(e, false);
+        break;
+      case 'CloseSelect':
+        !multiselect && !activeOption?.disabled && setOpen(e, false);
+      // fallthrough
+      case 'Select':
+        activeOption && selectOption(e, activeOption);
+        break;
+      case 'Tab':
+        !multiselect && activeOption && selectOption(e, activeOption);
+        break;
+    }
+  });
 }
