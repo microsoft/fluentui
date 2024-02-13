@@ -416,6 +416,7 @@ import { linkClassNames } from '@fluentui/react-link';
 import { LinkProps } from '@fluentui/react-link';
 import { LinkSlots } from '@fluentui/react-link';
 import { LinkState } from '@fluentui/react-link';
+import { List } from '@fluentui/react-list-preview';
 import { Listbox } from '@fluentui/react-combobox';
 import { listboxClassNames } from '@fluentui/react-combobox';
 import { ListboxContextValue } from '@fluentui/react-combobox';
@@ -424,6 +425,16 @@ import { ListboxProps } from '@fluentui/react-combobox';
 import { ListboxProvider } from '@fluentui/react-combobox';
 import { ListboxSlots } from '@fluentui/react-combobox';
 import { ListboxState } from '@fluentui/react-combobox';
+import { listClassNames } from '@fluentui/react-list-preview';
+import { ListItem } from '@fluentui/react-list-preview';
+import { ListItemButton } from '@fluentui/react-list-preview';
+import { listItemClassNames } from '@fluentui/react-list-preview';
+import { ListItemProps } from '@fluentui/react-list-preview';
+import { ListItemSlots } from '@fluentui/react-list-preview';
+import { ListItemState } from '@fluentui/react-list-preview';
+import { ListProps } from '@fluentui/react-list-preview';
+import { ListSlots } from '@fluentui/react-list-preview';
+import { ListState } from '@fluentui/react-list-preview';
 import { makeResetStyles } from '@griffel/react';
 import { makeStaticStyles } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
@@ -691,7 +702,9 @@ import { renderInteractionTagPrimary_unstable } from '@fluentui/react-tags';
 import { renderInteractionTagSecondary_unstable } from '@fluentui/react-tags';
 import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
+import { renderList_unstable } from '@fluentui/react-list-preview';
 import { renderListbox_unstable } from '@fluentui/react-combobox';
+import { renderListItem_unstable } from '@fluentui/react-list-preview';
 import { renderMenu_unstable } from '@fluentui/react-menu';
 import { renderMenuButton_unstable } from '@fluentui/react-button';
 import { renderMenuDivider_unstable } from '@fluentui/react-menu';
@@ -1238,9 +1251,15 @@ import { useLabelStyles_unstable } from '@fluentui/react-label';
 import { useLink_unstable } from '@fluentui/react-link';
 import { useLinkState_unstable } from '@fluentui/react-link';
 import { useLinkStyles_unstable } from '@fluentui/react-link';
+import { useList_unstable } from '@fluentui/react-list-preview';
 import { useListbox_unstable } from '@fluentui/react-combobox';
 import { useListboxContextValues } from '@fluentui/react-combobox';
 import { useListboxStyles_unstable } from '@fluentui/react-combobox';
+import { useListItem_unstable } from '@fluentui/react-list-preview';
+import { useListItemButtonStyles_unstable } from '@fluentui/react-list-preview';
+import { useListItemStyles_unstable } from '@fluentui/react-list-preview';
+import { useListSelection } from '@fluentui/react-list-preview';
+import { useListStyles_unstable } from '@fluentui/react-list-preview';
 import { useMenu_unstable } from '@fluentui/react-menu';
 import { useMenuButton_unstable } from '@fluentui/react-button';
 import { useMenuButtonStyles_unstable } from '@fluentui/react-button';
@@ -2255,6 +2274,8 @@ export { LinkSlots }
 
 export { LinkState }
 
+export { List }
+
 export { Listbox }
 
 export { listboxClassNames }
@@ -2270,6 +2291,26 @@ export { ListboxProvider }
 export { ListboxSlots }
 
 export { ListboxState }
+
+export { listClassNames }
+
+export { ListItem }
+
+export { ListItemButton }
+
+export { listItemClassNames }
+
+export { ListItemProps }
+
+export { ListItemSlots }
+
+export { ListItemState }
+
+export { ListProps }
+
+export { ListSlots }
+
+export { ListState }
 
 export { makeResetStyles }
 
@@ -2805,7 +2846,11 @@ export { renderLabel_unstable }
 
 export { renderLink_unstable }
 
+export { renderList_unstable }
+
 export { renderListbox_unstable }
+
+export { renderListItem_unstable }
 
 export { renderMenu_unstable }
 
@@ -3899,11 +3944,23 @@ export { useLinkState_unstable }
 
 export { useLinkStyles_unstable }
 
+export { useList_unstable }
+
 export { useListbox_unstable }
 
 export { useListboxContextValues }
 
 export { useListboxStyles_unstable }
+
+export { useListItem_unstable }
+
+export { useListItemButtonStyles_unstable }
+
+export { useListItemStyles_unstable }
+
+export { useListSelection }
+
+export { useListStyles_unstable }
 
 export { useMenu_unstable }
 
