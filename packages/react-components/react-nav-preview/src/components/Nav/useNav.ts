@@ -63,7 +63,7 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
 
   const innerRef = React.useRef<HTMLElement>(null);
 
-  const [openItems, setOpenItems] = useControllableState({
+  const [openCategories, setOpenCategories] = useControllableState({
     // normalizeValues(controlledOpenItems), [controlledOpenItems])
     state: React.useMemo(() => normalizeValues(), []),
     defaultState: () => [], // initializeUncontrolledOpenItems({ defaultOpenItems }),
@@ -71,9 +71,9 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
   });
 
   const onRequestNavCategoryItemToggle: EventHandler<OnNavItemSelectData> = useEventCallback((event, data) => {
-    const nextOpenItems = updateOpenItems(data.value, openItems, false);
+    const nextOpenItems = updateOpenItems(data.value, openCategories, false);
     onNavCategoryItemToggle?.(event, data);
-    setOpenItems(nextOpenItems);
+    setOpenCategories(nextOpenItems);
   });
 
   const [selectedValue, setSelectedValue] = useControllableState({
@@ -133,6 +133,6 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     onSelect,
     getRegisteredNavItems,
     onRequestNavCategoryItemToggle,
-    openItems,
+    openCategories,
   };
 };

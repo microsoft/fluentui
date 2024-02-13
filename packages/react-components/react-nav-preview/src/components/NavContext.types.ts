@@ -1,6 +1,7 @@
 import * as React from 'react';
-import type { NavProps, OnNavItemSelectData } from './Nav/Nav.types';
 import { EventHandler } from '@fluentui/react-utilities';
+
+import type { NavProps, OnNavItemSelectData } from './Nav/Nav.types';
 
 export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue' | 'reserveSelectedNavItemSpace'> & {
   /** A callback to allow a navItem to register itself with the navItem list. */
@@ -29,7 +30,7 @@ export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue'
   /**
    * The list of opened panels by index
    */
-  openItems: NavItemValue[];
+  openCategories: NavItemValue[];
 };
 
 /**

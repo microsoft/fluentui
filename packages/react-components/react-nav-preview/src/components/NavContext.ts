@@ -24,7 +24,7 @@ const navContextDefaultValue: NavContextValue = {
   /**
    * The list of opened panels by index
    */
-  openItems: [],
+  openCategories: [],
 };
 
 const NavContext = React.createContext<NavContextValue | undefined>(undefined);

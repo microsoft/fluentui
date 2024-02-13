@@ -5,6 +5,7 @@ import bestPracticesMd from './NavBestPractices.md';
 
 export { Default } from './NavDefault.stories';
 export { WithDefaultSelection } from './NavWithDefaultSelection.stories';
+export { WithNestedSubItems } from './NavWithNestedSubItems.stories';
 
 export default {
   title: 'Preview Components/Nav',
