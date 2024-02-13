@@ -270,7 +270,7 @@ const useBeforeStyles = makeStyles({
     paddingLeft: tokens.spacingHorizontalL,
   },
   disabled: {
-    color: tokens.spacingHorizontalMNudge,
+    color: tokens.colorNeutralForegroundDisabled,
   },
 });
 
