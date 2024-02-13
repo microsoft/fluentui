@@ -37,6 +37,8 @@ variables:
     value: production,externalfacing
 
   # below are variables configurable at queue time, so they cannot appear in yml file
+  # - name: dryRun # set it to true in order to execute publishing in dry run mode - nothing will be published
+  #   value: false
   # - name: publishDocsiteOnly # set it to true to only run Job_build_publish_doc
   #   value: false
   # - name: publishOfficial # set it to true to publish package to npm, and publish docsite for official releases
@@ -105,7 +107,7 @@ extends:
                     echo "registry=https://registry.npmjs.org/" > .npmrc
                     echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
 
-                    npx northstar:release publish
+                    npx northstar-release publish --dry-run $(dryRun)
 
                     git checkout -- .npmrc
 
@@ -121,7 +123,7 @@ extends:
               image: '1ES-PT-Ubuntu-20.04'
               os: linux
             # run this job when the previous job is succeeded or when publishDocsiteOnly is true
-            condition: or(succeeded(), eq(variables.publishDocsiteOnly, true))
+            condition: or(succeeded(), eq(variables.publishDocsiteOnly, true), eq(variables.dryRun, false))
 
             steps:
               - template: .devops/templates/tools.yml@self
