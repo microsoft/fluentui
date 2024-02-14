@@ -4,7 +4,7 @@
 >
 > ```jsx
 >
-> import { SearchBox } from '@fluentui/react-search-preview';
+> import { SearchBox } from '@fluentui/react-components';
 >
 > ```
 >

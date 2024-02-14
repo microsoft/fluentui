@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SearchBox } from '@fluentui/react-search-preview';
+import { SearchBox } from '@fluentui/react-components';
 import { Field, InputOnChangeData } from '@fluentui/react-components';
 import { SearchBoxChangeEvent } from '../../src/SearchBox';
 

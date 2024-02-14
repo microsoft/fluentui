@@ -1608,3 +1608,12 @@ export type {
   RatingDisplayState,
   RatingDisplayContextValues,
 } from '@fluentui/react-rating';
+
+export {
+  SearchBox,
+  renderSearchBox_unstable,
+  searchBoxClassNames,
+  useSearchBoxStyles_unstable,
+  useSearchBox_unstable,
+} from '@fluentui/react-search';
+export type { SearchBoxProps, SearchBoxSlots, SearchBoxState } from '@fluentui/react-search';
