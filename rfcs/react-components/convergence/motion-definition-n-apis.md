@@ -265,7 +265,7 @@ function useAtomMotion(motion) {
 With the factories pattern, the same problem is not possible, as a motion is defined outside a component, as shown below:
 
 ```tsx
-function createAtomMotion(motion) {
+function createMotionComponent(motion) {
   return React.forwardRef((props, ref) => {
     const elementRef = React.useRef();
 
@@ -366,7 +366,7 @@ While this approach should not be commonly used, it's worth noting that it's pos
 The proposal is to expose factories as they provide more flexibility and can be used with custom motion definitions.
 
 ```tsx
-import { type AtomMotion, createAtomMotion, motionTokens } from '@fluentui/react-motions-preview';
+import { type AtomMotion, createMotionComponent, motionTokens } from '@fluentui/react-motions-preview';
 
 // 💡Consumers will have the option to use either predefined motions as objects or as components.
 //   They won't need to define custom motions unless they specifically want to.
@@ -375,7 +375,7 @@ const fade: AtomMotion = {
   duration: motionTokens.durationUltraFast,
 };
 
-const FadeEnterSlow = createAtomMotion(fade);
+const FadeEnterSlow = createMotionComponent(fade);
 
 function MyComponent() {
   return (
@@ -386,7 +386,7 @@ function MyComponent() {
 }
 ```
 
-> Note: `createAtomMotion()` returns a React component that clones the child element and applies the provided animation to it.
+> Note: `createMotionComponent()` returns a React component that clones the child element and applies the provided animation to it.
 
 <details>
   <summary>Optional utility components?</summary>
@@ -418,14 +418,14 @@ Another API approach might be to compose existing components with motion factori
 // ⚠️ This is not proposed API, it's just an example
 
 import { Button } from '@fluentui/react-components';
-import { type AtomMotion, createAtomElement } from '@fluentui/react-motions-preview';
+import { type AtomMotion, createMotionElement } from '@fluentui/react-motions-preview';
 
 const fade: AtomMotion = {
   /* --- */
 };
 
-const FadeEnterDiv = createAtomElement('div', fade);
-const FadeEnterButton = createAtomElement(Button, fade);
+const FadeEnterDiv = createMotionElement('div', fade);
+const FadeEnterButton = createMotionElement(Button, fade);
 
 function MyComponent() {
   return (
@@ -443,16 +443,16 @@ This approach does not have obvious pros or cons, but it's worth noting that eve
 // ⚠️ This is not proposed API, it's just an example
 
 import { Button, Image } from '@fluentui/react-components';
-import { createAtomMotion, createAtomElement, atom } from '@fluentui/react-motions-preview';
+import { createMotionComponent, createMotionElement, atom } from '@fluentui/react-motions-preview';
 
 const fade: AtomMotion = {
   /* --- */
 };
 
-const FadeEnter = createAtomMotion(fade);
+const FadeEnter = createMotionComponent(fade);
 
-const FadeEnterButton = createAtomElement(Button, fade);
-const FadeEnterImage = createAtomElement(Image, fade);
+const FadeEnterButton = createMotionElement(Button, fade);
+const FadeEnterImage = createMotionElement(Image, fade);
 
 function MyComponent() {
   return (
@@ -484,7 +484,7 @@ Compared to the CSS option, we don't need to apply classes to the element, so fa
 <details>
 <summary>Handling unmount using animation events</summary>
 
-`createPresenceMotion()` does this internally, this example is just for illustration purposes on how animation events can be used with React lifecycle.
+`createPresenceComponent()` does this internally, this example is just for illustration purposes on how animation events can be used with React lifecycle.
 
 ```tsx
 // ⚠️ Not proposed API, just an example of Web Animations API usage
@@ -514,7 +514,7 @@ function MyComponent(props) {
 
 </details>
 
-It's important to understand that `createPresenceMotion()` relies on `PresenceMotion` definitions, which are a combination of `enter` and `exit` motions:
+It's important to understand that `createPresenceComponent()` relies on `PresenceMotion` definitions, which are a combination of `enter` and `exit` motions:
 
 ```ts
 type PresenceMotion = {
@@ -541,17 +541,17 @@ const fadePresence: PresenceMotion = {
 
 This structure enables the definition of distinct keyframes and options, such as durations and easing, for entering and exiting transitions.
 
-As with `createAtomMotion()`, the factory returns a React component that clones the child element and applies the provided animation to it:
+As with `createMotionComponent()`, the factory returns a React component that clones the child element and applies the provided animation to it:
 
 ```tsx
-import { createPresenceMotion, type PresenceMotion } from '@fluentui/react-motions-preview';
+import { createPresenceComponent, type PresenceMotion } from '@fluentui/react-motions-preview';
 
 // 💡 Consumers will have the option to use either predefined motions as objects or as components.
 //   They won't need to define custom motions unless they specifically want to.
 const fadePrensence: PresenceMotion = {
   /* --- */
 };
-const Fade = createPresenceMotion(fadePrensence);
+const Fade = createPresenceComponent(fadePrensence);
 
 function MyComponent() {
   const [visible, setVisible] = useState(false);
@@ -564,21 +564,21 @@ function MyComponent() {
 }
 ```
 
-Unlike `createAtomMotion()`, a created component has additional props:
+Unlike `createMotionComponent()`, a created component has additional props:
 
 - `appear` - whether the animation should play on mount
 - `unmountOnExit` - whether the child element should be unmounted on exit
 - `onMotionFinish` - a callback which is called when a motion is finished
 
 ```tsx
-import { createPresenceMotion, type PresenceMotion } from '@fluentui/react-motions-preview';
+import { createPresenceComponent, type PresenceMotion } from '@fluentui/react-motions-preview';
 
 // 💡 Consumers will have the option to use either predefined motions as objects or as components.
 //   They won't need to define custom motions unless they specifically want to.
 const fadePrensence: PresenceMotion = {
   /* --- */
 };
-const Fade = createPresenceMotion(fadePrensence);
+const Fade = createPresenceComponent(fadePrensence);
 
 function MyComponent() {
   const [visible, setVisible] = useState(false);
@@ -631,7 +631,7 @@ Implementation is tracked in [microsoft/fluentui#30546](https://github.com/micro
 The suggested approach is to adopt APIs from the `react-transition-group package`, for example:
 
 ```tsx
-import { createPresenceMotion, type PresenceMotion, PresenceGroup } from '@fluentui/react-motions-preview';
+import { createPresenceComponent, type PresenceMotion, PresenceGroup } from '@fluentui/react-motions-preview';
 
 // 💡 Consumers will have the option to use either predefined motions as objects or as components.
 //   They won't need to define custom motions unless they specifically want to.
@@ -639,7 +639,7 @@ const fadePrensence: PresenceMotion = {
   /* --- */
 };
 
-const FadeSlow = createPresenceMotion(fadePrensence);
+const FadeSlow = createPresenceComponent(fadePrensence);
 
 function MyComponent() {
   return (
@@ -710,11 +710,11 @@ The proposed solution suggests introducing a `motion` prop to override the motio
 
 ```tsx
 import { Dialog, DialogSurface } from '@fluentui/react-components';
-import { createPresenceMotion } from '@fluentui/react-motions-preview';
+import { createPresenceComponent } from '@fluentui/react-motions-preview';
 
 // 💡 Consumers will have the option to use either predefined motions as objects or as components.
 //   They won't need to define custom motions unless they specifically want to.
-const FadeSlow = createPresenceMotion(/* --- */);
+const FadeSlow = createPresenceComponent(/* --- */);
 
 function MyComponent() {
   const [open, setOpen] = useState(false);
@@ -729,7 +729,7 @@ function MyComponent() {
 }
 ```
 
-> In this case, `FadeSlow` should be created with `createPresenceMotion()` or adhere to a specific API contract i.e. accept specific props.
+> In this case, `FadeSlow` should be created with `createPresenceComponent()` or adhere to a specific API contract i.e. accept specific props.
 
 <details>
 <summary>Why not composition?</summary>
@@ -740,9 +740,9 @@ It seems reasonable to consider composing components, as illustrated in the foll
 // ⚠️ This is not proposed API, it's just an example
 
 import { Dialog, DialogSurface } from '@fluentui/react-components';
-import { createPresenceMotion } from '@fluentui/react-motions-preview';
+import { createPresenceComponent } from '@fluentui/react-motions-preview';
 
-const FadeSlow = createPresenceMotion(/* --- */);
+const FadeSlow = createPresenceComponent(/* --- */);
 
 function MyComponent() {
   const [open, setOpen] = useState(false);
@@ -773,9 +773,9 @@ However, this approach comes with a few drawbacks:
 // ⚠️ This is not proposed API, it's just an example
 
 import { Dialog, DialogSurfaceWithoutMotion } from '@fluentui/react-components';
-import { createPresenceMotion } from '@fluentui/react-motions-preview';
+import { createPresenceComponent } from '@fluentui/react-motions-preview';
 
-const FadeSlow = createPresenceMotion(/* --- */);
+const FadeSlow = createPresenceComponent(/* --- */);
 
 function MyComponent() {
   const [open, setOpen] = useState(false);
@@ -974,9 +974,9 @@ function MyComponent() {
 Alternatively, a factory function can be utilized to create a React component, similar to the approach with the Web Animations API:
 
 ```tsx
-import { createAtomMotion, fadeEnterSlow } from 'some-pkg';
+import { createMotionComponent, fadeEnterSlow } from 'some-pkg';
 
-const FadeEnterSlow = createAtomMotion(fadeEnterSlow);
+const FadeEnterSlow = createMotionComponent(fadeEnterSlow);
 
 function MyComponent() {
   return (
@@ -995,9 +995,9 @@ However, as previously highlighted, this approach has a notable drawback: it nec
 The typical scenario when factories and utility components would fail is below:
 
 ```tsx
-import { createAtomMotion, fadeEnterSlow } from 'some-pkg';
+import { createMotionComponent, fadeEnterSlow } from 'some-pkg';
 
-const FadeEnterSlow = createAtomMotion(fadeEnterSlow);
+const FadeEnterSlow = createMotionComponent(fadeEnterSlow);
 
 const CustomComponent = React.forwardRef((props, ref) => {
   // 💥 This breaks the animation
@@ -1173,7 +1173,7 @@ The question is: should we split motion definitions & APIs into separate package
 
 It's partially covered in the RFC before, but what should be exported as the main API from `@fluentui/react-components`?
 
-- Option 1: `createAtomMotion()`, `createPresenceMotion()`, `PresenceGroup`, `atom` & `presence` (factories & definitions)
+- Option 1: `createMotionComponent()`, `createPresenceComponent()`, `PresenceGroup`, `atom` & `presence` (factories & definitions)
 - Option 2: `FadeEnter`, `FadePresence`, `PresenceGroup`, etc. (pre-defined components)
 
 ### Mouse over / focus / active states
@@ -1200,7 +1200,7 @@ This RFC does not cover this scenario, but we can consider it in the future.
 Currently, we have two packages for motion animations:
 
 - `@fluentui/react-motion-preview` - CSS based i.e. `useMotion()`
-- `@fluentui/react-motions-preview` - Web Animations API based i.e. `createAtomMotion()`
+- `@fluentui/react-motions-preview` - Web Animations API based i.e. `createMotionComponent()`
 
 What is the migration plan for these packages?
 
@@ -1212,7 +1212,7 @@ Both the CSS and Web Animations API options offer basic support for reduced moti
 
 - In the CSS option (`useMotion()`), [animations are skipped](https://github.com/microsoft/fluentui/blob/b3c2fa6881e1cee2f326ba80811400596c99112c/packages/react-components/react-motion-preview/src/hooks/useMotion.ts#L108) if `@media (prefers-reduced-motion: reduce)` is true.
   > Note: this approach is not ideal as animation events won't be fired.
-- In the Web Animations API option (`createAtomMotion()`, `createPresenceMotion()`) animations are [forced to a duration of 1ms](https://github.com/microsoft/fluentui/blob/b3c2fa6881e1cee2f326ba80811400596c99112c/packages/react-components/react-motions-preview/src/factories/createPresence.ts#L91) if `@media (prefers-reduced-motion: reduce)` is true
+- In the Web Animations API option (`createMotionComponent()`, `createPresenceComponent()`) animations are [forced to a duration of 1ms](https://github.com/microsoft/fluentui/blob/b3c2fa6881e1cee2f326ba80811400596c99112c/packages/react-components/react-motions-preview/src/factories/createPresence.ts#L91) if `@media (prefers-reduced-motion: reduce)` is true
 
 It's essential to understand that reduced motion doesn't necessarily imply a reduction in the duration of the animation. For example, in an animation where an element's size and color change, reducing motion might involve retaining the color change while minimizing movement.
 
@@ -1242,7 +1242,7 @@ const grow: AtomMotion = {
 };
 ```
 
-Factories (`createAtomMotion()`, `createPresenceMotion()`) could utilize this prop to apply different keyframes and options based on the media query.
+Factories (`createMotionComponent()`, `createPresenceComponent()`) could utilize this prop to apply different keyframes and options based on the media query.
 
 ### Motion sequencing & grouping
 
