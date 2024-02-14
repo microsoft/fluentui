@@ -20,12 +20,15 @@ const useStyles = makeStyles({
 /**
  * Apply styling to the RadioGroup slots based on the state
  */
-export const useRadioGroupStyles_unstable = (state: RadioGroupState) => {
+export const useRadioGroupStyles_unstable = (state: RadioGroupState): RadioGroupState => {
   const styles = useStyles();
+
   state.root.className = mergeClasses(
     radioGroupClassNames.root,
     styles.root,
     state.layout === 'vertical' && styles.vertical,
     state.root.className,
   );
+
+  return state;
 };
