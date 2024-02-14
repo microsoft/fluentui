@@ -158,21 +158,24 @@ const useStableDateAnchor = (providedDate: Date | undefined, startHour: Hour, en
  * - TimePicker loses focus, signifying a possible change.
  */
 const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProps['onTimeChange']) => {
-  const { activeOption, freeform, parseTimeStringToDate, submittedText, setActiveOption, value } = state;
+  const { getOptionById, freeform, parseTimeStringToDate, submittedText, value, activeDescendantController } = state;
+  const getActiveOption = React.useCallback(() => {
+    const activeOptionId = activeDescendantController.active();
+    return activeOptionId ? getOptionById(activeOptionId) : null;
+  }, [activeDescendantController, getOptionById]);
 
   // Base Combobox has activeOption default to first option in dropdown even if it doesn't match input value, and Enter key will select it.
   // This effect ensures that the activeOption is cleared when the input doesn't match any option.
   // This behavior is specific to a freeform TimePicker where the input value is treated as a valid time even if it's not in the dropdown.
   React.useEffect(() => {
     if (freeform && value) {
-      setActiveOption(prevActiveOption => {
-        if (prevActiveOption?.text && prevActiveOption.text.toLowerCase().indexOf(value.toLowerCase()) === 0) {
-          return prevActiveOption;
-        }
-        return undefined;
-      });
+      const activeOption = getActiveOption();
+      const valueMatchesActiveOption = activeOption?.text.toLowerCase().indexOf(value.toLowerCase()) === 0;
+      if (!valueMatchesActiveOption) {
+        activeDescendantController.blur();
+      }
     }
-  }, [freeform, setActiveOption, value]);
+  }, [freeform, value, activeDescendantController, getActiveOption]);
 
   const selectTimeFromValue = useEventCallback(
     (e: React.KeyboardEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>) => {
@@ -190,6 +193,7 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
   );
 
   const handleKeyDown: ComboboxProps['onKeyDown'] = useEventCallback(e => {
+    const activeOption = getActiveOption();
     if (!activeOption && e.key === Enter) {
       selectTimeFromValue(e);
     }
