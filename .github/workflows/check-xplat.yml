@@ -17,6 +17,8 @@ jobs:
           cache: yarn
       - name: Install npm dependencies
         run: yarn --frozen-lockfile --ignore-platform
+      - name: Build dependencies
+        run: yarn build --to xplat-v9
       - name: Bundle for Android
         run: yarn build:android
         working-directory: apps/xplat-v9
