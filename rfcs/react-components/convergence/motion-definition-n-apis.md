@@ -626,6 +626,8 @@ We will support more complex motions later, such as [grouped and sequential](#mo
 
 _At present, this feature is not implemented in either the `@fluentui/react-motion-preview` or `@fluentui/react-motions-preview` packages, but it may be implemented in the future._
 
+Implementation is tracked in [microsoft/fluentui#30546](https://github.com/microsoft/fluentui/issues/30546).
+
 The suggested approach is to adopt APIs from the `react-transition-group package`, for example:
 
 ```tsx
@@ -855,6 +857,8 @@ function useComponentState(props, ref) {
   });
 }
 ```
+
+> Note: `onMotionStart()` support is not implemented, but could be added in the future based on requests.
 
 ## Discarded solution (CSS option)
 
@@ -1261,6 +1265,9 @@ gantt
 
 This is outside the scope of this RFC, but it could be considered in the future. The Web Animations API makes it easier to implement, and it can be seamlessly integrated into existing factories since changing animations no longer requires modifying CSS classes.
 
+Implementation is tracked in [microsoft/fluentui#30547](https://github.com/microsoft/fluentui/issues/30547)
+
 [PoC](https://stackblitz.com/edit/stackblitz-starters-ifjobr)
+[prototype using existing APIs](https://github.com/microsoft/fluentui/pull/30531)
 
 > **Note:** the draft of [Web Animations Level 2](https://drafts.csswg.org/web-animations-2) contains both [`GroupEffect`](https://drafts.csswg.org/web-animations-2/#group-effect) and [`SequenceEffect`](https://drafts.csswg.org/web-animations-2/#the-sequenceeffect-interface) interfaces to provide this functionality.
