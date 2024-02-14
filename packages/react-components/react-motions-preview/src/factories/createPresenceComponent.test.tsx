@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import * as React from 'react';
 
 import type { PresenceMotion } from '../types';
-import { createPresence } from './createPresence';
+import { createPresenceComponent } from './createPresenceComponent';
 
 const motion: PresenceMotion = {
   enter: {
@@ -42,13 +42,13 @@ function createElementMock() {
   };
 }
 
-describe('createPresence', () => {
+describe('createPresenceComponent', () => {
   describe('definitions', () => {
     it('supports functions as motion definitions', () => {
       const { keyframes, ...options } = motion.exit;
 
       const fnMotion = jest.fn().mockImplementation(() => motion);
-      const TestAtom = createPresence(fnMotion);
+      const TestAtom = createPresenceComponent(fnMotion);
       const { animateMock, ElementMock } = createElementMock();
 
       const { rerender } = render(
@@ -73,7 +73,7 @@ describe('createPresence', () => {
 
   describe('appear', () => {
     it('does not animate by default', () => {
-      const TestAtom = createPresence(motion);
+      const TestAtom = createPresenceComponent(motion);
       const { animateMock, ElementMock } = createElementMock();
 
       render(
@@ -87,7 +87,7 @@ describe('createPresence', () => {
 
     it('animates when is "true"', () => {
       const { keyframes, ...options } = motion.enter;
-      const TestAtom = createPresence(motion);
+      const TestAtom = createPresenceComponent(motion);
 
       const { animateMock, ElementMock } = createElementMock();
 
@@ -104,7 +104,7 @@ describe('createPresence', () => {
   describe('visible', () => {
     it('animates when state changes', () => {
       const { keyframes, ...options } = motion.exit;
-      const TestAtom = createPresence(motion);
+      const TestAtom = createPresenceComponent(motion);
 
       const { animateMock, ElementMock } = createElementMock();
 
@@ -129,7 +129,7 @@ describe('createPresence', () => {
   describe('unmountOnExit', () => {
     it('unmounts when state changes', () => {
       const { keyframes, ...options } = motion.enter;
-      const TestAtom = createPresence(motion);
+      const TestAtom = createPresenceComponent(motion);
 
       const { animateMock, ElementMock } = createElementMock();
 

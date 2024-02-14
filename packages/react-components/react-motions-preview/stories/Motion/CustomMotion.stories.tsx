@@ -1,8 +1,8 @@
 import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
-import { createAtom } from '@fluentui/react-motions-preview';
+import { createMotionComponent } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
-import description from './CustomAtom.stories.md';
+import description from './CustomMotion.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -31,7 +31,7 @@ const useClasses = makeStyles({
   },
 });
 
-const DropIn = createAtom({
+const DropIn = createMotionComponent({
   keyframes: [
     { transform: 'rotate(-30deg) translateY(-100%)', opacity: 0 },
     { transform: 'rotate(0deg) translateY(0%)', opacity: 1 },
@@ -39,7 +39,7 @@ const DropIn = createAtom({
   duration: 4000,
 });
 
-export const CustomAtom = () => {
+export const CustomMotion = () => {
   const classes = useClasses();
 
   return (
@@ -55,7 +55,7 @@ export const CustomAtom = () => {
   );
 };
 
-CustomAtom.parameters = {
+CustomMotion.parameters = {
   docs: {
     description: {
       story: description,

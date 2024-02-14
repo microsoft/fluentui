@@ -1,5 +1,5 @@
 import { makeStyles, shorthands, tokens, Label, Slider, useId, Checkbox } from '@fluentui/react-components';
-import { createPresence, motionTokens } from '@fluentui/react-motions-preview';
+import { createPresenceComponent, motionTokens } from '@fluentui/react-motions-preview';
 import type { MotionImperativeRef } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
@@ -43,7 +43,7 @@ const useClasses = makeStyles({
   },
 });
 
-const Fade = createPresence({
+const Fade = createPresenceComponent({
   enter: {
     keyframes: [{ opacity: 0 }, { opacity: 1 }],
     duration: motionTokens.durationSlow,

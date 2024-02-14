@@ -1,5 +1,5 @@
 import { Checkbox, Label, makeStyles, shorthands, Slider, tokens, useId } from '@fluentui/react-components';
-import { createPresence } from '@fluentui/react-motions-preview';
+import { createPresenceComponent } from '@fluentui/react-motions-preview';
 import type { MotionImperativeRef, PresenceMotionFn } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
@@ -57,7 +57,7 @@ const collapseMotion: PresenceMotionFn = element => {
     exit: { duration, keyframes: [...keyframes].reverse() },
   };
 };
-const Collapse = createPresence(collapseMotion);
+const Collapse = createPresenceComponent(collapseMotion);
 
 export const MotionFunctions = () => {
   const classes = useClasses();
