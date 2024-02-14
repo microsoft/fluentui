@@ -11,8 +11,8 @@ export type {
   SwatchPickerSlots,
   SwatchPickerState,
   SwatchPickerSelectEventHandler,
-  SwatchPickerSelectData,
-  SwatchPickerSelectEvent,
+  SwatchPickerOnSelectionChangeData as SwatchPickerSelectData,
+  SwatchPickerOnSelectionChangeEvent as SwatchPickerSelectEvent,
 } from './SwatchPicker';
 export {
   ColorSwatch,

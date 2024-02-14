@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
 import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
-import { SwatchPickerSelectEvent } from '../SwatchPicker/SwatchPicker.types';
+import { SwatchPickerOnSelectionChangeEvent } from '../SwatchPicker/SwatchPicker.types';
 import { useColorSwatchState_unstable } from './useColorSwatchState';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
@@ -22,11 +22,13 @@ export const useColorSwatch_unstable = (
   const { color, value } = props;
 
   const context = useSwatchPickerContextValue_unstable();
-  const notifySelected = context.notifySelected;
-  const selected = context.selectedValue === color;
-  const onClick = useEventCallback((event: SwatchPickerSelectEvent) => notifySelected({ event, selectedValue: color }));
+  const requestSelectionChange = context.requestSelectionChange;
+  const selected = context.selectedValue === value;
+  const onClick = useEventCallback((event: SwatchPickerOnSelectionChangeEvent) =>
+    requestSelectionChange({ event, selectedValue: value }),
+  );
 
-  const _role = 'radio'; //context.layout === 'grid' ? 'gridcell' : 'radio';
+  const _role = 'radio';
 
   const state: ColorSwatchState = {
     components: {

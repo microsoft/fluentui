@@ -24,11 +24,11 @@ const useStyles = makeResetStyles({
   '&:hover': {
     cursor: 'pointer',
     ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorBrandStroke1),
-    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandBackgroundInverted),
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorBrandBackgroundInverted),
   },
   ':hover:active': {
-    ...shorthands.outline(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
-    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorBrandBackgroundInverted),
+    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorBrandStroke1),
+    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandBackgroundInverted),
   },
 });
 

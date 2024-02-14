@@ -9,9 +9,13 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const ColorSwatch: ForwardRefComponent<ColorSwatchProps>;
+
+// @public (undocumented)
+export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots>;
 
 // @public
 export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & {
@@ -35,16 +39,40 @@ export const renderColorSwatch_unstable: (state: ColorSwatchState, contextValues
 // @public
 export const renderSwatchPicker_unstable: (state: SwatchPickerState, contextValues: SwatchPickerContextValue) => JSX.Element;
 
+// @public (undocumented)
+export const swatchCSSVars: {
+    swatchColor: string;
+};
+
 // @public
 export const SwatchPicker: ForwardRefComponent<SwatchPickerProps>;
 
+// @public (undocumented)
+export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots>;
+
+// @public (undocumented)
+export const swatchPickerCSSVars: {
+    columnCountGrid: string;
+    cellSize: string;
+    gridGap: string;
+};
+
 // @public
 export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
-    onColorChange?: SwatchPickerSelectEventHandler;
+    defaultSelectedValue?: string;
+    onSelectionChange?: SwatchPickerSelectEventHandler;
+    selectedValue?: string;
     size?: 'extraSmall' | 'small' | 'medium' | 'large';
     shape?: 'rounded' | 'square' | 'circular';
-    selectedValue?: string;
 };
+
+// @public (undocumented)
+export type SwatchPickerSelectData = {
+    selectedValue: string;
+};
+
+// @public (undocumented)
+export type SwatchPickerSelectEvent = React_2.MouseEvent | React_2.KeyboardEvent | React_2.ChangeEvent;
 
 // @public (undocumented)
 export type SwatchPickerSelectEventHandler = (event: SwatchPickerSelectEvent, data: SwatchPickerSelectData) => void;

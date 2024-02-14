@@ -6,29 +6,48 @@ export type SwatchPickerSlots = {
   root: Slot<'div'>;
 };
 
-export type SwatchPickerSelectEvent = React.MouseEvent | React.KeyboardEvent | React.ChangeEvent;
+export type SwatchPickerOnSelectionChangeEvent = React.MouseEvent | React.KeyboardEvent | React.ChangeEvent;
 
-export type SwatchPickerSelectData = {
+export type SwatchPickerOnSelectionChangeData = {
   selectedValue: string;
 };
 
-export type SwatchPickerSelectEventHandler = (event: SwatchPickerSelectEvent, data: SwatchPickerSelectData) => void;
+export type SwatchPickerSelectEventHandler = (
+  event: SwatchPickerOnSelectionChangeEvent,
+  data: SwatchPickerOnSelectionChangeData,
+) => void;
 
 /**
  * SwatchPicker Props
  */
 export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
   /**
-   * Event rised when user selects a color
+   * Default selected value
+   */
+  defaultSelectedValue?: string;
+
+  /**
+   * Triggers a callback when the value has been changed
    */
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
-  onColorChange?: SwatchPickerSelectEventHandler;
+  onSelectionChange?: SwatchPickerSelectEventHandler;
 
+  /**
+   * Controlled selected value
+   */
+  selectedValue?: string;
+
+  /**
+   * Swatch size
+   * @defaultvalue 'medium'
+   */
   size?: 'extraSmall' | 'small' | 'medium' | 'large';
 
+  /**
+   * Swatch shape
+   * @defaultvalue 'square'
+   */
   shape?: 'rounded' | 'square' | 'circular';
-
-  selectedValue?: string;
 };
 
 /**

@@ -8,7 +8,7 @@ export const Default = () => {
   };
   return (
     <>
-      <SwatchPicker aria-label="SwatchPicker default" selectedValue={selectedColor} onColorChange={handleSelect}>
+      <SwatchPicker aria-label="SwatchPicker default" selectedValue={selectedColor} onSelectionChange={handleSelect}>
         <ColorSwatch color="#FF1921" value="#FF1921" aria-label="red" role="radio" />
         <ColorSwatch color="#FFC12E" value="#FFC12E" aria-label="orange" role="radio" />
         <ColorSwatch color="#FEFF37" value="#FEFF37" aria-label="yellow" role="radio" />

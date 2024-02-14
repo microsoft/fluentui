@@ -6,9 +6,8 @@ export type SwatchContextValues = {
 };
 
 export type SwatchContextValue = {
+  color: string;
   selected: boolean;
-  // disabled: boolean;
-  // color: string;
 };
 
 const SwatchContext = React.createContext<SwatchContextValue | undefined>(
@@ -16,9 +15,8 @@ const SwatchContext = React.createContext<SwatchContextValue | undefined>(
 ) as React.Context<SwatchContextValue>;
 
 const swatchContextDefaultValue: SwatchContextValue = {
+  color: '',
   selected: false,
-  // disabled: false,
-  // color: '',
 };
 
 export const { Provider: SwatchProvider } = SwatchContext;
@@ -28,8 +26,8 @@ export const useSwatchContext_unstable = () => {
 };
 
 export function useSwatchContextValues_unstable(state: ColorSwatchState): SwatchContextValues {
-  const { selected = false } = state;
-  const swatch = React.useMemo<SwatchContextValue>(() => ({ selected }), [selected]);
+  const { color, selected } = state;
+  const swatch = React.useMemo<SwatchContextValue>(() => ({ color, selected }), [color, selected]);
 
   return { swatch };
 }

@@ -2,40 +2,48 @@ import * as React from 'react';
 import {
   SwatchPickerProps,
   SwatchPickerState,
-  SwatchPickerSelectData,
-  SwatchPickerSelectEvent,
+  SwatchPickerOnSelectionChangeData,
+  SwatchPickerOnSelectionChangeEvent,
 } from '../components/SwatchPicker/SwatchPicker.types';
 
 /**
  * The context through which individual color controls communicate with the picker.
  */
-export type SwatchPickerContextValue = Pick<SwatchPickerProps, 'size' | 'shape' | 'selectedValue'> & {
+export type SwatchPickerContextValue = Pick<
+  SwatchPickerProps,
+  'defaultSelectedValue' | 'size' | 'shape' | 'selectedValue'
+> & {
   /**
-   * Notify the picker about color selection.
+   * Callback used by ColorSwatch to request a change on it's selected state
+   * Should be used to select ColorSwatch
    */
-  notifySelected: (data: SwatchPickerNotifySelectedData) => void;
+  requestSelectionChange: (data: SwatchPickerNotifySelectedData) => void;
 };
 
-export type SwatchPickerNotifySelectedData = { event: SwatchPickerSelectEvent } & SwatchPickerSelectData;
+export type SwatchPickerNotifySelectedData = {
+  event: SwatchPickerOnSelectionChangeEvent;
+} & SwatchPickerOnSelectionChangeData;
 
 export const useSwatchPickerContextValues = (state: SwatchPickerState): SwatchPickerContextValues => {
-  const { size, shape, notifySelected, selectedValue } = state;
+  const { defaultSelectedValue, size, shape, requestSelectionChange, selectedValue } = state;
 
   const swatchPicker = React.useMemo<SwatchPickerContextValue>(
     () => ({
+      defaultSelectedValue,
       size,
       shape,
       selectedValue,
-      notifySelected,
+      requestSelectionChange,
     }),
-    [size, shape, selectedValue, notifySelected],
+    [defaultSelectedValue, size, shape, selectedValue, requestSelectionChange],
   );
 
   return { swatchPicker };
 };
 
 export const swatchPickerContextDefaultValue: SwatchPickerContextValue = {
-  notifySelected: () => {
+  defaultSelectedValue: undefined,
+  requestSelectionChange: () => {
     /*noop*/
   },
   size: 'medium',

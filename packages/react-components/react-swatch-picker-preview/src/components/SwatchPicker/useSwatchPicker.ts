@@ -18,25 +18,23 @@ export const useSwatchPicker_unstable = <T>(
   props: SwatchPickerProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
-  const { role, onColorChange, selectedValue, size, shape, ...rest } = props;
+  const { defaultSelectedValue, role, onSelectionChange, selectedValue, size, shape, ...rest } = props;
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
-    axis: 'both', //_layout === 'grid' ? 'grid-linear' : 'both',
+    axis: 'both',
     memorizeCurrent: true,
   });
 
   const [selectedSwatch, setSelectedSwatch] = useControllableState({
     state: selectedValue,
-    defaultState: '',
+    defaultState: defaultSelectedValue,
     initialState: '',
   });
 
-  const notifySelected = useEventCallback((data: SwatchPickerNotifySelectedData) => {
-    onColorChange?.(data.event, { selectedValue: data.selectedValue });
+  const requestSelectionChange = useEventCallback((data: SwatchPickerNotifySelectedData) => {
+    onSelectionChange?.(data.event, { selectedValue: data.selectedValue });
     setSelectedSwatch(data.selectedValue);
   });
-
-  // const _role = _layout === 'grid' ? 'grid' : 'radiogroup';
 
   const state: SwatchPickerState = {
     components: {
@@ -46,12 +44,12 @@ export const useSwatchPicker_unstable = <T>(
       getIntrinsicElementProps('div', {
         ref,
         ...rest,
-        role: 'radiogroup', //role ?? _role,
+        role: 'radiogroup',
         ...focusAttributes,
       }),
       { elementType: 'div' },
     ),
-    notifySelected,
+    requestSelectionChange,
     selectedValue: selectedSwatch,
     size,
     shape,
