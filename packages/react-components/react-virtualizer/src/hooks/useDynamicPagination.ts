@@ -9,6 +9,7 @@ export const useDynamicVirtualizerPagination = (
   const { axis = 'vertical', currentIndex, progressiveItemSizes, virtualizerLength } = virtualizerProps;
 
   const timeoutRef = useRef<number | null>(null);
+  const lastScrollPos = useRef<number>(0);
 
   const scrollContainer = React.useRef<HTMLElement | null>(null);
 
@@ -66,6 +67,7 @@ export const useDynamicVirtualizerPagination = (
     } else {
       scrollContainer.current.scrollTo({ left: closestItemPos, behavior: 'smooth' });
     }
+    lastScrollPos.current = currentScrollPos;
   }, [
     paginationEnabled,
     currentIndex,

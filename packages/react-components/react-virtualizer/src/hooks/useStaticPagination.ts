@@ -9,13 +9,15 @@ export const useStaticVirtualizerPagination = (
   const { itemSize, axis = 'vertical' } = virtualizerProps;
 
   const timeoutRef = useRef<number | null>(null);
+  const lastScrollPos = useRef<number>(0);
+  const lastIndexScrolled = useRef<number>(0);
 
   const scrollContainer = React.useRef<HTMLElement | null>(null);
 
   const clearListeners = () => {
     if (scrollContainer.current) {
-      if ('onScrollEnd' in window) {
-        scrollContainer.current.removeEventListener('scrollEnd', onScrollEnd);
+      if ('onscrollend' in window) {
+        scrollContainer.current.removeEventListener('scrollend', onScrollEnd);
       } else {
         scrollContainer.current.removeEventListener('scroll', onScroll);
       }
@@ -34,21 +36,43 @@ export const useStaticVirtualizerPagination = (
   }, []);
 
   const onScrollEnd = React.useCallback(() => {
+    console.log('On scroll end');
     if (!scrollContainer.current || !paginationEnabled) {
       // No container found
       return;
     }
 
-    let currentScrollPos = axis === 'vertical' ? scrollContainer.current.scrollTop : scrollContainer.current.scrollLeft;
-
+    const currentScrollPos =
+      axis === 'vertical' ? scrollContainer.current.scrollTop : scrollContainer.current.scrollLeft;
     const closestItem = Math.round(currentScrollPos / itemSize);
-    // We minus one so we include the edge pixel
-    const closestItemPos = closestItem * itemSize;
-    if (axis === 'vertical') {
-      scrollContainer.current.scrollTo({ top: closestItemPos, behavior: 'smooth' });
+
+    let nextItem = 0;
+    if (closestItem - lastIndexScrolled.current === 0) {
+      // Special case for go to next/previous with minimum amount of scroll needed
+      const nextTarget = lastScrollPos.current < currentScrollPos ? 1 : -1;
+      console.log('Next target: ', nextTarget);
+      const isSecondaryScroll = lastScrollPos.current === currentScrollPos;
+      console.log('isSecondaryScroll: ', isSecondaryScroll);
+      const posMod = isSecondaryScroll ? 0 : nextTarget;
+      console.log('posMod: ', posMod);
+
+      console.log('going to item: ', closestItem + posMod);
+      nextItem = closestItem + posMod;
     } else {
-      scrollContainer.current.scrollTo({ left: closestItemPos, behavior: 'smooth' });
+      // Pagination for anything else can just jump to the closest!
+      nextItem = closestItem;
     }
+
+    const nextItemPos = nextItem * itemSize;
+    console.log('closestItemPos: ', nextItemPos);
+
+    if (axis === 'vertical') {
+      scrollContainer.current.scrollTo({ top: nextItemPos, behavior: 'smooth' });
+    } else {
+      scrollContainer.current.scrollTo({ left: nextItemPos, behavior: 'smooth' });
+    }
+    lastScrollPos.current = nextItemPos;
+    lastIndexScrolled.current = nextItem;
   }, [paginationEnabled]);
 
   const onScroll = React.useCallback(
@@ -73,8 +97,8 @@ export const useStaticVirtualizerPagination = (
 
         scrollContainer.current = instance;
         if (scrollContainer.current) {
-          if ('onScrollEnd' in window) {
-            scrollContainer.current.addEventListener('scrollEnd', onScrollEnd);
+          if ('onscrollend' in window) {
+            scrollContainer.current.addEventListener('scrollend', onScrollEnd);
           } else {
             scrollContainer.current.addEventListener('scroll', onScroll);
           }

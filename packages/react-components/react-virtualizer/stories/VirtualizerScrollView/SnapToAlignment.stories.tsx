@@ -1,37 +1,34 @@
-import { Button, makeStyles } from '@fluentui/react-components';
 import * as React from 'react';
 import { VirtualizerScrollView } from '@fluentui/react-components/unstable';
+import { makeStyles, useArrowNavigationGroup } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
-  container: {
-    maxHeight: '300px',
-    width: '100%',
-    maxWidth: '100%',
-    scrollSnapType: 'x mandatory',
-    scrollBehavior: 'auto',
-  },
   child: {
-    scrollSnapAlign: 'start',
+    display: 'flex',
     height: '100px',
+    lineHeight: '100px',
     width: '100px',
-    midWidth: '100px',
+    minWidth: '100px',
   },
-  button: {
-    width: '100%',
-    height: '100%',
+  container: {
+    scrollSnapType: 'x mandatory',
   },
 });
 
 export const SnapToAlignment = () => {
   const styles = useStyles();
-  const childLength = 1000;
+  const childLength = 100;
+
+  const attributes = useArrowNavigationGroup({
+    axis: 'horizontal',
+  });
 
   return (
     <VirtualizerScrollView
       numItems={childLength}
       itemSize={100}
-      axis="horizontal"
-      container={{ role: 'list', className: styles.container }}
+      axis={'horizontal'}
+      container={{ role: 'list', className: styles.container, ...attributes }}
       enablePagination
     >
       {(index: number) => {
@@ -42,9 +39,7 @@ export const SnapToAlignment = () => {
             aria-setsize={childLength}
             key={`test-virtualizer-child-${index}`}
             className={styles.child}
-          >
-            <Button className={styles.button}>{`Node-${index}`}</Button>
-          </div>
+          >{`Node-${index}`}</div>
         );
       }}
     </VirtualizerScrollView>
