@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEventCallback } from '@fluentui/react-utilities';
+import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useOnKeyboardNavigationChange } from '@fluentui/react-tabster';
 import { useOptionWalker } from './useOptionWalker';
 import type { ActiveDescendantImperativeRef, ActiveDescendantOptions, UseActiveDescendantReturn } from './types';
@@ -29,7 +29,8 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   });
 
   const matchOption = useEventCallback(matchOptionUnstable);
-  const { listboxRef, optionWalker } = useOptionWalker<TListboxElement>({ matchOption });
+  const listboxRef = React.useRef<TListboxElement>(null);
+  const { optionWalker, listboxCallbackRef } = useOptionWalker<TListboxElement>({ matchOption });
   const getActiveDescendant = React.useCallback(() => {
     return listboxRef.current?.querySelector<HTMLElement>(`#${activeIdRef.current}`);
   }, [listboxRef]);
@@ -130,8 +131,8 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
         }
       },
 
-      find(predicate, { passive } = {}) {
-        const target = optionWalker.find(predicate);
+      find(predicate, { passive, startFrom } = {}) {
+        const target = optionWalker.find(predicate, startFrom);
         if (!passive) {
           focusActiveDescendant(target);
         }
@@ -144,5 +145,5 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
 
   React.useImperativeHandle(imperativeRef, () => controller);
 
-  return { listboxRef, activeParentRef, controller };
+  return { listboxRef: useMergedRefs(listboxRef, listboxCallbackRef), activeParentRef, controller };
 }
