@@ -4,7 +4,7 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-search-preview',
+  displayName: 'react-search',
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': [

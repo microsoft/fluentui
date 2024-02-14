@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add @fluentui/react-search to suite",
+  "packageName": "@fluentui/react-components",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
