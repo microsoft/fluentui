@@ -129,7 +129,7 @@ export interface ISankeyChartStyles {
  */
 export interface ISankeyChartStrings {
   /**
-   * A value similar to "from {0}" where {0} is the name of the source node for a link.
+   * A value similar to "from \{0\}" where \{0\} is the name of the source node for a link.
    * This is shown in the `ChartHoverCard` when the user hovers the mouse over a link.
    */
   linkFrom?: string;
@@ -144,14 +144,14 @@ export interface ISankeyChartAccessibilityProps {
    */
   emptyAriaLabel?: string;
   /**
-   * A value similar to "node {0} with weight {1}".
-   * {0} is the name of the node.
-   * {1} is the weight of the node (as computed by the sankey layout engine via the links to or from this node).
+   * A value similar to "node \{0\} with weight \{1\}".
+   * \{0\} is the name of the node.
+   * \{1\} is the weight of the node (as computed by the sankey layout engine via the links to or from this node).
    */
   nodeAriaLabel?: string;
   /**
-   * A value similar to "link from {0} to ${1} with weight ${2}".
-   * {0} is the source node, {1} is the target node, and {2} is the weight of the link.
+   * A value similar to "link from \{0\} to $\{1\} with weight $\{2\}".
+   * \{0\} is the source node, \{1\} is the target node, and \{2\} is the value of the link.
    */
   linkAriaLabel?: string;
 }
