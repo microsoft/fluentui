@@ -170,7 +170,11 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
   React.useEffect(() => {
     if (freeform && value) {
       const activeOption = getActiveOption();
-      const valueMatchesActiveOption = activeOption?.text.toLowerCase().indexOf(value.toLowerCase()) === 0;
+      if (!activeOption) {
+        return;
+      }
+
+      const valueMatchesActiveOption = activeOption.text.toLowerCase().indexOf(value.toLowerCase()) === 0;
       if (!valueMatchesActiveOption) {
         activeDescendantController.blur();
       }

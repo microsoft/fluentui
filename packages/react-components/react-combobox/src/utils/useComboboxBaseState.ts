@@ -97,7 +97,7 @@ export const useComboboxBaseState = (
     [onOpenChange, setOpenState],
   );
 
-  // update active option based on change in open state or children
+  // update active option based on change in open state
   React.useEffect(() => {
     if (open) {
       // if it is single-select and there is a selected option, start at the selected option
@@ -107,18 +107,21 @@ export const useComboboxBaseState = (
           activeDescendantController.focus(selectedOption.id);
         }
       }
-      // default to starting at the first option if after a change in children there is no more active option
-      else {
-        if (!activeDescendantController.active()) {
-          activeDescendantController.first();
-        }
-      }
-    } else if (!open) {
-      // reset the active option when closing
+    } else {
       activeDescendantController.blur();
     }
     // this should only be run in response to changes in the open state or children
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, activeDescendantController]);
+
+  // Fallback focus when children are updated in an open popover results in no item being focused
+  React.useEffect(() => {
+    if (open) {
+      if (!activeDescendantController.active()) {
+        activeDescendantController.first();
+      }
+    }
+    // this should only be run in response to changes in the open state or children
   }, [open, children, activeDescendantController]);
 
   return {
