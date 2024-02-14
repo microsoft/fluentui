@@ -2,6 +2,8 @@ import MotionDescription from './MotionDescription.md';
 
 export { MotionDefault } from './MotionDefault.stories';
 
+export { Choreography } from './Choreography.stories';
+
 export { CreateAtom as createAtom } from './CreateAtom.stories';
 export { CreatePresence as createPresence } from './CreatePresence.stories';
 

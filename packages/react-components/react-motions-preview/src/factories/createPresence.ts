@@ -4,6 +4,7 @@ import * as React from 'react';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { getChildElement } from '../utils/getChildElement';
+import { isMotionCollection } from '../utils/isMotionCollection';
 import type { PresenceMotion, MotionImperativeRef, PresenceMotionFn } from '../types';
 
 type PresenceProps = {
@@ -46,29 +47,31 @@ export function createPresence(motion: PresenceMotion | PresenceMotionFn) {
       }
 
       if (elementRef.current) {
-        const definition = typeof motion === 'function' ? motion(elementRef.current) : motion;
-        const { keyframes, ...options } = definition.exit;
+        const definitions = typeof motion === 'function' ? motion(elementRef.current) : motion;
+        const atoms = isMotionCollection(definitions.exit) ? definitions.exit.motions : [definitions.exit];
 
-        const animation = elementRef.current.animate(keyframes, {
-          fill: 'forwards',
+        atoms.forEach(atom => {
+          const { keyframes, ...options } = atom;
+          const animation = elementRef.current!.animate(keyframes, {
+            fill: 'forwards',
 
-          ...options,
-          ...(isReducedMotion() && { duration: 1 }),
+            ...options,
+            ...(isReducedMotion() && { duration: 1 }),
+          });
+
+          if (isFirstMount.current) {
+            // Heads up!
+            // .finish() is used there to skip animation on first mount, but apply animation styles
+            animation.finish();
+          }
         });
 
-        if (isFirstMount.current) {
-          // Heads up!
-          // .finish() is used there to skip animation on first mount, but apply animation styles
-          animation.finish();
-          return;
-        }
-
-        animationRef.current = animation;
-        animation.onfinish = onExitFinish;
+        // animationRef.current = animation;
+        // animation.onfinish = onExitFinish;
 
         return () => {
           // TODO: should we set unmount there?
-          animation.cancel();
+          // animation.cancel();
         };
       }
     }, [animationRef, isReducedMotion, onExitFinish, visible]);
@@ -81,20 +84,30 @@ export function createPresence(motion: PresenceMotion | PresenceMotionFn) {
       const shouldEnter = isFirstMount.current ? appear && visible : mounted && visible;
 
       if (shouldEnter) {
-        const definition = typeof motion === 'function' ? motion(elementRef.current) : motion;
-        const { keyframes, ...options } = definition.enter;
+        const definitions = typeof motion === 'function' ? motion(elementRef.current) : motion;
+        const atoms = isMotionCollection(definitions.enter) ? definitions.enter.motions : [definitions.enter];
 
-        const animation = elementRef.current.animate(keyframes, {
-          fill: 'forwards',
+        atoms.forEach(atom => {
+          const { keyframes, persist, ...options } = atom;
 
-          ...options,
-          ...(isReducedMotion() && { duration: 1 }),
+          const animation = elementRef.current!.animate(keyframes, {
+            fill: 'forwards',
+
+            ...options,
+            ...(isReducedMotion() && { duration: 1 }),
+          });
+
+          animation.onfinish = ev => {
+            if (persist) {
+              animation.persist();
+            }
+          };
         });
 
-        animationRef.current = animation;
+        // animationRef.current = animation;
 
         return () => {
-          animation.cancel();
+          //   animation.cancel();
         };
       }
     }, [animationRef, isReducedMotion, mounted, visible, appear]);

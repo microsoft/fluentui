@@ -1,11 +1,18 @@
-export type AtomMotion = { keyframes: Keyframe[] } & KeyframeEffectOptions;
+import { MOTION } from './constants';
 
-export type PresenceMotion = {
-  enter: AtomMotion;
-  exit: AtomMotion;
+export type AtomMotion = { keyframes: Keyframe[]; persist?: boolean } & KeyframeEffectOptions;
+
+export type AtomMotionCollection = {
+  [MOTION]: true;
+  motions: AtomMotion[];
 };
 
-export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
+export type PresenceMotion = {
+  enter: AtomMotion | AtomMotionCollection;
+  exit: AtomMotion | AtomMotionCollection;
+};
+
+export type AtomMotionFn = (element: HTMLElement) => AtomMotion | AtomMotionCollection;
 export type PresenceMotionFn = (element: HTMLElement) => PresenceMotion;
 
 export type MotionImperativeRef = {

@@ -35,7 +35,8 @@ export function createAtom(motion: AtomMotion | AtomMotionFn) {
       const element = elementRef.current;
 
       if (element) {
-        const definition = typeof motion === 'function' ? motion(element) : motion;
+        // TODO: support motion collections
+        const definition = typeof motion === 'function' ? (motion(element) as AtomMotion) : motion;
         const { keyframes, ...options } = definition;
 
         const animation = element.animate(keyframes, {
