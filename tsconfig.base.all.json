@@ -139,6 +139,8 @@
       "@fluentui/react-progress": ["packages/react-components/react-progress/src/index.ts"],
       "@fluentui/react-provider": ["packages/react-components/react-provider/src/index.ts"],
       "@fluentui/react-radio": ["packages/react-components/react-radio/src/index.ts"],
+      "@fluentui/react-rating": ["packages/react-components/react-rating/src/index.ts"],
+      "@fluentui/react-search": ["packages/react-components/react-search/src/index.ts"],
       "@fluentui/react-select": ["packages/react-components/react-select/src/index.ts"],
       "@fluentui/react-shared-contexts": ["packages/react-components/react-shared-contexts/src/index.ts"],
       "@fluentui/react-skeleton": ["packages/react-components/react-skeleton/src/index.ts"],
@@ -172,9 +174,7 @@
       "@fluentui/react-virtualizer": ["packages/react-components/react-virtualizer/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
-      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-rating": ["packages/react-components/react-rating/src/index.ts"],
-      "@fluentui/react-search": ["packages/react-components/react-search/src/index.ts"]
+      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
     }
   }
 }
