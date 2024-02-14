@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 14 Feb 2024 07:24:16 GMT",
+      "tag": "@fluentui/react-charting_v5.19.27",
+      "version": "5.19.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "7cbabd8e9c86e16fbe94b270e43fff20c96d3a2a",
+            "comment": "Fixing codepen issue for charts not visible"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 12 Feb 2024 07:25:24 GMT",
       "tag": "@fluentui/react-charting_v5.19.26",
       "version": "5.19.26",

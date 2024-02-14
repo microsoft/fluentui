@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import * as React from 'react';
 
 import type { AtomMotion } from '../types';
-import { createAtom } from './createAtom';
+import { createMotionComponent } from './createMotionComponent';
 
 const motion: AtomMotion = {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
@@ -29,9 +29,9 @@ function createElementMock() {
   };
 }
 
-describe('createAtom', () => {
+describe('createMotionComponent', () => {
   it('creates a motion and plays it', () => {
-    const TestAtom = createAtom(motion);
+    const TestAtom = createMotionComponent(motion);
     const { animateMock, ElementMock } = createElementMock();
 
     render(
@@ -49,7 +49,7 @@ describe('createAtom', () => {
 
   it('supports functions as motion definitions', () => {
     const fnMotion = jest.fn().mockImplementation(() => motion);
-    const TestAtom = createAtom(fnMotion);
+    const TestAtom = createMotionComponent(fnMotion);
 
     const { animateMock, ElementMock } = createElementMock();
 
