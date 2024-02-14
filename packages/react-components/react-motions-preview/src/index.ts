@@ -1,7 +1,7 @@
 import * as motionTokens from './motions/motionTokens';
 
-export { createAtom } from './factories/createAtom';
-export { createPresence } from './factories/createPresence';
+export { createMotionComponent } from './factories/createMotionComponent';
+export { createPresenceComponent } from './factories/createPresenceComponent';
 
 export { motionTokens };
 

@@ -18,7 +18,7 @@ type PresenceProps = {
   unmountOnExit?: boolean;
 };
 
-export function createPresence(motion: PresenceMotion | PresenceMotionFn) {
+export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn) {
   const Presence: React.FC<PresenceProps> = props => {
     const { appear, children, imperativeRef, visible, unmountOnExit } = props;
 

@@ -11,7 +11,7 @@ This implementation is based on [Web Animations API](https://developer.mozilla.o
 >
 > ```jsx
 >
-> import { createAtom, createPresense } from '@fluentui/react-motions-preview';
+> import { createMotionComponent, createPresense } from '@fluentui/react-motions-preview';
 >
 > ```
 >

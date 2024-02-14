@@ -1,5 +1,5 @@
 import { makeStyles, shorthands, tokens, Label, Slider, useId, Checkbox } from '@fluentui/react-components';
-import { createAtom, motionTokens } from '@fluentui/react-motions-preview';
+import { createMotionComponent, motionTokens } from '@fluentui/react-motions-preview';
 import type { MotionImperativeRef } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
@@ -43,7 +43,7 @@ const useClasses = makeStyles({
   },
 });
 
-const FadeEnter = createAtom({
+const FadeEnter = createMotionComponent({
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
   duration: motionTokens.durationSlow,
 });
