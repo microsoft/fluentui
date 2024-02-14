@@ -11,7 +11,6 @@ import {
 import {
   IChartProps,
   ISankeyChartData,
-  ISankeyChartStrings,
   ISankeyChartStyleProps,
   ISankeyChartStyles,
 } from '../src/components/SankeyChart/index';
@@ -71,13 +70,6 @@ const chartPointsWithEmptyData = (): IChartProps => ({
   SankeyChartData: emptySankeyChatPoints,
 });
 const emptyChartPoints = (): IChartProps => ({});
-
-const defaultStrings: () => ISankeyChartStrings = () => ({
-  emptyAriaLabel: 'Graph has no data to display',
-  nodeAriaLabel: 'node {0} with weight {1}',
-  linkFrom: 'from {0}',
-  linkAriaLabel: 'link from {0} to {1} with weight {2}',
-});
 
 const standardMargins: IMargins = { top: 36, right: 48, bottom: 32, left: 48 };
 
@@ -153,7 +145,6 @@ runTest('_createLinks', () => {
     const data = chartPointsWithStringNodeId();
     const instance = new SankeyChartBase({
       data,
-      strings: defaultStrings(),
     });
     expect(instance).toBeDefined();
     const privateInstance = instance as unknown as IPrivateMethodsOnClass;
@@ -200,7 +191,6 @@ runTest('_createLinks', () => {
     const data = chartPointsWithNumericNodeId();
     const instance = new SankeyChartBase({
       data,
-      strings: defaultStrings(),
     });
     expect(instance).toBeDefined();
     const privateInstance = instance as unknown as IPrivateMethodsOnClass;
@@ -261,7 +251,6 @@ runTest('_createNodes', () => {
     const data = chartPointsWithStringNodeId();
     const instance = new SankeyChartBase({
       data,
-      strings: defaultStrings(),
     });
     expect(instance).toBeDefined();
     const privateInstance = instance as unknown as IPrivateMethodsOnClass;
@@ -306,7 +295,6 @@ runTest('_createNodes', () => {
     const data = chartPointsWithNumericNodeId();
     const instance = new SankeyChartBase({
       data,
-      strings: defaultStrings(),
     });
     expect(instance).toBeDefined();
     const privateInstance = instance as unknown as IPrivateMethodsOnClass;
