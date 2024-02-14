@@ -107,9 +107,11 @@ export const useComboboxBaseState = (
           activeDescendantController.focus(selectedOption.id);
         }
       }
-      // default to starting at the first option
+      // default to starting at the first option if after a change in children there is no more active option
       else {
-        activeDescendantController.first();
+        if (!activeDescendantController.active()) {
+          activeDescendantController.first();
+        }
       }
     } else if (!open) {
       // reset the active option when closing
