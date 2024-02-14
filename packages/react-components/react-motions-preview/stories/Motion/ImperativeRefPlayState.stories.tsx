@@ -1,5 +1,5 @@
 import { makeStyles, shorthands, tokens, Label, Slider, useId, Checkbox } from '@fluentui/react-components';
-import { atom, createAtom } from '@fluentui/react-motions-preview';
+import { createMotionComponent, motionTokens } from '@fluentui/react-motions-preview';
 import type { MotionImperativeRef } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
@@ -43,7 +43,10 @@ const useClasses = makeStyles({
   },
 });
 
-const FadeEnter = createAtom(atom.fade.enterUltraSlow());
+const FadeEnter = createMotionComponent({
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  duration: motionTokens.durationSlow,
+});
 
 export const ImperativeRefPlayState = () => {
   const classes = useClasses();
@@ -54,10 +57,11 @@ export const ImperativeRefPlayState = () => {
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [isRunning, setIsRunning] = React.useState<boolean>(false);
 
+  // Heads up!
+  // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
   React.useEffect(() => {
     motionRef.current?.setPlaybackRate(playbackRate / 100);
   }, [playbackRate]);
-
   React.useEffect(() => {
     motionRef.current?.setPlayState(isRunning ? 'running' : 'paused');
   }, [isRunning]);

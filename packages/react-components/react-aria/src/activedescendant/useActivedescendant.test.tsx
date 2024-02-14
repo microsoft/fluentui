@@ -184,6 +184,18 @@ describe('useActivedescendant', () => {
     expect(getByRole('button')).toHaveActiveDescendant(expectedOption);
   });
 
+  it('should find element and focus it starting from', () => {
+    const expectedOption = 'option-3';
+    const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+    const { getByRole } = render(<Test imperativeRef={imperativeRef} />);
+
+    const res = imperativeRef.current?.find(id => document.getElementById(id)?.getAttribute('role') === 'option', {
+      startFrom: 'option-3',
+    });
+    expect(res).toBe(expectedOption);
+    expect(getByRole('button')).toHaveActiveDescendant(expectedOption);
+  });
+
   describe('passive', () => {
     it('should return first option', () => {
       const expecetdOption = 'option-1';
@@ -235,6 +247,20 @@ describe('useActivedescendant', () => {
 
       imperativeRef.current?.first();
       const res = imperativeRef.current?.find(id => id === expectedOption, { passive: true });
+      expect(res).toBe(expectedOption);
+      expect(getByRole('button')).toHaveActiveDescendant('option-1');
+    });
+
+    it('should find element starting from', () => {
+      const expectedOption = 'option-3';
+      const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+      const { getByRole } = render(<Test imperativeRef={imperativeRef} />);
+
+      imperativeRef.current?.first();
+      const res = imperativeRef.current?.find(id => document.getElementById(id)?.getAttribute('role') === 'option', {
+        startFrom: 'option-3',
+        passive: true,
+      });
       expect(res).toBe(expectedOption);
       expect(getByRole('button')).toHaveActiveDescendant('option-1');
     });

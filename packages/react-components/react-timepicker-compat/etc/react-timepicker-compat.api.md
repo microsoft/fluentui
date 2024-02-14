@@ -26,7 +26,7 @@ export const timePickerClassNames: SlotClassNames<TimePickerSlots>;
 export type TimePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';
 
 // @public
-export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> & Pick<ComboboxProps, 'appearance' | 'defaultOpen' | 'defaultValue' | 'inlinePopup' | 'onOpenChange' | 'open' | 'placeholder' | 'positioning' | 'size' | 'value' | 'mountNode' | 'freeform'> & TimeFormatOptions & {
+export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> & Pick<ComboboxProps, 'appearance' | 'clearable' | 'defaultOpen' | 'defaultValue' | 'inlinePopup' | 'onOpenChange' | 'open' | 'placeholder' | 'positioning' | 'size' | 'value' | 'mountNode' | 'freeform'> & TimeFormatOptions & {
     startHour?: Hour;
     endHour?: Hour;
     increment?: number;
@@ -39,7 +39,7 @@ export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input
 };
 
 // @public (undocumented)
-export type TimePickerSlots = Omit<ComboboxSlots, 'clearIcon'>;
+export type TimePickerSlots = ComboboxSlots;
 
 // @public
 export type TimePickerState = ComboboxState & Required<Pick<TimePickerProps, 'freeform' | 'parseTimeStringToDate'>> & {

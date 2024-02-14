@@ -20,7 +20,7 @@ export type AtomProps = {
  *
  * @param motion - A motion definition.
  */
-export function createAtom(motion: AtomMotion | AtomMotionFn) {
+export function createMotionComponent(motion: AtomMotion | AtomMotionFn) {
   const Atom: React.FC<AtomProps> = props => {
     const { children, iterations = 1, imperativeRef } = props;
 
