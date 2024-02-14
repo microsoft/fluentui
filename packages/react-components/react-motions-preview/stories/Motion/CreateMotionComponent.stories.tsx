@@ -1,9 +1,9 @@
 import { makeStyles, shorthands, tokens, Label, Slider, useId } from '@fluentui/react-components';
-import { atom, createAtom } from '@fluentui/react-motions-preview';
+import { createMotionComponent, motionTokens } from '@fluentui/react-motions-preview';
 import type { MotionImperativeRef } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
-import description from './CreateAtom.stories.md';
+import description from './CreateMotionComponent.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -53,10 +53,16 @@ const useClasses = makeStyles({
   },
 });
 
-const FadeEnter = createAtom(atom.fade.enterUltraSlow());
-const FadeExit = createAtom(atom.fade.exitUltraSlow());
+const FadeEnter = createMotionComponent({
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  duration: motionTokens.durationSlow,
+});
+const FadeExit = createMotionComponent({
+  keyframes: [{ opacity: 1 }, { opacity: 0 }],
+  duration: motionTokens.durationSlow,
+});
 
-export const CreateAtom = () => {
+export const CreateMotionComponent = () => {
   const classes = useClasses();
   const sliderId = useId();
 
@@ -65,6 +71,8 @@ export const CreateAtom = () => {
 
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
 
+  // Heads up!
+  // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
   React.useEffect(() => {
     motionEnterRef.current?.setPlaybackRate(playbackRate / 100);
     motionExitRef.current?.setPlaybackRate(playbackRate / 100);
@@ -109,7 +117,7 @@ export const CreateAtom = () => {
   );
 };
 
-CreateAtom.parameters = {
+CreateMotionComponent.parameters = {
   docs: {
     description: {
       story: description,

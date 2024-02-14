@@ -162,7 +162,7 @@ const useStyles = makeStyles({
 });
 
 /** Applies style classnames to slots */
-export const useMenuItemStyles_unstable = (state: MenuItemState) => {
+export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState => {
   const styles = useStyles();
   const rootBaseStyles = useRootBaseStyles();
   const contentBaseStyles = useContentBaseStyles();
@@ -203,5 +203,8 @@ export const useMenuItemStyles_unstable = (state: MenuItemState) => {
       state.submenuIndicator.className,
     );
   }
+
   useCheckmarkStyles_unstable(state as MenuItemCheckboxState);
+
+  return state;
 };

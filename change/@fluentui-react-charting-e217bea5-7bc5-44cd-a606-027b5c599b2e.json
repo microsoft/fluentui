@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixing codepen issue for charts not visible",
-  "packageName": "@fluentui/react-charting",
-  "email": "srmukher@microsoft.com",
-  "dependentChangeType": "patch"
-}
