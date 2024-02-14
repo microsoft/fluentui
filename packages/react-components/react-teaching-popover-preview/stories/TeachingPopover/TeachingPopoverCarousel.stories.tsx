@@ -11,7 +11,8 @@ import {
   TeachingPopoverTrigger,
 } from '@fluentui/react-teaching-popover-preview';
 import type { TeachingPopoverProps } from '@fluentui/react-teaching-popover-preview';
-import SwapImage from '../../etc/images/swapImage.png';
+
+const SwapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 
 const ExampleContent = (index: number) => {
   return (
