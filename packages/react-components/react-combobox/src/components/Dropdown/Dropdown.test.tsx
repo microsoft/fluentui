@@ -34,6 +34,9 @@ describe('Dropdown', () => {
           },
         },
       ],
+      'consistent-callback-args': {
+        legacyCallbacks: ['onOpenChange', 'onOptionSelect'],
+      },
     },
   });
 

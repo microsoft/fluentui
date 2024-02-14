@@ -2,6 +2,51 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 12 Feb 2024 07:25:24 GMT",
+      "tag": "@fluentui/react_v8.115.6",
+      "version": "8.115.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ce796ee773711e0170623d56388b78ed4893a038",
+            "comment": "fix: Datepicker with input renders semantic button for voice control"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Feb 2024 07:26:18 GMT",
+      "tag": "@fluentui/react_v8.115.5",
+      "version": "8.115.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "cd1e26c488d7290d6ffa11eebdda50bbbe19d3aa",
+            "comment": "Fix: Enable click events on coachmark for mobile & additional entry points on desktop (currently requires mouse movement only)"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Feb 2024 07:27:39 GMT",
+      "tag": "@fluentui/react_v8.115.4",
+      "version": "8.115.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "5aefa438776a47278b09f5073149bb94fb14c044",
+            "comment": "fix: Correctly calculating height of Callout aligning to the top and covering target."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 Jan 2024 07:27:56 GMT",
       "tag": "@fluentui/react_v8.115.3",
       "version": "8.115.3",

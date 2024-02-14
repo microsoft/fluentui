@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Deprecate consistent-callback-args test",
+  "packageName": "@fluentui/react-conformance",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: DatePicker renders a semantic button for voice control",
+  "packageName": "@fluentui/react-datepicker-compat",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

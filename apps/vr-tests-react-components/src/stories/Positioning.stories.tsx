@@ -1189,6 +1189,36 @@ const PositioningEndEvent = () => {
   );
 };
 
+const TargetDisplayNone = () => {
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
+  const { targetRef, containerRef } = usePositioning({
+    positioningRef,
+  });
+
+  const [visible, setVisible] = React.useState(true);
+
+  return (
+    <>
+      <div style={{ display: 'inline-block', width: 120, height: 30, border: '1px dashed green' }}>
+        <button
+          id="target"
+          ref={targetRef}
+          style={{ width: 120, height: 30, display: visible ? undefined : 'none' }}
+          onClick={() => setVisible(false)}
+        >
+          remove me
+        </button>
+      </div>
+      <div
+        ref={containerRef}
+        style={{ border: '2px solid blue', padding: 20, backgroundColor: 'white', boxSizing: 'border-box' }}
+      >
+        Should stay positioned to dashed green box
+      </div>
+    </>
+  );
+};
+
 storiesOf('Positioning', module)
   .addDecorator(story => (
     <div
@@ -1276,6 +1306,11 @@ storiesOf('Positioning', module)
   .addStory('Positioning end', () => (
     <StoryWright steps={new Steps().click('#target').snapshot('updated 2 times').end()}>
       <PositioningEndEvent />
+    </StoryWright>
+  ))
+  .addStory('Target display none', () => (
+    <StoryWright steps={new Steps().click('#target').snapshot('target display: none').end()}>
+      <TargetDisplayNone />
     </StoryWright>
   ));
 

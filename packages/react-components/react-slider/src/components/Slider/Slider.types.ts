@@ -94,6 +94,7 @@ export type SliderProps = Omit<
   /**
    * Triggers a callback when the value has been changed. This will be called on every individual step.
    */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
 };
 
