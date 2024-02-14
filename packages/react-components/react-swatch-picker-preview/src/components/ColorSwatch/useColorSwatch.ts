@@ -38,7 +38,7 @@ export const useColorSwatch_unstable = (
       getIntrinsicElementProps('button', {
         ref,
         ...props,
-        role: props.role ?? _role,
+        role: props.role ?? 'radio',
         tabIndex: 0,
         'aria-selected': selected,
         onClick,
