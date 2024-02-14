@@ -1,11 +1,24 @@
 import * as React from 'react';
+import { makeStyles, shorthands } from '@fluentui/react-components';
 import { SwatchPicker, ColorSwatch, SwatchPickerSelectEventHandler } from '@fluentui/react-swatch-picker-preview';
+
+const useStyles = makeStyles({
+  example: {
+    width: '100px',
+    height: '100px',
+    ...shorthands.border('1px', 'solid', '#ccc'),
+    ...shorthands.margin('20px', '0'),
+  },
+});
 
 export const Default = () => {
   const [selectedValue, setSelectedValue] = React.useState('#fff');
   const handleSelect: SwatchPickerSelectEventHandler = (_, data) => {
     setSelectedValue(data.selectedValue);
   };
+
+  const styles = useStyles();
+
   return (
     <>
       <SwatchPicker aria-label="SwatchPicker default" selectedValue={selectedColor} onSelectionChange={handleSelect}>
@@ -20,12 +33,9 @@ export const Default = () => {
         <ColorSwatch color="#712F9E" value="#712F9E" aria-label="purple" role="radio" />
       </SwatchPicker>
       <div
+        className={styles.example}
         style={{
-          width: '100px',
-          height: '100px',
           backgroundColor: selectedColor,
-          border: '1px solid #ccc',
-          marginTop: 20,
         }}
       />
     </>

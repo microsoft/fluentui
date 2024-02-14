@@ -44,7 +44,7 @@ export const useSwatchPicker_unstable = <T>(
       getIntrinsicElementProps('div', {
         ref,
         ...rest,
-        role: 'radiogroup',
+        role: role ?? 'radiogroup',
         ...focusAttributes,
       }),
       { elementType: 'div' },

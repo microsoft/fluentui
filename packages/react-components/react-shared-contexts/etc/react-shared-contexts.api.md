@@ -156,8 +156,6 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
     useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
     useTimePickerCompatStyles_unstable: CustomStyleHook;
-    useSwatchPickerStyles_unstable: CustomStyleHook;
-    useColorSwatchStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @public (undocumented)
@@ -283,8 +281,6 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
     useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
     useTimePickerCompatStyles_unstable: CustomStyleHook;
-    useSwatchPickerStyles_unstable: CustomStyleHook;
-    useColorSwatchStyles_unstable: CustomStyleHook;
 }>;
 
 // @internal (undocumented)
@@ -410,8 +406,6 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
     useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
     useTimePickerCompatStyles_unstable: CustomStyleHook;
-    useSwatchPickerStyles_unstable: CustomStyleHook;
-    useColorSwatchStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @internal (undocumented)

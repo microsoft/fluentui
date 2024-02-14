@@ -28,8 +28,6 @@ export const useColorSwatch_unstable = (
     requestSelectionChange({ event, selectedValue: value }),
   );
 
-  const _role = 'radio';
-
   const state: ColorSwatchState = {
     components: {
       root: 'button',

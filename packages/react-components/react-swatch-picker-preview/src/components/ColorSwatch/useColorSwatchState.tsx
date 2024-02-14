@@ -5,7 +5,7 @@ import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
 const { swatchColor } = swatchCSSVars;
 
 export const useColorSwatchState_unstable = (state: ColorSwatchState, props: ColorSwatchProps) => {
-  const { color = '#000' } = props;
+  const { color } = props;
 
   const rootVariables = {
     [swatchColor]: color,
