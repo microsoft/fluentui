@@ -1,6 +1,14 @@
 import * as React from 'react';
-import { SearchBox } from '@fluentui/react-components';
-import { Button, ButtonProps, Field, makeStyles, shorthands, Text, tokens } from '@fluentui/react-components';
+import {
+  Button,
+  ButtonProps,
+  Field,
+  makeStyles,
+  SearchBox,
+  shorthands,
+  Text,
+  tokens,
+} from '@fluentui/react-components';
 import { PersonRegular, MicRegular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({

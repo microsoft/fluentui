@@ -1616,4 +1616,4 @@ export {
   useSearchBoxStyles_unstable,
   useSearchBox_unstable,
 } from '@fluentui/react-search';
-export type { SearchBoxProps, SearchBoxSlots, SearchBoxState } from '@fluentui/react-search';
+export type { SearchBoxChangeEvent, SearchBoxProps, SearchBoxSlots, SearchBoxState } from '@fluentui/react-search';
