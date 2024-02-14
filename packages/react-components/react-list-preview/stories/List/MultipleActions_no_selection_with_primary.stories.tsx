@@ -37,7 +37,7 @@ const useStyles = makeStyles({
     ...shorthands.gap('16px'),
     maxWidth: '300px',
   },
-  listItem: { display: 'grid', ...shorthands.padding('8px'), cursor: 'default' },
+  listItem: { display: 'grid', ...shorthands.padding('8px') },
 
   caption: {
     color: tokens.colorNeutralForeground3,
@@ -70,7 +70,7 @@ const useStyles = makeStyles({
   },
 });
 
-const CardExample = (props: CardProps & { value: string; selected?: boolean }) => {
+const CardExample = (props: CardProps & { value: string }) => {
   const listItemStyles = useListItemRootStyles();
   const styles = useStyles();
   const { value } = props;
@@ -79,12 +79,8 @@ const CardExample = (props: CardProps & { value: string; selected?: boolean }) =
     <ListItem
       value={props.value}
       className={mergeClasses(listItemStyles, styles.listItem)}
-      checkmark={{ className: styles.checkmark }}
       aria-label={value}
-      role="listitem"
-      onClick={e => {
-        e.preventDefault();
-      }}
+      onClick={() => alert('Hello!')}
     >
       <div style={{ gridArea: 'preview', overflow: 'hidden' }}>
         <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />
@@ -159,47 +155,29 @@ const CardExample = (props: CardProps & { value: string; selected?: boolean }) =
   );
 };
 
-export const MultipleActionsNoPrimary = (props: Partial<ListProps>) => {
+export const MultipleActionsNoSelectionWithPrimary = (props: Partial<ListProps>) => {
   const classes = useStyles();
 
-  const [selectedItems, setSelectedItems] = React.useState<Array<string | number>>([]);
-
   return (
-    <List
-      className={classes.list}
-      focusableItems
-      role="list"
-      selectable
-      aria-orientation="vertical"
-      onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
-      selectionMode="multiselect"
-      aria-setsize={9}
-    >
-      <CardExample value="card-1" selected={selectedItems.includes('card-1')} />
-      <CardExample value="card-2" selected={selectedItems.includes('card-2')} />
-      <CardExample value="card-3" selected={selectedItems.includes('card-3')} />
-      <CardExample value="card-4" selected={selectedItems.includes('card-4')} />
-      <CardExample value="card-5" selected={selectedItems.includes('card-5')} />
-      <CardExample value="card-6" selected={selectedItems.includes('card-6')} />
-      <CardExample value="card-7" selected={selectedItems.includes('card-7')} />
-      <CardExample value="card-8" selected={selectedItems.includes('card-8')} />
-      <CardExample value="card-9" selected={selectedItems.includes('card-9')} />
+    <List layout="grid" className={classes.list} focusableItems aria-orientation="vertical">
+      <CardExample value="card-1" />
+      <CardExample value="card-2" />
+      <CardExample value="card-3" />
+      <CardExample value="card-4" />
+      <CardExample value="card-5" />
+      <CardExample value="card-6" />
+      <CardExample value="card-7" />
+      <CardExample value="card-8" />
+      <CardExample value="card-9" />
     </List>
   );
 };
 
-MultipleActionsNoPrimary.parameters = {
+MultipleActionsNoSelectionWithPrimary.parameters = {
   docs: {
     description: {
       story: [
-        "Base item with multiple actions. Doesn't have a primary action on the list item, but supports selection by checking the checkbox.",
-        '',
-        'The roles in this example are `list` and `listitem`, inherited from the ul/li tags used. List items themselves are focusable.',
-        '',
-        'When the selection is enabled, the list item default click behavior is to toggle that selection. To remove ',
-        'this behavior, we need to add a click handler to the list item that prevents the default behavior. ',
-        '',
-        'Selection by clicking the checkbox still works and is properly narrated by screen readers.',
+        "Base item with multiple actions. Doesn't support selection, but the list items have another primary action.",
       ].join('\n'),
     },
   },

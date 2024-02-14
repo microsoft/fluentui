@@ -1,5 +1,8 @@
 # Accessibility of Lists on the web: why we can't have nice things
 
+Rev. 1 - Initial draft
+Rev. 2 - Added examples links, made conclusions in italic, explained bahavior for Space and Enter on lists with a primary action, some wording changed
+
 Accessibility in browsers is hard in general. When it comes to modern web applications with complex UIs, that statement is more true then ever.
 
 And then there are Lists. For some reason, there is not a single aria role that would support proper position narration, selection narration, and complex widget elements with secondary actions.
@@ -32,6 +35,8 @@ In the following section, I will go through the each funcional requirement and d
 ## Analysis
 
 ### Single action lists
+
+[example](https://fluentuipr.z22.web.core.windows.net/pull/29760/public-docsite-v9/storybook/iframe.html?viewMode=docs&id=preview-components-list--default#single-action)
 
 List with a single action is a collection of items with common action, specific to each item. One example would be a list of people, where clicking on a person will open a popup with details.
 
@@ -66,7 +71,7 @@ We have multiple aria roles we can explore and see if any of those fill all of o
   - This can be **worked around** by using `aria-roledescription`
 - Selection: N/A
 
-`listitem` role on it's own is not enough co communicate that there is an action that can be triggered by Enter, unless this fact is explicitely communicated in a `aria-label` or `aria-roledescription`.
+_`listitem` role on it's own is not enough co communicate that there is an action that can be triggered by Enter, unless this fact is explicitely communicated in a `aria-label` or `aria-roledescription`._
 
 ##### Menu/Menuitem
 
@@ -80,13 +85,13 @@ We have multiple aria roles we can explore and see if any of those fill all of o
   - "Menu" is not semantically correct for our example use case. List is different from a Menu in a way that in a List, each List item is of the same "category" (list of people, emails, conversations, applications) and each list item action triggers the same action, while in a Menu the user expects each option to do something else.
   - Creates a communication barrier between the sighted user and user relying on a screen reader. If a sighted user instructs visually impaired user to go on "the list of people", they would only be able to find "a menu".
 
-While the `menuitem` role seems to work, its semantically different from a list enough, that it would add confusion and noise.
+_While the `menuitem` role seems to work, its semantically different from a list enough, that it would add confusion and noise._
 
 #### Outcome
 
 Seems like for our "simple" use case of a single action in a list item, we don't have a perfect solution. Each of the three suggested variants have their cons. While some of the downsides of certain solutions are fundamental (confusion between listitem and menuitem), others can be worked around.
 
-My suggestion for this usecase would to **make the List Item focusable, use `list` and `listitem` roles and add a translated string of "button" as `aria-roledescription` when an action on the list Item is present**.
+_My suggestion for this usecase would to **make the List Item focusable, use `list` and `listitem` roles and add a translated string of "button" as `aria-roledescription` when an action on the list Item is present**._
 
 This way we make sure that the user knows they are in a List, the position is properly announced and a translated "button" role description is present, making it clear you can press "Enter" to trigger it.
 
@@ -109,6 +114,8 @@ Voice Over (using just arrow keys):
 
 ### Single action lists - selection
 
+[Visit example](https://fluentuipr.z22.web.core.windows.net/pull/29760/public-docsite-v9/storybook/iframe.html?viewMode=docs&id=preview-components-list--default#single-action-selection)
+
 List with a single action where the action is toggling the selection. One example would be a list of people to add to a call, where clicking on a row/person will add them to the selection. There is no other action that can be triggered on the list items.
 
 The whole list item can be focused and the selection can be toggled with **spacebar**. Also, the whole item is clickable with a mouse and triggers the same action.
@@ -124,11 +131,13 @@ Counter-intuitively, this case is more straightforward to handle than the previo
 - Selection: ✅
   - The `listbox`/`option` role support `aria-selected` attribute which is properly narrated as it changes.
 
-This scenario is straightforward, there is an aria role which fits perfectly in our use case. It has one downside, the `option` role is [always presentational](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/option_role#all_descendants_are_presentational), which means that `listbox` with `option` cannot be used in a scenario where there are other actions inside of the list item, but more on that later.
+_This scenario is straightforward, there is an aria role which fits perfectly in our use case. It has one downside, the `option` role is [always presentational](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/option_role#all_descendants_are_presentational), which means that `listbox` with `option` cannot be used in a scenario where there are other actions inside of the list item, but more on that later._
 
 ### List with multiple actions - no primary action
 
-When multiple actions are available in a list item, things become a bit more complicated, as some aria roles are not equipped to handle that at all (like `option`).
+[example](https://fluentuipr.z22.web.core.windows.net/pull/29760/public-docsite-v9/storybook/index.html?path=/docs/preview-components-list--default#multiple-actions-no-primary-no-selection)
+
+When multiple actions are available in a list item, things become a bit more complicated, as some aria roles are not equipped to handle that at all (like `option` because of it's inherent property of [all descendants being presentational](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/option_role#all_descendants_are_presentational)).
 
 For the following scenarios we can establish some basic keyboard navigation that should be supported regardless of any a11y role we add.
 
@@ -152,7 +161,7 @@ In general, we have 2 options for this scenario:
 - Other considerations:
   - Would the user expect to click right arrow key to get inside the list item?
 
-For this scenario, List/ListItem seems like a good choice, since we don't need support for selection or actionable rows (list items).
+_For this scenario, List/ListItem seems like a good choice, since we don't need support for selection or actionable rows (list items)._
 
 #### Grid / Row / Gridcell
 
@@ -163,18 +172,27 @@ I'm writing about it here for completion and to contrast it with the listitem ro
 In grid, each list item is of role `row` and each actionable element inside should be in its own `cell` role element.
 
 - Position: ❌
-
   - The position is not properly narrated, we get `row` but not `row x of y`
-
 - Actionable: N/A
 - Selection: N/A
-
 - Other considerations: ⚠️
   - The nature of `grid`/`row`/`gridcell` roles forces the developers to actually stick to this strict HTML layout. A cell should be wrapping actionable element, but it should be a direct child of the `row`, preventing users from building more complex widgets with custom HTML structure.
 
 ### List with multiple actions - with selection
 
+[example](https://fluentuipr.z22.web.core.windows.net/pull/29760/public-docsite-v9/storybook/index.html?path=/docs/preview-components-list--default#multiple-actions-primary-selection)
+
 Things become a bit more complicated when selection is involved, as we need the proper a11y announcements when the selection state is changed. This is not supported for the `listitem` role, which we deemed perfect for complex list without selection. Even if `aria-selected` is added to a `listitem`, the screen readers just ignore that property (since it's not valid for `listitem` role).
+
+When the list supports selection, the main action of the list item is **to toggle the selection** by default.
+
+**Left mouse button** always triggers _onClick_, which toggles the selection, if enabled. A custom action can be triggered on click instead, by passing a custom `onClick` handler to the `ListItem` component and calling `preventDefault()` on the event. See how this works [here](https://fluentuipr.z22.web.core.windows.net/pull/29760/public-docsite-v9/storybook/index.html?path=/docs/preview-components-list--default#multiple-actions-different-primary).
+
+**Spacebar** on the `ListItem` always toggles the selection.
+
+**Enter** on the `ListItem` triggers the main action, which can be changed by passing the `onClick` handler, i.e. by default it triggers selection, but this behavior can be overriden (by changing the onClick handler).
+
+Both keys behavior can be changed by passing the `onKeyDown` handler and preventing teh default by calling `preventDefault()` on the event. Please note that the uncontrolled selection can no longer be utilized in this case and you have to take control.
 
 #### Listbox / option
 
@@ -188,15 +206,17 @@ While this role technically works on Windows using the screen reader Focus mode,
   - While we get announcement for `row` as "row", we don't get the row number `row x of y` in any of the screen readers tested. This is a big limitation of this role, could be a chromium bug.
   - This _can_ be worked around from the user world by passing the order as part of the `aria-label`. This is not without it's downsides though.
 - Actionable: ✅
-  - Since the rows can be selected, it is reasonable to expect that the users would trigger the action on the list item (row).
+  - Since the rows can be selected, it is reasonable to expect that the users understand that they can trigger the action on the list item (row).
 - Selection: ✅
   - Rows can be selected, and the selection is properly announced when it changes.
 - Other considerations: ⚠️
   - As mentioned previously, when using this role, it is importand that the HTML structure is precisely `grid > row > gridcell > actionable element`. For some complex layouts, this may not be always easy / possible to do.
 
-While grid role puts some constrain on the DOM structure to work properly, it is the only accessibility role I found that supports `aria-selected` and allows complex widgets inside.
+_While grid role puts some constrain on the DOM structure to work properly, it is the only accessibility role I found that supports `aria-selected` and allows complex widgets inside._
 
 ### List with multiple actions, without selection
+
+[example](https://fluentuipr.z22.web.core.windows.net/pull/29760/public-docsite-v9/storybook/index.html?path=/docs/preview-components-list--default#multiple-actions-no-selection-with-primary)
 
 When no selection is involved in the equation, we don't have to limit ourselves to using a11y roles that support `aria-selected`, which makes things a bit easier.
 
@@ -218,4 +238,4 @@ When no selection is involved in the equation, we don't have to limit ourselves 
   - Action can be put directly on the List Item. Discoverability might be a small issue again, but a context, updated label or supporting aria attributes like `aria-roledescription` can easily solve that
 - Selection: N/A
 
-While grid would technically work for this scenario, there are some downsides. **List and Listitem roles are the clear winners in this case**.
+_While grid would technically work for this scenario, there are some downsides. **List and Listitem roles are the clear winners in this case**. For consistency however we might want to go with grid._

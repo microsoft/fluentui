@@ -8,7 +8,7 @@ import {
   tokens,
   SelectionItemId,
 } from '@fluentui/react-components';
-import { Mic16Regular, SpeakerMuteRegular } from '@fluentui/react-icons';
+import { Mic16Regular } from '@fluentui/react-icons';
 import { List, ListItem } from '@fluentui/react-list-preview';
 
 import * as React from 'react';
