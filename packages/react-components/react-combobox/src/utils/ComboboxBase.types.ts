@@ -87,6 +87,7 @@ export type ComboboxBaseState = Required<
   SelectionState & {
     /**
      * @deprecated - no longer used internally
+     * @see activeDescendantController.active() instead
      */
     activeOption?: OptionValue;
 
@@ -103,6 +104,7 @@ export type ComboboxBaseState = Required<
 
     /**
      * @deprecated - no longer used internally
+     * @see activeDescendantController.focus(id) instead
      */
     setActiveOption: React.Dispatch<React.SetStateAction<OptionValue | undefined>>;
 

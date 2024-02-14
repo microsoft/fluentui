@@ -23,6 +23,7 @@ export type ListboxState = ComponentState<ListboxSlots> &
   SelectionState & {
     /**
      * @deprecated - no longer used internally
+     * @see activeDescendantController.active()
      */
     activeOption?: OptionValue;
 
@@ -33,6 +34,7 @@ export type ListboxState = ComponentState<ListboxSlots> &
 
     /**
      * @deprecated - no longer used internally
+     * @see activeDescendantController.focus(id)
      */
     setActiveOption(option?: OptionValue): void;
 

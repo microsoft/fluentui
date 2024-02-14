@@ -32,7 +32,32 @@ export const useComboboxBaseState = (
   const optionCollection = useOptionCollection();
   const { getOptionsMatchingValue } = optionCollection;
 
-  const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
+  const { getOptionById } = optionCollection;
+  const getActiveOption = React.useCallback(() => {
+    const activeOptionId = activeDescendantController.active();
+    return activeOptionId ? getOptionById(activeOptionId) : undefined;
+  }, [activeDescendantController, getOptionById]);
+
+  // Keeping some kind of backwards compatible functionality here
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const UNSAFE_activeOption = getActiveOption();
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const UNSAFE_setActiveOption = React.useCallback(
+    (option: OptionValue | undefined | ((prev: OptionValue | undefined) => OptionValue | undefined)) => {
+      let nextOption: OptionValue | undefined = undefined;
+      if (typeof option === 'function') {
+        const activeOption = getActiveOption();
+        nextOption = option(activeOption);
+      }
+
+      if (nextOption) {
+        activeDescendantController.focus(nextOption.id);
+      } else {
+        activeDescendantController.blur();
+      }
+    },
+    [activeDescendantController, getActiveOption],
+  );
 
   // track whether keyboard focus outline should be shown
   // tabster/keyborg doesn't work here, since the actual keyboard focus target doesn't move
@@ -127,7 +152,7 @@ export const useComboboxBaseState = (
   return {
     ...optionCollection,
     ...selectionState,
-    activeOption,
+    activeOption: UNSAFE_activeOption,
     appearance,
     clearable,
     focusVisible,
@@ -136,7 +161,7 @@ export const useComboboxBaseState = (
     inlinePopup,
     mountNode,
     open,
-    setActiveOption,
+    setActiveOption: UNSAFE_setActiveOption,
     setFocusVisible,
     setHasFocus,
     setOpen,

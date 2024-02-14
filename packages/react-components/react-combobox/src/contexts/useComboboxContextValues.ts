@@ -5,18 +5,30 @@ import { ComboboxBaseContextValues, ComboboxBaseState } from '../utils/ComboboxB
 export function useComboboxContextValues(
   state: ComboboxBaseState & { activeDescendantController: ActiveDescendantImperativeRef },
 ): ComboboxBaseContextValues {
-  const { appearance, open, registerOption, selectedOptions, selectOption, setOpen, size, activeDescendantController } =
-    state;
+  const {
+    appearance,
+    open,
+    registerOption,
+    selectedOptions,
+    selectOption,
+    setOpen,
+    size,
+    activeDescendantController,
+    // eslint-disable-next-line @typescript-eslint/naming-convention, deprecation/deprecation
+    activeOption: UNSAFE_activeOption,
+    // eslint-disable-next-line @typescript-eslint/naming-convention, deprecation/deprecation
+    setActiveOption: UNSAFE_setActiveOption,
+  } = state;
 
   const combobox = {
-    activeOption: undefined,
+    activeOption: UNSAFE_activeOption,
     appearance,
     focusVisible: false,
     open,
     registerOption,
     selectedOptions,
     selectOption,
-    setActiveOption: () => null,
+    setActiveOption: UNSAFE_setActiveOption,
     setOpen,
     size,
   };
