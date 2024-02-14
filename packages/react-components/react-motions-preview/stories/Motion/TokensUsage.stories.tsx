@@ -1,6 +1,5 @@
 import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
 import { createAtom } from '@fluentui/react-motions-preview';
-import type { AtomMotion } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
 import description from './TokensUsage.stories.md';
@@ -32,15 +31,13 @@ const useClasses = makeStyles({
   },
 });
 
-const dropInMotion: AtomMotion = {
+const BackgroundChange = createAtom({
   keyframes: [
     { backgroundColor: tokens.colorStatusDangerBackground3 },
     { backgroundColor: tokens.colorStatusSuccessBackground3 },
   ],
   duration: 3000,
-};
-
-const BackgroundChange = createAtom(dropInMotion);
+});
 
 export const TokensUsage = () => {
   const classes = useClasses();
