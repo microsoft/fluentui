@@ -1,3 +1,5 @@
+// eslint-disable-next-line
+// @ts-nocheck
 import { tests } from '@tensile-perf/web-components';
 import { webLightTheme } from '@fluentui/tokens';
 import { setTheme } from '@fluentui/web-components';

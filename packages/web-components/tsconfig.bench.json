@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "moduleResolution": "Node16",
-    "noImplicitAny": false,
-    "outDir": "dist/esm"
-  },
-  "include": ["./src/**/*.bench.ts", "./src/utils/benchmark-wrapper.ts"]
-}
