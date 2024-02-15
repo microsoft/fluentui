@@ -2,9 +2,9 @@ import * as React from 'react';
 import { SwatchPicker, ColorSwatch, SwatchPickerSelectEventHandler } from '@fluentui/react-swatch-picker-preview';
 
 export const Default = () => {
-  const [selectedColor, setSelectedColor] = React.useState('#fff');
+  const [selectedValue, setSelectedValue] = React.useState('#fff');
   const handleSelect: SwatchPickerSelectEventHandler = (_, data) => {
-    setSelectedColor(data.selectedValue);
+    setSelectedValue(data.selectedValue);
   };
   return (
     <>
