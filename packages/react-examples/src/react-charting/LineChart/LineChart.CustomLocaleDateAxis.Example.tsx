@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { IChartProps, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
-import * as d3 from 'd3-fetch';
 
 interface ILineChartBasicState {
   width: number;
@@ -40,9 +39,8 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
   };
 
   private _getCustomLocale = () => {
-    d3.json('https://unpkg.com/d3-time-format@2/locale/it-IT.json').then(locale =>
-      this.setState({ customLocale: locale }),
-    );
+    const locale = require('d3-time-format/locale/it-IT.json');
+    this.setState({ customLocale: locale });
   };
 
   private _basicExample(): JSX.Element {

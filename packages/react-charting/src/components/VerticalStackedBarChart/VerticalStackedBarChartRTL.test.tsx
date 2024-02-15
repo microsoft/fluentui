@@ -1,16 +1,32 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
-import { ThemeProvider } from '@fluentui/react';
+import { ThemeProvider, resetIds } from '@fluentui/react';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IVSChartDataPoint, IVerticalStackedChartProps } from '../../index';
 import { VerticalStackedBarChart } from './VerticalStackedBarChart';
-import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import {
+  forEachTimezone,
+  getByClass,
+  getById,
+  isTimezoneSet,
+  testWithWait,
+  testWithoutWait,
+} from '../../utilities/TestUtility.test';
 import { VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
 import * as utils from '@fluentui/react/lib/Utilities';
 import { chartPoints2VSBC, chartPointsVSBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
+const { Timezone } = require('../../../scripts/constants');
+
 expect.extend(toHaveNoViolations);
+
+beforeEach(() => {
+  // When adding a new snapshot test, it's observed that other snapshots may fail due to
+  // components sharing a common global counter for IDs. To prevent this from happening,
+  // we should reset the IDs before each test execution.
+  resetIds();
+});
 
 const firstChartPoints: IVSChartDataPoint[] = [
   { legend: 'Metadata1', data: 2, color: DefaultPalette.blue },
@@ -49,6 +65,23 @@ const simplePoints = [
   },
 ];
 
+const datePoints = [
+  {
+    chartData: firstChartPoints,
+    xAxisPoint: new Date('2019/05/01'),
+    lineData: [{ y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+  },
+  {
+    chartData: secondChartPoints,
+    xAxisPoint: new Date('2019/09/01'),
+    lineData: [{ y: 41, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+  },
+  {
+    chartData: thirdChartPoints,
+    xAxisPoint: new Date('2020/03/01'),
+    lineData: [{ y: 100, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+  },
+];
 const simplePointsWithLine = [
   {
     chartData: firstChartPoints,
@@ -86,6 +119,72 @@ describe('Vertical stacked bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
+
+  testWithoutWait(
+    'Should render the vertical stacked bar chart with Date x-axis data',
+    VerticalStackedBarChart,
+    {
+      data: datePoints,
+      timeFormat: '%m/%d',
+      tickValues: [new Date('2019/05/01'), new Date('2019/09/01'), new Date('2020/03/01')],
+    },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
+  );
+
+  testWithoutWait(
+    'Should render the vertical stacked bar chart with Date x-axis data and no tick values',
+    VerticalStackedBarChart,
+    {
+      data: datePoints,
+      timeFormat: '%m/%d',
+    },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
+  );
+
+  testWithoutWait(
+    'Should render the vertical stacked bar chart with Date x-axis data and no tick format',
+    VerticalStackedBarChart,
+    {
+      data: datePoints,
+      tickValues: [new Date('2019/05/01'), new Date('2019/09/01'), new Date('2020/03/01')],
+    },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
+  );
+
+  forEachTimezone((tzName, tzIdentifier) => {
+    testWithoutWait(
+      `Should render the vertical stacked bar chart with Date x-axis data in ${tzName} timezone`,
+      VerticalStackedBarChart,
+      {
+        data: datePoints,
+      },
+      container => {
+        // Assert
+        expect(container).toMatchSnapshot();
+      },
+      undefined,
+      undefined,
+      !isTimezoneSet(tzIdentifier),
+    );
+  });
 });
 
 describe('Vertical stacked bar chart - Subcomponent Line', () => {

@@ -25,12 +25,13 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone18"
+      data-focuszone-id="FocusZone15"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
         height="436"
-        id="sankeyChart17"
+        id="sankeyChart2"
         width="864"
       >
         <g
@@ -66,11 +67,11 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               </lineargradient>
             </defs>
             <path
-              aria-label="link from192.168.42.72to124.360.55.1with weight80"
+              aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
               d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link15"
+              id="link13"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -98,11 +99,11 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               </lineargradient>
             </defs>
             <path
-              aria-label="link from172.152.48.13to192.564.10.2with weight50"
+              aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
               d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link16"
+              id="link14"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -122,14 +123,14 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
               }
         >
           <g
-            id="nodeGElement5"
+            id="nodeGElement6"
           >
             <rect
-              aria-label="node192.168.42.72with weight80"
+              aria-label="node 192.168.42.72 with weight 80"
               data-is-focusable="true"
               fill="#757575"
               height="237.53846153846155"
-              id="nodeBar4"
+              id="nodeBar5"
               opacity="1"
               role="img"
               stroke="#4B3867"
@@ -162,7 +163,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar4-name"
+                  id="nodeBar5-name"
                   text-anchor="start"
                   x="48"
                   y="36"
@@ -189,7 +190,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
             id="nodeGElement8"
           >
             <rect
-              aria-label="node172.152.48.13with weight50"
+              aria-label="node 172.152.48.13 with weight 50"
               data-is-focusable="true"
               fill="#8764B8"
               height="148.46153846153845"
@@ -250,14 +251,14 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
             </g>
           </g>
           <g
-            id="nodeGElement11"
+            id="nodeGElement10"
           >
             <rect
-              aria-label="node124.360.55.1with weight80"
+              aria-label="node 124.360.55.1 with weight 80"
               data-is-focusable="true"
               fill="#757575"
               height="237.53846153846155"
-              id="nodeBar10"
+              id="nodeBar9"
               opacity="1"
               role="img"
               stroke="#4B3867"
@@ -290,7 +291,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar10-name"
+                  id="nodeBar9-name"
                   text-anchor="start"
                   x="739"
                   y="36"
@@ -314,14 +315,14 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
             </g>
           </g>
           <g
-            id="nodeGElement14"
+            id="nodeGElement12"
           >
             <rect
-              aria-label="node192.564.10.2with weight50"
+              aria-label="node 192.564.10.2 with weight 50"
               data-is-focusable="true"
               fill="#8764B8"
               height="148.46153846153845"
-              id="nodeBar13"
+              id="nodeBar11"
               opacity="1"
               role="img"
               stroke="#4B3867"
@@ -354,7 +355,7 @@ exports[`Sankey bar chart rendering Should render the Sankey chart with string n
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar13-name"
+                  id="nodeBar11-name"
                   text-anchor="start"
                   x="739"
                   y="281.53846153846155"
@@ -422,12 +423,13 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone40"
+        data-focuszone-id="FocusZone34"
+        data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
           focusable="false"
           height="436"
-          id="sankeyChart39"
+          id="sankeyChart21"
           width="864"
         >
           <g
@@ -446,7 +448,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
             <g>
               <defs>
                 <lineargradient
-                  id="gradient-link23-0"
+                  id="gradient-link20-0"
                   x1="0%"
                   x2="100%"
                   y1="0%"
@@ -463,11 +465,11 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 </lineargradient>
               </defs>
               <path
-                aria-label="link from192.168.42.72to124.360.55.1with weight80"
+                aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
                 d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
                 data-is-focusable="true"
                 fill-opacity="1"
-                id="link37"
+                id="link32"
                 role="img"
                 stroke="#757575"
                 stroke-opacity="1"
@@ -478,7 +480,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
             <g>
               <defs>
                 <lineargradient
-                  id="gradient-link23-1"
+                  id="gradient-link20-1"
                   x1="0%"
                   x2="100%"
                   y1="0%"
@@ -495,11 +497,11 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 </lineargradient>
               </defs>
               <path
-                aria-label="link from172.152.48.13to192.564.10.2with weight50"
+                aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
                 d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
                 data-is-focusable="true"
                 fill-opacity="1"
-                id="link38"
+                id="link33"
                 role="img"
                 stroke="#757575"
                 stroke-opacity="1"
@@ -519,14 +521,14 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 }
           >
             <g
-              id="nodeGElement27"
+              id="nodeGElement25"
             >
               <rect
-                aria-label="node192.168.42.72with weight80"
+                aria-label="node 192.168.42.72 with weight 80"
                 data-is-focusable="true"
                 fill="#757575"
                 height="237.53846153846155"
-                id="nodeBar26"
+                id="nodeBar24"
                 opacity="1"
                 role="img"
                 stroke="#4B3867"
@@ -535,6 +537,70 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 width="124"
                 x="48"
                 y="36"
+              />
+              <g
+                class=
+
+                    {
+                      margin-bottom: 4px;
+                      margin-left: 8px;
+                      margin-right: 8px;
+                      margin-top: 4px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                      fill: rgb(179, 179, 179);
+                    }
+              >
+                <g
+                  class="nodeName"
+                >
+                  <text
+                    aria-hidden="true"
+                    dx="0.4em"
+                    dy="1.2em"
+                    fill="#FFFFFF"
+                    font-size="10"
+                    font-weight="regular"
+                    id="nodeBar24-name"
+                    text-anchor="start"
+                    x="48"
+                    y="36"
+                  >
+                    192.168.42.72
+                  </text>
+                </g>
+                <text
+                  aria-hidden="true"
+                  dx="0.4em"
+                  dy="2em"
+                  fill="#FFFFFF"
+                  font-size="14"
+                  font-weight="bold"
+                  text-anchor="start"
+                  x="48"
+                  y="36"
+                >
+                  80
+                </text>
+              </g>
+            </g>
+            <g
+              id="nodeGElement27"
+            >
+              <rect
+                aria-label="node 172.152.48.13 with weight 50"
+                data-is-focusable="true"
+                fill="#8764B8"
+                height="148.46153846153845"
+                id="nodeBar26"
+                opacity="1"
+                role="img"
+                stroke="#4B3867"
+                stroke-width="2"
+                tabindex="-1"
+                width="124"
+                x="48"
+                y="281.53846153846155"
               />
               <g
                 class=
@@ -562,70 +628,6 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                     id="nodeBar26-name"
                     text-anchor="start"
                     x="48"
-                    y="36"
-                  >
-                    192.168.42.72
-                  </text>
-                </g>
-                <text
-                  aria-hidden="true"
-                  dx="0.4em"
-                  dy="2em"
-                  fill="#FFFFFF"
-                  font-size="14"
-                  font-weight="bold"
-                  text-anchor="start"
-                  x="48"
-                  y="36"
-                >
-                  80
-                </text>
-              </g>
-            </g>
-            <g
-              id="nodeGElement30"
-            >
-              <rect
-                aria-label="node172.152.48.13with weight50"
-                data-is-focusable="true"
-                fill="#8764B8"
-                height="148.46153846153845"
-                id="nodeBar29"
-                opacity="1"
-                role="img"
-                stroke="#4B3867"
-                stroke-width="2"
-                tabindex="-1"
-                width="124"
-                x="48"
-                y="281.53846153846155"
-              />
-              <g
-                class=
-
-                    {
-                      margin-bottom: 4px;
-                      margin-left: 8px;
-                      margin-right: 8px;
-                      margin-top: 4px;
-                    }
-                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                      fill: rgb(179, 179, 179);
-                    }
-              >
-                <g
-                  class="nodeName"
-                >
-                  <text
-                    aria-hidden="true"
-                    dx="0.4em"
-                    dy="1.2em"
-                    fill="#FFFFFF"
-                    font-size="10"
-                    font-weight="regular"
-                    id="nodeBar29-name"
-                    text-anchor="start"
-                    x="48"
                     y="281.53846153846155"
                   >
                     172.152.48.13
@@ -647,14 +649,14 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
               </g>
             </g>
             <g
-              id="nodeGElement33"
+              id="nodeGElement29"
             >
               <rect
-                aria-label="node124.360.55.1with weight80"
+                aria-label="node 124.360.55.1 with weight 80"
                 data-is-focusable="true"
                 fill="#757575"
                 height="237.53846153846155"
-                id="nodeBar32"
+                id="nodeBar28"
                 opacity="1"
                 role="img"
                 stroke="#4B3867"
@@ -687,7 +689,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                     fill="#FFFFFF"
                     font-size="10"
                     font-weight="regular"
-                    id="nodeBar32-name"
+                    id="nodeBar28-name"
                     text-anchor="start"
                     x="739"
                     y="36"
@@ -711,14 +713,14 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
               </g>
             </g>
             <g
-              id="nodeGElement36"
+              id="nodeGElement31"
             >
               <rect
-                aria-label="node192.564.10.2with weight50"
+                aria-label="node 192.564.10.2 with weight 50"
                 data-is-focusable="true"
                 fill="#8764B8"
                 height="148.46153846153845"
-                id="nodeBar35"
+                id="nodeBar30"
                 opacity="1"
                 role="img"
                 stroke="#4B3867"
@@ -751,7 +753,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                     fill="#FFFFFF"
                     font-size="10"
                     font-weight="regular"
-                    id="nodeBar35-name"
+                    id="nodeBar30-name"
                     text-anchor="start"
                     x="739"
                     y="281.53846153846155"
@@ -786,7 +788,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 1`] 
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_SankeyChart_empty2"
+    id="_SankeyChart_empty3"
     role="alert"
     style="opacity: 0;"
   />
@@ -819,12 +821,13 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone18"
+      data-focuszone-id="FocusZone15"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
         height="436"
-        id="sankeyChart17"
+        id="sankeyChart2"
         width="864"
       >
         <g
@@ -860,11 +863,11 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               </lineargradient>
             </defs>
             <path
-              aria-label="link from192.168.42.72to124.360.55.1with weight80"
+              aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
               d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link15"
+              id="link13"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -892,11 +895,11 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               </lineargradient>
             </defs>
             <path
-              aria-label="link from172.152.48.13to192.564.10.2with weight50"
+              aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
               d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
               data-is-focusable="true"
               fill-opacity="1"
-              id="link16"
+              id="link14"
               role="img"
               stroke="#757575"
               stroke-opacity="1"
@@ -916,14 +919,14 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
               }
         >
           <g
-            id="nodeGElement5"
+            id="nodeGElement6"
           >
             <rect
-              aria-label="node192.168.42.72with weight80"
+              aria-label="node 192.168.42.72 with weight 80"
               data-is-focusable="true"
               fill="#757575"
               height="237.53846153846155"
-              id="nodeBar4"
+              id="nodeBar5"
               opacity="1"
               role="img"
               stroke="#4B3867"
@@ -956,7 +959,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar4-name"
+                  id="nodeBar5-name"
                   text-anchor="start"
                   x="48"
                   y="36"
@@ -983,7 +986,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             id="nodeGElement8"
           >
             <rect
-              aria-label="node172.152.48.13with weight50"
+              aria-label="node 172.152.48.13 with weight 50"
               data-is-focusable="true"
               fill="#8764B8"
               height="148.46153846153845"
@@ -1044,14 +1047,14 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             </g>
           </g>
           <g
-            id="nodeGElement11"
+            id="nodeGElement10"
           >
             <rect
-              aria-label="node124.360.55.1with weight80"
+              aria-label="node 124.360.55.1 with weight 80"
               data-is-focusable="true"
               fill="#757575"
               height="237.53846153846155"
-              id="nodeBar10"
+              id="nodeBar9"
               opacity="1"
               role="img"
               stroke="#4B3867"
@@ -1084,7 +1087,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar10-name"
+                  id="nodeBar9-name"
                   text-anchor="start"
                   x="739"
                   y="36"
@@ -1108,14 +1111,14 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
             </g>
           </g>
           <g
-            id="nodeGElement14"
+            id="nodeGElement12"
           >
             <rect
-              aria-label="node192.564.10.2with weight50"
+              aria-label="node 192.564.10.2 with weight 50"
               data-is-focusable="true"
               fill="#8764B8"
               height="148.46153846153845"
-              id="nodeBar13"
+              id="nodeBar11"
               opacity="1"
               role="img"
               stroke="#4B3867"
@@ -1148,7 +1151,7 @@ exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] 
                   fill="#FFFFFF"
                   font-size="10"
                   font-weight="regular"
-                  id="nodeBar13-name"
+                  id="nodeBar11-name"
                   text-anchor="start"
                   x="739"
                   y="281.53846153846155"

@@ -1,6 +1,6 @@
+import { SankeyLink, SankeyNode } from 'd3-sankey';
 import { SVGProps } from 'react';
 import { LegendShape } from '../components/Legends/Legends.types';
-import { SankeyLink, SankeyNode } from 'd3-sankey';
 
 export interface IBasestate {
   _width?: number;
@@ -73,6 +73,19 @@ export interface IDataPoint {
    * onClick action for each datapoint in the chart
    */
   onClick?: VoidFunction;
+}
+
+/**
+ * {@docCategory IChartData}
+ */
+export interface IVerticalStackedBarDataPoint extends Omit<IDataPoint, 'x'> {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
+   * If x is a string, then the data is evenly spaced along the x-axis.
+   * If data type on x is Date, then the data is spaced evenly by d3-scale.
+   */
+  x: number | string | Date;
 }
 
 /**
@@ -153,7 +166,7 @@ export interface IVerticalBarChartDataPoint {
    * If x is a number, then each y-coordinate is plotted at its x-coordinate.
    * If x is a string, then the data is evenly spaced along the x-axis.
    */
-  x: number | string;
+  x: number | string | Date;
 
   /**
    * Dependent value of the data point, rendered along the y-axis.
@@ -477,7 +490,13 @@ export interface ISankeyChartData {
 }
 
 interface ISNodeExtra {
+  /**
+   * A unique identifier for this node.
+   */
   nodeId: number | string;
+  /**
+   * The display name for this node in the UX.
+   */
   name: string;
   color?: string;
   borderColor?: string;
@@ -486,8 +505,17 @@ interface ISNodeExtra {
 }
 
 interface ISLinkExtra {
+  /**
+   * The index within `ISankeyChartData.nodes` of the source node.
+   */
   source: number;
+  /**
+   * The index within `ISankeyChartData.nodes` of the target node.
+   */
   target: number;
+  /**
+   * The weight of this link between the two nodes.
+   */
   value: number;
   unnormalizedValue?: number;
 }
@@ -564,7 +592,7 @@ export interface IVerticalStackedChartProps {
   /**
    * Data for x axis label for multistacked Vertical bar chart
    */
-  xAxisPoint: number | string;
+  xAxisPoint: number | string | Date;
 
   /**
    * Callout data for x axis

@@ -12,6 +12,7 @@ export const teachingPopoverPageCountClassNames: SlotClassNames<TeachingPopoverP
 
 const useStyles = makeStyles({
   root: { display: 'flex', flexDirection: 'row', columnGap: '4px', alignItems: 'center' },
+  carouselText: { color: tokens.colorNeutralForeground3 },
   carouselIcon: {
     display: 'inline-block',
     ...shorthands.border(0),
@@ -45,10 +46,16 @@ export const useTeachingPopoverPageCountStyles_unstable = (state: TeachingPopove
   const styles = useStyles();
   const { appearance } = state;
 
+  const carouselTextMod = state.countStyle === 'text' && appearance !== 'brand' ? styles.carouselText : undefined;
   const carouselIconMod = appearance === 'brand' ? styles.carouselIconBrand : undefined;
   const carouselIconSelectedMod = appearance === 'brand' ? styles.carouselSelectedIconBrand : undefined;
 
-  state.root.className = mergeClasses(teachingPopoverPageCountClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(
+    teachingPopoverPageCountClassNames.root,
+    carouselTextMod,
+    styles.root,
+    state.root.className,
+  );
 
   state.carouselIcon.className = mergeClasses(
     teachingPopoverPageCountClassNames.carouselIcon,

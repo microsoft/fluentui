@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { getPartitionedNativeProps, mergeCallbacks, useId, slot } from '@fluentui/react-utilities';
 import { useRadioGroupContextValue_unstable } from '../../contexts/RadioGroupContext';
@@ -63,7 +62,7 @@ export const useRadio_unstable = (props: RadioProps, ref: React.Ref<HTMLInputEle
     elementType: Label,
   });
   const indicator = slot.always(props.indicator, {
-    defaultProps: { 'aria-hidden': true, children: <CircleFilled /> },
+    defaultProps: { 'aria-hidden': true },
     elementType: 'div',
   });
   return {

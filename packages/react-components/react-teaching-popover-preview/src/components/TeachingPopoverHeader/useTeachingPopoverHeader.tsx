@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { TeachingPopoverHeaderProps, TeachingPopoverHeaderState } from './TeachingPopoverHeader.types';
 
-import { Dismiss16Regular, Lightbulb16Regular } from '@fluentui/react-icons';
+import { Dismiss12Regular, Lightbulb16Regular } from '@fluentui/react-icons';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { useTeachingPopoverContext_unstable } from '../../TeachingPopoverContext';
 
@@ -56,7 +56,7 @@ export const useTeachingPopoverHeader_unstable = (
     dismissButton: slot.optional(dismissButton, {
       renderByDefault: true,
       defaultProps: {
-        children: <Dismiss16Regular />,
+        children: <Dismiss12Regular />,
         role: 'img',
         onClick: onDismissButtonClick,
       },

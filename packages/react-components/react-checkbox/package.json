@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-checkbox",
-  "version": "9.2.4",
+  "version": "9.2.12",
   "description": "Fluent UI checkbox component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,20 +33,20 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-field": "^9.1.46",
-    "@fluentui/react-icons": "^2.0.217",
-    "@fluentui/react-jsx-runtime": "^9.0.23",
-    "@fluentui/react-label": "^9.1.54",
-    "@fluentui/react-shared-contexts": "^9.13.2",
-    "@fluentui/react-tabster": "^9.16.1",
+    "@fluentui/react-field": "^9.1.53",
+    "@fluentui/react-icons": "^2.0.224",
+    "@fluentui/react-jsx-runtime": "^9.0.29",
+    "@fluentui/react-label": "^9.1.61",
+    "@fluentui/react-shared-contexts": "^9.14.0",
+    "@fluentui/react-tabster": "^9.19.0",
     "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.15.5",
+    "@fluentui/react-utilities": "^9.18.0",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
-    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
     "react": ">=16.14.0 <19.0.0",
     "react-dom": ">=16.14.0 <19.0.0"
   },

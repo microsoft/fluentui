@@ -33,6 +33,8 @@ export type {
   SlotComponentType,
   SlotOptions,
   InferredElementRefType,
+  EventData,
+  EventHandler,
 } from './compose/index';
 
 export {
@@ -68,6 +70,8 @@ export {
   omit,
   createPriorityQueue,
 } from './utils/index';
+
+export type { DistributiveOmit, UnionToIntersection } from './utils/types';
 
 export type { PriorityQueue } from './utils/priorityQueue';
 

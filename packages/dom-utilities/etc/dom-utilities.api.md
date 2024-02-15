@@ -11,10 +11,10 @@ export const DATA_PORTAL_ATTRIBUTE = "data-portal-element";
 export function elementContains(parent: HTMLElement | null, child: HTMLElement | null, allowVirtualParents?: boolean): boolean;
 
 // @public
-export function elementContainsAttribute(element: HTMLElement, attribute: string): string | null;
+export function elementContainsAttribute(element: HTMLElement, attribute: string, doc?: Document): string | null;
 
 // @public
-export function findElementRecursive(element: HTMLElement | null, matchFunction: (element: HTMLElement) => boolean): HTMLElement | null;
+export function findElementRecursive(element: HTMLElement | null, matchFunction: (element: HTMLElement) => boolean, doc?: Document): HTMLElement | null;
 
 // @public
 export function getChildren(parent: HTMLElement, allowVirtualChildren?: boolean): HTMLElement[];
@@ -38,14 +38,13 @@ export interface IVirtualElement extends HTMLElement {
 }
 
 // @public
-export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean;
+export function portalContainsElement(target: HTMLElement, parent?: HTMLElement, doc?: Document): boolean;
 
 // @public
 export function setPortalAttribute(element: HTMLElement): void;
 
 // @public
 export function setVirtualParent(child: HTMLElement, parent: HTMLElement | null): void;
-
 
 // (No @packageDocumentation comment for this package)
 

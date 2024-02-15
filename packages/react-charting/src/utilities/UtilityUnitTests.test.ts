@@ -10,6 +10,8 @@ import {
 } from '../types/IDataPoint';
 import { ScaleBand } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
+import { conditionalDescribe, isTimezoneSet } from './TestUtility.test';
+const { Timezone } = require('../../scripts/constants');
 
 // Reference to the test plan: packages\react-charting\docs\TestPlans\Utilities\UnitTests.md
 
@@ -179,8 +181,7 @@ describe('createNumericXAxis', () => {
   });
 });
 
-// FIXME - non deterministic snapshots causing master pipeline breaks
-describe.skip('createDateXAxis', () => {
+conditionalDescribe(isTimezoneSet(Timezone.UTC))('createDateXAxis', () => {
   const domainNRangeValues: ICreateXAxisParams['domainNRangeValues'] = {
     dStartValue: new Date(2021, 6, 1),
     dEndValue: new Date(2022, 5, 30),
@@ -795,20 +796,38 @@ describe('domainRangeOfDateForAreaChart', () => {
   };
 
   it('should return domain and range values correctly for date x-axis', () => {
-    const result = utils.domainRangeOfDateForAreaChart(points, margins, 100, false);
+    const result = utils.domainRangeOfDateForAreaLineVerticalBarChart(
+      points,
+      margins,
+      100,
+      false,
+      [],
+      utils.ChartTypes.AreaChart,
+    );
     matchResult(result);
   });
 
   it('should return domain and range values correctly for date x-axis when tickValues are provided', () => {
-    const result = utils.domainRangeOfDateForAreaChart(points, margins, 100, false, [
-      new Date(Date.UTC(2021, 0, 1)),
-      new Date(Date.UTC(2021, 0, 4)),
-    ]);
+    const result = utils.domainRangeOfDateForAreaLineVerticalBarChart(
+      points,
+      margins,
+      100,
+      false,
+      [new Date(Date.UTC(2021, 0, 1)), new Date(Date.UTC(2021, 0, 4))],
+      utils.ChartTypes.AreaChart,
+    );
     matchResult(result);
   });
 
   it('should return domain and range values correctly for date x-axis when layout direction is RTL', () => {
-    const result = utils.domainRangeOfDateForAreaChart(points, margins, 100, true);
+    const result = utils.domainRangeOfDateForAreaLineVerticalBarChart(
+      points,
+      margins,
+      100,
+      true,
+      [],
+      utils.ChartTypes.AreaChart,
+    );
     matchResult(result);
   });
 });
