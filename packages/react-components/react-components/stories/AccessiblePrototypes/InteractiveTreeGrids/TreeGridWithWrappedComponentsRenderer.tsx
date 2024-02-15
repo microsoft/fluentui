@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { RecentCategory, RecentMeetings } from './TreeGridBase';
 import { getNearestGridCellAncestorOrSelf, getNearestRowAncestor, getFirstCellChild } from './../TreeGridUtils';
+import { INTERACTIVE_CONTENT_ROLEDESCRIPTION, INTERACTIVE_CONTENT_INSTRUCTION } from './../constants';
 
 import { TabsterMoveFocusEvent } from '@fluentui/react-tabster';
 
@@ -29,28 +30,23 @@ import {
 import { TimePicker } from '@fluentui/react-timepicker-compat';
 
 interface ComponentWrapperProps {
-  type: 'textbox' | 'toolbar' | 'slider' | 'time';
   label: string;
+  roledescription: string;
+  instruction: string;
   children: React.ReactNode;
 }
-const ComponentWrapper: React.FC<ComponentWrapperProps> = ({ type, label, children }) => {
+const ComponentWrapper: React.FC<ComponentWrapperProps> = ({ label, roledescription, instruction, children }) => {
   const focusableGroupAttribute = useFocusableGroup({
     tabBehavior: 'limited-trap-focus',
   });
-  const roleDescriptionMapping = {
-    textbox: 'TextBox',
-    toolbar: 'Toolbar',
-    slider: 'Slider',
-    time: 'Time',
-  };
 
   return (
     <div
-      tabIndex={0}
       role="group"
-      aria-roledescription={roleDescriptionMapping[type]}
-      aria-description="Interact with Enter, then leave with Escape"
+      tabIndex={0}
+      aria-roledescription={roledescription}
       aria-label={label}
+      aria-description={instruction}
       data-componentWrapper="true"
       {...focusableGroupAttribute}
     >
@@ -152,7 +148,7 @@ export const TreeGridWithWrappedComponentsRenderer: React.FC<TreeGridWithWrapped
 
   const handleTreeGridMoveFocus = React.useCallback(
     (event: TabsterMoveFocusEvent) => {
-      const key = event.details.relatedEvent.key;
+      const key = event.detail?.relatedEvent?.key;
       if (key === 'Enter' && targetDocument?.activeElement?.role === 'row') {
         event.preventDefault();
       }
@@ -214,7 +210,11 @@ export const TreeGridWithWrappedComponentsRenderer: React.FC<TreeGridWithWrapped
                       <Button>Chat with participants</Button>
                     </TableCell>
                     <TableCell role="gridcell">
-                      <ComponentWrapper type="textbox" label="Type here">
+                      <ComponentWrapper
+                        label="Type here"
+                        roledescription={INTERACTIVE_CONTENT_ROLEDESCRIPTION}
+                        instruction={INTERACTIVE_CONTENT_INSTRUCTION}
+                      >
                         <Field label="Type here">
                           <Input />
                         </Field>
@@ -231,13 +231,21 @@ export const TreeGridWithWrappedComponentsRenderer: React.FC<TreeGridWithWrapped
                           </MenuList>
                         </MenuPopover>
                       </Menu>
-                      <ComponentWrapper type="slider" label="Priority">
-                        <Label htmlFor={`${meeting.id}-slider`}>Basic Example</Label>
+                      <ComponentWrapper
+                        label="Priority"
+                        roledescription={INTERACTIVE_CONTENT_ROLEDESCRIPTION}
+                        instruction={INTERACTIVE_CONTENT_INSTRUCTION}
+                      >
+                        <Label htmlFor={`${meeting.id}-slider`}>Priority</Label>
                         <Slider max={5} min={1} defaultValue={3} id={`${meeting.id}-slider`} />
                       </ComponentWrapper>
                     </TableCell>
                     <TableCell role="gridcell">
-                      <ComponentWrapper type="time" label="Reminder">
+                      <ComponentWrapper
+                        label="Reminder"
+                        roledescription={INTERACTIVE_CONTENT_ROLEDESCRIPTION}
+                        instruction={INTERACTIVE_CONTENT_INSTRUCTION}
+                      >
                         <Field label="Time to be reminded at">
                           <TimePicker value="14:30" />
                         </Field>
@@ -254,7 +262,11 @@ export const TreeGridWithWrappedComponentsRenderer: React.FC<TreeGridWithWrapped
                       </TableCell>
                     )}
                     <TableCell role="gridcell">
-                      <ComponentWrapper type="toolbar" label="Other actions">
+                      <ComponentWrapper
+                        label="Other actions"
+                        roledescription={INTERACTIVE_CONTENT_ROLEDESCRIPTION}
+                        instruction={INTERACTIVE_CONTENT_INSTRUCTION}
+                      >
                         <Toolbar aria-label="Other actions">
                           <ToolbarButton>First</ToolbarButton>
                           <ToolbarButton>Second</ToolbarButton>
