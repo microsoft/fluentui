@@ -52,25 +52,20 @@ export const useDynamicVirtualizerPagination = (
         // Found our in between position
         const distanceToPrev = Math.abs(currentScrollPos - progressiveItemSizes.current[i]);
         const distanceToNext = Math.abs(progressiveItemSizes.current[i + 1] - currentScrollPos);
-        console.log('Current scroll: ', currentScrollPos);
-        console.log('distanceToNext: ', progressiveItemSizes.current[i + 1]);
-        console.log('distanceToPrev: ', progressiveItemSizes.current[i]);
         if (distanceToPrev < distanceToNext) {
           closestItem = i;
-          console.log('closest item is prev item');
         } else {
           closestItem = i + 1;
-          console.log('closest item is next item');
         }
         break;
       }
     }
 
     let nextItem;
-    if (closestItem - lastIndexScrolled.current === 0) {
+    if (Math.round(closestItem - lastIndexScrolled.current) === 0) {
       // Special case for go to next/previous with minimum amount of scroll needed
       const nextTarget = lastScrollPos.current < currentScrollPos ? 1 : -1;
-      const isSecondaryScroll = lastScrollPos.current === currentScrollPos;
+      const isSecondaryScroll = Math.round(lastScrollPos.current - currentScrollPos) === 0;
       const posMod = isSecondaryScroll ? 0 : nextTarget;
       nextItem = closestItem + posMod;
     } else {

@@ -38,12 +38,13 @@ export const useStaticVirtualizerPagination = (
       return;
     }
 
-    const currentScrollPos =
-      axis === 'vertical' ? scrollContainer.current.scrollTop : scrollContainer.current.scrollLeft;
+    const currentScrollPos = Math.round(
+      axis === 'vertical' ? scrollContainer.current.scrollTop : scrollContainer.current.scrollLeft,
+    );
     const closestItem = Math.round(currentScrollPos / itemSize);
 
     let nextItem = 0;
-    if (closestItem - lastIndexScrolled.current === 0) {
+    if (Math.round(closestItem - lastIndexScrolled.current) === 0) {
       // Special case for go to next/previous with minimum amount of scroll needed
       const nextTarget = lastScrollPos.current < currentScrollPos ? 1 : -1;
       const isSecondaryScroll = lastScrollPos.current === currentScrollPos;
