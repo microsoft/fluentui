@@ -28,13 +28,13 @@ function validateProperElementTypes(parentRenderedAs?: 'div' | 'ul' | 'ol', rend
   }
 }
 
-function validateNavigableWhenOnClickPresent(navigable: boolean, onClick?: React.MouseEventHandler) {
+function validateNavigableWhenOnClickPresent(focusableItems: boolean, onClick?: React.MouseEventHandler) {
   if (process.env.NODE_ENV === 'production') {
     return;
   }
 
-  if (onClick && !navigable) {
-    throw new Error('ListItem must be navigable when onClick is present. Set focusableItems={true} on the List.');
+  if (onClick && !focusableItems) {
+    throw new Error('ListItem must be focusableItems when onClick is present. Set focusableItems={true} on the List.');
   }
 }
 
@@ -137,8 +137,15 @@ export const useListItem_unstable = (
       return;
     }
 
-    // Handle selection for enter and space
-    if ((isSelectionEnabled || typeof props.onClick === 'function') && [Space, Enter].includes(e.key)) {
+    // Space always toggles selection (if enabled)
+    if (isSelectionEnabled && e.key === Space) {
+      e.preventDefault();
+      toggleItem?.(e, value);
+    }
+
+    // Handle clicking the list item when user presses the Enter key
+    // This internally triggers selection in the onClick handler if it hasn't been prevented
+    if (e.key === Enter) {
       e.preventDefault();
       e.currentTarget.click();
     }
@@ -166,19 +173,8 @@ export const useListItem_unstable = (
     // toggleItem?.(ev, value);
   });
 
-  // const handleKeyUp: React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement> = useEventCallback(e => {
-  //   onKeyUp?.(e);
-
-  //   if (!isSelectionEnabled || e.defaultPrevented || e.target !== e.currentTarget) {
-  //     // In this case prevent default prevents the useARIAButtonProps from toggling onClick
-  //     e.preventDefault();
-  //     return;
-  //   }
-  // });
   const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: 'horizontal',
-    // tabbable: false,
-    // memorizeCurrent: true,
   });
 
   const tabsterAttributes = useMergedTabsterAttributes_unstable(
@@ -209,6 +205,7 @@ export const useListItem_unstable = (
       checked: isSelected,
       onChange: onCheckboxChange,
       onClick: onCheckboxClick,
+      tabIndex: -1,
       indicator: { className: baseIndicatorStyles.root },
     },
     renderByDefault: isSelectionEnabled,
