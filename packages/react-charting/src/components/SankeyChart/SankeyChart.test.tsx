@@ -5,7 +5,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { IChartProps } from '../../index';
 import { resetIds } from '../../Utilities';
-import { ISankeyChartProps, SankeyChart } from './index';
+import { ISankeyChartAccessibilityProps, ISankeyChartProps, ISankeyChartStrings, SankeyChart } from './index';
 import { ISankeyChartState, SankeyChartBase } from './SankeyChart.base';
 
 // Wrapper of the SankeyChart to be tested.
@@ -125,6 +125,34 @@ describe('Sankey Chart snapShot testing', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('renders Sankey correctly with supplied resource strings', () => {
+    // ARRANGE
+    const data2 = {
+      chartTitle: 'Sankey Chart',
+      SankeyChartData: {
+        nodes: [
+          { nodeId: 0, name: 'First' },
+          { nodeId: 1, name: 'Second' },
+        ],
+        links: [{ source: 0, target: 1, value: 10 }],
+      },
+    };
+    const strings: ISankeyChartStrings = {
+      linkFrom: 'source {0}',
+    };
+    const accessibilityStrings: ISankeyChartAccessibilityProps = {
+      linkAriaLabel: '{2} items moved from {0} to {1}',
+      nodeAriaLabel: 'element {0} with size {1}',
+    };
+    // ACT
+    const component = renderer.create(
+      <SankeyChart data={data2} height={500} width={800} strings={strings} accessibility={accessibilityStrings} />,
+    );
+    // ASSERT
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 describe('Render calling with respective to props', () => {
@@ -133,7 +161,7 @@ describe('Render calling with respective to props', () => {
 
   it('No prop changes', () => {
     const renderMock = jest.spyOn(SankeyChartBase.prototype, 'render');
-    const props = {
+    const props: ISankeyChartProps = {
       data: data(),
       height: 500,
       width: 800,
