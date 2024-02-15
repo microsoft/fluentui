@@ -11,6 +11,9 @@ import type { RatingProps, RatingState } from './Rating.types';
 import { RatingItem } from '../../RatingItem';
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
 
+const defaultIconFilled = <StarFilled />;
+const defaultIconOutline = <StarRegular />;
+
 /**
  * Create the state required to render Rating.
  *
@@ -24,22 +27,14 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
   const generatedName = useId('rating-');
   const {
     color = 'neutral',
-    iconFilled: iconFilledProp,
-    iconOutline: iconOutlineProp,
+    iconFilled = defaultIconFilled,
+    iconOutline = defaultIconOutline,
     max = 5,
     name = generatedName,
     onChange,
     step = 1,
     size = 'extra-large',
   } = props;
-
-  const iconFilled = React.useMemo(() => {
-    return iconFilledProp ?? <StarFilled />;
-  }, [iconFilledProp]);
-
-  const iconOutline = React.useMemo(() => {
-    return iconOutlineProp ?? <StarRegular />;
-  }, [iconOutlineProp]);
 
   const [value, setValue] = useControllableState({
     state: props.value,
