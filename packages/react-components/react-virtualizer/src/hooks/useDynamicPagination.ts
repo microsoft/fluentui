@@ -28,7 +28,7 @@ export const useDynamicVirtualizerPagination = (
     return () => {
       clearListeners();
     };
-  }, []);
+  }, [clearListeners]);
 
   const onScrollEnd = React.useCallback(() => {
     if (!scrollContainer.current || !paginationEnabled || !progressiveItemSizes?.current) {
@@ -36,10 +36,11 @@ export const useDynamicVirtualizerPagination = (
       return;
     }
 
-    let currentScrollPos = axis === 'vertical' ? scrollContainer.current.scrollTop : scrollContainer.current.scrollLeft;
+    const currentScrollPos =
+      axis === 'vertical' ? scrollContainer.current.scrollTop : scrollContainer.current.scrollLeft;
     let closestItemPos = 0;
     let closestItem = 0;
-    let endItem = Math.min(currentIndex + virtualizerLength, progressiveItemSizes.current.length);
+    const endItem = Math.min(currentIndex + virtualizerLength, progressiveItemSizes.current.length);
 
     for (let i = currentIndex; i < endItem - 1; i++) {
       if (
@@ -47,8 +48,8 @@ export const useDynamicVirtualizerPagination = (
         currentScrollPos >= progressiveItemSizes.current[i]
       ) {
         // Found our in between position
-        let distanceToPrev = currentScrollPos - progressiveItemSizes.current[i];
-        let distanceToNext = progressiveItemSizes.current[i + 1] - currentScrollPos;
+        const distanceToPrev = currentScrollPos - progressiveItemSizes.current[i];
+        const distanceToNext = progressiveItemSizes.current[i + 1] - currentScrollPos;
         if (distanceToPrev < distanceToNext) {
           closestItem = i;
         } else {
@@ -85,10 +86,11 @@ export const useDynamicVirtualizerPagination = (
   }, [
     paginationEnabled,
     currentIndex,
-    progressiveItemSizes?.current,
     scrollContainer,
     scrollContainer.current,
     virtualizerLength,
+    axis,
+    progressiveItemSizes,
   ]);
 
   const onScroll = React.useCallback(
@@ -117,7 +119,7 @@ export const useDynamicVirtualizerPagination = (
         }
       }
     },
-    [onScroll, onScrollEnd, paginationEnabled],
+    [onScroll, onScrollEnd, paginationEnabled, clearListeners],
   );
 
   return paginationRef;

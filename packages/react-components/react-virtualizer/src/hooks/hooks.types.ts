@@ -1,4 +1,4 @@
-import { MutableRefObject } from 'react';
+import { MutableRefObject, RefObject } from 'react';
 
 export type VirtualizerMeasureProps = {
   defaultItemSize: number;
@@ -19,7 +19,7 @@ export type VirtualizerStaticPaginationProps = {
 };
 
 export type VirtualizerDynamicPaginationProps = {
-  progressiveItemSizes: React.RefObject<number[]> | undefined;
+  progressiveItemSizes: RefObject<number[]> | undefined;
   currentIndex: number;
   axis?: 'vertical' | 'horizontal';
   virtualizerLength: number;

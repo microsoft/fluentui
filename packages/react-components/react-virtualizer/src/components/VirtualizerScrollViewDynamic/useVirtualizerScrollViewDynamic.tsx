@@ -35,6 +35,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
        */
       return sizeTrackingArray.current[index];
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [sizeTrackingArray, props.itemSize, sizeUpdateCount],
   );
 
@@ -123,7 +124,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
     props.itemSize,
   );
 
-  if (enablePagination && measureObject.sizeUpdateCount != sizeUpdateCount) {
+  if (enablePagination && measureObject.sizeUpdateCount !== sizeUpdateCount) {
     /* This enables us to let callback know that the sizes have been updated
     triggers a re-render but is only required on pagination (else index change handles) */
     setSizeUpdateCount(measureObject.sizeUpdateCount);

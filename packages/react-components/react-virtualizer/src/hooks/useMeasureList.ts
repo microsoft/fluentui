@@ -46,7 +46,7 @@ export function useMeasureList<
         sizeUpdateCount.current = sizeUpdateCount.current + 1;
       }
     },
-    [currentIndex, defaultItemSize, sizeUpdateCount.current],
+    [currentIndex, defaultItemSize, sizeUpdateCount],
   );
 
   const handleElementResizeCallback = (entries: ResizeObserverEntry[]) => {

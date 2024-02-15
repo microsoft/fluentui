@@ -64,7 +64,7 @@ export const useStaticVirtualizerPagination = (
     }
     lastScrollPos.current = nextItemPos;
     lastIndexScrolled.current = nextItem;
-  }, [paginationEnabled]);
+  }, [paginationEnabled, axis, itemSize]);
 
   const onScroll = React.useCallback(
     event => {
@@ -92,7 +92,7 @@ export const useStaticVirtualizerPagination = (
         }
       }
     },
-    [onScroll, onScrollEnd, paginationEnabled],
+    [onScroll, onScrollEnd, paginationEnabled, clearListeners],
   );
 
   return paginationRef;
