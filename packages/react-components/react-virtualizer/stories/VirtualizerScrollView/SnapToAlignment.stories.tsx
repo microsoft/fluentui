@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { VirtualizerScrollView } from '@fluentui/react-components/unstable';
-import { makeStyles, useArrowNavigationGroup } from '@fluentui/react-components';
+import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   child: {
@@ -19,16 +19,12 @@ export const SnapToAlignment = () => {
   const styles = useStyles();
   const childLength = 100;
 
-  const attributes = useArrowNavigationGroup({
-    axis: 'horizontal',
-  });
-
   return (
     <VirtualizerScrollView
       numItems={childLength}
       itemSize={100}
       axis={'horizontal'}
-      container={{ role: 'list', className: styles.container, ...attributes }}
+      container={{ role: 'list', className: styles.container }}
       enablePagination
     >
       {(index: number) => {
