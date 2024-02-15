@@ -21,7 +21,7 @@ export const Default = () => {
 
   return (
     <>
-      <SwatchPicker aria-label="SwatchPicker default" selectedValue={selectedColor} onSelectionChange={handleSelect}>
+      <SwatchPicker aria-label="SwatchPicker default" selectedValue={selectedValue} onSelectionChange={handleSelect}>
         <ColorSwatch color="#FF1921" value="#FF1921" aria-label="red" role="radio" />
         <ColorSwatch color="#FFC12E" value="#FFC12E" aria-label="orange" role="radio" />
         <ColorSwatch color="#FEFF37" value="#FEFF37" aria-label="yellow" role="radio" />
@@ -35,7 +35,7 @@ export const Default = () => {
       <div
         className={styles.example}
         style={{
-          backgroundColor: selectedColor,
+          backgroundColor: selectedValue,
         }}
       />
     </>

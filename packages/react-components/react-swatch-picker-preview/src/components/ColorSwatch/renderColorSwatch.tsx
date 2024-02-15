@@ -9,5 +9,6 @@ import type { ColorSwatchState, ColorSwatchSlots } from './ColorSwatch.types';
  */
 export const renderColorSwatch_unstable = (state: ColorSwatchState) => {
   assertSlots<ColorSwatchSlots>(state);
+
   return <state.root />;
 };
