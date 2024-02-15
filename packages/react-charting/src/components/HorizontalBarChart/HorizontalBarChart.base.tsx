@@ -20,6 +20,7 @@ import {
 } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
+import ErrorBoundary from '../CommonComponents/ErrorBoundary';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
@@ -46,7 +47,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _isRTL: boolean = getRTL();
   private barChartSvgRef: React.RefObject<SVGSVGElement>;
-  private _emptyChartId: string;
 
   constructor(props: IHorizontalBarChartProps) {
     super(props);
@@ -66,7 +66,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._uniqLineText = '_HorizontalLine_' + Math.random().toString(36).substring(7);
     this._hoverOff = this._hoverOff.bind(this);
     this._calloutId = getId('callout');
-    this._emptyChartId = getId('_HBC_empty');
     this.barChartSvgRef = React.createRef<SVGSVGElement>();
   }
 
@@ -85,108 +84,112 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
     return !this._isChartEmpty() ? (
-      <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
-        {data!.map((points: IChartProps, index: number) => {
-          if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
-            datapoint = points.chartData![0].horizontalBarChartdata!.x;
-          } else {
-            datapoint = 0;
-          }
-          points.chartData![1] = {
-            legend: '',
-            horizontalBarChartdata: {
-              x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
-              y: points.chartData![0].horizontalBarChartdata!.y,
-            },
-            color: palette.neutralLight,
-          };
+      <ErrorBoundary handleError={this.props.handleError} theme={this.props.theme}>
+        <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
+          {data!.map((points: IChartProps, index: number) => {
+            if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
+              datapoint = points.chartData![0].horizontalBarChartdata!.x;
+            } else {
+              datapoint = 0;
+            }
+            points.chartData![1] = {
+              legend: '',
+              horizontalBarChartdata: {
+                x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
+                y: points.chartData![0].horizontalBarChartdata!.y,
+              },
+              color: palette.neutralLight,
+            };
 
-          // Hide right side text of chart title for absolute-scale variant
-          const chartDataText =
-            this.props.variant === HorizontalBarChartVariant.AbsoluteScale ? null : this._getChartDataText(points!);
-          const bars = this._createBars(points!, palette);
-          const keyVal = this._uniqLineText + '_' + index;
-          const classNames = getClassNames(this.props.styles!, {
-            theme: this.props.theme!,
-            width: this.props.width,
-            showTriangle: !!points!.chartData![0].data,
-            variant: this.props.variant,
-          });
+            // Hide right side text of chart title for absolute-scale variant
+            const chartDataText =
+              this.props.variant === HorizontalBarChartVariant.AbsoluteScale ? null : this._getChartDataText(points!);
+            const bars = this._createBars(points!, palette);
+            const keyVal = this._uniqLineText + '_' + index;
+            const classNames = getClassNames(this.props.styles!, {
+              theme: this.props.theme!,
+              width: this.props.width,
+              showTriangle: !!points!.chartData![0].data,
+              variant: this.props.variant,
+            });
 
-          return (
-            <div key={index}>
-              <div className={classNames.items}>
-                <FocusZone direction={FocusZoneDirection.horizontal}>
-                  <div className={this._classNames.chartTitle}>
-                    {points!.chartTitle && (
-                      <FocusableTooltipText
-                        className={this._classNames.chartTitleLeft}
-                        content={points!.chartTitle}
-                        accessibilityData={points!.chartTitleAccessibilityData}
-                      />
-                    )}
-                    {chartDataText}
-                  </div>
-                </FocusZone>
-                {points!.chartData![0].data && this._createBenchmark(points!)}
-                <FocusZone direction={FocusZoneDirection.horizontal} className={this._classNames.chartWrapper}>
-                  <svg ref={this.barChartSvgRef} className={this._classNames.chart} aria-label={points!.chartTitle}>
-                    <g
-                      id={keyVal}
-                      key={keyVal}
-                      ref={(e: SVGGElement) => {
-                        this._refCallback(e, points!.chartData![0].legend);
-                      }}
-                      // NOTE: points.chartData![0] contains current data value
-                      onClick={() => {
-                        const p = points!.chartData![0];
-                        if (p && p.onClick) {
-                          p.onClick();
-                        }
-                      }}
-                    >
-                      {bars}
-                    </g>
-                  </svg>
-                </FocusZone>
+            return (
+              <div key={index}>
+                <div className={classNames.items}>
+                  <FocusZone direction={FocusZoneDirection.horizontal}>
+                    <div className={this._classNames.chartTitle}>
+                      {points!.chartTitle && (
+                        <FocusableTooltipText
+                          className={this._classNames.chartTitleLeft}
+                          content={points!.chartTitle}
+                          accessibilityData={points!.chartTitleAccessibilityData}
+                        />
+                      )}
+                      {chartDataText}
+                    </div>
+                  </FocusZone>
+                  {points!.chartData![0].data && this._createBenchmark(points!)}
+                  <FocusZone direction={FocusZoneDirection.horizontal} className={this._classNames.chartWrapper}>
+                    <svg ref={this.barChartSvgRef} className={this._classNames.chart} aria-label={points!.chartTitle}>
+                      <g
+                        id={keyVal}
+                        key={keyVal}
+                        ref={(e: SVGGElement) => {
+                          this._refCallback(e, points!.chartData![0].legend);
+                        }}
+                        // NOTE: points.chartData![0] contains current data value
+                        onClick={() => {
+                          const p = points!.chartData![0];
+                          if (p && p.onClick) {
+                            p.onClick();
+                          }
+                        }}
+                      >
+                        {bars}
+                      </g>
+                    </svg>
+                  </FocusZone>
+                </div>
               </div>
-            </div>
-          );
-        })}
-        <Callout
-          target={this.state.refSelected}
-          coverTarget={true}
-          isBeakVisible={false}
-          gapSpace={30}
-          hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
-          directionalHint={DirectionalHint.topAutoEdge}
-          id={this._calloutId}
-          onDismiss={this._closeCallout}
-          preventDismissOnLostFocus={true}
-          {...this.props.calloutProps!}
-          {...getAccessibleDataObject(this.state.callOutAccessibilityData)}
-        >
-          <>
-            {this.props.onRenderCalloutPerHorizontalBar ? (
-              this.props.onRenderCalloutPerHorizontalBar(this.state.barCalloutProps)
-            ) : (
-              <ChartHoverCard
-                Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend!}
-                YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.hoverValue!}
-                color={this.state.lineColor}
-                culture={this.props.culture}
-              />
-            )}
-          </>
-        </Callout>
-      </div>
+            );
+          })}
+          <Callout
+            target={this.state.refSelected}
+            coverTarget={true}
+            isBeakVisible={false}
+            gapSpace={30}
+            hidden={!(!this.props.hideTooltip && this.state.isCalloutVisible)}
+            directionalHint={DirectionalHint.topAutoEdge}
+            id={this._calloutId}
+            onDismiss={this._closeCallout}
+            preventDismissOnLostFocus={true}
+            {...this.props.calloutProps!}
+            {...getAccessibleDataObject(this.state.callOutAccessibilityData)}
+          >
+            <>
+              {this.props.onRenderCalloutPerHorizontalBar ? (
+                this.props.onRenderCalloutPerHorizontalBar(this.state.barCalloutProps)
+              ) : (
+                <ChartHoverCard
+                  Legend={this.state.xCalloutValue ? this.state.xCalloutValue : this.state.legend!}
+                  YValue={this.state.yCalloutValue ? this.state.yCalloutValue : this.state.hoverValue!}
+                  color={this.state.lineColor}
+                  culture={this.props.culture}
+                />
+              )}
+            </>
+          </Callout>
+        </div>
+      </ErrorBoundary>
     ) : (
-      <div
-        id={this._emptyChartId}
-        role={'alert'}
-        style={{ opacity: '0' }}
-        aria-label={'Graph has no data to display'}
-      />
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+        <ErrorBoundary
+          hasEmptyState={true}
+          theme={this.props.theme}
+          width={this.props.width!}
+          handleEmptyState={this.props.handleEmptyState}
+        />
+      </div>
     );
   }
 

@@ -2,6 +2,8 @@ import { ITheme } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 interface IErrorImageProps {
   theme?: ITheme;
+  width: number;
+  height: number;
 }
 class ErrorImage extends React.Component<IErrorImageProps, {}> {
   constructor(props: IErrorImageProps) {
@@ -9,12 +11,13 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
   }
 
   render() {
+    const height = this.props.width * 0.8;
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
         {!this.props.theme!.isInverted ? (
           <svg
-            width="20%"
-            height="20%"
+            width={this.props.width}
+            height={height}
             viewBox="0 0 512 513"
             transform="scale(1.0)"
             fill="none"
@@ -227,8 +230,8 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
           </svg>
         ) : (
           <svg
-            width="20%"
-            height="20%"
+            width={this.props.width}
+            height={height}
             viewBox="0 0 512 513"
             transform="scale(1.0)"
             fill="none"

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getId } from '@fluentui/react/lib/Utilities';
 import ErrorImage from './ErrorImage';
 import { ITheme } from '@fluentui/react/lib/Styling';
+import MissingDataImage from './MissingDataImage';
 
 export enum ErrorCodes {
   NoData = 'No data',
@@ -11,9 +12,11 @@ export enum ErrorCodes {
 export interface IErrorBoundaryProps {
   hasErrorState?: boolean;
   hasEmptyState?: boolean;
-  handleError?: () => void;
-  handleEmptyState?: () => void;
+  handleError?: () => JSX.Element;
+  handleEmptyState?: () => JSX.Element;
   theme?: ITheme;
+  width?: number;
+  height?: number;
 }
 
 interface IErrorBoundaryState {
@@ -38,7 +41,7 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
     return { hasError: true };
   }
 
-  render() {
+  public render(): JSX.Element {
     if (this.state.hasError || this.props.hasErrorState) {
       if (this.props.handleError !== undefined) {
         return this.props.handleError();
@@ -53,12 +56,30 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
             marginTop: '10px',
           }}
         >
-          <ErrorImage theme={this.props.theme} />
-          <div style={{ fontSize: '14px', fontWeight: 700, fontFamily: 'Segoe UI' }}>Couldn't load data</div>
-          <div style={{ fontSize: '12px', fontFamily: 'Segoe UI' }}>
+          <ErrorImage
+            theme={this.props.theme}
+            width={
+              this.props.width ? (this.props.width > 500 ? 500 : this.props.width < 350 ? 350 : this.props.width) : 350
+            }
+            height={
+              this.props.height
+                ? this.props.height > 500
+                  ? 500
+                  : this.props.height < 350
+                  ? 350
+                  : this.props.height
+                : 350
+            }
+          />
+          <div style={{ fontSize: '14px', fontWeight: 700, fontFamily: 'Segoe UI', textAlign: 'center' }}>
+            Couldn't load data
+          </div>
+          <div style={{ fontSize: '12px', fontFamily: 'Segoe UI', textAlign: 'center' }}>
             Something went wrong and we couldn't get the page to display
           </div>
-          <div style={{ fontSize: '12px', fontFamily: 'Segoe UI' }}>Error code: {ErrorCodes.GeneralError}</div>
+          <div style={{ fontSize: '12px', fontFamily: 'Segoe UI', textAlign: 'center' }}>
+            Error code: {ErrorCodes.GeneralError}
+          </div>
         </div>
       );
     } else if (this.props.hasEmptyState) {
@@ -78,12 +99,30 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
             marginTop: '10px',
           }}
         >
-          <ErrorImage theme={this.props.theme} />
-          <div style={{ fontSize: '14px', fontWeight: 700, fontFamily: 'Segoe UI' }}>Couldn't load data</div>
-          <div style={{ fontSize: '12px', fontFamily: 'Segoe UI' }}>
+          <MissingDataImage
+            theme={this.props.theme}
+            width={
+              this.props.width ? (this.props.width > 500 ? 500 : this.props.width < 350 ? 350 : this.props.width) : 350
+            }
+            height={
+              this.props.height
+                ? this.props.height > 500
+                  ? 500
+                  : this.props.height < 350
+                  ? 350
+                  : this.props.height
+                : 350
+            }
+          />
+          <div style={{ fontSize: '14px', fontWeight: 700, fontFamily: 'Segoe UI', textAlign: 'center' }}>
+            Couldn't load data
+          </div>
+          <div style={{ fontSize: '12px', fontFamily: 'Segoe UI', textAlign: 'center' }}>
             Something went wrong and we couldn't get the page to display
           </div>
-          <div style={{ fontSize: '12px', fontFamily: 'Segoe UI' }}>Error code: {ErrorCodes.NoData}</div>
+          <div style={{ fontSize: '12px', fontFamily: 'Segoe UI', textAlign: 'center' }}>
+            Error code: {ErrorCodes.NoData}
+          </div>
         </div>
       );
     }

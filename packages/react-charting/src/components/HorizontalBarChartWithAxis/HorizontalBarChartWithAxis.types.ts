@@ -70,6 +70,16 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
    *@default false
    *Used for showing complete y axis lables   */
   showYAxisLables?: boolean;
+
+  /*
+   * Callback to handle error while chart is rendering.
+   */
+  handleError?: () => JSX.Element;
+
+  /*
+   * Callback to handle empty state while chart is rendering.
+   */
+  handleEmptyState?: () => JSX.Element;
 }
 
 /**

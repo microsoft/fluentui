@@ -92,6 +92,16 @@ export interface IHorizontalBarChartProps {
    * @default false
    */
   hideLabels?: boolean;
+
+  /*
+   * Callback to handle error while chart is rendering.
+   */
+  handleError?: () => JSX.Element;
+
+  /*
+   * Callback to handle empty state while chart is rendering.
+   */
+  handleEmptyState?: () => JSX.Element;
 }
 
 /**

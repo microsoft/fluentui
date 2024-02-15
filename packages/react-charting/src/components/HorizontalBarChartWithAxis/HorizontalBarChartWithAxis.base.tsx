@@ -33,6 +33,7 @@ import {
   getTypeOfAxis,
   getNextColor,
 } from '../../utilities/index';
+import ErrorBoundary from '../CommonComponents/ErrorBoundary';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
 export interface IHorizontalBarChartWithAxisState extends IBasestate {
@@ -133,34 +134,48 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       tickValues: this.props.tickValues,
       tickFormat: this.props.tickFormat,
     };
+    if (!this._isChartEmpty()) {
+      return (
+        <ErrorBoundary handleError={this.props.handleError} theme={this.props.theme}>
+          <CartesianChart
+            {...this.props}
+            points={this._points}
+            chartType={ChartTypes.AreaChart}
+            xAxisType={this._xAxisType}
+            yAxisType={this._yAxisType}
+            stringDatasetForYAxisDomain={this._yAxisLabels}
+            calloutProps={calloutProps}
+            tickParams={tickParams}
+            legendBars={legendBars}
+            barwidth={this._barHeight}
+            focusZoneDirection={FocusZoneDirection.vertical}
+            customizedCallout={this._getCustomizedCallout()}
+            getmargins={this._getMargins}
+            getGraphData={this._getGraphData}
+            getAxisData={this._getAxisData}
+            onChartMouseLeave={this._handleChartMouseLeave}
+            /* eslint-disable react/jsx-no-bind */
+            // eslint-disable-next-line react/no-children-prop
+            children={(props: IChildProps) => {
+              return (
+                <>
+                  <g>{this._bars}</g>
+                </>
+              );
+            }}
+          />
+        </ErrorBoundary>
+      );
+    }
     return (
-      <CartesianChart
-        {...this.props}
-        points={this._points}
-        chartType={ChartTypes.HorizontalBarChartWithAxis}
-        xAxisType={this._xAxisType}
-        yAxisType={this._yAxisType}
-        stringDatasetForYAxisDomain={this._yAxisLabels}
-        calloutProps={calloutProps}
-        tickParams={tickParams}
-        legendBars={legendBars}
-        barwidth={this._barHeight}
-        focusZoneDirection={FocusZoneDirection.vertical}
-        customizedCallout={this._getCustomizedCallout()}
-        getmargins={this._getMargins}
-        getGraphData={this._getGraphData}
-        getAxisData={this._getAxisData}
-        onChartMouseLeave={this._handleChartMouseLeave}
-        /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
-        children={(props: IChildProps) => {
-          return (
-            <>
-              <g>{this._bars}</g>
-            </>
-          );
-        }}
-      />
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+        <ErrorBoundary
+          hasEmptyState={true}
+          theme={this.props.theme}
+          width={this.props.width!}
+          handleEmptyState={this.props.handleEmptyState}
+        />
+      </div>
     );
   }
 
@@ -683,4 +698,8 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ` + `${yValue}.`;
   };
+
+  private _isChartEmpty(): boolean {
+    return !(this.props.data && this.props.data.length > 0);
+  }
 }

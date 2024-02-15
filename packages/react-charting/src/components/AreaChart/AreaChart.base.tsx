@@ -30,7 +30,6 @@ import {
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
-import ErrorBoundary from '../CommonComponents/ErrorBoundary';
 
 const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
@@ -107,6 +106,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   //from O(n^2) to O(n) using a map.
   private _enableComputationOptimization: boolean;
   private _firstRenderOptimization: boolean;
+  private _emptyChartId: string;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -135,6 +135,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._tooltipId = getId('AreaChartTooltipID');
     this._enableComputationOptimization = true;
     this._firstRenderOptimization = true;
+    this._emptyChartId = getId('_AreaChart_empty');
   }
 
   public componentDidUpdate() {
@@ -180,57 +181,57 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       };
       return (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-          <ErrorBoundary handleError={this.props.handleError} theme={this.props.theme}>
-            <CartesianChart
-              {...this.props}
-              chartTitle={chartTitle}
-              points={points}
-              chartType={ChartTypes.AreaChart}
-              calloutProps={calloutProps}
-              handleError={this.props.handleError}
-              legendBars={legends}
-              isCalloutForStack
-              xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
-              tickParams={tickParams}
-              maxOfYVal={stackedInfo.maxOfYVal}
-              getGraphData={this._getGraphData}
-              getmargins={this._getMargins}
-              customizedCallout={this._getCustomizedCallout()}
-              onChartMouseLeave={this._handleChartMouseLeave}
-              enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
-              /* eslint-disable react/jsx-no-bind */
-              // eslint-disable-next-line react/no-children-prop
-              children={(props: IChildProps) => {
-                this._xAxisRectScale = props.xScale;
-                const ticks = this._xAxisRectScale.ticks();
-                const width1 = this._xAxisRectScale(ticks[ticks.length - 1]);
-                const rectHeight = props.containerHeight! - this.margins.top!;
-                return (
-                  <>
-                    <g>
-                      <rect
-                        id={this._rectId}
-                        width={width1}
-                        height={rectHeight}
-                        fill={'transparent'}
-                        onMouseMove={this._onRectMouseMove}
-                        onMouseOut={this._onRectMouseOut}
-                        onMouseOver={this._onRectMouseMove}
-                      />
-                    </g>
-                    <g>{this._chart}</g>
-                  </>
-                );
-              }}
-            />
-          </ErrorBoundary>
+          <CartesianChart
+            {...this.props}
+            chartTitle={chartTitle}
+            points={points}
+            chartType={ChartTypes.AreaChart}
+            calloutProps={calloutProps}
+            legendBars={legends}
+            isCalloutForStack
+            xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
+            tickParams={tickParams}
+            maxOfYVal={stackedInfo.maxOfYVal}
+            getGraphData={this._getGraphData}
+            getmargins={this._getMargins}
+            customizedCallout={this._getCustomizedCallout()}
+            onChartMouseLeave={this._handleChartMouseLeave}
+            enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
+            /* eslint-disable react/jsx-no-bind */
+            // eslint-disable-next-line react/no-children-prop
+            children={(props: IChildProps) => {
+              this._xAxisRectScale = props.xScale;
+              const ticks = this._xAxisRectScale.ticks();
+              const width1 = this._xAxisRectScale(ticks[ticks.length - 1]);
+              const rectHeight = props.containerHeight! - this.margins.top!;
+              return (
+                <>
+                  <g>
+                    <rect
+                      id={this._rectId}
+                      width={width1}
+                      height={rectHeight}
+                      fill={'transparent'}
+                      onMouseMove={this._onRectMouseMove}
+                      onMouseOut={this._onRectMouseOut}
+                      onMouseOver={this._onRectMouseMove}
+                    />
+                  </g>
+                  <g>{this._chart}</g>
+                </>
+              );
+            }}
+          />
         </div>
       );
     }
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-        <ErrorBoundary hasEmptyState={true} theme={this.props.theme} />
-      </div>
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
