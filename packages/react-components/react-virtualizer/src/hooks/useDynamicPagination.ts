@@ -28,7 +28,8 @@ export const useDynamicVirtualizerPagination = (
     return () => {
       clearListeners();
     };
-  }, [clearListeners]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onScrollEnd = React.useCallback(() => {
     if (!scrollContainer.current || !paginationEnabled || !progressiveItemSizes?.current) {
@@ -36,8 +37,9 @@ export const useDynamicVirtualizerPagination = (
       return;
     }
 
-    const currentScrollPos =
-      axis === 'vertical' ? scrollContainer.current.scrollTop : scrollContainer.current.scrollLeft;
+    const currentScrollPos = Math.round(
+      axis === 'vertical' ? scrollContainer.current.scrollTop : scrollContainer.current.scrollLeft,
+    );
     let closestItemPos = 0;
     let closestItem = 0;
     const endItem = Math.min(currentIndex + virtualizerLength, progressiveItemSizes.current.length);
@@ -48,12 +50,17 @@ export const useDynamicVirtualizerPagination = (
         currentScrollPos >= progressiveItemSizes.current[i]
       ) {
         // Found our in between position
-        const distanceToPrev = currentScrollPos - progressiveItemSizes.current[i];
-        const distanceToNext = progressiveItemSizes.current[i + 1] - currentScrollPos;
+        const distanceToPrev = Math.abs(currentScrollPos - progressiveItemSizes.current[i]);
+        const distanceToNext = Math.abs(progressiveItemSizes.current[i + 1] - currentScrollPos);
+        console.log('Current scroll: ', currentScrollPos);
+        console.log('distanceToNext: ', progressiveItemSizes.current[i + 1]);
+        console.log('distanceToPrev: ', progressiveItemSizes.current[i]);
         if (distanceToPrev < distanceToNext) {
           closestItem = i;
+          console.log('closest item is prev item');
         } else {
           closestItem = i + 1;
+          console.log('closest item is next item');
         }
         break;
       }
@@ -119,7 +126,8 @@ export const useDynamicVirtualizerPagination = (
         }
       }
     },
-    [onScroll, onScrollEnd, paginationEnabled, clearListeners],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [onScroll, onScrollEnd, paginationEnabled],
   );
 
   return paginationRef;

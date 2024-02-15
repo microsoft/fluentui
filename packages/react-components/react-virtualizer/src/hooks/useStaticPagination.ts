@@ -9,8 +9,8 @@ export const useStaticVirtualizerPagination = (
   const { itemSize, axis = 'vertical' } = virtualizerProps;
 
   const timeoutRef = useRef<number | null>(null);
-  const lastScrollPos = useRef<number>(-1);
-  const lastIndexScrolled = useRef<number>(-1);
+  const lastScrollPos = useRef<number>(0);
+  const lastIndexScrolled = useRef<number>(0);
 
   const scrollContainer = React.useRef<HTMLElement | null>(null);
 
@@ -92,7 +92,8 @@ export const useStaticVirtualizerPagination = (
         }
       }
     },
-    [onScroll, onScrollEnd, paginationEnabled, clearListeners],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [onScroll, onScrollEnd, paginationEnabled],
   );
 
   return paginationRef;
