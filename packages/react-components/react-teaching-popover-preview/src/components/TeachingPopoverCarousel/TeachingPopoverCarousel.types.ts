@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
 import { Button } from '@fluentui/react-button';
 import { PopoverContextValue } from '@fluentui/react-popover';
 import { TeachingPopoverCarouselNavProps } from '../TeachingPopoverCarouselNav/index';
@@ -52,9 +52,13 @@ export type TeachingPopoverStrings = {
   pageCountText?: TeachingPopoverPageCountRenderType;
 };
 
-export type TeachingPopoverPageChangeData = {
+export type TeachingPopoverPageChangeData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
+  /**
+   * The page to be set after event has occurred.
+   */
   currentPage: number;
 };
+
 /**
  * TeachingPopoverCarousel Props
  */
@@ -84,33 +88,21 @@ export type TeachingPopoverCarouselProps = Partial<ComponentProps<TeachingPopove
   /**
    * Callback to notify a page change (can be used to update 'currentPage' externally).
    */
-  onPageChange?: (
-    event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>,
-    data: TeachingPopoverPageChangeData,
-  ) => void;
+  onPageChange?: EventHandler<TeachingPopoverPageChangeData>;
 
   /**
    * Callback to notify next page was clicked
    */
-  onClickNext?: (
-    event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>,
-    data: TeachingPopoverPageChangeData,
-  ) => void;
+  onClickNext?: EventHandler<TeachingPopoverPageChangeData>;
 
   /**
    * Callback to notify next page was clicked
    */
-  onClickPrevious?: (
-    event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>,
-    data: TeachingPopoverPageChangeData,
-  ) => void;
+  onClickPrevious?: EventHandler<TeachingPopoverPageChangeData>;
   /**
    * Callback to notify when the final button step of a carousel has been activated.
    */
-  onFinish?: (
-    event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>,
-    data: TeachingPopoverPageChangeData,
-  ) => void;
+  onFinish?: EventHandler<TeachingPopoverPageChangeData>;
 
   /**
    * Controllable page state
