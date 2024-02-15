@@ -5,7 +5,7 @@ import type { RatingProps } from '../Rating/Rating.types';
 import type { RatingItemProps, RatingItemState } from './RatingItem.types';
 import { useRatingItemContextValue_unstable } from '../../contexts/RatingItemContext';
 
-const defaultItemLabel: RatingProps['itemLabel'] = num => num + '';
+const defaultItemLabel = (num: number) => num + '';
 
 /**
  * Create the state required to render RatingItem.

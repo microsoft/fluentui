@@ -19,7 +19,7 @@ export const useRatingDisplay_unstable = (
   props: RatingDisplayProps,
   ref: React.Ref<HTMLDivElement>,
 ): RatingDisplayState => {
-  const { color = 'neutral', count, compact = false, icon = defaultIcons, max = 5, size = 'medium', value } = props;
+  const { color = 'neutral', count, compact = false, icon = defaultIcon, max = 5, size = 'medium', value } = props;
 
   const valueTextId = useId('rating-value-');
   const countTextId = useId('rating-count-');
