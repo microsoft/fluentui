@@ -115,12 +115,7 @@ export const useDynamicVirtualizerPagination = (
 
         scrollContainer.current = instance;
         if (scrollContainer.current) {
-          // if ('onscrollend' in window) {
-          //   console.log('onscrollend - 1');
-          //   scrollContainer.current.addEventListener('scrollend', onScrollEnd);
-          // } else {
           scrollContainer.current.addEventListener('scroll', onScroll);
-          // }
         }
       }
     },
