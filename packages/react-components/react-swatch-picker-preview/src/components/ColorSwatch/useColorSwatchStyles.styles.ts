@@ -2,6 +2,7 @@ import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ColorSwatchSlots, ColorSwatchState } from './ColorSwatch.types';
 import { tokens } from '@fluentui/react-theme';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
   root: 'fui-ColorSwatch',
@@ -17,6 +18,7 @@ const { swatchColor } = swatchCSSVars;
  * Styles for the root slot
  */
 const useStyles = makeResetStyles({
+  position: 'relative',
   boxSizing: 'border-box',
   ...shorthands.border('none'),
   ...shorthands.padding(0),
@@ -30,6 +32,18 @@ const useStyles = makeResetStyles({
     ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorBrandStroke1),
     ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandBackgroundInverted),
   },
+  ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
+});
+
+const useButtonStyles = makeResetStyles({
+  position: 'absolute',
+  left: 0,
+  top: 0,
+  width: '100%',
+  height: '100%',
+  boxSizing: 'border-box',
+  margin: 0,
+  opacity: 0,
 });
 
 const useStylesSelected = makeStyles({
@@ -83,6 +97,7 @@ const useShapeStyles = makeStyles({
  */
 export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwatchState => {
   const styles = useStyles();
+  const buttonStyles = useButtonStyles();
   const selectedStyles = useStylesSelected();
   const sizeStyles = useSizeStyles();
   const shapeStyles = useShapeStyles();
@@ -94,6 +109,8 @@ export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwa
     shapeStyles[state.shape ?? 'square'],
     state.root.className,
   );
+
+  state.button.className = mergeClasses(buttonStyles, state.button.className);
 
   if (state.selected) {
     state.root.className = mergeClasses(state.root.className, selectedStyles.selected);

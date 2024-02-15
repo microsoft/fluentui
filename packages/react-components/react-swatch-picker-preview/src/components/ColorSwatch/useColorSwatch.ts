@@ -1,10 +1,18 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  slot,
+  useMergedRefs,
+  useEventCallback,
+  getPartitionedNativeProps,
+} from '@fluentui/react-utilities';
 import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
 import { SwatchPickerOnSelectionChangeEvent } from '../SwatchPicker/SwatchPicker.types';
-import { useColorSwatchState_unstable } from './useColorSwatchState';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
+import { swatchCSSVars } from './useColorSwatchStyles.styles';
+
+const { swatchColor } = swatchCSSVars;
 
 /**
  * Create the state required to render ColorSwatch.
@@ -13,45 +21,71 @@ import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicke
  * before being passed to renderColorSwatch_unstable.
  *
  * @param props - props from this instance of ColorSwatch
- * @param ref - reference to root HTMLDivElement of ColorSwatch
+ * @param ref - reference to root HTMLButtonElement of ColorSwatch
  */
 export const useColorSwatch_unstable = (
   props: ColorSwatchProps,
   ref: React.Ref<HTMLButtonElement>,
 ): ColorSwatchState => {
   const { color, value } = props;
+  const size = useSwatchPickerContextValue_unstable(ctx => ctx.size);
+  const shape = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
 
-  const context = useSwatchPickerContextValue_unstable();
-  const requestSelectionChange = context.requestSelectionChange;
-  const selected = context.selectedValue === value;
+  const requestSelectionChange = useSwatchPickerContextValue_unstable(ctx => ctx.requestSelectionChange);
+  const selected = useSwatchPickerContextValue_unstable(ctx => ctx.selectedValue === value);
+
   const onClick = useEventCallback((event: SwatchPickerOnSelectionChangeEvent) =>
     requestSelectionChange({ event, selectedValue: value }),
   );
 
+  const nativeProps = getPartitionedNativeProps({
+    props,
+    primarySlotTagName: 'button',
+  });
+
+  const rootVariables = {
+    [swatchColor]: color,
+  };
+
+  const root = slot.always(props.root, {
+    defaultProps: {
+      ref: useFocusWithin<HTMLDivElement>(),
+      role: props.role ?? 'radio',
+      'aria-selected': selected,
+      onClick,
+      ...nativeProps.root,
+    },
+    elementType: 'div',
+  });
+
+  const button = slot.always(props.button, {
+    defaultProps: {
+      ref,
+      type: 'button',
+      ...nativeProps.primary,
+    },
+    elementType: 'button',
+  });
+
   const state: ColorSwatchState = {
     components: {
-      root: 'button',
+      root: 'div',
+      button: 'button',
     },
-    root: slot.always(
-      getIntrinsicElementProps('button', {
-        ref,
-        ...props,
-        role: props.role ?? 'radio',
-        tabIndex: 0,
-        'aria-selected': selected,
-        onClick,
-      }),
-      { elementType: 'button' },
-    ),
-    size: context.size,
-    shape: context.shape,
+    root,
+    button,
+    size,
+    shape,
     selected,
     color,
     value,
   };
 
-  state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLButtonElement>());
+  // Root props
+  state.root.style = {
+    ...rootVariables,
+    ...state.root.style,
+  };
 
-  useColorSwatchState_unstable(state, props);
   return state;
 };
