@@ -81,7 +81,11 @@ export const useListItem_unstable = (
       return;
     }
 
-    toggleItem?.(e, value);
+    // Only toggle if this was actually a pointer click, not an event triggered by Enter
+    // key down (handled below).
+    if (e.isTrusted) {
+      toggleItem?.(e, value);
+    }
   });
 
   const pressEscape = useEventCallback((target: HTMLElement) => {
@@ -138,9 +142,13 @@ export const useListItem_unstable = (
     }
 
     // Space always toggles selection (if enabled)
-    if (isSelectionEnabled && e.key === Space) {
+    if (e.key === Space) {
       e.preventDefault();
-      toggleItem?.(e, value);
+      if (isSelectionEnabled) {
+        toggleItem?.(e, value);
+      } else {
+        e.currentTarget.click();
+      }
     }
 
     // Handle clicking the list item when user presses the Enter key
@@ -168,6 +176,7 @@ export const useListItem_unstable = (
 
     toggleItem?.(ev, value);
   });
+
   const onCheckboxClick = useEventCallback((ev: React.MouseEvent<HTMLInputElement>) => {
     ev.stopPropagation();
     // toggleItem?.(ev, value);

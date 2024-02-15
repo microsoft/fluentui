@@ -41,10 +41,9 @@ export const SingleAction = () => {
             key={name}
             role="listitem"
             aria-label={name}
-            aria-roledescription="button" //needs to be translated string!
+            aria-roledescription="button" //needs to be a translated string!
             onClick={() => alert(name)}
           >
-            {/* <ListItemButton aria-label={name}id={name}> */}
             <Persona
               name={name}
               secondaryText="Available"
@@ -55,7 +54,6 @@ export const SingleAction = () => {
                 },
               }}
             />
-            {/* </ListItemButton> */}
           </ListItem>
         ))}
       </List>
@@ -66,9 +64,13 @@ SingleAction.parameters = {
   docs: {
     description: {
       story: [
-        'When the list item contains actionable element, it is recommended to use the built-in `button` slot on the `ListItem` component to handle these interactions. This will ensure the proper keyboard navigation and accessibility announcements.',
-        ``,
-        'In this case, the `ListItem` itself should __not be focusable, neither it should have any aria roles assigned__. It should be transparent to the screen reader and keyboard navigation.',
+        'When the list item has a primary action on it, you can pass the `onClick` prop to the `ListItem` component.',
+        'This callback will also be automatically called when the user presses the Enter key on the list item.',
+        '',
+        'Since we are directly attaching the `onClick` handler on the `ListItem` itself, it is important to',
+        'explicitely mark the `ListItem` as a button by setting the `aria-roledescription` attribute to a localized string `button`.',
+        '',
+        'This way the screen reader users will be informed that the list item is actionable and can be activated by pressing the Enter key.',
       ].join('\n'),
     },
   },
