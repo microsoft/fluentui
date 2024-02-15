@@ -10,6 +10,8 @@ import { Button } from '@fluentui/react-button';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import { EventData } from '@fluentui/react-utilities';
+import { EventHandler } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
@@ -141,10 +143,10 @@ export type TeachingPopoverCarouselProps = Partial<ComponentProps<TeachingPopove
     paginationType?: 'text' | 'icon';
     strings: TeachingPopoverStrings;
     defaultCurrentPage?: number;
-    onPageChange?: (event: React_2.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>, data: TeachingPopoverPageChangeData) => void;
-    onClickNext?: (event: React_2.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>, data: TeachingPopoverPageChangeData) => void;
-    onClickPrevious?: (event: React_2.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>, data: TeachingPopoverPageChangeData) => void;
-    onFinish?: (event: React_2.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>, data: TeachingPopoverPageChangeData) => void;
+    onPageChange?: EventHandler<TeachingPopoverPageChangeData>;
+    onClickNext?: EventHandler<TeachingPopoverPageChangeData>;
+    onClickPrevious?: EventHandler<TeachingPopoverPageChangeData>;
+    onFinish?: EventHandler<TeachingPopoverPageChangeData>;
     currentPage?: number;
 };
 
