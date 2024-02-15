@@ -9,18 +9,14 @@ export const useDynamicVirtualizerPagination = (
   const { axis = 'vertical', currentIndex, progressiveItemSizes, virtualizerLength } = virtualizerProps;
 
   const timeoutRef = useRef<number | null>(null);
-  const lastScrollPos = useRef<number>(0);
-  const lastIndexScrolled = useRef<number>(0);
+  const lastScrollPos = useRef<number>(-1);
+  const lastIndexScrolled = useRef<number>(-1);
 
   const scrollContainer = React.useRef<HTMLElement | null>(null);
 
   const clearListeners = () => {
     if (scrollContainer.current) {
-      if ('onScrollEnd' in window) {
-        scrollContainer.current.removeEventListener('scrollEnd', onScrollEnd);
-      } else {
-        scrollContainer.current.removeEventListener('scroll', onScroll);
-      }
+      scrollContainer.current.removeEventListener('scroll', onScroll);
       scrollContainer.current = null;
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
@@ -32,7 +28,6 @@ export const useDynamicVirtualizerPagination = (
     return () => {
       clearListeners();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onScrollEnd = React.useCallback(() => {
@@ -55,10 +50,8 @@ export const useDynamicVirtualizerPagination = (
         let distanceToPrev = currentScrollPos - progressiveItemSizes.current[i];
         let distanceToNext = progressiveItemSizes.current[i + 1] - currentScrollPos;
         if (distanceToPrev < distanceToNext) {
-          closestItemPos = progressiveItemSizes.current[i];
           closestItem = i;
         } else {
-          closestItemPos = progressiveItemSizes.current[i + 1];
           closestItem = i + 1;
         }
         break;
@@ -72,11 +65,15 @@ export const useDynamicVirtualizerPagination = (
       const isSecondaryScroll = lastScrollPos.current === currentScrollPos;
       const posMod = isSecondaryScroll ? 0 : nextTarget;
       nextItem = closestItem + posMod;
-      closestItemPos = progressiveItemSizes.current[nextItem];
     } else {
       // Pagination for anything else can just jump to the closest!
+      // This will also handle a case where we scrolled to the exact correct position (noop)
       nextItem = closestItem;
     }
+
+    // Safeguard nextItem
+    nextItem = Math.min(Math.max(0, nextItem), progressiveItemSizes.current.length);
+    closestItemPos = progressiveItemSizes.current[nextItem];
 
     if (axis === 'vertical') {
       scrollContainer.current.scrollTo({ top: closestItemPos, behavior: 'smooth' });
@@ -112,15 +109,18 @@ export const useDynamicVirtualizerPagination = (
         return;
       }
       if (scrollContainer.current !== instance) {
+        console.log('Scroll container:', scrollContainer.current);
+        console.log('instance:', instance);
         clearListeners();
 
         scrollContainer.current = instance;
         if (scrollContainer.current) {
-          if ('onScrollEnd' in window) {
-            scrollContainer.current.addEventListener('scrollEnd', onScrollEnd);
-          } else {
-            scrollContainer.current.addEventListener('scroll', onScroll);
-          }
+          // if ('onscrollend' in window) {
+          //   console.log('onscrollend - 1');
+          //   scrollContainer.current.addEventListener('scrollend', onScrollEnd);
+          // } else {
+          scrollContainer.current.addEventListener('scroll', onScroll);
+          // }
         }
       }
     },

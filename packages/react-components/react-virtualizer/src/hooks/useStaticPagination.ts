@@ -9,18 +9,15 @@ export const useStaticVirtualizerPagination = (
   const { itemSize, axis = 'vertical' } = virtualizerProps;
 
   const timeoutRef = useRef<number | null>(null);
-  const lastScrollPos = useRef<number>(0);
-  const lastIndexScrolled = useRef<number>(0);
+  const lastScrollPos = useRef<number>(-1);
+  const lastIndexScrolled = useRef<number>(-1);
 
   const scrollContainer = React.useRef<HTMLElement | null>(null);
 
   const clearListeners = () => {
     if (scrollContainer.current) {
-      if ('onscrollend' in window) {
-        scrollContainer.current.removeEventListener('scrollend', onScrollEnd);
-      } else {
-        scrollContainer.current.removeEventListener('scroll', onScroll);
-      }
+      scrollContainer.current.removeEventListener('scroll', onScroll);
+
       scrollContainer.current = null;
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
@@ -92,11 +89,7 @@ export const useStaticVirtualizerPagination = (
 
         scrollContainer.current = instance;
         if (scrollContainer.current) {
-          if ('onscrollend' in window) {
-            scrollContainer.current.addEventListener('scrollend', onScrollEnd);
-          } else {
-            scrollContainer.current.addEventListener('scroll', onScroll);
-          }
+          scrollContainer.current.addEventListener('scroll', onScroll);
         }
       }
     },
