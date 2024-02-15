@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const APP_TITLE = 'Accessible Prototypes';
+const APP_TITLE = 'Accessible TreeGrids';
 const APP_TITLE_SEPARATOR = ' | ';
 
 interface FullscreenLinkProps {
@@ -17,16 +17,16 @@ export const FullscreenLink = (props: FullscreenLinkProps) => (
   </a>
 );
 
-export const PrototypesListLink: React.FC = props => (
+export const TreeGridsListLink: React.FC = props => (
   <a
     className="sbdocs sbdocs-a"
-    href={`iframe.html?id=concepts-developer-accessibility-prototypes-list-of-prototypes--page`}
+    href={`iframe.html?id=concepts-developer-accessibility-treegrids-list-of-treegrids--page`}
   >
     {props.children}
   </a>
 );
 
-export const BackLink = () => <PrototypesListLink>Go back to main menu</PrototypesListLink>;
+export const BackLink = () => <TreeGridsListLink>Go back to main menu</TreeGridsListLink>;
 
 export const Prototype: React.FC<{ pageTitle: string }> = ({ pageTitle, children }) => {
   React.useEffect(() => {

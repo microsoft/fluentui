@@ -13,5 +13,5 @@ export { UsingListsWithActions } from './Meet/AccessibleMeetUsingListsWithAction
 export { UsingLists } from './Meet/AccessibleMeetUsingLists.stories';
 
 export default {
-  title: 'Concepts/Developer/Accessibility/Prototypes',
+  title: 'Concepts/Developer/Accessibility/TreeGrids',
 };
