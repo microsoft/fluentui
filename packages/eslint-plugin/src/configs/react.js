@@ -2,6 +2,7 @@
 
 const path = require('path');
 const configHelpers = require('../utils/configHelpers');
+const { __internal } = require('../internal');
 
 /** @type {import("eslint").Linter.RulesRecord} */
 const typeAwareRules = {
@@ -58,5 +59,6 @@ module.exports = {
         'react/jsx-no-bind': 'off',
       },
     },
-  ],
+    __internal.overrides.react,
+  ].filter(Boolean),
 };

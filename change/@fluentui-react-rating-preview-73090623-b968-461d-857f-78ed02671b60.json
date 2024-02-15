@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: update vertical styling for RatingDisplay to fix vertical alignment",
+  "packageName": "@fluentui/react-rating-preview",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}

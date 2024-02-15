@@ -6,8 +6,7 @@ import { tokens } from '@fluentui/react-theme';
 export const ratingItemClassNames: SlotClassNames<RatingItemSlots> = {
   root: 'fui-RatingItem',
   selectedIcon: 'fui-RatingItem__selectedIcon',
-  unselectedFilledIcon: 'fui-RatingItem__unselectedFilledIcon',
-  unselectedOutlineIcon: 'fui-RatingItem__unselectedOutlineIcon',
+  unselectedIcon: 'fui-RatingItem__unselectedIcon',
   halfValueInput: 'fui-RatingItem__halfValueInput',
   fullValueInput: 'fui-RatingItem__fullValueInput',
 };
@@ -23,24 +22,28 @@ const useStyles = makeStyles({
     fontSize: '12px',
     width: '12px',
     height: '12px',
+    lineHeight: '12px',
   },
 
   medium: {
     fontSize: '16px',
     width: '16px',
     height: '16px',
+    lineHeight: '16px',
   },
 
   large: {
     fontSize: '20px',
     width: '20px',
     height: '20px',
+    lineHeight: '20px',
   },
 
   'extra-large': {
     fontSize: '28px',
     width: '28px',
     height: '28px',
+    lineHeight: '28px',
   },
 });
 
@@ -74,6 +77,8 @@ const useIndicatorBaseClassName = makeResetStyles({
   position: 'absolute',
   left: 0,
   right: 0,
+  top: 0,
+  bottom: 0,
 });
 
 const useIndicatorStyles = makeStyles({
@@ -90,14 +95,12 @@ const useIndicatorStyles = makeStyles({
   marigold: {
     color: tokens.colorPaletteMarigoldBorderActive,
   },
-  highContrastOnly: {
-    color: tokens.colorTransparentStroke,
-  },
   filled: {
     color: tokens.colorNeutralBackground6,
+    stroke: tokens.colorTransparentStroke,
     '@media (forced-colors: active)': {
-      // In high contrast the 'outline' icon is always visible, so we need to hide the 'filled' icon.
-      display: 'none',
+      color: 'Canvas',
+      stroke: 'CanvasText',
     },
   },
   brandFilled: {
@@ -112,7 +115,7 @@ const useIndicatorStyles = makeStyles({
  * Apply styling to the RatingItem slots based on the state
  */
 export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItemState => {
-  const { color, size, iconFillWidth } = state;
+  const { color, size, iconFillWidth, appearance } = state;
   const styles = useStyles();
   const inputBaseClassName = useInputBaseClassName();
   const inputStyles = useInputStyles();
@@ -139,29 +142,18 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
     );
   }
 
-  if (state.unselectedOutlineIcon) {
-    state.unselectedOutlineIcon.className = mergeClasses(
-      ratingItemClassNames.unselectedOutlineIcon,
+  if (state.unselectedIcon) {
+    state.unselectedIcon.className = mergeClasses(
+      ratingItemClassNames.unselectedIcon,
       indicatorBaseClassName,
-      color === 'brand' && indicatorStyles.brand,
-      color === 'marigold' && indicatorStyles.marigold,
-      // If there is also a filled icon, the outline icon is only visible in high contrast
-      state.unselectedFilledIcon && indicatorStyles.highContrastOnly,
+      appearance === 'filled' && indicatorStyles.filled,
+      color === 'brand' && (appearance === 'filled' ? indicatorStyles.brandFilled : indicatorStyles.brand),
+      color === 'marigold' && (appearance === 'filled' ? indicatorStyles.marigoldFilled : indicatorStyles.marigold),
       iconFillWidth === 0.5 && indicatorStyles.upperHalf,
-      state.unselectedOutlineIcon.className,
+      state.unselectedIcon.className,
     );
   }
-  if (state.unselectedFilledIcon) {
-    state.unselectedFilledIcon.className = mergeClasses(
-      ratingItemClassNames.unselectedFilledIcon,
-      indicatorBaseClassName,
-      indicatorStyles.filled,
-      color === 'brand' && indicatorStyles.brandFilled,
-      color === 'marigold' && indicatorStyles.marigoldFilled,
-      iconFillWidth === 0.5 && indicatorStyles.upperHalf,
-      state.unselectedFilledIcon.className,
-    );
-  }
+
   if (state.selectedIcon) {
     state.selectedIcon.className = mergeClasses(
       ratingItemClassNames.selectedIcon,

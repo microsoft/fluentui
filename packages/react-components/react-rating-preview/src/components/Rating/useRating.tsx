@@ -67,6 +67,7 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
         {
           ref,
           children: rootChildren,
+          role: 'radiogroup',
           ...props,
         },
         ['onChange'],

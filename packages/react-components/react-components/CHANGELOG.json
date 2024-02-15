@@ -2,6 +2,136 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 06 Feb 2024 17:55:17 GMT",
+      "tag": "@fluentui/react-components_v9.46.4",
+      "version": "9.46.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "f48102457c4fd9ac295e02b8fa70946c6e80e6d7",
+            "comment": "chore: adds @fluentui/react-jsx-runtime as dependency"
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "c54b3ce6d7f3b6a032471dc67e1ec3cf464b6503",
+            "comment": "fix: Update year and month pickers to use the correct keyboard navigation type and apply requested focus indicator width from design for day picker."
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "c54b3ce6d7f3b6a032471dc67e1ec3cf464b6503",
+            "comment": "fix: Apply aria-disabled to DatePicker's contentAfter slot to avoid confusion when using screen readers."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "1b8ade8a67f75ec4007f54a52a94f61879f6b215",
+            "comment": "fix: MessageBar with no actions should have correct spacing"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "4a4c0c8f45a78ed984d326106c0832ebe536466b",
+            "comment": "fix(react-migration-v0-v9): add northstar to dependencies"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "7b89afa6ca231f610fcb26f5d816e0b86faec3d9",
+            "comment": "chore: bump northstar version"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "0a9926b27316b3e29009638e58458bedf49091ba",
+            "comment": "fix: Resize heuristic should account for zero dimensions"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "e45b0408501c19f59f41205e13e4ed956a71e23e",
+            "comment": "chore: add accesibility props to Rating and RatingDisplay"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "27ca189bc2fde6aade956712c1f87845296981bd",
+            "comment": "chore: add accessibility props to Rating and RatingDisplay"
+          },
+          {
+            "author": "syphe@outlook.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "af94003107288eaa92a600c73ce266459d52b610",
+            "comment": "Adds custom onChange callback on SearchBox preview so consumers can handle clear event."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "449162dbd973fa84b14569f98e32876665eb8fc2",
+            "comment": "bugfix: regression fix for focus and blur events on TreeItem"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "3bdeb1785dbfc74aeb5c60a50c1d14fdc2078e45",
+            "comment": "bugfix: onOpenChange inconsistent between Tree and TreeItem"
+          }
+        ],
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "585e79b5bd8c95a75d947b5d98784a1d95139f61",
+            "comment": "chore: Simplify high contrast visuals for RatingItem, and remove iconOutline from RatingDisplay"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "1ee49f94524fc6b74e157bff43582318adbbbcfd",
+            "comment": "feat: useSetKeyboardNavigation hook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jan 2024 23:16:53 GMT",
+      "tag": "@fluentui/react-components_v9.46.3",
+      "version": "9.46.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "4ea2ac442b26360c3e0e86a0225ac4570c89f636",
+            "comment": "DataGrid to use dedicated custom events instead of simulated keypresses."
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "4ea2ac442b26360c3e0e86a0225ac4570c89f636",
+            "comment": "Tabster 5.3.0 and Keyborg 2.4.1."
+          }
+        ],
+        "minor": [
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "a56a5d3223c192a2a815ed84346825326541280a",
+            "comment": "Optional ShadowDOM support."
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "a56a5d3223c192a2a815ed84346825326541280a",
+            "comment": "getParent() version with ShadowDOM support."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jan 2024 13:56:05 GMT",
       "tag": "@fluentui/react-components_v9.46.2",
       "version": "9.46.2",

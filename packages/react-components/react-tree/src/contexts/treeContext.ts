@@ -21,7 +21,7 @@ export type TreeContextValue = {
 };
 
 export type TreeItemRequest = { itemType: TreeItemType } & (
-  | (DistributiveOmit<TreeOpenChangeData, 'open' | 'openItems'> & { requestType: 'open' })
+  | (DistributiveOmit<TreeOpenChangeData, 'openItems'> & { requestType: 'open' })
   | (TreeNavigationData_unstable & { requestType: 'navigate' })
   | (DistributiveOmit<TreeCheckedChangeData, 'selectionMode' | 'checkedItems'> & { requestType: 'selection' })
 );

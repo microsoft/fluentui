@@ -2,6 +2,113 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 12 Feb 2024 07:25:24 GMT",
+      "tag": "@fluentui/react_v8.115.6",
+      "version": "8.115.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ce796ee773711e0170623d56388b78ed4893a038",
+            "comment": "fix: Datepicker with input renders semantic button for voice control"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Feb 2024 07:26:18 GMT",
+      "tag": "@fluentui/react_v8.115.5",
+      "version": "8.115.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "cd1e26c488d7290d6ffa11eebdda50bbbe19d3aa",
+            "comment": "Fix: Enable click events on coachmark for mobile & additional entry points on desktop (currently requires mouse movement only)"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Feb 2024 07:27:39 GMT",
+      "tag": "@fluentui/react_v8.115.4",
+      "version": "8.115.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "makotom@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "5aefa438776a47278b09f5073149bb94fb14c044",
+            "comment": "fix: Correctly calculating height of Callout aligning to the top and covering target."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Jan 2024 07:27:56 GMT",
+      "tag": "@fluentui/react_v8.115.3",
+      "version": "8.115.3",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "77bc3fe457ee3bb4a7808cc6dd92b3427a393bb1",
+            "comment": "chore: remove bundle-size-auditor package,its usage and replace it with monosize on ci"
+          }
+        ],
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38",
+            "comment": "fix: CommandBar menu icon is not disabled in high contrast mode"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.52",
+            "commit": "eeb2656f81977a5821c36ca854fe2781d9dcfd1b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.32",
+            "commit": "eeb2656f81977a5821c36ca854fe2781d9dcfd1b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.40",
+            "commit": "eeb2656f81977a5821c36ca854fe2781d9dcfd1b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.10.3",
+            "commit": "eeb2656f81977a5821c36ca854fe2781d9dcfd1b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jan 2024 07:26:36 GMT",
+      "tag": "@fluentui/react_v8.115.2",
+      "version": "8.115.2",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "41c129b1db39c32ba410be8e614750a079fb2ab8",
+            "comment": "chore: setup monosize for measuring bundle size which will replace-size auditor bot"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jan 2024 07:27:14 GMT",
       "tag": "@fluentui/react_v8.115.2",
       "version": "8.115.2",

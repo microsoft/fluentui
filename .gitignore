@@ -59,6 +59,7 @@ dist.stats.json
 bower_components
 node_modules
 temp
+tmp
 lib
 lib-amd
 lib-commonjs
