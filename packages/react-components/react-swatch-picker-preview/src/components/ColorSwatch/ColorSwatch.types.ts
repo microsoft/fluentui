@@ -9,7 +9,7 @@ export type ColorSwatchSlots = {
 /**
  * ColorSwatch Props
  */
-export type ColorSwatchProps = ComponentProps<ColorSwatchSlots, 'button'> &
+export type ColorSwatchProps = Omit<ComponentProps<Partial<ColorSwatchSlots>, 'button'>, 'children'> &
   Pick<SwatchPickerProps, 'size' | 'shape'> & {
     /**
      * Swatch color

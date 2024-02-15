@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  getIntrinsicElementProps,
-  slot,
-  useMergedRefs,
-  useEventCallback,
-  getPartitionedNativeProps,
-} from '@fluentui/react-utilities';
+import { slot, useEventCallback, getPartitionedNativeProps } from '@fluentui/react-utilities';
 import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
 import { SwatchPickerOnSelectionChangeEvent } from '../SwatchPicker/SwatchPicker.types';
 import { useFocusWithin } from '@fluentui/react-tabster';

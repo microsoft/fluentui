@@ -6,6 +6,7 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
   root: 'fui-ColorSwatch',
+  button: 'fui-ColorSwatch__button',
 };
 
 export const swatchCSSVars = {

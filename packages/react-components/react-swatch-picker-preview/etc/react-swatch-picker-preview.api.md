@@ -18,23 +18,24 @@ export const ColorSwatch: ForwardRefComponent<ColorSwatchProps>;
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots>;
 
 // @public
-export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & {
+export type ColorSwatchProps = Omit<ComponentProps<Partial<ColorSwatchSlots>, 'button'>, 'children'> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
     color: string;
-    size?: 'extraSmall' | 'small' | 'medium' | 'large';
-    shape?: 'rounded' | 'square' | 'circular';
     value: string;
 };
 
 // @public (undocumented)
 export type ColorSwatchSlots = {
-    root: Slot<'button'>;
+    root: NonNullable<Slot<'div'>>;
+    button: NonNullable<Slot<'button'>>;
 };
 
 // @public
-export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwatchProps, 'color' | 'size' | 'shape' | 'value'> & SwatchContextValue;
+export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwatchProps, 'color' | 'size' | 'shape' | 'value'> & {
+    selected: boolean;
+};
 
 // @public
-export const renderColorSwatch_unstable: (state: ColorSwatchState, contextValues: SwatchContextValues) => JSX.Element;
+export const renderColorSwatch_unstable: (state: ColorSwatchState) => JSX.Element;
 
 // @public
 export const renderSwatchPicker_unstable: (state: SwatchPickerState, contextValues: SwatchPickerContextValue) => JSX.Element;
