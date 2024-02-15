@@ -50,13 +50,9 @@ export const useStaticVirtualizerPagination = (
     if (closestItem - lastIndexScrolled.current === 0) {
       // Special case for go to next/previous with minimum amount of scroll needed
       const nextTarget = lastScrollPos.current < currentScrollPos ? 1 : -1;
-      console.log('Next target: ', nextTarget);
       const isSecondaryScroll = lastScrollPos.current === currentScrollPos;
-      console.log('isSecondaryScroll: ', isSecondaryScroll);
       const posMod = isSecondaryScroll ? 0 : nextTarget;
-      console.log('posMod: ', posMod);
 
-      console.log('going to item: ', closestItem + posMod);
       nextItem = closestItem + posMod;
     } else {
       // Pagination for anything else can just jump to the closest!
@@ -64,7 +60,6 @@ export const useStaticVirtualizerPagination = (
     }
 
     const nextItemPos = nextItem * itemSize;
-    console.log('closestItemPos: ', nextItemPos);
 
     if (axis === 'vertical') {
       scrollContainer.current.scrollTo({ top: nextItemPos, behavior: 'smooth' });

@@ -10,6 +10,7 @@ export const useDynamicVirtualizerPagination = (
 
   const timeoutRef = useRef<number | null>(null);
   const lastScrollPos = useRef<number>(0);
+  const lastIndexScrolled = useRef<number>(0);
 
   const scrollContainer = React.useRef<HTMLElement | null>(null);
 
@@ -35,31 +36,46 @@ export const useDynamicVirtualizerPagination = (
   }, []);
 
   const onScrollEnd = React.useCallback(() => {
-    if (!scrollContainer.current || !paginationEnabled) {
+    if (!scrollContainer.current || !paginationEnabled || !progressiveItemSizes?.current) {
       // No container found
       return;
     }
 
     let currentScrollPos = axis === 'vertical' ? scrollContainer.current.scrollTop : scrollContainer.current.scrollLeft;
-
-    // const closestItem = Math.round(currentScrollPos / itemSize);
-    // // We minus one so we include the edge pixel
-    // const closestItemPos = closestItem * itemSize;
-    let closestItemPos;
-    let endItem = Math.min(currentIndex + virtualizerLength, progressiveItemSizes.length);
+    let closestItemPos = 0;
+    let closestItem = 0;
+    let endItem = Math.min(currentIndex + virtualizerLength, progressiveItemSizes.current.length);
 
     for (let i = currentIndex; i < endItem - 1; i++) {
-      if (currentScrollPos <= progressiveItemSizes[i + 1] && currentScrollPos >= progressiveItemSizes[i]) {
+      if (
+        currentScrollPos <= progressiveItemSizes.current[i + 1] &&
+        currentScrollPos >= progressiveItemSizes.current[i]
+      ) {
         // Found our in between position
-        let distanceToPrev = currentScrollPos - progressiveItemSizes[i];
-        let distanceToNext = progressiveItemSizes[i + 1] - currentScrollPos;
+        let distanceToPrev = currentScrollPos - progressiveItemSizes.current[i];
+        let distanceToNext = progressiveItemSizes.current[i + 1] - currentScrollPos;
         if (distanceToPrev < distanceToNext) {
-          closestItemPos = progressiveItemSizes[i];
+          closestItemPos = progressiveItemSizes.current[i];
+          closestItem = i;
         } else {
-          closestItemPos = progressiveItemSizes[i + 1];
+          closestItemPos = progressiveItemSizes.current[i + 1];
+          closestItem = i + 1;
         }
         break;
       }
+    }
+
+    let nextItem;
+    if (closestItem - lastIndexScrolled.current === 0) {
+      // Special case for go to next/previous with minimum amount of scroll needed
+      const nextTarget = lastScrollPos.current < currentScrollPos ? 1 : -1;
+      const isSecondaryScroll = lastScrollPos.current === currentScrollPos;
+      const posMod = isSecondaryScroll ? 0 : nextTarget;
+      nextItem = closestItem + posMod;
+      closestItemPos = progressiveItemSizes.current[nextItem];
+    } else {
+      // Pagination for anything else can just jump to the closest!
+      nextItem = closestItem;
     }
 
     if (axis === 'vertical') {
@@ -67,7 +83,9 @@ export const useDynamicVirtualizerPagination = (
     } else {
       scrollContainer.current.scrollTo({ left: closestItemPos, behavior: 'smooth' });
     }
-    lastScrollPos.current = currentScrollPos;
+    lastScrollPos.current = progressiveItemSizes.current[nextItem];
+    lastIndexScrolled.current = nextItem;
+    console.log('Item sizes:', progressiveItemSizes.current);
   }, [
     paginationEnabled,
     currentIndex,

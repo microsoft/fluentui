@@ -19,7 +19,7 @@ export type VirtualizerStaticPaginationProps = {
 };
 
 export type VirtualizerDynamicPaginationProps = {
-  progressiveItemSizes: number[];
+  progressiveItemSizes: React.RefObject<number[]> | undefined;
   currentIndex: number;
   axis?: 'vertical' | 'horizontal';
   virtualizerLength: number;

@@ -48,7 +48,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
   const paginationRef = useDynamicVirtualizerPagination(
     {
       axis,
-      progressiveItemSizes: _imperativeVirtualizerRef.current?.progressiveSizes.current ?? [],
+      progressiveItemSizes: _imperativeVirtualizerRef.current?.progressiveSizes,
       virtualizerLength,
       currentIndex: contextState?.contextIndex ?? 0,
     },
