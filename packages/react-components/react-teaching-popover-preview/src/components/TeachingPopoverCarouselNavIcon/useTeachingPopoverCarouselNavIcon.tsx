@@ -44,7 +44,7 @@ export const useTeachingPopoverCarouselNavIcon_unstable = (
       userOnClick?.(event);
       if (!event.defaultPrevented && isHTMLElement(event.target)) {
         setCurrentPage(index);
-        onPageChange?.(event, { currentPage: index });
+        onPageChange?.(event, { event, type: 'click', currentPage: index });
       }
     },
     [setCurrentPage, index, onPageChange, userOnClick],

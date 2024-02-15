@@ -45,19 +45,19 @@ export const useTeachingPopoverCarousel_unstable = (
   const handleNextButtonClick = useEventCallback(
     (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
       const nextPage = Math.min(currentPage + 1, totalPages);
-      props.onClickNext?.(event, { currentPage: nextPage });
+      props.onClickNext?.(event, { event, type: 'click', currentPage: nextPage });
       if (event.isDefaultPrevented()) {
         return;
       }
 
       if (nextPage >= totalPages) {
-        onFinish?.(event, { currentPage });
+        onFinish?.(event, { event, type: 'click', currentPage });
         if (triggerRef.current) {
           triggerRef.current.focus();
         }
         toggleOpen(event);
       } else {
-        onPageChange?.(event, { currentPage: nextPage });
+        onPageChange?.(event, { event, type: 'click', currentPage: nextPage });
         setCurrentPage(nextPage);
       }
     },
@@ -66,7 +66,7 @@ export const useTeachingPopoverCarousel_unstable = (
   const handlePrevButtonClick = useEventCallback(
     (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
       const prevPage = Math.max(currentPage - 1, 0);
-      props.onClickNext?.(event, { currentPage: prevPage });
+      props.onClickNext?.(event, { event, type: 'click', currentPage: prevPage });
       if (event.isDefaultPrevented()) {
         return;
       }
@@ -77,7 +77,7 @@ export const useTeachingPopoverCarousel_unstable = (
         }
         toggleOpen(event);
       } else {
-        onPageChange?.(event, { currentPage: prevPage });
+        onPageChange?.(event, { event, type: 'click', currentPage: prevPage });
         setCurrentPage(prevPage);
       }
     },
