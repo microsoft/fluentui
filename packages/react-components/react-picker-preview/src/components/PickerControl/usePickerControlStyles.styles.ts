@@ -21,6 +21,7 @@ const useStyles = makeStyles({
     minWidth: '250px',
     position: 'relative',
     flexWrap: 'wrap',
+    paddingLeft: tokens.spacingHorizontalMNudge,
 
     // windows high contrast mode focus indicator
     ':focus-within': {
@@ -81,14 +82,14 @@ const useStyles = makeStyles({
 
   // size variants
   small: {
-    paddingRight: tokens.spacingHorizontalSNudge,
+    paddingRight: `calc(${tokens.spacingHorizontalSNudge} + 20px)`,
   },
   medium: {
-    paddingRight: tokens.spacingHorizontalMNudge,
+    paddingRight: `calc(${tokens.spacingHorizontalMNudge} + 20px)`,
   },
   large: {
     columnGap: tokens.spacingHorizontalSNudge,
-    paddingRight: tokens.spacingHorizontalM,
+    paddingRight: `calc(${tokens.spacingHorizontalM} + 20px)`,
   },
 
   // appearance variants

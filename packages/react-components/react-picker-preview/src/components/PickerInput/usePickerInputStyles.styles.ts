@@ -33,6 +33,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     fontFamily: tokens.fontFamilyBase,
     flexGrow: 1,
+    paddingLeft: tokens.spacingHorizontalXXS,
 
     '&:focus': {
       outlineStyle: 'none',
@@ -48,17 +49,14 @@ const useStyles = makeStyles({
   small: {
     height: fieldHeights.small,
     ...typographyStyles.caption1,
-    ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`),
   },
   medium: {
     height: fieldHeights.medium,
     ...typographyStyles.body1,
-    ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`),
   },
   large: {
     height: fieldHeights.large,
     ...typographyStyles.body2,
-    ...shorthands.padding(0, 0, 0, `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`),
   },
   disabled: {
     color: tokens.colorNeutralForegroundDisabled,
@@ -79,7 +77,9 @@ const useIconStyles = makeStyles({
     cursor: 'pointer',
     display: 'block',
     fontSize: tokens.fontSizeBase500,
-
+    position: 'absolute',
+    right: '10px',
+    top: '5px',
     // the SVG must have display: block for accurate positioning
     // otherwise an extra inline space is inserted after the svg element
     '& svg': {

@@ -21,7 +21,7 @@ const InputExample = () => {
   };
 
   return (
-    <div style={{ maxWidth: 600 }}>
+    <div style={{ maxWidth: 400 }}>
       <Picker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <PickerControl clearable>
           <PickerTagGroup size="small">
