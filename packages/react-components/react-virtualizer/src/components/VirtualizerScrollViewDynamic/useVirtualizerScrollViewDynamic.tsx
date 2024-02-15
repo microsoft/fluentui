@@ -8,7 +8,7 @@ import type {
 import { useDynamicVirtualizerMeasure } from '../../Hooks';
 import { useVirtualizerContextState_unstable, scrollToItemDynamic } from '../../Utilities';
 import type { VirtualizerDataRef } from '../Virtualizer/Virtualizer.types';
-import { useImperativeHandle } from 'react';
+import { useImperativeHandle, useState } from 'react';
 import { useMeasureList } from '../../hooks/useMeasureList';
 import type { IndexedResizeCallbackElement } from '../../hooks/useMeasureList';
 import { useDynamicVirtualizerPagination } from '../../hooks/useDynamicPagination';
@@ -21,6 +21,9 @@ export function useVirtualizerScrollViewDynamic_unstable(
 
   let sizeTrackingArray = React.useRef<number[]>(new Array(props.numItems).fill(props.itemSize));
 
+  // This lets us trigger updates when a size change occurs.
+  const [sizeUpdateCount, setSizeUpdateCount] = useState(0);
+
   const getChildSizeAuto = React.useCallback(
     (index: number) => {
       if (sizeTrackingArray.current.length <= index || sizeTrackingArray.current[index] <= 0) {
@@ -32,7 +35,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
        */
       return sizeTrackingArray.current[index];
     },
-    [sizeTrackingArray, props.itemSize],
+    [sizeTrackingArray, props.itemSize, sizeUpdateCount],
   );
 
   const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useDynamicVirtualizerMeasure({
@@ -120,6 +123,12 @@ export function useVirtualizerScrollViewDynamic_unstable(
     props.itemSize,
   );
 
+  if (enablePagination && measureObject.sizeUpdateCount != sizeUpdateCount) {
+    /* This enables us to let callback know that the sizes have been updated
+    triggers a re-render but is only required on pagination (else index change handles) */
+    setSizeUpdateCount(measureObject.sizeUpdateCount);
+  }
+
   if (axis === 'horizontal') {
     sizeTrackingArray = measureObject.widthArray;
   } else {
@@ -135,13 +144,6 @@ export function useVirtualizerScrollViewDynamic_unstable(
             {...child.props}
             key={child.key}
             ref={(element: HTMLElement & IndexedResizeCallbackElement) => {
-              // If a ref exists in props, call it
-              if (typeof child.props.ref === 'function') {
-                child.props.ref(element);
-              } else if (child.props.ref) {
-                child.props.ref.current = element;
-              }
-
               if (child.hasOwnProperty('ref')) {
                 // We must access this from the child directly, not props (forward ref).
                 // eslint-disable-next-line  @typescript-eslint/no-explicit-any

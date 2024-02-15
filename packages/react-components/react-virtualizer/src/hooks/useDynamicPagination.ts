@@ -85,11 +85,10 @@ export const useDynamicVirtualizerPagination = (
     }
     lastScrollPos.current = progressiveItemSizes.current[nextItem];
     lastIndexScrolled.current = nextItem;
-    console.log('Item sizes:', progressiveItemSizes.current);
   }, [
     paginationEnabled,
     currentIndex,
-    progressiveItemSizes,
+    progressiveItemSizes?.current,
     scrollContainer,
     scrollContainer.current,
     virtualizerLength,
