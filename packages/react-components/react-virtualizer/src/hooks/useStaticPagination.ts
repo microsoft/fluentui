@@ -33,7 +33,6 @@ export const useStaticVirtualizerPagination = (
   }, []);
 
   const onScrollEnd = React.useCallback(() => {
-    console.log('On scroll end');
     if (!scrollContainer.current || !paginationEnabled) {
       // No container found
       return;

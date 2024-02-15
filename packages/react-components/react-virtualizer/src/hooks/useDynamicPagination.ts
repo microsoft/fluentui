@@ -109,8 +109,6 @@ export const useDynamicVirtualizerPagination = (
         return;
       }
       if (scrollContainer.current !== instance) {
-        console.log('Scroll container:', scrollContainer.current);
-        console.log('instance:', instance);
         clearListeners();
 
         scrollContainer.current = instance;
