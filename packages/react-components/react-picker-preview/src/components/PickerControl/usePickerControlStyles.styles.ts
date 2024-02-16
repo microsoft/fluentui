@@ -13,6 +13,7 @@ export const pickerControlClassNames: SlotClassNames<PickerControlSlots> = {
  */
 const useStyles = makeStyles({
   root: {
+    minHeight: '30px',
     alignItems: 'center',
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
     boxSizing: 'border-box',

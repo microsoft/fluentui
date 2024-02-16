@@ -1,22 +1,195 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { PickerButtonSlots, PickerButtonState } from './PickerButton.types';
 
 export const pickerButtonClassNames: SlotClassNames<PickerButtonSlots> = {
   root: 'fui-PickerButton',
-  // TODO: add class names for all slots on PickerButtonSlots.
-  // Should be of the form `<slotName>: 'fui-PickerButton__<slotName>`
+  clearButton: 'fui-PickerButton__clearButton',
+  expandIcon: 'fui-PickerButton__expandIcon',
+};
+
+export const iconSizes = {
+  small: '16px',
+  medium: '20px',
+  large: '24px',
 };
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
+  button: {
+    alignItems: 'center',
+    minHeight: '30px',
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.border('0'),
+    boxSizing: 'border-box',
+    color: tokens.colorNeutralForeground1,
+    columnGap: tokens.spacingHorizontalXXS,
+    cursor: 'pointer',
+    fontFamily: tokens.fontFamilyBase,
+    textAlign: 'left',
+    flexGrow: 1,
+
+    '&:focus': {
+      outlineStyle: 'none',
+    },
   },
 
-  // TODO add additional classes for different states and/or slots
+  placeholder: {
+    color: tokens.colorNeutralForeground4,
+  },
+
+  // size variants
+  small: {
+    ...typographyStyles.caption1,
+    ...shorthands.padding(
+      '3px',
+      tokens.spacingHorizontalSNudge,
+      '3px',
+      `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
+    ),
+  },
+  medium: {
+    ...typographyStyles.body1,
+    ...shorthands.padding(
+      '5px',
+      tokens.spacingHorizontalMNudge,
+      '5px',
+      `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
+    ),
+  },
+  large: {
+    columnGap: tokens.spacingHorizontalSNudge,
+    ...typographyStyles.body2,
+    ...shorthands.padding(
+      '7px',
+      tokens.spacingHorizontalM,
+      '7px',
+      `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`,
+    ),
+  },
+
+  // appearance variants
+  outline: {
+    backgroundColor: tokens.colorNeutralBackground1,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
+    borderBottomColor: tokens.colorNeutralStrokeAccessible,
+  },
+  outlineInteractive: {
+    '&:hover': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
+      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    },
+
+    '&:active': {
+      ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
+      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    },
+  },
+  underline: {
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStrokeAccessible),
+    ...shorthands.borderRadius(0),
+  },
+  'filled-lighter': {
+    backgroundColor: tokens.colorNeutralBackground1,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
+  },
+  'filled-darker': {
+    backgroundColor: tokens.colorNeutralBackground3,
+    ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
+  },
+  invalid: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
+    },
+  },
+  invalidUnderline: {
+    ':not(:focus-within),:hover:not(:focus-within)': {
+      borderBottomColor: tokens.colorPaletteRedBorder2,
+    },
+  },
+  disabled: {
+    cursor: 'not-allowed',
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
+    '@media (forced-colors: active)': {
+      ...shorthands.borderColor('GrayText'),
+    },
+  },
+
+  disabledText: {
+    color: tokens.colorNeutralForegroundDisabled,
+    cursor: 'not-allowed',
+  },
+
+  hidden: {
+    display: 'none',
+  },
+  visuallyHidden: {
+    clip: 'rect(0px, 0px, 0px, 0px)',
+    height: '1px',
+    ...shorthands.margin('-1px'),
+    ...shorthands.overflow('hidden'),
+    ...shorthands.padding('0px'),
+    width: '1px',
+    position: 'absolute',
+  },
+});
+
+const useIconStyles = makeStyles({
+  icon: {
+    boxSizing: 'border-box',
+    color: tokens.colorNeutralStrokeAccessible,
+    display: 'block',
+    fontSize: tokens.fontSizeBase500,
+    gridColumnStart: 'icon',
+    gridColumnEnd: 'end',
+    position: 'absolute',
+    right: '10px',
+    top: '5px',
+
+    // the SVG must have display: block for accurate positioning
+    // otherwise an extra inline space is inserted after the svg element
+    '& svg': {
+      display: 'block',
+    },
+  },
+
+  // icon size variants
+  small: {
+    fontSize: iconSizes.small,
+    marginLeft: tokens.spacingHorizontalXXS,
+  },
+  medium: {
+    fontSize: iconSizes.medium,
+    marginLeft: tokens.spacingHorizontalXXS,
+  },
+  large: {
+    fontSize: iconSizes.large,
+    marginLeft: tokens.spacingHorizontalSNudge,
+  },
+
+  disabled: {
+    color: tokens.colorNeutralForegroundDisabled,
+  },
+});
+
+const useBaseClearButtonStyle = makeResetStyles({
+  alignSelf: 'center',
+  backgroundColor: tokens.colorTransparentBackground,
+  border: 'none',
+  cursor: 'pointer',
+  height: 'fit-content',
+  margin: 0,
+  marginRight: tokens.spacingHorizontalMNudge,
+  padding: 0,
+  position: 'relative',
+
+  ...createFocusOutlineStyle(),
 });
 
 /**
@@ -24,7 +197,38 @@ const useStyles = makeStyles({
  */
 export const usePickerButtonStyles_unstable = (state: PickerButtonState): PickerButtonState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(pickerButtonClassNames.root, styles.root, state.root.className);
+  const clearButtonStyles = useBaseClearButtonStyle();
+  const iconStyles = useIconStyles();
+  state.root.className = mergeClasses(
+    pickerButtonClassNames.root,
+    styles.button,
+    styles[state.size],
+    state.hasSelectedOption && styles.visuallyHidden,
+    state.root.className,
+  );
+
+  if (state.clearButton) {
+    state.clearButton.className = mergeClasses(
+      pickerButtonClassNames.clearButton,
+      clearButtonStyles,
+      iconStyles.icon,
+      iconStyles[state.size],
+      state.disabled && iconStyles.disabled,
+      !state.showClearIcon && styles.hidden,
+      state.clearButton.className,
+    );
+  }
+
+  if (state.expandIcon) {
+    state.expandIcon.className = mergeClasses(
+      pickerButtonClassNames.expandIcon,
+      iconStyles.icon,
+      iconStyles[state.size],
+      state.disabled && iconStyles.disabled,
+      state.showClearIcon && styles.hidden,
+      state.expandIcon.className,
+    );
+  }
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);

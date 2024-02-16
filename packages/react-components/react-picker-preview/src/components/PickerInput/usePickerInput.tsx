@@ -80,7 +80,6 @@ export const usePickerInput_unstable = (props: PickerInputProps, ref: React.Ref<
         id: 'ERROR_DO_NOT_USE',
         text: 'ERROR_DO_NOT_USE',
       });
-      props.onDismissWithBackspace?.(e);
     }
   });
 
@@ -120,8 +119,6 @@ export const usePickerInput_unstable = (props: PickerInputProps, ref: React.Ref<
   const onExpandIconMouseDown = useEventCallback(
     mergeCallbacks(onIconMouseDown, (event: React.MouseEvent<HTMLSpanElement>) => {
       event.preventDefault();
-      setOpen(event, !open);
-      triggerRef.current?.focus();
     }),
   );
 

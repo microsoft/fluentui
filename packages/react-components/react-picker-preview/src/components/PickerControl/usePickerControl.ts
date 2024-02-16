@@ -18,6 +18,9 @@ export const usePickerControl_unstable = (
 ): PickerControlState => {
   const { appearance = 'outline', size = 'medium', disabled = false, clearable = false } = props;
   const targetRef = usePickerContext_unstable(ctx => ctx.targetRef) as React.RefObject<HTMLDivElement>;
+  const setOpen = usePickerContext_unstable(ctx => ctx.setOpen);
+  const open = usePickerContext_unstable(ctx => ctx.open);
+  const triggerRef = usePickerContext_unstable(ctx => ctx.triggerRef);
   return {
     components: {
       root: 'div',
@@ -25,6 +28,18 @@ export const usePickerControl_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(ref, targetRef),
+        // TODO merge
+        onMouseDown: (e: React.MouseEvent<HTMLElement>) => {
+          if (e.target !== triggerRef.current) {
+            e.preventDefault();
+          }
+        },
+        onClick: (e: React.MouseEvent<HTMLElement>) => {
+          if (!e.defaultPrevented && e.target !== triggerRef.current) {
+            triggerRef.current?.focus();
+            setOpen(e, !open);
+          }
+        },
         ...props,
       }),
       { elementType: 'div' },

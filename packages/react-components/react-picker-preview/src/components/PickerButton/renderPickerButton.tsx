@@ -10,6 +10,11 @@ import type { PickerButtonState, PickerButtonSlots } from './PickerButton.types'
 export const renderPickerButton_unstable = (state: PickerButtonState) => {
   assertSlots<PickerButtonSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return (
+    <>
+      <state.root />
+      {state.clearButton && <state.clearButton />}
+      {state.expandIcon && <state.expandIcon />}
+    </>
+  );
 };

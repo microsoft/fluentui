@@ -60,25 +60,47 @@ const InputExample = () => {
 };
 
 const ButtonExample = () => {
-  return (
-    <Picker>
-      <PickerControl>
-        <TagGroup onDismiss={() => null}>
-          <Tag dismissible>Foo</Tag>
-          <Tag dismissible>Foo</Tag>
-          <Tag dismissible>Foo</Tag>
-          <Tag dismissible>Foo</Tag>
-        </TagGroup>
-        <PickerButton placeholder="Select option" />
-      </PickerControl>
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const onOptionSelect: PickerProps['onOptionSelect'] = (e, data) => {
+    setSelectedOptions(data.selectedOptions);
+  };
 
-      <PickerList>
-        <Option>Tom</Option>
-        <Option>Dick</Option>
-        <Option>Harry</Option>
-        <Option>Charles</Option>
-      </PickerList>
-    </Picker>
+  return (
+    <div style={{ maxWidth: 400 }}>
+      <Picker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
+        <PickerControl clearable>
+          <PickerTagGroup size="small">
+            {selectedOptions.map(option => (
+              <Tag
+                dismissible
+                key={option}
+                shape="rounded"
+                media={<Avatar name={option} color="colorful" />}
+                value={option}
+              >
+                {option}
+              </Tag>
+            ))}
+          </PickerTagGroup>
+          <PickerButton />
+        </PickerControl>
+
+        <PickerList>
+          {options
+            .filter(option => selectedOptions.indexOf(option) < 0)
+            .map(option => (
+              <PickerOption
+                secondaryContent="Microsoft FTE"
+                media={<Avatar name={option} color="colorful" />}
+                value={option}
+                key={option}
+              >
+                {option}
+              </PickerOption>
+            ))}
+        </PickerList>
+      </Picker>
+    </div>
   );
 };
 
@@ -86,6 +108,7 @@ export const Default = () => {
   return (
     <>
       <InputExample />
+      <ButtonExample />
     </>
   );
 };

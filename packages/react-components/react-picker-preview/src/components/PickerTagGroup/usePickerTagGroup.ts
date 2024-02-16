@@ -18,12 +18,24 @@ export const usePickerTagGroup_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): PickerTagGroupState => {
   const selectedOptions = usePickerContext_unstable(ctx => ctx.selectedOptions);
+  const hasOneSelectedOption = usePickerContext_unstable(ctx => ctx.selectedOptions.length === 1);
+  const triggerRef = usePickerContext_unstable(ctx => ctx.triggerRef);
   const selectOption = usePickerContext_unstable(ctx => ctx.selectOption);
 
   const state = useTagGroup_unstable(
     {
       ...props,
+      onClick: e => {
+        // Prevent default so that open/close state is not affected
+        // target check is to make sure that this only applies to white space in this control and not to tags
+        if (e.target !== e.currentTarget) {
+          e.preventDefault();
+        }
+      },
       onDismiss: useEventCallback((e, data) => {
+        if (hasOneSelectedOption) {
+          triggerRef.current?.focus();
+        }
         selectOption(e as React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, {
           value: data.value,
           // These values no longer exist because the option has unregistered itself
