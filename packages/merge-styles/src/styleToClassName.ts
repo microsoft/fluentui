@@ -93,19 +93,20 @@ function extractSelector(
   selector: string,
   value: IStyle,
   shadowConfig?: ShadowConfig,
+  sheet?: Stylesheet,
 ) {
   if (selector.indexOf('@') === 0) {
     selector = selector + '{' + currentSelector;
-    extractRules([value], rules, selector, shadowConfig);
+    extractRules([value], rules, selector, shadowConfig, sheet);
   } else if (selector.indexOf(',') > -1) {
     expandCommaSeparatedGlobals(selector)
       .split(',')
       .map((s: string) => s.trim())
       .forEach((separatedSelector: string) =>
-        extractRules([value], rules, expandSelector(separatedSelector, currentSelector), shadowConfig),
+        extractRules([value], rules, expandSelector(separatedSelector, currentSelector), shadowConfig, sheet),
       );
   } else {
-    extractRules([value], rules, expandSelector(selector, currentSelector), shadowConfig);
+    extractRules([value], rules, expandSelector(selector, currentSelector), shadowConfig, sheet);
   }
 }
 
@@ -114,8 +115,9 @@ function extractRules(
   rules: IRuleSet = { __order: [] },
   currentSelector: string = '&',
   shadowConfig?: ShadowConfig,
+  sheet?: Stylesheet,
 ): IRuleSet {
-  const stylesheet = Stylesheet.getInstance(shadowConfig);
+  const stylesheet = sheet ?? Stylesheet.getInstance(shadowConfig);
   let currentRules: IDictionary | undefined = rules[currentSelector] as IDictionary;
 
   if (!currentRules) {
@@ -130,11 +132,11 @@ function extractRules(
       const expandedRules = stylesheet.argsFromClassName(arg);
 
       if (expandedRules) {
-        extractRules(expandedRules, rules, currentSelector, shadowConfig);
+        extractRules(expandedRules, rules, currentSelector, shadowConfig, stylesheet);
       }
       // Else if the arg is an array, we need to recurse in.
     } else if (Array.isArray(arg)) {
-      extractRules(arg, rules, currentSelector, shadowConfig);
+      extractRules(arg, rules, currentSelector, shadowConfig, stylesheet);
     } else {
       for (const prop in arg as any) {
         if ((arg as any).hasOwnProperty(prop)) {
@@ -146,13 +148,13 @@ function extractRules(
 
             for (const newSelector in selectors) {
               if (selectors.hasOwnProperty(newSelector)) {
-                extractSelector(currentSelector, rules, newSelector, selectors[newSelector], shadowConfig);
+                extractSelector(currentSelector, rules, newSelector, selectors[newSelector], shadowConfig, stylesheet);
               }
             }
           } else if (typeof propValue === 'object') {
             // prop is a selector.
             if (propValue !== null) {
-              extractSelector(currentSelector, rules, prop, propValue, shadowConfig);
+              extractSelector(currentSelector, rules, prop, propValue, shadowConfig, stylesheet);
             }
           } else {
             if (propValue !== undefined) {
@@ -258,11 +260,11 @@ export interface IRegistration {
 }
 
 export function styleToRegistration(options: IStyleOptions, ...args: IStyle[]): IRegistration | undefined {
-  const rules: IRuleSet = extractRules(args, undefined, undefined, options.shadowConfig);
+  const rules: IRuleSet = extractRules(args, undefined, undefined, options.shadowConfig, options.stylesheet);
   const key = getKeyForRules(options, rules);
 
   if (key) {
-    const stylesheet = Stylesheet.getInstance(options.shadowConfig);
+    const stylesheet = options.stylesheet ?? Stylesheet.getInstance(options.shadowConfig);
     const registration: Partial<IRegistration> = {
       className: stylesheet.classNameFromKey(key),
       key,
@@ -295,8 +297,9 @@ export function applyRegistration(
   registration: IRegistration,
   specificityMultiplier: number = 1,
   shadowConfig?: ShadowConfig,
+  sheet?: Stylesheet,
 ): void {
-  const stylesheet = Stylesheet.getInstance(shadowConfig);
+  const stylesheet = sheet ?? Stylesheet.getInstance(shadowConfig);
   const { className, key, args, rulesToInsert } = registration;
 
   if (rulesToInsert) {
@@ -319,7 +322,7 @@ export function applyRegistration(
 export function styleToClassName(options: IStyleOptions, ...args: IStyle[]): string {
   const registration = styleToRegistration(options, ...args);
   if (registration) {
-    applyRegistration(registration, options.specificityMultiplier, options.shadowConfig);
+    applyRegistration(registration, options.specificityMultiplier, options.shadowConfig, options.stylesheet);
 
     return registration.className;
   }
