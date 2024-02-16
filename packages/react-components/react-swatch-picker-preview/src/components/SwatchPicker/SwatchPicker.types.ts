@@ -10,6 +10,7 @@ export type SwatchPickerOnSelectionChangeEvent = React.MouseEvent | React.Keyboa
 
 export type SwatchPickerOnSelectionChangeData = {
   selectedValue: string;
+  selectedColor: string;
 };
 
 export type SwatchPickerSelectEventHandler = (

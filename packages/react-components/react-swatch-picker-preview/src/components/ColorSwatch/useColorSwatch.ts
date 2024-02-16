@@ -29,7 +29,7 @@ export const useColorSwatch_unstable = (
   const selected = useSwatchPickerContextValue_unstable(ctx => ctx.selectedValue === value);
 
   const onClick = useEventCallback((event: SwatchPickerOnSelectionChangeEvent) =>
-    requestSelectionChange({ event, selectedValue: value }),
+    requestSelectionChange({ event, selectedValue: value, selectedColor: color }),
   );
 
   const nativeProps = getPartitionedNativeProps({

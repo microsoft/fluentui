@@ -56,15 +56,11 @@ export type SwatchPickerContextValues = {
   swatchPicker: SwatchPickerContextValue;
 };
 
-// export const SwatchPickerContext = React.createContext<SwatchPickerContextValue | undefined>(undefined);
-
 const SwatchPickerContext = createContext<SwatchPickerContextValue | undefined>(
   undefined,
 ) as Context<SwatchPickerContextValue>;
-export const SwatchPickerProvider = SwatchPickerContext.Provider;
 
-// export const useSwatchPickerContextValue_unstable = () =>
-//   React.useContext(SwatchPickerContext) ?? swatchPickerContextDefaultValue;
+export const SwatchPickerProvider = SwatchPickerContext.Provider;
 
 export const useSwatchPickerContextValue_unstable = <T>(selector: ContextSelector<SwatchPickerContextValue, T>): T =>
   useContextSelector(SwatchPickerContext, (ctx = swatchPickerContextDefaultValue) => selector(ctx));

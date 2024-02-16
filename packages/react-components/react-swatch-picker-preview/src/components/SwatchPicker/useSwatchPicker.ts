@@ -32,7 +32,7 @@ export const useSwatchPicker_unstable = <T>(
   });
 
   const requestSelectionChange = useEventCallback((data: SwatchPickerNotifySelectedData) => {
-    onSelectionChange?.(data.event, { selectedValue: data.selectedValue });
+    onSelectionChange?.(data.event, { selectedValue: data.selectedValue, selectedColor: data.selectedColor });
     setSelectedSwatch(data.selectedValue);
   });
 
