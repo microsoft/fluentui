@@ -85,15 +85,7 @@ export const useDynamicVirtualizerPagination = (
     }
     lastScrollPos.current = progressiveItemSizes.current[nextItem];
     lastIndexScrolled.current = nextItem;
-  }, [
-    paginationEnabled,
-    currentIndex,
-    scrollContainer,
-    scrollContainer.current,
-    virtualizerLength,
-    axis,
-    progressiveItemSizes,
-  ]);
+  }, [paginationEnabled, currentIndex, scrollContainer, virtualizerLength, axis, progressiveItemSizes]);
 
   const onScroll = React.useCallback(
     event => {
