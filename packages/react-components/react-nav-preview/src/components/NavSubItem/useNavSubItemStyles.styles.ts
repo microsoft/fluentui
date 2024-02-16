@@ -6,7 +6,7 @@ import type { NavSubItemSlots, NavSubItemState } from './NavSubItem.types';
 
 export const navSubItemClassNames: SlotClassNames<NavSubItemSlots> = {
   root: 'fui-NavSubItem',
-  content: 'fui-NavItem__content',
+  content: 'fui-NavSubItem__content',
 };
 
 /**
