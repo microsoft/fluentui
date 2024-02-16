@@ -191,8 +191,8 @@ export class Stylesheet {
    * Gets the singleton instance.
    */
   public static getInstance(shadowConfig?: ShadowConfig): Stylesheet {
-    const { stylesheetKey, inShadow, window: win } = shadowConfig ?? DEFAULT_SHADOW_CONFIG;
-    const global = (win ?? getWindow() ?? {}) as typeof _global;
+    const { stylesheetKey = GLOBAL_STYLESHEET_KEY, inShadow, window: win } = shadowConfig ?? DEFAULT_SHADOW_CONFIG;
+    const global = (win ?? _global ?? {}) as typeof _global;
 
     _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
 
@@ -223,20 +223,12 @@ export class Stylesheet {
       }
 
       _stylesheet = stylesheet;
-    }
-    if (inShadow || stylesheetKey === GLOBAL_STYLESHEET_KEY) {
-      const sheetWindow = win ?? getWindow();
-      if (sheetWindow) {
-        _stylesheet.addAdoptableStyleSheet(stylesheetKey, _stylesheet.getAdoptableStyleSheet(stylesheetKey));
-      }
+      global[STYLESHEET_SETTING] = _stylesheet;
     }
 
-    _stylesheet.setConfig({
-      window: win ?? getWindow(),
-      inShadow,
-      stylesheetKey: stylesheetKey ?? GLOBAL_STYLESHEET_KEY,
-    });
-    global[STYLESHEET_SETTING] = _stylesheet;
+    if (global && (inShadow || stylesheetKey === GLOBAL_STYLESHEET_KEY)) {
+      _stylesheet.addAdoptableStyleSheet(stylesheetKey, _stylesheet.getAdoptableStyleSheet(stylesheetKey));
+    }
 
     return _stylesheet;
   }
