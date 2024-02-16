@@ -1,9 +1,9 @@
 import { makeStyles, shorthands, tokens, Label, Slider, useId, Checkbox } from '@fluentui/react-components';
-import { createPresence, presence } from '@fluentui/react-motions-preview';
+import { createPresenceComponent, motionTokens } from '@fluentui/react-motions-preview';
 import type { MotionImperativeRef } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
-import description from './CreatePresence.stories.md';
+import description from './CreatePresenceComponent.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -43,9 +43,18 @@ const useClasses = makeStyles({
   },
 });
 
-const Fade = createPresence(presence.fade.slow());
+const Fade = createPresenceComponent({
+  enter: {
+    keyframes: [{ opacity: 0 }, { opacity: 1 }],
+    duration: motionTokens.durationSlow,
+  },
+  exit: {
+    keyframes: [{ opacity: 1 }, { opacity: 0 }],
+    duration: motionTokens.durationSlow,
+  },
+});
 
-export const CreatePresence = () => {
+export const CreatePresenceComponent = () => {
   const classes = useClasses();
   const sliderId = useId();
 
@@ -54,6 +63,8 @@ export const CreatePresence = () => {
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [visible, setVisible] = React.useState<boolean>(false);
 
+  // Heads up!
+  // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
   React.useEffect(() => {
     motionRef.current?.setPlaybackRate(playbackRate / 100);
   }, [playbackRate, visible]);
@@ -93,7 +104,7 @@ export const CreatePresence = () => {
   );
 };
 
-CreatePresence.parameters = {
+CreatePresenceComponent.parameters = {
   docs: {
     description: {
       story: description,

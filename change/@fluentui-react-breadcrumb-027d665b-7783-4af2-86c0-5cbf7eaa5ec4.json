@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: moved sized icons to styling",
+  "packageName": "@fluentui/react-breadcrumb",
+  "email": "vkozlova@microsoft.com",
+  "dependentChangeType": "patch"
+}
