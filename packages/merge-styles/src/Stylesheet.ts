@@ -261,7 +261,7 @@ export class Stylesheet {
 
     if (!this._adoptableSheets.has(key)) {
       this._adoptableSheets.set(key, sheet);
-      this._config.window?.requestAnimationFrame?.(() => {
+      this._config.window?.queueMicrotask?.(() => {
         this._adoptableSheets!.raise('add-sheet', { key, sheet });
       });
     }
