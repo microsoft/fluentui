@@ -32,9 +32,8 @@ describe('ColorSwatch', () => {
           style="--fui-SwatchPicker--color: #f09;"
         >
           <button
-            class=""
+            class="fui-ColorSwatch__button"
             type="button"
-            value="#f09"
           />
         </div>
       </div>

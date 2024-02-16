@@ -35,6 +35,7 @@ export const useColorSwatch_unstable = (
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'button',
+    excludedPropNames: ['value', 'color'],
   });
 
   const rootVariables = {

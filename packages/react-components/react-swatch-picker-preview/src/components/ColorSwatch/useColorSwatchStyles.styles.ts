@@ -108,13 +108,11 @@ export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwa
     styles,
     sizeStyles[state.size ?? 'medium'],
     shapeStyles[state.shape ?? 'square'],
+    state.selected && selectedStyles.selected,
     state.root.className,
   );
 
-  state.button.className = mergeClasses(buttonStyles, state.button.className);
+  state.button.className = mergeClasses(colorSwatchClassNames.button, buttonStyles, state.button.className);
 
-  if (state.selected) {
-    state.root.className = mergeClasses(state.root.className, selectedStyles.selected);
-  }
   return state;
 };

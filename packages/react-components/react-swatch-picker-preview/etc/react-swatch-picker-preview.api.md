@@ -70,6 +70,7 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
 // @public (undocumented)
 export type SwatchPickerSelectData = {
     selectedValue: string;
+    selectedColor: string;
 };
 
 // @public (undocumented)
