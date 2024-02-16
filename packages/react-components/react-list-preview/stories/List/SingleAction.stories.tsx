@@ -34,7 +34,7 @@ export const SingleAction = () => {
   const classes = useStyles();
   return (
     <div className={classes.wrapper}>
-      <List focusableItems>
+      <List>
         {names.map(name => (
           <ListItem
             id={`id_${name}`}

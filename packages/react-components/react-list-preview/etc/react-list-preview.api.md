@@ -53,8 +53,6 @@ export type ListItemState = ComponentState<ListItemSlots> & {
 
 // @public
 export type ListProps = ComponentProps<ListSlots> & {
-    layout?: ListLayout;
-    focusableItems?: boolean;
     selectable?: boolean;
     selectionMode?: SelectionMode_2;
     selectedItems?: SelectionItemId[];
@@ -70,7 +68,7 @@ export type ListSlots = {
 };
 
 // @public
-export type ListState = ComponentState<ListSlots> & Required<Pick<ListProps, 'layout'>> & ListContextValue;
+export type ListState = ComponentState<ListSlots> & ListContextValue;
 
 // @public
 export const renderList_unstable: (state: ListState, contextValues: ListContextValues) => JSX.Element;

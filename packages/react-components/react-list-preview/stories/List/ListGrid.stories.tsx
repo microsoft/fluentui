@@ -11,7 +11,7 @@ const useStyles = makeStyles({
 export const ListGrid = (props: Partial<ListProps>) => {
   const classes = useStyles();
   return (
-    <List layout="grid" className={classes.root}>
+    <List className={classes.root}>
       <ListItem>
         <ListItemButton onClick={() => alert('Asia')}>Asia</ListItemButton>
       </ListItem>

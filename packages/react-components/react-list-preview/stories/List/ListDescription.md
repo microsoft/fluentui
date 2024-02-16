@@ -1,4 +1,4 @@
-The List is a component for rendering sets of items. It supports multiple layouts, namely `vertical` (default), `horizontal` and `grid`.
+The List is a component for rendering set of vertically stacked items.
 
 There are 2 basic use cases for List, based on the elements it contains:
 
@@ -24,6 +24,6 @@ Making the List Item focusable or accessible by screen readers adds one unnecess
 
 If the list needs to support more than single click action, your best bet is to define the buttons inside of the ListItem manually.
 
-You also want to make the list item focusable by adding `focusableItems` property on the List itself.
+You also want to make the list item focusable by adding `tabIndex={0}` property on the List itself.
 
 This makes sure the list is navigable with up and down arrows and user can enter the group (ListItem) to select the action they want to take with the list.

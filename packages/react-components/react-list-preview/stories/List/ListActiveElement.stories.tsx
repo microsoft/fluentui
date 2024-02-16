@@ -98,7 +98,6 @@ export const ListActiveElement = () => {
     <div className={classes.wrapper}>
       <List
         selectable
-        focusableItems
         selectedItems={selectedItems}
         onSelectionChange={(e, data) => {
           console.log(e);

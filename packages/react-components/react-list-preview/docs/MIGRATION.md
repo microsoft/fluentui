@@ -70,8 +70,6 @@ Most of the v8 props are for it's virtualization functionality. Since the v9 `Li
 | `usePageCache`            | N/A                              |
 | `version`                 | N/A                              |
 | -                         | `defaultSelectedItems`           |
-| -                         | `focusableItems`                 |
-| -                         | `layout`                         |
 | -                         | `onSelectionChange`              |
 | -                         | `selectable`                     |
 | -                         | `selectionMode`                  |
@@ -162,9 +160,9 @@ We recommend using a component like `Persona` where possible, or creating a cust
 | `debug`                 | N/A                                                                                                                                                        |
 | `defaultSelectedIndex`  | `defaultSelectedItems`                                                                                                                                     |
 | `design`                | N/A                                                                                                                                                        |
-| `horizontal`            | use `layout` with a value `horizontal`                                                                                                                     |
+| `horizontal`            | N/A - will be added in the future                                                                                                                          |
 | `items`                 | N/A - use `ListItem` components as Children                                                                                                                |
-| `navigable`             | `focusableItems` if the `ListItem` contains more than 1 actionable element, otherwise use `ListItemButton` component as a child.                           |
+| `navigable`             | `tabIndex={0}` if the `ListItem`, or automatic when `onClick` or `onKeyDown` is present                                                                    |
 | `onSelectedIndexChange` | `onSelectionChange`                                                                                                                                        |
 | `ref`                   | `ref`                                                                                                                                                      |
 | `selectable`            | `selectable`                                                                                                                                               |
@@ -192,7 +190,7 @@ We recommend using a component like `Persona` where possible, or creating a cust
 | `important`       | N/A                                                                                                                    |
 | `index`           | N/A                                                                                                                    |
 | `media`           | N/A - use children                                                                                                     |
-| `navigable`       | N/A - use `List` property `focusableItems` or render `ListItemButton` if the `ListItem` only has one action            |
+| `navigable`       | N/A - use `tabIndex={0}`                                                                                               |
 | `onClick`         | `onClick`                                                                                                              |
 | `ref`             | ref                                                                                                                    |
 | `selectable`      | N/A - use `List` property `selectable` for uncontrolled selection, or use `useListSelection` hook to control the state |

@@ -4,7 +4,7 @@ exports[`List renders a default state 1`] = `
 <div>
   <ul
     class="fui-List"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":0,\\"memorizeCurrent\\":true}}"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
   >
     Default List
   </ul>

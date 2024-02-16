@@ -82,6 +82,11 @@ const CardExample = (props: CardProps & { value: string; selected?: boolean }) =
       checkmark={{ className: styles.checkmark }}
       role="row"
       aria-label={value}
+      onClick={e => {
+        // Prevent the default behavior - toggling the selection
+        // e.preventDefault();
+        // alert('Main action triggered!');
+      }}
     >
       <div role="gridcell" style={{ gridArea: 'preview', overflow: 'hidden' }}>
         <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />
@@ -164,7 +169,6 @@ export const MultipleActionsPrimarySelection = (props: Partial<ListProps>) => {
   return (
     <List
       className={classes.list}
-      focusableItems
       selectable
       role="grid"
       onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
@@ -182,7 +186,6 @@ export const MultipleActionsPrimarySelection = (props: Partial<ListProps>) => {
     </List>
   );
 };
-
 MultipleActionsPrimarySelection.parameters = {
   docs: {
     description: {

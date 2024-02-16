@@ -4,8 +4,8 @@ import descriptionMd from './ListDescription.md';
 import bestPracticesMd from './ListBestPractices.md';
 
 export { Default } from './ListDefault.stories';
-export { ListHorizontal } from './ListHorizontal.stories';
-export { ListGrid } from './ListGrid.stories';
+// export { ListHorizontal } from './ListHorizontal.stories';
+// export { ListGrid } from './ListGrid.stories';
 export { SingleAction } from './SingleAction.stories';
 export { SingleActionSelection } from './SingleAction_selection.stories';
 export { MultipleActionsNoPrimaryNoSelection } from './MultipleActions_no_primary_no_selection.stories';

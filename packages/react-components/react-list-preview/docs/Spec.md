@@ -2,7 +2,7 @@
 
 ## Background
 
-A List is a component that displays a group of sequential components in one dimension. The layout can be vertical (default), horizontal or grid with completely custom template.
+A List is a component that displays a set of vertically stacked components.
 
 If you are displaying more than one dimension of the data, the List probably isn't the proper component to use, instead, consider using Table or DataGrid.
 

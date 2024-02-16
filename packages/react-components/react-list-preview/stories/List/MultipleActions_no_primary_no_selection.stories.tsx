@@ -76,7 +76,12 @@ const CardExample = (props: CardProps & { value: string }) => {
   const { value } = props;
 
   return (
-    <ListItem value={props.value} className={mergeClasses(listItemStyles, styles.listItem)} aria-label={value}>
+    <ListItem
+      value={props.value}
+      className={mergeClasses(listItemStyles, styles.listItem)}
+      aria-label={value}
+      tabIndex={0}
+    >
       <div style={{ gridArea: 'preview', overflow: 'hidden' }}>
         <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />
       </div>
@@ -154,7 +159,7 @@ export const MultipleActionsNoPrimaryNoSelection = (props: Partial<ListProps>) =
   const classes = useStyles();
 
   return (
-    <List layout="grid" className={classes.list} focusableItems aria-orientation="vertical">
+    <List className={classes.list} aria-orientation="vertical">
       <CardExample value="card-1" />
       <CardExample value="card-2" />
       <CardExample value="card-3" />

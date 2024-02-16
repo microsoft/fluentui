@@ -159,7 +159,7 @@ export const MultipleActionsNoSelectionWithPrimary = (props: Partial<ListProps>)
   const classes = useStyles();
 
   return (
-    <List layout="grid" className={classes.list} focusableItems aria-orientation="vertical">
+    <List className={classes.list} aria-orientation="vertical">
       <CardExample value="card-1" />
       <CardExample value="card-2" />
       <CardExample value="card-3" />

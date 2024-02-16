@@ -28,16 +28,6 @@ function validateProperElementTypes(parentRenderedAs?: 'div' | 'ul' | 'ol', rend
   }
 }
 
-function validateNavigableWhenOnClickPresent(focusableItems: boolean, onClick?: React.MouseEventHandler) {
-  if (process.env.NODE_ENV === 'production') {
-    return;
-  }
-
-  if (onClick && !focusableItems) {
-    throw new Error('ListItem must be focusableItems when onClick is present. Set focusableItems={true} on the List.');
-  }
-}
-
 /**
  * Create the state required to render ListItem.
  *
@@ -52,12 +42,13 @@ export const useListItem_unstable = (
   ref: React.Ref<HTMLLIElement | HTMLDivElement>,
 ): ListItemState => {
   const id = useId('listItem');
-  const { value = id, onKeyDown, onClick } = props;
+  const { value = id, onKeyDown, onClick, tabIndex } = props;
 
-  const focusableItems = useListContext_unstable(ctx => ctx.focusableItems);
   const toggleItem = useListContext_unstable(ctx => ctx.selection?.toggleItem);
   const isSelectionEnabled = useListContext_unstable(ctx => !!ctx.selection);
   const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value));
+
+  const focusableItems = isSelectionEnabled || tabIndex === 0 || onClick || onKeyDown;
 
   const parentRenderedAs = useListContext_unstable(ctx => ctx.as);
   const renderedAs = props.as || DEFAULT_ROOT_EL_TYPE;
@@ -65,8 +56,6 @@ export const useListItem_unstable = (
   const rootRef = React.useRef<HTMLLIElement | HTMLDivElement>(null);
 
   validateProperElementTypes(parentRenderedAs, renderedAs);
-
-  validateNavigableWhenOnClickPresent(focusableItems, onClick);
 
   const { findFirstFocusable, findPrevFocusable, findNextFocusable } = useFocusFinders();
 
@@ -179,7 +168,6 @@ export const useListItem_unstable = (
 
   const onCheckboxClick = useEventCallback((ev: React.MouseEvent<HTMLInputElement>) => {
     ev.stopPropagation();
-    // toggleItem?.(ev, value);
   });
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
@@ -194,7 +182,7 @@ export const useListItem_unstable = (
   const root = slot.always(
     getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
       ref: useMergedRefs(rootRef, ref) as React.Ref<HTMLLIElement & HTMLDivElement>,
-      tabIndex: focusableItems || isSelectionEnabled ? 0 : undefined,
+      tabIndex: focusableItems ? 0 : undefined,
       role: 'listitem',
       id: String(value),
       ...(isSelectionEnabled && {

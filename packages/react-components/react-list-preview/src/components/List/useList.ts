@@ -23,8 +23,6 @@ const DEFAULT_ROOT_EL_TYPE = 'ul';
  */
 export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement | HTMLUListElement>): ListState => {
   const {
-    layout = 'vertical',
-    focusableItems = false,
     selectable = false,
     selectionMode = 'multiselect',
     selectedItems,
@@ -34,10 +32,9 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
   } = props;
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
-    axis: focusableItems ? 'vertical' : layout === 'grid' ? 'grid-linear' : 'both',
+    axis: 'vertical',
     memorizeCurrent: true,
   });
-  // const focusableGroupAttrs = useFocusableGroup();
 
   const [selectionState, setSelectionState] = useControllableState({
     state: selectedItems,
@@ -69,15 +66,11 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
           role: 'listbox',
           'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
         }),
-        // ...focusableGroupAttrs,
         ...arrowNavigationAttributes,
         ...props,
       }),
       { elementType: DEFAULT_ROOT_EL_TYPE },
     ),
-    layout,
-    // context:
-    focusableItems,
     as: as || DEFAULT_ROOT_EL_TYPE,
     // only pass down selection state if its handled internally, otherwise just report the events
     selection: selectable ? selection : undefined,

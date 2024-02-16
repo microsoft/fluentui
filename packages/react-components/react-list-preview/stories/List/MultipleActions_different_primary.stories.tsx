@@ -80,7 +80,7 @@ const CardExample = (props: CardProps & { value: string; selected?: boolean }) =
       value={props.value}
       className={mergeClasses(listItemStyles, styles.listItem)}
       checkmark={{ className: styles.checkmark }}
-      role="listitem"
+      role="row"
       aria-label={value}
       onClick={e => {
         // Prevent the default behavior - toggling the selection
@@ -88,16 +88,16 @@ const CardExample = (props: CardProps & { value: string; selected?: boolean }) =
         alert('Main action triggered!');
       }}
     >
-      <div style={{ gridArea: 'preview', overflow: 'hidden' }}>
+      <div role="gridcell" style={{ gridArea: 'preview', overflow: 'hidden' }}>
         <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />
       </div>
-      <div style={{ gridArea: 'header' }}>
+      <div role="gridcell" style={{ gridArea: 'header' }}>
         <Text weight="semibold" style={{ display: 'block' }}>
           {props.value}
         </Text>
         <Caption1 className={styles.caption}>You created 53m ago</Caption1>
       </div>
-      <div style={{ gridArea: 'action' }}>
+      <div role="gridcell" style={{ gridArea: 'action' }}>
         <Button
           appearance="primary"
           aria-label="Install"
@@ -110,7 +110,7 @@ const CardExample = (props: CardProps & { value: string; selected?: boolean }) =
           Install
         </Button>
       </div>
-      <div style={{ gridArea: 'secondary_action' }}>
+      <div role="gridcell" style={{ gridArea: 'secondary_action' }}>
         <Menu>
           <MenuTrigger disableButtonEnhancement>
             <Button
@@ -169,13 +169,10 @@ export const MultipleActionsDifferentPrimary = (props: Partial<ListProps>) => {
   return (
     <List
       className={classes.list}
-      focusableItems
       selectable
-      role="list"
-      aria-orientation="vertical"
+      role="grid"
       onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
       selectionMode="multiselect"
-      aria-setsize={9}
     >
       <CardExample value="card-1" selected={selectedItems.includes('card-1')} />
       <CardExample value="card-2" selected={selectedItems.includes('card-2')} />

@@ -2,8 +2,6 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, SelectionMode, SelectionItemId } from '@fluentui/react-utilities';
 import type { ListSelectionState } from '../../hooks/types';
 
-type ListLayout = 'horizontal' | 'vertical' | 'grid';
-
 export type ListSlots = {
   root: NonNullable<Slot<'ul', 'div' | 'ol'>>;
 };
@@ -12,17 +10,15 @@ export type ListSlots = {
  * List Props
  */
 export type ListProps = ComponentProps<ListSlots> & {
-  layout?: ListLayout;
-  focusableItems?: boolean;
   selectable?: boolean;
   selectionMode?: SelectionMode;
   selectedItems?: SelectionItemId[];
   defaultSelectedItems?: SelectionItemId[];
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onSelectionChange?: (event: React.SyntheticEvent, data: { selectedItems: SelectionItemId[] }) => void;
 };
 
 export type ListContextValue = {
-  focusableItems: boolean;
   selection?: ListSelectionState;
   as?: 'div' | 'ol' | 'ul';
 };
@@ -34,4 +30,4 @@ export type ListContextValues = {
 /**
  * State used in rendering List
  */
-export type ListState = ComponentState<ListSlots> & Required<Pick<ListProps, 'layout'>> & ListContextValue;
+export type ListState = ComponentState<ListSlots> & ListContextValue;
