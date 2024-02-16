@@ -178,7 +178,7 @@
   "scripts": {
     "tsc": "tsc",
     "api-extractor": "api-extractor",
-    "benchmark": "yarn clean && yarn compile && tensile --file ./dist/esm/button/button.bench.js --config ./tensile.config.js --dev",
+    "benchmark": "yarn clean && yarn compile && tensile --file ./dist/esm/button/button.bench.js --config ./tensile.config.js",
     "compile": "node ./scripts/compile",
     "clean": "node ./scripts/clean dist",
     "generate-api": "api-extractor run --local",
