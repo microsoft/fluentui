@@ -27,7 +27,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/azure-themes": "^8.6.60",
+    "@fluentui/azure-themes": "^8.6.61",
     "@fluentui/date-time-utilities": "^8.5.16",
     "@fluentui/dom-utilities": "^2.2.14",
     "@fluentui/example-data": "^8.4.15",
@@ -36,8 +36,8 @@
     "@fluentui/merge-styles": "^8.5.15",
     "@fluentui/react": "^8.115.6",
     "@fluentui/react-cards": "^0.205.137",
-    "@fluentui/react-charting": "^5.19.26",
-    "@fluentui/react-docsite-components": "^8.13.58",
+    "@fluentui/react-charting": "^5.19.28",
+    "@fluentui/react-docsite-components": "^8.13.60",
     "@fluentui/react-experiments": "^8.14.133",
     "@fluentui/react-file-type-icons": "^8.11.3",
     "@fluentui/react-focus": "^8.8.40",

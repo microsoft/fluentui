@@ -120,7 +120,7 @@ describe('Sankey chart - Mouse events', () => {
     'Should reset node on mouse leave from node',
     SankeyChart,
     { data: chartPointsWithStringNodeId() },
-    async container => {
+    async _container => {
       const handleMouseOver = jest.spyOn(SankeyChartBase.prototype as any, '_onLeave');
       const nodes = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       fireEvent.mouseOver(nodes[0]);

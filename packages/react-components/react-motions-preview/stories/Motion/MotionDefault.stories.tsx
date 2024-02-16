@@ -1,5 +1,5 @@
 import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
-import { atom, createAtom } from '@fluentui/react-motions-preview';
+import { createMotionComponent, motionTokens } from '@fluentui/react-motions-preview';
 import type { MotionImperativeRef } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
@@ -23,12 +23,17 @@ const useClasses = makeStyles({
   },
 });
 
-const FadeEnter = createAtom(atom.fade.enterUltraSlow());
+const FadeEnter = createMotionComponent({
+  keyframes: [{ opacity: 0 }, { opacity: 1 }],
+  duration: motionTokens.durationSlow,
+});
 
 export const MotionDefault = () => {
   const classes = useClasses();
   const motionRef = React.useRef<MotionImperativeRef>();
 
+  // Heads up!
+  // This is optional and is intended solely to slow down the animations, making motions more visible in the examples.
   React.useEffect(() => {
     motionRef.current?.setPlaybackRate(0.3);
   }, []);

@@ -12,9 +12,11 @@ const useBaseStyles = makeStyles({
 /**
  * Apply styling to the ToolbarRadioButton slots based on the state
  */
-export const useToolbarRadioButtonStyles_unstable = (state: ToolbarRadioButtonState) => {
+export const useToolbarRadioButtonStyles_unstable = (state: ToolbarRadioButtonState): ToolbarRadioButtonState => {
   useToggleButtonStyles_unstable(state);
   const toggleButtonStyles = useBaseStyles();
 
   state.root.className = mergeClasses(state.root.className, state.checked && toggleButtonStyles.selected);
+
+  return state;
 };

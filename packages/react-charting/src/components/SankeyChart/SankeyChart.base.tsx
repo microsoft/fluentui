@@ -4,6 +4,7 @@ import { IProcessedStyleSet, ITheme } from '@fluentui/react/lib/Styling';
 import {
   IStyleFunctionOrObject,
   classNamesFunction,
+  format,
   getId,
   getRTL,
   memoizeFunction,
@@ -17,7 +18,14 @@ import { IBasestate, SLink, SNode } from '../../types/IDataPoint';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
 import { IChartHoverCardProps } from '../../utilities/ChartHoverCard/ChartHoverCard.types';
 import { IMargins } from '../../utilities/utilities';
-import { ISankeyChartData, ISankeyChartProps, ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
+import {
+  ISankeyChartAccessibilityProps,
+  ISankeyChartData,
+  ISankeyChartProps,
+  ISankeyChartStrings,
+  ISankeyChartStyleProps,
+  ISankeyChartStyles,
+} from './SankeyChart.types';
 
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
 const PADDING_PERCENTAGE = 0.3;
@@ -136,7 +144,10 @@ function getSelectedLinks(singleNode: SNode): Set<SLink> {
   return finalLinks;
 }
 
-function getSelectedLinksforStreamHover(singleLink: SLink): { selectedLinks: Set<SLink>; selectedNodes: Set<SNode> } {
+function getSelectedLinksforStreamHover(singleLink: SLink): {
+  selectedLinks: Set<SLink>;
+  selectedNodes: Set<SNode>;
+} {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
   const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
@@ -441,6 +452,7 @@ type RenderedNodeAttributes = {
   readonly reactId: string;
   readonly gElementId: string;
   readonly name: string;
+  readonly aria: string;
   readonly trimmed: boolean;
   readonly height: number;
   readonly weightOffset: number;
@@ -448,6 +460,8 @@ type RenderedNodeAttributes = {
 
 type RenderedLinkAttributes = {
   readonly reactId: string;
+  readonly aria: string;
+  readonly from: string;
 };
 
 type TSpanForTextMeasuring = D3Selection<SVGTSpanElement, unknown, HTMLElement, unknown>;
@@ -474,7 +488,10 @@ function computeElipsisLength(tspan: TSpanForTextMeasuring): number {
   return measurement === undefined ? 0 : measurement;
 }
 
-function computeNodeAttributes(nodes: SNode[]): ItemValues<RenderedNodeAttributes> {
+function computeNodeAttributes(
+  nodes: SNode[],
+  nodeAriaLabel: (node: SNode, weight: number) => string,
+): ItemValues<RenderedNodeAttributes> {
   const result: ItemValues<RenderedNodeAttributes> = {};
   const weightSpan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
   const nameSpan = select('.nodeName')
@@ -488,13 +505,14 @@ function computeNodeAttributes(nodes: SNode[]): ItemValues<RenderedNodeAttribute
     let padding = 8;
     let textLengthForNodeWeight = 0;
 
+    const nodeValue = singleNode.actualValue!;
     // If the nodeWeight is in the same line as node description an extra padding
     // of 6 px is required between node description and node weight.
     if (height < MIN_HEIGHT_FOR_DOUBLINE_TYPE) {
       padding = padding + 6;
       // The following `select` statement injects a `tempText` element into the DOM. This injection
       // (and subsequent removal) is causing a layout recalculation. This is a performance issue.
-      const measurement = measureText(weightSpan, singleNode.actualValue!);
+      const measurement = measureText(weightSpan, nodeValue);
       if (measurement !== undefined) {
         textLengthForNodeWeight = measurement;
         padding = padding + textLengthForNodeWeight;
@@ -508,6 +526,7 @@ function computeNodeAttributes(nodes: SNode[]): ItemValues<RenderedNodeAttribute
       reactId: getId('nodeBar'),
       gElementId: getId('nodeGElement'),
       name: truncatedname,
+      aria: nodeAriaLabel(singleNode, nodeValue),
       trimmed: isTruncated,
       height,
       weightOffset: textLengthForNodeWeight,
@@ -517,7 +536,11 @@ function computeNodeAttributes(nodes: SNode[]): ItemValues<RenderedNodeAttribute
   return result;
 }
 
-function computeLinkAttributes(links: SLink[]): LinkItemValues<RenderedLinkAttributes> {
+function computeLinkAttributes(
+  links: SLink[],
+  linkFrom: (node: SNode) => string,
+  linkAriaLabel: (link: SLink) => string,
+): LinkItemValues<RenderedLinkAttributes> {
   const result: LinkItemValues<RenderedLinkAttributes> = {};
   links.forEach((link: SLink) => {
     const sourceId = idFromNumberOrSNode(link.source);
@@ -526,7 +549,11 @@ function computeLinkAttributes(links: SLink[]): LinkItemValues<RenderedLinkAttri
       sourceToTarget = {};
       result[sourceId] = sourceToTarget;
     }
-    sourceToTarget[idFromNumberOrSNode(link.target)] = { reactId: getId('link') };
+    sourceToTarget[idFromNumberOrSNode(link.target)] = {
+      reactId: getId('link'),
+      from: linkFrom(link.source as SNode),
+      aria: linkAriaLabel(link),
+    };
   });
 
   return result;
@@ -580,6 +607,37 @@ function nodeTextColor(state: Readonly<ISankeyChartState>, singleNode: SNode): s
     : NON_SELECTED_TEXT_COLOR;
 }
 
+type StringRenderer = {
+  linkFrom: (node: SNode) => string;
+};
+
+type AccessibilityRenderer = {
+  emptyAriaLabel: string;
+  nodeAriaLabel: (node: SNode, weight: number) => string;
+  linkAriaLabel: (link: SLink) => string;
+};
+
+function linkCalloutAttributes(
+  singleLink: SLink,
+  from: string,
+): IChartHoverCardProps & {
+  selectedLink: SLink;
+  isCalloutVisible: boolean;
+  color: string;
+  xCalloutValue: string;
+  yCalloutValue: string;
+  descriptionMessage: string;
+} {
+  return {
+    selectedLink: singleLink,
+    isCalloutVisible: true,
+    color: (singleLink.source as SNode).color!,
+    xCalloutValue: (singleLink.target as SNode).name,
+    yCalloutValue: singleLink.unnormalizedValue!.toString(),
+    descriptionMessage: from,
+  };
+}
+
 // NOTE: To start employing React.useMemo properly, we need to convert this code from a React.Component
 // to a function component. This will require a significant refactor of the code in this file.
 // https://stackoverflow.com/questions/60223362/fast-way-to-convert-react-class-component-to-functional-component
@@ -608,8 +666,15 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   ) => IProcessedStyleSet<ISankeyChartStyles>;
   private readonly _normalizeData: NormalizeDiagramFunction;
   private readonly _fetchTooltip: (classNames: IProcessedStyleSet<ISankeyChartStyles>) => TooltipDiv;
-  private readonly _nodeAttributes: (nodes: SNode[]) => ItemValues<RenderedNodeAttributes>;
-  private readonly _linkAttributes: (links: SLink[]) => LinkItemValues<RenderedLinkAttributes>;
+  private readonly _nodeAttributes: (
+    nodes: SNode[],
+    nodeAriaLabel: (node: SNode, weight: number) => string,
+  ) => ItemValues<RenderedNodeAttributes>;
+  private readonly _linkAttributes: (
+    links: SLink[],
+    linkFrom: (node: SNode) => string,
+    linkAriaLabel: (link: SLink) => string,
+  ) => LinkItemValues<RenderedLinkAttributes>;
   private readonly _fetchNodes: (
     classNames: IProcessedStyleSet<ISankeyChartStyles>,
     nodes: SNode[],
@@ -620,6 +685,9 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     links: SLink[],
     linkAttributes: LinkItemValues<RenderedLinkAttributes>,
   ) => React.ReactNode[] | undefined;
+
+  private readonly _strings: StringRenderer;
+  private readonly _accessibility: AccessibilityRenderer;
 
   constructor(props: ISankeyChartProps) {
     super(props);
@@ -675,16 +743,41 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     this._fetchTooltip = memoizeFunction((classNames: IProcessedStyleSet<ISankeyChartStyles>) =>
       this._labelTooltipDiv(classNames),
     );
-    // NOTE: Memoizing the `_createNodes` and `_createLinks` methods breaks the hoverability of the chart
-    // because the nodes are currently created differently based on the layout information.
-    this._nodeAttributes = memoizeFunction((nodes: SNode[]) => computeNodeAttributes(nodes));
+    // Prepare the localization utilities
+    this._strings = memoizeFunction((strings?: ISankeyChartStrings): StringRenderer => {
+      const fromString = strings?.linkFrom || 'From {0}';
+      // NOTE: The `node` parameter is the sankey-generated node on the link, and not the original `node` supplied
+      // by the caller.
+      return {
+        linkFrom: (node: SNode) => format(fromString, node.name),
+      };
+    })(props.strings);
+    this._accessibility = memoizeFunction((accessibility?: ISankeyChartAccessibilityProps): AccessibilityRenderer => {
+      const linkString = accessibility?.linkAriaLabel || 'link from {0} to {1} with weight {2}';
+      const nodeString = accessibility?.nodeAriaLabel || 'node {0} with weight {1}';
+      return {
+        emptyAriaLabel: accessibility?.emptyAriaLabel || 'Graph has no data to display',
+        linkAriaLabel: (link: SLink) =>
+          format(linkString, (link.source as SNode).name, (link.target as SNode).name, link.unnormalizedValue),
+        nodeAriaLabel: (node: SNode, weight: number) => format(nodeString, node.name, weight),
+      };
+    })(props.accessibility);
+    // NOTE: Memoizing the `_createNodes` and `_createLinks` methods would break the hoverability of the chart
+    // because the nodes are currently created differently based on the layout information. Hence why we do not
+    // memoize these methods (but have stubs for memoizing as the `_fetchNodes` and `_fetchLinks` methods).
+    this._nodeAttributes = memoizeFunction((nodes: SNode[], nodeAriaLabel: (node: SNode, weight: number) => string) =>
+      computeNodeAttributes(nodes, nodeAriaLabel),
+    );
     this._fetchNodes = (
       classNames: IProcessedStyleSet<ISankeyChartStyles>,
       nodes: SNode[],
       nodeAttributes: ItemValues<RenderedNodeAttributes>,
       tooltipDiv: TooltipDiv,
     ) => this._createNodes(classNames, nodes, nodeAttributes, tooltipDiv);
-    this._linkAttributes = memoizeFunction((links: SLink[]) => computeLinkAttributes(links));
+    this._linkAttributes = memoizeFunction(
+      (links: SLink[], linkFrom: (node: SNode) => string, linkAriaLabel: (link: SLink) => string) =>
+        computeLinkAttributes(links, linkFrom, linkAriaLabel),
+    );
     this._fetchLinks = (links: SLink[], linkAttributes: LinkItemValues<RenderedLinkAttributes>) =>
       this._createLinks(links, linkAttributes);
     // Our shorter path to performance is to pre-compute the truncated labels of each node because
@@ -735,10 +828,10 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       // It might be better to perform this `fetch` within the `_showTooltip` and `_hideTooltip` methods.
       const tooltipDiv = this._fetchTooltip(classNames);
       // Pre-compute some important attributes about nodes, specifically text
-      const nodeAttributes = this._nodeAttributes(nodes);
+      const nodeAttributes = this._nodeAttributes(nodes, this._accessibility.nodeAriaLabel);
       // Build the nodes and links as rendered in the UX.
       const nodeData = this._fetchNodes(classNames, nodes, nodeAttributes, tooltipDiv);
-      const linkAttributes = this._linkAttributes(links);
+      const linkAttributes = this._linkAttributes(links, this._strings.linkFrom, this._accessibility.linkAriaLabel);
       const linkData = this._fetchLinks(links, linkAttributes);
 
       const calloutProps = {
@@ -793,7 +886,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
-        aria-label={'Graph has no data to display'} // TODO: Localize this string
+        aria-label={this._accessibility.emptyAriaLabel}
       />
     );
   }
@@ -867,7 +960,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         const onMouseOut = () => {
           this._onStreamLeave(singleLink);
         };
-        const { reactId } = linkValue(linkAttributes, singleLink);
+        const { reactId, from, aria } = linkValue(linkAttributes, singleLink);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const dataPoints: Array<any> = linkToDataPoints(singleLink as unknown as SankeyLinkWithPositions);
         const key = `${linkId}-${index}`;
@@ -891,13 +984,13 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               stroke={this._fillStreamBorder(singleLink, gradientUrl)}
               strokeWidth="2"
               strokeOpacity={this._getOpacityStreamBorder(singleLink)}
-              onMouseOver={this._onStreamHover.bind(this, singleLink)}
+              onMouseOver={event => this._onStreamHover(event, singleLink, from)}
               onMouseOut={onMouseOut}
-              onFocus={this._onFocusLink.bind(this, singleLink)}
+              onFocus={event => this._onFocusLink(event, singleLink, from)}
               onBlur={this._onBlur}
               fillOpacity={this._getOpacityStream(singleLink)}
               data-is-focusable={true}
-              aria-label={`link from ${source.name} to ${target.name} with weight ${singleLink.unnormalizedValue}`}
+              aria-label={aria}
               role="img"
             />
           </g>
@@ -927,6 +1020,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           trimmed: isTruncated,
           name: truncatedName,
           weightOffset: textLengthForNodeWeight,
+          aria,
         } = nodeAttributes[singleNode.nodeId];
         const tooTall = height > MIN_HEIGHT_FOR_DOUBLINE_TYPE;
         const { name, actualValue, x0, x1, y0 } = singleNode;
@@ -947,7 +1041,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               strokeWidth="2"
               opacity="1"
               data-is-focusable={true}
-              aria-label={`node ${name} with weight ${actualValue}`} // TODO: localize this string
+              aria-label={aria}
               role="img"
             />
             {height > MIN_HEIGHT_FOR_TYPE && (
@@ -1025,7 +1119,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     }
   }
 
-  private _onStreamHover(singleLink: SLink, mouseEvent: React.MouseEvent<SVGElement>) {
+  private _onStreamHover(mouseEvent: React.MouseEvent<SVGElement>, singleLink: SLink, from: string) {
     mouseEvent.persist();
     this._onCloseCallout();
     if (!this.state.selectedState) {
@@ -1035,12 +1129,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         selectedNodes: new Set<number>(Array.from(selectedNodes).map(node => node.index!)),
         selectedLinks: new Set<number>(Array.from(selectedLinks).map(link => link.index!)),
         refSelected: mouseEvent,
-        selectedLink: singleLink,
-        isCalloutVisible: true,
-        color: (singleLink.source as SNode).color,
-        xCalloutValue: (singleLink.target as SNode).name,
-        yCalloutValue: singleLink.unnormalizedValue!.toString(),
-        descriptionMessage: 'from ' + (singleLink.source as SNode).name, // TODO: Does this need to be localized?
+        ...linkCalloutAttributes(singleLink, from),
       });
     }
   }
@@ -1056,18 +1145,15 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     }
   }
 
-  private _onFocusLink(singleLink: SLink, element: React.FocusEvent<SVGElement>): void {
+  private _onFocusLink(element: React.FocusEvent<SVGElement>, singleLink: SLink, from: string): void {
+    // There is a big difference in how "Tab" and the "Arrow keys" are handled in this diagram.
+    // In particular, I would expect the "Down" key to be like "Tab", but it jumps a little wildly. I'm not sure
+    // if this behavior is an accessiblity violation, but it we might want to investigate it.
     element.persist();
     this._onCloseCallout();
     this.setState({
       refSelected: element.currentTarget,
-      selectedLink: singleLink,
-      isCalloutVisible: true,
-      color: (singleLink.source as SNode).color,
-      xCalloutValue: (singleLink.target as SNode).name,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      yCalloutValue: (singleLink.source as SNode).actualValue! as any as string,
-      descriptionMessage: 'from ' + (singleLink.source as SNode).name, // TODO: Does this need to be localized?
+      ...linkCalloutAttributes(singleLink, from),
     });
   }
 
