@@ -76,11 +76,17 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     setOpenCategories(nextOpenItems);
   });
 
+  const [selectedCategoryValue, setSelectedCategoryValue] = useControllableState({
+    state: props.selectedCategoryValue,
+    defaultState: props.defaultSelectedCategoryValue,
+    initialState: undefined,
+  });
   const [selectedValue, setSelectedValue] = useControllableState({
     state: props.selectedValue,
     defaultState: props.defaultSelectedValue,
     initialState: undefined,
   });
+
   // considered usePrevious, but it is sensitive to re-renders
   // this could cause the previous to move to current in the case where the navItem list re-renders.
   // these refs avoid getRegisteredNavItems changing when selectedValue changes and causing
@@ -88,13 +94,20 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
   const currentSelectedValue = React.useRef<NavItemValue | undefined>(undefined);
   const previousSelectedValue = React.useRef<NavItemValue | undefined>(undefined);
 
+  const currentSelectedCategoryValue = React.useRef<NavItemValue | undefined>(undefined);
+  const previousSelectedCategoryValue = React.useRef<NavItemValue | undefined>(undefined);
+
   React.useEffect(() => {
     previousSelectedValue.current = currentSelectedValue.current;
     currentSelectedValue.current = selectedValue;
-  }, [selectedValue]);
+
+    previousSelectedCategoryValue.current = currentSelectedCategoryValue.current;
+    currentSelectedCategoryValue.current = selectedCategoryValue;
+  }, [selectedValue, selectedCategoryValue]);
 
   const onSelect: EventHandler<OnNavItemSelectData> = useEventCallback((event, data) => {
     setSelectedValue(data.value);
+    setSelectedCategoryValue(data.categoryValue);
     onNavItemSelect?.(event, data);
   });
 
@@ -112,6 +125,8 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     return {
       selectedValue: currentSelectedValue.current,
       previousSelectedValue: previousSelectedValue.current,
+      selectedCategoryValue: currentSelectedCategoryValue.current,
+      previousSelectedCategoryValue: previousSelectedCategoryValue.current,
       registeredNavItems: registeredNavItems.current,
     };
   }, []);
@@ -128,6 +143,7 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
       { elementType: 'div' },
     ),
     selectedValue,
+    selectedCategoryValue,
     onRegister,
     onUnregister,
     onSelect,

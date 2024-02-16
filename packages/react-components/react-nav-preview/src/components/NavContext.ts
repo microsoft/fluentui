@@ -4,6 +4,7 @@ import { NavContextValue } from './NavContext.types';
 const navContextDefaultValue: NavContextValue = {
   reserveSelectedNavItemSpace: true,
   selectedValue: undefined,
+  selectedCategoryValue: undefined,
   onRegister: () => {
     /* noop */
   },

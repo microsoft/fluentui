@@ -1,8 +1,8 @@
-import type { NavCategoryItemSlots, NavCategoryItemState } from './NavCategoryItem.types';
-
 import { makeResetStyles, mergeClasses, makeStyles } from '@griffel/react';
 import { typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
+
+import type { NavCategoryItemSlots, NavCategoryItemState } from './NavCategoryItem.types';
 
 export const navCategoryItemClassNames: SlotClassNames<NavCategoryItemSlots> = {
   root: 'fui-NavCategoryItem',
@@ -17,7 +17,7 @@ const useRootStyles = makeResetStyles({
   ...typographyStyles.body1,
 });
 
-const useExpandIconStyles = makeStyles({
+const useContentStyles = makeStyles({
   icon: {
     display: 'flex',
   },
@@ -27,6 +27,9 @@ const useExpandIconStyles = makeStyles({
   closed: {
     transform: 'rotate(90deg)',
   },
+  selected: {
+    ...typographyStyles.body1Strong,
+  },
 });
 
 /**
@@ -34,14 +37,21 @@ const useExpandIconStyles = makeStyles({
  */
 export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): NavCategoryItemState => {
   const defaultRootStyles = useRootStyles();
-  const expandIconStyles = useExpandIconStyles();
+  const contentStyles = useContentStyles();
 
-  state.root.className = mergeClasses(navCategoryItemClassNames.root, defaultRootStyles, state.root.className);
+  const { selected } = state;
+
+  state.root.className = mergeClasses(
+    navCategoryItemClassNames.root,
+    defaultRootStyles,
+    state.root.className,
+    selected && state.open === false && contentStyles.selected,
+  );
 
   state.expandIcon.className = mergeClasses(
     navCategoryItemClassNames.expandIcon,
-    expandIconStyles.icon,
-    state.open ? expandIconStyles.open : expandIconStyles.closed,
+    contentStyles.icon,
+    state.open ? contentStyles.open : contentStyles.closed,
     state.expandIcon.className,
   );
 

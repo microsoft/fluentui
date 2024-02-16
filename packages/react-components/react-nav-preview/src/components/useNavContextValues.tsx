@@ -4,6 +4,7 @@ import { NavContextValue, NavContextValues, NavState } from '../Nav';
 export function useNavContextValues_unstable(state: NavState): NavContextValues {
   const {
     selectedValue,
+    selectedCategoryValue,
     onRegister,
     onUnregister,
     onSelect,
@@ -15,6 +16,7 @@ export function useNavContextValues_unstable(state: NavState): NavContextValues 
   const navContext = React.useMemo<NavContextValue>(
     () => ({
       selectedValue,
+      selectedCategoryValue,
       onSelect,
       onRegister,
       onUnregister,
@@ -24,6 +26,7 @@ export function useNavContextValues_unstable(state: NavState): NavContextValues 
     }),
     [
       selectedValue,
+      selectedCategoryValue,
       onSelect,
       onRegister,
       onUnregister,

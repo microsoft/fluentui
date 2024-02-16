@@ -22,11 +22,13 @@ export const useNavCategoryItem_unstable = (
 
   const { open, value } = useNavCategoryContext_unstable();
 
-  const { onRequestNavCategoryItemToggle } = useNavContext_unstable();
+  const { onRequestNavCategoryItemToggle, selectedCategoryValue } = useNavContext_unstable();
 
   const onNavCategoryItemClick = useEventCallback(
     mergeCallbacks(onClick, event => onRequestNavCategoryItemToggle(event, { type: 'click', event, value })),
   );
+
+  const selected = selectedCategoryValue === value;
 
   // TODO - these are copied from AccordionHeader.
   // We need to figure out if they are applicable to this
@@ -80,6 +82,7 @@ export const useNavCategoryItem_unstable = (
       },
       elementType: 'span',
     }),
+    selected,
     // button: useARIAButtonProps(buttonSlot.as, buttonSlot),
     // button: slot.always(
     //   getIntrinsicElementProps('button', {

@@ -49,6 +49,4 @@ export const useNavSubItemStyles_unstable = (state: NavSubItemState): NavSubItem
   );
 
   return state;
-
-  return state;
 };

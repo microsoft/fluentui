@@ -28,7 +28,7 @@ export type NavSubItemProps = ComponentProps<Partial<NavSubItemSlots>> & {
 export type NavSubItemState = ComponentState<NavSubItemSlots> &
   Pick<NavSubItemProps, 'value'> & {
     /**
-     * If this navCategoryItem is selected
+     * If this NavSubItem is selected
      */
     selected: boolean;
   };

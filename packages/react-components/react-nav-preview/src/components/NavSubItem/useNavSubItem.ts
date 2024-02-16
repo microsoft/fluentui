@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
 import { useNavContext_unstable } from '../NavContext';
+import { useNavCategoryContext_unstable } from '../NavCategoryContext';
 
 import type { NavSubItemProps, NavSubItemState } from './NavSubItem.types';
 
@@ -18,12 +19,16 @@ export const useNavSubItem_unstable = (props: NavSubItemProps, ref: React.Ref<HT
 
   const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
 
+  const { value: parentCategoryValue } = useNavCategoryContext_unstable();
+
   const selected = selectedValue === subItemValue;
 
   const innerRef = React.useRef<HTMLElement>(null);
 
   const onNavSubItemClick = useEventCallback(
-    mergeCallbacks(onClick, event => onSelect(event, { type: 'click', event, value: subItemValue })),
+    mergeCallbacks(onClick, event =>
+      onSelect(event, { type: 'click', event, value: subItemValue, categoryValue: parentCategoryValue }),
+    ),
   );
 
   React.useEffect(() => {
