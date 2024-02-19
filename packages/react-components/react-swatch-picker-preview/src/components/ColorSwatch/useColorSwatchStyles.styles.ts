@@ -24,7 +24,7 @@ const useStyles = makeResetStyles({
   border: 'none',
   padding: 0,
   background: `var(${swatchColor})`,
-  '&:hover': {
+  ':hover': {
     cursor: 'pointer',
     ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorBrandStroke1),
     ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorBrandBackgroundInverted),
