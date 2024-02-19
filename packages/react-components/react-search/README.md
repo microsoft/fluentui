@@ -1,8 +1,6 @@
-# @fluentui/react-search-preview
+# @fluentui/react-search
 
 **React Search components for [Fluent UI React](https://react.fluentui.dev/)**
-
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
 
 The `SearchBox` component allows the users to access information with ease, providing flexibility and the ability to clear and filter the search.
 
@@ -11,7 +9,7 @@ The `SearchBox` component allows the users to access information with ease, prov
 Import SearchBox:
 
 ```js
-import { SearchBox } from '@fluentui/react-search-preview';
+import { SearchBox } from '@fluentui/react-search';
 ```
 
 #### Examples
@@ -26,7 +24,7 @@ See [Fluent UI Storybook](https://react.fluentui.dev/) for more detailed usage e
 Alternatively, run Storybook locally with:
 
 1. `yarn start`
-2. Select `react-search-preview` from the list.
+2. Select `react-search` from the list.
 
 ### Specification
 

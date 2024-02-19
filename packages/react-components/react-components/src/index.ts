@@ -1571,3 +1571,12 @@ export {
   useAriaLiveAnnouncerContextValues_unstable,
 } from '@fluentui/react-aria';
 export type { AriaLiveAnnouncerProps, AriaLiveAnnouncerState } from '@fluentui/react-aria';
+
+export {
+  SearchBox,
+  renderSearchBox_unstable,
+  searchBoxClassNames,
+  useSearchBoxStyles_unstable,
+  useSearchBox_unstable,
+} from '@fluentui/react-search';
+export type { SearchBoxChangeEvent, SearchBoxProps, SearchBoxSlots, SearchBoxState } from '@fluentui/react-search';
