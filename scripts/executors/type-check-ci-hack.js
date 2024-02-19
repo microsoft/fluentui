@@ -1,8 +1,9 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const { execSync } = require('child_process');
 
 const { getAffectedPackages } = require('@fluentui/scripts-monorepo');
-const { workspaceRoot, joinPathFragments, createProjectGraphAsync } = require('@nrwl/devkit');
-const { FsTree } = require('nx/src/config/tree');
+const { workspaceRoot, joinPathFragments, createProjectGraphAsync } = require('@nx/devkit');
+const { FsTree } = require('nx/src/generators/tree');
 const yargs = require('yargs');
 
 main().catch(err => {
@@ -14,7 +15,7 @@ async function main() {
   const { base } = processArgs();
   const tree = new FsTree(workspaceRoot, false);
   const affected = getNormalizeAffected(base);
-  /** @type {import('@nrwl/devkit').ProjectGraph<{}>} */
+  /** @type {import('@nx/devkit').ProjectGraph} */
   const nxGraph = await createProjectGraphAsync();
 
   const projectsToBuildFirst = Array.from(getProjectsThatNeedTriggerBuildInAdvance({ affected, nxGraph, tree }));
@@ -54,7 +55,7 @@ function getNormalizeAffected(base) {
 }
 
 /**
- * @param {import('@nrwl/devkit').ProjectConfiguration} project
+ * @param {import('@nx/devkit').ProjectConfiguration} project
  */
 function isVNextProject(project) {
   return project.tags?.indexOf('vNext') !== -1;
@@ -62,7 +63,7 @@ function isVNextProject(project) {
 
 /**
  *
- * @param {{tree: import('@nrwl/devkit').Tree, affected:string[]; nxGraph: import('@nrwl/devkit').ProjectGraph<unknown>}} options
+ * @param {{tree: import('@nx/devkit').Tree, affected:string[]; nxGraph: import('@nx/devkit').ProjectGraph}} options
  */
 function getProjectsThatNeedTriggerBuildInAdvance(options) {
   const { affected, nxGraph, tree } = options;
