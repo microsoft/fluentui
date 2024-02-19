@@ -17,7 +17,7 @@ import { useActiveDescendant } from '@fluentui/react-aria';
 export const usePicker_unstable = (props: PickerProps, ref: React.Ref<HTMLDivElement>): PickerState => {
   const popoverId = useId('picker-listbox');
   const triggerInnerRef = React.useRef<HTMLInputElement>(null);
-  const { positioning } = props;
+  const { positioning, size = 'medium' } = props;
 
   // Set a default set of fallback positions to try if the dropdown does not fit on screen
   const fallbackPositions: PositioningShorthandValue[] = ['above', 'after', 'after-top', 'before', 'before-top'];
@@ -40,7 +40,13 @@ export const usePicker_unstable = (props: PickerProps, ref: React.Ref<HTMLDivEle
       return el.classList.contains(optionClassNames.root);
     },
   });
-  const state = useComboboxBaseState({ ...props, activeDescendantController, editable: true, multiselect: true });
+  const state = useComboboxBaseState({
+    ...props,
+    activeDescendantController,
+    editable: true,
+    multiselect: true,
+    size: 'medium',
+  });
   const onOptionClickBase = state.onOptionClick;
   state.onOptionClick = useEventCallback(e => {
     onOptionClickBase(e);
@@ -80,5 +86,6 @@ export const usePicker_unstable = (props: PickerProps, ref: React.Ref<HTMLDivEle
     popoverRef: useMergedRefs(listboxRef, containerRef),
     targetRef,
     ...state,
+    size,
   };
 };

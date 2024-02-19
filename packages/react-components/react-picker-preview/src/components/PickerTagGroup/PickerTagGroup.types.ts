@@ -5,7 +5,7 @@ export type PickerTagGroupSlots = TagGroupSlots;
 /**
  * PickerTagGroup Props
  */
-export type PickerTagGroupProps = Omit<TagGroupProps, 'onDismiss'>;
+export type PickerTagGroupProps = Omit<TagGroupProps, 'onDismiss' | 'size'>;
 
 /**
  * State used in rendering PickerTagGroup

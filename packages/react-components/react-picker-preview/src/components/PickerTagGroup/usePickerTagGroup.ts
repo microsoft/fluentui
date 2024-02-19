@@ -21,10 +21,23 @@ export const usePickerTagGroup_unstable = (
   const hasOneSelectedOption = usePickerContext_unstable(ctx => ctx.selectedOptions.length === 1);
   const triggerRef = usePickerContext_unstable(ctx => ctx.triggerRef);
   const selectOption = usePickerContext_unstable(ctx => ctx.selectOption);
+  const tagSize = usePickerContext_unstable(ctx => {
+    switch (ctx.size) {
+      case 'medium':
+        return 'extra-small';
+      case 'large':
+        return 'small';
+      case 'extra-large':
+        return 'medium';
+      default:
+        return 'extra-small';
+    }
+  });
 
   const state = useTagGroup_unstable(
     {
       ...props,
+      size: tagSize,
       onClick: e => {
         // Prevent default so that open/close state is not affected
         // target check is to make sure that this only applies to white space in this control and not to tags

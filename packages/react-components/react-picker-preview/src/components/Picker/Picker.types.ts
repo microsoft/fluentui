@@ -12,7 +12,8 @@ export type PickerSlots = {};
  * TODO: pick only necessary props form combobox
  */
 export type PickerProps = ComponentProps<PickerSlots> &
-  ComboboxProps & {
+  Omit<ComboboxProps, 'size' | 'value'> &
+  Pick<Partial<PickerContextValue>, 'size'> & {
     /**
      * Can contain two children including a trigger and a popover
      */
@@ -24,8 +25,8 @@ export type PickerProps = ComponentProps<PickerSlots> &
  * TODO: only pick from ComboboxState
  */
 export type PickerState = ComponentState<PickerSlots> &
-  Omit<ComboboxState, 'listbox' | 'root' | 'input' | 'expandIcon' | 'clearIcon' | 'components'> &
-  Pick<PickerContextValue, 'triggerRef' | 'popoverId' | 'popoverRef' | 'targetRef'> & {
+  Omit<ComboboxState, 'listbox' | 'root' | 'input' | 'expandIcon' | 'clearIcon' | 'components' | 'size'> &
+  Pick<PickerContextValue, 'triggerRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'size'> & {
     /**
      * Configures the positioned menu
      */

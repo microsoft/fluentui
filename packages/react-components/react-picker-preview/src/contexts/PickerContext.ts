@@ -22,6 +22,7 @@ export interface PickerContextValue
   popoverRef: React.RefObject<HTMLDivElement>;
   popoverId: string;
   targetRef: React.RefObject<HTMLElement>;
+  size: 'medium' | 'large' | 'extra-large';
 }
 
 const pickerContextDefaultValue: PickerContextValue = {
@@ -40,6 +41,7 @@ const pickerContextDefaultValue: PickerContextValue = {
   setValue: () => null,
   value: undefined,
   popoverId: '',
+  size: 'medium',
 };
 
 const PickerContext = createContext<PickerContextValue | undefined>(undefined);

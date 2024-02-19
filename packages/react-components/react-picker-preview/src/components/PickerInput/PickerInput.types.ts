@@ -9,13 +9,11 @@ export type PickerInputSlots = {
 /**
  * PickerInput Props
  */
-export type PickerInputProps = Omit<
-  ComponentProps<Partial<PickerInputSlots>>,
-  'children' | 'size' | 'value' | 'defaultValue'
-> &
+export type PickerInputProps = Omit<ComponentProps<Partial<PickerInputSlots>>, 'children' | 'size' | 'defaultValue'> &
   Pick<ComboboxProps, 'clearable' | 'size' | 'appearance'> & {
     freeform?: boolean;
     disabled?: boolean;
+    value?: string;
   };
 
 /**

@@ -36,9 +36,11 @@ export const usePickerInput_unstable = (props: PickerInputProps, ref: React.Ref<
     setOpen,
     setValue,
     multiselect,
-    value,
     popoverId,
+    value: contextValue,
   } = usePickerContext();
+
+  const { value = contextValue } = props;
 
   const root = useInputTriggerSlot({}, useMergedRefs(triggerRef, ref) as React.RefObject<HTMLInputElement>, {
     activeDescendantController,
@@ -60,7 +62,7 @@ export const usePickerInput_unstable = (props: PickerInputProps, ref: React.Ref<
       setOpen,
       setValue,
       multiselect,
-      value,
+      value: props.value,
     },
   });
 
