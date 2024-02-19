@@ -61,7 +61,7 @@ export const useListItem_unstable = (
 
   const baseIndicatorStyles = useIndicatorStyle();
 
-  const focusableGroupAttrs = useFocusableGroup({ ignoreDefaultKeydown: { Enter: true } });
+  const focusableGroupAttrs = useFocusableGroup({ ignoreDefaultKeydown: { Enter: true }, tabBehavior: 'limited' });
 
   const handleClick: React.MouseEventHandler<HTMLLIElement & HTMLDivElement> = useEventCallback(e => {
     onClick?.(e);
