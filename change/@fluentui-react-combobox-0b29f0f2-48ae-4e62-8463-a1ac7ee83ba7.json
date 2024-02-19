@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Decouple activedescendant handling from react state",
+  "packageName": "@fluentui/react-combobox",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

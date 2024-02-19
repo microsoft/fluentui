@@ -33,6 +33,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-aria": "^9.8.2",
     "@fluentui/keyboard-keys": "^9.0.7",
     "@fluentui/react-context-selector": "^9.1.51",
     "@fluentui/react-field": "^9.1.53",
