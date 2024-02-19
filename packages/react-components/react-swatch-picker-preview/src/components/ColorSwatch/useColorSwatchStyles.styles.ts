@@ -30,8 +30,8 @@ const useStyles = makeResetStyles({
     border: `${tokens.strokeWidthThin} solid ${tokens.colorBrandBackgroundInverted}`,
   },
   ':hover:active': {
-    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorBrandStroke1),
-    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandBackgroundInverted),
+    outline: `${tokens.strokeWidthThick} solid ${tokens.colorBrandStroke1}`,
+    border: `${tokens.strokeWidthThick} solid ${tokens.colorBrandBackgroundInverted}`,
   },
   ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
 });
