@@ -7,7 +7,7 @@
 /// <reference types="react" />
 
 import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
-import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { FC } from 'react';
