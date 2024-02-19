@@ -26,7 +26,9 @@ export const useSwatchPickerState_unstable = (state: SwatchPickerState, props: S
 
   // Root props
   state.root.style = {
-    ...rootVariables,
+    [columnCountGrid]: 3,
+    [cellSize]: sizeMap[size],
+    [gridGap]: spacingMap.medium,
     ...state.root.style,
   };
 
