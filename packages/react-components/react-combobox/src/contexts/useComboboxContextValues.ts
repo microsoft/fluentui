@@ -1,9 +1,9 @@
 import * as React from 'react';
-import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
-import type { ComboboxBaseContextValues, ComboboxBaseState } from '../utils/ComboboxBase.types';
+import { ComboboxState } from '../Combobox';
+import { ComboboxBaseContextValues, ComboboxBaseState } from '../utils/ComboboxBase.types';
 
 export function useComboboxContextValues(
-  state: ComboboxBaseState & { activeDescendantController: ActiveDescendantImperativeRef },
+  state: ComboboxBaseState & Pick<ComboboxState, 'activeDescendantController'>,
 ): ComboboxBaseContextValues {
   const {
     appearance,
@@ -14,23 +14,30 @@ export function useComboboxContextValues(
     setOpen,
     size,
     activeDescendantController,
-    // eslint-disable-next-line @typescript-eslint/naming-convention, deprecation/deprecation
-    activeOption: UNSAFE_activeOption,
-    // eslint-disable-next-line @typescript-eslint/naming-convention, deprecation/deprecation
-    setActiveOption: UNSAFE_setActiveOption,
+    onOptionClick,
   } = state;
 
   const combobox = {
-    activeOption: UNSAFE_activeOption,
+    activeOption: undefined,
     appearance,
     focusVisible: false,
     open,
     registerOption,
     selectedOptions,
     selectOption,
-    setActiveOption: UNSAFE_setActiveOption,
+    setActiveOption: () => null,
     setOpen,
     size,
+  };
+
+  const listbox = {
+    activeOption: undefined,
+    focusVisible: false,
+    registerOption,
+    selectedOptions,
+    selectOption,
+    setActiveOption: () => null,
+    onOptionClick,
   };
 
   const activeDescendant = React.useMemo(
@@ -40,5 +47,5 @@ export function useComboboxContextValues(
     [activeDescendantController],
   );
 
-  return { combobox, activeDescendant };
+  return { combobox, activeDescendant, listbox };
 }

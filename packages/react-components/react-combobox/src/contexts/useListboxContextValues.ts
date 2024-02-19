@@ -1,16 +1,17 @@
 import * as React from 'react';
-import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
+import { useHasParentContext } from '@fluentui/react-context-selector';
 import { ListboxContextValues, ListboxState } from '../components/Listbox/Listbox.types';
-import { ComboboxContext } from './ComboboxContext';
+import { ListboxContext, useListboxContext_unstable } from './ListboxContext';
 
 export function useListboxContextValues(state: ListboxState): ListboxContextValues {
-  const hasComboboxContext = useHasParentContext(ComboboxContext);
+  const hasListboxContext = useHasParentContext(ListboxContext);
   const { multiselect, registerOption, selectedOptions, selectOption, activeDescendantController } = state;
 
   // get register/unregister functions from parent combobox context
-  const comboboxRegisterOption = useContextSelector(ComboboxContext, ctx => ctx.registerOption);
+  const parentRegisterOption = useListboxContext_unstable(ctx => ctx.registerOption);
+  const onOptionClick = useListboxContext_unstable(ctx => ctx.onOptionClick);
 
-  const registerOptionValue = hasComboboxContext ? comboboxRegisterOption : registerOption;
+  const registerOptionValue = hasListboxContext ? parentRegisterOption : registerOption;
 
   const listbox = {
     activeOption: undefined,
@@ -20,6 +21,7 @@ export function useListboxContextValues(state: ListboxState): ListboxContextValu
     selectedOptions,
     selectOption,
     setActiveOption: () => undefined,
+    onOptionClick,
   };
 
   const activeDescendant = React.useMemo(
