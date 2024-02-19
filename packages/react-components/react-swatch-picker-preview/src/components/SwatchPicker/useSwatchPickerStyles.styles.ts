@@ -12,7 +12,7 @@ export const swatchPickerCSSVars = {
   gridGap: `--fui-SwatchPicker--gridGap`,
 };
 
-const { columnCountGrid, cellSize, gridGap } = swatchPickerCSSVars;
+const { gridGap } = swatchPickerCSSVars;
 
 /**
  * Styles for the root slot
@@ -20,11 +20,6 @@ const { columnCountGrid, cellSize, gridGap } = swatchPickerCSSVars;
 const useStyles = makeStyles({
   root: {
     ...shorthands.padding(tokens.spacingHorizontalNone, tokens.spacingVerticalNone),
-  },
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: `repeat(var(${columnCountGrid}), var(${cellSize}))`,
-    gridGap: `var(${gridGap})`,
   },
   row: {
     display: 'flex',
@@ -38,7 +33,6 @@ const useStyles = makeStyles({
  */
 export const useSwatchPickerStyles_unstable = (state: SwatchPickerState): SwatchPickerState => {
   const styles = useStyles();
-  // const layout = state.layout ?? 'row';
   state.root.className = mergeClasses(swatchPickerClassNames.root, styles.root, styles.row, state.root.className);
 
   return state;

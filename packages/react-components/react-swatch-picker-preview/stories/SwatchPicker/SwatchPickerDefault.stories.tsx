@@ -12,8 +12,8 @@ const useStyles = makeStyles({
 });
 
 export const Default = () => {
-  const [selectedValue, setSelectedValue] = React.useState('');
-  const [selectedColor, setSelectedColor] = React.useState('#fff');
+  const [selectedValue, setSelectedValue] = React.useState('00B053');
+  const [selectedColor, setSelectedColor] = React.useState('#00B053');
   const handleSelect: SwatchPickerSelectEventHandler = (_, data) => {
     setSelectedValue(data.selectedValue);
     setSelectedColor(data.selectedColor);

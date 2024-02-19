@@ -42,7 +42,7 @@ export const renderSwatchPicker_unstable: (state: SwatchPickerState, contextValu
 
 // @public (undocumented)
 export const swatchCSSVars: {
-    swatchColor: string;
+    color: string;
 };
 
 // @public
@@ -74,7 +74,7 @@ export type SwatchPickerSelectData = {
 };
 
 // @public (undocumented)
-export type SwatchPickerSelectEvent = React_2.MouseEvent | React_2.KeyboardEvent | React_2.ChangeEvent;
+export type SwatchPickerSelectEvent = React_2.MouseEvent;
 
 // @public (undocumented)
 export type SwatchPickerSelectEventHandler = (event: SwatchPickerSelectEvent, data: SwatchPickerSelectData) => void;
@@ -94,7 +94,7 @@ export const useColorSwatch_unstable: (props: ColorSwatchProps, ref: React_2.Ref
 export const useColorSwatchStyles_unstable: (state: ColorSwatchState) => ColorSwatchState;
 
 // @public
-export const useSwatchPicker_unstable: <T>(props: SwatchPickerProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerState;
+export const useSwatchPicker_unstable: (props: SwatchPickerProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerState;
 
 // @public
 export const useSwatchPickerStyles_unstable: (state: SwatchPickerState) => SwatchPickerState;

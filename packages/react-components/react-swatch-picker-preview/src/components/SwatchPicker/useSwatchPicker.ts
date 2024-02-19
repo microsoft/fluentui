@@ -2,8 +2,22 @@ import * as React from 'react';
 import { getIntrinsicElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { useSwatchPickerState_unstable } from './useSwatchPickerState';
 import { SwatchPickerNotifySelectedData } from '../../contexts/swatchPicker';
+import { swatchPickerCSSVars } from './useSwatchPickerStyles.styles';
+
+const { columnCountGrid, cellSize, gridGap } = swatchPickerCSSVars;
+
+const sizeMap = {
+  extraSmall: '20px',
+  small: '24px',
+  medium: '28px',
+  large: '32px',
+};
+
+const spacingMap = {
+  small: '2px',
+  medium: '4px',
+};
 
 /**
  * Create the state required to render SwatchPicker.
@@ -14,26 +28,26 @@ import { SwatchPickerNotifySelectedData } from '../../contexts/swatchPicker';
  * @param props - props from this instance of SwatchPicker
  * @param ref - reference to root HTMLElement of SwatchPicker
  */
-export const useSwatchPicker_unstable = <T>(
+export const useSwatchPicker_unstable = (
   props: SwatchPickerProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
-  const { defaultSelectedValue, role, onSelectionChange, selectedValue, size, shape, ...rest } = props;
+  const { role, onSelectionChange, size = 'medium', shape, ...rest } = props;
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
     axis: 'both',
     memorizeCurrent: true,
   });
 
-  const [selectedSwatch, setSelectedSwatch] = useControllableState({
-    state: selectedValue,
-    defaultState: defaultSelectedValue,
+  const [selectedValue, setSelectedValue] = useControllableState({
+    state: props.selectedValue,
+    defaultState: props.defaultSelectedValue,
     initialState: '',
   });
 
   const requestSelectionChange = useEventCallback((data: SwatchPickerNotifySelectedData) => {
     onSelectionChange?.(data.event, { selectedValue: data.selectedValue, selectedColor: data.selectedColor });
-    setSelectedSwatch(data.selectedValue);
+    setSelectedValue(data.selectedValue);
   });
 
   const state: SwatchPickerState = {
@@ -50,12 +64,18 @@ export const useSwatchPicker_unstable = <T>(
       { elementType: 'div' },
     ),
     requestSelectionChange,
-    selectedValue: selectedSwatch,
+    selectedValue,
     size,
     shape,
   };
 
-  useSwatchPickerState_unstable(state, props);
+  // Root props
+  state.root.style = {
+    [columnCountGrid]: 3,
+    [cellSize]: sizeMap[size],
+    [gridGap]: spacingMap.medium,
+    ...state.root.style,
+  };
 
   return state;
 };

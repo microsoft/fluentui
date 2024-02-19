@@ -6,8 +6,6 @@ import { useFocusWithin } from '@fluentui/react-tabster';
 import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
 import { swatchCSSVars } from './useColorSwatchStyles.styles';
 
-const { swatchColor } = swatchCSSVars;
-
 /**
  * Create the state required to render ColorSwatch.
  *
@@ -39,7 +37,7 @@ export const useColorSwatch_unstable = (
   });
 
   const rootVariables = {
-    [swatchColor]: color,
+    [swatchCSSVars.color]: color,
   };
 
   const root = slot.always(props.root, {

@@ -10,10 +10,7 @@ import {
 /**
  * The context through which individual color controls communicate with the picker.
  */
-export type SwatchPickerContextValue = Pick<
-  SwatchPickerProps,
-  'defaultSelectedValue' | 'size' | 'shape' | 'selectedValue'
-> & {
+export type SwatchPickerContextValue = Pick<SwatchPickerProps, 'size' | 'shape' | 'selectedValue'> & {
   /**
    * Callback used by ColorSwatch to request a change on it's selected state
    * Should be used to select ColorSwatch
@@ -26,24 +23,20 @@ export type SwatchPickerNotifySelectedData = {
 } & SwatchPickerOnSelectionChangeData;
 
 export const useSwatchPickerContextValues = (state: SwatchPickerState): SwatchPickerContextValues => {
-  const { defaultSelectedValue, size, shape, requestSelectionChange, selectedValue } = state;
+  const { size, shape, requestSelectionChange, selectedValue } = state;
 
-  const swatchPicker = React.useMemo<SwatchPickerContextValue>(
-    () => ({
-      defaultSelectedValue,
-      size,
-      shape,
-      selectedValue,
-      requestSelectionChange,
-    }),
-    [defaultSelectedValue, size, shape, selectedValue, requestSelectionChange],
-  );
+  // This context is created with "@fluentui/react-context-selector", these is no sense to memoize it
+  const swatchPicker: SwatchPickerContextValue = {
+    size,
+    shape,
+    selectedValue,
+    requestSelectionChange,
+  };
 
   return { swatchPicker };
 };
 
 export const swatchPickerContextDefaultValue: SwatchPickerContextValue = {
-  defaultSelectedValue: undefined,
   requestSelectionChange: () => {
     /*noop*/
   },

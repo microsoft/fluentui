@@ -6,12 +6,17 @@ export type SwatchPickerSlots = {
   root: Slot<'div'>;
 };
 
-export type SwatchPickerOnSelectionChangeEvent = React.MouseEvent | React.KeyboardEvent | React.ChangeEvent;
+export type SwatchPickerOnSelectionChangeEvent = React.MouseEvent;
 
 export type SwatchPickerOnSelectionChangeData = {
   selectedValue: string;
   selectedColor: string;
 };
+
+// export type SwatchPickerOnSelectionChangeData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
+//   selectedValue: string;
+//   selectedColor: string;
+// };
 
 export type SwatchPickerSelectEventHandler = (
   event: SwatchPickerOnSelectionChangeEvent,
@@ -32,6 +37,7 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
    */
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onSelectionChange?: SwatchPickerSelectEventHandler;
+  // onSelectionChange?: EventHandler<SwatchPickerOnSelectionChangeData>;
 
   /**
    * Controlled selected value
