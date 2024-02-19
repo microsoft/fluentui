@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: regression fix for focus and blur events on TreeItem",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

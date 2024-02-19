@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useActiveDescendant } from '@fluentui/react-aria';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { ChevronDownRegular as ChevronDownIcon, DismissRegular as DismissIcon } from '@fluentui/react-icons';
 import {
@@ -9,7 +10,6 @@ import {
   useMergedRefs,
   slot,
 } from '@fluentui/react-utilities';
-import { useActiveDescendant } from '@fluentui/react-aria';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
 import { Listbox } from '../Listbox/Listbox';
@@ -32,7 +32,6 @@ import { optionClassNames } from '../Option/useOptionStyles.styles';
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
-
   const {
     listboxRef: activeDescendantListboxRef,
     activeParentRef,
@@ -41,6 +40,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     matchOption: el => el.classList.contains(optionClassNames.root),
   });
   const baseState = useComboboxBaseState({ ...props, editable: true, activeDescendantController });
+
   const {
     clearable,
     clearSelection,

@@ -6,7 +6,7 @@ import {
   scaleLinear as d3ScaleLinear,
   ScaleLinear as D3ScaleLinear,
   scaleBand as d3ScaleBand,
-  scaleTime as d3ScaleTime,
+  scaleUtc as d3ScaleUtc,
 } from 'd3-scale';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
@@ -245,7 +245,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           fill="transparent"
           strokeLinecap="square"
           strokeWidth={3 + lineBorderWidth * 2}
-          stroke={theme!.palette.white}
+          stroke={theme!.semanticColors.bodyBackground}
         />,
       );
     }
@@ -283,7 +283,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onMouseOut={this._onBarLeave}
             r={8}
             stroke={lineLegendColor}
-            fill={this.props.theme!.palette.white}
+            fill={this.props.theme!.semanticColors.bodyBackground}
             strokeWidth={3}
             visibility={this.state.activeXdataPoint === item.x ? CircleVisbility.show : CircleVisbility.hide}
             onClick={item.point.lineData?.onClick}
@@ -529,7 +529,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     } else if (this._xAxisType === XAxisTypes.DateAxis) {
       const sDate = d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
       const lDate = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
-      xBarScale = d3ScaleTime()
+      xBarScale = d3ScaleUtc()
         .domain([sDate, lDate])
         .range([
           this.margins.left! + this._domainMargin + this._barWidth / 2,
@@ -699,7 +699,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         legendColor: this.state.color,
-        shouldHighlight,
+        shouldHighlight: shouldHighlight,
       });
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       let adjustedBarHeight = 0;

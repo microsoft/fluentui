@@ -69,7 +69,19 @@ export function createPositionManager(options: PositionManagerOptions): Position
   }
 
   // When the dimensions of the target or the container change - trigger a position update
-  const resizeObserver = disableUpdateOnResize ? null : createResizeObserver(targetWindow, () => updatePosition());
+  const resizeObserver = disableUpdateOnResize
+    ? null
+    : createResizeObserver(targetWindow, entries => {
+        // If content rect dimensions to go 0 -> very likely that `display: none` is being used to hide the element
+        // In this case don't update and let users update imperatively
+        const shouldUpdateOnResize = entries.every(entry => {
+          return entry.contentRect.width > 0 && entry.contentRect.height > 0;
+        });
+
+        if (shouldUpdateOnResize) {
+          updatePosition();
+        }
+      });
 
   let isFirstUpdate = true;
   const scrollParents: Set<HTMLElement> = new Set<HTMLElement>();

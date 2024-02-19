@@ -1,6 +1,6 @@
 import * as React from 'react';
+import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
-import { ActiveDescendantContextValue } from '@fluentui/react-aria';
 import type { ComboboxContextValue } from '../contexts/ComboboxContext';
 import type { OptionValue, OptionCollectionState } from '../utils/OptionCollection.types';
 import { SelectionProps, SelectionState } from '../utils/Selection.types';
@@ -43,6 +43,7 @@ export type ComboboxBaseProps = SelectionProps &
     /**
      * Callback when the open/closed state of the dropdown changes
      */
+    // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
     onOpenChange?: (e: ComboboxBaseOpenEvents, data: ComboboxBaseOpenChangeData) => void;
 
     /**
@@ -96,11 +97,6 @@ export type ComboboxBaseState = Required<
     focusVisible: boolean;
 
     /**
-     * whether the combobox/dropdown currently has focus
-     */
-    hasFocus: boolean;
-
-    /**
      * @deprecated - no longer used internally
      * Whether the next blur event should be ignored, and the combobox/dropdown will not close.
      */
@@ -115,6 +111,11 @@ export type ComboboxBaseState = Required<
      * @deprecated - no longer used internally
      */
     setFocusVisible(focusVisible: boolean): void;
+
+    /**
+     * whether the combobox/dropdown currently has focus
+     */
+    hasFocus: boolean;
 
     setHasFocus(hasFocus: boolean): void;
 

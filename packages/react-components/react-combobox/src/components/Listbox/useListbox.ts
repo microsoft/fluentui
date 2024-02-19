@@ -19,6 +19,13 @@ import type { ListboxProps, ListboxState } from './Listbox.types';
 import { optionClassNames } from '../Option/useOptionStyles.styles';
 import { ListboxContext, useListboxContext_unstable } from '../../contexts/ListboxContext';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const UNSAFE_noLongerUsed = {
+  activeOption: undefined,
+  focusVisible: false,
+  setActiveOption: () => null,
+};
+
 /**
  * Create the state required to render Listbox.
  *
@@ -91,18 +98,14 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   // without a parent combobox context, provide values directly from Listbox
   const optionContextValues = hasComboboxContext
     ? {
-        activeOption: undefined,
-        focusVisible: false,
         selectedOptions: contextSelectedOptions,
         selectOption: contextSelectOption,
-        setActiveOption: () => null,
+        ...UNSAFE_noLongerUsed,
       }
     : {
-        activeOption: undefined,
-        focusVisible: false,
         selectedOptions,
         selectOption,
-        setActiveOption: () => null,
+        ...UNSAFE_noLongerUsed,
       };
 
   const state: ListboxState = {

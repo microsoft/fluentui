@@ -126,9 +126,10 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       elementType: 'span',
     }),
     disabled,
-    focusVisible: false,
-    active: false,
     multiselect,
     selected,
+    // no longer used
+    focusVisible: false,
+    active: false,
   };
 };

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-calendar-compat",
   "entries": [
     {
+      "date": "Tue, 06 Feb 2024 17:55:18 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.0.20",
+      "version": "0.0.20",
+      "comments": {
+        "patch": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "c54b3ce6d7f3b6a032471dc67e1ec3cf464b6503",
+            "comment": "fix: Update year and month pickers to use the correct keyboard navigation type and apply requested focus indicator width from design for day picker."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.19.0",
+            "commit": "d89076308f8f3cfe80756f873bc12447a474e12c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jan 2024 23:16:54 GMT",
       "tag": "@fluentui/react-calendar-compat_v0.0.19",
       "version": "0.0.19",

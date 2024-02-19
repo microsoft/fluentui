@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-search-preview
 
-This log was last generated on Tue, 30 Jan 2024 23:16:54 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Feb 2024 17:55:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.44)
+
+Tue, 06 Feb 2024 17:55:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.43..@fluentui/react-search-preview_v0.1.44)
+
+### Patches
+
+- Adds custom onChange callback on SearchBox preview so consumers can handle clear event. ([PR #29038](https://github.com/microsoft/fluentui/pull/29038) by syphe@outlook.com)
 
 ## [0.1.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.43)
 

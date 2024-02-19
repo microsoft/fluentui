@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Tue, 06 Feb 2024 17:55:19 GMT",
+      "tag": "@fluentui/react-positioning_v9.13.3",
+      "version": "9.13.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "0a9926b27316b3e29009638e58458bedf49091ba",
+            "comment": "fix: Resize heuristic should account for zero dimensions"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jan 2024 23:16:54 GMT",
       "tag": "@fluentui/react-positioning_v9.13.2",
       "version": "9.13.2",

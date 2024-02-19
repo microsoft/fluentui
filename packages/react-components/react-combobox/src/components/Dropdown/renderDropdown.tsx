@@ -4,10 +4,10 @@
 import { Portal } from '@fluentui/react-portal';
 
 import { assertSlots } from '@fluentui/react-utilities';
+import { ActiveDescendantContextProvider } from '@fluentui/react-aria';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { DropdownContextValues, DropdownState, DropdownSlots } from './Dropdown.types';
 import { ListboxContext } from '../../contexts/ListboxContext';
-import { ActiveDescendantContextProvider } from '@fluentui/react-aria';
 
 /**
  * Render the final JSX of Dropdown

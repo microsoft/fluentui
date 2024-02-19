@@ -95,6 +95,14 @@ export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
 export const GaugeChart: React_2.FunctionComponent<IGaugeChartProps>;
 
 // @public (undocumented)
+export enum GaugeChartVariant {
+    // (undocumented)
+    MultipleSegments = "multiple-segments",
+    // (undocumented)
+    SingleSegment = "single-segment"
+}
+
+// @public (undocumented)
 export enum GaugeValueFormat {
     // (undocumented)
     Fraction = "fraction",
@@ -474,7 +482,7 @@ export interface IGaugeChartProps {
     calloutProps?: Partial<ICalloutProps>;
     chartTitle?: string;
     chartValue: number;
-    chartValueFormat?: GaugeValueFormat | ((sweepFraction: number[]) => string);
+    chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
     className?: string;
     culture?: string;
     height?: number;
@@ -489,6 +497,7 @@ export interface IGaugeChartProps {
     styles?: IStyleFunctionOrObject<IGaugeChartStyleProps, IGaugeChartStyles>;
     sublabel?: string;
     theme?: ITheme;
+    variant?: GaugeChartVariant;
     width?: number;
 }
 
@@ -1085,6 +1094,13 @@ export interface IRefArrayData {
     refElement?: SVGGElement;
 }
 
+// @public
+export interface ISankeyChartAccessibilityProps {
+    emptyAriaLabel?: string;
+    linkAriaLabel?: string;
+    nodeAriaLabel?: string;
+}
+
 // @public (undocumented)
 export interface ISankeyChartData {
     // (undocumented)
@@ -1095,6 +1111,7 @@ export interface ISankeyChartData {
 
 // @public
 export interface ISankeyChartProps {
+    accessibility?: ISankeyChartAccessibilityProps;
     borderColorsForNodes?: string[];
     className?: string;
     colorsForNodes?: string[];
@@ -1103,9 +1120,15 @@ export interface ISankeyChartProps {
     parentRef?: HTMLElement | null;
     pathColor?: string;
     shouldResize?: number;
+    strings?: ISankeyChartStrings;
     styles?: IStyleFunctionOrObject<ISankeyChartStyleProps, ISankeyChartStyles>;
     theme?: ITheme;
     width?: number;
+}
+
+// @public
+export interface ISankeyChartStrings {
+    linkFrom?: string;
 }
 
 // @public

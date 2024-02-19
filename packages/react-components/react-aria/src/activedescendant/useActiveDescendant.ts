@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEventCallback } from '@fluentui/react-utilities';
+import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useOnKeyboardNavigationChange } from '@fluentui/react-tabster';
 import { useOptionWalker } from './useOptionWalker';
 import type { ActiveDescendantImperativeRef, ActiveDescendantOptions, UseActiveDescendantReturn } from './types';
@@ -14,7 +14,7 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
   const activeIdRef = React.useRef<string | null>(null);
   const activeParentRef = React.useRef<TActiveParentElement>(null);
 
-  const setKeyboardNavigation = useOnKeyboardNavigationChange(isNavigatingWithKeyboard => {
+  useOnKeyboardNavigationChange(isNavigatingWithKeyboard => {
     focusVisibleRef.current = isNavigatingWithKeyboard;
     const active = getActiveDescendant();
     if (!active) {
@@ -28,20 +28,9 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
     }
   });
 
-  React.useEffect(() => {
-    if (activeParentRef.current) {
-      activeParentRef.current.addEventListener('keydown', e => {
-        switch (e.key) {
-          case 'ArrowUp':
-          case 'ArrowDown':
-            setKeyboardNavigation(true);
-        }
-      });
-    }
-  }, [setKeyboardNavigation]);
-
   const matchOption = useEventCallback(matchOptionUnstable);
-  const { listboxRef, optionWalker, listboxCallbackRef } = useOptionWalker<TListboxElement>({ matchOption });
+  const listboxRef = React.useRef<TListboxElement>(null);
+  const { optionWalker, listboxCallbackRef } = useOptionWalker<TListboxElement>({ matchOption });
   const getActiveDescendant = React.useCallback(() => {
     return listboxRef.current?.querySelector<HTMLElement>(`#${activeIdRef.current}`);
   }, [listboxRef]);
@@ -156,5 +145,5 @@ export function useActiveDescendant<TActiveParentElement extends HTMLElement, TL
 
   React.useImperativeHandle(imperativeRef, () => controller);
 
-  return { listboxRef: listboxCallbackRef, activeParentRef, controller };
+  return { listboxRef: useMergedRefs(listboxRef, listboxCallbackRef), activeParentRef, controller };
 }

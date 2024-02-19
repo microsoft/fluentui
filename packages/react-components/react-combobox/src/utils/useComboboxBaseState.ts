@@ -32,7 +32,32 @@ export const useComboboxBaseState = (
   const optionCollection = useOptionCollection();
   const { getOptionsMatchingValue } = optionCollection;
 
-  const [activeOption, setActiveOption] = React.useState<OptionValue | undefined>();
+  const { getOptionById } = optionCollection;
+  const getActiveOption = React.useCallback(() => {
+    const activeOptionId = activeDescendantController.active();
+    return activeOptionId ? getOptionById(activeOptionId) : undefined;
+  }, [activeDescendantController, getOptionById]);
+
+  // Keeping some kind of backwards compatible functionality here
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const UNSAFE_activeOption = getActiveOption();
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const UNSAFE_setActiveOption = React.useCallback(
+    (option: OptionValue | undefined | ((prev: OptionValue | undefined) => OptionValue | undefined)) => {
+      let nextOption: OptionValue | undefined = undefined;
+      if (typeof option === 'function') {
+        const activeOption = getActiveOption();
+        nextOption = option(activeOption);
+      }
+
+      if (nextOption) {
+        activeDescendantController.focus(nextOption.id);
+      } else {
+        activeDescendantController.blur();
+      }
+    },
+    [activeDescendantController, getActiveOption],
+  );
 
   // track whether keyboard focus outline should be shown
   // tabster/keyborg doesn't work here, since the actual keyboard focus target doesn't move
@@ -97,7 +122,7 @@ export const useComboboxBaseState = (
     [onOpenChange, setOpenState],
   );
 
-  // update active option based on change in open state or children
+  // update active option based on change in open state
   React.useEffect(() => {
     if (open) {
       // if it is single-select and there is a selected option, start at the selected option
@@ -107,31 +132,36 @@ export const useComboboxBaseState = (
           activeDescendantController.focus(selectedOption.id);
         }
       }
-      // default to starting at the first option
-      else {
-        activeDescendantController.first();
-      }
-    } else if (!open) {
-      // reset the active option when closing
+    } else {
       activeDescendantController.blur();
     }
     // this should only be run in response to changes in the open state or children
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open, activeDescendantController]);
+
+  // Fallback focus when children are updated in an open popover results in no item being focused
+  React.useEffect(() => {
+    if (open) {
+      if (!activeDescendantController.active()) {
+        activeDescendantController.first();
+      }
+    }
+    // this should only be run in response to changes in the open state or children
   }, [open, children, activeDescendantController]);
 
   return {
     ...optionCollection,
     ...selectionState,
-    activeOption,
+    activeOption: UNSAFE_activeOption,
     appearance,
     clearable,
     focusVisible,
-    hasFocus,
     ignoreNextBlur,
     inlinePopup,
     mountNode,
     open,
-    setActiveOption,
+    hasFocus,
+    setActiveOption: UNSAFE_setActiveOption,
     setFocusVisible,
     setHasFocus,
     setOpen,

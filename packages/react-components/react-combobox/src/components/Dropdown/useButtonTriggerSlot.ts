@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTimeout, mergeCallbacks } from '@fluentui/react-utilities';
-import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type { Slot, ExtractSlotProps, SlotComponentType } from '@fluentui/react-utilities';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { useTriggerSlot, UseTriggerSlotState } from '../../utils/useTriggerSlot';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 
@@ -58,22 +58,24 @@ export function useButtonTriggerSlot(
   };
 
   const moveToNextMatchingOptionWithSameCharacterHandling = () => {
-    // first check for matches for the full searchString
-    let match: string | undefined;
-
-    match = moveToNextMatchingOption(
-      optionText => {
-        return optionText.toLocaleLowerCase().indexOf(searchString.current) === 0;
-      },
-      {
-        // Slowly pressing the same key will cycle through options
-        startFromNext: searchString.current.length === 1,
-      },
-    );
+    if (
+      moveToNextMatchingOption(
+        optionText => {
+          return optionText.toLocaleLowerCase().indexOf(searchString.current) === 0;
+        },
+        {
+          // Slowly pressing the same key will cycle through options
+          startFromNext: searchString.current.length === 1,
+        },
+      )
+    ) {
+      return;
+    }
 
     // if there are no direct matches, check if the search is all the same letter, e.g. "aaa"
-    if (!match && allCharactersSame(searchString.current)) {
-      match = moveToNextMatchingOption(
+    if (
+      allCharactersSame(searchString.current) &&
+      moveToNextMatchingOption(
         optionText => {
           return optionText.toLocaleLowerCase().indexOf(searchString.current[0]) === 0;
         },
@@ -81,12 +83,12 @@ export function useButtonTriggerSlot(
           // if the search is all the same letter, cycle through options starting with that letter
           startFromNext: true,
         },
-      );
+      )
+    ) {
+      return;
     }
 
-    if (!match) {
-      activeDescendantController.blur();
-    }
+    activeDescendantController.blur();
   };
 
   const onTriggerKeyDown = (ev: React.KeyboardEvent<HTMLButtonElement>) => {
@@ -103,7 +105,6 @@ export function useButtonTriggerSlot(
 
       // update state
       !open && setOpen(ev, true);
-
       moveToNextMatchingOptionWithSameCharacterHandling();
     }
   };

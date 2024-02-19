@@ -2,9 +2,9 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
+import { ActiveDescendantContextProvider } from '@fluentui/react-aria';
 import type { ListboxContextValues, ListboxState, ListboxSlots } from './Listbox.types';
 import { ListboxContext } from '../../contexts/ListboxContext';
-import { ActiveDescendantContextProvider } from '../../../../react-aria/src/index';
 
 /**
  * Render the final JSX of Listbox

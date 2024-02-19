@@ -1,6 +1,6 @@
-import * as package from '<%= packageName %>'
+import * as p from '<%= packageName %>'
 
-console.log(package);
+console.log(p);
 
 export default {
   name: '<%= packageName %> - package',

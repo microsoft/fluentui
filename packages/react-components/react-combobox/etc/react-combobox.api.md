@@ -6,7 +6,7 @@
 
 /// <reference types="react" />
 
-import { ActiveDescendantContextValue } from '@fluentui/react-aria';
+import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
 import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -30,10 +30,10 @@ export const Combobox: ForwardRefComponent<ComboboxProps>;
 export type ComboboxBaseState = Required<Pick<ComboboxBaseProps, 'appearance' | 'open' | 'clearable' | 'inlinePopup' | 'size'>> & Pick<ComboboxBaseProps, 'mountNode' | 'placeholder' | 'value' | 'multiselect'> & OptionCollectionState & SelectionState & {
     activeOption?: OptionValue;
     focusVisible: boolean;
-    hasFocus: boolean;
     ignoreNextBlur: React_2.MutableRefObject<boolean>;
     setActiveOption: React_2.Dispatch<React_2.SetStateAction<OptionValue | undefined>>;
     setFocusVisible(focusVisible: boolean): void;
+    hasFocus: boolean;
     setHasFocus(hasFocus: boolean): void;
     setOpen(event: ComboboxBaseOpenEvents, newState: boolean): void;
     setValue(newValue: string | undefined): void;
@@ -148,8 +148,8 @@ export type ListboxSlots = {
 export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState & Pick<SelectionProps, 'multiselect'> & SelectionState & {
     activeOption?: OptionValue;
     focusVisible: boolean;
-    selectOption(event: SelectionEvents, option: OptionValue): void;
     setActiveOption(option?: OptionValue): void;
+    selectOption(event: SelectionEvents, option: OptionValue): void;
     activeDescendantController: ActiveDescendantImperativeRef;
 };
 

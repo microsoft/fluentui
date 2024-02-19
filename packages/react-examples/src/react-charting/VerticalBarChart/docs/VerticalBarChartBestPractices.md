@@ -26,3 +26,7 @@ Use `useSingleColor` to use a single color for all bars.
 Use `lineLegendText` and `lineLegendColor` to specify the text and color for legends of lines in the chart.
 
 The bar labels are shown by default. Set the `hideLabels` prop to hide them.
+
+### Creating Date Objects For Chart Data
+
+For instructions on how to create date objects to be passed as data points in the chart, see [Creating Date Objects For Chart Data | FluentUI Charting Contrib Docsite](https://microsoft.github.io/fluentui-charting-contrib/docs/creating-date-objects-for-chart-data)

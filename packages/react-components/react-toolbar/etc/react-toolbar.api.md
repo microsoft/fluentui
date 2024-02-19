@@ -159,7 +159,7 @@ export const useToolbarGroupStyles_unstable: (state: ToolbarGroupState) => Toolb
 export const useToolbarRadioButton_unstable: (props: ToolbarRadioButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarRadioButtonState;
 
 // @public
-export const useToolbarRadioButtonStyles_unstable: (state: ToolbarRadioButtonState) => void;
+export const useToolbarRadioButtonStyles_unstable: (state: ToolbarRadioButtonState) => ToolbarRadioButtonState;
 
 // @public
 export const useToolbarStyles_unstable: (state: ToolbarState) => ToolbarState;
@@ -168,7 +168,7 @@ export const useToolbarStyles_unstable: (state: ToolbarState) => ToolbarState;
 export const useToolbarToggleButton_unstable: (props: ToolbarToggleButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => ToolbarToggleButtonState;
 
 // @public
-export const useToolbarToggleButtonStyles_unstable: (state: ToolbarToggleButtonState) => void;
+export const useToolbarToggleButtonStyles_unstable: (state: ToolbarToggleButtonState) => ToolbarToggleButtonState;
 
 // (No @packageDocumentation comment for this package)
 

@@ -41,8 +41,6 @@ const useStyles = makeStyles({
 
   active: {
     [`[${ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE}]::after`]: {
-      // taken from @fluentui/react-tabster
-      // cannot use createFocusIndicatorStyle() directly, since we aren't using the :focus selector
       content: '""',
       position: 'absolute',
       pointerEvents: 'none',

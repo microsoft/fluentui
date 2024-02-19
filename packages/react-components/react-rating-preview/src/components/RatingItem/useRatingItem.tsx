@@ -4,6 +4,8 @@ import { useFocusWithin } from '@fluentui/react-tabster';
 import type { RatingItemProps, RatingItemState } from './RatingItem.types';
 import { useRatingItemContextValue_unstable } from '../../contexts/RatingItemContext';
 
+const defaultItemLabel = (num: number) => num + '';
+
 /**
  * Create the state required to render RatingItem.
  *
@@ -16,10 +18,13 @@ import { useRatingItemContextValue_unstable } from '../../contexts/RatingItemCon
 export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HTMLSpanElement>): RatingItemState => {
   const context = useRatingItemContextValue_unstable();
   const { value = 0 } = props;
+  const { itemLabel = defaultItemLabel } = context;
 
   const ratingValue = Math.round((context.value || 0) * 2) / 2; // round to the nearest 0.5
 
   const displayedRatingValue = context.hoveredValue ?? ratingValue;
+
+  const appearance = context.interactive ? 'outline' : 'filled';
 
   let iconFillWidth;
   if (context.compact || displayedRatingValue >= value) {
@@ -38,24 +43,11 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
     { elementType: 'span' },
   );
 
-  let unselectedOutlineIcon;
-  // The unselectedOutlineIcon always needs to be rendered when unselected,
-  // even for 'filled' appearance, since high contrast always shows an outline.
+  let unselectedIcon;
   if (iconFillWidth < 1) {
-    unselectedOutlineIcon = slot.always(props.unselectedOutlineIcon, {
+    unselectedIcon = slot.always(props.unselectedIcon, {
       defaultProps: {
-        children: context.iconOutline,
-        'aria-hidden': true,
-      },
-      elementType: 'div',
-    });
-  }
-
-  let unselectedFilledIcon;
-  if (iconFillWidth < 1 && !context.interactive) {
-    unselectedFilledIcon = slot.always(props.unselectedFilledIcon, {
-      defaultProps: {
-        children: context.iconFilled,
+        children: appearance === 'filled' ? context.iconFilled : context.iconOutline,
         'aria-hidden': true,
       },
       elementType: 'div',
@@ -81,6 +73,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
         name: context.name,
         value: value - 0.5,
         checked: ratingValue === value - 0.5,
+        'aria-label': itemLabel(value - 0.5),
         onChange: () => {
           // This empty onChange handler silences an incorrect React warning about not using onChange for a controlled input.
           // The parent Rating component has the real onChange handler to listen to change events from this input.
@@ -98,6 +91,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
         name: context.name,
         value,
         checked: ratingValue === value,
+        'aria-label': itemLabel(value),
         onChange: () => {
           // This empty onChange handler silences an incorrect React warning about not using onChange for a controlled input.
           // The parent Rating component has the real onChange handler to listen to change events from this input.
@@ -109,6 +103,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   const state: RatingItemState = {
+    appearance,
     color: context.color,
     step: context.step,
     size: context.size,
@@ -117,15 +112,13 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
     components: {
       root: 'span',
       selectedIcon: 'div',
-      unselectedFilledIcon: 'div',
-      unselectedOutlineIcon: 'div',
+      unselectedIcon: 'div',
       halfValueInput: 'input',
       fullValueInput: 'input',
     },
     root,
     selectedIcon,
-    unselectedFilledIcon,
-    unselectedOutlineIcon,
+    unselectedIcon,
     halfValueInput,
     fullValueInput,
   };
