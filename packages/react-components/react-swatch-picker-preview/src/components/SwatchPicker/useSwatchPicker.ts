@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
-import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types';
+import type { SwatchPickerProps, SwatchPickerState, SwatchPickerOnSelectionChangeData } from './SwatchPicker.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { SwatchPickerNotifySelectedData } from '../../contexts/swatchPicker';
 import { swatchPickerCSSVars } from './useSwatchPickerStyles.styles';
 
 const { columnCountGrid, cellSize, gridGap } = swatchPickerCSSVars;
@@ -45,10 +44,17 @@ export const useSwatchPicker_unstable = (
     initialState: '',
   });
 
-  const requestSelectionChange = useEventCallback((data: SwatchPickerNotifySelectedData) => {
-    onSelectionChange?.(data.event, { selectedValue: data.selectedValue, selectedColor: data.selectedColor });
-    setSelectedValue(data.selectedValue);
-  });
+  const requestSelectionChange = useEventCallback(
+    (event: React.MouseEvent<HTMLButtonElement>, data: SwatchPickerOnSelectionChangeData) => {
+      onSelectionChange?.(event, {
+        type: 'click',
+        event,
+        selectedValue: data.selectedValue,
+        selectedColor: data.selectedColor,
+      });
+      setSelectedValue(data.selectedValue);
+    },
+  );
 
   const state: SwatchPickerState = {
     components: {

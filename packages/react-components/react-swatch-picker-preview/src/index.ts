@@ -10,9 +10,7 @@ export type {
   SwatchPickerProps,
   SwatchPickerSlots,
   SwatchPickerState,
-  SwatchPickerSelectEventHandler,
-  SwatchPickerOnSelectionChangeData as SwatchPickerSelectData,
-  SwatchPickerOnSelectionChangeEvent as SwatchPickerSelectEvent,
+  SwatchPickerOnSelectionChangeData,
 } from './SwatchPicker';
 export {
   ColorSwatch,

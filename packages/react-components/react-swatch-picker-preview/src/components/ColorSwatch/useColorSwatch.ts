@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { slot, useEventCallback, getPartitionedNativeProps } from '@fluentui/react-utilities';
 import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
-import { SwatchPickerOnSelectionChangeEvent } from '../SwatchPicker/SwatchPicker.types';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
 import { swatchCSSVars } from './useColorSwatchStyles.styles';
@@ -26,8 +25,13 @@ export const useColorSwatch_unstable = (
   const requestSelectionChange = useSwatchPickerContextValue_unstable(ctx => ctx.requestSelectionChange);
   const selected = useSwatchPickerContextValue_unstable(ctx => ctx.selectedValue === value);
 
-  const onClick = useEventCallback((event: SwatchPickerOnSelectionChangeEvent) =>
-    requestSelectionChange({ event, selectedValue: value, selectedColor: color }),
+  const onClick = useEventCallback((event: React.MouseEvent<HTMLButtonElement>) =>
+    requestSelectionChange(event, {
+      type: 'click',
+      event,
+      selectedValue: value,
+      selectedColor: color,
+    }),
   );
 
   const nativeProps = getPartitionedNativeProps({
@@ -45,7 +49,6 @@ export const useColorSwatch_unstable = (
       ref: useFocusWithin<HTMLDivElement>(),
       role: props.role ?? 'radio',
       'aria-selected': selected,
-      onClick,
       ...nativeProps.root,
     },
     elementType: 'div',
@@ -55,6 +58,7 @@ export const useColorSwatch_unstable = (
     defaultProps: {
       ref,
       type: 'button',
+      onClick,
       ...nativeProps.primary,
     },
     elementType: 'button',

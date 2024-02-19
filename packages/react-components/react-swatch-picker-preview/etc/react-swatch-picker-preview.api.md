@@ -38,7 +38,7 @@ export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwat
 export const renderColorSwatch_unstable: (state: ColorSwatchState) => JSX.Element;
 
 // @public
-export const renderSwatchPicker_unstable: (state: SwatchPickerState, contextValues: SwatchPickerContextValue) => JSX.Element;
+export const renderSwatchPicker_unstable: (state: SwatchPickerState, contextValues: SwatchPickerContextValues) => JSX.Element;
 
 // @public (undocumented)
 export const swatchCSSVars: {

@@ -1,27 +1,15 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
 import { SwatchPickerContextValue } from '../../contexts/swatchPicker';
 
 export type SwatchPickerSlots = {
   root: Slot<'div'>;
 };
 
-export type SwatchPickerOnSelectionChangeEvent = React.MouseEvent;
-
-export type SwatchPickerOnSelectionChangeData = {
+export type SwatchPickerOnSelectionChangeData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
   selectedValue: string;
   selectedColor: string;
 };
-
-// export type SwatchPickerOnSelectionChangeData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
-//   selectedValue: string;
-//   selectedColor: string;
-// };
-
-export type SwatchPickerSelectEventHandler = (
-  event: SwatchPickerOnSelectionChangeEvent,
-  data: SwatchPickerOnSelectionChangeData,
-) => void;
 
 /**
  * SwatchPicker Props
@@ -35,9 +23,7 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
   /**
    * Triggers a callback when the value has been changed
    */
-  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
-  onSelectionChange?: SwatchPickerSelectEventHandler;
-  // onSelectionChange?: EventHandler<SwatchPickerOnSelectionChangeData>;
+  onSelectionChange?: EventHandler<SwatchPickerOnSelectionChangeData>;
 
   /**
    * Controlled selected value

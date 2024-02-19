@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, shorthands } from '@fluentui/react-components';
-import { SwatchPicker, ColorSwatch, SwatchPickerSelectEventHandler } from '@fluentui/react-swatch-picker-preview';
+import { SwatchPicker, ColorSwatch, SwatchPickerOnSelectionChangeData } from '@fluentui/react-swatch-picker-preview';
 
 const useStyles = makeStyles({
   example: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 export const Default = () => {
   const [selectedValue, setSelectedValue] = React.useState('00B053');
   const [selectedColor, setSelectedColor] = React.useState('#00B053');
-  const handleSelect: SwatchPickerSelectEventHandler = (_, data) => {
+  const handleSelect: SwatchPickerOnSelectionChangeData = (_, data) => {
     setSelectedValue(data.selectedValue);
     setSelectedColor(data.selectedColor);
   };
