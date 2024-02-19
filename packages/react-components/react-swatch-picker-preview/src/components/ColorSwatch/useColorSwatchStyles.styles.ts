@@ -10,7 +10,7 @@ export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
 };
 
 export const swatchCSSVars = {
-  swatchColor: `--fui-SwatchPicker--color`,
+   color: `--fui-SwatchPicker--color`,
 };
 
 const { swatchColor } = swatchCSSVars;
