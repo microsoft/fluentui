@@ -28,7 +28,7 @@ const FadeEnter = createMotionComponent({
   duration: motionTokens.durationSlow,
 });
 
-export const MotionDefault = () => {
+export const CreateMotionComponentDefault = () => {
   const classes = useClasses();
   const motionRef = React.useRef<MotionImperativeRef>();
 

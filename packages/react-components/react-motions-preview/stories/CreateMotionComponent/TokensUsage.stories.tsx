@@ -60,5 +60,9 @@ TokensUsage.parameters = {
     description: {
       story: description,
     },
+    name: 'foo',
   },
+  name: 'foo',
+  storyName: 'foo',
+  title: 'components/Button',
 };

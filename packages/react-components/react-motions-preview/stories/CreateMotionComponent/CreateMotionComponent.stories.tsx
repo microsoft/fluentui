@@ -2,7 +2,7 @@ import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
 import { createMotionComponent } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
-import description from './CustomMotion.stories.md';
+import description from './CreateMotionComponent.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -39,7 +39,7 @@ const DropIn = createMotionComponent({
   duration: 4000,
 });
 
-export const CustomMotion = () => {
+export const CreateMotionComponent = () => {
   const classes = useClasses();
 
   return (
@@ -55,7 +55,7 @@ export const CustomMotion = () => {
   );
 };
 
-CustomMotion.parameters = {
+CreateMotionComponent.parameters = {
   docs: {
     description: {
       story: description,
