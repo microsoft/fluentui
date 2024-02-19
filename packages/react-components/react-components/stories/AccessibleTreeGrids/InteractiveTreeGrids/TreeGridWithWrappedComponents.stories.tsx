@@ -5,7 +5,7 @@ import { TreeGridBase } from './TreeGridBase';
 
 export const TreeGridWithWrappedComponents: React.FC = () => {
   return (
-    <Prototype pageTitle="Variant C: TreeGrid with Wrapped Components">
+    <Prototype pageTitle="TreeGrid with Wrapped Components">
       <TreeGridBase variant="wrappedComponents" />
     </Prototype>
   );

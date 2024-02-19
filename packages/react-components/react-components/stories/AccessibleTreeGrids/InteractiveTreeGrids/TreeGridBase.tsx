@@ -246,7 +246,7 @@ export const TreeGridBase: React.FC<TreeGridBaseProps> = ({ variant }) => {
 
       {variant === 'escapeInputs' && <h1>Variant A: TreeGrid with Escape Inputs</h1>}
       {variant === 'enterInputs' && <h1>Variant B: TreeGrid with Enter Inputs</h1>}
-      {variant === 'wrappedComponents' && <h1>Variant C: TreeGrid with Wrapped Components</h1>}
+      {variant === 'wrappedComponents' && <h1>TreeGrid with Wrapped Components</h1>}
 
       {variant === 'escapeInputs' && (
         <TreeGridWithEscapeInputsRenderer
