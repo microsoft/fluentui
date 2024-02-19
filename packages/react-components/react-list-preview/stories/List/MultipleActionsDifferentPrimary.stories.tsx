@@ -70,7 +70,7 @@ const useStyles = makeStyles({
   },
 });
 
-const CardExample = (props: CardProps & { value: string }) => {
+const CardExample = (props: CardProps & { value: string; selected?: boolean }) => {
   const listItemStyles = useListItemRootStyles();
   const styles = useStyles();
   const { value } = props;
@@ -79,19 +79,25 @@ const CardExample = (props: CardProps & { value: string }) => {
     <ListItem
       value={props.value}
       className={mergeClasses(listItemStyles, styles.listItem)}
+      checkmark={{ className: styles.checkmark }}
+      role="row"
       aria-label={value}
-      tabIndex={0}
+      onClick={e => {
+        // Prevent the default behavior - toggling the selection
+        e.preventDefault();
+        alert('Main action triggered!');
+      }}
     >
-      <div style={{ gridArea: 'preview', overflow: 'hidden' }}>
+      <div role="gridcell" style={{ gridArea: 'preview', overflow: 'hidden' }}>
         <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />
       </div>
-      <div style={{ gridArea: 'header' }}>
+      <div role="gridcell" style={{ gridArea: 'header' }}>
         <Text weight="semibold" style={{ display: 'block' }}>
           {props.value}
         </Text>
         <Caption1 className={styles.caption}>You created 53m ago</Caption1>
       </div>
-      <div style={{ gridArea: 'action' }}>
+      <div role="gridcell" style={{ gridArea: 'action' }}>
         <Button
           appearance="primary"
           aria-label="Install"
@@ -104,7 +110,7 @@ const CardExample = (props: CardProps & { value: string }) => {
           Install
         </Button>
       </div>
-      <div style={{ gridArea: 'secondary_action' }}>
+      <div role="gridcell" style={{ gridArea: 'secondary_action' }}>
         <Menu>
           <MenuTrigger disableButtonEnhancement>
             <Button
@@ -155,31 +161,45 @@ const CardExample = (props: CardProps & { value: string }) => {
   );
 };
 
-export const MultipleActionsNoPrimaryNoSelection = (props: Partial<ListProps>) => {
+export const MultipleActionsDifferentPrimary = (props: Partial<ListProps>) => {
   const classes = useStyles();
 
+  const [selectedItems, setSelectedItems] = React.useState<Array<string | number>>([]);
+
   return (
-    <List className={classes.list} aria-orientation="vertical">
-      <CardExample value="card-1" />
-      <CardExample value="card-2" />
-      <CardExample value="card-3" />
-      <CardExample value="card-4" />
-      <CardExample value="card-5" />
-      <CardExample value="card-6" />
-      <CardExample value="card-7" />
-      <CardExample value="card-8" />
-      <CardExample value="card-9" />
+    <List
+      className={classes.list}
+      selectable
+      role="grid"
+      onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
+      selectionMode="multiselect"
+    >
+      <CardExample value="card-1" selected={selectedItems.includes('card-1')} />
+      <CardExample value="card-2" selected={selectedItems.includes('card-2')} />
+      <CardExample value="card-3" selected={selectedItems.includes('card-3')} />
+      <CardExample value="card-4" selected={selectedItems.includes('card-4')} />
+      <CardExample value="card-5" selected={selectedItems.includes('card-5')} />
+      <CardExample value="card-6" selected={selectedItems.includes('card-6')} />
+      <CardExample value="card-7" selected={selectedItems.includes('card-7')} />
+      <CardExample value="card-8" selected={selectedItems.includes('card-8')} />
+      <CardExample value="card-9" selected={selectedItems.includes('card-9')} />
     </List>
   );
 };
 
-MultipleActionsNoPrimaryNoSelection.parameters = {
+MultipleActionsDifferentPrimary.parameters = {
   docs: {
     description: {
       story: [
-        "Base item with multiple actions. Doesn't have a primary action on the list item, doesn't have selection.",
+        'Similar to previous example, but this one implements a custom `onClick` prop on the `ListItem`, ',
+        'allowing us to trigger a different action than the selection when the user clicks ',
+        'on the list item.',
         '',
-        'The roles in this example are `list` and `listitem`, inherited from the ul/li tags used. List items themselves are focusable.',
+        'The primary action can be triggered by clicking on the list item or pressing `Enter`.',
+        '',
+        'The selection can be toggled by clicking on the checkbox or pressing `Space` when the item is focused.',
+        '',
+        'To focus on the secondary actions, you can navigate between them by using left and right arrows.',
       ].join('\n'),
     },
   },

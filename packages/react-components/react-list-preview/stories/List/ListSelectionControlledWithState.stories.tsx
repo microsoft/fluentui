@@ -9,13 +9,6 @@ const names = [
   'Israel Rabin',
   'Bart Merrill',
   'Sonya Farner',
-  'Kristan Cable',
-  'Cythia Ignacio',
-  'Gia Laura',
-  'Dewayne Oda',
-  'Lang Yeldell',
-  'Kathlyn Brewer',
-  'Nia Woodworth',
 ];
 
 type Item = {
@@ -24,7 +17,7 @@ type Item = {
   avatar: string;
 };
 
-const origItems: Item[] = names.map(name => ({
+const items: Item[] = names.map(name => ({
   name,
   id: name,
   avatar:
@@ -67,23 +60,15 @@ const MyListItem = React.memo(({ name, avatar }: { name: string; avatar: string 
 
 export const ListSelectionControlledWithState = () => {
   const classes = useStyles();
-  const [currentIndex, setCurrentIndex] = React.useState(4);
-
-  const items = React.useMemo(() => {
-    return origItems.slice(0, currentIndex);
-  }, [currentIndex]);
-
-  const defaultSelectedItems = ['Demetra Manwaring', 'Bart Merrill'];
 
   const selection = useListSelection({
     selectionMode: 'multiselect',
-    defaultSelectedItems,
+    defaultSelectedItems: ['Demetra Manwaring', 'Bart Merrill'],
   });
 
   return (
     <div className={classes.wrapper}>
       <div className={classes.buttonControls}>
-        <Button onClick={e => setCurrentIndex(cur => cur + 1)}>Add item</Button>
         <Button
           onClick={e =>
             selection.toggleAllItems(
@@ -99,7 +84,6 @@ export const ListSelectionControlledWithState = () => {
 
       <List
         selectable
-        defaultSelectedItems={defaultSelectedItems}
         selectedItems={selection.selectedItems}
         onSelectionChange={(_, data) => selection.setSelectedItems(data.selectedItems)}
       >
@@ -116,11 +100,15 @@ ListSelectionControlledWithState.parameters = {
   docs: {
     description: {
       story: [
-        'This example is an extension of the previous examle of controlled selection. ',
-        'It shows how to use the `useListSelection` hook to control the selection state.',
+        'This example is an extension of the previous example of controlled selection. ',
+        'It shows how to use the `useListSelection` hook to control the selection state. This hook is also used ',
+        ' internally when the selection is used in uncontrolled mode.',
         '',
         'The `useListSelection` hook is by no means required for the selection to work, but it provides a convenient ',
         'way to control the selection state by providing selection specific helper functions.',
+        '',
+        'While only the list of selected items is required to control the selection state, using the hook to ',
+        'manage the selection state can be benefitial by providing selection specific helper functions.',
       ].join('\n'),
     },
   },

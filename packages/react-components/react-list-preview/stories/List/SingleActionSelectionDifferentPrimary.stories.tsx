@@ -1,4 +1,4 @@
-import { Button, makeStyles, Persona, shorthands, SelectionItemId } from '@fluentui/react-components';
+import { makeStyles, Persona, shorthands, SelectionItemId } from '@fluentui/react-components';
 import { List, ListItem } from '@fluentui/react-list-preview';
 
 import * as React from 'react';
@@ -30,11 +30,6 @@ const useStyles = makeStyles({
     overflowY: 'auto',
     ...shorthands.padding('2px'),
   },
-  buttonControls: {
-    display: 'flex',
-    columnGap: '8px',
-    marginBottom: '16px',
-  },
   button: {
     ...shorthands.padding(0),
   },
@@ -42,8 +37,16 @@ const useStyles = makeStyles({
 
 // Memoizing the ListItem like this allows the unaffected ListItem not to be re-rendered when the selection changes.
 const MyListItem = React.memo(({ name, avatar }: { name: string; avatar: string }) => {
+  const onClick = React.useCallback(
+    event => {
+      // This prevents the change in selection on click/Enter
+      event.preventDefault();
+      alert('Hi, ' + name);
+    },
+    [name],
+  );
   return (
-    <ListItem key={name} value={name} aria-label={name}>
+    <ListItem key={name} value={name} aria-label={name} onClick={onClick}>
       <Persona
         name={name}
         secondaryText="Available"
@@ -58,20 +61,18 @@ const MyListItem = React.memo(({ name, avatar }: { name: string; avatar: string 
   );
 });
 
-export const ListSelectionControlledBasic = () => {
+export const SingleActionSelectionDifferentPrimary = () => {
   const classes = useStyles();
 
-  const [selectedItems, setSelectedItems] = React.useState<SelectionItemId[]>(['Demetra Manwaring', 'Bart Merrill']);
+  const defaultSelectedItems = ['Demetra Manwaring', 'Bart Merrill'];
+
+  const [selectedItems, setSelectedItems] = React.useState<SelectionItemId[]>(defaultSelectedItems);
 
   return (
     <div className={classes.wrapper}>
-      <div className={classes.buttonControls}>
-        <Button onClick={e => setSelectedItems(items.map(({ id }) => id))}>Select all</Button>
-      </div>
-
       <List
         selectable
-        selectedItems={selectedItems}
+        defaultSelectedItems={defaultSelectedItems}
         onSelectionChange={(_, data) => setSelectedItems(data.selectedItems)}
       >
         {items.map(({ name, avatar }) => (
@@ -83,14 +84,16 @@ export const ListSelectionControlledBasic = () => {
   );
 };
 
-ListSelectionControlledBasic.parameters = {
+SingleActionSelectionDifferentPrimary.parameters = {
   docs: {
     description: {
       story: [
-        'This example shows how to use the `selectedItems` and `onSelectionChange`',
-        'props to control the selection state.',
+        'This example is similar to the previous one, but it implements a custom `onClick` prop on the `ListItem`,',
+        'allowing us to trigger a different action than the selection when the user clicks on the list item or ',
+        'presses Enter. This is useful when you want to have a primary action on the list item, but still want ',
+        'to allow the user to select it.',
         '',
-        'This is a basic example how selection can be controlled with a simple array of selected values in a state.',
+        'The selection can still be toggled by clicking on the checkbox or pressing `Space` when the item is focused.',
       ].join('\n'),
     },
   },

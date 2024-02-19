@@ -1,4 +1,4 @@
-import { Button, makeStyles, Persona, shorthands, SelectionItemId } from '@fluentui/react-components';
+import { makeStyles, Persona, shorthands, SelectionItemId } from '@fluentui/react-components';
 import { List, ListItem } from '@fluentui/react-list-preview';
 
 import * as React from 'react';
@@ -9,13 +9,6 @@ const names = [
   'Israel Rabin',
   'Bart Merrill',
   'Sonya Farner',
-  'Kristan Cable',
-  'Cythia Ignacio',
-  'Gia Laura',
-  'Dewayne Oda',
-  'Lang Yeldell',
-  'Kathlyn Brewer',
-  'Nia Woodworth',
 ];
 
 type Item = {
@@ -24,7 +17,7 @@ type Item = {
   avatar: string;
 };
 
-const origItems: Item[] = names.map(name => ({
+const items: Item[] = names.map(name => ({
   name,
   id: name,
   avatar:
@@ -36,14 +29,6 @@ const useStyles = makeStyles({
     maxHeight: '300px',
     overflowY: 'auto',
     ...shorthands.padding('2px'),
-  },
-  buttonControls: {
-    display: 'flex',
-    columnGap: '8px',
-    marginBottom: '16px',
-  },
-  button: {
-    ...shorthands.padding(0),
   },
 });
 
@@ -67,11 +52,6 @@ const MyListItem = React.memo(({ name, avatar }: { name: string; avatar: string 
 
 export const SingleActionSelection = () => {
   const classes = useStyles();
-  const [currentIndex, setCurrentIndex] = React.useState(4);
-
-  const items = React.useMemo(() => {
-    return origItems.slice(0, currentIndex);
-  }, [currentIndex]);
 
   const defaultSelectedItems = ['Demetra Manwaring', 'Bart Merrill'];
 
@@ -79,10 +59,6 @@ export const SingleActionSelection = () => {
 
   return (
     <div className={classes.wrapper}>
-      <div className={classes.buttonControls}>
-        <Button onClick={e => setCurrentIndex(cur => cur + 1)}>Add item</Button>
-      </div>
-
       <List
         selectable
         defaultSelectedItems={defaultSelectedItems}
@@ -98,17 +74,19 @@ export const SingleActionSelection = () => {
 };
 
 SingleActionSelection.parameters = {
+  title: 'aaa',
   docs: {
+    title: 'DD',
     description: {
+      title: 'ddd',
       story: [
         'Any List can be selectable. You have an option to control the selection state yourself or let the List manage it for you.',
         '',
         'You can pass `selectable` prop inside of the List component to get support for selection. The List notifies the parent about changes in selection via the `onSelectionChange` props. In the example we are also using the `defaultSelectedItems` prop to set the initial selection state. While we are saving the results of `onSelectionChange`, it is purely for keeping track of the selection state and is not used to control the selection.',
         '',
-        "You can see that the default selection contains an object, which is not yet rendered in the list. Try adding a new item and see that it's selected by default. This is to demonstrate that you can decouple your selection state from ",
-        'your list items and even store and retrieve them separately.',
+        'The items can be toggled by clicking on them, clicking on the checkbox or pressing a Spacebar when the item is focused.',
         '',
-        'Also this example only has one action in the list item, and its for toggling the selection. The roles for this one are listbox and option, and the options themselves are focusable.',
+        'Also this example only has one action in the list item, and its for toggling the selection. The roles for this one are listbox and option.',
       ].join('\n'),
     },
   },

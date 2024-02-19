@@ -1,5 +1,5 @@
 import { makeStyles, Persona, shorthands } from '@fluentui/react-components';
-import { List, ListItem, ListItemButton } from '@fluentui/react-list-preview';
+import { List, ListItem } from '@fluentui/react-list-preview';
 import * as React from 'react';
 const names = [
   'Melda Bevel',
@@ -8,13 +8,6 @@ const names = [
   'Israel Rabin',
   'Bart Merrill',
   'Sonya Farner',
-  'Kristan Cable',
-  'Cythia Ignacio',
-  'Gia Laura',
-  'Dewayne Oda',
-  'Lang Yeldell',
-  'Kathlyn Brewer',
-  'Nia Woodworth',
 ];
 
 const useStyles = makeStyles({
@@ -64,7 +57,7 @@ SingleAction.parameters = {
   docs: {
     description: {
       story: [
-        'When the list item has a primary action on it, you can pass the `onClick` prop to the `ListItem` component.',
+        'When the list item should have a primary action on it, you can pass the `onClick` prop to the `ListItem` component.',
         'This callback will also be automatically called when the user presses the Enter key on the list item.',
         '',
         'Since we are directly attaching the `onClick` handler on the `ListItem` itself, it is important to',

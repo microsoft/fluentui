@@ -216,8 +216,14 @@ export const VirtualizedListWithActionableItems = () => {
       outerElementType={CountriesList}
     >
       {({ index, style, data }) => (
-        <ListItem style={style} key={index} aria-setsize={countries.length} aria-posinset={index + 1}>
-          <ListItemButton onClick={() => alert(data[index])}>{data[index]}</ListItemButton>
+        <ListItem
+          style={style}
+          key={index}
+          aria-setsize={countries.length}
+          aria-posinset={index + 1}
+          onClick={() => alert(data[index])}
+        >
+          {data[index]}
         </ListItem>
       )}
     </FixedSizeList>
@@ -227,11 +233,7 @@ export const VirtualizedListWithActionableItems = () => {
 VirtualizedListWithActionableItems.parameters = {
   docs: {
     description: {
-      story: [
-        'Virtualized list can also be used with interactive elements. Note that the list itself is not focusable',
-        'anymore, since each list item is focusable. To make sure list items are focusable, the `ListItemButton` component',
-        'is used.',
-      ].join('\n'),
+      story: ['Virtualized list can also be used with interactive elements.'].join('\n'),
     },
   },
 };

@@ -161,7 +161,7 @@ const CardExample = (props: CardProps & { value: string; selected?: boolean }) =
   );
 };
 
-export const MultipleActionsPrimarySelection = (props: Partial<ListProps>) => {
+export const MultipleActionsSelection = (props: Partial<ListProps>) => {
   const classes = useStyles();
 
   const [selectedItems, setSelectedItems] = React.useState<Array<string | number>>([]);
@@ -186,11 +186,12 @@ export const MultipleActionsPrimarySelection = (props: Partial<ListProps>) => {
     </List>
   );
 };
-MultipleActionsPrimarySelection.parameters = {
+MultipleActionsSelection.parameters = {
   docs: {
     description: {
       story: [
-        'Item with multiple actions. It has a primary action on the list item and the action is selection.',
+        "Item with multiple actions. It has selection enabled, which is also it's primary action.",
+        'The selection can be toggled by clicking on the item or pressing the `Space` key.',
         '',
         'Because the selection is the action on the item, to properly narrate the state of selection',
         'we are using the role grid / row / gridcell here to properly announce when the selection on the',

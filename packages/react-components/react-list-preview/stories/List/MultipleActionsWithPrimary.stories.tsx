@@ -70,7 +70,7 @@ const useStyles = makeStyles({
   },
 });
 
-const CardExample = (props: CardProps & { value: string; selected?: boolean }) => {
+const CardExample = (props: CardProps & { value: string }) => {
   const listItemStyles = useListItemRootStyles();
   const styles = useStyles();
   const { value } = props;
@@ -79,25 +79,19 @@ const CardExample = (props: CardProps & { value: string; selected?: boolean }) =
     <ListItem
       value={props.value}
       className={mergeClasses(listItemStyles, styles.listItem)}
-      checkmark={{ className: styles.checkmark }}
-      role="row"
       aria-label={value}
-      onClick={e => {
-        // Prevent the default behavior - toggling the selection
-        e.preventDefault();
-        alert('Main action triggered!');
-      }}
+      onClick={() => alert('Hello!')}
     >
-      <div role="gridcell" style={{ gridArea: 'preview', overflow: 'hidden' }}>
+      <div style={{ gridArea: 'preview', overflow: 'hidden' }}>
         <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />
       </div>
-      <div role="gridcell" style={{ gridArea: 'header' }}>
+      <div style={{ gridArea: 'header' }}>
         <Text weight="semibold" style={{ display: 'block' }}>
           {props.value}
         </Text>
         <Caption1 className={styles.caption}>You created 53m ago</Caption1>
       </div>
-      <div role="gridcell" style={{ gridArea: 'action' }}>
+      <div style={{ gridArea: 'action' }}>
         <Button
           appearance="primary"
           aria-label="Install"
@@ -110,7 +104,7 @@ const CardExample = (props: CardProps & { value: string; selected?: boolean }) =
           Install
         </Button>
       </div>
-      <div role="gridcell" style={{ gridArea: 'secondary_action' }}>
+      <div style={{ gridArea: 'secondary_action' }}>
         <Menu>
           <MenuTrigger disableButtonEnhancement>
             <Button
@@ -161,37 +155,32 @@ const CardExample = (props: CardProps & { value: string; selected?: boolean }) =
   );
 };
 
-export const MultipleActionsDifferentPrimary = (props: Partial<ListProps>) => {
+export const MultipleActionsWithPrimary = (props: Partial<ListProps>) => {
   const classes = useStyles();
 
-  const [selectedItems, setSelectedItems] = React.useState<Array<string | number>>([]);
-
   return (
-    <List
-      className={classes.list}
-      selectable
-      role="grid"
-      onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
-      selectionMode="multiselect"
-    >
-      <CardExample value="card-1" selected={selectedItems.includes('card-1')} />
-      <CardExample value="card-2" selected={selectedItems.includes('card-2')} />
-      <CardExample value="card-3" selected={selectedItems.includes('card-3')} />
-      <CardExample value="card-4" selected={selectedItems.includes('card-4')} />
-      <CardExample value="card-5" selected={selectedItems.includes('card-5')} />
-      <CardExample value="card-6" selected={selectedItems.includes('card-6')} />
-      <CardExample value="card-7" selected={selectedItems.includes('card-7')} />
-      <CardExample value="card-8" selected={selectedItems.includes('card-8')} />
-      <CardExample value="card-9" selected={selectedItems.includes('card-9')} />
+    <List className={classes.list} aria-orientation="vertical">
+      <CardExample value="card-1" />
+      <CardExample value="card-2" />
+      <CardExample value="card-3" />
+      <CardExample value="card-4" />
+      <CardExample value="card-5" />
+      <CardExample value="card-6" />
+      <CardExample value="card-7" />
+      <CardExample value="card-8" />
+      <CardExample value="card-9" />
     </List>
   );
 };
 
-MultipleActionsDifferentPrimary.parameters = {
+MultipleActionsWithPrimary.parameters = {
   docs: {
     description: {
       story: [
-        'Item with multiple actions. It has a default action and selection, but the default action on the list item is different than selection. For selection, the checkbox needs to be toggled',
+        "Base item with multiple actions. Doesn't support selection, but the list items have a primary action ",
+        'that can be triggered by clicking on the item or pressing Enter.',
+        '',
+        'You can navigate inside of the list items by pressing the `Right Arrow` key.',
       ].join('\n'),
     },
   },
