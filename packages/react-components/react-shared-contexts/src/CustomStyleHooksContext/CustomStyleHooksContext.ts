@@ -32,7 +32,6 @@ export type CustomStyleHooksContextValue = Partial<{
   useListboxStyles_unstable: CustomStyleHook;
   useListStyles_unstable: CustomStyleHook;
   useListItemStyles_unstable: CustomStyleHook;
-  useListItemButtonStyles_unstable: CustomStyleHook;
   useOptionStyles_unstable: CustomStyleHook;
   useOptionGroupStyles_unstable: CustomStyleHook;
   useDividerStyles_unstable: CustomStyleHook;

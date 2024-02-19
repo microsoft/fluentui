@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FixedSizeList } from 'react-window';
-import { List, ListItem, ListItemButton } from '@fluentui/react-list-preview';
+import { List, ListItem } from '@fluentui/react-list-preview';
 
 const countries = [
   'Afghanistan',

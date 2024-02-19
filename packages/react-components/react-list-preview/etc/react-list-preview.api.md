@@ -6,8 +6,6 @@
 
 /// <reference types="react" />
 
-import { ButtonProps } from '@fluentui/react-button';
-import { ButtonState } from '@fluentui/react-button';
 import { Checkbox } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -27,9 +25,6 @@ export const listClassNames: SlotClassNames<ListSlots>;
 
 // @public (undocumented)
 export const ListItem: ForwardRefComponent<ListItemProps>;
-
-// @public (undocumented)
-export const ListItemButton: ForwardRefComponent<ButtonProps>;
 
 // @public (undocumented)
 export const listItemClassNames: SlotClassNames<ListItemSlots>;
@@ -81,9 +76,6 @@ export const useList_unstable: (props: ListProps, ref: React_2.Ref<HTMLDivElemen
 
 // @public
 export const useListItem_unstable: (props: ListItemProps, ref: React_2.Ref<HTMLLIElement | HTMLDivElement>) => ListItemState;
-
-// @public
-export const useListItemButtonStyles_unstable: (state: ButtonState) => ButtonState;
 
 // @public
 export const useListItemStyles_unstable: (state: ListItemState) => ListItemState;

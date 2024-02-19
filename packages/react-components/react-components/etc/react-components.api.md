@@ -427,7 +427,6 @@ import { ListboxSlots } from '@fluentui/react-combobox';
 import { ListboxState } from '@fluentui/react-combobox';
 import { listClassNames } from '@fluentui/react-list-preview';
 import { ListItem } from '@fluentui/react-list-preview';
-import { ListItemButton } from '@fluentui/react-list-preview';
 import { listItemClassNames } from '@fluentui/react-list-preview';
 import { ListItemProps } from '@fluentui/react-list-preview';
 import { ListItemSlots } from '@fluentui/react-list-preview';
@@ -1256,7 +1255,6 @@ import { useListbox_unstable } from '@fluentui/react-combobox';
 import { useListboxContextValues } from '@fluentui/react-combobox';
 import { useListboxStyles_unstable } from '@fluentui/react-combobox';
 import { useListItem_unstable } from '@fluentui/react-list-preview';
-import { useListItemButtonStyles_unstable } from '@fluentui/react-list-preview';
 import { useListItemStyles_unstable } from '@fluentui/react-list-preview';
 import { useListSelection } from '@fluentui/react-list-preview';
 import { useListStyles_unstable } from '@fluentui/react-list-preview';
@@ -2295,8 +2293,6 @@ export { ListboxState }
 export { listClassNames }
 
 export { ListItem }
-
-export { ListItemButton }
 
 export { listItemClassNames }
 
@@ -3953,8 +3949,6 @@ export { useListboxContextValues }
 export { useListboxStyles_unstable }
 
 export { useListItem_unstable }
-
-export { useListItemButtonStyles_unstable }
 
 export { useListItemStyles_unstable }
 

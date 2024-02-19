@@ -1584,8 +1584,6 @@ export {
   renderListItem_unstable,
   useListItemStyles_unstable,
   useListItem_unstable,
-  ListItemButton,
-  useListItemButtonStyles_unstable,
   useListSelection,
 } from '@fluentui/react-list-preview';
 
