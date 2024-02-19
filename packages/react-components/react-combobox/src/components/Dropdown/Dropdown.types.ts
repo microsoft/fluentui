@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type {
   ComboboxBaseContextValues,
   ComboboxBaseOpenChangeData,

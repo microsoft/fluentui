@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useControllableState, useFirstMount } from '@fluentui/react-utilities';
-import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { useOptionCollection } from '../utils/useOptionCollection';
 import { OptionValue } from '../utils/OptionCollection.types';
 import { useSelection } from '../utils/useSelection';

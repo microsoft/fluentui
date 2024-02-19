@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
-import { ComboboxBaseContextValues, ComboboxBaseState } from '../utils/ComboboxBase.types';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import type { ComboboxBaseContextValues, ComboboxBaseState } from '../utils/ComboboxBase.types';
 
 export function useComboboxContextValues(
   state: ComboboxBaseState & { activeDescendantController: ActiveDescendantImperativeRef },

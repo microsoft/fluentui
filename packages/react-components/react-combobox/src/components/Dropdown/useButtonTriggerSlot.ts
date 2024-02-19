@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useTimeout, mergeCallbacks } from '@fluentui/react-utilities';
 import type { Slot, ExtractSlotProps, SlotComponentType } from '@fluentui/react-utilities';
-import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { useTriggerSlot, UseTriggerSlotState } from '../../utils/useTriggerSlot';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 

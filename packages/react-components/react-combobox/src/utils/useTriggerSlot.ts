@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useSetKeyboardNavigation } from '@fluentui/react-tabster';
-import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { mergeCallbacks, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey } from '../utils/dropdownKeyActions';
