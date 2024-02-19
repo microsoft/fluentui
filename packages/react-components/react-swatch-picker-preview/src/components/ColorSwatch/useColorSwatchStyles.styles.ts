@@ -21,8 +21,8 @@ const { swatchColor } = swatchCSSVars;
 const useStyles = makeResetStyles({
   position: 'relative',
   boxSizing: 'border-box',
-  ...shorthands.border('none'),
-  ...shorthands.padding(0),
+  border: 'none',
+  padding: 0,
   background: `var(${swatchColor})`,
   '&:hover': {
     cursor: 'pointer',
