@@ -54,7 +54,7 @@ async function mainV2() {
     '',
   );
 
-  const cmd = `yarn lage generate-api --to ${ghostDependencies.join(' ')}`;
+  const cmd = `yarn lage build --to ${ghostDependencies.join(' ')}`;
 
   console.info('', '🏃:' + ` ${cmd}`, '');
 
