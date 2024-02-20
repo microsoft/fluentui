@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: support numbers as Option values",
+  "packageName": "@fluentui/react-combobox",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
