@@ -91,12 +91,12 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   };
 
   // get state from parent combobox, if it exists
-  const hasListboxContent = useHasParentContext(ListboxContext);
+  const hasListboxContext = useHasParentContext(ListboxContext);
   const contextSelectedOptions = useListboxContext_unstable(ctx => ctx.selectedOptions);
   const contextSelectOption = useListboxContext_unstable(ctx => ctx.selectOption);
 
   // without a parent combobox context, provide values directly from Listbox
-  const optionContextValues = hasListboxContent
+  const optionContextValues = hasListboxContext
     ? {
         selectedOptions: contextSelectedOptions,
         selectOption: contextSelectOption,
