@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add PresenceGroup component",
+  "packageName": "@fluentui/react-motions-preview",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

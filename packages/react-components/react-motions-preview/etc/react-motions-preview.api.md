@@ -99,6 +99,22 @@ declare namespace motionTokens {
 export { motionTokens }
 
 // @public (undocumented)
+export class PresenceGroup extends React_2.Component<PresenceGroupProps, PresenceGroupState> {
+    constructor(props: PresenceGroupProps, context: unknown);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static getDerivedStateFromProps(nextProps: PresenceGroupProps, { childMapping: prevChildMapping, firstRender }: PresenceGroupState): {
+        childMapping: PresenceGroupChildMapping;
+        firstRender: boolean;
+    };
+    // (undocumented)
+    render(): JSX.Element;
+}
+
+// @public (undocumented)
 export type PresenceMotion = {
     enter: AtomMotion;
     exit: AtomMotion;

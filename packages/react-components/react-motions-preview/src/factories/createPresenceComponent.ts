@@ -2,6 +2,7 @@ import { useEventCallback, useIsomorphicLayoutEffect, useMergedRefs } from '@flu
 import type { EventData, EventHandler } from '@fluentui/react-utilities';
 import * as React from 'react';
 
+import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { getChildElement } from '../utils/getChildElement';
@@ -38,13 +39,15 @@ type PresenceComponentProps = {
 
 export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn) {
   const Presence: React.FC<PresenceComponentProps> = props => {
-    const { appear, children, imperativeRef, onMotionFinish, visible, unmountOnExit } = props;
+    const itemContext = React.useContext(PresenceGroupChildContext);
+    const { appear, children, imperativeRef, onMotionFinish, visible, unmountOnExit } = { ...itemContext, ...props };
 
     const child = getChildElement(children);
 
     const animationRef = useMotionImperativeRef(imperativeRef);
     const elementRef = React.useRef<HTMLElement>();
     const ref = useMergedRefs(elementRef, child.ref);
+    const optionsRef = React.useRef<{ appear?: boolean }>();
 
     const [mounted, setMounted] = React.useState(() => (unmountOnExit ? visible : true));
 
@@ -60,6 +63,10 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
       if (unmountOnExit) {
         setMounted(false);
       }
+    });
+
+    useIsomorphicLayoutEffect(() => {
+      optionsRef.current = { appear };
     });
 
     useIsomorphicLayoutEffect(() => {
@@ -101,7 +108,7 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
         return;
       }
 
-      const shouldEnter = isFirstMount.current ? appear && visible : mounted && visible;
+      const shouldEnter = isFirstMount.current ? optionsRef.current?.appear && visible : mounted && visible;
 
       if (shouldEnter) {
         const definition = typeof motion === 'function' ? motion(elementRef.current) : motion;
@@ -121,7 +128,7 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
           animation.cancel();
         };
       }
-    }, [animationRef, appear, isReducedMotion, mounted, onEnterFinish, visible]);
+    }, [animationRef, isReducedMotion, mounted, onEnterFinish, visible]);
 
     useIsomorphicLayoutEffect(() => {
       isFirstMount.current = false;
