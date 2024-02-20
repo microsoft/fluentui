@@ -33,7 +33,7 @@ export const SingleAction = () => {
             id={`id_${name}`}
             key={name}
             role="listitem"
-            aria-label={name}
+            aria-label={`${name}, available`}
             aria-roledescription="button" //needs to be a translated string!
             onClick={() => alert(name)}
           >
