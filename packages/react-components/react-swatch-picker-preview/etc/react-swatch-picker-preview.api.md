@@ -61,6 +61,9 @@ export const swatchPickerCSSVars: {
 };
 
 // @public (undocumented)
+export type SwatchPickerOnSelectEventHandler = EventHandler<SwatchPickerOnSelectionChangeData>;
+
+// @public (undocumented)
 export type SwatchPickerOnSelectionChangeData = EventData<'click', React_2.MouseEvent<HTMLButtonElement>> & {
     selectedValue: string;
     selectedColor: string;
