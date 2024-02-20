@@ -4102,7 +4102,7 @@
     eslint-plugin-jest "^25.0.0"
     eslint-plugin-react "^7.26.0"
 
-"@rnx-kit/metro-config@^1.3.9":
+"@rnx-kit/metro-config@^1.3.14":
   version "1.3.14"
   resolved "https://registry.yarnpkg.com/@rnx-kit/metro-config/-/metro-config-1.3.14.tgz#b2d034e23196b6a5ca84718e08b15c0c5018708e"
   integrity sha512-RjBM2gsDx9Ba7b39ussuRbqJsez8W37puM4oZGSLbneuhQ9kpJcC0omf2QYMKhQisTy0/4jv7L9WdpzvzXR/ow==
@@ -4182,10 +4182,10 @@
     chalk "^4.1.0"
     node-fetch "^2.6.7"
 
-"@rnx-kit/react-native-host@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@rnx-kit/react-native-host/-/react-native-host-0.4.0.tgz#bfffdf9e5411de588def90bc743e5a9ff65ef82b"
-  integrity sha512-j05mQg34VGsSpLP5GLhkG/vRsPVT1gn1/mUCkmKTO2JA8OXjwHLfJBaZgIgyQNEFirk8Elp4YRiaXiCGnuKtQQ==
+"@rnx-kit/react-native-host@^0.4.4":
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/@rnx-kit/react-native-host/-/react-native-host-0.4.4.tgz#f9ee2f61b578bcfc813a24059b65b1b832da5dbf"
+  integrity sha512-R6JmXwK0blOsbEMhqfDuXiDPuWWUAv48ZE4dGIRIEm2uw4OuRmhclmamyEx184dDoK28gkTFH6kqEQiBh48y8g==
 
 "@rnx-kit/third-party-notices@^1.3.4":
   version "1.3.4"
@@ -19883,10 +19883,10 @@ minimalistic-crypto-utils@^1.0.1:
   resolved "https://registry.yarnpkg.com/minimalistic-crypto-utils/-/minimalistic-crypto-utils-1.0.1.tgz#f6c00c1c0b082246e5c4d99dfb8c7c083b2b582a"
   integrity sha1-9sAMHAsIIkblxNmd+4x8CDsrWCo=
 
-"minimatch@2 || 3", minimatch@^3.0.2, minimatch@^3.0.4:
-  version "3.1.2"
-  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.1.2.tgz#19cd194bfd3e428f049a70817c038d89ab4be35b"
-  integrity sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==
+"minimatch@2 || 3", minimatch@3.0.5, minimatch@^3.0.2, minimatch@^3.0.4:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.5.tgz#4da8f1290ee0f0f8e83d60ca69f8f134068604a3"
+  integrity sha512-tUpxzX0VAzJHjLu0xUfFv1gwVp9ba3IOuRAVH2EGuRW8a5emA2FlACLqiT/lDVtS1W+TGNwqz3sWaNyLgDJWuw==
   dependencies:
     brace-expansion "^1.1.7"
 
@@ -19894,13 +19894,6 @@ minimatch@3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.4.tgz#5166e286457f03306064be5497e8dbb0c3d32083"
   integrity sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==
-  dependencies:
-    brace-expansion "^1.1.7"
-
-minimatch@3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.0.5.tgz#4da8f1290ee0f0f8e83d60ca69f8f134068604a3"
-  integrity sha512-tUpxzX0VAzJHjLu0xUfFv1gwVp9ba3IOuRAVH2EGuRW8a5emA2FlACLqiT/lDVtS1W+TGNwqz3sWaNyLgDJWuw==
   dependencies:
     brace-expansion "^1.1.7"
 
@@ -23041,12 +23034,12 @@ react-native-macos@^0.73.0:
     ws "^6.2.2"
     yargs "^17.6.2"
 
-react-native-test-app@^3.0.14:
-  version "3.0.14"
-  resolved "https://registry.yarnpkg.com/react-native-test-app/-/react-native-test-app-3.0.14.tgz#82af1c92fae59efd1b8a35c641f26de4bb3a7515"
-  integrity sha512-KGqU+3XOcruc/tJ4Y0IVtoMcJV4Voq//CK1RcrDmZ5o9IMCu2Wv6vp1RjkQTxhabE/dFBbb1oY9SRGoPmHFokQ==
+react-native-test-app@^3.2.7:
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/react-native-test-app/-/react-native-test-app-3.2.7.tgz#4ffc48df45996ca5817b3b5140e9e886e3d90848"
+  integrity sha512-UWwwKadnwDZiKFHUgNrryB8rQ2+GxTOFEqwoDWs3zR+nnk/rexqYn6LfUs/Ondfo1phxOuRfnQObfGChU/4z6w==
   dependencies:
-    "@rnx-kit/react-native-host" "^0.4.0"
+    "@rnx-kit/react-native-host" "^0.4.4"
     ajv "^8.0.0"
     chalk "^4.1.0"
     cliui "^8.0.0"
