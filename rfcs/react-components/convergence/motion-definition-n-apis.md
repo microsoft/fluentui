@@ -548,10 +548,10 @@ import { createPresenceComponent, type PresenceMotion } from '@fluentui/react-mo
 
 // 💡 Consumers will have the option to use either predefined motions as objects or as components.
 //   They won't need to define custom motions unless they specifically want to.
-const fadePrensence: PresenceMotion = {
+const fadePresence: PresenceMotion = {
   /* --- */
 };
-const Fade = createPresenceComponent(fadePrensence);
+const Fade = createPresenceComponent(fadePresence);
 
 function MyComponent() {
   const [visible, setVisible] = useState(false);
@@ -575,10 +575,10 @@ import { createPresenceComponent, type PresenceMotion } from '@fluentui/react-mo
 
 // 💡 Consumers will have the option to use either predefined motions as objects or as components.
 //   They won't need to define custom motions unless they specifically want to.
-const fadePrensence: PresenceMotion = {
+const fadePresence: PresenceMotion = {
   /* --- */
 };
-const Fade = createPresenceComponent(fadePrensence);
+const Fade = createPresenceComponent(fadePresence);
 
 function MyComponent() {
   const [visible, setVisible] = useState(false);
@@ -624,38 +624,34 @@ We will support more complex motions later, such as [grouped and sequential](#mo
 
 ### Using group motions
 
-_At present, this feature is not implemented in either the `@fluentui/react-motion-preview` or `@fluentui/react-motions-preview` packages, but it may be implemented in the future._
-
-Implementation is tracked in [microsoft/fluentui#30546](https://github.com/microsoft/fluentui/issues/30546).
-
-The suggested approach is to adopt APIs from the `react-transition-group package`, for example:
+The suggested approach is to create APIs similar to the `react-transition-group` package, for example:
 
 ```tsx
 import { createPresenceComponent, type PresenceMotion, PresenceGroup } from '@fluentui/react-motions-preview';
 
 // 💡 Consumers will have the option to use either predefined motions as objects or as components.
 //   They won't need to define custom motions unless they specifically want to.
-const fadePrensence: PresenceMotion = {
+const fadePresence: PresenceMotion = {
   /* --- */
 };
 
-const FadeSlow = createPresenceComponent(fadePrensence);
+const Fade = createPresenceComponent(fadePresence);
 
-function MyComponent() {
+function App() {
   return (
     <PresenceGroup>
-      <FadeSlow>
+      <Fade>
         <div>Hello world!</div>
-      </FadeSlow>
-      <FadeSlow>
+      </Fade>
+      <Fade>
         <div>Hello world!</div>
-      </FadeSlow>
+      </Fade>
     </PresenceGroup>
   );
 }
 ```
 
-The `PresenceGroup` component will handle the cloning and passing of states to children via React Context. Additionally, the `PresenceGroup` component will manage the unmounting of children.
+The `PresenceGroup` component handles the cloning and passing of states to children via React Context. Additionally, the `PresenceGroup` component manages the unmounting of children.
 
 <details>
 <summary>Reason for an additional component</summary>
@@ -701,8 +697,6 @@ The `TransitionGroup` component from the `react-transition-group` package resolv
 - ⏳Animation starts & finishes; the child is then unmounted
 
 </details>
-
-[PoC](https://stackblitz.com/edit/ladle-nytnud)
 
 ### Motion overrides
 
