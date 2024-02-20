@@ -35,14 +35,12 @@
   - [Motion overrides](#motion-overrides-1)
     - [Using `motion` & `className` props](#using-motion--classname-props)
     - [Using `motion` prop as object](#using-motion-prop-as-object)
+- [Migration plan](#migration-plan)
 - [Notes](#notes)
   - [Web Animations API have higher priority in applying styles](#web-animations-api-have-higher-priority-in-applying-styles)
-- [Open questions](#open-questions)
-  - [Split definition & APIs](#split-definition--apis)
-  - [What to export from `@fluentui/react-components`?](#what-to-export-from-fluentuireact-components)
-  - [Mouse over / focus / active states](#mouse-over--focus--active-states)
-  - [Migration plan](#migration-plan)
 - [Out of scope](#out-of-scope)
+  - [Split definition & APIs](#split-definition--apis)
+  - [Mouse over / focus / active states](#mouse-over--focus--active-states)
   - [Advanced reduced motion support](#advanced-reduced-motion-support)
   - [Motion sequencing & grouping](#motion-sequencing--grouping)
 
@@ -1145,6 +1143,21 @@ function App() {
 }
 ```
 
+## Migration plan
+
+Currently, we have three approaches to motion in Fluent UI React components:
+
+- `react-transition-group` - CSS based, used in `Dialog`, `Toast`, `MessageBar`.
+- `@fluentui/react-motion-preview` - CSS based i.e. `useMotion()`, used in `Drawer`.
+- `@fluentui/react-motions-preview` - Web Animations API based i.e. `createMotionComponent()`, not used yet.
+
+We will use the following steps to migrate to the new motion system:
+
+1. Components should be migrated to use `@fluentui/react-motions-preview`.
+2. `@fluentui/react-motion-preview` should be deprecated and removed from docs.
+   - `useMotion()` from `@fluentui/react-motion-preview` can be moved to [Contrib repo](https://github.com/microsoft/fluentui-contrib).
+3. Expose `motion` prop in components for overrides.
+
 ## Notes
 
 ### Web Animations API have higher priority in applying styles
@@ -1155,20 +1168,11 @@ However, they could be combined using [`composite` property](https://developer.m
 
 [An example on Stackblitz](https://stackblitz.com/edit/stackblitz-starters-qgseij)
 
-## Open questions
+## Out of scope
 
 ### Split definition & APIs
 
-Currently, motion definitions in `@fluentui/react-motions-preview` are taken from Fluent UI Northstar aka v0 and don't match the design specs. However, so far there is no final decision on their shape.
-
-The question is: should we split motion definitions & APIs into separate packages?
-
-### What to export from `@fluentui/react-components`?
-
-It's partially covered in the RFC before, but what should be exported as the main API from `@fluentui/react-components`?
-
-- Option 1: `createMotionComponent()`, `createPresenceComponent()`, `PresenceGroup`, `atom` & `presence` (factories & definitions)
-- Option 2: `FadeEnter`, `FadePresence`, `PresenceGroup`, etc. (pre-defined components)
+Currently, `@fluentui/react-motions-preview` does not have any motions defined (i.e. fade, collapse, etc.) as there is no final decision on their shape from design team. We can iterate on motion definitions themselves and APIs separately.
 
 ### Mouse over / focus / active states
 
@@ -1188,17 +1192,6 @@ const useClasses = makeStyles({
 ```
 
 This RFC does not cover this scenario, but we can consider it in the future.
-
-### Migration plan
-
-Currently, we have two packages for motion animations:
-
-- `@fluentui/react-motion-preview` - CSS based i.e. `useMotion()`
-- `@fluentui/react-motions-preview` - Web Animations API based i.e. `createMotionComponent()`
-
-What is the migration plan for these packages?
-
-## Out of scope
 
 ### Advanced reduced motion support
 
