@@ -28,8 +28,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/react-storybook-addon-export-to-sandbox": "*"
+    "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "@fluentui/tokens": "1.0.0-alpha.13",
