@@ -27,8 +27,6 @@ export const useColorSwatch_unstable = (
 
   const onClick = useEventCallback((event: React.MouseEvent<HTMLButtonElement>) =>
     requestSelectionChange(event, {
-      type: 'click',
-      event,
       selectedValue: value,
       selectedColor: color,
     }),

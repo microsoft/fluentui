@@ -1,10 +1,6 @@
+import * as React from 'react';
 import { createContext, ContextSelector, useContextSelector, Context } from '@fluentui/react-context-selector';
-import {
-  SwatchPickerProps,
-  SwatchPickerState,
-  SwatchPickerOnSelectionChangeData,
-} from '../components/SwatchPicker/SwatchPicker.types';
-import type { EventHandler } from '@fluentui/react-utilities';
+import { SwatchPickerProps, SwatchPickerState } from '../components/SwatchPicker/SwatchPicker.types';
 
 /**
  * The context through which individual color controls communicate with the picker.
@@ -14,7 +10,10 @@ export type SwatchPickerContextValue = Pick<SwatchPickerProps, 'size' | 'shape' 
    * Callback used by ColorSwatch to request a change on it's selected state
    * Should be used to select ColorSwatch
    */
-  requestSelectionChange: EventHandler<SwatchPickerOnSelectionChangeData>;
+  requestSelectionChange: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    data: { selectedValue: string; selectedColor: string },
+  ) => void;
 };
 
 export const useSwatchPickerContextValues = (state: SwatchPickerState): SwatchPickerContextValues => {
