@@ -21,7 +21,7 @@ export const useOptionCollection = (): OptionCollectionState => {
       return Array.from(optionsById.current.values()).filter(({ text }) => matcher(text));
     };
 
-    const getOptionsMatchingValue = (matcher: (value: string) => boolean) => {
+    const getOptionsMatchingValue = (matcher: (value: string | number) => boolean) => {
       const matches: OptionValue[] = [];
       for (const option of optionsById.current.values()) {
         if (matcher(option.value)) {

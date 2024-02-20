@@ -24,7 +24,7 @@ export type OptionProps = ComponentProps<Partial<OptionSlots>> & {
    * Use this to control selectedOptions, or to get the option value in the onOptionSelect callback.
    * Defaults to `text` if not provided.
    */
-  value?: string;
+  value?: string | number;
 } & (
     | {
         /**

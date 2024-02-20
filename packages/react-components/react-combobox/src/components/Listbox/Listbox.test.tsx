@@ -240,8 +240,8 @@ describe('Listbox', () => {
     const { getByText } = render(
       <Listbox onOptionSelect={onOptionSelect}>
         <Option>Red</Option>
-        <Option>Green</Option>
-        <Option>Blue</Option>
+        <Option value="string">Green</Option>
+        <Option value={42}>Blue</Option>
       </Listbox>,
     );
 
@@ -252,6 +252,24 @@ describe('Listbox', () => {
       optionValue: 'Red',
       optionText: 'Red',
       selectedOptions: ['Red'],
+    });
+
+    fireEvent.click(getByText('Green'));
+
+    expect(onOptionSelect).toHaveBeenCalled();
+    expect(onOptionSelect.mock.calls[1][1]).toEqual({
+      optionValue: 'string',
+      optionText: 'Green',
+      selectedOptions: ['string'],
+    });
+
+    fireEvent.click(getByText('Blue'));
+
+    expect(onOptionSelect).toHaveBeenCalled();
+    expect(onOptionSelect.mock.calls[2][1]).toEqual({
+      optionValue: 42,
+      optionText: 'Blue',
+      selectedOptions: [42],
     });
   });
 

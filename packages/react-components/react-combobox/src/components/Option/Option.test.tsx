@@ -103,6 +103,18 @@ describe('Option', () => {
     expect(getByText('Option 2').getAttribute('aria-selected')).toEqual('false');
   });
 
+  it('sets aria-selected based on number value', () => {
+    const { getByText } = render(
+      <ListboxContext.Provider value={{ ...defaultContextValues, selectedOptions: [42] }}>
+        <Option value={42}>Option 1</Option>
+        <Option value={'42'}>Option 2</Option>
+      </ListboxContext.Provider>,
+    );
+
+    expect(getByText('Option 1').getAttribute('aria-selected')).toEqual('true');
+    expect(getByText('Option 2').getAttribute('aria-selected')).toEqual('false');
+  });
+
   it('ignores text if value is set', () => {
     const { getByText } = render(
       <ListboxContext.Provider value={{ ...defaultContextValues, selectedOptions: ['Option 1'] }}>

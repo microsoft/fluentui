@@ -425,14 +425,14 @@ describe('Combobox', () => {
 
   it('should set selectedOptions based on Option `value`', () => {
     const { getByTestId } = render(
-      <Combobox open multiselect selectedOptions={['a', 'c']}>
+      <Combobox open multiselect selectedOptions={['a', 3]}>
         <Option data-testid="red" value="a">
           Red
         </Option>
         <Option data-testid="green" value="b">
           Green
         </Option>
-        <Option data-testid="blue" value="c">
+        <Option data-testid="blue" value={3}>
           Blue
         </Option>
       </Combobox>,

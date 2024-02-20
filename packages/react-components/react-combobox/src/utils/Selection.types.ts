@@ -6,7 +6,7 @@ export type SelectionProps = {
    * For an uncontrolled component, sets the initial selection.
    * If this is set, the `defaultValue` prop MUST also be set.
    */
-  defaultSelectedOptions?: string[];
+  defaultSelectedOptions?: (string | number)[];
 
   /**
    * Sets the selection type to multiselect.
@@ -25,13 +25,13 @@ export type SelectionProps = {
    * Use this with `onOptionSelect` to directly control the selected option(s)
    * If this is set, the `value` prop MUST also be controlled.
    */
-  selectedOptions?: string[];
+  selectedOptions?: (string | number)[];
 };
 
 /* Values returned by the useSelection hook */
 export type SelectionState = {
   clearSelection: (event: SelectionEvents) => void;
-  selectedOptions: string[];
+  selectedOptions: (string | number)[];
   selectOption: (event: SelectionEvents, option: OptionValue) => void;
 };
 
@@ -40,9 +40,9 @@ export type SelectionState = {
  * `optionValue` and `optionText` will be undefined if multiple options are modified at once.
  */
 export type OptionOnSelectData = {
-  optionValue: string | undefined;
+  optionValue: string | number | undefined;
   optionText: string | undefined;
-  selectedOptions: string[];
+  selectedOptions: (string | number)[];
 };
 
 /* Possible event types for onOptionSelect */

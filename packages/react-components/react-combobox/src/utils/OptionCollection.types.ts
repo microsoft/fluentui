@@ -9,7 +9,7 @@ export type OptionValue = {
   text: string;
 
   /** The value string of the option. */
-  value: string;
+  value: string | number;
 };
 
 export type OptionCollectionState = {
@@ -35,7 +35,7 @@ export type OptionCollectionState = {
   getOptionById(id: string): OptionValue | undefined;
 
   /** Returns an array of options filtered by a value matching function against the option's value string. */
-  getOptionsMatchingValue(matcher: (value: string) => boolean): OptionValue[];
+  getOptionsMatchingValue(matcher: (value: string | number) => boolean): OptionValue[];
 
   /** The unordered option data. */
   options: OptionValue[];
