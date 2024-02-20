@@ -901,6 +901,7 @@ describe('migrate-converged-pkg generator', () => {
         test: 'jest --passWithNoTests',
         'test-ssr': 'test-ssr "./stories/**/*.stories.tsx"',
         'type-check': 'just-scripts type-check',
+        'generate-circular-dependencies-types': 'generate-circular-dependencies-types',
       });
 
       // verify test-ssr addition

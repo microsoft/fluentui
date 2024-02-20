@@ -662,6 +662,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
       test: 'jest --passWithNoTests',
       'test-ssr': 'test-ssr "./stories/**/*.stories.tsx"',
       'type-check': 'just-scripts type-check',
+      'generate-circular-dependencies-types': 'generate-circular-dependencies-types',
     };
 
     if (packageType === 'web' && hasStories) {
