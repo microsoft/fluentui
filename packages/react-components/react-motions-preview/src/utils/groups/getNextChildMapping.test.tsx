@@ -93,4 +93,45 @@ describe('getNextChildMapping', () => {
       }
     `);
   });
+
+  it('handles flipping items', () => {
+    const mapping = getNextChildMapping(
+      getChildMapping([<div key="a" />, <div key="b" />]),
+      getChildMapping([<div key="a" />]),
+    );
+
+    expect(mapping).toMatchInlineSnapshot(`
+      Object {
+        ".$a": Object {
+          "appear": false,
+          "element": <div />,
+          "unmountOnExit": true,
+          "visible": true,
+        },
+        ".$b": Object {
+          "appear": false,
+          "element": <div />,
+          "unmountOnExit": true,
+          "visible": false,
+        },
+      }
+    `);
+
+    expect(getNextChildMapping(mapping, getChildMapping([<div key="a" />, <div key="b" />]))).toMatchInlineSnapshot(`
+      Object {
+        ".$a": Object {
+          "appear": false,
+          "element": <div />,
+          "unmountOnExit": true,
+          "visible": true,
+        },
+        ".$b": Object {
+          "appear": false,
+          "element": <div />,
+          "unmountOnExit": true,
+          "visible": true,
+        },
+      }
+    `);
+  });
 });

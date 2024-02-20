@@ -11,11 +11,14 @@ export function getNextChildMapping(
     const hasPrev = key in prevChildMapping;
     const hasNext = key in nextChildMapping;
 
-    const prevChild = prevChildMapping[key];
-    const isLeaving = !prevChild?.visible ?? false;
+    if (hasNext) {
+      // Case 1: item hasn't changed transition states
+      if (hasPrev) {
+        childrenMapping[key] = { ...childDefinition };
+        return;
+      }
 
-    // item is new (entering)
-    if (hasNext && (!hasPrev || isLeaving)) {
+      // Case 2: item is new (entering)
       childrenMapping[key] = {
         ...childDefinition,
         appear: true,
@@ -24,20 +27,11 @@ export function getNextChildMapping(
       return;
     }
 
-    // item is old (exiting)
-    if (!hasNext && hasPrev && !isLeaving) {
-      childrenMapping[key] = {
-        ...childDefinition,
-        visible: false,
-      };
-      return;
-    }
-
-    if (hasNext && hasPrev) {
-      // item hasn't changed transition states
-      // copy over the last transition props;
-      childrenMapping[key] = { ...childDefinition };
-    }
+    // Case 3: item is leaving
+    childrenMapping[key] = {
+      ...childDefinition,
+      visible: false,
+    };
   });
 
   return childrenMapping;

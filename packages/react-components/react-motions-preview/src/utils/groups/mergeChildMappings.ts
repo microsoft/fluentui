@@ -37,10 +37,8 @@ export function mergeChildMappings(
   // eslint-disable-next-line guard-for-in
   for (const nextKey in nextMapping) {
     if (nextKeysPending[nextKey]) {
-      for (let i = 0; i < nextKeysPending[nextKey].length; i++) {
-        const pendingNextKey = nextKeysPending[nextKey][i];
-
-        childMapping[nextKeysPending[nextKey][i]] = getValueForKey(pendingNextKey);
+      for (const pendingNextKey of nextKeysPending[nextKey]) {
+        childMapping[pendingNextKey] = getValueForKey(pendingNextKey);
       }
     }
 
@@ -48,8 +46,8 @@ export function mergeChildMappings(
   }
 
   // Finally, add the keys which didn't appear before any key in `next`
-  for (let i = 0; i < pendingKeys.length; i++) {
-    childMapping[pendingKeys[i]] = getValueForKey(pendingKeys[i]);
+  for (const pendingKey of pendingKeys) {
+    childMapping[pendingKey] = getValueForKey(pendingKey);
   }
 
   return childMapping;
