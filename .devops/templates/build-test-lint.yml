@@ -41,9 +41,9 @@ steps:
     env:
       DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
-  - script: |
-      node ./scripts/executors/type-check-ci-hack.js --base $(targetBranch)
-    displayName: type-check perf preparation
+  # - script: |
+  #     node ./scripts/executors/type-check-ci-hack.js --base $(targetBranch)
+  #   displayName: type-check perf preparation
 
   - script: |
       yarn buildci $(sinceArg)
