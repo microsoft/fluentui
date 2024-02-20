@@ -54,7 +54,7 @@ async function mainV2() {
     '',
   );
 
-  const cmd = `yarn lage build --to ${ghostDependencies.join(' ')}`;
+  const cmd = `yarn lage generate-api --to ${ghostDependencies.join(' ')}`;
 
   console.info('', '🏃:' + ` ${cmd}`, '');
 
@@ -93,7 +93,6 @@ function getImportsFromStories(tree, projectConfig) {
   const imports = [];
 
   visitNotIgnoredFiles(tree, storiesDir, file => {
-    console.log(file);
     if (!(file.endsWith('.stories.tsx') || file.endsWith('.stories.ts'))) {
       return;
     }
