@@ -23,7 +23,8 @@
     "generate-api": "just-scripts generate-api",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
     "e2e": "cypress run --component",
-    "e2e:local": "cypress open --component"
+    "e2e:local": "cypress open --component",
+    "generate-circular-dependencies-types": "generate-circular-dependencies-types"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

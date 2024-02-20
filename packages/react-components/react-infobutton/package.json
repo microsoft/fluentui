@@ -25,7 +25,8 @@
     "start": "yarn storybook",
     "e2e": "cypress run --component",
     "e2e:local": "cypress open --component",
-    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
+    "generate-circular-dependencies-types": "generate-circular-dependencies-types"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

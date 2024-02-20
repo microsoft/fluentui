@@ -25,7 +25,8 @@
     "storybook": "start-storybook",
     "start": "yarn storybook",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
-    "bundle-size": "monosize measure"
+    "bundle-size": "monosize measure",
+    "generate-circular-dependencies-types": "generate-circular-dependencies-types"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

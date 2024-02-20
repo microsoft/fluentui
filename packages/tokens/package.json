@@ -20,7 +20,8 @@
     "test": "jest --passWithNoTests",
     "token-pipeline": "node -r ../../scripts/ts-node/register ../../scripts/generators/token-pipeline.ts",
     "type-check": "just-scripts type-check",
-    "generate-api": "just-scripts generate-api"
+    "generate-api": "just-scripts generate-api",
+    "generate-circular-dependencies-types": "generate-circular-dependencies-types"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

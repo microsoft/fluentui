@@ -23,7 +23,9 @@
     "test": "jest --passWithNoTests",
     "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api",
-    "verify-packaging": "just-scripts verify-packaging"
+    "verify-packaging": "just-scripts verify-packaging",
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
+    "generate-circular-dependencies-types": "generate-circular-dependencies-types"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

@@ -14,10 +14,11 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
-    "test": "just-scripts test",
+    "test": "jest --passWithNoTests",
     "lint": "just-scripts lint",
     "generate-api": "just-scripts generate-api",
-    "type-check": "just-scripts type-check"
+    "type-check": "just-scripts type-check",
+    "generate-circular-dependencies-types": "generate-circular-dependencies-types"
   },
   "beachball": {
     "disallowedChangeTypes": [

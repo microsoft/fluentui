@@ -25,7 +25,8 @@
     "storybook": "start-storybook",
     "start": "yarn storybook",
     "e2e": "cypress run --component",
-    "e2e:local": "cypress open --component"
+    "e2e:local": "cypress open --component",
+    "generate-circular-dependencies-types": "generate-circular-dependencies-types"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

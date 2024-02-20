@@ -24,7 +24,8 @@
     "generate-api": "just-scripts generate-api",
     "storybook": "start-storybook",
     "start": "yarn storybook",
-    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
+    "generate-circular-dependencies-types": "generate-circular-dependencies-types"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

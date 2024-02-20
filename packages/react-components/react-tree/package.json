@@ -22,7 +22,8 @@
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
     "type-check": "just-scripts type-check",
     "e2e": "cypress run --component",
-    "e2e:local": "cypress open --component"
+    "e2e:local": "cypress open --component",
+    "generate-circular-dependencies-types": "generate-circular-dependencies-types"
   },
   "devDependencies": {
     "@dnd-kit/core": "^6.0.8",
