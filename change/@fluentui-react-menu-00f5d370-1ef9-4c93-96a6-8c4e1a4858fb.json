@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Dismiss Menu when MenuLinkItem is clicked.",
-  "packageName": "@fluentui/react-menu",
-  "email": "santoshsrisai36@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -6,6 +6,7 @@ import { Option } from './Option';
 import type { OptionProps } from './Option.types';
 import { isConformant } from '../../testing/isConformant';
 import { optionClassNames } from './useOptionStyles.styles';
+import { ActiveDescendantContextProvider, ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 
 describe('Option', () => {
   isConformant<OptionProps>({
@@ -203,15 +204,18 @@ describe('Option', () => {
     expect(registerOption).toHaveBeenCalledTimes(2);
   });
 
-  it('calls selectOption and setActiveOption on click', () => {
+  it('calls selectOption and set as active on click', () => {
     const selectOption = jest.fn();
-    const setActiveOption = jest.fn();
+    const testController = { focus: jest.fn() } as unknown as ActiveDescendantImperativeRef;
     const { getByRole } = render(
-      <ListboxContext.Provider value={{ ...defaultContextValues, selectOption, setActiveOption }}>
-        <Option id="optionId" value="foo">
-          Option 1
-        </Option>
-      </ListboxContext.Provider>,
+      <ActiveDescendantContextProvider value={{ controller: testController }}>
+        <ListboxContext.Provider value={{ ...defaultContextValues, selectOption }}>
+          <Option id="optionId" value="foo">
+            Option 1
+          </Option>
+        </ListboxContext.Provider>
+        ,
+      </ActiveDescendantContextProvider>,
     );
 
     fireEvent.click(getByRole('option'));
@@ -219,9 +223,8 @@ describe('Option', () => {
 
     expect(selectOption).toHaveBeenCalledTimes(1);
     expect(selectOption).toHaveBeenCalledWith(expect.anything(), optionData);
-
-    expect(setActiveOption).toHaveBeenCalledTimes(1);
-    expect(setActiveOption).toHaveBeenCalledWith(optionData);
+    expect(testController.focus).toHaveBeenCalledTimes(1);
+    expect(testController.focus).toHaveBeenCalledWith(optionData.id);
   });
 
   describe('checkIcon slot', () => {

@@ -4,6 +4,7 @@
 import { Portal } from '@fluentui/react-portal';
 
 import { assertSlots } from '@fluentui/react-utilities';
+import { ActiveDescendantContextProvider } from '@fluentui/react-aria';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import type { DropdownContextValues, DropdownState, DropdownSlots } from './Dropdown.types';
 
@@ -15,21 +16,23 @@ export const renderDropdown_unstable = (state: DropdownState, contextValues: Dro
 
   return (
     <state.root>
-      <ComboboxContext.Provider value={contextValues.combobox}>
-        <state.button>
-          {state.button.children}
-          {state.expandIcon && <state.expandIcon />}
-        </state.button>
-        {state.clearButton && <state.clearButton />}
-        {state.listbox &&
-          (state.inlinePopup ? (
-            <state.listbox />
-          ) : (
-            <Portal mountNode={state.mountNode}>
+      <ActiveDescendantContextProvider value={contextValues.activeDescendant}>
+        <ComboboxContext.Provider value={contextValues.combobox}>
+          <state.button>
+            {state.button.children}
+            {state.expandIcon && <state.expandIcon />}
+          </state.button>
+          {state.clearButton && <state.clearButton />}
+          {state.listbox &&
+            (state.inlinePopup ? (
               <state.listbox />
-            </Portal>
-          ))}
-      </ComboboxContext.Provider>
+            ) : (
+              <Portal mountNode={state.mountNode}>
+                <state.listbox />
+              </Portal>
+            ))}
+        </ComboboxContext.Provider>
+      </ActiveDescendantContextProvider>
     </state.root>
   );
 };

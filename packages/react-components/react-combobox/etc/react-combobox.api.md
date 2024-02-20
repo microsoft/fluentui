@@ -6,6 +6,8 @@
 
 /// <reference types="react" />
 
+import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { FC } from 'react';
@@ -57,6 +59,7 @@ export type ComboboxSlots = {
 // @public
 export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState & {
     showClearIcon?: boolean;
+    activeDescendantController: ActiveDescendantImperativeRef;
 };
 
 // @public
@@ -90,6 +93,7 @@ export type DropdownSlots = {
 export type DropdownState = ComponentState<DropdownSlots> & ComboboxBaseState & {
     placeholderVisible: boolean;
     showClearButton?: boolean;
+    activeDescendantController: ActiveDescendantImperativeRef;
 };
 
 // @public
@@ -104,6 +108,7 @@ export type ListboxContextValue = Pick<ListboxState, 'activeOption' | 'focusVisi
 // @public (undocumented)
 export type ListboxContextValues = {
     listbox: ListboxContextValue;
+    activeDescendant: ActiveDescendantContextValue;
 };
 
 // @public
@@ -121,8 +126,9 @@ export type ListboxSlots = {
 export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState & Pick<SelectionProps, 'multiselect'> & SelectionState & {
     activeOption?: OptionValue;
     focusVisible: boolean;
-    selectOption(event: SelectionEvents, option: OptionValue): void;
     setActiveOption(option?: OptionValue): void;
+    selectOption(event: SelectionEvents, option: OptionValue): void;
+    activeDescendantController: ActiveDescendantImperativeRef;
 };
 
 // @public
@@ -205,7 +211,9 @@ export type SelectionEvents = React_2.ChangeEvent<HTMLElement> | React_2.Keyboar
 export const useCombobox_unstable: (props: ComboboxProps, ref: React_2.Ref<HTMLInputElement>) => ComboboxState;
 
 // @public (undocumented)
-export function useComboboxContextValues(state: ComboboxBaseState): ComboboxBaseContextValues;
+export function useComboboxContextValues(state: ComboboxBaseState & {
+    activeDescendantController: ActiveDescendantImperativeRef;
+}): ComboboxBaseContextValues;
 
 // @public (undocumented)
 export function useComboboxFilter<T extends {

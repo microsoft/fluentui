@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useContextSelector } from '@fluentui/react-context-selector';
+import { useActiveDescendantContext } from '@fluentui/react-aria';
 import { CheckmarkFilled, Checkmark12Filled } from '@fluentui/react-icons';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
 import { ListboxContext } from '../../contexts/ListboxContext';
@@ -55,8 +56,9 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
     [id, disabled, optionText, optionValue],
   );
 
+  const { controller: activeDescendantController } = useActiveDescendantContext();
+
   // context values
-  const focusVisible = useContextSelector(ListboxContext, ctx => ctx.focusVisible);
   const multiselect = useContextSelector(ListboxContext, ctx => ctx.multiselect);
   const registerOption = useContextSelector(ListboxContext, ctx => ctx.registerOption);
   const selected = useContextSelector(ListboxContext, ctx => {
@@ -65,13 +67,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
     return !!optionValue && !!selectedOptions.find(o => o === optionValue);
   });
   const selectOption = useContextSelector(ListboxContext, ctx => ctx.selectOption);
-  const setActiveOption = useContextSelector(ListboxContext, ctx => ctx.setActiveOption);
   const setOpen = useContextSelector(ComboboxContext, ctx => ctx.setOpen);
-
-  // current active option?
-  const active = useContextSelector(ListboxContext, ctx => {
-    return ctx.activeOption?.id !== undefined && ctx.activeOption?.id === id;
-  });
 
   // check icon
   let CheckIcon: React.ReactNode = <CheckmarkFilled />;
@@ -86,7 +82,7 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
     }
 
     // clicked option should always become active option
-    setActiveOption(optionData);
+    activeDescendantController.focus(id);
 
     // close on option click for single-select options in a combobox
     if (!multiselect) {
@@ -137,10 +133,11 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       },
       elementType: 'span',
     }),
-    active,
     disabled,
-    focusVisible,
     multiselect,
     selected,
+    // no longer used
+    focusVisible: false,
+    active: false,
   };
 };
