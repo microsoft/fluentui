@@ -1,12 +1,12 @@
-import { colorPaletteTokens, colorStatusTokens } from '../alias/darkColorPalette';
-import { generateColorTokens } from '../alias/teamsDarkColor';
+import { colorPaletteTokens, colorStatusTokens } from '../alias/darkColorPalette.js';
+import { generateColorTokens } from '../alias/teamsDarkColor.js';
 
-import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths, fontWeights } from '../global/index';
-import { createShadowTokens } from './shadows';
+import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths, fontWeights } from '../global/index.js';
+import { createShadowTokens } from './shadows.js';
 import type { BrandVariants, Theme } from '../types';
-import { durations } from '../global/durations';
-import { curves } from '../global/curves';
-import { horizontalSpacings, verticalSpacings } from '../global/spacings';
+import { durations } from '../global/durations.js';
+import { curves } from '../global/curves.js';
+import { horizontalSpacings, verticalSpacings } from '../global/spacings.js';
 
 export const createTeamsDarkTheme: (brand: BrandVariants) => Theme = brand => {
   const colorTokens = generateColorTokens(brand);

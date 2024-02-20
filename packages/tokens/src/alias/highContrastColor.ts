@@ -11,7 +11,7 @@ import {
   hcHighlight,
   hcHighlightText,
   hcHyperlink,
-} from '../global/colors';
+} from '../global/colors.js';
 import type { ColorTokens } from '../types';
 
 export const generateColorTokens = (): ColorTokens => ({
