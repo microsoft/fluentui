@@ -6,6 +6,8 @@ export type SwatchPickerSlots = {
   root: Slot<'div'>;
 };
 
+export type SwatchPickerOnSelectEventHandler = EventHandler<SwatchPickerOnSelectionChangeData>;
+
 export type SwatchPickerOnSelectionChangeData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
   selectedValue: string;
   selectedColor: string;
