@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Remove import cycle between assertSlots.ts and index.ts",
-  "packageName": "@fluentui/react-utilities",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

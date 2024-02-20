@@ -2,6 +2,33 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Tue, 20 Feb 2024 14:22:26 GMT",
+      "tag": "@fluentui/react-tabster_v9.19.1",
+      "version": "9.19.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "d704cf6029e140eccb4505a3045a1fe119a1f69d",
+            "comment": "fix: focus-visible polyfill should only register in scope"
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "0d209623de09cf40a7328494b3b00dc9207cd170",
+            "comment": "Active modal checks if an element outside of it is a virtual child of a modal before setting aria-hidden.'"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.18.1",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Feb 2024 17:55:20 GMT",
       "tag": "@fluentui/react-tabster_v9.19.0",
       "version": "9.19.0",
