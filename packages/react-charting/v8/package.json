@@ -80,6 +80,7 @@
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },
-    "./README.md": "./README.md"
+    "./README.md": "./README.md",
+    "./package.json": "./package.json"
   }
 }
