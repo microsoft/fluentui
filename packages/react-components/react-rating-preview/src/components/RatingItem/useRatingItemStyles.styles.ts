@@ -2,6 +2,7 @@ import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RatingItemSlots, RatingItemState } from './RatingItem.types';
 import { tokens } from '@fluentui/react-theme';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 export const ratingItemClassNames: SlotClassNames<RatingItemSlots> = {
   root: 'fui-RatingItem',
@@ -17,6 +18,7 @@ export const ratingItemClassNames: SlotClassNames<RatingItemSlots> = {
 const useStyles = makeStyles({
   root: {
     position: 'relative',
+    ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
   },
   small: {
     fontSize: '12px',
