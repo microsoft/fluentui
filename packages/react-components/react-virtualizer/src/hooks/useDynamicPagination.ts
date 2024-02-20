@@ -65,12 +65,12 @@ export const useDynamicVirtualizerPagination = (
     if (Math.round(closestItem - lastIndexScrolled.current) === 0) {
       // Special case for go to next/previous with minimum amount of scroll needed
       const nextTarget = lastScrollPos.current < currentScrollPos ? 1 : -1;
+      // This will also handle a case where we scrolled to the exact correct position (noop)
       const isSecondaryScroll = Math.round(lastScrollPos.current - currentScrollPos) === 0;
       const posMod = isSecondaryScroll ? 0 : nextTarget;
       nextItem = closestItem + posMod;
     } else {
       // Pagination for anything else can just jump to the closest!
-      // This will also handle a case where we scrolled to the exact correct position (noop)
       nextItem = closestItem;
     }
 
