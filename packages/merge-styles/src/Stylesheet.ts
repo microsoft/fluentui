@@ -156,15 +156,6 @@ let _stylesheet: Stylesheet | undefined;
 const _getGlobal = (win?: Window): typeof _global => {
   return (win ?? _global) as typeof _global;
 };
-
-const getDocument = () => {
-  return typeof document === 'undefined' ? undefined : document;
-};
-
-const getWindow = () => {
-  return typeof window === 'undefined' ? undefined : window;
-};
-
 /**
  * Represents the state of styles registered in the page. Abstracts
  * the surface for adding styles to the stylesheet, exposes helpers
@@ -196,7 +187,7 @@ export class Stylesheet {
 
     _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
 
-    const doc = win?.document ?? getDocument();
+    const doc = win ? win.document : document;
 
     // When an app has multiple versions of Fluent v8 it is possible
     // that an older version of Stylesheet is initialized before
@@ -211,7 +202,7 @@ export class Stylesheet {
     ) {
       const fabricConfig = global?.FabricConfig || {};
       fabricConfig.mergeStyles = fabricConfig.mergeStyles || {};
-      fabricConfig.mergeStyles.window = fabricConfig.mergeStyles.window ?? win ?? getWindow();
+      fabricConfig.mergeStyles.window = fabricConfig.mergeStyles.window ?? win ?? window;
       fabricConfig.mergeStyles.inShadow = fabricConfig.mergeStyles.inShadow ?? inShadow;
       fabricConfig.mergeStyles.stylesheetKey = fabricConfig.mergeStyles.stylesheetKey ?? stylesheetKey;
 
@@ -224,10 +215,6 @@ export class Stylesheet {
 
       _stylesheet = stylesheet;
       global[STYLESHEET_SETTING] = _stylesheet;
-    }
-
-    if (global && (inShadow || stylesheetKey === GLOBAL_STYLESHEET_KEY)) {
-      _stylesheet.addAdoptableStyleSheet(stylesheetKey, _stylesheet.getAdoptableStyleSheet(stylesheetKey));
     }
 
     return _stylesheet;

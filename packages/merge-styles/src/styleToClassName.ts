@@ -264,7 +264,7 @@ export function styleToRegistration(options: IStyleOptions, ...args: IStyle[]): 
   const key = getKeyForRules(options, rules);
 
   if (key) {
-    const stylesheet = Stylesheet.getInstance(options.shadowConfig);
+    const stylesheet = options.stylesheet ?? Stylesheet.getInstance(options.shadowConfig);
     const registration: Partial<IRegistration> = {
       className: stylesheet.classNameFromKey(key),
       key,
