@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: add .js extension to all imports",
+  "packageName": "@fluentui/tokens",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
