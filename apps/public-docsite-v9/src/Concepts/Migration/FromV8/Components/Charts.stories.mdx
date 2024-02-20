@@ -4,16 +4,21 @@ import { Meta } from '@storybook/addon-docs';
 
 # Charts Migration Guide
 
-Fluent Chart controls are built on fluent v8 stack. But they work across v8 and v9 themes using the v8ThemeShim.
-Currently charts are brand invariant and don't require a BrandVariant palette.
-This would likely change as we onboard new products and their unique theme requirements.
-See below examples for different scenarios of using chart with v9 theme.
+`Fluent Charting` controls are built on fluent v8 stack.
+But they work across v8 and v9 themes using the v8ThemeShim.
 
-Refer aka.ms/fluentCharting for detailed component wise usage.
+Currently charts are brand invariant and don't require a BrandVariant palette to render correctly.
+This would evolve as we onboard new products and their unique theme requirements.
 
-Supporting all v9 concepts for charts is planned and coming soon.
+Richer integration with v9 components is WIP and coming soon.
+
 Complete [this](https://aka.ms/chartingv9survey) short survey to share your data viz scenarios for v9.
-You can also report any bugs
+
+See below examples for different v9 use cases with charts.
+
+Refer [Fluent v8 charts](https://aka.ms/fluentCharting) for detailed examples and code snippets of available charts.
+
+You can reach out to the charting team by tagging `@microsoft/charting-team` in [discussion](https://github.com/microsoft/fluentui/discussions) items.
 
 ## Examples
 
@@ -106,9 +111,9 @@ const customStyles: IVerticalStackedBarChartProps['styles'] = () => {
 };
 ```
 
-### Custom jsx element
+### Custom jsx control
 
-Wrap any custom jsx element like HoverCard, or Callout in an explicit FluentProvider contex.
+Wrap any custom jsx element like `HoverCard`, or `Callout` in an explicit `FluentProvider` context.
 
 ```tsx
 import { useBarChartHoverCardClasses } from './BarChartHoverCard.styles';
