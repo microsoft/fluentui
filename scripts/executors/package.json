@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "main": "index.js",
+  "bin": {
+    "generate-circular-dependencies-types": "./bin/generate-circular-dependencies-types.js"
+  },
   "scripts": {
     "format": "prettier -w --ignore-path ../../.prettierignore .",
     "format:check": "yarn format -c",
