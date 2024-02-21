@@ -23,6 +23,14 @@
         "useSpread": true
       }
     },
+    "experimental": {
+      "plugins": [
+        [
+          "@swc/plugin-transform-imports",
+          { "^(.*?)$": { "skipDefaultConversion": true, "transform": "{{matches.[1]}}.js" } }
+        ]
+      ]
+    },
     "target": "es2019"
   },
   "minify": false,
