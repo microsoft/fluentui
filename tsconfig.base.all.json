@@ -61,7 +61,7 @@
       "@fluentui/dom-utilities": ["packages/dom-utilities/src/index.ts"],
       "@fluentui/theme": ["packages/theme/src/index.ts"],
       "@fluentui/react-cards": ["packages/react-cards/src/index.ts"],
-      "@fluentui/react-charting": ["packages/react-charting/src/index.ts"],
+      "@fluentui/react-charting": ["packages/react-charting/v8/src/index.ts"],
       "@fluentui/react-window-provider": ["packages/react-window-provider/src/index.ts"],
       "@fluentui/react-icons-mdl2": ["packages/react-icons-mdl2/src/index.ts"],
       "@fluentui/react-icons-mdl2-branded": ["packages/react-icons-mdl2-branded/src/index.ts"],

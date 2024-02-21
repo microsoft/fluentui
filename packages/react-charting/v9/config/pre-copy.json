@@ -1,0 +1,5 @@
+{
+  "copyTo": {
+    "dist/demo": ["@fluentui/react-docsite-components/index.html"]
+  }
+}
