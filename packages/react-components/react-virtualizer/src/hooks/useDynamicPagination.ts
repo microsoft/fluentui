@@ -8,7 +8,7 @@ export const useDynamicVirtualizerPagination = (
 ) => {
   const { axis = 'vertical', currentIndex, progressiveItemSizes, virtualizerLength } = virtualizerProps;
 
-  const timeoutRef = useRef<number | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastScrollPos = useRef<number>(-1);
   const lastIndexScrolled = useRef<number>(-1);
 
