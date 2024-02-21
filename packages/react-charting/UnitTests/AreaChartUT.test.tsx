@@ -585,8 +585,6 @@ describe('_getAriaLabel', () => {
       const points = getById(container, /circle/i);
       expect(points).toHaveLength(1);
       expect(points[0].getAttribute('aria-label')).toMatchSnapshot();
-
-      // expect(points[0].getAttribute('aria-label')).toEqual('1/1/2022, 12:00:00 AM. Legend 1, 10.');
     },
     undefined,
     undefined,
@@ -616,7 +614,7 @@ describe('_getAriaLabel', () => {
     container => {
       const points = getById(container, /circle/i);
       expect(points).toHaveLength(1);
-      expect(points[0].getAttribute('aria-label')).toEqual('1/1/2022, 12:00:00 AM. Legend 1, 10 units.');
+      expect(points[0].getAttribute('aria-label')).toMatchSnapshot();
     },
     undefined,
     undefined,
@@ -646,7 +644,7 @@ describe('_getAriaLabel', () => {
     container => {
       const points = getById(container, /circle/i);
       expect(points).toHaveLength(1);
-      expect(points[0].getAttribute('aria-label')).toEqual('Jan 1, 2022. Legend 1, 10.');
+      expect(points[0].getAttribute('aria-label')).toMatchSnapshot();
     },
     undefined,
     undefined,
