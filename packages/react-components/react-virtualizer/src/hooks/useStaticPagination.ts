@@ -8,7 +8,7 @@ export const useStaticVirtualizerPagination = (
 ) => {
   const { itemSize, axis = 'vertical' } = virtualizerProps;
 
-  const timeoutRef = useRef<number | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastScrollPos = useRef<number>(0);
   const lastIndexScrolled = useRef<number>(0);
 
