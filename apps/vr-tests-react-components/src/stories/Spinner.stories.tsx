@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Spinner } from '@fluentui/react-spinner';
+import { Spinner, spinnerClassNames } from '@fluentui/react-spinner';
 import { tokens } from '@fluentui/react-theme';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 import { StoryWright, Steps } from 'storywright';
@@ -11,6 +11,10 @@ const useStyles = makeStyles({
     '& *': {
       animationPlayState: 'paused !important',
       animationDelay: '-1s !important',
+      animationDuration: '1.5s !important',
+    },
+    [`& .${spinnerClassNames.spinner}`]: {
+      animationDuration: '3s !important',
     },
   },
 });
