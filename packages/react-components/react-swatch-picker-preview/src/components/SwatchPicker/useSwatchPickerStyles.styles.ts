@@ -26,6 +26,11 @@ const useStyles = makeStyles({
     flexDirection: 'row',
     columnGap: `var(${gridGap})`,
   },
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: `repeat(var(--fui-SwatchPicker--columnCount), var(--fui-SwatchPicker--cellSize))`,
+    ...shorthands.gap(`var(${gridGap})`),
+  },
 });
 
 /**
@@ -33,7 +38,8 @@ const useStyles = makeStyles({
  */
 export const useSwatchPickerStyles_unstable = (state: SwatchPickerState): SwatchPickerState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(swatchPickerClassNames.root, styles.root, styles.row, state.root.className);
+  const layoutStyle = state.layout === 'grid' ? styles.grid : styles.row;
+  state.root.className = mergeClasses(swatchPickerClassNames.root, styles.root, layoutStyle, state.root.className);
 
   return state;
 };

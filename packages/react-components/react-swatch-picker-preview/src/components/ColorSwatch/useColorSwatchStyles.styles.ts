@@ -45,6 +45,9 @@ const useButtonStyles = makeResetStyles({
   boxSizing: 'border-box',
   margin: 0,
   opacity: 0,
+  ':hover': {
+    cursor: 'pointer',
+  },
 });
 
 const useStylesSelected = makeStyles({

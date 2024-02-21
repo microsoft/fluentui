@@ -19,6 +19,7 @@ export const useColorSwatch_unstable = (
   ref: React.Ref<HTMLButtonElement>,
 ): ColorSwatchState => {
   const { color, value } = props;
+  const layout = useSwatchPickerContextValue_unstable(ctx => ctx.layout);
   const size = useSwatchPickerContextValue_unstable(ctx => ctx.size);
   const shape = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
 
@@ -32,10 +33,20 @@ export const useColorSwatch_unstable = (
     }),
   );
 
+  const role = layout === 'grid' ? 'gridcell' : 'radio';
+  const a11yProps =
+    layout === 'grid'
+      ? {
+          'aria-selected': selected,
+        }
+      : {
+          'aria-checked': selected,
+        };
+
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'button',
-    excludedPropNames: ['value', 'color'],
+    excludedPropNames: ['value', 'color', 'role'],
   });
 
   const rootVariables = {
@@ -45,8 +56,8 @@ export const useColorSwatch_unstable = (
   const root = slot.always(props.root, {
     defaultProps: {
       ref: useFocusWithin<HTMLDivElement>(),
-      role: props.role ?? 'radio',
-      'aria-selected': selected,
+      role: props.role ?? role,
+      ...a11yProps,
       ...nativeProps.root,
     },
     elementType: 'div',

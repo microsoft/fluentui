@@ -17,7 +17,7 @@ describe('SwatchPicker', () => {
           class="fui-SwatchPicker"
           data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":0,\\"memorizeCurrent\\":true}}"
           role="radiogroup"
-          style="--fui-SwatchPicker--columnCount: 3; --fui-SwatchPicker--cellSize: 28px; --fui-SwatchPicker--gridGap: 4px;"
+          style="--fui-SwatchPicker--columnCount: 2; --fui-SwatchPicker--cellSize: 28px; --fui-SwatchPicker--gridGap: 4px;"
         />
       </div>
     `);

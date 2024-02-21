@@ -18,9 +18,20 @@ export type SwatchPickerOnSelectionChangeData = EventData<'click', React.MouseEv
  */
 export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
   /**
+   * Number of columns in grid layout
+   */
+  columnCount?: number;
+
+  /**
    * Default selected value
    */
   defaultSelectedValue?: string;
+
+  /**
+   * SwatchPicker layout
+   * @defaultvalue 'row'
+   */
+  layout?: 'grid' | 'row';
 
   /**
    * Triggers a callback when the value has been changed
@@ -43,6 +54,12 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
    * @defaultvalue 'square'
    */
   shape?: 'rounded' | 'square' | 'circular';
+
+  /**
+   * Spacing between swatches
+   * @defaultvalue 'medium'
+   */
+  spacing?: 'small' | 'medium';
 };
 
 /**
@@ -50,4 +67,4 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
  */
 export type SwatchPickerState = ComponentState<SwatchPickerSlots> &
   SwatchPickerContextValue &
-  Pick<SwatchPickerProps, 'size' | 'shape'>;
+  Pick<SwatchPickerProps, 'layout' | 'size' | 'shape' | 'spacing'>;

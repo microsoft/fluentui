@@ -31,10 +31,19 @@ export const useSwatchPicker_unstable = (
   props: SwatchPickerProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
-  const { role, onSelectionChange, size = 'medium', shape, ...rest } = props;
+  const {
+    columnCount = 2,
+    layout,
+    role,
+    onSelectionChange,
+    size = 'medium',
+    shape,
+    spacing = 'medium',
+    ...rest
+  } = props;
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
-    axis: 'both',
+    axis: layout === 'grid' ? 'grid-linear' : 'both',
     memorizeCurrent: true,
   });
 
@@ -61,12 +70,13 @@ export const useSwatchPicker_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
-        role: 'radiogroup',
+        role: layout === 'grid' ? 'grid' : 'radiogroup',
         ...focusAttributes,
         ...rest,
       }),
       { elementType: 'div' },
     ),
+    layout,
     requestSelectionChange,
     selectedValue,
     size,
@@ -75,9 +85,9 @@ export const useSwatchPicker_unstable = (
 
   // Root props
   state.root.style = {
-    [columnCountGrid]: 3,
+    [columnCountGrid]: columnCount,
     [cellSize]: sizeMap[size],
-    [gridGap]: spacingMap.medium,
+    [gridGap]: spacingMap[spacing],
     ...state.root.style,
   };
 
