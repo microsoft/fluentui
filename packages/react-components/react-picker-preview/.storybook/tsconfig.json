@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "",
+    "allowJs": true,
+    "checkJs": true,
+    "types": ["static-assets", "environment", "storybook__addons"]
+  },
+  "include": ["../stories/**/*.stories.ts", "../stories/**/*.stories.tsx", "*.js"]
+}

@@ -8,6 +8,7 @@ import { useKeyborg } from './useKeyborg';
  * in the keyboard navigation mode.
  *
  * @param callback - called every time the keyboard navigation state changes
+ * @returns - function to update keyboard navigation mode manually
  */
 export function useOnKeyboardNavigationChange(callback: (isNavigatingWithKeyboard: boolean) => void) {
   const keyborg = useKeyborg();
