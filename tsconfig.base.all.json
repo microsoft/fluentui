@@ -110,6 +110,7 @@
       "@fluentui/react-drawer": ["packages/react-components/react-drawer/src/index.ts"],
       "@fluentui/react-field": ["packages/react-components/react-field/src/index.ts"],
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
+      "@fluentui/react-icons-compat": ["packages/react-components/react-icons-compat/src/index.ts"],
       "@fluentui/react-image": ["packages/react-components/react-image/src/index.ts"],
       "@fluentui/react-infobutton": ["packages/react-components/react-infobutton/src/index.ts"],
       "@fluentui/react-infolabel": ["packages/react-components/react-infolabel/src/index.ts"],
@@ -173,7 +174,7 @@
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-icons-compat": ["packages/react-components/react-icons-compat/src/index.ts"]
+      "@fluentui/react-tag-picker-preview": ["packages/react-components/react-tag-picker-preview/src/index.ts"]
     }
   }
 }

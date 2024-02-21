@@ -57,7 +57,7 @@ export type BreadcrumbDividerSlots = {
 };
 
 // @public
-export type BreadcrumbDividerState = ComponentState<BreadcrumbDividerSlots>;
+export type BreadcrumbDividerState = ComponentState<BreadcrumbDividerSlots> & Pick<BreadcrumbProps, 'size'>;
 
 // @public
 export const BreadcrumbItem: ForwardRefComponent<BreadcrumbItemProps>;

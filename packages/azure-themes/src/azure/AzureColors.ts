@@ -215,7 +215,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     },
     icon: {
       success: BaseColors.GREEN_57A300,
-      error: BaseColors.RED_E00B1C,
+      error: BaseColors.RED_F1707B,
       warning: BaseColors.ORANGE_DB7500,
       information: BaseColors.BLUE_015CDA,
       upsell: BaseColors.PURPLE_8A2DA5,

@@ -74,7 +74,7 @@
     "@babel/types": "7.23.6",
     "@cactuslab/usepubsub": "^1.0.2",
     "@ctrl/tinycolor": "3.3.4",
-    "@cypress/react": "5.12.4",
+    "@cypress/react": "8.0.0",
     "@cypress/webpack-dev-server": "1.8.3",
     "@fluentui/react-icons": "^2.0.224",
     "@griffel/babel-preset": "1.4.20",
@@ -203,8 +203,8 @@
     "copy-webpack-plugin": "8.1.0",
     "cross-env": "^5.1.4",
     "css-loader": "5.0.1",
-    "cypress": "10.6.0",
-    "cypress-real-events": "1.7.1",
+    "cypress": "13.6.4",
+    "cypress-real-events": "1.11.0",
     "cypress-storybook": "0.5.1",
     "danger": "^11.0.0",
     "dedent": "0.7.0",
@@ -379,5 +379,8 @@
     "swc-loader": "^0.2.3",
     "prettier": "2.8.8",
     "puppeteer": "19.6.0"
+  },
+  "nx": {
+    "includedScripts": []
   }
 }

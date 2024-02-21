@@ -91,6 +91,7 @@
       "@fluentui/react-table": ["packages/react-components/react-table/src/index.ts"],
       "@fluentui/react-tabs": ["packages/react-components/react-tabs/src/index.ts"],
       "@fluentui/react-tabster": ["packages/react-components/react-tabster/src/index.ts"],
+      "@fluentui/react-tag-picker-preview": ["packages/react-components/react-tag-picker-preview/src/index.ts"],
       "@fluentui/react-tags": ["packages/react-components/react-tags/src/index.ts"],
       "@fluentui/react-teaching-popover-preview": [
         "packages/react-components/react-teaching-popover-preview/src/index.ts"

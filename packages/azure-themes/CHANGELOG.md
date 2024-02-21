@@ -1,8 +1,27 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Wed, 07 Feb 2024 07:26:19 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Feb 2024 07:25:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.61](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.61)
+
+Thu, 15 Feb 2024 07:25:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.60..@fluentui/azure-themes_v8.6.61)
+
+### Patches
+
+- pivot background color on hover ([PR #30408](https://github.com/microsoft/fluentui/pull/30408) by 30805892+Jacqueline-ms@users.noreply.github.com)
+- updated icon color of status bar to meet accessibility requirements ([PR #30535](https://github.com/microsoft/fluentui/pull/30535) by aorantes@microsoft.com)
+
+## [8.6.60](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.60)
+
+Mon, 12 Feb 2024 07:25:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.59..@fluentui/azure-themes_v8.6.60)
+
+### Patches
+
+- Bump @fluentui/react to v8.115.6 ([PR #30486](https://github.com/microsoft/fluentui/pull/30486) by beachball)
 
 ## [8.6.59](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.59)
 

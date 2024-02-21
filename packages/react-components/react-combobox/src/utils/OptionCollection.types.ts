@@ -13,20 +13,26 @@ export type OptionValue = {
 };
 
 export type OptionCollectionState = {
+  /**
+   * @deprecated - no longer used internally
+   */
+  getIndexOfId(id: string): number;
+
+  /**
+   * @deprecated - no longer used internally
+   */
+  getOptionAtIndex(index: number): OptionValue | undefined;
+
+  /**
+   * @deprecated - no longer used internally
+   */
+  getOptionsMatchingText(matcher: (text: string) => boolean): OptionValue[];
+
   /** The total number of options in the collection. */
   getCount: () => number;
 
-  /** Returns the index of an option by key. */
-  getIndexOfId(id: string): number;
-
-  /** Returns the option data for the nth option. */
-  getOptionAtIndex(index: number): OptionValue | undefined;
-
   /** Returns the option data by key. */
   getOptionById(id: string): OptionValue | undefined;
-
-  /** Returns an array of options filtered by a value matching function against the option's text string. */
-  getOptionsMatchingText(matcher: (text: string) => boolean): OptionValue[];
 
   /** Returns an array of options filtered by a value matching function against the option's value string. */
   getOptionsMatchingValue(matcher: (value: string) => boolean): OptionValue[];

@@ -1,4 +1,4 @@
 import * as React from 'react';
-import { ColorSwatch, ColorSwatchProps } from '@fluentui/react-swatch-picker-preview';
+import { ColorSwatch } from '@fluentui/react-swatch-picker-preview';
 
-export const Default = (props: Partial<ColorSwatchProps>) => <ColorSwatch {...props} />;
+export const Default = () => <ColorSwatch color="red" value="red-color" />;

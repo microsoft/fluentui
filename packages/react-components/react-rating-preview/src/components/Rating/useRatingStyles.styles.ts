@@ -1,4 +1,3 @@
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RatingSlots, RatingState } from './Rating.types';
@@ -13,7 +12,6 @@ export const ratingClassNames: SlotClassNames<RatingSlots> = {
 
 const useRootClassName = makeResetStyles({
   display: 'flex',
-  ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
 });
 
 /**
