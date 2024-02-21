@@ -68,13 +68,13 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
 
 ```jsx
 <SwatchPicker aria-label="Font color" layout="grid" columnCount={3}>
-  <ColorSwatch color="#FF1921" value="#FF1921" aria-label="Red" />
-  <ColorSwatch color="#FFC12E" value="#FFC12E" aria-label="Orange" />
-  <ColorSwatch color="FEFF37" value="#FEFF37" aria-label="Yellow" />
-  <ColorSwatch color="00B053" value="#00B053" aria-label="Green" />
-  <ColorSwatch color="00AFED" value="#00AFED" aria-label="Light Blue" />
-  <ColorSwatch color="006EBD" value="#006EBD" aria-label="Blue" />
-  <ColorSwatch color="712F9E" value="#712F9E" aria-label="Purple" icon={<SomeIcon />} />
+  <ColorSwatch color="#FF1921" value="FF1921" aria-label="Red" />
+  <ColorSwatch color="#FFC12E" value="FFC12E" aria-label="Orange" />
+  <ColorSwatch color="FEFF37" value="FEFF37" aria-label="Yellow" />
+  <ColorSwatch color="00B053" value="00B053" aria-label="Green" />
+  <ColorSwatch color="00AFED" value="00AFED" aria-label="Light Blue" />
+  <ColorSwatch color="006EBD" value="006EBD" aria-label="Blue" />
+  <ColorSwatch color="712F9E" value="712F9E" aria-label="Purple" icon={<SomeIcon />} />
   <ImageSwatch src="./path/image1.png" value="space-craft-img" disabled aria-label="Space craft" />
   <ImageSwatch src="./path/image2.png" value="planets-img" aria-label="Planets" />
 </SwatchPicker>
@@ -138,16 +138,16 @@ Custom size can be set by overriding `width` and `height` of the ColorSwatch or 
 
 ### SwatchPicker
 
-| Property             | Values                                   | Default   | Purpose                                |
-| -------------------- | ---------------------------------------- | --------- | -------------------------------------- |
-| disabled             | `boolean`                                | `false`   | Whether SwatchPicker is disabled       |
-| layout               | `grid: GridProps, row: RowProps`         | `row`     | Sets layout of the SwatchPicker        |
-| onChange             | `function`                               | undefined | Callback called when color is selected |
-| shape                | `square`, `circular`, `rounded`          | `square`  | Sets shape                             |
-| size                 | `extraSmall`, `small`, `medium`, `large` | `medium`  | Defines size of the Swatch cell        |
-| spacing              | `small`, `medium`                        | `medium`  | Sets spacing between rows and cells    |
-| selectedValue        | `string`                                 |           | Selected swatch                        |
-| defaultSelectedValue | `string`                                 |           | Default selected swatch                |
+| Property             | Values                                   | Default   | Purpose                                 |
+| -------------------- | ---------------------------------------- | --------- | --------------------------------------- |
+| disabled             | `boolean`                                | `false`   | Whether SwatchPicker is disabled        |
+| layout               | `grid: GridProps, row: RowProps`         | `row`     | Sets layout of the SwatchPicker         |
+| onSelectionChange    | `function`                               | undefined | Callback called when swatch is selected |
+| shape                | `square`, `circular`, `rounded`          | `square`  | Sets shape                              |
+| size                 | `extraSmall`, `small`, `medium`, `large` | `medium`  | Defines size of the Swatch cell         |
+| spacing              | `small`, `medium`                        | `medium`  | Sets spacing between rows and cells     |
+| selectedValue        | `string`                                 |           | Selected swatch                         |
+| defaultSelectedValue | `string`                                 |           | Default selected swatch                 |
 
 Note:
 For layout union type is used. Grid layout should have `columnCount` prop and Row laout an be responsive.
@@ -175,11 +175,12 @@ type RowProps = {
 | disabled | `boolean`                                |          |                                  |
 | value    | `string`                                 |          | Unique value of the swatch       |
 
-| Slots        | Values   | Default  | Description                         |
-| ------------ | -------- | -------- | ----------------------------------- |
-| root         | `button` | `button` | The root of the ColorSwatch element |
-| icon         | `span`   | `span`   | Swatch with icon                    |
-| disabledIcon | `span`   | `span`   | Disabled icon                       |
+| Slots        | Values   | Default  | Description                                                             |
+| ------------ | -------- | -------- | ----------------------------------------------------------------------- |
+| root         | `div`    | `div`    | The root of the ColorSwatch element (contains accessibility attributes) |
+| button       | `button` | `button` | Button element as primary slot                                          |
+| icon         | `span`   | `span`   | Swatch with icon                                                        |
+| disabledIcon | `span`   | `span`   | Disabled icon                                                           |
 
 ### ImageSwatch
 
@@ -191,11 +192,12 @@ type RowProps = {
 | disabled | `boolean`                                |          |                                 |
 | value    | `string`                                 |          | Unique value of the swatch      |
 
-| Slots        | Values   | Default  | Description                         |
-| ------------ | -------- | -------- | ----------------------------------- |
-| root         | `button` | `button` | The root of the ColorSwatch element |
-| icon         | `span`   | `span`   | Swatch with icon                    |
-| disabledIcon | `span`   | `span`   | Disabled icon                       |
+| Slots        | Values   | Default  | Description                                                             |
+| ------------ | -------- | -------- | ----------------------------------------------------------------------- |
+| root         | `button` | `button` | The root of the ImageSwatch element (contains accessibility attributes) |
+| button       | `button` | `button` | Button element as primary slot                                          |
+| icon         | `span`   | `span`   | Swatch with icon                                                        |
+| disabledIcon | `span`   | `span`   | Disabled icon                                                           |
 
 ### EmptySwatch
 
@@ -243,25 +245,26 @@ is used for picking colors:
 #### DOM
 
 ```HTML
-<button
+<div
   role="radio"
   aria-selected="true"
   style="--fui-SwatchPicker--color: #ff0099"
-  aria-label="Pink"
   class="fui-ColorSwatch"
 >
-</button>
-<button
+  <button aria-label="Pink"></button>
+</div>
+<div
   role="radio"
-  aria-selected="false"
+  aria-selected="true"
   style="--fui-SwatchPicker--color: #ff0000"
-  aria-label="Yellow with icon"
   class="fui-ColorSwatch"
 >
-  <span class="fui-ColorSwatch__icon r0">
-    <!-- Icon rendered here -->
-  </span>
-</button>
+  <button aria-label="Yellow with icon">
+    <span class="fui-ColorSwatch__icon r0">
+      <!-- Icon rendered here -->
+    </span>
+  </button>
+</div>
 ```
 
 #### ImageSwatch component
