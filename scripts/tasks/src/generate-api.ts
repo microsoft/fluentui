@@ -10,12 +10,12 @@ export function generateApi() {
 }
 
 function generateTypeDeclarations() {
-  const { isUsingPathAliasesForDx, tsConfigFileForCompilation } = getTsPathAliasesConfigUsedOnlyForDx();
+  const { /* isUsingPathAliasesForDx, */ tsConfigFileForCompilation } = getTsPathAliasesConfigUsedOnlyForDx();
   const cmd = [
     'tsc',
     `-p ./${tsConfigFileForCompilation}`,
     '--emitDeclarationOnly',
-    isUsingPathAliasesForDx ? '--baseUrl .' : null,
+    // isUsingPathAliasesForDx ? '--baseUrl .' : null,
   ]
     .filter(Boolean)
     .join(' ');
