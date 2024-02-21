@@ -40,27 +40,27 @@ async function mainV2() {
       return dep.target;
     }),
   );
-  // every package having stories depends on workspace addons
-  packageDeps.add('@fluentui/react-storybook-addon-export-to-sandbox');
 
   const ghostDependencies = getGhostDependencies(tree, projectConfig, packageDeps, nxGraph);
 
-  if (ghostDependencies.length === 0) {
+  if (ghostDependencies.size === 0) {
     return;
   }
+
+  const ghostDependenciesArr = Array.from(ghostDependencies);
 
   console.info(
     '',
     `💁: generating .d.ts files first in order to drastically speed up type-check command for v9 packages:\n`,
-    ' - ' + ghostDependencies.join('\n - '),
+    ' - ' + ghostDependenciesArr.join('\n - '),
     '',
   );
 
-  const cmd = `yarn lage build --to ${ghostDependencies.join(' ')}`;
+  const cmd = `yarn lage build --to ${ghostDependenciesArr.join(' ')}`;
 
   console.info('', '🏃:' + ` ${cmd}`, '');
 
-  execSync(cmd);
+  return execSync(cmd, { stdio: 'inherit' });
 }
 
 /**
@@ -74,10 +74,15 @@ function getImportPaths(tree, filePath) {
   const ast = tsquery.ast(fileContent);
   /** @type {import("typescript").ImportDeclaration[]} */
   const importNodes = tsquery.match(ast, 'ImportDeclaration');
-
   const importPaths = importNodes.map(node => node.moduleSpecifier.getText().replace(/['"]/g, ''));
 
-  return importPaths;
+  /** @type {import("typescript").CallExpression[]} */
+  const requireNodes = tsquery.match(ast, 'CallExpression[expression.name="require"]');
+  const requirePaths = requireNodes.map(
+    node => /** @type {import("typescript").StringLiteral} */ (node.arguments[0]).text,
+  );
+
+  return [...importPaths, ...requirePaths];
 }
 
 /**
@@ -107,6 +112,32 @@ function getImportsFromStories(tree, projectConfig) {
 }
 
 /**
+ *
+ * @param {import('@nx/devkit').Tree} tree
+ * @param {import('@nx/devkit').ProjectConfiguration} projectConfig
+ * @returns
+ */
+function getImportsFromStorybookConfig(tree, projectConfig) {
+  const storybookConfigDir = joinPathFragments(projectConfig.root, '.storybook');
+
+  /**
+   * @type {string[]}
+   */
+  const imports = [];
+
+  visitNotIgnoredFiles(tree, storybookConfigDir, file => {
+    if (!(file.endsWith('.js') || file.endsWith('.stories.ts'))) {
+      return;
+    }
+
+    const importPaths = getImportPaths(tree, file);
+    imports.push(...importPaths);
+  });
+
+  return new Set(imports);
+}
+
+/**
  * @param {import('@nx/devkit').ProjectConfiguration} project
  */
 function isVNextProject(project) {
@@ -121,17 +152,26 @@ function isVNextProject(project) {
  * @param {import('@nx/devkit').ProjectGraph} nxGraph
  */
 function getGhostDependencies(tree, projectConfig, packageDeps, nxGraph) {
+  const sbConfigImports = getImportsFromStorybookConfig(tree, projectConfig);
   const imports = getImportsFromStories(tree, projectConfig);
 
-  /** @type {string[]} */
-  const workspaceImports = [];
+  /** @type {Set<string>} */
+  const workspaceImports = new Set();
 
   imports.forEach(importPath => {
     const isWorkspaceDependency = nxGraph.nodes[importPath];
     const isDefinedPackageDependency = packageDeps.has(importPath);
 
     if (isWorkspaceDependency && !isDefinedPackageDependency) {
-      workspaceImports.push(importPath);
+      workspaceImports.add(importPath);
+    }
+  });
+
+  sbConfigImports.forEach(importPath => {
+    // TODO: this is a naive/temporary approach - we need to parse those files that are imported and gather imports in those
+    if (importPath.endsWith('../.storybook/main') || importPath.endsWith('../.storybook/preview')) {
+      // every package having stories depends on workspace addons
+      workspaceImports.add('@fluentui/react-storybook-addon-export-to-sandbox');
     }
   });
 
