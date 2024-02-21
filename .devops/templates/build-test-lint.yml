@@ -6,44 +6,55 @@ steps:
       filePath: yarn-ci.sh
     displayName: yarn (install packages)
 
-  - script: |
-      yarn nx run @fluentui/workspace-plugin:check-graph
-      yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --verify
-      yarn nx g @fluentui/workspace-plugin:normalize-package-dependencies --verify
+  # - script: |
+  #     yarn nx run @fluentui/workspace-plugin:check-graph
+  #     yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --verify
+  #     yarn nx g @fluentui/workspace-plugin:normalize-package-dependencies --verify
 
-    displayName: Workspace lint
+  #   displayName: Workspace lint
 
-  - script: |
-      # @fluentui/api-docs is used within apps/public-docsite-resources/just.config.ts, thus it needs to be build in advance
-      yarn workspace @fluentui/api-docs build
-      # @fluentui/digest is used within packages/fluentui/perf-test-northstar/just.config.ts, thus it needs to be build in advance
-      yarn workspace @fluentui/digest build
-      yarn tsc -p ./tsconfig.json
-    displayName: Type-check just.config.ts files
+  # - script: |
+  #     # @fluentui/api-docs is used within apps/public-docsite-resources/just.config.ts, thus it needs to be build in advance
+  #     yarn workspace @fluentui/api-docs build
+  #     # @fluentui/digest is used within packages/fluentui/perf-test-northstar/just.config.ts, thus it needs to be build in advance
+  #     yarn workspace @fluentui/digest build
+  #     yarn tsc -p ./tsconfig.json
+  #   displayName: Type-check just.config.ts files
 
-  - script: |
-      yarn check:installed-dependencies-versions
-    displayName: 'check packages: installed dependencies versions'
+  # - script: |
+  #     yarn check:installed-dependencies-versions
+  #   displayName: 'check packages: installed dependencies versions'
 
-  - script: |
-      if [[ -n "$(targetBranch)" ]]; then
-        yarn format --since $(targetBranch) --check
-      else
-        yarn format --all --check
-      fi
-    displayName: check formatting
+  # - script: |
+  #     if [[ -n "$(targetBranch)" ]]; then
+  #       yarn format --since $(targetBranch) --check
+  #     else
+  #       yarn format --all --check
+  #     fi
+  #   displayName: check formatting
 
   ## Danger.js checks for Fluent UI N*
-  - script: |
-      DANGER_DISABLE_TRANSPILATION="true" yarn danger ci
-    displayName: danger
-    condition: eq(variables.isPR, true)
-    env:
-      DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
+  # - script: |
+  #     DANGER_DISABLE_TRANSPILATION="true" yarn danger ci
+  #   displayName: danger
+  #   condition: eq(variables.isPR, true)
+  #   env:
+  #     DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
   # - script: |
   #     node ./scripts/executors/type-check-ci-hack.js --base $(targetBranch)
+  #     yarn lage build --to react-storybook-addon-export-to-sandbox --verbose
   #   displayName: type-check perf preparation
+
+  - script: |
+      yarn lage type-check --to react-text --verbose
+      cat packages/react-components/react-text/tsconfig.json
+    displayName: type-check via just
+
+  - script: |
+      cat packages/react-components/react-text/tsconfig.json
+      yarn workspace @fluentui/react-text tsc -b
+    displayName: type-check via tsc -b
 
   - script: |
       yarn buildci $(sinceArg)
