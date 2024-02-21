@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: MenuPopover should stay open for submenu even when not openOnHover",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: remove component assignment from prop destructuring",
-  "packageName": "@fluentui/react-rating-preview",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

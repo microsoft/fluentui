@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComboboxState } from '../Combobox';
-import { ComboboxBaseContextValues, ComboboxBaseState } from '../utils/ComboboxBase.types';
+import type { ComboboxBaseContextValues, ComboboxBaseState } from '../utils/ComboboxBase.types';
 
 export function useComboboxContextValues(
   state: ComboboxBaseState & Pick<ComboboxState, 'activeDescendantController'>,

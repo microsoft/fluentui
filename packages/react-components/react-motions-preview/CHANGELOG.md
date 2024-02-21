@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-motions-preview
 
-This log was last generated on Tue, 30 Jan 2024 23:16:54 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Feb 2024 14:22:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motions-preview_v0.2.0)
+
+Tue, 20 Feb 2024 14:22:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motions-preview_v0.1.1..@fluentui/react-motions-preview_v0.2.0)
+
+### Minor changes
+
+- BREAKING: rename createAtom() to createMotionComponent() & createPresence() to createPresenceMotion() ([PR #30550](https://github.com/microsoft/fluentui/pull/30550) by olfedias@microsoft.com)
+- BREAKING: remove exports for atom & presence definitions ([PR #30548](https://github.com/microsoft/fluentui/pull/30548) by olfedias@microsoft.com)
+- Bump @fluentui/react-utilities to v9.18.1 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+
+### Patches
+
+- feat: add onMotionFinish() callback to createPresenceComponent() ([PR #30529](https://github.com/microsoft/fluentui/pull/30529) by olfedias@microsoft.com)
+- feat: add PresenceGroup component ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by olfedias@microsoft.com)
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-motions-preview_v0.1.1)
 

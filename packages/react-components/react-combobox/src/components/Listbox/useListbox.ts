@@ -12,10 +12,10 @@ import {
   useActiveDescendantContext,
   useHasParentActiveDescendantContext,
 } from '@fluentui/react-aria';
+import type { ListboxProps, ListboxState } from './Listbox.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useOptionCollection } from '../../utils/useOptionCollection';
 import { useSelection } from '../../utils/useSelection';
-import type { ListboxProps, ListboxState } from './Listbox.types';
 import { optionClassNames } from '../Option/useOptionStyles.styles';
 import { ListboxContext, useListboxContext_unstable } from '../../contexts/ListboxContext';
 
@@ -91,12 +91,12 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   };
 
   // get state from parent combobox, if it exists
-  const hasComboboxContext = useHasParentContext(ListboxContext);
+  const hasListboxContext = useHasParentContext(ListboxContext);
   const contextSelectedOptions = useListboxContext_unstable(ctx => ctx.selectedOptions);
   const contextSelectOption = useListboxContext_unstable(ctx => ctx.selectOption);
 
   // without a parent combobox context, provide values directly from Listbox
-  const optionContextValues = hasComboboxContext
+  const optionContextValues = hasListboxContext
     ? {
         selectedOptions: contextSelectedOptions,
         selectOption: contextSelectOption,

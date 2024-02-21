@@ -64,7 +64,7 @@ export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>
     children?: React_2.ReactNode;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const ComboboxProvider: Provider<ComboboxContextValue> & FC<ProviderProps<ComboboxContextValue>>;
 
 // @public (undocumented)

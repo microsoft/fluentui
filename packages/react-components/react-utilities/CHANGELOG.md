@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 30 Jan 2024 23:16:54 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Feb 2024 14:22:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.1)
+
+Tue, 20 Feb 2024 14:22:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.0..@fluentui/react-utilities_v9.18.1)
+
+### Patches
+
+- fix: Remove import cycle between assertSlots.ts and index.ts ([PR #30555](https://github.com/microsoft/fluentui/pull/30555) by behowell@microsoft.com)
 
 ## [9.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.0)
 

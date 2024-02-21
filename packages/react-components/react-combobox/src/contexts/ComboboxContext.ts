@@ -19,6 +19,10 @@ export type ComboboxContextValue = Pick<
   selectOption: ComboboxState['selectOption'];
 };
 
+/**
+ * @deprecated - use ListboxContext instead
+ * @see ListboxContext
+ */
 // eslint-disable-next-line @fluentui/no-context-default-value
 export const ComboboxContext = createContext<ComboboxContextValue>({
   activeOption: undefined,
@@ -41,4 +45,10 @@ export const ComboboxContext = createContext<ComboboxContextValue>({
   size: 'medium',
 });
 
+/**
+ * @deprecated - render ListboxProvider instead
+ * @see ListboxProvider
+ * @see useListboxContext_unstable
+ */
+// eslint-disable-next-line deprecation/deprecation
 export const ComboboxProvider = ComboboxContext.Provider;

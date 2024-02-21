@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor: update activedescendant management from combobox",
-  "packageName": "@fluentui/react-timepicker-compat",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

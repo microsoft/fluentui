@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: add onMotionFinish() callback to createPresenceComponent()",
-  "packageName": "@fluentui/react-motions-preview",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

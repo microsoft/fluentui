@@ -92,7 +92,8 @@ export type ComboboxBaseState = Required<
     activeOption?: OptionValue;
 
     /**
-     * @deprecated - no longer used internally
+     * @deprecated - no longer used internally and handled automatically be activedescendant utilities
+     * @see ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE for writing styles involving focusVisible
      */
     focusVisible: boolean;
 
@@ -108,7 +109,8 @@ export type ComboboxBaseState = Required<
     setActiveOption: React.Dispatch<React.SetStateAction<OptionValue | undefined>>;
 
     /**
-     * @deprecated - no longer used internally
+     * @deprecated - no longer used internally and handled automatically be activedescendant utilities
+     * @see useSetKeyboardNavigation for imperatively setting focus visible state
      */
     setFocusVisible(focusVisible: boolean): void;
 

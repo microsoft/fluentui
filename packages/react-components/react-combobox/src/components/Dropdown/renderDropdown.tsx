@@ -19,6 +19,7 @@ export const renderDropdown_unstable = (state: DropdownState, contextValues: Dro
     <state.root>
       <ActiveDescendantContextProvider value={contextValues.activeDescendant}>
         <ListboxContext.Provider value={contextValues.listbox}>
+          {/*eslint-disable-next-line deprecation/deprecation*/}
           <ComboboxContext.Provider value={contextValues.combobox}>
             <state.button>
               {state.button.children}
@@ -33,6 +34,7 @@ export const renderDropdown_unstable = (state: DropdownState, contextValues: Dro
                   <state.listbox />
                 </Portal>
               ))}
+            {/*eslint-disable-next-line deprecation/deprecation*/}
           </ComboboxContext.Provider>
         </ListboxContext.Provider>
       </ActiveDescendantContextProvider>
