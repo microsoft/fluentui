@@ -5,6 +5,7 @@ import type { ComboboxContextValue } from '../contexts/ComboboxContext';
 import type { OptionValue, OptionCollectionState } from '../utils/OptionCollection.types';
 import { SelectionProps, SelectionState } from '../utils/Selection.types';
 import { PortalProps } from '@fluentui/react-portal';
+import { ListboxContextValue } from '../contexts/ListboxContext';
 
 /**
  * ComboboxBase Props
@@ -87,12 +88,12 @@ export type ComboboxBaseState = Required<
   SelectionState & {
     /**
      * @deprecated - no longer used internally
-     * @see activeDescendantController.active() instead
      */
     activeOption?: OptionValue;
 
     /**
-     * @deprecated - no longer used internally
+     * @deprecated - no longer used internally and handled automatically be activedescendant utilities
+     * @see ACTIVEDESCENDANT_FOCUSVISIBLE_ATTRIBUTE for writing styles involving focusVisible
      */
     focusVisible: boolean;
 
@@ -104,22 +105,27 @@ export type ComboboxBaseState = Required<
 
     /**
      * @deprecated - no longer used internally
-     * @see activeDescendantController.focus(id) instead
      */
     setActiveOption: React.Dispatch<React.SetStateAction<OptionValue | undefined>>;
+
+    /**
+     * @deprecated - no longer used internally and handled automatically be activedescendant utilities
+     * @see useSetKeyboardNavigation for imperatively setting focus visible state
+     */
+    setFocusVisible(focusVisible: boolean): void;
 
     /**
      * whether the combobox/dropdown currently has focus
      */
     hasFocus: boolean;
 
-    setFocusVisible(focusVisible: boolean): void;
-
     setHasFocus(hasFocus: boolean): void;
 
     setOpen(event: ComboboxBaseOpenEvents, newState: boolean): void;
 
     setValue(newValue: string | undefined): void;
+
+    onOptionClick: (e: React.MouseEvent<HTMLElement>) => void;
   };
 
 /**
@@ -138,4 +144,5 @@ export type ComboboxBaseOpenEvents =
 export type ComboboxBaseContextValues = {
   combobox: ComboboxContextValue;
   activeDescendant: ActiveDescendantContextValue;
+  listbox: ListboxContextValue;
 };
