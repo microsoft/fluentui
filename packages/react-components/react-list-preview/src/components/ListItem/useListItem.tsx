@@ -57,11 +57,14 @@ export const useListItem_unstable = (
 
   validateProperElementTypes(parentRenderedAs, renderedAs);
 
-  const { findFirstFocusable, findPrevFocusable, findNextFocusable } = useFocusFinders();
+  const { findFirstFocusable, findAllFocusable } = useFocusFinders();
 
   const baseIndicatorStyles = useIndicatorStyle();
 
-  const focusableGroupAttrs = useFocusableGroup({ ignoreDefaultKeydown: { Enter: true }, tabBehavior: 'limited' });
+  const focusableGroupAttrs = useFocusableGroup({
+    ignoreDefaultKeydown: { Enter: true },
+    tabBehavior: 'limited-trap-focus',
+  });
 
   const handleClick: React.MouseEventHandler<HTMLLIElement & HTMLDivElement> = useEventCallback(e => {
     onClick?.(e);
@@ -105,18 +108,26 @@ export const useListItem_unstable = (
       }
 
       if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
-        // Prevents scrolling for ArrowUp/ArowDown
+        if (!e.currentTarget.parentElement) {
+          return;
+        }
+        // Prevents scrolling for ArrowUp/ArrowDown
         e.preventDefault();
 
-        const prevItem = findPrevFocusable(e.currentTarget as HTMLElement);
-        const nextItem = findNextFocusable(e.currentTarget as HTMLElement);
+        const focusableEls = findAllFocusable(
+          e.currentTarget.parentElement,
+          el => el === e.currentTarget || !e.currentTarget.contains(el),
+        );
+        const currentIndex = focusableEls.indexOf(e.currentTarget as HTMLElement);
 
         if (e.key === 'ArrowUp') {
+          const prevItem = focusableEls[currentIndex - 1];
           prevItem && (e.currentTarget as HTMLElement).previousSibling === prevItem
             ? prevItem.focus()
             : pressEscape(e.target as HTMLElement);
         }
-        if (e.key === 'ArrowDown' && nextItem) {
+        if (e.key === 'ArrowDown') {
+          const nextItem = focusableEls[currentIndex + 1];
           nextItem && (e.currentTarget as HTMLElement).nextSibling === nextItem
             ? nextItem.focus()
             : pressEscape(e.target as HTMLElement);

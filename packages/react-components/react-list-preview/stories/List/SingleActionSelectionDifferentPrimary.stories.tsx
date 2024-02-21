@@ -41,7 +41,7 @@ const MyListItem = React.memo(({ name, avatar }: { name: string; avatar: string 
     event => {
       // This prevents the change in selection on click/Enter
       event.preventDefault();
-      alert('Hi, ' + name);
+      alert(`Triggered action on ${name}`);
     },
     [name],
   );

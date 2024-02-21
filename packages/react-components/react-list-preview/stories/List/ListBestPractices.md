@@ -4,6 +4,7 @@
 
 - Use `tabIndex={0}` property on the `List` where the items have no actionable elements inside.
 - Use `tabIndex={0}` property on the `ListItem` when the list items should be focusable.
+- Use `aria-label` property on the `ListItem` for custom screen reader label.
 
 ### Don't
 

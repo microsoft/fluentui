@@ -1,7 +1,6 @@
 import {
   Button,
   Caption1,
-  CardProps,
   makeResetStyles,
   makeStyles,
   Menu,
@@ -37,40 +36,20 @@ const useStyles = makeStyles({
     ...shorthands.gap('16px'),
     maxWidth: '300px',
   },
-  listItem: { display: 'grid', ...shorthands.padding('8px') },
-
+  listItem: {
+    display: 'grid',
+    ...shorthands.padding('8px'),
+  },
   caption: {
     color: tokens.colorNeutralForeground3,
   },
-
   image: {
     maxWidth: '100%',
     ...shorthands.borderRadius('5px'),
   },
-
-  grayBackground: {
-    backgroundColor: tokens.colorNeutralBackground3,
-  },
-
-  logoBadge: {
-    ...shorthands.padding('5px'),
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
-    backgroundColor: '#FFF',
-    boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.14), 0px 0px 2px rgba(0, 0, 0, 0.12)',
-  },
-  actionsWrapper: {
-    display: 'flex',
-    ...shorthands.gap('8px'),
-  },
-  checkmark: {
-    position: 'absolute',
-    left: '10px',
-    top: '10px',
-    zIndex: 1,
-  },
 });
 
-const CardExample = (props: CardProps & { value: string }) => {
+const CardExample = (props: { title: string; value: string }) => {
   const listItemStyles = useListItemRootStyles();
   const styles = useStyles();
   const { value } = props;
@@ -80,14 +59,14 @@ const CardExample = (props: CardProps & { value: string }) => {
       value={props.value}
       className={mergeClasses(listItemStyles, styles.listItem)}
       aria-label={value}
-      onClick={() => alert('Hello!')}
+      onClick={() => alert('Primary action triggered!')}
     >
       <div style={{ gridArea: 'preview', overflow: 'hidden' }}>
         <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />
       </div>
       <div style={{ gridArea: 'header' }}>
         <Text weight="semibold" style={{ display: 'block' }}>
-          {props.value}
+          {props.title}
         </Text>
         <Caption1 className={styles.caption}>You created 53m ago</Caption1>
       </div>
@@ -160,15 +139,15 @@ export const MultipleActionsWithPrimary = (props: Partial<ListProps>) => {
 
   return (
     <List className={classes.list} aria-orientation="vertical">
-      <CardExample value="card-1" />
-      <CardExample value="card-2" />
-      <CardExample value="card-3" />
-      <CardExample value="card-4" />
-      <CardExample value="card-5" />
-      <CardExample value="card-6" />
-      <CardExample value="card-7" />
-      <CardExample value="card-8" />
-      <CardExample value="card-9" />
+      <CardExample title="Example List Item" value="card-1" />
+      <CardExample title="Example List Item" value="card-2" />
+      <CardExample title="Example List Item" value="card-3" />
+      <CardExample title="Example List Item" value="card-4" />
+      <CardExample title="Example List Item" value="card-5" />
+      <CardExample title="Example List Item" value="card-6" />
+      <CardExample title="Example List Item" value="card-7" />
+      <CardExample title="Example List Item" value="card-8" />
+      <CardExample title="Example List Item" value="card-9" />
     </List>
   );
 };

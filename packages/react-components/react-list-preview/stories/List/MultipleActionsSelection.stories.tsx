@@ -1,7 +1,6 @@
 import {
   Button,
   Caption1,
-  CardProps,
   makeResetStyles,
   makeStyles,
   Menu,
@@ -37,30 +36,16 @@ const useStyles = makeStyles({
     ...shorthands.gap('16px'),
     maxWidth: '300px',
   },
-  listItem: { display: 'grid', ...shorthands.padding('8px') },
-
+  listItem: {
+    display: 'grid',
+    ...shorthands.padding('8px'),
+  },
   caption: {
     color: tokens.colorNeutralForeground3,
   },
-
   image: {
     maxWidth: '100%',
     ...shorthands.borderRadius('5px'),
-  },
-
-  grayBackground: {
-    backgroundColor: tokens.colorNeutralBackground3,
-  },
-
-  logoBadge: {
-    ...shorthands.padding('5px'),
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
-    backgroundColor: '#FFF',
-    boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.14), 0px 0px 2px rgba(0, 0, 0, 0.12)',
-  },
-  actionsWrapper: {
-    display: 'flex',
-    ...shorthands.gap('8px'),
   },
   checkmark: {
     position: 'absolute',
@@ -70,7 +55,7 @@ const useStyles = makeStyles({
   },
 });
 
-const CardExample = (props: CardProps & { value: string; selected?: boolean }) => {
+const CardExample = (props: { title: string; value: string; selected?: boolean }) => {
   const listItemStyles = useListItemRootStyles();
   const styles = useStyles();
   const { value } = props;
@@ -82,18 +67,13 @@ const CardExample = (props: CardProps & { value: string; selected?: boolean }) =
       checkmark={{ className: styles.checkmark }}
       role="row"
       aria-label={value}
-      onClick={e => {
-        // Prevent the default behavior - toggling the selection
-        // e.preventDefault();
-        // alert('Main action triggered!');
-      }}
     >
       <div role="gridcell" style={{ gridArea: 'preview', overflow: 'hidden' }}>
         <img className={styles.image} src={`https://picsum.photos/seed/${value}/300/130/`} alt="Presentation Preview" />
       </div>
       <div role="gridcell" style={{ gridArea: 'header' }}>
         <Text weight="semibold" style={{ display: 'block' }}>
-          {props.value}
+          {props.title}
         </Text>
         <Caption1 className={styles.caption}>You created 53m ago</Caption1>
       </div>
@@ -174,15 +154,15 @@ export const MultipleActionsSelection = (props: Partial<ListProps>) => {
       onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
       selectionMode="multiselect"
     >
-      <CardExample value="card-1" selected={selectedItems.includes('card-1')} />
-      <CardExample value="card-2" selected={selectedItems.includes('card-2')} />
-      <CardExample value="card-3" selected={selectedItems.includes('card-3')} />
-      <CardExample value="card-4" selected={selectedItems.includes('card-4')} />
-      <CardExample value="card-5" selected={selectedItems.includes('card-5')} />
-      <CardExample value="card-6" selected={selectedItems.includes('card-6')} />
-      <CardExample value="card-7" selected={selectedItems.includes('card-7')} />
-      <CardExample value="card-8" selected={selectedItems.includes('card-8')} />
-      <CardExample value="card-9" selected={selectedItems.includes('card-9')} />
+      <CardExample title="Example List Item" value="card-1" selected={selectedItems.includes('card-1')} />
+      <CardExample title="Example List Item" value="card-2" selected={selectedItems.includes('card-2')} />
+      <CardExample title="Example List Item" value="card-3" selected={selectedItems.includes('card-3')} />
+      <CardExample title="Example List Item" value="card-4" selected={selectedItems.includes('card-4')} />
+      <CardExample title="Example List Item" value="card-5" selected={selectedItems.includes('card-5')} />
+      <CardExample title="Example List Item" value="card-6" selected={selectedItems.includes('card-6')} />
+      <CardExample title="Example List Item" value="card-7" selected={selectedItems.includes('card-7')} />
+      <CardExample title="Example List Item" value="card-8" selected={selectedItems.includes('card-8')} />
+      <CardExample title="Example List Item" value="card-9" selected={selectedItems.includes('card-9')} />
     </List>
   );
 };

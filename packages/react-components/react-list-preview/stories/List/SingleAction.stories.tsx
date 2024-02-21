@@ -35,7 +35,7 @@ export const SingleAction = () => {
             role="listitem"
             aria-label={`${name}, available`}
             aria-roledescription="button" //needs to be a translated string!
-            onClick={() => alert(name)}
+            onClick={() => alert(`Triggered action on ${name}`)}
           >
             <Persona
               name={name}
@@ -58,7 +58,7 @@ SingleAction.parameters = {
     description: {
       story: [
         'When the list item should have a primary action on it, you can pass the `onClick` prop to the `ListItem` component.',
-        'This callback will also be automatically called when the user presses the Enter key on the list item.',
+        'This callback will also be automatically called when the user presses the Enter or Space key on the list item.',
         '',
         'Since we are directly attaching the `onClick` handler on the `ListItem` itself, it is important to',
         'explicitely mark the `ListItem` as a button by setting the `aria-roledescription` attribute to a localized string `button`.',
