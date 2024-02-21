@@ -40,6 +40,8 @@ async function mainV2() {
       return dep.target;
     }),
   );
+  // every package having stories depends on workspace addons
+  packageDeps.add('@fluentui/react-storybook-addon-export-to-sandbox');
 
   const ghostDependencies = getGhostDependencies(tree, projectConfig, packageDeps, nxGraph);
 
