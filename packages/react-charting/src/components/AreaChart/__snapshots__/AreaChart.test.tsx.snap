@@ -33,7 +33,6 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           overflow: auto;
         }
     data-focuszone-id="FocusZone8"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -237,7 +236,6 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                     outline: none;
                   }
               data-focuszone-id="FocusZone9"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -588,7 +586,6 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           overflow: auto;
         }
     data-focuszone-id="FocusZone8"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -792,7 +789,6 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
                     outline: none;
                   }
               data-focuszone-id="FocusZone9"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1040,7 +1036,6 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           overflow: auto;
         }
     data-focuszone-id="FocusZone8"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1244,7 +1239,6 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
                     outline: none;
                   }
               data-focuszone-id="FocusZone9"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

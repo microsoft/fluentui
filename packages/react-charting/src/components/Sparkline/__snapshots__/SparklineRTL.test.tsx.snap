@@ -23,7 +23,6 @@ exports[`Sparkline chart rendering Should re-render the Sparkline chart with dat
           display: inline;
         }
     data-focuszone-id="FocusZone8"
-    data-tabster="{\\"uncontrolled\\": {}}"
   >
     <div
       class=
@@ -54,7 +53,6 @@ exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
         display: inline;
       }
   data-focuszone-id="FocusZone1"
-  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -129,7 +127,6 @@ exports[`Sparkline snapShot testing renders Sparkline correctly with no legend 1
         display: inline;
       }
   data-focuszone-id="FocusZone3"
-  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}

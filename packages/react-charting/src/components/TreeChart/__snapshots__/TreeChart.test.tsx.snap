@@ -8,7 +8,6 @@ exports[`TreeChart snapshot testing renders treechart three layer compact compos
         outline: none;
       }
   data-focuszone-id="FocusZone2"
-  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -957,7 +956,6 @@ exports[`TreeChart snapshot testing renders treechart three layer long compositi
         outline: none;
       }
   data-focuszone-id="FocusZone1"
-  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -1906,7 +1904,6 @@ exports[`TreeChart snapshot testing renders treechart three layer without compos
         outline: none;
       }
   data-focuszone-id="FocusZone3"
-  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -2855,7 +2852,6 @@ exports[`TreeChart snapshot testing renders treechart two layer correctly 1`] = 
         outline: none;
       }
   data-focuszone-id="FocusZone0"
-  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}

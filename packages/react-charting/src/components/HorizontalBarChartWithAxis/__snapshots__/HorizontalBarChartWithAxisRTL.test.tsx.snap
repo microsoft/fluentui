@@ -33,7 +33,6 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             overflow: auto;
           }
       data-focuszone-id="FocusZone81"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -160,7 +159,6 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                       outline: none;
                     }
                 data-focuszone-id="FocusZone82"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -562,7 +560,6 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
             overflow: auto;
           }
       data-focuszone-id="FocusZone87"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -689,7 +686,6 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                       outline: none;
                     }
                 data-focuszone-id="FocusZone88"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -1104,7 +1100,6 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
               overflow: auto;
             }
         data-focuszone-id="FocusZone96"
-        data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
           focusable="false"
@@ -1231,7 +1226,6 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                         outline: none;
                       }
                   data-focuszone-id="FocusZone97"
-                  data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
                   <div
@@ -1634,7 +1628,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             overflow: auto;
           }
       data-focuszone-id="FocusZone4"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -1761,7 +1754,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                       outline: none;
                     }
                 data-focuszone-id="FocusZone5"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -2163,7 +2155,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
             overflow: auto;
           }
       data-focuszone-id="FocusZone10"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -2286,7 +2277,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                       outline: none;
                     }
                 data-focuszone-id="FocusZone11"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -2680,7 +2670,6 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
             overflow: auto;
           }
       data-focuszone-id="FocusZone102"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -3223,7 +3212,6 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                       outline: none;
                     }
                 data-focuszone-id="FocusZone103"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div

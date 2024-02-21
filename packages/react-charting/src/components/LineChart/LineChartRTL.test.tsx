@@ -6,8 +6,9 @@ import { DefaultPalette, ThemeProvider } from '@fluentui/react';
 import { ILineChartPoints, LineChart } from './index';
 import { mergeStyles } from '@fluentui/merge-styles';
 
-import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import { getByClass, getById, testWithWait, testWithoutWait, isTimezoneSet } from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
+const { Timezone } = require('../../../scripts/constants');
 
 expect.extend(toHaveNoViolations);
 
@@ -201,6 +202,7 @@ describe('Line chart rendering', () => {
     },
     undefined,
     beforeAll,
+    !isTimezoneSet(Timezone.UTC),
   );
 
   testWithoutWait(
