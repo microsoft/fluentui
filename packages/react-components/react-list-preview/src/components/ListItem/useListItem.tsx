@@ -198,6 +198,7 @@ export const useListItem_unstable = (
       }),
       ...tabsterAttributes,
       ...props,
+      'data-value': String(value),
       onKeyDown: handleKeyDown,
       onClick: handleClick,
     }),

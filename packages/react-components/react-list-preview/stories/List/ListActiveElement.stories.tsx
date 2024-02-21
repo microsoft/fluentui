@@ -20,12 +20,6 @@ const names = [
   'Bart Merrill',
   'Sonya Farner',
   'Kristan Cable',
-  'Cythia Ignacio',
-  'Gia Laura',
-  'Dewayne Oda',
-  'Lang Yeldell',
-  'Kathlyn Brewer',
-  'Nia Woodworth',
 ];
 
 type Item = {
@@ -61,58 +55,63 @@ const useStyles = makeStyles({
 });
 
 // Memoizing the ListItem like this allows the unaffected ListItem not to be re-rendered when the selection changes.
-const MyListItem = React.memo(({ name, avatar, ...rest }: { name: string; avatar: string; className?: string }) => {
-  const styles = useStyles();
-  return (
-    <ListItem key={name} value={name} aria-label={name} {...rest} checkmark={null}>
-      <Persona
-        name={name}
-        secondaryText="Available"
-        presence={{ status: 'available' }}
-        avatar={{
-          image: {
-            src: avatar,
-          },
-        }}
-      />
-      <Button
-        aria-label={`Mute ${name}`}
-        size="small"
-        icon={<Mic16Regular />}
-        className={styles.button}
-        onClick={e => {
-          e.stopPropagation();
-          alert(`Muting ${name}`);
-        }}
-      />
-    </ListItem>
-  );
-});
+const MyListItem = React.memo(
+  ({ name, avatar, ...rest }: React.ComponentProps<typeof ListItem> & { name: string; avatar: string }) => {
+    const styles = useStyles();
+    return (
+      <ListItem key={name} value={name} aria-label={name} {...rest} checkmark={null}>
+        <Persona
+          name={name}
+          secondaryText="Available"
+          presence={{ status: 'available' }}
+          avatar={{
+            image: {
+              src: avatar,
+            },
+          }}
+        />
+        <Button
+          aria-label={`Mute ${name}`}
+          size="small"
+          icon={<Mic16Regular />}
+          className={styles.button}
+          onClick={e => {
+            e.stopPropagation();
+            alert(`Muting ${name}`);
+          }}
+        />
+      </ListItem>
+    );
+  },
+);
 
 export const ListActiveElement = () => {
   const classes = useStyles();
 
   const [selectedItems, setSelectedItems] = React.useState<SelectionItemId[]>([]);
 
+  const onSelectionChange = React.useCallback((_, data) => {
+    setSelectedItems(data.selectedItems);
+  }, []);
+
+  const onFocus = React.useCallback(event => {
+    // Ignore bubbled up events from the children
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+    setSelectedItems([event.target.dataset.value]);
+  }, []);
+
   return (
     <div className={classes.wrapper}>
-      <List
-        selectable
-        selectedItems={selectedItems}
-        onSelectionChange={(e, data) => {
-          console.log(e);
-          const selectedItem = data.selectedItems.slice(-1);
-          if (selectedItem.length) {
-            setSelectedItems(selectedItem);
-          }
-        }}
-      >
+      <List selectable selectionMode="single" selectedItems={selectedItems} onSelectionChange={onSelectionChange}>
         {items.map(({ name, avatar }) => (
           <MyListItem
             key={name}
             name={name}
             avatar={avatar}
             className={mergeClasses(classes.item, selectedItems.includes(name) && classes.itemSelected)}
+            onFocus={onFocus}
           />
         ))}
       </List>
@@ -131,6 +130,8 @@ ListActiveElement.parameters = {
     description: {
       story: [
         'You can use selection and custom styles to show the active element in a different way. This is useful for scenarios where you want to show the details of the selected item, for example.',
+        '',
+        'In this example, we are also demonstrating how the `onFocus` prop can be utilized to change the selected item immediately upon receiving focus. This allows us to show the details of the selected item in the right panel as user navigates through the list with the keyboard.',
       ].join('\n'),
     },
   },
