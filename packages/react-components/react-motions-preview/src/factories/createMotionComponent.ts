@@ -6,7 +6,7 @@ import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { getChildElement } from '../utils/getChildElement';
 import type { AtomMotion, AtomMotionFn, MotionImperativeRef } from '../types';
 
-export type AtomProps = {
+type MotionComponentProps = {
   children: React.ReactElement;
 
   /** Provides imperative controls for the animation. */
@@ -21,7 +21,7 @@ export type AtomProps = {
  * @param motion - A motion definition.
  */
 export function createMotionComponent(motion: AtomMotion | AtomMotionFn) {
-  const Atom: React.FC<AtomProps> = props => {
+  const Atom: React.FC<MotionComponentProps> = props => {
     const { children, iterations = 1, imperativeRef } = props;
 
     const child = getChildElement(children);

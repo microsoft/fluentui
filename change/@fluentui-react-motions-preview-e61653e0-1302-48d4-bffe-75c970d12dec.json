@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "BREAKING: remove exports for atom & presence definitions",
-  "packageName": "@fluentui/react-motions-preview",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

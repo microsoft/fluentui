@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: adds a context for active descendant",
-  "packageName": "@fluentui/react-aria",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
