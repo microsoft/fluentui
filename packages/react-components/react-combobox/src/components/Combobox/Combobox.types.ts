@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type {
   ComboboxBaseContextValues,
   ComboboxBaseOpenChangeData,
@@ -48,6 +49,7 @@ export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>
 export type ComboboxState = ComponentState<ComboboxSlots> &
   ComboboxBaseState & {
     showClearIcon?: boolean;
+    activeDescendantController: ActiveDescendantImperativeRef;
   };
 
 /* Export types defined in ComboboxBase */
