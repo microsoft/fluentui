@@ -15,6 +15,7 @@ function generateTypeDeclarations() {
     'tsc',
     `-p ./${tsConfigFileForCompilation}`,
     '--emitDeclarationOnly',
+    '--baseUrl .',
     // isUsingPathAliasesForDx ? '--baseUrl .' : null,
   ]
     .filter(Boolean)
