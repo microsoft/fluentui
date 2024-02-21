@@ -73,11 +73,7 @@ export const useListItem_unstable = (
       return;
     }
 
-    // Only toggle if this was actually a pointer click, not an event triggered by Enter
-    // key down (handled below).
-    if (e.isTrusted) {
-      toggleItem?.(e, value);
-    }
+    toggleItem?.(e, value);
   });
 
   const pressEscape = useEventCallback((target: HTMLElement) => {
