@@ -5348,29 +5348,29 @@
     regenerator-runtime "^0.13.7"
     resolve-from "^5.0.0"
 
-"@stylexjs/babel-plugin@0.5.0-alpha.4":
-  version "0.5.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@stylexjs/babel-plugin/-/babel-plugin-0.5.0-alpha.4.tgz#2a1ff5d2e4ad234250678a8da36dcbaf3f147dca"
-  integrity sha512-sbWF/xJMhPZ6l8bJ+FQCxa7Y0gG2K8un1Y0B0fI03QN7JcDZTUB5hePtqLgMl92KunMvscB4MnfATw9cgME1VQ==
+"@stylexjs/babel-plugin@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@stylexjs/babel-plugin/-/babel-plugin-0.5.1.tgz#adef04e823e9dbaba4c3ba467863f4c2cdb6c50c"
+  integrity sha512-Q5AaCyVZRC88QMF8sFHmFC3Rakm19t2jkwfaPImyoGjMyOPySCYVmF4NDffAIwIP+j8J/qn7T8njfKIhSpEftg==
   dependencies:
     "@babel/core" "^7.23.6"
     "@babel/helper-module-imports" "^7.22.15"
     "@babel/traverse" "^7.23.6"
     "@babel/types" "^7.23.6"
-    "@stylexjs/shared" "0.5.0-alpha.4"
-    "@stylexjs/stylex" "0.5.0-alpha.4"
+    "@stylexjs/shared" "0.5.1"
+    "@stylexjs/stylex" "0.5.1"
 
-"@stylexjs/shared@0.5.0-alpha.4":
-  version "0.5.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@stylexjs/shared/-/shared-0.5.0-alpha.4.tgz#ec3813436eff7ac020e2bd9c9d4603433449a044"
-  integrity sha512-Clr6Iap5jkW2UmhFAOmv3rUBmGf1a15VJymkKThE2G+tXP9uQTnij387EdMHmJz27moGSOstVt1i3c8AIDdsHw==
+"@stylexjs/shared@0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@stylexjs/shared/-/shared-0.5.1.tgz#c61393cd2f4b7fb19a4d9b636710f5a405c37479"
+  integrity sha512-3kuvLfPr1P5lbLjvtEjXmJxyBOygudhH93DA8OtNnb0H3bQjDZJQqaR/Pde67tlsdbqU5pFuaeueKkZhnuurzA==
   dependencies:
     postcss-value-parser "^4.1.0"
 
-"@stylexjs/stylex@0.5.0-alpha.4":
-  version "0.5.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@stylexjs/stylex/-/stylex-0.5.0-alpha.4.tgz#cdc27e11410ff2f719c809ed973f83c7efdf5da4"
-  integrity sha512-yDyAo0PJi/jJ9rcKJsW5lhsn1CaU6M6jnAcKg8/kLv+fP/tr6azTu9cLIW8w40MvZ4Y+2kCLrar3KSYEzeuF6w==
+"@stylexjs/stylex@0.5.1", "@stylexjs/stylex@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@stylexjs/stylex/-/stylex-0.5.1.tgz#e604908c4933d01474bff7c909cb9cef659bd56c"
+  integrity sha512-KO55dRB1+LhUo9OxfHqH5FwO2F0HdTe4g6fyRJb7JT5FiWEA/vYJ9MY7W8NdMSprW/7FeQKnSg6u5WlHU2ji2g==
   dependencies:
     css-mediaquery "^0.1.2"
     invariant "^2.2.4"
@@ -23240,11 +23240,12 @@ react-source-render@4.0.0-1:
     react-fast-compare "^2.0.4"
     react-is "^16.6.3"
 
-"react-strict-dom@file:./apps/xplat-v9/vendor/react-strict-dom-0.0.0-44bfd09f9f.tgz":
-  version "0.0.0"
-  resolved "file:./apps/xplat-v9/vendor/react-strict-dom-0.0.0-44bfd09f9f.tgz#f466201f49ea1c1d3c5d2f5777a2805e546ff4f1"
+react-strict-dom@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/react-strict-dom/-/react-strict-dom-0.0.1.tgz#f7780232d8260813686b789af1784a261c5f1b2c"
+  integrity sha512-yoSfHN0kryOT3rEz0GiXu/9P/93GQT+RK/jZCLclSsnctSJw7gF3nzLX6aiQHIBv31of5hyX947vaIQZtlfu6w==
   dependencies:
-    "@stylexjs/stylex" "0.5.0-alpha.4"
+    "@stylexjs/stylex" "0.5.1"
     css-mediaquery "0.1.2"
 
 react-syntax-highlighter@^10.1.3:
