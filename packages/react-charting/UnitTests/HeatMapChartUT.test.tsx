@@ -7,8 +7,8 @@ import { render } from '@testing-library/react';
 import { dataToBuffer } from 'memfs/lib/volume';
 import { XAxisTypes, YAxisType } from '../src/utilities/index';
 import { conditionalTest, isTimezoneSet } from '../src/utilities/TestUtility.test';
-const { Timezone } = require('../scripts/constants');
 
+const { Timezone } = require('../scripts/constants');
 const env = require('../config/tests');
 const runTest = env === 'TEST' ? describe : describe.skip;
 

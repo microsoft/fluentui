@@ -530,7 +530,7 @@ runTest('_addDefaultColors', () => {
   );
 });
 
-describe('_getAriaLabel', () => {
+runTest('_getAriaLabel', () => {
   testWithoutWait(
     'Should return the correct aria label for a point with xAxisCalloutData and yAxisCalloutData',
     AreaChart,
