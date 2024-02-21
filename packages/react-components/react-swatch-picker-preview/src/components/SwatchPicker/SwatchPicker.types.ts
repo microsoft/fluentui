@@ -1,18 +1,17 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
 import { SwatchPickerContextValue } from '../../contexts/swatchPicker';
 
 export type SwatchPickerSlots = {
   root: Slot<'div'>;
 };
 
-export type SwatchPickerSelectEvent = React.MouseEvent | React.KeyboardEvent | React.ChangeEvent;
+export type SwatchPickerOnSelectEventHandler = EventHandler<SwatchPickerOnSelectionChangeData>;
 
-export type SwatchPickerSelectData = {
+export type SwatchPickerOnSelectionChangeData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
   selectedValue: string;
+  selectedColor: string;
 };
-
-export type SwatchPickerSelectEventHandler = (event: SwatchPickerSelectEvent, data: SwatchPickerSelectData) => void;
 
 /**
  * SwatchPicker Props
@@ -20,25 +19,38 @@ export type SwatchPickerSelectEventHandler = (event: SwatchPickerSelectEvent, da
 export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
   columnCount?: number;
 
+  /**
+   * Default selected value
+   */
   defaultSelectedValue?: string;
+
+  /**
+   * Triggers a callback when the value has been changed
+   */
+  onSelectionChange?: EventHandler<SwatchPickerOnSelectionChangeData>;
+
+  /**
+   * Controlled selected value
+   */
+  selectedValue?: string;
+
+  /**
+   * Swatch size
+   * @defaultvalue 'medium'
+   */
+  size?: 'extraSmall' | 'small' | 'medium' | 'large';
+
+  /**
+   * Swatch shape
+   * @defaultvalue 'square'
+   */
+  shape?: 'rounded' | 'square' | 'circular';
 
   layout?: 'grid' | 'row';
 
   responsive?: boolean;
 
-  /**
-   * Event rised when user selects a color
-   */
-  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
-  onColorChange?: SwatchPickerSelectEventHandler;
-
-  size?: 'extraSmall' | 'small' | 'medium' | 'large';
-
-  shape?: 'rounded' | 'square' | 'circular';
-
   spacing?: 'small' | 'medium';
-
-  selectedValue?: string;
 };
 
 /**

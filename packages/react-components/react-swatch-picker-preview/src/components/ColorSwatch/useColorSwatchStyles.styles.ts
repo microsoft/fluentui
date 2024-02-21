@@ -1,39 +1,42 @@
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ColorSwatchSlots, ColorSwatchState } from './ColorSwatch.types';
-import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-components';
+import { tokens } from '@fluentui/react-theme';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster'; //createCustomFocusIndicatorStyle
 
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
   root: 'fui-ColorSwatch',
+  button: 'fui-ColorSwatch__button',
   icon: 'fui-ColorSwatch__icon',
   disabledIcon: 'fui-ColorSwatch__disabledIcon',
 };
 
 export const swatchCSSVars = {
-  swatchColor: `--fui-SwatchPicker--color`,
+  color: `--fui-SwatchPicker--color`,
   swatchBorderColor: `--fui-SwatchPicker--borderColor`,
   swatchStateColor: `--fui-SwatchPicker--stateColor`,
 };
 
-const { swatchColor, swatchBorderColor, swatchStateColor } = swatchCSSVars;
+const { color, swatchBorderColor, swatchStateColor } = swatchCSSVars;
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeResetStyles({
+  position: 'relative',
   boxSizing: 'border-box',
+  padding: 0,
   ...shorthands.border('none'),
   ...shorthands.padding(0),
-  background: `var(${swatchColor})`,
+  background: `var(${color})`,
   ...shorthands.transition('all', '0.1s', 'ease-in-out'),
   border: `1px solid var(${swatchBorderColor})`,
   '&:hover': {
     cursor: 'pointer',
-    boxShadow: `inset 0 0 0 2px var(${swatchColor}), inset 0 0 0 4px var(${swatchStateColor})`,
+    boxShadow: `inset 0 0 0 2px var(${color}), inset 0 0 0 4px var(${swatchStateColor})`,
   },
   ':hover:active': {
-    boxShadow: `inset 0 0 0 3px var(${swatchColor}), inset 0 0 0 6px var(${swatchStateColor})`,
+    boxShadow: `inset 0 0 0 3px var(${color}), inset 0 0 0 6px var(${swatchStateColor})`,
   },
   // ':focus': {
   //   border: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
@@ -65,25 +68,35 @@ const useStyles = makeResetStyles({
 
   // Focus styles
 
-  ...createCustomFocusIndicatorStyle({
-    border: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
-    boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${swatchStateColor}
-      inset
-    `,
-    borderRadius: tokens.borderRadiusNone,
-  }),
+  // ...createCustomFocusIndicatorStyle({
+  //   border: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
+  //   boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${swatchStateColor}
+  //     inset
+  //   `,
+  //   borderRadius: tokens.borderRadiusNone,
+  // }),
+  ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
 });
 
-const useIconStyles = makeResetStyles({});
+const useButtonStyles = makeResetStyles({
+  position: 'absolute',
+  left: 0,
+  top: 0,
+  width: '100%',
+  height: '100%',
+  boxSizing: 'border-box',
+  margin: 0,
+  opacity: 0,
+});
 
 const useStylesSelected = makeStyles({
   selected: {
-    boxShadow: `inset 0 0 0 4px var(${swatchColor}), inset 0 0 0 6px var(${swatchStateColor})`,
+    boxShadow: `inset 0 0 0 4px var(${color}), inset 0 0 0 6px var(${swatchStateColor})`,
     ':hover': {
-      boxShadow: `inset 0 0 0 5px var(${swatchColor}), inset 0 0 0 7px var(${swatchStateColor})`,
+      boxShadow: `inset 0 0 0 5px var(${color}), inset 0 0 0 7px var(${swatchStateColor})`,
     },
     ':hover:active': {
-      boxShadow: `inset 0 0 0 6px var(${swatchColor}), inset 0 0 0 8px var(${swatchStateColor})`,
+      boxShadow: `inset 0 0 0 6px var(${color}), inset 0 0 0 8px var(${swatchStateColor})`,
     },
   },
 });
@@ -109,21 +122,24 @@ const useSizeStyles = makeStyles({
 
 const useShapeStyles = makeStyles({
   rounded: {
-    ...shorthands.borderRadius('4px'),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
   },
   circular: {
-    ...shorthands.borderRadius('50%'),
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
   },
   square: {
-    ...shorthands.borderRadius('0'),
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
   },
 });
+
+const useIconStyles = makeResetStyles({});
 
 /**
  * Apply styling to the ColorSwatch slots based on the state
  */
 export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwatchState => {
   const styles = useStyles();
+  const buttonStyles = useButtonStyles();
   const iconStyles = useIconStyles();
   const selectedStyles = useStylesSelected();
   const sizeStyles = useSizeStyles();
@@ -134,6 +150,7 @@ export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwa
     styles,
     sizeStyles[state.size ?? 'medium'],
     shapeStyles[state.shape ?? 'square'],
+    state.selected && selectedStyles.selected,
     state.root.className,
   );
 
@@ -141,8 +158,7 @@ export const useColorSwatchStyles_unstable = (state: ColorSwatchState): ColorSwa
     state.icon.className = mergeClasses(colorSwatchClassNames.icon, iconStyles, state.icon.className);
   }
 
-  if (state.selected) {
-    state.root.className = mergeClasses(state.root.className, selectedStyles.selected);
-  }
+  state.button.className = mergeClasses(colorSwatchClassNames.button, buttonStyles, state.button.className);
+
   return state;
 };

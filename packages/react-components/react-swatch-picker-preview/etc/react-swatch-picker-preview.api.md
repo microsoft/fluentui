@@ -4,10 +4,10 @@
 
 ```ts
 
-/// <reference types="react" />
-
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -20,9 +20,10 @@ export const ColorSwatch: ForwardRefComponent<ColorSwatchProps>;
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots>;
 
 // @public
-export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & {
-    disabled?: boolean;
+export type ColorSwatchProps = Omit<ComponentProps<Partial<ColorSwatchSlots>, 'button'>, 'children'> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
     color: string;
+    value: string;
+    disabled?: boolean;
     contrastBorderColor?: string;
     contrastStateColor?: string;
     size?: 'extraSmall' | 'small' | 'medium' | 'large';
@@ -31,13 +32,16 @@ export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & {
 
 // @public (undocumented)
 export type ColorSwatchSlots = {
-    root: Slot<'button'>;
+    root: NonNullable<Slot<'div'>>;
+    button: NonNullable<Slot<'button'>>;
     icon?: Slot<'span'>;
     disabledIcon?: Slot<'span'>;
 };
 
 // @public
-export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwatchProps, 'disabled' | 'color' | 'shape' | 'size'> & SwatchContextValue;
+export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwatchProps, 'color' | 'size' | 'shape' | 'value' | 'disabled'> & {
+    selected: boolean;
+};
 
 // @public (undocumented)
 export const imageCSSVars: {
@@ -69,17 +73,17 @@ export type ImageSwatchSlots = {
 export type ImageSwatchState = ComponentState<ImageSwatchSlots> & Pick<ImageSwatchProps, 'disabled' | 'selected' | 'empty' | 'value'>;
 
 // @public
-export const renderColorSwatch_unstable: (state: ColorSwatchState, contextValues: SwatchContextValues) => JSX.Element;
+export const renderColorSwatch_unstable: (state: ColorSwatchState) => JSX.Element;
 
 // @public
 export const renderImageSwatch_unstable: (state: ImageSwatchState) => JSX.Element;
 
 // @public
-export const renderSwatchPicker_unstable: (state: SwatchPickerState, contextValues: SwatchPickerContextValue) => JSX.Element;
+export const renderSwatchPicker_unstable: (state: SwatchPickerState, contextValues: SwatchPickerContextValues) => JSX.Element;
 
 // @public (undocumented)
 export const swatchCSSVars: {
-    swatchColor: string;
+    color: string;
     swatchBorderColor: string;
     swatchStateColor: string;
 };
@@ -97,29 +101,27 @@ export const swatchPickerCSSVars: {
     gridGap: string;
 };
 
+// @public (undocumented)
+export type SwatchPickerOnSelectEventHandler = EventHandler<SwatchPickerOnSelectionChangeData>;
+
+// @public (undocumented)
+export type SwatchPickerOnSelectionChangeData = EventData<'click', React_2.MouseEvent<HTMLButtonElement>> & {
+    selectedValue: string;
+    selectedColor: string;
+};
+
 // @public
 export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
     columnCount?: number;
     defaultSelectedValue?: string;
-    layout?: 'grid' | 'row';
-    responsive?: boolean;
-    onColorChange?: (event: SwatchPickerSelectEvent, data: SwatchPickerSelectData) => void;
+    onSelectionChange?: EventHandler<SwatchPickerOnSelectionChangeData>;
+    selectedValue?: string;
     size?: 'extraSmall' | 'small' | 'medium' | 'large';
     shape?: 'rounded' | 'square' | 'circular';
+    layout?: 'grid' | 'row';
+    responsive?: boolean;
     spacing?: 'small' | 'medium';
-    selectedValue?: string;
 };
-
-// @public (undocumented)
-export type SwatchPickerSelectData = {
-    selectedValue: string;
-};
-
-// @public (undocumented)
-export type SwatchPickerSelectEvent = React_2.MouseEvent | React_2.KeyboardEvent | React_2.ChangeEvent;
-
-// @public (undocumented)
-export type SwatchPickerSelectEventHandler = (event: SwatchPickerSelectEvent, data: SwatchPickerSelectData) => void;
 
 // @public (undocumented)
 export type SwatchPickerSlots = {
@@ -142,7 +144,7 @@ export const useImageSwatch_unstable: (props: ImageSwatchProps, ref: React_2.Ref
 export const useImageSwatchStyles_unstable: (state: ImageSwatchState) => ImageSwatchState;
 
 // @public
-export const useSwatchPicker_unstable: <T>(props: SwatchPickerProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerState;
+export const useSwatchPicker_unstable: (props: SwatchPickerProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerState;
 
 // @public
 export const useSwatchPickerStyles_unstable: (state: SwatchPickerState) => SwatchPickerState;

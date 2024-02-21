@@ -1,8 +1,9 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { SwatchContextValue } from '../../contexts/swatch';
+import { SwatchPickerProps } from '../SwatchPicker/SwatchPicker.types';
 
 export type ColorSwatchSlots = {
-  root: Slot<'button'>;
+  root: NonNullable<Slot<'div'>>;
+  button: NonNullable<Slot<'button'>>;
   /**
    * Icon that renders either before or after the `children` as specified by the `iconPosition` prop.
    */
@@ -13,30 +14,38 @@ export type ColorSwatchSlots = {
 /**
  * ColorSwatch Props
  */
-export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & {
-  /**
-   *  Disabled swatch.
-   *
-   * @default `false` (renders enabled)
-   */
-  disabled?: boolean;
+export type ColorSwatchProps = Omit<ComponentProps<Partial<ColorSwatchSlots>, 'button'>, 'children'> &
+  Pick<SwatchPickerProps, 'size' | 'shape'> & {
+    /**
+     * Swatch color
+     */
+    color: string;
 
-  color: string;
+    /**
+     * Swatch value
+     */
+    value: string;
 
-  contrastBorderColor?: string;
+    /**
+     *  Disabled swatch.
+     *
+     * @default `false` (renders enabled)
+     */
+    disabled?: boolean;
 
-  contrastStateColor?: string;
+    contrastBorderColor?: string;
 
-  size?: 'extraSmall' | 'small' | 'medium' | 'large';
+    contrastStateColor?: string;
 
-  shape?: 'rounded' | 'square' | 'circular';
+    size?: 'extraSmall' | 'small' | 'medium' | 'large';
 
-  value: string;
-};
+    shape?: 'rounded' | 'square' | 'circular';
+  };
 
 /**
  * State used in rendering ColorSwatch
  */
 export type ColorSwatchState = ComponentState<ColorSwatchSlots> &
-  Pick<ColorSwatchProps, 'disabled' | 'color' | 'shape' | 'size' | 'value'> &
-  SwatchContextValue;
+  Pick<ColorSwatchProps, 'color' | 'size' | 'shape' | 'value' | 'disabled'> & {
+    selected: boolean;
+  };

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
+import { slot, useEventCallback, getPartitionedNativeProps } from '@fluentui/react-utilities';
 import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
-import { SwatchPickerSelectEvent } from '../SwatchPicker/SwatchPicker.types';
-import { useColorSwatchState_unstable } from './useColorSwatchState';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
+import { swatchCSSVars } from './useColorSwatchStyles.styles';
+import { calculateContrastRatioFromHex } from '../../utils/calculateContrastRatio';
 
 /**
  * Create the state required to render ColorSwatch.
@@ -13,21 +13,17 @@ import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicke
  * before being passed to renderColorSwatch_unstable.
  *
  * @param props - props from this instance of ColorSwatch
- * @param ref - reference to root HTMLDivElement of ColorSwatch
+ * @param ref - reference to root HTMLButtonElement of ColorSwatch
  */
 export const useColorSwatch_unstable = (
   props: ColorSwatchProps,
   ref: React.Ref<HTMLButtonElement>,
 ): ColorSwatchState => {
-  const { icon, disabled, color, value } = props;
+  const { color, value, icon, disabled } = props;
   const iconShorthand = slot.optional(icon, { elementType: 'span' });
-
-  const context = useSwatchPickerContextValue_unstable();
-  const notifySelected = context.notifySelected;
-  const selected = context.selectedValue === color;
-  const onClick = useEventCallback((event: SwatchPickerSelectEvent) => notifySelected({ event, selectedValue: color }));
-
-  const _role = context.layout === 'grid' ? 'gridcell' : 'radio';
+  const size = useSwatchPickerContextValue_unstable(ctx => ctx.size);
+  const shape = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
+  const _role = useSwatchPickerContextValue_unstable(ctx => ctx.layout) === 'grid' ? 'gridcell' : 'radio';
 
   const disabledIcon = slot.optional(props.disabledIcon, {
     renderByDefault: true,
@@ -37,35 +33,80 @@ export const useColorSwatch_unstable = (
     elementType: 'span',
   });
 
+  const requestSelectionChange = useSwatchPickerContextValue_unstable(ctx => ctx.requestSelectionChange);
+  const selected = useSwatchPickerContextValue_unstable(ctx => ctx.selectedValue === value);
+
+  const onClick = useEventCallback((event: React.MouseEvent<HTMLButtonElement>) =>
+    requestSelectionChange(event, {
+      selectedValue: value,
+      selectedColor: color,
+    }),
+  );
+
+  const nativeProps = getPartitionedNativeProps({
+    props,
+    primarySlotTagName: 'button',
+    excludedPropNames: ['value', 'color'],
+  });
+
+  const contrastRatio = calculateContrastRatioFromHex('#fafafa', color); // tokens.colorNeutralForeground1 - for focus white border
+
+  const _stateColor = props.contrastStateColor ?? '#000';
+  const _borderColor = props.contrastBorderColor ?? '#000';
+
+  const contrastBorderColor = contrastRatio < 3 ? _borderColor : 'transparent';
+  const contrastStateColor = contrastRatio < 3 ? _stateColor : '#fff';
+
+  const rootVariables = {
+    [swatchCSSVars.color]: color,
+    [swatchCSSVars.swatchBorderColor]: contrastBorderColor,
+    [swatchCSSVars.swatchStateColor]: contrastStateColor,
+  };
+
+  const root = slot.always(props.root, {
+    defaultProps: {
+      ref: useFocusWithin<HTMLDivElement>(),
+      role: _role,
+      'aria-selected': selected,
+      ...nativeProps.root,
+    },
+    elementType: 'div',
+  });
+
+  const button = slot.always(props.button, {
+    defaultProps: {
+      ref,
+      type: 'button',
+      onClick,
+      ...nativeProps.primary,
+    },
+    elementType: 'button',
+  });
+
   const state: ColorSwatchState = {
     components: {
-      root: 'button',
+      root: 'div',
+      button: 'button',
       icon: 'span',
       disabledIcon: 'span',
     },
-    root: slot.always(
-      getIntrinsicElementProps('button', {
-        ref,
-        ...props,
-        role: props.role ?? _role,
-        tabIndex: 0,
-        'aria-selected': selected,
-        onClick,
-      }),
-      { elementType: 'button' },
-    ),
     icon: iconShorthand,
     disabledIcon,
     disabled,
-    size: context.size,
-    shape: context.shape,
+    root,
+    button,
+    size,
+    shape,
     selected,
     color,
     value,
   };
 
-  state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLButtonElement>());
+  // Root props
+  state.root.style = {
+    ...rootVariables,
+    ...state.root.style,
+  };
 
-  useColorSwatchState_unstable(state, props);
   return state;
 };

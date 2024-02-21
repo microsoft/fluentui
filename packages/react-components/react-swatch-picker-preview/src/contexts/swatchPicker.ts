@@ -1,62 +1,60 @@
 import * as React from 'react';
-import {
-  SwatchPickerProps,
-  SwatchPickerState,
-  SwatchPickerSelectData,
-  SwatchPickerSelectEvent,
-} from '../components/SwatchPicker/SwatchPicker.types';
+import { createContext, ContextSelector, useContextSelector, Context } from '@fluentui/react-context-selector';
+import { SwatchPickerProps, SwatchPickerState } from '../components/SwatchPicker/SwatchPicker.types';
 
 /**
  * The context through which individual color controls communicate with the picker.
  */
 export type SwatchPickerContextValue = Pick<
   SwatchPickerProps,
-  'layout' | 'columnCount' | 'size' | 'shape' | 'selectedValue' | 'defaultSelectedValue'
+  'size' | 'shape' | 'selectedValue' | 'layout' | 'columnCount'
 > & {
   /**
-   * Notify the picker about color selection.
+   * Callback used by ColorSwatch to request a change on it's selected state
+   * Should be used to select ColorSwatch
    */
-  notifySelected: (data: SwatchPickerNotifySelectedData) => void;
+  requestSelectionChange: (
+    event: React.MouseEvent<HTMLButtonElement>,
+    data: { selectedValue: string; selectedColor: string },
+  ) => void;
 };
 
-export type SwatchPickerNotifySelectedData = { event: SwatchPickerSelectEvent } & SwatchPickerSelectData;
-
 export const useSwatchPickerContextValues = (state: SwatchPickerState): SwatchPickerContextValues => {
-  const { layout, size, shape, columnCount, notifySelected, selectedValue, defaultSelectedValue } = state;
+  const { size, shape, requestSelectionChange, selectedValue, layout, columnCount } = state;
 
-  const swatchPicker = React.useMemo<SwatchPickerContextValue>(
-    () => ({
-      layout,
-      size,
-      shape,
-      columnCount,
-      selectedValue,
-      defaultSelectedValue,
-      notifySelected,
-    }),
-    [layout, size, shape, columnCount, selectedValue, defaultSelectedValue, notifySelected],
-  );
+  // This context is created with "@fluentui/react-context-selector", these is no sense to memoize it
+  const swatchPicker: SwatchPickerContextValue = {
+    size,
+    shape,
+    selectedValue,
+    requestSelectionChange,
+    layout,
+    columnCount,
+  };
 
   return { swatchPicker };
 };
 
 export const swatchPickerContextDefaultValue: SwatchPickerContextValue = {
-  notifySelected: () => {
+  requestSelectionChange: () => {
     /*noop*/
   },
-  layout: 'row',
-  columnCount: 2,
   size: 'medium',
   shape: 'square',
   selectedValue: undefined,
-  defaultSelectedValue: undefined,
+  layout: 'row',
+  columnCount: 2,
 };
 
 export type SwatchPickerContextValues = {
   swatchPicker: SwatchPickerContextValue;
 };
 
-export const SwatchPickerContext = React.createContext<SwatchPickerContextValue | undefined>(undefined);
+const SwatchPickerContext = createContext<SwatchPickerContextValue | undefined>(
+  undefined,
+) as Context<SwatchPickerContextValue>;
+
 export const SwatchPickerProvider = SwatchPickerContext.Provider;
-export const useSwatchPickerContextValue_unstable = () =>
-  React.useContext(SwatchPickerContext) ?? swatchPickerContextDefaultValue;
+
+export const useSwatchPickerContextValue_unstable = <T>(selector: ContextSelector<SwatchPickerContextValue, T>): T =>
+  useContextSelector(SwatchPickerContext, (ctx = swatchPickerContextDefaultValue) => selector(ctx));
