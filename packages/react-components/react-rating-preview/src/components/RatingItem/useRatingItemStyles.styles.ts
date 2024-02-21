@@ -1,8 +1,8 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { RatingItemSlots, RatingItemState } from './RatingItem.types';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import type { RatingItemSlots, RatingItemState } from './RatingItem.types';
 
 export const ratingItemClassNames: SlotClassNames<RatingItemSlots> = {
   root: 'fui-RatingItem',
