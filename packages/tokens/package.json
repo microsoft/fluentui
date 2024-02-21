@@ -25,7 +25,8 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-tasks": "*",
+    "@swc/plugin-transform-imports": "1.5.118"
   },
   "dependencies": {
     "@swc/helpers": "^0.5.1"
