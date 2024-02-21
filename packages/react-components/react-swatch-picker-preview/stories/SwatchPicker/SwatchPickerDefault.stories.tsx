@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SwatchPicker, ColorSwatch, SwatchPickerSelectEventHandler } from '@fluentui/react-swatch-picker-preview';
+import { SwatchPicker, ColorSwatch, SwatchPickerOnSelectEventHandler } from '@fluentui/react-swatch-picker-preview';
 import { makeStyles, shorthands } from '@fluentui/react-components';
 
 const useStyles = makeStyles({

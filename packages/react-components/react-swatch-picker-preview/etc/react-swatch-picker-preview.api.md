@@ -43,11 +43,6 @@ export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwat
     selected: boolean;
 };
 
-// @public (undocumented)
-export const imageCSSVars: {
-    swatchImage: string;
-};
-
 // @public
 export const ImageSwatch: ForwardRefComponent<ImageSwatchProps>;
 
