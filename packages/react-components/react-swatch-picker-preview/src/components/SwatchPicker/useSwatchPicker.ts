@@ -61,9 +61,9 @@ export const useSwatchPicker_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
-        ...rest,
-        role: role ?? 'radiogroup',
+        role: 'radiogroup',
         ...focusAttributes,
+        ...rest,
       }),
       { elementType: 'div' },
     ),
