@@ -58,6 +58,7 @@ export const useNavCategoryItem_unstable = (
   return {
     open,
     value,
+    selected,
     // TODO add appropriate props/defaults
     components: {
       root: 'button',
@@ -82,7 +83,6 @@ export const useNavCategoryItem_unstable = (
       },
       elementType: 'span',
     }),
-    selected,
     // button: useARIAButtonProps(buttonSlot.as, buttonSlot),
     // button: slot.always(
     //   getIntrinsicElementProps('button', {

@@ -27,9 +27,7 @@ const useContentStyles = makeStyles({
   closed: {
     transform: 'rotate(90deg)',
   },
-  selected: {
-    ...typographyStyles.body1Strong,
-  },
+  selected: typographyStyles.body1Strong,
 });
 
 /**
