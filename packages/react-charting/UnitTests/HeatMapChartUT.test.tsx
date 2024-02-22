@@ -7,8 +7,8 @@ import { render } from '@testing-library/react';
 import { dataToBuffer } from 'memfs/lib/volume';
 import { XAxisTypes, YAxisType } from '../src/utilities/index';
 
-const { Timezone } = require('../scripts/constants');
 const env = require('../config/tests');
+const runTest = env === 'TEST' ? describe : describe.skip;
 
 const emptyData: IHeatMapChartData[] = [];
 const domainValuesForColorScale = [0, 600];
