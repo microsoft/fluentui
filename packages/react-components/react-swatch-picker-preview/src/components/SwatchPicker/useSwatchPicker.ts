@@ -41,9 +41,12 @@ export const useSwatchPicker_unstable = (
     spacing = 'medium',
     ...rest
   } = props;
+
+  const isGrid = layout === 'grid';
+
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
-    axis: layout === 'grid' ? 'grid-linear' : 'both',
+    axis: isGrid ? 'grid-linear' : 'both',
     memorizeCurrent: true,
   });
 
@@ -77,6 +80,7 @@ export const useSwatchPicker_unstable = (
       { elementType: 'div' },
     ),
     layout,
+    isGrid,
     requestSelectionChange,
     selectedValue,
     size,

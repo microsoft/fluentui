@@ -19,31 +19,30 @@ const { color } = swatchCSSVars;
  * Styles for the root slot
  */
 const useStyles = makeResetStyles({
-  position: 'relative',
+  display: 'inline-flex',
   boxSizing: 'border-box',
-  border: 'none',
-  padding: 0,
   background: `var(${color})`,
   ':hover': {
     cursor: 'pointer',
-    outline: `${tokens.strokeWidthThick} solid ${tokens.colorBrandStroke1}`,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorBrandBackgroundInverted}`,
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorBrandBackgroundInverted}`,
+    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandStroke1),
   },
   ':hover:active': {
-    outline: `${tokens.strokeWidthThick} solid ${tokens.colorBrandStroke1}`,
-    border: `${tokens.strokeWidthThick} solid ${tokens.colorBrandBackgroundInverted}`,
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorBrandBackgroundInverted}`,
+    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
   },
-  ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
+  ...createFocusOutlineStyle({
+    style: {
+      outlineRadius: tokens.borderRadiusNone,
+    },
+    selector: 'focus-within',
+  }),
 });
 
 const useButtonStyles = makeResetStyles({
-  position: 'absolute',
-  left: 0,
-  top: 0,
   width: '100%',
   height: '100%',
   boxSizing: 'border-box',
-  margin: 0,
   opacity: 0,
   ':hover': {
     cursor: 'pointer',
@@ -52,15 +51,15 @@ const useButtonStyles = makeResetStyles({
 
 const useStylesSelected = makeStyles({
   selected: {
-    ...shorthands.outline(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
-    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandBackgroundInverted),
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorBrandBackgroundInverted}`,
+    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
     ':hover': {
-      ...shorthands.outline(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
-      ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandBackgroundInverted),
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorBrandBackgroundInverted}`,
+      ...shorthands.border(tokens.strokeWidthThickest, 'solid', tokens.colorBrandStroke1),
     },
     ':hover:active': {
-      ...shorthands.outline(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
-      ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandBackgroundInverted),
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorBrandBackgroundInverted}`,
+      ...shorthands.border(tokens.strokeWidthThickest, 'solid', tokens.colorBrandStroke1),
     },
   },
 });

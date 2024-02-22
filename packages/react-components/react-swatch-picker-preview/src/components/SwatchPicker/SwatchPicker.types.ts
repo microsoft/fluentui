@@ -67,4 +67,6 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
  */
 export type SwatchPickerState = ComponentState<SwatchPickerSlots> &
   SwatchPickerContextValue &
-  Pick<SwatchPickerProps, 'layout' | 'size' | 'shape' | 'spacing'>;
+  Pick<SwatchPickerProps, 'layout' | 'size' | 'shape' | 'spacing'> & {
+    isGrid: boolean;
+  };
