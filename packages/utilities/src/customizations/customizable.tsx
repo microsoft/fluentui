@@ -5,19 +5,9 @@ import { CustomizerContext } from './CustomizerContext';
 import { concatStyleSets, makeShadowConfig } from '@fluentui/merge-styles';
 import { MergeStylesShadowRootConsumer } from '../shadowDom/MergeStylesShadowRootContext';
 import { getWindow } from '../dom/getWindow';
-import { memoizeFunction } from '../memoize';
 import { WindowContext } from '@fluentui/react-window-provider';
 import type { ICustomizerContext } from './CustomizerContext';
 import type { ShadowConfig } from '@fluentui/merge-styles';
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const getStyles = memoizeFunction((defaultStyles: any, componentStyles: any, shadowConfig: ShadowConfig): any => {
-  return {
-    ...defaultStyles,
-    ...componentStyles,
-    __shadowConfig__: shadowConfig,
-  };
-});
 
 export function customizable(
   scope: string,
@@ -33,6 +23,9 @@ export function customizable(
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       private _styleCache: { default?: any; component?: any; merged?: any } = {};
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      private _styleCacheNoConcat: { default?: any; component?: any; merged?: any; __shadowConfig__?: ShadowConfig } =
+        {};
 
       private _shadowConfig: ShadowConfig | undefined;
 
@@ -95,13 +88,28 @@ export function customizable(
                       );
                     }
 
-                    const styles = getStyles(defaultProps.styles, componentProps.styles, this._shadowConfig);
-                    // const styles = {
-                    //   ...defaultProps.styles,
-                    //   ...componentProps.styles,
-                    //   __shadowConfig__: this._shadowConfig,
-                    // };
-                    return <ComposedComponent {...defaultProps} {...componentProps} styles={styles} />;
+                    if (
+                      this._styleCacheNoConcat.default !== defaultProps.styles ||
+                      this._styleCacheNoConcat.component !== componentProps.styles ||
+                      this._styleCacheNoConcat.__shadowConfig__ !== this._shadowConfig
+                    ) {
+                      this._styleCacheNoConcat.default = defaultProps.styles;
+                      this._styleCacheNoConcat.component = componentProps.styles;
+                      this._styleCacheNoConcat.__shadowConfig__ = this._shadowConfig;
+
+                      this._styleCacheNoConcat.merged = {
+                        ...defaultProps.styles,
+                        ...componentProps.styles,
+                        __shadowConfig__: this._shadowConfig,
+                      };
+                    }
+                    return (
+                      <ComposedComponent
+                        {...defaultProps}
+                        {...componentProps}
+                        styles={this._styleCacheNoConcat.merged}
+                      />
+                    );
                   }}
                 </CustomizerContext.Consumer>
               );
