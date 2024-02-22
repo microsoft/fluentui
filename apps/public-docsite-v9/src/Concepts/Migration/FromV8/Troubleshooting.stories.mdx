@@ -46,7 +46,22 @@ function App() {
 ## "I tried uing a layered v8 component like Callout in a layered v9 component like Dialog and my Callout appears beneath my Dialog. What's going on?"
 
 Both v9 and v8 layers set a `z-index: 10000` by default, which means the document order will resolve their z-positioning. This can lead to inconsistent behavior because z-positioning depends on the order in which elements are opened.
-To work around this set the `z-index` for one of the layers differently to ensure the correct layering. For example, for a v9 `Dialog` that contains a v8 `Callout` you can set the `Dialog`'s `z-index` to `9999` to ensure it is always beneath the `Callout`.
+Use `PortalMountNodeProvider` to handle this issue.
+
+```jsx
+import { FluentProvider, PortalMountNodeProvider } from '@fluentui/react-components';
+
+function App() {
+  // Get a reference to the v8 layer host
+  const mountNode = document.getElementById('fluent-default-layer-host');
+
+  return (
+    <FluentProvider>
+      <PortalMountNodeProvider mountNode={mountNode}>{/* your components */}</PortalMountNodeProvider>
+    </FluentProvider>
+  );
+}
+```
 
 ## "I managed to get the theme working but the components look different than they did previously, why is that?"
 
@@ -59,3 +74,7 @@ The styling story in version 9 is very different to what existed in version 8. F
 We are also moving away from `mergeStyles` in favor of `makeStyles` from [`@griffel/react`](https://github.com/microsoft/griffel), a new in-house CSS-in-JS solution that allows for things like atomic classes and build-time optimization of styles.
 
 If you want to learn more, read our [guide on how to style components](?path=/story/concepts-developer-styling-components--page).
+
+```
+
+```
