@@ -37,8 +37,7 @@
     "@fluentui/scripts-jest": "*",
     "@fluentui/scripts-tasks": "*",
     "@fluentui/scripts-webpack": "*",
-    "jest-canvas-mock": "2.4.0",
-    "monosize": "0.2.1"
+    "jest-canvas-mock": "2.4.0"
   },
   "dependencies": {
     "@fluentui/react-focus": "^8.8.40",
