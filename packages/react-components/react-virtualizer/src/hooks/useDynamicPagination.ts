@@ -2,6 +2,12 @@ import * as React from 'react';
 import { VirtualizerDynamicPaginationProps } from './hooks.types';
 import { useRef } from 'react';
 
+/**
+ * Optional hook that will enable pagination on the virtualizer so that it 'autoscrolls' to an items exact position
+ * Sizes are dynamic so we require a progressive sizing array (passed in from Dynamic virtualizer hooks)
+ * On short scrolls, we will go at minimum to the next/previous item so that arrow pagination works
+ * All VirtualizerDynamicPaginationProps can be grabbed from dynamic Virtualizer hooks externally and passed in
+ */
 export const useDynamicVirtualizerPagination = (
   virtualizerProps: VirtualizerDynamicPaginationProps,
   paginationEnabled: Boolean = true,
@@ -31,6 +37,14 @@ export const useDynamicVirtualizerPagination = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  /**
+   * Handle scroll stop event and paginate to the closest item
+   * If the closest item is the same as the previous scroll end
+   * we paginate to the next/previous one based on direction
+   *
+   * Users/Virtualizer-Hooks must pass in a cumulative array of sizes
+   * This prevents the need to recalculate and ensures size arrays are synced externally
+   */
   const onScrollEnd = React.useCallback(() => {
     if (!scrollContainer.current || !paginationEnabled || !progressiveItemSizes?.current) {
       // No container found
@@ -87,6 +101,9 @@ export const useDynamicVirtualizerPagination = (
     lastIndexScrolled.current = nextItem;
   }, [paginationEnabled, currentIndex, scrollContainer, virtualizerLength, axis, progressiveItemSizes]);
 
+  /**
+   * On scroll timer that will continuously delay callback until scrolling stops
+   */
   const onScroll = React.useCallback(
     event => {
       if (timeoutRef.current) {
@@ -97,6 +114,10 @@ export const useDynamicVirtualizerPagination = (
     [onScrollEnd],
   );
 
+  /**
+   * Pagination ref will ensure we attach listeners to containers on change
+   * It is returned from hook and merged into the scroll container externally
+   */
   const paginationRef = React.useCallback(
     (instance: HTMLElement | HTMLDivElement | null) => {
       if (!paginationEnabled) {

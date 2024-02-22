@@ -2,6 +2,12 @@ import * as React from 'react';
 import { VirtualizerStaticPaginationProps } from './hooks.types';
 import { useRef } from 'react';
 
+/**
+ * Optional hook that will enable pagination on the virtualizer so that it 'autoscrolls' to an items exact position
+ * Sizes are uniform/static, we round to the nearest item on long scrolls
+ * On short scrolls, we will go at minimum to the next/previous item so that arrow pagination works
+ * All VirtualizerStaticPaginationProps can be grabbed from Virtualizer hooks externally and passed in
+ */
 export const useStaticVirtualizerPagination = (
   virtualizerProps: VirtualizerStaticPaginationProps,
   paginationEnabled: Boolean = true,
@@ -32,6 +38,11 @@ export const useStaticVirtualizerPagination = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  /**
+   * Handle scroll stop event and paginate to the closest item
+   * If the closest item is the same as the previous scroll end
+   * we paginate to the next/previous one based on direction
+   */
   const onScrollEnd = React.useCallback(() => {
     if (!scrollContainer.current || !paginationEnabled) {
       // No container found
@@ -67,6 +78,9 @@ export const useStaticVirtualizerPagination = (
     lastIndexScrolled.current = nextItem;
   }, [paginationEnabled, axis, itemSize]);
 
+  /**
+   * On scroll timer that will continuously delay callback until scrolling stops
+   */
   const onScroll = React.useCallback(
     event => {
       if (timeoutRef.current) {
@@ -77,6 +91,10 @@ export const useStaticVirtualizerPagination = (
     [onScrollEnd],
   );
 
+  /**
+   * Pagination ref will ensure we attach listeners to containers on change
+   * It is returned from hook and merged into the scroll container externally
+   */
   const paginationRef = React.useCallback(
     (instance: HTMLElement | HTMLDivElement | null) => {
       if (!paginationEnabled) {
