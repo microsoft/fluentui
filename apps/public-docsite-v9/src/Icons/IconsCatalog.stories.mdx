@@ -1,9 +1,9 @@
 import { Meta } from '@storybook/addon-docs';
 import { Spinner } from '@fluentui/react-spinner';
 
-<Meta title="Concepts/Developer/Icons/Icons Catalog" />
+<Meta title="Icons/Catalog" />
 
-### Available Icons
+## Icons catalog
 
 This page contains a list of available icons under `@fluentui/react-icons` package. To use icons install the package and select an icon to use.
 
@@ -18,5 +18,5 @@ function App() {
 ```
 
 <React.Suspense fallback={<Spinner label="Loading..." />}>
-  {React.createElement(React.lazy(() => import('../../../src/Concepts/Icons/ReactIconGrid')))}
+  {React.createElement(React.lazy(() => import('../DocsComponents/ReactIconGrid.stories')))}
 </React.Suspense>
