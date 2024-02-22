@@ -77,8 +77,7 @@ export const colorStatusTokens: ColorStatusTokens = Object.entries(statusColorMa
 );
 
 // one-off overrides for colorStatus tokens
-colorStatusTokens.colorStatusDangerForeground1 = mappedStatusColors[statusColorMapping.danger].tint40;
-colorStatusTokens.colorStatusDangerForeground3 = mappedStatusColors[statusColorMapping.danger].tint30;
+colorStatusTokens.colorStatusDangerForeground3 = mappedStatusColors[statusColorMapping.danger].tint40;
 colorStatusTokens.colorStatusDangerBorder2 = mappedStatusColors[statusColorMapping.danger].tint30;
 colorStatusTokens.colorStatusSuccessForeground3 = mappedStatusColors[statusColorMapping.success].tint40;
 colorStatusTokens.colorStatusSuccessBorder2 = mappedStatusColors[statusColorMapping.success].tint40;
