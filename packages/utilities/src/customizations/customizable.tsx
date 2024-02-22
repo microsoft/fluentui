@@ -3,12 +3,21 @@ import { Customizations } from './Customizations';
 import { hoistStatics } from '../hoistStatics';
 import { CustomizerContext } from './CustomizerContext';
 import { concatStyleSets, makeShadowConfig } from '@fluentui/merge-styles';
-import type { ICustomizerContext } from './CustomizerContext';
 import { MergeStylesShadowRootConsumer } from '../shadowDom/MergeStylesShadowRootContext';
-import type { ShadowConfig } from '@fluentui/merge-styles';
 import { getWindow } from '../dom/getWindow';
-// eslint-disable-next-line
+import { memoizeFunction } from '../memoize';
 import { WindowContext } from '@fluentui/react-window-provider';
+import type { ICustomizerContext } from './CustomizerContext';
+import type { ShadowConfig } from '@fluentui/merge-styles';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const getStyles = memoizeFunction((defaultStyles: any, componentStyles: any, shadowConfig: ShadowConfig): any => {
+  return {
+    ...defaultStyles,
+    ...componentStyles,
+    __shadowConfig__: shadowConfig,
+  };
+});
 
 export function customizable(
   scope: string,
@@ -86,11 +95,12 @@ export function customizable(
                       );
                     }
 
-                    const styles = {
-                      ...defaultProps.styles,
-                      ...componentProps.styles,
-                      __shadowConfig__: this._shadowConfig,
-                    };
+                    const styles = getStyles(defaultProps.styles, componentProps.styles, this._shadowConfig);
+                    // const styles = {
+                    //   ...defaultProps.styles,
+                    //   ...componentProps.styles,
+                    //   __shadowConfig__: this._shadowConfig,
+                    // };
                     return <ComposedComponent {...defaultProps} {...componentProps} styles={styles} />;
                   }}
                 </CustomizerContext.Consumer>
