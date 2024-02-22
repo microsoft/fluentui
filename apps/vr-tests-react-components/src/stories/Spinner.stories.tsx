@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Spinner } from '@fluentui/react-spinner';
+import { Spinner, spinnerClassNames } from '@fluentui/react-spinner';
 import { tokens } from '@fluentui/react-theme';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 import { StoryWright, Steps } from 'storywright';
@@ -10,7 +10,11 @@ const useStyles = makeStyles({
   paused: {
     '& *': {
       animationPlayState: 'paused !important',
-      animationDelay: '-1s !important',
+      animationDelay: 'var(--test-animation-delay, -1s) !important',
+      animationDuration: '1.5s !important',
+    },
+    [`& .${spinnerClassNames.spinner}`]: {
+      animationDuration: '3s !important',
     },
   },
 });
@@ -87,4 +91,11 @@ storiesOf('Spinner converged', module)
       includeHighContrast: true,
       includeDarkMode: true,
     },
-  );
+  )
+  .addStory('Animation', () => (
+    <div className={useStyles().paused} style={{ display: 'flex', columnGap: '5px' }}>
+      {Array.from({ length: 15 }).map((_, i) => (
+        <Spinner key={i} style={{ '--test-animation-delay': `-${0.1 * i}s` } as React.CSSProperties} />
+      ))}
+    </div>
+  ));

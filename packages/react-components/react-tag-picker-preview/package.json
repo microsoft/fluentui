@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-swatch-picker-preview",
+  "name": "@fluentui/react-tag-picker-preview",
   "version": "0.0.0",
   "private": true,
   "description": "New fluentui react package",
@@ -7,6 +7,12 @@
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": false,
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -31,20 +37,18 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-context-selector": "^9.1.52",
     "@fluentui/react-jsx-runtime": "^9.0.30",
     "@fluentui/react-shared-contexts": "^9.14.0",
-    "@fluentui/react-tabster": "^9.19.1",
     "@fluentui/react-theme": "^9.1.16",
     "@fluentui/react-utilities": "^9.18.1",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0"
   },
   "exports": {
     ".": {
@@ -60,11 +64,5 @@
       "major",
       "prerelease"
     ]
-  },
-  "files": [
-    "*.md",
-    "dist/*.d.ts",
-    "lib",
-    "lib-commonjs"
-  ]
+  }
 }
