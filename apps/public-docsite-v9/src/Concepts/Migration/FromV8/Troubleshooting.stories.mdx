@@ -43,6 +43,11 @@ function App() {
 }
 ```
 
+## "I tried uing a layered v8 component like Callout in a layered v9 component like Dialog and my Callout appears beneath my Dialog. What's going on?"
+
+Both v9 and v8 layers set a `z-index: 10000` by default, which means the document order will resolve their z-positioning. This can lead to inconsistent behavior because z-positioning depends on the order in which elements are opened.
+To work around this set the `z-index` for one of the layers differently to ensure the correct layering. For example, for a v9 `Dialog` that contains a v8 `Callout` you can set the `Dialog`'s `z-index` to `9999` to ensure it is always beneath the `Callout`.
+
 ## "I managed to get the theme working but the components look different than they did previously, why is that?"
 
 We are modernizing our components in version 9 to adhere to the latest guidelines in the Fluent Design Language. That is the reason for any visual differences you might notice.
