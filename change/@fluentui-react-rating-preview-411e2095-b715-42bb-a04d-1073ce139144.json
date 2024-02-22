@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: enforce integer values for RatingDisplay count prop",
+  "packageName": "@fluentui/react-rating-preview",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
