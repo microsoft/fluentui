@@ -1,6 +1,9 @@
 import * as React from 'react';
 import {
+  dispatchGroupperMoveFocusEvent,
+  dispatchMoverMoveFocusEvent,
   TabsterDOMAttribute,
+  TabsterTypes,
   useArrowNavigationGroup,
   useFocusableGroup,
   useFocusFinders,
@@ -9,7 +12,7 @@ import {
 import { getIntrinsicElementProps, slot, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
 import type { ListItemProps, ListItemState } from './ListItem.types';
 import { useListContext_unstable } from '../List/listContext';
-import { Enter, Escape, keyCodes, Space } from '@fluentui/keyboard-keys';
+import { Enter, Escape, ArrowUp, ArrowDown, keyCodes, Space } from '@fluentui/keyboard-keys';
 import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-checkbox';
 import { useIndicatorStyle } from './useListItemStyles.styles';
 
@@ -103,31 +106,13 @@ export const useListItem_unstable = (
         pressEscape(e.target as HTMLElement);
       }
 
-      if (['ArrowUp', 'ArrowDown'].includes(e.key)) {
-        if (!e.currentTarget.parentElement) {
-          return;
-        }
-        // Prevents scrolling for ArrowUp/ArrowDown
+      if (e.key === ArrowDown || e.key === ArrowUp) {
         e.preventDefault();
+        // Press ESC on the original target to get focus to the parent group (List)
+        dispatchGroupperMoveFocusEvent(e.target as HTMLElement, TabsterTypes.GroupperMoveFocusActions.Escape);
 
-        const focusableEls = findAllFocusable(
-          e.currentTarget.parentElement,
-          el => el === e.currentTarget || !e.currentTarget.contains(el),
-        );
-        const currentIndex = focusableEls.indexOf(e.currentTarget as HTMLElement);
-
-        if (e.key === 'ArrowUp') {
-          const prevItem = focusableEls[currentIndex - 1];
-          prevItem && (e.currentTarget as HTMLElement).previousSibling === prevItem
-            ? prevItem.focus()
-            : pressEscape(e.target as HTMLElement);
-        }
-        if (e.key === 'ArrowDown') {
-          const nextItem = focusableEls[currentIndex + 1];
-          nextItem && (e.currentTarget as HTMLElement).nextSibling === nextItem
-            ? nextItem.focus()
-            : pressEscape(e.target as HTMLElement);
-        }
+        // Now dispatch the original key to move up or down in the list
+        dispatchMoverMoveFocusEvent(e.currentTarget as HTMLElement, TabsterTypes.MoverKeys[e.key]);
       }
     }
 
