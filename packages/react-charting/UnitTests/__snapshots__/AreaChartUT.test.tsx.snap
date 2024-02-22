@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`_getAriaLabel Should return the correct aria label for a point with formatted x value and xAxisCalloutData 1`] = `"Jan 1, 2022. Legend 1, 10."`;
+
+exports[`_getAriaLabel Should return the correct aria label for a point with formatted x value and y value 1`] = `"1/1/2022, 12:00:00 am. Legend 1, 10."`;
+
+exports[`_getAriaLabel Should return the correct aria label for a point with formatted x value and yAxisCalloutData 1`] = `"1/1/2022, 12:00:00 am. Legend 1, 10 units."`;

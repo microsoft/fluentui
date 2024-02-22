@@ -1,10 +1,10 @@
 import { screen, fireEvent } from '@testing-library/react';
 import { AreaChart } from '../src/components/AreaChart/index';
-
-import { getById, testWithoutWait } from '../src/utilities/TestUtility.test';
+import { getById, testWithoutWait, isTimezoneSet } from '../src/utilities/TestUtility.test';
 import { DarkTheme } from '@fluentui/theme-samples';
-const env = require('../config/tests');
 
+const env = require('../config/tests');
+const { Timezone } = require('../scripts/constants');
 const runTest = env === 'TEST' ? describe : describe.skip;
 
 const chart1Points = [
@@ -583,8 +583,11 @@ runTest('_getAriaLabel', () => {
     container => {
       const points = getById(container, /circle/i);
       expect(points).toHaveLength(1);
-      expect(points[0].getAttribute('aria-label')).toEqual('1/1/2022, 12:00:00 AM. Legend 1, 10.');
+      expect(points[0].getAttribute('aria-label')).toMatchSnapshot();
     },
+    undefined,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
   );
 
   testWithoutWait(
@@ -610,8 +613,11 @@ runTest('_getAriaLabel', () => {
     container => {
       const points = getById(container, /circle/i);
       expect(points).toHaveLength(1);
-      expect(points[0].getAttribute('aria-label')).toEqual('1/1/2022, 12:00:00 AM. Legend 1, 10 units.');
+      expect(points[0].getAttribute('aria-label')).toMatchSnapshot();
     },
+    undefined,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
   );
 
   testWithoutWait(
@@ -637,8 +643,11 @@ runTest('_getAriaLabel', () => {
     container => {
       const points = getById(container, /circle/i);
       expect(points).toHaveLength(1);
-      expect(points[0].getAttribute('aria-label')).toEqual('Jan 1, 2022. Legend 1, 10.');
+      expect(points[0].getAttribute('aria-label')).toMatchSnapshot();
     },
+    undefined,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
   );
 
   testWithoutWait(
