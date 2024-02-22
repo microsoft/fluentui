@@ -1,5 +1,6 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { NavCategoryItemContextValue } from '../NavCategoryItemContext';
+
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type NavCategoryItemContextValues = {
   navCategoryItem: NavCategoryItemContextValue;
@@ -33,4 +34,10 @@ export type NavCategoryItemProps = ComponentProps<Partial<NavCategoryItemSlots>>
 /**
  * State used in rendering NavCategoryItem
  */
-export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> & NavCategoryItemContextValue;
+export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> &
+  NavCategoryItemContextValue & {
+    /**
+     * If this navCategoryItem is selected
+     */
+    selected: boolean;
+  };
