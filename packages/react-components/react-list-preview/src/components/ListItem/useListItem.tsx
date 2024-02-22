@@ -60,7 +60,7 @@ export const useListItem_unstable = (
 
   validateProperElementTypes(parentRenderedAs, renderedAs);
 
-  const { findFirstFocusable, findAllFocusable } = useFocusFinders();
+  const { findFirstFocusable } = useFocusFinders();
 
   const baseIndicatorStyles = useIndicatorStyle();
 
