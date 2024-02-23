@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { slot, useEventCallback, getPartitionedNativeProps } from '@fluentui/react-utilities';
+import { slot, useEventCallback, getIntrinsicElementProps } from '@fluentui/react-utilities';
 import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
-import { useFocusWithin } from '@fluentui/react-tabster';
 import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
 import { swatchCSSVars } from './useColorSwatchStyles.styles';
 
@@ -42,45 +41,47 @@ export const useColorSwatch_unstable = (
         'aria-checked': selected,
       };
 
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'button',
-    excludedPropNames: ['value', 'color', 'role'],
-  });
-
   const rootVariables = {
     [swatchCSSVars.color]: color,
   };
 
-  const root = slot.always(props.root, {
-    defaultProps: {
-      ref: useFocusWithin<HTMLDivElement>(),
-      // role: props.role ?? role,
-      // ...a11yProps,
-      ...nativeProps.root,
-    },
-    elementType: 'div',
-  });
+  // const root = slot.always(props.root, {
+  //   defaultProps: {
+  //     ref: useFocusWithin<HTMLDivElement>(),
+  //     // role: props.role ?? role,
+  //     // ...a11yProps,
+  //     ...nativeProps.root,
+  //   },
+  //   elementType: 'div',
+  // });
 
-  const button = slot.always(props.button, {
-    defaultProps: {
-      ref,
-      type: 'button',
-      role: props.role ?? role,
-      ...a11yProps,
-      onClick,
-      ...nativeProps.primary,
-    },
-    elementType: 'button',
-  });
+  // const button = slot.always(props.button, {
+  //   defaultProps: {
+  //     ref,
+  //     type: 'button',
+  //     role: props.role ?? role,
+  //     ...a11yProps,
+  //     onClick,
+  //     ...nativeProps.primary,
+  //   },
+  //   elementType: 'button',
+  // });
 
   const state: ColorSwatchState = {
     components: {
-      root: 'div',
-      button: 'button',
+      root: 'button',
     },
-    root,
-    button,
+    root: slot.always(
+      getIntrinsicElementProps('button', {
+        ref,
+        type: 'button',
+        role: props.role ?? role,
+        ...a11yProps,
+        onClick,
+        ...props,
+      }),
+      { elementType: 'button' },
+    ),
     size,
     shape,
     selected,
