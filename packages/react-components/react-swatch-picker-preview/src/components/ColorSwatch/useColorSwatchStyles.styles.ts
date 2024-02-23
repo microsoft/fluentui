@@ -18,34 +18,57 @@ const { color } = swatchCSSVars;
  * Styles for the root slot
  */
 const useStyles = makeResetStyles({
-  borderColor: tokens.colorTransparentStroke,
+  border: 'none',
   background: `var(${color})`,
   ':hover': {
     cursor: 'pointer',
-    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorNeutralForegroundOnBrand}`,
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus1}`,
     ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandStroke1),
   },
   ':hover:active': {
-    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralForegroundOnBrand}`,
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus1}`,
     ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
   },
   ...createCustomFocusIndicatorStyle({
-    outlineColor: 'transparent',
-    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorNeutralForegroundOnBrand}`,
+    outline: 'none',
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus1}`,
     ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorStrokeFocus2),
   }),
+
+  // High contrast styles
+
+  '@media (forced-colors: active)': {
+    ':focus': {
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus1}`,
+      ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
+    },
+
+    ':hover': {
+      backgroundColor: 'HighlightText',
+      borderColor: 'Highlight',
+      color: 'Highlight',
+      forcedColorAdjust: 'none',
+    },
+
+    ':hover:active': {
+      backgroundColor: 'HighlightText',
+      borderColor: 'Highlight',
+      color: 'Highlight',
+      forcedColorAdjust: 'none',
+    },
+  },
 });
 
 const useStylesSelected = makeStyles({
   selected: {
-    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorBrandBackgroundInverted}`,
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus1}`,
     ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
     ':hover': {
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorBrandBackgroundInverted}`,
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus1}`,
       ...shorthands.border(tokens.strokeWidthThickest, 'solid', tokens.colorBrandStroke1),
     },
     ':hover:active': {
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorBrandBackgroundInverted}`,
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus1}`,
       ...shorthands.border(tokens.strokeWidthThickest, 'solid', tokens.colorBrandStroke1),
     },
   },

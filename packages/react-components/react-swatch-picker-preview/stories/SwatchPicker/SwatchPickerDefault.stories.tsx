@@ -23,7 +23,7 @@ export const Default = () => {
 
   return (
     <>
-      <SwatchPicker aria-label="SwatchPicker default" selectedValue={selectedValue} onSelectionChange={handleSelect}>
+      <SwatchPicker aria-label="Standard colors palette" selectedValue={selectedValue} onSelectionChange={handleSelect}>
         <ColorSwatch color="#FF1921" value="FF1921" aria-label="red" />
         <ColorSwatch color="#FFC12E" value="FFC12E" aria-label="orange" />
         <ColorSwatch color="#FEFF37" value="FEFF37" aria-label="yellow" />
@@ -31,7 +31,6 @@ export const Default = () => {
         <ColorSwatch color="#00B053" value="00B053" aria-label="green" />
         <ColorSwatch color="#00AFED" value="00AFED" aria-label="light blue" />
         <ColorSwatch color="#006EBD" value="006EBD" aria-label="blue" />
-        <ColorSwatch color="#011F5E" value="011F5E" aria-label="dark blue" />
         <ColorSwatch color="#712F9E" value="712F9E" aria-label="purple" />
       </SwatchPicker>
       <div
