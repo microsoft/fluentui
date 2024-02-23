@@ -32,10 +32,10 @@ describe('Unit test to convert data to localized string', () => {
   test('Should return localized Hello World when data is string Hello World', () => {
     expect(utils.convertToLocaleString('Hello World')).toBe('Hello World');
   });
-  test('Should return empty string when data is empty string', () => {
+  test('Should return 0 as string when data is empty string', () => {
     expect(utils.convertToLocaleString('')).toBe('0');
   });
-  test('Should return localized whitespace string when data is single whitespace string', () => {
+  test('Should return 0 as string when data is single whitespace string', () => {
     expect(utils.convertToLocaleString(' ')).toBe('0');
   });
   test('Should return the localised data in the given culture when input data is a string', () => {
