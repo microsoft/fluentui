@@ -1,5 +1,4 @@
-import { makeStyles, Persona, shorthands, SelectionItemId } from '@fluentui/react-components';
-import { List, ListItem } from '@fluentui/react-list-preview';
+import { makeStyles, Persona, shorthands, SelectionItemId, List, ListItem } from '@fluentui/react-components';
 
 import * as React from 'react';
 const names = [
@@ -74,11 +73,8 @@ export const SingleActionSelection = () => {
 };
 
 SingleActionSelection.parameters = {
-  title: 'aaa',
   docs: {
-    title: 'DD',
     description: {
-      title: 'ddd',
       story: [
         'Any List can be selectable. You have an option to control the selection state yourself or let the List manage it for you.',
         '',
