@@ -2,7 +2,7 @@ import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ColorSwatchSlots, ColorSwatchState } from './ColorSwatch.types';
 import { tokens } from '@fluentui/react-theme';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
   root: 'fui-ColorSwatch',
@@ -22,18 +22,17 @@ const useStyles = makeResetStyles({
   background: `var(${color})`,
   ':hover': {
     cursor: 'pointer',
-    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorBrandBackgroundInverted}`,
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorNeutralForegroundOnBrand}`,
     ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandStroke1),
   },
   ':hover:active': {
-    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorBrandBackgroundInverted}`,
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralForegroundOnBrand}`,
     ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
   },
-  ...createFocusOutlineStyle({
-    style: {
-      outlineRadius: tokens.borderRadiusNone,
-    },
-    selector: 'focus-within',
+  ...createCustomFocusIndicatorStyle({
+    outlineColor: 'transparent',
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorNeutralForegroundOnBrand}`,
+    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorStrokeFocus2),
   }),
 });
 
@@ -74,12 +73,21 @@ const useSizeStyles = makeStyles({
 const useShapeStyles = makeStyles({
   rounded: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    }),
   },
   circular: {
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    }),
   },
   square: {
     ...shorthands.borderRadius(tokens.borderRadiusNone),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusNone),
+    }),
   },
 });
 
