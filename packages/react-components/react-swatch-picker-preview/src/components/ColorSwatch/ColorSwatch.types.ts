@@ -19,6 +19,8 @@ export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> &
      * Swatch value
      */
     value: string;
+
+    contrastColor?: string;
   };
 
 /**

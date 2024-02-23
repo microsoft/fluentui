@@ -20,15 +20,15 @@ export const ColorSwatch: ForwardRefComponent<ColorSwatchProps>;
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots>;
 
 // @public
-export type ColorSwatchProps = Omit<ComponentProps<Partial<ColorSwatchSlots>, 'button'>, 'children'> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
+export type ColorSwatchProps = ComponentProps<ColorSwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
     color: string;
     value: string;
+    contrastColor?: string;
 };
 
 // @public (undocumented)
 export type ColorSwatchSlots = {
-    root: NonNullable<Slot<'div'>>;
-    button: NonNullable<Slot<'button'>>;
+    root: NonNullable<Slot<'button'>>;
 };
 
 // @public
@@ -45,6 +45,7 @@ export const renderSwatchPicker_unstable: (state: SwatchPickerState, contextValu
 // @public (undocumented)
 export const swatchCSSVars: {
     color: string;
+    contrastColor: string;
 };
 
 // @public
@@ -87,7 +88,9 @@ export type SwatchPickerSlots = {
 };
 
 // @public
-export type SwatchPickerState = ComponentState<SwatchPickerSlots> & SwatchPickerContextValue & Pick<SwatchPickerProps, 'layout' | 'size' | 'shape' | 'spacing'>;
+export type SwatchPickerState = ComponentState<SwatchPickerSlots> & SwatchPickerContextValue & Pick<SwatchPickerProps, 'layout' | 'size' | 'shape' | 'spacing'> & {
+    isGrid: boolean;
+};
 
 // @public
 export const useColorSwatch_unstable: (props: ColorSwatchProps, ref: React_2.Ref<HTMLButtonElement>) => ColorSwatchState;

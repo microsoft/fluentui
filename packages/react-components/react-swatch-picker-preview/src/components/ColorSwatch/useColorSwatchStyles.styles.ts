@@ -10,37 +10,46 @@ export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
 
 export const swatchCSSVars = {
   color: `--fui-SwatchPicker--color`,
+  contrastColor: `--fui-SwatchPicker--contrastColor`,
 };
 
-const { color } = swatchCSSVars;
+const { color, contrastColor } = swatchCSSVars;
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeResetStyles({
-  border: 'none',
+  border: `1px solid var(${contrastColor})`,
   background: `var(${color})`,
+  boxSizing: 'border-box',
   ':hover': {
     cursor: 'pointer',
-    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus1}`,
-    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandStroke1),
+    border: 'none',
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorBrandStroke1}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
+    // boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus1}`,
+    // ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandStroke1),
   },
   ':hover:active': {
-    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus1}`,
-    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
+    border: 'none',
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorStrokeFocus1}`,
+    // boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus1}`,
+    // ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
   },
   ...createCustomFocusIndicatorStyle({
+    border: 'none',
     outline: 'none',
-    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus1}`,
-    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorStrokeFocus2),
+    // boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus1}`,
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
+    // ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorStrokeFocus2),
   }),
 
   // High contrast styles
 
   '@media (forced-colors: active)': {
     ':focus': {
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus1}`,
-      ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorStrokeFocus1}`,
+      // boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus1}`,
+      // ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
     },
 
     ':hover': {
@@ -61,15 +70,20 @@ const useStyles = makeResetStyles({
 
 const useStylesSelected = makeStyles({
   selected: {
-    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus1}`,
-    ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
+    ...shorthands.border('none'),
+    // boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus1}`,
+    // ...shorthands.border(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
+    ...shorthands.borderColor(tokens.colorBrandStroke1),
     ':hover': {
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus1}`,
-      ...shorthands.border(tokens.strokeWidthThickest, 'solid', tokens.colorBrandStroke1),
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorBrandStroke1}, inset 0 0 0 6px ${tokens.colorStrokeFocus1}`,
+      // boxShadow: `inset 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus1}`,
+      // ...shorthands.border(tokens.strokeWidthThickest, 'solid', tokens.colorBrandStroke1),
     },
     ':hover:active': {
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus1}`,
-      ...shorthands.border(tokens.strokeWidthThickest, 'solid', tokens.colorBrandStroke1),
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorBrandStroke1}, inset 0 0 0 7px ${tokens.colorStrokeFocus1}`,
+      // boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus1}`,
+      // ...shorthands.border(tokens.strokeWidthThickest, 'solid', tokens.colorBrandStroke1),
     },
   },
 });

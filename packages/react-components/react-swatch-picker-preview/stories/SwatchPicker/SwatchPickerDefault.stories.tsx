@@ -24,13 +24,15 @@ export const Default = () => {
   return (
     <>
       <SwatchPicker aria-label="Standard colors palette" selectedValue={selectedValue} onSelectionChange={handleSelect}>
+        <ColorSwatch color="#C11016" value="C11016" aria-label="Dark red" />
         <ColorSwatch color="#FF1921" value="FF1921" aria-label="red" />
-        <ColorSwatch color="#FFC12E" value="FFC12E" aria-label="orange" />
-        <ColorSwatch color="#FEFF37" value="FEFF37" aria-label="yellow" />
-        <ColorSwatch color="#90D057" value="90D057" aria-label="light green" />
-        <ColorSwatch color="#00B053" value="00B053" aria-label="green" />
-        <ColorSwatch color="#00AFED" value="00AFED" aria-label="light blue" />
+        <ColorSwatch color="#FFC12E" value="FFC12E" aria-label="orange" contrastColor="#C38900" />
+        <ColorSwatch color="#FEFF37" value="FEFF37" aria-label="yellow" contrastColor="#989900" />
+        <ColorSwatch color="#90D057" value="90D057" aria-label="light green" contrastColor="#66A52E" />
+        <ColorSwatch color="#00B053" value="00B053" aria-label="green" contrastColor="#008940" />
+        <ColorSwatch color="#00AFED" value="00AFED" aria-label="light blue" contrastColor="#008EC0" />
         <ColorSwatch color="#006EBD" value="006EBD" aria-label="blue" />
+        <ColorSwatch color="#011F5E" value="011F5E" aria-label="dark blue" />
         <ColorSwatch color="#712F9E" value="712F9E" aria-label="purple" />
       </SwatchPicker>
       <div

@@ -17,7 +17,7 @@ export const useColorSwatch_unstable = (
   props: ColorSwatchProps,
   ref: React.Ref<HTMLButtonElement>,
 ): ColorSwatchState => {
-  const { color, value } = props;
+  const { color, value, contrastColor = 'transparent' } = props;
   const size = useSwatchPickerContextValue_unstable(ctx => ctx.size);
   const shape = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
   const isGrid = useSwatchPickerContextValue_unstable(ctx => ctx.isGrid);
@@ -43,6 +43,7 @@ export const useColorSwatch_unstable = (
 
   const rootVariables = {
     [swatchCSSVars.color]: color,
+    [swatchCSSVars.contrastColor]: contrastColor,
   };
 
   // const root = slot.always(props.root, {
