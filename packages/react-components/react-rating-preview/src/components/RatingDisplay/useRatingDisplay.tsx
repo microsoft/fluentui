@@ -61,7 +61,11 @@ export const useRatingDisplay_unstable = (
     }),
     countText: slot.optional(props.countText, {
       renderByDefault: count !== undefined,
-      defaultProps: { children: count && Math.round(count).toLocaleString(), id: countTextId, 'aria-hidden': true },
+      defaultProps: {
+        children: count && count >= 0 && Math.round(count).toLocaleString(),
+        id: countTextId,
+        'aria-hidden': true,
+      },
       elementType: 'span',
     }),
   };
