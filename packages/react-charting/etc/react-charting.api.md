@@ -361,7 +361,6 @@ export interface IChartProps {
     lineChartData?: ILineChartPoints[];
     pointLineOptions?: SVGProps<SVGLineElement>;
     pointOptions?: SVGProps<SVGCircleElement>;
-    SankeyChartData?: ISankeyChartData;
 }
 
 // @public (undocumented)
@@ -1103,8 +1102,12 @@ export interface ISankeyChartAccessibilityProps {
 
 // @public (undocumented)
 export interface ISankeyChartData {
+    // Warning: (ae-forgotten-export) The symbol "SLink" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
     links: SLink[];
+    // Warning: (ae-forgotten-export) The symbol "SNode" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
     nodes: SNode[];
 }
@@ -1115,7 +1118,8 @@ export interface ISankeyChartProps {
     borderColorsForNodes?: string[];
     className?: string;
     colorsForNodes?: string[];
-    data: IChartProps;
+    // Warning: (ae-forgotten-export) The symbol "IChartPropsSankey" needs to be exported by the entry point index.d.ts
+    data: IChartPropsSankey;
     height?: number;
     parentRef?: HTMLElement | null;
     pathColor?: string;
@@ -1503,15 +1507,6 @@ export const SankeyChart: React_2.FunctionComponent<ISankeyChartProps>;
 
 // @public (undocumented)
 export const Shape: React_2.FC<IShapeProps>;
-
-// Warning: (ae-forgotten-export) The symbol "ISNodeExtra" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "ISLinkExtra" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export type SLink = SankeyLink<ISNodeExtra, ISLinkExtra>;
-
-// @public (undocumented)
-export type SNode = SankeyNode<ISNodeExtra, ISLinkExtra>;
 
 // @public
 export const Sparkline: React_2.FunctionComponent<ISparklineProps>;

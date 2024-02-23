@@ -1,8 +1,10 @@
 import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
-import { IChartProps } from '../../types/IDataPoint';
+import { IChartPropsSankey } from '../../types/ISankeyDataPoint';
 
-export type { IChartProps, IDataPoint, ISankeyChartData } from '../../types/IDataPoint';
+export type { IChartProps, IDataPoint } from '../../types/IDataPoint';
+
+export type { ISankeyChartData } from '../../types/ISankeyDataPoint';
 
 /**
  * Sankey Chart properties
@@ -12,7 +14,7 @@ export interface ISankeyChartProps {
   /**
    * Data to render in the chart.
    */
-  data: IChartProps;
+  data: IChartPropsSankey;
 
   /**
    * Width of the chart.
