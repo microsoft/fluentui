@@ -13,7 +13,7 @@ const useStyles = makeStyles({
       animationDelay: 'var(--test-animation-delay, -1s) !important',
       animationDuration: '1.5s !important',
     },
-    [`& .${spinnerClassNames.spinner}`]: {
+    [`& .${spinnerClassNames.spinner}, & .fui-Spinner__Progressbar`]: {
       animationDuration: '3s !important',
     },
   },

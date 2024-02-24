@@ -17,6 +17,8 @@ stats/
 # northstar README lives in packages/fluentui and is automatically copied to react-northstar during build
 packages/fluentui/react-northstar/README.md
 
+monosize-report.md
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
