@@ -43,10 +43,9 @@ const normalizeValues = (index?: NavItemValue | NavItemValue[]): NavItemValue[] 
  * Updates the list of open indexes based on an index that changes
  * @param value - the index that will change
  * @param previousOpenItems - list of current open indexes
- * @param collapsible - if Nav support multiple SubItemGroups closed at the same time
  */
-const updateOpenItems = (value: NavItemValue, previousOpenItems: NavItemValue[], collapsible: boolean) => {
-  return previousOpenItems[0] === value && collapsible ? [] : [value];
+const updateOpenItems = (value: NavItemValue, previousOpenItems: NavItemValue[]) => {
+  return previousOpenItems[0] === value ? [] : [value];
 };
 
 /**
@@ -71,7 +70,7 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
   });
 
   const onRequestNavCategoryItemToggle: EventHandler<OnNavItemSelectData> = useEventCallback((event, data) => {
-    const nextOpenItems = updateOpenItems(data.value, openCategories, false);
+    const nextOpenItems = updateOpenItems(data.value, openCategories);
     onNavCategoryItemToggle?.(event, data);
     setOpenCategories(nextOpenItems);
   });
