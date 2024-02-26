@@ -23,6 +23,22 @@ export const WithNestedSubItemsDefaultSelection = () => {
           <NavSubItem value="11">Eleven</NavSubItem>
         </NavSubItemGroup>
       </NavCategory>
+      <NavCategory value="12">
+        <NavCategoryItem>NavCategoryItem3</NavCategoryItem>
+        <NavSubItemGroup>
+          <NavSubItem value="13">Thirteen</NavSubItem>
+          <NavSubItem value="14">Fourteen</NavSubItem>
+          <NavSubItem value="15">Fifteen</NavSubItem>
+        </NavSubItemGroup>
+      </NavCategory>
+      <NavCategory value="16">
+        <NavCategoryItem>NavCategoryItem4</NavCategoryItem>
+        <NavSubItemGroup>
+          <NavSubItem value="17">Seventeen</NavSubItem>
+          <NavSubItem value="18">Eighteen</NavSubItem>
+          <NavSubItem value="19">Nineteen</NavSubItem>
+        </NavSubItemGroup>
+      </NavCategory>
     </Nav>
   );
 };
