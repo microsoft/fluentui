@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Nav, NavCategory, NavCategoryItem, NavItem, NavSubItem, NavSubItemGroup } from '@fluentui/react-nav-preview';
 
-export const WithNestedSubItemsDefaultSelection = () => {
+export const WithNestedSubItemsWithDefaultSelectionSingleCategory = () => {
   return (
-    <Nav defaultSelectedValue={'7'} defaultSelectedCategoryValue={'4'}>
+    <Nav multiple={false} defaultSelectedValue={'7'} defaultSelectedCategoryValue={'4'}>
       <NavItem value="1">First</NavItem>
       <NavItem value="2">Second</NavItem>
       <NavItem value="3">Third</NavItem>
@@ -21,22 +21,6 @@ export const WithNestedSubItemsDefaultSelection = () => {
           <NavSubItem value="9">Nine</NavSubItem>
           <NavSubItem value="10">Ten</NavSubItem>
           <NavSubItem value="11">Eleven</NavSubItem>
-        </NavSubItemGroup>
-      </NavCategory>
-      <NavCategory value="12">
-        <NavCategoryItem>NavCategoryItem3</NavCategoryItem>
-        <NavSubItemGroup>
-          <NavSubItem value="13">Thirteen</NavSubItem>
-          <NavSubItem value="14">Fourteen</NavSubItem>
-          <NavSubItem value="15">Fifteen</NavSubItem>
-        </NavSubItemGroup>
-      </NavCategory>
-      <NavCategory value="16">
-        <NavCategoryItem>NavCategoryItem4</NavCategoryItem>
-        <NavSubItemGroup>
-          <NavSubItem value="17">Seventeen</NavSubItem>
-          <NavSubItem value="18">Eighteen</NavSubItem>
-          <NavSubItem value="19">Nineteen</NavSubItem>
         </NavSubItemGroup>
       </NavCategory>
     </Nav>

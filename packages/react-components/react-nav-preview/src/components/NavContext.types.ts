@@ -35,6 +35,12 @@ export type NavContextValue = Pick<
    * The list of opened panels by index
    */
   openCategories: NavItemValue[];
+
+  /**
+   * Indicates if Nav supports multiple open Categories at the same time.
+   * @default true, indicating that multiple categories can be open at the same time.
+   */
+  multiple: boolean;
 };
 
 /**

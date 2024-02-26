@@ -53,6 +53,12 @@ export type NavProps = ComponentProps<NavSlots> & {
   selectedCategoryValue?: NavItemValue;
 
   /**
+   * Indicates if Nav supports multiple open Categories at the same time.
+   * @default true, indicating that multiple categories can be open at the same time.
+   */
+  multiple?: boolean;
+
+  /**
    * Callback used by NavCategoryItem to request a change on it's own opened state
    */
   onNavCategoryItemToggle?: EventHandler<OnNavItemSelectData>;
