@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: Add TeachingPopoverCarousel style hooks",
+  "comment": "feat: Deprecate legacy TeachingPopoverCarousel style hooks",
   "packageName": "@fluentui/react-shared-contexts",
   "email": "mifraser@microsoft.com",
   "dependentChangeType": "patch"

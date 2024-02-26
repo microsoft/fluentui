@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "docs: Add TeachingPopoverCarousel style hooks",
+  "comment": "docs: Deprecate unused TeachingPopoverCarousel style hooks",
   "packageName": "@fluentui/react-provider",
   "email": "mifraser@microsoft.com",
   "dependentChangeType": "patch"
