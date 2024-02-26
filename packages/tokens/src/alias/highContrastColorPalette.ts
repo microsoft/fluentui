@@ -22,8 +22,6 @@ const statusColorPaletteTokens = statusSharedColorNames.reduce((acc, sharedColor
 
 // one-off patches
 statusColorPaletteTokens.colorPaletteRedForegroundInverted = hcCanvasText;
-statusColorPaletteTokens.colorPaletteRedBackground3Hover = hcHighlight;
-statusColorPaletteTokens.colorPaletteRedBackground3Pressed = hcHighlight;
 statusColorPaletteTokens.colorPaletteGreenForegroundInverted = hcCanvasText;
 statusColorPaletteTokens.colorPaletteYellowForegroundInverted = hcCanvasText;
 
@@ -62,3 +60,7 @@ export const colorStatusTokens: ColorStatusTokens = Object.entries(statusColorMa
   },
   {} as ColorStatusTokens,
 );
+
+// one-off overrides for colorStatus tokens
+colorStatusTokens.colorStatusDangerBackground3Hover = hcHighlight;
+colorStatusTokens.colorStatusDangerBackground3Pressed = hcHighlight;
