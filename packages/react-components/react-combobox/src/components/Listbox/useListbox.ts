@@ -3,21 +3,21 @@ import {
   getIntrinsicElementProps,
   mergeCallbacks,
   useEventCallback,
-  useMergedRefs,
   slot,
+  useMergedRefs,
 } from '@fluentui/react-utilities';
-import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
+import { useHasParentContext } from '@fluentui/react-context-selector';
 import {
   useActiveDescendant,
   useActiveDescendantContext,
   useHasParentActiveDescendantContext,
 } from '@fluentui/react-aria';
+import type { ListboxProps, ListboxState } from './Listbox.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useOptionCollection } from '../../utils/useOptionCollection';
 import { useSelection } from '../../utils/useSelection';
-import { ComboboxContext } from '../../contexts/ComboboxContext';
 import { optionClassNames } from '../Option/useOptionStyles.styles';
-import type { ListboxProps, ListboxState } from './Listbox.types';
+import { ListboxContext, useListboxContext_unstable } from '../../contexts/ListboxContext';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
 const UNSAFE_noLongerUsed = {
@@ -91,15 +91,15 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
   };
 
   // get state from parent combobox, if it exists
-  const hasComboboxContext = useHasParentContext(ComboboxContext);
-  const comboboxSelectedOptions = useContextSelector(ComboboxContext, ctx => ctx.selectedOptions);
-  const comboboxSelectOption = useContextSelector(ComboboxContext, ctx => ctx.selectOption);
+  const hasListboxContext = useHasParentContext(ListboxContext);
+  const contextSelectedOptions = useListboxContext_unstable(ctx => ctx.selectedOptions);
+  const contextSelectOption = useListboxContext_unstable(ctx => ctx.selectOption);
 
   // without a parent combobox context, provide values directly from Listbox
-  const optionContextValues = hasComboboxContext
+  const optionContextValues = hasListboxContext
     ? {
-        selectedOptions: comboboxSelectedOptions,
-        selectOption: comboboxSelectOption,
+        selectedOptions: contextSelectedOptions,
+        selectOption: contextSelectOption,
         ...UNSAFE_noLongerUsed,
       }
     : {

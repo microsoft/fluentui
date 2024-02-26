@@ -6,7 +6,8 @@ import { Option } from './Option';
 import type { OptionProps } from './Option.types';
 import { isConformant } from '../../testing/isConformant';
 import { optionClassNames } from './useOptionStyles.styles';
-import { ActiveDescendantContextProvider, ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import { ActiveDescendantContextProvider } from '@fluentui/react-aria';
 
 describe('Option', () => {
   isConformant<OptionProps>({
@@ -30,6 +31,9 @@ describe('Option', () => {
       // noop
     },
     setActiveOption() {
+      // noop
+    },
+    onOptionClick() {
       // noop
     },
   };
@@ -204,17 +208,16 @@ describe('Option', () => {
     expect(registerOption).toHaveBeenCalledTimes(2);
   });
 
-  it('calls selectOption and set as active on click', () => {
+  it('focuses the option and calls selectOption on click', () => {
     const selectOption = jest.fn();
-    const testController = { focus: jest.fn() } as unknown as ActiveDescendantImperativeRef;
+    const focus = jest.fn();
     const { getByRole } = render(
-      <ActiveDescendantContextProvider value={{ controller: testController }}>
+      <ActiveDescendantContextProvider value={{ controller: { focus } as unknown as ActiveDescendantImperativeRef }}>
         <ListboxContext.Provider value={{ ...defaultContextValues, selectOption }}>
           <Option id="optionId" value="foo">
             Option 1
           </Option>
         </ListboxContext.Provider>
-        ,
       </ActiveDescendantContextProvider>,
     );
 
@@ -223,8 +226,8 @@ describe('Option', () => {
 
     expect(selectOption).toHaveBeenCalledTimes(1);
     expect(selectOption).toHaveBeenCalledWith(expect.anything(), optionData);
-    expect(testController.focus).toHaveBeenCalledTimes(1);
-    expect(testController.focus).toHaveBeenCalledWith(optionData.id);
+    expect(focus).toHaveBeenCalledTimes(1);
+    expect(focus).toHaveBeenCalledWith('optionId');
   });
 
   describe('checkIcon slot', () => {

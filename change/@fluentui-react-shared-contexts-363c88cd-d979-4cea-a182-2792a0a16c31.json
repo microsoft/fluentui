@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat(swatch-picker): Added plain ColorSwatch sub component.",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "vkozlova@microsoft.com",
+  "dependentChangeType": "patch"
+}
