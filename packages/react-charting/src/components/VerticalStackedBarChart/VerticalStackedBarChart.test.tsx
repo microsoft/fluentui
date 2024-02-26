@@ -266,3 +266,11 @@ describe('Render empty chart aria label div when chart is empty', () => {
     expect(renderedDOM!.length).toBe(1);
   });
 });
+
+test('should render empty chart div when data array is empty', () => {
+  domAct(() => {
+    wrapper = mount(<VerticalStackedBarChart data={[]} />);
+  });
+  const renderedDOM = wrapper!.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+  expect(renderedDOM!.length).toBe(1);
+});

@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: remove monosize devDependency",
-  "packageName": "@fluentui/react-charting",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}
