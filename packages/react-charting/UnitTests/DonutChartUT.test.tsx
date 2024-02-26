@@ -61,11 +61,11 @@ runTest('_addDefaultColors', () => {
       data: emptyChartPoints,
     });
     expect(instance).toBeDefined();
-    const legends = instance._addDefaultColors(pointsNoColors);
-    expect(legends).toHaveLength(3);
-    expect(legends[0].color!).toEqual('#637cef');
-    expect(legends[1].color!).toEqual('#e3008c');
-    expect(legends[2].color!).toEqual('#2aa0a4');
+    const result = instance._addDefaultColors(pointsNoColors);
+    expect(result).toHaveLength(3);
+    expect(result[0].color!).toEqual('#637cef');
+    expect(result[1].color!).toEqual('#e3008c');
+    expect(result[2].color!).toEqual('#2aa0a4');
   });
 
   test('Should return respective colors when color is defined input data', () => {
@@ -73,11 +73,11 @@ runTest('_addDefaultColors', () => {
       data: emptyChartPoints,
     });
     expect(instance).toBeDefined();
-    const legends = instance._addDefaultColors(pointsWithColors);
-    expect(legends).toHaveLength(3);
-    expect(legends[0].color!).toEqual('#637cef');
-    expect(legends[1].color!).toEqual('#637c00');
-    expect(legends[2].color!).toEqual('#637c11');
+    const result = instance._addDefaultColors(pointsWithColors);
+    expect(result).toHaveLength(3);
+    expect(result[0].color!).toEqual('#637cef');
+    expect(result[1].color!).toEqual('#637c00');
+    expect(result[2].color!).toEqual('#637c11');
   });
 });
 
