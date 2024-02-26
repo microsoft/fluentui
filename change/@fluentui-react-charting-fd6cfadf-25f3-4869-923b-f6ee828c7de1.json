@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Filtering data for DonutChart with >=0 instead of >0 to allow zero value cases",
+  "packageName": "@fluentui/react-charting",
+  "email": "shubhabrata08@gmail.com",
+  "dependentChangeType": "patch"
+}
