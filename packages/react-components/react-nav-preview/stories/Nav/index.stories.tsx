@@ -7,6 +7,7 @@ export { Default } from './NavDefault.stories';
 export { WithDefaultSelection } from './NavWithDefaultSelection.stories';
 export { WithNestedSubItems } from './NavWithNestedSubItems.stories';
 export { WithNestedSubItemsDefaultSelection } from './NavWithNestedSubItemsWithDefaultSelection.stories';
+export { WithNestedSubItemsWithDefaultSelectionSingleCategory } from './NavWithNestedSubItemsWithDefaultSelectionSingleCategory.stories';
 
 export default {
   title: 'Preview Components/Nav',

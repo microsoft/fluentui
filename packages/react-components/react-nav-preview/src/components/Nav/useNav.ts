@@ -43,8 +43,17 @@ const normalizeValues = (index?: NavItemValue | NavItemValue[]): NavItemValue[] 
  * Updates the list of open indexes based on an index that changes
  * @param value - the index that will change
  * @param previousOpenItems - list of current open indexes
+ * @param multiple - if Nav supports open categories at the same time
  */
-const updateOpenItems = (value: NavItemValue, previousOpenItems: NavItemValue[]) => {
+const updateOpenItems = (value: NavItemValue, previousOpenItems: NavItemValue[], multiple: boolean) => {
+  if (multiple) {
+    if (previousOpenItems.includes(value)) {
+      return previousOpenItems.filter(i => i !== value);
+    } else {
+      return [...previousOpenItems, value];
+    }
+  }
+
   return previousOpenItems[0] === value ? [] : [value];
 };
 
@@ -58,7 +67,7 @@ const updateOpenItems = (value: NavItemValue, previousOpenItems: NavItemValue[])
  * @param ref - reference to root HTMLDivElement of Nav
  */
 export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>): NavState => {
-  const { onNavItemSelect, onNavCategoryItemToggle } = props;
+  const { onNavItemSelect, onNavCategoryItemToggle, multiple = true } = props;
 
   const innerRef = React.useRef<HTMLElement>(null);
 
@@ -70,7 +79,7 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
   });
 
   const onRequestNavCategoryItemToggle: EventHandler<OnNavItemSelectData> = useEventCallback((event, data) => {
-    const nextOpenItems = updateOpenItems(data.value, openCategories);
+    const nextOpenItems = updateOpenItems(data.value, openCategories, multiple);
     onNavCategoryItemToggle?.(event, data);
     setOpenCategories(nextOpenItems);
   });
