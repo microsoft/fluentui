@@ -35,16 +35,8 @@ These are somewhat sequential, but work can be done as soon as it makes sense.
 
 To make v9 the official current branch, developers need to be able to do everything they could with v8.
 
-Our status as of 2024-02:
-
-- In preview: Rating, SearchBox, TeachingPopover, Motion
-- In compat: Calendar, DatePicker, TimePicker
-- In progress Nav, SwatchPicker, PeoplePicker, Carousel,
-- Not started: Calendar, ColorPickerCompat,
-- On hold: Coachmark
-- Unknown: Chart, Keytips, MarqueeSelection, ActivityItem
-
-Our planning cadence is scheduling component work to get to parity.
+The [Fluent UI React component roadmap](https://github.com/orgs/microsoft/projects/786] shows
+the plan for each component providing parity.
 
 Components specific to one product should be moved into the partner repository. Components with limited shared re-use should be moved into the community contrib repository. Lower-value components or eccentric features should be considered for deprecation.
 
@@ -56,6 +48,12 @@ We should add a Long Term Support section to the README.MD of each version. It s
 
 We should add pointers from the wiki FAQ back to the README.MD for each version.
 
+We should consider documentation similar to Node JS [previous releases](https://nodejs.org/en/about/previous-releases).
+
+- ACTIVE = active development in main (always LTS)
+- MAINTENANCE = only critical bug fixes
+- EOL = frozen code, no changes possible
+
 #### Retire v7
 
 We should announce an end-of-life to v7. Proposed: June 30th, 2024. We would [lock the branch from any changes](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches#lock-branch), disable and archive any build pipelines, and replace public documentation sites with a redirect to a notice that v7 is retired.
@@ -64,16 +62,16 @@ Any partners wanting to continue using v7, should take a snapshot of the code an
 
 #### Separate v0, v8 and v9 branches
 
-v7 is already in its own branch. v0, v8, and v9 are in the master branch which causes some confusion for developers.
+v7 is already in its own branch. v0, v8, and v9 are in the master branch which causes some confusion for developers<sup>1</sup>.
 
-1. Create a v8 branch from master
-2. Create a northstar-v0 branch from master
+1. Create a v8 branch from master<sup>2</sup>
+2. Create a northstar-v0 branch from master<sup>2</sup>
 3. Remove all v9 code from the northstar-v0, and v8 branches
 4. Remove all v0 and v8 code from the master branch
-5. Update v8 components to take npm dependencies on compat components
-6. Update any migration components to take npm dependencies on v8 components
-7. Update v0, v8 builds to publish only v0, v8 components
-8. Update v9 build to publish only v9 components
+5. Update v8 components to take npm dependencies on compat components<sup>3</sup>.
+6. Update migration component<sup>4</sup> to take npm dependencies on v8 components
+7. Update v0, v8 builds to publish only v0, v8 components<sup>5</sup>
+8. Update v9 build to publish only v9 components<sup>5</sup>
 9. Update README.MD in each branch to cover its version and point to the other branches
 10. Update ADO pipelines to handle each different branch (triggers, builds, releases)
 11. Update ADO documentation for releasing each version
@@ -85,6 +83,16 @@ This plan requires communicating to partners that own their own v0 and v8 based 
 
 There should be a cut-over date where branches are locked for changes and then the steps taken (scripts?) to make the change followed by the branches being unlocked. It would be good to time
 the cutover to a time of low activity for all teams globally.
+
+<sup>1</sup> Multiple migration partners have asked 'where is the v9 code?', 'are packages at the same level as react or react-components v8 or v9?', and 'do improvements in react or react-components get cherry-picked to the other folder?'. We've had similar questions come up on our shield and 1JS channels.
+
+<sup>2</sup> Includes branch protection policies.
+
+<sup>3</sup> react-portal-compat, react-portal-compat-context
+
+<sup>4</sup> react-migration-v0-v9, react-migration-v8-v9
+
+<sup>5</sup> Today our builds have some conditional code specific to v8 or v9 builds. This work would remove those conditions.
 
 #### Flatten master branch
 
@@ -100,19 +108,24 @@ The Fluent team size doesn't allow for supporting more than 2 versions of Fluent
 
 Branch renames make it possible to have an easier current verson change if we do next version development it its own branch. We can rename master to vX and then rename next to master.
 
-Note: We should also consider renaming master to main.
+#### Consider renaming master to main
+
+In 2020, as part of replacing exclusionary terms with more inclusive ones, many repositories started renaming the master branch to main. New repositories in GitHub now default to main. We should take this opportunity to do the same if we are renaming branches.
 
 ### Pros and Cons
 
 - 👍 v7 is already isolated in own branch, requiring no changes and will be familiar to partners
 - 👍 branches provide independent policy allowing for easier management
 - 👍 folder depth is reduced and packages more discoverable
-- 👍 build times should be moderately faster with no if/then logic
+- 👍 build times should be moderately faster with no if/then logic<sub>1<sub>
 - 👍 builds should be more reliable as changes are always specific to that version
+- 👍 build technology can evolve more rapidly as there is less compatibility work to consider and reduces build script surface area.
 
 - 👎 more branches means more enlisting, github configuration, and pipeline configuration
 - 👎 aging builds for sunset and retiring versions means keeping track of different build approaches
 - 👎 we'll be asking partners who regularly contribute to the repo to absorb more pain while we're also asking them to migrate
+
+<sub>1<sub> As well, some components with large test snapshots such as react-charting won't slow test run times during builds.
 
 ## Open Issues
 
