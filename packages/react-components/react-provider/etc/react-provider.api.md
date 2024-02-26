@@ -144,13 +144,10 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useTeachingPopoverBodyStyles_unstable: (state: unknown) => void;
         useTeachingPopoverButtonStyles_unstable: (state: unknown) => void;
         useTeachingPopoverCarouselStyles_unstable: (state: unknown) => void;
-        useTeachingPopoverCarouselNavStyles_unstable: (state: unknown) => void;
-        useTeachingPopoverCarouselNavIconStyles_unstable: (state: unknown) => void;
         useTeachingPopoverHeaderStyles_unstable: (state: unknown) => void;
         useTeachingPopoverPageCountStyles_unstable: (state: unknown) => void;
         useTeachingPopoverSurfaceStyles_unstable: (state: unknown) => void;
         useTeachingPopoverTitleStyles_unstable: (state: unknown) => void;
-        useTeachingPopoverFooterStyles_unstable: (state: unknown) => void;
         useTimePickerCompatStyles_unstable: (state: unknown) => void;
     }> | undefined;
     dir?: "ltr" | "rtl" | undefined;

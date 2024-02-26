@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useTeachingPopoverCarouselNav_unstable } from './useTeachingPopoverCarouselNav';
 import { renderTeachingPopoverCarouselNav_unstable } from './renderTeachingPopoverCarouselNav';
 import { useTeachingPopoverCarouselNavStyles_unstable } from './useTeachingPopoverCarouselNavStyles.styles';
-import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import type { TeachingPopoverCarouselNavProps } from './TeachingPopoverCarouselNav.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
@@ -16,7 +15,8 @@ export const TeachingPopoverCarouselNav: ForwardRefComponent<TeachingPopoverCaro
 
     useTeachingPopoverCarouselNavStyles_unstable(state);
 
-    useCustomStyleHook_unstable('useTeachingPopoverCarouselNavStyles_unstable')(state);
+    // ToDo: Re-add once out of preview
+    // useCustomStyleHook_unstable('useTeachingPopoverCarouselNavStyles_unstable')(state);
 
     return renderTeachingPopoverCarouselNav_unstable(state);
   },

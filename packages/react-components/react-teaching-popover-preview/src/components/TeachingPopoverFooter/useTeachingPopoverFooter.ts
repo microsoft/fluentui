@@ -40,9 +40,8 @@ export const useTeachingPopoverFooter_unstable = (
   });
 
   // Merge any provided callback with close trigger
-  const secondaryButtonClick = mergeCallbacks(handleButtonClick, secondary?.onClick);
   if (secondary) {
-    secondary.onClick = secondaryButtonClick;
+    secondary.onClick = mergeCallbacks(handleButtonClick, secondary?.onClick);
   }
 
   const primary = slot.always(props.primary, {

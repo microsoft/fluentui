@@ -22,11 +22,9 @@ export const useTeachingPopoverCarouselNav_unstable = (
   const totalPages = useTeachingPopoverCarouselContext_unstable(context => context.totalPages);
   const currentPage = useTeachingPopoverCarouselContext_unstable(context => context.currentPage);
 
-  // Generate the child RatingItems and memoize them to prevent unnecessary re-rendering
+  // Generate the child TeachingPopoverCarouselNavIcon and memoize them to prevent unnecessary re-rendering
   const rootChildren = React.useMemo(() => {
-    return Array.from(Array(totalPages), (_, i) => (
-      <TeachingPopoverCarouselNavIcon key={'TeachingPopoverCarouselNavIcon-' + i} index={i} />
-    ));
+    return Array.from(Array(totalPages), (_, i) => <TeachingPopoverCarouselNavIcon key={i} index={i} />);
   }, [totalPages]);
 
   return {
@@ -40,8 +38,8 @@ export const useTeachingPopoverCarouselNav_unstable = (
         ref,
         role: 'list',
         tabIndex: 0,
-        children: rootChildren,
         ...props,
+        children: rootChildren,
         ...focusableGroupAttr,
       }),
       { elementType: 'div' },

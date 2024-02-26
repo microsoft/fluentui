@@ -9,7 +9,7 @@ export {
   usePopoverSurface_unstable,
 } from './PopoverSurface';
 export type { PopoverSurfaceProps, PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface';
-export { PopoverProvider, usePopoverContext_unstable, usePopoverContextValues_unstable } from './popoverContext';
+export { PopoverProvider, usePopoverContext_unstable } from './popoverContext';
 export type { PopoverContextValue } from './popoverContext';
 export { PopoverTrigger, renderPopoverTrigger_unstable, usePopoverTrigger_unstable } from './PopoverTrigger';
 export type { PopoverTriggerChildProps, PopoverTriggerProps, PopoverTriggerState } from './PopoverTrigger';

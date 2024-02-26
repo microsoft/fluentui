@@ -18,6 +18,13 @@ export const TeachingPopoverCarouselProvider = TeachingPopoverCarouselContext.Pr
 /**
  * Context shared between TeachingPopoverCarousel and its children components
  */
+export type TeachingPopoverCarouselContextValues = {
+  carousel: TeachingPopoverCarouselContextValue;
+};
+
+/**
+ * Context shared between TeachingPopoverCarousel and its children components
+ */
 export type TeachingPopoverCarouselContextValue = Pick<
   TeachingPopoverCarouselState,
   'currentPage' | 'setCurrentPage' | 'totalPages' | 'onPageChange'
@@ -32,15 +39,15 @@ export const useTeachingPopoverCarouselContext_unstable = <T>(
 
 export function useTeachingPopoverCarouselContextValues_unstable(
   state: TeachingPopoverCarouselState,
-): TeachingPopoverCarouselContextValue {
+): TeachingPopoverCarouselContextValues {
   const { currentPage, setCurrentPage, totalPages, onPageChange } = state;
 
-  const teachingPopoverCarousel = {
+  const carousel = {
     currentPage,
     setCurrentPage,
     totalPages,
     onPageChange,
   };
 
-  return teachingPopoverCarousel;
+  return { carousel };
 }

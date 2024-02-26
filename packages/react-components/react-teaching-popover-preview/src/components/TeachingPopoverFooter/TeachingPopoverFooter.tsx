@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useTeachingPopoverFooter_unstable } from './useTeachingPopoverFooter';
 import { renderTeachingPopoverFooter_unstable } from './renderTeachingPopoverFooter';
 import { useTeachingPopoverFooterStyles_unstable } from './useTeachingPopoverFooterStyles.styles';
-import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import type { TeachingPopoverFooterProps } from './TeachingPopoverFooter.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
@@ -15,7 +14,8 @@ export const TeachingPopoverFooter: ForwardRefComponent<TeachingPopoverFooterPro
 
   useTeachingPopoverFooterStyles_unstable(state);
 
-  useCustomStyleHook_unstable('useTeachingPopoverFooterStyles_unstable')(state);
+  // ToDo: Re-add once out of preview
+  // useCustomStyleHook_unstable('useTeachingPopoverFooterStyles_unstable')(state);
 
   return renderTeachingPopoverFooter_unstable(state);
 });

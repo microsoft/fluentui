@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  mergeCallbacks,
+  slot,
+  useControllableState,
+  useEventCallback,
+} from '@fluentui/react-utilities';
 import type {
   TeachingPopoverCarouselProps,
   TeachingPopoverCarouselState,
@@ -14,7 +20,7 @@ export const useTeachingPopoverCarousel_unstable = (
   props: TeachingPopoverCarouselProps,
   ref: React.Ref<HTMLDivElement>,
 ): TeachingPopoverCarouselState => {
-  const { carouselLayout = 'centered', paginationType = 'icon', strings, onPageChange, onFinish } = props;
+  const { layout = 'centered', paginationType = 'icon', strings, onPageChange, onFinish } = props;
 
   const appearance = usePopoverContext_unstable(context => context.appearance);
   const triggerRef = usePopoverContext_unstable(context => context.triggerRef);
@@ -45,7 +51,6 @@ export const useTeachingPopoverCarousel_unstable = (
   const handleNextButtonClick = useEventCallback(
     (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
       const nextPage = Math.min(currentPage + 1, totalPages);
-      props.onClickNext?.(event, { event, type: 'click', currentPage: nextPage });
       if (event.isDefaultPrevented()) {
         return;
       }
@@ -66,7 +71,6 @@ export const useTeachingPopoverCarousel_unstable = (
   const handlePrevButtonClick = useEventCallback(
     (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
       const prevPage = Math.max(currentPage - 1, 0);
-      props.onClickNext?.(event, { event, type: 'click', currentPage: prevPage });
       if (event.isDefaultPrevented()) {
         return;
       }
@@ -87,11 +91,15 @@ export const useTeachingPopoverCarousel_unstable = (
     defaultProps: {
       appearance: appearance === 'brand' ? 'outline' : undefined,
       children: currentPage === 0 ? strings.initialStepText : strings.previous,
-      onClick: handlePrevButtonClick,
     },
     renderByDefault: true,
     elementType: Button,
   });
+
+  // Merge any provided callback with previous button
+  if (previous) {
+    previous.onClick = mergeCallbacks(previous?.onClick, handlePrevButtonClick);
+  }
 
   const next = slot.always(props.next, {
     defaultProps: {
@@ -101,6 +109,11 @@ export const useTeachingPopoverCarousel_unstable = (
     },
     elementType: Button,
   });
+
+  // Merge any provided callback with next button
+  if (next) {
+    next.onClick = mergeCallbacks(next?.onClick, handleNextButtonClick);
+  }
 
   const nav = slot.optional(props.nav, {
     defaultProps: {},
@@ -129,7 +142,7 @@ export const useTeachingPopoverCarousel_unstable = (
     setCurrentPage,
     onPageChange,
     totalPages,
-    carouselLayout,
+    layout,
     components: {
       root: 'div',
       footer: 'div',

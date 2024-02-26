@@ -151,13 +151,10 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useTeachingPopoverBodyStyles_unstable: CustomStyleHook;
     useTeachingPopoverButtonStyles_unstable: CustomStyleHook;
     useTeachingPopoverCarouselStyles_unstable: CustomStyleHook;
-    useTeachingPopoverCarouselNavStyles_unstable: CustomStyleHook;
-    useTeachingPopoverCarouselNavIconStyles_unstable: CustomStyleHook;
     useTeachingPopoverHeaderStyles_unstable: CustomStyleHook;
     useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
     useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
     useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
-    useTeachingPopoverFooterStyles_unstable: CustomStyleHook;
     useTimePickerCompatStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
@@ -279,13 +276,10 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useTeachingPopoverBodyStyles_unstable: CustomStyleHook;
     useTeachingPopoverButtonStyles_unstable: CustomStyleHook;
     useTeachingPopoverCarouselStyles_unstable: CustomStyleHook;
-    useTeachingPopoverCarouselNavStyles_unstable: CustomStyleHook;
-    useTeachingPopoverCarouselNavIconStyles_unstable: CustomStyleHook;
     useTeachingPopoverHeaderStyles_unstable: CustomStyleHook;
     useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
     useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
     useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
-    useTeachingPopoverFooterStyles_unstable: CustomStyleHook;
     useTimePickerCompatStyles_unstable: CustomStyleHook;
 }>;
 
@@ -407,13 +401,10 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useTeachingPopoverBodyStyles_unstable: CustomStyleHook;
     useTeachingPopoverButtonStyles_unstable: CustomStyleHook;
     useTeachingPopoverCarouselStyles_unstable: CustomStyleHook;
-    useTeachingPopoverCarouselNavStyles_unstable: CustomStyleHook;
-    useTeachingPopoverCarouselNavIconStyles_unstable: CustomStyleHook;
     useTeachingPopoverHeaderStyles_unstable: CustomStyleHook;
     useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
     useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
     useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
-    useTeachingPopoverFooterStyles_unstable: CustomStyleHook;
     useTimePickerCompatStyles_unstable: CustomStyleHook;
 }> | undefined>;
 

@@ -67,7 +67,7 @@ export type TeachingPopoverCarouselProps = Partial<ComponentProps<TeachingPopove
    * Controls whether buttons will be centered (balanced) or right aligned
    * Defaults to 'centered'.
    */
-  carouselLayout?: TeachingPopoverCarouselLayout;
+  layout?: TeachingPopoverCarouselLayout;
 
   /**
    * Dictates whether pagination uses text or icons
@@ -91,15 +91,6 @@ export type TeachingPopoverCarouselProps = Partial<ComponentProps<TeachingPopove
   onPageChange?: EventHandler<TeachingPopoverPageChangeData>;
 
   /**
-   * Callback to notify next page was clicked
-   */
-  onClickNext?: EventHandler<TeachingPopoverPageChangeData>;
-
-  /**
-   * Callback to notify next page was clicked
-   */
-  onClickPrevious?: EventHandler<TeachingPopoverPageChangeData>;
-  /**
    * Callback to notify when the final button step of a carousel has been activated.
    */
   onFinish?: EventHandler<TeachingPopoverPageChangeData>;
@@ -117,5 +108,5 @@ export type TeachingPopoverCarouselState = ComponentState<TeachingPopoverCarouse
   totalPages: number;
   setCurrentPage: (page: number) => void;
 } & Partial<Pick<PopoverContextValue, 'appearance'>> &
-  Pick<TeachingPopoverCarouselProps, 'carouselLayout' | 'onPageChange'> &
+  Pick<TeachingPopoverCarouselProps, 'layout' | 'onPageChange'> &
   Required<Pick<TeachingPopoverCarouselProps, 'currentPage'>>;

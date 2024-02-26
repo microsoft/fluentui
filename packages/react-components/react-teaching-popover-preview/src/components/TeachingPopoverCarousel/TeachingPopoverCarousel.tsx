@@ -19,9 +19,9 @@ export const TeachingPopoverCarousel: ForwardRefComponent<TeachingPopoverCarouse
 
     useCustomStyleHook_unstable('useTeachingPopoverCarouselStyles_unstable')(state);
 
-    const context = useTeachingPopoverCarouselContextValues_unstable(state);
+    const contextValues = useTeachingPopoverCarouselContextValues_unstable(state);
 
-    return renderTeachingPopoverCarousel_unstable(state, context);
+    return renderTeachingPopoverCarousel_unstable(state, contextValues);
   },
 );
 

@@ -8,7 +8,7 @@ export type TeachingPopoverCarouselNavIconSlots = {
    */
   root: NonNullable<Slot<'div'>>;
   /**
-   * Nav icon set as an ARIA compliant button
+   * ARIA compliant nav buttons used to jump to pages
    */
   navButton: NonNullable<Slot<'button'>>;
 };

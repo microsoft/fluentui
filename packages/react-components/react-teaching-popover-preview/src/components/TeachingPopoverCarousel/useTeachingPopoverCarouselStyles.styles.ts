@@ -36,7 +36,6 @@ const useStyles = makeStyles({
     minWidth: '96px',
   },
   brandNext: {
-    minWidth: '96px',
     color: tokens.colorBrandForeground1,
     backgroundColor: tokens.colorNeutralForegroundOnBrand,
     ...shorthands.borderColor(tokens.colorTransparentBackground),
@@ -50,7 +49,6 @@ const useStyles = makeStyles({
     },
   },
   brandPrevious: {
-    minWidth: '96px',
     // In brand, this is always 'NeutralForegroundOnBrand'
     color: tokens.colorNeutralForegroundOnBrand,
     backgroundColor: tokens.colorBrandBackground,
@@ -73,25 +71,27 @@ const useStyles = makeStyles({
 /** Applies style classnames to slots */
 export const useTeachingPopoverCarouselStyles_unstable = (state: TeachingPopoverCarouselState) => {
   const styles = useStyles();
-  const { appearance, carouselLayout } = state;
+  const { appearance, layout } = state;
 
   state.root.className = mergeClasses(teachingPopoverCarouselClassNames.root, styles.root, state.root.className);
   state.footer.className = mergeClasses(
     teachingPopoverCarouselClassNames.footer,
     styles.footer,
-    carouselLayout === 'centered' ? styles.footerCentered : styles.footerRightAligned,
+    layout === 'centered' ? styles.footerCentered : styles.footerRightAligned,
     state.footer.className,
   );
   if (state.previous) {
     state.previous.className = mergeClasses(
       teachingPopoverCarouselClassNames.previous,
-      appearance === 'brand' ? styles.brandPrevious : styles.previous,
+      styles.previous,
+      appearance === 'brand' && styles.brandPrevious,
       state.previous.className,
     );
   }
   state.next.className = mergeClasses(
     teachingPopoverCarouselClassNames.next,
-    appearance === 'brand' ? styles.brandNext : styles.next,
+    styles.next,
+    appearance === 'brand' && styles.brandNext,
     state.next.className,
   );
   if (state.nav) {
