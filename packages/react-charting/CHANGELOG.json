@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 23 Feb 2024 07:26:08 GMT",
+      "tag": "@fluentui/react-charting_v5.19.28",
+      "version": "5.19.28",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ee0975dc8e5466ed7dde2cf5214e7c7c7daa07ac",
+            "comment": "chore: remove monosize devDependency"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Feb 2024 07:26:24 GMT",
       "tag": "@fluentui/react-charting_v5.19.28",
       "version": "5.19.28",

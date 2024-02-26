@@ -4,6 +4,7 @@ import { NavContextValue } from './NavContext.types';
 const navContextDefaultValue: NavContextValue = {
   reserveSelectedNavItemSpace: true,
   selectedValue: undefined,
+  selectedCategoryValue: undefined,
   onRegister: () => {
     /* noop */
   },
@@ -24,7 +25,7 @@ const navContextDefaultValue: NavContextValue = {
   /**
    * The list of opened panels by index
    */
-  openItems: [],
+  openCategories: [],
 };
 
 const NavContext = React.createContext<NavContextValue | undefined>(undefined);
