@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Add a reduced-motion animation for Spinner.",
+  "packageName": "@fluentui/react-spinner",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -48,11 +48,6 @@ const useSpinnerBaseClassName = makeResetStyles({
     '0%': { transform: 'rotate(0deg)' },
     '100%': { transform: 'rotate(360deg)' },
   },
-
-  '@media screen and (prefers-reduced-motion: reduce)': {
-    animationDuration: '0.01ms',
-    animationIterationCount: '1',
-  },
 });
 
 const useSpinnerTailBaseClassName = makeResetStyles({
@@ -103,8 +98,14 @@ const useSpinnerTailBaseClassName = makeResetStyles({
   },
 
   '@media screen and (prefers-reduced-motion: reduce)': {
-    animationDuration: '0.01ms',
-    animationIterationCount: '1',
+    animationName: 'none',
+    '&::before': {
+      animationName: 'none',
+      maskImage: 'conic-gradient(transparent 0deg, white 240deg)',
+    },
+    '&::after': {
+      content: 'none',
+    },
   },
 });
 
