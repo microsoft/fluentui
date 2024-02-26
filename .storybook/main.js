@@ -83,7 +83,20 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
       },
     }),
   ],
+  managerWebpack: (/** @type {import('webpack').Configuration}*/ config) => {
+    config.resolve ??= {};
+    config.resolve.extensionAlias = {
+      '.js': ['.js', '.ts'],
+      '.mjs': ['.mjs', '.mts'],
+    };
+    return config;
+  },
   webpackFinal: config => {
+    config.resolve ??= {};
+    config.resolve.extensionAlias = {
+      '.js': ['.js', '.ts'],
+      '.mjs': ['.mjs', '.mts'],
+    };
     registerTsPaths({ config, configFile: tsConfigPath });
 
     if ((process.env.CI || process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) && config.plugins) {
