@@ -108,7 +108,7 @@ export type ColorPalettePumpkin = 'colorPalettePumpkinBackground2' | 'colorPalet
 export type ColorPalettePurple = 'colorPalettePurpleBackground2' | 'colorPalettePurpleForeground2' | 'colorPalettePurpleBorderActive';
 
 // @public (undocumented)
-export type ColorPaletteRed = 'colorPaletteRedBackground1' | 'colorPaletteRedBackground2' | 'colorPaletteRedBackground3' | 'colorPaletteRedBackground3Hover' | 'colorPaletteRedBackground3Pressed' | 'colorPaletteRedForeground1' | 'colorPaletteRedForeground2' | 'colorPaletteRedForeground3' | 'colorPaletteRedForegroundInverted' | 'colorPaletteRedBorderActive' | 'colorPaletteRedBorder1' | 'colorPaletteRedBorder2';
+export type ColorPaletteRed = 'colorPaletteRedBackground1' | 'colorPaletteRedBackground2' | 'colorPaletteRedBackground3' | 'colorPaletteRedForeground1' | 'colorPaletteRedForeground2' | 'colorPaletteRedForeground3' | 'colorPaletteRedForegroundInverted' | 'colorPaletteRedBorderActive' | 'colorPaletteRedBorder1' | 'colorPaletteRedBorder2';
 
 // @public (undocumented)
 export type ColorPaletteRoyalBlue = 'colorPaletteRoyalBlueBackground2' | 'colorPaletteRoyalBlueForeground2' | 'colorPaletteRoyalBlueBorderActive';
