@@ -42,7 +42,20 @@ module.exports = /** @type {import('../../../.storybook/main').StorybookBaseConf
     // disable react-docgen-typescript (totally not needed here, slows things down a lot)
     reactDocgen: false,
   },
+  managerWebpack: (/** @type {import('webpack').Configuration}*/ config) => {
+    config.resolve ??= {};
+    config.resolve.extensionAlias = {
+      '.js': ['.js', '.ts'],
+      '.mjs': ['.mjs', '.mts'],
+    };
+    return config;
+  },
   webpackFinal: config => {
+    config.resolve ??= {};
+    config.resolve.extensionAlias = {
+      '.js': ['.js', '.ts'],
+      '.mjs': ['.mjs', '.mts'],
+    };
     registerTsPaths({ config, configFile: tsConfigPath });
     registerRules({ config, rules: [rules.scssRule] });
 
