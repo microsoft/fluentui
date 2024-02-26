@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 26 Feb 2024 07:26:18 GMT",
+      "tag": "@fluentui/react-charting_v5.19.29",
+      "version": "5.19.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "2e8b33675468ee9bbf88bb14dcca89a0173fb4a3",
+            "comment": "Filtering data for DonutChart with >=0 instead of >0 to allow zero value cases"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Feb 2024 07:26:08 GMT",
       "tag": "@fluentui/react-charting_v5.19.28",
       "version": "5.19.28",
