@@ -14,7 +14,6 @@ import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRig
 import { BaseType, Selection as D3Selection, select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
 import * as React from 'react';
-import { IBasestate } from '../../types/IDataPoint';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
 import { IChartHoverCardProps } from '../../utilities/ChartHoverCard/ChartHoverCard.types';
 import { IMargins } from '../../utilities/utilities';
@@ -26,7 +25,7 @@ import {
   ISankeyChartStyleProps,
   ISankeyChartStyles,
 } from './SankeyChart.types';
-import { SLink, SNode } from 'src/types/ISankeyDataPoint';
+import { IBasestate, SLink, SNode } from 'src/types/ISankeyDataPoint';
 
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
 const PADDING_PERCENTAGE = 0.3;

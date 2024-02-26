@@ -1,4 +1,4 @@
-import { styled } from '../../Utilities';
+import { styled } from '@fluentui/react/lib/Utilities';
 import * as React from 'react';
 import { ChartHoverCardBase } from './ChartHoverCard.base';
 import { getChartHoverCardStyles } from './ChartHoverCard.styles';

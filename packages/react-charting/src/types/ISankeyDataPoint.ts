@@ -1,5 +1,28 @@
 import { SankeyLink, SankeyNode } from 'd3-sankey';
 
+export interface IBasestate {
+  _width?: number;
+  _height?: number;
+  activeLegend?: string;
+  color?: string;
+  dataForHoverCard?: number;
+  isCalloutVisible: boolean;
+  isLegendSelected?: boolean;
+  isLegendHovered?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  refSelected?: any;
+  YValueHover?: { legend?: string; y?: number; color?: string }[];
+  hoverYValue?: string | number | null;
+  hoverXValue?: string | number | null;
+  xCalloutValue?: string;
+  yCalloutValue?: string;
+  lineColor?: string;
+  hoveredLineColor?: string;
+  selectedLegend?: string;
+  containerWidth?: number;
+  containerHeight?: number;
+}
+
 /**
  * {@docCategory IChartProps}
  */
