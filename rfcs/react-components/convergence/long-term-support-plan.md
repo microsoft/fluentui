@@ -1,10 +1,8 @@
 # RFC: Long-term support (LTS) plan
 
-Geoff Cox
-Tudor Papa
-Gouttierre Gomes
+Geoff Cox, Tudor Papa, Gouttierre Gomes
 
-2023-02-06
+2024-02-06
 
 ## Summary
 
@@ -19,7 +17,7 @@ We currently support v7, v8, and v9 versions of Fluent UI React and v0 of Norths
 - v0 is active in the master branch. It is still supported by Teams, but all new feature work happens in v9.
 - v7 is in sunset. Only critical issues are fixed. The last fix was over 6 months ago (2023-08-17).
 - v8 is active in the master branch. Important issues raised by partners are fixed and partners actively develop on v8.
-  = v9 is active in the master branch. It is Fluent's focus for feature development.
+- v9 is active in the master branch. It is Fluent's focus for feature development.
 
 ## Problem statement
 
@@ -37,7 +35,7 @@ These are somewhat sequential, but work can be done as soon as it makes sense.
 
 To make v9 the official current branch, developers need to be able to do everything they could with v8.
 
-Our status as of 2014-02:
+Our status as of 2024-02:
 
 - In preview: Rating, SearchBox, TeachingPopover, Motion
 - In compat: Calendar, DatePicker, TimePicker
@@ -60,7 +58,7 @@ We should add pointers from the wiki FAQ back to the README.MD for each version.
 
 #### Retire v7
 
-We should announce an end-of-life to v7. Proposed: June 30th, 2024. We would lock the branch from any changes, disable and archive any build pipelines, and replace public documentation sites with a redirect to a notice that v7 is retired.
+We should announce an end-of-life to v7. Proposed: June 30th, 2024. We would [lock the branch from any changes](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches#lock-branch), disable and archive any build pipelines, and replace public documentation sites with a redirect to a notice that v7 is retired.
 
 Any partners wanting to continue using v7, should take a snapshot of the code and integrate it into their own repositories and build it.
 
@@ -114,7 +112,7 @@ Note: We should also consider renaming master to main.
 
 - 👎 more branches means more enlisting, github configuration, and pipeline configuration
 - 👎 aging builds for sunset and retiring versions means keeping track of different build approaches
-- 👎 we'll be asking partners to absorb more pain while we're also asking the to migrate
+- 👎 we'll be asking partners who regularly contribute to the repo to absorb more pain while we're also asking them to migrate
 
 ## Open Issues
 
