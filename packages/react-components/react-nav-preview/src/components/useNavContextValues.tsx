@@ -24,7 +24,7 @@ export function useNavContextValues_unstable(state: NavState): NavContextValues 
       getRegisteredNavItems,
       onRequestNavCategoryItemToggle,
       openCategories,
-      multiple: true,
+      multiple,
     }),
     [
       selectedValue,
