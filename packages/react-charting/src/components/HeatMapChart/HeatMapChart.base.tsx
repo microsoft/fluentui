@@ -1,11 +1,5 @@
-import {
-  IAccessibilityProps,
-  CartesianChart,
-  IChildProps,
-  IModifiedCartesianChartProps,
-  IHeatMapChartData,
-  IHeatMapChartDataPoint,
-} from '../../index';
+import { CartesianChart, IChildProps, IModifiedCartesianChartProps } from '../../components/CommonComponents/index';
+import { IAccessibilityProps, IHeatMapChartData, IHeatMapChartDataPoint } from '../../types/IDataPoint';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { classNamesFunction, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { FocusZoneDirection } from '@fluentui/react-focus';
