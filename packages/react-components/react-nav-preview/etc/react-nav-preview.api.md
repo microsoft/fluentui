@@ -66,6 +66,7 @@ export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue'
     };
     onRequestNavCategoryItemToggle: EventHandler<OnNavItemSelectData>;
     openCategories: NavItemValue[];
+    multiple: boolean;
 };
 
 // @public
@@ -112,6 +113,7 @@ export type NavProps = ComponentProps<NavSlots> & {
     onNavItemSelect?: EventHandler<OnNavItemSelectData>;
     selectedValue?: NavItemValue;
     selectedCategoryValue?: NavItemValue;
+    multiple?: boolean;
     onNavCategoryItemToggle?: EventHandler<OnNavItemSelectData>;
 };
 

@@ -158,5 +158,6 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     getRegisteredNavItems,
     onRequestNavCategoryItemToggle,
     openCategories,
+    multiple,
   };
 };
