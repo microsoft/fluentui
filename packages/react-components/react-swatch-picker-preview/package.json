@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
+    "build": "build-storybook -o dist/storybook",
     "clean": "just-scripts clean",
     "generate-api": "just-scripts generate-api",
     "lint": "just-scripts lint",
@@ -21,8 +21,7 @@
     "storybook": "start-storybook",
     "test": "jest --passWithNoTests",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
-    "type-check": "tsc -b tsconfig.json",
-    "build-storybook": "just-scripts storybook:build"
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
