@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: update RatingItem styling to use flex to align all items properly",
+  "packageName": "@fluentui/react-rating-preview",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
