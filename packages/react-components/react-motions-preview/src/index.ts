@@ -1,8 +1,10 @@
-import * as atom from './motions/atom';
-import * as presence from './motions/presence';
+import * as motionTokens from './motions/motionTokens';
 
-export { createAtom } from './factories/createAtom';
-export { createPresence } from './factories/createPresence';
+export { createMotionComponent } from './factories/createMotionComponent';
+export { createPresenceComponent } from './factories/createPresenceComponent';
 
-export { atom, presence };
+export { PresenceGroup } from './components/PresenceGroup';
+
+export { motionTokens };
+
 export type { AtomMotion, AtomMotionFn, PresenceMotion, PresenceMotionFn, MotionImperativeRef } from './types';

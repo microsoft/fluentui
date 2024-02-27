@@ -1,6 +1,7 @@
+// eslint-disable-next-line deprecation/deprecation
 export { ComboboxProvider } from './contexts/ComboboxContext';
 export type { ComboboxContextValue } from './contexts/ComboboxContext';
-export { ListboxProvider } from './contexts/ListboxContext';
+export { ListboxProvider, useListboxContext_unstable } from './contexts/ListboxContext';
 export type { ListboxContextValue } from './contexts/ListboxContext';
 export { useComboboxContextValues } from './contexts/useComboboxContextValues';
 export { useListboxContextValues } from './contexts/useListboxContextValues';

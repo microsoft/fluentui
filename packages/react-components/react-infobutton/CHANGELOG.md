@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-infobutton
 
-This log was last generated on Tue, 06 Feb 2024 17:55:21 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Feb 2024 14:22:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.94](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.94)
+
+Tue, 20 Feb 2024 14:22:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.93..@fluentui/react-infobutton_v9.0.0-beta.94)
+
+### Changes
+
+- Bump @fluentui/react-label to v9.1.62 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-popover to v9.8.39 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-tabster to v9.19.1 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-utilities to v9.18.1 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.30 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
 
 ## [9.0.0-beta.93](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.93)
 

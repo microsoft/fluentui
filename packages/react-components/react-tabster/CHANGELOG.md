@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Tue, 06 Feb 2024 17:55:20 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Feb 2024 14:22:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.19.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.19.1)
+
+Tue, 20 Feb 2024 14:22:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.19.0..@fluentui/react-tabster_v9.19.1)
+
+### Patches
+
+- fix: focus-visible polyfill should only register in scope ([PR #30517](https://github.com/microsoft/fluentui/pull/30517) by lingfangao@hotmail.com)
+- Active modal checks if an element outside of it is a virtual child of a modal before setting aria-hidden.' ([PR #30501](https://github.com/microsoft/fluentui/pull/30501) by marata@microsoft.com)
+- Bump @fluentui/react-utilities to v9.18.1 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
 
 ## [9.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.19.0)
 
