@@ -19,6 +19,9 @@ describe('Switch', () => {
           },
         },
       ],
+      'consistent-callback-args': {
+        legacyCallbacks: ['onChange'],
+      },
     },
   });
 

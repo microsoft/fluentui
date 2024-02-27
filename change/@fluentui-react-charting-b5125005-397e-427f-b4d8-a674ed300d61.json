@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding terser plugin options to reduce charting bundle size",
-  "packageName": "@fluentui/react-charting",
-  "email": "srmukher@microsoft.com",
-  "dependentChangeType": "patch"
-}

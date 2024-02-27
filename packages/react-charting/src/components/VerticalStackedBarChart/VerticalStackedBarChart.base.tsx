@@ -6,7 +6,7 @@ import {
   scaleLinear as d3ScaleLinear,
   ScaleLinear as D3ScaleLinear,
   scaleBand as d3ScaleBand,
-  scaleTime as d3ScaleTime,
+  scaleUtc as d3ScaleUtc,
 } from 'd3-scale';
 import { classNamesFunction, getId, getRTL, warnDeprecations, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { IPalette, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
@@ -125,7 +125,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._handleMouseOut = this._handleMouseOut.bind(this);
     this._calloutId = getId('callout');
     this._tooltipId = getId('VSBCTooltipId_');
-    if (this._isChartEmpty()) {
+    if (!this._isChartEmpty()) {
       this._adjustProps();
       this._dataset = this._createDataSetLayer();
     }
@@ -962,7 +962,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       const lDate = d3Max(this._dataset, (point: IVerticalStackedBarDataPoint) => {
         return point.x as Date;
       })!;
-      const xBarScale = d3ScaleTime()
+      const xBarScale = d3ScaleUtc()
         .domain([sDate, lDate])
         .range([
           this.margins.left! + this._domainMargin + this._barWidth / 2,

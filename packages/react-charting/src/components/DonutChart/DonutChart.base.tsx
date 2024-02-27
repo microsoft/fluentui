@@ -108,7 +108,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const donutMarginVertical = this.props.hideLabels ? 0 : 40;
     const outerRadius =
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
-    const chartData = points.filter((d: IChartDataPoint) => d.data! > 0);
+    const chartData = points.filter((d: IChartDataPoint) => d.data! >= 0);
     const valueInsideDonut = this._valueInsideDonut(this.props.valueInsideDonut!, chartData!);
     return !this._isChartEmpty() ? (
       <div

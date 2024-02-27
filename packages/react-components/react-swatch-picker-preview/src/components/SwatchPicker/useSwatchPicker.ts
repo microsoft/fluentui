@@ -1,6 +1,22 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { swatchPickerCSSVars } from './useSwatchPickerStyles.styles';
+
+const { columnCountGrid, cellSize, gridGap } = swatchPickerCSSVars;
+
+const sizeMap = {
+  extraSmall: '20px',
+  small: '24px',
+  medium: '28px',
+  large: '32px',
+};
+
+const spacingMap = {
+  small: '2px',
+  medium: '4px',
+};
 
 /**
  * Create the state required to render SwatchPicker.
@@ -15,20 +31,55 @@ export const useSwatchPicker_unstable = (
   props: SwatchPickerProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
-  return {
-    // TODO add appropriate props/defaults
+  const { role, onSelectionChange, size = 'medium', shape, ...rest } = props;
+  const focusAttributes = useArrowNavigationGroup({
+    circular: true,
+    axis: 'both',
+    memorizeCurrent: true,
+  });
+
+  const [selectedValue, setSelectedValue] = useControllableState({
+    state: props.selectedValue,
+    defaultState: props.defaultSelectedValue,
+    initialState: '',
+  });
+
+  const requestSelectionChange: SwatchPickerState['requestSelectionChange'] = useEventCallback((event, data) => {
+    onSelectionChange?.(event, {
+      type: 'click',
+      event,
+      selectedValue: data.selectedValue,
+      selectedColor: data.selectedColor,
+    });
+    setSelectedValue(data.selectedValue);
+  });
+
+  const state: SwatchPickerState = {
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
-        ...props,
+        role: 'radiogroup',
+        ...focusAttributes,
+        ...rest,
       }),
       { elementType: 'div' },
     ),
+    requestSelectionChange,
+    selectedValue,
+    size,
+    shape,
   };
+
+  // Root props
+  state.root.style = {
+    [columnCountGrid]: 3,
+    [cellSize]: sizeMap[size],
+    [gridGap]: spacingMap.medium,
+    ...state.root.style,
+  };
+
+  return state;
 };

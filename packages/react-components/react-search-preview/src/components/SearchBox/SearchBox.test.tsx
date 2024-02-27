@@ -43,6 +43,9 @@ describe('SearchBox', () => {
           },
         },
       ],
+      'consistent-callback-args': {
+        legacyCallbacks: ['onChange'],
+      },
     },
   });
 

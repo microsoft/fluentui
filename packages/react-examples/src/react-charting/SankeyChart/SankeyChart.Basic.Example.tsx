@@ -1,5 +1,5 @@
-import * as React from 'react';
 import { IChartProps, ISankeyChartProps, SankeyChart } from '@fluentui/react-charting';
+import * as React from 'react';
 
 interface ISankeyChartBasicState {
   width: number;

@@ -23,7 +23,6 @@ module.exports = [
               mangle: {
                 keep_classnames: false,
                 keep_fnames: false,
-                toplevel: true,
                 properties: {
                   regex: regex,
                   undeclared: true,

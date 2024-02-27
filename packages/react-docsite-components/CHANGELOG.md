@@ -1,8 +1,82 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Tue, 06 Feb 2024 07:27:42 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Feb 2024 07:25:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.62)
+
+Tue, 27 Feb 2024 07:25:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.61..@fluentui/react-docsite-components_v8.13.62)
+
+### Patches
+
+- Bump @fluentui/react-monaco-editor to v1.7.180 ([PR #30534](https://github.com/microsoft/fluentui/pull/30534) by beachball)
+
+## [8.13.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.61)
+
+Mon, 26 Feb 2024 07:26:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.60..@fluentui/react-docsite-components_v8.13.61)
+
+### Patches
+
+- Bump @fluentui/react-monaco-editor to v1.7.179 ([PR #30607](https://github.com/microsoft/fluentui/pull/30607) by beachball)
+
+## [8.13.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.60)
+
+Fri, 16 Feb 2024 07:26:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.59..@fluentui/react-docsite-components_v8.13.60)
+
+### Patches
+
+- Bump @fluentui/react-monaco-editor to v1.7.178 ([PR #30520](https://github.com/microsoft/fluentui/pull/30520) by beachball)
+
+## [8.13.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.59)
+
+Wed, 14 Feb 2024 07:24:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.58..@fluentui/react-docsite-components_v8.13.59)
+
+### Patches
+
+- Bump @fluentui/react-monaco-editor to v1.7.177 ([PR #30504](https://github.com/microsoft/fluentui/pull/30504) by beachball)
+
+## [8.13.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.58)
+
+Mon, 12 Feb 2024 07:25:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.57..@fluentui/react-docsite-components_v8.13.58)
+
+### Patches
+
+- Bump @fluentui/react to v8.115.6 ([PR #30486](https://github.com/microsoft/fluentui/pull/30486) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.176 ([PR #30486](https://github.com/microsoft/fluentui/pull/30486) by beachball)
+
+## [8.13.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.57)
+
+Fri, 09 Feb 2024 07:25:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.56..@fluentui/react-docsite-components_v8.13.57)
+
+### Patches
+
+- Bump @fluentui/react-monaco-editor to v1.7.175 ([PR #30506](https://github.com/microsoft/fluentui/pull/30506) by beachball)
+
+## [8.13.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.56)
+
+Thu, 08 Feb 2024 07:37:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.55..@fluentui/react-docsite-components_v8.13.56)
+
+### Patches
+
+- Bump @fluentui/react-monaco-editor to v1.7.174 ([PR #30410](https://github.com/microsoft/fluentui/pull/30410) by beachball)
+
+## [8.13.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.55)
+
+Wed, 07 Feb 2024 07:26:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.54..@fluentui/react-docsite-components_v8.13.55)
+
+### Patches
+
+- Bump @fluentui/react to v8.115.5 ([PR #30492](https://github.com/microsoft/fluentui/pull/30492) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.173 ([PR #30492](https://github.com/microsoft/fluentui/pull/30492) by beachball)
 
 ## [8.13.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.54)
 
