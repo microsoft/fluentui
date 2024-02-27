@@ -240,7 +240,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       type === PanelType.smallFixedNear && {
         left: panelMargin.none,
         right: panelMargin.auto,
-        width: panelWidth.xs,
+        width: panelWidth.sm,
       },
       type === PanelType.customNear && {
         right: 'auto',
