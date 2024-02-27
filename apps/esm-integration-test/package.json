@@ -1,0 +1,11 @@
+{
+  "name": "@fluentui/esm-integration-test",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "bundle": "webpack"
+  },
+  "devDependencies": {
+    "@fluentui/react-theme": "*"
+  }
+}
