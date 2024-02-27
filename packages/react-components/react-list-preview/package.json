@@ -26,7 +26,9 @@
     "storybook": "start-storybook",
     "test": "jest --passWithNoTests",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "tsc -b tsconfig.json",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
