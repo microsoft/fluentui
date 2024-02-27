@@ -9,18 +9,18 @@ exports[`TeachingPopoverCarouselNav renders a default state 1`] = `
     tabindex="0"
   >
     <div
-      class="fui-TeachingPopoverCarouselNavIcon"
+      class="fui-TeachingPopoverCarouselNavButton"
     >
       <button
-        class="fui-TeachingPopoverCarouselNavIcon__navButton"
+        class="fui-TeachingPopoverCarouselNavButton__navButton"
         type="button"
       />
     </div>
     <div
-      class="fui-TeachingPopoverCarouselNavIcon"
+      class="fui-TeachingPopoverCarouselNavButton"
     >
       <button
-        class="fui-TeachingPopoverCarouselNavIcon__navButton"
+        class="fui-TeachingPopoverCarouselNavButton__navButton"
         type="button"
       />
     </div>

@@ -2,26 +2,26 @@ import * as React from 'react';
 import { getIntrinsicElementProps, isHTMLElement, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import type {
-  TeachingPopoverCarouselNavIconProps,
-  TeachingPopoverCarouselNavIconState,
-} from './TeachingPopoverCarouselNavIcon.types';
+  TeachingPopoverCarouselNavButtonProps,
+  TeachingPopoverCarouselNavButtonState,
+} from './TeachingPopoverCarouselNavButton.types';
 import { useARIAButtonProps } from '@fluentui/react-aria';
 import { usePopoverContext_unstable } from '@fluentui/react-popover';
 import { useTeachingPopoverCarouselContext_unstable } from '../TeachingPopoverCarousel/TeachingPopoverCarouselContext';
 
 /**
- * Create the state required to render TeachingPopoverCarouselNavIcon.
+ * Create the state required to render TeachingPopoverCarouselNavButton.
  *
- * The returned state can be modified with hooks such as useTeachingPopoverCarouselNavIconStyles_unstable,
- * before being passed to renderTeachingPopoverCarouselNavIcon_unstable.
+ * The returned state can be modified with hooks such as useTeachingPopoverCarouselNavButtonStyles_unstable,
+ * before being passed to renderTeachingPopoverCarouselNavButton_unstable.
  *
- * @param props - props from this instance of TeachingPopoverCarouselNavIcon
- * @param ref - reference to root HTMLElement of TeachingPopoverCarouselNavIcon
+ * @param props - props from this instance of TeachingPopoverCarouselNavButton
+ * @param ref - reference to root HTMLElement of TeachingPopoverCarouselNavButton
  */
-export const useTeachingPopoverCarouselNavIcon_unstable = (
-  props: TeachingPopoverCarouselNavIconProps,
+export const useTeachingPopoverCarouselNavButton_unstable = (
+  props: TeachingPopoverCarouselNavButtonProps,
   ref: React.Ref<HTMLDivElement>,
-): TeachingPopoverCarouselNavIconState => {
+): TeachingPopoverCarouselNavButtonState => {
   const { navButton, index } = props;
   const appearance = usePopoverContext_unstable(context => context.appearance);
   const setCurrentPage = useTeachingPopoverCarouselContext_unstable(context => context.setCurrentPage);
@@ -60,7 +60,7 @@ export const useTeachingPopoverCarouselNavIcon_unstable = (
 
   const navIconButtonShorthand = useARIAButtonProps('button', _carouselIcon);
 
-  const state: TeachingPopoverCarouselNavIconState = {
+  const state: TeachingPopoverCarouselNavButtonState = {
     isSelected,
     appearance,
     components: {

@@ -6,7 +6,7 @@ import type {
 } from './TeachingPopoverCarouselNav.types';
 
 import { useFocusableGroup } from '@fluentui/react-tabster';
-import { TeachingPopoverCarouselNavIcon } from '../TeachingPopoverCarouselNavIcon/index';
+import { TeachingPopoverCarouselNavButton } from '../TeachingPopoverCarouselNavButton/index';
 import { useTeachingPopoverCarouselContext_unstable } from '../TeachingPopoverCarousel/TeachingPopoverCarouselContext';
 
 /**
@@ -22,9 +22,9 @@ export const useTeachingPopoverCarouselNav_unstable = (
   const totalPages = useTeachingPopoverCarouselContext_unstable(context => context.totalPages);
   const currentPage = useTeachingPopoverCarouselContext_unstable(context => context.currentPage);
 
-  // Generate the child TeachingPopoverCarouselNavIcon and memoize them to prevent unnecessary re-rendering
+  // Generate the child TeachingPopoverCarouselNavButton and memoize them to prevent unnecessary re-rendering
   const rootChildren = React.useMemo(() => {
-    return Array.from(Array(totalPages), (_, i) => <TeachingPopoverCarouselNavIcon key={i} index={i} />);
+    return Array.from(Array(totalPages), (_, i) => <TeachingPopoverCarouselNavButton key={i} index={i} />);
   }, [totalPages]);
 
   return {

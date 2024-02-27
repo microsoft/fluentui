@@ -1,15 +1,15 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type {
-  TeachingPopoverCarouselNavIconSlots,
-  TeachingPopoverCarouselNavIconState,
-} from './TeachingPopoverCarouselNavIcon.types';
+  TeachingPopoverCarouselNavButtonSlots,
+  TeachingPopoverCarouselNavButtonState,
+} from './TeachingPopoverCarouselNavButton.types';
 import { tokens } from '@fluentui/react-theme';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
-export const teachingPopoverCarouselNavIconClassNames: SlotClassNames<TeachingPopoverCarouselNavIconSlots> = {
-  root: 'fui-TeachingPopoverCarouselNavIcon',
-  navButton: 'fui-TeachingPopoverCarouselNavIcon__navButton',
+export const teachingPopoverCarouselNavButtonClassNames: SlotClassNames<TeachingPopoverCarouselNavButtonSlots> = {
+  root: 'fui-TeachingPopoverCarouselNavButton',
+  navButton: 'fui-TeachingPopoverCarouselNavButton__navButton',
 };
 
 /**
@@ -62,16 +62,16 @@ const useStyles = makeStyles({
 });
 
 /**
- * Apply styling to the TeachingPopoverCarouselNavIcon slots based on the state
+ * Apply styling to the TeachingPopoverCarouselNavButton slots based on the state
  */
-export const useTeachingPopoverCarouselNavIconStyles_unstable = (
-  state: TeachingPopoverCarouselNavIconState,
-): TeachingPopoverCarouselNavIconState => {
+export const useTeachingPopoverCarouselNavButtonStyles_unstable = (
+  state: TeachingPopoverCarouselNavButtonState,
+): TeachingPopoverCarouselNavButtonState => {
   const styles = useStyles();
   const { appearance, isSelected } = state;
 
   state.root.className = mergeClasses(
-    teachingPopoverCarouselNavIconClassNames.root,
+    teachingPopoverCarouselNavButtonClassNames.root,
     isSelected ? styles.rootSelected : styles.root,
     state.root.className,
   );
@@ -79,7 +79,7 @@ export const useTeachingPopoverCarouselNavIconStyles_unstable = (
   if (state.navButton) {
     const selectedButtonStyle = isSelected ? styles.navButtonSelected : styles.navButtonUnselected;
     state.navButton.className = mergeClasses(
-      teachingPopoverCarouselNavIconClassNames.navButton,
+      teachingPopoverCarouselNavButtonClassNames.navButton,
       styles.navButton,
       selectedButtonStyle,
       appearance === 'brand' ? styles.navButtonBrand : undefined,

@@ -52,17 +52,17 @@ export type {
   TeachingPopoverCarouselNavState,
 } from './TeachingPopoverCarouselNav';
 export {
-  TeachingPopoverCarouselNavIcon,
-  teachingPopoverCarouselNavIconClassNames,
-  renderTeachingPopoverCarouselNavIcon_unstable,
-  useTeachingPopoverCarouselNavIconStyles_unstable,
-  useTeachingPopoverCarouselNavIcon_unstable,
-} from './TeachingPopoverCarouselNavIcon';
+  TeachingPopoverCarouselNavButton,
+  teachingPopoverCarouselNavButtonClassNames,
+  renderTeachingPopoverCarouselNavButton_unstable,
+  useTeachingPopoverCarouselNavButtonStyles_unstable,
+  useTeachingPopoverCarouselNavButton_unstable,
+} from './TeachingPopoverCarouselNavButton';
 export type {
-  TeachingPopoverCarouselNavIconProps,
-  TeachingPopoverCarouselNavIconSlots,
-  TeachingPopoverCarouselNavIconState,
-} from './TeachingPopoverCarouselNavIcon';
+  TeachingPopoverCarouselNavButtonProps,
+  TeachingPopoverCarouselNavButtonSlots,
+  TeachingPopoverCarouselNavButtonState,
+} from './TeachingPopoverCarouselNavButton';
 export {
   TeachingPopoverSurface,
   renderTeachingPopoverSurface_unstable,

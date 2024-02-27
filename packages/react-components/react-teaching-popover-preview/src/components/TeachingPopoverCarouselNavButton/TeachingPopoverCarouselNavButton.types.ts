@@ -1,9 +1,9 @@
 import { PopoverContextValue } from '@fluentui/react-popover';
 import type { ComponentState, ComponentProps, Slot } from '@fluentui/react-utilities';
 
-export type TeachingPopoverCarouselNavIconSlots = {
+export type TeachingPopoverCarouselNavButtonSlots = {
   /**
-   * The root slot of the TeachingPopoverCarouselNavIcon.
+   * The root slot of the TeachingPopoverCarouselNavButton.
    * Default html element is div
    */
   root: NonNullable<Slot<'div'>>;
@@ -14,9 +14,9 @@ export type TeachingPopoverCarouselNavIconSlots = {
 };
 
 /**
- * TeachingPopoverCarouselNavIcon Props
+ * TeachingPopoverCarouselNavButton Props
  */
-export type TeachingPopoverCarouselNavIconProps = ComponentProps<Partial<TeachingPopoverCarouselNavIconSlots>> & {
+export type TeachingPopoverCarouselNavButtonProps = ComponentProps<Partial<TeachingPopoverCarouselNavButtonSlots>> & {
   /**
    * The page index that will be used to update carousel context
    */
@@ -24,9 +24,9 @@ export type TeachingPopoverCarouselNavIconProps = ComponentProps<Partial<Teachin
 };
 
 /**
- * TeachingPopoverCarouselNavIcon State
+ * TeachingPopoverCarouselNavButton State
  */
-export type TeachingPopoverCarouselNavIconState = ComponentState<TeachingPopoverCarouselNavIconSlots> & {
+export type TeachingPopoverCarouselNavButtonState = ComponentState<TeachingPopoverCarouselNavButtonSlots> & {
   /**
    * Enables selection state control
    */

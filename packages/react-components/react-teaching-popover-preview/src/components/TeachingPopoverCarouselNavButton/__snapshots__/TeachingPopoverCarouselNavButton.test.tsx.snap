@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeachingPopoverCarouselNavButton renders a default state 1`] = `
+<div>
+  <div
+    class="fui-TeachingPopoverCarouselNavButton"
+  >
+    <button
+      class="fui-TeachingPopoverCarouselNavButton__navButton"
+      type="button"
+    />
+  </div>
+</div>
+`;

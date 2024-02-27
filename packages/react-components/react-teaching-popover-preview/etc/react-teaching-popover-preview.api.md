@@ -43,7 +43,7 @@ export const renderTeachingPopoverCarousel_unstable: (state: TeachingPopoverCaro
 export const renderTeachingPopoverCarouselNav_unstable: (state: TeachingPopoverCarouselNavState) => JSX.Element;
 
 // @public
-export const renderTeachingPopoverCarouselNavIcon_unstable: (state: TeachingPopoverCarouselNavIconState) => JSX.Element;
+export const renderTeachingPopoverCarouselNavButton_unstable: (state: TeachingPopoverCarouselNavButtonState) => JSX.Element;
 
 // @public
 export const renderTeachingPopoverFooter_unstable: (state: TeachingPopoverFooterState) => JSX.Element;
@@ -102,24 +102,24 @@ export const TeachingPopoverCarouselNav: ForwardRefComponent<TeachingPopoverCaro
 export const teachingPopoverCarouselNavClassNames: SlotClassNames<TeachingPopoverCarouselNavSlots>;
 
 // @public
-export const TeachingPopoverCarouselNavIcon: ForwardRefComponent<TeachingPopoverCarouselNavIconProps>;
+export const TeachingPopoverCarouselNavButton: ForwardRefComponent<TeachingPopoverCarouselNavButtonProps>;
 
 // @public (undocumented)
-export const teachingPopoverCarouselNavIconClassNames: SlotClassNames<TeachingPopoverCarouselNavIconSlots>;
+export const teachingPopoverCarouselNavButtonClassNames: SlotClassNames<TeachingPopoverCarouselNavButtonSlots>;
 
 // @public
-export type TeachingPopoverCarouselNavIconProps = ComponentProps<Partial<TeachingPopoverCarouselNavIconSlots>> & {
+export type TeachingPopoverCarouselNavButtonProps = ComponentProps<Partial<TeachingPopoverCarouselNavButtonSlots>> & {
     index: number;
 };
 
 // @public (undocumented)
-export type TeachingPopoverCarouselNavIconSlots = {
+export type TeachingPopoverCarouselNavButtonSlots = {
     root: NonNullable<Slot<'div'>>;
     navButton: NonNullable<Slot<'button'>>;
 };
 
 // @public
-export type TeachingPopoverCarouselNavIconState = ComponentState<TeachingPopoverCarouselNavIconSlots> & {
+export type TeachingPopoverCarouselNavButtonState = ComponentState<TeachingPopoverCarouselNavButtonSlots> & {
     isSelected?: boolean;
 } & Pick<PopoverContextValue, 'appearance'>;
 
@@ -275,10 +275,10 @@ export function useTeachingPopoverCarouselContextValues_unstable(state: Teaching
 export const useTeachingPopoverCarouselNav_unstable: (props: TeachingPopoverCarouselNavProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselNavState;
 
 // @public
-export const useTeachingPopoverCarouselNavIcon_unstable: (props: TeachingPopoverCarouselNavIconProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselNavIconState;
+export const useTeachingPopoverCarouselNavButton_unstable: (props: TeachingPopoverCarouselNavButtonProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselNavButtonState;
 
 // @public
-export const useTeachingPopoverCarouselNavIconStyles_unstable: (state: TeachingPopoverCarouselNavIconState) => TeachingPopoverCarouselNavIconState;
+export const useTeachingPopoverCarouselNavButtonStyles_unstable: (state: TeachingPopoverCarouselNavButtonState) => TeachingPopoverCarouselNavButtonState;
 
 // @public
 export const useTeachingPopoverCarouselNavStyles_unstable: (state: TeachingPopoverCarouselNavState) => TeachingPopoverCarouselNavState;
