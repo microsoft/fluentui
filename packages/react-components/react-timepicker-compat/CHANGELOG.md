@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-timepicker-compat
 
-This log was last generated on Tue, 06 Feb 2024 17:55:21 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Feb 2024 14:22:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat_v0.2.0)
+
+Tue, 20 Feb 2024 14:22:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-timepicker-compat_v0.1.9..@fluentui/react-timepicker-compat_v0.2.0)
+
+### Minor changes
+
+- feat: add "clearable" prop ([PR #30512](https://github.com/microsoft/fluentui/pull/30512) by olfedias@microsoft.com)
+- Bump @fluentui/react-combobox to v9.8.0 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-field to v9.1.54 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.30 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-utilities to v9.18.1 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+
+### Patches
+
+- refactor: update activedescendant management from combobox ([PR #30539](https://github.com/microsoft/fluentui/pull/30539) by lingfan.gao@microsoft.com)
 
 ## [0.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-timepicker-compat_v0.1.9)
 

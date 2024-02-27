@@ -59,7 +59,7 @@ export type TimeStringValidationResult = {
   errorType?: TimePickerErrorType;
 };
 
-export type TimePickerSlots = Omit<ComboboxSlots, 'clearIcon'>;
+export type TimePickerSlots = ComboboxSlots;
 
 export type TimeSelectionEvents = SelectionEvents | React.FocusEvent<HTMLElement>;
 export type TimeSelectionData = {
@@ -99,6 +99,7 @@ export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input
   Pick<
     ComboboxProps,
     | 'appearance'
+    | 'clearable'
     | 'defaultOpen'
     | 'defaultValue'
     | 'inlinePopup'

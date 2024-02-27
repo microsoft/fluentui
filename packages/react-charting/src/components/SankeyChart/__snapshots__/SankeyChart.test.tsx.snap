@@ -2319,6 +2319,243 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
 </div>
 `;
 
+exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied resource strings 1`] = `
+<div
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+  role="presentation"
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone10"
+    data-tabster="{\\"uncontrolled\\": {}}"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <svg
+      height={436}
+      id="sankeyChart2"
+      width={864}
+    >
+      <g
+        className=
+
+            {
+              fill: #ffffff;
+              stroke-width: 3px;
+              stroke: #000000;
+            }
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+              fill: #000000;
+            }
+        strokeOpacity={1}
+      >
+        <g>
+          <defs>
+            <linearGradient
+              id="gradient-link1-0"
+              x1="0%"
+              x2="100%"
+              y1="0%"
+              y2="0%"
+            >
+              <stop
+                offset="0"
+                stopColor="#00758F"
+              />
+              <stop
+                offset="100%"
+                stopColor="#77004D"
+              />
+            </linearGradient>
+          </defs>
+          <path
+            aria-label="10 items moved from First to Second"
+            d="M172,36C455.5,36,455.5,36,739,36L739,430C455.5,430,455.5,430,172,430Z"
+            data-is-focusable={true}
+            fillOpacity={1}
+            id="link9"
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            role="img"
+            stroke="#757575"
+            strokeOpacity={1}
+            strokeWidth="2"
+          />
+        </g>
+      </g>
+      <g
+        className=
+
+            {
+              fill: #F5F5F5;
+            }
+            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+              fill: #000000;
+            }
+      >
+        <g
+          id="nodeGElement6"
+        >
+          <rect
+            aria-label="element First with size 10"
+            data-is-focusable={true}
+            fill="#00758F"
+            height={394}
+            id="nodeBar5"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#002E39"
+            strokeWidth="2"
+            width={124}
+            x={48}
+            y={36}
+          />
+          <g
+            className=
+
+                {
+                  margin-bottom: 4px;
+                  margin-left: 8px;
+                  margin-right: 8px;
+                  margin-top: 4px;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                  fill: rgb(179, 179, 179);
+                }
+          >
+            <g
+              className="nodeName"
+            >
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="1.2em"
+                fill="#FFFFFF"
+                fontSize={10}
+                fontWeight="regular"
+                id="nodeBar5-name"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="start"
+                x={48}
+                y={36}
+              >
+                First
+              </text>
+            </g>
+            <text
+              aria-hidden="true"
+              dx="0.4em"
+              dy="2em"
+              fill="#FFFFFF"
+              fontSize={14}
+              fontWeight="bold"
+              textAnchor="start"
+              x={48}
+              y={36}
+            >
+              10
+            </text>
+          </g>
+        </g>
+        <g
+          id="nodeGElement8"
+        >
+          <rect
+            aria-label="element Second with size 10"
+            data-is-focusable={true}
+            fill="#77004D"
+            height={394}
+            id="nodeBar7"
+            onFocus={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity="1"
+            role="img"
+            stroke="#43002C"
+            strokeWidth="2"
+            width={124}
+            x={739}
+            y={36}
+          />
+          <g
+            className=
+
+                {
+                  margin-bottom: 4px;
+                  margin-left: 8px;
+                  margin-right: 8px;
+                  margin-top: 4px;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                  fill: rgb(179, 179, 179);
+                }
+          >
+            <g
+              className="nodeName"
+            >
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="1.2em"
+                fill="#FFFFFF"
+                fontSize={10}
+                fontWeight="regular"
+                id="nodeBar7-name"
+                onMouseOut={[Function]}
+                onMouseOver={[Function]}
+                textAnchor="start"
+                x={739}
+                y={36}
+              >
+                Second
+              </text>
+            </g>
+            <text
+              aria-hidden="true"
+              dx="0.4em"
+              dy="2em"
+              fill="#FFFFFF"
+              fontSize={14}
+              fontWeight="bold"
+              textAnchor="start"
+              x={739}
+              y={36}
+            >
+              10
+            </text>
+          </g>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
 exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on providing height less than onepercent of total height 1`] = `
 <div
   className=

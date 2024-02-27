@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
-import type { NavItemProps, NavItemState } from './NavItem.types';
 import { useNavContext_unstable } from '../NavContext';
+
+import type { NavItemProps, NavItemState } from './NavItem.types';
 
 /**
  * Create the state required to render NavItem.

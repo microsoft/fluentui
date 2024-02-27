@@ -28,6 +28,13 @@ export type NavProps = ComponentProps<NavSlots> & {
   defaultSelectedValue?: NavItemValue;
 
   /**
+   * The value of the navCategory to be selected by default.
+   * Typically useful when the selectedValue is uncontrolled.
+   *  Mutually exclusive with selectedValue.
+   */
+  defaultSelectedCategoryValue?: NavItemValue;
+
+  /**
    * Raised when a navItem is selected.
    */
   onNavItemSelect?: EventHandler<OnNavItemSelectData>;
@@ -37,6 +44,19 @@ export type NavProps = ComponentProps<NavSlots> & {
    * Mutually exclusive with defaultSelectedValue.
    */
   selectedValue?: NavItemValue;
+
+  /**
+   * Indicates a category that has a selected child
+   * Will show the category as selected if it is closed.
+   * Null otherwise
+   */
+  selectedCategoryValue?: NavItemValue;
+
+  /**
+   * Indicates if Nav supports multiple open Categories at the same time.
+   * @default true, indicating that multiple categories can be open at the same time.
+   */
+  multiple?: boolean;
 
   /**
    * Callback used by NavCategoryItem to request a change on it's own opened state
@@ -49,6 +69,12 @@ export type OnNavItemSelectData = EventData<'click', React.MouseEvent<HTMLButton
    * The value of the selected navItem.
    */
   value: NavItemValue;
+
+  /**
+   * The parent value of the selected navItem
+   * Null if not a child of a category
+   */
+  categoryValue?: NavItemValue;
 };
 
 /**

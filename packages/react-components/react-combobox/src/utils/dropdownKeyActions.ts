@@ -88,26 +88,3 @@ export function getDropdownActionFromKey(
   // if nothing matched, return none
   return 'None';
 }
-
-/**
- * Returns the requested option index from an action
- */
-export function getIndexFromAction(action: DropdownActions, currentIndex: number, maxIndex: number): number {
-  switch (action) {
-    case 'Next':
-      return Math.min(maxIndex, currentIndex + 1);
-      break;
-    case 'Previous':
-      return Math.max(0, currentIndex - 1);
-    case 'First':
-      return 0;
-    case 'Last':
-      return maxIndex;
-    case 'PageDown':
-      return Math.min(maxIndex, currentIndex + 10);
-    case 'PageUp':
-      return Math.max(0, currentIndex - 10);
-    default:
-      return currentIndex;
-  }
-}

@@ -532,7 +532,7 @@ exports[`createNumericXAxis should create the x-axis labels correctly for a spec
 Array [
   Array [
     0,
-    0,
+    "0",
   ],
   Array [
     50,

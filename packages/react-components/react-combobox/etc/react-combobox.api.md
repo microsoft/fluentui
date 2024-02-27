@@ -6,8 +6,11 @@
 
 /// <reference types="react" />
 
+import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { PortalProps } from '@fluentui/react-portal';
@@ -25,7 +28,10 @@ export const Combobox: ForwardRefComponent<ComboboxProps>;
 export const comboboxClassNames: SlotClassNames<ComboboxSlots>;
 
 // @public
-export type ComboboxContextValue = Pick<ComboboxState, 'activeOption' | 'appearance' | 'focusVisible' | 'open' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'setActiveOption' | 'setOpen' | 'size'>;
+export type ComboboxContextValue = Pick<ComboboxState, 'activeOption' | 'appearance' | 'focusVisible' | 'open' | 'registerOption' | 'setActiveOption' | 'setOpen' | 'size'> & {
+    selectedOptions: ComboboxState['selectedOptions'];
+    selectOption: ComboboxState['selectOption'];
+};
 
 // @public (undocumented)
 export type ComboboxContextValues = ComboboxBaseContextValues;
@@ -42,7 +48,7 @@ export type ComboboxProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>
     children?: React_2.ReactNode;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const ComboboxProvider: Provider<ComboboxContextValue> & FC<ProviderProps<ComboboxContextValue>>;
 
 // @public (undocumented)
@@ -57,6 +63,7 @@ export type ComboboxSlots = {
 // @public
 export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState & {
     showClearIcon?: boolean;
+    activeDescendantController: ActiveDescendantImperativeRef;
 };
 
 // @public
@@ -90,6 +97,7 @@ export type DropdownSlots = {
 export type DropdownState = ComponentState<DropdownSlots> & ComboboxBaseState & {
     placeholderVisible: boolean;
     showClearButton?: boolean;
+    activeDescendantController: ActiveDescendantImperativeRef;
 };
 
 // @public
@@ -99,18 +107,21 @@ export const Listbox: ForwardRefComponent<ListboxProps>;
 export const listboxClassNames: SlotClassNames<ListboxSlots>;
 
 // @public
-export type ListboxContextValue = Pick<ListboxState, 'activeOption' | 'focusVisible' | 'multiselect' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'setActiveOption'>;
+export type ListboxContextValue = Pick<ListboxState, 'activeOption' | 'focusVisible' | 'multiselect' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'setActiveOption'> & {
+    onOptionClick: (e: React_2.MouseEvent<HTMLElement>) => void;
+};
 
 // @public (undocumented)
 export type ListboxContextValues = {
     listbox: ListboxContextValue;
+    activeDescendant: ActiveDescendantContextValue;
 };
 
 // @public
 export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
 
 // @public (undocumented)
-export const ListboxProvider: Provider<ListboxContextValue> & FC<ProviderProps<ListboxContextValue>>;
+export const ListboxProvider: React_2.Provider<ListboxContextValue | undefined> & React_2.FC<React_2.ProviderProps<ListboxContextValue | undefined>>;
 
 // @public (undocumented)
 export type ListboxSlots = {
@@ -121,8 +132,9 @@ export type ListboxSlots = {
 export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState & Pick<SelectionProps, 'multiselect'> & SelectionState & {
     activeOption?: OptionValue;
     focusVisible: boolean;
-    selectOption(event: SelectionEvents, option: OptionValue): void;
     setActiveOption(option?: OptionValue): void;
+    selectOption(event: SelectionEvents, option: OptionValue): void;
+    activeDescendantController: ActiveDescendantImperativeRef;
 };
 
 // @public
@@ -205,7 +217,7 @@ export type SelectionEvents = React_2.ChangeEvent<HTMLElement> | React_2.Keyboar
 export const useCombobox_unstable: (props: ComboboxProps, ref: React_2.Ref<HTMLInputElement>) => ComboboxState;
 
 // @public (undocumented)
-export function useComboboxContextValues(state: ComboboxBaseState): ComboboxBaseContextValues;
+export function useComboboxContextValues(state: ComboboxBaseState & Pick<ComboboxState, 'activeDescendantController'>): ComboboxBaseContextValues;
 
 // @public (undocumented)
 export function useComboboxFilter<T extends {
@@ -224,6 +236,9 @@ export const useDropdownStyles_unstable: (state: DropdownState) => DropdownState
 
 // @public
 export const useListbox_unstable: (props: ListboxProps, ref: React_2.Ref<HTMLElement>) => ListboxState;
+
+// @public (undocumented)
+export const useListboxContext_unstable: <T>(selector: ContextSelector<ListboxContextValue, T>) => T;
 
 // @public (undocumented)
 export function useListboxContextValues(state: ListboxState): ListboxContextValues;

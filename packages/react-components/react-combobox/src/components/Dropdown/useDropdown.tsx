@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { useActiveDescendant } from '@fluentui/react-aria';
 import { ChevronDownRegular as ChevronDownIcon, DismissRegular as DismissIcon } from '@fluentui/react-icons';
 import {
   getPartitionedNativeProps,
@@ -14,6 +15,7 @@ import { Listbox } from '../Listbox/Listbox';
 import type { DropdownProps, DropdownState } from './Dropdown.types';
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useButtonTriggerSlot } from './useButtonTriggerSlot';
+import { optionClassNames } from '../Option/useOptionStyles.styles';
 
 /**
  * Create the state required to render Dropdown.
@@ -27,8 +29,15 @@ import { useButtonTriggerSlot } from './useButtonTriggerSlot';
 export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsSize: true });
+  const {
+    listboxRef: activeDescendantListboxRef,
+    activeParentRef,
+    controller: activeDescendantController,
+  } = useActiveDescendant<HTMLButtonElement, HTMLDivElement>({
+    matchOption: el => el.classList.contains(optionClassNames.root),
+  });
 
-  const baseState = useComboboxBaseState(props);
+  const baseState = useComboboxBaseState({ ...props, activeDescendantController });
   const { clearable, clearSelection, hasFocus, multiselect, open, selectedOptions } = baseState;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
@@ -40,7 +49,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
 
   const triggerRef = React.useRef<HTMLButtonElement>(null);
-  const listbox = useListboxSlot(props.listbox, comboboxPopupRef, {
+  const listbox = useListboxSlot(props.listbox, useMergedRefs(comboboxPopupRef, activeDescendantListboxRef), {
     state: baseState,
     triggerRef,
     defaultProps: {
@@ -48,7 +57,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     },
   });
 
-  const trigger = useButtonTriggerSlot(props.button ?? {}, useMergedRefs(triggerRef, ref), {
+  const trigger = useButtonTriggerSlot(props.button ?? {}, useMergedRefs(triggerRef, activeParentRef, ref), {
     state: baseState,
     defaultProps: {
       type: 'button',
@@ -57,6 +66,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
       'aria-controls': open ? listbox?.id : undefined,
       ...triggerNativeProps,
     },
+    activeDescendantController,
   });
 
   const rootSlot = slot.always(props.root, {
@@ -95,6 +105,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     }),
     placeholderVisible: !baseState.value && !!props.placeholder,
     showClearButton,
+    activeDescendantController,
     ...baseState,
   };
 
