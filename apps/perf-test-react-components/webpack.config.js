@@ -12,7 +12,7 @@ const tsConfigPath = path.resolve(__dirname, '../../tsconfig.base.json');
 // TODO: Should root cause why this only works as a serve config.
 const config = /** @type {import('webpack').Configuration}*/ ({
   mode: 'production',
-  target: ['web', 'es5'],
+  target: ['web' /* , 'es5' */],
   entry: './src/app.tsx',
   output: {
     filename: 'perf-test.js',
@@ -21,6 +21,10 @@ const config = /** @type {import('webpack').Configuration}*/ ({
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
+    extensionAlias: {
+      '.js': ['.js', '.ts'],
+      '.mjs': ['.mjs', '.mts'],
+    },
   },
   devtool: 'eval',
   module: {
