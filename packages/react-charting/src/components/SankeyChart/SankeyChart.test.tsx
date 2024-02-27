@@ -7,7 +7,6 @@ import { IChartProps } from '../../index';
 import { resetIds } from '../../Utilities';
 import { ISankeyChartAccessibilityProps, ISankeyChartProps, ISankeyChartStrings, SankeyChart } from './index';
 import { ISankeyChartState, SankeyChartBase } from './SankeyChart.base';
-import { IChartPropsSankey } from 'src/types/ISankeyDataPoint';
 
 // Wrapper of the SankeyChart to be tested.
 let wrapper: ReactWrapper<ISankeyChartProps, ISankeyChartState, SankeyChartBase> | undefined;
@@ -288,7 +287,7 @@ describe('SankeyChart - Min Height of Node Test', () => {
   afterEach(sharedAfterEach);
 
   it('renders Sankey correctly on providing height less than onepercent of total height', () => {
-    const onepercentheightdata: IChartPropsSankey = {
+    const onepercentheightdata: IChartProps = {
       chartTitle: 'Sankey Chart',
       SankeyChartData: {
         nodes: [
@@ -324,7 +323,7 @@ describe('SankeyChart - Min Height of Node Test', () => {
     // This creates a huge disparity in the height of the nodes in each column.
     // The final appearance should show a small node, and should render values for the nodes
     // which match the original values.
-    const onepercentheightdata: IChartPropsSankey = {
+    const onepercentheightdata: IChartProps = {
       chartTitle: 'Sankey Chart',
       SankeyChartData: {
         nodes: [

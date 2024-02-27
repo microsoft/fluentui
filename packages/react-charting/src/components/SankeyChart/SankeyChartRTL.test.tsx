@@ -7,12 +7,11 @@ import * as React from 'react';
 import { resetIds } from '../../Utilities';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { SankeyChartBase } from './SankeyChart.base';
-import { SankeyChart } from './index';
-import { IChartPropsSankey } from 'src/types/ISankeyDataPoint';
+import { IChartProps, SankeyChart } from './index';
 
 expect.extend(toHaveNoViolations);
 
-function chartPointsWithStringNodeId(): IChartPropsSankey {
+function chartPointsWithStringNodeId(): IChartProps {
   return {
     chartTitle: 'Sankey Chart',
     SankeyChartData: {
@@ -29,6 +28,10 @@ function chartPointsWithStringNodeId(): IChartPropsSankey {
     },
   };
 }
+
+const emptyChartPoints: IChartProps = {
+  chartData: [],
+};
 
 function sharedBeforeEach() {
   resetIds();
@@ -131,7 +134,7 @@ describe('Sankey chart rendering', () => {
   beforeEach(sharedBeforeEach);
   test('Should re-render the Sankey chart with data', async () => {
     // Arrange
-    const { container, rerender } = render(<SankeyChart data={{}} />);
+    const { container, rerender } = render(<SankeyChart data={emptyChartPoints} />);
     // Assert
     expect(container).toMatchSnapshot();
     expect(getById(container, /_SankeyChart_empty/i)).toHaveLength(1);
