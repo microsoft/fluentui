@@ -575,7 +575,7 @@ runTest('_createNewDataSet', () => {
   });
 });
 
-runTest('Skip - timezone related test cases', () => {
+runTest('Timezone related test cases', () => {
   conditionalTest(isTimezoneSet(Timezone.UTC))(
     'Should return proper data set for date axis with default axis type',
     () => {
