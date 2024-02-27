@@ -1,4 +1,4 @@
-import type { BrandVariants } from '../types';
+import type { BrandVariants } from '../types.js';
 
 export const brandWeb: BrandVariants = {
   10: `#061724`,

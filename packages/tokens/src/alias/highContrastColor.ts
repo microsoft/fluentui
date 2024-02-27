@@ -11,8 +11,8 @@ import {
   hcHighlight,
   hcHighlightText,
   hcHyperlink,
-} from '../global/colors';
-import type { ColorTokens } from '../types';
+} from '../global/colors.js';
+import type { ColorTokens } from '../types.js';
 
 export const generateColorTokens = (): ColorTokens => ({
   colorNeutralForeground1: hcCanvasText, // CanvasText Global.Color.hcCanvasText

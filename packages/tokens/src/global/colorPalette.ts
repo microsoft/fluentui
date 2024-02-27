@@ -35,8 +35,8 @@ import {
   platinum,
   anchor,
   orange,
-} from './colors';
-import { MappedStatusColors, PersonaSharedColors, StatusSharedColors } from '../types';
+} from './colors.js';
+import { MappedStatusColors, PersonaSharedColors, StatusSharedColors } from '../types.js';
 
 export const statusSharedColors: StatusSharedColors = {
   red,

@@ -3,7 +3,7 @@ import {
   personaSharedColorNames,
   unusedSharedColorNames,
   mappedStatusColorNames,
-} from './sharedColorNames';
+} from './sharedColorNames.js';
 
 /**
  * Design tokens for alias colors

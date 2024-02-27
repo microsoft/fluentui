@@ -1,4 +1,4 @@
-import type { FontFamilyTokens, FontSizeTokens, FontWeightTokens, LineHeightTokens } from '../types';
+import type { FontFamilyTokens, FontSizeTokens, FontWeightTokens, LineHeightTokens } from '../types.js';
 
 export const fontSizes: FontSizeTokens = {
   fontSizeBase100: '10px',

@@ -1,9 +1,14 @@
 /* color palette used in both darkTheme and teamsDarkTheme */
 
-import { statusSharedColors, personaSharedColors, mappedStatusColors } from '../global/colorPalette';
-import { statusSharedColorNames, personaSharedColorNames } from '../sharedColorNames';
-import { ColorPaletteTokens, ColorStatusTokens, PersonaColorPaletteTokens, StatusColorPaletteTokens } from '../types';
-import { statusColorMapping } from '../statusColorMapping';
+import { statusSharedColors, personaSharedColors, mappedStatusColors } from '../global/colorPalette.js';
+import { statusSharedColorNames, personaSharedColorNames } from '../sharedColorNames.js';
+import {
+  ColorPaletteTokens,
+  ColorStatusTokens,
+  PersonaColorPaletteTokens,
+  StatusColorPaletteTokens,
+} from '../types.js';
+import { statusColorMapping } from '../statusColorMapping.js';
 
 const statusColorPaletteTokens = statusSharedColorNames.reduce((acc, sharedColor) => {
   const color = sharedColor.slice(0, 1).toUpperCase() + sharedColor.slice(1);

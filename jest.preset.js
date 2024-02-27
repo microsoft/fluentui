@@ -20,7 +20,12 @@ const baseConfig = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   testPathIgnorePatterns: ['/node_modules/', '/lib/', '/lib-commonjs/', '/dist/'],
   testEnvironment: 'jsdom',
-  moduleNameMapper: { ...tsPathAliases },
+  moduleNameMapper: {
+    // needed for native ESM support
+    '^(\\.{1,2}/.*)\\.js$': '$1',
+    // TS Path aliases
+    ...tsPathAliases,
+  },
   cacheDirectory: '<rootDir>/node_modules/.cache/jest',
   clearMocks: true,
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],

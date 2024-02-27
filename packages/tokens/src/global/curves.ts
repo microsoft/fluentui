@@ -1,4 +1,4 @@
-import type { CurveTokens } from '../types';
+import type { CurveTokens } from '../types.js';
 
 export const curves: CurveTokens = {
   curveAccelerateMax: 'cubic-bezier(0.9,0.1,1,0.2)',
