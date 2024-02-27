@@ -1,3 +1,3 @@
-export * from './lightTheme';
-export * from './darkTheme';
-export * from './highContrastTheme';
+export * from './lightTheme.js';
+export * from './darkTheme.js';
+export * from './highContrastTheme.js';

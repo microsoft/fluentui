@@ -1,2 +1,2 @@
-export * from './teams/index';
-export * from './web/index';
+export * from './teams/index.js';
+export * from './web/index.js';
