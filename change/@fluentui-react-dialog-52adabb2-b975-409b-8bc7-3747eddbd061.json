@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: ensures non-modal Dialog returns focus to trigger when closed",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
