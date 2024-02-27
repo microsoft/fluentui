@@ -13,6 +13,12 @@ var siteInfo = [
     title: '@fluentui/react demo',
   },
   {
+    package: '@fluentui/react-swatch-picker-preview',
+    link: '../../packages/react-components/react-swatch-picker-preview/demo/index.html',
+    icon: 'FavoriteStar',
+    title: 'Design SwatchPicker demo',
+  },
+  {
     package: '@fluentui/react',
     link: './react/storybook/index.html',
     icon: 'FavoriteStar',

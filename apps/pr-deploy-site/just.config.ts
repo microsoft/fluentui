@@ -31,6 +31,7 @@ const dependencies = [
   '@fluentui/theming-designer',
   '@fluentui/theme-designer',
   '@fluentui/perf-test-react-components',
+  '@fluentui/react-swatch-picker-preview',
 ];
 
 const allPackages = getAllPackageInfo();
