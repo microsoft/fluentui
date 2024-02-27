@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "Node",
+    "pretty": true,
+    "module": "ESNext",
+    "target": "ES2020",
+    "noEmit": true,
+    "lib": ["ES2020", "dom"],
+    "outDir": "dist",
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "jsx": "react-jsx",
+    "strict": true
+  },
+  "include": ["src"]
+}
