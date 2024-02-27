@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 27 Feb 2024 07:25:41 GMT",
+      "tag": "@fluentui/react-charting_v5.19.30",
+      "version": "5.19.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9b41bc196072d32e2547c9addf781e3acb03a973",
+            "comment": "Fix vertical stacked bar chart rendering issue when data array is empty"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 26 Feb 2024 07:26:18 GMT",
       "tag": "@fluentui/react-charting_v5.19.29",
       "version": "5.19.29",

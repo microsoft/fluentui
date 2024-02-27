@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix vertical stacked bar chart rendering issue when data array is empty",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}
