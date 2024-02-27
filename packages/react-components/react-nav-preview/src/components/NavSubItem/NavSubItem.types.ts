@@ -20,11 +20,6 @@ export type NavSubItemProps = ComponentProps<Partial<NavSubItemSlots>> & {
    * The value that identifies this NavSubItem when selected.
    */
   value: NavItemValue;
-
-  /**
-   * Destination URL for the link
-   */
-  href?: string;
 };
 
 /**

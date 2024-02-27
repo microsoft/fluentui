@@ -83,7 +83,6 @@ export const navItemClassNames: SlotClassNames<NavItemSlots>;
 // @public
 export type NavItemProps = ComponentProps<Partial<NavItemSlots>> & {
     value: NavItemValue;
-    href?: string;
 };
 
 // @public (undocumented)
@@ -157,7 +156,6 @@ export type NavSubItemGroupState = ComponentState<NavSubItemGroupSlots> & {
 // @public
 export type NavSubItemProps = ComponentProps<Partial<NavSubItemSlots>> & {
     value: NavItemValue;
-    href?: string;
 };
 
 // @public (undocumented)
