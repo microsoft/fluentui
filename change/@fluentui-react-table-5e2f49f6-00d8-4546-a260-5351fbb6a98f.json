@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: add system colors on hover",
-  "packageName": "@fluentui/react-table",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

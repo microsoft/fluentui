@@ -17,7 +17,7 @@ export type ToastContainerSlots = {
 /**
  * ToastContainer Props
  */
-export type ToastContainerProps = ComponentProps<Partial<ToastContainerSlots>> &
+export type ToastContainerProps = Omit<ComponentProps<Partial<ToastContainerSlots>>, 'content'> &
   Toast & {
     visible: boolean;
     announce: Announce;

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-message-bar",
-  "version": "9.0.13",
+  "version": "9.0.20",
   "description": "Fluent UI MessageBar component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -31,12 +31,12 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-button": "^9.3.62",
+    "@fluentui/react-button": "^9.3.69",
     "@fluentui/react-icons": "^2.0.224",
-    "@fluentui/react-jsx-runtime": "^9.0.24",
-    "@fluentui/react-shared-contexts": "^9.13.2",
+    "@fluentui/react-jsx-runtime": "^9.0.30",
+    "@fluentui/react-shared-contexts": "^9.14.0",
     "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.15.6",
+    "@fluentui/react-utilities": "^9.18.1",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1",
     "react-transition-group": "^4.4.1"

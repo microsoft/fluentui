@@ -12,9 +12,10 @@ export const useTabsterAttributes = (props: TabsterTypes.TabsterAttributeProps):
   useTabster();
 
   const strAttr = getTabsterAttribute(props, true);
+
   return React.useMemo(
     () => ({
-      'data-tabster': strAttr,
+      [TabsterTypes.TabsterAttributeName]: strAttr,
     }),
     [strAttr],
   );

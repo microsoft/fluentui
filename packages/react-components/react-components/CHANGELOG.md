@@ -1,8 +1,366 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 11 Jan 2024 09:04:28 GMT and should not be manually modified.
+This log was last generated on Tue, 20 Feb 2024 14:22:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.46.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.5)
+
+Tue, 20 Feb 2024 14:22:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.46.4..@fluentui/react-components_v9.46.5)
+
+### Minor changes
+
+- `@fluentui/react-aria`
+  - feat: adds a context for active descendant ([PR #30528](https://github.com/microsoft/fluentui/pull/30528) by lingfan.gao@microsoft.com)
+- `@fluentui/react-combobox`
+  - feat: Decouple activedescendant handling from react state ([PR #30539](https://github.com/microsoft/fluentui/pull/30539) by lingfan.gao@microsoft.com)
+- `@fluentui/react-conformance`
+  - Deprecate consistent-callback-args test ([PR #30301](https://github.com/microsoft/fluentui/pull/30301) by yuanboxue@microsoft.com)
+  - BREAKING CHANGE: change `consistent-callback-args` test option to test selected props instead of ignoring props ([PR #30376](https://github.com/microsoft/fluentui/pull/30376) by yuanboxue@microsoft.com)
+- `@fluentui/react-menu`
+  - Dismiss Menu when MenuLinkItem is clicked. ([PR #30497](https://github.com/microsoft/fluentui/pull/30497) by santoshsrisai36@gmail.com)
+- `@fluentui/react-motions-preview`
+  - BREAKING: rename createAtom() to createMotionComponent() & createPresence() to createPresenceMotion() ([PR #30550](https://github.com/microsoft/fluentui/pull/30550) by olfedias@microsoft.com)
+  - BREAKING: remove exports for atom & presence definitions ([PR #30548](https://github.com/microsoft/fluentui/pull/30548) by olfedias@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - feat: add "clearable" prop ([PR #30512](https://github.com/microsoft/fluentui/pull/30512) by olfedias@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-breadcrumb`
+  - fix: moved sized icons to styling ([PR #30551](https://github.com/microsoft/fluentui/pull/30551) by vkozlova@microsoft.com)
+- `@fluentui/react-calendar-compat`
+  - fix: remove new Date() from prop destructuring ([PR #30519](https://github.com/microsoft/fluentui/pull/30519) by seanmonahan@microsoft.com)
+- `@fluentui/react-combobox`
+  - chore: disable consistent-callback-type lint rule for existing callbacks ([PR #30293](https://github.com/microsoft/fluentui/pull/30293) by yuanboxue@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: DatePicker renders a semantic button for voice control ([PR #30499](https://github.com/microsoft/fluentui/pull/30499) by sarah.higley@microsoft.com)
+  - fix: remove new Date() from prop destructuring ([PR #30519](https://github.com/microsoft/fluentui/pull/30519) by seanmonahan@microsoft.com)
+- `@fluentui/react-field`
+  - chore: update style hooks to return state ([PR #30513](https://github.com/microsoft/fluentui/pull/30513) by olfedias@microsoft.com)
+- `@fluentui/react-image`
+  - chore: update style hooks to return state ([PR #30513](https://github.com/microsoft/fluentui/pull/30513) by olfedias@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: MenuPopover should stay open for submenu even when not openOnHover ([PR #30486](https://github.com/microsoft/fluentui/pull/30486) by lingfangao@hotmail.com)
+  - chore: update style hooks to return state ([PR #30513](https://github.com/microsoft/fluentui/pull/30513) by olfedias@microsoft.com)
+- `@fluentui/react-motions-preview`
+  - feat: add onMotionFinish() callback to createPresenceComponent() ([PR #30529](https://github.com/microsoft/fluentui/pull/30529) by olfedias@microsoft.com)
+  - feat: add PresenceGroup component ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by olfedias@microsoft.com)
+- `@fluentui/react-radio`
+  - chore: update style hooks to return state ([PR #30513](https://github.com/microsoft/fluentui/pull/30513) by olfedias@microsoft.com)
+- `@fluentui/react-rating-preview`
+  - fix: remove component assignment from prop destructuring ([PR #30520](https://github.com/microsoft/fluentui/pull/30520) by seanmonahan@microsoft.com)
+  - fix: update vertical styling for RatingDisplay to fix vertical alignment ([PR #30465](https://github.com/microsoft/fluentui/pull/30465) by ololubek@microsoft.com)
+- `@fluentui/react-search-preview`
+  - chore: disable consistent-callback-type lint rule for existing callbacks ([PR #30293](https://github.com/microsoft/fluentui/pull/30293) by yuanboxue@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: focus-visible polyfill should only register in scope ([PR #30517](https://github.com/microsoft/fluentui/pull/30517) by lingfangao@hotmail.com)
+  - Active modal checks if an element outside of it is a virtual child of a modal before setting aria-hidden.' ([PR #30501](https://github.com/microsoft/fluentui/pull/30501) by marata@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - refactor: update activedescendant management from combobox ([PR #30539](https://github.com/microsoft/fluentui/pull/30539) by lingfan.gao@microsoft.com)
+- `@fluentui/react-toast`
+  - chore: disable consistent-callback-type lint rule for existing callbacks ([PR #30293](https://github.com/microsoft/fluentui/pull/30293) by yuanboxue@microsoft.com)
+- `@fluentui/react-toolbar`
+  - chore: update style hooks to return state ([PR #30513](https://github.com/microsoft/fluentui/pull/30513) by olfedias@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: Remove import cycle between assertSlots.ts and index.ts ([PR #30555](https://github.com/microsoft/fluentui/pull/30555) by behowell@microsoft.com)
+
+## [9.46.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.4)
+
+Tue, 06 Feb 2024 17:55:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.46.3..@fluentui/react-components_v9.46.4)
+
+### Minor changes
+
+- `@fluentui/react-rating-preview`
+  - chore: Simplify high contrast visuals for RatingItem, and remove iconOutline from RatingDisplay ([PR #30457](https://github.com/microsoft/fluentui/pull/30457) by behowell@microsoft.com)
+- `@fluentui/react-tabster`
+  - feat: useSetKeyboardNavigation hook ([PR #30316](https://github.com/microsoft/fluentui/pull/30316) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-aria`
+  - chore: adds @fluentui/react-jsx-runtime as dependency ([PR #30485](https://github.com/microsoft/fluentui/pull/30485) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-calendar-compat`
+  - fix: Update year and month pickers to use the correct keyboard navigation type and apply requested focus indicator width from design for day picker. ([PR #30435](https://github.com/microsoft/fluentui/pull/30435) by estebanmu@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: Apply aria-disabled to DatePicker's contentAfter slot to avoid confusion when using screen readers. ([PR #30435](https://github.com/microsoft/fluentui/pull/30435) by estebanmu@microsoft.com)
+- `@fluentui/react-message-bar`
+  - fix: MessageBar with no actions should have correct spacing ([PR #30481](https://github.com/microsoft/fluentui/pull/30481) by lingfangao@hotmail.com)
+- `@fluentui/react-migration-v0-v9`
+  - fix(react-migration-v0-v9): add northstar to dependencies ([PR #30303](https://github.com/microsoft/fluentui/pull/30303) by martinhochel@microsoft.com)
+  - chore: bump northstar version ([PR #30478](https://github.com/microsoft/fluentui/pull/30478) by martinhochel@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: Resize heuristic should account for zero dimensions ([PR #30439](https://github.com/microsoft/fluentui/pull/30439) by lingfangao@hotmail.com)
+- `@fluentui/react-rating-preview`
+  - chore: add accesibility props to Rating and RatingDisplay ([PR #30414](https://github.com/microsoft/fluentui/pull/30414) by ololubek@microsoft.com)
+  - chore: add accessibility props to Rating and RatingDisplay ([PR #30421](https://github.com/microsoft/fluentui/pull/30421) by ololubek@microsoft.com)
+- `@fluentui/react-search-preview`
+  - Adds custom onChange callback on SearchBox preview so consumers can handle clear event. ([PR #29038](https://github.com/microsoft/fluentui/pull/29038) by syphe@outlook.com)
+- `@fluentui/react-tree`
+  - bugfix: regression fix for focus and blur events on TreeItem ([PR #30436](https://github.com/microsoft/fluentui/pull/30436) by bernardo.sunderhus@gmail.com)
+  - bugfix: onOpenChange inconsistent between Tree and TreeItem ([PR #30050](https://github.com/microsoft/fluentui/pull/30050) by bernardo.sunderhus@gmail.com)
+
+## [9.46.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.3)
+
+Tue, 30 Jan 2024 23:16:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.46.2..@fluentui/react-components_v9.46.3)
+
+### Minor changes
+
+- `@fluentui/react-tabster`
+  - Optional ShadowDOM support. ([PR #30429](https://github.com/microsoft/fluentui/pull/30429) by marata@microsoft.com)
+- `@fluentui/react-utilities`
+  - getParent() version with ShadowDOM support. ([PR #30429](https://github.com/microsoft/fluentui/pull/30429) by marata@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-table`
+  - DataGrid to use dedicated custom events instead of simulated keypresses. ([PR #30387](https://github.com/microsoft/fluentui/pull/30387) by marata@microsoft.com)
+- `@fluentui/react-tabster`
+  - Tabster 5.3.0 and Keyborg 2.4.1. ([PR #30387](https://github.com/microsoft/fluentui/pull/30387) by marata@microsoft.com)
+
+## [9.46.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.2)
+
+Mon, 29 Jan 2024 13:56:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.46.1..@fluentui/react-components_v9.46.2)
+
+### Patches
+
+- `@fluentui/react-combobox`
+  - fix: add aria-controls to combobox and dropdown ([PR #30352](https://github.com/microsoft/fluentui/pull/30352) by sarah.higley@microsoft.com)
+- `@fluentui/react-label`
+  - fix: Update Label to use a token for its padding, instead of a hardcoded value ([PR #30254](https://github.com/microsoft/fluentui/pull/30254) by behowell@microsoft.com)
+  - fix: Disabled Label should use GrayText in forced-colors mode ([PR #30245](https://github.com/microsoft/fluentui/pull/30245) by behowell@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: disabled menuitem has no pressed style ([PR #30340](https://github.com/microsoft/fluentui/pull/30340) by sarah.higley@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: Avoid infinite loop when comparing different documents ([PR #30415](https://github.com/microsoft/fluentui/pull/30415) by lingfangao@hotmail.com)
+
+## [9.46.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.1)
+
+Fri, 26 Jan 2024 10:40:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.46.0..@fluentui/react-components_v9.46.1)
+
+### Minor changes
+
+- `@fluentui/react-positioning`
+  - feat: Add `disableUpdateOnResize` positioning option ([PR #30391](https://github.com/microsoft/fluentui/pull/30391) by lingfangao@hotmail.com)
+- `@fluentui/react-rating-preview`
+  - feat: Add RatingDisplay component ([PR #30323](https://github.com/microsoft/fluentui/pull/30323) by ololubek@microsoft.com)
+
+## [9.46.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.0)
+
+Tue, 23 Jan 2024 15:10:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.45.0..@fluentui/react-components_v9.46.0)
+
+### Minor changes
+
+- `@fluentui/react-aria`
+  - feat: add AriaLiveAnnouncer component ([PR #30345](https://github.com/microsoft/fluentui/pull/30345) by olfedias@microsoft.com)
+- `@fluentui/react-components`
+  - feat: add AriaLiveAnnouncer component ([PR #30345](https://github.com/microsoft/fluentui/pull/30345) by olfedias@microsoft.com)
+- `@fluentui/react-motions-preview`
+  - chore: initial release ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by olfedias@microsoft.com)
+- `@fluentui/react-utilities`
+  - feat: helper type DistributiveOmit ([PR #30317](https://github.com/microsoft/fluentui/pull/30317) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-aria`
+  - chore: import UnionToIntersection from react-utilities instead of redeclaring it locally ([PR #30317](https://github.com/microsoft/fluentui/pull/30317) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-calendar-compat`
+  - feat: Add navigationIcons prop to allow customization of Calendar's navigation icons. ([PR #30329](https://github.com/microsoft/fluentui/pull/30329) by estebanmu@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: aria-multiselectable is unnecessary with menu roles ([PR #30225](https://github.com/microsoft/fluentui/pull/30225) by sarah.higley@microsoft.com)
+  - fix(Dropdown): add `type=button` to `clearButton` ([PR #30362](https://github.com/microsoft/fluentui/pull/30362) by olfedias@microsoft.com)
+- `@fluentui/react-overflow`
+  - fix: cleanup overflow manager on every unmount ([PR #30363](https://github.com/microsoft/fluentui/pull/30363) by marcosvmmoura@gmail.com)
+- `@fluentui/react-tree`
+  - chore: import DistributiveOmit from react-utilities instead of redeclaring it locally ([PR #30317](https://github.com/microsoft/fluentui/pull/30317) by bernardo.sunderhus@gmail.com)
+
+## [9.45.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.45.0)
+
+Thu, 18 Jan 2024 14:25:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.44.5..@fluentui/react-components_v9.45.0)
+
+### Minor changes
+
+- `@fluentui/react-combobox`
+  - feat: add `useComboboxFilter()` hook ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by olfedias@microsoft.com)
+- `@fluentui/react-components`
+  - feat: export AnnounceProvider & useAnnounce() ([PR #30328](https://github.com/microsoft/fluentui/pull/30328) by olfedias@microsoft.com)
+  - feat: export `useComboboxFilter()` hook ([PR #30046](https://github.com/microsoft/fluentui/pull/30046) by olfedias@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - feat: export AnnounceProvider & useAnnounce() ([PR #30328](https://github.com/microsoft/fluentui/pull/30328) by olfedias@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-spinner`
+  - fix: Update isVisible initial value to false to prevent Spinner flicker ([PR #30330](https://github.com/microsoft/fluentui/pull/30330) by ololubek@microsoft.com)
+
+## [9.44.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.44.5)
+
+Wed, 17 Jan 2024 16:18:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.44.4..@fluentui/react-components_v9.44.5)
+
+### Minor changes
+
+- `@fluentui/react-drawer`
+  - Add bottom position ([PR #29137](https://github.com/microsoft/fluentui/pull/29137) by yiliu9@microsoft.com)
+- `@fluentui/react-utilities`
+  - Add new type EventHandler/EventData for callback props ([PR #30322](https://github.com/microsoft/fluentui/pull/30322) by yuanboxue@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-combobox`
+  - fix: allow expandIcon to be null ([PR #30339](https://github.com/microsoft/fluentui/pull/30339) by yuanboxue@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: only apply transition css properties when animating ([PR #30327](https://github.com/microsoft/fluentui/pull/30327) by marcosvmmoura@gmail.com)
+- `@fluentui/react-tabster`
+  - chore: use Types.TabsterAttributeName in useTabsterAttributes() ([PR #30321](https://github.com/microsoft/fluentui/pull/30321) by olfedias@microsoft.com)
+
+## [9.44.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.44.4)
+
+Tue, 16 Jan 2024 13:14:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.44.3..@fluentui/react-components_v9.44.4)
+
+### Minor changes
+
+- `@fluentui/react-combobox`
+  - feat: add "clearable" prop to Combobox & Dropdown ([PR #30033](https://github.com/microsoft/fluentui/pull/30033) by olfedias@microsoft.com)
+  - feat: allow typeable space on all comboboxes, not only freeform ([PR #30295](https://github.com/microsoft/fluentui/pull/30295) by sarah.higley@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-skeleton`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-slider`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-spinner`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-switch`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-table`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+  - fix: DataGrid selection performance improvement ([PR #30288](https://github.com/microsoft/fluentui/pull/30288) by lingfangao@hotmail.com)
+  - bugfix: add system colors on hover ([PR #30073](https://github.com/microsoft/fluentui/pull/30073) by bernardo.sunderhus@gmail.com)
+  - bugfix: Omit colliding content property from ComponentProps ([PR #29865](https://github.com/microsoft/fluentui/pull/29865) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tabs`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+  - bugfix: Omit colliding content property from ComponentProps ([PR #29865](https://github.com/microsoft/fluentui/pull/29865) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tabster`
+  - fix: memoize tabster attributes ([PR #30289](https://github.com/microsoft/fluentui/pull/30289) by lingfangao@hotmail.com)
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-tags`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-text`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-textarea`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-timepicker-compat`
+  - fix: update types in styles to exclude "clearIcon" slot ([PR #30033](https://github.com/microsoft/fluentui/pull/30033) by olfedias@microsoft.com)
+- `@fluentui/react-toast`
+  - bugfix: Omit colliding content property from ComponentProps ([PR #29865](https://github.com/microsoft/fluentui/pull/29865) by bernardo.sunderhus@gmail.com)
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-toolbar`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-tree`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-accordion`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-aria`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-avatar`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-badge`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-breadcrumb`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-button`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-card`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-checkbox`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-components`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-context-selector`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: set popup's z-index: 1 when rendering DatePickerCompat inline. ([PR #30281](https://github.com/microsoft/fluentui/pull/30281) by seanmonahan@microsoft.com)
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-divider`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-drawer`
+  - chore: remove useHeadingProps() and React.useMemo() ([PR #29360](https://github.com/microsoft/fluentui/pull/29360) by olfedias@microsoft.com)
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-field`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-image`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-input`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-label`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-link`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+  - bugfix: Omit colliding content property from ComponentProps ([PR #29865](https://github.com/microsoft/fluentui/pull/29865) by bernardo.sunderhus@gmail.com)
+  - fix: MenuItem shortcut text should be caption ([PR #29811](https://github.com/microsoft/fluentui/pull/29811) by lingfangao@hotmail.com)
+  - fix(MenuItem): bottom padding should be same as top padding ([PR #30291](https://github.com/microsoft/fluentui/pull/30291) by lingfangao@hotmail.com)
+- `@fluentui/react-migration-v0-v9`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-motion-preview`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-overflow`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-persona`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-popover`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-portal`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-positioning`
+  - chore: bumps @floating-ui/devtools version to latest ([PR #30299](https://github.com/microsoft/fluentui/pull/30299) by bernardo.sunderhus@gmail.com)
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-progress`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-provider`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-radio`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-rating-preview`
+  - Scaffold RatingDisplay ([PR #30283](https://github.com/microsoft/fluentui/pull/30283) by ololubek@microsoft.com)
+- `@fluentui/react-search-preview`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-select`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/global-context`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-alert`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
+- `@fluentui/react-infobutton`
+  - fix: correct version of @types/react-dom peer dep that matches for 16.x ([PR #30259](https://github.com/microsoft/fluentui/pull/30259) by mgodbolt@microsoft.com)
 
 ## [9.44.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.44.3)
 

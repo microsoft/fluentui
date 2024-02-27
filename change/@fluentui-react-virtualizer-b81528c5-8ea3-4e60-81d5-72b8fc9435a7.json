@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Add pagination for both static and dynamic virtualizers",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}

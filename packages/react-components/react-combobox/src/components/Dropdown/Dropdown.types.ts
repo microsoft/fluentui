@@ -1,4 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import type {
   ComboboxBaseContextValues,
   ComboboxBaseOpenChangeData,
@@ -13,7 +14,7 @@ export type DropdownSlots = {
   root: NonNullable<Slot<'div'>>;
 
   /* The dropdown arrow icon */
-  expandIcon: Slot<'span'>;
+  expandIcon?: Slot<'span'>;
 
   /* The dropdown clear icon */
   clearButton?: Slot<'button'>;
@@ -39,6 +40,8 @@ export type DropdownState = ComponentState<DropdownSlots> &
     placeholderVisible: boolean;
 
     showClearButton?: boolean;
+
+    activeDescendantController: ActiveDescendantImperativeRef;
   };
 
 /* Export types defined in ComboboxBase */

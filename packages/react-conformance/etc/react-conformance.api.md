@@ -56,7 +56,7 @@ export interface TestOptions {
     };
     // (undocumented)
     'consistent-callback-args'?: {
-        ignoreProps?: string[];
+        legacyCallbacks?: string[];
     };
     // (undocumented)
     'consistent-callback-names'?: {

@@ -33,6 +33,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
           overflow: auto;
         }
     data-focuszone-id="FocusZone3"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -219,6 +220,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
                     outline: none;
                   }
               data-focuszone-id="FocusZone4"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -601,6 +603,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
           overflow: auto;
         }
     data-focuszone-id="FocusZone3"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -793,6 +796,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                     outline: none;
                   }
               data-focuszone-id="FocusZone4"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -943,6 +947,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
           overflow: auto;
         }
     data-focuszone-id="FocusZone3"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1135,6 +1140,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                     outline: none;
                   }
               data-focuszone-id="FocusZone4"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1376,6 +1382,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
           overflow: auto;
         }
     data-focuszone-id="FocusZone3"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1557,6 +1564,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
           overflow: auto;
         }
     data-focuszone-id="FocusZone3"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1749,6 +1757,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                     outline: none;
                   }
               data-focuszone-id="FocusZone4"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1899,6 +1908,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           overflow: auto;
         }
     data-focuszone-id="FocusZone3"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2091,6 +2101,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                     outline: none;
                   }
               data-focuszone-id="FocusZone4"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2242,6 +2253,9 @@ exports[`HeatMapChart snapShot testing should render HeatMapChart correctly in d
     role="presentation"
   >
     <div
+      id="defaultTabbableElement_5"
+    />
+    <div
       className=
           ms-FocusZone
           &:focus {
@@ -2250,7 +2264,8 @@ exports[`HeatMapChart snapShot testing should render HeatMapChart correctly in d
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone6"
+      data-tabster="{\\"uncontrolled\\": {}}"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
@@ -2326,7 +2341,7 @@ exports[`HeatMapChart snapShot testing should render HeatMapChart correctly in d
         off and people of alaska are hoping for more of this days."
           data-is-focusable={true}
           fillOpacity="1"
-          key="00"
+          key="x0y0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseOut={[Function]}
@@ -2362,7 +2377,7 @@ exports[`HeatMapChart snapShot testing should render HeatMapChart correctly in d
           aria-label="Mar/03, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
           data-is-focusable={true}
           fillOpacity="1"
-          key="10"
+          key="x1y0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseOut={[Function]}
@@ -2442,7 +2457,8 @@ exports[`HeatMapChart snapShot testing should render HeatMapChart correctly in d
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone7"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onMouseDownCapture={[Function]}
@@ -2582,6 +2598,9 @@ exports[`HeatMapChart snapShot testing should render HeatMapChart correctly when
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_2"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -2590,7 +2609,8 @@ exports[`HeatMapChart snapShot testing should render HeatMapChart correctly when
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone3"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2669,7 +2689,7 @@ exports[`HeatMapChart snapShot testing should render HeatMapChart correctly when
         off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
-        key="00"
+        key="x0y0"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
@@ -2705,7 +2725,7 @@ exports[`HeatMapChart snapShot testing should render HeatMapChart correctly when
         aria-label="Mar/03, p1. Execllent (0-200), 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
-        key="10"
+        key="x1y0"
         onBlur={[Function]}
         onFocus={[Function]}
         onMouseOut={[Function]}
@@ -2785,7 +2805,8 @@ exports[`HeatMapChart snapShot testing should render HeatMapChart correctly when
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone3"
+              data-focuszone-id="FocusZone4"
+              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

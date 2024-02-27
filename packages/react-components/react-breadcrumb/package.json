@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-breadcrumb",
-  "version": "9.0.8",
+  "version": "9.0.15",
   "description": "Breadcrumb component for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -24,7 +24,8 @@
     "generate-api": "just-scripts generate-api",
     "storybook": "start-storybook",
     "start": "yarn storybook",
-    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
+    "bundle-size": "monosize measure"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -35,15 +36,15 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-aria": "^9.7.0",
-    "@fluentui/react-button": "^9.3.62",
+    "@fluentui/react-aria": "^9.9.0",
+    "@fluentui/react-button": "^9.3.69",
     "@fluentui/react-icons": "^2.0.224",
-    "@fluentui/react-link": "^9.2.4",
-    "@fluentui/react-shared-contexts": "^9.13.2",
-    "@fluentui/react-tabster": "^9.17.0",
+    "@fluentui/react-link": "^9.2.11",
+    "@fluentui/react-shared-contexts": "^9.14.0",
+    "@fluentui/react-tabster": "^9.19.1",
     "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.15.6",
-    "@fluentui/react-jsx-runtime": "^9.0.24",
+    "@fluentui/react-utilities": "^9.18.1",
+    "@fluentui/react-jsx-runtime": "^9.0.30",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },

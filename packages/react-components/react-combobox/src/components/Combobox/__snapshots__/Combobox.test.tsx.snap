@@ -63,6 +63,7 @@ exports[`Combobox renders an open listbox 1`] = `
   >
     <input
       aria-activedescendant="fluent-option3"
+      aria-controls="fluent-listbox2"
       aria-expanded="true"
       class="fui-Combobox__input"
       role="combobox"
@@ -118,6 +119,7 @@ exports[`Combobox renders an open listbox 1`] = `
       <div
         aria-selected="false"
         class="fui-Option"
+        data-activedescendant=""
         id="fluent-option3"
         role="option"
       >

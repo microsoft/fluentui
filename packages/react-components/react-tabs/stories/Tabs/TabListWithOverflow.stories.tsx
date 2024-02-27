@@ -7,6 +7,7 @@ import {
   Button,
   Menu,
   MenuItem,
+  MenuItemProps,
   MenuList,
   MenuPopover,
   MenuTrigger,
@@ -40,7 +41,6 @@ import {
   MoreHorizontalFilled,
   bundleIcon,
 } from '@fluentui/react-icons';
-import type { ARIAButtonElement } from '@fluentui/react-aria';
 
 const Calendar3Day = bundleIcon(Calendar3DayFilled, Calendar3DayRegular);
 const CalendarAgenda = bundleIcon(CalendarAgendaFilled, CalendarAgendaRegular);
@@ -113,7 +113,7 @@ const tabs: ExampleTab[] = [
 
 type OverflowMenuItemProps = {
   tab: ExampleTab;
-  onClick: React.MouseEventHandler<ARIAButtonElement<'div'>>;
+  onClick: MenuItemProps['onClick'];
 };
 
 /**

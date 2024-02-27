@@ -44,6 +44,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
             overflow: auto;
           }
       data-focuszone-id="FocusZone3"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -278,6 +279,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
                       outline: none;
                     }
                 data-focuszone-id="FocusZone4"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -491,11 +493,11 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           overflow: hidden;
           width: 100%;
         }
-    id="chart_31"
+    id="chart_1"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_32"
+      id="defaultTabbableElement_2"
     />
     <div
       class=
@@ -506,7 +508,8 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone33"
+      data-focuszone-id="FocusZone3"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -540,7 +543,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_31"
+          id="xAxisGElementchart_1"
           transform="translate(0, -35)"
         />
         <g
@@ -568,7 +571,7 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_31"
+          id="yAxisGElementchart_1"
           transform="translate(40, 0)"
         />
         <g
@@ -730,7 +733,8 @@ exports[`HeatMapChart snapshot tests should render HeatMapChart correctly with n
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone34"
+                data-focuszone-id="FocusZone4"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -944,11 +948,11 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           overflow: hidden;
           width: 100%;
         }
-    id="chart_26"
+    id="chart_1"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_27"
+      id="defaultTabbableElement_2"
     />
     <div
       class=
@@ -959,7 +963,8 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone28"
+      data-focuszone-id="FocusZone3"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -993,7 +998,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_26"
+          id="xAxisGElementchart_1"
           transform="translate(0, -35)"
         />
         <g
@@ -1021,7 +1026,7 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_26"
+          id="yAxisGElementchart_1"
           transform="translate(40, 0)"
         />
         <g
@@ -1191,7 +1196,8 @@ exports[`HeatMapChart snapshot tests should render axis labels correctly When cu
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone29"
+                data-focuszone-id="FocusZone4"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div

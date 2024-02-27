@@ -1,8 +1,27 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Wed, 10 Jan 2024 07:28:50 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Jan 2024 07:27:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.10.3)
+
+Wed, 31 Jan 2024 07:27:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.10.2..@fluentui/style-utilities_v8.10.3)
+
+### Patches
+
+- Adding .mcworld and .mctemplate filetype icons and updated FabricCDN url ([PR #30422](https://github.com/microsoft/fluentui/pull/30422) by caperez@microsoft.com)
+
+## [8.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.10.2)
+
+Fri, 19 Jan 2024 07:29:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.10.1..@fluentui/style-utilities_v8.10.2)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.41 ([PR #30225](https://github.com/microsoft/fluentui/pull/30225) by beachball)
+- Bump @fluentui/utilities to v8.13.24 ([PR #30225](https://github.com/microsoft/fluentui/pull/30225) by beachball)
 
 ## [8.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.10.1)
 
