@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: make module native ESM",
+  "packageName": "@fluentui/tokens",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
