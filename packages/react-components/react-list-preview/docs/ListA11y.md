@@ -68,10 +68,10 @@ We have multiple aria roles we can explore and see if any of those fill all of o
   - Focused items of role "listitem" are properly announced with their position
 - Actionable: ✴️
   - The **action** on the list item is **not announced** in the Focus mode on Windows.
-  - This can be **worked around** by using `aria-roledescription`
+  - This should be implicitly communicated by context, if that isn't necessary, it can be worked around by using `aria-roledescription` or `aria-label` with proper explanation.
 - Selection: N/A
 
-_`listitem` role on it's own is not enough co communicate that there is an action that can be triggered by Enter, unless this fact is explicitely communicated in a `aria-label` or `aria-roledescription`._
+_`listitem` role on it's own should be used if the fact that it has an action can be understood by the context it exists in. If this is not clear enough, `aria-label` or `aria-roledescription` can be used to further explain this._
 
 ##### Menu/Menuitem
 
@@ -225,7 +225,8 @@ When no selection is involved in the equation, we don't have to limit ourselves 
 - Position: ✴️
   - dtto, `row` is announced, but no order
 - Actionable: ✴️
-  - While actions can be attached to the whole row, this is not a common pattern and it could lead to discoverability issue. When explicitely communicated in `aria-roledescription` or in aria label, this could be solved.
+  - While actions can be attached to the whole row, this is not a common pattern and it could lead to discoverability issue. When explicitely communicated in `aria-roledescription` or in `aria-label`, this could be solved.
+  - On the other hand, grid allows for better discoverability of secondary inside actions.
 - Selection: N/A
 - Other considerations: ⚠️
   - Again, the combination of these roles requires developers to strictly adhere to the required DOM layout.
@@ -236,6 +237,7 @@ When no selection is involved in the equation, we don't have to limit ourselves 
   - As established earlier, list has a great support for announcing list position
 - Actionable: ✅
   - Action can be put directly on the List Item. Discoverability might be a small issue again, but a context, updated label or supporting aria attributes like `aria-roledescription` can easily solve that
+  - **It might be difficult to communicate that there are secondary actions that the user can navigate to.**
 - Selection: N/A
 
-_While grid would technically work for this scenario, there are some downsides. **List and Listitem roles are the clear winners in this case**. For consistency however we might want to go with grid._
+_Both `grid` and `list` could be used in this scenario, both have downsides. List gives us better position narration, but doesn't implicitely communicate that there actions that can be focused by moving right. Grid solves this issue, but it's row positions aren't properly narrated (this has been brought up with NVDA/Jaws teams)._
