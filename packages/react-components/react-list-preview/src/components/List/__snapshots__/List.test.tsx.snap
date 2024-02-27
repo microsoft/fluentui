@@ -6,7 +6,26 @@ exports[`List renders a default state 1`] = `
     class="fui-List"
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
   >
-    Default List
+    <li
+      class="fui-ListItem"
+      data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      data-value="test-value-1"
+      id="test-value-1"
+      role="listitem"
+      value="test-value-1"
+    >
+      First ListItem
+    </li>
+    <li
+      class="fui-ListItem"
+      data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      data-value="test-value-2"
+      id="test-value-2"
+      role="listitem"
+      value="test-value-2"
+    >
+      Second ListItem
+    </li>
   </ul>
 </div>
 `;
