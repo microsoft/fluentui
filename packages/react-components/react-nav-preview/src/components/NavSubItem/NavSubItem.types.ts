@@ -3,7 +3,7 @@ import { NavItemValue } from '../NavContext.types';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type NavSubItemSlots = {
-  root: Slot<'button'>;
+  root: Slot<'a'>;
 
   /**
    * Component children are placed in this slot
@@ -20,6 +20,11 @@ export type NavSubItemProps = ComponentProps<Partial<NavSubItemSlots>> & {
    * The value that identifies this NavSubItem when selected.
    */
   value: NavItemValue;
+
+  /**
+   * Destination URL for the link
+   */
+  href?: string;
 };
 
 /**

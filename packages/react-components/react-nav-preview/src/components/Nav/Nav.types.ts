@@ -64,7 +64,7 @@ export type NavProps = ComponentProps<NavSlots> & {
   onNavCategoryItemToggle?: EventHandler<OnNavItemSelectData>;
 };
 
-export type OnNavItemSelectData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
+export type OnNavItemSelectData = EventData<'click', React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {
   /**
    * The value of the selected navItem.
    */
