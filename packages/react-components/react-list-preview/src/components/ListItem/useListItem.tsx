@@ -6,13 +6,12 @@ import {
   TabsterTypes,
   useArrowNavigationGroup,
   useFocusableGroup,
-  useFocusFinders,
   useMergedTabsterAttributes_unstable,
 } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
 import type { ListItemProps, ListItemState } from './ListItem.types';
 import { useListContext_unstable } from '../List/listContext';
-import { Enter, Escape, ArrowUp, ArrowDown, keyCodes, Space } from '@fluentui/keyboard-keys';
+import { Enter, Space, ArrowUp, ArrowDown, ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
 import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-checkbox';
 import { useIndicatorStyle } from './useListItemStyles.styles';
 
@@ -60,8 +59,6 @@ export const useListItem_unstable = (
 
   validateProperElementTypes(parentRenderedAs, renderedAs);
 
-  const { findFirstFocusable } = useFocusFinders();
-
   const baseIndicatorStyles = useIndicatorStyle();
 
   const focusableGroupAttrs = useFocusableGroup({
@@ -79,15 +76,6 @@ export const useListItem_unstable = (
     toggleItem?.(e, value);
   });
 
-  const pressEscape = useEventCallback((target: HTMLElement) => {
-    target.dispatchEvent(
-      new KeyboardEvent('keydown', {
-        key: Escape,
-        keyCode: keyCodes.Escape,
-      }),
-    );
-  });
-
   const handleKeyDown: React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement> = useEventCallback(e => {
     onKeyDown?.(e);
 
@@ -102,8 +90,8 @@ export const useListItem_unstable = (
       // The ArrowLeft will only trigger if the target element is the leftmost, otherwise the
       // arrowNavigationAttributes handles it and prevents it from bubbling here.
 
-      if (e.key === 'ArrowLeft') {
-        pressEscape(e.target as HTMLElement);
+      if (e.key === ArrowLeft) {
+        dispatchGroupperMoveFocusEvent(e.target as HTMLElement, TabsterTypes.GroupperMoveFocusActions.Escape);
       }
 
       if (e.key === ArrowDown || e.key === ArrowUp) {
@@ -140,11 +128,8 @@ export const useListItem_unstable = (
     }
 
     // Handle entering the list item when user presses the ArrowRight
-    if (e.key === 'ArrowRight') {
-      const el = findFirstFocusable(e.currentTarget);
-      if (el) {
-        el.focus();
-      }
+    if (e.key === ArrowRight) {
+      dispatchGroupperMoveFocusEvent(e.target as HTMLElement, TabsterTypes.GroupperMoveFocusActions.Enter);
     }
   });
 

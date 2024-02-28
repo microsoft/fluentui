@@ -130,7 +130,7 @@ describe('List', () => {
         testSequence(['focused:list-item-1', 'PageDown', 'focused:list-item-3', 'PageUp', 'focused:list-item-1']);
       });
 
-      it('Left/Right arrow key moves focus on the first secondary action', () => {
+      it('Left/Right arrow key moves focus horizontally in the list item', () => {
         mountListWithSecondaryActions();
         testSequence([
           'focused:list-item-1',
@@ -177,7 +177,7 @@ describe('List', () => {
         ]);
       });
 
-      it('Ignored keys are ignored', () => {
+      it('Keys like Enter and Space are ignored', () => {
         mountListWithSecondaryActions();
         testSequence(['RightArrow', 'focused:list-item-1-button-1', 'Enter', ' ', 'focused:list-item-1-button-1']);
       });
