@@ -92,21 +92,20 @@ function extractSelector(
   rules: IRuleSet = { __order: [] },
   selector: string,
   value: IStyle,
-  shadowConfig?: ShadowConfig,
-  sheet?: Stylesheet,
+  stylesheet: Stylesheet,
 ) {
   if (selector.indexOf('@') === 0) {
     selector = selector + '{' + currentSelector;
-    extractRules([value], rules, selector, shadowConfig, sheet);
+    extractRules([value], rules, selector, stylesheet);
   } else if (selector.indexOf(',') > -1) {
     expandCommaSeparatedGlobals(selector)
       .split(',')
       .map((s: string) => s.trim())
       .forEach((separatedSelector: string) =>
-        extractRules([value], rules, expandSelector(separatedSelector, currentSelector), shadowConfig, sheet),
+        extractRules([value], rules, expandSelector(separatedSelector, currentSelector), stylesheet),
       );
   } else {
-    extractRules([value], rules, expandSelector(selector, currentSelector), shadowConfig, sheet);
+    extractRules([value], rules, expandSelector(selector, currentSelector), stylesheet);
   }
 }
 
@@ -114,10 +113,8 @@ function extractRules(
   args: IStyle[],
   rules: IRuleSet = { __order: [] },
   currentSelector: string = '&',
-  shadowConfig?: ShadowConfig,
-  sheet?: Stylesheet,
+  stylesheet: Stylesheet,
 ): IRuleSet {
-  const stylesheet = sheet ?? Stylesheet.getInstance(shadowConfig);
   let currentRules: IDictionary | undefined = rules[currentSelector] as IDictionary;
 
   if (!currentRules) {
@@ -132,11 +129,11 @@ function extractRules(
       const expandedRules = stylesheet.argsFromClassName(arg);
 
       if (expandedRules) {
-        extractRules(expandedRules, rules, currentSelector, shadowConfig, stylesheet);
+        extractRules(expandedRules, rules, currentSelector, stylesheet);
       }
       // Else if the arg is an array, we need to recurse in.
     } else if (Array.isArray(arg)) {
-      extractRules(arg, rules, currentSelector, shadowConfig, stylesheet);
+      extractRules(arg, rules, currentSelector, stylesheet);
     } else {
       for (const prop in arg as any) {
         if ((arg as any).hasOwnProperty(prop)) {
@@ -148,13 +145,13 @@ function extractRules(
 
             for (const newSelector in selectors) {
               if (selectors.hasOwnProperty(newSelector)) {
-                extractSelector(currentSelector, rules, newSelector, selectors[newSelector], shadowConfig, stylesheet);
+                extractSelector(currentSelector, rules, newSelector, selectors[newSelector], stylesheet);
               }
             }
           } else if (typeof propValue === 'object') {
             // prop is a selector.
             if (propValue !== null) {
-              extractSelector(currentSelector, rules, prop, propValue, shadowConfig, stylesheet);
+              extractSelector(currentSelector, rules, prop, propValue, stylesheet);
             }
           } else {
             if (propValue !== undefined) {
@@ -260,11 +257,11 @@ export interface IRegistration {
 }
 
 export function styleToRegistration(options: IStyleOptions, ...args: IStyle[]): IRegistration | undefined {
-  const rules: IRuleSet = extractRules(args, undefined, undefined, options.shadowConfig, options.stylesheet);
+  const stylesheet = options.stylesheet ?? Stylesheet.getInstance(options.shadowConfig);
+  const rules: IRuleSet = extractRules(args, undefined, undefined, stylesheet);
   const key = getKeyForRules(options, rules);
 
   if (key) {
-    const stylesheet = options.stylesheet ?? Stylesheet.getInstance(options.shadowConfig);
     const registration: Partial<IRegistration> = {
       className: stylesheet.classNameFromKey(key),
       key,

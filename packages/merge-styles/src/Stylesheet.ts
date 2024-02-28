@@ -207,7 +207,7 @@ export class Stylesheet {
       fabricConfig.mergeStyles.window =
         fabricConfig.mergeStyles.window || win || (typeof window !== 'undefined' ? window : undefined);
       fabricConfig.mergeStyles.inShadow = fabricConfig.mergeStyles.inShadow ?? inShadow;
-      fabricConfig.mergeStyles.stylesheetKey = fabricConfig.mergeStyles.stylesheetKey || stylesheetKey;
+      fabricConfig.mergeStyles.stylesheetKey = fabricConfig.mergeStyles.stylesheetKey ?? stylesheetKey;
 
       let stylesheet: Stylesheet;
       if (oldStylesheetInitializedFirst) {
