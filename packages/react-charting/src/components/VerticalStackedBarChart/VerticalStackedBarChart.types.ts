@@ -3,6 +3,7 @@ import { IStyle } from '@fluentui/react/lib/Styling';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import {
+  BarWidthEnum,
   ICartesianChartProps,
   ICartesianChartStyleProps,
   ICartesianChartStyles,
@@ -22,9 +23,9 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   data: IVerticalStackedChartProps[];
 
   /**
-   * Width of each bar in the chart.
+   * Width of each bar in the chart. When set to `auto`, the bar width is calculated from padding values.
    */
-  barWidth?: number | string;
+  barWidth?: number | keyof typeof BarWidthEnum;
 
   /**
    * Gap (max) between bars in a stack. When non-zero, the bars in a stack will
@@ -129,16 +130,15 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   maxBarWidth?: number;
 
   /**
-   * Padding between bars as a fraction of the `step`, which is the interval between
-   * the start of a bar and the start of the next bar. Takes a number in the range [0, 1].
-   * Only applicable to string x-axis.
+   * Padding between bars as a fraction of the {@link https://d3js.org/d3-scale/band#band_step `step`}.
+   * Takes a number in the range [0, 1]. Only applicable to string x-axis.
    * @default 2/3
    */
   xAxisInnerPadding?: number;
 
   /**
-   * Padding before the first bar and after the last bar as a fraction of the `step`, which is the interval between
-   * the start of a bar and the start of the next bar. Takes a number in the range [0, 1].
+   * Padding before the first bar and after the last bar as a fraction of
+   * the {@link https://d3js.org/d3-scale/band#band_step `step`}. Takes a number in the range [0, 1].
    * Only applicable to string x-axis.
    */
   xAxisOuterPadding?: number;

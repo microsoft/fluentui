@@ -27,6 +27,7 @@ import {
   IVSChartDataPoint,
   ILineDataInVerticalStackedBarChart,
   IModifiedCartesianChartProps,
+  BarWidthEnum,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
@@ -771,7 +772,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     );
     const shouldFocusWholeStack = this._toFocusWholeStack(_isHavingLines);
 
-    if (this._xAxisType === XAxisTypes.StringAxis && this.props.barWidth === 'auto') {
+    if (this._xAxisType === XAxisTypes.StringAxis && this.props.barWidth === BarWidthEnum.auto) {
       // Setting the bar width here is safe because there are no dependencies earlier in the code
       // that rely on the width of bars in vertical bar charts with string x-axis.
       this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, xBarScale.bandwidth());
@@ -1078,7 +1079,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         // Setting the domain margin for string x-axis to 0 because the xAxisOuterPadding prop is now available
         // to adjust the space before the first bar and after the last bar.
         this._domainMargin = 0;
-      } else if (this.props.barWidth !== 'auto') {
+      } else if (this.props.barWidth !== BarWidthEnum.auto) {
         /** Total width available to render the bars */
         const totalWidth =
           containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);

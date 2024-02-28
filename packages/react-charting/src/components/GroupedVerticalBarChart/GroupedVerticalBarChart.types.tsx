@@ -6,6 +6,7 @@ import {
   ICartesianChartProps,
   IGroupedVerticalBarChartData,
   IGVBarChartSeriesPoint,
+  BarWidthEnum,
 } from '../../index';
 
 /**
@@ -23,15 +24,10 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
   data: IGroupedVerticalBarChartData[];
 
   /**
-   * Barwidth automacally adjusted based upon given parent width, data and scale.
-   * If barwidth given through prop, then is shold be less than given formula.
-   * If not, graph will adjust and your value may not be reflected.
-   * Formula: width of parent div / (Number Of Groups * (Number Of single bars in group + 2))
-   * Note: By changing barwidth manually it may cause some spatial and graph override issues,
-   * better to avoid using this prop.
+   * Width of each bar in the chart. When set to `auto`, the bar width is calculated from padding values.
    * @default 16
    */
-  barwidth?: number | string;
+  barwidth?: number | keyof typeof BarWidthEnum;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -98,19 +94,18 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
   maxBarWidth?: number;
 
   /**
-   * Padding between groups as a fraction of the `step`, which is the interval between
-   * the start of a group and the start of the next group. Takes a number in the range [0, 1].
-   * Only applicable to string x-axis. Note: groupWidthInTermsOfBarWidth is calculated at runtime based on
+   * Padding between groups as a fraction of the {@link https://d3js.org/d3-scale/band#band_step `step`}.
+   * Takes a number in the range [0, 1]. Only applicable to string x-axis.
+   * Note: groupWidthInTermsOfBarWidth is calculated at runtime based on
    * the number of bars in a group and the gap between the bars.
    * @default 2 / (2 + groupWidthInTermsOfBarWidth)
    */
   xAxisInnerPadding?: number;
 
   /**
-   * Padding before the first group and after the last group as a fraction of the `step`, which is the interval between
-   * the start of a group and the start of the next group. Takes a number in the range [0, 1].
-   * Only applicable to string x-axis. Note: groupWidthInTermsOfBarWidth is calculated at runtime based on
-   * the number of bars in a group and the gap between the bars.
+   * Padding before the first group and after the last group as a fraction of
+   * the {@link https://d3js.org/d3-scale/band#band_step `step`}. Takes a number in the range [0, 1].
+   * Only applicable to string x-axis.
    */
   xAxisOuterPadding?: number;
 }

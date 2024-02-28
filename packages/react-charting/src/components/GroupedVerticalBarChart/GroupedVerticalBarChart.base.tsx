@@ -32,6 +32,7 @@ import {
   IBasestate,
   IRefArrayData,
   Legends,
+  BarWidthEnum,
 } from '../../index';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
@@ -212,7 +213,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   ) => {
     const xScale0 = this._createX0Scale(containerWidth);
 
-    if (this.props.barwidth === 'auto') {
+    if (this.props.barwidth === BarWidthEnum.auto) {
       // Setting the bar width here is safe because there are no dependencies earlier in the code
       // that rely on the width of bars in vertical bar charts with string x-axis.
       this._barWidth = getBarWidth(
@@ -598,7 +599,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         // Setting the domain margin for string x-axis to 0 because the xAxisOuterPadding prop is now available
         // to adjust the space before the first group and after the last group.
         this._domainMargin = 0;
-      } else if (this.props.barwidth !== 'auto') {
+      } else if (this.props.barwidth !== BarWidthEnum.auto) {
         /** Total width available to render the bars */
         const totalWidth =
           containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);

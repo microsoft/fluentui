@@ -6,7 +6,7 @@ import {
   ICartesianChartStyles,
   IVerticalBarChartDataPoint,
 } from '../../index';
-import { ILineChartLineOptions } from '../../types/index';
+import { BarWidthEnum, ILineChartLineOptions } from '../../types/index';
 
 /**
  * Vertical Bar Chart properties
@@ -24,10 +24,10 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
   onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
 
   /**
-   * Width of each bar in the chart.
+   * Width of each bar in the chart. When set to `auto`, the bar width is calculated from padding values.
    * @default 16
    */
-  barWidth?: number | string;
+  barWidth?: number | keyof typeof BarWidthEnum;
 
   /**
    * Colors from which to select the color of each bar.
@@ -91,16 +91,15 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
   maxBarWidth?: number;
 
   /**
-   * Padding between bars as a fraction of the `step`, which is the interval between
-   * the start of a bar and the start of the next bar. Takes a number in the range [0, 1].
-   * Only applicable to string x-axis.
+   * Padding between bars as a fraction of the {@link https://d3js.org/d3-scale/band#band_step `step`}.
+   * Takes a number in the range [0, 1]. Only applicable to string x-axis.
    * @default 2/3
    */
   xAxisInnerPadding?: number;
 
   /**
-   * Padding before the first bar and after the last bar as a fraction of the `step`, which is the interval between
-   * the start of a bar and the start of the next bar. Takes a number in the range [0, 1].
+   * Padding before the first bar and after the last bar as a fraction of
+   * the {@link https://d3js.org/d3-scale/band#band_step `step`}. Takes a number in the range [0, 1].
    * Only applicable to string x-axis.
    */
   xAxisOuterPadding?: number;

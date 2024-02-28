@@ -784,3 +784,8 @@ export interface ICustomizedCalloutData {
   x: number | string | Date;
   values: ICustomizedCalloutDataPoint[];
 }
+
+export enum BarWidthEnum {
+  default = 'default',
+  auto = 'auto',
+}
