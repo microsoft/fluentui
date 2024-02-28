@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-member-accessibility */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { getId } from '@fluentui/react/lib/Utilities';
 import ErrorImage from './ErrorImage';
@@ -24,6 +26,10 @@ interface IErrorBoundaryState {
 }
 
 class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryState> {
+  static getDerivedStateFromError(_error: Error) {
+    return { hasError: true };
+  }
+
   constructor(props: IErrorBoundaryProps) {
     super(props);
     this.state = {
@@ -31,17 +37,13 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
     };
   }
 
-  componentDidCatch(_error: any, _errorInfo: any) {
+  public componentDidCatch(_error: any, _errorInfo: any) {
     this.setState({
       hasError: true,
     });
   }
 
-  static getDerivedStateFromError(_error: Error) {
-    return { hasError: true };
-  }
-
-  public render(): JSX.Element {
+  public render() {
     if (this.state.hasError || this.props.hasErrorState) {
       if (this.props.handleError !== undefined) {
         return this.props.handleError();
