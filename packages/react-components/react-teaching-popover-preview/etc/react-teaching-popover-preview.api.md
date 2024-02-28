@@ -98,9 +98,6 @@ export type TeachingPopoverCarouselContextValue = Pick<TeachingPopoverCarouselSt
 // @public
 export const TeachingPopoverCarouselNav: ForwardRefComponent<TeachingPopoverCarouselNavProps>;
 
-// @public (undocumented)
-export const teachingPopoverCarouselNavClassNames: SlotClassNames<TeachingPopoverCarouselNavSlots>;
-
 // @public
 export const TeachingPopoverCarouselNavButton: ForwardRefComponent<TeachingPopoverCarouselNavButtonProps>;
 
@@ -122,6 +119,9 @@ export type TeachingPopoverCarouselNavButtonSlots = {
 export type TeachingPopoverCarouselNavButtonState = ComponentState<TeachingPopoverCarouselNavButtonSlots> & {
     isSelected?: boolean;
 } & Pick<PopoverContextValue, 'appearance'>;
+
+// @public (undocumented)
+export const teachingPopoverCarouselNavClassNames: SlotClassNames<TeachingPopoverCarouselNavSlots>;
 
 // @public (undocumented)
 export type TeachingPopoverCarouselNavProps = ComponentProps<Partial<TeachingPopoverCarouselNavSlots>>;
