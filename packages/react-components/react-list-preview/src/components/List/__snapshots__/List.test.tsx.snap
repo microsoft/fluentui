@@ -1,6 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`List renders a default state 1`] = `
+exports[`List rendering render as div and div doesn't throw 1`] = `
+<div>
+  <div
+    class="fui-List"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+  >
+    <div
+      class="fui-ListItem"
+      data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      data-value="test-value-1"
+      id="test-value-1"
+      role="listitem"
+    >
+      First ListItem
+    </div>
+    <div
+      class="fui-ListItem"
+      data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      data-value="test-value-2"
+      id="test-value-2"
+      role="listitem"
+    >
+      Second ListItem
+    </div>
+  </div>
+</div>
+`;
+
+exports[`List rendering renders a default state 1`] = `
 <div>
   <ul
     class="fui-List"

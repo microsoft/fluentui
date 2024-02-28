@@ -7,7 +7,6 @@ import { List } from './List';
 import { ListProps } from './List.types';
 import { ListItem } from '../ListItem/ListItem';
 import { EventHandler } from 'react';
-import userEvent from '@testing-library/user-event';
 
 function expectListboxItemSelected(item: HTMLElement, selected: boolean) {
   expect(item.getAttribute('aria-selected')).toBe(selected.toString());
@@ -25,16 +24,96 @@ describe('List', () => {
     },
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
+  describe('rendering', () => {
+    it('renders a default state', () => {
+      const result = render(
+        <List>
+          <ListItem value="test-value-1">First ListItem</ListItem>
+          <ListItem value="test-value-2">Second ListItem</ListItem>
+        </List>,
+      );
+      expect(result.container).toMatchSnapshot();
+    });
 
-  it('renders a default state', () => {
-    const result = render(
-      <List>
-        <ListItem value="test-value-1">First ListItem</ListItem>
-        <ListItem value="test-value-2">Second ListItem</ListItem>
-      </List>,
-    );
-    expect(result.container).toMatchSnapshot();
+    describe('checkbox indicator', () => {
+      it("doesn't render checkbox when selectionMode is not set", () => {
+        const result = render(
+          <List>
+            <ListItem value="test-value-1">First ListItem</ListItem>
+            <ListItem value="test-value-2">Second ListItem</ListItem>
+          </List>,
+        );
+        expect(result.queryAllByRole('checkbox')).toHaveLength(0);
+      });
+      it("renders checkbox when selectionMode is 'single'", () => {
+        const result = render(
+          <List selectionMode="single">
+            <ListItem value="test-value-1">First ListItem</ListItem>
+            <ListItem value="test-value-2">Second ListItem</ListItem>
+          </List>,
+        );
+        console.log(prettyDOM(result.container));
+        expect(result.queryAllByRole('checkbox')).toHaveLength(2);
+      });
+      it("renders checkbox when selectionMode is 'multiselect'", () => {
+        const result = render(
+          <List selectionMode="single">
+            <ListItem value="test-value-1">First ListItem</ListItem>
+            <ListItem value="test-value-2">Second ListItem</ListItem>
+          </List>,
+        );
+        expect(result.queryAllByRole('checkbox')).toHaveLength(2);
+      });
+    });
+
+    describe('render as', () => {
+      beforeEach(() => {
+        jest.spyOn(console, 'error').mockImplementation(() => jest.fn());
+      });
+
+      afterEach(() => {
+        (console.error as jest.Mock).mockRestore();
+      });
+      it('div and li throws', () => {
+        expect(() =>
+          render(
+            <List as="div">
+              <ListItem value="test-value-1">First ListItem</ListItem>
+              <ListItem value="test-value-2">Second ListItem</ListItem>
+            </List>,
+          ),
+        ).toThrowError('ListItem cannot be rendered as a li when its parent is a div.');
+      });
+
+      it('ul and div throws', () => {
+        expect(() =>
+          render(
+            <List>
+              <ListItem as="div" value="test-value-1">
+                First ListItem
+              </ListItem>
+              <ListItem as="div" value="test-value-2">
+                Second ListItem
+              </ListItem>
+            </List>,
+          ),
+        ).toThrowError('ListItem cannot be rendered as a div when its parent is not a div.');
+      });
+
+      it("div and div doesn't throw", () => {
+        const result = render(
+          <List as="div">
+            <ListItem as="div" value="test-value-1">
+              First ListItem
+            </ListItem>
+            <ListItem as="div" value="test-value-2">
+              Second ListItem
+            </ListItem>
+          </List>,
+        );
+        expect(result.container).toMatchSnapshot();
+      });
+    });
   });
 
   describe('roles', () => {
