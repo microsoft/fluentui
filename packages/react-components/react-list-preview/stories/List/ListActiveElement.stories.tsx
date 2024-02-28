@@ -104,7 +104,7 @@ export const ListActiveElement = () => {
 
   return (
     <div className={classes.wrapper}>
-      <List selectable selectionMode="single" selectedItems={selectedItems} onSelectionChange={onSelectionChange}>
+      <List selectionMode="single" selectedItems={selectedItems} onSelectionChange={onSelectionChange}>
         {items.map(({ name, avatar }) => (
           <MyListItem
             key={name}

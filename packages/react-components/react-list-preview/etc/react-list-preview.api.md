@@ -48,7 +48,6 @@ export type ListItemState = ComponentState<ListItemSlots> & {
 
 // @public
 export type ListProps = ComponentProps<ListSlots> & {
-    selectable?: boolean;
     selectionMode?: SelectionMode_2;
     selectedItems?: SelectionItemId[];
     defaultSelectedItems?: SelectionItemId[];

@@ -59,7 +59,7 @@ export const SingleActionSelection = () => {
   return (
     <div className={classes.wrapper}>
       <List
-        selectable
+        selectionMode="multiselect"
         defaultSelectedItems={defaultSelectedItems}
         onSelectionChange={(_, data) => setSelectedItems(data.selectedItems)}
       >
@@ -78,7 +78,7 @@ SingleActionSelection.parameters = {
       story: [
         'Any List can be selectable. You have an option to control the selection state yourself or let the List manage it for you.',
         '',
-        'You can pass `selectable` prop inside of the List component to get support for selection. The List notifies the parent about changes in selection via the `onSelectionChange` props. In the example we are also using the `defaultSelectedItems` prop to set the initial selection state. While we are saving the results of `onSelectionChange`, it is purely for keeping track of the selection state and is not used to control the selection.',
+        'You can pass `selectionMode` prop with value "single" or "multiselect" to the List component to get support for selection. The List notifies the parent about changes in selection via the `onSelectionChange` props. In the example we are also using the `defaultSelectedItems` prop to set the initial selection state. While we are saving the results of `onSelectionChange`, it is purely for keeping track of the selection state and is not used to control the selection.',
         '',
         'The items can be toggled by clicking on them, clicking on the checkbox or pressing a Spacebar when the item is focused.',
         '',

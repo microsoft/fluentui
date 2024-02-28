@@ -71,7 +71,6 @@ Most of the v8 props are for it's virtualization functionality. Since the v9 `Li
 | `version`                 | N/A                              |
 | -                         | `defaultSelectedItems`           |
 | -                         | `onSelectionChange`              |
-| -                         | `selectable`                     |
 | -                         | `selectionMode`                  |
 
 ## Migration from v0
@@ -165,7 +164,7 @@ We recommend using a component like `Persona` where possible, or creating a cust
 | `navigable`             | `tabIndex={0}` if the `ListItem`, or automatic when `onClick` or `onKeyDown` is present                                                                    |
 | `onSelectedIndexChange` | `onSelectionChange`                                                                                                                                        |
 | `ref`                   | `ref`                                                                                                                                                      |
-| `selectable`            | `selectable`                                                                                                                                               |
+| `selectable`            | use `selectionMode` of value `single` or `multiselect`                                                                                                     |
 | `selectedIndex`         | only in controlled mode, use `selection` state; see [example](https://react.fluentui.dev/?path=/story/preview-components-list--list-selection-controlled). |
 | `styles`                | use slots in combination with `className`                                                                                                                  |
 | `truncateContent`       | N/A - the `List` is not concerned about it's content                                                                                                       |
@@ -175,29 +174,29 @@ We recommend using a component like `Persona` where possible, or creating a cust
 
 #### ListItem
 
-| v0 ListItem       | v9 ListItem                                                                                                            |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `accessibility`   | N/A                                                                                                                    |
-| `as`              | `as`                                                                                                                   |
-| `className`       | `className`                                                                                                            |
-| `content`         | N/A - use children                                                                                                     |
-| `contentMedia`    | N/A - use children                                                                                                     |
-| `debug`           | N/A                                                                                                                    |
-| `design`          | N/A                                                                                                                    |
-| `endMedia`        | N/A - use children                                                                                                     |
-| `header`          | N/A - use children                                                                                                     |
-| `headerMedia`     | N/A - use children                                                                                                     |
-| `important`       | N/A                                                                                                                    |
-| `index`           | N/A                                                                                                                    |
-| `media`           | N/A - use children                                                                                                     |
-| `navigable`       | N/A - use `tabIndex={0}`                                                                                               |
-| `onClick`         | `onClick`                                                                                                              |
-| `ref`             | ref                                                                                                                    |
-| `selectable`      | N/A - use `List` property `selectable` for uncontrolled selection, or use `useListSelection` hook to control the state |
-| `selected`        | N/A - the selection state takes care of this automatically                                                             |
-| `styles`          | N/A - use `className` for any slot                                                                                     |
-| `truncateContent` | N/A - the `List` is not concerned about it's content                                                                   |
-| `truncateHeader`  | N/A - the `List` is not concerned about it's content                                                                   |
+| v0 ListItem       | v9 ListItem                                                                                                               |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| `accessibility`   | N/A                                                                                                                       |
+| `as`              | `as`                                                                                                                      |
+| `className`       | `className`                                                                                                               |
+| `content`         | N/A - use children                                                                                                        |
+| `contentMedia`    | N/A - use children                                                                                                        |
+| `debug`           | N/A                                                                                                                       |
+| `design`          | N/A                                                                                                                       |
+| `endMedia`        | N/A - use children                                                                                                        |
+| `header`          | N/A - use children                                                                                                        |
+| `headerMedia`     | N/A - use children                                                                                                        |
+| `important`       | N/A                                                                                                                       |
+| `index`           | N/A                                                                                                                       |
+| `media`           | N/A - use children                                                                                                        |
+| `navigable`       | N/A - use `tabIndex={0}`                                                                                                  |
+| `onClick`         | `onClick`                                                                                                                 |
+| `ref`             | ref                                                                                                                       |
+| `selectable`      | N/A - use `List` property `selectionMode` for uncontrolled selection, or use `useListSelection` hook to control the state |
+| `selected`        | N/A - the selection state takes care of this automatically                                                                |
+| `styles`          | N/A - use `className` for any slot                                                                                        |
+| `truncateContent` | N/A - the `List` is not concerned about it's content                                                                      |
+| `truncateHeader`  | N/A - the `List` is not concerned about it's content                                                                      |
 
 #### Other
 

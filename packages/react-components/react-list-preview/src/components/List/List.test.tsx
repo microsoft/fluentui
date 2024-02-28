@@ -52,7 +52,7 @@ describe('List', () => {
 
     it('selectable - should have listbox/option roles', () => {
       const result = render(
-        <List selectable>
+        <List selectionMode="multiselect">
           <ListItem>First ListItem</ListItem>
           <ListItem>Second ListItem</ListItem>
         </List>,
@@ -68,7 +68,7 @@ describe('List', () => {
   describe('selection', () => {
     it('Single mode should unselect previous', () => {
       const result = render(
-        <List selectable selectionMode="single">
+        <List selectionMode="single">
           <ListItem value="test-value-1">First ListItem</ListItem>
           <ListItem value="test-value-2">Second ListItem</ListItem>
         </List>,
@@ -91,7 +91,7 @@ describe('List', () => {
 
     it('Multi mode should select an item when clicked', () => {
       const result = render(
-        <List selectable selectionMode="multiselect">
+        <List selectionMode="multiselect">
           <ListItem value="test-value-1">First ListItem</ListItem>
           <ListItem value="test-value-2">Second ListItem</ListItem>
         </List>,
@@ -152,7 +152,7 @@ describe('List', () => {
         const onClick = jest.fn(customOnclick);
 
         const result = render(
-          <List selectable selectionMode="multiselect">
+          <List selectionMode="multiselect">
             <ListItem onClick={onClick}>First ListItem</ListItem>
             <ListItem>Second ListItem</ListItem>
           </List>,
@@ -228,7 +228,7 @@ describe('List', () => {
     });
     it('should be focusable when list is selectable', () => {
       const result = render(
-        <List selectable>
+        <List selectionMode="multiselect">
           <ListItem>First ListItem</ListItem>
           <ListItem>Second ListItem</ListItem>
         </List>,
@@ -240,7 +240,7 @@ describe('List', () => {
     });
     it('should be focusable when tabIndex=0 is passed', () => {
       const result = render(
-        <List selectable>
+        <List selectionMode="multiselect">
           <ListItem tabIndex={0}>First ListItem</ListItem>
           <ListItem tabIndex={0}>Second ListItem</ListItem>
         </List>,
@@ -285,7 +285,7 @@ describe('List', () => {
         const onClick = jest.fn(customOnclick);
 
         const result = render(
-          <List selectable selectionMode="multiselect">
+          <List selectionMode="multiselect">
             <ListItem onClick={onClick}>First ListItem</ListItem>
             <ListItem>Second ListItem</ListItem>
           </List>,

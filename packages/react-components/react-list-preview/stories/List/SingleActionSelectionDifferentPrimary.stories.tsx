@@ -71,7 +71,7 @@ export const SingleActionSelectionDifferentPrimary = () => {
   return (
     <div className={classes.wrapper}>
       <List
-        selectable
+        selectionMode="multiselect"
         defaultSelectedItems={defaultSelectedItems}
         onSelectionChange={(_, data) => setSelectedItems(data.selectedItems)}
       >

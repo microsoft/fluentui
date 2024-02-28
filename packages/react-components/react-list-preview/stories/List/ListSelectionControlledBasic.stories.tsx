@@ -69,11 +69,7 @@ export const ListSelectionControlledBasic = () => {
         <Button onClick={e => setSelectedItems(items.map(({ id }) => id))}>Select all</Button>
       </div>
 
-      <List
-        selectable
-        selectedItems={selectedItems}
-        onSelectionChange={(_, data) => setSelectedItems(data.selectedItems)}
-      >
+      <List selectedItems={selectedItems} onSelectionChange={(_, data) => setSelectedItems(data.selectedItems)}>
         {items.map(({ name, avatar }) => (
           <MyListItem key={name} name={name} avatar={avatar} />
         ))}

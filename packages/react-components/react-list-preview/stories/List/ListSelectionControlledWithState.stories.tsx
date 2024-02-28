@@ -83,7 +83,7 @@ export const ListSelectionControlledWithState = () => {
       </div>
 
       <List
-        selectable
+        selectionMode="multiselect"
         selectedItems={selection.selectedItems}
         onSelectionChange={(_, data) => selection.setSelectedItems(data.selectedItems)}
       >

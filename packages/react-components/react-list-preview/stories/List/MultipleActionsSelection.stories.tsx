@@ -148,11 +148,10 @@ export const MultipleActionsSelection = (props: Partial<ListProps>) => {
 
   return (
     <List
+      selectionMode="multiselect"
       className={classes.list}
-      selectable
       role="grid"
       onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
-      selectionMode="multiselect"
     >
       <CardExample title="Example List Item" value="card-1" selected={selectedItems.includes('card-1')} />
       <CardExample title="Example List Item" value="card-2" selected={selectedItems.includes('card-2')} />

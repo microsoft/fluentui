@@ -154,7 +154,7 @@ export const MultipleActionsDifferentPrimary = (props: Partial<ListProps>) => {
   return (
     <List
       className={classes.list}
-      selectable
+      selectionMode="multiselect"
       role="grid"
       onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
       selectionMode="multiselect"

@@ -22,14 +22,7 @@ const DEFAULT_ROOT_EL_TYPE = 'ul';
  * @param ref - reference to root HTMLElement of List
  */
 export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement | HTMLUListElement>): ListState => {
-  const {
-    selectable = false,
-    selectionMode = 'multiselect',
-    selectedItems,
-    defaultSelectedItems,
-    as,
-    onSelectionChange,
-  } = props;
+  const { selectionMode, selectedItems, defaultSelectedItems, as, onSelectionChange } = props;
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: 'vertical',
@@ -50,7 +43,7 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
 
   const selection = useListSelection({
     onSelectionChange: onChange,
-    selectionMode,
+    selectionMode: selectionMode || 'multiselect',
     selectedItems: selectionState,
     defaultSelectedItems,
   });
@@ -62,7 +55,7 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
     root: slot.always(
       getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
         ref,
-        ...(selectable && {
+        ...(selectionMode && {
           role: 'listbox',
           'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
         }),
@@ -73,6 +66,6 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
     ),
     as: as || DEFAULT_ROOT_EL_TYPE,
     // only pass down selection state if its handled internally, otherwise just report the events
-    selection: selectable ? selection : undefined,
+    selection: selectionMode ? selection : undefined,
   };
 };

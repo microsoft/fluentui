@@ -10,7 +10,6 @@ export type ListSlots = {
  * List Props
  */
 export type ListProps = ComponentProps<ListSlots> & {
-  selectable?: boolean;
   selectionMode?: SelectionMode;
   selectedItems?: SelectionItemId[];
   defaultSelectedItems?: SelectionItemId[];
