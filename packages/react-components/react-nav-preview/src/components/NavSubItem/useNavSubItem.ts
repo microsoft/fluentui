@@ -14,7 +14,7 @@ import type { NavSubItemProps, NavSubItemState } from './NavSubItem.types';
  * @param props - props from this instance of NavSubItem
  * @param ref - reference to root HTMLButtonElement of NavSubItem
  */
-export const useNavSubItem_unstable = (props: NavSubItemProps, ref: React.Ref<HTMLButtonElement>): NavSubItemState => {
+export const useNavSubItem_unstable = (props: NavSubItemProps, ref: React.Ref<HTMLAnchorElement>): NavSubItemState => {
   const { content, onClick, value: subItemValue } = props;
 
   const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
@@ -49,18 +49,18 @@ export const useNavSubItem_unstable = (props: NavSubItemProps, ref: React.Ref<HT
 
   return {
     components: {
-      root: 'button',
+      root: 'a',
       content: 'span',
     },
     root: slot.always(
-      getIntrinsicElementProps('button', {
+      getIntrinsicElementProps('a', {
         ref,
         role: 'nav',
         type: 'navigation',
         ...props,
         onClick: onNavSubItemClick,
       }),
-      { elementType: 'button' },
+      { elementType: 'a' },
     ),
     content: contentSlot,
     selected,

@@ -93,7 +93,7 @@ export type NavItemRegisterData = {
 
 // @public (undocumented)
 export type NavItemSlots = {
-    root: Slot<'button'>;
+    root: Slot<'a'>;
     content: NonNullable<Slot<'span'>>;
 };
 
@@ -160,7 +160,7 @@ export type NavSubItemProps = ComponentProps<Partial<NavSubItemSlots>> & {
 
 // @public (undocumented)
 export type NavSubItemSlots = {
-    root: Slot<'button'>;
+    root: Slot<'a'>;
     content: NonNullable<Slot<'span'>>;
 };
 
@@ -206,7 +206,7 @@ export const useNavCategoryItemStyles_unstable: (state: NavCategoryItemState) =>
 export const useNavContext_unstable: () => NavContextValue;
 
 // @public
-export const useNavItem_unstable: (props: NavItemProps, ref: React_2.Ref<HTMLButtonElement>) => NavItemState;
+export const useNavItem_unstable: (props: NavItemProps, ref: React_2.Ref<HTMLAnchorElement>) => NavItemState;
 
 // @public
 export const useNavItemStyles_unstable: (state: NavItemState) => NavItemState;
@@ -215,7 +215,7 @@ export const useNavItemStyles_unstable: (state: NavItemState) => NavItemState;
 export const useNavStyles_unstable: (state: NavState) => NavState;
 
 // @public
-export const useNavSubItem_unstable: (props: NavSubItemProps, ref: React_2.Ref<HTMLButtonElement>) => NavSubItemState;
+export const useNavSubItem_unstable: (props: NavSubItemProps, ref: React_2.Ref<HTMLAnchorElement>) => NavSubItemState;
 
 // @public
 export const useNavSubItemGroup_unstable: (props: NavSubItemGroupProps, ref: React_2.Ref<HTMLDivElement>) => NavSubItemGroupState;
