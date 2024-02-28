@@ -20,21 +20,21 @@ export type CreateArrowStylesOptions = {
    *
    * @defaultvalue 1px
    */
-  borderWidth?: GriffelStyle['borderBottomWidth'];
+  borderWidth?: GriffelStyle['borderWidth'];
 
   /**
    * The borderStyle for the arrow. Should be the same borderStyle as the parent element.
    *
    * @defaultvalue solid
    */
-  borderStyle?: GriffelStyle['borderBottomStyle'];
+  borderStyle?: GriffelStyle['borderStyle'];
 
   /**
    * The borderColor of the arrow. Should be the same borderColor as the parent element.
    *
    * @defaultvalue tokens.colorTransparentStroke
    */
-  borderColor?: GriffelStyle['borderBottomColor'];
+  borderColor?: GriffelStyle['borderColor'];
 };
 
 /**
