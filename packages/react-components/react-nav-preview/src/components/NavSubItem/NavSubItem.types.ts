@@ -3,7 +3,7 @@ import { NavItemValue } from '../NavContext.types';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type NavSubItemSlots = {
-  root: Slot<'button'>;
+  root: Slot<'a'>;
 
   /**
    * Component children are placed in this slot
