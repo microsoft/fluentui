@@ -82,6 +82,12 @@ const griffelRule = {
     {
       loader: '@griffel/webpack-loader',
       options: {
+        webpackResolveOptions: {
+          extensionAlias: {
+            '.js': ['.js', '.ts'],
+            '.mjs': ['.mjs', '.mts'],
+          },
+        },
         babelOptions: {
           presets: ['@babel/preset-typescript'],
         },
