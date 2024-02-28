@@ -82,29 +82,32 @@ export const ListGridExample: React.FunctionComponent = () => {
     return columnCount.current * ROWS_PER_PAGE;
   }, []);
 
-  const onRenderCell = React.useCallback((item: IExampleItem, index: number | undefined) => {
-    return (
-      <div
-        className={classNames.listGridExampleTile}
-        data-is-focusable
-        style={{
-          width: 100 / columnCount.current + '%',
-        }}
-      >
-        <div className={classNames.listGridExampleSizer}>
-          <div className={classNames.listGridExamplePadder}>
-            <img
-              src={
-                'https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svg'
-              }
-              className={classNames.listGridExampleImage}
-            />
-            <span className={classNames.listGridExampleLabel}>{`item ${index}`}</span>
+  const onRenderCell = React.useCallback(
+    (item: IExampleItem, index: number | undefined) => {
+      return (
+        <div
+          className={classNames.listGridExampleTile}
+          data-is-focusable
+          style={{
+            width: 100 / columnCount.current + '%',
+          }}
+        >
+          <div className={classNames.listGridExampleSizer}>
+            <div className={classNames.listGridExamplePadder}>
+              <img
+                src={
+                  'https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svg'
+                }
+                className={classNames.listGridExampleImage}
+              />
+              <span className={classNames.listGridExampleLabel}>{`item ${index}`}</span>
+            </div>
           </div>
         </div>
-      </div>
-    );
-  }, []);
+      );
+    },
+    [classNames],
+  );
 
   const getPageHeight = React.useCallback((): number => {
     return rowHeight.current * ROWS_PER_PAGE;
