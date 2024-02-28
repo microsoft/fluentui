@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Add flex wrap to Rating and RatingDisplay",
-  "packageName": "@fluentui/react-rating-preview",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

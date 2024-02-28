@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: deprecate ComboboxContext",
-  "packageName": "@fluentui/react-components",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
