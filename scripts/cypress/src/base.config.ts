@@ -34,6 +34,10 @@ const cypressWebpackConfig = (): Configuration => {
   }
 
   baseWebpackConfig.resolve ??= {};
+  baseWebpackConfig.resolve.extensionAlias = {
+    '.js': ['.js', '.ts'],
+    '.mjs': ['.mjs', '.mts'],
+  };
   baseWebpackConfig.resolve.plugins ??= [];
   baseWebpackConfig.resolve.plugins.push(
     new TsconfigPathsPlugin({
