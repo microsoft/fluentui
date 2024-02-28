@@ -189,7 +189,7 @@ export class Stylesheet {
 
     _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
 
-    const doc = win ? win.document : document;
+    const doc = win ? win.document : typeof document !== 'undefined' ? document : undefined;
 
     // When an app has multiple versions of Fluent v8 it is possible
     // that an older version of Stylesheet is initialized before
@@ -204,7 +204,8 @@ export class Stylesheet {
     ) {
       const fabricConfig = global?.FabricConfig || {};
       fabricConfig.mergeStyles = fabricConfig.mergeStyles || {};
-      fabricConfig.mergeStyles.window = fabricConfig.mergeStyles.window || win || window;
+      fabricConfig.mergeStyles.window =
+        fabricConfig.mergeStyles.window || win || (typeof window !== 'undefined' ? window : undefined);
       fabricConfig.mergeStyles.inShadow = fabricConfig.mergeStyles.inShadow ?? inShadow;
       fabricConfig.mergeStyles.stylesheetKey = fabricConfig.mergeStyles.stylesheetKey || stylesheetKey;
 
