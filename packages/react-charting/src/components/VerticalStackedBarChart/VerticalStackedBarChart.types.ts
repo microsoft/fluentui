@@ -130,7 +130,7 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   maxBarWidth?: number;
 
   /**
-   * Padding between bars as a fraction of the {@link https://d3js.org/d3-scale/band#band_step `step`}.
+   * Padding between bars as a fraction of the [step](https://d3js.org/d3-scale/band#band_step).
    * Takes a number in the range [0, 1]. Only applicable to string x-axis.
    * @default 2/3
    */
@@ -138,7 +138,7 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
 
   /**
    * Padding before the first bar and after the last bar as a fraction of
-   * the {@link https://d3js.org/d3-scale/band#band_step `step`}. Takes a number in the range [0, 1].
+   * the [step](https://d3js.org/d3-scale/band#band_step). Takes a number in the range [0, 1].
    * Only applicable to string x-axis.
    */
   xAxisOuterPadding?: number;
