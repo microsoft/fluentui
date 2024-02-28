@@ -674,6 +674,10 @@ export interface IHorizontalBarChartProps {
     className?: string;
     culture?: string;
     data?: IChartProps[];
+    // (undocumented)
+    handleEmptyState?: () => JSX.Element;
+    // (undocumented)
+    handleError?: () => JSX.Element;
     hideLabels?: boolean;
     hideRatio?: boolean[];
     hideTooltip?: boolean;
@@ -731,6 +735,10 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
     colors?: string[];
     culture?: string;
     data?: IHorizontalBarChartWithAxisDataPoint[];
+    // (undocumented)
+    handleEmptyState?: () => JSX.Element;
+    // (undocumented)
+    handleError?: () => JSX.Element;
     onRenderCalloutPerDataPoint?: IRenderFunction<IHorizontalBarChartWithAxisDataPoint>;
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
@@ -980,6 +988,10 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     getDomainMargins?: (containerWidth: number) => IMargins;
     getGraphData?: any;
     getmargins?: (margins: IMargins) => void;
+    // (undocumented)
+    handleEmptyState?: () => void;
+    // (undocumented)
+    handleError?: () => void;
     isCalloutForStack?: boolean;
     legendBars: JSX.Element | null;
     maxOfYVal?: number;
