@@ -551,7 +551,7 @@ export interface IGroupedVerticalBarChartData {
 
 // @public
 export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
-    barwidth?: number;
+    barwidth?: number | string;
     chartTitle?: string;
     culture?: string;
     data: IGroupedVerticalBarChartData[];
@@ -1321,7 +1321,7 @@ export interface IVerticalBarChartDataPoint {
 
 // @public
 export interface IVerticalBarChartProps extends ICartesianChartProps {
-    barWidth?: number;
+    barWidth?: number | string;
     chartTitle?: string;
     colors?: string[];
     culture?: string;
@@ -1370,7 +1370,7 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     barCornerRadius?: number;
     barGapMax?: number;
     barMinimumHeight?: number;
-    barWidth?: number;
+    barWidth?: number | string;
     calloutProps?: Partial<ICalloutProps>;
     chartTitle?: string;
     // @deprecated

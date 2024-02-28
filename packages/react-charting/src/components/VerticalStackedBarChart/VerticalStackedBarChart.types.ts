@@ -24,7 +24,7 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   /**
    * Width of each bar in the chart.
    */
-  barWidth?: number;
+  barWidth?: number | string;
 
   /**
    * Gap (max) between bars in a stack. When non-zero, the bars in a stack will
@@ -140,7 +140,6 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
    * Padding before the first bar and after the last bar as a fraction of the `step`, which is the interval between
    * the start of a bar and the start of the next bar. Takes a number in the range [0, 1].
    * Only applicable to string x-axis.
-   * @default 1/3
    */
   xAxisOuterPadding?: number;
 }

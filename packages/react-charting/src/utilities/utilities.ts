@@ -1490,7 +1490,7 @@ const DEFAULT_BAR_WIDTH = 16;
 const MIN_BAR_WIDTH = 1;
 
 export const getBarWidth = (
-  barWidthProp: number | undefined,
+  barWidthProp: number | string | undefined,
   maxBarWidthProp: number | undefined,
   defaultValue = DEFAULT_BAR_WIDTH,
 ): number => {
@@ -1502,12 +1502,12 @@ export const getBarWidth = (
   return barWidth;
 };
 
-export const getScalePadding = (
-  prop: number | undefined,
-  shorthandProp: number | undefined,
-  defaultValue: number,
-): number => {
+export const getScalePadding = (prop: number | undefined, shorthandProp?: number, defaultValue = 0): number => {
   let padding = typeof prop === 'number' ? prop : typeof shorthandProp === 'number' ? shorthandProp : defaultValue;
   padding = Math.max(0, Math.min(padding, 1));
   return padding;
+};
+
+export const isScalePaddingDefined = (prop: number | undefined, shorthandProp?: number): boolean => {
+  return typeof prop === 'number' || typeof shorthandProp === 'number';
 };

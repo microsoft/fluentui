@@ -27,13 +27,13 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
     this.state = {
       width: 700,
       height: 400,
-      barWidthEnabled: false,
+      barWidthEnabled: true,
       xAxisInnerPaddingEnabled: false,
       xAxisOuterPaddingEnabled: false,
       barWidth: 16,
       maxBarWidth: 100,
       xAxisInnerPadding: 0.49,
-      xAxisOuterPadding: 0.24,
+      xAxisOuterPadding: 0,
     };
   }
 
@@ -120,19 +120,49 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
       <>
         <Stack horizontal wrap tokens={{ childrenGap: 30 }}>
           <Stack horizontal verticalAlign="center">
+            <Label htmlFor="input-width" style={{ fontWeight: 400 }}>
+              width:&nbsp;
+            </Label>
+            <input
+              type="range"
+              value={this.state.width}
+              min={200}
+              max={1000}
+              onChange={this._onWidthChange}
+              id="input-width"
+            />
+          </Stack>
+          <Stack horizontal verticalAlign="center">
+            <Label htmlFor="input-height" style={{ fontWeight: 400 }}>
+              height:&nbsp;
+            </Label>
+            <input
+              type="range"
+              value={this.state.height}
+              min={200}
+              max={1000}
+              id="input-height"
+              onChange={this._onHeightChange}
+            />
+          </Stack>
+          <Stack horizontal verticalAlign="center">
             <Checkbox
               label="barWidth:&nbsp;"
               checked={this.state.barWidthEnabled}
               onChange={this._onBarWidthCheckChange}
             />
-            <TextField
-              type="number"
-              value={this.state.barWidth.toString()}
-              min={1}
-              max={300}
-              onChange={this._onBarWidthChange}
-              disabled={!this.state.barWidthEnabled}
-            />
+            {this.state.barWidthEnabled ? (
+              <TextField
+                type="number"
+                value={this.state.barWidth.toString()}
+                min={1}
+                max={300}
+                onChange={this._onBarWidthChange}
+                disabled={!this.state.barWidthEnabled}
+              />
+            ) : (
+              <code>'auto'</code>
+            )}
           </Stack>
           <Stack horizontal verticalAlign="center">
             <Label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>
@@ -180,26 +210,6 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
             />
           </Stack>
         </Stack>
-        <label htmlFor="changeWidth_Truncated">Change Width:</label>
-        <input
-          type="range"
-          value={this.state.width}
-          min={200}
-          max={1000}
-          id="changeWidth_Truncated"
-          onChange={this._onWidthChange}
-          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
-        />
-        <label htmlFor="changeHeight_Truncated">Change Height:</label>
-        <input
-          type="range"
-          value={this.state.height}
-          min={200}
-          max={1000}
-          id="changeHeight_Truncated"
-          onChange={this._onHeightChange}
-          aria-valuetext={`ChangeHeightslider${this.state.height}`}
-        />
         <div style={rootStyle}>
           <GroupedVerticalBarChart
             chartTitle="Grouped Vertical Bar chart truncated example"
@@ -221,7 +231,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
               ) : null
             }
             enableReflow={true}
-            barwidth={this.state.barWidthEnabled ? this.state.barWidth : undefined}
+            barwidth={this.state.barWidthEnabled ? this.state.barWidth : 'auto'}
             maxBarWidth={this.state.maxBarWidth}
             xAxisInnerPadding={this.state.xAxisInnerPaddingEnabled ? this.state.xAxisInnerPadding : undefined}
             xAxisOuterPadding={this.state.xAxisOuterPaddingEnabled ? this.state.xAxisOuterPadding : undefined}

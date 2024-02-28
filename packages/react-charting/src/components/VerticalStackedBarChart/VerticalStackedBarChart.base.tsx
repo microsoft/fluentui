@@ -39,6 +39,7 @@ import {
   formatValueWithSIPrefix,
   getBarWidth,
   getScalePadding,
+  isScalePaddingDefined,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
@@ -466,7 +467,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._xAxisType = getTypeOfAxis(this.props.data[0].xAxisPoint, true) as XAxisTypes;
     this._lineObject = this._getFormattedLineData(this.props.data);
     this._xAxisInnerPadding = getScalePadding(this.props.xAxisInnerPadding, this.props.xAxisPadding, 2 / 3);
-    this._xAxisOuterPadding = getScalePadding(this.props.xAxisOuterPadding, this.props.xAxisPadding, 1 / 3);
+    this._xAxisOuterPadding = getScalePadding(this.props.xAxisOuterPadding, this.props.xAxisPadding, 0);
   }
 
   private _createDataSetLayer(): IVerticalStackedBarDataPoint[] {
@@ -770,7 +771,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     );
     const shouldFocusWholeStack = this._toFocusWholeStack(_isHavingLines);
 
-    if (this._xAxisType === XAxisTypes.StringAxis) {
+    if (this._xAxisType === XAxisTypes.StringAxis && this.props.barWidth === 'auto') {
       // Setting the bar width here is safe because there are no dependencies earlier in the code
       // that rely on the width of bars in vertical bar charts with string x-axis.
       this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, xBarScale.bandwidth());
@@ -1070,12 +1071,27 @@ export class VerticalStackedBarChartBase extends React.Component<
   };
 
   private _getDomainMargins = (containerWidth: number): IMargins => {
+    this._domainMargin = MIN_DOMAIN_MARGIN;
+
     if (this._xAxisType === XAxisTypes.StringAxis) {
-      // Setting the domain margin for string x-axis to 0 because the xAxisOuterPadding prop is now available
-      // to adjust the space before the first bar and after the last bar, which by default is non-zero.
-      this._domainMargin = 0;
-    } else {
-      this._domainMargin = MIN_DOMAIN_MARGIN;
+      if (isScalePaddingDefined(this.props.xAxisOuterPadding, this.props.xAxisPadding)) {
+        // Setting the domain margin for string x-axis to 0 because the xAxisOuterPadding prop is now available
+        // to adjust the space before the first bar and after the last bar.
+        this._domainMargin = 0;
+      } else if (this.props.barWidth !== 'auto') {
+        /** Total width available to render the bars */
+        const totalWidth =
+          containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+        /** Rate at which the space between the bars changes wrt the bar width */
+        const barGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
+        /** Total width required to render the bars. Directly proportional to bar width */
+        const reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * barGapRate) * this._barWidth;
+
+        if (totalWidth >= reqWidth) {
+          // Center align the chart by setting equal left and right margins for domain
+          this._domainMargin += (totalWidth - reqWidth) / 2;
+        }
+      }
     }
 
     return {

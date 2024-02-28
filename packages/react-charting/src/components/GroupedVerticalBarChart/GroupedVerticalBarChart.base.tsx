@@ -17,6 +17,7 @@ import {
   formatValueWithSIPrefix,
   getScalePadding,
   getBarWidth,
+  isScalePaddingDefined,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -127,6 +128,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._datasetForBars = datasetForBars;
     this._xAxisType = getTypeOfAxis(points[0].name, true) as XAxisTypes;
     const legends: JSX.Element = this._getLegendData(points, this.props.theme!.palette);
+    this._adjustProps();
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const yMax = d3Max(this._dataset, (point: any) => d3Max(this._keys, (key: string) => point[key]));
@@ -159,20 +161,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
       tickFormat: this.props.tickFormat!,
     };
 
-    // x0_inner_padding = space_between_groups / (space_between_groups + group_width)
-    // space_between_groups = 2 * bar_width
-    // group_width = this._keys.length * bar_width + (this._keys.length - 1) * space_between_bars
-    this._xAxisInnerPadding = getScalePadding(
-      this.props.xAxisInnerPadding,
-      undefined,
-      2 / (2 + this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE),
-    );
-    this._xAxisOuterPadding = getScalePadding(
-      this.props.xAxisOuterPadding,
-      undefined,
-      1 / (2 + this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE),
-    );
-
     return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
@@ -198,6 +186,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
           xAxisInnerPadding: this._xAxisInnerPadding,
           xAxisOuterPadding: this._xAxisOuterPadding,
         })}
+        barwidth={this._barWidth}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={() => {
@@ -223,14 +212,16 @@ export class GroupedVerticalBarChartBase extends React.Component<
   ) => {
     const xScale0 = this._createX0Scale(containerWidth);
 
-    // Setting the bar width here is safe because there are no dependencies earlier in the code
-    // that rely on the width of bars in vertical bar charts with string x-axis.
-    this._barWidth = getBarWidth(
-      this.props.barwidth,
-      this.props.maxBarWidth,
-      xScale0.bandwidth() / (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE),
-    );
-    this._groupWidth = this._barWidth * (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE);
+    if (this.props.barwidth === 'auto') {
+      // Setting the bar width here is safe because there are no dependencies earlier in the code
+      // that rely on the width of bars in vertical bar charts with string x-axis.
+      this._barWidth = getBarWidth(
+        this.props.barwidth,
+        this.props.maxBarWidth,
+        xScale0.bandwidth() / (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE),
+      );
+    }
+    this._groupWidth = (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE) * this._barWidth;
 
     const xScale1 = this._createX1Scale();
     const allGroupsBars: JSX.Element[] = [];
@@ -600,12 +591,28 @@ export class GroupedVerticalBarChartBase extends React.Component<
   };
 
   private _getDomainMargins = (containerWidth: number): IMargins => {
+    this._domainMargin = MIN_DOMAIN_MARGIN;
+
     if (this._xAxisType === XAxisTypes.StringAxis) {
-      // Setting the domain margin for string x-axis to 0 because the xAxisOuterPadding prop is now available
-      // to adjust the space before the first group and after the last group, which by default is non-zero.
-      this._domainMargin = 0;
-    } else {
-      this._domainMargin = MIN_DOMAIN_MARGIN;
+      if (isScalePaddingDefined(this.props.xAxisOuterPadding)) {
+        // Setting the domain margin for string x-axis to 0 because the xAxisOuterPadding prop is now available
+        // to adjust the space before the first group and after the last group.
+        this._domainMargin = 0;
+      } else if (this.props.barwidth !== 'auto') {
+        /** Total width available to render the bars */
+        const totalWidth =
+          containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+        const groupWidth = (this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE) * this._barWidth;
+        /** Rate at which the space between the groups changes wrt the group width */
+        const groupGapRate = this._xAxisInnerPadding / (1 - this._xAxisInnerPadding);
+        /** Total width required to render the groups. Directly proportional to group width */
+        const reqWidth = (this._xAxisLabels.length + (this._xAxisLabels.length - 1) * groupGapRate) * groupWidth;
+
+        if (totalWidth >= reqWidth) {
+          // Center align the chart by setting equal left and right margins for domain
+          this._domainMargin += (totalWidth - reqWidth) / 2;
+        }
+      }
     }
 
     return {
@@ -621,5 +628,18 @@ export class GroupedVerticalBarChartBase extends React.Component<
       this.props.data.length > 0 &&
       this.props.data.filter((item: IGroupedVerticalBarChartData) => item.series.length).length > 0
     );
+  }
+
+  private _adjustProps(): void {
+    this._barWidth = getBarWidth(this.props.barwidth, this.props.maxBarWidth);
+    // x0_inner_padding = space_between_groups / (space_between_groups + group_width)
+    // space_between_groups = 2 * bar_width
+    // group_width = this._keys.length * bar_width + (this._keys.length - 1) * space_between_bars
+    this._xAxisInnerPadding = getScalePadding(
+      this.props.xAxisInnerPadding,
+      undefined,
+      2 / (2 + this._keys.length + (this._keys.length - 1) * BAR_GAP_RATE),
+    );
+    this._xAxisOuterPadding = getScalePadding(this.props.xAxisOuterPadding);
   }
 }

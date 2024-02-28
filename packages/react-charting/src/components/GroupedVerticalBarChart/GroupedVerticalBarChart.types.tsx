@@ -29,8 +29,9 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
    * Formula: width of parent div / (Number Of Groups * (Number Of single bars in group + 2))
    * Note: By changing barwidth manually it may cause some spatial and graph override issues,
    * better to avoid using this prop.
+   * @default 16
    */
-  barwidth?: number;
+  barwidth?: number | string;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -110,7 +111,6 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
    * the start of a group and the start of the next group. Takes a number in the range [0, 1].
    * Only applicable to string x-axis. Note: groupWidthInTermsOfBarWidth is calculated at runtime based on
    * the number of bars in a group and the gap between the bars.
-   * @default 1 / (2 + groupWidthInTermsOfBarWidth)
    */
   xAxisOuterPadding?: number;
 }

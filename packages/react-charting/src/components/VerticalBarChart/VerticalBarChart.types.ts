@@ -25,8 +25,9 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
 
   /**
    * Width of each bar in the chart.
+   * @default 16
    */
-  barWidth?: number;
+  barWidth?: number | string;
 
   /**
    * Colors from which to select the color of each bar.
@@ -101,7 +102,6 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
    * Padding before the first bar and after the last bar as a fraction of the `step`, which is the interval between
    * the start of a bar and the start of the next bar. Takes a number in the range [0, 1].
    * Only applicable to string x-axis.
-   * @default 1/3
    */
   xAxisOuterPadding?: number;
 }
