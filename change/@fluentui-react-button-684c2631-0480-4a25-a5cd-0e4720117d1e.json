@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Wrap button class name computation in useMemo",
+  "packageName": "@fluentui/react-button",
+  "email": "agokhale@microsoft.com",
+  "dependentChangeType": "patch"
+}
