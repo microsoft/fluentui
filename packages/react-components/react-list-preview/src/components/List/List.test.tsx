@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 
 import * as React from 'react';
-import { fireEvent, prettyDOM, render, waitFor, within } from '@testing-library/react';
+import { fireEvent, prettyDOM, render, within } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { List } from './List';
 import { ListProps } from './List.types';
@@ -16,12 +16,6 @@ describe('List', () => {
   isConformant({
     Component: List as React.FunctionComponent<ListProps>,
     displayName: 'List',
-    testOptions: {
-      'consistent-callback-args': {
-        // onSelectionChange has an eventArgument which is React.SyntheticEvent. This throws an error during testing
-        ignoreProps: ['onSelectionChange'],
-      },
-    },
   });
 
   describe('rendering', () => {
@@ -139,6 +133,18 @@ describe('List', () => {
 
       expect(result.getAllByRole('listbox')).toHaveLength(1);
       expect(result.getAllByRole('option')).toHaveLength(2);
+    });
+
+    it('custom - should have passed roles', () => {
+      const result = render(
+        <List selectionMode="multiselect" role="grid">
+          <ListItem role="row">First ListItem</ListItem>
+          <ListItem role="row">Second ListItem</ListItem>
+        </List>,
+      );
+
+      expect(result.getAllByRole('grid')).toHaveLength(1);
+      expect(result.getAllByRole('row')).toHaveLength(2);
     });
 
     // TODO: Add more tests for multiple action once those components are created
