@@ -41,6 +41,11 @@
     "@fluentui/react-shared-contexts": "^9.14.1",
     "@fluentui/react-theme": "^9.1.16",
     "@fluentui/react-utilities": "^9.18.2",
+    "@fluentui/react-portal": "^9.4.15",
+    "@fluentui/react-aria": "^9.9.1",
+    "@fluentui/react-combobox": "^9.9.0",
+    "@fluentui/keyboard-keys": "^9.0.7",
+    "@fluentui/react-tabster": "^9.19.2",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
