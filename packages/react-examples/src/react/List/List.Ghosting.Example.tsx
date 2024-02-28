@@ -60,7 +60,7 @@ const generateStyles = (theme: ITheme) => {
 export const ListGhostingExample: React.FunctionComponent = () => {
   const items = useConst(() => createListItems(5000));
   const theme = useTheme();
-  const classNames = React.useMemo(() => generateStyles(theme), []);
+  const classNames = React.useMemo(() => generateStyles(theme), [theme]);
 
   const onRenderCell = React.useCallback(
     (item: IExampleItem, index: number, isScrolling: boolean): JSX.Element => {

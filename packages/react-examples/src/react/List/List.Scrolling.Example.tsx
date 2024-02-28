@@ -58,7 +58,7 @@ export const ListScrollingExample: React.FunctionComponent = () => {
   const [scrollToMode, setScrollToMode] = React.useState<ScrollToMode>(ScrollToMode.auto);
   const listRef: React.RefObject<IList> = React.useRef(null);
   const theme = useTheme();
-  const classNames = generateStyles(theme);
+  const classNames = React.useMemo(() => generateStyles(theme), [theme]);
 
   const onRenderCell = React.useCallback(
     (item: IExampleItem, index: number): JSX.Element => {
