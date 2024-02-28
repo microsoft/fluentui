@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/explicit-member-accessibility */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { getId } from '@fluentui/react/lib/Utilities';
 import ErrorImage from './ErrorImage';
