@@ -1,20 +1,5 @@
-export {
-  teamsDarkTheme,
-  teamsHighContrastTheme,
-  teamsLightTheme,
-  webDarkTheme,
-  webLightTheme,
-  azureDarkTheme,
-  azureLightTheme,
-} from './themes/index';
-export {
-  createDarkTheme,
-  createHighContrastTheme,
-  createLightTheme,
-  createTeamsDarkTheme,
-  createAzureDarkTheme,
-  createAzureLightTheme,
-} from './utils/index';
+export { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webDarkTheme, webLightTheme } from './themes/index';
+export { createDarkTheme, createHighContrastTheme, createLightTheme, createTeamsDarkTheme } from './utils/index';
 
 export { themeToTokensObject } from './themeToTokensObject';
 export { tokens } from './tokens';
