@@ -28,14 +28,6 @@ import { TimeLocaleDefinition } from 'd3-time-format';
 // @public
 export const AreaChart: React_2.FunctionComponent<IAreaChartProps>;
 
-// @public (undocumented)
-export enum BarWidthEnum {
-    // (undocumented)
-    auto = "auto",
-    // (undocumented)
-    default = "default"
-}
-
 // @public
 export const CartesianChart: React_2.FunctionComponent<IModifiedCartesianChartProps>;
 
@@ -559,7 +551,7 @@ export interface IGroupedVerticalBarChartData {
 
 // @public
 export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
-    barwidth?: number | keyof typeof BarWidthEnum;
+    barwidth?: number | 'default' | 'auto';
     chartTitle?: string;
     culture?: string;
     data: IGroupedVerticalBarChartData[];
@@ -1329,7 +1321,7 @@ export interface IVerticalBarChartDataPoint {
 
 // @public
 export interface IVerticalBarChartProps extends ICartesianChartProps {
-    barWidth?: number | keyof typeof BarWidthEnum;
+    barWidth?: number | 'default' | 'auto';
     chartTitle?: string;
     colors?: string[];
     culture?: string;
@@ -1378,7 +1370,7 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     barCornerRadius?: number;
     barGapMax?: number;
     barMinimumHeight?: number;
-    barWidth?: number | keyof typeof BarWidthEnum;
+    barWidth?: number | 'default' | 'auto';
     calloutProps?: Partial<ICalloutProps>;
     chartTitle?: string;
     // @deprecated

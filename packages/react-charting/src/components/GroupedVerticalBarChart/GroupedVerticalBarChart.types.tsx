@@ -6,7 +6,6 @@ import {
   ICartesianChartProps,
   IGroupedVerticalBarChartData,
   IGVBarChartSeriesPoint,
-  BarWidthEnum,
 } from '../../index';
 
 /**
@@ -27,7 +26,7 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
    * Width of each bar in the chart. When set to `auto`, the bar width is calculated from padding values.
    * @default 16
    */
-  barwidth?: number | keyof typeof BarWidthEnum;
+  barwidth?: number | 'default' | 'auto';
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.

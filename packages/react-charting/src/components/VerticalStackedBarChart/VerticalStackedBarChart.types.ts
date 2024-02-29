@@ -3,7 +3,6 @@ import { IStyle } from '@fluentui/react/lib/Styling';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import {
-  BarWidthEnum,
   ICartesianChartProps,
   ICartesianChartStyleProps,
   ICartesianChartStyles,
@@ -25,7 +24,7 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   /**
    * Width of each bar in the chart. When set to `auto`, the bar width is calculated from padding values.
    */
-  barWidth?: number | keyof typeof BarWidthEnum;
+  barWidth?: number | 'default' | 'auto';
 
   /**
    * Gap (max) between bars in a stack. When non-zero, the bars in a stack will

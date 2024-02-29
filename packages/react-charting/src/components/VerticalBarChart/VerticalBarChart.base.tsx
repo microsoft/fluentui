@@ -26,7 +26,6 @@ import {
   Legends,
   IChildProps,
   IYValueHover,
-  BarWidthEnum,
 } from '../../index';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
@@ -647,7 +646,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       }
       const xPoint = xBarScale(point.x);
       const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
-      if (this.props.barWidth === BarWidthEnum.auto) {
+      if (this.props.barWidth === 'auto') {
         // Setting the bar width here is safe because there are no dependencies earlier in the code
         // that rely on the width of bars in vertical bar charts with string x-axis.
         this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, xBarScale.bandwidth());
@@ -938,7 +937,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         // Setting the domain margin for string x-axis to 0 because the xAxisOuterPadding prop is now available
         // to adjust the space before the first bar and after the last bar.
         this._domainMargin = 0;
-      } else if (this.props.barWidth !== BarWidthEnum.auto) {
+      } else if (this.props.barWidth !== 'auto') {
         /** Total width available to render the bars */
         const totalWidth =
           containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);

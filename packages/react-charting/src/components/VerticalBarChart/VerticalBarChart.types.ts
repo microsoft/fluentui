@@ -6,7 +6,7 @@ import {
   ICartesianChartStyles,
   IVerticalBarChartDataPoint,
 } from '../../index';
-import { BarWidthEnum, ILineChartLineOptions } from '../../types/index';
+import { ILineChartLineOptions } from '../../types/index';
 
 /**
  * Vertical Bar Chart properties
@@ -27,7 +27,7 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
    * Width of each bar in the chart. When set to `auto`, the bar width is calculated from padding values.
    * @default 16
    */
-  barWidth?: number | keyof typeof BarWidthEnum;
+  barWidth?: number | 'default' | 'auto';
 
   /**
    * Colors from which to select the color of each bar.
