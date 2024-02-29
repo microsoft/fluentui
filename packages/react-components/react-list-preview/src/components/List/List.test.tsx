@@ -151,6 +151,27 @@ describe('List', () => {
   });
 
   describe('selection', () => {
+    it('single select items are properly rendered with all attributes', () => {
+      const result = render(
+        <List selectionMode="single" defaultSelectedItems={['test-value1']}>
+          <ListItem value="test-value-1">First ListItem</ListItem>
+          <ListItem value="test-value-2">Second ListItem</ListItem>
+        </List>,
+      );
+
+      expect(result.container).toMatchSnapshot();
+    });
+    it('multiselect items are properly rendered with all attributes', () => {
+      const result = render(
+        <List selectionMode="multiselect" defaultSelectedItems={['test-value1']}>
+          <ListItem value="test-value-1">First ListItem</ListItem>
+          <ListItem value="test-value-2">Second ListItem</ListItem>
+        </List>,
+      );
+
+      expect(result.container).toMatchSnapshot();
+    });
+
     it('Single mode should unselect previous', () => {
       const result = render(
         <List selectionMode="single">
