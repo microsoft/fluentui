@@ -28,9 +28,9 @@ export function createArrowStyles(options: CreateArrowStylesOptions): GriffelSty
 // @internal
 export type CreateArrowStylesOptions = {
     arrowHeight: number | undefined;
-    borderWidth?: GriffelStyle['borderWidth'];
-    borderStyle?: GriffelStyle['borderStyle'];
-    borderColor?: GriffelStyle['borderColor'];
+    borderWidth?: string;
+    borderStyle?: string;
+    borderColor?: string;
 };
 
 // @public
