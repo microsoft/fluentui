@@ -295,7 +295,7 @@ runTest('_getStylesBasedOnBreakpoint', () => {
     expect(result.chartValueSize).toEqual(20);
   });
 
-  test('Should return proper arcWidth and chartValueSize when _outerRadius is lessthan minRadius', () => {
+  test('Should return proper arcWidth and chartValueSize when _outerRadius is less than minRadius', () => {
     const instance = new GaugeChartBase(data);
     expect(instance).toBeDefined();
     instance._outerRadius = 50;
