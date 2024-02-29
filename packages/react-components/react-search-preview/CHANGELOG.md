@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-search-preview
 
-This log was last generated on Tue, 06 Feb 2024 17:55:20 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Feb 2024 02:34:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.46)
+
+Wed, 28 Feb 2024 02:34:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.45..@fluentui/react-search-preview_v0.1.46)
+
+### Patches
+
+- Bump @fluentui/react-input to v9.4.65 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.31 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-utilities to v9.18.2 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+
+## [0.1.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.45)
+
+Tue, 20 Feb 2024 14:22:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.44..@fluentui/react-search-preview_v0.1.45)
+
+### Patches
+
+- chore: disable consistent-callback-type lint rule for existing callbacks ([PR #30293](https://github.com/microsoft/fluentui/pull/30293) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-input to v9.4.64 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.30 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-utilities to v9.18.1 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
 
 ## [0.1.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.44)
 

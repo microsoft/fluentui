@@ -1,7 +1,8 @@
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { RatingItemSlots, RatingItemState } from './RatingItem.types';
 import { tokens } from '@fluentui/react-theme';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import type { RatingItemSlots, RatingItemState } from './RatingItem.types';
 
 export const ratingItemClassNames: SlotClassNames<RatingItemSlots> = {
   root: 'fui-RatingItem',
@@ -17,33 +18,30 @@ export const ratingItemClassNames: SlotClassNames<RatingItemSlots> = {
 const useStyles = makeStyles({
   root: {
     position: 'relative',
+    ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
   },
   small: {
     fontSize: '12px',
     width: '12px',
     height: '12px',
-    lineHeight: '12px',
   },
 
   medium: {
     fontSize: '16px',
     width: '16px',
     height: '16px',
-    lineHeight: '16px',
   },
 
   large: {
     fontSize: '20px',
     width: '20px',
     height: '20px',
-    lineHeight: '20px',
   },
 
   'extra-large': {
     fontSize: '28px',
     width: '28px',
     height: '28px',
-    lineHeight: '28px',
   },
 });
 
@@ -69,7 +67,7 @@ const useInputStyles = makeStyles({
 });
 
 const useIndicatorBaseClassName = makeResetStyles({
-  display: 'inline-block',
+  display: 'flex',
   overflow: 'hidden',
   color: tokens.colorNeutralForeground1,
   fill: 'currentColor',
@@ -84,6 +82,9 @@ const useIndicatorBaseClassName = makeResetStyles({
 const useIndicatorStyles = makeStyles({
   lowerHalf: {
     right: '50%',
+    '& > svg': {
+      ...shorthands.flex(0, 0, 'auto'),
+    },
   },
   upperHalf: {
     left: '50%',

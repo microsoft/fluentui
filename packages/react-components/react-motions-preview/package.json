@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-motions-preview",
-  "version": "0.1.1",
+  "version": "0.2.1",
   "description": "A package with utilities & motion definitions using Web Animations API",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,8 +36,8 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-shared-contexts": "^9.14.0",
-    "@fluentui/react-utilities": "^9.18.0",
+    "@fluentui/react-shared-contexts": "^9.14.1",
+    "@fluentui/react-utilities": "^9.18.2",
     "@swc/helpers": "^0.5.1",
     "react-is": "^17.0.2"
   },

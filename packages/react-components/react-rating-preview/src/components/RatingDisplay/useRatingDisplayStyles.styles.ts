@@ -15,6 +15,7 @@ export const ratingDisplayClassNames: SlotClassNames<RatingDisplaySlots> = {
 
 const useRootClassName = makeResetStyles({
   display: 'flex',
+  flexWrap: 'wrap',
   alignItems: 'center',
 });
 

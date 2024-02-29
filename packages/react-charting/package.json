@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-charting",
-  "version": "5.19.25",
+  "version": "5.19.30",
   "description": "React web charting controls for Microsoft fluentui system.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -37,12 +37,11 @@
     "@fluentui/scripts-jest": "*",
     "@fluentui/scripts-tasks": "*",
     "@fluentui/scripts-webpack": "*",
-    "jest-canvas-mock": "2.4.0",
-    "monosize": "0.2.1"
+    "jest-canvas-mock": "2.4.0"
   },
   "dependencies": {
     "@fluentui/react-focus": "^8.8.40",
-    "@fluentui/theme-samples": "^8.7.136",
+    "@fluentui/theme-samples": "^8.7.137",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/d3-array": "2.12.1",
     "@types/d3-axis": "1.0.10",
@@ -68,7 +67,7 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@fluentui/react": "^8.115.5",
+    "@fluentui/react": "^8.115.6",
     "@types/react": ">=16.8.0 <19.0.0",
     "@types/react-dom": ">=16.8.0 <19.0.0",
     "react": ">=16.8.0 <19.0.0",

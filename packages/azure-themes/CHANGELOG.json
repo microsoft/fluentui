@@ -2,6 +2,42 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Thu, 15 Feb 2024 07:25:16 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.61",
+      "version": "8.6.61",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "8b29bc9d3ccceab5656c90a738c470016d2f4825",
+            "comment": "pivot background color on hover"
+          },
+          {
+            "author": "aorantes@microsoft.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "d1f3e19b5f8d4b6c3c42726533e363ec5a5929ec",
+            "comment": "updated icon color of status bar to meet accessibility requirements"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Feb 2024 07:25:24 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.60",
+      "version": "8.6.60",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.115.6",
+            "commit": "4909da1c2da23917a1274f0b19b9d43b57588328"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Feb 2024 07:26:19 GMT",
       "tag": "@fluentui/azure-themes_v8.6.59",
       "version": "8.6.59",

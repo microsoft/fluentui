@@ -98,7 +98,7 @@ export function useFieldControlProps_unstable(): FieldControlProps | undefined;
 export function useFieldControlProps_unstable<Props extends FieldControlProps>(props: Props, options?: FieldControlPropsOptions): Props;
 
 // @public
-export const useFieldStyles_unstable: (state: FieldState) => void;
+export const useFieldStyles_unstable: (state: FieldState) => FieldState;
 
 // (No @packageDocumentation comment for this package)
 

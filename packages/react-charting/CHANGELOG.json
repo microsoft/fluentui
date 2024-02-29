@@ -2,6 +2,108 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 27 Feb 2024 07:25:41 GMT",
+      "tag": "@fluentui/react-charting_v5.19.30",
+      "version": "5.19.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9b41bc196072d32e2547c9addf781e3acb03a973",
+            "comment": "Fix vertical stacked bar chart rendering issue when data array is empty"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 26 Feb 2024 07:26:18 GMT",
+      "tag": "@fluentui/react-charting_v5.19.29",
+      "version": "5.19.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "2e8b33675468ee9bbf88bb14dcca89a0173fb4a3",
+            "comment": "Filtering data for DonutChart with >=0 instead of >0 to allow zero value cases"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Feb 2024 07:26:08 GMT",
+      "tag": "@fluentui/react-charting_v5.19.28",
+      "version": "5.19.28",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ee0975dc8e5466ed7dde2cf5214e7c7c7daa07ac",
+            "comment": "chore: remove monosize devDependency"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Feb 2024 07:26:24 GMT",
+      "tag": "@fluentui/react-charting_v5.19.28",
+      "version": "5.19.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "rarthur@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e3b2a5cf41a6b44ee123d2a0ee0f18d74a9b6339",
+            "comment": "Sankey Diagram: Supporting Localized Strings"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Feb 2024 07:24:16 GMT",
+      "tag": "@fluentui/react-charting_v5.19.27",
+      "version": "5.19.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "7cbabd8e9c86e16fbe94b270e43fff20c96d3a2a",
+            "comment": "Fixing codepen issue for charts not visible"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Feb 2024 07:25:24 GMT",
+      "tag": "@fluentui/react-charting_v5.19.26",
+      "version": "5.19.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "rarthur@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9bf578810837f77704679eb73a5ab7b7a7594cc6",
+            "comment": "Improves SankeyChart mouse performance by reducing the DOM size and memoizing computations."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.137",
+            "commit": "4909da1c2da23917a1274f0b19b9d43b57588328"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.115.6",
+            "commit": "4909da1c2da23917a1274f0b19b9d43b57588328"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 09 Feb 2024 07:25:49 GMT",
       "tag": "@fluentui/react-charting_v5.19.25",
       "version": "5.19.25",

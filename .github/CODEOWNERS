@@ -252,6 +252,7 @@ packages/react-components/react-motions-preview @microsoft/teams-prg
 packages/react-components/react-teaching-popover-preview @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-timepicker-compat @microsoft/teams-prg
 packages/react-components/react-icons-compat @microsoft/cxe-red @tomi-msft
+packages/react-components/react-tag-picker-preview @microsoft/teams-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
@@ -327,3 +328,4 @@ packages/react-experiments/src/components/TileList @ThomasMichon
 ## Docs
 rfcs/ @microsoft/cxe-red @microsoft/cxe-prg @microsoft/teams-prg
 rfcs/shared/build-system/ @microsoft/fluentui-react-build
+docs/ @microsoft/cxe-red @microsoft/cxe-prg @microsoft/teams-prg
