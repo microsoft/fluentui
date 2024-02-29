@@ -2,28 +2,66 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Spinner, spinnerClassNames } from '@fluentui/react-spinner';
 import { tokens } from '@fluentui/react-theme';
-import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import { TestWrapperDecorator, TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 import { StoryWright, Steps } from 'storywright';
-import { makeStyles } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 
-const useStyles = makeStyles({
-  paused: {
+const useWrapperStyles = makeStyles({
+  base: {
+    display: 'flex',
+    flexDirection: 'column',
+    columnGap: '2px',
+    rowGap: '20px',
     '& *': {
       animationPlayState: 'paused !important',
       animationDelay: 'var(--test-animation-delay, -1s) !important',
-      animationDuration: '1.5s !important',
     },
-    [`& .${spinnerClassNames.spinner}, & .fui-Spinner__Progressbar`]: {
-      animationDuration: '3s !important',
+  },
+  animationGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(16, auto)',
+  },
+  inverted: {
+    backgroundColor: tokens.colorBrandBackgroundStatic,
+    ...shorthands.padding('10px'),
+  },
+  // The test runner has reduced-motion enabled by default, so need to override and 'undo' the reduced motion styles.
+  noReducedMotion: {
+    '& *': {
+      animationDuration: '1.5s !important',
+      animationIterationCount: 'infinite !important',
+    },
+    [`& .${spinnerClassNames.spinnerTail}`]: {
+      backgroundImage: 'none !important',
+      '&::before, &::after': {
+        content: '"" !important',
+      },
     },
   },
 });
 
-// Inverted Spinners are meant to be used over a dark background
-// or photo. This wrapper ensures a dark background so the Spinners
-// are consistently visible.
-const InvertedWrapper: React.FC = ({ children }) => {
-  return <div style={{ background: tokens.colorBrandBackgroundStatic, padding: '10px' }}>{children}</div>;
+type WrapperProps = {
+  animationGrid?: boolean;
+  inverted?: boolean;
+  reducedMotion?: boolean;
+};
+
+const Wrapper: React.FC<WrapperProps> = props => {
+  const { animationGrid, inverted, reducedMotion, children } = props;
+
+  const styles = useWrapperStyles();
+  return (
+    <div
+      className={mergeClasses(
+        styles.base,
+        animationGrid && styles.animationGrid,
+        inverted && styles.inverted,
+        !reducedMotion && styles.noReducedMotion,
+      )}
+    >
+      {children}
+    </div>
+  );
 };
 
 storiesOf('Spinner converged', module)
@@ -31,19 +69,39 @@ storiesOf('Spinner converged', module)
   .addDecorator(story => (
     <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
-  .addStory('Primary', () => <Spinner className={useStyles().paused} />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
+  .addStory(
+    'Primary',
+    () => (
+      <Wrapper>
+        <Spinner />
+      </Wrapper>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'Primary - Reduced Motion',
+    () => (
+      <Wrapper reducedMotion>
+        <Spinner />
+      </Wrapper>
+    ),
+    {
+      includeHighContrast: true,
+      includeDarkMode: true,
+    },
+  )
   .addStory(
     'Primary with Label',
     () => (
-      <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+      <Wrapper>
         <Spinner labelPosition="before" label="Before" />
         <Spinner labelPosition="after" label="After" />
         <Spinner labelPosition="above" label="Above" />
         <Spinner labelPosition="below" label="Below" />
-      </div>
+      </Wrapper>
     ),
     {
       includeHighContrast: true,
@@ -52,7 +110,7 @@ storiesOf('Spinner converged', module)
     },
   )
   .addStory('Primary + size', () => (
-    <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+    <Wrapper>
       <Spinner size="extra-tiny" label="Extra Tiny" />
       <Spinner size="tiny" label="Tiny" />
       <Spinner size="extra-small" label="Extra Small" />
@@ -61,41 +119,69 @@ storiesOf('Spinner converged', module)
       <Spinner size="large" label="Large" />
       <Spinner size="extra-large" label="Extra Large" />
       <Spinner size="huge" label="Huge" />
-    </div>
+    </Wrapper>
   ))
   .addStory(
     'Inverted',
     () => (
-      <InvertedWrapper>
-        <Spinner className={useStyles().paused} appearance="inverted" />
-      </InvertedWrapper>
+      <Wrapper inverted>
+        <Spinner appearance="inverted" />
+      </Wrapper>
     ),
     {
       includeHighContrast: true,
       includeDarkMode: true,
     },
   )
+  .addStory('Inverted - Reduced Motion', () => (
+    <Wrapper inverted reducedMotion>
+      <Spinner appearance="inverted" />
+    </Wrapper>
+  ))
   .addStory(
     'Inverted with Label',
     () => (
-      <InvertedWrapper>
-        <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
-          <Spinner appearance="inverted" labelPosition="before" label="Before" />
-          <Spinner appearance="inverted" labelPosition="after" label="After" />
-          <Spinner appearance="inverted" labelPosition="above" label="Above" />
-          <Spinner appearance="inverted" labelPosition="below" label="Below" />
-        </div>
-      </InvertedWrapper>
+      <Wrapper inverted>
+        <Spinner appearance="inverted" labelPosition="before" label="Before" />
+        <Spinner appearance="inverted" labelPosition="after" label="After" />
+        <Spinner appearance="inverted" labelPosition="above" label="Above" />
+        <Spinner appearance="inverted" labelPosition="below" label="Below" />
+      </Wrapper>
     ),
     {
       includeHighContrast: true,
       includeDarkMode: true,
     },
+  );
+
+storiesOf('Spinner converged', module)
+  .addDecorator(TestWrapperDecorator)
+  .addDecorator(story => (
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+  ))
+  .addStory(
+    'Animation',
+    () => (
+      <Wrapper animationGrid>
+        {Array.from({ length: 75 }).map((_, i) => (
+          <Spinner key={i} style={{ '--test-animation-delay': `${-0.02 * i}s` } as React.CSSProperties} />
+        ))}
+      </Wrapper>
+    ),
+    {
+      includeRtl: true,
+    },
   )
-  .addStory('Animation', () => (
-    <div className={useStyles().paused} style={{ display: 'flex', columnGap: '5px' }}>
-      {Array.from({ length: 15 }).map((_, i) => (
-        <Spinner key={i} style={{ '--test-animation-delay': `-${0.1 * i}s` } as React.CSSProperties} />
-      ))}
-    </div>
-  ));
+  .addStory(
+    'Animation - Reduced Motion',
+    () => (
+      <Wrapper animationGrid reducedMotion>
+        {Array.from({ length: 45 }).map((_, i) => (
+          <Spinner key={i} style={{ '--test-animation-delay': `${-0.04 * i}s` } as React.CSSProperties} />
+        ))}
+      </Wrapper>
+    ),
+    {
+      includeRtl: true,
+    },
+  );
