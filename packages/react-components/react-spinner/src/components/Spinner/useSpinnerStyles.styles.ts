@@ -10,13 +10,6 @@ export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
   label: 'fui-Spinner__label',
 };
 
-/**
- * CSS variables used internally by Spinner
- */
-const vars = {
-  strokeWidth: '--fui-Spinner--strokeWidth',
-};
-
 const useRootBaseClassName = makeResetStyles({
   display: 'flex',
   alignItems: 'center',
@@ -34,14 +27,15 @@ const useRootStyles = makeStyles({
 const useSpinnerBaseClassName = makeResetStyles({
   position: 'relative',
   borderRadius: tokens.borderRadiusCircular,
-  boxShadow: `inset 0 0 0 var(${vars.strokeWidth}) currentcolor`,
-  color: tokens.colorBrandStroke2Contrast,
+  backgroundColor: tokens.colorBrandStroke2Contrast,
+  color: tokens.colorBrandStroke1,
   '@media screen and (forced-colors: active)': {
-    color: 'HighlightText',
+    backgroundColor: 'HighlightText',
+    color: 'Highlight',
     forcedColorAdjust: 'none',
   },
 
-  animationDuration: '3s',
+  animationDuration: '1.5s',
   animationIterationCount: 'infinite',
   animationTimingFunction: 'linear',
   animationName: {
@@ -50,119 +44,116 @@ const useSpinnerBaseClassName = makeResetStyles({
   },
 
   '@media screen and (prefers-reduced-motion: reduce)': {
-    animationDuration: '0.01ms',
-    animationIterationCount: '1',
+    animationDuration: '1.8s',
   },
 });
 
+// Implementation note: The spinner tail is rendered using two 135deg arc segments,
+// behind a 105deg arc mask. The segments are rotated out from behind the mask to expand
+// the visible arc from 30deg (min) to 255deg (max), and then back behind the mask again.
+// The tail and spinner itself also have 360deg rotation animations for the spin.
 const useSpinnerTailBaseClassName = makeResetStyles({
   position: 'absolute',
   width: '100%',
   height: '100%',
-  borderRadius: 'inherit',
-  maskImage: 'conic-gradient(white 240deg, transparent 240deg)',
-  color: tokens.colorBrandStroke1,
-  '@media screen and (forced-colors: active)': {
-    color: 'Highlight',
-    forcedColorAdjust: 'none',
-  },
+  maskImage: 'conic-gradient(transparent 105deg, white 105deg)',
 
   '&::before, &::after': {
     content: '""',
     position: 'absolute',
     width: '100%',
     height: '100%',
-    borderRadius: 'inherit',
-    maskImage: 'conic-gradient(transparent 240deg, white 240deg)',
-    boxShadow: `inset 0 0 0 var(${vars.strokeWidth}) currentcolor`,
     animation: 'inherit',
+    backgroundImage: 'conic-gradient(currentcolor 135deg, transparent 135deg)',
   },
 
   animationDuration: '1.5s',
   animationIterationCount: 'infinite',
   animationTimingFunction: tokens.curveEasyEase,
-
   animationName: {
-    '0%': { transform: 'rotate(0deg)' },
-    '40%, 50%': { transform: 'rotate(120deg)' },
-    '85%, 100%': { transform: 'rotate(360deg)' },
+    '0%': { transform: 'rotate(-120deg)' },
+    '50%': { transform: 'rotate(0deg)' },
+    '100%': { transform: 'rotate(240deg)' },
   },
   '&::before': {
     animationName: {
       '0%': { transform: 'rotate(0deg)' },
-      '40%, 50%': { transform: 'rotate(120deg)' },
-      '85%, 100%': { transform: 'rotate(0deg)' },
+      '50%': { transform: 'rotate(105deg)' },
+      '100%': { transform: 'rotate(0deg)' },
     },
   },
   '&::after': {
     animationName: {
       '0%': { transform: 'rotate(0deg)' },
-      '40%, 50%': { transform: 'rotate(240deg)' },
-      '85%, 100%': { transform: 'rotate(0deg)' },
+      '50%': { transform: 'rotate(225deg)' },
+      '100%': { transform: 'rotate(0deg)' },
     },
   },
-
   '@media screen and (prefers-reduced-motion: reduce)': {
-    animationDuration: '0.01ms',
-    animationIterationCount: '1',
+    animationName: 'none',
+    backgroundImage: 'conic-gradient(transparent 120deg, currentcolor 360deg)',
+    '&::before, &::after': {
+      content: 'none',
+    },
   },
 });
 
+// A maskImage to make a ring shape with the given stroke width.
+const ringMask = (strokeWidth: string) =>
+  `radial-gradient(closest-side, transparent calc(100% - ${strokeWidth} - 1px), white calc(100% - ${strokeWidth}))`;
+
 const useSpinnerStyles = makeStyles({
   inverted: {
-    color: tokens.colorNeutralStrokeAlpha2,
-  },
-
-  invertedTail: {
+    backgroundColor: tokens.colorNeutralStrokeAlpha2,
     color: tokens.colorNeutralStrokeOnBrand2,
   },
 
   'extra-tiny': {
     height: '16px',
     width: '16px',
-    [vars.strokeWidth]: tokens.strokeWidthThick,
+    maskImage: ringMask(tokens.strokeWidthThick),
   },
 
   tiny: {
     height: '20px',
     width: '20px',
-    [vars.strokeWidth]: tokens.strokeWidthThick,
+    maskImage: ringMask(tokens.strokeWidthThick),
   },
 
   'extra-small': {
     height: '24px',
     width: '24px',
-    [vars.strokeWidth]: tokens.strokeWidthThick,
+    maskImage: ringMask(tokens.strokeWidthThick),
   },
 
   small: {
     height: '28px',
     width: '28px',
-    [vars.strokeWidth]: tokens.strokeWidthThick,
+    maskImage: ringMask(tokens.strokeWidthThick),
   },
 
   medium: {
     height: '32px',
     width: '32px',
-    [vars.strokeWidth]: tokens.strokeWidthThicker,
+    maskImage: ringMask(tokens.strokeWidthThicker),
   },
 
   large: {
     height: '36px',
     width: '36px',
-    [vars.strokeWidth]: tokens.strokeWidthThicker,
+    maskImage: ringMask(tokens.strokeWidthThicker),
   },
 
   'extra-large': {
     height: '40px',
     width: '40px',
-    [vars.strokeWidth]: tokens.strokeWidthThicker,
+    maskImage: ringMask(tokens.strokeWidthThicker),
   },
 
   huge: {
     height: '44px',
     width: '44px',
-    [vars.strokeWidth]: tokens.strokeWidthThickest,
+    maskImage: ringMask(tokens.strokeWidthThickest),
   },
 });
 
@@ -234,7 +225,6 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
     state.spinnerTail.className = mergeClasses(
       spinnerClassNames.spinnerTail,
       spinnerTailBaseClassName,
-      appearance === 'inverted' && spinnerStyles.invertedTail,
       state.spinnerTail.className,
     );
   }
