@@ -1,0 +1,12 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        google()
+    }
+}
+
+rootProject.name = "xplat"
+
+apply(from: "../node_modules/react-native-test-app/test-app.gradle")
+applyTestAppSettings(settings)
