@@ -31,6 +31,8 @@ Run `yarn start` and select your start up project.
 - @fluentui/public-docsite-v9 starts the internal v9 documentation storybook site.
 - Pick a specific component package if you intend to work on a v9 component directly.
 
+Most projects have hot module reloading, so file saves will trigger refreshes.
+
 ### Iterating
 
 Make the changes you need, and commit along the way.
