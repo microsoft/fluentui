@@ -5,12 +5,6 @@
 ```ts
 
 // @public (undocumented)
-export const azureDarkTheme: Theme;
-
-// @public (undocumented)
-export const azureLightTheme: Theme;
-
-// @public (undocumented)
 export type BorderRadiusTokens = {
     borderRadiusNone: string;
     borderRadiusSmall: string;
@@ -296,12 +290,6 @@ export type ColorTokens = {
     colorBrandShadowAmbient: string;
     colorBrandShadowKey: string;
 };
-
-// @public (undocumented)
-export const createAzureDarkTheme: (brand: BrandVariants) => Theme;
-
-// @public (undocumented)
-export const createAzureLightTheme: (brand: BrandVariants) => Theme;
 
 // @public (undocumented)
 export const createDarkTheme: (brand: BrandVariants) => Theme;
