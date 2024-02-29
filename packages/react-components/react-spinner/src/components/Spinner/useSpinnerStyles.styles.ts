@@ -1,7 +1,8 @@
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import type { SpinnerSlots, SpinnerState } from './Spinner.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+import type { SpinnerSlots, SpinnerState } from './Spinner.types';
 
 export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
   root: 'fui-Spinner',
@@ -48,9 +49,9 @@ const useSpinnerBaseClassName = makeResetStyles({
   },
 });
 
-// Implementation note: The spinner tail is rendered using two 135deg arc segments,
-// behind a 105deg arc mask. The segments are rotated out from behind the mask to expand
-// the visible arc from 30deg (min) to 255deg (max), and then back behind the mask again.
+// The spinner tail is rendered using two 135deg arc segments, behind a 105deg arc mask.
+// The segments are rotated out from behind the mask to expand the visible arc from
+// 30deg (min) to 255deg (max), and then back behind the mask again to shrink the arc.
 // The tail and spinner itself also have 360deg rotation animations for the spin.
 const useSpinnerTailBaseClassName = makeResetStyles({
   position: 'absolute',
@@ -90,7 +91,7 @@ const useSpinnerTailBaseClassName = makeResetStyles({
     },
   },
   '@media screen and (prefers-reduced-motion: reduce)': {
-    animationName: 'none',
+    animationIterationCount: '0',
     backgroundImage: 'conic-gradient(transparent 120deg, currentcolor 360deg)',
     '&::before, &::after': {
       content: 'none',
@@ -106,6 +107,16 @@ const useSpinnerStyles = makeStyles({
   inverted: {
     backgroundColor: tokens.colorNeutralStrokeAlpha2,
     color: tokens.colorNeutralStrokeOnBrand2,
+  },
+
+  rtlTail: {
+    maskImage: 'conic-gradient(white 255deg, transparent 255deg)',
+    '&::before, &::after': {
+      backgroundImage: 'conic-gradient(transparent 225deg, currentcolor 225deg)',
+    },
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      backgroundImage: 'conic-gradient(currentcolor 0deg, transparent 240deg)',
+    },
   },
 
   'extra-tiny': {
@@ -200,6 +211,7 @@ const useLabelStyles = makeStyles({
  */
 export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => {
   const { labelPosition, size, appearance } = state;
+  const { dir } = useFluent();
 
   const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
@@ -225,6 +237,7 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
     state.spinnerTail.className = mergeClasses(
       spinnerClassNames.spinnerTail,
       spinnerTailBaseClassName,
+      dir === 'rtl' && spinnerStyles.rtlTail,
       state.spinnerTail.className,
     );
   }
