@@ -1,11 +1,11 @@
-import { PresenceMotionFn, createPresence } from '@fluentui/react-motions-preview';
-// TODO: set up export from @fluentui/react-motions-preview
-import { easingDecelerateMid } from '../../react-motions-preview/src/motions/atom/tokens';
+import { PresenceMotionFn, createPresenceComponent, motionTokens } from '@fluentui/react-motions-preview';
+
+const { durationNormal, curveDecelerateMid } = motionTokens;
 
 // Define a presence motion (enter/exit transitions) for collapse/expand
 const collapseMotion: PresenceMotionFn = element => {
   // TODO: make duration a parameter
-  const duration = 200;
+  const duration = durationNormal;
 
   const enterKeyframes = [
     { opacity: 0, maxHeight: 0, overflow: 'hidden' },
@@ -22,10 +22,10 @@ const collapseMotion: PresenceMotionFn = element => {
   ];
 
   return {
-    enter: { duration, keyframes: enterKeyframes, easing: easingDecelerateMid },
-    exit: { duration, keyframes: exitKeyframes, easing: easingDecelerateMid },
+    enter: { duration, keyframes: enterKeyframes, easing: curveDecelerateMid },
+    exit: { duration, keyframes: exitKeyframes, easing: curveDecelerateMid },
   };
 };
 
 // Create a React component that applies collapse/expand transitions to its children
-export const Collapse = createPresence(collapseMotion);
+export const Collapse = createPresenceComponent(collapseMotion);

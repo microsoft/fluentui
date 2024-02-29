@@ -1,8 +1,9 @@
-import { PresenceMotionFn, createPresence } from '@fluentui/react-motions-preview';
-// TODO: set up export from @fluentui/react-motions-preview
-import { durationNormal, easingLinear } from '../../../motions/atom/tokens';
+import { PresenceMotionFn, createPresenceComponent, motionTokens } from '@fluentui/react-motions-preview';
 import { PresenceParams, PresenceTransitionProps } from '../../../types';
 // import { FadeParams } from '../../atom/fade';
+
+const duration = motionTokens.durationNormal;
+const easing = motionTokens.curveDecelerateMid;
 
 // const enterNormal = ({ fromValue = 0 }: FadeParams = {}): AtomMotion => ({
 //   keyframes: [{ opacity: fromValue }, { opacity: 1 }],
@@ -19,14 +20,8 @@ import { PresenceParams, PresenceTransitionProps } from '../../../types';
 // });
 
 export const defaults: Required<PresenceTransitionProps<PresenceParams>> = {
-  enter: {
-    duration: durationNormal,
-    easing: easingLinear,
-  },
-  exit: {
-    duration: durationNormal,
-    easing: easingLinear,
-  },
+  enter: { duration, easing },
+  exit: { duration, easing },
 } as const;
 
 const fadeMotion: PresenceMotionFn = ({ enter: enterOverride, exit: exitOverride }) => {
@@ -41,5 +36,5 @@ const fadeMotion: PresenceMotionFn = ({ enter: enterOverride, exit: exitOverride
   };
 };
 
-// Create a React component that applies collapse/expand transitions to its children
-export const Fade = createPresence(fadeMotion);
+// Create a React component that applies fade in/out transitions to its children
+export const Fade = createPresenceComponent(fadeMotion);

@@ -4,7 +4,9 @@ import { Collapse } from '@fluentui/react-motions-preview';
 import description from './CollapseOverrideAllEasing.stories.md';
 
 import { loremIpsum } from '../loremIpsum';
-import { easingEasyEaseMax } from '../../../src/motions/atom/tokens';
+import { motionTokens } from '@fluentui/react-motions-preview';
+
+const { curveEasyEaseMax } = motionTokens;
 
 export const OverrideAllEasing = () => {
   const [visible, setVisible] = React.useState(false);
@@ -12,7 +14,7 @@ export const OverrideAllEasing = () => {
   return (
     <div>
       <Checkbox label="visible" checked={visible} onChange={() => setVisible(v => !v)} />
-      <Collapse visible={visible} override={{ all: { easing: easingEasyEaseMax, duration: 700 } }}>
+      <Collapse visible={visible} override={{ all: { easing: curveEasyEaseMax, duration: 700 } }}>
         <div>{loremIpsum(10)}</div>
       </Collapse>
     </div>
