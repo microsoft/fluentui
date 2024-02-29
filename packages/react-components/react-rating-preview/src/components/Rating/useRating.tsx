@@ -11,8 +11,8 @@ import type { RatingProps, RatingState } from './Rating.types';
 import { RatingItem } from '../../RatingItem';
 import { StarFilled, StarRegular } from '@fluentui/react-icons';
 
-const defaultIconFilled = <StarFilled />;
-const defaultIconOutline = <StarRegular />;
+const defaultIconFilled = StarFilled;
+const defaultIconOutline = StarRegular;
 
 /**
  * Create the state required to render Rating.

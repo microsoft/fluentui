@@ -42,7 +42,7 @@ export type RatingDisplayProps = ComponentProps<RatingDisplaySlots> & {
     color?: 'brand' | 'marigold' | 'neutral';
     compact?: boolean;
     count?: number;
-    icon?: React_2.ReactElement;
+    icon?: React_2.ElementType;
     max?: number;
     size?: 'small' | 'medium' | 'large' | 'extra-large';
     value?: number;
@@ -96,8 +96,8 @@ export type RatingOnChangeEventData = EventData<'change', React_2.FormEvent<HTML
 export type RatingProps = Omit<ComponentProps<Partial<RatingSlots>>, 'onChange'> & {
     color?: 'brand' | 'marigold' | 'neutral';
     defaultValue?: number;
-    iconFilled?: React_2.ReactElement;
-    iconOutline?: React_2.ReactElement;
+    iconFilled?: React_2.ElementType;
+    iconOutline?: React_2.ElementType;
     itemLabel?: (rating: number) => string;
     max?: number;
     name?: string;
