@@ -31,8 +31,6 @@ const DEFAULT_PROPS = {
   disableFirstFocus: false,
   forceFocusInsideTrap: true,
   isClickableOutsideFocusTrap: false,
-  // Hardcoding completely uncontrolled flag for proper interop with FluentUI V9.
-  'data-tabster': '{"uncontrolled": {"completely": true}}',
 };
 
 const useComponentRef = (

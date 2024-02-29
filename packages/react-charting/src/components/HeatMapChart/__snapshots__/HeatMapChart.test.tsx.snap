@@ -33,7 +33,6 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
           overflow: auto;
         }
     data-focuszone-id="FocusZone3"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -220,7 +219,6 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
                     outline: none;
                   }
               data-focuszone-id="FocusZone4"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

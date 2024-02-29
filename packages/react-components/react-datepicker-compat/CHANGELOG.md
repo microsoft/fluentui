@@ -1,25 +1,8 @@
 # Change Log - @fluentui/react-datepicker-compat
 
-This log was last generated on Tue, 23 Jan 2024 15:11:00 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Jan 2024 14:25:03 GMT and should not be manually modified.
 
 <!-- Start content -->
-
-## [0.4.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-datepicker-compat_v0.4.19)
-
-Tue, 23 Jan 2024 15:11:00 GMT 
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-datepicker-compat_v0.4.18..@fluentui/react-datepicker-compat_v0.4.19)
-
-### Patches
-
-- Bump @fluentui/react-calendar-compat to v0.0.18 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
-- Bump @fluentui/react-field to v9.1.51 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
-- Bump @fluentui/react-input to v9.4.61 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
-- Bump @fluentui/react-jsx-runtime to v9.0.28 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
-- Bump @fluentui/react-popover to v9.8.34 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
-- Bump @fluentui/react-portal to v9.4.11 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
-- Bump @fluentui/react-positioning to v9.12.5 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
-- Bump @fluentui/react-tabster to v9.17.4 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
-- Bump @fluentui/react-utilities to v9.17.0 ([PR #30359](https://github.com/microsoft/fluentui/pull/30359) by beachball)
 
 ## [0.4.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-datepicker-compat_v0.4.18)
 

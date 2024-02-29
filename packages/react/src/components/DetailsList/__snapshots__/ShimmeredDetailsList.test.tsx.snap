@@ -80,7 +80,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
-          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -362,7 +361,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone3"
-            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}

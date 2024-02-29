@@ -25,7 +25,7 @@ export const Size = () => {
 Size.parameters = {
   docs: {
     description: {
-      story: "A Rating's `size` can be `small`, `medium`, `large`, or `extra-large`.",
+      story: 'A Rating can be small, medium, large, or xlarge. You can specify the size with the "size" prop.',
     },
   },
 };

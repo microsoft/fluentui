@@ -3,7 +3,7 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { RatingState, RatingSlots, RatingContextValues } from './Rating.types';
-import { RatingItemProvider } from '../../contexts/RatingItemContext';
+import { RatingProvider } from '../../contexts/RatingContext';
 
 /**
  * Render the final JSX of Rating
@@ -12,8 +12,12 @@ export const renderRating_unstable = (state: RatingState, contextValues: RatingC
   assertSlots<RatingSlots>(state);
 
   return (
-    <RatingItemProvider value={contextValues.ratingItem}>
-      <state.root />
-    </RatingItemProvider>
+    <RatingProvider value={contextValues.rating}>
+      <state.root>
+        {state.root.children}
+        {state.ratingLabel && <state.ratingLabel />}
+        {state.ratingCountLabel && <state.ratingCountLabel />}
+      </state.root>
+    </RatingProvider>
   );
 };

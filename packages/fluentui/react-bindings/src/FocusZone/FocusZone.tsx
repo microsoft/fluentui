@@ -105,10 +105,6 @@ function _onKeyDownCapture(ev: KeyboardEvent) {
   }
 }
 
-interface FocusZonePropsWithTabster extends FocusZoneProps {
-  'data-tabster': string;
-}
-
 export class FocusZone extends React.Component<FocusZoneProps> implements IFocusZone {
   static propTypes = {
     className: PropTypes.string,
@@ -142,9 +138,7 @@ export class FocusZone extends React.Component<FocusZoneProps> implements IFocus
     as: 'div',
     preventDefaultWhenHandled: true,
     shouldRaiseClicks: false,
-    // Hardcoding uncontrolled flag for proper interop with FluentUI V9.
-    'data-tabster': '{"uncontrolled": {}}',
-  } as FocusZonePropsWithTabster;
+  };
 
   static displayName = 'FocusZone';
   static className = 'ms-FocusZone';

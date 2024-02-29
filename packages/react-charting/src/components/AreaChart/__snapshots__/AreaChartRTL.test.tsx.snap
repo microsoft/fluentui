@@ -33,7 +33,6 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             overflow: auto;
           }
       data-focuszone-id="FocusZone18"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         aria-label="Area chart styled example"
@@ -342,7 +341,6 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
                       outline: none;
                     }
                 data-focuszone-id="FocusZone19"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -572,7 +570,6 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
             overflow: auto;
           }
       data-focuszone-id="FocusZone8"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         aria-label="Area chart multiple example"
@@ -1150,7 +1147,6 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
                       outline: none;
                     }
                 data-focuszone-id="FocusZone9"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -1466,7 +1462,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             overflow: auto;
           }
       data-focuszone-id="FocusZone138"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         aria-label="Area chart multiple example"
@@ -2044,7 +2039,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       outline: none;
                     }
                 data-focuszone-id="FocusZone139"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -2360,7 +2354,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             overflow: auto;
           }
       data-focuszone-id="FocusZone148"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         aria-label="Area chart multiple example"
@@ -2938,7 +2931,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       outline: none;
                     }
                 data-focuszone-id="FocusZone149"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -3267,7 +3259,6 @@ exports[`Should reflect theme change 1`] = `
               overflow: auto;
             }
         data-focuszone-id="FocusZone161"
-        data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
           aria-label="Area chart multiple example"
@@ -3845,7 +3836,6 @@ exports[`Should reflect theme change 1`] = `
                         outline: none;
                       }
                   data-focuszone-id="FocusZone162"
-                  data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
                   <div

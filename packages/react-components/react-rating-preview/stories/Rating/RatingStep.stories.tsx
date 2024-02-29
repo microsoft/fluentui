@@ -8,7 +8,7 @@ export const Step = () => {
 Step.parameters = {
   docs: {
     description: {
-      story: 'You can specify half values in the Rating with `step={0.5}`.',
+      story: 'You can specify half values in the Rating with the "step" prop.',
     },
   },
 };

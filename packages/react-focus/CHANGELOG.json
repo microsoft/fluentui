@@ -2,21 +2,6 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
-      "date": "Wed, 24 Jan 2024 07:26:57 GMT",
-      "tag": "@fluentui/react-focus_v8.8.39",
-      "version": "8.8.39",
-      "comments": {
-        "patch": [
-          {
-            "author": "marata@microsoft.com",
-            "package": "@fluentui/react-focus",
-            "commit": "e2a567a3dae210006636ffe7034aef90182e54d8",
-            "comment": "chore: Adding data-tabster=uncontrolled to FocusZone and FocusTrapZone for proper interop with FluentUI V9."
-          }
-        ]
-      }
-    },
-    {
       "date": "Fri, 19 Jan 2024 07:29:32 GMT",
       "tag": "@fluentui/react-focus_v8.8.38",
       "version": "8.8.38",

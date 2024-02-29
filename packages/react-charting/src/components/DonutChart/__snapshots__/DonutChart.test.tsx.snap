@@ -25,7 +25,6 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
           outline: none;
         }
     data-focuszone-id="FocusZone3"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -338,7 +337,6 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                     outline: none;
                   }
               data-focuszone-id="FocusZone4"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -663,7 +661,6 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
           outline: none;
         }
     data-focuszone-id="FocusZone3"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -894,7 +891,6 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                     outline: none;
                   }
               data-focuszone-id="FocusZone4"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1219,7 +1215,6 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone32"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1421,7 +1416,6 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                     outline: none;
                   }
               data-focuszone-id="FocusZone33"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1743,7 +1737,6 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
           outline: none;
         }
     data-focuszone-id="FocusZone37"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1945,7 +1938,6 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                     outline: none;
                   }
               data-focuszone-id="FocusZone38"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2267,7 +2259,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone3"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2421,7 +2412,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                     outline: none;
                   }
               data-focuszone-id="FocusZone4"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2743,7 +2733,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
           outline: none;
         }
     data-focuszone-id="FocusZone8"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2897,7 +2886,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                     outline: none;
                   }
               data-focuszone-id="FocusZone9"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3219,7 +3207,6 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
           outline: none;
         }
     data-focuszone-id="FocusZone22"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3373,7 +3360,6 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                     outline: none;
                   }
               data-focuszone-id="FocusZone23"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3695,7 +3681,6 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone13"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3830,7 +3815,6 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone17"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3984,7 +3968,6 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                     outline: none;
                   }
               data-focuszone-id="FocusZone18"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4306,7 +4289,6 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone27"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4478,7 +4460,6 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                     outline: none;
                   }
               data-focuszone-id="FocusZone28"
-              data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

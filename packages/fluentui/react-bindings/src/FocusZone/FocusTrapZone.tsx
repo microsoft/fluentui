@@ -18,10 +18,6 @@ import {
 import { FocusTrapZoneProps } from './FocusTrapZone.types';
 import { handleRef } from '@fluentui/react-component-ref';
 
-interface FocusTrapZonePropsWithTabster extends FocusTrapZoneProps {
-  'data-tabster': string;
-}
-
 /** FocusTrapZone is used to trap the focus in any html element placed in body
  *  and hide other elements outside of Focus Trap Zone from accessibility tree.
  *  Pressing tab will circle focus within the inner focusable elements of the FocusTrapZone. */
@@ -69,9 +65,7 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
     as: 'div',
     isClickableOutsideFocusTrap: true,
     forceFocusInsideTrapOnOutsideFocus: false,
-    // Hardcoding completely uncontrolled flag for proper interop with FluentUI V9.
-    'data-tabster': '{"uncontrolled": {"completely": true}}',
-  } as FocusTrapZonePropsWithTabster;
+  };
 
   componentDidMount(): void {
     this._enableFocusTrapZone();

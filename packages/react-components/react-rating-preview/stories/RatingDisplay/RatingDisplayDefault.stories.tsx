@@ -1,4 +1,4 @@
 import * as React from 'react';
-import { RatingDisplay } from '@fluentui/react-rating-preview';
+import { RatingDisplay, RatingDisplayProps } from '@fluentui/react-rating-preview';
 
-export const Default = () => <RatingDisplay value={4} />;
+export const Default = (props: Partial<RatingDisplayProps>) => <RatingDisplay {...props} />;

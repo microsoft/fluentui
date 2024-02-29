@@ -1,17 +1,8 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 23 Jan 2024 15:11:00 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Jan 2024 14:25:03 GMT and should not be manually modified.
 
 <!-- Start content -->
-
-## [9.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.17.0)
-
-Tue, 23 Jan 2024 15:11:00 GMT 
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.16.1..@fluentui/react-utilities_v9.17.0)
-
-### Minor changes
-
-- feat: helper type DistributiveOmit ([PR #30317](https://github.com/microsoft/fluentui/pull/30317) by bernardo.sunderhus@gmail.com)
 
 ## [9.16.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.16.1)
 

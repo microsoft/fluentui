@@ -4,7 +4,7 @@ import { useRating_unstable } from './useRating';
 import { renderRating_unstable } from './renderRating';
 import { useRatingStyles_unstable } from './useRatingStyles.styles';
 import type { RatingProps } from './Rating.types';
-import { useRatingContextValues } from './useRatingContextValues';
+import { useRatingContextValues } from '../../contexts/useRatingContextValues';
 
 /**
  * Rating component - TODO: add more docs

@@ -12,6 +12,13 @@ export const ratingItemClassNames: SlotClassNames<RatingItemSlots> = {
   fullValueInput: 'fui-RatingItem__fullValueInput',
 };
 
+const indicatorSizes = {
+  small: '12px',
+  medium: '16px',
+  large: '20px',
+  'extra-large': '28px',
+};
+
 /**
  * Styles for the root slot
  */
@@ -20,27 +27,27 @@ const useStyles = makeStyles({
     position: 'relative',
   },
   small: {
-    fontSize: '12px',
-    width: '12px',
-    height: '12px',
+    fontSize: indicatorSizes.small,
+    width: indicatorSizes.small,
+    height: indicatorSizes.small,
   },
 
   medium: {
-    fontSize: '16px',
-    width: '16px',
-    height: '16px',
+    fontSize: indicatorSizes.medium,
+    width: indicatorSizes.medium,
+    height: indicatorSizes.medium,
   },
 
   large: {
-    fontSize: '20px',
-    width: '20px',
-    height: '20px',
+    fontSize: indicatorSizes.large,
+    width: indicatorSizes.large,
+    height: indicatorSizes.large,
   },
 
   'extra-large': {
-    fontSize: '28px',
-    width: '28px',
-    height: '28px',
+    fontSize: indicatorSizes['extra-large'],
+    width: indicatorSizes['extra-large'],
+    height: indicatorSizes['extra-large'],
   },
 });
 
@@ -68,7 +75,6 @@ const useInputStyles = makeStyles({
 const useIndicatorBaseClassName = makeResetStyles({
   display: 'inline-block',
   overflow: 'hidden',
-  color: tokens.colorNeutralForeground1,
   fill: 'currentColor',
   pointerEvents: 'none',
   position: 'absolute',
@@ -85,26 +91,38 @@ const useIndicatorStyles = makeStyles({
     marginLeft: '-50%',
   },
   brand: {
-    color: tokens.colorBrandForeground1,
+    color: tokens.colorBrandBackground,
+  },
+  unselectedFilledBrand: {
+    color: tokens.colorBrandBackground2,
   },
   marigold: {
-    color: tokens.colorPaletteMarigoldBorderActive,
+    color: tokens.colorPaletteMarigoldBackground3,
   },
-  highContrastOnly: {
-    color: tokens.colorTransparentStroke,
+  unselectedFilledMarigold: {
+    color: tokens.colorPaletteMarigoldBackground2,
   },
-  filled: {
+  unselectedFilled: {
     color: tokens.colorNeutralBackground6,
     '@media (forced-colors: active)': {
-      // In high contrast the 'outline' icon is always visible, so we need to hide the 'filled' icon.
+      // In high contrast, the 'outline' icon is always visible,
+      // so we need to hide the 'filled' icon.
       display: 'none',
     },
   },
-  brandFilled: {
-    color: tokens.colorBrandBackground2,
+  unselectedOutline: {
+    color: tokens.colorNeutralForeground3,
   },
-  marigoldFilled: {
-    color: tokens.colorPaletteMarigoldBackground2,
+  unselectedOutlineBrand: {
+    color: tokens.colorBrandForeground1,
+  },
+  unselectedOutlineMarigold: {
+    color: tokens.colorPaletteMarigoldForeground3,
+  },
+  unselectedOutlineHighContrast: {
+    // When the style is 'filled' for unselected icons, we still
+    // need to show the outline version for high contrast.
+    color: tokens.colorTransparentStroke,
   },
 });
 
@@ -112,7 +130,7 @@ const useIndicatorStyles = makeStyles({
  * Apply styling to the RatingItem slots based on the state
  */
 export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItemState => {
-  const { color, size, iconFillWidth } = state;
+  const { size, iconFillWidth } = state;
   const styles = useStyles();
   const inputBaseClassName = useInputBaseClassName();
   const inputStyles = useInputStyles();
@@ -143,10 +161,11 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
     state.unselectedOutlineIcon.className = mergeClasses(
       ratingItemClassNames.unselectedOutlineIcon,
       indicatorBaseClassName,
-      color === 'brand' && indicatorStyles.brand,
-      color === 'marigold' && indicatorStyles.marigold,
-      // If there is also a filled icon, the outline icon is only visible in high contrast
-      state.unselectedFilledIcon && indicatorStyles.highContrastOnly,
+      indicatorStyles.unselectedOutline,
+      state.unselectedFilledIcon ? indicatorStyles.unselectedOutlineHighContrast : indicatorStyles.unselectedOutline,
+      state.color === 'neutral' && indicatorStyles.unselectedOutline,
+      state.color === 'brand' && indicatorStyles.unselectedOutlineBrand,
+      state.color === 'marigold' && indicatorStyles.unselectedOutlineMarigold,
       iconFillWidth === 0.5 && indicatorStyles.upperHalf,
       state.unselectedOutlineIcon.className,
     );
@@ -155,9 +174,8 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
     state.unselectedFilledIcon.className = mergeClasses(
       ratingItemClassNames.unselectedFilledIcon,
       indicatorBaseClassName,
-      indicatorStyles.filled,
-      color === 'brand' && indicatorStyles.brandFilled,
-      color === 'marigold' && indicatorStyles.marigoldFilled,
+      indicatorStyles.unselectedFilled,
+      state.color === 'brand' && indicatorStyles.unselectedFilledBrand,
       iconFillWidth === 0.5 && indicatorStyles.upperHalf,
       state.unselectedFilledIcon.className,
     );
@@ -166,8 +184,8 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
     state.selectedIcon.className = mergeClasses(
       ratingItemClassNames.selectedIcon,
       indicatorBaseClassName,
-      color === 'brand' && indicatorStyles.brand,
-      color === 'marigold' && indicatorStyles.marigold,
+      state.color === 'brand' && indicatorStyles.brand,
+      state.color === 'marigold' && indicatorStyles.marigold,
       iconFillWidth === 0.5 && indicatorStyles.lowerHalf,
       state.selectedIcon.className,
     );

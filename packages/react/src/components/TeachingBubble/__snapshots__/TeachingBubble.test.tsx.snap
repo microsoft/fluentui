@@ -96,7 +96,6 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
           tabIndex={-1}
         >
           <div
-            data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
           >
@@ -189,7 +188,6 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
   tabIndex={-1}
 >
   <div
-    data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
     onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >
@@ -306,7 +304,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
   tabIndex={-1}
 >
   <div
-    data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
     onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >
@@ -910,7 +907,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with calloutProps that dea
   tabIndex={-1}
 >
   <div
-    data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
     onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >
@@ -999,7 +995,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
   tabIndex={-1}
 >
   <div
-    data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
     onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >
@@ -1120,7 +1115,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
   tabIndex={-1}
 >
   <div
-    data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
     onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >
@@ -1268,7 +1262,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with generated aria-descri
   tabIndex={-1}
 >
   <div
-    data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
     onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >
@@ -1422,7 +1415,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
     </div>
   </div>
   <div
-    data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
     onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >
@@ -1539,7 +1531,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
   tabIndex={-1}
 >
   <div
-    data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
     onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >

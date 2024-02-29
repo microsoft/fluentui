@@ -2,39 +2,6 @@
   "name": "@fluentui/react-calendar-compat",
   "entries": [
     {
-      "date": "Tue, 23 Jan 2024 15:10:58 GMT",
-      "tag": "@fluentui/react-calendar-compat_v0.0.18",
-      "version": "0.0.18",
-      "comments": {
-        "patch": [
-          {
-            "author": "estebanmu@microsoft.com",
-            "package": "@fluentui/react-calendar-compat",
-            "commit": "400c92a2a2d4c2ca898291cc49790102cf3880f0",
-            "comment": "feat: Add navigationIcons prop to allow customization of Calendar's navigation icons."
-          },
-          {
-            "author": "beachball",
-            "package": "@fluentui/react-calendar-compat",
-            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.28",
-            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
-          },
-          {
-            "author": "beachball",
-            "package": "@fluentui/react-calendar-compat",
-            "comment": "Bump @fluentui/react-tabster to v9.17.4",
-            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
-          },
-          {
-            "author": "beachball",
-            "package": "@fluentui/react-calendar-compat",
-            "comment": "Bump @fluentui/react-utilities to v9.17.0",
-            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
-          }
-        ]
-      }
-    },
-    {
       "date": "Thu, 18 Jan 2024 14:25:03 GMT",
       "tag": "@fluentui/react-calendar-compat_v0.0.17",
       "version": "0.0.17",

@@ -33,7 +33,6 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
             overflow: auto;
           }
       data-focuszone-id="FocusZone24"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         aria-label="LineChart"
@@ -369,7 +368,6 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
                       outline: none;
                     }
                 data-focuszone-id="FocusZone25"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -513,7 +511,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
             overflow: auto;
           }
       data-focuszone-id="FocusZone11"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         aria-label="LineChart"
@@ -792,7 +789,6 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                       outline: none;
                     }
                 data-focuszone-id="FocusZone12"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -1108,7 +1104,6 @@ exports[`Line chart rendering Should render the Line chart with points in multip
             overflow: auto;
           }
       data-focuszone-id="FocusZone37"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         aria-label="LineChart"
@@ -1383,7 +1378,6 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                       outline: none;
                     }
                 data-focuszone-id="FocusZone38"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -1705,7 +1699,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             overflow: auto;
           }
       data-focuszone-id="FocusZone225"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         aria-label="LineChart"
@@ -1984,7 +1977,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       outline: none;
                     }
                 data-focuszone-id="FocusZone226"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -2300,7 +2292,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             overflow: auto;
           }
       data-focuszone-id="FocusZone238"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         aria-label="LineChart"
@@ -2579,7 +2570,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       outline: none;
                     }
                 data-focuszone-id="FocusZone239"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -2908,7 +2898,6 @@ exports[`Should reflect theme change 1`] = `
               overflow: auto;
             }
         data-focuszone-id="FocusZone254"
-        data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
           aria-label="LineChart"
@@ -3187,7 +3176,6 @@ exports[`Should reflect theme change 1`] = `
                         outline: none;
                       }
                   data-focuszone-id="FocusZone255"
-                  data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
                   <div

@@ -37,7 +37,6 @@ exports[`DetailsHeader can render 1`] = `
       }
   data-automationid="DetailsHeader"
   data-focuszone-id="FocusZone1"
-  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -963,7 +962,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
       }
   data-automationid="DetailsHeader"
   data-focuszone-id="FocusZone3"
-  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -1752,7 +1750,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
       }
   data-automationid="DetailsHeader"
   data-focuszone-id="FocusZone7"
-  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}

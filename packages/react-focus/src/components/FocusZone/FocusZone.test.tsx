@@ -2323,16 +2323,4 @@ describe('FocusZone', () => {
     expect(buttonB.tabIndex).toBe(-1);
     expect(buttonC.tabIndex).toBe(0);
   });
-
-  it('has data-tabster=uncontrolled', () => {
-    const component = ReactTestUtils.renderIntoDocument(
-      <FocusZone>
-        <button>Button</button>
-      </FocusZone>,
-    );
-
-    const focusZone = ReactDOM.findDOMNode(component as unknown as React.ReactInstance) as Element;
-
-    expect(focusZone.getAttribute('data-tabster')).toBe('{"uncontrolled": {}}');
-  });
 });

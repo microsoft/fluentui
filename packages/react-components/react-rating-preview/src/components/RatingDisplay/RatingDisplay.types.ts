@@ -1,64 +1,17 @@
-import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { RatingItemContextValue } from '../RatingItem/RatingItem.types';
 
 export type RatingDisplaySlots = {
-  root: NonNullable<Slot<'div'>>;
-  valueText?: Slot<'span'>;
-  countText?: Slot<'span'>;
+  root: Slot<'div'>;
 };
 
 /**
  * RatingDisplay Props
  */
-export type RatingDisplayProps = ComponentProps<RatingDisplaySlots> & {
-  /**
-   * Color of the rating items (stars).
-   * @default neutral
-   */
-  color?: 'brand' | 'marigold' | 'neutral';
-  /**
-   * Renders a single filled star, with the value written next to it.
-   * @default false
-   */
-  compact?: boolean;
-  /**
-   * The number of ratings represented by the rating value.
-   * This will be formatted with a thousands separator (if applicable) and displayed next to the value.
-   */
-  count?: number;
-  /**
-   * The icon used for filled rating items.
-   * @default <StarFilled />
-   */
-  iconFilled?: React.ReactElement;
-  /**
-   * The icon used for unfilled rating items.
-   * @default <StarRegular />
-   */
-  iconOutline?: React.ReactElement;
-  /**
-   * The max value of the rating. This controls the number of rating items displayed.
-   * Must be a whole number greater than 1.
-   * @default 5
-   */
-  max?: number;
-  /**
-   * Sets the size of the RatingDisplay items.
-   * @default medium
-   */
-  size?: 'small' | 'medium' | 'large' | 'extra-large';
-  /**
-   * The value of the rating
-   */
-  value?: number;
-};
+export type RatingDisplayProps = ComponentProps<RatingDisplaySlots> & {};
 
 /**
  * State used in rendering RatingDisplay
  */
-export type RatingDisplayState = ComponentState<RatingDisplaySlots> &
-  Required<Pick<RatingDisplayProps, 'color' | 'compact' | 'iconFilled' | 'iconOutline' | 'max' | 'size'>> &
-  Pick<RatingDisplayProps, 'value'>;
-
-export type RatingDisplayContextValues = { ratingItem: RatingItemContextValue };
+export type RatingDisplayState = ComponentState<RatingDisplaySlots>;
+// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from RatingDisplayProps.
+// & Required<Pick<RatingDisplayProps, 'propName'>>

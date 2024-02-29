@@ -1,27 +1,8 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 24 Jan 2024 07:26:57 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Jan 2024 07:29:32 GMT and should not be manually modified.
 
 <!-- Start content -->
-
-## [8.115.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.115.1)
-
-Wed, 24 Jan 2024 07:26:57 GMT 
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.115.0..@fluentui/react_v8.115.1)
-
-### Patches
-
-- chore: Adding data-tabster=uncontrolled to FocusZone and FocusTrapZone for proper interop with FluentUI V9. ([PR #30369](https://github.com/microsoft/fluentui/pull/30369) by marata@microsoft.com)
-- Bump @fluentui/react-focus to v8.8.39 ([PR #30323](https://github.com/microsoft/fluentui/pull/30323) by beachball)
-
-## [8.115.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.115.0)
-
-Tue, 23 Jan 2024 07:26:42 GMT 
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.114.4..@fluentui/react_v8.115.0)
-
-### Minor changes
-
-- Added expand callback to the MessageBar component ([PR #30221](https://github.com/microsoft/fluentui/pull/30221) by anvasser@microsoft.com)
 
 ## [8.114.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.114.4)
 

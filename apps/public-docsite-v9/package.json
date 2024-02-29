@@ -37,7 +37,6 @@
     "@fluentui/react-rating-preview": "*",
     "@fluentui/react-search-preview": "*",
     "@fluentui/react-motion-preview": "*",
-    "@fluentui/react-motions-preview": "*",
     "@fluentui/react-teaching-popover-preview": "*",
     "@fluentui/react-timepicker-compat": "*",
     "@griffel/react": "^1.5.14",

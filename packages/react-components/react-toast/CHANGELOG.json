@@ -2,45 +2,6 @@
   "name": "@fluentui/react-toast",
   "entries": [
     {
-      "date": "Tue, 23 Jan 2024 15:11:00 GMT",
-      "tag": "@fluentui/react-toast_v9.3.28",
-      "version": "9.3.28",
-      "comments": {
-        "patch": [
-          {
-            "author": "beachball",
-            "package": "@fluentui/react-toast",
-            "comment": "Bump @fluentui/react-aria to v9.8.0",
-            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
-          },
-          {
-            "author": "beachball",
-            "package": "@fluentui/react-toast",
-            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.28",
-            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
-          },
-          {
-            "author": "beachball",
-            "package": "@fluentui/react-toast",
-            "comment": "Bump @fluentui/react-portal to v9.4.11",
-            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
-          },
-          {
-            "author": "beachball",
-            "package": "@fluentui/react-toast",
-            "comment": "Bump @fluentui/react-tabster to v9.17.4",
-            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
-          },
-          {
-            "author": "beachball",
-            "package": "@fluentui/react-toast",
-            "comment": "Bump @fluentui/react-utilities to v9.17.0",
-            "commit": "0d7e251f3f73716c5b7d1e4b1031ff3eb4f4053f"
-          }
-        ]
-      }
-    },
-    {
       "date": "Thu, 18 Jan 2024 14:25:03 GMT",
       "tag": "@fluentui/react-toast_v9.3.27",
       "version": "9.3.27",

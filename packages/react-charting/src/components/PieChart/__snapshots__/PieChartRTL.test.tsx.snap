@@ -33,7 +33,6 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
             outline: none;
           }
       data-focuszone-id="FocusZone46"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -188,7 +187,6 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone1"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -359,7 +357,6 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
           outline: none;
         }
     data-focuszone-id="FocusZone12"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}

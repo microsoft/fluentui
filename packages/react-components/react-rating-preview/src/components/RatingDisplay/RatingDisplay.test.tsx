@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-//import { isConformant } from '../../testing/isConformant';
+import { isConformant } from '../../testing/isConformant';
 import { RatingDisplay } from './RatingDisplay';
 
 describe('RatingDisplay', () => {
-  // isConformant({
-  //   Component: RatingDisplay,
-  //   displayName: 'RatingDisplay',
-  // });
+  isConformant({
+    Component: RatingDisplay,
+    displayName: 'RatingDisplay',
+  });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 

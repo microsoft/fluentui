@@ -10,7 +10,6 @@ exports[`FocusZone renders FocusZone correctly with ariaDescribedby and ariaLabe
         outline: none;
       }
   data-focuszone-id="FocusZone0"
-  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}

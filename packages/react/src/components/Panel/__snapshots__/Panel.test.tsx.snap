@@ -85,7 +85,6 @@ exports[`Panel renders Panel correctly 1`] = `
           @media (min-width: 480px){& {
             width: 340px;
           }
-      data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
     >
       <div
         aria-hidden="true"

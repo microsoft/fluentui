@@ -1,1 +1,2 @@
-export * from './RatingItemContext';
+export * from './RatingContext';
+export * from './useRatingContextValues';

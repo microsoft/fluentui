@@ -33,7 +33,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             overflow: auto;
           }
       data-focuszone-id="FocusZone779"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -460,7 +459,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       outline: none;
                     }
                 data-focuszone-id="FocusZone780"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -776,7 +774,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             overflow: auto;
           }
       data-focuszone-id="FocusZone790"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -1203,7 +1200,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       outline: none;
                     }
                 data-focuszone-id="FocusZone791"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -1532,7 +1528,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
               overflow: auto;
             }
         data-focuszone-id="FocusZone804"
-        data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
           focusable="false"
@@ -1959,7 +1954,6 @@ exports[`Theme Change Should reflect theme change 1`] = `
                         outline: none;
                       }
                   data-focuszone-id="FocusZone805"
-                  data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
                   <div
@@ -2287,7 +2281,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             overflow: auto;
           }
       data-focuszone-id="FocusZone814"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -2651,7 +2644,6 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                       outline: none;
                     }
                 data-focuszone-id="FocusZone815"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -2967,7 +2959,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             overflow: auto;
           }
       data-focuszone-id="FocusZone26"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -3412,7 +3403,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       outline: none;
                     }
                 data-focuszone-id="FocusZone27"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -3722,7 +3712,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             overflow: auto;
           }
       data-focuszone-id="FocusZone78"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -4400,7 +4389,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       outline: none;
                     }
                 data-focuszone-id="FocusZone79"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -5146,7 +5134,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             overflow: auto;
           }
       data-focuszone-id="FocusZone111"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -5770,7 +5757,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       outline: none;
                     }
                 data-focuszone-id="FocusZone112"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -6516,7 +6502,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             overflow: auto;
           }
       data-focuszone-id="FocusZone144"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -7194,7 +7179,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       outline: none;
                     }
                 data-focuszone-id="FocusZone145"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -7940,7 +7924,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             overflow: auto;
           }
       data-focuszone-id="FocusZone45"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -8564,7 +8547,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       outline: none;
                     }
                 data-focuszone-id="FocusZone46"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -9310,7 +9292,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             overflow: auto;
           }
       data-focuszone-id="FocusZone5"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -9737,7 +9718,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       outline: none;
                     }
                 data-focuszone-id="FocusZone6"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -10053,7 +10033,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             overflow: auto;
           }
       data-focuszone-id="FocusZone15"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -10466,7 +10445,6 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                       outline: none;
                     }
                 data-focuszone-id="FocusZone16"
-                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -10860,7 +10838,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             overflow: auto;
           }
       data-focuszone-id="FocusZone824"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -11279,7 +11256,6 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                 outline: none;
               }
           data-focuszone-id="FocusZone825"
-          data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
           <div
@@ -11649,7 +11625,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             overflow: auto;
           }
       data-focuszone-id="FocusZone837"
-      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
         focusable="false"
@@ -12068,7 +12043,6 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                 outline: none;
               }
           data-focuszone-id="FocusZone838"
-          data-tabster="{\\"uncontrolled\\": {}}"
           role="listbox"
         >
           <div

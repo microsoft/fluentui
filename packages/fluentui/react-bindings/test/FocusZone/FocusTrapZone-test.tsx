@@ -840,16 +840,4 @@ describe('FocusTrapZone', () => {
       removeTestContainer();
     });
   });
-
-  it('has data-tabster=uncontrolled', () => {
-    const component = ReactTestUtils.renderIntoDocument(
-      <FocusTrapZone>
-        <button>Button</button>
-      </FocusTrapZone>,
-    );
-
-    const focusTrapZone = ReactDOM.findDOMNode(component as unknown as React.ReactInstance) as Element;
-
-    expect(focusTrapZone.getAttribute('data-tabster')).toBe('{"uncontrolled": {"completely": true}}');
-  });
 });

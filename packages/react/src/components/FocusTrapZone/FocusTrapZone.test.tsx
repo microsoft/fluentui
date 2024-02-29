@@ -61,16 +61,4 @@ describe('FocusTrapZone', () => {
     expect(getByText('sibling')).toBe(sibling); // make sure it's the same DOM node
     expect(sibling.getAttribute('aria-hidden')).toBeNull();
   });
-
-  it('has data-tabster=uncontrolled', () => {
-    const { getByTitle } = render(
-      <div>
-        <FocusTrapZone enableAriaHiddenSiblings title="ftz">
-          <button>content</button>
-        </FocusTrapZone>
-      </div>,
-    );
-
-    expect(getByTitle('ftz').getAttribute('data-tabster')).toBe('{"uncontrolled": {"completely": true}}');
-  });
 });

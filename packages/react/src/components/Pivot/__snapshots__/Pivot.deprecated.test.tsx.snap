@@ -30,7 +30,6 @@ exports[`Pivot renders link Pivot correctly 1`] = `
           white-space: nowrap;
         }
     data-focuszone-id="FocusZone1"
-    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
