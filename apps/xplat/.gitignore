@@ -1,0 +1,15 @@
+*.binlog
+*.hprof
+*.xcworkspace/
+*.zip
+.DS_Store
+.gradle/
+.idea/
+.vs/
+.xcode.env
+Pods/
+build/
+dist/
+local.properties
+msbuild.binlog
+node_modules/
