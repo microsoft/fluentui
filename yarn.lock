@@ -3702,7 +3702,7 @@
     hermes-profile-transformer "^0.0.6"
     ip "^1.1.5"
 
-"@react-native-community/cli-platform-android@12.1.1", "@react-native-community/cli-platform-android@12.3.2", "@react-native-community/cli-platform-android@12.3.3", "@react-native-community/cli-platform-android@^12.3.0":
+"@react-native-community/cli-platform-android@12.1.1", "@react-native-community/cli-platform-android@12.3.3", "@react-native-community/cli-platform-android@12.3.6", "@react-native-community/cli-platform-android@^12.3.0":
   version "12.3.3"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-android/-/cli-platform-android-12.3.3.tgz#4c7176f6c87fc39d71016456ba9fdff599c4416a"
   integrity sha512-NwqTYK8rcMjoJRDuGXCv0dBKxwpntPzFRBUib6gpHCBKyxmhkjkCmHf/ZdJ5RlxJ5SYAA2Zj02Risy/5ljxg3w==
@@ -3714,7 +3714,7 @@
     glob "^7.1.3"
     logkitty "^0.7.1"
 
-"@react-native-community/cli-platform-ios@12.1.1", "@react-native-community/cli-platform-ios@12.3.2", "@react-native-community/cli-platform-ios@12.3.3", "@react-native-community/cli-platform-ios@^12.3.0":
+"@react-native-community/cli-platform-ios@12.1.1", "@react-native-community/cli-platform-ios@12.3.3", "@react-native-community/cli-platform-ios@12.3.6", "@react-native-community/cli-platform-ios@^12.3.0":
   version "12.3.3"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-ios/-/cli-platform-ios-12.3.3.tgz#ddb1b2ec03fb31fd639a4c7161bdbaa6dacb3dbf"
   integrity sha512-ue7LEbShaQp5XCtC0u22vsbunTLIf6Wb1jXemnTXvmKvX+kvwFltGIzX4zODTlc2Bn8GX+zKneB4Ab9Z35NO3A==
@@ -3769,7 +3769,7 @@
   dependencies:
     joi "^17.2.1"
 
-"@react-native-community/cli@12.1.1", "@react-native-community/cli@12.3.2", "@react-native-community/cli@^12.3.0":
+"@react-native-community/cli@12.1.1", "@react-native-community/cli@12.3.6", "@react-native-community/cli@^12.3.0":
   version "12.3.3"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli/-/cli-12.3.3.tgz#3589ff95ca3e734ba4d51bb8d83c694b9898df08"
   integrity sha512-DmGcN6t9TC89All8kEV5Sg9L87M9Hsq2WHvL/x6kO5yTad/MSD9L05BW9+pjjZM+cXr8kJDGRA9mBAtLN5LXWA==
@@ -3957,7 +3957,7 @@
     mkdirp "^0.5.1"
     nullthrows "^1.1.1"
 
-"@react-native/community-cli-plugin@0.73.16", "@react-native/community-cli-plugin@^0.73.0", "@react-native/community-cli-plugin@^0.73.10":
+"@react-native/community-cli-plugin@0.73.17", "@react-native/community-cli-plugin@^0.73.0", "@react-native/community-cli-plugin@^0.73.10":
   version "0.73.16"
   resolved "https://registry.yarnpkg.com/@react-native/community-cli-plugin/-/community-cli-plugin-0.73.16.tgz#29dca91aa3e24c8cd534dbf3db5766509da92ea3"
   integrity sha512-eNH3v3qJJF6f0n/Dck90qfC9gVOR4coAXMTdYECO33GfgjTi+73vf/SBqlXw9HICH/RNZYGPM3wca4FRF7TYeQ==
@@ -23034,10 +23034,10 @@ react-native-macos@^0.73.0:
     ws "^6.2.2"
     yargs "^17.6.2"
 
-react-native-test-app@^3.2.7:
-  version "3.2.7"
-  resolved "https://registry.yarnpkg.com/react-native-test-app/-/react-native-test-app-3.2.7.tgz#4ffc48df45996ca5817b3b5140e9e886e3d90848"
-  integrity sha512-UWwwKadnwDZiKFHUgNrryB8rQ2+GxTOFEqwoDWs3zR+nnk/rexqYn6LfUs/Ondfo1phxOuRfnQObfGChU/4z6w==
+react-native-test-app@^3.2.15:
+  version "3.2.15"
+  resolved "https://registry.yarnpkg.com/react-native-test-app/-/react-native-test-app-3.2.15.tgz#db6d6a9e06db66b48196eaf9739993793b10d17f"
+  integrity sha512-bVvbDF5LvulB2j8DEkFXiNVqurQbGB2jSjqcCWd9Xfu+B5kB7LKO6g8dJKdkZpcNi+watSUMK8fMdJBtk56Zgg==
   dependencies:
     "@rnx-kit/react-native-host" "^0.4.4"
     ajv "^8.0.0"
@@ -23095,18 +23095,18 @@ react-native-windows@^0.73.0:
     ws "^6.2.2"
     yargs "^17.6.2"
 
-react-native@^0.73.0:
-  version "0.73.4"
-  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.73.4.tgz#81e07d4e7b6308c4649d5fa24038c0e87b17f2e1"
-  integrity sha512-VtS+Yr6OOTIuJGDECIYWzNU8QpJjASQYvMtfa/Hvm/2/h5GdB6W9H9TOmh13x07Lj4AOhNMx3XSsz6TdrO4jIg==
+react-native@^0.73.5:
+  version "0.73.5"
+  resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.73.5.tgz#724fd1ae8ec8fee1dcf619c82bdd1695d3cff463"
+  integrity sha512-iHgDArmF4CrhL0qTj+Rn+CBN5pZWUL9lUGl8ub+V9Hwu/vnzQQh8rTMVSwVd2sV6N76KjpE5a4TfIAHkpIHhKg==
   dependencies:
     "@jest/create-cache-key-function" "^29.6.3"
-    "@react-native-community/cli" "12.3.2"
-    "@react-native-community/cli-platform-android" "12.3.2"
-    "@react-native-community/cli-platform-ios" "12.3.2"
+    "@react-native-community/cli" "12.3.6"
+    "@react-native-community/cli-platform-android" "12.3.6"
+    "@react-native-community/cli-platform-ios" "12.3.6"
     "@react-native/assets-registry" "0.73.1"
     "@react-native/codegen" "0.73.3"
-    "@react-native/community-cli-plugin" "0.73.16"
+    "@react-native/community-cli-plugin" "0.73.17"
     "@react-native/gradle-plugin" "0.73.4"
     "@react-native/js-polyfills" "0.73.1"
     "@react-native/normalize-colors" "0.73.2"

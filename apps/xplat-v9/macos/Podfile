@@ -2,4 +2,10 @@ require_relative '../node_modules/react-native-test-app/macos/test_app'
 
 workspace 'xplat-v9.xcworkspace'
 
-use_test_app!
+options = {
+  :bridgeless_enabled => false,
+  :fabric_enabled => false,
+  :hermes_enabled => false,
+}
+
+use_test_app!(options)
