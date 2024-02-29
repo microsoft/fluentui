@@ -1,20 +1,128 @@
 import * as React from 'react';
-import { Checkbox } from '@fluentui/react-checkbox';
-import { Collapse } from '@fluentui/react-motions-preview';
+import { Checkbox, Dropdown, Input, Option, useId } from '@fluentui/react-components';
+import { Collapse, durations, curves } from '@fluentui/react-motions-preview';
 import description from './CollapseOverrideAllEasing.stories.md';
 
 import { loremIpsum } from '../loremIpsum';
-import { motionTokens } from '@fluentui/react-motions-preview';
 
-const { curveEasyEaseMax } = motionTokens;
+type DurationKey = keyof typeof durations;
+type CurveKey = keyof typeof curves;
+
+const defaultDurationName: DurationKey = 'durationUltraSlow';
+const defaultDuration = durations[defaultDurationName];
+const defaultEasingName: CurveKey = 'curveDecelerateMid';
+// const defaultEasing = curves[defaultEasingName];
+
+const splitCamelCase = (s: string) => s.replace(/([a-z])([A-Z])/g, '$1 $2').split(' ');
+
+const decamelAndDropPrefix = (s: string) => splitCamelCase(s).slice(1).join(' ');
+
+const optionTextForDuration = ([optionKey, optionValue]: [string, number]) => {
+  const displayKey = decamelAndDropPrefix(optionKey);
+  return `${displayKey} (${optionValue}ms)`;
+};
+
+const optionTextForEasing = (optionKey: CurveKey) => {
+  const displayKey = decamelAndDropPrefix(optionKey);
+  return `${displayKey}`;
+};
+
+const paramStyles: React.CSSProperties = { color: 'lightgreen' };
+const monospaceFont = 'Lucida Console, Monaco, Courier New';
 
 export const OverrideAllEasing = () => {
   const [visible, setVisible] = React.useState(false);
+  const comboId = useId('combo-default');
+  const [durationName, setDurationName] = React.useState<DurationKey>(defaultDurationName);
+  const [customDuration, setCustomDuration] = React.useState<number>(0);
+  const [curveName, setCurveName] = React.useState<CurveKey>(defaultEasingName);
+  // const [easing, setEasing] = React.useState<string>(curveEasyEaseMax);
+
+  const duration = customDuration ? customDuration : durations[durationName];
+  const durationValueInCode = customDuration ? customDuration : durationName;
 
   return (
     <div>
+      <div>
+        <div
+          style={{
+            fontWeight: 'bold',
+            fontFamily: monospaceFont,
+            backgroundColor: 'black',
+            color: 'lightgrey',
+            padding: 20,
+            borderRadius: 5,
+          }}
+        >
+          {`<Collapse ... override={{ all: { duration: `}
+          <span style={paramStyles}>{durationValueInCode}</span>
+          {`, easing: `}
+          <span style={paramStyles}>{curveName}</span>
+          {` } }}>`}
+        </div>
+      </div>
+
+      <br />
+
+      <table>
+        <tr>
+          <td>
+            <label id={comboId}>duration: &nbsp;</label>
+          </td>
+          <td>
+            <Dropdown
+              aria-labelledby={comboId}
+              placeholder="duration"
+              defaultValue={optionTextForDuration([defaultDurationName, defaultDuration])}
+              defaultSelectedOptions={[optionTextForDuration([defaultDurationName, defaultDuration])]}
+              onOptionSelect={(e, data) => {
+                // setDuration(Number(data.optionValue || 0));
+                setDurationName((data.optionValue as DurationKey) || 'durationUltraSlow');
+              }}
+            >
+              {Object.entries(durations).map(([optionKey, optionValue]) => (
+                <Option key={optionKey} value={optionKey}>
+                  {optionTextForDuration([optionKey, optionValue])}
+                </Option>
+              ))}
+            </Dropdown>
+
+            <Input
+              style={{ width: '7rem' }}
+              defaultValue=""
+              placeholder="custom (ms)"
+              onChange={(e, data) => {
+                setCustomDuration(Number(data.value || 0));
+              }}
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label id={comboId}>easing: &nbsp;</label>
+          </td>
+          <td>
+            <Dropdown
+              aria-labelledby={comboId}
+              placeholder="easing"
+              defaultValue={optionTextForEasing(defaultEasingName)}
+              defaultSelectedOptions={[optionTextForEasing(defaultEasingName)]}
+              onOptionSelect={(e, data) => {
+                setCurveName((data.optionValue as CurveKey) || 'curveLinear');
+              }}
+            >
+              {Object.entries(curves).map(([optionKey, optionValue]) => (
+                <Option key={optionKey} value={optionKey}>
+                  {optionTextForEasing(optionKey as CurveKey)}
+                </Option>
+              ))}
+            </Dropdown>
+          </td>
+        </tr>
+      </table>
+
       <Checkbox label="visible" checked={visible} onChange={() => setVisible(v => !v)} />
-      <Collapse visible={visible} override={{ all: { easing: curveEasyEaseMax, duration: 700 } }}>
+      <Collapse visible={visible} override={{ all: { easing: curves[curveName], duration } }}>
         <div>{loremIpsum(10)}</div>
       </Collapse>
     </div>
