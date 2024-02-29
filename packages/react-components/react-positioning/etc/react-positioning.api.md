@@ -71,7 +71,7 @@ export type Position = 'above' | 'below' | 'before' | 'after';
 // @public (undocumented)
 export type PositioningImperativeRef = {
     updatePosition: () => void;
-    setTarget: (target: TargetElement) => void;
+    setTarget: (target: TargetElement | null) => void;
 };
 
 // @public
