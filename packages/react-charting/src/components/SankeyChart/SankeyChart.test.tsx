@@ -5,7 +5,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { IChartProps } from '../../index';
 import { resetIds } from '../../Utilities';
-import { ISankeyChartProps, SankeyChart } from './index';
+import { ISankeyChartAccessibilityProps, ISankeyChartProps, ISankeyChartStrings, SankeyChart } from './index';
 import { ISankeyChartState, SankeyChartBase } from './SankeyChart.base';
 
 // Wrapper of the SankeyChart to be tested.
@@ -100,6 +100,9 @@ const dataWithoutColors: () => IChartProps = () => ({
 });
 
 describe('Sankey Chart snapShot testing', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
   it('renders Sankey correctly', () => {
     const component = renderer.create(<SankeyChart data={data()} height={500} width={800} />);
     const tree = component.toJSON();
@@ -122,12 +125,43 @@ describe('Sankey Chart snapShot testing', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('renders Sankey correctly with supplied resource strings', () => {
+    // ARRANGE
+    const data2 = {
+      chartTitle: 'Sankey Chart',
+      SankeyChartData: {
+        nodes: [
+          { nodeId: 0, name: 'First' },
+          { nodeId: 1, name: 'Second' },
+        ],
+        links: [{ source: 0, target: 1, value: 10 }],
+      },
+    };
+    const strings: ISankeyChartStrings = {
+      linkFrom: 'source {0}',
+    };
+    const accessibilityStrings: ISankeyChartAccessibilityProps = {
+      linkAriaLabel: '{2} items moved from {0} to {1}',
+      nodeAriaLabel: 'element {0} with size {1}',
+    };
+    // ACT
+    const component = renderer.create(
+      <SankeyChart data={data2} height={500} width={800} strings={strings} accessibility={accessibilityStrings} />,
+    );
+    // ASSERT
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(SankeyChartBase.prototype, 'render');
-    const props = {
+    const props: ISankeyChartProps = {
       data: data(),
       height: 500,
       width: 800,
@@ -182,9 +216,76 @@ describe('SankeyChart - mouse events', () => {
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
+
+  it('Should not add elements to the diagram when moving inside a "link" element and then back out', () => {
+    // ARRANGE
+    wrapper = mount(<SankeyChart data={data()} height={500} width={800} />);
+    let addedCount = 0;
+    let removedCount = 0;
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach((mutation: MutationRecord) => {
+        addedCount += mutation.addedNodes.length;
+        removedCount += mutation.removedNodes.length;
+      });
+    });
+    observer.observe(wrapper.getDOMNode().ownerDocument.body, {
+      childList: true,
+      attributes: true,
+      characterData: true,
+      subtree: true,
+    });
+    const originalHtml = wrapper.html();
+    // ACT
+    // The following finds the second "path" within the diagram, which happens to be within the "links" collection.
+    const firstElement = wrapper.find('path').at(1);
+    firstElement.simulate('mouseenter');
+    firstElement.simulate('mousemove');
+    firstElement.simulate('mouseleave');
+    // ASSERT
+    const finalHtml = wrapper.html();
+    expect(finalHtml).toBe(originalHtml);
+    observer.disconnect();
+    expect(addedCount).toBe(0);
+    expect(removedCount).toBe(0);
+  });
+
+  it('Should not add elements to the diagram when moving inside a "node" element and then back out', () => {
+    // ARRANGE
+    wrapper = mount(<SankeyChart data={data()} height={500} width={800} />);
+    let addedCount = 0;
+    let removedCount = 0;
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach((mutation: MutationRecord) => {
+        addedCount += mutation.addedNodes.length;
+        removedCount += mutation.removedNodes.length;
+      });
+    });
+    observer.observe(wrapper.getDOMNode().ownerDocument.body, {
+      childList: true,
+      attributes: true,
+      characterData: true,
+      subtree: true,
+    });
+    const originalHtml = wrapper.html();
+    // ACT
+    // The following finds the second "rect" within the diagram, which happens to be within the "nodes" collection.
+    const firstElement = wrapper.find('rect').at(1);
+    firstElement.simulate('mouseenter');
+    firstElement.simulate('mousemove');
+    firstElement.simulate('mouseleave');
+    // ASSERT
+    const finalHtml = wrapper.html();
+    expect(finalHtml).toBe(originalHtml);
+    observer.disconnect();
+    expect(addedCount).toBe(0);
+    expect(removedCount).toBe(0);
+  });
 });
 
 describe('SankeyChart - Min Height of Node Test', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
   it('renders Sankey correctly on providing height less than onepercent of total height', () => {
     const onepercentheightdata: IChartProps = {
       chartTitle: 'Sankey Chart',

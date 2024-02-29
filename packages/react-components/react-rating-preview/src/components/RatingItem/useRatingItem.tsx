@@ -4,6 +4,8 @@ import { useFocusWithin } from '@fluentui/react-tabster';
 import type { RatingItemProps, RatingItemState } from './RatingItem.types';
 import { useRatingItemContextValue_unstable } from '../../contexts/RatingItemContext';
 
+const defaultItemLabel = (num: number) => num + '';
+
 /**
  * Create the state required to render RatingItem.
  *
@@ -16,7 +18,7 @@ import { useRatingItemContextValue_unstable } from '../../contexts/RatingItemCon
 export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HTMLSpanElement>): RatingItemState => {
   const context = useRatingItemContextValue_unstable();
   const { value = 0 } = props;
-  const { itemLabel = num => num + '' } = context;
+  const { itemLabel = defaultItemLabel } = context;
 
   const ratingValue = Math.round((context.value || 0) * 2) / 2; // round to the nearest 0.5
 

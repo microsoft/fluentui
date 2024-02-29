@@ -2,6 +2,90 @@
   "name": "@fluentui/react-rating-preview",
   "entries": [
     {
+      "date": "Wed, 28 Feb 2024 02:34:18 GMT",
+      "tag": "@fluentui/react-rating-preview_v0.3.2",
+      "version": "0.3.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "04dcf2104c39a8a523075ace92e4d933744aca98",
+            "comment": "fix: Add focus border styling to Rating"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "4e2bd0291b2f64c650a405c067a319f1ac96af00",
+            "comment": "fix: update RatingItem styling to use flex to align all items properly"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb",
+            "comment": "fix: Add flex wrap to Rating and RatingDisplay"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.31",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.19.2",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.2",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Feb 2024 14:22:24 GMT",
+      "tag": "@fluentui/react-rating-preview_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "917d38890c93aa0df317b65d8de9113656a841dc",
+            "comment": "fix: remove component assignment from prop destructuring"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "f70585a3a44599ffbb572565798d97e64eab90ea",
+            "comment": "fix: update vertical styling for RatingDisplay to fix vertical alignment"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.30",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.19.1",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-rating-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.1",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Feb 2024 17:55:19 GMT",
       "tag": "@fluentui/react-rating-preview_v0.3.0",
       "version": "0.3.0",

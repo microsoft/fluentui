@@ -1,33 +1,54 @@
 import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/react-focus';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
-import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { classNamesFunction, getId, getRTL, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import { IProcessedStyleSet, ITheme } from '@fluentui/react/lib/Styling';
+import {
+  IStyleFunctionOrObject,
+  classNamesFunction,
+  format,
+  getId,
+  getRTL,
+  memoizeFunction,
+} from '@fluentui/react/lib/Utilities';
 import { sum as d3Sum } from 'd3-array';
 import { SankeyGraph, SankeyLayout, sankey as d3Sankey, sankeyJustify, sankeyRight } from 'd3-sankey';
-import { select, selectAll } from 'd3-selection';
+import { BaseType, Selection as D3Selection, select, selectAll } from 'd3-selection';
 import { area as d3Area, curveBumpX as d3CurveBasis } from 'd3-shape';
 import * as React from 'react';
 import { IBasestate, SLink, SNode } from '../../types/IDataPoint';
 import { ChartHoverCard } from '../../utilities/ChartHoverCard/ChartHoverCard';
 import { IChartHoverCardProps } from '../../utilities/ChartHoverCard/ChartHoverCard.types';
 import { IMargins } from '../../utilities/utilities';
-import { ISankeyChartData, ISankeyChartProps, ISankeyChartStyleProps, ISankeyChartStyles } from './SankeyChart.types';
+import {
+  ISankeyChartAccessibilityProps,
+  ISankeyChartData,
+  ISankeyChartProps,
+  ISankeyChartStrings,
+  ISankeyChartStyleProps,
+  ISankeyChartStyles,
+} from './SankeyChart.types';
 
 const getClassNames = classNamesFunction<ISankeyChartStyleProps, ISankeyChartStyles>();
 const PADDING_PERCENTAGE = 0.3;
 
 type NodeId = number | string;
-type NodeValues = { [key: NodeId]: number };
-type LinkValues = { [key: NodeId]: NodeValues };
+type ItemValues<T> = { [key: NodeId]: T };
+type NodeValues = ItemValues<number>;
+type LinkItemValues<T> = { [key: NodeId]: ItemValues<T> };
+type LinkValues = LinkItemValues<number>;
 
 type NodesInColumns = { [key: number]: SNode[] };
-type NormalizedData = {
+type NormalizedData = ISankeyChartData & {
   width: number;
   height: number;
-  data: ISankeyChartData;
 };
 
-type NormalizeFunction = (data: ISankeyChartData, containerWidth: number, containerHeight: number) => NormalizedData;
+type NormalizeDiagramFunction = (
+  data: ISankeyChartData,
+  containerWidth: number,
+  containerHeight: number,
+  colorsForNodes: string[] | undefined,
+  borderColorsForNodes: string[] | undefined,
+) => NormalizedData;
 
 type NodeColors = { fillColor: string; borderColor: string };
 type SankeyLayoutGenerator = SankeyLayout<SankeyGraph<{}, {}>, {}, {}>;
@@ -123,7 +144,10 @@ function getSelectedLinks(singleNode: SNode): Set<SLink> {
   return finalLinks;
 }
 
-function getSelectedLinksforStreamHover(singleLink: SLink): { selectedLinks: Set<SLink>; selectedNodes: Set<SNode> } {
+function getSelectedLinksforStreamHover(singleLink: SLink): {
+  selectedLinks: Set<SLink>;
+  selectedNodes: Set<SNode>;
+} {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, no-array-constructor
   const q: any = new Array<any>();
   const finalLinks: Set<SLink> = new Set<SLink>();
@@ -324,7 +348,7 @@ function valuesOfLinks(links: SLink[]): LinkValues {
   return result;
 }
 
-function linkValue(originalLinks: LinkValues, link: SLink): number {
+function linkValue<T>(originalLinks: LinkItemValues<T>, link: SLink): T {
   return originalLinks[idFromNumberOrSNode(link.source)][idFromNumberOrSNode(link.target)];
 }
 
@@ -350,15 +374,320 @@ export function preRenderLayout(
   return { sankey, height, width };
 }
 
+const elipsis = '...';
+
+/**
+ * This is used to assign node fillcolors and borderColor cyclically when the user doesnt
+ * provide color to  individual node.
+ */
+function assignNodeColors(
+  nodes: SNode[],
+  colorsForNodes: string[] | undefined,
+  borderColorsForNodes: string[] | undefined,
+) {
+  let colors: string[];
+  let borders: string[];
+  if (colorsForNodes && borderColorsForNodes) {
+    colors = colorsForNodes;
+    borders = borderColorsForNodes;
+  } else {
+    colors = DEFAULT_NODE_COLORS.map(color => color.fillColor);
+    borders = DEFAULT_NODE_COLORS.map(color => color.borderColor);
+  }
+  let currentIndex = 0;
+  nodes.forEach((node: SNode) => {
+    if (!node.color && !node.borderColor) {
+      node.color = colors[currentIndex];
+      node.borderColor = borders[currentIndex];
+    } else if (node.color && !node.borderColor) {
+      node.borderColor = '#757575';
+    } else if (node.borderColor && !node.color) {
+      node.color = '#F5F5F5';
+    }
+    currentIndex = (currentIndex + 1) % colors.length;
+  });
+}
+
+/**
+ * Takes in the display name for the node and potentially returns a trimmed version of the name.
+ * @param tspan the `tspan` element to use for text visual length measurement
+ * @param text is the text which we will potentially truncate
+ * @param rectangleWidth is the width of the rectangle which will contain the text
+ * @param padding is the space we need to leave between the rect lines and other text
+ * @returns the name to show on the node which might be the truncated `text` if the `text` is too long
+ */
+function truncateText(tspan: TSpanForTextMeasuring, text: string, rectangleWidth: number, padding: number) {
+  // NOTE: This method is the most-expensive in terms of rerendering components.
+  const textLengthForNodeName = rectangleWidth - padding; // This can likely be computed once and passed in.
+  // The following `select` statement injects a `tempText` element into the DOM. This injection
+  // (and subsequent removal) is causing a layout recalculation. This is a performance issue.
+  // Note that this code will always inject a `tempText` element, but doesn't always remove it. This is a bug.
+  if (fitsWithinNode(tspan, text, textLengthForNodeName)) {
+    return text;
+  }
+  // Computing the size of elipsis is performed with each node. This should be computed once and used everywhere.
+  // TODO: Compute the size of the elipsis once and use it everywhere.
+  const elipsisLength = computeElipsisLength(tspan);
+  let line: string = '';
+  // Calculate how much of the original text to show.
+  // TODO: The folllowing is O(n). We could use a binary search to make this faster: O(log(n)).
+  for (let i = 0; i < text.length; i++) {
+    line += text[i];
+    tspan.text(line);
+    const currentNode = tspan.node();
+    if (currentNode !== null) {
+      const w = currentNode!.getComputedTextLength();
+      if (w >= textLengthForNodeName - elipsisLength) {
+        line = line.slice(0, -1);
+        line += elipsis;
+        break;
+      }
+    }
+  }
+  tspan.text(null);
+  return line;
+}
+
+type RenderedNodeAttributes = {
+  readonly reactId: string;
+  readonly gElementId: string;
+  readonly name: string;
+  readonly aria: string;
+  readonly trimmed: boolean;
+  readonly height: number;
+  readonly weightOffset: number;
+};
+
+type RenderedLinkAttributes = {
+  readonly reactId: string;
+  readonly aria: string;
+  readonly from: string;
+};
+
+type TSpanForTextMeasuring = D3Selection<SVGTSpanElement, unknown, HTMLElement, unknown>;
+
+function fitsWithinNode(tspan: TSpanForTextMeasuring, text: string, textLengthForNodeName: number): boolean {
+  const measurement = measureText(tspan, text);
+  if (measurement === undefined) {
+    return false;
+  }
+  return measurement <= textLengthForNodeName;
+}
+
+function measureText(tspan: TSpanForTextMeasuring, text: string | number): number | undefined {
+  try {
+    tspan.text(text);
+    return tspan.node()?.getComputedTextLength();
+  } finally {
+    tspan.text(null);
+  }
+}
+
+function computeElipsisLength(tspan: TSpanForTextMeasuring): number {
+  const measurement = measureText(tspan, elipsis);
+  return measurement === undefined ? 0 : measurement;
+}
+
+function computeNodeAttributes(
+  nodes: SNode[],
+  nodeAriaLabel: (node: SNode, weight: number) => string,
+): ItemValues<RenderedNodeAttributes> {
+  const result: ItemValues<RenderedNodeAttributes> = {};
+  const weightSpan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
+  const nameSpan = select('.nodeName')
+    .append('text')
+    .attr('class', 'tempText')
+    .attr('font-size', '10')
+    .append('tspan')
+    .text(null);
+  nodes.forEach((singleNode: SNode) => {
+    const height = Math.max(singleNode.y1! - singleNode.y0!, 0);
+    let padding = 8;
+    let textLengthForNodeWeight = 0;
+
+    const nodeValue = singleNode.actualValue!;
+    // If the nodeWeight is in the same line as node description an extra padding
+    // of 6 px is required between node description and node weight.
+    if (height < MIN_HEIGHT_FOR_DOUBLINE_TYPE) {
+      padding = padding + 6;
+      // The following `select` statement injects a `tempText` element into the DOM. This injection
+      // (and subsequent removal) is causing a layout recalculation. This is a performance issue.
+      const measurement = measureText(weightSpan, nodeValue);
+      if (measurement !== undefined) {
+        textLengthForNodeWeight = measurement;
+        padding = padding + textLengthForNodeWeight;
+      }
+    }
+    // Since the total width of the node is 124 and we are giving margin of 8px from the left .
+    // So the actual value on which it will be truncated is 124-8=116.
+    const truncatedname: string = truncateText(nameSpan, singleNode.name, 116, padding);
+    const isTruncated: boolean = truncatedname.slice(-3) === elipsis;
+    result[singleNode.nodeId] = {
+      reactId: getId('nodeBar'),
+      gElementId: getId('nodeGElement'),
+      name: truncatedname,
+      aria: nodeAriaLabel(singleNode, nodeValue),
+      trimmed: isTruncated,
+      height,
+      weightOffset: textLengthForNodeWeight,
+    };
+  });
+  selectAll('.tempText').remove();
+  return result;
+}
+
+function computeLinkAttributes(
+  links: SLink[],
+  linkFrom: (node: SNode) => string,
+  linkAriaLabel: (link: SLink) => string,
+): LinkItemValues<RenderedLinkAttributes> {
+  const result: LinkItemValues<RenderedLinkAttributes> = {};
+  links.forEach((link: SLink) => {
+    const sourceId = idFromNumberOrSNode(link.source);
+    let sourceToTarget = result[sourceId];
+    if (!sourceToTarget) {
+      sourceToTarget = {};
+      result[sourceId] = sourceToTarget;
+    }
+    sourceToTarget[idFromNumberOrSNode(link.target)] = {
+      reactId: getId('link'),
+      from: linkFrom(link.source as SNode),
+      aria: linkAriaLabel(link),
+    };
+  });
+
+  return result;
+}
+
+type ItemPositions = {
+  readonly x0: number;
+  readonly y0: number;
+  readonly x1: number;
+  readonly y1: number;
+};
+
+type SankeyLinkWithPositions = ItemPositions & {
+  readonly source: ItemPositions;
+  readonly target: ItemPositions;
+  readonly width: number;
+};
+
+type AreaDataPoint = {
+  readonly x: number;
+  readonly y0: number;
+  readonly y1: number;
+};
+
+const linkToDataPoints = (d: SankeyLinkWithPositions): [AreaDataPoint, AreaDataPoint] => {
+  const halfWidth = d.width * 0.5;
+  const y0 = d.y0;
+  const y1 = d.y1;
+  return [
+    { x: d.source.x1, y0: y0 + halfWidth, y1: y0 - halfWidth },
+    { x: d.target.x0, y0: y1 + halfWidth, y1: y1 - halfWidth },
+  ];
+};
+
+const linkArea = d3Area<AreaDataPoint>()
+  .x((p: AreaDataPoint) => p.x)
+  .y0((p: AreaDataPoint) => p.y0)
+  .y1((p: AreaDataPoint) => p.y1)
+  .curve(d3CurveBasis);
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type TooltipDiv = D3Selection<BaseType, unknown, HTMLElement, any>;
+
+function nodeTextColor(state: Readonly<ISankeyChartState>, singleNode: SNode): string {
+  return !(
+    !state.selectedState ||
+    (state.selectedNodes.has(singleNode.index!) && state.selectedNode) ||
+    !state.selectedNode
+  )
+    ? DEFAULT_TEXT_COLOR
+    : NON_SELECTED_TEXT_COLOR;
+}
+
+type StringRenderer = {
+  linkFrom: (node: SNode) => string;
+};
+
+type AccessibilityRenderer = {
+  emptyAriaLabel: string;
+  nodeAriaLabel: (node: SNode, weight: number) => string;
+  linkAriaLabel: (link: SLink) => string;
+};
+
+function linkCalloutAttributes(
+  singleLink: SLink,
+  from: string,
+): IChartHoverCardProps & {
+  selectedLink: SLink;
+  isCalloutVisible: boolean;
+  color: string;
+  xCalloutValue: string;
+  yCalloutValue: string;
+  descriptionMessage: string;
+} {
+  return {
+    selectedLink: singleLink,
+    isCalloutVisible: true,
+    color: (singleLink.source as SNode).color!,
+    xCalloutValue: (singleLink.target as SNode).name,
+    yCalloutValue: singleLink.unnormalizedValue!.toString(),
+    descriptionMessage: from,
+  };
+}
+
+// NOTE: To start employing React.useMemo properly, we need to convert this code from a React.Component
+// to a function component. This will require a significant refactor of the code in this file.
+// https://stackoverflow.com/questions/60223362/fast-way-to-convert-react-class-component-to-functional-component
+// I am concerned that doing so would break this contract, making it difficult for consuming code.
 export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyChartState> {
   private chartContainer: HTMLDivElement;
   private _reqID: number;
-  private _calloutId: string;
-  private _linkId: string;
-  private _margins: IMargins;
-  private _isRtl: boolean = getRTL();
-  private _normalizeData: NormalizeFunction;
-  private _emptyChartId: string;
+  private readonly _calloutId: string;
+  private readonly _linkId: string;
+  private readonly _chartId: string;
+  private readonly _emptyChartId: string;
+  private readonly _labelTooltipId: string;
+  private readonly _margins: IMargins;
+  private readonly _isRtl: boolean = getRTL();
+
+  private readonly _computeClassNamesProps: (
+    theme: ITheme,
+    pathColor: string,
+    className: string,
+    containerWidth: number,
+    containerHeight: number,
+  ) => ISankeyChartStyleProps;
+  private readonly _computeClassNames: (
+    styles: IStyleFunctionOrObject<ISankeyChartStyleProps, ISankeyChartStyles>,
+    classNamesProps: ISankeyChartStyleProps,
+  ) => IProcessedStyleSet<ISankeyChartStyles>;
+  private readonly _normalizeData: NormalizeDiagramFunction;
+  private readonly _fetchTooltip: (classNames: IProcessedStyleSet<ISankeyChartStyles>) => TooltipDiv;
+  private readonly _nodeAttributes: (
+    nodes: SNode[],
+    nodeAriaLabel: (node: SNode, weight: number) => string,
+  ) => ItemValues<RenderedNodeAttributes>;
+  private readonly _linkAttributes: (
+    links: SLink[],
+    linkFrom: (node: SNode) => string,
+    linkAriaLabel: (link: SLink) => string,
+  ) => LinkItemValues<RenderedLinkAttributes>;
+  private readonly _fetchNodes: (
+    classNames: IProcessedStyleSet<ISankeyChartStyles>,
+    nodes: SNode[],
+    nodeAttributes: ItemValues<RenderedNodeAttributes>,
+    tooltipDiv: TooltipDiv,
+  ) => React.ReactNode[] | undefined;
+  private readonly _fetchLinks: (
+    links: SLink[],
+    linkAttributes: LinkItemValues<RenderedLinkAttributes>,
+  ) => React.ReactNode[] | undefined;
+
+  private readonly _strings: StringRenderer;
+  private readonly _accessibility: AccessibilityRenderer;
 
   constructor(props: ISankeyChartProps) {
     super(props);
@@ -373,11 +702,89 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     };
     this._calloutId = getId('callout');
     this._linkId = getId('link');
-    this._margins = { top: 36, right: 48, bottom: 32, left: 48 };
-    this._normalizeData = memoizeFunction((data: ISankeyChartData, containerWidth: number, containerHeight: number) =>
-      this._normalizeSankeyData(data, containerWidth, containerHeight),
-    );
+    this._chartId = getId('sankeyChart');
     this._emptyChartId = getId('_SankeyChart_empty');
+    this._labelTooltipId = getId('tooltip');
+    this._margins = { top: 36, right: 48, bottom: 32, left: 48 };
+    // We memo-ize creation so that we only create a new object when any of the fields change.
+    this._computeClassNamesProps = memoizeFunction(
+      (
+        theme: ITheme,
+        pathColor: string,
+        className: string,
+        containerWidth: number,
+        containerHeight: number,
+      ): ISankeyChartStyleProps => ({
+        theme: theme!,
+        width: containerWidth,
+        height: containerHeight,
+        pathColor,
+        className,
+      }),
+    );
+    // `getClassNames` is memoized underneath, so it only recomputes when the `styles` or `classNamesProps` change.
+    // We memoize `classNamesProps` so that we only create new class names when absolutely necessary,
+    // and so that we can memoize the `_createNodes` method.
+    this._computeClassNames = memoizeFunction(
+      (
+        styles: IStyleFunctionOrObject<ISankeyChartStyleProps, ISankeyChartStyles>,
+        classNamesProps: ISankeyChartStyleProps,
+      ) => getClassNames(styles, classNamesProps),
+    );
+    this._normalizeData = memoizeFunction(
+      (
+        data: ISankeyChartData,
+        containerWidth: number,
+        containerHeight: number,
+        colorsForNodes: string[] | undefined,
+        borderColorsForNodes: string[] | undefined,
+      ) => this._normalizeSankeyData(data, containerWidth, containerHeight, colorsForNodes, borderColorsForNodes),
+    );
+    this._fetchTooltip = memoizeFunction((classNames: IProcessedStyleSet<ISankeyChartStyles>) =>
+      this._labelTooltipDiv(classNames),
+    );
+    // Prepare the localization utilities
+    this._strings = memoizeFunction((strings?: ISankeyChartStrings): StringRenderer => {
+      const fromString = strings?.linkFrom || 'From {0}';
+      // NOTE: The `node` parameter is the sankey-generated node on the link, and not the original `node` supplied
+      // by the caller.
+      return {
+        linkFrom: (node: SNode) => format(fromString, node.name),
+      };
+    })(props.strings);
+    this._accessibility = memoizeFunction((accessibility?: ISankeyChartAccessibilityProps): AccessibilityRenderer => {
+      const linkString = accessibility?.linkAriaLabel || 'link from {0} to {1} with weight {2}';
+      const nodeString = accessibility?.nodeAriaLabel || 'node {0} with weight {1}';
+      return {
+        emptyAriaLabel: accessibility?.emptyAriaLabel || 'Graph has no data to display',
+        linkAriaLabel: (link: SLink) =>
+          format(linkString, (link.source as SNode).name, (link.target as SNode).name, link.unnormalizedValue),
+        nodeAriaLabel: (node: SNode, weight: number) => format(nodeString, node.name, weight),
+      };
+    })(props.accessibility);
+    // NOTE: Memoizing the `_createNodes` and `_createLinks` methods would break the hoverability of the chart
+    // because the nodes are currently created differently based on the layout information. Hence why we do not
+    // memoize these methods (but have stubs for memoizing as the `_fetchNodes` and `_fetchLinks` methods).
+    this._nodeAttributes = memoizeFunction((nodes: SNode[], nodeAriaLabel: (node: SNode, weight: number) => string) =>
+      computeNodeAttributes(nodes, nodeAriaLabel),
+    );
+    this._fetchNodes = (
+      classNames: IProcessedStyleSet<ISankeyChartStyles>,
+      nodes: SNode[],
+      nodeAttributes: ItemValues<RenderedNodeAttributes>,
+      tooltipDiv: TooltipDiv,
+    ) => this._createNodes(classNames, nodes, nodeAttributes, tooltipDiv);
+    this._linkAttributes = memoizeFunction(
+      (links: SLink[], linkFrom: (node: SNode) => string, linkAriaLabel: (link: SLink) => string) =>
+        computeLinkAttributes(links, linkFrom, linkAriaLabel),
+    );
+    this._fetchLinks = (links: SLink[], linkAttributes: LinkItemValues<RenderedLinkAttributes>) =>
+      this._createLinks(links, linkAttributes);
+    // Our shorter path to performance is to pre-compute the truncated labels of each node because
+    // that should not change based on the position of the mouse. This is a shorter path becase the code which
+    // computes the truncated labels creates and destroys a `tempText` element in the DOM. This is causing a
+    // reflow and repaint of the entire chart. This is a performance issue, and so computing the truncated labels
+    // once will help to mitigate this issue.
   }
 
   public componentDidMount(): void {
@@ -396,27 +803,36 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
 
   public render(): React.ReactNode {
     if (!this._isChartEmpty()) {
-      const { theme, className, styles, pathColor } = this.props;
+      const { theme, className, styles, pathColor, colorsForNodes, borderColorsForNodes } = this.props;
       const state = this.state;
-      const classNames: IProcessedStyleSet<ISankeyChartStyles> = getClassNames(styles!, {
-        theme: theme!,
-        width: state.containerWidth,
-        height: state.containerHeight,
-        pathColor,
-        className,
-      });
+      const classNamesProps = this._computeClassNamesProps(
+        theme!,
+        pathColor!,
+        className!,
+        state.containerWidth,
+        state.containerHeight,
+      );
+      const classNames: IProcessedStyleSet<ISankeyChartStyles> = this._computeClassNames(styles!, classNamesProps);
 
-      const {
-        data: sankeyChartData,
-        width,
-        height,
-      } = this._normalizeData(this.props.data.SankeyChartData!, state.containerWidth, state.containerHeight);
-      // NEXT: Move the following into _normalizeSankeyData to see if we can cache computation of
-      // colors, nodes, and links.
-      const dataNodes = sankeyChartData.nodes;
-      this._assignNodeColors(dataNodes); // This can probably safely move.
-      const nodeData = this._createNodes(classNames, dataNodes);
-      const linkData = this._createLinks(sankeyChartData.links);
+      // Compute the position of each node and link
+      const { nodes, links, width, height } = this._normalizeData(
+        this.props.data.SankeyChartData!,
+        state.containerWidth,
+        state.containerHeight,
+        colorsForNodes,
+        borderColorsForNodes,
+      );
+
+      // NOTE: I don't love this approach to caching the "select" result. Is it still valid from render-to-render?
+      // although local testing seems to indicate so, I do not trust that React will always support that instance.
+      // It might be better to perform this `fetch` within the `_showTooltip` and `_hideTooltip` methods.
+      const tooltipDiv = this._fetchTooltip(classNames);
+      // Pre-compute some important attributes about nodes, specifically text
+      const nodeAttributes = this._nodeAttributes(nodes, this._accessibility.nodeAriaLabel);
+      // Build the nodes and links as rendered in the UX.
+      const nodeData = this._fetchNodes(classNames, nodes, nodeAttributes, tooltipDiv);
+      const linkAttributes = this._linkAttributes(links, this._strings.linkFrom, this._accessibility.linkAriaLabel);
+      const linkData = this._fetchLinks(links, linkAttributes);
 
       const calloutProps = {
         isCalloutVisible: state.isCalloutVisible,
@@ -445,7 +861,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
             isCircularNavigation={true}
             handleTabKey={FocusZoneTabbableElements.all}
           >
-            <svg width={width} height={height} id={getId('sankeyChart')}>
+            <svg width={width} height={height} id={this._chartId}>
               <g className={classNames.links} strokeOpacity={1}>
                 {linkData}
               </g>
@@ -470,7 +886,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
-        aria-label={'Graph has no data to display'} // TODO: Localize this string
+        aria-label={this._accessibility.emptyAriaLabel}
       />
     );
   }
@@ -479,11 +895,21 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     data: ISankeyChartData,
     containerWidth: number,
     containerHeight: number,
+    colorsForNodes: string[] | undefined,
+    borderColorsForNodes: string[] | undefined,
   ): NormalizedData {
     const { sankey, height, width } = preRenderLayout(this._margins, containerWidth, containerHeight, this._isRtl);
     // Clone the data before mutating it (via the SankeyLayoutGenerator) so that we don't mutate the original data.
     const transformed: ISankeyChartData = duplicateData(data);
     sankey(transformed);
+    // NOTE: After the prior line, `transformed` is now a more-complex object than the incoming `ISankeyChartData`.
+    // `transformed` should be cast to a more-specific type. This is a breaking change because we would be eliminating
+    // fields from `ISankeyChartData` and putting those fields on a now-local type. But doing so makes it clearer what
+    // the caller needs to supply and why. For example, the `actualValue` and `layer` fields of `ISNodeExtra` should
+    // both be moved. Similarly for `unnormalizedValue` in `ISLinkExtra`.
+    // `SankeyNodeMinimal` and `SankeyLinkMinimal` are both the types after `sankey(transformed)`, but have almost no
+    // bearing on the data before `sankey(transformed)` (which is basically nodes with ids and names along with links
+    // with source index, target index, and value).
     const nodesInColumn = groupNodesByColumn(transformed);
     // Keep track of the original values of the links and their acccumulated values in the nodes
     // Setting these in external objects so they cannot be mutated by other code.
@@ -500,117 +926,112 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     // Without the second call, the links are not hoverable.
     sankey(transformed);
     populateNodeActualValue(transformed, nodeValues, linkValues);
+    assignNodeColors(transformed.nodes, colorsForNodes, borderColorsForNodes);
     return {
       width,
       height,
-      data: transformed,
+      nodes: transformed.nodes,
+      links: transformed.links,
     };
   }
 
-  private _createLinks(dataLinks: SLink[]): React.ReactNode[] | undefined {
-    const links: React.ReactNode[] = [];
+  private _labelTooltipDiv(classNames: IProcessedStyleSet<ISankeyChartStyles>): TooltipDiv {
+    // find the tooltip div. If it doesn't exist, then create it.
+    let tooltipDiv = select(`#${this._labelTooltipId}`);
+    if (tooltipDiv.empty()) {
+      tooltipDiv = select('body')
+        .append('div')
+        .attr('id', this._labelTooltipId)
+        .attr('class', classNames.toolTip!)
+        .style('opacity', 0);
+    }
+    // If the div exists, then `classNames` has changed; update the `class` on the `div`.
+    tooltipDiv.attr('class', classNames.toolTip!);
+    return tooltipDiv;
+  }
 
+  private _createLinks(
+    dataLinks: SLink[],
+    linkAttributes: LinkItemValues<RenderedLinkAttributes>,
+  ): React.ReactNode[] | undefined {
     if (dataLinks) {
       const linkId = this._linkId;
-      dataLinks.forEach((singleLink: SLink, index: number) => {
+      return dataLinks.map((singleLink: SLink, index: number): React.ReactNode => {
         const onMouseOut = () => {
           this._onStreamLeave(singleLink);
         };
+        const { reactId, from, aria } = linkValue(linkAttributes, singleLink);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const data = (d: any) => {
-          return [
-            { x: d.source.x1, y0: d.y0 + d.width / 2, y1: d.y0 - d.width / 2 },
-            { x: d.target.x0, y0: d.y1 + d.width / 2, y1: d.y1 - d.width / 2 },
-          ];
-        };
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const dataPoints: Array<any> = data(singleLink);
-        const linkArea = d3Area()
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .x((p: any) => p.x)
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .y0((p: any) => p.y0)
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          .y1((p: any) => p.y1)
-          .curve(d3CurveBasis);
-        const gradientUrl = `url(#gradient-${linkId}-${index})`;
-        const link = (
-          <g key={`${linkId}-${index}`}>
+        const dataPoints: Array<any> = linkToDataPoints(singleLink as unknown as SankeyLinkWithPositions);
+        const key = `${linkId}-${index}`;
+        const gradientId = `gradient-${key}`;
+        const gradientUrl = `url(#${gradientId})`;
+        const source = singleLink.source as SNode;
+        const target = singleLink.target as SNode;
+        // TODO: localize the aria-label string
+        return (
+          <g key={key}>
             <defs>
-              <linearGradient id={`gradient-${linkId}-${index}`} x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0" stopColor={(singleLink.source as SNode).color} />
-                <stop offset="100%" stopColor={(singleLink.target as SNode).color} />
+              <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0" stopColor={source.color} />
+                <stop offset="100%" stopColor={target.color} />
               </linearGradient>
             </defs>
             <path
               d={linkArea(dataPoints)!}
-              id={getId('link')}
+              id={reactId}
               fill={this._fillStreamColors(singleLink, gradientUrl)}
               stroke={this._fillStreamBorder(singleLink, gradientUrl)}
               strokeWidth="2"
               strokeOpacity={this._getOpacityStreamBorder(singleLink)}
-              onMouseOver={this._onStreamHover.bind(this, singleLink)}
+              onMouseOver={event => this._onStreamHover(event, singleLink, from)}
               onMouseOut={onMouseOut}
-              onFocus={this._onFocusLink.bind(this, singleLink)}
+              onFocus={event => this._onFocusLink(event, singleLink, from)}
               onBlur={this._onBlur}
               fillOpacity={this._getOpacityStream(singleLink)}
               data-is-focusable={true}
-              aria-label={`link from ${(singleLink.source as SNode).name} to ${
-                (singleLink.target as SNode).name
-              } with weight ${singleLink!.unnormalizedValue}`} // TODO: localize this string
+              aria-label={aria}
               role="img"
             />
           </g>
         );
-        links.push(link);
       });
     }
-    return links;
+    return [];
   }
 
   private _createNodes(
     classNames: IProcessedStyleSet<ISankeyChartStyles>,
     dataNodes: SNode[],
+    nodeAttributes: ItemValues<RenderedNodeAttributes>,
+    tooltipDiv: TooltipDiv,
   ): React.ReactNode[] | undefined {
-    const nodes: React.ReactNode[] = [];
-
     if (dataNodes) {
       const state = this.state;
-      dataNodes.forEach((singleNode: SNode, index: number) => {
+      const textAnchor = this._isRtl ? 'end' : 'start';
+      return dataNodes.map((singleNode: SNode, index: number): React.ReactNode => {
         const onMouseOut = () => {
           this._onLeave(singleNode);
         };
-        const height = singleNode.y1! - singleNode.y0! > 0 ? singleNode.y1! - singleNode.y0! : 0;
-        let padding = 8;
-        let textLengthForNodeWeight = 0;
-
-        // If the nodeWeight is in the same line as node description an extra padding
-        // of 6 px is required between node description and node weight.
-        if (height < MIN_HEIGHT_FOR_DOUBLINE_TYPE) {
-          padding = padding + 6;
-          const tspan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
-          tspan.text(singleNode.actualValue!);
-          if (tspan.node() !== null) {
-            textLengthForNodeWeight = tspan.node()!.getComputedTextLength();
-            padding = padding + textLengthForNodeWeight;
-          }
-          tspan.text(null);
-          selectAll('.tempText').remove();
-        }
-        // Since the total width of the node is 124 and we are giving margin of 8px from the left .
-        //So the actual value on which it will be truncated is 124-8=116.
-        const truncatedname: string = this._truncateText(singleNode.name, 116, padding);
-        const isTruncated: boolean = truncatedname.slice(-3) === '...';
-        const id = getId('tooltip');
-        const div = select('body').append('div').attr('id', id).attr('class', classNames.toolTip!).style('opacity', 0);
-        const nodeId = getId('nodeBar');
-        const node = (
-          <g key={index} id={getId('nodeGElement')}>
+        const {
+          reactId: nodeId,
+          gElementId,
+          height,
+          trimmed: isTruncated,
+          name: truncatedName,
+          weightOffset: textLengthForNodeWeight,
+          aria,
+        } = nodeAttributes[singleNode.nodeId];
+        const tooTall = height > MIN_HEIGHT_FOR_DOUBLINE_TYPE;
+        const { name, actualValue, x0, x1, y0 } = singleNode;
+        const textColor = nodeTextColor(state, singleNode);
+        return (
+          <g key={index} id={gElementId}>
             <rect
-              x={singleNode.x0}
-              y={singleNode.y0}
+              x={x0}
+              y={y0}
               height={height}
-              width={singleNode.x1! - singleNode.x0!}
+              width={x1! - x0!}
               fill={this._fillNodeColors(singleNode)}
               id={nodeId}
               onMouseOver={this._onHover.bind(this, singleNode)}
@@ -620,68 +1041,48 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
               strokeWidth="2"
               opacity="1"
               data-is-focusable={true}
-              aria-label={`node ${singleNode.name} with weight ${singleNode.actualValue}`} // TODO: localize this string
+              aria-label={aria}
               role="img"
             />
-            {singleNode.y1! - singleNode.y0! > MIN_HEIGHT_FOR_TYPE && (
+            {height > MIN_HEIGHT_FOR_TYPE && (
               <g className={classNames.nodeTextContainer}>
                 <g className="nodeName">
                   <text
                     id={`${nodeId}-name`}
-                    x={singleNode.x0}
-                    y={singleNode.y0}
+                    x={x0}
+                    y={y0}
                     dy={'1.2em'}
                     dx={'0.4em'}
-                    textAnchor={this._isRtl ? 'end' : 'start'}
+                    textAnchor={textAnchor}
                     fontWeight="regular"
                     aria-hidden="true"
-                    fill={
-                      !(
-                        !state.selectedState ||
-                        (state.selectedState && state.selectedNodes.has(singleNode.index!) && state.selectedNode) ||
-                        (state.selectedState && !state.selectedNode)
-                      )
-                        ? DEFAULT_TEXT_COLOR
-                        : NON_SELECTED_TEXT_COLOR
-                    }
+                    fill={textColor}
                     fontSize={10}
-                    onMouseOver={this._showTooltip.bind(this, singleNode.name, isTruncated, div)}
-                    onMouseOut={this._hideTooltip.bind(this, div)}
+                    onMouseOver={this._showTooltip.bind(this, name, isTruncated, tooltipDiv)}
+                    onMouseOut={this._hideTooltip.bind(this, tooltipDiv)}
                   >
-                    {truncatedname}
+                    {truncatedName}
                   </text>
                 </g>
 
                 <text
-                  x={
-                    height > MIN_HEIGHT_FOR_DOUBLINE_TYPE ? singleNode.x0 : singleNode.x1! - textLengthForNodeWeight - 8
-                  }
-                  y={singleNode.y0}
-                  dy={height > MIN_HEIGHT_FOR_DOUBLINE_TYPE ? '2em' : '1em'}
-                  dx={height > MIN_HEIGHT_FOR_DOUBLINE_TYPE ? '0.4em' : '0em'}
-                  textAnchor={this._isRtl ? 'end' : 'start'}
+                  x={tooTall ? x0 : x1! - textLengthForNodeWeight - 8}
+                  y={y0}
+                  dy={tooTall ? '2em' : '1em'}
+                  dx={tooTall ? '0.4em' : '0em'}
+                  textAnchor={textAnchor}
                   fontWeight="bold"
                   aria-hidden="true"
-                  fill={
-                    !(
-                      !state.selectedState ||
-                      (state.selectedState && state.selectedNodes.has(singleNode.index!) && state.selectedNode) ||
-                      (state.selectedState && !state.selectedNode)
-                    )
-                      ? DEFAULT_TEXT_COLOR
-                      : NON_SELECTED_TEXT_COLOR
-                  }
+                  fill={textColor}
                   fontSize={14}
                 >
-                  {singleNode.actualValue}
+                  {actualValue}
                 </text>
               </g>
             )}
           </g>
         );
-        nodes.push(node);
       });
-      return nodes;
     }
   }
 
@@ -718,7 +1119,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     }
   }
 
-  private _onStreamHover(singleLink: SLink, mouseEvent: React.MouseEvent<SVGElement>) {
+  private _onStreamHover(mouseEvent: React.MouseEvent<SVGElement>, singleLink: SLink, from: string) {
     mouseEvent.persist();
     this._onCloseCallout();
     if (!this.state.selectedState) {
@@ -728,12 +1129,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         selectedNodes: new Set<number>(Array.from(selectedNodes).map(node => node.index!)),
         selectedLinks: new Set<number>(Array.from(selectedLinks).map(link => link.index!)),
         refSelected: mouseEvent,
-        selectedLink: singleLink,
-        isCalloutVisible: true,
-        color: (singleLink.source as SNode).color,
-        xCalloutValue: (singleLink.target as SNode).name,
-        yCalloutValue: singleLink.unnormalizedValue!.toString(),
-        descriptionMessage: 'from ' + (singleLink.source as SNode).name, // TODO: Does this need to be localized?
+        ...linkCalloutAttributes(singleLink, from),
       });
     }
   }
@@ -749,18 +1145,15 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     }
   }
 
-  private _onFocusLink(singleLink: SLink, element: React.FocusEvent<SVGElement>): void {
+  private _onFocusLink(element: React.FocusEvent<SVGElement>, singleLink: SLink, from: string): void {
+    // There is a big difference in how "Tab" and the "Arrow keys" are handled in this diagram.
+    // In particular, I would expect the "Down" key to be like "Tab", but it jumps a little wildly. I'm not sure
+    // if this behavior is an accessiblity violation, but it we might want to investigate it.
     element.persist();
     this._onCloseCallout();
     this.setState({
       refSelected: element.currentTarget,
-      selectedLink: singleLink,
-      isCalloutVisible: true,
-      color: (singleLink.source as SNode).color,
-      xCalloutValue: (singleLink.target as SNode).name,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      yCalloutValue: (singleLink.source as SNode).actualValue! as any as string,
-      descriptionMessage: 'from ' + (singleLink.source as SNode).name, // TODO: Does this need to be localized?
+      ...linkCalloutAttributes(singleLink, from),
     });
   }
 
@@ -780,48 +1173,21 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const state = this.state;
     if (!state.selectedState) {
       return singleNode.color;
-    } else if (state.selectedState && state.selectedNodes.has(singleNode.index!) && state.selectedNode) {
-      return state.selectedNode.color;
-    } else if (state.selectedState && !state.selectedNode) {
-      return singleNode.color;
+    } else {
+      const selectedNode = state.selectedNode;
+      if (selectedNode && state.selectedNodes.has(singleNode.index!)) {
+        return selectedNode.color;
+      } else if (!selectedNode) {
+        return singleNode.color;
+      }
     }
   };
 
-  /**
-   * This is used to assign node fillcolors and borderColor cyclically when the user doesnt
-   * provide color to  individual node.
-   */
-  private _assignNodeColors(nodes: SNode[]) {
-    let colors: string[];
-    let borders: string[];
-    const { colorsForNodes, borderColorsForNodes } = this.props;
-    if (colorsForNodes && borderColorsForNodes) {
-      colors = colorsForNodes;
-      borders = borderColorsForNodes;
-    } else {
-      colors = DEFAULT_NODE_COLORS.map(color => color.fillColor);
-      borders = DEFAULT_NODE_COLORS.map(color => color.borderColor);
-    }
-    let currentIndex = 0;
-    nodes.forEach((node: SNode) => {
-      if (!node.color && !node.borderColor) {
-        node.color = colors[currentIndex];
-        node.borderColor = borders[currentIndex];
-      } else if (node.color && !node.borderColor) {
-        node.borderColor = '#757575';
-      } else if (node.borderColor && !node.color) {
-        node.color = '#F5F5F5';
-      }
-      currentIndex = (currentIndex + 1) % colors.length;
-    });
-  }
-
   private _fillStreamColors(singleLink: SLink, gradientUrl: string): string | undefined {
     const state = this.state;
-    if (state.selectedState && state.selectedLinks.has(singleLink.index!) && state.selectedNode) {
-      return state.selectedNode.color;
-    } else if (state.selectedState && state.selectedLinks.has(singleLink.index!)) {
-      return gradientUrl;
+    if (state.selectedState && state.selectedLinks.has(singleLink.index!)) {
+      const selectedNode = state.selectedNode;
+      return selectedNode ? selectedNode.color : gradientUrl;
     }
   }
 
@@ -829,24 +1195,26 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const state = this.state;
     if (!state.selectedState) {
       return NON_SELECTED_NODE_AND_STREAM_COLOR;
-    } else if (state.selectedState && state.selectedLinks.has(singleLink.index!) && state.selectedNode) {
-      return state.selectedNode.borderColor!;
-    } else if (state.selectedState && state.selectedLinks.has(singleLink.index!)) {
-      return gradientUrl;
+    } else {
+      if (state.selectedLinks.has(singleLink.index!)) {
+        const selectedNode = state.selectedNode;
+        return selectedNode ? selectedNode.borderColor! : gradientUrl;
+      }
+      return NON_SELECTED_NODE_AND_STREAM_COLOR;
     }
-    return NON_SELECTED_NODE_AND_STREAM_COLOR;
   }
 
   private _fillNodeBorder = (singleNode: SNode): string => {
     const state = this.state;
     if (!state.selectedState) {
       return singleNode.borderColor!;
-    } else if (state.selectedState && state.selectedNodes.has(singleNode.index!) && state.selectedNode) {
-      return state.selectedNode.borderColor!;
-    } else if (state.selectedState && state.selectedNodes.has(singleNode.index!)) {
+    } else {
+      if (state.selectedNodes.has(singleNode.index!)) {
+        const selectedNode = state.selectedNode;
+        return selectedNode ? selectedNode.borderColor! : singleNode.borderColor!;
+      }
       return singleNode.borderColor!;
     }
-    return singleNode.borderColor!;
   };
 
   private _getOpacityStream(singleLink: SLink): number {
@@ -854,7 +1222,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     if (state.selectedState) {
       if (!state.selectedLinks.has(singleLink.index!)) {
         return NON_SELECTED_OPACITY;
-      } else if (state.selectedLinks.has(singleLink.index!) && !state.selectedNode) {
+      } else if (!state.selectedNode) {
         return SELECTED_STREAM_OPACITY;
       }
     }
@@ -885,50 +1253,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         });
       }
     });
-  }
-
-  /**
-   * @param text is the text which we are trying to truncate
-   * @param rectangleWidth is the width of the rectangle which will contain the text
-   * @param padding is the space we need to leave between the rect lines and other text
-   * @param nodeWeight is the text if present needs to be accomodate in the same line as text.
-   * @returns the truncated text , if truncated given the above parameters.
-   */
-  private _truncateText(text: string, rectangleWidth: number, padding: number) {
-    const textLengthForNodeName = rectangleWidth - padding;
-    let elipsisLength = 0;
-    const tspan = select('.nodeName')
-      .append('text')
-      .attr('class', 'tempText')
-      .attr('font-size', '10')
-      .append('tspan')
-      .text(null);
-    tspan.text(text);
-    if (tspan.node() !== null && tspan.node()!.getComputedTextLength() <= textLengthForNodeName) {
-      return text;
-    }
-    tspan.text(null);
-    tspan.text('...');
-    if (tspan.node() !== null) {
-      elipsisLength = tspan.node()!.getComputedTextLength();
-    }
-    tspan.text(null);
-    let line: string = '';
-    for (let i = 0; i < text.length; i++) {
-      line += text[i];
-      tspan.text(line);
-      if (tspan.node() !== null) {
-        const w = tspan.node()!.getComputedTextLength();
-        if (w >= textLengthForNodeName - elipsisLength) {
-          line = line.slice(0, -1);
-          line += '...';
-          break;
-        }
-      }
-    }
-    tspan.text(null);
-    selectAll('.tempText').remove();
-    return line;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

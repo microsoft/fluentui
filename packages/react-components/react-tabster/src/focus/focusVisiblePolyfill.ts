@@ -78,7 +78,9 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
   scope.addEventListener('focusout', blurListener);
   (scope as HTMLElementWithFocusVisibleScope).focusVisible = true;
 
-  registerElementIfNavigating(targetWindow.document.activeElement);
+  if (scope.contains(targetWindow.document.activeElement)) {
+    registerElementIfNavigating(targetWindow.document.activeElement);
+  }
 
   // Return disposer
   return () => {

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "BREAKING CHANGE: change `consistent-callback-args` test option to test selected props instead of ignoring props",
-  "packageName": "@fluentui/react-conformance",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

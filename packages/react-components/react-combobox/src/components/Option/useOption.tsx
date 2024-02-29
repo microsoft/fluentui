@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
-import { useContextSelector } from '@fluentui/react-context-selector';
+import { useActiveDescendantContext } from '@fluentui/react-aria';
 import { CheckmarkFilled, Checkmark12Filled } from '@fluentui/react-icons';
-import { ComboboxContext } from '../../contexts/ComboboxContext';
-import { ListboxContext } from '../../contexts/ListboxContext';
+import { useListboxContext_unstable } from '../../contexts/ListboxContext';
 import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { OptionProps, OptionState } from './Option.types';
 
@@ -56,22 +55,16 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
   );
 
   // context values
-  const focusVisible = useContextSelector(ListboxContext, ctx => ctx.focusVisible);
-  const multiselect = useContextSelector(ListboxContext, ctx => ctx.multiselect);
-  const registerOption = useContextSelector(ListboxContext, ctx => ctx.registerOption);
-  const selected = useContextSelector(ListboxContext, ctx => {
+  const { controller: activeDescendantController } = useActiveDescendantContext();
+  const multiselect = useListboxContext_unstable(ctx => ctx.multiselect);
+  const registerOption = useListboxContext_unstable(ctx => ctx.registerOption);
+  const selected = useListboxContext_unstable(ctx => {
     const selectedOptions = ctx.selectedOptions;
 
     return !!optionValue && !!selectedOptions.find(o => o === optionValue);
   });
-  const selectOption = useContextSelector(ListboxContext, ctx => ctx.selectOption);
-  const setActiveOption = useContextSelector(ListboxContext, ctx => ctx.setActiveOption);
-  const setOpen = useContextSelector(ComboboxContext, ctx => ctx.setOpen);
-
-  // current active option?
-  const active = useContextSelector(ListboxContext, ctx => {
-    return ctx.activeOption?.id !== undefined && ctx.activeOption?.id === id;
-  });
+  const selectOption = useListboxContext_unstable(ctx => ctx.selectOption);
+  const onOptionClick = useListboxContext_unstable(ctx => ctx.onOptionClick);
 
   // check icon
   let CheckIcon: React.ReactNode = <CheckmarkFilled />;
@@ -85,17 +78,12 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       return;
     }
 
-    // clicked option should always become active option
-    setActiveOption(optionData);
-
-    // close on option click for single-select options in a combobox
-    if (!multiselect) {
-      setOpen?.(event, false);
-    }
+    activeDescendantController.focus(id);
 
     // handle selection change
     selectOption(event, optionData);
 
+    onOptionClick(event);
     props.onClick?.(event);
   };
 
@@ -137,10 +125,11 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       },
       elementType: 'span',
     }),
-    active,
     disabled,
-    focusVisible,
     multiselect,
     selected,
+    // no longer used
+    focusVisible: false,
+    active: false,
   };
 };

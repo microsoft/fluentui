@@ -5,7 +5,7 @@ export interface ActiveDescendantImperativeRef {
   last: (options?: IteratorOptions) => string | undefined;
   next: (options?: IteratorOptions) => string | undefined;
   prev: (options?: IteratorOptions) => string | undefined;
-  find: (predicate: (id: string) => boolean, options?: IteratorOptions) => string | undefined;
+  find: (predicate: (id: string) => boolean, options?: IteratorOptions & FindOptions) => string | undefined;
   blur: () => void;
   active: () => string | undefined;
   focus: (id: string) => void;
@@ -21,6 +21,13 @@ export interface ActiveDescendantOptions {
    * Forward imperative refs when exposing functionality from a React component
    */
   imperativeRef?: React.RefObject<ActiveDescendantImperativeRef>;
+}
+
+export interface FindOptions {
+  /**
+   * Starts the search from a specific id
+   */
+  startFrom?: string;
 }
 
 export interface UseActiveDescendantReturn<

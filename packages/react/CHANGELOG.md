@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 07 Feb 2024 07:26:18 GMT and should not be manually modified.
+This log was last generated on Mon, 12 Feb 2024 07:25:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.115.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.115.6)
+
+Mon, 12 Feb 2024 07:25:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.115.5..@fluentui/react_v8.115.6)
+
+### Patches
+
+- fix: Datepicker with input renders semantic button for voice control ([PR #30499](https://github.com/microsoft/fluentui/pull/30499) by sarah.higley@microsoft.com)
 
 ## [8.115.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.115.5)
 
