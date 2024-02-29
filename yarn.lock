@@ -2683,17 +2683,17 @@
   resolved "https://registry.yarnpkg.com/@microsoft/fast-colors/-/fast-colors-5.3.1.tgz#defc59874176e42316be7e6d24c31885ead8ca56"
   integrity sha512-72RZXVfCbwQzvo5sXXkuLXLT7rMeYaSf5r/6ewQiv/trBtqpWRm4DEH2EilHw/iWTBKOXs1qZNQndgUMa5n4LA==
 
-"@microsoft/fast-element@^1.11.1":
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.11.1.tgz#97a43dfaf0e2debcad3e5bfba36edb6572ac01ca"
-  integrity sha512-qBGQ94V4ktMMXmxNdgF78TPNImv2ctXUi3Vzj3j2X71gpUcr+Fkat7mLcTNC3y/Jc4W63fAhK2vP3MkwYRS5kQ==
+"@microsoft/fast-element@^1.11.1", "@microsoft/fast-element@^1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.12.0.tgz#aabfc75518c3a9000710cce5f66dfc677de8c254"
+  integrity sha512-gQutuDHPKNxUEcQ4pypZT4Wmrbapus+P9s3bR/SEOLsMbNqNoXigGImITygI5zhb+aA5rzflM6O8YWkmRbGkPA==
 
-"@microsoft/fast-foundation@^2.48.1":
-  version "2.48.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.48.1.tgz#3dbd7587a1462938e836ae350788176f886d88b8"
-  integrity sha512-gJR/26hhJipsZ4JD5DSOODb3GFYf7vgCnxS2ag4dj+Mi8ytkAwMPglTOv7v0zsJC2CHqOjY8Ixs66dhepgNkeQ==
+"@microsoft/fast-foundation@^2.49.4":
+  version "2.49.4"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.49.4.tgz#322150cd6f0bed89d6d2238a700e6b9db94ac694"
+  integrity sha512-5I2tSPo6bnOfVAIX7XzX+LhilahwvD7h+yzl3jW0t5IYmMX9Lci9VUVyx5f8hHdb1O9a8Y9Atb7Asw7yFO/u+w==
   dependencies:
-    "@microsoft/fast-element" "^1.11.1"
+    "@microsoft/fast-element" "^1.12.0"
     "@microsoft/fast-web-utilities" "^5.4.1"
     tabbable "^5.2.0"
     tslib "^1.13.0"
