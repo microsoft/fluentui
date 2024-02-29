@@ -303,8 +303,6 @@ export const libraryInfo: LibraryInfo = {
             { name: 'webDarkTheme', newColumn: true, componentType: 'constant' },
             { name: 'webHighContrastTheme', componentType: 'constant' },
             { name: 'webLightTheme', componentType: 'constant' },
-            { name: 'AzureDarkTheme', componentType: 'constant' },
-            { name: 'AzureLightTheme', componentType: 'constant' },
             { name: 'typographyStyles', componentType: 'constant' },
             {
               name: 'createDarkTheme',
@@ -314,8 +312,6 @@ export const libraryInfo: LibraryInfo = {
             { name: 'createHighContrastTheme', componentType: 'method' },
             { name: 'createLightTheme', componentType: 'method' },
             { name: 'createTeamsDarkTheme', componentType: 'method' },
-            { name: 'createAzureDarkTheme', componentType: 'method' },
-            { name: 'createAzureLightTheme', componentType: 'method' },
           ],
         },
       ],
