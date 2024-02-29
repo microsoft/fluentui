@@ -1,6 +1,5 @@
 import { tokens, webLightTheme } from '@fluentui/react-theme';
-
-console.log({ webLightTheme });
+import { makeStyles, shorthands } from '@griffel/react';
 
 const vars = Object.entries(tokens)
   .map(([key, value]) => {
@@ -8,16 +7,35 @@ const vars = Object.entries(tokens)
   })
   .join('\n');
 
+const style = makeStyles({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '80%',
+    height: '80%',
+    overflowY: 'scroll',
+    ...shorthands.margin('auto'),
+  },
+  item: {
+    ...shorthands.padding('10px'),
+  },
+});
+
 export const App = () => {
+  const classes = style();
   return (
     <main>
       <style>{`:root {
         ${vars}
       }`}</style>
       <h1>Hello</h1>
-      <section>
+      <section className={classes.root}>
         {Object.entries(tokens).map(([key, value]) => {
-          return <div style={{ backgroundColor: value }}>{key}</div>;
+          return (
+            <div className={classes.item} style={{ backgroundColor: value }}>
+              {key}
+            </div>
+          );
         })}
       </section>
     </main>
