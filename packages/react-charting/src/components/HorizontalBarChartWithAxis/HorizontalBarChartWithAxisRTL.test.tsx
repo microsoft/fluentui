@@ -1,6 +1,6 @@
 import { pointsHBCWA } from '../../utilities/test-data';
 import { axe } from 'jest-axe';
-import { render, screen, fireEvent, act } from '@testing-library/react';
+import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
@@ -405,6 +405,29 @@ describe('HorizontalBarChartWithAxis - mouse events', () => {
       expect(container).toMatchSnapshot();
     },
   );
+});
+
+describe('Horizontal bar chart with axis re-rendering', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
+  test('Should re-render the Horizontal bar chart with data', async () => {
+    // Arrange
+    const { container, rerender } = render(<HorizontalBarChartWithAxis data={[]} />);
+    // Assert
+    expect(container).toMatchSnapshot();
+    expect(getById(container, /_Chart_empty_/i)).toHaveLength(1);
+    // Act
+    rerender(<HorizontalBarChartWithAxis data={chartPointsHBCWA} />);
+    await waitFor(() => {
+      // Assert
+      expect(container).toMatchSnapshot();
+      expect(getById(container, /_Chart_empty_/i)).toHaveLength(0);
+    });
+  });
 });
 
 describe('Horizontal Bar Chart With Axis - axe-core', () => {

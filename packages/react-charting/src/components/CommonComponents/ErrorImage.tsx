@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/explicit-member-accessibility */
 import { ITheme } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
-interface IErrorImageProps {
+export interface IErrorImageProps {
   theme?: ITheme;
   width: number;
   height: number;
@@ -14,7 +15,7 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
     const height = this.props.width * 0.8;
     return (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
-        {!this.props.theme!.isInverted ? (
+        {this.props.theme && !this.props.theme!.isInverted ? (
           <svg
             width={this.props.width}
             height={height}
@@ -30,43 +31,43 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
             <path
               d="M405.325 442.075H112.237C85.0724 442.075 68.2626 412.475 82.1788 389.145L227.706 145.175C241.235 122.495 274.047 122.395 287.713 144.991L435.273 388.961C449.381 412.287 432.585 442.075 405.325 442.075Z"
               fill="url(#paint1_radial_3094_825)"
-              fill-opacity="0.25"
+              fillOpacity="0.25"
             />
             <path
               d="M405.325 442.075H112.237C85.0724 442.075 68.2626 412.475 82.1788 389.145L227.706 145.175C241.235 122.495 274.047 122.395 287.713 144.991L435.273 388.961C449.381 412.287 432.585 442.075 405.325 442.075Z"
               fill="url(#paint2_radial_3094_825)"
-              fill-opacity="0.25"
+              fillOpacity="0.25"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M256.929 282.766C236.99 282.766 220.826 267.138 220.826 247.859L220.826 84.7186C220.826 65.4404 236.99 49.8123 256.929 49.8123C276.868 49.8123 293.031 65.4404 293.031 84.7186L293.031 247.859C293.031 267.138 276.868 282.766 256.929 282.766Z"
               fill="url(#paint3_radial_3094_825)"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M256.929 282.766C236.99 282.766 220.826 267.138 220.826 247.859L220.826 84.7186C220.826 65.4404 236.99 49.8123 256.929 49.8123C276.868 49.8123 293.031 65.4404 293.031 84.7186L293.031 247.859C293.031 267.138 276.868 282.766 256.929 282.766Z"
               fill="url(#paint4_radial_3094_825)"
-              fill-opacity="0.8"
+              fillOpacity="0.8"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M256.929 282.766C236.99 282.766 220.826 267.138 220.826 247.859L220.826 84.7186C220.826 65.4404 236.99 49.8123 256.929 49.8123C276.868 49.8123 293.031 65.4404 293.031 84.7186L293.031 247.859C293.031 267.138 276.868 282.766 256.929 282.766Z"
               fill="url(#paint5_radial_3094_825)"
-              fill-opacity="0.8"
+              fillOpacity="0.8"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M256.929 282.766C236.99 282.766 220.826 267.138 220.826 247.859L220.826 84.7186C220.826 65.4404 236.99 49.8123 256.929 49.8123C276.868 49.8123 293.031 65.4404 293.031 84.7186L293.031 247.859C293.031 267.138 276.868 282.766 256.929 282.766Z"
               fill="url(#paint6_radial_3094_825)"
-              fill-opacity="0.3"
+              fillOpacity="0.3"
             />
             <circle cx="255.869" cy="344.491" r="38.505" fill="url(#paint7_radial_3094_825)" />
-            <circle cx="255.869" cy="344.491" r="38.505" fill="url(#paint8_radial_3094_825)" fill-opacity="0.5" />
-            <circle cx="255.869" cy="344.491" r="38.505" fill="url(#paint9_radial_3094_825)" fill-opacity="0.8" />
+            <circle cx="255.869" cy="344.491" r="38.505" fill="url(#paint8_radial_3094_825)" fillOpacity="0.5" />
+            <circle cx="255.869" cy="344.491" r="38.505" fill="url(#paint9_radial_3094_825)" fillOpacity="0.8" />
             <path
               d="M240.161 77.8529C240.896 78.4945 242.228 78.1722 243.138 77.1327C244.044 76.0931 244.188 74.7303 243.454 74.0887C242.72 73.4471 241.388 73.7699 240.481 74.8089C239.571 75.8485 239.427 77.2113 240.161 77.8529Z"
               fill="#FEE39E"
@@ -116,8 +117,8 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 y2="679.162"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0.367698" stop-color="#E7E7E7" />
-                <stop offset="0.788937" stop-color="#FEE39E" />
+                <stop offset="0.367698" stopColor="#E7E7E7" />
+                <stop offset="0.788937" stopColor="#FEE39E" />
               </linearGradient>
               <radialGradient
                 id="paint1_radial_3094_825"
@@ -127,8 +128,8 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(241 187.403) rotate(92.1211) scale(135.093 58.2199)"
               >
-                <stop offset="0.706027" stop-color="#717171" />
-                <stop offset="1" stop-color="#717171" stop-opacity="0" />
+                <stop offset="0.706027" stopColor="#717171" />
+                <stop offset="1" stopColor="#717171" stopOpacity="0" />
               </radialGradient>
               <radialGradient
                 id="paint2_radial_3094_825"
@@ -138,8 +139,8 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(242 373.403) rotate(-73.8631) scale(60.3789 37.3609)"
               >
-                <stop offset="0.610863" stop-color="#717171" />
-                <stop offset="1" stop-color="#717171" stop-opacity="0" />
+                <stop offset="0.610863" stopColor="#717171" />
+                <stop offset="1" stopColor="#717171" stopOpacity="0" />
               </radialGradient>
               <radialGradient
                 id="paint3_radial_3094_825"
@@ -149,11 +150,11 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(278.262 192.835) scale(98.4615 780.258)"
               >
-                <stop stop-color="#FE983A" />
-                <stop offset="0.0572917" stop-color="#FE983A" />
-                <stop offset="0.189101" stop-color="#FE7A3A" />
-                <stop offset="0.45303" stop-color="#E33812" />
-                <stop offset="0.933333" stop-color="#FE7A3A" />
+                <stop stopColor="#FE983A" />
+                <stop offset="0.0572917" stopColor="#FE983A" />
+                <stop offset="0.189101" stopColor="#FE7A3A" />
+                <stop offset="0.45303" stopColor="#E33812" />
+                <stop offset="0.933333" stopColor="#FE7A3A" />
               </radialGradient>
               <radialGradient
                 id="paint4_radial_3094_825"
@@ -163,10 +164,10 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(337.969 60.4475) rotate(109.904) scale(302.162 129.693)"
               >
-                <stop offset="0.611939" stop-color="#F6EDE3" stop-opacity="0" />
-                <stop offset="0.827781" stop-color="#E56F15" />
-                <stop offset="0.887395" stop-color="#F15721" />
-                <stop offset="1" stop-color="#F15721" />
+                <stop offset="0.611939" stopColor="#F6EDE3" stopOpacity="0" />
+                <stop offset="0.827781" stopColor="#E56F15" />
+                <stop offset="0.887395" stopColor="#F15721" />
+                <stop offset="1" stopColor="#F15721" />
               </radialGradient>
               <radialGradient
                 id="paint5_radial_3094_825"
@@ -176,8 +177,8 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(319.288 307.073) rotate(-105.419) scale(296.26 126.511)"
               >
-                <stop offset="0.738935" stop-color="#FB7F2C" stop-opacity="0" />
-                <stop offset="0.932709" stop-color="#FB7F2C" />
+                <stop offset="0.738935" stopColor="#FB7F2C" stopOpacity="0" />
+                <stop offset="0.932709" stopColor="#FB7F2C" />
               </radialGradient>
               <radialGradient
                 id="paint6_radial_3094_825"
@@ -187,9 +188,9 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(272.924 67.3569) rotate(54.7395) scale(75.2032 59.7918)"
               >
-                <stop stop-color="white" />
-                <stop offset="0.109375" stop-color="white" />
-                <stop offset="0.262522" stop-color="white" stop-opacity="0" />
+                <stop stopColor="white" />
+                <stop offset="0.109375" stopColor="white" />
+                <stop offset="0.262522" stopColor="white" stopOpacity="0" />
               </radialGradient>
               <radialGradient
                 id="paint7_radial_3094_825"
@@ -199,10 +200,10 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(263.152 326.845) rotate(108.435) scale(70.7875)"
               >
-                <stop offset="0.0677083" stop-color="#FFC56D" />
-                <stop offset="0.25" stop-color="#FF9B04" />
-                <stop offset="0.645065" stop-color="#E66000" />
-                <stop offset="1" stop-color="#CBFBB5" />
+                <stop offset="0.0677083" stopColor="#FFC56D" />
+                <stop offset="0.25" stopColor="#FF9B04" />
+                <stop offset="0.645065" stopColor="#E66000" />
+                <stop offset="1" stopColor="#CBFBB5" />
               </radialGradient>
               <radialGradient
                 id="paint8_radial_3094_825"
@@ -212,8 +213,8 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(254.541 382.996) rotate(-90) scale(27.8829 55.102)"
               >
-                <stop stop-color="#CBFBB5" />
-                <stop offset="1" stop-color="#CBFBB5" stop-opacity="0" />
+                <stop stopColor="#CBFBB5" />
+                <stop offset="1" stopColor="#CBFBB5" stopOpacity="0" />
               </radialGradient>
               <radialGradient
                 id="paint9_radial_3094_825"
@@ -223,8 +224,8 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(255.869 344.491) rotate(97.8153) scale(68.3506)"
               >
-                <stop offset="0.446038" stop-color="white" stop-opacity="0" />
-                <stop offset="0.841379" stop-color="white" />
+                <stop offset="0.446038" stopColor="white" stopOpacity="0" />
+                <stop offset="0.841379" stopColor="white" />
               </radialGradient>
             </defs>
           </svg>
@@ -244,43 +245,43 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
             <path
               d="M405.325 442.075H112.237C85.0724 442.075 68.2626 412.475 82.1788 389.145L227.706 145.175C241.235 122.495 274.047 122.395 287.713 144.991L435.273 388.961C449.381 412.287 432.585 442.075 405.325 442.075Z"
               fill="url(#paint1_radial_3094_830)"
-              fill-opacity="0.6"
+              fillOpacity="0.6"
             />
             <path
               d="M405.325 442.075H112.237C85.0724 442.075 68.2626 412.475 82.1788 389.145L227.706 145.175C241.235 122.495 274.047 122.395 287.713 144.991L435.273 388.961C449.381 412.287 432.585 442.075 405.325 442.075Z"
               fill="url(#paint2_radial_3094_830)"
-              fill-opacity="0.6"
+              fillOpacity="0.6"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M256.929 282.766C236.99 282.766 220.826 267.138 220.826 247.859L220.826 84.7186C220.826 65.4404 236.99 49.8123 256.929 49.8123C276.868 49.8123 293.031 65.4404 293.031 84.7186L293.031 247.859C293.031 267.138 276.868 282.766 256.929 282.766Z"
               fill="url(#paint3_radial_3094_830)"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M256.929 282.766C236.99 282.766 220.826 267.138 220.826 247.859L220.826 84.7186C220.826 65.4404 236.99 49.8123 256.929 49.8123C276.868 49.8123 293.031 65.4404 293.031 84.7186L293.031 247.859C293.031 267.138 276.868 282.766 256.929 282.766Z"
               fill="url(#paint4_radial_3094_830)"
-              fill-opacity="0.8"
+              fillOpacity="0.8"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M256.929 282.766C236.99 282.766 220.826 267.138 220.826 247.859L220.826 84.7186C220.826 65.4404 236.99 49.8123 256.929 49.8123C276.868 49.8123 293.031 65.4404 293.031 84.7186L293.031 247.859C293.031 267.138 276.868 282.766 256.929 282.766Z"
               fill="url(#paint5_radial_3094_830)"
-              fill-opacity="0.8"
+              fillOpacity="0.8"
             />
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M256.929 282.766C236.99 282.766 220.826 267.138 220.826 247.859L220.826 84.7186C220.826 65.4404 236.99 49.8123 256.929 49.8123C276.868 49.8123 293.031 65.4404 293.031 84.7186L293.031 247.859C293.031 267.138 276.868 282.766 256.929 282.766Z"
               fill="url(#paint6_radial_3094_830)"
-              fill-opacity="0.3"
+              fillOpacity="0.3"
             />
             <circle cx="255.869" cy="344.491" r="38.505" fill="url(#paint7_radial_3094_830)" />
-            <circle cx="255.869" cy="344.491" r="38.505" fill="url(#paint8_radial_3094_830)" fill-opacity="0.5" />
-            <circle cx="255.869" cy="344.491" r="38.505" fill="url(#paint9_radial_3094_830)" fill-opacity="0.8" />
+            <circle cx="255.869" cy="344.491" r="38.505" fill="url(#paint8_radial_3094_830)" fillOpacity="0.5" />
+            <circle cx="255.869" cy="344.491" r="38.505" fill="url(#paint9_radial_3094_830)" fillOpacity="0.8" />
             <path
               d="M240.161 77.8529C240.896 78.4945 242.228 78.1722 243.138 77.1327C244.044 76.0931 244.188 74.7303 243.454 74.0887C242.72 73.4471 241.388 73.7699 240.481 74.8089C239.571 75.8485 239.427 77.2113 240.161 77.8529Z"
               fill="#FEE39E"
@@ -330,8 +331,8 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 y2="754.046"
                 gradientUnits="userSpaceOnUse"
               >
-                <stop offset="0.367698" stop-color="#414141" />
-                <stop offset="0.788937" stop-color="#F69400" />
+                <stop offset="0.367698" stopColor="#414141" />
+                <stop offset="0.788937" stopColor="#F69400" />
               </linearGradient>
               <radialGradient
                 id="paint1_radial_3094_830"
@@ -341,8 +342,8 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(241 187.403) rotate(92.1211) scale(135.093 58.2199)"
               >
-                <stop offset="0.706027" stop-color="#121212" />
-                <stop offset="1" stop-color="#121212" stop-opacity="0" />
+                <stop offset="0.706027" stopColor="#121212" />
+                <stop offset="1" stopColor="#121212" stopOpacity="0" />
               </radialGradient>
               <radialGradient
                 id="paint2_radial_3094_830"
@@ -352,8 +353,8 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(242 373.403) rotate(-73.8631) scale(60.3789 37.3609)"
               >
-                <stop offset="0.610863" stop-color="#121212" />
-                <stop offset="1" stop-color="#645135" stop-opacity="0" />
+                <stop offset="0.610863" stopColor="#121212" />
+                <stop offset="1" stopColor="#645135" stopOpacity="0" />
               </radialGradient>
               <radialGradient
                 id="paint3_radial_3094_830"
@@ -363,11 +364,11 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(278.262 192.835) scale(98.4615 780.258)"
               >
-                <stop stop-color="#FE983A" />
-                <stop offset="0.0572917" stop-color="#FE983A" />
-                <stop offset="0.189101" stop-color="#FE7A3A" />
-                <stop offset="0.45303" stop-color="#E33812" />
-                <stop offset="0.933333" stop-color="#FE7A3A" />
+                <stop stopColor="#FE983A" />
+                <stop offset="0.0572917" stopColor="#FE983A" />
+                <stop offset="0.189101" stopColor="#FE7A3A" />
+                <stop offset="0.45303" stopColor="#E33812" />
+                <stop offset="0.933333" stopColor="#FE7A3A" />
               </radialGradient>
               <radialGradient
                 id="paint4_radial_3094_830"
@@ -377,10 +378,10 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(337.969 60.4475) rotate(109.904) scale(302.162 129.693)"
               >
-                <stop offset="0.611939" stop-color="#F6EDE3" stop-opacity="0" />
-                <stop offset="0.827781" stop-color="#E56F15" />
-                <stop offset="0.887395" stop-color="#F15721" />
-                <stop offset="1" stop-color="#F15721" />
+                <stop offset="0.611939" stopColor="#F6EDE3" stopOpacity="0" />
+                <stop offset="0.827781" stopColor="#E56F15" />
+                <stop offset="0.887395" stopColor="#F15721" />
+                <stop offset="1" stopColor="#F15721" />
               </radialGradient>
               <radialGradient
                 id="paint5_radial_3094_830"
@@ -390,8 +391,8 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(319.288 307.073) rotate(-105.419) scale(296.26 126.511)"
               >
-                <stop offset="0.738935" stop-color="#FB7F2C" stop-opacity="0" />
-                <stop offset="0.932709" stop-color="#FB7F2C" />
+                <stop offset="0.738935" stopColor="#FB7F2C" stopOpacity="0" />
+                <stop offset="0.932709" stopColor="#FB7F2C" />
               </radialGradient>
               <radialGradient
                 id="paint6_radial_3094_830"
@@ -401,9 +402,9 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(272.924 67.3569) rotate(54.7395) scale(75.2032 59.7918)"
               >
-                <stop stop-color="white" />
-                <stop offset="0.109375" stop-color="white" />
-                <stop offset="0.262522" stop-color="white" stop-opacity="0" />
+                <stop stopColor="white" />
+                <stop offset="0.109375" stopColor="white" />
+                <stop offset="0.262522" stopColor="white" stopOpacity="0" />
               </radialGradient>
               <radialGradient
                 id="paint7_radial_3094_830"
@@ -413,10 +414,10 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(263.152 326.845) rotate(108.435) scale(70.7875)"
               >
-                <stop offset="0.0677083" stop-color="#FFC56D" />
-                <stop offset="0.25" stop-color="#FF9B04" />
-                <stop offset="0.645065" stop-color="#E66000" />
-                <stop offset="1" stop-color="#CBFBB5" />
+                <stop offset="0.0677083" stopColor="#FFC56D" />
+                <stop offset="0.25" stopColor="#FF9B04" />
+                <stop offset="0.645065" stopColor="#E66000" />
+                <stop offset="1" stopColor="#CBFBB5" />
               </radialGradient>
               <radialGradient
                 id="paint8_radial_3094_830"
@@ -426,8 +427,8 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(254.541 382.996) rotate(-90) scale(27.8829 55.102)"
               >
-                <stop stop-color="#CBFBB5" />
-                <stop offset="1" stop-color="#CBFBB5" stop-opacity="0" />
+                <stop stopColor="#CBFBB5" />
+                <stop offset="1" stopColor="#CBFBB5" stopOpacity="0" />
               </radialGradient>
               <radialGradient
                 id="paint9_radial_3094_830"
@@ -437,8 +438,8 @@ class ErrorImage extends React.Component<IErrorImageProps, {}> {
                 gradientUnits="userSpaceOnUse"
                 gradientTransform="translate(255.869 344.491) rotate(97.8153) scale(68.3506)"
               >
-                <stop offset="0.446038" stop-color="white" stop-opacity="0" />
-                <stop offset="0.841379" stop-color="white" />
+                <stop offset="0.446038" stopColor="white" stopOpacity="0" />
+                <stop offset="0.841379" stopColor="white" />
               </radialGradient>
             </defs>
           </svg>

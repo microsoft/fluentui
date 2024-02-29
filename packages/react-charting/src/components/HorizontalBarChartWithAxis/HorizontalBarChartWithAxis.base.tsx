@@ -134,40 +134,37 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       tickValues: this.props.tickValues,
       tickFormat: this.props.tickFormat,
     };
-    if (!this._isChartEmpty()) {
-      return (
-        <ErrorBoundary handleError={this.props.handleError} theme={this.props.theme}>
-          <CartesianChart
-            {...this.props}
-            points={this._points}
-            chartType={ChartTypes.AreaChart}
-            xAxisType={this._xAxisType}
-            yAxisType={this._yAxisType}
-            stringDatasetForYAxisDomain={this._yAxisLabels}
-            calloutProps={calloutProps}
-            tickParams={tickParams}
-            legendBars={legendBars}
-            barwidth={this._barHeight}
-            focusZoneDirection={FocusZoneDirection.vertical}
-            customizedCallout={this._getCustomizedCallout()}
-            getmargins={this._getMargins}
-            getGraphData={this._getGraphData}
-            getAxisData={this._getAxisData}
-            onChartMouseLeave={this._handleChartMouseLeave}
-            /* eslint-disable react/jsx-no-bind */
-            // eslint-disable-next-line react/no-children-prop
-            children={(props: IChildProps) => {
-              return (
-                <>
-                  <g>{this._bars}</g>
-                </>
-              );
-            }}
-          />
-        </ErrorBoundary>
-      );
-    }
-    return (
+    return !this._isChartEmpty() ? (
+      <ErrorBoundary handleError={this.props.handleError} theme={this.props.theme}>
+        <CartesianChart
+          {...this.props}
+          points={this._points}
+          chartType={ChartTypes.HorizontalBarChartWithAxis}
+          xAxisType={this._xAxisType}
+          yAxisType={this._yAxisType}
+          stringDatasetForYAxisDomain={this._yAxisLabels}
+          calloutProps={calloutProps}
+          tickParams={tickParams}
+          legendBars={legendBars}
+          barwidth={this._barHeight}
+          focusZoneDirection={FocusZoneDirection.vertical}
+          customizedCallout={this._getCustomizedCallout()}
+          getmargins={this._getMargins}
+          getGraphData={this._getGraphData}
+          getAxisData={this._getAxisData}
+          onChartMouseLeave={this._handleChartMouseLeave}
+          /* eslint-disable react/jsx-no-bind */
+          // eslint-disable-next-line react/no-children-prop
+          children={(props: IChildProps) => {
+            return (
+              <>
+                <g>{this._bars}</g>
+              </>
+            );
+          }}
+        />
+      </ErrorBoundary>
+    ) : (
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
         <ErrorBoundary
           hasEmptyState={true}
@@ -698,7 +695,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ` + `${yValue}.`;
   };
-
   private _isChartEmpty(): boolean {
     return !(this.props.data && this.props.data.length > 0);
   }

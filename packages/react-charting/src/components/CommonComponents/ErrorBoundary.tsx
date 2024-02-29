@@ -43,7 +43,7 @@ class ErrorBoundary extends React.Component<IErrorBoundaryProps, IErrorBoundaryS
     });
   }
 
-  public render() {
+  render() {
     if (this.state.hasError || this.props.hasErrorState) {
       if (this.props.handleError !== undefined) {
         return this.props.handleError();

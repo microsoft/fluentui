@@ -341,13 +341,13 @@ describe('Horizontal bar chart re-rendering', () => {
     const { container, rerender } = render(<HorizontalBarChart data={[]} />);
     // Assert
     expect(container).toMatchSnapshot();
-    expect(getById(container, /_HBC_empty/i)).toHaveLength(1);
+    expect(getById(container, /_Chart_empty_/i)).toHaveLength(1);
     // Act
     rerender(<HorizontalBarChart data={chartPoints} />);
     await waitFor(() => {
       // Assert
       expect(container).toMatchSnapshot();
-      expect(getById(container, /_HBC_empty/i)).toHaveLength(0);
+      expect(getById(container, /_Chart_empty_/i)).toHaveLength(0);
     });
   });
 });
