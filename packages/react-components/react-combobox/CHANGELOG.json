@@ -2,6 +2,21 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Thu, 29 Feb 2024 14:44:21 GMT",
+      "tag": "@fluentui/react-combobox_v9.9.0",
+      "version": "9.9.0",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "c7342e34da73fb518c8341515c369ff026547c2c",
+            "comment": "chore: rollback export of internal hooks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Feb 2024 02:34:17 GMT",
       "tag": "@fluentui/react-combobox_v9.9.0",
       "version": "9.9.0",
