@@ -1,13 +1,7 @@
-import React from 'react';
 import type { PropsWithChildren } from 'react';
+import React from 'react';
 import { SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, useColorScheme, View } from 'react-native';
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import { Colors, Header } from 'react-native/Libraries/NewAppScreen';
 import { StrictDomDemo } from './StrictDomDemo';
 
 type SectionProps = PropsWithChildren<{
