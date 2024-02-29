@@ -2,6 +2,90 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 29 Feb 2024 14:44:20 GMT",
+      "tag": "@fluentui/react-components_v9.46.7",
+      "version": "9.46.7",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "c7342e34da73fb518c8341515c369ff026547c2c",
+            "comment": "chore: rollback export of internal hooks"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "ace98f73a615f3876ff4d7d4995441af1aa55675",
+            "comment": "feat: export TagGroupContextValues type"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Feb 2024 02:34:17 GMT",
+      "tag": "@fluentui/react-components_v9.46.6",
+      "version": "9.46.6",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "1d236248a86181bdcb3a8bbbf60949b02f923d03",
+            "comment": "refactor: Deprecate ComboboxContext in favour of ListboxContext"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "1d236248a86181bdcb3a8bbbf60949b02f923d03",
+            "comment": "chore: deprecate ComboboxContext"
+          },
+          {
+            "author": "angel6v3@gmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "90b66cab25e68e3aa5105f44af38d1ca7ed055b4",
+            "comment": "fix: Input should start with undefined, same as textarea"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "04dcf2104c39a8a523075ace92e4d933744aca98",
+            "comment": "fix: Add focus border styling to Rating"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "4e2bd0291b2f64c650a405c067a319f1ac96af00",
+            "comment": "fix: update RatingItem styling to use flex to align all items properly"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb",
+            "comment": "fix: Add flex wrap to Rating and RatingDisplay"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "ae149271e4b71ba21bcde2f3910f35389aeecb54",
+            "comment": "feat(swatch-picker): Added plain ColorSwatch sub component."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "e2d67e42af41e920fc44f9f741d383c413344f2f",
+            "comment": "feat: Add pagination for both static and dynamic virtualizers"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Feb 2024 14:22:17 GMT",
       "tag": "@fluentui/react-components_v9.46.5",
       "version": "9.46.5",

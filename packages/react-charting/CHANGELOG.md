@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 16 Feb 2024 07:26:24 GMT and should not be manually modified.
+This log was last generated on Tue, 27 Feb 2024 07:25:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.30)
+
+Tue, 27 Feb 2024 07:25:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.29..@fluentui/react-charting_v5.19.30)
+
+### Patches
+
+- Fix vertical stacked bar chart rendering issue when data array is empty ([PR #30619](https://github.com/microsoft/fluentui/pull/30619) by kumarkshitij@microsoft.com)
+
+## [5.19.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.29)
+
+Mon, 26 Feb 2024 07:26:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.28..@fluentui/react-charting_v5.19.29)
+
+### Patches
+
+- Filtering data for DonutChart with >=0 instead of >0 to allow zero value cases ([PR #30237](https://github.com/microsoft/fluentui/pull/30237) by shubhabrata08@gmail.com)
 
 ## [5.19.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.28)
 

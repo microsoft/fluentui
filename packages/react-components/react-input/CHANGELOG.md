@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Tue, 20 Feb 2024 14:22:21 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Feb 2024 02:34:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.65)
+
+Wed, 28 Feb 2024 02:34:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.4.64..@fluentui/react-input_v9.4.65)
+
+### Patches
+
+- fix: Input should start with undefined, same as textarea ([PR #30534](https://github.com/microsoft/fluentui/pull/30534) by angel6v3@gmail.com)
+- Bump @fluentui/react-field to v9.1.55 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.31 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.14.1 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-utilities to v9.18.2 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
 
 ## [9.4.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.64)
 
