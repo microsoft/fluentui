@@ -7,7 +7,7 @@ import type { RatingProps } from './Rating.types';
 import { useRatingContextValues } from './useRatingContextValues';
 
 /**
- * Rating component - TODO: add more docs
+ * Rating component is a wrapper for one or more rating items that will be used to set a rating value.
  */
 export const Rating: ForwardRefComponent<RatingProps> = React.forwardRef((props, ref) => {
   const state = useRating_unstable(props, ref);
