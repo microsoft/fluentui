@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.46.6",
+  "version": "9.46.7",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -69,7 +69,7 @@
     "@fluentui/react-table": "^9.11.12",
     "@fluentui/react-tabs": "^9.4.11",
     "@fluentui/react-tabster": "^9.19.2",
-    "@fluentui/react-tags": "^9.0.29",
+    "@fluentui/react-tags": "^9.1.0",
     "@fluentui/react-textarea": "^9.3.65",
     "@fluentui/react-theme": "^9.1.16",
     "@fluentui/react-toast": "^9.3.32",
@@ -89,8 +89,7 @@
     "@types/react": ">=16.14.0 <19.0.0",
     "@types/react-dom": ">=16.9.0 <19.0.0",
     "react": ">=16.14.0 <19.0.0",
-    "react-dom": ">=16.14.0 <19.0.0",
-    "scheduler": "^0.19.0 || ^0.20.0"
+    "react-dom": ">=16.14.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [

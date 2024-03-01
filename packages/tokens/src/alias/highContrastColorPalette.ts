@@ -60,3 +60,7 @@ export const colorStatusTokens: ColorStatusTokens = Object.entries(statusColorMa
   },
   {} as ColorStatusTokens,
 );
+
+// one-off overrides for colorStatus tokens
+colorStatusTokens.colorStatusDangerBackground3Hover = hcHighlight;
+colorStatusTokens.colorStatusDangerBackground3Pressed = hcHighlight;

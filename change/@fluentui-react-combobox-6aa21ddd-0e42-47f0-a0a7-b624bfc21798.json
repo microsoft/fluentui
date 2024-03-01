@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: rollback export of internal hooks",
-  "packageName": "@fluentui/react-combobox",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "none"
-}

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tags
 
-This log was last generated on Wed, 28 Feb 2024 02:34:19 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Feb 2024 14:44:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.1.0)
+
+Thu, 29 Feb 2024 14:44:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags_v9.0.29..@fluentui/react-tags_v9.1.0)
+
+### Minor changes
+
+- feat: export TagGroupContextValues type ([PR #30645](https://github.com/microsoft/fluentui/pull/30645) by bernardo.sunderhus@gmail.com)
 
 ## [9.0.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags_v9.0.29)
 
