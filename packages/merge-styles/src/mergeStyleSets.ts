@@ -7,6 +7,7 @@ import { getStyleOptions } from './StyleOptionsState';
 import { applyRegistration, styleToRegistration } from './styleToClassName';
 import { ObjectOnly } from './ObjectOnly';
 import { isShadowConfig, ShadowConfig } from './shadowConfig';
+import { Stylesheet } from './Stylesheet';
 
 /**
  * Takes in one or more style set objects, each consisting of a set of areas,
@@ -222,6 +223,8 @@ export function mergeCssSets(
     return { subComponentStyles: {} } as any;
   }
 
+  const sheet = Stylesheet.getInstance(shadowConfig);
+  opts.stylesheet = sheet;
   const concatenatedStyleSet = concatStyleSets(...styleSets);
 
   const registrations = [];
@@ -237,7 +240,7 @@ export function mergeCssSets(
 
       const styles: IStyle = (concatenatedStyleSet as any)[styleSetArea];
 
-      const { classes, objects } = extractStyleParts(shadowConfig, styles);
+      const { classes, objects } = extractStyleParts(sheet, styles);
 
       if (objects?.length) {
         const registration = styleToRegistration(opts || {}, { displayName: styleSetArea }, objects);

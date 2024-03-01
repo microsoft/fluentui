@@ -598,9 +598,13 @@ export class Stylesheet {
     resetKeys(): void;
     serialize(): string;
     setConfig(config?: IStyleSheetConfig): void;
-    supportsConstructableStylesheets(): boolean;
-    supportsModifyingAdoptedStyleSheets(): boolean;
 }
+
+// @public (undocumented)
+export const SUPPORTS_CONSTRUCTABLE_STYLESHEETS: boolean;
+
+// @public (undocumented)
+export const SUPPORTS_MODIFYING_ADOPTED_STYLESHEETS: boolean;
 
 // Warnings were encountered during analysis:
 //
