@@ -14,11 +14,11 @@ export const Color = () => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <Rating color="brand" defaultValue={3} ratingLabel={3} ratingCountLabel="1,160" />
+      <Rating defaultValue={3} />
 
-      <Rating color="marigold" defaultValue={3.5} ratingLabel={3.5} ratingCountLabel="1,160" />
+      <Rating color="brand" defaultValue={3} />
 
-      <Rating defaultValue={3.5} ratingLabel={3.5} ratingCountLabel="1,160" />
+      <Rating color="marigold" defaultValue={3} />
     </div>
   );
 };
@@ -26,7 +26,7 @@ export const Color = () => {
 Color.parameters = {
   docs: {
     description: {
-      story: 'You can specify the appearance of the Rating component with the "color" prop.',
+      story: "A Rating's `color` can be `neutral` (default), `brand`, or `marigold`.",
     },
   },
 };

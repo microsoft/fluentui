@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: Add navigationIcons prop to allow customization of Calendar's navigation icons.",
-  "packageName": "@fluentui/react-calendar-compat",
-  "email": "estebanmu@microsoft.com",
-  "dependentChangeType": "patch"
-}

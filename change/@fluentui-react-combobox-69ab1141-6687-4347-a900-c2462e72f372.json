@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: aria-multiselectable is unnecessary with menu roles",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
