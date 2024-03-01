@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "chore: deprecate ComboboxContext",
+  "comment": "chore: remove invalid peerDependency on scheduler",
   "packageName": "@fluentui/react-components",
-  "email": "lingfan.gao@microsoft.com",
+  "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
 }

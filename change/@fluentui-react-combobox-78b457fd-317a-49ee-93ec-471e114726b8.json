@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "refactor: Deprecate ComboboxContext in favour of ListboxContext",
-  "packageName": "@fluentui/react-combobox",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

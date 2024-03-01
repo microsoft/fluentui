@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "updates fast-foundation to fix a memory leak within form associated disconnected callback",
+  "packageName": "@fluentui/web-components",
+  "email": "chhol@microsoft.com",
+  "dependentChangeType": "patch"
+}
