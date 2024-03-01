@@ -4,8 +4,6 @@ import type { RatingDisplayProps, RatingDisplayState } from './RatingDisplay.typ
 import { StarFilled } from '@fluentui/react-icons';
 import { RatingItem } from '../RatingItem/RatingItem';
 
-const defaultIcon = StarFilled;
-
 /**
  * Create the state required to render RatingDisplay.
  *
@@ -19,7 +17,7 @@ export const useRatingDisplay_unstable = (
   props: RatingDisplayProps,
   ref: React.Ref<HTMLDivElement>,
 ): RatingDisplayState => {
-  const { color = 'neutral', count, compact = false, icon = defaultIcon, max = 5, size = 'medium', value } = props;
+  const { color = 'neutral', count, compact = false, icon = StarFilled, max = 5, size = 'medium', value } = props;
 
   const valueTextId = useId('rating-value-');
   const countTextId = useId('rating-count-');
