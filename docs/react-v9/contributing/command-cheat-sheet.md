@@ -2,6 +2,7 @@ This is a helpful list of helpful every day commands.
 
 yarn // cleans and installs everything, it fixes many things.
 yarn build // does everything yarn does and updates the API doc file
+yarn buildto package-name // Does a yarn build scoped to a specific package for faster speeds.
 yarn test // runs a test suite. It is slightly different from the test suite in the CI/CD test suite. Can be run from inside a given package to run faster.
 yarn create-package // scaffolds a new package
 yarn create-component // scaffolds a new component
