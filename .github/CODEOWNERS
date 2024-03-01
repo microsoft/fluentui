@@ -54,7 +54,6 @@
 /jest.preset.ts @microsoft/fluentui-react-build
 /jest.config.js @microsoft/fluentui-react-build
 /jest.config.ts @microsoft/fluentui-react-build
-/lerna.json @microsoft/fluentui-react-build
 /package.json @microsoft/fluentui-react-build
 /tsconfig.json @microsoft/fluentui-react-build
 /tsconfig.*.json @microsoft/fluentui-react-build
@@ -326,6 +325,6 @@ packages/react-experiments/src/components/TileList @ThomasMichon
 **/.swcrc @microsoft/fluentui-react-build
 
 ## Docs
-rfcs/ @microsoft/cxe-red @microsoft/cxe-prg @microsoft/teams-prg
-rfcs/shared/build-system/ @microsoft/fluentui-react-build
-docs/ @microsoft/cxe-red @microsoft/cxe-prg @microsoft/teams-prg
+/rfcs/ @microsoft/cxe-red @microsoft/cxe-prg @microsoft/teams-prg
+/rfcs/shared/build-system/ @microsoft/fluentui-react-build
+/docs/ @microsoft/cxe-red @microsoft/cxe-prg @microsoft/teams-prg

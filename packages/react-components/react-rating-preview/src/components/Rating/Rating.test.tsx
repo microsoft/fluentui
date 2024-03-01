@@ -7,8 +7,6 @@ describe('Rating', () => {
   isConformant({
     Component: Rating,
     displayName: 'Rating',
-    // TODO re-enable consistent-callback-args once https://github.com/microsoft/fluentui/pull/30376 is merged
-    disabledTests: ['consistent-callback-args'],
   });
   it('respects a default value', () => {
     const { getAllByRole } = render(<Rating defaultValue={3} />);

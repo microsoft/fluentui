@@ -19,13 +19,23 @@ Type truncation should happen when the total value exceeds one thousand includin
 
 ### Customizing the chart
 
-The chart provides an option to select a color scale based on the range of y values. Similar y values will end up having similar colors. Use the `colors` attribute to define the color scale.
+- The chart provides an option to select a color scale based on the range of y values. Similar y values will end up having similar colors. Use the `colors` attribute to define the color scale.
 
-Use `useSingleColor` to use a single color for all bars.
+- Use `useSingleColor` to use a single color for all bars.
 
-Use `lineLegendText` and `lineLegendColor` to specify the text and color for legends of lines in the chart.
+- Use `lineLegendText` and `lineLegendColor` to specify the text and color for legends of lines in the chart.
 
-The bar labels are shown by default. Set the `hideLabels` prop to hide them.
+- The bar labels are shown by default. Set the `hideLabels` prop to hide them.
+
+- Use the `barWidth` prop to customize the width of each bar in the chart. When set to `undefined` or `'default'`, the bar width defaults to 16px. When set to `'auto'` (which is only applicable to string x-axis), the bar width is calculated from padding values. For a fixed bar width, specify an absolute pixel value like `40`.
+
+- Use the `maxBarWidth` prop to limit the width of bars to a specified number of pixels.
+
+- Use the `xAxisInnerPadding` and `xAxisOuterPadding` props to adjust the padding between bars and the padding before the first bar and after the last bar, respectively. These props accept values between 0 and 1, representing a fraction of the `step`, which is the interval between the start of a bar and the start of the next bar. These props are particularly relevant when using a string x-axis. By default, the inner padding is set to 2/3, maintaining a 2:1 spacing ratio. This default value is calculated using the formula:
+  $$
+  innerPadding = {spaceBetweenBars \over spaceBetweenBars + barWidth}
+  $$
+  For a more detailed explanation of how these values were derived, see [Implementing 2:1 spacing | FluentUI Charting Contrib Docsite](https://microsoft.github.io/fluentui-charting-contrib/docs/implementing-2-to-1-spacing). For additional information on padding in string axes, see [Band scales | D3 by Observable](https://d3js.org/d3-scale/band#band_paddingInner)
 
 ### Creating Date Objects For Chart Data
 
