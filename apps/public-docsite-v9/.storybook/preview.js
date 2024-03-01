@@ -23,9 +23,9 @@ export const parameters = {
        * @see https://storybook.js.org/docs/react/writing-stories/naming-components-and-hierarchy#sorting-stories
        */
       order: [
+        'Introduction',
         'Concepts',
         [
-          'Introduction',
           'Developer',
           [
             'Quick Start',
@@ -47,6 +47,10 @@ export const parameters = {
         ],
         'Theme',
         'Components',
+        'Preview Components',
+        'Compat Components',
+        'Utilities',
+        'Migration Shims',
       ],
     },
   },
