@@ -3,12 +3,25 @@ import { Customizations } from './Customizations';
 import { hoistStatics } from '../hoistStatics';
 import { CustomizerContext } from './CustomizerContext';
 import { concatStyleSets, makeShadowConfig } from '@fluentui/merge-styles';
-import type { ICustomizerContext } from './CustomizerContext';
 import { MergeStylesShadowRootConsumer } from '../shadowDom/MergeStylesShadowRootContext';
-import type { ShadowConfig } from '@fluentui/merge-styles';
 import { getWindow } from '../dom/getWindow';
-// eslint-disable-next-line
 import { WindowContext } from '@fluentui/react-window-provider';
+import type { ICustomizerContext } from './CustomizerContext';
+import type { ShadowConfig } from '@fluentui/merge-styles';
+
+import { memoizeFunction } from '../memoize';
+
+const memoizedMakeShadowConfig = memoizeFunction(makeShadowConfig);
+const mergeComponentStyles = memoizeFunction(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (defaultStyles: any, componentStyles: any, shadowConfig: ShadowConfig): any => {
+    return {
+      ...defaultStyles,
+      ...componentStyles,
+      __shadowConfig__: shadowConfig,
+    };
+  },
+);
 
 export function customizable(
   scope: string,
@@ -24,8 +37,6 @@ export function customizable(
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       private _styleCache: { default?: any; component?: any; merged?: any } = {};
-
-      private _shadowConfig: ShadowConfig | undefined;
 
       constructor(props: P) {
         super(props);
@@ -51,14 +62,7 @@ export function customizable(
                     const defaultProps = Customizations.getSettings(fields, scope, context.customizations);
 
                     const win = this.context.window ?? getWindow();
-                    if (
-                      !this._shadowConfig ||
-                      this._shadowConfig.stylesheetKey !== scope ||
-                      this._shadowConfig.inShadow !== inShadow ||
-                      this._shadowConfig.window !== win
-                    ) {
-                      this._shadowConfig = makeShadowConfig(scope, inShadow, win);
-                    }
+                    const shadowConfig = memoizedMakeShadowConfig(scope, inShadow, win);
 
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     const componentProps = this.props as any;
@@ -75,7 +79,7 @@ export function customizable(
                         this._styleCache.component !== componentProps.styles
                       ) {
                         const mergedStyles = concatStyleSets(defaultProps.styles, componentProps.styles);
-                        mergedStyles.__shadowConfig__ = this._shadowConfig;
+                        mergedStyles.__shadowConfig__ = shadowConfig;
                         this._styleCache.default = defaultProps.styles;
                         this._styleCache.component = componentProps.styles;
                         this._styleCache.merged = mergedStyles;
@@ -86,11 +90,8 @@ export function customizable(
                       );
                     }
 
-                    const styles = {
-                      ...defaultProps.styles,
-                      ...componentProps.styles,
-                      __shadowConfig__: this._shadowConfig,
-                    };
+                    const styles = mergeComponentStyles(defaultProps.styles, componentProps.styles, shadowConfig);
+
                     return <ComposedComponent {...defaultProps} {...componentProps} styles={styles} />;
                   }}
                 </CustomizerContext.Consumer>

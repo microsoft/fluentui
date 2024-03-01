@@ -3,6 +3,7 @@ import { IStyle, IStyleBaseArray } from './IStyle';
 import { IStyleOptions } from './IStyleOptions';
 import { isShadowConfig, ShadowConfig } from './shadowConfig';
 import { getStyleOptions } from './StyleOptionsState';
+import { Stylesheet } from './Stylesheet';
 import { styleToClassName } from './styleToClassName';
 
 export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
@@ -34,9 +35,12 @@ export function mergeCss(
 ): string {
   const styleArgs = args instanceof Array ? args : [args];
   const opts = options || {};
-  const shadowConfig = isShadowConfig(styleArgs[0]) ? (styleArgs[0] as ShadowConfig) : opts.shadowConfig;
-  opts.shadowConfig = shadowConfig;
-  const { classes, objects } = extractStyleParts(shadowConfig, styleArgs);
+  const hasShadowConfig = isShadowConfig(styleArgs[0]);
+  if (hasShadowConfig) {
+    opts.shadowConfig = styleArgs[0] as ShadowConfig;
+  }
+  opts.stylesheet = Stylesheet.getInstance(opts.shadowConfig);
+  const { classes, objects } = extractStyleParts(opts.stylesheet, styleArgs);
 
   if (objects.length) {
     classes.push(styleToClassName(opts, objects));

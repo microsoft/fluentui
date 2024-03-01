@@ -1,13 +1,15 @@
 import * as React from 'react';
 import {
   GLOBAL_STYLESHEET_KEY,
+  SUPPORTS_CONSTRUCTABLE_STYLESHEETS,
+  SUPPORTS_MODIFYING_ADOPTED_STYLESHEETS,
   Stylesheet,
   makeShadowConfig,
   cloneCSSStyleSheet,
   EventHandler,
 } from '@fluentui/merge-styles';
 import { useMergeStylesRootStylesheets } from './MergeStylesRootContext';
-import { useDocument, useWindow } from '@fluentui/react-window-provider';
+import { useWindow } from '@fluentui/react-window-provider';
 import type { ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
 
 type PolyfileInsertListeners = Record<string, EventHandler<CSSStyleSheet>>;
@@ -67,12 +69,14 @@ export const MergeStylesShadowRootConsumer: React.FC<MergeStylesContextConsumerP
   stylesheetKey,
   children,
 }) => {
-  useAdoptedStylesheet(GLOBAL_STYLESHEET_KEY);
-  useAdoptedStylesheet(stylesheetKey);
+  const shadowCtx = useMergeStylesShadowRootContext();
+  const rootMergeStyles = useMergeStylesRootStylesheets();
+  const win = useWindow();
 
-  const inShadow = useHasMergeStylesShadowRootContext();
+  useAdoptedStylesheetEx(GLOBAL_STYLESHEET_KEY, shadowCtx, rootMergeStyles, win);
+  useAdoptedStylesheetEx(stylesheetKey, shadowCtx, rootMergeStyles, win);
 
-  return children(inShadow);
+  return children(!!shadowCtx);
 };
 
 const GlobalStyles: React.FC = props => {
@@ -86,12 +90,26 @@ const GlobalStyles: React.FC = props => {
 export const useAdoptedStylesheet = (stylesheetKey: string): boolean => {
   const shadowCtx = useMergeStylesShadowRootContext();
   const rootMergeStyles = useMergeStylesRootStylesheets();
-  const doc = useDocument();
   const win = useWindow();
-  // console.log(doc?.defaultView.__SENTINAL__);
+
+  return useAdoptedStylesheetEx(stylesheetKey, shadowCtx, rootMergeStyles, win);
+};
+
+/**
+ * Optimization for specific cases like nested customizables.
+ */
+const useAdoptedStylesheetEx = (
+  stylesheetKey: string,
+  shadowCtx: MergeStylesShadowRootContextValue | undefined,
+  rootMergeStyles: Map<string, ExtendedCSSStyleSheet>,
+  win: Window | undefined,
+): boolean => {
   const polyfillInsertListners = React.useRef<PolyfileInsertListeners>({});
 
   React.useEffect(() => {
+    if (!shadowCtx) {
+      return;
+    }
     const polyfillListeners = polyfillInsertListners.current;
     polyfillInsertListners.current = {};
 
@@ -101,7 +119,7 @@ export const useAdoptedStylesheet = (stylesheetKey: string): boolean => {
         sheet.offInsertRuleIntoConstructableStyleSheet(polyfillListeners[key]);
       });
     };
-  }, [win, stylesheetKey]);
+  }, [win, stylesheetKey, shadowCtx]);
 
   if (!shadowCtx) {
     return false;
@@ -109,8 +127,8 @@ export const useAdoptedStylesheet = (stylesheetKey: string): boolean => {
 
   if (shadowCtx.shadowRoot && !shadowCtx.stylesheets.has(stylesheetKey)) {
     const adoptableStyleSheet = rootMergeStyles.get(stylesheetKey);
-    if (adoptableStyleSheet && doc) {
-      adoptSheet(shadowCtx, doc, stylesheetKey, adoptableStyleSheet, polyfillInsertListners.current);
+    if (adoptableStyleSheet && win?.document) {
+      adoptSheet(shadowCtx, win.document, stylesheetKey, adoptableStyleSheet, polyfillInsertListners.current);
     }
   }
 
@@ -135,8 +153,7 @@ const adoptSheet = (
   const shadowRoot = shadowCtx.shadowRoot!;
 
   shadowCtx.stylesheets.set(stylesheetKey, stylesheet);
-  const sheet = Stylesheet.getInstance();
-  if (sheet.supportsConstructableStylesheets()) {
+  if (SUPPORTS_CONSTRUCTABLE_STYLESHEETS) {
     // Maintain the sort order of Fluent style sheets
     const prevSheets = shadowRoot.adoptedStyleSheets;
     let i = prevSheets.length;
@@ -152,7 +169,7 @@ const adoptSheet = (
       }
     }
 
-    if (sheet.supportsModifyingAdoptedStyleSheets()) {
+    if (SUPPORTS_MODIFYING_ADOPTED_STYLESHEETS) {
       // The current spec allows the `adoptedStyleSheets` array to be modified.
       // Previous versions of the spec required a new array to be created.
       // For more details see: https://github.com/microsoft/fast/pull/6703

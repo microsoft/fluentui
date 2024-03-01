@@ -114,19 +114,21 @@ declare global {
   }
 }
 
-const SUPPORTS_CONSTRUCTABLE_STYLESHEETS =
+export const SUPPORTS_CONSTRUCTABLE_STYLESHEETS =
   typeof document !== 'undefined' && Array.isArray(document.adoptedStyleSheets) && 'replace' in CSSStyleSheet.prototype;
 
-let SUPPORTS_MODIFYING_ADOPTED_STYLESHEETS = false;
+let supportsModifyingAdoptedStyleSheets = false;
 
 if (SUPPORTS_CONSTRUCTABLE_STYLESHEETS) {
   try {
     document.adoptedStyleSheets.push();
-    SUPPORTS_MODIFYING_ADOPTED_STYLESHEETS = true;
+    supportsModifyingAdoptedStyleSheets = true;
   } catch (e) {
-    SUPPORTS_MODIFYING_ADOPTED_STYLESHEETS = false;
+    supportsModifyingAdoptedStyleSheets = false;
   }
 }
+
+export const SUPPORTS_MODIFYING_ADOPTED_STYLESHEETS = supportsModifyingAdoptedStyleSheets;
 
 export type ExtendedCSSStyleSheet = CSSStyleSheet & {
   bucketName: string;
@@ -156,15 +158,6 @@ let _stylesheet: Stylesheet | undefined;
 const _getGlobal = (win?: Window): typeof _global => {
   return (win ?? _global) as typeof _global;
 };
-
-const getDocument = () => {
-  return typeof document === 'undefined' ? undefined : document;
-};
-
-const getWindow = () => {
-  return typeof window === 'undefined' ? undefined : window;
-};
-
 /**
  * Represents the state of styles registered in the page. Abstracts
  * the surface for adding styles to the stylesheet, exposes helpers
@@ -191,12 +184,12 @@ export class Stylesheet {
    * Gets the singleton instance.
    */
   public static getInstance(shadowConfig?: ShadowConfig): Stylesheet {
-    const { stylesheetKey, inShadow, window: win } = shadowConfig ?? DEFAULT_SHADOW_CONFIG;
-    const global = (win ?? getWindow() ?? {}) as typeof _global;
+    const { stylesheetKey = GLOBAL_STYLESHEET_KEY, inShadow, window: win } = shadowConfig ?? DEFAULT_SHADOW_CONFIG;
+    const global = (win ?? _global ?? {}) as typeof _global;
 
     _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
 
-    const doc = win?.document ?? getDocument();
+    const doc = win ? win.document : typeof document !== 'undefined' ? document : undefined;
 
     // When an app has multiple versions of Fluent v8 it is possible
     // that an older version of Stylesheet is initialized before
@@ -211,7 +204,8 @@ export class Stylesheet {
     ) {
       const fabricConfig = global?.FabricConfig || {};
       fabricConfig.mergeStyles = fabricConfig.mergeStyles || {};
-      fabricConfig.mergeStyles.window = fabricConfig.mergeStyles.window ?? win ?? getWindow();
+      fabricConfig.mergeStyles.window =
+        fabricConfig.mergeStyles.window || win || (typeof window !== 'undefined' ? window : undefined);
       fabricConfig.mergeStyles.inShadow = fabricConfig.mergeStyles.inShadow ?? inShadow;
       fabricConfig.mergeStyles.stylesheetKey = fabricConfig.mergeStyles.stylesheetKey ?? stylesheetKey;
 
@@ -223,36 +217,21 @@ export class Stylesheet {
       }
 
       _stylesheet = stylesheet;
+      global[STYLESHEET_SETTING] = _stylesheet;
     }
-    if (inShadow || stylesheetKey === GLOBAL_STYLESHEET_KEY) {
-      const sheetWindow = win ?? getWindow();
-      if (sheetWindow) {
-        _stylesheet.addAdoptableStyleSheet(stylesheetKey, _stylesheet.getAdoptableStyleSheet(stylesheetKey));
-      }
-    }
-
-    _stylesheet.setConfig({
-      window: win ?? getWindow(),
-      inShadow,
-      stylesheetKey: stylesheetKey ?? GLOBAL_STYLESHEET_KEY,
-    });
-    global[STYLESHEET_SETTING] = _stylesheet;
 
     return _stylesheet;
   }
 
   constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet) {
     // If there is no document we won't have an element to inject into.
-    const defaultInjectionMode = typeof document === 'undefined' ? InjectionMode.none : InjectionMode.insertNode;
     this._config = {
-      injectionMode: defaultInjectionMode,
+      injectionMode: typeof document === 'undefined' ? InjectionMode.none : InjectionMode.insertNode,
       defaultPrefix: 'css',
       namespace: undefined,
       cspSettings: undefined,
       ...config,
     };
-
-    // Need to add a adoptedStyleSheets polyfill
 
     this._classNameToArgs = serializedStylesheet?.classNameToArgs ?? this._classNameToArgs;
     this._styleCounter = serializedStylesheet?.counter ?? this._styleCounter;
@@ -269,7 +248,7 @@ export class Stylesheet {
 
     if (!this._adoptableSheets.has(key)) {
       this._adoptableSheets.set(key, sheet);
-      this._config.window?.requestAnimationFrame?.(() => {
+      this._config.window?.queueMicrotask?.(() => {
         this._adoptableSheets!.raise('add-sheet', { key, sheet });
       });
     }
@@ -365,24 +344,6 @@ export class Stylesheet {
         }
       }
     }
-  }
-
-  /**
-   * Helper to test if constructable stylesheets are supported.
-   * @returns true if the browser supports constructable stylesheets
-   */
-  public supportsConstructableStylesheets(): boolean {
-    return SUPPORTS_CONSTRUCTABLE_STYLESHEETS;
-  }
-
-  /**
-   * Helper to test if modifying adopted stylesheets is supported.
-   * Currently the spec allows for modifying the adopted sheets array
-   * but previous versions used fronzen arrays.
-   * @returns true if the browser supports modifying adopted stylesheets
-   */
-  public supportsModifyingAdoptedStyleSheets(): boolean {
-    return SUPPORTS_MODIFYING_ADOPTED_STYLESHEETS;
   }
 
   /**

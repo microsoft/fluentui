@@ -33,7 +33,9 @@ export class EventMap<K, V> {
     }
 
     for (const handler of handlers) {
-      handler?.(data);
+      if (handler) {
+        handler(data);
+      }
     }
   }
 

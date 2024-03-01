@@ -32,7 +32,12 @@ export { fontFace } from './fontFace';
 
 export { keyframes } from './keyframes';
 
-export { InjectionMode, Stylesheet } from './Stylesheet';
+export {
+  InjectionMode,
+  Stylesheet,
+  SUPPORTS_CONSTRUCTABLE_STYLESHEETS,
+  SUPPORTS_MODIFYING_ADOPTED_STYLESHEETS,
+} from './Stylesheet';
 export type { ICSPSettings, ISerializedStylesheet, IStyleSheetConfig, ExtendedCSSStyleSheet } from './Stylesheet';
 
 export { setRTL } from './StyleOptionsState';
