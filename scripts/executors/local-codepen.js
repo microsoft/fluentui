@@ -1,12 +1,12 @@
-const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
-const path = require('path');
-const fs = require('fs');
-const yargs = require('yargs');
 const { execSync } = require('child_process');
-const chalk = require('chalk');
+const fs = require('fs');
+const path = require('path');
 
 const { findGitRoot } = require('@fluentui/scripts-monorepo');
+const chalk = require('chalk');
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const yargs = require('yargs');
 
 const options = yargs.option('webpackConfig', { alias: 'w', type: 'string' }).argv;
 
@@ -34,16 +34,26 @@ if (fs.existsSync(configPath)) {
   }
   const webpackConfig = require(configPath);
   const compiler = webpack(webpackConfig);
-  const server = new WebpackDevServer(compiler, webpackConfig.devServer);
-  const port = webpackConfig.devServer.port || 8080;
+  const devServerOptions = {
+    ...webpackConfig.devServer,
+    host: '127.0.0.1',
+    port: webpackConfig.devServer.port || 8080,
+  };
+  const server = new WebpackDevServer(devServerOptions, compiler);
 
-  server.listen(port, '127.0.0.1', async () => {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    const url = await ngrok.connect({ port, host_header: 'localhost:' + port });
-    console.log(`Starting server on http://${url}`);
-    // Put the script tag in a big yellow box so it's easier to find
-    const scriptTag = `  <script src="${url}/fluentui-react.js"></script>  `;
-    const message = ['', '  Replace the @fluentui/react script tag in your codepen with this:', '', scriptTag, ''];
-    console.log(chalk.bgYellowBright.bold(message.map(line => line.padEnd(scriptTag.length)).join('\n')));
+  server.startCallback(() => {
+    ngrok
+      .connect({
+        port: devServerOptions.port,
+        // eslint-disable-next-line @typescript-eslint/naming-convention
+        host_header: 'localhost:' + devServerOptions.port,
+      })
+      .then((/** @type {string}  */ url) => {
+        console.log(`Starting server on http://${url}`);
+        // Put the script tag in a big yellow box so it's easier to find
+        const scriptTag = `  <script src="${url}/fluentui-react.js"></script>  `;
+        const message = ['', '  Replace the @fluentui/react script tag in your codepen with this:', '', scriptTag, ''];
+        console.log(chalk.bgYellowBright.bold(message.map(line => line.padEnd(scriptTag.length)).join('\n')));
+      });
   });
 }
