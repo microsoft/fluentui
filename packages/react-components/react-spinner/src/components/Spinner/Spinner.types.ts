@@ -9,12 +9,12 @@ export type SpinnerSlots = {
   root: NonNullable<Slot<'div'>>;
 
   /**
-   * The animated spinning circle element.
+   * The animated spinning ring.
    */
   spinner?: Slot<'span'>;
 
   /**
-   * The fill the spinner animation.
+   * The part of the spinner that rotates.
    */
   spinnerTail?: NonNullable<Slot<'span'>>;
 
