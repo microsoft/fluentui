@@ -27,7 +27,7 @@ Type truncation should happen when the total value exceeds one thousand includin
 
 - The bar labels are shown by default. Set the `hideLabels` prop to hide them.
 
-- Use the `barWidth` prop to customize the width of each bar in the chart. When set to `undefined` or `'default'`, the bar width defaults to 16px. When set to `'auto'`, the bar width is calculated from padding values. For a fixed bar width, specify an absolute pixel value like `40`.
+- Use the `barWidth` prop to customize the width of each bar in the chart. When set to `undefined` or `'default'`, the bar width defaults to 16px. When set to `'auto'` (which is only applicable to string x-axis), the bar width is calculated from padding values. For a fixed bar width, specify an absolute pixel value like `40`.
 
 - Use the `maxBarWidth` prop to limit the width of bars to a specified number of pixels.
 
