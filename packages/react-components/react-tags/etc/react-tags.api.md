@@ -125,6 +125,11 @@ export const TagGroup: ForwardRefComponent<TagGroupProps>;
 // @public (undocumented)
 export const tagGroupClassNames: SlotClassNames<TagGroupSlots>;
 
+// @public (undocumented)
+export type TagGroupContextValues = {
+    tagGroup: TagGroupContextValue;
+};
+
 // @public
 export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
     onDismiss?: TagDismissHandler<Value>;

@@ -7,6 +7,7 @@ import { useSelection } from '../utils/useSelection';
 import type { ComboboxBaseProps, ComboboxBaseOpenEvents, ComboboxBaseState } from './ComboboxBase.types';
 
 /**
+ * @internal
  * State shared between Combobox and Dropdown components
  */
 export const useComboboxBaseState = (
