@@ -31,7 +31,9 @@
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-tasks": "*",
+    "@testing-library/preact": "3.2.3",
+    "preact": "10.19.5"
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.7",
