@@ -1,24 +1,25 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Spinner } from '@fluentui/react-spinner';
+import { Spinner, spinnerClassNames } from '@fluentui/react-spinner';
 import { tokens } from '@fluentui/react-theme';
 import { DecoratorFunction } from '@storybook/addons';
 import { ExtendedStoryFnReturnType } from '../utilities/types';
 import { StoryWright, Steps } from 'storywright';
 import { makeResetStyles, mergeClasses } from '@griffel/react';
 
-const useWrapperClass = makeResetStyles({
+const usePauseWrapperClass = makeResetStyles({
   minWidth: '300px',
   padding: '10px',
-  '& *': {
+  [`& .${spinnerClassNames.spinner}, & .${spinnerClassNames.spinnerTail}`]: {
     animationPlayState: 'paused !important',
     animationDelay: 'var(--test-animation-delay, -1s) !important',
+    animationDuration: '1.5s !important',
   },
 });
 
 export const TestWrapperDecoratorPauseAnimation: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
   <div style={{ display: 'flex' }}>
-    <div className={mergeClasses('testWrapper', useWrapperClass())}>{story()}</div>
+    <div className={mergeClasses('testWrapper', usePauseWrapperClass())}>{story()}</div>
   </div>
 );
 
