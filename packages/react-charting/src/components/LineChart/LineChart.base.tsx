@@ -574,7 +574,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
             cx={this._xAxisScale(x1)}
             cy={this._yAxisScale(y1)}
             fill={activePoint === circleId ? theme!.semanticColors.bodyBackground : lineColor}
-            opacity={isLegendSelected ? 1 : 0.01}
+            opacity={isLegendSelected ? 1 : 0.1}
             onMouseOver={this._handleHover.bind(
               this,
               x1,
