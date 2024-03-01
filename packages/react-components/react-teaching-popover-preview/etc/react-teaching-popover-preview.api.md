@@ -6,6 +6,7 @@
 
 /// <reference types="react" />
 
+import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { Button } from '@fluentui/react-button';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
@@ -111,8 +112,7 @@ export type TeachingPopoverCarouselNavButtonProps = ComponentProps<Partial<Teach
 
 // @public (undocumented)
 export type TeachingPopoverCarouselNavButtonSlots = {
-    root: NonNullable<Slot<'div'>>;
-    navButton: NonNullable<Slot<'button'>>;
+    root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
 };
 
 // @public
@@ -275,7 +275,7 @@ export function useTeachingPopoverCarouselContextValues_unstable(state: Teaching
 export const useTeachingPopoverCarouselNav_unstable: (props: TeachingPopoverCarouselNavProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselNavState;
 
 // @public
-export const useTeachingPopoverCarouselNavButton_unstable: (props: TeachingPopoverCarouselNavButtonProps, ref: React_2.Ref<HTMLDivElement>) => TeachingPopoverCarouselNavButtonState;
+export const useTeachingPopoverCarouselNavButton_unstable: (props: TeachingPopoverCarouselNavButtonProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement>) => TeachingPopoverCarouselNavButtonState;
 
 // @public
 export const useTeachingPopoverCarouselNavButtonStyles_unstable: (state: TeachingPopoverCarouselNavButtonState) => TeachingPopoverCarouselNavButtonState;

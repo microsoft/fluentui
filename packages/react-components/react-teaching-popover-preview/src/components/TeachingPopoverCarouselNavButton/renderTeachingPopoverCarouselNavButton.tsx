@@ -13,9 +13,5 @@ import type {
 export const renderTeachingPopoverCarouselNavButton_unstable = (state: TeachingPopoverCarouselNavButtonState) => {
   assertSlots<TeachingPopoverCarouselNavButtonSlots>(state);
 
-  return (
-    <state.root>
-      <state.navButton />
-    </state.root>
-  );
+  return <state.root />;
 };

@@ -2,13 +2,9 @@
 
 exports[`TeachingPopoverCarouselNavButton renders a default state 1`] = `
 <div>
-  <div
+  <button
     class="fui-TeachingPopoverCarouselNavButton"
-  >
-    <button
-      class="fui-TeachingPopoverCarouselNavButton__navButton"
-      type="button"
-    />
-  </div>
+    type="button"
+  />
 </div>
 `;

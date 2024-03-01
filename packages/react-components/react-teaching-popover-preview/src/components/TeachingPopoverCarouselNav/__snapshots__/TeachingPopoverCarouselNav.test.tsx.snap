@@ -8,22 +8,14 @@ exports[`TeachingPopoverCarouselNav renders a default state 1`] = `
     role="list"
     tabindex="0"
   >
-    <div
+    <button
       class="fui-TeachingPopoverCarouselNavButton"
-    >
-      <button
-        class="fui-TeachingPopoverCarouselNavButton__navButton"
-        type="button"
-      />
-    </div>
-    <div
+      type="button"
+    />
+    <button
       class="fui-TeachingPopoverCarouselNavButton"
-    >
-      <button
-        class="fui-TeachingPopoverCarouselNavButton__navButton"
-        type="button"
-      />
-    </div>
+      type="button"
+    />
   </div>
 </div>
 `;

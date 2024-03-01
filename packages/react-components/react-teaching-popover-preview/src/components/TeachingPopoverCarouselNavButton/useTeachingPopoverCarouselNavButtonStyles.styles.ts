@@ -9,7 +9,6 @@ import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const teachingPopoverCarouselNavButtonClassNames: SlotClassNames<TeachingPopoverCarouselNavButtonSlots> = {
   root: 'fui-TeachingPopoverCarouselNavButton',
-  navButton: 'fui-TeachingPopoverCarouselNavButton__navButton',
 };
 
 /**
@@ -18,46 +17,47 @@ export const teachingPopoverCarouselNavButtonClassNames: SlotClassNames<Teaching
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    ...createCustomFocusIndicatorStyle(
-      {
-        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
-        ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      },
-      { selector: 'focus-within' },
-    ),
-  },
-  rootSelected: {
-    display: 'flex',
-    ...createCustomFocusIndicatorStyle(
-      {
-        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
-        ...shorthands.borderRadius('4px'),
-      },
-      { selector: 'focus-within' },
-    ),
-  },
-  navButton: {
     cursor: 'pointer',
     boxSizing: 'border-box',
+    height: '8px',
+    width: '8px',
     backgroundColor: tokens.colorBrandBackground,
+  },
+  rootUnselected: {
     ...shorthands.border(0),
     ...shorthands.borderRadius('50%'),
     ...shorthands.padding('0px'),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    }),
+    backgroundColor: `color-mix(in srgb, ${tokens.colorBrandBackground} 30%, transparent)`,
+    '@supports not (color: color-mix(in lch, white, black))': {
+      // This will also affect the focus border, but only in older unsupported browsers
+      opacity: 0.3,
+      backgroundColor: tokens.colorBrandBackground,
+    },
   },
-  navButtonSelected: {
-    height: '8px',
+  rootSelected: {
     width: '16px',
     ...shorthands.border(0),
     ...shorthands.borderRadius('4px'),
     ...shorthands.padding('0px'),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
+      ...shorthands.borderRadius('4px'),
+    }),
   },
-  navButtonUnselected: {
-    height: '8px',
-    width: '8px',
-    opacity: 0.3,
-  },
-  navButtonBrand: {
+  rootBrand: {
     backgroundColor: tokens.colorNeutralForegroundOnBrand,
+  },
+  rootBrandUnselected: {
+    backgroundColor: `color-mix(in srgb, ${tokens.colorNeutralForegroundOnBrand} 30%, transparent)`,
+    '@supports not (color: color-mix(in lch, white, black))': {
+      // This will also affect the focus border, but only in older unsupported browsers
+      opacity: 0.3,
+      backgroundColor: tokens.colorBrandBackground,
+    },
   },
 });
 
@@ -70,22 +70,15 @@ export const useTeachingPopoverCarouselNavButtonStyles_unstable = (
   const styles = useStyles();
   const { appearance, isSelected } = state;
 
+  const brandStyles = isSelected ? styles.rootBrand : styles.rootBrandUnselected;
+
   state.root.className = mergeClasses(
     teachingPopoverCarouselNavButtonClassNames.root,
-    isSelected ? styles.rootSelected : styles.root,
+    styles.root,
+    isSelected ? styles.rootSelected : styles.rootUnselected,
+    appearance === 'brand' && brandStyles,
     state.root.className,
   );
-
-  if (state.navButton) {
-    const selectedButtonStyle = isSelected ? styles.navButtonSelected : styles.navButtonUnselected;
-    state.navButton.className = mergeClasses(
-      teachingPopoverCarouselNavButtonClassNames.navButton,
-      styles.navButton,
-      selectedButtonStyle,
-      appearance === 'brand' ? styles.navButtonBrand : undefined,
-      state.navButton.className,
-    );
-  }
 
   return state;
 };
