@@ -117,10 +117,10 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
       dynamicData: {
         chartTitle: 'Stacked Bar chart',
         chartData: [
-          { legend: 'first', data: this._randomY() },
-          { legend: 'second', data: this._randomY() },
-          { legend: 'third', data: this._randomY() },
-          { legend: 'fourth', data: this._randomY() },
+          { legend: 'first', data: this._randomY(), color: prevState.dynamicData.chartData![0].color },
+          { legend: 'second', data: this._randomY(), color: prevState.dynamicData.chartData![1].color },
+          { legend: 'third', data: this._randomY(), color: prevState.dynamicData.chartData![2].color },
+          { legend: 'fourth', data: this._randomY(), color: prevState.dynamicData.chartData![3].color },
         ],
       },
       statusKey: prevState.statusKey + 1,
@@ -133,10 +133,10 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
       dynamicData: {
         chartTitle: 'Stacked Bar chart',
         chartData: [
-          { legend: 'first', data: 40, color: this._randomColor(0) },
-          { legend: 'second', data: 23, color: this._randomColor(1) },
-          { legend: 'third', data: 35, color: this._randomColor(2) },
-          { legend: 'fourth', data: 87, color: this._randomColor(3) },
+          { legend: 'first', data: prevState.dynamicData.chartData![0].data, color: this._randomColor(0) },
+          { legend: 'second', data: prevState.dynamicData.chartData![1].data, color: this._randomColor(1) },
+          { legend: 'third', data: prevState.dynamicData.chartData![2].data, color: this._randomColor(2) },
+          { legend: 'fourth', data: prevState.dynamicData.chartData![3].data, color: this._randomColor(3) },
         ],
       },
       statusKey: prevState.statusKey + 1,
