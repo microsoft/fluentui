@@ -326,6 +326,6 @@ packages/react-experiments/src/components/TileList @ThomasMichon
 **/.swcrc @microsoft/fluentui-react-build
 
 ## Docs
-rfcs/ @microsoft/cxe-red @microsoft/cxe-prg @microsoft/teams-prg
-rfcs/shared/build-system/ @microsoft/fluentui-react-build
-docs/ @microsoft/cxe-red @microsoft/cxe-prg @microsoft/teams-prg
+/rfcs/ @microsoft/cxe-red @microsoft/cxe-prg @microsoft/teams-prg
+/rfcs/shared/build-system/ @microsoft/fluentui-react-build
+/docs/ @microsoft/cxe-red @microsoft/cxe-prg @microsoft/teams-prg
