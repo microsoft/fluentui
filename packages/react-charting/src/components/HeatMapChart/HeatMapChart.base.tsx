@@ -8,14 +8,8 @@ import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 import { ILegend, Legends } from '../Legends/index';
-import {
-  ChartTypes,
-  convertToLocaleString,
-  getAccessibleDataObject,
-  XAxisTypes,
-  YAxisType,
-  getTypeOfAxis,
-} from '../../utilities/utilities';
+import { convertToLocaleString } from '../../utilities/locale-util';
+import { ChartTypes, getAccessibleDataObject, XAxisTypes, YAxisType, getTypeOfAxis } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
