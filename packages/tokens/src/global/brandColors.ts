@@ -1,4 +1,5 @@
 import type { BrandVariants } from '../types';
+import { createLightTheme, createDarkTheme } from '../utils';
 
 export const brandWeb: BrandVariants = {
   10: `#061724`,
@@ -58,20 +59,23 @@ export const brandOffice: BrandVariants = {
 };
 
 export const brandAzure: BrandVariants = {
-  10: `#092c47`,
-  20: `#004578`,
-  30: `#043862`,
-  40: `#005a9e`,
-  50: `#004c87`,
-  60: `#106ebe`,
-  70: `#0078d4`,
-  80: `#0078d4`,
-  90: `#0086f0`,
-  100: `#69afe5`,
-  110: `#1890f1`,
-  120: `#c7e0f4`,
-  130: `#3aa0f3`,
-  140: `#deecf9`,
-  150: `#6cb8f6`,
-  160: `#eff6fc`,
+  10: `#101b2f`,
+  20: `#16243c`,
+  30: `#1d2d4b`,
+  40: `#24395d`,
+  50: `#2a446f`,
+  60: `#2a5087`,
+  70: `#125ca9`,
+  80: `#006ac6`,
+  90: `#0d7bd7`,
+  100: `#388ee2`,
+  110: `#5da2ea`,
+  120: `#79b2f0`,
+  130: `#96c3f4`,
+  140: `#afd2f8`,
+  150: `#cce2fb`,
+  160: `#e8f2fd`,
 };
+
+export const azureLightTheme = createLightTheme(brandAzure);
+export const azureDarkTheme = createDarkTheme(brandAzure);
