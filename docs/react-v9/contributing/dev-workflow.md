@@ -4,9 +4,9 @@
 
 Create a branch from your forked branch for your code changes:
 
-```
+\```
 git checkout -b my-branch-name
-```
+\```
 
 We strongly recommend using the CLI as your primary interface with git. GUIs are useful for viewing diffs, creating branches and making quick commits. However they often do not correctly merge and sync working branches with master. Mistakes in this step are time consuming to fix.
 
@@ -18,11 +18,11 @@ We don't have an official branch naming policy. However some developers use the 
 
 The inner development loop usually involves these steps:
 
-First, `cd` to the root folder of the repo (usually `fluentui`) and run `yarn` to install dependencies and link packages.
+First, `cd` to the root folder of the repo (usually `fluentui`) and run `yarn` to install dependencies and link packages. This can take some time.
 
 ```
 cd fluentui
-yarn // this can take some time
+yarn
 ```
 
 Run `yarn start` and select your start up project.
@@ -76,10 +76,10 @@ You can also `cd` to any package under `packages/*` and run `yarn build` to buil
 
 Make sure all your changes are committed, and run a build on the package that was updated, e.g. `yarn workspace @fluentui/react-components build` for changes to the v9 components. This will compare your changes and detect if the publicly facing API has changed, and update the right docs accordingly. Commit this change.
 
-Before creating a pull request, be sure to run `yarn change` and provide a high-level description of your change, which will be used in the release notes. When selecting a change type, use this guide:
+Before creating a pull request, be sure to run `yarn change` and provide a high-level description of your change, which will be used in the release notes. We follow [semantic versioning](https://semver.org/), so use the guide when selecting a change type:
 
-- Major - Don't do these without expressed agreement from the team. This is a very stable repo.
-- Minor - Adding new API surface area.
+- Major - Don't do these without expressed agreement from the team. This is a very stable repo. This option is usually disabled.
+- Minor - Adding new API surface area that is backwards compatible and does not dramatically change the intent of an API.
 - Patch - No change in API surface area.
 
 After choosing a change type, the description should follow the [semantic commit message format](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716), and be prepended by one of the following: `feat:`, `fix:`, `chore:`, `docs:`, or `refactor:`.
