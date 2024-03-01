@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import * as React from 'react';
 import { ChartHoverCard } from './ChartHoverCard';
 import { getByClass } from '../TestUtility.test';
@@ -13,9 +13,9 @@ describe('ChartHoverCard', () => {
   test('displays the correct XValue', () => {
     const XValue = 'Sample XValue';
     const { container } = render(<ChartHoverCard XValue={XValue} />);
-    const XValueElement = screen.getByText(XValue);
-    expect(XValueElement).toBeInTheDocument();
-    expect(getByClass(container, /calloutContentX/)).toBeDefined();
+    const XValueElement = getByClass(container, /calloutContentX/)[0] as HTMLElement;
+    expect(XValueElement).toBeDefined();
+    expect(XValueElement.textContent?.trim()).toBe(XValue);
   });
 
   test('displays the chart hover card correctly when XValue is undefined', () => {
@@ -27,9 +27,9 @@ describe('ChartHoverCard', () => {
   test('displays the correct YValue', () => {
     const YValue = 'Sample YValue';
     const { container } = render(<ChartHoverCard YValue={YValue} />);
-    const YValueElement = screen.getByText(YValue);
-    expect(YValueElement).toBeInTheDocument();
-    expect(getByClass(container, /calloutContentY/)).toBeDefined();
+    const YValueElement = getByClass(container, /calloutContentY/)[0] as HTMLElement;
+    expect(YValueElement).toBeDefined();
+    expect(YValueElement.textContent?.trim()).toBe(YValue);
   });
 
   test('displays the chart hover card correctly when YValue is undefined', () => {
@@ -41,41 +41,41 @@ describe('ChartHoverCard', () => {
   test('displays the correct YValue when YValue is a number', () => {
     const YValue = 123;
     const { container } = render(<ChartHoverCard YValue={YValue} />);
-    const YValueElement = screen.getByText(YValue.toLocaleString());
-    expect(YValueElement).toBeInTheDocument();
-    expect(getByClass(container, /calloutContentY/)).toBeDefined();
+    const YValueElement = getByClass(container, /calloutContentY/)[0] as HTMLElement;
+    expect(YValueElement).toBeDefined();
+    expect(YValueElement.textContent?.trim()).toBe(YValue.toString());
   });
 
   test('displays the correct YValue when YValue is a date', () => {
     const YValue = new Date('2021-01-01');
     const { container } = render(<ChartHoverCard YValue={YValue} />);
-    const YValueElement = screen.getByText(YValue.toLocaleDateString());
-    expect(YValueElement).toBeInTheDocument();
-    expect(getByClass(container, /calloutContentY/)).toBeDefined();
+    const YValueElement = getByClass(container, /calloutContentY/)[0] as HTMLElement;
+    expect(YValueElement).toBeDefined();
+    expect(YValueElement.textContent?.trim()).toBe(YValue.toLocaleDateString());
   });
 
   test('displays the correct Legend', () => {
     const Legend = 'Sample Legend';
     const { container } = render(<ChartHoverCard Legend={Legend} />);
-    const LegendElement = screen.getByText(Legend);
-    expect(LegendElement).toBeInTheDocument();
-    expect(getByClass(container, /calloutlegendText/)).toBeDefined();
+    const LegendElement = getByClass(container, /calloutlegendText/);
+    expect(LegendElement).toBeDefined();
+    expect(LegendElement[0].textContent?.trim()).toBe(Legend);
   });
 
   test('displays the correct Legend when Legend is a number', () => {
     const Legend = 123;
     const { container } = render(<ChartHoverCard Legend={Legend} />);
-    const LegendElement = screen.getByText(Legend.toLocaleString());
-    expect(LegendElement).toBeInTheDocument();
-    expect(getByClass(container, /calloutlegendText/)).toBeDefined();
+    const LegendElement = getByClass(container, /calloutlegendText/);
+    expect(LegendElement).toBeDefined();
+    expect(LegendElement[0].textContent?.trim()).toBe(Legend.toString());
   });
 
   test('displays the correct Legend when Legend is a date', () => {
     const Legend = new Date('2021-01-01');
     const { container } = render(<ChartHoverCard Legend={Legend} />);
-    const LegendElement = screen.getByText(Legend.toLocaleDateString());
-    expect(LegendElement).toBeInTheDocument();
-    expect(getByClass(container, /calloutlegendText/)).toBeDefined();
+    const LegendElement = getByClass(container, /calloutlegendText/);
+    expect(LegendElement).toBeDefined();
+    expect(LegendElement[0].textContent?.trim()).toBe(Legend.toLocaleDateString());
   });
 
   test('displays the chart hover card correctly when Legend is undefined', () => {
@@ -98,8 +98,9 @@ describe('ChartHoverCard', () => {
 
   it('displays the correct descriptionMessage', () => {
     const descriptionMessage = 'Sample descriptionMessage';
-    render(<ChartHoverCard descriptionMessage={descriptionMessage} />);
-    const descriptionMessageElement = screen.getByText(descriptionMessage);
-    expect(descriptionMessageElement).toBeInTheDocument();
+    const { container } = render(<ChartHoverCard descriptionMessage={descriptionMessage} />);
+    const descriptionMessageElement = getByClass(container, /descriptionMessage/)[0] as HTMLElement;
+    expect(descriptionMessageElement).toBeDefined();
+    expect(descriptionMessageElement.textContent?.trim()).toBe(descriptionMessage);
   });
 });
