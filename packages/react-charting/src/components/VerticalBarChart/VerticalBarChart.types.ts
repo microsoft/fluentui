@@ -24,7 +24,8 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
   onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
 
   /**
-   * Width of each bar in the chart. When set to `auto`, the bar width is calculated from padding values.
+   * Width of each bar in the chart. When set to `undefined` or `'default'`, the bar width defaults to 16px.
+   * When set to `auto`, the bar width is calculated from padding values.
    * @default 16
    */
   barWidth?: number | 'default' | 'auto';

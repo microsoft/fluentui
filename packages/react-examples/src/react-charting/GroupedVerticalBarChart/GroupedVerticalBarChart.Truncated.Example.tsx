@@ -42,31 +42,31 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
   }
 
   private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ width: parseInt(e.target.value, 10) });
+    this.setState({ width: Number(e.target.value) });
   };
   private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ height: parseInt(e.target.value, 10) });
+    this.setState({ height: Number(e.target.value) });
   };
   private _onBarWidthCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
     this.setState({ barWidthEnabled: checked });
   };
   private _onBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
-    this.setState({ barWidth: parseInt(newValue, 10) });
+    this.setState({ barWidth: Number(newValue) });
   };
   private _onMaxBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
-    this.setState({ maxBarWidth: parseInt(newValue, 10) });
+    this.setState({ maxBarWidth: Number(newValue) });
   };
   private _onInnerPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
     this.setState({ xAxisInnerPaddingEnabled: checked });
   };
-  private _onInnerPaddingChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
-    this.setState({ xAxisInnerPadding: parseFloat(newValue) });
+  private _onInnerPaddingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ xAxisInnerPadding: Number(e.target.value) });
   };
   private _onOuterPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
     this.setState({ xAxisOuterPaddingEnabled: checked });
   };
-  private _onOuterPaddingChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
-    this.setState({ xAxisOuterPadding: parseFloat(newValue) });
+  private _onOuterPaddingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ xAxisOuterPadding: Number(e.target.value) });
   };
 
   private _basicExample(): JSX.Element {
@@ -183,15 +183,16 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
               checked={this.state.xAxisInnerPaddingEnabled}
               onChange={this._onInnerPaddingCheckChange}
             />
-            <TextField
-              type="number"
-              value={this.state.xAxisInnerPadding.toString()}
+            <input
+              type="range"
+              value={this.state.xAxisInnerPadding}
               min={0}
               max={1}
               step={0.01}
               onChange={this._onInnerPaddingChange}
               disabled={!this.state.xAxisInnerPaddingEnabled}
             />
+            <span>&nbsp;{this.state.xAxisInnerPadding}</span>
           </Stack>
           <Stack horizontal verticalAlign="center">
             <Checkbox
@@ -199,15 +200,16 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
               checked={this.state.xAxisOuterPaddingEnabled}
               onChange={this._onOuterPaddingCheckChange}
             />
-            <TextField
-              type="number"
-              value={this.state.xAxisOuterPadding.toString()}
+            <input
+              type="range"
+              value={this.state.xAxisOuterPadding}
               min={0}
               max={1}
               step={0.01}
               onChange={this._onOuterPaddingChange}
               disabled={!this.state.xAxisOuterPaddingEnabled}
             />
+            <span>&nbsp;{this.state.xAxisOuterPadding}</span>
           </Stack>
         </Stack>
         <div style={rootStyle}>
