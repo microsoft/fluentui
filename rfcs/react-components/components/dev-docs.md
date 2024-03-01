@@ -26,7 +26,7 @@ This RFC seeks to lay out a plan to update the Fluent dev docs. The ultimate goa
 
 ## Proposed changes
 
-### Place all dev documents in markdown files in a `__docs__` folder at the root of the repo.
+### Place all dev documents in markdown files in a `docs` folder at the root of the repo.
 
 This would completely replace the wiki. There are two main advantages to this method:
 
@@ -36,12 +36,10 @@ This would completely replace the wiki. There are two main advantages to this me
 
 ### Establish a new folder and docs structure:
 
-`__docs__`
+`docs`
 
 - rfcs
 
-  - \_rfc-process.md // Explainer on what RFCs are, are not and how they work.
-  - \_rfc-template.md // Starting point.
   - some-historical-rfc.md
   - // All the historical RFCs.
 
@@ -58,12 +56,8 @@ This would completely replace the wiki. There are two main advantages to this me
 - testing
   - // docs that explain current testing processes, minimum bars, and helpful tips and tricks to spin up.
 - browser-support-matrix.md
-- stable-packages.md // a doc describing our approach to breaking changes, what qualifies, and how we make them
-- preview-packages.md // a doc explaining what a preview package is and how to create them
-- compat-packages.md // a doc explaining what a compat package is, how to create them, and the differences in maintenance when compared to stable packages
-
-web-components
-// Chat with Chris Holt here
+- \_rfc-process.md // Explainer on what RFCs are, are not and how they work.
+- \_rfc-template.md // Starting point.
 
 react-v8-and-below
 // Copy paste the exact same content from the current wiki.
