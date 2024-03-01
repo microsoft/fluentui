@@ -1,10 +1,10 @@
 This document describes how to set up your development environment and contribute changes to the Fluent UI project. It assumes basic working knowledge with Git and related tools. A typical developer should budget 2 hours from fresh install to their first successful build completion.
 
 - [Basic setup](#basic-setup)
-  - [Install dev tools](#development-environment)
+  - [Install dev tools](#install-dev-tools)
   - [Verify your environment](#verify-your-environment)
   - [Building (without contributing)](#building-without-contributing)
-- [Contributing changes](#contributing-changes)
+- [Configuration for contribution](#Configuration-for-contribution)
   - [Creating your own fork](#creating-your-own-fork)
   - [Cloning your fork and setting the upstream remote](#cloning-your-fork-and-setting-the-upstream-remote)
   - [Git configuration](#git-configuration)
@@ -24,6 +24,8 @@ This document describes how to set up your development environment and contribut
 - Optional: If you'd like a GUI for Git, some team members use **[GitHub app](https://desktop.github.com/)** or **[SourceTree](https://www.atlassian.com/software/sourcetree)**
 - Optional: **[Snipping tool](https://apps.microsoft.com/detail/9mz95kl8mr0l?launch=true&mode=full&hl=en-us&gl=us&ocid=bingwebsearch)** for screen grabs and recordings
 - Optional: **[Accessibility insight for web](https://accessibilityinsights.io/)**
+- Optional: **[Node Version Manager](https://github.com/nvm-sh/nvm)**
+- Optional: **[CSpell VS Code Extension](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)**
 
 ### Verify your environment
 
@@ -46,7 +48,7 @@ Run `yarn start` and select your start up project.
 - @fluentui/public-docsite starts the public v8 documentation site.
 - @fluentui/public-docsite-v9 starts the public v9 documentation storybook site.
 
-# Contributing changes
+# Configuration for contribution
 
 ## Creating your own fork
 
