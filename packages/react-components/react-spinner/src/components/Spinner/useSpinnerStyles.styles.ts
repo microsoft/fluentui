@@ -87,9 +87,9 @@ const useSpinnerTailBaseClassName = makeResetStyles({
   animationIterationCount: 'infinite',
   animationTimingFunction: tokens.curveEasyEase,
   animationName: {
-    '0%': { transform: 'rotate(-120deg)' },
+    '0%': { transform: 'rotate(-135deg)' },
     '50%': { transform: 'rotate(0deg)' },
-    '100%': { transform: 'rotate(240deg)' },
+    '100%': { transform: 'rotate(225deg)' },
   },
   '&::before': {
     animationName: {
