@@ -56,7 +56,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
   });
 
   const handleDismissKeyUp = useEventCallback((event: React.KeyboardEvent<HTMLSpanElement>) => {
-    if ((event.key === 'Enter' || event.key === 'Space') && !event.altKey && !event.shiftKey && !event.ctrlKey) {
+    if (event.key === 'Enter' && !event.altKey && !event.shiftKey && !event.ctrlKey) {
       const newValue = '';
       setValue(newValue);
       props.onChange?.(event, { value: newValue });
