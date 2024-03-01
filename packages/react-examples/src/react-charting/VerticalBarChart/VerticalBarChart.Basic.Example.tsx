@@ -18,6 +18,8 @@ interface IVerticalChartState {
   useSingleColor: boolean;
   hideLabels: boolean;
   showAxisTitles: boolean;
+  barWidth: number;
+  maxBarWidth: number;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -35,6 +37,8 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       useSingleColor: false,
       hideLabels: false,
       showAxisTitles: true,
+      barWidth: 16,
+      maxBarWidth: 100,
     };
   }
 
@@ -48,7 +52,12 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
   private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ height: parseInt(e.target.value, 10) });
   };
-
+  private _onBarWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ barWidth: Number(e.target.value) });
+  };
+  private _onMaxBarWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ maxBarWidth: Number(e.target.value) });
+  };
   private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption): void => {
     if (this.state.isCalloutselected) {
       this.setState({ isCalloutselected: false });
@@ -195,6 +204,15 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
           onChange={this._onHeightChange}
           aria-valuetext={`ChangeHeightslider${this.state.height}`}
         />
+        <label htmlFor="input-barWidth">barWidth:</label>
+        <input type="number" value={this.state.barWidth} id="input-barWidth" onChange={this._onBarWidthChange} />
+        <label htmlFor="input-maxBarWidth">maxBarWidth:</label>
+        <input
+          type="number"
+          value={this.state.maxBarWidth}
+          id="input-maxBarWidth"
+          onChange={this._onMaxBarWidthChange}
+        />
         <ChoiceGroup options={options} defaultSelectedKey="basicExample" onChange={this._onChange} label="Pick one" />
         <Checkbox
           label="use single color(This will have only one color)"
@@ -238,6 +256,8 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
               enableReflow={true}
               yAxisTitle={this.state.showAxisTitles ? 'Different categories of animals and fruits' : undefined}
               xAxisTitle={this.state.showAxisTitles ? 'Values of each category' : undefined}
+              barWidth={this.state.barWidth}
+              maxBarWidth={this.state.maxBarWidth}
             />
           </div>
         )}
@@ -261,6 +281,8 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
               })}
               hideLabels={this.state.hideLabels}
               enableReflow={true}
+              barWidth={this.state.barWidth}
+              maxBarWidth={this.state.maxBarWidth}
             />
           </div>
         )}

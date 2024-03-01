@@ -17,6 +17,8 @@ interface IVerticalStackedBarState {
   hideLabels: boolean;
   showAxisTitles: boolean;
   margins: {};
+  barWidth: number;
+  maxBarWidth: number;
 }
 
 export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -35,6 +37,8 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         right: 40,
         left: 60,
       },
+      barWidth: 16,
+      maxBarWidth: 100,
     };
   }
 
@@ -48,7 +52,12 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
   private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ height: parseInt(e.target.value, 10) });
   };
-
+  private _onBarWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ barWidth: Number(e.target.value) });
+  };
+  private _onMaxBarWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ maxBarWidth: Number(e.target.value) });
+  };
   private _onShowLineChange = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ showLine: checked });
   };
@@ -269,6 +278,15 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
           onChange={e => this.setState({ barGapMax: +e.target.value })}
           aria-valuetext={`ChangebarGapMaxSlider${this.state.barGapMax}`}
         />
+        <label htmlFor="input-barWidth">barWidth:</label>
+        <input type="number" value={this.state.barWidth} id="input-barWidth" onChange={this._onBarWidthChange} />
+        <label htmlFor="input-maxBarWidth">maxBarWidth:</label>
+        <input
+          type="number"
+          value={this.state.maxBarWidth}
+          id="input-maxBarWidth"
+          onChange={this._onMaxBarWidthChange}
+        />
         <Checkbox
           label="show the lines (hide or show the lines)"
           checked={this.state.showLine}
@@ -307,6 +325,8 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
               enableReflow={true}
               yAxisTitle={this.state.showAxisTitles ? 'Variation of number of sales' : undefined}
               xAxisTitle={this.state.showAxisTitles ? 'Number of days' : undefined}
+              barWidth={this.state.barWidth}
+              maxBarWidth={this.state.maxBarWidth}
             />
           </div>
         )}
@@ -326,6 +346,8 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
               }}
               hideLabels={this.state.hideLabels}
               enableReflow={true}
+              barWidth={this.state.barWidth}
+              maxBarWidth={this.state.maxBarWidth}
             />
           </div>
         )}

@@ -23,6 +23,8 @@ interface IVerticalStackedBarState {
   barCornerRadius: number;
   barMinimumHeight: number;
   selectedCallout: string;
+  barWidth: number;
+  maxBarWidth: number;
 }
 
 export class VerticalStackedBarChartDateAxisExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -35,11 +37,20 @@ export class VerticalStackedBarChartDateAxisExample extends React.Component<{}, 
       barCornerRadius: 2,
       barMinimumHeight: 1,
       selectedCallout: 'MultiCallout',
+      barWidth: 16,
+      maxBarWidth: 100,
     };
   }
   public render(): JSX.Element {
     return <div>{this._basicExample()}</div>;
   }
+
+  private _onBarWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ barWidth: Number(e.target.value) });
+  };
+  private _onMaxBarWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ maxBarWidth: Number(e.target.value) });
+  };
 
   private _basicExample(): JSX.Element {
     const firstChartPoints: IVSChartDataPoint[] = [
@@ -193,6 +204,15 @@ export class VerticalStackedBarChartDateAxisExample extends React.Component<{}, 
             onChange={e => this.setState({ barMinimumHeight: +e.target.value })}
             aria-valuetext={`ChangebarBarMinimumHeightslider${this.state.barMinimumHeight}`}
           />
+          <label htmlFor="input-barWidth">barWidth:</label>
+          <input type="number" value={this.state.barWidth} id="input-barWidth" onChange={this._onBarWidthChange} />
+          <label htmlFor="input-maxBarWidth">maxBarWidth:</label>
+          <input
+            type="number"
+            value={this.state.maxBarWidth}
+            id="input-maxBarWidth"
+            onChange={this._onMaxBarWidthChange}
+          />
           <ChoiceGroup
             options={options}
             defaultSelectedKey="MultiCallout"
@@ -254,6 +274,8 @@ export class VerticalStackedBarChartDateAxisExample extends React.Component<{}, 
               'aria-label': 'Example chart with metadata per month',
             }}
             enableReflow={true}
+            barWidth={this.state.barWidth}
+            maxBarWidth={this.state.maxBarWidth}
           />
         </div>
       </>

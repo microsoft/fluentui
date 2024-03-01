@@ -1,15 +1,29 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
 
-interface IVerticalBarState {}
+interface IVerticalBarState {
+  barWidth: number;
+  maxBarWidth: number;
+}
 
 export class VerticalBarChartDateAxisExample extends React.Component<{}, IVerticalBarState> {
   constructor(props: IVerticalBarChartProps) {
     super(props);
+    this.state = {
+      barWidth: 16,
+      maxBarWidth: 100,
+    };
   }
   public render(): JSX.Element {
     return <div>{this._rotateLabelExample()}</div>;
   }
+
+  private _onBarWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ barWidth: Number(e.target.value) });
+  };
+  private _onMaxBarWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ maxBarWidth: Number(e.target.value) });
+  };
 
   private _rotateLabelExample(): JSX.Element {
     const points: IVerticalBarChartDataPoint[] = [
@@ -50,6 +64,15 @@ export class VerticalBarChartDateAxisExample extends React.Component<{}, IVertic
     const rootStyle = { width: '650px', height: '500px' };
     return (
       <>
+        <label htmlFor="input-barWidth">barWidth:</label>
+        <input type="number" value={this.state.barWidth} id="input-barWidth" onChange={this._onBarWidthChange} />
+        <label htmlFor="input-maxBarWidth">maxBarWidth:</label>
+        <input
+          type="number"
+          value={this.state.maxBarWidth}
+          id="input-maxBarWidth"
+          onChange={this._onMaxBarWidthChange}
+        />
         <div style={rootStyle}>
           <VerticalBarChart
             chartTitle="Vertical bar chart rotated labels example "
@@ -62,6 +85,8 @@ export class VerticalBarChartDateAxisExample extends React.Component<{}, IVertic
             hideLegend={true}
             //rotateXAxisLables={true}
             enableReflow={true}
+            barWidth={this.state.barWidth}
+            maxBarWidth={this.state.maxBarWidth}
           />
         </div>
       </>
