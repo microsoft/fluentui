@@ -55,6 +55,15 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     props.onChange?.(event, { value: newValue });
   });
 
+  const handleDismissKeyUp = useEventCallback((event: React.KeyboardEvent<HTMLSpanElement>) => {
+    if ((event.key === 'Enter' || event.key === 'Space') && !event.altKey && !event.shiftKey && !event.ctrlKey) {
+      const newValue = '';
+      setValue(newValue);
+      props.onChange?.(event, { value: newValue });
+      searchBoxRef.current?.focus();
+    }
+  });
+
   const inputState = useInput_unstable(
     {
       type: 'search',
@@ -104,7 +113,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
         children: <DismissRegular />,
         role: 'button',
         'aria-label': 'clear',
-        tabIndex: -1,
+        tabIndex: 0,
       },
       renderByDefault: true,
       elementType: 'span',
@@ -116,6 +125,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
 
   if (state.dismiss) {
     state.dismiss.onClick = handleDismissClick;
+    state.dismiss.onKeyUp = handleDismissKeyUp;
   }
 
   return state;
