@@ -32,8 +32,8 @@ const useClasses = makeStyles({
   controls: {
     display: 'grid',
     gridTemplateColumns: '1fr auto',
-    ...shorthands.gap('20px'),
-    marginBottom: '20px',
+    ...shorthands.gap(tokens.spacingVerticalL, tokens.spacingHorizontalL),
+    marginBottom: tokens.spacingVerticalM,
   },
 
   inputControl: {
@@ -48,16 +48,16 @@ const useClasses = makeStyles({
   radioControl: {
     ...shorthands.borderRadius(tokens.borderRadiusSmall),
     boxShadow: tokens.shadow2,
-    ...shorthands.padding('5px', '10px'),
+    ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalL),
     backgroundColor: tokens.colorNeutralBackground1,
   },
 
   radioLabel: {
-    marginLeft: '8px',
+    marginLeft: tokens.spacingHorizontalS,
   },
 
   message: {
-    marginBottom: '20px',
+    marginBottom: tokens.spacingVerticalM,
   },
 
   pane: {
@@ -72,12 +72,12 @@ const useClasses = makeStyles({
     justifyItems: 'center',
     gridTemplateColumns: '1fr',
     gridTemplateRows: '1fr auto',
-    ...shorthands.gap('10px'),
+    ...shorthands.gap(tokens.spacingVerticalMNudge, tokens.spacingHorizontalMNudge),
     fontSize: `${UNSIZED_ICON_SIZE}px`,
-    ...shorthands.padding('8px'),
+    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     ...shorthands.overflow('hidden'),
     boxShadow: tokens.shadow2,
-    ...shorthands.margin('10px'),
+    ...shorthands.margin(tokens.spacingVerticalS, tokens.spacingHorizontalS),
     ...shorthands.borderRadius(tokens.borderRadiusSmall),
   },
   iconCopyButton: {
@@ -92,7 +92,7 @@ const useClasses = makeStyles({
     ...shorthands.gridArea('2', '1', '3', '2'),
 
     '> code': {
-      fontSize: '12px !important',
+      fontSize: `${tokens.fontSizeBase200} !important`,
       display: 'block !important',
     },
   },
