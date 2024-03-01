@@ -83,10 +83,12 @@ storiesOf('Spinner converged', module)
     'Inverted with Label',
     () => (
       <InvertedWrapper>
-        <Spinner appearance="inverted" labelPosition="before" label="Before" />
-        <Spinner appearance="inverted" labelPosition="after" label="After" />
-        <Spinner appearance="inverted" labelPosition="above" label="Above" />
-        <Spinner appearance="inverted" labelPosition="below" label="Below" />
+        <div style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+          <Spinner appearance="inverted" labelPosition="before" label="Before" />
+          <Spinner appearance="inverted" labelPosition="after" label="After" />
+          <Spinner appearance="inverted" labelPosition="above" label="Above" />
+          <Spinner appearance="inverted" labelPosition="below" label="Below" />
+        </div>
       </InvertedWrapper>
     ),
     {
