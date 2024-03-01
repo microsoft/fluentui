@@ -16,9 +16,7 @@ export const renderSpinner_unstable = (state: SpinnerState) => {
         <state.label />
       )}
       {state.spinner && shouldRenderSpinner && (
-        <state.spinner>
-          <state.spinnerTail />
-        </state.spinner>
+        <state.spinner>{state.spinnerTail && <state.spinnerTail />}</state.spinner>
       )}
       {state.label && shouldRenderSpinner && (labelPosition === 'below' || labelPosition === 'after') && (
         <state.label />

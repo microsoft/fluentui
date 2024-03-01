@@ -234,6 +234,8 @@ export const useSpinnerStyles_unstable = (state: SpinnerState): SpinnerState => 
       appearance === 'inverted' && spinnerStyles.inverted,
       state.spinner.className,
     );
+  }
+  if (state.spinnerTail) {
     state.spinnerTail.className = mergeClasses(
       spinnerClassNames.spinnerTail,
       spinnerTailBaseClassName,

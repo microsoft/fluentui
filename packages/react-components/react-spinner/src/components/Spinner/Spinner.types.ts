@@ -56,7 +56,7 @@ export type SpinnerProps = Omit<ComponentProps<SpinnerSlots>, 'size'> & {
 /**
  * State used in rendering Spinner
  */
-export type SpinnerState = ComponentState<Required<SpinnerSlots>> &
+export type SpinnerState = ComponentState<SpinnerSlots> &
   Required<Pick<SpinnerProps, 'appearance' | 'delay' | 'labelPosition' | 'size'>> & {
     /**
      * Should the spinner be rendered in the DOM
