@@ -6,7 +6,7 @@ import { useRatingItemStyles_unstable } from './useRatingItemStyles.styles';
 import type { RatingItemProps } from './RatingItem.types';
 
 /**
- * RatingItem component is an item that will be used to set or display a rating value.
+ * RatingItem is an item that will be used to set or display a rating value.
  */
 export const RatingItem: ForwardRefComponent<RatingItemProps> = React.forwardRef((props, ref) => {
   const state = useRatingItem_unstable(props, ref);
