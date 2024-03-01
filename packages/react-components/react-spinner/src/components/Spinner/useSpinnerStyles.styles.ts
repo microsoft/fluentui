@@ -11,6 +11,13 @@ export const spinnerClassNames: SlotClassNames<SpinnerSlots> = {
   label: 'fui-Spinner__label',
 };
 
+/**
+ * CSS variables used internally by Spinner
+ */
+const vars = {
+  strokeWidth: '--fui-Spinner--strokeWidth',
+};
+
 const useRootBaseClassName = makeResetStyles({
   display: 'flex',
   alignItems: 'center',
@@ -27,7 +34,15 @@ const useRootStyles = makeStyles({
 
 const useSpinnerBaseClassName = makeResetStyles({
   position: 'relative',
-  borderRadius: tokens.borderRadiusCircular,
+  flexShrink: 0,
+
+  // Use a mask to create the ring shape of the spinner.
+  maskImage:
+    `radial-gradient(closest-side, ` +
+    `transparent calc(100% - var(${vars.strokeWidth}) - 1px), ` +
+    `white calc(100% - var(${vars.strokeWidth})) calc(100% - 1px), ` +
+    `transparent 100%)`,
+
   backgroundColor: tokens.colorBrandStroke2Contrast,
   color: tokens.colorBrandStroke1,
   '@media screen and (forced-colors: active)': {
@@ -99,10 +114,6 @@ const useSpinnerTailBaseClassName = makeResetStyles({
   },
 });
 
-// A maskImage to make a ring shape with the given stroke width.
-const ringMask = (strokeWidth: string) =>
-  `radial-gradient(closest-side, transparent calc(100% - ${strokeWidth} - 1px), white calc(100% - ${strokeWidth}))`;
-
 const useSpinnerStyles = makeStyles({
   inverted: {
     backgroundColor: tokens.colorNeutralStrokeAlpha2,
@@ -122,49 +133,49 @@ const useSpinnerStyles = makeStyles({
   'extra-tiny': {
     height: '16px',
     width: '16px',
-    maskImage: ringMask(tokens.strokeWidthThick),
+    [vars.strokeWidth]: tokens.strokeWidthThick,
   },
 
   tiny: {
     height: '20px',
     width: '20px',
-    maskImage: ringMask(tokens.strokeWidthThick),
+    [vars.strokeWidth]: tokens.strokeWidthThick,
   },
 
   'extra-small': {
     height: '24px',
     width: '24px',
-    maskImage: ringMask(tokens.strokeWidthThick),
+    [vars.strokeWidth]: tokens.strokeWidthThick,
   },
 
   small: {
     height: '28px',
     width: '28px',
-    maskImage: ringMask(tokens.strokeWidthThick),
+    [vars.strokeWidth]: tokens.strokeWidthThick,
   },
 
   medium: {
     height: '32px',
     width: '32px',
-    maskImage: ringMask(tokens.strokeWidthThicker),
+    [vars.strokeWidth]: tokens.strokeWidthThicker,
   },
 
   large: {
     height: '36px',
     width: '36px',
-    maskImage: ringMask(tokens.strokeWidthThicker),
+    [vars.strokeWidth]: tokens.strokeWidthThicker,
   },
 
   'extra-large': {
     height: '40px',
     width: '40px',
-    maskImage: ringMask(tokens.strokeWidthThicker),
+    [vars.strokeWidth]: tokens.strokeWidthThicker,
   },
 
   huge: {
     height: '44px',
     width: '44px',
-    maskImage: ringMask(tokens.strokeWidthThickest),
+    [vars.strokeWidth]: tokens.strokeWidthThickest,
   },
 });
 
