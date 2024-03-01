@@ -25,7 +25,7 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
 
   /**
    * Width of each bar in the chart. When set to `undefined` or `'default'`, the bar width defaults to 16px.
-   * When set to `auto`, the bar width is calculated from padding values.
+   * When set to `auto` (which is only applicable to string x-axis), the bar width is calculated from padding values.
    * @default 16
    */
   barWidth?: number | 'default' | 'auto';
