@@ -1490,11 +1490,18 @@ const DEFAULT_BAR_WIDTH = 16;
 const MIN_BAR_WIDTH = 1;
 
 export const getBarWidth = (
-  barWidthProp: number | string | undefined,
+  barWidthProp: number | 'default' | 'auto' | undefined,
   maxBarWidthProp: number | undefined,
   defaultValue = DEFAULT_BAR_WIDTH,
 ): number => {
-  let barWidth = typeof barWidthProp === 'number' ? barWidthProp : defaultValue;
+  let barWidth: number;
+  if (typeof barWidthProp === 'number') {
+    barWidth = barWidthProp;
+  } else if (barWidthProp === 'default' || typeof barWidthProp === 'undefined') {
+    barWidth = DEFAULT_BAR_WIDTH;
+  } else {
+    barWidth = defaultValue;
+  }
   if (typeof maxBarWidthProp === 'number') {
     barWidth = Math.min(barWidth, maxBarWidthProp);
   }
