@@ -963,7 +963,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         return point.x as Date;
       })!;
       const xBarScale = d3ScaleUtc()
-        .domain([sDate, lDate])
+        .domain(this._isRtl ? [lDate, sDate] : [sDate, lDate])
         .range([
           this.margins.left! + this._domainMargin + this._barWidth / 2,
           containerWidth - this.margins.right! - this._barWidth / 2 - this._domainMargin,
@@ -973,7 +973,11 @@ export class VerticalStackedBarChartBase extends React.Component<
     }
     const xBarScale = d3ScaleBand()
       .domain(this._xAxisLabels)
-      .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin])
+      .range(
+        this._isRtl
+          ? [containerWidth - this.margins.right! - this._domainMargin, this.margins.left! + this._domainMargin]
+          : [this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin],
+      )
       .paddingInner(2 / 3);
 
     return { xBarScale, yBarScale };
