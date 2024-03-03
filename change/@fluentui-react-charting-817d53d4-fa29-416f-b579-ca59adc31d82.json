@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Reducing monosize of charts and removing circular dependencies",
+  "packageName": "@fluentui/react-charting",
+  "email": "srmukher@microsoft.com",
+  "dependentChangeType": "patch"
+}

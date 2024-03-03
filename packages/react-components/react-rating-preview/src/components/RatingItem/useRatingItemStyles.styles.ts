@@ -55,6 +55,7 @@ const useInputBaseClassName = makeResetStyles({
   margin: 0,
   opacity: 0,
   cursor: 'pointer',
+  height: '100%',
 });
 
 const useInputStyles = makeStyles({

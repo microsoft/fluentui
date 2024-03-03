@@ -1485,3 +1485,36 @@ export function formatValueWithSIPrefix(value: number) {
 
   return d3FormatPrefix(specifier, value)(value);
 }
+
+const DEFAULT_BAR_WIDTH = 16;
+const MIN_BAR_WIDTH = 1;
+
+export const getBarWidth = (
+  barWidthProp: number | 'default' | 'auto' | undefined,
+  maxBarWidthProp: number | undefined,
+  defaultValue = DEFAULT_BAR_WIDTH,
+): number => {
+  let barWidth: number;
+  if (typeof barWidthProp === 'number') {
+    barWidth = barWidthProp;
+  } else if (barWidthProp === 'default' || typeof barWidthProp === 'undefined') {
+    barWidth = DEFAULT_BAR_WIDTH;
+  } else {
+    barWidth = defaultValue;
+  }
+  if (typeof maxBarWidthProp === 'number') {
+    barWidth = Math.min(barWidth, maxBarWidthProp);
+  }
+  barWidth = Math.max(barWidth, MIN_BAR_WIDTH);
+  return barWidth;
+};
+
+export const getScalePadding = (prop: number | undefined, shorthandProp?: number, defaultValue = 0): number => {
+  let padding = typeof prop === 'number' ? prop : typeof shorthandProp === 'number' ? shorthandProp : defaultValue;
+  padding = Math.max(0, Math.min(padding, 1));
+  return padding;
+};
+
+export const isScalePaddingDefined = (prop: number | undefined, shorthandProp?: number): boolean => {
+  return typeof prop === 'number' || typeof shorthandProp === 'number';
+};

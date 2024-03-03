@@ -85,5 +85,15 @@
       "!{projectRoot}/src/test-setup.[jt]s"
     ]
   },
+  "release": {
+    "projectsRelationship": "independent",
+    "groups": {
+      "northstar": {
+        "releaseTagPattern": "@fluentui/react-northstar_v{version}",
+        "projectsRelationship": "fixed",
+        "projects": ["packages/fluentui/*"]
+      }
+    }
+  },
   "parallel": 3
 }
