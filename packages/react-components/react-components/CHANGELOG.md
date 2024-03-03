@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 28 Feb 2024 02:34:17 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Feb 2024 14:44:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.46.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.7)
+
+Thu, 29 Feb 2024 14:44:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.46.6..@fluentui/react-components_v9.46.7)
+
+### Minor changes
+
+- `@fluentui/react-tags`
+  - feat: export TagGroupContextValues type ([PR #30645](https://github.com/microsoft/fluentui/pull/30645) by bernardo.sunderhus@gmail.com)
 
 ## [9.46.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.6)
 

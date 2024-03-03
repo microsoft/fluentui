@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tags",
   "entries": [
     {
+      "date": "Thu, 29 Feb 2024 14:44:21 GMT",
+      "tag": "@fluentui/react-tags_v9.1.0",
+      "version": "9.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "ace98f73a615f3876ff4d7d4995441af1aa55675",
+            "comment": "feat: export TagGroupContextValues type"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Feb 2024 02:34:19 GMT",
       "tag": "@fluentui/react-tags_v9.0.29",
       "version": "9.0.29",

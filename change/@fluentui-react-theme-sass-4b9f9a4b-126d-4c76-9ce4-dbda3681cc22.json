@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: Add color tokens",
+  "packageName": "@fluentui/react-theme-sass",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -2,6 +2,29 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 29 Feb 2024 14:44:20 GMT",
+      "tag": "@fluentui/react-components_v9.46.7",
+      "version": "9.46.7",
+      "comments": {
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "c7342e34da73fb518c8341515c369ff026547c2c",
+            "comment": "chore: rollback export of internal hooks"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "ace98f73a615f3876ff4d7d4995441af1aa55675",
+            "comment": "feat: export TagGroupContextValues type"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Feb 2024 02:34:17 GMT",
       "tag": "@fluentui/react-components_v9.46.6",
       "version": "9.46.6",

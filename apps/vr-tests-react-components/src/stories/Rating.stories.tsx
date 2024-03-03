@@ -48,11 +48,11 @@ storiesOf('Rating Converged', module)
   ))
   .addStory(
     'Rating with custom circle icons',
-    () => <Rating iconFilled={<CircleFilled />} iconOutline={<CircleRegular />} defaultValue={3.5} />,
+    () => <Rating iconFilled={CircleFilled} iconOutline={CircleRegular} defaultValue={3.5} />,
     {},
   )
   .addStory(
     'Rating with custom square icons',
-    () => <Rating iconFilled={<SquareFilled />} iconOutline={<SquareRegular />} defaultValue={3.5} />,
+    () => <Rating iconFilled={SquareFilled} iconOutline={SquareRegular} defaultValue={3.5} />,
     {},
   );

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: remove invalid peerDependency on scheduler",
+  "packageName": "@fluentui/global-context",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

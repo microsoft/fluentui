@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 01 Mar 2024 07:26:28 GMT",
+      "tag": "@fluentui/react-charting_v5.19.30",
+      "version": "5.19.30",
+      "comments": {
+        "none": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "f357c800c5f39bfe46a9081ce47f38b983dfbe7e",
+            "comment": "Add dynamic status badge for test coverage"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 27 Feb 2024 07:25:41 GMT",
       "tag": "@fluentui/react-charting_v5.19.30",
       "version": "5.19.30",
