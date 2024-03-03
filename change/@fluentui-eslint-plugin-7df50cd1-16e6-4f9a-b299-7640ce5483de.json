@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Bumping eslint-plugin-jsdoc to latest 48.2.0 for Node 20 compatibility.",
+  "comment": "chore(eslint-plugin): migrate to eslint-plugin-jsdoc to latest in order to support Node 20",
   "packageName": "@fluentui/eslint-plugin",
   "email": "marata@microsoft.com",
   "dependentChangeType": "patch"
