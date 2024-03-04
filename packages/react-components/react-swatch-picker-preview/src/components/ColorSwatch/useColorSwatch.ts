@@ -35,7 +35,7 @@ export const useColorSwatch_unstable = (
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'button',
-    excludedPropNames: ['value', 'color'],
+    excludedPropNames: ['value', 'color', 'role'],
   });
 
   const rootVariables = {
@@ -46,7 +46,7 @@ export const useColorSwatch_unstable = (
     defaultProps: {
       ref: useFocusWithin<HTMLDivElement>(),
       role: props.role ?? 'radio',
-      'aria-selected': selected,
+      'aria-checked': selected,
       ...nativeProps.root,
     },
     elementType: 'div',
