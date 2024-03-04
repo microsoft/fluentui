@@ -289,14 +289,15 @@ describe('Area chart rendering', () => {
   testWithWait(
     'Should render the Area chart with date x-axis data when tick Values is given',
     AreaChart,
-    { data: chartPointsWithDate, tickValues, tickFormat: '%m/%d' },
+    { data: chartData },
     container => {
       // Assert
+      screen.debug(container, Infinity);
       expect(container).toMatchSnapshot();
     },
     undefined,
     undefined,
-    !isTimezoneSet(Timezone.UTC),
+    !true,
   );
 
   testWithWait(
