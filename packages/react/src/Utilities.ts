@@ -176,11 +176,14 @@ export {
   trProperties,
   unhoistMethods,
   useAdoptedStylesheet,
+  useAdoptedStylesheetEx,
   useCustomizationSettings,
   useFocusRects,
   useHasMergeStylesShadowRootContext,
+  useMergeStylesHooks,
   useMergeStylesRootStylesheets,
   useMergeStylesShadowRootContext,
+  useShadowConfig,
   values,
   videoProperties,
   warn,
@@ -190,7 +193,10 @@ export {
   warnMutuallyExclusive,
 } from '@fluentui/utilities';
 export type {
+  AdoptedStylesheetHook,
+  AdoptedStylesheetExHook,
   FitMode,
+  HasMergeStylesShadowRootContextHook,
   IAsAsyncOptions,
   IBaseProps,
   ICancelable,
@@ -248,5 +254,6 @@ export type {
   Settings,
   // eslint-disable-next-line deprecation/deprecation
   SettingsFunction,
+  ShadowConfigHook,
   StyleFunction,
 } from '@fluentui/utilities';

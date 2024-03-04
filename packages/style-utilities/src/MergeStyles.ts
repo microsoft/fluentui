@@ -17,4 +17,5 @@ export type {
   IProcessedStyleSet,
   IStyleSheetConfig,
   ICSPSettings,
+  ShadowConfig,
 } from '@fluentui/merge-styles';

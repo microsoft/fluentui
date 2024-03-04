@@ -1,7 +1,10 @@
 import * as React from 'react';
-import { GLOBAL_STYLESHEET_KEY, Stylesheet, makeShadowConfig } from '@fluentui/merge-styles';
-import { getWindow } from '../dom';
+import { GLOBAL_STYLESHEET_KEY, Stylesheet, makeShadowConfig, DEFAULT_SHADOW_CONFIG } from '@fluentui/merge-styles';
+import { getWindow } from '../../dom';
 import type { ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
+import type { AdoptedStylesheetExHook, AdoptedStylesheetHook } from '../hooks/useAdoptedStylesheet';
+import type { ShadowConfigHook } from '../hooks/useShadowConfig';
+import type { HasMergeStylesShadowRootContextHook } from '../hooks/useMergeStylesShadowRoot';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -11,15 +14,34 @@ declare global {
   }
 }
 
+type UseWindowHook = () => Window | undefined;
+
+const noop = () => false;
+const noopShadow = () => DEFAULT_SHADOW_CONFIG;
+const noopWindow = () => undefined;
+
+// const noop: AdoptedStylesheetHook = _ => true;
+// const noopEx: AdoptedStylesheetExHook = (_, _a, _b, _c) => true;
+
 export type MergeStylesRootContextValue = {
   /**
    * Map of stylesheets available in the context.
    */
   stylesheets: Map<string, ExtendedCSSStyleSheet>;
+  useAdoptedStylesheetEx: AdoptedStylesheetExHook;
+  useAdoptedStylesheet: AdoptedStylesheetHook;
+  useShadowConfig: ShadowConfigHook;
+  useHasMergeStylesShadowRootContext: HasMergeStylesShadowRootContextHook;
+  useWindow: UseWindowHook;
 };
 
-const MergeStylesRootContext = React.createContext<MergeStylesRootContextValue>({
+export const MergeStylesRootContext = React.createContext<MergeStylesRootContextValue>({
   stylesheets: new Map(),
+  useAdoptedStylesheetEx: noop,
+  useAdoptedStylesheet: noop,
+  useShadowConfig: noopShadow,
+  useHasMergeStylesShadowRootContext: noop,
+  useWindow: noopWindow,
 });
 
 export type MergeStylesRootProviderProps = {
@@ -33,6 +55,12 @@ export type MergeStylesRootProviderProps = {
    * Useful for multi-window scenarios.
    */
   window?: Window;
+
+  useAdoptedStylesheetEx?: AdoptedStylesheetExHook;
+  useAdoptedStylesheet?: AdoptedStylesheetHook;
+  useShadowConfig?: ShadowConfigHook;
+  useHasMergeStylesShadowRootContext?: HasMergeStylesShadowRootContextHook;
+  useWindow?: UseWindowHook;
 };
 
 /**
@@ -42,11 +70,16 @@ export type MergeStylesRootProviderProps = {
 export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = ({
   stylesheets: userSheets,
   window: userWindow,
+  useAdoptedStylesheet,
+  useAdoptedStylesheetEx,
+  useShadowConfig,
+  useHasMergeStylesShadowRootContext,
+  useWindow,
   ...props
 }) => {
   const win = userWindow ?? getWindow();
   const [stylesheets, setStylesheets] = React.useState<Map<string, ExtendedCSSStyleSheet>>(
-    () => userSheets ?? new Map(),
+    () => userSheets || new Map(),
   );
 
   const sheetHandler = React.useCallback(({ key, sheet }) => {
@@ -59,7 +92,7 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
 
   // Udapte stylesheets based on user style sheet changes
   React.useEffect(() => {
-    setStylesheets(userSheets ?? new Map());
+    setStylesheets(userSheets || new Map());
   }, [userSheets]);
 
   // Wire up listener for adopted stylesheets
@@ -69,11 +102,10 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
     }
 
     const sheet = Stylesheet.getInstance(makeShadowConfig(GLOBAL_STYLESHEET_KEY, false, win));
-
-    sheet.onAddConstructableStyleSheet(sheetHandler);
+    const off = sheet.onAddSheet(sheetHandler);
 
     return () => {
-      sheet.offAddConstructableStyleSheet(sheetHandler);
+      off();
     };
   }, [win, sheetHandler]);
 
@@ -87,7 +119,9 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
     const next = new Map<string, ExtendedCSSStyleSheet>(stylesheets);
     const sheet = Stylesheet.getInstance(makeShadowConfig(GLOBAL_STYLESHEET_KEY, false, win));
 
-    sheet.forEachAdoptedStyleSheet((adoptedSheet, key) => {
+    const adoptedSheets = sheet.getAdoptedSheets();
+
+    adoptedSheets.forEach((adoptedSheet, key) => {
       next.set(key, adoptedSheet);
       changed = true;
     });
@@ -102,15 +136,20 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
   const value = React.useMemo(() => {
     return {
       stylesheets,
+      useAdoptedStylesheet: useAdoptedStylesheet || noop,
+      useAdoptedStylesheetEx: useAdoptedStylesheetEx || noop,
+      useShadowConfig: useShadowConfig || noopShadow,
+      useHasMergeStylesShadowRootContext: useHasMergeStylesShadowRootContext || noop,
+      useWindow: useWindow || noopWindow,
     };
-  }, [stylesheets]);
+  }, [
+    stylesheets,
+    useAdoptedStylesheet,
+    useAdoptedStylesheetEx,
+    useShadowConfig,
+    useHasMergeStylesShadowRootContext,
+    useWindow,
+  ]);
 
   return <MergeStylesRootContext.Provider value={value} {...props} />;
-};
-
-/**
- * Get the map of stylesheets available in the context.
- */
-export const useMergeStylesRootStylesheets = () => {
-  return React.useContext(MergeStylesRootContext).stylesheets;
 };

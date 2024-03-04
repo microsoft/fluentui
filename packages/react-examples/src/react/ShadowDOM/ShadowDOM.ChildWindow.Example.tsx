@@ -19,7 +19,7 @@ import {
 // eslint-disable-next-line
 import { WindowProvider } from '@fluentui/react-window-provider';
 import { CompassNWIcon, DictionaryIcon, TrainSolidIcon } from '@fluentui/react-icons-mdl2';
-import { Stylesheet } from '@fluentui/merge-styles';
+import { Stylesheet, projectStylesToWindow } from '@fluentui/merge-styles';
 
 import { Shadow } from './ShadowHelper';
 
@@ -144,9 +144,7 @@ const TestWindow: React.FC = () => {
       return;
     }
 
-    // childWindow.__SENTINAL__ = 'child';
-
-    Stylesheet.getInstance().projectStylesToWindow(childWindow);
+    projectStylesToWindow(Stylesheet.getInstance(), childWindow);
 
     const childRoot = childWindow.document.body.appendChild(childWindow.document.createElement('div'));
     ReactDOM.render(

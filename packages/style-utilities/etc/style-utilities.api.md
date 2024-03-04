@@ -43,6 +43,7 @@ import { keyframes } from '@fluentui/merge-styles';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { mergeStyleSets } from '@fluentui/merge-styles';
 import { registerDefaultFontFaces } from '@fluentui/theme';
+import { ShadowConfig } from '@fluentui/merge-styles';
 import { Stylesheet } from '@fluentui/merge-styles';
 
 // @public (undocumented)
@@ -326,6 +327,8 @@ export const ScreenWidthMinXXXLarge = 1920;
 
 // @public
 export function setIconOptions(options: Partial<IIconOptions>): void;
+
+export { ShadowConfig }
 
 export { Stylesheet }
 

@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { concatStyleSetsWithProps } from '@fluentui/merge-styles';
-import { useAdoptedStylesheet, useShadowConfig } from './shadowDom/MergeStylesShadowRootContext';
+import { useMergeStylesHooks } from './shadowDom/index';
 import { useCustomizationSettings } from './customizations/useCustomizationSettings';
 import type { IStyleSet, IStyleFunctionOrObject, ShadowConfig } from '@fluentui/merge-styles';
 import { getWindow } from './dom/getWindow';
-// eslint-disable-next-line
-import { useWindow } from '@fluentui/react-window-provider';
 
 export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> {
   styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
@@ -102,8 +100,11 @@ export function styled<
     const { styles: customizedStyles, dir, ...rest } = settings;
     const additionalProps = getProps ? getProps(props) : undefined;
 
-    const win = useWindow() ?? getWindow();
-    const shadowConfig = useShadowConfig(scope, win);
+    const { useAdoptedStylesheet, useShadowConfig, useHasMergeStylesShadowRootContext, useWindow } =
+      useMergeStylesHooks();
+    const win = useWindow() || getWindow();
+    const inShadow = useHasMergeStylesShadowRootContext();
+    const shadowConfig = useShadowConfig(scope, inShadow, win);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const cache = (styles.current && (styles.current as any).__cachedInputs__) || [];

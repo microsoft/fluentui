@@ -99,14 +99,6 @@ export function mergeStyleSets(
 export function mergeStyleSets(
   ...styleSets: Array<IStyleSet | undefined | false | null | ShadowConfig>
 ): IProcessedStyleSet<any> {
-  // let shadowConfig: ShadowConfig | undefined = undefined;
-  // let sets = styleSets;
-  // if (isShadowConfig(styleSets[0])) {
-  //   shadowConfig = styleSets[0] as ShadowConfig;
-  //   sets = styleSets.slice(1);
-  // }
-
-  // return mergeCssSets(sets as any, { ...getStyleOptions(), shadowConfig });
   return mergeCssSets(styleSets as any, getStyleOptions());
 }
 

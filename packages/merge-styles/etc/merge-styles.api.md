@@ -5,6 +5,12 @@
 ```ts
 
 // @public (undocumented)
+export type AddSheetCallback = ({ key, sheet }: {
+    key: string;
+    sheet: ExtendedCSSStyleSheet;
+}) => void;
+
+// @public (undocumented)
 export const cloneCSSStyleSheet: (srcSheet: CSSStyleSheet, targetSheet: CSSStyleSheet) => CSSStyleSheet;
 
 // @public
@@ -36,10 +42,8 @@ export type DeepPartial<T> = {
     [P in keyof T]?: T[P] extends (infer U)[] ? DeepPartial<U>[] : T[P] extends object ? DeepPartial<T[P]> : T[P];
 };
 
-// Warning: (ae-forgotten-export) The symbol "EventArgs" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export type EventHandler<T> = (args: EventArgs<T>) => void;
+export const DEFAULT_SHADOW_CONFIG: ShadowConfig;
 
 // @public (undocumented)
 export type ExtendedCSSStyleSheet = CSSStyleSheet & {
@@ -98,6 +102,11 @@ export const InjectionMode: {
 
 // @public (undocumented)
 export type InjectionMode = (typeof InjectionMode)[keyof typeof InjectionMode];
+
+// Warning: (ae-forgotten-export) The symbol "InsertRuleArgs" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type InsertRuleCallback = ({ key, sheet, rule }: InsertRuleArgs) => void;
 
 // @public
 export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
@@ -548,6 +557,9 @@ export type ObjectOnly<TArg> = TArg extends {} ? TArg : {};
 type Omit_2<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
 export { Omit_2 as Omit }
 
+// @public (undocumented)
+export const projectStylesToWindow: (stylesheet: Stylesheet, targetWindow: Window) => void;
+
 // @public
 export function setRTL(isRTL: boolean): void;
 
@@ -568,13 +580,15 @@ export class Stylesheet {
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
     classNameFromKey(key: string): string | undefined;
     // (undocumented)
-    forEachAdoptedStyleSheet(callback: (value: ExtendedCSSStyleSheet, key: string, map: Map<string, ExtendedCSSStyleSheet>) => void): void;
-    // (undocumented)
     getAdoptableStyleSheet(key: string): ExtendedCSSStyleSheet;
+    // (undocumented)
+    getAdoptedSheets(): Map<string, ExtendedCSSStyleSheet>;
     getClassName(displayName?: string): string;
     getClassNameCache(): {
         [key: string]: string;
     };
+    // (undocumented)
+    getConfig(): IStyleSheetConfig;
     static getInstance(shadowConfig?: ShadowConfig): Stylesheet;
     getRules(includePreservedRules?: boolean): string;
     insertedRulesFromClassName(className: string): string[] | undefined;
@@ -582,17 +596,9 @@ export class Stylesheet {
     // (undocumented)
     makeCSSStyleSheet(win: Window): ExtendedCSSStyleSheet;
     // (undocumented)
-    offAddConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void;
-    // (undocumented)
-    offInsertRuleIntoConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void;
-    // (undocumented)
-    onAddConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void;
-    onInsertRule(callback: Function): Function;
-    // (undocumented)
-    onInsertRuleIntoConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void;
+    onAddSheet(callback: AddSheetCallback): Function;
+    onInsertRule(callback: Function | InsertRuleCallback): Function;
     onReset(callback: Function): Function;
-    // (undocumented)
-    projectStylesToWindow(targetWindow: Window): void;
     reset(): void;
     // (undocumented)
     resetKeys(): void;

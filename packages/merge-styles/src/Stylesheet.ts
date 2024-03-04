@@ -3,8 +3,6 @@
 // See: https://github.com/microsoft/fluentui/issues/28058
 import { IStyle } from './IStyle';
 import { DEFAULT_SHADOW_CONFIG, GLOBAL_STYLESHEET_KEY, ShadowConfig } from './shadowConfig';
-import { EventHandler, EventMap } from './EventMap';
-import { cloneExtendedCSSStyleSheet } from './cloneCSSStyleSheet';
 
 export const InjectionMode = {
   /**
@@ -99,7 +97,7 @@ export interface ISerializedStylesheet {
   rules: Stylesheet['_rules'];
 }
 
-const STYLESHEET_SETTING = '__stylesheet__';
+export const STYLESHEET_SETTING = '__stylesheet__';
 
 /**
  * MSIE 11 doesn't cascade styles based on DOM ordering, but rather on the order that each style node
@@ -135,29 +133,41 @@ export type ExtendedCSSStyleSheet = CSSStyleSheet & {
   metadata: Record<string, unknown>;
 };
 
-let _global: (Window | {}) & {
+export type WindowWithMergeStyles = (Window | {}) & {
   [STYLESHEET_SETTING]?: Stylesheet;
   FabricConfig?: {
     mergeStyles?: IStyleSheetConfig;
     serializedStylesheet?: ISerializedStylesheet;
   };
-} = {};
+};
+
+let _global: WindowWithMergeStyles = {};
 
 // Grab window.
 try {
   // Why the cast?
   // if compiled/type checked in same program with `@fluentui/font-icons-mdl2` which extends `Window` on global
   // ( check packages/font-icons-mdl2/src/index.ts ) the definitions don't match! Thus the need of this extra assertion
-  _global = (window || {}) as typeof _global;
+  _global = (window || {}) as WindowWithMergeStyles;
 } catch {
   /* leave as blank object */
 }
 
 let _stylesheet: Stylesheet | undefined;
 
-const _getGlobal = (win?: Window): typeof _global => {
-  return (win ?? _global) as typeof _global;
+export const getGlobal = (win?: Window): WindowWithMergeStyles => {
+  return (win || _global) as WindowWithMergeStyles;
 };
+
+type InsertRuleArgs = {
+  key?: string;
+  sheet?: ExtendedCSSStyleSheet;
+  rule?: string;
+};
+
+export type InsertRuleCallback = ({ key, sheet, rule }: InsertRuleArgs) => void;
+export type AddSheetCallback = ({ key, sheet }: { key: string; sheet: ExtendedCSSStyleSheet }) => void;
+
 /**
  * Represents the state of styles registered in the page. Abstracts
  * the surface for adding styles to the stylesheet, exposes helpers
@@ -174,18 +184,19 @@ export class Stylesheet {
   private _config: IStyleSheetConfig;
   private _styleCounter = 0;
   private _keyToClassName: { [key: string]: string } = {};
-  private _onInsertRuleCallbacks: Function[] = [];
+  private _onInsertRuleCallbacks: (Function | InsertRuleCallback)[] = [];
   private _onResetCallbacks: Function[] = [];
+  private _onAddSheetCallbacks: AddSheetCallback[] = [];
   private _classNameToArgs: { [key: string]: { args: any; rules: string[] } } = {};
-  private _adoptableSheets?: EventMap<string, ExtendedCSSStyleSheet>;
+  private _adoptableSheets: Map<string, ExtendedCSSStyleSheet>;
   private _sheetCounter = 0;
 
   /**
    * Gets the singleton instance.
    */
   public static getInstance(shadowConfig?: ShadowConfig): Stylesheet {
-    const { stylesheetKey = GLOBAL_STYLESHEET_KEY, inShadow, window: win } = shadowConfig ?? DEFAULT_SHADOW_CONFIG;
-    const global = (win ?? _global ?? {}) as typeof _global;
+    const { stylesheetKey = GLOBAL_STYLESHEET_KEY, inShadow, window: win } = shadowConfig || DEFAULT_SHADOW_CONFIG;
+    const global = (win || _global || {}) as WindowWithMergeStyles;
 
     _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
 
@@ -203,11 +214,13 @@ export class Stylesheet {
       (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== doc)
     ) {
       const fabricConfig = global?.FabricConfig || {};
+      const defaultMergeStyles = {
+        window: win || (typeof window !== 'undefined' ? window : undefined),
+        inShadow,
+        stylesheetKey,
+      };
       fabricConfig.mergeStyles = fabricConfig.mergeStyles || {};
-      fabricConfig.mergeStyles.window =
-        fabricConfig.mergeStyles.window || win || (typeof window !== 'undefined' ? window : undefined);
-      fabricConfig.mergeStyles.inShadow = fabricConfig.mergeStyles.inShadow ?? inShadow;
-      fabricConfig.mergeStyles.stylesheetKey = fabricConfig.mergeStyles.stylesheetKey ?? stylesheetKey;
+      fabricConfig.mergeStyles = { ...defaultMergeStyles, ...fabricConfig.mergeStyles };
 
       let stylesheet: Stylesheet;
       if (oldStylesheetInitializedFirst) {
@@ -238,112 +251,29 @@ export class Stylesheet {
     this._keyToClassName = this._config.classNameCache ?? serializedStylesheet?.keyToClassName ?? this._keyToClassName;
     this._preservedRules = serializedStylesheet?.preservedRules ?? this._preservedRules;
     this._rules = serializedStylesheet?.rules ?? this._rules;
+    this._adoptableSheets = new Map();
   }
 
   public addAdoptableStyleSheet(key: string, sheet: ExtendedCSSStyleSheet): void {
-    if (!this._adoptableSheets) {
-      this._adoptableSheets = new EventMap();
-      // window.__DEBUG_SHEETS__ = this._adoptableSheets;
-    }
-
     if (!this._adoptableSheets.has(key)) {
       this._adoptableSheets.set(key, sheet);
-      this._config.window?.queueMicrotask?.(() => {
-        this._adoptableSheets!.raise('add-sheet', { key, sheet });
-      });
+      const win = this._config.window;
+      if (win) {
+        win.queueMicrotask(() => {
+          this._onAddSheetCallbacks.forEach(callback => callback({ key, sheet }));
+        });
+      }
     }
   }
 
   public getAdoptableStyleSheet(key: string): ExtendedCSSStyleSheet {
-    if (!this._adoptableSheets) {
-      this._adoptableSheets = new EventMap();
-      // window.__DEBUG_SHEETS__ = this._adoptableSheets;
-    }
-
     let sheet = this._adoptableSheets.get(key);
     if (!sheet) {
-      sheet = this.makeCSSStyleSheet(this._config.window ?? window);
+      sheet = this.makeCSSStyleSheet(this._config.window || window);
       this.addAdoptableStyleSheet(key, sheet);
     }
 
     return sheet;
-  }
-
-  public forEachAdoptedStyleSheet(
-    callback: (value: ExtendedCSSStyleSheet, key: string, map: Map<string, ExtendedCSSStyleSheet>) => void,
-  ): void {
-    this._adoptableSheets?.forEach(callback);
-  }
-
-  public onAddConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void {
-    if (!this._adoptableSheets) {
-      this._adoptableSheets = new EventMap();
-      // window.__DEBUG_SHEETS__ = this._adoptableSheets;
-    }
-
-    this._adoptableSheets.on('add-sheet', callback);
-  }
-
-  public offAddConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void {
-    if (!this._adoptableSheets) {
-      this._adoptableSheets = new EventMap();
-      // window.__DEBUG_SHEETS__ = this._adoptableSheets;
-    }
-
-    this._adoptableSheets.off('add-sheet', callback);
-  }
-
-  public onInsertRuleIntoConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void {
-    if (!this._adoptableSheets) {
-      this._adoptableSheets = new EventMap();
-      // window.__DEBUG_SHEETS__ = this._adoptableSheets;
-    }
-
-    this._adoptableSheets.on('insert-rule', callback);
-  }
-
-  public offInsertRuleIntoConstructableStyleSheet(callback: EventHandler<ExtendedCSSStyleSheet>): void {
-    if (!this._adoptableSheets) {
-      this._adoptableSheets = new EventMap();
-      // window.__DEBUG_SHEETS__ = this._adoptableSheets;
-    }
-
-    this._adoptableSheets.off('insert-rule', callback);
-  }
-
-  public projectStylesToWindow(targetWindow: Window): void {
-    const global = _getGlobal(this._config.window);
-
-    const serialized = JSON.parse(this.serialize());
-    const targetStylesheet = new Stylesheet(
-      {
-        injectionMode: this._config.injectionMode,
-        window: targetWindow,
-      },
-      serialized,
-    );
-
-    (targetWindow as typeof _global)[STYLESHEET_SETTING] = targetStylesheet;
-
-    this.forEachAdoptedStyleSheet((srcSheet, key) => {
-      const clonedSheet = cloneExtendedCSSStyleSheet(srcSheet, this.makeCSSStyleSheet(targetWindow));
-      targetStylesheet.addAdoptableStyleSheet(key, clonedSheet);
-    });
-
-    if ((global as Window)?.document) {
-      const globalStyles = (global as Window).document.querySelectorAll('[data-merge-styles-global]') || [];
-      for (let i = 0; i < globalStyles.length; i++) {
-        const styleTag = targetWindow.document.createElement('style');
-        // TODO: insert this in the right place
-        targetWindow.document.head.appendChild(styleTag);
-        const srcSheet = (globalStyles[i] as HTMLStyleElement).sheet;
-        if (srcSheet) {
-          for (let j = 0; j < srcSheet.cssRules.length; j++) {
-            styleTag.sheet?.insertRule(srcSheet.cssRules[j].cssText);
-          }
-        }
-      }
-    }
   }
 
   /**
@@ -370,6 +300,14 @@ export class Stylesheet {
     };
   }
 
+  public getConfig(): IStyleSheetConfig {
+    return this._config;
+  }
+
+  public getAdoptedSheets(): Map<string, ExtendedCSSStyleSheet> {
+    return this._adoptableSheets;
+  }
+
   /**
    * Configures a reset callback.
    *
@@ -390,11 +328,19 @@ export class Stylesheet {
    * @param callback - A callback which will be called when a rule is inserted.
    * @returns function which when called un-registers provided callback.
    */
-  public onInsertRule(callback: Function): Function {
+  public onInsertRule(callback: Function | InsertRuleCallback): Function {
     this._onInsertRuleCallbacks.push(callback);
 
     return () => {
       this._onInsertRuleCallbacks = this._onInsertRuleCallbacks.filter(cb => cb !== callback);
+    };
+  }
+
+  public onAddSheet(callback: AddSheetCallback): Function {
+    this._onAddSheetCallbacks.push(callback);
+
+    return () => {
+      this._onAddSheetCallbacks = this._onAddSheetCallbacks.filter(cb => cb !== callback);
     };
   }
 
@@ -468,10 +414,11 @@ export class Stylesheet {
 
     const injectStyles = injectionMode !== InjectionMode.none;
     const addToConstructableStylesheet =
-      stylesheetKey === GLOBAL_STYLESHEET_KEY || !!this._adoptableSheets?.has(stylesheetKey);
+      stylesheetKey === GLOBAL_STYLESHEET_KEY || !!this._adoptableSheets.has(stylesheetKey);
 
     let element: HTMLStyleElement | undefined = undefined;
     let constructableSheet: CSSStyleSheet | undefined = undefined;
+    let sheet: CSSStyleSheet | null = null;
 
     // TODO: maybe change this? seems like we're inserting everything into head always still?
     if (injectStyles) {
@@ -488,7 +435,7 @@ export class Stylesheet {
 
     if (element || constructableSheet) {
       let inserted = false;
-      const sheet: CSSStyleSheet | null = constructableSheet ?? element?.sheet ?? null;
+      sheet = constructableSheet || element?.sheet || null;
       switch (injectionMode) {
         case InjectionMode.insertNode:
           inserted = this._insertNode(element, rule);
@@ -504,14 +451,6 @@ export class Stylesheet {
       if (constructableSheet) {
         inserted = this._insertRuleIntoSheet(constructableSheet, rule);
       }
-
-      if (inserted && sheet) {
-        this._adoptableSheets?.raise('insert-rule', {
-          key: stylesheetKey,
-          sheet: sheet as ExtendedCSSStyleSheet,
-          rule,
-        });
-      }
     } else {
       this._rules.push(rule);
     }
@@ -522,7 +461,9 @@ export class Stylesheet {
       this._config.onInsertRule(rule);
     }
 
-    this._onInsertRuleCallbacks.forEach(callback => callback());
+    this._onInsertRuleCallbacks.forEach(callback =>
+      callback({ key: stylesheetKey, sheet: sheet as ExtendedCSSStyleSheet, rule }),
+    );
   }
 
   /**
@@ -607,7 +548,7 @@ export class Stylesheet {
   }
 
   private _getStyleElement(winArg?: Window): HTMLStyleElement | undefined {
-    const win = winArg ?? this._config.window ?? window;
+    const win = winArg || this._config.window || window;
     const doc = win.document;
     if (!this._styleElement && typeof doc !== 'undefined') {
       this._styleElement = this._createStyleElement(winArg);
@@ -623,7 +564,7 @@ export class Stylesheet {
   }
 
   private _createStyleElement(winArg?: Window): HTMLStyleElement {
-    const doc = winArg?.document ?? this._config.window?.document ?? document;
+    const doc = winArg?.document || this._config.window?.document || document;
     const head: HTMLHeadElement = doc.head;
     const styleElement = doc.createElement('style');
     let nodeToInsertBefore: Node | null = null;
