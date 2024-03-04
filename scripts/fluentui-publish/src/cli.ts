@@ -6,6 +6,8 @@ import { PublishArgs, publish } from './publish';
 import { getNorthstarGroup } from './utils';
 import { VersionArgs, version } from './version';
 
+// console.log('test')
+
 export async function main() {
   const { options, command, specifier } = processArgs();
 
