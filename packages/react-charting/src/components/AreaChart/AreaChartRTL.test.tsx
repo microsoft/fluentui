@@ -247,6 +247,14 @@ const chartPointsWithDate = [
   },
 ];
 
+const tickValues = [
+  new Date('2020-01-06T00:00:00.000Z'),
+  new Date('2020-01-08T00:00:00.000Z'),
+  new Date('2020-01-15T00:00:00.000Z'),
+  new Date('2020-02-06T00:00:00.000Z'),
+  new Date('2020-02-15T00:00:00.000Z'),
+];
+
 const chartDataWithDates = {
   chartTitle: 'Area chart styled example',
   lineChartData: chartPointsWithDate,
@@ -277,6 +285,45 @@ describe('Area chart rendering', () => {
       !isTimezoneSet(tzIdentifier),
     );
   });
+
+  testWithWait(
+    'Should render the Area chart with date x-axis data when tick Values is given',
+    AreaChart,
+    { data: chartPointsWithDate, tickValues, tickFormat: '%m/%d' },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
+  );
+
+  testWithWait(
+    'Should render the Area chart with date x-axis data when tick Values not given and tick format is given',
+    AreaChart,
+    { data: chartPointsWithDate, tickFormat: '%m/%d' },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
+  );
+
+  testWithWait(
+    'Should render the Area chart with date x-axis data when tick Values is given and tick format not given',
+    AreaChart,
+    { data: chartPointsWithDate, tickValues },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
+  );
 });
 
 describe('Area chart - Subcomponent Area', () => {
