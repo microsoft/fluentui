@@ -219,7 +219,7 @@ export const useCombobox_unstable: (props: ComboboxProps, ref: React_2.Ref<HTMLI
 // @public (undocumented)
 export function useComboboxContextValues(state: ComboboxBaseState & Pick<ComboboxState, 'activeDescendantController'>): ComboboxBaseContextValues;
 
-// @public (undocumented)
+// @internal (undocumented)
 export function useComboboxFilter<T extends {
     children: React_2.ReactNode;
     value: string;

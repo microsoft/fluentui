@@ -2,7 +2,7 @@ import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ColorSwatchSlots, ColorSwatchState } from './ColorSwatch.types';
 import { tokens } from '@fluentui/react-theme';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const colorSwatchClassNames: SlotClassNames<ColorSwatchSlots> = {
   root: 'fui-ColorSwatch',
@@ -19,46 +19,79 @@ const { color } = swatchCSSVars;
  * Styles for the root slot
  */
 const useStyles = makeResetStyles({
-  position: 'relative',
+  display: 'inline-flex',
   boxSizing: 'border-box',
-  border: 'none',
-  padding: 0,
+  border: `1px solid ${tokens.colorTransparentStroke}`,
   background: `var(${color})`,
+  padding: '0',
   ':hover': {
     cursor: 'pointer',
-    outline: `${tokens.strokeWidthThick} solid ${tokens.colorBrandStroke1}`,
-    border: `${tokens.strokeWidthThin} solid ${tokens.colorBrandBackgroundInverted}`,
+    border: 'none',
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorBrandStroke1}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
   },
   ':hover:active': {
-    outline: `${tokens.strokeWidthThick} solid ${tokens.colorBrandStroke1}`,
-    border: `${tokens.strokeWidthThick} solid ${tokens.colorBrandBackgroundInverted}`,
+    border: 'none',
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorStrokeFocus1}`,
   },
-  ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
+  ':focus': {
+    outline: 'none',
+  },
+  ':focus-visible': {
+    outline: 'none',
+  },
+  ...createCustomFocusIndicatorStyle({
+    border: 'none',
+    outline: 'none',
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
+  }),
+
+  // High contrast styles
+
+  '@media (forced-colors: active)': {
+    ':focus': {
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorStrokeFocus1}`,
+    },
+
+    ':hover': {
+      backgroundColor: 'HighlightText',
+      borderColor: 'Highlight',
+      color: 'Highlight',
+      forcedColorAdjust: 'none',
+    },
+
+    ':hover:active': {
+      backgroundColor: 'HighlightText',
+      borderColor: 'Highlight',
+      color: 'Highlight',
+      forcedColorAdjust: 'none',
+    },
+  },
 });
 
 const useButtonStyles = makeResetStyles({
-  position: 'absolute',
-  left: 0,
-  top: 0,
   width: '100%',
   height: '100%',
   boxSizing: 'border-box',
-  margin: 0,
   opacity: 0,
+  ':hover': {
+    cursor: 'pointer',
+  },
 });
 
 const useStylesSelected = makeStyles({
   selected: {
-    ...shorthands.outline(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
-    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandBackgroundInverted),
+    ...shorthands.border('none'),
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
+    ...shorthands.borderColor(tokens.colorBrandStroke1),
     ':hover': {
-      ...shorthands.outline(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
-      ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandBackgroundInverted),
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorBrandStroke1}, inset 0 0 0 6px ${tokens.colorStrokeFocus1}`,
     },
     ':hover:active': {
-      ...shorthands.outline(tokens.strokeWidthThicker, 'solid', tokens.colorBrandStroke1),
-      ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorBrandBackgroundInverted),
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorBrandStroke1}, inset 0 0 0 7px ${tokens.colorStrokeFocus1}`,
     },
+    ...createCustomFocusIndicatorStyle({
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus2}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
+    }),
   },
 });
 
@@ -84,12 +117,21 @@ const useSizeStyles = makeStyles({
 const useShapeStyles = makeStyles({
   rounded: {
     ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    }),
   },
   circular: {
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    }),
   },
   square: {
     ...shorthands.borderRadius(tokens.borderRadiusNone),
+    ...createCustomFocusIndicatorStyle({
+      ...shorthands.borderRadius(tokens.borderRadiusNone),
+    }),
   },
 });
 

@@ -2,15 +2,23 @@ import * as React from 'react';
 import { Nav, NavCategory, NavCategoryItem, NavItem, NavSubItem, NavSubItemGroup } from '@fluentui/react-nav-preview';
 
 export const WithNestedSubItemsDefaultSelection = () => {
+  const someClickHandler = () => {
+    console.log('someClickHandler');
+  };
+
   return (
     <Nav defaultSelectedValue={'7'} defaultSelectedCategoryValue={'4'}>
-      <NavItem value="1">First</NavItem>
+      <NavItem href="https://www.microsoft.com" target="_blank" onClick={someClickHandler} value="1">
+        First
+      </NavItem>
       <NavItem value="2">Second</NavItem>
       <NavItem value="3">Third</NavItem>
       <NavCategory value="4">
         <NavCategoryItem>NavCategoryItem 1</NavCategoryItem>
         <NavSubItemGroup>
-          <NavSubItem value="5">Five</NavSubItem>
+          <NavSubItem href="https://www.microsoft.com" onClick={someClickHandler} target="_blank" value="5">
+            Five
+          </NavSubItem>
           <NavSubItem value="6">Six</NavSubItem>
           <NavSubItem value="7">Seven</NavSubItem>
         </NavSubItemGroup>

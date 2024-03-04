@@ -8,8 +8,8 @@ import { StarFilled, StarRegular } from '@fluentui/react-icons';
 export const RatingItemContext = React.createContext<RatingItemContextValue | undefined>(undefined);
 const ratingItemContextDefaultValue: RatingItemContextValue = {
   color: 'neutral',
-  iconFilled: <StarFilled />,
-  iconOutline: <StarRegular />,
+  iconFilled: StarFilled,
+  iconOutline: StarRegular,
   step: 1,
   size: 'medium',
 };
