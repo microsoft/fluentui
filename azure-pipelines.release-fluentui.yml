@@ -69,6 +69,11 @@ extends:
               - template: .devops/templates/tools.yml@self
 
               - script: |
+                  echo "dry run mode enabled!"
+                displayName: dry run mode notification
+                condition: eq(variables.dryRun, true)
+
+              - script: |
                   git config user.name "Fluent UI Build"
                   git config user.email "fluentui-internal@service.microsoft.com"
                   git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
@@ -127,6 +132,11 @@ extends:
 
             steps:
               - template: .devops/templates/tools.yml@self
+
+              - script: |
+                  echo "dry run mode enabled!"
+                displayName: dry run mode notification
+                condition: eq(variables.dryRun, true)
 
               - task: CmdLine@2
                 displayName: Checkout branch for pull
