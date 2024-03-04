@@ -248,11 +248,11 @@ const chartPointsWithDate = [
 ];
 
 const tickValues = [
-  new Date('2018-01-06T00:00:00.000Z'),
-  new Date('2018-01-08T00:00:00.000Z'),
-  new Date('2018-01-15T00:00:00.000Z'),
-  new Date('2018-02-06T00:00:00.000Z'),
-  new Date('2018-02-15T00:00:00.000Z'),
+  new Date('2020-01-06T00:00:00.000Z'),
+  new Date('2020-01-08T00:00:00.000Z'),
+  new Date('2020-01-15T00:00:00.000Z'),
+  new Date('2020-02-06T00:00:00.000Z'),
+  new Date('2020-02-15T00:00:00.000Z'),
 ];
 
 const chartDataWithDates = {
@@ -289,21 +289,20 @@ describe('Area chart rendering', () => {
   testWithWait(
     'Should render the Area chart with date x-axis data when tick Values is given',
     AreaChart,
-    { data: chartData },
+    { data: chartDataWithDates, tickValues, tickFormat: '%m/%d' },
     container => {
       // Assert
-      screen.debug(container, Infinity);
       expect(container).toMatchSnapshot();
     },
     undefined,
     undefined,
-    !true,
+    !isTimezoneSet(Timezone.UTC),
   );
 
   testWithWait(
     'Should render the Area chart with date x-axis data when tick Values not given and tick format is given',
     AreaChart,
-    { data: chartPointsWithDate, tickFormat: '%m/%d' },
+    { data: chartDataWithDates, tickFormat: '%m/%d' },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -316,7 +315,7 @@ describe('Area chart rendering', () => {
   testWithWait(
     'Should render the Area chart with date x-axis data when tick Values is given and tick format not given',
     AreaChart,
-    { data: chartPointsWithDate, tickValues },
+    { data: chartDataWithDates, tickValues },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
