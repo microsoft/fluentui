@@ -1,5 +1,4 @@
-import { Button, makeStyles, Persona, shorthands, SelectionItemId } from '@fluentui/react-components';
-import { List, ListItem } from '@fluentui/react-list-preview';
+import { Button, makeStyles, Persona, shorthands, SelectionItemId, List, ListItem } from '@fluentui/react-components';
 
 import * as React from 'react';
 const names = [
@@ -69,7 +68,11 @@ export const ListSelectionControlledBasic = () => {
         <Button onClick={e => setSelectedItems(items.map(({ id }) => id))}>Select all</Button>
       </div>
 
-      <List selectedItems={selectedItems} onSelectionChange={(_, data) => setSelectedItems(data.selectedItems)}>
+      <List
+        selectionMode="multiselect"
+        selectedItems={selectedItems}
+        onSelectionChange={(_, data) => setSelectedItems(data.selectedItems)}
+      >
         {items.map(({ name, avatar }) => (
           <MyListItem key={name} name={name} avatar={avatar} />
         ))}
