@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 
 import * as React from 'react';
-import { fireEvent, prettyDOM, render, within } from '@testing-library/react';
+import { fireEvent, render, within } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { List } from './List';
 import { ListProps } from './List.types';
@@ -46,7 +46,6 @@ describe('List', () => {
             <ListItem value="test-value-2">Second ListItem</ListItem>
           </List>,
         );
-        console.log(prettyDOM(result.container));
         expect(result.queryAllByRole('checkbox')).toHaveLength(2);
       });
       it("renders checkbox when selectionMode is 'multiselect'", () => {

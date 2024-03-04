@@ -1,5 +1,5 @@
-import { makeStyles, Persona, shorthands } from '@fluentui/react-components';
-import { List, ListItem } from '@fluentui/react-list-preview';
+import { makeStyles, Persona, shorthands, List, ListItem } from '@fluentui/react-components';
+
 import * as React from 'react';
 const names = [
   'Melda Bevel',
@@ -32,7 +32,6 @@ export const SingleAction = () => {
           <ListItem
             id={`id_${name}`}
             key={name}
-            role="listitem"
             aria-label={`${name}, available`}
             aria-roledescription="button" //needs to be a translated string!
             onClick={() => alert(`Triggered action on ${name}`)}

@@ -9,6 +9,7 @@ import {
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ListProps, ListState } from './List.types';
 import { useListSelection } from '../../hooks/useListSelection';
+import { useListAccessibilityRoles } from '../../hooks/useListAccessibilityRoles';
 
 const DEFAULT_ROOT_EL_TYPE = 'ul';
 
@@ -48,6 +49,8 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
     defaultSelectedItems,
   });
 
+  const accessibilityRoles = useListAccessibilityRoles(!!selectionMode);
+
   return {
     components: {
       root: DEFAULT_ROOT_EL_TYPE,
@@ -55,8 +58,8 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
     root: slot.always(
       getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
         ref,
+        role: accessibilityRoles.listRole,
         ...(selectionMode && {
-          role: 'listbox',
           'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
         }),
         ...arrowNavigationAttributes,
@@ -64,6 +67,7 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLDivElement
       }),
       { elementType: DEFAULT_ROOT_EL_TYPE },
     ),
+    accessibilityRoles,
     as: as || DEFAULT_ROOT_EL_TYPE,
     // only pass down selection state if its handled internally, otherwise just report the events
     selection: selectionMode ? selection : undefined,

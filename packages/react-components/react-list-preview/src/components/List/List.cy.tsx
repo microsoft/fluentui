@@ -342,4 +342,126 @@ describe('List', () => {
       });
     });
   });
+
+  describe('Accessibility roles', () => {
+    describe('without focusable children', () => {
+      it('default list is list/listitem', () => {
+        mountSimpleList();
+        cy.get('ul').should('have.attr', 'role', 'list');
+        cy.get('li').should('have.attr', 'role', 'listitem');
+      });
+
+      it("single select list is listbox/option and doesn't have multiselectable aria prop", () => {
+        mount(
+          <List selectionMode="single">
+            <ListItem tabIndex={0} data-test="list-item-1">
+              List Item 1
+            </ListItem>
+            <ListItem tabIndex={0} data-test="list-item-2">
+              List Item 2
+            </ListItem>
+            <ListItem tabIndex={0} data-test="list-item-3">
+              List Item 3
+            </ListItem>
+          </List>,
+        );
+        cy.get('ul').should('have.attr', 'role', 'listbox');
+        cy.get('li').should('have.attr', 'role', 'option');
+      });
+
+      it('multiple select list is listbox/option and has multiselectable aria prop', () => {
+        mount(
+          <List selectionMode="multiselect">
+            <ListItem tabIndex={0} data-test="list-item-1">
+              List Item 1
+            </ListItem>
+            <ListItem tabIndex={0} data-test="list-item-2">
+              List Item 2
+            </ListItem>
+            <ListItem tabIndex={0} data-test="list-item-3">
+              List Item 3
+            </ListItem>
+          </List>,
+        );
+        cy.get('ul').should('have.attr', 'aria-multiselectable', 'true');
+        cy.get('ul').should('have.attr', 'role', 'listbox');
+        cy.get('li').should('have.attr', 'role', 'option');
+      });
+
+      it('custom roles work', () => {
+        mount(
+          <List selectionMode="multiselect" role="customListRole">
+            <ListItem tabIndex={0} data-test="list-item-1" role="customListItemRole">
+              List Item 1
+            </ListItem>
+            <ListItem tabIndex={0} data-test="list-item-2" role="customListItemRole">
+              List Item 2
+            </ListItem>
+            <ListItem tabIndex={0} data-test="list-item-3" role="customListItemRole">
+              List Item 3
+            </ListItem>
+          </List>,
+        );
+        cy.get('ul').should('have.attr', 'role', 'customListRole');
+        cy.get('li').should('have.attr', 'role', 'customListItemRole');
+      });
+    });
+
+    describe('with focusable children', () => {
+      it('default list is grid/row', () => {
+        mount(
+          <List>
+            <ListItem tabIndex={0} data-test="list-item-1">
+              List Item 1<button>Button 1</button>
+            </ListItem>
+            <ListItem tabIndex={0} data-test="list-item-2">
+              List Item 2<button>Button 2</button>
+            </ListItem>
+            <ListItem tabIndex={0} data-test="list-item-3">
+              List Item 3<button>Button 3</button>
+            </ListItem>
+          </List>,
+        );
+        cy.get('ul').should('have.attr', 'role', 'grid');
+        cy.get('li').should('have.attr', 'role', 'row');
+      });
+
+      it("single select list is grid/row and doesn't have multiselectable aria prop", () => {
+        mount(
+          <List selectionMode="single">
+            <ListItem tabIndex={0} data-test="list-item-1">
+              List Item 1<button>Button 1</button>
+            </ListItem>
+            <ListItem tabIndex={0} data-test="list-item-2">
+              List Item 2<button>Button 2</button>
+            </ListItem>
+            <ListItem tabIndex={0} data-test="list-item-3">
+              List Item 3<button>Button 3</button>
+            </ListItem>
+          </List>,
+        );
+        cy.get('ul').should('have.attr', 'role', 'grid');
+        cy.get('li').should('have.attr', 'role', 'row');
+      });
+
+      it('multiple select list is grid/row and has multiselectable aria prop', () => {
+        mount(
+          <List selectionMode="multiselect">
+            <ListItem tabIndex={0} data-test="list-item-1">
+              List Item 1<button>Button 1</button>
+            </ListItem>
+            <ListItem tabIndex={0} data-test="list-item-2">
+              List Item 2<button>Button 2</button>
+            </ListItem>
+            <ListItem tabIndex={0} data-test="list-item-3">
+              List Item 3<button>Button 3</button>
+            </ListItem>
+          </List>,
+        );
+        cy.get('ul').should('have.attr', 'aria-multiselectable', 'true');
+        cy.get('ul').should('have.attr', 'role', 'grid');
+        cy.get('li').should('have.attr', 'role', 'row');
+      });
+    });
+  });
 });

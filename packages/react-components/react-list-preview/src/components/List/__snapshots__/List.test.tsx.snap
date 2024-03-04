@@ -5,6 +5,7 @@ exports[`List rendering render as div and div doesn't throw 1`] = `
   <div
     class="fui-List"
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+    role="list"
   >
     <div
       class="fui-ListItem"
@@ -33,6 +34,7 @@ exports[`List rendering renders a default state 1`] = `
   <ul
     class="fui-List"
     data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+    role="list"
   >
     <li
       class="fui-ListItem"

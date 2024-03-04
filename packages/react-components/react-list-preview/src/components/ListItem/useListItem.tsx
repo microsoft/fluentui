@@ -6,6 +6,7 @@ import {
   TabsterTypes,
   useArrowNavigationGroup,
   useFocusableGroup,
+  useFocusFinders,
   useMergedTabsterAttributes_unstable,
 } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
@@ -49,6 +50,10 @@ export const useListItem_unstable = (
   const toggleItem = useListContext_unstable(ctx => ctx.selection?.toggleItem);
   const isSelectionEnabled = useListContext_unstable(ctx => !!ctx.selection);
   const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value));
+  const listItemRole = useListContext_unstable(ctx => ctx.accessibilityRoles.listItemRole);
+  const setFocusableChildren = useListContext_unstable(ctx => ctx.accessibilityRoles.setFocusableChildren);
+
+  const { findAllFocusable } = useFocusFinders();
 
   const focusableItems = isSelectionEnabled || tabIndex === 0 || onClick || onKeyDown;
 
@@ -60,6 +65,13 @@ export const useListItem_unstable = (
   validateProperElementTypes(parentRenderedAs, renderedAs);
 
   const baseIndicatorStyles = useIndicatorStyle();
+
+  React.useEffect(() => {
+    if (rootRef.current) {
+      const focusable = findAllFocusable(rootRef.current);
+      setFocusableChildren(focusable.length > 0);
+    }
+  }, [findAllFocusable, setFocusableChildren]);
 
   const focusableGroupAttrs = useFocusableGroup({
     ignoreDefaultKeydown: { Enter: true },
@@ -160,10 +172,9 @@ export const useListItem_unstable = (
     getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
       ref: useMergedRefs(rootRef, ref) as React.Ref<HTMLLIElement & HTMLDivElement>,
       tabIndex: focusableItems ? 0 : undefined,
-      role: 'listitem',
+      role: listItemRole,
       id: String(value),
       ...(isSelectionEnabled && {
-        role: 'option',
         'aria-selected': isSelected,
       }),
       ...tabsterAttributes,

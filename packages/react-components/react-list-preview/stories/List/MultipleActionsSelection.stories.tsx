@@ -12,9 +12,12 @@ import {
   shorthands,
   Text,
   tokens,
+  List,
+  ListItem,
+  ListProps,
 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
-import { List, ListItem, ListProps } from '@fluentui/react-list-preview';
+
 import * as React from 'react';
 
 const useListItemRootStyles = makeResetStyles({
@@ -65,7 +68,6 @@ const CardExample = (props: { title: string; value: string; selected?: boolean }
       value={props.value}
       className={mergeClasses(listItemStyles, styles.listItem)}
       checkmark={{ className: styles.checkmark }}
-      role="row"
       aria-label={value}
     >
       <div role="gridcell" style={{ gridArea: 'preview', overflow: 'hidden' }}>
@@ -150,7 +152,6 @@ export const MultipleActionsSelection = (props: Partial<ListProps>) => {
     <List
       selectionMode="multiselect"
       className={classes.list}
-      role="grid"
       onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
     >
       <CardExample title="Example List Item" value="card-1" selected={selectedItems.includes('card-1')} />

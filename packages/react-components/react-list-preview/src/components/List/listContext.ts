@@ -5,6 +5,13 @@ import { ListContextValue } from './List.types';
 export const listContextDefaultValue: ListContextValue = {
   selection: undefined,
   as: undefined,
+  accessibilityRoles: {
+    listRole: 'list',
+    listItemRole: 'listitem',
+    setFocusableChildren: () => {
+      /* noop */
+    },
+  },
 };
 
 const listContext = createContext<ListContextValue | undefined>(undefined);
