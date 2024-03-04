@@ -248,11 +248,11 @@ const chartPointsWithDate = [
 ];
 
 const tickValues = [
-  new Date('2020-01-06T00:00:00.000Z'),
-  new Date('2020-01-08T00:00:00.000Z'),
-  new Date('2020-01-15T00:00:00.000Z'),
-  new Date('2020-02-06T00:00:00.000Z'),
-  new Date('2020-02-15T00:00:00.000Z'),
+  new Date('2018-01-06T00:00:00.000Z'),
+  new Date('2018-01-08T00:00:00.000Z'),
+  new Date('2018-01-15T00:00:00.000Z'),
+  new Date('2018-02-06T00:00:00.000Z'),
+  new Date('2018-02-15T00:00:00.000Z'),
 ];
 
 const chartDataWithDates = {
