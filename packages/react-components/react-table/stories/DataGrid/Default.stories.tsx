@@ -49,7 +49,7 @@ type Item = {
   lastUpdate: LastUpdateCell;
 };
 
-const items: Item[] = [
+let items: Item[] = [
   {
     file: { label: 'Meeting notes', icon: <DocumentRegular /> },
     author: { label: 'Max Mustermann', status: 'available' },
@@ -87,6 +87,8 @@ const items: Item[] = [
     },
   },
 ];
+
+items = [];
 
 const columns: TableColumnDefinition<Item>[] = [
   createTableColumn<Item>({
