@@ -22,3 +22,4 @@ export {
   swatchCSSVars,
 } from './ColorSwatch';
 export type { ColorSwatchProps, ColorSwatchSlots, ColorSwatchState } from './ColorSwatch';
+export * from './SwatchPickerRow';
