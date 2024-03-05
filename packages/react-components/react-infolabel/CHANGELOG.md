@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-infolabel
 
-This log was last generated on Tue, 20 Feb 2024 14:22:30 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Feb 2024 02:34:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-infolabel_v9.0.23)
+
+Wed, 28 Feb 2024 02:34:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infolabel_v9.0.22..@fluentui/react-infolabel_v9.0.23)
+
+### Patches
+
+- Bump @fluentui/react-label to v9.1.63 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-popover to v9.8.40 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-tabster to v9.19.2 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.31 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-utilities to v9.18.2 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
 
 ## [9.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-infolabel_v9.0.22)
 

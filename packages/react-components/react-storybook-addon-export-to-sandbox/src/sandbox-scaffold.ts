@@ -128,7 +128,6 @@ const Vite = {
       scripts: {
         dev: 'vite',
         build: 'tsc && vite build',
-        lint: 'eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0',
         preview: 'vite preview',
       },
       dependencies: {
@@ -136,8 +135,8 @@ const Vite = {
       },
       devDependencies: {
         ...commonDevDeps,
-        '@vitejs/plugin-react': '^4.1.0',
-        vite: '^4.0.0',
+        '@vitejs/plugin-react': '^4.2.0',
+        vite: '^5.0.0',
       },
     });
   },

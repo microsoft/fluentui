@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { useControllableState, useFirstMount } from '@fluentui/react-utilities';
-import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
+import { useControllableState, useEventCallback, useFirstMount } from '@fluentui/react-utilities';
+import { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { useOptionCollection } from '../utils/useOptionCollection';
 import { OptionValue } from '../utils/OptionCollection.types';
 import { useSelection } from '../utils/useSelection';
 import type { ComboboxBaseProps, ComboboxBaseOpenEvents, ComboboxBaseState } from './ComboboxBase.types';
 
 /**
+ * @internal
  * State shared between Combobox and Dropdown components
  */
 export const useComboboxBaseState = (
@@ -156,11 +157,11 @@ export const useComboboxBaseState = (
     appearance,
     clearable,
     focusVisible,
-    hasFocus,
     ignoreNextBlur,
     inlinePopup,
     mountNode,
     open,
+    hasFocus,
     setActiveOption: UNSAFE_setActiveOption,
     setFocusVisible,
     setHasFocus,
@@ -169,5 +170,10 @@ export const useComboboxBaseState = (
     size,
     value,
     multiselect,
+    onOptionClick: useEventCallback((e: React.MouseEvent<HTMLElement>) => {
+      if (!multiselect) {
+        setOpen(e, false);
+      }
+    }),
   };
 };

@@ -29,7 +29,7 @@ jobs:
         displayName: build packages & create reports
 
       - script: |
-          yarn monosize compare-reports --branch=$(System.PullRequest.TargetBranch) --output=markdown --verbose
+          npx monosize compare-reports --branch=$(System.PullRequest.TargetBranch) --output=markdown --quiet > ./monosize-report.md
         displayName: compare bundle size with base (PR only)
         condition: eq(variables.isPR, true)
 
@@ -39,7 +39,7 @@ jobs:
         inputs:
           githubOwner: microsoft
           githubRepo: 'fluentui'
-          blobFilePath: 'node_modules/monosize/dist/monosize.md'
+          blobFilePath: 'monosize-report.md'
           status: 'success'
           uniqueId: 'bundleSizeComment9423'
 

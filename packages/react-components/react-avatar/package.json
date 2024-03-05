@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-avatar",
-  "version": "9.6.15",
+  "version": "9.6.16",
   "description": "React components for building Microsoft web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -37,16 +37,16 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-badge": "^9.2.25",
-    "@fluentui/react-context-selector": "^9.1.52",
+    "@fluentui/react-badge": "^9.2.26",
+    "@fluentui/react-context-selector": "^9.1.53",
     "@fluentui/react-icons": "^2.0.224",
-    "@fluentui/react-popover": "^9.8.39",
-    "@fluentui/react-shared-contexts": "^9.14.0",
-    "@fluentui/react-tabster": "^9.19.1",
+    "@fluentui/react-popover": "^9.8.40",
+    "@fluentui/react-shared-contexts": "^9.14.1",
+    "@fluentui/react-tabster": "^9.19.2",
     "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-tooltip": "^9.4.17",
-    "@fluentui/react-utilities": "^9.18.1",
-    "@fluentui/react-jsx-runtime": "^9.0.30",
+    "@fluentui/react-tooltip": "^9.4.18",
+    "@fluentui/react-utilities": "^9.18.2",
+    "@fluentui/react-jsx-runtime": "^9.0.31",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
@@ -54,8 +54,7 @@
     "@types/react": ">=16.14.0 <19.0.0",
     "@types/react-dom": ">=16.9.0 <19.0.0",
     "react": ">=16.14.0 <19.0.0",
-    "react-dom": ">=16.14.0 <19.0.0",
-    "scheduler": "^0.19.0 || ^0.20.0"
+    "react-dom": ">=16.14.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [

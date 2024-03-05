@@ -372,6 +372,7 @@ export {
   optionGroupClassNames,
   useOptionGroupStyles_unstable,
   useOptionGroup_unstable,
+  // eslint-disable-next-line deprecation/deprecation
   ComboboxProvider,
   useComboboxContextValues,
   ListboxProvider,

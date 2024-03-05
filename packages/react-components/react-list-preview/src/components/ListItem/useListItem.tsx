@@ -145,18 +145,18 @@ export const useListItem_unstable = (
     }
   });
 
-  const onCheckboxChange = useEventCallback((ev: React.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => {
-    props.checkmark?.onChange?.(ev, data);
+  const onCheckboxChange = useEventCallback((e: React.ChangeEvent<HTMLInputElement>, data: CheckboxOnChangeData) => {
+    props.checkmark?.onChange?.(e, data);
 
-    if (!isSelectionEnabled || ev.defaultPrevented) {
+    if (!isSelectionEnabled || e.defaultPrevented) {
       return;
     }
 
-    toggleItem?.(ev, value);
+    toggleItem?.(e, value);
   });
 
-  const onCheckboxClick = useEventCallback((ev: React.MouseEvent<HTMLInputElement>) => {
-    ev.stopPropagation();
+  const onCheckboxClick = useEventCallback((e: React.MouseEvent<HTMLInputElement>) => {
+    e.stopPropagation();
   });
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
