@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { buttonClassNames, makeStyles, shorthands, tokens, Button, Spinner } from '@fluentui/react-components';
 import { CheckmarkFilled } from '@fluentui/react-icons';
+// eslint-disable-next-line @fluentui/no-restricted-imports
 import { useTimeout } from '@fluentui/react-utilities';
 
 const useStyles = makeStyles({
