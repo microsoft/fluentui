@@ -2,9 +2,11 @@
 
 ### Creating a branch
 
-Create a branch from your forked branch for your code changes:
+Create a branch from your forked repo for your code changes:
 
 \```
+git checkout master
+git pull upstream master
 git checkout -b my-branch-name
 \```
 
@@ -75,6 +77,8 @@ You can also `cd` to any package under `packages/*` and run `yarn build` to buil
 ### Making a pull request
 
 Make sure all your changes are committed, and run a build on the package that was updated, e.g. `yarn workspace @fluentui/react-components build` for changes to the v9 components. This will compare your changes and detect if the publicly facing API has changed, and update the right docs accordingly. Commit this change.
+
+If your changes make any changes or additions to the DOM, you may need to run `yarn update-snapshots`. Check these updates in.
 
 Before creating a pull request, be sure to run `yarn change` and provide a high-level description of your change, which will be used in the release notes. We follow [semantic versioning](https://semver.org/), so use the guide when selecting a change type:
 
