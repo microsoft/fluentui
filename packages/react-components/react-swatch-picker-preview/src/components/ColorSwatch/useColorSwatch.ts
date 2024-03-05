@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { slot, useEventCallback, getPartitionedNativeProps } from '@fluentui/react-utilities';
+import { slot, useEventCallback, getIntrinsicElementProps } from '@fluentui/react-utilities';
 import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
-import { useFocusWithin } from '@fluentui/react-tabster';
 import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
 import { swatchCSSVars } from './useColorSwatchStyles.styles';
 
@@ -18,7 +17,7 @@ export const useColorSwatch_unstable = (
   props: ColorSwatchProps,
   ref: React.Ref<HTMLButtonElement>,
 ): ColorSwatchState => {
-  const { color, value } = props;
+  const { color, value, ...rest } = props;
   const size = useSwatchPickerContextValue_unstable(ctx => ctx.size);
   const shape = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
 
@@ -32,43 +31,25 @@ export const useColorSwatch_unstable = (
     }),
   );
 
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'button',
-    excludedPropNames: ['value', 'color', 'role'],
-  });
-
   const rootVariables = {
     [swatchCSSVars.color]: color,
   };
 
-  const root = slot.always(props.root, {
-    defaultProps: {
-      ref: useFocusWithin<HTMLDivElement>(),
-      role: props.role ?? 'radio',
-      'aria-checked': selected,
-      ...nativeProps.root,
-    },
-    elementType: 'div',
-  });
-
-  const button = slot.always(props.button, {
-    defaultProps: {
-      ref,
-      type: 'button',
-      onClick,
-      ...nativeProps.primary,
-    },
-    elementType: 'button',
-  });
-
   const state: ColorSwatchState = {
     components: {
-      root: 'div',
-      button: 'button',
+      root: 'button',
     },
-    root,
-    button,
+    root: slot.always(
+      getIntrinsicElementProps('button', {
+        ref,
+        role: props.role ?? 'gridcell',
+        'aria-selected': selected,
+        onClick,
+        type: 'button',
+        ...rest,
+      }),
+      { elementType: 'button' },
+    ),
     size,
     shape,
     selected,

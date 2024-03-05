@@ -2,23 +2,11 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { ColorSwatch } from './ColorSwatch';
-import { colorSwatchClassNames } from './useColorSwatchStyles.styles';
 
 describe('ColorSwatch', () => {
   isConformant({
     Component: ColorSwatch,
     displayName: 'ColorSwatch',
-    primarySlot: 'button',
-    testOptions: {
-      'has-static-classnames': [
-        {
-          props: {},
-          expectedClassNames: {
-            button: colorSwatchClassNames.button,
-          },
-        },
-      ],
-    },
   });
 
   it('renders a default state', () => {
