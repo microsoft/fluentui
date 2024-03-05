@@ -55,7 +55,7 @@ const useIntentIconStyles = makeStyles({
     color: tokens.colorStatusDangerForeground1,
   },
   warning: {
-    color: tokens.colorStatusWarningForeground3,
+    color: tokens.colorStatusWarningForeground1,
   },
   info: {
     color: tokens.colorNeutralForeground2,
