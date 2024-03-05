@@ -551,7 +551,7 @@ export interface IGroupedVerticalBarChartData {
 
 // @public
 export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
-    barwidth?: number;
+    barwidth?: number | 'default' | 'auto';
     chartTitle?: string;
     culture?: string;
     data: IGroupedVerticalBarChartData[];
@@ -559,6 +559,7 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     isCalloutForStack?: boolean;
     // @deprecated
     legendColor?: string;
+    maxBarWidth?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IGVBarChartSeriesPoint>;
     // @deprecated
     showXAxisGridLines?: boolean;
@@ -569,6 +570,8 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     // @deprecated
     showYAxisPath?: boolean;
     styles?: IStyleFunctionOrObject<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>;
+    xAxisInnerPadding?: number;
+    xAxisOuterPadding?: number;
 }
 
 // @public
@@ -1332,7 +1335,7 @@ export interface IVerticalBarChartDataPoint {
 
 // @public
 export interface IVerticalBarChartProps extends ICartesianChartProps {
-    barWidth?: number;
+    barWidth?: number | 'default' | 'auto';
     chartTitle?: string;
     colors?: string[];
     culture?: string;
@@ -1341,9 +1344,12 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
     lineLegendColor?: string;
     lineLegendText?: string;
     lineOptions?: ILineChartLineOptions;
+    maxBarWidth?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
     styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
     useSingleColor?: boolean;
+    xAxisInnerPadding?: number;
+    xAxisOuterPadding?: number;
     xAxisPadding?: number;
 }
 
@@ -1378,7 +1384,7 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     barCornerRadius?: number;
     barGapMax?: number;
     barMinimumHeight?: number;
-    barWidth?: number;
+    barWidth?: number | 'default' | 'auto';
     calloutProps?: Partial<ICalloutProps>;
     chartTitle?: string;
     // @deprecated
@@ -1388,10 +1394,13 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     hideLabels?: boolean;
     isCalloutForStack?: boolean;
     lineOptions?: ILineChartLineOptions;
+    maxBarWidth?: number;
     onBarClick?: (event: React_2.MouseEvent<SVGElement>, data: IVerticalStackedChartProps | IVSChartDataPoint) => void;
     onRenderCalloutPerDataPoint?: IRenderFunction<IVSChartDataPoint>;
     onRenderCalloutPerStack?: IRenderFunction<IVerticalStackedChartProps>;
     styles?: IStyleFunctionOrObject<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>;
+    xAxisInnerPadding?: number;
+    xAxisOuterPadding?: number;
     xAxisPadding?: number;
     yMinValue?: undefined;
 }
