@@ -21,12 +21,12 @@ const useStyles = makeStyles({
   },
 });
 
-type loadingState = 'initial' | 'loading' | 'loaded';
+type LoadingState = 'initial' | 'loading' | 'loaded';
 
 export const Loading = () => {
   const styles = useStyles();
 
-  const [loadingState, setLoadingState] = React.useState<loadingState>('initial');
+  const [loadingState, setLoadingState] = React.useState<LoadingState>('initial');
 
   const [setTimeout, cancelTimeout] = useTimeout();
 
