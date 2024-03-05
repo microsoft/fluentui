@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "remove unused ListItemButton exports",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "patch"
+}
