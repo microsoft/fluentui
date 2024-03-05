@@ -47,6 +47,7 @@ export type ToolbarProps = ComponentProps<ToolbarSlots> & {
    * @param event - React's original SyntheticEvent
    * @param data - A data object with relevant information
    */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onCheckedValueChange?: (e: ToolbarCheckedValueChangeEvent, data: ToolbarCheckedValueChangeData) => void;
 };
 

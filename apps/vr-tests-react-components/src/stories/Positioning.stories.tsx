@@ -48,10 +48,17 @@ const useStyles = makeStyles({
     ...shorthands.border('1px', 'solid', 'blue'),
     backgroundColor: 'white',
   },
+  boxBold: {
+    ...shorthands.borderWidth('3px'),
+  },
 
   arrow: {
-    ...createArrowStyles({ arrowHeight: 8 }),
-    backgroundColor: 'red',
+    ...createArrowStyles({
+      arrowHeight: 12,
+      borderStyle: 'solid',
+      borderColor: 'blue',
+      borderWidth: '3px',
+    }),
   },
 
   seeThrough: {
@@ -415,7 +422,7 @@ const Arrow: React.FC = () => {
   const positionedRefs = positions.reduce<ReturnType<typeof usePositioning>[]>((acc, cur) => {
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const positioningRefs = usePositioning({ position: cur[0], align: cur[1] });
+    const positioningRefs = usePositioning({ position: cur[0], align: cur[1], offset: 12, arrowPadding: 12 });
     acc.push(positioningRefs);
     return acc;
   }, []);
@@ -425,7 +432,7 @@ const Arrow: React.FC = () => {
   return (
     <div className={styles.wrapper}>
       {positions.map(([position, align], i) => (
-        <Box key={`${position}-${align}`} ref={positionedRefs[i].containerRef}>
+        <Box className={styles.boxBold} key={`${position}-${align}`} ref={positionedRefs[i].containerRef}>
           <div className={styles.arrow} ref={positionedRefs[i].arrowRef} />
           {`${position}-${align}`}
         </Box>
@@ -1182,6 +1189,36 @@ const PositioningEndEvent = () => {
   );
 };
 
+const TargetDisplayNone = () => {
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
+  const { targetRef, containerRef } = usePositioning({
+    positioningRef,
+  });
+
+  const [visible, setVisible] = React.useState(true);
+
+  return (
+    <>
+      <div style={{ display: 'inline-block', width: 120, height: 30, border: '1px dashed green' }}>
+        <button
+          id="target"
+          ref={targetRef}
+          style={{ width: 120, height: 30, display: visible ? undefined : 'none' }}
+          onClick={() => setVisible(false)}
+        >
+          remove me
+        </button>
+      </div>
+      <div
+        ref={containerRef}
+        style={{ border: '2px solid blue', padding: 20, backgroundColor: 'white', boxSizing: 'border-box' }}
+      >
+        Should stay positioned to dashed green box
+      </div>
+    </>
+  );
+};
+
 storiesOf('Positioning', module)
   .addDecorator(story => (
     <div
@@ -1269,6 +1306,11 @@ storiesOf('Positioning', module)
   .addStory('Positioning end', () => (
     <StoryWright steps={new Steps().click('#target').snapshot('updated 2 times').end()}>
       <PositioningEndEvent />
+    </StoryWright>
+  ))
+  .addStory('Target display none', () => (
+    <StoryWright steps={new Steps().click('#target').snapshot('target display: none').end()}>
+      <TargetDisplayNone />
     </StoryWright>
   ));
 

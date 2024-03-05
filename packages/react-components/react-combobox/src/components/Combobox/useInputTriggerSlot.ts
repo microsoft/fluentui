@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { ActiveDescendantImperativeRef } from '@fluentui/react-aria';
 import { mergeCallbacks, useEventCallback } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot, SlotComponentType } from '@fluentui/react-utilities';
 import { ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
@@ -8,15 +9,17 @@ import { OptionValue } from '../../utils/OptionCollection.types';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 
 type UsedComboboxState = UseTriggerSlotState &
-  Pick<ComboboxState, 'value' | 'setValue' | 'selectedOptions' | 'clearSelection' | 'getOptionsMatchingText'>;
+  Pick<ComboboxState, 'value' | 'setValue' | 'selectedOptions' | 'clearSelection' | 'getOptionById'>;
 
 type UseInputTriggerSlotOptions = {
   state: UsedComboboxState;
   freeform: boolean | undefined;
   defaultProps: Partial<ComboboxProps>;
+  activeDescendantController: ActiveDescendantImperativeRef;
 };
 
-/*
+/**
+ * @internal
  * useInputTriggerSlot returns a tuple of trigger/listbox shorthand,
  * with the semantics and event handlers needed for the Combobox and Dropdown components.
  * The element type of the ref should always match the element type used in the trigger shorthand.
@@ -30,25 +33,24 @@ export function useInputTriggerSlot(
     state: {
       open,
       value,
-      activeOption,
       selectOption,
       setValue,
-      setActiveOption,
-      setFocusVisible,
       multiselect,
       selectedOptions,
       clearSelection,
-      getOptionsMatchingText,
-      getIndexOfId,
+      getOptionById,
       setOpen,
     },
     freeform,
     defaultProps,
+    activeDescendantController,
   } = options;
 
   const onBlur = (ev: React.FocusEvent<HTMLInputElement>) => {
     // handle selection and updating value if freeform is false
     if (!open && !freeform) {
+      const activeOptionId = activeDescendantController.active();
+      const activeOption = activeOptionId ? getOptionById(activeOptionId) : null;
       // select matching option, if the value fully matches
       if (value && activeOption && value.trim().toLowerCase() === activeOption?.text.toLowerCase()) {
         selectOption(ev, activeOption);
@@ -63,20 +65,22 @@ export function useInputTriggerSlot(
     const searchString = inputValue?.trim().toLowerCase();
 
     if (!searchString || searchString.length === 0) {
+      activeDescendantController.blur();
       return;
     }
 
     const matcher = (optionText: string) => optionText.toLowerCase().indexOf(searchString) === 0;
-    const matches = getOptionsMatchingText(matcher);
+    const match = activeDescendantController.find(id => {
+      const option = getOptionById(id);
+      return !!option && matcher(option.text);
+    });
 
-    // return first matching option after the current active option, looping back to the top
-    if (matches.length > 1 && activeOption) {
-      const startIndex = getIndexOfId(activeOption.id);
-      const nextMatch = matches.find(option => getIndexOfId(option.id) >= startIndex);
-      return nextMatch ?? matches[0];
+    if (!match) {
+      activeDescendantController.blur();
+      return undefined;
     }
 
-    return matches[0] ?? undefined;
+    return getOptionById(match);
   };
 
   // update value and active option based on input
@@ -87,9 +91,6 @@ export function useInputTriggerSlot(
 
     // handle updating active option based on input
     const matchingOption = getOptionFromInput(inputValue);
-    setActiveOption(matchingOption);
-
-    setFocusVisible(true);
 
     // clear selection for single-select if the input value no longer matches the selection
     if (!multiselect && selectedOptions.length === 1 && (inputValue.length < 1 || !matchingOption)) {
@@ -101,6 +102,7 @@ export function useInputTriggerSlot(
     state: options.state,
     defaultProps,
     elementType: 'input',
+    activeDescendantController,
   });
 
   trigger.onChange = mergeCallbacks(trigger.onChange, onChange);
@@ -150,7 +152,7 @@ export function useInputTriggerSlot(
     }
 
     // allow space to insert a character if freeform & the last action was typing, or if the popup is closed
-    if (freeform && (isTyping.current || !open) && ev.key === ' ') {
+    if ((isTyping.current || !open) && ev.key === ' ') {
       triggerFromProps?.onKeyDown?.(ev);
       return;
     }

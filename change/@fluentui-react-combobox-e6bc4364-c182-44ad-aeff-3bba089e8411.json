@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: remove invalid peerDependency on scheduler",
+  "packageName": "@fluentui/react-combobox",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

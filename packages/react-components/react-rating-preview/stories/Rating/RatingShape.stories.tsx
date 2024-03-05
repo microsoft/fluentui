@@ -15,8 +15,8 @@ export const Shape = () => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <Rating iconFilled={<CircleFilled />} iconOutline={<CircleRegular />} step={0.5} />
-      <Rating iconFilled={<SquareFilled />} iconOutline={<SquareRegular />} />
+      <Rating iconFilled={CircleFilled} iconOutline={CircleRegular} step={0.5} />
+      <Rating iconFilled={SquareFilled} iconOutline={SquareRegular} step={0.5} />
     </div>
   );
 };
@@ -25,7 +25,7 @@ Shape.parameters = {
   docs: {
     description: {
       story:
-        'You can pass in custom icons to the Rating component. You can specify the icons with the "iconFilled" and "iconOutline" props.',
+        'You can pass in custom icons to the Rating component. You can specify the icons with the `iconFilled` and `iconOutline` props.',
     },
   },
 };

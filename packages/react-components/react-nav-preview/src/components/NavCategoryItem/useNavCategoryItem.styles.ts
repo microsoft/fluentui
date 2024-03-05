@@ -1,51 +1,56 @@
-import type { NavCategoryItemSlots, NavCategoryItemState } from './NavCategoryItem.types';
-
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, mergeClasses, makeStyles } from '@griffel/react';
 import { typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
+import type { NavCategoryItemSlots, NavCategoryItemState } from './NavCategoryItem.types';
+
 export const navCategoryItemClassNames: SlotClassNames<NavCategoryItemSlots> = {
   root: 'fui-NavCategoryItem',
-  content: 'fui-NavCategoryItem__content',
+  expandIcon: 'fui-NavCategoryItem__expandIcon',
 };
 
 /**
  * Styles for the root slot
  */
-const useStyles = makeResetStyles({
+const useRootStyles = makeResetStyles({
   display: 'flex',
   ...typographyStyles.body1,
 });
 
-/**
- * Styles for the content slot (children)
- */
 const useContentStyles = makeStyles({
-  selected: {
-    ...typographyStyles.body1Strong,
+  icon: {
+    display: 'flex',
   },
+  open: {
+    transform: 'rotate(-90deg)',
+  },
+  closed: {
+    transform: 'rotate(90deg)',
+  },
+  selected: typographyStyles.body1Strong,
 });
 
 /**
  * Apply styling to the NavCategoryItem slots based on the state
  */
 export const useNavCategoryItemStyles_unstable = (state: NavCategoryItemState): NavCategoryItemState => {
-  const rootStyles = useStyles();
+  const defaultRootStyles = useRootStyles();
   const contentStyles = useContentStyles();
 
   const { selected } = state;
 
   state.root.className = mergeClasses(
     navCategoryItemClassNames.root,
-    rootStyles,
-
+    defaultRootStyles,
     state.root.className,
+    selected && state.open === false && contentStyles.selected,
   );
 
-  state.content.className = mergeClasses(
-    navCategoryItemClassNames.content,
-    selected && contentStyles.selected,
-    state.content.className,
+  state.expandIcon.className = mergeClasses(
+    navCategoryItemClassNames.expandIcon,
+    contentStyles.icon,
+    state.open ? contentStyles.open : contentStyles.closed,
+    state.expandIcon.className,
   );
 
   return state;

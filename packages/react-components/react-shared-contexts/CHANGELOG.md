@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Mon, 18 Dec 2023 14:40:46 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Feb 2024 02:34:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.14.1)
+
+Wed, 28 Feb 2024 02:34:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.14.0..@fluentui/react-shared-contexts_v9.14.1)
+
+### Patches
+
+- feat(swatch-picker): Added plain ColorSwatch sub component. ([PR #30544](https://github.com/microsoft/fluentui/pull/30544) by vkozlova@microsoft.com)
+
+## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.14.0)
+
+Thu, 18 Jan 2024 14:25:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.13.2..@fluentui/react-shared-contexts_v9.14.0)
+
+### Minor changes
+
+- feat: export AnnounceProvider & useAnnounce() ([PR #30328](https://github.com/microsoft/fluentui/pull/30328) by olfedias@microsoft.com)
 
 ## [9.13.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.13.2)
 

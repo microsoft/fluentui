@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { NavSubItemGroupProps, NavSubItemGroupState } from './NavSubItemGroup.types';
+import { useNavCategoryContext_unstable } from '../NavCategoryContext';
 
 /**
  * Create the state required to render NavSubItemGroup.
@@ -15,18 +16,21 @@ export const useNavSubItemGroup_unstable = (
   props: NavSubItemGroupProps,
   ref: React.Ref<HTMLDivElement>,
 ): NavSubItemGroupState => {
+  const { open } = useNavCategoryContext_unstable();
+
+  // copied over from accordion. todo - figure out how to handle.
+  // const focusableProps = useTabsterAttributes({ focusable: { excludeFromMover: true } });
+  // const navigation = useAccordionContext_unstable(ctx => ctx.navigation);
+
   return {
-    // TODO add appropriate props/defaults
+    open,
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref,
         ...props,
+        ref,
       }),
       { elementType: 'div' },
     ),

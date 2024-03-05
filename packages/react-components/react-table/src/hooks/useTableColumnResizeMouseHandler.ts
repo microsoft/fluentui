@@ -17,6 +17,8 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
   const { targetDocument } = useFluent();
   const globalWin = targetDocument?.defaultView;
 
+  const { getColumnWidth, setColumnWidth } = columnResizeState;
+
   const recalculatePosition = React.useCallback(
     (e: NativeTouchOrMouseEvent) => {
       const { clientX } = getEventClientCoords(e);
@@ -24,10 +26,10 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
 
       // Update the local width for the column and set it
       currentWidth.current += dx;
-      colId.current && columnResizeState.setColumnWidth(e, { columnId: colId.current, width: currentWidth.current });
+      colId.current && setColumnWidth(e, { columnId: colId.current, width: currentWidth.current });
       mouseX.current = clientX;
     },
-    [columnResizeState],
+    [setColumnWidth],
   );
 
   const onDrag = React.useCallback(
@@ -56,29 +58,32 @@ export function useTableColumnResizeMouseHandler(columnResizeState: ColumnResize
     [onDrag, targetDocument],
   );
 
-  const getOnMouseDown = (columnId: TableColumnId) => (event: ReactTouchOrMouseEvent) => {
-    // Keep the width locally so that we decouple the calculation of the next with from rendering.
-    // This makes the whole experience much faster and more precise
-    currentWidth.current = columnResizeState.getColumnWidth(columnId);
-    mouseX.current = getEventClientCoords(event).clientX;
-    colId.current = columnId;
+  const getOnMouseDown = React.useCallback(
+    (columnId: TableColumnId) => (event: ReactTouchOrMouseEvent) => {
+      // Keep the width locally so that we decouple the calculation of the next with from rendering.
+      // This makes the whole experience much faster and more precise
+      currentWidth.current = getColumnWidth(columnId);
+      mouseX.current = getEventClientCoords(event).clientX;
+      colId.current = columnId;
 
-    if (isMouseEvent(event)) {
-      // ignore other buttons than primary mouse button
-      if (event.target !== event.currentTarget || event.button !== 0) {
-        return;
+      if (isMouseEvent(event)) {
+        // ignore other buttons than primary mouse button
+        if (event.target !== event.currentTarget || event.button !== 0) {
+          return;
+        }
+        targetDocument?.addEventListener('mouseup', onDragEnd);
+        targetDocument?.addEventListener('mousemove', onDrag);
       }
-      targetDocument?.addEventListener('mouseup', onDragEnd);
-      targetDocument?.addEventListener('mousemove', onDrag);
-    }
 
-    if (isTouchEvent(event)) {
-      targetDocument?.addEventListener('touchend', onDragEnd);
-      targetDocument?.addEventListener('touchmove', onDrag);
-    }
-  };
+      if (isTouchEvent(event)) {
+        targetDocument?.addEventListener('touchend', onDragEnd);
+        targetDocument?.addEventListener('touchmove', onDrag);
+      }
+    },
+    [getColumnWidth, onDrag, onDragEnd, targetDocument],
+  );
 
   return {
-    getOnMouseDown: (columnId: TableColumnId) => getOnMouseDown(columnId),
+    getOnMouseDown,
   };
 }

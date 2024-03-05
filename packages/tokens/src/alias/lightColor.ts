@@ -119,10 +119,17 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorBrandBackground2: brand[160], // #eff6fc Global.Color.Brand.160
   colorBrandBackground2Hover: brand[150], // #deecf9 Global.Color.Brand.150
   colorBrandBackground2Pressed: brand[130], // #82c7ff Global.Color.Brand.130
+  colorBrandBackground3Static: brand[60], // #005a9e Global.Color.Brand.60
+  colorBrandBackground4Static: brand[40], // #004578 Global.Color.Brand.40
   colorBrandBackgroundInverted: white, // #ffffff Global.Color.White
   colorBrandBackgroundInvertedHover: brand[160], // #eff6fc Global.Color.Brand.160
   colorBrandBackgroundInvertedPressed: brand[140], // #c7e0f4 Global.Color.Brand.140
   colorBrandBackgroundInvertedSelected: brand[150], // #deecf9 Global.Color.Brand.150
+  colorNeutralCardBackground: grey[98], // #fafafa Global.Color.Grey.98
+  colorNeutralCardBackgroundHover: white, // #ffffff Global.Color.White
+  colorNeutralCardBackgroundPressed: grey[96], // #f5f5f5 Global.Color.Grey.96
+  colorNeutralCardBackgroundSelected: grey[92], // #ebebeb Global.Color.Grey.92
+  colorNeutralCardBackgroundDisabled: grey[94], // #f0f0f0 Global.Color.Grey.94
   colorNeutralStrokeAccessible: grey[38], // #616161 Global.Color.Grey.38
   colorNeutralStrokeAccessibleHover: grey[34], // #575757 Global.Color.Grey.34
   colorNeutralStrokeAccessiblePressed: grey[30], // #4d4d4d Global.Color.Grey.30

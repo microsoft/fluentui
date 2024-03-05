@@ -1,5 +1,6 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+
+import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
 import type { NavContextValue, NavItemValue } from '../NavContext.types';
 
 export type NavSlots = {
@@ -27,6 +28,13 @@ export type NavProps = ComponentProps<NavSlots> & {
   defaultSelectedValue?: NavItemValue;
 
   /**
+   * The value of the navCategory to be selected by default.
+   * Typically useful when the selectedValue is uncontrolled.
+   *  Mutually exclusive with selectedValue.
+   */
+  defaultSelectedCategoryValue?: NavItemValue;
+
+  /**
    * Raised when a navItem is selected.
    */
   onNavItemSelect?: EventHandler<OnNavItemSelectData>;
@@ -36,26 +44,40 @@ export type NavProps = ComponentProps<NavSlots> & {
    * Mutually exclusive with defaultSelectedValue.
    */
   selectedValue?: NavItemValue;
+
+  /**
+   * Indicates a category that has a selected child
+   * Will show the category as selected if it is closed.
+   * Null otherwise
+   */
+  selectedCategoryValue?: NavItemValue;
+
+  /**
+   * Indicates if Nav supports multiple open Categories at the same time.
+   * @default true, indicating that multiple categories can be open at the same time.
+   */
+  multiple?: boolean;
+
+  /**
+   * Callback used by NavCategoryItem to request a change on it's own opened state
+   */
+  onNavCategoryItemToggle?: EventHandler<OnNavItemSelectData>;
 };
 
-export type OnNavItemSelectData = EventData<'click', React.MouseEvent<HTMLButtonElement>> & {
+export type OnNavItemSelectData = EventData<'click', React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {
   /**
    * The value of the selected navItem.
    */
   value: NavItemValue;
+
+  /**
+   * The parent value of the selected navItem
+   * Null if not a child of a category
+   */
+  categoryValue?: NavItemValue;
 };
 
 /**
  * State used in rendering Nav
  */
 export type NavState = ComponentState<NavSlots> & NavContextValue;
-
-// Temporarily here until they go into @fluentui/react-utilities
-export type EventData<Type extends string, TEvent> =
-  | { type: undefined; event: React.SyntheticEvent | Event }
-  | { type: Type; event: TEvent };
-
-export type EventHandler<TData extends EventData<string, unknown>> = (
-  ev: React.SyntheticEvent | Event,
-  data: TData,
-) => void;

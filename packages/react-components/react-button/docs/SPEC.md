@@ -69,7 +69,7 @@ The `Button` component supports different sizing with at least three different s
 
 ### Props
 
-See API at [Button.types.ts](./Button.types.ts).
+See API at [Button.types.ts](../src/components/Button/Button.types.ts).
 
 ## Structure
 

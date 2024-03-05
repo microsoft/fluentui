@@ -95,6 +95,7 @@ export function testDrawerBaseScenarios(Component: React.ComponentType<DrawerPro
     const positions = {
       start: 'left',
       end: 'right',
+      bottom: 'bottom',
     };
 
     Object.entries(positions).forEach(([position, side]) => {
