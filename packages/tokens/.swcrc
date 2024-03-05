@@ -27,7 +27,7 @@
       "plugins": [
         [
           "@swc/plugin-transform-imports",
-          { "^(.*?)(\\.js)?$": { "skipDefaultConversion": true, "transform": "{{matches.[1]}}.js" } }
+          { "^(.*?)(\\.js)?$": { "skipDefaultConversion": true, "transform": "{{matches.[1]}}.mjs" } }
         ]
       ]
     },
