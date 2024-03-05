@@ -57,49 +57,49 @@ extends:
             steps:
               - template: .devops/templates/tools.yml@self
 
-              # - script: |
-              #     git config user.name "Fluent UI Build"
-              #     git config user.email "fluentui-internal@service.microsoft.com"
-              #   displayName: Configure git user (used by beachball)
+              - script: |
+                  git config user.name "Fluent UI Build"
+                  git config user.email "fluentui-internal@service.microsoft.com"
+                displayName: Configure git user (used by beachball)
 
-              # - task: Bash@3
-              #   inputs:
-              #     filePath: yarn-ci.sh
-              #   displayName: yarn
+              - task: Bash@3
+                inputs:
+                  filePath: yarn-ci.sh
+                displayName: yarn
 
-              #   # Deletes all existing changefiles so that only bump that happens is for nightly
-              # - script: |
-              #     rm -f change/*
-              #   displayName: 'Delete existing changefiles'
+                # Deletes all existing changefiles so that only bump that happens is for nightly
+              - script: |
+                  rm -f change/*
+                displayName: 'Delete existing changefiles'
 
-              #   # Bumps all v9 packages to a x.x.x-nightly.commitSha version and checks in change files
-              # - script: |
-              #     date=$(date +"%Y%m%d-%H%M")
-              #     #release version name will follow a 0.0.0-nightly-{year}{month}{day}-{hour}{minute} format.
-              #     yarn nx g @fluentui/workspace-plugin:version-bump --all --bumpType nightly --prereleaseTag "nightly-${date}"
-              #     git add .
-              #     git commit -m "bump nightly versions"
-              #     yarn change --type prerelease --message "Release nightly v9" --dependent-change-type "prerelease"
-              #   displayName: 'Bump and commit nightly versions'
+                # Bumps all v9 packages to a x.x.x-nightly.commitSha version and checks in change files
+              - script: |
+                  date=$(date +"%Y%m%d-%H%M")
+                  #release version name will follow a 0.0.0-nightly-{year}{month}{day}-{hour}{minute} format.
+                  yarn nx g @fluentui/workspace-plugin:version-bump --all --bumpType nightly --prereleaseTag "nightly-${date}"
+                  git add .
+                  git commit -m "bump nightly versions"
+                  yarn change --type prerelease --message "Release nightly v9" --dependent-change-type "prerelease"
+                displayName: 'Bump and commit nightly versions'
 
-              # # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
-              # # https://github.com/microsoft/fluentui/issues/21686
-              # - script: |
-              #     yarn lage test --to @fluentui/react-components
-              #   displayName: yarn test
+              # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
+              # https://github.com/microsoft/fluentui/issues/21686
+              - script: |
+                  yarn lage test --to @fluentui/react-components
+                displayName: yarn test
 
-              # - script: |
-              #     yarn lage lint --to @fluentui/react-components
-              #   displayName: yarn lint
+              - script: |
+                  yarn lage lint --to @fluentui/react-components
+                displayName: yarn lint
 
-              # - script: |
-              #     yarn lage build --to @fluentui/react-components
-              #   displayName: yarn build
+              - script: |
+                  yarn lage build --to @fluentui/react-components
+                displayName: yarn build
 
-              # - script: |
-              #     yarn publish:beachball -n $(npmToken) --no-push --tag nightly --config scripts/beachball/release-vNext.config.js
-              #     git reset --hard origin/master
-              #   displayName: Publish changes and bump versions
+              - script: |
+                  yarn publish:beachball -n $(npmToken) --no-push --tag nightly --config scripts/beachball/release-vNext.config.js
+                  git reset --hard origin/master
+                displayName: Publish changes and bump versions
 
               - template: .devops/templates/cleanup.yml@self
                 parameters:
