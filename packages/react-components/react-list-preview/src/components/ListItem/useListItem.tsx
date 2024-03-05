@@ -181,7 +181,7 @@ export const useListItem_unstable = (
       ...props,
       'data-value': String(value),
       onKeyDown: handleKeyDown,
-      onClick: handleClick,
+      onClick: isSelectionEnabled || onClick ? handleClick : undefined,
     }),
     { elementType: DEFAULT_ROOT_EL_TYPE },
   );
