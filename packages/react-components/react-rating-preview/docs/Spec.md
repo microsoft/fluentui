@@ -18,53 +18,118 @@ The existing components are:
   - `Rating`
 - v0
 
+## API
+
+### Components
+
+| Component       | Purpose                                                     |
+| --------------- | ----------------------------------------------------------- |
+| `Rating`        | Displays interactive `RatingItem`s.                         |
+| `RatingDisplay` | Displays read only `RatingItem`s and value and count labels |
+| `RatingItem`    | Represents a single rating item.                            |
+
+### Rating
+
+#### Slots
+
+- `root` - The root element of the `Rating`. The default html element is a `div`.
+
+#### Props
+
+[Link to Rating types](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-rating-preview/src/components/Rating/Rating.types.ts)
+
+### RatingDisplay
+
+#### Slots
+
+- `root` - The root element of the `RatingDisplay`. The default html element is a `div`.
+- `valueText` - The slot that renders the value of the `RatingDisplay`. The default html element is a `span`.
+- `countText` - The slot that renders a figure representing the total number of ratings. The default html element is a `span`.
+
+#### Props
+
+[Link to RatingDisplay types](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-rating-preview/src/components/RatingDisplay/RatingDisplay.types.ts)
+
+### RatingItem
+
+#### Slots
+
+- `root` - The root element of the `RatingItem`. The default element is a `span`.
+- `selectedIcon` - The icon displayed when the rating value is greater than or equal to the item's value. The default element is a `div`.
+- `unselectedIcon` - The icon displayed when the rating value is less than the item's value. The default element is a `div`.
+- `halfValueInput` - The Radio input slot used for half star precision. The default element is an `input`.
+- `fullValueInput` - The Radio input slot used for full star precision. The default element is an `input`.
+
+#### Props
+
+[Link to RatingItem types](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-rating-preview/src/components/RatingItem/RatingItem.types.ts)
+
 ## Sample Code
 
-Basic example:
+Basic `Rating` example. This will render an interactive `Rating` with 5 stars:
 
 ```jsx
-import { Rating } from '@fluentui/react-rating';
+import { Rating } from '@fluentui/react-components';
 
 function App() {
   return <Rating />;
 }
 ```
 
-## API
+Basic `RatingDisplay` example. This will render a read only `RatingDisplay` with 5 stars:
 
-### Slots
+```jsx
+import { RatingDisplay } from '@fluentui/react-components';
 
-#### Rating slots
+function App() {
+  return <RatingDisplay />;
+}
+```
 
-- `root` - The root slot of the `Rating` is the container that will contain the slots that make up a `Rating`. The default html element is a `div`.
-- `ratingLabel` - This slot will render the value of the `Rating`. The default html element is a `label`.
-- `ratingCountLabel`- This slot will render the total number of ratings. The default html element is a `label`.
+Basic `RatingItem` example. This will render a standalone `RatingItem`. It is recommended to be used inside a `Rating` or `RatingDisplay`:
 
-#### RatingItem slots
+```jsx
+import { RatingItem } from '@fluentui/react-components';
 
-- `root` - The root slot of the `RatingItem`. The default element is `span`.
-- `selectedIcon` - Icon displayed when `Rating` value is greater than or equal to the `RatingItem` value.
-- `selectedFilledIcon` - Icon displayed when `Rating` value is less than the `RatingItem` value. Outline style gray
-- `selectedUnfilledIcon` - Icon displayed when `Rating` value is less than the `RatingItem` value. Outline style white.
-- `halfValueInput` - Input slot for when `precision` prop is active and need to render half values of `RatingItem`.
-- `fullValueInput` - Default input slot to render selected `RatingItem`
-
-### Props
-
-See API at [Rating.types.tsx](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-rating-preview/src/components/Rating/Rating.types.ts).
+function App() {
+  return <RatingItem />;
+}
+```
 
 ## Structure
+
+Basic `Rating` structure.
 
 ```html
 <!-- Container for Rating -->
 <div class="fui-Rating">
-  <input />
   <!-- Container for RatingItem -->
   <span class="fui-RatingItem">
+    <!-- Input slot -->
+    <input />
+    <!-- Icon slot -->
     <div class="fui-RatingItem">
-      <input />
-      <svg />
+      <svg>...</svg>
     </div>
+  </span>
+</div>
+```
+
+Basic `RatingDisplay` structure.
+
+```html
+<!-- Container for RatingDisplay -->
+<div class="fui-RatingDisplay">
+  <!-- Container for RatingItem -->
+  <span class="fui-RatingItem">
+    <!-- Icon slot -->
+    <div class="fui-RatingItem">
+      <svg>...</svg>
+    </div>
+    <!--Value label slot-->
+    <span>...</span>
+    <!-- Count label slot -->
+    <span>...</span>
   </span>
 </div>
 ```
@@ -77,13 +142,13 @@ See [MIGRATION.md](./MIGRATION.md).
 
 ### States
 
-- **Display** - The `Rating` will use the following priority:
+- **Display** - `Rating` will be used to render 5 or more interactive `RatingItem`s, while `RatingDisplay` will be used to render non-interactive `RatingItem`s.
 
-  - The `appearance` prop will dictate whether an unfilled `RatingItem` has a neutral white background or a gray background. Typically used for readOnly
-  - The `mode` prop will be used to set the type of `Rating`.
-  - The `max` prop sets how many `RatingItems` there are in the `Rating`
+  - The `color` prop controls the color of a `Rating` or `RatingDisplay`
+  - The `max` prop sets how many `RatingItem`s there are in the `Rating` or `RatingDisplay`
   - Setting the `size` prop will allow the user to specify the size of the element.
-  - You can pass in filled and regular versions of icons to `iconFilled` and `iconOutline` slots to render custom `RatingItems`.
+  - You can pass in filled and regular versions of icons to `iconFilled` and `iconOutline` slots to render custom `RatingItem`s.
+  - For `RatingDisplay`, you can pass in filled icons to the `icon` prop to render custom `RatingItem`s.
 
 ### Interaction
 
@@ -101,4 +166,12 @@ The Rating can be interactive or non-iteractive depending on the use case
 
 ## Accessibility
 
-- Tbd. Needs some sort of labelling for the `RatingItem` when interactive and for the whole `Rating` component when readOnly
+#### Rating
+
+- The `root` slot role is `radiogroup` and the `RatingItem`s input slots' roles are `radio`.
+- There is a `name` prop to associate all `RatingItem`s with a specific `Rating`. If a name is note provided, one is generated for that `Rating`.
+
+#### RatingDisplay
+
+- The `root` slot role is set to `img` and all `RatingItem`s have `aria-hidden` set to true.
+- The `RatingDisplay` has an `arialabelledby` prop pointing to the id of the `countText` slot or `valueText` slot.
