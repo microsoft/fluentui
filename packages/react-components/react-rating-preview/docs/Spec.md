@@ -126,11 +126,11 @@ Basic `RatingDisplay` structure.
     <div class="fui-RatingItem">
       <svg>...</svg>
     </div>
-    <!--Value label slot-->
-    <span>...</span>
-    <!-- Count label slot -->
-    <span>...</span>
   </span>
+  <!--Value label slot-->
+  <span>...</span>
+  <!-- Count label slot -->
+  <span>...</span>
 </div>
 ```
 
