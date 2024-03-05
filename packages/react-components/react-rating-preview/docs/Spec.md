@@ -32,7 +32,7 @@ The existing components are:
 
 #### Slots
 
-- `root` - The root element of the `Rating`. The default html element is a `div`.
+- `root` - The root element of the `Rating`. The default HTML element is a `div`.
 
 #### Props
 
@@ -42,9 +42,9 @@ The existing components are:
 
 #### Slots
 
-- `root` - The root element of the `RatingDisplay`. The default html element is a `div`.
-- `valueText` - The slot that renders the value of the `RatingDisplay`. The default html element is a `span`.
-- `countText` - The slot that renders a figure representing the total number of ratings. The default html element is a `span`.
+- `root` - The root element of the `RatingDisplay`. The default HTML element is a `div`.
+- `valueText` - The slot that renders the value of the `RatingDisplay`. The default HTML element is a `span`.
+- `countText` - The slot that renders a figure representing the total number of ratings. The default HTML element is a `span`.
 
 #### Props
 
@@ -169,7 +169,7 @@ The Rating can be interactive or non-iteractive depending on the use case
 #### Rating
 
 - The `root` slot role is `radiogroup` and the `RatingItem`s input slots' roles are `radio`.
-- There is a `name` prop to associate all `RatingItem`s with a specific `Rating`. If a name is note provided, one is generated for that `Rating`.
+- There is a `name` prop to associate all `RatingItem`s with a specific `Rating`. If a name is not provided, one is generated for that `Rating`.
 
 #### RatingDisplay
 
