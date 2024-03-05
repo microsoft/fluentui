@@ -72,7 +72,7 @@ export type DataGridProps = TableProps &
      */
     selectionMode?: SelectionMode;
     /**
-     * Options for column resizing
+     * Options for column resizing, specific for each column
      */
     columnSizingOptions?: TableColumnSizingOptions;
     /**
@@ -88,6 +88,13 @@ export type DataGridProps = TableProps &
      * By default, this value is calculated internally based on other props, but can be overriden.
      */
     containerWidthOffset?: number;
+
+    /**
+     * Custom options for column resizing.
+     */
+    resizableColumnsOptions?: {
+      allowContainerOverflow?: boolean;
+    };
   };
 
 /**
