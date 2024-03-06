@@ -29,7 +29,7 @@ The interactive lists can then be further divided into 2 different categories. T
 
 A list item with single action is a list item which doesn't contain any focusable child elements. It can be selectable.
 
-When list item has a custom action on it, it's recommended to pass `aria-roledescription={translated("button")}` to explicitly communicate screen reader users that they are focused on an actionable element. The value needs to be a localized "button" string.
+When list item has a custom action on it and it isn't clear from the context, it's possible enhance the list item with other accessibility props like `aria-roledescription={translated("button")}` to explicitly communicate screen reader users that they are focused on an actionable element.
 
 ### List items with multiple actions
 
