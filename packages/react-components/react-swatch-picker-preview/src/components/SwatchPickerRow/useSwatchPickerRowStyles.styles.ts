@@ -2,6 +2,12 @@ import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SwatchPickerRowSlots, SwatchPickerRowState } from './SwatchPickerRow.types';
 
+export const swatchPickerCSSVars = {
+  rowGap: `--fui-SwatchPicker--rowGap`,
+};
+
+const { rowGap } = swatchPickerCSSVars;
+
 export const swatchPickerRowClassNames: SlotClassNames<SwatchPickerRowSlots> = {
   root: 'fui-SwatchPickerRow',
   // TODO: add class names for all slots on SwatchPickerRowSlots.
@@ -13,7 +19,9 @@ export const swatchPickerRowClassNames: SlotClassNames<SwatchPickerRowSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    display: 'flex',
+    flexDirection: 'row',
+    columnGap: `var(${rowGap})`,
   },
 
   // TODO add additional classes for different states and/or slots

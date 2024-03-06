@@ -4,14 +4,7 @@ import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types'
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { swatchPickerCSSVars } from './useSwatchPickerStyles.styles';
 
-const { columnCountGrid, cellSize, gridGap } = swatchPickerCSSVars;
-
-const sizeMap = {
-  extraSmall: '20px',
-  small: '24px',
-  medium: '28px',
-  large: '32px',
-};
+const { gridGap } = swatchPickerCSSVars;
 
 const spacingMap = {
   small: '2px',
@@ -32,9 +25,12 @@ export const useSwatchPicker_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
   const { role, onSelectionChange, size = 'medium', shape, spacing = 'medium', ...rest } = props;
+
+  const isGrid = React.Children.count(props.children) > 1;
+
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
-    axis: 'both',
+    axis: isGrid ? 'grid-linear' : 'both',
     memorizeCurrent: true,
   });
 
@@ -61,7 +57,7 @@ export const useSwatchPicker_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
-        role: 'radiogroup',
+        role: role ?? 'grid',
         ...focusAttributes,
         ...rest,
       }),
@@ -75,8 +71,6 @@ export const useSwatchPicker_unstable = (
 
   // Root props
   state.root.style = {
-    [columnCountGrid]: 3,
-    [cellSize]: sizeMap[size],
     [gridGap]: spacingMap[spacing],
     ...state.root.style,
   };
