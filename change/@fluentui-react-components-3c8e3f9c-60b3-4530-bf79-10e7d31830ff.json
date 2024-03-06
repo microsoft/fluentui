@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Feat: Export List Preview component",
-  "packageName": "@fluentui/react-components",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}
