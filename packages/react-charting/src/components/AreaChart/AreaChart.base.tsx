@@ -649,8 +649,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         <React.Fragment key={`${index}-graph-${this._uniqueIdForGraph}`}>
           <defs>
             <linearGradient id={`gradient_${index}`} x1="0%" x2="0%" y1="0%" y2="100%">
-              <stop offset="0" stop-color={this._colors[index]} />
-              <stop offset="100%" stop-color="transparent" />
+              <stop offset="0" stopColor={this._colors[index]} />
+              <stop offset="100%" stopColor="transparent" />
             </linearGradient>
           </defs>
           <path
