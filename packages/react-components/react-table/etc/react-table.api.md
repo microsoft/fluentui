@@ -154,6 +154,9 @@ export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'c
         width: number;
     }) => void;
     containerWidthOffset?: number;
+    resizableColumnsOptions?: {
+        allowContainerOverflow?: boolean;
+    };
 };
 
 // @public
@@ -374,6 +377,7 @@ export type TableColumnId = string | number;
 // @public (undocumented)
 export type TableColumnSizingOptions = Record<TableColumnId, Partial<Pick<ColumnWidthState, 'minWidth' | 'idealWidth' | 'padding'>> & {
     defaultWidth?: number;
+    allowContainerOverflow?: boolean;
 }>;
 
 // @public (undocumented)
