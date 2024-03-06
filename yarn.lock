@@ -22828,10 +22828,10 @@ swc-loader@0.2.3, swc-loader@^0.1.15, swc-loader@^0.2.3:
   resolved "https://registry.yarnpkg.com/swc-loader/-/swc-loader-0.2.3.tgz#6792f1c2e4c9ae9bf9b933b3e010210e270c186d"
   integrity sha512-D1p6XXURfSPleZZA/Lipb3A8pZ17fP4NObZvFCDjK/OKljroqDpPmsBdTraWhVBqUNpcWBQY1imWdoPScRlQ7A==
 
-swc-plugin-de-indent-template-literal@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/swc-plugin-de-indent-template-literal/-/swc-plugin-de-indent-template-literal-1.0.0.tgz#ec0fc840f5b10b8631aaa20c71b04cac56db223e"
-  integrity sha512-Qb4G8h8hKlwWYFCJUVbmiELRmjzBM1hPmJh5+p0GiY/b6imGSIuEWV2zBAYcQyNvR2DI2MJ3OxJC2SCT9Ld7lA==
+swc-plugin-de-indent-template-literal@1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/swc-plugin-de-indent-template-literal/-/swc-plugin-de-indent-template-literal-1.4.0.tgz#c03e8f9fbd9a4a982f067b634a9bf5a045ce6e17"
+  integrity sha512-CuZ44v2ObBcULusfoPm2JXhV+egYB8KoZZNQ8KfPXbOY90wevDTCK+Qhi9pbuzDtZuyUGKcauZ9C3BM7QgOFNw==
 
 symbol-tree@^3.2.4:
   version "3.2.4"

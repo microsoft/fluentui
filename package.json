@@ -324,7 +324,7 @@
     "strip-ansi": "6.0.0",
     "style-loader": "2.0.0",
     "swc-loader": "0.2.3",
-    "swc-plugin-de-indent-template-literal": "1.0.0",
+    "swc-plugin-de-indent-template-literal": "1.4.0",
     "syncpack": "10.6.1",
     "tachometer": "0.7.0",
     "terser": "5.28.1",
