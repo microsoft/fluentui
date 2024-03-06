@@ -155,6 +155,8 @@ export interface IAreaChartProps extends ICartesianChartProps {
     onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
     // (undocumented)
     optimizeLargeData?: boolean;
+    // (undocumented)
+    enableGradient?: boolean;
     // @deprecated
     showYAxisGridLines?: boolean;
     styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
