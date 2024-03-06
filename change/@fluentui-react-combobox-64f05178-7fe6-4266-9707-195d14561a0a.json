@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Align Combobox's text baseline with other controls like Input",
+  "packageName": "@fluentui/react-combobox",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
