@@ -45,12 +45,16 @@ export const prepareWebpackConfig = (options: WebpackOptions) => {
         },
         renderLicenses: modules => {
           modules.forEach(module => {
-            const packageName = module.packageJson.name;
-            const packageVersion = module.packageJson.version;
+            if (module.packageJson) {
+              const packageName = module.packageJson.name;
+              const packageVersion = module.packageJson.version;
 
-            onDependencyPackage(packageName, packageVersion);
+              onDependencyPackage(packageName, packageVersion);
+            } else {
+              console.error('package.json not found');
+            }
 
-            return modules[0].packageJson.name;
+            return modules[0].packageJson?.name;
           });
 
           return '';
