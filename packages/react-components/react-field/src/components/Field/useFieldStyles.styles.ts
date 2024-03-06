@@ -38,28 +38,34 @@ const useRootStyles = makeStyles({
 });
 
 const useLabelStyles = makeStyles({
-  base: {
+  vertical: {
     paddingTop: tokens.spacingVerticalXXS,
     paddingBottom: tokens.spacingVerticalXXS,
-  },
-
-  large: {
-    paddingTop: '1px',
-    paddingBottom: '1px',
-  },
-
-  vertical: {
     marginBottom: tokens.spacingVerticalXXS,
   },
 
   verticalLarge: {
+    paddingTop: '1px',
+    paddingBottom: '1px',
     marginBottom: tokens.spacingVerticalXS,
   },
 
   horizontal: {
+    paddingTop: tokens.spacingVerticalSNudge,
+    paddingBottom: tokens.spacingVerticalSNudge,
     marginRight: tokens.spacingHorizontalM,
     gridRowStart: '1',
     gridRowEnd: '-1',
+  },
+
+  horizontalSmall: {
+    paddingTop: tokens.spacingVerticalXS,
+    paddingBottom: tokens.spacingVerticalXS,
+  },
+
+  horizontalLarge: {
+    paddingTop: tokens.spacingVerticalS,
+    paddingBottom: tokens.spacingVerticalS,
   },
 });
 
@@ -108,7 +114,7 @@ const useValidationMessageIconStyles = makeStyles({
  * Apply styling to the Field slots based on the state
  */
 export const useFieldStyles_unstable = (state: FieldState): FieldState => {
-  const { validationState } = state;
+  const { validationState, size } = state;
   const horizontal = state.orientation === 'horizontal';
 
   const rootStyles = useRootStyles();
@@ -124,11 +130,11 @@ export const useFieldStyles_unstable = (state: FieldState): FieldState => {
   if (state.label) {
     state.label.className = mergeClasses(
       fieldClassNames.label,
-      labelStyles.base,
       horizontal && labelStyles.horizontal,
+      horizontal && size === 'small' && labelStyles.horizontalSmall,
+      horizontal && size === 'large' && labelStyles.horizontalLarge,
       !horizontal && labelStyles.vertical,
-      state.label.size === 'large' && labelStyles.large,
-      !horizontal && state.label.size === 'large' && labelStyles.verticalLarge,
+      !horizontal && size === 'large' && labelStyles.verticalLarge,
       state.label.className,
     );
   }
