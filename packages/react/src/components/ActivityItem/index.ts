@@ -3,4 +3,5 @@ export { getClassNames as getActivityItemClassNames } from './ActivityItem.class
 export type { IActivityItemClassNames } from './ActivityItem.classNames';
 
 export * from './ActivityItem';
+export * from './ActivityItem.base';
 export * from './ActivityItem.types';

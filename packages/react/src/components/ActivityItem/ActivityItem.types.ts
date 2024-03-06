@@ -102,6 +102,12 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
 /**
  * {@docCategory ActivityItem}
  */
+export type IActivityItemStyleProps = Required<Pick<IActivityItemProps, 'theme'>> &
+  Pick<IActivityItemProps, 'animateBeaconSignal' | 'beaconColorOne' | 'beaconColorTwo' | 'className' | 'isCompact'>;
+
+/**
+ * {@docCategory ActivityItem}
+ */
 export interface IActivityItemStyles {
   /**
    * Styles applied to the root activity item container.

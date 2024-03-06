@@ -7,7 +7,7 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        align-items: center;
+        align-items: flex-start;
         box-sizing: border-box;
         color: #605e5c;
         display: flex;
@@ -16,10 +16,19 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
         font-weight: 400;
         justify-content: flex-start;
       }
+      {
+        align-items: center;
+      }
 >
   <div
     className=
         ms-ActivityItem-activityTypeIcon
+        {
+          font-size: 16px;
+          height: 32px;
+          line-height: 16px;
+          margin-top: 3px;
+        }
         {
           align-items: center;
           color: #0078d4;
@@ -51,6 +60,13 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
     <div
       className=
           ms-ActivityItem-personaContainer
+          {
+            display: flex;
+            flex-wrap: wrap;
+            height: 32px;
+            min-width: 32px;
+            width: 32px;
+          }
           {
             display: inline-flex;
             flex-basis: auto;
@@ -136,6 +152,12 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
     className=
         ms-ActivityItem-activityContent
         {
+          padding-bottom: 0;
+          padding-left: 8px;
+          padding-right: 8px;
+          padding-top: 0;
+        }
+        {
           flex: 1;
           overflow-x: hidden;
           padding-bottom: 0;
@@ -168,7 +190,7 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        align-items: center;
+        align-items: flex-start;
         box-sizing: border-box;
         color: #605e5c;
         display: flex;
@@ -177,10 +199,19 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
         font-weight: 400;
         justify-content: flex-start;
       }
+      {
+        align-items: center;
+      }
 >
   <div
     className=
         ms-ActivityItem-activityTypeIcon
+        {
+          font-size: 16px;
+          height: 32px;
+          line-height: 16px;
+          margin-top: 3px;
+        }
         {
           align-items: center;
           color: #0078d4;
@@ -231,6 +262,12 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
     className=
         ms-ActivityItem-activityContent
         {
+          padding-bottom: 0;
+          padding-left: 8px;
+          padding-right: 8px;
+          padding-top: 0;
+        }
+        {
           flex: 1;
           overflow-x: hidden;
           padding-bottom: 0;
@@ -263,7 +300,7 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        align-items: center;
+        align-items: flex-start;
         animation-duration: .5s;
         animation-iteration-count: 1;
         animation-name: keyframes from{opacity:0;}to{opacity:1;};
@@ -275,10 +312,19 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
         font-weight: 400;
         justify-content: flex-start;
       }
+      {
+        align-items: center;
+      }
 >
   <div
     className=
         ms-ActivityItem-activityTypeIcon
+        {
+          font-size: 16px;
+          height: 32px;
+          line-height: 16px;
+          margin-top: 3px;
+        }
         {
           align-items: center;
           color: #0078d4;
@@ -329,6 +375,13 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
     <div
       className=
           ms-ActivityItem-personaContainer
+          {
+            display: flex;
+            flex-wrap: wrap;
+            height: 32px;
+            min-width: 32px;
+            width: 32px;
+          }
           {
             display: inline-flex;
             flex-basis: auto;
@@ -417,6 +470,12 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
           animation-duration: .5s;
           animation-iteration-count: 1;
           animation-name: keyframes from{transform:translateX(-10px);}to{transform:translateX(0);};
+          padding-bottom: 0;
+          padding-left: 8px;
+          padding-right: 8px;
+          padding-top: 0;
+        }
+        {
           flex: 1;
           overflow-x: hidden;
           padding-bottom: 0;
@@ -449,7 +508,7 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        align-items: center;
+        align-items: flex-start;
         box-sizing: border-box;
         color: #605e5c;
         display: flex;
@@ -458,10 +517,19 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
         font-weight: 400;
         justify-content: flex-start;
       }
+      {
+        align-items: center;
+      }
 >
   <div
     className=
         ms-ActivityItem-activityTypeIcon
+        {
+          font-size: 16px;
+          height: 32px;
+          line-height: 16px;
+          margin-top: 3px;
+        }
         {
           align-items: center;
           color: #0078d4;
@@ -493,6 +561,13 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
     <div
       className=
           ms-ActivityItem-personaContainer
+          {
+            display: flex;
+            flex-wrap: wrap;
+            height: 32px;
+            min-width: 32px;
+            width: 32px;
+          }
           {
             display: inline-flex;
             flex-basis: auto;
@@ -734,6 +809,12 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
   <div
     className=
         ms-ActivityItem-activityContent
+        {
+          padding-bottom: 0;
+          padding-left: 8px;
+          padding-right: 8px;
+          padding-top: 0;
+        }
         {
           flex: 1;
           overflow-x: hidden;

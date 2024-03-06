@@ -1,13 +1,6 @@
-import {
-  concatStyleSets,
-  getTheme,
-  HighContrastSelector,
-  keyframes,
-  PulsingBeaconAnimationStyles,
-} from '../../Styling';
+import { getGlobalClassNames, HighContrastSelector, keyframes, PulsingBeaconAnimationStyles } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
-import type { ITheme } from '../../Styling';
-import type { IActivityItemStyles, IActivityItemProps } from './ActivityItem.types';
+import type { IActivityItemStyles, IActivityItemStyleProps } from './ActivityItem.types';
 
 const DEFAULT_PERSONA_SIZE = '32px';
 const COMPACT_PERSONA_SIZE = '16px';
@@ -16,6 +9,18 @@ const COMPACT_ICON_SIZE = '13px';
 const ANIMATION_INNER_DIMENSION = '4px';
 const ANIMATION_OUTER_DIMENSION = '28px';
 const ANIMATION_BORDER_WIDTH = '4px';
+
+const GlobalClassNames = {
+  root: 'ms-ActivityItem',
+  activityContent: 'ms-ActivityItem-activityContent',
+  activityPersona: 'ms-ActivityItem-activityPersona',
+  activityText: 'ms-ActivityItem-activityText',
+  activityTypeIcon: 'ms-ActivityItem-activityTypeIcon',
+  commentText: 'ms-ActivityItem-commentText',
+  personaContainer: 'ms-ActivityItem-personaContainer',
+  pulsingBeacon: 'ms-ActivityItem-pulsingBeacon',
+  timeStamp: 'ms-ActivityItem-timeStamp',
+};
 
 const fadeIn = memoizeFunction(() =>
   keyframes({
@@ -31,182 +36,195 @@ const slideIn = memoizeFunction(() =>
   }),
 );
 
-export const getStyles = memoizeFunction(
-  (
-    theme: ITheme = getTheme(),
-    customStyles?: IActivityItemStyles,
-    animateBeaconSignal?: IActivityItemProps['animateBeaconSignal'],
-    beaconColorOne?: IActivityItemProps['beaconColorOne'],
-    beaconColorTwo?: IActivityItemProps['beaconColorTwo'],
-    isCompact?: IActivityItemProps['isCompact'],
-  ): IActivityItemStyles => {
-    const continuousPulse = PulsingBeaconAnimationStyles.continuousPulseAnimationSingle(
-      beaconColorOne ? beaconColorOne : theme.palette.themePrimary,
-      beaconColorTwo ? beaconColorTwo : theme.palette.themeTertiary,
-      ANIMATION_INNER_DIMENSION,
-      ANIMATION_OUTER_DIMENSION,
-      ANIMATION_BORDER_WIDTH,
-    );
+export const getStyles = memoizeFunction((props: IActivityItemStyleProps): IActivityItemStyles => {
+  const { animateBeaconSignal, beaconColorOne, beaconColorTwo, className, isCompact, theme } = props;
 
-    const continuousPulseAnimation = {
-      animationName: continuousPulse,
-      animationIterationCount: '1',
-      animationDuration: '.8s',
-      zIndex: 1,
-    };
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-    const slideInAnimation = {
-      animationName: slideIn(),
-      animationIterationCount: '1',
-      animationDuration: '.5s',
-    };
+  const continuousPulse = PulsingBeaconAnimationStyles.continuousPulseAnimationSingle(
+    beaconColorOne ? beaconColorOne : theme.palette.themePrimary,
+    beaconColorTwo ? beaconColorTwo : theme.palette.themeTertiary,
+    ANIMATION_INNER_DIMENSION,
+    ANIMATION_OUTER_DIMENSION,
+    ANIMATION_BORDER_WIDTH,
+  );
 
-    const fadeInAnimation = {
-      animationName: fadeIn(),
-      animationIterationCount: '1',
-      animationDuration: '.5s',
-    };
+  const continuousPulseAnimation = {
+    animationName: continuousPulse,
+    animationIterationCount: '1',
+    animationDuration: '.8s',
+    zIndex: 1,
+  };
 
-    const ActivityItemStyles: IActivityItemStyles = {
-      root: [
-        theme.fonts.small,
-        {
-          display: 'flex',
-          justifyContent: 'flex-start',
-          alignItems: 'flex-start',
-          boxSizing: 'border-box',
-          color: theme.palette.neutralSecondary,
-        },
-        isCompact && animateBeaconSignal && fadeInAnimation,
-      ],
+  const slideInAnimation = {
+    animationName: slideIn(),
+    animationIterationCount: '1',
+    animationDuration: '.5s',
+  };
 
-      pulsingBeacon: [
-        {
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '0px',
-          height: '0px',
-          borderRadius: '225px',
-          borderStyle: 'solid',
-          opacity: 0,
-        },
-        isCompact && animateBeaconSignal && continuousPulseAnimation,
-      ],
+  const fadeInAnimation = {
+    animationName: fadeIn(),
+    animationIterationCount: '1',
+    animationDuration: '.5s',
+  };
 
-      isCompactRoot: {
-        alignItems: 'center',
+  return {
+    root: [
+      className,
+      classNames.root,
+      theme.fonts.small,
+      {
+        display: 'flex',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-start',
+        boxSizing: 'border-box',
+        color: theme.palette.neutralSecondary,
       },
+      isCompact && animateBeaconSignal && fadeInAnimation,
+    ],
 
-      personaContainer: {
+    pulsingBeacon: [
+      classNames.pulsingBeacon,
+      {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: '0px',
+        height: '0px',
+        borderRadius: '225px',
+        borderStyle: 'solid',
+        opacity: 0,
+      },
+      isCompact && animateBeaconSignal && continuousPulseAnimation,
+    ],
+
+    isCompactRoot: {
+      alignItems: 'center',
+    },
+
+    personaContainer: [
+      classNames.personaContainer,
+      {
         display: 'flex',
         flexWrap: 'wrap',
         minWidth: DEFAULT_PERSONA_SIZE,
         width: DEFAULT_PERSONA_SIZE,
         height: DEFAULT_PERSONA_SIZE,
       },
+    ],
 
-      isCompactPersonaContainer: {
-        display: 'inline-flex',
-        flexWrap: 'nowrap',
-        flexBasis: 'auto',
-        height: COMPACT_PERSONA_SIZE,
-        width: 'auto',
-        minWidth: '0',
-        paddingRight: '6px',
-      },
+    isCompactPersonaContainer: {
+      display: 'inline-flex',
+      flexWrap: 'nowrap',
+      flexBasis: 'auto',
+      height: COMPACT_PERSONA_SIZE,
+      width: 'auto',
+      minWidth: '0',
+      paddingRight: '6px',
+    },
 
-      activityTypeIcon: {
+    activityTypeIcon: [
+      classNames.activityTypeIcon,
+      {
         height: DEFAULT_PERSONA_SIZE,
         fontSize: DEFAULT_ICON_SIZE,
         lineHeight: DEFAULT_ICON_SIZE,
         marginTop: '3px',
       },
+    ],
 
-      isCompactIcon: {
-        height: COMPACT_PERSONA_SIZE,
-        minWidth: COMPACT_PERSONA_SIZE,
-        fontSize: COMPACT_ICON_SIZE,
-        lineHeight: COMPACT_ICON_SIZE,
-        color: theme.palette.themePrimary,
-        marginTop: '1px',
-        position: 'relative',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        selectors: {
-          '.ms-Persona-imageArea': {
-            margin: '-2px 0 0 -2px',
-            border: '2px solid' + theme.palette.white,
-            borderRadius: '50%',
-            selectors: {
-              [HighContrastSelector]: {
-                border: 'none',
-                margin: '0',
-              },
+    isCompactIcon: {
+      height: COMPACT_PERSONA_SIZE,
+      minWidth: COMPACT_PERSONA_SIZE,
+      fontSize: COMPACT_ICON_SIZE,
+      lineHeight: COMPACT_ICON_SIZE,
+      color: theme.palette.themePrimary,
+      marginTop: '1px',
+      position: 'relative',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      selectors: {
+        '.ms-Persona-imageArea': {
+          margin: '-2px 0 0 -2px',
+          border: '2px solid' + theme.palette.white,
+          borderRadius: '50%',
+          selectors: {
+            [HighContrastSelector]: {
+              border: 'none',
+              margin: '0',
             },
           },
         },
       },
+    },
 
-      activityPersona: {
+    activityPersona: [
+      classNames.activityPersona,
+      {
         display: 'block',
       },
+    ],
 
-      doublePersona: {
-        selectors: {
-          ':first-child': {
-            alignSelf: 'flex-end',
-          },
+    doublePersona: {
+      selectors: {
+        ':first-child': {
+          alignSelf: 'flex-end',
         },
       },
+    },
 
-      isCompactPersona: {
-        display: 'inline-block',
-        width: '8px',
-        minWidth: '8px',
-        overflow: 'visible',
+    isCompactPersona: {
+      display: 'inline-block',
+      width: '8px',
+      minWidth: '8px',
+      overflow: 'visible',
+    },
+
+    activityContent: [
+      classNames.activityContent,
+      {
+        padding: '0 8px',
       },
+      isCompact && animateBeaconSignal && slideInAnimation,
+    ],
 
-      activityContent: [
-        {
-          padding: '0 8px',
-        },
-        isCompact && animateBeaconSignal && slideInAnimation,
-      ],
-
-      activityText: {
+    activityText: [
+      classNames.activityText,
+      {
         display: 'inline',
       },
+    ],
 
-      isCompactContent: {
-        flex: '1',
-        padding: '0 4px',
-        whiteSpace: 'nowrap',
-        textOverflow: 'ellipsis',
-        overflowX: 'hidden',
-      },
+    isCompactContent: {
+      flex: '1',
+      padding: '0 4px',
+      whiteSpace: 'nowrap',
+      textOverflow: 'ellipsis',
+      overflowX: 'hidden',
+    },
 
-      commentText: {
+    commentText: [
+      classNames.commentText,
+      {
         color: theme.palette.neutralPrimary,
       },
+    ],
 
-      timeStamp: [
-        theme.fonts.tiny,
-        {
-          fontWeight: 400,
-          color: theme.palette.neutralSecondary,
-        },
-      ],
-
-      isCompactTimeStamp: {
-        display: 'inline-block',
-        paddingLeft: '0.3em', // One space character
-        fontSize: '1em',
+    timeStamp: [
+      classNames.timeStamp,
+      theme.fonts.tiny,
+      {
+        fontWeight: 400,
+        color: theme.palette.neutralSecondary,
       },
-    };
+    ],
 
-    return concatStyleSets(ActivityItemStyles, customStyles);
-  },
-);
+    isCompactTimeStamp: {
+      display: 'inline-block',
+      paddingLeft: '0.3em', // One space character
+      fontSize: '1em',
+    },
+  };
+});
