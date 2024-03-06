@@ -1,9 +1,15 @@
-export { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webDarkTheme, webLightTheme } from './themes/index';
-export { createDarkTheme, createHighContrastTheme, createLightTheme, createTeamsDarkTheme } from './utils/index';
+export {
+  teamsDarkTheme,
+  teamsHighContrastTheme,
+  teamsLightTheme,
+  webDarkTheme,
+  webLightTheme,
+} from './themes/index.js';
+export { createDarkTheme, createHighContrastTheme, createLightTheme, createTeamsDarkTheme } from './utils/index.js';
 
-export { themeToTokensObject } from './themeToTokensObject';
-export { tokens } from './tokens';
-export { typographyStyles } from './global/index';
+export { themeToTokensObject } from './themeToTokensObject.js';
+export { tokens } from './tokens.js';
+export { typographyStyles } from './global/index.js';
 
 export type {
   Brands,
@@ -62,4 +68,4 @@ export type {
   Theme,
   TypographyStyle,
   TypographyStyles,
-} from './types';
+} from './types.js';

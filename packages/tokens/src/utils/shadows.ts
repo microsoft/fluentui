@@ -1,4 +1,4 @@
-import type { ShadowBrandTokens, ShadowTokens } from '../types';
+import type { ShadowBrandTokens, ShadowTokens } from '../types.js';
 
 export function createShadowTokens(ambientColor: string, keyColor: string, tokenSuffix: 'Brand'): ShadowBrandTokens;
 export function createShadowTokens(ambientColor: string, keyColor: string): ShadowTokens;

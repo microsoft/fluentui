@@ -1,5 +1,5 @@
-import { tokens } from '../tokens';
-import { TypographyStyles } from '../types';
+import { tokens } from '../tokens.js';
+import { TypographyStyles } from '../types.js';
 
 /**
  * Global typography styles (fontSize, fontWeight, and lineHeight)

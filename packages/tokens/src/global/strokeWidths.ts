@@ -1,4 +1,4 @@
-import type { StrokeWidthTokens } from '../types';
+import type { StrokeWidthTokens } from '../types.js';
 
 export const strokeWidths: StrokeWidthTokens = {
   strokeWidthThin: '1px',

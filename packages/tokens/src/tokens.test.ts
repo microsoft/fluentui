@@ -1,5 +1,5 @@
-import type { Theme } from './types';
-import { tokens } from './tokens';
+import type { Theme } from './types.js';
+import { tokens } from './tokens.js';
 
 describe('tokens', () => {
   it('CSS variables match expected format', () => {

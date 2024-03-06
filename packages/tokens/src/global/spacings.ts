@@ -1,4 +1,4 @@
-import type { HorizontalSpacingTokens, SpacingTokens, VerticalSpacingTokens } from '../types';
+import type { HorizontalSpacingTokens, SpacingTokens, VerticalSpacingTokens } from '../types.js';
 
 // Intentionally not exported! Use horizontalSpacings and verticalSpacings instead.
 const spacings: SpacingTokens = {

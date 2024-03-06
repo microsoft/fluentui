@@ -1,4 +1,4 @@
-import type { DurationTokens } from '../types';
+import type { DurationTokens } from '../types.js';
 
 export const durations: DurationTokens = {
   durationUltraFast: '50ms',

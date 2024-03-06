@@ -1,5 +1,5 @@
-import { createLightTheme } from '../../utils/createLightTheme';
-import { brandTeams } from '../../global/brandColors';
-import type { Theme } from '../../types';
+import { createLightTheme } from '../../utils/createLightTheme.js';
+import { brandTeams } from '../../global/brandColors.js';
+import type { Theme } from '../../types.js';
 
 export const teamsLightTheme: Theme = createLightTheme(brandTeams);

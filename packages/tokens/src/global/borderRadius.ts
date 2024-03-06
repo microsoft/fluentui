@@ -1,4 +1,4 @@
-import type { BorderRadiusTokens } from '../types';
+import type { BorderRadiusTokens } from '../types.js';
 
 export const borderRadius: BorderRadiusTokens = {
   borderRadiusNone: '0',

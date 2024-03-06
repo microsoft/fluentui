@@ -1,0 +1,38 @@
+diff --git a/node_modules/just-task/lib/config.js b/node_modules/just-task/lib/config.js
+index f8714d4..b9d6ab8 100644
+--- a/node_modules/just-task/lib/config.js
++++ b/node_modules/just-task/lib/config.js
+@@ -7,8 +7,10 @@ const option_1 = require("./option");
+ const resolve_1 = require("./resolve");
+ const just_task_logger_1 = require("just-task-logger");
+ const enableTypeScript_1 = require("./enableTypeScript");
++
++const defaultSupportedConfigs = ['just.config.js','just.config.cjs', 'just-task.js', 'just.config.ts','just.config.cts'];
+ function resolveConfigFile(args) {
+-    for (const entry of [args.config, './just.config.js', './just-task.js', './just.config.ts', args.defaultConfig]) {
++    for (const entry of [args.config, ...defaultSupportedConfigs, args.defaultConfig]) {
+         const configFile = resolve_1.resolve(entry);
+         if (configFile) {
+             return configFile;
+@@ -17,15 +19,19 @@ function resolveConfigFile(args) {
+     return null;
+ }
+ exports.resolveConfigFile = resolveConfigFile;
++
++const supportedExtensions = {ts:['.ts','.tsx','.cts','.ctsx'], js:['.js','.cjs']};
+ function readConfig() {
+     // uses a separate instance of yargs to first parse the config (without the --help in the way) so we can parse the configFile first regardless
+     const configFile = resolveConfigFile(option_1.argv());
+     if (configFile && fs.existsSync(configFile)) {
+         const ext = path.extname(configFile);
+-        if (ext === '.ts' || ext === '.tsx') {
+-            // TODO: add option to do typechecking as well
++
++        if(supportedExtensions.ts.includes(ext)){
++             // TODO: add option to do typechecking as well
+             enableTypeScript_1.enableTypeScript({ transpileOnly: true });
+         }
++
+         try {
+             const configModule = require(configFile);
+             just_task_logger_1.mark('registry:configModule');
