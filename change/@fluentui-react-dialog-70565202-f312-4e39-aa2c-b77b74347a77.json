@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: add esm integration test",
+  "packageName": "@fluentui/react-dialog",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

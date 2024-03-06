@@ -22,9 +22,14 @@ function createModuleResolverAliases(options) {
   const allPathAliases = tsConfigBase.compilerOptions.paths;
   return Object.entries(allPathAliases).reduce((acc, [packageName, aliasTuple]) => {
     const tsSourceRoot = aliasTuple[0];
-    const jsSourceRoot = tsSourceRoot.replace('src', 'lib').replace('.ts', '.js');
+    const transformedSourcePath = tsSourceRoot.replace('src', 'lib');
+    const jsSourceRootDir = path.dirname(path.join(workspaceRoot, transformedSourcePath));
+    const isNativeEsm = fs.existsSync(path.join(jsSourceRootDir, 'index.mjs'));
+    const jsSourceRoot = transformedSourcePath.replace('.ts', isNativeEsm ? '.mjs' : '.js');
     const aliasRegex = `^${packageName}$`;
+
     acc[aliasRegex] = path.resolve(rootOffset, jsSourceRoot);
+
     return acc;
   }, /** @type {Record<string,string>} */ ({}));
 }

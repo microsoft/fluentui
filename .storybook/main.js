@@ -83,12 +83,28 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
       },
     }),
   ],
+  managerWebpack: (/** @type {import('webpack').Configuration}*/ config) => {
+    config.resolve ??= {};
+    config.resolve.extensionAlias = {
+      '.js': ['.js', '.ts'],
+      '.mjs': ['.mjs', '.mts'],
+    };
+    return config;
+  },
   webpackFinal: config => {
+    config.resolve ??= {};
+    config.resolve.extensionAlias = {
+      '.js': ['.js', '.ts'],
+      '.mjs': ['.mjs', '.mts'],
+    };
     registerTsPaths({ config, configFile: tsConfigPath });
 
     if ((process.env.CI || process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) && config.plugins) {
       // Disable ProgressPlugin in PR/CI builds to reduce log verbosity (warnings and errors are still logged)
-      config.plugins = config.plugins.filter(({ constructor }) => constructor.name !== 'ProgressPlugin');
+      config.plugins =
+        /** @type {Array<((this: import('webpack').Compiler, compiler: import('webpack').Compiler) => void)>} */ (
+          config.plugins
+        ).filter(({ constructor }) => constructor.name !== 'ProgressPlugin');
     }
 
     return config;
