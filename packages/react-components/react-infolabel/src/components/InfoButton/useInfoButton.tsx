@@ -75,13 +75,12 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
     }),
   };
 
-  const [popoverOpen, setPopoverOpen] = useControllableState({
+  const [, setPopoverOpen] = useControllableState({
     state: state.popover.open,
     defaultState: state.popover.defaultOpen,
     initialState: false,
   });
 
-  state.popover.open = popoverOpen;
   state.popover.onOpenChange = mergeCallbacks(state.popover.onOpenChange, (e, data) => setPopoverOpen(data.open));
 
   const focusOutRef = React.useCallback(
