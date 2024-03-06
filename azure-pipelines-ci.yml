@@ -59,6 +59,6 @@ extends:
               - template: .devops/templates/deployE2E.yml@self
 
               # False positive AV. Wi'l follow up with AV owners. For now to get compliant deleting file before.
-              - script: |
-                  rm apps/pr-deploy-site/dist/public-docsite-v9/storybook/407.*.manager.bundle.js
-                displayName: 'Remove false positive file'
+              # - script: |
+              #     rm apps/pr-deploy-site/dist/public-docsite-v9/storybook/407.*.manager.bundle.js
+              #   displayName: 'Remove false positive file'
