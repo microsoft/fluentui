@@ -395,11 +395,7 @@ export class ActionButton extends React_2.Component<IButtonProps, {}> {
 }
 
 // @public (undocumented)
-export class ActivityItem extends React_2.Component<IActivityItemProps, {}> {
-    constructor(props: IActivityItemProps);
-    // (undocumented)
-    render(): JSX.Element;
-}
+export const ActivityItem: React_2.FunctionComponent<IActivityItemProps>;
 
 export { addDays }
 
@@ -1717,10 +1713,10 @@ export { format }
 export { formProperties }
 
 // @public (undocumented)
-export const getActivityItemClassNames: (styles: IActivityItemStyles, className: string, activityPersonas: Array<IPersonaProps>, isCompact: boolean) => IActivityItemClassNames;
+export const getActivityItemClassNames: (props: IActivityItemProps) => IActivityItemClassNames;
 
 // @public (undocumented)
-export const getActivityItemStyles: (theme?: ITheme, customStyles?: IActivityItemStyles, animateBeaconSignal?: IActivityItemProps['animateBeaconSignal'], beaconColorOne?: IActivityItemProps['beaconColorOne'], beaconColorTwo?: IActivityItemProps['beaconColorTwo'], isCompact?: IActivityItemProps['isCompact']) => IActivityItemStyles;
+export const getActivityItemStyles: (props: IActivityItemStyleProps) => IActivityItemStyles;
 
 // @public (undocumented)
 export function getAllSelectedOptions(options: ISelectableOption[], selectedIndices: number[]): ISelectableOption[];
@@ -2171,6 +2167,9 @@ export interface IActivityItemProps extends React_2.AllHTMLAttributes<HTMLElemen
     theme?: ITheme;
     timeStamp?: string | React_2.ReactNode[] | React_2.ReactNode;
 }
+
+// @public (undocumented)
+export type IActivityItemStyleProps = Required<Pick<IActivityItemProps, 'theme'>> & Pick<IActivityItemProps, 'animateBeaconSignal' | 'beaconColorOne' | 'beaconColorTwo' | 'className' | 'isCompact'>;
 
 // @public (undocumented)
 export interface IActivityItemStyles {
