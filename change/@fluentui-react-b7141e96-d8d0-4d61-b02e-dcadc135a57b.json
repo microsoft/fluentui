@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "fix: ActivityItem should be themeable",
+  "type": "minor",
+  "comment": "chore: migrate ActivityItem to styled() component",
   "packageName": "@fluentui/react",
   "email": "sarah.higley@microsoft.com",
   "dependentChangeType": "patch"
