@@ -9,13 +9,17 @@ import {
 } from '../../utilities/TestUtility.test';
 import { MultiStackedBarChart } from './MultiStackedBarChart';
 import { IChartDataPoint, IChartProps, IMultiStackedBarChartProps } from './index';
-import { DefaultPalette, ThemeProvider } from '@fluentui/react';
+import { DefaultPalette, ThemeProvider, resetIds } from '@fluentui/react';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { MultiStackedBarChartBase } from './MultiStackedBarChart.base';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
+
+function sharedBeforeEach() {
+  resetIds();
+}
 
 const firstChartPoints: IChartDataPoint[] = [
   {
@@ -143,6 +147,8 @@ const oneDataPoint: IChartProps[] = [
 ];
 
 describe('Multi Stacked bar chart rendering', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should render the Multi Stacked bar chart with non-empty data',
     MultiStackedBarChart,
@@ -155,6 +161,8 @@ describe('Multi Stacked bar chart rendering', () => {
 });
 
 describe('Multi Stacked bar chart - Subcomponent bar', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should render the multi stacked bar with the given bar height',
     MultiStackedBarChart,
@@ -220,6 +228,8 @@ describe('Multi Stacked bar chart - Subcomponent bar', () => {
 });
 
 describe('Multi Stacked bar chart - Subcomponent Legends', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should show any rendered legends when hideLegend is not set',
     MultiStackedBarChart,
@@ -298,6 +308,8 @@ describe('Multi Stacked bar chart - Subcomponent Legends', () => {
 });
 
 describe('Multi Stacked bar chart - Subcomponent callout', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should call the handler on mouse over bar',
     MultiStackedBarChart,
@@ -360,6 +372,8 @@ describe('Multi Stacked bar chart - Subcomponent callout', () => {
 });
 
 describe('Screen resolution', () => {
+  beforeEach(sharedBeforeEach);
+
   testScreenResolutionChanges(() => {
     // Arrange
     const { container } = render(<MultiStackedBarChart data={data} />);
@@ -368,18 +382,24 @@ describe('Screen resolution', () => {
   });
 });
 
-test('Should reflect theme change', () => {
-  // Arrange
-  const { container } = render(
-    <ThemeProvider theme={DarkTheme}>
-      <MultiStackedBarChart culture={window.navigator.language} data={data} />
-    </ThemeProvider>,
-  );
-  // Assert
-  expect(container).toMatchSnapshot();
+describe('Multi Stacked bar chart - Theme', () => {
+  beforeEach(sharedBeforeEach);
+
+  test('Should reflect theme change', () => {
+    // Arrange
+    const { container } = render(
+      <ThemeProvider theme={DarkTheme}>
+        <MultiStackedBarChart culture={window.navigator.language} data={data} />
+      </ThemeProvider>,
+    );
+    // Assert
+    expect(container).toMatchSnapshot();
+  });
 });
 
 describe('Multi Stacked Bar Chart - axe-core', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should pass accessibility tests', async () => {
     const { container } = render(<MultiStackedBarChart data={data} />);
     let axeResults;

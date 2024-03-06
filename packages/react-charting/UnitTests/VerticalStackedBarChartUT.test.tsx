@@ -5,6 +5,7 @@ import { IVSChartDataPoint } from '../src/index';
 import { VerticalStackedBarChart } from '../src/components/VerticalStackedBarChart/VerticalStackedBarChart';
 import { testWithWait, testWithoutWait } from '../src/utilities/TestUtility.test';
 import { VerticalStackedBarChartBase } from '../src/components/VerticalStackedBarChart/VerticalStackedBarChart.base';
+import { resetIds } from '@fluentui/react';
 const env = require('../config/tests');
 
 const runTest = env === 'TEST' ? describe : describe.skip;
@@ -71,7 +72,13 @@ const chartPointsWithStringXAxisPoint = [
   },
 ];
 
+function sharedBeforeEach() {
+  resetIds();
+}
+
 runTest('VerticalBarChart unit tests', () => {
+  beforeEach(sharedBeforeEach);
+
   runTest('get Path', () => {
     testWithWait(
       'Should return path when a point is hovered',
@@ -144,6 +151,8 @@ runTest('VerticalBarChart unit tests', () => {
   );
 });
 runTest('get area label', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should return the correct aria label for a stacked Bar',
     VerticalStackedBarChart,
@@ -168,6 +177,8 @@ runTest('get area label', () => {
 });
 
 runTest('get area selected', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should return the correct aria selected for legends when mouse click',
     VerticalStackedBarChart,
@@ -234,6 +245,8 @@ runTest('get area selected', () => {
 });
 
 runTest('X- Axis Data', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should return the bars and x axis values for string XAxis data',
     VerticalStackedBarChart,
@@ -260,6 +273,8 @@ runTest('X- Axis Data', () => {
 });
 
 runTest('Get lines data', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return line data properly after formatting', () => {
     const instance = new VerticalStackedBarChartBase({
       data: simplePointsWithLine,
@@ -297,6 +312,8 @@ runTest('Get lines data', () => {
 });
 
 runTest('_toFocusWholeStack', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return the correct focus to whole stack value properly', () => {
     const instance = new VerticalStackedBarChartBase({
       data: simplePointsWithLine,
@@ -335,6 +352,8 @@ runTest('_toFocusWholeStack', () => {
 });
 
 runTest('Get Domain Margins', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return the correct margins when total width is greater than required width', () => {
     const instance = new VerticalStackedBarChartBase({
       data: simplePointsWithLine,
@@ -383,6 +402,8 @@ runTest('Get Domain Margins', () => {
 });
 
 runTest('Get Scales', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return scales for numeric x-axis', () => {
     const instance = new VerticalStackedBarChartBase({
       data: simplePointsWithLine,

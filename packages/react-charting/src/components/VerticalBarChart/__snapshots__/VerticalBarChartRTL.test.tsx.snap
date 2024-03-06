@@ -4745,7 +4745,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
         <g>
           <g>
             <rect
-              aria-label="2/1/2019, 12:00:00 AM. 3500."
+              aria-label="1/2/2019, 12:00:00 am. 3500."
               class=
 
                   {
@@ -4779,7 +4779,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           </g>
           <g>
             <rect
-              aria-label="5/1/2019, 12:00:00 AM. 2500."
+              aria-label="1/5/2019, 12:00:00 am. 2500."
               class=
 
                   {
@@ -4813,7 +4813,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           </g>
           <g>
             <rect
-              aria-label="8/1/2019, 12:00:00 AM. 1900."
+              aria-label="1/8/2019, 12:00:00 am. 1900."
               class=
 
                   {
