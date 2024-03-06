@@ -54,7 +54,7 @@ extends:
     stages:
       - stage: main
         jobs:
-          - job: Job_build_publish
+          - job: Release
             pool:
               name: '1ES-Host-Ubuntu'
               image: '1ES-PT-Ubuntu-20.04'
@@ -67,6 +67,11 @@ extends:
 
             steps:
               - template: .devops/templates/tools.yml@self
+
+              - script: |
+                  echo "dry run mode enabled!"
+                displayName: dry run mode notification
+                condition: eq(variables.dryRun, true)
 
               - script: |
                   git config user.name "Fluent UI Build"
@@ -113,20 +118,25 @@ extends:
 
               - template: .devops/templates/cleanup.yml@self
 
-          - job: Job_build_publish_doc
+          - job: Release_docsite
             workspace:
               clean: all
             displayName: Build and Publish Docsite
-            dependsOn: Job_build_publish
+            dependsOn: Release
             pool:
               name: '1ES-Host-Ubuntu'
               image: '1ES-PT-Ubuntu-20.04'
               os: linux
             # run this job when the previous job is succeeded or when publishDocsiteOnly is true
-            condition: or(succeeded(), eq(variables.publishDocsiteOnly, true), eq(variables.dryRun, false))
+            condition: and(eq(variables.dryRun, false), or(succeeded(), eq(variables.publishDocsiteOnly, true)))
 
             steps:
               - template: .devops/templates/tools.yml@self
+
+              - script: |
+                  echo "dry run mode enabled!"
+                displayName: dry run mode notification
+                condition: eq(variables.dryRun, true)
 
               - task: CmdLine@2
                 displayName: Checkout branch for pull
@@ -175,13 +185,13 @@ extends:
                   BuildDropPath: $(System.DefaultWorkingDirectory)
 
               # Publish the manifest to a separate artifact to avoid hosting the _manifest files on the website
-              - task: PublishPipelineArtifact@1
+              - task: 1ES.PublishPipelineArtifact@1
                 displayName: 📒 Publish Manifest DocSite
                 inputs:
                   artifactName: SBom-DocSite-$(System.JobAttempt)
                   targetPath: $(System.DefaultWorkingDirectory)/_manifest
 
-              - task: PublishPipelineArtifact@1
+              - task: 1ES.PublishPipelineArtifact@1
                 displayName: Publish Docsite as Pipeline Artifact
                 inputs:
                   path: packages/fluentui/docs/dist
