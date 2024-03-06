@@ -13,7 +13,6 @@ export const comboboxClassNames: SlotClassNames<ComboboxSlots> = {
 };
 
 // Matches internal heights for Select and Input, but there are no theme variables for these
-// field heights are 2px less than other controls, since the border is on the parent element.
 const fieldHeights = {
   small: '24px',
   medium: '32px',
