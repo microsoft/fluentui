@@ -215,6 +215,8 @@ describe('VerticalStackedBarChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(VerticalStackedBarChartBase.prototype, 'render');
     const props = {

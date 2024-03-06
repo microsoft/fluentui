@@ -354,6 +354,9 @@ describe('HeatMapChart - mouse events', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(() => {
+    resetIds();
+  });
   it('No empty chart aria label div rendered', () => {
     act(() => {
       wrapper = mount(
