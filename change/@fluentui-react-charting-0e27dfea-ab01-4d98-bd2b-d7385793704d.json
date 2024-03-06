@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add gradient color capability to AreaChart.",
+  "packageName": "@fluentui/react-charting",
+  "email": "shermanchow@microsoft.com",
+  "dependentChangeType": "patch"
+}
