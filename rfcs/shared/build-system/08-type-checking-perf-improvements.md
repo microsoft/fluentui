@@ -278,6 +278,10 @@ react-components/
 
 - scaffold gymnastics and generator tweaks
 
+## Conclusion
+
+We gonna implement solution `2.2 move/encapsulate problematic parts of code to separate packages` with `nested folder structure` option.
+
 ## Discarded Solutions
 
 <!-- As you enumerate possible solutions, try to keep track of the discarded ones. This should include why we discarded the solution. -->
