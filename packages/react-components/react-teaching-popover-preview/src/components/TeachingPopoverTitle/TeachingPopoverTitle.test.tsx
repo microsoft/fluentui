@@ -8,7 +8,11 @@ describe('TeachingPopoverTitle', () => {
   isConformant<TeachingPopoverTitleProps>({
     Component: TeachingPopoverTitle,
     displayName: 'TeachingPopoverTitle',
-    requiredProps: { showDismiss: true },
+    requiredProps: {},
+    disabledTests: [
+      // Title dismiss is optionally rendered
+      'component-has-static-classnames-object',
+    ],
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: Rewrite Spinner animation using only rotation transforms.",
+  "packageName": "@fluentui/react-spinner",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

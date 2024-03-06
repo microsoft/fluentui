@@ -22,11 +22,16 @@ export type RatingProps = Omit<ComponentProps<Partial<RatingSlots>>, 'onChange'>
   /**
    * The icon to display when the rating value is greater than or equal to the item's value.
    */
-  iconFilled?: React.ReactElement;
+  iconFilled?: React.ElementType;
   /**
    * The icon to display when the rating value is less than the item's value.
    */
-  iconOutline?: React.ReactElement;
+  iconOutline?: React.ElementType;
+  /**
+   * Prop to generate the aria-label for the rating inputs.
+   * @default (rating) =\> `${rating}`
+   */
+  itemLabel?: (rating: number) => string;
   /**
    * The max value of the rating. This controls the number of rating items displayed.
    * Must be a whole number greater than 1.
@@ -71,7 +76,8 @@ export type RatingOnChangeEventData = EventData<'change', React.FormEvent<HTMLDi
  * State used in rendering Rating
  */
 export type RatingState = ComponentState<RatingSlots> &
-  Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'value'>> & {
+  Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'value'>> &
+  Pick<RatingProps, 'itemLabel'> & {
     hoveredValue?: number | undefined;
   };
 

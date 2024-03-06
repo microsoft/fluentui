@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 20 Jul 2023 07:35:18 GMT and should not be manually modified.
+This log was last generated on Fri, 01 Mar 2024 07:26:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.5.17](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.17)
+
+Fri, 01 Mar 2024 07:26:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.16..@fluentui/web-components_v2.5.17)
+
+### Patches
+
+- updates fast-foundation to fix a memory leak within form associated disconnected callback ([PR #29806](https://github.com/microsoft/fluentui/pull/29806) by chhol@microsoft.com)
 
 ## [2.5.16](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.16)
 

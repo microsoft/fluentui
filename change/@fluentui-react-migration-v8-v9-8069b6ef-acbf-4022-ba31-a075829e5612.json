@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add color tokens",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}

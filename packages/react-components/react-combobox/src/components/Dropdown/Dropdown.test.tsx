@@ -34,6 +34,9 @@ describe('Dropdown', () => {
           },
         },
       ],
+      'consistent-callback-args': {
+        legacyCallbacks: ['onOpenChange', 'onOptionSelect'],
+      },
     },
   });
 
@@ -100,7 +103,7 @@ describe('Dropdown', () => {
     expect(container.querySelector('[role=listbox]')).not.toBeNull();
   });
 
-  it('adds aria-owns pointing to the popup', () => {
+  it('adds aria-owns and aria-controls pointing to the popup', () => {
     const { getByRole, container } = render(
       <Dropdown open className="root">
         <Option>Red</Option>
@@ -111,6 +114,7 @@ describe('Dropdown', () => {
 
     const listboxId = getByRole('listbox').id;
     expect(container.querySelector('.root')?.getAttribute('aria-owns')).toEqual(listboxId);
+    expect(container.querySelector('button')?.getAttribute('aria-controls')).toEqual(listboxId);
   });
 
   /* open/close tests */

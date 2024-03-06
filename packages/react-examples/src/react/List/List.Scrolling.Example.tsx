@@ -5,13 +5,13 @@ import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { List, ScrollToMode, IList } from '@fluentui/react/lib/List';
 import { TextField } from '@fluentui/react/lib/TextField';
 import { createListItems, IExampleItem } from '@fluentui/example-data';
-import { mergeStyleSets, getTheme, normalize } from '@fluentui/react/lib/Styling';
+import { mergeStyleSets, normalize, ITheme } from '@fluentui/react/lib/Styling';
 import { useConst } from '@fluentui/react-hooks';
+import { useTheme } from '@fluentui/react/lib/Theme';
 
 const evenItemHeight = 50;
 const oddItemHeight = 25;
 const numberOfItemsOnPage = 10;
-const theme = getTheme();
 const dropdownOptions = [
   { key: 'auto', text: 'Auto' },
   { key: 'top', text: 'Top' },
@@ -19,45 +19,37 @@ const dropdownOptions = [
   { key: 'center', text: 'Center' },
 ];
 
-const styles = mergeStyleSets({
-  container: {
-    overflow: 'auto',
-    maxHeight: 400,
-    border: '1px solid #CCC',
-    marginTop: 20,
-    selectors: {
-      '.ms-List-cell .odd': {
-        height: oddItemHeight,
-        lineHeight: oddItemHeight,
-      },
-      '.ms-List-cell .even': {
-        height: evenItemHeight,
-        lineHeight: evenItemHeight,
-        background: theme.palette.neutralLighter,
+const generateStyles = (theme: ITheme) => {
+  return mergeStyleSets({
+    container: {
+      overflow: 'auto',
+      maxHeight: 400,
+      border: '1px solid ' + theme.palette.neutralLight,
+      marginTop: 20,
+      selectors: {
+        '.ms-List-cell .odd': {
+          height: oddItemHeight,
+          lineHeight: oddItemHeight,
+        },
+        '.ms-List-cell .even': {
+          height: evenItemHeight,
+          lineHeight: evenItemHeight,
+          background: theme.palette.neutralLighter,
+        },
       },
     },
-  },
-  itemContent: [
-    theme.fonts.medium,
-    normalize,
-    {
-      position: 'relative',
-      boxSizing: 'border-box',
-      display: 'block',
-      borderLeft: '3px solid ' + theme.palette.themePrimary,
-      paddingLeft: 27,
-    },
-  ],
-});
-
-const onRenderCell = (item: IExampleItem, index: number): JSX.Element => {
-  return (
-    <div data-is-focusable className={index % 2 === 0 ? 'even' : 'odd'}>
-      <div className={styles.itemContent}>
-        {index} &nbsp; {item.name}
-      </div>
-    </div>
-  );
+    itemContent: [
+      theme.fonts.medium,
+      normalize,
+      {
+        position: 'relative',
+        boxSizing: 'border-box',
+        display: 'block',
+        borderLeft: '3px solid ' + theme.palette.themePrimary,
+        paddingLeft: 27,
+      },
+    ],
+  });
 };
 
 export const ListScrollingExample: React.FunctionComponent = () => {
@@ -65,6 +57,21 @@ export const ListScrollingExample: React.FunctionComponent = () => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [scrollToMode, setScrollToMode] = React.useState<ScrollToMode>(ScrollToMode.auto);
   const listRef: React.RefObject<IList> = React.useRef(null);
+  const theme = useTheme();
+  const classNames = React.useMemo(() => generateStyles(theme), [theme]);
+
+  const onRenderCell = React.useCallback(
+    (item: IExampleItem, index: number): JSX.Element => {
+      return (
+        <div data-is-focusable className={index % 2 === 0 ? 'even' : 'odd'}>
+          <div className={classNames.itemContent}>
+            {index} &nbsp; {item.name}
+          </div>
+        </div>
+      );
+    },
+    [classNames],
+  );
 
   const scroll = (index: number, propScrollToMode: ScrollToMode): void => {
     const updatedSelectedIndex = Math.min(Math.max(index, 0), items.length - 1);
@@ -142,7 +149,7 @@ export const ListScrollingExample: React.FunctionComponent = () => {
           onChange={onChangeText}
         />
       </div>
-      <div className={styles.container} data-is-scrollable>
+      <div className={classNames.container} data-is-scrollable>
         <List
           componentRef={listRef}
           items={items}

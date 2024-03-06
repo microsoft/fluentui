@@ -2,7 +2,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import { NavItemValue } from '../NavContext.types';
 
 export type NavItemSlots = {
-  root: Slot<'button'>;
+  root: Slot<'a'>;
 
   // TODO - light this up when we get design spec
   // /**
