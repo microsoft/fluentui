@@ -83,8 +83,7 @@
     "@swc/helpers": "^0.5.1",
     "@fluentui/react-message-bar": "^9.0.21",
     "@fluentui/react-breadcrumb": "^9.0.16",
-    "@fluentui/react-aria": "^9.9.1",
-    "@fluentui/react-list-preview": "0.0.1"
+    "@fluentui/react-aria": "^9.9.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",

@@ -1572,27 +1572,3 @@ export {
   useAriaLiveAnnouncerContextValues_unstable,
 } from '@fluentui/react-aria';
 export type { AriaLiveAnnouncerProps, AriaLiveAnnouncerState } from '@fluentui/react-aria';
-
-// List preview just for building PR docsite
-export {
-  List,
-  listClassNames,
-  renderList_unstable,
-  useListStyles_unstable,
-  useList_unstable,
-  ListItem,
-  listItemClassNames,
-  renderListItem_unstable,
-  useListItemStyles_unstable,
-  useListItem_unstable,
-  useListSelection,
-} from '@fluentui/react-list-preview';
-
-export type {
-  ListProps,
-  ListSlots,
-  ListState,
-  ListItemProps,
-  ListItemSlots,
-  ListItemState,
-} from '@fluentui/react-list-preview';

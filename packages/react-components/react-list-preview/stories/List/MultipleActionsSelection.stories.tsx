@@ -12,10 +12,8 @@ import {
   shorthands,
   Text,
   tokens,
-  List,
-  ListItem,
-  ListProps,
 } from '@fluentui/react-components';
+import { List, ListItem, ListProps } from '@fluentui/react-list-preview';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 
 import * as React from 'react';

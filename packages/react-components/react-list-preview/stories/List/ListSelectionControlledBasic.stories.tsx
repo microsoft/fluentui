@@ -1,4 +1,5 @@
-import { Button, makeStyles, Persona, shorthands, SelectionItemId, List, ListItem } from '@fluentui/react-components';
+import { Button, makeStyles, Persona, shorthands, SelectionItemId } from '@fluentui/react-components';
+import { List, ListItem } from '@fluentui/react-list-preview';
 
 import * as React from 'react';
 const names = [
