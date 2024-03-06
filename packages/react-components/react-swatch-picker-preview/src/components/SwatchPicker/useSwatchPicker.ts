@@ -6,7 +6,7 @@ import { swatchPickerCSSVars } from './useSwatchPickerStyles.styles';
 
 const { gridGap } = swatchPickerCSSVars;
 
-const spacingMap = {
+export const spacingMap = {
   small: '2px',
   medium: '4px',
 };
@@ -24,15 +24,15 @@ export const useSwatchPicker_unstable = (
   props: SwatchPickerProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
-  const { role, onSelectionChange, size = 'medium', shape, spacing = 'medium', ...rest } = props;
-
-  const isGrid = React.Children.count(props.children) > 1;
+  const { grid, onSelectionChange, size = 'medium', shape, spacing = 'medium', ...rest } = props;
 
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
-    axis: isGrid ? 'grid-linear' : 'both',
+    axis: grid ? 'grid-linear' : 'both',
     memorizeCurrent: true,
   });
+
+  const role = grid ? 'grid' : 'radiogroup';
 
   const [selectedValue, setSelectedValue] = useControllableState({
     state: props.selectedValue,
@@ -57,16 +57,18 @@ export const useSwatchPicker_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
-        role: role ?? 'grid',
+        role,
         ...focusAttributes,
         ...rest,
       }),
       { elementType: 'div' },
     ),
+    grid,
     requestSelectionChange,
     selectedValue,
     size,
     shape,
+    spacing,
   };
 
   // Root props

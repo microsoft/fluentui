@@ -2,6 +2,8 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { SwatchPickerRowProps, SwatchPickerRowState } from './SwatchPickerRow.types';
 import { swatchPickerCSSVars } from './useSwatchPickerRowStyles.styles';
+import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
+import { spacingMap } from '../SwatchPicker/useSwatchPicker';
 
 const { rowGap } = swatchPickerCSSVars;
 
@@ -18,7 +20,8 @@ export const useSwatchPickerRow_unstable = (
   props: SwatchPickerRowProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerRowState => {
-  const state = {
+  const spacing = useSwatchPickerContextValue_unstable(ctx => ctx.spacing);
+  const state: SwatchPickerRowState = {
     components: {
       root: 'div',
     },
@@ -33,7 +36,7 @@ export const useSwatchPickerRow_unstable = (
   };
   // Root props
   state.root.style = {
-    [rowGap]: '4px', //spacingMap[spacing],
+    [rowGap]: spacingMap[spacing ?? 'medium'],
     ...state.root.style,
   };
 

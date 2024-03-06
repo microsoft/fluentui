@@ -9,10 +9,18 @@ describe('SwatchPickerRow', () => {
     displayName: 'SwatchPickerRow',
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
   it('renders a default state', () => {
     const result = render(<SwatchPickerRow>Default SwatchPickerRow</SwatchPickerRow>);
-    expect(result.container).toMatchSnapshot();
+    expect(result.container).toMatchInlineSnapshot(`
+      <div>
+        <div
+          class="fui-SwatchPickerRow"
+          role="row"
+          style="--fui-SwatchPicker--rowGap: 4px;"
+        >
+          Default SwatchPickerRow
+        </div>
+      </div>
+    `);
   });
 });

@@ -13,17 +13,13 @@ describe('ColorSwatch', () => {
     const result = render(<ColorSwatch color="#f09" value="#f09" />);
     expect(result.container).toMatchInlineSnapshot(`
       <div>
-        <div
-          aria-checked="false"
+        <button
+          aria-selected="false"
           class="fui-ColorSwatch"
           role="radio"
           style="--fui-SwatchPicker--color: #f09;"
-        >
-          <button
-            class="fui-ColorSwatch__button"
-            type="button"
-          />
-        </div>
+          type="button"
+        />
       </div>
     `);
   });

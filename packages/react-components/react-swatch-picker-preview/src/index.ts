@@ -30,3 +30,4 @@ export {
   useSwatchPickerRow_unstable,
   swatchPickerRowClassNames,
 } from './SwatchPickerRow';
+export { renderSwatchPickerRow, renderSwatchPickerGrid } from './utils/renderUtils';

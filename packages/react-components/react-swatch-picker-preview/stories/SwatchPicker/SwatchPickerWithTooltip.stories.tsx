@@ -2,11 +2,10 @@ import * as React from 'react';
 import { makeStyles, shorthands, Tooltip } from '@fluentui/react-components';
 import {
   SwatchPicker,
-  SwatchPickerOnSelectEventHandler,
   ColorSwatch,
   ColorSwatchProps,
+  SwatchPickerOnSelectEventHandler,
 } from '@fluentui/react-swatch-picker-preview';
-import { renderSwatchPickerRow, renderSwatchPickerGrid } from '../../src/utils/renderUtils';
 
 const useStyles = makeStyles({
   example: {
@@ -17,19 +16,7 @@ const useStyles = makeStyles({
   },
 });
 
-const colors = [
-  { color: '#FF1921', value: 'FF1921', 'aria-label': 'red' },
-  { color: '#FFC12E', value: 'FFC12E', 'aria-label': 'orange' },
-  { color: '#FEFF37', value: 'FEFF37', 'aria-label': 'yellow' },
-  { color: '#90D057', value: '90D057', 'aria-label': 'light green' },
-  { color: '#00B053', value: '00B053', 'aria-label': 'green' },
-  { color: '#00AFED', value: '00AFED', 'aria-label': 'light blue' },
-  { color: '#006EBD', value: '006EBD', 'aria-label': 'blue' },
-  { color: '#011F5E', value: '011F5E', 'aria-label': 'dark blue' },
-  { color: '#712F9E', value: '712F9E', 'aria-label': 'purple' },
-];
-
-export const SwatchPickerLayout = () => {
+export const SwatchPickerWithTooltip = () => {
   const [selectedValue, setSelectedValue] = React.useState('00B053');
   const [selectedColor, setSelectedColor] = React.useState('#00B053');
   const handleSelect: SwatchPickerOnSelectEventHandler = (_, data) => {
@@ -41,20 +28,16 @@ export const SwatchPickerLayout = () => {
 
   return (
     <>
-      <h3>Row</h3>
       <SwatchPicker aria-label="SwatchPicker default" selectedValue={selectedValue} onSelectionChange={handleSelect}>
-        {colors.map((color, index) => {
-          return <ColorSwatchWithTooltip key={`${color.value}-${index}`} {...color} />;
-        })}
-      </SwatchPicker>
-      <h3>Grid</h3>
-      <SwatchPicker
-        grid
-        aria-label="SwatchPicker default"
-        selectedValue={selectedValue}
-        onSelectionChange={handleSelect}
-      >
-        {renderSwatchPickerGrid(colors, 3, (row, index) => renderSwatchPickerRow(row, index, ColorSwatchWithTooltip))}
+        <ColorSwatchWithTooltip color="#FF1921" value="FF1921" aria-label="red" />
+        <ColorSwatchWithTooltip color="#FFC12E" value="FFC12E" aria-label="orange" />
+        <ColorSwatchWithTooltip color="#FEFF37" value="FEFF37" aria-label="yellow" />
+        <ColorSwatchWithTooltip color="#90D057" value="90D057" aria-label="light green" />
+        <ColorSwatchWithTooltip color="#00B053" value="00B053" aria-label="green" />
+        <ColorSwatchWithTooltip color="#00AFED" value="00AFED" aria-label="light blue" />
+        <ColorSwatchWithTooltip color="#006EBD" value="006EBD" aria-label="blue" />
+        <ColorSwatchWithTooltip color="#011F5E" value="011F5E" aria-label="dark blue" />
+        <ColorSwatchWithTooltip color="#712F9E" value="712F9E" aria-label="purple" />
       </SwatchPicker>
       <div
         className={styles.example}

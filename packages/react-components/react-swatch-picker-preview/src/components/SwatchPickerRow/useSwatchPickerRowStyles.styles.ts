@@ -10,8 +10,6 @@ const { rowGap } = swatchPickerCSSVars;
 
 export const swatchPickerRowClassNames: SlotClassNames<SwatchPickerRowSlots> = {
   root: 'fui-SwatchPickerRow',
-  // TODO: add class names for all slots on SwatchPickerRowSlots.
-  // Should be of the form `<slotName>: 'fui-SwatchPickerRow__<slotName>`
 };
 
 /**
@@ -23,8 +21,6 @@ const useStyles = makeStyles({
     flexDirection: 'row',
     columnGap: `var(${rowGap})`,
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
@@ -33,9 +29,6 @@ const useStyles = makeStyles({
 export const useSwatchPickerRowStyles_unstable = (state: SwatchPickerRowState): SwatchPickerRowState => {
   const styles = useStyles();
   state.root.className = mergeClasses(swatchPickerRowClassNames.root, styles.root, state.root.className);
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
 
   return state;
 };

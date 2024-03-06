@@ -20,6 +20,7 @@ export const useColorSwatch_unstable = (
   const { color, value, ...rest } = props;
   const size = useSwatchPickerContextValue_unstable(ctx => ctx.size);
   const shape = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
+  const isGrid = useSwatchPickerContextValue_unstable(ctx => ctx.grid);
 
   const requestSelectionChange = useSwatchPickerContextValue_unstable(ctx => ctx.requestSelectionChange);
   const selected = useSwatchPickerContextValue_unstable(ctx => ctx.selectedValue === value);
@@ -35,6 +36,8 @@ export const useColorSwatch_unstable = (
     [swatchCSSVars.color]: color,
   };
 
+  const role = isGrid ? 'gridcell' : 'radio';
+
   const state: ColorSwatchState = {
     components: {
       root: 'button',
@@ -42,7 +45,7 @@ export const useColorSwatch_unstable = (
     root: slot.always(
       getIntrinsicElementProps('button', {
         ref,
-        role: props.role ?? 'gridcell',
+        role,
         'aria-selected': selected,
         onClick,
         type: 'button',
