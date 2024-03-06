@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getClassNames } from './ActivityItem.classNames';
 import { PersonaSize, PersonaCoin } from '../../Persona';
 import type { IActivityItemProps } from './ActivityItem.types';
+import type { IActivityItemClassNames } from './ActivityItem.classNames';
 import type { IPersonaSharedProps, IPersonaCoinProps } from '../../Persona';
 
 type OptionalReactKey = { key?: React.Key };
@@ -24,7 +25,7 @@ export class ActivityItemBase extends React.Component<IActivityItemProps, {}> {
       isCompact,
     } = this.props;
 
-    const classNames = getClassNames(this.props);
+    const classNames = this._getClassNames(this.props);
 
     return (
       <div className={classNames.root} style={this.props.style}>
@@ -53,7 +54,7 @@ export class ActivityItemBase extends React.Component<IActivityItemProps, {}> {
   };
 
   private _onRenderActivityDescription = (props: IActivityItemProps): JSX.Element | null => {
-    const classNames = getClassNames(props);
+    const classNames = this._getClassNames(props);
 
     // eslint-disable-next-line deprecation/deprecation
     const activityDescription = props.activityDescription || props.activityDescriptionText;
@@ -66,7 +67,7 @@ export class ActivityItemBase extends React.Component<IActivityItemProps, {}> {
   };
 
   private _onRenderComments = (props: IActivityItemProps): JSX.Element | null => {
-    const classNames = getClassNames(props);
+    const classNames = this._getClassNames(props);
 
     // eslint-disable-next-line deprecation/deprecation
     const comments = props.comments || props.commentText;
@@ -79,7 +80,7 @@ export class ActivityItemBase extends React.Component<IActivityItemProps, {}> {
   };
 
   private _onRenderTimeStamp = (props: IActivityItemProps): JSX.Element | null => {
-    const classNames = getClassNames(props);
+    const classNames = this._getClassNames(props);
 
     if (!props.isCompact && props.timeStamp) {
       return <div className={classNames.timeStamp}>{props.timeStamp}</div>;
@@ -90,7 +91,7 @@ export class ActivityItemBase extends React.Component<IActivityItemProps, {}> {
 
   // If activityPersonas is an array of persona props, build the persona cluster element.
   private _onRenderPersonaArray = (props: IActivityItemProps): JSX.Element | null => {
-    const classNames = getClassNames(props);
+    const classNames = this._getClassNames(props);
 
     let personaElement: JSX.Element | null = null;
     const activityPersonas = props.activityPersonas as Array<IPersonaSharedProps & OptionalReactKey>;
@@ -125,4 +126,17 @@ export class ActivityItemBase extends React.Component<IActivityItemProps, {}> {
     }
     return personaElement;
   };
+
+  private _getClassNames(props: IActivityItemProps): IActivityItemClassNames {
+    return getClassNames(
+      props.styles!,
+      props.className!,
+      props.activityPersonas!,
+      props.isCompact!,
+      props.animateBeaconSignal,
+      props.beaconColorOne,
+      props.beaconColorTwo,
+      props.theme,
+    );
+  }
 }

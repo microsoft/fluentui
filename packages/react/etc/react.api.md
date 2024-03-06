@@ -1713,7 +1713,7 @@ export { format }
 export { formProperties }
 
 // @public (undocumented)
-export const getActivityItemClassNames: (props: IActivityItemProps) => IActivityItemClassNames;
+export const getActivityItemClassNames: (styles: IActivityItemStyles, className: string, activityPersonas: Array<IPersonaProps>, isCompact: boolean, animateBeaconSignal?: boolean, beaconColorOne?: string, beaconColorTwo?: string, theme?: ITheme | undefined) => IActivityItemClassNames;
 
 // @public (undocumented)
 export const getActivityItemStyles: (props: IActivityItemStyleProps) => IActivityItemStyles;

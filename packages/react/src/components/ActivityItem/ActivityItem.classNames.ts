@@ -1,5 +1,7 @@
 import { classNamesFunction, memoizeFunction } from '../../Utilities';
-import type { IActivityItemProps, IActivityItemStyles, IActivityItemStyleProps } from './ActivityItem.types';
+import type { ITheme } from '../../Styling';
+import type { IActivityItemStyles, IActivityItemStyleProps } from './ActivityItem.types';
+import type { IPersonaProps } from '../../Persona';
 
 export interface IActivityItemClassNames {
   root?: string;
@@ -17,38 +19,49 @@ const getMergedClassNames = classNamesFunction<IActivityItemStyleProps, IActivit
 
 const mergeClassStrings = (...classNames: (string | undefined | false)[]) => classNames.filter(Boolean).join(' ');
 
-export const getClassNames = memoizeFunction((props: IActivityItemProps): IActivityItemClassNames => {
-  const { activityPersonas, animateBeaconSignal, beaconColorOne, beaconColorTwo, className, isCompact, styles, theme } =
-    props;
+export const getClassNames = memoizeFunction(
+  (
+    styles: IActivityItemStyles,
+    className: string,
+    activityPersonas: Array<IPersonaProps>,
+    isCompact: boolean,
+    animateBeaconSignal?: boolean,
+    beaconColorOne?: string,
+    beaconColorTwo?: string,
+    theme?: ITheme | undefined,
+  ): IActivityItemClassNames => {
+    const classNames = getMergedClassNames(styles, {
+      animateBeaconSignal,
+      beaconColorOne,
+      beaconColorTwo,
+      className,
+      isCompact,
+      theme: theme!,
+    });
 
-  const classNames = getMergedClassNames(styles, {
-    animateBeaconSignal,
-    beaconColorOne,
-    beaconColorTwo,
-    className,
-    isCompact,
-    theme: theme!,
-  });
+    return {
+      root: mergeClassStrings(classNames.root, isCompact && classNames.isCompactRoot),
 
-  return {
-    root: mergeClassStrings(classNames.root, isCompact && classNames.isCompactRoot),
+      pulsingBeacon: classNames.pulsingBeacon,
 
-    pulsingBeacon: classNames.pulsingBeacon,
+      personaContainer: mergeClassStrings(
+        classNames.personaContainer,
+        isCompact && classNames.isCompactPersonaContainer,
+      ),
 
-    personaContainer: mergeClassStrings(classNames.personaContainer, isCompact && classNames.isCompactPersonaContainer),
+      activityPersona: mergeClassStrings(
+        classNames.activityPersona,
+        isCompact && classNames.isCompactPersona,
+        !isCompact && activityPersonas && activityPersonas.length === 2 && classNames.doublePersona,
+      ),
 
-    activityPersona: mergeClassStrings(
-      classNames.activityPersona,
-      isCompact && classNames.isCompactPersona,
-      !isCompact && activityPersonas && activityPersonas.length === 2 && classNames.doublePersona,
-    ),
+      activityTypeIcon: mergeClassStrings(classNames.activityTypeIcon, isCompact && classNames.isCompactIcon),
 
-    activityTypeIcon: mergeClassStrings(classNames.activityTypeIcon, isCompact && classNames.isCompactIcon),
+      activityContent: mergeClassStrings(classNames.activityContent, isCompact && classNames.isCompactContent),
 
-    activityContent: mergeClassStrings(classNames.activityContent, isCompact && classNames.isCompactContent),
-
-    activityText: classNames.activityText,
-    commentText: classNames.commentText,
-    timeStamp: mergeClassStrings(classNames.timeStamp, isCompact && classNames.isCompactTimeStamp),
-  };
-});
+      activityText: classNames.activityText,
+      commentText: classNames.commentText,
+      timeStamp: mergeClassStrings(classNames.timeStamp, isCompact && classNames.isCompactTimeStamp),
+    };
+  },
+);
