@@ -7,7 +7,8 @@ import type { RatingDisplayProps } from './RatingDisplay.types';
 import { useRatingDisplayContextValues } from './useRatingDisplayContextValues';
 
 /**
- * RatingDisplay component - TODO: add more docs
+ * RatingDisplay is a wrapper for one or more rating items that will be used to display a rating value
+ * as well as the label for the rating.
  */
 export const RatingDisplay: ForwardRefComponent<RatingDisplayProps> = React.forwardRef((props, ref) => {
   const state = useRatingDisplay_unstable(props, ref);

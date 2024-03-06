@@ -2,6 +2,83 @@
   "name": "@fluentui/react-motions-preview",
   "entries": [
     {
+      "date": "Wed, 28 Feb 2024 02:34:19 GMT",
+      "tag": "@fluentui/react-motions-preview_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motions-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.14.1",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motions-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.2",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Feb 2024 14:22:22 GMT",
+      "tag": "@fluentui/react-motions-preview_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motions-preview",
+            "commit": "65ef0ed5113f7108cb955798b419009f76d3c22f",
+            "comment": "BREAKING: rename createAtom() to createMotionComponent() & createPresence() to createPresenceMotion()"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motions-preview",
+            "commit": "2a8e63a09d3b093cc39c2a5da99d06942c82525f",
+            "comment": "BREAKING: remove exports for atom & presence definitions"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motions-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.1",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motions-preview",
+            "commit": "d8b88c21de939e316716a99e1e6bf2f585d8cb1a",
+            "comment": "feat: add onMotionFinish() callback to createPresenceComponent()"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motions-preview",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4",
+            "comment": "feat: add PresenceGroup component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jan 2024 23:16:54 GMT",
+      "tag": "@fluentui/react-motions-preview_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motions-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.0",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jan 2024 15:10:59 GMT",
       "tag": "@fluentui/react-motions-preview_v0.1.0",
       "version": "0.1.0",

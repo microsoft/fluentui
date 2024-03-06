@@ -4,15 +4,6 @@ trigger: none
 # Example: fluentui_20190626.1
 name: 'fluentui_$(Date:yyyyMMdd)$(Rev:.r)'
 
-schedules:
-  # minute 0, hour 4 in UTC (5am in UTC+1), any day of month, any month, days 1-5 of week (M-F)
-  # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
-  - cron: '0 4 * * 1-5'
-    displayName: 'Daily release (M-F at 5am UTC+1)'
-    branches:
-      include:
-        - master
-
 resources:
   repositories:
     - repository: self
@@ -37,12 +28,12 @@ variables:
     value: production,externalfacing
 
   # below are variables configurable at queue time, so they cannot appear in yml file
+  # - name: dryRun # set it to true in order to execute publishing in dry run mode - nothing will be published
+  #   value: false
   # - name: publishDocsiteOnly # set it to true to only run Job_build_publish_doc
   #   value: false
   # - name: publishOfficial # set it to true to publish package to npm, and publish docsite for official releases
   #   value: false
-  # - name: releaseVersion # version to publish to npm; only make sense when publishOfficial=true
-  #   value: canary # value can only be canary/patch/minor
 
 extends:
   template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
@@ -54,7 +45,7 @@ extends:
     stages:
       - stage: main
         jobs:
-          - job: Job_build_publish
+          - job: Release
             pool:
               name: '1ES-Host-Ubuntu'
               image: '1ES-PT-Ubuntu-20.04'
@@ -67,6 +58,11 @@ extends:
 
             steps:
               - template: .devops/templates/tools.yml@self
+
+              - script: |
+                  echo "dry run mode enabled!"
+                displayName: dry run mode notification
+                condition: eq(variables.dryRun, true)
 
               - script: |
                   git config user.name "Fluent UI Build"
@@ -89,9 +85,10 @@ extends:
                 displayName: yarn
 
               - task: CmdLine@2
-                displayName: yarn buildci
+                displayName: build,test,lint northstar packages
                 inputs:
-                  script: yarn buildci
+                  script: |
+                    yarn nx run-many --targets=build,test,lint,type-check,test-ssr,verify-packaging --projects='packages/fluentui/*' --parallel $(getconf _NPROCESSORS_ONLN) --nxBail --verbose
 
               - task: CmdLine@2
                 displayName: '[NPM] Publish to NPM'
@@ -99,34 +96,38 @@ extends:
                 timeoutInMinutes: 2
                 inputs:
                   script: |
-                    yarn logout
+                    npm logout
 
                     NPM_TOKEN=$(npmToken)
 
-                    touch packages/fluentui/.npmrc
+                    echo "registry=https://registry.npmjs.org/" > .npmrc
+                    echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
 
-                    echo "@fluentui:registry=https://registry.npmjs.org/" > packages/fluentui/.npmrc
-                    echo "registry=https://registry.npmjs.org/" >> packages/fluentui/.npmrc
-                    echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> packages/fluentui/.npmrc
+                    npx northstar-release publish --dry-run $(dryRun)
 
-                    yarn northstar:release bump $(releaseVersion) --yes
+                    git checkout -- .npmrc
 
               - template: .devops/templates/cleanup.yml@self
 
-          - job: Job_build_publish_doc
+          - job: Release_docsite
             workspace:
               clean: all
             displayName: Build and Publish Docsite
-            dependsOn: Job_build_publish
+            dependsOn: Release
             pool:
               name: '1ES-Host-Ubuntu'
               image: '1ES-PT-Ubuntu-20.04'
               os: linux
             # run this job when the previous job is succeeded or when publishDocsiteOnly is true
-            condition: or(succeeded(), eq(variables.publishDocsiteOnly, true))
+            condition: and(eq(variables.dryRun, false), or(succeeded(), eq(variables.publishDocsiteOnly, true)))
 
             steps:
               - template: .devops/templates/tools.yml@self
+
+              - script: |
+                  echo "dry run mode enabled!"
+                displayName: dry run mode notification
+                condition: eq(variables.dryRun, true)
 
               - task: CmdLine@2
                 displayName: Checkout branch for pull
@@ -144,7 +145,7 @@ extends:
 
               - task: CmdLine@2
                 displayName: 'Set base path and version'
-                condition: and(succeeded(), eq(variables.publishOfficial, true), ne(variables.releaseVersion, 'canary'))
+                condition: and(succeeded(), eq(variables.publishOfficial, true))
                 inputs:
                   script: |
                     ver=`node -p "require('./packages/fluentui/react-northstar/package.json').version"`
@@ -175,13 +176,13 @@ extends:
                   BuildDropPath: $(System.DefaultWorkingDirectory)
 
               # Publish the manifest to a separate artifact to avoid hosting the _manifest files on the website
-              - task: PublishPipelineArtifact@1
+              - task: 1ES.PublishPipelineArtifact@1
                 displayName: 📒 Publish Manifest DocSite
                 inputs:
                   artifactName: SBom-DocSite-$(System.JobAttempt)
                   targetPath: $(System.DefaultWorkingDirectory)/_manifest
 
-              - task: PublishPipelineArtifact@1
+              - task: 1ES.PublishPipelineArtifact@1
                 displayName: Publish Docsite as Pipeline Artifact
                 inputs:
                   path: packages/fluentui/docs/dist

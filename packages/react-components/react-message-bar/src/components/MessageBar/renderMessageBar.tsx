@@ -16,6 +16,7 @@ export const renderMessageBar_unstable = (state: MessageBarState, contexts: Mess
       <state.root>
         {state.icon && <state.icon />}
         {state.root.children}
+        {state.bottomReflowSpacer && <state.bottomReflowSpacer />}
       </state.root>
     </MessageBarContextProvider>
   );

@@ -17,6 +17,7 @@ export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
   /**
    * Callback for when a tag is dismissed
    */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onDismiss?: TagDismissHandler<Value>;
 
   size?: TagSize;

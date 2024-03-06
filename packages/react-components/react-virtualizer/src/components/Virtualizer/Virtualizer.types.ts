@@ -159,6 +159,7 @@ export type VirtualizerConfigProps = {
   /**
    * Callback for notifying when a flagged index has been rendered
    */
+  // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
   onRenderedFlaggedIndex?: (index: number) => void;
 
   /*

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Refactoring SankeyChart to improve minification",
-  "packageName": "@fluentui/react-charting",
-  "email": "rarthur@microsoft.com",
-  "dependentChangeType": "patch"
-}

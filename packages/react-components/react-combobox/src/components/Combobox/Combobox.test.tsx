@@ -34,6 +34,9 @@ describe('Combobox', () => {
           },
         },
       ],
+      'consistent-callback-args': {
+        legacyCallbacks: ['onOpenChange', 'onOptionSelect'],
+      },
     },
   });
 
@@ -168,7 +171,7 @@ describe('Combobox', () => {
     expect(chevronButton?.getAttribute('aria-labelledby')).toEqual('testId');
   });
 
-  it('adds aria-owns pointing to the popup', () => {
+  it('adds aria-owns and aria-controls pointing to the popup', () => {
     const { getByRole, container } = render(
       <Combobox open className="root">
         <Option>Red</Option>
@@ -178,6 +181,7 @@ describe('Combobox', () => {
     );
     const listboxId = getByRole('listbox').id;
     expect(container.querySelector('.root')?.getAttribute('aria-owns')).toEqual(listboxId);
+    expect(container.querySelector('input')?.getAttribute('aria-controls')).toEqual(listboxId);
   });
 
   /* open/close tests */

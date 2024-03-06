@@ -42,8 +42,7 @@ export type RatingDisplayProps = ComponentProps<RatingDisplaySlots> & {
     color?: 'brand' | 'marigold' | 'neutral';
     compact?: boolean;
     count?: number;
-    iconFilled?: React_2.ReactElement;
-    iconOutline?: React_2.ReactElement;
+    icon?: React_2.ElementType;
     max?: number;
     size?: 'small' | 'medium' | 'large' | 'extra-large';
     value?: number;
@@ -57,7 +56,7 @@ export type RatingDisplaySlots = {
 };
 
 // @public
-export type RatingDisplayState = ComponentState<RatingDisplaySlots> & Required<Pick<RatingDisplayProps, 'color' | 'compact' | 'iconFilled' | 'iconOutline' | 'max' | 'size'>> & Pick<RatingDisplayProps, 'value'>;
+export type RatingDisplayState = ComponentState<RatingDisplaySlots> & Required<Pick<RatingDisplayProps, 'color' | 'compact' | 'icon' | 'max' | 'size'>> & Pick<RatingDisplayProps, 'value'>;
 
 // @public
 export const RatingItem: ForwardRefComponent<RatingItemProps>;
@@ -77,8 +76,7 @@ export const RatingItemProvider: React_2.Provider<RatingItemContextValue | undef
 export type RatingItemSlots = {
     root: NonNullable<Slot<'span'>>;
     selectedIcon?: NonNullable<Slot<'div'>>;
-    unselectedFilledIcon?: NonNullable<Slot<'div'>>;
-    unselectedOutlineIcon?: NonNullable<Slot<'div'>>;
+    unselectedIcon?: NonNullable<Slot<'div'>>;
     halfValueInput?: NonNullable<Slot<'input'>>;
     fullValueInput?: NonNullable<Slot<'input'>>;
 };
@@ -86,6 +84,7 @@ export type RatingItemSlots = {
 // @public
 export type RatingItemState = ComponentState<RatingItemSlots> & Required<Pick<RatingItemProps, 'value'>> & Pick<RatingState, 'color' | 'step' | 'size'> & {
     iconFillWidth: number;
+    appearance: 'outline' | 'filled';
 };
 
 // @public
@@ -97,8 +96,9 @@ export type RatingOnChangeEventData = EventData<'change', React_2.FormEvent<HTML
 export type RatingProps = Omit<ComponentProps<Partial<RatingSlots>>, 'onChange'> & {
     color?: 'brand' | 'marigold' | 'neutral';
     defaultValue?: number;
-    iconFilled?: React_2.ReactElement;
-    iconOutline?: React_2.ReactElement;
+    iconFilled?: React_2.ElementType;
+    iconOutline?: React_2.ElementType;
+    itemLabel?: (rating: number) => string;
     max?: number;
     name?: string;
     onChange?: EventHandler<RatingOnChangeEventData>;
@@ -113,7 +113,7 @@ export type RatingSlots = {
 };
 
 // @public
-export type RatingState = ComponentState<RatingSlots> & Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'value'>> & {
+export type RatingState = ComponentState<RatingSlots> & Required<Pick<RatingProps, 'color' | 'iconFilled' | 'iconOutline' | 'name' | 'step' | 'size' | 'value'>> & Pick<RatingProps, 'itemLabel'> & {
     hoveredValue?: number | undefined;
 };
 

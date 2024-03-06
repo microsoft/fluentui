@@ -1,15 +1,13 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { assertSlots } from '@fluentui/react-utilities';
-import type { NavCategoryState, NavCategorySlots } from './NavCategory.types';
+import { NavCategoryContextValues, NavCategoryProvider } from '../NavCategoryContext';
+
+import type { NavCategoryState } from './NavCategory.types';
 
 /**
  * Render the final JSX of NavCategory
  */
-export const renderNavCategory_unstable = (state: NavCategoryState) => {
-  assertSlots<NavCategorySlots>(state);
-
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+export const renderNavCategory_unstable = (state: NavCategoryState, contextValues: NavCategoryContextValues) => {
+  return <NavCategoryProvider value={contextValues.categoryValue}>{state.children}</NavCategoryProvider>;
 };

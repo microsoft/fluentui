@@ -1,8 +1,53 @@
 # Change Log - @fluentui/react-calendar-compat
 
-This log was last generated on Tue, 23 Jan 2024 15:10:58 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Feb 2024 02:34:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.0.22)
+
+Wed, 28 Feb 2024 02:34:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.0.21..@fluentui/react-calendar-compat_v0.0.22)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.31 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.14.1 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-tabster to v9.19.2 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-utilities to v9.18.2 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+
+## [0.0.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.0.21)
+
+Tue, 20 Feb 2024 14:22:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.0.20..@fluentui/react-calendar-compat_v0.0.21)
+
+### Patches
+
+- fix: remove new Date() from prop destructuring ([PR #30519](https://github.com/microsoft/fluentui/pull/30519) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.30 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-tabster to v9.19.1 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-utilities to v9.18.1 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+
+## [0.0.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.0.20)
+
+Tue, 06 Feb 2024 17:55:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.0.19..@fluentui/react-calendar-compat_v0.0.20)
+
+### Patches
+
+- fix: Update year and month pickers to use the correct keyboard navigation type and apply requested focus indicator width from design for day picker. ([PR #30435](https://github.com/microsoft/fluentui/pull/30435) by estebanmu@microsoft.com)
+- Bump @fluentui/react-tabster to v9.19.0 ([PR #30392](https://github.com/microsoft/fluentui/pull/30392) by beachball)
+
+## [0.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.0.19)
+
+Tue, 30 Jan 2024 23:16:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.0.18..@fluentui/react-calendar-compat_v0.0.19)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.29 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+- Bump @fluentui/react-tabster to v9.18.0 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+- Bump @fluentui/react-utilities to v9.18.0 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
 
 ## [0.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.0.18)
 

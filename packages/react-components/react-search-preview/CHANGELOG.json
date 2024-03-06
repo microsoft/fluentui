@@ -2,6 +2,123 @@
   "name": "@fluentui/react-search-preview",
   "entries": [
     {
+      "date": "Wed, 28 Feb 2024 02:34:19 GMT",
+      "tag": "@fluentui/react-search-preview_v0.1.46",
+      "version": "0.1.46",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search-preview",
+            "comment": "Bump @fluentui/react-input to v9.4.65",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.31",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.2",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Feb 2024 14:22:24 GMT",
+      "tag": "@fluentui/react-search-preview_v0.1.45",
+      "version": "0.1.45",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "4cfa006aa5f50a397b67ccd29ff0212bf86464b9",
+            "comment": "chore: disable consistent-callback-type lint rule for existing callbacks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search-preview",
+            "comment": "Bump @fluentui/react-input to v9.4.64",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.30",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.1",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Feb 2024 17:55:20 GMT",
+      "tag": "@fluentui/react-search-preview_v0.1.44",
+      "version": "0.1.44",
+      "comments": {
+        "patch": [
+          {
+            "author": "syphe@outlook.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "af94003107288eaa92a600c73ce266459d52b610",
+            "comment": "Adds custom onChange callback on SearchBox preview so consumers can handle clear event."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jan 2024 23:16:54 GMT",
+      "tag": "@fluentui/react-search-preview_v0.1.43",
+      "version": "0.1.43",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search-preview",
+            "comment": "Bump @fluentui/react-input to v9.4.63",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.29",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.0",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jan 2024 13:56:06 GMT",
+      "tag": "@fluentui/react-search-preview_v0.1.42",
+      "version": "0.1.42",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search-preview",
+            "comment": "Bump @fluentui/react-input to v9.4.62",
+            "commit": "3a6233a99addd66fdc17d7e6be859d08dd6dafc6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jan 2024 15:11:00 GMT",
       "tag": "@fluentui/react-search-preview_v0.1.41",
       "version": "0.1.41",

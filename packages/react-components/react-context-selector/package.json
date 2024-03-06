@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-context-selector",
-  "version": "9.1.50",
+  "version": "9.1.53",
   "description": "React useContextSelector hook in userland",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,7 +28,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "^9.17.0",
+    "@fluentui/react-utilities": "^9.18.2",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
@@ -36,7 +36,7 @@
     "@types/react-dom": ">=16.9.0 <19.0.0",
     "react": ">=16.14.0 <19.0.0",
     "react-dom": ">=16.14.0 <19.0.0",
-    "scheduler": "^0.19.0 || ^0.20.0"
+    "scheduler": ">=0.19.0 <=0.23.0"
   },
   "beachball": {
     "disallowedChangeTypes": [

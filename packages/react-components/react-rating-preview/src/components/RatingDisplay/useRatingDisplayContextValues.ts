@@ -3,20 +3,20 @@ import { RatingDisplayContextValues, RatingDisplayState } from './RatingDisplay.
 import { RatingItemContextValue } from '../RatingItem/RatingItem.types';
 
 export const useRatingDisplayContextValues = (state: RatingDisplayState): RatingDisplayContextValues => {
-  const { color, compact, iconFilled, iconOutline, size, value } = state;
+  const { color, compact, icon, size, value } = state;
 
   const ratingItem = React.useMemo<RatingItemContextValue>(
     () => ({
       color,
       compact,
-      iconFilled,
-      iconOutline,
+      iconFilled: icon,
+      iconOutline: icon,
       interactive: false,
       step: 0.5,
       size,
       value,
     }),
-    [color, compact, iconFilled, iconOutline, size, value],
+    [color, compact, icon, size, value],
   );
 
   return { ratingItem };

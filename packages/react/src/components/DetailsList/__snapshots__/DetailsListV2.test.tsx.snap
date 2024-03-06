@@ -7637,6 +7637,7 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                       onKeyDown={[Function]}
                       onMouseDownCapture={[Function]}
                       role="row"
+                      tabIndex={0}
                     >
                       <span
                         className="ms-GroupSpacer"

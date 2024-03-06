@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: allRowsSelected is false when there are no rows",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
