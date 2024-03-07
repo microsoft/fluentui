@@ -96,12 +96,12 @@ extends:
                 timeoutInMinutes: 2
                 inputs:
                   script: |
-                    npm logout
-
                     NPM_TOKEN=$(npmToken)
 
                     echo "registry=https://registry.npmjs.org/" > .npmrc
                     echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+
+                    cat .npmrc
 
                     npx northstar-release publish --dry-run $(dryRun)
 
