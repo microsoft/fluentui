@@ -8,7 +8,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { useAccordionItemContext_unstable } from '../../contexts/accordionItem';
 import { durations } from '@fluentui/react-motions-preview';
 
-// TODO: unify this chevron rotation duration with the open/close duration
+// TODO: keep this chevron rotation duration in sync with the panel's open/close duration
 const motionDuration = durations.durationNormal;
 
 /**
