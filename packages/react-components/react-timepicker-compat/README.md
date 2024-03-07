@@ -2,8 +2,6 @@
 
 **React Timepicker components for [Fluent UI React](https://react.fluentui.dev/)**
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
-
 TimePicker offers a control that’s optimized for selecting a time from a drop-down list or using free-form input to enter a custom time.
 
 ## Usage
