@@ -6,13 +6,13 @@ import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { getChildElement } from '../utils/getChildElement';
-import type { PresenceMotion, MotionImperativeRef, PresenceMotionFn } from '../types';
+import type { PresenceMotion, MotionImperativeRef, PresenceMotionFn, PresenceParams, PresenceOverride } from '../types';
 
 type PresenceMotionEventData = EventData<'animation', AnimationPlaybackEvent> & {
   direction: 'enter' | 'exit';
 };
 
-type PresenceComponentProps = {
+type PresenceComponentProps<CustomProps = {}> = {
   /**
    * By default, the child component won't execute the "enter" motion when it initially mounts, regardless of the value
    * of "visible". If you desire this behavior, ensure both "appear" and "visible" are set to "true".
@@ -35,17 +35,27 @@ type PresenceComponentProps = {
    * you prefer to unmount the component after it finishes exiting.
    */
   unmountOnExit?: boolean;
+
+  override?: PresenceOverride<CustomProps>;
 };
 
-export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn) {
+export function createPresenceComponent<CustomProps = {}>(motion: PresenceMotion | PresenceMotionFn<CustomProps>) {
   const Presence: React.FC<PresenceComponentProps> = props => {
     const itemContext = React.useContext(PresenceGroupChildContext);
-    const { appear, children, imperativeRef, onMotionFinish, visible, unmountOnExit } = { ...itemContext, ...props };
-
+    const {
+      appear,
+      children,
+      imperativeRef,
+      onMotionFinish,
+      visible,
+      unmountOnExit,
+      override = {},
+    } = { ...itemContext, ...props };
     const child = getChildElement(children);
 
     const animationRef = useMotionImperativeRef(imperativeRef);
     const elementRef = React.useRef<HTMLElement>();
+    const overrideRef = React.useRef(override);
     const ref = useMergedRefs(elementRef, child.ref);
     const optionsRef = React.useRef<{ appear?: boolean }>();
 
@@ -77,7 +87,11 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
 
       // Check for .animate which may not be available in some environments, e.g. unit tests
       if (elementRef.current && elementRef.current.animate) {
-        const definition = typeof motion === 'function' ? motion({ element: elementRef.current }) : motion;
+        const { enter: enterProp, exit: exitProp, all } = overrideRef.current;
+        const enter = { ...all, ...enterProp } as Partial<PresenceParams & CustomProps>;
+        const exit = { ...all, ...exitProp } as Partial<PresenceParams & CustomProps>;
+
+        const definition = typeof motion === 'function' ? motion({ element: elementRef.current, enter, exit }) : motion;
         const { keyframes, ...options } = definition.exit;
 
         const animation = elementRef.current.animate(keyframes, {
@@ -112,7 +126,11 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
       const shouldEnter = isFirstMount.current ? optionsRef.current?.appear && visible : mounted && visible;
 
       if (shouldEnter) {
-        const definition = typeof motion === 'function' ? motion({ element: elementRef.current }) : motion;
+        const { enter: enterProp, exit: exitProp, all } = overrideRef.current;
+        const enter = { ...all, ...enterProp } as Partial<PresenceParams & CustomProps>;
+        const exit = { ...all, ...exitProp } as Partial<PresenceParams & CustomProps>;
+
+        const definition = typeof motion === 'function' ? motion({ element: elementRef.current, enter, exit }) : motion;
         const { keyframes, ...options } = definition.enter;
 
         const animation = elementRef.current.animate(keyframes, {
@@ -134,6 +152,10 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
     useIsomorphicLayoutEffect(() => {
       isFirstMount.current = false;
     }, []);
+
+    React.useEffect(() => {
+      overrideRef.current = override;
+    }, [override]);
 
     if (mounted) {
       return React.cloneElement(child, { ref });
