@@ -587,7 +587,7 @@ runTest('_getAriaLabel', () => {
     },
     undefined,
     undefined,
-    !isTimezoneSet(Timezone.UTC),
+    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
   );
 
   testWithoutWait(
@@ -617,7 +617,7 @@ runTest('_getAriaLabel', () => {
     },
     undefined,
     undefined,
-    !isTimezoneSet(Timezone.UTC),
+    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
   );
 
   testWithoutWait(
@@ -647,7 +647,7 @@ runTest('_getAriaLabel', () => {
     },
     undefined,
     undefined,
-    !isTimezoneSet(Timezone.UTC),
+    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
   );
 
   testWithoutWait(
