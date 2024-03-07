@@ -614,4 +614,14 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Used to control the first render cycle Performance optimization code.
    */
   enableFirstRenderOptimization?: boolean;
+
+  /*
+   * Callback to handle error while chart is rendering.
+   */
+  handleError?: () => void;
+
+  /*
+   * Callback to handle empty state while chart is rendering.
+   */
+  handleEmptyState?: () => void;
 }
