@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Allow inline drawer to be rendered as an aside element",
+  "packageName": "@fluentui/react-drawer",
+  "email": "agokhale@microsoft.com",
+  "dependentChangeType": "patch"
+}
