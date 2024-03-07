@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: remove invalid peerDependency on scheduler",
-  "packageName": "@fluentui/react-avatar",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

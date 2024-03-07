@@ -32,6 +32,10 @@
     {
       "file": "node_modules/rollup-plugin-filesize/node_modules/node-gyp/test/fixtures/server.key",
       "_justification": "External dependency rollup-plugin-filesize has dependency node-gyp with test certs, not shipping these files"
+    },
+    {
+      "file": "node_modules/node-gyp/test/fixtures/server.key",
+      "_justification": "External dependency node-gyp, not shipping these files"
     }
   ]
 }

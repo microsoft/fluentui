@@ -93,9 +93,9 @@ const createStorybookWebpackConfig = config => {
 
   config.plugins = [...(config.plugins || []), new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] })];
 
-  // Disable ProgressPlugin which logs verbose webpack build progress. Warnings and Errors are still logged.
   if (process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) {
-    config.plugins = config.plugins.filter(({ constructor }) => constructor.name !== 'ProgressPlugin');
+    // Disable ProgressPlugin in PR/CI builds to reduce log verbosity (warnings and errors are still logged)
+    config.plugins = config.plugins.filter(value => value && value.constructor.name !== 'ProgressPlugin');
   }
 
   config.optimization = { ...config.optimization, minimize: false };
