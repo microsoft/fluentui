@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: allow null on positioningRef setTarget",
-  "packageName": "@fluentui/react-positioning",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

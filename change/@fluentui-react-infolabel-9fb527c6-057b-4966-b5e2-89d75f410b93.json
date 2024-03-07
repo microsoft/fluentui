@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: InfoLabel popover dismisses if the InfoButton is clicked when it is already open",
-  "packageName": "@fluentui/react-infolabel",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

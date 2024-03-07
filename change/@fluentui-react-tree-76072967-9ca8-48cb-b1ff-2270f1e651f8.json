@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: aria-selected is no longer required for treeitem",
-  "packageName": "@fluentui/react-tree",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
