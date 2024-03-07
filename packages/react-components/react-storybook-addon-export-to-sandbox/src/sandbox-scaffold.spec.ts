@@ -365,7 +365,6 @@ describe(`sabdbox-scaffold`, () => {
           \\"scripts\\": {
             \\"dev\\": \\"vite\\",
             \\"build\\": \\"tsc && vite build\\",
-            \\"lint\\": \\"eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0\\",
             \\"preview\\": \\"vite preview\\"
           },
           \\"dependencies\\": {},
@@ -373,8 +372,8 @@ describe(`sabdbox-scaffold`, () => {
             \\"@types/react\\": \\"^17\\",
             \\"@types/react-dom\\": \\"^17\\",
             \\"typescript\\": \\"~4.7.0\\",
-            \\"@vitejs/plugin-react\\": \\"^4.1.0\\",
-            \\"vite\\": \\"^4.0.0\\"
+            \\"@vitejs/plugin-react\\": \\"^4.2.0\\",
+            \\"vite\\": \\"^5.0.0\\"
           }
         }",
           "src/App.tsx": "import { FluentProvider, webLightTheme } from '@fluentui/react-components';
@@ -490,7 +489,6 @@ describe(`sabdbox-scaffold`, () => {
           \\"scripts\\": {
             \\"dev\\": \\"vite\\",
             \\"build\\": \\"tsc && vite build\\",
-            \\"lint\\": \\"eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0\\",
             \\"preview\\": \\"vite preview\\"
           },
           \\"dependencies\\": {},
@@ -498,8 +496,8 @@ describe(`sabdbox-scaffold`, () => {
             \\"@types/react\\": \\"^17\\",
             \\"@types/react-dom\\": \\"^17\\",
             \\"typescript\\": \\"~4.7.0\\",
-            \\"@vitejs/plugin-react\\": \\"^4.1.0\\",
-            \\"vite\\": \\"^4.0.0\\"
+            \\"@vitejs/plugin-react\\": \\"^4.2.0\\",
+            \\"vite\\": \\"^5.0.0\\"
           }
         }",
           "src/App.tsx": "import { FluentProvider, webLightTheme } from '@fluentui/react-components';

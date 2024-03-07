@@ -18,7 +18,7 @@ const defaultItemLabel = (num: number) => num + '';
 export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HTMLSpanElement>): RatingItemState => {
   const context = useRatingItemContextValue_unstable();
   const { value = 0 } = props;
-  const { itemLabel = defaultItemLabel } = context;
+  const { itemLabel = defaultItemLabel, iconFilled: IconFilled, iconOutline: IconOutline } = context;
 
   const ratingValue = Math.round((context.value || 0) * 2) / 2; // round to the nearest 0.5
 
@@ -47,7 +47,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   if (iconFillWidth < 1) {
     unselectedIcon = slot.always(props.unselectedIcon, {
       defaultProps: {
-        children: appearance === 'filled' ? context.iconFilled : context.iconOutline,
+        children: appearance === 'filled' ? <IconFilled /> : <IconOutline />,
         'aria-hidden': true,
       },
       elementType: 'div',
@@ -58,7 +58,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   if (iconFillWidth > 0) {
     selectedIcon = slot.always(props.selectedIcon, {
       defaultProps: {
-        children: context.iconFilled,
+        children: <IconFilled />,
         'aria-hidden': true,
       },
       elementType: 'div',

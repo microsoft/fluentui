@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: update required version of scheduler",
+  "packageName": "@fluentui/react-context-selector",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

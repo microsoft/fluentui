@@ -14,12 +14,12 @@
   },
   "targetDefaults": {
     "bundle-size": {
-      "dependsOn": ["build"],
+      "dependsOn": ["^build"],
       "cache": true
     },
     "bundle": {
       "cache": true,
-      "dependsOn": ["build"]
+      "dependsOn": ["^build"]
     },
     "build": {
       "dependsOn": ["^build"],
@@ -31,7 +31,7 @@
       "cache": true
     },
     "type-check": {
-      "dependsOn": ["build"],
+      "dependsOn": ["^build"],
       "cache": true
     },
     "prepare": {
@@ -39,7 +39,7 @@
       "cache": true
     },
     "test": {
-      "dependsOn": ["build"],
+      "dependsOn": ["^build"],
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
       "cache": true
     },
@@ -57,7 +57,7 @@
       ]
     },
     "verify-packaging": {
-      "dependsOn": ["build"],
+      "dependsOn": ["^build"],
       "cache": true
     },
     "@nx/jest:jest": {
@@ -84,6 +84,16 @@
       "!{projectRoot}/jest.config.[jt]s",
       "!{projectRoot}/src/test-setup.[jt]s"
     ]
+  },
+  "release": {
+    "projectsRelationship": "independent",
+    "groups": {
+      "northstar": {
+        "releaseTagPattern": "@fluentui/react-northstar_v{version}",
+        "projectsRelationship": "fixed",
+        "projects": ["packages/fluentui/*"]
+      }
+    }
   },
   "parallel": 3
 }

@@ -29,9 +29,9 @@ export type RatingDisplayProps = ComponentProps<RatingDisplaySlots> & {
   count?: number;
   /**
    * The icon used for rating items.
-   * @default <StarFilled />
+   * @default StarFilled
    */
-  icon?: React.ReactElement;
+  icon?: React.ElementType;
   /**
    * The max value of the rating. This controls the number of rating items displayed.
    * Must be a whole number greater than 1.

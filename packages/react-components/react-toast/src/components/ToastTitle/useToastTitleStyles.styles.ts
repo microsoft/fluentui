@@ -49,16 +49,13 @@ const useInvertedStyles = makeStyles({
 
 const useIntentIconStyles = makeStyles({
   success: {
-    // FIXME https://github.com/microsoft/fluentui/issues/28219
-    color: tokens.colorPaletteGreenForeground3,
+    color: tokens.colorStatusSuccessForeground1,
   },
   error: {
-    // FIXME https://github.com/microsoft/fluentui/issues/28219
-    color: tokens.colorPaletteCranberryForeground2,
+    color: tokens.colorStatusDangerForeground1,
   },
   warning: {
-    // FIXME https://github.com/microsoft/fluentui/issues/28219
-    color: tokens.colorPaletteDarkOrangeForeground1,
+    color: tokens.colorStatusWarningForeground1,
   },
   info: {
     color: tokens.colorNeutralForeground2,
@@ -67,16 +64,13 @@ const useIntentIconStyles = makeStyles({
 
 const useIntentIconStylesInverted = makeStyles({
   success: {
-    // FIXME https://github.com/microsoft/fluentui/issues/28219
-    color: tokens.colorPaletteGreenForegroundInverted,
+    color: tokens.colorStatusSuccessForegroundInverted,
   },
   error: {
-    // FIXME https://github.com/microsoft/fluentui/issues/28219
-    color: tokens.colorPaletteRedForegroundInverted,
+    color: tokens.colorStatusDangerForegroundInverted,
   },
   warning: {
-    // FIXME https://github.com/microsoft/fluentui/issues/28219
-    color: tokens.colorPaletteYellowForegroundInverted,
+    color: tokens.colorStatusWarningForegroundInverted,
   },
   info: {
     color: tokens.colorNeutralForegroundInverted2,

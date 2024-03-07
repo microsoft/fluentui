@@ -17,6 +17,8 @@ const activeDescendantContextDefaultValue: ActiveDescendantContextValue = {
     last: noop,
     next: noop,
     prev: noop,
+    showAttributes: noop,
+    hideAttributes: noop,
   },
 };
 
