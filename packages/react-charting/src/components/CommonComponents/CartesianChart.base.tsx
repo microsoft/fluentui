@@ -11,8 +11,8 @@ import {
   IYValueHover,
   IHorizontalBarChartWithAxisDataPoint,
 } from '../../index';
+import { convertToLocaleString } from '../../utilities/locale-util';
 import {
-  convertToLocaleString,
   createNumericXAxis,
   createStringXAxis,
   IAxisData,

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-// import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import { useColorSwatch_unstable } from './useColorSwatch';
 import { renderColorSwatch_unstable } from './renderColorSwatch';
 import { useColorSwatchStyles_unstable } from './useColorSwatchStyles.styles';
