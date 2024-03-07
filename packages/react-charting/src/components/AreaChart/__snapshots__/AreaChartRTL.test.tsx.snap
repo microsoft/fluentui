@@ -1222,7 +1222,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             d="M40,-31.382C39.024,-27.401,38.049,-23.421,37.073,-23.421C33.171,-23.421,29.268,-30.658,25.366,-30.658C15.122,-30.658,4.878,-13.289,-5.366,-13.289C-10.244,-13.289,-15.122,-20.526,-20,-27.763L-20,-35C-15.122,-35,-10.244,-35,-5.366,-35C4.878,-35,15.122,-35,25.366,-35C29.268,-35,33.171,-35,37.073,-35C38.049,-35,39.024,-35,40,-35Z"
           >
             <circle
-              aria-label="6/1/2018, 12:00:00 am. legend1, 5."
+              aria-label="1/6/2018, 12:00:00 AM. legend1, 5."
               cx="40"
               cy="-31.38157894736842"
               data-is-focusable="true"
@@ -1236,7 +1236,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               tabindex="0"
             />
             <circle
-              aria-label="8/1/2018, 12:00:00 am. legend1, 16."
+              aria-label="1/8/2018, 12:00:00 AM. legend1, 16."
               cx="37.073170731707314"
               cy="-23.42105263157895"
               data-is-focusable="true"
@@ -1250,7 +1250,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               tabindex="-1"
             />
             <circle
-              aria-label="16/1/2018, 12:00:00 am. legend1, 6."
+              aria-label="1/16/2018, 12:00:00 AM. legend1, 6."
               cx="25.365853658536583"
               cy="-30.657894736842106"
               data-is-focusable="true"
@@ -1264,7 +1264,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               tabindex="-1"
             />
             <circle
-              aria-label="6/2/2018, 12:00:00 am. legend1, 30."
+              aria-label="2/6/2018, 12:00:00 AM. legend1, 30."
               cx="-5.365853658536585"
               cy="-13.289473684210524"
               data-is-focusable="true"
@@ -1278,7 +1278,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               tabindex="-1"
             />
             <circle
-              aria-label="16/2/2018, 12:00:00 am. legend1, 10."
+              aria-label="2/16/2018, 12:00:00 AM. legend1, 10."
               cx="-20"
               cy="-27.763157894736842"
               data-is-focusable="true"
@@ -1297,7 +1297,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             d="M40,-24.145C39.024,-11.842,38.049,0.461,37.073,0.461C33.171,0.461,29.268,-15.461,25.366,-15.461C15.122,-15.461,4.878,18.553,-5.366,18.553C-10.244,18.553,-15.122,3.355,-20,-11.842L-20,-27.763C-15.122,-20.526,-10.244,-13.289,-5.366,-13.289C4.878,-13.289,15.122,-30.658,25.366,-30.658C29.268,-30.658,33.171,-23.421,37.073,-23.421C38.049,-23.421,39.024,-27.401,40,-31.382Z"
           >
             <circle
-              aria-label="6/1/2018, 12:00:00 am. legend2, 10."
+              aria-label="1/6/2018, 12:00:00 AM. legend2, 10."
               cx="40"
               cy="-24.14473684210526"
               data-is-focusable="true"
@@ -1311,7 +1311,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               tabindex="-1"
             />
             <circle
-              aria-label="8/1/2018, 12:00:00 am. legend2, 33."
+              aria-label="1/8/2018, 12:00:00 AM. legend2, 33."
               cx="37.073170731707314"
               cy="0.46052631578947434"
               data-is-focusable="true"
@@ -1325,7 +1325,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               tabindex="-1"
             />
             <circle
-              aria-label="16/1/2018, 12:00:00 am. legend2, 21."
+              aria-label="1/16/2018, 12:00:00 AM. legend2, 21."
               cx="25.365853658536583"
               cy="-15.460526315789476"
               data-is-focusable="true"
@@ -1339,7 +1339,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               tabindex="-1"
             />
             <circle
-              aria-label="6/2/2018, 12:00:00 am. legend2, 44."
+              aria-label="2/6/2018, 12:00:00 AM. legend2, 44."
               cx="-5.365853658536585"
               cy="18.55263157894737"
               data-is-focusable="true"
@@ -1353,7 +1353,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               tabindex="-1"
             />
             <circle
-              aria-label="16/2/2018, 12:00:00 am. legend2, 22."
+              aria-label="2/16/2018, 12:00:00 AM. legend2, 22."
               cx="-20"
               cy="-11.842105263157896"
               data-is-focusable="true"
