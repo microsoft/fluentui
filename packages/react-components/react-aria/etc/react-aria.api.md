@@ -35,11 +35,15 @@ export interface ActiveDescendantImperativeRef {
     // (undocumented)
     focus: (id: string) => void;
     // (undocumented)
+    hideAttributes: () => void;
+    // (undocumented)
     last: (options?: IteratorOptions) => string | undefined;
     // (undocumented)
     next: (options?: IteratorOptions) => string | undefined;
     // (undocumented)
     prev: (options?: IteratorOptions) => string | undefined;
+    // (undocumented)
+    showAttributes: () => void;
 }
 
 // @public (undocumented)
