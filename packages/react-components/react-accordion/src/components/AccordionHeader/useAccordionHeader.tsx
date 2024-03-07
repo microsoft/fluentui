@@ -6,6 +6,10 @@ import { useAccordionContext_unstable } from '../../contexts/accordion';
 import { ChevronRightRegular } from '@fluentui/react-icons';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useAccordionItemContext_unstable } from '../../contexts/accordionItem';
+import { durations } from '@fluentui/react-motions-preview';
+
+// TODO: unify this chevron rotation duration with the open/close duration
+const motionDuration = durations.durationNormal;
 
 /**
  * Returns the props and state required to render the component
@@ -83,7 +87,14 @@ export const useAccordionHeader_unstable = (
     expandIcon: slot.optional(expandIcon, {
       renderByDefault: true,
       defaultProps: {
-        children: <ChevronRightRegular style={{ transform: `rotate(${expandIconRotation}deg)` }} />,
+        children: (
+          <ChevronRightRegular
+            style={{
+              transform: `rotate(${expandIconRotation}deg)`,
+              transition: `transform ${motionDuration}ms ease-out`,
+            }}
+          />
+        ),
         'aria-hidden': true,
       },
       elementType: 'span',
