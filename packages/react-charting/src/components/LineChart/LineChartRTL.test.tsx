@@ -184,7 +184,7 @@ describe('Line chart rendering', () => {
   testWithoutWait(
     'Should render the Line chart with numeric x-axis data',
     LineChart,
-    { data: basicChartPoints },
+    { data: basicChartPoints, disableSortByXValues: true },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -206,7 +206,7 @@ describe('Line chart rendering', () => {
   testWithoutWait(
     'Should render the Line chart with points in multiple shapes',
     LineChart,
-    { data: basicChartPoints, allowMultipleShapesForPoints: true },
+    { data: basicChartPoints, allowMultipleShapesForPoints: true, disableSortByXValues: true },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -343,7 +343,7 @@ describe('Line chart - Subcomponent line', () => {
   testWithoutWait(
     'Should render the lines with the specified colors',
     LineChart,
-    { data: basicChartPoints },
+    { data: basicChartPoints, disableSortByXValues: true },
     container => {
       const lines = getById(container, /lineID/i);
       // Assert
@@ -371,7 +371,7 @@ describe('Line chart - Subcomponent legend', () => {
   testWithoutWait(
     'Should highlight the corresponding Line on mouse over on legends',
     LineChart,
-    { data: basicChartPoints },
+    { data: basicChartPoints, disableSortByXValues: true },
     container => {
       const legend = screen.queryByText('metaData1');
       expect(legend).toBeDefined();
@@ -605,7 +605,7 @@ describe('Screen resolution', () => {
   testWithWait(
     'Should remain unchanged on zoom in',
     LineChart,
-    { data: basicChartPoints, rotateXAxisLables: true, width: 300, height: 300 },
+    { data: basicChartPoints, rotateXAxisLables: true, width: 300, height: 300, disableSortByXValues: true },
     container => {
       // Arrange
       global.innerWidth = window.innerWidth / 2;
@@ -621,7 +621,7 @@ describe('Screen resolution', () => {
   testWithWait(
     'Should remain unchanged on zoom out',
     LineChart,
-    { data: basicChartPoints, rotateXAxisLables: true, width: 300, height: 300 },
+    { data: basicChartPoints, rotateXAxisLables: true, width: 300, height: 300, disableSortByXValues: true },
     container => {
       // Arrange
       global.innerWidth = window.innerWidth * 2;
@@ -639,7 +639,7 @@ test('Should reflect theme change', () => {
   // Arrange
   const { container } = render(
     <ThemeProvider theme={DarkTheme}>
-      <LineChart culture={window.navigator.language} data={basicChartPoints} />
+      <LineChart culture={window.navigator.language} data={basicChartPoints} disableSortByXValues={true} />
     </ThemeProvider>,
   );
   // Assert

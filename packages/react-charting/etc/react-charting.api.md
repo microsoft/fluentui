@@ -905,6 +905,7 @@ export interface ILineChartProps extends ICartesianChartProps {
     colorFillBars?: IColorFillBarsProps[];
     culture?: string;
     data: IChartProps;
+    disableSortByXValues?: boolean;
     enablePerfOptimization?: boolean;
     eventAnnotationProps?: IEventsAnnotationProps;
     getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;

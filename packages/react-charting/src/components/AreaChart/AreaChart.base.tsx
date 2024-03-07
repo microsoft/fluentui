@@ -138,13 +138,16 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._emptyChartId = getId('_AreaChart_empty');
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(prevProps: IAreaChartProps): void {
     if (this.state.isShowCalloutPending) {
       this.setState({
         refSelected: `#${this._highlightedCircleId}`,
         isCalloutVisible: true,
         isShowCalloutPending: false,
       });
+    }
+    if (prevProps.data.lineChartData !== this.props.data.lineChartData) {
+      this.props.data.lineChartData = this._sortChartData(this.props.data.lineChartData!);
     }
   }
 
@@ -232,6 +235,17 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       />
     );
   }
+
+  private _sortByXValues = (dataItem1: ILineChartDataPoint, dataItem2: ILineChartDataPoint): number => {
+    return dataItem1.x.valueOf() - dataItem2.x.valueOf();
+  };
+
+  private _sortChartData = (points: ILineChartPoints[]): ILineChartPoints[] => {
+    points.forEach(point => {
+      point.data.sort(this._sortByXValues);
+    });
+    return points;
+  };
 
   private _getMargins = (margins: IMargins) => {
     this.margins = margins;

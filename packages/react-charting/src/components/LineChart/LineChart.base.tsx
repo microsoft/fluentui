@@ -190,6 +190,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     };
     this._refArray = [];
     this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
+    this._points = this._sortChartData(this._points);
     this._colorFillBars = [];
     this._calloutPoints = calloutData(this._points) || [];
     this._circleId = getId('circle');
@@ -219,6 +220,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       prevProps.data !== this.props.data
     ) {
       this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
+      this._points = this._sortChartData(this._points);
       this._calloutPoints = calloutData(this._points) || [];
     }
   }
@@ -226,7 +228,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   public render(): JSX.Element {
     const { tickValues, tickFormat, eventAnnotationProps, legendProps, data } = this.props;
     this._points = this._injectIndexPropertyInLineChartData(data.lineChartData);
-
     const isXAxisDateType = getXAxisType(this._points);
     let points = this._points;
     if (legendProps && !!legendProps.canSelectMultipleLegends) {
@@ -337,6 +338,24 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       />
     );
   }
+
+  //Comparator function to sort by x values
+  private _sortByXValues = (dataItem1: ILineChartDataPoint, dataItem2: ILineChartDataPoint): number => {
+    return dataItem1.x.valueOf() - dataItem2.x.valueOf();
+  };
+
+  private _sortChartData = (points: LineChartDataWithIndex[]): LineChartDataWithIndex[] => {
+    const { disableSortByXValues = false, optimizeLargeData = false } = this.props;
+    if (optimizeLargeData === true) {
+      return points;
+    }
+    if (disableSortByXValues === false) {
+      points.forEach(point => {
+        point.data.sort(this._sortByXValues);
+      });
+    }
+    return points;
+  };
 
   private _injectIndexPropertyInLineChartData = (lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] => {
     const { allowMultipleShapesForPoints = false } = this.props;
