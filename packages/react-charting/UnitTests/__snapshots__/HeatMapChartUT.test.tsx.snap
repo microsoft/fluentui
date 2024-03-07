@@ -10,10 +10,10 @@ exports[`Timezone related test cases Should return proper aria-label for date xP
 
 exports[`Timezone related test cases Should return proper aria-label for numeric xPoint and date yPoint 1`] = `"100, Fri Apr 03 2020 00:00:00 GMT+0000 (Coordinated Universal Time). , 100."`;
 
-exports[`Timezone related test cases Should return proper data set for date axis with default axis type 1`] = `""`;
+exports[`Timezone related test cases Should return proper data set for date axis with default axis type 1`] = `"Apr/03"`;
 
-exports[`Timezone related test cases Should return proper data set for date axis with default axis type 2`] = `""`;
+exports[`Timezone related test cases Should return proper data set for date axis with default axis type 2`] = `"Mar/03"`;
 
-exports[`Timezone related test cases Should return proper xIndex for date xPoint 1`] = `""`;
+exports[`Timezone related test cases Should return proper xIndex for date xPoint 1`] = `"1585872000000"`;
 
-exports[`Timezone related test cases Should return proper xIndex for date xPoint 2`] = `""`;
+exports[`Timezone related test cases Should return proper xIndex for date xPoint 2`] = `"1583193600000"`;

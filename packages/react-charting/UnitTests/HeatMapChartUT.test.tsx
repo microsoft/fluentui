@@ -576,20 +576,19 @@ runTest('_createNewDataSet', () => {
 });
 
 runTest('Timezone related test cases', () => {
-  conditionalTest(isTimezoneSet(Timezone.UTC))(
-    'Should return proper data set for date axis with default axis type',
-    () => {
-      const instance = new HeatMapChartBase({
-        data: emptyData,
-        domainValuesForColorScale: [],
-        rangeValuesForColorScale: [],
-      });
-      expect(instance).toBeDefined();
-      const result = instance._createNewDataSet(HeatMapDataDatePoints, '%b/%d', '.2~s', '%b/%d', '.2~s');
-      expect(result.xAxisPoints[0]).toMatchSnapshot();
-      expect(result.yAxisPoints[0]).toMatchSnapshot();
-    },
-  );
+  conditionalTest(true)('Should return proper data set for date axis with default axis type', () => {
+    const instance = new HeatMapChartBase({
+      data: emptyData,
+      domainValuesForColorScale: [],
+      rangeValuesForColorScale: [],
+    });
+    expect(instance).toBeDefined();
+    instance._yAxisType = YAxisType.DateAxis;
+    instance._xAxisType = XAxisTypes.DateAxis;
+    const result = instance._createNewDataSet(HeatMapDataDatePoints, '%b/%d', '.2~s', '%b/%d', '.2~s');
+    expect(result.xAxisPoints[0]).toMatchSnapshot();
+    expect(result.yAxisPoints[0]).toMatchSnapshot();
+  });
 
   conditionalTest(isTimezoneSet(Timezone.UTC))('Should return proper aria-label for date xPoint and yPoint', () => {
     const p1 = {
@@ -668,6 +667,7 @@ runTest('Timezone related test cases', () => {
       rangeValuesForColorScale: rangeValuesForColorScale,
     });
     expect(instance).toBeDefined();
+    instance._xAxisType = XAxisTypes.DateAxis;
     const xIndex = instance._getXIndex(xPoint2[0]);
     expect(xIndex).toMatchSnapshot();
   });
@@ -679,6 +679,7 @@ runTest('Timezone related test cases', () => {
       rangeValuesForColorScale: rangeValuesForColorScale,
     });
     expect(instance).toBeDefined();
+    instance._yAxisType = YAxisType.DateAxis;
     const yIndex = instance._getYIndex(yPoint2[0]);
     expect(yIndex).toMatchSnapshot();
   });
