@@ -714,7 +714,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         legendColor: this.state.color,
-        shouldHighlight: shouldHighlight,
+        shouldHighlight,
       });
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       let adjustedBarHeight = 0;

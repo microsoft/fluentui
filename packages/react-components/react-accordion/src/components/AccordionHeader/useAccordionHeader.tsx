@@ -83,7 +83,11 @@ export const useAccordionHeader_unstable = (
     expandIcon: slot.optional(expandIcon, {
       renderByDefault: true,
       defaultProps: {
-        children: <ChevronRightRegular style={{ transform: `rotate(${expandIconRotation}deg)` }} />,
+        children: (
+          <ChevronRightRegular
+            style={{ transform: `rotate(${expandIconRotation}deg)`, transition: 'transform 200ms ease-out' }}
+          />
+        ),
         'aria-hidden': true,
       },
       elementType: 'span',

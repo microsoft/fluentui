@@ -4,9 +4,14 @@
 
 ```ts
 
-import type { EventData } from '@fluentui/react-utilities';
-import type { EventHandler } from '@fluentui/react-utilities';
+import { EventData } from '@fluentui/react-utilities';
+import { EventHandler } from '@fluentui/react-utilities';
+import { FC } from 'react';
+import { JSXElementConstructor } from 'react';
+import { MotionImperativeRef as MotionImperativeRef_2 } from '@fluentui/react-motions-preview';
 import * as React_2 from 'react';
+import { ReactElement } from 'react';
+import { Ref } from 'react';
 
 // @public (undocumented)
 export type AtomMotion = {
@@ -16,59 +21,62 @@ export type AtomMotion = {
 // @public (undocumented)
 export type AtomMotionFn = (element: HTMLElement) => AtomMotion;
 
+// @public (undocumented)
+export const Collapse: FC<    {
+appear?: boolean | undefined;
+children: ReactElement<any, string | JSXElementConstructor<any>>;
+imperativeRef?: Ref<MotionImperativeRef_2 | undefined> | undefined;
+onMotionFinish?: EventHandler<EventData<"animation", AnimationPlaybackEvent> & {
+direction: "enter" | "exit";
+}> | undefined;
+visible?: boolean | undefined;
+unmountOnExit?: boolean | undefined;
+override?: PresenceOverride<    {}> | undefined;
+}>;
+
 // @public
 export function createMotionComponent(motion: AtomMotion | AtomMotionFn): React_2.FC<MotionComponentProps>;
 
 // @public (undocumented)
-export function createPresenceComponent(motion: PresenceMotion | PresenceMotionFn): React_2.FC<PresenceComponentProps>;
+export function createPresenceComponent<CustomProps = {}>(motion: PresenceMotion | PresenceMotionFn<CustomProps>): React_2.FC<PresenceComponentProps<{}>>;
 
 // @public (undocumented)
-const durationFast = 150;
+export const curves: {
+    readonly curveAccelerateMax: "cubic-bezier(0.9,0.1,1,0.2)";
+    readonly curveAccelerateMid: "cubic-bezier(1,0,1,1)";
+    readonly curveAccelerateMin: "cubic-bezier(0.8,0,0.78,1)";
+    readonly curveDecelerateMax: "cubic-bezier(0.1,0.9,0.2,1)";
+    readonly curveDecelerateMid: "cubic-bezier(0,0,0,1)";
+    readonly curveDecelerateMin: "cubic-bezier(0.33,0,0.1,1)";
+    readonly curveEasyEaseMax: "cubic-bezier(0.8,0,0.2,1)";
+    readonly curveEasyEase: "cubic-bezier(0.33,0,0.67,1)";
+    readonly curveLinear: "cubic-bezier(0,0,1,1)";
+};
 
 // @public (undocumented)
-const durationFaster = 100;
+export const durations: {
+    readonly durationUltraFast: 50;
+    readonly durationFaster: 100;
+    readonly durationFast: 150;
+    readonly durationNormal: 200;
+    readonly durationGentle: 250;
+    readonly durationSlow: 300;
+    readonly durationSlower: 400;
+    readonly durationUltraSlow: 500;
+};
 
 // @public (undocumented)
-const durationNormal = 200;
-
-// @public (undocumented)
-const durationSlow = 300;
-
-// @public (undocumented)
-const durationSlower = 400;
-
-// @public (undocumented)
-const durationUltraFast = 50;
-
-// @public (undocumented)
-const durationUltraSlow = 500;
-
-// @public (undocumented)
-const easingAccelerateMax = "cubic-bezier(1,0,1,1)";
-
-// @public (undocumented)
-const easingAccelerateMid = "cubic-bezier(0.7,0,1,0.5)";
-
-// @public (undocumented)
-const easingAccelerateMin = "cubic-bezier(0.8,0,1,1)";
-
-// @public (undocumented)
-const easingDecelerateMax = "cubic-bezier(0,0,0,1)";
-
-// @public (undocumented)
-const easingDecelerateMid = "cubic-bezier(0.1,0.9,0.2,1)";
-
-// @public (undocumented)
-const easingDecelerateMin = "cubic-bezier(0.33,0,0.1,1)";
-
-// @public (undocumented)
-const easingEasyEase = "cubic-bezier(0.33,0,0.67,1)";
-
-// @public (undocumented)
-const easingLinear = "cubic-bezier(0,0,1,1)";
-
-// @public (undocumented)
-const easingMaxEasyEase = "cubic-bezier(0.8,0,0.1,1)";
+export const Fade: FC<    {
+appear?: boolean | undefined;
+children: ReactElement<any, string | JSXElementConstructor<any>>;
+imperativeRef?: Ref<MotionImperativeRef_2 | undefined> | undefined;
+onMotionFinish?: EventHandler<EventData<"animation", AnimationPlaybackEvent> & {
+direction: "enter" | "exit";
+}> | undefined;
+visible?: boolean | undefined;
+unmountOnExit?: boolean | undefined;
+override?: PresenceOverride<    {}> | undefined;
+}>;
 
 // @public (undocumented)
 export type MotionImperativeRef = {
@@ -76,27 +84,26 @@ export type MotionImperativeRef = {
     setPlayState: (state: 'running' | 'paused') => void;
 };
 
-declare namespace motionTokens {
-    export {
-        durationUltraFast,
-        durationFaster,
-        durationFast,
-        durationNormal,
-        durationSlow,
-        durationSlower,
-        durationUltraSlow,
-        easingAccelerateMax,
-        easingAccelerateMid,
-        easingAccelerateMin,
-        easingDecelerateMax,
-        easingDecelerateMid,
-        easingDecelerateMin,
-        easingMaxEasyEase,
-        easingEasyEase,
-        easingLinear
-    }
-}
-export { motionTokens }
+// @public (undocumented)
+export const motionTokens: {
+    curveAccelerateMax: "cubic-bezier(0.9,0.1,1,0.2)";
+    curveAccelerateMid: "cubic-bezier(1,0,1,1)";
+    curveAccelerateMin: "cubic-bezier(0.8,0,0.78,1)";
+    curveDecelerateMax: "cubic-bezier(0.1,0.9,0.2,1)";
+    curveDecelerateMid: "cubic-bezier(0,0,0,1)";
+    curveDecelerateMin: "cubic-bezier(0.33,0,0.1,1)";
+    curveEasyEaseMax: "cubic-bezier(0.8,0,0.2,1)";
+    curveEasyEase: "cubic-bezier(0.33,0,0.67,1)";
+    curveLinear: "cubic-bezier(0,0,1,1)";
+    durationUltraFast: 50;
+    durationFaster: 100;
+    durationFast: 150;
+    durationNormal: 200;
+    durationGentle: 250;
+    durationSlow: 300;
+    durationSlower: 400;
+    durationUltraSlow: 500;
+};
 
 // @public (undocumented)
 export class PresenceGroup extends React_2.Component<PresenceGroupProps, PresenceGroupState> {
@@ -114,14 +121,15 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
     render(): JSX.Element;
 }
 
-// @public (undocumented)
+// @public
 export type PresenceMotion = {
-    enter: AtomMotion;
-    exit: AtomMotion;
+    [transition in PresenceTransitionName]: AtomMotion;
 };
 
-// @public (undocumented)
-export type PresenceMotionFn = (element: HTMLElement) => PresenceMotion;
+// @public
+export type PresenceMotionFn<CustomProps = {}> = (params: {
+    element: HTMLElement;
+} & PresenceTransitionProps<CustomProps>) => PresenceMotion;
 
 // (No @packageDocumentation comment for this package)
 
