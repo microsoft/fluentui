@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore(motion): remove fluentui/react-motion-preview from package.json for react-tree - no longer needed",
+  "packageName": "@fluentui/react-motions-preview",
+  "email": "robert@robertpenner.com",
+  "dependentChangeType": "patch"
+}
