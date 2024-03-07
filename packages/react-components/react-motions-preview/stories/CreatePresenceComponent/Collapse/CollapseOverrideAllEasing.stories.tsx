@@ -65,60 +65,62 @@ export const OverrideAllEasing = () => {
       <br />
 
       <table>
-        <tr>
-          <td>
-            <label id={comboId}>duration: &nbsp;</label>
-          </td>
-          <td>
-            <Dropdown
-              aria-labelledby={comboId}
-              placeholder="duration"
-              defaultValue={optionTextForDuration([defaultDurationName, defaultDuration])}
-              defaultSelectedOptions={[optionTextForDuration([defaultDurationName, defaultDuration])]}
-              onOptionSelect={(e, data) => {
-                // setDuration(Number(data.optionValue || 0));
-                setDurationName((data.optionValue as DurationKey) || 'durationUltraSlow');
-              }}
-            >
-              {Object.entries(durations).map(([optionKey, optionValue]) => (
-                <Option key={optionKey} value={optionKey}>
-                  {optionTextForDuration([optionKey, optionValue])}
-                </Option>
-              ))}
-            </Dropdown>
+        <tbody>
+          <tr>
+            <td>
+              <label id={comboId}>duration: &nbsp;</label>
+            </td>
+            <td>
+              <Dropdown
+                aria-labelledby={comboId}
+                placeholder="duration"
+                defaultValue={optionTextForDuration([defaultDurationName, defaultDuration])}
+                defaultSelectedOptions={[optionTextForDuration([defaultDurationName, defaultDuration])]}
+                onOptionSelect={(e, data) => {
+                  // setDuration(Number(data.optionValue || 0));
+                  setDurationName((data.optionValue as DurationKey) || 'durationUltraSlow');
+                }}
+              >
+                {Object.entries(durations).map(([optionKey, optionValue]) => (
+                  <Option key={optionKey} value={optionKey}>
+                    {optionTextForDuration([optionKey, optionValue])}
+                  </Option>
+                ))}
+              </Dropdown>
 
-            <Input
-              style={{ width: '7rem' }}
-              defaultValue=""
-              placeholder="custom (ms)"
-              onChange={(e, data) => {
-                setCustomDuration(Number(data.value || 0));
-              }}
-            />
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <label id={comboId}>easing: &nbsp;</label>
-          </td>
-          <td>
-            <Dropdown
-              aria-labelledby={comboId}
-              placeholder="easing"
-              defaultValue={optionTextForEasing(defaultEasingName)}
-              defaultSelectedOptions={[optionTextForEasing(defaultEasingName)]}
-              onOptionSelect={(e, data) => {
-                setCurveName((data.optionValue as CurveKey) || 'curveLinear');
-              }}
-            >
-              {Object.entries(curves).map(([optionKey, optionValue]) => (
-                <Option key={optionKey} value={optionKey}>
-                  {optionTextForEasing(optionKey as CurveKey)}
-                </Option>
-              ))}
-            </Dropdown>
-          </td>
-        </tr>
+              <Input
+                style={{ width: '7rem' }}
+                defaultValue=""
+                placeholder="custom (ms)"
+                onChange={(e, data) => {
+                  setCustomDuration(Number(data.value || 0));
+                }}
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label id={comboId}>easing: &nbsp;</label>
+            </td>
+            <td>
+              <Dropdown
+                aria-labelledby={comboId}
+                placeholder="easing"
+                defaultValue={optionTextForEasing(defaultEasingName)}
+                defaultSelectedOptions={[optionTextForEasing(defaultEasingName)]}
+                onOptionSelect={(e, data) => {
+                  setCurveName((data.optionValue as CurveKey) || 'curveLinear');
+                }}
+              >
+                {Object.entries(curves).map(([optionKey, optionValue]) => (
+                  <Option key={optionKey} value={optionKey}>
+                    {optionTextForEasing(optionKey as CurveKey)}
+                  </Option>
+                ))}
+              </Dropdown>
+            </td>
+          </tr>
+        </tbody>
       </table>
 
       <Checkbox label="visible" checked={visible} onChange={() => setVisible(v => !v)} />
