@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RatingDisplay } from '@fluentui/react-rating-preview';
+import { Rating } from '@fluentui/react-components';
 import { makeStyles, shorthands } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -14,11 +14,11 @@ export const Color = () => {
   const styles = useStyles();
   return (
     <div className={styles.root}>
-      <RatingDisplay value={3} />
+      <Rating defaultValue={3} />
 
-      <RatingDisplay color="brand" value={3} />
+      <Rating color="brand" defaultValue={3} />
 
-      <RatingDisplay color="marigold" value={3} />
+      <Rating color="marigold" defaultValue={3} />
     </div>
   );
 };
@@ -26,7 +26,7 @@ export const Color = () => {
 Color.parameters = {
   docs: {
     description: {
-      story: "A RatingDisplay's `color` can be `neutral` (default), `brand`, or `marigold`.",
+      story: "A Rating's `color` can be `neutral` (default), `brand`, or `marigold`.",
     },
   },
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RatingDisplay } from '@fluentui/react-rating-preview';
+import { RatingDisplay } from '@fluentui/react-components';
 import { CircleFilled, SquareFilled } from '@fluentui/react-icons';
 import { makeStyles, shorthands } from '@fluentui/react-components';
 

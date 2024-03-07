@@ -1,4 +1,4 @@
-import { Rating, RatingItem } from '@fluentui/react-rating-preview';
+import { Rating, RatingItem } from '@fluentui/react-components';
 
 import descriptionMd from './RatingDescription.md';
 import bestPracticesMd from './RatingBestPractices.md';
@@ -12,7 +12,7 @@ export { Color } from './RatingColor.stories';
 export { Shape } from './RatingShape.stories';
 
 export default {
-  title: 'Preview Components/Rating',
+  title: 'Components/Rating',
   component: Rating,
   subcomponents: {
     RatingItem,
