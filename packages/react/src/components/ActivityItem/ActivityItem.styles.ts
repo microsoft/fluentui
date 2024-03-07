@@ -1,6 +1,14 @@
-import { getGlobalClassNames, HighContrastSelector, keyframes, PulsingBeaconAnimationStyles } from '../../Styling';
+import {
+  concatStyleSets,
+  getGlobalClassNames,
+  getTheme,
+  HighContrastSelector,
+  keyframes,
+  PulsingBeaconAnimationStyles,
+} from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
-import type { IActivityItemStyles, IActivityItemStyleProps } from './ActivityItem.types';
+import type { ITheme } from '../../Styling';
+import type { IActivityItemProps, IActivityItemStyles, IActivityItemStyleProps } from './ActivityItem.types';
 
 const DEFAULT_PERSONA_SIZE = '32px';
 const COMPACT_PERSONA_SIZE = '16px';
@@ -228,3 +236,19 @@ export const getStyles = memoizeFunction((props: IActivityItemStyleProps): IActi
     },
   };
 });
+
+/** @deprecated kept for legacy support */
+export const getActivityItemStyles = memoizeFunction(
+  (
+    theme: ITheme = getTheme(),
+    customStyles?: IActivityItemStyles,
+    animateBeaconSignal?: IActivityItemProps['animateBeaconSignal'],
+    beaconColorOne?: IActivityItemProps['beaconColorOne'],
+    beaconColorTwo?: IActivityItemProps['beaconColorTwo'],
+    isCompact?: IActivityItemProps['isCompact'],
+  ): IActivityItemStyles => {
+    const styles = getStyles({ theme, animateBeaconSignal, beaconColorOne, beaconColorTwo, isCompact });
+
+    return concatStyleSets(styles, customStyles);
+  },
+);

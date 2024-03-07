@@ -1715,8 +1715,8 @@ export { formProperties }
 // @public (undocumented)
 export const getActivityItemClassNames: (styles: IActivityItemStyles, className: string, activityPersonas: Array<IPersonaProps>, isCompact: boolean, animateBeaconSignal?: boolean, beaconColorOne?: string, beaconColorTwo?: string, theme?: ITheme | undefined) => IActivityItemClassNames;
 
-// @public (undocumented)
-export const getActivityItemStyles: (props: IActivityItemStyleProps) => IActivityItemStyles;
+// @public @deprecated (undocumented)
+export const getActivityItemStyles: (theme?: ITheme, customStyles?: IActivityItemStyles, animateBeaconSignal?: IActivityItemProps['animateBeaconSignal'], beaconColorOne?: IActivityItemProps['beaconColorOne'], beaconColorTwo?: IActivityItemProps['beaconColorTwo'], isCompact?: IActivityItemProps['isCompact']) => IActivityItemStyles;
 
 // @public (undocumented)
 export function getAllSelectedOptions(options: ISelectableOption[], selectedIndices: number[]): ISelectableOption[];
