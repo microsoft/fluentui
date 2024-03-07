@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore: update Readme to remove unstable statement",
+  "comment": "docs: update Readme to remove unstable statement",
   "packageName": "@fluentui/react-timepicker-compat",
   "email": "yuanboxue@microsoft.com",
   "dependentChangeType": "patch"
