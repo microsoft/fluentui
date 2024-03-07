@@ -1,4 +1,9 @@
-export { ActivityItem, getActivityItemClassNames, getActivityItemStyles } from './ActivityItem';
+export {
+  ActivityItem,
+  getActivityItemClassNames,
+  // eslint-disable-next-line deprecation/deprecation
+  getActivityItemStyles,
+} from './ActivityItem';
 export type {
   IActivityItemClassNames,
   IActivityItemProps,
