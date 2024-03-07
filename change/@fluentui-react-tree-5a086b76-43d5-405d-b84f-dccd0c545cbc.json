@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Expand/collapse motion",
+  "packageName": "@fluentui/react-tree",
+  "email": "robert@robertpenner.com",
+  "dependentChangeType": "patch"
+}
