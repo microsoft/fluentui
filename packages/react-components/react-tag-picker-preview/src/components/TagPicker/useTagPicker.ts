@@ -79,7 +79,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     activeDescendantController,
     components: {},
     trigger,
-    popover,
+    popover: state.open || state.hasFocus ? popover : undefined,
     popoverId,
     triggerRef: useMergedRefs(triggerInnerRef, activeParentRef),
     popoverRef: useMergedRefs(listboxRef, containerRef),

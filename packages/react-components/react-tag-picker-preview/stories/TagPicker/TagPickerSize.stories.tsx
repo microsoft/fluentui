@@ -21,35 +21,28 @@ const options = [
   'Maria Rossi',
 ];
 
-export const Default = () => {
-  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+const Example = ({ size }: Pick<TagPickerProps, 'size'>) => {
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>([options[0]]);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
     setSelectedOptions(data.selectedOptions);
   };
 
   return (
     <div style={{ maxWidth: 400 }}>
-      <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
-        <TagPickerControl clearable>
+      <TagPicker size={size} onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
+        <TagPickerControl>
           <TagPickerGroup>
             {selectedOptions.map(option => (
-              <Tag
-                dismissible
-                key={option}
-                shape="rounded"
-                media={<Avatar name={option} color="colorful" />}
-                value={option}
-              >
+              <Tag key={option} shape="rounded" media={<Avatar name={option} color="colorful" />} value={option}>
                 {option}
               </Tag>
             ))}
           </TagPickerGroup>
           <TagPickerInput />
         </TagPickerControl>
-
         <TagPickerList>
           {options
-            .filter(option => selectedOptions.indexOf(option) < 0)
+            .filter(option => !selectedOptions.includes(option))
             .map(option => (
               <TagPickerOption
                 secondaryContent="Microsoft FTE"
@@ -65,3 +58,20 @@ export const Default = () => {
     </div>
   );
 };
+
+export const Size = () => (
+  <>
+    <div>
+      <h1>Extra Large</h1>
+      <Example size="extra-large" />
+    </div>
+    <div>
+      <h1>Large</h1>
+      <Example size="large" />
+    </div>
+    <div>
+      <h1>Medium</h1>
+      <Example size="medium" />
+    </div>
+  </>
+);

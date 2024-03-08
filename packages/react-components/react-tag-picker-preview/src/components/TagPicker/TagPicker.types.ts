@@ -7,13 +7,14 @@ import type { ActiveDescendantContextValue } from '@fluentui/react-aria';
 
 export type TagPickerSlots = {};
 
+export type TagPickerSize = 'medium' | 'large' | 'extra-large';
+
 /**
  * Picker Props
- * TODO: pick only necessary props form combobox
  */
 export type TagPickerProps = ComponentProps<TagPickerSlots> &
-  Omit<ComboboxProps, 'size' | 'value'> &
-  Pick<Partial<TagPickerContextValue>, 'size'> & {
+  Pick<ComboboxProps, 'onOptionSelect' | 'positioning'> &
+  Pick<Partial<TagPickerContextValue>, 'size' | 'selectedOptions' | 'appearance'> & {
     /**
      * Can contain two children including a trigger and a popover
      */
@@ -34,7 +35,7 @@ export type TagPickerState = ComponentState<TagPickerSlots> &
 
     trigger: React.ReactNode;
 
-    popover: React.ReactNode;
+    popover?: React.ReactNode;
   };
 
 export type TagPickerContextValues = {

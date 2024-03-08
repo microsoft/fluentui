@@ -3,6 +3,7 @@ import type { TagPickerGroupProps, TagPickerGroupState } from './TagPickerGroup.
 import { useTagGroup_unstable } from '@fluentui/react-tags';
 import { useTagPickerContext_unstable } from '../../contexts/TagPickerContext';
 import { useEventCallback } from '@fluentui/react-utilities';
+import { tagPickerAppearanceToTagAppearance, tagPickerSizeToTagSize } from '../../utils/tagPicker2Tag';
 
 /**
  * Create the state required to render TagPickerGroup.
@@ -21,41 +22,26 @@ export const useTagPickerGroup_unstable = (
   const hasOneSelectedOption = useTagPickerContext_unstable(ctx => ctx.selectedOptions.length === 1);
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
   const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
-  const tagSize = useTagPickerContext_unstable(ctx => {
-    switch (ctx.size) {
-      case 'medium':
-        return 'extra-small';
-      case 'large':
-        return 'small';
-      case 'extra-large':
-        return 'medium';
-      default:
-        return 'extra-small';
-    }
-  });
+  const size = useTagPickerContext_unstable(ctx => tagPickerSizeToTagSize(ctx.size));
+  const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
 
   const state = useTagGroup_unstable(
     {
       ...props,
-      size: tagSize,
-      onClick: e => {
-        // Prevent default so that open/close state is not affected
-        // target check is to make sure that this only applies to white space in this control and not to tags
-        if (e.target !== e.currentTarget) {
-          e.preventDefault();
-        }
-      },
-      onDismiss: useEventCallback((e, data) => {
-        if (hasOneSelectedOption) {
-          triggerRef.current?.focus();
-        }
-        selectOption(e as React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, {
+      size,
+      appearance: tagPickerAppearanceToTagAppearance(appearance),
+      dismissible: true,
+      onDismiss: useEventCallback((event, data) => {
+        selectOption(event as React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>, {
           value: data.value,
           // These values no longer exist because the option has unregistered itself
           // for the purposes of selection - these values aren't actually used
           id: 'ERROR_DO_NOT_USE',
           text: 'ERROR_DO_NOT_USE',
         });
+        if (hasOneSelectedOption && !event.isDefaultPrevented()) {
+          triggerRef.current?.focus();
+        }
       }),
     },
     ref,
