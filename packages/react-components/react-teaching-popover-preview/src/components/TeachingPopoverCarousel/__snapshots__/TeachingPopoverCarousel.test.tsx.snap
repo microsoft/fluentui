@@ -6,6 +6,33 @@ exports[`TeachingPopoverCarousel renders a default state 1`] = `
     class="fui-TeachingPopoverCarousel"
   >
     Default TeachingPopoverCarousel
+    <div
+      class="fui-TeachingPopoverCarousel__footer"
+    >
+      <button
+        class="fui-Button fui-TeachingPopoverCarousel__previous"
+        type="button"
+      >
+        Close
+      </button>
+      <div
+        class="fui-TeachingPopoverCarouselNav fui-TeachingPopoverCarousel__nav"
+        data-tabster="{\\"groupper\\":{\\"tabbability\\":1},\\"focusable\\":{}}"
+        role="list"
+        tabindex="0"
+      >
+        <button
+          class="fui-TeachingPopoverCarouselNavButton"
+          type="button"
+        />
+      </div>
+      <button
+        class="fui-Button fui-TeachingPopoverCarousel__next"
+        type="button"
+      >
+        Finish
+      </button>
+    </div>
   </div>
 </div>
 `;

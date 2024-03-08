@@ -52,6 +52,7 @@ export const noColorsChartPoints: IChartProps = {
 };
 
 describe('DonutChart snapShot testing', () => {
+  beforeEach(sharedBeforeEach);
   it('renders DonutChart correctly', () => {
     let component: any;
     rendererAct(() => {
@@ -234,6 +235,7 @@ describe('DonutChart - mouse events', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(sharedBeforeEach);
   it('No empty chart aria label div rendered', () => {
     domAct(() => {
       wrapper = mount(<DonutChart data={chartPointsDC} />);

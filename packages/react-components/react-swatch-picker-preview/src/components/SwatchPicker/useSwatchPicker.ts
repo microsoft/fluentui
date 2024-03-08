@@ -31,7 +31,7 @@ export const useSwatchPicker_unstable = (
   props: SwatchPickerProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
-  const { role, onSelectionChange, size = 'medium', shape, ...rest } = props;
+  const { role, onSelectionChange, size = 'medium', shape, spacing = 'medium', ...rest } = props;
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
     axis: 'both',
@@ -77,7 +77,7 @@ export const useSwatchPicker_unstable = (
   state.root.style = {
     [columnCountGrid]: 3,
     [cellSize]: sizeMap[size],
-    [gridGap]: spacingMap.medium,
+    [gridGap]: spacingMap[spacing],
     ...state.root.style,
   };
 

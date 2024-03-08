@@ -60,7 +60,7 @@ export const useTeachingPopoverTitleStyles_unstable = (state: TeachingPopoverTit
     state.root.className,
   );
 
-  if (state.showDismiss && state.dismissButton) {
+  if (state.dismissButton) {
     state.dismissButton.className = mergeClasses(
       teachingPopoverTitleClassNames.dismissButton,
       styles.dismissButton,
