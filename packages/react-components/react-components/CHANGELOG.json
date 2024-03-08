@@ -2,6 +2,201 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 07 Mar 2024 19:33:20 GMT",
+      "tag": "@fluentui/react-components_v9.46.8",
+      "version": "9.46.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "f57994b8984059ee2cf836c3fceb9836ae83c92b",
+            "comment": "chore: remove invalid peerDependency on scheduler"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "616d31c1994635b1a15f092cf85905b2450611f7",
+            "comment": "feat: Add color tokens"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "616d31c1994635b1a15f092cf85905b2450611f7",
+            "comment": "feat: Add/update color tokens"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "f57994b8984059ee2cf836c3fceb9836ae83c92b",
+            "comment": "chore: remove invalid peerDependency on scheduler"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "f57994b8984059ee2cf836c3fceb9836ae83c92b",
+            "comment": "chore: remove invalid peerDependency on scheduler"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "f57994b8984059ee2cf836c3fceb9836ae83c92b",
+            "comment": "chore: remove invalid peerDependency on scheduler"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "f57994b8984059ee2cf836c3fceb9836ae83c92b",
+            "comment": "chore: remove invalid peerDependency on scheduler"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "f57994b8984059ee2cf836c3fceb9836ae83c92b",
+            "comment": "chore: update required version of scheduler"
+          },
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "829593442496ca4481a9dacd5f1af4dda83bfec7",
+            "comment": "fix: Updating tokens used in strong and subtle variants to match design spec."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "688011d78d2af01c7801554752e7d6eb979631f5",
+            "comment": "fix: InfoLabel popover dismisses if the InfoButton is clicked when it is already open"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f57994b8984059ee2cf836c3fceb9836ae83c92b",
+            "comment": "chore: remove invalid peerDependency on scheduler"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "f57994b8984059ee2cf836c3fceb9836ae83c92b",
+            "comment": "chore: remove invalid peerDependency on scheduler"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "f57994b8984059ee2cf836c3fceb9836ae83c92b",
+            "comment": "chore: remove invalid peerDependency on scheduler"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "938958cbfd9058eb7681c8feddfdd4e0538733be",
+            "comment": "docs: Deprecate unused TeachingPopoverCarousel style hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "f57994b8984059ee2cf836c3fceb9836ae83c92b",
+            "comment": "chore: remove invalid peerDependency on scheduler"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "fb8782f3294229a18e399bb665453ddcd0b97eab",
+            "comment": "chore: Update jsdocs and stories in Rating"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "a581f7555871d3c053cc28ec6fbb9468047c0e4a",
+            "comment": "fix: allRowsSelected is false when there are no rows"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "f57994b8984059ee2cf836c3fceb9836ae83c92b",
+            "comment": "chore: remove invalid peerDependency on scheduler"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "77527ac13d9b9ffc627342ef70f2a417a8f18971",
+            "comment": "Removed unneeded zIndex from tab active indicator"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-toast",
+            "commit": "79d0865ec5c91b6e0b23ae0931a18a181b825b55",
+            "comment": "fix: Use semantic colours"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d",
+            "comment": "fix: aria-selected is no longer required for treeitem"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "6fcb8404234d585d4618a2caec3dfdb26d8f50b7",
+            "comment": "feat: active descendants imperative handle to toggle attribute"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "616d31c1994635b1a15f092cf85905b2450611f7",
+            "comment": "feat: Add color tokens"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "938958cbfd9058eb7681c8feddfdd4e0538733be",
+            "comment": "feat: Add usePopoverContextValues_unstable hook for simplified context"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "9ef10392973cf745fb5a54f357abcee6ecd91775",
+            "comment": "feat: allow null on positioningRef setTarget"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-rating-preview",
+            "commit": "8beb50fba236209bf3aa07f72e23cfb8beacaba1",
+            "comment": "breaking: Update icon api type to ElementType"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "938958cbfd9058eb7681c8feddfdd4e0538733be",
+            "comment": "feat: Deprecate legacy TeachingPopoverCarousel style hooks"
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "a33664dadd96a2496e1a047f8eb674c634cbde26",
+            "comment": "chore: Rewrite Spinner animation using only rotation transforms."
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-teaching-popover-preview",
+            "commit": "938958cbfd9058eb7681c8feddfdd4e0538733be",
+            "comment": "feat: Refactor carousel into a unified component, add navigation classes for nav icons"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "08cc96d29f86bea34151161a5b722a5f77475d83",
+            "comment": "docs: rework icons catalog"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Feb 2024 14:44:20 GMT",
       "tag": "@fluentui/react-components_v9.46.7",
       "version": "9.46.7",

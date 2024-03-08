@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Wed, 28 Feb 2024 02:34:18 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Mar 2024 19:33:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.15.0)
+
+Thu, 07 Mar 2024 19:33:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.14.1..@fluentui/react-shared-contexts_v9.15.0)
+
+### Minor changes
+
+- feat: Deprecate legacy TeachingPopoverCarousel style hooks ([PR #30423](https://github.com/microsoft/fluentui/pull/30423) by mifraser@microsoft.com)
+- Bump @fluentui/react-theme to v9.1.17 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
 
 ## [9.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.14.1)
 
