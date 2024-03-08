@@ -4,15 +4,16 @@
   "title": "",
   "type": "object",
   "properties": {
-    "name": {
+    "project": {
       "type": "string",
       "description": "",
       "$default": {
         "$source": "argv",
         "index": 0
       },
-      "x-prompt": "What name would you like to use?"
+      "x-prompt": "Which project would you like to split?",
+      "x-dropdown": "projects"
     }
   },
-  "required": ["name"]
+  "required": ["project"]
 }
