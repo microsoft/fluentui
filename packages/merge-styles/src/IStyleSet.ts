@@ -23,6 +23,9 @@ export type __MapToFunctionType<T> = Extract<T, Function> extends never
   ? (...args: any[]) => Partial<T>
   : Extract<T, Function>;
 
+/**
+ * Used for 'extends IStyleSetBase' type constraints when an IStyleSet type argument is needed.
+ */
 export interface IStyleSetBase {
   [key: string]: any;
   subComponentStyles?: any;

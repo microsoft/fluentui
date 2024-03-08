@@ -441,7 +441,7 @@ export type IStyleSet<TStyleSet extends IStyleSetBase = {
     };
 };
 
-// @public (undocumented)
+// @public
 export interface IStyleSetBase {
     // (undocumented)
     [key: string]: any;
@@ -550,7 +550,7 @@ export class Stylesheet {
 
 // Warnings were encountered during analysis:
 //
-// lib/IStyleSet.d.ts:57:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
+// lib/IStyleSet.d.ts:60:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
