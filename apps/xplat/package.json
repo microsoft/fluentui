@@ -3,19 +3,19 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "start": "react-native rnx-start",
     "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "macos": "react-native run-macos --scheme xplat",
+    "windows": "react-native xplat-run-windows",
     "build:android": "react-native rnx-bundle --platform android --dev true",
     "build:ios": "react-native rnx-bundle --platform ios --dev true",
     "build:macos": "react-native rnx-bundle --platform macos --dev true",
     "build:windows": "react-native rnx-bundle --platform windows --dev true",
     "check-deps": "rnx-align-deps",
     "fix-deps": "rnx-align-deps --write",
-    "ios": "react-native run-ios",
-    "lint": "eslint .",
-    "macos": "react-native run-macos --scheme xplat",
-    "start": "react-native rnx-start",
-    "test": "jest",
-    "windows": "react-native xplat-run-windows"
+    "xplat:test": "jest",
+    "xplat:lint": "eslint ."
   },
   "dependencies": {
     "react": "18.2.0",
