@@ -1,6 +1,6 @@
 import { screen, fireEvent } from '@testing-library/react';
 import { AreaChart } from '../src/components/AreaChart/index';
-
+import { resetIds } from '@fluentui/react';
 import { getById, testWithoutWait } from '../src/utilities/TestUtility.test';
 import { DarkTheme } from '@fluentui/theme-samples';
 const env = require('../config/tests');
@@ -197,7 +197,13 @@ export const chartDataDarkTheme = {
   lineChartData: chartPointsDarkTheme,
 };
 
+function sharedBeforeEach() {
+  resetIds();
+}
+
 runTest('_getOpacity', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should return fill-opacity of 0.7 if chart is not multi-stacked',
     AreaChart,
@@ -250,6 +256,8 @@ runTest('_getOpacity', () => {
 });
 
 runTest('_getLineOpacity', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait('Should return 1 if chart is not multi-stacked', AreaChart, { data: chartData }, container => {
     const areas = getById(container, /line-areaChart/i);
     expect(areas.length).toBe(1);
@@ -317,6 +325,8 @@ runTest('_getLineOpacity', () => {
 });
 
 runTest('_updateCircleFillColor', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should return the line color if neither the nearest circle nor the active point is highlighted',
     AreaChart,
@@ -385,6 +395,8 @@ runTest('_updateCircleFillColor', () => {
 });
 
 runTest('_getCircleRadius', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should return 1 if isCircleClicked is true and nearestCircleToHighlight matches xDataPoint',
     AreaChart,
@@ -477,6 +489,8 @@ runTest('_getCircleRadius', () => {
 });
 
 runTest('_addDefaultColors', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should return an array with the same length as the input array',
     AreaChart,
@@ -530,6 +544,8 @@ runTest('_addDefaultColors', () => {
 });
 
 runTest('_getAriaLabel', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should return the correct aria label for a point with xAxisCalloutData and yAxisCalloutData',
     AreaChart,

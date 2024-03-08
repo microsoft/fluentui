@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 27 Feb 2024 07:25:41 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Mar 2024 07:26:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.32)
+
+Fri, 08 Mar 2024 07:26:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.31..@fluentui/react-charting_v5.19.32)
+
+### Patches
+
+- Add gradient color capability to AreaChart. ([PR #30722](https://github.com/microsoft/fluentui/pull/30722) by shermanchow@microsoft.com)
+
+## [5.19.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.31)
+
+Mon, 04 Mar 2024 07:26:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.30..@fluentui/react-charting_v5.19.31)
+
+### Patches
+
+- Fix 2:1 spacing in vertical bar charts with string x-axis ([PR #30192](https://github.com/microsoft/fluentui/pull/30192) by kumarkshitij@microsoft.com)
+- Reducing monosize of charts and removing circular dependencies ([PR #30630](https://github.com/microsoft/fluentui/pull/30630) by srmukher@microsoft.com)
 
 ## [5.19.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.30)
 

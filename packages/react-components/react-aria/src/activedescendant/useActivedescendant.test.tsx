@@ -91,6 +91,22 @@ describe('useActivedescendant', () => {
     expect(button).toHaveActiveDescendant(expecetdOption);
   });
 
+  it('should not have aria-activedescendant attribute if hideAttributes invoked', () => {
+    const expecetdOption = 'option-1';
+    const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();
+    const { getByRole } = render(<Test imperativeRef={imperativeRef} />);
+
+    imperativeRef.current?.hideAttributes();
+
+    const res = imperativeRef.current?.first();
+    expect(res).toBe(expecetdOption);
+    const button = getByRole('button');
+    expect(button).not.toHaveActiveDescendant(expecetdOption);
+
+    imperativeRef.current?.showAttributes();
+    expect(button).toHaveActiveDescendant(expecetdOption);
+  });
+
   it('should focus next option', () => {
     const expectedOption = 'option-2';
     const imperativeRef = React.createRef<ActiveDescendantImperativeRef>();

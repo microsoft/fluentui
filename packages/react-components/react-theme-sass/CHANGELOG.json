@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-sass",
   "entries": [
     {
+      "date": "Thu, 07 Mar 2024 19:33:26 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.21",
+      "version": "9.0.0-alpha.21",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "616d31c1994635b1a15f092cf85905b2450611f7",
+            "comment": "feat: Add color tokens"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 17:29:46 GMT",
       "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.20",
       "version": "9.0.0-alpha.20",

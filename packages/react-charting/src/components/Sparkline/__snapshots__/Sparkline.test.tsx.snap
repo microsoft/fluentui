@@ -85,7 +85,7 @@ exports[`Sparkline snapShot testing renders Sparkline correctly with no legend 1
       {
         display: inline;
       }
-  data-focuszone-id="FocusZone3"
+  data-focuszone-id="FocusZone1"
   data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
