@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "fix: Update IStyleSet types to avoid TS 5.3 error",
+  "comment": "fix: Update IStyleSet type to fix error when using TypeScript 5.3+",
   "packageName": "@fluentui/utilities",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch"
