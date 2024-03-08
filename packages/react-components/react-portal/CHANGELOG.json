@@ -2,6 +2,33 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Thu, 07 Mar 2024 19:33:27 GMT",
+      "tag": "@fluentui/react-portal_v9.4.16",
+      "version": "9.4.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.15.0",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-tabster to v9.19.3",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-utilities to v9.18.3",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Feb 2024 02:34:19 GMT",
       "tag": "@fluentui/react-portal_v9.4.15",
       "version": "9.4.15",

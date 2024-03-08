@@ -43,6 +43,12 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
    * @defaultvalue 'square'
    */
   shape?: 'rounded' | 'square' | 'circular';
+
+  /**
+   * Spacing between swatches
+   * @defaultvalue 'medium'
+   */
+  spacing?: 'small' | 'medium';
 };
 
 /**
@@ -50,4 +56,4 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
  */
 export type SwatchPickerState = ComponentState<SwatchPickerSlots> &
   SwatchPickerContextValue &
-  Pick<SwatchPickerProps, 'size' | 'shape'>;
+  Pick<SwatchPickerProps, 'size' | 'shape' | 'spacing'>;

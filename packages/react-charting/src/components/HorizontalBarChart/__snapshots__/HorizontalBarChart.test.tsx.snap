@@ -951,7 +951,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone10"
+        data-focuszone-id="FocusZone2"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -996,7 +996,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             </span>
             <div
               hidden={true}
-              id="tooltip11"
+              id="tooltip3"
               style={
                 Object {
                   "border": 0,
@@ -1024,7 +1024,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone12"
+        data-focuszone-id="FocusZone4"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1082,7 +1082,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone13"
+        data-focuszone-id="FocusZone5"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1127,7 +1127,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             </span>
             <div
               hidden={true}
-              id="tooltip14"
+              id="tooltip6"
               style={
                 Object {
                   "border": 0,
@@ -1155,7 +1155,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone15"
+        data-focuszone-id="FocusZone7"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
