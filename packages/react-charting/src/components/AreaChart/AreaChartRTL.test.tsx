@@ -20,12 +20,9 @@ const env = require('../../../config/tests');
 
 expect.extend(toHaveNoViolations);
 
-beforeEach(() => {
-  // When adding a new snapshot test, it's observed that other snapshots may fail due to
-  // components sharing a common global counter for IDs. To prevent this from happening,
-  // we should reset the IDs before each test execution.
+function sharedBeforeEach() {
   resetIds();
-});
+}
 
 const chart1Points = [
   {
@@ -264,6 +261,7 @@ const chartDataWithDates = {
 };
 
 describe('Area chart rendering', () => {
+  beforeEach(sharedBeforeEach);
   testWithoutWait(
     'Should render the area chart with numeric x-axis data',
     AreaChart,
@@ -328,6 +326,7 @@ describe('Area chart rendering', () => {
 });
 
 describe('Area chart - Subcomponent Area', () => {
+  beforeEach(sharedBeforeEach);
   testWithoutWait('Should render the Areas with the specified colors', AreaChart, { data: chartData }, container => {
     const areas = getById(container, /graph-areaChart/i);
     // Assert
@@ -338,6 +337,7 @@ describe('Area chart - Subcomponent Area', () => {
 });
 
 describe('Area chart - Subcomponent legend', () => {
+  beforeEach(sharedBeforeEach);
   testWithoutWait(
     'Should highlight the corresponding Area on mouse over on legends',
     AreaChart,
@@ -422,6 +422,7 @@ describe('Area chart - Subcomponent legend', () => {
 });
 
 describe('Area chart - Subcomponent callout', () => {
+  beforeEach(sharedBeforeEach);
   testWithWait(
     'Should show the callout over the area on mouse over',
     AreaChart,
@@ -473,6 +474,7 @@ describe('Area chart - Subcomponent callout', () => {
 });
 
 describe('Area chart - Subcomponent xAxis Labels', () => {
+  beforeEach(sharedBeforeEach);
   testWithWait(
     'Should show the x-axis labels tooltip when hovered',
     AreaChart,
@@ -504,6 +506,7 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
 });
 
 describe('Screen resolution', () => {
+  beforeEach(sharedBeforeEach);
   const originalInnerWidth = global.innerWidth;
   const originalInnerHeight = global.innerHeight;
   afterEach(() => {
@@ -547,22 +550,25 @@ describe('Screen resolution', () => {
   );
 });
 
-test('Should reflect theme change', () => {
-  // Arrange
-  const { container } = render(
-    <ThemeProvider theme={DarkTheme}>
-      <AreaChart culture={window.navigator.language} data={chartData} />
-    </ThemeProvider>,
-  );
-  // Assert
-  expect(container).toMatchSnapshot();
-});
-
-test('Should pass accessibility tests', async () => {
-  const { container } = render(<AreaChart data={chartData} />);
-  let axeResults;
-  await act(async () => {
-    axeResults = await axe(container);
+describe('AreaChart - Theme', () => {
+  beforeEach(sharedBeforeEach);
+  test('Should reflect theme change', () => {
+    // Arrange
+    const { container } = render(
+      <ThemeProvider theme={DarkTheme}>
+        <AreaChart culture={window.navigator.language} data={chartData} />
+      </ThemeProvider>,
+    );
+    // Assert
+    expect(container).toMatchSnapshot();
   });
-  expect(axeResults).toHaveNoViolations();
+
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<AreaChart data={chartData} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
+  });
 });

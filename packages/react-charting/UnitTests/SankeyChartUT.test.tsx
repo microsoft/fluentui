@@ -16,6 +16,7 @@ import {
 } from '../src/components/SankeyChart/index';
 import { SLink, SNode } from '../src/types/IDataPoint';
 import { IMargins } from '../src/utilities/index';
+import { resetIds } from '@fluentui/react';
 
 const env = require('../config/tests');
 const runTest = env === 'TEST' ? describe : describe.skip;
@@ -73,7 +74,13 @@ const emptyChartPoints = (): IChartProps => ({});
 
 const standardMargins: IMargins = { top: 36, right: 48, bottom: 32, left: 48 };
 
+function sharedBeforeEach() {
+  resetIds();
+}
+
 runTest('_populateNodeInColumns', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper colums data with string nodeId', () => {
     const preRenderData = preRenderLayout(standardMargins, 912, 468, false);
     const input: ISankeyChartData = sankeyChartDataStringNodeId();
@@ -116,6 +123,8 @@ runTest('_populateNodeInColumns', () => {
 });
 
 runTest('_adjustPadding', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper padding value', () => {
     const preRenderData = preRenderLayout(standardMargins, 912, 468, false);
     const input: ISankeyChartData = sankeyChartDataNumericNodeId();
@@ -141,6 +150,8 @@ interface IPrivateMethodsOnClass {
 }
 
 runTest('_createLinks', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper links data with string nodeId', () => {
     const data = chartPointsWithStringNodeId();
     const instance = new SankeyChartBase({
@@ -246,6 +257,7 @@ runTest('_createNodes', () => {
       value: mockGetComputedTextLength,
     },
   );
+  beforeEach(sharedBeforeEach);
 
   test('Should return proper nodes data with string nodeId', () => {
     const data = chartPointsWithStringNodeId();

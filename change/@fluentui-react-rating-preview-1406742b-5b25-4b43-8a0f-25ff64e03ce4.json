@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "breaking: Update icon api type to ElementType",
-  "packageName": "@fluentui/react-rating-preview",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -4,7 +4,7 @@ exports[`Sparkline chart rendering Should re-render the Sparkline chart with dat
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_SparklineChart_empty7"
+    id="_SparklineChart_empty0"
     role="alert"
     style="opacity: 0;"
   />
@@ -22,7 +22,7 @@ exports[`Sparkline chart rendering Should re-render the Sparkline chart with dat
         {
           display: inline;
         }
-    data-focuszone-id="FocusZone8"
+    data-focuszone-id="FocusZone1"
     data-tabster="{\\"uncontrolled\\": {}}"
   >
     <div
@@ -128,7 +128,7 @@ exports[`Sparkline snapShot testing renders Sparkline correctly with no legend 1
       {
         display: inline;
       }
-  data-focuszone-id="FocusZone3"
+  data-focuszone-id="FocusZone1"
   data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}

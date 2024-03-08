@@ -46,6 +46,8 @@ export const emptyChartPoints: IChartProps = {
 };
 
 describe('StackedBarChart snapShot testing', () => {
+  beforeEach(sharedBeforeEach);
+
   it('renders StackedBarChart correctly', () => {
     const component = renderer.create(<StackedBarChart data={chartPoints} />);
     const tree = component.toJSON();
@@ -154,6 +156,8 @@ describe('StackedBarChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(StackedBarChartBase.prototype, 'render');
     const props = {
@@ -223,6 +227,8 @@ describe('StackedBarChart - mouse events', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No empty chart aria label div rendered', () => {
     wrapper = mount(<StackedBarChart data={chartPoints} />);
     const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
