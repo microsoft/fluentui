@@ -77,32 +77,32 @@ export interface IHeatMapChartState {
 }
 const getClassNames = classNamesFunction<IHeatMapChartStyleProps, IHeatMapChartStyles>();
 export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatMapChartState> {
-  private _classNames: IProcessedStyleSet<IHeatMapChartStyles>;
-  private _stringXAxisDataPoints: string[];
-  private _stringYAxisDataPoints: string[];
-  private _createSet: (
+  public _classNames: IProcessedStyleSet<IHeatMapChartStyles>;
+  public _stringXAxisDataPoints: string[];
+  public _stringYAxisDataPoints: string[];
+  public _createSet: (
     data: IHeatMapChartData[],
     xDate: string | undefined,
     xNum: string | undefined,
     yDate: string | undefined,
     yNum: string | undefined,
   ) => DataSet;
-  private _dataSet: RectanglesGraphData;
+  public _dataSet: RectanglesGraphData;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _colorScale: any;
+  public _colorScale: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _xAxisScale: any;
+  public _xAxisScale: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _yAxisScale: any;
+  public _yAxisScale: any;
   /**
    * This array contains ref for all the rectangles
    * drawn inside the chard
    */
-  private _rectRefArray: { [key: string]: IRectRef } = {};
-  private _xAxisType: XAxisTypes;
-  private _yAxisType: YAxisType;
-  private _calloutAnchorPoint: FlattenData | null;
-  private _emptyChartId: string;
+  public _rectRefArray: { [key: string]: IRectRef } = {};
+  public _xAxisType: XAxisTypes;
+  public _yAxisType: YAxisType;
+  public _calloutAnchorPoint: FlattenData | null;
+  public _emptyChartId: string;
   public constructor(props: IHeatMapChartProps) {
     super(props);
     /**
@@ -215,7 +215,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     );
   }
 
-  private _getXandY = (): { x: string | Date | number; y: string | Date | number } => {
+  public _getXandY = (): { x: string | Date | number; y: string | Date | number } => {
     let x: string | Date | number = '';
     let y: string | Date | number = '';
     this.props.data.forEach((item: IHeatMapChartData) => {
@@ -228,16 +228,16 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     return { x, y };
   };
 
-  private _getOpacity = (legendTitle: string): string => {
+  public _getOpacity = (legendTitle: string): string => {
     const opacity = this._legendHighlighted(legendTitle) || this._noLegendHighlighted() ? '1' : '0.1';
     return opacity;
   };
 
-  private _rectRefCallback = (rectElement: SVGGElement, index: number | string, dataPointObject: FlattenData): void => {
+  public _rectRefCallback = (rectElement: SVGGElement, index: number | string, dataPointObject: FlattenData): void => {
     this._rectRefArray[index] = { data: dataPointObject, refElement: rectElement };
   };
 
-  private _onRectFocus = (id: string, data: FlattenData): void => {
+  public _onRectFocus = (id: string, data: FlattenData): void => {
     this.setState({
       target: this._rectRefArray[id].refElement,
       /** Show the callout if highlighted rectangle is focused and Hide it if unhighlighted rectangle is focused */
@@ -252,7 +252,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     });
   };
 
-  private _onRectMouseOver = (id: string, data: FlattenData, mouseEvent: React.MouseEvent<SVGGElement>): void => {
+  public _onRectMouseOver = (id: string, data: FlattenData, mouseEvent: React.MouseEvent<SVGGElement>): void => {
     mouseEvent.persist();
     if (this._calloutAnchorPoint !== data) {
       this._calloutAnchorPoint = data;
@@ -271,11 +271,11 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     }
   };
 
-  private _onRectBlurOrMouseOut = (): void => {
+  public _onRectBlurOrMouseOut = (): void => {
     /**/
   };
 
-  private _handleChartMouseLeave = (): void => {
+  public _handleChartMouseLeave = (): void => {
     this._calloutAnchorPoint = null;
     this.setState({
       isCalloutVisible: false,
@@ -287,7 +287,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * drawing the rectangle in the graph and also
    * attaching dom events to that rectangles
    */
-  private _createRectangles = (): React.ReactNode => {
+  public _createRectangles = (): React.ReactNode => {
     const rectangles: JSX.Element[] = [];
     const yAxisDataPoints = this._stringYAxisDataPoints.slice().reverse();
     /**
@@ -344,7 +344,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * and un-highlight the rest of them
    * @param legendTitle
    */
-  private _onLegendHover(legendTitle: string): void {
+  public _onLegendHover(legendTitle: string): void {
     this.setState({
       activeLegend: legendTitle,
     });
@@ -354,7 +354,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * when the mouse is out from the legend , we need
    * to show the graph in initial mode.
    */
-  private _onLegendLeave(): void {
+  public _onLegendLeave(): void {
     this.setState({
       activeLegend: '',
     });
@@ -365,7 +365,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * all the rectangles which fall under that category
    * and un highlight the rest of them
    */
-  private _onLegendClick(legendTitle: string): void {
+  public _onLegendClick(legendTitle: string): void {
     /**
      * check if the legend is already selceted,
      * if yes, un-select the legend, else
@@ -381,7 +381,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       });
     }
   }
-  private _createLegendBars = (): JSX.Element => {
+  public _createLegendBars = (): JSX.Element => {
     const { data, legendProps } = this.props;
     const legends: ILegend[] = [];
     data.forEach((item: IHeatMapChartData) => {
@@ -404,14 +404,14 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     return <Legends {...legendProps} legends={legends} />;
   };
 
-  private _getColorScale = () => {
+  public _getColorScale = () => {
     const { domainValuesForColorScale, rangeValuesForColorScale } = this.props;
     return d3ScaleLinear()
       .domain(domainValuesForColorScale)
       .range(rangeValuesForColorScale as unknown as number[]);
   };
 
-  private _getXIndex = (value: string | Date | number): string => {
+  public _getXIndex = (value: string | Date | number): string => {
     if (this._xAxisType === XAxisTypes.DateAxis) {
       return `${(value as Date).getTime()}`;
     } else if (this._xAxisType === XAxisTypes.StringAxis) {
@@ -422,7 +422,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       return '';
     }
   };
-  private _getYIndex = (value: string | Date | number): string => {
+  public _getYIndex = (value: string | Date | number): string => {
     if (this._yAxisType === YAxisType.DateAxis) {
       return `${(value as Date).getTime()}`;
     } else if (this._yAxisType === YAxisType.StringAxis) {
@@ -443,7 +443,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * specified in the figma
    */
 
-  private _createNewDataSet = (
+  public _createNewDataSet = (
     data: IHeatMapChartData[],
     xAxisDateFormatString: string | undefined,
     xAxisNumberFormatString: string | undefined,
@@ -532,7 +532,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     /**
      * if  y-axis data points are of type date or number or if we have string formatter,
      * then we need to change data points  to their respective string
-     * format, becuase in the private variable this._stringYAxisDatapoints, points will be stored in
+     * format, becuase in the public variable this._stringYAxisDatapoints, points will be stored in
      * string format. and in here `yPoint` are not so we need to change, so that
      * function `this._createRectangles` should work perfetcly while looping, and  if we don't change
      * then `this._createRectangles` will fail while looping, causing the error
@@ -576,7 +576,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * @param points
    * @returns x-axis points
    */
-  private _getXAxisDataPoints = (points: { [key: string]: '1' }): string[] => {
+  public _getXAxisDataPoints = (points: { [key: string]: '1' }): string[] => {
     let xAxisPoints: string[] = [];
     const unFormattedXAxisDataPoints = Object.keys(points).sort((a: string, b: string) => {
       if (this._xAxisType === XAxisTypes.DateAxis || this._xAxisType === XAxisTypes.NumericAxis) {
@@ -603,7 +603,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * @param points
    * @returns yaxis points
    */
-  private _getYAxisDataPoints = (points: { [key: string]: '1' }): string[] => {
+  public _getYAxisDataPoints = (points: { [key: string]: '1' }): string[] => {
     let yAxisPoints: string[] = [];
     const unFormattedYAxisDataPoints = Object.keys(points).sort((a: string, b: string) => {
       if (this._yAxisType === YAxisType.DateAxis || this._yAxisType === YAxisType.NumericAxis) {
@@ -625,27 +625,27 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     return yAxisPoints;
   };
 
-  private _getStringFormattedDate = (point: string, formatString?: string): string => {
+  public _getStringFormattedDate = (point: string, formatString?: string): string => {
     const date = new Date();
     date.setTime(+point);
     return d3TimeFormat(formatString || '%b/%d')(date);
   };
 
-  private _getStringFormattedNumber = (point: string, formatString?: string): string => {
+  public _getStringFormattedNumber = (point: string, formatString?: string): string => {
     return d3Format(formatString || '.2~s')(+point);
   };
 
-  private _getFormattedLabelForXAxisDataPoint = (point: string): string => {
+  public _getFormattedLabelForXAxisDataPoint = (point: string): string => {
     const { xAxisStringFormatter } = this.props;
     return xAxisStringFormatter ? xAxisStringFormatter(point) : point;
   };
 
-  private _getFormattedLabelForYAxisDataPoint = (point: string): string => {
+  public _getFormattedLabelForYAxisDataPoint = (point: string): string => {
     const { yAxisStringFormatter } = this.props;
     return yAxisStringFormatter ? yAxisStringFormatter(point) : point;
   };
 
-  private _closeCallout = () => {
+  public _closeCallout = () => {
     this.setState({
       isCalloutVisible: false,
     });
@@ -657,7 +657,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * 1. selection: if the user clicks on it
    * 2. hovering: if there is no selected legend and the user hovers over it
    */
-  private _legendHighlighted = (legendTitle: string) => {
+  public _legendHighlighted = (legendTitle: string) => {
     return (
       this.state.selectedLegend === legendTitle ||
       (this.state.selectedLegend === '' && this.state.activeLegend === legendTitle)
@@ -667,11 +667,11 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   /**
    * This function checks if none of the legends is selected or hovered.
    */
-  private _noLegendHighlighted = () => {
+  public _noLegendHighlighted = () => {
     return this.state.selectedLegend === '' && this.state.activeLegend === '';
   };
 
-  private _getAriaLabel = (point: FlattenData): string => {
+  public _getAriaLabel = (point: FlattenData): string => {
     const xValue = point.x;
     const yValue = point.y;
     const legend = point.legend;
@@ -683,7 +683,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     );
   };
 
-  private _isChartEmpty(): boolean {
+  public _isChartEmpty(): boolean {
     return !(this.props.data && this.props.data.length > 0);
   }
 }
