@@ -4,14 +4,14 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { styled } from './styled';
 import * as renderer from 'react-test-renderer';
 import { Customizer } from './customizations/Customizer';
-import { Stylesheet, InjectionMode, mergeStyles, IStyleSet } from '@fluentui/merge-styles';
+import { Stylesheet, InjectionMode, mergeStyles } from '@fluentui/merge-styles';
 import { classNamesFunction } from './classNamesFunction';
 import { Customizations } from './customizations/Customizations';
 import { safeCreate } from '@fluentui/test-utilities';
 import { mount } from 'enzyme';
 import type { IStyle, IStyleFunction, IStyleFunctionOrObject } from '@fluentui/merge-styles';
 
-interface ITestStyles extends IStyleSet {
+interface ITestStyles {
   root: IStyle;
 }
 interface ITestProps {

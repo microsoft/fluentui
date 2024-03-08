@@ -1,6 +1,6 @@
 import { mergeStyleSets } from './mergeStyleSets';
 import { Stylesheet, InjectionMode } from './Stylesheet';
-import { IStyleSet } from './IStyleSet';
+import { IStyleSet, IStyleSetBase } from './IStyleSet';
 import { IStyleFunctionOrObject } from './IStyleFunction';
 import { IStyle } from './IStyle';
 
@@ -165,7 +165,7 @@ describe('mergeStyleSets', () => {
   });
 
   describe('typings tests', () => {
-    interface ISubComponentStyles extends IStyleSet {
+    interface ISubComponentStyles extends IStyleSetBase {
       root: IStyle;
     }
 
@@ -173,7 +173,7 @@ describe('mergeStyleSets', () => {
       isCollapsed: boolean;
     }
 
-    interface IStyles extends IStyleSet {
+    interface IStyles extends IStyleSetBase {
       root: IStyle;
       subComponentStyles: {
         button: IStyleFunctionOrObject<ISubComponentStyleProps, IStyleSet<ISubComponentStyles>>;

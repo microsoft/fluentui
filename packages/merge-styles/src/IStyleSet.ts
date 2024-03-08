@@ -23,22 +23,28 @@ export type __MapToFunctionType<T> = Extract<T, Function> extends never
   ? (...args: any[]) => Partial<T>
   : Extract<T, Function>;
 
+export interface IStyleSetBase {
+  [key: string]: any;
+  subComponentStyles?: any;
+}
+
 /**
  * A style set is a dictionary of display areas to IStyle objects.
  * It may optionally contain style functions for sub components in the special `subComponentStyles`
  * property.
  */
-export type IStyleSet<TStyleSet extends { [key: string]: any } = { [key: string]: any }> = {
+export type IStyleSet<TStyleSet extends IStyleSetBase = { [key: string]: any }> =
   // eslint-disable-next-line deprecation/deprecation
-  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
-} & {
-  subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any> };
-};
+  { [P in Exclude<keyof TStyleSet, 'subComponentStyles'>]: IStyle } & {
+    subComponentStyles?: {
+      [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any>;
+    };
+  };
 
 /**
  * A concatenated style set differs from `IStyleSet` in that subComponentStyles will always be a style function.
  */
-export type IConcatenatedStyleSet<TStyleSet extends IStyleSet> = {
+export type IConcatenatedStyleSet<TStyleSet extends IStyleSetBase> = {
   // eslint-disable-next-line deprecation/deprecation
   [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
@@ -49,7 +55,7 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSet> = {
  * A processed style set is one which the set of styles associated with each area has been converted
  * into a class name. Additionally, all subComponentStyles are style functions.
  */
-export type IProcessedStyleSet<TStyleSet extends IStyleSet> = {
+export type IProcessedStyleSet<TStyleSet extends IStyleSetBase> = {
   // eslint-disable-next-line deprecation/deprecation
   [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: string;
 } & {

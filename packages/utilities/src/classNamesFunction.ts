@@ -1,7 +1,7 @@
 import { mergeCssSets, Stylesheet } from '@fluentui/merge-styles';
 import { getRTL } from './rtl';
 import { getWindow } from './dom';
-import type { IStyleSet, IProcessedStyleSet, IStyleFunctionOrObject } from '@fluentui/merge-styles';
+import type { IStyleSet, IStyleSetBase, IProcessedStyleSet, IStyleFunctionOrObject } from '@fluentui/merge-styles';
 import type { StyleFunction } from './styled';
 
 const MAX_CACHE_COUNT = 50;
@@ -54,7 +54,7 @@ export interface IClassNamesFunctionOptions {
  * immutable (numbers, strings, and booleans). This will allow the results to be memoized. Violating
  * these will cause extra recalcs to occur.
  */
-export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet>(
+export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSetBase>(
   options: IClassNamesFunctionOptions = {},
 ): (
   getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined,
