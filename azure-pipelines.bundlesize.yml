@@ -1,8 +1,10 @@
 pr:
   - master
+  - shadow-dom
 
 trigger:
   - master
+  - shadow-dom
 
 variables:
   - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
