@@ -37,7 +37,9 @@ export type NavCategoryItemSlots = {
 };
 
 // @public
-export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> & NavCategoryItemContextValue;
+export type NavCategoryItemState = ComponentState<NavCategoryItemSlots> & NavCategoryItemContextValue & {
+    selected: boolean;
+};
 
 // @public
 export type NavCategoryProps = {
@@ -52,23 +54,42 @@ export type NavCategoryState = NavCategoryContextValue & Required<NavCategoryPro
 export const navClassNames: SlotClassNames<NavSlots>;
 
 // @public (undocumented)
-export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue' | 'reserveSelectedNavItemSpace'> & {
+export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue' | 'selectedCategoryValue' | 'reserveSelectedNavItemSpace'> & {
     onRegister: RegisterNavItemEventHandler;
     onUnregister: RegisterNavItemEventHandler;
     onSelect: EventHandler<OnNavItemSelectData>;
     getRegisteredNavItems: () => {
         selectedValue?: NavItemValue;
+        selectedCategoryValue?: NavItemValue;
         previousSelectedValue?: NavItemValue;
         registeredNavItems: Record<string, NavItemRegisterData>;
     };
     onRequestNavCategoryItemToggle: EventHandler<OnNavItemSelectData>;
-    openItems: NavItemValue[];
+    openCategories: NavItemValue[];
+    multiple: boolean;
 };
 
 // @public
 export type NavContextValues = {
     nav: NavContextValue;
 };
+
+// @public
+export const NavDrawer: ForwardRefComponent<NavDrawerProps>;
+
+// @public (undocumented)
+export const navDrawerClassNames: SlotClassNames<NavDrawerSlots>;
+
+// @public
+export type NavDrawerProps = ComponentProps<NavDrawerSlots> & {};
+
+// @public (undocumented)
+export type NavDrawerSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type NavDrawerState = ComponentState<NavDrawerSlots>;
 
 // @public
 export const NavItem: ForwardRefComponent<NavItemProps>;
@@ -89,7 +110,7 @@ export type NavItemRegisterData = {
 
 // @public (undocumented)
 export type NavItemSlots = {
-    root: Slot<'button'>;
+    root: Slot<'a'>;
     content: NonNullable<Slot<'span'>>;
 };
 
@@ -105,8 +126,11 @@ export type NavItemValue = unknown;
 export type NavProps = ComponentProps<NavSlots> & {
     reserveSelectedNavItemSpace?: boolean;
     defaultSelectedValue?: NavItemValue;
+    defaultSelectedCategoryValue?: NavItemValue;
     onNavItemSelect?: EventHandler<OnNavItemSelectData>;
     selectedValue?: NavItemValue;
+    selectedCategoryValue?: NavItemValue;
+    multiple?: boolean;
     onNavCategoryItemToggle?: EventHandler<OnNavItemSelectData>;
 };
 
@@ -147,15 +171,20 @@ export type NavSubItemGroupState = ComponentState<NavSubItemGroupSlots> & {
 };
 
 // @public
-export type NavSubItemProps = ComponentProps<NavSubItemSlots> & {};
+export type NavSubItemProps = ComponentProps<Partial<NavSubItemSlots>> & {
+    value: NavItemValue;
+};
 
 // @public (undocumented)
 export type NavSubItemSlots = {
-    root: Slot<'div'>;
+    root: Slot<'a'>;
+    content: NonNullable<Slot<'span'>>;
 };
 
 // @public
-export type NavSubItemState = ComponentState<NavSubItemSlots>;
+export type NavSubItemState = ComponentState<NavSubItemSlots> & Pick<NavSubItemProps, 'value'> & {
+    selected: boolean;
+};
 
 // @public (undocumented)
 export type RegisterNavItemEventHandler = (data: NavItemRegisterData) => void;
@@ -168,6 +197,9 @@ export const renderNavCategory_unstable: (state: NavCategoryState, contextValues
 
 // @public
 export const renderNavCategoryItem_unstable: (state: NavCategoryItemState, contextValues: NavCategoryItemContextValues) => JSX.Element;
+
+// @public
+export const renderNavDrawer_unstable: (state: NavDrawerState) => JSX.Element;
 
 // @public
 export const renderNavItem_unstable: (state: NavItemState) => JSX.Element;
@@ -194,7 +226,13 @@ export const useNavCategoryItemStyles_unstable: (state: NavCategoryItemState) =>
 export const useNavContext_unstable: () => NavContextValue;
 
 // @public
-export const useNavItem_unstable: (props: NavItemProps, ref: React_2.Ref<HTMLButtonElement>) => NavItemState;
+export const useNavDrawer_unstable: (props: NavDrawerProps, ref: React_2.Ref<HTMLDivElement>) => NavDrawerState;
+
+// @public
+export const useNavDrawerStyles_unstable: (state: NavDrawerState) => NavDrawerState;
+
+// @public
+export const useNavItem_unstable: (props: NavItemProps, ref: React_2.Ref<HTMLAnchorElement>) => NavItemState;
 
 // @public
 export const useNavItemStyles_unstable: (state: NavItemState) => NavItemState;
@@ -203,7 +241,7 @@ export const useNavItemStyles_unstable: (state: NavItemState) => NavItemState;
 export const useNavStyles_unstable: (state: NavState) => NavState;
 
 // @public
-export const useNavSubItem_unstable: (props: NavSubItemProps, ref: React_2.Ref<HTMLDivElement>) => NavSubItemState;
+export const useNavSubItem_unstable: (props: NavSubItemProps, ref: React_2.Ref<HTMLAnchorElement>) => NavSubItemState;
 
 // @public
 export const useNavSubItemGroup_unstable: (props: NavSubItemGroupProps, ref: React_2.Ref<HTMLDivElement>) => NavSubItemGroupState;

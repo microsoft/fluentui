@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: remove new Date() from prop destructuring",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

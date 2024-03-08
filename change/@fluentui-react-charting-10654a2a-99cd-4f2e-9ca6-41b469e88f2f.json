@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add isLegendSelected condition for single point data in LineChart",
+  "packageName": "@fluentui/react-charting",
+  "email": "shubhabrata08@gmail.com",
+  "dependentChangeType": "patch"
+}

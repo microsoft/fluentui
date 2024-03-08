@@ -3,17 +3,16 @@ import { Button, Image } from '@fluentui/react-components';
 
 import {
   TeachingPopover,
-  TeachingPopoverActions,
   TeachingPopoverBody,
-  TeachingPopoverButton,
   TeachingPopoverHeader,
   TeachingPopoverTitle,
   TeachingPopoverSurface,
   TeachingPopoverTrigger,
+  TeachingPopoverFooter,
 } from '@fluentui/react-teaching-popover-preview';
 import type { TeachingPopoverProps } from '@fluentui/react-teaching-popover-preview';
 
-import SwapImage from '../../etc/images/swapImage.png';
+const SwapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 
 const ExampleContent = (index: number) => {
   return (
@@ -34,15 +33,7 @@ export const DefaultBrand = (props: TeachingPopoverProps) => (
         <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
         {ExampleContent(1)}
       </TeachingPopoverBody>
-      <TeachingPopoverActions>
-        {/* TeachingPopoverActions ensure that carousel & popover functionality work in sync */}
-        <TeachingPopoverButton buttonType="secondary" altStepText="Close">
-          {'Learn More'}
-        </TeachingPopoverButton>
-        <TeachingPopoverButton buttonType="primary" altStepText="Finish">
-          {'Got it'}
-        </TeachingPopoverButton>
-      </TeachingPopoverActions>
+      <TeachingPopoverFooter strings={{ primary: 'Learn more', secondary: 'Got it' }} />
     </TeachingPopoverSurface>
   </TeachingPopover>
 );

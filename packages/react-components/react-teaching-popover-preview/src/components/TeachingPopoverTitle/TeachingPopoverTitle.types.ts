@@ -1,5 +1,5 @@
+import { PopoverContextValue } from '@fluentui/react-popover';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TeachingPopoverAppearance } from '../TeachingPopover/TeachingPopover.types';
 
 export type TeachingPopoverTitleSlots = {
   /**
@@ -15,17 +15,10 @@ export type TeachingPopoverTitleSlots = {
 /**
  * TeachingPopoverTitle Props
  */
-export type TeachingPopoverTitleProps = ComponentProps<TeachingPopoverTitleSlots> & {
-  showDismiss?: boolean;
-};
+export type TeachingPopoverTitleProps = ComponentProps<TeachingPopoverTitleSlots>;
 
 /**
  * State used in rendering TeachingPopoverTitle
  */
 export type TeachingPopoverTitleState = ComponentState<TeachingPopoverTitleSlots> &
-  Pick<TeachingPopoverTitleProps, 'showDismiss'> & {
-    /**
-     * Enables branded appearance state.
-     */
-    appearance: TeachingPopoverAppearance;
-  };
+  Pick<PopoverContextValue, 'appearance'>;

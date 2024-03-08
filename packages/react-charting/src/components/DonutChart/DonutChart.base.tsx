@@ -7,7 +7,8 @@ import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluen
 import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
 import { Pie } from './Pie/index';
 import { IChartDataPoint, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
-import { convertToLocaleString, getAccessibleDataObject, getColorFromToken, getNextColor } from '../../utilities/index';
+import { getAccessibleDataObject, getColorFromToken, getNextColor } from '../../utilities/index';
+import { convertToLocaleString } from '../../utilities/locale-util';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 const LEGEND_CONTAINER_HEIGHT = 40;
@@ -108,7 +109,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const donutMarginVertical = this.props.hideLabels ? 0 : 40;
     const outerRadius =
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
-    const chartData = points.filter((d: IChartDataPoint) => d.data! > 0);
+    const chartData = points.filter((d: IChartDataPoint) => d.data! >= 0);
     const valueInsideDonut = this._valueInsideDonut(this.props.valueInsideDonut!, chartData!);
     return !this._isChartEmpty() ? (
       <div

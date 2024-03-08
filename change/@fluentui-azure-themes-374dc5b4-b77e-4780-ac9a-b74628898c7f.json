@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "pivot background color on hover",
-  "packageName": "@fluentui/azure-themes",
-  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

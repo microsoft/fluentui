@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "VSBC RTL scale added for DateAxis and StringAxis",
+  "packageName": "@fluentui/react-charting",
+  "email": "shubhabrata08@gmail.com",
+  "dependentChangeType": "patch"
+}
