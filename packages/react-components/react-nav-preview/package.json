@@ -36,6 +36,7 @@
     "@fluentui/react-tabster": "^9.19.3",
     "@fluentui/react-jsx-runtime": "^9.0.32",
     "@fluentui/react-theme": "^9.1.17",
+    "@fluentui/react-drawer": "^9.1.6",
     "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-utilities": "^9.18.3",
     "@griffel/react": "^1.5.14",
