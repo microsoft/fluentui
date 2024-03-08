@@ -103,6 +103,7 @@ conditionalDescribe(isTimezoneSet(Timezone.UTC))('HeatMapChart snapShot testing'
   beforeEach(() => {
     resetIds();
   });
+
   afterEach(() => {
     if (wrapper) {
       wrapper.unmount();
@@ -294,6 +295,10 @@ describe('HeatMapChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(HeatMapChartBase.prototype, 'render');
     const props = {
@@ -349,6 +354,9 @@ describe('HeatMapChart - mouse events', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(() => {
+    resetIds();
+  });
   it('No empty chart aria label div rendered', () => {
     act(() => {
       wrapper = mount(

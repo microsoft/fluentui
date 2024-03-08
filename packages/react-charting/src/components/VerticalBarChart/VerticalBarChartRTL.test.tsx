@@ -506,6 +506,9 @@ describe('Vertical bar chart - Subcomponent line', () => {
 });
 
 describe('Vertical bar chart - Subcomponent Legends', () => {
+  beforeEach(() => {
+    resetIds();
+  });
   testWithoutWait(
     'Should not show any rendered legends when hideLegend is true',
     VerticalBarChart,
@@ -595,6 +598,10 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
 });
 
 describe('Vertical bar chart - Subcomponent callout', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   test('Should call the handler on mouse over bar and on mouse leave from bar', async () => {
     // Arrange
     const handleMouseOver = jest.spyOn(VerticalBarChartBase.prototype as any, '_onBarHover');
@@ -757,6 +764,10 @@ describe('Vertical bar chart re-rendering', () => {
 });
 
 describe('VerticalBarChart - mouse events', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   testWithWait(
     'Should render callout correctly on mouseover',
     VerticalBarChart,
@@ -792,11 +803,17 @@ describe('VerticalBarChart - mouse events', () => {
   );
 });
 
-test('Should pass accessibility tests', async () => {
-  const { container } = render(<VerticalBarChart data={chartPointsVBC} />);
-  let axeResults;
-  await act(async () => {
-    axeResults = await axe(container);
+describe('VerticalBarChart - accessibility', () => {
+  beforeEach(() => {
+    resetIds();
   });
-  expect(axeResults).toHaveNoViolations();
+
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
+  });
 });
