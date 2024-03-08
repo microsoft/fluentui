@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeachingPopoverFooter renders a default state 1`] = `
+<div>
+  <div
+    class="fui-TeachingPopoverFooter"
+  >
+    <button
+      class="fui-Button fui-TeachingPopoverFooter__primary"
+      type="button"
+    >
+      Primary
+    </button>
+    <button
+      class="fui-Button fui-TeachingPopoverFooter__secondary"
+      type="button"
+    >
+      Secondary
+    </button>
+  </div>
+</div>
+`;

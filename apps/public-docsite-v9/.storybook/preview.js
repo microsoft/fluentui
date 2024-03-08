@@ -47,6 +47,8 @@ export const parameters = {
         ],
         'Theme',
         'Components',
+        'Icons',
+        ['Overview', 'Catalog'],
       ],
     },
   },

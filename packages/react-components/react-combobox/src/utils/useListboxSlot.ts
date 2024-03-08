@@ -21,6 +21,7 @@ type UseListboxSlotOptions = {
 };
 
 /**
+ * @internal
  * @returns  listbox slot with desired behaviour and props
  */
 export function useListboxSlot(

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-drawer",
-  "version": "9.1.5",
+  "version": "9.1.7",
   "description": "Drawer components for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -35,13 +35,13 @@
     "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
-    "@fluentui/react-dialog": "^9.9.11",
-    "@fluentui/react-jsx-runtime": "^9.0.30",
-    "@fluentui/react-motion-preview": "^0.5.13",
-    "@fluentui/react-shared-contexts": "^9.14.0",
-    "@fluentui/react-tabster": "^9.19.1",
-    "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.18.1",
+    "@fluentui/react-dialog": "^9.9.13",
+    "@fluentui/react-jsx-runtime": "^9.0.32",
+    "@fluentui/react-motion-preview": "^0.5.15",
+    "@fluentui/react-shared-contexts": "^9.15.0",
+    "@fluentui/react-tabster": "^9.19.3",
+    "@fluentui/react-theme": "^9.1.17",
+    "@fluentui/react-utilities": "^9.18.3",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },

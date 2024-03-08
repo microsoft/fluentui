@@ -4,10 +4,17 @@ import { PieChart } from './index';
 import { chartPoints, colors } from './PieChart.test';
 import * as utils from '../../utilities/utilities';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import { resetIds } from '../../Utilities';
 
 expect.extend(toHaveNoViolations);
 
+function sharedBeforeEach() {
+  resetIds();
+}
+
 describe('Pie chart rendering', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should re-render the Pie chart with data', async () => {
     // Arrange
     const { container, rerender } = render(<PieChart data={[]} colors={colors} />);
@@ -31,6 +38,8 @@ describe('Pie chart rendering', () => {
 });
 
 describe('Pie Chart - axe-core', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should pass accessibility tests', async () => {
     // Mock the implementation of wrapContent as it internally calls a Browser Function like
     // getComputedTextLength() which will otherwise lead to a crash if mounted

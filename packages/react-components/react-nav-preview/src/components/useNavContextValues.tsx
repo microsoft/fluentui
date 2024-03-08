@@ -11,6 +11,7 @@ export function useNavContextValues_unstable(state: NavState): NavContextValues 
     getRegisteredNavItems,
     onRequestNavCategoryItemToggle,
     openCategories,
+    multiple,
   } = state;
 
   const navContext = React.useMemo<NavContextValue>(
@@ -23,6 +24,7 @@ export function useNavContextValues_unstable(state: NavState): NavContextValues 
       getRegisteredNavItems,
       onRequestNavCategoryItemToggle,
       openCategories,
+      multiple,
     }),
     [
       selectedValue,
@@ -33,6 +35,7 @@ export function useNavContextValues_unstable(state: NavState): NavContextValues 
       getRegisteredNavItems,
       onRequestNavCategoryItemToggle,
       openCategories,
+      multiple,
     ],
   );
 

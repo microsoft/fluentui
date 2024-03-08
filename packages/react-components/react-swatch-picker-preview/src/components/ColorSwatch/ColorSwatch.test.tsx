@@ -26,7 +26,7 @@ describe('ColorSwatch', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <div
-          aria-selected="false"
+          aria-checked="false"
           class="fui-ColorSwatch"
           role="radio"
           style="--fui-SwatchPicker--color: #f09;"

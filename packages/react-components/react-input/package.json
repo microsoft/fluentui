@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-input",
-  "version": "9.4.64",
+  "version": "9.4.66",
   "description": "Fluent UI React Input component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,11 +34,11 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-field": "^9.1.54",
-    "@fluentui/react-jsx-runtime": "^9.0.30",
-    "@fluentui/react-shared-contexts": "^9.14.0",
-    "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.18.1",
+    "@fluentui/react-field": "^9.1.56",
+    "@fluentui/react-jsx-runtime": "^9.0.32",
+    "@fluentui/react-shared-contexts": "^9.15.0",
+    "@fluentui/react-theme": "^9.1.17",
+    "@fluentui/react-utilities": "^9.18.3",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
