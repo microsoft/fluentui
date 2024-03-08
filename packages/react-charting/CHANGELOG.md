@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 04 Mar 2024 07:26:19 GMT and should not be manually modified.
+This log was last generated on Fri, 08 Mar 2024 07:26:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.32)
+
+Fri, 08 Mar 2024 07:26:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.31..@fluentui/react-charting_v5.19.32)
+
+### Patches
+
+- Add gradient color capability to AreaChart. ([PR #30722](https://github.com/microsoft/fluentui/pull/30722) by shermanchow@microsoft.com)
 
 ## [5.19.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.31)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 08 Mar 2024 07:26:30 GMT",
+      "tag": "@fluentui/react-charting_v5.19.32",
+      "version": "5.19.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "shermanchow@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e938593214c8b9ef558ad129c34a6a49daae0cb6",
+            "comment": "Add gradient color capability to AreaChart."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 04 Mar 2024 07:26:19 GMT",
       "tag": "@fluentui/react-charting_v5.19.31",
       "version": "5.19.31",
