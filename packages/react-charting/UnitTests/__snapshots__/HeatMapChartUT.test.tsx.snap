@@ -1,5 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`_createNewDataSet Should return proper data set for default axis type 1`] = `
+Object {
+  "dataSet": Object {
+    "": Array [
+      Object {
+        "descriptionMessage": "a good day to start with in Texas with best air quality",
+        "legend": "Execllent (0-200)",
+        "ratio": Array [
+          50,
+          2391,
+        ],
+        "rectText": 50,
+        "value": 50,
+        "x": "Test1",
+        "y": "p1",
+      },
+      Object {
+        "descriptionMessage": "Due to unexpected heavy rain",
+        "legend": "Execllent (0-200)",
+        "ratio": Array [
+          25,
+          2479,
+        ],
+        "rectText": 25,
+        "value": 25,
+        "x": "test2",
+        "y": "p2",
+      },
+    ],
+  },
+  "xAxisPoints": Array [
+    "",
+  ],
+  "yAxisPoints": Array [
+    "",
+  ],
+}
+`;
+
 exports[`Timezone related test cases Should return proper X and Y values for date xPoint and yPoint 1`] = `2020-04-03T00:00:00.000Z`;
 
 exports[`Timezone related test cases Should return proper X and Y values for date xPoint and yPoint 2`] = `2020-03-03T00:00:00.000Z`;

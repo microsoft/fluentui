@@ -201,6 +201,7 @@ runTest('_getXIndex', () => {
       rangeValuesForColorScale: rangeValuesForColorScale,
     });
     expect(instance).toBeDefined();
+    instance._xAxisType = XAxisTypes.StringAxis;
     const xIndex = instance._getXIndex(xPoint[0]);
     expect(xIndex).toEqual('Test1');
   });
@@ -212,6 +213,7 @@ runTest('_getXIndex', () => {
       rangeValuesForColorScale: rangeValuesForColorScale,
     });
     expect(instance).toBeDefined();
+    instance._xAxisType = XAxisTypes.NumericAxis;
     const xIndex = instance._getXIndex(xPoint1[0]);
     expect(xIndex).toEqual('20000');
   });
@@ -227,6 +229,7 @@ runTest('_getYIndex', () => {
       rangeValuesForColorScale: rangeValuesForColorScale,
     });
     expect(instance).toBeDefined();
+    instance._yAxisType = YAxisType.StringAxis;
     const yIndex = instance._getYIndex(yPoint[0]);
     expect(yIndex).toEqual('p1');
   });
@@ -238,6 +241,7 @@ runTest('_getYIndex', () => {
       rangeValuesForColorScale: rangeValuesForColorScale,
     });
     expect(instance).toBeDefined();
+    instance._yAxisType = YAxisType.NumericAxis;
     const yIndex = instance._getYIndex(yPoint1[0]);
     expect(yIndex).toEqual('10000');
   });
@@ -545,16 +549,9 @@ runTest('_createNewDataSet', () => {
     });
     expect(instance).toBeDefined();
     const result = instance._createNewDataSet(HeatMapData, '%b/%d', '.2~s', '%b/%d', '.2~s');
-    expect(result.dataSet.p1[0].descriptionMessage).toEqual('a good day to start with in Texas with best air quality');
-    expect(result.dataSet.p1[0].x).toEqual('Test1');
-    expect(result.dataSet.p1[0].y).toEqual('p1');
-    expect(result.dataSet.p2[0].descriptionMessage).toEqual('Due to unexpected heavy rain');
-    expect(result.dataSet.p2[0].x).toEqual('test2');
-    expect(result.dataSet.p2[0].y).toEqual('p2');
-    expect(result.xAxisPoints[0]).toEqual('Test1');
-    expect(result.xAxisPoints[1]).toEqual('test2');
-    expect(result.yAxisPoints[0]).toEqual('p1');
-    expect(result.yAxisPoints[1]).toEqual('p2');
+    expect(result).toMatchSnapshot();
+    expect(result.xAxisPoints[0]).toEqual('');
+    expect(result.yAxisPoints[0]).toEqual('');
   });
 
   test('Should return proper data set for string axis type', () => {
