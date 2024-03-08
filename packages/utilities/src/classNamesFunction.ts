@@ -54,7 +54,7 @@ export interface IClassNamesFunctionOptions {
  * immutable (numbers, strings, and booleans). This will allow the results to be memoized. Violating
  * these will cause extra recalcs to occur.
  */
-export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(
+export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet>(
   options: IClassNamesFunctionOptions = {},
 ): (
   getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined,

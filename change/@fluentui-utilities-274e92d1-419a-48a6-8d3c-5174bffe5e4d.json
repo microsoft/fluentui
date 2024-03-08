@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: Update IStyleSet types to avoid TS 5.3 error",
+  "packageName": "@fluentui/utilities",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

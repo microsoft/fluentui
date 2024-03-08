@@ -8,7 +8,7 @@ import { DeepPartial } from './DeepPartial';
  * @param styleProps - Props used to resolve functional sets.
  * @param allStyles - Style sets, which can be functions or objects.
  */
-export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(
+export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSet>(
   styleProps: TStyleProps,
   ...allStyles: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[]
 ): DeepPartial<TStyleSet> {
