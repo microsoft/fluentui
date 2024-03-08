@@ -530,7 +530,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const sDate = d3Min(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
       const lDate = d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.x as Date)!;
       xBarScale = d3ScaleUtc()
-        .domain([sDate, lDate])
+        .domain(this._isRtl ? [lDate, sDate] : [sDate, lDate])
         .range([
           this.margins.left! + this._domainMargin + this._barWidth / 2,
           containerWidth - this.margins.right! - this._barWidth / 2 - this._domainMargin,
