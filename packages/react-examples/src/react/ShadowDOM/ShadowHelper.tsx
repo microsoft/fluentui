@@ -4,7 +4,7 @@ import {
   MergeStylesRootProvider,
   MergeStylesShadowRootProvider,
   useAdoptedStylesheet,
-  useAdoptedStyleSheetEx,
+  useAdoptedStylesheetEx,
   useShadowConfig,
   useHasMergeStylesShadowRootContext,
 } from '@fluentui/react';
@@ -32,7 +32,7 @@ export const Shadow: React.FC<ShadowProps> = ({ window, children }) => {
     <MergeStylesRootProvider
       window={window}
       useAdoptedStylesheet={useAdoptedStylesheet}
-      useAdoptedStylesheetEx={useAdoptedStyleSheetEx}
+      useAdoptedStylesheetEx={useAdoptedStylesheetEx}
       useShadowConfig={useShadowConfig}
       useHasMergeStylesShadowRootContext={useHasMergeStylesShadowRootContext}
       useWindow={useWindow}

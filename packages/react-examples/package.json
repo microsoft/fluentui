@@ -48,6 +48,7 @@
     "@fluentui/theme": "^2.6.41",
     "@fluentui/theme-samples": "^8.7.137",
     "@fluentui/utilities": "^8.13.24",
+    "@fluentui/react-window-provider": "^2.2.18",
     "@microsoft/load-themed-styles": "^1.10.26",
     "d3-fetch": "3.0.1",
     "d3-format": "^1.4.4",
