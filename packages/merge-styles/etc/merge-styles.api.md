@@ -434,7 +434,7 @@ export type IStyleFunctionOrObject<TStylesProps, TStyleSet extends IStyleSetBase
 export type IStyleSet<TStyleSet extends IStyleSetBase = {
     [key: string]: any;
 }> = {
-    [P in Exclude<keyof TStyleSet, 'subComponentStyles'>]: IStyle;
+    [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
     subComponentStyles?: {
         [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any>;

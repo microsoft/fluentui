@@ -36,13 +36,12 @@ export interface IStyleSetBase {
  * It may optionally contain style functions for sub components in the special `subComponentStyles`
  * property.
  */
-export type IStyleSet<TStyleSet extends IStyleSetBase = { [key: string]: any }> =
+export type IStyleSet<TStyleSet extends IStyleSetBase = { [key: string]: any }> = {
   // eslint-disable-next-line deprecation/deprecation
-  { [P in Exclude<keyof TStyleSet, 'subComponentStyles'>]: IStyle } & {
-    subComponentStyles?: {
-      [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any>;
-    };
-  };
+  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
+} & {
+  subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any> };
+};
 
 /**
  * A concatenated style set differs from `IStyleSet` in that subComponentStyles will always be a style function.
