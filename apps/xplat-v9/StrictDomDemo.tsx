@@ -1,23 +1,44 @@
 import * as React from 'react';
 
-import { helloWorld } from '@fluentui/react-platform-adapter';
+import {
+  getStylesFromClassName,
+  makeResetStyles,
+  makeStyles,
+  mergeClasses,
+  shorthands,
+} from '@fluentui/react-platform-adapter';
 import { html } from 'react-strict-dom';
-import stylex from '@stylexjs/stylex';
 
-const styles = stylex.create({
+const useBaseClassName = makeResetStyles({
+  marginBlock: '1rem',
+  padding: '10px',
+});
+
+const useClassNames = makeStyles({
   root: {
-    marginBlock: '1rem',
-    borderColor: 'red',
-    borderWidth: '1px',
-    borderStyle: 'solid',
-    color: 'orange',
+    ...shorthands.border('2px', 'solid', 'red'),
+    color: 'pink',
+    backgroundColor: '#333',
+    ':hover': {
+      color: 'skyblue',
+      backgroundColor: 'darkblue',
+    },
   },
   cond: {
-    borderWidth: '5px',
+    ...shorthands.borderWidth('5px'),
   },
 });
 
 export const StrictDomDemo = (props: { cond?: boolean }) => {
   const { cond } = props;
-  return <html.div style={[styles.root, cond && styles.cond]}>{helloWorld()}</html.div>;
+
+  const classNames = useClassNames();
+
+  return (
+    <html.div
+      style={getStylesFromClassName(mergeClasses(useBaseClassName(), classNames.root, cond && classNames.cond))}
+    >
+      <html.span>This is a demo of styles defined using griffel</html.span>
+    </html.div>
+  );
 };

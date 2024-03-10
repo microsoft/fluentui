@@ -4,8 +4,21 @@
 
 ```ts
 
+import { makeResetStyles } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
+import { mergeClasses } from '@griffel/react';
+import { shorthands } from '@griffel/react';
+
 // @public (undocumented)
-export const helloWorld: () => string;
+export const getStylesFromClassName: (className: string) => undefined;
+
+export { makeResetStyles }
+
+export { makeStyles }
+
+export { mergeClasses }
+
+export { shorthands }
 
 // (No @packageDocumentation comment for this package)
 
