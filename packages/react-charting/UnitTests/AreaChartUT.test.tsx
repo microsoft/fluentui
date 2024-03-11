@@ -1,6 +1,6 @@
 import { screen, fireEvent } from '@testing-library/react';
 import { AreaChart } from '../src/components/AreaChart/index';
-import { getById, testWithoutWait, isTimezoneSet } from '../src/utilities/TestUtility.test';
+import { getById, testWithoutWait, isTimezoneSet, forEachTimezone } from '../src/utilities/TestUtility.test';
 import { resetIds } from '@fluentui/react';
 import { DarkTheme } from '@fluentui/theme-samples';
 
@@ -578,94 +578,96 @@ runTest('_getAriaLabel', () => {
     },
   );
 
-  testWithoutWait(
-    'Should return the correct aria label for a point with formatted x value and y value',
-    AreaChart,
-    {
-      data: {
-        chartTitle: 'Area chart arial label example',
-        lineChartData: [
-          {
-            legend: 'Legend 1',
-            data: [
-              {
-                x: new Date(2022, 0, 1),
-                y: 10,
-              },
-            ],
-          },
-        ],
+  forEachTimezone((tzName, tzIdentifier) => {
+    testWithoutWait(
+      `Should return the correct aria label for a point with formatted x value and y value in ${tzName} timezone`,
+      AreaChart,
+      {
+        data: {
+          chartTitle: 'Area chart arial label example',
+          lineChartData: [
+            {
+              legend: 'Legend 1',
+              data: [
+                {
+                  x: new Date('2022-01-01T00:00Z'),
+                  y: 10,
+                },
+              ],
+            },
+          ],
+        },
       },
-    },
-    container => {
-      const points = getById(container, /circle/i);
-      expect(points).toHaveLength(1);
-      expect(points[0].getAttribute('aria-label')).toMatchSnapshot();
-    },
-    undefined,
-    undefined,
-    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
-  );
+      container => {
+        const points = getById(container, /circle/i);
+        expect(points).toHaveLength(1);
+        expect(points[0].getAttribute('aria-label')).toMatchSnapshot();
+      },
+      undefined,
+      undefined,
+      !(isTimezoneSet(tzIdentifier) && env === 'TEST'),
+    );
 
-  testWithoutWait(
-    'Should return the correct aria label for a point with formatted x value and yAxisCalloutData',
-    AreaChart,
-    {
-      data: {
-        chartTitle: 'Area chart arial label example',
-        lineChartData: [
-          {
-            legend: 'Legend 1',
-            data: [
-              {
-                x: new Date(2022, 0, 1),
-                y: 10,
-                yAxisCalloutData: '10 units',
-              },
-            ],
-          },
-        ],
+    testWithoutWait(
+      `Should return the correct aria label for a point with formatted x value and yAxisCalloutData in ${tzName} timezone`,
+      AreaChart,
+      {
+        data: {
+          chartTitle: 'Area chart arial label example',
+          lineChartData: [
+            {
+              legend: 'Legend 1',
+              data: [
+                {
+                  x: new Date('2022-01-01T00:00Z'),
+                  y: 10,
+                  yAxisCalloutData: '10 units',
+                },
+              ],
+            },
+          ],
+        },
       },
-    },
-    container => {
-      const points = getById(container, /circle/i);
-      expect(points).toHaveLength(1);
-      expect(points[0].getAttribute('aria-label')).toMatchSnapshot();
-    },
-    undefined,
-    undefined,
-    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
-  );
+      container => {
+        const points = getById(container, /circle/i);
+        expect(points).toHaveLength(1);
+        expect(points[0].getAttribute('aria-label')).toMatchSnapshot();
+      },
+      undefined,
+      undefined,
+      !(isTimezoneSet(tzIdentifier) && env === 'TEST'),
+    );
 
-  testWithoutWait(
-    'Should return the correct aria label for a point with formatted x value and xAxisCalloutData',
-    AreaChart,
-    {
-      data: {
-        chartTitle: 'Area chart arial label example',
-        lineChartData: [
-          {
-            legend: 'Legend 1',
-            data: [
-              {
-                x: new Date(2022, 0, 1),
-                y: 10,
-                xAxisCalloutData: 'Jan 1, 2022',
-              },
-            ],
-          },
-        ],
+    testWithoutWait(
+      `Should return the correct aria label for a point with formatted x value and xAxisCalloutData in ${tzName} timezone`,
+      AreaChart,
+      {
+        data: {
+          chartTitle: 'Area chart arial label example',
+          lineChartData: [
+            {
+              legend: 'Legend 1',
+              data: [
+                {
+                  x: new Date('2022-01-01T00:00Z'),
+                  y: 10,
+                  xAxisCalloutData: 'Jan 1, 2022',
+                },
+              ],
+            },
+          ],
+        },
       },
-    },
-    container => {
-      const points = getById(container, /circle/i);
-      expect(points).toHaveLength(1);
-      expect(points[0].getAttribute('aria-label')).toMatchSnapshot();
-    },
-    undefined,
-    undefined,
-    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
-  );
+      container => {
+        const points = getById(container, /circle/i);
+        expect(points).toHaveLength(1);
+        expect(points[0].getAttribute('aria-label')).toMatchSnapshot();
+      },
+      undefined,
+      undefined,
+      !(isTimezoneSet(tzIdentifier) && env === 'TEST'),
+    );
+  });
 
   testWithoutWait(
     'Should return the correct aria label for a point with callOutAccessibilityData but no xAxis or yAxis CalloutData',
