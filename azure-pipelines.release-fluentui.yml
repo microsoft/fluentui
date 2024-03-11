@@ -96,8 +96,6 @@ extends:
                 timeoutInMinutes: 2
                 inputs:
                   script: |
-                    npm logout
-
                     NPM_TOKEN=$(npmToken)
 
                     echo "registry=https://registry.npmjs.org/" > .npmrc

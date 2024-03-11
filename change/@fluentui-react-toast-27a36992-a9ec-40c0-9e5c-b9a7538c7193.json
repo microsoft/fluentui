@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Use semantic colours",
-  "packageName": "@fluentui/react-toast",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}
