@@ -16,7 +16,6 @@ export const useNavDrawer_unstable = (props: NavDrawerProps, ref: React.Ref<HTML
   const inlineDrawerState = useInlineDrawer_unstable(props, ref);
   const navState = useNav_unstable(props, ref);
 
-  console.log(inlineDrawerState);
   return {
     ...inlineDrawerState,
     ...navState,
