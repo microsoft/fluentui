@@ -12,7 +12,7 @@ import { DrawerBody } from '@fluentui/react-drawer';
 
 export const Default = (props: Partial<NavDrawerProps>) => {
   return (
-    <NavDrawer defaultSelectedValue={'10'} size="small" separator={true} open={true}>
+    <NavDrawer defaultSelectedValue={'10'} defaultSelectedCategoryValue={'8'} size="small" separator={true} open={true}>
       <DrawerBody>
         <NavItem value="1">First</NavItem>
         <NavItem value="2">Second</NavItem>
