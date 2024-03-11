@@ -70,6 +70,7 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     infoButton.info = slot.optional(infoButton?.info, {
       defaultProps: {
         id: baseId + '__info',
+        'aria-labelledby': baseId + '__info',
       },
       elementType: 'div',
     });
