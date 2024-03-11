@@ -91,6 +91,7 @@ git remote -v
 
 We recommend setting up the following Git configuration. In the command line, run:
 
+- `git config push.autoSetupRemote true` - Sets your local branch to push to your fork
 - `git config --global user.name "Your Name"` - set your name to appear in commits
 - `git config --global user.email "you@example.com"` - set your email to appear in commits
   - If a Microsoft employee, we prefer that you use your Microsoft email
