@@ -46,7 +46,7 @@ Make the changes you need, and commit along the way.
 git status // Shows all changed files
 git add . // Stages the changed files
 git commit -m "Your brief message." // Makes the commits. You may notice a slight lag during committing as our linters work away.
-git push upstream // Pushes your changes to the central Fluent UI repo.
+git push // Pushes your changes to your forked branch.
 ```
 
 ### Syncing with master
@@ -62,7 +62,7 @@ git rebase master // Tacks your commits onto the end of master.
 
 Resolve any conflicts in your editor.
 
-`git push upstream` // Pushes your changes to the central Fluent UI repo.
+`git push` // Pushes your changes to your forked branch.
 
 Creating _draft_ pull requests is often an easy way to keep track of your work without it being actively reviewed by others.
 
