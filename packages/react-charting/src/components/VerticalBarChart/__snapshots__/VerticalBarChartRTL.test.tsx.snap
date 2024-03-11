@@ -12288,7 +12288,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
               fill="#000"
               y="16"
             >
-              This is a medium long label.
+              This is a medium long label. 
             </text>
           </g>
           <g
