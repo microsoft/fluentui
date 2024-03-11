@@ -6,7 +6,7 @@ This log was last generated on Thu, 07 Mar 2024 19:33:24 GMT and should not be m
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating-preview_v0.4.0)
 
-Thu, 07 Mar 2024 19:33:24 GMT 
+Thu, 07 Mar 2024 19:33:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating-preview_v0.3.2..@fluentui/react-rating-preview_v0.4.0)
 
 ### Minor changes
@@ -23,7 +23,7 @@ Thu, 07 Mar 2024 19:33:24 GMT
 
 ## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating-preview_v0.3.2)
 
-Wed, 28 Feb 2024 02:34:18 GMT 
+Wed, 28 Feb 2024 02:34:18 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating-preview_v0.3.1..@fluentui/react-rating-preview_v0.3.2)
 
 ### Patches
@@ -37,7 +37,7 @@ Wed, 28 Feb 2024 02:34:18 GMT
 
 ## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating-preview_v0.3.1)
 
-Tue, 20 Feb 2024 14:22:24 GMT 
+Tue, 20 Feb 2024 14:22:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating-preview_v0.3.0..@fluentui/react-rating-preview_v0.3.1)
 
 ### Patches
@@ -50,7 +50,7 @@ Tue, 20 Feb 2024 14:22:24 GMT
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating-preview_v0.3.0)
 
-Tue, 06 Feb 2024 17:55:19 GMT 
+Tue, 06 Feb 2024 17:55:19 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating-preview_v0.2.1..@fluentui/react-rating-preview_v0.3.0)
 
 ### Minor changes
@@ -65,7 +65,7 @@ Tue, 06 Feb 2024 17:55:19 GMT
 
 ## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating-preview_v0.2.1)
 
-Tue, 30 Jan 2024 23:16:54 GMT 
+Tue, 30 Jan 2024 23:16:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating-preview_v0.2.0..@fluentui/react-rating-preview_v0.2.1)
 
 ### Patches
@@ -76,7 +76,7 @@ Tue, 30 Jan 2024 23:16:54 GMT
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating-preview_v0.2.0)
 
-Fri, 26 Jan 2024 10:40:21 GMT 
+Fri, 26 Jan 2024 10:40:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating-preview_v0.1.6..@fluentui/react-rating-preview_v0.2.0)
 
 ### Minor changes
@@ -85,7 +85,7 @@ Fri, 26 Jan 2024 10:40:21 GMT
 
 ## [0.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating-preview_v0.1.6)
 
-Tue, 23 Jan 2024 15:11:00 GMT 
+Tue, 23 Jan 2024 15:11:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating-preview_v0.1.5..@fluentui/react-rating-preview_v0.1.6)
 
 ### Patches
@@ -96,7 +96,7 @@ Tue, 23 Jan 2024 15:11:00 GMT
 
 ## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating-preview_v0.1.5)
 
-Thu, 18 Jan 2024 14:25:03 GMT 
+Thu, 18 Jan 2024 14:25:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating-preview_v0.1.4..@fluentui/react-rating-preview_v0.1.5)
 
 ### Patches
@@ -107,7 +107,7 @@ Thu, 18 Jan 2024 14:25:03 GMT
 
 ## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating-preview_v0.1.4)
 
-Wed, 17 Jan 2024 16:18:50 GMT 
+Wed, 17 Jan 2024 16:18:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating-preview_v0.1.3..@fluentui/react-rating-preview_v0.1.4)
 
 ### Patches
@@ -118,7 +118,7 @@ Wed, 17 Jan 2024 16:18:50 GMT
 
 ## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating-preview_v0.1.3)
 
-Tue, 16 Jan 2024 13:14:23 GMT 
+Tue, 16 Jan 2024 13:14:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating-preview_v0.1.2..@fluentui/react-rating-preview_v0.1.3)
 
 ### Patches
@@ -129,7 +129,7 @@ Tue, 16 Jan 2024 13:14:23 GMT
 
 ## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating-preview_v0.1.2)
 
-Thu, 11 Jan 2024 09:04:29 GMT 
+Thu, 11 Jan 2024 09:04:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating-preview_v0.1.1..@fluentui/react-rating-preview_v0.1.2)
 
 ### Patches
@@ -138,7 +138,7 @@ Thu, 11 Jan 2024 09:04:29 GMT
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating-preview_v0.1.1)
 
-Mon, 08 Jan 2024 16:24:24 GMT 
+Mon, 08 Jan 2024 16:24:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating-preview_v0.1.0..@fluentui/react-rating-preview_v0.1.1)
 
 ### Patches

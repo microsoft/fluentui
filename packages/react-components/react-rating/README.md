@@ -1,4 +1,4 @@
-# @fluentui/react-rating-preview
+# @fluentui/react-rating
 
 **React Rating components for [Fluent UI React](https://react.fluentui.dev/)**
 

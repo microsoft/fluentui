@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Rating } from '@fluentui/react-rating-preview';
+import { Rating } from '@fluentui/react-components';
 
 export const Step = () => {
   return <Rating step={0.5} defaultValue={3.5} />;

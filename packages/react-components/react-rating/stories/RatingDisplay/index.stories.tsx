@@ -1,4 +1,4 @@
-import { RatingDisplay } from '@fluentui/react-rating-preview';
+import { RatingDisplay } from '@fluentui/react-components';
 
 import descriptionMd from './RatingDisplayDescription.md';
 import bestPracticesMd from './RatingDisplayBestPractices.md';
@@ -13,7 +13,7 @@ export { Color } from './RatingDisplayColor.stories';
 export { Shape } from './RatingDisplayShape.stories';
 
 export default {
-  title: 'Preview Components/RatingDisplay',
+  title: 'Components/RatingDisplay',
   component: RatingDisplay,
   parameters: {
     docs: {

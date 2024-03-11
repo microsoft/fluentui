@@ -4,7 +4,7 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-rating-preview',
+  displayName: 'react-rating',
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': [
