@@ -434,11 +434,10 @@ export class Stylesheet {
     }
 
     if (element || constructableSheet) {
-      let inserted = false;
       sheet = constructableSheet || element?.sheet || null;
       switch (injectionMode) {
         case InjectionMode.insertNode:
-          inserted = this._insertNode(element, rule);
+          this._insertNode(element, rule);
           break;
 
         case InjectionMode.appendChild:
@@ -449,7 +448,7 @@ export class Stylesheet {
       }
 
       if (constructableSheet) {
-        inserted = this._insertRuleIntoSheet(constructableSheet, rule);
+        this._insertRuleIntoSheet(constructableSheet, rule);
       }
     } else {
       this._rules.push(rule);
