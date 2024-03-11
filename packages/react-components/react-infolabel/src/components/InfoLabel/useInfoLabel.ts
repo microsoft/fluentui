@@ -67,10 +67,11 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
 
   if (infoButton) {
     infoButton.popover = infoButtonPopover;
+    const infoPopupId = baseId + '__info'; // used as a self-referencing aria-labelledby to name the popup
     infoButton.info = slot.optional(infoButton?.info, {
       defaultProps: {
-        id: baseId + '__info',
-        'aria-labelledby': baseId + '__info',
+        id: infoPopupId,
+        'aria-labelledby': infoPopupId,
       },
       elementType: 'div',
     });
