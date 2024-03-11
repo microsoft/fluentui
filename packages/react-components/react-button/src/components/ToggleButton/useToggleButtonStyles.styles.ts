@@ -109,7 +109,7 @@ const useRootCheckedStyles = makeStyles({
   subtle: {
     backgroundColor: tokens.colorSubtleBackgroundSelected,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2Selected,
+    color: tokens.colorNeutralForeground2BrandSelected,
 
     ':hover': {
       backgroundColor: tokens.colorSubtleBackgroundHover,
