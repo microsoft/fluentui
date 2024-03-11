@@ -13,8 +13,6 @@ import { InlineDrawerSlots } from '@fluentui/react-drawer';
 export const renderNavDrawer_unstable = (state: NavDrawerState, contextValues: NavContextValues) => {
   assertSlots<InlineDrawerSlots>(state);
 
-  console.log(state);
-
   // TODO Add additional slots in the appropriate place
   return (
     <NavProvider value={contextValues.nav}>
