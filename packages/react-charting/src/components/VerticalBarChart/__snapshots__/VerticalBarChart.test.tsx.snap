@@ -16,12 +16,12 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_51"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_52"
+    id="defaultTabbableElement_4"
   />
   <div
     className=
@@ -32,7 +32,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone53"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -73,7 +73,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_51"
+        id="xAxisGElementchart_3"
         transform="translate(0, -35)"
       />
       <g
@@ -101,7 +101,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_51"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g>
@@ -157,7 +157,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone54"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -926,12 +926,12 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         overflow: hidden;
         width: 100%;
       }
-  id="chart_23"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_24"
+    id="defaultTabbableElement_4"
   />
   <div
     className=
@@ -942,7 +942,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone25"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -983,7 +983,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             & path {
               display: none;
             }
-        id="xAxisGElementchart_23"
+        id="xAxisGElementchart_3"
         transform="translate(0, -35)"
       />
       <g
@@ -1011,7 +1011,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_23"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g>
@@ -1050,7 +1050,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone26"
+        data-focuszone-id="FocusZone6"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1361,12 +1361,12 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_10"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_11"
+    id="defaultTabbableElement_4"
   />
   <div
     className=
@@ -1377,7 +1377,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone12"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1418,7 +1418,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_10"
+        id="xAxisGElementchart_3"
         transform="translate(0, -35)"
       />
       <g
@@ -1446,7 +1446,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_10"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g>
@@ -1475,12 +1475,12 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_16"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_17"
+    id="defaultTabbableElement_4"
   />
   <div
     className=
@@ -1491,7 +1491,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone18"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1532,7 +1532,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_16"
+        id="xAxisGElementchart_3"
         transform="translate(0, -35)"
       />
       <g
@@ -1560,7 +1560,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_16"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g>
@@ -1616,7 +1616,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone19"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1930,12 +1930,12 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         overflow: hidden;
         width: 100%;
       }
-  id="chart_30"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_31"
+    id="defaultTabbableElement_4"
   />
   <div
     className=
@@ -1946,7 +1946,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone32"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1987,7 +1987,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             & path {
               display: none;
             }
-        id="xAxisGElementchart_30"
+        id="xAxisGElementchart_3"
         transform="translate(0, -35)"
       />
       <g
@@ -2015,7 +2015,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_30"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g>
@@ -2071,7 +2071,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone33"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2385,12 +2385,12 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         overflow: hidden;
         width: 100%;
       }
-  id="chart_37"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_38"
+    id="defaultTabbableElement_4"
   />
   <div
     className=
@@ -2401,7 +2401,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone39"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2442,7 +2442,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             & path {
               display: none;
             }
-        id="xAxisGElementchart_37"
+        id="xAxisGElementchart_3"
         transform="translate(0, -35)"
       />
       <g
@@ -2470,7 +2470,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_37"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g>
@@ -2526,7 +2526,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone40"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2840,12 +2840,12 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         overflow: hidden;
         width: 100%;
       }
-  id="chart_44"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
   <div
-    id="defaultTabbableElement_45"
+    id="defaultTabbableElement_4"
   />
   <div
     className=
@@ -2856,7 +2856,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone46"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2897,7 +2897,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             & path {
               display: none;
             }
-        id="xAxisGElementchart_44"
+        id="xAxisGElementchart_3"
         transform="translate(0, -35)"
       />
       <g
@@ -2925,7 +2925,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_44"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g>
@@ -2981,7 +2981,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone47"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}

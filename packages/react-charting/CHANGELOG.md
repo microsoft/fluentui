@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 04 Mar 2024 07:26:19 GMT and should not be manually modified.
+This log was last generated on Mon, 11 Mar 2024 07:26:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.33)
+
+Mon, 11 Mar 2024 07:26:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.32..@fluentui/react-charting_v5.19.33)
+
+### Patches
+
+- Add isLegendSelected condition for single point data in LineChart ([PR #30680](https://github.com/microsoft/fluentui/pull/30680) by shubhabrata08@gmail.com)
+- VSBC RTL scale added for DateAxis and StringAxis ([PR #30691](https://github.com/microsoft/fluentui/pull/30691) by shubhabrata08@gmail.com)
+
+## [5.19.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.32)
+
+Fri, 08 Mar 2024 07:26:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.31..@fluentui/react-charting_v5.19.32)
+
+### Patches
+
+- Add gradient color capability to AreaChart. ([PR #30722](https://github.com/microsoft/fluentui/pull/30722) by shermanchow@microsoft.com)
 
 ## [5.19.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.31)
 

@@ -6,6 +6,7 @@ import { IHeatMapChartData, IHeatMapChartDataPoint } from '../src/HorizontalBarC
 import { render } from '@testing-library/react';
 import { dataToBuffer } from 'memfs/lib/volume';
 import { XAxisTypes, YAxisType } from '../src/utilities/index';
+import { resetIds } from '@fluentui/react';
 
 const env = require('../config/tests');
 const runTest = env === 'TEST' ? describe : describe.skip;
@@ -95,7 +96,13 @@ const HeatMapDataDatePoints: IHeatMapChartProps['data'] = [
   },
 ];
 
+function sharedBeforeEach() {
+  resetIds();
+}
+
 runTest('_getXandY', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper X and Y values for string xPoint and yPoint', () => {
     render(<HeatMapChart data={HeatMapData} domainValuesForColorScale={[]} rangeValuesForColorScale={[]} />);
     const instance = new HeatMapChartBase({
@@ -125,6 +132,8 @@ runTest('_getXandY', () => {
 });
 
 runTest('_getOpacity', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper opacity for legends', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
@@ -142,6 +151,8 @@ runTest('_getOpacity', () => {
 });
 
 runTest('_createLegendBars', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper legends data', () => {
     const instance = new HeatMapChartBase({
       data: HeatMapDataNumaricPoints,
@@ -160,6 +171,8 @@ runTest('_createLegendBars', () => {
 });
 
 runTest('_getColorScale', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper color scale data', () => {
     const instance = new HeatMapChartBase({
       data: HeatMapDataNumaricPoints,
@@ -177,6 +190,8 @@ runTest('_getColorScale', () => {
 });
 
 runTest('_getXIndex', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper xIndex for string xPoint', () => {
     const instance = new HeatMapChartBase({
       data: HeatMapDataNumaricPoints,
@@ -201,6 +216,8 @@ runTest('_getXIndex', () => {
 });
 
 runTest('_getYIndex', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper yIndex for string yPoint', () => {
     const instance = new HeatMapChartBase({
       data: HeatMapDataNumaricPoints,
@@ -225,6 +242,8 @@ runTest('_getYIndex', () => {
 });
 
 runTest('_getAriaLabel', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper aria-label for numeric xPoint and yPoint', () => {
     const p1 = {
       x: 10,
@@ -295,6 +314,8 @@ runTest('_getAriaLabel', () => {
 });
 
 runTest('_getFormattedLabelForXAxisDataPoint', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper xAxis label for non empty string', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
@@ -319,6 +340,8 @@ runTest('_getFormattedLabelForXAxisDataPoint', () => {
 });
 
 runTest('_getFormattedLabelForYAxisDataPoint', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper yAxis label for non empty string', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
@@ -343,6 +366,8 @@ runTest('_getFormattedLabelForYAxisDataPoint', () => {
 });
 
 runTest('_getStringFormattedNumber', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper string formatted number for numeric value', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
@@ -389,6 +414,8 @@ runTest('_getStringFormattedNumber', () => {
 });
 
 runTest('_getStringFormattedDate', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper string formatted date for date point', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
@@ -424,6 +451,8 @@ runTest('_getStringFormattedDate', () => {
 });
 
 runTest('_getXAxisDataPoints', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper xAxis data points for string points', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
@@ -463,6 +492,8 @@ runTest('_getXAxisDataPoints', () => {
 });
 
 runTest('_getYAxisDataPoints', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper yAxis data points for string points', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
@@ -502,6 +533,8 @@ runTest('_getYAxisDataPoints', () => {
 });
 
 runTest('_createNewDataSet', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper data set for default axis type', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,
@@ -574,6 +607,8 @@ runTest('_createNewDataSet', () => {
 });
 
 runTest('Skip - timezone related test cases', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should return proper data set for date axis with default axis type', () => {
     const instance = new HeatMapChartBase({
       data: emptyData,

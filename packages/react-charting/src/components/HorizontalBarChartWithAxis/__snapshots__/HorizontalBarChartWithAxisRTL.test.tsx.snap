@@ -17,11 +17,11 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           overflow: hidden;
           width: 100%;
         }
-    id="chart_79"
+    id="chart_2"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_80"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -32,7 +32,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone81"
+      data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -67,7 +67,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_79"
+          id="xAxisGElementchart_2"
           transform="translate(0, -35)"
         />
         <g
@@ -95,13 +95,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_79"
+          id="yAxisGElementchart_2"
           transform="translate(40, 0)"
         />
         <g>
           <rect
             aria-label="20%. 2020/04/30."
-            aria-labelledby="toolTipcallout77"
+            aria-labelledby="toolTipcallout0"
             class=
 
                 {
@@ -159,7 +159,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone82"
+                data-focuszone-id="FocusZone5"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -546,11 +546,11 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           overflow: hidden;
           width: 100%;
         }
-    id="chart_85"
+    id="chart_2"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_86"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -561,7 +561,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone87"
+      data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -596,7 +596,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_85"
+          id="xAxisGElementchart_2"
           transform="translate(0, -35)"
         />
         <g
@@ -624,13 +624,13 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_85"
+          id="yAxisGElementchart_2"
           transform="translate(40, 0)"
         />
         <g>
           <rect
             aria-label="20%. 2020/04/30."
-            aria-labelledby="toolTipcallout83"
+            aria-labelledby="toolTipcallout0"
             class=
 
                 {
@@ -688,7 +688,7 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone88"
+                data-focuszone-id="FocusZone5"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1088,11 +1088,11 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
             overflow: hidden;
             width: 100%;
           }
-      id="chart_94"
+      id="chart_5"
       role="presentation"
     >
       <div
-        id="defaultTabbableElement_95"
+        id="defaultTabbableElement_6"
       />
       <div
         class=
@@ -1103,7 +1103,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
             {
               overflow: auto;
             }
-        data-focuszone-id="FocusZone96"
+        data-focuszone-id="FocusZone7"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
@@ -1138,7 +1138,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                 & path {
                   display: none;
                 }
-            id="xAxisGElementchart_94"
+            id="xAxisGElementchart_5"
             transform="translate(0, -35)"
           />
           <g
@@ -1166,13 +1166,13 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
-            id="yAxisGElementchart_94"
+            id="yAxisGElementchart_5"
             transform="translate(40, 0)"
           />
           <g>
             <rect
               aria-label="20%. 2020/04/30."
-              aria-labelledby="toolTipcallout92"
+              aria-labelledby="toolTipcallout3"
               class=
 
                   {
@@ -1230,7 +1230,7 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone97"
+                  data-focuszone-id="FocusZone8"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
@@ -2147,11 +2147,11 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           overflow: hidden;
           width: 100%;
         }
-    id="chart_8"
+    id="chart_2"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_9"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -2162,7 +2162,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone10"
+      data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -2197,7 +2197,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_8"
+          id="xAxisGElementchart_2"
           transform="translate(0, -35)"
         />
         <g
@@ -2225,13 +2225,13 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_8"
+          id="yAxisGElementchart_2"
           transform="translate(40, 0)"
         />
         <g>
           <rect
             aria-label="1000. String One."
-            aria-labelledby="toolTipcallout6"
+            aria-labelledby="toolTipcallout0"
             data-is-focusable="true"
             fill="#0078d4"
             height="32"
@@ -2285,7 +2285,7 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone11"
+                data-focuszone-id="FocusZone5"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2664,11 +2664,11 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           overflow: hidden;
           width: 100%;
         }
-    id="chart_100"
+    id="chart_2"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_101"
+      id="defaultTabbableElement_3"
     />
     <div
       class=
@@ -2679,7 +2679,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone102"
+      data-focuszone-id="FocusZone4"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -2717,7 +2717,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="xAxisGElementchart_100"
+          id="xAxisGElementchart_2"
           text-anchor="middle"
           transform="translate(0, 275)"
         >
@@ -2917,7 +2917,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           fill="none"
           font-family="sans-serif"
           font-size="10"
-          id="yAxisGElementchart_100"
+          id="yAxisGElementchart_2"
           text-anchor="end"
           transform="translate(40, 0)"
         >
@@ -3116,7 +3116,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
         <g>
           <rect
             aria-label="2020/04/30. 20%."
-            aria-labelledby="toolTipcallout98"
+            aria-labelledby="toolTipcallout0"
             class=
 
                 {
@@ -3133,7 +3133,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           />
           <rect
             aria-label="2020/04/30. 37%."
-            aria-labelledby="toolTipcallout98"
+            aria-labelledby="toolTipcallout0"
             class=
 
                 {
@@ -3150,7 +3150,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           />
           <rect
             aria-label="2020/04/30. 88%."
-            aria-labelledby="toolTipcallout98"
+            aria-labelledby="toolTipcallout0"
             class=
 
                 {
@@ -3167,7 +3167,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           />
           <rect
             aria-label="2020/04/30. 10%."
-            aria-labelledby="toolTipcallout98"
+            aria-labelledby="toolTipcallout0"
             class=
 
                 {
@@ -3222,7 +3222,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone103"
+                data-focuszone-id="FocusZone5"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -3621,7 +3621,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
               border: 0px;
             }
         data-is-focusable="true"
-        id="toolTipcallout98"
+        id="toolTipcallout0"
         style="opacity: 0; filter: opacity(0); pointer-events: none;"
         tabindex="-1"
       >

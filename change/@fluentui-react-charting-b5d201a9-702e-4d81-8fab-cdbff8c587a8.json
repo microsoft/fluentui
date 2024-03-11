@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "Add gradient color capability to AreaChart.",
+  "comment": "Add RTL for Date Axis in VBC",
   "packageName": "@fluentui/react-charting",
-  "email": "shermanchow@microsoft.com",
+  "email": "shubhabrata08@gmail.com",
   "dependentChangeType": "patch"
 }
