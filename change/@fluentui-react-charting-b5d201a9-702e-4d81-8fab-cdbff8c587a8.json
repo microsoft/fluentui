@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add RTL for Date Axis in VBC",
+  "packageName": "@fluentui/react-charting",
+  "email": "shubhabrata08@gmail.com",
+  "dependentChangeType": "patch"
+}
