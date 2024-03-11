@@ -19,7 +19,6 @@ const useStyles = makeStyles({
     height: '480px', // arbitrary value, for demo purposes only
     // arbitrary value, for dramatic effect only
     // I know this is ugly and wrong, but styling is coming, I promise.
-
     backgroundColor: tokens.colorBackgroundOverlay,
   },
 });
