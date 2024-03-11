@@ -37,7 +37,7 @@
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1",
     "keyborg": "^2.5.0",
-    "tabster": "^6.0.1"
+    "tabster": "^7.0.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
