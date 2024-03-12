@@ -25,7 +25,7 @@ import type { TooltipVisibilityContextValue_unstable } from '@fluentui/react-sha
 export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | undefined): string;
 
 // @public (undocumented)
-export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentProps<FluentProviderSlots, "root">, "dir"> & {
+export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentProps<FluentProviderSlots>, "dir"> & {
     applyStylesToPortals?: boolean | undefined;
     customStyleHooks_unstable?: Partial<{
         useAccordionHeaderStyles_unstable: (state: unknown) => void;

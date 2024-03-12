@@ -6,6 +6,7 @@
 
 import type { PartialTheme } from '@fluentui/react-theme';
 import * as React_2 from 'react';
+import type { Theme } from '@fluentui/react-theme';
 
 // @public (undocumented)
 export const helloWorld: () => string;
@@ -18,7 +19,7 @@ export const XPlatProvider: React_2.FunctionComponent<XPlatProviderProps>;
 
 // @public (undocumented)
 export type XPlatProviderProps = {
-    theme: PartialTheme;
+    theme: Theme | PartialTheme | undefined;
     children: JSX.Element;
 };
 
