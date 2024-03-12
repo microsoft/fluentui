@@ -332,7 +332,7 @@
     "tsconfig-paths": "4.2.0",
     "tsconfig-paths-webpack-plugin": "4.1.0",
     "tslib": "2.5.0",
-    "typescript": "4.7.4",
+    "typescript": "~5.0.0",
     "vinyl": "2.2.0",
     "vrscreenshotdiff": "0.0.17",
     "webpack": "5.90.3",
