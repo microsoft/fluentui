@@ -13,7 +13,7 @@ import { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { InlineDrawerProps } from '@fluentui/react-drawer';
 import { InlineDrawerSlots } from '@fluentui/react-drawer';
-import { InlineDrawerState } from '../../../../react-drawer/dist/index';
+import { InlineDrawerState } from '@fluentui/react-drawer';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
