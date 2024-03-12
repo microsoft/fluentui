@@ -83,17 +83,17 @@ export const SLIDE_UP_OUT20 = {
 export const TRANSITION_ROW_DISAPPEARANCE = {
   '100%': {
     height: '0px',
-    ...shorthands.overflow('hidden'),
+    ...(shorthands.overflow('hidden') as Record<string, string>),
     width: '0px',
   },
   '99.9%': {
     height: '28px',
-    ...shorthands.overflow('visible'),
+    ...(shorthands.overflow('visible') as Record<string, string>),
     width: '100%',
   },
   '0%': {
     height: '28px',
-    ...shorthands.overflow('visible'),
+    ...(shorthands.overflow('visible') as Record<string, string>),
     width: '100%',
   },
 };

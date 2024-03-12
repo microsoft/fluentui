@@ -1,4 +1,4 @@
-import { makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { ToastFooterSlots, ToastFooterState } from './ToastFooter.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -15,7 +15,7 @@ const useRootBaseClassName = makeResetStyles({
   gridColumnEnd: 3,
   display: 'flex',
   alignItems: 'center',
-  ...shorthands.gap('14px'),
+  gap: '14px',
 });
 
 /**

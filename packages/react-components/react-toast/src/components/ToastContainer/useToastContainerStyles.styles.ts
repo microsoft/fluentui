@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
@@ -14,11 +14,11 @@ const useRootBaseClassName = makeResetStyles({
   marginTop: '16px',
   minHeight: '44px',
   pointerEvents: 'all',
-  ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  borderRadius: tokens.borderRadiusMedium,
   '--fui-toast-height': '44px',
-  ...createCustomFocusIndicatorStyle({
-    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-  }),
+  ...(createCustomFocusIndicatorStyle({
+    outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+  }) as Record<string, string>),
 });
 
 /**

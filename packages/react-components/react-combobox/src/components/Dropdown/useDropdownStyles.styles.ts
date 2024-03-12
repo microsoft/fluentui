@@ -247,7 +247,7 @@ const useBaseClearButtonStyle = makeResetStyles({
   padding: 0,
   position: 'relative',
 
-  ...createFocusOutlineStyle(),
+  ...(createFocusOutlineStyle() as Record<string, string>),
 });
 
 /**

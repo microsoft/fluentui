@@ -1,4 +1,4 @@
-import { makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -12,8 +12,8 @@ export const drawerHeaderClassNames: SlotClassNames<DrawerHeaderSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeResetStyles({
-  ...shorthands.padding(tokens.spacingVerticalXXL, tokens.spacingHorizontalXXL, tokens.spacingVerticalS),
-  ...shorthands.gap(tokens.spacingHorizontalS),
+  padding: `${tokens.spacingVerticalXXL} ${tokens.spacingHorizontalXXL} ${tokens.spacingVerticalS}`,
+  gap: tokens.spacingHorizontalS,
 
   width: '100%',
   maxWidth: '100%',

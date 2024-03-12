@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { DialogActionsSlots, DialogActionsState } from './DialogActions.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { DIALOG_GAP, MEDIA_QUERY_BREAKPOINT_SELECTOR } from '../../contexts/constants';
@@ -11,7 +11,7 @@ export const dialogActionsClassNames: SlotClassNames<DialogActionsSlots> = {
  * Styles for the root slot
  */
 const useResetStyles = makeResetStyles({
-  ...shorthands.gap(DIALOG_GAP),
+  gap: DIALOG_GAP,
   height: 'fit-content',
   boxSizing: 'border-box',
   display: 'flex',

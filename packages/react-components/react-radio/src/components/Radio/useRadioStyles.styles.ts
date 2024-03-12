@@ -17,7 +17,7 @@ const indicatorSize = '16px';
 const useRootBaseClassName = makeResetStyles({
   display: 'inline-flex',
   position: 'relative',
-  ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
+  ...(createFocusOutlineStyle({ style: {}, selector: 'focus-within' }) as Record<string, string>),
 });
 
 const useRootStyles = makeStyles({

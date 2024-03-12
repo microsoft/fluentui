@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { ToastSlots, ToastState } from './Toast.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -10,9 +10,9 @@ export const toastClassNames: SlotClassNames<ToastSlots> = {
 const useRootBaseClassName = makeResetStyles({
   display: 'grid',
   gridTemplateColumns: 'auto 1fr auto',
-  ...shorthands.padding('12px', '12px'),
-  ...shorthands.borderRadius(tokens.borderRadiusMedium),
-  ...shorthands.border('1px', 'solid', tokens.colorTransparentStroke),
+  padding: '12px 12px',
+  borderRadius: tokens.borderRadiusMedium,
+  border: `1px solid ${tokens.colorTransparentStroke}`,
   boxShadow: tokens.shadow8,
   fontSize: tokens.fontSizeBase300,
   lineHeight: '20px',

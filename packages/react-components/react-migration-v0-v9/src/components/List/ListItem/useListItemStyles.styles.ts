@@ -15,17 +15,17 @@ export const listItemClassNames: SlotClassNames<ListItemSlots> = {
 };
 
 const useRootBaseStyles = makeResetStyles({
-  ...shorthands.padding(0, '10px'),
-  ...shorthands.margin(0),
+  padding: '0 10px',
+  margin: 0,
   textIndent: 0,
   listStyleType: 'none',
-  ...createCustomFocusIndicatorStyle(
+  ...(createCustomFocusIndicatorStyle(
     {
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+      borderRadius: tokens.borderRadiusMedium,
     },
     { selector: 'focus' },
-  ),
+  ) as Record<string, string>),
 });
 
 /**

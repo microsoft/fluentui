@@ -23,8 +23,8 @@ export const overlayDrawerClassNames: SlotClassNames<OverlayDrawerSurfaceSlots> 
  * Styles for the root slot
  */
 const useDrawerResetStyles = makeResetStyles({
-  ...createFocusOutlineStyle(),
-  ...drawerDefaultStyles,
+  ...(createFocusOutlineStyle() as Record<string, string>),
+  ...(drawerDefaultStyles as Record<string, string>),
   position: 'fixed',
   top: 0,
   bottom: 0,

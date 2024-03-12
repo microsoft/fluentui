@@ -39,11 +39,11 @@ const useStyles = makeResetStyles({
   ':focus-visible': {
     outline: 'none',
   },
-  ...createCustomFocusIndicatorStyle({
+  ...(createCustomFocusIndicatorStyle({
     border: 'none',
     outline: 'none',
     boxShadow: `inset 0 0 0 ${tokens.strokeWidthThick} ${tokens.colorStrokeFocus2}, inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus1}`,
-  }),
+  }) as Record<string, string>),
 
   // High contrast styles
 
