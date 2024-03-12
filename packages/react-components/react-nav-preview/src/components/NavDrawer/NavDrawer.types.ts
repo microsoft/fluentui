@@ -1,7 +1,6 @@
-import { InlineDrawerProps } from '@fluentui/react-drawer';
+import { InlineDrawerProps, InlineDrawerState } from '@fluentui/react-drawer';
 import { NavProps } from '../Nav/Nav.types';
 import { NavContextValue } from '../NavContext.types';
-import { InlineDrawerState } from '../../../../react-drawer/dist/index';
 
 /**
  * NavDrawer Props
