@@ -1,2 +1,2 @@
 export { helloWorld } from './helloWorld';
-export { XPlatProvider, type XPlatProviderProps } from './XPlatProvider';
+export { XPlatProvider, suppressCssVariableInsertion, type XPlatProviderProps } from './XPlatProvider';
