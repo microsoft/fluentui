@@ -9,7 +9,7 @@ import {
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
 import { DrawerBody } from '@fluentui/react-drawer';
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles, shorthands } from '@fluentui/react-components';
 import { tokens } from '@fluentui/react-theme';
 
 const useStyles = makeStyles({
