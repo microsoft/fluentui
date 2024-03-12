@@ -9,9 +9,7 @@ import {
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
 import { DrawerBody } from '@fluentui/react-drawer';
-import { makeStyles, shorthands } from '@fluentui/react-components';
-import { tokens } from '@fluentui/react-theme';
-
+import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
 const useStyles = makeStyles({
   root: {
     ...shorthands.overflow('hidden'),
