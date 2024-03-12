@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Update IStyleSet type to fix error when using TypeScript 5.3+",
+  "packageName": "@fluentui/style-utilities",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

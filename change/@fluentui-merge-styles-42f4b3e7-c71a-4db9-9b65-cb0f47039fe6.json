@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: Update IStyleSet type to fix error when using TypeScript 5.3+",
+  "packageName": "@fluentui/merge-styles",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
