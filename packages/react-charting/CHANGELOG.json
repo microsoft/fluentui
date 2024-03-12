@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 12 Mar 2024 07:26:23 GMT",
+      "tag": "@fluentui/react-charting_v5.19.34",
+      "version": "5.19.34",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "352b45e8fc81137cad89a9c24e7f5c4d6b5f94f0",
+            "comment": "Add RTL for Date Axis in VBC"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Mar 2024 07:26:25 GMT",
       "tag": "@fluentui/react-charting_v5.19.33",
       "version": "5.19.33",
