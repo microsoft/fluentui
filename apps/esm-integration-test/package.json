@@ -5,7 +5,8 @@
   "scripts": {
     "bundle": "webpack",
     "start": "webpack-dev-server",
-    "test": "jest"
+    "test": "jest",
+    "storybook": "start-storybook"
   },
   "devDependencies": {
     "@fluentui/react-theme": "*"
