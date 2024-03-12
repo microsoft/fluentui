@@ -32,7 +32,7 @@ export const App = () => {
       <section className={classes.root}>
         {Object.entries(tokens).map(([key, value]) => {
           return (
-            <div className={classes.item} style={{ backgroundColor: value }}>
+            <div key={key} className={classes.item} style={{ backgroundColor: value }}>
               {key}
             </div>
           );

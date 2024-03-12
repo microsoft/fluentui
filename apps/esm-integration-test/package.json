@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "bundle": "webpack",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "test": "jest"
   },
   "devDependencies": {
     "@fluentui/react-theme": "*"
