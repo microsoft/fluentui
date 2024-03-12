@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@fluentui/react-icons": "^2.0.224",
+    "@fluentui/react-platform-adapter": "^0.0.0",
     "@fluentui/react-shared-contexts": "^9.15.0",
     "@fluentui/react-tabster": "^9.19.3",
     "@fluentui/react-theme": "^9.1.17",
