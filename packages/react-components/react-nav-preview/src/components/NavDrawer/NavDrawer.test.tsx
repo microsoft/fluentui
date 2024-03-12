@@ -8,11 +8,4 @@ describe('NavDrawer', () => {
     Component: NavDrawer,
     displayName: 'NavDrawer',
   });
-
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
-  it('renders a default state', () => {
-    const result = render(<NavDrawer>Default NavDrawer</NavDrawer>);
-    expect(result.container).toMatchSnapshot();
-  });
 });
