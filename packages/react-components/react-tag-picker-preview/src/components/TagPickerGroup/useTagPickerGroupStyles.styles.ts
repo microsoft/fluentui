@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TagPickerGroupSlots, TagPickerGroupState } from './TagPickerGroup.types';
 import { useTagGroupStyles_unstable } from '@fluentui/react-tags';
@@ -19,18 +19,9 @@ const useStyles = makeStyles({
     cursor: 'text',
   },
   // size variants
-  medium: {
-    ...shorthands.paddingBlock(tokens.spacingVerticalSNudge),
-    ...shorthands.gap(tokens.spacingHorizontalXS),
-  },
-  large: {
-    ...shorthands.paddingBlock(tokens.spacingVerticalS),
-    ...shorthands.gap(tokens.spacingHorizontalSNudge),
-  },
-  'extra-large': {
-    ...shorthands.paddingBlock(tokens.spacingVerticalS),
-    ...shorthands.gap(tokens.spacingHorizontalSNudge),
-  },
+  medium: { paddingBlock: `${tokens.spacingVerticalSNudge}`, gap: `${tokens.spacingHorizontalXS}` },
+  large: { paddingBlock: `${tokens.spacingVerticalS}`, gap: `${tokens.spacingHorizontalSNudge}` },
+  'extra-large': { paddingBlock: `${tokens.spacingVerticalS}`, gap: `${tokens.spacingHorizontalSNudge}` },
 });
 
 /**

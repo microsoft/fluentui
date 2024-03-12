@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { LinkSlots, LinkState } from './Link.types';
@@ -28,9 +28,9 @@ const useStyles = makeStyles({
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase300,
     fontWeight: tokens.fontWeightRegular,
-    ...shorthands.margin(0),
-    ...shorthands.padding(0),
-    ...shorthands.overflow('inherit'),
+    margin: '0',
+    padding: '0',
+    overflow: 'inherit',
     textAlign: 'left',
     textDecorationLine: 'none',
     textDecorationThickness: tokens.strokeWidthThin,
@@ -49,7 +49,7 @@ const useStyles = makeStyles({
   },
   // Overrides when the Link renders as a button.
   button: {
-    ...shorthands.borderStyle('none'),
+    border: 'none',
   },
   // Overrides when an href is present so the Link renders as an anchor.
   href: {

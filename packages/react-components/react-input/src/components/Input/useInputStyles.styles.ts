@@ -123,7 +123,7 @@ const useRootStyles = makeStyles({
   large: {
     minHeight: fieldHeights.large,
     ...typographyStyles.body2,
-    ...shorthands.gap(tokens.spacingHorizontalSNudge),
+    gap: `${tokens.spacingHorizontalSNudge}`,
   },
   outline: {
     // included in rootBaseStyles
@@ -141,7 +141,8 @@ const useRootStyles = makeStyles({
   },
   underline: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderRadius(0), // corners look strange if rounded
+    borderRadius: '0',
+    // corners look strange if rounded
     // border is specified in rootBaseStyles, but we only want a bottom border here
     borderTopStyle: 'none',
     borderRightStyle: 'none',
@@ -160,7 +161,7 @@ const useRootStyles = makeStyles({
     ':active,:focus-within': {
       borderBottomColor: tokens.colorNeutralStrokeAccessiblePressed,
     },
-    '::after': shorthands.borderRadius(0), // remove rounded corners from focus underline
+    '::after': { borderRadius: '0' }, // remove rounded corners from focus underline
   },
   filled: {
     ...shorthands.borderColor(tokens.colorTransparentStroke),

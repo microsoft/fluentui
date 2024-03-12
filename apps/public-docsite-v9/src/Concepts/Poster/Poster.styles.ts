@@ -1,9 +1,9 @@
-import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { makeStyles, tokens } from '@fluentui/react-components';
 
 export const usePosterStyles = makeStyles({
   root: {
-    ...shorthands.padding('40px'),
-    ...shorthands.overflow('auto'),
+    padding: '40px',
+    overflow: 'auto',
     width: 'fit-content',
     backgroundColor: tokens.colorNeutralBackground1,
     color: tokens.colorNeutralForeground1,
@@ -26,6 +26,6 @@ export const usePosterStyles = makeStyles({
     justifyItems: 'flex-start',
   },
   legend: {
-    ...shorthands.margin(0, '40px'),
+    margin: `0 40px`,
   },
 });

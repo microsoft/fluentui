@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 
@@ -21,15 +21,9 @@ const useDrawerResetStyles = makeResetStyles({
 const separatorValues = ['1px', 'solid', tokens.colorNeutralBackground3] as const;
 const useDrawerRootStyles = makeStyles({
   /* Separator */
-  separatorStart: {
-    ...shorthands.borderRight(...separatorValues),
-  },
-  separatorEnd: {
-    ...shorthands.borderLeft(...separatorValues),
-  },
-  separatorBottom: {
-    ...shorthands.borderTop(...separatorValues),
-  },
+  separatorStart: { borderRight: separatorValues.join(' ') },
+  separatorEnd: { borderLeft: separatorValues.join(' ') },
+  separatorBottom: { borderTop: separatorValues.join(' ') },
 
   /* Positioning */
   start: {

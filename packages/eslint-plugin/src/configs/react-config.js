@@ -27,7 +27,6 @@ module.exports = {
      * @see https://github.com/microsoft/griffel/tree/main/packages/eslint-plugin
      */
     '@griffel/hook-naming': 'error',
-    '@griffel/no-shorthands': 'error',
     '@griffel/styles-file': 'error',
     'no-restricted-globals': restrictedGlobals,
     /**

@@ -80,8 +80,9 @@ const useDayCellStyles = makeStyles({
     fontWeight: tokens.fontWeightRegular,
     height: '28px',
     lineHeight: '28px',
-    ...shorthands.margin(0),
-    ...shorthands.padding(0),
+    margin: '0',
+    padding: '0',
+
     position: 'relative',
     width: '28px',
     '@media (forced-colors: active)': {
@@ -95,7 +96,8 @@ const useDayCellStyles = makeStyles({
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
         color: 'WindowText',
-        ...shorthands.outline('1px', 'solid', 'Highlight'),
+        outline: '1px solid Highlight',
+
         zIndex: 3,
       },
     },
@@ -180,15 +182,14 @@ const useWeekDayLabelCellStyles = makeStyles({
 const useWeekNumberCellStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderColor(tokens.colorNeutralStroke2),
-    ...shorthands.borderRight('1px', 'solid'),
+    borderRight: `1px solid ${tokens.colorNeutralStroke2}`,
     boxSizing: 'border-box',
     color: tokens.colorNeutralForeground4,
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
     height: '28px',
-    ...shorthands.margin(0),
-    ...shorthands.padding(0),
+    margin: '0',
+    padding: '0',
     width: '28px',
   },
 });
@@ -221,7 +222,8 @@ const useDayOutsideNavigatedMonthStyles = makeStyles({
 const useDayButtonStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderRadius('2px'),
+    borderRadius: '2px',
+
     ...shorthands.borderStyle('none'),
     color: 'inherit',
     cursor: 'pointer',
@@ -229,8 +231,9 @@ const useDayButtonStyles = makeStyles({
     fontWeight: 'inherit',
     height: '24px',
     lineHeight: '24px',
-    ...shorthands.overflow('visible'),
-    ...shorthands.padding(0),
+    overflow: 'visible',
+    padding: '0',
+
     width: '24px',
 
     '&span': {
@@ -243,7 +246,8 @@ const useDayButtonStyles = makeStyles({
 const useDayIsTodayStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorBrandBackground,
-    ...shorthands.borderRadius('100%'),
+    borderRadius: '100%',
+
     color: tokens.colorNeutralForegroundOnBrand,
     fontWeight: tokens.fontWeightSemibold,
 
@@ -267,7 +271,8 @@ const useFirstTransitionWeekStyles = makeStyles({
   base: {
     height: 0,
     opacity: 0,
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
+
     position: 'absolute',
     width: 0,
   },
@@ -284,7 +289,8 @@ const useLastTransitionWeekStyles = makeStyles({
     height: 0,
     marginTop: '-28px',
     opacity: 0,
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
+
     position: 'absolute',
     width: 0,
   },
@@ -299,11 +305,13 @@ const useLastTransitionWeekStyles = makeStyles({
 const useDayMarkerStyles = makeStyles({
   base: {
     backgroundColor: tokens.colorBrandForeground2,
-    ...shorthands.borderRadius('100%'),
+    borderRadius: '100%',
+
     bottom: '1px',
     height: '4px',
     left: 0,
-    ...shorthands.margin('auto'),
+    margin: 'auto',
+
     position: 'absolute',
     right: 0,
     width: '4px',

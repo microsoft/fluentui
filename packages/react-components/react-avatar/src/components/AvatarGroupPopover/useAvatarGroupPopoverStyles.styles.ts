@@ -20,8 +20,9 @@ export const avatarGroupPopoverClassNames: SlotClassNames<AvatarGroupPopoverSlot
 const useContentStyles = makeStyles({
   base: {
     listStyleType: 'none',
-    ...shorthands.margin('0'),
-    ...shorthands.padding('0'),
+    margin: '0',
+    padding: '0',
+
     display: 'flex',
     flexDirection: 'column',
   },
@@ -34,8 +35,8 @@ const usePopoverSurfaceStyles = makeStyles({
   base: {
     maxHeight: '220px',
     minHeight: '80px',
-    ...shorthands.overflow('hidden', 'scroll'),
-    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
+    overflow: 'hidden scroll',
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
     width: '220px',
   },
 });
@@ -53,9 +54,9 @@ const useTriggerButtonStyles = makeStyles({
     color: tokens.colorNeutralForeground1,
     backgroundColor: tokens.colorNeutralBackground1,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    borderRadius: `${tokens.borderRadiusCircular}`,
     ...shorthands.borderStyle('solid'),
-    ...shorthands.padding(0),
+    padding: '0',
 
     // Match color to Avatar's outline color.
     '@media (forced-colors: active)': {
@@ -70,7 +71,7 @@ const useTriggerButtonStyles = makeStyles({
   },
 
   focusIndicator: createCustomFocusIndicatorStyle({
-    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+    border: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
     outlineStyle: 'none',
   }),
 

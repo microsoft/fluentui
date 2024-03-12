@@ -259,7 +259,7 @@
     json5 "^2.2.3"
     semver "^6.3.1"
 
-"@babel/generator@7.23.6", "@babel/generator@>=7", "@babel/generator@^7.10.3", "@babel/generator@^7.12.11", "@babel/generator@^7.12.13", "@babel/generator@^7.12.5", "@babel/generator@^7.23.6", "@babel/generator@^7.4.4", "@babel/generator@^7.7.2":
+"@babel/generator@7.23.6", "@babel/generator@>=7", "@babel/generator@^7.10.3", "@babel/generator@^7.12.11", "@babel/generator@^7.12.13", "@babel/generator@^7.12.5", "@babel/generator@^7.23.0", "@babel/generator@^7.23.6", "@babel/generator@^7.4.4", "@babel/generator@^7.7.2":
   version "7.23.6"
   resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.23.6.tgz#9e1fca4811c77a10580d17d26b57b036133f3c2e"
   integrity sha512-qrSfCYxYQB5owCmGLbl8XRpX1ytXlpueOb0N0UmQwA073KZxejgQTzAmJezxvpwQD9uGtK2shHdi55QT+MbjIw==
@@ -1466,7 +1466,7 @@
     "@babel/parser" "^7.24.0"
     "@babel/types" "^7.24.0"
 
-"@babel/traverse@7.24.0", "@babel/traverse@>=7", "@babel/traverse@^7.10.3", "@babel/traverse@^7.12.11", "@babel/traverse@^7.12.13", "@babel/traverse@^7.12.9", "@babel/traverse@^7.13.0", "@babel/traverse@^7.16.0", "@babel/traverse@^7.24.0", "@babel/traverse@^7.4.5":
+"@babel/traverse@7.24.0", "@babel/traverse@>=7", "@babel/traverse@^7.10.3", "@babel/traverse@^7.12.11", "@babel/traverse@^7.12.13", "@babel/traverse@^7.12.9", "@babel/traverse@^7.13.0", "@babel/traverse@^7.16.0", "@babel/traverse@^7.23.2", "@babel/traverse@^7.24.0", "@babel/traverse@^7.4.5":
   version "7.24.0"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.24.0.tgz#4a408fbf364ff73135c714a2ab46a5eab2831b1e"
   integrity sha512-HfuJlI8qq3dEDmNU5ChzzpZRWq+oxCZQyMzIMEqLho+AQnhMnKQUzH6ydo3RBl/YjPCuk68Y6s0Gx0AeyULiWw==
@@ -1972,31 +1972,29 @@
     "@griffel/react" "^1.0.0"
     tslib "^2.1.0"
 
-"@griffel/babel-preset@1.4.20", "@griffel/babel-preset@^1.4.20":
-  version "1.4.20"
-  resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.4.20.tgz#047eb62f104e7bea781820816263e7407fafe543"
-  integrity sha512-fN3ntaNnshPY6rY8ysNrQgo/EdheZjcAi/xT8hBVV85VHFjuTkL+aKA2S3Ufea4gdSt9R4eGavMkPsO08r8dEA==
+"@griffel/babel-preset@1.4.20", "@griffel/babel-preset@^1.4.20", "@griffel/babel-preset@^1.5.7", "@griffel/babel-preset@file:./artifacts/griffel-babel-preset-1.5.7-kkw69n.tgz":
+  version "1.5.7"
+  resolved "file:./artifacts/griffel-babel-preset-1.5.7-kkw69n.tgz#a2bacd47d6e3a3acf6b4a47867c48cdf05d9f954"
   dependencies:
-    "@babel/core" "^7.12.13"
-    "@babel/generator" "^7.12.13"
-    "@babel/helper-plugin-utils" "^7.12.13"
-    "@babel/template" "^7.12.13"
-    "@babel/traverse" "^7.12.13"
-    "@griffel/core" "^1.14.1"
-    "@linaria/babel-preset" "^3.0.0-beta.23"
+    "@babel/core" "^7.23.2"
+    "@babel/generator" "^7.23.0"
+    "@babel/helper-plugin-utils" "^7.22.5"
+    "@babel/template" "^7.22.15"
+    "@babel/traverse" "^7.23.2"
+    "@griffel/core" "^1.15.3"
+    "@linaria/babel-preset" "^3.0.0-beta.24"
     "@linaria/shaker" "^3.0.0-beta.22"
     ajv "^8.4.0"
     stylis "^4.2.0"
     tslib "^2.1.0"
 
-"@griffel/core@^1.14.1":
-  version "1.14.1"
-  resolved "https://registry.yarnpkg.com/@griffel/core/-/core-1.14.1.tgz#1efe8f5cd5c4b348636264061c3a6cf4040b08f4"
-  integrity sha512-KQ6yueap1zff9TJrn7MdfSAHDMDVP6Ec97gnpCi4NOeKiyCyT13MwPCmkkK0o/poaV1f9MdHhUTQZCpK0QtxzQ==
+"@griffel/core@^1.14.1", "@griffel/core@^1.15.3", "@griffel/core@file:./artifacts/griffel-core-1.15.3-tllqal.tgz":
+  version "1.15.3"
+  resolved "file:./artifacts/griffel-core-1.15.3-tllqal.tgz#4084fe8bb481f2d9d5c819128f7a7c972f9c7b33"
   dependencies:
     "@emotion/hash" "^0.9.0"
-    "@griffel/style-types" "^1.0.1"
-    csstype "^3.1.2"
+    "@griffel/style-types" "^1.0.4"
+    csstype "^3.1.3"
     rtl-css-js "^1.16.1"
     stylis "^4.2.0"
     tslib "^2.1.0"
@@ -2010,20 +2008,18 @@
     csstype "^3.1.2"
     tslib "^2.1.0"
 
-"@griffel/jest-serializer@1.1.16":
-  version "1.1.16"
-  resolved "https://registry.yarnpkg.com/@griffel/jest-serializer/-/jest-serializer-1.1.16.tgz#c205ef47eecc17e41d22f4b834d485fb2f3c8ca3"
-  integrity sha512-43EK5EdX/xsSKQl7ObLfM/IxiZU6imlkFoJj7bzsP7aykMn6xePe11oAwMcZb+lMmiP/gtEsNMvsi1UBt+6NFw==
+"@griffel/jest-serializer@1.1.16", "@griffel/jest-serializer@file:./artifacts/griffel-jest-serializer-1.1.23-l2rog4.tgz":
+  version "1.1.23"
+  resolved "file:./artifacts/griffel-jest-serializer-1.1.23-l2rog4.tgz#1c2641b1a7c96e3e1fd23f60f285bade5ad950b2"
   dependencies:
-    "@griffel/core" "^1.14.1"
+    "@griffel/core" "^1.15.3"
     tslib "^2.1.0"
 
-"@griffel/react@^1.0.0", "@griffel/react@^1.5.14":
-  version "1.5.14"
-  resolved "https://registry.yarnpkg.com/@griffel/react/-/react-1.5.14.tgz#ea58ebd82007d421d16da49b7e57eccba391d609"
-  integrity sha512-/x6cy6xMtpow1r+Zrw/hMKHwo+imFAgKaZ3A/+M8GyT3L9AFxK1Kyg4JvARPjLBAn9Q2q5dkCr78jOguuVSScg==
+"@griffel/react@^1.0.0", "@griffel/react@^1.5.14", "@griffel/react@file:./artifacts/griffel-react-1.5.21-bc72ld.tgz":
+  version "1.5.21"
+  resolved "file:./artifacts/griffel-react-1.5.21-bc72ld.tgz#0bb927362b6512962cf47cff519c4ae7cc025751"
   dependencies:
-    "@griffel/core" "^1.14.1"
+    "@griffel/core" "^1.15.3"
     tslib "^2.1.0"
 
 "@griffel/shadow-dom@0.1.5":
@@ -2034,33 +2030,30 @@
     "@griffel/core" "^1.14.1"
     tslib "^2.1.0"
 
-"@griffel/style-types@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@griffel/style-types/-/style-types-1.0.1.tgz#4e7bca38d54c7371114309a5697869099a693e84"
-  integrity sha512-nhVryiNHhoBt5L93tfDYGoE4KtWvhBvY7y1yR1n6WKpRjasgw3GI2pBwiMiVt68bycnyvXIvcJjJTr0QM22VLQ==
+"@griffel/style-types@^1.0.4", "@griffel/style-types@file:./artifacts/griffel-style-types-1.0.4-fj1ykj.tgz":
+  version "1.0.4"
+  resolved "file:./artifacts/griffel-style-types-1.0.4-fj1ykj.tgz#03ddf0e7e9657196b08884302c147a11a086b9d6"
   dependencies:
-    csstype "^3.1.2"
+    csstype "^3.1.3"
 
-"@griffel/webpack-extraction-plugin@0.3.18":
-  version "0.3.18"
-  resolved "https://registry.yarnpkg.com/@griffel/webpack-extraction-plugin/-/webpack-extraction-plugin-0.3.18.tgz#1ffe5ad7d1220b5b75180dd64177e88d2e2d054b"
-  integrity sha512-FYqaacXXMG3ekAXdpkS6Snc/ECW095pMIvLY8bDtOkNZidslbbg5gF/KqVrOqRcR3gDPXLpT3GylfGEHVrvEgw==
+"@griffel/webpack-extraction-plugin@0.3.18", "@griffel/webpack-extraction-plugin@file:./artifacts/griffel-webpack-extraction-plugin-0.5.1-b0kr30.tgz":
+  version "0.5.1"
+  resolved "file:./artifacts/griffel-webpack-extraction-plugin-0.5.1-b0kr30.tgz#aa7249bcc1a6a36ef9a04c38f2049d65824a4faa"
   dependencies:
-    "@babel/core" "^7.12.13"
-    "@babel/helper-module-imports" "^7.12.13"
-    "@babel/helper-plugin-utils" "^7.12.13"
-    "@griffel/core" "^1.14.1"
+    "@babel/core" "^7.23.2"
+    "@babel/helper-module-imports" "^7.22.15"
+    "@babel/helper-plugin-utils" "^7.22.5"
+    "@griffel/core" "^1.15.3"
     stylis "^4.2.0"
     tslib "^2.1.0"
 
-"@griffel/webpack-loader@2.1.20":
-  version "2.1.20"
-  resolved "https://registry.yarnpkg.com/@griffel/webpack-loader/-/webpack-loader-2.1.20.tgz#a5842a06bf4e32301962d7a1dd3ecca8247100ae"
-  integrity sha512-R4Sk64rZIkWuTQX0mpzOFm5ULJ0HpnD3GMxOvprqNTpQmaCaL89FHOMc1le90s25clQfmxTAZuCueBOJHYxNCA==
+"@griffel/webpack-loader@2.1.20", "@griffel/webpack-loader@file:./artifacts/griffel-webpack-loader-2.2.9-5iulaf.tgz":
+  version "2.2.9"
+  resolved "file:./artifacts/griffel-webpack-loader-2.2.9-5iulaf.tgz#fa56b03e719edc8d9562dbc48b0528edc42162ed"
   dependencies:
-    "@babel/core" "^7.12.13"
-    "@griffel/babel-preset" "^1.4.20"
-    enhanced-resolve "^5.8.2"
+    "@babel/core" "^7.23.2"
+    "@griffel/babel-preset" "^1.5.7"
+    enhanced-resolve "^5.15.0"
     tslib "^2.1.0"
 
 "@gulp-sourcemaps/identity-map@1.X":
@@ -2427,7 +2420,27 @@
     source-map "^0.7.3"
     stylis "^3.5.4"
 
-"@linaria/core@^3.0.0-beta.22":
+"@linaria/babel-preset@^3.0.0-beta.24":
+  version "3.0.0-beta.24"
+  resolved "https://registry.yarnpkg.com/@linaria/babel-preset/-/babel-preset-3.0.0-beta.24.tgz#921b396afc37ebb5df84b8a02d37a56ea49cb54b"
+  integrity sha512-6DiKeeOpFXLQnXZvCPtGsdBMIGouylsYqlzA4XS1GxcHvK2V8BUtIGxY9UCg3WYOme/IlPKee7unjun0I4iqkA==
+  dependencies:
+    "@babel/core" "^7.18.2"
+    "@babel/generator" ">=7"
+    "@babel/plugin-proposal-export-namespace-from" ">=7"
+    "@babel/plugin-syntax-dynamic-import" ">=7"
+    "@babel/plugin-transform-modules-commonjs" "^7.18.2"
+    "@babel/template" ">=7"
+    "@babel/traverse" ">=7"
+    "@linaria/core" "3.0.0-beta.22"
+    "@linaria/logger" "3.0.0-beta.20"
+    "@linaria/utils" "3.0.0-beta.20"
+    cosmiconfig "^5.1.0"
+    find-up "^5.0.0"
+    source-map "^0.7.3"
+    stylis "^3.5.4"
+
+"@linaria/core@3.0.0-beta.22", "@linaria/core@^3.0.0-beta.22":
   version "3.0.0-beta.22"
   resolved "https://registry.yarnpkg.com/@linaria/core/-/core-3.0.0-beta.22.tgz#170dbeaf7bf7f7b5607d8e68d0d616d739b673b8"
   integrity sha512-BPSecW8QmhQ0y+5cWXEja+MTmLsuo0T1PjqRlSWsmDgjJFFObqCnPEgbR1KNtQb3Msmx1/9q3dYKpA5Zk3g8KQ==
@@ -2435,7 +2448,7 @@
     "@linaria/logger" "^3.0.0-beta.20"
     "@linaria/utils" "^3.0.0-beta.20"
 
-"@linaria/logger@^3.0.0-beta.20":
+"@linaria/logger@3.0.0-beta.20", "@linaria/logger@^3.0.0-beta.20":
   version "3.0.0-beta.20"
   resolved "https://registry.yarnpkg.com/@linaria/logger/-/logger-3.0.0-beta.20.tgz#f6f6476afe3d99880a88794bbc16b0f4b2bc1d31"
   integrity sha512-wCxWnldCHf7HXdLG3QtbKyBur+z5V1qZTouSEvcVYDfd4aSRPOi/jLdwsZlsUq2PFGpA3jW6JnreZJ/vxuEl7g==
@@ -2466,7 +2479,7 @@
     babel-plugin-transform-react-remove-prop-types "^0.4.24"
     ts-invariant "^0.10.3"
 
-"@linaria/utils@^3.0.0-beta.20":
+"@linaria/utils@3.0.0-beta.20", "@linaria/utils@^3.0.0-beta.20":
   version "3.0.0-beta.20"
   resolved "https://registry.yarnpkg.com/@linaria/utils/-/utils-3.0.0-beta.20.tgz#0965df816120a1973c4559b746571c01c6cb9bef"
   integrity sha512-SKRC9dBApzu0kTksVtGZ7eJz1vMu7xew/JEAjQj6XTQDblzWpTPyKQHBOGXNkqXjIB8PwAqWfvKzKapzaOwQaQ==
@@ -9868,6 +9881,11 @@ csstype@^3.0.2, csstype@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.2.tgz#1d4bf9d572f11c14031f0436e1c10bc1f571f50b"
   integrity sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==
+
+csstype@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.3.tgz#d80ff294d114fb0e6ac500fbf85b60137d7eff81"
+  integrity sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==
 
 csv-stringify@^6.2.0:
   version "6.2.0"

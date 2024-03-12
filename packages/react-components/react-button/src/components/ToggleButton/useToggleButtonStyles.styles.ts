@@ -62,7 +62,8 @@ const useRootCheckedStyles = makeStyles({
       },
 
       ':focus': {
-        ...shorthands.border('1px', 'solid', 'HighlightText'),
+        border: '1px solid HighlightText',
+
         outlineColor: 'Highlight',
       },
     },

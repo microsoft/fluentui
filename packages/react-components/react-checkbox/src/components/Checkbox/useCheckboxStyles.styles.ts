@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import { CheckboxSlots, CheckboxState } from './Checkbox.types';
@@ -149,9 +149,7 @@ const useIndicatorStyles = makeStyles({
     width: indicatorSizeLarge,
   },
 
-  circular: {
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
-  },
+  circular: { borderRadius: `${tokens.borderRadiusCircular}` },
 });
 
 // Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
@@ -160,7 +158,7 @@ const useLabelStyles = makeStyles({
     alignSelf: 'center',
     color: 'inherit',
     cursor: 'inherit',
-    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
   },
 
   before: {

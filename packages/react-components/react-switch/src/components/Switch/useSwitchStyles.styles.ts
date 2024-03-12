@@ -1,6 +1,6 @@
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SwitchSlots, SwitchState } from './Switch.types';
 
@@ -225,8 +225,7 @@ const useLabelStyles = makeStyles({
     // This prevents the label from expanding the height of the switch, but preserves line height if the label wraps.
     marginBottom: `calc((${trackHeight}px - ${tokens.lineHeightBase300}) / 2)`,
     marginTop: `calc((${trackHeight}px - ${tokens.lineHeightBase300}) / 2)`,
-
-    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
   },
   above: {
     paddingTop: tokens.spacingVerticalXS,

@@ -34,10 +34,10 @@ const focusOutlineStyle: Partial<FocusOutlineStyleOptions> = {
 
 const useStyles = makeStyles({
   root: {
-    ...shorthands.overflow('hidden'),
-    ...shorthands.borderRadius(`var(${cardCSSVars.cardBorderRadiusVar})`),
-    ...shorthands.padding(`var(${cardCSSVars.cardSizeVar})`),
-    ...shorthands.gap(`var(${cardCSSVars.cardSizeVar})`),
+    overflow: 'hidden',
+    borderRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,
+    padding: `var(${cardCSSVars.cardSizeVar})`,
+    gap: `var(${cardCSSVars.cardSizeVar})`,
 
     display: 'flex',
     position: 'relative',
@@ -56,7 +56,7 @@ const useStyles = makeStyles({
 
       ...shorthands.borderStyle('solid'),
       ...shorthands.borderWidth(tokens.strokeWidthThin),
-      ...shorthands.borderRadius(`var(${cardCSSVars.cardBorderRadiusVar})`),
+      borderRadius: `${`var(${cardCSSVars.cardBorderRadiusVar})`}`,
     },
 
     // Prevents CardHeader and CardFooter from shrinking.
@@ -340,7 +340,8 @@ const useStyles = makeStyles({
   },
 
   hiddenCheckbox: {
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
+
     width: '1px',
     height: '1px',
     position: 'absolute',

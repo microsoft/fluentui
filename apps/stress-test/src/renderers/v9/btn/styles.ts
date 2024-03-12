@@ -7,21 +7,21 @@ export const useRootStyles = makeStyles({
     justifyContent: 'center',
     verticalAlign: 'middle',
 
-    ...shorthands.margin(0),
-    ...shorthands.padding('4px'),
-    ...shorthands.overflow('hidden'),
+    margin: 0,
+    padding: '4px',
+    overflow: 'hidden',
 
     backgroundColor: 'transparent',
     color: '#000000',
 
-    ...shorthands.border('1px', 'solid', 'transparent'),
-    ...shorthands.borderRadius('4px'),
+    border: `1px solid transparent`,
+    borderRadius: '4px',
 
     fontFamily: 'Arial',
     fontSize: '14px',
 
     ':hover': {
-      ...shorthands.border('1px', 'solid', '#000000'),
+      border: `1px solid #000000`,
       cursor: 'pointer',
       backgroundColor: 'aliceblue',
     },

@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { useDividerStyles_unstable } from '@fluentui/react-divider';
 import type { ToolbarDividerState } from './ToolbarDivider.types';
 
@@ -7,7 +7,7 @@ const useBaseStyles = makeStyles({
   root: {
     display: 'inline-flex',
     maxWidth: '1px',
-    ...shorthands.padding('0', '12px'),
+    padding: '0 12px',
   },
   vertical: {
     maxWidth: 'initial',

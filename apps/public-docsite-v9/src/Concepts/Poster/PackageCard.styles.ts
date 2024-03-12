@@ -1,18 +1,18 @@
-import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { makeStyles, tokens } from '@fluentui/react-components';
 
 export const usePackageCardStyles = makeStyles({
   root: {
     boxShadow: tokens.shadow8,
     boxSizing: 'border-box',
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke2),
-    ...shorthands.margin(tokens.spacingVerticalMNudge, tokens.spacingHorizontalMNudge),
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke2}`,
+    margin: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
     display: 'flex',
     flexDirection: 'column',
   },
   header: {
     display: 'flex',
     alignItems: 'center',
-    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalS),
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS}`,
   },
   title: {
     fontSize: tokens.fontSizeBase200,
@@ -30,12 +30,12 @@ export const usePackageCardStyles = makeStyles({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     justifyItems: 'flex-start',
-    ...shorthands.padding(
+    padding: [
       tokens.spacingVerticalNone,
       tokens.spacingHorizontalM,
       tokens.spacingVerticalS,
       tokens.spacingHorizontalM,
-    ),
+    ].join(''),
   },
   column: {
     alignItems: 'flex-start',

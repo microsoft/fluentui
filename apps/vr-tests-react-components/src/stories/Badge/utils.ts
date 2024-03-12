@@ -1,5 +1,5 @@
 import { BadgeProps } from '@fluentui/react-badge';
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 type ValueArrays<T> = {
@@ -22,8 +22,8 @@ export const useStyles = makeStyles({
   badgeContainer: {
     display: 'flex',
     alignItems: 'center',
-    ...shorthands.gap('5px'),
-    ...shorthands.padding('5px'),
+    gap: '5px',
+    padding: '5px',
   },
 
   label: {
@@ -37,7 +37,7 @@ export const useStyles = makeStyles({
   groupSet: {
     display: 'inline-flex',
     flexDirection: 'column',
-    ...shorthands.padding(0, tokens.spacingHorizontalL),
+    padding: `0 ${tokens.spacingHorizontalL}`,
     rowGap: tokens.spacingVerticalL,
   },
 
@@ -62,8 +62,8 @@ export const useStyles = makeStyles({
     display: 'inline-flex',
     width: '150px',
     columnGap: tokens.spacingHorizontalS,
-    ...shorthands.padding('1px'),
-    ...shorthands.border('2px', 'dashed', tokens.colorPaletteRedBorder1),
+    padding: '1px',
+    border: `2px dashed ${tokens.colorPaletteRedBorder1}`,
     backgroundColor: tokens.colorPaletteRedBackground1,
   },
 

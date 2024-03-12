@@ -180,7 +180,8 @@ const useRootWithoutDismissStyles = makeStyles({
 
 export const useIconStyles = makeStyles({
   base: {
-    ...shorthands.gridArea('media'),
+    gridArea: 'media',
+
     display: 'flex',
   },
   medium: {
@@ -205,7 +206,8 @@ export const useIconStyles = makeStyles({
 
 export const useMediaStyles = makeStyles({
   base: {
-    ...shorthands.gridArea('media'),
+    gridArea: 'media',
+
     display: 'flex',
     paddingLeft: '1px',
   },
@@ -222,7 +224,8 @@ export const useMediaStyles = makeStyles({
 
 const useDismissIconStyles = makeStyles({
   base: {
-    ...shorthands.gridArea('dismissIcon'),
+    gridArea: 'dismissIcon',
+
     display: 'flex',
 
     // windows high contrast:
@@ -304,7 +307,8 @@ export const usePrimaryTextStyles = makeStyles({
     paddingBottom: tokens.spacingHorizontalXXS,
   },
   withSecondaryText: {
-    ...shorthands.gridArea('primary'),
+    gridArea: 'primary',
+
     ...typographyStyles.caption1,
     marginTop: '-2px',
   },

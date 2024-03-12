@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { TableCellLayoutSlots, TableCellLayoutState } from './TableCellLayout.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -19,8 +19,8 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     alignItems: 'center',
-    ...shorthands.gap(tokens.spacingHorizontalS),
-    ...shorthands.flex(1, 1, '0px'),
+    gap: `${tokens.spacingHorizontalS}`,
+    flex: '1 1 0px',
   },
 
   rootTruncate: {

@@ -35,9 +35,9 @@ const useButtonStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
 
     ...shorthands.borderStyle('none'),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.margin(0),
-    ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
+    borderRadius: `${tokens.borderRadiusMedium}`,
+    margin: '0',
+    padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalXS}`,
 
     [`& .${iconFilledClassName}`]: {
       display: 'none',
@@ -95,9 +95,7 @@ const useButtonStyles = makeStyles({
 
   focusIndicator: createFocusOutlineStyle(),
 
-  large: {
-    ...shorthands.padding(tokens.spacingVerticalXXS, tokens.spacingVerticalXXS),
-  },
+  large: { padding: `${tokens.spacingVerticalXXS} ${tokens.spacingVerticalXXS}` },
 });
 
 const usePopoverSurfaceStyles = makeStyles({

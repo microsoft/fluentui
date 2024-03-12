@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, makeResetStyles, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses, makeResetStyles } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ImageSwatchSlots, ImageSwatchState } from './ImageSwatch.types';
 import { tokens } from '@fluentui/react-theme';
@@ -54,7 +54,7 @@ const useStyles = makeResetStyles({
 
 const useStylesSelected = makeStyles({
   selected: {
-    ...shorthands.border('none'),
+    border: 'none',
     boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
     ':hover': {
       boxShadow: `inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorBrandStroke1}, inset 0 0 0 6px ${tokens.colorStrokeFocus1}`,
@@ -92,22 +92,16 @@ const useSizeStyles = makeStyles({
 
 const useShapeStyles = makeStyles({
   rounded: {
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    }),
+    borderRadius: `${tokens.borderRadiusMedium}`,
+    ...createCustomFocusIndicatorStyle({ borderRadius: `${tokens.borderRadiusMedium}` }),
   },
   circular: {
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
-    }),
+    borderRadius: `${tokens.borderRadiusCircular}`,
+    ...createCustomFocusIndicatorStyle({ borderRadius: `${tokens.borderRadiusCircular}` }),
   },
   square: {
-    ...shorthands.borderRadius(tokens.borderRadiusNone),
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderRadius(tokens.borderRadiusNone),
-    }),
+    borderRadius: `${tokens.borderRadiusNone}`,
+    ...createCustomFocusIndicatorStyle({ borderRadius: `${tokens.borderRadiusNone}` }),
   },
 });
 

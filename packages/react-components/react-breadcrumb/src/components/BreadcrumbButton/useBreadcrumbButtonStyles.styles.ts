@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { BreadcrumbButtonSlots, BreadcrumbButtonState } from './BreadcrumbButton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useButtonStyles_unstable, buttonClassNames } from '@fluentui/react-button';
@@ -70,17 +70,17 @@ const useStyles = makeStyles({
   small: {
     height: '24px',
     ...typographyStyles.caption1,
-    ...shorthands.padding(tokens.spacingHorizontalSNudge),
+    padding: `${tokens.spacingHorizontalSNudge}`,
   },
   medium: {
     height: '32px',
     ...typographyStyles.body1,
-    ...shorthands.padding(tokens.spacingHorizontalSNudge),
+    padding: `${tokens.spacingHorizontalSNudge}`,
   },
   large: {
     height: '40px',
     ...typographyStyles.body2,
-    ...shorthands.padding(tokens.spacingHorizontalS),
+    padding: `${tokens.spacingHorizontalS}`,
   },
   current: {
     ':hover': {

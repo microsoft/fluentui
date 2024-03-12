@@ -1,4 +1,4 @@
-import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { SliderState, SliderSlots } from './Slider.types';
@@ -114,7 +114,7 @@ const useRootStyles = makeStyles({
  */
 const useRailStyles = makeStyles({
   rail: {
-    ...shorthands.borderRadius(tokens.borderRadiusXLarge),
+    borderRadius: `${tokens.borderRadiusXLarge}`,
     pointerEvents: 'none',
     gridRowStart: '2',
     gridRowEnd: '2',
@@ -192,7 +192,7 @@ const useThumbStyles = makeStyles({
     pointerEvents: 'none',
     outlineStyle: 'none',
     forcedColorAdjust: 'none',
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    borderRadius: `${tokens.borderRadiusCircular}`,
     boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
     backgroundColor: `var(${thumbColorVar})`,
     '::before': {
@@ -201,16 +201,14 @@ const useThumbStyles = makeStyles({
       left: '0px',
       bottom: '0px',
       right: '0px',
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      borderRadius: `${tokens.borderRadiusCircular}`,
       boxSizing: 'border-box',
       content: "''",
-      ...shorthands.border(`calc(var(${thumbSizeVar}) * .05)`, 'solid', tokens.colorNeutralStroke1),
+      border: `${`calc(var(${thumbSizeVar}) * .05)`} solid ${tokens.colorNeutralStroke1}`,
     },
   },
   disabled: {
-    '::before': {
-      ...shorthands.border(`calc(var(${thumbSizeVar}) * .05)`, 'solid', tokens.colorNeutralForegroundDisabled),
-    },
+    '::before': { border: `${`calc(var(${thumbSizeVar}) * .05)`} solid ${tokens.colorNeutralForegroundDisabled}` },
   },
   horizontal: {
     transform: 'translateX(-50%)',
@@ -233,8 +231,8 @@ const useInputStyles = makeStyles({
     gridRowEnd: '-1',
     gridColumnStart: '1',
     gridColumnEnd: '-1',
-    ...shorthands.padding(0),
-    ...shorthands.margin(0),
+    padding: '0',
+    margin: '0',
   },
   disabled: {
     cursor: 'default',

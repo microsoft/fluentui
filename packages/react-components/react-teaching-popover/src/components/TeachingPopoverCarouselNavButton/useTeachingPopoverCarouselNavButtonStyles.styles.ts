@@ -24,13 +24,15 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorBrandBackground,
   },
   rootUnselected: {
-    ...shorthands.border(0),
-    ...shorthands.borderRadius('50%'),
-    ...shorthands.padding('0px'),
-    ...shorthands.outline(tokens.strokeWidthThin, 'solid', 'transparent'), // For high contrast
+    ...shorthands.border(
+      0,
+    ) /* TODO: Expected "border" to have 3 arguments, got 1. Please migrate it manually. */ /* TODO: Expected "border" to have 3 arguments, got 1. Please migrate it manually. */,
+    borderRadius: '50%',
+    padding: '0px',
+    outline: `${tokens.strokeWidthThin} solid transparent`, // For high contrast
     ...createCustomFocusIndicatorStyle({
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+      borderRadius: `${tokens.borderRadiusMedium}`,
       ...shorthands.borderColor('transparent'),
     }),
     backgroundColor: `color-mix(in srgb, ${tokens.colorBrandBackground} 30%, transparent)`,
@@ -41,14 +43,12 @@ const useStyles = makeStyles({
     },
   },
   rootSelected: {
-    ...shorthands.outline(tokens.strokeWidthThin, 'solid', 'transparent'), // For high contrast
+    outline: `${tokens.strokeWidthThin} solid transparent`, // For high contrast
     width: '16px',
-    ...shorthands.border(0),
-    ...shorthands.borderRadius('4px'),
-    ...shorthands.padding('0px'),
+    border: 0,
     ...createCustomFocusIndicatorStyle({
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+      borderRadius: `${tokens.borderRadiusMedium}`,
       ...shorthands.borderColor('transparent'),
     }),
   },

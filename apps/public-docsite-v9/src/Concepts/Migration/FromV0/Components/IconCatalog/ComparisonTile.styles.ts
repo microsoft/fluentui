@@ -1,4 +1,4 @@
-import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { makeStyles, tokens } from '@fluentui/react-components';
 
 export const useComparisonTileStyles = makeStyles({
   root: {
@@ -6,9 +6,9 @@ export const useComparisonTileStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    ...shorthands.padding('5px', '0px'),
-    ...shorthands.gap('10px'),
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
+    padding: `5px 0px`,
+    gap: '10px',
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     maxHeight: '105px',
     ':hover': {
       backgroundColor: tokens.colorNeutralBackground2Hover,
@@ -44,7 +44,7 @@ export const useComparisonTileStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    ...shorthands.gap('2px'),
+    gap: '2px',
   },
 
   buttonReset: {
@@ -55,9 +55,9 @@ export const useComparisonTileStyles = makeStyles({
     fontFamily: 'inherit',
     fontSize: 'inherit',
     lineHeight: 'normal',
-    ...shorthands.overflow('visible'),
-    ...shorthands.padding(0),
-    ...shorthands.borderStyle('none'),
+    overflow: 'visible',
+    padding: 0,
+    border: 'none',
     WebkitAppearance: 'button',
     textAlign: 'unset',
   },

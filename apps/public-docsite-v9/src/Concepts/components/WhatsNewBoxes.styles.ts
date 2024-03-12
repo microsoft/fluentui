@@ -1,4 +1,4 @@
-import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { makeStyles, tokens } from '@fluentui/react-components';
 
 export const useWhatsNewStyles = makeStyles({
   title: {
@@ -28,7 +28,7 @@ export const useWhatsNewStyles = makeStyles({
     },
   },
   box: {
-    ...shorthands.borderRadius('16px'),
+    borderRadius: '16px',
     marginBottom: '16px',
     backgroundColor: tokens.colorNeutralBackground3,
   },

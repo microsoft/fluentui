@@ -1,4 +1,4 @@
-import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { makeStyles, tokens } from '@fluentui/react-components';
 
 export const useLegendStyles = makeStyles({
   root: {
@@ -9,8 +9,8 @@ export const useLegendStyles = makeStyles({
     gridTemplateColumns: 'auto auto',
     rowGap: tokens.spacingVerticalMNudge,
     columnGap: tokens.spacingHorizontalSNudge,
-    ...shorthands.padding(tokens.spacingVerticalM, tokens.spacingHorizontalM),
-    ...shorthands.margin(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
+    padding: `${tokens.spacingVerticalM} ${tokens.spacingHorizontalM}`,
+    margin: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalXS}`,
   },
   icon: {
     color: tokens.colorNeutralForeground4,

@@ -31,7 +31,7 @@ const useRootStyles = makeStyles({
   base: {
     alignItems: 'center',
     ...shorthands.borderColor('none'),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    borderRadius: `${tokens.borderRadiusMedium}`,
     ...shorthands.borderWidth(0),
     cursor: 'pointer',
     display: 'grid',
@@ -43,7 +43,8 @@ const useRootStyles = makeStyles({
     lineHeight: tokens.lineHeightBase300,
     outlineStyle: 'none',
     position: 'relative',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
+
     textTransform: 'none',
   },
   horizontal: {
@@ -54,30 +55,30 @@ const useRootStyles = makeStyles({
   },
   smallHorizontal: {
     columnGap: tokens.spacingHorizontalXXS,
-    ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalSNudge),
+    padding: `${tokens.spacingVerticalSNudge} ${tokens.spacingHorizontalSNudge}`,
   },
   smallVertical: {
     // horizontal spacing is deliberate. This is the gap between icon and content.
     columnGap: tokens.spacingHorizontalXXS,
-    ...shorthands.padding(tokens.spacingVerticalXXS, tokens.spacingHorizontalSNudge),
+    padding: `${tokens.spacingVerticalXXS} ${tokens.spacingHorizontalSNudge}`,
   },
   mediumHorizontal: {
     columnGap: tokens.spacingHorizontalSNudge,
-    ...shorthands.padding(tokens.spacingVerticalM, tokens.spacingHorizontalMNudge),
+    padding: `${tokens.spacingVerticalM} ${tokens.spacingHorizontalMNudge}`,
   },
   mediumVertical: {
     // horizontal spacing is deliberate. This is the gap between icon and content.
     columnGap: tokens.spacingHorizontalSNudge,
-    ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalMNudge),
+    padding: `${tokens.spacingVerticalSNudge} ${tokens.spacingHorizontalMNudge}`,
   },
   largeHorizontal: {
     columnGap: tokens.spacingHorizontalSNudge,
-    ...shorthands.padding(tokens.spacingVerticalL, tokens.spacingHorizontalMNudge),
+    padding: `${tokens.spacingVerticalL} ${tokens.spacingHorizontalMNudge}`,
   },
   largeVertical: {
     // horizontal spacing is deliberate. This is the gap between icon and content.
     columnGap: tokens.spacingHorizontalSNudge,
-    ...shorthands.padding(tokens.spacingVerticalS, tokens.spacingHorizontalMNudge),
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalMNudge}`,
   },
   transparent: {
     backgroundColor: tokens.colorTransparentBackground,
@@ -195,13 +196,13 @@ const usePendingIndicatorStyles = makeStyles({
   base: {
     ':hover::before': {
       backgroundColor: tokens.colorNeutralStroke1Hover,
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      borderRadius: `${tokens.borderRadiusCircular}`,
       content: '""',
       position: 'absolute',
     },
     ':active::before': {
       backgroundColor: tokens.colorNeutralStroke1Pressed,
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      borderRadius: `${tokens.borderRadiusCircular}`,
       content: '""',
       position: 'absolute',
     },
@@ -276,7 +277,7 @@ const useActiveIndicatorStyles = makeStyles({
   base: {
     '::after': {
       backgroundColor: tokens.colorTransparentStroke,
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      borderRadius: `${tokens.borderRadiusCircular}`,
       content: '""',
       position: 'absolute',
     },
@@ -368,7 +369,8 @@ const useIconStyles = makeStyles({
     alignItems: 'center',
     display: 'inline-flex',
     justifyContent: 'center',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
+
     [`& .${iconClassNames.filled}`]: {
       display: 'none',
     },
@@ -409,9 +411,10 @@ const useIconStyles = makeStyles({
 const useContentStyles = makeStyles({
   base: {
     ...typographyStyles.body1,
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
+
     // content padding is the same for medium & small, horiztonal & vertical
-    ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalXXS),
+    padding: `${tokens.spacingVerticalNone} ${tokens.spacingHorizontalXXS}`,
   },
   selected: {
     ...typographyStyles.body1Strong,

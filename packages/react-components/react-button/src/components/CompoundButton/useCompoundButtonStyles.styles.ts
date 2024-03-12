@@ -1,5 +1,5 @@
 import { tokens } from '@fluentui/react-theme';
-import { shorthands, mergeClasses, makeStyles } from '@griffel/react';
+import { mergeClasses, makeStyles } from '@griffel/react';
 import { useButtonStyles_unstable } from '../Button/useButtonStyles.styles';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CompoundButtonSlots, CompoundButtonState } from './CompoundButton.types';
@@ -130,24 +130,19 @@ const useRootStyles = makeStyles({
 
   // Size variations
   small: {
-    ...shorthands.padding(
-      tokens.spacingHorizontalS,
-      tokens.spacingHorizontalS,
-      tokens.spacingHorizontalMNudge,
-      tokens.spacingHorizontalS,
-    ),
+    padding: `${tokens.spacingHorizontalS} ${tokens.spacingHorizontalS} ${tokens.spacingHorizontalMNudge} ${tokens.spacingHorizontalS}`,
 
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
   },
   medium: {
-    ...shorthands.padding('14px', tokens.spacingHorizontalM, tokens.spacingHorizontalL, tokens.spacingHorizontalM),
+    padding: `14px ${tokens.spacingHorizontalM} ${tokens.spacingHorizontalL} ${tokens.spacingHorizontalM}`,
 
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
   },
   large: {
-    ...shorthands.padding('18px', tokens.spacingHorizontalL, tokens.spacingHorizontalXL, tokens.spacingHorizontalL),
+    padding: `18px ${tokens.spacingHorizontalL} ${tokens.spacingHorizontalXL} ${tokens.spacingHorizontalL}`,
 
     fontSize: tokens.fontSizeBase400,
     lineHeight: tokens.lineHeightBase400,
@@ -197,19 +192,19 @@ const useRootStyles = makeStyles({
 const useRootIconOnlyStyles = makeStyles({
   // Size variations
   small: {
-    ...shorthands.padding(tokens.spacingHorizontalXS),
+    padding: `${tokens.spacingHorizontalXS}`,
 
     maxWidth: '48px',
     minWidth: '48px',
   },
   medium: {
-    ...shorthands.padding(tokens.spacingHorizontalSNudge),
+    padding: `${tokens.spacingHorizontalSNudge}`,
 
     maxWidth: '52px',
     minWidth: '52px',
   },
   large: {
-    ...shorthands.padding(tokens.spacingHorizontalS),
+    padding: `${tokens.spacingHorizontalS}`,
 
     maxWidth: '56px',
     minWidth: '56px',

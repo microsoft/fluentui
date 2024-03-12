@@ -22,7 +22,8 @@ const useTableLayoutStyles = makeStyles({
 const useFlexLayoutStyles = makeStyles({
   root: {
     display: 'flex',
-    ...shorthands.flex(1, 1, '0px'),
+    flex: '1 1 0px',
+
     minWidth: '0px',
   },
 });
@@ -33,12 +34,9 @@ const useFlexLayoutStyles = makeStyles({
 const useStyles = makeStyles({
   root: {
     fontWeight: tokens.fontWeightRegular,
-    ...shorthands.padding('0px', tokens.spacingHorizontalS),
+    padding: `0px ${tokens.spacingHorizontalS}`,
     ...createCustomFocusIndicatorStyle(
-      {
-        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
-        ...shorthands.borderRadius(tokens.borderRadiusMedium),
-      },
+      { outline: `2px solid ${tokens.colorStrokeFocus2}`, borderRadius: `${tokens.borderRadiusMedium}` },
       { selector: 'focus-within' },
     ),
     position: 'relative',
@@ -61,8 +59,9 @@ const useStyles = makeStyles({
     fontFamily: 'inherit',
     fontSize: 'inherit',
     lineHeight: 'normal',
-    ...shorthands.overflow('visible'),
-    ...shorthands.padding(0),
+    overflow: 'visible',
+    padding: '0',
+
     ...shorthands.borderStyle('none'),
     textAlign: 'unset',
   },
@@ -74,9 +73,10 @@ const useStyles = makeStyles({
     flexGrow: 1,
     height: '100%',
     alignItems: 'center',
-    ...shorthands.gap(tokens.spacingHorizontalXS),
+    gap: `${tokens.spacingHorizontalXS}`,
     minHeight: '32px',
-    ...shorthands.flex(1, 1, '0px'),
+    flex: '1 1 0px',
+
     outlineStyle: 'none',
   },
 

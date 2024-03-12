@@ -15,7 +15,7 @@ export const optionClassNames: SlotClassNames<OptionSlots> = {
 const useStyles = makeStyles({
   root: {
     alignItems: 'center',
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    borderRadius: `${tokens.borderRadiusMedium}`,
     color: tokens.colorNeutralForeground1,
     columnGap: tokens.spacingHorizontalXS,
     cursor: 'pointer',
@@ -23,7 +23,7 @@ const useStyles = makeStyles({
     fontFamily: tokens.fontFamilyBase,
     fontSize: tokens.fontSizeBase300,
     lineHeight: tokens.lineHeightBase300,
-    ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalS),
+    padding: `${tokens.spacingVerticalSNudge} ${tokens.spacingHorizontalS}`,
     position: 'relative',
 
     ':hover': {
@@ -48,7 +48,7 @@ const useStyles = makeStyles({
 
       ...shorthands.borderStyle('solid'),
       ...shorthands.borderWidth('2px'),
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      borderRadius: `${tokens.borderRadiusMedium}`,
       ...shorthands.borderColor(tokens.colorStrokeFocus2),
 
       top: '-2px',
@@ -98,8 +98,8 @@ const useStyles = makeStyles({
   },
 
   multiselectCheck: {
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStrokeAccessible),
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
+    borderRadius: `${tokens.borderRadiusSmall}`,
     boxSizing: 'border-box',
 
     display: 'flex',

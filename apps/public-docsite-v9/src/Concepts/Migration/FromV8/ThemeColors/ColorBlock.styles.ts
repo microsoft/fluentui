@@ -1,27 +1,27 @@
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
 
 export const useColorBlockStyles = makeStyles({
   root: {
-    ...shorthands.borderTop('1px', 'solid', '#aaa'),
-    ...shorthands.borderBottom('1px', 'solid', '#aaa'),
-    ...shorthands.borderLeft('1px', 'solid', 'transparent'),
-    ...shorthands.borderRight('1px', 'solid', '#aaa'),
+    borderTop: `1px solid #aaa`,
+    borderBottom: `1px solid #aaa`,
+    borderLeft: `1px solid transparent`,
+    borderRight: `1px solid #aaa`,
     display: 'grid',
     gridTemplateColumns: 'auto 1fr',
     gridTemplateRows: 'auto',
     columnGap: '10px',
-    ...shorthands.padding('0', '5px', '0', '0'),
+    padding: `0 5px 0 0`,
   },
   flipAlign: {
-    ...shorthands.borderLeft('1px', 'solid', '#aaa'),
-    ...shorthands.borderRight('1px', 'solid', 'transparent'),
+    borderLeft: `1px solid #aaa`,
+    borderRight: `1px solid transparent`,
     gridTemplateColumns: '1fr auto',
-    ...shorthands.padding('0', '0', '0', '5px'),
+    padding: `0 0 0 5px`,
   },
   color: {
     backgroundColor: 'var(--ColorBlock__background-color)',
-    ...shorthands.borderLeft('1px', 'solid', '#aaa'),
-    ...shorthands.borderRight('1px', 'solid', '#aaa'),
+    borderLeft: `1px solid #aaa`,
+    borderRight: `1px solid #aaa`,
     width: '20px',
     alignSelf: 'stretch',
   },
@@ -35,8 +35,8 @@ export const useColorBlockStyles = makeStyles({
     '& label': {
       textAlign: 'right',
       color: '#aaa',
-      ...shorthands.margin(0),
-      ...shorthands.padding(0),
+      margin: 0,
+      padding: 0,
     },
   },
   blockName: {

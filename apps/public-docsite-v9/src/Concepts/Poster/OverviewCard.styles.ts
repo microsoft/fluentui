@@ -1,14 +1,14 @@
-import { makeStyles, shorthands, tokens, typographyStyles } from '@fluentui/react-components';
+import { makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
 
 export const useOverviewCardStyles = makeStyles({
   root: {
-    ...shorthands.border(tokens.strokeWidthThick, 'solid', tokens.colorNeutralBackground3),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.overflow('visible'),
-    ...shorthands.padding('40px'),
+    border: `${tokens.strokeWidthThick} solid ${tokens.colorNeutralBackground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    overflow: 'visible',
+    padding: '40px',
     boxSizing: 'border-box',
     boxShadow: tokens.shadow16,
-    ...shorthands.margin('50px'),
+    margin: '50px',
     display: 'flex',
     flexDirection: 'column',
   },
@@ -40,10 +40,10 @@ export const useOverviewCardStyles = makeStyles({
     justifyItems: 'center',
     justifyContent: 'center',
     rowGap: '5px',
-    ...shorthands.padding('30px', 0, 0, '30px'),
+    padding: `30px 0 0 30px`,
   },
   featureText: {
     ...typographyStyles.caption2,
-    ...shorthands.margin('10px'),
+    margin: '10px',
   },
 });

@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   // Base styles
   base: {
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    ...shorthands.borderRadius(tokens.borderRadiusNone),
+    borderRadius: `${tokens.borderRadiusNone}`,
 
     boxSizing: 'border-box',
     display: 'inline-block',
@@ -24,12 +24,8 @@ const useStyles = makeStyles({
   },
 
   // Shape variations
-  circular: {
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
-  },
-  rounded: {
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-  },
+  circular: { borderRadius: `${tokens.borderRadiusCircular}` },
+  rounded: { borderRadius: `${tokens.borderRadiusMedium}` },
   square: {
     /* The square styles are exactly the same as the base styles. */
   },

@@ -71,7 +71,7 @@ const useRootStyles = makeStyles({
         transparent 50%,
         transparent 100%
       )`,
-      ...shorthands.borderRadius(0, 0, tokens.borderRadiusMedium, tokens.borderRadiusMedium),
+      borderRadius: `0 0 ${tokens.borderRadiusMedium} ${tokens.borderRadiusMedium}`,
       boxSizing: 'border-box',
       content: '""',
       height: tokens.borderRadiusMedium,
@@ -107,8 +107,8 @@ const useRootStyles = makeStyles({
 const useSelectStyles = makeStyles({
   base: {
     appearance: 'none',
-    ...shorthands.border('1px', 'solid', 'transparent'),
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    border: '1px solid transparent',
+    borderRadius: `${tokens.borderRadiusMedium}`,
     boxShadow: 'none',
     boxSizing: 'border-box',
     color: tokens.colorNeutralForeground1,
@@ -161,7 +161,7 @@ const useSelectStyles = makeStyles({
   },
   outline: {
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
+    border: `1px solid ${tokens.colorNeutralStroke1}`,
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
   },
   outlineInteractive: {
@@ -177,8 +177,8 @@ const useSelectStyles = makeStyles({
   },
   underline: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderBottom('1px', 'solid', tokens.colorNeutralStrokeAccessible),
-    ...shorthands.borderRadius(0),
+    borderBottom: `1px solid ${tokens.colorNeutralStrokeAccessible}`,
+    borderRadius: '0',
   },
   'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,

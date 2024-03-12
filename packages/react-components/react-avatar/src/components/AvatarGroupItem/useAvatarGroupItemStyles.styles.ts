@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useSizeStyles } from '../../Avatar';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -25,12 +25,8 @@ const useRootStyles = makeStyles({
     flexShrink: 0,
     position: 'relative',
   },
-  overflowItem: {
-    ...shorthands.padding(tokens.spacingVerticalXS, tokens.spacingHorizontalXS),
-  },
-  nonOverflowItem: {
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
-  },
+  overflowItem: { padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalXS}` },
+  nonOverflowItem: { borderRadius: `${tokens.borderRadiusCircular}` },
 });
 
 /**
@@ -40,9 +36,7 @@ const useAvatarStyles = makeStyles({
   nonOverflowItem: {
     position: 'absolute',
   },
-  pie: {
-    ...shorthands.borderRadius(0),
-  },
+  pie: { borderRadius: '0' },
 });
 
 /**

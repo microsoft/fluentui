@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { TableCellSlots, TableCellState } from './TableCell.types';
@@ -33,7 +33,7 @@ const useFlexLayoutStyles = makeStyles({
     display: 'flex',
     minWidth: '0px',
     alignItems: 'center',
-    ...shorthands.flex(1, 1, '0px'),
+    flex: '1 1 0px',
   },
 
   medium: {
@@ -55,13 +55,10 @@ const useFlexLayoutStyles = makeStyles({
 const useStyles = makeStyles({
   root: {
     position: 'relative',
-    ...shorthands.padding('0px', tokens.spacingHorizontalS),
+    padding: `0px ${tokens.spacingHorizontalS}`,
 
     ...createCustomFocusIndicatorStyle(
-      {
-        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
-        ...shorthands.borderRadius(tokens.borderRadiusMedium),
-      },
+      { outline: `2px solid ${tokens.colorStrokeFocus2}`, borderRadius: `${tokens.borderRadiusMedium}` },
       { selector: 'focus' },
     ),
   },

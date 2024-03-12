@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
     minHeight: '30px',
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.border('0'),
+    border: 0,
     boxSizing: 'border-box',
     color: tokens.colorNeutralForeground1,
     columnGap: tokens.spacingHorizontalXXS,
@@ -36,37 +36,28 @@ const useStyles = makeStyles({
   // size variants
   medium: {
     ...typographyStyles.caption1,
-    ...shorthands.padding(
-      '3px',
-      tokens.spacingHorizontalSNudge,
-      '3px',
-      `calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`,
-    ),
+    padding: `3px ${
+      tokens.spacingHorizontalSNudge
+    } 3px ${`calc(${tokens.spacingHorizontalSNudge} + ${tokens.spacingHorizontalXXS})`}`,
   },
   large: {
     ...typographyStyles.body1,
-    ...shorthands.padding(
-      '5px',
-      tokens.spacingHorizontalMNudge,
-      '5px',
-      `calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`,
-    ),
+    padding: `5px ${
+      tokens.spacingHorizontalMNudge
+    } 5px ${`calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`}`,
   },
   'extra-large': {
     columnGap: tokens.spacingHorizontalSNudge,
     ...typographyStyles.body2,
-    ...shorthands.padding(
-      '7px',
-      tokens.spacingHorizontalM,
-      '7px',
-      `calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`,
-    ),
+    padding: `7px ${
+      tokens.spacingHorizontalM
+    } 7px ${`calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`}`,
   },
 
   // appearance variants
   outline: {
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
   },
   outlineInteractive: {
@@ -82,16 +73,16 @@ const useStyles = makeStyles({
   },
   underline: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStrokeAccessible),
-    ...shorthands.borderRadius(0),
+    borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
+    borderRadius: '0',
   },
   'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
+    border: `${tokens.strokeWidthThin} solid transparent`,
   },
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', 'transparent'),
+    border: `${tokens.strokeWidthThin} solid transparent`,
   },
   invalid: {
     ':not(:focus-within),:hover:not(:focus-within)': {
@@ -123,9 +114,10 @@ const useStyles = makeStyles({
   visuallyHidden: {
     clip: 'rect(0px, 0px, 0px, 0px)',
     height: '1px',
-    ...shorthands.margin('-1px'),
-    ...shorthands.overflow('hidden'),
-    ...shorthands.padding('0px'),
+    margin: '-1px',
+    overflow: 'hidden',
+    padding: '0px',
+
     width: '1px',
     position: 'absolute',
   },

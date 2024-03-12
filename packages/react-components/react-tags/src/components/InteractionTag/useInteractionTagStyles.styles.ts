@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { InteractionTagSlots, InteractionTagState } from './InteractionTag.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -15,8 +15,8 @@ const useRootBaseClassName = makeResetStyles({
 });
 
 const useRootStyles = makeStyles({
-  rounded: shorthands.borderRadius(tokens.borderRadiusMedium),
-  circular: shorthands.borderRadius(tokens.borderRadiusCircular),
+  rounded: { borderRadius: `${tokens.borderRadiusMedium}` },
+  circular: { borderRadius: `${tokens.borderRadiusCircular}` },
 
   medium: {
     height: '32px',

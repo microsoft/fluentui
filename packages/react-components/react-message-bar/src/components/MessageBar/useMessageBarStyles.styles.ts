@@ -57,9 +57,7 @@ const useStyles = makeStyles({
     marginRight: '0px',
   },
 
-  square: {
-    ...shorthands.borderRadius(0),
-  },
+  square: { borderRadius: '0' },
 });
 
 const useIconIntentStyles = makeStyles({

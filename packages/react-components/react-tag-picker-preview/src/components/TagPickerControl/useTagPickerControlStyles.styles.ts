@@ -21,11 +21,11 @@ export const tagPickerControlAsideWidthToken = '--fui-TagPickerControl-aside-wid
  */
 const useStyles = makeStyles({
   root: {
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...shorthands.paddingInline(
-      tokens.spacingHorizontalM,
-      `calc(${tokens.spacingHorizontalM} + var(${tagPickerControlAsideWidthToken}, 0px))`,
-    ),
+    borderRadius: `${tokens.borderRadiusMedium}`,
+    paddingInline: `${
+      tokens.spacingHorizontalM
+    } ${`calc(${tokens.spacingHorizontalM} + var(${tagPickerControlAsideWidthToken}, 0px))`}`,
+
     alignItems: 'center',
     columnGap: tokens.spacingHorizontalXXS,
     boxSizing: 'border-box',
@@ -52,7 +52,7 @@ const useStyles = makeStyles({
       height: `max(2px, ${tokens.borderRadiusMedium})`,
       borderBottomLeftRadius: tokens.borderRadiusMedium,
       borderBottomRightRadius: tokens.borderRadiusMedium,
-      ...shorthands.borderBottom(tokens.strokeWidthThick, 'solid', tokens.colorCompoundBrandStroke),
+      borderBottom: `${tokens.strokeWidthThick} solid ${tokens.colorCompoundBrandStroke}`,
       clipPath: 'inset(calc(100% - 2px) 0 0 0)',
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
@@ -82,7 +82,7 @@ const useStyles = makeStyles({
 
   listbox: {
     boxShadow: `${tokens.shadow16}`,
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    borderRadius: `${tokens.borderRadiusMedium}`,
     maxHeight: '80vh',
     boxSizing: 'border-box',
   },
@@ -105,7 +105,7 @@ const useStyles = makeStyles({
   // appearance variants
   outline: {
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
     borderBottomColor: tokens.colorNeutralStrokeAccessible,
   },
 
@@ -122,16 +122,16 @@ const useStyles = makeStyles({
   },
   underline: {
     backgroundColor: tokens.colorTransparentBackground,
-    ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStrokeAccessible),
-    ...shorthands.borderRadius(0),
+    borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
+    borderRadius: '0',
   },
   'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   },
   'filled-darker': {
     backgroundColor: tokens.colorNeutralBackground3,
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   },
   invalid: {
     ':not(:focus-within),:hover:not(:focus-within)': {

@@ -1,6 +1,6 @@
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { AvatarSlots, AvatarState } from './Avatar.types';
 
 export const avatarClassNames: SlotClassNames<AvatarSlots> = {
@@ -114,18 +114,10 @@ const useStyles = makeStyles({
   textSubtitle1: { fontSize: tokens.fontSizeBase500 },
   textTitle3: { fontSize: tokens.fontSizeBase600 },
 
-  squareSmall: {
-    ...shorthands.borderRadius(tokens.borderRadiusSmall),
-  },
-  squareMedium: {
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-  },
-  squareLarge: {
-    ...shorthands.borderRadius(tokens.borderRadiusLarge),
-  },
-  squareXLarge: {
-    ...shorthands.borderRadius(tokens.borderRadiusXLarge),
-  },
+  squareSmall: { borderRadius: `${tokens.borderRadiusSmall}` },
+  squareMedium: { borderRadius: `${tokens.borderRadiusMedium}` },
+  squareLarge: { borderRadius: `${tokens.borderRadiusLarge}` },
+  squareXLarge: { borderRadius: `${tokens.borderRadiusXLarge}` },
 
   activeOrInactive: {
     transform: 'perspective(1px)', // Work-around for text pixel snapping at the end of the animation
@@ -178,7 +170,8 @@ const useStyles = makeStyles({
     transitionTimingFunction: `${tokens.curveDecelerateMin}, ${tokens.curveLinear}`,
 
     '::before,::after': {
-      ...shorthands.margin(0),
+      margin: '0',
+
       opacity: 0,
       transitionTimingFunction: `${tokens.curveDecelerateMin}, ${tokens.curveLinear}`,
     },
