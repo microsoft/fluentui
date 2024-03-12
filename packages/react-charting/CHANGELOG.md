@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 11 Mar 2024 07:26:25 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Mar 2024 07:26:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.34)
+
+Tue, 12 Mar 2024 07:26:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.19.33..@fluentui/react-charting_v5.19.34)
+
+### Patches
+
+- Add RTL for Date Axis in VBC ([PR #30751](https://github.com/microsoft/fluentui/pull/30751) by shubhabrata08@gmail.com)
 
 ## [5.19.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.33)
 
