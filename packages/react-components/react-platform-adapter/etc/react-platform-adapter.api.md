@@ -4,11 +4,11 @@
 
 ```ts
 
-import type { PartialTheme } from '@fluentui/react-theme';
-import * as React_2 from 'react';
 import { makeResetStyles } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
 import { mergeClasses } from '@griffel/react';
+import type { PartialTheme } from '@fluentui/react-theme';
+import * as React_2 from 'react';
 import { shorthands } from '@griffel/react';
 
 // @public (undocumented)
