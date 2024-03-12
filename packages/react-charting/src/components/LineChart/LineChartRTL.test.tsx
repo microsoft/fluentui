@@ -407,8 +407,6 @@ describe('Line chart - Subcomponent line', () => {
       // Assert
       expect(lines).toHaveLength(8);
     },
-    undefined,
-    undefined,
   );
 });
 
@@ -570,8 +568,6 @@ describe('Line chart - Subcomponent Time Range', () => {
       // Assert
       expect(getByClass(container, /rect/i).length > 0);
     },
-    undefined,
-    undefined,
   );
 
   testWithWait(
@@ -591,8 +587,6 @@ describe('Line chart - Subcomponent Time Range', () => {
       expect(filledBars[0].getAttribute('fill-opacity')).toEqual('0.4');
       expect(filledBars[1].getAttribute('fill-opacity')).toEqual('0.1');
     },
-    undefined,
-    undefined,
   );
 });
 
@@ -610,8 +604,6 @@ describe('Line chart - Subcomponent xAxis Labels', () => {
       // Assert
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Febr...');
     },
-    undefined,
-    undefined,
   );
 });
 
@@ -638,8 +630,6 @@ describe.skip('Line chart - Subcomponent Event', () => {
       expect(event).toBeDefined();
       fireEvent.click(event!);
     },
-    undefined,
-    undefined,
   );
 });
 

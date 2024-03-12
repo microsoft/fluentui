@@ -485,8 +485,6 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
       // Assert
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Jan ...');
     },
-    undefined,
-    undefined,
   );
 
   testWithWait(
