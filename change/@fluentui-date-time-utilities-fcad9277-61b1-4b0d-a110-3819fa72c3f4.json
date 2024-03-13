@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix breaks from typescript upgrade",
+  "packageName": "@fluentui/date-time-utilities",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
