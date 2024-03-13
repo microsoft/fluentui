@@ -23,6 +23,29 @@ function sharedBeforeEach() {
   resetIds();
 }
 
+const originalRAF = window.requestAnimationFrame;
+
+function updateChartWidthAndHeight() {
+  jest.useFakeTimers();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
+  window.HTMLElement.prototype.getBoundingClientRect = () =>
+    ({
+      bottom: 44,
+      height: 50,
+      left: 10,
+      right: 35.67,
+      top: 20,
+      width: 650,
+    } as DOMRect);
+}
+function sharedAfterEach() {
+  jest.useRealTimers();
+  window.requestAnimationFrame = originalRAF;
+}
+
 const chart1Points = [
   {
     x: 20,
@@ -252,7 +275,12 @@ const chartDataWithDates = {
 };
 
 describe('Area chart rendering', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
+  });
+  afterEach(sharedAfterEach);
+
   testWithoutWait(
     'Should render the area chart with numeric x-axis data',
     AreaChart,
@@ -449,7 +477,7 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
       // FIXME - Bad check. Not the best way to check result from a third party utility.
       // If there are any changes, the value must be manually adjusted to ensure the test passes.
       // Assert
-      expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(39.03658536585366,0)');
+      expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(54.890243902439025,0)');
     },
     undefined,
     undefined,
@@ -458,16 +486,11 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
 });
 
 describe('Screen resolution', () => {
-  beforeEach(sharedBeforeEach);
-  const originalInnerWidth = global.innerWidth;
-  const originalInnerHeight = global.innerHeight;
-  afterEach(() => {
-    global.innerWidth = originalInnerWidth;
-    global.innerHeight = originalInnerHeight;
-    act(() => {
-      global.dispatchEvent(new Event('resize'));
-    });
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
   });
+  afterEach(sharedAfterEach);
 
   testWithWait(
     'Should remain unchanged on zoom in',
@@ -503,7 +526,12 @@ describe('Screen resolution', () => {
 });
 
 describe('AreaChart - Theme', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
+  });
+  afterEach(sharedAfterEach);
+
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
@@ -514,7 +542,10 @@ describe('AreaChart - Theme', () => {
     // Assert
     expect(container).toMatchSnapshot();
   });
+});
 
+describe('AreaChart - Accessibility tests', () => {
+  beforeEach(sharedBeforeEach);
   test('Should pass accessibility tests', async () => {
     const { container } = render(<AreaChart data={chartData} />);
     let axeResults;
