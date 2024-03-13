@@ -14,7 +14,7 @@ import { shorthands } from '@griffel/react';
 export const DevRuntime: JSXDevRuntime;
 
 // @public (undocumented)
-export const getStylesFromClassName: (className: string | undefined) => undefined;
+export const getStylesFromClassName: (className: string) => undefined;
 
 export { makeResetStyles }
 
