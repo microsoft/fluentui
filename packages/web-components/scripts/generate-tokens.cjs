@@ -9,7 +9,7 @@ const fluentTokens = Object.keys(tokens);
 const comment = '// THIS FILE IS GENERATED AS PART OF THE BUILD PROCESS. DO NOT MANUALLY MODIFY THIS FILE\n';
 
 const generatedTokens = fluentTokens.reduce((acc, t) => {
-  const token = `export const ${t} = '--${t}';\n`;
+  const token = `export const ${t} = 'var(--${t})';\n`;
   return acc + token;
 }, '');
 

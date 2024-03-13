@@ -23,30 +23,30 @@ export const styles = css`
   ${display('flex')}
 
   :host {
-    font-family: var(${fontFamilyBase});
-    font-size: var(${fontSizeBase300});
-    line-height: var(${lineHeightBase300});
-    font-weight: var(${fontWeightRegular});
-    color: var(${colorNeutralForeground1});
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase300};
+    line-height: ${lineHeightBase300};
+    font-weight: ${fontWeightRegular};
+    color: ${colorNeutralForeground1};
   }
   .asterisk {
-    color: var(${colorPaletteRedForeground1});
-    margin-left: var(${spacingHorizontalXS});
+    color: ${colorPaletteRedForeground1};
+    margin-left: ${spacingHorizontalXS};
   }
   :host([size='small']) {
-    font-size: var(${fontSizeBase200});
-    line-height: var(${lineHeightBase200});
+    font-size: ${fontSizeBase200};
+    line-height: ${lineHeightBase200};
   }
   :host([size='large']) {
-    font-size: var(${fontSizeBase400});
-    line-height: var(${lineHeightBase400});
-    font-weight: var(${fontWeightSemibold});
+    font-size: ${fontSizeBase400};
+    line-height: ${lineHeightBase400};
+    font-weight: ${fontWeightSemibold};
   }
   :host([weight='semibold']) {
-    font-weight: var(${fontWeightSemibold});
+    font-weight: ${fontWeightSemibold};
   }
   :host([disabled]),
   :host([disabled]) .asterisk {
-    color: var(${colorNeutralForegroundDisabled});
+    color: ${colorNeutralForegroundDisabled};
   }
 `;

@@ -7,6 +7,6 @@ export const styles = css`
 
   :host {
     box-sizing: border-box;
-    padding: var(${spacingHorizontalM}) var(${spacingHorizontalMNudge});
+    padding: ${spacingHorizontalM} ${spacingHorizontalMNudge};
   }
 `;

@@ -28,18 +28,18 @@ export const styles = css`
   ${display('flex')}
 
   :host {
-    --dialog-backdrop: var(${colorBackgroundOverlay});
+    --dialog-backdrop: ${colorBackgroundOverlay};
   }
 
   dialog {
-    background: var(${colorNeutralBackground1});
-    border: var(${strokeWidthThin}) solid var(${colorTransparentStroke});
+    background: ${colorNeutralBackground1};
+    border: ${strokeWidthThin} solid ${colorTransparentStroke};
     z-index: 2;
     margin: auto auto;
     max-width: 100%;
     width: 100vw;
-    border-radius: var(${borderRadiusXLarge});
-    box-shadow: var(${shadow64});
+    border-radius: ${borderRadiusXLarge};
+    box-shadow: ${shadow64};
     max-height: 100vh;
     height: fit-content;
     overflow: unset;
@@ -58,16 +58,16 @@ export const styles = css`
     flex-direction: column;
     overflow: unset;
     max-height: calc(100vh - 48px);
-    padding: var(${spacingVerticalXXL}) var(${spacingHorizontalXXL});
+    padding: ${spacingVerticalXXL} ${spacingHorizontalXXL};
   }
 
   .title {
-    font-size: var(${fontSizeBase500});
-    line-height: var(${lineHeightBase500});
-    font-weight: var(${fontWeightSemibold});
-    font-family: var(${fontFamilyBase});
-    color: var(${colorNeutralForeground1});
-    margin-bottom: var(${spacingVerticalS});
+    font-size: ${fontSizeBase500};
+    line-height: ${lineHeightBase500};
+    font-weight: ${fontWeightSemibold};
+    font-family: ${fontFamilyBase};
+    color: ${colorNeutralForeground1};
+    margin-bottom: ${spacingVerticalS};
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -77,11 +77,11 @@ export const styles = css`
   .content {
     vertical-align: top;
     min-height: 32px;
-    color: var(${colorNeutralForeground1});
-    font-size: var(${fontSizeBase300});
-    line-height: var(${lineHeightBase300});
-    font-weight: var(${fontWeightRegular});
-    font-family: var(${fontFamilyBase});
+    color: ${colorNeutralForeground1};
+    font-size: ${fontSizeBase300};
+    line-height: ${lineHeightBase300};
+    font-weight: ${fontWeightRegular};
+    font-family: ${fontFamilyBase};
     overflow-y: auto;
     box-sizing: border-box;
   }
@@ -91,8 +91,8 @@ export const styles = css`
     grid-column-start: 1;
     flex-direction: column;
     max-width: 100vw;
-    row-gap: var(${spacingVerticalS});
-    padding-top: var(${spacingVerticalXXL});
+    row-gap: ${spacingVerticalS};
+    padding-top: ${spacingVerticalXXL};
     justify-self: stretch;
     width: 100%;
   }
@@ -113,8 +113,8 @@ export const styles = css`
       flex-direction: row;
       justify-content: flex-end;
       align-items: center;
-      column-gap: var(${spacingHorizontalS});
-      padding-top: var(${spacingVerticalS});
+      column-gap: ${spacingHorizontalS};
+      padding-top: ${spacingVerticalS};
       box-sizing: border-box;
     }
   }
