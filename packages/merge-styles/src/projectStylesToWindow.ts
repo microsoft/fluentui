@@ -25,7 +25,7 @@ export const projectStylesToWindow = (stylesheet: Stylesheet, targetWindow: Wind
 
   const sourceAdoptedSheets = stylesheet.getAdoptedSheets();
   sourceAdoptedSheets.forEach((srcSheet, key) => {
-    const clonedSheet = cloneExtendedCSSStyleSheet(srcSheet, stylesheet.makeCSSStyleSheet(targetWindow));
+    const clonedSheet = cloneExtendedCSSStyleSheet(srcSheet, targetStylesheet.makeCSSStyleSheet());
     targetStylesheet.addAdoptableStyleSheet(key, clonedSheet);
   });
 
