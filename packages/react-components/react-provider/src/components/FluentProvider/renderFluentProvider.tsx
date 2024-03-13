@@ -1,7 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { canUseDOM, assertSlots } from '@fluentui/react-utilities';
-import { TextDirectionProvider } from '@griffel/react';
+import { TextDirectionProvider } from '@fluentui/react-platform-adapter';
 import {
   OverridesProvider_unstable as OverridesProvider,
   Provider_unstable as Provider,

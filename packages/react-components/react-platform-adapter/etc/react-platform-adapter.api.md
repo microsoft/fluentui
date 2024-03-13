@@ -10,6 +10,9 @@ import { mergeClasses } from '@griffel/react';
 import type { PartialTheme } from '@fluentui/react-theme';
 import * as React_2 from 'react';
 import { shorthands } from '@griffel/react';
+import { TextDirectionProvider } from '@griffel/react';
+import type { Theme } from '@fluentui/react-theme';
+import { useRenderer_unstable } from '@griffel/react';
 
 // @public (undocumented)
 export const getStylesFromClassName: (className: string) => undefined;
@@ -25,17 +28,9 @@ export { shorthands }
 // @public (undocumented)
 export const suppressCssVariableInsertion = false;
 
-// @public
-export const XPlatProvider: React_2.FunctionComponent<XPlatProviderProps>;
+export { TextDirectionProvider }
 
-// @public (undocumented)
-export type XPlatProviderProps = {
-    theme: PartialTheme;
-    children: JSX.Element;
-};
-
-// @public (undocumented)
-export const suppressCssVariableInsertion = false;
+export { useRenderer_unstable }
 
 // @public
 export const XPlatProvider: React_2.FunctionComponent<XPlatProviderProps>;
