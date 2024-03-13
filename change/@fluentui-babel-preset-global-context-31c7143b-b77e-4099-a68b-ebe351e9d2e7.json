@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "lockfile changes for bumping typescript and react-strict-dom versions",
+  "packageName": "@fluentui/babel-preset-global-context",
+  "email": "email not defined",
+  "dependentChangeType": "none"
+}

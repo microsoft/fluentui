@@ -5173,16 +5173,6 @@
   dependencies:
     postcss-value-parser "^4.1.0"
 
-"@stylexjs/stylex@0.5.0-alpha.4":
-  version "0.5.0-alpha.4"
-  resolved "https://registry.yarnpkg.com/@stylexjs/stylex/-/stylex-0.5.0-alpha.4.tgz#cdc27e11410ff2f719c809ed973f83c7efdf5da4"
-  integrity sha512-yDyAo0PJi/jJ9rcKJsW5lhsn1CaU6M6jnAcKg8/kLv+fP/tr6azTu9cLIW8w40MvZ4Y+2kCLrar3KSYEzeuF6w==
-  dependencies:
-    css-mediaquery "^0.1.2"
-    invariant "^2.2.4"
-    styleq "0.1.3"
-    utility-types "^3.10.0"
-
 "@stylexjs/stylex@0.5.1", "@stylexjs/stylex@^0.5.1":
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/@stylexjs/stylex/-/stylex-0.5.1.tgz#e604908c4933d01474bff7c909cb9cef659bd56c"
@@ -22075,13 +22065,14 @@ react-source-render@4.0.0-1:
     react-fast-compare "^2.0.4"
     react-is "^16.6.3"
 
-react-strict-dom@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/react-strict-dom/-/react-strict-dom-0.0.1.tgz#f7780232d8260813686b789af1784a261c5f1b2c"
-  integrity sha512-yoSfHN0kryOT3rEz0GiXu/9P/93GQT+RK/jZCLclSsnctSJw7gF3nzLX6aiQHIBv31of5hyX947vaIQZtlfu6w==
+react-strict-dom@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/react-strict-dom/-/react-strict-dom-0.0.3.tgz#e6a131a16e4d8f1f5de6cf084db3d31532593b1a"
+  integrity sha512-dQDE2zTEQSRzLvxGuNRbYMRYZWu5tptBJnrMOt2m4GJa1AYcdTnahRRNUlRZV32VKPG+/GnLRXZK6gNqoiZN8Q==
   dependencies:
     "@stylexjs/stylex" "0.5.1"
     css-mediaquery "0.1.2"
+    postcss-value-parser "^4.1.0"
 
 react-syntax-highlighter@^10.1.3:
   version "10.3.5"

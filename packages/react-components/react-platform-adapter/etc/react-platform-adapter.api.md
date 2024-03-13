@@ -7,6 +7,8 @@
 import { makeResetStyles } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
 import { mergeClasses } from '@griffel/react';
+import type { PartialTheme } from '@fluentui/react-theme';
+import * as React_2 from 'react';
 import { shorthands } from '@griffel/react';
 
 // @public (undocumented)
@@ -19,6 +21,18 @@ export { makeStyles }
 export { mergeClasses }
 
 export { shorthands }
+
+// @public (undocumented)
+export const suppressCssVariableInsertion = false;
+
+// @public
+export const XPlatProvider: React_2.FunctionComponent<XPlatProviderProps>;
+
+// @public (undocumented)
+export type XPlatProviderProps = {
+    theme: PartialTheme;
+    children: JSX.Element;
+};
 
 // (No @packageDocumentation comment for this package)
 
