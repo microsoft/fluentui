@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Implement cross-platform jsx support",
+  "packageName": "@fluentui/react-jsx-runtime",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
