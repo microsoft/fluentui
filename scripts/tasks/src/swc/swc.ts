@@ -6,20 +6,21 @@ import glob from 'glob';
 import * as micromatch from 'micromatch';
 
 import { Options } from './types';
-import { addJsExtensionToImports } from './utils';
+import { postprocessOutput } from './utils';
 
 async function swcTransform(options: Options) {
   const { outputPath, module, root: packageRoot = process.cwd() } = options;
 
-  const sourceRootDirName = module.type === 'es6' ? 'src' : 'lib';
+  const moduleType = module.type;
+  const sourceRootDirName = moduleType === 'es6' ? 'src' : 'lib';
 
   let sourceFiles: string[] = [];
 
-  if (module.type === 'es6') {
+  if (moduleType === 'es6') {
     sourceFiles = glob.sync(`${sourceRootDirName}/**/*.{ts,tsx}`);
   }
 
-  if (module.type === 'commonjs' || module.type === 'amd') {
+  if (moduleType === 'commonjs' || moduleType === 'amd') {
     sourceFiles = glob.sync(`${sourceRootDirName}/**/*.js`);
   }
 
@@ -39,22 +40,19 @@ async function swcTransform(options: Options) {
 
     const result = await transform(sourceCode, {
       filename: fileName,
-      module: { type: module.type, resolveFully: enableResolveFully },
+      module: { type: moduleType, resolveFully: enableResolveFully },
       sourceFileName: path.basename(fileName),
       outputPath,
     });
 
-    // Strip @jsx comments, see https://github.com/microsoft/fluentui/issues/29126
-    let resultCode = result.code
-      .replace('/** @jsxRuntime automatic */', '')
-      .replace('/** @jsxImportSource @fluentui/react-jsx-runtime */', '');
-
-    // Remove after swc implement proper js extension addition https://github.com/microsoft/fluentui/issues/30634
-    resultCode = enableResolveFully ? addJsExtensionToImports(resultCode, module.type) : resultCode;
+    const resultCode = postprocessOutput(result.code, {
+      addExplicitJsExtensionToImports: enableResolveFully,
+      moduleType,
+    });
 
     const compiledFilePath = path.resolve(packageRoot, fileName.replace(`${sourceRootDirName}`, outputPath));
 
-    //Create directory folder for new compiled file(s) to live in.
+    // Create directory folder for new compiled file(s) to live in.
     await fs.promises.mkdir(compiledFilePath.replace(path.basename(compiledFilePath), ''), { recursive: true });
 
     const compiledFilePathJS = `${compiledFilePath.replace(tsFileExtensionRegex, '.js')}`;

@@ -6,5 +6,4 @@ declare module '@swc/core' {
   }
 }
 
-export type Options = Omit<SwcOptions, 'module' | 'outputPath'> &
-  Required<Pick<SwcOptions, 'module' | 'outputPath'>> & { root?: string };
+export type Options = SwcOptions & Required<Pick<SwcOptions, 'module' | 'outputPath'>> & { root?: string };
