@@ -27,7 +27,9 @@ const modifyPropsForNative = <P extends {}>(
 export const jsxPlatformAdapter = (reactJsx: JSXRuntime): JSXRuntime => {
   return (type, props, key, source, self) => {
     if (typeof type === 'string' && type in html) {
-      return reactJsx(html[type], modifyPropsForNative(props), key, source, self);
+      // TODO need to figure out proper type for indexing the `html` import.
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return reactJsx((html as any)[type], modifyPropsForNative(props), key, source, self);
     }
 
     return reactJsx(type, props, key, source, self);
