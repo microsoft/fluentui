@@ -32,40 +32,40 @@ export const styles = css`
 
   :host {
     box-sizing: border-box;
-    font-family: var(${fontFamilyBase});
-    font-size: var(${fontSizeBase300});
-    line-height: var(${lineHeightBase300});
-    color: var(${colorNeutralForeground2});
+    font-family: ${fontFamilyBase};
+    font-size: ${fontSizeBase300};
+    line-height: ${lineHeightBase300};
+    color: ${colorNeutralForeground2};
     grid-template-columns: auto 1fr auto;
     grid-template-rows: auto 1fr;
   }
 
   :host([disabled]) {
     cursor: not-allowed;
-    color: var(${colorNeutralForegroundDisabled});
+    color: ${colorNeutralForegroundDisabled};
   }
 
   :host([disabled]) ::slotted(fluent-tab) {
     pointer-events: none;
     cursor: not-allowed;
-    color: var(${colorNeutralForegroundDisabled});
+    color: ${colorNeutralForegroundDisabled};
   }
   :host([disabled]) ::slotted(fluent-tab:after) {
-    background-color: var(${colorNeutralForegroundDisabled});
+    background-color: ${colorNeutralForegroundDisabled};
   }
   :host([disabled]) ::slotted(fluent-tab[aria-selected='true'])::after {
-    background-color: var(${colorNeutralForegroundDisabled});
+    background-color: ${colorNeutralForegroundDisabled};
   }
   :host([disabled]) ::slotted(fluent-tab:hover):before {
     content: unset;
   }
 
   :host ::slotted(fluent-tab) {
-    border-radius: var(${borderRadiusMedium});
+    border-radius: ${borderRadiusMedium};
   }
 
   :host ::slotted(fluent-tab[aria-selected='true'])::before {
-    background-color: var(${colorNeutralForegroundDisabled});
+    background-color: ${colorNeutralForegroundDisabled};
   }
 
   .tablist {
@@ -121,43 +121,43 @@ export const styles = css`
   }
 
   :host([appearance='subtle']) ::slotted(fluent-tab:hover) {
-    background-color: var(${colorSubtleBackgroundHover});
-    color: var(${colorNeutralForeground1Hover});
-    fill: var(${colorCompoundBrandForeground1Hover});
+    background-color: ${colorSubtleBackgroundHover};
+    color: ${colorNeutralForeground1Hover};
+    fill: ${colorCompoundBrandForeground1Hover};
   }
 
   :host([appearance='subtle']) ::slotted(fluent-tab:active) {
-    background-color: var(${colorSubtleBackgroundPressed});
-    fill: var(${colorSubtleBackgroundPressed});
-    color: var(${colorNeutralForeground1});
+    background-color: ${colorSubtleBackgroundPressed};
+    fill: ${colorSubtleBackgroundPressed};
+    color: ${colorNeutralForeground1};
   }
 
   :host([size='small']) ::slotted(fluent-tab) {
-    font-size: var(${fontSizeBase300});
-    line-height: var(${lineHeightBase300});
-    padding: var(${spacingVerticalSNudge}) var(${spacingHorizontalSNudge});
+    font-size: ${fontSizeBase300};
+    line-height: ${lineHeightBase300};
+    padding: ${spacingVerticalSNudge} ${spacingHorizontalSNudge};
   }
 
   :host([size='large']) ::slotted(fluent-tab) {
-    font-size: var(${fontSizeBase400});
-    line-height: var(${lineHeightBase400});
-    padding: var(${spacingVerticalL}) var(${spacingHorizontalMNudge});
+    font-size: ${fontSizeBase400};
+    line-height: ${lineHeightBase400};
+    padding: ${spacingVerticalL} ${spacingHorizontalMNudge};
   }
 
   /* indicator animation  */
   :host ::slotted(fluent-tab[data-animate='true'])::after {
     transition-property: transform;
-    transition-duration: var(${durationSlow});
-    transition-timing-function: var(${curveDecelerateMax});
+    transition-duration: ${durationSlow};
+    transition-timing-function: ${curveDecelerateMax};
   }
   :host ::slotted(fluent-tab)::after {
-    height: var(${strokeWidthThicker});
+    height: ${strokeWidthThicker};
     margin-top: auto;
     transform-origin: left;
     transform: translateX(var(--tabIndicatorOffset)) scaleX(var(--tabIndicatorScale));
   }
   :host([orientation='vertical']) ::slotted(fluent-tab)::after {
-    width: var(${strokeWidthThicker});
+    width: ${strokeWidthThicker};
     height: unset;
     margin-top: unset;
     transform-origin: top;
@@ -166,8 +166,8 @@ export const styles = css`
 
   /* ::before adds a secondary indicator placeholder that appears right after click on the active tab */
   :host ::slotted(fluent-tab)::before {
-    height: var(${strokeWidthThicker});
-    border-radius: var(${borderRadiusCircular});
+    height: ${strokeWidthThicker};
+    border-radius: ${borderRadiusCircular};
     content: '';
     inset: 0;
     position: absolute;
@@ -175,13 +175,13 @@ export const styles = css`
   }
   :host([orientation='vertical']) ::slotted(fluent-tab)::before {
     height: unset;
-    width: var(${strokeWidthThicker});
+    width: ${strokeWidthThicker};
     margin-inline-end: auto;
     transform-origin: top;
   }
 
   :host ::slotted(fluent-tab[aria-selected='false']:hover)::after {
-    height: var(${strokeWidthThicker});
+    height: ${strokeWidthThicker};
     margin-top: auto;
     transform-origin: left;
   }
@@ -189,42 +189,42 @@ export const styles = css`
     height: unset;
     margin-inline-end: auto;
     transform-origin: top;
-    width: var(${strokeWidthThicker});
+    width: ${strokeWidthThicker};
   }
 
   :host([orientation='vertical']) ::slotted(fluent-tab) {
     align-items: flex-start;
     grid-column: 2;
-    padding-top: var(${spacingVerticalSNudge});
-    padding-bottom: var(${spacingVerticalSNudge});
+    padding-top: ${spacingVerticalSNudge};
+    padding-bottom: ${spacingVerticalSNudge};
   }
   :host([orientation='vertical'][size='small']) ::slotted(fluent-tab) {
-    padding-top: var(${spacingVerticalXXS});
-    padding-bottom: var(${spacingVerticalXXS});
+    padding-top: ${spacingVerticalXXS};
+    padding-bottom: ${spacingVerticalXXS};
   }
   :host([orientation='vertical'][size='large']) ::slotted(fluent-tab) {
-    padding-top: var(${spacingVerticalS});
-    padding-bottom: var(${spacingVerticalS});
+    padding-top: ${spacingVerticalS};
+    padding-bottom: ${spacingVerticalS};
   }
 
   /* horizontal spacing for indicator */
   :host([size='small']) ::slotted(fluent-tab)::after,
   :host([size='small']) ::slotted(fluent-tab)::before,
   :host([size='small']) ::slotted(fluent-tab:hover)::after {
-    right: var(${spacingHorizontalSNudge});
-    left: var(${spacingHorizontalSNudge});
+    right: ${spacingHorizontalSNudge};
+    left: ${spacingHorizontalSNudge};
   }
   :host ::slotted(fluent-tab)::after,
   :host ::slotted(fluent-tab)::before,
   :host ::slotted(fluent-tab:hover)::after {
-    right: var(${spacingHorizontalMNudge});
-    left: var(${spacingHorizontalMNudge});
+    right: ${spacingHorizontalMNudge};
+    left: ${spacingHorizontalMNudge};
   }
   :host([size='large']) ::slotted(fluent-tab)::after,
   :host([size='large']) ::slotted(fluent-tab)::before,
   :host([size='large']) ::slotted(fluent-tab:hover)::after {
-    right: var(${spacingHorizontalMNudge});
-    left: var(${spacingHorizontalMNudge});
+    right: ${spacingHorizontalMNudge};
+    left: ${spacingHorizontalMNudge};
   }
 
   /* vertical spacing for indicator */
@@ -233,23 +233,23 @@ export const styles = css`
   :host([orientation='vertical'][size='small']) ::slotted(fluent-tab:hover)::after {
     right: 0;
     left: 0;
-    top: var(${spacingVerticalSNudge});
-    bottom: var(${spacingVerticalSNudge});
+    top: ${spacingVerticalSNudge};
+    bottom: ${spacingVerticalSNudge};
   }
   :host([orientation='vertical']) ::slotted(fluent-tab)::after,
   :host([orientation='vertical']) ::slotted(fluent-tab)::before,
   :host([orientation='vertical']) ::slotted(fluent-tab:hover)::after {
     right: 0;
     left: 0;
-    top: var(${spacingVerticalS});
-    bottom: var(${spacingVerticalS});
+    top: ${spacingVerticalS};
+    bottom: ${spacingVerticalS};
   }
   :host([orientation='vertical'][size='large']) ::slotted(fluent-tab)::after,
   :host([orientation='vertical'][size='large']) ::slotted(fluent-tab)::before,
   :host([orientation='vertical'][size='large']) ::slotted(fluent-tab:hover)::after {
     right: 0;
     left: 0;
-    top: var(${spacingVerticalMNudge});
-    bottom: var(${spacingVerticalMNudge});
+    top: ${spacingVerticalMNudge};
+    bottom: ${spacingVerticalMNudge};
   }
 `;

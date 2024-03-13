@@ -61,12 +61,12 @@ export const styles = css`
   }
   .label {
     position: relative;
-    color: var(${colorNeutralForeground1});
-    line-height: var(${lineHeightBase300});
-    font-size: var(${fontSizeBase300});
-    font-weight: var(${fontWeightRegular});
-    font-family: var(${fontFamilyBase});
-    padding: var(${spacingVerticalXS}) var(${spacingHorizontalXS});
+    color: ${colorNeutralForeground1};
+    line-height: ${lineHeightBase300};
+    font-size: ${fontSizeBase300};
+    font-weight: ${fontWeightRegular};
+    font-family: ${fontFamilyBase};
+    padding: ${spacingVerticalXS} ${spacingHorizontalXS};
     cursor: pointer;
   }
   .label__hidden {
@@ -75,83 +75,83 @@ export const styles = css`
   .switch {
     display: flex;
     align-items: center;
-    padding: 0 var(${spacingHorizontalXXS});
+    padding: 0 ${spacingHorizontalXXS};
     box-sizing: border-box;
     width: 40px;
     height: 20px;
-    background-color: var(${colorTransparentBackground});
-    border: 1px solid var(${colorNeutralStrokeAccessible});
-    border-radius: var(${borderRadiusCircular});
+    background-color: ${colorTransparentBackground};
+    border: 1px solid ${colorNeutralStrokeAccessible};
+    border-radius: ${borderRadiusCircular};
     outline: none;
     cursor: pointer;
-    margin: var(${spacingVerticalS}) var(${spacingHorizontalS});
+    margin: ${spacingVerticalS} ${spacingHorizontalS};
   }
   :host(:hover) .switch {
     background: none;
-    border-color: var(${colorNeutralStrokeAccessibleHover});
+    border-color: ${colorNeutralStrokeAccessibleHover};
   }
   :host(:active) .switch {
-    border-color: var(${colorNeutralStrokeAccessiblePressed});
+    border-color: ${colorNeutralStrokeAccessiblePressed};
   }
   :host([disabled]) .switch,
   :host([readonly]) .switch {
-    border: 1px solid var(${colorNeutralStrokeDisabled});
+    border: 1px solid ${colorNeutralStrokeDisabled};
     background-color: none;
     pointer: default;
   }
   :host([aria-checked='true']) .switch {
-    background: var(${colorCompoundBrandBackground});
+    background: ${colorCompoundBrandBackground};
   }
   :host([aria-checked='true']:hover) .switch {
-    background: var(${colorCompoundBrandBackgroundHover});
-    border-color: var(${colorCompoundBrandBackgroundHover});
+    background: ${colorCompoundBrandBackgroundHover};
+    border-color: ${colorCompoundBrandBackgroundHover};
   }
   :host([aria-checked='true']:active) .switch {
-    background: var(${colorCompoundBrandBackgroundPressed});
-    border-color: var(${colorCompoundBrandBackgroundPressed});
+    background: ${colorCompoundBrandBackgroundPressed};
+    border-color: ${colorCompoundBrandBackgroundPressed};
   }
   :host([aria-checked='true'][disabled]) .switch {
-    background: var(${colorNeutralBackgroundDisabled});
-    border-color: var(${colorNeutralStrokeDisabled});
+    background: ${colorNeutralBackgroundDisabled};
+    border-color: ${colorNeutralStrokeDisabled};
   }
   .checked-indicator {
     height: 14px;
     width: 14px;
     border-radius: 50%;
     margin-inline-start: 0;
-    background-color: var(${colorNeutralForeground3});
-    transition-duration: var(${durationNormal});
-    transition-timing-function: var(${curveEasyEase});
+    background-color: ${colorNeutralForeground3};
+    transition-duration: ${durationNormal};
+    transition-timing-function: ${curveEasyEase};
     transition-property: margin-inline-start;
   }
   :host([aria-checked='true']) .checked-indicator {
-    background-color: var(${colorNeutralForegroundInverted});
+    background-color: ${colorNeutralForegroundInverted};
     margin-inline-start: calc(100% - 14px);
   }
   :host([aria-checked='true']:hover) .checked-indicator {
-    background: var(${colorNeutralForegroundInvertedHover});
+    background: ${colorNeutralForegroundInvertedHover};
   }
   :host([aria-checked='true']:active) .checked-indicator {
-    background: var(${colorNeutralForegroundInvertedPressed});
+    background: ${colorNeutralForegroundInvertedPressed};
   }
   :host(:hover) .checked-indicator {
-    background-color: var(${colorNeutralForeground3Hover});
+    background-color: ${colorNeutralForeground3Hover};
   }
   :host(:active) .checked-indicator {
-    background-color: var(${colorNeutralForeground3Pressed});
+    background-color: ${colorNeutralForeground3Pressed};
   }
   :host([disabled]) .checked-indicator,
   :host([readonly]) .checked-indicator {
-    background: var(${colorNeutralForegroundDisabled});
+    background: ${colorNeutralForegroundDisabled};
   }
   :host([aria-checked='true'][disabled]) .checked-indicator {
-    background: var(${colorNeutralForegroundDisabled});
+    background: ${colorNeutralForegroundDisabled};
   }
 
   :host(:focus-visible) {
-    border-color: var(${colorTransparentStroke});
-    outline: var(${strokeWidthThick}) solid var(${colorTransparentStroke});
-    box-shadow: var(${shadow4}), 0 0 0 2px var(${colorStrokeFocus2});
+    border-color: ${colorTransparentStroke};
+    outline: ${strokeWidthThick} solid ${colorTransparentStroke};
+    box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
