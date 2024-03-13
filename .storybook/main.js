@@ -103,8 +103,4 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
    * @see https://storybook.js.org/docs/react/addons/writing-presets#previewmanager-templates
    */
   previewHead: head => head + previewHeadTemplate,
-  typescript: {
-    // TODO disabled due to Typescript version. Need to restore.
-    reactDocgen: false,
-  },
 });
