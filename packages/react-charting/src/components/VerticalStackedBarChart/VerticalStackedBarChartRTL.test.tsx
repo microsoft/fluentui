@@ -25,6 +25,29 @@ function sharedBeforeEach() {
   resetIds();
 }
 
+const originalRAF = window.requestAnimationFrame;
+
+function updateChartWidthAndHeight() {
+  jest.useFakeTimers();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
+  window.HTMLElement.prototype.getBoundingClientRect = () =>
+    ({
+      bottom: 44,
+      height: 50,
+      left: 10,
+      right: 35.67,
+      top: 20,
+      width: 650,
+    } as DOMRect);
+}
+function sharedAfterEach() {
+  jest.useRealTimers();
+  window.requestAnimationFrame = originalRAF;
+}
+
 const firstChartPoints: IVSChartDataPoint[] = [
   { legend: 'Metadata1', data: 2, color: DefaultPalette.blue },
   { legend: 'Metadata2', data: 0.5, color: DefaultPalette.blueMid },
@@ -107,7 +130,11 @@ const simplePointsWithoutLine = [
 const maxBarGap = 5;
 
 describe('Vertical stacked bar chart rendering', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
+  });
+  afterEach(sharedAfterEach);
 
   testWithoutWait(
     'Should render the vertical stacked bar chart with numeric x-axis data',
@@ -169,6 +196,11 @@ describe('Vertical stacked bar chart rendering', () => {
   );
 
   forEachTimezone((tzName, tzIdentifier) => {
+    beforeEach(() => {
+      sharedBeforeEach();
+      updateChartWidthAndHeight();
+    });
+    afterEach(sharedAfterEach);
     testWithoutWait(
       `Should render the vertical stacked bar chart with Date x-axis data in ${tzName} timezone`,
       VerticalStackedBarChart,
@@ -187,7 +219,11 @@ describe('Vertical stacked bar chart rendering', () => {
 });
 
 describe('Vertical stacked bar chart - Subcomponent Line', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
+  });
+  afterEach(sharedAfterEach);
 
   testWithoutWait(
     'Should render line with the data provided',
@@ -610,17 +646,11 @@ describe('Vertical stacked bar chart - Subcomponent xAxis Labels', () => {
 });
 
 describe('Vertical stacked bar chart - Screen resolution', () => {
-  beforeEach(sharedBeforeEach);
-
-  const originalInnerWidth = global.innerWidth;
-  const originalInnerHeight = global.innerHeight;
-  afterEach(() => {
-    global.innerWidth = originalInnerWidth;
-    global.innerHeight = originalInnerHeight;
-    act(() => {
-      global.dispatchEvent(new Event('resize'));
-    });
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
   });
+  afterEach(sharedAfterEach);
 
   testWithWait(
     'Should remain unchanged on zoom in',
@@ -654,7 +684,11 @@ describe('Vertical stacked bar chart - Screen resolution', () => {
 });
 
 describe('Vertical stacked bar chart - Theme', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
+  });
+  afterEach(sharedAfterEach);
 
   test('Should reflect theme change', () => {
     // Arrange
@@ -669,7 +703,11 @@ describe('Vertical stacked bar chart - Theme', () => {
 });
 
 describe('VerticalStackedBarChart - mouse events', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
+  });
+  afterEach(sharedAfterEach);
 
   testWithWait(
     'Should render callout correctly on mouseover',
