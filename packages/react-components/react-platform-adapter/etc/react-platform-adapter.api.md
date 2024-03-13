@@ -6,6 +6,7 @@
 
 import { makeResetStyles } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
+import { makeStyles as makeStylesCore } from '@griffel/core';
 import { mergeClasses } from '@griffel/react';
 import type { PartialTheme } from '@fluentui/react-theme';
 import * as React_2 from 'react';
@@ -20,6 +21,8 @@ export const getStylesFromClassName: (className: string) => undefined;
 export { makeResetStyles }
 
 export { makeStyles }
+
+export { makeStylesCore }
 
 export { mergeClasses }
 
