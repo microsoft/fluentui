@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { act, queryAllByAttribute, render, waitFor } from '@testing-library/react';
 import * as React from 'react';
+const env = require('../../config/tests');
+
 const { Timezone } = require('../../scripts/constants');
 
 export const getById = queryAllByAttribute.bind(null, 'id');
@@ -93,4 +95,8 @@ export const conditionalDescribe = (shouldExecute: boolean) => {
 };
 export const conditionalTest = (shouldExecute: boolean) => {
   return shouldExecute ? test : test.skip;
+};
+
+export const isTestEnv = (shouldExecute: boolean) => {
+  return env === 'TEST' ? true : false;
 };

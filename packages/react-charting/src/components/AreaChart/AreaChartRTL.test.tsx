@@ -13,10 +13,10 @@ import {
   isTimezoneSet,
   testWithWait,
   testWithoutWait,
+  isTestEnv,
 } from '../../utilities/TestUtility.test';
 import { axe, toHaveNoViolations } from 'jest-axe';
 const { Timezone } = require('../../../scripts/constants');
-const env = require('../../../config/tests');
 
 expect.extend(toHaveNoViolations);
 
@@ -295,7 +295,7 @@ describe('Area chart rendering', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv),
   );
 
   testWithWait(
@@ -308,7 +308,7 @@ describe('Area chart rendering', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv),
   );
 
   testWithWait(
@@ -321,7 +321,7 @@ describe('Area chart rendering', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv),
   );
 });
 
@@ -499,7 +499,7 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv),
   );
 });
 
