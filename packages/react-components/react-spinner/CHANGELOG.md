@@ -1,8 +1,65 @@
 # Change Log - @fluentui/react-spinner
 
-This log was last generated on Tue, 23 Jan 2024 15:11:00 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Mar 2024 19:33:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.4.0)
+
+Thu, 07 Mar 2024 19:33:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.3.43..@fluentui/react-spinner_v9.4.0)
+
+### Minor changes
+
+- chore: Rewrite Spinner animation using only rotation transforms. ([PR #30567](https://github.com/microsoft/fluentui/pull/30567) by behowell@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.32 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-label to v9.1.64 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.15.0 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-theme to v9.1.17 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-utilities to v9.18.3 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+
+## [9.3.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.3.43)
+
+Wed, 28 Feb 2024 02:34:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.3.42..@fluentui/react-spinner_v9.3.43)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.31 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-label to v9.1.63 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.14.1 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-utilities to v9.18.2 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+
+## [9.3.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.3.42)
+
+Tue, 20 Feb 2024 14:22:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.3.41..@fluentui/react-spinner_v9.3.42)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.30 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-label to v9.1.62 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-utilities to v9.18.1 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+
+## [9.3.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.3.41)
+
+Tue, 30 Jan 2024 23:16:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.3.40..@fluentui/react-spinner_v9.3.41)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.29 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+- Bump @fluentui/react-label to v9.1.61 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+- Bump @fluentui/react-utilities to v9.18.0 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+
+## [9.3.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.3.40)
+
+Mon, 29 Jan 2024 13:56:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.3.39..@fluentui/react-spinner_v9.3.40)
+
+### Patches
+
+- Bump @fluentui/react-label to v9.1.60 ([PR #30383](https://github.com/microsoft/fluentui/pull/30383) by beachball)
 
 ## [9.3.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.3.39)
 

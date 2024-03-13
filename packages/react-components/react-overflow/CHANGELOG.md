@@ -1,8 +1,50 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Tue, 23 Jan 2024 15:10:59 GMT and should not be manually modified.
+This log was last generated on Thu, 07 Mar 2024 19:33:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.1.13)
+
+Thu, 07 Mar 2024 19:33:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.1.12..@fluentui/react-overflow_v9.1.13)
+
+### Patches
+
+- chore: remove invalid peerDependency on scheduler ([PR #30587](https://github.com/microsoft/fluentui/pull/30587) by olfedias@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.54 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-theme to v9.1.17 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-utilities to v9.18.3 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+
+## [9.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.1.12)
+
+Wed, 28 Feb 2024 02:34:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.1.11..@fluentui/react-overflow_v9.1.12)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.53 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+- Bump @fluentui/react-utilities to v9.18.2 ([PR #30639](https://github.com/microsoft/fluentui/pull/30639) by beachball)
+
+## [9.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.1.11)
+
+Tue, 20 Feb 2024 14:22:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.1.10..@fluentui/react-overflow_v9.1.11)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.52 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+- Bump @fluentui/react-utilities to v9.18.1 ([PR #30543](https://github.com/microsoft/fluentui/pull/30543) by beachball)
+
+## [9.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.1.10)
+
+Tue, 30 Jan 2024 23:16:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.1.9..@fluentui/react-overflow_v9.1.10)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.51 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
+- Bump @fluentui/react-utilities to v9.18.0 ([PR #29983](https://github.com/microsoft/fluentui/pull/29983) by beachball)
 
 ## [9.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.1.9)
 

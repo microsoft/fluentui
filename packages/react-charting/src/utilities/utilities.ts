@@ -1,6 +1,6 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from 'd3-scale';
+import { scaleLinear as d3ScaleLinear, scaleBand as d3ScaleBand, scaleUtc as d3ScaleUtc } from 'd3-scale';
 import { select as d3Select, event as d3Event, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import {
@@ -222,7 +222,7 @@ export function createDateXAxis(
   customDateTimeFormatter?: (dateTime: Date) => string,
 ) {
   const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount = 6 } = xAxisParams;
-  const xAxisScale = d3ScaleTime()
+  const xAxisScale = d3ScaleUtc()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).ticks(xAxisCount);
@@ -1374,7 +1374,7 @@ export const getAccessibleDataObject = (
 
 type LocaleStringDataProps = number | string | Date | undefined;
 export const convertToLocaleString = (data: LocaleStringDataProps, culture?: string): LocaleStringDataProps => {
-  if (!data) {
+  if (data === undefined || data === null || Number.isNaN(data)) {
     return data;
   }
   culture = culture || undefined;
@@ -1485,3 +1485,36 @@ export function formatValueWithSIPrefix(value: number) {
 
   return d3FormatPrefix(specifier, value)(value);
 }
+
+const DEFAULT_BAR_WIDTH = 16;
+const MIN_BAR_WIDTH = 1;
+
+export const getBarWidth = (
+  barWidthProp: number | 'default' | 'auto' | undefined,
+  maxBarWidthProp: number | undefined,
+  defaultValue = DEFAULT_BAR_WIDTH,
+): number => {
+  let barWidth: number;
+  if (typeof barWidthProp === 'number') {
+    barWidth = barWidthProp;
+  } else if (barWidthProp === 'default' || typeof barWidthProp === 'undefined') {
+    barWidth = DEFAULT_BAR_WIDTH;
+  } else {
+    barWidth = defaultValue;
+  }
+  if (typeof maxBarWidthProp === 'number') {
+    barWidth = Math.min(barWidth, maxBarWidthProp);
+  }
+  barWidth = Math.max(barWidth, MIN_BAR_WIDTH);
+  return barWidth;
+};
+
+export const getScalePadding = (prop: number | undefined, shorthandProp?: number, defaultValue = 0): number => {
+  let padding = typeof prop === 'number' ? prop : typeof shorthandProp === 'number' ? shorthandProp : defaultValue;
+  padding = Math.max(0, Math.min(padding, 1));
+  return padding;
+};
+
+export const isScalePaddingDefined = (prop: number | undefined, shorthandProp?: number): boolean => {
+  return typeof prop === 'number' || typeof shorthandProp === 'number';
+};

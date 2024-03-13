@@ -2,6 +2,42 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Wed, 13 Mar 2024 07:30:28 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.11.4",
+      "version": "8.11.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.10.4",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Jan 2024 07:27:57 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.11.3",
+      "version": "8.11.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/react-file-type-icons",
+            "commit": "7f29fb6016f0a33fd7b8974370f09179ed4cc992",
+            "comment": "Adding .mcworld and .mctemplate filetype icons and updated FabricCDN url"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-file-type-icons",
+            "comment": "Bump @fluentui/style-utilities to v8.10.3",
+            "commit": "eeb2656f81977a5821c36ca854fe2781d9dcfd1b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Jan 2024 07:29:32 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.11.2",
       "version": "8.11.2",

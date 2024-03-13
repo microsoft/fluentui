@@ -34,7 +34,7 @@ export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputEle
   const [value, setValue] = useControllableState({
     state: props.value,
     defaultState: props.defaultValue,
-    initialState: '',
+    initialState: undefined,
   });
 
   const nativeProps = getPartitionedNativeProps({

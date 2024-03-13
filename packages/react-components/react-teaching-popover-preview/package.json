@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-teaching-popover-preview",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "New fluentui react package",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,18 +36,18 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "^9.0.28",
-    "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.17.0",
+    "@fluentui/react-jsx-runtime": "^9.0.32",
+    "@fluentui/react-theme": "^9.1.17",
+    "@fluentui/react-utilities": "^9.18.3",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1",
-    "@fluentui/react-shared-contexts": "^9.14.0",
-    "@fluentui/react-popover": "^9.8.35",
-    "@fluentui/react-button": "^9.3.66",
-    "@fluentui/react-tabster": "^9.17.4",
+    "@fluentui/react-shared-contexts": "^9.15.0",
+    "@fluentui/react-popover": "^9.9.0",
+    "@fluentui/react-button": "^9.3.71",
+    "@fluentui/react-tabster": "^9.19.3",
     "@fluentui/react-icons": "^2.0.224",
-    "@fluentui/react-aria": "^9.8.0",
-    "@fluentui/react-context-selector": "^9.1.50"
+    "@fluentui/react-aria": "^9.10.0",
+    "@fluentui/react-context-selector": "^9.1.54"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",

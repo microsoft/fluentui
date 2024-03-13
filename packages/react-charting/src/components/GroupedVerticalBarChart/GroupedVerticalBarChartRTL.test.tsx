@@ -7,10 +7,14 @@ import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { IGroupedVerticalBarChartData, IVSChartDataPoint } from '../../index';
 import { DarkTheme } from '@fluentui/theme-samples';
-import { ThemeProvider } from '@fluentui/react';
+import { ThemeProvider, resetIds } from '@fluentui/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
+
+function sharedBeforeEach() {
+  resetIds();
+}
 
 const accessibilityDataPoints: IGroupedVerticalBarChartData[] = [
   {
@@ -113,6 +117,7 @@ const chartPoints = [
 ];
 
 describe('Grouped Vertical bar chart rendering', () => {
+  beforeEach(sharedBeforeEach);
   testWithoutWait(
     'Should render the grouped vertical bar chart with string x-axis data',
     GroupedVerticalBarChart,
@@ -135,6 +140,7 @@ describe('Grouped Vertical bar chart rendering', () => {
 });
 
 describe('Grouped vertical bar chart - Subcomponent bar', () => {
+  beforeEach(sharedBeforeEach);
   testWithWait(
     'Should render the bars with the specified colors',
     GroupedVerticalBarChart,
@@ -178,6 +184,7 @@ describe('Grouped vertical bar chart - Subcomponent bar', () => {
 });
 
 describe('Grouped vertical bar chart - Subcomponent Legends', () => {
+  beforeEach(sharedBeforeEach);
   testWithoutWait(
     'Should not show any rendered legends when hideLegend is true',
     GroupedVerticalBarChart,
@@ -284,6 +291,7 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
 });
 
 describe('Grouped vertical bar chart - Subcomponent callout', () => {
+  beforeEach(sharedBeforeEach);
   testWithWait(
     'Should show the callout over the bar on mouse over',
     GroupedVerticalBarChart,
@@ -351,6 +359,7 @@ describe('Grouped vertical bar chart - Subcomponent callout', () => {
 });
 
 describe('Grouped vertical bar chart - Subcomponent Labels', () => {
+  beforeEach(sharedBeforeEach);
   testWithWait(
     'Should render the xAxis label based on noOfCharsToTruncate',
     GroupedVerticalBarChart,
@@ -408,6 +417,7 @@ describe('Grouped vertical bar chart - Screen resolution', () => {
       global.dispatchEvent(new Event('resize'));
     });
   });
+  beforeEach(sharedBeforeEach);
 
   testWithWait(
     'Should remain unchanged on zoom in',
@@ -441,6 +451,7 @@ describe('Grouped vertical bar chart - Screen resolution', () => {
 });
 
 describe('Vertical stacked bar chart - Theme', () => {
+  beforeEach(sharedBeforeEach);
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
@@ -454,6 +465,7 @@ describe('Vertical stacked bar chart - Theme', () => {
 });
 
 describe('Grouped Vertical Bar chart rendering', () => {
+  beforeEach(sharedBeforeEach);
   test('Should re-render the Grouped Vertical Bar chart with data', async () => {
     // Arrange
     const { container, rerender } = render(<GroupedVerticalBarChart data={emptyChartPoints} />);
@@ -468,24 +480,25 @@ describe('Grouped Vertical Bar chart rendering', () => {
       expect(getById(container, /_GVBC_empty/i)).toHaveLength(0);
     });
   });
+
+  testWithWait(
+    'Should render the bar with the given width',
+    GroupedVerticalBarChart,
+    { data: accessibilityDataPoints, barwidth: 16 },
+    async container => {
+      // bar width not working as expected in the test so logged bug for same: Bug 9158
+      // Assert
+      // await new Promise((r) => setTimeout(r, 2000));
+      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      await new Promise(r => setTimeout(r, 5000));
+      expect(bars[0].getAttribute('width')).toEqual('16');
+      expect(bars[1].getAttribute('width')).toEqual('16');
+    },
+  );
 });
 
-testWithWait(
-  'Should render the bar with the given width',
-  GroupedVerticalBarChart,
-  { data: accessibilityDataPoints, barwidth: 16 },
-  async container => {
-    // bar width not working as expected in the test so logged bug for same: Bug 9158
-    // Assert
-    // await new Promise((r) => setTimeout(r, 2000));
-    const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-    await new Promise(r => setTimeout(r, 5000));
-    expect(bars[0].getAttribute('width')).toEqual('16');
-    expect(bars[1].getAttribute('width')).toEqual('16');
-  },
-);
-
 describe('Grouped Vertical Bar Chart - axe-core', () => {
+  beforeEach(sharedBeforeEach);
   test('Should pass accessibility tests', async () => {
     const { container } = render(<GroupedVerticalBarChart data={accessibilityDataPoints} />);
     let axeResults;

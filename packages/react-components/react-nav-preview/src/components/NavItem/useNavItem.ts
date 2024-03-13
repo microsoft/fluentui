@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
-import type { NavItemProps, NavItemState } from './NavItem.types';
 import { useNavContext_unstable } from '../NavContext';
+
+import type { NavItemProps, NavItemState } from './NavItem.types';
 
 /**
  * Create the state required to render NavItem.
@@ -12,7 +13,7 @@ import { useNavContext_unstable } from '../NavContext';
  * @param props - props from this instance of NavItem
  * @param ref - reference to root HTMLDivElement of NavItem
  */
-export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLButtonElement>): NavItemState => {
+export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLAnchorElement>): NavItemState => {
   const { content, onClick, value } = props;
 
   const { selectedValue, onRegister, onUnregister, onSelect } = useNavContext_unstable();
@@ -20,7 +21,7 @@ export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLButt
   const selected = selectedValue === value;
 
   const innerRef = React.useRef<HTMLElement>(null);
-  const onNavCategoryItemClick = useEventCallback(
+  const onNavItemClick = useEventCallback(
     mergeCallbacks(onClick, event => onSelect(event, { type: 'click', event, value })),
   );
 
@@ -41,16 +42,16 @@ export const useNavItem_unstable = (props: NavItemProps, ref: React.Ref<HTMLButt
   });
 
   return {
-    components: { root: 'button', content: 'span' },
+    components: { root: 'a', content: 'span' },
     root: slot.always(
-      getIntrinsicElementProps('button', {
+      getIntrinsicElementProps('a', {
         ref,
         role: 'nav',
         type: 'navigation',
         ...props,
-        onClick: onNavCategoryItemClick,
+        onClick: onNavItemClick,
       }),
-      { elementType: 'button' },
+      { elementType: 'a' },
     ),
     content: contentSlot,
     selected,

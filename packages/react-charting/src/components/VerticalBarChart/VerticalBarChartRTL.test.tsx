@@ -1,14 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { DefaultPalette } from '@fluentui/react';
+import { DefaultPalette, resetIds } from '@fluentui/react';
 import { VerticalBarChart } from './VerticalBarChart';
 import { VerticalBarChartBase } from './VerticalBarChart.base';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import {
+  forEachTimezone,
   getByClass,
   getById,
+  isTimezoneSet,
   testScreenResolutionChanges,
   testWithWait,
   testWithoutWait,
@@ -17,13 +19,16 @@ import { IVerticalBarChartProps } from './VerticalBarChart.types';
 import { IVerticalBarChartDataPoint } from '../../index';
 import { chartPointsVBC } from '../../utilities/test-data';
 import { axe, toHaveNoViolations } from 'jest-axe';
+const { Timezone } = require('../../../scripts/constants');
 
 expect.extend(toHaveNoViolations);
 
-const beforeAll = () => {
-  jest.spyOn(Date.prototype, 'toLocaleString').mockReturnValue('08/25/2023');
-  jest.spyOn(Date.prototype, 'toLocaleTimeString').mockReturnValue('08/25/2023');
-};
+beforeEach(() => {
+  // When adding a new snapshot test, it's observed that other snapshots may fail due to
+  // components sharing a common global counter for IDs. To prevent this from happening,
+  // we should reset the IDs before each test execution.
+  resetIds();
+});
 
 const originalRAF = window.requestAnimationFrame;
 
@@ -295,17 +300,20 @@ describe('Vertical bar chart rendering', () => {
     },
   );
 
-  testWithoutWait(
-    'Should render the vertical bar chart with Date x-axis data',
-    VerticalBarChart,
-    { data: simpleDatePoints },
-    container => {
-      // Assert
-      expect(container).toMatchSnapshot();
-    },
-    undefined,
-    beforeAll,
-  );
+  forEachTimezone((tzName, tzIdentifier) => {
+    testWithoutWait(
+      `Should render the vertical bar chart with Date x-axis data in ${tzName} timezone`,
+      VerticalBarChart,
+      { data: simpleDatePoints },
+      container => {
+        // Assert
+        expect(container).toMatchSnapshot();
+      },
+      undefined,
+      undefined,
+      !isTimezoneSet(tzIdentifier),
+    );
+  });
 
   testWithoutWait(
     'Should render the vertical bar chart with formatted Date x-axis data',
@@ -320,7 +328,8 @@ describe('Vertical bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
     undefined,
-    beforeAll,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
   );
 
   testWithoutWait(
@@ -335,7 +344,8 @@ describe('Vertical bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
     undefined,
-    beforeAll,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
   );
 
   testWithoutWait(
@@ -350,7 +360,8 @@ describe('Vertical bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
     undefined,
-    beforeAll,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
   );
 
   testWithoutWait(
@@ -364,7 +375,8 @@ describe('Vertical bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
     undefined,
-    beforeAll,
+    undefined,
+    !isTimezoneSet(Timezone.UTC),
   );
 });
 
@@ -494,6 +506,9 @@ describe('Vertical bar chart - Subcomponent line', () => {
 });
 
 describe('Vertical bar chart - Subcomponent Legends', () => {
+  beforeEach(() => {
+    resetIds();
+  });
   testWithoutWait(
     'Should not show any rendered legends when hideLegend is true',
     VerticalBarChart,
@@ -583,6 +598,10 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
 });
 
 describe('Vertical bar chart - Subcomponent callout', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   test('Should call the handler on mouse over bar and on mouse leave from bar', async () => {
     // Arrange
     const handleMouseOver = jest.spyOn(VerticalBarChartBase.prototype as any, '_onBarHover');
@@ -745,6 +764,10 @@ describe('Vertical bar chart re-rendering', () => {
 });
 
 describe('VerticalBarChart - mouse events', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   testWithWait(
     'Should render callout correctly on mouseover',
     VerticalBarChart,
@@ -780,11 +803,17 @@ describe('VerticalBarChart - mouse events', () => {
   );
 });
 
-test('Should pass accessibility tests', async () => {
-  const { container } = render(<VerticalBarChart data={chartPointsVBC} />);
-  let axeResults;
-  await act(async () => {
-    axeResults = await axe(container);
+describe('VerticalBarChart - accessibility', () => {
+  beforeEach(() => {
+    resetIds();
   });
-  expect(axeResults).toHaveNoViolations();
+
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<VerticalBarChart data={chartPointsVBC} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
+  });
 });

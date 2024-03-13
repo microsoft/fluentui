@@ -43,6 +43,9 @@ describe('DataGrid', () => {
       'make-styles-overrides-win': {
         callCount: 2,
       },
+      'consistent-callback-args': {
+        legacyCallbacks: ['onSortChange', 'onSelectionChange', 'onColumnResize'],
+      },
     },
     // TODO: https://github.com/microsoft/fluentui/issues/19618
     // eslint-disable-next-line @typescript-eslint/no-explicit-any

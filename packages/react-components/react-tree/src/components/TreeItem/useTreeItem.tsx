@@ -40,10 +40,6 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const {
     onClick,
     onKeyDown,
-    onMouseOver,
-    onFocus,
-    onMouseOut,
-    onBlur,
     onChange,
     as = 'div',
     itemType = 'leaf',
@@ -59,6 +55,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const treeItemRef = React.useRef<HTMLDivElement>(null);
 
   const open = useTreeContext_unstable(ctx => props.open ?? ctx.openItems.has(value));
+  const getNextOpen = () => (itemType === 'branch' ? !open : open);
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
   const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);
 
@@ -85,7 +82,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       const data = {
         event,
         value,
-        open: !open,
+        open: getNextOpen(),
         target: event.currentTarget,
         type: isEventFromExpandIcon ? treeDataTypes.ExpandIconClick : treeDataTypes.Click,
       } as const;
@@ -143,7 +140,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         const data = {
           value,
           event,
-          open: !open,
+          open: getNextOpen(),
           type: event.key,
           target: event.currentTarget,
         } as const;
@@ -165,7 +162,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         const data = {
           value,
           event,
-          open: !open,
+          open: getNextOpen(),
           type: event.key,
           target: event.currentTarget,
         } as const;
@@ -242,10 +239,8 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         role: 'treeitem',
         'aria-level': level,
         'aria-checked': selectionMode === 'multiselect' ? checked : undefined,
-        // aria-selected is required according to WAI-ARIA spec
-        // https://www.w3.org/TR/wai-aria-1.1/#treeitem
         // Casting: when selectionMode is 'single', checked is a boolean
-        'aria-selected': selectionMode === 'single' ? (checked as boolean) : 'false',
+        'aria-selected': selectionMode === 'single' ? (checked as boolean) : undefined,
         'aria-expanded': itemType === 'branch' ? open : undefined,
         onClick: handleClick,
         onKeyDown: handleKeyDown,

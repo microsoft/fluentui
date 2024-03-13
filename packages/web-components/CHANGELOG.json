@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 01 Mar 2024 07:26:28 GMT",
+      "tag": "@fluentui/web-components_v2.5.17",
+      "version": "2.5.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "abed95791b8e1c45530db1f39772c7b4b301e118",
+            "comment": "updates fast-foundation to fix a memory leak within form associated disconnected callback"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Jul 2023 07:35:18 GMT",
       "tag": "@fluentui/web-components_v2.5.16",
       "version": "2.5.16",

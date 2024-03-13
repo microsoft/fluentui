@@ -64,8 +64,11 @@ export type DataGridProps = TableProps &
   Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance' | 'resizableColumns'> &
   Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> &
   Pick<SelectionHookParams, 'defaultSelectedItems' | 'selectedItems'> & {
+    /* eslint-disable @nx/workspace-consistent-callback-type -- can't change type of existing callback */
     onSortChange?: (e: React.MouseEvent, sortState: SortState) => void;
     onSelectionChange?: (e: React.MouseEvent | React.KeyboardEvent, data: OnSelectionChangeData) => void;
+    /* eslint-enable @nx/workspace-consistent-callback-type */
+
     /**
      * Enables row selection and sets the selection mode
      * @default false
@@ -78,6 +81,7 @@ export type DataGridProps = TableProps &
     /**
      * A callback triggered when a column is resized.
      */
+    // eslint-disable-next-line @nx/workspace-consistent-callback-type -- can't change type of existing callback
     onColumnResize?: (
       e: KeyboardEvent | TouchEvent | MouseEvent | undefined,
       data: { columnId: TableColumnId; width: number },

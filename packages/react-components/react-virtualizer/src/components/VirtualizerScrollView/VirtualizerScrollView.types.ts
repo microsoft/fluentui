@@ -42,6 +42,10 @@ export type VirtualizerScrollViewProps = ComponentProps<Partial<VirtualizerScrol
      * Imperative ref contains our scrollTo index functionality for user control.
      */
     imperativeRef?: RefObject<ScrollToInterface>;
+    /**
+     * Imperative ref contains our scrollTo index functionality for user control.
+     */
+    enablePagination?: boolean;
   };
 
 export type VirtualizerScrollViewState = ComponentState<VirtualizerScrollViewSlots> & VirtualizerConfigState;

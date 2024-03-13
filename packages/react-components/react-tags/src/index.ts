@@ -44,7 +44,7 @@ export {
   useTagGroup_unstable,
   useTagGroupContextValues_unstable,
 } from './TagGroup';
-export type { TagGroupProps, TagGroupSlots, TagGroupState } from './TagGroup';
+export type { TagGroupProps, TagGroupSlots, TagGroupState, TagGroupContextValues } from './TagGroup';
 
 export { useTagAvatarContextValues_unstable } from './utils';
 export type {

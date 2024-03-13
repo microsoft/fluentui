@@ -40,7 +40,9 @@ Color.parameters = {
         'A badge can have different colors.' +
         ' The available colors are `brand`, `danger`, `important`, `informative`, ' +
         '`severe`, `subtle`, `success` or `warning`.' +
-        ' The default is `brand`.',
+        ' The default is `brand`.' +
+        ' Information conveyed by color should also be communicated in another way' +
+        ' to meet [accessibility requirements](https://w3c.github.io/wcag/guidelines/22/#use-of-color).',
     },
   },
 };

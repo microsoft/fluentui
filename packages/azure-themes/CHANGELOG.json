@@ -2,6 +2,102 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Wed, 13 Mar 2024 07:30:28 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.62",
+      "version": "8.6.62",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.115.7",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Feb 2024 07:25:16 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.61",
+      "version": "8.6.61",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "8b29bc9d3ccceab5656c90a738c470016d2f4825",
+            "comment": "pivot background color on hover"
+          },
+          {
+            "author": "aorantes@microsoft.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "d1f3e19b5f8d4b6c3c42726533e363ec5a5929ec",
+            "comment": "updated icon color of status bar to meet accessibility requirements"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 12 Feb 2024 07:25:24 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.60",
+      "version": "8.6.60",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.115.6",
+            "commit": "4909da1c2da23917a1274f0b19b9d43b57588328"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Feb 2024 07:26:19 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.59",
+      "version": "8.6.59",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.115.5",
+            "commit": "cd1e26c488d7290d6ffa11eebdda50bbbe19d3aa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Feb 2024 07:27:40 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.58",
+      "version": "8.6.58",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.115.4",
+            "commit": "5aefa438776a47278b09f5073149bb94fb14c044"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Jan 2024 07:27:57 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.57",
+      "version": "8.6.57",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.115.3",
+            "commit": "eeb2656f81977a5821c36ca854fe2781d9dcfd1b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jan 2024 07:27:14 GMT",
       "tag": "@fluentui/azure-themes_v8.6.56",
       "version": "8.6.56",

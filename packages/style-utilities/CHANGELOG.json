@@ -2,6 +2,54 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Wed, 13 Mar 2024 07:30:28 GMT",
+      "tag": "@fluentui/style-utilities_v8.10.4",
+      "version": "8.10.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3",
+            "comment": "fix: Update IStyleSet type to fix error when using TypeScript 5.3+"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/theme to v2.6.42",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.6.0",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/utilities to v8.14.0",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Jan 2024 07:27:57 GMT",
+      "tag": "@fluentui/style-utilities_v8.10.3",
+      "version": "8.10.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "7f29fb6016f0a33fd7b8974370f09179ed4cc992",
+            "comment": "Adding .mcworld and .mctemplate filetype icons and updated FabricCDN url"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Jan 2024 07:29:32 GMT",
       "tag": "@fluentui/style-utilities_v8.10.2",
       "version": "8.10.2",

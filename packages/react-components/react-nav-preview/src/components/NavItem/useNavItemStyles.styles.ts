@@ -20,9 +20,7 @@ const useStyles = makeResetStyles({
  * Styles for the content slot (children)
  */
 const useContentStyles = makeStyles({
-  selected: {
-    ...typographyStyles.body1Strong,
-  },
+  selected: typographyStyles.body1Strong,
 });
 
 /**

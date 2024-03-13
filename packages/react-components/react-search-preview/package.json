@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-search-preview",
-  "version": "0.1.41",
+  "version": "0.1.47",
   "description": "Search input for Fluent UI v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,10 +33,10 @@
   },
   "dependencies": {
     "@fluentui/react-icons": "^2.0.224",
-    "@fluentui/react-input": "^9.4.61",
-    "@fluentui/react-jsx-runtime": "^9.0.28",
-    "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.17.0",
+    "@fluentui/react-input": "^9.4.66",
+    "@fluentui/react-jsx-runtime": "^9.0.32",
+    "@fluentui/react-theme": "^9.1.17",
+    "@fluentui/react-utilities": "^9.18.3",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },

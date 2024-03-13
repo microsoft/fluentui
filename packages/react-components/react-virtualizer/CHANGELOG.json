@@ -2,6 +2,116 @@
   "name": "@fluentui/react-virtualizer",
   "entries": [
     {
+      "date": "Thu, 07 Mar 2024 19:33:27 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.71",
+      "version": "9.0.0-alpha.71",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.32",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.3",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.15.0",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Feb 2024 02:34:19 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.70",
+      "version": "9.0.0-alpha.70",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "e2d67e42af41e920fc44f9f741d383c413344f2f",
+            "comment": "feat: Add pagination for both static and dynamic virtualizers"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.31",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.2",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.14.1",
+            "commit": "433026729cd8bbd2e73f6314e05b803cad3168bb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Feb 2024 14:22:29 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.69",
+      "version": "9.0.0-alpha.69",
+      "comments": {
+        "none": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "4cfa006aa5f50a397b67ccd29ff0212bf86464b9",
+            "comment": "chore: disable consistent-callback-type lint rule for existing callbacks"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.30",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.1",
+            "commit": "5fb68e9bc86c1cbd66249c639a5565fe7a0b22b4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jan 2024 23:16:54 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.68",
+      "version": "9.0.0-alpha.68",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.29",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-utilities to v9.18.0",
+            "commit": "c55a16a06b489f733384e65642b37343650d2f38"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jan 2024 15:11:00 GMT",
       "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.67",
       "version": "9.0.0-alpha.67",

@@ -10,6 +10,8 @@ import {
 } from '../types/IDataPoint';
 import { ScaleBand } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
+import { conditionalDescribe, isTimezoneSet } from './TestUtility.test';
+const { Timezone } = require('../../scripts/constants');
 
 // Reference to the test plan: packages\react-charting\docs\TestPlans\Utilities\UnitTests.md
 
@@ -17,7 +19,27 @@ describe('Unit test to convert data to localized string', () => {
   test('Should return undefined when data provided is undefined', () => {
     expect(utils.convertToLocaleString(undefined)).toBeUndefined();
   });
-
+  test('Should return NaN when data is NaN', () => {
+    expect(utils.convertToLocaleString(NaN)).toBeNaN();
+  });
+  test('Should return localized 0 when data is numeric 0', () => {
+    expect(utils.convertToLocaleString(0)).toBe('0');
+  });
+  test('Should return localized 123 when data is string 123', () => {
+    expect(utils.convertToLocaleString('123')).toBe('123');
+  });
+  test('Should return localized 1234 when data is string 1234', () => {
+    expect(utils.convertToLocaleString('1234')).toBe('1,234');
+  });
+  test('Should return localized Hello World when data is string Hello World', () => {
+    expect(utils.convertToLocaleString('Hello World')).toBe('Hello World');
+  });
+  test('Should return 0 as string when data is empty string', () => {
+    expect(utils.convertToLocaleString('')).toBe('0');
+  });
+  test('Should return 0 as string when data is single whitespace string', () => {
+    expect(utils.convertToLocaleString(' ')).toBe('0');
+  });
   test('Should return the localised data in the given culture when input data is a string', () => {
     expect(utils.convertToLocaleString('text', 'en-GB')).toBe('text');
     expect(utils.convertToLocaleString('text', 'ar-SY')).toBe('text');
@@ -179,8 +201,7 @@ describe('createNumericXAxis', () => {
   });
 });
 
-// FIXME - non deterministic snapshots causing master pipeline breaks
-describe.skip('createDateXAxis', () => {
+conditionalDescribe(isTimezoneSet(Timezone.UTC))('createDateXAxis', () => {
   const domainNRangeValues: ICreateXAxisParams['domainNRangeValues'] = {
     dStartValue: new Date(2021, 6, 1),
     dEndValue: new Date(2022, 5, 30),

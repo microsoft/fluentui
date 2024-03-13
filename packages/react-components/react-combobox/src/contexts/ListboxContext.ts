@@ -1,4 +1,5 @@
-import { createContext } from '@fluentui/react-context-selector';
+import * as React from 'react';
+import { ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
 import { ListboxState } from '../components/Listbox/Listbox.types';
 
 /**
@@ -13,10 +14,11 @@ export type ListboxContextValue = Pick<
   | 'selectedOptions'
   | 'selectOption'
   | 'setActiveOption'
->;
+> & {
+  onOptionClick: (e: React.MouseEvent<HTMLElement>) => void;
+};
 
-// eslint-disable-next-line @fluentui/no-context-default-value
-export const ListboxContext = createContext<ListboxContextValue>({
+const listboxContextDefaultValue = {
   activeOption: undefined,
   focusVisible: false,
   multiselect: false,
@@ -24,12 +26,20 @@ export const ListboxContext = createContext<ListboxContextValue>({
     return () => undefined;
   },
   selectedOptions: [],
+  onOptionClick() {
+    // noop
+  },
   selectOption() {
     // noop
   },
   setActiveOption() {
     // noop
   },
-});
+};
+
+export const ListboxContext = createContext<ListboxContextValue | undefined>(undefined);
+
+export const useListboxContext_unstable = <T>(selector: ContextSelector<ListboxContextValue, T>) =>
+  useContextSelector(ListboxContext, (ctx = listboxContextDefaultValue) => selector(ctx));
 
 export const ListboxProvider = ListboxContext.Provider;

@@ -2,7 +2,7 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
-import { DefaultPalette, ThemeProvider } from '@fluentui/react';
+import { DefaultPalette, ThemeProvider, resetIds } from '@fluentui/react';
 import { ILineChartPoints, LineChart } from './index';
 import { mergeStyles } from '@fluentui/merge-styles';
 
@@ -10,6 +10,10 @@ import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilit
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
+
+function sharedBeforeEach() {
+  resetIds();
+}
 
 const beforeAll = () => {
   jest.spyOn(Date.prototype, 'toLocaleString').mockReturnValue('08/25/2023');
@@ -181,6 +185,8 @@ const chartPointsWithGaps = {
 };
 
 describe('Line chart rendering', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should render the Line chart with numeric x-axis data',
     LineChart,
@@ -340,6 +346,8 @@ const eventAnnotationProps = {
 };
 
 describe('Line chart - Subcomponent line', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should render the lines with the specified colors',
     LineChart,
@@ -368,6 +376,8 @@ describe('Line chart - Subcomponent line', () => {
 });
 
 describe('Line chart - Subcomponent legend', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should highlight the corresponding Line on mouse over on legends',
     LineChart,
@@ -513,6 +523,8 @@ describe('Line chart - Subcomponent legend', () => {
 });
 
 describe('Line chart - Subcomponent Time Range', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should render time range with sepcified data',
     LineChart,
@@ -548,6 +560,8 @@ describe('Line chart - Subcomponent Time Range', () => {
 });
 
 describe('Line chart - Subcomponent xAxis Labels', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should show the x-axis labels tooltip when hovered',
     LineChart,
@@ -574,6 +588,7 @@ describe.skip('Line chart - Subcomponent Event', () => {
       value: mockGetComputedTextLength,
     },
   );
+  beforeEach(sharedBeforeEach);
 
   testWithWait(
     'Should render events with defined data',
@@ -601,6 +616,7 @@ describe('Screen resolution', () => {
       global.dispatchEvent(new Event('resize'));
     });
   });
+  beforeEach(sharedBeforeEach);
 
   testWithWait(
     'Should remain unchanged on zoom in',
@@ -635,22 +651,26 @@ describe('Screen resolution', () => {
   );
 });
 
-test('Should reflect theme change', () => {
-  // Arrange
-  const { container } = render(
-    <ThemeProvider theme={DarkTheme}>
-      <LineChart culture={window.navigator.language} data={basicChartPoints} />
-    </ThemeProvider>,
-  );
-  // Assert
-  expect(container).toMatchSnapshot();
-});
+describe('Theme and accessibility', () => {
+  beforeEach(sharedBeforeEach);
 
-test('Should pass accessibility tests', async () => {
-  const { container } = render(<LineChart data={basicChartPoints} />);
-  let axeResults;
-  await act(async () => {
-    axeResults = await axe(container);
+  test('Should reflect theme change', () => {
+    // Arrange
+    const { container } = render(
+      <ThemeProvider theme={DarkTheme}>
+        <LineChart culture={window.navigator.language} data={basicChartPoints} />
+      </ThemeProvider>,
+    );
+    // Assert
+    expect(container).toMatchSnapshot();
   });
-  expect(axeResults).toHaveNoViolations();
+
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<LineChart data={basicChartPoints} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
+  });
 });
