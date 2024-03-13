@@ -580,6 +580,8 @@ export class Stylesheet {
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
     classNameFromKey(key: string): string | undefined;
     // (undocumented)
+    protected _createStyleElement(winArg?: Window): HTMLStyleElement;
+    // (undocumented)
     getAdoptableStyleSheet(key: string): ExtendedCSSStyleSheet;
     // (undocumented)
     getAdoptedSheets(): Map<string, ExtendedCSSStyleSheet>;
@@ -594,7 +596,7 @@ export class Stylesheet {
     insertedRulesFromClassName(className: string): string[] | undefined;
     insertRule(rule: string, preserve?: boolean): void;
     // (undocumented)
-    makeCSSStyleSheet(win: Window): ExtendedCSSStyleSheet;
+    makeCSSStyleSheet(): ExtendedCSSStyleSheet;
     // (undocumented)
     onAddSheet(callback: AddSheetCallback): Function;
     onInsertRule(callback: Function | InsertRuleCallback): Function;

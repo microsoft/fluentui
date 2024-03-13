@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { MergeStylesShadowRootContext } from '../contexts/MergeStylesShadowRootContext';
+import {
+  MergeStylesShadowRootContext,
+  MergeStylesShadowRootContextValue,
+} from '../contexts/MergeStylesShadowRootContext';
 
 export type HasMergeStylesShadowRootContextHook = () => boolean;
+export type MergeStylesShadowRootContetHook = () => MergeStylesShadowRootContextValue | undefined;
 
 /**
  * Test if a context is available.
@@ -15,6 +19,6 @@ export const useHasMergeStylesShadowRootContext: HasMergeStylesShadowRootContext
  * Get a reference to the shadow root context.
  * @returns The context for the shadow root.
  */
-export const useMergeStylesShadowRootContext = () => {
+export const useMergeStylesShadowRootContext: MergeStylesShadowRootContetHook = () => {
   return React.useContext(MergeStylesShadowRootContext);
 };

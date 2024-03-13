@@ -7,7 +7,7 @@
 import { DATA_PORTAL_ATTRIBUTE } from '@fluentui/dom-utilities';
 import { elementContains } from '@fluentui/dom-utilities';
 import { elementContainsAttribute } from '@fluentui/dom-utilities';
-import { ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
+import type { ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
 import { findElementRecursive } from '@fluentui/dom-utilities';
 import { getActiveElement } from '@fluentui/dom-utilities';
 import { getChildren } from '@fluentui/dom-utilities';
@@ -1043,7 +1043,9 @@ export type MergeStylesRootContextValue = {
     useAdoptedStylesheetEx: AdoptedStylesheetExHook;
     useAdoptedStylesheet: AdoptedStylesheetHook;
     useShadowConfig: ShadowConfigHook;
+    useMergeStylesShadowRootContext: MergeStylesShadowRootContetHook;
     useHasMergeStylesShadowRootContext: HasMergeStylesShadowRootContextHook;
+    useMergeStylesRootStylesheets: MergeStylesRootStylesheetsHook;
     useWindow: UseWindowHook;
 };
 
@@ -1057,7 +1059,9 @@ export type MergeStylesRootProviderProps = {
     useAdoptedStylesheetEx?: AdoptedStylesheetExHook;
     useAdoptedStylesheet?: AdoptedStylesheetHook;
     useShadowConfig?: ShadowConfigHook;
+    useMergeStylesShadowRootContext?: MergeStylesShadowRootContetHook;
     useHasMergeStylesShadowRootContext?: HasMergeStylesShadowRootContextHook;
+    useMergeStylesRootStylesheets?: MergeStylesRootStylesheetsHook;
     useWindow?: UseWindowHook;
 };
 
@@ -1354,15 +1358,17 @@ export const useMergeStylesHooks: () => {
     useAdoptedStylesheet: AdoptedStylesheetHook;
     useAdoptedStylesheetEx: AdoptedStylesheetExHook;
     useShadowConfig: ShadowConfigHook;
+    useMergeStylesShadowRootContext: MergeStylesShadowRootContetHook;
     useHasMergeStylesShadowRootContext: HasMergeStylesShadowRootContextHook;
+    useMergeStylesRootStylesheets: MergeStylesRootStylesheetsHook;
     useWindow: () => Window | undefined;
 };
 
 // @public
-export const useMergeStylesRootStylesheets: () => Map<string, ExtendedCSSStyleSheet>;
+export const useMergeStylesRootStylesheets: MergeStylesRootStylesheetsHook;
 
 // @public
-export const useMergeStylesShadowRootContext: () => MergeStylesShadowRootContextValue | undefined;
+export const useMergeStylesShadowRootContext: MergeStylesShadowRootContetHook;
 
 // @public
 export const useShadowConfig: ShadowConfigHook;
@@ -1390,7 +1396,9 @@ export function warnMutuallyExclusive<P>(componentName: string, props: P, exclus
 
 // Warnings were encountered during analysis:
 //
-// lib/shadowDom/contexts/MergeStylesRootContext.d.ts:22:5 - (ae-forgotten-export) The symbol "UseWindowHook" needs to be exported by the entry point index.d.ts
+// lib/shadowDom/contexts/MergeStylesRootContext.d.ts:22:5 - (ae-forgotten-export) The symbol "MergeStylesShadowRootContetHook" needs to be exported by the entry point index.d.ts
+// lib/shadowDom/contexts/MergeStylesRootContext.d.ts:24:5 - (ae-forgotten-export) The symbol "MergeStylesRootStylesheetsHook" needs to be exported by the entry point index.d.ts
+// lib/shadowDom/contexts/MergeStylesRootContext.d.ts:25:5 - (ae-forgotten-export) The symbol "UseWindowHook" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

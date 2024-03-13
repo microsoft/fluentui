@@ -231,7 +231,15 @@ export class Stylesheet {
 
       _stylesheet = stylesheet;
       global[STYLESHEET_SETTING] = _stylesheet;
+    } else {
+      _stylesheet.setConfig({
+        window: win || (typeof window !== 'undefined' ? window : undefined),
+        inShadow,
+        stylesheetKey,
+      });
     }
+
+    _stylesheet.getAdoptableStyleSheet(stylesheetKey);
 
     return _stylesheet;
   }
@@ -255,8 +263,11 @@ export class Stylesheet {
   }
 
   public addAdoptableStyleSheet(key: string, sheet: ExtendedCSSStyleSheet): void {
+    // console.log('key', key);
+    // this._config?.window?.__DEV_SHEETS = this._config?.window?.__DEV_SHEETS || {};
     if (!this._adoptableSheets.has(key)) {
       this._adoptableSheets.set(key, sheet);
+      // this._config?.window?.__DEV_SHEETS[key] = sheet;
       const win = this._config.window;
       if (win) {
         win.queueMicrotask(() => {
@@ -269,7 +280,7 @@ export class Stylesheet {
   public getAdoptableStyleSheet(key: string): ExtendedCSSStyleSheet {
     let sheet = this._adoptableSheets.get(key);
     if (!sheet) {
-      sheet = this.makeCSSStyleSheet(this._config.window || window);
+      sheet = this.makeCSSStyleSheet();
       this.addAdoptableStyleSheet(key, sheet);
     }
 
@@ -491,7 +502,8 @@ export class Stylesheet {
     this._keyToClassName = {};
   }
 
-  public makeCSSStyleSheet(win: Window): ExtendedCSSStyleSheet {
+  public makeCSSStyleSheet(): ExtendedCSSStyleSheet {
+    const win = this._config?.window || window;
     let sheet: ExtendedCSSStyleSheet | undefined = undefined;
     if (!SUPPORTS_CONSTRUCTABLE_STYLESHEETS) {
       const style = this._createStyleElement(win);

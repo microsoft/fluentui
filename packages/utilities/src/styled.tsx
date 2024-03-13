@@ -100,10 +100,17 @@ export function styled<
     const { styles: customizedStyles, dir, ...rest } = settings;
     const additionalProps = getProps ? getProps(props) : undefined;
 
-    const { useAdoptedStylesheet, useShadowConfig, useHasMergeStylesShadowRootContext, useWindow } =
-      useMergeStylesHooks();
+    const {
+      useAdoptedStylesheetEx,
+      useShadowConfig,
+      useMergeStylesShadowRootContext,
+      useMergeStylesRootStylesheets,
+      useWindow,
+    } = useMergeStylesHooks();
     const win = useWindow() || getWindow();
-    const inShadow = useHasMergeStylesShadowRootContext();
+    const shadowCtx = useMergeStylesShadowRootContext();
+    const inShadow = !!shadowCtx;
+    const rootMergeStyles = useMergeStylesRootStylesheets();
     const shadowConfig = useShadowConfig(scope, inShadow, win);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -132,7 +139,7 @@ export function styled<
 
     styles.current.__shadowConfig__ = shadowConfig;
 
-    useAdoptedStylesheet(scope);
+    useAdoptedStylesheetEx(scope, shadowCtx, rootMergeStyles, win);
 
     return <Component ref={forwardedRef} {...rest} {...additionalProps} {...props} styles={styles.current} />;
   });

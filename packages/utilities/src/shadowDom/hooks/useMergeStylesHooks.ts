@@ -7,6 +7,7 @@ export const useMergeStylesHooks = () => {
     useAdoptedStylesheet: ctx.useAdoptedStylesheet,
     useAdoptedStylesheetEx: ctx.useAdoptedStylesheetEx,
     useShadowConfig: ctx.useShadowConfig,
+    useMergeStylesShadowRootContext: ctx.useMergeStylesShadowRootContext,
     useHasMergeStylesShadowRootContext: ctx.useHasMergeStylesShadowRootContext,
     useMergeStylesRootStylesheets: ctx.useMergeStylesRootStylesheets,
     useWindow: ctx.useWindow,

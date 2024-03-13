@@ -4,7 +4,10 @@ import { getWindow } from '../../dom';
 import type { ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
 import type { AdoptedStylesheetExHook, AdoptedStylesheetHook } from '../hooks/useAdoptedStylesheet';
 import type { ShadowConfigHook } from '../hooks/useShadowConfig';
-import type { HasMergeStylesShadowRootContextHook } from '../hooks/useMergeStylesShadowRoot';
+import type {
+  HasMergeStylesShadowRootContextHook,
+  MergeStylesShadowRootContetHook,
+} from '../hooks/useMergeStylesShadowRoot';
 import type { MergeStylesRootStylesheetsHook } from '../hooks/useMergeStylesRootStylesheets';
 
 declare global {
@@ -30,6 +33,7 @@ export type MergeStylesRootContextValue = {
   useAdoptedStylesheetEx: AdoptedStylesheetExHook;
   useAdoptedStylesheet: AdoptedStylesheetHook;
   useShadowConfig: ShadowConfigHook;
+  useMergeStylesShadowRootContext: MergeStylesShadowRootContetHook;
   useHasMergeStylesShadowRootContext: HasMergeStylesShadowRootContextHook;
   useMergeStylesRootStylesheets: MergeStylesRootStylesheetsHook;
   useWindow: UseWindowHook;
@@ -40,6 +44,7 @@ export const MergeStylesRootContext = React.createContext<MergeStylesRootContext
   useAdoptedStylesheetEx: noop,
   useAdoptedStylesheet: noop,
   useShadowConfig: noopShadow,
+  useMergeStylesShadowRootContext: noopWindow,
   useHasMergeStylesShadowRootContext: noop,
   useMergeStylesRootStylesheets: noopRootStylesheets,
   useWindow: noopWindow,
@@ -60,6 +65,7 @@ export type MergeStylesRootProviderProps = {
   useAdoptedStylesheetEx?: AdoptedStylesheetExHook;
   useAdoptedStylesheet?: AdoptedStylesheetHook;
   useShadowConfig?: ShadowConfigHook;
+  useMergeStylesShadowRootContext?: MergeStylesShadowRootContetHook;
   useHasMergeStylesShadowRootContext?: HasMergeStylesShadowRootContextHook;
   useMergeStylesRootStylesheets?: MergeStylesRootStylesheetsHook;
   useWindow?: UseWindowHook;
@@ -75,6 +81,7 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
   useAdoptedStylesheet,
   useAdoptedStylesheetEx,
   useShadowConfig,
+  useMergeStylesShadowRootContext,
   useHasMergeStylesShadowRootContext,
   useMergeStylesRootStylesheets,
   useWindow,
@@ -142,6 +149,7 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
       useAdoptedStylesheet: useAdoptedStylesheet || noop,
       useAdoptedStylesheetEx: useAdoptedStylesheetEx || noop,
       useShadowConfig: useShadowConfig || noopShadow,
+      useMergeStylesShadowRootContext: useMergeStylesShadowRootContext || noopWindow,
       useHasMergeStylesShadowRootContext: useHasMergeStylesShadowRootContext || noop,
       useMergeStylesRootStylesheets: useMergeStylesRootStylesheets || noopRootStylesheets,
       useWindow: useWindow || noopWindow,
@@ -151,6 +159,7 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
     useAdoptedStylesheet,
     useAdoptedStylesheetEx,
     useShadowConfig,
+    useMergeStylesShadowRootContext,
     useHasMergeStylesShadowRootContext,
     useMergeStylesRootStylesheets,
     useWindow,
