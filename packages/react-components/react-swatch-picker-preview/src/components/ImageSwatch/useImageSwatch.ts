@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
 import type { ImageSwatchProps, ImageSwatchState } from './ImageSwatch.types';
+import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
+import { swatchCSSVars } from './useImageSwatchStyles.styles';
 
 /**
  * Create the state required to render ImageSwatch.
@@ -11,21 +13,51 @@ import type { ImageSwatchProps, ImageSwatchState } from './ImageSwatch.types';
  * @param props - props from this instance of ImageSwatch
  * @param ref - reference to root HTMLDivElement of ImageSwatch
  */
-export const useImageSwatch_unstable = (props: ImageSwatchProps, ref: React.Ref<HTMLDivElement>): ImageSwatchState => {
-  return {
-    // TODO add appropriate props/defaults
-    components: {
-      // TODO add each slot's element type or component
-      root: 'div',
-    },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        ...props,
-      }),
-      { elementType: 'div' },
-    ),
+export const useImageSwatch_unstable = (
+  props: ImageSwatchProps,
+  ref: React.Ref<HTMLButtonElement>,
+): ImageSwatchState => {
+  const { src, value, ...rest } = props;
+  const size = useSwatchPickerContextValue_unstable(ctx => ctx.size);
+  const shape = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
+
+  const requestSelectionChange = useSwatchPickerContextValue_unstable(ctx => ctx.requestSelectionChange);
+  const selected = useSwatchPickerContextValue_unstable(ctx => ctx.selectedValue === value);
+
+  const onClick = useEventCallback((event: React.MouseEvent<HTMLButtonElement>) =>
+    requestSelectionChange(event, {
+      selectedValue: value,
+      selectedColor: src,
+    }),
+  );
+
+  const rootVariables = {
+    [swatchCSSVars.imageSrc]: `url(${src})`,
   };
+
+  const state: ImageSwatchState = {
+    components: {
+      root: 'button',
+    },
+    root: slot.always(
+      getIntrinsicElementProps('button', {
+        ref,
+        onClick,
+        ...rest,
+      }),
+      { elementType: 'button' },
+    ),
+    value,
+    selected,
+    size,
+    shape,
+  };
+
+  // Root props
+  state.root.style = {
+    ...rootVariables,
+    ...state.root.style,
+  };
+
+  return state;
 };

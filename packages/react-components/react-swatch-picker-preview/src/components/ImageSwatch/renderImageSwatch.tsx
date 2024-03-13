@@ -10,6 +10,5 @@ import type { ImageSwatchState, ImageSwatchSlots } from './ImageSwatch.types';
 export const renderImageSwatch_unstable = (state: ImageSwatchState) => {
   assertSlots<ImageSwatchSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return <state.root />;
 };
