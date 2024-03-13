@@ -2,15 +2,15 @@ import fs from 'fs';
 import path from 'path';
 
 import { transform } from '@swc/core';
-import type { Options as SwcOptions } from '@swc/core';
 import glob from 'glob';
-import * as match from 'micromatch';
+import * as micromatch from 'micromatch';
 
-type Options = SwcOptions & { module: { type: 'es6' | 'commonjs' | 'amd' }; outputPath: string };
+import { Options } from './types';
+import { addJsExtensionToImports } from './utils';
 
 async function swcTransform(options: Options) {
-  const { outputPath, module } = options;
-  const packageRoot = process.cwd();
+  const { outputPath, module, root: packageRoot = process.cwd() } = options;
+
   const sourceRootDirName = module.type === 'es6' ? 'src' : 'lib';
 
   let sourceFiles: string[] = [];
@@ -24,11 +24,12 @@ async function swcTransform(options: Options) {
   }
 
   const swcConfig = JSON.parse(fs.readFileSync(path.resolve(packageRoot, '.swcrc'), 'utf-8'));
+  const enableResolveFully = Boolean(swcConfig.jsc.baseUrl);
   const tsFileExtensionRegex = /\.(tsx|ts)$/;
 
   for (const fileName of sourceFiles) {
     const srcFilePath = path.resolve(packageRoot, fileName);
-    const isFileExcluded = match.isMatch(srcFilePath, swcConfig.exclude, { contains: true });
+    const isFileExcluded = micromatch.isMatch(srcFilePath, swcConfig.exclude, { contains: true });
 
     if (isFileExcluded) {
       continue;
@@ -38,15 +39,18 @@ async function swcTransform(options: Options) {
 
     const result = await transform(sourceCode, {
       filename: fileName,
-      module: { type: module.type },
+      module: { type: module.type, resolveFully: enableResolveFully },
       sourceFileName: path.basename(fileName),
       outputPath,
     });
 
     // Strip @jsx comments, see https://github.com/microsoft/fluentui/issues/29126
-    const resultCode = result.code
+    let resultCode = result.code
       .replace('/** @jsxRuntime automatic */', '')
       .replace('/** @jsxImportSource @fluentui/react-jsx-runtime */', '');
+
+    // Remove after swc implement proper js extension addition https://github.com/microsoft/fluentui/issues/30634
+    resultCode = enableResolveFully ? addJsExtensionToImports(resultCode, module.type) : resultCode;
 
     const compiledFilePath = path.resolve(packageRoot, fileName.replace(`${sourceRootDirName}`, outputPath));
 
