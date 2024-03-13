@@ -510,6 +510,44 @@ export class Stylesheet {
     return sheet;
   }
 
+  protected _createStyleElement(winArg?: Window): HTMLStyleElement {
+    const doc = winArg?.document || this._config.window?.document || document;
+    const head: HTMLHeadElement = doc.head;
+    const styleElement = doc.createElement('style');
+    let nodeToInsertBefore: Node | null = null;
+
+    styleElement.setAttribute('data-merge-styles', 'true');
+
+    if (this._config.stylesheetKey === GLOBAL_STYLESHEET_KEY) {
+      styleElement.setAttribute('data-merge-styles-global', 'true');
+    }
+
+    const { cspSettings } = this._config;
+    if (cspSettings) {
+      if (cspSettings.nonce) {
+        styleElement.setAttribute('nonce', cspSettings.nonce);
+      }
+    }
+    if (this._lastStyleElement) {
+      // If the `nextElementSibling` is null, then the insertBefore will act as a regular append.
+      // https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore#Syntax
+      nodeToInsertBefore = this._lastStyleElement.nextElementSibling;
+    } else {
+      const placeholderStyleTag: Element | null = this._findPlaceholderStyleTag();
+
+      if (placeholderStyleTag) {
+        nodeToInsertBefore = placeholderStyleTag.nextElementSibling;
+      } else {
+        nodeToInsertBefore = head.childNodes[0];
+      }
+    }
+
+    head!.insertBefore(styleElement, head!.contains(nodeToInsertBefore) ? nodeToInsertBefore : null);
+    this._lastStyleElement = styleElement;
+
+    return styleElement;
+  }
+
   private _insertNode(element: HTMLStyleElement | undefined, rule: string): boolean {
     if (!element) {
       return false;
@@ -560,44 +598,6 @@ export class Stylesheet {
       }
     }
     return this._styleElement;
-  }
-
-  private _createStyleElement(winArg?: Window): HTMLStyleElement {
-    const doc = winArg?.document || this._config.window?.document || document;
-    const head: HTMLHeadElement = doc.head;
-    const styleElement = doc.createElement('style');
-    let nodeToInsertBefore: Node | null = null;
-
-    styleElement.setAttribute('data-merge-styles', 'true');
-
-    if (this._config.stylesheetKey === GLOBAL_STYLESHEET_KEY) {
-      styleElement.setAttribute('data-merge-styles-global', 'true');
-    }
-
-    const { cspSettings } = this._config;
-    if (cspSettings) {
-      if (cspSettings.nonce) {
-        styleElement.setAttribute('nonce', cspSettings.nonce);
-      }
-    }
-    if (this._lastStyleElement) {
-      // If the `nextElementSibling` is null, then the insertBefore will act as a regular append.
-      // https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore#Syntax
-      nodeToInsertBefore = this._lastStyleElement.nextElementSibling;
-    } else {
-      const placeholderStyleTag: Element | null = this._findPlaceholderStyleTag();
-
-      if (placeholderStyleTag) {
-        nodeToInsertBefore = placeholderStyleTag.nextElementSibling;
-      } else {
-        nodeToInsertBefore = head.childNodes[0];
-      }
-    }
-
-    head!.insertBefore(styleElement, head!.contains(nodeToInsertBefore) ? nodeToInsertBefore : null);
-    this._lastStyleElement = styleElement;
-
-    return styleElement;
   }
 
   private _getCacheKey(key: string): string {
