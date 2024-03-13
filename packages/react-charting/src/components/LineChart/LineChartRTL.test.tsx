@@ -15,6 +15,29 @@ function sharedBeforeEach() {
   resetIds();
 }
 
+const originalRAF = window.requestAnimationFrame;
+
+function updateChartWidthAndHeight() {
+  jest.useFakeTimers();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
+  window.HTMLElement.prototype.getBoundingClientRect = () =>
+    ({
+      bottom: 44,
+      height: 50,
+      left: 10,
+      right: 35.67,
+      top: 20,
+      width: 650,
+    } as DOMRect);
+}
+function sharedAfterEach() {
+  jest.useRealTimers();
+  window.requestAnimationFrame = originalRAF;
+}
+
 const beforeAll = () => {
   jest.spyOn(Date.prototype, 'toLocaleString').mockReturnValue('08/25/2023');
   jest.spyOn(Date.prototype, 'toLocaleTimeString').mockReturnValue('08/25/2023');
@@ -185,7 +208,11 @@ const chartPointsWithGaps = {
 };
 
 describe('Line chart rendering', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
+  });
+  afterEach(sharedAfterEach);
 
   testWithoutWait(
     'Should render the Line chart with numeric x-axis data',
@@ -607,16 +634,11 @@ describe.skip('Line chart - Subcomponent Event', () => {
 });
 
 describe('Screen resolution', () => {
-  const originalInnerWidth = global.innerWidth;
-  const originalInnerHeight = global.innerHeight;
-  afterEach(() => {
-    global.innerWidth = originalInnerWidth;
-    global.innerHeight = originalInnerHeight;
-    act(() => {
-      global.dispatchEvent(new Event('resize'));
-    });
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
   });
-  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
 
   testWithWait(
     'Should remain unchanged on zoom in',
@@ -652,7 +674,11 @@ describe('Screen resolution', () => {
 });
 
 describe('Theme and accessibility', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
+  });
+  afterEach(sharedAfterEach);
 
   test('Should reflect theme change', () => {
     // Arrange
@@ -664,6 +690,10 @@ describe('Theme and accessibility', () => {
     // Assert
     expect(container).toMatchSnapshot();
   });
+});
+
+describe('Line chart - Accessibility', () => {
+  beforeEach(sharedBeforeEach);
 
   test('Should pass accessibility tests', async () => {
     const { container } = render(<LineChart data={basicChartPoints} />);
