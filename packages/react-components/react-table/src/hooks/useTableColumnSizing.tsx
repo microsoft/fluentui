@@ -26,8 +26,10 @@ export const defaultColumnSizingState: TableColumnSizingState = {
 
 export function useTableColumnSizing_unstable<TItem>(params?: UseTableColumnSizingParams) {
   // False positive, these plugin hooks are intended to be run on every render
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  return (tableState: TableFeaturesState<TItem>) => useTableColumnSizingState(tableState, params);
+
+  return (tableState: TableFeaturesState<TItem>) =>
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useTableColumnSizingState(tableState, { autoFitColumns: true, ...params });
 }
 
 function getColumnStyles(column: ColumnWidthState): React.CSSProperties {
@@ -44,7 +46,7 @@ function getColumnStyles(column: ColumnWidthState): React.CSSProperties {
 
 function useTableColumnSizingState<TItem>(
   tableState: TableFeaturesState<TItem>,
-  params?: UseTableColumnSizingParams,
+  params: UseTableColumnSizingParams = {},
 ): TableFeaturesState<TItem> {
   const { columns } = tableState;
 
@@ -56,6 +58,8 @@ function useTableColumnSizingState<TItem>(
   const mouseHandler = useTableColumnResizeMouseHandler(columnResizeState);
   // Creates the keyboard handler for resizing columns
   const { toggleInteractiveMode, getKeyboardResizingProps } = useKeyboardResizing(columnResizeState);
+
+  const { autoFitColumns } = params;
 
   const enableKeyboardMode = React.useCallback(
     (columnId: TableColumnId, onChange?: EnableKeyboardModeOnChangeCallback) =>
@@ -91,13 +95,14 @@ function useTableColumnSizingState<TItem>(
           const col = getColumnById(columnId);
           const isLastColumn = columns[columns.length - 1]?.columnId === columnId;
 
-          const aside = isLastColumn ? null : (
-            <TableResizeHandle
-              onMouseDown={getOnMouseDown(columnId)}
-              onTouchStart={getOnMouseDown(columnId)}
-              {...getKeyboardResizingProps(columnId, col?.width || 0)}
-            />
-          );
+          const aside =
+            isLastColumn && autoFitColumns ? null : (
+              <TableResizeHandle
+                onMouseDown={getOnMouseDown(columnId)}
+                onTouchStart={getOnMouseDown(columnId)}
+                {...getKeyboardResizingProps(columnId, col?.width || 0)}
+              />
+            );
 
           return col
             ? {
@@ -106,7 +111,7 @@ function useTableColumnSizingState<TItem>(
               }
             : {};
         },
-        [getColumnById, columns, getKeyboardResizingProps, getOnMouseDown],
+        [getColumnById, columns, getKeyboardResizingProps, getOnMouseDown, autoFitColumns],
       ),
       getTableCellProps: React.useCallback(
         (columnId: TableColumnId) => {

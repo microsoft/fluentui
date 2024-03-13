@@ -76,7 +76,7 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
       containerWidthOffset: widthOffset,
       // Disables automatic resizing of columns when the container overflows.
       // This allows the sum of the columns to be larger than the container.
-      allowContainerOverflow: resizableColumnsOptions.allowContainerOverflow,
+      autoFitColumns: resizableColumnsOptions.autoFitColumns ?? true,
     }),
   ]);
 

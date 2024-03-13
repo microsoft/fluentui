@@ -43,16 +43,16 @@ type ColumnResizeStateAction<T> =
     };
 
 const createReducer =
-  <T>(allowOverflow?: boolean) =>
+  <T>(autoFitColumns?: boolean) =>
   (state: ComponentState<T>, action: ColumnResizeStateAction<T>): ComponentState<T> => {
     switch (action.type) {
       case 'CONTAINER_WIDTH_UPDATED':
         return {
           ...state,
           containerWidth: action.containerWidth,
-          columnWidthState: allowOverflow
-            ? state.columnWidthState
-            : adjustColumnWidthsToFitContainer(state.columnWidthState, action.containerWidth),
+          columnWidthState: autoFitColumns
+            ? adjustColumnWidthsToFitContainer(state.columnWidthState, action.containerWidth)
+            : state.columnWidthState,
         };
 
       case 'COLUMNS_UPDATED':
@@ -60,7 +60,7 @@ const createReducer =
         return {
           ...state,
           columns: action.columns,
-          columnWidthState: allowOverflow ? newS : adjustColumnWidthsToFitContainer(newS, state.containerWidth),
+          columnWidthState: autoFitColumns ? adjustColumnWidthsToFitContainer(newS, state.containerWidth) : newS,
         };
 
       case 'COLUMN_SIZING_OPTIONS_UPDATED':
@@ -68,7 +68,9 @@ const createReducer =
         return {
           ...state,
           columnSizingOptions: action.columnSizingOptions,
-          columnWidthState: allowOverflow ? newState : adjustColumnWidthsToFitContainer(newState, state.containerWidth),
+          columnWidthState: autoFitColumns
+            ? adjustColumnWidthsToFitContainer(newState, state.containerWidth)
+            : newState,
         };
 
       case 'SET_COLUMN_WIDTH':
@@ -86,8 +88,8 @@ const createReducer =
         newColumnWidthState = setColumnProperty(newColumnWidthState, columnId, 'width', width);
         // Set this width as idealWidth, because its a deliberate change, not a recalculation because of container
         newColumnWidthState = setColumnProperty(newColumnWidthState, columnId, 'idealWidth', width);
-        // Adjust the widths to the container size, if overflow is not enabled
-        if (!allowOverflow) {
+        // Adjust the widths to the container size
+        if (autoFitColumns) {
           newColumnWidthState = adjustColumnWidthsToFitContainer(newColumnWidthState, containerWidth);
         }
 
@@ -100,9 +102,9 @@ export function useTableColumnResizeState<T>(
   containerWidth: number,
   params: UseTableColumnSizingParams = {},
 ): ColumnResizeState {
-  const { onColumnResize, columnSizingOptions, allowContainerOverflow } = params;
+  const { onColumnResize, columnSizingOptions, autoFitColumns = true } = params;
 
-  const reducer = React.useMemo(() => createReducer<T>(allowContainerOverflow), [allowContainerOverflow]);
+  const reducer = React.useMemo(() => createReducer<T>(autoFitColumns), [autoFitColumns]);
 
   const [state, dispatch] = React.useReducer(reducer, {
     columns,

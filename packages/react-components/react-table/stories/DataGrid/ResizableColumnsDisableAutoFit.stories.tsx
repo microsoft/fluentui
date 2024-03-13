@@ -188,7 +188,7 @@ export const ResizableColumns = () => {
         resizableColumns
         columnSizingOptions={columnSizingOptions}
         resizableColumnsOptions={{
-          allowContainerOverflow: true,
+          autoFitColumns: false,
         }}
       >
         <DataGridHeader>
@@ -227,20 +227,23 @@ export const ResizableColumns = () => {
   );
 };
 
-ResizableColumns.storyName = 'Resizable Columns - Container Overflow';
+ResizableColumns.storyName = 'Resizable Columns - Disabled container auto-fit';
 ResizableColumns.parameters = {
   docs: {
     description: {
       story: [
-        'In previous example, the columns are automatically squeezed when the container is narrowed, until the',
-        'minimum width is reached. This also efectively prevents the user from making the columns wider in this case.',
+        'In previous example, the columns are automatically fitted to the container. This means that the columns are',
+        'squeezed when the container is narrowed, until the',
+        'minimum width is reached, and also the last column is extended past its optimal width to fill teh available',
+        'space. This also efectively prevents the user from making the columns wider than the total width of the ',
+        'container, as the columns are automatically resized to fit the container.',
         '',
-        'This behavior can be changed by passing `resizableColumnsOptions` prop to Datagrid,',
-        'with the `{allowContainerOverflow: true}` option.',
+        'This behavior can be disabled by passing `resizableColumnsOptions` prop to Datagrid,',
+        'with the `{autoFitColumns: false}` option.',
         '',
         'With this option, the columns can be made wider than the container, and the container will overflow.',
         'Also, the automatic resizing of adjacent columns will be disabled, as the column are now allowed to be wider',
-        'that the container.',
+        'that the container. This also enables the resize handle on the last column.',
       ].join('\n'),
     },
   },

@@ -93,7 +93,11 @@ export type DataGridProps = TableProps &
      * Custom options for column resizing.
      */
     resizableColumnsOptions?: {
-      allowContainerOverflow?: boolean;
+      /**
+       * If true, columns will be auto-fitted to the container width.
+       * @default true
+       * */
+      autoFitColumns?: boolean;
     };
   };
 

@@ -209,7 +209,7 @@ export type TableColumnSizingOptions = Record<
   TableColumnId,
   Partial<Pick<ColumnWidthState, 'minWidth' | 'idealWidth' | 'padding'>> & {
     defaultWidth?: number;
-    allowContainerOverflow?: boolean;
+    autoFitColumns?: boolean;
   }
 >;
 
@@ -220,5 +220,5 @@ export type UseTableColumnSizingParams = {
     data: { columnId: TableColumnId; width: number },
   ) => void;
   containerWidthOffset?: number;
-  allowContainerOverflow?: boolean;
+  autoFitColumns?: boolean;
 };
