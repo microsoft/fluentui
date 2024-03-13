@@ -11,7 +11,7 @@ import type * as React_2 from 'react';
 import { shorthands } from '@griffel/react';
 
 // @public (undocumented)
-export const DevRuntime: JSXDevRuntime;
+export const createReactStrictDomJSX: (reactJsx: JSXRuntime) => JSXRuntime;
 
 // @public (undocumented)
 export const getStylesFromClassName: (className: string) => undefined;
@@ -21,9 +21,6 @@ export { makeResetStyles }
 export { makeStyles }
 
 export { mergeClasses }
-
-// @public (undocumented)
-export const Runtime: JSXRuntime;
 
 export { shorthands }
 

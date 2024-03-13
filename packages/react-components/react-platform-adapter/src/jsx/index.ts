@@ -1,2 +1,1 @@
-export * from './DevRuntime';
-export * from './Runtime';
+export * from './createReactStrictDomJSX';

@@ -1,27 +1,30 @@
 import type * as React from 'react';
 
-import { getStylesFromClassName } from '../styling/index';
-import { JSXCreateElement } from './types';
 import { html } from 'react-strict-dom';
+import { getStylesFromClassName } from '../styling/index';
+import { JSXRuntime } from './types';
 
 const modifyPropsForNative = <P extends {}>(
   props: (P & { children?: React.ReactNode; className?: string; style?: React.CSSProperties }) | null,
 ) => {
-  if (!props?.className) {
-    return props;
+  if (props?.className) {
+    props = {
+      ...props,
+      // TODO Need to also convert props.style from CSSProperties to StyleXStyle
+      style: getStylesFromClassName(props.className),
+    };
+    delete props.className;
   }
-
-  props = {
-    ...props,
-    // TODO Need to also convert props.style from CSSProperties to StyleXStyle
-    style: getStylesFromClassName(props.className),
-  };
-  delete props.className;
 
   return props;
 };
 
-export const createReactStrictDomJSX = (reactJsx: JSXCreateElement): JSXCreateElement => {
+/**
+ * Create a wrapper for React JSX that creates react-strict-dom elements for intrinsic elements.
+ *
+ * @param reactJsx The original JSX function to wrap from react/jsx-runtime
+ */
+export const createReactStrictDomJSX = (reactJsx: JSXRuntime): JSXRuntime => {
   return (type, props, key, source, self) => {
     if (typeof type === 'string' && type in html) {
       return reactJsx(html[type], modifyPropsForNative(props), key, source, self);
