@@ -24,7 +24,7 @@ const modifyPropsForNative = <P extends {}>(
  *
  * @param reactJsx The original JSX function to wrap from react/jsx-runtime
  */
-export const createReactStrictDomJSX = (reactJsx: JSXRuntime): JSXRuntime => {
+export const jsxPlatformAdapter = (reactJsx: JSXRuntime): JSXRuntime => {
   return (type, props, key, source, self) => {
     if (typeof type === 'string' && type in html) {
       return reactJsx(html[type], modifyPropsForNative(props), key, source, self);

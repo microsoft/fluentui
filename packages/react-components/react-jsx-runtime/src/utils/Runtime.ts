@@ -1,7 +1,8 @@
 import * as ReactRuntime from 'react/jsx-runtime';
+import { jsxPlatformAdapter } from '@fluentui/react-platform-adapter';
 import type { JSXRuntime } from './types';
 
-export const Runtime = ReactRuntime as {
-  jsx: JSXRuntime;
-  jsxs: JSXRuntime;
+export const Runtime = {
+  jsx: jsxPlatformAdapter((ReactRuntime as { jsx: JSXRuntime }).jsx),
+  jsxs: jsxPlatformAdapter((ReactRuntime as { jsxs: JSXRuntime }).jsxs),
 };

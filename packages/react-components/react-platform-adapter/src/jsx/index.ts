@@ -1,1 +1,1 @@
-export * from './createReactStrictDomJSX';
+export * from './jsxPlatformAdapter';
