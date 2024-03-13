@@ -18,6 +18,9 @@ import { useRenderer_unstable } from '@griffel/react';
 // @public (undocumented)
 export const getStylesFromClassName: (className: string) => undefined;
 
+// @public (undocumented)
+export const jsxPlatformAdapter: (reactJsx: JSXRuntime) => JSXRuntime;
+
 export { makeResetStyles }
 
 export { makeStyles }

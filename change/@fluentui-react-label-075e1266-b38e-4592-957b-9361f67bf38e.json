@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Integrate cross-platform support in Label",
+  "packageName": "@fluentui/react-label",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

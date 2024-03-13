@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { Label } from '@fluentui/react-label';
 import {
   getStylesFromClassName,
   makeResetStyles,
@@ -19,11 +20,11 @@ const useBaseClassName = makeResetStyles({
 const useClassNames = makeStyles({
   root: {
     ...shorthands.border('2px', 'solid', 'red'),
-    color: 'pink',
-    backgroundColor: '#333',
+    color: '#222',
+    backgroundColor: '#EEE',
     ':hover': {
-      color: 'skyblue',
-      backgroundColor: 'darkblue',
+      color: 'blue',
+      backgroundColor: '#DDD',
     },
   },
   cond: {
@@ -41,7 +42,7 @@ export const StrictDomDemo = (props: { cond?: boolean }) => {
       <html.div
         style={getStylesFromClassName(mergeClasses(useBaseClassName(), classNames.root, cond && classNames.cond))}
       >
-        <html.span>This is a demo of styles defined using griffel</html.span>
+        <Label required>This is a label</Label>
       </html.div>
     </FluentProvider>
   );

@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@fluentui/react-button": "*",
+    "@fluentui/react-label": "*",
     "@fluentui/react-platform-adapter": "*",
     "@fluentui/react-provider": "*",
     "@fluentui/react-theme": "*",

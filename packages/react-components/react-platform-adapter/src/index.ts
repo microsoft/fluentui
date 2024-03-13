@@ -1,4 +1,5 @@
 export { XPlatProvider, suppressCssVariableInsertion, type XPlatProviderProps } from './XPlatProvider';
+export { jsxPlatformAdapter } from './jsx';
 export {
   getStylesFromClassName,
   makeStyles,
