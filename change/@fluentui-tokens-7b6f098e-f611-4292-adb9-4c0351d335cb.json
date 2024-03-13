@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: enable .js extension addition and directory import/export unwrapping in build output",
+  "packageName": "@fluentui/tokens",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
