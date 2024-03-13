@@ -1,4 +1,4 @@
-# Fluent UI RFCs
+# Fluent UI RFCs (Request For Comment)
 
 An RFC is usually an ongoing pull request with a single mark down file and supporting assets that serves as a discussion point to drive towards consensus around a new technical or process idea. We put these documents in the rfcs folder that serves as an archive.
 
@@ -12,7 +12,7 @@ The [React RFC Process](https://github.com/reactjs/rfcs/blob/master/README.md) s
 
 ### 1. Creation
 
-- Start by making a copy of [TEMPLATE.md](./TEMPLATE.md) under an appropriate area sub-folder and name. (While we're still experimenting with the RFC process, feel free to create a new area sub-folder if you don't think an appropriate one exists yet.)
+- Start by making a copy of [rfc-template.md](./rfcs/rfc-template.md) under an appropriate area sub-folder and name. (While we're still experimenting with the RFC process, feel free to create a new area sub-folder if you don't think an appropriate one exists yet.)
 - Write the RFC
 - Submit a PR and label it with **Type: RFC**.
 
@@ -38,7 +38,7 @@ Following the theme of author accountability, in general it's up to the author t
 - Do list primary stakeholders and participants.
 - Don't use RFC's as a method to document a pattern. They are not tutorials, they are a method for gathering feedback.
 - Do list when a decision needs to be made by, a solution implemented or next steps taken.
-- Don't let RFC's sit forever. If a topic isn't going to move forward, close the PR in a timely manor.
+- Don't let RFC's sit forever. If a topic isn't going to move forward, close the PR in a timely manner.
 - Do shop your RFC around. Just because it is posted does not imply it will be read. The author should be active in following up with stakeholders.
 - Don't reveal proprietary business plans in an RFC.
 - Do plug your RFC at the tech syncs to get it the attention it deserves.
