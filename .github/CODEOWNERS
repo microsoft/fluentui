@@ -39,7 +39,6 @@
 /jest.preset.js @microsoft/fluentui-react-build
 /lerna.json @microsoft/fluentui-react-build
 /package.json @microsoft/fluentui-react-build
-/sizeauditor.json @microsoft/fluentui-react-build
 /tsconfig.json @microsoft/fluentui-react-build
 /tsconfig.base.json @microsoft/fluentui-react-build
 /yarn.lock @microsoft/fluentui-react-build

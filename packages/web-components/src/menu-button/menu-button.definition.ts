@@ -4,9 +4,6 @@ import { MenuButton } from './menu-button.js';
 import { template } from './menu-button.template.js';
 
 /**
- * The Fluent Menu Button Element. Implements {@link @microsoft/fast-foundation#Button },
- * {@link @microsoft/fast-foundation#buttonTemplate}
- *
  * @public
  * @remarks
  * HTML Element: \<fluent-button\>

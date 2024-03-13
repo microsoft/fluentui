@@ -1,7 +1,7 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
-import { StartEnd } from '@microsoft/fast-foundation/patterns.js';
 // TODO: Remove with https://github.com/microsoft/fast/pull/6797
 import { applyMixins } from '../utils/apply-mixins.js';
+import { StartEnd } from '../patterns/index.js';
 import {
   CounterBadgeAppearance,
   CounterBadgeColor,

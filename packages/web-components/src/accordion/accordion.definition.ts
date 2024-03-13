@@ -4,10 +4,6 @@ import { styles } from './accordion.styles.js';
 import { template } from './accordion.template.js';
 
 /**
- * The Fluent Accordion Element. Implements {@link @microsoft/fast-foundation#Accordion },
- * {@link @microsoft/fast-foundation#accordionTemplate}
- *
- *
  * @public
  * @remarks
  * HTML Element: \<fluent-accordion\>

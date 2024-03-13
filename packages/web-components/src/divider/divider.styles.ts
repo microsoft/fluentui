@@ -28,12 +28,12 @@ export const styles = css`
   :host::after,
   :host::before {
     align-self: center;
-    background: ${colorNeutralStroke2};
+    background: var(${colorNeutralStroke2});
     box-sizing: border-box;
     content: '';
     display: flex;
     flex-grow: 1;
-    height: ${strokeWidthThin};
+    height: var(${strokeWidthThin});
   }
 
   :host([inset]) {
@@ -41,10 +41,10 @@ export const styles = css`
   }
 
   :host ::slotted(*) {
-    color: ${colorNeutralForeground2};
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase200};
-    font-weight: ${fontWeightRegular};
+    color: var(${colorNeutralForeground2});
+    font-family: var(${fontFamilyBase});
+    font-size: var(${fontSizeBase200});
+    font-weight: var(${fontWeightRegular});
     margin: 0;
     padding: 0 12px;
   }
@@ -85,7 +85,7 @@ export const styles = css`
 
   :host([orientation='vertical'])::before,
   :host([orientation='vertical'])::after {
-    width: ${strokeWidthThin};
+    width: var(${strokeWidthThin});
     min-height: 20px;
     height: 100%;
   }
@@ -106,24 +106,24 @@ export const styles = css`
 
   :host([appearance='strong'])::before,
   :host([appearance='strong'])::after {
-    background: ${colorNeutralStroke1};
+    background: var(${colorNeutralStroke1});
   }
   :host([appearance='strong']) ::slotted(*) {
-    color: ${colorNeutralForeground1};
+    color: var(${colorNeutralForeground1});
   }
   :host([appearance='brand'])::before,
   :host([appearance='brand'])::after {
-    background: ${colorBrandStroke1};
+    background: var(${colorBrandStroke1});
   }
   :host([appearance='brand']) ::slotted(*) {
-    color: ${colorBrandForeground1};
+    color: var(${colorBrandForeground1});
   }
   :host([appearance='subtle'])::before,
   :host([appearance='subtle'])::after {
-    background: ${colorNeutralStroke3};
+    background: var(${colorNeutralStroke3});
   }
   :host([appearance='subtle']) ::slotted(*) {
-    color: ${colorNeutralForeground3};
+    color: var(${colorNeutralForeground3});
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`

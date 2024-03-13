@@ -1,6 +1,6 @@
-import type { ButtonOptions } from '@microsoft/fast-foundation/button.js';
-import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
 import { ButtonAppearance, ButtonShape, ButtonSize } from '../button/button.options.js';
+import type { ButtonOptions } from '../button/index.js';
+import type { ValuesOf } from '../utils/index.js';
 
 /**
  * Toggle Button Appearance constants

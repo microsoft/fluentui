@@ -33,7 +33,7 @@ export const styles = css`
   :host {
     grid-auto-flow: column;
     grid-template-columns: max-content;
-    gap: ${spacingHorizontalXS};
+    gap: var(${spacingHorizontalXS});
     align-items: center;
     height: 32px;
     cursor: pointer;
@@ -41,23 +41,23 @@ export const styles = css`
     position: relative;
     user-select: none;
     color: blue;
-    color: var(--state-color, ${colorNeutralForeground3});
-    padding-inline-end: ${spacingHorizontalS};
-    --control-border-color: ${colorNeutralStrokeAccessible};
-    --checked-indicator-background-color: ${colorCompoundBrandForeground1};
-    --state-color: ${colorNeutralForeground3};
+    color: var(--state-color, var(${colorNeutralForeground3}));
+    padding-inline-end: var(${spacingHorizontalS});
+    --control-border-color: var(${colorNeutralStrokeAccessible});
+    --checked-indicator-background-color: var(${colorCompoundBrandForeground1});
+    --state-color: var(${colorNeutralForeground3});
   }
   :host([disabled]) {
-    --control-border-color: ${colorNeutralForegroundDisabled};
-    --checked-indicator-background-color: ${colorNeutralForegroundDisabled};
-    --state-color: ${colorNeutralForegroundDisabled};
+    --control-border-color: var(${colorNeutralForegroundDisabled});
+    --checked-indicator-background-color: var(${colorNeutralForegroundDisabled});
+    --state-color: var(${colorNeutralForegroundDisabled});
   }
   .label {
     cursor: pointer;
-    font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase300};
-    font-weight: ${fontWeightRegular};
-    line-height: ${lineHeightBase300};
+    font-family: var(${fontFamilyBase});
+    font-size: var(${fontSizeBase300});
+    font-weight: var(${fontWeightRegular});
+    line-height: var(${lineHeightBase300});
   }
   .label__hidden {
     display: none;
@@ -65,67 +65,67 @@ export const styles = css`
   .control {
     box-sizing: border-box;
     align-items: center;
-    border: 1px solid var(--control-border-color, ${colorNeutralStrokeAccessible});
-    border-radius: ${borderRadiusCircular};
+    border: 1px solid var(--control-border-color, var(${colorNeutralStrokeAccessible}));
+    border-radius: var(${borderRadiusCircular});
     display: flex;
     height: 16px;
     justify-content: center;
-    margin: ${spacingVerticalS} ${spacingHorizontalS};
+    margin: var(${spacingVerticalS}) var(${spacingHorizontalS});
     position: relative;
     width: 16px;
     justify-self: center;
   }
   .checked-indicator {
-    border-radius: ${borderRadiusCircular};
+    border-radius: var(${borderRadiusCircular});
     height: 10px;
     opacity: 0;
     width: 10px;
   }
   :host([aria-checked='false']:hover) .control {
-    color: ${colorNeutralForeground2};
+    color: var(${colorNeutralForeground2});
   }
   :host(:focus-visible) {
-    border-radius: ${borderRadiusSmall};
-    box-shadow: 0 0 0 3px ${colorStrokeFocus2};
-    outline: 1px solid ${colorStrokeFocus1};
+    border-radius: var(${borderRadiusSmall});
+    box-shadow: 0 0 0 3px var(${colorStrokeFocus2});
+    outline: 1px solid var(${colorStrokeFocus1});
   }
   :host(:hover) .control {
-    border-color: ${colorNeutralStrokeAccessibleHover};
+    border-color: var(${colorNeutralStrokeAccessibleHover});
   }
   :host(:active) .control {
-    border-color: ${colorNeutralStrokeAccessiblePressed};
+    border-color: var(${colorNeutralStrokeAccessiblePressed});
   }
   :host([aria-checked='true']) .checked-indicator {
     opacity: 1;
   }
   :host([aria-checked='true']) .control {
-    border-color: var(--control-border-color, ${colorNeutralStrokeAccessible});
+    border-color: var(--control-border-color, var(${colorNeutralStrokeAccessible}));
   }
   :host([aria-checked='true']) .checked-indicator {
-    background-color: var(--checked-indicator-background-color, ${colorCompoundBrandForeground1});
+    background-color: var(--checked-indicator-background-color, var(${colorCompoundBrandForeground1}));
   }
   :host([aria-checked='true']:hover) .control {
-    border-color: ${colorCompoundBrandStrokeHover};
+    border-color: var(${colorCompoundBrandStrokeHover});
   }
   :host([aria-checked='true']:hover) .checked-indicator {
-    background-color: ${colorCompoundBrandStrokeHover};
+    background-color: var(${colorCompoundBrandStrokeHover});
   }
   :host([aria-checked='true']:active) .control {
-    border-color: ${colorCompoundBrandStrokePressed};
+    border-color: var(${colorCompoundBrandStrokePressed});
   }
   :host([aria-checked='true']:active) .checked-indicator {
-    background: ${colorCompoundBrandForeground1Pressed};
+    background: var(${colorCompoundBrandForeground1Pressed});
   }
   :host([disabled]) {
-    color: ${colorNeutralForegroundDisabled};
+    color: var(${colorNeutralForegroundDisabled});
     pointer-events: none;
   }
   :host([disabled]) .control {
     pointer-events: none;
-    border-color: ${colorNeutralForegroundDisabled};
+    border-color: var(${colorNeutralForegroundDisabled});
   }
   :host([disabled]) .checked-indicator {
-    background: ${colorNeutralForegroundDisabled};
+    background: var(${colorNeutralForegroundDisabled});
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`

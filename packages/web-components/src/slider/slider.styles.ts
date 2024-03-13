@@ -35,7 +35,7 @@ export const styles = css`
     outline: none;
     cursor: pointer;
     user-select: none;
-    border-radius: ${borderRadiusSmall};
+    border-radius: var(${borderRadiusSmall});
     touch-action: pan-y;
     min-width: calc(var(--thumb-size) * 1px);
     width: 100%;
@@ -62,8 +62,8 @@ export const styles = css`
   }
 
   :host(:focus-visible) {
-    box-shadow: 0 0 0 2pt ${colorStrokeFocus2};
-    outline: 1px solid ${colorStrokeFocus1};
+    box-shadow: 0 0 0 2pt var(${colorStrokeFocus2});
+    outline: 1px solid var(${colorStrokeFocus1});
   }
 
   .thumb-cursor:focus {
@@ -97,19 +97,20 @@ export const styles = css`
   .thumb-cursor {
     height: var(--thumb-size);
     width: var(--thumb-size);
-    background-color: ${colorBrandBackground};
-    border-radius: ${borderRadiusCircular};
-    box-shadow: inset 0 0 0 var(--thumb-padding) ${colorNeutralBackground1}, 0 0 0 1px ${colorNeutralStroke1};
+    background-color: var(${colorBrandBackground});
+    border-radius: var(${borderRadiusCircular});
+    box-shadow: inset 0 0 0 var(--thumb-padding) var(${colorNeutralBackground1}), 0 0 0 1px var(${colorNeutralStroke1});
   }
   .thumb-cursor:hover {
-    background-color: ${colorCompoundBrandBackgroundHover};
+    background-color: var(${colorCompoundBrandBackgroundHover});
   }
   .thumb-cursor:active {
-    background-color: ${colorCompoundBrandBackgroundPressed};
+    background-color: var(${colorCompoundBrandBackgroundPressed});
   }
   :host([disabled]) .thumb-cursor {
-    background-color: ${colorNeutralForegroundDisabled};
-    box-shadow: inset 0 0 0 var(--thumb-padding) ${colorNeutralBackground1}, 0 0 0 1px ${colorNeutralStrokeDisabled};
+    background-color: var(${colorNeutralForegroundDisabled});
+    box-shadow: inset 0 0 0 var(--thumb-padding) var(${colorNeutralBackground1}),
+      0 0 0 1px var(${colorNeutralStrokeDisabled});
   }
 
   /* Positioning Region */
@@ -132,23 +133,23 @@ export const styles = css`
   .track {
     align-self: start;
     position: absolute;
-    background-color: ${colorNeutralStrokeAccessible};
-    border-radius: ${borderRadiusMedium};
+    background-color: var(${colorNeutralStrokeAccessible});
+    border-radius: var(${borderRadiusMedium});
     overflow: hidden;
   }
 
   :host([step]) .track::after {
     content: '';
     position: absolute;
-    border-radius: ${borderRadiusMedium};
+    border-radius: var(${borderRadiusMedium});
     width: 100%;
     inset: 0 2px;
     background-image: repeating-linear-gradient(
       var(--slider-direction),
       #0000 0%,
       #0000 calc(var(--step-rate) - 1px),
-      ${colorNeutralBackground1} calc(var(--step-rate) - 1px),
-      ${colorNeutralBackground1} var(--step-rate)
+      var(${colorNeutralBackground1}) calc(var(--step-rate) - 1px),
+      var(${colorNeutralBackground1}) var(--step-rate)
     );
   }
 
@@ -157,7 +158,7 @@ export const styles = css`
   }
 
   :host([disabled]) .track {
-    background-color: ${colorNeutralBackgroundDisabled};
+    background-color: var(${colorNeutralBackgroundDisabled});
   }
 
   :host([orientation='horizontal']) .track {
@@ -176,23 +177,23 @@ export const styles = css`
     grid-column: 2 / auto;
   }
   .track-start {
-    background-color: ${colorCompoundBrandBackground};
+    background-color: var(${colorCompoundBrandBackground});
     position: absolute;
     height: 100%;
     left: 0;
-    border-radius: ${borderRadiusMedium};
+    border-radius: var(${borderRadiusMedium});
   }
   :host([disabled]) .track-start {
-    background-color: ${colorNeutralForegroundDisabled};
+    background-color: var(${colorNeutralForegroundDisabled});
   }
   :host(:hover) .track-start {
-    background-color: ${colorCompoundBrandBackgroundHover};
+    background-color: var(${colorCompoundBrandBackgroundHover});
   }
   :host([disabled]:hover) .track-start {
-    background-color: ${colorNeutralForegroundDisabled};
+    background-color: var(${colorNeutralForegroundDisabled});
   }
   .track-start:active {
-    background-color: ${colorCompoundBrandBackgroundPressed};
+    background-color: var(${colorCompoundBrandBackgroundPressed});
   }
   :host([orientation='vertical']) .track-start {
     height: auto;

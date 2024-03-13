@@ -33,10 +33,10 @@ export const styles = css`
     align-items: center;
     grid-gap: 4px;
     height: 32px;
-    background: ${colorNeutralBackground1};
-    font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
-    border-radius: ${borderRadiusMedium};
-    color: ${colorNeutralForeground2};
+    background: var(${colorNeutralBackground1});
+    font: var(${fontWeightRegular}) var(${fontSizeBase300}) / var(${lineHeightBase300}) var(${fontFamilyBase});
+    border-radius: var(${borderRadiusMedium});
+    color: var(${colorNeutralForeground2});
     padding: 0 10px;
     cursor: pointer;
     overflow: visible;
@@ -44,7 +44,7 @@ export const styles = css`
   }
 
   :host(:hover) {
-    background: ${colorNeutralBackground1Hover};
+    background: var(${colorNeutralBackground1Hover});
   }
 
   .content {
@@ -68,14 +68,14 @@ export const styles = css`
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    color: ${colorNeutralForeground2};
+    color: var(${colorNeutralForeground2});
   }
 
   .expand-collapse-glyph-container,
   ::slotted([slot='start']),
   ::slotted([slot='end']) {
     height: 32px;
-    font-size: ${fontSizeBase500};
+    font-size: var(${fontSizeBase500});
     width: fit-content;
   }
 
@@ -84,8 +84,8 @@ export const styles = css`
   }
 
   ::slotted([slot='end']) {
-    color: ${colorNeutralForeground3};
-    font: ${fontWeightRegular} ${fontSizeBase200} / ${lineHeightBase200} ${fontFamilyBase};
+    color: var(${colorNeutralForeground3});
+    font: var(${fontWeightRegular}) var(${fontSizeBase200}) / var(${lineHeightBase200}) var(${fontFamilyBase});
     white-space: nowrap;
     grid-column: 4 / span 1;
     justify-self: flex-end;
@@ -99,36 +99,36 @@ export const styles = css`
   :host(:hover) .input-container,
   :host(:hover) .expand-collapse-glyph-container,
   :host(:hover) .content {
-    color: ${colorNeutralForeground2Hover};
+    color: var(${colorNeutralForeground2Hover});
   }
 
   :host([icon]:hover) ::slotted([slot='start']) {
-    color: ${colorCompoundBrandForeground1Hover};
+    color: var(${colorCompoundBrandForeground1Hover});
   }
 
   :host(:active) {
-    background-color: ${colorNeutralBackground1Selected};
+    background-color: var(${colorNeutralBackground1Selected});
   }
 
   :host(:active) .input-container,
   :host(:active) .expand-collapse-glyph-container,
   :host(:active) .content {
-    color: ${colorNeutralForeground2Pressed};
+    color: var(${colorNeutralForeground2Pressed});
   }
 
   :host(:active) ::slotted([slot='start']) {
-    color: ${colorCompoundBrandForeground1Pressed};
+    color: var(${colorCompoundBrandForeground1Pressed});
   }
 
   :host([disabled]) {
-    background-color: ${colorNeutralBackgroundDisabled};
+    background-color: var(${colorNeutralBackgroundDisabled});
   }
 
   :host([disabled]) .content,
   :host([disabled]) .expand-collapse-glyph-container,
   :host([disabled]) ::slotted([slot='end']),
   :host([disabled]) ::slotted([slot='start']) {
-    color: ${colorNeutralForegroundDisabled};
+    color: var(${colorNeutralForegroundDisabled});
   }
 
   :host([data-indent]) {

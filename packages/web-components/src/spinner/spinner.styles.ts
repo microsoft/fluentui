@@ -43,7 +43,7 @@ export const styles = css`
 
   .background {
     fill: none;
-    stroke: ${colorBrandStroke2};
+    stroke: var(${colorBrandStroke2});
     stroke-width: 1.5px;
   }
 
@@ -52,7 +52,7 @@ export const styles = css`
   }
 
   .determinate {
-    stroke: ${colorBrandStroke1};
+    stroke: var(${colorBrandStroke1});
     fill: none;
     stroke-width: 1.5px;
     stroke-linecap: round;
@@ -62,11 +62,11 @@ export const styles = css`
   }
 
   :host([appearance='inverted']) .determinite {
-    stroke: ${colorNeutralStrokeOnBrand2};
+    stroke: var(${colorNeutralStrokeOnBrand2});
   }
 
   .indeterminate-indicator-1 {
-    stroke: ${colorBrandStroke1};
+    stroke: var(${colorBrandStroke1});
     fill: none;
     stroke-width: 1.5px;
     stroke-linecap: round;
@@ -77,7 +77,7 @@ export const styles = css`
   }
 
   :host([appearance='inverted']) .indeterminate-indicator-1 {
-    stroke: ${colorNeutralStrokeOnBrand2};
+    stroke: var(${colorNeutralStrokeOnBrand2});
   }
 
   @keyframes spin-infinite {

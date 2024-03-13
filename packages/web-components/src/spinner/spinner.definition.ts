@@ -4,10 +4,6 @@ import { styles } from './spinner.styles.js';
 import { template } from './spinner.template.js';
 
 /**
- * The Fluent Spinner Element. Implements {@link @microsoft/fast-foundation#ProgressRing },
- * {@link @microsoft/fast-foundation#progress-ringTemplate}
- *
- *
  * @public
  * @remarks
  * HTML Element: \<fluent-spinner\>

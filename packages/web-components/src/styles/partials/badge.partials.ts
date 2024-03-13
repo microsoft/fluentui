@@ -59,17 +59,17 @@ export const badgeBaseStyles = css.partial`
     box-sizing: border-box;
     align-items: center;
     justify-content: center;
-    font-family: ${fontFamilyBase};
-    font-weight: ${fontWeightSemibold};
-    font-size: ${fontSizeBase200};
-    line-height: ${lineHeightBase200};
+    font-family: var(${fontFamilyBase});
+    font-weight: var(${fontWeightSemibold});
+    font-size: var(${fontSizeBase200});
+    line-height: var(${lineHeightBase200});
     min-width: 20px;
     height: 20px;
-    padding-inline: calc(${spacingHorizontalXS} + ${textPadding});
-    border-radius: ${borderRadiusCircular};
-    border-color: ${colorTransparentStroke};
-    background-color: ${colorBrandBackground};
-    color: ${colorNeutralForegroundOnBrand};
+    padding-inline: calc(var(${spacingHorizontalXS}) + var(${textPadding}));
+    border-radius: var(${borderRadiusCircular});
+    border-color: var(${colorTransparentStroke});
+    background-color: var(${colorBrandBackground});
+    color: var(${colorNeutralForegroundOnBrand});
     contain: content;
   }
 
@@ -85,7 +85,7 @@ export const badgeBaseStyles = css.partial`
     bottom: 0;
     right: 0;
     border-style: solid;
-    border-width: ${strokeWidthThin};
+    border-width: var(${strokeWidthThin});
     border-color: inherit;
     border-radius: inherit;
   }
@@ -121,9 +121,9 @@ export const badgeSizeStyles = css.partial`
   :host([size='small']) {
     min-width: 16px;
     height: 16px;
-    font-size: ${fontSizeBase100};
-    line-height: ${lineHeightBase100};
-    padding-inline: calc(${spacingHorizontalXXS} + ${textPadding});
+    font-size: var(${fontSizeBase100});
+    line-height: var(${lineHeightBase100});
+    padding-inline: calc(var(${spacingHorizontalXXS}) + var(${textPadding}));
   }
   :host([size='small']) ::slotted(svg) {
     font-size: 12px;
@@ -131,9 +131,9 @@ export const badgeSizeStyles = css.partial`
   :host([size='large']) {
     min-width: 24px;
     height: 24px;
-    font-size: ${fontSizeBase200};
-    line-height: ${lineHeightBase200};
-    padding-inline: calc(${spacingHorizontalXS} + ${textPadding});
+    font-size: var(${fontSizeBase200});
+    line-height: var(${lineHeightBase200});
+    padding-inline: calc(var(${spacingHorizontalXS}) + var(${textPadding}));
   }
   :host([size='large']) ::slotted(svg) {
     font-size: 16px;
@@ -141,9 +141,9 @@ export const badgeSizeStyles = css.partial`
   :host([size='extra-large']) {
     min-width: 32px;
     height: 32px;
-    font-size: ${fontSizeBase200};
-    line-height: ${lineHeightBase200};
-    padding-inline: calc(${spacingHorizontalSNudge} + ${textPadding});
+    font-size: var(${fontSizeBase200});
+    line-height: var(${lineHeightBase200});
+    padding-inline: calc(var(${spacingHorizontalSNudge}) + var(${textPadding}));
   }
   :host([size='extra-large']) ::slotted(svg) {
     font-size: 20px;
@@ -158,38 +158,38 @@ export const badgeSizeStyles = css.partial`
  */
 export const badgeFilledStyles = css.partial`
   :host([color='danger']) {
-    background-color: ${colorPaletteRedBackground3};
-    color: ${colorNeutralForegroundOnBrand};
+    background-color: var(${colorPaletteRedBackground3});
+    color: var(${colorNeutralForegroundOnBrand});
   }
 
   :host([color='important']) {
-    background-color: ${colorNeutralForeground1};
-    color: ${colorNeutralBackground1};
+    background-color: var(${colorNeutralForeground1});
+    color: var(${colorNeutralBackground1});
   }
 
   :host([color='informative']) {
-    background-color: ${colorNeutralBackground5};
-    color: ${colorNeutralForeground3};
+    background-color: var(${colorNeutralBackground5});
+    color: var(${colorNeutralForeground3});
   }
 
   :host([color='severe']) {
-    background-color: ${colorPaletteDarkOrangeBackground3};
-    color: ${colorNeutralForegroundOnBrand};
+    background-color: var(${colorPaletteDarkOrangeBackground3});
+    color: var(${colorNeutralForegroundOnBrand});
   }
 
   :host([color='subtle']) {
-    background-color: ${colorNeutralBackground1};
-    color: ${colorNeutralForeground1};
+    background-color: var(${colorNeutralBackground1});
+    color: var(${colorNeutralForeground1});
   }
 
   :host([color='success']) {
-    background-color: ${colorPaletteGreenBackground3};
-    color: ${colorNeutralForegroundOnBrand};
+    background-color: var(${colorPaletteGreenBackground3});
+    color: var(${colorNeutralForegroundOnBrand});
   }
 
   :host([color='warning']) {
-    background-color: ${colorPaletteYellowBackground3};
-    color: ${colorNeutralForeground1Static};
+    background-color: var(${colorPaletteYellowBackground3});
+    color: var(${colorNeutralForeground1Static});
   }
 `;
 
@@ -199,36 +199,36 @@ export const badgeFilledStyles = css.partial`
  */
 export const badgeGhostStyles = css.partial`
   :host([appearance='ghost']) {
-    color: ${colorBrandForeground1};
+    color: var(${colorBrandForeground1});
     background-color: initial;
   }
 
   :host([appearance='ghost'][color='danger']) {
-    color: ${colorPaletteRedForeground3};
+    color: var(${colorPaletteRedForeground3});
   }
 
   :host([appearance='ghost'][color='important']) {
-    color: ${colorNeutralForeground1};
+    color: var(${colorNeutralForeground1});
   }
 
   :host([appearance='ghost'][color='informative']) {
-    color: ${colorNeutralForeground3};
+    color: var(${colorNeutralForeground3});
   }
 
   :host([appearance='ghost'][color='severe']) {
-    color: ${colorPaletteDarkOrangeForeground3};
+    color: var(${colorPaletteDarkOrangeForeground3});
   }
 
   :host([appearance='ghost'][color='subtle']) {
-    color: ${colorNeutralForegroundInverted};
+    color: var(${colorNeutralForegroundInverted});
   }
 
   :host([appearance='ghost'][color='success']) {
-    color: ${colorPaletteGreenForeground3};
+    color: var(${colorPaletteGreenForeground3});
   }
 
   :host([appearance='ghost'][color='warning']) {
-    color: ${colorPaletteYellowForeground2};
+    color: var(${colorPaletteYellowForeground2});
   }
 `;
 
@@ -239,38 +239,38 @@ export const badgeGhostStyles = css.partial`
 export const badgeOutlineStyles = css.partial`
   :host([appearance='outline']) {
     border-color: currentColor;
-    color: ${colorBrandForeground1};
+    color: var(${colorBrandForeground1});
     background-color: initial;
   }
 
   :host([appearance='outline'][color='danger']) {
-    color: ${colorPaletteRedForeground3};
+    color: var(${colorPaletteRedForeground3});
   }
 
   :host([appearance='outline'][color='important']) {
-    color: ${colorNeutralForeground3};
-    border-color: ${colorNeutralStrokeAccessible};
+    color: var(${colorNeutralForeground3});
+    border-color: var(${colorNeutralStrokeAccessible});
   }
 
   :host([appearance='outline'][color='informative']) {
-    color: ${colorNeutralForeground3};
-    border-color: ${colorNeutralStroke2};
+    color: var(${colorNeutralForeground3});
+    border-color: var(${colorNeutralStroke2});
   }
 
   :host([appearance='outline'][color='severe']) {
-    color: ${colorPaletteDarkOrangeForeground3};
+    color: var(${colorPaletteDarkOrangeForeground3});
   }
 
   :host([appearance='outline'][color='subtle']) {
-    color: ${colorNeutralForegroundStaticInverted};
+    color: var(${colorNeutralForegroundStaticInverted});
   }
 
   :host([appearance='outline'][color='success']) {
-    color: ${colorPaletteGreenForeground2};
+    color: var(${colorPaletteGreenForeground2});
   }
 
   :host([appearance='outline'][color='warning']) {
-    color: ${colorPaletteYellowForeground2};
+    color: var(${colorPaletteYellowForeground2});
   }
 `;
 
@@ -280,50 +280,50 @@ export const badgeOutlineStyles = css.partial`
  */
 export const badgeTintStyles = css.partial`
   :host([appearance='tint']) {
-    background-color: ${colorBrandBackground2};
-    color: ${colorBrandForeground2};
-    border-color: ${colorBrandStroke2};
+    background-color: var(${colorBrandBackground2});
+    color: var(${colorBrandForeground2});
+    border-color: var(${colorBrandStroke2});
   }
 
   :host([appearance='tint'][color='danger']) {
-    background-color: ${colorPaletteRedBackground1};
-    color: ${colorPaletteRedForeground1};
-    border-color: ${colorPaletteRedBorder1};
+    background-color: var(${colorPaletteRedBackground1});
+    color: var(${colorPaletteRedForeground1});
+    border-color: var(${colorPaletteRedBorder1});
   }
 
   :host([appearance='tint'][color='important']) {
-    background-color: ${colorNeutralForeground3};
-    color: ${colorNeutralBackground1};
-    border-color: ${colorTransparentStroke};
+    background-color: var(${colorNeutralForeground3});
+    color: var(${colorNeutralBackground1});
+    border-color: var(${colorTransparentStroke});
   }
 
   :host([appearance='tint'][color='informative']) {
-    background-color: ${colorNeutralBackground4};
-    color: ${colorNeutralForeground3};
-    border-color: ${colorNeutralStroke2};
+    background-color: var(${colorNeutralBackground4});
+    color: var(${colorNeutralForeground3});
+    border-color: var(${colorNeutralStroke2});
   }
 
   :host([appearance='tint'][color='severe']) {
-    background-color: ${colorPaletteDarkOrangeBackground1};
-    color: ${colorPaletteDarkOrangeForeground1};
-    border-color: ${colorPaletteDarkOrangeBorder1};
+    background-color: var(${colorPaletteDarkOrangeBackground1});
+    color: var(${colorPaletteDarkOrangeForeground1});
+    border-color: var(${colorPaletteDarkOrangeBorder1});
   }
 
   :host([appearance='tint'][color='subtle']) {
-    background-color: ${colorNeutralBackground1};
-    color: ${colorNeutralForeground3};
-    border-color: ${colorNeutralStroke2};
+    background-color: var(${colorNeutralBackground1});
+    color: var(${colorNeutralForeground3});
+    border-color: var(${colorNeutralStroke2});
   }
 
   :host([appearance='tint'][color='success']) {
-    background-color: ${colorPaletteGreenBackground1};
-    color: ${colorPaletteGreenForeground1};
-    border-color: ${colorPaletteGreenBorder2};
+    background-color: var(${colorPaletteGreenBackground1});
+    color: var(${colorPaletteGreenForeground1});
+    border-color: var(${colorPaletteGreenBorder2});
   }
 
   :host([appearance='tint'][color='warning']) {
-    background-color: ${colorPaletteYellowBackground1};
-    color: ${colorPaletteYellowForeground2};
-    border-color: ${colorPaletteYellowBorder1};
+    background-color: var(${colorPaletteYellowBackground1});
+    color: var(${colorPaletteYellowForeground2});
+    border-color: var(${colorPaletteYellowBorder1});
   }
 `;

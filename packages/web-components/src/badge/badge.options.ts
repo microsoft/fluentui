@@ -1,5 +1,5 @@
-import { StartEndOptions } from '@microsoft/fast-foundation/patterns.js';
-import type { StaticallyComposableHTML, ValuesOf } from '@microsoft/fast-foundation/utilities.js';
+import { StartEndOptions } from '../patterns/index.js';
+import type { StaticallyComposableHTML, ValuesOf } from '../utils/index.js';
 import type { Badge } from './badge.js';
 
 /**

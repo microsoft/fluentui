@@ -30,8 +30,8 @@ export const styles = css`
     padding-top: 14px;
     padding-inline: 12px;
     padding-bottom: 16px;
-    font-size: ${fontSizeBase300};
-    line-height: ${lineHeightBase300};
+    font-size: var(${fontSizeBase300});
+    line-height: var(${lineHeightBase300});
   }
 
   .content {
@@ -41,10 +41,10 @@ export const styles = css`
   }
 
   ::slotted([slot='description']) {
-    color: ${colorNeutralForeground2};
+    color: var(${colorNeutralForeground2});
     line-height: 100%;
-    font-size: ${fontSizeBase200};
-    font-weight: ${fontWeightRegular};
+    font-size: var(${fontSizeBase200});
+    font-weight: var(${fontWeightRegular});
   }
 
   ::slotted(svg),
@@ -55,35 +55,35 @@ export const styles = css`
   }
 
   :host(:hover) ::slotted([slot='description']) {
-    color: ${colorNeutralForeground2Hover};
+    color: var(${colorNeutralForeground2Hover});
   }
 
   :host(:active) ::slotted([slot='description']) {
-    color: ${colorNeutralForeground2Pressed};
+    color: var(${colorNeutralForeground2Pressed});
   }
 
   :host(:is([appearance='primary'], [appearance='primary']:hover, [appearance='primary']:active))
     ::slotted([slot='description']) {
-    color: ${colorNeutralForegroundOnBrand};
+    color: var(${colorNeutralForegroundOnBrand});
   }
 
   :host(:is([appearance='subtle'], [appearance='subtle']:hover, [appearance='subtle']:active))
     ::slotted([slot='description']),
   :host([appearance='transparent']) ::slotted([slot='description']) {
-    color: ${colorNeutralForeground2};
+    color: var(${colorNeutralForeground2});
   }
 
   :host([appearance='transparent']:hover) ::slotted([slot='description']) {
-    color: ${colorNeutralForeground2BrandHover};
+    color: var(${colorNeutralForeground2BrandHover});
   }
 
   :host([appearance='transparent']:active) ::slotted([slot='description']) {
-    color: ${colorNeutralForeground2BrandPressed};
+    color: var(${colorNeutralForeground2BrandPressed});
   }
 
   :host(:is([disabled], [disabled][appearance], [disabled-focusable], [disabled-focusable][appearance]))
     ::slotted([slot='description']) {
-    color: ${colorNeutralForegroundDisabled};
+    color: var(${colorNeutralForegroundDisabled});
   }
 
   :host([size='small']) .control {
@@ -94,29 +94,29 @@ export const styles = css`
   :host([icon-only]) .control {
     min-width: 52px;
     max-width: 52px;
-    padding: ${spacingHorizontalSNudge};
+    padding: var(${spacingHorizontalSNudge});
   }
 
   :host([icon-only][size='small']) .control {
     min-width: 48px;
     max-width: 48px;
-    padding: ${spacingHorizontalXS};
+    padding: var(${spacingHorizontalXS});
   }
 
   :host([icon-only][size='large']) .control {
     min-width: 56px;
     max-width: 56px;
-    padding: ${spacingHorizontalS};
+    padding: var(${spacingHorizontalS});
   }
 
   :host([size='large']) .control {
     padding-top: 18px;
     padding-inline: 16px;
     padding-bottom: 20px;
-    font-size: ${fontSizeBase400};
-    line-height: ${lineHeightBase400};
+    font-size: var(${fontSizeBase400});
+    line-height: var(${lineHeightBase400});
   }
   :host([size='large']) ::slotted([slot='description']) {
-    font-size: ${fontSizeBase300};
+    font-size: var(${fontSizeBase300});
   }
 `;

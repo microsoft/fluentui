@@ -40,6 +40,9 @@ function compile() {
     console.log(chalk.blueBright(`compile: building workspace dependencies: ${workspaceDependencies}`));
     execSync(`lage build --to ${workspaceDependencies}`, { stdio: 'inherit' });
 
+    console.log(chalk.blueBright(`compile: generating design tokens`));
+    execSync(`node ./scripts/generate-tokens.cjs`, { stdio: 'inherit' });
+
     console.log(chalk.blueBright(`compile: running tsc`));
     execSync(`tsc -p tsconfig.lib-generated.json`, { stdio: 'inherit' });
     execSync(`tsc -p tsconfig.spec-generated.json`, { stdio: 'inherit' });

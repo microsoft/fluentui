@@ -1,14 +1,33 @@
-import { attr } from '@microsoft/fast-element';
-import { FASTDivider } from '@microsoft/fast-foundation/divider.js';
-import { DividerAlignContent, DividerAppearance } from './divider.options.js';
+import { attr, FASTElement } from '@microsoft/fast-element';
+import { DividerAlignContent, DividerAppearance, DividerOrientation, DividerRole } from './divider.options.js';
 
 /**
  * @class Divider component
  *
  * @remarks
- * This class extends the FASTDivider. A divider groups sections of content to create visual rhythm and hierarchy. Use dividers along with spacing and headers to organize content in your layout.
+ * A divider groups sections of content to create visual rhythm and hierarchy. Use dividers along with spacing and headers to organize content in your layout.
  */
-export class Divider extends FASTDivider {
+export class Divider extends FASTElement {
+  /**
+   * The role of the element.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: role
+   */
+  @attr
+  public role: DividerRole = DividerRole.separator;
+
+  /**
+   * The orientation of the divider.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: orientation
+   */
+  @attr
+  public orientation: DividerOrientation = DividerOrientation.horizontal;
+
   /**
    * @property alignContent
    * @default center
