@@ -39,7 +39,7 @@
     "@griffel/react": "^1.5.14",
     "@stylexjs/stylex": "0.5.0-alpha.4",
     "@swc/helpers": "^0.5.1",
-    "react-strict-dom": "0.0.1"
+    "react-strict-dom": "0.0.3"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",

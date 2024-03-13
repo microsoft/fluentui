@@ -28,7 +28,7 @@
     "react-native": "^0.73.5",
     "react-native-macos": "^0.73.0",
     "react-native-windows": "^0.73.0",
-    "react-strict-dom": "0.0.1"
+    "react-strict-dom": "0.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
