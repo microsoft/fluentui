@@ -1,8 +1,18 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Fri, 19 Jan 2024 07:29:32 GMT and should not be manually modified.
+This log was last generated on Wed, 13 Mar 2024 07:30:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.14.0)
+
+Wed, 13 Mar 2024 07:30:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.24..@fluentui/utilities_v8.14.0)
+
+### Minor changes
+
+- fix: Update IStyleSet type to fix error when using TypeScript 5.3+ ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by behowell@microsoft.com)
+- Bump @fluentui/merge-styles to v8.6.0 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
 
 ## [8.13.24](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.24)
 
