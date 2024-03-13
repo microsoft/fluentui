@@ -7,7 +7,4 @@ export const suppressCssVariableInsertion = false;
 /**
  * XPlatProvider is effectively a no-op for web scenarios
  */
-export const XPlatProvider: React.FunctionComponent<XPlatProviderProps> = props => {
-  const { children } = props;
-  return <>{children}</>;
-};
+export const XPlatProvider = React.Fragment as React.FunctionComponent<XPlatProviderProps>;
