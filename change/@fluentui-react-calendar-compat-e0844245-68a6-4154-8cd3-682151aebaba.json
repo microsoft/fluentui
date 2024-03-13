@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix compareDatePart return to number to fix typescript 5.x issues",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
