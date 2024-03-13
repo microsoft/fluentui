@@ -291,6 +291,12 @@ describe('Area chart rendering', () => {
   );
 
   forEachTimezone((tzName, tzIdentifier) => {
+    beforeEach(() => {
+      sharedBeforeEach();
+      updateChartWidthAndHeight();
+    });
+    afterEach(sharedAfterEach);
+
     testWithoutWait(
       `Should render the area chart with date x-axis data in ${tzName} timezone`,
       AreaChart,

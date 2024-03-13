@@ -23,8 +23,35 @@ expect.extend(toHaveNoViolations);
 function sharedBeforeEach() {
   resetIds();
 }
+const originalRAF = window.requestAnimationFrame;
+
+function updateChartWidthAndHeight() {
+  jest.useFakeTimers();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
+  window.HTMLElement.prototype.getBoundingClientRect = () =>
+    ({
+      bottom: 44,
+      height: 50,
+      left: 10,
+      right: 35.67,
+      top: 20,
+      width: 650,
+    } as DOMRect);
+}
+function sharedAfterEach() {
+  jest.useRealTimers();
+  window.requestAnimationFrame = originalRAF;
+}
+
 describe('Horizontal bar chart with axis rendering', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
+  });
+  afterEach(sharedAfterEach);
 
   testWithoutWait(
     'Should render the Horizontal bar chart with axis with numaric yaxis data',
@@ -352,18 +379,13 @@ runTest('Skip - Horizontal bar chart with axis - Subcomponent Labels', () => {
 describe('Horizontal bar chart with axis - Screen resolution', () => {
   beforeEach(() => {
     sharedBeforeEach();
+    updateChartWidthAndHeight();
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
   });
 
-  const originalInnerWidth = global.innerWidth;
-  const originalInnerHeight = global.innerHeight;
   afterEach(() => {
     jest.spyOn(global.Math, 'random').mockRestore();
-    global.innerWidth = originalInnerWidth;
-    global.innerHeight = originalInnerHeight;
-    act(() => {
-      global.dispatchEvent(new Event('resize'));
-    });
+    sharedAfterEach();
   });
 
   testWithWait(
@@ -398,7 +420,11 @@ describe('Horizontal bar chart with axis - Screen resolution', () => {
 });
 
 describe('Horizontal bar chart with axis - Theme', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
+  });
+  afterEach(sharedAfterEach);
 
   test('Should reflect theme change', () => {
     // Arrange
@@ -413,7 +439,11 @@ describe('Horizontal bar chart with axis - Theme', () => {
 });
 
 describe('HorizontalBarChartWithAxis - mouse events', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
+  });
+  afterEach(sharedAfterEach);
 
   testWithWait(
     'Should render callout correctly on mouseover',
