@@ -42,11 +42,6 @@ import { ChoiceGroupImageExample } from '../components/choiceGroupWithImagesandI
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <Stack gap={8} horizontalAlign="center">
-      <Label>Disabled Buttons</Label>
-      <DefaultButton disabled text="DefaultButton disabled" />
-      <PrimaryButton disabled text="PrimaryButton disabled" />
-      <CompoundButton disabled primary text="CompoundButton primary disabled" />
-
       <Text>13px body text</Text>
       <Label>MessageBar / InfoBox</Label>
       <MessageBarBasicExample />
@@ -71,7 +66,8 @@ const Example = () => (
       <Label>Disabled Buttons</Label>
       <DefaultButton disabled text="DefaultButton disabled" />
       <PrimaryButton disabled text="PrimaryButton disabled" />
-      <PrimaryButton disabled text="PrimaryButton disabled" />
+      <DefaultButton allowDisabledFocus={true} disabled text="DefaultButton allowDisabledFocus" />
+      <PrimaryButton allowDisabledFocus={true} disabled text="PrimaryButton allowDisabledFocus" />
       <CompoundButton disabled primary text="CompoundButton primary disabled" />
       <Label disabled>I am a disabled label</Label>
       <Label>Icon Buttons</Label>
