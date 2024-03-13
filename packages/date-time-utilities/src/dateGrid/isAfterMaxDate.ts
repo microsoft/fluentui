@@ -8,6 +8,5 @@ import { compareDatePart } from '../dateMath/dateMath';
  */
 export const isAfterMaxDate = (date: Date, options: IRestrictedDatesOptions): boolean => {
   const { maxDate } = options;
-  const oneVal: Number = Number(1);
-  return maxDate ? compareDatePart(date, maxDate) >= oneVal : false;
+  return maxDate ? compareDatePart(date, maxDate) >= 1 : false;
 };
