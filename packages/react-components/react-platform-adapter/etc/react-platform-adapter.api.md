@@ -12,10 +12,10 @@ import * as React_2 from 'react';
 import { shorthands } from '@griffel/react';
 
 // @public (undocumented)
-export const createReactStrictDomJSX: (reactJsx: JSXRuntime) => JSXRuntime;
+export const getStylesFromClassName: (className: string) => undefined;
 
 // @public (undocumented)
-export const getStylesFromClassName: (className: string) => undefined;
+export const jsxPlatformAdapter: (reactJsx: JSXRuntime) => JSXRuntime;
 
 export { makeResetStyles }
 
