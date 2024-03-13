@@ -8,11 +8,12 @@ import { compareDatePart } from '../dateMath/dateMath';
  */
 export const getBoundedDateRange = (dateRange: Date[], minDate?: Date, maxDate?: Date): Date[] => {
   let boundedDateRange = [...dateRange];
+  const zeroVal: Number = Number(0);
   if (minDate) {
-    boundedDateRange = boundedDateRange.filter((date: Date) => compareDatePart(date, minDate as Date) >= 0);
+    boundedDateRange = boundedDateRange.filter((date: Date) => compareDatePart(date, minDate as Date) >= zeroVal);
   }
   if (maxDate) {
-    boundedDateRange = boundedDateRange.filter((date: Date) => compareDatePart(date, maxDate as Date) <= 0);
+    boundedDateRange = boundedDateRange.filter((date: Date) => compareDatePart(date, maxDate as Date) <= zeroVal);
   }
   return boundedDateRange;
 };
