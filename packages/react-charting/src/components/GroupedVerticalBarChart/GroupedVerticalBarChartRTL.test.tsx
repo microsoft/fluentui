@@ -16,6 +16,29 @@ function sharedBeforeEach() {
   resetIds();
 }
 
+const originalRAF = window.requestAnimationFrame;
+
+function updateChartWidthAndHeight() {
+  jest.useFakeTimers();
+  Object.defineProperty(window, 'requestAnimationFrame', {
+    writable: true,
+    value: (callback: FrameRequestCallback) => callback(0),
+  });
+  window.HTMLElement.prototype.getBoundingClientRect = () =>
+    ({
+      bottom: 44,
+      height: 50,
+      left: 10,
+      right: 35.67,
+      top: 20,
+      width: 650,
+    } as DOMRect);
+}
+function sharedAfterEach() {
+  jest.useRealTimers();
+  window.requestAnimationFrame = originalRAF;
+}
+
 const accessibilityDataPoints: IGroupedVerticalBarChartData[] = [
   {
     name: 'Metadata info multi lines text Completed',
@@ -117,7 +140,12 @@ const chartPoints = [
 ];
 
 describe('Grouped Vertical bar chart rendering', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
+  });
+  afterEach(sharedAfterEach);
+
   testWithoutWait(
     'Should render the grouped vertical bar chart with string x-axis data',
     GroupedVerticalBarChart,
@@ -408,16 +436,11 @@ describe('Grouped vertical bar chart - Subcomponent Labels', () => {
 });
 
 describe('Grouped vertical bar chart - Screen resolution', () => {
-  const originalInnerWidth = global.innerWidth;
-  const originalInnerHeight = global.innerHeight;
-  afterEach(() => {
-    global.innerWidth = originalInnerWidth;
-    global.innerHeight = originalInnerHeight;
-    act(() => {
-      global.dispatchEvent(new Event('resize'));
-    });
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
   });
-  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
 
   testWithWait(
     'Should remain unchanged on zoom in',
@@ -451,7 +474,12 @@ describe('Grouped vertical bar chart - Screen resolution', () => {
 });
 
 describe('Vertical stacked bar chart - Theme', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
+  });
+  afterEach(sharedAfterEach);
+
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
@@ -465,7 +493,12 @@ describe('Vertical stacked bar chart - Theme', () => {
 });
 
 describe('Grouped Vertical Bar chart rendering', () => {
-  beforeEach(sharedBeforeEach);
+  beforeEach(() => {
+    sharedBeforeEach();
+    updateChartWidthAndHeight();
+  });
+  afterEach(sharedAfterEach);
+
   test('Should re-render the Grouped Vertical Bar chart with data', async () => {
     // Arrange
     const { container, rerender } = render(<GroupedVerticalBarChart data={emptyChartPoints} />);
