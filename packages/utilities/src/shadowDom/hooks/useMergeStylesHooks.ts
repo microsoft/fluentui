@@ -8,6 +8,7 @@ export const useMergeStylesHooks = () => {
     useAdoptedStylesheetEx: ctx.useAdoptedStylesheetEx,
     useShadowConfig: ctx.useShadowConfig,
     useHasMergeStylesShadowRootContext: ctx.useHasMergeStylesShadowRootContext,
+    useMergeStylesRootStylesheets: ctx.useMergeStylesRootStylesheets,
     useWindow: ctx.useWindow,
   };
 };

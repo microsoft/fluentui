@@ -1,8 +1,6 @@
 import type * as React from 'react';
-import { useWindow } from '@fluentui/react-window-provider';
 import { GLOBAL_STYLESHEET_KEY } from '@fluentui/merge-styles';
 import { useMergeStylesHooks } from '../hooks/useMergeStylesHooks';
-import { useMergeStylesRootStylesheets } from '../hooks/useMergeStylesRootStylesheets';
 import { useMergeStylesShadowRootContext } from '../hooks/useMergeStylesShadowRoot';
 
 export type MergeStylesContextConsumerProps = {
@@ -15,7 +13,7 @@ export const MergeStylesShadowRootConsumer: React.FC<MergeStylesContextConsumerP
   stylesheetKey,
   children,
 }) => {
-  const { useAdoptedStylesheetEx } = useMergeStylesHooks();
+  const { useAdoptedStylesheetEx, useMergeStylesRootStylesheets, useWindow } = useMergeStylesHooks();
   const shadowCtx = useMergeStylesShadowRootContext();
   const rootMergeStyles = useMergeStylesRootStylesheets();
   const win = useWindow();

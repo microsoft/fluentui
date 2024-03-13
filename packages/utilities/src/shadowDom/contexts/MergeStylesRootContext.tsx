@@ -5,6 +5,7 @@ import type { ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
 import type { AdoptedStylesheetExHook, AdoptedStylesheetHook } from '../hooks/useAdoptedStylesheet';
 import type { ShadowConfigHook } from '../hooks/useShadowConfig';
 import type { HasMergeStylesShadowRootContextHook } from '../hooks/useMergeStylesShadowRoot';
+import type { MergeStylesRootStylesheetsHook } from '../hooks/useMergeStylesRootStylesheets';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -18,10 +19,8 @@ type UseWindowHook = () => Window | undefined;
 
 const noop = () => false;
 const noopShadow = () => DEFAULT_SHADOW_CONFIG;
+const noopRootStylesheets = () => new Map();
 const noopWindow = () => undefined;
-
-// const noop: AdoptedStylesheetHook = _ => true;
-// const noopEx: AdoptedStylesheetExHook = (_, _a, _b, _c) => true;
 
 export type MergeStylesRootContextValue = {
   /**
@@ -32,6 +31,7 @@ export type MergeStylesRootContextValue = {
   useAdoptedStylesheet: AdoptedStylesheetHook;
   useShadowConfig: ShadowConfigHook;
   useHasMergeStylesShadowRootContext: HasMergeStylesShadowRootContextHook;
+  useMergeStylesRootStylesheets: MergeStylesRootStylesheetsHook;
   useWindow: UseWindowHook;
 };
 
@@ -41,6 +41,7 @@ export const MergeStylesRootContext = React.createContext<MergeStylesRootContext
   useAdoptedStylesheet: noop,
   useShadowConfig: noopShadow,
   useHasMergeStylesShadowRootContext: noop,
+  useMergeStylesRootStylesheets: noopRootStylesheets,
   useWindow: noopWindow,
 });
 
@@ -60,6 +61,7 @@ export type MergeStylesRootProviderProps = {
   useAdoptedStylesheet?: AdoptedStylesheetHook;
   useShadowConfig?: ShadowConfigHook;
   useHasMergeStylesShadowRootContext?: HasMergeStylesShadowRootContextHook;
+  useMergeStylesRootStylesheets?: MergeStylesRootStylesheetsHook;
   useWindow?: UseWindowHook;
 };
 
@@ -74,6 +76,7 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
   useAdoptedStylesheetEx,
   useShadowConfig,
   useHasMergeStylesShadowRootContext,
+  useMergeStylesRootStylesheets,
   useWindow,
   ...props
 }) => {
@@ -140,6 +143,7 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
       useAdoptedStylesheetEx: useAdoptedStylesheetEx || noop,
       useShadowConfig: useShadowConfig || noopShadow,
       useHasMergeStylesShadowRootContext: useHasMergeStylesShadowRootContext || noop,
+      useMergeStylesRootStylesheets: useMergeStylesRootStylesheets || noopRootStylesheets,
       useWindow: useWindow || noopWindow,
     };
   }, [
@@ -148,6 +152,7 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
     useAdoptedStylesheetEx,
     useShadowConfig,
     useHasMergeStylesShadowRootContext,
+    useMergeStylesRootStylesheets,
     useWindow,
   ]);
 
