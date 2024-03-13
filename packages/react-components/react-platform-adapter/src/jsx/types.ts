@@ -1,6 +1,6 @@
 import type * as React from 'react';
 
-export type CreateJSXElement = <P extends {}>(
+export type JSXCreateElement = <P extends {}>(
   type: React.ElementType<P>,
   props: P | null,
   key?: React.Key,
@@ -9,10 +9,10 @@ export type CreateJSXElement = <P extends {}>(
 ) => React.ReactElement<P>;
 
 export type JSXRuntime = {
-  jsx: CreateJSXElement;
-  jsxs: CreateJSXElement;
+  jsx: JSXCreateElement;
+  jsxs: JSXCreateElement;
 };
 
 export type JSXDevRuntime = {
-  jsxDEV: CreateJSXElement;
+  jsxDEV: JSXCreateElement;
 };
