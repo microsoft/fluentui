@@ -7,16 +7,23 @@
 import { makeResetStyles } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
 import { mergeClasses } from '@griffel/react';
+import type * as React_2 from 'react';
 import { shorthands } from '@griffel/react';
 
 // @public (undocumented)
-export const getStylesFromClassName: (className: string) => undefined;
+export const DevRuntime: JSXDevRuntime;
+
+// @public (undocumented)
+export const getStylesFromClassName: (className: string | undefined) => undefined;
 
 export { makeResetStyles }
 
 export { makeStyles }
 
 export { mergeClasses }
+
+// @public (undocumented)
+export const Runtime: JSXRuntime;
 
 export { shorthands }
 

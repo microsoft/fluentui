@@ -1,3 +1,3 @@
-export const getStylesFromClassName = (className: string) => {
+export const getStylesFromClassName = (className: string | undefined) => {
   return undefined;
 };

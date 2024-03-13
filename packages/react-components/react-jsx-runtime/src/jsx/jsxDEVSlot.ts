@@ -10,6 +10,20 @@ export const jsxDEVSlot = <Props extends UnknownSlotProps>(
   source?: unknown,
   self?: unknown,
 ): React.ReactElement<Props> => {
+  console.log(
+    'jsxDEVSlot(type: ',
+    type,
+    ', overrideProps: ',
+    overrideProps,
+    ', key: ',
+    key,
+    ', source: ',
+    source,
+    ', self: ',
+    self,
+    ')',
+  );
+
   const { elementType, renderFunction, props: slotProps } = getMetadataFromSlotComponent(type);
 
   const props: Props = { ...slotProps, ...overrideProps };

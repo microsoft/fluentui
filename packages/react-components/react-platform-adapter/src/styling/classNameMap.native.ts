@@ -12,6 +12,6 @@ export const registerStyles = (styles: Record<string, StyleXStyle>) => {
   Object.assign(classNameMap, css.create(styles));
 };
 
-export const getStylesFromClassName = (className: string) => {
-  return className.split(' ').map(c => classNameMap[c]);
+export const getStylesFromClassName = (className: string | undefined) => {
+  return className?.split(' ').map(c => classNameMap[c]);
 };

@@ -8,6 +8,8 @@ export const jsxsSlot = <Props extends UnknownSlotProps>(
   overrideProps: Props | null,
   key?: React.Key,
 ): React.ReactElement<Props> => {
+  console.log('jsxsSlot');
+
   const { elementType, renderFunction, props: slotProps } = getMetadataFromSlotComponent(type);
 
   const props: Props = { ...slotProps, ...overrideProps };

@@ -8,6 +8,8 @@ export function createElement<P extends {}>(
   props?: P | null,
   ...children: React.ReactNode[]
 ): React.ReactElement<P> {
+  console.log('createElement(', type, ', ', props, ', ', children, ')');
+
   // TODO:
   // this is for backwards compatibility with getSlotsNext
   // it should be removed once getSlotsNext is obsolete

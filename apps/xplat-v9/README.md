@@ -19,8 +19,7 @@ In case your machine is not already set up, you also want to follow the getting 
 After cloning the repo for the first time, or cleaning (`yarn scrub`, etc.), install the windows test app from the `apps/xplat-v9` directory:
 
 ```sh
-cd apps/xplat-v9
-yarn install-windows-test-app
+yarn --cwd apps/xplat-v9 install-windows-test-app
 ```
 
 ### 🔃 After pulling latest from master
@@ -37,8 +36,7 @@ yarn buildto xplat-v9
 Start the test app from the `apps/xplat-v9` directory:
 
 ```sh
-cd apps/xplat-v9
-yarn windows # or "ios" or "macos" or "android"
+yarn --cwd apps/xplat-v9 windows # or "ios" or "macos" or "android"
 ```
 
 If Metro (the React Native bundler) doesn't automatically start, open a new terminal window on the same path (`apps/xplat-v9`) and run:

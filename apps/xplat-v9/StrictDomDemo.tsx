@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import { Label } from '@fluentui/react-label';
 import {
   getStylesFromClassName,
   makeResetStyles,
@@ -39,6 +40,7 @@ export const StrictDomDemo = (props: { cond?: boolean }) => {
       style={getStylesFromClassName(mergeClasses(useBaseClassName(), classNames.root, cond && classNames.cond))}
     >
       <html.span>This is a demo of styles defined using griffel</html.span>
+      <Label>This is a label</Label>
     </html.div>
   );
 };
