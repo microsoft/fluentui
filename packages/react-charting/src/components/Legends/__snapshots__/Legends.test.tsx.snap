@@ -1634,7 +1634,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone1"
+          data-focuszone-id="FocusZone0"
           data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -3229,7 +3229,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone2"
+          data-focuszone-id="FocusZone0"
           data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -4824,7 +4824,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone3"
+          data-focuszone-id="FocusZone0"
           data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}

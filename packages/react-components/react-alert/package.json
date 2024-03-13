@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-alert",
-  "version": "9.0.0-beta.109",
+  "version": "9.0.0-beta.112",
   "description": "An alert component to display brief messages",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,13 +33,13 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-avatar": "^9.6.14",
-    "@fluentui/react-button": "^9.3.68",
+    "@fluentui/react-avatar": "^9.6.17",
+    "@fluentui/react-button": "^9.3.71",
     "@fluentui/react-icons": "^2.0.224",
-    "@fluentui/react-tabster": "^9.19.0",
-    "@fluentui/react-theme": "^9.1.16",
-    "@fluentui/react-utilities": "^9.18.0",
-    "@fluentui/react-jsx-runtime": "^9.0.29",
+    "@fluentui/react-tabster": "^9.19.3",
+    "@fluentui/react-theme": "^9.1.17",
+    "@fluentui/react-utilities": "^9.18.3",
+    "@fluentui/react-jsx-runtime": "^9.0.32",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },

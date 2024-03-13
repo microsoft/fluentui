@@ -5,24 +5,25 @@ import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand a
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
+import { ILegend } from '../../components/Legends/Legends.types';
+import { Legends } from '../../components/Legends/Legends';
 import {
   IAccessibilityProps,
-  CartesianChart,
-  ChartHoverCard,
   IBasestate,
-  IMargins,
-  ILegend,
+  IHorizontalBarChartWithAxisDataPoint,
   IRefArrayData,
+  IMargins,
+} from '../../types/IDataPoint';
+import { IChildProps, IYValueHover } from '../CommonComponents/CartesianChart.types';
+import { CartesianChart } from '../CommonComponents/CartesianChart';
+import {
   IHorizontalBarChartWithAxisProps,
   IHorizontalBarChartWithAxisStyleProps,
   IHorizontalBarChartWithAxisStyles,
-  IHorizontalBarChartWithAxisDataPoint,
-  Legends,
-  IChildProps,
-  IYValueHover,
-} from '../../index';
+} from './HorizontalBarChartWithAxis.types';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
+  ChartHoverCard,
   ChartTypes,
   IAxisData,
   getAccessibleDataObject,

@@ -107,10 +107,10 @@ export const useRadioGroupContextValue_unstable: () => RadioGroupContextValue;
 export const useRadioGroupContextValues: (state: RadioGroupState) => RadioGroupContextValues;
 
 // @public
-export const useRadioGroupStyles_unstable: (state: RadioGroupState) => void;
+export const useRadioGroupStyles_unstable: (state: RadioGroupState) => RadioGroupState;
 
 // @public
-export const useRadioStyles_unstable: (state: RadioState) => void;
+export const useRadioStyles_unstable: (state: RadioState) => RadioState;
 
 // (No @packageDocumentation comment for this package)
 

@@ -41,12 +41,12 @@ export const parameters = {
     },
   },
   exportToSandbox: {
-    provider: 'codesandbox-browser',
-    bundler: 'cra',
+    provider: 'stackblitz-cloud',
+    bundler: 'vite',
     requiredDependencies: {
       // for React
-      react: '^17',
-      'react-dom': '^17',
+      react: '^18',
+      'react-dom': '^18',
       // necessary for FluentProvider:
       '@fluentui/react-components': '^9.0.0',
     },

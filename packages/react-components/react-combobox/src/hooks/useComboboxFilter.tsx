@@ -30,6 +30,9 @@ function defaultToString(option: string | { value: string }) {
   return typeof option === 'string' ? option : option.value;
 }
 
+/**
+ * @internal
+ */
 export function useComboboxFilter<T extends { children: React.ReactNode; value: string } | string>(
   query: string,
   options: T[],

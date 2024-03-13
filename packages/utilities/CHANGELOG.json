@@ -2,6 +2,27 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Wed, 13 Mar 2024 07:30:28 GMT",
+      "tag": "@fluentui/utilities_v8.14.0",
+      "version": "8.14.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3",
+            "comment": "fix: Update IStyleSet type to fix error when using TypeScript 5.3+"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.6.0",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Jan 2024 07:29:32 GMT",
       "tag": "@fluentui/utilities_v8.13.24",
       "version": "8.13.24",

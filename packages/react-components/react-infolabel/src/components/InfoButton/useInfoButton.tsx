@@ -6,8 +6,8 @@ import {
   useControllableState,
   slot,
   useMergedRefs,
-  isHTMLElement,
   elementContains,
+  useEventCallback,
 } from '@fluentui/react-utilities';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
@@ -37,6 +37,8 @@ const popoverSizeMap = {
 export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLButtonElement>): InfoButtonState => {
   const { size = 'medium', inline = true } = props;
 
+  const rootRef = useMergedRefs(ref);
+
   const state: InfoButtonState = {
     inline,
     size,
@@ -53,7 +55,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
         type: 'button',
         'aria-label': 'information',
         ...props,
-        ref,
+        ref: rootRef,
       }),
       { elementType: 'button' },
     ),
@@ -84,24 +86,19 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
   state.popover.open = popoverOpen;
   state.popover.onOpenChange = mergeCallbacks(state.popover.onOpenChange, (e, data) => setPopoverOpen(data.open));
 
-  const focusOutRef = React.useCallback(
-    (el: HTMLDivElement) => {
-      if (!el) {
-        return;
-      }
+  const infoRef = useMergedRefs(state.info.ref);
+  state.info.ref = infoRef;
 
-      el.addEventListener('focusout', e => {
-        const nextFocused = e.relatedTarget;
+  // Hide the popover when focus moves out of the button and popover
+  const onBlurButtonOrInfo = (e: React.FocusEvent) => {
+    const nextFocused = e.relatedTarget;
+    if (rootRef.current !== nextFocused && !elementContains(infoRef.current, nextFocused)) {
+      setPopoverOpen(false);
+    }
+  };
 
-        if (isHTMLElement(nextFocused) && !elementContains(el, nextFocused)) {
-          setPopoverOpen(false);
-        }
-      });
-    },
-    [setPopoverOpen],
-  );
-
-  state.info.ref = useMergedRefs(state.info.ref, focusOutRef);
+  state.root.onBlur = useEventCallback(mergeCallbacks(state.root.onBlur, onBlurButtonOrInfo));
+  state.info.onBlurCapture = useEventCallback(mergeCallbacks(state.info.onBlurCapture, onBlurButtonOrInfo));
 
   return state;
 };

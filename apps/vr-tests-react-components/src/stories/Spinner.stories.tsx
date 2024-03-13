@@ -1,19 +1,27 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Spinner } from '@fluentui/react-spinner';
+import { Spinner, spinnerClassNames } from '@fluentui/react-spinner';
 import { tokens } from '@fluentui/react-theme';
-import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import { DecoratorFunction } from '@storybook/addons';
+import { ExtendedStoryFnReturnType } from '../utilities/types';
 import { StoryWright, Steps } from 'storywright';
-import { makeStyles } from '@griffel/react';
+import { makeResetStyles, mergeClasses } from '@griffel/react';
 
-const useStyles = makeStyles({
-  paused: {
-    '& *': {
-      animationPlayState: 'paused !important',
-      animationDelay: '-1s !important',
-    },
+const usePauseWrapperClass = makeResetStyles({
+  minWidth: '300px',
+  padding: '10px',
+  [`& .${spinnerClassNames.spinner}, & .${spinnerClassNames.spinnerTail}`]: {
+    animationPlayState: 'paused !important',
+    animationDelay: 'var(--test-animation-delay, -1s) !important',
+    animationDuration: '1.5s !important',
   },
 });
+
+export const TestWrapperDecoratorPauseAnimation: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
+  <div style={{ display: 'flex' }}>
+    <div className={mergeClasses('testWrapper', usePauseWrapperClass())}>{story()}</div>
+  </div>
+);
 
 // Inverted Spinners are meant to be used over a dark background
 // or photo. This wrapper ensures a dark background so the Spinners
@@ -23,18 +31,18 @@ const InvertedWrapper: React.FC = ({ children }) => {
 };
 
 storiesOf('Spinner converged', module)
-  .addDecorator(TestWrapperDecoratorFixedWidth)
+  .addDecorator(TestWrapperDecoratorPauseAnimation)
   .addDecorator(story => (
     <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
-  .addStory('Primary', () => <Spinner className={useStyles().paused} />, {
+  .addStory('Primary', () => <Spinner />, {
     includeHighContrast: true,
     includeDarkMode: true,
   })
   .addStory(
     'Primary with Label',
     () => (
-      <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
         <Spinner labelPosition="before" label="Before" />
         <Spinner labelPosition="after" label="After" />
         <Spinner labelPosition="above" label="Above" />
@@ -48,7 +56,7 @@ storiesOf('Spinner converged', module)
     },
   )
   .addStory('Primary + size', () => (
-    <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
       <Spinner size="extra-tiny" label="Extra Tiny" />
       <Spinner size="tiny" label="Tiny" />
       <Spinner size="extra-small" label="Extra Small" />
@@ -63,7 +71,7 @@ storiesOf('Spinner converged', module)
     'Inverted',
     () => (
       <InvertedWrapper>
-        <Spinner className={useStyles().paused} appearance="inverted" />
+        <Spinner appearance="inverted" />
       </InvertedWrapper>
     ),
     {
@@ -75,7 +83,7 @@ storiesOf('Spinner converged', module)
     'Inverted with Label',
     () => (
       <InvertedWrapper>
-        <div className={useStyles().paused} style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', rowGap: '20px' }}>
           <Spinner appearance="inverted" labelPosition="before" label="Before" />
           <Spinner appearance="inverted" labelPosition="after" label="After" />
           <Spinner appearance="inverted" labelPosition="above" label="Above" />
@@ -86,5 +94,18 @@ storiesOf('Spinner converged', module)
     {
       includeHighContrast: true,
       includeDarkMode: true,
+    },
+  )
+  .addStory(
+    'Animation',
+    () => (
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(16, auto)', gap: '20px 2px' }}>
+        {Array.from({ length: 75 }).map((_, i) => (
+          <Spinner key={i} style={{ '--test-animation-delay': `${-0.02 * i}s` } as React.CSSProperties} />
+        ))}
+      </div>
+    ),
+    {
+      includeRtl: true,
     },
   );

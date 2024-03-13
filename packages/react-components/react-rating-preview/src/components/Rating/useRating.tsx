@@ -24,8 +24,8 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
   const generatedName = useId('rating-');
   const {
     color = 'neutral',
-    iconFilled = <StarFilled />,
-    iconOutline = <StarRegular />,
+    iconFilled = StarFilled,
+    iconOutline = StarRegular,
     max = 5,
     name = generatedName,
     onChange,
