@@ -6,7 +6,6 @@ import type { SlotComponentType, UnknownSlotProps } from '@fluentui/react-utilit
  * @internal
  */
 export function getMetadataFromSlotComponent<Props extends UnknownSlotProps>(type: SlotComponentType<Props>) {
-  console.log('getMetadataFromSlotComponent(', type, ')');
   const {
     as,
     [SLOT_ELEMENT_TYPE_SYMBOL]: baseElementType,

@@ -10,8 +10,6 @@ export function createElementFromSlotComponent<Props extends UnknownSlotProps>(
   type: SlotComponentType<Props>,
   overrideChildren: React.ReactNode[],
 ): React.ReactElement<Props> {
-  console.log('createElementFromSlotComponent(', type, ', ', overrideChildren, ')');
-
   const { elementType, renderFunction, props } = getMetadataFromSlotComponent(type);
 
   if (renderFunction) {

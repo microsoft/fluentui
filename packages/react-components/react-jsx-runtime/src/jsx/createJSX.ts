@@ -12,8 +12,6 @@ export function createJSX(runtime: JSXRuntime, slotRuntime: JSXSlotRuntime) {
     source?: unknown,
     self?: unknown,
   ): React.ReactElement<Props> {
-    console.log('jsx(', type, ', ', overrideProps, ', ', key, ', ', source, ', ', self, ')');
-
     // TODO:
     // this is for backwards compatibility with getSlotsNext
     // it should be removed once getSlotsNext is obsolete

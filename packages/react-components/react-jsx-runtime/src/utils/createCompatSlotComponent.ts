@@ -6,7 +6,6 @@ import type { SlotComponentType } from '@fluentui/react-utilities';
 // this is for backwards compatibility with getSlotsNext
 // it should be removed once getSlotsNext is obsolete
 export function createCompatSlotComponent<P extends {}>(type: React.ElementType<P>, props: P): SlotComponentType<P> {
-  console.log('createCompatSlotComponent');
   return {
     ...props,
     [SLOT_ELEMENT_TYPE_SYMBOL]: type,
