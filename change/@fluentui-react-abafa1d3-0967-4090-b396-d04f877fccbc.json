@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Making contextual menu dismiss on right click",
+  "packageName": "@fluentui/react",
+  "email": "jorgeol@microsoft.com",
+  "dependentChangeType": "patch"
+}
