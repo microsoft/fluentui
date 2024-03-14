@@ -37,6 +37,7 @@ import { ISemanticTextColors } from '@fluentui/theme';
 import { ISpacing } from '@fluentui/theme';
 import { IStyle } from '@fluentui/merge-styles';
 import { IStyleSet } from '@fluentui/merge-styles';
+import { IStyleSetBase } from '@fluentui/merge-styles';
 import { IStyleSheetConfig } from '@fluentui/merge-styles';
 import { ITheme } from '@fluentui/theme';
 import { keyframes } from '@fluentui/merge-styles';
@@ -247,6 +248,8 @@ export { ISpacing }
 export { IStyle }
 
 export { IStyleSet }
+
+export { IStyleSetBase }
 
 export { IStyleSheetConfig }
 

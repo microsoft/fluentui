@@ -2,6 +2,69 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 13 Mar 2024 07:30:28 GMT",
+      "tag": "@fluentui/react-charting_v5.19.35",
+      "version": "5.19.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.41",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.138",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.115.7",
+            "commit": "2e7373b2cb3270256272bbe282a83040e61b8ce3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Mar 2024 07:26:23 GMT",
+      "tag": "@fluentui/react-charting_v5.19.34",
+      "version": "5.19.34",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "352b45e8fc81137cad89a9c24e7f5c4d6b5f94f0",
+            "comment": "Add RTL for Date Axis in VBC"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 Mar 2024 07:26:25 GMT",
+      "tag": "@fluentui/react-charting_v5.19.33",
+      "version": "5.19.33",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "55ebe225ada59512118a2ba6e34bf0de9f91ad00",
+            "comment": "Add isLegendSelected condition for single point data in LineChart"
+          },
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "6e6a1bf624e5a682b3607d918793d6f0eeb6b12a",
+            "comment": "VSBC RTL scale added for DateAxis and StringAxis"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 Mar 2024 07:26:30 GMT",
       "tag": "@fluentui/react-charting_v5.19.32",
       "version": "5.19.32",
