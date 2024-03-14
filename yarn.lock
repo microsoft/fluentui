@@ -1020,7 +1020,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/plugin-transform-logical-assignment-operators@^7.20.0", "@babel/plugin-transform-logical-assignment-operators@^7.23.4":
+"@babel/plugin-transform-logical-assignment-operators@^7.23.4":
   version "7.23.4"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-logical-assignment-operators/-/plugin-transform-logical-assignment-operators-7.23.4.tgz#e599f82c51d55fac725f62ce55d3a0886279ecb5"
   integrity sha512-Mc/ALf1rmZTP4JKKEhUwiORU+vcfarFVLfcFiolKUo6sewoxSEgl36ak5t+4WamRsNr6nzjZXQjM35WsU+9vbg==
@@ -1085,7 +1085,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.22.5"
 
-"@babel/plugin-transform-nullish-coalescing-operator@^7.20.0", "@babel/plugin-transform-nullish-coalescing-operator@^7.23.4":
+"@babel/plugin-transform-nullish-coalescing-operator@^7.23.4":
   version "7.23.4"
   resolved "https://registry.yarnpkg.com/@babel/plugin-transform-nullish-coalescing-operator/-/plugin-transform-nullish-coalescing-operator-7.23.4.tgz#45556aad123fc6e52189ea749e33ce090637346e"
   integrity sha512-jHE9EVVqHKAQx+VePv5LLGHjmHSJR76vawFPTdlxR/LVJPfOEGxREQwQfjuZEOPTwG92X3LINSh3M40Rv4zpVA==
@@ -21859,19 +21859,19 @@ react-native-macos@^0.73.0:
     ws "^6.2.2"
     yargs "^17.6.2"
 
-react-native-test-app@^3.2.15:
-  version "3.2.15"
-  resolved "https://registry.yarnpkg.com/react-native-test-app/-/react-native-test-app-3.2.15.tgz#db6d6a9e06db66b48196eaf9739993793b10d17f"
-  integrity sha512-bVvbDF5LvulB2j8DEkFXiNVqurQbGB2jSjqcCWd9Xfu+B5kB7LKO6g8dJKdkZpcNi+watSUMK8fMdJBtk56Zgg==
+react-native-test-app@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/react-native-test-app/-/react-native-test-app-3.3.1.tgz#8aa4af88e045676e101ecd4bf1724a8f22f65667"
+  integrity sha512-upMaqQmalxc7hsVvm0ioZ3b33gAC2DfA1MI6iqKr4paZKNNGxa5gbkD6fErVd1KN76z5HPDoBJyxIiD1f/SE9A==
   dependencies:
     "@rnx-kit/react-native-host" "^0.4.4"
     ajv "^8.0.0"
-    chalk "^4.1.0"
     cliui "^8.0.0"
     fast-xml-parser "^4.0.0"
     prompts "^2.4.0"
     semver "^7.3.5"
     uuid "^8.3.2"
+    yoctocolors "^2.0.0"
 
 react-native-windows@^0.73.0:
   version "0.73.4"
@@ -27228,6 +27228,11 @@ yocto-queue@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-1.0.0.tgz#7f816433fb2cbc511ec8bf7d263c3b58a1a3c251"
   integrity sha512-9bnSc/HEW2uRy67wc+T8UwauLuPJVn28jb+GtJY16iiKWyvmYJRXVT4UamsAEGQfPohgr2q4Tq0sQbQlxTfi1g==
+
+yoctocolors@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/yoctocolors/-/yoctocolors-2.0.0.tgz#f6cd83f1fd0b211594810a6de413202d6d177075"
+  integrity sha512-esbDnt0Z1zI1KgvOZU90hJbL6BkoUbrP9yy7ArNZ6TmxBxydMJTYMf9FZjmwwcA8ZgEQzriQ3hwZ0NYXhlFo8Q==
 
 z-schema@~5.0.2:
   version "5.0.2"

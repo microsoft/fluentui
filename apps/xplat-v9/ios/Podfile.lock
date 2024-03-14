@@ -1054,7 +1054,7 @@ PODS:
     - React-RCTFabric
     - ReactCommon/turbomodule/core
     - Yoga
-  - ReactTestApp-DevSupport (3.2.15):
+  - ReactTestApp-DevSupport (3.3.1):
     - React-Core
     - React-jsi
   - ReactTestApp-Resources (1.0.0-dev)
@@ -1280,11 +1280,11 @@ SPEC CHECKSUMS:
   React-utils: 987a4526a2fc0acdfaf87888adfe0bf9d0452066
   ReactCommon: dcc87812d79ce368cc41b7cf49fb624cf3c22b6b
   ReactNativeHost: 46268e9273b0afaf9e9720d6cc81507d95d8dd7a
-  ReactTestApp-DevSupport: 8a69118a4beadc5c4426e35d4d38c3dc7357cb3d
-  ReactTestApp-Resources: da77347b3f02b5d79ba3fecb3ad328b2f6a7ef4d
+  ReactTestApp-DevSupport: d07f4ee3757454ccca60cc95b9d533a00ba41513
+  ReactTestApp-Resources: 857244f3a23f2b3157b364fa06cf3e8866deff9c
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: a716eea57d0d3430219c0a5a233e1e93ee931eb7
 
 PODFILE CHECKSUM: cadb274a002043a2a0ccc7f3d1f4c687c0004793
 
-COCOAPODS: 1.14.2
+COCOAPODS: 1.14.3
