@@ -21,7 +21,8 @@
     "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api",
     "storybook": "start-storybook",
-    "start": "yarn storybook"
+    "start": "yarn storybook",
+    "generate-circular-dependencies-types": "generate-circular-dependencies-types"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

@@ -20,7 +20,8 @@
     "storybook": "start-storybook",
     "test": "jest --passWithNoTests",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "just-scripts type-check",
+    "generate-circular-dependencies-types": "generate-circular-dependencies-types"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

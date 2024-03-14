@@ -660,7 +660,9 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
     const hasStories = shouldSetupStorybook(tree, options) === 'init';
     const scripts: Record<string, string> = {
       test: 'jest --passWithNoTests',
-      'type-check': 'tsc -b tsconfig.json',
+      'test-ssr': 'test-ssr "./stories/**/*.stories.tsx"',
+      'type-check': 'just-scripts type-check',
+      'generate-circular-dependencies-types': 'generate-circular-dependencies-types',
     };
 
     if (packageType === 'web' && hasStories) {

@@ -2,6 +2,7 @@
 module.exports = {
   pipeline: {
     build: ['^build'],
+    'generate-api': ['^generate-api'],
     'build:info': [],
     bundle: ['build'],
     'bundle-size': ['build'],
@@ -11,7 +12,8 @@ module.exports = {
     test: ['build'],
     'generate-api': ['^generate-api'],
     'test-ssr': [],
-    'type-check': ['build'],
+    'generate-circular-dependencies-types': ['build'],
+    'type-check': ['generate-circular-dependencies-types'],
     'code-style': [],
     'update-snapshots': ['^update-snapshots'],
     '@fluentui/docs#build': ['@fluentui/react-northstar#build:info'],
