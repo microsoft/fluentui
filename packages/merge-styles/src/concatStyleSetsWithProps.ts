@@ -1,5 +1,5 @@
 import { concatStyleSets } from './concatStyleSets';
-import { IStyleSet } from './IStyleSet';
+import { IStyleSetBase } from './IStyleSet';
 import { IStyleFunctionOrObject } from './IStyleFunction';
 import { DeepPartial } from './DeepPartial';
 
@@ -8,7 +8,7 @@ import { DeepPartial } from './DeepPartial';
  * @param styleProps - Props used to resolve functional sets.
  * @param allStyles - Style sets, which can be functions or objects.
  */
-export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(
+export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSetBase>(
   styleProps: TStyleProps,
   ...allStyles: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[]
 ): DeepPartial<TStyleSet> {

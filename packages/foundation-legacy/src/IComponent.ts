@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle, IStyleSet, ITheme } from '@fluentui/style-utilities';
+import { IStyle, IStyleSetBase, ITheme } from '@fluentui/style-utilities';
 
 // TODO: Known TypeScript issue is widening return type checks when using function type declarations.
 //        Effect is that mistyped property keys on returned style objects will not generate errors.
@@ -21,7 +21,7 @@ export type IComponentStyles<TSlots> = { [key in keyof TSlots]?: IStyle };
 /**
  * Function declaration for component styles functions.
  */
-export type IStylesFunction<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> = (
+export type IStylesFunction<TViewProps, TTokens, TStyleSet extends IStyleSetBase> = (
   props: TViewProps,
   theme: ITheme,
   tokens: TTokens,
@@ -30,7 +30,7 @@ export type IStylesFunction<TViewProps, TTokens, TStyleSet extends IStyleSet<TSt
 /**
  * Composite type for component styles functions and objects.
  */
-export type IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> =
+export type IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet extends IStyleSetBase> =
   | IStylesFunction<TViewProps, TTokens, TStyleSet>
   | TStyleSet;
 
@@ -63,14 +63,14 @@ export interface ITokenBaseArray<TViewProps, TTokens> extends Array<IToken<TView
  * Optional props for styleable components. If these props are present, they will automatically be
  * used by Foundation when applying theming and styling.
  */
-export interface IStyleableComponentProps<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> {
+export interface IStyleableComponentProps<TViewProps, TTokens, TStyleSet extends IStyleSetBase> {
   className?: string;
   styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
   theme?: ITheme;
   tokens?: ITokenFunctionOrObject<TViewProps, TTokens>;
 }
 
-export type ICustomizationProps<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> = IStyleableComponentProps<
+export type ICustomizationProps<TViewProps, TTokens, TStyleSet extends IStyleSetBase> = IStyleableComponentProps<
   TViewProps,
   TTokens,
   TStyleSet
@@ -102,7 +102,7 @@ export type IViewComponent<TViewProps> = (
 export interface IComponentOptions<
   TComponentProps,
   TTokens,
-  TStyleSet extends IStyleSet<TStyleSet>,
+  TStyleSet extends IStyleSetBase,
   TViewProps = TComponentProps,
   TStatics = {},
 > {
@@ -143,7 +143,7 @@ export interface IComponentOptions<
 export type IComponent<
   TComponentProps,
   TTokens,
-  TStyleSet extends IStyleSet<TStyleSet>,
+  TStyleSet extends IStyleSetBase,
   TViewProps = TComponentProps,
   TStatics = {},
 > = Required<IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>> & {

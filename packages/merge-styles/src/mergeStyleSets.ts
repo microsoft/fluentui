@@ -103,7 +103,7 @@ export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false
 export function mergeCssSets<TStyleSet>(
   styleSets: [TStyleSet | false | null | undefined],
   options?: IStyleOptions,
-): IProcessedStyleSet<TStyleSet>;
+): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
 
 /**
  * Takes in one or more style set objects, each1consisting of a set of areas,
@@ -117,7 +117,7 @@ export function mergeCssSets<TStyleSet>(
 export function mergeCssSets<TStyleSet1, TStyleSet2>(
   styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined],
   options?: IStyleOptions,
-): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
+): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
 
 /**
  * Takes in one or more style set objects, each1consisting of a set of areas,
@@ -135,7 +135,7 @@ export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(
     TStyleSet3 | false | null | undefined,
   ],
   options?: IStyleOptions,
-): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
 
 /**
  * Takes in one or more style set objects, each1consisting of a set of areas,
@@ -170,7 +170,7 @@ export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
 export function mergeCssSets<TStyleSet>(
   styleSet: [TStyleSet | false | null | undefined],
   options?: IStyleOptions,
-): IProcessedStyleSet<TStyleSet>;
+): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
 
 /**
  * Takes in one or more style set objects, each1consisting of a set of areas,
