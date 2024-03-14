@@ -195,13 +195,11 @@ export class Stylesheet {
    * Gets the singleton instance.
    */
   public static getInstance(shadowConfig?: ShadowConfig): Stylesheet {
-    const {
-      stylesheetKey = GLOBAL_STYLESHEET_KEY,
-      inShadow,
-      window: shadowWindow,
-    } = shadowConfig || DEFAULT_SHADOW_CONFIG;
-    const global = getGlobal(shadowWindow);
-    const win = shadowWindow || (typeof window !== 'undefined' ? window : undefined);
+    const sConfig = shadowConfig || DEFAULT_SHADOW_CONFIG;
+    const stylesheetKey = sConfig.stylesheetKey || GLOBAL_STYLESHEET_KEY;
+    const inShadow = sConfig.inShadow;
+    const win = sConfig.window || (typeof window !== 'undefined' ? window : undefined);
+    const global = (win || _global) as WindowWithMergeStyles;
     const doc = win ? win.document : typeof document !== 'undefined' ? document : undefined;
 
     _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
@@ -268,11 +266,8 @@ export class Stylesheet {
   }
 
   public addAdoptableStyleSheet(key: string, sheet: ExtendedCSSStyleSheet): void {
-    // console.log('key', key);
-    // this._config?.window?.__DEV_SHEETS = this._config?.window?.__DEV_SHEETS || {};
     if (!this._adoptableSheets.has(key)) {
       this._adoptableSheets.set(key, sheet);
-      // this._config?.window?.__DEV_SHEETS[key] = sheet;
       const win = this._config.window;
       if (win) {
         win.queueMicrotask(() => {
@@ -436,7 +431,6 @@ export class Stylesheet {
     let constructableSheet: CSSStyleSheet | undefined = undefined;
     let sheet: CSSStyleSheet | null = null;
 
-    // TODO: maybe change this? seems like we're inserting everything into head always still?
     if (injectStyles) {
       element = this._getStyleElement();
     }
@@ -453,7 +447,7 @@ export class Stylesheet {
       sheet = constructableSheet || element?.sheet || null;
       switch (injectionMode) {
         case InjectionMode.insertNode:
-          this._insertNode(element, rule);
+          this._insertRuleIntoSheet(element?.sheet, rule);
           break;
 
         case InjectionMode.appendChild:
@@ -511,7 +505,7 @@ export class Stylesheet {
     const win = this._config.window || window;
     let sheet: ExtendedCSSStyleSheet | undefined = undefined;
     if (!SUPPORTS_CONSTRUCTABLE_STYLESHEETS) {
-      const style = this._createStyleElement(win);
+      const style = this._createStyleElement();
       sheet = style.sheet as ExtendedCSSStyleSheet;
     } else {
       sheet = new (win as Window & typeof globalThis).CSSStyleSheet() as ExtendedCSSStyleSheet;
@@ -527,8 +521,8 @@ export class Stylesheet {
     return sheet;
   }
 
-  protected _createStyleElement(winArg?: Window): HTMLStyleElement {
-    const doc = winArg?.document || this._config.window?.document || document;
+  protected _createStyleElement(): HTMLStyleElement {
+    const doc = this._config.window?.document || document;
     const head: HTMLHeadElement = doc.head;
     const styleElement = doc.createElement('style');
     let nodeToInsertBefore: Node | null = null;
@@ -565,26 +559,7 @@ export class Stylesheet {
     return styleElement;
   }
 
-  private _insertNode(element: HTMLStyleElement | undefined, rule: string): boolean {
-    if (!element) {
-      return false;
-    }
-
-    const { sheet } = element! as HTMLStyleElement;
-
-    try {
-      (sheet as CSSStyleSheet).insertRule(rule, (sheet as CSSStyleSheet).cssRules.length);
-      return true;
-    } catch (e) {
-      // The browser will throw exceptions on unsupported rules (such as a moz prefix in webkit.)
-      // We need to swallow the exceptions for this scenario, otherwise we'd need to filter
-      // which could be slower and bulkier.
-    }
-
-    return false;
-  }
-
-  private _insertRuleIntoSheet(sheet: CSSStyleSheet | undefined, rule: string): boolean {
+  private _insertRuleIntoSheet(sheet: CSSStyleSheet | undefined | null, rule: string): boolean {
     if (!sheet) {
       return false;
     }
@@ -601,14 +576,13 @@ export class Stylesheet {
     return false;
   }
 
-  private _getStyleElement(winArg?: Window): HTMLStyleElement | undefined {
-    const win = winArg || this._config.window || window;
-    const doc = win.document;
-    if (!this._styleElement && typeof doc !== 'undefined') {
-      this._styleElement = this._createStyleElement(winArg);
+  private _getStyleElement(): HTMLStyleElement | undefined {
+    if (!this._styleElement) {
+      this._styleElement = this._createStyleElement();
 
       if (!REUSE_STYLE_NODE) {
         // Reset the style element on the next frame.
+        const win = this._config.window || window;
         win.requestAnimationFrame(() => {
           this._styleElement = undefined;
         });

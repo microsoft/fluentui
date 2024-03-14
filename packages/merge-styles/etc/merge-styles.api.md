@@ -580,7 +580,7 @@ export class Stylesheet {
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
     classNameFromKey(key: string): string | undefined;
     // (undocumented)
-    protected _createStyleElement(winArg?: Window): HTMLStyleElement;
+    protected _createStyleElement(): HTMLStyleElement;
     // (undocumented)
     getAdoptableStyleSheet(key: string): ExtendedCSSStyleSheet;
     // (undocumented)
