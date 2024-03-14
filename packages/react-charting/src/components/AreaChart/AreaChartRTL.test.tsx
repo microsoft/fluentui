@@ -281,7 +281,7 @@ describe('Area chart rendering', () => {
       },
       undefined,
       undefined,
-      !isTimezoneSet(tzIdentifier),
+      !(isTimezoneSet(tzIdentifier) && isTestEnv()),
     );
   });
 
