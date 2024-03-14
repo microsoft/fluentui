@@ -30,7 +30,8 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-tasks": "*",
+    "@stylexjs/stylex": "^0.5.1"
   },
   "dependencies": {
     "@fluentui/react-shared-contexts": "^9.15.0",
