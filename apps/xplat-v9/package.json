@@ -18,9 +18,11 @@
     "windows": "react-native run-windows --sln windows/xplat-v9.sln"
   },
   "dependencies": {
-    "@fluentui/react-button": "^9.3.61",
-    "@fluentui/react-label": "^9.1.64",
-    "@fluentui/react-platform-adapter": "^0.0.0",
+    "@fluentui/react-button": "*",
+    "@fluentui/react-label": "*",
+    "@fluentui/react-platform-adapter": "*",
+    "@fluentui/react-provider": "*",
+    "@fluentui/react-theme": "*",
     "@stylexjs/babel-plugin": "^0.5.1",
     "@stylexjs/stylex": "^0.5.1",
     "react": "18.2.0",

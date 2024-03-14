@@ -1,6 +1,6 @@
-import type { PartialTheme } from '@fluentui/react-theme';
+import type { Theme, PartialTheme } from '@fluentui/react-theme';
 
 export type XPlatProviderProps = {
-  theme: PartialTheme;
+  theme: Theme | PartialTheme | undefined;
   children: JSX.Element;
 };

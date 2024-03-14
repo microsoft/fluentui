@@ -36,6 +36,7 @@
     "@fluentui/react-shared-contexts": "^9.15.0",
     "@fluentui/react-theme": "^9.1.17",
     "@fluentui/react-utilities": "^9.18.3",
+    "@griffel/core": "^1.14.1",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1",
     "react-strict-dom": "0.0.3"

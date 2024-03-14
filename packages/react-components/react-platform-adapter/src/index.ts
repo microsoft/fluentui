@@ -1,3 +1,12 @@
 export { XPlatProvider, suppressCssVariableInsertion, type XPlatProviderProps } from './XPlatProvider';
 export { jsxPlatformAdapter } from './jsx';
-export { getStylesFromClassName, makeResetStyles, makeStyles, mergeClasses, shorthands } from './styling';
+export {
+  getStylesFromClassName,
+  makeStyles,
+  makeStylesCore,
+  makeResetStyles,
+  mergeClasses,
+  shorthands,
+  TextDirectionProvider,
+  useRenderer_unstable,
+} from './styling/index';
