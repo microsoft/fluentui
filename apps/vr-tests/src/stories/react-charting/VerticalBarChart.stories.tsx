@@ -15,7 +15,11 @@ import {
 storiesOf('react-charting/VerticalBarChart', module)
   .addDecorator((story, context) => TestWrapperDecorator(story, context))
   .addDecorator((story, context) => {
-    const steps = new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
+    const steps = new Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .click('.ms-OverflowSet-item:nth-child(2)')
+      .snapshot('legend', { cropTo: '.testWrapper' })
+      .end();
     return <StoryWright steps={steps}>{story()}</StoryWright>;
   })
   .addStory(
@@ -135,7 +139,14 @@ storiesOf('react-charting/VerticalBarChart', module)
       );
     },
     { includeDarkMode: true, includeRtl: true },
-  )
+  );
+
+storiesOf('react-charting/VerticalBarChart', module)
+  .addDecorator((story, context) => TestWrapperDecorator(story, context))
+  .addDecorator((story, context) => {
+    const steps = new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
+    return <StoryWright steps={steps}>{story()}</StoryWright>;
+  })
 
   .addStory(
     'Date Axis- VBC',
