@@ -195,12 +195,16 @@ export class Stylesheet {
    * Gets the singleton instance.
    */
   public static getInstance(shadowConfig?: ShadowConfig): Stylesheet {
-    const { stylesheetKey = GLOBAL_STYLESHEET_KEY, inShadow, window: win } = shadowConfig || DEFAULT_SHADOW_CONFIG;
-    const global = (win || _global || {}) as WindowWithMergeStyles;
+    const {
+      stylesheetKey = GLOBAL_STYLESHEET_KEY,
+      inShadow,
+      window: shadowWindow,
+    } = shadowConfig || DEFAULT_SHADOW_CONFIG;
+    const global = getGlobal(shadowWindow);
+    const win = shadowWindow || (typeof window !== 'undefined' ? window : undefined);
+    const doc = win ? win.document : typeof document !== 'undefined' ? document : undefined;
 
     _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
-
-    const doc = win ? win.document : typeof document !== 'undefined' ? document : undefined;
 
     // When an app has multiple versions of Fluent v8 it is possible
     // that an older version of Stylesheet is initialized before
@@ -215,7 +219,7 @@ export class Stylesheet {
     ) {
       const fabricConfig = global?.FabricConfig || {};
       const defaultMergeStyles = {
-        window: win || (typeof window !== 'undefined' ? window : undefined),
+        window: win,
         inShadow,
         stylesheetKey,
       };
@@ -233,13 +237,14 @@ export class Stylesheet {
       global[STYLESHEET_SETTING] = _stylesheet;
     } else {
       _stylesheet.setConfig({
-        window: win || (typeof window !== 'undefined' ? window : undefined),
+        window: win,
         inShadow,
         stylesheetKey,
       });
     }
-
-    _stylesheet.getAdoptableStyleSheet(stylesheetKey);
+    if (win) {
+      _stylesheet.getAdoptableStyleSheet(stylesheetKey);
+    }
 
     return _stylesheet;
   }
@@ -503,7 +508,7 @@ export class Stylesheet {
   }
 
   public makeCSSStyleSheet(): ExtendedCSSStyleSheet {
-    const win = this._config?.window || window;
+    const win = this._config.window || window;
     let sheet: ExtendedCSSStyleSheet | undefined = undefined;
     if (!SUPPORTS_CONSTRUCTABLE_STYLESHEETS) {
       const style = this._createStyleElement(win);
