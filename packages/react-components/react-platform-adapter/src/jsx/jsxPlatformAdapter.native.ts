@@ -1,8 +1,7 @@
 import type * as React from 'react';
-
 import { html } from 'react-strict-dom';
-import { getStylesFromClassName } from '../styling/index';
-import { JSXRuntime } from './types';
+import { getStylesFromClassName } from '../styling/classNameMap';
+import type { JSXRuntime } from './types';
 
 const modifyPropsForNative = <P extends {}>(
   props: (P & { children?: React.ReactNode; className?: string; style?: React.CSSProperties }) | null,
