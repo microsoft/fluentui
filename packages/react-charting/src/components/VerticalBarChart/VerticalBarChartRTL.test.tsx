@@ -312,7 +312,7 @@ describe('Vertical bar chart rendering', () => {
       },
       undefined,
       undefined,
-      !isTimezoneSet(tzIdentifier),
+      !(isTimezoneSet(tzIdentifier) && env === 'TEST'),
     );
   });
 

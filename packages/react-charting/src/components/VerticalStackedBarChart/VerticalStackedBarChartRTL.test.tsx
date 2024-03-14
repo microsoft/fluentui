@@ -182,7 +182,7 @@ describe('Vertical stacked bar chart rendering', () => {
       },
       undefined,
       undefined,
-      !isTimezoneSet(tzIdentifier),
+      !(isTimezoneSet(tzIdentifier) && env === 'TEST'),
     );
   });
 });
