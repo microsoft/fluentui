@@ -25,7 +25,7 @@ import { portalContainsElement } from '@fluentui/dom-utilities';
 import * as React_2 from 'react';
 import { setPortalAttribute } from '@fluentui/dom-utilities';
 import { setVirtualParent } from '@fluentui/dom-utilities';
-import type { ShadowConfig } from '@fluentui/merge-styles';
+import { ShadowConfig } from '@fluentui/merge-styles';
 
 // @public
 export function addDirectionalKeyCode(which: number): void;
@@ -1047,6 +1047,7 @@ export type MergeStylesRootContextValue = {
     useHasMergeStylesShadowRootContext: HasMergeStylesShadowRootContextHook;
     useMergeStylesRootStylesheets: MergeStylesRootStylesheetsHook;
     useWindow: UseWindowHook;
+    useStyled: UseStyledHook;
 };
 
 // @public
@@ -1063,6 +1064,7 @@ export type MergeStylesRootProviderProps = {
     useHasMergeStylesShadowRootContext?: HasMergeStylesShadowRootContextHook;
     useMergeStylesRootStylesheets?: MergeStylesRootStylesheetsHook;
     useWindow?: UseWindowHook;
+    useStyled?: UseStyledHook;
 };
 
 // @public (undocumented)
@@ -1362,6 +1364,7 @@ export const useMergeStylesHooks: () => {
     useHasMergeStylesShadowRootContext: HasMergeStylesShadowRootContextHook;
     useMergeStylesRootStylesheets: MergeStylesRootStylesheetsHook;
     useWindow: () => Window | undefined;
+    useStyled: UseStyledHook;
 };
 
 // @public
@@ -1372,6 +1375,14 @@ export const useMergeStylesShadowRootContext: MergeStylesShadowRootContetHook;
 
 // @public
 export const useShadowConfig: ShadowConfigHook;
+
+// @public (undocumented)
+export const useStyled: UseStyledHook;
+
+// Warning: (ae-forgotten-export) The symbol "ObjectWithShadowConfig" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type UseStyledHook = (scope: string, styles: ObjectWithShadowConfig) => void;
 
 // @public
 export function values<T>(obj: any): T[];
@@ -1396,9 +1407,9 @@ export function warnMutuallyExclusive<P>(componentName: string, props: P, exclus
 
 // Warnings were encountered during analysis:
 //
-// lib/shadowDom/contexts/MergeStylesRootContext.d.ts:22:5 - (ae-forgotten-export) The symbol "MergeStylesShadowRootContetHook" needs to be exported by the entry point index.d.ts
-// lib/shadowDom/contexts/MergeStylesRootContext.d.ts:24:5 - (ae-forgotten-export) The symbol "MergeStylesRootStylesheetsHook" needs to be exported by the entry point index.d.ts
-// lib/shadowDom/contexts/MergeStylesRootContext.d.ts:25:5 - (ae-forgotten-export) The symbol "UseWindowHook" needs to be exported by the entry point index.d.ts
+// lib/shadowDom/contexts/MergeStylesRootContext.d.ts:23:5 - (ae-forgotten-export) The symbol "MergeStylesShadowRootContetHook" needs to be exported by the entry point index.d.ts
+// lib/shadowDom/contexts/MergeStylesRootContext.d.ts:25:5 - (ae-forgotten-export) The symbol "MergeStylesRootStylesheetsHook" needs to be exported by the entry point index.d.ts
+// lib/shadowDom/contexts/MergeStylesRootContext.d.ts:26:5 - (ae-forgotten-export) The symbol "UseWindowHook" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

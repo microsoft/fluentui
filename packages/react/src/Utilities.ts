@@ -184,6 +184,7 @@ export {
   useMergeStylesRootStylesheets,
   useMergeStylesShadowRootContext,
   useShadowConfig,
+  useStyled,
   values,
   videoProperties,
   warn,
@@ -256,4 +257,5 @@ export type {
   SettingsFunction,
   ShadowConfigHook,
   StyleFunction,
+  UseStyledHook,
 } from '@fluentui/utilities';

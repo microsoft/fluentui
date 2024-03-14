@@ -385,6 +385,7 @@ import { useMergeStylesHooks } from '@fluentui/utilities';
 import { useMergeStylesRootStylesheets } from '@fluentui/utilities';
 import { useMergeStylesShadowRootContext } from '@fluentui/utilities';
 import { useShadowConfig } from '@fluentui/utilities';
+import { useStyled } from '@fluentui/utilities';
 import { useWindow } from '@fluentui/react-window-provider';
 import { values } from '@fluentui/utilities';
 import { videoProperties } from '@fluentui/utilities';
@@ -11469,6 +11470,8 @@ export { useMergeStylesShadowRootContext }
 export const useResponsiveMode: (elementRef: React_2.RefObject<HTMLElement | null>, overrideResponsiveMode?: ResponsiveMode) => ResponsiveMode;
 
 export { useShadowConfig }
+
+export { useStyled }
 
 // @public @deprecated
 export type UseStylesOptions = {

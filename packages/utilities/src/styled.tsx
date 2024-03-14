@@ -3,7 +3,6 @@ import { concatStyleSetsWithProps } from '@fluentui/merge-styles';
 import { useMergeStylesHooks } from './shadowDom/index';
 import { useCustomizationSettings } from './customizations/useCustomizationSettings';
 import type { IStyleSet, IStyleFunctionOrObject, ShadowConfig } from '@fluentui/merge-styles';
-import { getWindow } from './dom/getWindow';
 
 export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> {
   styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
@@ -100,18 +99,7 @@ export function styled<
     const { styles: customizedStyles, dir, ...rest } = settings;
     const additionalProps = getProps ? getProps(props) : undefined;
 
-    const {
-      useAdoptedStylesheetEx,
-      useShadowConfig,
-      useMergeStylesShadowRootContext,
-      useMergeStylesRootStylesheets,
-      useWindow,
-    } = useMergeStylesHooks();
-    const win = useWindow() || getWindow();
-    const shadowCtx = useMergeStylesShadowRootContext();
-    const inShadow = !!shadowCtx;
-    const rootMergeStyles = useMergeStylesRootStylesheets();
-    const shadowConfig = useShadowConfig(scope, inShadow, win);
+    const { useStyled } = useMergeStylesHooks();
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const cache = (styles.current && (styles.current as any).__cachedInputs__) || [];
@@ -137,9 +125,7 @@ export function styled<
       styles.current = concatenatedStyles as StyleFunction<TStyleProps, TStyleSet>;
     }
 
-    styles.current.__shadowConfig__ = shadowConfig;
-
-    useAdoptedStylesheetEx(scope, shadowCtx, rootMergeStyles, win);
+    useStyled(scope, styles.current);
 
     return <Component ref={forwardedRef} {...rest} {...additionalProps} {...props} styles={styles.current} />;
   });

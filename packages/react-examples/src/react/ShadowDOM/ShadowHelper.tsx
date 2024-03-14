@@ -9,6 +9,7 @@ import {
   useMergeStylesShadowRootContext,
   useHasMergeStylesShadowRootContext,
   useMergeStylesRootStylesheets,
+  useStyled,
 } from '@fluentui/react';
 import { useWindow } from '@fluentui/react-window-provider';
 import root from 'react-shadow';
@@ -40,6 +41,7 @@ export const Shadow: React.FC<ShadowProps> = ({ window, children }) => {
       useHasMergeStylesShadowRootContext={useHasMergeStylesShadowRootContext}
       useMergeStylesRootStylesheets={useMergeStylesRootStylesheets}
       useWindow={useWindow}
+      useStyled={useStyled}
     >
       <FocusRectsProvider providerRef={ref}>
         <root.div className="shadow-root" delegatesFocus ref={ref}>

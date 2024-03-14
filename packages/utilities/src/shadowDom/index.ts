@@ -21,3 +21,6 @@ export type { HasMergeStylesShadowRootContextHook } from './hooks/useMergeStyles
 
 export { useShadowConfig } from './hooks/useShadowConfig';
 export type { ShadowConfigHook } from './hooks/useShadowConfig';
+
+export { useStyled } from './hooks/useStyled';
+export type { UseStyledHook } from './hooks/useStyled';

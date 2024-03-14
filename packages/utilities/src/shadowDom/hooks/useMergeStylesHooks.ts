@@ -11,5 +11,6 @@ export const useMergeStylesHooks = () => {
     useHasMergeStylesShadowRootContext: ctx.useHasMergeStylesShadowRootContext,
     useMergeStylesRootStylesheets: ctx.useMergeStylesRootStylesheets,
     useWindow: ctx.useWindow,
+    useStyled: ctx.useStyled,
   };
 };

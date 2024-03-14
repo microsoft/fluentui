@@ -245,20 +245,22 @@ export {
   useAdoptedStylesheet,
   useAdoptedStylesheetEx,
   useHasMergeStylesShadowRootContext,
+  useMergeStylesHooks,
   useMergeStylesRootStylesheets,
   useMergeStylesShadowRootContext,
   useShadowConfig,
-  useMergeStylesHooks,
+  useStyled,
 } from './shadowDom';
 
 export type {
+  AdoptedStylesheetHook,
+  AdoptedStylesheetExHook,
+  HasMergeStylesShadowRootContextHook,
   MergeStylesRootContextValue,
   MergeStylesRootProviderProps,
   MergeStylesShadowRootContextValue,
   MergeStylesShadowRootProviderProps,
   MergeStylesContextConsumerProps,
-  AdoptedStylesheetHook,
-  AdoptedStylesheetExHook,
   ShadowConfigHook,
-  HasMergeStylesShadowRootContextHook,
+  UseStyledHook,
 } from './shadowDom';

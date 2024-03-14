@@ -9,6 +9,7 @@ import type {
   MergeStylesShadowRootContetHook,
 } from '../hooks/useMergeStylesShadowRoot';
 import type { MergeStylesRootStylesheetsHook } from '../hooks/useMergeStylesRootStylesheets';
+import type { UseStyledHook } from '../hooks/useStyled';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -23,7 +24,7 @@ type UseWindowHook = () => Window | undefined;
 const noop = () => false;
 const noopShadow = () => DEFAULT_SHADOW_CONFIG;
 const noopRootStylesheets = () => new Map();
-const noopWindow = () => undefined;
+const noopUndefined = () => undefined;
 
 export type MergeStylesRootContextValue = {
   /**
@@ -37,6 +38,7 @@ export type MergeStylesRootContextValue = {
   useHasMergeStylesShadowRootContext: HasMergeStylesShadowRootContextHook;
   useMergeStylesRootStylesheets: MergeStylesRootStylesheetsHook;
   useWindow: UseWindowHook;
+  useStyled: UseStyledHook;
 };
 
 export const MergeStylesRootContext = React.createContext<MergeStylesRootContextValue>({
@@ -44,10 +46,11 @@ export const MergeStylesRootContext = React.createContext<MergeStylesRootContext
   useAdoptedStylesheetEx: noop,
   useAdoptedStylesheet: noop,
   useShadowConfig: noopShadow,
-  useMergeStylesShadowRootContext: noopWindow,
+  useMergeStylesShadowRootContext: noopUndefined,
   useHasMergeStylesShadowRootContext: noop,
   useMergeStylesRootStylesheets: noopRootStylesheets,
-  useWindow: noopWindow,
+  useWindow: noopUndefined,
+  useStyled: noopUndefined,
 });
 
 export type MergeStylesRootProviderProps = {
@@ -69,6 +72,7 @@ export type MergeStylesRootProviderProps = {
   useHasMergeStylesShadowRootContext?: HasMergeStylesShadowRootContextHook;
   useMergeStylesRootStylesheets?: MergeStylesRootStylesheetsHook;
   useWindow?: UseWindowHook;
+  useStyled?: UseStyledHook;
 };
 
 /**
@@ -85,6 +89,7 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
   useHasMergeStylesShadowRootContext,
   useMergeStylesRootStylesheets,
   useWindow,
+  useStyled,
   ...props
 }) => {
   const win = userWindow ?? getWindow();
@@ -149,10 +154,11 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
       useAdoptedStylesheet: useAdoptedStylesheet || noop,
       useAdoptedStylesheetEx: useAdoptedStylesheetEx || noop,
       useShadowConfig: useShadowConfig || noopShadow,
-      useMergeStylesShadowRootContext: useMergeStylesShadowRootContext || noopWindow,
+      useMergeStylesShadowRootContext: useMergeStylesShadowRootContext || noopUndefined,
       useHasMergeStylesShadowRootContext: useHasMergeStylesShadowRootContext || noop,
       useMergeStylesRootStylesheets: useMergeStylesRootStylesheets || noopRootStylesheets,
-      useWindow: useWindow || noopWindow,
+      useWindow: useWindow || noopUndefined,
+      useStyled: useStyled || noopUndefined,
     };
   }, [
     stylesheets,
@@ -163,6 +169,7 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
     useHasMergeStylesShadowRootContext,
     useMergeStylesRootStylesheets,
     useWindow,
+    useStyled,
   ]);
 
   return <MergeStylesRootContext.Provider value={value} {...props} />;

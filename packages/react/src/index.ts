@@ -1399,6 +1399,7 @@ export {
   useMergeStylesRootStylesheets,
   useMergeStylesShadowRootContext,
   useShadowConfig,
+  useStyled,
   values,
   videoProperties,
   warn,
