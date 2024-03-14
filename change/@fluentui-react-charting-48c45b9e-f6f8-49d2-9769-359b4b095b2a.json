@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix 2:1 spacing in vertical bar charts with string x-axis",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}

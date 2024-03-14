@@ -76,6 +76,7 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
     selectedValue?: string;
     size?: 'extraSmall' | 'small' | 'medium' | 'large';
     shape?: 'rounded' | 'square' | 'circular';
+    spacing?: 'small' | 'medium';
 };
 
 // @public (undocumented)
@@ -84,7 +85,7 @@ export type SwatchPickerSlots = {
 };
 
 // @public
-export type SwatchPickerState = ComponentState<SwatchPickerSlots> & SwatchPickerContextValue & Pick<SwatchPickerProps, 'size' | 'shape'>;
+export type SwatchPickerState = ComponentState<SwatchPickerSlots> & SwatchPickerContextValue & Pick<SwatchPickerProps, 'size' | 'shape' | 'spacing'>;
 
 // @public
 export const useColorSwatch_unstable: (props: ColorSwatchProps, ref: React_2.Ref<HTMLButtonElement>) => ColorSwatchState;

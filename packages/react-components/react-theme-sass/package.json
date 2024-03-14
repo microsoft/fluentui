@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theme-sass",
-  "version": "9.0.0-alpha.20",
+  "version": "9.0.0-alpha.21",
   "description": "SASS variables referencing react-theme design tokens injected to DOM by react-provider.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

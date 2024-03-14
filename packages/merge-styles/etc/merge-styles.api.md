@@ -26,7 +26,7 @@ export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, 
 export function concatStyleSets(...styleSets: (IStyleSet | false | null | undefined)[]): IConcatenatedStyleSet<any>;
 
 // @public
-export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(styleProps: TStyleProps, ...allStyles: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[]): DeepPartial<TStyleSet>;
+export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSetBase>(styleProps: TStyleProps, ...allStyles: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[]): DeepPartial<TStyleSet>;
 
 // @public
 export type DeepPartial<T> = {
@@ -37,7 +37,7 @@ export type DeepPartial<T> = {
 export function fontFace(font: IFontFace): void;
 
 // @public
-export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
+export type IConcatenatedStyleSet<TStyleSet extends IStyleSetBase> = {
     [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
     subComponentStyles?: {
@@ -81,7 +81,7 @@ export const InjectionMode: {
 export type InjectionMode = (typeof InjectionMode)[keyof typeof InjectionMode];
 
 // @public
-export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
+export type IProcessedStyleSet<TStyleSet extends IStyleSetBase> = {
     [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: string;
 } & {
     subComponentStyles: {
@@ -425,13 +425,13 @@ export interface IStyleBaseArray extends Array<IStyle> {
 }
 
 // @public
-export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = (props: TStylesProps) => DeepPartial<TStyleSet>;
+export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSetBase> = (props: TStylesProps) => DeepPartial<TStyleSet>;
 
 // @public
-export type IStyleFunctionOrObject<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = IStyleFunction<TStylesProps, TStyleSet> | DeepPartial<TStyleSet>;
+export type IStyleFunctionOrObject<TStylesProps, TStyleSet extends IStyleSetBase> = IStyleFunction<TStylesProps, TStyleSet> | DeepPartial<TStyleSet>;
 
 // @public
-export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet> = {
+export type IStyleSet<TStyleSet extends IStyleSetBase = {
     [key: string]: any;
 }> = {
     [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: IStyle;
@@ -440,6 +440,14 @@ export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet> = {
         [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any>;
     };
 };
+
+// @public
+export interface IStyleSetBase {
+    // (undocumented)
+    [key: string]: any;
+    // (undocumented)
+    subComponentStyles?: any;
+}
 
 // @public
 export interface IStyleSheetConfig {
@@ -464,17 +472,17 @@ export function keyframes(timeline: IKeyframes): string;
 export function mergeCss(args: (IStyle | IStyleBaseArray | false | null | undefined) | (IStyle | IStyleBaseArray | false | null | undefined)[], options?: IStyleOptions): string;
 
 // @public
-export function mergeCssSets<TStyleSet>(styleSets: [TStyleSet | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet>;
+export function mergeCssSets<TStyleSet>(styleSets: [TStyleSet | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
 
 // @public
-export function mergeCssSets<TStyleSet1, TStyleSet2>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
+export function mergeCssSets<TStyleSet1, TStyleSet2>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
 
 // @public
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSets: [
 TStyleSet1 | false | null | undefined,
 TStyleSet2 | false | null | undefined,
 TStyleSet3 | false | null | undefined
-], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
 
 // @public
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSets: [
@@ -485,7 +493,7 @@ TStyleSet4 | false | null | undefined
 ], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
 
 // @public
-export function mergeCssSets<TStyleSet>(styleSet: [TStyleSet | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet>;
+export function mergeCssSets<TStyleSet>(styleSet: [TStyleSet | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
 
 // @public
 export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
@@ -542,7 +550,7 @@ export class Stylesheet {
 
 // Warnings were encountered during analysis:
 //
-// lib/IStyleSet.d.ts:53:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
+// lib/IStyleSet.d.ts:60:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
