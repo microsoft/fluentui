@@ -295,7 +295,7 @@ describe('Area chart rendering', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && isTestEnv),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 
   testWithWait(
@@ -308,7 +308,7 @@ describe('Area chart rendering', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && isTestEnv),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 
   testWithWait(
@@ -321,7 +321,7 @@ describe('Area chart rendering', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && isTestEnv),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 });
 
@@ -499,7 +499,7 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && isTestEnv),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 });
 

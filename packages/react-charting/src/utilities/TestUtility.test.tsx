@@ -97,6 +97,6 @@ export const conditionalTest = (shouldExecute: boolean) => {
   return shouldExecute ? test : test.skip;
 };
 
-export const isTestEnv = (shouldExecute: boolean) => {
+export const isTestEnv = () => {
   return env === 'TEST' ? true : false;
 };

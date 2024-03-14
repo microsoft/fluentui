@@ -210,7 +210,7 @@ describe('Line chart rendering', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && isTestEnv),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 
   testWithWait(
@@ -223,7 +223,7 @@ describe('Line chart rendering', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && isTestEnv),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 
   testWithWait(
@@ -236,7 +236,7 @@ describe('Line chart rendering', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && isTestEnv),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 
   testWithWait(
@@ -249,7 +249,7 @@ describe('Line chart rendering', () => {
     },
     undefined,
     undefined,
-    !(isTimezoneSet(Timezone.UTC) && isTestEnv),
+    !(isTimezoneSet(Timezone.UTC) && isTestEnv()),
   );
 
   testWithoutWait(
