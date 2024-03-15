@@ -28,7 +28,7 @@ export const jsxPlatformAdapter = (reactJsx: JSXRuntime): JSXRuntime => {
       }
 
       // TODO figure out which types need to wrap children in a span.
-      if (props?.children) {
+      if (type !== 'span' && props?.children) {
         let modifiedChildren = false;
         const children = React.Children.map(props.children, child => {
           if (typeof child === 'string') {
