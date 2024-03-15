@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { html } from 'react-strict-dom';
-import { getStylesFromClassName } from '../styling/index';
-import { JSXRuntime } from './types';
+import { getStylesFromClassName } from '../styling/classNameMap';
+import type { JSXRuntime } from './types';
 
 /**
  * Create a wrapper for React JSX that creates react-strict-dom elements for intrinsic elements.

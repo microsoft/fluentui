@@ -1,4 +1,17 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/react"],
-  "root": true
+  "root": true,
+  "overrides": [
+    {
+      "files": "**/*.ts",
+      "rules": {
+        "@rnx-kit/no-export-all": [
+          "error",
+          {
+            "expand": "all"
+          }
+        ]
+      }
+    }
+  ]
 }

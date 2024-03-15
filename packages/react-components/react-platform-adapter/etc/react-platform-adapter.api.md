@@ -6,10 +6,14 @@
 
 import type { GriffelStyle } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
+import { makeStyles as makeStylesCore } from '@griffel/core';
 import { mergeClasses } from '@griffel/react';
 import type { PartialTheme } from '@fluentui/react-theme';
 import * as React_2 from 'react';
 import { shorthands } from '@griffel/react';
+import { TextDirectionProvider } from '@griffel/react';
+import type { Theme } from '@fluentui/react-theme';
+import { useRenderer_unstable } from '@griffel/react';
 
 // @public (undocumented)
 export const getStylesFromClassName: (className: string) => {
@@ -24,6 +28,8 @@ export const makeResetStyles: (resetStyles: GriffelStyle) => () => string;
 
 export { makeStyles }
 
+export { makeStylesCore }
+
 export { mergeClasses }
 
 export { shorthands }
@@ -31,12 +37,16 @@ export { shorthands }
 // @public (undocumented)
 export const suppressCssVariableInsertion = false;
 
+export { TextDirectionProvider }
+
+export { useRenderer_unstable }
+
 // @public
 export const XPlatProvider: React_2.FunctionComponent<XPlatProviderProps>;
 
 // @public (undocumented)
 export type XPlatProviderProps = {
-    theme: PartialTheme;
+    theme: Theme | PartialTheme | undefined;
     children: JSX.Element;
 };
 
