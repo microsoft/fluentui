@@ -19,6 +19,7 @@ const { color } = swatchCSSVars;
  */
 const useStyles = makeResetStyles({
   display: 'inline-flex',
+  flexShrink: 0,
   boxSizing: 'border-box',
   border: `1px solid ${tokens.colorTransparentStroke}`,
   background: `var(${color})`,
