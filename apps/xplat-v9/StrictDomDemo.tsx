@@ -9,6 +9,8 @@ import {
   shorthands,
 } from '@fluentui/react-platform-adapter';
 import { html } from 'react-strict-dom';
+import { FluentProvider } from '@fluentui/react-provider';
+import { webLightTheme } from '@fluentui/react-theme';
 
 const useBaseClassName = makeResetStyles({
   marginBlock: '1rem',
@@ -36,10 +38,12 @@ export const StrictDomDemo = (props: { cond?: boolean }) => {
   const classNames = useClassNames();
 
   return (
-    <html.div
-      style={getStylesFromClassName(mergeClasses(useBaseClassName(), classNames.root, cond && classNames.cond))}
-    >
-      <Label required>This is a label</Label>
-    </html.div>
+    <FluentProvider theme={webLightTheme}>
+      <html.div
+        style={getStylesFromClassName(mergeClasses(useBaseClassName(), classNames.root, cond && classNames.cond))}
+      >
+        <Label required>This is a label</Label>
+      </html.div>
+    </FluentProvider>
   );
 };
