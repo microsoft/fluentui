@@ -1,6 +1,6 @@
 {
-  "name": "@fluentui/react-rating-preview",
-  "version": "0.4.0",
+  "name": "@fluentui/react-rating",
+  "version": "9.0.0-alpha.0",
   "description": "Rating component for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

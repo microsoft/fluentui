@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RatingDisplay } from '@fluentui/react-rating-preview';
+import { RatingDisplay } from '@fluentui/react-components';
 
 export const Count = () => {
   return <RatingDisplay value={5} count={1160} />;

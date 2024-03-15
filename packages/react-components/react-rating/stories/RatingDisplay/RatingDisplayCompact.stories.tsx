@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RatingDisplay } from '@fluentui/react-rating-preview';
+import { RatingDisplay } from '@fluentui/react-components';
 
 export const Compact = () => <RatingDisplay compact value={3} count={1160} />;
 
