@@ -1,7 +1,7 @@
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import { shorthands, makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
+import { shorthands, makeStyles, makeResetStyles, mergeClasses } from '@fluentui/react-platform-adapter';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots, ButtonState } from './Button.types';
 
@@ -32,19 +32,19 @@ const useRootBaseClassName = makeResetStyles({
   textDecorationLine: 'none',
   verticalAlign: 'middle',
 
-  margin: 0,
-  overflow: 'hidden',
+  ...shorthands.margin(0),
+  ...shorthands.overflow('hidden'),
 
   backgroundColor: tokens.colorNeutralBackground1,
   color: tokens.colorNeutralForeground1,
-  border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+  ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
 
   fontFamily: tokens.fontFamilyBase,
   outlineStyle: 'none',
 
   ':hover': {
     backgroundColor: tokens.colorNeutralBackground1Hover,
-    borderColor: tokens.colorNeutralStroke1Hover,
+    ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
     color: tokens.colorNeutralForeground1Hover,
 
     cursor: 'pointer',
@@ -52,15 +52,15 @@ const useRootBaseClassName = makeResetStyles({
 
   ':hover:active': {
     backgroundColor: tokens.colorNeutralBackground1Pressed,
-    borderColor: tokens.colorNeutralStroke1Pressed,
+    ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
     color: tokens.colorNeutralForeground1Pressed,
 
     outlineStyle: 'none',
   },
 
-  padding: `${buttonSpacingMedium} ${tokens.spacingHorizontalM}`,
+  ...shorthands.padding(buttonSpacingMedium, tokens.spacingHorizontalM),
   minWidth: '96px',
-  borderRadius: tokens.borderRadiusMedium,
+  ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
   fontSize: tokens.fontSizeBase300,
   fontWeight: tokens.fontWeightSemibold,
@@ -80,19 +80,19 @@ const useRootBaseClassName = makeResetStyles({
 
   '@media (forced-colors: active)': {
     ':focus': {
-      borderColor: 'ButtonText',
+      ...shorthands.borderColor('ButtonText'),
     },
 
     ':hover': {
       backgroundColor: 'HighlightText',
-      borderColor: 'Highlight',
+      ...shorthands.borderColor('Highlight'),
       color: 'Highlight',
       forcedColorAdjust: 'none',
     },
 
     ':hover:active': {
       backgroundColor: 'HighlightText',
-      borderColor: 'Highlight',
+      ...shorthands.borderColor('Highlight'),
       color: 'Highlight',
       forcedColorAdjust: 'none',
     },
@@ -101,10 +101,10 @@ const useRootBaseClassName = makeResetStyles({
   // Focus styles
 
   ...createCustomFocusIndicatorStyle({
-    borderColor: tokens.colorStrokeFocus2,
-    borderRadius: tokens.borderRadiusMedium,
-    borderWidth: '1px',
-    outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
+    ...shorthands.borderColor(tokens.colorStrokeFocus2),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.borderWidth('1px'),
+    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorTransparentStroke),
     boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2}
       inset
     `,
