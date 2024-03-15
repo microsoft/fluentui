@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "'feat: Release Rating to stable.",
+  "comment": "'feat: add @fluentui/react-rating to suite.",
   "packageName": "@fluentui/react-components",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch"

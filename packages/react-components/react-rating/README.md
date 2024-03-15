@@ -15,7 +15,7 @@ Import `Rating` or `RatingDisplay`:
 import { Rating, RatingDisplay } from '@fluentui/react-components';
 
 // Directly from @fluentui/react-rating
-import { Rating, RatinggDisplay } from '@fluentui/react-rating';
+import { Rating, RatingDisplay } from '@fluentui/react-rating';
 ```
 
 #### Examples
