@@ -19,11 +19,14 @@ export function makeStyles<Slots extends string | number>(
     classNameMap[slotName] = className;
   }
 
+  let registered = false;
   const useStyles = () => {
+    if (!registered) {
+      registerStyles(styles);
+      registered = true;
+    }
     return classNameMap;
   };
-
-  registerStyles(styles);
 
   return useStyles;
 }
