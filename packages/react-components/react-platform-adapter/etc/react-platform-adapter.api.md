@@ -4,7 +4,7 @@
 
 ```ts
 
-import { makeResetStyles } from '@griffel/react';
+import type { GriffelStyle } from '@griffel/react';
 import { makeStyles } from '@griffel/react';
 import { mergeClasses } from '@griffel/react';
 import type { PartialTheme } from '@fluentui/react-theme';
@@ -12,12 +12,15 @@ import * as React_2 from 'react';
 import { shorthands } from '@griffel/react';
 
 // @public (undocumented)
-export const getStylesFromClassName: (className: string) => undefined;
+export const getStylesFromClassName: (className: string) => {
+    [key: string]: unknown;
+}[];
 
 // @public (undocumented)
 export const jsxPlatformAdapter: (reactJsx: JSXRuntime) => JSXRuntime;
 
-export { makeResetStyles }
+// @public
+export const makeResetStyles: (resetStyles: GriffelStyle) => () => string;
 
 export { makeStyles }
 
