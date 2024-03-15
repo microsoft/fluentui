@@ -21,7 +21,7 @@
     "lint": "just-scripts lint",
     "storybook": "start-storybook",
     "start": "yarn storybook",
-    "type-check": "tsc -b tsconfig.json",
+    "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
