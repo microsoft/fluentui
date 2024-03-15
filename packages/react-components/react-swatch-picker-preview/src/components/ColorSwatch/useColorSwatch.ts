@@ -37,6 +37,11 @@ export const useColorSwatch_unstable = (
   };
 
   const role = isGrid ? 'gridcell' : 'radio';
+  const ariaSelected = isGrid
+    ? {
+        'aria-selected': selected,
+      }
+    : { 'aria-checked': selected };
 
   const state: ColorSwatchState = {
     components: {
@@ -46,7 +51,7 @@ export const useColorSwatch_unstable = (
       getIntrinsicElementProps('button', {
         ref,
         role,
-        'aria-selected': selected,
+        ...ariaSelected,
         onClick,
         type: 'button',
         ...rest,
