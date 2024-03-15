@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 07 Mar 2024 19:33:20 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Mar 2024 21:43:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.47.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.47.0)
+
+Fri, 15 Mar 2024 21:43:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.46.8..@fluentui/react-components_v9.47.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - 'feat: add @fluentui/react-rating to suite. ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by ololubek@microsoft.com)
+- `@fluentui/react-rating`
+  - 'feat: Release Rating to stable. ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by ololubek@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: Applying correct styles to icon when ToggleButton is checked and has a subtle or transparent appearance. ([PR #30775](https://github.com/microsoft/fluentui/pull/30775) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-infolabel`
+  - fix: add aria-labelledby to infolabel note ([PR #30761](https://github.com/microsoft/fluentui/pull/30761) by sarah.higley@microsoft.com)
+
+### Changes
+
+- `@fluentui/tokens`
+  - feat: enable .js extension addition and directory import/export unwrapping in build output ([PR #30770](https://github.com/microsoft/fluentui/pull/30770) by martinhochel@microsoft.com)
 
 ## [9.46.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.46.8)
 
