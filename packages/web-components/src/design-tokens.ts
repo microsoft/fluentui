@@ -44,7 +44,7 @@ export interface InteractiveColorRecipe {
 
 const { create } = DesignToken;
 
-function createNonCss<T>(name: string): DesignToken<T> {
+function createNonCss<T extends {}>(name: string): DesignToken<T> {
   return DesignToken.create<T>({ name, cssCustomPropertyName: null });
 }
 

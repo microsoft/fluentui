@@ -115,7 +115,7 @@ const backgroundStyles = css`
   ),
 );
 
-function designToken<T>(token: DesignToken<T>) {
+function designToken<T extends {}>(token: DesignToken<T>) {
   return (source: DesignSystemProvider, key: string) => {
     source[key + 'Changed'] = function (this: DesignSystemProvider, prev: T | undefined, next: T | undefined) {
       if (next !== undefined && next !== null) {
