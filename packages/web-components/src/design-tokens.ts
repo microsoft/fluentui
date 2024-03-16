@@ -44,6 +44,7 @@ export interface InteractiveColorRecipe {
 
 const { create } = DesignToken;
 
+// eslint-disable-next-line @typescript-eslint/ban-types -- Fix TypeScript 5.3 error in backward compatible way
 function createNonCss<T extends {}>(name: string): DesignToken<T> {
   return DesignToken.create<T>({ name, cssCustomPropertyName: null });
 }
