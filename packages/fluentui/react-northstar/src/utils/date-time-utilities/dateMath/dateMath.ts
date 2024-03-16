@@ -145,7 +145,7 @@ export function compareDates(date1: Date, date2: Date): boolean {
  * @returns A negative value if date1 is earlier than date2, 0 if the dates are equal, or a positive value
  * if date1 is later than date2.
  */
-export function compareDatePart(date1: Date, date2: Date): Number {
+export function compareDatePart(date1: Date, date2: Date): number {
   return getDatePartHashValue(date1) - getDatePartHashValue(date2);
 }
 
