@@ -115,6 +115,7 @@ const backgroundStyles = css`
   ),
 );
 
+// eslint-disable-next-line @typescript-eslint/ban-types -- Fix TypeScript 5.3 error in backward compatible way
 function designToken<T extends {}>(token: DesignToken<T>) {
   return (source: DesignSystemProvider, key: string) => {
     source[key + 'Changed'] = function (this: DesignSystemProvider, prev: T | undefined, next: T | undefined) {
