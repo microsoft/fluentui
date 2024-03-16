@@ -14,6 +14,7 @@ describe('Maybe', () => {
   it('just will error if you pass it undefined', () => {
     let error = false;
     try {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       Something(undefined as any);
     } catch (_) {
       error = true;
