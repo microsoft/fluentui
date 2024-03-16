@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: Build errors in TypeScript 5.3",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
