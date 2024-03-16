@@ -17,7 +17,7 @@ export interface IFloatingSuggestionsState {
   didBind: boolean;
 }
 
-export class FloatingSuggestions<TItem>
+export class FloatingSuggestions<TItem extends {}>
   extends React.Component<IFloatingSuggestionsProps<TItem>, IFloatingSuggestionsState>
   implements IFloatingSuggestions<TItem>
 {
