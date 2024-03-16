@@ -234,7 +234,7 @@ describe('useCompose', () => {
   it('merges mapped props to slot props along the chain', () => {
     const ComposedComponentWithSlots = compose<
       'button',
-      { 'data-main-composed'?: boolean },
+      BaseComponentProps & { 'data-main-composed'?: boolean },
       {},
       BaseComponentWithSlotsProps,
       {}

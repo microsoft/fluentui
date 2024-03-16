@@ -29,7 +29,7 @@ type MergedProps<SlotProps extends Record<string, any> = any> = SlotProps &
   Partial<AccessibilityAttributesBySlot> &
   UserProps;
 
-export const useAccessibility = <Props>(
+export const useAccessibility = <Props extends {}>(
   behavior: Accessibility<Props>,
   options: UseAccessibilityOptions<Props> = {},
 ) => {
