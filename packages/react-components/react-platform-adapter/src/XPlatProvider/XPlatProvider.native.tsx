@@ -6,7 +6,7 @@ import { type XPlatProviderProps } from './XPlatProvider.types';
 export const suppressCssVariableInsertion = true;
 
 export const XPlatProvider: React.FunctionComponent<XPlatProviderProps> = props => {
-  const { theme, children } = props;
+  const { theme = {}, children } = props;
 
   // customProperties should be in the form of { 'camelCasedVariable': 'value' }
   return <contexts.ThemeProvider customProperties={theme} children={children} />;
