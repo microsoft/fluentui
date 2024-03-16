@@ -14,7 +14,7 @@ describe('Maybe', () => {
   it('just will error if you pass it undefined', () => {
     let error = false;
     try {
-      Something(undefined as unknown);
+      Something(undefined as any);
     } catch (_) {
       error = true;
     }
