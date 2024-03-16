@@ -23,7 +23,7 @@ export const getStylesFromClassName: (className: string) => {
 // @public (undocumented)
 export const jsxPlatformAdapter: (reactJsx: JSXRuntime) => JSXRuntime;
 
-// @public
+// @public (undocumented)
 export const makeResetStyles: (resetStyles: GriffelStyle) => () => string;
 
 export { makeStyles }
