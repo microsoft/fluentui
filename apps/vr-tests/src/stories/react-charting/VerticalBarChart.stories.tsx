@@ -17,8 +17,21 @@ storiesOf('react-charting/VerticalBarChart', module)
   .addDecorator((story, context) => {
     const steps = new Steps()
       .snapshot('default', { cropTo: '.testWrapper' })
-      .click('.ms-OverflowSet-item:nth-child(2)')
-      .snapshot('legend', { cropTo: '.testWrapper' })
+      .click('.ms-OverflowSet-item:nth-child(4)') // Click on Apple Legend
+      .hover('g:nth-of-type(2) > [id^="_VBC_bar"]') // Hover over unselected bar
+      .snapshot('AppleUnselectedBar', { cropTo: '.testWrapper' }) // Take Snapshot
+      .hover('g:nth-of-type(3) > [id^="_VBC_bar"]') // Hover over selected bar
+      .snapshot('AppleSelectedBar', { cropTo: '.testWrapper' }) // Take Snapshot
+      .click('.ms-OverflowSet-item:nth-child(4)') // Click(Deselect) on Apple Legend
+      .hover('g:nth-of-type(2) > [id^="_VBC_bar"]') // Hover over unselected bar
+      .snapshot('AllActiveUnselectedBar', { cropTo: '.testWrapper' }) // Take Snapshot
+      .hover('g:nth-of-type(3) > [id^="_VBC_bar"]') // Hover over selected bar
+      .snapshot('AllActiveSelectedBar', { cropTo: '.testWrapper' }) // Take Snapshot
+      .click('.ms-OverflowSet-item:nth-child(4)') // Click on Just Line Legend
+      .click('[id^="_VBC_line"]') // Hover over selected line
+      .snapshot('JustLineSelectedLine', { cropTo: '.testWrapper' }) // Take Snapshot
+      .hover('g:nth-of-type(3) > [id^="_VBC_bar"]') // Hover over unselected bar
+      .snapshot('JustLineUnselectedBar', { cropTo: '.testWrapper' }) // Take Snapshot
       .end();
     return <StoryWright steps={steps}>{story()}</StoryWright>;
   })
