@@ -76,7 +76,7 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
       }
 
       if (elementRef.current) {
-        const definition = typeof motion === 'function' ? motion(elementRef.current) : motion;
+        const definition = typeof motion === 'function' ? motion({ element: elementRef.current }) : motion;
         const { keyframes, ...options } = definition.exit;
 
         const animation = elementRef.current.animate(keyframes, {
@@ -111,7 +111,7 @@ export function createPresenceComponent(motion: PresenceMotion | PresenceMotionF
       const shouldEnter = isFirstMount.current ? optionsRef.current?.appear && visible : mounted && visible;
 
       if (shouldEnter) {
-        const definition = typeof motion === 'function' ? motion(elementRef.current) : motion;
+        const definition = typeof motion === 'function' ? motion({ element: elementRef.current }) : motion;
         const { keyframes, ...options } = definition.enter;
 
         const animation = elementRef.current.animate(keyframes, {
