@@ -40,7 +40,7 @@ function getColumnStyles(column: ColumnWidthState, dragging?: boolean): React.CS
     minWidth: width,
     maxWidth: width,
     // Fixed the unwanted sort: https://github.com/microsoft/fluentui/issues/27803
-    pointerEvents: dragging ? 'none' : 'initial',
+    ...(dragging ? { pointerEvents: 'none' } : {}),
   };
 }
 
