@@ -36,7 +36,37 @@ export type ColorSwatchState = ComponentState<ColorSwatchSlots> & Pick<ColorSwat
 };
 
 // @public
+export const ImageSwatch: ForwardRefComponent<ImageSwatchProps>;
+
+// @public (undocumented)
+export const imageSwatchClassNames: SlotClassNames<ImageSwatchSlots>;
+
+// @public (undocumented)
+export const imageSwatchCSSVars: {
+    src: string;
+};
+
+// @public
+export type ImageSwatchProps = ComponentProps<ImageSwatchSlots> & Pick<SwatchPickerProps, 'size' | 'shape'> & {
+    src: string;
+    value: string;
+};
+
+// @public (undocumented)
+export type ImageSwatchSlots = {
+    root: Slot<'button'>;
+};
+
+// @public
+export type ImageSwatchState = ComponentState<ImageSwatchSlots> & Pick<ImageSwatchProps, 'color' | 'size' | 'shape' | 'value'> & {
+    selected: boolean;
+};
+
+// @public
 export const renderColorSwatch_unstable: (state: ColorSwatchState) => JSX.Element;
+
+// @public
+export const renderImageSwatch_unstable: (state: ImageSwatchState) => JSX.Element;
 
 // @public
 export const renderSwatchPicker_unstable: (state: SwatchPickerState, contextValues: SwatchPickerContextValues) => JSX.Element;
@@ -116,6 +146,12 @@ export const useColorSwatch_unstable: (props: ColorSwatchProps, ref: React_2.Ref
 
 // @public
 export const useColorSwatchStyles_unstable: (state: ColorSwatchState) => ColorSwatchState;
+
+// @public
+export const useImageSwatch_unstable: (props: ImageSwatchProps, ref: React_2.Ref<HTMLButtonElement>) => ImageSwatchState;
+
+// @public
+export const useImageSwatchStyles_unstable: (state: ImageSwatchState) => ImageSwatchState;
 
 // @public
 export const useSwatchPicker_unstable: (props: SwatchPickerProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerState;
