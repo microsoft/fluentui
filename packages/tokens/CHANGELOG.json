@@ -2,6 +2,36 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Fri, 15 Mar 2024 21:43:49 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.15",
+      "version": "1.0.0-alpha.15",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "e4022e259c27c90158ed0dbb5278df5aa714118f",
+            "comment": "feat: enable .js extension addition and directory import/export unwrapping in build output"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 Mar 2024 19:33:27 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.14",
+      "version": "1.0.0-alpha.14",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "616d31c1994635b1a15f092cf85905b2450611f7",
+            "comment": "feat: Add/update color tokens"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 17:29:48 GMT",
       "tag": "@fluentui/tokens_v1.0.0-alpha.13",
       "version": "1.0.0-alpha.13",

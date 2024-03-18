@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Wed, 28 Feb 2024 02:34:19 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Mar 2024 21:43:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.14.1)
+
+Fri, 15 Mar 2024 21:43:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.14.0..@fluentui/react-positioning_v9.14.1)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.15.1 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-theme to v9.1.18 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+- Bump @fluentui/react-utilities to v9.18.4 ([PR #30740](https://github.com/microsoft/fluentui/pull/30740) by beachball)
+
+## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.14.0)
+
+Thu, 07 Mar 2024 19:33:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.13.5..@fluentui/react-positioning_v9.14.0)
+
+### Minor changes
+
+- feat: allow null on positioningRef setTarget ([PR #30662](https://github.com/microsoft/fluentui/pull/30662) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.15.0 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-theme to v9.1.17 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
+- Bump @fluentui/react-utilities to v9.18.3 ([PR #30687](https://github.com/microsoft/fluentui/pull/30687) by beachball)
 
 ## [9.13.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.13.5)
 

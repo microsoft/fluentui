@@ -2,6 +2,42 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Fri, 15 Mar 2024 21:43:49 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.15.1",
+      "version": "9.15.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.1.18",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 Mar 2024 19:33:25 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.15.0",
+      "version": "9.15.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "938958cbfd9058eb7681c8feddfdd4e0538733be",
+            "comment": "feat: Deprecate legacy TeachingPopoverCarousel style hooks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-shared-contexts",
+            "comment": "Bump @fluentui/react-theme to v9.1.17",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Feb 2024 02:34:18 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.14.1",
       "version": "9.14.1",

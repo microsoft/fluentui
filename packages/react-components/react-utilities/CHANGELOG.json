@@ -2,6 +2,36 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Fri, 15 Mar 2024 21:43:49 GMT",
+      "tag": "@fluentui/react-utilities_v9.18.4",
+      "version": "9.18.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.15.1",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 Mar 2024 19:33:27 GMT",
+      "tag": "@fluentui/react-utilities_v9.18.3",
+      "version": "9.18.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.15.0",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Feb 2024 02:34:19 GMT",
       "tag": "@fluentui/react-utilities_v9.18.2",
       "version": "9.18.2",

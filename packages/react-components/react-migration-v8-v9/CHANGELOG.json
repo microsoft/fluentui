@@ -2,6 +2,66 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Fri, 15 Mar 2024 21:43:49 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.6.1",
+      "version": "9.6.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.47.0",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-theme to v9.1.18",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-utilities to v9.18.4",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 Mar 2024 19:33:23 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.6.0",
+      "version": "9.6.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "616d31c1994635b1a15f092cf85905b2450611f7",
+            "comment": "feat: Add color tokens"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.46.8",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-theme to v9.1.17",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-utilities to v9.18.3",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Feb 2024 14:44:21 GMT",
       "tag": "@fluentui/react-migration-v8-v9_v9.5.11",
       "version": "9.5.11",

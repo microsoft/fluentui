@@ -3,7 +3,7 @@ import { axe } from 'jest-axe';
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
-import { ThemeProvider } from '@fluentui/react';
+import { ThemeProvider, resetIds } from '@fluentui/react';
 import { HorizontalBarChartWithAxis } from './HorizontalBarChartWithAxis';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartWithAxisBase } from './HorizontalBarChartWithAxis.base';
@@ -20,7 +20,12 @@ const runTest = env === 'TEST' ? describe : describe.skip;
 
 expect.extend(toHaveNoViolations);
 
+function sharedBeforeEach() {
+  resetIds();
+}
 describe('Horizontal bar chart with axis rendering', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should render the Horizontal bar chart with axis with numaric yaxis data',
     HorizontalBarChartWithAxis,
@@ -43,6 +48,8 @@ describe('Horizontal bar chart with axis rendering', () => {
 });
 
 describe('Horizontal bar chart with axis - Subcomponent bar', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should render the bars with the specified colors',
     HorizontalBarChartWithAxis,
@@ -92,6 +99,8 @@ describe('Horizontal bar chart with axis - Subcomponent bar', () => {
 });
 
 describe('Horizontal bar chart with axis- Subcomponent Legends', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithoutWait(
     'Should not show any rendered legends when hideLegend is true',
     HorizontalBarChartWithAxis,
@@ -142,6 +151,8 @@ describe('Horizontal bar chart with axis- Subcomponent Legends', () => {
 });
 
 describe('Horizontal bar chart with axis - Subcomponent callout', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should call the handler on mouse over bar and on mouse leave from bar',
     HorizontalBarChartWithAxis,
@@ -217,6 +228,8 @@ describe('Horizontal bar chart with axis - Subcomponent callout', () => {
 });
 
 describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should render the bars with labels hidden',
     HorizontalBarChartWithAxis,
@@ -229,6 +242,8 @@ describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
 });
 
 runTest('Skip - Horizontal bar chart with axis - Subcomponent Labels', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should expand y axis label when showYAxisLables is true',
     HorizontalBarChartWithAxis,
@@ -336,6 +351,7 @@ runTest('Skip - Horizontal bar chart with axis - Subcomponent Labels', () => {
 
 describe('Horizontal bar chart with axis - Screen resolution', () => {
   beforeEach(() => {
+    sharedBeforeEach();
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
   });
 
@@ -382,6 +398,8 @@ describe('Horizontal bar chart with axis - Screen resolution', () => {
 });
 
 describe('Horizontal bar chart with axis - Theme', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
@@ -395,6 +413,8 @@ describe('Horizontal bar chart with axis - Theme', () => {
 });
 
 describe('HorizontalBarChartWithAxis - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+
   testWithWait(
     'Should render callout correctly on mouseover',
     HorizontalBarChartWithAxis,
@@ -408,6 +428,8 @@ describe('HorizontalBarChartWithAxis - mouse events', () => {
 });
 
 describe('Horizontal Bar Chart With Axis - axe-core', () => {
+  beforeEach(sharedBeforeEach);
+
   test('Should pass accessibility tests', async () => {
     const { container } = render(<HorizontalBarChartWithAxis data={pointsHBCWA} />);
     let axeResults;

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/tokens
 
-This log was last generated on Thu, 09 Nov 2023 17:29:48 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Mar 2024 21:43:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.15)
+
+Fri, 15 Mar 2024 21:43:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.14..@fluentui/tokens_v1.0.0-alpha.15)
+
+### Changes
+
+- feat: enable .js extension addition and directory import/export unwrapping in build output ([PR #30770](https://github.com/microsoft/fluentui/pull/30770) by martinhochel@microsoft.com)
+
+## [1.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.14)
+
+Thu, 07 Mar 2024 19:33:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.13..@fluentui/tokens_v1.0.0-alpha.14)
+
+### Changes
+
+- feat: Add/update color tokens ([PR #30412](https://github.com/microsoft/fluentui/pull/30412) by miroslav.stastny@microsoft.com)
 
 ## [1.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.13)
 

@@ -2,6 +2,120 @@
   "name": "@fluentui/react-breadcrumb",
   "entries": [
     {
+      "date": "Fri, 15 Mar 2024 21:43:49 GMT",
+      "tag": "@fluentui/react-breadcrumb_v9.0.18",
+      "version": "9.0.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-aria to v9.10.1",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-button to v9.3.72",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-link to v9.2.14",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.15.1",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-tabster to v9.19.4",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-theme to v9.1.18",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-utilities to v9.18.4",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.33",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 Mar 2024 19:33:27 GMT",
+      "tag": "@fluentui/react-breadcrumb_v9.0.17",
+      "version": "9.0.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-aria to v9.10.0",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-button to v9.3.71",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-link to v9.2.13",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.15.0",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-tabster to v9.19.3",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-theme to v9.1.17",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-utilities to v9.18.3",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.32",
+            "commit": "58ccc2f33f85adc0d6992724178e42794ed4916d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Feb 2024 02:34:19 GMT",
       "tag": "@fluentui/react-breadcrumb_v9.0.16",
       "version": "9.0.16",

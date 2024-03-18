@@ -7,6 +7,7 @@ import { VerticalBarChart } from '../src/components/VerticalBarChart/VerticalBar
 import { VerticalBarChartBase } from '../src/components/VerticalBarChart/VerticalBarChart.base';
 import { max as d3Max } from 'd3-array';
 import { IVerticalBarChartDataPoint } from '../src/index';
+import { resetIds } from '@fluentui/react';
 const env = require('../config/tests');
 
 const runTest = env === 'TEST' ? describe : describe.skip;
@@ -24,7 +25,13 @@ const stringPoints = [
   },
 ];
 
+function sharedBeforeEach() {
+  resetIds();
+}
+
 runTest('VerticalBarChart unit tests', () => {
+  beforeEach(sharedBeforeEach);
+
   runTest('Get domain margins', () => {
     test('Should return the correct margins when total width is greater than required width', () => {
       const margin = {

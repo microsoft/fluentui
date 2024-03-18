@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/tokens",
-  "version": "1.0.0-alpha.13",
+  "version": "1.0.0-alpha.15",
   "description": "Fluent UI Theme Tokens",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
