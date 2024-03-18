@@ -1,5 +1,4 @@
 import * as React from 'react';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
 // import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import { useNavDrawer_unstable } from './useNavDrawer';
 import { renderNavDrawer_unstable } from './renderNavDrawer';
@@ -8,6 +7,7 @@ import { useNavContextValues_unstable } from '../useNavContextValues';
 import { NavState } from '../Nav/Nav.types';
 
 import type { NavDrawerProps } from './NavDrawer.types';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
  * NavDrawer component - TODO: add more docs
