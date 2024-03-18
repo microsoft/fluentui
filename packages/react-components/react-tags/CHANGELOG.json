@@ -2,6 +2,57 @@
   "name": "@fluentui/react-tags",
   "entries": [
     {
+      "date": "Fri, 15 Mar 2024 21:43:49 GMT",
+      "tag": "@fluentui/react-tags_v9.1.2",
+      "version": "9.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-aria to v9.10.1",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-avatar to v9.6.18",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.33",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.15.1",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-tabster to v9.19.4",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-theme to v9.1.18",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags",
+            "comment": "Bump @fluentui/react-utilities to v9.18.4",
+            "commit": "b2ded2504c2579038b15ca797666cc81d55c0364"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 07 Mar 2024 19:33:27 GMT",
       "tag": "@fluentui/react-tags_v9.1.1",
       "version": "9.1.1",

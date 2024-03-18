@@ -6,6 +6,10 @@ import bestPracticesMd from './SwatchPickerBestPractices.md';
 export { Default } from './SwatchPickerDefault.stories';
 export { SwatchPickerWithTooltip } from './SwatchPickerWithTooltip.stories';
 export { SwatchPickerLayout } from './SwatchPickerLayout.stories';
+export { SwatchPickerSize } from './SwatchPickerSize.stories';
+export { SwatchPickerSpacing } from './SwatchPickerSpacing.stories';
+export { SwatchPickerShape } from './SwatchPickerShape.stories';
+export { SwatchPickerPopup } from './SwatchPickerPopup.stories';
 
 export default {
   title: 'Preview Components/SwatchPicker',
