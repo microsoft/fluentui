@@ -47,7 +47,9 @@ export const useTeachingPopoverCarouselNavButton_unstable = (
       elementType: 'button',
       defaultProps: {
         ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
+        role: 'tab',
         type: 'button',
+        'aria-label': `Page ${index}`,
       },
     },
   );
