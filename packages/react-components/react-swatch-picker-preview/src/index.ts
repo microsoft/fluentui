@@ -30,7 +30,6 @@ export {
   imageSwatchClassNames,
   imageSwatchCSSVars,
 } from './ImageSwatch';
-
 export type { ImageSwatchProps, ImageSwatchSlots, ImageSwatchState } from './ImageSwatch';
 export type { SwatchPickerRowProps, SwatchPickerRowSlots, SwatchPickerRowState } from './SwatchPickerRow';
 export {
