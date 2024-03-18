@@ -2,6 +2,21 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 18 Mar 2024 19:50:46 GMT",
+      "tag": "@fluentui/react-components_v9.47.1",
+      "version": "9.47.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mgodbolt@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "4f1b1fd95da8e50aabb74d61d30d7c2570c3e40e",
+            "comment": "reverting #30770 which caused compilation issues"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 Mar 2024 21:43:48 GMT",
       "tag": "@fluentui/react-components_v9.47.0",
       "version": "9.47.0",

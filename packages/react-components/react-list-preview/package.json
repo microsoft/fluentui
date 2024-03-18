@@ -37,10 +37,10 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "^9.0.33",
-    "@fluentui/react-theme": "^9.1.18",
-    "@fluentui/react-utilities": "^9.18.4",
-    "@fluentui/react-shared-contexts": "^9.15.1",
+    "@fluentui/react-jsx-runtime": "^9.0.34",
+    "@fluentui/react-theme": "^9.1.19",
+    "@fluentui/react-utilities": "^9.18.5",
+    "@fluentui/react-shared-contexts": "^9.15.2",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
