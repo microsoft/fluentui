@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "reverting #30770 which caused compilation issues",
+  "packageName": "@fluentui/tokens",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
