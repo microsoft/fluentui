@@ -38,13 +38,13 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-button": "^9.3.70",
-    "@fluentui/react-checkbox": "^9.2.14",
-    "@fluentui/react-context-selector": "^9.1.53",
+    "@fluentui/react-button": "^9.3.72",
+    "@fluentui/react-checkbox": "^9.2.16",
+    "@fluentui/react-context-selector": "^9.1.55",
     "@fluentui/react-icons": "^2.0.224",
     "@fluentui/react-jsx-runtime": "^9.0.33",
     "@fluentui/keyboard-keys": "^9.0.7",
-    "@fluentui/react-tabster": "^9.19.2",
+    "@fluentui/react-tabster": "^9.19.4",
     "@fluentui/react-theme": "^9.1.18",
     "@fluentui/react-utilities": "^9.18.4",
     "@fluentui/react-shared-contexts": "^9.15.1",
