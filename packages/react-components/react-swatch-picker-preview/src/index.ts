@@ -28,7 +28,7 @@ export {
   useImageSwatchStyles_unstable,
   useImageSwatch_unstable,
   imageSwatchClassNames,
-  // imageSwatchCSSVars,
+  imageSwatchCSSVars,
 } from './ImageSwatch';
 
 export type { ImageSwatchProps, ImageSwatchSlots, ImageSwatchState } from './ImageSwatch';
