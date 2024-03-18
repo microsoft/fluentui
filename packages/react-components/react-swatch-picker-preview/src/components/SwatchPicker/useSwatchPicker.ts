@@ -24,7 +24,7 @@ export const useSwatchPicker_unstable = (
   props: SwatchPickerProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
-  const { grid, onSelectionChange, size = 'medium', shape, spacing = 'medium', ...rest } = props;
+  const { grid, onSelectionChange, size = 'medium', shape, spacing = 'medium', style, ...rest } = props;
 
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
@@ -50,7 +50,7 @@ export const useSwatchPicker_unstable = (
     setSelectedValue(data.selectedValue);
   });
 
-  const state: SwatchPickerState = {
+  return {
     components: {
       root: 'div',
     },
@@ -60,6 +60,10 @@ export const useSwatchPicker_unstable = (
         role,
         ...focusAttributes,
         ...rest,
+        style: {
+          [gridGap]: spacingMap[spacing],
+          ...style,
+        },
       }),
       { elementType: 'div' },
     ),
@@ -70,12 +74,4 @@ export const useSwatchPicker_unstable = (
     shape,
     spacing,
   };
-
-  // Root props
-  state.root.style = {
-    [gridGap]: spacingMap[spacing],
-    ...state.root.style,
-  };
-
-  return state;
 };

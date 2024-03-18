@@ -20,8 +20,10 @@ export const useSwatchPickerRow_unstable = (
   props: SwatchPickerRowProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerRowState => {
+  const { style, ...rest } = props;
   const spacing = useSwatchPickerContextValue_unstable(ctx => ctx.spacing);
-  const state: SwatchPickerRowState = {
+
+  return {
     components: {
       root: 'div',
     },
@@ -29,16 +31,13 @@ export const useSwatchPickerRow_unstable = (
       getIntrinsicElementProps('div', {
         ref,
         role: props.role ?? 'row',
-        ...props,
+        ...rest,
+        style: {
+          [rowGap]: spacingMap[spacing ?? 'medium'],
+          ...style,
+        },
       }),
       { elementType: 'div' },
     ),
   };
-  // Root props
-  state.root.style = {
-    [rowGap]: spacingMap[spacing ?? 'medium'],
-    ...state.root.style,
-  };
-
-  return state;
 };

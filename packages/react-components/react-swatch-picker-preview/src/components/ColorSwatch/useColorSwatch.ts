@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { slot, useEventCallback, getIntrinsicElementProps } from '@fluentui/react-utilities';
+import { slot, useEventCallback, getIntrinsicElementProps, mergeCallbacks } from '@fluentui/react-utilities';
 import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
 import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
 import { swatchCSSVars } from './useColorSwatchStyles.styles';
@@ -17,7 +17,7 @@ export const useColorSwatch_unstable = (
   props: ColorSwatchProps,
   ref: React.Ref<HTMLButtonElement>,
 ): ColorSwatchState => {
-  const { color, value, ...rest } = props;
+  const { color, value, onClick, style, ...rest } = props;
   const size = useSwatchPickerContextValue_unstable(ctx => ctx.size);
   const shape = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
   const isGrid = useSwatchPickerContextValue_unstable(ctx => ctx.grid);
@@ -25,11 +25,13 @@ export const useColorSwatch_unstable = (
   const requestSelectionChange = useSwatchPickerContextValue_unstable(ctx => ctx.requestSelectionChange);
   const selected = useSwatchPickerContextValue_unstable(ctx => ctx.selectedValue === value);
 
-  const onClick = useEventCallback((event: React.MouseEvent<HTMLButtonElement>) =>
-    requestSelectionChange(event, {
-      selectedValue: value,
-      selectedColor: color,
-    }),
+  const onColorSwatchClick = useEventCallback(
+    mergeCallbacks(onClick, (event: React.MouseEvent<HTMLButtonElement>) =>
+      requestSelectionChange(event, {
+        selectedValue: value,
+        selectedColor: color,
+      }),
+    ),
   );
 
   const rootVariables = {
@@ -43,7 +45,7 @@ export const useColorSwatch_unstable = (
       }
     : { 'aria-checked': selected };
 
-  const state: ColorSwatchState = {
+  return {
     components: {
       root: 'button',
     },
@@ -52,9 +54,13 @@ export const useColorSwatch_unstable = (
         ref,
         role,
         ...ariaSelected,
-        onClick,
+        onClick: onColorSwatchClick,
         type: 'button',
         ...rest,
+        style: {
+          ...rootVariables,
+          ...style,
+        },
       }),
       { elementType: 'button' },
     ),
@@ -64,12 +70,4 @@ export const useColorSwatch_unstable = (
     color,
     value,
   };
-
-  // Root props
-  state.root.style = {
-    ...rootVariables,
-    ...state.root.style,
-  };
-
-  return state;
 };
