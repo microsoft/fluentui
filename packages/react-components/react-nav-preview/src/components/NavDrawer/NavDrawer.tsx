@@ -4,9 +4,9 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useNavDrawer_unstable } from './useNavDrawer';
 import { renderNavDrawer_unstable } from './renderNavDrawer';
 import { useNavDrawerStyles_unstable } from './useNavDrawerStyles.styles';
-import type { NavDrawerProps } from './NavDrawer.types';
 import { useNavContextValues_unstable } from '../useNavContextValues';
 import { NavState } from '../Nav/Nav.types';
+import type { NavDrawerProps } from './NavDrawer.types';
 
 /**
  * NavDrawer component - TODO: add more docs
