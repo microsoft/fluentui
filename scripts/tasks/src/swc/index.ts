@@ -1,0 +1,1 @@
+export { swc } from './swc';
