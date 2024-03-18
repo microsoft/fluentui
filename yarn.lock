@@ -1972,19 +1972,6 @@
     "@griffel/react" "^1.0.0"
     tslib "^2.1.0"
 
-"@fluentui/react-rating-preview@*":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-rating-preview/-/react-rating-preview-0.4.0.tgz#d880388653d96e2e0bc07b83a594e10a0f1f0462"
-  integrity sha512-eKC3GU8VbxeVoypUh+G8futOTogvfmY31vCFoZs37XM/nGt9q4LucK1dduGQXUHV0zy6YNloKvozu3rVUt1VoA==
-  dependencies:
-    "@fluentui/react-icons" "^2.0.224"
-    "@fluentui/react-jsx-runtime" "^9.0.32"
-    "@fluentui/react-tabster" "^9.19.3"
-    "@fluentui/react-theme" "^9.1.17"
-    "@fluentui/react-utilities" "^9.18.3"
-    "@griffel/react" "^1.5.14"
-    "@swc/helpers" "^0.5.1"
-
 "@griffel/babel-preset@1.4.20", "@griffel/babel-preset@^1.4.20":
   version "1.4.20"
   resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.4.20.tgz#047eb62f104e7bea781820816263e7407fafe543"
