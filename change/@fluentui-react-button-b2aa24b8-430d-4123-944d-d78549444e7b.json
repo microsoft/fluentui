@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Hook up Button to react-platform-adapter-preview",
+  "packageName": "@fluentui/react-button",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

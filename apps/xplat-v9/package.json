@@ -20,7 +20,7 @@
   "dependencies": {
     "@fluentui/react-button": "*",
     "@fluentui/react-label": "*",
-    "@fluentui/react-platform-adapter": "*",
+    "@fluentui/react-platform-adapter-preview": "*",
     "@fluentui/react-provider": "*",
     "@fluentui/react-theme": "*",
     "@stylexjs/babel-plugin": "^0.5.1",

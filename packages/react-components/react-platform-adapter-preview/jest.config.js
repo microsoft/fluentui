@@ -4,7 +4,7 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-platform-adapter',
+  displayName: 'react-platform-adapter-preview',
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': [

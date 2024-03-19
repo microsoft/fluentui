@@ -1,4 +1,4 @@
-import { useRenderer_unstable, makeStylesCore, mergeClasses } from '@fluentui/react-platform-adapter';
+import { useRenderer_unstable, makeStylesCore, mergeClasses } from '@fluentui/react-platform-adapter-preview';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { FluentProviderSlots, FluentProviderState } from './FluentProvider.types';
 import { SlotClassNames } from '@fluentui/react-utilities';

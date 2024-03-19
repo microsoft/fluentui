@@ -1,7 +1,7 @@
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
-import { shorthands, makeStyles, makeResetStyles, mergeClasses } from '@fluentui/react-platform-adapter';
+import { shorthands, makeStyles, makeResetStyles, mergeClasses } from '@fluentui/react-platform-adapter-preview';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ButtonSlots, ButtonState } from './Button.types';
 

@@ -1,8 +1,8 @@
 {
-  "name": "@fluentui/react-platform-adapter",
+  "name": "@fluentui/react-platform-adapter-preview",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "sourceRoot": "packages/react-components/react-platform-adapter/src",
+  "sourceRoot": "packages/react-components/react-platform-adapter-preview/src",
   "tags": ["platform:web", "vNext"],
   "implicitDependencies": []
 }

@@ -1,7 +1,7 @@
 /** @jsxRuntime automatic */
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 import { canUseDOM, assertSlots } from '@fluentui/react-utilities';
-import { TextDirectionProvider } from '@fluentui/react-platform-adapter';
+import { TextDirectionProvider } from '@fluentui/react-platform-adapter-preview';
 import {
   OverridesProvider_unstable as OverridesProvider,
   Provider_unstable as Provider,
@@ -13,7 +13,7 @@ import {
 } from '@fluentui/react-shared-contexts';
 import type { FluentProviderContextValues, FluentProviderState, FluentProviderSlots } from './FluentProvider.types';
 import { IconDirectionContextProvider } from '@fluentui/react-icons';
-import { XPlatProvider } from '@fluentui/react-platform-adapter';
+import { XPlatProvider } from '@fluentui/react-platform-adapter-preview';
 
 /**
  * Render the final JSX of FluentProvider
