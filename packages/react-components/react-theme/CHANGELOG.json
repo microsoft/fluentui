@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Mon, 18 Mar 2024 19:50:46 GMT",
+      "tag": "@fluentui/react-theme_v9.1.19",
+      "version": "9.1.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme",
+            "comment": "Bump @fluentui/tokens to v1.0.0-alpha.16",
+            "commit": "9e6c3cf0dfdad1aa0b4752919e2214c7da2a0d42"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 Mar 2024 21:43:49 GMT",
       "tag": "@fluentui/react-theme_v9.1.18",
       "version": "9.1.18",

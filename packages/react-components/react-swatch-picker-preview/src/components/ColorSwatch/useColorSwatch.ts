@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { slot, useEventCallback, getPartitionedNativeProps } from '@fluentui/react-utilities';
+import { slot, useEventCallback, getIntrinsicElementProps, mergeCallbacks } from '@fluentui/react-utilities';
 import type { ColorSwatchProps, ColorSwatchState } from './ColorSwatch.types';
-import { useFocusWithin } from '@fluentui/react-tabster';
 import { useSwatchPickerContextValue_unstable } from '../../contexts/swatchPicker';
 import { swatchCSSVars } from './useColorSwatchStyles.styles';
 
@@ -18,69 +17,57 @@ export const useColorSwatch_unstable = (
   props: ColorSwatchProps,
   ref: React.Ref<HTMLButtonElement>,
 ): ColorSwatchState => {
-  const { color, value } = props;
+  const { color, value, onClick, style, ...rest } = props;
   const size = useSwatchPickerContextValue_unstable(ctx => ctx.size);
   const shape = useSwatchPickerContextValue_unstable(ctx => ctx.shape);
+  const isGrid = useSwatchPickerContextValue_unstable(ctx => ctx.grid);
 
   const requestSelectionChange = useSwatchPickerContextValue_unstable(ctx => ctx.requestSelectionChange);
   const selected = useSwatchPickerContextValue_unstable(ctx => ctx.selectedValue === value);
 
-  const onClick = useEventCallback((event: React.MouseEvent<HTMLButtonElement>) =>
-    requestSelectionChange(event, {
-      selectedValue: value,
-      selectedColor: color,
-    }),
+  const onColorSwatchClick = useEventCallback(
+    mergeCallbacks(onClick, (event: React.MouseEvent<HTMLButtonElement>) =>
+      requestSelectionChange(event, {
+        selectedValue: value,
+        selectedColor: color,
+      }),
+    ),
   );
-
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'button',
-    excludedPropNames: ['value', 'color', 'role'],
-  });
 
   const rootVariables = {
     [swatchCSSVars.color]: color,
   };
 
-  const root = slot.always(props.root, {
-    defaultProps: {
-      ref: useFocusWithin<HTMLDivElement>(),
-      role: props.role ?? 'radio',
-      'aria-checked': selected,
-      ...nativeProps.root,
-    },
-    elementType: 'div',
-  });
+  const role = isGrid ? 'gridcell' : 'radio';
+  const ariaSelected = isGrid
+    ? {
+        'aria-selected': selected,
+      }
+    : { 'aria-checked': selected };
 
-  const button = slot.always(props.button, {
-    defaultProps: {
-      ref,
-      type: 'button',
-      onClick,
-      ...nativeProps.primary,
-    },
-    elementType: 'button',
-  });
-
-  const state: ColorSwatchState = {
+  return {
     components: {
-      root: 'div',
-      button: 'button',
+      root: 'button',
     },
-    root,
-    button,
+    root: slot.always(
+      getIntrinsicElementProps('button', {
+        ref,
+        role,
+        ...ariaSelected,
+        onClick: onColorSwatchClick,
+        type: 'button',
+        ...rest,
+        style: {
+          ...rootVariables,
+          ...style,
+        },
+      }),
+      { elementType: 'button' },
+    ),
     size,
     shape,
     selected,
     color,
     value,
   };
-
-  // Root props
-  state.root.style = {
-    ...rootVariables,
-    ...state.root.style,
-  };
-
-  return state;
 };
