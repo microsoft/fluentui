@@ -28,13 +28,13 @@ export const SwatchPickerSpacing = () => {
   return (
     <div className={styles.example}>
       <SwatchPicker aria-label="SwatchPicker medium spacing">
-        {colors.map((color, index) => {
-          return <ColorSwatch key={`${color.value}-${index}`} {...color} />;
+        {colors.map(color => {
+          return <ColorSwatch key={color.value} {...color} />;
         })}
       </SwatchPicker>
       <SwatchPicker aria-label="SwatchPicker small spacing" spacing="small">
-        {colors.map((color, index) => {
-          return <ColorSwatch key={`${color.value}-${index}`} {...color} />;
+        {colors.map(color => {
+          return <ColorSwatch key={color.value} {...color} />;
         })}
       </SwatchPicker>
     </div>

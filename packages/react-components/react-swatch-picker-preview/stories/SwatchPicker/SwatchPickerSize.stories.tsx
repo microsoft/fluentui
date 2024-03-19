@@ -26,24 +26,28 @@ export const SwatchPickerSize = () => {
   const styles = useStyles();
   return (
     <div className={styles.example}>
+      <h3>Large</h3>
       <SwatchPicker aria-label="SwatchPicker large size" size="large">
-        {colors.map((color, index) => {
-          return <ColorSwatch key={`${color.value}-${index}`} {...color} />;
+        {colors.map(color => {
+          return <ColorSwatch key={color.value} {...color} />;
         })}
       </SwatchPicker>
+      <h3>Medium</h3>
       <SwatchPicker aria-label="SwatchPicker medium size">
-        {colors.map((color, index) => {
-          return <ColorSwatch key={`${color.value}-${index}`} {...color} />;
+        {colors.map(color => {
+          return <ColorSwatch key={color.value} {...color} />;
         })}
       </SwatchPicker>
+      <h3>Small</h3>
       <SwatchPicker aria-label="SwatchPicker small size" size="small">
-        {colors.map((color, index) => {
-          return <ColorSwatch key={`${color.value}-${index}`} {...color} />;
+        {colors.map(color => {
+          return <ColorSwatch key={color.value} {...color} />;
         })}
       </SwatchPicker>
+      <h3>Extra small</h3>
       <SwatchPicker aria-label="SwatchPicker extra small size" size="extraSmall">
-        {colors.map((color, index) => {
-          return <ColorSwatch key={`${color.value}-${index}`} {...color} />;
+        {colors.map(color => {
+          return <ColorSwatch key={color.value} {...color} />;
         })}
       </SwatchPicker>
     </div>
