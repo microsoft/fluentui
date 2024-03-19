@@ -2,10 +2,9 @@ import { ShadowConfig } from '@fluentui/merge-styles';
 import { getWindow } from '../../dom';
 import { useMergeStylesHooks } from './useMergeStylesHooks';
 
-type ObjectWithShadowConfig = { __shadowConfig__?: ShadowConfig };
-export type UseStyledHook = (scope: string, styles: ObjectWithShadowConfig) => void;
+export type UseStyledHook = (scope: string) => ShadowConfig | undefined;
 
-export const useStyled: UseStyledHook = (scope, styles) => {
+export const useStyled: UseStyledHook = (scope = '__global__') => {
   const {
     useAdoptedStylesheetEx,
     useShadowConfig,
@@ -19,8 +18,6 @@ export const useStyled: UseStyledHook = (scope, styles) => {
   const inShadow = !!shadowCtx;
   const rootMergeStyles = useMergeStylesRootStylesheets();
   const shadowConfig = useShadowConfig(scope, inShadow, win);
-
-  styles.__shadowConfig__ = shadowConfig;
 
   useAdoptedStylesheetEx(scope, shadowCtx, rootMergeStyles, win);
 

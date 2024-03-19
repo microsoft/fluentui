@@ -265,11 +265,11 @@ export class Stylesheet {
     this._adoptableSheets = new Map();
   }
 
-  public addAdoptableStyleSheet(key: string, sheet: ExtendedCSSStyleSheet): void {
+  public addAdoptableStyleSheet(key: string, sheet: ExtendedCSSStyleSheet, queue: boolean = true): void {
     if (!this._adoptableSheets.has(key)) {
       this._adoptableSheets.set(key, sheet);
       const win = this._config.window;
-      if (win) {
+      if (queue && win) {
         win.queueMicrotask(() => {
           this._onAddSheetCallbacks.forEach(callback => callback({ key, sheet }));
         });

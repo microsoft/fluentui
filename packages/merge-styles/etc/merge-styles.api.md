@@ -557,9 +557,6 @@ export type ObjectOnly<TArg> = TArg extends {} ? TArg : {};
 type Omit_2<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
 export { Omit_2 as Omit }
 
-// @public (undocumented)
-export const projectStylesToWindow: (stylesheet: Stylesheet, targetWindow: Window) => void;
-
 // @public
 export function setRTL(isRTL: boolean): void;
 
@@ -575,7 +572,7 @@ export type ShadowConfig = {
 export class Stylesheet {
     constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet);
     // (undocumented)
-    addAdoptableStyleSheet(key: string, sheet: ExtendedCSSStyleSheet): void;
+    addAdoptableStyleSheet(key: string, sheet: ExtendedCSSStyleSheet, queue?: boolean): void;
     argsFromClassName(className: string): IStyle[] | undefined;
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
     classNameFromKey(key: string): string | undefined;

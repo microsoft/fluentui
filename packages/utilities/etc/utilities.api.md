@@ -1379,10 +1379,8 @@ export const useShadowConfig: ShadowConfigHook;
 // @public (undocumented)
 export const useStyled: UseStyledHook;
 
-// Warning: (ae-forgotten-export) The symbol "ObjectWithShadowConfig" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export type UseStyledHook = (scope: string, styles: ObjectWithShadowConfig) => void;
+export type UseStyledHook = (scope: string) => ShadowConfig | undefined;
 
 // @public
 export function values<T>(obj: any): T[];

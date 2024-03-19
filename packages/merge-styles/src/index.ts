@@ -56,6 +56,4 @@ export type { ShadowConfig } from './shadowConfig';
 
 export { cloneCSSStyleSheet } from './cloneCSSStyleSheet';
 
-export { projectStylesToWindow } from './projectStylesToWindow';
-
 import './version';

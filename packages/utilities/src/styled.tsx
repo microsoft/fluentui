@@ -125,7 +125,7 @@ export function styled<
       styles.current = concatenatedStyles as StyleFunction<TStyleProps, TStyleSet>;
     }
 
-    useStyled(scope, styles.current);
+    styles.current.__shadowConfig__ = useStyled(scope);
 
     return <Component ref={forwardedRef} {...rest} {...additionalProps} {...props} styles={styles.current} />;
   });
